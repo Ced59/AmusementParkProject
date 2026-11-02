@@ -21922,7 +21922,7 @@
           "summary": "Correction éditoriale après publication : légendes propres à l’article en huit langues et reformulation des huit recouvrements factuels, sans modifier les faits historiques."
         }
       ],
-      "nextAction": "Fiche publique, quinze équipements décrits en huit langues, vingt médias dont logo, quatre faits et article historique ; score réel 91 sans bloqueur API. Intégration partielle : quinze équipements privés sans description, positions et plans manquants. Vérifier le lien Histoire absent du rendu normal malgré le résumé API positif ; annonce Facebook en attente. Voir parc-de-la-recreation-progress-checkpoint.json.",
+      "nextAction": "Fiche publique : quinze équipements décrits en huit langues, vingt médias dont logo, quatre faits et article ; score réel 91/100 sans bloqueur API. Histoire vérifiée depuis les fiches normales dans les huit langues, clic français réussi sur mobile et lien présent sur ordinateur. Annonce Facebook existante Published vérifiée sans nouvel envoi. Intégration reste partielle : quinze équipements privés sans description, coordonnées et plans incomplets, aucune exception exacte au score acceptée. Voir parc-de-la-recreation-normal-navigation-verification.json.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -23598,8 +23598,8 @@
       "siteId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
       "legacySiteIds": [],
       "presence": "Hidden",
-      "presenceObservedAt": "2026-11-02T18:21:38.023422+00:00",
-      "editorialStatus": "InProgress",
+      "presenceObservedAt": "2026-11-02T18:43:38.9367791Z",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
@@ -23612,7 +23612,7 @@
         "Espace Jean Giletta"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-02T18:20:37.053Z",
+      "lastDataIntegrationAt": "2026-11-02T18:47:12.732Z",
       "integrationHistory": [
         {
           "eventId": "apply-3074fac9-669a-4a5b-a37b-f401187e1d3f",
@@ -23863,9 +23863,69 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/miniatures-nice-receipts.json#apply-e0bc3870-8e0d-4762-bbc5-3d7d9b95c089",
           "auditEvidence": null,
           "summary": "Descriptions de l’amphithéâtre de Cemenelum, du moulin à blé et de Saint-Pons intégrées dans les huit langues, d’après les photos originales ; 2 sections et 3 paragraphes spécifiques par modèle."
+        },
+        {
+          "eventId": "apply-1c2d3228-bf45-401f-bd19-8b950190df47",
+          "appliedAt": "2026-11-02T18:26:14.769Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/miniatures-nice-receipts.json#apply-1c2d3228-bf45-401f-bd19-8b950190df47",
+          "auditEvidence": null,
+          "summary": "Descriptions des temples antiques, du forum et du château de Nice intégrées dans les huit langues ; ensembles distincts vérifiés sur les photos, sans attribution archéologique ou date individuelle inventée."
+        },
+        {
+          "eventId": "apply-78dae527-cd20-4428-80ae-6135a8e8b373",
+          "appliedAt": "2026-11-02T18:30:31.521Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/miniatures-nice-receipts.json#apply-78dae527-cd20-4428-80ae-6135a8e8b373",
+          "auditEvidence": null,
+          "summary": "Descriptions de la villa Masséna miniature et du cours Saleya intégrées dans les huit langues, avec jardins, façades et contexte observés sur les photographies originales."
+        },
+        {
+          "eventId": "apply-caa4ea58-4c3d-46cf-ab68-0477ee6616d4",
+          "appliedAt": "2026-11-02T18:39:18.297Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/miniatures-nice-receipts.json#apply-caa4ea58-4c3d-46cf-ab68-0477ee6616d4",
+          "auditEvidence": null,
+          "summary": "Quatre maquettes religieuses : descriptions éditoriales originales en huit langues, façades et identification contrôlées ; intégration partielle privée avant audit final."
+        },
+        {
+          "eventId": "apply-c98784a3-ae34-43d0-8efe-aa65a4b92873",
+          "appliedAt": "2026-11-02T18:42:57.519Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/miniatures-nice-receipts.json#apply-c98784a3-ae34-43d0-8efe-aa65a4b92873",
+          "auditEvidence": null,
+          "summary": "Trains miniatures et maquette du MAMAC : descriptions originales en huit langues, exception courte sourcée pour le musée ; intégration partielle privée."
+        },
+        {
+          "eventId": "apply-b04eb8f1-a26f-4efb-85fd-ed25bb12c875",
+          "appliedAt": "2026-11-02T18:43:27.584Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/miniatures-nice-receipts.json#apply-b04eb8f1-a26f-4efb-85fd-ed25bb12c875",
+          "auditEvidence": null,
+          "summary": "Exposition des ombres de Jean Mas en 1990 : fait historique privé en huit langues fondé sur le catalogue officiel de l’artiste ; intégration partielle."
+        },
+        {
+          "eventId": "apply-b1c81a70-1291-4cdb-bdc4-030f86274b70",
+          "appliedAt": "2026-11-02T18:47:12.732Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/miniatures-nice-receipts.json#apply-b1c81a70-1291-4cdb-bdc4-030f86274b70",
+          "auditEvidence": null,
+          "summary": "Audit final : localisation des crédits des 18 médias et légende concrète du photomontage historique en huit langues ; fichiers et visibilité inchangés, résultat partiel."
         }
       ],
-      "nextAction": "Intégration privée en cours :22éléments dont6décrits8langues,18médias,5faits etarticle8langues. Continuerlesdescriptionssourcées puisexportfraiset auditfinal. Logo isolé,planintérieur,GPS etdatedefermeture nonétablis. Ne pasmarquercompleted. Preuvesminiatures-nice-progress-checkpoint.json.",
+      "nextAction": "Fiche privée auditée à 76/100 : 22 éléments dont 17 décrits en huit langues, 18 médias, six faits et un article en huit langues. Logo requis ; cinq descriptions, inventaire historique exhaustif, photos propres à chaque élément, plans et coordonnées incomplets après recherche. Ne pas publier ni marquer completed. Voir miniatures-nice-progress-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -23896,6 +23956,11 @@
           "label": "NiceRendezVous, 26 octobre 2005 — Dernier acte pour le Parc des Miniatures",
           "url": "https://nice-rendezvous.blogspot.com/2005/10/nice-dernier-acte-pour-le-parc-des.html?m=0",
           "accessedAt": "2026-11-02T18:21:38.023422+00:00"
+        },
+        {
+          "label": "Jean Mas — Ombre, catalogue des expositions de l’artiste",
+          "url": "https://www.jeanmas.com/ombre",
+          "accessedAt": "2026-11-02T18:49:11.722576+00:00"
         }
       ]
     },
@@ -26407,23 +26472,63 @@
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-02T18:56:27.674280+00:00",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité non établie après recherches officielles paginées et vérification des homonymes",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Établir existence, adresse et exploitant du Pira Park annoncé à Nice : Wikipédia et ses miroirs ne suffisent pas ; la page Weecop est une simulation. Aucun Apply, aucune création ni publication. Voir evidence/france-historical-20261022/pira-park-qualification.json.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Discovery list claims Pira Park in Nice, pirates and 2019, without an individually verified location/operator or an independently established opening/closing. Retained as discovery only.",
+          "url": "https://fr.wikipedia.org/wiki/Liste_de_parcs_de_loisirs_en_France",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikipedia mirror; not independent corroboration.",
+          "url": "https://wikipedia.cabillot.eu/content/wikipedia_fr_all_maxi_2024-05/A/Liste_de_parcs_de_loisirs_en_France",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikipedia mirror; not independent corroboration.",
+          "url": "https://infokontak.com/fr/Liste_de_parcs_de_loisirs_en_France",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Page explicitly describes a hypothetical cashless installation and shows zero visitors/turnover; generic listing is not evidence of an actual customer, address or venue.",
+          "url": "https://pro.weecop.fr/etude-de-cas/pira-park/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Official address 15 rue Grande Terre, Zone Euro 2000, 30132 Caissargues; this existing hidden homonym is not in Nice.",
+          "url": "https://piratlandkids.fr/contact/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Official Gruissan tourism identifies Pirat’Parc in Gruissan; different locality.",
+          "url": "https://www.gruissan-mediterranee.com/en/equipement-loisir-gruissan/piratparc/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "PIRA PARK SL is a Spanish mobile-home business in Albesa, Lleida, not evidence for a Nice amusement park.",
+          "url": "https://www.albesapark.com/politica-privacidad/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Official Pirapark identifies a water park in Buritizeiro, Minas Gerais, Brazil; different entity.",
+          "url": "https://www.pirapark.com.br/",
+          "accessedAt": "2026-11-02"
         }
       ]
     },
@@ -29498,14 +29603,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",

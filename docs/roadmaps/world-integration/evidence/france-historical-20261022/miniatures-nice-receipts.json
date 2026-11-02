@@ -421,6 +421,178 @@
         "descriptions.pt"
       ],
       "summary": "Descriptions de l’amphithéâtre de Cemenelum, du moulin à blé et de Saint-Pons intégrées dans les huit langues, d’après les photos originales ; 2 sections et 3 paragraphes spécifiques par modèle."
+    },
+    {
+      "eventId": "apply-1c2d3228-bf45-401f-bd19-8b950190df47",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T18:26:14.7695868Z",
+      "appliedAt": "2026-11-02T18:26:14.769Z",
+      "receiptFile": "04-items-c-apply.receipt.json",
+      "receiptSha256": "32402e347f503088ad2364899a70ad6e649905594c9de1f1dfa1a4b42a8a67e9",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions des temples antiques, du forum et du château de Nice intégrées dans les huit langues ; ensembles distincts vérifiés sur les photos, sans attribution archéologique ou date individuelle inventée."
+    },
+    {
+      "eventId": "apply-78dae527-cd20-4428-80ae-6135a8e8b373",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T18:30:31.5215236Z",
+      "appliedAt": "2026-11-02T18:30:31.521Z",
+      "receiptFile": "04-items-d-apply.receipt.json",
+      "receiptSha256": "69eae19a242bd0b51aa5eb6e7699e78caaa49a70e90fb4e3aec33cb91e4ac28b",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions de la villa Masséna miniature et du cours Saleya intégrées dans les huit langues, avec jardins, façades et contexte observés sur les photographies originales."
+    },
+    {
+      "eventId": "apply-caa4ea58-4c3d-46cf-ab68-0477ee6616d4",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T18:39:18.2975057Z",
+      "appliedAt": "2026-11-02T18:39:18.297Z",
+      "receiptFile": "04-items-e-apply.receipt.json",
+      "receiptSha256": "dfe8ca21e9977bc43085a38030a32eb82b2d91561941b49c9491b3fe3c818f4c",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Quatre maquettes religieuses : descriptions éditoriales originales en huit langues, façades et identification contrôlées ; intégration partielle privée avant audit final."
+    },
+    {
+      "eventId": "apply-c98784a3-ae34-43d0-8efe-aa65a4b92873",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T18:42:57.519264Z",
+      "appliedAt": "2026-11-02T18:42:57.519Z",
+      "receiptFile": "04-items-f-apply.receipt.json",
+      "receiptSha256": "200ddf3a7e26a828686a486bf45dacc6fae830b782c94b4f80bf9c158ef5540a",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Trains miniatures et maquette du MAMAC : descriptions originales en huit langues, exception courte sourcée pour le musée ; intégration partielle privée."
+    },
+    {
+      "eventId": "apply-b04eb8f1-a26f-4efb-85fd-ed25bb12c875",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T18:43:27.5849219Z",
+      "appliedAt": "2026-11-02T18:43:27.584Z",
+      "receiptFile": "08-mas-event-apply.receipt.json",
+      "receiptSha256": "3fecbd4cf36e7dda70250b16b06c4151d76988fe7a84bc1602e0dfcd44f934db",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "eventType",
+        "isVisible",
+        "key",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Exposition des ombres de Jean Mas en 1990 : fait historique privé en huit langues fondé sur le catalogue officiel de l’artiste ; intégration partielle."
+    },
+    {
+      "eventId": "apply-b1c81a70-1291-4cdb-bdc4-030f86274b70",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T18:47:12.7327493Z",
+      "appliedAt": "2026-11-02T18:47:12.732Z",
+      "receiptFile": "09-refine-media-reviewed-apply.receipt.json",
+      "receiptSha256": "e37433111911281dfcf0fb880f552ccba2b7388a0c4f88abf3d871e4dfb7457c",
+      "counts": {
+        "created": 0,
+        "updated": 18,
+        "deleted": 0,
+        "unchanged": 12,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "captions.de",
+        "captions.en",
+        "captions.es",
+        "captions.fr",
+        "captions.it",
+        "captions.nl",
+        "captions.pl",
+        "captions.pt",
+        "credits.de",
+        "credits.en",
+        "credits.es",
+        "credits.it",
+        "credits.nl",
+        "credits.pl",
+        "credits.pt",
+        "description"
+      ],
+      "summary": "Audit final : localisation des crédits des 18 médias et légende concrète du photomontage historique en huit langues ; fichiers et visibilité inchangés, résultat partiel."
     }
   ],
   "publicationOrNoop": []

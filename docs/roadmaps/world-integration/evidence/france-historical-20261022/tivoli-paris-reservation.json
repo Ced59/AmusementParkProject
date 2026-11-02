@@ -1,0 +1,85 @@
+{
+  "entryId": "FR-candidate-778dd6c0478ee2",
+  "owner": "Conversation France",
+  "claimedAtUtc": "2026-11-02T18:56:43.368514+00:00",
+  "coordination": {
+    "checkedAtUtc": "2026-11-02 18:51:14 UTC",
+    "checks": [
+      {
+        "ref": "master",
+        "sha": "95cb37ba9b1fea6de172fcc041f26543a0431ce5",
+        "entries": [
+          {
+            "entryId": "FR-candidate-796aafe5567a19",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-2944bd4fd46f53",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          }
+        ]
+      },
+      {
+        "ref": "docs/europe-integration-backlog",
+        "sha": "5bde75508d1e151f375f2a0a40d1368ef5629476",
+        "entries": [
+          {
+            "entryId": "FR-candidate-796aafe5567a19",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-2944bd4fd46f53",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          }
+        ]
+      },
+      {
+        "ref": "docs/france-world-reconciliation-20261022",
+        "sha": "1d9207c2d770df1aba03d32260ec3b6a82e7ee19",
+        "entries": [
+          {
+            "entryId": "FR-candidate-796aafe5567a19",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-2944bd4fd46f53",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          }
+        ]
+      }
+    ]
+  },
+  "scope": "Qualify historical Paris pleasure gardens called Tivoli: distinguish Folie Boutin, Folie Richelieu and Nouveau Tivoli before creation. Global official Park/Standalone alias searches pending. No mutation yet.",
+  "siteId": null,
+  "lastDataIntegrationAt": null
+}

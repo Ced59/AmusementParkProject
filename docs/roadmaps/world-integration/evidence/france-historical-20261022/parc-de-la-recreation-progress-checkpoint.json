@@ -2,7 +2,7 @@
   "entryId": "FR-candidate-28e967c581a3cb",
   "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
   "checkedAtUtc": "2026-11-02T16:40:02.716040+00:00",
-  "status": "public_partial_awaiting_navigation_and_facebook",
+  "status": "public_partial_navigation_and_facebook_verified",
   "dataApplies": [
     {
       "operationId": "78ec5f49-8b14-4641-b17c-6b8088329a29",
@@ -274,5 +274,116 @@
   },
   "facebookPublicationAttemptedByThisInstance": false,
   "completed": false,
-  "outcome": "partial"
+  "outcome": "partial",
+  "updatedAtUtc": "2026-11-02T18:46:36.629965+00:00",
+  "normalNavigationVerification": {
+    "entryId": "FR-candidate-28e967c581a3cb",
+    "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+    "verifiedAtUtc": "2026-11-02T18:46:36.629965+00:00",
+    "mobileEightLanguages": [
+      {
+        "language": "fr",
+        "status": 200,
+        "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+        "historyLinks": 1,
+        "historyLinkLabels": [
+          "Histoire"
+        ],
+        "checkedAtUtc": "2026-11-02T18:46:21.256889+00:00",
+        "clickedHistoryUrl": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history",
+        "historyHeading": [
+          "L'histoire de Parc de la Récréation"
+        ]
+      },
+      {
+        "language": "en",
+        "status": 200,
+        "url": "https://amusement-parks.fun/en/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+        "historyLinks": 1,
+        "historyLinkLabels": [
+          "History"
+        ],
+        "checkedAtUtc": "2026-11-02T18:46:24.100457+00:00"
+      },
+      {
+        "language": "de",
+        "status": 200,
+        "url": "https://amusement-parks.fun/de/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+        "historyLinks": 1,
+        "historyLinkLabels": [
+          "Geschichte"
+        ],
+        "checkedAtUtc": "2026-11-02T18:46:25.942645+00:00"
+      },
+      {
+        "language": "nl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/nl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+        "historyLinks": 1,
+        "historyLinkLabels": [
+          "Geschiedenis"
+        ],
+        "checkedAtUtc": "2026-11-02T18:46:27.562677+00:00"
+      },
+      {
+        "language": "it",
+        "status": 200,
+        "url": "https://amusement-parks.fun/it/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+        "historyLinks": 1,
+        "historyLinkLabels": [
+          "Storia"
+        ],
+        "checkedAtUtc": "2026-11-02T18:46:29.308781+00:00"
+      },
+      {
+        "language": "es",
+        "status": 200,
+        "url": "https://amusement-parks.fun/es/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+        "historyLinks": 1,
+        "historyLinkLabels": [
+          "Historia"
+        ],
+        "checkedAtUtc": "2026-11-02T18:46:30.939957+00:00"
+      },
+      {
+        "language": "pl",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+        "historyLinks": 1,
+        "historyLinkLabels": [
+          "Historia"
+        ],
+        "checkedAtUtc": "2026-11-02T18:46:32.701253+00:00"
+      },
+      {
+        "language": "pt",
+        "status": 200,
+        "url": "https://amusement-parks.fun/pt/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+        "historyLinks": 1,
+        "historyLinkLabels": [
+          "História"
+        ],
+        "checkedAtUtc": "2026-11-02T18:46:34.431898+00:00"
+      }
+    ],
+    "desktopFrench": {
+      "status": 200,
+      "h1": [
+        "Parc de la Récréation"
+      ],
+      "horizontalOverflow": false,
+      "historyLinks": 1,
+      "checkedAtUtc": "2026-11-02T18:46:36.629965+00:00"
+    },
+    "frenchHistoryClicked": true,
+    "facebookEvidence": "parc-de-la-recreation-facebook-verification.json",
+    "facebookStatus": "Published",
+    "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125754151424431",
+    "newFacebookPostCreated": false,
+    "dataMutationPerformed": false,
+    "lastDataIntegrationAtUnchanged": "2026-11-02T16:28:57.321Z",
+    "outcome": "partial",
+    "remaining": "Score91/100 without accepted exact exception;15privateitemswithoutdescription and factual source gaps remain. Navigation/Facebook success alone does not complete the park."
+  },
+  "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125754151424431"
 }
