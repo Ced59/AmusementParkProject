@@ -1,0 +1,94 @@
+{
+  "reviewedAtUtc": "2026-11-02T20:05:46.901Z",
+  "countryCode": "DE",
+  "entryId": "DE-candidate-b938aeae488469",
+  "siteId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
+  "decision": "Standalone luge with own admission, published; Wiegand discovery alias retained as duplicate",
+  "duplicateSearch": {
+    "officialActions": [
+      "SearchStandaloneAttractions",
+      "SearchParks"
+    ],
+    "queries": [
+      "Saarburg",
+      "Saar-Rodel",
+      "Warsberg"
+    ],
+    "matches": 0,
+    "otherBacklogEntry": "DE-candidate-standalone-dd33ec8d791ef4",
+    "falsePositive": "Sommerrodelbahn Grafenau is in a different locality",
+    "notDuplicate": "Saalburg in Thuringia is a distinct toboggan location and remains separately to qualify."
+  },
+  "sourceFacts": {
+    "officialOperator": "Hans Harbers / Sommerrodelbahn Saar-Rodel",
+    "operatorUrl": "https://www.sommerrodelbahn-saarburg.de/",
+    "address": "In den Urlaub 9, 54439 Saarburg",
+    "ageRules": "From age 3; ages 3–7 ride with adult, 8+ alone, proof of age required",
+    "season": "One week before Easter to 31 October, normally Tuesday–Sunday 11:00–18:00 with specified summer Monday and holiday exceptions",
+    "seasonCaveat": "2026 ended; future dated timetable not yet confirmed",
+    "undatedWebPrice": "EUR 3 single age 8+, EUR 25 ten rides, EUR 1.50 per person for groups of 25+, cash only; next season price not assumed",
+    "coordinates": "OSM node 2923447639 (49.6132184, 6.5438898)"
+  },
+  "photoEvidence": [
+    {
+      "imageId": "eb33cc604f1443ec811a00ebd01e9c30",
+      "source": "https://commons.wikimedia.org/wiki/File:20180520Saarburg_09.jpg",
+      "photographer": "Flocci Nivis",
+      "takenAt": "2018-05-20",
+      "license": "CC BY-SA 4.0",
+      "exactSubject": "Saar-Rodel rails visible in left foreground and winding track on hillside; terrace-wide view",
+      "isCurrent": true,
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "photoLimit": "The freely licensed 2018 image shows the actual track but is a wide, historic view; seek a closer reusable image on future refresh.",
+  "dataIntegrationEvents": [
+    "apply-d3a36fe1-d19e-4257-a0d1-c8ff5df4a1c2",
+    "image-eb33cc604f1443ec811a00ebd01e9c30",
+    "apply-e5223b56-e7a4-4ff8-add1-1facd44d0dae",
+    "apply-bd4469f2-c2de-4d7d-92bd-b27e27074584",
+    "apply-50a5caae-d457-4466-a9d2-2d761b1b8a79"
+  ],
+  "lastDataIntegrationAt": "2026-11-02T20:04:36.303Z",
+  "finalCompleteness": {
+    "score": 71,
+    "quality": "Publishable",
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicVerification": {
+    "languagesHttp200": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "imageHttp200": true,
+    "socialPreviewHttp200": true,
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650/sommerrodelbahn-saar-rodel",
+    "postFacebookCopyUpdate": "API search shows new eight-language public paragraph; SSR page pending refresh at review time"
+  },
+  "publication": {
+    "site": {
+      "status": "Published",
+      "url": "https://amusement-parks.fun/fr/attraction/9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650/sommerrodelbahn-saar-rodel",
+      "publishedAtUtc": "2026-11-02T20:00:22.1324818Z",
+      "verifiedAtUtc": "2026-11-02T20:05:46.901Z",
+      "evidence": "PARK_DATA_EDITOR:apply:024aa954-39a1-45a5-9565-4e458f26b965"
+    },
+    "facebook": {
+      "id": "e0d69b9a90b64757a73fda1d58ed723f",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-02T20:01:44.0181464Z",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125777083424431",
+      "externalPostId": "1285475681307050_122125777083424431",
+      "evidence": "PARK_DATA_EDITOR:facebook:e0d69b9a90b64757a73fda1d58ed723f"
+    }
+  },
+  "noReleaseVersionBump": true
+}
