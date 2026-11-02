@@ -23698,7 +23698,7 @@
       "siteId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-02T20:05:46.901Z",
+      "presenceObservedAt": "2026-11-02T20:31:35.613Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -23711,7 +23711,7 @@
         "Saarburg summer toboggan run"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-02T20:04:36.303Z",
+      "lastDataIntegrationAt": "2026-11-02T20:31:10.895Z",
       "integrationHistory": [
         {
           "eventId": "apply-d3a36fe1-d19e-4257-a0d1-c8ff5df4a1c2",
@@ -23762,9 +23762,19 @@
           "evidence": "PARK_DATA_EDITOR:apply:50a5caae-d457-4466-a9d2-2d761b1b8a79",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-saar-rodel-20261102/audit.json",
           "summary": "Calendrier, prix et conditions saisonniers dans le texte public en huit langues"
+        },
+        {
+          "eventId": "metadata-caption-eb33cc604f1443ec811a00ebd01e9c30-20261102",
+          "appliedAt": "2026-11-02T20:31:10.895Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
+          "evidence": "PARK_DATA_EDITOR:image:eb33cc604f1443ec811a00ebd01e9c30:metadata:2026-11-02T20:31:10.895Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-saar-rodel-20261102/audit.json",
+          "summary": "Légende photo précisée en huit langues et rendu canonique rafraîchi"
         }
       ],
-      "nextAction": "Conserver la fiche et ses reçus. Recontrôler dates, horaires et tarifs 2027, car la page officielle n’est pas datée et la saison 2026 est terminée. Chercher une photo de piste plus rapprochée et librement réutilisable.",
+      "nextAction": "Conserver la fiche et ses reçus. Recontrôler dates, horaires et tarifs 2027, car la page officielle n’est pas datée et la saison 2026 est terminée. Chercher une photo de piste plus rapprochée et librement réutilisable ; après une future mise à jour, vérifier aussi la fraîcheur du rendu canonique.",
       "sources": [
         {
           "label": "Freizeitpark App",
@@ -23806,14 +23816,14 @@
             "sourceLifecycleSignal": "Operating seasonally"
           }
         ],
-        "rationale": "Piste à billet propre sur le Warsberg; télésiège et autres activités de Saarburg indépendants."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration metadata-caption-eb33cc604f1443ec811a00ebd01e9c30-20261102 ; conserver les références de découverte."
       },
       "publication": {
         "site": {
           "status": "Published",
           "url": "https://amusement-parks.fun/fr/attraction/9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650/sommerrodelbahn-saar-rodel",
           "publishedAtUtc": "2026-11-02T20:00:22.132Z",
-          "verifiedAtUtc": "2026-11-02T20:05:46.901Z",
+          "verifiedAtUtc": "2026-11-02T20:31:35.613Z",
           "evidence": "PARK_DATA_EDITOR:apply:024aa954-39a1-45a5-9565-4e458f26b965"
         },
         "facebook": {
