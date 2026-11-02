@@ -22776,8 +22776,8 @@
       "locality": "Gruchet-le-Valasse",
       "siteId": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-11-01T09:46:23.444619+00:00",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T09:09:28.196939+00:00",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -22791,7 +22791,7 @@
         "Eana, parc de l’Abbaye du Valasse"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-02T08:57:08.752Z",
+      "lastDataIntegrationAt": "2026-11-02T09:01:22.398Z",
       "integrationHistory": [
         {
           "eventId": "apply-fa4810e6-1674-4dc7-ab35-432c13dfbce6",
@@ -23222,9 +23222,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/eana-receipts.json#apply-b8455b36-1c75-4dc6-95bf-deaa7fb52ffb",
           "auditEvidence": null,
           "summary": "Eana : dénomination anglaise de la Chambre régionale des comptes précisée dans un paragraphe de l’article, sans changement financier, factuel, de source ou de visibilité ; correction du bloqueur éditorial avant publication du parc."
+        },
+        {
+          "eventId": "apply-eac4ae82-6bc6-4e4b-8fd3-3a1c231db113",
+          "appliedAt": "2026-11-02T09:01:22.398Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/eana-receipts.json#apply-eac4ae82-6bc6-4e4b-8fd3-3a1c231db113",
+          "auditEvidence": null,
+          "summary": "Eana : restauration officielle des neuf révisions HIST canoniques après publication du parc, cinq faits de parc et quatre faits de lieux ; aucun contenu, source, date, média ou propriétaire changé."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Fiche, 27 lieux décrits, quatre zones, 21 médias, deux plans officiels, neuf faits et article publiés dans huit langues ; score réel 96/100 sans bloqueur API. Facebook Published et lien Histoire vérifiés. Conserver partial : Aire de jeux, Jardin en liberté, Modes de vie et Sas de la consommation restent privés sans description ; poursuivre photos et 15 positions manquantes. Ne pas republier Facebook. Voir eana-publication-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
