@@ -4084,14 +4084,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
@@ -22791,7 +22791,7 @@
         "Eana, parc de l’Abbaye du Valasse"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-02T08:47:58.797Z",
+      "lastDataIntegrationAt": "2026-11-02T08:57:08.752Z",
       "integrationHistory": [
         {
           "eventId": "apply-fa4810e6-1674-4dc7-ab35-432c13dfbce6",
@@ -23212,6 +23212,16 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/eana-receipts.json#apply-f057928e-8c9b-4d7c-b443-235778c2c568",
           "auditEvidence": null,
           "summary": "Eana : reprise éditoriale de l’article, 24 légendes propres au récit et six paragraphes reformulés pour supprimer les reprises de la frise et des fiches ; aucun fait, source, date, image ou visibilité changé."
+        },
+        {
+          "eventId": "apply-b8455b36-1c75-4dc6-95bf-deaa7fb52ffb",
+          "appliedAt": "2026-11-02T08:57:08.752Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/eana-receipts.json#apply-b8455b36-1c75-4dc6-95bf-deaa7fb52ffb",
+          "auditEvidence": null,
+          "summary": "Eana : dénomination anglaise de la Chambre régionale des comptes précisée dans un paragraphe de l’article, sans changement financier, factuel, de source ou de visibilité ; correction du bloqueur éditorial avant publication du parc."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

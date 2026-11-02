@@ -866,7 +866,91 @@
         "article"
       ],
       "summary": "Eana : reprise éditoriale de l’article, 24 légendes propres au récit et six paragraphes reformulés pour supprimer les reprises de la frise et des fiches ; aucun fait, source, date, image ou visibilité changé."
+    },
+    {
+      "eventId": "apply-b8455b36-1c75-4dc6-95bf-deaa7fb52ffb",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:57:08.7520745Z",
+      "appliedAt": "2026-11-02T08:57:08.752Z",
+      "receiptFile": "09-institution-name-correction-apply.receipt.json",
+      "receiptSha256": "86756359eeb0f91538865d3ccc45cc92955b9960d380b7533b09938ac7d35784",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Eana : dénomination anglaise de la Chambre régionale des comptes précisée dans un paragraphe de l’article, sans changement financier, factuel, de source ou de visibilité ; correction du bloqueur éditorial avant publication du parc."
     }
   ],
-  "publicationOrNoop": []
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-0fb6109c-8344-4670-a9d6-f6c9071caef1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:53:24.9194788Z",
+      "appliedAt": "2026-11-02T08:53:24.919Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "596ed0e6c3efb27f9d49616bed898fe8ea988d312efa043dfc458516d151c505",
+      "counts": {
+        "created": 0,
+        "updated": 21,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Eana : publication autorisée des 21 médias audités, sans nouvelle donnée ni réimportation."
+    },
+    {
+      "eventId": "apply-ebde6e93-96d5-497a-a544-f79c9665aff2",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:54:42.0317358Z",
+      "appliedAt": "2026-11-02T08:54:42.031Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "51dcd7a19a3d1510000c9aab35d2aa7137addb7ecb123e1fe9a98f8c1302158f",
+      "counts": {
+        "created": 0,
+        "updated": 44,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "article",
+        "isVisible"
+      ],
+      "summary": "Eana : publication des quatre zones,27 lieux décrits,deux plans officiels,neuf faits et article ; validation des références prêtes. Parent et quatre fiches sans description restent privés."
+    },
+    {
+      "eventId": "apply-d10cee72-a0b8-40d7-b5c8-133468845b7a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:59:09.8499699Z",
+      "appliedAt": "2026-11-02T08:59:09.849Z",
+      "receiptFile": "09-publish-park-apply.receipt.json",
+      "receiptSha256": "e3883a543699eebf9f6ae5638ffa798c91b5315dd189d1070ef7507b59278d89",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Eana : publication du parc après audit du périmètre prêt et score projeté96 sans bloqueur ; quatre fiches sans description restent privées et le dossier reste partial."
+    }
+  ]
 }
