@@ -1,0 +1,156 @@
+{
+  "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+  "parkId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+  "updatedAtUtc": "2026-11-02T22:32:23.927240+00:00",
+  "status": "partial",
+  "acceptedApplies": [
+    {
+      "operationId": "3267822c-5929-4d64-9308-dc19d9b24fcc",
+      "appliedAtUtc": "2026-11-02T22:00:28.7646215Z"
+    },
+    {
+      "operationId": "bddcbd6c-d7c1-4d17-992d-7c8a64be656f",
+      "appliedAtUtc": "2026-11-02T22:06:21.4854161Z"
+    },
+    {
+      "operationId": "4fcd1ee3-b9c3-4f36-a0bd-806f485476ba",
+      "appliedAtUtc": "2026-11-02T22:08:25.9340718Z"
+    },
+    {
+      "operationId": "6dddd2d6-02ef-4122-8caa-28edfffcb61c",
+      "appliedAtUtc": "2026-11-02T22:11:35.4470813Z"
+    },
+    {
+      "operationId": "fa47a4db-7e67-430b-b39d-d8368763b6e5",
+      "appliedAtUtc": "2026-11-02T22:13:28.468561Z"
+    },
+    {
+      "operationId": "1e6b4111-26aa-4d26-a124-87845ae4305c",
+      "appliedAtUtc": "2026-11-02T22:14:49.755831Z"
+    },
+    {
+      "operationId": "fc706c2c-909c-4fcf-a24b-8038a092a518",
+      "appliedAtUtc": "2026-11-02T22:16:39.7520947Z"
+    },
+    {
+      "operationId": "297fc64b-6b0c-48ac-ba16-cea5057155a1",
+      "appliedAtUtc": "2026-11-02T22:28:18.1046782Z"
+    },
+    {
+      "operationId": "f4e9e747-b351-42c9-84d8-4e63b23d31e3",
+      "appliedAtUtc": "2026-11-02T22:30:44.4108674Z"
+    }
+  ],
+  "acceptedImports": [
+    {
+      "receipt": "05-aire-filets-import-receipt.json",
+      "imageId": "a80f55ad16b6411b96fd953dbe632820",
+      "importedAtUtc": "2026-11-02T22:16:57.325Z"
+    },
+    {
+      "receipt": "05-burger-comptoir-import-receipt.json",
+      "imageId": "cd9818da63054e87bfcb397a505acb3a",
+      "importedAtUtc": "2026-11-02T22:19:01.272Z"
+    },
+    {
+      "receipt": "05-carrousel-import-receipt.json",
+      "imageId": "3ddbc5e3d1e04ed2ac7e1c00425725c8",
+      "importedAtUtc": "2026-11-02T22:17:11.702Z"
+    },
+    {
+      "receipt": "05-circuit-import-receipt.json",
+      "imageId": "1e643df7dc1c490bba48eeb10b7e421e",
+      "importedAtUtc": "2026-11-02T22:18:18.192Z"
+    },
+    {
+      "receipt": "05-padel-import-receipt.json",
+      "imageId": "165f9d2bf14b4aaa9b309c5218524cf2",
+      "importedAtUtc": "2026-11-02T22:18:46.392Z"
+    },
+    {
+      "receipt": "05-paintball-import-receipt.json",
+      "imageId": "395db4b29ad4436985994ea1abccf2ee",
+      "importedAtUtc": "2026-11-02T22:18:32.342Z"
+    },
+    {
+      "receipt": "05-pouss-pouss-import-receipt.json",
+      "imageId": "3da361899ce64cedaf434fe8f97dc564",
+      "importedAtUtc": "2026-11-02T22:17:28.271Z"
+    },
+    {
+      "receipt": "05-trampolines-import-receipt.json",
+      "imageId": "e2bb839084ef4a3db193e887e3bc8c75",
+      "importedAtUtc": "2026-11-02T22:17:42.979Z"
+    },
+    {
+      "receipt": "05-aire-toboggans-import-receipt.json",
+      "imageId": "bff950f95999453390e96802d39c058c",
+      "importedAtUtc": "2026-11-02T22:24:14.189Z"
+    },
+    {
+      "receipt": "05-animations-import-receipt.json",
+      "imageId": "ec090688c2ac48ba85c6623b84c20fde",
+      "importedAtUtc": "2026-11-02T22:23:45.299Z"
+    },
+    {
+      "receipt": "05-anniversaires-import-receipt.json",
+      "imageId": "e7c1ad94990e4d7bad9bc04987f97289",
+      "importedAtUtc": "2026-11-02T22:23:59.549Z"
+    },
+    {
+      "receipt": "05-carrousel-cheval-import-receipt.json",
+      "imageId": "aabcee5e04054a36a6d5b1a0f64cad2f",
+      "importedAtUtc": "2026-11-02T22:24:28.24Z"
+    },
+    {
+      "receipt": "05-chenille-2011-ensemble-import-receipt.json",
+      "imageId": "908084fca0154b6fa90821aaff3c3a00",
+      "importedAtUtc": "2026-11-02T22:25:56.707Z"
+    },
+    {
+      "receipt": "05-chenille-2011-jardin-import-receipt.json",
+      "imageId": "2147f27ae3b446aa9e64d6b0eb99dcdd",
+      "importedAtUtc": "2026-11-02T22:25:42.101Z"
+    },
+    {
+      "receipt": "05-chenille-2011-station-import-receipt.json",
+      "imageId": "e214417588bc410aad2a6258e01592cc",
+      "importedAtUtc": "2026-11-02T22:25:27.331Z"
+    },
+    {
+      "receipt": "05-logo-complet-import-receipt.json",
+      "imageId": "67f43f3440204cd68ed4cf89ac5fd3e9",
+      "importedAtUtc": "2026-11-02T22:26:10.75Z"
+    },
+    {
+      "receipt": "05-parental-import-receipt.json",
+      "imageId": "2de9e70147c64786b8ee16b0fc02be04",
+      "importedAtUtc": "2026-11-02T22:23:30.69Z"
+    },
+    {
+      "receipt": "05-peche-import-receipt.json",
+      "imageId": "5a1219eb1fa24dc1b8147a633c7eb4f9",
+      "importedAtUtc": "2026-11-02T22:23:14.524Z"
+    }
+  ],
+  "items": 22,
+  "imageCount": 24,
+  "authoredItemDescriptions": 176,
+  "remaining": [
+    "photos and current-logo replacement",
+    "historic inventory qualification",
+    "park descriptions",
+    "GPS sourcing",
+    "official maps research",
+    "hours and pricing",
+    "history and articles",
+    "fresh full export and final audit",
+    "site and Facebook publication checks"
+  ],
+  "notes": "Existing public visibility preserved. All new images remain private pending final audit. Every Apply/import journaled with server UTC receipt. No completion claimed.",
+  "historyExistingEvents": 2,
+  "existingMediaCaptionsCorrected": 6,
+  "pricingVerified": true,
+  "calendarStatus": "Unresolved official-source contradiction, public recurrence unbounded.",
+  "gpsResearch": "OSM queried. Burger and toilets identified near entrance; ride nodes last modified2021 predate redevelopment. No current ride coordinates guessed."
+}
