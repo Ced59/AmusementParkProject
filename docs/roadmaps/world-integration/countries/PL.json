@@ -482,38 +482,135 @@
     },
     {
       "entryId": "PL-candidate-b632be72cdb88a",
-      "name": "Amber Sky",
-      "entityKind": "ToQualify",
+      "name": "AmberSky Gdańsk",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Gdańsk , Poland",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Ołowianka 1, 80-751 Gdańsk",
+      "siteId": "ccf8eb6d-bd75-40d5-b7d2-98f39c9ed11e",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T11:33:51.896Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Nouvelle roue ouverte en mai 2026 selon le constructeur ; tarifs actuels publiés par l’exploitant",
+      "identityConfidence": "Constructeur, exploitant et photo de septembre 2026 concordent ; aucun homonyme dans l’éditeur officiel.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Amber Sky",
+        "AmberSky Wheel",
+        "AmberSky Koło Widokowe"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T11:31:06.219Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b78b7738-3c86-4fbd-8e51-1696b0c7681a",
+          "appliedAt": "2026-11-02T11:29:44.560Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ccf8eb6d-bd75-40d5-b7d2-98f39c9ed11e",
+          "evidence": "PARK_DATA_EDITOR:apply:b78b7738-3c86-4fbd-8e51-1696b0c7681a",
+          "auditEvidence": null,
+          "summary": "Création masquée de la nouvelle roue AmberSky et huit descriptions localisées"
+        },
+        {
+          "eventId": "apply-254ad1eb-33fe-46ae-a9f6-dbdd2a51f4d8",
+          "appliedAt": "2026-11-02T11:30:17.227Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ccf8eb6d-bd75-40d5-b7d2-98f39c9ed11e",
+          "evidence": "PARK_DATA_EDITOR:apply:254ad1eb-33fe-46ae-a9f6-dbdd2a51f4d8",
+          "auditEvidence": null,
+          "summary": "Huit tarifs officiels en PLN et conditions de réduction"
+        },
+        {
+          "eventId": "image-7dff4c8334e3427caa5e312b10dd519a",
+          "appliedAt": "2026-11-02T11:30:45.053Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ccf8eb6d-bd75-40d5-b7d2-98f39c9ed11e",
+          "evidence": "PARK_DATA_EDITOR:image:7dff4c8334e3427caa5e312b10dd519a",
+          "auditEvidence": null,
+          "summary": "Import d’une photo exacte de la nouvelle roue prise en septembre 2026"
+        },
+        {
+          "eventId": "photo-metadata-7dff4c8334e3427caa5e312b10dd519a",
+          "appliedAt": "2026-11-02T11:31:06.219Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ccf8eb6d-bd75-40d5-b7d2-98f39c9ed11e",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:7dff4c8334e3427caa5e312b10dd519a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pl-ambersky-20261102/audit.json",
+          "summary": "Publication de la photo avec crédit CC BY-SA 4.0 et huit textes alternatifs"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus ; intégrer les horaires saisonniers officiels dès leur publication et chercher d’autres photos récentes de la nouvelle roue. Ne pas répéter Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "AmberSky — site de l’exploitant",
+          "url": "https://ambersky.pl/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "AmberSky — présentation et accessibilité",
+          "url": "https://ambersky.pl/o-nas/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "AmberSky — adresse et contact",
+          "url": "https://ambersky.pl/kontakt/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "AmberSky — tarifs officiels",
+          "url": "https://ambersky.pl/cennik/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Dutch Wheels — nouvelle roue ouverte en mai 2026",
+          "url": "https://www.dutchwheels.com/en/portfolio/ambersky-gdansk",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Visit Gdańsk — fiche touristique",
+          "url": "https://kartaturysty.visitgdansk.com/en/partners/ambersky-gdansk-33744",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — nouvelle roue en septembre 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:Kładka_na_Ołowiankę_i_diabelski_młyn_noc.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Roue panoramique à billetterie et exploitant propres sur l’île publique d’Ołowianka ; l’ancienne roue a été remplacée en 2026."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/ccf8eb6d-bd75-40d5-b7d2-98f39c9ed11e/ambersky-gdansk",
+          "publishedAtUtc": "2026-11-02T11:31:44.195Z",
+          "verifiedAtUtc": "2026-11-02T11:33:51.896Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d4cb4bea-4664-46c3-9321-892b67d6afaf"
+        },
+        "facebook": {
+          "id": "12a4c88e16ce4c33a11f4d2370832e7a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T11:32:46.050Z",
+          "externalPostId": "1285475681307050_122125720845424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125720845424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:12a4c88e16ce4c33a11f4d2370832e7a"
+        }
       }
     },
     {
