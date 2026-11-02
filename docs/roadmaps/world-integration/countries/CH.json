@@ -3268,26 +3268,29 @@
     },
     {
       "entryId": "CH-park-7436dd4b-a22d-4714-8611-12ca5c5b121e",
-      "name": "Rodelbahn Pradaschier",
+      "name": "Erlebnisberg Pradaschier",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
+      "proposedEntityKind": "Park",
+      "category": "Domaine de loisirs de montagne",
+      "locality": "Girabodawäg 16, 7075 Churwalden",
       "siteId": "7436dd4b-a22d-4714-8611-12ca5c5b121e",
       "legacySiteIds": [],
       "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-11-02",
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitation saisonnière annoncée pour l’hiver 2026/27 et l’été 2027 ; le domaine est fermé pendant l’intersaison du 26 octobre au 11 décembre 2026.",
+      "identityConfidence": "Fiche Park masquée du site identifiée sous son ancien nom Rodelbahn Pradaschier ; elle contient un élément Rodelbahn masqué (8f8bee24-d203-43d3-8c6c-da4eae1e2ac2). L’exploitant présente désormais Erlebnisberg Pradaschier comme un domaine de loisirs avec luge, zipline, parc accrobranche et autres activités sous une billetterie commune.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Rodelbahn Pradaschier",
+        "Pradaschier Erlebnisberg"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la fiche Park masquée 7436dd4b-a22d-4714-8611-12ca5c5b121e comme Erlebnisberg Pradaschier ; conserver l’élément Rodelbahn 8f8bee24-d203-43d3-8c6c-da4eae1e2ac2, vérifier ses données et lui ajouter une photo exacte. Auditer ensuite zipline, seilpark, JumpZone et autres parkItems. Ne pas créer de standalone pour cette luge ni publier Facebook avant l’intégration éditoriale du parc.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3313,35 +3316,45 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.pradaschier.ch",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — domaine, activités et billetterie",
+          "url": "https://pradaschier.ch/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — piste et règles de luge",
+          "url": "https://pradaschier.ch/activities/rodelbahn-sommer/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — calendrier hiver 2026/27 et été 2027",
+          "url": "https://pradaschier.ch/informieren/oeffnungszeiten/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — gare de luge Churwalden, Cayambe, 2015, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Churwalden_Rodelbahn.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "countryCodeAtInventory": "CH",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "Rodelbahn",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13287.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Rodelbahn Pradaschier",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Churwalden , Grisons",
-            "sourceOpenedYear": "1999"
-          },
-          {
-            "name": "Churwalden",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=216#location-id-1098",
+            "name": "Rodelbahn Pradaschier",
+            "source": "Exploitant — piste de luge",
+            "url": "https://pradaschier.ch/activities/rodelbahn-sommer/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Churwalden",
-            "referenceId": "location-id-1098",
-            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+            "sourceVenueName": "Erlebnisberg Pradaschier",
+            "sourceLifecycleSignal": "Exploitation saisonnière, hiver 2026/27 et été 2027 annoncés",
+            "sourceLocality": "Churwalden"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "La fiche du site est déjà un Park masqué doté d’un parkItem Rodelbahn. L’exploitant organise sous la marque Erlebnisberg Pradaschier la luge, une zipline, un parc accrobranche et d’autres activités avec billetterie commune. La piste relève du parkItem du domaine, pas d’une création standalone."
       }
     },
     {
