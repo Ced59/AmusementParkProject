@@ -1,0 +1,313 @@
+{
+  "entryId": "FR-candidate-da3b95a7f543cb",
+  "parkId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+  "name": "Le Triton",
+  "checkedAtUtc": "2026-11-02T10:26:01.610650+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "contentAuditPassed": false,
+  "existingCorpusAuditPassed": true,
+  "publicationAuditPassed": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "publicationAttempted": false,
+  "facebookAttempted": false,
+  "lastDataIntegrationAtUtc": "2026-11-02T10:22:25.548Z",
+  "lastIntegrationEvidence": "apply-65744550-7036-4e2f-a786-a121375b0384",
+  "dataIntegrationEvents": 6,
+  "projectedCompleteness": {
+    "completenessScore": 77,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 83,
+    "earnedPoints": 64,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-02T10:22:45.3074832Z",
+    "items": 0,
+    "zones": 0,
+    "attractions": 0,
+    "attractionStatuses": {},
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 0,
+    "attractionsWithImage": 0,
+    "attractionImageGaps": [],
+    "ownedImages": 3,
+    "sharedImages": 0,
+    "itemImageCounts": [],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [],
+    "history": 5,
+    "parkHistory": 5,
+    "itemHistory": 0,
+    "historyWithSource": 5,
+    "historyWithImage": 2,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": false,
+    "parkDescriptionsLanguages": 8,
+    "itemsCreated": 0,
+    "actualHistoricalInventoryTotal": null,
+    "inventoryCoverageComplete": false,
+    "parkImages": 3,
+    "currentAuthenticLogo": false,
+    "officialMapEditions": 0,
+    "historyCanonicalDraft": 5,
+    "historyCanonicalPublished": 0,
+    "articleLanguages": 8,
+    "corpusFields": 299,
+    "personalExistingCorpusReviewComplete": true,
+    "allRequiredContentPresent": false
+  },
+  "roundtrip": {
+    "freshExportedAtUtc": "2026-11-02T10:22:45.3074832Z",
+    "comparedValues": 794,
+    "unexplainedDifferences": [],
+    "exportContractNotes": [
+      "Export replaces reference keys with actual IDs; operator ID/name explicitly verified. Operator countryCode not exposed by reference export, no claim that this field persisted.",
+      "Source ordering normalized by URL; article block types and all localized values preserved."
+    ],
+    "fullExportSha256": "9b19b5a42c7299f5271977938a288e25522689235f12b5382f98a5ed122edace"
+  },
+  "sourceGaps": {
+    "checkedAtUtc": "2026-11-02T10:26:01.610650+00:00",
+    "entryId": "FR-candidate-da3b95a7f543cb",
+    "sourcesReviewed": [
+      {
+        "label": "Maison de Banlieue exhibition, page10, two authentic1988 Triton posters",
+        "url": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf"
+      },
+      {
+        "label": "Official parliament question51356 and Interior Ministry reply1992, operator and loan guarantees",
+        "url": "https://questions.assemblee-nationale.fr/q9/9-51356QE.htm"
+      },
+      {
+        "label": "Official business register YERRES OBJECTIFS LOISIRS SIREN339970162",
+        "url": "https://recherche-entreprises.api.gouv.fr/search?q=YERRES+OBJECTIF+LOISIRS"
+      },
+      {
+        "label": "Municipal retrospective2025 page6, demolition photograph and April1997 start",
+        "url": "https://www.yerres.fr/yerres_medias/2025/02/Bilan-30-ans.pdf"
+      },
+      {
+        "label": "Le Monde contemporary1994 report, abandoned site and legal chronology",
+        "url": "https://www.lemonde.fr/archives/article/1994/10/02/heures-locales-regions-essonne-les-habitants-de-yerres-reglent-les-comptes-du-triton_3843882_1819218.html"
+      },
+      {
+        "label": "Municipal current site and reconversion at confluence",
+        "url": "https://www.yerres.fr/carte_interactive/parc-des-deux-rivieres/"
+      },
+      {
+        "label": "Former centre address and coordinates; erroneous open status ignored",
+        "url": "https://fr.localitybiz.com/25217994/ancien-centre-aquatique-le-triton-yerres"
+      },
+      {
+        "label": "Maison de Banlieue — Brasse coulée, panneau 10",
+        "url": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf"
+      },
+      {
+        "label": "Assemblée nationale — question 51356 et réponse du 23 mars 1992",
+        "url": "https://questions.assemblee-nationale.fr/q9/9-51356QE.htm"
+      },
+      {
+        "label": "Le Monde — les habitants de Yerres règlent les comptes du Triton, 2 octobre 1994",
+        "url": "https://www.lemonde.fr/archives/article/1994/10/02/heures-locales-regions-essonne-les-habitants-de-yerres-reglent-les-comptes-du-triton_3843882_1819218.html"
+      },
+      {
+        "label": "Le Parisien — Jean-Pierre Mocky à Yerres, 9 août 2019",
+        "url": "https://www.leparisien.fr/essonne-91/essonne-jean-pierre-mocky-etait-un-habitue-de-la-ville-de-yerres-09-08-2019-8131176.php"
+      },
+      {
+        "label": "Ville de Yerres — bilan 1995–2025, page 6",
+        "url": "https://www.yerres.fr/yerres_medias/2025/02/Bilan-30-ans.pdf"
+      },
+      {
+        "label": "Le Parisien — vente de terrains du Triton, 28 juillet 2000",
+        "url": "https://www.leparisien.fr/essonne-91/une-entreprise-s-installe-enfin-sur-le-site-du-triton-28-07-2000-2001531341.php"
+      },
+      {
+        "label": "Le Parisien — début des travaux, 19 novembre 2001",
+        "url": "https://www.leparisien.fr/essonne-91/debut-des-travaux-sur-le-site-du-triton-19-11-2001-2002595797.php"
+      },
+      {
+        "label": "Le Parisien — passerelle à l’emplacement du Triton, 19 janvier 2007",
+        "url": "https://www.leparisien.fr/essonne-91/une-passerelle-a-l-emplacement-de-l-ex-triton-19-01-2007-2007692435.php"
+      },
+      {
+        "label": "SyAGE — guide de la Liaison Verte, pages 7 et 19",
+        "url": "https://www.vyvs.fr/wp-content/uploads/2024/02/Liaison-Verte-Guide-de-promenade.pdf"
+      }
+    ],
+    "inventory": {
+      "namedItemsCreated": 0,
+      "actualHistoricalInventoryTotal": null,
+      "coverageComplete": false,
+      "reason": "Museum advertising proves aquatic play and slides but does not reliably identify individual built facilities. No named slides, ride count, wave-pool technology, restaurants, shops, manufacturers or precise item positions invented. Current garden play equipment is not historical park inventory.",
+      "millDecision": "SyAGE guide confirms former abbey mill site; contributor Didier Simonnet says old mill building integrated into Triton. Public visitor use as a distinct attraction/service remains unproved, so no arbitrary item created."
+    },
+    "logo": {
+      "authenticOriginalFound": false,
+      "required": true,
+      "checks": [
+        "Historical museum posters1988, municipality2025retrospective, official operator identity, INA catalogue/Dailymotion archive, contemporary and retrospective press, named former-site directory, targeted logo/image searches.",
+        "Les Lilas music venue logo rejected as unrelated. No whole photograph passed off as a logo."
+      ]
+    },
+    "photographs": {
+      "accepted": 3,
+      "demolition": 2,
+      "laterSiteReconversion": 1,
+      "operatingParkPhotographs": 0,
+      "fiveGeneralViewsTargetMet": false,
+      "qualityException": "Small native archival photographs accepted after genuine source search, unchanged bytes. Best surviving municipal view of demolished building selected as current with explicit historical rationale.",
+      "rejected": [
+        "Museum raw CMYK JPEG extracts render inverted as standalone; no recolouring or recompression performed. Rendered PDF pages inspection only.",
+        "Directory indoor-pool picture not authenticated; excluded. Two other directory pictures lack original authorship/resolution.",
+        "Official INA video thumbnail has visible ina.fr watermark; retained as research only, no watermark removal.",
+        "Aquagif/Gif-sur-Yvette, Angerville, Brunoy and Méréville photographs on museum page do not depict Triton."
+      ]
+    },
+    "maps": {
+      "acceptedOfficialEditions": 0,
+      "reason": "No official annual visitor map found in museum posters, municipal archive, official operator evidence or specialist/press searches. Promotional model illustration not treated as a surveyed map; modern Liaison Verte plan not a historic Triton map."
+    },
+    "dates": {
+      "opening": "Leave empty pending source reconciliation: Le Parisien retrospectives1987, museum1988 (poster says forthcoming), Institut Paris Région1990. No invented precise day.",
+      "closure": "Leave empty pending reconciliation: press1989 and contemporary1994 abandoned walls; municipal retrospectiveJune1995. Bankruptcy13November1989 and liquidationDecember1990 are separate legal milestones, not assumed visitor closing dates.",
+      "demolition": "StartApril1997 from primary municipal retrospective; press1998 may describe end. Do not collapse start and end."
+    },
+    "historicalPhotoGaps": [
+      "1989 bankruptcy",
+      "23December1991 protocol signature",
+      "November2001 redevelopment foundation stone"
+    ],
+    "openingHoursAndPrices": "Not applicable to a permanently closed historical park. No current directory opening claim or prices imported.",
+    "references": "Operator verified against parliamentary answer and official legal register. Founder not inferred from political office. No ride manufacturer guessed.",
+    "publication": "Existing user authorization retained; required authentic logo and substantive inventory evidence missing. No site/FB publication attempted; history remains Draft."
+  },
+  "corpus": {
+    "fields": 299,
+    "languages": 8,
+    "encodingIssues": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicates": 0,
+    "rawCrossCorpusCandidates": 18,
+    "reviewedNonissues": 18,
+    "actionableCrossCorpusIssues": 0,
+    "personallyReviewed": true
+  },
+  "historyDiagnostics": {
+    "parkId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+    "parkName": "Le Triton",
+    "factCount": 5,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1980,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 1990,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2000,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 5
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 0
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "proofSha256": {
+    "00-intake-decision.json": "80b8d6aadb65d88c4e9c49d6d3f8ad011b0d0aceb50a1e73708d9efa77966368",
+    "09-full-export.json": "9b19b5a42c7299f5271977938a288e25522689235f12b5382f98a5ed122edace",
+    "09-completeness.json": "20d843a8ce2c1ac4483ce42119091e112f54a38ef7c564b5d97a2b8860fc5878",
+    "09-history-diagnostics.json": "c4dc3d7509bb4c14ada79630f5cd1f6247615f21d57176c760c6b7c04deec7fb",
+    "09-source-gaps.json": "f82c354ccec54ac8c35e1feb02069fbb878d898f0a5e175eb34cddce1e807ba0",
+    "09-roundtrip.json": "8f5ad98cd31db773435cf7dbd108ca5d7b556bcafeae3450d0533bc85e60e643",
+    "09-cross-corpus-review.json": "fa814b4f23a742b9fc9e5fecce0226a3c2c5e68464592942f4a8243e220fbf5b",
+    "08-personal-editorial-review.json": "db154aa3da2844082e4cbe9120dd8910303792e999eb4ac433da1f9628d07e04",
+    "08-history-corrected-complete-diff-check.json": "bf9944892ad695806a320606242444f334f9effb9c568f2d49796a685d606d5a",
+    "09-search-final.json": "0a9c9863a3572cff50548ca6dc13199004b8b9ee38aa80335d850b690aa3618e"
+  },
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false,
+  "finalOfficialSearch": {
+    "query": "Triton",
+    "parkId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+    "isVisible": false,
+    "checkedAtUtc": "2026-11-02T10:28:39.277515+00:00"
+  }
+}

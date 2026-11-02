@@ -13427,28 +13427,153 @@
       "name": "Le Triton",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "WaterPark historique local",
       "locality": "Yerres",
-      "siteId": null,
+      "siteId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-02T10:26:01.610650+00:00",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité confirmée par affiches historiques, municipalité, réponse parlementaire et huit recherches officielles sans doublon ; création privée et relecture après import vérifiées.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Centre aquatique Le Triton",
+        "Aqualand de Yerres",
+        "Centre de loisirs nautiques Le Triton"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-02T10:22:25.548Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-0f015566-7b36-4b9c-ac2f-8a7b7db7c764",
+          "appliedAt": "2026-11-02T10:08:54.311Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-receipts.json#apply-0f015566-7b36-4b9c-ac2f-8a7b7db7c764",
+          "auditEvidence": null,
+          "summary": "Le Triton : création privée du parc historique de Yerres et de sa société exploitante confirmée ; huit recherches officielles sans doublon, dates contradictoires laissées vides, intégration partielle."
+        },
+        {
+          "eventId": "apply-e0c87d67-2e25-40df-b72d-6333c476bd56",
+          "appliedAt": "2026-11-02T10:12:43.983Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-receipts.json#apply-e0c87d67-2e25-40df-b72d-6333c476bd56",
+          "auditEvidence": null,
+          "summary": "Le Triton : descriptions historiques rédigées et relues dans les huit langues ; cinq paragraphes sourcés, sans date incertaine ni inventaire inventé, fiche privée."
+        },
+        {
+          "eventId": "import-photo-bbee0bcfdcb048d09ea721ef7a7462b4-2026-11-02T101416.315Z",
+          "appliedAt": "2026-11-02T10:14:16.315Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-receipts.json#import-photo-bbee0bcfdcb048d09ea721ef7a7462b4-2026-11-02T101416.315Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-demolition-colour, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-92a5842e0a0049aabfcbb86eb915439f-2026-11-02T101429.985Z",
+          "appliedAt": "2026-11-02T10:14:29.985Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-receipts.json#import-photo-92a5842e0a0049aabfcbb86eb915439f-2026-11-02T101429.985Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-demolition-workers, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-35428d2c6f4049a999d98c515dd3fbe5-2026-11-02T101443.844Z",
+          "appliedAt": "2026-11-02T10:14:43.844Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-receipts.json#import-photo-35428d2c6f4049a999d98c515dd3fbe5-2026-11-02T101443.844Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-reconverted-riverbank, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-65744550-7036-4e2f-a786-a121375b0384",
+          "appliedAt": "2026-11-02T10:22:25.548Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-receipts.json#apply-65744550-7036-4e2f-a786-a121375b0384",
+          "auditEvidence": null,
+          "summary": "Le Triton : cinq jalons historiques et un article développé dans les huit langues, avec photographies authentiques de la démolition ; dates juridiques et reconversion distinctes des dates de visite, contenus privés."
+        }
+      ],
+      "nextAction": "Fiche privée : descriptions huit langues, trois photographies municipales, cinq faits historiques et un article huit langues. Audit projeté77/100, logo obligatoire absent ; inventaire détaillé et dates de visite non résolus. Aucun Facebook avant publication vérifiée. Voir le-triton-progress-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Maison de Banlieue exhibition, page10, two authentic1988 Triton posters",
+          "url": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Official parliament question51356 and Interior Ministry reply1992, operator and loan guarantees",
+          "url": "https://questions.assemblee-nationale.fr/q9/9-51356QE.htm",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Official business register YERRES OBJECTIFS LOISIRS SIREN339970162",
+          "url": "https://recherche-entreprises.api.gouv.fr/search?q=YERRES+OBJECTIF+LOISIRS",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Municipal retrospective2025 page6, demolition photograph and April1997 start",
+          "url": "https://www.yerres.fr/yerres_medias/2025/02/Bilan-30-ans.pdf",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Le Monde contemporary1994 report, abandoned site and legal chronology",
+          "url": "https://www.lemonde.fr/archives/article/1994/10/02/heures-locales-regions-essonne-les-habitants-de-yerres-reglent-les-comptes-du-triton_3843882_1819218.html",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Municipal current site and reconversion at confluence",
+          "url": "https://www.yerres.fr/carte_interactive/parc-des-deux-rivieres/",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Former centre address and coordinates; erroneous open status ignored",
+          "url": "https://fr.localitybiz.com/25217994/ancien-centre-aquatique-le-triton-yerres",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Le Parisien — Jean-Pierre Mocky à Yerres, 9 août 2019",
+          "url": "https://www.leparisien.fr/essonne-91/essonne-jean-pierre-mocky-etait-un-habitue-de-la-ville-de-yerres-09-08-2019-8131176.php",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Le Parisien — vente de terrains du Triton, 28 juillet 2000",
+          "url": "https://www.leparisien.fr/essonne-91/une-entreprise-s-installe-enfin-sur-le-site-du-triton-28-07-2000-2001531341.php",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Le Parisien — début des travaux, 19 novembre 2001",
+          "url": "https://www.leparisien.fr/essonne-91/debut-des-travaux-sur-le-site-du-triton-19-11-2001-2002595797.php",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "Le Parisien — passerelle à l’emplacement du Triton, 19 janvier 2007",
+          "url": "https://www.leparisien.fr/essonne-91/une-passerelle-a-l-emplacement-de-l-ex-triton-19-01-2007-2007692435.php",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
+        },
+        {
+          "label": "SyAGE — guide de la Liaison Verte, pages 7 et 19",
+          "url": "https://www.vyvs.fr/wp-content/uploads/2024/02/Liaison-Verte-Guide-de-promenade.pdf",
+          "accessedAt": "2026-11-02T10:26:01.610650+00:00"
         }
       ]
     },
@@ -18639,14 +18764,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",

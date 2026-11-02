@@ -1,0 +1,116 @@
+{
+  "checkedAtUtc": "2026-11-02T10:26:01.610650+00:00",
+  "entryId": "FR-candidate-da3b95a7f543cb",
+  "sourcesReviewed": [
+    {
+      "label": "Maison de Banlieue exhibition, page10, two authentic1988 Triton posters",
+      "url": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf"
+    },
+    {
+      "label": "Official parliament question51356 and Interior Ministry reply1992, operator and loan guarantees",
+      "url": "https://questions.assemblee-nationale.fr/q9/9-51356QE.htm"
+    },
+    {
+      "label": "Official business register YERRES OBJECTIFS LOISIRS SIREN339970162",
+      "url": "https://recherche-entreprises.api.gouv.fr/search?q=YERRES+OBJECTIF+LOISIRS"
+    },
+    {
+      "label": "Municipal retrospective2025 page6, demolition photograph and April1997 start",
+      "url": "https://www.yerres.fr/yerres_medias/2025/02/Bilan-30-ans.pdf"
+    },
+    {
+      "label": "Le Monde contemporary1994 report, abandoned site and legal chronology",
+      "url": "https://www.lemonde.fr/archives/article/1994/10/02/heures-locales-regions-essonne-les-habitants-de-yerres-reglent-les-comptes-du-triton_3843882_1819218.html"
+    },
+    {
+      "label": "Municipal current site and reconversion at confluence",
+      "url": "https://www.yerres.fr/carte_interactive/parc-des-deux-rivieres/"
+    },
+    {
+      "label": "Former centre address and coordinates; erroneous open status ignored",
+      "url": "https://fr.localitybiz.com/25217994/ancien-centre-aquatique-le-triton-yerres"
+    },
+    {
+      "label": "Maison de Banlieue — Brasse coulée, panneau 10",
+      "url": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf"
+    },
+    {
+      "label": "Assemblée nationale — question 51356 et réponse du 23 mars 1992",
+      "url": "https://questions.assemblee-nationale.fr/q9/9-51356QE.htm"
+    },
+    {
+      "label": "Le Monde — les habitants de Yerres règlent les comptes du Triton, 2 octobre 1994",
+      "url": "https://www.lemonde.fr/archives/article/1994/10/02/heures-locales-regions-essonne-les-habitants-de-yerres-reglent-les-comptes-du-triton_3843882_1819218.html"
+    },
+    {
+      "label": "Le Parisien — Jean-Pierre Mocky à Yerres, 9 août 2019",
+      "url": "https://www.leparisien.fr/essonne-91/essonne-jean-pierre-mocky-etait-un-habitue-de-la-ville-de-yerres-09-08-2019-8131176.php"
+    },
+    {
+      "label": "Ville de Yerres — bilan 1995–2025, page 6",
+      "url": "https://www.yerres.fr/yerres_medias/2025/02/Bilan-30-ans.pdf"
+    },
+    {
+      "label": "Le Parisien — vente de terrains du Triton, 28 juillet 2000",
+      "url": "https://www.leparisien.fr/essonne-91/une-entreprise-s-installe-enfin-sur-le-site-du-triton-28-07-2000-2001531341.php"
+    },
+    {
+      "label": "Le Parisien — début des travaux, 19 novembre 2001",
+      "url": "https://www.leparisien.fr/essonne-91/debut-des-travaux-sur-le-site-du-triton-19-11-2001-2002595797.php"
+    },
+    {
+      "label": "Le Parisien — passerelle à l’emplacement du Triton, 19 janvier 2007",
+      "url": "https://www.leparisien.fr/essonne-91/une-passerelle-a-l-emplacement-de-l-ex-triton-19-01-2007-2007692435.php"
+    },
+    {
+      "label": "SyAGE — guide de la Liaison Verte, pages 7 et 19",
+      "url": "https://www.vyvs.fr/wp-content/uploads/2024/02/Liaison-Verte-Guide-de-promenade.pdf"
+    }
+  ],
+  "inventory": {
+    "namedItemsCreated": 0,
+    "actualHistoricalInventoryTotal": null,
+    "coverageComplete": false,
+    "reason": "Museum advertising proves aquatic play and slides but does not reliably identify individual built facilities. No named slides, ride count, wave-pool technology, restaurants, shops, manufacturers or precise item positions invented. Current garden play equipment is not historical park inventory.",
+    "millDecision": "SyAGE guide confirms former abbey mill site; contributor Didier Simonnet says old mill building integrated into Triton. Public visitor use as a distinct attraction/service remains unproved, so no arbitrary item created."
+  },
+  "logo": {
+    "authenticOriginalFound": false,
+    "required": true,
+    "checks": [
+      "Historical museum posters1988, municipality2025retrospective, official operator identity, INA catalogue/Dailymotion archive, contemporary and retrospective press, named former-site directory, targeted logo/image searches.",
+      "Les Lilas music venue logo rejected as unrelated. No whole photograph passed off as a logo."
+    ]
+  },
+  "photographs": {
+    "accepted": 3,
+    "demolition": 2,
+    "laterSiteReconversion": 1,
+    "operatingParkPhotographs": 0,
+    "fiveGeneralViewsTargetMet": false,
+    "qualityException": "Small native archival photographs accepted after genuine source search, unchanged bytes. Best surviving municipal view of demolished building selected as current with explicit historical rationale.",
+    "rejected": [
+      "Museum raw CMYK JPEG extracts render inverted as standalone; no recolouring or recompression performed. Rendered PDF pages inspection only.",
+      "Directory indoor-pool picture not authenticated; excluded. Two other directory pictures lack original authorship/resolution.",
+      "Official INA video thumbnail has visible ina.fr watermark; retained as research only, no watermark removal.",
+      "Aquagif/Gif-sur-Yvette, Angerville, Brunoy and Méréville photographs on museum page do not depict Triton."
+    ]
+  },
+  "maps": {
+    "acceptedOfficialEditions": 0,
+    "reason": "No official annual visitor map found in museum posters, municipal archive, official operator evidence or specialist/press searches. Promotional model illustration not treated as a surveyed map; modern Liaison Verte plan not a historic Triton map."
+  },
+  "dates": {
+    "opening": "Leave empty pending source reconciliation: Le Parisien retrospectives1987, museum1988 (poster says forthcoming), Institut Paris Région1990. No invented precise day.",
+    "closure": "Leave empty pending reconciliation: press1989 and contemporary1994 abandoned walls; municipal retrospectiveJune1995. Bankruptcy13November1989 and liquidationDecember1990 are separate legal milestones, not assumed visitor closing dates.",
+    "demolition": "StartApril1997 from primary municipal retrospective; press1998 may describe end. Do not collapse start and end."
+  },
+  "historicalPhotoGaps": [
+    "1989 bankruptcy",
+    "23December1991 protocol signature",
+    "November2001 redevelopment foundation stone"
+  ],
+  "openingHoursAndPrices": "Not applicable to a permanently closed historical park. No current directory opening claim or prices imported.",
+  "references": "Operator verified against parliamentary answer and official legal register. Founder not inferred from political office. No ride manufacturer guessed.",
+  "publication": "Existing user authorization retained; required authentic logo and substantive inventory evidence missing. No site/FB publication attempted; history remains Draft."
+}
