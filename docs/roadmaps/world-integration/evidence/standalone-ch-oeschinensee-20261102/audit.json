@@ -1,0 +1,148 @@
+{
+  "reviewedAt": "2026-11-02",
+  "entryId": "CH-candidate-standalone-d17fc77a234de1",
+  "siteId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+  "decision": "Published standalone: separately ticketed fixed summer toboggan run in mountain recreation area, no structured amusement-park parent.",
+  "operatorSources": [
+    "https://www.oeschinensee.ch/rodelbahn/",
+    "https://www.oeschinensee.ch/live/"
+  ],
+  "duplicateSearches": {
+    "queries": [
+      "Kandersteg",
+      "Oeschinensee"
+    ],
+    "actions": [
+      "SearchParks",
+      "SearchStandaloneAttractions"
+    ],
+    "totalItems": 0
+  },
+  "photographs": [
+    {
+      "imageId": "c7d0cfcd01c64feba9970f7d2d678cad",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Picswiss_BE-90-23_Sommer-Rodelbahn_Oeschinensee.jpg",
+      "date": "2004-09-05",
+      "author": "Roland Zumbühl (Picswiss)",
+      "license": "CC BY-SA 3.0",
+      "resolution": "300x450"
+    },
+    {
+      "imageId": "94126e7a1c524b5280f6b0144d93b1e0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Picswiss_BE-90-22_Sommer-Rodelbahn_Oeschinensee.jpg",
+      "date": "2004-09-05",
+      "author": "Roland Zumbühl (Picswiss)",
+      "license": "CC BY-SA 3.0",
+      "resolution": "300x450"
+    }
+  ],
+  "completeness": {
+    "score": 91,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": []
+  },
+  "coverage": {
+    "descriptions": 8,
+    "photoCount": 2,
+    "photoAltAndCaptionLanguages": 8,
+    "seasonalHours": true,
+    "pricedOffers": 2,
+    "accessConditions": 1,
+    "lengthMeters": 750,
+    "dropMeters": 150
+  },
+  "knownGaps": [
+    "No verified opening date or history event.",
+    "Manufacturer reference was retained as discovery evidence but not linked as a resolved site manufacturer.",
+    "Available reusable photographs are exact but archival and low resolution; seek current higher resolution photographs.",
+    "Regular autumn hours may be shortened by weather and live status; next season schedule is unknown."
+  ],
+  "lastDataIntegrationAt": "2026-11-02T14:40:16.526Z",
+  "sitePublication": {
+    "status": "Published",
+    "url": "https://amusement-parks.fun/fr/attraction/56f47184-c077-4d2a-b202-cdb09ee59dda/sommerrodelbahn-oeschinensee",
+    "publishedAtUtc": "2026-11-02T14:41:37.4998045Z",
+    "verifiedAtUtc": "2026-11-02T14:41:46.0313979Z",
+    "evidence": "PARK_DATA_EDITOR:apply:b9f5f1ad-d272-4bc1-afc7-5f65be0c2000"
+  },
+  "facebookPublication": {
+    "id": "5979e8b44cf141fa9326c5a1d300632b",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-02T14:43:17.4271193Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125744269424431",
+    "externalPostId": "1285475681307050_122125744269424431",
+    "url": "https://amusement-parks.fun/fr/attraction/56f47184-c077-4d2a-b202-cdb09ee59dda/sommerrodelbahn-oeschinensee"
+  },
+  "events": [
+    {
+      "eventId": "apply-a73d00d8-82aa-4249-987c-393d3d01f743",
+      "appliedAt": "2026-11-02T14:33:59.526Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+      "evidence": "PARK_DATA_EDITOR:apply:a73d00d8-82aa-4249-987c-393d3d01f743",
+      "auditEvidence": null,
+      "summary": "Création privée avec huit descriptions, localisation OSM et identité de la luge autonome"
+    },
+    {
+      "eventId": "image-c7d0cfcd01c64feba9970f7d2d678cad",
+      "appliedAt": "2026-11-02T14:34:53.825Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+      "evidence": "PARK_DATA_EDITOR:image:c7d0cfcd01c64feba9970f7d2d678cad",
+      "auditEvidence": null,
+      "summary": "Photo exacte 1/2 de la luge importée avec source Commons, auteur, licence et textes en huit langues"
+    },
+    {
+      "eventId": "image-94126e7a1c524b5280f6b0144d93b1e0",
+      "appliedAt": "2026-11-02T14:35:08.927Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+      "evidence": "PARK_DATA_EDITOR:image:94126e7a1c524b5280f6b0144d93b1e0",
+      "auditEvidence": null,
+      "summary": "Photo exacte 2/2 de la luge importée avec source Commons, auteur, licence et textes en huit langues"
+    },
+    {
+      "eventId": "apply-b1a2b1b0-a09b-4744-a3de-62dbabff7757",
+      "appliedAt": "2026-11-02T14:36:58.999Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+      "evidence": "PARK_DATA_EDITOR:apply:b1a2b1b0-a09b-4744-a3de-62dbabff7757",
+      "auditEvidence": null,
+      "summary": "Conditions d’âge, horaires d’automne sourcés et deux tarifs selon l’heure de la descente"
+    },
+    {
+      "eventId": "metadata-rewrite-94126e7a1c524b5280f6b0144d93b1e0",
+      "appliedAt": "2026-11-02T14:38:36.041Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+      "evidence": "PARK_DATA_EDITOR:image:94126e7a1c524b5280f6b0144d93b1e0@2026-11-02T14:38:36.041Z",
+      "auditEvidence": null,
+      "summary": "Individualisation des légendes et de la description de la seconde photo après contrôle de répétition"
+    },
+    {
+      "eventId": "metadata-final-94126e7a1c524b5280f6b0144d93b1e0",
+      "appliedAt": "2026-11-02T14:39:07.622Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+      "evidence": "PARK_DATA_EDITOR:image:94126e7a1c524b5280f6b0144d93b1e0@2026-11-02T14:39:07.622Z",
+      "auditEvidence": null,
+      "summary": "Individualisation des légendes et de la description de la seconde photo après contrôle de répétition"
+    },
+    {
+      "eventId": "apply-f1530272-5439-4328-848e-31373f34b522",
+      "appliedAt": "2026-11-02T14:40:16.526Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+      "evidence": "PARK_DATA_EDITOR:apply:f1530272-5439-4328-848e-31373f34b522",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-20261102/audit.json",
+      "summary": "Dénivelé officiel intégré ; export frais, huit langues, tarifs, horaires et deux photos audités sans bloqueur"
+    }
+  ]
+}
