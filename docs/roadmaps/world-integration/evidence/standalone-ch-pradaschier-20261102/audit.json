@@ -1,0 +1,38 @@
+{
+  "reviewedAt": "2026-11-02",
+  "entryId": "CH-park-7436dd4b-a22d-4714-8611-12ca5c5b121e",
+  "siteParkId": "7436dd4b-a22d-4714-8611-12ca5c5b121e",
+  "hiddenParkItemId": "8f8bee24-d203-43d3-8c6c-da4eae1e2ac2",
+  "decision": "Keep the hidden Park record and integrate its Rodelbahn parkItem; no standalone migration or duplicate creation.",
+  "officialEditor": {
+    "SearchParksPradaschier": {
+      "totalItems": 1,
+      "isVisible": false,
+      "name": "Rodelbahn Pradaschier",
+      "parkItemsTotalCount": 1,
+      "parkItemsVisibleCount": 0
+    },
+    "SearchStandaloneAttractionsPradaschier": {
+      "totalItems": 0
+    },
+    "exportSections": [
+      "ParkBasics",
+      "Items"
+    ]
+  },
+  "operatorSources": [
+    "https://pradaschier.ch/",
+    "https://pradaschier.ch/activities/rodelbahn-sommer/",
+    "https://pradaschier.ch/informieren/oeffnungszeiten/"
+  ],
+  "photographForFutureParkItem": {
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Churwalden_Rodelbahn.jpg",
+    "date": "2015-05-30",
+    "author": "Cayambe",
+    "license": "CC BY-SA 4.0",
+    "subject": "Gare et voie de la luge à Churwalden ; image vérifiée visuellement, exactitude confirmée par coordonnées Commons et nom du site."
+  },
+  "siteMutation": false,
+  "facebookPublication": false,
+  "lastDataIntegrationAt": null
+}
