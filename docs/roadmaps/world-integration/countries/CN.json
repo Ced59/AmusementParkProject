@@ -46751,36 +46751,56 @@
       "entryId": "CN-candidate-d0abf5eaa3a54f",
       "name": "Suzhou Ferris Wheel",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Standalone à qualifier",
       "locality": "Suzhou , Jiangsu",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Parc d’origine fermé en septembre 2018 ; ancienne roue démontée lors du chantier 2022.",
+      "identityConfidence": "Ancienne roue du parc à thème fermé en 2018, démantelée lors du réaménagement ; la nouvelle roue Suzhou Eye est suivie par une autre ligne.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la référence historique de l’ancienne roue, attraction interne au parc fermé en 2018, hors créations standalone actuelles. Vérifier ultérieurement si un parkItem historique doit lui être rattaché à CN-park-3b3368be-ba47-4c83-b1d5-7b4a84289521 ; la Suzhou Eye reconstruite est publiée sur une ligne distincte.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — fermeture du parc en 2018",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-2226.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — démantèlement de l’ancienne roue",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-4168.html",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Suzhou Ferris Wheel (former installation)",
+            "source": "Jinji Lake Scenic Area — former park closure and wheel dismantling",
+            "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-4168.html",
+            "family": "Observation wheel",
+            "sourceVenueName": "Suzhou Giant Wheel Park",
+            "sourceLifecycleSignal": "Parc fermé 2018, ancienne roue démontée 2022",
+            "matchingMethod": "Ancienne roue dans un vrai parc ; autre installation que la Suzhou Eye de 2025."
+          }
+        ],
+        "rationale": "Référence de la roue historique d’un parc fermé, distincte de la nouvelle attraction autonome."
       }
     },
     {
@@ -46797,8 +46817,8 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Suzhou Giant Wheel Park fermé en septembre 2018 ; ancienne roue démontée lors du réaménagement.",
+      "identityConfidence": "Fiche Park masquée de l’ancien parc fermé, distincte de la Suzhou Eye reconstruite et ouverte en 2025 ; le statut Operating hérité doit être rectifié.",
       "possibleMatches": [],
       "aliases": [
         "Ferris Wheel Paradise Suzhou, China"
@@ -46806,7 +46826,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver la fiche Park masquée et vérifier/corriger son statut Operating hérité vers la fermeture de 2018 via l’éditeur officiel. Qualifier ses anciens parkItems, notamment la roue et l’éventuel ballon captif ; ne pas fusionner ce Park historique avec la nouvelle Suzhou Eye standalone.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -46822,6 +46842,16 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — fermeture du parc en 2018",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-2226.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — démantèlement de l’ancienne roue",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-4168.html",
+          "accessedAt": "2026-11-02"
         }
       ],
       "countryCodeAtInventory": "CN",
@@ -60889,6 +60919,181 @@
       ],
       "countryCodeAtInventory": "CN",
       "countryResolution": null
+    },
+    {
+      "entryId": "CN-candidate-standalone-f04450aa802ebfe6",
+      "name": "Suzhou Eye",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "Jinji Lake right bank, Suzhou, Jiangsu",
+      "siteId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T10:12:04.193Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Nouvelle roue ouverte en mars 2025 ; exploitation confirmée par le comité du parc industriel de Suzhou en septembre 2026.",
+      "identityConfidence": "Roue reconstruite de la rive droite avec billet propre ; le parc masqué est l’ancien parc fermé en 2018. Aucune fiche Standalone homonyme trouvée par l’éditeur officiel.",
+      "possibleMatches": [],
+      "aliases": [
+        "苏州之眼",
+        "苏州之眼摩天轮",
+        "Suzhou’s Eye",
+        "Eye of Suzhou"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T10:06:44.239Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a2b6a52f-4cb3-4167-baf7-13347c4a7112",
+          "appliedAt": "2026-11-02T10:01:44.780Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:apply:a2b6a52f-4cb3-4167-baf7-13347c4a7112",
+          "auditEvidence": null,
+          "summary": "Création masquée de la roue actuelle, identité, dimensions et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-5784cdd1934b458f97e9d629ccb3bae6",
+          "appliedAt": "2026-11-02T10:02:54.720Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:image:5784cdd1934b458f97e9d629ccb3bae6",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 de la nouvelle roue, datée avant ouverture, importée avec licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-4a5316339d3d44d89a8bf931e6de1320",
+          "appliedAt": "2026-11-02T10:03:12.569Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:image:4a5316339d3d44d89a8bf931e6de1320",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 de la nouvelle roue, datée avant ouverture, importée avec licence et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-e15ac5af-4cb5-4347-a2f2-62b0e08c00aa",
+          "appliedAt": "2026-11-02T10:04:14.425Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:apply:e15ac5af-4cb5-4347-a2f2-62b0e08c00aa",
+          "auditEvidence": null,
+          "summary": "Ouverture publique de mars 2025 intégrée à la chronologie"
+        },
+        {
+          "eventId": "apply-e3e85145-7d50-4723-8289-c844a9c3a441",
+          "appliedAt": "2026-11-02T10:06:04.394Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:apply:e3e85145-7d50-4723-8289-c844a9c3a441",
+          "auditEvidence": null,
+          "summary": "Adresse vérifiée auprès de l’office de tourisme de Suzhou"
+        },
+        {
+          "eventId": "apply-26384a41-c52f-4842-9fac-c2001c2f1976",
+          "appliedAt": "2026-11-02T10:06:44.239Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:apply:26384a41-c52f-4842-9fac-c2001c2f1976",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-suzhou-eye-20261102/audit.json",
+          "summary": "Source primaire de la fermeture de l’ancien parc ajoutée à la chronologie"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier horaires, tarifs et maintenance de fin 2026 dans le mini-programme officiel, rechercher des photos sous licence postérieures à l’ouverture. Ne pas recréer la roue historique du parc fermé ni répéter la publication Facebook.",
+      "sources": [
+        {
+          "label": "Suzhou Industrial Park — ouverture de la nouvelle roue",
+          "url": "https://www.sipac.gov.cn/szgyyqenglish/tourism/202504/858d9d83612948dc87b0f825db1536fa.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Suzhou Industrial Park — installation et caractéristiques",
+          "url": "https://www.sipac.gov.cn/szgyyqenglish/News/202504/23f0a78bc0ac467da25275a4aaa5cb7e.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Suzhou Industrial Park — exploitation en septembre 2026",
+          "url": "https://www.sipac.gov.cn/szgyyq/202609shjnhmtijj/202609/b0e746e044e84301aae13f83220ded6e.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — fermeture de l’ancien parc",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-2226.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — démantèlement de l’ancienne roue",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-4168.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Suzhou Tourism — adresse",
+          "url": "https://visitsz.wglj.suzhou.com.cn/news-detail.aspx?id=2731",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap via Mapcarta — coordonnées",
+          "url": "https://mapcarta.com/W1332906658",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Suzhou Industrial Park — billetterie dans le mini-programme",
+          "url": "https://www.sipac.gov.cn/szgyyqenglish/tourism/202503/f42fd82df05c403582cb2c25b51d99cc.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — nouvelle roue, photo historique 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Suzhou_ferris_wheel-20241004.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — nouvelle roue, photo historique 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Suzhou_ferris_wheel_and_other_buildings-20241004.jpg",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Suzhou Eye",
+            "source": "Suzhou Industrial Park Administrative Committee — billetterie propre",
+            "url": "https://www.sipac.gov.cn/szgyyqenglish/tourism/202503/f42fd82df05c403582cb2c25b51d99cc.shtml",
+            "family": "Observation wheel",
+            "sourceVenueName": "Jinji Lake right bank",
+            "sourceLifecycleSignal": "Exploitation 2026 confirmée",
+            "sourceLocality": "Suzhou Industrial Park, Jiangsu",
+            "matchingMethod": "Roue actuelle remplaçant l’ancienne installation du parc fermé ; vente de billets dans un mini-programme dédié."
+          }
+        ],
+        "rationale": "Roue panoramique avec billet propre au sein du nouveau quartier riverain ; ancien parc d’attractions fermé et conservé séparément."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/86a4c0a1-c37e-4dc3-8a10-e8b34773ff18/suzhou-eye",
+          "publishedAtUtc": "2026-11-02T10:07:21.834Z",
+          "verifiedAtUtc": "2026-11-02T10:12:04.193Z",
+          "evidence": "PARK_DATA_EDITOR:apply:3504724e-038e-4b74-9ebc-6447a0de296d"
+        },
+        "facebook": {
+          "id": "90514bc3ceaa4fcebfe2da3877e56c58",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T10:08:34.624Z",
+          "externalPostId": "1285475681307050_122125712565424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125712565424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:90514bc3ceaa4fcebfe2da3877e56c58"
+        }
+      }
     }
   ]
 }

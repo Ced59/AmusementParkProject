@@ -1,0 +1,137 @@
+{
+  "work": "Suzhou Eye is the current replacement observation wheel on the right bank of Jinji Lake. The original Suzhou Giant Wheel Park closed in 2018 and its former wheel was dismantled during redevelopment; the hidden Park shell is a historical distinct entity. Official editor searches for Suzhou Eye, Suzhou Ferris Wheel and 苏州之眼 found no StandaloneAttraction. Created and published a new standalone record with eight authored descriptions, accurate technical height and 2025 public opening, one sourced opening event, and two exact visually inspected CC BY-SA 4.0 photographs from October 2024. Captions explicitly disclose that these were made before the wheel opened. Site pages and images verified HTTP 200 before Facebook publication. Current 2026 operation is supported by a September 2026 Suzhou Industrial Park announcement. Current ticket prices and hours remain omitted because primary public sources direct users to a WeChat mini programme without an accessible stable tariff/schedule.",
+  "qualification": "Current wheel is individually ticketed within a lakeside urban redevelopment. The former amusement park closed and is retained as a separate hidden Park shell; this replacement is not a parkItem of an operating amusement park.",
+  "sources": {
+    "newWheelOpening": "https://www.sipac.gov.cn/szgyyqenglish/tourism/202504/858d9d83612948dc87b0f825db1536fa.shtml",
+    "newWheelTechnical": "https://www.sipac.gov.cn/szgyyqenglish/News/202504/23f0a78bc0ac467da25275a4aaa5cb7e.shtml",
+    "operation2026": "https://www.sipac.gov.cn/szgyyq/202609shjnhmtijj/202609/b0e746e044e84301aae13f83220ded6e.shtml",
+    "oldParkClosure": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-2226.html",
+    "oldWheelDismantling": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-4168.html",
+    "address": "https://visitsz.wglj.suzhou.com.cn/news-detail.aspx?id=2731",
+    "wheelMap": "https://mapcarta.com/W1332906658",
+    "bookingInformation": "https://www.sipac.gov.cn/szgyyqenglish/tourism/202503/f42fd82df05c403582cb2c25b51d99cc.shtml"
+  },
+  "duplicateSearches": {
+    "parkSuzhouGiantWheel": "Hidden historical Park 3b3368be-ba47-4c83-b1d5-7b4a84289521, not a current StandaloneAttraction",
+    "parkSuzhouFerrisWheel": 0,
+    "standaloneSuzhouEye": 0,
+    "standaloneSuzhouFerrisWheel": 0,
+    "standaloneChineseName": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "a2b6a52f-4cb3-4167-baf7-13347c4a7112",
+      "appliedAtUtc": "2026-11-02T10:01:44.780Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "e15ac5af-4cb5-4347-a2f2-62b0e08c00aa",
+      "appliedAtUtc": "2026-11-02T10:04:14.425Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "e3e85145-7d50-4723-8289-c844a9c3a441",
+      "appliedAtUtc": "2026-11-02T10:06:04.394Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "26384a41-c52f-4842-9fac-c2001c2f1976",
+      "appliedAtUtc": "2026-11-02T10:06:44.239Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "5784cdd1934b458f97e9d629ccb3bae6",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Suzhou_ferris_wheel-20241004.jpg",
+      "author": "Shwangtianyuan",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2024-10-04",
+      "ownerId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-02T10:04:50.934Z",
+      "historicalContext": "Structure en construction, avant ouverture de mars 2025"
+    },
+    {
+      "imageId": "4a5316339d3d44d89a8bf931e6de1320",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Suzhou_ferris_wheel_and_other_buildings-20241004.jpg",
+      "author": "Shwangtianyuan",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2024-10-04",
+      "ownerId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-02T10:05:02.690Z",
+      "historicalContext": "Structure en construction, avant ouverture de mars 2025"
+    }
+  ],
+  "audit": {
+    "score": 74,
+    "earnedPoints": 52,
+    "applicableMaxPoints": 70,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 2,
+    "visibleHistoryEvents": 1,
+    "knownScoringGaps": "No reliable stable current price or schedule outside operator WeChat mini programme. Licensed photographs are exact but historical construction views from October 2024; seek post-opening licensed images."
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/86a4c0a1-c37e-4dc3-8a10-e8b34773ff18/suzhou-eye",
+    "sitePublishedAtUtc": "2026-11-02T10:07:21.834Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:3504724e-038e-4b74-9ebc-6447a0de296d",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "90514bc3ceaa4fcebfe2da3877e56c58",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125712565424431",
+    "facebookPublishedAtUtc": "2026-11-02T10:08:34.624Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T10:06:44.239Z",
+  "remainingGaps": [
+    "Check current prices and hours through the official Suzhou Eye WeChat mini programme and update structured fields with a dated source.",
+    "Verify the announced annual maintenance closure 30 November–6 December 2026 directly with the operator before adding a public notice.",
+    "Seek licensed post-opening photographs of the current wheel.",
+    "Correct the hidden historic Suzhou Giant Wheel Park shell’s stale Operating status and resolve its old internal rides, without merging it into the current wheel."
+  ]
+}
