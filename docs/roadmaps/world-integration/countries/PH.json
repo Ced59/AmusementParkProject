@@ -1602,9 +1602,9 @@
       "entryId": "PH-candidate-2ff2f1044e8929",
       "name": "Mall of Asia Eye",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "SM Mall of Asia , Pasay , Metro Manila",
+      "proposedEntityKind": "ToQualify",
+      "category": "Grande roue dans un parc",
+      "locality": "SM By the Bay Amusement Park, Pasay",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
@@ -1612,27 +1612,49 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "MOA Eye est proposée comme attraction du pass du parc SM By the Bay ; disponibilité du manège à vérifier le jour de visite.",
+      "identityConfidence": "Le pass SM By the Bay Amusement Park de Klook comprend MOA Eye pour un tour ; la ville de Pasay répertorie le site parent comme parc d’attractions.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Vérifier ou intégrer MOA Eye comme parkItem du parc SM By the Bay Amusement Park dans le dossier PH-candidate-5d12a5d616eb30 ; ne pas créer de standalone indépendante. Conserver cette piste et son identifiant permanent.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ville de Pasay — SM By the Bay Amusement Park",
+          "url": "https://pasay.gov.ph/tourism-spots/sm-by-the-bay-amusement-park/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Klook — pass SM By the Bay, MOA Eye incluse une fois",
+          "url": "https://www.klook.com/en-US/activity/54250-sm-bay-amusement-park-ride-all-you-can-day-pass/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "MOA Eye",
+            "source": "Klook — pass SM By the Bay Amusement Park",
+            "url": "https://www.klook.com/en-US/activity/54250-sm-bay-amusement-park-ride-all-you-can-day-pass/",
+            "family": "Grande roue",
+            "sourceVenueName": "SM By the Bay Amusement Park",
+            "sourceLifecycleSignal": "Incluse une fois dans le pass actuellement proposé"
+          }
+        ],
+        "rationale": "Le pass du parc regroupe la roue MOA Eye et d’autres manèges dans une seule offre ; la ville de Pasay qualifie le site parent de parc d’attractions. La roue est une attraction interne à intégrer comme parkItem, pas une création standalone."
+      },
+      "possibleBacklogEntries": [
+        "PH-candidate-5d12a5d616eb30"
+      ]
     },
     {
       "entryId": "PH-candidate-a6c01d4ba8c32b",
@@ -2204,7 +2226,7 @@
       "entityKind": "Park",
       "proposedEntityKind": "Park",
       "category": "Attractions",
-      "locality": null,
+      "locality": "MOA Complex, Seaside Blvd, Pasay City, Metro Manila",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
@@ -2212,19 +2234,29 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Parc d’attractions actif décrit par la ville de Pasay ; pass regroupant plusieurs manèges actuellement proposé.",
+      "identityConfidence": "La ville de Pasay répertorie le parc et son adresse ; Klook propose un pass pour plusieurs manèges dont MOA Eye. Correspondance avec une fiche du site à rechercher avant création.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Rechercher SM By the Bay Amusement Park, MOA et Pasay dans les fiches Park de l’éditeur officiel ; confirmer identité et cycle de vie, puis intégrer le parc et sa roue MOA Eye comme parkItem lié à PH-candidate-2ff2f1044e8929.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Philippines",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ville de Pasay — parc et adresse",
+          "url": "https://pasay.gov.ph/tourism-spots/sm-by-the-bay-amusement-park/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Klook — pass du parc et MOA Eye",
+          "url": "https://www.klook.com/en-US/activity/54250-sm-bay-amusement-park-ride-all-you-can-day-pass/",
+          "accessedAt": "2026-11-02"
         }
       ]
     },

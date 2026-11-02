@@ -1,0 +1,20 @@
+{
+  "reviewedAt": "2026-11-02",
+  "candidateEntryId": "PH-candidate-2ff2f1044e8929",
+  "parentEntryId": "PH-candidate-5d12a5d616eb30",
+  "decision": "MOA Eye is an attraction inside SM By the Bay Amusement Park, not an independent standalone venue.",
+  "evidence": [
+    {
+      "url": "https://pasay.gov.ph/tourism-spots/sm-by-the-bay-amusement-park/",
+      "finding": "Pasay City Government identifies SM By the Bay Amusement Park at MOA Complex, Seaside Blvd, with multiple rides."
+    },
+    {
+      "url": "https://www.klook.com/en-US/activity/54250-sm-bay-amusement-park-ride-all-you-can-day-pass/",
+      "finding": "Current park pass lists bumper car, carousel, other rides and one MOA Eye ride in the same package."
+    }
+  ],
+  "siteMutation": false,
+  "facebookPublication": false,
+  "lastDataIntegrationAt": null,
+  "nextAction": "Search site Park records before creating or updating park; add MOA Eye as parkItem under confirmed parent."
+}
