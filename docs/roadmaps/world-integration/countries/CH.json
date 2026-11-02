@@ -2127,29 +2127,101 @@
     },
     {
       "entryId": "CH-candidate-standalone-d17fc77a234de1",
-      "name": "Luge Wiegand — Kandersteg",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Oeschinensee",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Bergstation Oeschinensee, Kandersteg",
+      "siteId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T14:41:46.031Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation saisonnière confirmée par l’exploitant ; conditions de météo sèche et état en direct à vérifier.",
+      "identityConfidence": "Piste près de la station supérieure avec billet propre ; aucune fiche Park ou standalone trouvée sous Kandersteg et Oeschinensee. Deux photos exactes Commons datées 2004 vérifiées.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Kandersteg"
+        "Rodelbahn Oeschinensee",
+        "Oeschinensee mountain coaster"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T14:40:16.526Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a73d00d8-82aa-4249-987c-393d3d01f743",
+          "appliedAt": "2026-11-02T14:33:59.526Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:apply:a73d00d8-82aa-4249-987c-393d3d01f743",
+          "auditEvidence": null,
+          "summary": "Création privée avec huit descriptions, localisation OSM et identité de la luge autonome"
+        },
+        {
+          "eventId": "image-c7d0cfcd01c64feba9970f7d2d678cad",
+          "appliedAt": "2026-11-02T14:34:53.825Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:image:c7d0cfcd01c64feba9970f7d2d678cad",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/2 de la luge importée avec source Commons, auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-94126e7a1c524b5280f6b0144d93b1e0",
+          "appliedAt": "2026-11-02T14:35:08.927Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:image:94126e7a1c524b5280f6b0144d93b1e0",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/2 de la luge importée avec source Commons, auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "apply-b1a2b1b0-a09b-4744-a3de-62dbabff7757",
+          "appliedAt": "2026-11-02T14:36:58.999Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:apply:b1a2b1b0-a09b-4744-a3de-62dbabff7757",
+          "auditEvidence": null,
+          "summary": "Conditions d’âge, horaires d’automne sourcés et deux tarifs selon l’heure de la descente"
+        },
+        {
+          "eventId": "metadata-rewrite-94126e7a1c524b5280f6b0144d93b1e0",
+          "appliedAt": "2026-11-02T14:38:36.041Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:image:94126e7a1c524b5280f6b0144d93b1e0@2026-11-02T14:38:36.041Z",
+          "auditEvidence": null,
+          "summary": "Individualisation des légendes et de la description de la seconde photo après contrôle de répétition"
+        },
+        {
+          "eventId": "metadata-final-94126e7a1c524b5280f6b0144d93b1e0",
+          "appliedAt": "2026-11-02T14:39:07.622Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:image:94126e7a1c524b5280f6b0144d93b1e0@2026-11-02T14:39:07.622Z",
+          "auditEvidence": null,
+          "summary": "Individualisation des légendes et de la description de la seconde photo après contrôle de répétition"
+        },
+        {
+          "eventId": "apply-f1530272-5439-4328-848e-31373f34b522",
+          "appliedAt": "2026-11-02T14:40:16.526Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:apply:f1530272-5439-4328-848e-31373f34b522",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-20261102/audit.json",
+          "summary": "Dénivelé officiel intégré ; export frais, huit langues, tarifs, horaires et deux photos audités sans bloqueur"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Rechercher des photographies récentes et de meilleure résolution de la piste ; réexaminer l’horaire après le 8 novembre 2026 et les tarifs avant la prochaine saison. Ne pas republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2160,22 +2232,76 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.kandersteg.ch",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Oeschinensee — piste, tarifs, règles et horaires",
+          "url": "https://www.oeschinensee.ch/rodelbahn/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant Oeschinensee — état en direct",
+          "url": "https://www.oeschinensee.ch/live/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap — tracé de la luge, way 222872936",
+          "url": "https://www.openstreetmap.org/way/222872936",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo de face, Roland Zumbühl, 2004, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Picswiss_BE-90-23_Sommer-Rodelbahn_Oeschinensee.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo de dos, Roland Zumbühl, 2004, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Picswiss_BE-90-22_Sommer-Rodelbahn_Oeschinensee.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique — Sommerrodelbahn Oeschinensee",
+          "url": "https://amusement-parks.fun/fr/attraction/56f47184-c077-4d2a-b202-cdb09ee59dda/sommerrodelbahn-oeschinensee",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "Kandersteg",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=216#location-id-1394",
+            "name": "Sommerrodelbahn Oeschinensee",
+            "source": "Exploitant Oeschinensee — piste de luge d’été",
+            "url": "https://www.oeschinensee.ch/rodelbahn/",
             "family": "Luge d’été",
-            "sourceVenueName": "Kandersteg",
-            "referenceId": "location-id-1394"
+            "sourceVenueName": "Oeschinensee",
+            "sourceLifecycleSignal": "Operating, saisonnière",
+            "sourceLocality": "Kandersteg"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Attraction fixe avec billeterie propre près de la station de télécabine, hors parc d’attractions structuré. La piste constructeur Kandersteg correspond à l’Oeschinensee ; la nouvelle fiche autonome est confirmée par les reçus de l’éditeur officiel."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/56f47184-c077-4d2a-b202-cdb09ee59dda/sommerrodelbahn-oeschinensee",
+          "publishedAtUtc": "2026-11-02T14:41:37.4998045Z",
+          "verifiedAtUtc": "2026-11-02T14:41:46.0313979Z",
+          "evidence": "PARK_DATA_EDITOR:apply:b9f5f1ad-d272-4bc1-afc7-5f65be0c2000"
+        },
+        "facebook": {
+          "id": "5979e8b44cf141fa9326c5a1d300632b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T14:43:17.4271193Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125744269424431",
+          "externalPostId": "1285475681307050_122125744269424431",
+          "url": "https://amusement-parks.fun/fr/attraction/56f47184-c077-4d2a-b202-cdb09ee59dda/sommerrodelbahn-oeschinensee"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-20261102/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
