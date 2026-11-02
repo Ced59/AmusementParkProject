@@ -18929,21 +18929,25 @@
       "name": "Océade Strasbourg",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
-      "locality": "1986-1996",
+      "category": "WaterPark historique régional",
+      "locality": "Strasbourg",
       "siteId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
       "legacySiteIds": [],
-      "presence": "ExistsVisibilityUnknown",
-      "presenceObservedAt": null,
-      "editorialStatus": "InProgress",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-02T17:35:54.0312885Z",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Parc aquatique historique1986–novembre1996 confirméparmunicipalitéetpresselocale;8recherchesofficiellesglobalesexcluenthomonymesRouen/Bruxelles, fullExportetApplyvérifiés.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Océade",
+        "Oceade Strasbourg",
+        "Piscine Océade"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-02T17:14:33.010Z",
+      "lastDataIntegrationAt": "2026-11-02T17:39:43.699Z",
       "integrationHistory": [
         {
           "eventId": "apply-f53e9693-5b2b-49f8-bba3-c68957a97ea3",
@@ -19154,14 +19158,144 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#update-photo-7d5254f2d86c4af08b98b0dc22cab4aa-2026-11-02T171433.010Z",
           "auditEvidence": null,
           "summary": "Océade Strasbourg : crédit historique vérifié du média privé 05-paddling-owner ; aucun nouvel upload, audit final restant."
+        },
+        {
+          "eventId": "apply-989c3aa2-cb74-43f4-a92c-1d7ae049f73b",
+          "appliedAt": "2026-11-02T17:18:34.907Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-989c3aa2-cb74-43f4-a92c-1d7ae049f73b",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : six faits historiques privés en huit langues, dont deux ouvertures de jeux sourcées et incendie illustré par sa véritable photographie ; audit final restant."
+        },
+        {
+          "eventId": "apply-593b0478-2467-4f6c-b5f0-512ef24cf523",
+          "appliedAt": "2026-11-02T17:24:18.579Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-593b0478-2467-4f6c-b5f0-512ef24cf523",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : article historique développé en huit langues, quatre sections, trois photographies contextualisées et cinq sources ; audit final restant."
+        },
+        {
+          "eventId": "apply-177beb1a-8af4-43f2-a4ea-fcd3414e0b4c",
+          "appliedAt": "2026-11-02T17:26:32.744Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-177beb1a-8af4-43f2-a4ea-fcd3414e0b4c",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : aire de jeux multicolore et maisons-champignons décrites en huit langues, avec dates et photographies contemporaines ; audit final restant."
+        },
+        {
+          "eventId": "apply-dd0e9528-1d90-4bd1-b79e-7ce0002a59b9",
+          "appliedAt": "2026-11-02T17:30:47.297Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-dd0e9528-1d90-4bd1-b79e-7ce0002a59b9",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : bassin à vagues et bassin de plein air décrits en huit langues à partir des photographies et sources historiques ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c3934e416b094a03b45d527da3ee1829-2026-11-02T173251.319Z",
+          "appliedAt": "2026-11-02T17:32:51.319Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-c3934e416b094a03b45d527da3ee1829-2026-11-02T173251.319Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-outdoor-jet, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d070d85e698a46ba976aa84f9df24db7-2026-11-02T173307.303Z",
+          "appliedAt": "2026-11-02T17:33:07.303Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-d070d85e698a46ba976aa84f9df24db7-2026-11-02T173307.303Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-black-slides-splash, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-d28ad308-f643-4d7d-8186-46bdf60f9397",
+          "appliedAt": "2026-11-02T17:35:09.882Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-d28ad308-f643-4d7d-8186-46bdf60f9397",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : pataugeoire, toboggans noirs et ancien parking décrits en huit langues ; réemploi du parking en 1999 sourcé, audit final restant."
+        },
+        {
+          "eventId": "apply-34040307-0f54-4ff4-8923-81f835f7bd07",
+          "appliedAt": "2026-11-02T17:39:43.699Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-34040307-0f54-4ff4-8923-81f835f7bd07",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : correction sourcée des huit versions de l’article et affinage de deux formulations après audit intégral ; statut partiel conservé."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Fiche privée :14équipements dont10décrits8langues,17images,6faits etarticle8langues. Audit77/100, logo requis ; quatre descriptions, photos/GPS etplansannuels incompletsaprèsrecherche. Ne paspublier ni marquercompleted. Voir oceade-strasbourg-progress-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ville de Strasbourg — Journal itinérant du Port-du-Rhin, juin 2024",
+          "url": "https://participer.strasbourg.eu/documents/d/participer/journal_planches-compresse-2-pdf",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "DNA, 21 juillet 1989, p. 5 — Océade, an III : la continuité avec des innovations",
+          "url": "https://cdn-s-www.dna.fr/pdf/dce9dfaa-cd62-4276-8172-cb7a6c47dd15/21-07-1989-5-pdf.pdf",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "DNA, 21 juillet 2019 — rétrospective et photographies historiques",
+          "url": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "PLARELA — Jardin des Deux-Rives, guide enseignant du cycle 2",
+          "url": "https://www.plarela.eu/getfile?filepath=uploads%2Fressources%2Fjd2r-vf-cycle2-guide-enseignant-63454762624b9.pdf",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "Pokaa, 21 juillet 2024 — Le Jardin des Deux-Rives avant 2004, photographies historiques",
+          "url": "https://pokaa.fr/2024/07/21/a-strasbourg-le-jardin-des-deux-rives-a-plus-de-20-ans-mais-avant-il-y-avait-quoi/",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "Kuriocity Strasbourg — archives photographiques",
+          "url": "https://www.kuriocity.fr/strasbourg-disparu-8-la-piscine-oceade/",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "Archi-Wiki — Piscine Océade, Strasbourg",
+          "url": "https://www.archi-wiki.org/Adresse:Piscine_Océade_(Strasbourg)",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "Rutscherlebnis — discussion Strasbourg, page 2",
+          "url": "https://www.rutscherlebnis-community.de/forum/thread/534-oc%C3%A9ade-strasbourg-infos-zum-ehemaligen-schwimmbad-gesucht/?pageNo=2",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "Aquatic Development Group — portfolio des projets",
+          "url": "https://www.conrays.ru/f/data/aquapark.pdf",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "Commission de sécurité des consommateurs, 1989 — parcs aquatiques",
+          "url": "https://www.economie.gouv.fr/files/files/directions_services/cnc/Avis_CSC/1989_AVIS_PARCS_AQUATIQUES.pdf",
+          "accessedAt": "2026-11-02T17:43:37.411827+00:00"
         }
       ]
     },
@@ -23465,14 +23599,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",

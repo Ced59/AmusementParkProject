@@ -1,0 +1,17 @@
+{
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+  "verifiedAtUtc": "2026-11-02T17:29:56.144868+00:00",
+  "action": "ResolveFacebookPublication",
+  "result": "AlreadyPublished",
+  "publicationId": "29717df3ec6f4c6d869aa236f0fb4bbb",
+  "status": "Published",
+  "externalUrl": "https://www.facebook.com/1285475681307050/posts/122125754151424431",
+  "actualPublicationTimeUtc": null,
+  "publicationByThisInstance": false,
+  "noDuplicateCreated": true,
+  "evidenceFile": "10-facebook-draft.json",
+  "evidenceSha256": "eecbbe0eacfdd1bc2fee7fea772fb65ffa19780809dc4ae7d7df8e90b93cef43",
+  "dataIntegrationTimestampChanged": false,
+  "ordinaryHistoryNavigation": "Still absent on standardFrenchparkroute lastbrowsercheck; thisremainsunresolved."
+}

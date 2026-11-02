@@ -1,0 +1,777 @@
+{
+  "entryId": "FR-candidate-018f58d346bda3",
+  "parkId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+  "name": "Océade Strasbourg",
+  "checkedAtUtc": "2026-11-02T17:43:37.411827+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "contentAuditPassed": false,
+  "existingCorpusAuditPassed": true,
+  "publicationAuditPassed": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "publicationAttempted": false,
+  "facebookAttempted": false,
+  "lastDataIntegrationAtUtc": "2026-11-02T17:39:43.699104Z",
+  "lastIntegrationEvidence": "apply-34040307-0f54-4ff4-8923-81f835f7bd07",
+  "dataIntegrationEvents": 29,
+  "projectedCompleteness": {
+    "completenessScore": 77,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 92,
+    "earnedPoints": 71,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-02T17:35:54.0312885Z",
+    "items": 14,
+    "zones": 0,
+    "attractions": 13,
+    "attractionStatuses": {
+      "Removed": 13
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 9,
+    "attractionsWithImage": 8,
+    "attractionImageGaps": [
+      {
+        "id": "a6f9f473-8cd2-490a-86d5-22a8c211b995",
+        "name": "Piscine à balles"
+      },
+      {
+        "id": "a3b717f2-7292-4b7d-90cf-a62d4dee137e",
+        "name": "Rivière extérieure"
+      },
+      {
+        "id": "15ee6650-3606-459a-b4ab-081022ab7070",
+        "name": "Toboggan bleu"
+      },
+      {
+        "id": "1156a147-6989-4724-8145-50140a1b9790",
+        "name": "Toboggan jaune"
+      },
+      {
+        "id": "d0caa6dc-cc18-4187-af27-1457d54b5e8d",
+        "name": "Toboggan vert"
+      }
+    ],
+    "ownedImages": 17,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "ba23ecf9-9f69-497e-bd1c-aa473767bfaa",
+        "name": "Aire de jeux multicolore",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b089e421-19f8-4210-88e8-d0e7704d29fa",
+        "name": "Bassin de plein air",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "3decb631-55a8-42a9-bc21-94e56963b806",
+        "name": "Bassin à vagues",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8c88ea55-1fce-4f18-91ec-b5c2b5fa1f8a",
+        "name": "Maisons-champignons",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "74e5cccd-2661-4e49-a5df-f20f098a74db",
+        "name": "Minigolf",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "ad9b343d-f675-45b7-a5d8-2d17c3fdc28e",
+        "name": "Parking",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "3b327cc8-5708-444c-bc5a-291b919f9513",
+        "name": "Pataugeoire circulaire",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "0097fc8a-60af-4a1d-9462-16fb7f89daa7",
+        "name": "Petits toboggans intérieurs",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a6f9f473-8cd2-490a-86d5-22a8c211b995",
+        "name": "Piscine à balles",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a3b717f2-7292-4b7d-90cf-a62d4dee137e",
+        "name": "Rivière extérieure",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "15ee6650-3606-459a-b4ab-081022ab7070",
+        "name": "Toboggan bleu",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "1156a147-6989-4724-8145-50140a1b9790",
+        "name": "Toboggan jaune",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "d0caa6dc-cc18-4187-af27-1457d54b5e8d",
+        "name": "Toboggan vert",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "819415bb-1235-4eff-9b1c-daff9162384d",
+        "name": "Toboggans noirs",
+        "category": "Attraction",
+        "images": 2
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "ba23ecf9-9f69-497e-bd1c-aa473767bfaa",
+        "name": "Aire de jeux multicolore",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b089e421-19f8-4210-88e8-d0e7704d29fa",
+        "name": "Bassin de plein air",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "3decb631-55a8-42a9-bc21-94e56963b806",
+        "name": "Bassin à vagues",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "8c88ea55-1fce-4f18-91ec-b5c2b5fa1f8a",
+        "name": "Maisons-champignons",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "74e5cccd-2661-4e49-a5df-f20f098a74db",
+        "name": "Minigolf",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "ad9b343d-f675-45b7-a5d8-2d17c3fdc28e",
+        "name": "Parking",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "3b327cc8-5708-444c-bc5a-291b919f9513",
+        "name": "Pataugeoire circulaire",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0097fc8a-60af-4a1d-9462-16fb7f89daa7",
+        "name": "Petits toboggans intérieurs",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a6f9f473-8cd2-490a-86d5-22a8c211b995",
+        "name": "Piscine à balles",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a3b717f2-7292-4b7d-90cf-a62d4dee137e",
+        "name": "Rivière extérieure",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "15ee6650-3606-459a-b4ab-081022ab7070",
+        "name": "Toboggan bleu",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "1156a147-6989-4724-8145-50140a1b9790",
+        "name": "Toboggan jaune",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d0caa6dc-cc18-4187-af27-1457d54b5e8d",
+        "name": "Toboggan vert",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "819415bb-1235-4eff-9b1c-daff9162384d",
+        "name": "Toboggans noirs",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 6,
+    "parkHistory": 4,
+    "itemHistory": 2,
+    "historyWithSource": 6,
+    "historyWithImage": 4,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "parkDescriptionsLanguages": 8,
+    "itemsWithEightDescriptions": 10,
+    "parkGeneralImages": 5,
+    "eventAftermathImages": 1,
+    "totalImages": 17,
+    "itemImageOwners": 9,
+    "currentAuthenticLogo": false,
+    "officialMapEditions": 0,
+    "historyCanonicalDraft": 6,
+    "historyCanonicalRetracted": 2,
+    "historyCanonicalPublished": 0,
+    "articleLanguages": 8,
+    "corpusFields": 753,
+    "allRequiredContentPresent": false
+  },
+  "roundtripBeforeRefinement": {
+    "freshExportedAtUtc": "2026-11-02T17:35:54.0312885Z",
+    "checkedAtUtc": "2026-11-02T17:39:19.871372+00:00",
+    "comparedValues": 2062,
+    "unexplainedDifferences": [],
+    "exportContractNotes": [
+      "Year/month-only opening/closing dates are dateText withnulltypeddate; no inventedday.",
+      "Item keys and itemhistoryaliases exported as actualIDs. Unexposed inputitemId alias excluded; parkItemId/ownerId verified.",
+      "Image enum casing normalized. Importtimestamps/path/exifMetadata not exported; originalreceipts preserved.",
+      "Eight-language field/source ordering normalized; all persistedcontent otherwisecompared."
+    ],
+    "fullExportSha256": "2ef65dfb68292863daf5443443aa3115024a211eed82cfb76252fc3fb131cc2c"
+  },
+  "consolidatedRefinement": {
+    "operationId": "34040307-0f54-4ff4-8923-81f835f7bd07",
+    "appliedAtUtc": "2026-11-02T17:39:43.699104Z",
+    "baseExportedAtUtc": "2026-11-02T17:35:54.0312885Z",
+    "fullExportNotRepeated": true
+  },
+  "sourceGaps": {
+    "entryId": "FR-candidate-018f58d346bda3",
+    "checkedAtUtc": "2026-11-02T17:43:37.411827+00:00",
+    "sourcesReviewed": [
+      {
+        "label": "Ville de Strasbourg — Journal itinérant du Port-du-Rhin, juin 2024",
+        "url": "https://participer.strasbourg.eu/documents/d/participer/journal_planches-compresse-2-pdf"
+      },
+      {
+        "label": "DNA, 21 juillet 1989, p. 5 — Océade, an III : la continuité avec des innovations",
+        "url": "https://cdn-s-www.dna.fr/pdf/dce9dfaa-cd62-4276-8172-cb7a6c47dd15/21-07-1989-5-pdf.pdf"
+      },
+      {
+        "label": "DNA, 21 juillet 2019 — rétrospective et photographies historiques",
+        "url": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute"
+      },
+      {
+        "label": "PLARELA — Jardin des Deux-Rives, guide enseignant du cycle 2",
+        "url": "https://www.plarela.eu/getfile?filepath=uploads%2Fressources%2Fjd2r-vf-cycle2-guide-enseignant-63454762624b9.pdf"
+      },
+      {
+        "label": "Pokaa, 21 juillet 2024 — Le Jardin des Deux-Rives avant 2004, photographies historiques",
+        "url": "https://pokaa.fr/2024/07/21/a-strasbourg-le-jardin-des-deux-rives-a-plus-de-20-ans-mais-avant-il-y-avait-quoi/"
+      },
+      {
+        "label": "Kuriocity Strasbourg — archives photographiques",
+        "url": "https://www.kuriocity.fr/strasbourg-disparu-8-la-piscine-oceade/"
+      },
+      {
+        "label": "Archi-Wiki — Piscine Océade, Strasbourg",
+        "url": "https://www.archi-wiki.org/Adresse:Piscine_Océade_(Strasbourg)"
+      },
+      {
+        "label": "Rutscherlebnis — discussion Strasbourg, page 2",
+        "url": "https://www.rutscherlebnis-community.de/forum/thread/534-oc%C3%A9ade-strasbourg-infos-zum-ehemaligen-schwimmbad-gesucht/?pageNo=2"
+      },
+      {
+        "label": "Aquatic Development Group — portfolio des projets",
+        "url": "https://www.conrays.ru/f/data/aquapark.pdf"
+      },
+      {
+        "label": "Commission de sécurité des consommateurs, 1989 — parcs aquatiques",
+        "url": "https://www.economie.gouv.fr/files/files/directions_services/cnc/Avis_CSC/1989_AVIS_PARCS_AQUATIQUES.pdf"
+      }
+    ],
+    "inventory": {
+      "confirmedItems": 14,
+      "attractions": 13,
+      "services": 1,
+      "actualExhaustiveHistoricalTotal": null,
+      "completenessProven": false,
+      "decision": "Originalpressandphotos identify14distinctofferings. Separateentryminigolf belongs toOcéade, notstandalone. Sharedblackslidepair isoneinstallation. Pooljetsandhanginghandles retainedasfeatures, not inventedindependentrides. Noofficialzones.",
+      "excluded": [
+        "FormerPiscine duRhin1965–1985",
+        "PLM/Altea/Mercurehotel",
+        "StellaArtoisairlinerbar1969–1978",
+        "LaterJardin desDeux-Rives",
+        "Graine deCirque afterclosure: parkingreuse, notparkattraction",
+        "Unrealizedpedagogicalpool/divingpit/fresco proposals mentioned1989"
+      ]
+    },
+    "descriptions": {
+      "parkLanguages": 8,
+      "itemsWithEightLanguages": 10,
+      "totalItems": 14,
+      "missing": [
+        "Piscine à balles",
+        "Toboggan bleu",
+        "Toboggan jaune",
+        "Toboggan vert"
+      ],
+      "reason": "Threecolouridentifiedlarge slides documentedbyphotosbut no sufficientlydistinct experience/history detailsfound; greenballpit mentionedbriefly in1989primarytext, no confidentlyidentifiedphoto. Emptyprivateentries retained without genericfiller.",
+      "shorterNaturalTranslations": [
+        {
+          "id": "ba23ecf9-9f69-497e-bd1c-aa473767bfaa",
+          "name": "Aire de jeux multicolore",
+          "words": {
+            "fr": 123,
+            "en": 103,
+            "de": 103,
+            "nl": 104,
+            "it": 106,
+            "es": 113,
+            "pl": 92,
+            "pt": 109
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        },
+        {
+          "id": "b089e421-19f8-4210-88e8-d0e7704d29fa",
+          "name": "Bassin de plein air",
+          "words": {
+            "fr": 123,
+            "en": 103,
+            "de": 101,
+            "nl": 95,
+            "it": 106,
+            "es": 116,
+            "pl": 93,
+            "pt": 112
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        },
+        {
+          "id": "3decb631-55a8-42a9-bc21-94e56963b806",
+          "name": "Bassin à vagues",
+          "words": {
+            "fr": 137,
+            "en": 121,
+            "de": 113,
+            "nl": 123,
+            "it": 121,
+            "es": 138,
+            "pl": 101,
+            "pt": 129
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        },
+        {
+          "id": "8c88ea55-1fce-4f18-91ec-b5c2b5fa1f8a",
+          "name": "Maisons-champignons",
+          "words": {
+            "fr": 122,
+            "en": 109,
+            "de": 108,
+            "nl": 109,
+            "it": 113,
+            "es": 121,
+            "pl": 97,
+            "pt": 118
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        },
+        {
+          "id": "74e5cccd-2661-4e49-a5df-f20f098a74db",
+          "name": "Minigolf",
+          "words": {
+            "fr": 136,
+            "en": 126,
+            "de": 122,
+            "nl": 125,
+            "it": 122,
+            "es": 132,
+            "pl": 109,
+            "pt": 126
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        },
+        {
+          "id": "ad9b343d-f675-45b7-a5d8-2d17c3fdc28e",
+          "name": "Parking",
+          "words": {
+            "fr": 123,
+            "en": 115,
+            "de": 108,
+            "nl": 116,
+            "it": 120,
+            "es": 124,
+            "pl": 103,
+            "pt": 124
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        },
+        {
+          "id": "3b327cc8-5708-444c-bc5a-291b919f9513",
+          "name": "Pataugeoire circulaire",
+          "words": {
+            "fr": 130,
+            "en": 121,
+            "de": 115,
+            "nl": 124,
+            "it": 119,
+            "es": 133,
+            "pl": 96,
+            "pt": 123
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        },
+        {
+          "id": "0097fc8a-60af-4a1d-9462-16fb7f89daa7",
+          "name": "Petits toboggans intérieurs",
+          "words": {
+            "fr": 130,
+            "en": 116,
+            "de": 107,
+            "nl": 112,
+            "it": 121,
+            "es": 123,
+            "pl": 97,
+            "pt": 117
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        },
+        {
+          "id": "a3b717f2-7292-4b7d-90cf-a62d4dee137e",
+          "name": "Rivière extérieure",
+          "words": {
+            "fr": 143,
+            "en": 137,
+            "de": 120,
+            "nl": 130,
+            "it": 121,
+            "es": 135,
+            "pl": 112,
+            "pt": 135
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        },
+        {
+          "id": "819415bb-1235-4eff-9b1c-daff9162384d",
+          "name": "Toboggans noirs",
+          "words": {
+            "fr": 131,
+            "en": 111,
+            "de": 110,
+            "nl": 117,
+            "it": 114,
+            "es": 127,
+            "pl": 100,
+            "pt": 123
+          },
+          "decision": "Same2specificheadings/3paragraphs and allfacts preserved ineachlanguage. French120–137words; naturallycompacttranslationsbelow120notpadded. OriginalJuly1989report and personallyviewednativephotos establishscenes; no unsupportedmodel/height/operationsequence added."
+        }
+      ]
+    },
+    "logo": {
+      "historicalBrandProven": true,
+      "imported": false,
+      "blocking": true,
+      "proof": "OriginalPokaa/Hansipostcard515shows pinkstarfish, blueOcéadewordmark andwaves. Fullpostcard legitimatelyimportedasPARKphotograph, notLOGO.",
+      "missing": "Nooriginalisolatedfile foundinmunicipalarchive, originalpress, ArchiWiki/Kuriocity/Pokaa, specialistforum orbrandsearch.",
+      "rejected": "WikipediaBrussels250x133logo usespirate/sun anddiffersfromStrasbourghistoricalbrand. Not imported. No cropping,reconstruction orsubstituterepresentativephoto."
+    },
+    "images": {
+      "originalNativeFiles": 17,
+      "parkGeneralViews": 5,
+      "actualFireAftermathPhotos": 1,
+      "itemImageOwners": 9,
+      "attractionsWithImage": 8,
+      "attractionsTotal": 13,
+      "attractionsWithAtLeastThreeImages": 0,
+      "missingOwnedImages": [
+        "Piscine à balles",
+        "Rivière extérieure",
+        "Toboggan bleu",
+        "Toboggan jaune",
+        "Toboggan vert"
+      ],
+      "reason": "Riverandlargebluegreen/yellowslides visibleingeneralviews butno duplicatedupload or falseownercoverage. Two usefuldetailphotosaddedforoutdoorjet andblackslides. Originalbytes,8localizedalt/captions/credits retained.",
+      "creditCorrections": "SERS aerial attribution verifiedbyPokaaexactphotomatch; parkingJean-PierreZimmermann; original1989DNA00/04/07J.-C.Dorn."
+    },
+    "maps": {
+      "genuineOfficialAnnualEditions": 0,
+      "reason": "Nooriginal1986–1996parkvisitmap foundthroughmunicipal/educationPDFs,pressarchives,specialisthistoryandplanqueries. ArchiWiki1988townplan andmodernJardindesDeuxRiveseducationmaps notannualOcéadevisitorplans."
+    },
+    "coordinates": {
+      "parkPoint": null,
+      "fixedItemPoints": 0,
+      "fixedItems": 14,
+      "reason": "Photographs identify relativeplacements ondemolishedsite butnotprecisegeoreferencedhistoricalpositions. Rue desCavaliers addressverified, no substitutedcurrentgarden centroid.",
+      "missing": [
+        "Aire de jeux multicolore",
+        "Bassin de plein air",
+        "Bassin à vagues",
+        "Maisons-champignons",
+        "Minigolf",
+        "Parking",
+        "Pataugeoire circulaire",
+        "Petits toboggans intérieurs",
+        "Piscine à balles",
+        "Rivière extérieure",
+        "Toboggan bleu",
+        "Toboggan jaune",
+        "Toboggan vert",
+        "Toboggans noirs"
+      ]
+    },
+    "dates": {
+      "opening": "1986 Year: exactJuly30 secondaryonly, not asserted",
+      "closing": "1996-11 Month perDNA; legalentityclosingDec31notparkdate",
+      "demolition": "2001primarymunicipal/DNA, secondary2004confusesgardenopening",
+      "individualAttractions": "Removed verifiedbywholecomplexdemolition, no inventedindividualclosingdates; only1988modules/1989houses openingyearsset"
+    },
+    "references": {
+      "developer": "SERSestablishedinprimarysources",
+      "operatorFounder": "Exactcompanyroleandsharedreferenceidentitynotresolved, no fabricatedglobalreference",
+      "manufacturers": "ADGportfoliolistsOceadeStrassbourgwithout equipment-specificscope; no attributiontoindividualslides. ForumVanEgdominferenceunproven."
+    },
+    "history": {
+      "currentFacts": 6,
+      "parkFacts": 4,
+      "itemFacts": 2,
+      "canonicalDraft": 6,
+      "canonicalPublished": 0,
+      "canonicalRetractedRevisions": 2,
+      "articles": 1,
+      "articleLanguages": 8,
+      "actualFirePhoto": true,
+      "gaps": [
+        "Noexactopening-dayimage",
+        "Noclosing-dayimage",
+        "No2001demolitionimage"
+      ],
+      "contextualImages": "Opening usesoperatingeraoverallview, kidsphotosdocumentinstallations; capturedaynotfabricated."
+    },
+    "hoursAndPrices": "ClosedDefinitively: currentcalendar andpricingnotapplicable, no currenttariffs imported.",
+    "publication": "Privatepartial: requiredlogoabsent andfourdescriptions/sourcegaps. No sitepublication orFacebookattempt."
+  },
+  "corpus": {
+    "reviewedAtUtc": "2026-11-02T17:43:37.411827+00:00",
+    "personallyAuthoredAndReviewedEightLanguages": true,
+    "corpusFields": 753,
+    "encodingIssues": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicates": 0,
+    "rawCrossCorpusCandidates": 9,
+    "actionableCrossCorpusIssues": 0,
+    "decisions": [
+      {
+        "index": 0,
+        "language": "es",
+        "firstPath": "park.descriptions.es",
+        "secondPath": "articles.oceade-strasbourg-port-du-rhin-histoire.blocks.4.texts.es",
+        "decision": "Both fulltexts personallyread; legitimate sharedhistoricalfact, no genericparagraph or boilerplate. The namedAmerican/Canadianmilitaryaudience atLahr, establishedbyoriginal1989report; no genericclaim transferable toanotherpark.",
+        "actionable": false
+      },
+      {
+        "index": 1,
+        "language": "es",
+        "firstPath": "articles.oceade-strasbourg-port-du-rhin-histoire.blocks.13.texts.es",
+        "secondPath": "history.oceade-strasbourg-demolition-2001.summaries.es",
+        "decision": "Both fulltexts personallyread; legitimate sharedhistoricalfact, no genericparagraph or boilerplate. The propernameJardin desDeux-Rives and its documented2004opening, repeatedto distinguishfrom2001demolition; exactdateandnamedplace retained ratherthan cosmeticparaphrase.",
+        "actionable": false
+      },
+      {
+        "index": 2,
+        "language": "fr",
+        "firstPath": "park.descriptions.fr",
+        "secondPath": "articles.oceade-strasbourg-port-du-rhin-histoire.blocks.4.texts.fr",
+        "decision": "Both fulltexts personallyread; legitimate sharedhistoricalfact, no genericparagraph or boilerplate. The namedAmerican/Canadianmilitaryaudience atLahr, establishedbyoriginal1989report; no genericclaim transferable toanotherpark.",
+        "actionable": false
+      },
+      {
+        "index": 3,
+        "language": "fr",
+        "firstPath": "articles.oceade-strasbourg-port-du-rhin-histoire.blocks.13.texts.fr",
+        "secondPath": "history.oceade-strasbourg-demolition-2001.summaries.fr",
+        "decision": "Both fulltexts personallyread; legitimate sharedhistoricalfact, no genericparagraph or boilerplate. The propernameJardin desDeux-Rives and its documented2004opening, repeatedto distinguishfrom2001demolition; exactdateandnamedplace retained ratherthan cosmeticparaphrase.",
+        "actionable": false
+      },
+      {
+        "index": 4,
+        "language": "it",
+        "firstPath": "park.descriptions.it",
+        "secondPath": "articles.oceade-strasbourg-port-du-rhin-histoire.blocks.4.texts.it",
+        "decision": "Both fulltexts personallyread; legitimate sharedhistoricalfact, no genericparagraph or boilerplate. The namedAmerican/Canadianmilitaryaudience atLahr, establishedbyoriginal1989report; no genericclaim transferable toanotherpark.",
+        "actionable": false
+      },
+      {
+        "index": 5,
+        "language": "it",
+        "firstPath": "articles.oceade-strasbourg-port-du-rhin-histoire.blocks.13.texts.it",
+        "secondPath": "history.oceade-strasbourg-demolition-2001.summaries.it",
+        "decision": "Both fulltexts personallyread; legitimate sharedhistoricalfact, no genericparagraph or boilerplate. The propernameJardin desDeux-Rives and its documented2004opening, repeatedto distinguishfrom2001demolition; exactdateandnamedplace retained ratherthan cosmeticparaphrase.",
+        "actionable": false
+      },
+      {
+        "index": 6,
+        "language": "nl",
+        "firstPath": "park.descriptions.nl",
+        "secondPath": "articles.oceade-strasbourg-port-du-rhin-histoire.blocks.4.texts.nl",
+        "decision": "Both fulltexts personallyread; legitimate sharedhistoricalfact, no genericparagraph or boilerplate. The namedAmerican/Canadianmilitaryaudience atLahr, establishedbyoriginal1989report; no genericclaim transferable toanotherpark.",
+        "actionable": false
+      },
+      {
+        "index": 7,
+        "language": "pt",
+        "firstPath": "park.descriptions.pt",
+        "secondPath": "articles.oceade-strasbourg-port-du-rhin-histoire.blocks.4.texts.pt",
+        "decision": "Both fulltexts personallyread; legitimate sharedhistoricalfact, no genericparagraph or boilerplate. The namedAmerican/Canadianmilitaryaudience atLahr, establishedbyoriginal1989report; no genericclaim transferable toanotherpark.",
+        "actionable": false
+      },
+      {
+        "index": 8,
+        "language": "pt",
+        "firstPath": "articles.oceade-strasbourg-port-du-rhin-histoire.blocks.13.texts.pt",
+        "secondPath": "history.oceade-strasbourg-demolition-2001.summaries.pt",
+        "decision": "Both fulltexts personallyread; legitimate sharedhistoricalfact, no genericparagraph or boilerplate. The propernameJardin desDeux-Rives and its documented2004opening, repeatedto distinguishfrom2001demolition; exactdateandnamedplace retained ratherthan cosmeticparaphrase.",
+        "actionable": false
+      }
+    ],
+    "correctionsApplied": "Fourthseason inference correctedall8articleversions againstoriginal1989primaryscan; DutcharticlesummaryandEnglishminigolf repeatedopeningformulations independentlyrewritten. VerifiedApply34040307-0f54-4ff4-8923-81f835f7bd07.",
+    "limits": "Existingtextcorpus reviewed; fourmissingitemdescriptions remain an explicitcontentgap. No declarationthatallrequiredcontent exists."
+  },
+  "historyDiagnostics": {
+    "parkId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+    "parkName": "Océade Strasbourg",
+    "factCount": 8,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1980,
+        "resourceCount": 3,
+        "sourcedResourceCount": 3,
+        "publishedResourceCount": 0,
+        "subjectCount": 3,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 1990,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2000,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 6
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 2
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "proofSha256": {
+    "09-full-export.json": "2ef65dfb68292863daf5443443aa3115024a211eed82cfb76252fc3fb131cc2c",
+    "09-consolidated-audit-graph.json": "72074226931783c388827fd05a31d68576e40c572c4f8dafc1eed6c07ea249b1",
+    "09-roundtrip-before-refinement.json": "570ef92b44d846187ff2f3c42f05d5a4c9debaa9326e8efd8f6e5d40de50459a",
+    "09-completeness-final-receipt.json": "a170b5cf68c6f39c1f45c7385b80f5cad0611cb172a8de619a2fa2c2197b4805",
+    "09-history-diagnostics-receipt.json": "b8d2666ac80268da2515603fb357c35e40a48919bfd99d5acefcfbe5548fd91d",
+    "09-personal-corpus-review.json": "fd4b4ea46fc97ece78dd9f693b9ee37c39362191186f5e01ba1fa6f8a0bcb5b1",
+    "09-source-gaps.json": "d804bb91dbb65444cc510ce421cbf2ec4f20da6bdfe8a2f0d95fde311704d2b4",
+    "09-refine-copy-apply.receipt.json": "b616afcd7f2d64a8faace1bd4994c32da624eea5f858679dee8e86b3587a4829",
+    "09-refine-copy-apply-verified.json": "82a61bcb4bf1e3cb53556d5c070417819ddb796230b194395dcd28b10d0f3303",
+    "08-timeline-personal-source-review.json": "292d3f94fc89334146e926fdbb7c84f2522da94ff50957305a1792bec1a6acda"
+  },
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false
+}
