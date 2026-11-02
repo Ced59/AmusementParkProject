@@ -1,0 +1,139 @@
+{
+  "work": "The operator sells individual rides for the original trough-style Sommerrodelbahn Willingen. It is distinct from the neighbouring Ritz Racer alpine coaster opened in October 2026. The original track is described on its own operator page as a 250m lift and 700m descent with eleven bends and three jumps. The operator currently shows daily 09:00-18:00 but the old track normally runs only March-November, so no misleading year-round weekly rule was inserted. Single-ride prices were verified on 2 November 2026. Official editor searches for Sommerrodelbahn Willingen and Ritz Racer in Park and StandaloneAttraction returned no matches. Two exact Commons photos of the original track were visually checked and published, with source, author, license and eight-language alt text, captions and credit. No historic photo was attributed to the newly opened coaster. Eight locale URLs and two public image binaries returned HTTP 200 before Facebook publication.",
+  "qualification": "Individually ticketed original summer toboggan ride; no park entrance. New Ritz Racer is a separate candidate pending an exact reusable photo.",
+  "sources": {
+    "track": "https://www.sommerrodelbahn-willingen.de/sommerspass/sommerrodelbahn/",
+    "newTrack": "https://www.sommerrodelbahn-willingen.de/sommerspass/ritz-racer/",
+    "pricesAndStatus": "https://www.sommerrodelbahn-willingen.de/sommerspass/oeffnungszeiten-preise-sommer/",
+    "directions": "https://www.sommerrodelbahn-willingen.de/wissenswertes/anfahrt-parken/",
+    "photo1": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Willingen.jpg",
+    "photo2": "https://commons.wikimedia.org/wiki/File:Willingen_(Upland).Sommerrodelbahn.1.ajb.jpg"
+  },
+  "duplicateSearches": {
+    "parkSommerrodelbahnWillingen": 0,
+    "parkRitzRacer": 0,
+    "standaloneSommerrodelbahnWillingen": 0,
+    "standaloneRitzRacer": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "5fb0b2ac-7da7-4796-9266-a89fd6549ffe",
+      "appliedAtUtc": "2026-11-02T12:10:50.206Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "e299b303-6cbc-4e91-a4de-2f574775c508",
+      "appliedAtUtc": "2026-11-02T12:13:25.607Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "d16e0fa6-d016-4b46-8e81-ba3a8ef6da13",
+      "appliedAtUtc": "2026-11-02T12:14:37.586Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "d96158dc-9368-47b4-87e4-a5070b470869",
+      "appliedAtUtc": "2026-11-02T12:15:50.133Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "imageId": "6ba30b02bbdd445c8ba038058c8efea7",
+      "importFinishedAtUtc": "2026-11-02T12:11:16.688Z"
+    },
+    {
+      "imageId": "5cf774ee2bee4f2d8f92ec98c80f2e20",
+      "importFinishedAtUtc": "2026-11-02T12:11:31.956Z"
+    }
+  ],
+  "commercialData": {
+    "source": "https://www.sommerrodelbahn-willingen.de/sommerspass/oeffnungszeiten-preise-sommer/",
+    "structuredOfferCount": 3,
+    "adultSingleRideEUR": 4,
+    "childAge5To14SingleRideEUR": 3.2,
+    "adultChildTogetherEUR": 5.7,
+    "hoursDecision": "No recurring schedule entered because the old track is seasonal; operator live status applies."
+  },
+  "photographs": [
+    {
+      "imageId": "6ba30b02bbdd445c8ba038058c8efea7",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Willingen.jpg",
+      "author": "Boris23",
+      "license": "Public domain",
+      "depicts": "Original trough-style summer track; not the Ritz Racer",
+      "published": true,
+      "siteBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "5cf774ee2bee4f2d8f92ec98c80f2e20",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Willingen_(Upland).Sommerrodelbahn.1.ajb.jpg",
+      "author": "Ajepbah",
+      "license": "CC BY-SA 3.0 DE",
+      "depicts": "Original trough-style summer track; not the Ritz Racer",
+      "published": true,
+      "siteBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "score": 81,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 2
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/af282486-25bb-4f08-a29f-e03de72a0be9/sommerrodelbahn-willingen",
+    "sitePublishedAtUtc": "2026-11-02T12:16:25.571Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:86387ddb-1b36-4e68-bb96-b26352cb3b07",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "940050c132f94c22bd69c25efc1564b6",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125726725424431",
+    "facebookPublishedAtUtc": "2026-11-02T12:17:40.852Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T12:15:50.133Z",
+  "remainingGaps": [
+    "Recheck prices and daily operation on operator site; the older track is seasonal.",
+    "Find an exact licensed photograph of the new Ritz Racer before creating its separate standalone fiche."
+  ]
+}

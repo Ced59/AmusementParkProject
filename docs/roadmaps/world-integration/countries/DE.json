@@ -1606,29 +1606,34 @@
     },
     {
       "entryId": "DE-candidate-standalone-5b0db31ce6dab6",
-      "name": "Alpine Coaster Wiegand — \"Ritz Racer\" Willingen",
+      "name": "Ritz Racer Willingen",
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
-      "locality": null,
+      "locality": "Am Hoppern 2a, 34508 Willingen (Upland), Hesse",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02T12:19:25.437Z",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Alpine coaster ouvert en octobre 2026 ; exploitation quotidienne déclarée par le site officiel le 2 novembre.",
+      "identityConfidence": "Seconde piste distincte vérifiée sur le site officiel ; aucune photo exacte réutilisable trouvée au 2 novembre 2026.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        {
+          "entryId": "DE-candidate-4d4990d71176b2",
+          "relation": "SameOperatorDifferentAttraction"
+        }
+      ],
       "aliases": [
         "\"Ritz Racer\" Willingen"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Créer une fiche standalone distincte après recherche d’une photo du Ritz Racer exact et réutilisable. Ne pas réutiliser les photos de la piste en auge historique. Rechercher à nouveau les doublons et vérifier les données avant publication.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -1649,30 +1654,32 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.sommerrodelbahn-willingen.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — nouvelle piste Ritz Racer",
+          "url": "https://www.sommerrodelbahn-willingen.de/sommerspass/ritz-racer/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — horaires et prix des deux pistes",
+          "url": "https://www.sommerrodelbahn-willingen.de/sommerspass/oeffnungszeiten-preise-sommer/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "\"Ritz Racer\" Willingen",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-2244",
+            "name": "Ritz Racer",
+            "source": "Exploitant — nouvelle piste Ritz Racer",
+            "url": "https://www.sommerrodelbahn-willingen.de/sommerspass/ritz-racer/",
             "family": "Alpine coaster",
-            "sourceVenueName": "\"Ritz Racer\" Willingen",
-            "referenceId": "location-id-2244"
-          },
-          {
-            "name": "Willingen",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1229",
-            "family": "Luge d’été",
-            "sourceVenueName": "Willingen",
-            "referenceId": "location-id-1229"
+            "sourceVenueName": "Sommerrodelbahn Willingen",
+            "sourceOpenedYear": "2026"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Piste sur rail ouverte en octobre 2026, distincte de la Wannen-Rodelbahn historique. Photo exacte autorisée nécessaire avant création."
       }
     },
     {
@@ -24059,31 +24066,89 @@
     {
       "entryId": "DE-candidate-4d4990d71176b2",
       "name": "Sommerrodelbahn Willingen",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB) / Alpine adventure world",
-      "locality": "Willingen , Hesse",
-      "siteId": null,
+      "category": "Luge d’été en auge",
+      "locality": "Am Hoppern 2a, 34508 Willingen (Upland), Hesse",
+      "siteId": "af282486-25bb-4f08-a29f-e03de72a0be9",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T12:19:25.437Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [
+      "sourceLifecycleSignal": "Piste saisonnière historique active au 2 novembre 2026 selon le statut officiel.",
+      "identityConfidence": "Piste et billetterie propres ; identité, adresse et deux photos exactes vérifiées ; aucune fiche homonyme trouvée par le client officiel.",
+      "possibleMatches": [],
+      "aliases": [
+        "Wannen-Rodelbahn Willingen",
+        "Sommerrodelbahn Ritzhagen"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T12:15:50.133Z",
+      "integrationHistory": [
         {
-          "siteId": "1bc5ed5c-e772-4ee0-a66a-09cfea571c3e",
-          "name": "Sommerrodelbahn Grafenau",
-          "similarity": 76.6
+          "eventId": "apply-5fb0b2ac-7da7-4796-9266-a89fd6549ffe",
+          "appliedAt": "2026-11-02T12:10:50.206Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "af282486-25bb-4f08-a29f-e03de72a0be9",
+          "evidence": "PARK_DATA_EDITOR:apply:5fb0b2ac-7da7-4796-9266-a89fd6549ffe",
+          "auditEvidence": null,
+          "summary": "Création masquée de la piste historique et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-6ba30b02bbdd445c8ba038058c8efea7",
+          "appliedAt": "2026-11-02T12:11:16.688Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "af282486-25bb-4f08-a29f-e03de72a0be9",
+          "evidence": "PARK_DATA_EDITOR:image:6ba30b02bbdd445c8ba038058c8efea7",
+          "auditEvidence": null,
+          "summary": "Import de la photo exacte 1 de la piste historique, droits et crédits vérifiés"
+        },
+        {
+          "eventId": "image-5cf774ee2bee4f2d8f92ec98c80f2e20",
+          "appliedAt": "2026-11-02T12:11:31.956Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "af282486-25bb-4f08-a29f-e03de72a0be9",
+          "evidence": "PARK_DATA_EDITOR:image:5cf774ee2bee4f2d8f92ec98c80f2e20",
+          "auditEvidence": null,
+          "summary": "Import de la photo exacte 2 de la piste historique, droits et crédits vérifiés"
+        },
+        {
+          "eventId": "apply-e299b303-6cbc-4e91-a4de-2f574775c508",
+          "appliedAt": "2026-11-02T12:13:25.607Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "af282486-25bb-4f08-a29f-e03de72a0be9",
+          "evidence": "PARK_DATA_EDITOR:apply:e299b303-6cbc-4e91-a4de-2f574775c508",
+          "auditEvidence": null,
+          "summary": "Précision éditoriale : le Ritz Racer est une seconde piste distincte"
+        },
+        {
+          "eventId": "apply-d16e0fa6-d016-4b46-8e81-ba3a8ef6da13",
+          "appliedAt": "2026-11-02T12:14:37.586Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "af282486-25bb-4f08-a29f-e03de72a0be9",
+          "evidence": "PARK_DATA_EDITOR:apply:d16e0fa6-d016-4b46-8e81-ba3a8ef6da13",
+          "auditEvidence": null,
+          "summary": "Réécriture des mesures dans le texte public en huit langues"
+        },
+        {
+          "eventId": "apply-d96158dc-9368-47b4-87e4-a5070b470869",
+          "appliedAt": "2026-11-02T12:15:50.133Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "af282486-25bb-4f08-a29f-e03de72a0be9",
+          "evidence": "PARK_DATA_EDITOR:apply:d96158dc-9368-47b4-87e4-a5070b470869",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-willingen-20261102/audit.json",
+          "summary": "Trois tarifs individuels officiels structurés et localisés"
         }
       ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la ligne et les reçus. Revoir tarifs et statut saisonnier sur le site officiel ; ne pas republier Facebook. Le nouveau Ritz Racer reste une attraction distincte, candidate DE-candidate-standalone-5b0db31ce6dab6, à illustrer avec sa propre photo.",
       "sources": [
         {
           "label": "RCDB",
@@ -24099,24 +24164,60 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/24441.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste historique",
+          "url": "https://www.sommerrodelbahn-willingen.de/sommerspass/sommerrodelbahn/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — tarifs et statut",
+          "url": "https://www.sommerrodelbahn-willingen.de/sommerspass/oeffnungszeiten-preise-sommer/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — accès",
+          "url": "https://www.sommerrodelbahn-willingen.de/wissenswertes/anfahrt-parken/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — Ritz Racer distinct",
+          "url": "https://www.sommerrodelbahn-willingen.de/sommerspass/ritz-racer/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — tracé historique",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Willingen.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — vue du versant",
+          "url": "https://commons.wikimedia.org/wiki/File:Willingen_(Upland).Sommerrodelbahn.1.ajb.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [
-          {
-            "name": "Ritz Racer",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/24441.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Sommerrodelbahn Willingen",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Willingen , Hesse",
-            "sourceOpenedYear": "2026"
-          }
-        ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [],
+        "rationale": "Course facturée à l’unité, distincte du nouveau coaster Ritz Racer sur le même versant."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/af282486-25bb-4f08-a29f-e03de72a0be9/sommerrodelbahn-willingen",
+          "publishedAtUtc": "2026-11-02T12:16:25.571Z",
+          "verifiedAtUtc": "2026-11-02T12:19:25.437Z",
+          "evidence": "PARK_DATA_EDITOR:apply:86387ddb-1b36-4e68-bb96-b26352cb3b07"
+        },
+        "facebook": {
+          "id": "940050c132f94c22bd69c25efc1564b6",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T12:17:40.852Z",
+          "externalPostId": "1285475681307050_122125726725424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125726725424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:940050c132f94c22bd69c25efc1564b6"
+        }
       }
     },
     {
