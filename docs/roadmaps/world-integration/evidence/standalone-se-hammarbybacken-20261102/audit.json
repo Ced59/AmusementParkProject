@@ -1,0 +1,193 @@
+{
+  "name": "SkiStar Mountain Coaster Hammarbybacken",
+  "entryId": "SE-candidate-discovery-e9ac5c40cff15d",
+  "standaloneAttractionId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+  "qualification": "Attraction à réservation propre au sein du domaine multi-activités Hammarbybacken ; identité de la piste distincte de la fiche Park masquée du domaine, conservée pour décision éditoriale séparée.",
+  "parentParkShell": {
+    "entryId": "SE-park-d76a7862-f542-43ff-b551-a901cd982b24",
+    "siteId": "d76a7862-f542-43ff-b551-a901cd982b24",
+    "presence": "Hidden",
+    "parkItemsTotalCount": 1,
+    "lastDataIntegrationAt": null
+  },
+  "duplicateSearches": {
+    "searchParksHammarbybacken": "one hidden parent Park",
+    "searchStandaloneAttractionsHammarbybacken": 0,
+    "searchStandaloneAttractionsMountainCoaster": "no Hammarbybacken match"
+  },
+  "sources": [
+    {
+      "label": "SkiStar — Mountain Coaster, parcours et conditions",
+      "url": "https://www.skistar.com/en/hammarbybacken/summer-at-hammarbybacken/mountain-coaster/",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "SkiStar — billets et tarif à partir de 105 SEK",
+      "url": "https://www.skistar.com/sv/hammarbybacken/planera/biljetter-och-priser/",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "SkiStar — fermeture saisonnière et horaires",
+      "url": "https://www.skistar.com/en/hammarbybacken/plan/opening-hours/",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "Visit Stockholm — site multi-activités de Hammarbybacken",
+      "url": "https://www.visitstockholm.com/o/skistar-sports-adventures/",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "Fiche publique — huit langues et galerie",
+      "url": "https://amusement-parks.fun/fr/attraction/ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126/skistar-mountain-coaster-hammarbybacken",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "Wikimedia Commons — Mountain Coaster Hammarbybacken, photo 1, Holger Ellgaard, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022.jpg",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "Wikimedia Commons — Mountain Coaster Hammarbybacken, photo 2, Holger Ellgaard, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022a.jpg",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "Wikimedia Commons — Mountain Coaster Hammarbybacken, photo 3, Holger Ellgaard, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022b.jpg",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "Wikimedia Commons — Mountain Coaster Hammarbybacken, photo 4, Holger Ellgaard, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022c.jpg",
+      "accessedAt": "2026-11-02"
+    }
+  ],
+  "dataReceipts": [
+    {
+      "operationId": "d3b05f7a-4632-4eb3-a7ba-15eea87879d9",
+      "appliedAtUtc": "2026-11-02T13:48:39.6477259Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "3b948ca7-c3c5-4e6a-ab48-1b964f5e19b2",
+      "appliedAtUtc": "2026-11-02T13:55:49.6934228Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "a32d34deaec74b5b984bc393e9102a05",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022.jpg",
+      "author": "Holger Ellgaard",
+      "photographedDate": "2022-07-14",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "visuallyVerified": "Actual SkiStar Hammarbybacken Mountain Coaster cart and rail, not another activity",
+      "importedAtUtc": "2026-11-02T13:48:57.594Z",
+      "publishedAtUtc": "2026-11-02T13:50:28.117Z",
+      "publicBinaryHttpStatus": 200,
+      "altTexts": 8,
+      "captions": 8,
+      "credits": 8
+    },
+    {
+      "imageId": "442e7446892942308d50b52b38935569",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022a.jpg",
+      "author": "Holger Ellgaard",
+      "photographedDate": "2022-07-14",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "visuallyVerified": "Actual SkiStar Hammarbybacken Mountain Coaster cart and rail, not another activity",
+      "importedAtUtc": "2026-11-02T13:49:17.129Z",
+      "publishedAtUtc": "2026-11-02T13:50:39.421Z",
+      "publicBinaryHttpStatus": 200,
+      "altTexts": 8,
+      "captions": 8,
+      "credits": 8
+    },
+    {
+      "imageId": "2b08c2e906474160a80d8d84513e12a2",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022b.jpg",
+      "author": "Holger Ellgaard",
+      "photographedDate": "2022-07-14",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "visuallyVerified": "Actual SkiStar Hammarbybacken Mountain Coaster cart and rail, not another activity",
+      "importedAtUtc": "2026-11-02T13:49:33.213Z",
+      "publishedAtUtc": "2026-11-02T13:50:50.998Z",
+      "publicBinaryHttpStatus": 200,
+      "altTexts": 8,
+      "captions": 8,
+      "credits": 8
+    },
+    {
+      "imageId": "e4b52758f9994f858cc3e7f15cd9a502",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022c.jpg",
+      "author": "Holger Ellgaard",
+      "photographedDate": "2022-07-14",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "visuallyVerified": "Actual SkiStar Hammarbybacken Mountain Coaster cart and rail, not another activity",
+      "importedAtUtc": "2026-11-02T13:49:54.366Z",
+      "publishedAtUtc": "2026-11-02T13:51:03.235Z",
+      "publicBinaryHttpStatus": 200,
+      "altTexts": 8,
+      "captions": 8,
+      "credits": 8
+    }
+  ],
+  "audit": {
+    "score": 65,
+    "dataQualityLevel": "Partial",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 4,
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "ogImageId": "a32d34deaec74b5b984bc393e9102a05",
+    "siteImagesHttpStatuses": [
+      200,
+      200,
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126/skistar-mountain-coaster-hammarbybacken",
+    "sitePublishedAtUtc": "2026-11-02T13:57:00.6149524Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:b92e0198-42e5-4b56-90f7-92ff3bca1cee",
+    "facebookStatus": "Published",
+    "facebookId": "0926499f8c7943d597367f0fbd8ccdad",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125739475424431",
+    "facebookPublishedAtUtc": "2026-11-02T13:58:56.3970059Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T13:55:49.693Z",
+  "remainingGaps": [
+    "Site Park masqué et parkItem à qualifier séparément, sans dupliquer la standalone.",
+    "Coaster fermé pour la saison au 2 novembre 2026 ; dates et prix de la prochaine saison encore inconnus.",
+    "Coordonnées reprises du site masqué, approximatives pour le point d’embarquement.",
+    "Tarif officiel seulement « à partir de 105 SEK » ; pas de montant fixe structuré sans offre détaillée."
+  ]
+}
