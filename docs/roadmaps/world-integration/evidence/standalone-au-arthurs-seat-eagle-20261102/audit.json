@@ -1,0 +1,132 @@
+{
+  "work": "Arthurs Seat Eagle is a ticketed scenic gondola between Dromana and Arthurs Seat summit, not an amusement park. Five official-editor duplicate searches for Arthurs Seat Eagle, Arthurs Seat and Dromana returned zero. The operator confirms current operation, two station addresses, weekly and Melbourne Cup hours, ten public one-way/return fares, accessible gondolas, eight-person capacity and quarter-hour ride. Two exact CC BY-SA 4.0 Wikimedia Commons photos of its branded blue gondolas were visually inspected and published with 2021 dates. Eight localized site pages and two photo binaries verified HTTP 200 before Facebook publication. The operator has discussed a future luge/mountain coaster; it is not open and has not been represented as an existing ride. The original backlog RCDB discovery mentioned a possible 2028 opening, but current sources do not confirm a date.",
+  "qualification": "Separately ticketed sightseeing gondola, independent from any structured amusement park; the state park is a public nature area.",
+  "sources": {
+    "operator": "https://aseagle.com.au/",
+    "hours": "https://aseagle.com.au/opening-hours/",
+    "tickets": "https://aseagle.com.au/tickets/",
+    "gondolas": "https://aseagle.com.au/our-gondolas/",
+    "accessibility": "https://aseagle.com.au/accessibility/",
+    "address": "https://aseagle.com.au/getting-here/",
+    "history": "https://aseagle.com.au/arthurs-seat-eagle-throughout-the-years-the-evolution-of-an-iconic-tourist-destination/",
+    "map": "https://mapcarta.com/W414633825",
+    "photo1": "https://commons.wikimedia.org/wiki/File:The_eagle_is_descending.png",
+    "photo2": "https://commons.wikimedia.org/wiki/File:The_eagle_is_descending_(again).png",
+    "plannedCoaster": "https://rcdb.com/23819.htm"
+  },
+  "duplicateSearches": {
+    "parkArthursSeatEagle": 0,
+    "parkArthursSeat": 0,
+    "standaloneArthursSeatEagle": 0,
+    "standaloneArthursSeat": 0,
+    "standaloneDromana": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "06fbbae0-73f5-4a03-87a9-39983bee0ad7",
+      "appliedAtUtc": "2026-11-02T10:55:10.804Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "a3033252-5d18-4836-bab5-3ed3a903fe41",
+      "appliedAtUtc": "2026-11-02T10:55:51.677Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "2c0c4ac6-20a4-4e18-878e-8d06766da56f",
+      "appliedAtUtc": "2026-11-02T10:57:06.897Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "commercialData": {
+    "weeklyHours": "Saturday–Monday 10:00–17:00; Tuesday–Friday 10:00–16:00 Australia/Melbourne",
+    "exception": "Tuesday 3 November 2026 10:00–17:00 Melbourne Cup",
+    "fareCategories": "Adult, child 4–16, concession, family and additional child; one-way and same-day return in AUD",
+    "ticketValidity": "12 months from purchase; return leg same day"
+  },
+  "photographs": [
+    {
+      "imageId": "aaa559fdf1a9455886c0efacc58519e1",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:The_eagle_is_descending.png",
+      "author": "Damien Tait",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2021-04-05",
+      "ownerId": "e776be68-af58-4f31-9a9b-fd876ee48d07",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-02T10:58:32.493Z",
+      "historicalContext": "Exact gondola and route in 2021; caption dated."
+    },
+    {
+      "imageId": "899a2ffcd21b493492c0abbf0bce0750",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:The_eagle_is_descending_(again).png",
+      "author": "Damien Tait",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2021-04-05",
+      "ownerId": "e776be68-af58-4f31-9a9b-fd876ee48d07",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-02T10:58:47.837Z",
+      "historicalContext": "Exact gondola and route in 2021; caption dated. Photo 2 alt/captions revised after duplicate-text audit."
+    }
+  ],
+  "audit": {
+    "score": 91,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 2,
+    "weeklyScheduleRules": 2,
+    "dateOverrides": 1,
+    "structuredCurrentOffers": 10
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/e776be68-af58-4f31-9a9b-fd876ee48d07/arthurs-seat-eagle",
+    "sitePublishedAtUtc": "2026-11-02T11:00:48.617Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:767fa5fc-d1b6-44ce-a883-1a8c962d9b74",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "6916f4bc205d49b38927751115c78ee0",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125716981424431",
+    "facebookPublishedAtUtc": "2026-11-02T11:01:50.198Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T10:59:39.874Z",
+  "remainingGaps": [
+    "Monitor official daily hours and fares for changes after the 3 November 2026 exception.",
+    "Seek more recent exact licensed gondola photos; current ones are from April 2021.",
+    "Monitor the proposed mountain coaster/luge separately; do not claim an opening date or create a live attraction before operator confirmation."
+  ]
+}
