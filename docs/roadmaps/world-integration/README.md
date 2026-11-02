@@ -17,11 +17,11 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 307 | 1881 | 7567 |
-| Standalone | 182 | 1 | 125 |
+| Standalone | 183 | 1 | 125 |
 
-**Reprise standalone :** en plus des 125 candidates sans correspondance, **225 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **607 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **57 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 125 candidates sans correspondance, **225 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **606 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **57 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
-À part : **767** Park masqués NotRelevant, **69** types à décider, **1319** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
+À part : **767** Park masqués NotRelevant, **69** types à décider, **1318** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
 ## Europe
 
@@ -901,7 +901,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 
 | Pays | Standalone publiées¹ | Standalone masquées | Sans fiche : candidates standalone | Sans fiche : type à décider | Rapprochements incertains² | Anciens parcs liés à une standalone |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| [Australie](countries/AU.md) | 1 | 0 | 1 | 0 | 12 | 0 |
+| [Australie](countries/AU.md) | 2 | 0 | 1 | 0 | 11 | 0 |
 | [Fidji](countries/FJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Guam](countries/GU.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Île Norfolk](countries/NF.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -927,17 +927,17 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Tuvalu](countries/TV.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Vanuatu](countries/VU.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Wallis-et-Futuna](countries/WF.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **3** | **0** | **1** | **0** | **13** | **0** |
+| **Total** | **4** | **0** | **1** | **0** | **12** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **3**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **4**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
-- Australie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
+- Australie : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Nouvelle-Zélande : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
 | --- | ---: | ---: | ---: | ---: |
-| [Australie](countries/AU.md) | 1 | 0 | 12 | 2 |
+| [Australie](countries/AU.md) | 1 | 0 | 11 | 2 |
 | [Fidji](countries/FJ.md) | 0 | 0 | 0 | 0 |
 | [Guam](countries/GU.md) | 0 | 0 | 0 | 0 |
 | [Île Norfolk](countries/NF.md) | 0 | 0 | 0 | 0 |
@@ -963,7 +963,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Tuvalu](countries/TV.md) | 0 | 0 | 0 | 0 |
 | [Vanuatu](countries/VU.md) | 0 | 0 | 0 | 0 |
 | [Wallis-et-Futuna](countries/WF.md) | 0 | 0 | 0 | 0 |
-| **Total** | **1** | **0** | **13** | **2** |
+| **Total** | **1** | **0** | **12** | **2** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 
