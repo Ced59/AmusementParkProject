@@ -3423,7 +3423,7 @@
           "summary": "Résumés de l’article différenciés ; audit final sans blocage."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la fiche et les reçus ; surveiller la reprise officielle des vols, les nouveaux tarifs et horaires, et rechercher un visuel avec droits réutilisables.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la fiche et les reçus ; surveiller la reprise officielle des vols, les nouveaux tarifs et horaires, et rechercher un visuel avec droits réutilisables. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Exploitant — pause des vols et expérience",
@@ -3494,7 +3494,8 @@
         "facebookPublishedAtUtc": "2026-10-28T16:59:33.785522Z",
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125066095424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ae-dubai-balloon-20261028/receipts.json"
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "AE-candidate-dd07228f47bc25",
