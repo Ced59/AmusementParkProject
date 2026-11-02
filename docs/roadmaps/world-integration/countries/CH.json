@@ -2422,29 +2422,93 @@
     },
     {
       "entryId": "CH-candidate-standalone-e173d02f42dcd1",
-      "name": "Luge Wiegand — Pilatus",
-      "entityKind": "ToQualify",
+      "name": "Fräkigaudi",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Fräkmüntegg, Hergiswil / accès depuis Kriens",
+      "siteId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T15:13:55Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Saison 2026 terminée ; reprise annoncée du 26 mars au 17 octobre 2027, uniquement par temps sec.",
+      "identityConfidence": "L’exploitant Wastra nomme Fräkigaudi sa piste de 1 350 m avec billets propres ; Pilatus-Bahnen confirme l’opérateur tiers. Aucun Park ni Standalone trouvé sous Fräkigaudi, Pilatus ou Fräkmüntegg. Photo Commons du tracé de 2018 vérifiée.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
+        "Rodelbahn Fräkigaudi",
+        "Sommerrodelbahn Fräkmüntegg",
+        "Pilatus summer toboggan run",
         "Pilatus"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T15:14:59.585Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-07177ebf-0b8a-4923-8a4f-2c77102c807a",
+          "appliedAt": "2026-11-02T15:05:13.788Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:apply:07177ebf-0b8a-4923-8a4f-2c77102c807a",
+          "auditEvidence": null,
+          "summary": "Création privée de la piste avec huit descriptions, identité et géolocalisation OSM"
+        },
+        {
+          "eventId": "image-b2a17b45e509434786148c567be9fc8e",
+          "appliedAt": "2026-11-02T15:06:28.375Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:image:b2a17b45e509434786148c567be9fc8e",
+          "auditEvidence": null,
+          "summary": "Photo exacte du tracé importée depuis Commons avec crédit, licence et textes dans huit langues"
+        },
+        {
+          "eventId": "apply-435c1b32-56a6-4fb0-92b1-772cad688299",
+          "appliedAt": "2026-11-02T15:07:47.029Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:apply:435c1b32-56a6-4fb0-92b1-772cad688299",
+          "auditEvidence": null,
+          "summary": "Conditions d’âge, trois tarifs par descente et saison complète 2027 ajoutés depuis l’exploitant"
+        },
+        {
+          "eventId": "metadata-publish-b2a17b45e509434786148c567be9fc8e",
+          "appliedAt": "2026-11-02T15:08:12.969Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:image:b2a17b45e509434786148c567be9fc8e@2026-11-02T15:08:12.969Z",
+          "auditEvidence": null,
+          "summary": "Publication de la photo après contrôle des métadonnées et de la licence"
+        },
+        {
+          "eventId": "apply-9f56518a-bf74-4ff4-b880-7e4f71ebcd2d",
+          "appliedAt": "2026-11-02T15:10:11.700Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:apply:9f56518a-bf74-4ff4-b880-7e4f71ebcd2d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-fraekigaudi-20261102/audit.json",
+          "summary": "Sources des conditions relues dans huit langues ; export final et complétude sans bloqueur"
+        },
+        {
+          "eventId": "metadata-final-b2a17b45e509434786148c567be9fc8e",
+          "appliedAt": "2026-11-02T15:14:59.585Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:image:b2a17b45e509434786148c567be9fc8e@2026-11-02T15:14:59.585Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-fraekigaudi-20261102/audit.json",
+          "summary": "Description éditoriale de la photo affinée ; crédit et licence conservés, fiche publique et complétude vérifiées"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Avant la saison 2027, revérifier les tarifs et l’état d’ouverture ; rechercher une photo plus récente où le tracé occupe davantage l’image. Ne pas republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2455,22 +2519,91 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.pilatus.ch",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wastra GmbH — saison et absence de réservation en ligne",
+          "url": "https://www.rodelbahn.ch/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wastra GmbH — identité et parcours",
+          "url": "https://www.rodelbahn.ch/uber-uns/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wastra GmbH — tarifs",
+          "url": "https://www.rodelbahn.ch/preise/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wastra GmbH — horaires de la saison 2027",
+          "url": "https://www.rodelbahn.ch/kontakt/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wastra GmbH — règles de sécurité",
+          "url": "https://www.rodelbahn.ch/sicherheit/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Pilatus-Bahnen — piste, accès et opérateur",
+          "url": "https://pilatus.ch/en/activities/toboggan",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap — tronçon de piste, way 379347672",
+          "url": "https://www.openstreetmap.org/way/379347672",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — Pilatus Slide, Smry, 2018, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Pilatus_Slide.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique — Fräkigaudi",
+          "url": "https://amusement-parks.fun/fr/attraction/b43f4a36-4048-49cd-ab31-80cf7a7c7149/fraekigaudi",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "Pilatus",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=216#location-id-1391",
+            "name": "Fräkigaudi",
+            "source": "Wastra GmbH — piste de luge d’été",
+            "url": "https://www.rodelbahn.ch/uber-uns/",
             "family": "Luge d’été",
-            "sourceVenueName": "Pilatus",
-            "referenceId": "location-id-1391"
+            "sourceVenueName": "Fräkmüntegg / Pilatus",
+            "sourceLifecycleSignal": "Saison 2026 terminée, saison 2027 annoncée",
+            "sourceLocality": "Fräkmüntegg"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste avec billetterie propre exploitée par Wastra GmbH, opérateur distinct de Pilatus-Bahnen ; le secteur montagnard accueille plusieurs activités mais ne forme pas un parc d’attractions structuré. Les recherches officielles ne trouvent aucun doublon."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b43f4a36-4048-49cd-ab31-80cf7a7c7149/fraekigaudi",
+          "publishedAtUtc": "2026-11-02T15:11:02.5137579Z",
+          "verifiedAtUtc": "2026-11-02T15:13:55Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d1ea024f-5444-4997-a40f-525f602ed97f"
+        },
+        "facebook": {
+          "id": "4719cf2f1eac4c4e881db7ef297197db",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T15:13:00.5259494Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125746999424431",
+          "externalPostId": "1285475681307050_122125746999424431",
+          "url": "https://amusement-parks.fun/fr/attraction/b43f4a36-4048-49cd-ab31-80cf7a7c7149/fraekigaudi"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-fraekigaudi-20261102/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
