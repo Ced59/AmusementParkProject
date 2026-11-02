@@ -7304,6 +7304,70 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "AT-candidate-discovery-dd51ae961c9499fa",
+      "name": "Sommerrodelbahn am Biberg",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": "Kehlbach 55, 5760 Saalfelden am Steinernen Meer",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Blocked",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Saison 2026 terminée ; source régionale annonce une reprise à l’été 2027.",
+      "identityConfidence": "Piste de 1,6 km confirmée par deux offices de tourisme ; recherches officielles Park et Standalone sous Biberg, Saalfelden et Huggenberg sans fiche. Autonomie commerciale à confirmer.",
+      "possibleMatches": [],
+      "aliases": [
+        "Riesenrutsche Biberg",
+        "Sommerrodelbahn Saalfelden"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Trouver au moins une photo libre montrant la piste ou un véhicule exact (la seule photo Commons trouvée ne montre qu’un panneau). Confirmer les tarifs propres et l’autonomie auprès de l’exploitant avant création ; vérifier la réouverture estivale 2027. Aucune fiche site ni annonce Facebook créées.",
+      "sources": [
+        {
+          "label": "Saalfelden Leogang — fiche de la piste et adresse",
+          "url": "https://www.saalfelden-leogang.com/de/news-events/a-z/sommerrodelbahn-am-biberg_az_36967",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Hochkönig — fermeture de la saison 2026 et reprise annoncée en 2027",
+          "url": "https://www.hochkoenig.at/de/sommer/sommerbahnen/sommerrodelbahn-am-biberg-in-saalfelden.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo de panneau uniquement, insuffisante",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Biberg.jpg",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Recherche de pistes depuis Wikimedia Commons puis vérification dans les sources touristiques et dans le client officiel.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn am Biberg",
+            "source": "Saalfelden Leogang et Hochkönig",
+            "url": "https://www.saalfelden-leogang.com/de/news-events/a-z/sommerrodelbahn-am-biberg_az_36967",
+            "family": "Luge d’été",
+            "sourceVenueName": "Biberg",
+            "sourceLifecycleSignal": "2026 closed; reopening announced for summer 2027",
+            "sourceLocality": "Saalfelden"
+          }
+        ],
+        "rationale": "Piste durable documentée mais autonomie commerciale et photographie du parcours non établies ; aucun lancement de publication."
+      }
     }
   ]
 }

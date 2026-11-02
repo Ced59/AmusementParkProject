@@ -18,7 +18,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 94 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 7 |
+| Intégration achevée | 8 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 2 |
 | Doublon conservé | 0 |
@@ -29,7 +29,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **25 masqués à intégrer**, **2 masqués NotRelevant à réexaminer**, **84 candidats sans fiche**.
 
-Standalone : **7 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **10 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **8 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **10 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **5 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **7 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -159,6 +159,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CA-candidate-3db52ba8963c9f | Wild Water & Wheels | Peterborough , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5582.htm) |
 | CA-candidate-e5e894919bc490 | Wild Zone Adventures | Chatham , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/4699.htm) |
 | CA-candidate-7ae6b9fd2955b1 | Wilder Institute/Calgary Zoo | Calgary | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.calgaryzoo.com) · [AZA](https://www.aza.org/current-accreditation-list) |
+| CA-candidate-discovery-d9d575636efe74e7 | WildPlay Zipline to the Falls | 5920 Niagara Parkway, Niagara Falls, Ontario | StandaloneAttraction | Published | Intégration achevée | 2026-11-02T18:36:33.955Z | — | Conserver la ligne, les reçus et le post Facebook. Revoir les tarifs variables et les horaires après le 1er janvier 2027 ; chercher des photos récentes montrant aussi les participants en vol. Ne pas republier Facebook pour cette intégration. Qualification standalone : AlreadyStandalone. Attraction fixe à billetterie distincte de l’exploitant WildPlay. Clifton Hill est un quartier de loisirs et Niagara Parks une autorité touristique ; aucun parc d’attractions structuré ne contient cette installation. Installations référencées : WildPlay Zipline to the Falls. Signal source : Operating; horaires de la période 13 octobre 2026–1er janvier 2027 publiés par WildPlay.. [Niagara Parks — présentation officielle, tarif de départ, âge et adresse](https://www.niagaraparks.com/attractions/wildplay-zipline-falls/) · [WildPlay — parcours, horaires datés, billetterie et adresse](https://www.wildplay.com/zipline-to-the-falls) · [WildPlay — conditions d’accès et FAQ Niagara Falls](https://www.wildplay.com/faq) · [Wikimedia Commons — plateforme de départ, Jeff Hitchcock, CC BY 2.0, 2017](https://commons.wikimedia.org/wiki/File:Zipline_to_the_Falls_(37486502431).jpg) · [Wikimedia Commons — deuxième vue de la plateforme, Jeff Hitchcock, CC BY 2.0, 2017](https://commons.wikimedia.org/wiki/File:Zipline_to_the_Falls_(37486499041).jpg) · [Fiche publique WildPlay Zipline to the Falls](https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls) |
 | CA-candidate-1e73ef8151aae0 | Winnipeg Beach | Winnipeg Beach , Manitoba | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5577.htm) |
 | CA-candidate-0f1446a4092eba | World Waterpark | Edmonton | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Canada) |
 | CA-candidate-8afa7805020a43 | World Waterpark at West Edmonton Mall | Edmonton, Alberta, Canada | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [AmusementForce](https://www.amusementforce.com/parks/world-waterpark-edmonton-alberta-canada) |
