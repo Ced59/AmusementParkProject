@@ -1,0 +1,152 @@
+{
+  "work": "Changsha Ferris Wheel by He Long Stadium has a separately ticketed rooftop entrance. English, Chinese, city and stadium duplicate searches in the official editor found no matching Park or StandaloneAttraction. This wheel is distinct from the Martyrs Park wheel dismantled in October 2026 and the Window of the World wheel. Created and published a standalone record with eight original localized descriptions, two weekly hour rules, an opening milestone, and three exact Commons photos clearly labelled as historical (2007, 2017 and 2018). Published the site and Facebook post.",
+  "qualification": "Fixed rooftop Ferris wheel with its own admission by He Long Stadium, separate from a structured amusement park.",
+  "sources": {
+    "provincialTourism": "https://whhlyt.hunan.gov.cn/whhlyt/news/wlyw/201909/t20190910_5480863.html",
+    "operation2026": "https://hunan.voc.com.cn/news/202610/34039313.html",
+    "hours": "https://you.ctrip.com/sight/changsha148/1917827.html",
+    "coordinates": "https://www.wikidata.org/wiki/Q1414985"
+  },
+  "commercialData": {
+    "openingHours": "Ctrip lists Monday–Friday 18:30–22:30, Saturday–Sunday 09:30–22:30, last entry 22:00; public holidays may follow weekend hours. Checked 2026-11-02. Weather and maintenance can change operation.",
+    "pricing": "No current operator-verifiable ticket grid was found; no price was published.",
+    "website": "No stable public operator-owned wheel URL was verified; websiteUrl remains empty."
+  },
+  "dataReceipts": [
+    {
+      "operationId": "a75217e9-43b8-4619-a345-8cd06ebb70d4",
+      "appliedAtUtc": "2026-11-02T09:01:04.194Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "bbbb6e25-a6ee-4124-a6f6-f730b823a57e",
+      "appliedAtUtc": "2026-11-02T09:06:48.719Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "ba03d76c-3ad0-4706-a60b-17816831de09",
+      "appliedAtUtc": "2026-11-02T09:07:12.128Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "5867776a-f516-45db-b32e-7eca69a02729",
+      "appliedAtUtc": "2026-11-02T09:09:35.853Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "e793bf6b-d019-4336-b173-25f4d115bfd8",
+      "appliedAtUtc": "2026-11-02T09:09:59.737Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "407ea16f38cd4044b54f066034d49a44",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Changsha_Ferris_Wheel_in_2007.jpg",
+      "author": "Thomas Hochmann",
+      "license": "CC BY-SA 2.0",
+      "photographedAt": "2007-08-03",
+      "ownerId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-02T09:05:52.090Z"
+    },
+    {
+      "imageId": "6dc8ac1cd57e4c038db00ff72e9e2f07",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Changsha_Ferris_Wheel.jpg",
+      "author": "Huangdan2060",
+      "license": "CC0 1.0",
+      "photographedAt": "2017-02-06",
+      "ownerId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-02T09:06:06.034Z"
+    },
+    {
+      "imageId": "0ef9d6ee47eb43d6a1e63de0ffef2ce6",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Changsha_Ferris_Wheel,_Picture4.jpg",
+      "author": "Huangdan2060",
+      "license": "CC0 1.0",
+      "photographedAt": "2018-07-02",
+      "ownerId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-02T09:06:17.125Z"
+    }
+  ],
+  "audit": {
+    "score": 83,
+    "earnedPoints": 58,
+    "applicableMaxPoints": 70,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 3,
+    "visibleHistoryEvents": 1,
+    "knownScoringGaps": "No verified current ticket grid, stable operator URL or sourced access condition. No current photograph was found; archive dates are explicit."
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/0ce70d70-20be-4393-aaab-6d74d5aaf815/changsha-ferris-wheel",
+    "sitePublishedAtUtc": "2026-11-02T09:11:47.071Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:3dc25bb0-99c3-4cf2-99c0-6204dc8cde2d",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "3a86a5d58362478e8145203fbbfa0f77",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125707525424431",
+    "facebookPublishedAtUtc": "2026-11-02T09:13:12.719Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T09:09:59.737Z",
+  "remainingGaps": [
+    "Recheck operation and weekly hours after weather or maintenance changes.",
+    "Verify a current operator ticket grid and a stable operator URL before adding prices or a website link.",
+    "Seek an exact reusable photograph taken more recently than 2018; keep archive dates visible until replaced."
+  ]
+}
