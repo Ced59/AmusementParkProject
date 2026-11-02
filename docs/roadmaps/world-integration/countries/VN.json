@@ -4054,37 +4054,54 @@
       "entryId": "VN-candidate-d5a5924d2f6fa4",
       "name": "Vinpearl Sky Wheel",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Standalone à qualifier",
       "locality": "Nha Trang",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction du parc documentée sur le site actuel de l’exploitant ; horaires individuels à vérifier lors de l’intégration du parkItem.",
+      "identityConfidence": "Parc VinWonders Nha Trang à créer ; la roue est présentée comme une attraction du parc par l’exploitant.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Verifier ou intégrer Vinpearl Sky Wheel comme parkItem de VinWonders Nha Trang dans le dossier VN-candidate-1b66839c2bd5a5 ; ne pas créer de standalone indépendante. Conserver cette piste et son identifiant permanent.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "VinWonders — attractions de Nha Trang, Sky Wheel",
+          "url": "https://vinwonders.com/en/wonderpedia/news/vinwonders-nha-trang-rides/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Vinpearl Sky Wheel",
+            "source": "VinWonders — attractions de Nha Trang, Sky Wheel",
+            "url": "https://vinwonders.com/en/wonderpedia/news/vinwonders-nha-trang-rides/",
+            "family": "Grande roue",
+            "sourceVenueName": "VinWonders Nha Trang",
+            "sourceLifecycleSignal": "Operating"
+          }
+        ],
+        "rationale": "Parc VinWonders Nha Trang à créer ; la roue est présentée comme une attraction du parc par l’exploitant. Cette piste relève du parkItem du parc parent, hors créations standalone."
+      },
+      "possibleBacklogEntries": [
+        "VN-candidate-1b66839c2bd5a5"
+      ]
     },
     {
       "entryId": "VN-candidate-d92204a7796567",

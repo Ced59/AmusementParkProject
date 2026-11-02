@@ -484,37 +484,54 @@
       "entryId": "HK-candidate-e2d38086e9e7c0",
       "name": "Ocean Park Ferris wheel",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Standalone à qualifier",
       "locality": "Ocean Park , Aberdeen",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction du parc documentée sur le site actuel de l’exploitant ; horaires individuels à vérifier lors de l’intégration du parkItem.",
+      "identityConfidence": "Parc Ocean Park Hong Kong à créer ; la roue est présentée dans son catalogue de manèges par l’exploitant.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Verifier ou intégrer Ferris Wheel comme parkItem de Ocean Park Hong Kong dans le dossier HK-candidate-990a4f8fd82d28 ; ne pas créer de standalone indépendante. Conserver cette piste et son identifiant permanent.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ocean Park — fiche officielle de la grande roue",
+          "url": "https://www.oceanpark.com.hk/en/a-day-at-the-park/attractions/ferris-wheel",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Ferris Wheel",
+            "source": "Ocean Park — fiche officielle de la grande roue",
+            "url": "https://www.oceanpark.com.hk/en/a-day-at-the-park/attractions/ferris-wheel",
+            "family": "Grande roue",
+            "sourceVenueName": "Ocean Park Hong Kong",
+            "sourceLifecycleSignal": "Operating"
+          }
+        ],
+        "rationale": "Parc Ocean Park Hong Kong à créer ; la roue est présentée dans son catalogue de manèges par l’exploitant. Cette piste relève du parkItem du parc parent, hors créations standalone."
+      },
+      "possibleBacklogEntries": [
+        "HK-candidate-990a4f8fd82d28"
+      ]
     },
     {
       "entryId": "HK-candidate-990a4f8fd82d28",
