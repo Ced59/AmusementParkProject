@@ -1,5 +1,5 @@
 {
-  "reviewedAtUtc": "2026-11-02T20:05:46.901Z",
+  "reviewedAtUtc": "2026-11-02T20:31:35.613Z",
   "countryCode": "DE",
   "entryId": "DE-candidate-b938aeae488469",
   "siteId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
@@ -39,7 +39,8 @@
       "exactSubject": "Saar-Rodel rails visible in left foreground and winding track on hillside; terrace-wide view",
       "isCurrent": true,
       "isPublished": true,
-      "publicBinaryHttpStatus": 200
+      "publicBinaryHttpStatus": 200,
+      "captionUpdatedAtUtc": "2026-11-02T20:31:10.895Z"
     }
   ],
   "photoLimit": "The freely licensed 2018 image shows the actual track but is a wide, historic view; seek a closer reusable image on future refresh.",
@@ -48,9 +49,10 @@
     "image-eb33cc604f1443ec811a00ebd01e9c30",
     "apply-e5223b56-e7a4-4ff8-add1-1facd44d0dae",
     "apply-bd4469f2-c2de-4d7d-92bd-b27e27074584",
-    "apply-50a5caae-d457-4466-a9d2-2d761b1b8a79"
+    "apply-50a5caae-d457-4466-a9d2-2d761b1b8a79",
+    "metadata-caption-eb33cc604f1443ec811a00ebd01e9c30-20261102"
   ],
-  "lastDataIntegrationAt": "2026-11-02T20:04:36.303Z",
+  "lastDataIntegrationAt": "2026-11-02T20:31:10.895Z",
   "finalCompleteness": {
     "score": 71,
     "quality": "Publishable",
@@ -71,14 +73,17 @@
     "imageHttp200": true,
     "socialPreviewHttp200": true,
     "siteUrl": "https://amusement-parks.fun/fr/attraction/9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650/sommerrodelbahn-saar-rodel",
-    "postFacebookCopyUpdate": "API search shows new eight-language public paragraph; SSR page pending refresh at review time"
+    "postFacebookCopyUpdate": "Current copy is present on the canonical French SSR page after the caption metadata update; the earlier cached version was evicted.",
+    "canonicalCurrentCopyHttp200": true,
+    "canonicalCurrentCopyIncludes2027Caveat": true,
+    "captionUpdatedInEightLanguages": true
   },
   "publication": {
     "site": {
       "status": "Published",
       "url": "https://amusement-parks.fun/fr/attraction/9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650/sommerrodelbahn-saar-rodel",
       "publishedAtUtc": "2026-11-02T20:00:22.1324818Z",
-      "verifiedAtUtc": "2026-11-02T20:05:46.901Z",
+      "verifiedAtUtc": "2026-11-02T20:31:35.613Z",
       "evidence": "PARK_DATA_EDITOR:apply:024aa954-39a1-45a5-9565-4e458f26b965"
     },
     "facebook": {
