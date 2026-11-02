@@ -2745,7 +2745,7 @@
       "entryId": "SE-park-d76a7862-f542-43ff-b551-a901cd982b24",
       "name": "SkiStar Hammarbybacken",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
       "locality": null,
       "siteId": "d76a7862-f542-43ff-b551-a901cd982b24",
@@ -2756,13 +2756,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Domaine multi-activités avec fiche Park masquée et un parkItem ; Mountain Coaster désormais publié comme standalone à billet propre sous ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126. Qualification éditoriale du domaine distincte.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Fiche Park masquée conservée : qualifier Hammarbybacken comme site multi-activités à intégrer éditorialement. Son coaster possède déjà une fiche standalone publiée ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126 (SE-candidate-discovery-e9ac5c40cff15d). Vérifier le parkItem existant et éviter une deuxième publication du coaster. Aucune date d’intégration Park à inventer.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2788,13 +2788,28 @@
           "label": "Sunkid — projet constructeur",
           "url": "https://www.sunkidworld.com/en/projects/detail/skistar-hammarbybacken-becomes-a-year-round-leisure-destination/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "SkiStar — Mountain Coaster, parcours et conditions",
+          "url": "https://www.skistar.com/en/hammarbybacken/summer-at-hammarbybacken/mountain-coaster/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Visit Stockholm — site multi-activités de Hammarbybacken",
+          "url": "https://www.visitstockholm.com/o/skistar-sports-adventures/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique — huit langues et galerie",
+          "url": "https://amusement-parks.fun/fr/attraction/ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126/skistar-mountain-coaster-hammarbybacken",
+          "accessedAt": "2026-11-02"
         }
       ],
       "countryCodeAtInventory": "SE",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "Mountain Coaster",
@@ -2814,8 +2829,11 @@
             "sourceVenueName": "SkiStar Hammarbybacken"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Le domaine SkiStar propose ski d’été, tubing, escalade et coaster. Le coaster a un billet propre et une fiche standalone publiée ; la fiche Park masquée et son parkItem restent à traiter séparément."
+      },
+      "possibleBacklogEntries": [
+        "SE-candidate-discovery-e9ac5c40cff15d"
+      ]
     },
     {
       "entryId": "SE-candidate-4d8fd2e75f4cda",
@@ -3352,6 +3370,259 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "SE-candidate-discovery-e9ac5c40cff15d",
+      "name": "SkiStar Mountain Coaster Hammarbybacken",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster / luge sur rails",
+      "locality": "Hammarbybacken, Stockholm, Suède",
+      "siteId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T13:57:00.614Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "En exploitation saisonnière, fermé pour la saison au 2 novembre 2026 selon SkiStar",
+      "identityConfidence": "Billet propre et page officielle du coaster ; fiche Park SkiStar Hammarbybacken masquée conservée pour qualification séparée. Recherche officielle Park/Standalone « Hammarbybacken » sans standalone homonyme ; quatre photos exactes vérifiées.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [
+        "SE-park-d76a7862-f542-43ff-b551-a901cd982b24"
+      ],
+      "aliases": [
+        "Mountain Coaster Hammarbybacken",
+        "SkiStar Hammarbybacken Mountain Coaster"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T13:55:49.693Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d3b05f7a-4632-4eb3-a7ba-15eea87879d9",
+          "appliedAt": "2026-11-02T13:48:39.647Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:apply:d3b05f7a-4632-4eb3-a7ba-15eea87879d9",
+          "auditEvidence": null,
+          "summary": "Création privée : identité distincte de la fiche Park masquée, huit descriptions, localisation approximative et statut saisonnier"
+        },
+        {
+          "eventId": "image-a32d34deaec74b5b984bc393e9102a05",
+          "appliedAt": "2026-11-02T13:49:01.944Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:a32d34deaec74b5b984bc393e9102a05",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/4 du Mountain Coaster importée avec auteur, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "image-442e7446892942308d50b52b38935569",
+          "appliedAt": "2026-11-02T13:49:20.852Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:442e7446892942308d50b52b38935569",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/4 du Mountain Coaster importée avec auteur, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "image-2b08c2e906474160a80d8d84513e12a2",
+          "appliedAt": "2026-11-02T13:49:37.268Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:2b08c2e906474160a80d8d84513e12a2",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3/4 du Mountain Coaster importée avec auteur, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "image-e4b52758f9994f858cc3e7f15cd9a502",
+          "appliedAt": "2026-11-02T13:49:59.024Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:e4b52758f9994f858cc3e7f15cd9a502",
+          "auditEvidence": null,
+          "summary": "Photo exacte 4/4 du Mountain Coaster importée avec auteur, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "metadata-unique-a32d34deaec74b5b984bc393e9102a05",
+          "appliedAt": "2026-11-02T13:52:03.834Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:a32d34deaec74b5b984bc393e9102a05@2026-11-02T13:52:03.834Z",
+          "auditEvidence": null,
+          "summary": "Individualisation des textes alternatifs et légendes, photo 1/4"
+        },
+        {
+          "eventId": "metadata-unique-442e7446892942308d50b52b38935569",
+          "appliedAt": "2026-11-02T13:52:15.112Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:442e7446892942308d50b52b38935569@2026-11-02T13:52:15.112Z",
+          "auditEvidence": null,
+          "summary": "Individualisation des textes alternatifs et légendes, photo 2/4"
+        },
+        {
+          "eventId": "metadata-unique-2b08c2e906474160a80d8d84513e12a2",
+          "appliedAt": "2026-11-02T13:52:26.653Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:2b08c2e906474160a80d8d84513e12a2@2026-11-02T13:52:26.653Z",
+          "auditEvidence": null,
+          "summary": "Individualisation des textes alternatifs et légendes, photo 3/4"
+        },
+        {
+          "eventId": "metadata-unique-e4b52758f9994f858cc3e7f15cd9a502",
+          "appliedAt": "2026-11-02T13:52:37.898Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:e4b52758f9994f858cc3e7f15cd9a502@2026-11-02T13:52:37.898Z",
+          "auditEvidence": null,
+          "summary": "Individualisation des textes alternatifs et légendes, photo 4/4"
+        },
+        {
+          "eventId": "metadata-final-a32d34deaec74b5b984bc393e9102a05",
+          "appliedAt": "2026-11-02T13:53:14.882Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:a32d34deaec74b5b984bc393e9102a05@2026-11-02T13:53:14.882Z",
+          "auditEvidence": null,
+          "summary": "Description photographique individualisée après contrôle éditorial, photo 1/4"
+        },
+        {
+          "eventId": "metadata-final-442e7446892942308d50b52b38935569",
+          "appliedAt": "2026-11-02T13:53:27.389Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:442e7446892942308d50b52b38935569@2026-11-02T13:53:27.389Z",
+          "auditEvidence": null,
+          "summary": "Description photographique individualisée après contrôle éditorial, photo 2/4"
+        },
+        {
+          "eventId": "metadata-final-2b08c2e906474160a80d8d84513e12a2",
+          "appliedAt": "2026-11-02T13:53:38.660Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:2b08c2e906474160a80d8d84513e12a2@2026-11-02T13:53:38.660Z",
+          "auditEvidence": null,
+          "summary": "Description photographique individualisée après contrôle éditorial, photo 3/4"
+        },
+        {
+          "eventId": "metadata-final-e4b52758f9994f858cc3e7f15cd9a502",
+          "appliedAt": "2026-11-02T13:53:51.036Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:image:e4b52758f9994f858cc3e7f15cd9a502@2026-11-02T13:53:51.036Z",
+          "auditEvidence": null,
+          "summary": "Description photographique individualisée après contrôle éditorial, photo 4/4"
+        },
+        {
+          "eventId": "apply-3b948ca7-c3c5-4e6a-ab48-1b964f5e19b2",
+          "appliedAt": "2026-11-02T13:55:49.693Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:apply:3b948ca7-c3c5-4e6a-ab48-1b964f5e19b2",
+          "auditEvidence": null,
+          "summary": "Réécriture éditoriale des huit descriptions après audit ; faits pratiques et fermeture saisonnière datés"
+        },
+        {
+          "eventId": "closure-3b948ca7-c3c5-4e6a-ab48-1b964f5e19b2",
+          "appliedAt": "2026-11-02T13:55:49.693Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+          "evidence": "PARK_DATA_EDITOR:apply:3b948ca7-c3c5-4e6a-ab48-1b964f5e19b2",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-se-hammarbybacken-20261102/audit.json",
+          "summary": "Audit final sans blocage ; quatre photographies exactes et page publique contrôlée"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Vérifier les dates, les horaires et le prix réel de la prochaine saison estivale avant mise à jour. Localiser précisément l’embarquement. Traiter séparément la fiche Park masquée du domaine et son parkItem sans dupliquer le coaster. Ne pas republier Facebook pour une simple révision.",
+      "sources": [
+        {
+          "label": "SkiStar — Mountain Coaster, parcours et conditions",
+          "url": "https://www.skistar.com/en/hammarbybacken/summer-at-hammarbybacken/mountain-coaster/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "SkiStar — billets et tarif à partir de 105 SEK",
+          "url": "https://www.skistar.com/sv/hammarbybacken/planera/biljetter-och-priser/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "SkiStar — fermeture saisonnière et horaires",
+          "url": "https://www.skistar.com/en/hammarbybacken/plan/opening-hours/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Visit Stockholm — site multi-activités de Hammarbybacken",
+          "url": "https://www.visitstockholm.com/o/skistar-sports-adventures/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique — huit langues et galerie",
+          "url": "https://amusement-parks.fun/fr/attraction/ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126/skistar-mountain-coaster-hammarbybacken",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — Mountain Coaster Hammarbybacken, photo 1, Holger Ellgaard, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — Mountain Coaster Hammarbybacken, photo 2, Holger Ellgaard, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022a.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — Mountain Coaster Hammarbybacken, photo 3, Holger Ellgaard, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022b.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — Mountain Coaster Hammarbybacken, photo 4, Holger Ellgaard, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Hammarbybacken,_Mountain_Coaster_juli_2022c.jpg",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "countryCodeAtInventory": "SE",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Mountain Coaster",
+            "source": "SkiStar — activité à billet propre",
+            "url": "https://www.skistar.com/en/hammarbybacken/summer-at-hammarbybacken/mountain-coaster/",
+            "family": "Mountain coaster",
+            "sourceVenueName": "SkiStar Hammarbybacken",
+            "sourceLifecycleSignal": "Seasonally operating",
+            "sourceLocality": "Stockholm",
+            "sourceOpenedYear": "2022"
+          },
+          {
+            "name": "Mountain Coaster",
+            "source": "RCDB — Mountain Coaster",
+            "url": "https://rcdb.com/20161.htm",
+            "family": "Mountain coaster",
+            "sourceVenueName": "SkiStar Hammarbybacken"
+          }
+        ],
+        "rationale": "Attraction à réservation propre au sein du domaine multi-activités Hammarbybacken ; identité de la piste distincte de la fiche Park masquée du domaine, conservée pour décision éditoriale séparée."
+      }
     }
   ]
 }
