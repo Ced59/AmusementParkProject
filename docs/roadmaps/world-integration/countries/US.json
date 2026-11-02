@@ -75302,6 +75302,165 @@
         "publicationBlockers": [],
         "gapCount": 1
       }
+    },
+    {
+      "entryId": "US-candidate-discovery-340f6212f0ce2e21",
+      "name": "SlotZilla Zip Line",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne",
+      "locality": "425 Fremont St #160, Las Vegas, Nevada 89101",
+      "siteId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating ; horaires courants indiqués sur la page officielle de SlotZilla.",
+      "identityConfidence": "Billetterie, tour, parcours et adresse propres ; recherche officielle sans fiche Park ni Standalone sous SlotZilla, Fremont Street, Zip-Zilla ou Zoom Line.",
+      "possibleMatches": [],
+      "aliases": [
+        "SlotZilla",
+        "Slotzilla Zipline",
+        "Zip-Zilla",
+        "Zoom Line"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T18:55:00.321Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-77a66c5b-0f36-473c-890e-4137657ee42b",
+          "appliedAt": "2026-11-02T18:49:53.233Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:apply:77a66c5b-0f36-473c-890e-4137657ee42b",
+          "auditEvidence": null,
+          "summary": "Création de la fiche autonome avec descriptions et coordonnées officielles en huit langues"
+        },
+        {
+          "eventId": "apply-40f45589-221b-4ce1-94ae-1af9af9444a8",
+          "appliedAt": "2026-11-02T18:52:08.853Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:apply:40f45589-221b-4ce1-94ae-1af9af9444a8",
+          "auditEvidence": null,
+          "summary": "Horaires nocturnes, conditions d’accès et deux tarifs dynamiques selon la source officielle"
+        },
+        {
+          "eventId": "image-3a04ca08f44e4193b7b54890ed4d5f97",
+          "appliedAt": "2026-11-02T18:52:30.009Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:3a04ca08f44e4193b7b54890ed4d5f97@2026-11-02T18:52:30.009Z",
+          "auditEvidence": null,
+          "summary": "Vue exacte de la tour SlotZilla importée depuis Commons, crédits et huit langues"
+        },
+        {
+          "eventId": "image-8d77894ea2eb45428a0a2b0f3552c102",
+          "appliedAt": "2026-11-02T18:52:54.115Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:8d77894ea2eb45428a0a2b0f3552c102@2026-11-02T18:52:54.115Z",
+          "auditEvidence": null,
+          "summary": "Deuxième photo exacte de la façade et de l’entrée importée avec crédits"
+        },
+        {
+          "eventId": "metadata-publish-3a04ca08f44e4193b7b54890ed4d5f97",
+          "appliedAt": "2026-11-02T18:53:23.523Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:3a04ca08f44e4193b7b54890ed4d5f97@2026-11-02T18:53:23.523Z",
+          "auditEvidence": null,
+          "summary": "Publication du média principal sous licence CC0"
+        },
+        {
+          "eventId": "metadata-publish-8d77894ea2eb45428a0a2b0f3552c102",
+          "appliedAt": "2026-11-02T18:53:43.719Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:8d77894ea2eb45428a0a2b0f3552c102@2026-11-02T18:53:43.719Z",
+          "auditEvidence": null,
+          "summary": "Publication du second média sous licence CC0"
+        },
+        {
+          "eventId": "metadata-final-8d77894ea2eb45428a0a2b0f3552c102",
+          "appliedAt": "2026-11-02T18:55:00.321Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:8d77894ea2eb45428a0a2b0f3552c102@2026-11-02T18:55:00.321Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-slotzilla-20261102/audit.json",
+          "summary": "Description du second média distinguée après contrôle éditorial"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revoir tarifs, horaires et conditions avec l’exploitant avant novembre 2027 ; rechercher des photos CC0/CC BY montrant aussi les personnes en vol. Publication Facebook déjà faite ; ne pas la répéter pour ce lot.",
+      "sources": [
+        {
+          "label": "Fremont Street Experience — page officielle SlotZilla, deux parcours, tarifs, horaires et conditions",
+          "url": "https://fremontstreetexperience.com/slotzilla-zip-line/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — tour SlotZilla, Julian Lupyan, CC0 1.0, 2025",
+          "url": "https://commons.wikimedia.org/wiki/File:Slotzilla_at_the_Fremont_Street_Experience.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — façade et entrée, Julian Lupyan, CC0 1.0, 2025",
+          "url": "https://commons.wikimedia.org/wiki/File:Slotzilla_at_the_Fremont_Street_Experience_2.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique SlotZilla Zip Line",
+          "url": "https://amusement-parks.fun/fr/attraction/515db5e7-8c07-452f-83c9-ba9af1b50a2e/slotzilla-zip-line",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Découverte hors catalogue et vérification des alias dans les recherches officielles Park et Standalone.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "SlotZilla Zip Line",
+            "source": "Fremont Street Experience",
+            "url": "https://fremontstreetexperience.com/slotzilla-zip-line/",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "Fremont Street Experience",
+            "sourceLifecycleSignal": "Operating, horaires et billets publiés",
+            "sourceLocality": "Las Vegas, Nevada"
+          }
+        ],
+        "rationale": "Attraction fixe à billets séparés et tour propre au sein d’une rue de loisirs ; Fremont Street Experience n’est pas un parc structuré avec zones et parkItems."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/515db5e7-8c07-452f-83c9-ba9af1b50a2e/slotzilla-zip-line",
+          "publishedAtUtc": "2026-11-02T18:56:29.876Z",
+          "verifiedAtUtc": "2026-11-02T18:59:23.691Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c45d33b3-6d97-4b1a-80b0-8c31c92bbc48"
+        },
+        "facebook": {
+          "id": "da5511302ece4845874f620786204281",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T18:58:19.9674907Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125770513424431",
+          "externalPostId": "1285475681307050_122125770513424431",
+          "url": "https://amusement-parks.fun/fr/attraction/515db5e7-8c07-452f-83c9-ba9af1b50a2e/slotzilla-zip-line"
+        }
+      }
     }
   ]
 }

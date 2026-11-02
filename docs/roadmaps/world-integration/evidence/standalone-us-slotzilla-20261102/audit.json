@@ -1,0 +1,117 @@
+{
+  "reviewedAtUtc": "2026-11-02T18:59:23.735Z",
+  "countryCode": "US",
+  "entryId": "US-candidate-discovery-340f6212f0ce2e21",
+  "siteId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+  "decision": "New independently ticketed standalone published",
+  "duplicateSearch": {
+    "actions": [
+      "SearchStandaloneAttractions",
+      "SearchParks"
+    ],
+    "queries": [
+      "SlotZilla",
+      "Fremont Street",
+      "Zip-Zilla",
+      "Zoom Line"
+    ],
+    "matches": 0,
+    "fremontDecision": "Entertainment pedestrian district rather than structured amusement park parent"
+  },
+  "sourceFacts": {
+    "operator": "Fremont Street Experience / SlotZilla",
+    "address": "425 Fremont St #160, Las Vegas, NV 89101",
+    "zipLine": "Seated ride across three blocks from 77 ft",
+    "zoomLine": "Prone ride across five blocks from 11 stories",
+    "weekdayStartingUsd": {
+      "Zip Line": 49,
+      "Zoom Line": 69
+    },
+    "weekendStartingUsd": {
+      "Zip Line": 55,
+      "Zoom Line": 75
+    },
+    "weightPounds": {
+      "Zip Line": "50–300",
+      "Zoom Line": "80–300"
+    },
+    "maximumHeight": "6 ft 8 in",
+    "hours": "Monday–Wednesday noon–1 a.m. next day; Thursday–Sunday noon–2 a.m. next day",
+    "sourceTension": "Older official /slotzilla-zip-line-lv/ page conflicts; current canonical /slotzilla-zip-line/ used."
+  },
+  "photoEvidence": [
+    {
+      "imageId": "3a04ca08f44e4193b7b54890ed4d5f97",
+      "source": "https://commons.wikimedia.org/wiki/File:Slotzilla_at_the_Fremont_Street_Experience.jpg",
+      "photographer": "Julian Lupyan",
+      "takenAt": "2025-07-29",
+      "license": "CC0 1.0",
+      "exactSubject": "SlotZilla tower and canopy",
+      "isCurrent": true,
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "8d77894ea2eb45428a0a2b0f3552c102",
+      "source": "https://commons.wikimedia.org/wiki/File:Slotzilla_at_the_Fremont_Street_Experience_2.jpg",
+      "photographer": "Julian Lupyan",
+      "takenAt": "2025-07-29",
+      "license": "CC0 1.0",
+      "exactSubject": "SlotZilla facade and entrance",
+      "isCurrent": false,
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "photoLimit": "Both 2025 photos show the exact tower at night but no rider in flight.",
+  "dataIntegrationEvents": [
+    "apply-77a66c5b-0f36-473c-890e-4137657ee42b",
+    "apply-40f45589-221b-4ce1-94ae-1af9af9444a8",
+    "image-3a04ca08f44e4193b7b54890ed4d5f97",
+    "image-8d77894ea2eb45428a0a2b0f3552c102",
+    "metadata-publish-3a04ca08f44e4193b7b54890ed4d5f97",
+    "metadata-publish-8d77894ea2eb45428a0a2b0f3552c102",
+    "metadata-final-8d77894ea2eb45428a0a2b0f3552c102"
+  ],
+  "lastDataIntegrationAt": "2026-11-02T18:55:00.321Z",
+  "finalCompleteness": {
+    "score": 91,
+    "quality": "Good",
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicVerification": {
+    "languagesHttp200": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "bothImagesHttp200": true,
+    "socialPreviewHttp200": true,
+    "priceRenderedAsStartingAt": true,
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/515db5e7-8c07-452f-83c9-ba9af1b50a2e/slotzilla-zip-line"
+  },
+  "publication": {
+    "site": {
+      "status": "Published",
+      "url": "https://amusement-parks.fun/fr/attraction/515db5e7-8c07-452f-83c9-ba9af1b50a2e/slotzilla-zip-line",
+      "publishedAtUtc": "2026-11-02T18:56:29.876Z",
+      "verifiedAtUtc": "2026-11-02T18:59:23.691Z",
+      "evidence": "PARK_DATA_EDITOR:apply:c45d33b3-6d97-4b1a-80b0-8c31c92bbc48"
+    },
+    "facebook": {
+      "id": "da5511302ece4845874f620786204281",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-02T18:58:19.9674907Z",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125770513424431",
+      "externalPostId": "1285475681307050_122125770513424431",
+      "url": "https://amusement-parks.fun/fr/attraction/515db5e7-8c07-452f-83c9-ba9af1b50a2e/slotzilla-zip-line"
+    }
+  },
+  "noReleaseVersionBump": true
+}
