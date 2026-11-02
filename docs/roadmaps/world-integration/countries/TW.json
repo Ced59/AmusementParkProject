@@ -905,37 +905,119 @@
     {
       "entryId": "TW-candidate-d04f792843150d",
       "name": "Kaohsiung Eye",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Dream Mall , Kaohsiung",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Toit du Dream Mall, No. 789 Zhonghua 5th Road, Qianzhen, Kaohsiung",
+      "siteId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T12:31:54.605Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue avec billetterie propre dans une promotion officielle valide jusqu’à fin 2026.",
+      "identityConfidence": "Nom corroboré par la ville, toit et adresse par le centre commercial, billet propre, deux photos exactes et six recherches de doublons sans résultat.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Dream Ferris Wheel",
+        "高雄之眼",
+        "夢時代摩天輪"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T12:28:25.671Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-53862efb-7a86-471b-b029-a146a402327e",
+          "appliedAt": "2026-11-02T12:27:46.905Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
+          "evidence": "PARK_DATA_EDITOR:apply:53862efb-7a86-471b-b029-a146a402327e",
+          "auditEvidence": null,
+          "summary": "Création masquée de la roue et descriptions éditoriales en huit langues"
+        },
+        {
+          "eventId": "image-e5b0fdd5eadf4e629dfa8fc0fab0db40",
+          "appliedAt": "2026-11-02T12:28:10.695Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
+          "evidence": "PARK_DATA_EDITOR:image:e5b0fdd5eadf4e629dfa8fc0fab0db40",
+          "auditEvidence": null,
+          "summary": "Import photo exacte 1 de la roue, droits et crédits vérifiés"
+        },
+        {
+          "eventId": "image-508b81cc300547689b1a8cdb4ab031ca",
+          "appliedAt": "2026-11-02T12:28:25.671Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
+          "evidence": "PARK_DATA_EDITOR:image:508b81cc300547689b1a8cdb4ab031ca",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-kaohsiung-eye-20261102/audit.json",
+          "summary": "Import photo exacte 2 de la roue, droits et crédits vérifiés"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier directement les horaires et le plein tarif de la roue avant de les structurer ; remplacer le centroïde du centre commercial par les coordonnées de l’installation si disponibles. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Dream Mall — histoire et roue sur le toit",
+          "url": "https://www.dream-mall.com.tw/about/info",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Dream Mall — offre 2026 sur billet propre à la roue",
+          "url": "https://www.dream-mall.com.tw/news/p/sing",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Ville de Kaohsiung — nom Kaohsiung Eye et situation",
+          "url": "https://khh.travel/en/travel/lightrail-artery/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Dream Mall — niveau du toit",
+          "url": "https://www.dream-mall.com.tw/brand/Floor",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — roue en 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Dream_Ferris_Wheel_20240117.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — roue en 2007",
+          "url": "https://commons.wikimedia.org/wiki/File:%22dream_wheel%22_in_Dream_mall_(%E5%A4%A2%E6%99%82%E4%BB%A3%E8%B3%BC%E7%89%A9%E4%B8%AD%E5%BF%83),_Kaohsiung,_Taiwan.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Grande roue à billet propre sur le toit d’un centre commercial, distincte du parc E-DA."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/859a182e-f188-4e92-839a-b22e24a8a0e7/kaohsiung-eye",
+          "publishedAtUtc": "2026-11-02T12:29:35.737Z",
+          "verifiedAtUtc": "2026-11-02T12:31:54.605Z",
+          "evidence": "PARK_DATA_EDITOR:apply:1fe78079-c2f8-4ec1-bd4b-e90457769b3b"
+        },
+        "facebook": {
+          "id": "9c0a37c5c5f44ae2b4180f35a8a16b24",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T12:30:43.147Z",
+          "externalPostId": "1285475681307050_122125728261424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125728261424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:9c0a37c5c5f44ae2b4180f35a8a16b24"
+        }
       }
     },
     {
