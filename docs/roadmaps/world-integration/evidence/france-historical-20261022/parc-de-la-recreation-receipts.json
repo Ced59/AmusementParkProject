@@ -417,7 +417,273 @@
         "descriptions.pt"
       ],
       "summary": "Descriptions en huit langues des Vélos-taxis, du parcours L’Éco-lutin et de l’Archery Tag; total six activités décrites, audit final restant."
+    },
+    {
+      "eventId": "apply-bac1d7ea-8c66-418d-a46a-9c67330e2689",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T15:56:20.5455789Z",
+      "appliedAt": "2026-11-02T15:56:20.545Z",
+      "receiptFile": "04-items-c2-apply.receipt.json",
+      "receiptSha256": "307334e16f3853326c8981ed0af017765464bd06a59070bc0c6c052be93b211c",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions du snack et des aires de pique-nique en huit langues, d’après les archives officielles ; huit équipements décrits au total, données privées."
+    },
+    {
+      "eventId": "apply-de08481a-db09-4083-b4fc-6c51d17d7ba9",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T15:59:46.9107583Z",
+      "appliedAt": "2026-11-02T15:59:46.910Z",
+      "receiptFile": "04-items-d-apply.receipt.json",
+      "receiptSha256": "17a3ccf6c166abd06aaa0cba785def96f9c8f6d4bac78fa8fa653a62b2dc206b",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions spécifiques en huit langues du Bubble foot, du Pont en filet et des Pentes d’escalade ; onze équipements décrits, tous privés avant audit."
+    },
+    {
+      "eventId": "apply-eededefe-9b78-48e5-b053-f638848776ba",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:04:50.9291182Z",
+      "appliedAt": "2026-11-02T16:04:50.929Z",
+      "receiptFile": "04-items-e-apply.receipt.json",
+      "receiptSha256": "b61e6eb330a0acdd623c69e14c2a2791dc2c34d3d83c1550c0adb3e1cedc00f5",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions des Cordes de Tarzan, du beach-volley et du beach-soccer en huit langues ; quatorze équipements décrits, publication après audit."
+    },
+    {
+      "eventId": "apply-fc5a7acd-f7f8-4e1a-869b-57c44f0f2893",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:11:21.6447489Z",
+      "appliedAt": "2026-11-02T16:11:21.644Z",
+      "receiptFile": "08-history-apply.receipt.json",
+      "receiptSha256": "d80077feab93c463465a2c9c76c3fdcfdf99b65cab17e07fa43de5daab4ae20f",
+      "counts": {
+        "created": 4,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "contextParkId",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Trois jalons du parc, un jalon propre au Bubble foot et un article illustré en huit langues ; histoire canonique privée avant audit final."
+    },
+    {
+      "eventId": "apply-28e91457-f3b3-4bca-892f-889724b59344",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:13:43.187322Z",
+      "appliedAt": "2026-11-02T16:13:43.187Z",
+      "receiptFile": "04-items-f-apply.receipt.json",
+      "receiptSha256": "de4441a1038b0f26b4c33129103a5030aeb73181b406003352321f37e473da5c",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Description historique du parking et de sa prairie d’appoint en huit langues ; quinze équipements décrits avant audit."
+    },
+    {
+      "eventId": "apply-17ed1b89-663a-42ca-8046-33d566e509ef",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:17:03.3782281Z",
+      "appliedAt": "2026-11-02T16:17:03.378Z",
+      "receiptFile": "08-history-images-apply.receipt.json",
+      "receiptSha256": "0701feff6cd5866e56484f4f61231cf755dd7beef9975124fe9da225e1ec41d9",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "mainImageId"
+      ],
+      "summary": "Ajout de quatre photographies contextualisées aux jalons historiques existants, sans modification de visibilité ; correction ciblée issue de l’audit."
+    },
+    {
+      "eventId": "apply-51c10081-12a6-497f-ab29-1bc988af87e6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:24:24.6946122Z",
+      "appliedAt": "2026-11-02T16:24:24.694Z",
+      "receiptFile": "10-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "4875376a3e174933f4cc32601ee68aaf968dd483740150f6116c3c946a329272",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Restauration officielle des quatre faits HIST canoniques après publication du parc ; mêmes événements, sources et article, vérification publique en cours."
+    },
+    {
+      "eventId": "apply-4d3537c1-fd64-478e-b654-327b74651cbd",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:28:57.3217239Z",
+      "appliedAt": "2026-11-02T16:28:57.321Z",
+      "receiptFile": "10-public-copy-refinement-apply.receipt.json",
+      "receiptSha256": "33ee4add49ceeab7f802c426adad716715e477d15bbccd2c0654d0912d70d204",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "summaries"
+      ],
+      "summary": "Correction éditoriale après publication : légendes propres à l’article en huit langues et reformulation des huit recouvrements factuels, sans modifier les faits historiques."
     }
   ],
-  "publicationOrNoop": []
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-d052ed82-52bc-452d-97aa-b606a0f6bd97",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:20:25.3472565Z",
+      "appliedAt": "2026-11-02T16:20:25.347Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "6951845bee32b833eb6483947a0248eb58849b178b1872285fdf672daaff2140",
+      "counts": {
+        "created": 0,
+        "updated": 20,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication autorisée des vingt médias audités, sans nouvelle donnée ni changement de la date d’intégration."
+    },
+    {
+      "eventId": "apply-068773c8-7fbc-482b-aa22-22cbbfc62587",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:21:13.8989141Z",
+      "appliedAt": "2026-11-02T16:21:13.898Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "4e7e89dc92c8ddfdaa04c0a925c80f34186bf57f0fff0252df876dca2f271e7f",
+      "counts": {
+        "created": 0,
+        "updated": 20,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "article",
+        "isVisible"
+      ],
+      "summary": "Publication autorisée de quinze équipements, de quatre jalons et de l’article historique ; opérateur validé, parent publié dans le lot suivant."
+    },
+    {
+      "eventId": "apply-f88644e8-02f7-4975-b1b6-2e6cff3c40c5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:21:58.7713406Z",
+      "appliedAt": "2026-11-02T16:21:58.771Z",
+      "receiptFile": "09-publish-park-apply.receipt.json",
+      "receiptSha256": "7996a550a6e6e7c512c0fa9ed9e4d79a931e38e2ae43ad48cd5fd1656c421a5e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Mise en visibilité autorisée de La Récréation après ses contenus validés ; intégration toujours partielle, contrôles publics et Facebook à suivre."
+    }
+  ]
 }

@@ -1,8 +1,8 @@
 {
   "entryId": "FR-candidate-28e967c581a3cb",
   "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
-  "checkedAtUtc": "2026-11-02T15:51:11.823174+00:00",
-  "status": "in_progress_private",
+  "checkedAtUtc": "2026-11-02T16:40:02.716040+00:00",
+  "status": "public_partial_awaiting_navigation_and_facebook",
   "dataApplies": [
     {
       "operationId": "78ec5f49-8b14-4641-b17c-6b8088329a29",
@@ -27,6 +27,38 @@
     {
       "operationId": "c78c294e-278f-4e58-82b2-3fe2d9a129a4",
       "appliedAtUtc": "2026-11-02T15:44:53.9715733Z"
+    },
+    {
+      "operationId": "bac1d7ea-8c66-418d-a46a-9c67330e2689",
+      "appliedAtUtc": "2026-11-02T15:56:20.5455789Z"
+    },
+    {
+      "operationId": "de08481a-db09-4083-b4fc-6c51d17d7ba9",
+      "appliedAtUtc": "2026-11-02T15:59:46.9107583Z"
+    },
+    {
+      "operationId": "eededefe-9b78-48e5-b053-f638848776ba",
+      "appliedAtUtc": "2026-11-02T16:04:50.9291182Z"
+    },
+    {
+      "operationId": "fc5a7acd-f7f8-4e1a-869b-57c44f0f2893",
+      "appliedAtUtc": "2026-11-02T16:11:21.6447489Z"
+    },
+    {
+      "operationId": "28e91457-f3b3-4bca-892f-889724b59344",
+      "appliedAtUtc": "2026-11-02T16:13:43.187322Z"
+    },
+    {
+      "operationId": "17ed1b89-663a-42ca-8046-33d566e509ef",
+      "appliedAtUtc": "2026-11-02T16:17:03.3782281Z"
+    },
+    {
+      "operationId": "51c10081-12a6-497f-ab29-1bc988af87e6",
+      "appliedAtUtc": "2026-11-02T16:24:24.6946122Z"
+    },
+    {
+      "operationId": "4d3537c1-fd64-478e-b654-327b74651cbd",
+      "appliedAtUtc": "2026-11-02T16:28:57.3217239Z"
     }
   ],
   "items": 30,
@@ -126,12 +158,99 @@
     ]
   },
   "nextSteps": [
-    "Continue specific item texts from primarysources andphotos",
-    "Historical timeline and durable eight-languagearticle",
-    "Fresh fullExport and finalaudit",
-    "Authorized site/Facebook only after publicationgatesverified"
+    "VerifyordinaryHistoirelink aftercache refresh",
+    "ResolveFacebookandpublishonceaftergates",
+    "Recordpartialpublicationaudit",
+    "ContinueOcéadeStrasbourgqualification"
   ],
-  "describedItems": 6,
-  "lastDataIntegrationAt": "2026-11-02T15:44:53.971Z",
-  "dataEvents": 26
+  "describedItems": 15,
+  "lastDataIntegrationAt": "2026-11-02T16:28:57.321Z",
+  "dataEvents": 34,
+  "visibilityOperations": [
+    {
+      "eventId": "apply-d052ed82-52bc-452d-97aa-b606a0f6bd97",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:20:25.3472565Z",
+      "appliedAt": "2026-11-02T16:20:25.347Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "6951845bee32b833eb6483947a0248eb58849b178b1872285fdf672daaff2140",
+      "counts": {
+        "created": 0,
+        "updated": 20,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication autorisée des vingt médias audités, sans nouvelle donnée ni changement de la date d’intégration."
+    },
+    {
+      "eventId": "apply-068773c8-7fbc-482b-aa22-22cbbfc62587",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:21:13.8989141Z",
+      "appliedAt": "2026-11-02T16:21:13.898Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "4e7e89dc92c8ddfdaa04c0a925c80f34186bf57f0fff0252df876dca2f271e7f",
+      "counts": {
+        "created": 0,
+        "updated": 20,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "article",
+        "isVisible"
+      ],
+      "summary": "Publication autorisée de quinze équipements, de quatre jalons et de l’article historique ; opérateur validé, parent publié dans le lot suivant."
+    },
+    {
+      "eventId": "apply-f88644e8-02f7-4975-b1b6-2e6cff3c40c5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:21:58.7713406Z",
+      "appliedAt": "2026-11-02T16:21:58.771Z",
+      "receiptFile": "09-publish-park-apply.receipt.json",
+      "receiptSha256": "7996a550a6e6e7c512c0fa9ed9e4d79a931e38e2ae43ad48cd5fd1656c421a5e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Mise en visibilité autorisée de La Récréation après ses contenus validés ; intégration toujours partielle, contrôles publics et Facebook à suivre."
+    }
+  ],
+  "actualScore": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 94,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "canonicalPublishedFacts": 4,
+  "publicItems": 15,
+  "privateItems": 15,
+  "articleLanguages": 8,
+  "finalIdempotenceUnchanged": 56,
+  "facebook": "NotAttempted",
+  "historyNavigation": "Still absent on ordinary French page at16:40UTC despite public localized API summary true; no completion or Facebook claimed.",
+  "officialSearchVisibility": {
+    "id": "854fefca-4dff-4133-835b-12ac1dcf444f",
+    "name": "Parc de la Récréation",
+    "isVisible": true,
+    "status": "ClosedDefinitively",
+    "adminReviewStatus": "Validated"
+  }
 }
