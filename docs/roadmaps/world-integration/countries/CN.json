@@ -3895,37 +3895,180 @@
     {
       "entryId": "CN-candidate-f6764cf6b6da95",
       "name": "Bay Glory",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Qianhai Bay , Shenzhen",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "OH Bay, Bao’an District, Shenzhen",
+      "siteId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T08:52:54.774Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Billetterie de la roue active sur Ctrip et horaires relevés en novembre 2026 ; maintenance et météo à vérifier.",
+      "identityConfidence": "Billetterie propre dans un complexe urbain côtier, sans doublon Park/Standalone sous noms anglais et chinois ; Happy Valley Shenzhen est distinct.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "湾区之光",
+        "灣區之光",
+        "OH Bay Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T08:48:41.975Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-07298569-fd9c-4506-b2a8-aab4997f3cd3",
+          "appliedAt": "2026-11-02T08:41:33.588Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:apply:07298569-fd9c-4506-b2a8-aab4997f3cd3",
+          "auditEvidence": null,
+          "summary": "Création masquée, identité, données techniques et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-aae121aa8f804eab87473c2a5286c235",
+          "appliedAt": "2026-11-02T08:42:28.513Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:image:aae121aa8f804eab87473c2a5286c235",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-78b605edc3d744de861dbeb67171b296",
+          "appliedAt": "2026-11-02T08:42:48.432Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:image:78b605edc3d744de861dbeb67171b296",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-1b3e95929f0a45b789ac7f4ef8aaf813",
+          "appliedAt": "2026-11-02T08:43:18.993Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:image:1b3e95929f0a45b789ac7f4ef8aaf813",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-1b83d05e-e550-46b1-8530-8062508f1eda",
+          "appliedAt": "2026-11-02T08:45:12.804Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:apply:1b83d05e-e550-46b1-8530-8062508f1eda",
+          "auditEvidence": null,
+          "summary": "Horaires habituels propres à la roue, relevés et datés"
+        },
+        {
+          "eventId": "apply-0dcb03c7-1963-4a2a-8ee0-f52c4e17a1b0",
+          "appliedAt": "2026-11-02T08:45:48.478Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:apply:0dcb03c7-1963-4a2a-8ee0-f52c4e17a1b0",
+          "auditEvidence": null,
+          "summary": "Début du montage en 2019 et ouverture en 2021 intégrés"
+        },
+        {
+          "eventId": "apply-237344d8-1ae0-4863-bc34-35afd4ca3e8f",
+          "appliedAt": "2026-11-02T08:48:41.975Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:apply:237344d8-1ae0-4863-bc34-35afd4ca3e8f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-bay-glory-20261102/audit.json",
+          "summary": "Textes publics corrigés et validés par l’audit sans blocage"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier une grille tarifaire actuellement vendue sur la billetterie officielle, un lien public stable de l’exploitant et les changements d’horaires ; ne pas répéter l’annonce Facebook de cette intégration.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ville de Shenzhen — identité, dimensions et billetterie séparée",
+          "url": "https://www.sz.gov.cn/en_szgov/news/infocus/SZCitywalk/Explore/Attractions/content/post_11857080.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Shenzhen News — chantier et ouverture",
+          "url": "https://www.sznews.com/news/content/2021-04/19/content_24142193.htm",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Ctrip — horaires relevés le 2 novembre 2026",
+          "url": "https://you.ctrip.com/sight/shenzhen26/112647075.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikidata — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q105888901",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Bendibao — recherche tarifaire 2026, non publiée",
+          "url": "https://m.bendibao.com/show977707.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Bay_Glory_2022.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Bay_Glory_Shenzhen_(side)_2022-01-09.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Entrance_of_Bay_Glory_Shenzhen_2022-01-09.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Bay Glory",
+            "source": "Ville de Shenzhen — roue du complexe OH Bay",
+            "url": "https://www.sz.gov.cn/en_szgov/news/infocus/SZCitywalk/Explore/Attractions/content/post_11857080.html",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "OH Bay",
+            "sourceLifecycleSignal": "Billetterie et horaires consultables en 2026",
+            "sourceLocality": "Shenzhen",
+            "matchingMethod": "Roue fixe avec réservation et billet propres dans un complexe de parc côtier et de commerces, distincte d’un parc d’attractions structuré et sans fiche homonyme dans l’éditeur officiel."
+          }
+        ],
+        "rationale": "La roue possède un accès payant autonome ; le complexe OH Bay n’est pas un parc d’attractions structuré avec parkItems."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/471f2f0a-3175-487c-bd16-12d7b7fef942/bay-glory",
+          "publishedAtUtc": "2026-11-02T08:49:41.299Z",
+          "verifiedAtUtc": "2026-11-02T08:52:54.774Z",
+          "evidence": "PARK_DATA_EDITOR:apply:639a432c-671e-499b-85fd-b2dba8b6b94a"
+        },
+        "facebook": {
+          "id": "04fe59ad2b96482dbd8032fa6c3de5ba",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T08:50:56.287Z",
+          "externalPostId": "1285475681307050_122125704999424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125704999424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:04fe59ad2b96482dbd8032fa6c3de5ba"
+        }
       }
     },
     {
