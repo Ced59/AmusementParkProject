@@ -1,0 +1,84 @@
+{
+  "reviewedAt": "2026-11-02",
+  "decision": "Four Ferris wheel discovery candidates belong to documented amusement parks and are retained as InsidePark leads, not standalone creations.",
+  "items": [
+    {
+      "countryCode": "PL",
+      "wheelEntryId": "PL-candidate-8e2096b1b0adcc",
+      "parentEntryId": "PL-park-30ef201a-088e-4274-8168-1230b91194e9",
+      "operatorSource": "https://energylandia.pl/en/attractions/dragon-zone/wonder-wheel/"
+    },
+    {
+      "countryCode": "PL",
+      "wheelEntryId": "PL-candidate-d8ea87b1b38fe1",
+      "parentEntryId": "PL-park-40cd6d65-5d0c-4ec4-a19a-dd58522173c5",
+      "operatorSource": "https://www.legendia.pl/atrakcje/atrakcje-legendii"
+    },
+    {
+      "countryCode": "VN",
+      "wheelEntryId": "VN-candidate-d5a5924d2f6fa4",
+      "parentEntryId": "VN-candidate-1b66839c2bd5a5",
+      "operatorSource": "https://vinwonders.com/en/wonderpedia/news/vinwonders-nha-trang-rides/"
+    },
+    {
+      "countryCode": "HK",
+      "wheelEntryId": "HK-candidate-e2d38086e9e7c0",
+      "parentEntryId": "HK-candidate-990a4f8fd82d28",
+      "operatorSource": "https://www.oceanpark.com.hk/en/a-day-at-the-park/attractions/ferris-wheel"
+    }
+  ],
+  "officialEditorSearches": [
+    {
+      "action": "SearchParks",
+      "query": "Energylandia",
+      "countryCode": "PL",
+      "siteId": "30ef201a-088e-4274-8168-1230b91194e9"
+    },
+    {
+      "action": "SearchParks",
+      "query": "Legendia",
+      "countryCode": "PL",
+      "siteId": "40cd6d65-5d0c-4ec4-a19a-dd58522173c5"
+    },
+    {
+      "action": "SearchParks",
+      "query": "VinWonders Nha Trang",
+      "countryCode": "VN",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Ocean Park Hong Kong",
+      "countryCode": "HK",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Wonder Wheel",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Legendia Flower",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Sky Wheel",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Vinpearl Sky Wheel",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Ocean Park Ferris Wheel",
+      "totalItems": 0
+    }
+  ],
+  "siteMutation": "None",
+  "facebookPublication": "None",
+  "lastDataIntegrationAt": null
+}

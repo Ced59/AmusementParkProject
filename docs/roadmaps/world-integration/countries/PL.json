@@ -2890,37 +2890,54 @@
       "entryId": "PL-candidate-d8ea87b1b38fe1",
       "name": "Ferris wheel in Legendia",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Standalone à qualifier",
       "locality": "Katowice / Chorzów",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction du parc documentée sur le site actuel de l’exploitant ; horaires individuels à vérifier lors de l’intégration du parkItem.",
+      "identityConfidence": "Parc Legendia masqué dans le site ; roue Legendia Flower répertoriée parmi ses attractions par l’exploitant.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Verifier ou intégrer Legendia Flower comme parkItem de Legendia dans le dossier PL-park-40cd6d65-5d0c-4ec4-a19a-dd58522173c5 ; ne pas créer de standalone indépendante. Conserver cette piste et son identifiant permanent.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Legendia — liste officielle des attractions, Legendia Flower",
+          "url": "https://www.legendia.pl/atrakcje/atrakcje-legendii",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Legendia Flower",
+            "source": "Legendia — liste officielle des attractions, Legendia Flower",
+            "url": "https://www.legendia.pl/atrakcje/atrakcje-legendii",
+            "family": "Grande roue",
+            "sourceVenueName": "Legendia",
+            "sourceLifecycleSignal": "Operating"
+          }
+        ],
+        "rationale": "Parc Legendia masqué dans le site ; roue Legendia Flower répertoriée parmi ses attractions par l’exploitant. Cette piste relève du parkItem du parc parent, hors créations standalone."
+      },
+      "possibleBacklogEntries": [
+        "PL-park-40cd6d65-5d0c-4ec4-a19a-dd58522173c5"
+      ]
     },
     {
       "entryId": "PL-candidate-4804d4ed55adbd",
@@ -8933,37 +8950,54 @@
       "entryId": "PL-candidate-8e2096b1b0adcc",
       "name": "WonderWheel",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Standalone à qualifier",
       "locality": "Energylandia , Zator",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction du parc documentée sur le site actuel de l’exploitant ; horaires individuels à vérifier lors de l’intégration du parkItem.",
+      "identityConfidence": "Parc Energylandia publié dans le site ; roue répertoriée comme attraction de Dragon Zone par l’exploitant.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Verifier ou intégrer Wonder Wheel comme parkItem de Energylandia dans le dossier PL-park-30ef201a-088e-4274-8168-1230b91194e9 ; ne pas créer de standalone indépendante. Conserver cette piste et son identifiant permanent.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Energylandia — Wonder Wheel dans Dragon Zone",
+          "url": "https://energylandia.pl/en/attractions/dragon-zone/wonder-wheel/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Wonder Wheel",
+            "source": "Energylandia — Wonder Wheel dans Dragon Zone",
+            "url": "https://energylandia.pl/en/attractions/dragon-zone/wonder-wheel/",
+            "family": "Grande roue",
+            "sourceVenueName": "Energylandia",
+            "sourceLifecycleSignal": "Operating"
+          }
+        ],
+        "rationale": "Parc Energylandia publié dans le site ; roue répertoriée comme attraction de Dragon Zone par l’exploitant. Cette piste relève du parkItem du parc parent, hors créations standalone."
+      },
+      "possibleBacklogEntries": [
+        "PL-park-30ef201a-088e-4274-8168-1230b91194e9"
+      ]
     },
     {
       "entryId": "PL-candidate-8dabd751549e91",
