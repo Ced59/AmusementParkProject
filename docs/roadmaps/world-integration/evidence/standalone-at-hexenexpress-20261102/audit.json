@@ -1,0 +1,152 @@
+{
+  "work": "Hexenexpress is a separately ticketed alpine coaster on the Schöckl plateau. Official editor searches for Hexenexpress, Schöckl and Hexen Express found no StandaloneAttraction. SearchParks found hidden Schöckl Seilbahn (df12d964-2603-47f8-8a0f-54ad6864760a), the distinct cable-car entity; its backlog row remains to qualify/migrate. Created a separate standalone record with eight authored descriptions, one visually inspected exact Commons photo showing the course in the right foreground, three official child access conditions and the official twentieth-anniversary event. Published site and Facebook with current seasonal closure. The official 2026 season ended 31 October. Both dated 2026 hours and fares were researched, but the official editor rejects pricing/openingHours on a TemporarilyClosed entity even when historical; these remain evidence rather than untruthfully setting Operating. An inferred opening date was removed after RCDB listed 2002 while Holding Graz marked twenty years in 2023.",
+  "qualification": "Alpine coaster with its own ticket counter at a mountain resort, separate from the cable car and without a structured amusement park parent.",
+  "sources": {
+    "operator": "https://www.holding-graz.at/de/freizeit/schoeckl/hexenexpress/",
+    "anniversary": "https://www.holding-graz.at/de/unser-hexenexpress-feiert-seinen-20er/",
+    "map": "https://mapcarta.com/W526760936",
+    "rcdbConflictingYear": "https://rcdb.com/13068.htm"
+  },
+  "duplicateSearches": {
+    "parkSchockl": "Hidden Schöckl Seilbahn df12d964-2603-47f8-8a0f-54ad6864760a, not the coaster",
+    "standaloneHexenexpress": 0,
+    "standaloneSchockl": 0,
+    "standaloneHexenExpress": 0
+  },
+  "commercialData": {
+    "hours2026": "Official 2026 only: 1 May–30 September weekdays 10:00–16:30, weekends and public holidays 10:00–17:30, summer school holidays 10:00–17:30; 1–31 October daily 10:00–16:30. Rain or dense fog stops rides. No 2027 dates published.",
+    "pricing2026": {
+      "currency": "EUR",
+      "adultOne": 4.9,
+      "adultThree": 13.4,
+      "adultFive": 21.5,
+      "childOneAge4to18": 3.1,
+      "childThree": 7.9,
+      "childFive": 12.3,
+      "validThrough": "2026-10-31",
+      "threeAndFiveRideTicketsNonTransferable": true
+    },
+    "editorLimitation": {
+      "hours": {
+        "operationId": "2213050c-2a99-401b-b2d0-1f97546e3419",
+        "errors": [
+          "openingHours ne peut contenir des horaires actuels que pour une attraction autonome Operating."
+        ]
+      },
+      "pricing": {
+        "operationId": "a5f44007-7dbb-4409-bfc3-23f082246112",
+        "errors": [
+          "pricing ne peut contenir des tarifs actuels que pour une attraction autonome Operating."
+        ]
+      },
+      "historicalPricing": {
+        "operationId": "70eb4d37-0498-4f4a-86ad-1b56bd2578b2",
+        "errors": [
+          "pricing ne peut contenir des tarifs actuels que pour une attraction autonome Operating."
+        ]
+      }
+    }
+  },
+  "dataReceipts": [
+    {
+      "operationId": "30b8ebc5-2ae1-457f-94c2-b248c04657e3",
+      "appliedAtUtc": "2026-11-02T09:38:10.782Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "2f1c9d0f-46f7-46aa-a9ef-9711cd4f3c27",
+      "appliedAtUtc": "2026-11-02T09:44:42.207Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "b849e3fd-9114-48bd-8848-0fe5cd81dde7",
+      "appliedAtUtc": "2026-11-02T09:45:06.480Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "d8cca7b8-7a02-4b78-bb9a-0069f31903b4",
+      "appliedAtUtc": "2026-11-02T09:48:57.960Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "f05387f5140d4df99dd5735d07e269ec",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:St._Radegund_bei_Graz_-_Sch%C3%B6ckl,_Gipfelareal.JPG",
+      "author": "C. Stadler/Bwag",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2023-09-02",
+      "ownerId": "8cba8e15-650a-4931-8c82-91c43c485771",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-02T09:39:43.479Z"
+    }
+  ],
+  "audit": {
+    "score": 87,
+    "earnedPoints": 52,
+    "applicableMaxPoints": 60,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 1,
+    "visibleHistoryEvents": 1,
+    "knownScoringGaps": "No structured current hours or pricing because season is closed and editor rejects both. Exact original opening year needs resolution; image is a panorama with track visible in right foreground."
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/8cba8e15-650a-4931-8c82-91c43c485771/hexenexpress",
+    "sitePublishedAtUtc": "2026-11-02T09:46:18.970Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:0b36763a-f390-4ce3-b029-c6298064f646",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "036bc9a32e0b4f3889f4db2a5d91aa9a",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125710105424431",
+    "facebookPublishedAtUtc": "2026-11-02T09:47:40.625Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T09:48:57.960Z",
+  "remainingGaps": [
+    "Verify exact original opening year against primary records; Holding Graz twentieth birthday in 2023 conflicts with RCDB 2002.",
+    "Add 2027 hours and prices only after operator publication and seasonal reopening; the current editor cannot store historical commercial data under TemporarilyClosed.",
+    "Seek a closer exact licensed photo of the coaster; the present panorama shows the course clearly but not a sled close-up.",
+    "Qualify hidden Schöckl Seilbahn Park shell separately as a cable-car standalone migration."
+  ]
+}
