@@ -1,0 +1,299 @@
+{
+  "entryId": "FR-candidate-d4d165522b958e",
+  "ownerConversation": "Conversation France",
+  "name": "Océade Rouen",
+  "phase": "qualification-in-progress",
+  "researchedAtUtc": "2026-11-02T10:36:56Z",
+  "lastDataIntegrationAt": null,
+  "applyOrImportPerformed": false,
+  "completed": false,
+  "executionBlocker": "Le service d'exécution est indisponible. Le connecteur de statut annonce running/connected, mais exec_command renvoie No usable execution environment is available. Aucun accès de substitution à PARK_DATA_EDITOR.",
+  "reservationEvidence": "oceade-rouen-reservation.json",
+  "identity": {
+    "classification": "Parc aquatique couvert indépendant, voisin du complexe municipal piscine-patinoire de l'île Lacroix ; ni standalone ni attraction interne au Parc du Bocasse.",
+    "locality": "Rouen, Seine-Maritime, France",
+    "historicalAddress": "Espace Jacques-Anquetil, île Lacroix, 76000 Rouen",
+    "addressEvidence": [
+      "reinventer-seine-2016",
+      "spail-register"
+    ],
+    "otherAddress": "Rue Sainte-Amélie dans la fiche d'architecture PSS ; ne pas inventer de numéro de rue.",
+    "coordinatesCandidate": {
+      "latitude": 49.43,
+      "longitude": 1.1047222222222224,
+      "source": "PSS, 49°25′48″N 1°6′17″E",
+      "status": "À recouper avant Apply ; aucun point d'attraction établi."
+    },
+    "operatorCandidate": {
+      "name": "Société du parc aquatique de l'île Lacroix (SPAIL)",
+      "siren": "345159123",
+      "evidence": [
+        "council-20001006",
+        "spail-register"
+      ],
+      "qualification": "La transcription du conseil lie explicitement SPAIL à l'exploitation d'Océade. Vérifier l'existence de cet opérateur via le client officiel avant création.",
+      "excludedEntities": [
+        "Océade Ingénierie, SIREN 449454719, créée en 2003",
+        "Océade, SIREN 499493021, créée en 2007",
+        "Société du parc aquatique du Heysel, opérateur du site belge"
+      ]
+    }
+  },
+  "officialSearches": {
+    "source": "Reçus locaux 00-search-* dans /workspace/france-historical-20261022/oceade-rouen ; résultats obtenus avant la déconnexion.",
+    "completed": [
+      {
+        "operation": "SearchParks",
+        "query": "Océade",
+        "count": 0
+      },
+      {
+        "operation": "SearchStandaloneAttractions",
+        "query": "Océade",
+        "count": 0
+      },
+      {
+        "operation": "SearchParks",
+        "query": "Rouen",
+        "count": 1,
+        "excludedMatch": {
+          "id": "79b3c038-bff1-4170-b51d-4c7ed76b1a2d",
+          "name": "Parc du Bocasse",
+          "reason": "Autre parc, autre localisation"
+        }
+      },
+      {
+        "operation": "SearchStandaloneAttractions",
+        "query": "Rouen",
+        "count": 0
+      }
+    ],
+    "stillRequired": [
+      "Oceade sans accent : parcs et standalone, sans restriction de pays",
+      "Lacroix : parcs et standalone",
+      "Recherche ciblée de l'opérateur SPAIL avec le client officiel"
+    ],
+    "ambiguousLastRequest": "Le dernier exec devait préparer les quatre recherches complémentaires ; échec de rattachement avant résultat. Inspecter les fichiers locaux avant reprise. Aucun Apply n'était prévu."
+  },
+  "dateReconciliation": {
+    "construction": "1988 dans un article du Monde de 1995 ; 1989 dans les dossiers de reconversion. Ne pas confondre construction et ouverture.",
+    "inauguration": {
+      "date": "1989-01-30",
+      "source": "rouen-magazine-396",
+      "precision": "Day"
+    },
+    "publicOpening": {
+      "date": "1989-02",
+      "source": "le-monde-19900802",
+      "precision": "Month"
+    },
+    "closure": {
+      "preferredCandidate": "1990-08-30",
+      "source": "council-20001006",
+      "reasoning": "La transcription distingue explicitement cessation d'exploitation et liquidation. Le rapport et l'intervention orale donnent tous deux le 30 août 1990.",
+      "conflictingRetrospectives": "Rouen Magazine 396 et les documents métropolitains de 2016 et 2025 retiennent une fermeture ou un abandon en 1991.",
+      "decision": "Conserver les deux versions ; retrouver si possible le procès-verbal municipal original avant de fixer la date de fermeture dans le noyau. Aucun remplacement silencieux de 1991."
+    },
+    "legalDates": [
+      {
+        "date": "1987-06-15",
+        "event": "Bail de trente ans conclu avec C3D agissant pour Océade SA",
+        "source": "council-20001006"
+      },
+      {
+        "date": "1989-01-23",
+        "event": "Cession du bail à SPAIL",
+        "source": "council-20001006"
+      },
+      {
+        "date": "1990-07-10",
+        "event": "Redressement judiciaire selon la transcription municipale",
+        "source": "council-20001006",
+        "caution": "Le Monde du 2 août rapporte un dépôt de bilan le 19 juillet ; actes et dates à distinguer."
+      },
+      {
+        "date": "1991-03-19",
+        "event": "Liquidation selon le rapport municipal ; date de clôture de l'établissement au registre",
+        "source": "council-20001006 / spail-register",
+        "caution": "L'intervention orale reproduite donne 19 juillet 1991. Ne pas masquer cette divergence interne ; ne pas assimiler à la fermeture au public."
+      },
+      {
+        "date": "1991-12-17",
+        "event": "Date d'effet de résiliation du bail fixée par la cour d'appel",
+        "source": "council-20001006"
+      },
+      {
+        "date": "2011-04-27",
+        "event": "Radiation RCS de SPAIL",
+        "source": "spail-register",
+        "caution": "Ne correspond pas à une exploitation du parc jusqu'en 2011."
+      }
+    ]
+  },
+  "inventory": {
+    "source": "rouen-magazine-396",
+    "minimumDistinctDocumentedFacilities": 5,
+    "totalHistoricalInventoryKnown": false,
+    "facilities": [
+      {
+        "label": "Toboggan géant",
+        "categoryCandidate": "Attraction",
+        "typeCandidate": "WaterRide",
+        "caution": "Nom descriptif attesté ; nom commercial, fabricant, longueur et nombre de pistes inconnus."
+      },
+      {
+        "label": "Bassin à vagues",
+        "categoryCandidate": "Attraction",
+        "typeCandidate": "WaterRide"
+      },
+      {
+        "label": "Bains bouillonnants",
+        "categoryCandidate": "À déterminer selon le schéma officiel",
+        "caution": "Ne pas inventer plusieurs attractions à partir du pluriel."
+      },
+      {
+        "label": "Hammam",
+        "categoryCandidate": "Service à vérifier dans le schéma officiel"
+      },
+      {
+        "label": "Sauna",
+        "categoryCandidate": "Service à vérifier dans le schéma officiel"
+      }
+    ],
+    "forbiddenInferences": [
+      "Aucun modèle Van Egdom retenu sur la seule base du forum.",
+      "Aucune attraction du site de Strasbourg ou de Bruxelles transférée à Rouen.",
+      "Aucun équipement du futur centre de cultures urbaines intégré comme attraction aquatique historique.",
+      "Aucun fabricant, GPS d'attraction, nom commercial ou date d'ouverture individuelle inventé."
+    ]
+  },
+  "mediaResearch": {
+    "authenticLogoFound": false,
+    "officialHistoricalVisitorMapFound": false,
+    "originalImageValidationStillRequired": true,
+    "candidates": [
+      {
+        "source": "metropole-mag17",
+        "description": "Photographie intérieure de la friche, crédit Thomas Boivin, page 11. Extraire et inspecter l'image native ; ne pas importer une capture de page."
+      },
+      {
+        "source": "metropole-20251124",
+        "description": "Photographie de l'ancienne piscine créditée Métropole Rouen Normandie. Distinguer le rendu du projet futur."
+      },
+      {
+        "url": "https://franckbilloux.wixsite.com/franck-billoux/oceade",
+        "description": "Galerie de Franck Billoux téléchargée avant l'interruption ; fichiers originaux, attribution et sujets à inspecter."
+      },
+      {
+        "url": "https://explosfriches.fr/index.php/2016/08/22/piscine-oceade/",
+        "description": "Deux images du site fermé, Benoman, article du 22 août 2016 ; originaux non encore inspectés.",
+        "originalCandidates": [
+          "https://explosfriches.fr/wp-content/uploads/2016/08/Piscine-Oc%C3%A9ade-1.jpg",
+          "https://explosfriches.fr/wp-content/uploads/2016/08/Piscine-Oc%C3%A9ade-2.jpg"
+        ],
+        "caution": "Les liens du site pointent aussi vers des vignettes WordPress resize=150,150 : ne pas importer ces transformations."
+      },
+      {
+        "url": "https://www.thomas-boivin.fr/wp-content/uploads/2009/08/oceade-2.jpg",
+        "description": "Piste issue du forum ; serveur indisponible, identité visuelle et fichier non vérifiés."
+      }
+    ],
+    "excluded": [
+      {
+        "url": "https://www.sers.eu/IMG/cache-553x451/Parc-aquatique-Oceade-Strasbourg-vue_aerienne-553x451.jpg",
+        "reason": "Photo de Strasbourg insérée à tort dans un sujet Rouen ; erreur reconnue dans le fil."
+      },
+      {
+        "subject": "Logos d'Océade Ingénierie ou du site belge",
+        "reason": "Ne prouvent pas l'identité visuelle du parc de Rouen."
+      },
+      {
+        "subject": "Carte aérienne Réinventer la Seine, 2016",
+        "reason": "Document d'urbanisme après fermeture, pas un plan officiel de visite du parc."
+      }
+    ]
+  },
+  "laterSiteHistory": {
+    "2016": "L'ancien site figure dans l'appel à projets Réinventer la Seine ; emprise 10 692 m², bâti 3 501 m², propriétaire Ville de Rouen.",
+    "2025": "Le 24 novembre, la Métropole présente le choix de Jean-Pierre Lott pour une reconversion en centre de cultures urbaines, visée en 2029.",
+    "2026": "L'avis 26-DB-WHNC-OPCOceade concerne une mission de coordination ; ce marché ne prouve ni début des travaux ni ouverture.",
+    "caveat": "Une reconversion future ne constitue pas une réouverture du parc aquatique."
+  },
+  "sources": [
+    {
+      "key": "council-20001006",
+      "url": "https://rouen-histoire.fr/Pessiot/Conseil/Conseil_T2_L_Fich.php?id=2457",
+      "type": "Transcription d'un document municipal sur un site historique",
+      "documentDate": "2000-10-06",
+      "note": "Séance, dossier Océade/SPAIL, page 174. Texte intégral consulté ; original municipal à rechercher."
+    },
+    {
+      "key": "spail-register",
+      "url": "https://www.pappers.fr/entreprise/societe-du-parc-aquatique-de-lile-lacroix-spail-345159123",
+      "type": "Agrégateur de données de registre",
+      "note": "SIREN, adresse, création 20 mai 1988, clôture établissement 19 mars 1991, radiation 27 avril 2011. Ces dates sont juridiques."
+    },
+    {
+      "key": "rouen-magazine-396",
+      "url": "https://rouen.fr/sites/default/files/rouenmagazine/rm396.pdf",
+      "mirror": "https://manualzilla.com/doc/6473396/t%C3%A9l%C3%A9charger",
+      "type": "Magazine municipal, numéro 396, 15–29 mai 2013, pages 10–11",
+      "note": "PDF municipal indexé mais téléchargement web en erreur 404 ; transcription miroir téléchargée. Inauguration, cinq équipements, reconversion."
+    },
+    {
+      "key": "le-monde-19900802",
+      "url": "https://www.lemonde.fr/archives/article/1990/08/02/ouvert-en-fevrier-1989-le-parc-aquatique-oceade-de-rouen-est-menace-de-fermeture_3544188_1819218.html",
+      "type": "Presse contemporaine",
+      "note": "Ouverture en février 1989 ; difficultés en juillet 1990. Une menace de fermeture ne suffit pas à prouver sa réalisation."
+    },
+    {
+      "key": "reinventer-seine-2016",
+      "url": "https://www.metropole-rouen-normandie.fr/sites/default/files/documents/dossier_presse/DP_reinventer_seine.pdf",
+      "type": "Dossier officiel, page 34",
+      "note": "Adresse Espace Jacques-Anquetil, surfaces, propriété municipale et potentiel de reconversion."
+    },
+    {
+      "key": "metropole-mag17",
+      "url": "https://www.metropole-rouen-normandie.fr/sites/default/files/publication/2019/Magazine17.pdf",
+      "type": "Magazine officiel Le MAG, septembre 2016, page 11",
+      "note": "2019 dans l'URL n'est pas la date du magazine. Photo Thomas Boivin ; équipements aquatiques et fermeture indiquée en 1991."
+    },
+    {
+      "key": "metropole-20251124",
+      "url": "https://www.metropole-rouen-normandie.fr/file-download/download/public/631239",
+      "type": "Dossier de presse officiel du 24 novembre 2025"
+    },
+    {
+      "key": "metropole-urban-cultures",
+      "url": "https://www.metropole-rouen-normandie.fr/actualite/2025/un-centre-de-cultures-urbaines-sur-lile-lacroix-64303",
+      "type": "Actualité officielle"
+    },
+    {
+      "key": "pss-architecture",
+      "url": "https://www.pss-archi.eu/immeubles/FR-76540-70512.html",
+      "type": "Base d'architecture",
+      "note": "Adresse alternative et coordonnées ; données de construction et fermeture à confronter aux documents contemporains."
+    },
+    {
+      "key": "forum-identity-warning",
+      "url": "https://www.rutscherlebnis-community.de/forum/thread/317-oc%C3%A9ade-rouen/",
+      "type": "Forum, piste iconographique uniquement",
+      "note": "Le message 8 corrige explicitement une confusion avec Strasbourg. Les témoignages techniques ne suffisent pas pour attribuer des modèles à Rouen."
+    },
+    {
+      "key": "contract-2026",
+      "url": "https://mpe76.marches-publics.info/avis/index.cfm?IDS=3952&fuseaction=pub.affPublication&refPub=MPI-pub-2026155730&serveur=MPI",
+      "type": "Avis public de marché"
+    }
+  ],
+  "nextActions": [
+    "Rétablir l'environnement d'exécution et inspecter les reçus locaux avant reprise.",
+    "Synchroniser ce nouveau fichier de preuves depuis la branche distante sans écraser les fichiers locaux.",
+    "Terminer les recherches d'alias et d'opérateur via PARK_DATA_EDITOR, séquentiellement et avec Status préalable.",
+    "Recouper la date de cessation d'exploitation et les coordonnées.",
+    "Inspecter les images natives, rechercher un logo authentique et des plans historiques.",
+    "Préparer le noyau privé et l'inventaire sourcé ; inspecter entièrement le Preview avant tout Apply.",
+    "Après chaque Apply/import réussi, ajouter immédiatement l'événement UTC réel au registre avec le CLI officiel.",
+    "Garder l'entrée non terminée jusqu'à l'audit final ; pas de publication site ou Facebook déclarée pour ce parc à ce stade."
+  ]
+}
