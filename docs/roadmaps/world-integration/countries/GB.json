@@ -8498,29 +8498,82 @@
     },
     {
       "entryId": "GB-candidate-standalone-7fe2cfe1af8ee8",
-      "name": "Luge Wiegand — Chatham",
-      "entityKind": "ToQualify",
+      "name": "Chatham Toboggan Run",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Capstone Road, Gillingham ME7 3JH, Kent",
+      "siteId": "5741e424-fd83-45bd-adbc-0f94155bba51",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T13:08:08.966Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation, réservation et tarifs confirmés par l’exploitant le 2 novembre 2026.",
+      "identityConfidence": "Piste propre et billetterie séparée au centre de sports de neige ; trois photos exactes vérifiées ; aucune fiche homonyme dans l’éditeur officiel.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Chatham"
+        "Chatham Snowsports Centre Toboggan",
+        "Chatham Ski Centre Toboggan",
+        "Luge Wiegand — Chatham"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T13:07:35.827Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-37309895-b015-45b1-99d1-22bd71d1bc88",
+          "appliedAt": "2026-11-02T13:04:21.748Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:apply:37309895-b015-45b1-99d1-22bd71d1bc88",
+          "auditEvidence": null,
+          "summary": "Création masquée de la fiche et huit descriptions"
+        },
+        {
+          "eventId": "apply-81c37d14-b678-4063-b957-bda2debe3f16",
+          "appliedAt": "2026-11-02T13:04:47.015Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:apply:81c37d14-b678-4063-b957-bda2debe3f16",
+          "auditEvidence": null,
+          "summary": "Trois tarifs de descente officiels structurés et localisés"
+        },
+        {
+          "eventId": "image-f0cd13597b87428291c8b0e30d9c8005",
+          "appliedAt": "2026-11-02T13:07:12.884Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:image:f0cd13597b87428291c8b0e30d9c8005",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 de la piste publiée avec droits, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-c8f8c39720514af58c0d715ec4226073",
+          "appliedAt": "2026-11-02T13:07:24.320Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:image:c8f8c39720514af58c0d715ec4226073",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 de la piste publiée avec droits, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-0761d3dca9a14166bedb9529915ad55e",
+          "appliedAt": "2026-11-02T13:07:35.827Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:image:0761d3dca9a14166bedb9529915ad55e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-chatham-20261102/audit.json",
+          "summary": "Photo exacte 3 de la piste publiée avec droits, crédits et textes en huit langues"
+        }
+      ],
+      "nextAction": "Conserver le dossier et les reçus. Revoir tarif et disponibilité auprès de l’exploitant ; chercher des photos plus récentes sous licence réutilisable. Ne pas republier Facebook pour une simple révision.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -8531,22 +8584,38 @@
           "label": "Opérateur référencé par la source",
           "url": "http://jnlchatham.co.uk/tubing/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste, âge, réservation et tarifs",
+          "url": "https://www.jnlchatham.co.uk/tobogganing-sno-tubing-in-chatham/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — adresse",
+          "url": "https://www.jnlchatham.co.uk/contact-us/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — Robin Webster, photo 1, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805480.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — Robin Webster, photo 2, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805505.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — Robin Webster, photo 3, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805499.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [
-          {
-            "name": "Chatham",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1414",
-            "family": "Luge d’été",
-            "sourceVenueName": "Chatham",
-            "referenceId": "location-id-1414"
-          }
-        ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [],
+        "rationale": "Les descentes ont une billetterie distincte des cours de ski et du tubing ; le centre de sports de neige n’est pas un parc de loisirs à admission obligatoire."
       }
     },
     {

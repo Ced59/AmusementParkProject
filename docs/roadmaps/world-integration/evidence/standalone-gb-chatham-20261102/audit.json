@@ -1,0 +1,121 @@
+{
+  "work": "The Chatham Snowsports Centre toboggan run was requalified from a Wiegand equipment lead to an independently ticketed standalone attraction. The current operator page confirms ride tickets, age rules, online booking recommendation and outdoor weather constraints. Official Park and StandaloneAttraction searches for Chatham and Capstone Road found no same-site match. Three exact Commons photographs of this run from June 2012 were visually inspected and published with Robin Webster credit, CC BY-SA 2.0 licensing, and distinct eight-language alt text and captions. The completeness audit initially found repeated image descriptions; those were rewritten before site publication. All eight locale pages and three public image binaries returned HTTP 200 before Facebook publication.",
+  "qualification": "Separate ride tickets at a snowsports centre, no amusement-park admission.",
+  "sources": {
+    "operator": "https://www.jnlchatham.co.uk/tobogganing-sno-tubing-in-chatham/",
+    "address": "https://www.jnlchatham.co.uk/contact-us/",
+    "photos": [
+      "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805480.jpg",
+      "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805505.jpg",
+      "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805499.jpg"
+    ]
+  },
+  "duplicateSearches": {
+    "parkChatham": 0,
+    "standaloneChatham": 0,
+    "parkCapstoneRoad": 0,
+    "standaloneCapstoneRoad": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "37309895-b015-45b1-99d1-22bd71d1bc88",
+      "appliedAtUtc": "2026-11-02T13:04:21.7484124Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "81c37d14-b678-4063-b957-bda2debe3f16",
+      "appliedAtUtc": "2026-11-02T13:04:47.0159297Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "f0cd13597b87428291c8b0e30d9c8005",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805480.jpg",
+      "author": "Robin Webster",
+      "license": "CC BY-SA 2.0",
+      "photographedDate": "2012-06-25",
+      "published": true,
+      "isCurrent": true,
+      "siteBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "c8f8c39720514af58c0d715ec4226073",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805505.jpg",
+      "author": "Robin Webster",
+      "license": "CC BY-SA 2.0",
+      "photographedDate": "2012-06-25",
+      "published": true,
+      "isCurrent": false,
+      "siteBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "0761d3dca9a14166bedb9529915ad55e",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805499.jpg",
+      "author": "Robin Webster",
+      "license": "CC BY-SA 2.0",
+      "photographedDate": "2012-06-25",
+      "published": true,
+      "isCurrent": false,
+      "siteBinaryHttpStatus": 200
+    }
+  ],
+  "commercialData": {
+    "source": "https://www.jnlchatham.co.uk/tobogganing-sno-tubing-in-chatham/",
+    "singleRideGBP": 5.5,
+    "twoRidesGBP": 10,
+    "fiveRidesGBP": 20,
+    "structuredOfferCount": 3,
+    "hoursDecision": "No recurring rule because availability follows the live booking timetable and weather."
+  },
+  "audit": {
+    "score": 81,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 3
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/5741e424-fd83-45bd-adbc-0f94155bba51/chatham-toboggan-run",
+    "sitePublishedAtUtc": "2026-11-02T13:08:08.9666951Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:ec9be526-06b5-4df6-a07e-ffbcf2fa273c",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "9e4268fa81c441cfa51bb27e83d5123d",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125733109424431",
+    "facebookPublishedAtUtc": "2026-11-02T13:09:24.0229793Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T13:07:35.827Z",
+  "remainingGaps": [
+    "Recheck prices and booking availability on the operator site.",
+    "Find newer reusable photographs of the same run when available."
+  ]
+}
