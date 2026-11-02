@@ -12761,18 +12761,18 @@
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Ancien Alpine Coaster retiré avant 2019 ; le centre reste actif pour le ski et le tubing, sans cette piste dans l’offre officielle actuelle.",
+      "identityConfidence": "La fiche RCDB désigne une ancienne installation ; le reportage de 2019 constate sa disparition et l’exploitant ne propose plus de coaster.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver l’ancienne référence RCDB et cette exclusion. Réouvrir seulement si l’exploitant annonce et documente une nouvelle piste alpine à Stoke Ski Centre ; ne pas créer une fiche pour l’ancienne installation.",
       "sources": [
         {
           "label": "RCDB",
@@ -12783,11 +12783,21 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14141.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Racer Ready — reportage de 2019 sur la disparition de la piste",
+          "url": "https://www.racer-ready.co.uk/post/2019/8/20/the-evolving-nature-of-stoke-ski-centre-venue-for-the-british-dry-slope-championships-in-2019",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — activités actuelles sans alpine coaster",
+          "url": "https://stokeskicentre.com/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "Alpine Coaster",
@@ -12800,7 +12810,7 @@
             "sourceOpenedYear": "2003"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "L’ancienne piste de luge/alpine coaster a disparu avant 2019 ; le centre est toujours ouvert mais ses activités officielles actuelles ne comprennent plus cette installation. Dossier historique, hors file des créations actuelles."
       }
     },
     {

@@ -15557,27 +15557,29 @@
       "entryId": "DE-candidate-standalone-99b3786c77a2e5",
       "name": "Luge Wiegand — Malchow",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Luge d’été",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Deux pistes de luge existantes au sein du Family Fun Park Malchow selon l’exploitant ; piste constructeur liée au dossier de parc.",
+      "identityConfidence": "Les références Wiegand Malchow et Malchow II correspondent aux deux pistes du même Family Fun Park, déjà suivi sous DE-candidate-74e7fa77996173.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-candidate-74e7fa77996173"
+      ],
       "aliases": [
         "Malchow"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver les références constructeur et ce doublon documentaire. Reprendre les deux pistes comme parkItems du dossier DE-candidate-74e7fa77996173 ; ne pas créer de standalone séparée.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -15593,11 +15595,16 @@
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-2130",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — deux pistes du Family Fun Park Malchow",
+          "url": "https://www.sommerrodelbahn-malchow.de/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "Malchow",
@@ -15616,8 +15623,9 @@
             "referenceId": "location-id-2130"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Les références Wiegand Malchow et Malchow II renvoient aux deux pistes de luge du Family Fun Park géré avec l’Affenwald. Elles sont intégrables dans la future fiche Park, et la ligne constructeur reste conservée comme doublon de découverte."
+      },
+      "duplicateOf": "DE-candidate-74e7fa77996173"
     },
     {
       "entryId": "DE-candidate-standalone-a358dc1f7d8181",
@@ -20372,36 +20380,46 @@
       "entryId": "DE-candidate-74e7fa77996173",
       "name": "Rodelbahn & Affenwald Malchow",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "Malchow",
+      "proposedEntityKind": "Park",
+      "category": "Family Fun Park — deux pistes de luge et parc des singes",
+      "locality": "Karower Chaussee 6, 17213 Malchow",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-11-02",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Family Fun Park ouvert selon le calendrier 2026 de l’exploitant ; deux pistes de luge et parc des singes sur le même site.",
+      "identityConfidence": "L’exploitant nomme le lieu Family Fun Park et décrit deux pistes ainsi que le parc des singes ; recherche officielle Park/Standalone « Malchow » sans fiche correspondante.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Créer et intégrer une fiche Park pour le Family Fun Park après dernier contrôle de doublon. Intégrer les deux pistes de luge comme parkItems et le parc des singes comme composante du lieu, avec photos et calendrier officiel ; conserver les deux références Wiegand liées au même dossier.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/rodelbahn-und-affenwald-malchow/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — identité Family Fun Park et deux pistes",
+          "url": "https://www.sommerrodelbahn-malchow.de/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — tarifs, horaires saisonniers et adresse",
+          "url": "https://www.sommerrodelbahn-malchow.de/besuch-planen",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
         "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "L’exploitant présente un Family Fun Park réunissant deux pistes de luge et l’Affenwald. Les tickets de luge sont individuels, mais la piste est une composante de ce lieu structuré ; créer une fiche Park plutôt qu’une standalone isolée."
       }
     },
     {
