@@ -2148,7 +2148,7 @@
         "Oeschinensee mountain coaster"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-02T14:40:16.526Z",
+      "lastDataIntegrationAt": "2026-11-02T14:53:16.187Z",
       "integrationHistory": [
         {
           "eventId": "apply-a73d00d8-82aa-4249-987c-393d3d01f743",
@@ -2219,6 +2219,16 @@
           "evidence": "PARK_DATA_EDITOR:apply:f1530272-5439-4328-848e-31373f34b522",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-20261102/audit.json",
           "summary": "Dénivelé officiel intégré ; export frais, huit langues, tarifs, horaires et deux photos audités sans bloqueur"
+        },
+        {
+          "eventId": "apply-df8dbc31-6b38-4c68-a0f2-f4e48d425795",
+          "appliedAt": "2026-11-02T14:53:16.187Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:apply:df8dbc31-6b38-4c68-a0f2-f4e48d425795",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-pricing-20261102/audit.json",
+          "summary": "Suppression du lien d’achat trompeur : billets vendus uniquement sur place ; tarifs conservés et page publique contrôlée"
         }
       ],
       "nextAction": "Conserver cette ligne et les reçus. Rechercher des photographies récentes et de meilleure résolution de la piste ; réexaminer l’horaire après le 8 novembre 2026 et les tarifs avant la prochaine saison. Ne pas republier la même annonce Facebook.",
@@ -2298,7 +2308,7 @@
         }
       },
       "lastEditorialAudit": {
-        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-20261102/audit.json",
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-pricing-20261102/audit.json",
         "score": 91,
         "publicationBlockers": [],
         "gapCount": 4
