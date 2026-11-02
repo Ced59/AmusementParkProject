@@ -20966,28 +20966,127 @@
       "name": "Parc de la Cabosse",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "AmusementPark historique local",
       "locality": "Jurques",
-      "siteId": null,
+      "siteId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-02T14:58:50.638411+00:00",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Ancien parc indépendant confirmé par publicité1970, photographieSurfRacing, histoire locale et archives du zoo successeur ; quatre recherches officielles sans doublon, création et export frais vérifiés.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "La Cabosse",
+        "Parc La Cabosse"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-02T14:56:30.390Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d21bad32-09ac-459b-8fbd-bfd7cb901c9e",
+          "appliedAt": "2026-11-02T14:41:25.376Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-receipts.json#apply-d21bad32-09ac-459b-8fbd-bfd7cb901c9e",
+          "auditEvidence": null,
+          "summary": "Création privée du parc historique de la Cabosse, identité distincte du zoo successeur, dates partielles et adresse sourcées ; coordonnées historiques non établies."
+        },
+        {
+          "eventId": "apply-6a627050-fb6d-404c-a3e6-f53deb07b1b0",
+          "appliedAt": "2026-11-02T14:43:24.304Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-receipts.json#apply-6a627050-fb6d-404c-a3e6-f53deb07b1b0",
+          "auditEvidence": null,
+          "summary": "Douze offres historiques documentées, dont neuf attractions, deux lieux de restauration et une piste de danse ; aucun transfert automatique des dates ou équipements du zoo."
+        },
+        {
+          "eventId": "apply-5f99a91e-81c5-4c32-9aa0-8b8abb30028f",
+          "appliedAt": "2026-11-02T14:47:24.815Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-receipts.json#apply-5f99a91e-81c5-4c32-9aa0-8b8abb30028f",
+          "auditEvidence": null,
+          "summary": "Description du parc personnellement rédigée et relue dans les huit langues ; reconversion de1977 distincte des dates inconnues des équipements."
+        },
+        {
+          "eventId": "import-photo-503e8e275d1047719a050de9f2e796e7-2026-11-02T144740.689Z",
+          "appliedAt": "2026-11-02T14:47:40.689Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-receipts.json#import-photo-503e8e275d1047719a050de9f2e796e7-2026-11-02T144740.689Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-surf-racing, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-532c7dce-80c5-4e64-8d10-66b7f6c88e5a",
+          "appliedAt": "2026-11-02T14:54:13.257Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-receipts.json#apply-532c7dce-80c5-4e64-8d10-66b7f6c88e5a",
+          "auditEvidence": null,
+          "summary": "Deux descriptions historiques spécifiques, Carrousel et Surf Racing, rédigées et relues dans les huit langues ; format court documenté sans remplissage."
+        },
+        {
+          "eventId": "apply-d8d1f9f7-8603-46a2-b1d1-db096a43c441",
+          "appliedAt": "2026-11-02T14:56:30.390Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-receipts.json#apply-d8d1f9f7-8603-46a2-b1d1-db096a43c441",
+          "auditEvidence": null,
+          "summary": "Deux jalons sourcés et un article développé en huit langues sur la Cabosse et sa reconversion ; aucun jalon artificiel ni date de fermeture individuelle déduite."
+        }
+      ],
+      "nextAction": "Fiche privée : 12 offres historiques, description du parc et de 2 équipements en huit langues, 1 photo du Surf Racing, 2 jalons et 1 article en huit langues. Audit projeté 75/100 ; logo historique seulement visible sur une carte non importable, vues générales, plans, GPS, inventaire primaire et 10 descriptions à compléter. Site et Facebook non publiés. Voir parc-de-la-cabosse-progress-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Historical promotional card1970,Cridam CC BY-SA3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:CarteDeVisiteParcLaCabosse.jpg",
+          "accessedAt": "2026-11-02T14:58:50.638411+00:00"
+        },
+        {
+          "label": "Historical Surf Racing photograph1970,Cridam public domain",
+          "url": "https://commons.wikimedia.org/wiki/File:Surfracing.jpg",
+          "accessedAt": "2026-11-02T14:58:50.638411+00:00"
+        },
+        {
+          "label": "Cabosse history and inventory, Wikimedia CC BY-SA",
+          "url": "https://fr.wikipedia.org/wiki/Parc_de_la_Cabosse",
+          "accessedAt": "2026-11-02T14:58:50.638411+00:00"
+        },
+        {
+          "label": "Official successor zoo history, relocation1977",
+          "url": "https://www.zoodejurques.fr/histoire-du-zoo/",
+          "accessedAt": "2026-11-02T14:58:50.638411+00:00"
+        },
+        {
+          "label": "Tourist office history; Festyland migration claim unresolved",
+          "url": "https://www.paysdevire-normandie-tourisme.fr/histoire-du-zoo-de-jurques/",
+          "accessedAt": "2026-11-02T14:58:50.638411+00:00"
+        },
+        {
+          "label": "Current successor zoo access/location",
+          "url": "https://www.zoodejurques.fr/acces/",
+          "accessedAt": "2026-11-02T14:58:50.638411+00:00"
+        },
+        {
+          "label": "Original first zoo advertisement1977, official archive",
+          "url": "https://www.zoodejurques.fr/wp-content/uploads/2019/05/pub-1.jpg",
+          "accessedAt": "2026-11-02T14:58:50.638411+00:00"
         }
       ]
     },
@@ -21124,14 +21223,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",

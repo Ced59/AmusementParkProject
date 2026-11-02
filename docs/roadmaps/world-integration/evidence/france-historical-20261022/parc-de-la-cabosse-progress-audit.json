@@ -1,0 +1,527 @@
+{
+  "entryId": "FR-candidate-fa6227365b97a9",
+  "parkId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+  "name": "Parc de la Cabosse",
+  "checkedAtUtc": "2026-11-02T14:58:50.638411+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "contentAuditPassed": false,
+  "existingCorpusAuditPassed": true,
+  "publicationAuditPassed": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "publicationAttempted": false,
+  "facebookAttempted": false,
+  "lastDataIntegrationAtUtc": "2026-11-02T14:56:30.390Z",
+  "lastIntegrationEvidence": "apply-d8d1f9f7-8603-46a2-b1d1-db096a43c441",
+  "dataIntegrationEvents": 6,
+  "projectedCompleteness": {
+    "completenessScore": 75,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 88,
+    "earnedPoints": 66,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-02T14:56:57.9716107Z",
+    "items": 12,
+    "zones": 0,
+    "attractions": 9,
+    "attractionStatuses": {
+      "ClosedDefinitively": 9
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 2,
+    "attractionsWithImage": 1,
+    "attractionImageGaps": [
+      {
+        "id": "6dab9d49-75e9-4a88-93f1-bbab86e0c327",
+        "name": "Autorail"
+      },
+      {
+        "id": "978c645e-7407-4189-b54b-99f47ee79600",
+        "name": "Bicyclettes humoristiques"
+      },
+      {
+        "id": "39aff3cc-0b25-4341-ad37-a91431345d9a",
+        "name": "Bowling"
+      },
+      {
+        "id": "103fb033-5974-4ada-9f4a-b015272c0e73",
+        "name": "Carrousel"
+      },
+      {
+        "id": "6acc1f50-7b60-4916-a390-2b7f4291b95a",
+        "name": "Jeux en bois"
+      },
+      {
+        "id": "59e74b8d-c149-4f00-a7ce-dfe2ca821f6f",
+        "name": "Manège de poneys"
+      },
+      {
+        "id": "003fa2b3-f9cc-417b-a4c9-6a9d5071ec34",
+        "name": "Mini kartings électriques"
+      },
+      {
+        "id": "a137b6ee-5fae-4af9-9322-38bb7facd4e8",
+        "name": "Tir à l’arc"
+      }
+    ],
+    "ownedImages": 1,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "6dab9d49-75e9-4a88-93f1-bbab86e0c327",
+        "name": "Autorail",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "787c6cb7-6b3e-4aa0-a572-b0d57461dc3b",
+        "name": "Bar",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "978c645e-7407-4189-b54b-99f47ee79600",
+        "name": "Bicyclettes humoristiques",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "39aff3cc-0b25-4341-ad37-a91431345d9a",
+        "name": "Bowling",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "103fb033-5974-4ada-9f4a-b015272c0e73",
+        "name": "Carrousel",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "6acc1f50-7b60-4916-a390-2b7f4291b95a",
+        "name": "Jeux en bois",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "59e74b8d-c149-4f00-a7ce-dfe2ca821f6f",
+        "name": "Manège de poneys",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "003fa2b3-f9cc-417b-a4c9-6a9d5071ec34",
+        "name": "Mini kartings électriques",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "c58e148f-c552-4007-9082-2886fa2b746f",
+        "name": "Piste de danse",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "e648a61f-3745-4ef1-a782-6a4de3497ef9",
+        "name": "Snack crêperie friterie",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "a9ff7f2d-e266-4b86-8533-4f438f920df4",
+        "name": "Surf Racing",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a137b6ee-5fae-4af9-9322-38bb7facd4e8",
+        "name": "Tir à l’arc",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "6dab9d49-75e9-4a88-93f1-bbab86e0c327",
+        "name": "Autorail",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "787c6cb7-6b3e-4aa0-a572-b0d57461dc3b",
+        "name": "Bar",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "978c645e-7407-4189-b54b-99f47ee79600",
+        "name": "Bicyclettes humoristiques",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "39aff3cc-0b25-4341-ad37-a91431345d9a",
+        "name": "Bowling",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "103fb033-5974-4ada-9f4a-b015272c0e73",
+        "name": "Carrousel",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "6acc1f50-7b60-4916-a390-2b7f4291b95a",
+        "name": "Jeux en bois",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "59e74b8d-c149-4f00-a7ce-dfe2ca821f6f",
+        "name": "Manège de poneys",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "003fa2b3-f9cc-417b-a4c9-6a9d5071ec34",
+        "name": "Mini kartings électriques",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c58e148f-c552-4007-9082-2886fa2b746f",
+        "name": "Piste de danse",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "e648a61f-3745-4ef1-a782-6a4de3497ef9",
+        "name": "Snack crêperie friterie",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "a9ff7f2d-e266-4b86-8533-4f438f920df4",
+        "name": "Surf Racing",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a137b6ee-5fae-4af9-9322-38bb7facd4e8",
+        "name": "Tir à l’arc",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 2,
+    "parkHistory": 2,
+    "itemHistory": 0,
+    "historyWithSource": 2,
+    "historyWithImage": 0,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": false,
+    "parkDescriptionsLanguages": 8,
+    "itemsCreated": 12,
+    "itemsWith8Descriptions": 2,
+    "actualHistoricalInventoryTotal": null,
+    "inventoryCoverageComplete": false,
+    "parkImages": 0,
+    "itemImages": 1,
+    "currentAuthenticLogo": false,
+    "officialMapEditions": 0,
+    "historyCanonicalDraft": 2,
+    "historyCanonicalPublished": 0,
+    "articleLanguages": 8,
+    "corpusFields": 177,
+    "personalExistingCorpusReviewComplete": true,
+    "allRequiredContentPresent": false
+  },
+  "roundtrip": {
+    "freshExportedAtUtc": "2026-11-02T14:56:57.9716107Z",
+    "comparedValues": 562,
+    "unexplainedDifferences": [],
+    "exportContractNotes": [
+      "Month-only opening and year-only conversion retained in dateText fields; typed dates remain null, no invented first day.",
+      "Item keys replaced by actual IDs. ParkItem image enum casing normalized from PARK_ITEM import response.",
+      "Image createdAt/updatedAt/exifMetadata/path not exposed by full export; original import receipt retained. All exported ownership, dimensions, bytes, filename and localization compared.",
+      "All12singular item names and16item descriptions checked; unexposed sortOrder or pluralnames not claimed persisted.",
+      "Localized values and sources compared with stable ordering."
+    ],
+    "fullExportSha256": "371ef6f6749600c6eba8c075c4f42fabe6697197124fe2cd5ac05eb0dd8adb51"
+  },
+  "sourceGaps": {
+    "entryId": "FR-candidate-fa6227365b97a9",
+    "checkedAtUtc": "2026-11-02T14:58:50.638411+00:00",
+    "sourcesReviewed": [
+      {
+        "label": "Historical promotional card1970,Cridam CC BY-SA3.0",
+        "url": "https://commons.wikimedia.org/wiki/File:CarteDeVisiteParcLaCabosse.jpg"
+      },
+      {
+        "label": "Historical Surf Racing photograph1970,Cridam public domain",
+        "url": "https://commons.wikimedia.org/wiki/File:Surfracing.jpg"
+      },
+      {
+        "label": "Cabosse history and inventory, Wikimedia CC BY-SA",
+        "url": "https://fr.wikipedia.org/wiki/Parc_de_la_Cabosse"
+      },
+      {
+        "label": "Official successor zoo history, relocation1977",
+        "url": "https://www.zoodejurques.fr/histoire-du-zoo/"
+      },
+      {
+        "label": "Tourist office history; Festyland migration claim unresolved",
+        "url": "https://www.paysdevire-normandie-tourisme.fr/histoire-du-zoo-de-jurques/"
+      },
+      {
+        "label": "Current successor zoo access/location",
+        "url": "https://www.zoodejurques.fr/acces/"
+      },
+      {
+        "label": "Original first zoo advertisement1977, official archive",
+        "url": "https://www.zoodejurques.fr/wp-content/uploads/2019/05/pub-1.jpg"
+      }
+    ],
+    "historicalInventory": {
+      "knownOfferings": 12,
+      "attractions": 9,
+      "foodVenues": 2,
+      "danceFloor": 1,
+      "fullHistoricalTotal": null,
+      "primaryCorroborationIncomplete": true,
+      "source": "SecondaryCabossehistory; SurfRacing primary1970photo. Named items retained private; original OuestFrance29August1970andLeBocageLibre source issues not accessed."
+    },
+    "descriptions": {
+      "parkLanguages": 8,
+      "itemsWith8Languages": 2,
+      "totalItems": 12,
+      "shortExceptions": {
+        "twoShortDescriptions": [
+          "carrousel",
+          "surf-racing"
+        ],
+        "rationale": "Two headings and two concise factual paragraphs for each item in8languages; unsupported interpretation and generic historical conclusion removed.; source detail exhausted without padding. Not represented as complete major-park descriptions.",
+        "remainingEmpty": [
+          "Autorail",
+          "Bicyclettes humoristiques",
+          "Mini kartings électriques",
+          "Jeux en bois",
+          "Manège de poneys",
+          "Bar",
+          "Piste de danse",
+          "Snack crêperie friterie",
+          "Bowling",
+          "Tir à l’arc"
+        ]
+      },
+      "emptyItemNames": [
+        "Autorail",
+        "Bar",
+        "Bicyclettes humoristiques",
+        "Bowling",
+        "Jeux en bois",
+        "Manège de poneys",
+        "Mini kartings électriques",
+        "Piste de danse",
+        "Snack crêperie friterie",
+        "Tir à l’arc"
+      ],
+      "reason": "No adequate distinct detail found for rich descriptions of ten remaining offerings; no generic filler."
+    },
+    "logo": {
+      "historicalWordmarkAuthenticated": true,
+      "imported": false,
+      "blocking": true,
+      "reason": "Original1970card bears historical wordmark, but full card1,502,726bytes exceeds960KiB and is not standalone logo. No crop/recompression. Currentzoo identity not substituted.",
+      "source": "https://commons.wikimedia.org/wiki/File:CarteDeVisiteParcLaCabosse.jpg"
+    },
+    "images": {
+      "acceptedOriginals": 1,
+      "parkGeneralViews": 0,
+      "itemsWithImage": 1,
+      "attractionsWithAtLeast3Images": 0,
+      "historicalNativeResolutionException": "SurfRacing240x168nativeoriginal accepted as best surviving authenticated exactitem image after source search. No upscaling.",
+      "reviews": [
+        {
+          "file": "Surfracing.jpg",
+          "sha256": "cce70726d7a3bcf85f2d0fdfe86912b2dbf43ef1ca775df13543be1d5bd9f7fe",
+          "bytes": 22934,
+          "acceptedForImport": true,
+          "reason": "Small original black-and-white1970photograph byCridam, categoryParc de la Cabosse and article identify Surf Racing. Low seated riders on outdoor asphalt track and planted lawn visible, no watermark. No inferred manufacturer, exact captureday or current operating status. Native archival240x168resolution accepted after source search, no upscaling/recompression/cropping. Attached to exactSurfRacingitem, not counted as a general park panorama."
+        },
+        {
+          "file": "CarteDeVisiteParcLaCabosse.jpg",
+          "sha256": "251fe1558d7b353e12035a365c40e4534ad9dc178398726bbd59bb7cb4491463",
+          "bytes": 1502726,
+          "acceptedForImport": false,
+          "reason": "Authentic1970promotional card with wordmark but native1,502,726bytes exceeds960KiB. Not a standalone logo; neither crop nor recompress. Research only."
+        },
+        {
+          "file": "Carousel-cabosse.jpg",
+          "sha256": "0d409c73cb6c79b8c03e752e16075361aba0908c4ee9dba77eab1a1ef1a31b94",
+          "bytes": 578278,
+          "acceptedForImport": false,
+          "reason": "Street setting with old shopfronts, file description says early20thcentury carousel. Neither site nor identity of this specific carousel in Cabosse operating years is established. Excluded rather than presenting a vintage street scene as this park."
+        },
+        {
+          "file": "zoo-promotion-1977.jpg",
+          "sha256": "4bb73ecc0bf4b72e16476fc10ef6436f61a7ae58a301caf3d24a8da8c5816dd4",
+          "bytes": 1419602,
+          "acceptedForImport": false,
+          "reason": "Official zoo first advertisement1977 is primary source for successor name and continued unspecified free attractions. Native1,419,602bytes exceeds960KiB; no crop/recompression. Not historical amusement-park logo or generalphoto."
+        }
+      ]
+    },
+    "officialVisitorMaps": {
+      "editions": 0,
+      "reason": "No actual1970–1977annualvisitorplan found. BRGM mine hazard map and currentzoo visitorplan excluded as unrelated document purposes/period."
+    },
+    "geolocation": {
+      "parkPoint": null,
+      "itemPoints": 0,
+      "fixedItems": 12,
+      "reason": "Historical5hafootprint and individualpositions not precisely proved. Currentzoo map point49.0032281,-0.7533696 is recorded as researchcontext only, not silently reused.",
+      "missing": [
+        "Autorail",
+        "Bar",
+        "Bicyclettes humoristiques",
+        "Bowling",
+        "Carrousel",
+        "Jeux en bois",
+        "Manège de poneys",
+        "Mini kartings électriques",
+        "Piste de danse",
+        "Snack crêperie friterie",
+        "Surf Racing",
+        "Tir à l’arc"
+      ]
+    },
+    "dates": {
+      "opening": "1970-05; exact day contradictory in secondary source, contemporary cited press article not accessed",
+      "closure": "1977; conversion to successor zoo, no precise last visiting day known"
+    },
+    "identity": {
+      "historicalIncarnation": "Independentamusementpark1970–1977",
+      "successor": "Zoo de Jurques,1977conversion",
+      "caution": "1977originalzoo promotion still advertises unnamed free attractions. No simultaneousindividualclosure or removal inferred. No currentzoo data imported."
+    },
+    "references": "No legal operator proved; founding family only secondary evidence, no shared reference created. Auguste Ourry founded successor zoo, not historical1970 amusement park.",
+    "history": {
+      "actualSourcedEvents": 2,
+      "articleLanguages": 8,
+      "canonicalDraft": 2,
+      "canonicalPublished": 0,
+      "gap": "Only2datedmilestones established; no fillerfacts created to open publichistorygate. No actualopeningdaypicture found;1970SurfRacingphoto contextual tooperatingyear."
+    },
+    "hoursAndPrices": "Not applicable to historicalindependentpark. Historicaladvertisedseason explained inhistory only; no currentcalendar/tariffs.",
+    "publication": "Private partial. Requiredlogo absent in media and substantialsourcegaps; neither site norFacebook publication attempted."
+  },
+  "corpus": {
+    "fields": 177,
+    "languages": 8,
+    "encodingIssues": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicates": 0,
+    "rawCrossCorpusCandidates": 0,
+    "actionableCrossCorpusIssues": 0,
+    "personallyReviewed": true
+  },
+  "historyDiagnostics": {
+    "parkId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+    "parkName": "Parc de la Cabosse",
+    "factCount": 2,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1970,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 2
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 0
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "proofSha256": {
+    "00-intake-decision.json": "76a0e5d1855d32af67459ac72ad9fd4456531d85e687805c85ec531d192d0fde",
+    "09-full-export.json": "371ef6f6749600c6eba8c075c4f42fabe6697197124fe2cd5ac05eb0dd8adb51",
+    "09-completeness-receipt.json": "21a0bb127db9068be7c7a928fbf9133ae925f7b33a799af046f76d44cefa09f4",
+    "09-history-diagnostics-receipt.json": "9d244c0c34f7f939c34ebd3e14f987e1732d6b267648909e52c5a9248da7ad9d",
+    "09-source-gaps.json": "ea678fe291ec2bcbd561cd10050634d8cd6150d3165e81a74b171f8cdc6f1e89",
+    "09-roundtrip.json": "52e9076cae6008e53baea862bcc94c4cb78581001c4ffe250d8481d60344edd0",
+    "08-personal-editorial-review.json": "75282013f316ad55bc565363cbb33e0bc2ab9db827fd71a9ae2ef326f7c8ee78",
+    "05-personal-media-source-review.json": "70c955319eacde471d7fa826584319542ba2c9480d432970092f4b126a843cbd",
+    "08-history-complete-diff-check.json": "7ee2ec5a0bfd6d9ef0999e0593f8950c337e96cea13ffa722488fef72813d1d3",
+    "01-warning-decision.json": "b8668bc88ca5ce50cdd028600debb27f3b7dedbc9f7836161f35f54abf07adc3"
+  },
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false
+}

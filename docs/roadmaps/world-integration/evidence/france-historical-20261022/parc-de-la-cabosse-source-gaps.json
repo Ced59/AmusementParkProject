@@ -1,0 +1,167 @@
+{
+  "entryId": "FR-candidate-fa6227365b97a9",
+  "checkedAtUtc": "2026-11-02T14:58:50.638411+00:00",
+  "sourcesReviewed": [
+    {
+      "label": "Historical promotional card1970,Cridam CC BY-SA3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:CarteDeVisiteParcLaCabosse.jpg"
+    },
+    {
+      "label": "Historical Surf Racing photograph1970,Cridam public domain",
+      "url": "https://commons.wikimedia.org/wiki/File:Surfracing.jpg"
+    },
+    {
+      "label": "Cabosse history and inventory, Wikimedia CC BY-SA",
+      "url": "https://fr.wikipedia.org/wiki/Parc_de_la_Cabosse"
+    },
+    {
+      "label": "Official successor zoo history, relocation1977",
+      "url": "https://www.zoodejurques.fr/histoire-du-zoo/"
+    },
+    {
+      "label": "Tourist office history; Festyland migration claim unresolved",
+      "url": "https://www.paysdevire-normandie-tourisme.fr/histoire-du-zoo-de-jurques/"
+    },
+    {
+      "label": "Current successor zoo access/location",
+      "url": "https://www.zoodejurques.fr/acces/"
+    },
+    {
+      "label": "Original first zoo advertisement1977, official archive",
+      "url": "https://www.zoodejurques.fr/wp-content/uploads/2019/05/pub-1.jpg"
+    }
+  ],
+  "historicalInventory": {
+    "knownOfferings": 12,
+    "attractions": 9,
+    "foodVenues": 2,
+    "danceFloor": 1,
+    "fullHistoricalTotal": null,
+    "primaryCorroborationIncomplete": true,
+    "source": "SecondaryCabossehistory; SurfRacing primary1970photo. Named items retained private; original OuestFrance29August1970andLeBocageLibre source issues not accessed."
+  },
+  "descriptions": {
+    "parkLanguages": 8,
+    "itemsWith8Languages": 2,
+    "totalItems": 12,
+    "shortExceptions": {
+      "twoShortDescriptions": [
+        "carrousel",
+        "surf-racing"
+      ],
+      "rationale": "Two headings and two concise factual paragraphs for each item in8languages; unsupported interpretation and generic historical conclusion removed.; source detail exhausted without padding. Not represented as complete major-park descriptions.",
+      "remainingEmpty": [
+        "Autorail",
+        "Bicyclettes humoristiques",
+        "Mini kartings électriques",
+        "Jeux en bois",
+        "Manège de poneys",
+        "Bar",
+        "Piste de danse",
+        "Snack crêperie friterie",
+        "Bowling",
+        "Tir à l’arc"
+      ]
+    },
+    "emptyItemNames": [
+      "Autorail",
+      "Bar",
+      "Bicyclettes humoristiques",
+      "Bowling",
+      "Jeux en bois",
+      "Manège de poneys",
+      "Mini kartings électriques",
+      "Piste de danse",
+      "Snack crêperie friterie",
+      "Tir à l’arc"
+    ],
+    "reason": "No adequate distinct detail found for rich descriptions of ten remaining offerings; no generic filler."
+  },
+  "logo": {
+    "historicalWordmarkAuthenticated": true,
+    "imported": false,
+    "blocking": true,
+    "reason": "Original1970card bears historical wordmark, but full card1,502,726bytes exceeds960KiB and is not standalone logo. No crop/recompression. Currentzoo identity not substituted.",
+    "source": "https://commons.wikimedia.org/wiki/File:CarteDeVisiteParcLaCabosse.jpg"
+  },
+  "images": {
+    "acceptedOriginals": 1,
+    "parkGeneralViews": 0,
+    "itemsWithImage": 1,
+    "attractionsWithAtLeast3Images": 0,
+    "historicalNativeResolutionException": "SurfRacing240x168nativeoriginal accepted as best surviving authenticated exactitem image after source search. No upscaling.",
+    "reviews": [
+      {
+        "file": "Surfracing.jpg",
+        "sha256": "cce70726d7a3bcf85f2d0fdfe86912b2dbf43ef1ca775df13543be1d5bd9f7fe",
+        "bytes": 22934,
+        "acceptedForImport": true,
+        "reason": "Small original black-and-white1970photograph byCridam, categoryParc de la Cabosse and article identify Surf Racing. Low seated riders on outdoor asphalt track and planted lawn visible, no watermark. No inferred manufacturer, exact captureday or current operating status. Native archival240x168resolution accepted after source search, no upscaling/recompression/cropping. Attached to exactSurfRacingitem, not counted as a general park panorama."
+      },
+      {
+        "file": "CarteDeVisiteParcLaCabosse.jpg",
+        "sha256": "251fe1558d7b353e12035a365c40e4534ad9dc178398726bbd59bb7cb4491463",
+        "bytes": 1502726,
+        "acceptedForImport": false,
+        "reason": "Authentic1970promotional card with wordmark but native1,502,726bytes exceeds960KiB. Not a standalone logo; neither crop nor recompress. Research only."
+      },
+      {
+        "file": "Carousel-cabosse.jpg",
+        "sha256": "0d409c73cb6c79b8c03e752e16075361aba0908c4ee9dba77eab1a1ef1a31b94",
+        "bytes": 578278,
+        "acceptedForImport": false,
+        "reason": "Street setting with old shopfronts, file description says early20thcentury carousel. Neither site nor identity of this specific carousel in Cabosse operating years is established. Excluded rather than presenting a vintage street scene as this park."
+      },
+      {
+        "file": "zoo-promotion-1977.jpg",
+        "sha256": "4bb73ecc0bf4b72e16476fc10ef6436f61a7ae58a301caf3d24a8da8c5816dd4",
+        "bytes": 1419602,
+        "acceptedForImport": false,
+        "reason": "Official zoo first advertisement1977 is primary source for successor name and continued unspecified free attractions. Native1,419,602bytes exceeds960KiB; no crop/recompression. Not historical amusement-park logo or generalphoto."
+      }
+    ]
+  },
+  "officialVisitorMaps": {
+    "editions": 0,
+    "reason": "No actual1970–1977annualvisitorplan found. BRGM mine hazard map and currentzoo visitorplan excluded as unrelated document purposes/period."
+  },
+  "geolocation": {
+    "parkPoint": null,
+    "itemPoints": 0,
+    "fixedItems": 12,
+    "reason": "Historical5hafootprint and individualpositions not precisely proved. Currentzoo map point49.0032281,-0.7533696 is recorded as researchcontext only, not silently reused.",
+    "missing": [
+      "Autorail",
+      "Bar",
+      "Bicyclettes humoristiques",
+      "Bowling",
+      "Carrousel",
+      "Jeux en bois",
+      "Manège de poneys",
+      "Mini kartings électriques",
+      "Piste de danse",
+      "Snack crêperie friterie",
+      "Surf Racing",
+      "Tir à l’arc"
+    ]
+  },
+  "dates": {
+    "opening": "1970-05; exact day contradictory in secondary source, contemporary cited press article not accessed",
+    "closure": "1977; conversion to successor zoo, no precise last visiting day known"
+  },
+  "identity": {
+    "historicalIncarnation": "Independentamusementpark1970–1977",
+    "successor": "Zoo de Jurques,1977conversion",
+    "caution": "1977originalzoo promotion still advertises unnamed free attractions. No simultaneousindividualclosure or removal inferred. No currentzoo data imported."
+  },
+  "references": "No legal operator proved; founding family only secondary evidence, no shared reference created. Auguste Ourry founded successor zoo, not historical1970 amusement park.",
+  "history": {
+    "actualSourcedEvents": 2,
+    "articleLanguages": 8,
+    "canonicalDraft": 2,
+    "canonicalPublished": 0,
+    "gap": "Only2datedmilestones established; no fillerfacts created to open publichistorygate. No actualopeningdaypicture found;1970SurfRacingphoto contextual tooperatingyear."
+  },
+  "hoursAndPrices": "Not applicable to historicalindependentpark. Historicaladvertisedseason explained inhistory only; no currentcalendar/tariffs.",
+  "publication": "Private partial. Requiredlogo absent in media and substantialsourcegaps; neither site norFacebook publication attempted."
+}

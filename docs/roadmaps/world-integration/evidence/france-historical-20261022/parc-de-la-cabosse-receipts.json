@@ -1,0 +1,158 @@
+{
+  "entryId": "FR-candidate-fa6227365b97a9",
+  "parkId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+  "name": "Parc de la Cabosse",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-d21bad32-09ac-459b-8fbd-bfd7cb901c9e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:41:25.3762504Z",
+      "appliedAt": "2026-11-02T14:41:25.376Z",
+      "receiptFile": "01-core-private-apply.receipt.json",
+      "receiptSha256": "573474405b9fc47c1d09ba94e50c2ef773bd7532cbd356f5a93c65a1bd613c57",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 1,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "openingDateText",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Création privée du parc historique de la Cabosse, identité distincte du zoo successeur, dates partielles et adresse sourcées ; coordonnées historiques non établies."
+    },
+    {
+      "eventId": "apply-6a627050-fb6d-404c-a3e6-f53deb07b1b0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:43:24.3040262Z",
+      "appliedAt": "2026-11-02T14:43:24.304Z",
+      "receiptFile": "03-historical-inventory-apply.receipt.json",
+      "receiptSha256": "426f3d7264638802803da0e0120dd01552ea96dcd6b283701c6d7d1f31280f31",
+      "counts": {
+        "created": 12,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type"
+      ],
+      "summary": "Douze offres historiques documentées, dont neuf attractions, deux lieux de restauration et une piste de danse ; aucun transfert automatique des dates ou équipements du zoo."
+    },
+    {
+      "eventId": "apply-5f99a91e-81c5-4c32-9aa0-8b8abb30028f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:47:24.8159553Z",
+      "appliedAt": "2026-11-02T14:47:24.815Z",
+      "receiptFile": "04-park-texts-apply.receipt.json",
+      "receiptSha256": "7c8fee86f1679d57de1978e402b0c7dd4e0a76d8e6aa839d770ea38c832f9164",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Description du parc personnellement rédigée et relue dans les huit langues ; reconversion de1977 distincte des dates inconnues des équipements."
+    },
+    {
+      "eventId": "import-photo-503e8e275d1047719a050de9f2e796e7-2026-11-02T144740.689Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T14:47:40.689Z",
+      "appliedAt": "2026-11-02T14:47:40.689Z",
+      "receiptFile": "05-surf-racing-import-receipt.json",
+      "receiptSha256": "6e97f137f55d9da5787c9cbeca3f5bd9398eec6d58e64d1c65b2d006d5bf4677",
+      "imageId": "503e8e275d1047719a050de9f2e796e7",
+      "ownerId": "a9ff7f2d-e266-4b86-8533-4f438f920df4",
+      "createdAt": "2026-11-02T14:47:37.062Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Surfracing.jpg",
+      "summary": "Import privé du média historique 05-surf-racing, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-532c7dce-80c5-4e64-8d10-66b7f6c88e5a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:54:13.2571101Z",
+      "appliedAt": "2026-11-02T14:54:13.257Z",
+      "receiptFile": "04-items-specific-apply.receipt.json",
+      "receiptSha256": "9c16c34e16292bbfd32c8dea3780596dd158016f0bc655c9433d7795c3a04b1c",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Deux descriptions historiques spécifiques, Carrousel et Surf Racing, rédigées et relues dans les huit langues ; format court documenté sans remplissage."
+    },
+    {
+      "eventId": "apply-d8d1f9f7-8603-46a2-b1d1-db096a43c441",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:56:30.3909318Z",
+      "appliedAt": "2026-11-02T14:56:30.390Z",
+      "receiptFile": "08-history-apply.receipt.json",
+      "receiptSha256": "2164ac6fb98e26f0739c94887d7a675274febd3bf236ec72a794afabbe823394",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "datePrecision",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Deux jalons sourcés et un article développé en huit langues sur la Cabosse et sa reconversion ; aucun jalon artificiel ni date de fermeture individuelle déduite."
+    }
+  ],
+  "publicationOrNoop": []
+}
