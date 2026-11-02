@@ -18931,10 +18931,10 @@
       "proposedEntityKind": "Park",
       "category": "Catégorie à qualifier",
       "locality": "1986-1996",
-      "siteId": null,
+      "siteId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "ExistsVisibilityUnknown",
+      "presenceObservedAt": null,
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -18943,9 +18943,220 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-02T17:14:33.010Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f53e9693-5b2b-49f8-bba3-c68957a97ea3",
+          "appliedAt": "2026-11-02T16:47:46.258Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-f53e9693-5b2b-49f8-bba3-c68957a97ea3",
+          "auditEvidence": null,
+          "summary": "Création privée du parc aquatique historique Océade Strasbourg, distinct des homonymes ; ouverture1986, fermeture novembre1996, adresse sourcée. Coordonnées encore non établies, intégration partielle."
+        },
+        {
+          "eventId": "apply-91588543-a886-43b3-a7ba-63add1c012d8",
+          "appliedAt": "2026-11-02T16:52:10.972Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-91588543-a886-43b3-a7ba-63add1c012d8",
+          "auditEvidence": null,
+          "summary": "Inventaire privé de treize activités historiques et du parking, avec sources, statuts et deux années d’installation établies ; intégration partielle."
+        },
+        {
+          "eventId": "apply-b05f7e47-e6e1-49b9-a650-27ab7ca9f714",
+          "appliedAt": "2026-11-02T16:57:32.763Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-b05f7e47-e6e1-49b9-a650-27ab7ca9f714",
+          "auditEvidence": null,
+          "summary": "Description historique du parc intégrée dans les huit langues, avec six paragraphes et trois sections spécifiques ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1961d9b43df843f2a056fd9894e9d381-2026-11-02T165812.647Z",
+          "appliedAt": "2026-11-02T16:58:12.647Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-1961d9b43df843f2a056fd9894e9d381-2026-11-02T165812.647Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f4b8db5dbac84c26b6047303109d8dc4-2026-11-02T165827.514Z",
+          "appliedAt": "2026-11-02T16:58:27.514Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-f4b8db5dbac84c26b6047303109d8dc4-2026-11-02T165827.514Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-aerial, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-38aae5e4c5d6426e855db960329cfeb7-2026-11-02T165841.795Z",
+          "appliedAt": "2026-11-02T16:58:41.795Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-38aae5e4c5d6426e855db960329cfeb7-2026-11-02T165841.795Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-interior, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7d5254f2d86c4af08b98b0dc22cab4aa-2026-11-02T165856.397Z",
+          "appliedAt": "2026-11-02T16:58:56.397Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-7d5254f2d86c4af08b98b0dc22cab4aa-2026-11-02T165856.397Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-paddling-roof, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c954504b3059454ab8a11cc0fd39a7f9-2026-11-02T165910.935Z",
+          "appliedAt": "2026-11-02T16:59:10.935Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-c954504b3059454ab8a11cc0fd39a7f9-2026-11-02T165910.935Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-lawns, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-865806e39ef846dfbfd0d5214966562e-2026-11-02T165925.457Z",
+          "appliedAt": "2026-11-02T16:59:25.457Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-865806e39ef846dfbfd0d5214966562e-2026-11-02T165925.457Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-fire-aftermath, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "update-photo-f4b8db5dbac84c26b6047303109d8dc4-2026-11-02T170917.094Z",
+          "appliedAt": "2026-11-02T17:09:17.094Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#update-photo-f4b8db5dbac84c26b6047303109d8dc4-2026-11-02T170917.094Z",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : crédit historique vérifié du média privé 05-park-aerial-credit ; aucun nouvel upload, audit final restant."
+        },
+        {
+          "eventId": "import-photo-317ca916fc374b1fa68e2c471fafcfae-2026-11-02T170947.206Z",
+          "appliedAt": "2026-11-02T17:09:47.206Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-317ca916fc374b1fa68e2c471fafcfae-2026-11-02T170947.206Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-wave, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-342468fa52b34539b8287b417083c461-2026-11-02T171002.396Z",
+          "appliedAt": "2026-11-02T17:10:02.396Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-342468fa52b34539b8287b417083c461-2026-11-02T171002.396Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-outdoor, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-badd046bb83d45c58ecaae0f0711a9e8-2026-11-02T171017.608Z",
+          "appliedAt": "2026-11-02T17:10:17.608Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-badd046bb83d45c58ecaae0f0711a9e8-2026-11-02T171017.608Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-minigolf, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-efcba10a0102439eaab37c95e0660350-2026-11-02T171032.332Z",
+          "appliedAt": "2026-11-02T17:10:32.332Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-efcba10a0102439eaab37c95e0660350-2026-11-02T171032.332Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-houses, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-8b22fc59ae5b49d697006c5d863f1a1a-2026-11-02T171048.550Z",
+          "appliedAt": "2026-11-02T17:10:48.550Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-8b22fc59ae5b49d697006c5d863f1a1a-2026-11-02T171048.550Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-play, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-06999b2bebb949f49ae7066a2b724c73-2026-11-02T171103.501Z",
+          "appliedAt": "2026-11-02T17:11:03.501Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-06999b2bebb949f49ae7066a2b724c73-2026-11-02T171103.501Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-black-slides, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4d4bd28b09c74c35af47f01acef24f5f-2026-11-02T171118.026Z",
+          "appliedAt": "2026-11-02T17:11:18.026Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-4d4bd28b09c74c35af47f01acef24f5f-2026-11-02T171118.026Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-small-slides, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-aa6c4bd20d8c4a779ecf8c8e0ccdf4a0-2026-11-02T171132.628Z",
+          "appliedAt": "2026-11-02T17:11:32.628Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-aa6c4bd20d8c4a779ecf8c8e0ccdf4a0-2026-11-02T171132.628Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-parking, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c061bc6f48af4e0d9f421651fe12ba85-2026-11-02T171149.279Z",
+          "appliedAt": "2026-11-02T17:11:49.279Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#import-photo-c061bc6f48af4e0d9f421651fe12ba85-2026-11-02T171149.279Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-postcard, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-4a284eba-7b51-49fb-b541-c71ecb23a82c",
+          "appliedAt": "2026-11-02T17:13:56.727Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-4a284eba-7b51-49fb-b541-c71ecb23a82c",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : descriptions originales du minigolf, de la rivière extérieure et des petits toboggans intérieurs en huit langues ; audit final restant."
+        },
+        {
+          "eventId": "update-photo-7d5254f2d86c4af08b98b0dc22cab4aa-2026-11-02T171433.010Z",
+          "appliedAt": "2026-11-02T17:14:33.010Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#update-photo-7d5254f2d86c4af08b98b0dc22cab4aa-2026-11-02T171433.010Z",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : crédit historique vérifié du média privé 05-paddling-owner ; aucun nouvel upload, audit final restant."
+        }
+      ],
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Backlog national existant",

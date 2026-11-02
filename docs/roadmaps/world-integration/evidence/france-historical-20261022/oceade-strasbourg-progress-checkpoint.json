@@ -1,0 +1,41 @@
+{
+  "entryId": "FR-candidate-018f58d346bda3",
+  "parkId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+  "name": "Océade Strasbourg",
+  "checkedAtUtc": "2026-11-02T17:15:22.497824+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "lastDataIntegrationAtUtc": "2026-11-02T17:14:33.01Z",
+  "lastIntegrationEvidence": "update-photo-7d5254f2d86c4af08b98b0dc22cab4aa-2026-11-02T171433.010Z",
+  "dataIntegrationEvents": 21,
+  "coverage": {
+    "items": 14,
+    "attractions": 13,
+    "services": 1,
+    "itemsWithEightDescriptions": 3,
+    "nativeImages": 15,
+    "itemImageOwners": 9,
+    "parkImages": 6,
+    "authenticSeparateLogo": false,
+    "officialMaps": 0,
+    "historyFacts": 0,
+    "articles": 0
+  },
+  "remainingWork": [
+    "Descriptions for eleven installations; named source limitations where insufficient material.",
+    "Historical timelines and developed eight-language article with actual fire aftermath photo.",
+    "Authentic isolated historical logo: pinkstarfish and blue lettering proved by original postcard. Later Brussels pirate/sun logo is different and rejected.",
+    "No genuine dated official visitor map found; modern municipal study maps excluded.",
+    "Precise demolished site and item coordinates not yet established.",
+    "Single fresh full export immediately before final audit; no score or completion claim yet."
+  ],
+  "sourceDecisions": [
+    "Original21July1989DNAscan proves minigolf separateadmission,1988playmodules,1989mushroomhouses,riveralreadyunused.",
+    "SERScredit corrected on aerial, no duplicate import.",
+    "Nativepostcards suppliedbyHansi/Pokaa establish originalbrand and two yellow indoor slides.",
+    "Photos retain original bytes, complete8languagealt/caption/credit andprivatevisibility.",
+    "No reusedBrusselsimagery, no reconstructedlogo, no croppedpostcardlogo."
+  ]
+}
