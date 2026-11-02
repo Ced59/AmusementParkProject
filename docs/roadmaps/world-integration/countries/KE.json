@@ -24,37 +24,60 @@
       "entryId": "KE-candidate-6e9ba4d1a7edbe",
       "name": "Eye of Kenya",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Standalone à qualifier",
       "locality": "Nairobi, Kenya",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction en fonctionnement dans Funscapes Two Rivers Theme Park selon l’exploitant.",
+      "identityConfidence": "Exploitant identifié : l’Eye of Kenya est explicitement une attraction du parc extérieur Funscapes Two Rivers, aux côtés d’une chute d’eau et d’une tour de chute.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer l’Eye of Kenya comme parkItem du futur dossier Funscapes Two Rivers Theme Park ; ne pas créer de fiche standalone distincte. Conserver cette piste de découverte et le lien vers le parc.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Funscapes — parc extérieur et attractions",
+          "url": "https://funscapesgroup.com/about-us/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant Funscapes — horaires et accès au parc",
+          "url": "https://funscapesgroup.com/faqs/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Eye of Kenya",
+            "source": "Funscapes Group — About Us",
+            "url": "https://funscapesgroup.com/about-us/",
+            "family": "Grande roue",
+            "sourceVenueName": "Funscapes Two Rivers Theme Park",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Two Rivers, Nairobi"
+          }
+        ],
+        "rationale": "L’exploitant décrit un vrai parc extérieur à plusieurs manèges et situe la grande roue dans ce parc. Cette roue relève donc d’un parkItem du parc à créer, sans fiche standalone supplémentaire."
+      },
+      "possibleBacklogEntries": [
+        "KE-candidate-discovery-7f5bd0e2a1c4ad"
+      ]
     },
     {
       "entryId": "KE-park-0b6ecf15-8d39-477c-a713-9d2e9a95123c",
@@ -466,6 +489,49 @@
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_water_parks_in_Africa#Kenya",
           "accessedAt": "2026-10-22"
+        }
+      ]
+    },
+    {
+      "entryId": "KE-candidate-discovery-7f5bd0e2a1c4ad",
+      "name": "Funscapes Two Rivers Theme Park",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Parc d’attractions",
+      "locality": "Two Rivers, Nairobi",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating : site officiel actif, horaires quotidiens publiés par l’exploitant.",
+      "identityConfidence": "Parc extérieur multi-attractions confirmé par l’exploitant ; aucune fiche Park trouvée par les recherches officielles « Funscapes » et « Two Rivers ».",
+      "possibleMatches": [],
+      "aliases": [
+        "Funscapes Two Rivers",
+        "Two Rivers Theme Park"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Créer la fiche Park après qualification complète des données officielles ; y rattacher Eye of Kenya comme parkItem et vérifier les autres attractions. Coordonner avec la piste KE-candidate-6e9ba4d1a7edbe. Aucune intégration de données effectuée à ce stade.",
+      "sources": [
+        {
+          "label": "Exploitant Funscapes — parc extérieur et attractions",
+          "url": "https://funscapesgroup.com/about-us/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant Funscapes — horaires et accès au parc",
+          "url": "https://funscapesgroup.com/faqs/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant Funscapes — accueil",
+          "url": "https://funscapesgroup.com/",
+          "accessedAt": "2026-11-02"
         }
       ]
     }

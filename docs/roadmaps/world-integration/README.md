@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12311 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12312 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -16,12 +16,12 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 307 | 1881 | 7568 |
+| Parcs | 307 | 1881 | 7569 |
 | Standalone | 193 | 1 | 123 |
 
-**Reprise standalone :** en plus des 123 candidates sans correspondance, **225 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **595 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **58 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 123 candidates sans correspondance, **225 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **594 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **59 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
-À part : **767** Park masqués NotRelevant, **68** types à décider, **1307** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
+À part : **767** Park masqués NotRelevant, **69** types à décider, **1306** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
 ## Europe
 
@@ -474,7 +474,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Guinée](countries/GN.md) | 0 | 0 | 0 | 0 | 0 |
 | [Guinée équatoriale](countries/GQ.md) | 0 | 0 | 0 | 0 | 0 |
 | [Guinée-Bissau](countries/GW.md) | 0 | 0 | 0 | 0 | 0 |
-| [Kenya](countries/KE.md) | 0 | 6 | 0 | 4 | 12 |
+| [Kenya](countries/KE.md) | 0 | 6 | 0 | 5 | 12 |
 | [La Réunion](countries/RE.md) | 0 | 0 | 0 | 1 | 1 |
 | [Lesotho](countries/LS.md) | 0 | 1 | 0 | 0 | 1 |
 | [Liberia](countries/LR.md) | 0 | 0 | 0 | 0 | 0 |
@@ -510,7 +510,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Tunisie](countries/TN.md) | 0 | 12 | 2 | 8 | 24 |
 | [Zambie](countries/ZM.md) | 0 | 2 | 0 | 1 | 3 |
 | [Zimbabwe](countries/ZW.md) | 0 | 1 | 0 | 0 | 1 |
-| **Total** | **6** | **142** | **12** | **172** | **367** |
+| **Total** | **6** | **142** | **12** | **173** | **367** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -540,7 +540,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Guinée](countries/GN.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Guinée équatoriale](countries/GQ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Guinée-Bissau](countries/GW.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Kenya](countries/KE.md) | 0 | 0 | 0 | 0 | 1 | 0 |
+| [Kenya](countries/KE.md) | 0 | 0 | 0 | 1 | 0 | 0 |
 | [La Réunion](countries/RE.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Lesotho](countries/LS.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Liberia](countries/LR.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -576,7 +576,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Tunisie](countries/TN.md) | 0 | 0 | 0 | 0 | 2 | 0 |
 | [Zambie](countries/ZM.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Zimbabwe](countries/ZW.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **1** | **0** | **0** | **1** | **17** | **0** |
+| **Total** | **1** | **0** | **0** | **2** | **16** | **0** |
 
 Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **1**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
@@ -609,7 +609,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Guinée](countries/GN.md) | 0 | 0 | 0 | 0 |
 | [Guinée équatoriale](countries/GQ.md) | 0 | 0 | 0 | 0 |
 | [Guinée-Bissau](countries/GW.md) | 0 | 0 | 0 | 0 |
-| [Kenya](countries/KE.md) | 0 | 0 | 1 | 0 |
+| [Kenya](countries/KE.md) | 0 | 0 | 0 | 1 |
 | [La Réunion](countries/RE.md) | 0 | 0 | 0 | 0 |
 | [Lesotho](countries/LS.md) | 0 | 0 | 0 | 0 |
 | [Liberia](countries/LR.md) | 0 | 0 | 0 | 0 |
@@ -645,7 +645,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Tunisie](countries/TN.md) | 0 | 0 | 1 | 0 |
 | [Zambie](countries/ZM.md) | 0 | 0 | 0 | 0 |
 | [Zimbabwe](countries/ZW.md) | 0 | 0 | 0 | 0 |
-| **Total** | **1** | **0** | **4** | **2** |
+| **Total** | **1** | **0** | **3** | **3** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 

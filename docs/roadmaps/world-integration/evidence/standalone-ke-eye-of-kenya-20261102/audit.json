@@ -1,0 +1,29 @@
+{
+  "reviewedAt": "2026-11-02",
+  "wheelEntryId": "KE-candidate-6e9ba4d1a7edbe",
+  "parkEntryId": "KE-candidate-discovery-7f5bd0e2a1c4ad",
+  "decision": "Eye of Kenya is an internal ride of an operating multi-ride outdoor amusement park, Funscapes Two Rivers Theme Park. Park candidate added; wheel retained as discovery with InsidePark relation.",
+  "operatorAbout": "https://funscapesgroup.com/about-us/",
+  "operatorFaq": "https://funscapesgroup.com/faqs/",
+  "officialEditorSearches": [
+    {
+      "action": "SearchParks",
+      "query": "Funscapes",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Two Rivers",
+      "kenyaMatches": 0,
+      "note": "One unrelated US park returned"
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Eye of Kenya",
+      "totalItems": 0
+    }
+  ],
+  "siteMutation": "None",
+  "facebookPublication": "None",
+  "lastDataIntegrationAt": null
+}
