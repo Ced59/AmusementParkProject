@@ -6733,37 +6733,185 @@
     {
       "entryId": "CN-candidate-6700528a88949c",
       "name": "Changsha Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Changsha , Hunan",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "He Long Stadium, Tianxin District, Changsha",
+      "siteId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T09:14:25.022Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue du stade He Long signalée encore active par la presse du Hunan le 20 octobre 2026 ; horaires Ctrip relevés le 2 novembre 2026.",
+      "identityConfidence": "Adresse et coordonnées du stade He Long corroborées ; recherches Park et Standalone en anglais, chinois et par ville sans doublon. Roue du parc des Martyrs distincte.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "星城之眼",
+        "长沙摩天轮",
+        "Star City Eye"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T09:09:59.737Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a75217e9-43b8-4619-a345-8cd06ebb70d4",
+          "appliedAt": "2026-11-02T09:01:04.194Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:a75217e9-43b8-4619-a345-8cd06ebb70d4",
+          "auditEvidence": null,
+          "summary": "Création masquée, identité, coordonnées, données techniques et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-407ea16f38cd4044b54f066034d49a44",
+          "appliedAt": "2026-11-02T09:03:59.067Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:image:407ea16f38cd4044b54f066034d49a44",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-6dc8ac1cd57e4c038db00ff72e9e2f07",
+          "appliedAt": "2026-11-02T09:04:27.934Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:image:6dc8ac1cd57e4c038db00ff72e9e2f07",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-0ef9d6ee47eb43d6a1e63de0ffef2ce6",
+          "appliedAt": "2026-11-02T09:04:43.718Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:image:0ef9d6ee47eb43d6a1e63de0ffef2ce6",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-bbbb6e25-a6ee-4124-a6f6-f730b823a57e",
+          "appliedAt": "2026-11-02T09:06:48.719Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:bbbb6e25-a6ee-4124-a6f6-f730b823a57e",
+          "auditEvidence": null,
+          "summary": "Horaires habituels propres à la roue, relevés le 2 novembre 2026"
+        },
+        {
+          "eventId": "apply-ba03d76c-3ad0-4706-a60b-17816831de09",
+          "appliedAt": "2026-11-02T09:07:12.128Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:ba03d76c-3ad0-4706-a60b-17816831de09",
+          "auditEvidence": null,
+          "summary": "Ouverture de 2004 intégrée à la chronologie"
+        },
+        {
+          "eventId": "apply-5867776a-f516-45db-b32e-7eca69a02729",
+          "appliedAt": "2026-11-02T09:09:35.853Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:5867776a-f516-45db-b32e-7eca69a02729",
+          "auditEvidence": null,
+          "summary": "Descriptions publiques réécrites après audit"
+        },
+        {
+          "eventId": "apply-e793bf6b-d019-4336-b173-25f4d115bfd8",
+          "appliedAt": "2026-11-02T09:09:59.737Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:e793bf6b-d019-4336-b173-25f4d115bfd8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-changsha-ferris-wheel-20261102/audit.json",
+          "summary": "Texte historique corrigé et données validées sans blocage"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Vérifier prix actuellement vendus, site de l’exploitant, horaires et photo récente exacte ; ne pas répéter la publication Facebook de cette intégration.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tourisme de Hunan — ouverture, dimensions et cabines",
+          "url": "https://whhlyt.hunan.gov.cn/whhlyt/news/wlyw/201909/t20190910_5480863.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Hunan Online — roue du stade toujours active en octobre 2026",
+          "url": "https://hunan.voc.com.cn/news/202610/34039313.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Ctrip — horaires de la roue relevés le 2 novembre 2026",
+          "url": "https://you.ctrip.com/sight/changsha148/1917827.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikidata — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q1414985",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Changsha_Ferris_Wheel_in_2007.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Changsha_Ferris_Wheel.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Changsha_Ferris_Wheel,_Picture4.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Changsha Ferris Wheel",
+            "source": "Tourisme de Hunan et presse locale",
+            "url": "https://whhlyt.hunan.gov.cn/whhlyt/news/wlyw/201909/t20190910_5480863.html",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "He Long Stadium",
+            "sourceLifecycleSignal": "Signalée active en octobre 2026",
+            "sourceLocality": "Changsha",
+            "matchingMethod": "Roue fixe avec billet propre sur le toit près du stade He Long, sans parc d’attractions parent ni fiche homonyme dans l’éditeur officiel."
+          }
+        ],
+        "rationale": "Billetterie propre près d’un stade urbain ; distincte du parc des Martyrs et de Window of the World."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0ce70d70-20be-4393-aaab-6d74d5aaf815/changsha-ferris-wheel",
+          "publishedAtUtc": "2026-11-02T09:11:47.071Z",
+          "verifiedAtUtc": "2026-11-02T09:14:25.022Z",
+          "evidence": "PARK_DATA_EDITOR:apply:3dc25bb0-99c3-4cf2-99c0-6204dc8cde2d"
+        },
+        "facebook": {
+          "id": "3a86a5d58362478e8145203fbbfa0f77",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T09:13:12.719Z",
+          "externalPostId": "1285475681307050_122125707525424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125707525424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:3a86a5d58362478e8145203fbbfa0f77"
+        }
       }
     },
     {
