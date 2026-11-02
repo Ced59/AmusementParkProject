@@ -1,0 +1,156 @@
+{
+  "checkedAtUtc": "2026-11-02T09:20:59.505434+00:00",
+  "entryId": "FR-candidate-3a86527af9cd7e",
+  "scope": "Historical closed local park; evidence search completed for this partial pass, unresolved original materials retained as actionable gaps.",
+  "sourcesReviewed": [
+    {
+      "label": "Infoparks archived presentation, captured 18 July 2001",
+      "url": "https://web.archive.org/web/20010718174140id_/http://www.infoparks.com:80/flashfr/r_parcs/france/parcs/F76002/inf01.htm"
+    },
+    {
+      "label": "Infoparks identity and public address, 2003",
+      "url": "https://web.archive.org/web/20030717231021id_/http://www.infoparks.com:80/flashfr/r_parcs/france/parcs/F76002/index.htm"
+    },
+    {
+      "label": "Le Petit Moutard historical listing explicitly closed",
+      "url": "https://www.lepetitmoutard.be/place/canyon-park_epretot_4349"
+    },
+    {
+      "label": "Les Zoos dans le Monde closed status and site coordinates",
+      "url": "https://www.leszoosdanslemonde.com/description.canyon-park.php"
+    },
+    {
+      "label": "Kronobase opening assertion attributed to Havre Libre / Christian Leguillon; original article not recovered",
+      "url": "https://kronobase.org/chronologie-jour-2204.html"
+    },
+    {
+      "label": "Official business register, Christiane Merchadou commercial identity and legal dates",
+      "url": "https://recherche-entreprises.api.gouv.fr/search?q=317229185"
+    },
+    {
+      "label": "Official establishment register, L’Étrier at Canyon Park Ferme Degenetais",
+      "url": "https://recherche-entreprises.api.gouv.fr/search?q=41021399500039"
+    },
+    {
+      "label": "Cityzeum old directory link leading to archived Infoparks; stale current framing not used",
+      "url": "https://www.cityzeum.com/ar/150-idees-week-end-nature-en-france"
+    }
+  ],
+  "stage05": {
+    "logo": "Logo URL explicitly referenced in contemporary Infoparks index; file not recovered (archive direct 404, both media CDX queries empty, broader filtered query timed out). No image imported or transformed.",
+    "originalPhotographs": "Contemporary large photo ph_01.jpg and access illustration acce.jpg explicitly referenced but archive direct requests returned404. Thumbnail not a recovered substitute. Specialist generic tiger banner and unrelated Étretat Aventure image search results rejected.",
+    "officialWebsite": "No historical official park domain established in source listings, no invented domain.",
+    "officialAnnualMaps": "No genuine official internal park map or dated annual edition recovered in targeted searches. Infoparks access map link (unavailable) is not an annual visitor map. No map imported.",
+    "sources": [
+      "sources/infoparks-archive-manifest.json",
+      "source-images-direct-results.json",
+      "sources/infoparks-media-cdx.json",
+      "sources/infoparks-media-cdx-nonwww.json"
+    ],
+    "rights": "User authorizes photo reuse; present obstacle is absent authentic source files, not speculative rights concern.",
+    "importedImages": 0,
+    "currentLogo": false,
+    "generalPhotographs": 0,
+    "attractionImages": 0
+  },
+  "stage04": {
+    "parkDescriptions": 8,
+    "parkShortFormat": "Three specific sections and paragraphs, concise historical synthesis supported by archived identity/inventory and former visitor memories; generic concluding recaps removed in eight languages.",
+    "zoneDescriptions": 0,
+    "itemDescriptions": 0,
+    "itemsRequiringDetailedSources": [
+      "Chevaux",
+      "Mini-golf",
+      "Vélodrome",
+      "Pédalos",
+      "Train du Far West",
+      "Toboggan nautique",
+      "Matelas aérobic",
+      "Autos tamponneuses",
+      "Teufs-teufs",
+      "Dragon"
+    ],
+    "reason": "Named offer verified, but scenery and individual experience insufficiently documented for developed original copy; no template filler generated."
+  },
+  "stage06": {
+    "applicable": false,
+    "reason": "ClosedDefinitively; no current calendar or named-event schedule added."
+  },
+  "stage07": {
+    "applicable": false,
+    "reason": "ClosedDefinitively; stale listing price not imported as current or precisely dated historical ticket."
+  },
+  "stage08": {
+    "openingAndClosing": {
+      "opening": "Not imported. Backlog/Wikipedia 1976 conflicts with Kronobase 22 April 1973, attributed to Havre Libre/Christian Leguillon without original article available.",
+      "closing": "Not imported. Backlog 2004 conflicts with specialist 2005?; business closures 2005 and 2007 are not visitor closure dates.",
+      "legalDatesNotOpeningDates": [
+        "1979-01-01 operator business creation",
+        "2004-05-01 commercial establishment",
+        "2005-06-30 Christiane Merchadou business closure",
+        "2005-09-30 L’Étrier establishment creation",
+        "2007-03-01 L’Étrier establishment closure"
+      ]
+    },
+    "historyEvents": 0,
+    "articles": 0,
+    "reason": "No sufficiently resolved dated narrative; archive capture date is not a park milestone. No artificial fact or thin article created to increase score."
+  },
+  "references": "No founder or final operator assigned. Merchadou business and subsequent L’Étrier address are evidence, not sufficient proof of founder or final park operating role.",
+  "geolocation": {
+    "located": 0,
+    "identified": 10,
+    "gaps": [
+      "Chevaux",
+      "Mini-golf",
+      "Vélodrome",
+      "Pédalos",
+      "Train du Far West",
+      "Toboggan nautique",
+      "Matelas aérobic",
+      "Autos tamponneuses",
+      "Teufs-teufs",
+      "Dragon"
+    ],
+    "reason": "Archived access map/image inaccessible; no official internal plan or identifiable historic photo recovered. No point copied from park coordinates."
+  },
+  "otherInventoryGaps": [
+    {
+      "name": "More than 50 games",
+      "reason": "Aggregate marketing count not a named inventory; do not invent unnamed facilities."
+    },
+    {
+      "name": "Restaurant",
+      "reason": "Le Petit Moutard lists food service but no distinct historical outlet name or site; not yet created."
+    },
+    {
+      "name": "Vélos fous / vélos à roues désaxées",
+      "reason": "Visitor memories may describe Vélodrome; do not duplicate without identifying separate offer."
+    },
+    {
+      "name": "Toboggans géants / bleus",
+      "reason": "Visitor memories may describe Toboggan nautique; do not create duplicate."
+    },
+    {
+      "name": "Animals or zoo species",
+      "reason": "No named historical species/sections established; generic tiger banner excluded."
+    },
+    {
+      "name": "Accrobranche, cascades, bicycle rental in recent SEO pages",
+      "reason": "Unsourced current claims conflict with documented closure; rejected."
+    }
+  ],
+  "publicationBlockers": [
+    "Authentic historical logo not recovered",
+    "No original park or item photograph recovered",
+    "Ten named attractions and one zone without specific descriptions",
+    "Opening and closing dates unresolved; substantive dated history/article missing"
+  ],
+  "outcome": "partial",
+  "nextSources": [
+    "Original Havre Libre article behind Kronobase opening assertion",
+    "Historic park leaflet or postcard with logo and ride photographs",
+    "Preserved Infoparks F76002 media originals",
+    "Original operational history connecting Merchadou and L’Étrier; do not equate company closures with visitor closure"
+  ]
+}

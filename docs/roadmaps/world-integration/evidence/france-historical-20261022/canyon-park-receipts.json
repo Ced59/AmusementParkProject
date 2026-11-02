@@ -1,0 +1,138 @@
+{
+  "entryId": "FR-candidate-3a86527af9cd7e",
+  "parkId": "f86b923f-0d3c-4061-9996-2ff4a2f419e8",
+  "name": "Canyon Park",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-6759211c-5ad2-4f9d-9e19-2e1121e21f93",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T09:14:17.6416199Z",
+      "appliedAt": "2026-11-02T09:14:17.641Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "04065620f08d4ea7ca8e536e86ee7628ca80261d6cc89621798d400cc07351bb",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Canyon Park (Épretot) : création privée après qualification et sept recherches officielles ; identité, adresse historique et statut fermé confirmés, dates contradictoires et opérateur final laissés non renseignés."
+    },
+    {
+      "eventId": "apply-8e635d8e-0451-4780-932f-341f771a2c39",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T09:16:50.7644506Z",
+      "appliedAt": "2026-11-02T09:16:50.764Z",
+      "receiptFile": "02-western-village-apply.receipt.json",
+      "receiptSha256": "a25b015e8fdc5b459776bcca5aa294b1b0df1876e290ff7a6154383fdcc581be",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isVisible",
+        "names.de",
+        "names.en",
+        "names.es",
+        "names.fr",
+        "names.it",
+        "names.nl",
+        "names.pl",
+        "names.pt",
+        "sortOrder"
+      ],
+      "summary": "Canyon Park : zone historique Village Western attestée par la présentation Infoparks de 2001, noms en huit langues, conservée privée sans rattachements supposés."
+    },
+    {
+      "eventId": "apply-c7e87807-77f4-45b5-857d-0a1c3522536c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T09:18:44.5281706Z",
+      "appliedAt": "2026-11-02T09:18:44.528Z",
+      "receiptFile": "03-historical-inventory-apply.receipt.json",
+      "receiptSha256": "244be3ba7592a0754776dbedcc1f7bedb19180d001f69258899dab584e29e23b",
+      "counts": {
+        "created": 10,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.status",
+        "type"
+      ],
+      "summary": "Canyon Park : dix attractions historiques nommées dans Infoparks 2001 intégrées en privé, sans dates individuelles, constructeurs ou coordonnées supposés ; variantes mémorielles conservées comme pistes et non doublonnées."
+    },
+    {
+      "eventId": "apply-22351946-150b-417a-97a1-35c848c606f6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T09:19:39.6887258Z",
+      "appliedAt": "2026-11-02T09:19:39.688Z",
+      "receiptFile": "04-park-editorial-apply.receipt.json",
+      "receiptSha256": "b62517bbf336a116212eca33c1e75010eaef8752b5dfd7a71e3fdf7cb0fa46ff",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Canyon Park : description historique du parc personnellement rédigée et relue dans les huit langues ; identité western, offre confirmée par Infoparks 2001 et mémoire des sorties en famille. Parc et lieux toujours privés, descriptions individuelles non inventées."
+    },
+    {
+      "eventId": "apply-1d4bd13b-c088-4979-aeb7-ab437f5f2f24",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T09:21:19.4901726Z",
+      "appliedAt": "2026-11-02T09:21:19.490Z",
+      "receiptFile": "04-specificity-refinement-apply.receipt.json",
+      "receiptSha256": "38f0fabef977d46792587ec527cdd0db7457c404b4b5610c9fc52a514b8d4230",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Canyon Park : revue personnelle phrase par phrase, suppression de huit conclusions génériques des descriptions ; faits précis conservés, aucun changement de visibilité."
+    }
+  ],
+  "publicationOrNoop": []
+}

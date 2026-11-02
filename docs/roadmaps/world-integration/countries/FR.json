@@ -4078,28 +4078,102 @@
       "name": "Canyon Park",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "AmusementPark historique local",
       "locality": "Épretot",
-      "siteId": null,
+      "siteId": "f86b923f-0d3c-4061-9996-2ff4a2f419e8",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-02T09:24:19.575026+00:00",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Identité confirmée par archives Infoparks 2001/2003, Le Petit Moutard, adresse et recherches officielles ; création privée vérifiée par Apply et recherche finale.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Canyon Parc",
+        "Parc d’attractions du Canyon"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-02T09:21:19.490Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6759211c-5ad2-4f9d-9e19-2e1121e21f93",
+          "appliedAt": "2026-11-02T09:14:17.641Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f86b923f-0d3c-4061-9996-2ff4a2f419e8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/canyon-park-receipts.json#apply-6759211c-5ad2-4f9d-9e19-2e1121e21f93",
+          "auditEvidence": null,
+          "summary": "Canyon Park (Épretot) : création privée après qualification et sept recherches officielles ; identité, adresse historique et statut fermé confirmés, dates contradictoires et opérateur final laissés non renseignés."
+        },
+        {
+          "eventId": "apply-8e635d8e-0451-4780-932f-341f771a2c39",
+          "appliedAt": "2026-11-02T09:16:50.764Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f86b923f-0d3c-4061-9996-2ff4a2f419e8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/canyon-park-receipts.json#apply-8e635d8e-0451-4780-932f-341f771a2c39",
+          "auditEvidence": null,
+          "summary": "Canyon Park : zone historique Village Western attestée par la présentation Infoparks de 2001, noms en huit langues, conservée privée sans rattachements supposés."
+        },
+        {
+          "eventId": "apply-c7e87807-77f4-45b5-857d-0a1c3522536c",
+          "appliedAt": "2026-11-02T09:18:44.528Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f86b923f-0d3c-4061-9996-2ff4a2f419e8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/canyon-park-receipts.json#apply-c7e87807-77f4-45b5-857d-0a1c3522536c",
+          "auditEvidence": null,
+          "summary": "Canyon Park : dix attractions historiques nommées dans Infoparks 2001 intégrées en privé, sans dates individuelles, constructeurs ou coordonnées supposés ; variantes mémorielles conservées comme pistes et non doublonnées."
+        },
+        {
+          "eventId": "apply-22351946-150b-417a-97a1-35c848c606f6",
+          "appliedAt": "2026-11-02T09:19:39.688Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f86b923f-0d3c-4061-9996-2ff4a2f419e8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/canyon-park-receipts.json#apply-22351946-150b-417a-97a1-35c848c606f6",
+          "auditEvidence": null,
+          "summary": "Canyon Park : description historique du parc personnellement rédigée et relue dans les huit langues ; identité western, offre confirmée par Infoparks 2001 et mémoire des sorties en famille. Parc et lieux toujours privés, descriptions individuelles non inventées."
+        },
+        {
+          "eventId": "apply-1d4bd13b-c088-4979-aeb7-ab437f5f2f24",
+          "appliedAt": "2026-11-02T09:21:19.490Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f86b923f-0d3c-4061-9996-2ff4a2f419e8",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/canyon-park-receipts.json#apply-1d4bd13b-c088-4979-aeb7-ab437f5f2f24",
+          "auditEvidence": null,
+          "summary": "Canyon Park : revue personnelle phrase par phrase, suppression de huit conclusions génériques des descriptions ; faits précis conservés, aucun changement de visibilité."
+        }
+      ],
+      "nextAction": "Fiche privée, Village Western et dix attractions attestées intégrés ; description du parc en huit langues. Audit projeté 59/100, logo requis. Retrouver logo/photos originaux, descriptions des dix lieux et de la zone, dates ouverture/fermeture contradictoires et histoire. Aucun post Facebook avant publication vérifiée. Voir canyon-park-progress-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Infoparks archived presentation, captured 18 July 2001",
+          "url": "https://web.archive.org/web/20010718174140id_/http://www.infoparks.com:80/flashfr/r_parcs/france/parcs/F76002/inf01.htm",
+          "accessedAt": "2026-11-02T09:24:19.575026+00:00"
+        },
+        {
+          "label": "Infoparks identity and public address, 2003",
+          "url": "https://web.archive.org/web/20030717231021id_/http://www.infoparks.com:80/flashfr/r_parcs/france/parcs/F76002/index.htm",
+          "accessedAt": "2026-11-02T09:24:19.575026+00:00"
+        },
+        {
+          "label": "Le Petit Moutard historical listing explicitly closed",
+          "url": "https://www.lepetitmoutard.be/place/canyon-park_epretot_4349",
+          "accessedAt": "2026-11-02T09:24:19.575026+00:00"
+        },
+        {
+          "label": "Les Zoos dans le Monde closed status and site coordinates",
+          "url": "https://www.leszoosdanslemonde.com/description.canyon-park.php",
+          "accessedAt": "2026-11-02T09:24:19.575026+00:00"
         }
       ]
     },
@@ -13359,14 +13433,14 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
