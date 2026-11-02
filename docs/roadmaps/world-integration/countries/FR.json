@@ -11674,16 +11674,16 @@
       "siteId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-02T21:48:43.380778+00:00",
-      "editorialStatus": "InProgress",
+      "presenceObservedAt": "2026-11-02T23:54:20.294388+00:00",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-02T22:30:44.410Z",
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T23:41:43.216Z",
       "integrationHistory": [
         {
           "eventId": "apply-3267822c-5929-4d64-9308-dc19d9b24fcc",
@@ -11954,9 +11954,519 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-f4e9e747-b351-42c9-84d8-4e63b23d31e3",
           "auditEvidence": null,
           "summary": "Tarifs officiels revérifiés : jetons et pêche conservés, bornes de validité non sourcées retirées, huit notes destinées aux visiteurs ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-68a5514ac29f4a158b632e0da3f99600-2026-11-02T223400.179Z",
+          "appliedAt": "2026-11-02T22:34:00.179Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-68a5514ac29f4a158b632e0da3f99600-2026-11-02T223400.179Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-fermeture-chantier, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-6647d031075f46328b8a7f06f12cd921-2026-11-02T223414.622Z",
+          "appliedAt": "2026-11-02T22:34:14.622Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-6647d031075f46328b8a7f06f12cd921-2026-11-02T223414.622Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-reouverture-fevrier, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d6c4e8554c9d4a44b33547c0fa68c68b-2026-11-02T223428.926Z",
+          "appliedAt": "2026-11-02T22:34:28.926Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-d6c4e8554c9d4a44b33547c0fa68c68b-2026-11-02T223428.926Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-equipe-juillet, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-ff35c1ef-1289-4c7c-977e-92b9a12a45fc",
+          "appliedAt": "2026-11-02T22:37:20.501Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-ff35c1ef-1289-4c7c-977e-92b9a12a45fc",
+          "auditEvidence": null,
+          "summary": "Deux jalons historiques privés ajoutés avec photos exactes : fermeture du3novembre2025 et réouverture temporaire de février2026 ; huit langues relues, audit final restant."
+        },
+        {
+          "eventId": "apply-d90698c9-93ad-4c27-a01c-e6e8d71af31a",
+          "appliedAt": "2026-11-02T22:41:49.643Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-d90698c9-93ad-4c27-a01c-e6e8d71af31a",
+          "auditEvidence": null,
+          "summary": "Article de transformation réécrit personnellement dans les8langues avec4sections7paragraphes et4photos contextualisées ; date de réouverture4juillet2026, chronologie Chenille corrigée sans inventer sa date de fermeture ; audit final restant."
+        },
+        {
+          "eventId": "apply-e82b2360-e20d-48c6-ac7a-638afd9618d2",
+          "appliedAt": "2026-11-02T22:47:11.594Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-e82b2360-e20d-48c6-ac7a-638afd9618d2",
+          "auditEvidence": null,
+          "summary": "Koaland : descriptions du parc révisées en huit langues avec décors photographiquement vérifiés et réouverture du 4 juillet 2026."
+        },
+        {
+          "eventId": "import-photo-441efc0682e64df39ec4d560b3fce13e-2026-11-02T224933.391Z",
+          "appliedAt": "2026-11-02T22:49:33.391Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-441efc0682e64df39ec4d560b3fce13e-2026-11-02T224933.391Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-padel-filet, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-85fa440dfb254dca9e3a31c5a1aaddcf-2026-11-02T224948.350Z",
+          "appliedAt": "2026-11-02T22:49:48.350Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-85fa440dfb254dca9e3a31c5a1aaddcf-2026-11-02T224948.350Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-padel-materiel, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e195a2e713eb40ad8497ea631d2bce4e-2026-11-02T225007.924Z",
+          "appliedAt": "2026-11-02T22:50:07.924Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-e195a2e713eb40ad8497ea631d2bce4e-2026-11-02T225007.924Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-paintball-equipe, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-d35189f79ad84fcfb3b50370a7433fef-2026-11-02T225022.839Z",
+          "appliedAt": "2026-11-02T22:50:22.839Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-d35189f79ad84fcfb3b50370a7433fef-2026-11-02T225022.839Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-paintball-terrain, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-519fd11727654dabaa5bb52ce1ebb12d-2026-11-02T225038.625Z",
+          "appliedAt": "2026-11-02T22:50:38.625Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-519fd11727654dabaa5bb52ce1ebb12d-2026-11-02T225038.625Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-carrousel-moto, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-b3f7bad3-2a52-4e9e-aef7-3bfb01fe12b6",
+          "appliedAt": "2026-11-02T22:52:54.119Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-b3f7bad3-2a52-4e9e-aef7-3bfb01fe12b6",
+          "auditEvidence": null,
+          "summary": "Koaland : quatre anciens équipements internes intégrés avec descriptions en huit langues, sources et statuts historiques ; nouveaux éléments privés avant audit."
+        },
+        {
+          "eventId": "apply-da2ed77d-1dcc-46bb-8f29-7d9145d2d934",
+          "appliedAt": "2026-11-02T22:54:25.243Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-da2ed77d-1dcc-46bb-8f29-7d9145d2d934",
+          "auditEvidence": null,
+          "summary": "Koaland : horaires habituels de rentrée conservés sans dates de validité inventées ; divergence des calendriers officiels documentée, autres jours laissés inconnus."
+        },
+        {
+          "eventId": "apply-02a53bb9-8171-44c6-ac5f-77a6f725dc5b",
+          "appliedAt": "2026-11-02T23:00:52.839Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-02a53bb9-8171-44c6-ac5f-77a6f725dc5b",
+          "auditEvidence": null,
+          "summary": "Koaland : dix attractions historiques distinctes documentées par les photographies de 2008 et le guide de 2011, avec descriptions en huit langues ; nouveaux éléments privés."
+        },
+        {
+          "eventId": "import-photo-4d4fb69a101641bebc1827fab4168210-2026-11-02T230224.910Z",
+          "appliedAt": "2026-11-02T23:02:24.910Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-4d4fb69a101641bebc1827fab4168210-2026-11-02T230224.910Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-minigolf-2008-pistes, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-56ca17363013456384a37cc8dd99543d-2026-11-02T230239.057Z",
+          "appliedAt": "2026-11-02T23:02:39.057Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-56ca17363013456384a37cc8dd99543d-2026-11-02T230239.057Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-minigolf-2008-decor, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-34b1f7ae5cd14d058b7841021d9cced5-2026-11-02T230252.963Z",
+          "appliedAt": "2026-11-02T23:02:52.963Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-34b1f7ae5cd14d058b7841021d9cced5-2026-11-02T230252.963Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-minigolf-2008-tonneau, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7ad2508bf6574d23bbf5fa2f229a803c-2026-11-02T230308.194Z",
+          "appliedAt": "2026-11-02T23:03:08.194Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-7ad2508bf6574d23bbf5fa2f229a803c-2026-11-02T230308.194Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-autos-2008-piste, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b672e3b4d6c94217a6f75ea6ee4c6a2f-2026-11-02T230322.574Z",
+          "appliedAt": "2026-11-02T23:03:22.574Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-b672e3b4d6c94217a6f75ea6ee4c6a2f-2026-11-02T230322.574Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-autos-2008-voitures, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9e841f94b5744f49abf903c0d96e8eae-2026-11-02T230336.815Z",
+          "appliedAt": "2026-11-02T23:03:36.815Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-9e841f94b5744f49abf903c0d96e8eae-2026-11-02T230336.815Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-parc-2008-allee, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-67320df937d44cd88aa6e9d9ae397c9a-2026-11-02T230350.824Z",
+          "appliedAt": "2026-11-02T23:03:50.824Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-67320df937d44cd88aa6e9d9ae397c9a-2026-11-02T230350.824Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-parc-2008-jardin, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b991b2f852f049458efa291464d18ec4-2026-11-02T230405.562Z",
+          "appliedAt": "2026-11-02T23:04:05.562Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-b991b2f852f049458efa291464d18ec4-2026-11-02T230405.562Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-parc-2008-terrasse, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-24c21ff4df594447a50d5e900f97baef-2026-11-02T230419.684Z",
+          "appliedAt": "2026-11-02T23:04:19.684Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-24c21ff4df594447a50d5e900f97baef-2026-11-02T230419.684Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pouss-pouss-2008, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0186e612652f4bab8ecd9f61c26629b1-2026-11-02T230446.432Z",
+          "appliedAt": "2026-11-02T23:04:46.432Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-0186e612652f4bab8ecd9f61c26629b1-2026-11-02T230446.432Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pieuvre-2008-ensemble, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-42c6085b7b494eccbc7f527369b33cf3-2026-11-02T230500.260Z",
+          "appliedAt": "2026-11-02T23:05:00.260Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-42c6085b7b494eccbc7f527369b33cf3-2026-11-02T230500.260Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pieuvre-2008-nacelles, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-aa4a3fc6d5ce42d1a402591627f97189-2026-11-02T230514.141Z",
+          "appliedAt": "2026-11-02T23:05:14.141Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-aa4a3fc6d5ce42d1a402591627f97189-2026-11-02T230514.141Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pieuvre-2008-mouvement, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-22a2a6f665134a84ae32f539a5d27bcb-2026-11-02T230528.131Z",
+          "appliedAt": "2026-11-02T23:05:28.131Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-22a2a6f665134a84ae32f539a5d27bcb-2026-11-02T230528.131Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-jungle-2008-portique, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ab7261660efc4a63b12dabde24afbf35-2026-11-02T230541.922Z",
+          "appliedAt": "2026-11-02T23:05:41.922Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-ab7261660efc4a63b12dabde24afbf35-2026-11-02T230541.922Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-jungle-2008-jeux, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f8c48db6d9e34d39a26dba6d1294593d-2026-11-02T230555.877Z",
+          "appliedAt": "2026-11-02T23:05:55.877Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-f8c48db6d9e34d39a26dba6d1294593d-2026-11-02T230555.877Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-jungle-2008-enseigne, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ce376fc020ae4bd6abbc80dbd7944883-2026-11-02T230610.727Z",
+          "appliedAt": "2026-11-02T23:06:10.727Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-ce376fc020ae4bd6abbc80dbd7944883-2026-11-02T230610.727Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-karting-2008, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2f8fd3c84c7c49cebe817163a6ddec74-2026-11-02T230625.052Z",
+          "appliedAt": "2026-11-02T23:06:25.052Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-2f8fd3c84c7c49cebe817163a6ddec74-2026-11-02T230625.052Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-petit-train-2008, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-93e96133503e417e9b4cd77be970260b-2026-11-02T230639.466Z",
+          "appliedAt": "2026-11-02T23:06:39.466Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-93e96133503e417e9b4cd77be970260b-2026-11-02T230639.466Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-big-truck-2008-ensemble, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ff2764d307434feb92e250577f09499c-2026-11-02T230654.492Z",
+          "appliedAt": "2026-11-02T23:06:54.492Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-ff2764d307434feb92e250577f09499c-2026-11-02T230654.492Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-big-truck-2008-pompiers, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-aad41ab7958d4160b6fafb7df36a067c-2026-11-02T230709.176Z",
+          "appliedAt": "2026-11-02T23:07:09.176Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-aad41ab7958d4160b6fafb7df36a067c-2026-11-02T230709.176Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-phare-2008, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-865080dc77cd4d6db95ac0ba3f9f121b-2026-11-02T230723.461Z",
+          "appliedAt": "2026-11-02T23:07:23.461Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-865080dc77cd4d6db95ac0ba3f9f121b-2026-11-02T230723.461Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-oiseaux-2008, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-75186447a5ad4fd1bb7400365065fd37-2026-11-02T230737.910Z",
+          "appliedAt": "2026-11-02T23:07:37.910Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-75186447a5ad4fd1bb7400365065fd37-2026-11-02T230737.910Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-voitures-tournantes-2008, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-391acff43ea34079ba744f50a994ae9e-2026-11-02T230751.967Z",
+          "appliedAt": "2026-11-02T23:07:51.967Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-391acff43ea34079ba744f50a994ae9e-2026-11-02T230751.967Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-carrousel-ancien-2008, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-ca570f92-50f1-43d9-b9b3-893a83680e7a",
+          "appliedAt": "2026-11-02T23:14:26.234Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-ca570f92-50f1-43d9-b9b3-893a83680e7a",
+          "auditEvidence": null,
+          "summary": "Koaland : relecture finale ciblée de sept fiches dans huit langues, identification et description de la tyrolienne, enrichissement des anciens mini-golf et autos tamponneuses."
+        },
+        {
+          "eventId": "import-photo-c116ad3fa8364e92bddd5a94b598f244-2026-11-02T231532.484Z",
+          "appliedAt": "2026-11-02T23:15:32.484Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-c116ad3fa8364e92bddd5a94b598f244-2026-11-02T231532.484Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tyrolienne-officielle, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5b39a8429a1d434eaac688a2132de972-2026-11-02T231546.655Z",
+          "appliedAt": "2026-11-02T23:15:46.655Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-5b39a8429a1d434eaac688a2132de972-2026-11-02T231546.655Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tyrolienne-juillet, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-d32434de-9d6c-480b-bcd4-ba6116a3c182",
+          "appliedAt": "2026-11-02T23:16:29.880Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-d32434de-9d6c-480b-bcd4-ba6116a3c182",
+          "auditEvidence": null,
+          "summary": "Koaland : article enrichi du jardin de2008 dans huit langues, Big Truck rattaché à Sartori existant et ancienne Chenille géolocalisée."
+        },
+        {
+          "eventId": "import-photo-b4208201ca1e4109911ec7522f81397a-2026-11-02T231645.200Z",
+          "appliedAt": "2026-11-02T23:16:45.200Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#import-photo-b4208201ca1e4109911ec7522f81397a-2026-11-02T231645.200Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cinema-promotion, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-6a35d4e8-a5b5-4a3e-936d-a8b080585edc",
+          "appliedAt": "2026-11-02T23:17:46.774Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-6a35d4e8-a5b5-4a3e-936d-a8b080585edc",
+          "auditEvidence": null,
+          "summary": "Koaland : deux jalons historiques sourcés en huit langues, Cinéma5D2011 et remplacement du mini-golf2026 ; événements privés avant audit."
+        },
+        {
+          "eventId": "apply-7457f53e-72e2-4d7d-b8e9-bfde1748d7fd",
+          "appliedAt": "2026-11-02T23:23:18.036Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-7457f53e-72e2-4d7d-b8e9-bfde1748d7fd",
+          "auditEvidence": null,
+          "summary": "Koaland : correction de seize médias publics, légendes huit langues et quatre rattachements erronés, sans suppression ni dépublication."
+        },
+        {
+          "eventId": "apply-ee3e950a-7d4a-4f53-b5b1-2a8e4406c183",
+          "appliedAt": "2026-11-02T23:25:23.806Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-ee3e950a-7d4a-4f53-b5b1-2a8e4406c183",
+          "auditEvidence": null,
+          "summary": "Koaland : correction transversale factuelle des huit biographies de Sartori, référence partagée utilisée par Big Truck."
+        },
+        {
+          "eventId": "apply-f1ca5081-3360-4a28-af0e-15d6060cd4e3",
+          "appliedAt": "2026-11-02T23:26:31.584Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-f1ca5081-3360-4a28-af0e-15d6060cd4e3",
+          "auditEvidence": null,
+          "summary": "Koaland : reprise éditoriale de l’article et de la légende des oiseaux dans huit langues après audit des répétitions."
+        },
+        {
+          "eventId": "apply-a4cd7626-fd5e-4d6f-a06d-5e498b63e597",
+          "appliedAt": "2026-11-02T23:30:10.991Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-a4cd7626-fd5e-4d6f-a06d-5e498b63e597",
+          "auditEvidence": null,
+          "summary": "Koaland : alternatives visuelles distinctes pour42images et cinq légendes historiques propres à article, dans huit langues."
+        },
+        {
+          "eventId": "apply-3b6d66d5-88e4-4122-af71-997461136c5c",
+          "appliedAt": "2026-11-02T23:32:16.606Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-3b6d66d5-88e4-4122-af71-997461136c5c",
+          "auditEvidence": null,
+          "summary": "Koaland : suppression des répétitions dans conditions tarifaires, description spécifique des jeux et rattachement de la troisième photo de trampolines."
+        },
+        {
+          "eventId": "apply-e8d28c9b-a933-439d-bdb2-4b565f6e2937",
+          "appliedAt": "2026-11-02T23:37:32.266Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-e8d28c9b-a933-439d-bdb2-4b565f6e2937",
+          "auditEvidence": null,
+          "summary": "Koaland : conservation des deux tarifs historiques2024 attestés sur le site officiel archivé, sans modifier la grille actuelle."
+        },
+        {
+          "eventId": "apply-759ff6d1-3874-44db-9d6d-2bf7a8240592",
+          "appliedAt": "2026-11-02T23:41:43.216Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-759ff6d1-3874-44db-9d6d-2bf7a8240592",
+          "auditEvidence": null,
+          "summary": "Koaland : retrait de deux conclusions génériques du carrousel et de Koala Burger dans huit langues, contenu factuel conservé."
+        },
+        {
+          "eventId": "completion-audit-koaland-759ff6d1-3874-44db-9d6d-2bf7a8240592",
+          "appliedAt": "2026-11-02T23:41:43.216Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-759ff6d1-3874-44db-9d6d-2bf7a8240592",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-final-audit.json",
+          "summary": "Audit final 98/100 sans bloqueur : 36 lieux publics décrits dans huit langues, 72 médias, six faits et article. Site, lien Histoire, plan 2026 et annonce Facebook existante Published vérifiés."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Intégration achevée : audit final 98/100 sans bloqueur, 36 lieux publics, huit langues, six faits historiques et article, plan officiel 2026. Annonce Facebook existante Published conservée sans doublon. Lacunes historiques et photographiques précisément conservées dans koaland-final-audit.json.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -11985,7 +12495,24 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "publicationOutcomes": {
+        "site": {
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T23:49:45.0661213Z",
+          "url": "https://amusement-parks.fun/fr/park/a01011e8-b400-40c7-bbe2-5635d7dd24f7/koaland",
+          "evidenceOperationId": "a2dbe12e-a002-402e-96ba-d6a5fd3c1e42",
+          "dateNote": "Completion of dependent-content publication; the park itself was already public."
+        },
+        "facebook": {
+          "status": "Published",
+          "publishedAtUtc": null,
+          "observedAtUtc": "2026-11-02T23:54:20.230574+00:00",
+          "url": "https://www.facebook.com/1285475681307050/posts/122120989857424431",
+          "publicationId": "48a087b5cf60408c9f921250f4e1617f",
+          "dateNote": "Resolve confirms Published without exposing the original publication date. Observation time is not substituted for that unknown date."
+        }
+      }
     },
     {
       "entryId": "FR-candidate-9f8d93dee15c52",

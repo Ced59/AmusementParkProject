@@ -33,13 +33,13 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Catégorie | Nombre initial | Restant |
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
-| Fiches privées existantes à intégrer | 82 | 51 |
+| Fiches privées existantes à intégrer | 82 | 50 |
 | Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 4 |
 | Parcs historiques absents de la photographie FR | 20 | 19 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
 | Candidat historique distinct découvert lors de la qualification (Nouveau Tivoli) | 0 | 1 |
-| **Total** | **225** | **135** |
+| **Total** | **225** | **134** |
 
 ## 1. Fiches publiques à compléter
 
@@ -51,7 +51,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [x] Kangoo Park — `bac6532e-ed3e-40dd-9c8f-2a9b50f3d980` — clôture conservée ; voir le registre mondial et les preuves ci-dessous.
 - [x] Kid Parc — `a48caf8e-871b-40cc-8b98-9faff4219e96` — clôture conservée ; voir le registre mondial et le bilan ci-dessous.
 - [x] Kingoland — `900ceb7b-7bb8-40c0-9e4a-6340d019a6d8` — clôture conservée ; voir le registre mondial et les preuves ci-dessous.
-- [ ] Koaland — `a01011e8-b400-40c7-bbe2-5635d7dd24f7`
+- [x] Koaland — `a01011e8-b400-40c7-bbe2-5635d7dd24f7` — clôture conservée le 2 novembre 2026 ; audit final 98/100, site et annonce Facebook existante Published vérifiés.
 - [ ] L'Île aux Géants — `29a2498e-9b6c-4c55-a2ac-e521dc6e4586`
 - [ ] L'Île aux Pirates, Capbreton — candidats `efac8649-a15b-4ed6-866c-2e926579d6de` et `5e9e6a61-3d74-49cd-9c3a-8ca107edd018` à réconcilier avant intégration
 - [ ] La Coccinelle — `e1fa4656-8011-4908-a1bf-e7d581285a83`
@@ -478,3 +478,14 @@ Playmobil FunPark Fresnes a reçu 19 fiches internes en huit langues, 24 médias
 Le rapprochement officiel confirme que le candidat Zygofolis correspond à la fiche masquée Zygo Park. Les deux lignes et leurs identifiants sont conservés, avec un seul dossier actif. La fiche existante est reclassée historique ; son ancien statut Operating a été corrigé en ClosedDefinitively, et son nom de fiche est désormais Zygofolis – Zygo Parc. [Preuve de rapprochement](world-integration/evidence/france-historical-20261022/zygofolis-identity-reconciliation.json). Le périmètre national conserve **134 dossiers actifs : 111 principaux, 23 historiques et aucune standalone**. Le lot reste à **six clôtures** ; aucune PR avant dix parcs terminés et aucune hausse de version pour ce suivi.
 
 Le point d’avancement de Zygofolis du 28 octobre conserve les [reçus de chaque lot appliqué](world-integration/evidence/france-historical-20261022/zygofolis-receipts.json) et l’[inventaire qualifié](world-integration/evidence/france-historical-20261022/zygofolis-inventory-qualification.json). Les 54 fiches comprennent 24 attractions, quatre spectacles ou salles, dix restaurants, douze services, trois boutiques et un funiculaire. Le regroupement commercial privé provisoire a été affiné vers Airport Boutique, et la seconde façade photographiée qualifiée séparément ; les marqueurs de commerces sans correspondance fiable restent documentés. Les descriptions sont présentes dans les huit langues, avec 58 images privées et les plans officiels 1987 et 1991. Huit faits de parc et onze faits d’attractions, avec un article de 535 à 635 mots par langue, sont intégrés. La couverture photographique est de 18 attractions sur 24 et 27 fiches sur 54 ; les lacunes documentées restent explicites, y compris les coordonnées précises des installations disparues. Ce dossier reste partiel ; il n’ajoute aucune clôture au lot de six parcs.
+
+
+### Koaland — clôture du 2 novembre 2026
+
+La [fiche de Koaland](https://amusement-parks.fun/fr/park/a01011e8-b400-40c7-bbe2-5635d7dd24f7/koaland) est auditée à **98/100**, sans bloqueur, après rapprochement de son ancien jardin de manèges et du réaménagement de 2026. Les **36 lieux publics** comprennent 26 attractions : dix en activité, quinze retirées et une annoncée. Chaque lieu dispose de descriptions dans les huit langues. Les deux projets conservent leur statut Planned ; les anciens manèges restent Removed.
+
+Les **72 médias publiés** comprennent 61 photographies distinctes ; deux fichiers exactement dupliqués restent privés et conservés. Le logo officiel complet est courant. Dix des onze équipements importants ont au moins trois photographies ; la tyrolienne en possède deux. Les six jalons sourcés et illustrés, l’article développé dans les huit langues et le plan officiel 2026 sont accessibles. Les 26 pages mobiles, deux pages sur ordinateur et six réponses publiques contrôlées passent ; le bouton Histoire a été cliqué depuis la fiche normale. Le fichier du plan publié est identique à la source officielle.
+
+L’[annonce Facebook existante](https://www.facebook.com/1285475681307050/posts/122120989857424431) est confirmée Published, sans nouvel envoi. Sa date initiale demeure inconnue ; elle ne remplace pas la dernière intégration de données réelle du **2026-11-02T23:41:43.216Z**. Les dates d’ouverture contradictoires, les vues et coordonnées introuvables, le plan ancien non récupéré et les limites du calendrier officiel restent documentés. [Audit final](world-integration/evidence/france-historical-20261022/koaland-final-audit.json) · [lacunes et recherches](world-integration/evidence/france-historical-20261022/koaland-source-gaps.json).
+
+Le backlog national conserve **134 dossiers actifs : 110 principaux, 24 historiques et aucune standalone**. Le total initial de 225 et le candidat historique découvert restent conservés. Sept clôtures figurent dans le lot documentaire courant : aucune PR avant dix, aucune hausse de version pour le backlog.
