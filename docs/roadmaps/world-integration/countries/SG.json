@@ -1153,7 +1153,7 @@
           "summary": "Audit final 85/100 sans blocage ; site et Facebook publiés."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la ligne ; chercher une photo réutilisable, clarifier les deux plages horaires officielles et renouveler les prix en ligne.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la ligne ; chercher une photo réutilisable, clarifier les deux plages horaires officielles et renouveler les prix en ligne. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -1235,7 +1235,8 @@
         "score": 85,
         "publicationBlockers": [],
         "gapCount": 3
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "SG-candidate-standalone-864d87f292e0f6",

@@ -1,0 +1,92 @@
+{
+  "observedAtUtc": "2026-11-02T12:39:48.982Z",
+  "method": "Official editor SearchStandaloneAttractions yielded 190 records in four pages. Each published public page was fetched and its social preview image checked. Eight published pages showed the generic site logo; ExportStandaloneAttraction for each confirmed an empty images collection. The single hidden record returned HTTP 404 and is excluded from the published-photo denominator. Other pages with a custom social preview were not subjected to a full photographic-rights or attribution audit.",
+  "publishedStandaloneCount": 189,
+  "publishedWithGenericSocialPreviewAndZeroImages": 8,
+  "hiddenStandaloneCount": 1,
+  "observations": [
+    {
+      "countryCode": "KR",
+      "name": "Arii Hills Zipwire — Jeongseon",
+      "standaloneAttractionId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "publicUrlChecked": "https://amusement-parks.fun/fr/attraction/56b41750-e5a1-4721-b4bf-225aaf8c3409/x",
+      "publicStatus": 200,
+      "socialPreviewImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png",
+      "officialEditorExportImageCount": 0,
+      "canonicalPublicUrl": "https://amusement-parks.fun/fr/attraction/56b41750-e5a1-4721-b4bf-225aaf8c3409/arii-hills-zipwire-jeongseon"
+    },
+    {
+      "countryCode": "CA",
+      "name": "Eagle’s Flight ZipTour — Mount Washington",
+      "standaloneAttractionId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "publicUrlChecked": "https://amusement-parks.fun/fr/attraction/1cb184a8-6579-4aae-88ba-365e15542a09/x",
+      "publicStatus": 200,
+      "socialPreviewImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png",
+      "officialEditorExportImageCount": 0,
+      "canonicalPublicUrl": "https://amusement-parks.fun/fr/attraction/1cb184a8-6579-4aae-88ba-365e15542a09/eagle-s-flight-ziptour-mount-washington"
+    },
+    {
+      "countryCode": "SG",
+      "name": "SkyHelix Sentosa",
+      "standaloneAttractionId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+      "publicUrlChecked": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/x",
+      "publicStatus": 200,
+      "socialPreviewImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png",
+      "officialEditorExportImageCount": 0,
+      "canonicalPublicUrl": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa"
+    },
+    {
+      "countryCode": "KR",
+      "name": "Skyline Luge Busan",
+      "standaloneAttractionId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+      "publicUrlChecked": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/x",
+      "publicStatus": 200,
+      "socialPreviewImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png",
+      "officialEditorExportImageCount": 0,
+      "canonicalPublicUrl": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan"
+    },
+    {
+      "countryCode": "CA",
+      "name": "Skyline Luge Mont-Tremblant",
+      "standaloneAttractionId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "publicUrlChecked": "https://amusement-parks.fun/fr/attraction/ba136b99-e441-4569-be10-17c9a9b8ba8d/x",
+      "publicStatus": 200,
+      "socialPreviewImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png",
+      "officialEditorExportImageCount": 0,
+      "canonicalPublicUrl": "https://amusement-parks.fun/fr/attraction/ba136b99-e441-4569-be10-17c9a9b8ba8d/skyline-luge-mont-tremblant"
+    },
+    {
+      "countryCode": "KR",
+      "name": "Skyline Luge Tongyeong",
+      "standaloneAttractionId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+      "publicUrlChecked": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/x",
+      "publicStatus": 200,
+      "socialPreviewImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png",
+      "officialEditorExportImageCount": 0,
+      "canonicalPublicUrl": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong"
+    },
+    {
+      "countryCode": "AT",
+      "name": "Speed-Gleit-Bahn",
+      "standaloneAttractionId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+      "publicUrlChecked": "https://amusement-parks.fun/fr/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/x",
+      "publicStatus": 200,
+      "socialPreviewImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png",
+      "officialEditorExportImageCount": 0,
+      "canonicalPublicUrl": "https://amusement-parks.fun/fr/attraction/e97f373c-a9b4-41a9-9111-92f29771fd49/speed-gleit-bahn"
+    },
+    {
+      "countryCode": "AE",
+      "name": "The Dubai Balloon at Atlantis",
+      "standaloneAttractionId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+      "publicUrlChecked": "https://amusement-parks.fun/fr/attraction/b5460e06-51ba-4b52-81bd-445d3f144f8d/x",
+      "publicStatus": 200,
+      "socialPreviewImage": "https://amusement-parks.fun/assets/general-icon/logo-amusementpark.png",
+      "officialEditorExportImageCount": 0,
+      "canonicalPublicUrl": "https://amusement-parks.fun/fr/attraction/b5460e06-51ba-4b52-81bd-445d3f144f8d/the-dubai-balloon-at-atlantis"
+    }
+  ],
+  "dataIntegrationDatesChanged": false,
+  "integrationHistoryChanged": false,
+  "priority": "Find exact reusable photos, inspect each image visually, add credits and eight-language alt/caption text, then publish and verify the site. Do not use generic location photos as attraction photos."
+}

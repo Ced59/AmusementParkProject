@@ -5676,7 +5676,7 @@
           "summary": "Audit final 88/100 sans blocage ; site et Facebook publiés."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la ligne ; trouver une photographie réutilisable de la piste, renouveler calendrier et prix après le 31 octobre 2026, puis contrôler les conditions exactes des carnets.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la ligne ; trouver une photographie réutilisable de la piste, renouveler calendrier et prix après le 31 octobre 2026, puis contrôler les conditions exactes des carnets. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5764,7 +5764,8 @@
         "score": 88,
         "publicationBlockers": [],
         "gapCount": 4
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "AT-candidate-f6b80dea57a125",

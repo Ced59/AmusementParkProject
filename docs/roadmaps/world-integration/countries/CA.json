@@ -4674,7 +4674,7 @@
           "summary": "Titres des conditions d’accès corrigés après vérification publique ; audit final sans blocage."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver cette ligne et les reçus ; vérifier date de reprise, horaires et prix 2027 avant la saison, statut administratif ToReview et possibilité d’une photographie sous licence réutilisable.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver cette ligne et les reçus ; vérifier date de reprise, horaires et prix 2027 avant la saison, statut administratif ToReview et possibilité d’une photographie sous licence réutilisable. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Skyline Luge — saison et calendrier officiels",
@@ -4732,7 +4732,8 @@
         "facebookPublishedAtUtc": "2026-10-28T07:45:25.0239476Z",
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125005813424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ca-tremblant-20261028/tremblant-receipts.json"
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "CA-candidate-534923ad73742b",
@@ -5704,7 +5705,7 @@
           "summary": "Ouverture du parcours complet le 27 juin 2020 et histoire Hawk 2019 intégrées."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la fiche et les reçus ; vérifier la reprise, les tarifs futurs, les conditions d’accès, le statut administratif ToReview et une photographie sous licence réutilisable.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la fiche et les reçus ; vérifier la reprise, les tarifs futurs, les conditions d’accès, le statut administratif ToReview et une photographie sous licence réutilisable. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Mount Washington — ZipTour actuel, parcours, restrictions et prix 2026",
@@ -5757,7 +5758,8 @@
         "facebookPublishedAtUtc": "2026-10-28T08:14:47.9911097Z",
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125008891424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ca-mt-washington-20261028/mt-washington-receipts.json"
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "CA-candidate-standalone-8abe2e5d5d5cc0",
