@@ -8614,7 +8614,16 @@
       "standaloneAssessment": {
         "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-02",
-        "attractions": [],
+        "attractions": [
+          {
+            "name": "Chatham",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1414",
+            "family": "Luge d’été",
+            "sourceVenueName": "Chatham",
+            "referenceId": "location-id-1414"
+          }
+        ],
         "rationale": "Les descentes ont une billetterie distincte des cours de ski et du tubing ; le centre de sports de neige n’est pas un parc de loisirs à admission obligatoire."
       }
     },
@@ -8875,7 +8884,16 @@
       "standaloneAssessment": {
         "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-02",
-        "attractions": [],
+        "attractions": [
+          {
+            "name": "Llandudno",
+            "source": "Wiegand — références constructeur",
+            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1410",
+            "family": "Luge d’été",
+            "sourceVenueName": "Llandudno",
+            "referenceId": "location-id-1410"
+          }
+        ],
         "rationale": "Billet de deux descentes vendu séparément par le centre de sports de neige, sans admission obligatoire à un parc de loisirs. Le site est un centre sportif et la luge possède sa propre activité et billetterie."
       }
     },
