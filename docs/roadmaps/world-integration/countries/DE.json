@@ -16208,30 +16208,28 @@
     {
       "entryId": "DE-candidate-standalone-dd33ec8d791ef4",
       "name": "Luge Wiegand — Saarburg",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
       "locality": null,
-      "siteId": null,
+      "siteId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T20:05:46.901Z",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Référence Wiegand Saarburg rapprochée de la piste Saar-Rodel exploitée In den Urlaub 9 ; même installation que la fiche publiée. Saalburg (Thuringe) est une localité et une piste distinctes.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [
-        "DE-candidate-standalone-f74e2b5c2d6790"
-      ],
+      "possibleBacklogEntries": [],
       "aliases": [
         "Saarburg"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : DE-candidate-standalone-f74e2b5c2d6790. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette référence constructeur comme doublon de DE-candidate-b938aeae488469 ; poursuivre les mises à jour uniquement sur la fiche principale.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16242,11 +16240,16 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.sommerrodelbahn-saarburg.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — identité Saar-Rodel",
+          "url": "https://www.sommerrodelbahn-saarburg.de/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "Saarburg",
@@ -16257,8 +16260,9 @@
             "referenceId": "location-id-1251"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Référence constructeur Saarburg de la même piste Saar-Rodel, sans seconde attraction distincte."
+      },
+      "duplicateOf": "DE-candidate-b938aeae488469"
     },
     {
       "entryId": "DE-candidate-standalone-e3951f4da61383",
@@ -23686,44 +23690,140 @@
     },
     {
       "entryId": "DE-candidate-b938aeae488469",
-      "name": "Sommerrodelbahn Saarburg",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Saar-Rodel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "Saarburg",
-      "siteId": null,
+      "category": "Luge d’été",
+      "locality": "In den Urlaub 9, 54439 Saarburg",
+      "siteId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T20:05:46.901Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [
+      "sourceLifecycleSignal": "Operating seasonally; official season ends 31 October, 2027 dates unconfirmed",
+      "identityConfidence": "Operator address, separate ticket and official client searches confirm an independent standalone; exact licensed historical track photograph imported.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sommerrodelbahn Saarburg",
+        "Saar-Rodel",
+        "Saarburg summer toboggan run"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T20:04:36.303Z",
+      "integrationHistory": [
         {
-          "siteId": "1bc5ed5c-e772-4ee0-a66a-09cfea571c3e",
-          "name": "Sommerrodelbahn Grafenau",
-          "similarity": 78.3
+          "eventId": "apply-d3a36fe1-d19e-4257-a0d1-c8ff5df4a1c2",
+          "appliedAt": "2026-11-02T19:55:53.439Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
+          "evidence": "PARK_DATA_EDITOR:apply:d3a36fe1-d19e-4257-a0d1-c8ff5df4a1c2",
+          "auditEvidence": null,
+          "summary": "Création privée de Saar-Rodel et description en huit langues"
+        },
+        {
+          "eventId": "image-eb33cc604f1443ec811a00ebd01e9c30",
+          "appliedAt": "2026-11-02T19:56:32.114Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
+          "evidence": "PARK_DATA_EDITOR:image:eb33cc604f1443ec811a00ebd01e9c30",
+          "auditEvidence": null,
+          "summary": "Import de la photo exacte de la piste, crédit et licence vérifiés"
+        },
+        {
+          "eventId": "apply-e5223b56-e7a4-4ff8-add1-1facd44d0dae",
+          "appliedAt": "2026-11-02T19:57:51.554Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
+          "evidence": "PARK_DATA_EDITOR:apply:e5223b56-e7a4-4ff8-add1-1facd44d0dae",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès, saison et prix officiels avec réserves de date"
+        },
+        {
+          "eventId": "apply-bd4469f2-c2de-4d7d-92bd-b27e27074584",
+          "appliedAt": "2026-11-02T19:59:54.297Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
+          "evidence": "PARK_DATA_EDITOR:apply:bd4469f2-c2de-4d7d-92bd-b27e27074584",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-saar-rodel-20261102/audit.json",
+          "summary": "Révision éditoriale finale en huit langues et audit sans blocage"
+        },
+        {
+          "eventId": "apply-50a5caae-d457-4466-a9d2-2d761b1b8a79",
+          "appliedAt": "2026-11-02T20:04:36.303Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
+          "evidence": "PARK_DATA_EDITOR:apply:50a5caae-d457-4466-a9d2-2d761b1b8a79",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-saar-rodel-20261102/audit.json",
+          "summary": "Calendrier, prix et conditions saisonniers dans le texte public en huit langues"
         }
       ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la fiche et ses reçus. Recontrôler dates, horaires et tarifs 2027, car la page officielle n’est pas datée et la saison 2026 est terminée. Chercher une photo de piste plus rapprochée et librement réutilisable.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/sommerrodelbahn-saarburg/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste, adresse, âge, saison et tarifs",
+          "url": "https://www.sommerrodelbahn-saarburg.de/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — piste Saar-Rodel, Flocci Nivis, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:20180520Saarburg_09.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap — point Sommerrodelbahn Saar-Rodel",
+          "url": "https://www.openstreetmap.org/node/2923447639",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650/sommerrodelbahn-saar-rodel",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Saar-Rodel",
+            "source": "Sommerrodelbahn Saarburg — exploitant",
+            "url": "https://www.sommerrodelbahn-saarburg.de/",
+            "family": "Luge d’été",
+            "sourceVenueName": "Sommerrodelbahn Saar-Rodel",
+            "sourceLocality": "Saarburg",
+            "sourceLifecycleSignal": "Operating seasonally"
+          }
+        ],
+        "rationale": "Piste à billet propre sur le Warsberg; télésiège et autres activités de Saarburg indépendants."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650/sommerrodelbahn-saar-rodel",
+          "publishedAtUtc": "2026-11-02T20:00:22.132Z",
+          "verifiedAtUtc": "2026-11-02T20:05:46.901Z",
+          "evidence": "PARK_DATA_EDITOR:apply:024aa954-39a1-45a5-9565-4e458f26b965"
+        },
+        "facebook": {
+          "id": "e0d69b9a90b64757a73fda1d58ed723f",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T20:01:44.018Z",
+          "externalPostId": "1285475681307050_122125777083424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125777083424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:e0d69b9a90b64757a73fda1d58ed723f"
+        }
       }
     },
     {
