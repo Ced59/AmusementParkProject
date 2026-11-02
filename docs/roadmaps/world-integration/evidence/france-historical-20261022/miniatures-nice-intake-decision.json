@@ -1,0 +1,24 @@
+{
+  "entryId": "FR-candidate-2f3fddd5eab60a",
+  "name": "Parc des Miniatures de Nice",
+  "checkedAtUtc": "2026-11-02T17:52:48.366831+00:00",
+  "identityNotes": "Historical miniature park, Fabron, Boulevard Impératrice Eugénie, 06200 Nice. Official Parks and Standalone searches for Miniatures, Nice, Nice Miniature and Impératrice Eugénie fully paginated: no matching existing identity. Zygofolis is distinct; Nice Zone Family Park has coordinates19.615125377683,37.2218012927 and is not this French park. Original1992-rate brochure collected1993 confirms title Parc des Miniatures–Espace Jean Giletta,address,miniature exhibits,restaurant,shop,parking. Nice-Matin11November2018 directly read: inaugurationMarch1989, overriding unsourced1990inventory. Visitor closure date unresolved:1995retrospectivevsNRV2005relative7years; BNF municipalarchive catalogue specificallyjudicialliquidation1996, not automaticallyvisitorclosure. ClosingDate omitted. Models of Nice landmarks belong inside thispark,notstandalone/fullsizebuildings. No parkGPS,founder,operator or standaloneauthenticlogo established. PrivateToReview. No current hours/pricing or institutionalarchiveaccess assumed.",
+  "sources": [
+    {
+      "url": "https://didiertougard.blogspot.com/2020/04/tourisme-sur-la-cote-dazur-les-sites.html",
+      "scope": "Originalbrochureand12originalvisitphotos7March1993,personallyinspectedall18nativeimages"
+    },
+    {
+      "url": "https://ccfr.bnf.fr/portailccfr/ark:/16871/004b79791294",
+      "scope": "Publicmunicipalarchivecatalogue,notunpublishedarchivalpapers;152modelscommissioned,33planscatalogued,liquidation1996,donation2024"
+    },
+    {
+      "url": "https://www.nicematin.com/vie-locale/jacques-medecin-20-ans-apres-les-grandes-realisation-dun-maire-batisseur-adule-ou-critique-275911",
+      "scope": "DirectlyreadMarch1989inauguration"
+    },
+    {
+      "url": "https://nice-rendezvous.blogspot.com/2005/10/nice-dernier-acte-pour-le-parc-des.html?m=0",
+      "scope": "ContemporaryOct2005cessionannouncement,closuretimingdiffersfromothersources"
+    }
+  ]
+}
