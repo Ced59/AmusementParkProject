@@ -1,0 +1,121 @@
+{
+  "work": "Dream Wheel is an independently ticketed observation wheel above American Dream mall, separate from Nickelodeon Universe theme park within the same complex. The operator confirms the 13 April 2022 opening, ride format, location, accessibility, weekly hours and ticket categories. Four official-editor duplicate searches for Dream Wheel/American Dream/East Rutherford returned zero; Skyviews search returned a different Miami wheel, not a duplicate. The 3 May 2026 Wikimedia Commons aerial was visually inspected; the wheel is centered and identifiable, licensed CC BY 4.0. The published site has eight localized descriptions, four weekly schedules, two sourced access conditions, and one published exact photo. Stable numerical ticket prices were not available from the operator booking page and were not invented. Eight site locales and image binary passed HTTP 200 before Facebook publication.",
+  "qualification": "A separately operated and ticketed wheel in a shopping mall; not a ride within the neighboring ticketed theme park.",
+  "sources": {
+    "operator": "https://dreamwheelnj.com/",
+    "opening": "https://dreamwheelnj.com/about/",
+    "faqs": "https://dreamwheelnj.com/faq/",
+    "hours": "https://dreamwheelnj.com/contact-us/",
+    "tickets": "https://tickets.dreamwheelnj.com/",
+    "map": "https://mapcarta.com/N10977614896",
+    "photo": "https://commons.wikimedia.org/wiki/File:American_Dream_Mall,_Drone_Aerial_at_NJ-3_(May_2026).jpg"
+  },
+  "duplicateSearches": {
+    "parkAmericanDream": 0,
+    "parkDreamWheel": 0,
+    "standaloneDreamWheel": 0,
+    "standaloneEastRutherford": 0,
+    "standaloneSkyviewsMiamiDistinct": 1
+  },
+  "dataReceipts": [
+    {
+      "operationId": "db3e295d-2a8c-4d75-bfdb-ab1c7553f391",
+      "appliedAtUtc": "2026-11-02T10:33:29.656Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "b618bf78-dc28-4cb0-a6ce-721dc65e95d9",
+      "appliedAtUtc": "2026-11-02T10:34:05.492Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "f8f43717-2979-4d9d-9658-a137d3712161",
+      "appliedAtUtc": "2026-11-02T10:37:51.808Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "a8996595-3ea5-475c-b722-a1dc16033af6",
+      "appliedAtUtc": "2026-11-02T10:39:33.189Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "75174c487d854befa805d61ebc894d1b",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:American_Dream_Mall,_Drone_Aerial_at_NJ-3_(May_2026).jpg",
+      "author": "MiracleMiles",
+      "license": "CC BY 4.0",
+      "photographedAt": "2026-05-03",
+      "ownerId": "29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-02T10:35:18.352Z",
+      "context": "Exact wheel, centered in a wider drone panorama of the mall; seek a closer reusable view when available."
+    }
+  ],
+  "audit": {
+    "score": 82,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 1,
+    "weeklyScheduleRules": 4,
+    "accessConditions": 2,
+    "knownScoringGaps": "No stable official numerical ticket prices. Only wide aerial licensed image currently found."
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed/dream-wheel",
+    "sitePublishedAtUtc": "2026-11-02T10:40:44.442Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:88a8b610-a6bc-4c43-b952-d331607aadbb",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "7ddfca2f31864b0d97aeb0cbf4d85516",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125715055424431",
+    "facebookPublishedAtUtc": "2026-11-02T10:42:14.906Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T10:39:33.189Z",
+  "remainingGaps": [
+    "Find a closer exact photo with a reusable license; current published aerial is exact but wide.",
+    "Recheck official prices in the booking flow when a stable tariff grid becomes available.",
+    "Recheck operator weekly hours and exceptional closures before future travel seasons."
+  ]
+}
