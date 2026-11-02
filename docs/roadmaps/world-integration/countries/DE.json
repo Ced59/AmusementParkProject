@@ -16754,22 +16754,24 @@
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Sommerrodelbahn Steckenberg fermée en 2022 selon la chronologie officielle de l’exploitant.",
+      "identityConfidence": "La référence constructeur désigne la piste de luge d’été du Steckenberg ; l’exploitant date explicitement sa fin de 2022.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-candidate-9326de2cfb9998"
+      ],
       "aliases": [
         "Unterammergau"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la référence historique et cette exclusion ; ne pas créer de standalone active. Réouvrir uniquement si l’exploitant annonce une nouvelle luge d’été à Unterammergau. La station de ski actuelle est suivie séparément.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16780,11 +16782,21 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.steckenberg.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Steckenberg — chronologie, fin de la luge en 2022",
+          "url": "https://www.steckenberg.de/unternehmen/geschichte",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant Steckenberg — offre actuelle",
+          "url": "https://www.steckenberg.de/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "Unterammergau",
@@ -16792,10 +16804,11 @@
             "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1239",
             "family": "Luge d’été",
             "sourceVenueName": "Unterammergau",
-            "referenceId": "location-id-1239"
+            "referenceId": "location-id-1239",
+            "sourceLifecycleSignal": "Fermée en 2022 selon l’exploitant"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste historiquement autonome du domaine Steckenberg, explicitement arrêtée en 2022. L’exploitant propose aujourd’hui ski et restauration, pas cette luge ; aucune fiche standalone active à créer."
       }
     },
     {
@@ -24674,23 +24687,33 @@
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Ancienne luge d’été fermée en 2022 ; le lieu reste ouvert comme station de ski et restaurant, sans parc d’attractions actuel documenté.",
+      "identityConfidence": "Le lieu existe, mais sa seule attraction estivale documentée dans les pistes découvertes a fermé en 2022 ; offre officielle actuelle centrée sur le ski et la restauration.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Décider parc, standalone, équipement interne ou hors périmètre avant toute création ; vérifier l’identité et les doublons.",
+      "nextAction": "Conserver le lieu et son ancienne identité dans le registre, hors créations Park actuelles. Réouvrir si une offre d’attractions pérennes est officiellement documentée ; voir la piste historique DE-candidate-standalone-c086428f66d443.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/steckenberg-erlebnisberg-unterammergau/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Steckenberg — chronologie, fin de la luge en 2022",
+          "url": "https://www.steckenberg.de/unternehmen/geschichte",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant Steckenberg — offre actuelle",
+          "url": "https://www.steckenberg.de/",
+          "accessedAt": "2026-11-02"
         }
       ]
     },
