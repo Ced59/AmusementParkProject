@@ -1,0 +1,54 @@
+{
+  "checkedAtUtc": "2026-11-02T14:34:31.719945+00:00",
+  "logo": {
+    "found": false,
+    "blocking": true,
+    "searchFamilies": [
+      "Publications municipales2013,2016,2025",
+      "Archives/transcription conseil municipal2000",
+      "Presse contemporaine1990 et rétrospective1995",
+      "PSS architecture et forum spécialisé",
+      "Photographes FranckBilloux,ThomasBoivin et ExplosFriches",
+      "Recherches ciblées tickets,dépliants,brochures,plans"
+    ],
+    "excluded": "Current engineering-company logo and Belgian park identity are not authenticated Rouen historical logo. No photograph used as replacement."
+  },
+  "historicalInventory": {
+    "fiveNamedFacilities": true,
+    "totalKnown": false,
+    "gap": "Photographs show short yellow slides but mapping to listed giant slide, names and full inventory unresolved; no guessed duplicate items."
+  },
+  "itemDescriptions": {
+    "complete": 0,
+    "total": 5,
+    "reason": "Municipal sources attest names/offer but insufficient distinct detail for five rich editorial descriptions without generic spa/slide filler. No boilerplate added."
+  },
+  "itemImages": {
+    "owned": 0,
+    "reason": "Accepted official images show hall or context, not unambiguous individually labelled historical facilities. Sixteen otherwise useful photographs bear third-party signatures; not imported or altered."
+  },
+  "generalImages": {
+    "files": 3,
+    "views": "One native interior photograph, one publisher-native exterior/interior diptych, one aerial geographic context",
+    "target": 5,
+    "gap": "No further clean original photographs found within reviewed source families. Exact capture dates unknown."
+  },
+  "coordinates": {
+    "parkVerified": true,
+    "itemPoints": 0,
+    "fixedItems": 5,
+    "reason": "No georeferenced historical visitor map or reliable indoor item positions. No central-park coordinates copied onto individual facilities."
+  },
+  "officialVisitorMaps": {
+    "editions": 0,
+    "reason": "2016official aerial is a post-closure redevelopment site document, not a visitor map; no year invented."
+  },
+  "dates": {
+    "opening": "1989-02 public opening;30January1989inauguration separate",
+    "closure": "1990-08-30 operation ceased, explicitly repeated in municipal2000transcription;1991retrospectives preserved with separate liquidation/lease chronology",
+    "individualDates": "Unknown; no park dates silently copied to items."
+  },
+  "hoursAndPricing": "No current hours/tariffs: permanently closed waterpark.",
+  "eventPhotographs": "No contemporary1987/1989/1990event photographs found. Later hall photographs explicitly contextual in article about2016redevelopment, no inferred capture date.",
+  "publication": "Source and editorial prerequisites incomplete; site and Facebook not published."
+}

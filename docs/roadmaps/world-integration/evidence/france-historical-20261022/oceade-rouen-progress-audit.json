@@ -1,0 +1,330 @@
+{
+  "entryId": "FR-candidate-d4d165522b958e",
+  "parkId": "2a1f3436-df7a-4c19-8cb4-70300c6677a4",
+  "name": "Océade Rouen",
+  "checkedAtUtc": "2026-11-02T14:34:31.719945+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "contentAuditPassed": false,
+  "existingCorpusAuditPassed": true,
+  "publicationAuditPassed": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "publicationAttempted": false,
+  "facebookAttempted": false,
+  "lastDataIntegrationAtUtc": "2026-11-02T14:27:39.926Z",
+  "lastIntegrationEvidence": "apply-97a6cd51-8520-453e-ae16-f0c161f546bf",
+  "dataIntegrationEvents": 8,
+  "projectedCompleteness": {
+    "completenessScore": 76,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 97,
+    "earnedPoints": 74,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-02T14:28:06.1673482Z",
+    "items": 5,
+    "zones": 0,
+    "attractions": 2,
+    "attractionStatuses": {
+      "ClosedDefinitively": 2
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 0,
+    "attractionsWithImage": 0,
+    "attractionImageGaps": [
+      {
+        "id": "d216d649-e0db-41f9-aa44-2f1cc66dc0a3",
+        "name": "Bassin à vagues"
+      },
+      {
+        "id": "7a961e5d-8f92-4c0c-ad4c-c7125721fb60",
+        "name": "Toboggan géant"
+      }
+    ],
+    "ownedImages": 3,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "2c5202d4-838f-4050-ad05-0d84b9b3ab28",
+        "name": "Bains bouillonnants",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "d216d649-e0db-41f9-aa44-2f1cc66dc0a3",
+        "name": "Bassin à vagues",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f44b82d0-593f-4ee5-a96a-942c7519f2d3",
+        "name": "Hammam",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "920134f3-a6f5-4d19-a656-d2372eaf9d55",
+        "name": "Sauna",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "7a961e5d-8f92-4c0c-ad4c-c7125721fb60",
+        "name": "Toboggan géant",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "2c5202d4-838f-4050-ad05-0d84b9b3ab28",
+        "name": "Bains bouillonnants",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "d216d649-e0db-41f9-aa44-2f1cc66dc0a3",
+        "name": "Bassin à vagues",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "f44b82d0-593f-4ee5-a96a-942c7519f2d3",
+        "name": "Hammam",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "920134f3-a6f5-4d19-a656-d2372eaf9d55",
+        "name": "Sauna",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "7a961e5d-8f92-4c0c-ad4c-c7125721fb60",
+        "name": "Toboggan géant",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 5,
+    "parkHistory": 5,
+    "itemHistory": 0,
+    "historyWithSource": 5,
+    "historyWithImage": 0,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": false,
+    "parkDescriptionsLanguages": 8,
+    "itemsCreated": 5,
+    "itemDescriptionsLanguagesComplete": 0,
+    "actualHistoricalInventoryTotal": null,
+    "inventoryCoverageComplete": false,
+    "parkImages": 3,
+    "currentAuthenticLogo": false,
+    "officialMapEditions": 0,
+    "historyCanonicalDraft": 5,
+    "historyCanonicalPublished": 0,
+    "articleLanguages": 8,
+    "corpusFields": 299,
+    "personalExistingCorpusReviewComplete": true,
+    "allRequiredContentPresent": false
+  },
+  "roundtrip": {
+    "freshExportedAtUtc": "2026-11-02T14:28:06.1673482Z",
+    "comparedValues": 850,
+    "unexplainedDifferences": [],
+    "exportContractNotes": [
+      "Month-only opening preserved in openingDateText, typed openingDate remains null; exact closing day preserved with midnight UTC representation.",
+      "Image Park enum casing normalized from PARK import response. Reference and item keys replaced by actual IDs. Operator ID/name verified; countryCode not exposed.",
+      "Image createdAt/updatedAt/exifMetadata/path not exposed by full export; original import receipts retained. All exported ownership, dimensions, bytes, original filename and localized metadata compared.",
+      "All five singular item names compared. Plural names and sortOrder are not exposed; no claim of persistence for unexposed fields.",
+      "Localized values and sources compared with stable ordering."
+    ],
+    "fullExportSha256": "5b411741f41c234075aff61e32348aa96806f8434b2b536cda354d936561c783"
+  },
+  "sourceGaps": {
+    "checkedAtUtc": "2026-11-02T14:34:31.719945+00:00",
+    "logo": {
+      "found": false,
+      "blocking": true,
+      "searchFamilies": [
+        "Publications municipales2013,2016,2025",
+        "Archives/transcription conseil municipal2000",
+        "Presse contemporaine1990 et rétrospective1995",
+        "PSS architecture et forum spécialisé",
+        "Photographes FranckBilloux,ThomasBoivin et ExplosFriches",
+        "Recherches ciblées tickets,dépliants,brochures,plans"
+      ],
+      "excluded": "Current engineering-company logo and Belgian park identity are not authenticated Rouen historical logo. No photograph used as replacement."
+    },
+    "historicalInventory": {
+      "fiveNamedFacilities": true,
+      "totalKnown": false,
+      "gap": "Photographs show short yellow slides but mapping to listed giant slide, names and full inventory unresolved; no guessed duplicate items."
+    },
+    "itemDescriptions": {
+      "complete": 0,
+      "total": 5,
+      "reason": "Municipal sources attest names/offer but insufficient distinct detail for five rich editorial descriptions without generic spa/slide filler. No boilerplate added."
+    },
+    "itemImages": {
+      "owned": 0,
+      "reason": "Accepted official images show hall or context, not unambiguous individually labelled historical facilities. Sixteen otherwise useful photographs bear third-party signatures; not imported or altered."
+    },
+    "generalImages": {
+      "files": 3,
+      "views": "One native interior photograph, one publisher-native exterior/interior diptych, one aerial geographic context",
+      "target": 5,
+      "gap": "No further clean original photographs found within reviewed source families. Exact capture dates unknown."
+    },
+    "coordinates": {
+      "parkVerified": true,
+      "itemPoints": 0,
+      "fixedItems": 5,
+      "reason": "No georeferenced historical visitor map or reliable indoor item positions. No central-park coordinates copied onto individual facilities."
+    },
+    "officialVisitorMaps": {
+      "editions": 0,
+      "reason": "2016official aerial is a post-closure redevelopment site document, not a visitor map; no year invented."
+    },
+    "dates": {
+      "opening": "1989-02 public opening;30January1989inauguration separate",
+      "closure": "1990-08-30 operation ceased, explicitly repeated in municipal2000transcription;1991retrospectives preserved with separate liquidation/lease chronology",
+      "individualDates": "Unknown; no park dates silently copied to items."
+    },
+    "hoursAndPricing": "No current hours/tariffs: permanently closed waterpark.",
+    "eventPhotographs": "No contemporary1987/1989/1990event photographs found. Later hall photographs explicitly contextual in article about2016redevelopment, no inferred capture date.",
+    "publication": "Source and editorial prerequisites incomplete; site and Facebook not published."
+  },
+  "corpus": {
+    "fields": 299,
+    "languages": 8,
+    "encodingIssues": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicates": 0,
+    "rawCrossCorpusCandidates": 24,
+    "reviewedNonissues": 24,
+    "actionableCrossCorpusIssues": 0,
+    "personallyReviewed": true
+  },
+  "historyDiagnostics": {
+    "parkId": "2a1f3436-df7a-4c19-8cb4-70300c6677a4",
+    "parkName": "Océade Rouen",
+    "factCount": 5,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1980,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 1990,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2010,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2020,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 5
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 0
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "proofSha256": {
+    "00-intake-decision.json": "174c347786461010d13903395c576c733d7441185e954e193b1b274e2c8cf71f",
+    "09-full-export.json": "5b411741f41c234075aff61e32348aa96806f8434b2b536cda354d936561c783",
+    "09-completeness-final-receipt.json": "fefec80c6c07141ae2e68c6d04df77c5bd1f0ef7bbe88cf8efd2b9b83026928f",
+    "09-history-diagnostics-receipt.json": "b2638cb98771dc0761d2a7a5f62b629c6eb9c9df1de8ea0c6f224255f020596d",
+    "09-source-gaps.json": "f3bd85d5931bc5a07fc6abda5eeb06b3b13c9313f261e8c32ebfcc30ec9cf936",
+    "09-roundtrip.json": "84341abfca60b04544335b165216392ef902705d78558ffc198a29ef0586ae59",
+    "09-cross-corpus-review.json": "389ce399d9d8a5839ede698c7911fd639b74c92f9b28e64a9f3b39d2b15f43a2",
+    "08-personal-editorial-review.json": "95d72faced88434d1277b1baf3bf21a38afac1dc6c58c694885d2abba0751571",
+    "05-personal-media-source-review.json": "04126b3f76c2e32fe2a2e395b0a9ecd586d39c106269fb94414b77bb372d6515",
+    "09-editorial-refinement-personal-preview-review.json": "e446f2f936d16ac0367f00819bfd32d22511c550584598f2d3d8fa929b480263"
+  },
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false
+}
