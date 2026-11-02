@@ -637,29 +637,83 @@
     },
     {
       "entryId": "AT-candidate-standalone-7072065e1e6372",
-      "name": "Alpine Coaster Wiegand — Schöckel",
-      "entityKind": "ToQualify",
+      "name": "Hexenexpress",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
-      "locality": null,
-      "siteId": null,
+      "locality": "Schöckl plateau, Sankt Radegund bei Graz",
+      "siteId": "8cba8e15-650a-4931-8c82-91c43c485771",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T09:50:58.374Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Saison officielle terminée le 31 octobre 2026 ; fermeture hivernale, pas de date 2027 annoncée.",
+      "identityConfidence": "Holding Graz confirme le nom Hexenexpress, le plateau, la caisse propre et le calendrier ; aucun doublon Standalone. Schöckl Seilbahn masqué est le téléphérique distinct.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Schöckel"
+        "Schöckel",
+        "Alpine Coaster Wiegand — Schöckel",
+        "Schöckl Hexenexpress",
+        "Witches’ Express"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T09:48:57.960Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-30b8ebc5-2ae1-457f-94c2-b248c04657e3",
+          "appliedAt": "2026-11-02T09:38:10.782Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:apply:30b8ebc5-2ae1-457f-94c2-b248c04657e3",
+          "auditEvidence": null,
+          "summary": "Création masquée, identité, tracé, statut saisonnier et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-f05387f5140d4df99dd5735d07e269ec",
+          "appliedAt": "2026-11-02T09:39:21.184Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:image:f05387f5140d4df99dd5735d07e269ec",
+          "auditEvidence": null,
+          "summary": "Photo exacte montrant la piste sur le plateau importée avec licence, date, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "apply-2f1c9d0f-46f7-46aa-a9ef-9711cd4f3c27",
+          "appliedAt": "2026-11-02T09:44:42.207Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:apply:2f1c9d0f-46f7-46aa-a9ef-9711cd4f3c27",
+          "auditEvidence": null,
+          "summary": "Trois conditions d’accès des enfants sourcées auprès de Holding Graz"
+        },
+        {
+          "eventId": "apply-b849e3fd-9114-48bd-8848-0fe5cd81dde7",
+          "appliedAt": "2026-11-02T09:45:06.480Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:apply:b849e3fd-9114-48bd-8848-0fe5cd81dde7",
+          "auditEvidence": null,
+          "summary": "Vingtième anniversaire du 9 juillet 2023 intégré à la chronologie"
+        },
+        {
+          "eventId": "apply-d8cca7b8-7a02-4b78-bb9a-0069f31903b4",
+          "appliedAt": "2026-11-02T09:48:57.960Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:apply:d8cca7b8-7a02-4b78-bb9a-0069f31903b4",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-hexenexpress-20261102/audit.json",
+          "summary": "Date d’ouverture précise retirée après constat du désaccord entre Holding Graz et RCDB ; audit final sans blocage"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier l’ouverture 2002/2003, les horaires et tarifs 2027, chercher une photo rapprochée et suivre la migration distincte du téléphérique Schöckl Seilbahn. Ne pas répéter Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -670,22 +724,66 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.holding-graz.at/de/freizeit/schoeckl/hexenexpress/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Holding Graz — saison, tarifs et conditions du Hexenexpress",
+          "url": "https://www.holding-graz.at/de/freizeit/schoeckl/hexenexpress/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Holding Graz — vingtième anniversaire 2023",
+          "url": "https://www.holding-graz.at/de/unser-hexenexpress-feiert-seinen-20er/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap via Mapcarta — tracé du Hexenexpress",
+          "url": "https://mapcarta.com/W526760936",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "RCDB — année 2002 contradictoire à résoudre",
+          "url": "https://rcdb.com/13068.htm",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte du tracé en 2023",
+          "url": "https://commons.wikimedia.org/wiki/File:St._Radegund_bei_Graz_-_Sch%C3%B6ckl,_Gipfelareal.JPG",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "Schöckel",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=369#location-id-950",
+            "name": "Hexenexpress",
+            "source": "Holding Graz — billet propre et saison",
+            "url": "https://www.holding-graz.at/de/freizeit/schoeckl/hexenexpress/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Schöckel",
-            "referenceId": "location-id-950"
+            "sourceVenueName": "Schöckl plateau / Schöckl Seilbahn",
+            "sourceLifecycleSignal": "Saison 2026 terminée, hiver fermé",
+            "sourceLocality": "Sankt Radegund bei Graz",
+            "matchingMethod": "Luge sur rails avec caisse et prix propres près de la gare supérieure ; la fiche Park masquée Schöckl Seilbahn correspond au téléphérique, pas à la luge."
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Billet propre sur un plateau de montagne ouvert aux activités ; le téléphérique est une entité distincte à migrer séparément."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/8cba8e15-650a-4931-8c82-91c43c485771/hexenexpress",
+          "publishedAtUtc": "2026-11-02T09:46:18.970Z",
+          "verifiedAtUtc": "2026-11-02T09:50:58.374Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0b36763a-f390-4ce3-b029-c6298064f646"
+        },
+        "facebook": {
+          "id": "036bc9a32e0b4f3889f4db2a5d91aa9a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T09:47:40.625Z",
+          "externalPostId": "1285475681307050_122125710105424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125710105424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:036bc9a32e0b4f3889f4db2a5d91aa9a"
+        }
       }
     },
     {
@@ -4939,13 +5037,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identifiant du site pour le téléphérique ; la luge Hexenexpress possède désormais une fiche standalone distincte, sans fusion avec ce Park masqué.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Fiche Park masquée du téléphérique Schöckl Seilbahn : qualifier et préparer sa migration vers une StandaloneAttraction de téléphérique, sans supprimer cette ligne ni écraser son identifiant. La luge Hexenexpress est distincte et déjà publiée sous AT-candidate-standalone-7072065e1e6372 ; éviter de la recréer comme parkItem ou doublon. Vérifier le bon périmètre et la saison du téléphérique avant migration.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
