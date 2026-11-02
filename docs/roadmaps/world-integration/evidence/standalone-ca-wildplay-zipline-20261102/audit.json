@@ -1,0 +1,118 @@
+{
+  "reviewedAtUtc": "2026-11-02T18:40:00Z",
+  "countryCode": "CA",
+  "entryId": "CA-candidate-discovery-d9d575636efe74e7",
+  "siteId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+  "decision": "New independently ticketed standalone published",
+  "duplicateSearch": {
+    "actions": [
+      "SearchStandaloneAttractions",
+      "SearchParks"
+    ],
+    "queries": [
+      "Zipline to the Falls",
+      "MistRider",
+      "WildPlay",
+      "Niagara Parks"
+    ],
+    "matches": 0,
+    "cliftonHillEntry": "CA-candidate-50a31c6acf91e2",
+    "cliftonHillDecision": "Entertainment district, not a structured amusement park parent"
+  },
+  "sourceFacts": {
+    "operator": "WildPlay Niagara, in partnership with Niagara Parks",
+    "address": "5920 Niagara Parkway, Niagara Falls, Ontario L2E 6X8",
+    "routeMeters": 670,
+    "heightAboveGorgeMeters": 67,
+    "parallelLines": 4,
+    "minimumAge": 7,
+    "maximumWeightPounds": 275,
+    "ticketFromCadBeforeTax": 69.99,
+    "onlineTicket": "https://www.wildplay.com/zipline-to-the-falls",
+    "calendarCoverage": {
+      "from": "2026-10-13",
+      "through": "2027-01-01",
+      "inclusiveDays": 81,
+      "uncoveredDatesWithinPublishedRange": 0,
+      "overlaps": 0,
+      "beyondPublishedRange": "Unknown; recheck operator"
+    },
+    "sourceTension": "Niagara Parks shows a Seasonal badge but its FAQ says open year-round; only the operator’s dated schedule is encoded."
+  },
+  "photoEvidence": [
+    {
+      "imageId": "925be1efc48d43b396b6ba305a93d31e",
+      "source": "https://commons.wikimedia.org/wiki/File:Zipline_to_the_Falls_(37486502431).jpg",
+      "photographer": "Jeff Hitchcock",
+      "takenAt": "2017-09-04",
+      "license": "CC BY 2.0",
+      "exactSubject": "Zipline to the Falls launch station and cables",
+      "isCurrent": true,
+      "isPublished": true
+    },
+    {
+      "imageId": "795e1e78dc5c4f6eb864417ac9a4e47f",
+      "source": "https://commons.wikimedia.org/wiki/File:Zipline_to_the_Falls_(37486499041).jpg",
+      "photographer": "Jeff Hitchcock",
+      "takenAt": "2017-09-04",
+      "license": "CC BY 2.0",
+      "exactSubject": "Closer view of the same launch station and cables",
+      "isCurrent": false,
+      "isPublished": true
+    }
+  ],
+  "photoLimit": "Historical platform views, no visitor in flight; seek a newer licensed in-flight view.",
+  "dataIntegrationEvents": [
+    "apply-fd526229-03ee-48be-9181-7d2172ffebdf",
+    "apply-e5446872-60b1-42df-8327-d882acf1fe64",
+    "image-925be1efc48d43b396b6ba305a93d31e",
+    "image-795e1e78dc5c4f6eb864417ac9a4e47f",
+    "metadata-publish-925be1efc48d43b396b6ba305a93d31e",
+    "metadata-publish-795e1e78dc5c4f6eb864417ac9a4e47f",
+    "apply-8765ca29-51c1-44d3-8ee2-f8f31e8272fc",
+    "metadata-final-795e1e78dc5c4f6eb864417ac9a4e47f",
+    "apply-57cdc37c-22fa-4b98-bec9-c4ee48975e5c",
+    "apply-574d5513-b7a3-4596-9ed1-e82a5ae6519f"
+  ],
+  "lastDataIntegrationAt": "2026-11-02T18:36:33.955Z",
+  "finalCompleteness": {
+    "score": 91,
+    "quality": "Good",
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicVerification": {
+    "languagesHttp200": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "bothImagesHttp200": true,
+    "socialPreviewHttp200": true,
+    "priceRenderedAsStartingAt": true,
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls"
+  },
+  "publication": {
+    "site": {
+      "status": "Published",
+      "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls",
+      "publishedAtUtc": "2026-11-02T18:35:20.503Z",
+      "verifiedAtUtc": "2026-11-02T18:40:00Z",
+      "evidence": "PARK_DATA_EDITOR:apply:7f707b90-10e8-4741-ad88-bca1ef6086d1"
+    },
+    "facebook": {
+      "id": "0f8a1774a0de40948a2c9d74de4d4b3b",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-02T18:38:20.0380428Z",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125768665424431",
+      "externalPostId": "1285475681307050_122125768665424431",
+      "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls"
+    }
+  },
+  "noReleaseVersionBump": true
+}
