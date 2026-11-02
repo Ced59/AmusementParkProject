@@ -1,0 +1,949 @@
+{
+  "entryId": "FR-candidate-bc5ed7aa50e26f",
+  "parkId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+  "name": "Nouveau Tivoli (Folie La Bouëxière)",
+  "checkedAtUtc": "2026-11-02T21:44:36.090687+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "existingCorpusAuditPassed": true,
+  "allRequiredContentPresent": false,
+  "publicationAuditPassed": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "publicationAttempted": false,
+  "facebookAttempted": false,
+  "dataIntegrationEvents": 16,
+  "lastDataIntegrationAtUtc": "2026-11-02T21:43:39.7054957Z",
+  "lastIntegrationEventId": "apply-0b648f7f-1ab6-4905-b6e4-e193786f2a04",
+  "projectedCompleteness": {
+    "completenessScore": 78,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 96,
+    "earnedPoints": 75,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-02T21:39:21.1029436Z",
+    "items": 9,
+    "zones": 0,
+    "attractions": 5,
+    "attractionStatuses": {
+      "Removed": 5
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 5,
+    "attractionsWithImage": 1,
+    "attractionImageGaps": [
+      {
+        "id": "d6a51eea-4a6e-495e-817f-a449640f977c",
+        "name": "Balançoires du Nouveau Tivoli"
+      },
+      {
+        "id": "2143c68a-93eb-470f-9ed4-1fb3cb013ade",
+        "name": "Cabinet de physique de Robertson"
+      },
+      {
+        "id": "276f0a33-50c6-4c2e-8b43-08057ebc034d",
+        "name": "Courses Éoliennes"
+      },
+      {
+        "id": "982819fb-8db7-4ab3-afa4-2e925781e929",
+        "name": "Patinage d’été de Jean Garcin"
+      }
+    ],
+    "ownedImages": 4,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "d6a51eea-4a6e-495e-817f-a449640f977c",
+        "name": "Balançoires du Nouveau Tivoli",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "89636f10-2db6-463b-bbdc-88d10dd5a4b4",
+        "name": "Bals du Nouveau Tivoli",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "2143c68a-93eb-470f-9ed4-1fb3cb013ade",
+        "name": "Cabinet de physique de Robertson",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "e15a8399-0bbe-4c23-8149-5ede6cf1b57e",
+        "name": "Carrousel dansant de Mlle Caroline",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "276f0a33-50c6-4c2e-8b43-08057ebc034d",
+        "name": "Courses Éoliennes",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f0922670-232a-4af8-bb5c-4a458cc830c6",
+        "name": "Fantasmagories de Robertson",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "89de0d71-ee51-494f-8e20-8515e022b3ff",
+        "name": "La Femme invisible",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "982819fb-8db7-4ab3-afa4-2e925781e929",
+        "name": "Patinage d’été de Jean Garcin",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "19dae9a4-58a3-482c-88bb-0bad898040ad",
+        "name": "Tir aux pigeons",
+        "category": "Attraction",
+        "images": 1
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "d6a51eea-4a6e-495e-817f-a449640f977c",
+        "name": "Balançoires du Nouveau Tivoli",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "89636f10-2db6-463b-bbdc-88d10dd5a4b4",
+        "name": "Bals du Nouveau Tivoli",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "2143c68a-93eb-470f-9ed4-1fb3cb013ade",
+        "name": "Cabinet de physique de Robertson",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e15a8399-0bbe-4c23-8149-5ede6cf1b57e",
+        "name": "Carrousel dansant de Mlle Caroline",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "276f0a33-50c6-4c2e-8b43-08057ebc034d",
+        "name": "Courses Éoliennes",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f0922670-232a-4af8-bb5c-4a458cc830c6",
+        "name": "Fantasmagories de Robertson",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "89de0d71-ee51-494f-8e20-8515e022b3ff",
+        "name": "La Femme invisible",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "982819fb-8db7-4ab3-afa4-2e925781e929",
+        "name": "Patinage d’été de Jean Garcin",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "19dae9a4-58a3-482c-88bb-0bad898040ad",
+        "name": "Tir aux pigeons",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 7,
+    "parkHistory": 4,
+    "itemHistory": 3,
+    "historyWithSource": 7,
+    "historyWithImage": 4,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "parkDescriptionLanguages": 8,
+    "itemsWithEightDescriptions": 9,
+    "totalItemDescriptions": 72,
+    "images": 4,
+    "actualPhotographs": 0,
+    "authenticLogo": false,
+    "founderBiographyLanguages": 8,
+    "officialMapEditions": 0,
+    "canonicalDraftFacts": 7,
+    "articleLanguages": 8,
+    "corpusFields": 444,
+    "allRequiredContentPresent": false
+  },
+  "roundtrip": {
+    "freshExportedAtUtc": "2026-11-02T21:39:21.1029436Z",
+    "checkedAtUtc": "2026-11-02T21:40:20.993615+00:00",
+    "comparedValues": 1221,
+    "unexplainedDifferences": [],
+    "exportContractNotes": [
+      "Year/month-only opening/closing dates are dateText withnulltypeddate; no inventedday.",
+      "Item keys and itemhistoryaliases exported as actualIDs. Unexposed inputitemId alias excluded; parkItemId/ownerId verified.",
+      "Image enum casing and ParkItem ownerKey normalized to actualownerId, matching exportcontract. Importtimestamps/path/exifMetadata not exported; originalreceipts preserved.",
+      "Eight-language field/source ordering normalized; all persistedcontent otherwisecompared.",
+      "Global founder reference and parkfounderKey exportactualID; acceptedname/biography/idfullycompared. Referencevisibility/reviewflags not exposed in this exportcontract."
+    ],
+    "inputOnlyNotPersisted": {
+      "itemNames": "Nine optional items[].names arrays are not supported by ParkGraphExportItem or item patch contract; not persisted, not counted as integrated. Canonical item.name and descriptions in8languages verified.",
+      "openingDate": "Date-only input serialized as midnightUTC, same14May1826date."
+    },
+    "fullExportSha256": "ef17696caa99bba623bb74892a4505c23e2b3d15021a0491e054c0ca14adbc06"
+  },
+  "corpus": {
+    "checkedAtUtc": "2026-11-02T21:44:36.090687+00:00",
+    "personallyAuthoredAndReviewed": true,
+    "fields": 444,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "encodingIssues": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "crossCorpusCandidates": 35,
+    "actionableCrossCorpusIssues": 0,
+    "decisions": [
+      {
+        "language": "de",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.14.texts.de",
+        "secondPath": "history.nouveau-tivoli-disparition-1842.summaries.de",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "de",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.11.texts.de",
+        "secondPath": "images.fd26cbf23a4e41f5a5ecfef89463789d.captions.de",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "de",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.7.texts.de",
+        "secondPath": "images.5bb196f368d8479aa96528b160ee1419.captions.de",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "de",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.3.texts.de",
+        "secondPath": "images.9057b5e831dd4c1590c14f3581b05760.captions.de",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "en",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.14.texts.en",
+        "secondPath": "history.nouveau-tivoli-disparition-1842.summaries.en",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "en",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.11.texts.en",
+        "secondPath": "images.fd26cbf23a4e41f5a5ecfef89463789d.captions.en",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "en",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.7.texts.en",
+        "secondPath": "images.5bb196f368d8479aa96528b160ee1419.captions.en",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "en",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.3.texts.en",
+        "secondPath": "images.9057b5e831dd4c1590c14f3581b05760.captions.en",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "es",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.13.texts.es",
+        "secondPath": "history.nouveau-tivoli-lotissement-1841.summaries.es",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "es",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.14.texts.es",
+        "secondPath": "history.nouveau-tivoli-disparition-1842.summaries.es",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "es",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.11.texts.es",
+        "secondPath": "images.fd26cbf23a4e41f5a5ecfef89463789d.captions.es",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "es",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.7.texts.es",
+        "secondPath": "images.5bb196f368d8479aa96528b160ee1419.captions.es",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "es",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.3.texts.es",
+        "secondPath": "images.9057b5e831dd4c1590c14f3581b05760.captions.es",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "fr",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.13.texts.fr",
+        "secondPath": "history.nouveau-tivoli-lotissement-1841.summaries.fr",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "fr",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.11.texts.fr",
+        "secondPath": "images.fd26cbf23a4e41f5a5ecfef89463789d.captions.fr",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "fr",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.7.texts.fr",
+        "secondPath": "images.5bb196f368d8479aa96528b160ee1419.captions.fr",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "fr",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.3.texts.fr",
+        "secondPath": "images.9057b5e831dd4c1590c14f3581b05760.captions.fr",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "it",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.13.texts.it",
+        "secondPath": "history.nouveau-tivoli-lotissement-1841.summaries.it",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "it",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.14.texts.it",
+        "secondPath": "history.nouveau-tivoli-disparition-1842.summaries.it",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "it",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.11.texts.it",
+        "secondPath": "images.fd26cbf23a4e41f5a5ecfef89463789d.captions.it",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "it",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.7.texts.it",
+        "secondPath": "images.5bb196f368d8479aa96528b160ee1419.captions.it",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "it",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.3.texts.it",
+        "secondPath": "images.9057b5e831dd4c1590c14f3581b05760.captions.it",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "nl",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.14.texts.nl",
+        "secondPath": "history.nouveau-tivoli-disparition-1842.summaries.nl",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "nl",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.11.texts.nl",
+        "secondPath": "images.fd26cbf23a4e41f5a5ecfef89463789d.captions.nl",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "nl",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.7.texts.nl",
+        "secondPath": "images.5bb196f368d8479aa96528b160ee1419.captions.nl",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "nl",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.3.texts.nl",
+        "secondPath": "images.9057b5e831dd4c1590c14f3581b05760.captions.nl",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "pl",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.14.texts.pl",
+        "secondPath": "history.nouveau-tivoli-disparition-1842.summaries.pl",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "pl",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.11.texts.pl",
+        "secondPath": "images.fd26cbf23a4e41f5a5ecfef89463789d.captions.pl",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "pl",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.7.texts.pl",
+        "secondPath": "images.5bb196f368d8479aa96528b160ee1419.captions.pl",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "pl",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.3.texts.pl",
+        "secondPath": "images.9057b5e831dd4c1590c14f3581b05760.captions.pl",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "pt",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.13.texts.pt",
+        "secondPath": "history.nouveau-tivoli-lotissement-1841.summaries.pt",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "pt",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.14.texts.pt",
+        "secondPath": "history.nouveau-tivoli-disparition-1842.summaries.pt",
+        "actionable": false,
+        "reason": "Rappel du même fait historique précis entre frise et article : ordonnance royale, propriétaires nommés ou rues du lotissement. Aucune formule de remplissage transférée entre attractions."
+      },
+      {
+        "language": "pt",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.11.texts.pt",
+        "secondPath": "images.fd26cbf23a4e41f5a5ecfef89463789d.captions.pt",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "pt",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.7.texts.pt",
+        "secondPath": "images.5bb196f368d8479aa96528b160ee1419.captions.pt",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      },
+      {
+        "language": "pt",
+        "firstPath": "articles.nouveau-tivoli-bouexiere-jardin-quartier.blocks.3.texts.pt",
+        "secondPath": "images.9057b5e831dd4c1590c14f3581b05760.captions.pt",
+        "actionable": false,
+        "reason": "Même légende de la même image, utilisée dans sa fiche et dans l’article ; attribution et date propres à cette illustration."
+      }
+    ],
+    "review": "Les huit descriptions du parc, 72 descriptions des neuf éléments, huit biographies, sept faits, les huit versions de l’article et les textes des quatre images ont été rédigés et relus. Le contrôle final porte sur leur contenu accepté puis réexporté. L’article comprend quatre sections, huit paragraphes et 549 à 613 mots avec résumé. Les descriptions courtes de trois lieux sont explicitement justifiées après recherche, sans ajout de scènes ou de caractéristiques imaginées."
+  },
+  "sourceGaps": {
+    "entryId": "FR-candidate-bc5ed7aa50e26f",
+    "parkId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+    "checkedAtUtc": "2026-11-02T21:44:36.090687+00:00",
+    "identity": {
+      "name": "Nouveau Tivoli (Folie La Bouëxière)",
+      "openingDate": "1826-05-14",
+      "closingDateText": "1841–1842",
+      "locality": "Paris, rue de Clichy, Folie La Bouëxière",
+      "founder": "Étienne-Gaspard Robertson",
+      "distinctFrom": [
+        "Grand Tivoli / Folie Boutin, 1795–1825",
+        "Folie Richelieu, refuge temporaire du Grand Tivoli",
+        "Salle Robertson, boulevard Montmartre, 1814–1817",
+        "Nouveau Tivoli de la rue du Rocher, annonce de 1841 à qualifier séparément",
+        "Château-Rouge, à partir de 1845"
+      ]
+    },
+    "inventory": {
+      "totalItems": 9,
+      "attractions": 5,
+      "shows": 4,
+      "canonicalAttractionStatus": "Removed",
+      "descriptionsWith8Languages": 9,
+      "geolocatedFixedAttractions": 0,
+      "fixedAttractions": 5,
+      "unresolved": "Les deux théâtres, le cirque et les cafés sont attestés collectivement mais leurs unités, noms et chevauchements avec les spectacles ne sont pas individualisés. Aucun élément artificiel créé pour représenter un nom absent.",
+      "geolocationGap": "Aucun emplacement précis établi pour les cinq installations fixes ; aucune coordonnée du centre de Paris ni position d’un autre Tivoli substituée. Les salles des quatre spectacles restent non localisées.",
+      "accessConditions": "Aucune restriction historique de taille ou d’âge propre à ces cinq attractions n’a été retrouvée dans les ouvrages, archives et études consultés. Aucune règle moderne inventée.",
+      "shortDescriptions": {
+        "reviewedAt": "2026-11-02T21:15:14.912573+00:00",
+        "items": [
+          {
+            "key": "balancoires",
+            "words": {
+              "fr": 35,
+              "en": 33,
+              "de": 37,
+              "nl": 37,
+              "it": 30,
+              "es": 36,
+              "pl": 29,
+              "pt": 30
+            },
+            "sections": 0,
+            "paragraphs": 1
+          },
+          {
+            "key": "cabinet-physique",
+            "words": {
+              "fr": 87,
+              "en": 71,
+              "de": 73,
+              "nl": 81,
+              "it": 80,
+              "es": 89,
+              "pl": 62,
+              "pt": 84
+            },
+            "sections": 1,
+            "paragraphs": 2
+          },
+          {
+            "key": "fantasmagories",
+            "words": {
+              "fr": 101,
+              "en": 92,
+              "de": 91,
+              "nl": 92,
+              "it": 92,
+              "es": 106,
+              "pl": 76,
+              "pt": 95
+            },
+            "sections": 2,
+            "paragraphs": 2
+          }
+        ],
+        "searchedSources": [
+          "Lamboley2017, biographie Robertson, texte complet et notes de sources",
+          "9eHistoire Folies,Tivoli, texte complet",
+          "André Lange2024, article Femme invisible, pages concernant Robertson",
+          "CNAM d’Allemagne1900, histoire des jeux",
+          "Recherches ciblées NouveauTivoli+balançoires, cabinet de physique, fantasmagories"
+        ],
+        "limitations": {
+          "balancoires": "Seule présence explicite, aucune photo, unité, capacité, décor ou expérience particulière établie. Un paragraphe descriptif factuel.",
+          "cabinet-physique": "Cabinet attesté, collection précise exposée au parc inconnue ; distinction avec vente1838 du cabinet personnel. Deux paragraphes factuels, référence au parcours vérifié de Robertson.",
+          "fantasmagories": "Présence au NouveauTivoli attestée mais aucun programme de scènes local complet retrouvé. Genre et filiation racontés, décors Capucines1799 non transposés."
+        }
+      }
+    },
+    "media": {
+      "reviewedAt": "2026-11-02T21:25:38.409758+00:00",
+      "parkId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+      "illustrations": 4,
+      "actualPhotographs": 0,
+      "parkIllustrations": 3,
+      "itemIllustrations": 1,
+      "actualGeneralPhotos": "0/5",
+      "majorItemsWith3Photos": "0/9",
+      "attractionsWithFaithfulImage": "1/5",
+      "logo": {
+        "present": false,
+        "blocker": "No authentic standalone historical park emblem identified. Poster lettering, museum marks, portrait and modernTivolicar/hotel logos are not substitutes. Park not genuinely very small; no exception inferred."
+      },
+      "officialMaps": {
+        "count": 0,
+        "years": [],
+        "finding": "No operator-issued annual visitor edition found. Girard1836 cityplan and18thestateplans are not officialparkmaps. 9eHistoire lotissementimage actually has modernstreetoverlay includingAdolpheMax; not an original1841operatorplan. No edition/year invented."
+      },
+      "sourcesSearched": [
+        "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+        "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/une-allee-des-marronniers-dans-le-parc-de-l-ancien-tivoli-en-1835-angle-de",
+        "https://cnum.cnam.fr/pgi/redir.php?ident=8XAE559.2&onglet=d",
+        "https://www.histv.net/robertson",
+        "https://www.rollerenligne.com/dossier/jean-garcin-lun-des-pionniers-francais-de-patinage-a-roulettes/",
+        "https://artefake.fr/fantasmagorie-de-robertson/",
+        "https://commons.wikimedia.org/wiki/Category:Jardin_de_Tivoli,_Paris",
+        "https://www.caue75.fr/content/vers-paris-2050_ilot-parisien"
+      ],
+      "ownerGaps": [
+        {
+          "itemId": "276f0a33-50c6-4c2e-8b43-08057ebc034d",
+          "key": "courses-eoliennes",
+          "images": 0,
+          "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+        },
+        {
+          "itemId": "d6a51eea-4a6e-495e-817f-a449640f977c",
+          "key": "balancoires",
+          "images": 0,
+          "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+        },
+        {
+          "itemId": "19dae9a4-58a3-482c-88bb-0bad898040ad",
+          "key": "tir-pigeons",
+          "images": 1,
+          "reason": "One explicitly captioned historicalengraving retained. No actualphotos or distinctadditionalviews found."
+        },
+        {
+          "itemId": "982819fb-8db7-4ab3-afa4-2e925781e929",
+          "key": "patinage-ete",
+          "images": 0,
+          "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+        },
+        {
+          "itemId": "2143c68a-93eb-470f-9ed4-1fb3cb013ade",
+          "key": "cabinet-physique",
+          "images": 0,
+          "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+        },
+        {
+          "itemId": "f0922670-232a-4af8-bb5c-4a458cc830c6",
+          "key": "fantasmagories",
+          "images": 0,
+          "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+        },
+        {
+          "itemId": "89de0d71-ee51-494f-8e20-8515e022b3ff",
+          "key": "femme-invisible",
+          "images": 0,
+          "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+        },
+        {
+          "itemId": "89636f10-2db6-463b-bbdc-88d10dd5a4b4",
+          "key": "bals",
+          "images": 0,
+          "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+        },
+        {
+          "itemId": "e15a8399-0bbe-4c23-8149-5ede6cf1b57e",
+          "key": "carrousel-caroline",
+          "images": 0,
+          "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+        }
+      ],
+      "rejectedOrDeferred": [
+        {
+          "file": "delarue-1827.jpg",
+          "reason": "MuseumTivoli1827productiondate alone does not resolve whether depiction is GrandTivoli or NouveauTivoli; no import."
+        },
+        {
+          "file": "cnam-eoliennes-p355.gif",
+          "reason": "Booktext proves1827trials, adjacentalphabetillustrationgeneric notexactride; no import or GIFconversion."
+        },
+        {
+          "file": "emplacements-garcin.jpg",
+          "reason": "Moderncomparisonmap two skatingschoollocations; not pictureofinstallation, notofficialparkmap; no import."
+        },
+        {
+          "file": "plan-lotissement.jpg",
+          "reason": "Modernstreetsoverlay explicitAdolpheMax/rueBallu on18thestateplan; notphotograph andnotdated1841operator map. Retainresearchonly."
+        },
+        {
+          "file": "ohio-figure59.png",
+          "reason": "1845L’Illustration image is DIFFERENT from accepted9eHistoiretir image; potentiallyrueRocherhomonym, excluded."
+        },
+        {
+          "source": "https://fitasc.info/sp/content/11/1",
+          "reason": "Two503responses, stoppedrepeatdownloads; searchcaption1830notused asdateofacceptedengraving withoutvisualcomparison."
+        }
+      ],
+      "founderPortraitLimit": "Nativeportrait prepared asFounder import rejected locally beforeAPI; sameportrait imported once assecondaryPark articleillustration. No wronglycategorizedlogo or duplicate. Founder8languagebiography complete, referenceimage remainsunfilled."
+    },
+    "references": {
+      "founders": 1,
+      "founderBiographyLanguages": 8,
+      "founderPortrait": "Portrait conservé comme illustration secondaire du parc et de l’article. Le client ImportPhoto ne prend pas en charge la catégorie Founder ; rejet local sans upload, aucun faux logo créé.",
+      "operator": "Jean-Émile Laurent succède à Robertson, date non établie. Pas de transition datée inventée ni de société juridique supposée.",
+      "manufacturers": 0
+    },
+    "history": {
+      "currentFacts": 7,
+      "parkFacts": 4,
+      "itemFacts": 3,
+      "draftFacts": 7,
+      "retractedRevisions": 5,
+      "canonicalBlockers": 0,
+      "factsWithContextualImage": 4,
+      "unillustratedItemFacts": 3,
+      "articles": 1,
+      "articleLanguages": 8,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "articleWordRangeIncludingSummary": [
+        549,
+        613
+      ],
+      "articleIllustrations": 3,
+      "articleSources": 9,
+      "imageContext": "L’allée de 1835 représente le jardin avant sa disparition, sans prétendre montrer son ouverture ou sa démolition. L’estampe de Vernet montre les visiteurs osages en 1827, pas leur repas. Aucune image précise des Éoliennes, de la piste Garcin ou de la soirée Caroline trouvée ; schéma générique et image d’un autre Tivoli écartés.",
+      "dateGaps": {
+        "reviewedAt": "2026-11-02T21:30:34.371953+00:00",
+        "closure": "Exact finalvisitorclosuredateunknown: sources span1841–1842. June1841 legalpermission and1842demolition separatelydocumented, no falseexactclosureevent. ParkclosingDateText1841–1842 preserved.",
+        "itemClosures": "No precise finaloperatingdate for5attractions or4shows. CurrentRemovedstatusfor5physicalattractions corroboratedwholeestate disappearance, no fabricated9closure events.",
+        "undatedOperatorChange": "Robertson succeeded by Jean-Émile Laurent per9eHistoire; dateunknown, omittedfromtimeline, includednarrative.",
+        "osages": "Monthprecision because quotedConstitutionneldateline9Sept conflicts tomorrowSunday; no exactfestivalday invented. Figaro5Sept recountsarrivaldaybefore butmonthfact coversallfestivities."
+      }
+    },
+    "calendarAndPricing": "Site démoli au XIXe siècle : aucun calendrier ni tarif actuel.",
+    "sourceAvailability": [
+      {
+        "url": "https://www.paris-anecdote.fr/les-anciens-bals-de-montmartre/",
+        "label": "André Warnod — Les Bals de Paris, 1922, extrait",
+        "checkedAtUtc": "2026-11-02T21:40:31.772032+00:00",
+        "status": 200,
+        "finalUrl": "https://www.paris-anecdote.fr/les-anciens-bals-de-montmartre/",
+        "contentType": "text/html; charset=UTF-8",
+        "sampleBytes": 49385,
+        "sampleSha256": "243e0deba74012d2a12eddfba7c994beaa57ca96bcb3d346f8b810856dc83a51",
+        "reachable": true
+      },
+      {
+        "url": "https://www.ac-sciences-lettres-montpellier.fr/academie_edition/fichiers_conf/LAMBOLEY-2017.pdf",
+        "label": "Claude Lamboley — Étienne-Gaspard Robertson, 2017",
+        "checkedAtUtc": "2026-11-02T21:40:31.772740+00:00",
+        "status": 200,
+        "finalUrl": "https://www.ac-sciences-lettres-montpellier.fr/download/conferences/4400/LAMBOLEY-2017.pdf",
+        "contentType": "application/pdf",
+        "sampleBytes": 262144,
+        "sampleSha256": "3cf90cfb55602e7d993b49e9c299ca540d6bdd71aed7b7d0897761f38668f2de",
+        "reachable": true
+      },
+      {
+        "url": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+        "label": "9e Histoire — Folies, Tivoli…",
+        "checkedAtUtc": "2026-11-02T21:40:32.741797+00:00",
+        "status": 200,
+        "finalUrl": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+        "contentType": "text/html; charset=UTF-8",
+        "sampleBytes": 171506,
+        "sampleSha256": "2d31dbf2be6ceda31eae933b088c1ecf7046062f0c3b36ae4687adff63dd3255",
+        "reachable": true
+      },
+      {
+        "url": "https://cnum.cnam.fr/pgi/fpage.php?8XAE559.2/437/100/463/10/453#det-329",
+        "label": "Henry-René d’Allemagne — Musée rétrospectif, classe 100, 1900, p. 355",
+        "checkedAtUtc": "2026-11-02T21:40:33.648862+00:00",
+        "status": 200,
+        "finalUrl": "https://cnum.cnam.fr/pgi/fpage.php?8XAE559.2/437/100/463/10/453#det-329",
+        "contentType": "text/html; charset=iso-8859-1",
+        "sampleBytes": 126965,
+        "sampleSha256": "cf04702629b3fc0f1a6cb53aaa473c4dadf7cb20f18b32957e49cbb0ef1a4375",
+        "reachable": true
+      },
+      {
+        "url": "https://www.rollerenligne.com/dossier/jean-garcin-lun-des-pionniers-francais-de-patinage-a-roulettes/",
+        "label": "Alexandre Chartier — Jean Garcin, d’après Sam Nieswizski, Rollermania, 1991",
+        "checkedAtUtc": "2026-11-02T21:40:34.668649+00:00",
+        "status": 200,
+        "finalUrl": "https://www.rollerenligne.com/dossier/jean-garcin-lun-des-pionniers-francais-de-patinage-a-roulettes/",
+        "contentType": "text/html",
+        "sampleBytes": 150827,
+        "sampleSha256": "4302349dce91602b8859d86c94094802e1d1666a826c380e8773ca23011e7a57",
+        "reachable": true
+      },
+      {
+        "url": "https://fr.wikisource.org/wiki/Le_M%C3%A9canisme_de_la_Vie_moderne/15",
+        "label": "Georges d’Avenel — Le Mécanisme de la Vie moderne, 1899, chapitre 15",
+        "checkedAtUtc": "2026-11-02T21:40:35.981932+00:00",
+        "method": "Connected web tool open, full page readable 2Nov2026",
+        "reachable": true,
+        "webReference": "turn957165view1"
+      },
+      {
+        "url": "https://fr.wikisource.org/wiki/Lettres_parisiennes/Ann%C3%A9e_1837/15",
+        "label": "Delphine de Girardin — Lettre du 21 juin 1837, soirée de la veille",
+        "checkedAtUtc": "2026-11-02T21:40:35.981954+00:00",
+        "method": "Connected web tool open, full page readable 2Nov2026",
+        "reachable": true,
+        "webReference": "turn957165view0"
+      },
+      {
+        "url": "https://www.caue75.fr/content/vers-paris-2050_ilot-parisien",
+        "label": "CAUE de Paris — L’îlot parisien, Vers Paris 2050",
+        "checkedAtUtc": "2026-11-02T21:40:35.981961+00:00",
+        "status": 200,
+        "finalUrl": "https://www.caue75.fr/content/vers-paris-2050_ilot-parisien",
+        "contentType": "text/html; charset=UTF-8",
+        "sampleBytes": 89237,
+        "sampleSha256": "0c08d12578b9caeb4e1f7eb0dd3d7e4b30ea049ed09b027c6dedeeae182d6164",
+        "reachable": true
+      },
+      {
+        "url": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/une-allee-des-marronniers-dans-le-parc-de-l-ancien-tivoli-en-1835-angle-de",
+        "label": "Paris Musées, Carnavalet — Une allée de marronniers, 1835, D.16848",
+        "checkedAtUtc": "2026-11-02T21:40:37.934690+00:00",
+        "status": 200,
+        "finalUrl": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/une-allee-des-marronniers-dans-le-parc-de-l-ancien-tivoli-en-1835-angle-de",
+        "contentType": "text/html; charset=utf-8",
+        "sampleBytes": 166145,
+        "sampleSha256": "eb965d7789f995450ce56ef427359a27123e905a8b53f51ae9ff9d61f7588664",
+        "reachable": true
+      },
+      {
+        "url": "https://data.decalog.net/enap1/Liens/Gazette/ENAP_GAZETTE_TRIBUNAUX_18421109.pdf",
+        "label": "Gazette des tribunaux, 9 novembre 1842 — lotissement du Nouveau Tivoli",
+        "checkedAtUtc": "2026-11-02T21:40:38.764720+00:00",
+        "status": 200,
+        "finalUrl": "https://data.decalog.net/enap1/Liens/Gazette/ENAP_GAZETTE_TRIBUNAUX_18421109.pdf",
+        "contentType": "application/pdf",
+        "sampleBytes": 262144,
+        "sampleSha256": "e88a4971e9f2c7ad150b5cf94e2435f0f083dc9ba1b27f330f9abcf1250cd9c3",
+        "reachable": true
+      },
+      {
+        "url": "https://artefake.fr/fantasmagorie-de-robertson/",
+        "label": "Illustration source 5bb196f368d8479aa96528b160ee1419",
+        "checkedAtUtc": "2026-11-02T21:40:39.876957+00:00",
+        "status": 200,
+        "finalUrl": "https://artefake.fr/fantasmagorie-de-robertson/",
+        "contentType": "text/html; charset=UTF-8",
+        "sampleBytes": 148946,
+        "sampleSha256": "1c578c2f82ee494deea6f528738b697d0828e0c0f7fe86ccac6fa3a40831965d",
+        "reachable": true
+      }
+    ],
+    "contractLimit": {
+      "itemNames": "Nine optional items[].names arrays are not supported by ParkGraphExportItem or item patch contract; not persisted, not counted as integrated. Canonical item.name and descriptions in8languages verified.",
+      "openingDate": "Date-only input serialized as midnightUTC, same14May1826date."
+    },
+    "publication": "Intégration partielle privée, score projeté 78/100 ; logo historique requis absent, lacunes d’archives conservées. Aucun essai de publication du site ou de Facebook."
+  },
+  "historyDiagnostics": {
+    "parkId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+    "parkName": "Nouveau Tivoli (Folie La Bouëxière)",
+    "factCount": 12,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1820,
+        "resourceCount": 3,
+        "sourcedResourceCount": 3,
+        "publishedResourceCount": 0,
+        "subjectCount": 2,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 1830,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 0,
+        "subjectCount": 2,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 1840,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 7
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 5
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "proofSha256": {
+    "09-full-export.json": "ef17696caa99bba623bb74892a4505c23e2b3d15021a0491e054c0ca14adbc06",
+    "09-consolidated-audit-graph.json": "70a3f3bf5d9558ff64f8db245d40b6438ea98cf3021b542269e545dcd60a9959",
+    "09-roundtrip-before-refinement.json": "91491910b7eb9d4f77c4a42ff932e116e69374c5b9afb08c2c22847cbd209eef",
+    "09-history-images-apply.receipt.json": "57573e58c612ee89c6226b1a2ee1d695eb1b87bbc2542195657ca92c184444f5",
+    "09-history-images-apply-verified.json": "5dea2013cd155aef3e6211b0a3acbe7b6c3bb4a4b59c15da838951fafbdcb413",
+    "09-completeness-final-receipt.json": "2f1e044263e493994ee042ee3318d3bf35ab6738e13b22a9147326069e1bb782",
+    "09-history-diagnostics-final-receipt.json": "e7141efb375a2882a2f81250de54a30e903c39b797e07b8df2c7baaa2b7a5ae6",
+    "09-personal-corpus-review.json": "c4ba7e71c765205379f10d25a583f03beacd0342cbb1c653b3a862fb6edbfc4a",
+    "09-source-gaps.json": "ebeac46d8ae302482ca4b228f332fabae0070cfc043f98a7b681ff3ce46a44a7",
+    "09-source-availability.json": "1357c286d567b403525fc6a9b651640637833c70c94e5b2120f28a5647207fda",
+    "08-article-preview-field-verification.json": "a22ed9c512cb5a11b58ca34e932d88bc058e6c9f010585bc77c71d8ac2ff2a88"
+  },
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false
+}

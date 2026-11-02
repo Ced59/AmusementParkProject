@@ -34166,16 +34166,16 @@
       "name": "Nouveau Tivoli (Folie La Bouëxière)",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Parc historique à qualifier",
+      "category": "Parc historique — jardin de spectacles",
       "locality": "Paris",
-      "siteId": null,
+      "siteId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-11-02T19:00:57.319304+00:00",
-      "editorialStatus": "InProgress",
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-02T21:39:21.1029436Z",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Ouverture en 1826 ; fermeture et démolition en 1841–1842 à préciser.",
+      "sourceLifecycleSignal": "Ouverture le 14 mai 1826 ; fermeture et démolition en 1841–1842, dernier jour de visite inconnu.",
       "identityConfidence": "Établissement distinct du Grand Tivoli ; succession de nom documentée, sans continuité de parcelle.",
       "possibleMatches": [],
       "aliases": [
@@ -34184,9 +34184,170 @@
         "Tivoli de Robertson"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Conversation France : Nouveau Tivoli de Robertson à la Folie La Bouëxière, parc distinct du Grand Tivoli. Recherches mondiales Park et Standalone achevées pour Tivoli, Robertson, Bouexiere et Bouëxière ; aucun doublon du lieu. Ouverture 1826 ; fermeture/démolition 1841–1842 à préciser avant création. Preuve : docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-reservation.json",
+      "lastDataIntegrationAt": "2026-11-02T21:43:39.705Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f2bfdce6-1a9f-443f-88f3-840a09e1896d",
+          "appliedAt": "2026-11-02T20:51:28.619Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-f2bfdce6-1a9f-443f-88f3-840a09e1896d",
+          "auditEvidence": null,
+          "summary": "Création privée du Nouveau Tivoli de Robertson à la Folie La Bouëxière, distinct du Grand Tivoli : ouverture le 14 mai 1826, fermeture conservée à la précision 1841–1842, rue de Clichy à Paris ; coordonnées historiques non établies."
+        },
+        {
+          "eventId": "apply-0dfbce08-650d-4eb0-8f54-6220f1b0898b",
+          "appliedAt": "2026-11-02T20:52:26.181Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-0dfbce08-650d-4eb0-8f54-6220f1b0898b",
+          "auditEvidence": null,
+          "summary": "Création de la référence privée Étienne-Gaspard Robertson et rattachement comme fondateur du Nouveau Tivoli, sans modification de référence partagée."
+        },
+        {
+          "eventId": "apply-2f21ed2b-0d3e-4ca5-8bc2-fc84b17aea73",
+          "appliedAt": "2026-11-02T20:58:26.918Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-2f21ed2b-0d3e-4ca5-8bc2-fc84b17aea73",
+          "auditEvidence": null,
+          "summary": "Inventaire historique privé : neuf entrées dont cinq attractions disparues et quatre spectacles ; piste de patinage Garcin datée1830, carrousel de Caroline correctement qualifié en spectacle équestre, salles et cafés non individualisables conservés comme lacunes."
+        },
+        {
+          "eventId": "apply-32bafb15-8787-40f2-b835-36af5b3f216d",
+          "appliedAt": "2026-11-02T20:59:24.471Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-32bafb15-8787-40f2-b835-36af5b3f216d",
+          "auditEvidence": null,
+          "summary": "Descriptions originales du Nouveau Tivoli dans les huit langues : six paragraphes et trois sections sur La Bouëxière, Robertson, les jeux historiques, le carrousel équestre et le lotissement."
+        },
+        {
+          "eventId": "apply-a7fc80fe-56b4-41a5-a962-fe6efbe19cfd",
+          "appliedAt": "2026-11-02T21:09:26.072Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-a7fc80fe-56b4-41a5-a962-fe6efbe19cfd",
+          "auditEvidence": null,
+          "summary": "Nouveau Tivoli :24 descriptions localisées relues, Caroline, patinage Garcin et Femme invisible ; aucune publication."
+        },
+        {
+          "eventId": "apply-f497fd2b-fbf5-4295-97c8-74bc0900db1b",
+          "appliedAt": "2026-11-02T21:15:36.550Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-f497fd2b-fbf5-4295-97c8-74bc0900db1b",
+          "auditEvidence": null,
+          "summary": "Nouveau Tivoli :24 descriptions localisées, Courses Éoliennes, tir aux pigeons et bals ; faits1827 et contexte social sourcés."
+        },
+        {
+          "eventId": "apply-90777431-b583-44f4-a45c-cf0c6a112387",
+          "appliedAt": "2026-11-02T21:16:15.123Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-90777431-b583-44f4-a45c-cf0c6a112387",
+          "auditEvidence": null,
+          "summary": "Nouveau Tivoli :24 descriptions des balançoires, cabinet de physique et fantasmagories ; exceptions de profondeur sourcées et consignées."
+        },
+        {
+          "eventId": "apply-644bf1a4-d725-4ab5-a422-477ec2a22f07",
+          "appliedAt": "2026-11-02T21:18:58.192Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-644bf1a4-d725-4ab5-a422-477ec2a22f07",
+          "auditEvidence": null,
+          "summary": "Nouveau Tivoli :biographie8langues d’Étienne-Gaspard Robertson, lieu de naissance, profession et décès sourcés."
+        },
+        {
+          "eventId": "import-photo-9057b5e831dd4c1590c14f3581b05760-2026-11-02T212223.079Z",
+          "appliedAt": "2026-11-02T21:22:23.079Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#import-photo-9057b5e831dd4c1590c14f3581b05760-2026-11-02T212223.079Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-allee1835, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0efe0a240f4c407f94545052abf8c441-2026-11-02T212238.258Z",
+          "appliedAt": "2026-11-02T21:22:38.258Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#import-photo-0efe0a240f4c407f94545052abf8c441-2026-11-02T212238.258Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tir, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5bb196f368d8479aa96528b160ee1419-2026-11-02T212420.056Z",
+          "appliedAt": "2026-11-02T21:24:20.056Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#import-photo-5bb196f368d8479aa96528b160ee1419-2026-11-02T212420.056Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-robertson-context, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fd26cbf23a4e41f5a5ecfef89463789d-2026-11-02T212433.809Z",
+          "appliedAt": "2026-11-02T21:24:33.809Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#import-photo-fd26cbf23a4e41f5a5ecfef89463789d-2026-11-02T212433.809Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-osages, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-7e006189-9196-46c8-9318-3e87c924c6db",
+          "appliedAt": "2026-11-02T21:31:03.315Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-7e006189-9196-46c8-9318-3e87c924c6db",
+          "auditEvidence": null,
+          "summary": "Quatre jalons privés du Nouveau Tivoli : ouverture 1826, visiteurs osages 1827, lotissement 1841 et disparition 1842, avec sources et huit langues."
+        },
+        {
+          "eventId": "apply-b080e060-358c-4de4-8af2-0dae6c9e2628",
+          "appliedAt": "2026-11-02T21:36:56.409Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-b080e060-358c-4de4-8af2-0dae6c9e2628",
+          "auditEvidence": null,
+          "summary": "Article historique développé du Nouveau Tivoli en huit langues : quatre sections, huit paragraphes, trois illustrations contextualisées et neuf sources."
+        },
+        {
+          "eventId": "apply-f3643700-8e28-40bf-82a2-4746a0c3b829",
+          "appliedAt": "2026-11-02T21:38:58.389Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-f3643700-8e28-40bf-82a2-4746a0c3b829",
+          "auditEvidence": null,
+          "summary": "Trois jalons privés propres aux éléments : essais Éoliennes 1827, école de Garcin à Tivoli 1830, spectacle équestre Caroline 1837 ; sources et huit langues."
+        },
+        {
+          "eventId": "apply-0b648f7f-1ab6-4905-b6e4-e193786f2a04",
+          "appliedAt": "2026-11-02T21:43:39.705Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/nouveau-tivoli-receipts.json#apply-0b648f7f-1ab6-4905-b6e4-e193786f2a04",
+          "auditEvidence": null,
+          "summary": "Illustrations contextualisées des quatre jalons du parc : allée de 1835 et portraits osages de 1827, sans confusion avec des photographies des événements."
+        }
+      ],
+      "nextAction": "Fiche privée auditée à 78/100 : neuf éléments décrits en huit langues, quatre illustrations, sept faits et un article. Logo historique requis absent ; autres vues, plans et positions restent à documenter. Voir nouveau-tivoli-progress-audit.json. Aucun site ni Facebook publié.",
       "sources": [
         {
           "label": "9eHistoire — Nouveau Tivoli, distinct successeur à la Folie La Bouëxière",
@@ -34197,6 +34358,56 @@
           "label": "Musée Carnavalet — lithographie Tivoli1827, G.11357",
           "url": "https://www.parismuseescollections.paris.fr/en/node/143081",
           "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "André Warnod — Les Bals de Paris, 1922, extrait",
+          "url": "https://www.paris-anecdote.fr/les-anciens-bals-de-montmartre/",
+          "accessedAt": "2026-11-02T21:40:31.772032+00:00"
+        },
+        {
+          "label": "Claude Lamboley — Étienne-Gaspard Robertson, 2017",
+          "url": "https://www.ac-sciences-lettres-montpellier.fr/academie_edition/fichiers_conf/LAMBOLEY-2017.pdf",
+          "accessedAt": "2026-11-02T21:40:31.772740+00:00"
+        },
+        {
+          "label": "Henry-René d’Allemagne — Musée rétrospectif, classe 100, 1900, p. 355",
+          "url": "https://cnum.cnam.fr/pgi/fpage.php?8XAE559.2/437/100/463/10/453#det-329",
+          "accessedAt": "2026-11-02T21:40:33.648862+00:00"
+        },
+        {
+          "label": "Alexandre Chartier — Jean Garcin, d’après Sam Nieswizski, Rollermania, 1991",
+          "url": "https://www.rollerenligne.com/dossier/jean-garcin-lun-des-pionniers-francais-de-patinage-a-roulettes/",
+          "accessedAt": "2026-11-02T21:40:34.668649+00:00"
+        },
+        {
+          "label": "Georges d’Avenel — Le Mécanisme de la Vie moderne, 1899, chapitre 15",
+          "url": "https://fr.wikisource.org/wiki/Le_M%C3%A9canisme_de_la_Vie_moderne/15",
+          "accessedAt": "2026-11-02T21:40:35.981932+00:00"
+        },
+        {
+          "label": "Delphine de Girardin — Lettre du 21 juin 1837, soirée de la veille",
+          "url": "https://fr.wikisource.org/wiki/Lettres_parisiennes/Ann%C3%A9e_1837/15",
+          "accessedAt": "2026-11-02T21:40:35.981954+00:00"
+        },
+        {
+          "label": "CAUE de Paris — L’îlot parisien, Vers Paris 2050",
+          "url": "https://www.caue75.fr/content/vers-paris-2050_ilot-parisien",
+          "accessedAt": "2026-11-02T21:40:35.981961+00:00"
+        },
+        {
+          "label": "Paris Musées, Carnavalet — Une allée de marronniers, 1835, D.16848",
+          "url": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/une-allee-des-marronniers-dans-le-parc-de-l-ancien-tivoli-en-1835-angle-de",
+          "accessedAt": "2026-11-02T21:40:37.934690+00:00"
+        },
+        {
+          "label": "Gazette des tribunaux, 9 novembre 1842 — lotissement du Nouveau Tivoli",
+          "url": "https://data.decalog.net/enap1/Liens/Gazette/ENAP_GAZETTE_TRIBUNAUX_18421109.pdf",
+          "accessedAt": "2026-11-02T21:40:38.764720+00:00"
+        },
+        {
+          "label": "Illustration source 5bb196f368d8479aa96528b160ee1419",
+          "url": "https://artefake.fr/fantasmagorie-de-robertson/",
+          "accessedAt": "2026-11-02T21:40:39.876957+00:00"
         }
       ],
       "discoveredAt": "2026-11-02T19:00:57.319304+00:00",

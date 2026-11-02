@@ -1,0 +1,62 @@
+{
+  "reviewedAt": "2026-11-02T21:15:14.912573+00:00",
+  "items": [
+    {
+      "key": "balancoires",
+      "words": {
+        "fr": 35,
+        "en": 33,
+        "de": 37,
+        "nl": 37,
+        "it": 30,
+        "es": 36,
+        "pl": 29,
+        "pt": 30
+      },
+      "sections": 0,
+      "paragraphs": 1
+    },
+    {
+      "key": "cabinet-physique",
+      "words": {
+        "fr": 87,
+        "en": 71,
+        "de": 73,
+        "nl": 81,
+        "it": 80,
+        "es": 89,
+        "pl": 62,
+        "pt": 84
+      },
+      "sections": 1,
+      "paragraphs": 2
+    },
+    {
+      "key": "fantasmagories",
+      "words": {
+        "fr": 101,
+        "en": 92,
+        "de": 91,
+        "nl": 92,
+        "it": 92,
+        "es": 106,
+        "pl": 76,
+        "pt": 95
+      },
+      "sections": 2,
+      "paragraphs": 2
+    }
+  ],
+  "searchedSources": [
+    "Lamboley2017, biographie Robertson, texte complet et notes de sources",
+    "9eHistoire Folies,Tivoli, texte complet",
+    "André Lange2024, article Femme invisible, pages concernant Robertson",
+    "CNAM d’Allemagne1900, histoire des jeux",
+    "Recherches ciblées NouveauTivoli+balançoires, cabinet de physique, fantasmagories"
+  ],
+  "limitations": {
+    "balancoires": "Seule présence explicite, aucune photo, unité, capacité, décor ou expérience particulière établie. Un paragraphe descriptif factuel.",
+    "cabinet-physique": "Cabinet attesté, collection précise exposée au parc inconnue ; distinction avec vente1838 du cabinet personnel. Deux paragraphes factuels, référence au parcours vérifié de Robertson.",
+    "fantasmagories": "Présence au NouveauTivoli attestée mais aucun programme de scènes local complet retrouvé. Genre et filiation racontés, décors Capucines1799 non transposés."
+  }
+}
