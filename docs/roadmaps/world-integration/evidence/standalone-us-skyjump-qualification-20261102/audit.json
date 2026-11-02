@@ -1,0 +1,105 @@
+{
+  "reviewedAtUtc": "2026-11-02T19:18:29.160Z",
+  "countryCode": "US",
+  "entryId": "US-candidate-discovery-2201321359d5bd88",
+  "decision": "Published independent standalone; legacy Park item is unrelated High Roller",
+  "officialSearch": {
+    "SearchStandaloneAttractions": [
+      "SkyJump",
+      "Stratosphere"
+    ],
+    "standaloneMatches": 0,
+    "SearchParksSkyJumpMatches": 0,
+    "SearchParksStratosphereTowerId": "80ca5ffd-050f-4350-99aa-9c2c95dcc86a",
+    "legacyParkVisibility": "Hidden",
+    "legacyParkReview": "NotRelevant",
+    "legacyParkItemsTotalCount": 1,
+    "legacyParkItemsVisibleCount": 0
+  },
+  "sourceFacts": {
+    "operator": "The STRAT Hotel, Casino & Tower",
+    "jumpKind": "Controlled cable descent",
+    "jumpStartFloor": "108th",
+    "minimumAgeYears": 14,
+    "minimumHeightInches": 52,
+    "maximumGuestWeightPounds": "under 265",
+    "baseWeekdayUsd": 139.99,
+    "baseWeekendUsd": 169.99,
+    "hours": "Wednesday–Sunday noon–8 p.m.; Monday–Tuesday closed; weather permitting",
+    "heightDiscrepancy": "Official opening paragraph says 829 ft, FAQ says platform at 855 ft. Do not encode a single height without clarification."
+  },
+  "photoEvidence": {
+    "imageId": "31adadfc92914159bdaad50ee5930993",
+    "source": "https://commons.wikimedia.org/wiki/File:SkyJump_Las_Vegas.jpg",
+    "author": "DCAllStar",
+    "takenAt": "2026-02-09",
+    "license": "CC0 1.0",
+    "exactSubject": "SkyJump platform/cables at top of The STRAT, no person shown",
+    "visuallyInspected": true,
+    "importedToSite": true,
+    "isCurrent": true,
+    "isPublished": true,
+    "publicBinaryHttpStatus": 200
+  },
+  "siteCreated": true,
+  "facebookPublished": true,
+  "lastDataIntegrationAt": "2026-11-02T19:15:37.548Z",
+  "noReleaseVersionBump": true,
+  "siteId": "86100cec-397a-44a4-8c02-9803753665dd",
+  "legacyExport": {
+    "tool": "PARK_DATA_EDITOR:ExportPark",
+    "environmentFix": "Set SystemRoot and provide curl.exe compatible command in PATH for Linux runtime; export then succeeded.",
+    "parkId": "80ca5ffd-050f-4350-99aa-9c2c95dcc86a",
+    "onlyItemId": "a5021c85-0d6c-4a43-916d-e56ba7d45c2b",
+    "onlyItemName": "High Roller",
+    "itemStatus": "ClosedDefinitively",
+    "itemClosingYear": 2005,
+    "decision": "Preserve legacy Park and parkItem; do not link SkyJump to unrelated High Roller"
+  },
+  "photoLimit": "One exact platform/cable close-up, no jumper visible; find a second licensed action photo.",
+  "dataIntegrationEvents": [
+    "apply-732b8ad4-9de7-4bae-811f-f730de0e8f1e",
+    "apply-2b402fa5-7fdb-4ddb-a08a-bd0961489f92",
+    "image-31adadfc92914159bdaad50ee5930993",
+    "metadata-publish-31adadfc92914159bdaad50ee5930993"
+  ],
+  "finalCompleteness": {
+    "score": 91,
+    "quality": "Good",
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicVerification": {
+    "languagesHttp200": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "imageHttp200": true,
+    "socialPreviewHttp200": true,
+    "priceRenderedAsStartingAt": true,
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/86100cec-397a-44a4-8c02-9803753665dd/skyjump-las-vegas"
+  },
+  "publication": {
+    "site": {
+      "status": "Published",
+      "url": "https://amusement-parks.fun/fr/attraction/86100cec-397a-44a4-8c02-9803753665dd/skyjump-las-vegas",
+      "publishedAtUtc": "2026-11-02T19:16:39.991Z",
+      "verifiedAtUtc": "2026-11-02T19:18:29.129Z",
+      "evidence": "PARK_DATA_EDITOR:apply:1adb9139-de76-46f5-a776-da079b9472cd"
+    },
+    "facebook": {
+      "id": "461292bc68b44c1e8189fca68523c73e",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-02T19:17:43.0040231Z",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125773357424431",
+      "externalPostId": "1285475681307050_122125773357424431",
+      "url": "https://amusement-parks.fun/fr/attraction/86100cec-397a-44a4-8c02-9803753665dd/skyjump-las-vegas"
+    }
+  }
+}
