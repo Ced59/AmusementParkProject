@@ -1,0 +1,117 @@
+{
+  "reviewedAtUtc": "2026-11-02T19:38:24.468Z",
+  "countryCode": "IT",
+  "entryId": "IT-park-c814c4dd-baaf-4b49-9c97-ce94acfefad3",
+  "siteId": "9edc99d2-e242-403d-9cf0-1c73deabbf93",
+  "decision": "Controlled migration of hidden mono-attraction Park to published standalone",
+  "duplicateSearch": {
+    "standaloneQueries": [
+      "Funbob",
+      "Monte Baranci",
+      "Haunold"
+    ],
+    "standaloneMatches": 0,
+    "otherParkMatch": "Adventure Park Cimone has a different Funbob in Sestola; not this San Candido attraction",
+    "legacyParkId": "c814c4dd-baaf-4b49-9c97-ce94acfefad3",
+    "legacyParkItemId": "570ac0a4-cead-4e39-98e9-60000e968cee",
+    "legacyItemCount": 1
+  },
+  "legacyAfterMigration": {
+    "parkStillExists": true,
+    "parkVisible": false,
+    "parkReviewStatus": "NotRelevant",
+    "itemStillExists": true,
+    "itemVisible": false,
+    "itemReviewStatus": "NotRelevant",
+    "deletionPerformed": false
+  },
+  "sourceFacts": {
+    "operator": "3 Zinnen Dolomites",
+    "trackLengthMetersCurrent": 1739,
+    "legacyLengthMeters": 1650,
+    "maximumSpeedKmh": 40,
+    "ticketIncludesChairlift": true,
+    "summerSeason2026": "23 May–18 October",
+    "2027Schedule": "Not published as of 2 November 2026",
+    "adultOneRideEuro2026": 21.5,
+    "under18OneRideEuro2026": 15,
+    "under3Allowed": false,
+    "age3To7AccompaniedByAdult": true,
+    "weightLimitKg": 127
+  },
+  "photoEvidence": [
+    {
+      "imageId": "22811ec6a8d4475c9c74ce3d62889223",
+      "source": "https://commons.wikimedia.org/wiki/File:San_Candido_-_Funbob2.JPG",
+      "photographer": "Llorenzi",
+      "license": "CC BY-SA 3.0",
+      "exactSubject": "Rider on Funbob track",
+      "historical": true,
+      "isCurrent": true,
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "43696cded9394f1d80c704e471d542e9",
+      "source": "https://commons.wikimedia.org/wiki/File:San_Candido_-_Funbob1.JPG",
+      "photographer": "Llorenzi",
+      "license": "CC BY-SA 3.0",
+      "exactSubject": "Funbob rail and chairlift",
+      "historical": true,
+      "isCurrent": false,
+      "isPublished": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "photoLimit": "Historic 2008-era Commons photos predate later upgrade; exact track and cart, seek recent licensed images.",
+  "dataIntegrationEvents": [
+    "apply-ecce6116-cf92-42d9-bd0b-3f5f8dfe158e",
+    "apply-2df311ec-c1aa-4738-a55d-61d0a38ba473",
+    "image-22811ec6a8d4475c9c74ce3d62889223",
+    "image-43696cded9394f1d80c704e471d542e9",
+    "metadata-publish-22811ec6a8d4475c9c74ce3d62889223",
+    "metadata-publish-43696cded9394f1d80c704e471d542e9",
+    "apply-c1b96cb9-3f2d-4456-a387-c858cbfc20bf"
+  ],
+  "lastDataIntegrationAt": "2026-11-02T19:34:22.306Z",
+  "finalCompleteness": {
+    "score": 79,
+    "quality": "Publishable",
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicVerification": {
+    "languagesHttp200": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "bothImagesHttp200": true,
+    "socialPreviewHttp200": true,
+    "expired2026OffersNotDisplayedAsCurrent": true,
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/9edc99d2-e242-403d-9cf0-1c73deabbf93/funbob-monte-baranci"
+  },
+  "publication": {
+    "site": {
+      "status": "Published",
+      "url": "https://amusement-parks.fun/fr/attraction/9edc99d2-e242-403d-9cf0-1c73deabbf93/funbob-monte-baranci",
+      "publishedAtUtc": "2026-11-02T19:35:12.048Z",
+      "verifiedAtUtc": "2026-11-02T19:38:24.459Z",
+      "evidence": "PARK_DATA_EDITOR:apply:a8270f2d-32a3-4a8c-9809-123ac51bd5af"
+    },
+    "facebook": {
+      "id": "1e463e7b582e4095bdada7487b2c0f4b",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-02T19:36:50.426145Z",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125775319424431",
+      "externalPostId": "1285475681307050_122125775319424431",
+      "url": "https://amusement-parks.fun/fr/attraction/9edc99d2-e242-403d-9cf0-1c73deabbf93/funbob-monte-baranci"
+    }
+  },
+  "noReleaseVersionBump": true
+}
