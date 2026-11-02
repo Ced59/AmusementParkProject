@@ -8695,29 +8695,82 @@
     },
     {
       "entryId": "GB-candidate-standalone-dd9a76b82b3d48",
-      "name": "Luge Wiegand — Llandudno",
-      "entityKind": "ToQualify",
+      "name": "Cresta Toboggan Run — Llandudno",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Great Orme, Llandudno LL30 2LR, Wales",
+      "siteId": "5bea846d-6151-426a-bb62-d471326f8b36",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T12:54:59.804Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation et billet de deux descentes confirmés par l’exploitant le 2 novembre 2026 ; seulement par temps sec.",
+      "identityConfidence": "Piste Cresta propre au centre, billetterie autonome et deux photos exactes vérifiées ; aucune fiche homonyme dans l’éditeur officiel.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Llandudno"
+        "Llandudno Cresta Toboggan Run",
+        "Llandudno Snowsports Centre Toboggan",
+        "Luge Wiegand — Llandudno"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T12:54:31.716Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-597e246f-d502-4915-b8e3-b083e255cb78",
+          "appliedAt": "2026-11-02T12:50:03.278Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:apply:597e246f-d502-4915-b8e3-b083e255cb78",
+          "auditEvidence": null,
+          "summary": "Création masquée de la fiche et huit descriptions"
+        },
+        {
+          "eventId": "apply-1ba6c62a-17e1-421f-bdc9-fa05b0cf924d",
+          "appliedAt": "2026-11-02T12:50:34.100Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:apply:1ba6c62a-17e1-421f-bdc9-fa05b0cf924d",
+          "auditEvidence": null,
+          "summary": "Tarif officiel de deux descentes structuré"
+        },
+        {
+          "eventId": "image-6670e2df75a94e95a9b9e2ee402c46e7",
+          "appliedAt": "2026-11-02T12:53:24.408Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:image:6670e2df75a94e95a9b9e2ee402c46e7",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2006 publiée avec provenance corrigée, crédits et textes localisés"
+        },
+        {
+          "eventId": "image-7842239cf7034d81b90b2d60b8ca957e",
+          "appliedAt": "2026-11-02T12:53:36.382Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:image:7842239cf7034d81b90b2d60b8ca957e",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2011 publiée avec crédits et textes localisés"
+        },
+        {
+          "eventId": "apply-fde10798-cb57-451b-bda2-34c681ed3cce",
+          "appliedAt": "2026-11-02T12:54:31.716Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:apply:fde10798-cb57-451b-bda2-34c681ed3cce",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-llandudno-20261102/audit.json",
+          "summary": "Mesure reformulée dans les textes publics et audit final"
+        }
+      ],
+      "nextAction": "Conserver le dossier et les reçus. Revoir régulièrement tarif, longueur annoncée et conditions météorologiques sur le site officiel ; ne pas republier Facebook pour une simple révision.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -8728,22 +8781,33 @@
           "label": "Opérateur référencé par la source",
           "url": "http://jnlllandudno.co.uk/tubing/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste Cresta, tarifs et accès",
+          "url": "https://www.jnlllandudno.co.uk/tobogganing-sno-tubing-in-llandudno/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — adresse et horaires variables",
+          "url": "https://www.jnlllandudno.co.uk/opening-times/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — John Breakwell, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Llandudno_ski_centre_-_geograph.org.uk_-_479513.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — Jeremy Bolwell, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Part_of_the_ski_slope_and_toboggan_run_above_Happy_Valley_-_geograph.org.uk_-_2277676.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [
-          {
-            "name": "Llandudno",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=199#location-id-1410",
-            "family": "Luge d’été",
-            "sourceVenueName": "Llandudno",
-            "referenceId": "location-id-1410"
-          }
-        ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [],
+        "rationale": "Billet de deux descentes vendu séparément par le centre de sports de neige, sans admission obligatoire à un parc de loisirs. Le site est un centre sportif et la luge possède sa propre activité et billetterie."
       }
     },
     {
