@@ -1,0 +1,92 @@
+{
+  "work": "The operator sells tickets directly for Angkor Eye at Phum Krous, National Road 6, outside a structured amusement park. Five official-editor Park/Standalone searches for Angkor Eye, Angkor and Siem Reap found no existing matching record. Koei Corp, which built the wheel, confirms opening on 1 March 2020 and height 85 m; operator About and resident ticket pages agree on 85 m, while the operator homepage also has a contradictory 60 m sentence. Its ticket pages conflict on Tuesday/Thursday opening, and the FAQ USD 12 versus a ticket page starting at USD 10 does not establish the same adult fare. Thus no structured hours or price were asserted. An exact 2022 Commons photo was visually inspected, imported and published with eight-language metadata. All eight site locales and image binary returned HTTP 200 before the Facebook announcement.",
+  "qualification": "Distinct operator, dedicated ticket and single Ferris wheel site at Phum Krous, not a ride inside a structured park.",
+  "sources": {
+    "operator": "https://angkoreye.com/",
+    "about": "https://angkoreye.com/about/",
+    "contact": "https://angkoreye.com/contact/",
+    "ticket": "https://angkoreye.com/product/standard-tickets-non-residents/",
+    "localTicket": "https://angkoreye.com/product/standard-ticket-cambodia-residents/",
+    "faq": "https://angkoreye.com/faq/",
+    "builder": "https://www.koei-corp.jp/topics/4272/",
+    "photo": "https://commons.wikimedia.org/wiki/File:Angkor_Eye_January_16,_2022_morning.jpg",
+    "location": "https://www.openstreetmap.org/?mlat=13.37685&mlon=103.83274#map=18/13.37685/103.83274"
+  },
+  "duplicateSearches": {
+    "parkAngkorEye": 0,
+    "parkSiemReap": 0,
+    "standaloneAngkorEye": 0,
+    "standaloneAngkor": 0,
+    "standaloneSiemReap": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "2561c340-1862-40b7-8a14-f681500a2b34",
+      "appliedAtUtc": "2026-11-02T11:41:58.715Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "imageId": "d120a05f0a59461996f68113fa5d83d2",
+      "importFinishedAtUtc": "2026-11-02T11:42:20.601Z",
+      "imageMetadataUpdatedAtUtc": "2026-11-02T11:42:17.392Z"
+    }
+  ],
+  "commercialData": {
+    "structuredOfferCount": 0,
+    "hours": "Official operator pages conflict on Tuesday/Thursday closures; booking slots should be checked.",
+    "prices": "FAQ USD 12 conflicts with direct product From USD 10; no fixed current fare imported."
+  },
+  "photographs": [
+    {
+      "imageId": "d120a05f0a59461996f68113fa5d83d2",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Angkor_Eye_January_16,_2022_morning.jpg",
+      "author": "Jason Quinn",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2022-01-16",
+      "ownerId": "b458da08-a3da-4e53-85e5-1b5e33b16b57",
+      "published": true,
+      "siteBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "score": 69,
+    "dataQualityLevel": "Partial",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 1
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/b458da08-a3da-4e53-85e5-1b5e33b16b57/angkor-eye",
+    "sitePublishedAtUtc": "2026-11-02T11:44:20.360Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:0ff916cc-6880-4c4a-bc40-e60586bf8938",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "3da29a05585a4d21a9fc85ef5037cdd1",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125722975424431",
+    "facebookPublishedAtUtc": "2026-11-02T11:45:14.028Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T11:42:20.601Z",
+  "remainingGaps": [
+    "Résoudre avec la billetterie officielle les jours d’ouverture et les tarifs actuels avant de les structurer.",
+    "Ajouter une photographie récente de la roue si une source réutilisable devient disponible."
+  ]
+}
