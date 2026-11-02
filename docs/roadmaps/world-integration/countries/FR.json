@@ -21217,30 +21217,295 @@
       "name": "Parc de la Récréation",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "Parc de loisirs historique",
       "locality": "Monts/Sorigny",
-      "siteId": null,
+      "siteId": "854fefca-4dff-4133-835b-12ac1dcf444f",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "ExistsVisibilityUnknown",
+      "presenceObservedAt": null,
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Fermeture en 2018 attestée par le dossier municipal ; implantation du site en 1994, ouverture initiale non établie.",
+      "identityConfidence": "Identité confirmée par archives officielles, dossier municipal et recherches PARK_DATA_EDITOR des alias ; distinct du Family Park actuel.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "La Récréation",
+        "La Recreation"
+      ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-02T15:44:53.971Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-78ec5f49-8b14-4641-b17c-6b8088329a29",
+          "appliedAt": "2026-11-02T15:14:39.318Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-78ec5f49-8b14-4641-b17c-6b8088329a29",
+          "auditEvidence": null,
+          "summary": "Création privée du Parc de la Récréation historique de Monts, fermé en2018, et du dernier opérateur La Récréation; identité distincte du Family Park actuel, ouverture initiale encore à départager."
+        },
+        {
+          "eventId": "apply-f8f9daa9-6a74-4d3b-8259-58a864dc8514",
+          "appliedAt": "2026-11-02T15:18:47.062Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-f8f9daa9-6a74-4d3b-8259-58a864dc8514",
+          "auditEvidence": null,
+          "summary": "Inventaire privé de20 activités historiques identifiées dans les pages officielles archivées de La Récréation, sans gonfler artificiellement le total aux70 jeux annoncés."
+        },
+        {
+          "eventId": "apply-0bf28936-354b-4fc4-8cb2-3f83acc92110",
+          "appliedAt": "2026-11-02T15:22:23.185Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-0bf28936-354b-4fc4-8cb2-3f83acc92110",
+          "auditEvidence": null,
+          "summary": "Ajout privé de10 équipements historiques complémentaires de La Récréation: jeux récents et disparus, animaux, restauration et services; total30 éléments documentés."
+        },
+        {
+          "eventId": "apply-485fee0c-13aa-4670-a6de-b0aeb935ad15",
+          "appliedAt": "2026-11-02T15:23:36.314Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-485fee0c-13aa-4670-a6de-b0aeb935ad15",
+          "auditEvidence": null,
+          "summary": "Intégration des huit descriptions éditoriales de La Récréation, cinq paragraphes sourcés par langue; audit final restant."
+        },
+        {
+          "eventId": "import-photo-28ea516e097d46a39dc00e5d9e62f8c5-2026-11-02T152710.419Z",
+          "appliedAt": "2026-11-02T15:27:10.419Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-28ea516e097d46a39dc00e5d9e62f8c5-2026-11-02T152710.419Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ceae54d3b9dd44178649c7e6e23622ae-2026-11-02T152731.571Z",
+          "appliedAt": "2026-11-02T15:27:31.571Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-ceae54d3b9dd44178649c7e6e23622ae-2026-11-02T152731.571Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-volley-gliss, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f2f9eae73a0b4a939dae35ddd832cd04-2026-11-02T152747.370Z",
+          "appliedAt": "2026-11-02T15:27:47.370Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-f2f9eae73a0b4a939dae35ddd832cd04-2026-11-02T152747.370Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-woodland, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-57617ae95f75412780760e9f08d3f0bb-2026-11-02T152800.986Z",
+          "appliedAt": "2026-11-02T15:28:00.986Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-57617ae95f75412780760e9f08d3f0bb-2026-11-02T152800.986Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-wooded-path, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0b3b6fd31e324b2286a863c5994093e1-2026-11-02T152814.925Z",
+          "appliedAt": "2026-11-02T15:28:14.925Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-0b3b6fd31e324b2286a863c5994093e1-2026-11-02T152814.925Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-park-colourful-games, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-afbe184621b24e80b4c8a4556ff4e769-2026-11-02T152828.840Z",
+          "appliedAt": "2026-11-02T15:28:28.840Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-afbe184621b24e80b4c8a4556ff4e769-2026-11-02T152828.840Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pedal-games-collage, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2fb993e798f04f0a928ad2b340e00283-2026-11-02T153023.938Z",
+          "appliedAt": "2026-11-02T15:30:23.938Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-2fb993e798f04f0a928ad2b340e00283-2026-11-02T153023.938Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-baignoire-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-314b01f6135344c4b8d98ec9ea66b5e2-2026-11-02T153040.499Z",
+          "appliedAt": "2026-11-02T15:30:40.499Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-314b01f6135344c4b8d98ec9ea66b5e2-2026-11-02T153040.499Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-gliss-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0a812d61e43c44798d3669628f16569c-2026-11-02T153102.938Z",
+          "appliedAt": "2026-11-02T15:31:02.938Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-0a812d61e43c44798d3669628f16569c-2026-11-02T153102.938Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-slalom-main, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0e8dc9fa4ea644e790d6d0d86f369b03-2026-11-02T153131.024Z",
+          "appliedAt": "2026-11-02T15:31:31.024Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-0e8dc9fa4ea644e790d6d0d86f369b03-2026-11-02T153131.024Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-slalom-turn, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-614fd645e2bc470a93435eeb73ef66a9-2026-11-02T153155.487Z",
+          "appliedAt": "2026-11-02T15:31:55.487Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-614fd645e2bc470a93435eeb73ef66a9-2026-11-02T153155.487Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-velotaxi, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-41b520aac4814d4282df7e974c147e75-2026-11-02T153216.777Z",
+          "appliedAt": "2026-11-02T15:32:16.777Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-41b520aac4814d4282df7e974c147e75-2026-11-02T153216.777Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-beach-soccer, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5396ed58e4d745ea9a2979976b0f38ec-2026-11-02T153237.736Z",
+          "appliedAt": "2026-11-02T15:32:37.736Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-5396ed58e4d745ea9a2979976b0f38ec-2026-11-02T153237.736Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-beach-volley, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0775d8361584484c82fdd90c502b8639-2026-11-02T153647.568Z",
+          "appliedAt": "2026-11-02T15:36:47.568Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-0775d8361584484c82fdd90c502b8639-2026-11-02T153647.568Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pont-filet, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-2686bd00ee794db68db0a8018ed9c6cb-2026-11-02T153707.514Z",
+          "appliedAt": "2026-11-02T15:37:07.514Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-2686bd00ee794db68db0a8018ed9c6cb-2026-11-02T153707.514Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cordes-tarzan, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-26bad480305f4a0f9e11299a0cdadc73-2026-11-02T153725.407Z",
+          "appliedAt": "2026-11-02T15:37:25.407Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-26bad480305f4a0f9e11299a0cdadc73-2026-11-02T153725.407Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-bubble-foot, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-18594ee150a0461a9e253cc90571972e-2026-11-02T153740.720Z",
+          "appliedAt": "2026-11-02T15:37:40.720Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-18594ee150a0461a9e253cc90571972e-2026-11-02T153740.720Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-archery-field, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fb424d2941834c658c650722ac770c51-2026-11-02T153755.553Z",
+          "appliedAt": "2026-11-02T15:37:55.553Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-fb424d2941834c658c650722ac770c51-2026-11-02T153755.553Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-archery-close, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c65d3a80c67d41cd8aa39a9eb6c055a8-2026-11-02T153815.674Z",
+          "appliedAt": "2026-11-02T15:38:15.674Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-c65d3a80c67d41cd8aa39a9eb6c055a8-2026-11-02T153815.674Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-pentes-escalade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5471ffcb0f2248eaabf28de2679a7893-2026-11-02T153829.498Z",
+          "appliedAt": "2026-11-02T15:38:29.498Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-5471ffcb0f2248eaabf28de2679a7893-2026-11-02T153829.498Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-parking, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-b2b49802-ae05-4938-980d-15ac6efa6124",
+          "appliedAt": "2026-11-02T15:43:21.741Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-b2b49802-ae05-4938-980d-15ac6efa6124",
+          "auditEvidence": null,
+          "summary": "Descriptions spécifiques en huit langues de la Descente en baignoire, du Glissmouille et du Slalom-kart, trois paragraphes par attraction; données encore privées."
+        },
+        {
+          "eventId": "apply-c78c294e-278f-4e58-82b2-3fe2d9a129a4",
+          "appliedAt": "2026-11-02T15:44:53.971Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-c78c294e-278f-4e58-82b2-3fe2d9a129a4",
+          "auditEvidence": null,
+          "summary": "Descriptions en huit langues des Vélos-taxis, du parcours L’Éco-lutin et de l’Archery Tag; total six activités décrites, audit final restant."
+        }
+      ],
+      "nextAction": "Terminer les descriptions documentées, l’histoire et l’article en huit langues ; export frais et audit avant publication. 30 équipements, 6 décrits, 20 médias dont le logo.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-intake-decision.json"
     },
     {
       "entryId": "FR-park-66653da2-93bb-499f-95df-15e240673e58",

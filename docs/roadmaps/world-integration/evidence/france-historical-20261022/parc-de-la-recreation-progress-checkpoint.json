@@ -1,0 +1,137 @@
+{
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+  "checkedAtUtc": "2026-11-02T15:51:11.823174+00:00",
+  "status": "in_progress_private",
+  "dataApplies": [
+    {
+      "operationId": "78ec5f49-8b14-4641-b17c-6b8088329a29",
+      "appliedAtUtc": "2026-11-02T15:14:39.3183724Z"
+    },
+    {
+      "operationId": "f8f9daa9-6a74-4d3b-8259-58a864dc8514",
+      "appliedAtUtc": "2026-11-02T15:18:47.0625158Z"
+    },
+    {
+      "operationId": "0bf28936-354b-4fc4-8cb2-3f83acc92110",
+      "appliedAtUtc": "2026-11-02T15:22:23.1858529Z"
+    },
+    {
+      "operationId": "485fee0c-13aa-4670-a6de-b0aeb935ad15",
+      "appliedAtUtc": "2026-11-02T15:23:36.3142643Z"
+    },
+    {
+      "operationId": "b2b49802-ae05-4938-980d-15ac6efa6124",
+      "appliedAtUtc": "2026-11-02T15:43:21.7419456Z"
+    },
+    {
+      "operationId": "c78c294e-278f-4e58-82b2-3fe2d9a129a4",
+      "appliedAtUtc": "2026-11-02T15:44:53.9715733Z"
+    }
+  ],
+  "items": 30,
+  "parkLanguages": 8,
+  "importedMedia": 20,
+  "sourceRecovery": {
+    "officialArchivePages": "2015ArcheryTag,2016park/gallery/repas/pedagogie/infos/about,2017homepage; exactsnapshots in sourcesmanifest",
+    "officialArchiveMedia": [
+      {
+        "file": "official-brochure-2016.pdf",
+        "originalUrl": "http://www.la-recreation.com/app/download/9915016893/Brochure-la-récréation-2016.pdf?t=1464684778",
+        "requestedArchive": "https://web.archive.org/web/20161001000000id_/http://www.la-recreation.com/app/download/9915016893/Brochure-la-r%C3%A9cr%C3%A9ation-2016.pdf?t=1464684778",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-brochure-2017.jpg",
+        "originalUrl": "https://www.la-recreation.com/app/download/10897990493/brochure-2017-parc-la-récréation.jpg?t=1494595745",
+        "requestedArchive": "https://web.archive.org/web/20171014074150id_/https://www.la-recreation.com/app/download/10897990493/brochure-2017-parc-la-r%C3%A9cr%C3%A9ation.jpg?t=1494595745",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-adults-brochure.pdf",
+        "originalUrl": "https://www.la-recreation.com/app/download/11039910993/depliant+18-ans-parc-la-recreation.pdf?t=1494595788",
+        "requestedArchive": "https://web.archive.org/web/20171014074150id_/https://www.la-recreation.com/app/download/11039910993/depliant+18-ans-parc-la-recreation.pdf?t=1494595788",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-map-undated.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/i30ed63e88b23cb30/version/1459919892/image.jpg",
+        "requestedArchive": "https://web.archive.org/web/20161030162206id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/i30ed63e88b23cb30/version/1459919892/image.jpg",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-logo-2017.png",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/logo/version/1489051120/image.png",
+        "requestedArchive": "https://web.archive.org/web/20171014074150id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/logo/version/1489051120/image.png",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-gallery-00.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/ia42d7eca77d430c1/version/1454404432/image.jpg",
+        "requestedArchive": "https://web.archive.org/web/20161001075707id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/ia42d7eca77d430c1/version/1454404432/image.jpg",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-gallery-01.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/i608b1f6e47f17e27/version/1421147994/image.jpg",
+        "requestedArchive": "https://web.archive.org/web/20161001075707id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/i608b1f6e47f17e27/version/1421147994/image.jpg",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-gallery-02.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/ia537b9a219cb068e/version/1454404432/image.jpg",
+        "requestedArchive": "https://web.archive.org/web/20161001075707id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/ia537b9a219cb068e/version/1454404432/image.jpg",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-gallery-03.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/ie1542609a5f2150b/version/1454404432/image.jpg",
+        "requestedArchive": "https://web.archive.org/web/20161001075707id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/ie1542609a5f2150b/version/1454404432/image.jpg",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-gallery-04.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/ib6e75d6ea821d53a/version/1454404432/image.jpg",
+        "requestedArchive": "https://web.archive.org/web/20161001075707id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/ib6e75d6ea821d53a/version/1454404432/image.jpg",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-gallery-05.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/i75bd5f2f4027f5e4/version/1454404433/image.jpg",
+        "requestedArchive": "https://web.archive.org/web/20161001075707id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/i75bd5f2f4027f5e4/version/1454404433/image.jpg",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-gallery-06.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/i8210d42b388174c2/version/1454404433/image.jpg",
+        "requestedArchive": "https://web.archive.org/web/20161001075707id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/i8210d42b388174c2/version/1454404433/image.jpg",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "official-gallery-07.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/id4dcabac1417981d/version/1454404234/image.jpg",
+        "requestedArchive": "https://web.archive.org/web/20161001075707id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/image/id4dcabac1417981d/version/1454404234/image.jpg",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ],
+    "brochureExactPrefixCdx": "Narrowquery timedout after20s; no unchangedretry. No officialmapyearinvented.",
+    "tripadvisorGallery": "All16 exact-targetphotographs downloaded; sourcealbums andauthorprofiles preserved; visualinspection complete. ManagementAudeS andIsabelleC credited. One bathportrait exceeds960KiB andexcluded.",
+    "exclusions": [
+      {
+        "file": "tripadvisor-274293634.jpg",
+        "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g1093537-d2286714-i274293634-La_Recreation-Monts_Indre_et_Loire_Centre_Val_de_Loire.html",
+        "bytes": 1006400,
+        "reason": "Original exceeds official client960KiB ceiling; no recompression,crop or transformedthumbnail substituted."
+      }
+    ]
+  },
+  "nextSteps": [
+    "Continue specific item texts from primarysources andphotos",
+    "Historical timeline and durable eight-languagearticle",
+    "Fresh fullExport and finalaudit",
+    "Authorized site/Facebook only after publicationgatesverified"
+  ],
+  "describedItems": 6,
+  "lastDataIntegrationAt": "2026-11-02T15:44:53.971Z",
+  "dataEvents": 26
+}
