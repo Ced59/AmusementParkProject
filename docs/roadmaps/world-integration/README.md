@@ -17,11 +17,11 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 307 | 1881 | 7567 |
-| Standalone | 186 | 1 | 125 |
+| Standalone | 187 | 1 | 125 |
 
-**Reprise standalone :** en plus des 125 candidates sans correspondance, **225 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **603 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **57 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 125 candidates sans correspondance, **225 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **602 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **57 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
-À part : **767** Park masqués NotRelevant, **69** types à décider, **1315** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
+À part : **767** Park masqués NotRelevant, **69** types à décider, **1314** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
 ## Europe
 
@@ -245,14 +245,15 @@ Périmètre national entier des sources. Cette rubrique conserve la distinction 
 | [Azerbaïdjan](countries/AZ.md) | 3 | 0 | 0 | 0 | 0 | 0 |
 | [Géorgie](countries/GE.md) | 2 | 0 | 1 | 0 | 3 | 0 |
 | [Kazakhstan](countries/KZ.md) | 0 | 0 | 0 | 0 | 3 | 0 |
-| [Russie](countries/RU.md) | 0 | 0 | 1 | 0 | 31 | 0 |
+| [Russie](countries/RU.md) | 1 | 0 | 1 | 0 | 30 | 0 |
 | [Turquie](countries/TR.md) | 0 | 0 | 1 | 0 | 17 | 0 |
-| **Total** | **5** | **0** | **3** | **0** | **55** | **0** |
+| **Total** | **6** | **0** | **3** | **0** | **54** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **5**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **6**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Azerbaïdjan : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Géorgie : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Russie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
@@ -261,9 +262,9 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Azerbaïdjan](countries/AZ.md) | 0 | 0 | 0 | 0 |
 | [Géorgie](countries/GE.md) | 0 | 0 | 2 | 0 |
 | [Kazakhstan](countries/KZ.md) | 0 | 0 | 2 | 0 |
-| [Russie](countries/RU.md) | 1 | 0 | 12 | 0 |
+| [Russie](countries/RU.md) | 1 | 0 | 11 | 0 |
 | [Turquie](countries/TR.md) | 10 | 0 | 8 | 1 |
-| **Total** | **11** | **0** | **24** | **1** |
+| **Total** | **11** | **0** | **23** | **1** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 
