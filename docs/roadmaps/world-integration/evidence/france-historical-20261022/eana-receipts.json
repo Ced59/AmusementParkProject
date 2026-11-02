@@ -846,6 +846,26 @@
         "descriptions.pt"
       ],
       "summary": "Eana : correction éditoriale finale dans huit langues, suppression d’une interprétation non prouvée du Jardin en liberté et d’une phrase générique du théâtre."
+    },
+    {
+      "eventId": "apply-f057928e-8c9b-4d7c-b443-235778c2c568",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:47:58.7978707Z",
+      "appliedAt": "2026-11-02T08:47:58.797Z",
+      "receiptFile": "09-article-refinement-20261102-apply.receipt.json",
+      "receiptSha256": "7df318d987bf0e2e3c01f41185776bdcf3a318f7dab0133c03ebde076b346118",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Eana : reprise éditoriale de l’article, 24 légendes propres au récit et six paragraphes reformulés pour supprimer les reprises de la frise et des fiches ; aucun fait, source, date, image ou visibilité changé."
     }
   ],
   "publicationOrNoop": []

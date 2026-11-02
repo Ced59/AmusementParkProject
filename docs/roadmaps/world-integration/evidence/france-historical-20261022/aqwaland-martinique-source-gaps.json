@@ -1,0 +1,170 @@
+{
+  "sourceFamilies": [
+    "Official operator archives",
+    "Official tourism guides and IEDOM",
+    "Corporate register",
+    "CTM/IGN public sources",
+    "Regional press RCI/France-Antilles/ZayActu",
+    "Specialist ParcPlaza and professional interview Amusement Logic",
+    "Visitor imagery reproduced by press"
+  ],
+  "photoAndReferenceGaps": [
+    "Tyrolienne : aucune photo propre ni coordonnées de départ/arrivée établies ; description historique documentée, parcours et mesures inconnus.",
+    "Black Hole : deux vues fidèles ; photo complémentaire de presse porte watermark et est refusée.",
+    "Crazy race : une photo propre après fermeture ; photos officielles spécifiques indisponibles 404 ; montage 2018 et miniatures écartés.",
+    "Sokol Show : photographie promotionnelle de plongeur trouvée en presse 2012 mais aucun élément ne prouve cette prise de vue au Carbet ; ne pas attribuer un autre lieu.",
+    "Le Morne Pique, Cabane à glace, Le Monarque, Parking : aucune vue propre ni emplacement précis établis.",
+    "Petit Piton, Kazaland, Entrée : une vue chacun ; coordonnées exactes non prouvées.",
+    "Aucune identité personnelle de fondateur ou de constructeur d’attraction établie. Investisseurs martiniquais collectifs non nommés dans entretien de directeur 2026.",
+    "Aucune image autonome de l’exploitant liée avec certitude ; eliliane.jpg est un portrait dans un autre cadre, identité non prouvée par le nom de fichier."
+  ],
+  "maps": {
+    "accepted": 0,
+    "research": [
+      "Archive officielle domaine aqwaland.fr : CDX global, 35 photographies conservées, pages attractions, services, restaurants, plan et plan d’accès 2012–2014.",
+      "PlanSat et plan d’accès renvoient une carte routière Google ; pas de plan intérieur annuel. Image plan.jpg inaccessible 403 : aucun contournement.",
+      "Guides officiels tourisme français 2014–2015 et anglais 2015 : cartes de la Martinique, pas des bassins.",
+      "Recherches Aqwaland/Aqualand Martinique plan du parc, carte 2012/2013, presse régionale, sources spécialisées ParcPlaza et fonds photographiques de visiteurs : aucune édition annuelle intérieure authentifiée."
+    ],
+    "result": "No genuine annual visitor-map edition identified; no invented year or community map substituted."
+  },
+  "resolutionException": "Several native official originals survive only at 200px (one whole-site aerial170px). Exact identity and readable scene personally checked; larger suitable source preferred where found (Colorado640, gate640, Crazyrace528, CTM/drone1000, IGN1300). No local enlargement, crop, recompression, watermark removal or reconstruction.",
+  "fixedGeolocation": {
+    "covered": 6,
+    "total": 14,
+    "gaps": [
+      "Tyrolienne",
+      "Le Morne Pique",
+      "Cabane à glace",
+      "Le Monarque",
+      "Le Petit Piton",
+      "Kazaland",
+      "Entrée d’Aqwaland",
+      "Parking"
+    ],
+    "nonFixedGap": "Sokol Show : site exact de scène non établi ; aucun point au centre du parc."
+  },
+  "attractionAccess": {
+    "reviewed": 7,
+    "structuredRulesProved": 0,
+    "gap": "Pages officielles de chaque attraction, services, guides touristiques et photographies consultés ; aucune restriction exacte fiable retrouvée. Pas de taille ou âge inventé."
+  },
+  "individualDatesAndManufacturers": "Dates individuelles d’ouverture et de fermeture, constructeurs et modèle non établis. Six ensembles aquatiques présents avant arrêt général de 2013 ; tyrolienne encore listée dans guide 2014–2015 sans exploitation prouvée. Aucun jour individuel inventé.",
+  "shortDescriptionExceptions": [
+    {
+      "id": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "name": "Black Hole",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "eaa0160c-1740-4885-938c-6de8f26b0214",
+      "name": "Cabane à glace",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "104b94d7-26d5-4a7f-9634-224e1552fd50",
+      "name": "Colorado",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "d8901acf-2972-40a9-8276-0154d6c01611",
+      "name": "Crazy race",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "eb0c3b86-0df2-4fa4-a0f5-d35d10e4b5ad",
+      "name": "Entrée d’Aqwaland",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "d6555c00-cceb-498e-bd8e-4d0cadc971b9",
+      "name": "Kazaland",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "feb90bbb-a75a-4ea5-8fbc-3fea2f99d18f",
+      "name": "Le Monarque",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "f5458282-2d9d-45bd-8560-d1a8a08d6b20",
+      "name": "Le Morne Pique",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "3dbdd29c-aa87-4e55-b891-8115f3a854ff",
+      "name": "Le Petit Piton",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "ac09276e-e3ab-4977-b188-8026613653fa",
+      "name": "Mini Parc",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "509772c1-defd-4c93-9442-2d40841cb402",
+      "name": "Parking",
+      "reason": "Parking attesté par un témoignage de randonnée daté, aucune capacité, limite ou offre tarifaire prouvée après recherche. Description brève strictement limitée à cette fonction historique."
+    },
+    {
+      "id": "61ad1e7a-4114-42a4-8df3-38fba4945da4",
+      "name": "Piscine à vagues",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "407efabd-3619-4d9f-9f18-53e8bfcb73ae",
+      "name": "Sokol Show",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "5e988026-9b9f-4e97-8833-876f7a0eaa3e",
+      "name": "Super Slalom",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    },
+    {
+      "id": "8b5da5c1-a544-4a3b-85eb-98413e69857f",
+      "name": "Tyrolienne",
+      "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+    }
+  ],
+  "historyPhotoContext": {
+    "mapping": {
+      "aqwaland-opening-2004": "05-aerial",
+      "aqwaland-domaine-pitons-2012": "05-panorama",
+      "aqwaland-closure-2013": "05-drone-2022",
+      "aqwaland-ctm-acquisition-2017": "05-ign-site",
+      "aqwaland-project-call-2023": "05-ctm-garden",
+      "aqwaland-sale-decision-2024": "05-drone-2022"
+    },
+    "eventPhotograph": "2023 : photographie CTM effectivement diffusée avec appel à projets.",
+    "contextualFallbacks": {
+      "opening-2004": "Vue générale officielle des années d’activité, date exacte de prise de vue inconnue, jamais présentée comme inauguration.",
+      "domaine-pitons-2012": "Panorama officiel des bassins dans le domaine, contexte du site, pas une cérémonie ou une vue inventée de la tyrolienne.",
+      "closure-2013": "Vue Jérémy Thomin 2022, explicitement légendée neuf ans après la dernière saison, illustre suites matérielles sans dater le cliché 2013.",
+      "ctm-acquisition-2017": "Emprise IGN du site acquis, date de photographie inconnue et aucun acte de signature illustré.",
+      "sale-decision-2024": "Photo du terrain abandonné 2022, contexte physique du bien mis en vente, pas séance plénière."
+    },
+    "research": "Actual event photos searched in primary/archive/operator, government and contemporary regional press before choosing exact-site context; no suitable actual-event photograph established for these five facts."
+  },
+  "currentHoursAndPricing": {
+    "assessedAtUtc": "2026-11-01T18:09:28.980476+00:00",
+    "status": "ClosedDefinitively",
+    "lastOperatingSeason": 2013,
+    "openingHours": {
+      "applicable": false,
+      "reason": "Parc fermé définitivement après la saison achevée le 1er septembre 2013. Aucun calendrier futur officiel ; ne pas recopier en horaires actuels les archives 2012–2013.",
+      "coveredFutureDays": 0,
+      "uncoveredPublishedDays": 0,
+      "overlaps": 0
+    },
+    "pricing": {
+      "applicable": false,
+      "reason": "Aucune offre actuelle vendable pour ce parc fermé. Les tarifs historiques trouvés ne sont pas des offres actives et ne doivent pas être présentés comme tels.",
+      "activeOffers": 0
+    },
+    "namedEvents": {
+      "currentApplicable": false,
+      "historicalInventory": "Sokol Show attesté en 2012 ; animations ponctuelles 2013 dans article, aucune séance actuelle inventée."
+    }
+  }
+}

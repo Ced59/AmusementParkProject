@@ -2615,10 +2615,10 @@
       "proposedEntityKind": "Park",
       "category": "Catégorie à qualifier",
       "locality": "Le Carbet",
-      "siteId": null,
+      "siteId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T08:49:14.256801+00:00",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -2627,9 +2627,400 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "lastDataIntegrationAt": "2026-11-02T08:40:33.156Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-02ec8895-c349-4194-a7bf-54c22a2458b6",
+          "appliedAt": "2026-11-01T17:15:44.432Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-02ec8895-c349-4194-a7bf-54c22a2458b6",
+          "auditEvidence": null,
+          "summary": "Création privée Aqwaland Martinique après huit recherches officielles sans doublon ; identité, exploitant, mois ouverture février 2004, fin de dernière saison 1 septembre 2013 et localisation historique vérifiés."
+        },
+        {
+          "eventId": "apply-068a7569-3698-4f9f-a75f-07d7faefcbf0",
+          "appliedAt": "2026-11-01T17:22:48.093Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-068a7569-3698-4f9f-a75f-07d7faefcbf0",
+          "auditEvidence": null,
+          "summary": "Inventaire historique Aqwaland : quinze lieux privés, dont sept attractions, Sokol Show, quatre restaurations, Kazaland, entrée et parking ; six ensembles aquatiques géolocalisés."
+        },
+        {
+          "eventId": "apply-34f4ec03-bed7-49ff-a68e-31d3d5b7285f",
+          "appliedAt": "2026-11-01T17:29:20.305Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-34f4ec03-bed7-49ff-a68e-31d3d5b7285f",
+          "auditEvidence": null,
+          "summary": "Description éditoriale Aqwaland intégrée dans huit langues après rédaction et relecture personnelle ; trois sections, six paragraphes, fiche toujours privée."
+        },
+        {
+          "eventId": "apply-71dbe674-90de-48c9-ba20-c3e46571866d",
+          "appliedAt": "2026-11-01T17:34:18.828Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-71dbe674-90de-48c9-ba20-c3e46571866d",
+          "auditEvidence": null,
+          "summary": "Quarante-huit descriptions personnelles intégrées pour six ensembles aquatiques Aqwaland, huit langues ; décor vérifié sur les photographies officielles, aucune visibilité modifiée."
+        },
+        {
+          "eventId": "apply-1850d694-b16f-4a81-8e23-fd0d2b03ac3b",
+          "appliedAt": "2026-11-01T17:38:53.286Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-1850d694-b16f-4a81-8e23-fd0d2b03ac3b",
+          "auditEvidence": null,
+          "summary": "Quarante descriptions personnelles intégrées pour quatre restaurations et Kazaland, huit langues ; exceptions de longueur documentées et aucune visibilité modifiée."
+        },
+        {
+          "eventId": "apply-e95b632a-68b5-40c6-b461-5f77a73b6c58",
+          "appliedAt": "2026-11-01T17:41:23.954Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-e95b632a-68b5-40c6-b461-5f77a73b6c58",
+          "auditEvidence": null,
+          "summary": "Vingt-quatre descriptions personnelles intégrées pour Sokol Show, entrée et parking ; huit langues, usages historiques sourcés. Tyrolienne laissée privée sans description suffisante."
+        },
+        {
+          "eventId": "import-photo-53642ef17b4047dd99c96d2445ab0586-2026-11-01T175410.987Z",
+          "appliedAt": "2026-11-01T17:54:10.987Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-53642ef17b4047dd99c96d2445ab0586-2026-11-01T175410.987Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f5f7fb6f9d444b48b60eb61ef54cc3e0-2026-11-01T175454.507Z",
+          "appliedAt": "2026-11-01T17:54:54.507Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-f5f7fb6f9d444b48b60eb61ef54cc3e0-2026-11-01T175454.507Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-panorama, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-53de82c7d273424c8d4c566f7aec0f1d-2026-11-01T175514.044Z",
+          "appliedAt": "2026-11-01T17:55:14.044Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-53de82c7d273424c8d4c566f7aec0f1d-2026-11-01T175514.044Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-aerial, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9750ca40b43d42c49d9de7ac7b617939-2026-11-01T175536.882Z",
+          "appliedAt": "2026-11-01T17:55:36.882Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-9750ca40b43d42c49d9de7ac7b617939-2026-11-01T175536.882Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-ctm-garden, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-bb449fa0e1a742ec82a1b3a54140de6e-2026-11-01T175559.380Z",
+          "appliedAt": "2026-11-01T17:55:59.380Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-bb449fa0e1a742ec82a1b3a54140de6e-2026-11-01T175559.380Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-drone-2022, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-478ab7c09bb745e3a902b04bbeffb7db-2026-11-01T175622.815Z",
+          "appliedAt": "2026-11-01T17:56:22.815Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-478ab7c09bb745e3a902b04bbeffb7db-2026-11-01T175622.815Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-ign-site, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-05ef477d875f47b0b9bfb49a95d6ab21-2026-11-01T175641.496Z",
+          "appliedAt": "2026-11-01T17:56:41.496Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-05ef477d875f47b0b9bfb49a95d6ab21-2026-11-01T175641.496Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-black-hole-mouth, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-af79d75abe8e4c87852fca84c231a0d2-2026-11-01T175655.014Z",
+          "appliedAt": "2026-11-01T17:56:55.014Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-af79d75abe8e4c87852fca84c231a0d2-2026-11-01T175655.014Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-black-hole-finish, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a0a2f30f9fed412f9607b89beff2cfc0-2026-11-01T175718.293Z",
+          "appliedAt": "2026-11-01T17:57:18.293Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-a0a2f30f9fed412f9607b89beff2cfc0-2026-11-01T175718.293Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-colorado-hillside, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-e77e3e19a47848b19072e5d053fdb734-2026-11-01T175746.244Z",
+          "appliedAt": "2026-11-01T17:57:46.244Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-e77e3e19a47848b19072e5d053fdb734-2026-11-01T175746.244Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-colorado-descent, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5c28e5a54d59428e91763e0f075efb74-2026-11-01T175809.359Z",
+          "appliedAt": "2026-11-01T17:58:09.359Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-5c28e5a54d59428e91763e0f075efb74-2026-11-01T175809.359Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-colorado-mouth, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-36a83ffad2fc4feb879b9152d55b21f8-2026-11-01T175833.441Z",
+          "appliedAt": "2026-11-01T17:58:33.441Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-36a83ffad2fc4feb879b9152d55b21f8-2026-11-01T175833.441Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-crazyrace-after, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-699f1a4415bd47e7b2de86505cf46f8d-2026-11-01T175847.115Z",
+          "appliedAt": "2026-11-01T17:58:47.115Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-699f1a4415bd47e7b2de86505cf46f8d-2026-11-01T175847.115Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-super-slalom-setting, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3371a959e94d49a39baf03475bdc0b4e-2026-11-01T175910.112Z",
+          "appliedAt": "2026-11-01T17:59:10.112Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-3371a959e94d49a39baf03475bdc0b4e-2026-11-01T175910.112Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-super-slalom-approach, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-46b7edb99b814a7da92d0a291a54096c-2026-11-01T175937.274Z",
+          "appliedAt": "2026-11-01T17:59:37.274Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-46b7edb99b814a7da92d0a291a54096c-2026-11-01T175937.274Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-super-slalom-riders, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f6dba3ef2b1340d38366700889cd63ea-2026-11-01T180005.944Z",
+          "appliedAt": "2026-11-01T18:00:05.944Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-f6dba3ef2b1340d38366700889cd63ea-2026-11-01T180005.944Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-miniparc-ship, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-786a66cc51f048d29a2b8b31a12be42b-2026-11-01T180025.158Z",
+          "appliedAt": "2026-11-01T18:00:25.158Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-786a66cc51f048d29a2b8b31a12be42b-2026-11-01T180025.158Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-miniparc-slides, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c1b89f3ceb974404bb3393de41d42e02-2026-11-01T180048.080Z",
+          "appliedAt": "2026-11-01T18:00:48.080Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-c1b89f3ceb974404bb3393de41d42e02-2026-11-01T180048.080Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-miniparc-fountain, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-00500da8275145faacbd3265a0ff8953-2026-11-01T180116.364Z",
+          "appliedAt": "2026-11-01T18:01:16.364Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-00500da8275145faacbd3265a0ff8953-2026-11-01T180116.364Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-wave-pool-overview, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1d4e38ea181f44b99e8c7e9715944367-2026-11-01T180139.491Z",
+          "appliedAt": "2026-11-01T18:01:39.491Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-1d4e38ea181f44b99e8c7e9715944367-2026-11-01T180139.491Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-wave-pool-palms, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-60e156ef81aa41e489c93e53f21896a5-2026-11-01T180153.016Z",
+          "appliedAt": "2026-11-01T18:01:53.016Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-60e156ef81aa41e489c93e53f21896a5-2026-11-01T180153.016Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-wave-pool-shore, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-960b9e4f09474868820792d279b92a95-2026-11-01T180206.949Z",
+          "appliedAt": "2026-11-01T18:02:06.949Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-960b9e4f09474868820792d279b92a95-2026-11-01T180206.949Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-petit-piton, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5405cd0dbc7b4b0186f188a8bff6c431-2026-11-01T180221.422Z",
+          "appliedAt": "2026-11-01T18:02:21.422Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-5405cd0dbc7b4b0186f188a8bff6c431-2026-11-01T180221.422Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-kazaland, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a029851120124fa8920103e750e0a9f8-2026-11-01T180235.788Z",
+          "appliedAt": "2026-11-01T18:02:35.788Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#import-photo-a029851120124fa8920103e750e0a9f8-2026-11-01T180235.788Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-entrance, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-f861b4f0-d85e-4881-91de-762e0916099c",
+          "appliedAt": "2026-11-01T18:08:03.056Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-f861b4f0-d85e-4881-91de-762e0916099c",
+          "auditEvidence": null,
+          "summary": "Tyrolienne et exploitant : huit descriptions chacun, sources historiques et légales recoupées ; audit final restant."
+        },
+        {
+          "eventId": "apply-266d7efd-1532-4332-908e-54955e4ff2cd",
+          "appliedAt": "2026-11-01T18:10:24.651Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-266d7efd-1532-4332-908e-54955e4ff2cd",
+          "auditEvidence": null,
+          "summary": "Correction vérifiée de seize rattachements de photos privées vers leurs vrais parkItems ; fichiers, textes et sources préservés, images principales à rétablir dans le lot suivant."
+        },
+        {
+          "eventId": "apply-5bfaf397-fbe7-43a3-a497-bbcb167d4cba",
+          "appliedAt": "2026-11-02T08:10:04.647Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-5bfaf397-fbe7-43a3-a497-bbcb167d4cba",
+          "auditEvidence": null,
+          "summary": "Correction de la sélection des neuf images principales après réparation des propriétaires ; donnée média corrigée, tous les contenus encore privés."
+        },
+        {
+          "eventId": "apply-c9f13937-e4c4-4598-975c-b4ecd68af023",
+          "appliedAt": "2026-11-02T08:14:22.701Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-c9f13937-e4c4-4598-975c-b4ecd68af023",
+          "auditEvidence": null,
+          "summary": "Six faits historiques sourcés et illustrés, cinq majeurs, huit langues ; ouverture 2004, Domaine des Pitons, fermeture 2013, propriété CTM et démarches de reprise sans vente ni réouverture inventées."
+        },
+        {
+          "eventId": "apply-181d4d74-4161-4e87-99c9-39d4944c2541",
+          "appliedAt": "2026-11-02T08:16:30.480Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-181d4d74-4161-4e87-99c9-39d4944c2541",
+          "auditEvidence": null,
+          "summary": "Article historique développé en huit langues, quatre sections et huit paragraphes par langue, deux photographies datées du site fermé ; sources recoupées et publication encore privée."
+        },
+        {
+          "eventId": "apply-015f0373-c37e-4986-93b7-7799941cb254",
+          "appliedAt": "2026-11-02T08:18:09.495Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-015f0373-c37e-4986-93b7-7799941cb254",
+          "auditEvidence": null,
+          "summary": "Cinq descriptions de photos et leurs quarante légendes précisées dans les huit langues à partir des scènes inspectées ; aucune modification de rattachement ou visibilité."
+        },
+        {
+          "eventId": "apply-6521e001-8327-4eab-a95f-5bdae9786d9f",
+          "appliedAt": "2026-11-02T08:27:58.290Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-6521e001-8327-4eab-a95f-5bdae9786d9f",
+          "auditEvidence": null,
+          "summary": "Audit final Aqwaland : couleurs de l’enseigne Petit Piton corrigées dans huit descriptions et huit textes alternatifs, phrase PT Tyrolienne rendue distincte."
+        },
+        {
+          "eventId": "apply-4f5600b6-2b97-4a28-bf82-87cd7c6bcdfb",
+          "appliedAt": "2026-11-02T08:34:04.915Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-4f5600b6-2b97-4a28-bf82-87cd7c6bcdfb",
+          "auditEvidence": null,
+          "summary": "Aqwaland : restauration officielle des six révisions HIST canoniques après publication du parc, sans changer les faits, dates, sources, images ni article."
+        },
+        {
+          "eventId": "apply-33e1741f-644f-4f8a-910a-aa146efe0818",
+          "appliedAt": "2026-11-02T08:40:33.156Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-33e1741f-644f-4f8a-910a-aa146efe0818",
+          "auditEvidence": null,
+          "summary": "Aqwaland : relecture du rendu public, amélioration du paragraphe du galion en français et anglais pour supprimer les répétitions décor/décor et setting/setting, sans ajout factuel."
+        }
+      ],
+      "nextAction": "Fiche, quinze lieux, 24 médias, six faits et article publiés dans huit langues ; Facebook Published et lien Histoire vérifiés. Score réel 90/100 sans bloqueur API, aucune exception acceptée : conserver partial ; poursuivre photos, huit localisations fixes, carte annuelle et données individuelles manquantes. Ne pas republier Facebook. Voir aqwaland-martinique-publication-audit.json.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -22400,7 +22791,7 @@
         "Eana, parc de l’Abbaye du Valasse"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-01T11:14:59.953Z",
+      "lastDataIntegrationAt": "2026-11-02T08:47:58.797Z",
       "integrationHistory": [
         {
           "eventId": "apply-fa4810e6-1674-4dc7-ab35-432c13dfbce6",
@@ -22811,9 +23202,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/eana-receipts.json#apply-6d9df9ff-309b-4638-b96e-55e02c3ba316",
           "auditEvidence": null,
           "summary": "Eana : correction éditoriale finale dans huit langues, suppression d’une interprétation non prouvée du Jardin en liberté et d’une phrase générique du théâtre."
+        },
+        {
+          "eventId": "apply-f057928e-8c9b-4d7c-b443-235778c2c568",
+          "appliedAt": "2026-11-02T08:47:58.797Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/eana-receipts.json#apply-f057928e-8c9b-4d7c-b443-235778c2c568",
+          "auditEvidence": null,
+          "summary": "Eana : reprise éditoriale de l’article, 24 légendes propres au récit et six paragraphes reformulés pour supprimer les reprises de la frise et des fiches ; aucun fait, source, date, image ou visibilité changé."
         }
       ],
-      "nextAction": "Eana : 31 éléments, 27 descriptions dans huit langues, 21 images, 2 plans officiels, 9 faits et article intégrés. Résoudre les descriptions du Jardin en liberté, du Sas de la consommation, de Modes de vie et de l’Aire de jeux ; compléter l’audit éditorial avant publication et Facebook. Preuve : evidence/france-historical-20261022/eana-progress-audit.json.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Backlog national existant",

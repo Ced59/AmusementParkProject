@@ -1,0 +1,513 @@
+{
+  "entryId": "FR-candidate-e85014d661e1cf",
+  "parkId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+  "name": "Aqwaland Martinique",
+  "checkedAtUtc": "2026-11-02T08:49:14.256801+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "contentAuditPassed": true,
+  "publicationAuditPassed": true,
+  "sitePublished": true,
+  "facebookPublished": true,
+  "backlogClosureEligible": false,
+  "acceptedScoreException": false,
+  "siteUrl": "https://amusement-parks.fun/fr/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+  "publishedAtUtc": "2026-11-02T08:32:10.7534405Z",
+  "publicationOperationId": "3fcd1a1e-c09b-4215-82a7-b382dc928b60",
+  "lastDataIntegrationAtUtc": "2026-11-02T08:40:33.156Z",
+  "lastIntegrationEvidence": "apply-33e1741f-644f-4f8a-910a-aa146efe0818",
+  "dataIntegrationEvents": 39,
+  "actualCompleteness": {
+    "completenessScore": 90,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 93,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "projectedCompletenessBeforeParentPublication": {
+    "completenessScore": 90,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 97,
+    "earnedPoints": 87,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-02T08:29:21.6660143Z",
+    "items": 15,
+    "zones": 0,
+    "attractions": 7,
+    "attractionStatuses": {
+      "ClosedDefinitively": 7
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 7,
+    "attractionsWithImage": 6,
+    "attractionImageGaps": [
+      {
+        "id": "8b5da5c1-a544-4a3b-85eb-98413e69857f",
+        "name": "Tyrolienne"
+      }
+    ],
+    "ownedImages": 24,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+        "name": "Black Hole",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "eaa0160c-1740-4885-938c-6de8f26b0214",
+        "name": "Cabane à glace",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "104b94d7-26d5-4a7f-9634-224e1552fd50",
+        "name": "Colorado",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "d8901acf-2972-40a9-8276-0154d6c01611",
+        "name": "Crazy race",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "eb0c3b86-0df2-4fa4-a0f5-d35d10e4b5ad",
+        "name": "Entrée d’Aqwaland",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "d6555c00-cceb-498e-bd8e-4d0cadc971b9",
+        "name": "Kazaland",
+        "category": "Shop",
+        "images": 1
+      },
+      {
+        "id": "feb90bbb-a75a-4ea5-8fbc-3fea2f99d18f",
+        "name": "Le Monarque",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "f5458282-2d9d-45bd-8560-d1a8a08d6b20",
+        "name": "Le Morne Pique",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "3dbdd29c-aa87-4e55-b891-8115f3a854ff",
+        "name": "Le Petit Piton",
+        "category": "Restaurant",
+        "images": 1
+      },
+      {
+        "id": "ac09276e-e3ab-4977-b188-8026613653fa",
+        "name": "Mini Parc",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "509772c1-defd-4c93-9442-2d40841cb402",
+        "name": "Parking",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "61ad1e7a-4114-42a4-8df3-38fba4945da4",
+        "name": "Piscine à vagues",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "407efabd-3619-4d9f-9f18-53e8bfcb73ae",
+        "name": "Sokol Show",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "5e988026-9b9f-4e97-8833-876f7a0eaa3e",
+        "name": "Super Slalom",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "8b5da5c1-a544-4a3b-85eb-98413e69857f",
+        "name": "Tyrolienne",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 6,
+    "geolocationGaps": [
+      {
+        "id": "eaa0160c-1740-4885-938c-6de8f26b0214",
+        "name": "Cabane à glace",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "eb0c3b86-0df2-4fa4-a0f5-d35d10e4b5ad",
+        "name": "Entrée d’Aqwaland",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "d6555c00-cceb-498e-bd8e-4d0cadc971b9",
+        "name": "Kazaland",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "feb90bbb-a75a-4ea5-8fbc-3fea2f99d18f",
+        "name": "Le Monarque",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "f5458282-2d9d-45bd-8560-d1a8a08d6b20",
+        "name": "Le Morne Pique",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "3dbdd29c-aa87-4e55-b891-8115f3a854ff",
+        "name": "Le Petit Piton",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "509772c1-defd-4c93-9442-2d40841cb402",
+        "name": "Parking",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "407efabd-3619-4d9f-9f18-53e8bfcb73ae",
+        "name": "Sokol Show",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "8b5da5c1-a544-4a3b-85eb-98413e69857f",
+        "name": "Tyrolienne",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 6,
+    "parkHistory": 6,
+    "itemHistory": 0,
+    "historyWithSource": 6,
+    "historyWithImage": 6,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "corpusFields": 952,
+    "itemsPublished": 15,
+    "itemsPrivate": 0,
+    "itemsWithEightDescriptions": 15,
+    "fixedItemsGeolocated": 6,
+    "fixedItemsTotal": 14,
+    "generalPhotographs": 5,
+    "currentAuthenticLogo": true,
+    "attractionsWithThreePhotographs": 4,
+    "officialMapEditions": 0
+  },
+  "sourceGaps": {
+    "sourceFamilies": [
+      "Official operator archives",
+      "Official tourism guides and IEDOM",
+      "Corporate register",
+      "CTM/IGN public sources",
+      "Regional press RCI/France-Antilles/ZayActu",
+      "Specialist ParcPlaza and professional interview Amusement Logic",
+      "Visitor imagery reproduced by press"
+    ],
+    "photoAndReferenceGaps": [
+      "Tyrolienne : aucune photo propre ni coordonnées de départ/arrivée établies ; description historique documentée, parcours et mesures inconnus.",
+      "Black Hole : deux vues fidèles ; photo complémentaire de presse porte watermark et est refusée.",
+      "Crazy race : une photo propre après fermeture ; photos officielles spécifiques indisponibles 404 ; montage 2018 et miniatures écartés.",
+      "Sokol Show : photographie promotionnelle de plongeur trouvée en presse 2012 mais aucun élément ne prouve cette prise de vue au Carbet ; ne pas attribuer un autre lieu.",
+      "Le Morne Pique, Cabane à glace, Le Monarque, Parking : aucune vue propre ni emplacement précis établis.",
+      "Petit Piton, Kazaland, Entrée : une vue chacun ; coordonnées exactes non prouvées.",
+      "Aucune identité personnelle de fondateur ou de constructeur d’attraction établie. Investisseurs martiniquais collectifs non nommés dans entretien de directeur 2026.",
+      "Aucune image autonome de l’exploitant liée avec certitude ; eliliane.jpg est un portrait dans un autre cadre, identité non prouvée par le nom de fichier."
+    ],
+    "maps": {
+      "accepted": 0,
+      "research": [
+        "Archive officielle domaine aqwaland.fr : CDX global, 35 photographies conservées, pages attractions, services, restaurants, plan et plan d’accès 2012–2014.",
+        "PlanSat et plan d’accès renvoient une carte routière Google ; pas de plan intérieur annuel. Image plan.jpg inaccessible 403 : aucun contournement.",
+        "Guides officiels tourisme français 2014–2015 et anglais 2015 : cartes de la Martinique, pas des bassins.",
+        "Recherches Aqwaland/Aqualand Martinique plan du parc, carte 2012/2013, presse régionale, sources spécialisées ParcPlaza et fonds photographiques de visiteurs : aucune édition annuelle intérieure authentifiée."
+      ],
+      "result": "No genuine annual visitor-map edition identified; no invented year or community map substituted."
+    },
+    "resolutionException": "Several native official originals survive only at 200px (one whole-site aerial170px). Exact identity and readable scene personally checked; larger suitable source preferred where found (Colorado640, gate640, Crazyrace528, CTM/drone1000, IGN1300). No local enlargement, crop, recompression, watermark removal or reconstruction.",
+    "fixedGeolocation": {
+      "covered": 6,
+      "total": 14,
+      "gaps": [
+        "Tyrolienne",
+        "Le Morne Pique",
+        "Cabane à glace",
+        "Le Monarque",
+        "Le Petit Piton",
+        "Kazaland",
+        "Entrée d’Aqwaland",
+        "Parking"
+      ],
+      "nonFixedGap": "Sokol Show : site exact de scène non établi ; aucun point au centre du parc."
+    },
+    "attractionAccess": {
+      "reviewed": 7,
+      "structuredRulesProved": 0,
+      "gap": "Pages officielles de chaque attraction, services, guides touristiques et photographies consultés ; aucune restriction exacte fiable retrouvée. Pas de taille ou âge inventé."
+    },
+    "individualDatesAndManufacturers": "Dates individuelles d’ouverture et de fermeture, constructeurs et modèle non établis. Six ensembles aquatiques présents avant arrêt général de 2013 ; tyrolienne encore listée dans guide 2014–2015 sans exploitation prouvée. Aucun jour individuel inventé.",
+    "shortDescriptionExceptions": [
+      {
+        "id": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+        "name": "Black Hole",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "eaa0160c-1740-4885-938c-6de8f26b0214",
+        "name": "Cabane à glace",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "104b94d7-26d5-4a7f-9634-224e1552fd50",
+        "name": "Colorado",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "d8901acf-2972-40a9-8276-0154d6c01611",
+        "name": "Crazy race",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "eb0c3b86-0df2-4fa4-a0f5-d35d10e4b5ad",
+        "name": "Entrée d’Aqwaland",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "d6555c00-cceb-498e-bd8e-4d0cadc971b9",
+        "name": "Kazaland",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "feb90bbb-a75a-4ea5-8fbc-3fea2f99d18f",
+        "name": "Le Monarque",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "f5458282-2d9d-45bd-8560-d1a8a08d6b20",
+        "name": "Le Morne Pique",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "3dbdd29c-aa87-4e55-b891-8115f3a854ff",
+        "name": "Le Petit Piton",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "ac09276e-e3ab-4977-b188-8026613653fa",
+        "name": "Mini Parc",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "509772c1-defd-4c93-9442-2d40841cb402",
+        "name": "Parking",
+        "reason": "Parking attesté par un témoignage de randonnée daté, aucune capacité, limite ou offre tarifaire prouvée après recherche. Description brève strictement limitée à cette fonction historique."
+      },
+      {
+        "id": "61ad1e7a-4114-42a4-8df3-38fba4945da4",
+        "name": "Piscine à vagues",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "407efabd-3619-4d9f-9f18-53e8bfcb73ae",
+        "name": "Sokol Show",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "5e988026-9b9f-4e97-8833-876f7a0eaa3e",
+        "name": "Super Slalom",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "8b5da5c1-a544-4a3b-85eb-98413e69857f",
+        "name": "Tyrolienne",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      }
+    ],
+    "historyPhotoContext": {
+      "mapping": {
+        "aqwaland-opening-2004": "05-aerial",
+        "aqwaland-domaine-pitons-2012": "05-panorama",
+        "aqwaland-closure-2013": "05-drone-2022",
+        "aqwaland-ctm-acquisition-2017": "05-ign-site",
+        "aqwaland-project-call-2023": "05-ctm-garden",
+        "aqwaland-sale-decision-2024": "05-drone-2022"
+      },
+      "eventPhotograph": "2023 : photographie CTM effectivement diffusée avec appel à projets.",
+      "contextualFallbacks": {
+        "opening-2004": "Vue générale officielle des années d’activité, date exacte de prise de vue inconnue, jamais présentée comme inauguration.",
+        "domaine-pitons-2012": "Panorama officiel des bassins dans le domaine, contexte du site, pas une cérémonie ou une vue inventée de la tyrolienne.",
+        "closure-2013": "Vue Jérémy Thomin 2022, explicitement légendée neuf ans après la dernière saison, illustre suites matérielles sans dater le cliché 2013.",
+        "ctm-acquisition-2017": "Emprise IGN du site acquis, date de photographie inconnue et aucun acte de signature illustré.",
+        "sale-decision-2024": "Photo du terrain abandonné 2022, contexte physique du bien mis en vente, pas séance plénière."
+      },
+      "research": "Actual event photos searched in primary/archive/operator, government and contemporary regional press before choosing exact-site context; no suitable actual-event photograph established for these five facts."
+    },
+    "currentHoursAndPricing": {
+      "assessedAtUtc": "2026-11-01T18:09:28.980476+00:00",
+      "status": "ClosedDefinitively",
+      "lastOperatingSeason": 2013,
+      "openingHours": {
+        "applicable": false,
+        "reason": "Parc fermé définitivement après la saison achevée le 1er septembre 2013. Aucun calendrier futur officiel ; ne pas recopier en horaires actuels les archives 2012–2013.",
+        "coveredFutureDays": 0,
+        "uncoveredPublishedDays": 0,
+        "overlaps": 0
+      },
+      "pricing": {
+        "applicable": false,
+        "reason": "Aucune offre actuelle vendable pour ce parc fermé. Les tarifs historiques trouvés ne sont pas des offres actives et ne doivent pas être présentés comme tels.",
+        "activeOffers": 0
+      },
+      "namedEvents": {
+        "currentApplicable": false,
+        "historicalInventory": "Sokol Show attesté en 2012 ; animations ponctuelles 2013 dans article, aucune séance actuelle inventée."
+      }
+    }
+  },
+  "roundtrip": {
+    "fields": 1482,
+    "unexplainedDifferences": 0,
+    "subsequentCorrectionsVerified": 19,
+    "identityCorrection": "Eleven local item IDs corrected from original creation Apply; sixteen private image owners repaired, then nine current-image flags restored. No public attachment error, no reimport/deletion. All owners independently verified in fresh export against creation IDs and reviewed photo manifest.",
+    "historyIdContract": "Export omits event IDs by contract; actual Apply event IDs retained and used to test public article route."
+  },
+  "historyRepair": {
+    "operationId": "4f5600b6-2b97-4a28-bf82-87cd7c6bcdfb",
+    "appliedAtUtc": "2026-11-02T08:34:04.9151838Z",
+    "factsRestored": 6,
+    "publishedFacts": 6,
+    "sourcedFacts": 6,
+    "majorFacts": 5,
+    "blockingIssues": 0,
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": true,
+      "hasCompleteSourceCoverage": true,
+      "hasMajorMilestone": true,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 6,
+      "sourcedFactCount": 6,
+      "majorFactCount": 5,
+      "indexableKeyYears": []
+    }
+  },
+  "corpus": {
+    "fields": 952,
+    "languages": 8,
+    "encodingIssues": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "crossCorpusSequenceGroups": 0,
+    "personalReviewComplete": true
+  },
+  "publicChecks": {
+    "mobilePages": 22,
+    "desktopPages": 2,
+    "languages": 8,
+    "httpFailures": 0,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "technicalValueLeaks": 0,
+    "historyLinkVisibleInAllEightLanguages": true,
+    "frenchHistoryLinkActuallyClicked": true,
+    "hasPublicHistory": true,
+    "publicTimelineItems": 6,
+    "screenshotsPersonallyInspected": [
+      "park-fr-viewport.png",
+      "article-aqwaland-closure-2013-fr-viewport.png",
+      "desktop-park.png",
+      "desktop-article.png"
+    ],
+    "transientCacheObservation": "French and Polish normal pages initially retained hasPublicHistory false while anonymous API was true. Normal routes rechecked after cache refresh: true in both served summaries, visible links confirmed in all eight languages and French link clicked. No cache-busting query, admin session or improvised purge. Exact cause/timing of refresh not asserted."
+  },
+  "idempotence": {
+    "operationId": "27f139bd-daa4-4ed4-a4a6-0d2c6af464c4",
+    "created": 0,
+    "updated": 0,
+    "deleted": 0,
+    "unchanged": 47,
+    "warnings": 0,
+    "errors": 0,
+    "applyAttempted": false
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "f2bb83e561e246e9a40812368a6b6eb2",
+    "externalUrl": "https://www.facebook.com/1285475681307050/posts/122125703175424431",
+    "publishedAtUtc": null,
+    "checkedAtUtc": "2026-11-02T08:49:14.256801+00:00",
+    "source": "Official ResolveFacebookPublication confirms automatic announcement already Published. No duplicate PublishFacebook. Exact post time not returned by this contract.",
+    "defaultBilingualMessagePreserved": true
+  },
+  "authorization": "Site and Facebook explicitly authorized for the France campaign; no lower-score completion exception inferred.",
+  "proofSha256": {
+    "09-content-audit.json": "6d383ad0d294d43771fe96d81837a515331c6cbb5569e55dc913ede60c77ccc1",
+    "09-source-accessibility.json": "a77921f3e83e03a1c37681919eef9a4d2ca2962de2d4433a81dbfffbe1648851",
+    "09-export-roundtrip.json": "14391083c90c38fbfe179b52cee27ee69f33bc890739df3886d06cc175185a5f",
+    "09-publication-export-check.json": "979cbfd6c0842f5e989d55086a99c1cc8242bf4321f91b3a530919206a2c1596",
+    "09-editorial-corrections-apply.receipt.json": "2e319e2448c66dcaa8af8bffda5751463e04fc3ff61d043163d753db77fb0f06",
+    "05-media-owner-repair-apply.receipt.json": "3350d5a9a4564356081ae628b9fe15783a92cff300d11e13d30ed6efed1f8836",
+    "05-media-current-repair-apply.receipt.json": "6714ad53d40a55c7e23d85ea4f8c78c20e2dcb84adcdd8ce7f2f57803763f89c",
+    "09-publish-images-apply.receipt.json": "4cc4c304b0c314690f24454d404f836039bde18360cb458ebbb11f1dd8d0627b",
+    "09-publish-dependent-content-apply.receipt.json": "25ca48920ede75772bb6d7c99d277a22ce6ffcf06a8efd347703866e54cd01bc",
+    "09-publish-park-apply.receipt.json": "f19c482f05bceb5b4dde30a282d1948df5842eb6e1a39f5d096c0498129f8206",
+    "10-history-repair-reconciliation.json": "180ff105843bc1fbb9dfa45dbb80edb948db5af50e2a62ccc951829be61ab242",
+    "10-history-canonical-repair-apply.receipt.json": "2d1b2abc526618a7b4f2d68f6635909e8f84471f2f25623b2fc718c941791a90",
+    "10-history-diagnostics-after-repair.json": "68126c4cb37c94fdb2e98383288878115564ad358e4c2cab6e9aef3ffca307f8",
+    "10-park-prose-refinement-apply.receipt.json": "a93317f8de833a580c80ac56a6f664f87936ddac9611deec437ef70a63caff67",
+    "10-final-actual-completeness.json": "a9cad50968c9c1d311eb6fc6395e12fc596e0fce884c81096bddb0f4718866f3",
+    "10-final-idempotence.preview.json": "d1e940d5edb01c23f78aba1016f4c81346b9397e0c550dc55392849657cb5b09",
+    "10-search-publication.json": "422cfc36e14a595da291eb62c67b874572eb421240d4d2ee8116a9e0c25bf628",
+    "10-facebook-draft.json": "0e898d67b65fc8f027962e1685539f78b572dea4f093f7e4402ad2d6d3d02f63",
+    "public-verification/api-report.json": "5237cfd106a74f98e99fbe83ea340fffe5a382ab59745c5f90f2230a178095fb",
+    "public-verification/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "36b62e616185445eb6765efb13deb1298a0ca57e8c75e13f5ba680d3e9f52255",
+    "public-verification/history-links-eight-languages.json": "801d83b9ed30f715f6ea928e9a3c2bdf72b146328a4f3e06250b13d25fd17bed",
+    "public-verification/desktop-pages-report.json": "1f5f4a9cd0d93da51650e130f7dc8126e027786197471d99922704fb90fea4b8",
+    "public-verification/history-link-cache-recheck.json": "ecf189ca422417ecded9a0bbb796f289ebf2492ce9b65dff497adf6502342aa6"
+  },
+  "batchCompletedCount": 6,
+  "nationalRemaining": {
+    "principal": 111,
+    "historical": 23,
+    "standalone": 0,
+    "total": 134
+  },
+  "prCreated": false,
+  "versionChanged": false
+}
