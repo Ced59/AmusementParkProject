@@ -1,0 +1,44 @@
+{
+  "reviewedAt": "2026-11-02",
+  "entryId": "CH-candidate-standalone-d17fc77a234de1",
+  "siteId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+  "supersedesAudit": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-20261102/audit.json",
+  "operatorSource": "https://www.oeschinensee.ch/rodelbahn/",
+  "correction": "L’exploitant vend les billets de luge uniquement sur place, à la machine près de la piste. Le lien de la page informative de l’exploitant ne doit donc pas être proposé comme lien d’achat.",
+  "preview": {
+    "canApply": true,
+    "warnings": 0,
+    "errors": 0,
+    "changedField": "pricing.purchaseUrl",
+    "oldValue": "https://www.oeschinensee.ch/rodelbahn/",
+    "newValue": null
+  },
+  "apply": {
+    "operationId": "df8dbc31-6b38-4c68-a0f2-f4e48d425795",
+    "appliedAtUtc": "2026-11-02T14:53:16.1871379Z",
+    "updated": 1,
+    "warnings": 0,
+    "errors": 0
+  },
+  "exportVerification": {
+    "purchaseUrl": null,
+    "admissionOffers": 2,
+    "photographs": 2
+  },
+  "completeness": {
+    "score": 91,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": []
+  },
+  "publicVerification": {
+    "url": "https://amusement-parks.fun/fr/attraction/56f47184-c077-4d2a-b202-cdb09ee59dda/sommerrodelbahn-oeschinensee",
+    "httpStatus": 200,
+    "incorrectPurchaseCallToActionPresent": false
+  },
+  "facebookPublication": {
+    "status": "Published",
+    "url": "https://www.facebook.com/1285475681307050/posts/122125744269424431",
+    "republished": false
+  },
+  "lastDataIntegrationAt": "2026-11-02T14:53:16.187Z"
+}
