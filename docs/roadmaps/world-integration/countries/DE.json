@@ -20397,7 +20397,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Créer et intégrer une fiche Park pour le Family Fun Park après dernier contrôle de doublon. Intégrer les deux pistes de luge comme parkItems et le parc des singes comme composante du lieu, avec photos et calendrier officiel ; conserver les deux références Wiegand liées au même dossier.",
+      "nextAction": "Créer et intégrer une fiche Park pour le Family Fun Park après dernier contrôle de doublon. Intégrer les deux pistes de luge comme parkItems et le parc des singes comme composante du lieu, avec photos et calendrier officiel ; conserver les deux références Wiegand de la ligne DE-candidate-standalone-99b3786c77a2e5 liée à ce dossier.",
       "sources": [
         {
           "label": "Freizeitpark App",
@@ -20420,7 +20420,10 @@
         "reviewedAt": "2026-11-02",
         "attractions": [],
         "rationale": "L’exploitant présente un Family Fun Park réunissant deux pistes de luge et l’Affenwald. Les tickets de luge sont individuels, mais la piste est une composante de ce lieu structuré ; créer une fiche Park plutôt qu’une standalone isolée."
-      }
+      },
+      "possibleBacklogEntries": [
+        "DE-candidate-standalone-99b3786c77a2e5"
+      ]
     },
     {
       "entryId": "DE-candidate-2ae1371b43102d",
