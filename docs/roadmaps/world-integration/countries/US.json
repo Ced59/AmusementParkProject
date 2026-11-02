@@ -73571,36 +73571,101 @@
     {
       "entryId": "US-candidate-standalone-3e5f903c59f53a",
       "name": "ZipRider — Icy Strait Point",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": null,
-      "siteId": null,
+      "locality": "108 Cannery Road, Hoonah, Alaska 99829",
+      "siteId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T13:26:27.797Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Excursion ZipRider active selon l’exploitant et le fabricant le 2 novembre 2026.",
+      "identityConfidence": "Attraction à réservation distincte sur le site touristique Icy Strait Point ; aucune fiche Park ou Standalone homonyme après recherches officielles Icy Strait, Hoonah et ZipRider ; photographie exacte et réutilisable vérifiée.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "World’s Largest ZipRider",
+        "Icy Strait ZipRider",
+        "ZipRider — Icy Strait Point"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T13:28:45.783Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a8093fbf-e328-48fb-b08f-fc71d409e73a",
+          "appliedAt": "2026-11-02T13:23:06.367Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
+          "evidence": "PARK_DATA_EDITOR:apply:a8093fbf-e328-48fb-b08f-fc71d409e73a",
+          "auditEvidence": null,
+          "summary": "Création privée de la fiche, identité, adresse, huit descriptions et statut d’exploitation"
+        },
+        {
+          "eventId": "image-85bc1bb3e7a243db9e4890bea58d9e66",
+          "appliedAt": "2026-11-02T13:23:35.947Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
+          "evidence": "PARK_DATA_EDITOR:image:85bc1bb3e7a243db9e4890bea58d9e66",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la tyrolienne importée avec auteur, licence, source et huit textes alternatifs/légendes"
+        },
+        {
+          "eventId": "apply-754f062d-78bd-46e4-acac-afa59013335d",
+          "appliedAt": "2026-11-02T13:25:46.942Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
+          "evidence": "PARK_DATA_EDITOR:apply:754f062d-78bd-46e4-acac-afa59013335d",
+          "auditEvidence": null,
+          "summary": "Réécriture des huit descriptions après contrôle du langage éditorial"
+        },
+        {
+          "eventId": "apply-ef21fd08-8e29-4e3c-bc03-c2346594f29b",
+          "appliedAt": "2026-11-02T13:28:45.783Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
+          "evidence": "PARK_DATA_EDITOR:apply:ef21fd08-8e29-4e3c-bc03-c2346594f29b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-icy-strait-20261102/audit.json",
+          "summary": "Correction finale de la description française après publication"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses preuves. Recontrôler les conditions de réservation et les restrictions avant une saison suivante ; rechercher une photographie récente sous licence réutilisable. Ne pas republier Facebook pour une simple révision.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/icy-strait-point/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — excursion et conditions de participation",
+          "url": "https://icystraitpoint.com/excursions/worlds-largest-ziprider/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — adresse et réservation",
+          "url": "https://icystraitpoint.com/contact/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — Jonathan Schilling, 12 août 2009, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Zip_line_at_Icy_Strait_Point,_Alaska_2009.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique — contrôle huit langues et image",
+          "url": "https://amusement-parks.fun/fr/attraction/0bfef2c1-04a3-4366-afa7-8649cd050b28/icy-strait-point-ziprider",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "ZipRider — Icy Strait Point",
@@ -73610,7 +73675,7 @@
             "sourceVenueName": "Icy Strait Point"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Excursion ZipRider réservée séparément, avec billetterie par compagnie de croisière ou demande directe à Icy Strait Point ; le site d’accueil est une destination touristique, pas un parc de loisirs nécessitant une admission générale."
       }
     },
     {
