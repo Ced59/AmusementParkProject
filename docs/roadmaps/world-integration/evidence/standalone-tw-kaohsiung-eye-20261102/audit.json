@@ -1,0 +1,107 @@
+{
+  "work": "Kaohsiung Eye is the Dream Mall rooftop Ferris wheel, separately ticketed according to a current operator promotion. Kaohsiung City identifies the wheel by this name; the mall calls it Dream Ferris Wheel. The mall confirms its rooftop location and address. Six official editor searches for Kaohsiung Eye, Dream Ferris Wheel, 高雄之眼 and Dream Mall returned no matching Park or Standalone record. The shopping mall centroid is an approximate locator, not a surveyed wheel coordinate. The operator has a wheel-specific promotion continuing in 2026 but gives no unambiguous current regular fare or wheel-specific weekly schedule on the checked pages; neither was invented from the mall footer. Two exact Commons photographs, taken in 2024 and 2007, were visually inspected. The 2007 image is clearly labelled historical. Both were imported and published with rights, credits, distinct captions and alt text in eight languages. All eight locale pages and both public image binaries returned HTTP 200 before Facebook publication.",
+  "qualification": "Separately ticketed rooftop Ferris wheel in a shopping centre, not a generic park entrance or an attraction at E-DA Theme Park.",
+  "sources": {
+    "mall": "https://www.dream-mall.com.tw/about/info",
+    "promotion": "https://www.dream-mall.com.tw/news/p/sing",
+    "city": "https://khh.travel/en/travel/lightrail-artery/",
+    "mallFloor": "https://www.dream-mall.com.tw/brand/Floor",
+    "osm": "https://www.openstreetmap.org/search?query=Dream%20Mall%20Kaohsiung",
+    "photo2024": "https://commons.wikimedia.org/wiki/File:Dream_Ferris_Wheel_20240117.jpg",
+    "photo2007": "https://commons.wikimedia.org/wiki/File:%22dream_wheel%22_in_Dream_mall_(%E5%A4%A2%E6%99%82%E4%BB%A3%E8%B3%BC%E7%89%A9%E4%B8%AD%E5%BF%83),_Kaohsiung,_Taiwan.jpg"
+  },
+  "duplicateSearches": {
+    "parkKaohsiungEye": 0,
+    "parkDreamMall": 0,
+    "parkChineseName": 0,
+    "standaloneKaohsiungEye": 0,
+    "standaloneDreamFerrisWheel": 0,
+    "standaloneChineseName": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "53862efb-7a86-471b-b029-a146a402327e",
+      "appliedAtUtc": "2026-11-02T12:27:46.905Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "imageId": "e5b0fdd5eadf4e629dfa8fc0fab0db40",
+      "importFinishedAtUtc": "2026-11-02T12:28:10.695Z"
+    },
+    {
+      "imageId": "508b81cc300547689b1a8cdb4ab031ca",
+      "importFinishedAtUtc": "2026-11-02T12:28:25.671Z"
+    }
+  ],
+  "commercialData": {
+    "wheelTicketSource": "https://www.dream-mall.com.tw/news/p/sing",
+    "structuredOfferCount": 0,
+    "hoursDecision": "Shopping-mall footer hours are not verified wheel operating hours.",
+    "priceDecision": "Operator promotions and venue fare notices do not establish a stable regular fare."
+  },
+  "photographs": [
+    {
+      "imageId": "e5b0fdd5eadf4e629dfa8fc0fab0db40",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Dream_Ferris_Wheel_20240117.jpg",
+      "author": "阿道",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2024-01-17",
+      "ownerId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
+      "published": true,
+      "siteBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "508b81cc300547689b1a8cdb4ab031ca",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:%22dream_wheel%22_in_Dream_mall_(%E5%A4%A2%E6%99%82%E4%BB%A3%E8%B3%BC%E7%89%A9%E4%B8%AD%E5%BF%83),_Kaohsiung,_Taiwan.jpg",
+      "author": "H.T. Yu",
+      "license": "CC BY-SA 2.0",
+      "photographedAt": "2007-06-24",
+      "ownerId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
+      "published": true,
+      "siteBinaryHttpStatus": 200,
+      "historicalPhoto": true
+    }
+  ],
+  "audit": {
+    "score": 69,
+    "dataQualityLevel": "Partial",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 2
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/859a182e-f188-4e92-839a-b22e24a8a0e7/kaohsiung-eye",
+    "sitePublishedAtUtc": "2026-11-02T12:29:35.737Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:1fe78079-c2f8-4ec1-bd4b-e90457769b3b",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "9c0a37c5c5f44ae2b4180f35a8a16b24",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125728261424431",
+    "facebookPublishedAtUtc": "2026-11-02T12:30:43.147Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T12:28:25.671Z",
+  "remainingGaps": [
+    "Verify a wheel-specific daily schedule and regular fare on a current operator notice before structuring them.",
+    "Replace the mall centroid with exact wheel coordinates if the operator publishes them."
+  ]
+}
