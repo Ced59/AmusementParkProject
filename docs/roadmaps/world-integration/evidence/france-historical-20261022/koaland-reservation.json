@@ -1,0 +1,66 @@
+{
+  "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+  "parkId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-02T21:48:43.380778+00:00",
+  "coordination": {
+    "checkedAtUtc": "2026-11-02 21:47:38 UTC",
+    "checks": [
+      {
+        "ref": "master",
+        "sha": "95cb37ba9b1fea6de172fcc041f26543a0431ce5",
+        "entryCount": 496,
+        "matches": [
+          {
+            "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+            "name": "Koaland",
+            "assignedTo": null,
+            "siteId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+            "lastDataIntegrationAt": null,
+            "events": 0,
+            "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement."
+          }
+        ]
+      },
+      {
+        "ref": "docs/europe-integration-backlog",
+        "sha": "5bde75508d1e151f375f2a0a40d1368ef5629476",
+        "entryCount": 468,
+        "matches": [
+          {
+            "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+            "name": "Koaland",
+            "assignedTo": null,
+            "siteId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+            "lastDataIntegrationAt": null,
+            "events": 0,
+            "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement."
+          }
+        ]
+      },
+      {
+        "ref": "docs/france-world-reconciliation-20261022",
+        "sha": "1d9207c2d770df1aba03d32260ec3b6a82e7ee19",
+        "entryCount": 468,
+        "matches": [
+          {
+            "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+            "name": "Koaland",
+            "assignedTo": null,
+            "siteId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+            "lastDataIntegrationAt": null,
+            "events": 0,
+            "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement."
+          }
+        ]
+      }
+    ]
+  },
+  "observedPresence": "Published",
+  "observedItemCount": 19,
+  "observedPublicItemCount": 17,
+  "priorIntegrationDate": null,
+  "dateRule": "La mise à jour des horaires du 3 octobre ne prouve pas la date d’un Apply ; la date historique inconnue reste null.",
+  "next": "Rapprocher l’inventaire existant du parc réaménagé en 2026, contrôler calendrier, tarifs, histoire et médias, puis audit complet et Facebook sans doublon.",
+  "source": "SearchParks Koaland et SearchStandaloneAttractions Koaland, client officiel."
+}
