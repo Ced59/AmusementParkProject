@@ -1,0 +1,119 @@
+{
+  "work": "Cresta summer toboggan run at Llandudno Snowsports Centre was requalified from Wiegand equipment lead to an independently ticketed standalone attraction. Current operator page confirms 575m, two rides for GBP 13.50, no booking, age rules and dry-weather operation. Older secondary sources quote different lengths; the current operator value was used. Official editor searches for Llandudno, Cresta Toboggan and Snowsports Centre found no duplicate at the same site. Two exact historical Geograph/Commons photos were visually checked with authors, CC BY-SA 2.0 licenses and dates. Their eight-language alt texts and captions are distinct. The first image upload carried the wrong Commons URL in its initial import call; UpdatePhotoMetadata corrected the source, author, date, caption and credit before the image was made public. Exported final metadata and public images match the actual files. Eight language URLs and two image binaries returned HTTP 200 before Facebook publication.",
+  "qualification": "Separate toboggan ticket at a snowsports centre; no amusement-park gate admission.",
+  "sources": {
+    "operator": "https://www.jnlllandudno.co.uk/tobogganing-sno-tubing-in-llandudno/",
+    "hoursAndAddress": "https://www.jnlllandudno.co.uk/opening-times/",
+    "photo2006": "https://commons.wikimedia.org/wiki/File:Llandudno_ski_centre_-_geograph.org.uk_-_479513.jpg",
+    "photo2011": "https://commons.wikimedia.org/wiki/File:Part_of_the_ski_slope_and_toboggan_run_above_Happy_Valley_-_geograph.org.uk_-_2277676.jpg"
+  },
+  "duplicateSearches": {
+    "parkLlandudno": 0,
+    "standaloneLlandudno": 0,
+    "parkCrestaToboggan": 0,
+    "standaloneCrestaToboggan": 0,
+    "parkSnowsportsCentreSameLocation": 0,
+    "standaloneSnowsportsCentreSameLocation": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "597e246f-d502-4915-b8e3-b083e255cb78",
+      "appliedAtUtc": "2026-11-02T12:50:03.2786339Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "1ba6c62a-17e1-421f-bdc9-fa05b0cf924d",
+      "appliedAtUtc": "2026-11-02T12:50:34.100526Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "fde10798-cb57-451b-bda2-34c681ed3cce",
+      "appliedAtUtc": "2026-11-02T12:54:31.716038Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "6670e2df75a94e95a9b9e2ee402c46e7",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Llandudno_ski_centre_-_geograph.org.uk_-_479513.jpg",
+      "author": "John Breakwell",
+      "license": "CC BY-SA 2.0",
+      "photographedYear": 2006,
+      "published": true,
+      "isCurrent": false,
+      "siteBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "7842239cf7034d81b90b2d60b8ca957e",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Part_of_the_ski_slope_and_toboggan_run_above_Happy_Valley_-_geograph.org.uk_-_2277676.jpg",
+      "author": "Jeremy Bolwell",
+      "license": "CC BY-SA 2.0",
+      "photographedYear": 2011,
+      "published": true,
+      "isCurrent": true,
+      "siteBinaryHttpStatus": 200
+    }
+  ],
+  "commercialData": {
+    "source": "https://www.jnlllandudno.co.uk/tobogganing-sno-tubing-in-llandudno/",
+    "twoRidesGBP": 13.5,
+    "structuredOfferCount": 1,
+    "hoursDecision": "No repeating daily schedule entered: the operator calendar changes and the run only works in dry weather."
+  },
+  "audit": {
+    "score": 81,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 2
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/5bea846d-6151-426a-bb62-d471326f8b36/cresta-toboggan-run-llandudno",
+    "sitePublishedAtUtc": "2026-11-02T12:54:59.8042807Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:0671f857-08df-4d09-8c2b-4631ca0be7a7",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "a05824fe3cb842ac9e018e9cc6c4f654",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125731195424431",
+    "facebookPublishedAtUtc": "2026-11-02T12:56:20.9107152Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T12:54:31.716Z",
+  "remainingGaps": [
+    "Recheck price and weather-dependent operation on the operator site.",
+    "Images show the same exact run in 2006 and 2011; seek a newer licensed image when one becomes available."
+  ]
+}
