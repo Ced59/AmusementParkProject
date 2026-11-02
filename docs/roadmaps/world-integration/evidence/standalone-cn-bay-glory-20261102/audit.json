@@ -1,0 +1,147 @@
+{
+  "work": "Bay Glory is a separately ticketed 128-metre observation wheel with 28 cabins within the mixed-use OH Bay waterfront of Shenzhen. The coastal park and shops are not a structured amusement park. Park and Standalone English, Chinese, and Shenzhen searches in the official editor found no same-site entry. Created hidden with eight authored descriptions, sourced 2021 opening and October 2019 assembly milestones, Ctrip weekly wheel-specific hours, and three exact CC BY-SA 4.0 Commons photographs. Corrected a public-text audit blocker, then published the site and Facebook post.",
+  "qualification": "Fixed wheel with its own ticket reservation inside an urban waterfront complex; no parent amusement park with parkItems.",
+  "sourceChecks": {
+    "parkEnglish": 0,
+    "parkOhBay": 0,
+    "parkChinese": 0,
+    "standaloneEnglish": 0,
+    "standaloneChinese": 0,
+    "standaloneCity": 0,
+    "otherShenzhenParks": "Happy Valley Shenzhen is a separate venue"
+  },
+  "sources": {
+    "municipal": "https://www.sz.gov.cn/en_szgov/news/infocus/SZCitywalk/Explore/Attractions/content/post_11857080.html",
+    "opening": "https://www.sznews.com/news/content/2021-04/19/content_24142193.htm",
+    "hours": "https://you.ctrip.com/sight/shenzhen26/112647075.html",
+    "coordinates": "https://www.wikidata.org/wiki/Q105888901",
+    "pricingResearch": "https://m.bendibao.com/show977707.html"
+  },
+  "commercialData": {
+    "openingHours": "Ctrip lists Monday/Wednesday/Thursday 10:30–22:00, Tuesday 14:00–22:00, Friday–Sunday 10:30–22:30, and last-Tuesday monthly maintenance opening at 18:00. Checked 2026-11-02; weather and maintenance may change service. Weekly rules do not imply a future dated calendar.",
+    "pricing": "2026 secondary sources cite standard CNY 150 and holiday CNY 180 and a discounted product; the operator shop page found for the advance product says it is off sale and could not be independently opened (HTTP 418). No current official ticket price was therefore published.",
+    "website": "No stable operator-owned public wheel URL could be verified; websiteUrl remains empty."
+  },
+  "dataReceipts": [
+    {
+      "operationId": "07298569-fd9c-4506-b2a8-aab4997f3cd3",
+      "appliedAtUtc": "2026-11-02T08:41:33.588Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "1b83d05e-e550-46b1-8530-8062508f1eda",
+      "appliedAtUtc": "2026-11-02T08:45:12.804Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "0dcb03c7-1963-4a2a-8ee0-f52c4e17a1b0",
+      "appliedAtUtc": "2026-11-02T08:45:48.478Z",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "237344d8-1ae0-4863-bc34-35afd4ca3e8f",
+      "appliedAtUtc": "2026-11-02T08:48:41.975Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "aae121aa8f804eab87473c2a5286c235",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Bay_Glory_2022.jpg",
+      "author": "Iswzo",
+      "license": "CC BY-SA 4.0",
+      "ownerId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-02T08:46:54.751Z"
+    },
+    {
+      "imageId": "78b605edc3d744de861dbeb67171b296",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Bay_Glory_Shenzhen_(side)_2022-01-09.jpg",
+      "author": "Edo-biscuit",
+      "license": "CC BY-SA 4.0",
+      "ownerId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-02T08:47:07.566Z"
+    },
+    {
+      "imageId": "1b3e95929f0a45b789ac7f4ef8aaf813",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Entrance_of_Bay_Glory_Shenzhen_2022-01-09.jpg",
+      "author": "Edo-biscuit",
+      "license": "CC BY-SA 4.0",
+      "ownerId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+      "published": true,
+      "isCurrent": false,
+      "publishedAtUtc": "2026-11-02T08:47:19.240Z"
+    }
+  ],
+  "audit": {
+    "score": 83,
+    "earnedPoints": 58,
+    "applicableMaxPoints": 70,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 3,
+    "visibleHistoryEvents": 2,
+    "knownScoringGaps": "No current operator-verifiable ticket grid, no stable standalone operator website URL and no sourced access condition. None was fabricated."
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/471f2f0a-3175-487c-bd16-12d7b7fef942/bay-glory",
+    "sitePublishedAtUtc": "2026-11-02T08:49:41.299Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:639a432c-671e-499b-85fd-b2dba8b6b94a",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "04fe59ad2b96482dbd8032fa6c3de5ba",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125704999424431",
+    "facebookPublishedAtUtc": "2026-11-02T08:50:56.287Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T08:48:41.975Z",
+  "remainingGaps": [
+    "Confirm a currently sold operator ticket grid and add prices only after checking an official current product.",
+    "Find a stable public operator URL if one exists.",
+    "Recheck hours after maintenance or weather-related changes."
+  ]
+}
