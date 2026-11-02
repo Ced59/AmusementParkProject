@@ -1783,29 +1783,84 @@
     },
     {
       "entryId": "DE-candidate-standalone-2d246c13195b0a",
-      "name": "Alpine Coaster Wiegand — Söllereck",
-      "entityKind": "ToQualify",
+      "name": "Allgäu-Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
-      "locality": null,
-      "siteId": null,
+      "locality": "Kornau, Oberstdorf, Bavaria",
+      "siteId": "022e44da-a85a-41e1-9124-44b6e436fdc5",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T10:24:50.395Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation quotidienne jusqu’au 8 novembre 2026 selon l’exploitant ; début de la saison d’hiver 2026/27 encore non fixé.",
+      "identityConfidence": "Exploitant et Wiegand concordent sur l’identité et la piste de Söllereck ; billets propres à la luge, aucun homonyme Park ou Standalone dans l’éditeur officiel.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Söllereck"
+        "Söllereck",
+        "Alpine Coaster Wiegand — Söllereck",
+        "Allgäu Coaster Söllereck",
+        "Söllereck-Rodel",
+        "Sommerrodelbahn Söllereck"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T10:21:41.915Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-74dd9ff9-ed51-4673-b67c-acffdaeb6ac8",
+          "appliedAt": "2026-11-02T10:17:40.620Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "022e44da-a85a-41e1-9124-44b6e436fdc5",
+          "evidence": "PARK_DATA_EDITOR:apply:74dd9ff9-ed51-4673-b67c-acffdaeb6ac8",
+          "auditEvidence": null,
+          "summary": "Création masquée, identification, données techniques et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-8b0abfb781ef4196a687a6dc16461423",
+          "appliedAt": "2026-11-02T10:18:50.331Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "022e44da-a85a-41e1-9124-44b6e436fdc5",
+          "evidence": "PARK_DATA_EDITOR:image:8b0abfb781ef4196a687a6dc16461423",
+          "auditEvidence": null,
+          "summary": "Photo exacte historique de la piste importée avec licence, date et textes en huit langues"
+        },
+        {
+          "eventId": "apply-a68fd76b-39ef-4bfd-ba8a-a1f4eb3821ec",
+          "appliedAt": "2026-11-02T10:20:37.185Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "022e44da-a85a-41e1-9124-44b6e436fdc5",
+          "evidence": "PARK_DATA_EDITOR:apply:a68fd76b-39ef-4bfd-ba8a-a1f4eb3821ec",
+          "auditEvidence": null,
+          "summary": "Horaires officiels datés du 25 octobre au 8 novembre 2026"
+        },
+        {
+          "eventId": "apply-36db527b-d555-4718-b065-9936b3fc519b",
+          "appliedAt": "2026-11-02T10:21:02.747Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "022e44da-a85a-41e1-9124-44b6e436fdc5",
+          "evidence": "PARK_DATA_EDITOR:apply:36db527b-d555-4718-b065-9936b3fc519b",
+          "auditEvidence": null,
+          "summary": "Six offres tarifaires officielles datées, dont carnets de plusieurs trajets"
+        },
+        {
+          "eventId": "apply-074b819e-a260-48a0-80a6-cbed3f2ca5f7",
+          "appliedAt": "2026-11-02T10:21:41.915Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "022e44da-a85a-41e1-9124-44b6e436fdc5",
+          "evidence": "PARK_DATA_EDITOR:apply:074b819e-a260-48a0-80a6-cbed3f2ca5f7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-allgaeu-coaster-20261102/audit.json",
+          "summary": "Âge minimal et accompagnement des enfants sourcés auprès de l’exploitant"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Après le 8 novembre 2026, vérifier le statut et la reprise d’hiver 2026/27, actualiser horaires et tarifs datés, chercher une photo plus récente. Ne pas répéter la publication Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -1816,22 +1871,66 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.das-hoechste.de/sommer/erlebnis/allgaeu-coaster/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Oberstdorf Kleinwalsertal Bergbahnen — horaires, tarifs, âge et tracé",
+          "url": "https://www.ok-bergbahnen.com/erlebnis-spass/erlebniswelten/allgaeu-coaster/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wiegand — identité du coaster",
+          "url": "https://www.wiegandslide.com/produkte/alpine-coaster/referenzen.html?wgrls=316",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Oberstdorf Tourisme — adresse",
+          "url": "https://www.oberstdorf.de/information/tourist-information/oberstdorf-a-z.html?letter=R",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap via Mapcarta — coordonnées",
+          "url": "https://mapcarta.com/N12117439660",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — piste exacte en 2012",
+          "url": "https://commons.wikimedia.org/wiki/File:S%C3%B6llereck_Rodelbahn_-_panoramio.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "Söllereck",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-1010",
+            "name": "Allgäu-Coaster",
+            "source": "Oberstdorf Kleinwalsertal Bergbahnen — billet propre",
+            "url": "https://www.ok-bergbahnen.com/erlebnis-spass/erlebniswelten/allgaeu-coaster/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Söllereck",
-            "referenceId": "location-id-1010"
+            "sourceVenueName": "Söllereck mountain resort / Söllereckbahn",
+            "sourceLifecycleSignal": "Saison d’automne 2026 jusqu’au 8 novembre",
+            "sourceLocality": "Kornau, Oberstdorf",
+            "matchingMethod": "Piste, prix et caisse propres près du téléphérique, accessible sans parc d’attractions structuré."
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Luge alpine à billet propre dans un domaine de montagne, indépendante du téléphérique comme expérience visiteur."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/022e44da-a85a-41e1-9124-44b6e436fdc5/allgau-coaster",
+          "publishedAtUtc": "2026-11-02T10:22:31.865Z",
+          "verifiedAtUtc": "2026-11-02T10:24:50.395Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0896ba6e-59f0-4ff5-91a5-59c7aeaa0f8b"
+        },
+        "facebook": {
+          "id": "e4dafac759784b999ff7ebedd56cbcff",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T10:23:20.553Z",
+          "externalPostId": "1285475681307050_122125713795424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125713795424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:e4dafac759784b999ff7ebedd56cbcff"
+        }
       }
     },
     {

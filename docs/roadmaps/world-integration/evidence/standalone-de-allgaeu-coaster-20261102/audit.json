@@ -1,0 +1,138 @@
+{
+  "work": "Allgäu-Coaster is a separately ticketed Wiegand alpine coaster beside the Söllereckbahn lower station in Kornau, not an amusement park ride. Five official editor searches for Söllereck, Allgäu Coaster and Söllereck-Rodel found no Park or StandaloneAttraction. Created a standalone entity with eight authored descriptions, the operator-confirmed track length, speed and two-seat sleds, date-scoped official autumn hours and six date-scoped official fares, two verified child access conditions, and one exact visually inspected Commons photo. The licensed photo was taken 3 June 2012 and is captioned as a historic view. Eight localized site pages and photo binary verified HTTP 200 before Facebook publication. Summer 2026 season ends 8 November; operator has not fixed winter 2026/27 start date.",
+  "qualification": "Rail coaster with its own single-ride and multi-ride fares at a ski/mountain resort, separately visitable from the cable car.",
+  "sources": {
+    "operator": "https://www.ok-bergbahnen.com/erlebnis-spass/erlebniswelten/allgaeu-coaster/",
+    "manufacturer": "https://www.wiegandslide.com/produkte/alpine-coaster/referenzen.html?wgrls=316",
+    "address": "https://www.oberstdorf.de/information/tourist-information/oberstdorf-a-z.html?letter=R",
+    "map": "https://mapcarta.com/N12117439660",
+    "photo": "https://commons.wikimedia.org/wiki/File:S%C3%B6llereck_Rodelbahn_-_panoramio.jpg"
+  },
+  "duplicateSearches": {
+    "parkSollereck": 0,
+    "parkAllgauCoaster": 0,
+    "standaloneAllgauCoaster": 0,
+    "standaloneSollereck": 0,
+    "standaloneSollereckRodel": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "74dd9ff9-ed51-4673-b67c-acffdaeb6ac8",
+      "appliedAtUtc": "2026-11-02T10:17:40.620Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "a68fd76b-39ef-4bfd-ba8a-a1f4eb3821ec",
+      "appliedAtUtc": "2026-11-02T10:20:37.185Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "36db527b-d555-4718-b065-9936b3fc519b",
+      "appliedAtUtc": "2026-11-02T10:21:02.747Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "074b819e-a260-48a0-80a6-cbed3f2ca5f7",
+      "appliedAtUtc": "2026-11-02T10:21:41.915Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "commercialData": {
+    "currentHours": "25 October–8 November 2026, daily 10:00–17:00 Europe/Berlin",
+    "currentPricesEUR": {
+      "age8Plus": {
+        "single": 7.9,
+        "three": 22.5,
+        "fivePlusSixRides": 39.5
+      },
+      "age3to7": {
+        "single": 6.5,
+        "three": 18.5,
+        "fivePlusSixRides": 32.5
+      }
+    },
+    "winter2026to2027": "Operator lists fares and a season ending 4 April 2027 but no definite start date; update when confirmed."
+  },
+  "photographs": [
+    {
+      "imageId": "8b0abfb781ef4196a687a6dc16461423",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:S%C3%B6llereck_Rodelbahn_-_panoramio.jpg",
+      "author": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "photographedAt": "2012-06-03",
+      "ownerId": "022e44da-a85a-41e1-9124-44b6e436fdc5",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-02T10:19:07.529Z",
+      "historicalContext": "Vue exacte de la piste, ancienne photo de 2012 ; configuration actuelle à vérifier."
+    }
+  ],
+  "audit": {
+    "score": 86,
+    "earnedPoints": 62,
+    "applicableMaxPoints": 72,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 1,
+    "accessConditions": 2,
+    "structuredCurrentOffers": 6,
+    "knownScoringGaps": "Historic 2012 photo is exact but newer licensed imagery is desirable. Exact original opening date and confirmed winter 2026/27 start remain unknown."
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/022e44da-a85a-41e1-9124-44b6e436fdc5/allgau-coaster",
+    "sitePublishedAtUtc": "2026-11-02T10:22:31.865Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:0896ba6e-59f0-4ff5-91a5-59c7aeaa0f8b",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "e4dafac759784b999ff7ebedd56cbcff",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125713795424431",
+    "facebookPublishedAtUtc": "2026-11-02T10:23:20.553Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T10:21:41.915Z",
+  "remainingGaps": [
+    "On 9 November 2026, update the status and remove/replace expired autumn opening hours and fares if appropriate.",
+    "Verify the winter 2026/27 start date and renewed timetable against the operator before claiming current service.",
+    "Seek a newer exact licensed photo of the track and riders.",
+    "Confirm the original opening date from an operator or municipal primary record; do not infer from secondary listings."
+  ]
+}
