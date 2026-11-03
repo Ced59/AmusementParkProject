@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-03T04:33:59.677Z",
+      "lastDataIntegrationAt": "2026-11-03T04:50:38.612Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -18521,9 +18521,49 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-eb70f014fa044a4abfbe3f7850be2f25-2026-11-03T043359.677Z",
           "auditEvidence": null,
           "summary": "Import privé du média historique 01-official-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-565fe8e3-3ae9-4807-b7e8-b839cc303fe8",
+          "appliedAt": "2026-11-03T04:40:43.270Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-565fe8e3-3ae9-4807-b7e8-b839cc303fe8",
+          "auditEvidence": null,
+          "summary": "Zone historique Marineland Lagoon intégrée en privé après vérification du plan officiel et de son ouverture en juillet 2015 ; inventaire et descriptions à poursuivre."
+        },
+        {
+          "eventId": "apply-d2a7b9ae-41e1-4f42-8cc1-2ccb6777f70f",
+          "appliedAt": "2026-11-03T04:43:03.503Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-d2a7b9ae-41e1-4f42-8cc1-2ccb6777f70f",
+          "auditEvidence": null,
+          "summary": "Inventaire privé de 20 lieux historiques : bassins, animaux, tunnel des requins, cinéma, aire Mer profonde, musée et spectacle des rapaces ; 14 positions recoupées. Dates partielles conservées, ours retirés en juin 2021. Descriptions, médias et audit final à poursuivre."
+        },
+        {
+          "eventId": "apply-19b1e85e-9005-4962-9177-9276a80d0bf3",
+          "appliedAt": "2026-11-03T04:46:23.840Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-19b1e85e-9005-4962-9177-9276a80d0bf3",
+          "auditEvidence": null,
+          "summary": "23 lieux ajoutés en privé : 18 restaurants et kiosques historiques, 4 boutiques et hôtel associé; 18 points cartographiques vérifiés. SoBlue Hôtel et Le Central restent en activité selon leur site officiel, distincts du zoo fermé. Descriptions et audit final à poursuivre."
+        },
+        {
+          "eventId": "apply-aa01ffb9-1c61-4b41-ab69-123686234457",
+          "appliedAt": "2026-11-03T04:50:38.612Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-aa01ffb9-1c61-4b41-ab69-123686234457",
+          "auditEvidence": null,
+          "summary": "20 expériences, anciens équipements et services ajoutés en privé, avec neuf points recoupés et six restrictions historiques sourcées. Parkings partagés sans fermeture individuelle inventée. Total 63 lieux; contrôle des alias, géographie et descriptions encore à poursuivre."
         }
       ],
-      "nextAction": "Inventaire historique, géolocalisation, descriptions en huit langues, médias, cartes annuelles, références, histoire et audit final.",
+      "nextAction": "63 lieux intégrés, dont 41 géolocalisés; écrire les descriptions en huit langues, compléter médias, plans, références et histoire, puis audit final. Certaines transitions historiques restent à qualifier. Fiche privée; Facebook non envoyé.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -18556,7 +18596,8 @@
           "accessedAt": "2026-11-03"
         }
       ],
-      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-intake-20261103.json"
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-intake-20261103.json",
+      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-inventory-20261103.json"
     },
     {
       "entryId": "FR-candidate-b985933907dc00",

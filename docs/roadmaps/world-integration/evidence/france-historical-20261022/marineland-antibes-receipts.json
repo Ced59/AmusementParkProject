@@ -47,6 +47,122 @@
       "createdAt": "2026-11-03T04:33:56.185Z",
       "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/images/logos/Marineland_logo_110x60px.png",
       "summary": "Import privé du média historique 01-official-logo, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-565fe8e3-3ae9-4807-b7e8-b839cc303fe8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:40:43.2704915Z",
+      "appliedAt": "2026-11-03T04:40:43.270Z",
+      "receiptFile": "02-lagoon-zone-apply.receipt.json",
+      "receiptSha256": "79ed4c97716094fe4e4369c35b6d4c63728d606f4ad818403fe76997dc8fd02c",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isVisible",
+        "names.de",
+        "names.en",
+        "names.es",
+        "names.fr",
+        "names.it",
+        "names.nl",
+        "names.pl",
+        "names.pt",
+        "sortOrder"
+      ],
+      "summary": "Zone historique Marineland Lagoon intégrée en privé après vérification du plan officiel et de son ouverture en juillet 2015 ; inventaire et descriptions à poursuivre."
+    },
+    {
+      "eventId": "apply-d2a7b9ae-41e1-4f42-8cc1-2ccb6777f70f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:43:03.5032679Z",
+      "appliedAt": "2026-11-03T04:43:03.503Z",
+      "receiptFile": "03-inventory-animal-venues-apply.receipt.json",
+      "receiptSha256": "197104801f02f1b544ea96a845dda1478433a9b98ed02a72496651ca630b0397",
+      "counts": {
+        "created": 20,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.closingDate",
+        "attractionDetails.closingDateText",
+        "attractionDetails.openingDate",
+        "attractionDetails.openingDateText",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "position",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Inventaire privé de 20 lieux historiques : bassins, animaux, tunnel des requins, cinéma, aire Mer profonde, musée et spectacle des rapaces ; 14 positions recoupées. Dates partielles conservées, ours retirés en juin 2021. Descriptions, médias et audit final à poursuivre."
+    },
+    {
+      "eventId": "apply-19b1e85e-9005-4962-9177-9276a80d0bf3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:46:23.8402602Z",
+      "appliedAt": "2026-11-03T04:46:23.840Z",
+      "receiptFile": "03-inventory-food-shops-hotel-apply.receipt.json",
+      "receiptSha256": "72a57cad19219c90afeed3781f41e0bc418621d5f19f3e0422856f4c34806bc8",
+      "counts": {
+        "created": 23,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.closingDate",
+        "attractionDetails.closingDateText",
+        "attractionDetails.openingDateText",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "position",
+        "type",
+        "zoneId"
+      ],
+      "summary": "23 lieux ajoutés en privé : 18 restaurants et kiosques historiques, 4 boutiques et hôtel associé; 18 points cartographiques vérifiés. SoBlue Hôtel et Le Central restent en activité selon leur site officiel, distincts du zoo fermé. Descriptions et audit final à poursuivre."
+    },
+    {
+      "eventId": "apply-aa01ffb9-1c61-4b41-ab69-123686234457",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:50:38.6123783Z",
+      "appliedAt": "2026-11-03T04:50:38.612Z",
+      "receiptFile": "03-inventory-experiences-services-apply.receipt.json",
+      "receiptSha256": "9f9ec3e2b39bd1f38d3c2818068634a3b522a25fc6c44c15dd2a50eaaa7c50b1",
+      "counts": {
+        "created": 20,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.accessConditions",
+        "attractionDetails.closingDate",
+        "attractionDetails.closingDateText",
+        "attractionDetails.openingDate",
+        "attractionDetails.openingDateText",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "position",
+        "type",
+        "zoneId"
+      ],
+      "summary": "20 expériences, anciens équipements et services ajoutés en privé, avec neuf points recoupés et six restrictions historiques sourcées. Parkings partagés sans fermeture individuelle inventée. Total 63 lieux; contrôle des alias, géographie et descriptions encore à poursuivre."
     }
   ],
   "publicationOrNoop": []

@@ -1,0 +1,1005 @@
+{
+  "passes": {
+    "current": "Marine zoo closed; only associated independent hotel remains operating and is to be documented separately.",
+    "announced": "No named confirmed replacement attraction admitted. Reconversion proposals remain history, not operating inventory.",
+    "historical": "In progress: animal venues, leisure facilities, encounters, restaurants, shops and services; dated programme titles treated as venue programming."
+  },
+  "items": [
+    {
+      "key": "bassins-orques",
+      "name": "Bassins des orques",
+      "sourceUrl": "https://igedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013623/015475-01_rapport-publie.pdf",
+      "notes": "Complexe actuel ouvert en juillet 2000 selon visite spécialiste. Ancien bassin 1985 devenu bassin des dauphins : autre usage du même bâtiment documenté dans son histoire, aucune duplication. Ultimate Show est le programme 2024 de ce lieu.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/42305879",
+        "sourceName": "Marineland (spectacle d'orques)",
+        "latitude": 43.6165167,
+        "longitude": 7.1257601,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "bassin-dauphins",
+      "name": "Bassin des dauphins",
+      "sourceUrl": "https://igedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013623/015475-01_rapport-publie.pdf",
+      "notes": "Ancien bassin des orques construit en 1985 selon rapport ministériel. Date de conversion en bassin dauphins à approfondir, ne pas confondre ouverture de bâtiment et offre actuelle. Dolphin Fantasia est le programme 2024.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/42305876",
+        "sourceName": "Spectacle de dauphins",
+        "latitude": 43.613752,
+        "longitude": 7.1261054,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "otaries-californie",
+      "name": "Otaries de Californie",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MARINELAND_2024_PROGRAMME-JUIN_1019.pdf",
+      "notes": "Bassin de spectacle : programme Otarie Lympics 2024, même installation et non attraction supplémentaire.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/42305875",
+        "sourceName": "Spectacle d'otaries",
+        "latitude": 43.6134198,
+        "longitude": 7.1252225,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "otaries-steller",
+      "name": "Otaries de Steller",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php",
+      "notes": "Deux mâles arrivés de Harderwijk en 2007 selon historique spécialisé ; plan 2008 annonce encore cette nouveauté.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/42305877",
+        "sourceName": "Otaries de Stellers",
+        "latitude": 43.6131528,
+        "longitude": 7.1257295,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "otaries-patagonie",
+      "name": "Otaries de Patagonie",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MARINELAND_2024_PROGRAMME-JUIN_1019.pdf",
+      "notes": "Espèce explicitement nommée en 2024. Deux bassins OSM génériques Otaries ne permettent pas une attribution spécifique fiable.",
+      "geography": null,
+      "geographyGap": "Le programme 2024 distingue les espèces mais le plan utilise plusieurs icônes génériques d’otaries; les deux bassins OSM ne portent pas leur espèce. Attribution individuelle non démontrée.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "otaries-afrique-sud",
+      "name": "Otaries d’Afrique du Sud",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MARINELAND_2024_PROGRAMME-JUIN_1019.pdf",
+      "notes": "Espèce explicitement nommée en 2024 ; ne pas attribuer au hasard les bassins génériques de la cartographie.",
+      "geography": null,
+      "geographyGap": "Le programme 2024 distingue les espèces mais les bassins OSM sont génériques. Aucune photographie légendée ne prouve quel bassin correspond précisément à cette espèce.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "antarctica",
+      "name": "Antarctica",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php",
+      "notes": "Manchotière antérieure à 1997 ; agrandissement 2009, pas ouverture initiale inventée. OSM dit empereur par erreur : identité royaux et gorfous issue du parc et du spécialiste.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433758914",
+        "sourceName": "Manchot empereur et Gorfou sauteur",
+        "latitude": 43.6143512,
+        "longitude": 7.1256798,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "manchots-humboldt-entree",
+      "name": "Manchots de Humboldt — bassin de l’entrée",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MARINELAND_2024_PROGRAMME-JUIN_1019.pdf",
+      "notes": "OSM mal nommé Magellan mais emplacement recoupé avec plans officiels et photographie légendée du 16 juin 2012. Une seconde installation apparaît dans l’ancien enclos des ours après 2021, à traiter séparément après preuve.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/501077117",
+        "sourceName": "Manchot de Magellan",
+        "latitude": 43.6138869,
+        "longitude": 7.1251372,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "tunnel-requins",
+      "name": "Tunnel des requins",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Tunnel et aquarium forment une seule visite. Salle panoramique également dans ce bâtiment, pas de doublon pour les requins. Année 1996 à confirmer avant ajout.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/68079382",
+        "sourceName": "Tunnel des requins",
+        "latitude": 43.6155792,
+        "longitude": 7.1258042,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "tortues-marines",
+      "name": "Tortues marines",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MARINELAND_2024_PROGRAMME-JUIN_1019.pdf",
+      "notes": "Bassin extérieur à proximité du tunnel ; distinct du centre de soins non public créé en 2017.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433757760",
+        "sourceName": "Tortue marine",
+        "latitude": 43.6154558,
+        "longitude": 7.1257664,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "raies",
+      "name": "Raies",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MARINELAND_2024_PROGRAMME-JUIN_1019.pdf",
+      "notes": "Offre nommée en 2024 et sur anciens plans, emplacement individuel à préciser entre aquariums et ancien bassin tactile.",
+      "geography": null,
+      "geographyGap": "Plans anciens et programme 2024 confirment des raies; visites peuvent concerner bassin tactile ou aquariums. Localisation individuelle stable non démontrée.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "flamants-cuba",
+      "name": "Flamants de Cuba",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MARINELAND_2024_PROGRAMME-JUIN_1019.pdf",
+      "notes": "Ne pas utiliser la photographie 2012 légendée flamants nains pour prouver l’espèce Cuba. Enclos à côté des aquariums sur plan officiel.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433758893",
+        "sourceName": "Flamant de Cuba ou Flamant des Caraïbes",
+        "latitude": 43.613186,
+        "longitude": 7.1264583,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "aquariums-tropicaux",
+      "name": "Aquariums tropicaux",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MARINELAND_2024_PROGRAMME-JUIN_1019.pdf",
+      "notes": "Galerie du côté de l’espace exposition ; les poissons tropicaux, mangrove et piranhas des anciens plans appartiennent à cette galerie, pas des parcs séparés.",
+      "geography": null,
+      "geographyGap": "Complexe au voisinage du musée identifiable sur plans, mais OSM regroupe bâtiments et musée sous une emprise commune; porte ou salle exacte non prouvée.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "voliere-lagoon",
+      "name": "Volière",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Volière dans le secteur Lagoon. Les espèces précises de la cartographie seront confirmées avant description. Ne pas confondre avec ancien parc autonome Île Magique aux Oiseaux.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/686410497",
+        "sourceName": "Marineland (Paon bleu,Faisan doré et faisan de lady Amherst)",
+        "latitude": 43.6175588,
+        "longitude": 7.1266208,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "phoques",
+      "name": "Phoques veaux-marins",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Bassin longeant le secteur de rencontres et restaurant Marina Bay. Nom zoologique recoupé avec panneau OSM 6465213908 et programme septembre 2024.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/686410512",
+        "sourceName": "Phoques",
+        "latitude": 43.6172002,
+        "longitude": 7.1257171,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "cine-5d",
+      "name": "Ciné 5D Adventure",
+      "sourceUrl": "https://www.europarcs.net/parcs/france/marineland/",
+      "notes": "Ouverture précise attestée Europarcs et RécréaNice ; programme 2024 Happy Feet. Le film ne devient pas une deuxième attraction.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433758915",
+        "sourceName": "Cinéma 5D",
+        "latitude": 43.6167305,
+        "longitude": 7.1250555,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "mer-profonde",
+      "name": "Mer profonde",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/Marineland_2024_Programme_Septembre.pdf",
+      "notes": "Aire de jeux d’eau nommée dans programme septembre 2024 ; rattachement à une des trois aires du plan à confirmer avant coordonnées.",
+      "geography": null,
+      "geographyGap": "Nom attesté programme septembre 2024. Plan officiel indique plusieurs aires de jeux; les polygones OSM sans nom ne permettent pas une attribution certaine au dispositif aquatique.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "musee-marine-exposition",
+      "name": "Musée de la Marine et espace d’exposition",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php",
+      "notes": "Musée de la Poype, devenu espace d’exposition sur plans 2019 et 2023 : une seule identité de bâtiment, changements de contenu en histoire. Date exacte du musée contradictoire entre archive dite1985 et récit1988, laissée inconnue.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/68052995",
+        "sourceName": "Musée de la Poype",
+        "latitude": 43.6130346,
+        "longitude": 7.1263737,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "ours-polaires",
+      "name": "Ours polaires",
+      "sourceUrl": "https://www.yorkshirewildlifepark.com/news/polar-bears-on-the-move-at-yorkshire-wildlife-park/",
+      "notes": "Offre animalière retirée après départ des derniers ours en juin 2021, pas bâtiment démoli. Source du parc destinataire ; coordonnées de l’ancien enclos confirmées par plans2010/2012/2019.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433808544",
+        "sourceName": "Ours polaire",
+        "latitude": 43.6169799,
+        "longitude": 7.1243892,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "spectacle-rapaces",
+      "name": "Spectacle des rapaces",
+      "sourceUrl": "https://www.europarcs.net/parcs/france/marineland/",
+      "notes": "Offre confirmée plans officiels2007,2008,2010 et spécialiste ; date de fin et localisation géographique fine non établies. Ne pas confondre avec volière Lagoon ou parc Île Magique.",
+      "geography": null,
+      "geographyGap": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "marina-bay",
+      "name": "Marina Bay Show Cooking",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Restaurant cafétéria nommé2023, cuisine internationale2019. Plans2010/2012 situent O’Docks et son bar O’Docker’s au même ensemble bâti; anciens noms à narrer sans créer un doublon de bâtiment.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/68066077",
+        "sourceName": "Marina Bay - Show Cooking",
+        "latitude": 43.6170971,
+        "longitude": 7.1252772,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "capri",
+      "name": "Trattoria Le Capri",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Restaurant italien dans les gradins des orques. Plan2012 y place O’Coliseum ; continuité du lieu, date du changement de nom inconnue.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433808593",
+        "sourceName": "Trattoria le Capri",
+        "latitude": 43.6162609,
+        "longitude": 7.1252895,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "o-delices",
+      "name": "O’Délices",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg",
+      "notes": "Glacier du stade des orques, déjà nommé sur plans2010/2012, distinct de la Trattoria.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433808595",
+        "sourceName": "O'Délices",
+        "latitude": 43.6160745,
+        "longitude": 7.1257236,
+        "corroboratedBy": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "o-polaire",
+      "name": "O’Polaire",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg",
+      "notes": "Glacier face à ancien espace des ours, plans2010/2012/2019. Date de fin inconnue, ne pas déduire de la disparition des ours.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433835449",
+        "sourceName": "O'Polaire",
+        "latitude": 43.6171702,
+        "longitude": 7.124296,
+        "corroboratedBy": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "atlantis",
+      "name": "Atlantis",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Spécialité poulet, présence programme juin2024. Ancienne appellation Le Central Parc localisée dans ce secteur en2012 à étudier, ne pas confondre restaurant hôtel Le Central.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433835445",
+        "sourceName": "Atlantis",
+        "latitude": 43.615003,
+        "longitude": 7.1258571,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "neptune-grill",
+      "name": "Neptune Grill",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Hamburgers, présence programmes 2024. Point devant entrée et tunnel. Plan2012 porte La Pinède dans ce secteur ; date et continuité exacte à approfondir.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433835446",
+        "sourceName": "Neptune Grill",
+        "latitude": 43.6151899,
+        "longitude": 7.1256613,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "subway",
+      "name": "Subway",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Sandwiches et salades, offre2024 et emplacement devant Antarctica près de entrée.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433808597",
+        "sourceName": "Subway",
+        "latitude": 43.6141771,
+        "longitude": 7.1252193,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "so-lagoon",
+      "name": "So Lagoon",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Buffet du secteur Marineland Lagoon, plan 2019 le classe explicitement dans cette zone. Présent au programme juin2024.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/715755061",
+        "sourceName": "So Lagoon",
+        "latitude": 43.6177951,
+        "longitude": 7.1255825,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "le-central",
+      "name": "Le Central",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Restaurant de hôtel, précédemment Red d’Hippo sur plan 2019 et OSM. Activité actuelle rattachée à SoBlue, distincte du zoo fermé. Adresse1715route deNice, pas ancien Le CentralParc du parc.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/604981530",
+        "sourceName": "Red d'Hippo",
+        "latitude": 43.614667,
+        "longitude": 7.1265652,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "current-associated-hotel"
+    },
+    {
+      "key": "manhattan-hot-dog",
+      "name": "Manhattan Hot Dog",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Point dans le zoo près Antarctica sur plan2023. Ne pas confondre homonyme Aquasplash du plan 2019 et node11067356194.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433835423",
+        "sourceName": "Manhattan Hotdog",
+        "latitude": 43.6142115,
+        "longitude": 7.12556,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "nautilus",
+      "name": "Nautilus",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg",
+      "notes": "Point face au stade des dauphins. Anciennes offres LeSousMarin et HotDogCrêpes à qualifier sans fusion conjecturale.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433835425",
+        "sourceName": "Nautilus",
+        "latitude": 43.614027,
+        "longitude": 7.1258014,
+        "corroboratedBy": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "calypso-market-cafe",
+      "name": "Calypso Market Café",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg",
+      "notes": "Café près espace exposition et aquariums. Plan2012 place L’Orient Express dans ce secteur ; date et continuité commerciale inconnues.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433835430",
+        "sourceName": "Calypso café",
+        "latitude": 43.6135027,
+        "longitude": 7.1263445,
+        "corroboratedBy": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "serena",
+      "name": "Séréna",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg",
+      "notes": "Point nommé sur plan 2019 au pied Antarctica, distinct du kiosque Poséïdon. Point exact non déterminé; possible renommage Manhattan à vérifier.",
+      "geography": null,
+      "geographyGap": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "poseidon",
+      "name": "Poséïdon",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg",
+      "notes": "Granita au pied Antarctica, nom et localisation recoupés. Ne pas lui attribuer une date de fermeture individuelle sans source.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433835424",
+        "sourceName": "Poseidon",
+        "latitude": 43.6141561,
+        "longitude": 7.1257022,
+        "corroboratedBy": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "granita-requins",
+      "name": "Granita Requins",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2012.jpg",
+      "notes": "Kiosque6 sur plan 2012, côté du tunnel des requins. Ancien emplacement précis non démontré sur OSM.",
+      "geography": null,
+      "geographyGap": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "hot-dog-crepes",
+      "name": "Hot Dog Crêpes",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2012.jpg",
+      "notes": "Kiosque9 du plan 2012; identité gardée distincte de Manhattan et Nautilus tant que renommage non établi.",
+      "geography": null,
+      "geographyGap": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "le-sous-marin",
+      "name": "Le Sous-Marin",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2012.jpg",
+      "notes": "Kiosque10 du plan 2012 au pied de Antarctica, continuité avec noms suivants non prouvée.",
+      "geography": null,
+      "geographyGap": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "kiosque-aquarium",
+      "name": "Kiosque Aquarium",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2012.jpg",
+      "notes": "Kiosque13 du plan 2012 sur bord sud du secteur otaries. Date individuelle inconnue.",
+      "geography": null,
+      "geographyGap": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "tropical-wave",
+      "name": "Tropical Wave Boutique",
+      "sourceUrl": "https://www.marineland.fr/dans-le-parc/boutiques/tropical-wave-boutique/",
+      "notes": "Nom et URL officielle conservés dans relevé OpenStreetMap ; emplacement de boutique confirmé par plan 2019. Pages officielles désormais redirigées, texte et photos spécifiques à rechercher.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433757766",
+        "sourceName": "Tropical Wave Boutique",
+        "latitude": 43.6154421,
+        "longitude": 7.1259367,
+        "corroboratedBy": "https://www.marineland.fr/dans-le-parc/boutiques/tropical-wave-boutique/"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "marineland-store",
+      "name": "Marineland Store",
+      "sourceUrl": "https://www.marineland.fr/dans-le-parc/boutiques/marineland-store/",
+      "notes": "Nom et URL officielle conservés dans relevé OpenStreetMap ; emplacement de boutique confirmé par plan 2019. Pages officielles désormais redirigées, texte et photos spécifiques à rechercher.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433757771",
+        "sourceName": "Marineland Store",
+        "latitude": 43.6145877,
+        "longitude": 7.1254417,
+        "corroboratedBy": "https://www.marineland.fr/dans-le-parc/boutiques/marineland-store/"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "ocean-dreams",
+      "name": "Ocean Dreams Boutique",
+      "sourceUrl": "https://www.marineland.fr/dans-le-parc/boutiques/ocean-dreams-boutique/",
+      "notes": "Nom et URL officielle conservés dans relevé OpenStreetMap ; emplacement de boutique confirmé par plan 2019. Pages officielles désormais redirigées, texte et photos spécifiques à rechercher.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433808594",
+        "sourceName": "Ocean Dreams Boutique",
+        "latitude": 43.6161599,
+        "longitude": 7.1254285,
+        "corroboratedBy": "https://www.marineland.fr/dans-le-parc/boutiques/ocean-dreams-boutique/"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "tresors-mer",
+      "name": "Les Trésors de la mer",
+      "sourceUrl": "https://www.marineland.fr/dans-le-parc/boutiques/boutique-tresors-de-la-mer/",
+      "notes": "Nom et URL officielle conservés dans relevé OpenStreetMap ; emplacement de boutique confirmé par plan 2019. Pages officielles désormais redirigées, texte et photos spécifiques à rechercher.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433808598",
+        "sourceName": "Les trésors de la mer",
+        "latitude": 43.6135018,
+        "longitude": 7.1258711,
+        "corroboratedBy": "https://www.marineland.fr/dans-le-parc/boutiques/boutique-tresors-de-la-mer/"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "hotel-marineland",
+      "name": "SoBlue Hôtel — ancien Marineland Hôtel",
+      "sourceUrl": "https://www.sobluehotel.com/",
+      "notes": "Marineland Resort ouvert fin avril2015, devenu Marineland Hôtel puis SoBlue après fermeture du zoo. Site officiel actuel actif, 95chambres et suites. Le parc fermé ne rend pas cet hôtel fermé.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/686405081",
+        "sourceName": "Hôtel Marineland",
+        "latitude": 43.6144784,
+        "longitude": 7.126935,
+        "corroboratedBy": "https://www.sobluehotel.com/"
+      },
+      "geographyGap": null,
+      "inventoryPass": "current-associated-hotel"
+    },
+    {
+      "key": "rencontre-dauphins",
+      "name": "Rencontre avec les dauphins",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/FICHES%20PRODUIT%202022%20cse%20assoc%20web.pdf",
+      "notes": "Expérience dans lagon des dauphins distincte du spectacle, même bassin que repère OSM. Années2005 construction et2008 développement des rencontres distinctes, aucune date ouverture conjecturale. Min120cm officiel2022, accompagnement mineurs à enrichir.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/289692888",
+        "latitude": 43.61732025,
+        "longitude": 7.125882300000001,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/FICHES%20PRODUIT%202022%20cse%20assoc%20web.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "rencontre-orques",
+      "name": "Rencontre avec les orques",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/FICHES%20PRODUIT%202022%20cse%20assoc%20web.pdf",
+      "notes": "Offre officielle distincte de représentation, donnée2018 corroborée Europarcs. Même complexe de bassins que les orques, pas point arbitraire hors installation.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/42305879",
+        "latitude": 43.6165167,
+        "longitude": 7.12576015,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/FICHES%20PRODUIT%202022%20cse%20assoc%20web.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "rencontre-otaries",
+      "name": "Rencontre avec les otaries",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/FICHES%20PRODUIT%202022%20cse%20assoc%20web.pdf",
+      "notes": "Offre actuelle2022 et point4 du plan2023. Sourcesâge divergent3ans brochure2017/RécréaNice contre4ansATSC AF2022 ; pas de minimum arbitraire. Bassin de rencontres2012 à ouest diffère du point2023 côtéest, géolocalisation laissée vide.",
+      "geography": null,
+      "geographyGap": "Point des rencontres déplacé entre plan 2012 et 2023; photographie2012 du bassin mixte ne situe pas la dernière incarnation.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "rencontre-requins",
+      "name": "Rencontre avec les requins",
+      "sourceUrl": "https://www.experiencecotedazur.com/blog/guide-visite-marineland-famille-prix-promo",
+      "notes": "Activité dans aquarium du tunnel, pas promenade libre. Ouverture2011 Europarcs; min10ans recoupé brochure officielle2017 et guide tourisme. Questionnaire médical décrit dans source, transcription détaillée à suivre.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/68079382",
+        "latitude": 43.6155792,
+        "longitude": 7.1258042,
+        "corroboratedBy": "https://www.experiencecotedazur.com/blog/guide-visite-marineland-famille-prix-promo"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "soigneur-dauphins",
+      "name": "Soigneur dauphins, l’expérience inédite",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/FICHES%20PRODUIT%202022%20cse%20assoc%20web.pdf",
+      "notes": "Prestation distincte de Rencontre avec les dauphins selon offre officielle2022. Départ près bassin dauphins sur plan, parcours et point précis à documenter.",
+      "geography": null,
+      "geographyGap": "Prestation avec déplacement et point de rassemblement dessiné près dauphins; aucun point précis géographique du rassemblement attesté.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "lagon-baignade",
+      "name": "Lagon de baignade",
+      "sourceUrl": "https://www.tourmag.com/Marineland-inaugure-son-hotel-et-ouvre-Marineland-Lagoon_a74899.html",
+      "notes": "Piscine de baignade et plage de sable de Marineland Lagoon, distinctes du bassin des dauphins. Type WaterRide remplacé par InteractiveExperience avant Preview car pas manège.",
+      "geography": null,
+      "geographyGap": "Plan illustre un bassin de baignade au sein Lagoon, distinct des bassins animaliers; OSM ne le nomme pas, le point du bassin des dauphins ne peut servir de substitut.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "lagoon-center",
+      "name": "Lagoon Center",
+      "sourceUrl": "https://www.in-magazines.com/magazine/wp-content/uploads/2023/07/INA-09-2019-V2.pdf",
+      "notes": "Encart officiel Marineland Special Events portant nouveauté2019 : salles de séminaire face au lagon, distinctes restaurant Marina Bay et auditorium devenu cinéma.",
+      "geography": null,
+      "geographyGap": "Salles face au lagon décrites dans encart officiel 2019; plusieurs bâtiments voisins, aucun appariement exact avec OSM.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "manchots-humboldt-ancien-ours",
+      "name": "Manchots de Humboldt — ancien espace des ours",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Réutilisation annoncée par direction en juin2021 dans 20Minutes11juin et manchots figurés sur plan officiel crééjanvier2023. Date exacte ouverture non connue. Même emplacement physique que ancienne fiche ours Removed.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433808544",
+        "latitude": 43.6169799,
+        "longitude": 7.1243892,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "elephants-mer",
+      "name": "Éléphants de mer",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php",
+      "notes": "Espèce des débuts mentionnée dans historique spécialisé et explicitement clé14 sur ancien plan archivé sous1985, dont millésimecontesté. Offre disparue, date de retrait et bassin précis inconnus.",
+      "geography": null,
+      "geographyGap": "Ancienne offre disparue, carte archivée 1985 à datation contestée; localisation historique précise insuffisante.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "fontaine",
+      "name": "Fontaine",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2008.jpg",
+      "notes": "Point9 sur plan officiel2008, aussi nommé sur plan2003. Ne pas confondre borne eau potable ni bassin des tortues; emplacement fin/dates à préciser.",
+      "geography": null,
+      "geographyGap": "Repère sur plans 2003/2008 sans correspondance certaine dans cartographie ultérieure après transformation du secteur.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "aire-jeux-exposition",
+      "name": "Aire de jeux près de l’espace d’exposition",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Plan officiel : 4–10ans. Positionaire devantmuseum recoupée OSM. Âge supérieur10 à inscrire en conditionpersonnalisée si nécessaire, pas enum MaxAge non prise encharge.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/220401910",
+        "latitude": 43.613205300000004,
+        "longitude": 7.1261875,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "aire-jeux-cinema",
+      "name": "Aire de jeux près du Ciné 5D",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Plan officiel : 6–12ans ; même point que OSM au bord du stade des orques, distinct de Merprofonde.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/node/6433808543",
+        "latitude": 43.6165226,
+        "longitude": 7.1247338,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "accueil",
+      "name": "Accueil",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Pavillon extérieur d’accueil et services devant entrée, nommé explicitement sur plan2023. Location poussettes et fauteuils et consignes rattachées à cet accueil; pas de faux pointaucentre.",
+      "geography": null,
+      "geographyGap": "Pavillon devant accès représenté sur plan; plusieurs bâtiments non nommés dans données cartographiques, pas de point de service identifié.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "entree",
+      "name": "Entrée de Marineland",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Entrée/sortie du zoo nommée sur plan2023; ancienne sortie séparée parboutique2012 à documenter, pas confondue avec entréeAquasplash.",
+      "geography": null,
+      "geographyGap": "Entrée/sortie et sortie par boutique ont changé; nœud OSM devant magasin ne prouve pas le dernier contrôle d’entrée.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "premiers-secours",
+      "name": "Poste de premiers secours",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Point matérialisé par croix verte près entrée sur plan2023, également plan 2012. Fonctionnommablefixe; bâtimentcoordnon établi.",
+      "geography": null,
+      "geographyGap": "Pictogramme officiel près entrée sans correspondance sûre avec bâtiment actuel.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "parking-p1",
+      "name": "Parking P1",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Parking partagé du complexe touristique, confirmé plan 2012/2019/2023 et OSM. Ne pas déclarer fermé après2025 sans preuve: parcsvoisins restésouverts. Statut individuel non renseigné.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/16120086",
+        "latitude": 43.6146324,
+        "longitude": 7.1223463,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "parking-p2",
+      "name": "Parking P2",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Parking côté ancien secteurours et événements, plan2023 etOSM. Activité actuelle individuelle non établie; aucun statutfermetureinventé.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/137289045",
+        "latitude": 43.6176417,
+        "longitude": 7.1244912,
+        "corroboratedBy": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    },
+    {
+      "key": "parking-p3",
+      "name": "Parking P3",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Parking devant zoneLagoon, plan2023. Aucun point nominal OSMsuffisammentcertain. Activitéactuelleindividuelleinconnue.",
+      "geography": null,
+      "geographyGap": "Plan2019/2023 le distingue de P2; cartographie consultée ne fournit aucun parking nommé P3.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "parking-p4",
+      "name": "Parking P4 — hôtel",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/files/MLD_map.pdf",
+      "notes": "Parking Hôtel indiquéplan2023; hôtel toujoursouvert mais périmètreactuelparking précisàvérifier. Paspointd’hôtelrecopié.",
+      "geography": null,
+      "geographyGap": "Parking de hôtel dessiné sur plan; emprise du parking non distinguée de celle des bâtiments et allées, aucune coordonnée du centre de l’hôtel recopiée.",
+      "inventoryPass": "historical",
+      "geographySourcesChecked": [
+        "Plans officiels 1985–2023 et programmes 2024",
+        "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+        "Photographies légendées Jonas Livet du 16 juin 2012"
+      ]
+    },
+    {
+      "key": "parking-p5",
+      "name": "Parking P5",
+      "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg",
+      "notes": "Ancien accèsparking côtérencontres figuré2012/2019 etOSM, nonaffichédernierplan. N’en déduire ni disparitionphysique ni datefermeture.",
+      "geography": {
+        "url": "https://www.openstreetmap.org/way/686405080",
+        "latitude": 43.6170587,
+        "longitude": 7.1273167,
+        "corroboratedBy": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2019.jpg"
+      },
+      "geographyGap": null,
+      "inventoryPass": "historical"
+    }
+  ],
+  "historicalAliasesReviewed": [
+    {
+      "names": [
+        "O’Docks",
+        "Bar O’Docker’s",
+        "Marina Bay"
+      ],
+      "decision": "Même ensemble de restauration sur plans 2012/2019; un lieu principal Marina Bay, ancien bar mentionnable dans histoire; date transition inconnue."
+    },
+    {
+      "names": [
+        "O’Coliseum",
+        "Trattoria Le Capri"
+      ],
+      "decision": "Même secteur des gradins, pas de seconde implantation prouvée; ancien nom documenté dans récit sans création séparée."
+    },
+    {
+      "names": [
+        "Red d’Hippo",
+        "Le Central"
+      ],
+      "decision": "Restaurant de hôtel même bâtiment selon plans 2019/2023; Le Central ouvert en 2023 confirmé par page officielle SoBlue."
+    },
+    {
+      "names": [
+        "Auditorium",
+        "Ciné 5D Adventure"
+      ],
+      "decision": "Cinéma dans auditorium sous gradins selon guide 2024; ancien usage intégré en histoire, aucune deuxième salle inventée."
+    },
+    {
+      "names": [
+        "Jardin exotique",
+        "Volière du Lagoon"
+      ],
+      "decision": "Offre de jardin et oiseaux dans secteur devenu Lagoon, transformation à raconter sans nouvelle zone fantaisiste."
+    },
+    {
+      "names": [
+        "Le Central Parc",
+        "Atlantis",
+        "La Pinède",
+        "Neptune Grill",
+        "L’Orient Express",
+        "Calypso Market Café",
+        "Antarctica",
+        "Bar Antarctica",
+        "Séréna",
+        "Poséïdon",
+        "Granita Dauphins"
+      ],
+      "decision": "Tous noms historiques conservés dans sources; plans successifs suggèrent des changements mais ne démontrent pas toutes continuités commerciales. Ne pas multiplier les identités sur simple différence de nom; qualification des transitions reste gap."
+    }
+  ],
+  "scopeExclusions": [
+    "Aquasplash et ses attractions et restaurants",
+    "Kid’s Island/La Ferme du Far West et ses attractions",
+    "Adventure Golf et son snack",
+    "Centre de réhabilitation des tortues au Cap d’Antibes : autre site non public",
+    "Animaux individuels, programmes de spectacle 2024 et expositions temporaires : sujets de récit ou histoire des lieux, pas doublons de parkItems",
+    "Petites commodités non nommées : fonctions décrites au lieu porteur, sans inventer de noms propres"
+  ],
+  "counts": {
+    "items": 63,
+    "categories": {
+      "Animal": 17,
+      "Attraction": 11,
+      "Other": 2,
+      "Show": 1,
+      "Restaurant": 18,
+      "Shop": 4,
+      "Hotel": 1,
+      "Service": 9
+    },
+    "geolocated": 41,
+    "geographyGaps": 22,
+    "zones": 1,
+    "images": 1,
+    "completed": false
+  },
+  "checkedAtUtc": "2026-11-03T04:51:57.981432Z",
+  "nextStep": "04 : descriptions du parc, de la zone et des 63 lieux, après recherches spécifiques; divergences et sources insuffisantes restent enregistrées pour audit final."
+}
