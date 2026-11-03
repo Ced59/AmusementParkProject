@@ -406,6 +406,87 @@
         "descriptions.pt"
       ],
       "summary": "Marineland : descriptions en huit langues des otaries d’Afrique du Sud, des Humboldt dans l’ancien espace des ours, des flamants de Cuba et des éléphants de mer ; formats courts motivés et sources conservées ; partiel."
+    },
+    {
+      "eventId": "apply-8a11733a-4177-41bc-8cd5-28ebb9e2ad57",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:47:35.9453371Z",
+      "appliedAt": "2026-11-03T05:47:35.945Z",
+      "receiptFile": "04-items-encounters-five-apply.receipt.json",
+      "receiptSha256": "1f9a2a6544d792edb5713926b540731d1fa31a536a891f6bb847927aa216f4a8",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Marineland : cinq rencontres animalières rédigées en huit langues, avec distinction des lieux et des activités ; sources officielles et photographies recoupées ; intégration partielle."
+    },
+    {
+      "eventId": "apply-1cc4e67e-90de-4637-8384-aa427aa85a72",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:53:36.4578018Z",
+      "appliedAt": "2026-11-03T05:53:36.457Z",
+      "receiptFile": "04-items-rays-lagoon-two-apply.receipt.json",
+      "receiptSha256": "eb605aca6e3d0ae84d164c55531a5aa0f8f2d9ca670445fff504e92d8db25a8f",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Marineland : raies et lagon de baignade rédigés en huit langues ; bassins et expériences distincts, photographie historique du Lagoon contrôlée ; partiel."
+    },
+    {
+      "eventId": "apply-925acc94-6089-4d45-ba14-f156d3896a18",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:59:23.8045251Z",
+      "appliedAt": "2026-11-03T05:59:23.804Z",
+      "receiptFile": "04-hotel-central-two-apply.receipt.json",
+      "receiptSha256": "2219940f664be387fd83de7fa3d2f81646b40a556a21b99d7d4ec1556b49b6f4",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Marineland : SoBlue Hôtel et Le Central documentés en huit langues comme établissements toujours en activité ; sources et photographies officielles contrôlées ; partiel."
     }
   ],
   "publicationOrNoop": []

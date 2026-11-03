@@ -10,7 +10,7 @@
   },
   "parkItemDescriptions": {
     "total": 63,
-    "eightLanguageComplete": 24,
+    "eightLanguageComplete": 33,
     "keys": [
       "bassins-orques",
       "bassin-dauphins",
@@ -22,6 +22,7 @@
       "manchots-humboldt-entree",
       "tunnel-requins",
       "tortues-marines",
+      "raies",
       "flamants-cuba",
       "aquariums-tropicaux",
       "voliere-lagoon",
@@ -30,10 +31,18 @@
       "musee-marine-exposition",
       "ours-polaires",
       "spectacle-rapaces",
+      "le-central",
       "tropical-wave",
       "marineland-store",
       "ocean-dreams",
       "tresors-mer",
+      "hotel-marineland",
+      "rencontre-dauphins",
+      "rencontre-orques",
+      "rencontre-otaries",
+      "rencontre-requins",
+      "soigneur-dauphins",
+      "lagon-baignade",
       "manchots-humboldt-ancien-ours",
       "elephants-mer"
     ]
@@ -56,11 +65,15 @@
     "https://www.mnhn.fr/fr/flamant-rouge",
     "https://artemis-ing.fr/posts/c3/grand-marineland"
   ],
-  "remaining": "39 descriptions de lieux, références, photos, plans officiels, histoire et articles avant audit final. Fiche toujours privée ; aucune annonce Facebook envoyée.",
+  "remaining": "30 descriptions de lieux, références, photos, plans officiels, histoire et articles avant audit final. Fiche toujours privée ; aucune annonce Facebook envoyée.",
   "editorialLengthExceptions": {
     "manchots-humboldt-ancien-ours": "Format court2h2/2p : 20Minutes11juin2021 annonce le remplacement et le plan officiel ultérieur confirme les Humboldt. Aucun cliché légendé après transformation ni détail sûr des aménagements intérieurs retrouvé ; ne pas attribuer automatiquement décor2012desours aux manchots. Date exacte de début inconnue.",
     "flamants-cuba": "Format court2h2/2p : programmes officiels2024 et plan confirment espèce et emplacement ; MNHN confirme synonymes et pigments. Photo2012JonasLivet légendée flamants nains : ne prouve ni espèce Cuba ni continuité exacte de sa population. Pas de dates, noms individuels, naissances ou transfert publiés non établis.",
     "elephants-mer": "Format court2h2/2p : article LeMonde15avril1972 (seuls faits brefs repris), description historique JonasLivet et ancien plan légendé. Aucun détail visuel suffisamment prouvé ni nom, date exacte de retrait, espèce nord/sud ou dimensions admis. Datation archive1985 contestée ; ne pas exposer cette année comme preuve. Recherche supplémentaire auprès presse, sources officielles et bibliographie sans résultat fiable sur expérience.",
-    "otaries-afrique-sud": "Trois paragraphes sous120mots : quatreespèces confirmées, Willowphotographiée et naissanceprogrammeeuropéen. Recherche effectuée ; retirer formules génériques plutôt que remplir. Aucun décor du bassin adulte ni coordonnées non prouvées."
-  }
+    "otaries-afrique-sud": "Trois paragraphes sous120mots : quatreespèces confirmées, Willowphotographiée et naissanceprogrammeeuropéen. Recherche effectuée ; retirer formules génériques plutôt que remplir. Aucun décor du bassin adulte ni coordonnées non prouvées.",
+    "soigneur-dauphins": "Format court2h2/2p : brochure officielle2022, cartephotoofficielle de activité et CitizenKid précisent plateforme du stade. Pages de détail supprimées/redirigées ; pas de protocole alimentation, vétérinaire, soins ou durée inventé. La brochureatteste le nomexpérienceinédite et activité distincte de rencontre lagoon.",
+    "raies": "Deuxparagraphes spécifiques : sources attestent bassins tactilesetprésentationtunnel mais espèces, chronologiedestransferts et localisationssuccessives non établies. Ne pas compléter par taxonomies supposées ni inventer décor."
+  },
+  "latestApplyOperation": "925acc94-6089-4d45-ba14-f156d3896a18",
+  "latestApplyAtUtc": "2026-11-03T05:59:23.8045251Z"
 }
