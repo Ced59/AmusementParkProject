@@ -19757,7 +19757,7 @@
       "siteId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
       "legacySiteIds": [],
       "presence": "Hidden",
-      "presenceObservedAt": "2026-11-02T17:35:54.0312885Z",
+      "presenceObservedAt": "2026-11-03",
       "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -19770,7 +19770,7 @@
         "Piscine Océade"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-02T17:39:43.699Z",
+      "lastDataIntegrationAt": "2026-11-03T04:11:55.941Z",
       "integrationHistory": [
         {
           "eventId": "apply-f53e9693-5b2b-49f8-bba3-c68957a97ea3",
@@ -20061,9 +20061,49 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-34040307-0f54-4ff4-8923-81f835f7bd07",
           "auditEvidence": null,
           "summary": "Océade Strasbourg : correction sourcée des huit versions de l’article et affinage de deux formulations après audit intégral ; statut partiel conservé."
+        },
+        {
+          "eventId": "apply-2699d7fe-a979-42aa-b3c5-dd2853fe2438",
+          "appliedAt": "2026-11-03T04:05:24.523Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-2699d7fe-a979-42aa-b3c5-dd2853fe2438",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : exploitant historique SERS renseigné depuis le témoignage du directeur recoupé avec DNA1989 et sources officielles ; présentation huit langues et coordonnées actuelles, audit final restant."
+        },
+        {
+          "eventId": "apply-65007492-d67a-4ce7-9a00-265eaf93938d",
+          "appliedAt": "2026-11-03T04:07:44.509Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-65007492-d67a-4ce7-9a00-265eaf93938d",
+          "auditEvidence": null,
+          "summary": "SERS : huit descriptions appliquées au champ officiel description de la nouvelle référence, après contrôle des huit différences du Preview ; audit final restant."
+        },
+        {
+          "eventId": "apply-a005594a-1ded-4f2a-8505-5bba18a051bd",
+          "appliedAt": "2026-11-03T04:08:36.278Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-a005594a-1ded-4f2a-8505-5bba18a051bd",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : piscine à balles et grand toboggan jaune décrits dans huit langues sur sources précises, formats historiques courts documentés ; audit final restant."
+        },
+        {
+          "eventId": "apply-fdd800e4-39d7-4503-819c-8612e423954b",
+          "appliedAt": "2026-11-03T04:11:55.941Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/oceade-strasbourg-receipts.json#apply-fdd800e4-39d7-4503-819c-8612e423954b",
+          "auditEvidence": null,
+          "summary": "Océade Strasbourg : deux passages de l’article repris dans huit langues pour éliminer les répétitions et une phrase de méthode, sans changer la chronologie sourcée ; audit final restant."
         }
       ],
-      "nextAction": "Fiche privée :14équipements dont10décrits8langues,17images,6faits etarticle8langues. Audit77/100, logo requis ; quatre descriptions, photos/GPS etplansannuels incompletsaprèsrecherche. Ne paspublier ni marquercompleted. Voir oceade-strasbourg-progress-audit.json.",
+      "nextAction": "Audit79/100 : exploitant SERS et12/14 descriptions en huit langues vérifiés ; 17médias,6faits et article. Logo historique, descriptions bleu/vert, photos, constructeurs et cartes restent à documenter. Fiche privée ; Facebook non envoyé. Voir oceade-strasbourg-followup-audit-20261103.json.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -20119,6 +20159,26 @@
           "label": "Commission de sécurité des consommateurs, 1989 — parcs aquatiques",
           "url": "https://www.economie.gouv.fr/files/files/directions_services/cnc/Avis_CSC/1989_AVIS_PARCS_AQUATIQUES.pdf",
           "accessedAt": "2026-11-02T17:43:37.411827+00:00"
+        },
+        {
+          "label": "First-person public CV: SERS, directeur exploitation centre aquatique Océade,1988–1991.",
+          "url": "https://viadeo.journaldunet.com/p/alain-sanchez-1806432",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Official corporate foundation1957; Alsatian urban development, construction and property management.",
+          "url": "https://sers.eu/une-expertise-au-service-du-territoire-alsacien-acquise-a-travers-7-decennies/",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Current legal name and SIREN578505687; mixed economy company, address.",
+          "url": "https://sers.eu/mentions-legales/",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Current public business contacts.",
+          "url": "https://sers.eu/",
+          "accessedAt": "2026-11-03"
         }
       ]
     },

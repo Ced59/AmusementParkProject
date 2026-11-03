@@ -1,5 +1,5 @@
 {
-  "updatedAtUtc": "2026-11-02T17:43:37.411827+00:00",
+  "updatedAtUtc": "2026-11-03T04:14:42.541566+00:00",
   "entryId": "FR-candidate-018f58d346bda3",
   "parkId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
   "phase": "partial-source-gaps",
@@ -7,19 +7,24 @@
   "completed": false,
   "parentVisible": false,
   "items": 14,
-  "itemsWithEightDescriptions": 10,
+  "itemsWithEightDescriptions": 12,
   "images": 17,
   "facts": 6,
   "articles": 1,
-  "score": 77,
+  "score": 79,
   "publicationBlockers": [
     "media.logo-required"
   ],
   "facebookStatus": "NotAttempted",
-  "lastDataIntegrationAt": "2026-11-02T17:39:43.699Z",
-  "dataIntegrationEvents": 29,
-  "audit": "09-progress-audit.json",
-  "latestGraph": "09-consolidated-audit-graph.json",
+  "lastDataIntegrationAt": "2026-11-03T04:11:55.941Z",
+  "dataIntegrationEvents": 33,
+  "audit": "10-followup-audit.json",
+  "latestGraph": "10-consolidated-audit-graph.json",
   "warning": "Preaudit08articlebuilders/copy and09-full-export contain supersededfourthseason wording; do not replay. Useconsolidatedauditgraph orworkinggraph after09-refine-copy.",
-  "next": "ContinuehistoricalqualificationMiniaturesNice/PiraPark/Tivoli/Drosera while retainingblockedsourcegaps."
+  "next": "Rechercher logo historique authentifié, sources distinctes des toboggans bleu et vert, photographies manquantes, constructeurs et plans officiels. Ne pas rejouer les anciens lots, ne pas créer de doublon ou envoyer Facebook avant publication du parc.",
+  "operatorId": "6dda816a-0218-4b92-ad9e-aa57dae9b3b9",
+  "remainingDescriptions": [
+    "Toboggan bleu",
+    "Toboggan vert"
+  ]
 }

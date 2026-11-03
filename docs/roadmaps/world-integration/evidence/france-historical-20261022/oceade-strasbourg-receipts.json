@@ -512,6 +512,103 @@
         "descriptions.en"
       ],
       "summary": "Océade Strasbourg : correction sourcée des huit versions de l’article et affinage de deux formulations après audit intégral ; statut partiel conservé."
+    },
+    {
+      "eventId": "apply-2699d7fe-a979-42aa-b3c5-dd2853fe2438",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:05:24.523025Z",
+      "appliedAt": "2026-11-03T04:05:24.523Z",
+      "receiptFile": "10-sers-operator-apply.receipt.json",
+      "receiptSha256": "c0093d70d31b6d5b4c197bfd3f1ce3cfc8d91fb525f2aeb3522cb1a23b159170",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contactDetails",
+        "foundedYear",
+        "legalName",
+        "operatorId"
+      ],
+      "summary": "Océade Strasbourg : exploitant historique SERS renseigné depuis le témoignage du directeur recoupé avec DNA1989 et sources officielles ; présentation huit langues et coordonnées actuelles, audit final restant."
+    },
+    {
+      "eventId": "apply-65007492-d67a-4ce7-9a00-265eaf93938d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:07:44.5095135Z",
+      "appliedAt": "2026-11-03T04:07:44.509Z",
+      "receiptFile": "10-sers-description-apply.receipt.json",
+      "receiptSha256": "73277adee9e8c232941079948937c7059c5463c08656769bc8fd7ef963d69ec8",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "description.de",
+        "description.en",
+        "description.es",
+        "description.fr",
+        "description.it",
+        "description.nl",
+        "description.pl",
+        "description.pt"
+      ],
+      "summary": "SERS : huit descriptions appliquées au champ officiel description de la nouvelle référence, après contrôle des huit différences du Preview ; audit final restant."
+    },
+    {
+      "eventId": "apply-a005594a-1ded-4f2a-8505-5bba18a051bd",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:08:36.2787324Z",
+      "appliedAt": "2026-11-03T04:08:36.278Z",
+      "receiptFile": "10-two-sourced-descriptions-apply.receipt.json",
+      "receiptSha256": "7837cb057f1fd9441de634b959c35e5a17a27bc71620971f0797e0ec83694c1d",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Océade Strasbourg : piscine à balles et grand toboggan jaune décrits dans huit langues sur sources précises, formats historiques courts documentés ; audit final restant."
+    },
+    {
+      "eventId": "apply-fdd800e4-39d7-4503-819c-8612e423954b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:11:55.9418808Z",
+      "appliedAt": "2026-11-03T04:11:55.941Z",
+      "receiptFile": "10-refine-article-apply.receipt.json",
+      "receiptSha256": "0b3c27ec1678772e1845320fa2cd7993a87e07e249230bad9a57bdb3a6aa2ac3",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Océade Strasbourg : deux passages de l’article repris dans huit langues pour éliminer les répétitions et une phrase de méthode, sans changer la chronologie sourcée ; audit final restant."
     }
   ],
   "publicationOrNoop": []
