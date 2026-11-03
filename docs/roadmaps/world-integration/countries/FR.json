@@ -13338,8 +13338,8 @@
       "siteId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
       "legacySiteIds": [],
       "presence": "Hidden",
-      "presenceObservedAt": "2026-11-01T13:23:04.5778403Z",
-      "editorialStatus": "InProgress",
+      "presenceObservedAt": "2026-11-03T04:23:55.7330914Z",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
@@ -13350,7 +13350,7 @@
         "America Park"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-01T13:29:01.652Z",
+      "lastDataIntegrationAt": "2026-11-03T04:23:41.842Z",
       "integrationHistory": [
         {
           "eventId": "apply-760394ca-4aef-4336-b48e-50af509de7c6",
@@ -13631,14 +13631,49 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-5ecac672-f905-4ca6-8b25-98206188e99b",
           "auditEvidence": null,
           "summary": "Reprise audit : six jalons désormais illustrés, photographie contemporaine pour reconversion2012 ; une phrase anglaise article reformulée et quatre libellés de sources corrigés. Données privées, blocage logo historique restant."
+        },
+        {
+          "eventId": "import-photo-e72dc74105d044b68c025a05c4654b75-2026-11-03T041908.047Z",
+          "appliedAt": "2026-11-03T04:19:08.047Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-e72dc74105d044b68c025a05c4654b75-2026-11-03T041908.047Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 10-camp-painted-tipi, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-392054d80b014a5aa7965e9bdf20b741-2026-11-03T041923.232Z",
+          "appliedAt": "2026-11-03T04:19:23.232Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#import-photo-392054d80b014a5aa7965e9bdf20b741-2026-11-03T041923.232Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 10-bank-street, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-d7510d73-286a-43ae-9cdd-042111359d90",
+          "appliedAt": "2026-11-03T04:23:41.842Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-d7510d73-286a-43ae-9cdd-042111359d90",
+          "auditEvidence": null,
+          "summary": "Vallée des Peaux-Rouges : description de la banque enrichie en huit langues et article complété par une photographie de la banque et un témoignage sur la vie du camp. Sources, blocs précédents et confidentialité conservés; résultat partiel avant audit."
         }
       ],
-      "nextAction": "Huit éléments, deux zones, quinze médias, six faits et article dans huit langues intégrés. Audit711champs et33entités inchangées. Parc privé : logo historique requis, score projeté85/100 ; rechercher un fichier officiel exploitable avant publication et Facebook. Voir vallee-peaux-rouges-progress-audit.json.",
+      "nextAction": "8 éléments, 17 médias, 6 faits et article en huit langues. Banque illustrée et description développée; témoignage sur la vie du camp ajouté. Audit85/100 : logo historique et description précise du fort encore nécessaires. Fiche privée, Facebook non envoyé. Voir vallee-peaux-rouges-followup-audit-20261103.json.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Jan Hertoghs — De laatste westerners en cowboydorpen van België (2), entretien et photographies historiques de Fleurines",
+          "url": "https://www.janhertoghs.be/reportages/ch6tbtnz6mdn6wii8i0ln1lbqngcoa",
+          "accessedAt": "2026-11-03"
         }
       ]
     },

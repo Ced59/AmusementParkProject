@@ -16,8 +16,8 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | --- | ---: |
 | À intégrer | 20 |
 | À qualifier | 212 |
-| En cours | 13 |
-| Bloqué | 13 |
+| En cours | 12 |
+| Bloqué | 14 |
 | Intégration achevée | 11 |
 | Publié, date inconnue | 127 |
 | Hors périmètre enregistré | 99 |

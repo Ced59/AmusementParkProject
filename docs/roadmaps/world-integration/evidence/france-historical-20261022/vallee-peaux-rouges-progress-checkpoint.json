@@ -1,0 +1,19 @@
+{
+  "entryId": "FR-candidate-b96b33e2bd92d5",
+  "owner": "Conversation France",
+  "parkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+  "stage": "blocked-after-followup-audit",
+  "updatedAtUtc": "2026-11-03T04:25:36.166031+00:00",
+  "lastDataIntegrationAt": "2026-11-03T04:23:41.842Z",
+  "authoritativeGraph": "10-full-export.json",
+  "authoritativeAudit": "10-followup-audit.json",
+  "private": true,
+  "actualApiBlockers": [
+    "media.logo-required"
+  ],
+  "editorialGap": "Fort : description précise encore à documenter.",
+  "images": 17,
+  "historyFacts": 6,
+  "articleLanguages": 8,
+  "nextAction": "Authentifier et isoler le logo historique, documenter le fort; conserver les trois nouveaux reçus et ne pas répéter les imports."
+}
