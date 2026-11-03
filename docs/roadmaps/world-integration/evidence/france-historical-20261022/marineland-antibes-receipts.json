@@ -163,6 +163,114 @@
         "zoneId"
       ],
       "summary": "20 expériences, anciens équipements et services ajoutés en privé, avec neuf points recoupés et six restrictions historiques sourcées. Parkings partagés sans fermeture individuelle inventée. Total 63 lieux; contrôle des alias, géographie et descriptions encore à poursuivre."
+    },
+    {
+      "eventId": "apply-cec4ef2e-47b6-4eab-80d4-88b82a171260",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:57:48.0638521Z",
+      "appliedAt": "2026-11-03T04:57:48.063Z",
+      "receiptFile": "04-park-description-apply.receipt.json",
+      "receiptSha256": "1373641ca4dacaaf8e46c3c1c5061052517687deeb7c0961d60c73800e8cb354",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Description générale de Marineland intégrée et relue personnellement en huit langues ; récit historique et distinction hôtel/parcs voisins."
+    },
+    {
+      "eventId": "apply-ac4255ff-c30f-4c36-9660-cdf4e658bcde",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:59:25.1858047Z",
+      "appliedAt": "2026-11-03T04:59:25.185Z",
+      "receiptFile": "04-zone-lagoon-apply.receipt.json",
+      "receiptSha256": "e6bda9c43c4095cccd0d51b9154a3a62290deb81e3d186d49e4c0c29cd6e2fac",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Description de Marineland Lagoon rédigée et relue en huit langues, avec distinction des espaces de baignade et des bassins animaliers."
+    },
+    {
+      "eventId": "apply-35c9a06a-b8aa-4b06-9250-69efb48b22f4",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:04:36.0612806Z",
+      "appliedAt": "2026-11-03T05:04:36.061Z",
+      "receiptFile": "04-items-major-six-apply.receipt.json",
+      "receiptSha256": "baf5562c93bf3ce06149175af029d8bf83b36534d6039b276a8898cb4bcfd9e2",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions détaillées en huit langues de six espaces majeurs : orques, dauphins, otaries de Californie, otaries de Steller, Antarctica et tunnel des requins."
+    },
+    {
+      "eventId": "apply-bb92d80e-b603-41a0-9491-c47e88ec3eae",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:09:58.4066076Z",
+      "appliedAt": "2026-11-03T05:09:58.406Z",
+      "receiptFile": "04-items-landscapes-five-apply.receipt.json",
+      "receiptSha256": "a6b9f388304f8371f09ba391dfdb66a3ea00af3841fabc42fb15916f014bb026",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions en huit langues du musée, de la volière, des tortues, des manchots de Humboldt de l’entrée et des anciens ours polaires ; sources photographiques et primaires vérifiées."
     }
   ],
   "publicationOrNoop": []

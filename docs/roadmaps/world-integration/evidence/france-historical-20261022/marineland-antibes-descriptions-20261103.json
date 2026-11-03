@@ -1,0 +1,39 @@
+{
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "ownerConversation": "Conversation France",
+  "stage": "04",
+  "completed": false,
+  "parkDescriptions": 8,
+  "zoneDescriptions": {
+    "Marineland Lagoon": 8
+  },
+  "parkItemDescriptions": {
+    "total": 63,
+    "eightLanguageComplete": 11,
+    "keys": [
+      "bassins-orques",
+      "bassin-dauphins",
+      "otaries-californie",
+      "otaries-steller",
+      "antarctica",
+      "manchots-humboldt-entree",
+      "tunnel-requins",
+      "tortues-marines",
+      "voliere-lagoon",
+      "musee-marine-exposition",
+      "ours-polaires"
+    ]
+  },
+  "evidence": [
+    "marineland-antibes-receipts.json",
+    "marineland-antibes-inventory-20261103.json"
+  ],
+  "review": "Chaque texte rédigé et relu personnellement en huit langues. Les textes racontent le parc fermé au passé, sans restriction, date d’ouverture ou détail technique dans les descriptions. Les versions polonaises plus compactes conservent tous les paragraphes. Audit final de tout le corpus restant à faire.",
+  "newPrimarySources": [
+    "https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de",
+    "https://www.gazette-drouot.com/telechargement/catalogue?venteId=79388",
+    "https://www.yorkshirewildlifepark.com/news/polar-bears-on-the-move-at-yorkshire-wildlife-park/"
+  ],
+  "remaining": "52 descriptions de lieux, références, photos, plans officiels, histoire et articles avant audit final. Fiche toujours privée ; aucune annonce Facebook envoyée."
+}
