@@ -34,9 +34,9 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 50 |
-| Parcs en activité absents de la photographie FR | 60 | 60 |
+| Parcs en activité absents de la photographie FR | 60 | 59 |
 | Fiches historiques privées existantes | 10 | 4 |
-| Parcs historiques absents de la photographie FR | 20 | 18 |
+| Parcs historiques absents de la photographie FR | 20 | 19 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
 | Candidat historique distinct découvert lors de la qualification (Nouveau Tivoli) | 0 | 1 |
 | **Total** | **225** | **133** |
@@ -147,7 +147,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Les Poussins, Parc de la Citadelle — Lille
 - [ ] Ludina — Mirande
 - [ ] Ludolac — Vesoul
-- [ ] Marineland d'Antibes — Antibes — fermeture récente à intégrer historiquement
+- [ ] Marineland d'Antibes — Antibes — **reclassé historique, suivi en section 5** ; fermeture du 5 janvier 2025 confirmée, hors compteur des parcs actuels.
 - [ ] Micropolis, la cité des insectes — Saint-Léons
 - [ ] Movinpark — Cernay
 - [ ] Mysterra — Montendre
@@ -189,6 +189,8 @@ Aucune fiche ne reste dans cette catégorie.
 - [ ] Zygo Park / Zygofolis — `b2dca918-9747-4623-a0c0-38e89634aaff` ; fiche et contenus publiés le 1er novembre 2026, 19 faits historiques et article accessibles dans huit langues. **95/100 sans bloqueur API** : ligne conservée ouverte avec ses lacunes historiques, aucune exception de score acceptée. [Facebook Published](https://www.facebook.com/1285475681307050/posts/122125614645424431). [Audit de publication](world-integration/evidence/france-historical-20261022/zygofolis-publication-audit.json).
 
 ## 5. Parcs historiques absents de la photographie FR
+
+- [ ] Marineland d’Antibes — Antibes — 1970–2025 — `afd24c62-0972-4c98-860c-b5a55984f777` ; fiche historique, fondateur, exploitant et logo officiel créés en privé. Inventaire et contenus en cours ; aucune publication du site ni Facebook. [Qualification et preuves](world-integration/evidence/france-historical-20261022/marineland-antibes-intake-20261103.json).
 
 - [ ] American Park — Marseille — 1910–1914 — `4ad5492e-7a08-4a3a-a397-8937b11a04c9` ; 12 éléments, 9 médias, 5 faits et article en huit langues intégrés. La photographie municipale d’Henri Para apporte le contexte d’octobre 1914. Audit **86/100** : logo authentifié et six descriptions restent à documenter. Fiche privée, Facebook non envoyé. [Audit et sources](world-integration/evidence/france-historical-20261022/american-park-marseille-followup-audit-20261103.json).
 - [ ] Aquagif — Gif-sur-Yvette — 1988-2002 — `ce026109-5388-4bbd-8e11-c0266adcb514` ; onze éléments, six médias, cinq faits historiques et article en huit langues intégrés. Audit intermédiaire **78/100** : logo historique et huit descriptions manquent ; identités individuelles des toboggans et bassins à préciser. Fiche privée, aucune publication Facebook. [Audit et lacunes](world-integration/evidence/france-historical-20261022/aquagif-progress-audit.json).

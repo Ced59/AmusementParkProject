@@ -1,0 +1,111 @@
+{
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "qualifiedAtUtc": "2026-11-03T04:30:58.336758+00:00",
+  "name": "Marineland d’Antibes",
+  "entityKind": "Park",
+  "type": "Zoo",
+  "status": "ClosedDefinitively",
+  "identityDecision": "No corresponding park or standalone in nine global name, alias, locality and neighbouring-offer searches. Canadian Marineland and Antibes Land are distinct entities.",
+  "scope": "Marine zoological park and its own fixed visitor facilities. Aquasplash, Adventure Golf and Kid’s Island are distinct neighbouring parks; do not import their rides as Marineland items. The independent present So.Blue hotel must not be presented as a currently open marine park.",
+  "openingPrecision": "Year1970 retained; exact opening day requires corroboration.",
+  "closingPrecision": "2025-01-05, official homepage and dated announcement; actual public closure distinct from later animal transfers.",
+  "sources": [
+    {
+      "label": "Site officiel — fermeture du zoo marin depuis le 5 janvier 2025",
+      "url": "https://www.marineland.fr/",
+      "accessedAt": "2026-11-03"
+    },
+    {
+      "label": "Mentions légales officielles — SAS Marineland, RCS 036920924, adresse",
+      "url": "https://www.marineland.fr/mentions-legales",
+      "accessedAt": "2026-11-03"
+    },
+    {
+      "label": "Communiqué officiel du 4 décembre 2024 — distinction des parcs voisins",
+      "url": "https://www.marineland.fr/content/dam/mar/fr/files/CP%20-%20Marineland%20annonce%20%C3%A0%20son%20CSE%20son%20projet%20de%20fermeture%20d%C3%A9finitive%20%C3%A0%20compter%20du%205%20janvier%202025.pdf",
+      "accessedAt": "2026-11-03"
+    },
+    {
+      "label": "Historique et fondateur — recoupement encyclopédique, date exacte à approfondir",
+      "url": "https://fr.wikipedia.org/wiki/Marineland_d%27Antibes",
+      "accessedAt": "2026-11-03"
+    },
+    {
+      "label": "Programme officiel 2024 — offre historique nommée",
+      "url": "https://www.marineland.fr/content/dam/mar/fr/files/PROGRAMME-MARINELAND-2024.pdf",
+      "accessedAt": "2026-11-03"
+    }
+  ],
+  "sourceWarnings": [
+    "Current official navigation redirects most historical visitor pages to closed homepage; do not treat a 200 response as surviving item content.",
+    "Guessed Ordre de la Libération profile URL returned generic search listing, not personal biography; not cited as read.",
+    "France.fr tourism2015 PDF network403; indexed excerpt only, not used as downloaded full source.",
+    "Ordre de la Libération education PDF download truncated at 4 MiB; unusable extraction excluded from evidence. No biography established from this file."
+  ],
+  "steps": {
+    "01": "Useful: create private park identity and minimal founder/operator references.",
+    "02": "Determine authentic zones from official map; do not invent grouping.",
+    "03": "Useful: three inventory passes, historical named enclosures/shows plus shops/restaurants/services.",
+    "04": "Useful: original developed copy and eight reviewed languages.",
+    "05": "Useful: official historical logo, photos, annual maps, references.",
+    "06": "Not applicable to current closed park; no obsolete schedule.",
+    "07": "No current admission pricing; dated historical tariffs only if useful and proved.",
+    "08": "Useful: source-specific timelines and developed articles.",
+    "09": "Mandatory fresh full export, quantitative and textual audit, then authorized publication only after applicable gates."
+  },
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "checkedAt": "2026-11-03T04:38:52.116354Z",
+  "searches": [
+    {
+      "file": "00-search-parks-adventure-golf.json",
+      "totalItems": 2,
+      "totalPages": 1
+    },
+    {
+      "file": "00-search-parks-antibes.json",
+      "totalItems": 1,
+      "totalPages": 1
+    },
+    {
+      "file": "00-search-parks-aquasplash.json",
+      "totalItems": 2,
+      "totalPages": 1
+    },
+    {
+      "file": "00-search-parks-kid.json",
+      "totalItems": 41,
+      "totalPages": 1
+    },
+    {
+      "file": "00-search-parks-marine-land.json",
+      "totalItems": 0,
+      "totalPages": 0
+    },
+    {
+      "file": "00-search-parks-marineland.json",
+      "totalItems": 1,
+      "totalPages": 1
+    },
+    {
+      "file": "00-search-standaloneattractions-antibes.json",
+      "totalItems": 0,
+      "totalPages": 0
+    },
+    {
+      "file": "00-search-standaloneattractions-marine-land.json",
+      "totalItems": 0,
+      "totalPages": 0
+    },
+    {
+      "file": "00-search-standaloneattractions-marineland.json",
+      "totalItems": 0,
+      "totalPages": 0
+    }
+  ],
+  "integration": "partial",
+  "isVisible": false,
+  "facebook": "Not attempted",
+  "logoImageId": "eb70f014fa044a4abfbe3f7850be2f25",
+  "nextAction": "Inventaire historique, géolocalisation, descriptions en huit langues, médias, cartes annuelles, références, histoire et audit final."
+}

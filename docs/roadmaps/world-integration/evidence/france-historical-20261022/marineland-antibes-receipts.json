@@ -1,0 +1,53 @@
+{
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "name": "Marineland d’Antibes",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:32:23.6682546Z",
+      "appliedAt": "2026-11-03T04:32:23.668Z",
+      "receiptFile": "01-core-reviewed-apply.receipt.json",
+      "receiptSha256": "85d27233adefb59f9f858f26ec1af1cf274c3a67bfed7dafb6acf647171febf7",
+      "counts": {
+        "created": 3,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDate",
+        "closingDateText",
+        "founderId",
+        "openingDateText",
+        "operatorId",
+        "postalCode",
+        "status",
+        "street",
+        "type",
+        "websiteUrl"
+      ],
+      "summary": "Création privée de Marineland d’Antibes après neuf recherches officielles : zoo marin historique, année1970 et fermeture publique du5janvier2025, adresse et site officiel, fondateur RolanddeLaPoype et opérateur SASMarineland. Offre des parcs voisins exclue; intégration éditoriale à poursuivre."
+    },
+    {
+      "eventId": "import-photo-eb70f014fa044a4abfbe3f7850be2f25-2026-11-03T043359.677Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T04:33:59.677Z",
+      "appliedAt": "2026-11-03T04:33:59.677Z",
+      "receiptFile": "01-official-logo-import-receipt.json",
+      "receiptSha256": "361b0a76d7cd4dd02fe370c5819f97eac763b09d8fae425fce5df98c36ddd1df",
+      "imageId": "eb70f014fa044a4abfbe3f7850be2f25",
+      "ownerId": "afd24c62-0972-4c98-860c-b5a55984f777",
+      "createdAt": "2026-11-03T04:33:56.185Z",
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/images/logos/Marineland_logo_110x60px.png",
+      "summary": "Import privé du média historique 01-official-logo, fichier et huit langues relus ; audit final restant."
+    }
+  ],
+  "publicationOrNoop": []
+}

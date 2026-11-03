@@ -18483,30 +18483,80 @@
       "name": "Marineland d'Antibes",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "Parc zoologique marin historique",
       "locality": "Antibes",
-      "siteId": null,
+      "siteId": "afd24c62-0972-4c98-860c-b5a55984f777",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "ExistsVisibilityUnknown",
+      "presenceObservedAt": null,
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Confirmée par neuf recherches officielles et sources du parc",
       "possibleMatches": [],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "aliases": [
+        "Marineland",
+        "Marineland Côte d’Azur"
+      ],
+      "assignedTo": "Conversation France",
+      "lastDataIntegrationAt": "2026-11-03T04:33:59.677Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
+          "appliedAt": "2026-11-03T04:32:23.668Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
+          "auditEvidence": null,
+          "summary": "Création privée de Marineland d’Antibes après neuf recherches officielles : zoo marin historique, année1970 et fermeture publique du5janvier2025, adresse et site officiel, fondateur RolanddeLaPoype et opérateur SASMarineland. Offre des parcs voisins exclue; intégration éditoriale à poursuivre."
+        },
+        {
+          "eventId": "import-photo-eb70f014fa044a4abfbe3f7850be2f25-2026-11-03T043359.677Z",
+          "appliedAt": "2026-11-03T04:33:59.677Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-eb70f014fa044a4abfbe3f7850be2f25-2026-11-03T043359.677Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 01-official-logo, fichier et huit langues relus ; audit final restant."
+        }
+      ],
+      "nextAction": "Inventaire historique, géolocalisation, descriptions en huit langues, médias, cartes annuelles, références, histoire et audit final.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site officiel — fermeture du zoo marin depuis le 5 janvier 2025",
+          "url": "https://www.marineland.fr/",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Mentions légales officielles — SAS Marineland, RCS 036920924, adresse",
+          "url": "https://www.marineland.fr/mentions-legales",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Communiqué officiel du 4 décembre 2024 — distinction des parcs voisins",
+          "url": "https://www.marineland.fr/content/dam/mar/fr/files/CP%20-%20Marineland%20annonce%20%C3%A0%20son%20CSE%20son%20projet%20de%20fermeture%20d%C3%A9finitive%20%C3%A0%20compter%20du%205%20janvier%202025.pdf",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Historique et fondateur — recoupement encyclopédique, date exacte à approfondir",
+          "url": "https://fr.wikipedia.org/wiki/Marineland_d%27Antibes",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Programme officiel 2024 — offre historique nommée",
+          "url": "https://www.marineland.fr/content/dam/mar/fr/files/PROGRAMME-MARINELAND-2024.pdf",
+          "accessedAt": "2026-11-03"
         }
-      ]
+      ],
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-intake-20261103.json"
     },
     {
       "entryId": "FR-candidate-b985933907dc00",
