@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-11-03T02:38:30.827893+00:00",
+  "rows": [
+    {
+      "key": "model-chambles",
+      "name": "Château d’Essalois",
+      "sourcePage": "https://web.archive.org/web/20001208195800id_/http://www.parc-de-la-drosera.fr:80/chambles.html",
+      "nativeImage": "10-model-pages/Chambles.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-marcil",
+      "name": "Château de Marcilly-le-Châtel",
+      "sourcePage": "https://web.archive.org/web/20001208214500id_/http://www.parc-de-la-drosera.fr:80/marcil.html",
+      "nativeImage": "10-model-pages/Marcil.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-vachere",
+      "name": "La Vachère de Sauvain",
+      "sourcePage": "https://web.archive.org/web/20001209014000id_/http://www.parc-de-la-drosera.fr:80/vachere.html",
+      "nativeImage": "10-model-pages/Vachere.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-sjean",
+      "name": "Donjon de Saint-Jean-Saint-Maurice",
+      "sourcePage": "https://web.archive.org/web/20001209001200id_/http://www.parc-de-la-drosera.fr:80/sjean.html",
+      "nativeImage": "10-model-pages/Sjean.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

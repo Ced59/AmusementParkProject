@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-11-03T02:27:58.760473+00:00",
+  "rows": [
+    {
+      "key": "model-thiers",
+      "name": "Château du Pirou de Thiers",
+      "sourcePage": "https://web.archive.org/web/20001209011600id_/http://www.parc-de-la-drosera.fr:80/thiers.html",
+      "nativeImage": "10-model-pages/Thiers.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-feurs",
+      "name": "Chapelle des Martyrs de Feurs",
+      "sourcePage": "https://web.archive.org/web/20001208205700id_/http://www.parc-de-la-drosera.fr:80/feurs.html",
+      "nativeImage": "10-model-pages/Feurs.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-lezigneux",
+      "name": "Chapelle de Vidrieux",
+      "sourcePage": "https://web.archive.org/web/20001208213600id_/http://www.parc-de-la-drosera.fr:80/lezigneux.html",
+      "nativeImage": "10-model-pages/Lezigneux.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-rambert",
+      "name": "Île et barrage de Grangent",
+      "sourcePage": "https://web.archive.org/web/20001208225800id_/http://www.parc-de-la-drosera.fr:80/rambert.html",
+      "nativeImage": "10-model-pages/Rambert.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

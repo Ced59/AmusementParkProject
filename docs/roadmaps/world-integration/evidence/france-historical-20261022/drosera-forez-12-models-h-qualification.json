@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-11-03T02:15:14.766555+00:00",
+  "rows": [
+    {
+      "key": "model-boen",
+      "name": "Château de Boën",
+      "sourcePage": "https://web.archive.org/web/20001208193200id_/http://www.parc-de-la-drosera.fr:80/boen.html",
+      "nativeImage": "10-model-pages/Boen.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-marcoux",
+      "name": "Château de Goutelas",
+      "sourcePage": "https://web.archive.org/web/20001208215200id_/http://www.parc-de-la-drosera.fr:80/marcoux.html",
+      "nativeImage": "10-model-pages/Marcoux.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-labenis",
+      "name": "Abbaye de La Bénisson-Dieu",
+      "sourcePage": "https://web.archive.org/web/20001208212900id_/http://www.parc-de-la-drosera.fr:80/labenis.html",
+      "nativeImage": "10-model-pages/Labenis.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-ssixte",
+      "name": "Église de Saint-Sixte",
+      "sourcePage": "https://web.archive.org/web/20001209010200id_/http://www.parc-de-la-drosera.fr:80/ssixte.html",
+      "nativeImage": "10-model-pages/Ssixte.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

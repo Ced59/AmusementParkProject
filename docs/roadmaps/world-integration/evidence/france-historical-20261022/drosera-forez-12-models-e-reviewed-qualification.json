@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-11-03T02:02:24.239972+00:00",
+  "rows": [
+    {
+      "key": "model-trelins",
+      "name": "Cave des Vignerons Foréziens",
+      "sourcePage": "https://web.archive.org/web/20010222145726id_/http://www.parc-de-la-drosera.fr:80/trelins.html",
+      "nativeImage": "10-model-pages/Trelins.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-champdieu",
+      "name": "Prieuré de Champdieu",
+      "sourcePage": "https://web.archive.org/web/20001208200900id_/http://www.parc-de-la-drosera.fr:80/champdieu.html",
+      "nativeImage": "10-model-pages/Champdieu.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-usson",
+      "name": "Musée d’Usson-en-Forez",
+      "sourcePage": "https://web.archive.org/web/20001209013000id_/http://www.parc-de-la-drosera.fr:80/usson.html",
+      "nativeImage": "10-model-pages/Usson.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

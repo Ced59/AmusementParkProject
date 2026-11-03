@@ -1,0 +1,22 @@
+{
+  "atUtc": "2026-11-03T02:46:01.047606+00:00",
+  "rows": [
+    {
+      "key": "model-moingt",
+      "source": "https://web.archive.org/web/20001208215700id_/http://www.parc-de-la-drosera.fr:80/moingt.html",
+      "qualification": "Explicit official model18 and dedicated page. Moingt.jpg missing, only404CDX; two general searches no alternative. Unlabelled tower in schoolgroup photo cannot establish identity. Retain private inventory without visual copy or photo."
+    },
+    {
+      "key": "model-roanne",
+      "source": "https://classedespetits.blogspot.com/2013/06/notre-voyage-scolaire.html",
+      "qualification": "School account of June10,2013 visit, publishedJune14. NativeDSC06690.JPG shows same named white theatre with blue roof. Dedicated caption and photo agree; not in earlier49catalogue. Full-size municipal theatre not a standalone integration. Manual8language3paragraph2headingcopy supported by exact photo; concise exception not padded with full-size monument dates."
+    }
+  ],
+  "catalogue": {
+    "earlierOfficialNamedModels": 49,
+    "additionalIdentifiedModel": 1,
+    "knownDistinctModelsAcrossPeriods": 50,
+    "reportedIn2007": 53,
+    "chronologyNote": "Cannot assume all50coexistedin2007; remaining reported total not fully named. No invented model45 or other placeholder attractions."
+  }
+}

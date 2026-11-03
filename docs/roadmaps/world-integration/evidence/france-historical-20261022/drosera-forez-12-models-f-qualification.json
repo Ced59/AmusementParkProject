@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-11-03T02:05:41.131272+00:00",
+  "rows": [
+    {
+      "key": "model-vichy",
+      "name": "Hall des Sources de Vichy",
+      "sourcePage": "https://web.archive.org/web/20001209014600id_/http://www.parc-de-la-drosera.fr:80/vichy.html",
+      "nativeImage": "10-model-pages/Vichy.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-sbonnet",
+      "name": "Croix de Saint-Bonnet-le-Courreau",
+      "sourcePage": "https://web.archive.org/web/20001208234600id_/http://www.parc-de-la-drosera.fr:80/sbonnet.html",
+      "nativeImage": "10-model-pages/Sbonnet.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-doizieux",
+      "name": "Tour de Doizieux",
+      "sourcePage": "https://web.archive.org/web/20001208204900id_/http://www.parc-de-la-drosera.fr:80/doizieux.html",
+      "nativeImage": "10-model-pages/Doizieux.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-rive",
+      "name": "Cheminée Marrel de Rive-de-Gier",
+      "sourcePage": "https://web.archive.org/web/20001208230800id_/http://www.parc-de-la-drosera.fr:80/rive.html",
+      "nativeImage": "10-model-pages/Rive.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

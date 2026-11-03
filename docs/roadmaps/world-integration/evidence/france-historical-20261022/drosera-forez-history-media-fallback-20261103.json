@@ -1,0 +1,20 @@
+{
+  "atUtc": "2026-11-03T02:50:17.651519+00:00",
+  "opening": {
+    "eventYear": 1992,
+    "imageId": "d116533f50f74d079fe8ba491e9434e8",
+    "photoDate": "summer2001",
+    "contextualFallback": true,
+    "reason": "No photograph of the1992opening ceremony recovered. Existing visitor landscape explicitly captioned2001, not relabelled as opening."
+  },
+  "closure": {
+    "eventYear": 2013,
+    "imageId": "3bbb996e788540bcacf2e848b3944d82",
+    "photoDate": "2013-06-10",
+    "contextualFallback": true,
+    "reason": "No actual closure-event photograph found. Primaryschoolview from sameyearbeforeclosure, caption preservesexactvisitdate."
+  },
+  "source": "https://classedespetits.blogspot.com/2013/06/notre-voyage-scolaire.html",
+  "allEightNewTextsPersonallyAuthoredAndReviewed": true,
+  "noNewTimelineFactForOrdinarySchoolVisit": true
+}

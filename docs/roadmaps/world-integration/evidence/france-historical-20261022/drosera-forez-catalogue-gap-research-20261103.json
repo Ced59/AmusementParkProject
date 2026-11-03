@@ -1,0 +1,28 @@
+{
+  "atUtc": "2026-11-03T02:25:20.190723+00:00",
+  "officialMapModels": 49,
+  "officialRoutePlanModels": 49,
+  "sameModelsAfterCaseNormalization": true,
+  "captionNumbersMissing": [
+    45
+  ],
+  "maxCaptionNumber": 50,
+  "oldOfficialCount": 50,
+  "laterDepartmental2007Count": 53,
+  "additionalPagesChecked": [
+    "jeansa",
+    "coutel",
+    "mine",
+    "veillee",
+    "vie",
+    "parc",
+    "presenta",
+    "aquarel",
+    "adultes1",
+    "groupes"
+  ],
+  "additionalQualifiedModels": 0,
+  "jeansaDecision": "Townhistory and actualvillagephoto, not an additionalminiature. No creation.",
+  "missingMoingtOriginal": "BothhostexactCDXqueries withoutmimetypefilterreturnonly20020824HTTP404, so absentoriginalisconfirmedratherthanmissedMIME. No altered/croppedplanimage substituted.",
+  "unknowns": "One50thmodelunidentifiedinoldcatalogue; fourunidentifiedrelative2007count53, no namesinvented. Touristcircuitgeo45.818056,3.765556belongsbroaderroute/Noiretable, not exactpark; excluded."
+}

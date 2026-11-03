@@ -1,0 +1,1360 @@
+{
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+  "checkedAtUtc": "2026-11-03T03:15:41.351007+00:00",
+  "freshExportedAtUtc": "2026-11-03T02:56:59.2195846Z",
+  "finalAuditPerformed": true,
+  "decision": "Published on site and Facebook; final audit performed, integration remains partial at 88/100 with factual source gaps.",
+  "completed": false,
+  "sitePublicationAuthorizedEarlier": true,
+  "facebookPublicationAuthorizedEarlier": true,
+  "projectedCompleteness": {
+    "completenessScore": 83,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 96,
+    "earnedPoints": 80,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-03T02:56:59.2195846Z",
+    "items": 53,
+    "zones": 0,
+    "attractions": 50,
+    "attractionStatuses": {
+      "ClosedDefinitively": 50
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 49,
+    "attractionsWithImage": 49,
+    "attractionImageGaps": [
+      {
+        "id": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "name": "Tour de Moingt"
+      }
+    ],
+    "ownedImages": 61,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "c8c179f9-23c0-479b-bd96-5b6eb81c3a3f",
+        "name": "Abbaye de La Bénisson-Dieu",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "a5dc2de9-b48b-4048-ad9d-d67691d127ea",
+        "name": "Boutique",
+        "category": "Shop",
+        "images": 3
+      },
+      {
+        "id": "c088c2ac-6586-4220-ad8a-7851974bcd91",
+        "name": "Cathédrale de Clermont-Ferrand",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "7287d18d-adec-4b1b-b237-0780f1c9ff68",
+        "name": "Cave des Vignerons Foréziens",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "ea7bffce-a424-4f24-b9d1-54e978e7abe1",
+        "name": "Chapelle de Chambost-Longessaigne",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "9f4cff90-d13f-470f-b4f0-7a142980a97a",
+        "name": "Chapelle de Vidrieux",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a435f063-3170-4bb5-a361-0587b7319a33",
+        "name": "Chapelle des Martyrs de Feurs",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "02078e1f-31b0-4059-b40c-31ad4c0309f8",
+        "name": "Cheminée Marrel de Rive-de-Gier",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d50ea390-5de4-4037-9cbb-4b7d8ec22179",
+        "name": "Château de Boën",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "60cd5e5d-6404-4139-8604-41a77f53cc1a",
+        "name": "Château de Chalmazel",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "ed16f8f4-0deb-44d2-9193-d5e8110668aa",
+        "name": "Château de Couzan",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a05fd41a-c920-46c5-bacd-964f3fc73725",
+        "name": "Château de Goutelas",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "0af447eb-ce93-4566-aa21-a0ed22d50615",
+        "name": "Château de la Bâtie d’Urfé",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4476e2ba-bd59-49de-9c77-3c6c5bb9a877",
+        "name": "Château de la Roche",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "17927236-5fab-46de-a1b4-aeca97b2d454",
+        "name": "Château de Marcilly-le-Châtel",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "019b40ae-e046-4103-835c-3117db8dc9dc",
+        "name": "Château de Montrond-les-Bains",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "f0c225bc-8176-4c2b-823c-836025c9c5a0",
+        "name": "Château de Saint-Marcel-de-Félines",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "7491ac0d-18d5-4cc4-a31e-e4503f6d0ee5",
+        "name": "Château du Pirou de Thiers",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "1c1d1650-d9d0-4be5-8553-fe2a3ece990d",
+        "name": "Château d’Essalois",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4faff9fe-b9c1-4012-9fe2-f99a4baec591",
+        "name": "Château d’Olliergues",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8168fe00-832e-44c5-b952-024d63c38ecb",
+        "name": "Collégiale de Saint-Bonnet-le-Château",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "9281fe07-502b-4872-96e9-6ae75c14e07d",
+        "name": "Collégiale Notre-Dame-d’Espérance de Montbrison",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "f030a5ec-17cb-4c48-b456-2d2007b627d0",
+        "name": "Croix de Chazeau",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b06c767e-b55e-428a-b2dc-2f180cafbd3b",
+        "name": "Croix de Saint-Bonnet-le-Courreau",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d351f8af-b670-48bf-9be1-608758ebef35",
+        "name": "Croix monolithe de Sauvain",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "73f7d936-d66d-4cd0-b7c6-1927b7c8b4c4",
+        "name": "Donjon de Saint-Jean-Saint-Maurice",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "684dec1a-004e-4d5b-bd40-e02ba7856142",
+        "name": "Hall des Sources de Vichy",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "3cd6f955-f2fb-4f0c-b1c9-4559e96b6571",
+        "name": "Hôtel de ville de Montbrison",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "444d4a42-49c8-467b-bb8f-362ac684528e",
+        "name": "Hôtel de ville de Saint-Étienne",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "5b9eaae2-3941-42f9-af03-3056db60574a",
+        "name": "Hôtel de ville d’Ambert",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "ac3b0933-b2b3-4c55-99e9-b03dc064c32e",
+        "name": "La Vachère de Sauvain",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "ad3ac730-f1d4-4982-9a52-2aa3328b9565",
+        "name": "Maison des Chanoines de Saint-Chamond",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "5058e156-c85a-4794-ba06-3080264a9cf3",
+        "name": "Musée d’Usson-en-Forez",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a047d7a9-5d07-4a21-b036-d73be1abab3f",
+        "name": "Petit Louvre de La Pacaudière",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "04b80ea4-ebd8-46d1-ad44-b50395d7fdab",
+        "name": "Pont de Vaux de Saint-Georges-en-Couzan",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8ff8e945-385a-4bf7-a66d-4c74dc4d5601",
+        "name": "Pont du Pertuiset",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "13931ae2-6f72-4389-84e7-29d8c86d237b",
+        "name": "Prieuré de Champdieu",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "0930b2dd-a902-4443-a539-6220a1b2eaf8",
+        "name": "Prieuré de Saint-Romain-le-Puy",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "ef231784-6388-4beb-8b78-33a903a0a36f",
+        "name": "Puits Couriot",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "50220c41-471e-4f35-b34d-f283423856c2",
+        "name": "Restaurant du Parc de la Droséra",
+        "category": "Restaurant",
+        "images": 3
+      },
+      {
+        "id": "683436b4-0931-4c29-8d14-7793d8f50a98",
+        "name": "Théâtre de Roanne",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4feb3477-1ebe-4a0c-a35c-123d7a438862",
+        "name": "Tour de Cleppé",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "c338bc51-32bd-42fd-8807-2d4d90657ed9",
+        "name": "Tour de Doizieux",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "name": "Tour de Moingt",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "56842ce6-8077-4591-91cd-8ae0acb08831",
+        "name": "Tour Matagrin de Violay",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "dfe5d4dc-d3e3-408e-ab89-9c71f9805bb2",
+        "name": "Volcan à ciel ouvert – Puy de Lemptégy",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "98609fcc-56d1-41b4-a91b-9f0f22e6d641",
+        "name": "Église de Cottance",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "c8b74765-ed0c-4c9f-81c9-46950b77765b",
+        "name": "Église de Feurs",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "c9b4283f-bfb9-4f55-b4b5-12721894d6a6",
+        "name": "Église de Pouilly-lès-Feurs",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a63fd911-5269-4301-8fd3-d3da556d49ea",
+        "name": "Église de Saint-Sixte",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d04fc564-7d4e-443f-a7d7-5ac199a6213c",
+        "name": "Église et château de Sury-le-Comtal",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "de88a048-e49c-4560-8595-f7a75c42e8ab",
+        "name": "Île et barrage de Grangent",
+        "category": "Attraction",
+        "images": 1
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "c8c179f9-23c0-479b-bd96-5b6eb81c3a3f",
+        "name": "Abbaye de La Bénisson-Dieu",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "a5dc2de9-b48b-4048-ad9d-d67691d127ea",
+        "name": "Boutique",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "c088c2ac-6586-4220-ad8a-7851974bcd91",
+        "name": "Cathédrale de Clermont-Ferrand",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "7287d18d-adec-4b1b-b237-0780f1c9ff68",
+        "name": "Cave des Vignerons Foréziens",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ea7bffce-a424-4f24-b9d1-54e978e7abe1",
+        "name": "Chapelle de Chambost-Longessaigne",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "9f4cff90-d13f-470f-b4f0-7a142980a97a",
+        "name": "Chapelle de Vidrieux",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a435f063-3170-4bb5-a361-0587b7319a33",
+        "name": "Chapelle des Martyrs de Feurs",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "02078e1f-31b0-4059-b40c-31ad4c0309f8",
+        "name": "Cheminée Marrel de Rive-de-Gier",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "d50ea390-5de4-4037-9cbb-4b7d8ec22179",
+        "name": "Château de Boën",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "60cd5e5d-6404-4139-8604-41a77f53cc1a",
+        "name": "Château de Chalmazel",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ed16f8f4-0deb-44d2-9193-d5e8110668aa",
+        "name": "Château de Couzan",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a05fd41a-c920-46c5-bacd-964f3fc73725",
+        "name": "Château de Goutelas",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "0af447eb-ce93-4566-aa21-a0ed22d50615",
+        "name": "Château de la Bâtie d’Urfé",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4476e2ba-bd59-49de-9c77-3c6c5bb9a877",
+        "name": "Château de la Roche",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "17927236-5fab-46de-a1b4-aeca97b2d454",
+        "name": "Château de Marcilly-le-Châtel",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "019b40ae-e046-4103-835c-3117db8dc9dc",
+        "name": "Château de Montrond-les-Bains",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "f0c225bc-8176-4c2b-823c-836025c9c5a0",
+        "name": "Château de Saint-Marcel-de-Félines",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "7491ac0d-18d5-4cc4-a31e-e4503f6d0ee5",
+        "name": "Château du Pirou de Thiers",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "1c1d1650-d9d0-4be5-8553-fe2a3ece990d",
+        "name": "Château d’Essalois",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4faff9fe-b9c1-4012-9fe2-f99a4baec591",
+        "name": "Château d’Olliergues",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8168fe00-832e-44c5-b952-024d63c38ecb",
+        "name": "Collégiale de Saint-Bonnet-le-Château",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "9281fe07-502b-4872-96e9-6ae75c14e07d",
+        "name": "Collégiale Notre-Dame-d’Espérance de Montbrison",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "f030a5ec-17cb-4c48-b456-2d2007b627d0",
+        "name": "Croix de Chazeau",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "b06c767e-b55e-428a-b2dc-2f180cafbd3b",
+        "name": "Croix de Saint-Bonnet-le-Courreau",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "d351f8af-b670-48bf-9be1-608758ebef35",
+        "name": "Croix monolithe de Sauvain",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "73f7d936-d66d-4cd0-b7c6-1927b7c8b4c4",
+        "name": "Donjon de Saint-Jean-Saint-Maurice",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "684dec1a-004e-4d5b-bd40-e02ba7856142",
+        "name": "Hall des Sources de Vichy",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "3cd6f955-f2fb-4f0c-b1c9-4559e96b6571",
+        "name": "Hôtel de ville de Montbrison",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "444d4a42-49c8-467b-bb8f-362ac684528e",
+        "name": "Hôtel de ville de Saint-Étienne",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "5b9eaae2-3941-42f9-af03-3056db60574a",
+        "name": "Hôtel de ville d’Ambert",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ac3b0933-b2b3-4c55-99e9-b03dc064c32e",
+        "name": "La Vachère de Sauvain",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ad3ac730-f1d4-4982-9a52-2aa3328b9565",
+        "name": "Maison des Chanoines de Saint-Chamond",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "5058e156-c85a-4794-ba06-3080264a9cf3",
+        "name": "Musée d’Usson-en-Forez",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a047d7a9-5d07-4a21-b036-d73be1abab3f",
+        "name": "Petit Louvre de La Pacaudière",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "04b80ea4-ebd8-46d1-ad44-b50395d7fdab",
+        "name": "Pont de Vaux de Saint-Georges-en-Couzan",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8ff8e945-385a-4bf7-a66d-4c74dc4d5601",
+        "name": "Pont du Pertuiset",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "13931ae2-6f72-4389-84e7-29d8c86d237b",
+        "name": "Prieuré de Champdieu",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "0930b2dd-a902-4443-a539-6220a1b2eaf8",
+        "name": "Prieuré de Saint-Romain-le-Puy",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ef231784-6388-4beb-8b78-33a903a0a36f",
+        "name": "Puits Couriot",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "50220c41-471e-4f35-b34d-f283423856c2",
+        "name": "Restaurant du Parc de la Droséra",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "683436b4-0931-4c29-8d14-7793d8f50a98",
+        "name": "Théâtre de Roanne",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4feb3477-1ebe-4a0c-a35c-123d7a438862",
+        "name": "Tour de Cleppé",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c338bc51-32bd-42fd-8807-2d4d90657ed9",
+        "name": "Tour de Doizieux",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "name": "Tour de Moingt",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "56842ce6-8077-4591-91cd-8ae0acb08831",
+        "name": "Tour Matagrin de Violay",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "dfe5d4dc-d3e3-408e-ab89-9c71f9805bb2",
+        "name": "Volcan à ciel ouvert – Puy de Lemptégy",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "98609fcc-56d1-41b4-a91b-9f0f22e6d641",
+        "name": "Église de Cottance",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c8b74765-ed0c-4c9f-81c9-46950b77765b",
+        "name": "Église de Feurs",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c9b4283f-bfb9-4f55-b4b5-12721894d6a6",
+        "name": "Église de Pouilly-lès-Feurs",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a63fd911-5269-4301-8fd3-d3da556d49ea",
+        "name": "Église de Saint-Sixte",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "d04fc564-7d4e-443f-a7d7-5ac199a6213c",
+        "name": "Église et château de Sury-le-Comtal",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "de88a048-e49c-4560-8595-f7a75c42e8ab",
+        "name": "Île et barrage de Grangent",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 2,
+    "parkHistory": 2,
+    "itemHistory": 0,
+    "historyWithSource": 2,
+    "historyWithImage": 2,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": false,
+    "publicItems": 51,
+    "privateItems": 2,
+    "publishedImages": 61
+  },
+  "corpus": {
+    "reviewedAtUtc": "2026-11-03T03:15:41.351007+00:00",
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "fields": 2117,
+    "allEightLanguagesAuthoredAndReviewedByCodex": true,
+    "reviewChain": "Prior personal reviews retained. After publication, shop and restaurant copy was rewritten in all eight languages; five image metadata passages and overlapping article sentences were edited. Final consolidated corpus contains no encoding findings, paragraph duplicates, editorial flags or repeated nine-word cross-corpus sequences.",
+    "corrections": [
+      "14-refine-copy",
+      "15-source-copy-correction",
+      "13-history-followup",
+      "17-correct-public-copy",
+      "17-remove-cross-sequences"
+    ],
+    "encodingIssues": 0,
+    "paragraphDuplicateGroups": 0,
+    "automaticEditorialFlags": 0,
+    "actionableIssues": 0,
+    "crossCandidates": [],
+    "privateGaps": [
+      "Tour de Moingt: actualmodelqualified but no identifiedphoto or descriptivebasis.",
+      "Aire de pique-nique: knownservice, exactsetting/detailsnotestablished."
+    ],
+    "proofSha256": {
+      "08-history-personal-preview-review.json": "4ce1a4091d3f21be4cf612b3804dc7d2aeac7d17f3067b34fe86da3c25c223ea",
+      "01-core-personal-preview-review.json": "616ebbfd5ae554cbc4baf1999b44aaeb140a0451dca6307ab4a76ad1d904f893",
+      "10-shop-copy-personal-preview-review.json": "c2e1a7da4971913a6e879949c9dad8e684b27de37368ef7d7253332dacea4971",
+      "12-models-h-personal-preview-review.json": "b043832321ed0ec9315a1232875005600e2c964b8ae9b4d4e8684bed0d15386b",
+      "05-credits-founder-reviewed-personal-preview-review.json": "1c6b1d2b4e72bbb6cbbb613c5d2f0028b3832b62ce404422738e7fa9356a522d",
+      "14-refine-copy-personal-preview-review.json": "c021088d7dc2573b16da8c92ab729f3d96131e67e02b90bcf1acd534bf6d361e",
+      "12-models-f-personal-preview-review.json": "33416ab3e64eafd57f3e8873f3cfa43e7ab57b6f9ecfa638d34ded2977f48841",
+      "12-models-b-personal-preview-review.json": "248922ba7a60cc3da187e009850ccbdd3bae5ec5351396b70a762ccf8cd787f9",
+      "13-history-followup-personal-preview-review.json": "b10bb2d54f6a684c1d842d12ba5f6f1bd5cee86ebc1b62fc8410936673d2764f",
+      "12-models-a-reviewed-personal-preview-review.json": "9cf439a33deed7577343a2ab182e93a8f6ffa5fdea9bbb0dcc7e33c57dd4184d",
+      "15-source-copy-correction-personal-preview-review.json": "8f6756ec6c1848d47fbc2dc3a478558dcd4e7e8f8d65cbed0787127652a46d3a",
+      "12-models-i-personal-preview-review.json": "451eb9fbb3d10250593c1bb47e71beb4bda0d7bd176d6e069c4f25f17ea3d138",
+      "12-models-g-personal-preview-review.json": "ecb15305f2170f389bbd63f4ee1d292d56562d4f33fd734d9356efba3ee42975",
+      "01-founder-personal-preview-review.json": "eb66f8d38cedb22beddcdb96c51e8f4127fd747ae54ad07a70dddb18fd2f2069",
+      "12-models-c-reviewed-personal-preview-review.json": "62a976ccdbfff3942cde088687418316ea0fa842818433547e9dedb6c8e803a3",
+      "10-restaurant-personal-preview-review.json": "781dba46fa0e2d06bc480d6663a82072f8e85e1bc22b1ef4a054e2d2b5faf94d",
+      "13-final-inventory-personal-preview-review.json": "ea06340ebf70394e8add29ff1656d20a10c92cdaed29ee6afbef72aa328bc277",
+      "12-models-k-reviewed-personal-preview-review.json": "364661f56a2ddfc064debfd1b558b838275ac3cf89a33ed8fccf54438c7e9a4f",
+      "12-models-e-reviewed-personal-preview-review.json": "a1604a08bdf066f6f5324c6eb433b0a8815306ad884e9c79ac32324b7f0ab3d6",
+      "12-models-d-personal-preview-review.json": "cbc7e0614de2ffc46e088287aab5ca9446c18518aaf20eded2c2bf2e163c2745",
+      "09-source-labels-personal-preview-review.json": "9135a3e098780a76bed4fc08d8479fd4ccef68a09066f923f30fdb3ac641d7b0",
+      "04-items-personal-preview-review.json": "f95033ff94b73b71c2a587cee7e72947d65b219181e387508163c60b0816e05a",
+      "03-inventory-personal-preview-review.json": "2f7725dfcac9fbd60337ef54d7dad300358238df944aeec6e319e6625e965cd4",
+      "12-models-j-personal-preview-review.json": "1fa0eb9236359b3799c3678236294ed0bb509b20c28b778fd15e2e1bd87bf92d",
+      "04-park-personal-preview-review.json": "ebdacab0abde163bddc65c44b796fa852dee0a23eedc6b95d9c4e6ca936b129a",
+      "12-models-l-personal-preview-review.json": "dc1ea1fd61c51fe2d1891ba2117a6bd67a61212762a35549eed16a263b2038f8",
+      "17-remove-cross-sequences-personal-preview-review.json": "c8ec057ce8275f5e10fd983a0ef6f79674aff7309073e3b065cd10b2e96aca4a",
+      "17-correct-public-copy-personal-preview-review.json": "59e14628d0c0c9abe19a0e1014cc8cc7667c4d38c5bea1c06206263eb87252ec",
+      "17-canonical-history-replay-personal-preview-review.json": "29fb6e642a4c298e417fe08db3172b4e3bafcde1ff5a19ac1556fe3460e05239"
+    }
+  },
+  "roundtrip": {
+    "freshExportedAtUtc": "2026-11-03T02:56:59.2195846Z",
+    "checkedAtUtc": "2026-11-03T02:57:08.347250+00:00",
+    "comparedValues": 5624,
+    "unexplainedDifferences": [],
+    "exportContractNotes": [
+      "Year/month-only opening/closing dates are dateText withnulltypeddate; no inventedday.",
+      "Item keys and itemhistoryaliases exported as actualIDs. Unexposed inputitemId alias excluded; parkItemId/ownerId verified.",
+      "Image enum casing and ParkItem ownerKey normalized to actualownerId, matching exportcontract. Importtimestamps/path/exifMetadata not exported; originalreceipts preserved.",
+      "Eight-language field/source ordering normalized; all persistedcontent otherwisecompared.",
+      "Global founder reference and parkfounderKey exportactualID; acceptedname/biography/idfullycompared. Referencevisibility/reviewflags not exposed in this exportcontract."
+    ],
+    "fullExportSha256": "9ba97775276ab439597cddc1884c7dfe3e9778f92e03ac89a34578c3af424bfc"
+  },
+  "sourceGaps": {
+    "inventory": "49explicitmodels in archivedofficialcatalogue allretained. Roannetheatre additionalprimaryschoolphoto2013 ->50distinctmodelsacrossperiods. 53reported2007 notfullyresolved; do notassume50coexistedin2007or inventremainingnames.",
+    "privateItems": [
+      {
+        "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+        "name": "Aire de pique-nique",
+        "reason": "No sufficientlyspecificdescriptionbasis; Moingtnativeasset only404 and anonymousschooltowerview unidentifiable; picnicexistenceknownbutexactsettingunproven."
+      },
+      {
+        "id": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "name": "Tour de Moingt",
+        "reason": "No sufficientlyspecificdescriptionbasis; Moingtnativeasset only404 and anonymousschooltowerview unidentifiable; picnicexistenceknownbutexactsettingunproven."
+      }
+    ],
+    "coordinates": {
+      "park": null,
+      "itemsPositioned": 0,
+      "itemsTotal": 53,
+      "namedGaps": [
+        {
+          "id": "c8c179f9-23c0-479b-bd96-5b6eb81c3a3f",
+          "name": "Abbaye de La Bénisson-Dieu",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+          "name": "Aire de pique-nique",
+          "category": "Service",
+          "status": null
+        },
+        {
+          "id": "a5dc2de9-b48b-4048-ad9d-d67691d127ea",
+          "name": "Boutique",
+          "category": "Shop",
+          "status": null
+        },
+        {
+          "id": "c088c2ac-6586-4220-ad8a-7851974bcd91",
+          "name": "Cathédrale de Clermont-Ferrand",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "7287d18d-adec-4b1b-b237-0780f1c9ff68",
+          "name": "Cave des Vignerons Foréziens",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "ea7bffce-a424-4f24-b9d1-54e978e7abe1",
+          "name": "Chapelle de Chambost-Longessaigne",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "9f4cff90-d13f-470f-b4f0-7a142980a97a",
+          "name": "Chapelle de Vidrieux",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "a435f063-3170-4bb5-a361-0587b7319a33",
+          "name": "Chapelle des Martyrs de Feurs",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "02078e1f-31b0-4059-b40c-31ad4c0309f8",
+          "name": "Cheminée Marrel de Rive-de-Gier",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "d50ea390-5de4-4037-9cbb-4b7d8ec22179",
+          "name": "Château de Boën",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "60cd5e5d-6404-4139-8604-41a77f53cc1a",
+          "name": "Château de Chalmazel",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "ed16f8f4-0deb-44d2-9193-d5e8110668aa",
+          "name": "Château de Couzan",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "a05fd41a-c920-46c5-bacd-964f3fc73725",
+          "name": "Château de Goutelas",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "0af447eb-ce93-4566-aa21-a0ed22d50615",
+          "name": "Château de la Bâtie d’Urfé",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "4476e2ba-bd59-49de-9c77-3c6c5bb9a877",
+          "name": "Château de la Roche",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "17927236-5fab-46de-a1b4-aeca97b2d454",
+          "name": "Château de Marcilly-le-Châtel",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "019b40ae-e046-4103-835c-3117db8dc9dc",
+          "name": "Château de Montrond-les-Bains",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "f0c225bc-8176-4c2b-823c-836025c9c5a0",
+          "name": "Château de Saint-Marcel-de-Félines",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "7491ac0d-18d5-4cc4-a31e-e4503f6d0ee5",
+          "name": "Château du Pirou de Thiers",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "1c1d1650-d9d0-4be5-8553-fe2a3ece990d",
+          "name": "Château d’Essalois",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "4faff9fe-b9c1-4012-9fe2-f99a4baec591",
+          "name": "Château d’Olliergues",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "8168fe00-832e-44c5-b952-024d63c38ecb",
+          "name": "Collégiale de Saint-Bonnet-le-Château",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "9281fe07-502b-4872-96e9-6ae75c14e07d",
+          "name": "Collégiale Notre-Dame-d’Espérance de Montbrison",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "f030a5ec-17cb-4c48-b456-2d2007b627d0",
+          "name": "Croix de Chazeau",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "b06c767e-b55e-428a-b2dc-2f180cafbd3b",
+          "name": "Croix de Saint-Bonnet-le-Courreau",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "d351f8af-b670-48bf-9be1-608758ebef35",
+          "name": "Croix monolithe de Sauvain",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "73f7d936-d66d-4cd0-b7c6-1927b7c8b4c4",
+          "name": "Donjon de Saint-Jean-Saint-Maurice",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "684dec1a-004e-4d5b-bd40-e02ba7856142",
+          "name": "Hall des Sources de Vichy",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "3cd6f955-f2fb-4f0c-b1c9-4559e96b6571",
+          "name": "Hôtel de ville de Montbrison",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "444d4a42-49c8-467b-bb8f-362ac684528e",
+          "name": "Hôtel de ville de Saint-Étienne",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "5b9eaae2-3941-42f9-af03-3056db60574a",
+          "name": "Hôtel de ville d’Ambert",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "ac3b0933-b2b3-4c55-99e9-b03dc064c32e",
+          "name": "La Vachère de Sauvain",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "ad3ac730-f1d4-4982-9a52-2aa3328b9565",
+          "name": "Maison des Chanoines de Saint-Chamond",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "5058e156-c85a-4794-ba06-3080264a9cf3",
+          "name": "Musée d’Usson-en-Forez",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "a047d7a9-5d07-4a21-b036-d73be1abab3f",
+          "name": "Petit Louvre de La Pacaudière",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "04b80ea4-ebd8-46d1-ad44-b50395d7fdab",
+          "name": "Pont de Vaux de Saint-Georges-en-Couzan",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "8ff8e945-385a-4bf7-a66d-4c74dc4d5601",
+          "name": "Pont du Pertuiset",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "13931ae2-6f72-4389-84e7-29d8c86d237b",
+          "name": "Prieuré de Champdieu",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "0930b2dd-a902-4443-a539-6220a1b2eaf8",
+          "name": "Prieuré de Saint-Romain-le-Puy",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "ef231784-6388-4beb-8b78-33a903a0a36f",
+          "name": "Puits Couriot",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "50220c41-471e-4f35-b34d-f283423856c2",
+          "name": "Restaurant du Parc de la Droséra",
+          "category": "Restaurant",
+          "status": null
+        },
+        {
+          "id": "683436b4-0931-4c29-8d14-7793d8f50a98",
+          "name": "Théâtre de Roanne",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "4feb3477-1ebe-4a0c-a35c-123d7a438862",
+          "name": "Tour de Cleppé",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "c338bc51-32bd-42fd-8807-2d4d90657ed9",
+          "name": "Tour de Doizieux",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+          "name": "Tour de Moingt",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "56842ce6-8077-4591-91cd-8ae0acb08831",
+          "name": "Tour Matagrin de Violay",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "dfe5d4dc-d3e3-408e-ab89-9c71f9805bb2",
+          "name": "Volcan à ciel ouvert – Puy de Lemptégy",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "98609fcc-56d1-41b4-a91b-9f0f22e6d641",
+          "name": "Église de Cottance",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "c8b74765-ed0c-4c9f-81c9-46950b77765b",
+          "name": "Église de Feurs",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "c9b4283f-bfb9-4f55-b4b5-12721894d6a6",
+          "name": "Église de Pouilly-lès-Feurs",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "a63fd911-5269-4301-8fd3-d3da556d49ea",
+          "name": "Église de Saint-Sixte",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "d04fc564-7d4e-443f-a7d7-5ac199a6213c",
+          "name": "Église et château de Sury-le-Comtal",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "de88a048-e49c-4560-8595-f7a75c42e8ab",
+          "name": "Île et barrage de Grangent",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        }
+      ],
+      "reason": "Officialaccessmapnotentrancelevel; undatedrouteplan ungeoreferenced. BANreturnedstreetcentreCheminLaDrosera45.737645,3.835305,notparkentrance; AroundUs45.73670,3.83575Wikimedia-derived notindependentlyverified. No personalbusinessaddress/citycentroid/fullsizemonumentpointused."
+    },
+    "maps": "Genuineoperatorundatedrouteplan recovered. Archivecapturedoesnotproveeditionyear. No ImportOfficialMapwithinventedyear.",
+    "media": "2broadparkviews/5target; individualmodelsmostly1faithfulnativephoto, not3. Moingtnative404afterwww/nonwwwCDXandwebsearch. Sourcecontextimagesexplicit2001andJune2013, no actualopening/closurephoto.",
+    "modelHistory": "All50ClosedDefinitively afterparkclosure; individualopening/removal/manufacturerandexactlocation unknown. Monumentconstructiondates neverusedasmodeldates. No speculative50duplicateparkclosureevents.",
+    "accessAndOperations": "Outdoorhistoricalminiaturewalk; no source-specificrideaccessconditions. Currenthours/pricing notapplicabletoClosedDefinitively.",
+    "shortCopy": "Individualhistoricalminiatures documentedbydedicatedsource+nativephoto; concise3paragraph2headingcopy, no paddingwithunrelatedmonumenthistory. Qualificationspersistedpermodel."
+  },
+  "historyDiagnostics": {
+    "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "parkName": "Parc de la Droséra – Forez Miniature",
+    "factCount": 10,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1990,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 1,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2010,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 1,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 0
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 2
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 8
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": true,
+      "hasCompleteSourceCoverage": true,
+      "hasMajorMilestone": true,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 2,
+      "sourcedFactCount": 2,
+      "majorFactCount": 2,
+      "indexableKeyYears": []
+    }
+  },
+  "sourceAvailability": [
+    {
+      "label": "Patrick Burtart — biographie et presse reproduite publiquement",
+      "url": "https://www.patrickburtart.fr/",
+      "checkedAtUtc": "2026-11-03T02:51:58.561044+00:00",
+      "status": 200,
+      "finalUrl": "https://www.patrickburtart.fr/",
+      "bytes": 307439,
+      "sha256": "af04f6f70ae8ba8563925c76cd5b95f4bf8a05b46fffe0e08e2cdf2365e06706"
+    },
+    {
+      "label": "Département de la Loire — Loire Magazine n° 62, mars-avril 2007, p. 29",
+      "url": "https://www.loire.fr/upload/docs/application/pdf/lm62.pdf",
+      "checkedAtUtc": "2026-11-03T02:51:58.881091+00:00",
+      "status": 200,
+      "finalUrl": "https://www.loire.fr/upload/docs/application/pdf/lm62.pdf",
+      "bytes": 1648249,
+      "sha256": "cf5d3736d07ca6bad5615c9eb5fbe552c9e8fa86c4a3f74787520f074c262a56"
+    },
+    {
+      "label": "Michel Jourdan — photographies de la Droséra, été 2001",
+      "url": "http://m.jourdan974.free.fr/photos5.htm",
+      "checkedAtUtc": "2026-11-03T02:52:00.702815+00:00",
+      "status": 200,
+      "finalUrl": "http://m.jourdan974.free.fr/photos5.htm",
+      "bytes": 8074,
+      "sha256": "e3f005d21aea0b1d290b974e198346538badc5664186672a80ae2a21a005969a"
+    },
+    {
+      "label": "École de Saint-Paul-de-Vézelin — visite du 1er juillet 2010",
+      "url": "https://classedespetits.blogspot.com/2010/07/",
+      "checkedAtUtc": "2026-11-03T02:52:01.314114+00:00",
+      "status": 200,
+      "finalUrl": "https://classedespetits.blogspot.com/2010/07/",
+      "bytes": 63103,
+      "sha256": "75048be56ad41e8045ff77967de8b4fd235ff1317275790e5d820423b1dd6b7e"
+    },
+    {
+      "label": "École de Saint-Paul-de-Vézelin — visite du 10 juin 2013",
+      "url": "https://classedespetits.blogspot.com/2013/06/notre-voyage-scolaire.html",
+      "checkedAtUtc": "2026-11-03T02:52:01.593355+00:00",
+      "status": 200,
+      "finalUrl": "https://classedespetits.blogspot.com/2013/06/notre-voyage-scolaire.html",
+      "bytes": 65000,
+      "sha256": "d1971e2e521f7359a5193362ba39ce00403d8edead0909976d75f77021ffae5c"
+    }
+  ],
+  "proofSha256": {
+    "16-prepublication-export.json": "9ba97775276ab439597cddc1884c7dfe3e9778f92e03ac89a34578c3af424bfc",
+    "16-roundtrip.json": "7fca2a870179485c63da7fc9382e56e1867c0f3d0981009d42fa9409b7f91292",
+    "16-completeness-receipt.json": "a16dbc21439488ce8a032718c550100554ac812c156c0865894fa74be1bf5568",
+    "16-personal-corpus-review.json": "c600c419067c1cceddecdb3c0ba100792b1827bb6a33089b313a87b9948017f6",
+    "13-history-media-fallback.json": "0aaf2f0bbedadc315cc86f9e52ea11244a611928017c3606dc1bf6141a162ca8",
+    "17-consolidated-public-graph.json": "a66a8f2db36ba59b9c5fee5249803073a356fc517d9e5c2b94301f81b0f4edd7",
+    "17-final-idempotence.preview.json": "a9478746c8d826144c867ef7a1ffe4b6d0f843a3fec95d9dc2d6b25e0cbc33c5",
+    "17-final-actual-completeness.json": "ef94c073f4c53a48cf1d3a7c4a4cddd4fcf3ed8586a072523635ec26e00da032",
+    "17-final-history-diagnostics.json": "c316602af2afe7d563e9f664615afc91229f6212093096db08d864aa163ab564",
+    "17-facebook-resolve.json": "79c442420c1a8ffb59e4d2c21ff110e190ee779b9fa23b2f0dcf6761c2e76d45",
+    "public-verification/desktop-fr-history-click.json": "f5a591b47b2e4e59116051ed56ea4f54cebb7e6dd008aaf5498fc852c3720c8b",
+    "public-verification-repaired/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "bf327b4019ce4f26023b09249caef6eb9da948a6744328ba6a6fa69973920411",
+    "public-verification-repaired/mobile-render-report-fr.json": "95b2b53a7c03478b16e42ea0cb96c881437b30754c8399c3dfa0933dfd8be911"
+  },
+  "batchCompletedCount": 8,
+  "prCreated": false,
+  "versionChanged": false,
+  "actualCompleteness": {
+    "completenessScore": 88,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 102,
+    "earnedPoints": 90,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "lastDataIntegrationAt": "2026-11-03T03:07:56.967Z",
+  "lastDataIntegrationRawUtc": "2026-11-03T03:07:56.9677262Z",
+  "historyDiagnosticsNote": "Two currently published facts; eight retracted revisions are not extra events. HasPublicTimeline is true. IsOpen is false only because there is no indexable key year; the ordinary timeline works.",
+  "idempotence": {
+    "operationId": "85c3f1e2-cd66-4663-a3d4-6ba5711d9f19",
+    "previewedAtUtc": "2026-11-03T03:09:47.4954236Z",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 118,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "publicVerification": {
+    "desktopHistoryClick": {
+      "checkedAtUtc": "2026-11-03T03:13:37.491203+00:00",
+      "url": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "apiResponses": [
+        {
+          "url": "https://amusement-parks.fun/api/parks/7879f5dc-db40-4fcf-a637-86c58754040d/detail-summary",
+          "status": 200,
+          "hasPublicHistory": true,
+          "requestLanguage": "fr-FR",
+          "age": "254"
+        }
+      ],
+      "status": 200,
+      "buttons": [
+        "Parcs",
+        "m",
+        "Connexion / Inscription",
+        "FR",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Ajouter une visite",
+        "Retour à la liste",
+        "Lieux du parc",
+        "Copier",
+        "Plus",
+        "Profil",
+        " Accepter les cookies optionnels ",
+        " Continuer avec les cookies nécessaires ",
+        ""
+      ],
+      "historyLinkCount": 1,
+      "parkTitle": [
+        "Parc de la Droséra – Forez Miniature"
+      ],
+      "historyHref": "/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "destination": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "historyTitle": [
+        "L'histoire de Parc de la Droséra – Forez Miniature"
+      ],
+      "historyBodyChars": 1235
+    },
+    "mobilePages": 29,
+    "mobileFailures": [],
+    "frenchRecheckPages": 8,
+    "frenchMobileHistoryClick": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+    "ordinarySummaryHasPublicHistory": true,
+    "cacheRecovered": true
+  },
+  "sitePublication": {
+    "status": "Published",
+    "isVisible": true,
+    "adminReviewStatus": "Validated",
+    "appliedAtUtc": "2026-11-03T03:01:08.9766026Z",
+    "operationId": "9cd1669b-d517-43b1-9b5d-629aef90b579",
+    "url": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature"
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "218045e9e02741c4bf5859bc8cd97a43",
+    "url": "https://www.facebook.com/1285475681307050/posts/122125808271424431",
+    "publishedAtUtc": null,
+    "verifiedAtUtc": "2026-11-03T03:15:41.351007+00:00",
+    "proof": "ResolveFacebookPublication",
+    "duplicateSent": false,
+    "note": "An existing Published announcement was returned by the official client; no PublishFacebook request was issued in this follow-up. The exact original publication date was not returned and remains unknown."
+  }
+}

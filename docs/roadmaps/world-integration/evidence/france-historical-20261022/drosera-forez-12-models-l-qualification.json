@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-11-03T02:41:34.042374+00:00",
+  "rows": [
+    {
+      "key": "model-sail",
+      "name": "Château de Couzan",
+      "sourcePage": "https://web.archive.org/web/20001208231500id_/http://www.parc-de-la-drosera.fr:80/sail.html",
+      "nativeImage": "10-model-pages/Sail.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-sury",
+      "name": "Église et château de Sury-le-Comtal",
+      "sourcePage": "https://web.archive.org/web/20001209011100id_/http://www.parc-de-la-drosera.fr:80/sury.html",
+      "nativeImage": "10-model-pages/Sury.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-montbri",
+      "name": "Hôtel de ville de Montbrison",
+      "sourcePage": "https://web.archive.org/web/20001208221300id_/http://www.parc-de-la-drosera.fr:80/montbri.html",
+      "nativeImage": "10-model-pages/Montbri.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-montbricol",
+      "name": "Collégiale Notre-Dame-d’Espérance de Montbrison",
+      "sourcePage": "https://web.archive.org/web/20001208222100id_/http://www.parc-de-la-drosera.fr:80/montbricol.html",
+      "nativeImage": "10-model-pages/Montbricol.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}
