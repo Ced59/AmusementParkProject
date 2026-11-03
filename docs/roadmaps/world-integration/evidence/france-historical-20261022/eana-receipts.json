@@ -906,6 +906,346 @@
         "canonicalHistory"
       ],
       "summary": "Eana : restauration officielle des neuf révisions HIST canoniques après publication du parc, cinq faits de parc et quatre faits de lieux ; aucun contenu, source, date, média ou propriétaire changé."
+    },
+    {
+      "eventId": "apply-fbf44098-a64c-410b-b667-55e86a6f7517",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T00:08:10.2005304Z",
+      "appliedAt": "2026-11-03T00:08:10.200Z",
+      "receiptFile": "11-garden-play-copy-v2-apply.receipt.json",
+      "receiptSha256": "79ac65766c95d80ce5bfa0e032b9b91472458fdea1df02a677e6cde9325ce2f9",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Jardin en liberté et Aire de jeux : seize descriptions originales vérifiées sur le panneau du concepteur, la brochure et les photographies ; fiches conservées privées avant audit."
+    },
+    {
+      "eventId": "import-photo-d9d022a74c42439e902df4f337ffb640-2026-11-03T000922.629Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:09:22.629Z",
+      "appliedAt": "2026-11-03T00:09:22.629Z",
+      "receiptFile": "11-jardin-liberte-panel-import-receipt.json",
+      "receiptSha256": "996bebde9c2e13769c532b9c79ddd39b6a6fea5f8d9e5eae361c8f04934f7e78",
+      "imageId": "d9d022a74c42439e902df4f337ffb640",
+      "ownerId": "0344424e-ba19-438e-8df9-b57a4bb1aee5",
+      "createdAt": "2026-11-03T00:09:19.083Z",
+      "sourceUrl": "https://www.b-headroom.com/medias/projets/images/illustrations/mediumlarge/eana-theme-park-at-valasse-abbey-hlju.jpg",
+      "summary": "Import privé du média historique 11-jardin-liberte-panel, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-bbcae1cb147244bdba7e547392c6aa25-2026-11-03T000937.475Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:09:37.475Z",
+      "appliedAt": "2026-11-03T00:09:37.475Z",
+      "receiptFile": "11-playground-nv-import-receipt.json",
+      "receiptSha256": "1dc73e8b932ee240588643eb78d7eafebb404201032f5a48001686c0a169ef33",
+      "imageId": "bbcae1cb147244bdba7e547392c6aa25",
+      "ownerId": "68087d16-ee0a-4d75-a82a-e7dbbf2eadf0",
+      "createdAt": "2026-11-03T00:09:34.016Z",
+      "sourceUrl": "https://www.b-headroom.com/medias/projets/images/illustrations/large/eana-theme-park-at-valasse-abbey-i14u.jpg",
+      "summary": "Import privé du média historique 11-playground-nv, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-00712eb3ffce42269f9dab469aa03627-2026-11-03T000951.331Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:09:51.331Z",
+      "appliedAt": "2026-11-03T00:09:51.331Z",
+      "receiptFile": "11-playground-water-wheel-import-receipt.json",
+      "receiptSha256": "9c7fcd2723825ad2bb911e29be39ece919921464dc7f6572d122f6234f35f2a6",
+      "imageId": "00712eb3ffce42269f9dab469aa03627",
+      "ownerId": "68087d16-ee0a-4d75-a82a-e7dbbf2eadf0",
+      "createdAt": "2026-11-03T00:09:47.965Z",
+      "sourceUrl": "https://www.paysagescotesdemoselle.com/media/pages/mediatheque/4282090044-1741257842/installations-ludiques-et-sportivesp1120769-parc-eana8-600x.jpg",
+      "summary": "Import privé du média historique 11-playground-water-wheel, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-44f2d0f855f048dfb465679e7773e827-2026-11-03T001005.111Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:10:05.111Z",
+      "appliedAt": "2026-11-03T00:10:05.111Z",
+      "receiptFile": "11-playground-channels-import-receipt.json",
+      "receiptSha256": "e175e8ab1bdb46db506a9ee9b53b03b9ce80a64e03146b61c3507713929f77ff",
+      "imageId": "44f2d0f855f048dfb465679e7773e827",
+      "ownerId": "68087d16-ee0a-4d75-a82a-e7dbbf2eadf0",
+      "createdAt": "2026-11-03T00:10:01.644Z",
+      "sourceUrl": "https://www.paysagescotesdemoselle.com/media/pages/mediatheque/2558946833-1741257842/installations-ludiques-et-sportivesp1120770-parc-eana9-600x.jpg",
+      "summary": "Import privé du média historique 11-playground-channels, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-6111488b-ced8-4b17-8e83-4a3602a389f9",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T00:13:04.578689Z",
+      "appliedAt": "2026-11-03T00:13:04.578Z",
+      "receiptFile": "11-modes-vie-copy-apply.receipt.json",
+      "receiptSha256": "18a5772f1a375f3eaf1073de3af648e7bf36d18628820a230e0748fb4e88107b",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Modes de vie : huit descriptions sourcées sur observation et entretiens de terrain de la thèse Dussaux (2011), identité rapprochée de la brochure officielle ; audit restant."
+    },
+    {
+      "eventId": "import-photo-d6914cde37eb4e1ab0660222d498f078-2026-11-03T001414.841Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:14:14.841Z",
+      "appliedAt": "2026-11-03T00:14:14.841Z",
+      "receiptFile": "11-rosee-nv-import-receipt.json",
+      "receiptSha256": "97928b5a9619b77b13c3eeef91e025f26f8b70a1537471a4f93ccc621dca3a38",
+      "imageId": "d6914cde37eb4e1ab0660222d498f078",
+      "ownerId": "6bfebdd0-97f6-4f04-a112-5fd59430033b",
+      "createdAt": "2026-11-03T00:14:11.166Z",
+      "sourceUrl": "https://www.b-headroom.com/medias/projets/images/illustrations/large/eana-theme-park-at-valasse-abbey-f38a.jpg",
+      "summary": "Import privé du média historique 11-rosee-nv, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e483b2ce7b53449c8f87d449835e18cd-2026-11-03T001429.418Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:14:29.418Z",
+      "appliedAt": "2026-11-03T00:14:29.418Z",
+      "receiptFile": "11-couleurs-nv-import-receipt.json",
+      "receiptSha256": "582457bbfa1149dc794de075f10debd1d4fef9272674b197d3c5cf2be34f0e24",
+      "imageId": "e483b2ce7b53449c8f87d449835e18cd",
+      "ownerId": "415aedca-378a-4ffd-a039-46c73468b50e",
+      "createdAt": "2026-11-03T00:14:25.985Z",
+      "sourceUrl": "https://www.b-headroom.com/medias/projets/images/illustrations/large/eana-theme-park-at-valasse-abbey-lb8q.jpg",
+      "summary": "Import privé du média historique 11-couleurs-nv, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-9bdc7467ebc04b1192168ed4583e610a-2026-11-03T001444.049Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:14:44.049Z",
+      "appliedAt": "2026-11-03T00:14:44.049Z",
+      "receiptFile": "11-empreinte-panel-import-receipt.json",
+      "receiptSha256": "34545a5885a0652ded0d2694ecae1b4e0afa5d0d1ab1f685ead4c1898f9d2d15",
+      "imageId": "9bdc7467ebc04b1192168ed4583e610a",
+      "ownerId": "da72e98b-5bcf-451d-8c8a-896f4b64933f",
+      "createdAt": "2026-11-03T00:14:40.525Z",
+      "sourceUrl": "https://www.b-headroom.com/medias/projets/images/illustrations/mediumlarge/eana-theme-park-at-valasse-abbey-k3z4.jpg",
+      "summary": "Import privé du média historique 11-empreinte-panel, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f91c68ca5e154b62abe0507da6d7b11b-2026-11-03T001458.018Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:14:58.018Z",
+      "appliedAt": "2026-11-03T00:14:58.018Z",
+      "receiptFile": "11-voyageuses-amerique-import-receipt.json",
+      "receiptSha256": "38182435fe124d84e9a714bf539f4716c521507dc993c5bc35e8bb92f1eb5c50",
+      "imageId": "f91c68ca5e154b62abe0507da6d7b11b",
+      "ownerId": "7ccb0ef3-6786-4a73-bac6-522c15be6fd5",
+      "createdAt": "2026-11-03T00:14:54.484Z",
+      "sourceUrl": "https://www.b-headroom.com/medias/projets/images/illustrations/mediumlarge/eana-theme-park-at-valasse-abbey-2ypc.jpg",
+      "summary": "Import privé du média historique 11-voyageuses-amerique, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-006082c6-6813-4375-8ea3-11ae5bf31f55",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T00:16:41.5128381Z",
+      "appliedAt": "2026-11-03T00:16:41.512Z",
+      "receiptFile": "11-naissance-jardin-apply.receipt.json",
+      "receiptSha256": "49de1b62f62c5d05aeb4069d33be157d9adf58a6538b813c3f08957e4911d1dc",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.status",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Séquence Naissance du jardin qualifiée sur signalétique originale et visite de terrain : lieu interne créé privé avec huit textes, sans doublon de parc ni de standalone."
+    },
+    {
+      "eventId": "apply-c5e98a2c-7940-46f1-be09-fee68be7e3f5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T00:20:32.3302034Z",
+      "appliedAt": "2026-11-03T00:20:32.330Z",
+      "receiptFile": "11-garden-depth-apply.receipt.json",
+      "receiptSha256": "9649713792f1f89a8973acd1a77266d95f995782afb4ddf31b7a38ae3e44579b",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Plantes archaïques, plantes voyageuses et Jardin de rosée : vingt-quatre descriptions enrichies sur nouvelles photographies du concepteur et observation de terrain ; visibilité conservée."
+    },
+    {
+      "eventId": "import-photo-e07f177859c445469895d27aaf0e940b-2026-11-03T002609.701Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:26:09.701Z",
+      "appliedAt": "2026-11-03T00:26:09.701Z",
+      "receiptFile": "11-rosee-plantations-import-receipt.json",
+      "receiptSha256": "aaff1fc71d2f7ae717e6cfb49907540269055d78f62471ccd13843e797ec4a3a",
+      "imageId": "e07f177859c445469895d27aaf0e940b",
+      "ownerId": "6bfebdd0-97f6-4f04-a112-5fd59430033b",
+      "createdAt": "2026-11-03T00:26:06.246Z",
+      "sourceUrl": "https://landezine.com/wp-content/uploads/2011/02/17-BASE-landscape-architecture-EANA-Parc-de-l’Abbaye-du-Valasse.jpg",
+      "summary": "Import privé du média historique 11-rosee-plantations, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5fdba455099248cfa59175f1d45ba268-2026-11-03T002624.171Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:26:24.171Z",
+      "appliedAt": "2026-11-03T00:26:24.171Z",
+      "receiptFile": "11-rosee-eau-import-receipt.json",
+      "receiptSha256": "b0cc992b601956a7dd5660c69a5e81aa8e90d44f0141843f8269f8e9e05bf169",
+      "imageId": "5fdba455099248cfa59175f1d45ba268",
+      "ownerId": "6bfebdd0-97f6-4f04-a112-5fd59430033b",
+      "createdAt": "2026-11-03T00:26:20.64Z",
+      "sourceUrl": "https://landezine.com/wp-content/uploads/2011/02/20-BASE-landscape-architecture-EANA-Parc-de-l’Abbaye-du-Valasse.jpg",
+      "summary": "Import privé du média historique 11-rosee-eau, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-1531bf7bc87f4ca2a3f7515c384ebe94-2026-11-03T002638.320Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:26:38.32Z",
+      "appliedAt": "2026-11-03T00:26:38.320Z",
+      "receiptFile": "11-plantes-archaiques-nv-import-receipt.json",
+      "receiptSha256": "0368849662dab88790924a04e8c07fbc981dd19f697b81f8c9c42fbd975d08c4",
+      "imageId": "1531bf7bc87f4ca2a3f7515c384ebe94",
+      "ownerId": "0f32e336-f7ee-49cd-8565-8540461cabd9",
+      "createdAt": "2026-11-03T00:26:34.905Z",
+      "sourceUrl": "https://www.b-headroom.com/medias/projets/images/illustrations/mediumlarge/eana-theme-park-at-valasse-abbey-1f11.jpg",
+      "summary": "Import privé du média historique 11-plantes-archaiques-nv, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-18b530640b724c9da5f517d79064f75a-2026-11-03T002747.280Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:27:47.28Z",
+      "appliedAt": "2026-11-03T00:27:47.280Z",
+      "receiptFile": "11-bassins-plantes-import-receipt.json",
+      "receiptSha256": "d727795c5ca608c66e928141c4740ff603b08014bc1e7c884e426851d2dfc37f",
+      "imageId": "18b530640b724c9da5f517d79064f75a",
+      "ownerId": "2ee93589-d3a9-42ee-be0d-adcf3befbf29",
+      "createdAt": "2026-11-03T00:27:43.91Z",
+      "sourceUrl": "https://landezine.com/wp-content/uploads/2011/02/13-BASE-landscape-architecture-EANA-Parc-de-l’Abbaye-du-Valasse.jpg",
+      "summary": "Import privé du média historique 11-bassins-plantes, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e4348de6e7104ec79c12e1246f288db0-2026-11-03T002801.613Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:28:01.613Z",
+      "appliedAt": "2026-11-03T00:28:01.613Z",
+      "receiptFile": "11-bassins-reflets-import-receipt.json",
+      "receiptSha256": "47f77072037049242a7499035496d22ce5c9e8fc0a91813a41b43776f705b46f",
+      "imageId": "e4348de6e7104ec79c12e1246f288db0",
+      "ownerId": "2ee93589-d3a9-42ee-be0d-adcf3befbf29",
+      "createdAt": "2026-11-03T00:27:58.224Z",
+      "sourceUrl": "https://landezine.com/wp-content/uploads/2011/02/08-BASE-landscape-architecture-EANA-Parc-de-l’Abbaye-du-Valasse.jpg",
+      "summary": "Import privé du média historique 11-bassins-reflets, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f4dccb4d6b854744b5f1279b3bec81b3-2026-11-03T002815.918Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T00:28:15.918Z",
+      "appliedAt": "2026-11-03T00:28:15.918Z",
+      "receiptFile": "11-bassins-arbre-import-receipt.json",
+      "receiptSha256": "bfd9362a45e99c9cf228f4ce214c8361c8de988fe412bdc068bd1af8f447c116",
+      "imageId": "f4dccb4d6b854744b5f1279b3bec81b3",
+      "ownerId": "2ee93589-d3a9-42ee-be0d-adcf3befbf29",
+      "createdAt": "2026-11-03T00:28:12.505Z",
+      "sourceUrl": "https://landezine.com/wp-content/uploads/2011/02/12-BASE-landscape-architecture-EANA-Parc-de-l’Abbaye-du-Valasse.jpg",
+      "summary": "Import privé du média historique 11-bassins-arbre, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-2aefe642-6437-4196-97ec-b3884fa5cdd1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T00:31:53.2989143Z",
+      "appliedAt": "2026-11-03T00:31:53.298Z",
+      "receiptFile": "11-alt-refinement-apply.receipt.json",
+      "receiptSha256": "49782c35a83b0921fb7bf6a2c6797381648b0b12a565529e82d2e76b3872ae60",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "altTexts.en"
+      ],
+      "summary": "Alternative anglaise de la photographie BASE du Jardin de rosée affinée après audit du corpus."
+    },
+    {
+      "eventId": "apply-3bac84b9-43bc-468a-8c38-9e66613c0119",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T00:39:26.1795333Z",
+      "appliedAt": "2026-11-03T00:39:26.179Z",
+      "receiptFile": "12-sas-consommation-copy-apply.receipt.json",
+      "receiptSha256": "84ef28b85f0f9f8e016c4720ce46af850676d2c37f595413b46b07c865391b4f",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Dernier module historique Sas de la consommation décrit dans huit langues grâce à la fiche pédagogique officielle2008 récupérée après rétablissement des archives."
     }
   ],
   "publicationOrNoop": [
@@ -971,6 +1311,49 @@
         "isVisible"
       ],
       "summary": "Eana : publication du parc après audit du périmètre prêt et score projeté96 sans bloqueur ; quatre fiches sans description restent privées et le dossier reste partial."
+    },
+    {
+      "eventId": "apply-52d24809-befa-49c6-bbfa-07d3e9fb79ec",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T00:34:45.2301594Z",
+      "appliedAt": "2026-11-03T00:34:45.230Z",
+      "receiptFile": "11-publish-reviewed-additions-apply.receipt.json",
+      "receiptSha256": "e60e6d68b733daf974c861aa9638994732ae138820151527f34d6ead9b45faee",
+      "counts": {
+        "created": 0,
+        "updated": 18,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isPublished",
+        "isVisible"
+      ],
+      "summary": "Publication de quatre lieux nouvellement documentés et quatorze photographies après audit frais96/100, sans avancer la date des données."
+    },
+    {
+      "eventId": "apply-3bdb8587-2cfa-4d95-b331-609d5f42529a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T00:42:47.9355561Z",
+      "appliedAt": "2026-11-03T00:42:47.935Z",
+      "receiptFile": "12-publish-sas-apply.receipt.json",
+      "receiptSha256": "2c85bcd448c76dd0e8b79c3c9f9fc28b56d7b3d40d882fe89d2b6c56433daabf",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Publication du dernier module historique documenté, Sas de la consommation, après audit complet96/100 et rapprochement du dernier export."
     }
   ]
 }

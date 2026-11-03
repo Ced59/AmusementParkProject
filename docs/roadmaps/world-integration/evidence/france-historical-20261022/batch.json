@@ -6,7 +6,7 @@
   "userRequestedOn": "2026-10-22",
   "sitePublicationAuthorized": true,
   "facebookPublicationAuthorized": true,
-  "completedInThisBatch": 7,
+  "completedInThisBatch": 8,
   "assignedEntryIds": [
     "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
     "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
@@ -30,10 +30,11 @@
     "FR-park-f019e441-aecf-487b-93db-2b0246dce185",
     "FR-park-66653da2-93bb-499f-95df-15e240673e58",
     "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27",
-    "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7"
+    "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+    "FR-candidate-605fde75a058d0"
   ],
-  "lastCompletedAtUtc": "2026-11-02T23:54:20.294388+00:00",
-  "activeEntryId": "FR-candidate-605fde75a058d0",
+  "lastCompletedAtUtc": "2026-11-03T00:45:22.799471+00:00",
+  "activeEntryId": null,
   "blockedEntries": [
     {
       "entryId": "FR-park-77106934-0f4c-4eb3-b075-4097ab6078cd",
@@ -51,11 +52,14 @@
     },
     {
       "entryId": "FR-candidate-13b50050620a99",
-      "blocker": "PARK_DATA_EDITOR Status HTTP500; production deployment backup failed: no space left on device",
+      "blocker": "Accès rétabli ; publication site et Facebook déjà réussie, score92/100 restant sous le seuil de clôture.",
       "audit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-intake-blocked.json",
-      "dataApplied": false
+      "dataApplied": true,
+      "previousBlocker": "PARK_DATA_EDITOR Status HTTP500; production deployment backup failed: no space left on device",
+      "status": "AccessRestored",
+      "currentAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-publication-audit.json"
     }
   ],
   "identityEvidence": "evidence/france-historical-20261022/lillom-identity-reconciliation.json",
-  "nextAction": "Reprendre Éana : quatre lieux privés sans description, après rapprochement de l’état public déjà publié. Facebook existant à préserver. Aucune PR avant dix clôtures."
+  "nextAction": "Poursuivre les historiques, Zygofolis puis Parc de Lomme : rapprochement officiel avant nouveaux enrichissements. Huit clôtures dans ce lot, aucune PR avant dix ; aucun changement de version pour le registre."
 }
