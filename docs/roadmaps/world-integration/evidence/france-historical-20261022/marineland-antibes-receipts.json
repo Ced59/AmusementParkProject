@@ -298,6 +298,114 @@
         "descriptions.pt"
       ],
       "summary": "Descriptions des quatre boutiques en huit langues, fondées sur leurs pages et photographies officielles distinctes ; aucun changement de visibilité."
+    },
+    {
+      "eventId": "apply-a997f6fe-7725-472c-8acf-4282f8449de4",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:24:10.6512938Z",
+      "appliedAt": "2026-11-03T05:24:10.651Z",
+      "receiptFile": "04-items-aquarium-cinema-apply.receipt.json",
+      "receiptSha256": "05a54700c5ebf3514c1d54e87864ff2a2bbf650bef836d9f9406541dc0d5b9a3",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions des aquariums tropicaux et du Ciné 5D intégrées dans les huit langues, avec sources vérifiées et relecture personnelle."
+    },
+    {
+      "eventId": "apply-2e7d0793-de17-478b-99fe-a17c4a55bce6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:25:27.025699Z",
+      "appliedAt": "2026-11-03T05:25:27.025Z",
+      "receiptFile": "04-item-rapaces-apply.receipt.json",
+      "receiptSha256": "d70023050f8d017f3ffb82fcda85e793d01eb3adc26b534a462f485212c68b4d",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Description historique du spectacle des rapaces intégrée en huit langues à partir du reportage original Élodie Rothan ; lieu précis et date de fermeture non inventés."
+    },
+    {
+      "eventId": "apply-a0cb7f00-4c07-4aa1-97e6-c719a6440d5f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:33:37.5421509Z",
+      "appliedAt": "2026-11-03T05:33:37.542Z",
+      "receiptFile": "04-items-other-animals-two-apply.receipt.json",
+      "receiptSha256": "516b7c4c2f94e7b858ad2d15a31b2b4ba088bdaf9a31a166b68cfa4e26bac79b",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Marineland : descriptions en huit langues des otaries de Patagonie et des phoques ; sources officielles sur Oba et programmes historiques recoupés ; intégration partielle."
+    },
+    {
+      "eventId": "apply-5d2e2189-18bb-4f59-995e-fe9ea9b5ffa7",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:38:29.3692162Z",
+      "appliedAt": "2026-11-03T05:38:29.369Z",
+      "receiptFile": "04-items-remaining-animals-four-apply.receipt.json",
+      "receiptSha256": "1122eafcfdd32156ecdc23e57cf628cff5c526f89732bd2dc1e842bee183b6fb",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Marineland : descriptions en huit langues des otaries d’Afrique du Sud, des Humboldt dans l’ancien espace des ours, des flamants de Cuba et des éléphants de mer ; formats courts motivés et sources conservées ; partiel."
     }
   ],
   "publicationOrNoop": []

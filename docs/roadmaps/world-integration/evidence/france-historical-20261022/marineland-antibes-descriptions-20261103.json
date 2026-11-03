@@ -10,23 +10,32 @@
   },
   "parkItemDescriptions": {
     "total": 63,
-    "eightLanguageComplete": 15,
+    "eightLanguageComplete": 24,
     "keys": [
       "bassins-orques",
       "bassin-dauphins",
       "otaries-californie",
       "otaries-steller",
+      "otaries-patagonie",
+      "otaries-afrique-sud",
       "antarctica",
       "manchots-humboldt-entree",
       "tunnel-requins",
       "tortues-marines",
+      "flamants-cuba",
+      "aquariums-tropicaux",
       "voliere-lagoon",
+      "phoques",
+      "cine-5d",
       "musee-marine-exposition",
       "ours-polaires",
+      "spectacle-rapaces",
       "tropical-wave",
       "marineland-store",
       "ocean-dreams",
-      "tresors-mer"
+      "tresors-mer",
+      "manchots-humboldt-ancien-ours",
+      "elephants-mer"
     ]
   },
   "evidence": [
@@ -41,7 +50,17 @@
     "https://www.marineland.fr/en/planifier-votre-visite/boutiques/tropical-wave",
     "https://www.marineland.fr/en/planifier-votre-visite/boutiques/ocean-dreams",
     "https://www.marineland.fr/en/planifier-votre-visite/boutiques/tresors-de-la-mer",
-    "https://www.marineland.fr/en/planifier-votre-visite/boutiques/marineland-store"
+    "https://www.marineland.fr/en/planifier-votre-visite/boutiques/marineland-store",
+    "https://www.parczoologiquedeparis.fr/fr/actualites/oba-le-pacha-des-otaries",
+    "https://pdf.20mn.fr/2021/quotidien/20210611_NIC.pdf",
+    "https://www.mnhn.fr/fr/flamant-rouge",
+    "https://artemis-ing.fr/posts/c3/grand-marineland"
   ],
-  "remaining": "48 descriptions de lieux, références, photos, plans officiels, histoire et articles avant audit final. Fiche toujours privée ; aucune annonce Facebook envoyée."
+  "remaining": "39 descriptions de lieux, références, photos, plans officiels, histoire et articles avant audit final. Fiche toujours privée ; aucune annonce Facebook envoyée.",
+  "editorialLengthExceptions": {
+    "manchots-humboldt-ancien-ours": "Format court2h2/2p : 20Minutes11juin2021 annonce le remplacement et le plan officiel ultérieur confirme les Humboldt. Aucun cliché légendé après transformation ni détail sûr des aménagements intérieurs retrouvé ; ne pas attribuer automatiquement décor2012desours aux manchots. Date exacte de début inconnue.",
+    "flamants-cuba": "Format court2h2/2p : programmes officiels2024 et plan confirment espèce et emplacement ; MNHN confirme synonymes et pigments. Photo2012JonasLivet légendée flamants nains : ne prouve ni espèce Cuba ni continuité exacte de sa population. Pas de dates, noms individuels, naissances ou transfert publiés non établis.",
+    "elephants-mer": "Format court2h2/2p : article LeMonde15avril1972 (seuls faits brefs repris), description historique JonasLivet et ancien plan légendé. Aucun détail visuel suffisamment prouvé ni nom, date exacte de retrait, espèce nord/sud ou dimensions admis. Datation archive1985 contestée ; ne pas exposer cette année comme preuve. Recherche supplémentaire auprès presse, sources officielles et bibliographie sans résultat fiable sur expérience.",
+    "otaries-afrique-sud": "Trois paragraphes sous120mots : quatreespèces confirmées, Willowphotographiée et naissanceprogrammeeuropéen. Recherche effectuée ; retirer formules génériques plutôt que remplir. Aucun décor du bassin adulte ni coordonnées non prouvées."
+  }
 }

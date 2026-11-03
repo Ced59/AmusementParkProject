@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-03T05:16:31.923Z",
+      "lastDataIntegrationAt": "2026-11-03T05:38:29.369Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -18611,9 +18611,49 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-d0e7db92-a4da-4b78-aaf2-73d9fefef989",
           "auditEvidence": null,
           "summary": "Descriptions des quatre boutiques en huit langues, fondées sur leurs pages et photographies officielles distinctes ; aucun changement de visibilité."
+        },
+        {
+          "eventId": "apply-a997f6fe-7725-472c-8acf-4282f8449de4",
+          "appliedAt": "2026-11-03T05:24:10.651Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-a997f6fe-7725-472c-8acf-4282f8449de4",
+          "auditEvidence": null,
+          "summary": "Descriptions des aquariums tropicaux et du Ciné 5D intégrées dans les huit langues, avec sources vérifiées et relecture personnelle."
+        },
+        {
+          "eventId": "apply-2e7d0793-de17-478b-99fe-a17c4a55bce6",
+          "appliedAt": "2026-11-03T05:25:27.025Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-2e7d0793-de17-478b-99fe-a17c4a55bce6",
+          "auditEvidence": null,
+          "summary": "Description historique du spectacle des rapaces intégrée en huit langues à partir du reportage original Élodie Rothan ; lieu précis et date de fermeture non inventés."
+        },
+        {
+          "eventId": "apply-a0cb7f00-4c07-4aa1-97e6-c719a6440d5f",
+          "appliedAt": "2026-11-03T05:33:37.542Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-a0cb7f00-4c07-4aa1-97e6-c719a6440d5f",
+          "auditEvidence": null,
+          "summary": "Marineland : descriptions en huit langues des otaries de Patagonie et des phoques ; sources officielles sur Oba et programmes historiques recoupés ; intégration partielle."
+        },
+        {
+          "eventId": "apply-5d2e2189-18bb-4f59-995e-fe9ea9b5ffa7",
+          "appliedAt": "2026-11-03T05:38:29.369Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-5d2e2189-18bb-4f59-995e-fe9ea9b5ffa7",
+          "auditEvidence": null,
+          "summary": "Marineland : descriptions en huit langues des otaries d’Afrique du Sud, des Humboldt dans l’ancien espace des ours, des flamants de Cuba et des éléphants de mer ; formats courts motivés et sources conservées ; partiel."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Descriptions du parc et de la zone complètes en huit langues ; 24/63 lieux rédigés. Poursuivre les 39 descriptions restantes, les médias, plans, références et histoire avant audit final. Fiche privée ; aucune annonce Facebook envoyée.",
       "sources": [
         {
           "label": "Backlog national existant",
