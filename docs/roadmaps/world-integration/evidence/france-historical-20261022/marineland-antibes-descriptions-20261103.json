@@ -10,7 +10,7 @@
   },
   "parkItemDescriptions": {
     "total": 63,
-    "eightLanguageComplete": 50,
+    "eightLanguageComplete": 63,
     "keys": [
       "bassins-orques",
       "bassin-dauphins",
@@ -28,6 +28,7 @@
       "voliere-lagoon",
       "phoques",
       "cine-5d",
+      "mer-profonde",
       "musee-marine-exposition",
       "ours-polaires",
       "spectacle-rapaces",
@@ -60,8 +61,20 @@
       "rencontre-requins",
       "soigneur-dauphins",
       "lagon-baignade",
+      "lagoon-center",
       "manchots-humboldt-ancien-ours",
-      "elephants-mer"
+      "elephants-mer",
+      "fontaine",
+      "aire-jeux-exposition",
+      "aire-jeux-cinema",
+      "accueil",
+      "entree",
+      "premiers-secours",
+      "parking-p1",
+      "parking-p2",
+      "parking-p3",
+      "parking-p4",
+      "parking-p5"
     ]
   },
   "evidence": [
@@ -82,7 +95,7 @@
     "https://www.mnhn.fr/fr/flamant-rouge",
     "https://artemis-ing.fr/posts/c3/grand-marineland"
   ],
-  "remaining": "13 descriptions de lieux, références, photos, plans officiels, histoire et articles avant audit final. Fiche toujours privée ; aucune annonce Facebook envoyée.",
+  "remaining": "Descriptions des63lieux présentes dans8langues ; poursuivre médias, références, histoire et articles, puis audit complet.",
   "editorialLengthExceptions": {
     "manchots-humboldt-ancien-ours": "Format court2h2/2p : 20Minutes11juin2021 annonce le remplacement et le plan officiel ultérieur confirme les Humboldt. Aucun cliché légendé après transformation ni détail sûr des aménagements intérieurs retrouvé ; ne pas attribuer automatiquement décor2012desours aux manchots. Date exacte de début inconnue.",
     "flamants-cuba": "Format court2h2/2p : programmes officiels2024 et plan confirment espèce et emplacement ; MNHN confirme synonymes et pigments. Photo2012JonasLivet légendée flamants nains : ne prouve ni espèce Cuba ni continuité exacte de sa population. Pas de dates, noms individuels, naissances ou transfert publiés non établis.",
@@ -106,8 +119,20 @@
     "granita-requins": "Format bref 1h2/1p. Nom et voisinage attestés par plans officiels illustrés2012 ou édition archivée sous2019 (sans date imprimée) ; recherche web noms exacts et sources cartographiques sans page descriptive ou photo authentifiée de ce comptoir. Ni carte détaillée, décor, dates ni continuité de commerce ne doivent être extrapolés.",
     "hot-dog-crepes": "Format bref 1h2/1p. Nom et voisinage attestés par plans officiels illustrés2012 ou édition archivée sous2019 (sans date imprimée) ; recherche web noms exacts et sources cartographiques sans page descriptive ou photo authentifiée de ce comptoir. Ni carte détaillée, décor, dates ni continuité de commerce ne doivent être extrapolés.",
     "le-sous-marin": "Format bref 1h2/1p. Nom et voisinage attestés par plans officiels illustrés2012 ou édition archivée sous2019 (sans date imprimée) ; recherche web noms exacts et sources cartographiques sans page descriptive ou photo authentifiée de ce comptoir. Ni carte détaillée, décor, dates ni continuité de commerce ne doivent être extrapolés. Aucun menu déduit du nom SousMarin ; barAntarctica figure commevoisin distinct surplan2012.",
-    "kiosque-aquarium": "Format bref 1h2/1p. Nom et voisinage attestés par plans officiels illustrés2012 ou édition archivée sous2019 (sans date imprimée) ; recherche web noms exacts et sources cartographiques sans page descriptive ou photo authentifiée de ce comptoir. Ni carte détaillée, décor, dates ni continuité de commerce ne doivent être extrapolés."
+    "kiosque-aquarium": "Format bref 1h2/1p. Nom et voisinage attestés par plans officiels illustrés2012 ou édition archivée sous2019 (sans date imprimée) ; recherche web noms exacts et sources cartographiques sans page descriptive ou photo authentifiée de ce comptoir. Ni carte détaillée, décor, dates ni continuité de commerce ne doivent être extrapolés.",
+    "parking-p1": "Format bref1h2/1p : recherche plans officiels successifs, OSM, page servicesancienne, SoBlueactuel. Seul emplacement et rattachement historique certains ; capacité, accès et conditionsactuelles nonprouvés. Statut individuel restevide, fermeture duparc ne prouve pas celleduparking partagé. Pas de coordonnéesinventées pourP3/P4.",
+    "parking-p2": "Format bref1h2/1p : recherche plans officiels successifs, OSM, page servicesancienne, SoBlueactuel. Seul emplacement et rattachement historique certains ; capacité, accès et conditionsactuelles nonprouvés. Statut individuel restevide, fermeture duparc ne prouve pas celleduparking partagé. Pas de coordonnéesinventées pourP3/P4.",
+    "parking-p3": "Format bref1h2/1p : recherche plans officiels successifs, OSM, page servicesancienne, SoBlueactuel. Seul emplacement et rattachement historique certains ; capacité, accès et conditionsactuelles nonprouvés. Statut individuel restevide, fermeture duparc ne prouve pas celleduparking partagé. Pas de coordonnéesinventées pourP3/P4.",
+    "parking-p4": "Format bref1h2/1p : recherche plans officiels successifs, OSM, page servicesancienne, SoBlueactuel. Seul emplacement et rattachement historique certains ; capacité, accès et conditionsactuelles nonprouvés. Statut individuel restevide, fermeture duparc ne prouve pas celleduparking partagé. Pas de coordonnéesinventées pourP3/P4.",
+    "parking-p5": "Format bref1h2/1p : recherche plans officiels successifs, OSM, page servicesancienne, SoBlueactuel. Seul emplacement et rattachement historique certains ; capacité, accès et conditionsactuelles nonprouvés. Statut individuel restevide, fermeture duparc ne prouve pas celleduparking partagé. Pas de coordonnéesinventées pourP3/P4.",
+    "accueil": "Notice brève1h2/1p : pavillon etfonctions confirmés par plans et guide2024, ancienne page officielle supprimée ; pas intérieur/photo précise ni prestations supplémentaires inventées.",
+    "premiers-secours": "Notice brève1h2/1p : poste matérialisé surplans officiels ; aucune ficheprimaire locale précisant personnel ou équipements retrouvée. Ne pas copier infirmerieMarinelandCatalunya, autreparc.",
+    "lagoon-center": "Troisparagraphes, français146mots, autreslangues naturellement pluscourtes sans pertefactuelle. Pas de détails techniques ou capacités dans récit. Source2019 etphotoauthentique étoffent cettefiche.",
+    "mer-profonde": "Noticecourte1h2/1p après rechercheofficielle, presse, sourcescartographiques etphotoscontributeur. Aucun cliché correctement légendé permettant de détailler structures, fabricant ou transformation. Ni modèleenjeu, matière, dateouverture ni continuitéfontaine/MerProfonde supposés. Fontaine : silhouette fonctionnelle représentéeparplanofficiel2008, pas photographie.",
+    "aire-jeux-exposition": "Noticecourte1h2/1p après rechercheofficielle, presse, sourcescartographiques etphotoscontributeur. Aucun cliché correctement légendé permettant de détailler structures, fabricant ou transformation. Ni modèleenjeu, matière, dateouverture ni continuitéfontaine/MerProfonde supposés. Fontaine : silhouette fonctionnelle représentéeparplanofficiel2008, pas photographie.",
+    "aire-jeux-cinema": "Noticecourte1h2/1p après rechercheofficielle, presse, sourcescartographiques etphotoscontributeur. Aucun cliché correctement légendé permettant de détailler structures, fabricant ou transformation. Ni modèleenjeu, matière, dateouverture ni continuitéfontaine/MerProfonde supposés. Fontaine : silhouette fonctionnelle représentéeparplanofficiel2008, pas photographie.",
+    "fontaine": "Noticecourte1h2/1p après rechercheofficielle, presse, sourcescartographiques etphotoscontributeur. Aucun cliché correctement légendé permettant de détailler structures, fabricant ou transformation. Ni modèleenjeu, matière, dateouverture ni continuitéfontaine/MerProfonde supposés. Fontaine : silhouette fonctionnelle représentéeparplanofficiel2008, pas photographie."
   },
-  "latestApplyOperation": "1f8588f4-a9df-4c97-9b8e-405dfbf9fae0",
-  "latestApplyAtUtc": "2026-11-03T06:16:18.7844518Z"
+  "latestApplyOperation": "ccccb720-7fad-4870-a2f0-a3e56d208574",
+  "latestApplyAtUtc": "2026-11-03T06:25:56.6081155Z"
 }

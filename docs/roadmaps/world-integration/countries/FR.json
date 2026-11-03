@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-03T06:16:18.784Z",
+      "lastDataIntegrationAt": "2026-11-03T06:33:15.876Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -18711,9 +18711,149 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-1f8588f4-a9df-4c97-9b8e-405dfbf9fae0",
           "auditEvidence": null,
           "summary": "Sept anciens cafés et kiosques décrits dans huit langues à partir des plans et sources conservées ; absence de détails et aliases incertains documentés, intégration partielle."
+        },
+        {
+          "eventId": "apply-97edca4f-3827-45bc-b2f4-fdbde8eaa752",
+          "appliedAt": "2026-11-03T06:22:46.127Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-97edca4f-3827-45bc-b2f4-fdbde8eaa752",
+          "auditEvidence": null,
+          "summary": "Descriptions huit langues du Lagoon Center, entrée, accueil et premiers secours ; vues historiques et sources primaires examinées, intégration partielle."
+        },
+        {
+          "eventId": "apply-915c2b89-6c9d-4e0e-a0da-eb7fe9f29a33",
+          "appliedAt": "2026-11-03T06:24:38.401Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-915c2b89-6c9d-4e0e-a0da-eb7fe9f29a33",
+          "auditEvidence": null,
+          "summary": "Cinq parkings décrits dans huit langues, rattachements historiques et absence de statut actuel documentés ; intégration partielle."
+        },
+        {
+          "eventId": "apply-ccccb720-7fad-4870-a2f0-a3e56d208574",
+          "appliedAt": "2026-11-03T06:25:56.608Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-ccccb720-7fad-4870-a2f0-a3e56d208574",
+          "auditEvidence": null,
+          "summary": "Trois aires de jeux et fontaine historique décrites dans huit langues à partir des programmes et plans officiels ; limites de sources documentées, audit final à poursuivre."
+        },
+        {
+          "eventId": "import-photo-283a521603624532a15f39b24019d96c-2026-11-03T062758.094Z",
+          "appliedAt": "2026-11-03T06:27:58.094Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-283a521603624532a15f39b24019d96c-2026-11-03T062758.094Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-neptune-interior, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-fcd3ec6c0b7748eaa020309c27a9fcc8-2026-11-03T062814.410Z",
+          "appliedAt": "2026-11-03T06:28:14.410Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-fcd3ec6c0b7748eaa020309c27a9fcc8-2026-11-03T062814.410Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-lagoon-center-meeting, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-25a3be2f02f34dfc945334d4d91bafdc-2026-11-03T062828.749Z",
+          "appliedAt": "2026-11-03T06:28:28.749Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-25a3be2f02f34dfc945334d4d91bafdc-2026-11-03T062828.749Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tropical-wave-facade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c6779982ae0844e380d0c81d8913e8d4-2026-11-03T062842.974Z",
+          "appliedAt": "2026-11-03T06:28:42.974Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-c6779982ae0844e380d0c81d8913e8d4-2026-11-03T062842.974Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-ocean-dreams-interior, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-cb3b6b1477624cb8bc35e7b121702466-2026-11-03T062900.056Z",
+          "appliedAt": "2026-11-03T06:29:00.056Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-cb3b6b1477624cb8bc35e7b121702466-2026-11-03T062900.056Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-tresors-mer-window, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c6eaf043e30d409890411d37e97dd66b-2026-11-03T062914.430Z",
+          "appliedAt": "2026-11-03T06:29:14.430Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-c6eaf043e30d409890411d37e97dd66b-2026-11-03T062914.430Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-marineland-store-facade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-map-marineland-antibes-plan-1997-fr-b0c20bdf6d0cb2e1",
+          "appliedAt": "2026-11-03T06:30:31.980Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-map-marineland-antibes-plan-1997-fr-b0c20bdf6d0cb2e1",
+          "auditEvidence": null,
+          "summary": "Marineland : plan officiel 1997 original importé dans le stockage documentaire ; rattachement et titres huit langues à appliquer."
+        },
+        {
+          "eventId": "import-map-marineland-antibes-plan-2008-fr-f57f8f6f4a15b403",
+          "appliedAt": "2026-11-03T06:31:53.658Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-map-marineland-antibes-plan-2008-fr-f57f8f6f4a15b403",
+          "auditEvidence": null,
+          "summary": "Marineland : plan officiel 2008 original importé dans le stockage documentaire ; rattachement et titres huit langues à appliquer."
+        },
+        {
+          "eventId": "import-map-marineland-antibes-plan-2010-fr-9f95c5affee07081",
+          "appliedAt": "2026-11-03T06:32:04.200Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-map-marineland-antibes-plan-2010-fr-9f95c5affee07081",
+          "auditEvidence": null,
+          "summary": "Marineland : plan officiel 2010 original importé dans le stockage documentaire ; rattachement et titres huit langues à appliquer."
+        },
+        {
+          "eventId": "import-map-marineland-antibes-plan-2012-fr-16bf73dd6e0c666f",
+          "appliedAt": "2026-11-03T06:32:17.542Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-map-marineland-antibes-plan-2012-fr-16bf73dd6e0c666f",
+          "auditEvidence": null,
+          "summary": "Marineland : plan officiel 2012 original importé dans le stockage documentaire ; rattachement et titres huit langues à appliquer."
+        },
+        {
+          "eventId": "apply-754517c5-46fa-4782-8f45-4d36463c7766",
+          "appliedAt": "2026-11-03T06:33:15.876Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-754517c5-46fa-4782-8f45-4d36463c7766",
+          "auditEvidence": null,
+          "summary": "Quatre plans officiels datés 1997, 2008, 2010 et 2012 rattachés au parc avec titres et alternatives huit langues ; documents privés, audit final et histoire à poursuivre."
         }
       ],
-      "nextAction": "Descriptions du parc et de la zone complètes en huit langues ; 50/63 lieux rédigés. Poursuivre les 13 descriptions restantes, les médias, plans, références et histoire avant audit final. Fiche privée ; aucune annonce Facebook envoyée.",
+      "nextAction": "63/63 lieux avec textes huit langues ; logo, six photos et quatre plans datés privés. Poursuivre photos animalières et générales, biographies, histoire et articles ; contrôler les anciennes enseignes avant audit final puis publication site et Facebook autorisées.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -18747,7 +18887,7 @@
         }
       ],
       "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-intake-20261103.json",
-      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-descriptions-20261103.json"
+      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-media-20261103.json"
     },
     {
       "entryId": "FR-candidate-b985933907dc00",
