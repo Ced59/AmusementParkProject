@@ -320,6 +320,41 @@
         "descriptions.pt"
       ],
       "summary": "American Park Marseille : description huit langues de la salle de danse fondée sur sa carte postale d’entrée; format bref motivé, sans intérieur ni programme inventé."
+    },
+    {
+      "eventId": "import-photo-a137fc792f734028b5c51d52a2e6e80c-2026-11-03T035217.921Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:52:17.921Z",
+      "appliedAt": "2026-11-03T03:52:17.921Z",
+      "receiptFile": "10-henri-para-1914-import-receipt.json",
+      "receiptSha256": "e28b7d90f46d5b15ff477afcc573b502ac2ba289a5ff7e212d2138337954e7bc",
+      "imageId": "a137fc792f734028b5c51d52a2e6e80c",
+      "ownerId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+      "createdAt": "2026-11-03T03:52:14.457Z",
+      "sourceUrl": "https://collections.marseille.fr/_recherche-images/show/31811/image/27450/0",
+      "summary": "Import privé du média historique 10-henri-para-1914, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-05b61cd8-bf70-48fd-ba97-b0970ed79f3f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T03:53:56.1362776Z",
+      "appliedAt": "2026-11-03T03:53:56.136Z",
+      "receiptFile": "10-war-context-apply.receipt.json",
+      "receiptSha256": "eee99ab352e2b7afe0a660e08791e8710d87f870b92914ff2dc59cec545570b2",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "mainImageId",
+        "sources"
+      ],
+      "summary": "Histoire de1914 enrichie dans huit langues depuis la photographie municipale d’Henri Para ; image de contexte contemporaine et source archivistique intégrées, audit final restant."
     }
   ],
   "publicationOrNoop": []
