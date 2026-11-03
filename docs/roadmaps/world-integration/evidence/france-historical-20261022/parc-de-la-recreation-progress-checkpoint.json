@@ -1,8 +1,8 @@
 {
   "entryId": "FR-candidate-28e967c581a3cb",
   "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
-  "checkedAtUtc": "2026-11-02T16:40:02.716040+00:00",
-  "status": "public_partial_navigation_and_facebook_verified",
+  "checkedAtUtc": "2026-11-03T01:31:43.511162+00:00",
+  "status": "partial-public-enrichment-cache-verification-pending",
   "dataApplies": [
     {
       "operationId": "78ec5f49-8b14-4641-b17c-6b8088329a29",
@@ -63,7 +63,7 @@
   ],
   "items": 30,
   "parkLanguages": 8,
-  "importedMedia": 20,
+  "importedMedia": 21,
   "sourceRecovery": {
     "officialArchivePages": "2015ArcheryTag,2016park/gallery/repas/pedagogie/infos/about,2017homepage; exactsnapshots in sourcesmanifest",
     "officialArchiveMedia": [
@@ -158,14 +158,13 @@
     ]
   },
   "nextSteps": [
-    "VerifyordinaryHistoirelink aftercache refresh",
-    "ResolveFacebookandpublishonceaftergates",
-    "Recordpartialpublicationaudit",
-    "ContinueOcéadeStrasbourgqualification"
+    "Keep public-pageverificationpending and continue integration. Recheck normalroutes after SSRrefresh; no guaranteed30minuteexpiry.",
+    "Ten retained private entries still lack source depth/photographs; official2013/2014pages,2015CDXassets,2017firsthandbikephoto andprimarysources recovered; no fabricatedinformation.",
+    "Maintain partial status; accepted data consists of five new8-language descriptions, one nativephoto and nine-field factual/stylecorrection; allpublicationreceiptsseparate fromactualdatadates."
   ],
-  "describedItems": 15,
-  "lastDataIntegrationAt": "2026-11-02T16:28:57.321Z",
-  "dataEvents": 34,
+  "describedItems": 20,
+  "lastDataIntegrationAt": "2026-11-03T01:14:12.085Z",
+  "dataEvents": 38,
   "visibilityOperations": [
     {
       "eventId": "apply-d052ed82-52bc-452d-97aa-b606a0f6bd97",
@@ -231,21 +230,14 @@
       "summary": "Mise en visibilité autorisée de La Récréation après ses contenus validés ; intégration toujours partielle, contrôles publics et Facebook à suivre."
     }
   ],
-  "actualScore": {
-    "completenessScore": 91,
-    "dataQualityLevel": "Good",
-    "applicableMaxPoints": 103,
-    "earnedPoints": 94,
-    "publicationBlockers": [],
-    "formulaicPublicTextIssue": null
-  },
+  "actualScore": 91,
   "canonicalPublishedFacts": 4,
-  "publicItems": 15,
-  "privateItems": 15,
+  "publicItems": 20,
+  "privateItems": 10,
   "articleLanguages": 8,
-  "finalIdempotenceUnchanged": 56,
+  "finalIdempotenceUnchanged": 57,
   "facebook": "Published — existing announcement resolved, no duplicate",
-  "historyNavigation": "Still absent on ordinary French page at16:40UTC despite public localized API summary true; no completion or Facebook claimed.",
+  "historyNavigation": "Normal Histoire navigation verified in all eight languages on2026-11-02; latestpendingchecks concern three itemdescriptionpages only.",
   "officialSearchVisibility": {
     "id": "854fefca-4dff-4133-835b-12ac1dcf444f",
     "name": "Parc de la Récréation",
@@ -255,27 +247,11 @@
   },
   "facebookPublished": true,
   "facebookStatus": "Published",
-  "facebookVerification": {
-    "entryId": "FR-candidate-28e967c581a3cb",
-    "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
-    "verifiedAtUtc": "2026-11-02T17:29:56.144868+00:00",
-    "action": "ResolveFacebookPublication",
-    "result": "AlreadyPublished",
-    "publicationId": "29717df3ec6f4c6d869aa236f0fb4bbb",
-    "status": "Published",
-    "externalUrl": "https://www.facebook.com/1285475681307050/posts/122125754151424431",
-    "actualPublicationTimeUtc": null,
-    "publicationByThisInstance": false,
-    "noDuplicateCreated": true,
-    "evidenceFile": "10-facebook-draft.json",
-    "evidenceSha256": "eecbbe0eacfdd1bc2fee7fea772fb65ffa19780809dc4ae7d7df8e90b93cef43",
-    "dataIntegrationTimestampChanged": false,
-    "ordinaryHistoryNavigation": "Still absent on standardFrenchparkroute lastbrowsercheck; thisremainsunresolved."
-  },
+  "facebookVerification": "11-facebook-resolve-by-url.json",
   "facebookPublicationAttemptedByThisInstance": false,
   "completed": false,
   "outcome": "partial",
-  "updatedAtUtc": "2026-11-02T18:46:36.629965+00:00",
+  "updatedAtUtc": "2026-11-03T01:51:11.639997+00:00",
   "normalNavigationVerification": {
     "entryId": "FR-candidate-28e967c581a3cb",
     "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
@@ -385,5 +361,52 @@
     "outcome": "partial",
     "remaining": "Score91/100 without accepted exact exception;15privateitemswithoutdescription and factual source gaps remain. Navigation/Facebook success alone does not complete the park."
   },
-  "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125754151424431"
+  "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125754151424431",
+  "latestGraph": "11-final-export.json",
+  "lastAudit": "11-final-personal-corpus-review.json",
+  "publicCacheDiagnosis": {
+    "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+    "atUtc": "2026-11-03T01:51:11.639997+00:00",
+    "normalRouteChecked": {
+      "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/c73d51a8-25c8-4fbb-8ebe-f01efe24617f/manege-a-pedales",
+      "status": 200,
+      "type": "document",
+      "headers": {
+        "cache-control": "private, no-store, max-age=0",
+        "date": "Tue, 03 Nov 2026 01:46:26 GMT",
+        "vary": "Accept-Encoding",
+        "x-amusementpark-ssr-cache": "HIT"
+      }
+    },
+    "apiComparison": [
+      {
+        "url": "https://amusement-parks.fun/api/park-items/c73d51a8-25c8-4fbb-8ebe-f01efe24617f",
+        "atUtc": "2026-11-03T01:50:40.657902+00:00",
+        "httpStatus": 200,
+        "greenFlowerPresent": true,
+        "oldYellowPresent": false,
+        "currentFarmOpeningPresent": false,
+        "headers": {
+          "date": "Tue, 03 Nov 2026 01:50:40 GMT",
+          "cache-control": "public, max-age=120, s-maxage=600",
+          "vary": "Accept-Encoding, Accept-Language"
+        }
+      },
+      {
+        "url": "https://amusement-parks.fun/api/park-items/64104365-d16d-491c-a9a4-44b2e0c3b1da",
+        "atUtc": "2026-11-03T01:50:40.797431+00:00",
+        "httpStatus": 200,
+        "greenFlowerPresent": false,
+        "oldYellowPresent": false,
+        "currentFarmOpeningPresent": true,
+        "headers": {
+          "date": "Tue, 03 Nov 2026 01:50:40 GMT",
+          "cache-control": "public, max-age=120, s-maxage=600",
+          "vary": "Accept-Encoding, Accept-Language"
+        }
+      }
+    ],
+    "conclusion": "Fresh public API returns corrected Frenchcarousel/farm text. Ordinary HTML route returns SSR cache HIT and stale paragraph, confirmed after thirtyminuteAPIcache assumption. Separate SSR HTML cache default86400seconds in server.ts:107; runtimeconfiguredTTLunknown. No cachebypass,mutations or newFBpost. Threepubliclocalizedpagespending; allother37of40pass.",
+    "nextAction": "Keep public-pageverificationpending and continue integration. Recheck normalroutes after SSRrefresh; no guaranteed30minuteexpiry."
+  }
 }

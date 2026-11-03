@@ -619,6 +619,100 @@
         "summaries"
       ],
       "summary": "Correction éditoriale après publication : légendes propres à l’article en huit langues et reformulation des huit recouvrements factuels, sans modifier les faits historiques."
+    },
+    {
+      "eventId": "apply-8e8eef56-0a06-4c47-9a92-042e35fbaa12",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T01:03:58.6409135Z",
+      "appliedAt": "2026-11-03T01:03:58.640Z",
+      "receiptFile": "11-additional-copy-apply.receipt.json",
+      "receiptSha256": "aff266dd3b4fa968af2b97bfa5d2db748638d0c24e276dcad9ff4b5f3da6973b",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc de la Récréation : accueil, animaux de la ferme, parcours insolite et manège à pédales documentés en huit langues ; intégration partielle, contenus privés en attente de l’audit."
+    },
+    {
+      "eventId": "apply-f421bd12-48fd-4729-a97b-fe10197c6282",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T01:06:45.6726174Z",
+      "appliedAt": "2026-11-03T01:06:45.672Z",
+      "receiptFile": "11-bicycle-copy-apply.receipt.json",
+      "receiptSha256": "0d4ffe0089855127b652f3a5a3adc2f43eb6e710efa5509bc672beafe10fa77d",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc de la Récréation : pistes de vélos documentées en huit langues à partir de la galerie officielle et d’une visite illustrée de mai 2017 ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-61bf53366c0f48b4b2e1de220cb47662-2026-11-03T010706.689Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T01:07:06.689Z",
+      "appliedAt": "2026-11-03T01:07:06.689Z",
+      "receiptFile": "11-bicycle-rafail-import-receipt.json",
+      "receiptSha256": "9f79c203eef1e8d6d6c7627ba1c8100dd03dc8f585a79031747dafdf2f66431c",
+      "imageId": "61bf53366c0f48b4b2e1de220cb47662",
+      "ownerId": "313d53e2-82a0-4003-b80c-ddda682f6d9a",
+      "createdAt": "2026-11-03T01:07:02.272Z",
+      "sourceUrl": "https://french-in-tours.blogspot.com/2017/05/le-parc-de-recreation-petit-netilly.html",
+      "summary": "Import privé du média historique 11-bicycle-rafail, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-555ef0cc-eed1-45b3-8767-6bcdbf17cf68",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T01:14:12.0853236Z",
+      "appliedAt": "2026-11-03T01:14:12.085Z",
+      "receiptFile": "11-refine-live-copy-apply.receipt.json",
+      "receiptSha256": "4f694fd433dffa2150b4f3701f77dc4088212da4b4795ec950ed1deb242358b0",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Récréation : reformulation de la liste des animaux pour supprimer la répétition signalée ; décor floral vert du manège précisé en huit langues après récupération de la photographie officielle."
     }
   ],
   "publicationOrNoop": [
@@ -684,6 +778,28 @@
         "isVisible"
       ],
       "summary": "Mise en visibilité autorisée de La Récréation après ses contenus validés ; intégration toujours partielle, contrôles publics et Facebook à suivre."
+    },
+    {
+      "eventId": "apply-2a163916-fbd3-49b1-a023-96d542a25e28",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T01:10:43.5530159Z",
+      "appliedAt": "2026-11-03T01:10:43.553Z",
+      "receiptFile": "11-publish-reviewed-additions-apply.receipt.json",
+      "receiptSha256": "ee6f617b7b23f276bf7cf22cb642b28af6463215b1ca8982b1d223d8ad503fa8",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isPublished",
+        "isVisible"
+      ],
+      "summary": "Publication autorisée de cinq fiches auditées et d’une photographie native ; parc conservé en intégration partielle, sans nouvelle date de données pour cette opération de visibilité."
     }
   ]
 }

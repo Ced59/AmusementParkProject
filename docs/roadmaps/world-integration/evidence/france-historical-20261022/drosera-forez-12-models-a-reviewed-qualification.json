@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-11-03T01:42:03.617998+00:00",
+  "rows": [
+    {
+      "key": "model-sauvain",
+      "name": "Croix monolithe de Sauvain",
+      "sourcePage": "https://web.archive.org/web/20001208232100id_/http://www.parc-de-la-drosera.fr:80/sauvain.html",
+      "nativeImage": "10-model-pages/Sauvain.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-pouilly",
+      "name": "Église de Pouilly-lès-Feurs",
+      "sourcePage": "https://web.archive.org/web/20010221133705id_/http://www.parc-de-la-drosera.fr:80/pouilly.html",
+      "nativeImage": "10-model-pages/Pouilly.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-violay",
+      "name": "Tour Matagrin de Violay",
+      "sourcePage": "https://web.archive.org/web/20001209015100id_/http://www.parc-de-la-drosera.fr:80/violay.html",
+      "nativeImage": "10-model-pages/Violay.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

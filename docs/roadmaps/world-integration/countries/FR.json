@@ -22377,7 +22377,7 @@
         "La Recreation"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-02T16:28:57.321Z",
+      "lastDataIntegrationAt": "2026-11-03T01:14:12.085Z",
       "integrationHistory": [
         {
           "eventId": "apply-78ec5f49-8b14-4641-b17c-6b8088329a29",
@@ -22718,9 +22718,49 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-4d3537c1-fd64-478e-b654-327b74651cbd",
           "auditEvidence": null,
           "summary": "Correction éditoriale après publication : légendes propres à l’article en huit langues et reformulation des huit recouvrements factuels, sans modifier les faits historiques."
+        },
+        {
+          "eventId": "apply-8e8eef56-0a06-4c47-9a92-042e35fbaa12",
+          "appliedAt": "2026-11-03T01:03:58.640Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-8e8eef56-0a06-4c47-9a92-042e35fbaa12",
+          "auditEvidence": null,
+          "summary": "Parc de la Récréation : accueil, animaux de la ferme, parcours insolite et manège à pédales documentés en huit langues ; intégration partielle, contenus privés en attente de l’audit."
+        },
+        {
+          "eventId": "apply-f421bd12-48fd-4729-a97b-fe10197c6282",
+          "appliedAt": "2026-11-03T01:06:45.672Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-f421bd12-48fd-4729-a97b-fe10197c6282",
+          "auditEvidence": null,
+          "summary": "Parc de la Récréation : pistes de vélos documentées en huit langues à partir de la galerie officielle et d’une visite illustrée de mai 2017 ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-61bf53366c0f48b4b2e1de220cb47662-2026-11-03T010706.689Z",
+          "appliedAt": "2026-11-03T01:07:06.689Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#import-photo-61bf53366c0f48b4b2e1de220cb47662-2026-11-03T010706.689Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-bicycle-rafail, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-555ef0cc-eed1-45b3-8767-6bcdbf17cf68",
+          "appliedAt": "2026-11-03T01:14:12.085Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-receipts.json#apply-555ef0cc-eed1-45b3-8767-6bcdbf17cf68",
+          "auditEvidence": null,
+          "summary": "Récréation : reformulation de la liste des animaux pour supprimer la répétition signalée ; décor floral vert du manège précisé en huit langues après récupération de la photographie officielle."
         }
       ],
-      "nextAction": "Fiche publique : quinze équipements décrits en huit langues, vingt médias dont logo, quatre faits et article ; score réel 91/100 sans bloqueur API. Histoire vérifiée depuis les fiches normales dans les huit langues, clic français réussi sur mobile et lien présent sur ordinateur. Annonce Facebook existante Published vérifiée sans nouvel envoi. Intégration reste partielle : quinze équipements privés sans description, coordonnées et plans incomplets, aucune exception exacte au score acceptée. Voir parc-de-la-recreation-normal-navigation-verification.json.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -32143,7 +32183,7 @@
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-11-02T20:08:43.2881509Z",
-      "editorialStatus": "Blocked",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
@@ -32151,7 +32191,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-02T20:10:50.935Z",
+      "lastDataIntegrationAt": "2026-11-03T01:57:48.821Z",
       "integrationHistory": [
         {
           "eventId": "apply-8f4b2dee-6769-4a2f-a0a0-a9792f199189",
@@ -32322,9 +32362,259 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-0fa1da50-580c-4b36-a38b-a1c0dc699c05",
           "auditEvidence": null,
           "summary": "Audit final : correction de lisibilité de trois libellés de sources dans l’article existant, sans changer les faits, les textes ou les médias."
+        },
+        {
+          "eventId": "import-photo-dfa1402f5dac426784f34e461a22c9be-2026-11-03T012532.818Z",
+          "appliedAt": "2026-11-03T01:25:32.818Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-dfa1402f5dac426784f34e461a22c9be-2026-11-03T012532.818Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 10-historical-logo, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-f9cb288228484146ae0289036f5aea49-2026-11-03T012546.436Z",
+          "appliedAt": "2026-11-03T01:25:46.436Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-f9cb288228484146ae0289036f5aea49-2026-11-03T012546.436Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 10-shop-preserves, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1953e05e85254ec0bd14f7856cb14774-2026-11-03T012559.795Z",
+          "appliedAt": "2026-11-03T01:25:59.795Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-1953e05e85254ec0bd14f7856cb14774-2026-11-03T012559.795Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 10-shop-honey, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-783591bda6bd4c15bdc9e222cdab04d2-2026-11-03T012613.319Z",
+          "appliedAt": "2026-11-03T01:26:13.319Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-783591bda6bd4c15bdc9e222cdab04d2-2026-11-03T012613.319Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 10-shop-postcards, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-3c05ac4b-8962-434e-ae13-4d922ca68ea9",
+          "appliedAt": "2026-11-03T01:28:26.147Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-3c05ac4b-8962-434e-ae13-4d922ca68ea9",
+          "auditEvidence": null,
+          "summary": "Droséra : Boutique Forézienne documentée en huit langues après récupération du site officiel et de trois photographies ; logo officiel également retrouvé, dossier en cours."
+        },
+        {
+          "eventId": "apply-62c080d4-469a-4c72-8bfd-c2f4c78ed5b7",
+          "appliedAt": "2026-11-03T01:31:49.040Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-62c080d4-469a-4c72-8bfd-c2f4c78ed5b7",
+          "auditEvidence": null,
+          "summary": "Droséra : restaurant interne qualifié dans les archives officielles, créé et documenté en huit langues après contrôle des neuf fiches existantes ; fiche conservée privée avant audit."
+        },
+        {
+          "eventId": "import-photo-0919554d5d61414a973584e9246365e8-2026-11-03T013337.348Z",
+          "appliedAt": "2026-11-03T01:33:37.348Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-0919554d5d61414a973584e9246365e8-2026-11-03T013337.348Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 10-restaurant-facade, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-8017423fa5734070aad0407ae5f815a5-2026-11-03T013350.757Z",
+          "appliedAt": "2026-11-03T01:33:50.757Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-8017423fa5734070aad0407ae5f815a5-2026-11-03T013350.757Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 10-restaurant-terrace, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-a3e895bc-3338-49a1-a338-75ed41d09a15",
+          "appliedAt": "2026-11-03T01:42:41.055Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-a3e895bc-3338-49a1-a338-75ed41d09a15",
+          "auditEvidence": null,
+          "summary": "Trois maquettes historiques qualifiées sur le catalogue officiel : croix de Sauvain, église de Pouilly-lès-Feurs et tour Matagrin ; descriptions spécifiques dans les huit langues, fiches privées."
+        },
+        {
+          "eventId": "apply-7c099b7c-16f2-40b2-bc4f-cc608725f89a",
+          "appliedAt": "2026-11-03T01:46:12.027Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-7c099b7c-16f2-40b2-bc4f-cc608725f89a",
+          "auditEvidence": null,
+          "summary": "Trois maquettes historiques supplémentaires, Maison des Chanoines de Saint-Chamond, tour de Cleppé et pont de Vaux, avec 24 descriptions relues et sources officielles ; conservation privée avant audit."
+        },
+        {
+          "eventId": "import-photo-d443fb05459d4b1298a972af39df8981-2026-11-03T014627.100Z",
+          "appliedAt": "2026-11-03T01:46:27.100Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-d443fb05459d4b1298a972af39df8981-2026-11-03T014627.100Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-sauvain, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4606a83132b146ac981552cbcf999097-2026-11-03T014640.558Z",
+          "appliedAt": "2026-11-03T01:46:40.558Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-4606a83132b146ac981552cbcf999097-2026-11-03T014640.558Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-pouilly, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-626925cfb2db4b9fbdc52b7c93a3c177-2026-11-03T014653.962Z",
+          "appliedAt": "2026-11-03T01:46:53.962Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-626925cfb2db4b9fbdc52b7c93a3c177-2026-11-03T014653.962Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-violay, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-c30e484450a74953b06036db178352a3-2026-11-03T014707.613Z",
+          "appliedAt": "2026-11-03T01:47:07.613Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-c30e484450a74953b06036db178352a3-2026-11-03T014707.613Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-schamond, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7396b1699a634247bca635e794a62efe-2026-11-03T014721.028Z",
+          "appliedAt": "2026-11-03T01:47:21.028Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-7396b1699a634247bca635e794a62efe-2026-11-03T014721.028Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-cleppe, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-62c0aa47a03146b1a08001b3d814eead-2026-11-03T014734.925Z",
+          "appliedAt": "2026-11-03T01:47:34.925Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-62c0aa47a03146b1a08001b3d814eead-2026-11-03T014734.925Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-sgeorges, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-68a26bc8-4269-4488-800f-16653690b4ae",
+          "appliedAt": "2026-11-03T01:53:14.554Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-68a26bc8-4269-4488-800f-16653690b4ae",
+          "auditEvidence": null,
+          "summary": "Maquettes internes de l’hôtel de ville de Saint-Étienne, du volcan de Lemptégy et du pont du Pertuiset : 24 descriptions dans les huit langues, trois identités privées distinctes des monuments et du parc auvergnat réels."
+        },
+        {
+          "eventId": "apply-40677e21-8c53-4f46-9797-a3e0ecfda6b0",
+          "appliedAt": "2026-11-03T01:55:06.025Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#apply-40677e21-8c53-4f46-9797-a3e0ecfda6b0",
+          "auditEvidence": null,
+          "summary": "Maquettes du prieuré de Saint-Romain-le-Puy et des châteaux de Saint-Marcel-de-Félines et Montrond-les-Bains : trois fiches historiques privées et 24 descriptions spécifiques relues."
+        },
+        {
+          "eventId": "import-photo-35ecc79c3da248edba08e36efce56141-2026-11-03T015521.720Z",
+          "appliedAt": "2026-11-03T01:55:21.720Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-35ecc79c3da248edba08e36efce56141-2026-11-03T015521.720Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-setienne, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-08c7d15ea877474b98ed3edbe88835b4-2026-11-03T015535.399Z",
+          "appliedAt": "2026-11-03T01:55:35.399Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-08c7d15ea877474b98ed3edbe88835b4-2026-11-03T015535.399Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-sours, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9673254c5815453fac8c2f2b07c23123-2026-11-03T015549.180Z",
+          "appliedAt": "2026-11-03T01:55:49.180Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-9673254c5815453fac8c2f2b07c23123-2026-11-03T015549.180Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-unieux, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-72cb868cd26f487db9be2e160f4e588d-2026-11-03T015602.846Z",
+          "appliedAt": "2026-11-03T01:56:02.846Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-72cb868cd26f487db9be2e160f4e588d-2026-11-03T015602.846Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-sromain, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-7f2b7d9dff2d4cab97ea6a48265f2b39-2026-11-03T015616.341Z",
+          "appliedAt": "2026-11-03T01:56:16.341Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-7f2b7d9dff2d4cab97ea6a48265f2b39-2026-11-03T015616.341Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-smarcel, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-dbe6d6c443c3439bad5d22b4843cfdb5-2026-11-03T015629.898Z",
+          "appliedAt": "2026-11-03T01:56:29.898Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-dbe6d6c443c3439bad5d22b4843cfdb5-2026-11-03T015629.898Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-model-montrond, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-ffb989c0c8934fa3ada6c748c5c1d15e-2026-11-03T015748.821Z",
+          "appliedAt": "2026-11-03T01:57:48.821Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-receipts.json#import-photo-ffb989c0c8934fa3ada6c748c5c1d15e-2026-11-03T015748.821Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 12-restaurant-dining-room, fichier et huit langues relus ; audit final restant."
         }
       ],
-      "nextAction": "Fiche privée auditée à80/100 : neuf éléments dont sept maquettes décrites et illustrées en huit langues, neuf photos, deux faits et un article. Logo requis ; inventaire complet des53maquettes, deux descriptions de services, plans et coordonnées restent à documenter. Activité1992–2013, ancienne fermeture2009 infirmée. Voir drosera-forez-progress-audit.json.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Backlog national existant",

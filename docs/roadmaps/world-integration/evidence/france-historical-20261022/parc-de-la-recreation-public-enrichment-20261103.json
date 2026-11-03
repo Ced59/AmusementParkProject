@@ -1,0 +1,146 @@
+{
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+  "checkedAtUtc": "2026-11-03T01:31:43.511162+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "lastDataIntegrationAt": "2026-11-03T01:14:12.085Z",
+  "latestDataReceipt": "555ef0cc-eed1-45b3-8767-6bcdbf17cf68",
+  "publicationOperation": "2a163916-fbd3-49b1-a023-96d542a25e28",
+  "counts": {
+    "items": 30,
+    "describedAndPublishedItems": 20,
+    "privateInsufficientlyDocumentedItems": 10,
+    "attractions": 25,
+    "attractionsWithEightDescriptions": 15,
+    "attractionsWithPhoto": 12,
+    "media": 21,
+    "logo": true,
+    "timelineFacts": 4,
+    "illustratedFacts": 4,
+    "articles": 1,
+    "articleLanguages": 8,
+    "officialDatedMapEditions": 0,
+    "itemCoordinates": 0
+  },
+  "score": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 94,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "roundtrip": {
+    "freshExportedAtUtc": "2026-11-03T01:15:44.2011241Z",
+    "unexplainedDifferences": [],
+    "compared": "Whole graph against accepted public publication and nine-field text-refinement receipts; collection order normalized."
+  },
+  "corpus": {
+    "reviewedAtUtc": "2026-11-03T01:21:19.324171+00:00",
+    "freshExport": "11-final-export.json",
+    "freshRoundtrip": "11-final-roundtrip.json",
+    "fullCorpusFields": 893,
+    "allEightLanguagesPersonallyReviewed": true,
+    "method": "Whole fresh graph reconciled against fully reviewed 10-public-graph and every accepted field: zero unexplained differences. Read and reviewed all forty new localized item descriptions, sixteen new alt/caption texts, description and credited source. Unchanged park, references, existing items, timeline, article and media preserve previous complete eight-language personal review. Entire fresh corpus scanned again.",
+    "encodingIssues": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicates": 0,
+    "crossCandidatesReviewed": 0,
+    "crossCandidateDecision": "Species enumeration was rewritten after server postpublication blocker; new complete scan has zero repeated sentences or long sequences. Carousel centrepiece corrected against recovered operator original in all eight languages.",
+    "actionableIssues": 0,
+    "shortDescriptionExceptions": [
+      "11-copy-source-review.json",
+      "11-bicycle-source-review.json"
+    ],
+    "manuallyChecked": "No invented access rules, seasons, track dimensions, manufacturers, exact opening dates or photographic locations. Four unusual-course stage names form one existing course. Pedalling described once as a family experience, no mechanical sequence. Native bicycle image belongs to exact former park; no modern FamilyPark reuse or identifying visitors.",
+    "completed": false
+  },
+  "idempotence": {
+    "unchanged": 57,
+    "created": 0,
+    "updated": 0,
+    "deleted": 0,
+    "warnings": 0,
+    "errors": 0
+  },
+  "publicVerification": {
+    "pages": 40,
+    "passed": 37,
+    "allHttp200": true,
+    "overflow": 0,
+    "brokenImages": 0,
+    "rawEnumLeaks": 0,
+    "pending": [
+      "French Animaux de la ferme updatedfirstparagraph",
+      "French Manège à pédales updatedcolourdetail",
+      "English Manège à pédales updatedcolourdetail"
+    ],
+    "lastPendingRecheckAt": "2026-11-03T01:22:06.730435+00:00",
+    "expectedNormalCacheMaximumMinutes": 30,
+    "reason": "Old exact paragraphs remain on those routes while other locales and fresh official full graph contain acceptedrefinement. PublicParkItemDetailData policy configured30minutes; verifyexpiry rather thanclaim success."
+  },
+  "facebook": {
+    "hasPublishedParkAnnouncement": true,
+    "parkAnnouncementId": "29717df3ec6f4c6d869aa236f0fb4bbb",
+    "parkAnnouncementStatus": "Published",
+    "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122125754151424431"
+  },
+  "remainingPrivateItems": [
+    "Balades en carriole",
+    "Billard hollandais",
+    "Mur d’escalade",
+    "Pétanque",
+    "Pêche à la ligne",
+    "Totem-ball",
+    "Tour de pneus",
+    "Tourni-pneu",
+    "Tyroliennes",
+    "Voitures à pédales"
+  ],
+  "cacheFollowup": {
+    "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+    "atUtc": "2026-11-03T01:51:11.639997+00:00",
+    "normalRouteChecked": {
+      "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/c73d51a8-25c8-4fbb-8ebe-f01efe24617f/manege-a-pedales",
+      "status": 200,
+      "type": "document",
+      "headers": {
+        "cache-control": "private, no-store, max-age=0",
+        "date": "Tue, 03 Nov 2026 01:46:26 GMT",
+        "vary": "Accept-Encoding",
+        "x-amusementpark-ssr-cache": "HIT"
+      }
+    },
+    "apiComparison": [
+      {
+        "url": "https://amusement-parks.fun/api/park-items/c73d51a8-25c8-4fbb-8ebe-f01efe24617f",
+        "atUtc": "2026-11-03T01:50:40.657902+00:00",
+        "httpStatus": 200,
+        "greenFlowerPresent": true,
+        "oldYellowPresent": false,
+        "currentFarmOpeningPresent": false,
+        "headers": {
+          "date": "Tue, 03 Nov 2026 01:50:40 GMT",
+          "cache-control": "public, max-age=120, s-maxage=600",
+          "vary": "Accept-Encoding, Accept-Language"
+        }
+      },
+      {
+        "url": "https://amusement-parks.fun/api/park-items/64104365-d16d-491c-a9a4-44b2e0c3b1da",
+        "atUtc": "2026-11-03T01:50:40.797431+00:00",
+        "httpStatus": 200,
+        "greenFlowerPresent": false,
+        "oldYellowPresent": false,
+        "currentFarmOpeningPresent": true,
+        "headers": {
+          "date": "Tue, 03 Nov 2026 01:50:40 GMT",
+          "cache-control": "public, max-age=120, s-maxage=600",
+          "vary": "Accept-Encoding, Accept-Language"
+        }
+      }
+    ],
+    "conclusion": "Fresh public API returns corrected Frenchcarousel/farm text. Ordinary HTML route returns SSR cache HIT and stale paragraph, confirmed after thirtyminuteAPIcache assumption. Separate SSR HTML cache default86400seconds in server.ts:107; runtimeconfiguredTTLunknown. No cachebypass,mutations or newFBpost. Threepubliclocalizedpagespending; allother37of40pass.",
+    "nextAction": "Keep public-pageverificationpending and continue integration. Recheck normalroutes after SSRrefresh; no guaranteed30minuteexpiry."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+  "atUtc": "2026-11-03T01:51:11.639997+00:00",
+  "normalRouteChecked": {
+    "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/c73d51a8-25c8-4fbb-8ebe-f01efe24617f/manege-a-pedales",
+    "status": 200,
+    "type": "document",
+    "headers": {
+      "cache-control": "private, no-store, max-age=0",
+      "date": "Tue, 03 Nov 2026 01:46:26 GMT",
+      "vary": "Accept-Encoding",
+      "x-amusementpark-ssr-cache": "HIT"
+    }
+  },
+  "apiComparison": [
+    {
+      "url": "https://amusement-parks.fun/api/park-items/c73d51a8-25c8-4fbb-8ebe-f01efe24617f",
+      "atUtc": "2026-11-03T01:50:40.657902+00:00",
+      "httpStatus": 200,
+      "greenFlowerPresent": true,
+      "oldYellowPresent": false,
+      "currentFarmOpeningPresent": false,
+      "headers": {
+        "date": "Tue, 03 Nov 2026 01:50:40 GMT",
+        "cache-control": "public, max-age=120, s-maxage=600",
+        "vary": "Accept-Encoding, Accept-Language"
+      }
+    },
+    {
+      "url": "https://amusement-parks.fun/api/park-items/64104365-d16d-491c-a9a4-44b2e0c3b1da",
+      "atUtc": "2026-11-03T01:50:40.797431+00:00",
+      "httpStatus": 200,
+      "greenFlowerPresent": false,
+      "oldYellowPresent": false,
+      "currentFarmOpeningPresent": true,
+      "headers": {
+        "date": "Tue, 03 Nov 2026 01:50:40 GMT",
+        "cache-control": "public, max-age=120, s-maxage=600",
+        "vary": "Accept-Encoding, Accept-Language"
+      }
+    }
+  ],
+  "conclusion": "Fresh public API returns corrected Frenchcarousel/farm text. Ordinary HTML route returns SSR cache HIT and stale paragraph, confirmed after thirtyminuteAPIcache assumption. Separate SSR HTML cache default86400seconds in server.ts:107; runtimeconfiguredTTLunknown. No cachebypass,mutations or newFBpost. Threepubliclocalizedpagespending; allother37of40pass.",
+  "nextAction": "Keep public-pageverificationpending and continue integration. Recheck normalroutes after SSRrefresh; no guaranteed30minuteexpiry."
+}
