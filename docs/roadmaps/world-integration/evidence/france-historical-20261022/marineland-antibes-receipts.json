@@ -271,6 +271,33 @@
         "descriptions.pt"
       ],
       "summary": "Descriptions en huit langues du musée, de la volière, des tortues, des manchots de Humboldt de l’entrée et des anciens ours polaires ; sources photographiques et primaires vérifiées."
+    },
+    {
+      "eventId": "apply-d0e7db92-a4da-4b78-aaf2-73d9fefef989",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T05:16:31.9230682Z",
+      "appliedAt": "2026-11-03T05:16:31.923Z",
+      "receiptFile": "04-items-shops-four-apply.receipt.json",
+      "receiptSha256": "3fde8f04ae0487adacd7bf4adadcd680b4efbafae17339f1e037468234f3cf6a",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions des quatre boutiques en huit langues, fondées sur leurs pages et photographies officielles distinctes ; aucun changement de visibilité."
     }
   ],
   "publicationOrNoop": []

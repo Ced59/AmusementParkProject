@@ -10,7 +10,7 @@
   },
   "parkItemDescriptions": {
     "total": 63,
-    "eightLanguageComplete": 11,
+    "eightLanguageComplete": 15,
     "keys": [
       "bassins-orques",
       "bassin-dauphins",
@@ -22,7 +22,11 @@
       "tortues-marines",
       "voliere-lagoon",
       "musee-marine-exposition",
-      "ours-polaires"
+      "ours-polaires",
+      "tropical-wave",
+      "marineland-store",
+      "ocean-dreams",
+      "tresors-mer"
     ]
   },
   "evidence": [
@@ -33,7 +37,11 @@
   "newPrimarySources": [
     "https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de",
     "https://www.gazette-drouot.com/telechargement/catalogue?venteId=79388",
-    "https://www.yorkshirewildlifepark.com/news/polar-bears-on-the-move-at-yorkshire-wildlife-park/"
+    "https://www.yorkshirewildlifepark.com/news/polar-bears-on-the-move-at-yorkshire-wildlife-park/",
+    "https://www.marineland.fr/en/planifier-votre-visite/boutiques/tropical-wave",
+    "https://www.marineland.fr/en/planifier-votre-visite/boutiques/ocean-dreams",
+    "https://www.marineland.fr/en/planifier-votre-visite/boutiques/tresors-de-la-mer",
+    "https://www.marineland.fr/en/planifier-votre-visite/boutiques/marineland-store"
   ],
-  "remaining": "52 descriptions de lieux, références, photos, plans officiels, histoire et articles avant audit final. Fiche toujours privée ; aucune annonce Facebook envoyée."
+  "remaining": "48 descriptions de lieux, références, photos, plans officiels, histoire et articles avant audit final. Fiche toujours privée ; aucune annonce Facebook envoyée."
 }
