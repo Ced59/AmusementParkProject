@@ -2,7 +2,7 @@
   "entryId": "FR-candidate-28e967c581a3cb",
   "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
   "checkedAtUtc": "2026-11-03T01:31:43.511162+00:00",
-  "status": "partial-public-enrichment-cache-verification-pending",
+  "status": "partial-public-enrichment-cache-verified",
   "dataApplies": [
     {
       "operationId": "78ec5f49-8b14-4641-b17c-6b8088329a29",
@@ -158,9 +158,7 @@
     ]
   },
   "nextSteps": [
-    "Keep public-pageverificationpending and continue integration. Recheck normalroutes after SSRrefresh; no guaranteed30minuteexpiry.",
-    "Ten retained private entries still lack source depth/photographs; official2013/2014pages,2015CDXassets,2017firsthandbikephoto andprimarysources recovered; no fabricatedinformation.",
-    "Maintain partial status; accepted data consists of five new8-language descriptions, one nativephoto and nine-field factual/stylecorrection; allpublicationreceiptsseparate fromactualdatadates."
+    "Poursuivre les recherches ciblées sur les dix éléments privés, photographies, positions exactes et plans annuels ; score91 sans exception acceptée, intégration conservée partielle."
   ],
   "describedItems": 20,
   "lastDataIntegrationAt": "2026-11-03T01:14:12.085Z",
@@ -251,7 +249,7 @@
   "facebookPublicationAttemptedByThisInstance": false,
   "completed": false,
   "outcome": "partial",
-  "updatedAtUtc": "2026-11-03T01:51:11.639997+00:00",
+  "updatedAtUtc": "2026-11-03T03:37:52.791155+00:00",
   "normalNavigationVerification": {
     "entryId": "FR-candidate-28e967c581a3cb",
     "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
@@ -408,5 +406,11 @@
     ],
     "conclusion": "Fresh public API returns corrected Frenchcarousel/farm text. Ordinary HTML route returns SSR cache HIT and stale paragraph, confirmed after thirtyminuteAPIcache assumption. Separate SSR HTML cache default86400seconds in server.ts:107; runtimeconfiguredTTLunknown. No cachebypass,mutations or newFBpost. Threepubliclocalizedpagespending; allother37of40pass.",
     "nextAction": "Keep public-pageverificationpending and continue integration. Recheck normalroutes after SSRrefresh; no guaranteed30minuteexpiry."
+  },
+  "publicCacheRecovery": {
+    "proof": "parc-de-la-recreation-public-cache-recovered-20261103.json",
+    "verifiedAtUtc": "2026-11-03T03:37:52.791155+00:00",
+    "pages": 4,
+    "failures": 0
   }
 }

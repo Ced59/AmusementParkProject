@@ -1,0 +1,75 @@
+{
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+  "verifiedAtUtc": "2026-11-03T03:37:52.791155+00:00",
+  "priorDiagnosis": "parc-de-la-recreation-public-cache-diagnosis-20261103.json",
+  "ordinaryRoutesWithoutBypass": true,
+  "pages": [
+    {
+      "name": "Animaux de la ferme",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/64104365-d16d-491c-a9a4-44b2e0c3b1da/animaux-de-la-ferme",
+      "checkedAtUtc": "2026-11-03T03:36:19.568912+00:00",
+      "status": 200,
+      "missingParagraphs": [],
+      "paragraphsChecked": 3,
+      "h1": [
+        "Animaux de la ferme"
+      ],
+      "horizontalOverflow": false,
+      "brokenImages": [],
+      "images": 9,
+      "technicalLeaks": []
+    },
+    {
+      "name": "Manège à pédales",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/c73d51a8-25c8-4fbb-8ebe-f01efe24617f/manege-a-pedales",
+      "checkedAtUtc": "2026-11-03T03:36:26.137951+00:00",
+      "status": 200,
+      "missingParagraphs": [],
+      "paragraphsChecked": 3,
+      "h1": [
+        "Manège à pédales"
+      ],
+      "horizontalOverflow": false,
+      "brokenImages": [],
+      "images": 9,
+      "technicalLeaks": []
+    },
+    {
+      "name": "Animaux de la ferme",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/64104365-d16d-491c-a9a4-44b2e0c3b1da/animaux-de-la-ferme",
+      "checkedAtUtc": "2026-11-03T03:36:31.716997+00:00",
+      "status": 200,
+      "missingParagraphs": [],
+      "paragraphsChecked": 3,
+      "h1": [
+        "Animaux de la ferme"
+      ],
+      "horizontalOverflow": false,
+      "brokenImages": [],
+      "images": 9,
+      "technicalLeaks": []
+    },
+    {
+      "name": "Manège à pédales",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/c73d51a8-25c8-4fbb-8ebe-f01efe24617f/manege-a-pedales",
+      "checkedAtUtc": "2026-11-03T03:36:37.010690+00:00",
+      "status": 200,
+      "missingParagraphs": [],
+      "paragraphsChecked": 3,
+      "h1": [
+        "Manège à pédales"
+      ],
+      "horizontalOverflow": false,
+      "brokenImages": [],
+      "images": 9,
+      "technicalLeaks": []
+    }
+  ],
+  "proofSha256": "3c27dbc82386a3e809c06c462860938c76148985dd4ff72b2748ed453d2b817a",
+  "conclusion": "Les quatre pages Animaux de la ferme et Manège à pédales en français et anglais présentent les paragraphes attendus. Aucun texte manquant, débordement horizontal, image cassée ou détail technique exposé. Le cache signalé précédemment est renouvelé. Aucun Apply/import, changement de date d’intégration ou nouvel envoi Facebook."
+}

@@ -1,0 +1,23 @@
+{
+  "updatedAtUtc": "2026-11-03T03:44:57.404610+00:00",
+  "entryId": "FR-candidate-ecdb81d09bead4",
+  "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+  "parentVisible": true,
+  "dependenciesPublished": true,
+  "score": 93,
+  "publicationBlockers": [],
+  "facebookStatus": "Published",
+  "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125615305424431",
+  "lastDataIntegrationAt": "2026-11-03T03:37:21.099Z",
+  "audit": "planete-magique-followup-audit-20261103.json",
+  "latestGraph": "11-consolidated-public-graph.json",
+  "next": "Continuer les recherches factuelles ciblées ; score93 reste partial. Ne pas republier Facebook. Vérifier lors du prochain passage le renouvellement du DTO public de l’image principale de l’Orphée, déjà affectée par Apply confirmé.",
+  "items": 45,
+  "publicItems": 45,
+  "images": 69,
+  "attractionsWithImages": 16,
+  "itemsWithImages": 23,
+  "articleLanguages": 8,
+  "finalAuditPerformed": true,
+  "publicMobilePages": 44
+}

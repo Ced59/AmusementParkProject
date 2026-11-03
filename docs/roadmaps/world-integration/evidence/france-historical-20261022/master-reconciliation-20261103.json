@@ -1,0 +1,15 @@
+{
+  "checkedAtUtc": "2026-11-03T03:45:19.876782+00:00",
+  "upstreamCommit": "13b5f45d",
+  "upstreamCountrySha256": "18197ae57266a6a0bfebc21ddc70765f2ba9ca95e2a5697547c11d67956452b6",
+  "country": "FR",
+  "masterEntries": 496,
+  "retainedEntries": 497,
+  "upstreamIntegrationEventsRetainedExactly": 234,
+  "upstreamMissingEntries": 0,
+  "upstreamMissingEvents": 0,
+  "upstreamMissingAliasesOrSources": 0,
+  "newUpstreamIntegrationEvents": 0,
+  "decision": "Le registre France de la branche cumulative contient toutes les entrées, tous les événements exacts, les sources et alias du dernier master consulté. Les enrichissements France plus récents sont conservés. Aucun remplacement intégral du JSON ni aucune date inventée.",
+  "scope": "Rapprochement du registre France et lecture des règles inchangées ; aucun merge de code, aucune PR ni montée de version."
+}

@@ -1380,6 +1380,212 @@
         "canonicalHistory"
       ],
       "summary": "Planète magique : restauration canonique des neuf faits historiques après mise en ligne, sans altération des données éditoriales ; résultat partial conservé."
+    },
+    {
+      "eventId": "apply-ca70a21d-35ab-4cdf-9b36-75cc4c4735f3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T03:26:21.072188Z",
+      "appliedAt": "2026-11-03T03:26:21.072Z",
+      "receiptFile": "11-navette-capacity-apply.receipt.json",
+      "receiptSha256": "47814201635922fb771d10acd57235b911516a8ef52ac6c19949e7efe0869c8c",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.ridersPerVehicle",
+        "attractionDetails.sourceUrl"
+      ],
+      "summary": "Planète Magique : capacité de six passagers de la Navette établie par le témoignage professionnel de son programmeur ; source primaire conservée, constructeur non inféré."
+    },
+    {
+      "eventId": "apply-75d155d4-e252-425a-9f43-5fec7ec35917",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T03:32:18.4146899Z",
+      "appliedAt": "2026-11-03T03:32:18.414Z",
+      "receiptFile": "11-primary-descriptions-apply.receipt.json",
+      "receiptSha256": "1b3874689b926524eb9259fbbfc76aac470cabc2f76cafabcb92ec5636556afb",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Enrichissement éditorial de BD Zap, Gadget, Maison de Barbie et Orphée Théâtre dans huit langues depuis deux collections primaires ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-9a6d6d312e454749917b95c5b2584686-2026-11-03T033241.038Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:32:41.038Z",
+      "appliedAt": "2026-11-03T03:32:41.038Z",
+      "receiptFile": "11-bdzap-gaston-import-receipt.json",
+      "receiptSha256": "a5ae2425b46e79b48bf0f3d80bacbd9fa4debdb77aa28e696a28e31e87497e37",
+      "imageId": "9a6d6d312e454749917b95c5b2584686",
+      "ownerId": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+      "createdAt": "2026-11-03T03:32:37.506Z",
+      "sourceUrl": "https://atelier-thierry-loubry.com/wp-content/uploads/2020/10/bureau-gaston-lagaffe-planete-magique-paris.jpg",
+      "summary": "Import privé du média historique 11-bdzap-gaston, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-0a4d6d0646b2459382a9bae98f5c3132-2026-11-03T033257.052Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:32:57.052Z",
+      "appliedAt": "2026-11-03T03:32:57.052Z",
+      "receiptFile": "11-bdzap-papyrus-import-receipt.json",
+      "receiptSha256": "b290f1a926e743043b40c948eea08221a8b92cbb06c8bfffddf833c19b87ad47",
+      "imageId": "0a4d6d0646b2459382a9bae98f5c3132",
+      "ownerId": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+      "createdAt": "2026-11-03T03:32:53.676Z",
+      "sourceUrl": "https://atelier-thierry-loubry.com/wp-content/uploads/2020/10/sculpture-decor-bd-planete-magique-paris.jpg",
+      "summary": "Import privé du média historique 11-bdzap-papyrus, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b7e6000b815341c8a7bdea68da5b45e3-2026-11-03T033312.732Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:33:12.732Z",
+      "appliedAt": "2026-11-03T03:33:12.732Z",
+      "receiptFile": "11-gadget-square-import-receipt.json",
+      "receiptSha256": "8e8290b15932f2d46ed9190891573dee50491ec4e5343000090ca85932439041",
+      "imageId": "b7e6000b815341c8a7bdea68da5b45e3",
+      "ownerId": "a4dc0b6c-a498-4b31-915c-de09c4619aa8",
+      "createdAt": "2026-11-03T03:33:09.332Z",
+      "sourceUrl": "https://atelier-thierry-loubry.com/wp-content/uploads/2020/10/place-gadgets-planete-magique-paris.jpg",
+      "summary": "Import privé du média historique 11-gadget-square, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-107181381e504540b5f5cd6d47e2ada6-2026-11-03T033327.042Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:33:27.042Z",
+      "appliedAt": "2026-11-03T03:33:27.042Z",
+      "receiptFile": "11-barbie-installation-import-receipt.json",
+      "receiptSha256": "b5ab4d1259ee2571f6db1ed98a67a07f9830f4429eff20338c2a1fce71b8fe5d",
+      "imageId": "107181381e504540b5f5cd6d47e2ada6",
+      "ownerId": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+      "createdAt": "2026-11-03T03:33:23.649Z",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/imm-005.jpg",
+      "summary": "Import privé du média historique 11-barbie-installation, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-18a8e4a691d64660aba5f98e4e627eac-2026-11-03T033341.209Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:33:41.209Z",
+      "appliedAt": "2026-11-03T03:33:41.209Z",
+      "receiptFile": "11-barbie-entrance-import-receipt.json",
+      "receiptSha256": "f2ea281309cfdd10400ca5881f5eda76c12c5a8e27e90ac8bcc198c159999aba",
+      "imageId": "18a8e4a691d64660aba5f98e4e627eac",
+      "ownerId": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+      "createdAt": "2026-11-03T03:33:37.83Z",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0182.jpg",
+      "summary": "Import privé du média historique 11-barbie-entrance, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5a4aa12d52794c4ea85159e92a6b5029-2026-11-03T033355.786Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:33:55.786Z",
+      "appliedAt": "2026-11-03T03:33:55.786Z",
+      "receiptFile": "11-barbie-dolls-import-receipt.json",
+      "receiptSha256": "39ecc7f7265e52e22cfba9421775c8f0358a5ae917154292567c2d20e8c8cba8",
+      "imageId": "5a4aa12d52794c4ea85159e92a6b5029",
+      "ownerId": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+      "createdAt": "2026-11-03T03:33:52.427Z",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0179.jpg",
+      "summary": "Import privé du média historique 11-barbie-dolls, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3ff5515b24db4dd5944f272c1b845f77-2026-11-03T033410.188Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:34:10.188Z",
+      "appliedAt": "2026-11-03T03:34:10.188Z",
+      "receiptFile": "11-vecteur-computer-import-receipt.json",
+      "receiptSha256": "c3781a08c9633b1e27cafec250b6cbd64c67e3200193ea104a049b2f6c88a5c1",
+      "imageId": "3ff5515b24db4dd5944f272c1b845f77",
+      "ownerId": "8d4c4a34-3daf-4d8e-a57d-36de22da9469",
+      "createdAt": "2026-11-03T03:34:06.771Z",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0005.jpg",
+      "summary": "Import privé du média historique 11-vecteur-computer, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b4c351c4629042eeb7827c93a0bc6be5-2026-11-03T033425.168Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:34:25.168Z",
+      "appliedAt": "2026-11-03T03:34:25.168Z",
+      "receiptFile": "11-orphee-seating-import-receipt.json",
+      "receiptSha256": "5cfb9367af85252c04fcdd10667d55c83d761117cc8499abbf401d2b1ee60a79",
+      "imageId": "b4c351c4629042eeb7827c93a0bc6be5",
+      "ownerId": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+      "createdAt": "2026-11-03T03:34:21.788Z",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0175.jpg",
+      "summary": "Import privé du média historique 11-orphee-seating, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3b04229fa95547d0826a81510c758cd7-2026-11-03T033440.332Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:34:40.332Z",
+      "appliedAt": "2026-11-03T03:34:40.332Z",
+      "receiptFile": "11-orphee-stage-import-receipt.json",
+      "receiptSha256": "3895bd6e1515c2dafb842ee092a4ab6c2b986982591cd6dc033633fd36c1a62a",
+      "imageId": "3b04229fa95547d0826a81510c758cd7",
+      "ownerId": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+      "createdAt": "2026-11-03T03:34:36.857Z",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0180.jpg",
+      "summary": "Import privé du média historique 11-orphee-stage, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-124cb414-c6ee-4709-9f61-c0ce358a2a3e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T03:35:39.7147609Z",
+      "appliedAt": "2026-11-03T03:35:39.714Z",
+      "receiptFile": "11-primary-article-apply.receipt.json",
+      "receiptSha256": "ce2343d88ae25941c18f2c5ab2ba29baadc7753a9bb6ced42fb9ad93ae7bee22",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article historique enrichi dans huit langues : contributions documentées des décorateurs et programmeur, photo réelle du chantier de 1989 ; audit final restant."
+    },
+    {
+      "eventId": "apply-0fdd4ef3-61fd-4876-9c0e-7635f805794a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T03:37:21.0996554Z",
+      "appliedAt": "2026-11-03T03:37:21.099Z",
+      "receiptFile": "11-refine-alt-texts-apply.receipt.json",
+      "receiptSha256": "708feb56ecd30e8d395f2b02d3c842bbf2f0d97b9dc6a49a71a45f09f14fefbf",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "altTexts.de",
+        "altTexts.nl"
+      ],
+      "summary": "Audit final : trois textes alternatifs allemands et néerlandais affinés après contrôle croisé du corpus."
     }
   ],
   "publicationOrNoop": [
@@ -1445,6 +1651,46 @@
         "isVisible"
       ],
       "summary": "Planète magique : publication initiale explicitement autorisée, visibilité seule ; résultat partial conservé et contrôles publics à suivre."
+    },
+    {
+      "eventId": "apply-a34ccae6-b358-4a30-8e70-d90d97bda54f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T03:38:52.0868428Z",
+      "appliedAt": "2026-11-03T03:38:52.086Z",
+      "receiptFile": "11-publish-new-images-apply.receipt.json",
+      "receiptSha256": "21e16d3edb0080c2dc99a0cb15a4307c619c9cf737b409a8da676f1a8c355ee5",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication des neuf photographies historiques auditées ; aucune modification de données éditoriales ni clôture du backlog."
+    },
+    {
+      "eventId": "apply-b75a48e2-e491-47eb-96dc-f9df33337277",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T03:41:25.1323667Z",
+      "appliedAt": "2026-11-03T03:41:25.132Z",
+      "receiptFile": "11-orphee-main-image-apply.receipt.json",
+      "receiptSha256": "4cd11b3ce8f60f23b816e49d69ffbf256b53829d3cbb7acc77fdd345031cd699",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isCurrent"
+      ],
+      "summary": "Sélection de la première photographie représentative de l’Orphée Théâtre, déjà auditée et publiée."
     }
   ]
 }

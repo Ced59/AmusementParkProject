@@ -27768,14 +27768,14 @@
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Parc ouvert en1989, définitivement fermé en1991",
-      "identityConfidence": "Identité qualifiée : lieu distinct, sept recherches officielles sans correspondance",
+      "identityConfidence": "Identité historique confirmée, parc public retrouvé par le client officiel le3novembre2026 ; recherche standalone sans correspondance. Attractions internes conservées dans ce parc.",
       "possibleMatches": [],
       "aliases": [
         "Planète Magique",
         "Planete Magique"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-01T14:15:20.792Z",
+      "lastDataIntegrationAt": "2026-11-03T03:37:21.099Z",
       "integrationHistory": [
         {
           "eventId": "apply-d5983c1c-6f1c-4229-b4f5-d737e05b4aca",
@@ -28616,9 +28616,139 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-8abc3945-1306-400a-bc81-7a81e06b6338",
           "auditEvidence": null,
           "summary": "Planète magique : restauration canonique des neuf faits historiques après mise en ligne, sans altération des données éditoriales ; résultat partial conservé."
+        },
+        {
+          "eventId": "apply-ca70a21d-35ab-4cdf-9b36-75cc4c4735f3",
+          "appliedAt": "2026-11-03T03:26:21.072Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-ca70a21d-35ab-4cdf-9b36-75cc4c4735f3",
+          "auditEvidence": null,
+          "summary": "Planète Magique : capacité de six passagers de la Navette établie par le témoignage professionnel de son programmeur ; source primaire conservée, constructeur non inféré."
+        },
+        {
+          "eventId": "apply-75d155d4-e252-425a-9f43-5fec7ec35917",
+          "appliedAt": "2026-11-03T03:32:18.414Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-75d155d4-e252-425a-9f43-5fec7ec35917",
+          "auditEvidence": null,
+          "summary": "Enrichissement éditorial de BD Zap, Gadget, Maison de Barbie et Orphée Théâtre dans huit langues depuis deux collections primaires ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-9a6d6d312e454749917b95c5b2584686-2026-11-03T033241.038Z",
+          "appliedAt": "2026-11-03T03:32:41.038Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-9a6d6d312e454749917b95c5b2584686-2026-11-03T033241.038Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-bdzap-gaston, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0a4d6d0646b2459382a9bae98f5c3132-2026-11-03T033257.052Z",
+          "appliedAt": "2026-11-03T03:32:57.052Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-0a4d6d0646b2459382a9bae98f5c3132-2026-11-03T033257.052Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-bdzap-papyrus, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b7e6000b815341c8a7bdea68da5b45e3-2026-11-03T033312.732Z",
+          "appliedAt": "2026-11-03T03:33:12.732Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-b7e6000b815341c8a7bdea68da5b45e3-2026-11-03T033312.732Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-gadget-square, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-107181381e504540b5f5cd6d47e2ada6-2026-11-03T033327.042Z",
+          "appliedAt": "2026-11-03T03:33:27.042Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-107181381e504540b5f5cd6d47e2ada6-2026-11-03T033327.042Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-barbie-installation, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-18a8e4a691d64660aba5f98e4e627eac-2026-11-03T033341.209Z",
+          "appliedAt": "2026-11-03T03:33:41.209Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-18a8e4a691d64660aba5f98e4e627eac-2026-11-03T033341.209Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-barbie-entrance, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-5a4aa12d52794c4ea85159e92a6b5029-2026-11-03T033355.786Z",
+          "appliedAt": "2026-11-03T03:33:55.786Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-5a4aa12d52794c4ea85159e92a6b5029-2026-11-03T033355.786Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-barbie-dolls, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3ff5515b24db4dd5944f272c1b845f77-2026-11-03T033410.188Z",
+          "appliedAt": "2026-11-03T03:34:10.188Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-3ff5515b24db4dd5944f272c1b845f77-2026-11-03T033410.188Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-vecteur-computer, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b4c351c4629042eeb7827c93a0bc6be5-2026-11-03T033425.168Z",
+          "appliedAt": "2026-11-03T03:34:25.168Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-b4c351c4629042eeb7827c93a0bc6be5-2026-11-03T033425.168Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-orphee-seating, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-3b04229fa95547d0826a81510c758cd7-2026-11-03T033440.332Z",
+          "appliedAt": "2026-11-03T03:34:40.332Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#import-photo-3b04229fa95547d0826a81510c758cd7-2026-11-03T033440.332Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 11-orphee-stage, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "apply-124cb414-c6ee-4709-9f61-c0ce358a2a3e",
+          "appliedAt": "2026-11-03T03:35:39.714Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-124cb414-c6ee-4709-9f61-c0ce358a2a3e",
+          "auditEvidence": null,
+          "summary": "Article historique enrichi dans huit langues : contributions documentées des décorateurs et programmeur, photo réelle du chantier de 1989 ; audit final restant."
+        },
+        {
+          "eventId": "apply-0fdd4ef3-61fd-4876-9c0e-7635f805794a",
+          "appliedAt": "2026-11-03T03:37:21.099Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-0fdd4ef3-61fd-4876-9c0e-7635f805794a",
+          "auditEvidence": null,
+          "summary": "Audit final : trois textes alternatifs allemands et néerlandais affinés après contrôle croisé du corpus."
         }
       ],
-      "nextAction": "Fiche et Facebook publiés ; 9 faits historiques restaurés, lien Histoire vérifié dans huit langues. Score réel 93/100 sans bloqueur API. Ligne partial conservée : enrichir les lacunes documentées ou obtenir une exception nominative avant clôture. Ne pas republier Facebook. Voir planete-magique-publication-audit.json.",
+      "nextAction": "Intégration partielle à93/100 après audit : 69médias publics, Orphée illustré, article enrichi dans huit langues. Poursuivre les sources sur fabricants, restrictions, cinq attractions sans photo, positions exactes et plans annuels. Site et Facebook déjà publiés ; aucun doublon.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -28644,9 +28774,51 @@
           "label": "Identité SEGL",
           "url": "https://www.pappers.fr/entreprise/segl-societe-dexploitation-de-la-gaite-lyrique-338070915",
           "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "First-person CV names study/programming for the Navette and time machine; Navette six passengers. Does not establish manufacturer.",
+          "url": "https://www.musiquedesplantes.fr/maxime-haudebourg",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Sculptor/decorator portfolio explicitly labels Planète Magique sets. BD Zap Gaston/Papyrus subjects match retained inventory; Gadget is directly labelled. Mini-Pouces files show a model only, not proof of an operated extra attraction.",
+          "url": "https://atelier-thierry-loubry.com/",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Page title dates the project to 1989 despite URL suffix 1990. Identifies installation of Barbie and Yves Rocher spaces. Native photographs show workshop fabrication, unfinished installation, finished interiors and theatre. Retrospective WordPress October17 date is not used as an exact construction date.",
+          "url": "https://stephane-paillard.fr/planete-magique-1990",
+          "accessedAt": "2026-11-03"
+        },
+        {
+          "label": "Christine Suchaud catalogue p15 lists Planète Magique set fabrication within 1989–1993 experience. No exact item attribution or contract date established; no guessed manufacturer record.",
+          "url": "https://www.montgeron.fr/wp-content/uploads/2023/09/Sucho.pdf",
+          "accessedAt": "2026-11-03"
         }
       ],
-      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-intake.json"
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-intake.json",
+      "publicationEvidence": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+          "publicationOperationId": "139b5fb9-02b5-40ca-bcb3-b308d35ecb4d",
+          "publishedAtUtc": "2026-11-01T14:12:06.3729161Z"
+        },
+        "facebook": {
+          "status": "Published",
+          "publicationId": "04aa1a368f6d481a84d45873742c826f",
+          "externalUrl": "https://www.facebook.com/1285475681307050/posts/122125615305424431",
+          "publishedAtUtc": null,
+          "checkedAtUtc": "2026-11-03T03:44:57.404610+00:00",
+          "source": "ResolveFacebookPublication officiel ; annonce existante conservée, aucun nouvel envoi. Date exacte du post non retournée."
+        },
+        "followupImagesPublication": {
+          "operationId": "a34ccae6-b358-4a30-8e70-d90d97bda54f",
+          "appliedAtUtc": "2026-11-03T03:38:52.0868428Z",
+          "count": 9
+        },
+        "audit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-followup-audit-20261103.json"
+      }
     },
     {
       "entryId": "FR-candidate-b58e274629effc",
