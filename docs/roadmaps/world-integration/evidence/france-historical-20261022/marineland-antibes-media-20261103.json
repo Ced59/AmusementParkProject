@@ -16,7 +16,8 @@
     "parkMainImageId": "178571da631e488e949c50f9ecb7bef7",
     "parkGeneralPhotos": [
       "f6bb041458eb41179cf8f16a42b6bfa0",
-      "178571da631e488e949c50f9ecb7bef7"
+      "178571da631e488e949c50f9ecb7bef7",
+      "88e03dd2db3d441eb4448e443dabd429"
     ],
     "parkGeneralTarget": 5,
     "owners": [
@@ -143,10 +144,14 @@
         "important": false,
         "importanceReason": "Lieu complémentaire ou service ; documentation recherchée individuellement",
         "targetDistinctPhotos": 1,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "cfd23a73990d4195a6c726d10c8648fe",
+        "acceptedImageIds": [
+          "cfd23a73990d4195a6c726d10c8648fe"
+        ],
+        "candidateSources": [
+          "https://flashleman.ch/wp-content/uploads/2023/08/Cote_d_Azur_Marineland_otarie_bebe_Afrique_Sud.jpg"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -158,10 +163,14 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "1b3e35a2b12d404a9384ac121a57061e",
+        "acceptedImageIds": [
+          "1b3e35a2b12d404a9384ac121a57061e"
+        ],
+        "candidateSources": [
+          "https://flashleman.ch/wp-content/uploads/2023/08/Cote_d_Azur_Marineland_manchot.jpg"
+        ],
+        "result": "partial-photo-coverage"
       },
       {
         "ownerType": "ParkItem",
@@ -290,10 +299,14 @@
         "important": false,
         "importanceReason": "Lieu complémentaire ou service ; documentation recherchée individuellement",
         "targetDistinctPhotos": 1,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "b75209b58970486988e592620de4fc56",
+        "acceptedImageIds": [
+          "b75209b58970486988e592620de4fc56"
+        ],
+        "candidateSources": [
+          "https://www.marineland.fr/content/dam/mar/fr/images/discover-the-zoo/preparer-votre-visite/animaux-extraordinaires/phoques-veau-marin/Animaux-Phoques-veau-marin-Marineland-main.jpg"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -305,10 +318,14 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "4176a0b018634f2bb97e23731443905a",
+        "acceptedImageIds": [
+          "4176a0b018634f2bb97e23731443905a"
+        ],
+        "candidateSources": [
+          "https://blooloop.com/media-library/cl-corporation-5d-cinema-marlineland-france.jpg?id=56586559&width=980"
+        ],
+        "result": "partial-photo-coverage"
       },
       {
         "ownerType": "ParkItem",
@@ -504,10 +521,14 @@
         "important": false,
         "importanceReason": "Lieu complémentaire ou service ; documentation recherchée individuellement",
         "targetDistinctPhotos": 1,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "bea0a6079a374f8b96a9cd27f58a5bec",
+        "acceptedImageIds": [
+          "bea0a6079a374f8b96a9cd27f58a5bec"
+        ],
+        "candidateSources": [
+          "https://www.sobluehotel.com/content/dam/sbh/images/restaurant/so-blue-restaurant-carousel-3.jpg"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -730,10 +751,18 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "604154fb98eb4358ab33b0006cd480a6",
+        "acceptedImageIds": [
+          "604154fb98eb4358ab33b0006cd480a6",
+          "9b278d994dcc41b1a1c7d537c8f4b5f3",
+          "8064e1e1219d4799984822843840ba09"
+        ],
+        "candidateSources": [
+          "https://www.sobluehotel.com/content/dam/sbh/images/prepare-your-stay/picture-gallery/so-blue-hotel-preparer-votre-sejour-galerie-photo-14.jpg",
+          "https://www.sobluehotel.com/content/dam/sbh/images/prepare-your-stay/picture-gallery/so-blue-hotel-preparer-votre-sejour-galerie-photo-3.jpg",
+          "https://www.sobluehotel.com/content/dam/sbh/images/prepare-your-stay/picture-gallery/so-blue-hotel-preparer-votre-sejour-galerie-photo-4.jpg"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -745,10 +774,14 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "b4df70ef15bd4739b12a386af547f6c8",
+        "acceptedImageIds": [
+          "b4df70ef15bd4739b12a386af547f6c8"
+        ],
+        "candidateSources": [
+          "https://www.marineland.fr/content/mar/fr/decouvrir-le-zoo/planifier-votre-visite/experiences/rencontres-inedites/rencontres/_jcr_content/responsiveGrid/cc32_distributivecar/1_card/image.coreimg.jpeg/1708532927626/prepare-votre-visite-marineland-dt.jpeg"
+        ],
+        "result": "partial-photo-coverage"
       },
       {
         "ownerType": "ParkItem",
@@ -760,10 +793,14 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "bf3c2bf7ae42411eba895265680f92b0",
+        "acceptedImageIds": [
+          "bf3c2bf7ae42411eba895265680f92b0"
+        ],
+        "candidateSources": [
+          "https://www.marineland.fr/content/mar/fr/decouvrir-le-zoo/planifier-votre-visite/experiences/rencontres-inedites/rencontres/_jcr_content/responsiveGrid/cc32_distributivecar/2_card/image.coreimg.jpeg/1725363248892/rencontres-orques.jpeg"
+        ],
+        "result": "partial-photo-coverage"
       },
       {
         "ownerType": "ParkItem",
@@ -790,10 +827,14 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "0d19c9f7ab0e47db92a0a89a9a629f86",
+        "acceptedImageIds": [
+          "0d19c9f7ab0e47db92a0a89a9a629f86"
+        ],
+        "candidateSources": [
+          "https://www.marineland.fr/content/mar/fr/decouvrir-le-zoo/planifier-votre-visite/experiences/rencontres-inedites/rencontres/_jcr_content/responsiveGrid/cc32_distributivecar/4_card/image.coreimg.jpeg/1708591837889/experiences-rencontres-inedites-rencontres-requins-marineland-dt.jpeg"
+        ],
+        "result": "partial-photo-coverage"
       },
       {
         "ownerType": "ParkItem",
@@ -805,10 +846,14 @@
         "important": false,
         "importanceReason": "Lieu complémentaire ou service ; documentation recherchée individuellement",
         "targetDistinctPhotos": 1,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "a3849450b0f94d15bbee686fa0225d83",
+        "acceptedImageIds": [
+          "a3849450b0f94d15bbee686fa0225d83"
+        ],
+        "candidateSources": [
+          "https://www.marineland.fr/content/mar/fr/decouvrir-le-zoo/planifier-votre-visite/experiences/rencontres-inedites/rencontres/_jcr_content/responsiveGrid/cc32_distributivecar/10_card/image.coreimg.jpeg/1720174303020/soigneur-dauphins-marineland-dt.jpeg"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -1069,18 +1114,18 @@
       "LagoonCenter : JPEG original2016xref extrait intact du PDFofficiel2019, aucun recadrage ; fragments bleus2017–2020 à exclure.",
       "Droits de réutilisation des photographies autorisés par utilisateur dans cette conversation ; crédits exacts conservés."
     ],
-    "updatedAtUtc": "2026-11-03T06:57:48.625045+00:00",
+    "updatedAtUtc": "2026-11-03T07:15:34.892862+00:00",
     "notes": [
       "Les vues générales doivent couvrir le parc et ses espaces, sans compter automatiquement les gros plans, sculptures, brochures ou vues de détails.",
       "Le rapport IGEDD2024 page24 montre Kobe Suma SeaWorld et non Marineland : visuel exclu de la couverture française.",
       "Les photos du fondateur sont rattachées à la référence, hors quota parc."
     ]
   },
-  "latestIntegrationEvent": "import-photo-8c380a11410a457b94e4ccbe49a32fdd-2026-11-03T065717.583Z",
-  "latestDataIntegrationAt": "2026-11-03T06:57:17.583Z",
+  "latestIntegrationEvent": "import-photo-88e03dd2db3d441eb4448e443dabd429-2026-11-03T071438.162Z",
+  "latestDataIntegrationAt": "2026-11-03T07:14:38.162Z",
   "isPublished": false,
   "facebookPublication": null,
-  "remaining": "Photographies générales et lieux animaliers, références, histoire et articles avant audit final.",
+  "remaining": "Compléter les médias des lieux encore non illustrés, résoudre les anciennes identités et dates, puis histoire, articles et audit final.",
   "officialMaps": [
     {
       "id": "marineland-antibes-plan-2012-fr",
@@ -2369,6 +2414,579 @@
           "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_%C3%A0_Antibes_-_panoramio_(4).jpg"
         }
       ]
+    },
+    {
+      "imageId": "604154fb98eb4358ab33b0006cd480a6",
+      "ownerId": "481a7e33-f817-4a14-b638-293b0a994d7b",
+      "ownerType": "ParkItem",
+      "ownerKey": "hotel-marineland",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.sobluehotel.com/content/dam/sbh/images/prepare-your-stay/picture-gallery/so-blue-hotel-preparer-votre-sejour-galerie-photo-14.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© SoBlue Hôtel — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© SoBlue Hôtel — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© SoBlue Hôtel — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© SoBlue Hôtel — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© SoBlue Hôtel — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© SoBlue Hôtel — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© SoBlue Hôtel — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© SoBlue Hôtel — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "9b278d994dcc41b1a1c7d537c8f4b5f3",
+      "ownerId": "481a7e33-f817-4a14-b638-293b0a994d7b",
+      "ownerType": "ParkItem",
+      "ownerKey": "hotel-marineland",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://www.sobluehotel.com/content/dam/sbh/images/prepare-your-stay/picture-gallery/so-blue-hotel-preparer-votre-sejour-galerie-photo-3.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© SoBlue Hôtel — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© SoBlue Hôtel — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© SoBlue Hôtel — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© SoBlue Hôtel — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© SoBlue Hôtel — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© SoBlue Hôtel — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© SoBlue Hôtel — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© SoBlue Hôtel — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "8064e1e1219d4799984822843840ba09",
+      "ownerId": "481a7e33-f817-4a14-b638-293b0a994d7b",
+      "ownerType": "ParkItem",
+      "ownerKey": "hotel-marineland",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://www.sobluehotel.com/content/dam/sbh/images/prepare-your-stay/picture-gallery/so-blue-hotel-preparer-votre-sejour-galerie-photo-4.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© SoBlue Hôtel — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© SoBlue Hôtel — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© SoBlue Hôtel — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© SoBlue Hôtel — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© SoBlue Hôtel — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© SoBlue Hôtel — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© SoBlue Hôtel — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© SoBlue Hôtel — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "bea0a6079a374f8b96a9cd27f58a5bec",
+      "ownerId": "b365683c-4099-4817-b45f-262cbe8447de",
+      "ownerType": "ParkItem",
+      "ownerKey": "le-central",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.sobluehotel.com/content/dam/sbh/images/restaurant/so-blue-restaurant-carousel-3.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© SoBlue Hôtel — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© SoBlue Hôtel — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© SoBlue Hôtel — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© SoBlue Hôtel — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© SoBlue Hôtel — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© SoBlue Hôtel — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© SoBlue Hôtel — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© SoBlue Hôtel — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "bf3c2bf7ae42411eba895265680f92b0",
+      "ownerId": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+      "ownerType": "ParkItem",
+      "ownerKey": "rencontre-orques",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/mar/fr/decouvrir-le-zoo/planifier-votre-visite/experiences/rencontres-inedites/rencontres/_jcr_content/responsiveGrid/cc32_distributivecar/2_card/image.coreimg.jpeg/1725363248892/rencontres-orques.jpeg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "a3849450b0f94d15bbee686fa0225d83",
+      "ownerId": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+      "ownerType": "ParkItem",
+      "ownerKey": "soigneur-dauphins",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/mar/fr/decouvrir-le-zoo/planifier-votre-visite/experiences/rencontres-inedites/rencontres/_jcr_content/responsiveGrid/cc32_distributivecar/10_card/image.coreimg.jpeg/1720174303020/soigneur-dauphins-marineland-dt.jpeg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "b4df70ef15bd4739b12a386af547f6c8",
+      "ownerId": "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+      "ownerType": "ParkItem",
+      "ownerKey": "rencontre-dauphins",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/mar/fr/decouvrir-le-zoo/planifier-votre-visite/experiences/rencontres-inedites/rencontres/_jcr_content/responsiveGrid/cc32_distributivecar/1_card/image.coreimg.jpeg/1708532927626/prepare-votre-visite-marineland-dt.jpeg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "0d19c9f7ab0e47db92a0a89a9a629f86",
+      "ownerId": "c2b1881c-f785-4acd-9494-996749eb8068",
+      "ownerType": "ParkItem",
+      "ownerKey": "rencontre-requins",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/mar/fr/decouvrir-le-zoo/planifier-votre-visite/experiences/rencontres-inedites/rencontres/_jcr_content/responsiveGrid/cc32_distributivecar/4_card/image.coreimg.jpeg/1708591837889/experiences-rencontres-inedites-rencontres-requins-marineland-dt.jpeg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "b75209b58970486988e592620de4fc56",
+      "ownerId": "9438a711-6914-4224-99d4-7d63dede2455",
+      "ownerType": "ParkItem",
+      "ownerKey": "phoques",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/images/discover-the-zoo/preparer-votre-visite/animaux-extraordinaires/phoques-veau-marin/Animaux-Phoques-veau-marin-Marineland-main.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "4176a0b018634f2bb97e23731443905a",
+      "ownerId": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+      "ownerType": "ParkItem",
+      "ownerKey": "cine-5d",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://blooloop.com/media-library/cl-corporation-5d-cinema-marlineland-france.jpg?id=56586559&width=980",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Blooloop / CL Corporation — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Blooloop / CL Corporation — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "Blooloop / CL Corporation — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Blooloop / CL Corporation — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "Blooloop / CL Corporation — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "Blooloop / CL Corporation — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Blooloop / CL Corporation — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Blooloop / CL Corporation — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "cfd23a73990d4195a6c726d10c8648fe",
+      "ownerId": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+      "ownerType": "ParkItem",
+      "ownerKey": "otaries-afrique-sud",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://flashleman.ch/wp-content/uploads/2023/08/Cote_d_Azur_Marineland_otarie_bebe_Afrique_Sud.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Flash Léman — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Flash Léman — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "Flash Léman — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Flash Léman — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "Flash Léman — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "Flash Léman — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Flash Léman — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Flash Léman — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "1b3e35a2b12d404a9384ac121a57061e",
+      "ownerId": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+      "ownerType": "ParkItem",
+      "ownerKey": "antarctica",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://flashleman.ch/wp-content/uploads/2023/08/Cote_d_Azur_Marineland_manchot.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Flash Léman — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Flash Léman — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "Flash Léman — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Flash Léman — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "Flash Léman — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "Flash Léman — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Flash Léman — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Flash Léman — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "88e03dd2db3d441eb4448e443dabd429",
+      "ownerId": "afd24c62-0972-4c98-860c-b5a55984f777",
+      "ownerType": "Park",
+      "ownerKey": "park",
+      "category": "Park",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://www.radio1.pf/cms/wp-content/uploads/2015/10/Les-images-du-parc-aquatique-Marineland-d-Antibes-devaste.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Europe 1 — Radio1 Tahiti — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Europe 1 — Radio1 Tahiti — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Europe 1 — Radio1 Tahiti — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Europe 1 — Radio1 Tahiti — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Europe 1 — Radio1 Tahiti — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Europe 1 — Radio1 Tahiti — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Europe 1 — Radio1 Tahiti — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Europe 1 — Radio1 Tahiti — Todos os direitos reservados."
+        }
+      ]
     }
-  ]
+  ],
+  "recoveredUploadEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-upload-recovery-20261103.json"
 }

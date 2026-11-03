@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-03T06:57:17.583Z",
+      "lastDataIntegrationAt": "2026-11-03T07:14:38.162Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -19081,9 +19081,139 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-8c380a11410a457b94e4ccbe49a32fdd-2026-11-03T065717.583Z",
           "auditEvidence": null,
           "summary": "Import privé du média historique 05-commons-54115402, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-604154fb98eb4358ab33b0006cd480a6-2026-11-03T070628.315Z",
+          "appliedAt": "2026-11-03T07:06:28.315Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-604154fb98eb4358ab33b0006cd480a6-2026-11-03T070628.315Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-hotel-exterior, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "update-photo-9b278d994dcc41b1a1c7d537c8f4b5f3-2026-11-03T070945.688Z",
+          "appliedAt": "2026-11-03T07:09:45.688Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/-receipts.json#update-photo-9b278d994dcc41b1a1c7d537c8f4b5f3-2026-11-03T070945.688Z",
+          "auditEvidence": null,
+          "summary": "Métadonnées huit langues de la piscine SoBlue réappliquées au même imageId après réponse 502 perdue ; Preview sans changement confirme le premier import complet, aucun doublon téléversé."
+        },
+        {
+          "eventId": "import-photo-8064e1e1219d4799984822843840ba09-2026-11-03T071026.938Z",
+          "appliedAt": "2026-11-03T07:10:26.938Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-8064e1e1219d4799984822843840ba09-2026-11-03T071026.938Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-hotel-suite, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-bea0a6079a374f8b96a9cd27f58a5bec-2026-11-03T071041.054Z",
+          "appliedAt": "2026-11-03T07:10:41.054Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-bea0a6079a374f8b96a9cd27f58a5bec-2026-11-03T071041.054Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-central-table, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-bf3c2bf7ae42411eba895265680f92b0-2026-11-03T071054.835Z",
+          "appliedAt": "2026-11-03T07:10:54.835Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-bf3c2bf7ae42411eba895265680f92b0-2026-11-03T071054.835Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-rencontre-orques, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-a3849450b0f94d15bbee686fa0225d83-2026-11-03T071108.724Z",
+          "appliedAt": "2026-11-03T07:11:08.724Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-a3849450b0f94d15bbee686fa0225d83-2026-11-03T071108.724Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-soigneur-dauphins, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b4df70ef15bd4739b12a386af547f6c8-2026-11-03T071122.526Z",
+          "appliedAt": "2026-11-03T07:11:22.526Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-b4df70ef15bd4739b12a386af547f6c8-2026-11-03T071122.526Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-rencontre-dauphins, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-0d19c9f7ab0e47db92a0a89a9a629f86-2026-11-03T071135.938Z",
+          "appliedAt": "2026-11-03T07:11:35.938Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-0d19c9f7ab0e47db92a0a89a9a629f86-2026-11-03T071135.938Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-rencontre-requins, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-b75209b58970486988e592620de4fc56-2026-11-03T071149.844Z",
+          "appliedAt": "2026-11-03T07:11:49.844Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-b75209b58970486988e592620de4fc56-2026-11-03T071149.844Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-phoques, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-4176a0b018634f2bb97e23731443905a-2026-11-03T071204.942Z",
+          "appliedAt": "2026-11-03T07:12:04.942Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-4176a0b018634f2bb97e23731443905a-2026-11-03T071204.942Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-cinema-room, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-cfd23a73990d4195a6c726d10c8648fe-2026-11-03T071409.522Z",
+          "appliedAt": "2026-11-03T07:14:09.522Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-cfd23a73990d4195a6c726d10c8648fe-2026-11-03T071409.522Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-willow-2023, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-1b3e35a2b12d404a9384ac121a57061e-2026-11-03T071423.827Z",
+          "appliedAt": "2026-11-03T07:14:23.827Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-1b3e35a2b12d404a9384ac121a57061e-2026-11-03T071423.827Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-antarctica-king, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "import-photo-88e03dd2db3d441eb4448e443dabd429-2026-11-03T071438.162Z",
+          "appliedAt": "2026-11-03T07:14:38.162Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-88e03dd2db3d441eb4448e443dabd429-2026-11-03T071438.162Z",
+          "auditEvidence": null,
+          "summary": "Import privé du média historique 05-flood-2015, fichier et huit langues relus ; audit final restant."
         }
       ],
-      "nextAction": "63/63 lieux avec descriptions huit langues ; logo officiel, 27 photographies, portrait du fondateur et 1 plans annuels privés intégrés ; deux références rédigées en huit langues. Poursuivre médias, histoire et articles avant audit final et publications autorisées.",
+      "nextAction": "63/63 lieux avec descriptions huit langues ; logo officiel, 40 photographies, portrait du fondateur et 1 plans annuels privés intégrés ; deux références rédigées en huit langues. Poursuivre médias, histoire et articles avant audit final et publications autorisées.",
       "sources": [
         {
           "label": "Backlog national existant",

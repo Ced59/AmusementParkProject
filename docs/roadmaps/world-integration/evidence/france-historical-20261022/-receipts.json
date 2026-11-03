@@ -1,0 +1,22 @@
+{
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "name": "Marineland d’Antibes",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "update-photo-9b278d994dcc41b1a1c7d537c8f4b5f3-2026-11-03T070945.688Z",
+      "action": "UpdatePhotoMetadata",
+      "rawAppliedAtUtc": "2026-11-03T07:09:45.688Z",
+      "appliedAt": "2026-11-03T07:09:45.688Z",
+      "receiptFile": "05-hotel-pool-metadata-update-receipt.json",
+      "receiptSha256": "fbfbd8b962214f195f18691dcb84d7163d63d7d4669c36268110eebe827d337c",
+      "imageId": "9b278d994dcc41b1a1c7d537c8f4b5f3",
+      "ownerId": "481a7e33-f817-4a14-b638-293b0a994d7b",
+      "createdAt": "2026-11-03T07:06:39.704Z",
+      "sourceUrl": "https://www.sobluehotel.com/content/dam/sbh/images/prepare-your-stay/picture-gallery/so-blue-hotel-preparer-votre-sejour-galerie-photo-3.jpg",
+      "summary": "Métadonnées huit langues de la piscine SoBlue réappliquées au même imageId après réponse 502 perdue ; Preview sans changement confirme le premier import complet, aucun doublon téléversé."
+    }
+  ],
+  "publicationOrNoop": []
+}
