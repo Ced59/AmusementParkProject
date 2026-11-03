@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-03T05:59:23.804Z",
+      "lastDataIntegrationAt": "2026-11-03T06:16:18.784Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -18681,9 +18681,39 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-925acc94-6089-4d45-ba14-f156d3896a18",
           "auditEvidence": null,
           "summary": "Marineland : SoBlue Hôtel et Le Central documentés en huit langues comme établissements toujours en activité ; sources et photographies officielles contrôlées ; partiel."
+        },
+        {
+          "eventId": "apply-5e42b93e-699a-46c9-afdc-2571d29f6bab",
+          "appliedAt": "2026-11-03T06:10:02.174Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-5e42b93e-699a-46c9-afdc-2571d29f6bab",
+          "auditEvidence": null,
+          "summary": "Trois restaurants historiques décrits en huit langues : Neptune Grill, Trattoria Le Capri et Marina Bay ; contrôle éditorial personnel et sources recoupées, intégration toujours partielle."
+        },
+        {
+          "eventId": "apply-eea3da61-1d87-4b15-a2a4-9eba3e5d9f5c",
+          "appliedAt": "2026-11-03T06:13:34.638Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-eea3da61-1d87-4b15-a2a4-9eba3e5d9f5c",
+          "auditEvidence": null,
+          "summary": "Sept comptoirs et restaurants historiques décrits en huit langues après recherches : ODélices, OPolaire, Atlantis, Subway, So Lagoon, Manhattan Hot Dog et Nautilus ; formats courts et lacunes documentés, parc encore partiel."
+        },
+        {
+          "eventId": "apply-1f8588f4-a9df-4c97-9b8e-405dfbf9fae0",
+          "appliedAt": "2026-11-03T06:16:18.784Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#apply-1f8588f4-a9df-4c97-9b8e-405dfbf9fae0",
+          "auditEvidence": null,
+          "summary": "Sept anciens cafés et kiosques décrits dans huit langues à partir des plans et sources conservées ; absence de détails et aliases incertains documentés, intégration partielle."
         }
       ],
-      "nextAction": "Descriptions du parc et de la zone complètes en huit langues ; 33/63 lieux rédigés. Poursuivre les 30 descriptions restantes, les médias, plans, références et histoire avant audit final. Fiche privée ; aucune annonce Facebook envoyée.",
+      "nextAction": "Descriptions du parc et de la zone complètes en huit langues ; 50/63 lieux rédigés. Poursuivre les 13 descriptions restantes, les médias, plans, références et histoire avant audit final. Fiche privée ; aucune annonce Facebook envoyée.",
       "sources": [
         {
           "label": "Backlog national existant",

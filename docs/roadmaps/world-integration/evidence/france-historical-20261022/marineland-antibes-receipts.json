@@ -487,6 +487,87 @@
         "descriptions.pt"
       ],
       "summary": "Marineland : SoBlue Hôtel et Le Central documentés en huit langues comme établissements toujours en activité ; sources et photographies officielles contrôlées ; partiel."
+    },
+    {
+      "eventId": "apply-5e42b93e-699a-46c9-afdc-2571d29f6bab",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T06:10:02.1743908Z",
+      "appliedAt": "2026-11-03T06:10:02.174Z",
+      "receiptFile": "04-food-main-three-apply.receipt.json",
+      "receiptSha256": "6f4a3577649688a3441b4ba7f2938ed425c97f33e00bf8b7b2ddcd068586bee3",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Trois restaurants historiques décrits en huit langues : Neptune Grill, Trattoria Le Capri et Marina Bay ; contrôle éditorial personnel et sources recoupées, intégration toujours partielle."
+    },
+    {
+      "eventId": "apply-eea3da61-1d87-4b15-a2a4-9eba3e5d9f5c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T06:13:34.6382054Z",
+      "appliedAt": "2026-11-03T06:13:34.638Z",
+      "receiptFile": "04-food-small-seven-apply.receipt.json",
+      "receiptSha256": "74f3bbb5b378a8ba244fe3c1f0e2acc7b280a7feaa1625744715334cfc9350f4",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Sept comptoirs et restaurants historiques décrits en huit langues après recherches : ODélices, OPolaire, Atlantis, Subway, So Lagoon, Manhattan Hot Dog et Nautilus ; formats courts et lacunes documentés, parc encore partiel."
+    },
+    {
+      "eventId": "apply-1f8588f4-a9df-4c97-9b8e-405dfbf9fae0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T06:16:18.7844518Z",
+      "appliedAt": "2026-11-03T06:16:18.784Z",
+      "receiptFile": "04-food-historical-seven-apply.receipt.json",
+      "receiptSha256": "e5906a8b9150c54a352533e9c6e251daa4212fa3cc2d8d446f1610789f822387",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Sept anciens cafés et kiosques décrits dans huit langues à partir des plans et sources conservées ; absence de détails et aliases incertains documentés, intégration partielle."
     }
   ],
   "publicationOrNoop": []
