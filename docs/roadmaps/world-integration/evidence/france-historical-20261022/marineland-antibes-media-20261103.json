@@ -13,8 +13,11 @@
     "startedAtUtc": "2026-11-03T06:25:50.943240+00:00",
     "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
     "parkLogoImageId": "eb70f014fa044a4abfbe3f7850be2f25",
-    "parkMainImageId": null,
-    "parkGeneralPhotos": [],
+    "parkMainImageId": "178571da631e488e949c50f9ecb7bef7",
+    "parkGeneralPhotos": [
+      "f6bb041458eb41179cf8f16a42b6bfa0",
+      "178571da631e488e949c50f9ecb7bef7"
+    ],
     "parkGeneralTarget": 5,
     "owners": [
       {
@@ -27,10 +30,18 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "5fe96fa9007b42e39032a40cca050b7c",
+        "acceptedImageIds": [
+          "5fe96fa9007b42e39032a40cca050b7c",
+          "5c14e05ccabc4c828879a251d4cc61df",
+          "8c380a11410a457b94e4ccbe49a32fdd"
+        ],
+        "candidateSources": [
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Marineland_killer_whale_pool.jpg/1280px-Marineland_killer_whale_pool.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%287%29.jpg/1280px-Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%287%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Marineland_%C3%A0_Antibes_-_panoramio_%284%29.jpg/1280px-Marineland_%C3%A0_Antibes_-_panoramio_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -42,10 +53,20 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "007f9d4707fd441a8a83fc56db5c1c23",
+        "acceptedImageIds": [
+          "007f9d4707fd441a8a83fc56db5c1c23",
+          "7143c87fbe6c490c97c9b9003ad1e515",
+          "139419233d044d1499e216985afacac2",
+          "3c21cd0fb0894ca5a1d05e7f37040139"
+        ],
+        "candidateSources": [
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Dolphin_show%2C_Marineland_Antibes.jpg/1280px-Dolphin_show%2C_Marineland_Antibes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Dolphin_show_stand%2C_Marineland_Antibes.jpg/1280px-Dolphin_show_stand%2C_Marineland_Antibes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Antibes_-_panoramio_-_avu-edm_%2834%29.jpg/1280px-Antibes_-_panoramio_-_avu-edm_%2834%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Antibes_-_panoramio_-_avu-edm_%2842%29.jpg/1280px-Antibes_-_panoramio_-_avu-edm_%2842%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -57,10 +78,18 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "c2aa3d54546f449a810fc1db59d4a69d",
+        "acceptedImageIds": [
+          "c2aa3d54546f449a810fc1db59d4a69d",
+          "d21a030cfe43478f90a1f247d18a4a15",
+          "02aa6d5713ab4cec8158e73fc18bb589"
+        ],
+        "candidateSources": [
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Antibes%2C_France_-_panoramio_%283%29.jpg/1280px-Antibes%2C_France_-_panoramio_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%283%29.jpg/1280px-Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%282%29.jpg/1280px-Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -72,10 +101,18 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "7122dbb2f2904aa3b661869a8e86fffb",
+        "acceptedImageIds": [
+          "7122dbb2f2904aa3b661869a8e86fffb",
+          "e91bed2e89f54427a7da4b6d36de2d71",
+          "9e817ec2a4f344bc8d8edcd49f832885"
+        ],
+        "candidateSources": [
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Marineland_-_sea_lion_2.jpg/1280px-Marineland_-_sea_lion_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Marineland_-_sea_lions.jpg/1280px-Marineland_-_sea_lions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%281%29.jpg/1280px-Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -87,10 +124,14 @@
         "important": false,
         "importanceReason": "Lieu complémentaire ou service ; documentation recherchée individuellement",
         "targetDistinctPhotos": 1,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "4e39b391d01c4f53917bdf25d3432642",
+        "acceptedImageIds": [
+          "4e39b391d01c4f53917bdf25d3432642"
+        ],
+        "candidateSources": [
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/HeroKK.JPG/1280px-HeroKK.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -132,10 +173,14 @@
         "important": false,
         "importanceReason": "Lieu complémentaire ou service ; documentation recherchée individuellement",
         "targetDistinctPhotos": 1,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "264a6b1232554963b805315a57c00f2b",
+        "acceptedImageIds": [
+          "264a6b1232554963b805315a57c00f2b"
+        ],
+        "candidateSources": [
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Manchots_de_Humboldt_Antibes.jpg/1280px-Manchots_de_Humboldt_Antibes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -147,10 +192,14 @@
         "important": true,
         "importanceReason": "Lieu majeur de présentation animale, expérience emblématique, institution historique ou hôtel associé",
         "targetDistinctPhotos": 3,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "a8993c92c475402f8032dc9b6b3369cf",
+        "acceptedImageIds": [
+          "a8993c92c475402f8032dc9b6b3369cf"
+        ],
+        "candidateSources": [
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Marineland_-_aquarium.jpg/1280px-Marineland_-_aquarium.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        ],
+        "result": "partial-photo-coverage"
       },
       {
         "ownerType": "ParkItem",
@@ -162,10 +211,14 @@
         "important": false,
         "importanceReason": "Lieu complémentaire ou service ; documentation recherchée individuellement",
         "targetDistinctPhotos": 1,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "1d1e428e05bc49478904f1f9da59ef8d",
+        "acceptedImageIds": [
+          "1d1e428e05bc49478904f1f9da59ef8d"
+        ],
+        "candidateSources": [
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Carettaaaaaa.JPG/1280px-Carettaaaaaa.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -891,10 +944,16 @@
         "important": false,
         "importanceReason": "Lieu complémentaire ou service ; documentation recherchée individuellement",
         "targetDistinctPhotos": 1,
-        "currentImageId": null,
-        "acceptedImageIds": [],
-        "candidateSources": [],
-        "result": "research-in-progress"
+        "currentImageId": "3260d6d5fc884896879f29fa21c6bd8d",
+        "acceptedImageIds": [
+          "3260d6d5fc884896879f29fa21c6bd8d",
+          "84416da7f57e4f0faa7385faf8cca31b"
+        ],
+        "candidateSources": [
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Marineland_-_panoramio.jpg/1280px-Marineland_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Marineland_-_panoramio_%281%29.jpg/1280px-Marineland_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        ],
+        "result": "minimum-photo-covered"
       },
       {
         "ownerType": "ParkItem",
@@ -1010,13 +1069,18 @@
       "LagoonCenter : JPEG original2016xref extrait intact du PDFofficiel2019, aucun recadrage ; fragments bleus2017–2020 à exclure.",
       "Droits de réutilisation des photographies autorisés par utilisateur dans cette conversation ; crédits exacts conservés."
     ],
-    "updatedAtUtc": "2026-11-03T06:34:20.051372+00:00"
+    "updatedAtUtc": "2026-11-03T06:57:48.625045+00:00",
+    "notes": [
+      "Les vues générales doivent couvrir le parc et ses espaces, sans compter automatiquement les gros plans, sculptures, brochures ou vues de détails.",
+      "Le rapport IGEDD2024 page24 montre Kobe Suma SeaWorld et non Marineland : visuel exclu de la couverture française.",
+      "Les photos du fondateur sont rattachées à la référence, hors quota parc."
+    ]
   },
-  "latestIntegrationEvent": "apply-754517c5-46fa-4782-8f45-4d36463c7766",
-  "latestDataIntegrationAt": "2026-11-03T06:33:15.876Z",
+  "latestIntegrationEvent": "import-photo-8c380a11410a457b94e4ccbe49a32fdd-2026-11-03T065717.583Z",
+  "latestDataIntegrationAt": "2026-11-03T06:57:17.583Z",
   "isPublished": false,
   "facebookPublication": null,
-  "remaining": "Photographies générales et lieux animaliers, références, histoire et articles avant audit final. Revue supplémentaire des alias historiques de comptoirs.",
+  "remaining": "Photographies générales et lieux animaliers, références, histoire et articles avant audit final.",
   "officialMaps": [
     {
       "id": "marineland-antibes-plan-2012-fr",
@@ -1025,6 +1089,1286 @@
       "isVisible": false,
       "titlesLanguages": 8,
       "alternativesLanguages": 8
+    }
+  ],
+  "referencesEvidence": "marineland-antibes-references-20261103.json",
+  "referencePortraitImageId": "f518cf14b51840ca8484ec742d2ee23c",
+  "acceptedPhotos": [
+    {
+      "imageId": "eb70f014fa044a4abfbe3f7850be2f25",
+      "ownerId": "afd24c62-0972-4c98-860c-b5a55984f777",
+      "ownerType": "Park",
+      "ownerKey": "park",
+      "category": "Logo",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/images/logos/Marineland_logo_110x60px.png",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Marineland Côte d’Azur — fichier officiel du parc. Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Marineland Côte d’Azur — official park asset. All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "Marineland Côte d’Azur — offizielle Datei des Parks. Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Marineland Côte d’Azur — officieel bestand van het park. Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "Marineland Côte d’Azur — file ufficiale del parco. Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "Marineland Côte d’Azur — archivo oficial del parque. Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Marineland Côte d’Azur — oficjalny plik parku. Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Marineland Côte d’Azur — ficheiro oficial do parque. Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "283a521603624532a15f39b24019d96c",
+      "ownerId": "2009fa0e-81c4-4ee7-94fc-1c3cbdc61fe8",
+      "ownerType": "ParkItem",
+      "ownerKey": "neptune-grill",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/images/discover-the-zoo/preparer-votre-visite/restauration/restaurants/neptune-grill/Neptune-grill-Marineland-2.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland Côte d’Azur — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland Côte d’Azur — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland Côte d’Azur — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland Côte d’Azur — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland Côte d’Azur — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland Côte d’Azur — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland Côte d’Azur — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland Côte d’Azur — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "fcd3ec6c0b7748eaa020309c27a9fcc8",
+      "ownerId": "14e2ac1f-7727-45e7-86fb-c03c63e66c59",
+      "ownerType": "ParkItem",
+      "ownerKey": "lagoon-center",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.in-magazines.com/magazine/wp-content/uploads/2023/07/INA-09-2019-V2.pdf",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland — J-Kershaw / ArchiGame — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland — J-Kershaw / ArchiGame — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland — J-Kershaw / ArchiGame — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland — J-Kershaw / ArchiGame — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland — J-Kershaw / ArchiGame — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland — J-Kershaw / ArchiGame — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland — J-Kershaw / ArchiGame — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland — J-Kershaw / ArchiGame — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "25a3be2f02f34dfc945334d4d91bafdc",
+      "ownerId": "4c2c9c9b-3079-49d3-ba60-6f440591f541",
+      "ownerType": "ParkItem",
+      "ownerKey": "tropical-wave",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/images/discover-the-zoo/preparer-votre-visite/boutiques/tropical-wave/Tropical-wave-Marineland-main.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland Côte d’Azur — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland Côte d’Azur — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland Côte d’Azur — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland Côte d’Azur — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland Côte d’Azur — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland Côte d’Azur — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland Côte d’Azur — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland Côte d’Azur — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "c6779982ae0844e380d0c81d8913e8d4",
+      "ownerId": "297c2783-183f-4338-94d1-a6b865f7d747",
+      "ownerType": "ParkItem",
+      "ownerKey": "ocean-dreams",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/images/discover-the-zoo/preparer-votre-visite/boutiques/ocean-dreams/Ocean-dreams-Marineland-main.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland Côte d’Azur — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland Côte d’Azur — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland Côte d’Azur — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland Côte d’Azur — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland Côte d’Azur — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland Côte d’Azur — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland Côte d’Azur — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland Côte d’Azur — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "cb3b6b1477624cb8bc35e7b121702466",
+      "ownerId": "cd455cf9-c7f3-4f73-9a06-7ba21d89b863",
+      "ownerType": "ParkItem",
+      "ownerKey": "tresors-mer",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/images/discover-the-zoo/preparer-votre-visite/boutiques/tr%C3%A9sors-de-la-mer/2018_tresor%20de%20la%20mer_KERSHAW%20%2848%29.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland — Kershaw — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland — Kershaw — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland — Kershaw — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland — Kershaw — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland — Kershaw — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland — Kershaw — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland — Kershaw — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland — Kershaw — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "c6eaf043e30d409890411d37e97dd66b",
+      "ownerId": "9bbac6c5-3143-40bb-a489-bf8051edbbff",
+      "ownerType": "ParkItem",
+      "ownerKey": "marineland-store",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.marineland.fr/content/dam/mar/fr/images/discover-the-zoo/preparer-votre-visite/boutiques/marineland-store/Marineland-store-Marineland-main.jpg",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Marineland Côte d’Azur — Droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Marineland Côte d’Azur — All rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Marineland Côte d’Azur — Alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Marineland Côte d’Azur — Alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Marineland Côte d’Azur — Tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Marineland Côte d’Azur — Todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Marineland Côte d’Azur — Wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Marineland Côte d’Azur — Todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "f6bb041458eb41179cf8f16a42b6bfa0",
+      "ownerId": "afd24c62-0972-4c98-860c-b5a55984f777",
+      "ownerType": "Park",
+      "ownerKey": "park",
+      "category": "Park",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Antibes_-_Marineland.jpg/1280px-Antibes_-_Marineland.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_Marineland.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_Marineland.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_Marineland.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_Marineland.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_Marineland.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_Marineland.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_Marineland.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_Marineland.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "178571da631e488e949c50f9ecb7bef7",
+      "ownerId": "afd24c62-0972-4c98-860c-b5a55984f777",
+      "ownerType": "Park",
+      "ownerKey": "park",
+      "category": "Park",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Bassins_du_marineland_d%27Antibes.jpg/1280px-Bassins_du_marineland_d%27Antibes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Spencer Wright — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Bassins_du_marineland_d%27Antibes.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "Spencer Wright — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Bassins_du_marineland_d%27Antibes.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "Spencer Wright — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Bassins_du_marineland_d%27Antibes.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Spencer Wright — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Bassins_du_marineland_d%27Antibes.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "Spencer Wright — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Bassins_du_marineland_d%27Antibes.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "Spencer Wright — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Bassins_du_marineland_d%27Antibes.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Spencer Wright — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Bassins_du_marineland_d%27Antibes.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Spencer Wright — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Bassins_du_marineland_d%27Antibes.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "5fe96fa9007b42e39032a40cca050b7c",
+      "ownerId": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+      "ownerType": "ParkItem",
+      "ownerKey": "bassins-orques",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Marineland_killer_whale_pool.jpg/1280px-Marineland_killer_whale_pool.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_killer_whale_pool.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_killer_whale_pool.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_killer_whale_pool.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_killer_whale_pool.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_killer_whale_pool.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_killer_whale_pool.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_killer_whale_pool.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_killer_whale_pool.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "007f9d4707fd441a8a83fc56db5c1c23",
+      "ownerId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+      "ownerType": "ParkItem",
+      "ownerKey": "bassin-dauphins",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Dolphin_show%2C_Marineland_Antibes.jpg/1280px-Dolphin_show%2C_Marineland_Antibes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show,_Marineland_Antibes.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "7143c87fbe6c490c97c9b9003ad1e515",
+      "ownerId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+      "ownerType": "ParkItem",
+      "ownerKey": "bassin-dauphins",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Dolphin_show_stand%2C_Marineland_Antibes.jpg/1280px-Dolphin_show_stand%2C_Marineland_Antibes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show_stand,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show_stand,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show_stand,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show_stand,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show_stand,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show_stand,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show_stand,_Marineland_Antibes.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "DimiTalen — Wikimedia Commons — CC0 — http://creativecommons.org/publicdomain/zero/1.0/deed.en — https://commons.wikimedia.org/wiki/File:Dolphin_show_stand,_Marineland_Antibes.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "139419233d044d1499e216985afacac2",
+      "ownerId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+      "ownerType": "ParkItem",
+      "ownerKey": "bassin-dauphins",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Antibes_-_panoramio_-_avu-edm_%2834%29.jpg/1280px-Antibes_-_panoramio_-_avu-edm_%2834%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(34).jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(34).jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(34).jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(34).jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(34).jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(34).jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(34).jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(34).jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "3c21cd0fb0894ca5a1d05e7f37040139",
+      "ownerId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+      "ownerType": "ParkItem",
+      "ownerKey": "bassin-dauphins",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Antibes_-_panoramio_-_avu-edm_%2842%29.jpg/1280px-Antibes_-_panoramio_-_avu-edm_%2842%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(42).jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(42).jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(42).jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(42).jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(42).jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(42).jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(42).jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Antibes_-_panoramio_-_avu-edm_(42).jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "a8993c92c475402f8032dc9b6b3369cf",
+      "ownerId": "6bb27aa5-4e60-4c61-b838-5322128666ed",
+      "ownerType": "ParkItem",
+      "ownerKey": "tunnel-requins",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Marineland_-_aquarium.jpg/1280px-Marineland_-_aquarium.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_aquarium.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_aquarium.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_aquarium.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_aquarium.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_aquarium.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_aquarium.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_aquarium.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_aquarium.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "264a6b1232554963b805315a57c00f2b",
+      "ownerId": "1bed7e61-c55a-41a7-8df5-4c3e006c59ab",
+      "ownerType": "ParkItem",
+      "ownerKey": "manchots-humboldt-entree",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Manchots_de_Humboldt_Antibes.jpg/1280px-Manchots_de_Humboldt_Antibes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "John Clift — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Manchots_de_Humboldt_Antibes.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "John Clift — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Manchots_de_Humboldt_Antibes.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "John Clift — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Manchots_de_Humboldt_Antibes.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "John Clift — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Manchots_de_Humboldt_Antibes.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "John Clift — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Manchots_de_Humboldt_Antibes.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "John Clift — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Manchots_de_Humboldt_Antibes.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "John Clift — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Manchots_de_Humboldt_Antibes.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "John Clift — Wikimedia Commons — CC BY 2.0 — https://creativecommons.org/licenses/by/2.0 — https://commons.wikimedia.org/wiki/File:Manchots_de_Humboldt_Antibes.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "f518cf14b51840ca8484ec742d2ee23c",
+      "ownerId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+      "ownerType": "ParkFounder",
+      "ownerKey": "founder:roland-de-la-poype",
+      "category": "Founder",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://www.ordredelaliberation.fr/sites/default/files/styles/compagnon_full/public/media/images/compagnons/630e789618d4961067de52e3.jpg?itok=5rk_a5Pz",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Ordre de la Libération — https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de — Photographe non indiqué ; droits réservés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Ordre de la Libération — https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de — Photographer not named; all rights reserved."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ordre de la Libération — https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de — Fotograf nicht genannt; alle Rechte vorbehalten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ordre de la Libération — https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de — Fotograaf niet vermeld; alle rechten voorbehouden."
+        },
+        {
+          "languageCode": "it",
+          "value": "Ordre de la Libération — https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de — Fotografo non indicato; tutti i diritti riservati."
+        },
+        {
+          "languageCode": "es",
+          "value": "Ordre de la Libération — https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de — Fotógrafo no indicado; todos los derechos reservados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ordre de la Libération — https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de — Fotograf niepodany; wszelkie prawa zastrzeżone."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Ordre de la Libération — https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de — Fotógrafo não indicado; todos os direitos reservados."
+        }
+      ]
+    },
+    {
+      "imageId": "7122dbb2f2904aa3b661869a8e86fffb",
+      "ownerId": "21cf466e-54fa-49f6-afd2-80874359b282",
+      "ownerType": "ParkItem",
+      "ownerKey": "otaries-steller",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Marineland_-_sea_lion_2.jpg/1280px-Marineland_-_sea_lion_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lion_2.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lion_2.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lion_2.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lion_2.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lion_2.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lion_2.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lion_2.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lion_2.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "e91bed2e89f54427a7da4b6d36de2d71",
+      "ownerId": "21cf466e-54fa-49f6-afd2-80874359b282",
+      "ownerType": "ParkItem",
+      "ownerKey": "otaries-steller",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Marineland_-_sea_lions.jpg/1280px-Marineland_-_sea_lions.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lions.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lions.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lions.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lions.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lions.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lions.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lions.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Tiia Monto — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_sea_lions.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "9e817ec2a4f344bc8d8edcd49f832885",
+      "ownerId": "21cf466e-54fa-49f6-afd2-80874359b282",
+      "ownerType": "ParkItem",
+      "ownerKey": "otaries-steller",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%281%29.jpg/1280px-Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(1).jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "c2aa3d54546f449a810fc1db59d4a69d",
+      "ownerId": "40e5ff7d-66ca-441f-8d3e-abc7e25771b5",
+      "ownerType": "ParkItem",
+      "ownerKey": "otaries-californie",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Antibes%2C_France_-_panoramio_%283%29.jpg/1280px-Antibes%2C_France_-_panoramio_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes,_France_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes,_France_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes,_France_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes,_France_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes,_France_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes,_France_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes,_France_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Antibes,_France_-_panoramio_(3).jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "d21a030cfe43478f90a1f247d18a4a15",
+      "ownerId": "40e5ff7d-66ca-441f-8d3e-abc7e25771b5",
+      "ownerType": "ParkItem",
+      "ownerKey": "otaries-californie",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%283%29.jpg/1280px-Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(3).jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(3).jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "02aa6d5713ab4cec8158e73fc18bb589",
+      "ownerId": "40e5ff7d-66ca-441f-8d3e-abc7e25771b5",
+      "ownerType": "ParkItem",
+      "ownerKey": "otaries-californie",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%282%29.jpg/1280px-Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(2).jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(2).jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(2).jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(2).jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(2).jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(2).jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(2).jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(2).jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "4e39b391d01c4f53917bdf25d3432642",
+      "ownerId": "a5725055-8241-4c63-8ac3-e5a777ed8546",
+      "ownerType": "ParkItem",
+      "ownerKey": "otaries-patagonie",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/HeroKK.JPG/1280px-HeroKK.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:HeroKK.JPG"
+        },
+        {
+          "languageCode": "en",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:HeroKK.JPG"
+        },
+        {
+          "languageCode": "de",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:HeroKK.JPG"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:HeroKK.JPG"
+        },
+        {
+          "languageCode": "it",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:HeroKK.JPG"
+        },
+        {
+          "languageCode": "es",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:HeroKK.JPG"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:HeroKK.JPG"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:HeroKK.JPG"
+        }
+      ]
+    },
+    {
+      "imageId": "1d1e428e05bc49478904f1f9da59ef8d",
+      "ownerId": "886a3e24-2092-43f6-9cad-2d157ab95634",
+      "ownerType": "ParkItem",
+      "ownerKey": "tortues-marines",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Carettaaaaaa.JPG/1280px-Carettaaaaaa.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:Carettaaaaaa.JPG"
+        },
+        {
+          "languageCode": "en",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:Carettaaaaaa.JPG"
+        },
+        {
+          "languageCode": "de",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:Carettaaaaaa.JPG"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:Carettaaaaaa.JPG"
+        },
+        {
+          "languageCode": "it",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:Carettaaaaaa.JPG"
+        },
+        {
+          "languageCode": "es",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:Carettaaaaaa.JPG"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:Carettaaaaaa.JPG"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Crixus 2015 — Wikimedia Commons — CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0 — https://commons.wikimedia.org/wiki/File:Carettaaaaaa.JPG"
+        }
+      ]
+    },
+    {
+      "imageId": "3260d6d5fc884896879f29fa21c6bd8d",
+      "ownerId": "35dfbe39-9044-44e7-9e80-cc0249691110",
+      "ownerType": "ParkItem",
+      "ownerKey": "entree",
+      "category": "ParkItem",
+      "isCurrent": true,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Marineland_-_panoramio.jpg/1280px-Marineland_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio.jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio.jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio.jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio.jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio.jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio.jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio.jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio.jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "84416da7f57e4f0faa7385faf8cca31b",
+      "ownerId": "35dfbe39-9044-44e7-9e80-cc0249691110",
+      "ownerType": "ParkItem",
+      "ownerKey": "entree",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Marineland_-_panoramio_%281%29.jpg/1280px-Marineland_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio_(1).jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "avu-edm — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_-_panoramio_(1).jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "5c14e05ccabc4c828879a251d4cc61df",
+      "ownerId": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+      "ownerType": "ParkItem",
+      "ownerKey": "bassins-orques",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%287%29.jpg/1280px-Marineland_Antibes%2C_Antibes_-_Frankrijk_-_panoramio_%287%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(7).jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(7).jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(7).jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(7).jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(7).jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(7).jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(7).jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "E v Schoonhoven — Wikimedia Commons — CC BY 3.0 — https://creativecommons.org/licenses/by/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_Antibes,_Antibes_-_Frankrijk_-_panoramio_(7).jpg"
+        }
+      ]
+    },
+    {
+      "imageId": "8c380a11410a457b94e4ccbe49a32fdd",
+      "ownerId": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+      "ownerType": "ParkItem",
+      "ownerKey": "bassins-orques",
+      "category": "ParkItem",
+      "isCurrent": false,
+      "isPublished": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Marineland_%C3%A0_Antibes_-_panoramio_%284%29.jpg/1280px-Marineland_%C3%A0_Antibes_-_panoramio_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_%C3%A0_Antibes_-_panoramio_(4).jpg"
+        },
+        {
+          "languageCode": "en",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_%C3%A0_Antibes_-_panoramio_(4).jpg"
+        },
+        {
+          "languageCode": "de",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_%C3%A0_Antibes_-_panoramio_(4).jpg"
+        },
+        {
+          "languageCode": "nl",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_%C3%A0_Antibes_-_panoramio_(4).jpg"
+        },
+        {
+          "languageCode": "it",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_%C3%A0_Antibes_-_panoramio_(4).jpg"
+        },
+        {
+          "languageCode": "es",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_%C3%A0_Antibes_-_panoramio_(4).jpg"
+        },
+        {
+          "languageCode": "pl",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_%C3%A0_Antibes_-_panoramio_(4).jpg"
+        },
+        {
+          "languageCode": "pt",
+          "value": "michel3333FR — Wikimedia Commons — CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0 — https://commons.wikimedia.org/wiki/File:Marineland_%C3%A0_Antibes_-_panoramio_(4).jpg"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,193 @@
+{
+  "reviewedAtUtc": "2026-11-03T06:47:28.441552+00:00",
+  "sourcePages": [
+    "https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de",
+    "https://www.marineland.fr/mentions-legales"
+  ],
+  "additionalLocalSources": [
+    "sources/government-2024.pdf.txt, p11/52, acquisition2006",
+    "sources/closure-release.txt, communiqué4décembre2024"
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true,
+  "facts": [
+    "Naissance1920 et décès2012 selonOrdredeLibération.",
+    "Deux références existantes, IDs préservés.",
+    "Aucune année de création juridique déduite de ouvertureparc1970 ; aucune liquidation déduite de fermeturepublic2025.",
+    "Le rôleMéharireste contribution, pas auteurunique."
+  ],
+  "lengths": {
+    "founder": {
+      "fr": 211,
+      "en": 201,
+      "de": 201,
+      "nl": 216,
+      "it": 200,
+      "es": 212,
+      "pl": 185,
+      "pt": 211
+    },
+    "operator": {
+      "fr": 124,
+      "en": 107,
+      "de": 109,
+      "nl": 121,
+      "it": 115,
+      "es": 119,
+      "pl": 101,
+      "pt": 119
+    }
+  },
+  "gaps": [
+    "Date création légale et éventuelle fermeture de la société non établies dans ces sources, champs non renseignés. Descriptionopérateur courte fondée sur mentions légales, rapportgouvernemental2024 et communiquédefermeture ; pas inventaire des autres filiales attribué à cette SAS."
+  ],
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "owner": "Conversation France",
+  "references": {
+    "founders": [
+      {
+        "key": "roland-de-la-poype",
+        "name": "Roland de La Poype",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "2ec647c6-36dd-4de6-995b-fa313babc009",
+        "occupation": "Aviateur, industriel et fondateur de Marineland",
+        "birthDate": "1920-07-28",
+        "deathDate": "2012-10-23",
+        "birthPlace": "Les Pradeaux (Puy-de-Dôme), France",
+        "nationalityCountryCode": "FR",
+        "biography": [
+          {
+            "languageCode": "fr",
+            "value": "<h2>Le fondateur de Marineland</h2><p>Roland de La Poype fonda Marineland à Antibes en 1970, après une carrière d’aviateur et d’industriel. Roland Paulze d’Ivoy de La Poype était né le 28 juillet 1920 aux Pradeaux, dans le Puy-de-Dôme.</p><h2>Des Forces françaises libres au Normandie-Niemen</h2><p>Engagé dans l’aviation en 1939, il gagna l’Angleterre en juin 1940 et rejoignit les Forces aériennes françaises libres. Après le Squadron 602 de la Royal Air Force, il partit en Union soviétique avec le groupe Normandie en 1942. Son parcours au sein du futur Normandie-Niemen lui valut notamment les titres de héros de l’Union soviétique et de Compagnon de la Libération en 1944.</p><h2>Le plastique, la vie publique et Antibes</h2><p>Après avoir quitté l’armée en 1947, il développa des activités agricoles et industrielles. À la tête de la Société d’Études et d’Applications du Plastique, il fut à l’origine du berlingot de shampooing Dop et participa à la création de la Méhari. Il fut aussi maire de Champigné de 1955 à 1971.</p><p>Ses mémoires, L’Épopée du Normandie-Niémen, parurent en 2007 avec Jean-Charles Stasi. Roland de La Poype mourut le 23 octobre 2012 à Saint-Tropez et fut inhumé à Trept, en Isère.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<h2>The founder of Marineland</h2><p>Roland de La Poype founded Marineland in Antibes in 1970 after a career as an aviator and industrialist. He was born Roland Paulze d’Ivoy de La Poype on 28 July 1920 in Les Pradeaux, Puy-de-Dôme.</p><h2>From the Free French to Normandie-Niemen</h2><p>He joined the air force in 1939, reached Britain in June 1940 and enlisted in the Free French Air Forces. After serving with the Royal Air Force’s 602 Squadron, he travelled to the Soviet Union with the Normandie group in 1942. His service with what became Normandie-Niemen brought him the distinctions of Hero of the Soviet Union and Companion of the Liberation in 1944.</p><h2>Plastics, public life and Antibes</h2><p>After leaving the military in 1947, he pursued agricultural and industrial activities. At the Société d’Études et d’Applications du Plastique, he developed the small Dop shampoo sachet and contributed to the creation of the Méhari. He also served as mayor of Champigné from 1955 to 1971.</p><p>His memoirs, L’Épopée du Normandie-Niémen, appeared in 2007, written with Jean-Charles Stasi. Roland de La Poype died on 23 October 2012 in Saint-Tropez and was buried in Trept, Isère.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<h2>Der Gründer von Marineland</h2><p>Roland de La Poype gründete Marineland in Antibes 1970 nach einer Laufbahn als Flieger und Industrieller. Er wurde am 28. Juli 1920 als Roland Paulze d’Ivoy de La Poype in Les Pradeaux im Département Puy-de-Dôme geboren.</p><h2>Von den Freien Französischen Streitkräften zu Normandie-Niemen</h2><p>1939 trat er in die Luftwaffe ein, erreichte im Juni 1940 Großbritannien und schloss sich den Freien Französischen Luftstreitkräften an. Nach seinem Dienst beim Squadron 602 der Royal Air Force ging er 1942 mit der Gruppe Normandie in die Sowjetunion. Für seinen Einsatz in der späteren Einheit Normandie-Niemen erhielt er 1944 die Auszeichnungen Held der Sowjetunion und Compagnon de la Libération.</p><h2>Kunststoffe, Kommunalpolitik und Antibes</h2><p>Nach seinem Ausscheiden aus dem Militär 1947 war er in Landwirtschaft und Industrie tätig. An der Spitze der Société d’Études et d’Applications du Plastique entwickelte er die kleine Dop-Shampooverpackung und wirkte an der Entstehung des Méhari mit. Von 1955 bis 1971 war er zudem Bürgermeister von Champigné.</p><p>Seine mit Jean-Charles Stasi verfassten Erinnerungen L’Épopée du Normandie-Niémen erschienen 2007. Roland de La Poype starb am 23. Oktober 2012 in Saint-Tropez und wurde in Trept im Département Isère beigesetzt.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<h2>De oprichter van Marineland</h2><p>Roland de La Poype richtte Marineland in Antibes op in 1970, na een loopbaan als vliegenier en industrieel. Hij werd op 28 juli 1920 in Les Pradeaux, in het departement Puy-de-Dôme, geboren als Roland Paulze d’Ivoy de La Poype.</p><h2>Van de Vrije Fransen naar Normandie-Niemen</h2><p>Hij nam in 1939 dienst bij de luchtmacht, bereikte in juni 1940 Engeland en sloot zich aan bij de Vrije Franse Luchtmacht. Na zijn dienst bij Squadron 602 van de Royal Air Force vertrok hij in 1942 met de groep Normandie naar de Sovjet-Unie. Zijn inzet bij het latere Normandie-Niemen leverde hem in 1944 onder meer de onderscheidingen Held van de Sovjet-Unie en Compagnon de la Libération op.</p><h2>Kunststoffen, openbaar bestuur en Antibes</h2><p>Na zijn vertrek uit het leger in 1947 werd hij actief in landbouw en industrie. Als hoofd van de Société d’Études et d’Applications du Plastique ontwikkelde hij het kleine Dop-shampoozakje en droeg hij bij aan de totstandkoming van de Méhari. Van 1955 tot 1971 was hij ook burgemeester van Champigné.</p><p>Zijn memoires L’Épopée du Normandie-Niémen verschenen in 2007, geschreven met Jean-Charles Stasi. Roland de La Poype overleed op 23 oktober 2012 in Saint-Tropez en werd begraven in Trept, in Isère.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<h2>Il fondatore di Marineland</h2><p>Roland de La Poype fondò Marineland ad Antibes nel 1970, dopo una carriera di aviatore e industriale. Nacque come Roland Paulze d’Ivoy de La Poype il 28 luglio 1920 a Les Pradeaux, nel Puy-de-Dôme.</p><h2>Dalla Francia libera al Normandie-Niemen</h2><p>Arruolatosi nell’aviazione nel 1939, raggiunse l’Inghilterra nel giugno 1940 e si unì alle Forze aeree della Francia libera. Dopo il servizio nel 602º Squadron della Royal Air Force, nel 1942 partì per l’Unione Sovietica con il gruppo Normandie. Il suo impegno in quella che sarebbe diventata l’unità Normandie-Niemen gli valse nel 1944 i titoli di Eroe dell’Unione Sovietica e Compagno della Liberazione.</p><h2>La plastica, la vita pubblica e Antibes</h2><p>Lasciato l’esercito nel 1947, sviluppò attività agricole e industriali. Alla guida della Société d’Études et d’Applications du Plastique ideò la piccola confezione di shampoo Dop e contribuì alla creazione della Méhari. Fu anche sindaco di Champigné dal 1955 al 1971.</p><p>Le sue memorie, L’Épopée du Normandie-Niémen, scritte con Jean-Charles Stasi, uscirono nel 2007. Roland de La Poype morì il 23 ottobre 2012 a Saint-Tropez e fu sepolto a Trept, nell’Isère.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<h2>El fundador de Marineland</h2><p>Roland de La Poype fundó Marineland en Antibes en 1970, después de una trayectoria como aviador e industrial. Nació como Roland Paulze d’Ivoy de La Poype el 28 de julio de 1920 en Les Pradeaux, en Puy-de-Dôme.</p><h2>De la Francia Libre al Normandie-Niemen</h2><p>Se alistó en la aviación en 1939, llegó a Inglaterra en junio de 1940 y se incorporó a las Fuerzas Aéreas de la Francia Libre. Tras servir en el Escuadrón 602 de la Royal Air Force, partió en 1942 hacia la Unión Soviética con el grupo Normandie. Su actuación en la futura unidad Normandie-Niemen le valió en 1944 los títulos de Héroe de la Unión Soviética y Compañero de la Liberación.</p><h2>El plástico, la vida pública y Antibes</h2><p>Tras dejar el ejército en 1947, desarrolló actividades agrícolas e industriales. Al frente de la Société d’Études et d’Applications du Plastique, ideó el pequeño envase de champú Dop y participó en la creación del Méhari. También fue alcalde de Champigné entre 1955 y 1971.</p><p>Sus memorias, L’Épopée du Normandie-Niémen, escritas con Jean-Charles Stasi, aparecieron en 2007. Roland de La Poype murió el 23 de octubre de 2012 en Saint-Tropez y fue enterrado en Trept, en Isère.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<h2>Założyciel Marineland</h2><p>Roland de La Poype założył Marineland w Antibes w 1970 roku, po karierze lotnika i przemysłowca. Urodził się jako Roland Paulze d’Ivoy de La Poype 28 lipca 1920 roku w Les Pradeaux, w departamencie Puy-de-Dôme.</p><h2>Od Wolnej Francji do Normandie-Niemen</h2><p>Wstąpił do lotnictwa w 1939 roku, w czerwcu 1940 roku dotarł do Anglii i dołączył do Sił Powietrznych Wolnej Francji. Po służbie w 602. Dywizjonie Royal Air Force wyjechał w 1942 roku do Związku Radzieckiego z grupą Normandie. Za udział w walkach w jednostce nazwanej później Normandie-Niemen otrzymał w 1944 roku tytuły Bohatera Związku Radzieckiego i Towarzysza Wyzwolenia.</p><h2>Tworzywa sztuczne, samorząd i Antibes</h2><p>Po odejściu z wojska w 1947 roku zajął się rolnictwem i przemysłem. Kierując Société d’Études et d’Applications du Plastique, opracował małe opakowanie szamponu Dop i współtworzył projekt Méhari. W latach 1955–1971 był również merem Champigné.</p><p>Wspomnienia L’Épopée du Normandie-Niémen, których współautorem był Jean-Charles Stasi, ukazały się w 2007 roku. Roland de La Poype zmarł 23 października 2012 roku w Saint-Tropez i został pochowany w Trept, w departamencie Isère.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<h2>O fundador do Marineland</h2><p>Roland de La Poype fundou o Marineland em Antibes em 1970, após uma carreira como aviador e industrial. Nasceu como Roland Paulze d’Ivoy de La Poype a 28 de julho de 1920 em Les Pradeaux, no Puy-de-Dôme.</p><h2>Da França Livre ao Normandie-Niemen</h2><p>Alistou-se na aviação em 1939, chegou a Inglaterra em junho de 1940 e juntou-se às Forças Aéreas da França Livre. Depois de servir no Esquadrão 602 da Royal Air Force, partiu em 1942 para a União Soviética com o grupo Normandie. A sua atuação na futura unidade Normandie-Niemen valeu-lhe em 1944 os títulos de Herói da União Soviética e Companheiro da Libertação.</p><h2>O plástico, a vida pública e Antibes</h2><p>Depois de deixar o exército em 1947, desenvolveu atividades agrícolas e industriais. À frente da Société d’Études et d’Applications du Plastique, criou a pequena embalagem de champô Dop e contribuiu para a criação do Méhari. Foi também presidente da câmara de Champigné entre 1955 e 1971.</p><p>As suas memórias, L’Épopée du Normandie-Niémen, escritas com Jean-Charles Stasi, foram publicadas em 2007. Roland de La Poype morreu a 23 de outubro de 2012 em Saint-Tropez e foi sepultado em Trept, no departamento de Isère.</p>"
+          }
+        ],
+        "currentImageId": "f518cf14b51840ca8484ec742d2ee23c"
+      }
+    ],
+    "operators": [
+      {
+        "key": "marineland-antibes-sas",
+        "name": "Marineland",
+        "countryCode": "FR",
+        "websiteUrl": "https://www.marineland.fr/",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "57d215b7-985f-44e6-bbfa-353d8322605e",
+        "legalName": "MARINELAND",
+        "contactDetails": {
+          "websiteUrl": "https://www.marineland.fr/",
+          "email": "contact@marineland.fr",
+          "phoneNumber": "+33493334949",
+          "street": "2 route de la Brague",
+          "city": "Antibes",
+          "postalCode": "06600",
+          "countryCode": "FR"
+        },
+        "description": [
+          {
+            "languageCode": "fr",
+            "value": "<h2>La société du parc marin d’Antibes</h2><p>Marineland est la société française qui exploitait le zoo marin d’Antibes, connu pour ses orques, ses dauphins et ses aquariums. Organisée en société par actions simplifiée, elle a son siège route de la Brague, à l’adresse du parc. Elle est également l’éditeur du site Marineland.</p><h2>Au sein de Parques Reunidos</h2><p>Le parc a rejoint le groupe Parques Reunidos en 2006. Marineland appartient ainsi au groupe international de loisirs, aux côtés d’autres sociétés européennes, tout en conservant son identité juridique française.</p><p>En décembre 2024, Marineland a annoncé son projet de fermeture définitive du zoo marin pour janvier 2025, avec un volet consacré au devenir des animaux et un autre aux conséquences pour les salariés.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<h2>The company behind the Antibes marine park</h2><p>Marineland is the French company that operated the Antibes marine zoo, known for its orcas, dolphins and aquariums. Incorporated as a société par actions simplifiée, it has its registered office on Route de la Brague, at the park’s address. It also publishes the Marineland website.</p><h2>Part of Parques Reunidos</h2><p>The park joined Parques Reunidos in 2006. Marineland therefore belongs to the international leisure group alongside other European companies, while retaining its French legal identity.</p><p>In December 2024, Marineland announced plans to close the marine zoo permanently in January 2025, addressing both the animals’ future and the consequences for employees.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<h2>Die Gesellschaft des Meeresparks in Antibes</h2><p>Marineland ist die französische Gesellschaft, die den für Orcas, Delfine und Aquarien bekannten Meereszoo von Antibes betrieb. Sie hat die Rechtsform einer société par actions simplifiée und ihren Sitz an der Route de la Brague, der Adresse des Parks. Zudem betreibt sie die Website von Marineland.</p><h2>Teil von Parques Reunidos</h2><p>Der Park kam 2006 zur Gruppe Parques Reunidos. Marineland gehört damit neben anderen europäischen Gesellschaften zu dem internationalen Freizeitkonzern und behält seine französische Rechtspersönlichkeit.</p><p>Im Dezember 2024 kündigte Marineland die geplante endgültige Schließung des Meereszoos für Januar 2025 an. Dabei ging es um die Zukunft der Tiere und die Folgen für die Beschäftigten.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<h2>De onderneming achter het zeepark in Antibes</h2><p>Marineland is de Franse onderneming die het zeepark van Antibes exploiteerde, bekend om zijn orka’s, dolfijnen en aquaria. De vennootschap heeft de rechtsvorm société par actions simplifiée en is gevestigd aan de Route de la Brague, op het adres van het park. Zij beheert ook de website van Marineland.</p><h2>Onderdeel van Parques Reunidos</h2><p>Het park kwam in 2006 bij de groep Parques Reunidos. Marineland behoort daarmee naast andere Europese ondernemingen tot deze internationale vrijetijdsgroep, met behoud van zijn Franse juridische identiteit.</p><p>In december 2024 kondigde Marineland het voornemen aan om het zeepark in januari 2025 definitief te sluiten. Het plan behandelde zowel de toekomst van de dieren als de gevolgen voor het personeel.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<h2>La società del parco marino di Antibes</h2><p>Marineland è la società francese che gestiva lo zoo marino di Antibes, noto per le orche, i delfini e gli acquari. Costituita come société par actions simplifiée, ha sede sulla Route de la Brague, all’indirizzo del parco. È anche l’editore del sito Marineland.</p><h2>Nel gruppo Parques Reunidos</h2><p>Il parco è entrato nel gruppo Parques Reunidos nel 2006. Marineland appartiene quindi al gruppo internazionale del tempo libero insieme ad altre società europee, mantenendo la propria identità giuridica francese.</p><p>Nel dicembre 2024, Marineland ha annunciato il progetto di chiusura definitiva dello zoo marino per gennaio 2025, affrontando sia il futuro degli animali sia le conseguenze per i dipendenti.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<h2>La sociedad del parque marino de Antibes</h2><p>Marineland es la sociedad francesa que explotaba el zoológico marino de Antibes, conocido por sus orcas, delfines y acuarios. Constituida como société par actions simplifiée, tiene su domicilio en la Route de la Brague, en la dirección del parque. También es la editora del sitio web de Marineland.</p><h2>Dentro de Parques Reunidos</h2><p>El parque se incorporó al grupo Parques Reunidos en 2006. Marineland pertenece así al grupo internacional de ocio junto a otras sociedades europeas, conservando su identidad jurídica francesa.</p><p>En diciembre de 2024, Marineland anunció el proyecto de cierre definitivo del zoológico marino para enero de 2025, con medidas sobre el futuro de los animales y las consecuencias para la plantilla.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<h2>Spółka prowadząca park morski w Antibes</h2><p>Marineland to francuska spółka, która prowadziła ogród zoologiczny w Antibes, znany z orek, delfinów i akwariów. Działa w formie société par actions simplifiée, a jej siedziba mieści się przy Route de la Brague, pod adresem parku. Jest również wydawcą strony internetowej Marineland.</p><h2>W grupie Parques Reunidos</h2><p>Park trafił do grupy Parques Reunidos w 2006 roku. Marineland należy więc wraz z innymi europejskimi spółkami do międzynarodowej grupy branży rekreacyjnej, zachowując francuską osobowość prawną.</p><p>W grudniu 2024 roku Marineland ogłosiło plan definitywnego zamknięcia morskiego zoo w styczniu 2025 roku. Obejmował on przyszłość zwierząt oraz konsekwencje dla pracowników.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<h2>A sociedade do parque marinho de Antibes</h2><p>Marineland é a sociedade francesa que explorava o jardim zoológico marinho de Antibes, conhecido pelas orcas, pelos golfinhos e pelos aquários. Constituída como société par actions simplifiée, tem sede na Route de la Brague, na morada do parque. É também a editora do sítio do Marineland.</p><h2>No grupo Parques Reunidos</h2><p>O parque passou a integrar o grupo Parques Reunidos em 2006. O Marineland pertence assim ao grupo internacional de lazer, juntamente com outras sociedades europeias, mantendo a sua identidade jurídica francesa.</p><p>Em dezembro de 2024, o Marineland anunciou o projeto de encerramento definitivo do jardim zoológico marinho para janeiro de 2025, abordando o futuro dos animais e as consequências para os trabalhadores.</p>"
+          }
+        ]
+      }
+    ],
+    "manufacturers": []
+  },
+  "operations": [
+    {
+      "operationId": "fefe58d7-b101-427e-a5a9-0cf04551a8fb",
+      "appliedAtUtc": "2026-11-03T06:48:07.8139956Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "9af72e41-326f-446c-a498-49335080e943",
+      "appliedAtUtc": "2026-11-03T06:49:41.8765352Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "portrait": {
+    "imageId": "f518cf14b51840ca8484ec742d2ee23c",
+    "source": {
+      "sourceUrl": "https://www.ordredelaliberation.fr/sites/default/files/styles/compagnon_full/public/media/images/compagnons/630e789618d4961067de52e3.jpg?itok=5rk_a5Pz",
+      "finalUrl": "https://www.ordredelaliberation.fr/sites/default/files/styles/compagnon_full/public/media/images/compagnons/630e789618d4961067de52e3.jpg?itok=5rk_a5Pz",
+      "sourcePage": "https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de",
+      "bytes": 29723,
+      "sha256": "e645c7ac3ba29be4cdb7de300d8d2b16e5596079f97616e047c6796fd570f9b7",
+      "downloadedAtUtc": "2026-11-03T06:44:40.999389+00:00"
+    },
+    "isPublished": false,
+    "isCurrent": true
+  },
+  "remaining": "Audit final sur export frais avant publication des références et médias."
+}
