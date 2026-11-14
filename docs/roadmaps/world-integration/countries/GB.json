@@ -16020,6 +16020,136 @@
         "publicationBlockers": [],
         "gapCount": 2
       }
+    },
+    {
+      "entryId": "GB-candidate-discovery-fb1f66688697ac68",
+      "name": "London Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique urbain panoramique",
+      "locality": "Greenwich Peninsula Terminal, Edmund Halley Way, London SE10 0FR",
+      "siteId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:35:05Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie actuelle TfL et statut de service actif le 14 novembre 2026.",
+      "identityConfidence": "Nom actuel, deux gares et billetterie TfL officiels ; recherches Park/Standalone sur London Cable Car, IFS Cloud et Emirates Air Line sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "IFS Cloud Cable Car",
+        "Emirates Air Line"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T20:33:58.516Z",
+      "integrationHistory": [
+        {
+          "eventId": "c78a0b38-2c80-4f11-b376-1aa853f74ac1",
+          "appliedAt": "2026-11-14T20:29:17.115Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:apply:c78a0b38-2c80-4f11-b376-1aa853f74ac1",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-378d5149fc0443e5a10a4b3df20becdd",
+          "appliedAt": "2026-11-14T20:29:56Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:import-photo:378d5149fc0443e5a10a4b3df20becdd",
+          "auditEvidence": null,
+          "summary": "Photo exacte des cabines, ancienne livrée IFS"
+        },
+        {
+          "eventId": "image-2247d70da3b14adab978a9220a1f8d1a",
+          "appliedAt": "2026-11-14T20:30:15Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:import-photo:2247d70da3b14adab978a9220a1f8d1a",
+          "auditEvidence": null,
+          "summary": "Seconde photo exacte de la ligne"
+        },
+        {
+          "eventId": "576e7830-e849-4511-83b2-e39c303f29f3",
+          "appliedAt": "2026-11-14T20:33:58.516Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:apply:576e7830-e849-4511-83b2-e39c303f29f3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-london-cable-car-20261114/audit.json",
+          "summary": "Conditions d’accès, tarifs réconciliés, audit et publication"
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
+      "sources": [
+        {
+          "label": "TfL — billetterie et tarifs",
+          "url": "https://cablecartickets.tfl.gov.uk/en",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "TfL — trajet et accessibilité",
+          "url": "https://cablecartickets.tfl.gov.uk/en/about-us",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "TfL — gare et horaires",
+          "url": "https://tfl.gov.uk/help-with-travel/ways-to-travel/cable-car-location-opening-hours",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "TfL — ouverture et rôle touristique",
+          "url": "https://tfl-newsroom.prgloo.com/news/tfl-press-release-new-sponsorship-underway-for-ifs-cloud-cable-car",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — cabines, David Martin",
+          "url": "https://commons.wikimedia.org/wiki/File:IFS_Cloud_Cable_Car_-_geograph.org.uk_-_7671942.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — cabine et pylônes, Calum Taylor",
+          "url": "https://commons.wikimedia.org/wiki/File:IFS_Cloud_Cable_Car_-_geograph.org.uk_-_8293525.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 576e7830-e849-4511-83b2-e39c303f29f3 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a05c8736-0ce5-4a3d-bcdc-fb4fc4904108/london-cable-car",
+          "publishedAtUtc": "2026-11-14T20:34:47.119Z",
+          "verifiedAtUtc": "2026-11-14T20:35:05Z",
+          "evidence": "PARK_DATA_EDITOR:apply:54c54879-8a99-4f7f-8705-536ed824d963"
+        },
+        "facebook": {
+          "id": "cd200cbf59fb4386a50afee0c880c5b2",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T20:35:43.3380956Z",
+          "externalPostId": "1285475681307050_122127369339424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127369339424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:cd200cbf59fb4386a50afee0c880c5b2"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-london-cable-car-20261114/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }
