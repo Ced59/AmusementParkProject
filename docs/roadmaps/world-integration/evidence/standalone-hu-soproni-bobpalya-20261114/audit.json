@@ -1,0 +1,119 @@
+{
+  "work": "Qualified the separately ticketed Sopron summer bobsleigh, created its standalone page, integrated eight editorial descriptions, six current fare offers, the operator’s annual timetable, three access conditions and two visually inspected exact licensed historical station images. Published all eight language routes and the Facebook announcement.",
+  "qualification": "Operator presents the summer bobsleigh as the main permanent ride with its own ticket and hours on Bécsi Hill. A coin-operated toy excavator and small electric car track are ancillary activities; this standalone page describes the bobsleigh itself, not a broad amusement park. Reassess the entity model if the ancillary site grows.",
+  "sources": {
+    "operatorHome": "https://www.sopron.bobozas.hu/en",
+    "operatorTrack": "https://www.sopron.bobozas.hu/en/summer-bobsleigh",
+    "operatorPrices": "https://www.sopron.bobozas.hu/en/prices",
+    "operatorHours": "https://www.sopron.bobozas.hu/en/opening-hours",
+    "operatorFaq": "https://www.sopron.bobozas.hu/en/faq",
+    "operatorDirections": "https://www.sopron.bobozas.hu/en/how-to-get-there",
+    "operatorAncillaryToys": "https://www.sopron.bobozas.hu/en/toys",
+    "regionalTourism": "https://www.visitsopron.com/hu/reszletek/nyari-bobpalya",
+    "commonsStation": "https://commons.wikimedia.org/wiki/File:Sopron_Bob_Palya_-_panoramio.jpg",
+    "commonsLift": "https://commons.wikimedia.org/wiki/File:Sopron_-_Bob_palya_-_panoramio.jpg"
+  },
+  "sourceLimitations": [
+    "Operator track page and Visit Sopron report 900 m downhill; operator FAQ says 700 m. The 900 m figure is encoded and the conflict requires confirmation.",
+    "Operator price page contains both age 8+ and age 10+ for accompanying children aged 3–8. FAQ says 10+, which is encoded, pending confirmation.",
+    "Operator directions GPS 47.698182,16.583115 differs by about 400 m from regional tourism attraction GPS 47.694828,16.585625. The latter agrees with licensed station photo camera coordinates 47.694685,16.585579 and is used for the venue pin.",
+    "Commons labels both station images as taken 31 December 2008, but green foliage makes the exact day implausible; public captions state only 2008. Images show the station, not the full downhill run.",
+    "Winter weekdays are normally closed; public holidays, weather and technical issues can change operation. Specific holiday overrides are not encoded."
+  ],
+  "duplicateSearches": {
+    "parkSopronHU": 0,
+    "standaloneSopronHU": 0,
+    "manufacturerClueBacklogEntry": "HU-candidate-standalone-edb60b82f0b0f0"
+  },
+  "entity": {
+    "id": "ea91d336-cd45-44b9-a458-f5bf4181e197",
+    "name": "Soproni Bobpálya",
+    "countryCode": "HU",
+    "kind": "StandaloneAttraction",
+    "published": true,
+    "legacyParkHiddenNotRelevant": false
+  },
+  "dataReceipts": [
+    {
+      "operationId": "9355b3e1-33a2-4c6b-b1d0-b170dd1ec1b4",
+      "appliedAtUtc": "2026-11-14T22:02:26.4512067Z",
+      "summary": "Created standalone core and eight descriptions"
+    },
+    {
+      "operationId": "07cdf12b-6753-456d-89b4-e543fe7b0122",
+      "appliedAtUtc": "2026-11-14T22:03:37.6924329Z",
+      "summary": "Corrected attraction map pin"
+    },
+    {
+      "operationId": "69dbbca3-98bb-41f7-8e1e-e7779a28aeb4",
+      "appliedAtUtc": "2026-11-14T22:06:35.7987312Z",
+      "summary": "Integrated prices, hours and access conditions"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "728f81353dc84a7088d6d85b551cef46",
+      "subject": "Visitor station and Bécsi-domb hillside",
+      "author": "varga daniel",
+      "license": "CC BY 3.0",
+      "commonsCataloguedYear": 2008,
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sopron_Bob_Palya_-_panoramio.jpg",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "63b305b9fdf84b6a8abeda38aa607925",
+      "subject": "Station and uphill lift",
+      "author": "varga daniel",
+      "license": "CC BY 3.0",
+      "commonsCataloguedYear": 2008,
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sopron_-_Bob_palya_-_panoramio.jpg",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 89,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 2,
+    "fareOfferCount": 6,
+    "regularHourRuleCount": 18,
+    "datedCalendarCoverage": {
+      "firstDate": "2026-11-14",
+      "lastDate": "2027-12-31",
+      "days": 413,
+      "uncoveredDays": 0,
+      "overlappingDays": 0
+    },
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "prePublicationExportSha256": "55da2ca15704d6747658a37269fb609d49c01543fded9cee630d2af2dea679af"
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/ea91d336-cd45-44b9-a458-f5bf4181e197/soproni-bobpalya",
+    "sitePublishedAtUtc": "2026-11-14T22:08:18.0551645Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:66884b90-0253-40e2-a834-18a66b57f67a",
+    "facebookStatus": "Published",
+    "facebookId": "eb8a4e3185bf46fb89b33307091ce44e",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127376707424431",
+    "facebookPublishedAtUtc": "2026-11-14T22:09:10.2715831Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T22:07:22.399Z",
+  "remainingGaps": [
+    "Confirm conflicting 900 m/700 m length and 8+/10+ accompaniment text with the operator.",
+    "Seek a newer licensed exact photograph of the downhill run.",
+    "Confirm holiday exceptions and precise venue map pin."
+  ]
+}

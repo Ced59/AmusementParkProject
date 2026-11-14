@@ -2169,38 +2169,82 @@
     },
     {
       "entryId": "HU-candidate-standalone-edb60b82f0b0f0",
-      "name": "Luge Wiegand — Sopron",
-      "entityKind": "ToQualify",
+      "name": "Soproni Bobpálya",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "category": "Luge d’été en auge",
+      "locality": "Sopron, Bécsi domb",
+      "siteId": "ea91d336-cd45-44b9-a458-f5bf4181e197",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T22:08:18.055Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
-      "possibleMatches": [
-        {
-          "siteId": "d28e9969-89aa-45d8-a297-49eefe8cacf6",
-          "name": "Visegrádi Bobpálya",
-          "similarity": null
-        }
-      ],
-      "possibleBacklogEntries": [
-        "HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6",
-        "HU-candidate-standalone-a9ea5b5f750bd9"
-      ],
+      "sourceLifecycleSignal": "Operating — opérateur officiel vérifié le 2026-11-14",
+      "identityConfidence": "Piste de luge autonome avec billetterie et horaires propres ; les deux jeux pour enfants sur place sont des activités accessoires distinctes.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
       "aliases": [
-        "Sopron"
+        "Sopron Toboggan Park",
+        "Sopron Bobpálya",
+        "Nyári bobpálya"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6, HU-candidate-standalone-a9ea5b5f750bd9. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T22:07:22.399Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-9355b3e1-33a2-4c6b-b1d0-b170dd1ec1b4",
+          "appliedAt": "2026-11-14T22:02:26.451Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ea91d336-cd45-44b9-a458-f5bf4181e197",
+          "evidence": "PARK_DATA_EDITOR:apply:9355b3e1-33a2-4c6b-b1d0-b170dd1ec1b4",
+          "auditEvidence": null,
+          "summary": "Création de la fiche autonome avec huit descriptions, type, site et caractéristiques du parcours."
+        },
+        {
+          "eventId": "apply-07cdf12b-6753-456d-89b4-e543fe7b0122",
+          "appliedAt": "2026-11-14T22:03:37.692Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ea91d336-cd45-44b9-a458-f5bf4181e197",
+          "evidence": "PARK_DATA_EDITOR:apply:07cdf12b-6753-456d-89b4-e543fe7b0122",
+          "auditEvidence": null,
+          "summary": "Correction du point cartographique par recoupement avec Visit Sopron et la position de la photo exacte."
+        },
+        {
+          "eventId": "apply-69dbbca3-98bb-41f7-8e1e-e7779a28aeb4",
+          "appliedAt": "2026-11-14T22:06:35.798Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ea91d336-cd45-44b9-a458-f5bf4181e197",
+          "evidence": "PARK_DATA_EDITOR:apply:69dbbca3-98bb-41f7-8e1e-e7779a28aeb4",
+          "auditEvidence": null,
+          "summary": "Six tarifs officiels, horaires saisonniers sur 413 jours et conditions d’âge et de poids sourcées."
+        },
+        {
+          "eventId": "image-metadata-63b305b9fdf84b6a8abeda38aa607925",
+          "appliedAt": "2026-11-14T22:07:22.399Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ea91d336-cd45-44b9-a458-f5bf4181e197",
+          "evidence": "PARK_DATA_EDITOR:image:63b305b9fdf84b6a8abeda38aa607925",
+          "auditEvidence": null,
+          "summary": "Correction du descriptif de la seconde photo pour éviter la répétition éditoriale ; les deux images exactes restent publiées."
+        },
+        {
+          "eventId": "closure-image-metadata-63b305b9fdf84b6a8abeda38aa607925",
+          "appliedAt": "2026-11-14T22:07:22.399Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ea91d336-cd45-44b9-a458-f5bf4181e197",
+          "evidence": "PARK_DATA_EDITOR:image:63b305b9fdf84b6a8abeda38aa607925",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hu-soproni-bobpalya-20261114/audit.json",
+          "summary": "Audit final : fiche en huit langues, deux photos exactes HTTP 200, score 89 sans bloqueur et annonce Facebook Published. Date de dernière mise à jour du contenu distincte de la visibilité et de Facebook."
+        }
+      ],
+      "nextAction": "Conserver la ligne, la fiche et la date réelle. Clarifier auprès de l’opérateur la longueur annoncée (900 m sur la page piste et Visit Sopron, 700 m dans la FAQ), le seuil d’âge de l’accompagnant (8+ et 10+ sur la même page tarifaire), les jours fériés et la position GPS publiée. Chercher une photo récente du parcours plutôt que de la seule station.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2211,11 +2255,56 @@
           "label": "Opérateur référencé par la source",
           "url": "http://bobozas.hu/sopron",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur — piste de bob et mesures",
+          "url": "https://www.sopron.bobozas.hu/en/summer-bobsleigh",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Opérateur — horaires annuels",
+          "url": "https://www.sopron.bobozas.hu/en/opening-hours",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Opérateur — tarifs",
+          "url": "https://www.sopron.bobozas.hu/en/prices",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Opérateur — FAQ et conditions",
+          "url": "https://www.sopron.bobozas.hu/en/faq",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Opérateur — accès et GPS",
+          "url": "https://www.sopron.bobozas.hu/en/how-to-get-there",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Visit Sopron — adresse et description du parcours",
+          "url": "https://www.visitsopron.com/hu/reszletek/nyari-bobpalya",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Opérateur — jeux accessoires",
+          "url": "https://www.sopron.bobozas.hu/en/toys",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — station panoramique",
+          "url": "https://commons.wikimedia.org/wiki/File:Sopron_Bob_Palya_-_panoramio.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — station et remontée",
+          "url": "https://commons.wikimedia.org/wiki/File:Sopron_-_Bob_palya_-_panoramio.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Sopron",
@@ -2226,7 +2315,7 @@
             "referenceId": "location-id-1295"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Le bob d’été possède sa piste, sa billetterie et ses horaires propres au Bécsi-domb. Les petits jeux à pièces annexes ne constituent pas ici une destination à plusieurs grandes attractions ; la fiche autonome décrit seulement la piste de bob. Une réévaluation sera nécessaire si le site s’élargit."
       }
     },
     {
