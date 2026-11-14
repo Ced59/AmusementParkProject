@@ -9375,6 +9375,177 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "PL-candidate-standalone-e2010b28e2d8fff9",
+      "name": "Zjeżdżalnia grawitacyjna Gubałówka",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été en auge — zjeżdżalnia grawitacyjna",
+      "locality": "Gubałówka, Zakopane, Petite-Pologne",
+      "siteId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T23:21:55.955Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation annuelle annoncée par PKL le 2026-11-14 ; fermeture sous la pluie",
+      "identityConfidence": "Attraction à billetterie et caisse propres près de la station supérieure du funiculaire ; recherches Park et Standalone Gubałówka/Zakopane sans correspondance.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Zjezdzalnia grawitacyjna na Gubalowce",
+        "Gravity slide Gubałówka",
+        "Gubalowka gravity slide"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T23:20:29.237Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4230ebfe-89dc-4739-98d1-006820ab2e53",
+          "appliedAt": "2026-11-14T23:15:46.813Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+          "evidence": "PARK_DATA_EDITOR:apply:4230ebfe-89dc-4739-98d1-006820ab2e53",
+          "auditEvidence": null,
+          "summary": "Création de la fiche standalone avec identité, géolocalisation et huit textes éditoriaux."
+        },
+        {
+          "eventId": "apply-fc36c77a-0ef6-420a-841d-8f5f5b04bfaf",
+          "appliedAt": "2026-11-14T23:17:11.240Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+          "evidence": "PARK_DATA_EDITOR:apply:fc36c77a-0ef6-420a-841d-8f5f5b04bfaf",
+          "auditEvidence": null,
+          "summary": "Trois offres tarifaires PKL et trois conditions d’âge ou d’accompagnement intégrées."
+        },
+        {
+          "eventId": "image-8740731f44c14cd7962d99b3083f5814",
+          "appliedAt": "2026-11-14T23:18:05.381Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+          "evidence": "PARK_DATA_EDITOR:image:8740731f44c14cd7962d99b3083f5814",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte 01 de la piste, par Krzysztof Szymański, CC BY 2.5 PL, importée et publiée."
+        },
+        {
+          "eventId": "image-5c1baeccdb134586baf28dd2adb5b71b",
+          "appliedAt": "2026-11-14T23:18:35.371Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+          "evidence": "PARK_DATA_EDITOR:image:5c1baeccdb134586baf28dd2adb5b71b",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte 02 de la piste, par Krzysztof Szymański, CC BY 2.5 PL, importée et publiée."
+        },
+        {
+          "eventId": "image-ea2e662f8c8a40c88a02686e07f3fc8b",
+          "appliedAt": "2026-11-14T23:19:04.154Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+          "evidence": "PARK_DATA_EDITOR:image:ea2e662f8c8a40c88a02686e07f3fc8b",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte 03 de la piste, par Krzysztof Szymański, CC BY 2.5 PL, importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-8740731f44c14cd7962d99b3083f5814",
+          "appliedAt": "2026-11-14T23:20:01.104Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+          "evidence": "PARK_DATA_EDITOR:image:8740731f44c14cd7962d99b3083f5814",
+          "auditEvidence": null,
+          "summary": "Métadonnées et descriptions uniques de la photo 01 vérifiées après contrôle éditorial."
+        },
+        {
+          "eventId": "image-metadata-5c1baeccdb134586baf28dd2adb5b71b",
+          "appliedAt": "2026-11-14T23:20:15.608Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+          "evidence": "PARK_DATA_EDITOR:image:5c1baeccdb134586baf28dd2adb5b71b",
+          "auditEvidence": null,
+          "summary": "Métadonnées et descriptions uniques de la photo 02 vérifiées après contrôle éditorial."
+        },
+        {
+          "eventId": "image-metadata-ea2e662f8c8a40c88a02686e07f3fc8b",
+          "appliedAt": "2026-11-14T23:20:29.237Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+          "evidence": "PARK_DATA_EDITOR:image:ea2e662f8c8a40c88a02686e07f3fc8b",
+          "auditEvidence": null,
+          "summary": "Métadonnées et descriptions uniques de la photo 03 vérifiées après contrôle éditorial."
+        },
+        {
+          "eventId": "closure-image-ea2e662f8c8a40c88a02686e07f3fc8b",
+          "appliedAt": "2026-11-14T23:20:29.237Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+          "evidence": "PARK_DATA_EDITOR:image:ea2e662f8c8a40c88a02686e07f3fc8b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pl-zjezdzalnia-gubalowka-20261114/audit.json",
+          "summary": "Audit final : huit textes et pages publiques, trois photos exactes HTTP 200, trois tarifs, conditions d’accès, complétude 81 sans bloqueur et Facebook Published. Date de contenu distincte de la visibilité et du post."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et la date réelle. Obtenir les horaires exacts et le statut en direct auprès de PKL : la page officielle des horaires ne donne pas de créneaux vérifiables. Confirmer la règle tarifaire « moins de 4 ans » face à l’exemple de date de naissance périmé sur la page tarifs. Chercher des photos exactes plus récentes avec une licence de réutilisation claire.",
+      "sources": [
+        {
+          "label": "PKL — présentation de la piste et billetterie indépendante",
+          "url": "https://www.pkl.pl/post/gubalowka/atrakcje/zjezdzalnia-grawitacyjna.html",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "PKL — tarifs et conditions d’accès",
+          "url": "https://www.pkl.pl/gubalowka/zjezdzalnia-grwaitacyjna-cennik.html",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "PKL — page des horaires, créneaux non affichés",
+          "url": "https://www.pkl.pl/gubalowka/zjezdzalnia-grawitacyjna-prices.html",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — point de la piste",
+          "url": "https://www.openstreetmap.org/?mlat=49.3054929&mlon=19.9345328#map=18/49.3054929/19.9345328",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — parcours de la piste 01, Krzysztof Szymański, CC BY 2.5 PL",
+          "url": "https://commons.wikimedia.org/wiki/File:Gubałówka_01.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — parcours de la piste 02, Krzysztof Szymański, CC BY 2.5 PL",
+          "url": "https://commons.wikimedia.org/wiki/File:Gubałówka_02.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — parcours de la piste 03, Krzysztof Szymański, CC BY 2.5 PL",
+          "url": "https://commons.wikimedia.org/wiki/File:Gubałówka_03.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [
+          {
+            "name": "Zjeżdżalnia grawitacyjna Gubałówka",
+            "source": "PKL",
+            "url": "https://www.pkl.pl/post/gubalowka/atrakcje/zjezdzalnia-grawitacyjna.html",
+            "family": "Gravity slide / alpine slide",
+            "sourceVenueName": "Gubałówka",
+            "sourceLocality": "Zakopane"
+          }
+        ],
+        "rationale": "PKL exploite la piste à côté de la station supérieure et vend ses billets à une caisse dédiée. Elle représente donc une attraction visitable séparément du funiculaire, sans fiche du site déjà trouvée."
+      }
     }
   ]
 }
