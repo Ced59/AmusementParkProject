@@ -94,8 +94,8 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Catalogue officiel de Skypark Macau Tower consulté le 14 novembre 2026 : Bungy et Skyjump sont tarifés séparément ; exploitation effective à vérifier à la date d’intégration.",
+      "identityConfidence": "Offre et adresse confirmées par le site local de l’exploitant ; recherche des fiches publiques et masquées par PARK_DATA_EDITOR encore requise avant création.",
       "possibleMatches": [],
       "aliases": [
         "AJ Hackett Macau",
@@ -104,12 +104,42 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Rechercher Skypark Macau Tower, AJ Hackett Macau, Bungy et Skyjump dans Park et StandaloneAttraction avec le client officiel, puis décider si chaque billet correspond à une standalone distincte ou à un parkItem. Deux photos libres du Bungy sont vérifiées ; ne pas les attribuer au Skyjump. Recontrôler tarifs et horaires avant Preview/Apply. Dossier : evidence/standalone-skypark-qualification-20261114/audit.json.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.skyparkglobal.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — activités et billets",
+          "url": "https://www.skyparkmacau.com/activities",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — Bungy Jump",
+          "url": "https://www.skyparkmacau.com/activities/bungy",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — Skyjump",
+          "url": "https://www.skyparkmacau.com/activities/skyjump",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — adresse et horaires",
+          "url": "https://www.skyparkmacau.com/park-info",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Photo exacte du Bungy — Sylvain Kalache, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungee_jumping_from_Macau_Tower,_2009_(3455431798).jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Photo de la zone Bungy — LN9267, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Level_61_Bungee_Jumping_16-03-2023(1).jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "discovery": {
@@ -119,7 +149,7 @@
       },
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Skypark Macau Tower — Bungy / Skyjump",
@@ -130,9 +160,29 @@
             "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Macao"
+          },
+          {
+            "name": "Macau Tower Bungy Jump",
+            "source": "Exploitant officiel — qualification 2026-11-14",
+            "url": "https://www.skyparkmacau.com/activities/bungy",
+            "family": "Saut à l’élastique fixe",
+            "sourceVenueName": "Macau Tower Bungy Jump",
+            "sourceLifecycleSignal": "Offre affichée sur la page officielle le 14 novembre 2026 ; exploitation à revalider avant Apply.",
+            "matchingMethod": "Rapprochement avec les fiches du site non encore exécuté : accès au client officiel absent.",
+            "sourceLocality": "Macao"
+          },
+          {
+            "name": "Macau Tower Skyjump",
+            "source": "Exploitant officiel — qualification 2026-11-14",
+            "url": "https://www.skyparkmacau.com/activities/skyjump",
+            "family": "Descente guidée distincte",
+            "sourceVenueName": "Macau Tower Skyjump",
+            "sourceLifecycleSignal": "Offre affichée sur la page officielle le 14 novembre 2026 ; exploitation à revalider avant Apply.",
+            "matchingMethod": "Rapprochement avec les fiches du site non encore exécuté : accès au client officiel absent.",
+            "sourceLocality": "Macao"
           }
         ],
-        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+        "rationale": "Deux activités fixes avec billets propres, dans la tour touristique. Leur modélisation et l’existence éventuelle d’une fiche legacy doivent être vérifiées par le client officiel ; les photos du Bungy ne représentent pas Skyjump."
       }
     }
   ]

@@ -2586,8 +2586,8 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Catalogue officiel de Skypark Cairns consulté le 14 novembre 2026 : Bungy et Giant Swing sont proposés séparément ; disponibilité effective à revérifier.",
+      "identityConfidence": "Offre et adresse confirmées par le site local de l’exploitant ; recherche des fiches publiques et masquées par PARK_DATA_EDITOR encore requise avant création.",
       "possibleMatches": [],
       "aliases": [
         "AJ Hackett Cairns",
@@ -2596,12 +2596,27 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Rechercher Skypark Cairns, AJ Hackett Cairns, Bungy, Giant Swing, Roof Jump et Bungy Swing dans Park et StandaloneAttraction avec le client officiel. Résoudre la modélisation de ce site multi-activités et trouver une photo libre montrant réellement chaque attraction avant publication. La vue libre depuis le sommet de la tour ne suffit pas seule. Recontrôler tarifs et horaires avant Preview/Apply. Dossier : evidence/standalone-skypark-qualification-20261114/audit.json.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.skyparkcairns.com/activities/bungy",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — activités et tarifs de départ",
+          "url": "https://www.skyparkcairns.com/activities",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — adresse et horaires",
+          "url": "https://www.skyparkcairns.com/park-info",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Vue contextuelle non suffisante — MartinRe, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:BungyViewCairns.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "discovery": {
@@ -2611,7 +2626,7 @@
       },
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Skypark Cairns — Bungy et Giant Swing",
@@ -2622,9 +2637,29 @@
             "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Cairns"
+          },
+          {
+            "name": "Cairns Bungy",
+            "source": "Exploitant officiel — qualification 2026-11-14",
+            "url": "https://www.skyparkcairns.com/activities/bungy",
+            "family": "Saut à l’élastique fixe",
+            "sourceVenueName": "Cairns Bungy",
+            "sourceLifecycleSignal": "Offre affichée sur la page officielle le 14 novembre 2026 ; exploitation à revalider avant Apply.",
+            "matchingMethod": "Rapprochement avec les fiches du site non encore exécuté : accès au client officiel absent.",
+            "sourceLocality": "Cairns"
+          },
+          {
+            "name": "Cairns Giant Swing",
+            "source": "Exploitant officiel — qualification 2026-11-14",
+            "url": "https://www.skyparkcairns.com/activities",
+            "family": "Balançoire géante fixe",
+            "sourceVenueName": "Cairns Giant Swing",
+            "sourceLifecycleSignal": "Offre affichée sur la page officielle le 14 novembre 2026 ; exploitation à revalider avant Apply.",
+            "matchingMethod": "Rapprochement avec les fiches du site non encore exécuté : accès au client officiel absent.",
+            "sourceLocality": "Cairns"
           }
         ],
-        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+        "rationale": "Plusieurs activités à billets distincts sont proposées dans la même installation. Le parent et les fiches existantes restent à résoudre ; la photo libre trouvée ne montre pas clairement un saut et ne valide pas la règle de photo exacte."
       }
     },
     {
