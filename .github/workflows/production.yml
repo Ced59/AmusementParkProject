@@ -223,6 +223,7 @@ jobs:
 
       - name: Upload backend test results
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v7
         with:
           name: backend-test-results
@@ -413,6 +414,7 @@ jobs:
 
       - name: Upload frontend coverage
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v7
         with:
           name: frontend-coverage
@@ -491,6 +493,7 @@ jobs:
 
       - name: Upload dependency security reports
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v7
         with:
           name: dependency-security-reports
