@@ -594,9 +594,14 @@ function Wait-ParkGraphExportJob {
 function Invoke-ResumableFileDownload {
     param([string]$Url, [string]$DestinationPath, [long]$ExpectedLength)
 
-    $systemCurlPath = Join-Path $env:SystemRoot 'System32\curl.exe'
-    $curlCommand = Get-Command 'curl.exe' -ErrorAction SilentlyContinue
-    $curlPath = if (Test-Path -LiteralPath $systemCurlPath -PathType Leaf) {
+    $systemCurlPath = if ($IsWindows -and -not [string]::IsNullOrWhiteSpace($env:SystemRoot)) {
+        Join-Path $env:SystemRoot 'System32\curl.exe'
+    }
+    else {
+        $null
+    }
+    $curlCommand = Get-Command $(if ($IsWindows) { 'curl.exe' } else { 'curl' }) -ErrorAction SilentlyContinue
+    $curlPath = if ($systemCurlPath -and (Test-Path -LiteralPath $systemCurlPath -PathType Leaf)) {
         $systemCurlPath
     }
     elseif ($null -ne $curlCommand) {
@@ -606,7 +611,7 @@ function Invoke-ResumableFileDownload {
         $null
     }
     if ([string]::IsNullOrWhiteSpace($curlPath)) {
-        throw 'curl.exe is required for resumable park exports.'
+        throw 'curl is required for resumable park exports.'
     }
 
     $partialPath = $DestinationPath + '.partial'
