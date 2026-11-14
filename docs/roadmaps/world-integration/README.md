@@ -16,12 +16,12 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 307 | 1878 | 7569 |
-| Standalone | 215 | 1 | 122 |
+| Parcs | 307 | 1877 | 7569 |
+| Standalone | 216 | 1 | 122 |
 
-**Reprise standalone :** en plus des 122 candidates sans correspondance, **221 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **583 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **65 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 122 candidates sans correspondance, **220 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **582 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **65 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
-À part : **767** Park masqués NotRelevant, **73** types à décider, **1296** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
+À part : **767** Park masqués NotRelevant, **73** types à décider, **1295** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
 ## Europe
 
@@ -48,7 +48,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 1 | 1 |
 | [Grèce](countries/GR.md) | 0 | 12 | 3 | 23 | 45 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 | 0 |
-| [Hongrie](countries/HU.md) | 2 | 15 | 12 | 53 | 102 |
+| [Hongrie](countries/HU.md) | 2 | 14 | 12 | 53 | 102 |
 | [Île de Man](countries/IM.md) | 0 | 0 | 0 | 1 | 1 |
 | [Îles Åland](countries/AX.md) | 0 | 0 | 0 | 0 | 0 |
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 | 0 |
@@ -81,7 +81,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 1 | 21 | 48 | 46 | 114 |
 | [Ukraine](countries/UA.md) | 1 | 33 | 1 | 42 | 72 |
-| **Total** | **209** | **775** | **672** | **1865** | **4605** |
+| **Total** | **209** | **774** | **672** | **1865** | **4605** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -106,7 +106,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Grèce](countries/GR.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Hongrie](countries/HU.md) | 2 | 0 | 0 | 0 | 6 | 0 |
+| [Hongrie](countries/HU.md) | 3 | 0 | 0 | 0 | 5 | 0 |
 | [Île de Man](countries/IM.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Îles Åland](countries/AX.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -139,9 +139,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 5 | 0 | 0 | 0 | 11 | 0 |
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **121** | **1** | **37** | **65** | **284** | **18** |
+| **Total** | **122** | **1** | **37** | **65** | **283** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **70**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **71**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Allemagne : 9 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Autriche : 12 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -149,7 +149,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - Estonie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Finlande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - France : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
-- Hongrie : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Hongrie : 3 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Islande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Italie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Lettonie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
@@ -186,7 +186,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 0 |
 | [Grèce](countries/GR.md) | 0 | 0 | 0 | 0 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 |
-| [Hongrie](countries/HU.md) | 7 | 2 | 6 | 0 |
+| [Hongrie](countries/HU.md) | 6 | 2 | 5 | 0 |
 | [Île de Man](countries/IM.md) | 0 | 0 | 0 | 0 |
 | [Îles Åland](countries/AX.md) | 0 | 0 | 0 | 0 |
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 |
@@ -219,7 +219,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 11 | 1 | 8 | 1 |
 | [Ukraine](countries/UA.md) | 1 | 0 | 2 | 0 |
-| **Total** | **170** | **16** | **230** | **35** |
+| **Total** | **169** | **16** | **229** | **35** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 

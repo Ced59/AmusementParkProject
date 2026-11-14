@@ -2240,18 +2240,12 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
-      "possibleMatches": [
-        {
-          "siteId": "d28e9969-89aa-45d8-a297-49eefe8cacf6",
-          "name": "Visegrádi Bobpálya",
-          "similarity": null
-        }
-      ],
+      "identityConfidence": "La référence constructeur Visegrad désigne la piste de luge du même site à deux pistes, confirmé par la FAQ officielle.",
+      "possibleMatches": [],
       "possibleBacklogEntries": [
         "HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6",
         "HU-candidate-standalone-a9ea5b5f750bd9",
@@ -2263,7 +2257,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6, HU-candidate-standalone-a9ea5b5f750bd9, HU-candidate-standalone-edb60b82f0b0f0. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Doublon de découverte conservé. La piste Wiegand Visegrad appartient à la destination Visegrádi Bobpálya déjà publiée ; suivre les mises à jour et leur date sur HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2277,8 +2271,8 @@
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Visegrad",
@@ -2289,8 +2283,9 @@
             "referenceId": "location-id-1294"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "La piste de luge d’été et l’alpine coaster partagent le même site autonome, la billetterie et la fiche Visegrádi Bobpálya ; aucune deuxième création."
+      },
+      "duplicateOf": "HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6"
     },
     {
       "entryId": "HU-park-2abc21b4-f377-44a1-8a90-e0a7f8f23a0c",
@@ -3500,25 +3495,63 @@
     {
       "entryId": "HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6",
       "name": "Visegrádi Bobpálya",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "d28e9969-89aa-45d8-a297-49eefe8cacf6",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster et luge d’été en auge — deux pistes sur un même site",
+      "locality": "Visegrád, Pest",
+      "siteId": "41e3628d-6650-4988-9489-8ac31fa8c504",
+      "legacySiteIds": [
+        "d28e9969-89aa-45d8-a297-49eefe8cacf6"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T21:54:07.369Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — opérateur officiel vérifié le 2026-11-14",
+      "identityConfidence": "Destination autonome à deux pistes avec billetterie propre ; migration contrôlée de la fiche Park masquée et de son seul ParkItem.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Visegrád Toboggan Park",
+        "Visegrádi Bobpálya",
+        "Alpesibob",
+        "Visegrad"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T21:52:50.269Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-577310bf-988e-4c9b-a45d-bda7899442d5",
+          "appliedAt": "2026-11-14T21:46:12.597Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "41e3628d-6650-4988-9489-8ac31fa8c504",
+          "evidence": "PARK_DATA_EDITOR:apply:577310bf-988e-4c9b-a45d-bda7899442d5",
+          "auditEvidence": null,
+          "summary": "Migration contrôlée du parc masqué et de son item vers une fiche standalone avec huit descriptions et données techniques."
+        },
+        {
+          "eventId": "apply-60f33d20-edd2-4559-82b5-2e467c31b516",
+          "appliedAt": "2026-11-14T21:52:50.269Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "41e3628d-6650-4988-9489-8ac31fa8c504",
+          "evidence": "PARK_DATA_EDITOR:apply:60f33d20-edd2-4559-82b5-2e467c31b516",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels de six offres, règles saisonnières sur 413 jours et trois conditions d’accès sourcées."
+        },
+        {
+          "eventId": "closure-apply-60f33d20-edd2-4559-82b5-2e467c31b516",
+          "appliedAt": "2026-11-14T21:52:50.269Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "41e3628d-6650-4988-9489-8ac31fa8c504",
+          "evidence": "PARK_DATA_EDITOR:apply:60f33d20-edd2-4559-82b5-2e467c31b516",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hu-visegradi-bobpalya-20261114/audit.json",
+          "summary": "Audit final : huit pages publiques, trois photos exactes et créditées HTTP 200, score 95 sans bloqueur et publication Facebook Published. La date de dernière intégration du contenu exclut la simple visibilité et l’annonce."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et la date réelle. Confirmer l’âge d’accompagnement (page tarifs 3–8 ans, FAQ 3–10 ans), les heures des jours fériés et le 24 décembre auprès de l’opérateur ; rafraîchir tarifs et horaires lors d’une prochaine vérification. Ne pas recréer les deux pistes comme destinations distinctes.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3544,13 +3577,43 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.bobozas.hu/visegrad",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Opérateur — pistes et fonctionnement",
+          "url": "https://www.visegrad.bobozas.hu/en/faq",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Opérateur — tarifs",
+          "url": "https://www.visegrad.bobozas.hu/en/prices",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Opérateur — horaires annuels",
+          "url": "https://www.visegrad.bobozas.hu/en/opening-hours",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — piste et luge rouge",
+          "url": "https://commons.wikimedia.org/wiki/File:Bobpálya,_Nagy_Villám,_2018_Visegrád.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — panorama du site",
+          "url": "https://commons.wikimedia.org/wiki/File:Bobpálya,_2018_Visegrád.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — deux pistes",
+          "url": "https://commons.wikimedia.org/wiki/File:Bobsleigh_track,_2018_Visegrád.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "HU",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Alpesibob",
@@ -3570,10 +3633,20 @@
             "sourceVenueName": "Visegrád",
             "referenceId": "location-id-1039",
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+          },
+          {
+            "name": "Summer bobsleigh",
+            "source": "Operator FAQ",
+            "url": "https://www.visegrad.bobozas.hu/en/faq",
+            "family": "Luge d’été en auge",
+            "sourceVenueName": "Visegrádi Bobpálya"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "L’opérateur exploite deux pistes permanentes sur un même versant et vend des trajets communs par personne. Une seule fiche autonome représente cette destination ; l’ancienne fiche Park et son item restent masqués et classés NotRelevant."
+      },
+      "possibleBacklogEntries": [
+        "HU-candidate-standalone-1ab0eeb1f35da8"
+      ]
     },
     {
       "entryId": "HU-park-8c51d749-cdf3-46de-9d73-6d63037eec09",

@@ -1,0 +1,121 @@
+{
+  "work": "Migrated the hidden single-item Park to a published standalone destination for the combined alpine coaster and summer bobsleigh tracks. Integrated eight editorial descriptions, three visually inspected exact licensed photos, six current adult/child fare offers, the operator’s annual timetable through 2027, three access conditions, eight public locale routes and a Facebook post.",
+  "qualification": "Operator FAQ confirms two tracks under one operator, site and per-person ticketing. A single StandaloneAttraction represents this dedicated toboggan destination. Controlled migration retired the hidden legacy Park and ParkItem without a duplicate public venue.",
+  "sources": {
+    "operatorHome": "https://www.visegrad.bobozas.hu/en",
+    "operatorFaq": "https://www.visegrad.bobozas.hu/en/faq",
+    "operatorPrices": "https://www.visegrad.bobozas.hu/en/prices",
+    "operatorHours": "https://www.visegrad.bobozas.hu/en/opening-hours",
+    "commonsHill": "https://commons.wikimedia.org/wiki/File:Bobpálya,_Nagy_Villám,_2018_Visegrád.jpg",
+    "commonsSite": "https://commons.wikimedia.org/wiki/File:Bobpálya,_2018_Visegrád.jpg",
+    "commonsTrack": "https://commons.wikimedia.org/wiki/File:Bobsleigh_track,_2018_Visegrád.jpg"
+  },
+  "sourceLimitations": [
+    "Operator price page says children aged 3–8 need accompaniment, while FAQ says 3–10; the current price page wording is encoded and the discrepancy is flagged for confirmation.",
+    "Operator FAQ says 24 December is closed while the annual timetable groups that date with ordinary November–December hours; verify holiday exceptions directly before travel.",
+    "Public holidays can use weekend hours, and extreme weather or technical issues can alter operations. The published normal seasonal rules do not encode specific holiday overrides."
+  ],
+  "duplicateSearches": {
+    "legacyParkId": "d28e9969-89aa-45d8-a297-49eefe8cacf6",
+    "legacyParkItemId": "276d8321-aa64-427d-b2b6-9202cbd4cdb0",
+    "manufacturerClueBacklogEntry": "HU-candidate-standalone-1ab0eeb1f35da8",
+    "legacyParkHiddenNotRelevant": true,
+    "legacyItemHiddenNotRelevant": true
+  },
+  "entity": {
+    "id": "41e3628d-6650-4988-9489-8ac31fa8c504",
+    "name": "Visegrádi Bobpálya",
+    "countryCode": "HU",
+    "kind": "StandaloneAttraction",
+    "published": true,
+    "legacyParkHiddenNotRelevant": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "577310bf-988e-4c9b-a45d-bda7899442d5",
+      "appliedAtUtc": "2026-11-14T21:46:12.5972342Z",
+      "summary": "Controlled legacy migration, eight descriptions and position"
+    },
+    {
+      "operationId": "60f33d20-edd2-4559-82b5-2e467c31b516",
+      "appliedAtUtc": "2026-11-14T21:52:50.2697143Z",
+      "summary": "Current prices, access conditions and seasonal annual timetable"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "195443a6870a420aba37f4506895ccd4",
+      "subject": "Red sled and the trough and rail tracks",
+      "author": "Globetrotter19",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2018-04",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Bobpálya,_Nagy_Villám,_2018_Visegrád.jpg",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "9d446b00a29b43cb8f2d4221617ecba2",
+      "subject": "Hillside and footbridge across the two tracks",
+      "author": "Globetrotter19",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2018-04",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Bobpálya,_2018_Visegrád.jpg",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "ba9609c463144bd1a13f4ee7bf1c5488",
+      "subject": "Alpine coaster rail and summer trough tracks",
+      "author": "Globetrotter19",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2018-04",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Bobsleigh_track,_2018_Visegrád.jpg",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 3,
+    "fareOfferCount": 6,
+    "regularHourRuleCount": 23,
+    "datedCalendarCoverage": {
+      "firstDate": "2026-11-14",
+      "lastDate": "2027-12-31",
+      "days": 413,
+      "uncoveredDays": 0,
+      "overlappingDays": 0
+    },
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "prePublicationExportSha256": "e2b887a0a268c89672f473cb101bba46ee95c7b528143ffa840a0fc5075b6fcd"
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/41e3628d-6650-4988-9489-8ac31fa8c504/visegradi-bobpalya",
+    "sitePublishedAtUtc": "2026-11-14T21:54:07.3690654Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:ac31722d-fc5e-47fc-9c11-3cc8585fe84f",
+    "facebookStatus": "Published",
+    "facebookId": "ffa4611b353b4487b04409ab97bc712e",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127375285424431",
+    "facebookPublishedAtUtc": "2026-11-14T21:55:44.1011361Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T21:52:50.269Z",
+  "remainingGaps": [
+    "Confirm accompaniment age discrepancy and holiday/24 December schedule with the operator.",
+    "Refresh fares and annual schedule at a future data review."
+  ]
+}
