@@ -1,0 +1,2906 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+  "parkId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+  "name": "Parc de Lomme",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-14T23:44:01.970523+00:00",
+  "outcome": "completed",
+  "finalAuditPassed": true,
+  "ownerAuthorization": {
+    "ownerInstructionDateUtc": "2026-11-14",
+    "instruction": "Publie tout avec fb aussi. Les parcs définitivement fermes on peut avoir une tolérance sur la note. Et tu finis l’intégration de tous les parcs francais. Pas seulement les définitivement fermes.",
+    "application": "Parc de Lomme, fermé définitivement : clôture à 95/100 après audit éditorial confirmé, lacunes sourcées conservées. Le score seul ne bloque plus."
+  },
+  "acceptedScore": 95,
+  "officialCompleteness": {
+    "action": "Completeness",
+    "startedAtUtc": "2026-11-14T23:32:00.9258092Z",
+    "receivedAtUtc": "2026-11-14T23:32:02.0153366Z",
+    "result": {
+      "completenessScore": 95,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 103,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    }
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+      "parkName": "Parc de Lomme",
+      "factCount": 41,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1980,
+          "resourceCount": 9,
+          "sourcedResourceCount": 9,
+          "publishedResourceCount": 9,
+          "subjectCount": 3,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 1990,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 2,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 11
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 30
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 11,
+        "sourcedFactCount": 11,
+        "majorFactCount": 11,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics",
+    "receivedAtUtc": "2026-11-14T23:31:50.5923662Z",
+    "startedAtUtc": "2026-11-14T23:31:49.9766931Z"
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-03T00:49:46.9269644Z",
+    "items": 46,
+    "zones": 4,
+    "attractions": 25,
+    "attractionStatuses": {
+      "Removed": 24,
+      "Unknown": 1
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 25,
+    "attractionsWithImage": 5,
+    "attractionImageGaps": [
+      {
+        "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef",
+        "name": "Auto-tamponneuses pour enfants"
+      },
+      {
+        "id": "1429746d-e872-4bba-99d0-59e5eab15590",
+        "name": "Bateau corsaire"
+      },
+      {
+        "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c",
+        "name": "Bateaux télécommandés"
+      },
+      {
+        "id": "459e55f1-b60b-49b9-898a-d0843819f977",
+        "name": "Carrousel pour enfants"
+      },
+      {
+        "id": "564e5975-bd79-4bec-834e-c0322ada3dae",
+        "name": "Château gonflable"
+      },
+      {
+        "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8",
+        "name": "Cinéma 2000"
+      },
+      {
+        "id": "f585baf9-2444-41de-9314-3112fef9b71f",
+        "name": "Cosmovision"
+      },
+      {
+        "id": "a7b33910-b346-4717-a3b2-bf67c8372b23",
+        "name": "Explorer"
+      },
+      {
+        "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b",
+        "name": "Fort Apache"
+      },
+      {
+        "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194",
+        "name": "Himalaya"
+      },
+      {
+        "id": "61776169-668e-46a2-9272-e115371d439e",
+        "name": "Kodak Multivision"
+      },
+      {
+        "id": "46225a83-d842-42ec-be68-39a9b59511fc",
+        "name": "La Rivière enchantée"
+      },
+      {
+        "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322",
+        "name": "Petit train western"
+      },
+      {
+        "id": "7a3201dd-e249-455a-a1fa-ff766d252693",
+        "name": "Piscine à boules"
+      },
+      {
+        "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032",
+        "name": "Pulsar"
+      },
+      {
+        "id": "5be98049-ee43-4689-8fbe-6b36a340763a",
+        "name": "Pédalos"
+      },
+      {
+        "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0",
+        "name": "Rapides du Colorado"
+      },
+      {
+        "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655",
+        "name": "Tir à la carabine"
+      },
+      {
+        "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4",
+        "name": "Tir à l’arc"
+      },
+      {
+        "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0",
+        "name": "Télécombat"
+      }
+    ],
+    "ownedImages": 16,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "8b620c9c-bf40-4e62-9d94-f3896dd8da0b",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "8fd47cc7-f997-454d-9796-682b78bafce4",
+        "name": "Arènes médiévales",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef",
+        "name": "Auto-tamponneuses pour enfants",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "1429746d-e872-4bba-99d0-59e5eab15590",
+        "name": "Bateau corsaire",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c",
+        "name": "Bateaux télécommandés",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "459e55f1-b60b-49b9-898a-d0843819f977",
+        "name": "Carrousel pour enfants",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f6ca4ea0-4ff5-4aec-a481-121426aeccb9",
+        "name": "Château d’Isenghien",
+        "category": "Service",
+        "images": 3
+      },
+      {
+        "id": "564e5975-bd79-4bec-834e-c0322ada3dae",
+        "name": "Château gonflable",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8",
+        "name": "Cinéma 2000",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "496ff28a-e1e8-4e7e-9982-30ccba098e43",
+        "name": "Circuit tacots",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "02d5d1a2-cf74-4e76-93bc-73f27f0c04d3",
+        "name": "Confiseur",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "f585baf9-2444-41de-9314-3112fef9b71f",
+        "name": "Cosmovision",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f46cdf33-4182-4b35-b402-01780409c057",
+        "name": "Entrée et caisses",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "a7b33910-b346-4717-a3b2-bf67c8372b23",
+        "name": "Explorer",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b",
+        "name": "Fort Apache",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "3b4dd85d-4e75-4e61-9c9a-3b2a4eab63a3",
+        "name": "Glacier",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "8eb7db06-5aa0-4554-8fd2-cdd1b50adc8b",
+        "name": "Grand Huit",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194",
+        "name": "Himalaya",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "61776169-668e-46a2-9272-e115371d439e",
+        "name": "Kodak Multivision",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a8675ff1-1898-4525-8a53-6f4a6e18edeb",
+        "name": "La Crêperie bretonne",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "bc2c9c3f-8069-4c1d-a6b3-34cb7ae47be2",
+        "name": "La Fontaine des 4 Saisons",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "84b4cb77-b7d3-4138-aecb-3dd463baa43e",
+        "name": "La Pieuvre",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "46225a83-d842-42ec-be68-39a9b59511fc",
+        "name": "La Rivière enchantée",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "4d580ae5-3a78-49d9-b788-af8dd2721315",
+        "name": "La Taverne impériale",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1",
+        "name": "Le Monde de la Préhistoire",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e7990934-3b08-47d6-b80f-77f5605ff306",
+        "name": "Lommy Burger",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "d02864fb-c418-4a16-bb66-f0c9f53c4d83",
+        "name": "L’Officine de Monstradamus",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8f2ae7c4-1f85-4a88-b298-5d58d0fec8e9",
+        "name": "Music Hall",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "ff1bda0f-2e44-40e6-91ee-707168f2d258",
+        "name": "Parking du parc",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322",
+        "name": "Petit train western",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "7a3201dd-e249-455a-a1fa-ff766d252693",
+        "name": "Piscine à boules",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "3bcdc842-877d-4808-af62-5593f882cd6c",
+        "name": "Pizzeria",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "4c1d09d4-5f06-414f-a652-2780a633734b",
+        "name": "Point d’information et de change",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "4a3c152d-a515-45a3-afea-4134106f5549",
+        "name": "Poste de secourisme",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032",
+        "name": "Pulsar",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "5be98049-ee43-4689-8fbe-6b36a340763a",
+        "name": "Pédalos",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0",
+        "name": "Rapides du Colorado",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "641492e9-364e-4602-a3bb-52f682eec4d1",
+        "name": "Restaurant du lac",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "8080e4b2-94c1-41a1-b4f8-b45cd2c3c4c0",
+        "name": "Saloon",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "b19c2141-dcdd-4fc7-b8d4-21f53d287bb5",
+        "name": "Théâtre de la Belle Époque",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "7ac0f842-f545-45e6-8605-1183bf6c83d2",
+        "name": "Théâtre de marionnettes Belle Époque",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "566d72df-c6af-4e19-86e8-7b45b683cc11",
+        "name": "Théâtre de marionnettes pour enfants",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "b27c216d-ac8f-4c61-8dce-2e6f3215c101",
+        "name": "Théâtre du Monde du Futur",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655",
+        "name": "Tir à la carabine",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4",
+        "name": "Tir à l’arc",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0",
+        "name": "Télécombat",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 1,
+    "geolocationGaps": [
+      {
+        "id": "8b620c9c-bf40-4e62-9d94-f3896dd8da0b",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "8fd47cc7-f997-454d-9796-682b78bafce4",
+        "name": "Arènes médiévales",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef",
+        "name": "Auto-tamponneuses pour enfants",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "1429746d-e872-4bba-99d0-59e5eab15590",
+        "name": "Bateau corsaire",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c",
+        "name": "Bateaux télécommandés",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "459e55f1-b60b-49b9-898a-d0843819f977",
+        "name": "Carrousel pour enfants",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "564e5975-bd79-4bec-834e-c0322ada3dae",
+        "name": "Château gonflable",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8",
+        "name": "Cinéma 2000",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "496ff28a-e1e8-4e7e-9982-30ccba098e43",
+        "name": "Circuit tacots",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "02d5d1a2-cf74-4e76-93bc-73f27f0c04d3",
+        "name": "Confiseur",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "f585baf9-2444-41de-9314-3112fef9b71f",
+        "name": "Cosmovision",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f46cdf33-4182-4b35-b402-01780409c057",
+        "name": "Entrée et caisses",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "a7b33910-b346-4717-a3b2-bf67c8372b23",
+        "name": "Explorer",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b",
+        "name": "Fort Apache",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "3b4dd85d-4e75-4e61-9c9a-3b2a4eab63a3",
+        "name": "Glacier",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "8eb7db06-5aa0-4554-8fd2-cdd1b50adc8b",
+        "name": "Grand Huit",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194",
+        "name": "Himalaya",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "61776169-668e-46a2-9272-e115371d439e",
+        "name": "Kodak Multivision",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a8675ff1-1898-4525-8a53-6f4a6e18edeb",
+        "name": "La Crêperie bretonne",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "bc2c9c3f-8069-4c1d-a6b3-34cb7ae47be2",
+        "name": "La Fontaine des 4 Saisons",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "84b4cb77-b7d3-4138-aecb-3dd463baa43e",
+        "name": "La Pieuvre",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "46225a83-d842-42ec-be68-39a9b59511fc",
+        "name": "La Rivière enchantée",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "4d580ae5-3a78-49d9-b788-af8dd2721315",
+        "name": "La Taverne impériale",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1",
+        "name": "Le Monde de la Préhistoire",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e7990934-3b08-47d6-b80f-77f5605ff306",
+        "name": "Lommy Burger",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "d02864fb-c418-4a16-bb66-f0c9f53c4d83",
+        "name": "L’Officine de Monstradamus",
+        "category": "Attraction",
+        "status": "Unknown"
+      },
+      {
+        "id": "8f2ae7c4-1f85-4a88-b298-5d58d0fec8e9",
+        "name": "Music Hall",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "ff1bda0f-2e44-40e6-91ee-707168f2d258",
+        "name": "Parking du parc",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322",
+        "name": "Petit train western",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "7a3201dd-e249-455a-a1fa-ff766d252693",
+        "name": "Piscine à boules",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "3bcdc842-877d-4808-af62-5593f882cd6c",
+        "name": "Pizzeria",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "4c1d09d4-5f06-414f-a652-2780a633734b",
+        "name": "Point d’information et de change",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "4a3c152d-a515-45a3-afea-4134106f5549",
+        "name": "Poste de secourisme",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032",
+        "name": "Pulsar",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "5be98049-ee43-4689-8fbe-6b36a340763a",
+        "name": "Pédalos",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0",
+        "name": "Rapides du Colorado",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "641492e9-364e-4602-a3bb-52f682eec4d1",
+        "name": "Restaurant du lac",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "8080e4b2-94c1-41a1-b4f8-b45cd2c3c4c0",
+        "name": "Saloon",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "b19c2141-dcdd-4fc7-b8d4-21f53d287bb5",
+        "name": "Théâtre de la Belle Époque",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "7ac0f842-f545-45e6-8605-1183bf6c83d2",
+        "name": "Théâtre de marionnettes Belle Époque",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "566d72df-c6af-4e19-86e8-7b45b683cc11",
+        "name": "Théâtre de marionnettes pour enfants",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "b27c216d-ac8f-4c61-8dce-2e6f3215c101",
+        "name": "Théâtre du Monde du Futur",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655",
+        "name": "Tir à la carabine",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4",
+        "name": "Tir à l’arc",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0",
+        "name": "Télécombat",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 11,
+    "parkHistory": 6,
+    "itemHistory": 5,
+    "historyWithSource": 11,
+    "historyWithImage": 11,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": false
+  },
+  "priorFullEditorialAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-reaudit-20261103.json",
+  "priorFullAuditExportAtUtc": "2026-11-03T00:49:46.9269644Z",
+  "auditMethod": "Confirmation de l’audit complet du 3 novembre, avec export ciblé pour récupération des identifiants perdus. Une correction sourcée du type du fait de 1998 a été appliquée (Other vers Redevelopment) ; textes, dates et médias conservés. Previews finaux sans changement. Aucun nouvel export complet ni nouvelle annonce Facebook.",
+  "correctionEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-cultural-redevelopment-20261114.json",
+  "recoveryExport": {
+    "exportedAtUtc": "2026-11-14T23:28:25.6939425Z",
+    "sha256": "20fd43cc05f0f648a41a99ae8372f9dc009e153a110e49dcd7fab4f0734978c5",
+    "sections": [
+      "ParkBasics",
+      "ParkDescriptions",
+      "References",
+      "Zones",
+      "Items",
+      "Images",
+      "History",
+      "OfficialMaps"
+    ]
+  },
+  "idempotence": {
+    "previews": [
+      {
+        "operationId": "f2e208ea-3cf4-4171-ac5b-cb7191efc86f",
+        "previewedAtUtc": "2026-11-14T23:28:58.5404837Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 54,
+          "warnings": 0,
+          "errors": 0
+        }
+      },
+      {
+        "operationId": "92f80897-a6f0-466c-ade1-048a10c7028b",
+        "previewedAtUtc": "2026-11-14T23:29:09.9576059Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 70,
+          "warnings": 0,
+          "errors": 0
+        }
+      },
+      {
+        "operationId": "d77535bf-c63b-456d-a658-2a2e74e9842d",
+        "previewedAtUtc": "2026-11-14T23:32:14.066867Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 81,
+          "warnings": 0,
+          "errors": 0
+        }
+      }
+    ],
+    "uniqueEntities": 81,
+    "unexpectedMutations": 0
+  },
+  "corpusConfirmation": {
+    "rawPublicStringsChecked": 1418,
+    "localizedEditorialFields": 1016,
+    "encodingIssues": 0,
+    "exactCrossEntityMatches": 0,
+    "nearCrossEntityMatches": 0,
+    "personalReviewBasis": "Corpus personnellement rédigé et revu avant publication ; export complet frais identique à l’état public audité. Contrôles du corpus complet relancés sans anomalie.",
+    "currentReview": "Textes conservés et contrôles transversaux relancés ; qualification du fait de 1998 sourcée et relue, puis navigation ordinaire dans les huit langues vérifiée."
+  },
+  "residualGaps": {
+    "sourceGaps": {
+      "media": {
+        "reviewedAtUtc": "2026-10-23T14:34:30.109285+00:00",
+        "imageCount": 16,
+        "parkLogoCount": 2,
+        "generalParkPhotos": 5,
+        "generalPhotoKeys": [
+          "05-park-aerial",
+          "05-park-lake-1995",
+          "05-park-lake-2004",
+          "05-park-medieval-lane",
+          "05-park-medieval-court"
+        ],
+        "attractionsIllustrated": 5,
+        "attractionsTotal": 25,
+        "majorItemKeys": [
+          "grand-huit",
+          "rapides-colorado",
+          "telecombat",
+          "himalaya",
+          "bateau-corsaire",
+          "explorer",
+          "pieuvre",
+          "monde-prehistoire",
+          "circuit-tacots",
+          "cosmovision",
+          "cinema-2000",
+          "arenes-medievales",
+          "chateau-isenghien"
+        ],
+        "majorItemsWithThreeImages": 1,
+        "missingItemImages": [
+          {
+            "id": "8eb7db06-5aa0-4554-8fd2-cdd1b50adc8b",
+            "key": "grand-huit",
+            "name": "Grand Huit",
+            "foundImages": 1,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0",
+            "key": "telecombat",
+            "name": "Télécombat",
+            "foundImages": 0,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0",
+            "key": "rapides-colorado",
+            "name": "Rapides du Colorado",
+            "foundImages": 0,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194",
+            "key": "himalaya",
+            "name": "Himalaya",
+            "foundImages": 0,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "1429746d-e872-4bba-99d0-59e5eab15590",
+            "key": "bateau-corsaire",
+            "name": "Bateau corsaire",
+            "foundImages": 0,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef",
+            "key": "auto-tamponneuses-enfants",
+            "name": "Auto-tamponneuses pour enfants",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "459e55f1-b60b-49b9-898a-d0843819f977",
+            "key": "carrousel-enfants",
+            "name": "Carrousel pour enfants",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "564e5975-bd79-4bec-834e-c0322ada3dae",
+            "key": "chateau-gonflable",
+            "name": "Château gonflable",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "496ff28a-e1e8-4e7e-9982-30ccba098e43",
+            "key": "circuit-tacots",
+            "name": "Circuit tacots",
+            "foundImages": 1,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "84b4cb77-b7d3-4138-aecb-3dd463baa43e",
+            "key": "pieuvre",
+            "name": "La Pieuvre",
+            "foundImages": 1,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1",
+            "key": "monde-prehistoire",
+            "name": "Le Monde de la Préhistoire",
+            "foundImages": 1,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "a7b33910-b346-4717-a3b2-bf67c8372b23",
+            "key": "explorer",
+            "name": "Explorer",
+            "foundImages": 0,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322",
+            "key": "petit-train-western",
+            "name": "Petit train western",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c",
+            "key": "bateaux-telecommandes",
+            "name": "Bateaux télécommandés",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "46225a83-d842-42ec-be68-39a9b59511fc",
+            "key": "riviere-enchantee",
+            "name": "La Rivière enchantée",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "5be98049-ee43-4689-8fbe-6b36a340763a",
+            "key": "pedalos",
+            "name": "Pédalos",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655",
+            "key": "tir-carabine",
+            "name": "Tir à la carabine",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b",
+            "key": "fort-apache",
+            "name": "Fort Apache",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4",
+            "key": "tir-arc",
+            "name": "Tir à l’arc",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032",
+            "key": "pulsar",
+            "name": "Pulsar",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8",
+            "key": "cinema-2000",
+            "name": "Cinéma 2000",
+            "foundImages": 0,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "61776169-668e-46a2-9272-e115371d439e",
+            "key": "kodak-multivision",
+            "name": "Kodak Multivision",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "f585baf9-2444-41de-9314-3112fef9b71f",
+            "key": "cosmovision",
+            "name": "Cosmovision",
+            "foundImages": 0,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "7a3201dd-e249-455a-a1fa-ff766d252693",
+            "key": "piscine-boules",
+            "name": "Piscine à boules",
+            "foundImages": 0,
+            "searchedTarget": 1,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          },
+          {
+            "id": "8fd47cc7-f997-454d-9796-682b78bafce4",
+            "key": "arenes-medievales",
+            "name": "Arènes médiévales",
+            "foundImages": 1,
+            "searchedTarget": 3,
+            "sourceFamiliesChecked": [
+              "Original operator brochure/map and promotional artwork via Bottomcircle archived AOL",
+              "Archipop VictorGobert1985 collection (watermarked film stills excluded)",
+              "MEL archives via LaVoixduNord2025 and MEL/Cirkwi1995 tourism photograph",
+              "RCDB park5914/coaster3441 no photos",
+              "Official CRAC history",
+              "RegardsJeunes2020p20",
+              "ZoomSurLille/Kinepolis2026",
+              "Wikipedia file provenance for two authentic logos"
+            ],
+            "reason": "Original operator plan and available archive photographs, documentary film, specialist and press sources searched. No further original unwatermarked image securely attributable to this item found; no generic ride substitute or derived film frame imported."
+          }
+        ],
+        "officialMaps": {
+          "importedEditions": [],
+          "foundUndatedOriginal": "source-assets/operator-plan-undated.jpg",
+          "researchedYears": [
+            1985,
+            1986,
+            1987
+          ],
+          "gap": "No edition year on the authentic archived operator plan. Capture2005 is not mapyear. SecondarySkyrock/Mirapolis references, archivedAOLsource and MEL/press/web searches produced no datedannualedition. Closedparkhasnocurrent2026edition."
+        },
+        "founderPortrait": {
+          "name": "Arthur Notebart",
+          "gap": "Sycomore biography and Wikipedia checked; no actual portrait provided, Wikimedia default placeholder and citycoatofarms not imported."
+        },
+        "historicalDateGaps": "Most ride-specific opening/closure dates, dismantling dates and destinations not evidenced. Retain unknowns, do not infer all from park closure. RCDB supports GrandHuit own1985/1986/1987 sequence; Monstradamus has announcementonly."
+      },
+      "accessHoursPricing": {
+        "sourcesChecked": [
+          "Originaloperatorplan",
+          "Archipop1985film catalogue and36sampledframes",
+          "Bottomcirclearchive",
+          "RCDB3441/5914",
+          "MELaerial",
+          "Wikipediahistoricalinventory"
+        ],
+        "closedPark": "Current access conditions not applicable to a park closed in1987. Do not invent present heightlimits orprices. Historicalconditions researched but not found in the availableoperatorplan orpublished archive records.",
+        "attractions": [
+          {
+            "id": "8eb7db06-5aa0-4554-8fd2-cdd1b50adc8b",
+            "name": "Grand Huit",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0",
+            "name": "Télécombat",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0",
+            "name": "Rapides du Colorado",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194",
+            "name": "Himalaya",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "1429746d-e872-4bba-99d0-59e5eab15590",
+            "name": "Bateau corsaire",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef",
+            "name": "Auto-tamponneuses pour enfants",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "459e55f1-b60b-49b9-898a-d0843819f977",
+            "name": "Carrousel pour enfants",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "564e5975-bd79-4bec-834e-c0322ada3dae",
+            "name": "Château gonflable",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "496ff28a-e1e8-4e7e-9982-30ccba098e43",
+            "name": "Circuit tacots",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "84b4cb77-b7d3-4138-aecb-3dd463baa43e",
+            "name": "La Pieuvre",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1",
+            "name": "Le Monde de la Préhistoire",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "a7b33910-b346-4717-a3b2-bf67c8372b23",
+            "name": "Explorer",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322",
+            "name": "Petit train western",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c",
+            "name": "Bateaux télécommandés",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "46225a83-d842-42ec-be68-39a9b59511fc",
+            "name": "La Rivière enchantée",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "5be98049-ee43-4689-8fbe-6b36a340763a",
+            "name": "Pédalos",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655",
+            "name": "Tir à la carabine",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b",
+            "name": "Fort Apache",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4",
+            "name": "Tir à l’arc",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032",
+            "name": "Pulsar",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8",
+            "name": "Cinéma 2000",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "61776169-668e-46a2-9272-e115371d439e",
+            "name": "Kodak Multivision",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "f585baf9-2444-41de-9314-3112fef9b71f",
+            "name": "Cosmovision",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "d02864fb-c418-4a16-bb66-f0c9f53c4d83",
+            "name": "L’Officine de Monstradamus",
+            "status": "Unknown",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          },
+          {
+            "id": "7a3201dd-e249-455a-a1fa-ff766d252693",
+            "name": "Piscine à boules",
+            "status": "Removed",
+            "historicalAccessConditionsKnown": false,
+            "reason": "No verified historic height/age accompaniment rule found; currentrulesnotapplicable."
+          }
+        ]
+      },
+      "history": {
+        "recordedAtUtc": "2026-10-23T14:40:09.806248+00:00",
+        "parkEvents": 6,
+        "itemEvents": 5,
+        "allSourcedAndIllustrated": true,
+        "rideDateGaps": [
+          {
+            "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0",
+            "key": "telecombat",
+            "name": "Télécombat",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0",
+            "key": "rapides-colorado",
+            "name": "Rapides du Colorado",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194",
+            "key": "himalaya",
+            "name": "Himalaya",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "1429746d-e872-4bba-99d0-59e5eab15590",
+            "key": "bateau-corsaire",
+            "name": "Bateau corsaire",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef",
+            "key": "auto-tamponneuses-enfants",
+            "name": "Auto-tamponneuses pour enfants",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "459e55f1-b60b-49b9-898a-d0843819f977",
+            "key": "carrousel-enfants",
+            "name": "Carrousel pour enfants",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "564e5975-bd79-4bec-834e-c0322ada3dae",
+            "key": "chateau-gonflable",
+            "name": "Château gonflable",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "496ff28a-e1e8-4e7e-9982-30ccba098e43",
+            "key": "circuit-tacots",
+            "name": "Circuit tacots",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "84b4cb77-b7d3-4138-aecb-3dd463baa43e",
+            "key": "pieuvre",
+            "name": "La Pieuvre",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1",
+            "key": "monde-prehistoire",
+            "name": "Le Monde de la Préhistoire",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "a7b33910-b346-4717-a3b2-bf67c8372b23",
+            "key": "explorer",
+            "name": "Explorer",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322",
+            "key": "petit-train-western",
+            "name": "Petit train western",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c",
+            "key": "bateaux-telecommandes",
+            "name": "Bateaux télécommandés",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "46225a83-d842-42ec-be68-39a9b59511fc",
+            "key": "riviere-enchantee",
+            "name": "La Rivière enchantée",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "5be98049-ee43-4689-8fbe-6b36a340763a",
+            "key": "pedalos",
+            "name": "Pédalos",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655",
+            "key": "tir-carabine",
+            "name": "Tir à la carabine",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b",
+            "key": "fort-apache",
+            "name": "Fort Apache",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4",
+            "key": "tir-arc",
+            "name": "Tir à l’arc",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032",
+            "key": "pulsar",
+            "name": "Pulsar",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8",
+            "key": "cinema-2000",
+            "name": "Cinéma 2000",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "61776169-668e-46a2-9272-e115371d439e",
+            "key": "kodak-multivision",
+            "name": "Kodak Multivision",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "f585baf9-2444-41de-9314-3112fef9b71f",
+            "key": "cosmovision",
+            "name": "Cosmovision",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          },
+          {
+            "id": "7a3201dd-e249-455a-a1fa-ff766d252693",
+            "key": "piscine-boules",
+            "name": "Piscine à boules",
+            "lifecycle": "Removed",
+            "reason": "Original operator map proves historical presence, but no source establishes an individual opening/closure/dismantling date. Park closure1987 is not automatically reused for this item. No destination or exactdate invented."
+          }
+        ],
+        "boundary": "GrandHuit1986SBNO is item-specific; parkseason1986 sourcesconflict. Monstradamusonlyannouncementproven;Unknownlifecyclekept.",
+        "articles": "One developedexistingCRACarticle8,14blocks,originalslugand11textblocksretained. GrandHuit hasonlyboundedchronology; no artificiallongarticle paddedfrommodeldata.",
+        "closedParkSchedulesPricing": "Not applicable: parkClosedDefinitively1987, no current openingHours/pricing introduced.",
+        "operatorEnrichment": "Nordland1986 OperatorChange sourced to both legal registries and park history; no inference of full1986 park opening."
+      },
+      "officialWebsite": "No operating-era official website identified. Do not substitute the unrelated modern indoor Gulli Parc or a city homepage.",
+      "referenceQualification": "Nordland Park SARL SIREN337774897 founded1986 matched against original PARC DE LOMME SOC329803936; modern2006 homonym excluded. Zamperla Telecombat attribution crosschecked with operator plan and named specialist secondary references; no modern Aero Telecombat specs copied. Shared manufacturer unchanged.",
+      "referenceSourceProofs": [
+        "sources/operator-verification.json",
+        "sources/reference-verification-after-full.json",
+        "09-new-reference-dependencies.json"
+      ]
+    },
+    "depthExceptions": {
+      "recordedAt": "2026-10-23T13:17:03.356948+00:00",
+      "standard": "Historical entities with no extant operator website or complete technical archive. Write specific factual descriptions, never pad to reach a word count. Full manual eight-language corpus review remains mandatory.",
+      "park": {
+        "paragraphs": 7,
+        "headings": 4
+      },
+      "sourcesChecked": [
+        "Original operator visitor plan (undated, fifty-one numbered functions)",
+        "Bottomcircle archive two pages and all19 original assets",
+        "MEL aerial in LaVoixduNord2025",
+        "MissionLocaleRegardsJeunes6p20",
+        "RCDB5914and3441 including former status",
+        "ArchipopVictorGobert1985catalogue plus36sampledframes across8m59",
+        "Officialcircus-school history",
+        "OfficeoftourismMEL1995photo viaCirkwi",
+        "CurrentOSMfootprints compared withhistoric site"
+      ],
+      "exceptions": [
+        {
+          "name": "Grand Huit",
+          "key": "grand-huit",
+          "sources": [
+            "https://rcdb.com/3441.htm",
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Reuse canonical coaster8eb7db06; duplicate private park contains same coaster. RCDB3441 confirms one steel seated coaster1985–1987. Existing model retained pending RCDBdetail.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Télécombat",
+          "key": "telecombat",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Separate from La Pieuvre: both are named in historical list; map23 is Télécombat. Model/manufacturer not inferred from pictogram.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Rapides du Colorado",
+          "key": "rapides-colorado",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Flume; archive describes abandoned remains, subsequently replaced by parking. Unknown later destination.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Himalaya",
+          "key": "himalaya",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named Himalaya; Music Express type reported by secondary history. No manufacturer guessed.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Bateau corsaire",
+          "key": "bateau-corsaire",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Large ship beside lake in original plan; not the remote-controlled boats.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Auto-tamponneuses pour enfants",
+          "key": "auto-tamponneuses-enfants",
+          "sources": [
+            "https://fr.wikipedia.org/wiki/Lillom",
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Historical list distinguishes bumper cars and carousel under children rides; no extra duplicate group item.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Carrousel pour enfants",
+          "key": "carrousel-enfants",
+          "sources": [
+            "https://fr.wikipedia.org/wiki/Lillom",
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Distinct from bumper cars; descriptive name rather than invented branded title.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Château gonflable",
+          "key": "chateau-gonflable",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named and numbered on operator plan, in children area.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Circuit tacots",
+          "key": "circuit-tacots",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Archive photo shows old-style cars and wooden departure shelter; alias Circuit des Vieux Tacots.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "La Pieuvre",
+          "key": "pieuvre",
+          "sources": [
+            "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html"
+          ],
+          "limit": "Distinct attraction photographed on archive: red octopus, yellow cars, water setting; not the Télécombat.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Le Monde de la Préhistoire",
+          "key": "monde-prehistoire",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Walkthrough with prehistoric human and animal tableaux; archive original photo supplies exact scenery.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Explorer",
+          "key": "explorer",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Circular ride beside Grand Huit on plan; secondary source calls it a Trabant-Wipeout without proven manufacturer.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Petit train western",
+          "key": "petit-train-western",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Children railway shown with central circular route on original plan; no exact technical length asserted.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Bateaux télécommandés",
+          "key": "bateaux-telecommandes",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Small basin alongside prehistory path; distinct from lake pedal boats and enchanted river.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "La Rivière enchantée",
+          "key": "riviere-enchantee",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named in operator legend and secondary historical inventory; precise scenic content/boat mechanism unknown.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Pédalos",
+          "key": "pedalos",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Boating on central lake; landing point illustrated, not a demolished coordinate extrapolated today.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Tir à la carabine",
+          "key": "tir-carabine",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named shooting gallery on plan near tacot circuit; sporting game, no equipment details inferred.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Fort Apache",
+          "key": "fort-apache",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named play area in children section, not a separately operated park.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Tir à l’arc",
+          "key": "tir-arc",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named target game inside medieval area; corroborated archive text.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Pulsar",
+          "key": "pulsar",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Round attraction under Pulsar name in future section; ride mechanism/manufacturer unknown.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Cinéma 2000",
+          "key": "cinema-2000",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Separate domed cinema from Kodak Multivision and Cosmovision on operator plan.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Kodak Multivision",
+          "key": "kodak-multivision",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Operator map names Multivision Kodak; preserves brand and distinguishes from Cinéma2000.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Cosmovision",
+          "key": "cosmovision",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Original plan names Cosmovision; archive Cosmodrome label may be same experience or generic concept. Do not create second entity. Exact projection format unverified.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "L’Officine de Monstradamus",
+          "key": "officine-monstradamus",
+          "sources": [
+            "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html"
+          ],
+          "limit": "Original promotional image explicitly says Nouveauté87 and names the attraction; no opening date, location or format proved. Retain announced historical candidate with Unknown lifecycle, not claim operation.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Piscine à boules",
+          "key": "piscine-boules",
+          "sources": [
+            "https://lesfilms.archipop.org/les-films-parc-de-lomme-570-4984-1-0.html"
+          ],
+          "limit": "Archipop catalogue of Victor Gobert1985 park film explicitly describes children playing in plastic-ball pool. Descriptive name; location/independence within children area not fixed.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Arènes médiévales",
+          "key": "arenes-medievales",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Knight tournament behind medieval city; original brochure photo of mounted knights; venue and show represented together.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Music Hall",
+          "key": "music-hall",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named MusicHall in entrance street on original operator plan; separate from BelleÉpoque theatre.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Théâtre de marionnettes pour enfants",
+          "key": "marionnettes-enfants",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named children puppet theatre near children rides; distinct from BelleÉpoque puppet theatre.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Théâtre de marionnettes Belle Époque",
+          "key": "marionnettes-belle-epoque",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named separately and positioned outside medieval city beside BelleÉpoque street.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Théâtre de la Belle Époque",
+          "key": "theatre-belle-epoque",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named performance theatre near lake; programme and individual show titles not found.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Pizzeria",
+          "key": "pizzeria",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named Pizzeria on entrance street plan; historical restaurant, no present menu or pricing invented.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Glacier",
+          "key": "glacier",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named ice cream outlet on entrance street, separate plan number from confectioner.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Confiseur",
+          "key": "confiseur",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named confectionery outlet on original plan; no product brands invented.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Restaurant du lac",
+          "key": "restaurant-lac",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named restaurant directly at lake end of main street on original plan.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Saloon",
+          "key": "saloon",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named Saloon beside children western section; no independent proprietary title inferred.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Lommy Burger",
+          "key": "lommy-burger",
+          "sources": [
+            "https://web.archive.org/web/20051028014601/http://pageperso.aol.fr/bottomcircle/Lillom-2.html",
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Name printed on mapped building near lake/prehistory; archive identifies building reused by fishing association.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "La Fontaine des 4 Saisons",
+          "key": "fontaine-quatre-saisons",
+          "sources": [
+            "https://web.archive.org/web/20051028014601/http://pageperso.aol.fr/bottomcircle/Lillom-2.html",
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named juice bar in medieval city; archive identifies fruit juices, not an ornamental fountain.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "La Taverne impériale",
+          "key": "taverne-imperiale",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Name legible in restaurant legend and separate medieval courtyard point on original plan.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "La Crêperie bretonne",
+          "key": "creperie-bretonne",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Name in restaurant legend; map41 beside BelleÉpoque theatre and pedal-boat landing. Archive also mentions a medieval crêperie; do not create uncertain second crêperie.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Entrée et caisses",
+          "key": "entree-caisses",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Historical grand gate marked Lillom and ticket offices on original plan. Current garden entrance is not silently equated with it.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Parking du parc",
+          "key": "parking",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Operator plan identifies peripheral parking by original entrance; no coordinates from current expanded commercial parking.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Aire de pique-nique",
+          "key": "aire-pique-nique",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Distinct marked area outside main gate on operator plan; current municipal garden facilities are not substituted.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Poste de secourisme",
+          "key": "poste-secourisme",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Medical assistance point on operator plan close to central lake; no current service implied.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Point d’information et de change",
+          "key": "information-change",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Named information/change facility near park entrance in services legend; no exchange rates or present service invented.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        },
+        {
+          "name": "Théâtre du Monde du Futur",
+          "key": "theatre-futur",
+          "sources": [
+            "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+          ],
+          "limit": "Theatre explicitly named in plan animations section and drawn in future area. Descriptive title records known function and setting, without pretending to transcribe illegible show title.",
+          "editorialDecision": "Use only verified setting, appearance, historical function and documented later fate. A shorter description is justified where these sources cannot support three developed paragraphs without repetition or invention."
+        }
+      ],
+      "reviewedAtUtc": "2026-10-23T14:31:49.676464+00:00",
+      "parkItemCounts": {
+        "withEightDescriptions": 46,
+        "total": 46,
+        "sourceLimitedShortDescriptions": 45,
+        "developedChateauDescriptions": 1
+      }
+    },
+    "score": "95/100 réel, tolérance propriétaire du 14 novembre 2026 appliquée aux parcs définitivement fermés ; aucune invention pour relever la note."
+  },
+  "initialDirectPublicPages": [
+    {
+      "checkedAtUtc": "2026-11-14T23:41:10.324697+00:00",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+      "status": 200,
+      "title": "Parc de Lomme à Lomme, en France : fermé définitivement — Amusement Parks",
+      "bodyCharacters": 5982,
+      "h1": [
+        "Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:12.386007+00:00",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "status": 200,
+      "title": "L'histoire de Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 2807,
+      "h1": [
+        "L'histoire de Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:14.126718+00:00",
+      "language": "fr",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/fr/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "status": 200,
+      "title": "Article : De Lillom au cirque : une cité médiévale réinventée - Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 5318,
+      "h1": [
+        "De Lillom au cirque : une cité médiévale réinventée"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:16.549532+00:00",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+      "status": 200,
+      "title": "Parc de Lomme — Lomme, France: permanently closed — Amusement Parks",
+      "bodyCharacters": 5514,
+      "h1": [
+        "Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:17.738619+00:00",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "status": 200,
+      "title": "The history of Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 2551,
+      "h1": [
+        "The history of Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:18.953204+00:00",
+      "language": "en",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/en/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "status": 200,
+      "title": "Article: From Lillom to circus: a medieval town reinvented - Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 4851,
+      "h1": [
+        "From Lillom to circus: a medieval town reinvented"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:21.053610+00:00",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+      "status": 200,
+      "title": "Parc de Lomme — Lomme, Frankreich: dauerhaft geschlossen — Amusement Parks",
+      "bodyCharacters": 5973,
+      "h1": [
+        "Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:22.247874+00:00",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "status": 200,
+      "title": "Die Geschichte von Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 2814,
+      "h1": [
+        "Die Geschichte von Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:23.444522+00:00",
+      "language": "de",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/de/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "status": 200,
+      "title": "Artikel: Von Lillom zum Zirkus: eine mittelalterliche Stadt neu genutzt - Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 5246,
+      "h1": [
+        "Von Lillom zum Zirkus: eine mittelalterliche Stadt neu genutzt"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:25.282446+00:00",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+      "status": 200,
+      "title": "Parc de Lomme — Lomme, Frankrijk: definitief gesloten — Amusement Parks",
+      "bodyCharacters": 5763,
+      "h1": [
+        "Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:26.488978+00:00",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "status": 200,
+      "title": "De geschiedenis van Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 2903,
+      "h1": [
+        "De geschiedenis van Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:27.691084+00:00",
+      "language": "nl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/nl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "status": 200,
+      "title": "Artikelpagina: Van Lillom naar circus: een middeleeuwse stad met een nieuwe rol - Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 5221,
+      "h1": [
+        "Van Lillom naar circus: een middeleeuwse stad met een nieuwe rol"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:29.661904+00:00",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+      "status": 200,
+      "title": "Parc de Lomme — Lomme, Francia: chiuso definitivamente — Amusement Parks",
+      "bodyCharacters": 5913,
+      "h1": [
+        "Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:30.853239+00:00",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "status": 200,
+      "title": "La storia di Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 2713,
+      "h1": [
+        "La storia di Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:32.056803+00:00",
+      "language": "it",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/it/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "status": 200,
+      "title": "Articolo: Da Lillom al circo: una cittadina medievale reinventata - Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 5153,
+      "h1": [
+        "Da Lillom al circo: una cittadina medievale reinventata"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:33.904880+00:00",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+      "status": 200,
+      "title": "Parc de Lomme — Lomme, Francia: cerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5970,
+      "h1": [
+        "Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:35.105380+00:00",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "status": 200,
+      "title": "La historia de Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 2668,
+      "h1": [
+        "La historia de Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:36.314980+00:00",
+      "language": "es",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/es/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "status": 200,
+      "title": "Artículo: De Lillom al circo: una ciudad medieval reinventada - Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 5165,
+      "h1": [
+        "De Lillom al circo: una ciudad medieval reinventada"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:38.449350+00:00",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+      "status": 200,
+      "title": "Parc de Lomme — Lomme, Francja: zamknięty na stałe — Amusement Parks",
+      "bodyCharacters": 5655,
+      "h1": [
+        "Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:39.653581+00:00",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "status": 200,
+      "title": "Historia Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 2804,
+      "h1": [
+        "Historia Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:40.848564+00:00",
+      "language": "pl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "status": 200,
+      "title": "Artykuł: Od Lillom do cyrku: nowe życie średniowiecznego miasteczka - Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 5054,
+      "h1": [
+        "Od Lillom do cyrku: nowe życie średniowiecznego miasteczka"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:43.430549+00:00",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+      "status": 200,
+      "title": "Parc de Lomme — Lomme, França: encerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5813,
+      "h1": [
+        "Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:44.670539+00:00",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "status": 200,
+      "title": "A história de Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 2684,
+      "h1": [
+        "A história de Parc de Lomme"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:41:46.036023+00:00",
+      "language": "pt",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pt/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "status": 200,
+      "title": "Artigo: De Lillom ao circo: uma cidade medieval reinventada - Parc de Lomme — Amusement Parks",
+      "bodyCharacters": 5014,
+      "h1": [
+        "De Lillom ao circo: uma cidade medieval reinventada"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    }
+  ],
+  "finalOrdinaryPublicFlow": [
+    {
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "checkedAtUtc": "2026-11-14T23:42:28.615154+00:00",
+      "h1": [
+        "L'histoire de Parc de Lomme"
+      ],
+      "bodyCharacters": 2365,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "fr",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/fr/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "checkedAtUtc": "2026-11-14T23:42:31.391631+00:00",
+      "h1": [
+        "De Lillom au cirque : une cité médiévale réinventée"
+      ],
+      "bodyCharacters": 4846,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "checkedAtUtc": "2026-11-14T23:42:33.129680+00:00",
+      "h1": [
+        "The history of Parc de Lomme"
+      ],
+      "bodyCharacters": 2179,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "en",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/en/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "checkedAtUtc": "2026-11-14T23:42:33.877138+00:00",
+      "h1": [
+        "From Lillom to circus: a medieval town reinvented"
+      ],
+      "bodyCharacters": 4449,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "checkedAtUtc": "2026-11-14T23:42:35.661846+00:00",
+      "h1": [
+        "Die Geschichte von Parc de Lomme"
+      ],
+      "bodyCharacters": 2376,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "de",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/de/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "checkedAtUtc": "2026-11-14T23:42:36.408703+00:00",
+      "h1": [
+        "Von Lillom zum Zirkus: eine mittelalterliche Stadt neu genutzt"
+      ],
+      "bodyCharacters": 4764,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "checkedAtUtc": "2026-11-14T23:42:38.109163+00:00",
+      "h1": [
+        "De geschiedenis van Parc de Lomme"
+      ],
+      "bodyCharacters": 2503,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "nl",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/nl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "checkedAtUtc": "2026-11-14T23:42:40.551235+00:00",
+      "h1": [
+        "Van Lillom naar circus: een middeleeuwse stad met een nieuwe rol"
+      ],
+      "bodyCharacters": 4781,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "checkedAtUtc": "2026-11-14T23:42:42.351793+00:00",
+      "h1": [
+        "La storia di Parc de Lomme"
+      ],
+      "bodyCharacters": 2311,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "it",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/it/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "checkedAtUtc": "2026-11-14T23:42:44.792175+00:00",
+      "h1": [
+        "Da Lillom al circo: una cittadina medievale reinventata"
+      ],
+      "bodyCharacters": 4718,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "checkedAtUtc": "2026-11-14T23:42:46.485718+00:00",
+      "h1": [
+        "La historia de Parc de Lomme"
+      ],
+      "bodyCharacters": 2247,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "es",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/es/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "checkedAtUtc": "2026-11-14T23:42:48.923738+00:00",
+      "h1": [
+        "De Lillom al circo: una ciudad medieval reinventada"
+      ],
+      "bodyCharacters": 4716,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "checkedAtUtc": "2026-11-14T23:42:50.592971+00:00",
+      "h1": [
+        "Historia Parc de Lomme"
+      ],
+      "bodyCharacters": 2413,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "pl",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/pl/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "checkedAtUtc": "2026-11-14T23:42:51.341624+00:00",
+      "h1": [
+        "Od Lillom do cyrku: nowe życie średniowiecznego miasteczka"
+      ],
+      "bodyCharacters": 4618,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "checkedAtUtc": "2026-11-14T23:42:53.038751+00:00",
+      "h1": [
+        "A história de Parc de Lomme"
+      ],
+      "bodyCharacters": 2272,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    },
+    {
+      "language": "pt",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/pt/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history/abedd9d8-a67d-4169-9a93-0f65db000100/lillom-medieval-town-circus-school-and-memory",
+      "checkedAtUtc": "2026-11-14T23:42:55.491024+00:00",
+      "h1": [
+        "De Lillom ao circo: uma cidade medieval reinventada"
+      ],
+      "bodyCharacters": 4575,
+      "rawEnumMatches": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "method": "Normal park-to-history then history-to-article navigation, no cache-busting URL"
+    }
+  ],
+  "historyNavigation": [
+    {
+      "target": "park",
+      "url": "https://amusement-parks.fun/fr/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "href": "/fr/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme/history",
+      "h1": [
+        "L'histoire de Parc de Lomme"
+      ],
+      "bodyLength": 2365,
+      "technical": [],
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-14T23:40:20.519313+00:00"
+    }
+  ],
+  "resolvedDisplayChecks": {
+    "initialState": "Les accès directs ont encore affiché la version SSR antérieure avec Other. Le contrôle final suit les liens ordinaires depuis la fiche, puis vers l’article, dans les huit langues : catégorie corrigée, aucun enum brut. Aucun cache-busting ni purge. La trace du rendu direct initial est conservée et n’est pas présentée comme une relecture corrigée.",
+    "finalFrenchPark": {
+      "checkedAtUtc": "2026-11-14T23:43:46.155129+00:00",
+      "url": "https://amusement-parks.fun/fr/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+      "status": 200,
+      "h1": [
+        "Parc de Lomme"
+      ],
+      "overflow": 0,
+      "brokenImages": []
+    }
+  },
+  "screenshotPersonallyViewed": "public-park-mobile-final.png",
+  "site": {
+    "status": "Published",
+    "publicUrl": "https://amusement-parks.fun/fr/park/a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5/parc-de-lomme",
+    "publishedAtUtc": "2026-11-01T14:23:28.3853265Z",
+    "publicationOperationId": "c1d25986-d89a-47d4-b8de-4dc2ca0f1c08",
+    "observedAtUtc": "2026-11-14T23:27:17.9642779Z",
+    "newPublicationCalls": 0
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "f2422d92c4824bdf99f9e10e51dde427",
+    "url": "https://www.facebook.com/1285475681307050/posts/122125616409424431",
+    "publishedAtUtc": null,
+    "observedAtUtc": "2026-11-14T23:28:12.7011645Z",
+    "newPublicationCalls": 0,
+    "note": "Annonce existante confirmée ; heure d’envoi non exposée, aucune date inventée."
+  },
+  "lastDataIntegrationAt": "2026-11-14T23:31:10.336Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/lillom-cultural-redevelopment-20261114.json",
+  "dataMutationThisClosure": true,
+  "newSitePublication": false,
+  "newFacebookPublication": false,
+  "previousBatchCompletedCount": 10,
+  "nextBatchCompletedCount": 2,
+  "priorBatchPullRequest": 1117,
+  "releaseVersionChanged": false
+}

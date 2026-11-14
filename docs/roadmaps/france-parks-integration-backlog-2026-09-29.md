@@ -37,11 +37,11 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 50 |
 | Parcs en activité absents de la photographie FR | 60 | 59 |
-| Fiches historiques privées existantes | 10 | 3 |
+| Fiches historiques privées existantes | 10 | 2 |
 | Parcs historiques absents de la photographie FR | 20 | 17 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
 | Candidat historique distinct découvert lors de la qualification (Nouveau Tivoli) | 0 | 1 |
-| **Total** | **225** | **130** |
+| **Total** | **225** | **129** |
 
 ## 1. Fiches publiques à compléter
 
@@ -185,7 +185,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [x] Parc Avenue — `f019e441-aecf-487b-93db-2b0246dce185` — clôture conservée le 23 octobre 2026 ; audit final à 97/100 et annonce Facebook Published confirmée.
 - [x] Parc de la Toison d'Or — `66653da2-93bb-499f-95df-15e240673e58` — clôture conservée le 23 octobre 2026 ; audit final96/100 et Facebook Published.
 - [ ] Parc de Lillom — `8167f80c-db82-49d8-91a6-bf5a1f6a6f51` — **doublon conservé, hors dossiers actifs**, de Parc de Lomme (`a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5`) ; rapprochement officiel du 23 octobre 2026, aucune clôture supplémentaire.
-- [ ] Parc de Lomme — `a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5` ; fiche et contenus publiés le 1er novembre 2026, 11 faits historiques et article accessibles dans huit langues. **95/100 sans bloqueur API** : ligne conservée ouverte avec ses lacunes historiques, aucune exception de score acceptée. [Facebook Published](https://www.facebook.com/1285475681307050/posts/122125616409424431). [Audit de publication](world-integration/evidence/france-historical-20261022/lillom-publication-audit.json).
+- [x] Parc de Lomme — `a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5` ; **clôturé à 95/100 sans bloqueur**, tolérance du propriétaire pour les parcs définitivement fermés. 46 lieux décrits en huit langues, 16 médias, 11 faits et un article. Le fait de reconversion culturelle de 1998 a été corrigé ; pages et navigation Histoire vérifiées. Vingt attractions sans photo, positions et autres lacunes d’archives restent documentées. Dernière intégration réelle : **2026-11-14T23:31:10.336Z**. [Clôture et preuves](world-integration/evidence/france-historical-20261022/lillom-completion-20261114.json). [Facebook existant Published](https://www.facebook.com/1285475681307050/posts/122125616409424431), aucun nouvel envoi.
 - [x] Ty'Bamboo — `6919c77b-1865-444d-8c5c-964b255d9c27` — clôture conservée le 28 octobre 2026 ; audit final 98/100 et Facebook Published.
 
 - [x] Zygo Park / Zygofolis — `b2dca918-9747-4623-a0c0-38e89634aaff` ; **intégration clôturée à 95/100 sans bloqueur**, tolérance propriétaire du 14 novembre 2026 pour les parcs définitivement fermés. 54 lieux décrits en huit langues, 58 médias propres, 19 faits, un article et deux plans annuels. Audit confirmé, 24 pages contrôlées ; lacunes historiques conservées. Dernière intégration réelle : **2026-11-01T14:07:32.680Z**. [Clôture et preuves](world-integration/evidence/france-historical-20261022/zygofolis-completion-20261114.json). [Facebook Published](https://www.facebook.com/1285475681307050/posts/122125614645424431), annonce existante sans doublon.
