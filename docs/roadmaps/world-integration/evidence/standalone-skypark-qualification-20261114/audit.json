@@ -1,0 +1,132 @@
+{
+  "reviewedAtUtc": "2026-11-14T01:00:30.565Z",
+  "scope": "Qualification documentaire ; aucune intégration de données, publication du site ou annonce Facebook",
+  "editorAccess": {
+    "status": "UnavailableInCurrentCloudEnvironment",
+    "evidence": "Le statut de l’environnement ne déclare aucun secret et le coffre local PARK_DATA_EDITOR du précédent espace de travail n’est pas présent. Les recherches SearchParks et SearchStandaloneAttractions exigées avant création ne peuvent pas être exécutées.",
+    "effect": "Ne déduire aucune absence de fiche du site, ne créer ni fusionner aucune entité, ne dater aucune intégration."
+  },
+  "locations": [
+    {
+      "countryCode": "MO",
+      "entryId": "MO-candidate-discovery-64f20a87c649ce",
+      "operator": "Skypark Macau Tower by AJ Hackett",
+      "address": "Level T2 — Adventure Zone, Macau Tower, Macau 999078",
+      "operatorSources": [
+        "https://www.skyparkmacau.com/activities",
+        "https://www.skyparkmacau.com/activities/bungy",
+        "https://www.skyparkmacau.com/activities/skyjump",
+        "https://www.skyparkmacau.com/park-info"
+      ],
+      "distinctProductsObserved": [
+        {
+          "name": "Macau Tower Bungy Jump",
+          "signal": "Saut depuis 233 m avec billet Solo annoncé à 3 088 MOP et billet Tandem distinct ; admission à la tour incluse."
+        },
+        {
+          "name": "Macau Tower Skyjump",
+          "signal": "Descente guidée distincte du bungy, billet Solo annoncé à 2 188 MOP ; admission à la tour incluse."
+        },
+        {
+          "name": "Skywalk et Tower Climb",
+          "signal": "Autres activités tarifées sur la page officielle ; identité et modélisation à instruire séparément."
+        }
+      ],
+      "publishedHours": "Lundi–vendredi 11 h–19 h ; samedi–dimanche 10 h 30–19 h 30, sous réserve des exceptions annoncées par l’exploitant.",
+      "reusableExactPhotos": [
+        {
+          "source": "https://commons.wikimedia.org/wiki/File:Bungee_jumping_from_Macau_Tower,_2009_(3455431798).jpg",
+          "author": "Sylvain Kalache",
+          "capturedAt": "2009-03-30",
+          "license": "CC BY 2.0",
+          "subject": "Une personne pendant le véritable saut à l’élastique de Macau Tower ; vue historique."
+        },
+        {
+          "source": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Level_61_Bungee_Jumping_16-03-2023(1).jpg",
+          "author": "LN9267",
+          "capturedAt": "2023-03-16",
+          "license": "CC BY-SA 4.0",
+          "subject": "Zone réelle Skypark au niveau 61, photographie contextuelle distincte d’une vue du saut."
+        }
+      ],
+      "photoBoundary": "Les images du bungy ne doivent pas représenter Skyjump, Skywalk ou Tower Climb."
+    },
+    {
+      "countryCode": "SG",
+      "entryId": "SG-candidate-discovery-0bc9f9fd511d6f",
+      "operator": "Skypark Sentosa by AJ Hackett",
+      "address": "30 Siloso Beach Walk, Sentosa Island, Singapore",
+      "operatorSources": [
+        "https://www.skyparksentosa.com/activities",
+        "https://www.skyparksentosa.com/activities/bungy",
+        "https://www.skyparksentosa.com/activities/giant-swing",
+        "https://www.skyparksentosa.com/park-info"
+      ],
+      "distinctProductsObserved": [
+        {
+          "name": "Sentosa Bungy Jump",
+          "signal": "Plateforme de 47 m ; billet individuel affiché à 99 SGD, poids 45–150 kg."
+        },
+        {
+          "name": "Sentosa Giant Swing",
+          "signal": "Balançoire distincte jusqu’à trois participants ; billet individuel affiché à 69 SGD."
+        },
+        {
+          "name": "Skyslides",
+          "signal": "Troisième activité nommée sur le site ; identité et autonomie à qualifier."
+        }
+      ],
+      "publishedHours": "Tous les jours 11 h 30–19 h 30 ; dernière inscription annoncée à 19 h.",
+      "reusableExactPhotos": [
+        {
+          "source": "https://commons.wikimedia.org/wiki/File:Bungy_at_Sentosa.jpg",
+          "author": "Mokkie",
+          "capturedAt": null,
+          "uploadedAt": "2018-09-03",
+          "license": "CC BY-SA 3.0",
+          "subject": "Tour AJ Hackett Bungy de Sentosa avec une personne suspendue lors du saut."
+        }
+      ],
+      "photoBoundary": "Cette photo documente le Bungy ; aucune photo libre exacte du Giant Swing ou de Skyslides n’a été établie dans cette recherche."
+    },
+    {
+      "countryCode": "AU",
+      "entryId": "AU-candidate-discovery-3836036d294303",
+      "operator": "Skypark Cairns by AJ Hackett",
+      "address": "Lot 2, McGregor Road, Smithfield QLD 4878",
+      "operatorSources": [
+        "https://www.skyparkcairns.com/",
+        "https://www.skyparkcairns.com/activities",
+        "https://www.skyparkcairns.com/activities/bungy",
+        "https://www.skyparkcairns.com/park-info"
+      ],
+      "distinctProductsObserved": [
+        {
+          "name": "Cairns Bungy",
+          "signal": "Saut de 50 m ; tarif adulte annoncé à partir de 189 AUD."
+        },
+        {
+          "name": "Cairns Giant Swing",
+          "signal": "Balançoire distincte, en solo ou jusqu’à trois ; tarif adulte annoncé à partir de 109 AUD."
+        },
+        {
+          "name": "Roof Jump et Bungy Swing",
+          "signal": "Autres activités séparément proposées ; identité et autonomie à qualifier."
+        }
+      ],
+      "publishedHours": "Lundi et jeudi–dimanche 10 h–17 h ; mardi et mercredi fermés selon la page officielle, horaires susceptibles de changer.",
+      "photoSearch": {
+        "source": "https://commons.wikimedia.org/wiki/File:BungyViewCairns.jpg",
+        "author": "MartinRe",
+        "license": "CC BY-SA 3.0",
+        "finding": "Vue depuis le haut de la tour sur le bassin ; elle ne montre pas clairement le saut et ne satisfait pas seule la règle de photo exacte."
+      }
+    }
+  ],
+  "nextSteps": [
+    "Rétablir le client et le coffre PARK_DATA_EDITOR par le canal sécurisé prévu ; ne pas substituer l’interface d’administration ou un endpoint improvisé.",
+    "Rechercher chaque nom et chaque parent dans Park et StandaloneAttraction, fiches masquées incluses, avant de décider entre entités standalone distinctes, parkItems ou migration.",
+    "Importer uniquement les photos de l’attraction effectivement représentée ; vérifier les prix et calendriers à nouveau à la date d’Apply.",
+    "Achever Preview, Apply, contrôle public, publication Facebook et historique de chaque entrée avec la date réelle de données."
+  ]
+}

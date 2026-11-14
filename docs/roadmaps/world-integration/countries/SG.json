@@ -1517,8 +1517,8 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Catalogue officiel de Skypark Sentosa consulté le 14 novembre 2026 : Bungy, Giant Swing et Skyslides sont proposés séparément ; disponibilité effective à revérifier.",
+      "identityConfidence": "Offre et adresse confirmées par le site local de l’exploitant ; recherche des fiches publiques et masquées par PARK_DATA_EDITOR encore requise avant création.",
       "possibleMatches": [],
       "aliases": [
         "AJ Hackett Sentosa",
@@ -1527,12 +1527,37 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Rechercher Skypark Sentosa, AJ Hackett Sentosa, Bungy, Giant Swing et Skyslides dans Park et StandaloneAttraction avec le client officiel ; décider du périmètre de chaque fiche avant création ou migration. Une photo libre exacte du Bungy est vérifiée, aucune photo exacte du Giant Swing ou de Skyslides dans cette recherche. Recontrôler tarifs et horaires avant Preview/Apply. Dossier : evidence/standalone-skypark-qualification-20261114/audit.json.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.skyparkglobal.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — activités",
+          "url": "https://www.skyparksentosa.com/activities",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — Bungy Jump",
+          "url": "https://www.skyparksentosa.com/activities/bungy",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — Giant Swing",
+          "url": "https://www.skyparksentosa.com/activities/giant-swing",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — adresse et horaires",
+          "url": "https://www.skyparksentosa.com/park-info",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Photo exacte du Bungy — Mokkie, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungy_at_Sentosa.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "discovery": {
@@ -1542,7 +1567,7 @@
       },
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Skypark Sentosa — Bungy et Giant Swing",
@@ -1553,9 +1578,29 @@
             "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Sentosa"
+          },
+          {
+            "name": "Sentosa Bungy Jump",
+            "source": "Exploitant officiel — qualification 2026-11-14",
+            "url": "https://www.skyparksentosa.com/activities/bungy",
+            "family": "Saut à l’élastique fixe",
+            "sourceVenueName": "Sentosa Bungy Jump",
+            "sourceLifecycleSignal": "Offre affichée sur la page officielle le 14 novembre 2026 ; exploitation à revalider avant Apply.",
+            "matchingMethod": "Rapprochement avec les fiches du site non encore exécuté : accès au client officiel absent.",
+            "sourceLocality": "Sentosa"
+          },
+          {
+            "name": "Sentosa Giant Swing",
+            "source": "Exploitant officiel — qualification 2026-11-14",
+            "url": "https://www.skyparksentosa.com/activities/giant-swing",
+            "family": "Balançoire géante fixe",
+            "sourceVenueName": "Sentosa Giant Swing",
+            "sourceLifecycleSignal": "Offre affichée sur la page officielle le 14 novembre 2026 ; exploitation à revalider avant Apply.",
+            "matchingMethod": "Rapprochement avec les fiches du site non encore exécuté : accès au client officiel absent.",
+            "sourceLocality": "Sentosa"
           }
         ],
-        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+        "rationale": "Bungy et Giant Swing ont leurs billets et installations propres ; l’ensemble Skypark inclut aussi Skyslides et un club de plage. Résoudre la modélisation dans le site avant création ; la photo libre retrouvée est propre au Bungy seulement."
       }
     },
     {
