@@ -23594,25 +23594,71 @@
     {
       "entryId": "DE-park-59e34ae2-6443-4fab-8f6c-dbfda3eb850a",
       "name": "Sommerrodelbahn Gutach",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "59e34ae2-6443-4fab-8f6c-dbfda3eb850a",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster sur piste dédiée",
+      "locality": "Gutach (Schwarzwaldbahn), Bade-Wurtemberg",
+      "siteId": "3c36f9c6-432c-46cb-b619-d56970661efa",
+      "legacySiteIds": [
+        "59e34ae2-6443-4fab-8f6c-dbfda3eb850a"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T22:44:29.086Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — exploitant officiel vérifié le 2026-11-14",
+      "identityConfidence": "Piste de luge alpine dédiée avec billetterie propre ; les jeux annexes à pièces ne constituent pas un parc multi-attractions. Ancienne fiche Park masquée retirée par migration contrôlée.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Schwarzwaldbob",
+        "Sommerrodelbahn Gutach"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T22:41:51.087Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-e8acac39-e20c-48c0-8586-f5aa4bf7591d",
+          "appliedAt": "2026-11-14T22:34:02.219Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c36f9c6-432c-46cb-b619-d56970661efa",
+          "evidence": "PARK_DATA_EDITOR:apply:e8acac39-e20c-48c0-8586-f5aa4bf7591d",
+          "auditEvidence": null,
+          "summary": "Création de la fiche standalone masquée avec huit descriptions, identité et géolocalisation."
+        },
+        {
+          "eventId": "apply-77c3adf5-e87b-4c85-af66-2c8bcab5c365",
+          "appliedAt": "2026-11-14T22:36:05.209Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c36f9c6-432c-46cb-b619-d56970661efa",
+          "evidence": "PARK_DATA_EDITOR:apply:77c3adf5-e87b-4c85-af66-2c8bcab5c365",
+          "auditEvidence": null,
+          "summary": "Intégration des tarifs officiels, conditions d’accès et horaires datés de la saison proche."
+        },
+        {
+          "eventId": "apply-eca2b999-3bb5-446b-843a-e95f5385306a",
+          "appliedAt": "2026-11-14T22:41:51.087Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c36f9c6-432c-46cb-b619-d56970661efa",
+          "evidence": "PARK_DATA_EDITOR:apply:eca2b999-3bb5-446b-843a-e95f5385306a",
+          "auditEvidence": null,
+          "summary": "Révision finale des huit descriptions après contrôle éditorial."
+        },
+        {
+          "eventId": "closure-apply-eca2b999-3bb5-446b-843a-e95f5385306a",
+          "appliedAt": "2026-11-14T22:41:51.087Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c36f9c6-432c-46cb-b619-d56970661efa",
+          "evidence": "PARK_DATA_EDITOR:apply:eca2b999-3bb5-446b-843a-e95f5385306a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-sommerrodelbahn-gutach-20261114/audit.json",
+          "summary": "Audit final : huit pages publiques et deux photos exactes créditées HTTP 200, score 89 sans bloqueur, ancienne fiche masquée retirée et publication Facebook Published. La date de dernière intégration porte sur le contenu, hors visibilité et annonce."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et l’historique. Rafraîchir les horaires au-delà du 6 janvier 2027 et les tarifs avant la nouvelle saison ; confirmer directement avec l’exploitant la formulation de la règle d’accompagnement (la FAQ évoque aussi la taille).",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -23638,13 +23684,38 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.sommerrodelbahn-gutach.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste et conditions",
+          "url": "https://www.sommerrodelbahn-gutach.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://www.sommerrodelbahn-gutach.de/infos/preise/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — horaires",
+          "url": "https://www.sommerrodelbahn-gutach.de/infos/oeffnungszeiten/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — accès",
+          "url": "https://www.sommerrodelbahn-gutach.de/infos/anfahrt/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "bwegt / my.toubiz — photographies exactes et licence CC BY-SA",
+          "url": "https://www1.bwegt.de/land-und-leute/das-land-erleben/ausflugsziele/detail/sommerrodelbahn-gutach-schwarzwaldbahn/sommerrodelbahn/427e097d-fa98-4a16-bdcd-52082ea78df1",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "DE",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Sommerrodelbahn",
@@ -23666,7 +23737,7 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "La descente Schwarzwaldbob est la seule attraction principale du lieu ; trampolines, petites voitures et excavatrices sont des jeux à pièces selon les tarifs officiels. La nouvelle fiche standalone remplace éditorialement la fiche Park masquée et son seul ParkItem, désormais NotRelevant et conservés."
       }
     },
     {
@@ -29190,37 +29261,55 @@
       "entryId": "DE-candidate-58b7d64576d207",
       "name": "Wiegand Erlebnisberge - Sommerrodelbahn Gutach",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine adventure world",
       "locality": "Gutach (Schwarzwaldbahn)",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-11-14",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "La piste mentionnée par Freizeitpark App correspond à la Sommerrodelbahn Gutach intégrée sous la ligne du parc masqué.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver comme indice documentaire de la fiche standalone publiée ; ne pas créer une seconde destination.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/wiegand-erlebnisberge-sommerrodelbahn-gutach/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste",
+          "url": "https://www.sommerrodelbahn-gutach.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "reviewedAt": "2026-11-14",
+        "attractions": [
+          {
+            "name": "Schwarzwaldbob",
+            "source": "Exploitant",
+            "url": "https://www.sommerrodelbahn-gutach.de/sommersaison/sommerrodelbahn/",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Sommerrodelbahn Gutach",
+            "sourceLocality": "Gutach (Schwarzwaldbahn)"
+          }
+        ],
+        "rationale": "Le nom de découverte Wiegand Erlebnisberge désigne la même piste de Gutach. La fiche standalone est déjà intégrée sous la ligne de l’ancienne fiche Park."
+      },
+      "duplicateOf": "DE-park-59e34ae2-6443-4fab-8f6c-dbfda3eb850a",
+      "possibleBacklogEntries": [
+        "DE-park-59e34ae2-6443-4fab-8f6c-dbfda3eb850a"
+      ]
     },
     {
       "entryId": "DE-candidate-a0ac84e5a9cacb",

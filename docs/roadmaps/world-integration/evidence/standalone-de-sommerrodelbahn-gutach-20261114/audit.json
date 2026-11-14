@@ -1,0 +1,104 @@
+{
+  "work": "Published the dedicated Schwarzwaldbob alpine coaster as a standalone attraction with eight editorial descriptions, two exact licensed photos, official fares, dated opening hours, access conditions and a Facebook announcement.",
+  "qualification": "Operator pricing presents the alpine coaster as the primary ride and trampolines, electric cars and excavators as coin-operated side games. The hidden legacy Park and its sole ParkItem were retained as NotRelevant by controlled migration.",
+  "sources": {
+    "operatorTrack": "https://www.sommerrodelbahn-gutach.de/sommersaison/sommerrodelbahn/",
+    "operatorPrices": "https://www.sommerrodelbahn-gutach.de/infos/preise/",
+    "operatorHours": "https://www.sommerrodelbahn-gutach.de/infos/oeffnungszeiten/",
+    "operatorDirections": "https://www.sommerrodelbahn-gutach.de/infos/anfahrt/",
+    "photoLicensePortal": "https://www1.bwegt.de/land-und-leute/das-land-erleben/ausflugsziele/detail/sommerrodelbahn-gutach-schwarzwaldbahn/sommerrodelbahn/427e097d-fa98-4a16-bdcd-52082ea78df1"
+  },
+  "sourceLimitations": [
+    "Operator technical table says 850 m of downhill track while prose says almost 1000 m; structured length uses the technical table.",
+    "The photo portal identifies CC BY-SA but does not state a version; credits do not invent one.",
+    "Opening hours encode the currently published November 2026 and Christmas to 6 January 2027 dates, conditional on good weather; revisit the next main season."
+  ],
+  "duplicateSearches": {
+    "legacyParkId": "59e34ae2-6443-4fab-8f6c-dbfda3eb850a",
+    "legacyParkItemId": "1b43964a-0ae4-4a1d-89f8-e4438d5665c9",
+    "manufacturerClueBacklogEntry": "DE-candidate-58b7d64576d207",
+    "legacyParkHiddenNotRelevant": true,
+    "legacyItemHiddenNotRelevant": true
+  },
+  "entity": {
+    "id": "3c36f9c6-432c-46cb-b619-d56970661efa",
+    "name": "Sommerrodelbahn Gutach",
+    "countryCode": "DE",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "e8acac39-e20c-48c0-8586-f5aa4bf7591d",
+      "appliedAtUtc": "2026-11-14T22:34:02.2191084Z",
+      "summary": "Création de la fiche standalone masquée avec huit descriptions, identité et géolocalisation."
+    },
+    {
+      "operationId": "77c3adf5-e87b-4c85-af66-2c8bcab5c365",
+      "appliedAtUtc": "2026-11-14T22:36:05.2097732Z",
+      "summary": "Intégration des tarifs officiels, conditions d’accès et horaires datés de la saison proche."
+    },
+    {
+      "operationId": "eca2b999-3bb5-446b-843a-e95f5385306a",
+      "appliedAtUtc": "2026-11-14T22:41:51.087776Z",
+      "summary": "Révision finale des huit descriptions après contrôle éditorial."
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "a0251f26fbc345508d42af3ea7af47ff",
+      "sourceUrl": "https://mein.toubiz.de/api/v1/media/7c3f919e-a97a-11ee-950c-00163e2945d0/view?fm=jpg&hash=cc06d1&w=1000",
+      "credit": "Wiegand Erlebnisberge GmbH / my.toubiz via bwegt",
+      "license": "CC BY-SA (version not stated by source)",
+      "licensePage": "https://www1.bwegt.de/land-und-leute/das-land-erleben/ausflugsziele/detail/sommerrodelbahn-gutach-schwarzwaldbahn/sommerrodelbahn/427e097d-fa98-4a16-bdcd-52082ea78df1",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "505bd652bc0e477f92406258f879b157",
+      "sourceUrl": "https://mein.toubiz.de/api/v1/media/7b9719a6-a97a-11ee-914c-00163e2945d0/view?fm=jpg&hash=9c9485&w=1000",
+      "credit": "Wiegand Erlebnisberge GmbH / my.toubiz via bwegt",
+      "license": "CC BY-SA (version not stated by source)",
+      "licensePage": "https://www1.bwegt.de/land-und-leute/das-land-erleben/ausflugsziele/detail/sommerrodelbahn-gutach-schwarzwaldbahn/sommerrodelbahn/427e097d-fa98-4a16-bdcd-52082ea78df1",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 89,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 2,
+    "fareOfferCount": 11,
+    "openingHourRuleCount": 8,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "legacyParkHiddenNotRelevant": true,
+    "legacyItemHiddenNotRelevant": true
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/3c36f9c6-432c-46cb-b619-d56970661efa/sommerrodelbahn-gutach",
+    "sitePublishedAtUtc": "2026-11-14T22:44:29.0866985Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:7f6ce85f-0d5b-47ee-952b-34a5cf6d3868",
+    "facebookStatus": "Published",
+    "facebookId": "780e5fbffbea4aafa1e2b3a33ceb33dd",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127379527424431",
+    "facebookPublishedAtUtc": "2026-11-14T22:46:40.5507583Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T22:41:51.087Z",
+  "remainingGaps": [
+    "Refresh fares and dates when the operator posts the next season.",
+    "Clarify the accompanying passenger rule if precise age and height restrictions need to be encoded."
+  ]
+}
