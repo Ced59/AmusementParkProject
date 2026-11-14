@@ -23779,43 +23779,125 @@
     {
       "entryId": "DE-candidate-04a04741efdfd7",
       "name": "Sommerrodelbahn Kohren-Sahlis",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "Frohburg",
-      "siteId": null,
+      "category": "Luge d’été en auge",
+      "locality": "Kohren-Sahlis, Frohburg, Saxe",
+      "siteId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T23:52:35.707Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [
+      "sourceLifecycleSignal": "Site de l’exploitant actif au 2026-11-14, billets et règles affichés ; avis du jour « fermé », ouverture dépendant de la météo.",
+      "identityConfidence": "Piste à billetterie propre, adresse et site officiel confirmés ; aucune fiche Park ou Standalone homonyme à Kohren-Sahlis ou Frohburg. Le rapprochement automatique avec Grafenau ne portait que sur le nom générique.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sommerrodelbahn Kohren Sahlis",
+        "Kohren-Sahlis summer toboggan run"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T23:55:06.330Z",
+      "integrationHistory": [
         {
-          "siteId": "1bc5ed5c-e772-4ee0-a66a-09cfea571c3e",
-          "name": "Sommerrodelbahn Grafenau",
-          "similarity": 76
+          "eventId": "apply-42767859-9689-4570-a4e5-e5cb75ff73c0",
+          "appliedAt": "2026-11-14T23:46:15.027Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:apply:42767859-9689-4570-a4e5-e5cb75ff73c0",
+          "auditEvidence": null,
+          "summary": "Création de la piste autonome, localisation et huit descriptions."
+        },
+        {
+          "eventId": "apply-1439d4fa-be3a-4ccb-8ac8-f54e78134dff",
+          "appliedAt": "2026-11-14T23:48:12.390Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:apply:1439d4fa-be3a-4ccb-8ac8-f54e78134dff",
+          "auditEvidence": null,
+          "summary": "Sept tarifs officiels et règle d’accompagnement des moins de huit ans intégrés."
+        },
+        {
+          "eventId": "image-e869659734324ab089c0976d9060a990",
+          "appliedAt": "2026-11-14T23:49:42.750Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:image:e869659734324ab089c0976d9060a990",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste et de sa caisse en 2011, André L., CC BY 3.0, importée et publiée."
+        },
+        {
+          "eventId": "apply-b5eb5c52-bb9f-4e96-b006-4d3adcb62956",
+          "appliedAt": "2026-11-14T23:51:31.900Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:apply:b5eb5c52-bb9f-4e96-b006-4d3adcb62956",
+          "auditEvidence": null,
+          "summary": "Huit descriptions revues pour la lecture publique après contrôle de qualité."
+        },
+        {
+          "eventId": "image-metadata-e869659734324ab089c0976d9060a990",
+          "appliedAt": "2026-11-14T23:55:06.330Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:image:e869659734324ab089c0976d9060a990",
+          "auditEvidence": null,
+          "summary": "Licence, source, auteur et légendes de la photo revérifiés et enregistrés dans les huit langues."
+        },
+        {
+          "eventId": "closure-image-e869659734324ab089c0976d9060a990",
+          "appliedAt": "2026-11-14T23:55:06.330Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:image:e869659734324ab089c0976d9060a990",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-kohren-sahlis-20261114/audit.json",
+          "summary": "Audit final : huit pages publiques, photo exacte HTTP 200, sept tarifs, règle d’accès, complétude 78 sans bloqueur et Facebook Published."
         }
       ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne et sa date réelle. Confirmer les prochains horaires saisonniers auprès de l’exploitant ; le 14 novembre, tous les jours étaient affichés fermés avec avertissement météo. Chercher une photographie exacte plus récente sous licence de réutilisation claire.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/sommerrodelbahn-kohren-sahlis/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sommerrodelbahn Kohren-Sahlis — piste, billets, règles et état du jour",
+          "url": "https://www.sommerrodelbahn-kohren-sahlis.de/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — point exact de la piste",
+          "url": "https://www.openstreetmap.org/node/1257755774",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — André L., photo de 2011, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_-_panoramio_(1).jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Kohren-Sahlis",
+            "source": "Sommerrodelbahn Kohren-Sahlis — exploitant",
+            "url": "https://www.sommerrodelbahn-kohren-sahlis.de/",
+            "family": "Luge d’été en auge",
+            "sourceVenueName": "Sommerrodelbahn Kohren-Sahlis",
+            "sourceLocality": "Frohburg"
+          }
+        ],
+        "rationale": "La piste dispose de sa propre billetterie et d’une petite restauration, sans parc multi-attractions auquel la rattacher. L’exploitant publie les prix et la règle d’âge sur son site."
       }
     },
     {
