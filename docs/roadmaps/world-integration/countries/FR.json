@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-14T18:12:23.950Z",
+      "lastDataIntegrationAt": "2026-11-14T18:23:07.458Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -19411,6 +19411,36 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-first-20261114.json",
           "auditEvidence": null,
           "summary": "Six faits historiques privés de 1970 à 2021 intégrés en huit langues : fondation, Grand Marineland, rachat, inondation, réouverture et loi ; sources propres à chaque fait, aucune publication anticipée."
+        },
+        {
+          "eventId": "import-photo-3c5268c4ad964840980c08b6884853a7",
+          "appliedAt": "2026-11-14T18:15:03.541Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-closure-photo-20261114.json",
+          "auditEvidence": null,
+          "summary": "Photo privée des derniers jours du parc importée, prise le 2 janvier 2025 par Miguel Medina / AFP ; légendes, textes alternatifs et crédits relus en huit langues."
+        },
+        {
+          "eventId": "apply-8974fc4f-3d26-4095-99cc-1eb364c2856f",
+          "appliedAt": "2026-11-14T18:19:57.214Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-second-20261114.json",
+          "auditEvidence": null,
+          "summary": "Six faits privés supplémentaires en huit langues : projet de reconversion 2022, annonce et fermeture effective, orientations successives pour les cétacés et abandon de Beauval en août 2026 ; annonces distinguées des transferts réalisés."
+        },
+        {
+          "eventId": "apply-98a72dad-fbc8-40f5-aeb3-91ea30d8f5b8",
+          "appliedAt": "2026-11-14T18:23:07.458Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-flood-20261114.json",
+          "auditEvidence": null,
+          "summary": "Article privé développé sur les inondations de 2015 et la réouverture du 21 mars 2016, 317 à 384 mots et trois sections par langue, huit versions relues, photographie réelle des dégâts et sources vérifiées."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

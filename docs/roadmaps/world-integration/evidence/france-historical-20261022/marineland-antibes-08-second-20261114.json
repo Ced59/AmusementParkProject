@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "1e87a08a1228c73b63c4bde40ed06933627ae2d3b6a139b00bcf77518ccda847",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "8974fc4f-3d26-4095-99cc-1eb364c2856f",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T18:19:57.2142021Z",
+    "appliedAtUtc": "2026-11-14T18:19:57.2142051Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 6,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "4a380884-5501-4556-9f59-b00c474fa899",
+        "entityKey": "marineland-reconversion-projet-2022",
+        "displayName": "Un projet de reconversion sans animaux",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-reconversion-projet-2022"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2022"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Masterplan"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "99f10ef88d2649f98f3e22d1d7ba7060"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ein Umbauplan ohne Tierpräsentationen, en:A conversion plan without animal displays, es:Un proyecto de reconversión sin animales, fr:Un projet de reconversion sans animaux, it:Un progetto di riconversione senza animali, nl:Een plan voor een waterpark zonder dieren, pl:Plan przekształcenia bez pokazów zwierząt, pt:Um projeto de reconversão sem animais"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2022 beschließen die Anteilseigner von Parques Reunidos, das Gelände künftig als Wasserpark ohne Tierpräsentationen zu nutzen. Der geplante Umbau setzt zunächst den Wegzug der Tiere voraus und bedeutet einen Bruch mit der bisherigen Ausrichtung von Marineland., en:In 2022, Parques Reunidos shareholders decide to pursue a water park without animal displays on the site. The proposed transformation requires the animals to leave first, marking a break with the identity on which Marineland was built., es:En 2022, los accionistas de Parques Reunidos deciden orientar el recinto hacia un parque acuático sin exhibición de animales. El proyecto requiere primero su traslado y supone una ruptura con la identidad marina sobre la que nació Marineland., fr:En 2022, les actionnaires de Parques Reunidos décident d’orienter le site vers un parc aquatique sans présentation d’animaux. Ce projet de transformation prévoit d’abord leur départ ; il marque une rupture avec l’identité marine de Marineland., it:Nel 2022 gli azionisti di Parques Reunidos decidono di orientare il sito verso un parco acquatico senza esposizione di animali. Il progetto prevede anzitutto il loro trasferimento e segna una rottura con l’identità marina di Marineland., nl:In 2022 besluiten de aandeelhouders van Parques Reunidos het terrein te willen omvormen tot een waterpark zonder dierenpresentaties. Voor dat plan moeten eerst de dieren vertrekken. Het betekent een breuk met de identiteit waarop Marineland is gebouwd., pl:W 2022 roku akcjonariusze Parques Reunidos postanawiają dążyć do przekształcenia terenu w park wodny bez prezentacji zwierząt. Projekt wymaga najpierw ich przeniesienia i oznacza odejście od morskiej tematyki, na której zbudowano tożsamość Marineland., pt:Em 2022, os acionistas da Parques Reunidos decidem orientar o recinto para um parque aquático sem apresentação de animais. O projeto exige primeiro a sua transferência e representa uma rutura com a identidade marinha do Marineland."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"IGEDD \\u2014 rapport de juin 2024, p. 10\",\"Url\":\"https://igedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013623/015475-01_rapport-publie.pdf\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "50deb371-8559-4dc4-aa42-0294ef01f274",
+        "entityKey": "marineland-annonce-fermeture-20241204",
+        "displayName": "La direction annonce la fermeture définitive",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-annonce-fermeture-20241204"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2024"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "12"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "4"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "dd4ca7e7a0a04ec4870cc96db7915897"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die Direktion kündigt die endgültige Schließung an, en:Management announces permanent closure, es:La dirección anuncia el cierre definitivo, fr:La direction annonce la fermeture définitive, it:La direzione annuncia la chiusura definitiva, nl:De directie kondigt de definitieve sluiting aan, pl:Dyrekcja zapowiada ostateczne zamknięcie, pt:A direção anuncia o encerramento definitivo"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 4. Dezember 2024 kündigt Marineland die geplante endgültige Schließung zum folgenden 5. Januar an. Die Direktion verweist auf wirtschaftliche Schwierigkeiten und geänderte Vorschriften für Wale und Delfine. Die benachbarten Parks Aquasplash und Adventure Golf sind davon ausgenommen., en:On 4 December 2024, Marineland announces plans to close permanently from the following 5 January. Management cites economic difficulties and changing cetacean legislation. The decision does not include the neighbouring Aquasplash and Adventure Golf parks., es:El 4 de diciembre de 2024, Marineland anuncia un proyecto de cierre definitivo a partir del siguiente 5 de enero. La dirección señala sus dificultades económicas y los cambios legislativos sobre cetáceos. Los vecinos Aquasplash y Adventure Golf quedan fuera de esta decisión., fr:Le 4 décembre 2024, Marineland présente un projet de fermeture définitive à compter du 5 janvier suivant. La direction invoque ses difficultés économiques et l’évolution de la législation sur les cétacés. Aquasplash et Adventure Golf restent en dehors de cette décision., it:Il 4 dicembre 2024 Marineland annuncia il progetto di chiusura definitiva a partire dal successivo 5 gennaio. La direzione richiama le difficoltà economiche e i cambiamenti legislativi sui cetacei. I vicini Aquasplash e Adventure Golf non sono interessati dalla decisione., nl:Op 4 december 2024 kondigt Marineland het plan aan om vanaf 5 januari definitief te sluiten. De directie wijst op economische problemen en veranderende wetgeving rond walvisachtigen. De naastgelegen parken Aquasplash en Adventure Golf vallen buiten dit besluit., pl:4 grudnia 2024 roku Marineland ogłasza plan ostatecznego zamknięcia od 5 stycznia następnego roku. Dyrekcja wskazuje trudności finansowe i zmiany przepisów dotyczących waleni. Decyzja nie obejmuje sąsiednich parków Aquasplash i Adventure Golf., pt:A 4 de dezembro de 2024, o Marineland anuncia um projeto de encerramento definitivo a partir do dia 5 de janeiro seguinte. A direção invoca dificuldades económicas e alterações legislativas relativas aos cetáceos. Os vizinhos Aquasplash e Adventure Golf ficam fora desta decisão."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Marineland \\u2014 communiqu\\u00E9 du 4 d\\u00E9cembre 2024\",\"Url\":\"https://www.marineland.fr/content/dam/mar/fr/files/CP%20-%20Marineland%20annonce%20%C3%A0%20son%20CSE%20son%20projet%20de%20fermeture%20d%C3%A9finitive%20%C3%A0%20compter%20du%205%20janvier%202025.pdf\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5ae3f383-1e86-4963-bb62-4ac66df93bed",
+        "entityKey": "marineland-fermeture-20250105",
+        "displayName": "Marineland ferme au public",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-fermeture-20250105"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "1"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "DefinitiveClosure"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "3c5268c4ad964840980c08b6884853a7"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Marineland schließt für Besucher, en:Marineland closes to visitors, es:Marineland cierra al público, fr:Marineland ferme au public, it:Marineland chiude al pubblico, nl:Marineland sluit voor bezoekers, pl:Marineland zamyka się dla zwiedzających, pt:O Marineland fecha ao público"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 5. Januar 2025 empfängt Marineland seine letzten Besucher und zeigt eine letzte Orcavorführung, bevor der Park endgültig schließt. Damit endet nach mehr als einem halben Jahrhundert der Besuchsbetrieb; die Versorgung der Tiere geht vor Ort weiter., en:On 5 January 2025, Marineland welcomes its final visitors and stages one last orca show before closing permanently. The day ends more than half a century of public visits, while care for the animals continues on the site., es:El 5 de enero de 2025, Marineland recibe a sus últimos visitantes y ofrece un último espectáculo de orcas antes de cerrar definitivamente. Termina así más de medio siglo de visitas, mientras el cuidado de los animales continúa en el recinto., fr:Le 5 janvier 2025, Marineland accueille ses derniers visiteurs et donne un ultime spectacle d’orques avant de fermer définitivement. Cette journée met fin à plus d’un demi-siècle de visites, tandis que la prise en charge des animaux se poursuit sur place., it:Il 5 gennaio 2025 Marineland accoglie gli ultimi visitatori e presenta un ultimo spettacolo di orche prima di chiudere definitivamente. La giornata conclude oltre mezzo secolo di visite, mentre le cure agli animali proseguono sul posto., nl:Op 5 januari 2025 ontvangt Marineland zijn laatste bezoekers en vindt de laatste orkashow plaats, waarna het park definitief sluit. Zo eindigt ruim een halve eeuw aan parkbezoeken, terwijl de verzorging van de dieren op het terrein doorgaat., pl:5 stycznia 2025 roku Marineland przyjmuje ostatnich gości i organizuje ostatni pokaz orek przed ostatecznym zamknięciem. Kończy się ponad pół wieku zwiedzania parku, lecz opieka nad zwierzętami nadal trwa na jego terenie., pt:A 5 de janeiro de 2025, o Marineland recebe os últimos visitantes e apresenta um derradeiro espetáculo de orcas antes de encerrar definitivamente. Termina mais de meio século de visitas, enquanto os cuidados aos animais continuam no recinto."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"AFP / La Gazette France \\u2014 fermeture du 5 janvier 2025\",\"Url\":\"https://www.lagazettefrance.fr/article/cote-d-azur-clap-de-fin-pour-les-orques-et-les-dauphins-du-marineland\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Marineland \\u2014 communiqu\\u00E9 du 4 d\\u00E9cembre 2024\",\"Url\":\"https://www.marineland.fr/content/dam/mar/fr/files/CP%20-%20Marineland%20annonce%20%C3%A0%20son%20CSE%20son%20projet%20de%20fermeture%20d%C3%A9finitive%20%C3%A0%20compter%20du%205%20janvier%202025.pdf\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "9a43190b-f88b-4219-a7da-7f157a30812c",
+        "entityKey": "marineland-orientations-cetaces-20251213",
+        "displayName": "L’État privilégie un sanctuaire canadien",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-orientations-cetaces-20251213"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "12"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "13"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "178571da631e488e949c50f9ecb7bef7"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Der Staat setzt auf ein kanadisches Schutzprojekt, en:The government favours a Canadian sanctuary, es:El Estado opta por un santuario canadiense, fr:L’État privilégie un sanctuaire canadien, it:Lo Stato privilegia un santuario canadese, nl:De overheid kiest voor een Canadees opvangplan, pl:Państwo stawia na kanadyjski azyl, pt:O Estado privilegia um santuário canadiano"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 13. Dezember 2025 bevorzugt die Regierung für die beiden Orcas ein geplantes Meeresrefugium in Nova Scotia und für die Delfine das künftige Zentrum in Beauval. Diese Pläne eröffnen eine Perspektive nach der Schließung; tatsächliche Transfers sind damit noch nicht erfolgt., en:On 13 December 2025, the government favours a proposed Nova Scotia sanctuary for the two orcas and Beauval’s future centre for the dolphins. These plans outline a possible outcome after closure, but do not yet represent completed transfers., es:El 13 de diciembre de 2025, el gobierno se inclina por un proyecto de santuario marino en Nueva Escocia para las dos orcas y el futuro centro de Beauval para los delfines. Son propuestas para después del cierre, no traslados ya realizados., fr:Le 13 décembre 2025, le gouvernement privilégie un projet de sanctuaire en Nouvelle-Écosse pour les deux orques et le futur centre de Beauval pour les dauphins. Ces orientations dessinent une issue à la fermeture, sans constituer encore des transferts réalisés., it:Il 13 dicembre 2025 il governo privilegia un progetto di santuario marino in Nuova Scozia per le due orche e il futuro centro di Beauval per i delfini. Questi orientamenti delineano una prospettiva dopo la chiusura, ma non costituiscono ancora trasferimenti effettuati., nl:Op 13 december 2025 geeft de regering de voorkeur aan een gepland zeeopvanggebied in Nova Scotia voor de twee orka’s en het toekomstige centrum van Beauval voor de dolfijnen. Die plannen bieden uitzicht na de sluiting, maar zijn nog geen uitgevoerde transfers., pl:13 grudnia 2025 roku rząd wskazuje projekt morskiego azylu w Nowej Szkocji dla dwóch orek oraz przyszły ośrodek w Beauval dla delfinów. Plany te wyznaczają możliwy kierunek po zamknięciu parku, ale nie oznaczają jeszcze zrealizowanych transportów., pt:A 13 de dezembro de 2025, o governo privilegia um projeto de santuário marinho na Nova Escócia para as duas orcas e o futuro centro de Beauval para os golfinhos. São orientações para o período após o encerramento, ainda sem transferências concretizadas."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Minist\\u00E8re de la Transition \\u00E9cologique \\u2014 13 d\\u00E9cembre 2025\",\"Url\":\"https://www.ecologie.gouv.fr/presse/gouvernement-formalise-decisions-concernant-lavenir-cetaces-marineland\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "b24daebf-a774-4ca9-92a1-417067d848b6",
+        "entityKey": "marineland-orientations-espagne-20260515",
+        "displayName": "Le gouvernement se tourne vers l’Espagne",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-orientations-espagne-20260515"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "15"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "178571da631e488e949c50f9ecb7bef7"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die Regierung wendet sich Spanien zu, en:The government turns towards Spain, es:El gobierno se orienta hacia España, fr:Le gouvernement se tourne vers l’Espagne, it:Il governo si rivolge alla Spagna, nl:De regering richt zich op Spanje, pl:Rząd kieruje uwagę ku Hiszpanii, pt:O governo volta-se para Espanha"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 15. Mai 2026 unterstützt die Regierung nun Loro Parque als Lösung für die Orcas und Transfers nach Spanien für die Delfine. Sie verweist auf verfallende Anlagen und fehlende sofort verfügbare Meeresrefugien und ändert damit ihre im Dezember angekündigte Richtung., en:On 15 May 2026, the government backs Loro Parque as a solution for the orcas and transfers to Spain for the dolphins. It cites deteriorating facilities and the lack of an immediately available sanctuary, changing the plans announced in December., es:El 15 de mayo de 2026, el gobierno respalda la opción de Loro Parque para las orcas y los traslados a España para los delfines. Alega el deterioro de las instalaciones y la falta de un santuario disponible de inmediato, modificando los planes anunciados en diciembre., fr:Le 15 mai 2026, le gouvernement soutient désormais la solution du Loro Parque pour les orques et des transferts en Espagne pour les dauphins. Il invoque la dégradation des installations et l’absence de sanctuaire immédiatement disponible, modifiant les orientations annoncées en décembre., it:Il 15 maggio 2026 il governo sostiene ormai la soluzione del Loro Parque per le orche e trasferimenti in Spagna per i delfini. Richiama il deterioramento degli impianti e l’assenza di un santuario subito disponibile, cambiando gli orientamenti annunciati a dicembre., nl:Op 15 mei 2026 steunt de regering Loro Parque als oplossing voor de orka’s en transfers naar Spanje voor de dolfijnen. Ze verwijst naar de verslechterende installaties en het ontbreken van direct beschikbare zeeopvang, en wijzigt daarmee de plannen uit december., pl:15 maja 2026 roku rząd popiera już Loro Parque jako rozwiązanie dla orek oraz transporty delfinów do Hiszpanii. Wskazuje pogarszający się stan obiektów i brak natychmiast dostępnego morskiego azylu, zmieniając tym samym kierunek zapowiedziany w grudniu., pt:A 15 de maio de 2026, o governo apoia a solução do Loro Parque para as orcas e transferências para Espanha para os golfinhos. Invoca a degradação das instalações e a falta de um santuário imediatamente disponível, alterando as orientações anunciadas em dezembro."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Minist\\u00E8re de la Transition \\u00E9cologique \\u2014 15 mai 2026\",\"Url\":\"https://www.ecologie.gouv.fr/presse/avenir-cetaces-marineland-mathieu-lefevre-annonce-que-feux-sont-vert-cote-etat-leur\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5761f4f9-7219-44fd-bb56-c588fe24a6d2",
+        "entityKey": "marineland-abandon-projet-beauval-202608",
+        "displayName": "Beauval abandonne son projet d’accueil",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-abandon-projet-beauval-202608"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "8"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "3c5268c4ad964840980c08b6884853a7"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Beauval gibt sein Aufnahmeprojekt auf, en:Beauval abandons its reception project, es:Beauval abandona su proyecto de acogida, fr:Beauval abandonne son projet d’accueil, it:Beauval rinuncia al progetto di accoglienza, nl:Beauval laat zijn opvangproject varen, pl:Beauval rezygnuje z planowanego ośrodka, pt:Beauval abandona o projeto de acolhimento"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im August 2026 gibt Beauval das geplante Zentrum auf, das unter anderem acht Delfine aus Marineland aufnehmen sollte. Die bereits im Juli nach Spanien gebrachten Tiere verlieren damit ihr vorgesehenes späteres Ziel in Frankreich. Die Perspektiven nach der Schließung ändern sich erneut., en:In August 2026, Beauval abandons the centre intended to house eight of Marineland’s dolphins among others. Already moved to Spain in July, those animals lose their proposed eventual destination in France. The decision changes the options after closure once again., es:En agosto de 2026, Beauval renuncia al centro que debía acoger, entre otros, a ocho delfines de Marineland. Trasladados ya a España en julio, estos animales pierden así su futura ubicación prevista en Francia. Vuelven a cambiar las opciones posteriores al cierre., fr:En août 2026, Beauval renonce au centre qui devait notamment accueillir huit dauphins de Marineland. Déjà transférés en Espagne en juillet, ces animaux perdent ainsi la destination française envisagée à terme. L’abandon recompose une nouvelle fois les solutions de l’après-fermeture., it:Nell’agosto 2026 Beauval rinuncia al centro destinato ad accogliere, fra gli altri, otto delfini di Marineland. Già trasferiti in Spagna a luglio, questi animali perdono così la futura destinazione francese prevista. Cambiano ancora una volta le prospettive successive alla chiusura., nl:In augustus 2026 ziet Beauval af van het centrum dat onder meer acht dolfijnen uit Marineland zou opvangen. De dieren, die in juli al naar Spanje verhuisden, verliezen daarmee hun beoogde latere bestemming in Frankrijk. De mogelijkheden na de sluiting veranderen opnieuw., pl:W sierpniu 2026 roku Beauval rezygnuje z ośrodka, który miał przyjąć między innymi osiem delfinów z Marineland. Zwierzęta, przeniesione już w lipcu do Hiszpanii, tracą planowane docelowe miejsce we Francji. Perspektywy po zamknięciu parku ponownie się zmieniają., pt:Em agosto de 2026, Beauval desiste do centro que deveria acolher, entre outros, oito golfinhos do Marineland. Já transferidos para Espanha em julho, estes animais perdem assim o destino francês previsto a longo prazo. As perspetivas após o encerramento voltam a mudar."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"20 Minutes \\u2014 abandon du projet de Beauval, 28 ao\\u00FBt 2026\",\"Url\":\"https://www.20minutes.fr/planete/4241482-20260828-apres-renoncement-beauval-vont-devenir-19-dauphins-captifs-francais-devaient-etre-transferes\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}
