@@ -420,20 +420,20 @@
     },
     {
       "entryId": "GB-candidate-standalone-e1ac3bd2b32736",
-      "name": "Alpine Coaster Wiegand — Snowdonia",
+      "name": "Fforest Coaster — piste Wiegand Snowdonia",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-14",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "La piste du constructeur correspond au Fforest Coaster du parc Zip World Fforest déjà masqué.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -442,29 +442,45 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver comme indice du ParkItem Fforest Coaster dans Zip World Fforest ; aucune fiche standalone à créer.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=199#location-id-1963",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — Fforest Coaster",
+          "url": "https://www.zipworld.co.uk/adventures/fforest-coaster",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — autres activités du site",
+          "url": "https://www.zipworld.co.uk/locations/betws-y-coed",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — photo du parcours et coordonnées",
+          "url": "https://commons.wikimedia.org/wiki/File:Rope_hauled_ascent_of_the_Alpine_Coaster_-_geograph.org.uk_-_7563014.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
-            "name": "Snowdonia",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=199#location-id-1963",
+            "name": "Fforest Coaster",
+            "source": "Exploitant",
+            "url": "https://www.zipworld.co.uk/adventures/fforest-coaster",
             "family": "Alpine coaster",
-            "sourceVenueName": "Snowdonia",
-            "referenceId": "location-id-1963"
+            "sourceVenueName": "Zip World Fforest",
+            "sourceLocality": "Betws-y-Coed, Pays de Galles"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Le Fforest Coaster est vendu au sein du site Zip World Fforest qui propose aussi tyroliennes, parcours en hauteur et chute libre ; fiche Park existante masquée. La piste Wiegand Snowdonia est le même lieu, pas une nouvelle standalone."
+      },
+      "duplicateOf": "GB-park-d79f8049-5df6-4800-8a11-dbb15677baca"
     },
     {
       "entryId": "GB-park-ee5582f9-0de4-4906-923c-5e564df16c2a",
@@ -15194,13 +15210,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche Park masquée confirmée par le site de l’exploitant ; plusieurs activités distinctes sur place.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer éditorialement la fiche Park masquée, avec Fforest Coaster comme ParkItem et au moins une photographie exacte. Vérifier aussi les tyroliennes, parcours en hauteur et chute libre ; conserver l’indice Wiegand comme doublon documentaire.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15216,13 +15232,23 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14126.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — parc et activités",
+          "url": "https://www.zipworld.co.uk/locations/betws-y-coed",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — Fforest Coaster",
+          "url": "https://www.zipworld.co.uk/adventures/fforest-coaster",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "GB",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Fforest Coaster",
@@ -15235,7 +15261,7 @@
             "sourceOpenedYear": "2017"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Le site Zip World Fforest comprend plusieurs activités commercialisées ensemble ; Fforest Coaster est un ParkItem, non une standalone autonome."
       }
     },
     {

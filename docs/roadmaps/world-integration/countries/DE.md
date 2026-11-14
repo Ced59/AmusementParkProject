@@ -26,11 +26,11 @@ Couverture : **Pistes sourcées ; compléments locaux requis**. Observations ext
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **36 publiés**, **132 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **353 candidats sans fiche**.
+Parcs : **36 publiés**, **132 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **354 candidats sans fiche**.
 
-Standalone : **25 publiées**, **0 masquées**, **18 candidates sans fiche**. Autres dossiers : **47 types à décider**, **75 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
+Standalone : **25 publiées**, **0 masquées**, **17 candidates sans fiche**. Autres dossiers : **47 types à décider**, **75 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
 
-Revue standalone : **30 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **67 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **12 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **29 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **67 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **14 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 

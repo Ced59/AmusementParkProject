@@ -977,29 +977,31 @@
     },
     {
       "entryId": "ZA-candidate-standalone-5d71e271831fe7",
-      "name": "Luge Wiegand — Kapstadt",
+      "name": "Cool Runnings Cape Town",
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
+      "locality": "Off Carl Cronje Drive, Tygervalley, Cape Town 7530",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-14",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation confirmée en 2026 ; tarifs officiels valables jusqu’au 30 septembre 2027.",
+      "identityConfidence": "Identité, autonomie de la piste et absence de fiche Park/Standalone confirmées par l’exploitant et la recherche officielle du 14 novembre 2026.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
+        "Cool Runnings",
+        "Cape Town Toboggan Family Park",
         "Kapstadt"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Trouver au moins une photographie réutilisable montrant exactement la piste ou les luges de Bellville, avec auteur et licence vérifiables ; compléter ensuite la fiche et publier Facebook. Les images du site officiel ne portent pas de permission de réutilisation vérifiée. Ne pas substituer une photo du quartier ou d’une autre luge.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -1010,22 +1012,48 @@
           "label": "Opérateur référencé par la source",
           "url": "https://coolrunnings.capetown/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — tarifs 2026–2027",
+          "url": "https://coolrunnings.capetown/pricing",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — horaires et saison",
+          "url": "https://coolrunnings.capetown/times",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Flickr — photo exacte repérée, droits réservés donc non réutilisable",
+          "url": "https://www.flickr.com/photos/mdv81/2759889950/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Mapcarta — image du parc voisin, pas de la luge",
+          "url": "https://mapcarta.com/N1240719090",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — adresse, accès et coordonnées",
+          "url": "https://coolrunnings.capetown/directions",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
-            "name": "Kapstadt",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=226#location-id-1381",
+            "name": "Cool Runnings Cape Town",
+            "source": "Exploitant",
+            "url": "https://coolrunnings.capetown/",
             "family": "Luge d’été",
-            "sourceVenueName": "Kapstadt",
-            "referenceId": "location-id-1381"
+            "sourceVenueName": "Cool Runnings Cape Town",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Bellville, Le Cap"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Une piste de luge avec sa propre billetterie, entrée libre, restauration et événements annexes. Recherche officielle Park/Standalone « Cool Runnings » en ZA : zéro résultat. Publication bloquée par la règle d’au moins une photo exacte sous licence réutilisable vérifiée."
       }
     },
     {
