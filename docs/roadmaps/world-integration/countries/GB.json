@@ -15875,6 +15875,151 @@
         "publicationBlockers": [],
         "gapCount": 2
       }
+    },
+    {
+      "entryId": "GB-candidate-discovery-853eb2916325747e",
+      "name": "Brighton i360",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour d’observation mobile et capsule panoramique",
+      "locality": "Lower Kings Road, Brighton BN1 2LN",
+      "siteId": "e5307935-8773-462a-bf3d-7c0061615b31",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:21:50Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant Brighton i360 : réservation View 360 et calendrier de visites actifs le 14 novembre 2026.",
+      "identityConfidence": "Nom, adresse et exploitant officiels ; recherches Park et StandaloneAttraction sur i360 et Brighton sans fiche correspondante. Brighton Pier est un lieu distinct.",
+      "possibleMatches": [],
+      "aliases": [
+        "British Airways i360",
+        "BA i360"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T20:20:45.169Z",
+      "integrationHistory": [
+        {
+          "eventId": "06534d23-8761-404c-880d-06125f9b455c",
+          "appliedAt": "2026-11-14T20:15:23.500Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:apply:06534d23-8761-404c-880d-06125f9b455c",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et huit descriptions"
+        },
+        {
+          "eventId": "image-2ae3e3924b22476ea32370bb6535ef02",
+          "appliedAt": "2026-11-14T20:16:02Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:import-photo:2ae3e3924b22476ea32370bb6535ef02",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la capsule sous CC0"
+        },
+        {
+          "eventId": "image-c03b2647645c4723b2df67af838ad8fe",
+          "appliedAt": "2026-11-14T20:16:25Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:import-photo:c03b2647645c4723b2df67af838ad8fe",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la tour sous CC BY-SA 4.0"
+        },
+        {
+          "eventId": "6718d087-a531-4f77-a3d6-aea84d57028d",
+          "appliedAt": "2026-11-14T20:19:11.200Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:apply:6718d087-a531-4f77-a3d6-aea84d57028d",
+          "auditEvidence": null,
+          "summary": "Descriptions corrigées et détails techniques structurés"
+        },
+        {
+          "eventId": "423d5951-8ca0-4dbc-9176-df019b00aa2f",
+          "appliedAt": "2026-11-14T20:20:45.169Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:apply:423d5951-8ca0-4dbc-9176-df019b00aa2f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-brighton-i360-20261114/audit.json",
+          "summary": "Tarif adulte actuel, audit final sans bloqueur et publication"
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
+      "sources": [
+        {
+          "label": "Brighton i360 — site officiel",
+          "url": "https://www.brightoni360.co.uk/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Brighton i360 — expérience et tarif View 360",
+          "url": "https://www.brightoni360.co.uk/experiences/see-brighton-from-above",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Brighton i360 — calendrier et adresse",
+          "url": "https://www.brightoni360.co.uk/plan-your-visit",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Brighton i360 — durée et accessibilité",
+          "url": "https://www.brightoni360.co.uk/faqs",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Nightcap — hauteur et date d’ouverture",
+          "url": "https://www.nightcapvenues.com/venues/brighton-i360",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — capsule, Andy Li, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Brighton_i360_with_the_moon_2025-07-02.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — tour entière, José Luiz, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Brighton_i360_-_Brighton_-_England_2024.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 423d5951-8ca0-4dbc-9176-df019b00aa2f ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e5307935-8773-462a-bf3d-7c0061615b31/brighton-i360",
+          "publishedAtUtc": "2026-11-14T20:21:37.987Z",
+          "verifiedAtUtc": "2026-11-14T20:21:50Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d147a9b0-befb-42ba-a0f2-860e7b971bb8"
+        },
+        "facebook": {
+          "id": "3fb63aa4f8464b3989a341c02e8de18e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T20:22:34.723Z",
+          "externalPostId": "1285475681307050_122127368421424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127368421424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:3fb63aa4f8464b3989a341c02e8de18e"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-brighton-i360-20261114/audit.json",
+        "score": 79,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }
