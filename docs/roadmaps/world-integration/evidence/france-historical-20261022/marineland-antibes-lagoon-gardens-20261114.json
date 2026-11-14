@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "614769d6ce8e4124a09cf67370db0464",
+    "category": "PARK",
+    "ownerType": "PARK",
+    "ownerId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "path": "park/614769d6ce8e4124a09cf67370db0464",
+    "description": "Autour du restaurant et des bassins, le Lagoon associait des allées claires, des toits de chaume et une végétation abondante.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 2048,
+    "height": 1536,
+    "sizeInBytes": 507640,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://media-cdn.tripadvisor.com/media/photo-o/08/88/7a/79/le-paradis-le-bassin.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Palmiers, petit pavillon en bois et terrasse ombragée dans les jardins du Marineland Lagoon."
+      },
+      {
+        "languageCode": "en",
+        "value": "Palms, a small wooden pavilion and a shaded terrace in the gardens of Marineland Lagoon."
+      },
+      {
+        "languageCode": "de",
+        "value": "Palmen, ein kleiner Holzpavillon und eine schattige Terrasse in den Gärten des Marineland Lagoon."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Palmen, een klein houten paviljoen en een beschaduwd terras in de tuinen van Marineland Lagoon."
+      },
+      {
+        "languageCode": "it",
+        "value": "Palme, un piccolo padiglione in legno e una terrazza ombreggiata nei giardini del Marineland Lagoon."
+      },
+      {
+        "languageCode": "es",
+        "value": "Palmeras, un pequeño pabellón de madera y una terraza sombreada en los jardines de Marineland Lagoon."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Palmy, niewielki drewniany pawilon i zacieniony taras w ogrodach Marineland Lagoon."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Palmeiras, um pequeno pavilhão de madeira e uma esplanada à sombra nos jardins do Marineland Lagoon."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Autour du restaurant et des bassins, le Lagoon associait des allées claires, des toits de chaume et une végétation abondante."
+      },
+      {
+        "languageCode": "en",
+        "value": "Around the restaurant and pools, the Lagoon combined pale paths, thatched roofs and abundant greenery."
+      },
+      {
+        "languageCode": "de",
+        "value": "Rund um Restaurant und Becken verband der Lagoon helle Wege, Strohdächer und üppiges Grün."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Rond het restaurant en de bassins combineerde het Lagoon lichte paden, rieten daken en weelderig groen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Intorno al ristorante e alle vasche, il Lagoon univa vialetti chiari, tetti di paglia e vegetazione rigogliosa."
+      },
+      {
+        "languageCode": "es",
+        "value": "Alrededor del restaurante y las piscinas, el Lagoon combinaba caminos claros, tejados de paja y vegetación abundante."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wokół restauracji i basenów Lagoon łączyło jasne alejki, dachy kryte strzechą i bujną zieleń."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Em redor do restaurante e das piscinas, o Lagoon combinava caminhos claros, telhados de colmo e vegetação abundante."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "cecilethiery46 — Tripadvisor. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "cecilethiery46 — Tripadvisor. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "cecilethiery46 — Tripadvisor. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "cecilethiery46 — Tripadvisor. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "cecilethiery46 — Tripadvisor. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "cecilethiery46 — Tripadvisor. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "cecilethiery46 — Tripadvisor. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "cecilethiery46 — Tripadvisor. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T19:35:15.416Z",
+    "updatedAt": "2026-11-14T19:35:18.864Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T19:35:18.864Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g187217-d8447965-i143161977-Marineland_Lagoon-Antibes_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote.html"
+}

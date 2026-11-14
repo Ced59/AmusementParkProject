@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "checkedAtUtc": "2026-11-14T19:38:46.557Z",
+  "fullExportAtUtc": "2026-11-14T19:12:29.5036951Z",
+  "fullExportSha256": "ec937f95fdbc0da4b272845190a49e1accf117e094d494755e9d260aa395e22f",
+  "partialAuditOnly": true,
+  "finalAuditCompleted": false,
+  "manualDescriptionsReview": {
+    "checkedAtUtc": "2026-11-14T19:31:40.110506+00:00",
+    "reviewer": "Codex — Conversation France",
+    "parkAndAll64ItemDescriptions": {
+      "fr": "relus personnellement dans leur totalité après export final",
+      "en": "relus personnellement dans leur totalité après export final",
+      "de": "relus personnellement dans leur totalité après export final",
+      "nl": "relus personnellement dans leur totalité après export final",
+      "it": "relus personnellement dans leur totalité après export final",
+      "es": "relus personnellement dans leur totalité après export final",
+      "pl": "relus personnellement dans leur totalité après export final",
+      "pt": "relus personnellement dans leur totalité après export final"
+    },
+    "appliedCorrections": "09-editorial-corrections-apply.json",
+    "remainingCorrections": [],
+    "manualReviewComplete": false,
+    "remaining": "Contrôle transversal histoire/articles/médias/références ; couverture et exceptions ; idempotence ; décision publication.",
+    "allMentionedCorrectionsApplied": true
+  },
+  "historySourceChecks": [
+    {
+      "url": "https://igedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013623/015475-01_rapport-publie.pdf",
+      "checkedAtUtc": "2026-11-14T19:22:47.262963+00:00",
+      "status": 200,
+      "finalUrl": "https://igedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013623/015475-01_rapport-publie.pdf",
+      "contentType": "application/pdf",
+      "bytesRead": 1000000,
+      "bodySha256": "aec29a9ecba89f3dbd649362d829b31dc3ea50b3fd6143d2620ede7586ced197"
+    },
+    {
+      "url": "https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de",
+      "checkedAtUtc": "2026-11-14T19:22:47.263881+00:00",
+      "status": 200,
+      "finalUrl": "https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 53803,
+      "bodySha256": "ee093ec5062fbb260ae636cdd154d3c8e3f6e62fcc4be4098921f88d85648dcd",
+      "title": "Roland la POYPE (de) | L&#039;Ordre de la Libération et son Musée"
+    },
+    {
+      "url": "https://artemis-ing.fr/posts/c3/grand-marineland",
+      "checkedAtUtc": "2026-11-14T19:22:47.264418+00:00",
+      "status": 200,
+      "finalUrl": "https://artemis-ing.fr/posts/c3/grand-marineland",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 34393,
+      "bodySha256": "9b831edd43087a00ac5a1e114f13eea21a305f3b8682ce916cce4111cb3a942c",
+      "title": "    GRAND MARINELAND\n | Artémis ingéniérie"
+    },
+    {
+      "url": "https://www.europe1.fr/societe/les-images-du-parc-aquatique-marineland-dantibes-devaste-2525171",
+      "checkedAtUtc": "2026-11-14T19:22:48.154858+00:00",
+      "status": 200,
+      "finalUrl": "https://www.europe1.fr/societe/les-images-du-parc-aquatique-marineland-dantibes-devaste-2525171",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 65769,
+      "bodySha256": "6bbafe166980fc7a09e5971946c891edff9dc2d28bf4bdb0282fa2bd5793b497",
+      "title": "Les images du parc aquatique Marineland d&#039;Antibes dévasté"
+    },
+    {
+      "url": "https://www.europe1.fr/societe/marineland-dantibes-remis-a-flot-apres-les-intemperies-sur-la-cote-dazur-rouvre-lundi-2698192",
+      "checkedAtUtc": "2026-11-14T19:22:48.442168+00:00",
+      "status": 200,
+      "finalUrl": "https://www.europe1.fr/societe/marineland-dantibes-remis-a-flot-apres-les-intemperies-sur-la-cote-dazur-rouvre-lundi-2698192",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 62483,
+      "bodySha256": "616260bb775e008db054f69a42da9889f3afcc3d26f0a66544b32ab45a2e6fef",
+      "title": "Marineland d&#039;Antibes, remis à flot après les intempéries sur la Côte d&#039;Azur, rouvre lundi"
+    },
+    {
+      "url": "https://www.seeantibes.com/news/marineland-reopens-for-summer-2016-695105",
+      "checkedAtUtc": "2026-11-14T19:22:48.575226+00:00",
+      "status": 200,
+      "finalUrl": "https://www.seeantibes.com/news/marineland-reopens-for-summer-2016-695105",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 385277,
+      "bodySha256": "a5162a25f31efb36c935ce776695af59534e46dd55970d0a3b45624686d3d217",
+      "title": "Marineland Antibes reopens for Summer 2016"
+    },
+    {
+      "url": "https://www.lagazettefrance.fr/article/cote-d-azur-clap-de-fin-pour-les-orques-et-les-dauphins-du-marineland",
+      "checkedAtUtc": "2026-11-14T19:22:48.799203+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lagazettefrance.fr/article/cote-d-azur-clap-de-fin-pour-les-orques-et-les-dauphins-du-marineland",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 96426,
+      "bodySha256": "b27fd1ee1b5fbf457babd5c6c8470fc7eaf09f90b1eb847ad1f895773d330005",
+      "title": "Côte d'Azur: clap de fin pour les orques et les dauphins du Marineland | La Gazette France"
+    },
+    {
+      "url": "https://www.marineland.fr/content/dam/mar/fr/files/CP%20-%20Marineland%20annonce%20%C3%A0%20son%20CSE%20son%20projet%20de%20fermeture%20d%C3%A9finitive%20%C3%A0%20compter%20du%205%20janvier%202025.pdf",
+      "checkedAtUtc": "2026-11-14T19:22:49.841889+00:00",
+      "status": 200,
+      "finalUrl": "https://www.marineland.fr/content/dam/mar/fr/files/CP%20-%20Marineland%20annonce%20%C3%A0%20son%20CSE%20son%20projet%20de%20fermeture%20d%C3%A9finitive%20%C3%A0%20compter%20du%205%20janvier%202025.pdf",
+      "contentType": "application/pdf",
+      "bytesRead": 73845,
+      "bodySha256": "39789668d9b7f31b935c1115b52ebc9fb373568d9249739dd7271165fa35b543"
+    },
+    {
+      "url": "https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php",
+      "checkedAtUtc": "2026-11-14T19:22:50.356573+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 122,
+      "bodySha256": "d4e87ac6ee65572b9fd23950ad43ef1b2ea09b363df8f2ed29407cea90c4e569",
+      "title": null
+    },
+    {
+      "url": "https://tiergarten.nuernberg.de/entdecken/aktuell/detail/news/2010-05-10-flocke-und-rasputin-geniessen-bad-in-meerwasser",
+      "checkedAtUtc": "2026-11-14T19:22:50.691392+00:00",
+      "status": 200,
+      "finalUrl": "https://tiergarten.nuernberg.de/entdecken/aktuell/detail/news/2010-05-10-flocke-und-rasputin-geniessen-bad-in-meerwasser",
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 67329,
+      "bodySha256": "54a8ed0eec8b9638ba672adca08fde9eb05c5907c4b0c5d6db4d4524b3773542",
+      "title": "tiergarten.nuernberg.de: Detail "
+    },
+    {
+      "url": "https://www.tourmag.com/Marineland-prepare-l-ouverture-de-son-premier-hotel_a44187.html",
+      "checkedAtUtc": "2026-11-14T19:22:51.089706+00:00",
+      "status": 200,
+      "finalUrl": "https://www.tourmag.com/Marineland-prepare-l-ouverture-de-son-premier-hotel_a44187.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 147881,
+      "bodySha256": "dd6a847f6519da007731726c948ad9e15f84c73a6323732719cdb86c9cbd0e96",
+      "title": "Marineland prépare l'ouverture de son premier hôtel"
+    },
+    {
+      "url": "https://parcactu.wordpress.com/category/nouveaute/",
+      "checkedAtUtc": "2026-11-14T19:22:51.496508+00:00",
+      "status": 200,
+      "finalUrl": "https://parcactu.wordpress.com/category/nouveaute/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 106319,
+      "bodySha256": "0ce46bf2c018f1add420af243be9ad46374769f857a52f2cb0e06ea296fa1e2a",
+      "title": "Nouveauté &#8211; parcactu"
+    },
+    {
+      "url": "https://www.tourmag.com/Antibes-Marineland-ouvre-son-premier-hotel_a73658.html",
+      "checkedAtUtc": "2026-11-14T19:22:51.988904+00:00",
+      "status": 200,
+      "finalUrl": "https://www.tourmag.com/Antibes-Marineland-ouvre-son-premier-hotel_a73658.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 143833,
+      "bodySha256": "13f941777b133ab9131c8265adea05e4dae173b5b44ae0ebb015f1cd16983877",
+      "title": "Antibes : Marineland ouvre son premier hôtel"
+    },
+    {
+      "url": "https://www.tourmag.com/Marineland-inaugure-son-hotel-et-ouvre-Marineland-Lagoon_a74899.html",
+      "checkedAtUtc": "2026-11-14T19:22:52.715893+00:00",
+      "status": 200,
+      "finalUrl": "https://www.tourmag.com/Marineland-inaugure-son-hotel-et-ouvre-Marineland-Lagoon_a74899.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 150501,
+      "bodySha256": "554d4fa23348958d599c7c2598705ee8b8bb62e0cd4774827adb2261c64cc5f0",
+      "title": "Marineland inaugure son hôtel et ouvre \"Marineland Lagoon\""
+    },
+    {
+      "url": "https://www.whataboutnice.fr/marineland-inaugure-son-hotel-et-son-nouveau-parc/",
+      "checkedAtUtc": "2026-11-14T19:22:52.996968+00:00",
+      "status": 200,
+      "finalUrl": "https://www.whataboutnice.fr/marineland-inaugure-son-hotel-et-son-nouveau-parc/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 197960,
+      "bodySha256": "54a4777c46a52979634f3ce1b8531c472245947d74fcb27623ba98a6f323ef2c",
+      "title": "Marineland inaugure son hôtel et son nouveau parc - What about Nice ?"
+    },
+    {
+      "url": "https://www.europarcs.net/parcs/france/marineland/",
+      "checkedAtUtc": "2026-11-14T19:22:53.854621+00:00",
+      "status": 200,
+      "finalUrl": "https://www.europarcs.net/parcs/france/marineland/",
+      "contentType": "text/html; charset=iso-8859-1",
+      "bytesRead": 32004,
+      "bodySha256": "1332a8dec6fb3aa41f0b5301cd0d43a5a3b84476fb1d097bf18c872c254b169c",
+      "title": null
+    },
+    {
+      "url": "https://www.parcplaza.net/2018/04/marineland-inaugure-un-cinema-5d.html",
+      "checkedAtUtc": "2026-11-14T19:22:53.965338+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2018/04/marineland-inaugure-un-cinema-5d.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 128609,
+      "bodySha256": "b47967bc5560a3b96ca19c0a19799d4f5ec66764e0f7c17f924a080052530df0",
+      "title": "ParcPlaza.net: Marineland inaugure un cinéma 5D"
+    },
+    {
+      "url": "https://www.trio-tech.com/projects/marineland/",
+      "checkedAtUtc": "2026-11-14T19:22:54.665958+00:00",
+      "status": 200,
+      "finalUrl": "https://www.trio-tech.com/projects/marineland/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 80575,
+      "bodySha256": "007252d20ae429b43481ca562bce9feda88401f11494f1096a87e9e386e859d7",
+      "title": "5D Adventure Cinema | Triotech"
+    },
+    {
+      "url": "https://www.yorkshirepost.co.uk/whats-on/things-to-do/rare-polar-bear-triplets-and-mother-arrive-at-yorkshire-wildlife-park-3272165",
+      "checkedAtUtc": "2026-11-14T19:22:55.098028+00:00",
+      "status": 200,
+      "finalUrl": "https://www.yorkshirepost.co.uk/whats-on/things-to-do/rare-polar-bear-triplets-and-mother-arrive-at-yorkshire-wildlife-park-3272165",
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 226741,
+      "bodySha256": "65cb18b3780d011c41a0634cdbf61cb441e5868b5fd8f0aff3f21c4417180cfe",
+      "title": "‘Extremely rare’ polar bear triplets and mother arrive at Yorkshire Wildlife Park"
+    },
+    {
+      "url": "https://www.yorkshirewildlifepark.com/news/polar-bears-on-the-move-at-yorkshire-wildlife-park/",
+      "checkedAtUtc": "2026-11-14T19:22:55.176698+00:00",
+      "status": 200,
+      "finalUrl": "https://www.yorkshirewildlifepark.com/news/polar-bears-on-the-move-at-yorkshire-wildlife-park/",
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 112552,
+      "bodySha256": "f57529c66fc32aae95ff676a1428f5a06449061bed2fcf685827c8071f7d76d0",
+      "title": "Polar Bears on the Move at Yorkshire Wildlife Park"
+    },
+    {
+      "url": "https://polarbearsusa.blogspot.com/2021/06/end-of-era-at-marineland.html",
+      "checkedAtUtc": "2026-11-14T19:22:55.546640+00:00",
+      "status": 200,
+      "finalUrl": "https://polarbearsusa.blogspot.com/2021/06/end-of-era-at-marineland.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 133693,
+      "bodySha256": "191c72752ce60cdaeb97292d373fffad0bc3cc0e149d6b538c768e04b6f34cf3",
+      "title": "My Polar Bear Friends and Friends of Polar Bears: End of an Era at Marineland"
+    },
+    {
+      "url": "https://tiergarten.nuernberg.de/entdecken/aktuell/detail/news/2010-04-23-flocke-und-rasputin-leben-jetzt-in-frankreich",
+      "checkedAtUtc": "2026-11-14T19:22:55.955712+00:00",
+      "status": 200,
+      "finalUrl": "https://tiergarten.nuernberg.de/entdecken/aktuell/detail/news/2010-04-23-flocke-und-rasputin-leben-jetzt-in-frankreich",
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 67814,
+      "bodySha256": "fefa8000f67bc9344618e0c369513d70ec3e391ac0299a3b4bfc75c0bc28457d",
+      "title": "tiergarten.nuernberg.de: Detail "
+    },
+    {
+      "url": "https://tiergarten.nuernberg.de/entdecken/aktuell/detail/news/2015-02-09-eisbaerin-flocke-ist-mutter",
+      "checkedAtUtc": "2026-11-14T19:22:56.181839+00:00",
+      "status": 200,
+      "finalUrl": "https://tiergarten.nuernberg.de/entdecken/aktuell/detail/news/2015-02-09-eisbaerin-flocke-ist-mutter",
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 67320,
+      "bodySha256": "383ca463434fa61c3070fa696743a49e7118e2e61c116962f217300066e90b9b",
+      "title": "tiergarten.nuernberg.de: Detail "
+    },
+    {
+      "url": "https://www.itv.com/news/calendar/2021-12-20/polar-bear-cubs-treated-to-giant-birthday-cake-at-yorkshire-wildlife-park",
+      "checkedAtUtc": "2026-11-14T19:22:56.850205+00:00",
+      "status": 200,
+      "finalUrl": "https://www.itv.com/news/calendar/2021-12-20/polar-bear-cubs-treated-to-giant-birthday-cake-at-yorkshire-wildlife-park",
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 84176,
+      "bodySha256": "dfb166ec3fbbd42e6bc4106453df69993d02f05358fa1c18ded906f4dc570944",
+      "title": "Polar bear cubs treated to giant watermelon and fish birthday cake at Yorkshire Wildlife Park | ITV News Calendar"
+    },
+    {
+      "url": "https://www.ecologie.gouv.fr/presse/gouvernement-formalise-decisions-concernant-lavenir-cetaces-marineland",
+      "checkedAtUtc": "2026-11-14T19:22:56.886345+00:00",
+      "status": 200,
+      "finalUrl": "https://www.ecologie.gouv.fr/presse/gouvernement-formalise-decisions-concernant-lavenir-cetaces-marineland",
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 52169,
+      "bodySha256": "cadce86fe04f2ec689a52d18f34c3eec05fb8f3d33c78df58e0d2b894e4f6b6b",
+      "title": "Le Gouvernement formalise les décisions concernant l’avenir des cétacés de Marineland | Ministères Transition écologique, Aménagement du Territoire, Transports, Ville et Logement"
+    },
+    {
+      "url": "https://www.ecologie.gouv.fr/presse/avenir-cetaces-marineland-mathieu-lefevre-annonce-que-feux-sont-vert-cote-etat-leur",
+      "checkedAtUtc": "2026-11-14T19:22:57.467127+00:00",
+      "status": 200,
+      "finalUrl": "https://www.ecologie.gouv.fr/presse/avenir-cetaces-marineland-mathieu-lefevre-annonce-que-feux-sont-vert-cote-etat-leur",
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 55017,
+      "bodySha256": "21f90017c3653a5775541c3c7d003d844ddb682dbbd9b3b0aa20def2dd68e2c9",
+      "title": "Avenir des cétacés de Marineland : Mathieu Lefèvre annonce que les feux sont au vert côté État pour leur transfert | Ministères Transition écologique, Aménagement du Territoire, Transports, Ville et Logement"
+    },
+    {
+      "url": "https://www.parcsetloisirs.fr/actualite/marineland-antibes-transfert-dauphins-2",
+      "checkedAtUtc": "2026-11-14T19:22:57.487860+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcsetloisirs.fr/actualite/marineland-antibes-transfert-dauphins-2",
+      "contentType": "text/html; charset=utf-8",
+      "bytesRead": 329093,
+      "bodySha256": "c2184ab80c5229de384ac6c3b4963da50d12eadc1688f9bfdbdfab8a8ebc1609",
+      "title": "Marineland : huit dauphins ont quitté Antibes en pleine nuit direction l&#x27;Espagne - Parcs &amp; Loisirs"
+    },
+    {
+      "url": "https://www.20minutes.fr/planete/4241482-20260828-apres-renoncement-beauval-vont-devenir-19-dauphins-captifs-francais-devaient-etre-transferes",
+      "checkedAtUtc": "2026-11-14T19:22:58.108799+00:00",
+      "status": 200,
+      "finalUrl": "https://www.20minutes.fr/planete/4241482-20260828-apres-renoncement-beauval-vont-devenir-19-dauphins-captifs-francais-devaient-etre-transferes",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 678688,
+      "bodySha256": "db1a6c3da4d1051884e5f48d197b12d5074673771fa37fda016e3ac9f93f23d1",
+      "title": "Après le renoncement de Beauval, que vont devenir les 19 dauphins captifs français qui devaient y être transférés ?"
+    },
+    {
+      "url": "https://www2.assemblee-nationale.fr/static/17/questions/jo/jo_anq_202644.pdf",
+      "checkedAtUtc": "2026-11-14T19:22:58.227436+00:00",
+      "status": 200,
+      "finalUrl": "https://www2.assemblee-nationale.fr/static/17/questions/jo/jo_anq_202644.pdf",
+      "contentType": "application/pdf",
+      "bytesRead": 1000000,
+      "bodySha256": "8526b8af760c73711c6117cbf958736b1860e76d3e5afd49c19b2d3d3e8b3187"
+    },
+    {
+      "url": "https://nice.tribunal-administratif.fr/decisions-de-justice/dernieres-decisions/transfert-des-dauphins-de-marineland-en-espagne-le-juge-des-referes-rejette-les-demandes-formulees-par-l-association-sea-shepherd-france",
+      "checkedAtUtc": "2026-11-14T19:22:58.289938+00:00",
+      "status": 200,
+      "finalUrl": "https://nice.tribunal-administratif.fr/decisions-de-justice/dernieres-decisions/transfert-des-dauphins-de-marineland-en-espagne-le-juge-des-referes-rejette-les-demandes-formulees-par-l-association-sea-shepherd-france",
+      "contentType": "text/html; charset=UTF-8",
+      "bytesRead": 96730,
+      "bodySha256": "70386e36bebd44e72295b83c9af94b4561df6fbceebdc8f925f3a4969679b3f3",
+      "title": "\n                                    Transfert des dauphins de Marineland en Espagne : le juge des référés rejette les demandes formulées par l&#039;association Sea Shepherd France - Tribunal administratif de Nice\n                        "
+    },
+    {
+      "url": "https://www.tf1info.fr/environnement-ecologie/les-dauphins-vont-bien-zoom-sur-selwo-marina-ce-parc-espagnol-ou-sont-arrives-les-huit-cetaces-d-antibes-2454625.html",
+      "checkedAtUtc": "2026-11-14T19:22:58.623412+00:00",
+      "error": "HTTPError",
+      "message": "HTTP Error 403: Forbidden"
+    }
+  ],
+  "additionalHistorySourceChecks": [
+    {
+      "url": "https://www.antibes-juanlespins.com/vivre-a-antibes/lenvironnement/la-protection-des-milieux-naturels/les-actions-de-prevention",
+      "status": 200,
+      "finalUrl": "https://www.antibes-juanlespins.com/vivre-a-antibes/lenvironnement/la-protection-des-milieux-naturels/les-actions-de-prevention",
+      "sha256": "abeb86a26d3feb4a9812dd7a35359a94af16520ab737f311d2cdf90a7ac2f0e5",
+      "checkedAtUtc": "2026-11-14T19:35:33.331376+00:00"
+    },
+    {
+      "url": "https://www.sobluehotel.com/en",
+      "status": 200,
+      "finalUrl": "https://www.sobluehotel.com/en",
+      "sha256": "2e433d2124295b218e56fbd75d6f8a5c751729f8d849fe9c89183014c5121946",
+      "checkedAtUtc": "2026-11-14T19:35:35.049544+00:00"
+    }
+  ],
+  "sourceResolution": {
+    "tf1": "Lien retiré du fait privé après 403 ; trois sources indépendantes conservées, fait inchangé.",
+    "leszoosdanslemonde": "Le téléchargement direct répond 200 mais 122 octets ; lecture du contenu historique réussie via outil web, source turn242853view0. Ne pas qualifier le corps direct de page documentaire complète."
+  },
+  "sitePublished": false,
+  "facebookPublished": false
+}

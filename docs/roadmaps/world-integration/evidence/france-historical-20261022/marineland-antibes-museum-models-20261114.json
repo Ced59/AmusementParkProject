@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "2a1053e4a0ce46e2a8fa5a1eb0639f09",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "9da44996-3b58-4bfa-bf9e-80c54da0f65e",
+    "path": "park_item/2a1053e4a0ce46e2a8fa5a1eb0639f09",
+    "description": "Une vitrine de la collection La Poype, photographiée au musée de Marineland durant l’été 2009.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 320,
+    "height": 240,
+    "sizeInBytes": 16512,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://2img.net/r/hpimg8/pics/886345SANY0102.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vitrine du musée de la Marine de Marineland avec une maquette de cuirassé et des instruments de navigation."
+      },
+      {
+        "languageCode": "en",
+        "value": "A display case in Marineland’s maritime museum with a battleship model and navigation instruments."
+      },
+      {
+        "languageCode": "de",
+        "value": "Vitrine im Schifffahrtsmuseum von Marineland mit einem Schlachtschiffmodell und Navigationsinstrumenten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vitrine in het scheepvaartmuseum van Marineland met een model van een slagschip en navigatie-instrumenten."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vetrina del museo della Marina di Marineland con il modello di una corazzata e strumenti di navigazione."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vitrina del museo naval de Marineland con una maqueta de acorazado e instrumentos de navegación."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Gablota w muzeum morskim Marineland z modelem pancernika i przyrządami nawigacyjnymi."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vitrina do museu marítimo do Marineland com uma maquete de couraçado e instrumentos de navegação."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une vitrine de la collection La Poype, photographiée au musée de Marineland durant l’été 2009."
+      },
+      {
+        "languageCode": "en",
+        "value": "A display from the La Poype collection, photographed in Marineland’s museum during summer 2009."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Vitrine der Sammlung La Poype, im Sommer 2009 im Museum von Marineland fotografiert."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een vitrine uit de collectie La Poype, gefotografeerd in het museum van Marineland in de zomer van 2009."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una vetrina della collezione La Poype, fotografata nel museo di Marineland nell’estate 2009."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una vitrina de la colección La Poype, fotografiada en el museo de Marineland durante el verano de 2009."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Gablota z kolekcji La Poype, sfotografowana w muzeum Marineland latem 2009 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma vitrina da coleção La Poype, fotografada no museu do Marineland durante o verão de 2009."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Marec — La Royale Modélisme, septembre 2009. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Marec — La Royale Modélisme, September 2009. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Marec — La Royale Modélisme, September 2009. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Marec — La Royale Modélisme, september 2009. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Marec — La Royale Modélisme, settembre 2009. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Marec — La Royale Modélisme, septiembre de 2009. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Marec — La Royale Modélisme, wrzesień 2009. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Marec — La Royale Modélisme, setembro de 2009. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T19:19:09.11Z",
+    "updatedAt": "2026-11-14T19:19:12.816Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T19:19:12.816Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://www.laroyale-modelisme.net/t2954-musee-de-la-marine-au-parc-marineland-d-antibes-par-marec"
+}

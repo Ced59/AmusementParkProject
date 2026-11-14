@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "b671287bdbe8794e1ee82949b974cfb052ea94ff2fcfea272e0c9e294aafe86b",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "0916717a-842b-4b62-aff1-dd968d1eb275",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T19:32:34.2168096Z",
+    "appliedAtUtc": "2026-11-14T19:32:34.2168102Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a5725055-8241-4c63-8ac3-e5a777ed8546",
+        "entityKey": "a5725055-8241-4c63-8ac3-e5a777ed8546",
+        "displayName": "Otaries de Patagonie",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Otaria z wyraźną grzywą</h2><p>Otarie patagońskie należały do gatunków prezentowanych przy skałach uchatek. Samce wyróżniały się potężną szyją i grzywą, z której pochodzi określenie „lew morski”. Ich sylwetka różniła się od uchatek kalifornijskich kojarzonych z pokazami parku.</p><p>W Marineland rodziły się także młode tego gatunku. Przyszedł tu na świat samiec Oba, który później zastąpił ojca jako samiec rozpłodowy. Jego losy łączyły ekspozycję z życiem grupy pozostającej pod opieką w Antibes przez kolejne pokolenia.</p><h2>Z Antibes do Patagonii w paryskim zoo</h2><p>Oba trafił następnie do strefy Patagonii w Parc zoologique de Paris, gdzie miał dołączyć do dwóch samic z Walencji. W Antibes otarie patagońskie nadal należały do kolekcji płetwonogich, obok uchatek kalifornijskich, kotików karłowatych i uchatków grzywiastych.</p>",
+            "newValue": "<h2>Otaria z wyraźną grzywą</h2><p>Otarie patagońskie należały do gatunków prezentowanych przy skałach uchatek. Samce wyróżniały się potężną szyją i grzywą, z której pochodzi określenie „lew morski”. Ich sylwetka różniła się od uchatek kalifornijskich kojarzonych z pokazami parku.</p><p>W Marineland rodziły się także młode tego gatunku. Przyszedł tu na świat samiec Oba, który później zastąpił ojca jako samiec rozpłodowy. Jego losy łączyły ekspozycję z życiem grupy pozostającej pod opieką w Antibes przez kolejne pokolenia.</p><h2>Z Antibes do Patagonii w paryskim zoo</h2><p>Oba trafił następnie do strefy Patagonii w Parc zoologique de Paris, gdzie miał dołączyć do dwóch samic z Walencji. W Antibes otarie patagońskie nadal należały do kolekcji płetwonogich, obok uchatek kalifornijskich, kotików karłowatych i uchatek grzywiastych.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+        "entityKey": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+        "displayName": "Otaries d’Afrique du Sud",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Zuid-Afrikaanse pelsrobben bij de zeeleeuwenrotsen</h2><p>Marineland toonde Zuid-Afrikaanse pelsrobben, ook Kaapse pelsrobben genoemd, bij de zeeleeuwenrotsen. De collectie omvatte daarnaast Zuid-Amerikaanse, Californische en Stellerzeeleeuwen.</p><p>Een van de in Antibes geboren dieren was Willow, een jonge Zuid-Afrikaanse pelsrob. Het kleine, donkere dier lag met een natte vacht op houten planken aan de waterkant.</p><h2>Willow en de fokkerij in Antibes</h2><p>Willow werd geboren binnen een Europees fokprogramma. Tijdens de eerste weken waakten de moeder en de verzorgers over het jong. In dezelfde periode werd bij de Californische zeeleeuwen nog een pup geboren: Cooper.</p>",
+            "newValue": "<h2>Zuid-Afrikaanse pelsrobben bij de zeeleeuwenrotsen</h2><p>Marineland toonde Zuid-Afrikaanse pelsrobben, ook Kaapse pelsrobben genoemd, bij de zeeleeuwenrotsen. De collectie omvatte daarnaast Zuid-Amerikaanse, Californische en Stellerzeeleeuwen.</p><p>Een van de in Antibes geboren dieren was Willow, een jonge Zuid-Afrikaanse pelsrob. Het kleine, donkere dier lag met een natte vacht op houten planken aan de waterkant.</p><h2>Willow en het fokprogramma in Antibes</h2><p>Willow werd geboren binnen een Europees fokprogramma. Tijdens de eerste weken waakten de moeder en de verzorgers over het jong. In dezelfde periode werd bij de Californische zeeleeuwen nog een pup geboren: Cooper.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

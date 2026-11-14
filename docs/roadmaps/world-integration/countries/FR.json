@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-14T19:11:41.953Z",
+      "lastDataIntegrationAt": "2026-11-14T19:37:19.634Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -19561,6 +19561,96 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-03-access-provenance-20261114.json",
           "auditEvidence": null,
           "summary": "Provenance officielle restaurée pour les sept conditions historiques de quatre expériences ; dates initiales connues conservées, nouvelle vérification datée et textes huit langues inchangés."
+        },
+        {
+          "eventId": "image-2a1053e4a0ce46e2a8fa5a1eb0639f09",
+          "appliedAt": "2026-11-14T19:19:12.816Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-museum-models-20261114.json",
+          "auditEvidence": null,
+          "summary": "Première photographie du musée maritime : vitrine de la collection La Poype en 2009, attribution Marec et huit langues, import privé."
+        },
+        {
+          "eventId": "image-428178587768457ab9dace4ba0b4dbe1",
+          "appliedAt": "2026-11-14T19:19:43.195Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-museum-other-20261114.json",
+          "auditEvidence": null,
+          "summary": "Deuxième photographie du musée maritime : vitrine du porte-avions et salle en 2009, huit langues et attribution, import privé."
+        },
+        {
+          "eventId": "image-d4046c4421b04531b87bfbaa888594ec",
+          "appliedAt": "2026-11-14T19:20:15.278Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-museum-gallery-20261114.json",
+          "auditEvidence": null,
+          "summary": "Troisième photographie du musée maritime : détail du pont d’une maquette en 2009, original intact et attribution Marec en huit langues, import privé."
+        },
+        {
+          "eventId": "apply-21cf7649-ccfe-47f7-ba28-4e6f32efc159",
+          "appliedAt": "2026-11-14T19:29:04.386Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-editorial-corrections-20261114.json",
+          "auditEvidence": null,
+          "summary": "Relecture finale : descriptions des pélicans et de Willow en huit langues, terme allemand du musée, photographie courante du musée et sources accessibles du transfert des dauphins ; contenus privés."
+        },
+        {
+          "eventId": "apply-0916717a-842b-4b62-aff1-dd968d1eb275",
+          "appliedAt": "2026-11-14T19:32:34.216Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-language-polish-20261114.json",
+          "auditEvidence": null,
+          "summary": "Dernière relecture des 64 descriptions dans les huit langues : accord polonais et intitulé néerlandais corrigés, sans changement factuel ni visibilité."
+        },
+        {
+          "eventId": "image-85135a21f3e441129926d830668daf32",
+          "appliedAt": "2026-11-14T19:33:56.192Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-bathing-20261114.json",
+          "auditEvidence": null,
+          "summary": "Photo originale du lagon de baignade, séparation vitrée des bassins visible, crédit vérifié et huit langues ; privée."
+        },
+        {
+          "eventId": "image-47ca1e978b614553a0ac4c21c76b5c50",
+          "appliedAt": "2026-11-14T19:34:38.048Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-restaurant-20261114.json",
+          "auditEvidence": null,
+          "summary": "Première photo du restaurant So Lagoon, bâtiment en bois et terrasse reconnus, original et crédit vérifiés, huit langues ; privée."
+        },
+        {
+          "eventId": "image-614769d6ce8e4124a09cf67370db0464",
+          "appliedAt": "2026-11-14T19:35:18.864Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-gardens-20261114.json",
+          "auditEvidence": null,
+          "summary": "Vue originale des allées, végétation et pavillons du Lagoon, crédit vérifié, huit langues ; photo générale privée du parc."
+        },
+        {
+          "eventId": "apply-ae8bc5c5-e23d-4d45-b2a2-4e2960f62af9",
+          "appliedAt": "2026-11-14T19:37:19.634Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-history-audit-corrections-20261114.json",
+          "auditEvidence": null,
+          "summary": "Audit transversal : centre de soins des tortues localisé hors parc à la Batterie du Graillon ; résumé hôtel précisant sa continuité SoBlue. Huit langues, sources officielles joignables, blocs et identifiants conservés."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

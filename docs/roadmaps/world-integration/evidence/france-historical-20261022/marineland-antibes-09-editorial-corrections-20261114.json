@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "6c38d05cc8f58f2f8137c80db9c7eb34e43f2d6109b537c62b0097f413cc4adb",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "21cf7649-ccfe-47f7-ba28-4e6f32efc159",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T19:29:04.3869541Z",
+    "appliedAtUtc": "2026-11-14T19:29:04.386955Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fdac797f-833c-4b80-ae6f-2ba2c24574f4",
+        "entityKey": "fdac797f-833c-4b80-ae6f-2ba2c24574f4",
+        "displayName": "Pélicans — ancien espace près du tunnel",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Pelikane am Haitunnel</h2><p>Eine kleine Gruppe Pelikane lebte nahe dem Haitunnel des Marineland. Ihr Gehege am Wasser gehörte zum Tierparcours neben den Aquarienanlagen.</p><p>Holzplattformen dienten den langschnäbligen Vögeln als Ruheplätze. Ein Foto von Elodie Rothan zeigte einen hellgrauen Pelikan am Rand einer dieser Plattformen über dem dunklen Wasser.</p>",
+            "newValue": "<h2>Pelikane am Haitunnel</h2><p>Eine kleine Gruppe Pelikane lebte nahe dem Haitunnel des Marineland. Ihr Gehege am Wasser gehörte zum Tierparcours neben den Aquarienanlagen.</p><p>Holzplattformen dienten den langschnäbligen Vögeln als Ruheplätze. Ein hellgrauer Pelikan stand am Rand einer dieser Plattformen über dem dunklen Wasser.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Pelicans beside the tunnel</h2><p>A small group of pelicans lived beside Marineland’s shark tunnel. Their waterside enclosure formed part of the animal trail next to the aquarium installations.</p><p>Wooden platforms provided resting places for these long-billed birds. A photograph by Elodie Rothan showed a pale grey pelican standing at the edge of one platform above the dark water.</p>",
+            "newValue": "<h2>Pelicans beside the tunnel</h2><p>A small group of pelicans lived beside Marineland’s shark tunnel. Their waterside enclosure formed part of the animal trail next to the aquarium installations.</p><p>Wooden platforms provided resting places for these long-billed birds. A pale grey pelican stood at the edge of one platform above the dark water.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Los pelícanos junto al túnel</h2><p>Un pequeño grupo de pelícanos vivía cerca del túnel de los tiburones de Marineland. Su recinto junto al agua formaba parte del recorrido de animales, al lado de las instalaciones del acuario.</p><p>Unas plataformas de madera servían de posaderos a estas aves de pico largo. Una fotografía de Elodie Rothan mostraba un pelícano gris claro al borde de una de ellas, sobre el agua oscura.</p>",
+            "newValue": "<h2>Los pelícanos junto al túnel</h2><p>Un pequeño grupo de pelícanos vivía cerca del túnel de los tiburones de Marineland. Su recinto junto al agua formaba parte del recorrido de animales, al lado de las instalaciones del acuario.</p><p>Unas plataformas de madera servían de posaderos a estas aves de pico largo. Un pelícano gris claro se posaba al borde de una de ellas, sobre el agua oscura.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Les pélicans près du tunnel</h2><p>Un petit groupe de pélicans vivait près du tunnel des requins de Marineland. Leur espace au bord de l’eau faisait partie du parcours animalier, à côté des installations de l’aquarium.</p><p>Des pontons de bois servaient de reposoirs à ces oiseaux au long bec. Une photographie d’Elodie Rothan montrait un pélican gris clair debout au bord de l’un de ces pontons, au-dessus de l’eau sombre.</p>",
+            "newValue": "<h2>Les pélicans près du tunnel</h2><p>Un petit groupe de pélicans vivait près du tunnel des requins de Marineland. Leur espace au bord de l’eau faisait partie du parcours animalier, à côté des installations de l’aquarium.</p><p>Des pontons de bois servaient de reposoirs à ces oiseaux au long bec. Un pélican gris clair se tenait au bord de l’un de ces pontons, au-dessus de l’eau sombre.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>I pellicani accanto al tunnel</h2><p>Un piccolo gruppo di pellicani viveva vicino al tunnel degli squali di Marineland. Il loro spazio sull’acqua faceva parte del percorso degli animali, accanto alle strutture dell’acquario.</p><p>Piattaforme di legno offrivano punti di riposo a questi uccelli dal lungo becco. Una fotografia di Elodie Rothan mostrava un pellicano grigio chiaro sul bordo di una piattaforma, sopra l’acqua scura.</p>",
+            "newValue": "<h2>I pellicani accanto al tunnel</h2><p>Un piccolo gruppo di pellicani viveva vicino al tunnel degli squali di Marineland. Il loro spazio sull’acqua faceva parte del percorso degli animali, accanto alle strutture dell’acquario.</p><p>Piattaforme di legno offrivano punti di riposo a questi uccelli dal lungo becco. Un pellicano grigio chiaro stava sul bordo di una piattaforma, sopra l’acqua scura.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Pelikanen bij de tunnel</h2><p>Een kleine groep pelikanen leefde bij de haaientunnel van Marineland. Hun verblijf aan het water hoorde bij de dierenroute langs het aquarium.</p><p>Houten platforms boden rustplaatsen aan deze vogels met hun lange snavels. Op een foto van Elodie Rothan stond een lichtgrijze pelikaan aan de rand van zo’n platform, boven het donkere water.</p>",
+            "newValue": "<h2>Pelikanen bij de tunnel</h2><p>Een kleine groep pelikanen leefde bij de haaientunnel van Marineland. Hun verblijf aan het water hoorde bij de dierenroute langs het aquarium.</p><p>Houten platforms boden rustplaatsen aan deze vogels met hun lange snavels. Een lichtgrijze pelikaan stond aan de rand van zo’n platform, boven het donkere water.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Pelikany przy tunelu</h2><p>Niewielka grupa pelikanów żyła w pobliżu tunelu rekinów w Marineland. Ich wybieg nad wodą należał do trasy zwiedzania zwierząt obok obiektów akwarium.</p><p>Drewniane pomosty służyły długodziobym ptakom jako miejsca odpoczynku. Na fotografii Elodie Rothan jasnoszary pelikan stał na skraju jednego z nich, nad ciemną wodą.</p>",
+            "newValue": "<h2>Pelikany przy tunelu</h2><p>Niewielka grupa pelikanów żyła w pobliżu tunelu rekinów w Marineland. Ich wybieg nad wodą należał do trasy zwiedzania zwierząt obok obiektów akwarium.</p><p>Drewniane pomosty służyły długodziobym ptakom jako miejsca odpoczynku. Jasnoszary pelikan stał na skraju jednego z nich, nad ciemną wodą.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Os pelicanos junto ao túnel</h2><p>Um pequeno grupo de pelicanos vivia perto do túnel dos tubarões do Marineland. O seu espaço junto à água fazia parte do percurso dos animais, ao lado das instalações do aquário.</p><p>Plataformas de madeira serviam de locais de repouso a estas aves de bico comprido. Uma fotografia de Elodie Rothan mostrava um pelicano cinzento-claro na borda de uma delas, acima da água escura.</p>",
+            "newValue": "<h2>Os pelicanos junto ao túnel</h2><p>Um pequeno grupo de pelicanos vivia perto do túnel dos tubarões do Marineland. O seu espaço junto à água fazia parte do percurso dos animais, ao lado das instalações do aquário.</p><p>Plataformas de madeira serviam de locais de repouso a estas aves de bico comprido. Um pelicano cinzento-claro pousava na borda de uma delas, acima da água escura.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+        "entityKey": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+        "displayName": "Otaries d’Afrique du Sud",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Südafrikanische Seebären am Seelöwenfelsen</h2><p>Marineland zeigte am Seelöwenfelsen Südafrikanische Seebären, die auch als Kap-Seebären bekannt sind. Zur Sammlung gehörten außerdem Südamerikanische, Kalifornische und Stellersche Seelöwen.</p><p>Zu den in Antibes geborenen Jungtieren zählte der kleine Seebär Willow. Ein Foto zeigte das dunkle Jungtier mit nassem Fell auf Holzplanken am Wasser liegend.</p><h2>Willow und die Nachzucht in Antibes</h2><p>Willows Geburt erfolgte im Rahmen eines europäischen Zuchtprogramms. In den ersten Wochen wachten Mutter und Tierpfleger über das Jungtier. Zur selben Zeit wurde bei den Kalifornischen Seelöwen ein weiterer Nachwuchs namens Cooper geboren.</p>",
+            "newValue": "<h2>Südafrikanische Seebären am Seelöwenfelsen</h2><p>Marineland zeigte am Seelöwenfelsen Südafrikanische Seebären, die auch als Kap-Seebären bekannt sind. Zur Sammlung gehörten außerdem Südamerikanische, Kalifornische und Stellersche Seelöwen.</p><p>Zu den in Antibes geborenen Jungtieren zählte der kleine Seebär Willow. Das dunkle Jungtier lag mit nassem Fell auf Holzplanken am Wasser.</p><h2>Willow und die Nachzucht in Antibes</h2><p>Willows Geburt erfolgte im Rahmen eines europäischen Zuchtprogramms. In den ersten Wochen wachten Mutter und Tierpfleger über das Jungtier. Zur selben Zeit wurde bei den Kalifornischen Seelöwen ein weiterer Nachwuchs namens Cooper geboren.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Cape fur seals at the sea lion rocks</h2><p>Marineland displayed South African fur seals, also known as Cape fur seals, at its sea lion rocks. The collection also included South American, California and Steller sea lions.</p><p>One of the animals born in Antibes was Willow, a young Cape fur seal. Her small, dark shape and wet coat were photographed as she lay on wooden boards beside the water.</p><h2>Willow and breeding in Antibes</h2><p>Willow was born as part of a European breeding programme. During her first weeks, her mother and keepers watched over her, while another pup, Cooper, was born among the California sea lions.</p>",
+            "newValue": "<h2>Cape fur seals at the sea lion rocks</h2><p>Marineland displayed South African fur seals, also known as Cape fur seals, at its sea lion rocks. The collection also included South American, California and Steller sea lions.</p><p>One of the animals born in Antibes was Willow, a young Cape fur seal. She rested on wooden boards beside the water, her small body covered in dark, wet fur.</p><h2>Willow and breeding in Antibes</h2><p>Willow was born as part of a European breeding programme. During her first weeks, her mother and keepers watched over her, while another pup, Cooper, was born among the California sea lions.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Los lobos marinos del Cabo</h2><p>En la roca de las otarias, Marineland presentaba lobos marinos sudafricanos, también llamados lobos marinos del Cabo. La colección incluía además leones marinos sudamericanos, de California y de Steller.</p><p>Entre los animales nacidos en Antibes figuraba Willow, una cría de lobo marino del Cabo. Una fotografía la mostraba con el pelo oscuro y mojado, tumbada sobre unas tablas junto al agua.</p><h2>Willow y la reproducción en Antibes</h2><p>El nacimiento de Willow se produjo dentro de un programa europeo de reproducción. Durante sus primeras semanas la madre y los cuidadores vigilaban a la cría, mientras nacía otro cachorro, Cooper, entre los leones marinos de California.</p>",
+            "newValue": "<h2>Los lobos marinos del Cabo</h2><p>En la roca de las otarias, Marineland presentaba lobos marinos sudafricanos, también llamados lobos marinos del Cabo. La colección incluía además leones marinos sudamericanos, de California y de Steller.</p><p>Entre los animales nacidos en Antibes figuraba Willow, una cría de lobo marino del Cabo. Descansaba sobre unas tablas junto al agua, con el pelo oscuro y mojado.</p><h2>Willow y la reproducción en Antibes</h2><p>El nacimiento de Willow se produjo dentro de un programa europeo de reproducción. Durante sus primeras semanas la madre y los cuidadores vigilaban a la cría, mientras nacía otro cachorro, Cooper, entre los leones marinos de California.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Les otaries à fourrure du Cap</h2><p>Au rocher des otaries, Marineland présentait des otaries d’Afrique du Sud, également appelées otaries à fourrure du Cap. Elles côtoyaient dans la collection les otaries de Patagonie, de Californie et de Steller.</p><p>Parmi les naissances d’Antibes figurait Willow, une jeune otarie d’Afrique du Sud. Sa petite silhouette sombre, au pelage mouillé, fut photographiée allongée sur les planches au bord de l’eau.</p><h2>Willow et la reproduction à Antibes</h2><p>La naissance de Willow s’inscrivait dans un programme européen de reproduction. Durant ses premières semaines, la jeune otarie restait sous la surveillance de sa mère et des soigneurs, alors qu’un autre petit, Cooper, naissait chez les otaries de Californie.</p>",
+            "newValue": "<h2>Les otaries à fourrure du Cap</h2><p>Au rocher des otaries, Marineland présentait des otaries d’Afrique du Sud, également appelées otaries à fourrure du Cap. Elles côtoyaient dans la collection les otaries de Patagonie, de Californie et de Steller.</p><p>Parmi les naissances d’Antibes figurait Willow, une jeune otarie d’Afrique du Sud. Elle reposait sur les planches au bord de l’eau, petite silhouette sombre au pelage mouillé.</p><h2>Willow et la reproduction à Antibes</h2><p>La naissance de Willow s’inscrivait dans un programme européen de reproduction. Durant ses premières semaines, la jeune otarie restait sous la surveillance de sa mère et des soigneurs, alors qu’un autre petit, Cooper, naissait chez les otaries de Californie.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Le otarie orsine del Capo</h2><p>Alla roccia delle otarie, Marineland presentava le otarie orsine del Sudafrica, note anche come otarie orsine del Capo. La collezione comprendeva inoltre otarie sudamericane, della California e di Steller.</p><p>Fra i piccoli nati ad Antibes c’era Willow, una giovane otaria orsina del Capo. Una fotografia la mostrava con il pelo scuro e bagnato, distesa sulle assi di legno vicino all’acqua.</p><h2>Willow e le nascite ad Antibes</h2><p>La nascita di Willow rientrava in un programma europeo di riproduzione. Nelle prime settimane la madre e gli addetti vigilavano sulla piccola, mentre fra le otarie della California nasceva un altro cucciolo, Cooper.</p>",
+            "newValue": "<h2>Le otarie orsine del Capo</h2><p>Alla roccia delle otarie, Marineland presentava le otarie orsine del Sudafrica, note anche come otarie orsine del Capo. La collezione comprendeva inoltre otarie sudamericane, della California e di Steller.</p><p>Fra i piccoli nati ad Antibes c’era Willow, una giovane otaria orsina del Capo. Riposava sulle assi di legno vicino all’acqua, con il pelo scuro e bagnato.</p><h2>Willow e le nascite ad Antibes</h2><p>La nascita di Willow rientrava in un programma europeo di riproduzione. Nelle prime settimane la madre e gli addetti vigilavano sulla piccola, mentre fra le otarie della California nasceva un altro cucciolo, Cooper.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Zuid-Afrikaanse pelsrobben bij de zeeleeuwenrotsen</h2><p>Marineland toonde Zuid-Afrikaanse pelsrobben, ook Kaapse pelsrobben genoemd, bij de zeeleeuwenrotsen. De collectie omvatte daarnaast Zuid-Amerikaanse, Californische en Stellerzeeleeuwen.</p><p>Een van de in Antibes geboren dieren was Willow, een jonge Zuid-Afrikaanse pelsrob. Het kleine, donkere dier werd met een natte vacht gefotografeerd op houten planken aan de waterkant.</p><h2>Willow en de fokkerij in Antibes</h2><p>Willow werd geboren binnen een Europees fokprogramma. Tijdens de eerste weken waakten de moeder en de verzorgers over het jong. In dezelfde periode werd bij de Californische zeeleeuwen nog een pup geboren: Cooper.</p>",
+            "newValue": "<h2>Zuid-Afrikaanse pelsrobben bij de zeeleeuwenrotsen</h2><p>Marineland toonde Zuid-Afrikaanse pelsrobben, ook Kaapse pelsrobben genoemd, bij de zeeleeuwenrotsen. De collectie omvatte daarnaast Zuid-Amerikaanse, Californische en Stellerzeeleeuwen.</p><p>Een van de in Antibes geboren dieren was Willow, een jonge Zuid-Afrikaanse pelsrob. Het kleine, donkere dier lag met een natte vacht op houten planken aan de waterkant.</p><h2>Willow en de fokkerij in Antibes</h2><p>Willow werd geboren binnen een Europees fokprogramma. Tijdens de eerste weken waakten de moeder en de verzorgers over het jong. In dezelfde periode werd bij de Californische zeeleeuwen nog een pup geboren: Cooper.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Kotiki karłowate w Marineland</h2><p>Przy skałach uchatek Marineland prezentował kotiki karłowate, znane także jako kotiki południowoafrykańskie. W kolekcji znajdowały się ponadto otarie patagońskie, uchatki kalifornijskie i uchatki grzywiaste.</p><p>Wśród zwierząt urodzonych w Antibes był młody kotik o imieniu Willow. Na fotografii małe, ciemne zwierzę leżało z mokrą sierścią na deskach nad wodą.</p><h2>Willow i narodziny w Antibes</h2><p>Willow urodziła się w ramach europejskiego programu hodowlanego. W pierwszych tygodniach czuwały nad nią matka i opiekunowie. W tym samym okresie wśród uchatek kalifornijskich przyszedł na świat inny maluch, Cooper.</p>",
+            "newValue": "<h2>Kotiki karłowate w Marineland</h2><p>Przy skałach uchatek Marineland prezentował kotiki karłowate, znane także jako kotiki południowoafrykańskie. W kolekcji znajdowały się ponadto otarie patagońskie, uchatki kalifornijskie i uchatki grzywiaste.</p><p>Wśród zwierząt urodzonych w Antibes była Willow, młoda samica kotika karłowatego. Leżała na deskach nad wodą, okryta ciemną, mokrą sierścią.</p><h2>Willow i narodziny w Antibes</h2><p>Willow urodziła się w ramach europejskiego programu hodowlanego. W pierwszych tygodniach czuwały nad nią matka i opiekunowie. W tym samym okresie wśród uchatek kalifornijskich przyszedł na świat inny maluch, Cooper.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Os lobos-marinhos-do-cabo</h2><p>No rochedo das otárias, o Marineland apresentava lobos-marinhos-sul-africanos, também conhecidos como lobos-marinhos-do-cabo. A coleção incluía ainda leões-marinhos-sul-americanos, da Califórnia e de Steller.</p><p>Entre os animais nascidos em Antibes estava Willow, uma cria de lobo-marinho-do-cabo. Uma fotografia mostrava-a deitada sobre tábuas junto à água, com o pelo escuro e molhado.</p><h2>Willow e a reprodução em Antibes</h2><p>Willow nasceu no âmbito de um programa europeu de reprodução. Nas primeiras semanas, a mãe e os tratadores mantinham a cria sob vigilância, enquanto nascia outro pequeno, Cooper, entre os leões-marinhos-da-califórnia.</p>",
+            "newValue": "<h2>Os lobos-marinhos-do-cabo</h2><p>No rochedo das otárias, o Marineland apresentava lobos-marinhos-sul-africanos, também conhecidos como lobos-marinhos-do-cabo. A coleção incluía ainda leões-marinhos-sul-americanos, da Califórnia e de Steller.</p><p>Entre os animais nascidos em Antibes estava Willow, uma cria de lobo-marinho-do-cabo. Repousava sobre tábuas junto à água, com o pelo escuro e molhado.</p><h2>Willow e a reprodução em Antibes</h2><p>Willow nasceu no âmbito de um programa europeu de reprodução. Nas primeiras semanas, a mãe e os tratadores mantinham a cria sob vigilância, enquanto nascia outro pequeno, Cooper, entre os leões-marinhos-da-califórnia.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9da44996-3b58-4bfa-bf9e-80c54da0f65e",
+        "entityKey": "9da44996-3b58-4bfa-bf9e-80c54da0f65e",
+        "displayName": "Musée de la Marine et espace d’exposition",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein gelbes U-Boot über dem Eingang</h2><p>Das Schifffahrtsmuseum war an einem kleinen gelben U-Boot über dem Schild „Collection La Poype“ zu erkennen. Ein palmengesäumter Weg führte zu den Türen des grauen Gebäudes. Hier erzählten Gegenstände und menschliche Geschichte vom Meer, anstelle der Tiere in den Becken.</p><p>Roland de La Poype hatte Schiffsmodelle, Navigationsinstrumente, Gemälde, Erinnerungsstücke von Seeleuten und Fischereigeräte zusammengetragen. Modelle der France, der Normandie und der Titanic standen neben Darstellungen des Lebens an Bord. Auch maritimes Kunsthandwerk und die Geschichte der Kriegsmarine gehörten zur Sammlung.</p><h2>Vom Museum zum Ausstellungsgebäude</h2><p>Nach dem Tod des Gründers wurden die Sammlungen bei Auktionen aufgelöst. Das Gebäude wurde auch für Ausstellungen genutzt. Seine frühere Fassade erinnerte an La Poypes Begeisterung für Reisen und für die Beziehungen zwischen Menschen und Meer.</p>",
+            "newValue": "<h2>Ein gelbes U-Boot über dem Eingang</h2><p>Das Schifffahrtsmuseum war an einem kleinen gelben U-Boot über dem Schild „Collection La Poype“ zu erkennen. Ein palmengesäumter Weg führte zu den Türen des grauen Gebäudes. Hier erzählten Gegenstände und menschliche Geschichte vom Meer, anstelle der Tiere in den Becken.</p><p>Roland de La Poype hatte Schiffsmodelle, Navigationsinstrumente, Gemälde, Erinnerungsstücke von Seeleuten und Fischereigeräte zusammengetragen. Modelle der France, der Normandie und der Titanic standen neben Darstellungen des Lebens an Bord. Auch maritimes Kunsthandwerk und die Marinegeschichte gehörten zur Sammlung.</p><h2>Vom Museum zum Ausstellungsgebäude</h2><p>Nach dem Tod des Gründers wurden die Sammlungen bei Auktionen aufgelöst. Das Gebäude wurde auch für Ausstellungen genutzt. Seine frühere Fassade erinnerte an La Poypes Begeisterung für Reisen und für die Beziehungen zwischen Menschen und Meer.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "2a1053e4a0ce46e2a8fa5a1eb0639f09",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isCurrent",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "b55140ea-39d4-4b60-950e-b49f0e8f703b",
+        "entityKey": "marineland-dauphins-transfert-20260723",
+        "displayName": "Huit dauphins sont transférés en Espagne",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"Tribunal administratif de Nice \\u2014 autorisations vers Selwo Marina et Valence, 21 juillet 2026\",\"Url\":\"https://nice.tribunal-administratif.fr/decisions-de-justice/dernieres-decisions/transfert-des-dauphins-de-marineland-en-espagne-le-juge-des-referes-rejette-les-demandes-formulees-par-l-association-sea-shepherd-france\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"20 Minutes \\u2014 renoncement de Beauval, 28 ao\\u00FBt 2026\",\"Url\":\"https://www.20minutes.fr/planete/4241482-20260828-apres-renoncement-beauval-vont-devenir-19-dauphins-captifs-francais-devaient-etre-transferes\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Parcs \\u0026 Loisirs \\u2014 d\\u00E9part des huit dauphins, juillet 2026\",\"Url\":\"https://www.parcsetloisirs.fr/actualite/marineland-antibes-transfert-dauphins-2\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"TF1 Info \\u2014 arriv\\u00E9e \\u00E0 Selwo Marina, 23 juillet 2026\",\"Url\":\"https://www.tf1info.fr/environnement-ecologie/les-dauphins-vont-bien-zoom-sur-selwo-marina-ce-parc-espagnol-ou-sont-arrives-les-huit-cetaces-d-antibes-2454625.html\",\"AccessedAt\":\"2026-11-14\"}]",
+            "newValue": "[{\"Label\":\"Tribunal administratif de Nice \\u2014 autorisations vers Selwo Marina et Valence, 21 juillet 2026\",\"Url\":\"https://nice.tribunal-administratif.fr/decisions-de-justice/dernieres-decisions/transfert-des-dauphins-de-marineland-en-espagne-le-juge-des-referes-rejette-les-demandes-formulees-par-l-association-sea-shepherd-france\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"20 Minutes \\u2014 renoncement de Beauval, 28 ao\\u00FBt 2026\",\"Url\":\"https://www.20minutes.fr/planete/4241482-20260828-apres-renoncement-beauval-vont-devenir-19-dauphins-captifs-francais-devaient-etre-transferes\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Parcs \\u0026 Loisirs \\u2014 d\\u00E9part des huit dauphins, juillet 2026\",\"Url\":\"https://www.parcsetloisirs.fr/actualite/marineland-antibes-transfert-dauphins-2\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}
