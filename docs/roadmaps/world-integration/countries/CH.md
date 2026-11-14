@@ -12,11 +12,11 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 
 | État éditorial | Nombre |
 | --- | ---: |
-| À intégrer | 27 |
+| À intégrer | 26 |
 | À qualifier | 43 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 2 |
+| Intégration achevée | 3 |
 | Publié, date inconnue | 1 |
 | Hors périmètre enregistré | 14 |
 | Doublon conservé | 0 |
@@ -25,11 +25,11 @@ Couverture : **Pistes sourcées ; compléments locaux requis**. Observations ext
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **1 publiés**, **27 masqués à intégrer**, **14 masqués NotRelevant à réexaminer**, **31 candidats sans fiche**.
+Parcs : **1 publiés**, **26 masqués à intégrer**, **14 masqués NotRelevant à réexaminer**, **31 candidats sans fiche**.
 
-Standalone : **2 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **12 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **3 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **12 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **15 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **12 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **1 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **14 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **12 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **1 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -74,7 +74,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CH-candidate-559af0b5e039b9 | Kinderparadies Sedel | Herisau , Appenzell Outer Rhodes | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : SBNO. [RCDB](https://rcdb.com/5593.htm) |
 | CH-candidate-65d568fcab3749 | Knies Kinderzoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Switzerland) |
 | CH-park-f5926435-939e-459e-bd59-3fe4ff101016 | Konrad und Sohn Spengler | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
-| CH-park-50a97efe-c9c4-4030-962e-16e35d47e079 | Kronberg Bobbahn | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : IndependentCandidate. Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Installations référencées : Kronberg-Bobbahn ; Gonten. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/13290.htm) · [RCDB — Mountain Coaster](https://rcdb.com/13291.htm) · [Wiegand — références constructeur](https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=216#location-id-1096) · [Opérateur référencé par la source](http://www.kronberg.ch) |
+| CH-park-50a97efe-c9c4-4030-962e-16e35d47e079 | Kronberg-Bobbahn | Jakobsbad, Appenzell Rhodes-Intérieures | StandaloneAttraction | Published | Intégration achevée | 2026-11-14T23:04:02.450Z | — | Conserver la ligne et toutes les preuves. Actualiser les horaires et tarifs après le 30 juin 2027 ; vérifier les jours fériés suisses en semaine et le statut météo du jour. Chercher une photographie exacte plus récente et en meilleure résolution, avec droits de réutilisation établis. Qualification standalone : AlreadyStandalone. La Bobbahn part de la station inférieure, a sa propre billetterie et se visite sans achat de la télécabine. Les autres activités du Kronberg sont distinctes. La fiche historique Park à un seul item a été retirée par migration contrôlée. Installations référencées : Kronberg-Bobbahn ; Gonten. Signal source : Operating — exploitant Kronberg AG vérifié le 2026-11-14. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/13290.htm) · [RCDB — Mountain Coaster](https://rcdb.com/13291.htm) · [Wiegand — références constructeur](https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=216#location-id-1096) · [Opérateur référencé par la source](http://www.kronberg.ch) · [Exploitant — piste, tarifs et conditions](https://kronberg.ch/angebot/bobbahn.html) · [Exploitant — horaires et adresse](https://kronberg.ch/info.html) · [Wikimedia Commons — Bobbahn à Jakobsbad, Roland Zumbühl (Picswiss), CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Picswiss_AI-05-19.jpg) |
 | CH-candidate-3799bcd929caac | La Garenne | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [EAZA](https://www.eaza.net/membership/) · [Site officiel référencé](https://www.lagarenne.ch) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Switzerland) |
 | CH-park-2552453a-d3f7-4b95-99b7-60a6827316e1 | Labyrinthe Aventure | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/19378.htm) |
 | CH-candidate-efe3d2a3b76697 | Le Bois du Petit Chateau | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Switzerland) |

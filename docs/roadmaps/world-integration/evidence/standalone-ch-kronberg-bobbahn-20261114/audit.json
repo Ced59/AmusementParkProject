@@ -1,0 +1,97 @@
+{
+  "work": "Published Kronberg-Bobbahn as a standalone valley attraction with eight editorial descriptions, one exact licensed photograph, operator fares and dated hours, child accompaniment condition and Facebook post.",
+  "qualification": "Operator confirms independent ride admission and no need for a cable car ticket. The hidden one-item Park and ParkItem were retained as NotRelevant by controlled migration.",
+  "sources": {
+    "operatorRide": "https://kronberg.ch/angebot/bobbahn.html",
+    "operatorInfo": "https://kronberg.ch/info.html",
+    "commonsPhoto": "https://commons.wikimedia.org/wiki/File:Picswiss_AI-05-19.jpg"
+  },
+  "sourceLimitations": [
+    "The only exact clearly reusable Commons photograph found is from 2004 and has 300 × 450 pixel resolution. It accurately shows the yellow sleds at Jakobsbad; a newer high-resolution licensed image should be sought.",
+    "Winter weekday public-holiday hours may differ from ordinary weekdays; no holiday overrides were invented. The ride operates only in suitable weather.",
+    "Spring timetable currently published through 30 June 2027; refresh later periods."
+  ],
+  "duplicateSearches": {
+    "legacyParkId": "50a97efe-c9c4-4030-962e-16e35d47e079",
+    "legacyParkItemId": "9d8c9f80-6a0e-4a40-8f3b-23bbebdffe22",
+    "officialStandaloneSearchMatchesBeforeCreation": 0,
+    "legacyParkHiddenNotRelevant": true,
+    "legacyItemHiddenNotRelevant": true
+  },
+  "entity": {
+    "id": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+    "name": "Kronberg-Bobbahn",
+    "countryCode": "CH",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "1df660fd-762e-4da0-8478-d21a50b5aee1",
+      "appliedAtUtc": "2026-11-14T22:57:07.6061495Z",
+      "summary": "Controlled migration and core ride data"
+    },
+    {
+      "operationId": "628d8e92-0a7c-450b-8060-e0bc76cb1568",
+      "appliedAtUtc": "2026-11-14T23:00:08.7974452Z",
+      "summary": "Operator fares, dated hours and access rule"
+    },
+    {
+      "operationId": "fc909265-8131-4bba-8ba2-5a84e645ed56",
+      "appliedAtUtc": "2026-11-14T23:04:02.4503826Z",
+      "summary": "Eight editorial descriptions verified by export"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "ed8dc7adbb6548bcba0b594aa71d9027",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/54/Picswiss_AI-05-19.jpg",
+      "author": "Roland Zumbühl (Picswiss)",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2004-08-22",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Picswiss_AI-05-19.jpg",
+      "width": 300,
+      "height": 450,
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-14T22:57:55.351Z",
+      "metadataAppliedAtUtc": "2026-11-14T22:57:59.053Z"
+    }
+  ],
+  "audit": {
+    "completenessScore": 95,
+    "dataQualityLevel": "Excellent",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 1,
+    "fareOfferCount": 4,
+    "regularHourRuleCount": 6,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "legacyParkHiddenNotRelevant": true,
+    "legacyItemHiddenNotRelevant": true
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/9f456316-348f-4664-b41c-cf55d10b9bf2/kronberg-bobbahn",
+    "sitePublishedAtUtc": "2026-11-14T23:01:23.9918378Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:396f7b9e-c67c-442c-b717-7f889ce71f15",
+    "facebookStatus": "Published",
+    "facebookId": "abc986605a4841bbb814c97ec03c223e",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127381309424431",
+    "facebookPublishedAtUtc": "2026-11-14T23:02:15.9512587Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T23:04:02.450Z",
+  "remainingGaps": [
+    "Find a newer, higher-resolution exact image with a reusable license.",
+    "Refresh upcoming season prices and hours; resolve weekday holiday exceptions."
+  ]
+}

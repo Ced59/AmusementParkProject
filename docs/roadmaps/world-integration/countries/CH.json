@@ -1604,26 +1604,83 @@
     },
     {
       "entryId": "CH-park-50a97efe-c9c4-4030-962e-16e35d47e079",
-      "name": "Kronberg Bobbahn",
-      "entityKind": "Park",
+      "name": "Kronberg-Bobbahn",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "50a97efe-c9c4-4030-962e-16e35d47e079",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Bobbahn alpine à billetterie indépendante",
+      "locality": "Jakobsbad, Appenzell Rhodes-Intérieures",
+      "siteId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+      "legacySiteIds": [
+        "50a97efe-c9c4-4030-962e-16e35d47e079"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T23:01:23.991Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — exploitant Kronberg AG vérifié le 2026-11-14",
+      "identityConfidence": "L’exploitant vend un billet propre à la Bobbahn et précise qu’aucun billet de téléphérique n’est requis. Fiche Park masquée à un seul ParkItem migrée sans suppression.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Kronberg Bobbahn",
+        "Bobbahn im Tal",
+        "Sommerrodelbahn Jakobsbad"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T23:04:02.450Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1df660fd-762e-4da0-8478-d21a50b5aee1",
+          "appliedAt": "2026-11-14T22:57:07.606Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:apply:1df660fd-762e-4da0-8478-d21a50b5aee1",
+          "auditEvidence": null,
+          "summary": "Migration contrôlée du parc masqué et de son seul item ; création de la fiche Bobbahn avec identité, localisation et données de piste."
+        },
+        {
+          "eventId": "image-import-ed8dc7adbb6548bcba0b594aa71d9027",
+          "appliedAt": "2026-11-14T22:57:59.053Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:image:ed8dc7adbb6548bcba0b594aa71d9027",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de la Bobbahn importée et publiée avec crédit Roland Zumbühl, CC BY-SA 3.0 et métadonnées en huit langues."
+        },
+        {
+          "eventId": "apply-628d8e92-0a7c-450b-8060-e0bc76cb1568",
+          "appliedAt": "2026-11-14T23:00:08.797Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:apply:628d8e92-0a7c-450b-8060-e0bc76cb1568",
+          "auditEvidence": null,
+          "summary": "Quatre offres tarifaires officielles, horaires datés jusqu’en juin 2027 et règle d’accompagnement des enfants."
+        },
+        {
+          "eventId": "apply-fc909265-8131-4bba-8ba2-5a84e645ed56",
+          "appliedAt": "2026-11-14T23:04:02.450Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:apply:fc909265-8131-4bba-8ba2-5a84e645ed56",
+          "auditEvidence": null,
+          "summary": "Huit descriptions éditoriales effectivement appliquées et vérifiées par export après correction du format de la demande initiale."
+        },
+        {
+          "eventId": "closure-apply-fc909265-8131-4bba-8ba2-5a84e645ed56",
+          "appliedAt": "2026-11-14T23:04:02.450Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:apply:fc909265-8131-4bba-8ba2-5a84e645ed56",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-kronberg-bobbahn-20261114/audit.json",
+          "summary": "Audit final : huit textes vérifiés, huit pages publiques HTTP 200, photo exacte HTTP 200, quatre tarifs, calendrier officiel, score 95 sans bloqueur et Facebook Published. Dernière intégration du contenu distincte de la visibilité et de l’annonce."
+        }
+      ],
+      "nextAction": "Conserver la ligne et toutes les preuves. Actualiser les horaires et tarifs après le 30 juin 2027 ; vérifier les jours fériés suisses en semaine et le statut météo du jour. Chercher une photographie exacte plus récente et en meilleure résolution, avec droits de réutilisation établis.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1649,13 +1706,28 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.kronberg.ch",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste, tarifs et conditions",
+          "url": "https://kronberg.ch/angebot/bobbahn.html",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — horaires et adresse",
+          "url": "https://kronberg.ch/info.html",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — Bobbahn à Jakobsbad, Roland Zumbühl (Picswiss), CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Picswiss_AI-05-19.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "CH",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Kronberg-Bobbahn",
@@ -1677,7 +1749,7 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "La Bobbahn part de la station inférieure, a sa propre billetterie et se visite sans achat de la télécabine. Les autres activités du Kronberg sont distinctes. La fiche historique Park à un seul item a été retirée par migration contrôlée."
       }
     },
     {
