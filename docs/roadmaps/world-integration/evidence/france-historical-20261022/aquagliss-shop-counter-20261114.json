@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "f8db4935161e4b9681540061a11fcb2a",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+    "path": "park_item/f8db4935161e4b9681540061a11fcb2a",
+    "description": "Les présentoirs de bonbons occupent un côté de la petite boutique au sol rouge.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 334,
+    "height": 259,
+    "sizeInBytes": 94493,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210095229id_/http://acqua-gliss.com/photos/20/548/00011.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Samsung Techwin",
+      "cameraModel": "VLUU L310W  / Samsung L310W",
+      "takenOnUtc": "2009-06-14T14:28:00Z",
+      "orientation": "1",
+      "focalLength": 6,
+      "aperture": 2.8,
+      "exposureTime": 0.016666666666666666,
+      "iso": 100
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Le coin confiseries et glaces, avec ses bacs transparents contre le mur blanc et un congélateur bleu."
+      },
+      {
+        "languageCode": "en",
+        "value": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Ecke für Süßigkeiten und Eis mit durchsichtigen Behältern an der weißen Wand und einer blauen Eistruhe."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De snoep- en ijshoek, met doorzichtige bakken langs de witte muur en een blauwe vrieskist."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’angolo dei dolciumi e dei gelati, con contenitori trasparenti lungo la parete bianca e un congelatore blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "El rincón de golosinas y helados, con recipientes transparentes junto a la pared blanca y un congelador azul."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kącik ze słodyczami i lodami, z przezroczystymi pojemnikami przy białej ścianie i niebieską zamrażarką."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O recanto de guloseimas e gelados, com recipientes transparentes junto à parede branca e uma arca azul."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les présentoirs de bonbons occupent un côté de la petite boutique au sol rouge."
+      },
+      {
+        "languageCode": "en",
+        "value": "Sweet displays line one side of the small shop with its red-tiled floor."
+      },
+      {
+        "languageCode": "de",
+        "value": "Süßwarenbehälter säumen eine Seite des kleinen Ladens mit rotem Fliesenboden."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Snoepbakken vullen één kant van de kleine winkel met rode vloertegels."
+      },
+      {
+        "languageCode": "it",
+        "value": "Gli espositori di caramelle occupano un lato del piccolo negozio dal pavimento rosso."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los expositores de golosinas ocupan un lado de la pequeña tienda de suelo rojo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pojemniki z cukierkami zajmują jedną stronę niewielkiego sklepu z czerwoną posadzką."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os expositores de rebuçados ocupam um dos lados da pequena loja de pavimento vermelho."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:36:09.168Z",
+    "updatedAt": "2026-11-14T21:36:12.781Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:36:12.781Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202060429/http://acqua-gliss.com/restauration-5802.html"
+}

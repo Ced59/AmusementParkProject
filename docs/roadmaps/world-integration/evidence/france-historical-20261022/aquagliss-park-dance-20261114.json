@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "1cb49aa9a061474ea83373112c5c36cf",
+    "category": "PARK",
+    "ownerType": "PARK",
+    "ownerId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "path": "park/1cb49aa9a061474ea83373112c5c36cf",
+    "description": "Une démonstration de danse anime la plage du bassin pendant les années d’activité d’Acqua Gliss.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 400,
+    "height": 268,
+    "sizeInBytes": 104867,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210101215id_/http://acqua-gliss.com/photos/20/548/758673563.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Canon",
+      "cameraModel": "Canon EOS-1D",
+      "takenOnUtc": "2003-08-01T15:34:44Z",
+      "orientation": "1",
+      "focalLength": 17,
+      "aperture": 7.1,
+      "exposureTime": 0.00125,
+      "iso": 200
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un groupe danse près du bassin, avec les pistes orange et les arbres à l’arrière-plan."
+      },
+      {
+        "languageCode": "en",
+        "value": "A group dances beside the pool, with the orange slides and trees in the background."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Gruppe tanzt neben dem Becken; im Hintergrund stehen die orangefarbenen Rutschen und Bäume."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een groep danst bij het zwembad, met de oranje glijbanen en bomen op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un gruppo balla vicino alla piscina, con gli scivoli arancioni e gli alberi sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un grupo baila junto a la piscina, con los toboganes naranjas y los árboles al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Grupa tańczy przy basenie, z pomarańczowymi zjeżdżalniami i drzewami w tle."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um grupo dança junto à piscina, com os escorregas laranja e as árvores ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une démonstration de danse anime la plage du bassin pendant les années d’activité d’Acqua Gliss."
+      },
+      {
+        "languageCode": "en",
+        "value": "A dance demonstration on the pool deck during Acqua Gliss’s operating years."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Tanzvorführung am Beckenrand während der Betriebsjahre von Acqua Gliss."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een dansdemonstratie op het terras bij het zwembad in de jaren dat Acqua Gliss geopend was."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una dimostrazione di danza a bordo piscina negli anni di attività di Acqua Gliss."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una demostración de baile junto a la piscina durante los años de actividad de Acqua Gliss."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pokaz tańca przy basenie w latach działalności Acqua Gliss."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma demonstração de dança junto à piscina durante os anos de atividade do Acqua Gliss."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:33:30.081Z",
+    "updatedAt": "2026-11-14T21:33:33.621Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:33:33.621Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202003921/http://acqua-gliss.com/animation-5800.html"
+}

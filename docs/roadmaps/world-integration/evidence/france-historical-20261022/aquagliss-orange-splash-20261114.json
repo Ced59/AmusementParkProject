@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "df782a64dec64702bdfb0dacb3e03aff",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+    "path": "park_item/df782a64dec64702bdfb0dacb3e03aff",
+    "description": "La descente orange débouche dans une gerbe d’eau, les pieds du baigneur encore levés.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 634,
+    "height": 931,
+    "sizeInBytes": 723372,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210101011id_/http://acqua-gliss.com/photos/20/548/0001.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Canon",
+      "cameraModel": "Canon EOS-1D",
+      "takenOnUtc": "2005-07-11T18:43:07Z",
+      "orientation": "1",
+      "focalLength": 130,
+      "aperture": 10,
+      "exposureTime": 0.0008,
+      "iso": 400
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un baigneur presque caché par les éclaboussures à la sortie d’une piste orange d’Acqua Gliss."
+      },
+      {
+        "languageCode": "en",
+        "value": "A bather almost hidden by spray at the exit of an orange slide at Acqua Gliss."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Badegast ist am Ende einer orangefarbenen Rutsche von Acqua Gliss fast hinter dem Spritzwasser verborgen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een zwemmer is bijna verborgen achter het opspattende water aan het einde van een oranje glijbaan van Acqua Gliss."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un bagnante quasi nascosto dagli spruzzi all’uscita di uno scivolo arancione di Acqua Gliss."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un bañista casi oculto por las salpicaduras a la salida de un tobogán naranja de Acqua Gliss."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kąpiący się niemal znika za rozpryskami wody u wylotu pomarańczowej zjeżdżalni w Acqua Gliss."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um banhista quase escondido pelos salpicos à saída de um escorrega laranja do Acqua Gliss."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La descente orange débouche dans une gerbe d’eau, les pieds du baigneur encore levés."
+      },
+      {
+        "languageCode": "en",
+        "value": "The orange slide ends in a burst of spray, with the bather’s feet still raised."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die orangefarbene Rutsche endet in einer Wasserfontäne; die Füße des Badegasts sind noch in der Luft."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De oranje glijbaan eindigt in een wolk opspattend water, met de voeten van de zwemmer nog in de lucht."
+      },
+      {
+        "languageCode": "it",
+        "value": "Lo scivolo arancione termina in una nuvola di spruzzi, con i piedi del bagnante ancora sollevati."
+      },
+      {
+        "languageCode": "es",
+        "value": "El tobogán naranja desemboca en una nube de agua, con los pies del bañista aún levantados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Na końcu pomarańczowej zjeżdżalni tryska woda, a stopy kąpiącego się wciąż są uniesione."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O escorrega laranja termina numa nuvem de água, com os pés do banhista ainda levantados."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:31:23.059Z",
+    "updatedAt": "2026-11-14T21:31:28.216Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:31:28.216Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202044002/http://acqua-gliss.com/sensations-5804.html"
+}

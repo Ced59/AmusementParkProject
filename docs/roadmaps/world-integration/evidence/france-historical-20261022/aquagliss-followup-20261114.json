@@ -1,0 +1,426 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+  "name": "Acqua Gliss Porticcio",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "completed": false,
+  "verifiedAtUtc": "2026-11-14T21:38:39.4574978Z",
+  "lastDataIntegrationAt": "2026-11-14T21:36:12.781Z",
+  "newSuccessfulDataOperations": 14,
+  "newParkItems": 1,
+  "existingParkItemsDescribed": 1,
+  "newPrivatePhotos": 12,
+  "targetedRecovery": {
+    "sections": [
+      "ParkBasics",
+      "Items",
+      "Images"
+    ],
+    "exportedAtUtc": "2026-11-14T21:22:38.5156784Z",
+    "sha256": "f7d071d7b4ab37175a303af0344fca921c3c7e8946c6c5a17c262ce1fa1fca0f",
+    "reason": "Prior local files absent; recover exact existing entities and image IDs before enrichment; no new complete final-audit export."
+  },
+  "identityDecisions": [
+    "Acqua Gliss / Acqua Cyrné Gliss / Aquagliss Porticcio is the existing closed Corse-du-Sud park. Moselle, La Baule and Vinca homonyms excluded. No new park.",
+    "Espace VIP is a named private garden lounge on the archived official site, linked from the 2014 homepage and already listed in the archive index in 2013. Distinct visitor service, not a new park or standalone. No first-opening date or exact position invented.",
+    "Existing private Boutique is the Boutique - Glaces named by the official homepage. The official restauration gallery labels its pictured interior coin confiseries glaces. The entry is retained, described as this retail corner within the snack-bar complex; no separate building or generic souvenir shop invented."
+  ],
+  "coverageAfter": {
+    "items": 14,
+    "itemsWithEightDescriptions": 11,
+    "missingDescriptions": [
+      "Jeu de dames géant",
+      "Ping-pong",
+      "Volley"
+    ],
+    "itemsPublic": 9,
+    "itemsPrivate": 5,
+    "media": 17,
+    "authenticParkLogo": 1,
+    "otherBrandingVisual": 1,
+    "photographs": 15,
+    "newPrivatePhotographs": 12,
+    "itemsWithPhotos": 5,
+    "attractions": 9,
+    "attractionsWithPhotos": 2,
+    "itemsWithAtLeastThreePhotos": [
+      "Toboggans oranges",
+      "Les trois couloirs bleus",
+      "Snack-bar"
+    ],
+    "fixedItemsGeolocated": 6,
+    "fixedItemsTotal": 14,
+    "officialAnnualMaps": 0,
+    "historyFactsPreviouslyPublished": 5,
+    "articlesPreviouslyPublished": 1,
+    "historyReadAgainThisTurn": false
+  },
+  "itemImageCoverage": [
+    {
+      "id": "3419186e-37ba-4f58-9950-862c700a3dad",
+      "name": "Bassins pour enfants",
+      "images": 0
+    },
+    {
+      "id": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "name": "Boutique",
+      "images": 1
+    },
+    {
+      "id": "78d6eea0-82d2-40ef-ba95-337ef4d8f0b0",
+      "name": "Casiers gardés",
+      "images": 0
+    },
+    {
+      "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "name": "Jeu de dames géant",
+      "images": 0
+    },
+    {
+      "id": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+      "name": "Les trois couloirs bleus",
+      "images": 3
+    },
+    {
+      "id": "7b9f8caf-bc31-4141-b690-8b0696162e1b",
+      "name": "Parking",
+      "images": 0
+    },
+    {
+      "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "name": "Ping-pong",
+      "images": 0
+    },
+    {
+      "id": "cb357854-20d4-44db-8890-214338653ab1",
+      "name": "Snack-bar",
+      "images": 3
+    },
+    {
+      "id": "db4b67c7-8bbc-4b92-846d-6acb6575d2b8",
+      "name": "Toboggan bleu",
+      "images": 0
+    },
+    {
+      "id": "199638eb-e2e3-4e4b-9b3b-c0c84d5f7713",
+      "name": "Toboggan jaune",
+      "images": 0
+    },
+    {
+      "id": "6bce5108-6f61-4f49-991b-bd510243b0b8",
+      "name": "Toboggan vert",
+      "images": 0
+    },
+    {
+      "id": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+      "name": "Toboggans oranges",
+      "images": 3
+    },
+    {
+      "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+      "name": "Volley",
+      "images": 0
+    },
+    {
+      "id": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "name": "Espace VIP",
+      "images": 1
+    }
+  ],
+  "research": {
+    "newArchiveInventory": "Bounded CDX image query returned 73 rows on official acqua-gliss.com host, including 29 JPEG files downloaded intact. Previous 404 findings on the earlier archive paths are retained as historical evidence, not treated as a permanent absence.",
+    "reviewedJPEGs": 29,
+    "acceptedJPEGs": 12,
+    "sourcePages": [
+      "https://web.archive.org/web/20140306204241/http://www.acqua-gliss.com/plan-d-acces-5810.html",
+      "https://web.archive.org/web/20150202003921/http://acqua-gliss.com/animation-5800.html",
+      "https://web.archive.org/web/20150202032235/http://acqua-gliss.com/vip.html",
+      "https://web.archive.org/web/20150202044002/http://acqua-gliss.com/sensations-5804.html",
+      "https://web.archive.org/web/20150202060429/http://acqua-gliss.com/restauration-5802.html"
+    ],
+    "rejectedOrNotSelected": [
+      "Payment-card and partner logos: unrelated park imagery.",
+      "Washed-out background duplicates of the same aerial photograph.",
+      "gshjytjghjgyjh.jpg: already imported from the former official image host, no duplicate.",
+      "Road-access vertical aerial: not an annual visitor map; existing IGN coverage retained.",
+      "Near-duplicate orange close-up, extra blue rider view and other snack-counter views: not needed for distinct coverage.",
+      "Portraits and birthday photographs: no new place identity or historical event established."
+    ],
+    "sourceFileIntegrity": "Every accepted downloaded original retains its SHA-256; no crop, conversion or retouch.",
+    "rightsBasis": "Official park imagery; credits identify the former official site and archive. Existing explicit owner authorization for photo reuse retained.",
+    "datePrecision": "Archive capture dates are not photo dates or opening dates."
+  },
+  "newTextAudit": {
+    "personallyAuthoredAndReviewedLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "newDescriptionEntities": 2,
+    "newPhotosWithEightAltTextsCaptionsAndCredits": 12,
+    "rawHtmlEntityFindings": 0,
+    "fullParkEditorialAuditPerformedThisTurn": false,
+    "shortDescriptionReason": "Local historical visitor services; two concrete paragraphs based on named official offer and visible original photographs. No padding or fabricated location/date."
+  },
+  "idempotencePreview": {
+    "atUtc": "2026-11-14T21:37:58.8050999Z",
+    "operationId": "6db6f051-6988-4e3b-a635-00e33dd51a1b",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 18,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cb357854-20d4-44db-8890-214338653ab1",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "df782a64dec64702bdfb0dacb3e03aff",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "c0f731609fd349709b5199d5cfeeab8d",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "95413e49472d473ab66335dbef613de2",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "daba65f2d835401eaafba5d2f2a76979",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "ad4aa80d54b04b38b0709317023a297c",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "5a8b2457aef44d279df7bddec657b207",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "49227d5857594f5cbfecc111b4c2395d",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "8592fa4be82e4381af2fd3ef123cc26a",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "dc5fa7d9803245aca4af80970b2b5897",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "1cb49aa9a061474ea83373112c5c36cf",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9f80364f0a374148b01577eb84dce24b",
+        "changeType": "Unchanged"
+      },
+      {
+        "entityType": "Image",
+        "entityId": "f8db4935161e4b9681540061a11fcb2a",
+        "changeType": "Unchanged"
+      }
+    ]
+  },
+  "projectedCompleteness": {
+    "receivedAtUtc": "2026-11-14T21:36:38.1005899Z",
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 95,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publication": {
+    "existingParkVisible": true,
+    "visibilityObservedAtUtc": "2026-11-14T21:21:51.3785328Z",
+    "newSitePublicationPerformed": false,
+    "newImagesPublished": 0,
+    "newOrUpdatedPrivateItemsPublished": 0,
+    "reason": "Projected score remains 92/100; three existing item descriptions and other factual gaps persist. No exact exception accepted, no new final audit or publication attempted."
+  },
+  "facebook": {
+    "resolvedAtUtc": "2026-11-14T21:38:39.4574978Z",
+    "status": "Published",
+    "existingPublicationId": "8543f61911b545f29e4159e39351d2ae",
+    "existingExternalUrl": "https://www.facebook.com/1285475681307050/posts/122125630275424431",
+    "newSendPerformed": false
+  },
+  "receipts": [
+    {
+      "kind": "Apply",
+      "operationId": "29a5fc78-6d3d-469a-89d6-bceebcb69088",
+      "serverAppliedAtUtc": "2026-11-14T21:27:57.1632744Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-03-vip-20261114.json"
+    },
+    {
+      "kind": "Apply",
+      "operationId": "d1632952-f669-4c81-9f85-ddecf97376d9",
+      "serverAppliedAtUtc": "2026-11-14T21:35:59.6923333Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-04-shop-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "df782a64dec64702bdfb0dacb3e03aff",
+      "ownerId": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+      "serverCreatedAtUtc": "2026-11-14T21:31:23.059Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:31:28.216Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-orange-splash-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "c0f731609fd349709b5199d5cfeeab8d",
+      "ownerId": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+      "serverCreatedAtUtc": "2026-11-14T21:31:58.788Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:32:02.367Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-orange-pool-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "95413e49472d473ab66335dbef613de2",
+      "ownerId": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+      "serverCreatedAtUtc": "2026-11-14T21:32:07.361Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:32:10.805Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-blue-race-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "daba65f2d835401eaafba5d2f2a76979",
+      "ownerId": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+      "serverCreatedAtUtc": "2026-11-14T21:32:15.854Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:32:19.303Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-blue-jump-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "ad4aa80d54b04b38b0709317023a297c",
+      "ownerId": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+      "serverCreatedAtUtc": "2026-11-14T21:32:24.397Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:32:27.899Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-blue-splash-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "5a8b2457aef44d279df7bddec657b207",
+      "ownerId": "cb357854-20d4-44db-8890-214338653ab1",
+      "serverCreatedAtUtc": "2026-11-14T21:33:03.77Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:33:07.311Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-snack-counter-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "49227d5857594f5cbfecc111b4c2395d",
+      "ownerId": "cb357854-20d4-44db-8890-214338653ab1",
+      "serverCreatedAtUtc": "2026-11-14T21:33:12.467Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:33:15.893Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-snack-terrace-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "8592fa4be82e4381af2fd3ef123cc26a",
+      "ownerId": "cb357854-20d4-44db-8890-214338653ab1",
+      "serverCreatedAtUtc": "2026-11-14T21:33:21.145Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:33:24.628Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-snack-pool-terrace-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "dc5fa7d9803245aca4af80970b2b5897",
+      "ownerId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "serverCreatedAtUtc": "2026-11-14T21:34:16.138Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:34:19.81Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-park-aerial-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "1cb49aa9a061474ea83373112c5c36cf",
+      "ownerId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "serverCreatedAtUtc": "2026-11-14T21:33:30.081Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:33:33.621Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-park-dance-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "9f80364f0a374148b01577eb84dce24b",
+      "ownerId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "serverCreatedAtUtc": "2026-11-14T21:33:40.082Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:33:43.566Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-vip-lounge-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "f8db4935161e4b9681540061a11fcb2a",
+      "ownerId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "serverCreatedAtUtc": "2026-11-14T21:36:09.168Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:36:12.781Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-shop-counter-20261114.json"
+    }
+  ],
+  "remainingGaps": [
+    "Three named games without enough specific surviving detail for descriptions.",
+    "Individual photographs missing for the yellow, green and curved blue slides, children’s pools and the three games; do not crop the aerial to simulate individual views.",
+    "Eight exact item locations remain unproved, including VIP and shop; no copied park-centre coordinates.",
+    "No dated internal official annual maps; road-access images do not qualify.",
+    "Historical ride-specific access restrictions, manufacturers and individual opening/closing dates remain unresolved as detailed by the prior audit."
+  ],
+  "runtime": {
+    "officialClientMaster": "94eebfd",
+    "officialClientSha256": "14ce1fe38b2959441de755f42da1c7088fe4ddba57b8f15c013bbed55cbe5fb6",
+    "clientUnmodified": true,
+    "masterFranceEntriesPreserved": 496,
+    "masterFranceIntegrationEventsPreserved": true,
+    "note": "Official master change selects native curl on Linux; encrypted handoff and ephemeral in-memory token unchanged. No secret included."
+  },
+  "nextAction": "Continue sourcing the three remaining games and exact missing ride photographs/positions; retain partial. After all admissible enrichment, audit the complete corpus before any new publication under the strict >95 or exact named exception gate. Existing Facebook announcement is Published; never duplicate."
+}

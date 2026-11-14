@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "9f80364f0a374148b01577eb84dce24b",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+    "path": "park_item/9f80364f0a374148b01577eb84dce24b",
+    "description": "Le salon VIP associe des coussins clairs, une table basse ronde et un grand parasol au milieu des fleurs.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 533,
+    "sizeInBytes": 692394,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20150519162502id_/http://acqua-gliss.com/photos/vipim.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Canon",
+      "cameraModel": "Canon EOS-1D Mark III",
+      "takenOnUtc": "2013-07-10T11:41:53Z",
+      "orientation": "1",
+      "focalLength": 25,
+      "aperture": 14,
+      "exposureTime": 0.0033333333333333335,
+      "iso": 800
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Trois personnes assises sur les sièges de jardin sous le parasol beige de l’espace VIP, entre les lauriers-roses."
+      },
+      {
+        "languageCode": "en",
+        "value": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders."
+      },
+      {
+        "languageCode": "de",
+        "value": "Drei Personen sitzen zwischen Oleanderbüschen auf Gartenmöbeln unter dem beigefarbenen Sonnenschirm des VIP-Bereichs."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Drie mensen zitten op tuinmeubels onder de beige parasol van de VIP-ruimte, tussen de oleanders."
+      },
+      {
+        "languageCode": "it",
+        "value": "Tre persone siedono sui mobili da giardino sotto l’ombrellone beige dell’area VIP, tra gli oleandri."
+      },
+      {
+        "languageCode": "es",
+        "value": "Tres personas sentadas en los muebles de jardín bajo la sombrilla beige del espacio VIP, entre adelfas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Trzy osoby siedzą na meblach ogrodowych pod beżowym parasolem strefy VIP, wśród oleandrów."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Três pessoas sentadas nos móveis de jardim sob o guarda-sol bege do espaço VIP, entre loendros."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le salon VIP associe des coussins clairs, une table basse ronde et un grand parasol au milieu des fleurs."
+      },
+      {
+        "languageCode": "en",
+        "value": "The VIP lounge combines pale cushions, a round low table and a large parasol among the flowers."
+      },
+      {
+        "languageCode": "de",
+        "value": "Helle Polster, ein runder niedriger Tisch und ein großer Sonnenschirm stehen im blühenden Garten des VIP-Bereichs."
+      },
+      {
+        "languageCode": "nl",
+        "value": "In de VIP-zithoek staan lichte kussens, een ronde lage tafel en een grote parasol tussen de bloemen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il salottino VIP riunisce cuscini chiari, un tavolino rotondo e un grande ombrellone tra i fiori."
+      },
+      {
+        "languageCode": "es",
+        "value": "El salón VIP reúne cojines claros, una mesa baja redonda y una gran sombrilla entre las flores."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Jasne poduszki, niski okrągły stolik i duży parasol tworzą salon VIP pośród kwiatów."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O salão VIP reúne almofadas claras, uma mesa baixa redonda e um grande guarda-sol entre as flores."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:33:40.082Z",
+    "updatedAt": "2026-11-14T21:33:43.566Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:33:43.566Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202032235/http://acqua-gliss.com/vip.html"
+}

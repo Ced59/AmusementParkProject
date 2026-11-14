@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "ad4aa80d54b04b38b0709317023a297c",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+    "path": "park_item/ad4aa80d54b04b38b0709317023a297c",
+    "description": "L’eau jaillit autour des baigneuses dans cette vue rapprochée des trois couloirs bleus.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 362,
+    "height": 527,
+    "sizeInBytes": 205867,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210094204id_/http://acqua-gliss.com/photos/20/548/0005.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une baigneuse au premier plan et une autre derrière elle sont entourées d’écume sur les pistes bleues."
+      },
+      {
+        "languageCode": "en",
+        "value": "A woman in the foreground and another behind her are surrounded by spray on the blue slides."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Badegästin im Vordergrund und eine weitere dahinter sind auf den blauen Rutschen von Gischt umgeben."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een zwemster op de voorgrond en een tweede achter haar zijn omgeven door schuim op de blauwe glijbanen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una bagnante in primo piano e un’altra dietro di lei sono circondate dalla schiuma sulle piste blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una bañista en primer plano y otra detrás aparecen rodeadas de espuma en las pistas azules."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kobietę na pierwszym planie i drugą za nią otacza piana na niebieskich zjeżdżalniach."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma banhista em primeiro plano e outra atrás surgem rodeadas de espuma nas pistas azuis."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "L’eau jaillit autour des baigneuses dans cette vue rapprochée des trois couloirs bleus."
+      },
+      {
+        "languageCode": "en",
+        "value": "Water sprays around the bathers in this close view of the three blue lanes."
+      },
+      {
+        "languageCode": "de",
+        "value": "In dieser Nahaufnahme der drei blauen Bahnen spritzt das Wasser um die Badegäste auf."
+      },
+      {
+        "languageCode": "nl",
+        "value": "In deze close-up van de drie blauwe banen spat het water rondom de zwemsters omhoog."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’acqua schizza attorno alle bagnanti in questa vista ravvicinata delle tre piste blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "El agua salpica a las bañistas en esta vista cercana de las tres pistas azules."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Woda rozpryskuje się wokół kąpiących się na tym zbliżeniu trzech niebieskich torów."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A água salpica em redor das banhistas nesta vista próxima das três pistas azuis."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:32:24.397Z",
+    "updatedAt": "2026-11-14T21:32:27.899Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:32:27.899Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202044002/http://acqua-gliss.com/sensations-5804.html"
+}

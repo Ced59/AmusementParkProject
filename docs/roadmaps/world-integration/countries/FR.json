@@ -1821,7 +1821,7 @@
       "siteId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-01T17:02:34.7253894Z",
+      "presenceObservedAt": "2026-11-14T21:21:51.3785328Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -1830,7 +1830,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-01T17:04:47.484Z",
+      "lastDataIntegrationAt": "2026-11-14T21:36:12.781Z",
       "integrationHistory": [
         {
           "eventId": "apply-6e4cf8e8-6052-4566-b368-dc3bf0b3cb2e",
@@ -1971,16 +1971,157 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-receipts.json#apply-86f77423-c6f5-4362-a820-0fd05167da4a",
           "auditEvidence": null,
           "summary": "Restauration canonique des cinq faits historiques après publication Acqua Gliss ; article corrigé et toutes les données éditoriales conservés."
+        },
+        {
+          "eventId": "apply-29a5fc78-6d3d-469a-89d6-bceebcb69088",
+          "appliedAt": "2026-11-14T21:27:57.163Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-03-vip-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : espace VIP historique identifié sur le site officiel archivé, créé en privé avec description personnelle en huit langues."
+        },
+        {
+          "eventId": "image-df782a64dec64702bdfb0dacb3e03aff",
+          "appliedAt": "2026-11-14T21:31:28.216Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-orange-splash-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique des pistes orange, inspectée et légendée en huit langues, importée en privé."
+        },
+        {
+          "eventId": "image-c0f731609fd349709b5199d5cfeeab8d",
+          "appliedAt": "2026-11-14T21:32:02.367Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-orange-pool-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique orange-pool, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "image-95413e49472d473ab66335dbef613de2",
+          "appliedAt": "2026-11-14T21:32:10.805Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-blue-race-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique blue-race, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "image-daba65f2d835401eaafba5d2f2a76979",
+          "appliedAt": "2026-11-14T21:32:19.303Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-blue-jump-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique blue-jump, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "image-ad4aa80d54b04b38b0709317023a297c",
+          "appliedAt": "2026-11-14T21:32:27.899Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-blue-splash-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique blue-splash, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "image-5a8b2457aef44d279df7bddec657b207",
+          "appliedAt": "2026-11-14T21:33:07.311Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-snack-counter-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique snack-counter, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "image-49227d5857594f5cbfecc111b4c2395d",
+          "appliedAt": "2026-11-14T21:33:15.893Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-snack-terrace-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique snack-terrace, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "image-8592fa4be82e4381af2fd3ef123cc26a",
+          "appliedAt": "2026-11-14T21:33:24.628Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-snack-pool-terrace-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique snack-pool-terrace, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "image-1cb49aa9a061474ea83373112c5c36cf",
+          "appliedAt": "2026-11-14T21:33:33.621Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-park-dance-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique park-dance, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "image-9f80364f0a374148b01577eb84dce24b",
+          "appliedAt": "2026-11-14T21:33:43.566Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-vip-lounge-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique vip-lounge, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "image-dc5fa7d9803245aca4af80970b2b5897",
+          "appliedAt": "2026-11-14T21:34:19.810Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-park-aerial-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique park-aerial, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "apply-d1632952-f669-4c81-9f85-ddecf97376d9",
+          "appliedAt": "2026-11-14T21:35:59.692Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-04-shop-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : boutique existante identifiée comme coin confiseries et glaces ; huit descriptions précises intégrées, visibilité privée conservée."
+        },
+        {
+          "eventId": "image-f8db4935161e4b9681540061a11fcb2a",
+          "appliedAt": "2026-11-14T21:36:12.781Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-shop-counter-20261114.json",
+          "auditEvidence": null,
+          "summary": "Acqua Gliss : photographie officielle historique shop-counter, vérifiée et légendée dans les huit langues ; import privé."
         }
       ],
-      "nextAction": "Fiche et Facebook publiés, histoire accessible dans huit langues ; 92/100 sans bloqueur API. Quatre lieux restent privés faute de description, photos individuelles et cartes manquent. Dossier partial, aucune exception acceptée : poursuivre les recherches, ne pas republier Facebook. Voir aquagliss-publication-audit.json.",
+      "nextAction": "Reprise du 14 novembre 2026 : 14 lieux, 11 décrits dans huit langues, 17 médias dont 12 nouvelles photos privées ; salon VIP créé et boutique décrite. Preview de rapprochement : 18 entités inchangées. Projection officielle 92/100, trois jeux sans description et lacunes historiques persistantes ; conserver partial, aucun nouveau site/Facebook. Annonce existante Published reconfirmée. Preuve : docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-followup-20261114.json",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "latestProgressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-followup-20261114.json"
     },
     {
       "entryId": "FR-candidate-d7132646475bcd",

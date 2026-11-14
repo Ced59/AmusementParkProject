@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "c0f731609fd349709b5199d5cfeeab8d",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+    "path": "park_item/c0f731609fd349709b5199d5cfeeab8d",
+    "description": "Les bras levés à l’arrivée, un baigneur soulève une large éclaboussure dans le bassin d’Acqua Gliss.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 634,
+    "height": 435,
+    "sizeInBytes": 289517,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210101830id_/http://acqua-gliss.com/photos/20/548/0007.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Canon",
+      "cameraModel": "Canon EOS-1D",
+      "takenOnUtc": "2005-07-13T17:36:38Z",
+      "orientation": "1",
+      "focalLength": 90,
+      "aperture": 9,
+      "exposureTime": 0.0008,
+      "iso": 400
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un homme arrive dans la piscine devant la sortie orange, avec des palmiers à l’arrière-plan."
+      },
+      {
+        "languageCode": "en",
+        "value": "A man splashes into the pool in front of the orange slide exit, with palms behind him."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Mann landet vor dem orangefarbenen Rutschenende im Becken; dahinter stehen Palmen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een man komt in het zwembad terecht voor het oranje uiteinde van de glijbaan, met palmen op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un uomo arriva in piscina davanti all’uscita arancione dello scivolo, con le palme sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un hombre llega a la piscina ante la salida naranja del tobogán, con palmeras al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Mężczyzna wpada do basenu przed pomarańczowym wylotem zjeżdżalni, z palmami w tle."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um homem chega à piscina diante da saída laranja do escorrega, com palmeiras ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les bras levés à l’arrivée, un baigneur soulève une large éclaboussure dans le bassin d’Acqua Gliss."
+      },
+      {
+        "languageCode": "en",
+        "value": "With his arms raised on arrival, a bather sends a broad splash across the Acqua Gliss pool."
+      },
+      {
+        "languageCode": "de",
+        "value": "Mit erhobenen Armen lässt ein Badegast bei der Ankunft das Wasser im Becken von Acqua Gliss aufspritzen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Met zijn armen omhoog zorgt een zwemmer bij aankomst voor een flinke plons in het bad van Acqua Gliss."
+      },
+      {
+        "languageCode": "it",
+        "value": "Con le braccia alzate all’arrivo, un bagnante solleva un ampio spruzzo nella piscina di Acqua Gliss."
+      },
+      {
+        "languageCode": "es",
+        "value": "Con los brazos levantados al llegar, un bañista levanta una gran salpicadura en la piscina de Acqua Gliss."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kąpiący się z uniesionymi rękami rozpryskuje wodę przy lądowaniu w basenie Acqua Gliss."
+      },
+      {
+        "languageCode": "pt",
+        "value": "De braços levantados à chegada, um banhista provoca uma grande salpicadura na piscina do Acqua Gliss."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:31:58.788Z",
+    "updatedAt": "2026-11-14T21:32:02.367Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:32:02.367Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202044002/http://acqua-gliss.com/sensations-5804.html"
+}

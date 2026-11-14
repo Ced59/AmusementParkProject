@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "95413e49472d473ab66335dbef613de2",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+    "path": "park_item/95413e49472d473ab66335dbef613de2",
+    "description": "Perruques colorées et brassards jaunes accompagnent cette course sur les trois couloirs bleus.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 600,
+    "height": 408,
+    "sizeInBytes": 167250,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210092527id_/http://acqua-gliss.com/photos/20/548/0003.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Trois participants descendent côte à côte les pistes bleues, devant un groupe de spectateurs."
+      },
+      {
+        "languageCode": "en",
+        "value": "Three participants descend the blue lanes side by side, watched by a group of spectators."
+      },
+      {
+        "languageCode": "de",
+        "value": "Drei Teilnehmer rutschen nebeneinander die blauen Bahnen hinab, während eine Gruppe zusieht."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Drie deelnemers glijden naast elkaar van de blauwe banen, bekeken door een groep toeschouwers."
+      },
+      {
+        "languageCode": "it",
+        "value": "Tre partecipanti scendono affiancati sulle piste blu davanti a un gruppo di spettatori."
+      },
+      {
+        "languageCode": "es",
+        "value": "Tres participantes bajan en paralelo por las pistas azules ante un grupo de espectadores."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Trzech uczestników zjeżdża obok siebie niebieskimi torami na oczach grupy widzów."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Três participantes descem lado a lado pelas pistas azuis, perante um grupo de espetadores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Perruques colorées et brassards jaunes accompagnent cette course sur les trois couloirs bleus."
+      },
+      {
+        "languageCode": "en",
+        "value": "Colourful wigs and yellow armbands feature in this race down the three blue lanes."
+      },
+      {
+        "languageCode": "de",
+        "value": "Bunte Perücken und gelbe Schwimmflügel begleiten dieses Rennen auf den drei blauen Bahnen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Gekleurde pruiken en gele zwembandjes horen bij deze race over de drie blauwe banen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Parrucche colorate e braccioli gialli animano questa gara sulle tre piste blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pelucas de colores y manguitos amarillos acompañan esta carrera por las tres pistas azules."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kolorowe peruki i żółte rękawki do pływania towarzyszą wyścigowi na trzech niebieskich torach."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Perucas coloridas e braçadeiras amarelas acompanham esta corrida nas três pistas azuis."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:32:07.361Z",
+    "updatedAt": "2026-11-14T21:32:10.805Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:32:10.805Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202044002/http://acqua-gliss.com/sensations-5804.html"
+}
