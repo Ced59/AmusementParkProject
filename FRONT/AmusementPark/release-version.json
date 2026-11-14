@@ -1,6 +1,20 @@
 {
-  "version": "6.0.37",
+  "version": "6.0.38",
   "history": [
+    {
+      "version": "6.0.38",
+      "releasedAt": "2026-11-14",
+      "labels": {
+        "fr": "Fiabilité du déploiement renforcée",
+        "en": "More reliable deployments",
+        "de": "Zuverlässigere Bereitstellungen",
+        "nl": "Betrouwbaardere implementaties",
+        "it": "Distribuzioni più affidabili",
+        "es": "Despliegues más fiables",
+        "pl": "Bardziej niezawodne wdrożenia",
+        "pt": "Implementações mais fiáveis"
+      }
+    },
     {
       "version": "6.0.37",
       "releasedAt": "2026-11-14",

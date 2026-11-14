@@ -167,7 +167,7 @@ def main():
                     api = runtime.inspect(runtime.names["api"])
                 except DeploymentError as error:
                     # Either canonical name can disappear during its intentional replacement.
-                    if "No such object:" in str(error):
+                    if "no such object:" in str(error).lower():
                         return None
                     raise
                 if not api or api["Config"]["Labels"].get(GENERATION_LABEL) != current["generation"] + "c":
