@@ -1505,29 +1505,61 @@
     },
     {
       "entryId": "SG-candidate-discovery-0bc9f9fd511d6f",
-      "name": "Skypark Sentosa — Bungy et Giant Swing",
-      "entityKind": "ToQualify",
+      "name": "Sentosa Bungy Jump",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Saut / balançoire fixe",
-      "locality": "Sentosa",
-      "siteId": null,
+      "category": "Saut à l’élastique fixe",
+      "locality": "30 Siloso Beach Walk, Sentosa",
+      "siteId": "49ec49ed-ef6b-44a0-b6d9-acd8b8d5f952",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T19:38:01Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Catalogue officiel de Skypark Sentosa consulté le 14 novembre 2026 : Bungy, Giant Swing et Skyslides sont proposés séparément ; disponibilité effective à revérifier.",
-      "identityConfidence": "Offre et adresse confirmées par le site local de l’exploitant ; recherche des fiches publiques et masquées par PARK_DATA_EDITOR encore requise avant création.",
+      "identityConfidence": "Saut à billet propre sur la page officielle ; recherches Park et StandaloneAttraction sans correspondance à Sentosa, publication autonome vérifiée.",
       "possibleMatches": [],
       "aliases": [
-        "AJ Hackett Sentosa",
-        "Skypark Sentosa"
+        "Skypark Sentosa — Bungy et Giant Swing",
+        "AJ Hackett Sentosa Bungy",
+        "Skypark Sentosa Bungy"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher Skypark Sentosa, AJ Hackett Sentosa, Bungy, Giant Swing et Skyslides dans Park et StandaloneAttraction avec le client officiel ; décider du périmètre de chaque fiche avant création ou migration. Une photo libre exacte du Bungy est vérifiée, aucune photo exacte du Giant Swing ou de Skyslides dans cette recherche. Recontrôler tarifs et horaires avant Preview/Apply. Dossier : evidence/standalone-skypark-qualification-20261114/audit.json.",
+      "lastDataIntegrationAt": "2026-11-14T19:35:49.312Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f519c74d-b378-4fdb-b44e-e8910c97dd18",
+          "appliedAt": "2026-11-14T19:34:01.056Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ec49ed-ef6b-44a0-b6d9-acd8b8d5f952",
+          "evidence": "PARK_DATA_EDITOR:apply:f519c74d-b378-4fdb-b44e-e8910c97dd18",
+          "auditEvidence": null,
+          "summary": "Création du Bungy Sentosa avec huit descriptions."
+        },
+        {
+          "eventId": "photo-229d13f0d5b243d6b02e212e62ffc9a0",
+          "appliedAt": "2026-11-14T19:34:47.740Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ec49ed-ef6b-44a0-b6d9-acd8b8d5f952",
+          "evidence": "PARK_DATA_EDITOR:photo:229d13f0d5b243d6b02e212e62ffc9a0",
+          "auditEvidence": null,
+          "summary": "Photo exacte du saut et de sa tour, CC BY-SA 3.0."
+        },
+        {
+          "eventId": "apply-e07f62f4-2445-4b2a-98f7-66d4b61ee029",
+          "appliedAt": "2026-11-14T19:35:49.312Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ec49ed-ef6b-44a0-b6d9-acd8b8d5f952",
+          "evidence": "PARK_DATA_EDITOR:apply:e07f62f4-2445-4b2a-98f7-66d4b61ee029",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-sentosa-bungy-20261114/audit.json",
+          "summary": "Tarif de 99 SGD, réservation, règles pour mineurs et audit du Bungy."
+        }
+      ],
+      "nextAction": "Conserver l’historique du Bungy et sa photo exacte. Vérifier la disponibilité des réservations et les nouveaux tarifs ; qualifier Giant Swing séparément avec une photo exacte. Recontrôler le statut des Skyslides, absents du catalogue actuel des activités.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
@@ -1566,7 +1598,7 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-14",
         "attractions": [
           {
@@ -1600,8 +1632,34 @@
             "sourceLocality": "Sentosa"
           }
         ],
-        "rationale": "Bungy et Giant Swing ont leurs billets et installations propres ; l’ensemble Skypark inclut aussi Skyslides et un club de plage. Résoudre la modélisation dans le site avant création ; la photo libre retrouvée est propre au Bungy seulement."
-      }
+        "rationale": "Saut Bungy fixe vendu séparément par Skypark Sentosa ; fiche autonome créée avec photo exacte. Giant Swing est distinct ; les Skyslides ne figurent pas sur la page actuelle des activités."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/49ec49ed-ef6b-44a0-b6d9-acd8b8d5f952/sentosa-bungy-jump",
+          "publishedAtUtc": "2026-11-14T19:36:54.153Z",
+          "verifiedAtUtc": "2026-11-14T19:38:01Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ec3e8775-75ae-4df2-a565-ba943d2ddc91"
+        },
+        "facebook": {
+          "id": "e25ba7e20bd04279ad3b1dac0927c0ab",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T19:37:41.548Z",
+          "externalPostId": "1285475681307050_122127363969424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127363969424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:e25ba7e20bd04279ad3b1dac0927c0ab"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-sentosa-bungy-20261114/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 3
+      },
+      "possibleBacklogEntries": [
+        "SG-candidate-discovery-cefe9df983d182be"
+      ]
     },
     {
       "entryId": "SG-candidate-d4067342cda21c",
@@ -1773,6 +1831,54 @@
       ],
       "countryCodeAtInventory": "SG",
       "countryResolution": null
+    },
+    {
+      "entryId": "SG-candidate-discovery-cefe9df983d182be",
+      "name": "Sentosa Giant Swing",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire géante fixe",
+      "locality": "30 Siloso Beach Walk, Sentosa",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-14",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre distincte actuelle sur la page officielle de Skypark Sentosa ; billet individuel propre, photo libre exacte encore à trouver.",
+      "identityConfidence": "Nom, lieu et billet propres vérifiés chez l’exploitant ; recherche officielle StandaloneAttraction Giant Swing à Singapour et Park Skypark Sentosa sans résultat.",
+      "possibleMatches": [],
+      "aliases": [
+        "Skypark Sentosa Giant Swing"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Vérifier de nouveau les doublons et les conditions, puis trouver une photo réutilisable montrant le Giant Swing lui-même avant de créer et publier la fiche. Ne pas réutiliser la photo du Bungy.",
+      "sources": [
+        {
+          "label": "Exploitant — Giant Swing",
+          "url": "https://www.skyparksentosa.com/activities/giant-swing",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — activités de Skypark Sentosa",
+          "url": "https://www.skyparksentosa.com/activities",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "SG",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Installation fixe vendue séparément du Bungy. Photographie exacte et qualification finale de l’autonomie en attente."
+      },
+      "possibleBacklogEntries": [
+        "SG-candidate-discovery-0bc9f9fd511d6f"
+      ]
     }
   ]
 }
