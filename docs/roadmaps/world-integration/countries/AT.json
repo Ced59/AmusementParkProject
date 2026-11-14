@@ -5161,26 +5161,53 @@
     },
     {
       "entryId": "AT-park-5720c9f6-0944-4161-abae-3c9bb03adae1",
-      "name": "Serlesbahnen Mieders",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "5720c9f6-0944-4161-abae-3c9bb03adae1",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "name": "Serlesblitz — Sommerrodelbahn Mieders",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été / alpine coaster",
+      "locality": "Mieders, Tyrol",
+      "siteId": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+      "legacySiteIds": [
+        "5720c9f6-0944-4161-abae-3c9bb03adae1"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T19:01:53Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Migration officielle depuis la fiche Park masquée avec un seul item de luge ; recherches officielles et page publique autonome vérifiées le 14 novembre 2026.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Serlesbahnen Mieders",
+        "Sommerrodelbahn Serlesblitz",
+        "Sommerrodelbahn Stubai"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T18:59:36.284Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-df00f35a-ece1-43da-8eb5-00a7a3774bfd",
+          "appliedAt": "2026-11-14T18:56:20.387Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+          "evidence": "PARK_DATA_EDITOR:apply:df00f35a-ece1-43da-8eb5-00a7a3774bfd",
+          "auditEvidence": null,
+          "summary": "Migration de la fiche Park et de son unique parkItem vers une fiche standalone masquée ; huit descriptions et données techniques."
+        },
+        {
+          "eventId": "photo-8af38d3a0845411c9da466b5e2da8a45",
+          "appliedAt": "2026-11-14T18:59:36.284Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+          "evidence": "PARK_DATA_EDITOR:photo:8af38d3a0845411c9da466b5e2da8a45",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-serlesblitz-mieders-20261114/audit.json",
+          "summary": "Migration de la fiche Park masquée vers Serlesblitz autonome, contenus en huit langues et photographie créditée."
+        }
+      ],
+      "nextAction": "Conserver l’historique de la fiche Park migrée. Confirmer le rattachement précis de la photographie ancienne de la luge du Stubaital à la piste de Mieders ; vérifier tarif, calendrier de la prochaine saison et entrée exacte dès publication des données opérateur.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5196,13 +5223,28 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13002.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tyrol — Serlesbahnen et luge de Mieders",
+          "url": "https://www.tirol.at/aktivitaeten/sport/wandern/bergbahnen/gondelbahn-serles",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Tourisme régional — Serlesblitz",
+          "url": "https://www.tirol.tl/de/freizeit-aktiv/schienen-rodelbahnen-flieger/sommerrodelbahn-mieders/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — luge du Stubaital",
+          "url": "https://commons.wikimedia.org/wiki/File:Brandauer_Schlitten.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "AT",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Sommerrodelbahn Serlesblitz",
@@ -5215,7 +5257,30 @@
             "sourceOpenedYear": "2004"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Le Park legacy masqué ne contenait qu’une luge ; migration officielle vers StandaloneAttraction et retrait des anciennes fiches, identifiants conservés. Photographiée dans le Stubaital en 2007 ; le fichier Commons ne nomme pas lui-même Mieders."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/5dc707a1-e000-4966-a85a-0a41b893dbf8/serlesblitz-sommerrodelbahn-mieders",
+          "publishedAtUtc": "2026-11-14T19:00:29.2474956Z",
+          "verifiedAtUtc": "2026-11-14T19:01:53Z",
+          "evidence": "PARK_DATA_EDITOR:apply:80ae5971-c8e9-4f94-a4b0-4475d33c1150"
+        },
+        "facebook": {
+          "id": "a3c2e19c3dfc42a3ae964148c7e76dfb",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T19:01:26.9099545Z",
+          "externalPostId": "1285475681307050_122127360105424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127360105424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:a3c2e19c3dfc42a3ae964148c7e76dfb"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-serlesblitz-mieders-20261114/audit.json",
+        "score": 72,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {

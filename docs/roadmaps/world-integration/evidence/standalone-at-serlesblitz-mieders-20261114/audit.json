@@ -1,0 +1,86 @@
+{
+  "work": "Reconciled the hidden Serlesbahnen Mieders Park and its one hidden Sommerrodelbahn park item with the independent Serlesblitz alpine coaster. Migrated via the official editor, retired the legacy Park and park item, published the standalone with one licensed photograph and eight localized descriptions, verified all eight public routes and image binary HTTP 200, then published a Facebook announcement.",
+  "qualification": "The retired Park held only one hidden attraction and no other park editorial content. The summer toboggan is a separately identifiable fixed ride in the wider Serlesbahnen mountain area; migration preserves legacy site identifiers in the backlog.",
+  "sources": {
+    "tourismOfficial": "https://www.tirol.at/aktivitaeten/sport/wandern/bergbahnen/gondelbahn-serles",
+    "regionalTourism": "https://www.tirol.tl/de/freizeit-aktiv/schienen-rodelbahnen-flieger/sommerrodelbahn-mieders/",
+    "summerMountainAssociation": "https://www.sommer-bergbahnen.at/sommerbergbahnen/serlesbahnen-mieders",
+    "rideCatalog": "https://rcdb.com/13002.htm",
+    "commonsPhotograph": "https://commons.wikimedia.org/wiki/File:Brandauer_Schlitten.jpg"
+  },
+  "legacy": {
+    "parkId": "5720c9f6-0944-4161-abae-3c9bb03adae1",
+    "parkItemId": "e0af6e4b-7b3f-485d-807e-31eb5e0c222a",
+    "postMigrationParkReviewStatus": "NotRelevant"
+  },
+  "entity": {
+    "id": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+    "name": "Serlesblitz — Sommerrodelbahn Mieders",
+    "kind": "StandaloneAttraction",
+    "countryCode": "AT",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "df00f35a-ece1-43da-8eb5-00a7a3774bfd",
+      "appliedAtUtc": "2026-11-14T18:56:20.3872015Z",
+      "summary": "Migrated hidden legacy Park and item to standalone; eight descriptions and technical details."
+    },
+    {
+      "imageId": "8af38d3a0845411c9da466b5e2da8a45",
+      "createdAtUtc": "2026-11-14T18:58:46.904Z",
+      "metadataUpdatedAtUtc": "2026-11-14T18:59:36.284Z",
+      "summary": "Imported and localized a current site image showing a Brandauer sled on the Stubai Valley summer track; published with credit."
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "8af38d3a0845411c9da466b5e2da8a45",
+      "subject": "Brandauer sled on a Stubai Valley summer toboggan rail",
+      "author": "Stefan Scheer",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2007-06-22",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "locationEvidence": "Wikimedia Commons description: Brandauer Rodelschlitten, Sommerrodelbahn Stubai. The file does not itself name Mieders; precise track association should be corroborated with the photographer or a geotag."
+    }
+  ],
+  "visitorInformation": {
+    "pricingDecision": "No current Serlesblitz-specific fare was verified for the next season; no fare entered.",
+    "hoursDecision": "2026 summer season has ended; 2027 dates and daily ride hours were not verified, so no weekly timetable entered.",
+    "coordinatesDecision": "Migrated the legacy Park coordinates, near the lower Serlesbahnen station; exact ride entrance should be checked."
+  },
+  "audit": {
+    "completenessScore": 72,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/5dc707a1-e000-4966-a85a-0a41b893dbf8/serlesblitz-sommerrodelbahn-mieders",
+    "sitePublishedAtUtc": "2026-11-14T19:00:29.2474956Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:80ae5971-c8e9-4f94-a4b0-4475d33c1150",
+    "facebookStatus": "Published",
+    "facebookId": "a3c2e19c3dfc42a3ae964148c7e76dfb",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127360105424431",
+    "facebookPublishedAtUtc": "2026-11-14T19:01:26.9099545Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T18:59:36.284Z",
+  "remainingGaps": [
+    "Verify the precise Mieders association of the historical Commons sled photo.",
+    "Verify the operator fare and 2027 summer schedule when published.",
+    "Confirm the exact attraction entrance coordinates."
+  ]
+}
