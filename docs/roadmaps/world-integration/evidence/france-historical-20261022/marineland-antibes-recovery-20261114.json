@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "owner": "Conversation France",
+  "recordedAtUtc": "2026-11-14T00:54:16Z",
+  "kind": "RecoveryCheckpoint",
+  "isDataIntegration": false,
+  "purpose": "Reprise après indisponibilité de l’exécuteur. Ne pas utiliser la date de ce fichier comme date d’Apply/import. Reprendre la fiche existante, sans recréer le parc ou ses médias.",
+  "environment": {
+    "observedExecutorError": "No usable execution environment is available. Wait for an environment to become available before using this tool.",
+    "configurationStatus": "running/connected",
+    "diagnosticHistory": "not_found",
+    "workspaceReadable": false,
+    "credentialStatus": "Non vérifiable tant que l’exécuteur est indisponible ; aucun secret demandé dans le chat."
+  },
+  "lastConfirmedWorkingState": {
+    "observedAtUtc": "2026-11-03T07:40:12Z",
+    "parkItems": 64,
+    "itemsWithEightLanguages": 64,
+    "parkDescriptionLanguages": 8,
+    "zoneDescriptionLanguages": 8,
+    "fixedItemsWithCoordinates": 41,
+    "namedCoordinateGaps": 23,
+    "parkAndItemPhotographs": 57,
+    "parkGeneralPhotographs": 5,
+    "officialLogo": 1,
+    "founderPortrait": 1,
+    "totalImagesExcludingMaps": 59,
+    "officialMapYears": [
+      1997,
+      2008,
+      2010,
+      2012
+    ],
+    "historyApplied": 0,
+    "articlesApplied": 0,
+    "isPublished": false,
+    "facebookPublication": null,
+    "lastConfirmedPhotoIntegrationAt": "2026-11-03T07:38:13.214Z",
+    "finalAuditCompleted": false
+  },
+  "repositoryCheckpoint": {
+    "branch": "docs/france-historical-lot-20261022",
+    "previousPushedCommit": "aa048bec",
+    "receiptsFile": "marineland-antibes-receipts.json",
+    "remoteReceiptCountReadOnResume": 71,
+    "lastRemoteReceiptAt": "2026-11-03T07:14:38.162Z",
+    "laterLocalReceiptsRequireRecovery": true,
+    "notes": "Les imports suivants ont été confirmés par leurs réponses du client officiel dans cette conversation après ce commit. Leurs reçus locaux ont été enregistrés dans le registre local par integration-backlog.mjs ; récupérer les fichiers avant fusion avec master et nouvelle validation. Ne pas fabriquer les horodatages non repris ci-dessous."
+  },
+  "acceptedButNotYetPushedOperations": [
+    {
+      "stem": "05-sourced-dates-correction-v2",
+      "operationId": "3cbfaef2-b2ed-464e-8ff2-fac28747f292",
+      "appliedAtUtc": null,
+      "summary": "Le Central : ouverture2023 ; Antarctica : ouverture2002 précisionYear. Relire le reçu pour la date UTC réelle."
+    },
+    {
+      "stem": "05-pelicans-addition",
+      "operationId": "a934c701-e6f2-463e-b603-0288b56a1852",
+      "appliedAtUtc": null,
+      "itemId": "fdac797f-833c-4b80-ae6f-2ba2c24574f4",
+      "summary": "Ancien espace des pélicans près du tunnel ; 64e élément, distinct de la volière Lagoon, huit descriptions."
+    }
+  ],
+  "acceptedPhotoIdsAwaitingReceiptRecovery": [
+    {
+      "receiptStem": "05-rapaces-falconer",
+      "imageId": "5d16e6ed325d4ccca88c2c341c307964"
+    },
+    {
+      "receiptStem": "05-rapaces-owl",
+      "imageId": "fc0bb9d914b34c8490cbdd2104feec6f"
+    },
+    {
+      "receiptStem": "05-rapaces-eagle",
+      "imageId": "b7f6a047871a4539b479ae0458a4c930"
+    },
+    {
+      "receiptStem": "05-tunnel-shark",
+      "imageId": "9c5d2f93b12c4597ab6d9f9423a52519"
+    },
+    {
+      "receiptStem": "05-humboldt-close",
+      "imageId": "388408fbd48c42d3a045c4572a0e5e77"
+    },
+    {
+      "receiptStem": "05-bears-arrival",
+      "imageId": "940f08a29a074242b504daf70748a69f"
+    },
+    {
+      "receiptStem": "05-bears-water",
+      "imageId": "7c5c67b81a7041b6b2785fb36063dd84"
+    },
+    {
+      "receiptStem": "05-bears-raspoutine",
+      "imageId": "9a4111f1bf644d828c065939e39750a5"
+    },
+    {
+      "receiptStem": "05-pelican-platform",
+      "imageId": "bcba04c26f0e47018a81ebdbfc52cb57"
+    },
+    {
+      "receiptStem": "05-park-canopy",
+      "imageId": "dd4ca7e7a0a04ec4870cc96db7915897"
+    },
+    {
+      "receiptStem": "05-park-basins-overview",
+      "imageId": "99f10ef88d2649f98f3e22d1d7ba7060"
+    },
+    {
+      "receiptStem": "05-tunnel-visitors",
+      "imageId": "c00b9e0e89794d88abfa6ce850fa500c"
+    },
+    {
+      "receiptStem": "05-aquarium-ray",
+      "imageId": "549d82a778f6459ebbda56cdc9c53aef"
+    },
+    {
+      "receiptStem": "05-otary-encounter",
+      "imageId": "79f335f325eb45dd94749b3cd6131137"
+    },
+    {
+      "receiptStem": "05-orca-window-encounter",
+      "imageId": "d2b3f39696a841d8ad9d41a3f955e149"
+    },
+    {
+      "receiptStem": "05-soigneur-dolphin-water",
+      "imageId": "d90e3f92b082438fa314601feb75af03"
+    },
+    {
+      "receiptStem": "05-seal-feeding",
+      "imageId": "348ab5c5f20b4d80886fa4590f88cac2"
+    }
+  ],
+  "preparedHistory": {
+    "stem": "08-park-timeline-first",
+    "previewResponseReceived": true,
+    "previewDiffReviewed": false,
+    "applyConfirmed": false,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "eventKeys": [
+      "marineland-ouverture-1970",
+      "marineland-grand-projet-2000",
+      "marineland-acquisition-2006",
+      "marineland-inondation-20151003",
+      "marineland-reouverture-20160321",
+      "marineland-loi-20211130"
+    ],
+    "next": "Contrôler état global et historique officiel, relire le diff puis refaire une Preview fraîche si le reçu a expiré ; Apply uniquement après revue. Aucun Apply historique lancé avant la panne."
+  },
+  "newResearch": [
+    {
+      "url": "https://www2.assemblee-nationale.fr/static/17/questions/jo/jo_anq_202644.pdf",
+      "accessedAt": "2026-11-14",
+      "sourceDate": "2026-11-03",
+      "pages": [
+        10350,
+        10351,
+        10353,
+        10354
+      ],
+      "questions": [
+        10801,
+        15720
+      ],
+      "finding": "Les réponses gouvernementales présentent toujours le transfert des orques à Loro Parque comme restant à concrétiser. Ne pas transformer cette orientation en transfert réalisé. Les références aux douze dauphins décrivent le contexte de la fermeture et ne prouvent pas leur présence actuelle après les départs de juillet.",
+      "use": "Source primaire pour actualiser l’article sur les suites de la fermeture."
+    },
+    {
+      "url": "https://www.lagazettefrance.fr/article/cote-d-azur-clap-de-fin-pour-les-orques-et-les-dauphins-du-marineland",
+      "accessedAt": "2026-11-14",
+      "sourceDate": "2025-01-05",
+      "publisher": "AFP / La Gazette France",
+      "finding": "Le compte rendu confirme la fermeture du5janvier2025 après le dernier spectacle. La photographie légendée montre les dauphins le2janvier2025, créditMiguelMedina ; ne pas la dater du5janvier.",
+      "imageCandidateUrl": "https://www.lagazettefrance.fr/cache/thumb_article/media/imp/articles/2025/01/36RZ4E8.jpg",
+      "imageDownloadVerified": false,
+      "imageImported": false
+    }
+  ],
+  "recoveryProcedure": [
+    "Rétablir un exécuteur utilisable, puis préserver tous les fichiers et modifications existants.",
+    "Lire AGENTS.md, règles API et registre FR actuels ; réconcilier master avec les événements locaux sans supprimer ni réécrire aucun historique.",
+    "Utiliser seulement le client officiel PARK_DATA_EDITOR ; Status avant chaque opération, aucune requête concurrente.",
+    "Rechercher la fiche par son UUID et son nom ; ne pas créer un autre Marineland.",
+    "Reprendre les reçus et journaux locaux. En cas de perte, utiliser les réponses et exports strictement ciblés nécessaires pour retrouver les opérations et médias par leurs IDs ; ne pas réimporter aveuglément.",
+    "Récupérer les dates UTC réelles manquantes depuis les preuves officielles ; laisser null toute date non établie.",
+    "Régénérer et valider le registre avec integration-backlog.mjs après rapprochement.",
+    "Poursuivre les références, les lacunes factuelles et les lots d’histoire/articles huit langues ; export complet frais uniquement avant l’audit final.",
+    "Publier le site et Facebook avec les autorisations existantes uniquement après audit et contrôle du score ; pas de PR avant dix parcs terminés, pas de montée de version pour le backlog."
+  ]
+}
