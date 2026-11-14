@@ -1,0 +1,30 @@
+{
+  "conversation": "Conversation France",
+  "openedOnUtc": "2026-11-14",
+  "previousBatchEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/batch.json",
+  "previousBatchPullRequest": 1117,
+  "minimumCompletedParksPerDocumentationPullRequest": 10,
+  "completedInThisBatch": 1,
+  "completedEntryIds": [
+    "FR-candidate-ecdb81d09bead4"
+  ],
+  "completionEvidence": [
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-completion-20261114.json"
+  ],
+  "sitePublicationAuthorized": true,
+  "facebookPublicationAuthorized": true,
+  "closedParkScoreTolerance": {
+    "ownerInstructionDateUtc": "2026-11-14",
+    "instruction": "Publie tout avec fb aussi. Les parcs définitivement fermes on peut avoir une tolérance sur la note. Et tu finis l’intégration de tous les parcs francais. Pas seulement les définitivement fermes.",
+    "application": "Planète magique, fermé définitivement : clôture à 93/100 après audit éditorial confirmé, lacunes sourcées conservées. Le score seul ne bloque plus."
+  },
+  "bumpVersionForBacklogOnly": false,
+  "nextAction": "Lomme : correction appliquée, affichage à reconfirmer après cache ; poursuivre autres historiques, puis parcs actifs et standalone qualifiés.",
+  "branch": "docs/france-historical-lot-20261114",
+  "previousBatchPullRequestState": "Merged",
+  "previousBatchMergeCommit": "8ed5f807cbf9afbe7e9fbc72c43c6fa5062f6f2e",
+  "previousBatchPullRequestUrl": "https://github.com/Ced59/AmusementParkProject/pull/1117",
+  "pendingPartialEntryIds": [
+    "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5"
+  ]
+}

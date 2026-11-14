@@ -1,0 +1,1383 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-ecdb81d09bead4",
+  "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+  "name": "Planète magique",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-14T23:37:52.616159+00:00",
+  "outcome": "completed",
+  "finalAuditPassed": true,
+  "ownerAuthorization": {
+    "ownerInstructionDateUtc": "2026-11-14",
+    "instruction": "Publie tout avec fb aussi. Les parcs définitivement fermes on peut avoir une tolérance sur la note. Et tu finis l’intégration de tous les parcs francais. Pas seulement les définitivement fermes.",
+    "application": "Planète magique, fermé définitivement : clôture à 93/100 après audit éditorial confirmé, lacunes sourcées conservées. Le score seul ne bloque plus."
+  },
+  "acceptedScore": 93,
+  "officialCompleteness": {
+    "startedAtUtc": "2026-11-14T23:34:06.6824769Z",
+    "receivedAtUtc": "2026-11-14T23:34:07.7260701Z",
+    "action": "Completeness",
+    "result": {
+      "completenessScore": 93,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    }
+  },
+  "historyDiagnostics": {
+    "startedAtUtc": "2026-11-14T23:34:23.2400508Z",
+    "receivedAtUtc": "2026-11-14T23:34:23.6964745Z",
+    "result": {
+      "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+      "parkName": "Planète magique",
+      "factCount": 35,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1980,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 1990,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 2,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 2,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 9
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 26
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 9,
+        "sourcedFactCount": 9,
+        "majorFactCount": 9,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics"
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-03T03:35:55.4976376Z",
+    "items": 45,
+    "zones": 1,
+    "attractions": 21,
+    "attractionStatuses": {
+      "Removed": 21
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 21,
+    "attractionsWithImage": 16,
+    "attractionImageGaps": [
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo"
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot"
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan"
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum"
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace"
+      }
+    ],
+    "ownedImages": 69,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "579545c3-3ef2-47a1-9a98-517e9173e14e",
+        "name": "Accueil groupes",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "da666920-9c51-4214-b6de-8b944f2d66eb",
+        "name": "Aladin",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "db31a440-1989-477f-89b9-ed0c5159b05e",
+        "name": "Apesantaria",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+        "name": "BD Zap",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "f9b76b19-80ab-4bd9-a6bc-0404f306228a",
+        "name": "Boutique partenaires",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "6decc4f5-4394-406c-87c3-2ae6583819cb",
+        "name": "Boutique principale",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "f21c94e8-ce22-4cc1-ba57-0f841359df6e",
+        "name": "Cartoon Center",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "ce166b97-2f91-4a06-9c29-2907cedecd93",
+        "name": "Croq’ Planète",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "73973e4f-1358-4a2f-b005-ebad4e6da35a",
+        "name": "Dragon bleu",
+        "category": "Other",
+        "images": 3
+      },
+      {
+        "id": "9d58901b-7740-4a87-937c-e15970ee4b36",
+        "name": "El Gringo",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "6485bef2-862a-4e33-9124-f6b6a2c32148",
+        "name": "Eldorado",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4a39d1bd-6380-4280-9e78-e4b2fceb011c",
+        "name": "Entrée de la rue Papin",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "8d04281d-4165-4a21-9640-1ff6cba9e9c8",
+        "name": "Espace bleu",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a4dc0b6c-a498-4b31-915c-de09c4619aa8",
+        "name": "Gadget",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a06fd2dc-d25c-4a47-8472-bdd2aa9d213f",
+        "name": "La Belle Eugénie",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "a613df39-66f9-424b-b6c7-db925094045a",
+        "name": "La Comète",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "d5d98cbf-0f6b-4f24-b5d8-83c215031ec9",
+        "name": "La Machine à voyager dans le temps",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+        "name": "La Maison de Barbie",
+        "category": "Attraction",
+        "images": 6
+      },
+      {
+        "id": "13d7e812-3d55-41a8-a5e9-6e99e9d5609c",
+        "name": "La Navette",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "7bae4ee1-e114-45a6-8e03-79ee6c993b9b",
+        "name": "Le Bouquet",
+        "category": "Show",
+        "images": 3
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "56eb5fd1-d60f-4d37-9844-0e1df416963e",
+        "name": "Le Triangle des Bermudes",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "dd7ea24c-0480-49ec-9fdd-6358a51d977b",
+        "name": "Les Cités d’Or",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "d533ee04-5159-442f-82fb-3941d2ff4086",
+        "name": "Les Entrechats",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f23dafb9-8267-41ea-97a3-60d3a9c6fcc7",
+        "name": "Mirage d’électrons",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+        "name": "Orphée Théâtre",
+        "category": "Show",
+        "images": 2
+      },
+      {
+        "id": "e44e3831-9825-4ddf-a5ee-b3738f75a986",
+        "name": "Ouragan",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "537e044d-954e-48e3-b20e-e39287ed56c9",
+        "name": "Planet Ciné",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "1f0adae9-0375-49d7-98e3-9a9bf021066c",
+        "name": "Planète Molle",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "63e345fc-1cd1-468e-80db-0fa62a1fd612",
+        "name": "Planète Roll",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "e7b412c0-114b-439d-997b-a36fc27192c5",
+        "name": "Point d’information",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "9d337a12-f7c7-4f67-a5ef-cd881571ae2d",
+        "name": "Point rencontre",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "dab88ec9-a998-4850-a908-f5c257121758",
+        "name": "Studio TV",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "d9573431-d334-4da0-b62c-306d34750100",
+        "name": "Talisman",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "615522fe-28e8-4bbb-8191-47464e61d1db",
+        "name": "Toilettes des îles",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "f900e0ee-91fd-4933-8755-3c5b56f3f37d",
+        "name": "Transistor",
+        "category": "Show",
+        "images": 2
+      },
+      {
+        "id": "8d4c4a34-3daf-4d8e-a57d-36de22da9469",
+        "name": "Vecteur beauté",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "278f1f45-e637-4fb9-aa08-46c97a3474b9",
+        "name": "Vestiaire groupes et individuel",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "c43cdf10-f50b-4b4d-adf3-daea132acdc9",
+        "name": "WC des stars",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "4f14c6c7-cc29-4c39-b3c2-c7ac23b7a0ec",
+        "name": "WC Scooter",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "ed8bb737-5828-4ac1-84d4-0a239b08f009",
+        "name": "WC Téléphone",
+        "category": "Service",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 1,
+    "geolocationGaps": [
+      {
+        "id": "579545c3-3ef2-47a1-9a98-517e9173e14e",
+        "name": "Accueil groupes",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "da666920-9c51-4214-b6de-8b944f2d66eb",
+        "name": "Aladin",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "db31a440-1989-477f-89b9-ed0c5159b05e",
+        "name": "Apesantaria",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+        "name": "BD Zap",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f9b76b19-80ab-4bd9-a6bc-0404f306228a",
+        "name": "Boutique partenaires",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "6decc4f5-4394-406c-87c3-2ae6583819cb",
+        "name": "Boutique principale",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "f21c94e8-ce22-4cc1-ba57-0f841359df6e",
+        "name": "Cartoon Center",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "ce166b97-2f91-4a06-9c29-2907cedecd93",
+        "name": "Croq’ Planète",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "73973e4f-1358-4a2f-b005-ebad4e6da35a",
+        "name": "Dragon bleu",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "9d58901b-7740-4a87-937c-e15970ee4b36",
+        "name": "El Gringo",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "6485bef2-862a-4e33-9124-f6b6a2c32148",
+        "name": "Eldorado",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "8d04281d-4165-4a21-9640-1ff6cba9e9c8",
+        "name": "Espace bleu",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a4dc0b6c-a498-4b31-915c-de09c4619aa8",
+        "name": "Gadget",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a06fd2dc-d25c-4a47-8472-bdd2aa9d213f",
+        "name": "La Belle Eugénie",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "a613df39-66f9-424b-b6c7-db925094045a",
+        "name": "La Comète",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "d5d98cbf-0f6b-4f24-b5d8-83c215031ec9",
+        "name": "La Machine à voyager dans le temps",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+        "name": "La Maison de Barbie",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "13d7e812-3d55-41a8-a5e9-6e99e9d5609c",
+        "name": "La Navette",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "7bae4ee1-e114-45a6-8e03-79ee6c993b9b",
+        "name": "Le Bouquet",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "56eb5fd1-d60f-4d37-9844-0e1df416963e",
+        "name": "Le Triangle des Bermudes",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "dd7ea24c-0480-49ec-9fdd-6358a51d977b",
+        "name": "Les Cités d’Or",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d533ee04-5159-442f-82fb-3941d2ff4086",
+        "name": "Les Entrechats",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f23dafb9-8267-41ea-97a3-60d3a9c6fcc7",
+        "name": "Mirage d’électrons",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+        "name": "Orphée Théâtre",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "e44e3831-9825-4ddf-a5ee-b3738f75a986",
+        "name": "Ouragan",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "537e044d-954e-48e3-b20e-e39287ed56c9",
+        "name": "Planet Ciné",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "1f0adae9-0375-49d7-98e3-9a9bf021066c",
+        "name": "Planète Molle",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "63e345fc-1cd1-468e-80db-0fa62a1fd612",
+        "name": "Planète Roll",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e7b412c0-114b-439d-997b-a36fc27192c5",
+        "name": "Point d’information",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "9d337a12-f7c7-4f67-a5ef-cd881571ae2d",
+        "name": "Point rencontre",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "dab88ec9-a998-4850-a908-f5c257121758",
+        "name": "Studio TV",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "d9573431-d334-4da0-b62c-306d34750100",
+        "name": "Talisman",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "615522fe-28e8-4bbb-8191-47464e61d1db",
+        "name": "Toilettes des îles",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "f900e0ee-91fd-4933-8755-3c5b56f3f37d",
+        "name": "Transistor",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "8d4c4a34-3daf-4d8e-a57d-36de22da9469",
+        "name": "Vecteur beauté",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "278f1f45-e637-4fb9-aa08-46c97a3474b9",
+        "name": "Vestiaire groupes et individuel",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "c43cdf10-f50b-4b4d-adf3-daea132acdc9",
+        "name": "WC des stars",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "4f14c6c7-cc29-4c39-b3c2-c7ac23b7a0ec",
+        "name": "WC Scooter",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "ed8bb737-5828-4ac1-84d4-0a239b08f009",
+        "name": "WC Téléphone",
+        "category": "Service",
+        "status": null
+      }
+    ],
+    "history": 9,
+    "parkHistory": 8,
+    "itemHistory": 1,
+    "historyWithSource": 9,
+    "historyWithImage": 9,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "publicItems": 45,
+    "allItemsWith8Descriptions": 45,
+    "itemsWithImage": 23,
+    "publishedImages": 69,
+    "majorItemsWithThreeImages": 9,
+    "majorItemsTotal": 18,
+    "articleHeadings": 5,
+    "articleParagraphs": 9,
+    "articleImageBlocks": 4,
+    "articleLanguages": 8
+  },
+  "priorFullEditorialAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-followup-audit-20261103.json",
+  "priorFullAuditExportAtUtc": "2026-11-03T03:35:55.4976376Z",
+  "auditMethod": "Confirmation de l’audit complet du 3 novembre, sans mutation depuis. Export limité pour récupérer les identifiants et dépendances perdus, trois Previews sans changement. Aucune republication ni nouvel export complet final.",
+  "recoveryExport": {
+    "exportedAtUtc": "2026-11-14T23:35:04.4433748Z",
+    "sha256": "e44effbc82c63c10cf78f67836729965aaadcecdba0323b964c5d970e60bea89",
+    "sections": [
+      "ParkBasics",
+      "ParkDescriptions",
+      "References",
+      "Zones",
+      "Items",
+      "Images",
+      "History",
+      "OfficialMaps"
+    ]
+  },
+  "idempotence": {
+    "previews": [
+      {
+        "operationId": "e4c57158-6793-4e46-bebc-6f1f4b7fc57d",
+        "previewedAtUtc": "2026-11-14T23:35:27.1445088Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 49,
+          "warnings": 0,
+          "errors": 0
+        }
+      },
+      {
+        "operationId": "f48f7e8a-52e2-4f54-9661-361a210226ad",
+        "previewedAtUtc": "2026-11-14T23:35:45.6399184Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 118,
+          "warnings": 0,
+          "errors": 0
+        }
+      },
+      {
+        "operationId": "f0a11464-3ecf-46ee-bc16-65d979125a46",
+        "previewedAtUtc": "2026-11-14T23:36:14.2350678Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 127,
+          "warnings": 0,
+          "errors": 0
+        }
+      }
+    ],
+    "uniqueEntities": 127,
+    "unexpectedMutations": 0
+  },
+  "corpusConfirmation": {
+    "rawPublicStringsChecked": 2684,
+    "localizedEditorialFields": 1877,
+    "encodingIssues": 0,
+    "exactCrossEntityMatches": 0,
+    "nearCrossEntityMatches": 0,
+    "personalReviewBasis": "Fresh export reconciled to reviewed accepted state, followed only by three explicitly reviewed alt-text corrections. Whole corpus rescanned. Prior full language-by-language reviews preserved; all new prose, metadata, source qualifications and native photos personally reviewed.",
+    "currentReview": "Corpus inchangé ; contrôles transversaux relancés, pages publiques huit langues et faux positifs examinés personnellement."
+  },
+  "residualGaps": {
+    "score": "93/100 réel, tolérance propriétaire du 14 novembre2026 appliquée aux parcs définitivement fermés ; aucune invention pour relever la note.",
+    "manufacturerAndAccess": "Fabricants des installations et restrictions d’accès d’époque non établis. Le rôle d’étude et programmation de Haudebourg ne vaut pas constructeur.",
+    "missingAttractionPhotos": [
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo"
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot"
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan"
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum"
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace"
+      }
+    ],
+    "gps": "Un point établi sur 45 éléments ; installations disparues, aucune position inventée.",
+    "annualMaps": "Aucune édition officielle annuelle authentifiée ; brochure moderne en euros et plans non datés non convertis en cartes historiques datées.",
+    "photoAdvances": "BD Zap passe de2à4vues ; Orphée de0à2. Les cinq attractions encore sans image restent explicitement signalées."
+  },
+  "publicPages": [
+    {
+      "checkedAtUtc": "2026-11-14T23:34:48.736900+00:00",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+      "status": 200,
+      "title": "Planète magique à Paris, en France : fermé définitivement — Amusement Parks",
+      "bodyCharacters": 5978,
+      "h1": [
+        "Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/90169c9d95a7484ba2ff237d62f0db17?width=320&v=2",
+          "alt": "Planète magique"
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": ""
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": ""
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": ""
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": ""
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": ""
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": ""
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": ""
+        }
+      ],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:34:51.503497+00:00",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "status": 200,
+      "title": "L'histoire de Planète magique — Amusement Parks",
+      "bodyCharacters": 2577,
+      "h1": [
+        "L'histoire de Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:34:53.412549+00:00",
+      "language": "fr",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history/8e3d0b50-7677-4849-88ce-a44aabe02dd9/planete-magique-parc-vertical-gaite-lyrique",
+      "status": 200,
+      "title": "Article : Planète magique : du parc vertical à la Gaîté Lyrique — Amusement Parks",
+      "bodyCharacters": 8024,
+      "h1": [
+        "Planète magique : du parc vertical à la Gaîté Lyrique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:34:56.154561+00:00",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+      "status": 200,
+      "title": "Planète magique — Paris, France: permanently closed — Amusement Parks",
+      "bodyCharacters": 5442,
+      "h1": [
+        "Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:34:57.589286+00:00",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "status": 200,
+      "title": "The history of Planète magique — Amusement Parks",
+      "bodyCharacters": 2328,
+      "h1": [
+        "The history of Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:34:59.070515+00:00",
+      "language": "en",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/en/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history/8e3d0b50-7677-4849-88ce-a44aabe02dd9/planete-magique-parc-vertical-gaite-lyrique",
+      "status": 200,
+      "title": "Article: Planète magique: from vertical theme park to La Gaîté Lyrique — Amusement Parks",
+      "bodyCharacters": 7660,
+      "h1": [
+        "Planète magique: from vertical theme park to La Gaîté Lyrique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "Operating"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:00.841331+00:00",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+      "status": 200,
+      "title": "Planète magique — Paris, Frankreich: dauerhaft geschlossen — Amusement Parks",
+      "bodyCharacters": 5874,
+      "h1": [
+        "Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:02.546071+00:00",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "status": 200,
+      "title": "Die Geschichte von Planète magique — Amusement Parks",
+      "bodyCharacters": 2582,
+      "h1": [
+        "Die Geschichte von Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:04.387994+00:00",
+      "language": "de",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/de/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history/8e3d0b50-7677-4849-88ce-a44aabe02dd9/planete-magique-parc-vertical-gaite-lyrique",
+      "status": 200,
+      "title": "Artikel: Planète magique: vom vertikalen Freizeitpark zur Gaîté Lyrique — Amusement Parks",
+      "bodyCharacters": 8072,
+      "h1": [
+        "Planète magique: vom vertikalen Freizeitpark zur Gaîté Lyrique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:06.411026+00:00",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+      "status": 200,
+      "title": "Planète magique — Paris, Frankrijk: definitief gesloten — Amusement Parks",
+      "bodyCharacters": 5692,
+      "h1": [
+        "Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:07.993446+00:00",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "status": 200,
+      "title": "De geschiedenis van Planète magique — Amusement Parks",
+      "bodyCharacters": 2656,
+      "h1": [
+        "De geschiedenis van Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:09.472315+00:00",
+      "language": "nl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/nl/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history/8e3d0b50-7677-4849-88ce-a44aabe02dd9/planete-magique-parc-vertical-gaite-lyrique",
+      "status": 200,
+      "title": "Artikelpagina: Planète magique: van verticaal pretpark tot de Gaîté Lyrique — Amusement Parks",
+      "bodyCharacters": 7926,
+      "h1": [
+        "Planète magique: van verticaal pretpark tot de Gaîté Lyrique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:11.537976+00:00",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+      "status": 200,
+      "title": "Planète magique — Paris, Francia: chiuso definitivamente — Amusement Parks",
+      "bodyCharacters": 5864,
+      "h1": [
+        "Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:12.940799+00:00",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "status": 200,
+      "title": "La storia di Planète magique — Amusement Parks",
+      "bodyCharacters": 2499,
+      "h1": [
+        "La storia di Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:14.364420+00:00",
+      "language": "it",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/it/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history/8e3d0b50-7677-4849-88ce-a44aabe02dd9/planete-magique-parc-vertical-gaite-lyrique",
+      "status": 200,
+      "title": "Articolo: Planète magique: dal parco verticale alla Gaîté Lyrique — Amusement Parks",
+      "bodyCharacters": 7844,
+      "h1": [
+        "Planète magique: dal parco verticale alla Gaîté Lyrique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:16.002078+00:00",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+      "status": 200,
+      "title": "Planète magique — Paris, Francia: cerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5945,
+      "h1": [
+        "Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:17.382408+00:00",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "status": 200,
+      "title": "La historia de Planète magique — Amusement Parks",
+      "bodyCharacters": 2483,
+      "h1": [
+        "La historia de Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:18.824965+00:00",
+      "language": "es",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/es/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history/8e3d0b50-7677-4849-88ce-a44aabe02dd9/planete-magique-parc-vertical-gaite-lyrique",
+      "status": 200,
+      "title": "Artículo: Planète magique: del parque vertical a la Gaîté Lyrique — Amusement Parks",
+      "bodyCharacters": 8061,
+      "h1": [
+        "Planète magique: del parque vertical a la Gaîté Lyrique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:20.790355+00:00",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+      "status": 200,
+      "title": "Planète magique — Paris, Francja: zamknięty na stałe — Amusement Parks",
+      "bodyCharacters": 5581,
+      "h1": [
+        "Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:22.502840+00:00",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "status": 200,
+      "title": "Historia Planète magique — Amusement Parks",
+      "bodyCharacters": 2555,
+      "h1": [
+        "Historia Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:24.051997+00:00",
+      "language": "pl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pl/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history/8e3d0b50-7677-4849-88ce-a44aabe02dd9/planete-magique-parc-vertical-gaite-lyrique",
+      "status": 200,
+      "title": "Artykuł: Planète magique: od pionowego parku do Gaîté Lyrique — Amusement Parks",
+      "bodyCharacters": 7496,
+      "h1": [
+        "Planète magique: od pionowego parku do Gaîté Lyrique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:25.963812+00:00",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+      "status": 200,
+      "title": "Planète magique — Paris, França: encerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5754,
+      "h1": [
+        "Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:27.758764+00:00",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "status": 200,
+      "title": "A história de Planète magique — Amusement Parks",
+      "bodyCharacters": 2472,
+      "h1": [
+        "A história de Planète magique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:35:29.249750+00:00",
+      "language": "pt",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pt/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history/8e3d0b50-7677-4849-88ce-a44aabe02dd9/planete-magique-parc-vertical-gaite-lyrique",
+      "status": 200,
+      "title": "Artigo: Planète magique: do parque vertical à Gaîté Lyrique — Amusement Parks",
+      "bodyCharacters": 7854,
+      "h1": [
+        "Planète magique: do parque vertical à Gaîté Lyrique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    }
+  ],
+  "historyNavigation": [
+    {
+      "target": "park",
+      "url": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "href": "/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "h1": [
+        "L'histoire de Planète magique"
+      ],
+      "bodyLength": 2129,
+      "technical": [],
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-14T23:35:50.282899+00:00"
+    }
+  ],
+  "resolvedDisplayChecks": {
+    "initialBrokenImages": "Première visite française : huit ressources (logo et sept drapeaux) signalées non chargées. Contrôle ordinaire ultérieur réussi, aucun média réimporté.",
+    "finalFrenchPark": {
+      "checkedAtUtc": "2026-11-14T23:36:38.600207+00:00",
+      "url": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+      "status": 200,
+      "h1": [
+        "Planète magique"
+      ],
+      "overflow": 0,
+      "brokenImages": []
+    },
+    "regexFalsePositives": [
+      {
+        "page": "English park",
+        "match": "OTHER",
+        "interpretation": "Libellé anglais normal de la catégorie visiteurs Other dans les compteurs ; pas un enum non traduit."
+      },
+      {
+        "page": "English article",
+        "match": "Operating",
+        "interpretation": "Début naturel de la phrase « Operating difficulties nevertheless limited the experience… » ; pas un statut technique."
+      }
+    ]
+  },
+  "screenshotPersonallyViewed": "public-park-mobile-final.png",
+  "site": {
+    "status": "Published",
+    "publicUrl": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+    "publishedAtUtc": "2026-11-01T14:12:06.3729161Z",
+    "publicationOperationId": "139b5fb9-02b5-40ca-bcb3-b308d35ecb4d",
+    "observedAtUtc": "2026-11-14T23:33:46.1685437Z",
+    "newPublicationCalls": 0
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "04aa1a368f6d481a84d45873742c826f",
+    "url": "https://www.facebook.com/1285475681307050/posts/122125615305424431",
+    "publishedAtUtc": null,
+    "observedAtUtc": "2026-11-14T23:34:42.6058453Z",
+    "newPublicationCalls": 0,
+    "note": "Annonce existante confirmée ; heure d’envoi non exposée, aucune date inventée."
+  },
+  "lastDataIntegrationAt": "2026-11-03T03:37:21.099Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-0fdd4ef3-61fd-4876-9c0e-7635f805794a",
+  "dataMutationThisClosure": false,
+  "newSitePublication": false,
+  "newFacebookPublication": false,
+  "previousBatchCompletedCount": 10,
+  "nextBatchCompletedCount": 1,
+  "priorBatchPullRequest": 1117,
+  "releaseVersionChanged": false
+}
