@@ -76,7 +76,13 @@ class DockerRuntime:
             identifiers = self.run("docker", "ps", "-aq", "--no-trunc", "--filter", f"name=^/{identifier}$")
             if not identifiers:
                 return None
-        return json.loads(self.run("docker", "inspect", identifier))[0]
+        try:
+            return json.loads(self.run("docker", "inspect", identifier))[0]
+        except DeploymentError as error:
+            # The container can disappear after docker ps and before docker inspect.
+            if f"no such object: {identifier}" in str(error).lower():
+                return None
+            raise
 
     @staticmethod
     def reference(container):
