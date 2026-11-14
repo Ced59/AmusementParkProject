@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "owner": "Conversation France",
+  "checkpointAtUtc": "2026-11-14T18:39:25.148Z",
+  "partial": true,
+  "priorState": "64 existing items with eight-language descriptions; 57 park/item photos plus logo, founder portrait and four official maps, private. Never recreate these.",
+  "recoveredHistoricalOperations": 19,
+  "newOperations": [
+    {
+      "stem": "08-first",
+      "operationId": "c6c1cb22-2ed6-4b48-9593-5c55771e2fbe",
+      "appliedAtUtc": "2026-11-14T18:12:23.9505994Z",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-first-20261114.json"
+    },
+    {
+      "stem": "08-second",
+      "operationId": "8974fc4f-3d26-4095-99cc-1eb364c2856f",
+      "appliedAtUtc": "2026-11-14T18:19:57.2142051Z",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-second-20261114.json"
+    },
+    {
+      "stem": "08-flood",
+      "operationId": "98a72dad-fbc8-40f5-aeb3-91ea30d8f5b8",
+      "appliedAtUtc": "2026-11-14T18:23:07.4584913Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-flood-20261114.json"
+    },
+    {
+      "stem": "08-closure",
+      "operationId": "c2a3338c-db53-4565-884f-901b367f59ff",
+      "appliedAtUtc": "2026-11-14T18:28:05.3789919Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-closure-20261114.json"
+    },
+    {
+      "stem": "08-synthesis",
+      "operationId": "1697b3a0-707f-4e2f-92ec-b92632c3badc",
+      "appliedAtUtc": "2026-11-14T18:32:40.9696878Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-synthesis-20261114.json"
+    },
+    {
+      "stem": "08-items-first",
+      "operationId": "142b3819-cc14-4eae-9b53-262bab1cead2",
+      "appliedAtUtc": "2026-11-14T18:38:23.1758258Z",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-items-first-20261114.json"
+    }
+  ],
+  "newImage": {
+    "id": "3c5268c4ad964840980c08b6884853a7",
+    "metadataUpdatedAtUtc": "2026-11-14T18:15:03.541Z",
+    "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-closure-photo-20261114.json"
+  },
+  "currentConsolidatedState": {
+    "items": 64,
+    "parkAndItemPhotosExcludingLogo": 58,
+    "logo": 1,
+    "founderPortrait": 1,
+    "officialMaps": 4,
+    "activeParkHistoryEvents": 12,
+    "activeItemHistoryEvents": 6,
+    "developedArticles": 3,
+    "allTextsEightLanguages": true,
+    "allNewContentPrivate": true
+  },
+  "historyDiagnostics": {
+    "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "parkName": "Marineland d’Antibes",
+    "factCount": 21,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1970,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2000,
+        "resourceCount": 6,
+        "sourcedResourceCount": 6,
+        "publishedResourceCount": 0,
+        "subjectCount": 4,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2010,
+        "resourceCount": 4,
+        "sourcedResourceCount": 4,
+        "publishedResourceCount": 0,
+        "subjectCount": 3,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2020,
+        "resourceCount": 7,
+        "sourcedResourceCount": 7,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 18
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 3
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "noFinalFullExportYet": true,
+  "finalAuditCompleted": false,
+  "sitePublicationCompleted": false,
+  "facebookPublicationCompleted": false,
+  "researchCorrections": {
+    "cinemaOpeningFilm": "Arctic 1 (not Happy Feet)",
+    "cinemaOpeningFilmEvidence": [
+      {
+        "label": "Marineland — communiqué reproduit par ParcPlaza, 6 avril 2018",
+        "url": "https://www.parcplaza.net/2018/04/marineland-inaugure-un-cinema-5d.html",
+        "accessedAt": "2026-11-14"
+      },
+      {
+        "label": "Triotech — projet Marineland 2018",
+        "url": "https://www.trio-tech.com/projects/marineland/",
+        "accessedAt": "2026-11-14"
+      }
+    ],
+    "sharkEncounterYear": 2011,
+    "sharkYearEvidence": [
+      "https://www.tourmag.com/Marineland-prepare-l-ouverture-de-son-premier-hotel_a44187.html",
+      "https://parcactu.wordpress.com/category/nouveaute/"
+    ],
+    "manufacturerToResolve": "CL Corporation; now a Triotech division, historical maker must be resolved before attaching",
+    "followup": "Add hotel, lagoon, dolphin transfer, polar bear departure, emblematic item closures and article; resolve missing photos and manufacturer aliases."
+  },
+  "nextSteps": [
+    "Finish hotel/lagoon/shark-encounter timelines and dolphin July 2026 transfer.",
+    "Add June 2021 polar-bear departure with a developed item article and emblematic item closures, without duplicating park facts.",
+    "Resolve CL Corporation manufacturer aliases through official Preview before creation or attachment; source Triotech project and 2018 park announcement.",
+    "Reconcile remaining photo and geolocation gaps, review full eight-language corpus and shared references.",
+    "Only after the above, perform the single planned complete export immediately before final audit; project completeness and apply the >95 blocker-free publication gate.",
+    "Publish images/history/articles/items/park as required, verify public history and actual score, ResolveFacebookPublication then PublishFacebook without duplicate."
+  ],
+  "recoveryNotes": [
+    "Use the latest actual branch and local receipts before resuming.",
+    "Official request envelope must contain targetParkId/createIfMissing:false/replaceCollections:false/document.",
+    "The recovery targeted Items/Images/History export is not the final complete export.",
+    "Retain marineland-antibes-receipts.json and the historical -receipts.json referenced by old events.",
+    "No PR until ten completed batch parks; batch still eight completed before Marineland."
+  ]
+}

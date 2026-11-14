@@ -1,0 +1,538 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "2137c2cdeae5d08a9f236e3de7d97ed8cde20e2b2b152213d9413b76f71ee64d",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "142b3819-cc14-4eae-9b53-262bab1cead2",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T18:38:23.1758248Z",
+    "appliedAtUtc": "2026-11-14T18:38:23.1758258Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 6,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "76af3987-b951-49d1-85d8-0f928e44a1e7",
+        "entityKey": "marineland-orques-nouveaux-bassins-2000",
+        "displayName": "Un nouveau complexe pour les orques",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-orques-nouveaux-bassins-2000"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2000"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "5c14e05ccabc4c828879a251d4cc61df"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ein neuer Beckenkomplex für die Orcas, en:A new pool complex for the orcas, es:Un nuevo complejo de piscinas para las orcas, fr:Un nouveau complexe pour les orques, it:Un nuovo complesso di vasche per le orche, nl:Een nieuw bassincomplex voor de orka’s, pl:Nowy kompleks basenów dla orek, pt:Um novo complexo de tanques para as orcas"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2000 erhalten die Orcas einen neuen Beckenkomplex mit großen überdachten Tribünen. Er wird zum zentralen Schauplatz ihrer Vorführungen und eröffnet den Besuchern neue Blickwinkel auf die Tiere und ihre Bewegungen im Wasser., en:In 2000, the orcas gain a new pool complex bordered by large covered stands. It becomes the main setting for their shows and gives visitors new vantage points from which to watch the animals., es:En 2000, las orcas cuentan con un nuevo complejo de piscinas rodeado de grandes gradas cubiertas. Se convierte en el escenario principal de sus espectáculos y ofrece al público nuevos puntos de observación de los animales., fr:En 2000, les orques disposent d’un nouveau complexe de bassins, bordé de grandes tribunes couvertes. Cet ensemble devient la scène principale de leurs spectacles et donne au public de nouveaux points de vue sur les animaux., it:Nel 2000 le orche ricevono un nuovo complesso di vasche, affiancato da grandi tribune coperte. Diventa la sede principale dei loro spettacoli e offre al pubblico nuovi punti di osservazione sugli animali., nl:In 2000 krijgen de orka’s een nieuw bassincomplex met grote overdekte tribunes. Het wordt de belangrijkste plek voor hun shows en biedt bezoekers nieuwe gezichtspunten om de dieren in het water te bekijken., pl:W 2000 roku orki otrzymują nowy kompleks basenów z dużymi zadaszonymi trybunami. Staje się on główną sceną ich pokazów i zapewnia publiczności nowe miejsca do obserwowania zwierząt oraz ich ruchu w wodzie., pt:Em 2000, as orcas passam a dispor de um novo complexo de tanques, acompanhado por grandes bancadas cobertas. Torna-se o principal palco dos seus espetáculos e oferece ao público novos pontos de observação dos animais."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Art\\u00E9mis Ing\\u00E9nierie \\u2014 Grand Marineland\",\"Url\":\"https://artemis-ing.fr/posts/c3/grand-marineland\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"IGEDD \\u2014 rapport de juin 2024\",\"Url\":\"https://igedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013623/015475-01_rapport-publie.pdf\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8fbf6ed5-a1ab-4cee-b74d-984c63802469",
+        "entityKey": "marineland-antarctica-creation-2002",
+        "displayName": "Antarctica prend place dans le parc",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-antarctica-creation-2002"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2002"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "1b3e35a2b12d404a9384ac121a57061e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Antarctica entsteht im Park, en:Antarctica joins the park, es:Antarctica se incorpora al parque, fr:Antarctica prend place dans le parc, it:Antarctica entra nel parco, nl:Antarctica krijgt een plek in het park, pl:Antarctica powstaje w parku, pt:Antarctica passa a fazer parte do parque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Antarctica entsteht 2002 in der dritten Phase von Grand Marineland. Der Pinguinbereich verbindet einen Besucherraum, ein Becken mit polarer Kulisse und ein Kino. Er ergänzt den Rundgang entlang der Außenbecken um ein Erlebnis im Gebäude., en:Antarctica is created in 2002 during the third phase of Grand Marineland. The penguin space combines a visitor area, a pool with a polar setting and a cinema, adding an indoor experience to the route around outdoor pools., es:Antarctica se crea en 2002 durante la tercera fase de Grand Marineland. El espacio dedicado a los pingüinos reúne una zona para visitantes, una piscina con decorado polar y un cine, añadiendo una experiencia cubierta al recorrido de piscinas exteriores., fr:Antarctica est créé en 2002 au cours de la troisième phase de Grand Marineland. L’espace consacré aux manchots réunit une zone d’accueil, un bassin au décor polaire et un cinéma, ajoutant une découverte intérieure au parcours des bassins extérieurs., it:Antarctica nasce nel 2002 durante la terza fase di Grand Marineland. Lo spazio dedicato ai pinguini riunisce un’area per il pubblico, una vasca con ambientazione polare e un cinema, aggiungendo una visita al coperto al percorso delle vasche esterne., nl:Antarctica ontstaat in 2002 tijdens de derde fase van Grand Marineland. De pinguïnruimte combineert een bezoekersgedeelte, een bassin met pooldecor en een bioscoop. Daarmee krijgt de route langs de buitenbassins ook een overdekte ervaring., pl:Antarctica powstaje w 2002 roku podczas trzeciej fazy Grand Marineland. Przestrzeń dla pingwinów obejmuje część dla publiczności, basen z polarną scenerią i kino. Uzupełnia trasę wzdłuż odkrytych basenów o zwiedzanie wewnątrz budynku., pt:Antarctica é criado em 2002 durante a terceira fase de Grand Marineland. O espaço dos pinguins reúne uma área para visitantes, um tanque com cenário polar e um cinema, acrescentando uma experiência coberta ao percurso dos tanques exteriores."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Art\\u00E9mis Ing\\u00E9nierie \\u2014 Grand Marineland\",\"Url\":\"https://artemis-ing.fr/posts/c3/grand-marineland\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "fe899fc0-1675-486e-be4a-b55a249ecb55",
+        "entityKey": "marineland-steller-arrivee-2007",
+        "displayName": "Deux otaries de Steller arrivent à Antibes",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-steller-arrivee-2007"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "21cf466e-54fa-49f6-afd2-80874359b282"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "21cf466e-54fa-49f6-afd2-80874359b282"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2007"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Other"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "9e817ec2a4f344bc8d8edcd49f832885"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Zwei Stellersche Seelöwen kommen nach Antibes, en:Two Steller sea lions arrive in Antibes, es:Dos leones marinos de Steller llegan a Antibes, fr:Deux otaries de Steller arrivent à Antibes, it:Due leoni marini di Steller arrivano ad Antibes, nl:Twee Stellerzeeleeuwen komen naar Antibes, pl:Dwie uchatki grzywiaste przybywają do Antibes, pt:Dois leões-marinhos-de-steller chegam a Antibes"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2007 nimmt Marineland zwei männliche Stellersche Seelöwen aus dem Dolfinarium in Harderwijk in den Niederlanden auf. Mit ihnen gelangt die größte Seelöwenart in den Tierbestand und erweitert die Vielfalt der gezeigten Robben., en:In 2007, Marineland receives two male Steller sea lions from the Dolfinarium in Harderwijk, the Netherlands. Their arrival brings the largest sea lion species into the park’s collection and broadens visitors’ encounters with pinnipeds., es:En 2007, Marineland recibe dos machos de león marino de Steller del Dolfinarium de Harderwijk, en los Países Bajos. Su llegada incorpora la mayor especie de león marino a la colección y amplía la diversidad de pinnípedos del parque., fr:En 2007, Marineland accueille deux otaries de Steller mâles venues du Dolfinarium de Harderwijk, aux Pays-Bas. Leur arrivée introduit la plus grande espèce d’otarie dans la collection du parc et enrichit la découverte de ses pinnipèdes., it:Nel 2007 Marineland accoglie due maschi di leone marino di Steller dal Dolfinarium di Harderwijk, nei Paesi Bassi. Il loro arrivo introduce la specie più grande di leone marino nella collezione e amplia la scoperta dei pinnipedi del parco., nl:In 2007 ontvangt Marineland twee mannelijke Stellerzeeleeuwen uit het Dolfinarium in Harderwijk. Hun komst brengt de grootste zeeleeuwensoort in de dierencollectie en laat bezoekers kennismaken met een extra soort binnen de vinpotigen van het park., pl:W 2007 roku Marineland przyjmuje dwa samce uchatki grzywiastej z Dolfinarium w Harderwijk w Holandii. Ich przybycie wprowadza do kolekcji największy gatunek uchatki i pozwala zwiedzającym poznać kolejnych przedstawicieli płetwonogich w parku., pt:Em 2007, o Marineland recebe dois machos de leão-marinho-de-steller do Dolfinarium de Harderwijk, nos Países Baixos. A chegada introduz a maior espécie de leão-marinho na coleção e amplia a descoberta dos pinípedes do parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Les Zoos dans le Monde \\u2014 description de Marineland en 2012\",\"Url\":\"https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "1af181ca-344f-402c-94bc-0b0acf9a78a2",
+        "entityKey": "marineland-antarctica-renovation-2009",
+        "displayName": "L’espace des manchots est agrandi",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-antarctica-renovation-2009"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2009"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Refurbishment"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "1b3e35a2b12d404a9384ac121a57061e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Der Pinguinbereich wird erweitert, en:The penguin space is enlarged, es:Se amplía el espacio de los pingüinos, fr:L’espace des manchots est agrandi, it:Lo spazio dei pinguini viene ampliato, nl:De pinguïnruimte wordt uitgebreid, pl:Przestrzeń pingwinów zostaje powiększona, pt:O espaço dos pinguins é ampliado"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2009 wird die Anlage für Königs- und Felsenpinguine vergrößert und renoviert. Die Arbeiten entwickeln den bereits bestehenden Bereich Antarctica weiter und verändern die Möglichkeiten, die Vögel rund um das Becken zu beobachten., en:In 2009, the enclosure for king penguins and rockhopper penguins is enlarged and refurbished. The work develops the existing Antarctica space and changes how visitors encounter the birds around the pool., es:En 2009 se amplía y renueva la instalación de pingüinos rey y pingüinos saltarrocas. Las obras desarrollan el espacio de Antarctica, ya existente en el parque, y cambian la forma de observar a las aves alrededor de la piscina., fr:En 2009, l’installation des manchots royaux et des gorfous sauteurs est agrandie et rénovée. Cette évolution reprend l’espace d’Antarctica, déjà présent dans le parc, et transforme les conditions de découverte des oiseaux autour du bassin., it:Nel 2009 l’impianto dei pinguini reali e dei pinguini saltarocce viene ampliato e rinnovato. I lavori sviluppano Antarctica, già presente nel parco, e cambiano il modo in cui il pubblico osserva gli uccelli attorno alla vasca., nl:In 2009 wordt het verblijf voor koningspinguïns en rotspinguïns vergroot en vernieuwd. De werkzaamheden bouwen voort op het bestaande Antarctica en veranderen de manier waarop bezoekers de vogels rond het bassin kunnen bekijken., pl:W 2009 roku wybieg pingwinów królewskich i skoczów skalnych zostaje powiększony oraz odnowiony. Prace rozwijają istniejącą już Antarcticę i zmieniają sposób, w jaki zwiedzający mogą oglądać ptaki w otoczeniu ich basenu., pt:Em 2009, a instalação dos pinguins-reis e dos pinguins-saltadores é ampliada e renovada. As obras desenvolvem Antarctica, já existente no parque, e alteram a forma como os visitantes observam as aves em redor do tanque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Les Zoos dans le Monde \\u2014 description de Marineland en 2012\",\"Url\":\"https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "bf2e02ef-21ec-464c-9841-9cfa1326eeb0",
+        "entityKey": "marineland-ours-polaires-arrivee-2010",
+        "displayName": "Les ours polaires rejoignent Marineland",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-ours-polaires-arrivee-2010"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "ec5f6423-dc54-4dea-95c3-3e9851cfab92"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "ec5f6423-dc54-4dea-95c3-3e9851cfab92"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2010"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "940f08a29a074242b504daf70748a69f"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eisbären ziehen in Marineland ein, en:Polar bears join Marineland, es:Los osos polares llegan a Marineland, fr:Les ours polaires rejoignent Marineland, it:Gli orsi polari arrivano a Marineland, nl:IJsberen komen naar Marineland, pl:Niedźwiedzie polarne przybywają do Marineland, pt:Os ursos-polares chegam ao Marineland"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2010 kommt ein junges Eisbärenpaar in einen neuen, in mehrere Gehege gegliederten Bereich. Becken und Landflächen ermöglichen den Besuchern die Beobachtung dieser Tiere und ergänzen den Park um eine arktische Tierart neben den Pinguinen., en:In 2010, a young pair of polar bears arrives in a new space divided into several enclosures. Pools and land areas allow visitors to discover these animals, adding an Arctic presence distinct from the park’s penguins., es:En 2010 llega una joven pareja de osos polares a un nuevo espacio dividido en varios recintos. Las piscinas y las zonas terrestres permiten al público observar a los animales, incorporando una presencia ártica distinta de la de los pingüinos., fr:En 2010, un jeune couple d’ours polaires arrive dans un nouvel espace aménagé en plusieurs enclos. Les bassins et les parties terrestres permettent au public de découvrir ces animaux, ajoutant une présence arctique distincte de celle des manchots., it:Nel 2010 una giovane coppia di orsi polari arriva in un nuovo spazio suddiviso in più recinti. Vasche e aree terrestri permettono al pubblico di osservare gli animali, aggiungendo una presenza artica distinta da quella dei pinguini., nl:In 2010 komt een jong ijsberenpaar naar een nieuw gebied met meerdere verblijven. Bassins en landgedeelten laten bezoekers de dieren bekijken en voegen een soort uit het noordpoolgebied toe, naast de pinguïns die al in het park leven., pl:W 2010 roku młoda para niedźwiedzi polarnych przybywa do nowej przestrzeni podzielonej na kilka wybiegów. Baseny i części lądowe umożliwiają zwiedzającym obserwację zwierząt, dodając do parku arktyczny gatunek odrębny od prezentowanych pingwinów., pt:Em 2010, um jovem casal de ursos-polares chega a um novo espaço dividido em vários recintos. Tanques e áreas terrestres permitem ao público observar os animais, acrescentando uma presença ártica distinta da dos pinguins."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Les Zoos dans le Monde \\u2014 description de Marineland en 2012\",\"Url\":\"https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "fe1b3c8f-1763-4e9e-89d9-ed184f020a0a",
+        "entityKey": "marineland-cine5d-ouverture-20180407",
+        "displayName": "Ciné 5D Adventure ouvre sous les tribunes",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-cine5d-ouverture-20180407"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2018"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "4"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "7"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "4176a0b018634f2bb97e23731443905a"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ciné 5D Adventure öffnet unter den Tribünen, en:Ciné 5D Adventure opens beneath the stands, es:Ciné 5D Adventure abre bajo las gradas, fr:Ciné 5D Adventure ouvre sous les tribunes, it:Ciné 5D Adventure apre sotto le tribune, nl:Ciné 5D Adventure opent onder de tribunes, pl:Ciné 5D Adventure otwiera się pod trybunami, pt:Ciné 5D Adventure abre sob as bancadas"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 7. April 2018 eröffnet Ciné 5D Adventure im früheren Auditorium unter den Orcatribünen. Der erste Film Arctic 1 führt die Besucher in die Polarregionen und ergänzt den Rundgang zu den Tieren um ein Bewegungskino., en:On 7 April 2018, Ciné 5D Adventure opens in the former auditorium beneath the orca stands. Its first film, Arctic 1, takes visitors towards the polar regions, adding a motion cinema experience to the animal-focused visit., es:El 7 de abril de 2018, Ciné 5D Adventure abre en el antiguo auditorio bajo las gradas de las orcas. Su primera película, Arctic 1, lleva al público hacia las regiones polares y añade una experiencia de cine dinámico al recorrido zoológico., fr:Le 7 avril 2018, Ciné 5D Adventure ouvre dans l’ancien auditorium sous les gradins des orques. Son premier film, Arctic 1, emmène les visiteurs vers les régions polaires, ajoutant une expérience de cinéma dynamique au parcours animalier., it:Il 7 aprile 2018 Ciné 5D Adventure apre nell’ex auditorium sotto le tribune delle orche. Il primo film, Arctic 1, porta i visitatori verso le regioni polari, aggiungendo un’esperienza di cinema dinamico al percorso zoologico., nl:Op 7 april 2018 opent Ciné 5D Adventure in het voormalige auditorium onder de orkatribunes. De eerste film, Arctic 1, neemt bezoekers mee naar de poolgebieden en voegt een bewegende bioscoopervaring toe aan de dierenroute., pl:7 kwietnia 2018 roku Ciné 5D Adventure otwiera się w dawnym audytorium pod trybunami orek. Pierwszy film, Arctic 1, zabiera gości w regiony polarne, uzupełniając zwiedzanie zwierząt o doświadczenie kina z ruchomymi fotelami., pt:A 7 de abril de 2018, o Ciné 5D Adventure abre no antigo auditório sob as bancadas das orcas. O primeiro filme, Arctic 1, leva os visitantes às regiões polares, acrescentando uma experiência de cinema dinâmico ao percurso zoológico."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Europarcs \\u2014 Cin\\u00E9 5D Aventure, ouverture du 7 avril 2018\",\"Url\":\"https://www.europarcs.net/parcs/france/marineland/\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Marineland \\u2014 communiqu\\u00E9 reproduit par ParcPlaza, 6 avril 2018\",\"Url\":\"https://www.parcplaza.net/2018/04/marineland-inaugure-un-cinema-5d.html\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Triotech \\u2014 projet Marineland 2018\",\"Url\":\"https://www.trio-tech.com/projects/marineland/\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

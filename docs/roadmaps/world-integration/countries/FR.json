@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-14T18:23:07.458Z",
+      "lastDataIntegrationAt": "2026-11-14T18:38:23.175Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -19441,9 +19441,39 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-flood-20261114.json",
           "auditEvidence": null,
           "summary": "Article privé développé sur les inondations de 2015 et la réouverture du 21 mars 2016, 317 à 384 mots et trois sections par langue, huit versions relues, photographie réelle des dégâts et sources vérifiées."
+        },
+        {
+          "eventId": "apply-c2a3338c-db53-4565-884f-901b367f59ff",
+          "appliedAt": "2026-11-14T18:28:05.378Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-closure-20261114.json",
+          "auditEvidence": null,
+          "summary": "Article privé de synthèse sur la fermeture de janvier 2025 et le devenir des animaux jusqu’à novembre 2026, 535 à 641 mots et cinq sections dans chacune des huit langues ; annonces et transferts effectifs distingués."
+        },
+        {
+          "eventId": "apply-1697b3a0-707f-4e2f-92ec-b92632c3badc",
+          "appliedAt": "2026-11-14T18:32:40.969Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-synthesis-20261114.json",
+          "auditEvidence": null,
+          "summary": "Synthèse historique privée 1970–2025 appliquée en huit langues, cinq sections et plus de 500 mots chacune, Grand Marineland 2000–2002 développé, portrait du fondateur et photographie du parc référencés."
+        },
+        {
+          "eventId": "apply-142b3819-cc14-4eae-9b53-262bab1cead2",
+          "appliedAt": "2026-11-14T18:38:23.175Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-items-first-20261114.json",
+          "auditEvidence": null,
+          "summary": "Six faits de parkItems privés et huit langues : bassins des orques 2000, Antarctica 2002 puis rénovation 2009, arrivée des otaries de Steller 2007, ours polaires 2010, Ciné 5D le 7 avril 2018 avec Arctic 1 ; aucune création de fiche."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Marineland : 64 éléments, 58 photos parc/éléments, logo, portrait et 4 plans privés ; 12 faits parc + 6 faits parkItems et 3 articles huit langues appliqués. Finir les timelines des items, références/photos et audit final avant publication site/Facebook. Point de reprise : marineland-antibes-current-20261114.json.",
       "sources": [
         {
           "label": "Backlog national existant",
