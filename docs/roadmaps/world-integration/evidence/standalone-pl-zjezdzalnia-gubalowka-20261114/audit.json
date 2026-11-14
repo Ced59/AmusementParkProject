@@ -1,0 +1,127 @@
+{
+  "work": "Discovered an unlisted Gubałówka gravity slide and created its standalone record with eight descriptions, three exact licensed historical photographs, official fare offers and access rules, site publication and Facebook announcement.",
+  "qualification": "PKL confirms a dedicated ride ticket booth beside the Gubałówka funicular upper station. Searches for Gubałówka and Zakopane in Park and StandaloneAttraction returned no matches. This is a separate ticketed attraction rather than a duplicate funicular record.",
+  "sources": {
+    "operatorRide": "https://www.pkl.pl/post/gubalowka/atrakcje/zjezdzalnia-grawitacyjna.html",
+    "operatorPrices": "https://www.pkl.pl/gubalowka/zjezdzalnia-grwaitacyjna-cennik.html",
+    "operatorHours": "https://www.pkl.pl/gubalowka/zjezdzalnia-grawitacyjna-prices.html",
+    "osmPoint": "https://www.openstreetmap.org/?mlat=49.3054929&mlon=19.9345328#map=18/49.3054929/19.9345328"
+  },
+  "sourceLimitations": [
+    "PKL advertises year-round operation but the linked hours page showed no verifiable time slots. No fixed opening hours were entered; visitors are directed to check live status.",
+    "The PKL price page says children under four ride free with an adult but also cites birth after 1 January 2022; that example is outdated in November 2026. The categorical age rule was used and the discrepancy is flagged for confirmation.",
+    "All three clearly reusable exact photographs date from 3 May 1999. They show the historic trough ride at this location; current operator service is confirmed separately. Seek newer images with clear reuse rights."
+  ],
+  "duplicateSearches": {
+    "parkQueries": [
+      "Guba",
+      "Zakopane"
+    ],
+    "standaloneQueries": [
+      "Guba",
+      "Zakopane"
+    ],
+    "matches": 0
+  },
+  "entity": {
+    "id": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+    "name": "Zjeżdżalnia grawitacyjna Gubałówka",
+    "countryCode": "PL",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "4230ebfe-89dc-4739-98d1-006820ab2e53",
+      "appliedAtUtc": "2026-11-14T23:15:46.8135727Z",
+      "summary": "Identity, location and eight descriptions"
+    },
+    {
+      "operationId": "fc36c77a-0ef6-420a-841d-8f5f5b04bfaf",
+      "appliedAtUtc": "2026-11-14T23:17:11.2406141Z",
+      "summary": "Three fare offers and three age/accompaniment conditions"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "8740731f44c14cd7962d99b3083f5814",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/Guba%C5%82%C3%B3wka_01.jpg",
+      "author": "Krzysztof Szymański",
+      "license": "CC BY 2.5 PL",
+      "photographedAt": "1999-05-03",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Gubałówka_01.jpg",
+      "width": 1485,
+      "height": 1025,
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-14T23:18:05.381Z",
+      "metadataAppliedAtUtc": "2026-11-14T23:20:01.104Z"
+    },
+    {
+      "imageId": "5c1baeccdb134586baf28dd2adb5b71b",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Guba%C5%82%C3%B3wka_02.jpg",
+      "author": "Krzysztof Szymański",
+      "license": "CC BY 2.5 PL",
+      "photographedAt": "1999-05-03",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Gubałówka_02.jpg",
+      "width": 1497,
+      "height": 974,
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-14T23:18:35.371Z",
+      "metadataAppliedAtUtc": "2026-11-14T23:20:15.608Z"
+    },
+    {
+      "imageId": "ea2e662f8c8a40c88a02686e07f3fc8b",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Guba%C5%82%C3%B3wka_03.jpg",
+      "author": "Krzysztof Szymański",
+      "license": "CC BY 2.5 PL",
+      "photographedAt": "1999-05-03",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Gubałówka_03.jpg",
+      "width": 1480,
+      "height": 1035,
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-14T23:19:04.154Z",
+      "metadataAppliedAtUtc": "2026-11-14T23:20:29.237Z"
+    }
+  ],
+  "audit": {
+    "completenessScore": 81,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 3,
+    "fareOfferCount": 3,
+    "accessConditionCount": 3,
+    "regularHourRuleCount": 0,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/6573a789-58e5-4044-bda4-ba883cda7fe4/zjezdzalnia-grawitacyjna-gubalowka",
+    "sitePublishedAtUtc": "2026-11-14T23:21:55.9557897Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:c090936e-8f5e-4b46-9674-b7eab5cb2cfe",
+    "facebookStatus": "Published",
+    "facebookId": "9e1cfe422ea04fd695809d4e9f8914ec",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127383859424431",
+    "facebookPublishedAtUtc": "2026-11-14T23:22:56.4693701Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T23:20:29.237Z",
+  "remainingGaps": [
+    "Confirm exact hours and time-dependent status with PKL.",
+    "Clarify the outdated under-four birth-date example.",
+    "Obtain current reusable photographs of the course."
+  ]
+}
