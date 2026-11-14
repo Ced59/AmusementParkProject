@@ -16138,7 +16138,7 @@
         "facebook": {
           "id": "cd200cbf59fb4386a50afee0c880c5b2",
           "status": "Published",
-          "publishedAtUtc": "2026-11-14T20:35:43.3380956Z",
+          "publishedAtUtc": "2026-11-14T20:35:43.338Z",
           "externalPostId": "1285475681307050_122127369339424431",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127369339424431",
           "evidence": "PARK_DATA_EDITOR:facebook:cd200cbf59fb4386a50afee0c880c5b2"
@@ -16149,6 +16149,105 @@
         "score": 81,
         "publicationBlockers": [],
         "gapCount": 2
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-163104924676f7b4",
+      "name": "Llandudno Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "Happy Valley, Llandudno LL30 2LP",
+      "siteId": "b17dcec6-82dc-4dcd-93e5-85741b1e2520",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T21:13:30.278Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Visit Conwy décrit une exploitation saisonnière du printemps à la fin octobre, sous réserve de la météo.",
+      "identityConfidence": "Nom, terminus Happy Valley et Great Orme, durée et inauguration confirmés par Visit Conwy ; recherches officielles Park et StandaloneAttraction sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Great Orme Cable Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T21:12:09.055Z",
+      "integrationHistory": [
+        {
+          "eventId": "bf91b871-dd10-4e8d-88c3-414853931c8c",
+          "appliedAt": "2026-11-14T21:07:11.173Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b17dcec6-82dc-4dcd-93e5-85741b1e2520",
+          "evidence": "PARK_DATA_EDITOR:apply:bf91b871-dd10-4e8d-88c3-414853931c8c",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et descriptions en huit langues"
+        },
+        {
+          "eventId": "87903659-af60-47da-a468-cda10e2a5374",
+          "appliedAt": "2026-11-14T21:12:09.055Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b17dcec6-82dc-4dcd-93e5-85741b1e2520",
+          "evidence": "PARK_DATA_EDITOR:apply:87903659-af60-47da-a468-cda10e2a5374",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-llandudno-cable-car-20261114/audit.json",
+          "summary": "Conditions d’accès sourcées, deux photos exactes et audit éditorial"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves. Vérifier le prochain tarif saisonnier et les horaires officiels, puis rechercher un exploitant et un modèle fiables ; ne pas déduire un horaire fixe des seules dates de saison.",
+      "sources": [
+        {
+          "label": "Visit Conwy — fiche touristique et conditions de visite",
+          "url": "https://visitconwy-ws.newmindmedia.com/things-to-do/llandudno-cable-car-p277371",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Visit Wales — durée de la traversée",
+          "url": "https://traveltrade.visitwales.com/itineraries/the-wales-way/highlights-the-cambrian-way-north-wales",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — cabines, Jim Osley",
+          "url": "https://commons.wikimedia.org/wiki/File:Llandudno_,_cable_cars,_Great_Orme_-_geograph.org.uk_-_7831977.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — station supérieure, Stephen Craven",
+          "url": "https://commons.wikimedia.org/wiki/File:Top_station_of_the_Great_Orme_cable_car_-_geograph.org.uk_-_7811574.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Téléphérique fixe avec billetterie propre, distinct du tramway et de la luge du Great Orme ; fiche autonome sourcée et publiée avec deux photos exactes."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b17dcec6-82dc-4dcd-93e5-85741b1e2520/llandudno-cable-car",
+          "publishedAtUtc": "2026-11-14T21:13:30.278Z",
+          "verifiedAtUtc": "2026-11-14T21:14:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:3521e1a0-4a05-405f-854e-6312fa5e7e3d"
+        },
+        "facebook": {
+          "id": "ff61580eb9d24c10852099893d3b31cd",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T21:14:42.218Z",
+          "externalPostId": "1285475681307050_122127372411424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127372411424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:ff61580eb9d24c10852099893d3b31cd"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-llandudno-cable-car-20261114/audit.json",
+        "score": 69,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     }
   ]
