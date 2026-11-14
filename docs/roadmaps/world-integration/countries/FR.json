@@ -18487,8 +18487,8 @@
       "locality": "Antibes",
       "siteId": "afd24c62-0972-4c98-860c-b5a55984f777",
       "legacySiteIds": [],
-      "presence": "ExistsVisibilityUnknown",
-      "presenceObservedAt": null,
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-14T18:05:22.668Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-03T07:14:38.162Z",
+      "lastDataIntegrationAt": "2026-11-14T18:12:23.950Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -19211,9 +19211,209 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-receipts.json#import-photo-88e03dd2db3d441eb4448e443dabd429-2026-11-03T071438.162Z",
           "auditEvidence": null,
           "summary": "Import privé du média historique 05-flood-2015, fichier et huit langues relus ; audit final restant."
+        },
+        {
+          "eventId": "recovered-import-photo-5d16e6ed325d4ccca88c2c341c307964",
+          "appliedAt": "2026-11-03T07:17:59.699Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-5d16e6ed325d4ccca88c2c341c307964",
+          "auditEvidence": null,
+          "summary": "Import privé 05-rapaces-falconer confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-fc0bb9d914b34c8490cbdd2104feec6f",
+          "appliedAt": "2026-11-03T07:18:13.999Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-fc0bb9d914b34c8490cbdd2104feec6f",
+          "auditEvidence": null,
+          "summary": "Import privé 05-rapaces-owl confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-b7f6a047871a4539b479ae0458a4c930",
+          "appliedAt": "2026-11-03T07:18:27.608Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-b7f6a047871a4539b479ae0458a4c930",
+          "auditEvidence": null,
+          "summary": "Import privé 05-rapaces-eagle confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-9c5d2f93b12c4597ab6d9f9423a52519",
+          "appliedAt": "2026-11-03T07:18:41.334Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-9c5d2f93b12c4597ab6d9f9423a52519",
+          "auditEvidence": null,
+          "summary": "Import privé 05-tunnel-shark confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-388408fbd48c42d3a045c4572a0e5e77",
+          "appliedAt": "2026-11-03T07:18:55.139Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-388408fbd48c42d3a045c4572a0e5e77",
+          "auditEvidence": null,
+          "summary": "Import privé 05-humboldt-close confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "apply-3cbfaef2-b2ed-464e-8ff2-fac28747f292",
+          "appliedAt": "2026-11-03T07:24:55.115Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#apply-3cbfaef2-b2ed-464e-8ff2-fac28747f292",
+          "auditEvidence": null,
+          "summary": "Correction sourcée des années d’ouverture de Le Central (2023) et Antarctica (2002). Reçu officiel du 3 novembre récupéré, aucune réapplication."
+        },
+        {
+          "eventId": "recovered-import-photo-940f08a29a074242b504daf70748a69f",
+          "appliedAt": "2026-11-03T07:26:14.462Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-940f08a29a074242b504daf70748a69f",
+          "auditEvidence": null,
+          "summary": "Import privé 05-bears-arrival confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-7c5c67b81a7041b6b2785fb36063dd84",
+          "appliedAt": "2026-11-03T07:26:27.993Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-7c5c67b81a7041b6b2785fb36063dd84",
+          "auditEvidence": null,
+          "summary": "Import privé 05-bears-water confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-9a4111f1bf644d828c065939e39750a5",
+          "appliedAt": "2026-11-03T07:26:42.070Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-9a4111f1bf644d828c065939e39750a5",
+          "auditEvidence": null,
+          "summary": "Import privé 05-bears-raspoutine confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "apply-a934c701-e6f2-463e-b603-0288b56a1852",
+          "appliedAt": "2026-11-03T07:27:33.617Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#apply-a934c701-e6f2-463e-b603-0288b56a1852",
+          "auditEvidence": null,
+          "summary": "Ancien espace des pélicans près du tunnel ajouté : 64e élément avec huit descriptions. Reçu officiel du 3 novembre récupéré, aucune réapplication."
+        },
+        {
+          "eventId": "recovered-import-photo-bcba04c26f0e47018a81ebdbfc52cb57",
+          "appliedAt": "2026-11-03T07:28:45.682Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-bcba04c26f0e47018a81ebdbfc52cb57",
+          "auditEvidence": null,
+          "summary": "Import privé 05-pelican-platform confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-dd4ca7e7a0a04ec4870cc96db7915897",
+          "appliedAt": "2026-11-03T07:36:35.803Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-dd4ca7e7a0a04ec4870cc96db7915897",
+          "auditEvidence": null,
+          "summary": "Import privé 05-park-canopy confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-99f10ef88d2649f98f3e22d1d7ba7060",
+          "appliedAt": "2026-11-03T07:36:49.652Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-99f10ef88d2649f98f3e22d1d7ba7060",
+          "auditEvidence": null,
+          "summary": "Import privé 05-park-basins-overview confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-c00b9e0e89794d88abfa6ce850fa500c",
+          "appliedAt": "2026-11-03T07:37:03.598Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-c00b9e0e89794d88abfa6ce850fa500c",
+          "auditEvidence": null,
+          "summary": "Import privé 05-tunnel-visitors confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-549d82a778f6459ebbda56cdc9c53aef",
+          "appliedAt": "2026-11-03T07:37:17.695Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-549d82a778f6459ebbda56cdc9c53aef",
+          "auditEvidence": null,
+          "summary": "Import privé 05-aquarium-ray confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-79f335f325eb45dd94749b3cd6131137",
+          "appliedAt": "2026-11-03T07:37:31.653Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-79f335f325eb45dd94749b3cd6131137",
+          "auditEvidence": null,
+          "summary": "Import privé 05-otary-encounter confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-d2b3f39696a841d8ad9d41a3f955e149",
+          "appliedAt": "2026-11-03T07:37:45.199Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-d2b3f39696a841d8ad9d41a3f955e149",
+          "auditEvidence": null,
+          "summary": "Import privé 05-orca-window-encounter confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-d90e3f92b082438fa314601feb75af03",
+          "appliedAt": "2026-11-03T07:37:58.873Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-d90e3f92b082438fa314601feb75af03",
+          "auditEvidence": null,
+          "summary": "Import privé 05-soigneur-dolphin-water confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "recovered-import-photo-348ab5c5f20b4d80886fa4590f88cac2",
+          "appliedAt": "2026-11-03T07:38:13.214Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json#recovered-import-photo-348ab5c5f20b4d80886fa4590f88cac2",
+          "auditEvidence": null,
+          "summary": "Import privé 05-seal-feeding confirmé par son identifiant, son propriétaire et ses métadonnées huit langues ; horodatage serveur récupéré, aucun doublon."
+        },
+        {
+          "eventId": "apply-c6c1cb22-2ed6-4b48-9593-5c55771e2fbe",
+          "appliedAt": "2026-11-14T18:12:23.950Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-first-20261114.json",
+          "auditEvidence": null,
+          "summary": "Six faits historiques privés de 1970 à 2021 intégrés en huit langues : fondation, Grand Marineland, rachat, inondation, réouverture et loi ; sources propres à chaque fait, aucune publication anticipée."
         }
       ],
-      "nextAction": "63/63 lieux avec descriptions huit langues ; logo officiel, 40 photographies, portrait du fondateur et 1 plans annuels privés intégrés ; deux références rédigées en huit langues. Poursuivre médias, histoire et articles avant audit final et publications autorisées.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -19247,7 +19447,7 @@
         }
       ],
       "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-intake-20261103.json",
-      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-media-20261103.json"
+      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-reconciled-receipts-20261114.json"
     },
     {
       "entryId": "FR-candidate-b985933907dc00",
