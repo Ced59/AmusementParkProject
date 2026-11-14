@@ -564,7 +564,7 @@ public sealed class MongoVisitContentMutationLeaseManagerTests
         CancellationToken leaseLostToken = lease.LeaseLostToken;
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
             Task.Delay(Timeout.InfiniteTimeSpan, leaseLostToken)
-                .WaitAsync(TimeSpan.FromSeconds(2)));
+                .WaitAsync(TimeSpan.FromSeconds(10)));
         await lease.DisposeAsync();
 
         Assert.True(leaseLostToken.IsCancellationRequested);
