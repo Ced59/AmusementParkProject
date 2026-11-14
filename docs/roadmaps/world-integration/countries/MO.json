@@ -184,6 +184,136 @@
         ],
         "rationale": "Deux activités fixes avec billets propres, dans la tour touristique. Leur modélisation et l’existence éventuelle d’une fiche legacy doivent être vérifiées par le client officiel ; les photos du Bungy ne représentent pas Skyjump."
       }
+    },
+    {
+      "entryId": "MO-candidate-discovery-ed48ddea6705793a",
+      "name": "Golden Reel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "Studio City, Cotai, Macao",
+      "siteId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T19:20:24Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre opérateur active au 14 novembre 2026, avec billet MOP 100 et horaires affichés.",
+      "identityConfidence": "Billet et conditions sur la page officielle de Studio City ; recherches Park et StandaloneAttraction sans correspondance avant création, publication vérifiée dans le client officiel.",
+      "possibleMatches": [],
+      "aliases": [
+        "Studio City Golden Reel",
+        "Golden Reel Macau"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T19:16:42.686Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-792c4015-f47d-4066-8862-707edc1c5364",
+          "appliedAt": "2026-11-14T19:13:29.190Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:apply:792c4015-f47d-4066-8862-707edc1c5364",
+          "auditEvidence": null,
+          "summary": "Création masquée, huit descriptions et localisation."
+        },
+        {
+          "eventId": "photo-2dcca4c36c724d8ba875335d44a3387f",
+          "appliedAt": "2026-11-14T19:14:06.247Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:photo:2dcca4c36c724d8ba875335d44a3387f",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la roue en huit, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-1702179793ce40b0ba8f98a05c18f66a",
+          "appliedAt": "2026-11-14T19:14:25.660Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:photo:1702179793ce40b0ba8f98a05c18f66a",
+          "auditEvidence": null,
+          "summary": "Seconde photo exacte de la roue, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-73b51fe8-3f9b-4b3f-8f18-4ffcd3b443ba",
+          "appliedAt": "2026-11-14T19:15:28.191Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:apply:73b51fe8-3f9b-4b3f-8f18-4ffcd3b443ba",
+          "auditEvidence": null,
+          "summary": "Tarif officiel de 100 MOP et condition enfants."
+        },
+        {
+          "eventId": "apply-cfae1346-d291-4683-ac1c-9e0314c7449b",
+          "appliedAt": "2026-11-14T19:16:42.686Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:apply:cfae1346-d291-4683-ac1c-9e0314c7449b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mo-golden-reel-20261114/audit.json",
+          "summary": "Descriptions finales en huit langues et audit de la fiche avec deux photos."
+        }
+      ],
+      "nextAction": "Conserver la ligne et ses reçus ; vérifier les jours de fermeture du calendrier officiel avant de structurer les horaires et préciser les coordonnées de l’entrée au niveau 3, aile est.",
+      "sources": [
+        {
+          "label": "Exploitant — Golden Reel",
+          "url": "https://www.studiocity-macau.com/en/attractions/golden-reel",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — adresse de Studio City",
+          "url": "https://www.studiocity-macau.com/en/contact-us",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — Studio City Lucky 8",
+          "url": "https://commons.wikimedia.org/wiki/File:Studio-City-Lucky-8.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — Golden Reel 2023",
+          "url": "https://commons.wikimedia.org/wiki/File:Studio_City_Golden_Reel_26-02-2023.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "MO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Grande roue fixe avec billet propre dans le complexe hôtelier Studio City, sans parc d’attractions parent ; fiche autonome créée et publiée après recherche de doublons."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a241ed1c-6ce5-456b-8126-8c1d7f08c50e/golden-reel",
+          "publishedAtUtc": "2026-11-14T19:18:17.292Z",
+          "verifiedAtUtc": "2026-11-14T19:20:24Z",
+          "evidence": "PARK_DATA_EDITOR:apply:8c549e3d-1042-4abb-bdcb-eecf68ae24bd"
+        },
+        "facebook": {
+          "id": "410a6829bad74b999ab5359e4ff46e97",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T19:19:04.346Z",
+          "externalPostId": "1285475681307050_122127362055424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127362055424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:410a6829bad74b999ab5359e4ff46e97"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-mo-golden-reel-20261114/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 3
+      }
     }
   ]
 }
