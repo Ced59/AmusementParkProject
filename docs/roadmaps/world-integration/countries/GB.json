@@ -15616,6 +15616,265 @@
         "publicationBlockers": [],
         "gapCount": 5
       }
+    },
+    {
+      "entryId": "GB-candidate-discovery-87f09723f38fd673",
+      "name": "Wheel of Liverpool",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "4 Keel Wharf, Liverpool",
+      "siteId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T19:47:00Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Site exploitant actif le 14 novembre 2026, horaires quotidiens et billets standard affichés.",
+      "identityConfidence": "Exploitant et adresse propres ; recherches officielles Park et StandaloneAttraction sous Wheel of Liverpool, Liverpool Wheel et Echo Wheel sans résultat.",
+      "possibleMatches": [],
+      "aliases": [
+        "Echo Wheel of Liverpool",
+        "Liverpool Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T19:45:35.061Z",
+      "integrationHistory": [
+        {
+          "eventId": "4f9ab097-a124-4fbf-8431-7d1539373688",
+          "appliedAt": "2026-11-14T19:43:45.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:apply:4f9ab097-a124-4fbf-8431-7d1539373688",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et huit descriptions"
+        },
+        {
+          "eventId": "image-c072bdc5eac940b3a7dbc503b9c7877a",
+          "appliedAt": "2026-11-14T19:44:19.586Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:import-photo:c072bdc5eac940b3a7dbc503b9c7877a",
+          "auditEvidence": null,
+          "summary": "Photo exacte de jour, licence et crédits vérifiés"
+        },
+        {
+          "eventId": "image-eec904e60d5d4b109e0f8fcf5f2316ad",
+          "appliedAt": "2026-11-14T19:44:39.376Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:import-photo:eec904e60d5d4b109e0f8fcf5f2316ad",
+          "auditEvidence": null,
+          "summary": "Photo exacte de nuit, licence et crédits vérifiés"
+        },
+        {
+          "eventId": "e0840cc2-75ea-4068-be1d-f8ec207035ec",
+          "appliedAt": "2026-11-14T19:45:35.061Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:apply:e0840cc2-75ea-4068-be1d-f8ec207035ec",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-wheel-of-liverpool-20261114/audit.json",
+          "summary": "Horaires, accessibilité et audit final de publication"
+        }
+      ],
+      "nextAction": "Conserver la fiche, les deux photos et les reçus. Vérifier le tarif standard actif sur la billetterie officielle, les horaires du jour et le retour éventuel de la cabine VIP lors du prochain rafraîchissement.",
+      "sources": [
+        {
+          "label": "Exploitant — présentation",
+          "url": "https://thewheelofliverpool.com/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — visite et horaires",
+          "url": "https://thewheelofliverpool.com/plan-your-visit/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — billets",
+          "url": "https://thewheelofliverpool.com/tickets/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — roue de jour",
+          "url": "https://commons.wikimedia.org/wiki/File:Wheel_of_Liverpool_-_geograph.org.uk_-_6101005.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — roue de nuit",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Wheel_of_Liverpool_-_geograph.org.uk_-_3780283.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Grande roue fixe à billetterie propre ; absence de doublon Park et StandaloneAttraction confirmée par le client officiel ; fiche autonome publiée avec deux photos exactes."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac/wheel-of-liverpool",
+          "publishedAtUtc": "2026-11-14T19:46:55.675Z",
+          "verifiedAtUtc": "2026-11-14T19:47:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6511d1bc-8d2b-4883-a457-e72bd197027c"
+        },
+        "facebook": {
+          "id": "85b7f13467d5446fb7c64a8310e6641c",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T19:49:41.770Z",
+          "externalPostId": "1285475681307050_122127365043424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127365043424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:85b7f13467d5446fb7c64a8310e6641c"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-wheel-of-liverpool-20261114/audit.json",
+        "score": 75,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-917b72e4fb69d19a",
+      "name": "The Falkirk Wheel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Élévateur rotatif à bateaux et excursion",
+      "locality": "Lime Road, Falkirk FK1 4RS",
+      "siteId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:00:45Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant Scottish Canals : excursions en bateau tarifées, horaires hiver 2026/2027 publiés au 14 novembre 2026.",
+      "identityConfidence": "Nom, adresse et exploitant officiels ; recherches Park/Standalone Falkirk Wheel, The Falkirk Wheel et Falkirk sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Falkirk Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T19:59:52.206Z",
+      "integrationHistory": [
+        {
+          "eventId": "93d3a701-bdde-413c-b1a5-4f8ad0ff6434",
+          "appliedAt": "2026-11-14T19:54:15.259Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:apply:93d3a701-bdde-413c-b1a5-4f8ad0ff6434",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et huit descriptions"
+        },
+        {
+          "eventId": "image-a9ee71ac623e464783b7f3d6f304428d",
+          "appliedAt": "2026-11-14T19:55:11Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:import-photo:a9ee71ac623e464783b7f3d6f304428d",
+          "auditEvidence": null,
+          "summary": "Photo latérale exacte et créditée"
+        },
+        {
+          "eventId": "image-9bb6505566864cc6ae118a2baeb6cfce",
+          "appliedAt": "2026-11-14T19:55:33Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:import-photo:9bb6505566864cc6ae118a2baeb6cfce",
+          "auditEvidence": null,
+          "summary": "Photo frontale exacte et créditée"
+        },
+        {
+          "eventId": "fc759688-a28d-4898-b287-ca90c75ef621",
+          "appliedAt": "2026-11-14T19:57:17.654Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:apply:fc759688-a28d-4898-b287-ca90c75ef621",
+          "auditEvidence": null,
+          "summary": "Tarifs minimums dynamiques et conditions de réservation"
+        },
+        {
+          "eventId": "d8675d96-2275-4e06-8c74-fa771ca4401d",
+          "appliedAt": "2026-11-14T19:59:52.206Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:apply:d8675d96-2275-4e06-8c74-fa771ca4401d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-falkirk-wheel-20261114/audit.json",
+          "summary": "Descriptions corrigées et audit final sans blocage"
+        }
+      ],
+      "nextAction": "Conserver les reçus, les deux photos exactes et les publications. Recontrôler les créneaux de départ, les horaires saisonniers du centre et les tarifs minimums dans la billetterie officielle lors du prochain rafraîchissement.",
+      "sources": [
+        {
+          "label": "Scottish Canals — installation, excursions, horaires et prix",
+          "url": "https://www.scottishcanals.co.uk/visit/canals/visit-the-forth-clyde-canal/attractions/the-falkirk-wheel",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Scottish Canals — adresse",
+          "url": "https://www.scottishcanals.co.uk/visit/canals/visit-the-forth-clyde-canal/attractions/the-falkirk-wheel/location",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Scottish Canals — description de l’excursion",
+          "url": "https://www.scottishcanals.co.uk/visit/canals/visit_falkirk_wheel",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — roue de côté, septembre 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Falkirk_Wheel_-_geograph.org.uk_-_8416990.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — roue de face, septembre 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Falkirk_Wheel_-_geograph.org.uk_-_8417000.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Élévateur à bateaux fixe avec excursion réservée et tarifée séparément ; pas de parc d’attractions à billet commun. Recherches officielles Park et StandaloneAttraction négatives avant création."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6/the-falkirk-wheel",
+          "publishedAtUtc": "2026-11-14T20:00:25.798Z",
+          "verifiedAtUtc": "2026-11-14T20:00:45Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2bcb093e-b495-40af-bde4-656d300bf939"
+        },
+        "facebook": {
+          "id": "bc535e30d5604a919e5750419168fdc8",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T20:01:15.569Z",
+          "externalPostId": "1285475681307050_122127366033424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127366033424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:bc535e30d5604a919e5750419168fdc8"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-falkirk-wheel-20261114/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }

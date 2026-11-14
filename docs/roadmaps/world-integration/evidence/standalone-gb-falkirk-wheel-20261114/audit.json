@@ -1,0 +1,112 @@
+{
+  "work": "Created a standalone page for the fixed rotating boat lift and its separately ticketed boat excursion. Verified Scottish Canals current official page, location, winter visitor-centre hours, minimum excursion fares and accessibility; searched official Park and StandaloneAttraction catalogues; imported two exact September 2026 CC BY-SA 2.0 photographs; verified eight public pages and both image binaries; published Facebook.",
+  "qualification": "The boat lift is a permanent, separately ticketed transport experience at a multi-activity canal site, not a ride inside an admission-gated amusement park. The entry represents the wheel and its original boat trip, not adjacent paddleboarding or mini-golf.",
+  "sources": {
+    "operator": "https://www.scottishcanals.co.uk/visit/canals/visit-the-forth-clyde-canal/attractions/the-falkirk-wheel",
+    "operatorVisit": "https://www.scottishcanals.co.uk/visit/canals/visit_falkirk_wheel",
+    "operatorLocation": "https://www.scottishcanals.co.uk/visit/canals/visit-the-forth-clyde-canal/attractions/the-falkirk-wheel/location",
+    "commonsSide": "https://commons.wikimedia.org/wiki/File:The_Falkirk_Wheel_-_geograph.org.uk_-_8416990.jpg",
+    "commonsFront": "https://commons.wikimedia.org/wiki/File:The_Falkirk_Wheel_-_geograph.org.uk_-_8417000.jpg"
+  },
+  "duplicateSearches": {
+    "standaloneFalkirkWheel": 0,
+    "standaloneTheFalkirkWheel": 0,
+    "standaloneFalkirk": 0,
+    "parkFalkirkWheel": 0,
+    "parkTheFalkirkWheel": 0,
+    "parkFalkirk": 0
+  },
+  "entity": {
+    "id": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+    "name": "The Falkirk Wheel",
+    "kind": "StandaloneAttraction",
+    "countryCode": "GB",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "93d3a701-bdde-413c-b1a5-4f8ad0ff6434",
+      "appliedAtUtc": "2026-11-14T19:54:15.2590578Z",
+      "summary": "Created hidden standalone, location and eight descriptions."
+    },
+    {
+      "imageId": "a9ee71ac623e464783b7f3d6f304428d",
+      "createdAtUtc": "2026-11-14T19:55:11Z",
+      "summary": "Imported exact side view under CC BY-SA 2.0."
+    },
+    {
+      "imageId": "9bb6505566864cc6ae118a2baeb6cfce",
+      "createdAtUtc": "2026-11-14T19:55:33Z",
+      "summary": "Imported exact front view under CC BY-SA 2.0."
+    },
+    {
+      "operationId": "fc759688-a28d-4898-b287-ca90c75ef621",
+      "appliedAtUtc": "2026-11-14T19:57:17.654254Z",
+      "summary": "Added dynamic minimum adult and child excursion fares and access condition."
+    },
+    {
+      "operationId": "d8675d96-2275-4e06-8c74-fa771ca4401d",
+      "appliedAtUtc": "2026-11-14T19:59:52.2065512Z",
+      "summary": "Corrected all eight public descriptions to satisfy publication quality check."
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "a9ee71ac623e464783b7f3d6f304428d",
+      "subject": "Actual Falkirk Wheel from the canal side",
+      "author": "Ian Capper",
+      "license": "CC BY-SA 2.0",
+      "captureDate": "2026-09-19",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "9bb6505566864cc6ae118a2baeb6cfce",
+      "subject": "Actual Falkirk Wheel front view and visitor centre",
+      "author": "Ian Capper",
+      "license": "CC BY-SA 2.0",
+      "captureDate": "2026-09-19",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "pricingDecision": "Operator lists adult boat trip from GBP 14.63 and child aged 5–15 from GBP 7.84 on 2026-11-14; recorded as dynamic minimum prices, not fixed fares. Under-five and registered-carer tickets are free but still required, explained in notes.",
+    "hoursDecision": "Operator lists visitor-centre hours Wednesday–Sunday 09:45–15:30 from 1 November 2026. Boat departures use a booking calendar; no unconditional ride hours entered.",
+    "accessibility": "Wheelchair or mobility scooter can board the boat; mention it at booking so capacity can be adjusted.",
+    "tripDuration": "Approximately one hour, dependent on waterway traffic."
+  },
+  "audit": {
+    "completenessScore": 78,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6/the-falkirk-wheel",
+    "sitePublishedAtUtc": "2026-11-14T20:00:25.7985765Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:2bcb093e-b495-40af-bde4-656d300bf939",
+    "facebookStatus": "Published",
+    "facebookId": "bc535e30d5604a919e5750419168fdc8",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127366033424431",
+    "facebookPublishedAtUtc": "2026-11-14T20:01:15.5695898Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T19:59:52.206Z",
+  "remainingGaps": [
+    "Recheck the booking calendar for actual boat departure slots and seasonal centre hours before a future refresh.",
+    "Verify live prices for a chosen departure before updating minimum fares."
+  ]
+}

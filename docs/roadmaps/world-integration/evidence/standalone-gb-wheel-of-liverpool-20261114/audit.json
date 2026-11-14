@@ -1,0 +1,105 @@
+{
+  "work": "Created Wheel of Liverpool as a fixed, separately ticketed observation ride after official Park and StandaloneAttraction searches found no match. Integrated eight editorial descriptions, its own daily opening hours and wheelchair access condition, imported two exact licensed photographs, verified eight public pages and image delivery, and published the Facebook announcement.",
+  "sources": {
+    "operator": "https://thewheelofliverpool.com/",
+    "operatorVisit": "https://thewheelofliverpool.com/plan-your-visit/",
+    "operatorTickets": "https://thewheelofliverpool.com/tickets/",
+    "commonsDay": "https://commons.wikimedia.org/wiki/File:Wheel_of_Liverpool_-_geograph.org.uk_-_6101005.jpg",
+    "commonsNight": "https://commons.wikimedia.org/wiki/File:The_Wheel_of_Liverpool_-_geograph.org.uk_-_3780283.jpg"
+  },
+  "duplicateSearches": {
+    "standaloneWheelOfLiverpool": 0,
+    "standaloneLiverpoolWheel": 0,
+    "standaloneEchoWheel": 0,
+    "parkWheelOfLiverpool": 0,
+    "parkLiverpoolWheel": 0,
+    "parkEchoWheel": 0
+  },
+  "entity": {
+    "id": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+    "name": "Wheel of Liverpool",
+    "kind": "StandaloneAttraction",
+    "countryCode": "GB",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "4f9ab097-a124-4fbf-8431-7d1539373688",
+      "appliedAtUtc": "2026-11-14T19:43:45.6364955Z",
+      "summary": "Created hidden standalone with eight descriptions and location."
+    },
+    {
+      "imageId": "c072bdc5eac940b3a7dbc503b9c7877a",
+      "createdAtUtc": "2026-11-14T19:44:19.586Z",
+      "summary": "Imported exact daylight photograph, CC BY-SA 2.0."
+    },
+    {
+      "imageId": "eec904e60d5d4b109e0f8fcf5f2316ad",
+      "createdAtUtc": "2026-11-14T19:44:39.376Z",
+      "summary": "Imported exact night photograph, CC BY-SA 2.0."
+    },
+    {
+      "operationId": "e0840cc2-75ea-4068-be1d-f8ec207035ec",
+      "appliedAtUtc": "2026-11-14T19:45:35.0618228Z",
+      "summary": "Added two weekly opening-hours rules and wheelchair cabin condition."
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "c072bdc5eac940b3a7dbc503b9c7877a",
+      "subject": "Wheel of Liverpool viewed from waterfront in daylight",
+      "author": "Bill Boaden",
+      "license": "CC BY-SA 2.0",
+      "captureDate": "2019-03-23",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "eec904e60d5d4b109e0f8fcf5f2316ad",
+      "subject": "Wheel of Liverpool illuminated at night",
+      "author": "William Starkey",
+      "license": "CC BY-SA 2.0",
+      "captureDate": "2013-12-14",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "openingHours": "Official Sun–Thu 11:00–22:00, Fri–Sat 11:00–23:00; check daily changes.",
+    "wheelchairAccess": "Operator states two cabins have ramps and wider doors.",
+    "pricingDecision": "Standard ticket price not verified from operator page; VIP £100 temporarily unavailable and not entered as an active price."
+  },
+  "audit": {
+    "completenessScore": 75,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac/wheel-of-liverpool",
+    "sitePublishedAtUtc": "2026-11-14T19:46:55.6757665Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:6511d1bc-8d2b-4883-a457-e72bd197027c",
+    "facebookStatus": "Published",
+    "facebookId": "85b7f13467d5446fb7c64a8310e6641c",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127365043424431",
+    "facebookPublishedAtUtc": "2026-11-14T19:49:41.7704946Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T19:45:35.061Z",
+  "remainingGaps": [
+    "Verify an active standard fare from the operator before recording a price.",
+    "Recheck opening hours and VIP booking availability during future data refresh."
+  ]
+}
