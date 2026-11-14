@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "7c48060eb7d6450e9697db214e39ec6b",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+    "path": "park_item/7c48060eb7d6450e9697db214e39ec6b",
+    "description": "Une rencontre avec Néo dans le bassin du Marineland Lagoon, sous la surveillance d’un soigneur.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1436,
+    "height": 1500,
+    "sizeInBytes": 196060,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://media-cdn.tripadvisor.com/media/photo-o/08/92/3a/68/marineland-lagoon.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une main touche le rostre du dauphin Néo, près d’un soigneur en combinaison dans le bassin des rencontres."
+      },
+      {
+        "languageCode": "en",
+        "value": "A hand touches dolphin Néo’s rostrum beside a wetsuit-clad keeper in the encounter pool."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Hand berührt die Schnauze des Delfins Néo neben einem Tierpfleger im Neoprenanzug im Begegnungsbecken."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een hand raakt de snuit van dolfijn Néo aan, naast een verzorger in een wetsuit in het ontmoetingsbassin."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una mano tocca il rostro del delfino Néo, accanto a un custode in muta nella vasca degli incontri."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una mano toca el rostro del delfín Néo junto a un cuidador con traje de neopreno en la piscina de encuentros."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dłoń dotyka pyska delfina Néo obok opiekuna w piance w basenie spotkań ze zwierzętami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma mão toca o rostro do golfinho Néo, junto a um tratador de fato de mergulho na piscina dos encontros."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une rencontre avec Néo dans le bassin du Marineland Lagoon, sous la surveillance d’un soigneur."
+      },
+      {
+        "languageCode": "en",
+        "value": "An encounter with Néo in the Marineland Lagoon pool, supervised by a keeper."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Begegnung mit Néo im Becken des Marineland Lagoon unter Aufsicht eines Tierpflegers."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een ontmoeting met Néo in het bassin van Marineland Lagoon, onder toezicht van een verzorger."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un incontro con Néo nella vasca del Marineland Lagoon, sotto la supervisione di un custode."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un encuentro con Néo en la piscina de Marineland Lagoon, bajo la supervisión de un cuidador."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Spotkanie z Néo w basenie Marineland Lagoon pod nadzorem opiekuna."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um encontro com Néo na piscina do Marineland Lagoon, sob a supervisão de um tratador."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "cecilethiery46 — Tripadvisor. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "cecilethiery46 — Tripadvisor. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "cecilethiery46 — Tripadvisor. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "cecilethiery46 — Tripadvisor. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "cecilethiery46 — Tripadvisor. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "cecilethiery46 — Tripadvisor. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "cecilethiery46 — Tripadvisor. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "cecilethiery46 — Tripadvisor. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T20:02:11.298Z",
+    "updatedAt": "2026-11-14T20:02:15.017Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T20:02:15.017Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g187217-d8447965-i143800936-Marineland_Lagoon-Antibes_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote.html"
+}

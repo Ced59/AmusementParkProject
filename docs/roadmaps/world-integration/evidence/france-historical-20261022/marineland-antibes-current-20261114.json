@@ -3,7 +3,7 @@
   "entryId": "FR-candidate-d1ef8ca467e651",
   "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
   "owner": "Conversation France",
-  "checkpointAtUtc": "2026-11-14T19:38:46.557Z",
+  "checkpointAtUtc": "2026-11-14T20:06:37.671548+00:00",
   "partial": true,
   "priorState": "64 existing items with eight-language descriptions; 57 park/item photos plus logo, founder portrait and four official maps, private. Never recreate these.",
   "recoveredHistoricalOperations": 19,
@@ -217,6 +217,76 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-history-audit-corrections-20261114.json"
+    },
+    {
+      "stem": "09-solagoon-enrichment",
+      "operationId": "454e8b44-1db5-448b-a088-b710d2875d41",
+      "appliedAtUtc": "2026-11-14T19:43:54.1024251Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-solagoon-enrichment-20261114.json"
+    },
+    {
+      "stem": "09-transfer-illustration",
+      "operationId": "b2760ea9-cf9a-440a-a68e-68646fc1c2e3",
+      "appliedAtUtc": "2026-11-14T19:49:01.2764605Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-transfer-illustration-20261114.json"
+    },
+    {
+      "stem": "09-item-closures",
+      "operationId": "d666281f-d826-4548-a0d9-19a030933c6c",
+      "appliedAtUtc": "2026-11-14T19:52:30.6561553Z",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-item-closures-20261114.json"
+    },
+    {
+      "stem": "09-antarctica-restaurant",
+      "operationId": "43c8a017-5dc4-490b-b503-80151a103d8a",
+      "appliedAtUtc": "2026-11-14T19:56:05.827783Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-antarctica-restaurant-20261114.json"
+    },
+    {
+      "stem": "09-antarctica-current",
+      "operationId": "7a6149ae-f480-40d0-ad95-d85b9ec96038",
+      "appliedAtUtc": "2026-11-14T19:58:23.126479Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-antarctica-current-20261114.json"
     }
   ],
   "newImage": {
@@ -225,13 +295,13 @@
     "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-closure-photo-20261114.json"
   },
   "currentConsolidatedState": {
-    "items": 64,
-    "parkAndItemPhotosExcludingLogo": 67,
+    "items": 65,
+    "parkAndItemPhotosExcludingLogo": 73,
     "logo": 1,
     "founderPortrait": 1,
     "officialMaps": 4,
     "activeParkHistoryEvents": 12,
-    "activeItemHistoryEvents": 11,
+    "activeItemHistoryEvents": 13,
     "developedArticles": 4,
     "allTextsEightLanguages": true,
     "allNewContentPrivate": true,
@@ -240,7 +310,7 @@
   "historyDiagnostics": {
     "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
     "parkName": "Marineland d’Antibes",
-    "factCount": 21,
+    "factCount": 37,
     "relationCount": 0,
     "blockingIssueCount": 0,
     "issues": [],
@@ -263,25 +333,25 @@
       },
       {
         "decade": 2010,
-        "resourceCount": 4,
-        "sourcedResourceCount": 4,
+        "resourceCount": 7,
+        "sourcedResourceCount": 7,
         "publishedResourceCount": 0,
-        "subjectCount": 3,
+        "subjectCount": 6,
         "sourceCoveragePercentage": 100
       },
       {
         "decade": 2020,
-        "resourceCount": 7,
-        "sourcedResourceCount": 7,
+        "resourceCount": 11,
+        "sourcedResourceCount": 11,
         "publishedResourceCount": 0,
-        "subjectCount": 1,
+        "subjectCount": 4,
         "sourceCoveragePercentage": 100
       }
     ],
     "workflow": [
       {
         "stage": "Draft",
-        "resourceCount": 18
+        "resourceCount": 25
       },
       {
         "stage": "SourcesAttached",
@@ -305,7 +375,7 @@
       },
       {
         "stage": "Retracted",
-        "resourceCount": 3
+        "resourceCount": 12
       }
     ],
     "visits": {
@@ -352,10 +422,10 @@
     "followup": "Articles et références appliqués ; audit transversal en cours."
   },
   "nextSteps": [
-    "Terminer audit transversal sur export complet 19:12:29 et état réconcilié avec toutes les corrections/imports après export.",
-    "Revoir preuves des millésimes de cartes et quantifier les lacunes de médias, coordonnées et histoire.",
-    "Complétude projetée 95 : items masqués et leurs images exclus de la projection. Ne pas annoncer de publication avant audit achevé et résolution de ce point selon règles officielles.",
-    "Après publication autorisée et conditions remplies : score réel, HistoryDiagnostics, routes publiques et rendu mobile, Resolve/Publish Facebook."
+    "Terminer tableau de couverture et registre nominatif des lacunes sur état réconcilié ; vérifier les sources des ajouts.",
+    "Achever relecture transversale du corpus et classement des ressemblances ; idempotence par aperçus séparés.",
+    "Résoudre le score projeté 95 sans contourner le seuil utilisateur strictement >95 ; aucune exception nominative encore acceptée.",
+    "Après audit et conditions remplies : export de publication, mise en visibilité ciblée, score réel, routes publiques et Facebook."
   ],
   "recoveryNotes": [
     "Use the latest actual branch and local receipts before resuming.",
@@ -418,6 +488,42 @@
       "id": "614769d6ce8e4124a09cf67370db0464",
       "updatedAtUtc": "2026-11-14T19:35:18.864Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-gardens-20261114.json"
+    },
+    {
+      "stem": "antarctica-restaurant-counter",
+      "id": "1d349d35e78c494280c9c721ac4e1d1e",
+      "updatedAtUtc": "2026-11-14T19:57:13.570Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-antarctica-restaurant-counter-20261114.json"
+    },
+    {
+      "stem": "antarctica-restaurant-rocks",
+      "id": "c53cafd1e9b14b02b9ad05a60fede2cc",
+      "updatedAtUtc": "2026-11-14T19:57:28.011Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-antarctica-restaurant-rocks-20261114.json"
+    },
+    {
+      "stem": "antarctica-restaurant-room",
+      "id": "22f42dbca2ca48d79fc12b9ed29b3bbf",
+      "updatedAtUtc": "2026-11-14T19:56:53.736Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-antarctica-restaurant-room-20261114.json"
+    },
+    {
+      "stem": "dolphin-transfer-night",
+      "id": "565a4b82ece448349e8c8feb54200a5b",
+      "updatedAtUtc": "2026-11-14T19:47:34.059Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-dolphin-transfer-night-20261114.json"
+    },
+    {
+      "stem": "lagoon-dolphin-neo",
+      "id": "7c48060eb7d6450e9697db214e39ec6b",
+      "updatedAtUtc": "2026-11-14T20:02:15.017Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-dolphin-neo-20261114.json"
+    },
+    {
+      "stem": "lagoon-dolphin-underwater",
+      "id": "3554b98273a44bad927c77a04daefd44",
+      "updatedAtUtc": "2026-11-14T20:05:51.181Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-dolphin-underwater-20261114.json"
     }
   ],
   "manufacturer": {
@@ -428,7 +534,7 @@
     "private": true,
     "aliasesResolvedBeforeCreation": true
   },
-  "historyDiagnosticsIsOlderThanLatestFacts": true,
+  "historyDiagnosticsIsOlderThanLatestFacts": false,
   "developedPrivateArticles": 4,
   "fullAuditExport": {
     "exportedAtUtc": "2026-11-14T19:12:29.5036951Z",
@@ -437,18 +543,18 @@
     "auditComplete": false
   },
   "projectedCompleteness": {
-    "verifiedAtUtc": "2026-11-14T19:21:32.1877247Z",
+    "verifiedAtUtc": "2026-11-14T20:00:37.5126707Z",
     "completenessScore": 95,
     "earnedPoints": 97,
     "applicableMaxPoints": 102,
     "publicationBlockers": [],
     "technicalFinding": "Projection excludes hidden parkItems from ParkItemsVisibleCount (2 pts) and their images from ParkItemPublishedImageCount (2 pts); remaining-debt point (1) also absent. Read-only source inspection, no implementation change."
   },
-  "nextWork": "Audit en cours. Toutes les descriptions parc/64 items relues personnellement en huit langues. Trois lots de corrections appliqués après export ; six nouvelles photos dont musée x3 et Lagoon x3. Aucun site ni Facebook publié.",
+  "nextWork": "Audit transversal final en cours : 65 items, 76 images dont 73 photos de parc/items, 25 faits privés, quatre articles huit langues. Contrôles idempotence à répartir : requête entière refusée HTTP 413, aucun Apply associé. Score projeté 95 à résoudre avant publication selon condition utilisateur >95. Aucun site ni Facebook publié.",
   "auditWorkingState": {
     "localPath": "/workspace/france-historical-20261022/marineland-antibes/recovery-20261114/audit-working-state.json",
-    "sha256": "01a08de12b0d6616c5f3353f580b26b2d8f390376f155d90a85ba192611e6297",
-    "imagesIncludingReferences": 70,
+    "sha256": "91118e00d98242d9724b32c8e95efad1b1f26a85032bd3b40026972ff7bf7ff0",
+    "imagesIncludingReferences": 76,
     "itemDescriptionsReviewedLanguages": [
       "fr",
       "en",

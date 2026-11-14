@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "b006f8b75f9469f1b26b197f174b9d79304f28e32bf08293883f5711d82e722d",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "454e8b44-1db5-448b-a088-b710d2875d41",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T19:43:54.1024243Z",
+    "appliedAtUtc": "2026-11-14T19:43:54.1024251Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ed280089-e6f2-4d82-8cee-2d0649a949e4",
+        "entityKey": "ed280089-e6f2-4d82-8cee-2d0649a949e4",
+        "displayName": "So Lagoon",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Das Buffetrestaurant im Lagoon</h2><p>So Lagoon war das Buffetrestaurant im Badebereich Marineland Lagoon. Sein Gebäude stand am nördlichen Ende des Parks, nahe der Voliere sowie den Delfin- und Robbenbecken. Strände, Felsen und Wasserflächen umgaben das Restaurant in diesem mit Palmen bepflanzten Bereich.</p>",
+            "newValue": "<h2>Das Buffetrestaurant zwischen Palmen</h2><p>So Lagoon war das Buffetrestaurant von Marineland Lagoon. Sein Gebäude stand am nördlichen Ende des Parks, nahe der Voliere sowie den Delfin- und Robbenbecken. Palmen, helle Strände und die Felsen an den Becken prägten die Umgebung dieses Badebereichs.</p><h2>Ein großes Holzhaus am Lagoon</h2><p>Ein breites Strohdach überspannte das Restaurant. Unter dem sichtbaren Dachgebälk verlief im Obergeschoss eine Galerie entlang der Fassade. Ihr Geländer bestand aus geschwungenen Holzstäben. Eine Außentreppe verband die überdachte Terrasse mit dem Erdgeschoss.</p><p>Unten öffneten sich die Theken zum Weg hin. Neben den Holzpfosten standen Tische und Stühle unter türkisfarbenen Sonnenschirmen. Das ovale blaue Schild von So Lagoon am Geländer griff die Farben der benachbarten Becken auf.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The Lagoon buffet</h2><p>So Lagoon was the buffet restaurant in the Marineland Lagoon swimming area. Its building stood at the northern end of the park, near the aviary and the dolphin and seal pools. Beaches, rocks and water surrounded the restaurant in this palm-planted area.</p>",
+            "newValue": "<h2>The buffet among the palms</h2><p>So Lagoon was the buffet restaurant at Marineland Lagoon. At the northern end of the park, its building stood near the aviary and the dolphin and seal pools. Palms, pale beaches and the rocky edges of the pools formed the setting of this bathing area.</p><h2>A large wooden building facing the Lagoon</h2><p>A broad thatched roof covered the restaurant. Beneath the exposed timber frame, an upstairs gallery ran along the façade, edged by a balustrade with wavy uprights. An outdoor staircase connected this sheltered terrace to the ground floor.</p><p>Below, open counters faced the path. Tables and chairs stood beneath turquoise parasols beside the wooden posts. The oval blue So Lagoon sign on the balustrade echoed the colours of the nearby pools.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El bufé del Lagoon</h2><p>So Lagoon era el restaurante bufé de la zona de baño Marineland Lagoon. Su edificio estaba en el extremo norte del parque, cerca del aviario y de las piscinas de delfines y focas. Playas, rocas y láminas de agua rodeaban el restaurante en este sector plantado de palmeras.</p>",
+            "newValue": "<h2>El bufé entre palmeras</h2><p>So Lagoon era el restaurante bufé de Marineland Lagoon. Su edificio estaba en el extremo norte del parque, cerca del aviario y de las piscinas de delfines y focas. Las palmeras, las playas claras y las rocas junto a las piscinas componían el paisaje de esta zona de baño.</p><h2>Un gran edificio de madera abierto al Lagoon</h2><p>Un amplio tejado de paja cubría el restaurante. Bajo las vigas vistas, una galería en la planta superior recorría la fachada, bordeada por una balaustrada de montantes ondulados. Una escalera exterior conectaba esta terraza cubierta con la planta baja.</p><p>Abajo, los mostradores abiertos daban al camino. Había mesas y sillas bajo sombrillas turquesas, junto a los pilares de madera. En la balaustrada, el cartel ovalado azul de So Lagoon retomaba los colores de las piscinas cercanas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le buffet du Lagoon</h2><p>So Lagoon était le restaurant buffet de l’espace de baignade Marineland Lagoon. Son bâtiment se trouvait à l’extrémité nord du parc, près de la volière et des bassins de dauphins et de phoques. Dans ce secteur planté de palmiers, les plages, les rochers et les plans d’eau formaient le paysage autour du restaurant.</p>",
+            "newValue": "<h2>Le buffet au milieu des palmiers</h2><p>So Lagoon était le restaurant buffet de Marineland Lagoon. À l’extrémité nord du parc, son bâtiment se dressait près de la volière et des bassins de dauphins et de phoques. Les palmiers, les plages claires et les rochers des bassins composaient le paysage de ce secteur balnéaire.</p><h2>Une grande maison de bois ouverte sur le Lagoon</h2><p>Un large toit de chaume couvrait le restaurant. Sous la charpente apparente, une galerie à l’étage longeait la façade, bordée d’une balustrade aux montants ondulés. Un escalier extérieur reliait cette terrasse couverte au rez-de-chaussée.</p><p>En bas, les comptoirs ouverts donnaient sur l’allée. Des tables et des fauteuils étaient installés sous des parasols turquoise, au pied des poteaux de bois. Sur la balustrade, l’enseigne ovale bleue de So Lagoon reprenait les couleurs des bassins voisins.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Il buffet del Lagoon</h2><p>So Lagoon era il ristorante a buffet dell’area balneabile Marineland Lagoon. L’edificio sorgeva all’estremità settentrionale del parco, vicino alla voliera e alle vasche di delfini e foche. Spiagge, rocce e specchi d’acqua circondavano il ristorante in questa zona piantumata a palme.</p>",
+            "newValue": "<h2>Il buffet fra le palme</h2><p>So Lagoon era il ristorante a buffet di Marineland Lagoon. L’edificio sorgeva all’estremità settentrionale del parco, vicino alla voliera e alle vasche di delfini e foche. Palme, spiagge chiare e rocce lungo le vasche componevano il paesaggio di quest’area balneabile.</p><h2>Un grande edificio in legno affacciato sul Lagoon</h2><p>Un ampio tetto di paglia copriva il ristorante. Sotto le travi a vista, una galleria al piano superiore correva lungo la facciata, delimitata da una balaustra con montanti ondulati. Una scala esterna collegava questa terrazza coperta al pianterreno.</p><p>In basso, i banconi aperti si affacciavano sul vialetto. Tavoli e sedie occupavano lo spazio sotto gli ombrelloni turchesi, accanto ai pilastri di legno. Sulla balaustra, l’insegna ovale blu di So Lagoon riprendeva i colori delle vasche vicine.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Het buffetrestaurant van het Lagoon</h2><p>So Lagoon was het buffetrestaurant van zwemgebied Marineland Lagoon. Het gebouw stond aan de noordkant van het park, bij de volière en de dolfijnen- en zeehondenbassins. Stranden, rotsen en waterpartijen omringden het restaurant in dit met palmen beplante gebied.</p>",
+            "newValue": "<h2>Het buffetrestaurant tussen de palmen</h2><p>So Lagoon was het buffetrestaurant van Marineland Lagoon. Het gebouw stond aan de noordkant van het park, bij de volière en de dolfijnen- en zeehondenbassins. Palmen, lichte stranden en de rotsen rond de bassins bepaalden het landschap van dit zwemgebied.</p><h2>Een groot houten gebouw aan het Lagoon</h2><p>Een breed rieten dak overdekte het restaurant. Onder de zichtbare dakbalken liep op de verdieping een galerij langs de gevel, met een balustrade van golvende houten spijlen. Een buitentrap verbond dit overdekte terras met de begane grond.</p><p>Beneden waren de toonbanken naar het pad gericht. Naast de houten palen stonden tafels en stoelen onder turquoise parasols. Het ovale blauwe bord van So Lagoon aan de balustrade herhaalde de kleuren van de nabijgelegen bassins.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Bufet w Lagoon</h2><p>So Lagoon było restauracją bufetową w strefie kąpielowej Marineland Lagoon. Budynek stał na północnym krańcu parku, przy wolierze oraz basenach delfinów i fok. Plaże, skały i zbiorniki wodne otaczały restaurację w tej części obsadzonej palmami.</p>",
+            "newValue": "<h2>Bufet wśród palm</h2><p>So Lagoon było restauracją bufetową w Marineland Lagoon. Budynek stał na północnym krańcu parku, przy wolierze oraz basenach delfinów i fok. Palmy, jasne plaże i skały przy basenach tworzyły krajobraz tej strefy kąpielowej.</p><h2>Duży drewniany budynek nad Lagoon</h2><p>Restaurację przykrywał szeroki dach kryty strzechą. Pod widoczną więźbą dachową, wzdłuż elewacji na piętrze, ciągnęła się galeria z balustradą o falistych tralkach. Zewnętrzne schody łączyły ten zadaszony taras z parterem.</p><p>Na dole otwarte lady wychodziły na alejkę. Przy drewnianych słupach stały stoły i krzesła pod turkusowymi parasolami. Owalny niebieski szyld So Lagoon na balustradzie nawiązywał kolorem do pobliskich basenów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O buffet do Lagoon</h2><p>O So Lagoon era o restaurante buffet da área de banhos Marineland Lagoon. O edifício ficava na extremidade norte do parque, perto do aviário e das piscinas de golfinhos e focas. Praias, rochas e planos de água rodeavam o restaurante neste setor plantado de palmeiras.</p>",
+            "newValue": "<h2>O buffet entre palmeiras</h2><p>O So Lagoon era o restaurante buffet do Marineland Lagoon. O edifício ficava na extremidade norte do parque, perto do aviário e das piscinas de golfinhos e focas. As palmeiras, as praias claras e as rochas junto às piscinas compunham a paisagem desta área de banhos.</p><h2>Um grande edifício de madeira aberto para o Lagoon</h2><p>Um amplo telhado de colmo cobria o restaurante. Sob as vigas à vista, uma galeria no piso superior percorria a fachada, rodeada por uma balaustrada de prumos ondulados. Uma escada exterior ligava esta varanda coberta ao rés do chão.</p><p>Em baixo, os balcões abertos davam para o caminho. Mesas e cadeiras ocupavam o espaço sob os chapéus de sol turquesa, junto aos pilares de madeira. Na balaustrada, o letreiro oval azul do So Lagoon retomava as cores das piscinas próximas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "47ca1e978b614553a0ac4c21c76b5c50",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isCurrent",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

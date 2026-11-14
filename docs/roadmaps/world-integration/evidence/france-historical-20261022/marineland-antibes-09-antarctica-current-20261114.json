@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "ed107f088ced5620600d80b7e6207e7bf439ba731fad46e90b6f70b952332823",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "7a6149ae-f480-40d0-ad95-d85b9ec96038",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T19:58:23.1264782Z",
+    "appliedAtUtc": "2026-11-14T19:58:23.126479Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+        "entityKey": "marineland-restaurant-antarctica",
+        "displayName": "Restaurant Antarctica",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "22f42dbca2ca48d79fc12b9ed29b3bbf",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isCurrent",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

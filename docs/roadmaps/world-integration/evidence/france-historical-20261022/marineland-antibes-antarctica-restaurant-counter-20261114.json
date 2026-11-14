@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "1d349d35e78c494280c9c721ac4e1d1e",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+    "path": "park_item/1d349d35e78c494280c9c721ac4e1d1e",
+    "description": "À l’entrée du restaurant Antarctica, le relief du comptoir reprenait celui des parois, près des baies ouvertes sur le parc.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 640,
+    "height": 478,
+    "sizeInBytes": 113702,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://lamomiedesign.wordpress.com/wp-content/uploads/2015/09/img_4904.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": null,
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Comptoir d’accueil du restaurant Antarctica, façonné en rochers gris et en neige blanche."
+      },
+      {
+        "languageCode": "en",
+        "value": "Antarctica restaurant’s welcome counter, shaped like grey rocks and white snow."
+      },
+      {
+        "languageCode": "de",
+        "value": "Empfangstresen des Restaurants Antarctica in Form grauer Felsen mit weißem Schnee."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Ontvangstbalie van restaurant Antarctica in de vorm van grijze rotsen en witte sneeuw."
+      },
+      {
+        "languageCode": "it",
+        "value": "Banco d’accoglienza del ristorante Antarctica, modellato come rocce grigie e neve bianca."
+      },
+      {
+        "languageCode": "es",
+        "value": "Mostrador de recepción del restaurante Antarctica, modelado con rocas grises y nieve blanca."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Lada przy wejściu do restauracji Antarctica, uformowana na wzór szarych skał i białego śniegu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Balcão de acolhimento do restaurante Antarctica, moldado em rochas cinzentas e neve branca."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "À l’entrée du restaurant Antarctica, le relief du comptoir reprenait celui des parois, près des baies ouvertes sur le parc."
+      },
+      {
+        "languageCode": "en",
+        "value": "At the entrance to Antarctica restaurant, the counter echoed the textured walls beside the windows facing the park."
+      },
+      {
+        "languageCode": "de",
+        "value": "Am Eingang des Restaurants Antarctica griff der Tresen die Formen der Wände neben den Fenstern zum Park auf."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bij de ingang van restaurant Antarctica herhaalde de balie het reliëf van de wanden, naast de ramen aan de parkzijde."
+      },
+      {
+        "languageCode": "it",
+        "value": "All’ingresso del ristorante Antarctica, il rilievo del banco riprendeva quello delle pareti, accanto alle vetrate verso il parco."
+      },
+      {
+        "languageCode": "es",
+        "value": "En la entrada del restaurante Antarctica, el relieve del mostrador retomaba el de las paredes, junto a los ventanales hacia el parque."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Przy wejściu do restauracji Antarctica faktura lady nawiązywała do ścian obok okien wychodzących na park."
+      },
+      {
+        "languageCode": "pt",
+        "value": "À entrada do restaurante Antarctica, o relevo do balcão retomava o das paredes, junto às janelas viradas para o parque."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Philippe Augy Design / La Momie Design. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Philippe Augy Design / La Momie Design. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Philippe Augy Design / La Momie Design. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Philippe Augy Design / La Momie Design. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Philippe Augy Design / La Momie Design. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Philippe Augy Design / La Momie Design. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Philippe Augy Design / La Momie Design. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Philippe Augy Design / La Momie Design. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T19:57:10.057Z",
+    "updatedAt": "2026-11-14T19:57:13.57Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T19:57:13.570Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://lamomiedesign.wordpress.com/portfolio/marineland-antarctica-restaurant-2/"
+}

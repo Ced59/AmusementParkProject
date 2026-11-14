@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "565a4b82ece448349e8c8feb54200a5b",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+    "path": "park_item/565a4b82ece448349e8c8feb54200a5b",
+    "description": "Le chargement nocturne à Antibes, lors du départ de huit dauphins vers l’Espagne dans la nuit du 22 au 23 juillet 2026.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1200,
+    "height": 700,
+    "sizeInBytes": 84659,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://savoir-animal.fr/wp-content/uploads/depart01.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": null,
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Grue et camion éclairés de nuit devant les installations de Marineland lors du chargement des dauphins."
+      },
+      {
+        "languageCode": "en",
+        "value": "A crane and truck lit up at night beside Marineland’s facilities during the loading of the dolphins."
+      },
+      {
+        "languageCode": "de",
+        "value": "Kran und Lastwagen im nächtlichen Scheinwerferlicht an den Anlagen von Marineland beim Verladen der Delfine."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een kraan en vrachtwagen in het nachtelijke licht bij de gebouwen van Marineland tijdens het laden van de dolfijnen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Gru e camion illuminati di notte presso le strutture di Marineland durante il carico dei delfini."
+      },
+      {
+        "languageCode": "es",
+        "value": "Grúa y camión iluminados de noche junto a las instalaciones de Marineland durante la carga de los delfines."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dźwig i ciężarówka oświetlone nocą przy obiektach Marineland podczas załadunku delfinów."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Grua e camião iluminados à noite junto às instalações do Marineland durante o embarque dos golfinhos."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le chargement nocturne à Antibes, lors du départ de huit dauphins vers l’Espagne dans la nuit du 22 au 23 juillet 2026."
+      },
+      {
+        "languageCode": "en",
+        "value": "Night-time loading in Antibes as eight dolphins departed for Spain during the night of 22–23 July 2026."
+      },
+      {
+        "languageCode": "de",
+        "value": "Nächtliches Verladen in Antibes bei der Abreise von acht Delfinen nach Spanien in der Nacht vom 22. auf den 23. Juli 2026."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het nachtelijke laden in Antibes bij het vertrek van acht dolfijnen naar Spanje in de nacht van 22 op 23 juli 2026."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il carico notturno ad Antibes per la partenza di otto delfini verso la Spagna, nella notte tra il 22 e il 23 luglio 2026."
+      },
+      {
+        "languageCode": "es",
+        "value": "La carga nocturna en Antibes durante la salida de ocho delfines hacia España, en la noche del 22 al 23 de julio de 2026."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Nocny załadunek w Antibes podczas wyjazdu ośmiu delfinów do Hiszpanii w nocy z 22 na 23 lipca 2026 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O embarque noturno em Antibes durante a partida de oito golfinhos para Espanha, na noite de 22 para 23 de julho de 2026."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "One Voice / Savoir Animal. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "One Voice / Savoir Animal. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "One Voice / Savoir Animal. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "One Voice / Savoir Animal. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "One Voice / Savoir Animal. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "One Voice / Savoir Animal. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "One Voice / Savoir Animal. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "One Voice / Savoir Animal. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T19:47:30.433Z",
+    "updatedAt": "2026-11-14T19:47:34.059Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T19:47:34.059Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://savoir-animal.fr/le-transfert-vers-espagne-dauphins-marineland-a-commence/"
+}

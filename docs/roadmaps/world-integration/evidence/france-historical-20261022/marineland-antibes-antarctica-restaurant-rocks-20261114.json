@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "c53cafd1e9b14b02b9ad05a60fede2cc",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+    "path": "park_item/c53cafd1e9b14b02b9ad05a60fede2cc",
+    "description": "La rencontre des surfaces sombres et des reliefs blancs dans le décor polaire d’Antarctica.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 480,
+    "height": 640,
+    "sizeInBytes": 221776,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://lamomiedesign.wordpress.com/wp-content/uploads/2015/09/img_4725.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Détail des faux rochers gris et des épaisseurs de neige sculptée dans le restaurant Antarctica."
+      },
+      {
+        "languageCode": "en",
+        "value": "Detail of the artificial grey rocks and thick sculpted snow inside Antarctica restaurant."
+      },
+      {
+        "languageCode": "de",
+        "value": "Detail der künstlichen grauen Felsen und der dicken modellierten Schneeschichten im Restaurant Antarctica."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Detail van de kunstrotsen en dikke lagen gevormde sneeuw in restaurant Antarctica."
+      },
+      {
+        "languageCode": "it",
+        "value": "Dettaglio delle rocce artificiali grigie e degli spessori di neve modellata nel ristorante Antarctica."
+      },
+      {
+        "languageCode": "es",
+        "value": "Detalle de las rocas artificiales grises y las gruesas capas de nieve esculpida del restaurante Antarctica."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Detal sztucznych szarych skał i grubych warstw modelowanego śniegu w restauracji Antarctica."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Pormenor das rochas artificiais cinzentas e das camadas espessas de neve esculpida no restaurante Antarctica."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La rencontre des surfaces sombres et des reliefs blancs dans le décor polaire d’Antarctica."
+      },
+      {
+        "languageCode": "en",
+        "value": "Dark surfaces meet white reliefs in Antarctica’s polar décor."
+      },
+      {
+        "languageCode": "de",
+        "value": "Dunkle Flächen treffen auf weiße Reliefs in der polaren Dekoration von Antarctica."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Donkere vlakken en witte reliëfs komen samen in het pooldecor van Antarctica."
+      },
+      {
+        "languageCode": "it",
+        "value": "Superfici scure e rilievi bianchi si incontrano nell’ambientazione polare di Antarctica."
+      },
+      {
+        "languageCode": "es",
+        "value": "Superficies oscuras y relieves blancos se encuentran en el decorado polar de Antarctica."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Ciemne powierzchnie i białe wypukłości w polarnej scenografii restauracji Antarctica."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Superfícies escuras e relevos brancos encontram-se na decoração polar do Antarctica."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Philippe Augy Design / La Momie Design. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Philippe Augy Design / La Momie Design. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Philippe Augy Design / La Momie Design. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Philippe Augy Design / La Momie Design. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Philippe Augy Design / La Momie Design. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Philippe Augy Design / La Momie Design. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Philippe Augy Design / La Momie Design. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Philippe Augy Design / La Momie Design. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T19:57:24.551Z",
+    "updatedAt": "2026-11-14T19:57:28.011Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T19:57:28.011Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://lamomiedesign.wordpress.com/portfolio/marineland-antarctica-restaurant-2/"
+}

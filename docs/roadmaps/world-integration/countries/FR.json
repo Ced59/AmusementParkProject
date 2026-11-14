@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-14T19:37:19.634Z",
+      "lastDataIntegrationAt": "2026-11-14T20:05:51.181Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -19651,6 +19651,116 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-history-audit-corrections-20261114.json",
           "auditEvidence": null,
           "summary": "Audit transversal : centre de soins des tortues localisé hors parc à la Batterie du Graillon ; résumé hôtel précisant sa continuité SoBlue. Huit langues, sources officielles joignables, blocs et identifiants conservés."
+        },
+        {
+          "eventId": "apply-454e8b44-1db5-448b-a088-b710d2875d41",
+          "appliedAt": "2026-11-14T19:43:54.102Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-solagoon-enrichment-20261114.json",
+          "auditEvidence": null,
+          "summary": "So Lagoon : description développée en huit langues grâce à la photographie authentique retrouvée, détails du bâtiment vérifiés et première photo courante privée ; audit encore en cours."
+        },
+        {
+          "eventId": "image-565a4b82ece448349e8c8feb54200a5b",
+          "appliedAt": "2026-11-14T19:47:34.059Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-dolphin-transfer-night-20261114.json",
+          "auditEvidence": null,
+          "summary": "Photo authentique One Voice du chargement nocturne des dauphins les 22–23 juillet 2026 importée en privé ; huit langues et crédit vérifiés, illustration événementielle de la timeline et de l’article de fermeture."
+        },
+        {
+          "eventId": "apply-b2760ea9-cf9a-440a-a68e-68646fc1c2e3",
+          "appliedAt": "2026-11-14T19:49:01.276Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-transfer-illustration-20261114.json",
+          "auditEvidence": null,
+          "summary": "Photographie réelle du chargement de juillet 2026 liée au jalon de transfert des dauphins et ajoutée à l’article de fermeture, sans modifier les paragraphes ni les identifiants existants ; contenu encore privé."
+        },
+        {
+          "eventId": "apply-d666281f-d826-4548-a0d9-19a030933c6c",
+          "appliedAt": "2026-11-14T19:52:30.656Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-item-closures-20261114.json",
+          "auditEvidence": null,
+          "summary": "Deux jalons privés de fermeture des spectacles d’orques et du delphinarium, le 5 janvier 2025, ajoutés aux timelines des items en huit langues ; maintien des animaux après fermeture et transfert ultérieur distingués."
+        },
+        {
+          "eventId": "apply-43c8a017-5dc4-490b-b503-80151a103d8a",
+          "appliedAt": "2026-11-14T19:56:05.827Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-antarctica-restaurant-20261114.json",
+          "auditEvidence": null,
+          "summary": "Restaurant Antarctica historique qualifié et ajouté en privé, distinct de la manchotière après revue des 64 items et alias ; huit descriptions développées et relues, dates et coordonnées non inventées."
+        },
+        {
+          "eventId": "image-22f42dbca2ca48d79fc12b9ed29b3bbf",
+          "appliedAt": "2026-11-14T19:56:53.736Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-antarctica-restaurant-room-20261114.json",
+          "auditEvidence": null,
+          "summary": "Restaurant Antarctica : photographie réelle de la salle et du décor sculpté importée en privé depuis le portfolio de Philippe Augy ; huit langues et provenance vérifiées, aucun dessin conceptuel substitué à une photo."
+        },
+        {
+          "eventId": "image-1d349d35e78c494280c9c721ac4e1d1e",
+          "appliedAt": "2026-11-14T19:57:13.570Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-antarctica-restaurant-counter-20261114.json",
+          "auditEvidence": null,
+          "summary": "Restaurant Antarctica : seconde photographie réelle du comptoir d’accueil importée en privé ; original conservé et textes relus dans les huit langues."
+        },
+        {
+          "eventId": "image-c53cafd1e9b14b02b9ad05a60fede2cc",
+          "appliedAt": "2026-11-14T19:57:28.011Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-antarctica-restaurant-rocks-20261114.json",
+          "auditEvidence": null,
+          "summary": "Restaurant Antarctica : troisième vue authentique du décor rocheux et enneigé importée en privé ; format natif d’archive sans retouche, huit langues vérifiées."
+        },
+        {
+          "eventId": "apply-7a6149ae-f480-40d0-ad95-d85b9ec96038",
+          "appliedAt": "2026-11-14T19:58:23.126Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-antarctica-current-20261114.json",
+          "auditEvidence": null,
+          "summary": "Restaurant Antarctica : vue réelle de la salle choisie comme image courante privée, aucune modification de visibilité."
+        },
+        {
+          "eventId": "image-7c48060eb7d6450e9697db214e39ec6b",
+          "appliedAt": "2026-11-14T20:02:15.017Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-dolphin-neo-20261114.json",
+          "auditEvidence": null,
+          "summary": "Photo authentifiée de la rencontre avec le dauphin Néo au Marineland Lagoon, huit légendes et crédits relus, import privé sans doublon."
+        },
+        {
+          "eventId": "image-3554b98273a44bad927c77a04daefd44",
+          "appliedAt": "2026-11-14T20:05:51.181Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-dolphin-underwater-20261114.json",
+          "auditEvidence": null,
+          "summary": "Photo du bassin des dauphins du Marineland Lagoon, auteur identifié et huit langues relues ; import privé sans date de prise de vue inventée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
