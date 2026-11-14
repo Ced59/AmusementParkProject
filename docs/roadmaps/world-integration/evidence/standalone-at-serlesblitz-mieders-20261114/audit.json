@@ -1,12 +1,15 @@
 {
-  "work": "Reconciled the hidden Serlesbahnen Mieders Park and its one hidden Sommerrodelbahn park item with the independent Serlesblitz alpine coaster. Migrated via the official editor, retired the legacy Park and park item, published the standalone with one licensed photograph and eight localized descriptions, verified all eight public routes and image binary HTTP 200, then published a Facebook announcement.",
+  "work": "Reconciled the hidden Serlesbahnen Mieders Park and its one hidden Sommerrodelbahn park item with the independent Serlesblitz alpine coaster. Migrated via the official editor, retired the legacy Park and park item, published the standalone with two licensed photographs and eight localized descriptions, verified all eight public routes and image binary HTTP 200, then published a Facebook announcement.",
   "qualification": "The retired Park held only one hidden attraction and no other park editorial content. The summer toboggan is a separately identifiable fixed ride in the wider Serlesbahnen mountain area; migration preserves legacy site identifiers in the backlog.",
   "sources": {
     "tourismOfficial": "https://www.tirol.at/aktivitaeten/sport/wandern/bergbahnen/gondelbahn-serles",
     "regionalTourism": "https://www.tirol.tl/de/freizeit-aktiv/schienen-rodelbahnen-flieger/sommerrodelbahn-mieders/",
     "summerMountainAssociation": "https://www.sommer-bergbahnen.at/sommerbergbahnen/serlesbahnen-mieders",
     "rideCatalog": "https://rcdb.com/13002.htm",
-    "commonsPhotograph": "https://commons.wikimedia.org/wiki/File:Brandauer_Schlitten.jpg"
+    "commonsPhotograph": "https://commons.wikimedia.org/wiki/File:Brandauer_Schlitten.jpg",
+    "confirmedSerlesliftePhotograph": "https://de.wikipedia.org/wiki/Datei:Transport_Schlitten_Serleslifte.jpg",
+    "historicalMiedersRide": "https://www-openpr-de.b-cdn.net/news/133282/Keine-Langeweile-in-der-Ferienzeit-Der-Sommer-Club-Micky-Maus-im-Stubaital.html",
+    "newStubaiCoaster2026": "https://presse.tirol.at/en/grand-opening-of-the-elfercoaster/291751/"
   },
   "legacy": {
     "parkId": "5720c9f6-0944-4161-abae-3c9bb03adae1",
@@ -31,6 +34,11 @@
       "createdAtUtc": "2026-11-14T18:58:46.904Z",
       "metadataUpdatedAtUtc": "2026-11-14T18:59:36.284Z",
       "summary": "Imported and localized a current site image showing a Brandauer sled on the Stubai Valley summer track; published with credit."
+    },
+    {
+      "imageId": "a1a7b47c280046b98f20a8b7e226371a",
+      "createdAtUtc": "2026-11-14T20:07:41Z",
+      "summary": "Imported an exact photograph that identifies Serleslifte sled transport at Mieders; made it the current image and published it with attribution in eight languages."
     }
   ],
   "photographs": [
@@ -40,10 +48,21 @@
       "author": "Stefan Scheer",
       "license": "CC BY-SA 3.0",
       "photographedAt": "2007-06-22",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "locationEvidence": "Commons identifies the Stubai summer track in 2007 but not Mieders by name. Contemporary 2007 tourism material locates the then Stubai summer coaster at Mieders; Elfercoaster opened only in 2026. The sled colour and stripe correspond to the precisely identified Serleslifte transport photograph. This is strong circumstantial, not direct geotag evidence."
+    },
+    {
+      "imageId": "a1a7b47c280046b98f20a8b7e226371a",
+      "subject": "Actual Serleslifte gondola and transported Serlesblitz sleds, with Serles branding visible",
+      "author": "Gerald (G.jenewein)",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2011-05-22",
       "current": true,
       "published": true,
       "publicBinaryHttpStatus": 200,
-      "locationEvidence": "Wikimedia Commons description: Brandauer Rodelschlitten, Sommerrodelbahn Stubai. The file does not itself name Mieders; precise track association should be corroborated with the photographer or a geotag."
+      "locationEvidence": "The original de.wikipedia file description explicitly says Schlittentransport Serleslifte; the photograph visibly shows the Serles gondola and matching sleds."
     }
   ],
   "visitorInformation": {
@@ -56,7 +75,7 @@
     "dataQualityLevel": "Publishable",
     "publicationBlockers": [],
     "descriptionLanguages": 8,
-    "publishedImages": 1,
+    "publishedImages": 2,
     "publicPagesHttpStatus": {
       "fr": 200,
       "en": 200,
@@ -77,9 +96,9 @@
     "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127360105424431",
     "facebookPublishedAtUtc": "2026-11-14T19:01:26.9099545Z"
   },
-  "lastDataIntegrationAt": "2026-11-14T18:59:36.284Z",
+  "lastDataIntegrationAt": "2026-11-14T20:07:41Z",
   "remainingGaps": [
-    "Verify the precise Mieders association of the historical Commons sled photo.",
+    "The 2007 secondary photo lacks its own Mieders geotag; association is supported by historical context and matching sled livery but could be directly confirmed by the photographer.",
     "Verify the operator fare and 2027 summer schedule when published.",
     "Confirm the exact attraction entrance coordinates."
   ]

@@ -5184,7 +5184,7 @@
         "Sommerrodelbahn Stubai"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-14T18:59:36.284Z",
+      "lastDataIntegrationAt": "2026-11-14T20:07:41Z",
       "integrationHistory": [
         {
           "eventId": "apply-df00f35a-ece1-43da-8eb5-00a7a3774bfd",
@@ -5205,9 +5205,19 @@
           "evidence": "PARK_DATA_EDITOR:photo:8af38d3a0845411c9da466b5e2da8a45",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-serlesblitz-mieders-20261114/audit.json",
           "summary": "Migration de la fiche Park masquée vers Serlesblitz autonome, contenus en huit langues et photographie créditée."
+        },
+        {
+          "eventId": "image-a1a7b47c280046b98f20a8b7e226371a",
+          "appliedAt": "2026-11-14T20:07:41Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+          "evidence": "PARK_DATA_EDITOR:import-photo:a1a7b47c280046b98f20a8b7e226371a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-serlesblitz-mieders-20261114/audit.json",
+          "summary": "Deuxième photo identifiée explicitement Serleslifte, publiée en image principale"
         }
       ],
-      "nextAction": "Conserver l’historique de la fiche Park migrée. Confirmer le rattachement précis de la photographie ancienne de la luge du Stubaital à la piste de Mieders ; vérifier tarif, calendrier de la prochaine saison et entrée exacte dès publication des données opérateur.",
+      "nextAction": "Conserver les deux photographies et la source Serleslifte explicite ; la photo secondaire du Stubaital de 2007 est appuyée par le contexte historique mais peut encore être confirmée par son auteur. Vérifier tarif, calendrier de la saison 2027 et entrée exacte dès publication des données opérateur.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5238,6 +5248,21 @@
           "label": "Wikimedia Commons — luge du Stubaital",
           "url": "https://commons.wikimedia.org/wiki/File:Brandauer_Schlitten.jpg",
           "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Photo exacte Serleslifte — Wikipedia germanophone",
+          "url": "https://de.wikipedia.org/wiki/Datei:Transport_Schlitten_Serleslifte.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Mieders — piste de la vallée documentée en 2007",
+          "url": "https://www-openpr-de.b-cdn.net/news/133282/Keine-Langeweile-in-der-Ferienzeit-Der-Sommer-Club-Micky-Maus-im-Stubaital.html",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Elfercoaster — seconde piste ouverte en 2026",
+          "url": "https://presse.tirol.at/en/grand-opening-of-the-elfercoaster/291751/",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "AT",
@@ -5257,7 +5282,7 @@
             "sourceOpenedYear": "2004"
           }
         ],
-        "rationale": "Le Park legacy masqué ne contenait qu’une luge ; migration officielle vers StandaloneAttraction et retrait des anciennes fiches, identifiants conservés. Photographiée dans le Stubaital en 2007 ; le fichier Commons ne nomme pas lui-même Mieders."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration image-a1a7b47c280046b98f20a8b7e226371a ; conserver les références de découverte."
       },
       "publication": {
         "site": {
