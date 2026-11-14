@@ -1,0 +1,107 @@
+{
+  "qualification": "Bobovka Lipno is one dedicated two-track visitor destination in Slupečná, with an Alpine Coaster rail track and an older trough toboggan track; one standalone identity follows the already integrated Bobovka Prosek precedent. The hidden legacy Park and its sole ParkItem were retired during controlled migration, avoiding a second public destination.",
+  "sources": {
+    "regionalTourism": "https://www.visitlipno.cz/cz/zazitky-lipno/bobovka-lipno-lipno-nad-vltavou-/14-260/",
+    "rcdbVenue": "https://rcdb.com/13824.htm",
+    "rcdbRailCoaster": "https://rcdb.com/13825.htm",
+    "officialWebsite": "https://www.slideland.cz/",
+    "commonsOriginalTrack": "https://commons.wikimedia.org/wiki/File:Slupe%C4%8Dn%C3%A1,_bobov%C3%A1_dr%C3%A1ha.jpg",
+    "commonsOriginalTrackLift": "https://commons.wikimedia.org/wiki/File:Slupe%C4%8Dn%C3%A1,_bobov%C3%A1_dr%C3%A1ha_(01).jpg"
+  },
+  "sourceLimitations": [
+    "Official operator website redirected from bobovkalipno.cz and returned HTTP 503 during research on 2026-11-14; current ticket prices and precise hours were therefore left unset.",
+    "Both available exact licensed photographs show the older trough track in August 2014, before the newer rail coaster. Captions explicitly state their date; a current exact rail-track photo remains desirable.",
+    "Length and Wiegand model describe the rail coaster specifically; the trough track has separate dimensions."
+  ],
+  "duplicateSearches": {
+    "standaloneLipnoCZ": 0,
+    "standaloneSlidelandGlobal": 0,
+    "legacyParkId": "181ad192-be78-4818-88b3-98df111040e4",
+    "legacyParkItemId": "afc7d9fc-7d35-485e-afb7-f5ad1ac7cedf",
+    "manufacturerClueBacklogEntry": "CZ-candidate-standalone-0f4b191f193138"
+  },
+  "entity": {
+    "id": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+    "name": "Bobovka Lipno",
+    "countryCode": "CZ",
+    "kind": "StandaloneAttraction",
+    "published": true,
+    "legacyParkHiddenNotRelevant": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "4d5a35e4-6d11-4b73-9d07-590bafd95b72",
+      "appliedAtUtc": "2026-11-14T20:45:33.446Z",
+      "summary": "Controlled legacy migration; standalone core, eight descriptions, position and rail-coaster details"
+    },
+    {
+      "operationId": "97b9f6c2-3baa-4fc3-9366-6728d06cfa44",
+      "appliedAtUtc": "2026-11-14T20:49:19.866Z",
+      "summary": "Removed transient website outage from public descriptions"
+    },
+    {
+      "operationId": "3669bb27-6cb1-4121-be69-362cc251d2b0",
+      "appliedAtUtc": "2026-11-14T20:52:18.423Z",
+      "summary": "Reworded French technical phrasing"
+    },
+    {
+      "operationId": "4bd9cda1-0893-4aea-8ee9-d26d43580ee7",
+      "appliedAtUtc": "2026-11-14T20:53:15.839Z",
+      "summary": "Reworded English internal editorial phrase"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "5b148a97eca047c58a059863513ea236",
+      "subject": "Original trough track and visitor building",
+      "author": "PatrikPaprika",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2014-08-16",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "60a09d27ba1c4f32945953410e0a5781",
+      "subject": "Original trough track and parallel lift",
+      "author": "PatrikPaprika",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2014-08-16",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 75,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "prePublicationExportSha256": "b5845873e5299ed5a34c77a6fd2d44589afc339c469d3b2293aa4759d6a0f59e"
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/3716faba-51b5-441c-8f4e-59aa8e3ff098/bobovka-lipno",
+    "sitePublishedAtUtc": "2026-11-14T20:54:23.182Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:0a3d2e06-025e-4bae-899c-cecd293d981e",
+    "facebookStatus": "Published",
+    "facebookId": "38266b55b8484accb764ed208068be4b",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127370941424431",
+    "facebookPublishedAtUtc": "2026-11-14T20:55:38.121Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T20:53:15.839Z",
+  "remainingGaps": [
+    "Confirm current fares and opening timetable on the operator website when available.",
+    "Seek a licensed exact photograph of the post-2016 rail coaster."
+  ]
+}

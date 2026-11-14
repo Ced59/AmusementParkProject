@@ -82,29 +82,71 @@
     },
     {
       "entryId": "MO-candidate-discovery-64f20a87c649ce",
-      "name": "Skypark Macau Tower — Bungy / Skyjump",
-      "entityKind": "ToQualify",
+      "name": "Macau Tower Bungy Jump",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Saut fixe",
-      "locality": "Macao",
-      "siteId": null,
+      "category": "Saut à l’élastique fixe",
+      "locality": "Macau Tower, Macao",
+      "siteId": "1e6aaf84-ba08-4acd-b068-5e0ae206ed29",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T19:28:46Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Catalogue officiel de Skypark Macau Tower consulté le 14 novembre 2026 : Bungy et Skyjump sont tarifés séparément ; exploitation effective à vérifier à la date d’intégration.",
-      "identityConfidence": "Offre et adresse confirmées par le site local de l’exploitant ; recherche des fiches publiques et masquées par PARK_DATA_EDITOR encore requise avant création.",
+      "identityConfidence": "Saut et billet propres confirmés par l’exploitant ; recherches officielles des fiches Park et StandaloneAttraction sans correspondance à Macao, publication vérifiée après création.",
       "possibleMatches": [],
       "aliases": [
-        "AJ Hackett Macau",
-        "Macau Tower"
+        "Skypark Macau Tower — Bungy / Skyjump",
+        "AJ Hackett Macau Tower Bungy",
+        "Skypark Macau Bungy"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher Skypark Macau Tower, AJ Hackett Macau, Bungy et Skyjump dans Park et StandaloneAttraction avec le client officiel, puis décider si chaque billet correspond à une standalone distincte ou à un parkItem. Deux photos libres du Bungy sont vérifiées ; ne pas les attribuer au Skyjump. Recontrôler tarifs et horaires avant Preview/Apply. Dossier : evidence/standalone-skypark-qualification-20261114/audit.json.",
+      "lastDataIntegrationAt": "2026-11-14T19:26:29.292Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-5bd8cfbe-43f3-43fa-a1fc-810db4ffa905",
+          "appliedAt": "2026-11-14T19:24:20.200Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e6aaf84-ba08-4acd-b068-5e0ae206ed29",
+          "evidence": "PARK_DATA_EDITOR:apply:5bd8cfbe-43f3-43fa-a1fc-810db4ffa905",
+          "auditEvidence": null,
+          "summary": "Création du Bungy autonome avec huit descriptions."
+        },
+        {
+          "eventId": "photo-78054585a5a8422dbcd32d05e68f164b",
+          "appliedAt": "2026-11-14T19:24:58.849Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e6aaf84-ba08-4acd-b068-5e0ae206ed29",
+          "evidence": "PARK_DATA_EDITOR:photo:78054585a5a8422dbcd32d05e68f164b",
+          "auditEvidence": null,
+          "summary": "Photo exacte du saut, CC BY 2.0."
+        },
+        {
+          "eventId": "photo-7a34444b1eb74d0f90d1a531de07b95c",
+          "appliedAt": "2026-11-14T19:25:19.059Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e6aaf84-ba08-4acd-b068-5e0ae206ed29",
+          "evidence": "PARK_DATA_EDITOR:photo:7a34444b1eb74d0f90d1a531de07b95c",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la plateforme Bungy, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-600c5837-2300-48ab-8f34-ba65065392bf",
+          "appliedAt": "2026-11-14T19:26:29.292Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e6aaf84-ba08-4acd-b068-5e0ae206ed29",
+          "evidence": "PARK_DATA_EDITOR:apply:600c5837-2300-48ab-8f34-ba65065392bf",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mo-macau-tower-bungy-20261114/audit.json",
+          "summary": "Tarif, accès, audit et publication du Bungy distinct des autres activités."
+        }
+      ],
+      "nextAction": "Conserver les reçus du Bungy sans l’assimiler au Skyjump. Vérifier les créneaux de réservation et les nouveaux tarifs lors de la prochaine mise à jour ; poursuivre séparément Skyjump, Skywalk et Tower Climb.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
@@ -148,7 +190,7 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-11-14",
         "attractions": [
           {
@@ -182,8 +224,304 @@
             "sourceLocality": "Macao"
           }
         ],
-        "rationale": "Deux activités fixes avec billets propres, dans la tour touristique. Leur modélisation et l’existence éventuelle d’une fiche legacy doivent être vérifiées par le client officiel ; les photos du Bungy ne représentent pas Skyjump."
+        "rationale": "Saut Bungy fixe à billet distinct dans Macau Tower, avec photo exacte du saut et page autonome publiée. Le Skyjump, le Skywalk et Tower Climb restent des dossiers séparés."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1e6aaf84-ba08-4acd-b068-5e0ae206ed29/macau-tower-bungy-jump",
+          "publishedAtUtc": "2026-11-14T19:27:46.808Z",
+          "verifiedAtUtc": "2026-11-14T19:28:46Z",
+          "evidence": "PARK_DATA_EDITOR:apply:24b7d3da-0c72-4a93-85db-786ab673a7e4"
+        },
+        "facebook": {
+          "id": "7f0bde277e8a420b9cd28c0f128e2107",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T19:28:34.276Z",
+          "externalPostId": "1285475681307050_122127363051424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127363051424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:7f0bde277e8a420b9cd28c0f128e2107"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-mo-macau-tower-bungy-20261114/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 3
+      },
+      "possibleBacklogEntries": [
+        "MO-candidate-discovery-3582590bb649be50",
+        "MO-candidate-discovery-ff809375516ddb2e",
+        "MO-candidate-discovery-f6b745d5b0628c86"
+      ]
+    },
+    {
+      "entryId": "MO-candidate-discovery-ed48ddea6705793a",
+      "name": "Golden Reel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "Studio City, Cotai, Macao",
+      "siteId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T19:20:24Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre opérateur active au 14 novembre 2026, avec billet MOP 100 et horaires affichés.",
+      "identityConfidence": "Billet et conditions sur la page officielle de Studio City ; recherches Park et StandaloneAttraction sans correspondance avant création, publication vérifiée dans le client officiel.",
+      "possibleMatches": [],
+      "aliases": [
+        "Studio City Golden Reel",
+        "Golden Reel Macau"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T19:16:42.686Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-792c4015-f47d-4066-8862-707edc1c5364",
+          "appliedAt": "2026-11-14T19:13:29.190Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:apply:792c4015-f47d-4066-8862-707edc1c5364",
+          "auditEvidence": null,
+          "summary": "Création masquée, huit descriptions et localisation."
+        },
+        {
+          "eventId": "photo-2dcca4c36c724d8ba875335d44a3387f",
+          "appliedAt": "2026-11-14T19:14:06.247Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:photo:2dcca4c36c724d8ba875335d44a3387f",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la roue en huit, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "photo-1702179793ce40b0ba8f98a05c18f66a",
+          "appliedAt": "2026-11-14T19:14:25.660Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:photo:1702179793ce40b0ba8f98a05c18f66a",
+          "auditEvidence": null,
+          "summary": "Seconde photo exacte de la roue, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-73b51fe8-3f9b-4b3f-8f18-4ffcd3b443ba",
+          "appliedAt": "2026-11-14T19:15:28.191Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:apply:73b51fe8-3f9b-4b3f-8f18-4ffcd3b443ba",
+          "auditEvidence": null,
+          "summary": "Tarif officiel de 100 MOP et condition enfants."
+        },
+        {
+          "eventId": "apply-cfae1346-d291-4683-ac1c-9e0314c7449b",
+          "appliedAt": "2026-11-14T19:16:42.686Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+          "evidence": "PARK_DATA_EDITOR:apply:cfae1346-d291-4683-ac1c-9e0314c7449b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mo-golden-reel-20261114/audit.json",
+          "summary": "Descriptions finales en huit langues et audit de la fiche avec deux photos."
+        }
+      ],
+      "nextAction": "Conserver la ligne et ses reçus ; vérifier les jours de fermeture du calendrier officiel avant de structurer les horaires et préciser les coordonnées de l’entrée au niveau 3, aile est.",
+      "sources": [
+        {
+          "label": "Exploitant — Golden Reel",
+          "url": "https://www.studiocity-macau.com/en/attractions/golden-reel",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — adresse de Studio City",
+          "url": "https://www.studiocity-macau.com/en/contact-us",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — Studio City Lucky 8",
+          "url": "https://commons.wikimedia.org/wiki/File:Studio-City-Lucky-8.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — Golden Reel 2023",
+          "url": "https://commons.wikimedia.org/wiki/File:Studio_City_Golden_Reel_26-02-2023.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "MO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Grande roue fixe avec billet propre dans le complexe hôtelier Studio City, sans parc d’attractions parent ; fiche autonome créée et publiée après recherche de doublons."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a241ed1c-6ce5-456b-8126-8c1d7f08c50e/golden-reel",
+          "publishedAtUtc": "2026-11-14T19:18:17.292Z",
+          "verifiedAtUtc": "2026-11-14T19:20:24Z",
+          "evidence": "PARK_DATA_EDITOR:apply:8c549e3d-1042-4abb-bdcb-eecf68ae24bd"
+        },
+        "facebook": {
+          "id": "410a6829bad74b999ab5359e4ff46e97",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T19:19:04.346Z",
+          "externalPostId": "1285475681307050_122127362055424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127362055424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:410a6829bad74b999ab5359e4ff46e97"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-mo-golden-reel-20261114/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
+    },
+    {
+      "entryId": "MO-candidate-discovery-3582590bb649be50",
+      "name": "Macau Tower Skyjump",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Activité de hauteur fixe",
+      "locality": "Macau Tower, Macao",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-14",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Descente guidée distincte du Bungy ; billet propre, photo exacte à trouver.",
+      "identityConfidence": "Activité distincte listée par l’exploitant ; identité précise, autonomie et éventuel doublon à contrôler avant création.",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher de nouveau Park et StandaloneAttraction, vérifier l’offre actuelle et trouver une photographie réutilisable montrant exactement cette activité avant publication. Ne pas utiliser les photos du Bungy pour cette fiche.",
+      "sources": [
+        {
+          "label": "Skypark Macau — catalogue des activités",
+          "url": "https://www.skyparkmacau.com/activities",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Skypark Macau — activité",
+          "url": "https://www.skyparkmacau.com/activities/skyjump",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "MO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Produit distinct du Bungy ; la modélisation autonome, les doublons et une photo exacte restent à confirmer."
+      },
+      "possibleBacklogEntries": [
+        "MO-candidate-discovery-64f20a87c649ce"
+      ]
+    },
+    {
+      "entryId": "MO-candidate-discovery-ff809375516ddb2e",
+      "name": "Macau Tower Skywalk",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Activité de hauteur fixe",
+      "locality": "Macau Tower, Macao",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-11-14",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Marche extérieure proposée distinctement par Skypark ; identité, tarif et photo à vérifier.",
+      "identityConfidence": "Activité distincte listée par l’exploitant ; identité précise, autonomie et éventuel doublon à contrôler avant création.",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher de nouveau Park et StandaloneAttraction, vérifier l’offre actuelle et trouver une photographie réutilisable montrant exactement cette activité avant publication. Ne pas utiliser les photos du Bungy pour cette fiche.",
+      "sources": [
+        {
+          "label": "Skypark Macau — catalogue des activités",
+          "url": "https://www.skyparkmacau.com/activities",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Skypark Macau — activité",
+          "url": "https://www.skyparkmacau.com/activities/skywalk",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "MO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Produit distinct du Bungy ; la modélisation autonome, les doublons et une photo exacte restent à confirmer."
+      },
+      "possibleBacklogEntries": [
+        "MO-candidate-discovery-64f20a87c649ce"
+      ]
+    },
+    {
+      "entryId": "MO-candidate-discovery-f6b745d5b0628c86",
+      "name": "Macau Tower Tower Climb",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Activité de hauteur fixe",
+      "locality": "Macau Tower, Macao",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-11-14",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Ascension de la tour proposée distinctement par Skypark ; identité, tarif et photo à vérifier.",
+      "identityConfidence": "Activité distincte listée par l’exploitant ; identité précise, autonomie et éventuel doublon à contrôler avant création.",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher de nouveau Park et StandaloneAttraction, vérifier l’offre actuelle et trouver une photographie réutilisable montrant exactement cette activité avant publication. Ne pas utiliser les photos du Bungy pour cette fiche.",
+      "sources": [
+        {
+          "label": "Skypark Macau — catalogue des activités",
+          "url": "https://www.skyparkmacau.com/activities",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Skypark Macau — activité",
+          "url": "https://www.skyparkmacau.com/activities/towerclimb",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "MO",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Produit distinct du Bungy ; la modélisation autonome, les doublons et une photo exacte restent à confirmer."
+      },
+      "possibleBacklogEntries": [
+        "MO-candidate-discovery-64f20a87c649ce"
+      ]
     }
   ]
 }

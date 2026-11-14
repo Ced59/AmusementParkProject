@@ -15616,6 +15616,540 @@
         "publicationBlockers": [],
         "gapCount": 5
       }
+    },
+    {
+      "entryId": "GB-candidate-discovery-87f09723f38fd673",
+      "name": "Wheel of Liverpool",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "4 Keel Wharf, Liverpool",
+      "siteId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T19:47:00Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Site exploitant actif le 14 novembre 2026, horaires quotidiens et billets standard affichés.",
+      "identityConfidence": "Exploitant et adresse propres ; recherches officielles Park et StandaloneAttraction sous Wheel of Liverpool, Liverpool Wheel et Echo Wheel sans résultat.",
+      "possibleMatches": [],
+      "aliases": [
+        "Echo Wheel of Liverpool",
+        "Liverpool Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T19:45:35.061Z",
+      "integrationHistory": [
+        {
+          "eventId": "4f9ab097-a124-4fbf-8431-7d1539373688",
+          "appliedAt": "2026-11-14T19:43:45.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:apply:4f9ab097-a124-4fbf-8431-7d1539373688",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et huit descriptions"
+        },
+        {
+          "eventId": "image-c072bdc5eac940b3a7dbc503b9c7877a",
+          "appliedAt": "2026-11-14T19:44:19.586Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:import-photo:c072bdc5eac940b3a7dbc503b9c7877a",
+          "auditEvidence": null,
+          "summary": "Photo exacte de jour, licence et crédits vérifiés"
+        },
+        {
+          "eventId": "image-eec904e60d5d4b109e0f8fcf5f2316ad",
+          "appliedAt": "2026-11-14T19:44:39.376Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:import-photo:eec904e60d5d4b109e0f8fcf5f2316ad",
+          "auditEvidence": null,
+          "summary": "Photo exacte de nuit, licence et crédits vérifiés"
+        },
+        {
+          "eventId": "e0840cc2-75ea-4068-be1d-f8ec207035ec",
+          "appliedAt": "2026-11-14T19:45:35.061Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:apply:e0840cc2-75ea-4068-be1d-f8ec207035ec",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-wheel-of-liverpool-20261114/audit.json",
+          "summary": "Horaires, accessibilité et audit final de publication"
+        }
+      ],
+      "nextAction": "Conserver la fiche, les deux photos et les reçus. Vérifier le tarif standard actif sur la billetterie officielle, les horaires du jour et le retour éventuel de la cabine VIP lors du prochain rafraîchissement.",
+      "sources": [
+        {
+          "label": "Exploitant — présentation",
+          "url": "https://thewheelofliverpool.com/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — visite et horaires",
+          "url": "https://thewheelofliverpool.com/plan-your-visit/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — billets",
+          "url": "https://thewheelofliverpool.com/tickets/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — roue de jour",
+          "url": "https://commons.wikimedia.org/wiki/File:Wheel_of_Liverpool_-_geograph.org.uk_-_6101005.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — roue de nuit",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Wheel_of_Liverpool_-_geograph.org.uk_-_3780283.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Grande roue fixe à billetterie propre ; absence de doublon Park et StandaloneAttraction confirmée par le client officiel ; fiche autonome publiée avec deux photos exactes."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac/wheel-of-liverpool",
+          "publishedAtUtc": "2026-11-14T19:46:55.675Z",
+          "verifiedAtUtc": "2026-11-14T19:47:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6511d1bc-8d2b-4883-a457-e72bd197027c"
+        },
+        "facebook": {
+          "id": "85b7f13467d5446fb7c64a8310e6641c",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T19:49:41.770Z",
+          "externalPostId": "1285475681307050_122127365043424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127365043424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:85b7f13467d5446fb7c64a8310e6641c"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-wheel-of-liverpool-20261114/audit.json",
+        "score": 75,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-917b72e4fb69d19a",
+      "name": "The Falkirk Wheel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Élévateur rotatif à bateaux et excursion",
+      "locality": "Lime Road, Falkirk FK1 4RS",
+      "siteId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:00:45Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant Scottish Canals : excursions en bateau tarifées, horaires hiver 2026/2027 publiés au 14 novembre 2026.",
+      "identityConfidence": "Nom, adresse et exploitant officiels ; recherches Park/Standalone Falkirk Wheel, The Falkirk Wheel et Falkirk sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Falkirk Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T19:59:52.206Z",
+      "integrationHistory": [
+        {
+          "eventId": "93d3a701-bdde-413c-b1a5-4f8ad0ff6434",
+          "appliedAt": "2026-11-14T19:54:15.259Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:apply:93d3a701-bdde-413c-b1a5-4f8ad0ff6434",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et huit descriptions"
+        },
+        {
+          "eventId": "image-a9ee71ac623e464783b7f3d6f304428d",
+          "appliedAt": "2026-11-14T19:55:11Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:import-photo:a9ee71ac623e464783b7f3d6f304428d",
+          "auditEvidence": null,
+          "summary": "Photo latérale exacte et créditée"
+        },
+        {
+          "eventId": "image-9bb6505566864cc6ae118a2baeb6cfce",
+          "appliedAt": "2026-11-14T19:55:33Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:import-photo:9bb6505566864cc6ae118a2baeb6cfce",
+          "auditEvidence": null,
+          "summary": "Photo frontale exacte et créditée"
+        },
+        {
+          "eventId": "fc759688-a28d-4898-b287-ca90c75ef621",
+          "appliedAt": "2026-11-14T19:57:17.654Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:apply:fc759688-a28d-4898-b287-ca90c75ef621",
+          "auditEvidence": null,
+          "summary": "Tarifs minimums dynamiques et conditions de réservation"
+        },
+        {
+          "eventId": "d8675d96-2275-4e06-8c74-fa771ca4401d",
+          "appliedAt": "2026-11-14T19:59:52.206Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:apply:d8675d96-2275-4e06-8c74-fa771ca4401d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-falkirk-wheel-20261114/audit.json",
+          "summary": "Descriptions corrigées et audit final sans blocage"
+        }
+      ],
+      "nextAction": "Conserver les reçus, les deux photos exactes et les publications. Recontrôler les créneaux de départ, les horaires saisonniers du centre et les tarifs minimums dans la billetterie officielle lors du prochain rafraîchissement.",
+      "sources": [
+        {
+          "label": "Scottish Canals — installation, excursions, horaires et prix",
+          "url": "https://www.scottishcanals.co.uk/visit/canals/visit-the-forth-clyde-canal/attractions/the-falkirk-wheel",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Scottish Canals — adresse",
+          "url": "https://www.scottishcanals.co.uk/visit/canals/visit-the-forth-clyde-canal/attractions/the-falkirk-wheel/location",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Scottish Canals — description de l’excursion",
+          "url": "https://www.scottishcanals.co.uk/visit/canals/visit_falkirk_wheel",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — roue de côté, septembre 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Falkirk_Wheel_-_geograph.org.uk_-_8416990.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — roue de face, septembre 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Falkirk_Wheel_-_geograph.org.uk_-_8417000.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Élévateur à bateaux fixe avec excursion réservée et tarifée séparément ; pas de parc d’attractions à billet commun. Recherches officielles Park et StandaloneAttraction négatives avant création."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6/the-falkirk-wheel",
+          "publishedAtUtc": "2026-11-14T20:00:25.798Z",
+          "verifiedAtUtc": "2026-11-14T20:00:45Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2bcb093e-b495-40af-bde4-656d300bf939"
+        },
+        "facebook": {
+          "id": "bc535e30d5604a919e5750419168fdc8",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T20:01:15.569Z",
+          "externalPostId": "1285475681307050_122127366033424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127366033424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:bc535e30d5604a919e5750419168fdc8"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-falkirk-wheel-20261114/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-853eb2916325747e",
+      "name": "Brighton i360",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour d’observation mobile et capsule panoramique",
+      "locality": "Lower Kings Road, Brighton BN1 2LN",
+      "siteId": "e5307935-8773-462a-bf3d-7c0061615b31",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:21:50Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant Brighton i360 : réservation View 360 et calendrier de visites actifs le 14 novembre 2026.",
+      "identityConfidence": "Nom, adresse et exploitant officiels ; recherches Park et StandaloneAttraction sur i360 et Brighton sans fiche correspondante. Brighton Pier est un lieu distinct.",
+      "possibleMatches": [],
+      "aliases": [
+        "British Airways i360",
+        "BA i360"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T20:20:45.169Z",
+      "integrationHistory": [
+        {
+          "eventId": "06534d23-8761-404c-880d-06125f9b455c",
+          "appliedAt": "2026-11-14T20:15:23.500Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:apply:06534d23-8761-404c-880d-06125f9b455c",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et huit descriptions"
+        },
+        {
+          "eventId": "image-2ae3e3924b22476ea32370bb6535ef02",
+          "appliedAt": "2026-11-14T20:16:02Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:import-photo:2ae3e3924b22476ea32370bb6535ef02",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la capsule sous CC0"
+        },
+        {
+          "eventId": "image-c03b2647645c4723b2df67af838ad8fe",
+          "appliedAt": "2026-11-14T20:16:25Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:import-photo:c03b2647645c4723b2df67af838ad8fe",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la tour sous CC BY-SA 4.0"
+        },
+        {
+          "eventId": "6718d087-a531-4f77-a3d6-aea84d57028d",
+          "appliedAt": "2026-11-14T20:19:11.200Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:apply:6718d087-a531-4f77-a3d6-aea84d57028d",
+          "auditEvidence": null,
+          "summary": "Descriptions corrigées et détails techniques structurés"
+        },
+        {
+          "eventId": "423d5951-8ca0-4dbc-9176-df019b00aa2f",
+          "appliedAt": "2026-11-14T20:20:45.169Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:apply:423d5951-8ca0-4dbc-9176-df019b00aa2f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-brighton-i360-20261114/audit.json",
+          "summary": "Tarif adulte actuel, audit final sans bloqueur et publication"
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
+      "sources": [
+        {
+          "label": "Brighton i360 — site officiel",
+          "url": "https://www.brightoni360.co.uk/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Brighton i360 — expérience et tarif View 360",
+          "url": "https://www.brightoni360.co.uk/experiences/see-brighton-from-above",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Brighton i360 — calendrier et adresse",
+          "url": "https://www.brightoni360.co.uk/plan-your-visit",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Brighton i360 — durée et accessibilité",
+          "url": "https://www.brightoni360.co.uk/faqs",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Nightcap — hauteur et date d’ouverture",
+          "url": "https://www.nightcapvenues.com/venues/brighton-i360",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — capsule, Andy Li, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Brighton_i360_with_the_moon_2025-07-02.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — tour entière, José Luiz, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Brighton_i360_-_Brighton_-_England_2024.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 423d5951-8ca0-4dbc-9176-df019b00aa2f ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e5307935-8773-462a-bf3d-7c0061615b31/brighton-i360",
+          "publishedAtUtc": "2026-11-14T20:21:37.987Z",
+          "verifiedAtUtc": "2026-11-14T20:21:50Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d147a9b0-befb-42ba-a0f2-860e7b971bb8"
+        },
+        "facebook": {
+          "id": "3fb63aa4f8464b3989a341c02e8de18e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T20:22:34.723Z",
+          "externalPostId": "1285475681307050_122127368421424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127368421424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:3fb63aa4f8464b3989a341c02e8de18e"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-brighton-i360-20261114/audit.json",
+        "score": 79,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-fb1f66688697ac68",
+      "name": "London Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique urbain panoramique",
+      "locality": "Greenwich Peninsula Terminal, Edmund Halley Way, London SE10 0FR",
+      "siteId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:35:05Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie actuelle TfL et statut de service actif le 14 novembre 2026.",
+      "identityConfidence": "Nom actuel, deux gares et billetterie TfL officiels ; recherches Park/Standalone sur London Cable Car, IFS Cloud et Emirates Air Line sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "IFS Cloud Cable Car",
+        "Emirates Air Line"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T20:33:58.516Z",
+      "integrationHistory": [
+        {
+          "eventId": "c78a0b38-2c80-4f11-b376-1aa853f74ac1",
+          "appliedAt": "2026-11-14T20:29:17.115Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:apply:c78a0b38-2c80-4f11-b376-1aa853f74ac1",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-378d5149fc0443e5a10a4b3df20becdd",
+          "appliedAt": "2026-11-14T20:29:56Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:import-photo:378d5149fc0443e5a10a4b3df20becdd",
+          "auditEvidence": null,
+          "summary": "Photo exacte des cabines, ancienne livrée IFS"
+        },
+        {
+          "eventId": "image-2247d70da3b14adab978a9220a1f8d1a",
+          "appliedAt": "2026-11-14T20:30:15Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:import-photo:2247d70da3b14adab978a9220a1f8d1a",
+          "auditEvidence": null,
+          "summary": "Seconde photo exacte de la ligne"
+        },
+        {
+          "eventId": "576e7830-e849-4511-83b2-e39c303f29f3",
+          "appliedAt": "2026-11-14T20:33:58.516Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:apply:576e7830-e849-4511-83b2-e39c303f29f3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-london-cable-car-20261114/audit.json",
+          "summary": "Conditions d’accès, tarifs réconciliés, audit et publication"
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
+      "sources": [
+        {
+          "label": "TfL — billetterie et tarifs",
+          "url": "https://cablecartickets.tfl.gov.uk/en",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "TfL — trajet et accessibilité",
+          "url": "https://cablecartickets.tfl.gov.uk/en/about-us",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "TfL — gare et horaires",
+          "url": "https://tfl.gov.uk/help-with-travel/ways-to-travel/cable-car-location-opening-hours",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "TfL — ouverture et rôle touristique",
+          "url": "https://tfl-newsroom.prgloo.com/news/tfl-press-release-new-sponsorship-underway-for-ifs-cloud-cable-car",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — cabines, David Martin",
+          "url": "https://commons.wikimedia.org/wiki/File:IFS_Cloud_Cable_Car_-_geograph.org.uk_-_7671942.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — cabine et pylônes, Calum Taylor",
+          "url": "https://commons.wikimedia.org/wiki/File:IFS_Cloud_Cable_Car_-_geograph.org.uk_-_8293525.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 576e7830-e849-4511-83b2-e39c303f29f3 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a05c8736-0ce5-4a3d-bcdc-fb4fc4904108/london-cable-car",
+          "publishedAtUtc": "2026-11-14T20:34:47.119Z",
+          "verifiedAtUtc": "2026-11-14T20:35:05Z",
+          "evidence": "PARK_DATA_EDITOR:apply:54c54879-8a99-4f7f-8705-536ed824d963"
+        },
+        "facebook": {
+          "id": "cd200cbf59fb4386a50afee0c880c5b2",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T20:35:43.3380956Z",
+          "externalPostId": "1285475681307050_122127369339424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127369339424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:cd200cbf59fb4386a50afee0c880c5b2"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-london-cable-car-20261114/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }

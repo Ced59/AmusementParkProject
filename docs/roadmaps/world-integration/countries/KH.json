@@ -25,27 +25,48 @@
     {
       "entryId": "KH-candidate-discovery-2c16dbe92a1350",
       "name": "Angkor Balloon",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
       "locality": "Siem Reap",
-      "siteId": null,
+      "siteId": "35d56008-8574-4662-a2e3-994eb36dedae",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T18:38:22.463Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2003 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Operating — Aerophile current in-service FAQ checked 2026-11-14",
+      "identityConfidence": "Ballon captif indépendant confirmé par Aerophile, photo exacte CC0 et recherche officielle de doublons ; distinct de la grande roue Angkor Eye.",
       "possibleMatches": [],
       "aliases": [
         "Apsara Angkor Vat, Cambodia"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-11-14T18:34:22.992Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3de18089-5917-4169-a838-7bca45e505ca",
+          "appliedAt": "2026-11-14T18:32:16.640Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "35d56008-8574-4662-a2e3-994eb36dedae",
+          "evidence": "PARK_DATA_EDITOR:apply:3de18089-5917-4169-a838-7bca45e505ca",
+          "auditEvidence": null,
+          "summary": "Création masquée du ballon avec descriptions éditoriales en huit langues"
+        },
+        {
+          "eventId": "apply-e89c74d4-d29e-4ffd-93d1-388b02902546",
+          "appliedAt": "2026-11-14T18:34:22.992Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "35d56008-8574-4662-a2e3-994eb36dedae",
+          "evidence": "PARK_DATA_EDITOR:apply:e89c74d4-d29e-4ffd-93d1-388b02902546",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kh-angkor-balloon-20261114/audit.json",
+          "summary": "Condition météo intégrée ; photo et audit final validés"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Chercher une photo actuelle sous licence, une grille tarifaire et un calendrier publiés par l’exploitant, puis confirmer les coordonnées exactes. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -56,6 +77,16 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Aerophile — FAQ, liste actuelle des ballons en service et météo",
+          "url": "https://www.aerophile.com/en/frequently-asked-questions/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — photo Gary Todd, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Angkor_Balloon_(9728148765).jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "discovery": {
@@ -64,8 +95,8 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Angkor Balloon",
@@ -79,7 +110,24 @@
             "referenceId": "aerophile-apsara"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "StandaloneAttraction confirmé par le reçu apply-e89c74d4-d29e-4ffd-93d1-388b02902546 ; conserver la référence de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/35d56008-8574-4662-a2e3-994eb36dedae/angkor-balloon",
+          "publishedAtUtc": "2026-11-14T18:35:58.972Z",
+          "verifiedAtUtc": "2026-11-14T18:38:22.463Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6e5a3dc9-e191-4967-b232-10cbb742f1cd"
+        },
+        "facebook": {
+          "id": "71cd8c2c515c4aef8c150164c167a45c",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T18:37:19.530Z",
+          "externalPostId": "1285475681307050_122127356919424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127356919424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:71cd8c2c515c4aef8c150164c167a45c"
+        }
       }
     },
     {

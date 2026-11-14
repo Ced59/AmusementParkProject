@@ -15068,29 +15068,52 @@
     },
     {
       "entryId": "DE-candidate-standalone-43538b2eca18f2",
-      "name": "Luge Wiegand — Hoherodskopf",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Hoherodskopf",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Schotten, Hesse",
+      "siteId": "f95ad842-8a79-4067-a063-0cf1fc625349",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T18:47:23.618Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Operating — Wiegand operator pages and live schedule checked 2026-11-14; weather-dependent seasonal opening",
+      "identityConfidence": "Piste de luge d’été fixe et séparément tarifée, confirmée par l’exploitant ; deux photos exactes sous licence et recherches officielles sans doublon.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Hoherodskopf"
+        "Hoherodskopf",
+        "Luge Wiegand — Hoherodskopf",
+        "Ski- und Rodelarena Hoherodskopf"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T18:43:46.645Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3f9e3ab8-60bd-4d86-8e07-18b0992b1741",
+          "appliedAt": "2026-11-14T18:41:07.135Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f95ad842-8a79-4067-a063-0cf1fc625349",
+          "evidence": "PARK_DATA_EDITOR:apply:3f9e3ab8-60bd-4d86-8e07-18b0992b1741",
+          "auditEvidence": null,
+          "summary": "Création masquée de la luge d’été avec huit descriptions et données techniques"
+        },
+        {
+          "eventId": "apply-ad07e5fa-ef1b-48b5-a601-f1b13275637d",
+          "appliedAt": "2026-11-14T18:43:46.645Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f95ad842-8a79-4067-a063-0cf1fc625349",
+          "evidence": "PARK_DATA_EDITOR:apply:ad07e5fa-ef1b-48b5-a601-f1b13275637d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-sommerrodelbahn-hoherodskopf-20261114/audit.json",
+          "summary": "Six tarifs, accès, deux photos et audit final validés"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier l’état météo et saisonnier en temps réel avant une visite, confirmer le point exact d’entrée et actualiser les tarifs si l’exploitant les change. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -15101,11 +15124,36 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.ski-und-rodelarena-hoherodskopf.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Wiegand — piste, technique, âge",
+          "url": "https://www.ski-und-rodelarena-hoherodskopf.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant Wiegand — tarifs",
+          "url": "https://www.ski-und-rodelarena-hoherodskopf.de/infos/preise/preise-sommer/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant Wiegand — état et horaires actuels",
+          "url": "https://www.ski-und-rodelarena-hoherodskopf.de/infos/oeffnungszeiten/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — remontée, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Hoherodskopf.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — piste, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Hoherodskopf_suedblick_an_der_sommerrodelbahn_ds_06_2066.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Hoherodskopf",
@@ -15116,7 +15164,24 @@
             "referenceId": "location-id-1277"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "StandaloneAttraction confirmé par le reçu apply-ad07e5fa-ef1b-48b5-a601-f1b13275637d. La piste de découverte du domaine DE-candidate-a345b088e91866 décrit la même installation ; conserver cette seconde ligne comme doublon."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f95ad842-8a79-4067-a063-0cf1fc625349/sommerrodelbahn-hoherodskopf",
+          "publishedAtUtc": "2026-11-14T18:45:18.985Z",
+          "verifiedAtUtc": "2026-11-14T18:47:23.618Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d413473f-100f-455b-af82-3cca2848f347"
+        },
+        "facebook": {
+          "id": "e9e8a597307149b5bf6133720ff0842d",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T18:46:05.809Z",
+          "externalPostId": "1285475681307050_122127358065424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127358065424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:e9e8a597307149b5bf6133720ff0842d"
+        }
       }
     },
     {
@@ -29016,32 +29081,38 @@
       "locality": "Schotten",
       "siteId": null,
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "PossibleExisting",
+      "presenceObservedAt": "2026-11-14T18:47:23.618Z",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Le libellé du domaine renvoie à la Sommerrodelbahn Hoherodskopf déjà intégrée sous la ligne DE-candidate-standalone-43538b2eca18f2 ; site de montagne avec autres activités, pas un parc d’attractions structuré identifié.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne comme piste source doublonnée ; poursuivre uniquement sur DE-candidate-standalone-43538b2eca18f2 pour la luge d’été. Réévaluer séparément si une autre attraction fixe autonome du domaine est identifiée avec preuves.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/wiegand-erlebnisberge-ski-und-rodelarena-hoherodskopf/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Wiegand — piste de luge du même domaine",
+          "url": "https://www.ski-und-rodelarena-hoherodskopf.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-14",
         "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Même piste de luge d’été que DE-candidate-standalone-43538b2eca18f2 ; opérateur, site et adresse concordent. Ne pas créer une deuxième fiche."
+      },
+      "duplicateOf": "DE-candidate-standalone-43538b2eca18f2"
     },
     {
       "entryId": "DE-candidate-5670d500800551",

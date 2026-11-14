@@ -1,0 +1,113 @@
+{
+  "work": "Created a standalone page for the London Cable Car. Verified current TfL branding and booking; searched Park and StandaloneAttraction including legacy names; imported two exact Commons photos with old IFS livery clearly labelled; recorded four TfL posted fares and accessible transport; verified eight public pages and image binaries; published Facebook.",
+  "qualification": "Permanent aerial cable car crossing the Thames with its own ticketing and sightseeing offer, not a ride within a theme park. Also used as public transport.",
+  "sources": {
+    "operatorTickets": "https://cablecartickets.tfl.gov.uk/en",
+    "operatorAbout": "https://cablecartickets.tfl.gov.uk/en/about-us",
+    "operatorLocation": "https://tfl.gov.uk/help-with-travel/ways-to-travel/cable-car-location-opening-hours",
+    "operatorHistory": "https://tfl-newsroom.prgloo.com/news/tfl-press-release-new-sponsorship-underway-for-ifs-cloud-cable-car",
+    "commonsA": "https://commons.wikimedia.org/wiki/File:IFS_Cloud_Cable_Car_-_geograph.org.uk_-_7671942.jpg",
+    "commonsB": "https://commons.wikimedia.org/wiki/File:IFS_Cloud_Cable_Car_-_geograph.org.uk_-_8293525.jpg"
+  },
+  "duplicateSearches": {
+    "standaloneLondonCableCar": 0,
+    "standaloneIFSCloud": 0,
+    "standaloneEmiratesAirLine": 0,
+    "parkLondonCableCar": 0,
+    "parkIFSCloud": 0,
+    "parkEmiratesAirLine": 0
+  },
+  "entity": {
+    "id": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+    "name": "London Cable Car",
+    "kind": "StandaloneAttraction",
+    "countryCode": "GB",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "c78a0b38-2c80-4f11-b376-1aa853f74ac1",
+      "appliedAtUtc": "2026-11-14T20:29:17.1158606Z",
+      "summary": "Created hidden standalone, coordinates, eight descriptions and operating status."
+    },
+    {
+      "imageId": "378d5149fc0443e5a10a4b3df20becdd",
+      "createdAtUtc": "2026-11-14T20:29:56Z",
+      "summary": "Imported exact cable car gondola photograph under CC BY-SA 2.0."
+    },
+    {
+      "imageId": "2247d70da3b14adab978a9220a1f8d1a",
+      "createdAtUtc": "2026-11-14T20:30:15Z",
+      "summary": "Imported second exact cable car photograph under CC BY-SA 2.0."
+    },
+    {
+      "operationId": "576e7830-e849-4511-83b2-e39c303f29f3",
+      "appliedAtUtc": "2026-11-14T20:33:58.5160942Z",
+      "summary": "Added official wheelchair and bicycle access condition."
+    }
+  ],
+  "lostResponseReconciliation": {
+    "operation": "Pricing Apply",
+    "observation": "Client response was lost; status was idle and a fresh official ExportStandaloneAttraction at 2026-11-14T20:31:40.7255563Z confirmed all four posted fares. No exact Apply timestamp or operation ID was recovered, so no separate integrationHistory event was invented. A later access-condition Apply supplies the current lastDataIntegrationAt.",
+    "exportedAtUtc": "2026-11-14T20:31:40.7255563Z"
+  },
+  "photographs": [
+    {
+      "imageId": "378d5149fc0443e5a10a4b3df20becdd",
+      "subject": "Actual London Cable Car line with multiple gondolas, IFS-era branding",
+      "author": "David Martin",
+      "license": "CC BY-SA 2.0",
+      "captureDate": "2023-12-17",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "2247d70da3b14adab978a9220a1f8d1a",
+      "subject": "Actual London Cable Car gondola and pylons, IFS-era branding",
+      "author": "Calum Taylor",
+      "license": "CC BY-SA 2.0",
+      "captureDate": "2023-04-01",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "pricingDecision": "TfL ticket site on 2026-11-14 lists standard one way GBP 7 adult and GBP 3.50 child aged 5–15, and round trip GBP 13.50 adult and GBP 6.75 child. Online discounts can vary by date and ticket; notes advise final checkout verification.",
+    "hoursDecision": "TfL notes seasonal changes; the current official hours page did not expose a usable schedule in accessible text, so no weekly schedule was entered.",
+    "accessibility": "TfL states wheelchair access and bicycles permitted.",
+    "brandingDecision": "TfL currently calls the line London Cable Car. Both exact photos predate removal of IFS sponsorship and explicitly say so."
+  },
+  "audit": {
+    "completenessScore": 81,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/a05c8736-0ce5-4a3d-bcdc-fb4fc4904108/london-cable-car",
+    "sitePublishedAtUtc": "2026-11-14T20:34:47.1198215Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:54c54879-8a99-4f7f-8705-536ed824d963",
+    "facebookStatus": "Published",
+    "facebookId": "cd200cbf59fb4386a50afee0c880c5b2",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127369339424431",
+    "facebookPublishedAtUtc": "2026-11-14T20:35:43.3380956Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T20:33:58.516Z",
+  "remainingGaps": [
+    "Verify a date-specific operating schedule before entering structured hours.",
+    "Replace or supplement former IFS-livery photos if a current licensed view is found."
+  ]
+}

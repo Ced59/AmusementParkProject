@@ -1070,7 +1070,7 @@
         {
           "siteId": "bfeb1a05-fbdb-4bf8-8be8-2efa692d283c",
           "name": "Leofoo Village Theme Park",
-          "similarity": 84.0
+          "similarity": 84
         }
       ],
       "aliases": [],
@@ -1970,26 +1970,67 @@
     {
       "entryId": "TW-candidate-standalone-114163f2bb283b",
       "name": "Tamshui Lover’s Tower",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tour panoramique mécanique",
-      "locality": null,
-      "siteId": null,
+      "locality": "Tamsui, New Taipei City",
+      "siteId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T18:13:20.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Operating — operator page checked 2026-11-14",
+      "identityConfidence": "Nom, modèle et autonomie vérifiés auprès de l’exploitant et du constructeur",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T18:08:34.058Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-83167929-8227-41e0-b949-7599b4b6721b",
+          "appliedAt": "2026-11-14T18:03:22.403Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+          "evidence": "PARK_DATA_EDITOR:apply:83167929-8227-41e0-b949-7599b4b6721b",
+          "auditEvidence": null,
+          "summary": "Création masquée et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-58ff4c63-349b-4e6a-b0e4-fe6d9ff783a5",
+          "appliedAt": "2026-11-14T18:05:57.771Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+          "evidence": "PARK_DATA_EDITOR:apply:58ff4c63-349b-4e6a-b0e4-fe6d9ff783a5",
+          "auditEvidence": null,
+          "summary": "Tarifs et horaires usuels sourcés intégrés"
+        },
+        {
+          "eventId": "apply-ddae0f7b-91b1-48e6-8c48-ad3ffe71e74d",
+          "appliedAt": "2026-11-14T18:07:14.802Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+          "evidence": "PARK_DATA_EDITOR:apply:ddae0f7b-91b1-48e6-8c48-ad3ffe71e74d",
+          "auditEvidence": null,
+          "summary": "Descriptions narratives corrigées après contrôle éditorial"
+        },
+        {
+          "eventId": "apply-7267bad2-1b93-4a45-8795-c9fc7209cf8b",
+          "appliedAt": "2026-11-14T18:08:34.058Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+          "evidence": "PARK_DATA_EDITOR:apply:7267bad2-1b93-4a45-8795-c9fc7209cf8b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-tamshui-lovers-tower-20261114/audit.json",
+          "summary": "Audit sans bloqueur, photographie licenciée et données visiteurs intégrées"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier les coordonnées exactes de la tour, la contradiction des horaires du mardi et toute nouvelle période datée ; ne pas republier Facebook.",
       "sources": [
         {
           "label": "Intamin — référence constructeur",
@@ -2000,10 +2041,25 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.fullon-hotels.com.tw/fw/en/fac-detail/68/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Fullon Hotel — billets, horaires et accès vérifiés",
+          "url": "https://www.fullon-hotels.com.tw/fw/en/fac-detail/68/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Intamin — Super Gyro Tower",
+          "url": "https://www.intamin.com/project/tamshui-lovers-tower/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — photo Mosbatho, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Fullon_Hotel_Danshuei_Fishermen%27s_Wharf.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -2014,7 +2070,24 @@
             "sourceVenueName": "Tamshui Lover’s Tower"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration apply-7267bad2-1b93-4a45-8795-c9fc7209cf8b ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/029d88ba-768f-4f1b-9d1c-d1e961ab62c5/tamshui-lovers-tower",
+          "publishedAtUtc": "2026-11-14T18:09:57.382Z",
+          "verifiedAtUtc": "2026-11-14T18:13:20.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:59a51a1d-829a-4d5c-b7a3-379b0e692194"
+        },
+        "facebook": {
+          "id": "01f27b105a674c4caaccf070f7d4f95e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T18:11:34.279Z",
+          "externalPostId": "1285475681307050_122127354069424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127354069424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:01f27b105a674c4caaccf070f7d4f95e"
+        }
       }
     },
     {
