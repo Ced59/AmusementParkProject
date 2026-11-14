@@ -170,38 +170,170 @@
     },
     {
       "entryId": "GE-candidate-41eec184fd6f11",
-      "name": "Batumi Ferris Wheel",
-      "entityKind": "ToQualify",
+      "name": "Batumi Panoramic Wheel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Batumi",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Miracle Park, Batumi Boulevard, Batumi",
+      "siteId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T11:18:54.453Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Exploitation décrite par les offices du tourisme local et national au 2 novembre 2026",
+      "identityConfidence": "Emplacement et structure vérifiés par deux offices du tourisme et trois photos Commons ; aucun doublon dans l’éditeur officiel.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Batumi Ferris Wheel",
+        "Batumi Wheel",
+        "Panoramic Wheel Batumi"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T11:15:03.461Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a913932d-afcd-49d7-b5e4-9ac811f30f8e",
+          "appliedAt": "2026-11-02T11:12:20.933Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+          "evidence": "PARK_DATA_EDITOR:apply:a913932d-afcd-49d7-b5e4-9ac811f30f8e",
+          "auditEvidence": null,
+          "summary": "Création masquée, descriptions dans huit langues et données vérifiées auprès de Visit Batumi"
+        },
+        {
+          "eventId": "image-e2685f3571b140579a7e546d7a5def65",
+          "appliedAt": "2026-11-02T11:13:09.477Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+          "evidence": "PARK_DATA_EDITOR:image:e2685f3571b140579a7e546d7a5def65",
+          "auditEvidence": null,
+          "summary": "Import de la photo exacte 1 avec source, licence et huit légendes"
+        },
+        {
+          "eventId": "image-5c66a407206147f7af6701b248979edc",
+          "appliedAt": "2026-11-02T11:13:35.249Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+          "evidence": "PARK_DATA_EDITOR:image:5c66a407206147f7af6701b248979edc",
+          "auditEvidence": null,
+          "summary": "Import de la photo exacte 2 avec source, licence et huit légendes"
+        },
+        {
+          "eventId": "image-016a24f4aaa34641937d5d59b8a7bed9",
+          "appliedAt": "2026-11-02T11:13:58.751Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+          "evidence": "PARK_DATA_EDITOR:image:016a24f4aaa34641937d5d59b8a7bed9",
+          "auditEvidence": null,
+          "summary": "Import de la photo exacte 3 avec source, licence et huit légendes"
+        },
+        {
+          "eventId": "photo-metadata-e2685f3571b140579a7e546d7a5def65",
+          "appliedAt": "2026-11-02T11:14:35.469Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:e2685f3571b140579a7e546d7a5def65",
+          "auditEvidence": null,
+          "summary": "Publication et métadonnées multilingues de la photo 1"
+        },
+        {
+          "eventId": "photo-metadata-5c66a407206147f7af6701b248979edc",
+          "appliedAt": "2026-11-02T11:14:51.620Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:5c66a407206147f7af6701b248979edc",
+          "auditEvidence": null,
+          "summary": "Publication et métadonnées multilingues de la photo 2"
+        },
+        {
+          "eventId": "photo-metadata-016a24f4aaa34641937d5d59b8a7bed9",
+          "appliedAt": "2026-11-02T11:15:03.461Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:016a24f4aaa34641937d5d59b8a7bed9",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ge-batumi-panoramic-wheel-20261102/audit.json",
+          "summary": "Publication et métadonnées multilingues de la photo 3"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus ; obtenir les horaires et tarifs actuels auprès de l’exploitant puis compléter la fiche. Ne pas répéter la publication Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Visit Batumi — roue panoramique",
+          "url": "https://visitbatumi.com/en/panoramic-wheel",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Visit Batumi — Miracle Park",
+          "url": "https://visitbatumi.com/en/parks/miracle-park",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Georgia Travel — roue panoramique",
+          "url": "https://georgia.travel/family-attractions/the-panoramic-wheel",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Georgia Travel — parc public",
+          "url": "https://georgia.travel/family-attractions/batumis-miracle-park",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikidata — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q32947597",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — roue et tour de l’Alphabet",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_is_Batumi_2023-07-01.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — roue et phare",
+          "url": "https://commons.wikimedia.org/wiki/File:Батуми,_старый_маяк_и_колесо_обозрения.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — détail des nacelles",
+          "url": "https://commons.wikimedia.org/wiki/File:Batumi2025wheel.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Roue panoramique à billet propre dans la place publique de Miracle Park, sans parc de loisirs payant englobant."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a2f4ecb4-3131-49bf-b35b-7ff90201dd72/batumi-panoramic-wheel",
+          "publishedAtUtc": "2026-11-02T11:16:05.103Z",
+          "verifiedAtUtc": "2026-11-02T11:18:54.453Z",
+          "evidence": "PARK_DATA_EDITOR:apply:4b138853-3282-4762-a49c-0ac404dece5d"
+        },
+        "facebook": {
+          "id": "2c89d05882fe4eb88cff17a14974b160",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T11:17:25.192Z",
+          "externalPostId": "1285475681307050_122125718871424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125718871424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:2c89d05882fe4eb88cff17a14974b160"
+        }
       }
     },
     {

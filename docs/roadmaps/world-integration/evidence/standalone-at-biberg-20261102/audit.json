@@ -1,0 +1,34 @@
+{
+  "reviewedAtUtc": "2026-11-02T18:40:00Z",
+  "countryCode": "AT",
+  "entryId": "AT-candidate-discovery-dd51ae961c9499fa",
+  "decision": "Blocked candidate; no site or Facebook publication",
+  "duplicateSearch": {
+    "actions": [
+      "SearchStandaloneAttractions",
+      "SearchParks"
+    ],
+    "queries": [
+      "Biberg",
+      "Saalfelden",
+      "Huggenberg"
+    ],
+    "matches": 0
+  },
+  "facts": {
+    "lengthMeters": 1600,
+    "2026Season": "Ended",
+    "announcedReopening": "Summer 2027",
+    "ownTicketing": "Unverified"
+  },
+  "photoSearch": {
+    "source": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Biberg.jpg",
+    "license": "CC BY 4.0",
+    "takenAt": "2025-10-14",
+    "finding": "Only a road sign, no visible track or car; fails the exact-attraction photo rule"
+  },
+  "siteId": null,
+  "lastDataIntegrationAt": null,
+  "facebook": null,
+  "nextAction": "Trouver au moins une photo libre montrant la piste ou un véhicule exact (la seule photo Commons trouvée ne montre qu’un panneau). Confirmer les tarifs propres et l’autonomie auprès de l’exploitant avant création ; vérifier la réouverture estivale 2027. Aucune fiche site ni annonce Facebook créées."
+}

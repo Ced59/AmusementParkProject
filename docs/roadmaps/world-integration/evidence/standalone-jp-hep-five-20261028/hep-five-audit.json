@@ -1,0 +1,89 @@
+{
+  "name": "HEP FIVE Ferris Wheel",
+  "entryId": "JP-candidate-49204b461ffa56",
+  "standaloneAttractionId": "74c01914-71db-4158-affe-35bf4ceed79a",
+  "qualification": "Grande roue fixe avec accès et billet propres à HEP FIVE, centre commercial d’Umeda ; aucune fiche correspondante dans les recherches officielles Park et Standalone HEP/Umeda.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "weeklyRules": 1,
+    "admissionOffers": 2,
+    "historyEvents": 0
+  },
+  "remainingGap": "Date historique d’ouverture et modalités d’accès en fauteuil non établies par une source primaire ; conserver ces champs inconnus.",
+  "sources": [
+    {
+      "label": "HEP FIVE — grande roue, horaires et tarifs officiels",
+      "url": "https://www.hepfive.jp/ferriswheel"
+    },
+    {
+      "label": "HEP FIVE — accès et adresse officiels",
+      "url": "https://www.hepfive.jp/access"
+    },
+    {
+      "label": "Osaka Convention & Tourism Bureau — HEP FIVE Ferris Wheel",
+      "url": "https://www.osaka-info.jp/en/spot/hep-five-ferris-wheel/"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "4d4eac5235684f879406e7339969d68a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:HEP_FIVE_20260223.jpg",
+      "author": "ノボホショコロトソ",
+      "date": "2026-02-23",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    },
+    {
+      "imageId": "1b2822a1903c439c88367727b01d7c17",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:HEP_FIVE_on_26th_March_2025.jpg",
+      "author": "Tokumeigakarinoaoshima",
+      "date": "2025-03-26",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    },
+    {
+      "imageId": "56c104eee16d4a3692864f20c653d189",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:HEP_at_Night_in_201408.JPG",
+      "author": "Mc681",
+      "date": "2014-08-22",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "06f7587b9b74acbcb29768f724a71fefe43855463780951a724bde79d7916873",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicScore": 91,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T21:37:34.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/74c01914-71db-4158-affe-35bf4ceed79a/hep-five-ferris-wheel",
+      "publishedAtUtc": "2026-10-28T21:35:33.139Z",
+      "applyOperationId": "507ce563-1f88-48e6-9327-e79c2a6380ba"
+    },
+    "facebook": {
+      "id": "1b5228e3e1e049b490bf5cfdbba5b2c9",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T21:36:45.379Z",
+      "externalPostId": "1285475681307050_122125093899424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125093899424431"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "parkEditorAccess": {
+    "title": "Zugang zum Parkdaten-Editor",
+    "description": "Erstellen Sie ein Token für diese Codex-Sitzung. Ihr Browser verschlüsselt es, bevor Sie es kopieren.",
+    "keyLabel": "Öffentlicher Schlüssel von Codex",
+    "keyHelp": "Fügen Sie den vollständigen öffentlichen Schlüssel aus dieser Unterhaltung ein.",
+    "create": "Token erstellen und verschlüsseln",
+    "creating": "Wird erstellt …",
+    "packageLabel": "Verschlüsseltes Paket für Codex",
+    "packageHelp": "Kopieren Sie dieses Paket in die Unterhaltung. Geben Sie weder Ihr Passwort noch das unverschlüsselte Token weiter.",
+    "copy": "Paket kopieren",
+    "copied": "Paket kopiert",
+    "invalidKey": "Der öffentliche Schlüssel ist ungültig oder die Verschlüsselung ist nicht verfügbar. Es wurde kein Token erstellt.",
+    "createFailed": "Das Token konnte nicht erstellt werden. Prüfen Sie die Verbindung und versuchen Sie es erneut.",
+    "revokeFailed": "Die Verschlüsselung ist fehlgeschlagen und das Token konnte nicht widerrufen werden. Widerrufen Sie es in der Tokenverwaltung.",
+    "copyFailed": "Kopieren fehlgeschlagen. Markieren und kopieren Sie das Paket manuell."
+  }
+}

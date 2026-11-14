@@ -3234,7 +3234,7 @@
           "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
         }
       ],
-      "nextAction": "Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3327,7 +3327,8 @@
         "score": 81,
         "publicationBlockers": [],
         "gapCount": 3
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "KR-candidate-standalone-5f91351dd67b29",
@@ -3402,7 +3403,7 @@
           "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
         }
       ],
-      "nextAction": "Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3500,7 +3501,8 @@
         "score": 81,
         "publicationBlockers": [],
         "gapCount": 3
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "KR-candidate-5adf0d4d7f94d6",
@@ -4138,7 +4140,7 @@
           "summary": "Article historique approfondi et répétition éditoriale corrigée ; audit final sans blocage."
         }
       ],
-      "nextAction": "Conserver la fiche et les reçus ; revérifier calendrier hiver et inspection mensuelle, statut administratif ToReview et rechercher une photographie dont la licence précise permet la réutilisation.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la fiche et les reçus ; revérifier calendrier hiver et inspection mensuelle, statut administratif ToReview et rechercher une photographie dont la licence précise permet la réutilisation. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
@@ -4191,7 +4193,8 @@
         "facebookPublishedAtUtc": "2026-10-28T07:26:12.585Z",
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125004031424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-kr-jeongseon-20261028/jeongseon-receipts.json"
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "KR-candidate-standalone-25023c9dd1cd28",

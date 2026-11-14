@@ -1,0 +1,92 @@
+{
+  "work": "Separated the Sentosa Bungy jump from the combined Skypark Sentosa clue. Official Park and StandaloneAttraction searches for Skypark Sentosa, AJ Hackett Sentosa and Sentosa Bungy found no counterpart. Created the fixed jump as a standalone with eight descriptions, official SGD 99 individual fare and two access conditions. Imported an exact CC BY-SA 3.0 photograph showing a person suspended from the Sentosa Bungy tower, verified eight public routes and the image binary HTTP 200, and published Facebook.",
+  "qualification": "Skypark Sentosa operates multiple separately sold fixed activities. This entry covers only Bungy; Giant Swing and Skyslides remain separate candidates because the Bungy image must not represent them.",
+  "sources": {
+    "operatorBungy": "https://www.skyparksentosa.com/activities/bungy",
+    "operatorVenueInfo": "https://www.skyparksentosa.com/park-info",
+    "operatorActivities": "https://www.skyparksentosa.com/activities",
+    "commonsPhotograph": "https://commons.wikimedia.org/wiki/File:Bungy_at_Sentosa.jpg",
+    "openStreetMapVenue": "https://www.openstreetmap.org/search?query=AJ%20Hackett%20Sentosa"
+  },
+  "duplicateSearches": {
+    "standaloneSkyparkSentosa": 0,
+    "standaloneSentosaBungy": 0,
+    "standaloneAJHackettSentosa": 0,
+    "parkSkyparkSentosa": 0,
+    "parkAJHackettSentosa": 0
+  },
+  "entity": {
+    "id": "49ec49ed-ef6b-44a0-b6d9-acd8b8d5f952",
+    "name": "Sentosa Bungy Jump",
+    "kind": "StandaloneAttraction",
+    "countryCode": "SG",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "f519c74d-b378-4fdb-b44e-e8910c97dd18",
+      "appliedAtUtc": "2026-11-14T19:34:01.0560928Z",
+      "summary": "Created hidden standalone with eight descriptions and location."
+    },
+    {
+      "imageId": "229d13f0d5b243d6b02e212e62ffc9a0",
+      "createdAtUtc": "2026-11-14T19:34:47.740Z",
+      "summary": "Imported exact Sentosa Bungy image, CC BY-SA 3.0."
+    },
+    {
+      "operationId": "e07f62f4-2445-4b2a-98f7-66d4b61ee029",
+      "appliedAtUtc": "2026-11-14T19:35:49.3122834Z",
+      "summary": "Added official SGD 99 fare and advance booking and minor-consent conditions."
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "229d13f0d5b243d6b02e212e62ffc9a0",
+      "subject": "Actual AJ Hackett Sentosa Bungy tower and participant in jump",
+      "author": "Mokkie",
+      "license": "CC BY-SA 3.0",
+      "captureDate": "Unknown; uploaded 2018-09-03",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "pricingDecision": "Operator displays SGD 99 per person for Bungy, verified 2026-11-14.",
+    "hoursDecision": "Skypark publishes venue hours 11:30–19:30 daily, but Bungy requires an advance booking at an available slot. No unconditional attraction weekly hours entered.",
+    "accessConditions": 2,
+    "coordinatesDecision": "AJ Hackett Sentosa point and postal code from OpenStreetMap."
+  },
+  "audit": {
+    "completenessScore": 78,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/49ec49ed-ef6b-44a0-b6d9-acd8b8d5f952/sentosa-bungy-jump",
+    "sitePublishedAtUtc": "2026-11-14T19:36:54.1535514Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:ec3e8775-75ae-4df2-a565-ba943d2ddc91",
+    "facebookStatus": "Published",
+    "facebookId": "e25ba7e20bd04279ad3b1dac0927c0ab",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127363969424431",
+    "facebookPublishedAtUtc": "2026-11-14T19:37:41.5486976Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T19:35:49.312Z",
+  "remainingGaps": [
+    "Find an exact licensed photo for the separate Giant Swing; recheck whether Skyslides still operate, as the current activities page does not list them.",
+    "Verify the next available booking slots before a visitor-information refresh.",
+    "Confirm the precise photo capture date; Commons only provides the upload date."
+  ]
+}

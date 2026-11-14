@@ -157,20 +157,22 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Même destination et mêmes deux pistes que Bobovka Lipno ; rapprochement confirmé par RCDB, Visit Lipno et références Wiegand.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "CZ-park-181ad192-be78-4818-88b3-98df111040e4"
+      ],
       "aliases": [
         "Lipno"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Doublon de découverte conservé. Alpine Coaster Wiegand — Lipno et la piste en cuvette appartiennent à la même fiche standalone Bobovka Lipno ; suivre les mises à jour et la date réelle sur CZ-park-181ad192-be78-4818-88b3-98df111040e4.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -190,7 +192,7 @@
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Lipno",
@@ -209,8 +211,9 @@
             "referenceId": "location-id-1208"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "La référence constructeur Alpine Coaster et sa référence luge d’été désignent les deux pistes de Bobovka Lipno ; une seule fiche de destination a été publiée."
+      },
+      "duplicateOf": "CZ-park-181ad192-be78-4818-88b3-98df111040e4"
     },
     {
       "entryId": "CZ-candidate-standalone-a739b2468561e0",
@@ -1544,25 +1547,102 @@
     {
       "entryId": "CZ-park-181ad192-be78-4818-88b3-98df111040e4",
       "name": "Bobovka Lipno",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "181ad192-be78-4818-88b3-98df111040e4",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster et luge d’été en cuvette — deux pistes sur un même site",
+      "locality": "Slupečná, Lipno nad Vltavou",
+      "siteId": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+      "legacySiteIds": [
+        "181ad192-be78-4818-88b3-98df111040e4"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:54:23.182Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — annuaire touristique régional et RCDB vérifiés le 2026-11-14",
+      "identityConfidence": "Une destination autonome de deux pistes confirmée par Visit Lipno et RCDB ; migration contrôlée de la fiche Park masquée et de son item.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Slideland Lipno",
+        "Horská Bobová Dráha",
+        "Bobová dráha Lipno"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T20:53:15.839Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4d5a35e4-6d11-4b73-9d07-590bafd95b72",
+          "appliedAt": "2026-11-14T20:45:33.446Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+          "evidence": "PARK_DATA_EDITOR:apply:4d5a35e4-6d11-4b73-9d07-590bafd95b72",
+          "auditEvidence": null,
+          "summary": "Migration contrôlée du parc masqué et de son item vers la destination autonome avec huit descriptions."
+        },
+        {
+          "eventId": "image-5b148a97eca047c58a059863513ea236",
+          "appliedAt": "2026-11-14T20:46:40Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+          "evidence": "PARK_DATA_EDITOR:image:5b148a97eca047c58a059863513ea236",
+          "auditEvidence": null,
+          "summary": "Première photo exacte de la piste en cuvette, créditée CC BY-SA 4.0 et datée 2014."
+        },
+        {
+          "eventId": "image-60a09d27ba1c4f32945953410e0a5781",
+          "appliedAt": "2026-11-14T20:47:43Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+          "evidence": "PARK_DATA_EDITOR:image:60a09d27ba1c4f32945953410e0a5781",
+          "auditEvidence": null,
+          "summary": "Deuxième photo exacte de la piste historique et de sa remontée, créditée CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-97b9f6c2-3baa-4fc3-9366-6728d06cfa44",
+          "appliedAt": "2026-11-14T20:49:19.866Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+          "evidence": "PARK_DATA_EDITOR:apply:97b9f6c2-3baa-4fc3-9366-6728d06cfa44",
+          "auditEvidence": null,
+          "summary": "Retrait d’une indisponibilité temporaire du site officiel dans les textes publics."
+        },
+        {
+          "eventId": "apply-3669bb27-6cb1-4121-be69-362cc251d2b0",
+          "appliedAt": "2026-11-14T20:52:18.423Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+          "evidence": "PARK_DATA_EDITOR:apply:3669bb27-6cb1-4121-be69-362cc251d2b0",
+          "auditEvidence": null,
+          "summary": "Correction de la formulation technique française après contrôle de complétude."
+        },
+        {
+          "eventId": "apply-4bd9cda1-0893-4aea-8ee9-d26d43580ee7",
+          "appliedAt": "2026-11-14T20:53:15.839Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+          "evidence": "PARK_DATA_EDITOR:apply:4bd9cda1-0893-4aea-8ee9-d26d43580ee7",
+          "auditEvidence": null,
+          "summary": "Correction de la formulation éditoriale anglaise ; contrôle final sans bloqueur."
+        },
+        {
+          "eventId": "closure-apply-4bd9cda1-0893-4aea-8ee9-d26d43580ee7",
+          "appliedAt": "2026-11-14T20:53:15.839Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+          "evidence": "PARK_DATA_EDITOR:apply:4bd9cda1-0893-4aea-8ee9-d26d43580ee7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cz-bobovka-lipno-20261114/audit.json",
+          "summary": "Audit final : fiche publique dans huit langues, deux photos propres HTTP 200, score 75 sans bloqueur et publication Facebook Published. Dernière date de contenu conservée, distincte des publications."
+        }
+      ],
+      "nextAction": "Conserver cette ligne, la fiche publique et la date réelle. Vérifier horaires et tarifs actuels lorsque le site officiel répond à nouveau ; chercher une photo licenciée de la piste sur rails. Ne pas recréer la piste du même site ni dupliquer la publication Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1578,13 +1658,28 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13825.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Visit Lipno — deux pistes et adresse",
+          "url": "https://www.visitlipno.cz/cz/zazitky-lipno/bobovka-lipno-lipno-nad-vltavou-/14-260/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — piste en cuvette photographiée en 2014",
+          "url": "https://commons.wikimedia.org/wiki/File:Slupe%C4%8Dn%C3%A1,_bobov%C3%A1_dr%C3%A1ha.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — piste et remontée photographiées en 2014",
+          "url": "https://commons.wikimedia.org/wiki/File:Slupe%C4%8Dn%C3%A1,_bobov%C3%A1_dr%C3%A1ha_(01).jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "CZ",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Horská Bobová Dráha",
@@ -1597,8 +1692,11 @@
             "sourceOpenedYear": "2016"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Deux pistes de luge entrelacées partagent un même accès et une identité de destination ; migration depuis Park vers une StandaloneAttraction. La photographie Commons de 2014 montre la piste en cuvette, pas la piste sur rails ajoutée ensuite."
+      },
+      "possibleBacklogEntries": [
+        "CZ-candidate-standalone-0f4b191f193138"
+      ]
     },
     {
       "entryId": "CZ-park-813ec867-ebb5-48a3-b07a-e61062364612",

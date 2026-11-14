@@ -1,0 +1,113 @@
+{
+  "work": "Created the separately ticketed Ngong Ping 360 Cable Car as a fixed scenic transport attraction distinct from the adjacent village experiences. Integrated eight editorial descriptions, the official Tung Chung terminal position, three exact inspected licensed photos, nine current round-trip fares, ordinary weekly hours, three sourced access conditions, eight public locale routes and the Facebook post.",
+  "qualification": "The operator markets both its permanent 5.7 km cable car between Tung Chung and Ngong Ping and the adjacent village. The cable car has a distinct ticket, terminals, route and visitor experience; a StandaloneAttraction page is appropriate.",
+  "sources": {
+    "operatorCableCar": "https://www.np360.com.hk/en/cable-cars/",
+    "operatorTickets": "https://www.np360.com.hk/en/tickets-promotions/tickets-tours/cable-car-tickets",
+    "operatorTouristGuide": "https://www.np360.com.hk/en/visitor-information/tourist-guide/",
+    "operatorFaqs": "https://www.np360.com.hk/en/visitor-information/faqs/",
+    "operatorAnniversary": "https://www.np360.com.hk/en/tickets-promotions/promotions/back-to-the-opening-price-special-offer/",
+    "commonsAirport": "https://commons.wikimedia.org/wiki/File:Ngong_Ping_360_Cable_Car_and_HKG_2021-09.jpg",
+    "commonsCrystalPlus": "https://commons.wikimedia.org/wiki/File:NP360_Crystal%2B_Cabin.jpg",
+    "commonsCabin115": "https://commons.wikimedia.org/wiki/File:Ngong_Ping_360_Cable_Car_115_22-06-2020.jpg"
+  },
+  "sourceLimitations": [
+    "Ordinary weekly opening hours are published by the operator; public holidays, festive dates and suspension announcements require a current-day check and are not encoded as ordinary weekdays.",
+    "The official 20th anniversary page corroborates opening in 2006 but does not establish the exact opening day.",
+    "The installed ropeway manufacturer and precise equipment model were not independently established."
+  ],
+  "duplicateSearches": {
+    "standaloneNgongPingHK": 0,
+    "standaloneNgongPingGlobal": 0,
+    "parksNgongPingHK": 0
+  },
+  "entity": {
+    "id": "d99d6e51-cb0d-4088-a7e0-557fcf945838",
+    "name": "Ngong Ping 360 Cable Car",
+    "countryCode": "HK",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "e9b4514a-d7fb-4b13-912b-d0339aee2ab8",
+      "appliedAtUtc": "2026-11-14T21:25:27.6473961Z",
+      "summary": "Hidden standalone core, eight descriptions, Tung Chung position and structured ride details"
+    },
+    {
+      "operationId": "79f54045-4393-4272-b2df-82fb847352ba",
+      "appliedAtUtc": "2026-11-14T21:28:49.7514357Z",
+      "summary": "Three access conditions, nine round-trip fares and ordinary weekly hours"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "0a7d4d53ed03485480ec336ebbc4753a",
+      "subject": "Cable car and Hong Kong International Airport panorama",
+      "author": "Sparktour",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2021-09-04",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ngong_Ping_360_Cable_Car_and_HKG_2021-09.jpg"
+    },
+    {
+      "imageId": "83f7dbb6be174215b671d83a32171c98",
+      "subject": "Crystal+ cabin at a Ngong Ping 360 station",
+      "author": "Ghostingb",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2025-07-09",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:NP360_Crystal%2B_Cabin.jpg"
+    },
+    {
+      "imageId": "4e471477c3de4f28833df942c143c300",
+      "subject": "Ngong Ping 360 cabin 115 at station",
+      "author": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2020-06-22",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ngong_Ping_360_Cable_Car_115_22-06-2020.jpg"
+    }
+  ],
+  "audit": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 3,
+    "roundTripFareCount": 9,
+    "weeklyHourRuleCount": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "prePublicationExportSha256": "172ed269a688de387430bec85c77511ca378621bc8d7222fda67b5ca4f408eeb"
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/d99d6e51-cb0d-4088-a7e0-557fcf945838/ngong-ping-360-cable-car",
+    "sitePublishedAtUtc": "2026-11-14T21:31:07.5428003Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:589057f8-ca11-49e4-a41f-00a2bdb16f4c",
+    "facebookStatus": "Published",
+    "facebookId": "4dbeb4653318460c8a30979cc580cddd",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127373545424431",
+    "facebookPublishedAtUtc": "2026-11-14T21:32:45.3073073Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T21:28:49.7514357Z",
+  "remainingGaps": [
+    "Recheck festive and public-holiday hours and any maintenance suspension before a visit.",
+    "Confirm an exact opening date if a dated primary source is found.",
+    "Identify the installed ropeway manufacturer/model only from a reliable exact-site source."
+  ]
+}

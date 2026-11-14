@@ -1,0 +1,103 @@
+{
+  "name": "Seattle Great Wheel",
+  "entryId": "US-candidate-cc60136c844ee4",
+  "standaloneAttractionId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+  "qualification": "Grande roue à billetterie propre sur le Pier 57 ; les recherches officielles Park et Standalone ne trouvent aucune fiche correspondante.",
+  "decision": "Published",
+  "score": 97,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 4,
+    "weeklyRules": 1,
+    "admissionOffers": 5,
+    "historyEvents": 1
+  },
+  "remainingGap": "Aucune photographie vérifiée du jour précis de l’ouverture du 29 juin 2012 trouvée ; événement historique publié sans image.",
+  "sources": [
+    {
+      "label": "Seattle Great Wheel — site et promenade de Pier 57",
+      "url": "https://seattlegreatwheel.com/"
+    },
+    {
+      "label": "Seattle Great Wheel — FAQ, ouverture, accessibilité et enfants",
+      "url": "https://seattlegreatwheel.com/faq"
+    },
+    {
+      "label": "Seattle Great Wheel — horaires et adresse officiels",
+      "url": "https://seattlegreatwheel.com/hours-directions"
+    },
+    {
+      "label": "Miners Landing — billetterie officielle de la roue",
+      "url": "https://tickets.minerslanding.com/webstore/shop/viewItems.aspx?cg=consumer&c=WH"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "51f9e9b82fea47c3b82908301f62f678",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seattle_Great_Wheel%2C_Seattle%2C_Washington%2C_Estados_Unidos%2C_2017-09-02%2C_DD_13-15_HDR.jpg",
+      "author": "Diego Delso",
+      "date": "2017-09-02",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    },
+    {
+      "imageId": "8c0b514fe6a841e39797abc737e36554",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seattle_Great_Wheel_ferris_wheel_sunset.jpg",
+      "author": "Ron Clausen",
+      "date": "2017-09-30",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    },
+    {
+      "imageId": "e977a7d7c74a4ea3a377e7b1bc2e591b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seattle_-_Pier_57_from_the_water%2C_including_Seattle_Great_Wheel_01.jpg",
+      "author": "Joe Mabel",
+      "date": "2024-04-14",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    },
+    {
+      "imageId": "e975758683a5479eb2fc8529a65c11e2",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_night.jpg",
+      "author": "Benjamin Hollis",
+      "date": "2013-02-14",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "transformation": "downloaded Commons thumbnail, no crop"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "0329aac7506e207597d346425a29909d4957a70f2d9c9b4a2c2f57613d4f8b73",
+    "projectedScore": 97,
+    "projectedBlockers": [],
+    "publicScore": 97,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T21:52:17.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/d3b5033b-9520-4ab4-a5a8-96109a7784cf/seattle-great-wheel",
+      "publishedAtUtc": "2026-10-28T21:50:36.622Z",
+      "applyOperationId": "a7bd872b-30ab-4f56-b559-49797683f5f2"
+    },
+    "facebook": {
+      "id": "1a04d9dbc23b4d3e889d9ff1f68e4664",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T21:51:37.178Z",
+      "externalPostId": "1285475681307050_122125095147424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125095147424431"
+    }
+  }
+}

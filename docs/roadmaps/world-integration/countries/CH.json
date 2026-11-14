@@ -1604,26 +1604,83 @@
     },
     {
       "entryId": "CH-park-50a97efe-c9c4-4030-962e-16e35d47e079",
-      "name": "Kronberg Bobbahn",
-      "entityKind": "Park",
+      "name": "Kronberg-Bobbahn",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "50a97efe-c9c4-4030-962e-16e35d47e079",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Bobbahn alpine à billetterie indépendante",
+      "locality": "Jakobsbad, Appenzell Rhodes-Intérieures",
+      "siteId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+      "legacySiteIds": [
+        "50a97efe-c9c4-4030-962e-16e35d47e079"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T23:01:23.991Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Operating — exploitant Kronberg AG vérifié le 2026-11-14",
+      "identityConfidence": "L’exploitant vend un billet propre à la Bobbahn et précise qu’aucun billet de téléphérique n’est requis. Fiche Park masquée à un seul ParkItem migrée sans suppression.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Kronberg Bobbahn",
+        "Bobbahn im Tal",
+        "Sommerrodelbahn Jakobsbad"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T23:04:02.450Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1df660fd-762e-4da0-8478-d21a50b5aee1",
+          "appliedAt": "2026-11-14T22:57:07.606Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:apply:1df660fd-762e-4da0-8478-d21a50b5aee1",
+          "auditEvidence": null,
+          "summary": "Migration contrôlée du parc masqué et de son seul item ; création de la fiche Bobbahn avec identité, localisation et données de piste."
+        },
+        {
+          "eventId": "image-import-ed8dc7adbb6548bcba0b594aa71d9027",
+          "appliedAt": "2026-11-14T22:57:59.053Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:image:ed8dc7adbb6548bcba0b594aa71d9027",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de la Bobbahn importée et publiée avec crédit Roland Zumbühl, CC BY-SA 3.0 et métadonnées en huit langues."
+        },
+        {
+          "eventId": "apply-628d8e92-0a7c-450b-8060-e0bc76cb1568",
+          "appliedAt": "2026-11-14T23:00:08.797Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:apply:628d8e92-0a7c-450b-8060-e0bc76cb1568",
+          "auditEvidence": null,
+          "summary": "Quatre offres tarifaires officielles, horaires datés jusqu’en juin 2027 et règle d’accompagnement des enfants."
+        },
+        {
+          "eventId": "apply-fc909265-8131-4bba-8ba2-5a84e645ed56",
+          "appliedAt": "2026-11-14T23:04:02.450Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:apply:fc909265-8131-4bba-8ba2-5a84e645ed56",
+          "auditEvidence": null,
+          "summary": "Huit descriptions éditoriales effectivement appliquées et vérifiées par export après correction du format de la demande initiale."
+        },
+        {
+          "eventId": "closure-apply-fc909265-8131-4bba-8ba2-5a84e645ed56",
+          "appliedAt": "2026-11-14T23:04:02.450Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+          "evidence": "PARK_DATA_EDITOR:apply:fc909265-8131-4bba-8ba2-5a84e645ed56",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-kronberg-bobbahn-20261114/audit.json",
+          "summary": "Audit final : huit textes vérifiés, huit pages publiques HTTP 200, photo exacte HTTP 200, quatre tarifs, calendrier officiel, score 95 sans bloqueur et Facebook Published. Dernière intégration du contenu distincte de la visibilité et de l’annonce."
+        }
+      ],
+      "nextAction": "Conserver la ligne et toutes les preuves. Actualiser les horaires et tarifs après le 30 juin 2027 ; vérifier les jours fériés suisses en semaine et le statut météo du jour. Chercher une photographie exacte plus récente et en meilleure résolution, avec droits de réutilisation établis.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1649,13 +1706,28 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.kronberg.ch",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste, tarifs et conditions",
+          "url": "https://kronberg.ch/angebot/bobbahn.html",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — horaires et adresse",
+          "url": "https://kronberg.ch/info.html",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — Bobbahn à Jakobsbad, Roland Zumbühl (Picswiss), CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Picswiss_AI-05-19.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "CH",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Kronberg-Bobbahn",
@@ -1677,7 +1749,7 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "La Bobbahn part de la station inférieure, a sa propre billetterie et se visite sans achat de la télécabine. Les autres activités du Kronberg sont distinctes. La fiche historique Park à un seul item a été retirée par migration contrôlée."
       }
     },
     {
@@ -2127,29 +2199,111 @@
     },
     {
       "entryId": "CH-candidate-standalone-d17fc77a234de1",
-      "name": "Luge Wiegand — Kandersteg",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Oeschinensee",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Bergstation Oeschinensee, Kandersteg",
+      "siteId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T14:41:46.031Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation saisonnière confirmée par l’exploitant ; conditions de météo sèche et état en direct à vérifier.",
+      "identityConfidence": "Piste près de la station supérieure avec billet propre ; aucune fiche Park ou standalone trouvée sous Kandersteg et Oeschinensee. Deux photos exactes Commons datées 2004 vérifiées.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Kandersteg"
+        "Rodelbahn Oeschinensee",
+        "Oeschinensee mountain coaster"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T14:53:16.187Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a73d00d8-82aa-4249-987c-393d3d01f743",
+          "appliedAt": "2026-11-02T14:33:59.526Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:apply:a73d00d8-82aa-4249-987c-393d3d01f743",
+          "auditEvidence": null,
+          "summary": "Création privée avec huit descriptions, localisation OSM et identité de la luge autonome"
+        },
+        {
+          "eventId": "image-c7d0cfcd01c64feba9970f7d2d678cad",
+          "appliedAt": "2026-11-02T14:34:53.825Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:image:c7d0cfcd01c64feba9970f7d2d678cad",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1/2 de la luge importée avec source Commons, auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-94126e7a1c524b5280f6b0144d93b1e0",
+          "appliedAt": "2026-11-02T14:35:08.927Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:image:94126e7a1c524b5280f6b0144d93b1e0",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2/2 de la luge importée avec source Commons, auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "apply-b1a2b1b0-a09b-4744-a3de-62dbabff7757",
+          "appliedAt": "2026-11-02T14:36:58.999Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:apply:b1a2b1b0-a09b-4744-a3de-62dbabff7757",
+          "auditEvidence": null,
+          "summary": "Conditions d’âge, horaires d’automne sourcés et deux tarifs selon l’heure de la descente"
+        },
+        {
+          "eventId": "metadata-rewrite-94126e7a1c524b5280f6b0144d93b1e0",
+          "appliedAt": "2026-11-02T14:38:36.041Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:image:94126e7a1c524b5280f6b0144d93b1e0@2026-11-02T14:38:36.041Z",
+          "auditEvidence": null,
+          "summary": "Individualisation des légendes et de la description de la seconde photo après contrôle de répétition"
+        },
+        {
+          "eventId": "metadata-final-94126e7a1c524b5280f6b0144d93b1e0",
+          "appliedAt": "2026-11-02T14:39:07.622Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:image:94126e7a1c524b5280f6b0144d93b1e0@2026-11-02T14:39:07.622Z",
+          "auditEvidence": null,
+          "summary": "Individualisation des légendes et de la description de la seconde photo après contrôle de répétition"
+        },
+        {
+          "eventId": "apply-f1530272-5439-4328-848e-31373f34b522",
+          "appliedAt": "2026-11-02T14:40:16.526Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:apply:f1530272-5439-4328-848e-31373f34b522",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-20261102/audit.json",
+          "summary": "Dénivelé officiel intégré ; export frais, huit langues, tarifs, horaires et deux photos audités sans bloqueur"
+        },
+        {
+          "eventId": "apply-df8dbc31-6b38-4c68-a0f2-f4e48d425795",
+          "appliedAt": "2026-11-02T14:53:16.187Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+          "evidence": "PARK_DATA_EDITOR:apply:df8dbc31-6b38-4c68-a0f2-f4e48d425795",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-pricing-20261102/audit.json",
+          "summary": "Suppression du lien d’achat trompeur : billets vendus uniquement sur place ; tarifs conservés et page publique contrôlée"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Rechercher des photographies récentes et de meilleure résolution de la piste ; réexaminer l’horaire après le 8 novembre 2026 et les tarifs avant la prochaine saison. Ne pas republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2160,22 +2314,76 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.kandersteg.ch",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Oeschinensee — piste, tarifs, règles et horaires",
+          "url": "https://www.oeschinensee.ch/rodelbahn/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant Oeschinensee — état en direct",
+          "url": "https://www.oeschinensee.ch/live/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap — tracé de la luge, way 222872936",
+          "url": "https://www.openstreetmap.org/way/222872936",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo de face, Roland Zumbühl, 2004, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Picswiss_BE-90-23_Sommer-Rodelbahn_Oeschinensee.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo de dos, Roland Zumbühl, 2004, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Picswiss_BE-90-22_Sommer-Rodelbahn_Oeschinensee.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique — Sommerrodelbahn Oeschinensee",
+          "url": "https://amusement-parks.fun/fr/attraction/56f47184-c077-4d2a-b202-cdb09ee59dda/sommerrodelbahn-oeschinensee",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "Kandersteg",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=216#location-id-1394",
+            "name": "Sommerrodelbahn Oeschinensee",
+            "source": "Exploitant Oeschinensee — piste de luge d’été",
+            "url": "https://www.oeschinensee.ch/rodelbahn/",
             "family": "Luge d’été",
-            "sourceVenueName": "Kandersteg",
-            "referenceId": "location-id-1394"
+            "sourceVenueName": "Oeschinensee",
+            "sourceLifecycleSignal": "Operating, saisonnière",
+            "sourceLocality": "Kandersteg"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Attraction fixe avec billeterie propre près de la station de télécabine, hors parc d’attractions structuré. La piste constructeur Kandersteg correspond à l’Oeschinensee ; la nouvelle fiche autonome est confirmée par les reçus de l’éditeur officiel."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/56f47184-c077-4d2a-b202-cdb09ee59dda/sommerrodelbahn-oeschinensee",
+          "publishedAtUtc": "2026-11-02T14:41:37.4998045Z",
+          "verifiedAtUtc": "2026-11-02T14:41:46.0313979Z",
+          "evidence": "PARK_DATA_EDITOR:apply:b9f5f1ad-d272-4bc1-afc7-5f65be0c2000"
+        },
+        "facebook": {
+          "id": "5979e8b44cf141fa9326c5a1d300632b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T14:43:17.4271193Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125744269424431",
+          "externalPostId": "1285475681307050_122125744269424431",
+          "url": "https://amusement-parks.fun/fr/attraction/56f47184-c077-4d2a-b202-cdb09ee59dda/sommerrodelbahn-oeschinensee"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-oeschinensee-pricing-20261102/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -2286,29 +2494,93 @@
     },
     {
       "entryId": "CH-candidate-standalone-e173d02f42dcd1",
-      "name": "Luge Wiegand — Pilatus",
-      "entityKind": "ToQualify",
+      "name": "Fräkigaudi",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Fräkmüntegg, Hergiswil / accès depuis Kriens",
+      "siteId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T15:13:55Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Saison 2026 terminée ; reprise annoncée du 26 mars au 17 octobre 2027, uniquement par temps sec.",
+      "identityConfidence": "L’exploitant Wastra nomme Fräkigaudi sa piste de 1 350 m avec billets propres ; Pilatus-Bahnen confirme l’opérateur tiers. Aucun Park ni Standalone trouvé sous Fräkigaudi, Pilatus ou Fräkmüntegg. Photo Commons du tracé de 2018 vérifiée.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
+        "Rodelbahn Fräkigaudi",
+        "Sommerrodelbahn Fräkmüntegg",
+        "Pilatus summer toboggan run",
         "Pilatus"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T15:14:59.585Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-07177ebf-0b8a-4923-8a4f-2c77102c807a",
+          "appliedAt": "2026-11-02T15:05:13.788Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:apply:07177ebf-0b8a-4923-8a4f-2c77102c807a",
+          "auditEvidence": null,
+          "summary": "Création privée de la piste avec huit descriptions, identité et géolocalisation OSM"
+        },
+        {
+          "eventId": "image-b2a17b45e509434786148c567be9fc8e",
+          "appliedAt": "2026-11-02T15:06:28.375Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:image:b2a17b45e509434786148c567be9fc8e",
+          "auditEvidence": null,
+          "summary": "Photo exacte du tracé importée depuis Commons avec crédit, licence et textes dans huit langues"
+        },
+        {
+          "eventId": "apply-435c1b32-56a6-4fb0-92b1-772cad688299",
+          "appliedAt": "2026-11-02T15:07:47.029Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:apply:435c1b32-56a6-4fb0-92b1-772cad688299",
+          "auditEvidence": null,
+          "summary": "Conditions d’âge, trois tarifs par descente et saison complète 2027 ajoutés depuis l’exploitant"
+        },
+        {
+          "eventId": "metadata-publish-b2a17b45e509434786148c567be9fc8e",
+          "appliedAt": "2026-11-02T15:08:12.969Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:image:b2a17b45e509434786148c567be9fc8e@2026-11-02T15:08:12.969Z",
+          "auditEvidence": null,
+          "summary": "Publication de la photo après contrôle des métadonnées et de la licence"
+        },
+        {
+          "eventId": "apply-9f56518a-bf74-4ff4-b880-7e4f71ebcd2d",
+          "appliedAt": "2026-11-02T15:10:11.700Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:apply:9f56518a-bf74-4ff4-b880-7e4f71ebcd2d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-fraekigaudi-20261102/audit.json",
+          "summary": "Sources des conditions relues dans huit langues ; export final et complétude sans bloqueur"
+        },
+        {
+          "eventId": "metadata-final-b2a17b45e509434786148c567be9fc8e",
+          "appliedAt": "2026-11-02T15:14:59.585Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+          "evidence": "PARK_DATA_EDITOR:image:b2a17b45e509434786148c567be9fc8e@2026-11-02T15:14:59.585Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-fraekigaudi-20261102/audit.json",
+          "summary": "Description éditoriale de la photo affinée ; crédit et licence conservés, fiche publique et complétude vérifiées"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Avant la saison 2027, revérifier les tarifs et l’état d’ouverture ; rechercher une photo plus récente où le tracé occupe davantage l’image. Ne pas republier la même annonce Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2319,22 +2591,91 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.pilatus.ch",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wastra GmbH — saison et absence de réservation en ligne",
+          "url": "https://www.rodelbahn.ch/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wastra GmbH — identité et parcours",
+          "url": "https://www.rodelbahn.ch/uber-uns/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wastra GmbH — tarifs",
+          "url": "https://www.rodelbahn.ch/preise/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wastra GmbH — horaires de la saison 2027",
+          "url": "https://www.rodelbahn.ch/kontakt/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wastra GmbH — règles de sécurité",
+          "url": "https://www.rodelbahn.ch/sicherheit/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Pilatus-Bahnen — piste, accès et opérateur",
+          "url": "https://pilatus.ch/en/activities/toboggan",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap — tronçon de piste, way 379347672",
+          "url": "https://www.openstreetmap.org/way/379347672",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — Pilatus Slide, Smry, 2018, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Pilatus_Slide.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique — Fräkigaudi",
+          "url": "https://amusement-parks.fun/fr/attraction/b43f4a36-4048-49cd-ab31-80cf7a7c7149/fraekigaudi",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "Pilatus",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=216#location-id-1391",
+            "name": "Fräkigaudi",
+            "source": "Wastra GmbH — piste de luge d’été",
+            "url": "https://www.rodelbahn.ch/uber-uns/",
             "family": "Luge d’été",
-            "sourceVenueName": "Pilatus",
-            "referenceId": "location-id-1391"
+            "sourceVenueName": "Fräkmüntegg / Pilatus",
+            "sourceLifecycleSignal": "Saison 2026 terminée, saison 2027 annoncée",
+            "sourceLocality": "Fräkmüntegg"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste avec billetterie propre exploitée par Wastra GmbH, opérateur distinct de Pilatus-Bahnen ; le secteur montagnard accueille plusieurs activités mais ne forme pas un parc d’attractions structuré. Les recherches officielles ne trouvent aucun doublon."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b43f4a36-4048-49cd-ab31-80cf7a7c7149/fraekigaudi",
+          "publishedAtUtc": "2026-11-02T15:11:02.5137579Z",
+          "verifiedAtUtc": "2026-11-02T15:13:55Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d1ea024f-5444-4997-a40f-525f602ed97f"
+        },
+        "facebook": {
+          "id": "4719cf2f1eac4c4e881db7ef297197db",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T15:13:00.5259494Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125746999424431",
+          "externalPostId": "1285475681307050_122125746999424431",
+          "url": "https://amusement-parks.fun/fr/attraction/b43f4a36-4048-49cd-ab31-80cf7a7c7149/fraekigaudi"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ch-fraekigaudi-20261102/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 4
       }
     },
     {
@@ -2999,26 +3340,29 @@
     },
     {
       "entryId": "CH-park-7436dd4b-a22d-4714-8611-12ca5c5b121e",
-      "name": "Rodelbahn Pradaschier",
+      "name": "Erlebnisberg Pradaschier",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
+      "proposedEntityKind": "Park",
+      "category": "Domaine de loisirs de montagne",
+      "locality": "Girabodawäg 16, 7075 Churwalden",
       "siteId": "7436dd4b-a22d-4714-8611-12ca5c5b121e",
       "legacySiteIds": [],
       "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-11-02",
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitation saisonnière annoncée pour l’hiver 2026/27 et l’été 2027 ; le domaine est fermé pendant l’intersaison du 26 octobre au 11 décembre 2026.",
+      "identityConfidence": "Fiche Park masquée du site identifiée sous son ancien nom Rodelbahn Pradaschier ; elle contient un élément Rodelbahn masqué (8f8bee24-d203-43d3-8c6c-da4eae1e2ac2). L’exploitant présente désormais Erlebnisberg Pradaschier comme un domaine de loisirs avec luge, zipline, parc accrobranche et autres activités sous une billetterie commune.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Rodelbahn Pradaschier",
+        "Pradaschier Erlebnisberg"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la fiche Park masquée 7436dd4b-a22d-4714-8611-12ca5c5b121e comme Erlebnisberg Pradaschier ; conserver l’élément Rodelbahn 8f8bee24-d203-43d3-8c6c-da4eae1e2ac2, vérifier ses données et lui ajouter une photo exacte. Auditer ensuite zipline, seilpark, JumpZone et autres parkItems. Ne pas créer de standalone pour cette luge ni publier Facebook avant l’intégration éditoriale du parc.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3044,35 +3388,45 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.pradaschier.ch",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — domaine, activités et billetterie",
+          "url": "https://pradaschier.ch/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — piste et règles de luge",
+          "url": "https://pradaschier.ch/activities/rodelbahn-sommer/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — calendrier hiver 2026/27 et été 2027",
+          "url": "https://pradaschier.ch/informieren/oeffnungszeiten/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — gare de luge Churwalden, Cayambe, 2015, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Churwalden_Rodelbahn.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "countryCodeAtInventory": "CH",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "Rodelbahn",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13287.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Rodelbahn Pradaschier",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Churwalden , Grisons",
-            "sourceOpenedYear": "1999"
-          },
-          {
-            "name": "Churwalden",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=216#location-id-1098",
+            "name": "Rodelbahn Pradaschier",
+            "source": "Exploitant — piste de luge",
+            "url": "https://pradaschier.ch/activities/rodelbahn-sommer/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Churwalden",
-            "referenceId": "location-id-1098",
-            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+            "sourceVenueName": "Erlebnisberg Pradaschier",
+            "sourceLifecycleSignal": "Exploitation saisonnière, hiver 2026/27 et été 2027 annoncés",
+            "sourceLocality": "Churwalden"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "La fiche du site est déjà un Park masqué doté d’un parkItem Rodelbahn. L’exploitant organise sous la marque Erlebnisberg Pradaschier la luge, une zipline, un parc accrobranche et d’autres activités avec billetterie commune. La piste relève du parkItem du domaine, pas d’une création standalone."
       }
     },
     {

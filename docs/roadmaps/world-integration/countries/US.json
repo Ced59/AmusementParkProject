@@ -7583,39 +7583,334 @@
       }
     },
     {
-      "entryId": "US-candidate-3b680ad27a9128",
-      "name": "Branson Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entryId": "US-candidate-discovery-5ce81bb6696419",
+      "name": "SkyView Atlanta",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "The Track Family Fun Parks, Hwy 76, Branson, Missouri",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "168 Luckie Street NW, Atlanta, Georgia, États-Unis",
+      "siteId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T13:09:25.995Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Billetterie et horaires hebdomadaires officiels actifs au 1er novembre 2026.",
+      "identityConfidence": "Découverte hors inventaire initial, roue individuelle à billet propre ; recherches Park et Standalone officielles sans correspondance.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Skyview Atlanta",
+        "Atlanta SkyView Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T13:05:33.188Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-fe210565-8ace-4b0d-b5b3-88210af11754",
+          "appliedAt": "2026-11-01T13:02:23.462Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:apply:fe210565-8ace-4b0d-b5b3-88210af11754",
+          "auditEvidence": null,
+          "summary": "Nouvelle fiche privée créée après découverte hors inventaire, descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-afcb3278-bd7c-4e97-b007-08549f5416d6",
+          "appliedAt": "2026-11-01T13:04:17.656Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:apply:afcb3278-bd7c-4e97-b007-08549f5416d6",
+          "auditEvidence": null,
+          "summary": "Cinq catégories de tarifs individuels en USD intégrées avec conditions et frais"
+        },
+        {
+          "eventId": "image-7ed4a60ce7564f08a075e6a5ea4485a9",
+          "appliedAt": "2026-11-01T13:04:41.682Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:image:7ed4a60ce7564f08a075e6a5ea4485a9",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue SkyView Atlanta importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-945e85d496ec4a468325e918a6c3b735",
+          "appliedAt": "2026-11-01T13:05:05.026Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:image:945e85d496ec4a468325e918a6c3b735",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue SkyView Atlanta importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-c6b8cf04-c0ff-48da-900a-a6a0c4f058ba",
+          "appliedAt": "2026-11-01T13:05:33.188Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:apply:c6b8cf04-c0ff-48da-900a-a6a0c4f058ba",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires officiels intégrés avec fuseau America/New_York"
+        },
+        {
+          "eventId": "closure-c6b8cf04-c0ff-48da-900a-a6a0c4f058ba",
+          "appliedAt": "2026-11-01T13:05:33.188Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+          "evidence": "PARK_DATA_EDITOR:apply:c6b8cf04-c0ff-48da-900a-a6a0c4f058ba",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier régulièrement les tarifs hors taxes et frais, les jours fériés et les horaires officiels. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "SkyView Atlanta — billetterie, tarifs, adresse et horaires officiels",
+          "url": "https://www.skyviewatlanta.com/tickets/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "SkyView Atlanta — expérience, durée, nacelles et fonctionnement annuel",
+          "url": "https://www.skyviewatlanta.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emprise de la roue SkyView Atlanta",
+          "url": "https://www.openstreetmap.org/way/1292668916",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyView Atlanta, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Wheel_(259777543).jpeg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyView Atlanta, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Atlanta_Sky_Ferry.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "SkyView Atlanta",
+            "source": "SkyView Atlanta — billetterie officielle",
+            "url": "https://www.skyviewatlanta.com/tickets/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Centennial Olympic Park, voisinage",
+            "sourceLifecycleSignal": "Billet propre et horaires officiels au 1er novembre 2026",
+            "sourceLocality": "Atlanta, Georgia",
+            "matchingMethod": "Billetterie individuelle, source officielle et recherches Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "La roue est une attraction autonome vendue à l’unité près du parc public Centennial Olympic Park, sans rattachement à un parc d’attractions structuré."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3e968ae6-1ab4-436d-a16c-9ed19cef3b47/skyview-atlanta",
+          "publishedAtUtc": "2026-11-01T13:07:19.238Z",
+          "verifiedAtUtc": "2026-11-01T13:09:25.995Z",
+          "evidence": "PARK_DATA_EDITOR:apply:079cbd6f-a946-4425-b3fe-908de9c8a08d"
+        },
+        "facebook": {
+          "id": "001657245ec0455bab16889677f7d077",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T13:08:04.081Z",
+          "externalPostId": "1285475681307050_122125608873424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125608873424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:001657245ec0455bab16889677f7d077"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "7ed4a60ce7564f08a075e6a5ea4485a9",
+          "945e85d496ec4a468325e918a6c3b735"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T13:06:46.235Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:c742e24a-6cc8-432b-a142-a703428eb654",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
+      "entryId": "US-candidate-3b680ad27a9128",
+      "name": "The Branson Ferris Wheel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "3335 W 76 Country Blvd, Branson, Missouri, États-Unis",
+      "siteId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T12:10:16.780Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie officielle active au 1er novembre 2026, fonctionnement selon calendrier et météo.",
+      "identityConfidence": "Roue distincte des autres activités de Track 4, billet propre ; recherches Park et Standalone officielles sans homonyme.",
+      "possibleMatches": [],
+      "aliases": [
+        "Branson Ferris Wheel",
+        "The Track Ferris Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T12:06:27.113Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-49849c3b-b712-442b-a2ed-68bc2196812f",
+          "appliedAt": "2026-11-01T12:02:47.394Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:apply:49849c3b-b712-442b-a2ed-68bc2196812f",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée et descriptions en huit langues intégrées"
+        },
+        {
+          "eventId": "image-91577beba83c410c92b3389ee90be2e7",
+          "appliedAt": "2026-11-01T12:03:40.894Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:image:91577beba83c410c92b3389ee90be2e7",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la Branson Ferris Wheel importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-fe560586e48644259b13214ddd88814c",
+          "appliedAt": "2026-11-01T12:04:04.864Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:image:fe560586e48644259b13214ddd88814c",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la Branson Ferris Wheel importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-4541b21d-f5d0-4504-bff7-9698ba43664e",
+          "appliedAt": "2026-11-01T12:04:52.923Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:apply:4541b21d-f5d0-4504-bff7-9698ba43664e",
+          "auditEvidence": null,
+          "summary": "Tarifs adultes et enfants hors taxes intégrés en USD"
+        },
+        {
+          "eventId": "apply-e7695d10-6427-40f5-8615-9a4157a97a5e",
+          "appliedAt": "2026-11-01T12:06:27.113Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:apply:e7695d10-6427-40f5-8615-9a4157a97a5e",
+          "auditEvidence": null,
+          "summary": "Légendes des deux photos différenciées des textes alternatifs après audit éditorial"
+        },
+        {
+          "eventId": "closure-e7695d10-6427-40f5-8615-9a4157a97a5e",
+          "appliedAt": "2026-11-01T12:06:27.113Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+          "evidence": "PARK_DATA_EDITOR:apply:e7695d10-6427-40f5-8615-9a4157a97a5e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-branson-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 81/100 publiable sans blocage et deux photos exactes ; horaires non chiffrés à compléter ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Relever les horaires quotidiens sur le calendrier de l’exploitant ; vérifier les prix et la météo avant chaque mise à jour. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "The Track — Branson Ferris Wheel, tarifs et consignes officiels",
+          "url": "https://bransontracks.com/branson-ferris-wheel-homepage/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Book.Branson — roue à Track 4, adresse propre",
+          "url": "https://book.branson.com/attractions/the-branson-ferris-wheel",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — périmètre de la roue",
+          "url": "https://www.openstreetmap.org/way/523737192",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Branson Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel,_Branson,_MO_IMG_1680_(2).JPG",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Branson Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Framing-Ferris_Wheel.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "The Branson Ferris Wheel",
+            "source": "The Track — page de la roue",
+            "url": "https://bransontracks.com/branson-ferris-wheel-homepage/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Track 4",
+            "sourceLifecycleSignal": "Billetterie propre au 1er novembre 2026",
+            "sourceLocality": "Branson, Missouri",
+            "matchingMethod": "Billet propre et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "Roue avec billet individuel adjacent à Track 4 ; les autres manèges sont des activités distinctes."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b7d1a5db-854c-453a-add8-0d95751eedea/the-branson-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T12:07:43.256Z",
+          "verifiedAtUtc": "2026-11-01T12:10:16.780Z",
+          "evidence": "PARK_DATA_EDITOR:apply:4ac22e24-dad7-4a45-a081-5645aaf30615"
+        },
+        "facebook": {
+          "id": "11988982d40c4fb08f338d248c0dadfb",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T12:08:30.080Z",
+          "externalPostId": "1285475681307050_122125601877424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125601877424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:11988982d40c4fb08f338d248c0dadfb"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "91577beba83c410c92b3389ee90be2e7",
+          "fe560586e48644259b13214ddd88814c"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T12:07:15.683Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:e89888d2-c2ff-4ca8-9293-a8e6343f2d59",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-branson-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-branson-ferris-wheel-20261101/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -10021,38 +10316,182 @@
     },
     {
       "entryId": "US-candidate-01cb30201aa0db",
-      "name": "Capital Wheel",
-      "entityKind": "ToQualify",
+      "name": "The Capital Wheel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "National Harbor, Maryland",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "141 American Way, National Harbor, Maryland",
+      "siteId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T22:08:28.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating — billetterie et FAQ officielles actives en octobre 2026 ; horaires du jour affichés sur le site de l’exploitant.",
+      "identityConfidence": "Grande roue à billet propre sur le front de mer de National Harbor ; recherches officielles Park et Standalone sur Capital Wheel et National Harbor sans fiche correspondante.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Capital Wheel",
+        "National Harbor Capital Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T22:04:12.811Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-82bb3c86-acbb-4b3c-adc5-5522f59fff31",
+          "appliedAt": "2026-10-28T22:01:53.853Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:apply:82bb3c86-acbb-4b3c-adc5-5522f59fff31",
+          "auditEvidence": null,
+          "summary": "Création privée de The Capital Wheel et descriptions éditoriales en huit langues"
+        },
+        {
+          "eventId": "apply-fd6d37c0-0e85-47f5-a898-460bb8050b14",
+          "appliedAt": "2026-10-28T22:02:28.322Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:apply:fd6d37c0-0e85-47f5-a898-460bb8050b14",
+          "auditEvidence": null,
+          "summary": "Six tarifs vérifiés dans la FAQ officielle, taxes et conditions précisées"
+        },
+        {
+          "eventId": "apply-53d46998-c72e-4740-b49e-d931e5cee92a",
+          "appliedAt": "2026-10-28T22:03:02.266Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:apply:53d46998-c72e-4740-b49e-d931e5cee92a",
+          "auditEvidence": null,
+          "summary": "Ouverture de mai 2014 documentée dans huit langues"
+        },
+        {
+          "eventId": "image-a70362d25e014aba9c0e395bdc197227",
+          "appliedAt": "2026-10-28T22:03:27.867Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:image:a70362d25e014aba9c0e395bdc197227",
+          "auditEvidence": null,
+          "summary": "Photographie propre de The Capital Wheel #3 importée avec auteur, licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-5efaf5fdcf51469cb25278c2e80ecc85",
+          "appliedAt": "2026-10-28T22:03:57.754Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:image:5efaf5fdcf51469cb25278c2e80ecc85",
+          "auditEvidence": null,
+          "summary": "Photographie propre de The Capital Wheel #4 importée avec auteur, licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-dcb789168b1a44a5a7d1f7e304ae61dc",
+          "appliedAt": "2026-10-28T22:04:12.811Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+          "evidence": "PARK_DATA_EDITOR:image:dcb789168b1a44a5a7d1f7e304ae61dc",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-capital-wheel-20261028/capital-wheel-audit.json",
+          "summary": "Photographie propre de The Capital Wheel #5 importée avec auteur, licence et légendes en huit langues"
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus. Renseigner les horaires seulement après vérification du calendrier hebdomadaire de l’exploitant ; recontrôler les tarifs et rechercher une photographie spécifique du jour d’ouverture. Ne pas republier le post Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "The Capital Wheel — site officiel et horaires du jour",
+          "url": "https://thecapitalwheel.com/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "The Capital Wheel — FAQ, tarifs et accessibilité",
+          "url": "https://thecapitalwheel.com/faq/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "The Capital Wheel — billetterie",
+          "url": "https://thecapitalwheel.com/tickets/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "National Harbor — présentation et adresse",
+          "url": "https://www.nationalharbor.com/directory/the-capital-wheel/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "National Harbor — ouverture en 2014",
+          "url": "https://www.nationalharbor.com/capital-wheel-national-harbor-names-theme-park-veteran-derek-lovato-vice-president-general-manager/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "NBC4 Washington — ouverture prévue le 23 mai 2014",
+          "url": "https://www.nbcwashington.com/news/local/capital-wheel-to-open-may-23-at-national-harbor/1968576/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie The Capital Wheel #3",
+          "url": "https://commons.wikimedia.org/wiki/File:Capital_Wheel_by_Day_%2815003014884%29.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie The Capital Wheel #4",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Capital_wheel_and_a_setting_sun.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie The Capital Wheel #5",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Capital_Wheel_at_National_Harbor.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "The Capital Wheel",
+            "source": "The Capital Wheel — site officiel",
+            "url": "https://thecapitalwheel.com/",
+            "family": "Grande roue",
+            "sourceVenueName": "National Harbor waterfront",
+            "sourceLifecycleSignal": "Billetterie et horaires du jour actifs en octobre 2026.",
+            "matchingMethod": "Recherches Park et Standalone sans correspondance ; billet propre.",
+            "sourceLocality": "National Harbor",
+            "referenceId": "capital-wheel-official"
+          }
+        ],
+        "rationale": "Grande roue à billet propre sur une promenade avec commerces et autres activités, sans parc d’attractions parent catalogué. Trois photos propres vérifiées, audit public 89/100 sans bloqueur ; calendrier hebdomadaire à vérifier."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b0335449-d1b1-43b0-a39f-fed9b33742ff/the-capital-wheel",
+          "publishedAtUtc": "2026-10-28T22:06:50.039Z",
+          "verifiedAtUtc": "2026-10-28T22:08:28.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:b112c191-c248-41f3-865f-d81ce9eb4f7e"
+        },
+        "facebook": {
+          "id": "f72cc14144e942b8b4cc1b4b69701d64",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T22:07:54.143Z",
+          "externalPostId": "1285475681307050_122125096389424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125096389424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:f72cc14144e942b8b4cc1b4b69701d64"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-capital-wheel-20261028/capital-wheel-audit.json",
+        "score": 89,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
@@ -11328,37 +11767,163 @@
     {
       "entryId": "US-candidate-9bbeeac20c9b5e",
       "name": "Centennial Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Navy Pier , Chicago, Illinois",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Navy Pier, 600 E Grand Ave, Chicago, Illinois, États-Unis",
+      "siteId": "9a31ef73-1334-46aa-9686-52e143739ae1",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T12:42:19.792Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Navy Pier confirme la roue ouverte tous les jours, sous réserve météo, au 1er novembre 2026.",
+      "identityConfidence": "Roue avec billet individuel dans Pier Park ; Park et Standalone officiels sans fiche correspondante. Distincte du site polyvalent Navy Pier et des autres manèges.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Navy Pier Centennial Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T12:38:51.786Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-5fcdf2aa-51c4-420d-bc48-712f608cd01e",
+          "appliedAt": "2026-11-01T12:36:04.082Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:apply:5fcdf2aa-51c4-420d-bc48-712f608cd01e",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée et descriptions en huit langues intégrées"
+        },
+        {
+          "eventId": "image-46ed9b1f32e44ad293e2c70e429ec65c",
+          "appliedAt": "2026-11-01T12:37:20.472Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:image:46ed9b1f32e44ad293e2c70e429ec65c",
+          "auditEvidence": null,
+          "summary": "Photo #1 exacte de la Centennial Wheel importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-54dcb23cf6464bd18aa900584637367e",
+          "appliedAt": "2026-11-01T12:38:12.149Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:image:54dcb23cf6464bd18aa900584637367e",
+          "auditEvidence": null,
+          "summary": "Photo #2 exacte de la Centennial Wheel importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-56293fc1-125e-4723-a9ea-24b334dc9d8c",
+          "appliedAt": "2026-11-01T12:38:51.786Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:apply:56293fc1-125e-4723-a9ea-24b334dc9d8c",
+          "auditEvidence": null,
+          "summary": "Horaires datés de septembre à décembre 2026, fermetures et exceptions des fêtes intégrés"
+        },
+        {
+          "eventId": "closure-56293fc1-125e-4723-a9ea-24b334dc9d8c",
+          "appliedAt": "2026-11-01T12:38:51.786Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9a31ef73-1334-46aa-9686-52e143739ae1",
+          "evidence": "PARK_DATA_EDITOR:apply:56293fc1-125e-4723-a9ea-24b334dc9d8c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-centennial-wheel-20261101/audit.json",
+          "summary": "Audit 78/100 publiable sans blocage et deux photos exactes ; tarif courant non chiffré faute de prix officiel fixe ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Réviser les horaires après le 31 décembre 2026, vérifier les exceptions et relever un tarif officiel courant avant de chiffrer le billet. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Navy Pier — Centennial Wheel, nacelles, vente et fonctionnement",
+          "url": "https://navypier.org/pier-locations/centennial-wheel/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Navy Pier — horaires 2026 et jours fériés",
+          "url": "https://navypier.org/plan-your-visit/hours-and-admission/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Navy Pier — Pier Park Rides, autres attractions séparées",
+          "url": "https://navypier.org/pier-park-rides/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emprise de la Centennial Wheel",
+          "url": "https://www.openstreetmap.org/way/686996484",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Centennial Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Chicago_in_2022_Centennial_Wheel_(52059724068).jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Centennial Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Centennial_Wheel_en_Navy_Pier_en_Chicago.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Centennial Wheel",
+            "source": "Navy Pier — page officielle de la roue",
+            "url": "https://navypier.org/pier-locations/centennial-wheel/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Pier Park, Navy Pier",
+            "sourceLifecycleSignal": "Billet propre et ouverture quotidienne sous réserve météo au 1er novembre 2026",
+            "sourceLocality": "Chicago, Illinois",
+            "matchingMethod": "Billetterie individuelle et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "Le Pier Park regroupe plusieurs attractions, mais la roue possède un billet propre et des horaires annuels distincts des autres manèges ; fiche standalone pertinente."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/9a31ef73-1334-46aa-9686-52e143739ae1/centennial-wheel",
+          "publishedAtUtc": "2026-11-01T12:40:47.058Z",
+          "verifiedAtUtc": "2026-11-01T12:42:19.792Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2280c2a1-1161-45b0-b04b-f238e37b59b9"
+        },
+        "facebook": {
+          "id": "bc12150cccc04263a1cd83ed1825c2c3",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T12:41:28.318Z",
+          "externalPostId": "1285475681307050_122125606335424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125606335424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:bc12150cccc04263a1cd83ed1825c2c3"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "46ed9b1f32e44ad293e2c70e429ec65c",
+          "54dcb23cf6464bd18aa900584637367e"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T12:40:08.282Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:b4c3f750-db03-45b5-b84e-c05889c92118",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-centennial-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-centennial-wheel-20261101/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -16981,37 +17546,155 @@
     {
       "entryId": "US-candidate-f5f1a9ec7a1515",
       "name": "Dream Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "American Dream , East Rutherford, New Jersey",
-      "siteId": null,
+      "category": "Roue d’observation",
+      "locality": "American Dream Mall, East Rutherford, New Jersey",
+      "siteId": "29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T10:44:47.694Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Exploitation et horaires hebdomadaires publiés par l’exploitant au 2 novembre 2026.",
+      "identityConfidence": "Exploitant officiel, billet propre et position de la roue concordent ; aucune fiche homonyme Park ou standalone dans l’éditeur.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Dream Wheel NJ",
+        "Dream Wheel by Skyviews",
+        "American Dream Observation Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T10:39:33.189Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-db3e295d-2a8c-4d75-bfdb-ab1c7553f391",
+          "appliedAt": "2026-11-02T10:33:29.656Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed",
+          "evidence": "PARK_DATA_EDITOR:apply:db3e295d-2a8c-4d75-bfdb-ab1c7553f391",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée, identité, ouverture et huit descriptions localisées"
+        },
+        {
+          "eventId": "apply-b618bf78-dc28-4cb0-a6ce-721dc65e95d9",
+          "appliedAt": "2026-11-02T10:34:05.492Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed",
+          "evidence": "PARK_DATA_EDITOR:apply:b618bf78-dc28-4cb0-a6ce-721dc65e95d9",
+          "auditEvidence": null,
+          "summary": "Quatre règles horaires hebdomadaires issues de l’exploitant"
+        },
+        {
+          "eventId": "image-75174c487d854befa805d61ebc894d1b",
+          "appliedAt": "2026-11-02T10:34:39.870Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed",
+          "evidence": "PARK_DATA_EDITOR:image:75174c487d854befa805d61ebc894d1b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la roue prise en mai 2026 importée avec licence et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-f8f43717-2979-4d9d-9658-a137d3712161",
+          "appliedAt": "2026-11-02T10:37:51.808Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed",
+          "evidence": "PARK_DATA_EDITOR:apply:f8f43717-2979-4d9d-9658-a137d3712161",
+          "auditEvidence": null,
+          "summary": "Révision des descriptions publiques pour remplacer les mesures techniques brutes"
+        },
+        {
+          "eventId": "apply-a8996595-3ea5-475c-b722-a1dc16033af6",
+          "appliedAt": "2026-11-02T10:39:33.189Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed",
+          "evidence": "PARK_DATA_EDITOR:apply:a8996595-3ea5-475c-b722-a1dc16033af6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-dream-wheel-20261102/audit.json",
+          "summary": "Conditions d’accès : taille des enfants seuls et transfert depuis un fauteuil électrique"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Vérifier régulièrement horaires et tarif officiel ; chercher une photo libre plus rapprochée. Ne pas répéter la publication Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Dream Wheel NJ — présentation et localisation",
+          "url": "https://dreamwheelnj.com/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Dream Wheel NJ — date d’ouverture",
+          "url": "https://dreamwheelnj.com/about/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Dream Wheel NJ — FAQ, accès et nacelles",
+          "url": "https://dreamwheelnj.com/faq/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Dream Wheel NJ — horaires hebdomadaires",
+          "url": "https://dreamwheelnj.com/contact-us/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Dream Wheel NJ — catégories de billets",
+          "url": "https://tickets.dreamwheelnj.com/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap via Mapcarta — coordonnées",
+          "url": "https://mapcarta.com/N10977614896",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte du 3 mai 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:American_Dream_Mall,_Drone_Aerial_at_NJ-3_(May_2026).jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Dream Wheel",
+            "source": "Dream Wheel NJ — billet propre",
+            "url": "https://dreamwheelnj.com/",
+            "family": "Observation wheel",
+            "sourceVenueName": "American Dream shopping mall",
+            "sourceLifecycleSignal": "Exploitation actuelle selon le site de l’exploitant",
+            "sourceLocality": "East Rutherford, New Jersey",
+            "matchingMethod": "Billetterie et marque propres dans un centre commercial ; distinct du parc Nickelodeon Universe."
+          }
+        ],
+        "rationale": "Roue exploitée et vendue séparément dans le centre commercial American Dream, hors du parc à thème voisin."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed/dream-wheel",
+          "publishedAtUtc": "2026-11-02T10:40:44.442Z",
+          "verifiedAtUtc": "2026-11-02T10:44:47.694Z",
+          "evidence": "PARK_DATA_EDITOR:apply:88a8b610-a6bc-4c43-b952-d331607aadbb"
+        },
+        "facebook": {
+          "id": "7ddfca2f31864b0d97aeb0cbf4d85516",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T10:42:14.906Z",
+          "externalPostId": "1285475681307050_122125715055424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125715055424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:7ddfca2f31864b0d97aeb0cbf4d85516"
+        }
       }
     },
     {
@@ -20153,7 +20836,7 @@
           "summary": "Photographie spécifique de FlyOver America importée, créditée et localisée en huit langues."
         }
       ],
-      "nextAction": "Conserver la ligne ; préciser la position intérieure, clarifier les horaires du samedi et renouveler les tarifs avec taxes. Rechercher une seconde photo montrant cette attraction, avec droits de réutilisation et crédit vérifiés.",
+      "nextAction": "Audit photo du 1er novembre 2026 : seule une photo de l’enseigne est publiée. Ajouter une vue de l’attraction elle-même avec droit de réutilisation vérifiable, puis dater la nouvelle intégration de données. Conserver la ligne ; préciser la position intérieure, clarifier les horaires du samedi et renouveler les tarifs avec taxes. Rechercher une seconde photo montrant cette attraction, avec droits de réutilisation et crédit vérifiés.",
       "sources": [
         {
           "label": "Brogent — projet constructeur",
@@ -23782,25 +24465,80 @@
     {
       "entryId": "US-park-1ea43ab2-e917-4420-bef8-386c3add4280",
       "name": "Georgia Mountain Coaster",
-      "entityKind": "Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "1ea43ab2-e917-4420-bef8-386c3add4280",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "8409 S Main Street, Helen, Georgia",
+      "siteId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+      "legacySiteIds": [
+        "1ea43ab2-e917-4420-bef8-386c3add4280"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T22:33:30.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitation active : horaires, prix et consignes publiés par l’exploitant en octobre 2026.",
+      "identityConfidence": "Site officiel à la même adresse que la fiche Park masquée mono-attraction ; recherche officielle Standalone sans doublon, puis migration du Park et de son ParkItem.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Georgia Mountain Coaster — Helen"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T22:29:56.109Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-eb253f32-0be2-464f-aaec-9d0b5a4e623c",
+          "appliedAt": "2026-10-28T22:24:05.775Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:apply:eb253f32-0be2-464f-aaec-9d0b5a4e623c",
+          "auditEvidence": null,
+          "summary": "Migration contrôlée de la fiche Park masquée mono-attraction, données Wiegand et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-a455eddb-90d1-4750-b4e1-da1ce4f4334a",
+          "appliedAt": "2026-10-28T22:25:22.997Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:apply:a455eddb-90d1-4750-b4e1-da1ce4f4334a",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires et trois tarifs de l’exploitant intégrés"
+        },
+        {
+          "eventId": "image-e83c561d8824494499adfc8f9fce0597",
+          "appliedAt": "2026-10-28T22:26:42.566Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:image:e83c561d8824494499adfc8f9fce0597",
+          "auditEvidence": null,
+          "summary": "Photographie propre du lieu importée depuis Commons avec auteur, licence CC BY 4.0 et légendes en huit langues"
+        },
+        {
+          "eventId": "image-metadata-e83c561d8824494499adfc8f9fce0597-20261028",
+          "appliedAt": "2026-10-28T22:28:01.941Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:image-metadata:e83c561d8824494499adfc8f9fce0597",
+          "auditEvidence": null,
+          "summary": "Légendes de la photographie relues et distinguées des textes alternatifs"
+        },
+        {
+          "eventId": "apply-f52d3f37-0bad-4054-97d7-18523afb6490",
+          "appliedAt": "2026-10-28T22:29:56.109Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+          "evidence": "PARK_DATA_EDITOR:apply:f52d3f37-0bad-4054-97d7-18523afb6490",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-georgia-mountain-coaster-20261028/audit.json",
+          "summary": "Descriptions en huit langues révisées après audit éditorial ; score projeté 94/100 sans bloqueur"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Rechercher une photographie réutilisable montrant le parcours lui-même ; revérifier les horaires et les tarifs à la prochaine saison. Ne pas créer une seconde fiche ni republier Facebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -23821,26 +24559,69 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14981.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Georgia Mountain Coaster — site officiel, tarifs, horaires, adresse et conditions",
+          "url": "https://www.georgiamountaincoaster.com/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "RCDB — Georgia Mountain Coaster, constructeur et longueur",
+          "url": "https://rcdb.com/14981.htm",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — Georgia Mountain Coaster, Helen, photo de Mjrmtg",
+          "url": "https://commons.wikimedia.org/wiki/File:Georgia_Mountain_Coaster,_Helen.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "CC BY 4.0 — conditions de réutilisation",
+          "url": "https://creativecommons.org/licenses/by/4.0/",
+          "accessedAt": "2026-10-28"
         }
       ],
       "countryCodeAtInventory": "US",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
         "attractions": [
           {
             "name": "Georgia Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/14981.htm",
-            "family": "Mountain coaster",
+            "source": "Georgia Mountain Coaster — exploitant",
+            "url": "https://www.georgiamountaincoaster.com/",
+            "family": "Alpine coaster",
             "sourceVenueName": "Georgia Mountain Coaster",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Helen , Georgia",
-            "sourceOpenedYear": "2019"
+            "sourceLocality": "Helen, Georgia",
+            "matchingMethod": "Migration de la fiche Park masquée et de son unique ParkItem vers StandaloneAttraction"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Attraction autonome avec sa billetterie et son site propres ; migration contrôlée de la fiche Park masquée, sans doublon. Une photo propre et créditée ; audit public 94/100 sans bloqueur."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/6c3c5eae-402c-498d-9749-b96595c49f4a/georgia-mountain-coaster",
+          "publishedAtUtc": "2026-10-28T22:31:59.806Z",
+          "verifiedAtUtc": "2026-10-28T22:33:30.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:b859757d-619b-4c11-a66d-e1bb1767c7c7"
+        },
+        "facebook": {
+          "id": "bba073a0afc9432ebdcefa31a9d54f47",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T22:33:04.871Z",
+          "externalPostId": "1285475681307050_122125097919424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125097919424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:bba073a0afc9432ebdcefa31a9d54f47"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-georgia-mountain-coaster-20261028/audit.json",
+        "score": 94,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
@@ -25743,37 +26524,169 @@
     {
       "entryId": "US-candidate-fd6fcdcb5fd85b",
       "name": "Great Smoky Mountain Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Pigeon Forge, Tennessee",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "131 The Island Drive, Pigeon Forge, Tennessee, États-Unis",
+      "siteId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T15:30:05.386Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Grande roue en exploitation avec billet propre et tarifs officiels vérifiés au 1er novembre 2026 ; entrée de The Island gratuite.",
+      "identityConfidence": "Identité, adresse et billet de la roue confirmés par l’exploitant ; recherches officielles Park/Standalone et site The Island sans fiche correspondante.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "The Great Smoky Mountain Wheel",
+        "Smoky Mountain Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T15:27:42.753Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-ac62c352-3398-4b68-914d-3f4a448e1fb4",
+          "appliedAt": "2026-11-01T15:22:47.251Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:apply:ac62c352-3398-4b68-914d-3f4a448e1fb4",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée à partir de la candidate conservée : identité et huit descriptions"
+        },
+        {
+          "eventId": "apply-6c975c9a-dbb0-44bb-8ce2-1035c092dbce",
+          "appliedAt": "2026-11-01T15:24:38.075Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:apply:6c975c9a-dbb0-44bb-8ce2-1035c092dbce",
+          "auditEvidence": null,
+          "summary": "Sept offres tarifaires de l’exploitant intégrées en USD, avec conditions et catégories"
+        },
+        {
+          "eventId": "image-be363a7129ca496d9d4cbadf98f558af",
+          "appliedAt": "2026-11-01T15:25:35.007Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:image:be363a7129ca496d9d4cbadf98f558af",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte de la roue importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-5a0b4c6bc90942b88854d47594969add",
+          "appliedAt": "2026-11-01T15:25:57.084Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:image:5a0b4c6bc90942b88854d47594969add",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte de la roue importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "apply-bc39d904-3514-4664-9043-695584b0db53",
+          "appliedAt": "2026-11-01T15:27:42.753Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:apply:bc39d904-3514-4664-9043-695584b0db53",
+          "auditEvidence": null,
+          "summary": "Légendes distinctes des textes alternatifs pour les deux photos dans huit langues, après audit éditorial"
+        },
+        {
+          "eventId": "closure-bc39d904-3514-4664-9043-695584b0db53",
+          "appliedAt": "2026-11-01T15:27:42.753Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+          "evidence": "PARK_DATA_EDITOR:apply:bc39d904-3514-4664-9043-695584b0db53",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-smoky-mountain-wheel-20261101/audit.json",
+          "summary": "Audit final 81/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Consulter le calendrier de l’exploitant pour chaque date ; ne pas transformer les heures du jour en règle hebdomadaire. Revérifier prix et conditions périodiquement. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "The Island — page officielle de la Great Smoky Mountain Wheel, expérience et tarifs",
+          "url": "https://islandinpigeonforge.com/poi/the-great-smoky-mountain-wheel",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "The Island — billetterie officielle et conditions des offres",
+          "url": "https://tickets.islandinpigeonforge.com/retail/items/g/wheelTickets",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "The Island — calendrier officiel des horaires variables",
+          "url": "https://islandinpigeonforge.com/hours-and-events-calendar",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Great Smoky Mountain Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Great_Smoky_Mountain_Wheel_-_October_2025_-_Sarah_Stierch.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Great Smoky Mountain Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Great_Smoky_Mountain_Wheel_-_October_2025_-_Sarah_Stierch_01.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Great Smoky Mountain Wheel",
+            "source": "The Island — page officielle de la roue",
+            "url": "https://islandinpigeonforge.com/poi/the-great-smoky-mountain-wheel",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "The Island in Pigeon Forge",
+            "sourceLifecycleSignal": "Billetterie propre et source officielle active au 1er novembre 2026",
+            "sourceLocality": "Pigeon Forge, Tennessee",
+            "matchingMethod": "Entrée de The Island gratuite ; billet propre à la roue, identité et adresse vérifiées"
+          }
+        ],
+        "rationale": "The Island est une zone de commerces et de loisirs à entrée gratuite ; la grande roue a son propre billet et une page d’exploitation distincte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3c3cf28e-e40c-493c-baba-4062874cad4d/great-smoky-mountain-wheel",
+          "publishedAtUtc": "2026-11-01T15:28:20.844Z",
+          "verifiedAtUtc": "2026-11-01T15:30:05.386Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c9c61a17-6a02-4280-a348-c0af73f9cae1"
+        },
+        "facebook": {
+          "id": "9695af84db424eaaa140659826e5759e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T15:29:11.562Z",
+          "externalPostId": "1285475681307050_122125621707424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125621707424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:9695af84db424eaaa140659826e5759e"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "be363a7129ca496d9d4cbadf98f558af",
+          "5a0b4c6bc90942b88854d47594969add"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T15:26:45.528Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:d9ecbb67-a1bb-43d5-94fa-163270f4a55b",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-smoky-mountain-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-smoky-mountain-wheel-20261101/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -41965,37 +42878,60 @@
     {
       "entryId": "US-candidate-c13326c3f2c84f",
       "name": "Myrtle Beach SkyWheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
+      "category": "Grande roue panoramique",
       "locality": "Myrtle Beach, South Carolina",
-      "siteId": null,
+      "siteId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T12:10:16.780Z",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "identityConfidence": "Myrtle Beach SkyWheel est la même roue que SkyWheel Myrtle Beach, déjà publiée sous US-candidate-b580f555d9d1fb ; page en ligne vérifiée et photo existante constatée.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "SkyWheel Myrtle Beach"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la piste comme alias de US-candidate-b580f555d9d1fb. Ne pas créer une seconde fiche ni republier Facebook ; suivre les mises à jour sur la fiche intégrée.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "SkyWheel Myrtle Beach — site officiel et identité",
+          "url": "https://skywheelmb.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Fiche standalone déjà publiée avec photographie",
+          "url": "https://amusement-parks.fun/fr/attraction/7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b/skywheel-myrtle-beach",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "SkyWheel Myrtle Beach",
+            "source": "SkyWheel Myrtle Beach — site officiel",
+            "url": "https://skywheelmb.com/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Myrtle Beach Boardwalk",
+            "sourceLifecycleSignal": "Billetterie et horaires officiels en ligne",
+            "sourceLocality": "Myrtle Beach, South Carolina",
+            "matchingMethod": "Nom inversé et même localité ; fiche déjà publiée"
+          }
+        ],
+        "rationale": "Le nom inversé désigne la roue déjà intégrée sous US-candidate-b580f555d9d1fb."
       }
     },
     {
@@ -45268,38 +46204,191 @@
     },
     {
       "entryId": "US-candidate-72972e2d343bf3",
-      "name": "Orlando Eye",
-      "entityKind": "ToQualify",
+      "name": "The Orlando Eye",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Orlando, Florida",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "ICON Park, International Drive, Orlando, Florida, États-Unis",
+      "siteId": "395c043d-9aca-4e01-9725-ddcce5f1195a",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T12:56:51.972Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Billetterie officielle active et créneaux publiés pour début novembre 2026.",
+      "identityConfidence": "Roue à billet propre dans le complexe multi-attractions ICON Park ; ancien nom The Wheel at ICON Park. Recherches Park et Standalone officielles sans homonyme.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Orlando Eye",
+        "The Wheel at ICON Park",
+        "ICON Orlando"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T12:52:36.809Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-174ccf8c-42ea-4da3-8eb6-900bbd7661dd",
+          "appliedAt": "2026-11-01T12:47:33.445Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "395c043d-9aca-4e01-9725-ddcce5f1195a",
+          "evidence": "PARK_DATA_EDITOR:apply:174ccf8c-42ea-4da3-8eb6-900bbd7661dd",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée et descriptions en huit langues intégrées"
+        },
+        {
+          "eventId": "apply-29eace36-1265-46af-954c-7fec45b821a9",
+          "appliedAt": "2026-11-01T12:49:41.048Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "395c043d-9aca-4e01-9725-ddcce5f1195a",
+          "evidence": "PARK_DATA_EDITOR:apply:29eace36-1265-46af-954c-7fec45b821a9",
+          "auditEvidence": null,
+          "summary": "Billet adulte en ligne à prix variable, minimum officiel de 29 USD, intégré"
+        },
+        {
+          "eventId": "image-3e2583df9dd54289aed854bb038931c6",
+          "appliedAt": "2026-11-01T12:50:25.049Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "395c043d-9aca-4e01-9725-ddcce5f1195a",
+          "evidence": "PARK_DATA_EDITOR:image:3e2583df9dd54289aed854bb038931c6",
+          "auditEvidence": null,
+          "summary": "Photo #1 exacte de The Orlando Eye importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-4547869c91d34b24a0934b6054af3c01",
+          "appliedAt": "2026-11-01T12:51:09.514Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "395c043d-9aca-4e01-9725-ddcce5f1195a",
+          "evidence": "PARK_DATA_EDITOR:image:4547869c91d34b24a0934b6054af3c01",
+          "auditEvidence": null,
+          "summary": "Photo #2 exacte de The Orlando Eye importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-f4de276e-595d-4211-919e-79db00b06cd0",
+          "appliedAt": "2026-11-01T12:52:00.185Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "395c043d-9aca-4e01-9725-ddcce5f1195a",
+          "evidence": "PARK_DATA_EDITOR:apply:f4de276e-595d-4211-919e-79db00b06cd0",
+          "auditEvidence": null,
+          "summary": "Lien de la billetterie officielle corrigé vers la page active"
+        },
+        {
+          "eventId": "apply-a88f378b-2a70-46eb-9790-d8d8b24dd99d",
+          "appliedAt": "2026-11-01T12:52:36.809Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "395c043d-9aca-4e01-9725-ddcce5f1195a",
+          "evidence": "PARK_DATA_EDITOR:apply:a88f378b-2a70-46eb-9790-d8d8b24dd99d",
+          "auditEvidence": null,
+          "summary": "Créneaux officiellement annoncés des 1er et 2 novembre 2026 intégrés sans extrapolation"
+        },
+        {
+          "eventId": "closure-a88f378b-2a70-46eb-9790-d8d8b24dd99d",
+          "appliedAt": "2026-11-01T12:52:36.809Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "395c043d-9aca-4e01-9725-ddcce5f1195a",
+          "evidence": "PARK_DATA_EDITOR:apply:a88f378b-2a70-46eb-9790-d8d8b24dd99d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-eye-20261101/audit.json",
+          "summary": "Audit 91/100 publiable sans blocage et deux photos exactes ; horaires ultérieurs à suivre au calendrier ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Relever les horaires après le 2 novembre 2026 dans le calendrier officiel et vérifier le minimum tarifaire dynamique. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "The Orlando Eye — billetterie officielle et tarif variable dès 29 USD",
+          "url": "https://www.theorlandoeye.com/tickets/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "The Orlando Eye — horaires officiels par date",
+          "url": "https://www.theorlandoeye.com/plan-your-day/before-you-visit/opening-hours/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "The Orlando Eye — conditions tarifaires et accompagnement",
+          "url": "https://support.theorlandoeye.com/hc/en-us/articles/115003203532-How-much-are-tickets-to-The-Orlando-Eye",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "ICON Park — roue et attractions voisines",
+          "url": "https://iconparkorlando.com/attractions/the-orlando-eye-at-icon-park/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emprise de The Orlando Eye",
+          "url": "https://www.openstreetmap.org/way/331551657",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Orlando Eye, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Wheel_at_ICON_Park_(purple).jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Orlando Eye, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Orlando_%22Eye%22_Ferris_Wheel_01.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "The Orlando Eye",
+            "source": "The Orlando Eye — billetterie officielle",
+            "url": "https://www.theorlandoeye.com/tickets/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "ICON Park",
+            "sourceLifecycleSignal": "Billet propre et créneaux annoncés au 1er novembre 2026",
+            "sourceLocality": "Orlando, Florida",
+            "matchingMethod": "Billetterie individuelle et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "ICON Park regroupe plusieurs activités à billet propre ; la roue est exploitée et vendue séparément. Ses anciens noms désignent la même installation."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/395c043d-9aca-4e01-9725-ddcce5f1195a/the-orlando-eye",
+          "publishedAtUtc": "2026-11-01T12:55:01.952Z",
+          "verifiedAtUtc": "2026-11-01T12:56:51.972Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0142f8de-0d3c-4b82-a106-b8e229db59c5"
+        },
+        "facebook": {
+          "id": "7783a31c8d624d8d8ce4b16f0c21791e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T12:55:50.985Z",
+          "externalPostId": "1285475681307050_122125608075424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125608075424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:7783a31c8d624d8d8ce4b16f0c21791e"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "3e2583df9dd54289aed854bb038931c6",
+          "4547869c91d34b24a0934b6054af3c01"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T12:53:36.729Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:72401388-eb3e-4258-9730-2407165812e0",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-eye-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-eye-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -54599,37 +55688,196 @@
     {
       "entryId": "US-candidate-cc60136c844ee4",
       "name": "Seattle Great Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Pier 57, Seattle , Washington",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "Pier 57, 1301 Alaskan Way, Seattle",
+      "siteId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T21:52:17.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating — horaires, billets et FAQ officiels consultés le 28 octobre 2026.",
+      "identityConfidence": "Grande roue fixe à billetterie propre sur le Pier 57 ; aucune fiche Park ou Standalone correspondante dans les recherches officielles Seattle Great Wheel, Great Wheel et Miners Landing.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "The Seattle Great Wheel",
+        "Pier 57 Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T21:48:33.595Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6f548197-4466-4216-88e1-c169e43d6b0c",
+          "appliedAt": "2026-10-28T21:45:53.591Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:apply:6f548197-4466-4216-88e1-c169e43d6b0c",
+          "auditEvidence": null,
+          "summary": "Création privée de la Seattle Great Wheel et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-e9ac65d0-aa21-4b8e-bff7-0a7bd8d97ea5",
+          "appliedAt": "2026-10-28T21:46:25.163Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:apply:e9ac65d0-aa21-4b8e-bff7-0a7bd8d97ea5",
+          "auditEvidence": null,
+          "summary": "Horaires quotidiens et possibilité de fermeture anticipée sourcés"
+        },
+        {
+          "eventId": "apply-768abc37-0f3b-4660-a9eb-0156cc6dce43",
+          "appliedAt": "2026-10-28T21:46:48.118Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:apply:768abc37-0f3b-4660-a9eb-0156cc6dce43",
+          "auditEvidence": null,
+          "summary": "Cinq catégories tarifaires lues sur la billetterie officielle"
+        },
+        {
+          "eventId": "apply-8e4cdb77-8d13-4ba6-8fe6-9723b2bcb506",
+          "appliedAt": "2026-10-28T21:47:11.813Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:apply:8e4cdb77-8d13-4ba6-8fe6-9723b2bcb506",
+          "auditEvidence": null,
+          "summary": "Ouverture du 29 juin 2012 sourcée dans la FAQ officielle"
+        },
+        {
+          "eventId": "image-51f9e9b82fea47c3b82908301f62f678",
+          "appliedAt": "2026-10-28T21:47:43.195Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:image:51f9e9b82fea47c3b82908301f62f678",
+          "auditEvidence": null,
+          "summary": "Photographie propre de la Seattle Great Wheel #1 importée avec licence, auteur et légendes en huit langues"
+        },
+        {
+          "eventId": "image-8c0b514fe6a841e39797abc737e36554",
+          "appliedAt": "2026-10-28T21:47:58.136Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:image:8c0b514fe6a841e39797abc737e36554",
+          "auditEvidence": null,
+          "summary": "Photographie propre de la Seattle Great Wheel #2 importée avec licence, auteur et légendes en huit langues"
+        },
+        {
+          "eventId": "image-e977a7d7c74a4ea3a377e7b1bc2e591b",
+          "appliedAt": "2026-10-28T21:48:16.352Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:image:e977a7d7c74a4ea3a377e7b1bc2e591b",
+          "auditEvidence": null,
+          "summary": "Photographie propre de la Seattle Great Wheel #4 importée avec licence, auteur et légendes en huit langues"
+        },
+        {
+          "eventId": "image-e975758683a5479eb2fc8529a65c11e2",
+          "appliedAt": "2026-10-28T21:48:33.595Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+          "evidence": "PARK_DATA_EDITOR:image:e975758683a5479eb2fc8529a65c11e2",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-seattle-great-wheel-20261028/seattle-great-wheel-audit.json",
+          "summary": "Photographie propre de la Seattle Great Wheel #5 importée avec licence, auteur et légendes en huit langues"
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus. Recontrôler les horaires et prix sur les sites officiels ; chercher une photographie vérifiée du jour d’ouverture pour illustrer l’événement historique. Ne pas republier le post Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Seattle Great Wheel — site et promenade de Pier 57",
+          "url": "https://seattlegreatwheel.com/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Seattle Great Wheel — FAQ, ouverture, accessibilité et enfants",
+          "url": "https://seattlegreatwheel.com/faq",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Seattle Great Wheel — horaires et adresse officiels",
+          "url": "https://seattlegreatwheel.com/hours-directions",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Miners Landing — billetterie officielle de la roue",
+          "url": "https://tickets.minerslanding.com/webstore/shop/viewItems.aspx?cg=consumer&c=WH",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie Seattle Great Wheel #1",
+          "url": "https://commons.wikimedia.org/wiki/File:Seattle_Great_Wheel%2C_Seattle%2C_Washington%2C_Estados_Unidos%2C_2017-09-02%2C_DD_13-15_HDR.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie Seattle Great Wheel #2",
+          "url": "https://commons.wikimedia.org/wiki/File:Seattle_Great_Wheel_ferris_wheel_sunset.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie Seattle Great Wheel #4",
+          "url": "https://commons.wikimedia.org/wiki/File:Seattle_-_Pier_57_from_the_water%2C_including_Seattle_Great_Wheel_01.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie Seattle Great Wheel #5",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_night.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "Seattle Great Wheel",
+            "source": "Seattle Great Wheel — site officiel",
+            "url": "https://seattlegreatwheel.com/",
+            "family": "Grande roue",
+            "sourceVenueName": "Pier 57 / Miners Landing",
+            "sourceLifecycleSignal": "Billetterie de la roue et horaires actifs en octobre 2026.",
+            "matchingMethod": "Recherches Park et Standalone sans correspondance ; billetterie distincte.",
+            "sourceLocality": "Seattle",
+            "referenceId": "seattle-great-wheel-official"
+          }
+        ],
+        "rationale": "Grande roue à billet individuel sur une jetée avec commerces et autres activités, sans parc d’attractions parent catalogué. Quatre photos propres vérifiées, audit public 97/100 sans bloqueur."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d3b5033b-9520-4ab4-a5a8-96109a7784cf/seattle-great-wheel",
+          "publishedAtUtc": "2026-10-28T21:50:36.622Z",
+          "verifiedAtUtc": "2026-10-28T21:52:17.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:a7bd872b-30ab-4f56-b559-49797683f5f2"
+        },
+        "facebook": {
+          "id": "1a04d9dbc23b4d3e889d9ff1f68e4664",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T21:51:37.178Z",
+          "externalPostId": "1285475681307050_122125095147424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125095147424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:1a04d9dbc23b4d3e889d9ff1f68e4664"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-seattle-great-wheel-20261028/seattle-great-wheel-audit.json",
+        "score": 97,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -57312,73 +58560,374 @@
     {
       "entryId": "US-candidate-a2121bfa4df7d3",
       "name": "SkyStar Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Fisherman's Wharf, San Francisco , California",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "2860 Taylor Street, San Francisco, Californie 94133, États-Unis",
+      "siteId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T15:58:14.935Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Site et billetterie de l’exploitant actifs au 1er novembre 2026 à Fisherman’s Wharf.",
+      "identityConfidence": "Identité, emplacement actuel, billetterie et photos exactes vérifiés ; recherches officielles Park et Standalone sans doublon.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "SkyStar Observation Wheel",
+        "SkyStar Wheel Fisherman’s Wharf"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T15:54:32.995Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-5239e4d2-3c73-4bd1-86e7-2c2ac04a62cc",
+          "appliedAt": "2026-11-01T15:50:03.169Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:apply:5239e4d2-3c73-4bd1-86e7-2c2ac04a62cc",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée depuis la candidate conservée : identité, localisation et huit descriptions"
+        },
+        {
+          "eventId": "apply-3f1135e4-73b4-4fb0-bbb8-229e8d01226e",
+          "appliedAt": "2026-11-01T15:51:07.920Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:apply:3f1135e4-73b4-4fb0-bbb8-229e8d01226e",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels adultes, enfants et seniors intégrés avec la source datée"
+        },
+        {
+          "eventId": "apply-4be02fac-1a0b-4cba-ac89-2f13708e6c9a",
+          "appliedAt": "2026-11-01T15:51:33.888Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:apply:4be02fac-1a0b-4cba-ac89-2f13708e6c9a",
+          "auditEvidence": null,
+          "summary": "Horaires quotidiens officiels intégrés avec réserve météo et événements"
+        },
+        {
+          "eventId": "image-5eacdbce315341e4844cad3502ea8476",
+          "appliedAt": "2026-11-01T15:52:22.876Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:image:5eacdbce315341e4844cad3502ea8476",
+          "auditEvidence": null,
+          "summary": "Photo 1 de SkyStar Wheel à Fisherman’s Wharf importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-af585df4c7964a4db2e39a0411b11f43",
+          "appliedAt": "2026-11-01T15:53:23.905Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:image:af585df4c7964a4db2e39a0411b11f43",
+          "auditEvidence": null,
+          "summary": "Photo 2 de SkyStar Wheel à Fisherman’s Wharf importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-60dcc906ae124fb58fae0c06b8ce6a50",
+          "appliedAt": "2026-11-01T15:54:32.995Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:image:60dcc906ae124fb58fae0c06b8ce6a50",
+          "auditEvidence": null,
+          "summary": "Photo 3 de SkyStar Wheel à Fisherman’s Wharf importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "closure-60dcc906ae124fb58fae0c06b8ce6a50",
+          "appliedAt": "2026-11-01T15:54:32.995Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+          "evidence": "PARK_DATA_EDITOR:image:60dcc906ae124fb58fae0c06b8ce6a50",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-skystar-wheel-20261101/audit.json",
+          "summary": "Audit final 91/100 sans blocage, trois photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne, les sources et la date de dernière intégration. Revérifier périodiquement tarifs, horaires et emplacement d’une roue transportable. Le site de l’exploitant donne 94111 dans la FAQ et 94133 sur sa page Contact ; 94133 confirmé aussi par l’État de Californie. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "SkyStar Wheel — billets, tarifs et horaires",
+          "url": "https://www.skystarwheel.com/tickets/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "SkyStar Wheel — FAQ, durée, accès et météo",
+          "url": "https://www.skystarwheel.com/faq/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "SkyStar Wheel — contact, adresse et code postal",
+          "url": "https://www.skystarwheel.com/contact/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "État de Californie — exploitant et adresse de la roue (94133)",
+          "url": "https://www.dir.ca.gov/dosh/Reports/par-route-locations.pdf",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyStar Wheel à Fisherman’s Wharf, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:SkyStar_Wheel_-_Fisherman%27s_Wharf_-_January_2024_%288774%29.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyStar Wheel à Fisherman’s Wharf, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:SkyStar_Wheel_-_Fisherman%27s_Wharf_-_January_2024_%288775%29.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyStar Wheel à Fisherman’s Wharf, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Fisherman%27s_Wharf,_San_Francisco_11-27-2025_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "SkyStar Wheel",
+            "source": "SkyStar Wheel — billetterie directe",
+            "url": "https://www.skystarwheel.com/tickets/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Fisherman’s Wharf",
+            "sourceLifecycleSignal": "Billetterie propre active au 1er novembre 2026",
+            "sourceLocality": "San Francisco",
+            "matchingMethod": "Adresse, marque et billetterie exactes ; recherches officielles Park/Standalone négatives"
+          }
+        ],
+        "rationale": "Roue exploitée avec billetterie propre dans un quartier ouvert ; elle a quitté Golden Gate Park pour Fisherman’s Wharf et ses images montrent exclusivement l’emplacement actuel."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/49ae82c6-f18c-48e0-bdbd-13fa3377a870/skystar-wheel",
+          "publishedAtUtc": "2026-11-01T15:56:10.871Z",
+          "verifiedAtUtc": "2026-11-01T15:58:14.935Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6fa59752-740c-42ce-9189-a27731b4119a"
+        },
+        "facebook": {
+          "id": "67d7bce9daa8402a96f5d0aa73ae0a1a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T15:57:22.814Z",
+          "externalPostId": "1285475681307050_122125624113424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125624113424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:67d7bce9daa8402a96f5d0aa73ae0a1a"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "5eacdbce315341e4844cad3502ea8476",
+          "af585df4c7964a4db2e39a0411b11f43",
+          "60dcc906ae124fb58fae0c06b8ce6a50"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T15:55:36.874Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:7c9d8584-7fa8-4e34-b19d-34fc88266af2",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-skystar-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skystar-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
       "entryId": "US-candidate-94cdb6c6fa968d",
       "name": "Skyviews Miami",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Bayside Marketplace , Miami, Florida",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "401 Biscayne Boulevard, Bayside Marketplace, Miami, Floride 33132, États-Unis",
+      "siteId": "998077d1-0e1b-4e1b-a263-1185a324f105",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T16:19:31.318Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Site et billetterie Skyviews Miami actifs au 1er novembre 2026.",
+      "identityConfidence": "Identité, adresse, billetterie et nacelles marquées Skyviews Miami vérifiées ; recherches officielles Park/Standalone et Bayside Marketplace sans doublon.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Skyviews Miami Observation Wheel",
+        "Sky Views Miami"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T16:16:13.554Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1fd1f086-b00b-4ee9-9c60-d8d3536c7b71",
+          "appliedAt": "2026-11-01T16:12:30.261Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "998077d1-0e1b-4e1b-a263-1185a324f105",
+          "evidence": "PARK_DATA_EDITOR:apply:1fd1f086-b00b-4ee9-9c60-d8d3536c7b71",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée depuis la candidate conservée : identité, localisation et huit descriptions"
+        },
+        {
+          "eventId": "apply-15caee66-f0cd-4201-93bb-9ea85f62715f",
+          "appliedAt": "2026-11-01T16:13:59.806Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "998077d1-0e1b-4e1b-a263-1185a324f105",
+          "evidence": "PARK_DATA_EDITOR:apply:15caee66-f0cd-4201-93bb-9ea85f62715f",
+          "auditEvidence": null,
+          "summary": "Heures concordantes du week-end intégrées ; divergence officielle en semaine documentée"
+        },
+        {
+          "eventId": "image-4d5a5cb1c90740a2bb56e8b8b6f0abba",
+          "appliedAt": "2026-11-01T16:14:29.816Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "998077d1-0e1b-4e1b-a263-1185a324f105",
+          "evidence": "PARK_DATA_EDITOR:image:4d5a5cb1c90740a2bb56e8b8b6f0abba",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte de Skyviews Miami importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-ecb84e503c494a77bfcb113f201d176d",
+          "appliedAt": "2026-11-01T16:14:51.263Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "998077d1-0e1b-4e1b-a263-1185a324f105",
+          "evidence": "PARK_DATA_EDITOR:image:ecb84e503c494a77bfcb113f201d176d",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte de Skyviews Miami importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-bba8983d0f8b41eaa5f9cfeb71b28d7b",
+          "appliedAt": "2026-11-01T16:16:13.554Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "998077d1-0e1b-4e1b-a263-1185a324f105",
+          "evidence": "PARK_DATA_EDITOR:image:bba8983d0f8b41eaa5f9cfeb71b28d7b",
+          "auditEvidence": null,
+          "summary": "Photo 3 exacte de Skyviews Miami importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "closure-bba8983d0f8b41eaa5f9cfeb71b28d7b",
+          "appliedAt": "2026-11-01T16:16:13.554Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "998077d1-0e1b-4e1b-a263-1185a324f105",
+          "evidence": "PARK_DATA_EDITOR:image:bba8983d0f8b41eaa5f9cfeb71b28d7b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyviews-miami-20261101/audit.json",
+          "summary": "Audit 78/100 sans blocage et trois photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Faire confirmer par l’exploitant les fermetures de semaine contradictoires entre FAQ et Contact, puis couvrir les jours manquants. Confirmer le prix direct avant de l’afficher. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Skyviews Miami — site et billetterie officielle",
+          "url": "https://skyviewsmiami.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Skyviews Miami — FAQ, durée, nacelles et horaires annoncés",
+          "url": "https://skyviewsmiami.com/faqs/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Skyviews Miami — adresse et horaires de fermeture divergents",
+          "url": "https://skyviewsmiami.com/contact-us/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Skyviews Miami — types de billets",
+          "url": "https://skyviewsmiami.com/tickets/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Tiqets / Outdooractive — coordonnées de la roue",
+          "url": "https://www.outdooractive.com/mobile/en/offer/miami-dade-county/skyviews-miami-observation-wheel-entry-ticket/805882040/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Skyviews Miami, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Skyviews_Miami_Bayside_Marketplace_-_Ferris_Wheel_Cars,_2022.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Skyviews Miami, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Observation_Wheel_Construction_Bayside_Marketplace_Downtown_Miami_-_01.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Skyviews Miami, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Bayside,_Miami,_Florida_June_2021_-_03.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Skyviews Miami",
+            "source": "Skyviews Miami — billetterie directe",
+            "url": "https://skyviewsmiami.com/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Bayside Marketplace",
+            "sourceLifecycleSignal": "Site et billet directs au 1er novembre 2026",
+            "sourceLocality": "Miami",
+            "matchingMethod": "Billetterie propre sur galerie marchande ouverte ; recherches officielles Park/Standalone sans fiche"
+          }
+        ],
+        "rationale": "La roue possède sa propre billetterie à Bayside Marketplace, galerie commerciale ouverte qui ne constitue pas un parc à billet unique."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/998077d1-0e1b-4e1b-a263-1185a324f105/skyviews-miami",
+          "publishedAtUtc": "2026-11-01T16:17:39.559Z",
+          "verifiedAtUtc": "2026-11-01T16:19:31.318Z",
+          "evidence": "PARK_DATA_EDITOR:apply:815e9cc3-15e0-4a2f-8cc6-33cbeb60a6aa"
+        },
+        "facebook": {
+          "id": "c121738cd9604d1e8d59df004f4871fc",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T16:18:34.285Z",
+          "externalPostId": "1285475681307050_122125626669424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125626669424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:c121738cd9604d1e8d59df004f4871fc"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "4d5a5cb1c90740a2bb56e8b8b6f0abba",
+          "ecb84e503c494a77bfcb113f201d176d",
+          "bba8983d0f8b41eaa5f9cfeb71b28d7b"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T16:16:58.870Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:7874895d-d174-49bc-82b6-e35b62b38df2",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-skyviews-miami-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyviews-miami-20261101/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
@@ -60598,38 +62147,181 @@
     },
     {
       "entryId": "US-candidate-7a55d8c10505e4",
-      "name": "St. Louis Wheel",
-      "entityKind": "ToQualify",
+      "name": "The St. Louis Wheel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "St. Louis Union Station , St. Louis, MO",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "201 S 18th Street, St. Louis, Missouri, États-Unis",
+      "siteId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:56:13.556Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active toute l’année selon l’exploitant au 1er novembre 2026 ; billet individuel vendu.",
+      "identityConfidence": "Site et billetterie officiels ; recherches officielles Park / Standalone St. Louis Wheel et Union Station sans homonyme US ; point OSM de la roue.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "St. Louis Wheel",
+        "St Louis Wheel",
+        "The Wheel at St. Louis Union Station"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T11:53:03.888Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b9ee420a-858c-4932-83de-1b3027711727",
+          "appliedAt": "2026-11-01T11:49:11.656Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:b9ee420a-858c-4932-83de-1b3027711727",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après vérification de l’identité, descriptions en huit langues"
+        },
+        {
+          "eventId": "image-fb041c712f8e4944b105d769306a7fc2",
+          "appliedAt": "2026-11-01T11:50:11.560Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:image:fb041c712f8e4944b105d769306a7fc2",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la St. Louis Wheel importée de Wikimedia Commons avec crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-1acac94c4f6a41bfb9a8b62adf2bc1f8",
+          "appliedAt": "2026-11-01T11:50:31.551Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:image:1acac94c4f6a41bfb9a8b62adf2bc1f8",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la St. Louis Wheel importée de Wikimedia Commons avec crédits et textes en huit langues"
+        },
+        {
+          "eventId": "apply-a99ef4c7-238c-4406-841f-faf9ff7826ea",
+          "appliedAt": "2026-11-01T11:50:55.378Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:a99ef4c7-238c-4406-841f-faf9ff7826ea",
+          "auditEvidence": null,
+          "summary": "Billets officiels adulte et enfant intégrés en USD"
+        },
+        {
+          "eventId": "apply-9c54b263-c1a7-434a-9f98-8285f75cf345",
+          "appliedAt": "2026-11-01T11:51:21.484Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:9c54b263-c1a7-434a-9f98-8285f75cf345",
+          "auditEvidence": null,
+          "summary": "Quatre règles horaires hebdomadaires officielles intégrées avec le fuseau America/Chicago"
+        },
+        {
+          "eventId": "apply-533bb966-2151-48ae-b453-8679fa3e56c8",
+          "appliedAt": "2026-11-01T11:53:03.888Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:533bb966-2151-48ae-b453-8679fa3e56c8",
+          "auditEvidence": null,
+          "summary": "Descriptions publiques réécrites pour supprimer les métriques techniques interdites"
+        },
+        {
+          "eventId": "closure-533bb966-2151-48ae-b453-8679fa3e56c8",
+          "appliedAt": "2026-11-01T11:53:03.888Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+          "evidence": "PARK_DATA_EDITOR:apply:533bb966-2151-48ae-b453-8679fa3e56c8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-st-louis-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Confirmer la tranche d’âge enfant et surveiller horaires, tarif et fermeture exceptionnelle. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "The St. Louis Wheel — description et billetterie propre",
+          "url": "https://www.thestlouiswheel.com/st-louis-wheel",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "The St. Louis Wheel — prix, horaires et adresse officiels",
+          "url": "https://www.thestlouiswheel.com/plan-your-visit",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — point exact de la roue",
+          "url": "https://www.openstreetmap.org/node/7863293647",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — St. Louis Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:The_St._Louis_Wheel_at_Union_Station.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — St. Louis Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:St._Louis_Wheel,_St._Louis_Union_Station,_Market_Street,_St._Louis,_MO.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "The St. Louis Wheel",
+            "source": "The St. Louis Wheel — site officiel",
+            "url": "https://www.thestlouiswheel.com/plan-your-visit",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "St. Louis Union Station",
+            "sourceLifecycleSignal": "Prix et horaires officiels au 1er novembre 2026",
+            "sourceLocality": "St. Louis, Missouri",
+            "matchingMethod": "Billet propre et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "Roue à billet individuel dans le complexe Union Station ; les autres activités ont leurs propres billets."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/794a53d9-847b-452c-8a46-ee74a42e0dd9/the-st-louis-wheel",
+          "publishedAtUtc": "2026-11-01T11:54:23.975Z",
+          "verifiedAtUtc": "2026-11-01T11:56:13.556Z",
+          "evidence": "PARK_DATA_EDITOR:apply:4bf52a15-95d3-42bd-9420-c6d921584324"
+        },
+        "facebook": {
+          "id": "01d76f0e2ed54863bddabe311af664c4",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:55:16.228Z",
+          "externalPostId": "1285475681307050_122125600143424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125600143424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:01d76f0e2ed54863bddabe311af664c4"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "fb041c712f8e4944b105d769306a7fc2",
+          "1acac94c4f6a41bfb9a8b62adf2bc1f8"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:53:48.558Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:eb207c51-ae9b-421a-bfc1-e42126b1c51e",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-st-louis-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-st-louis-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -71879,36 +73571,101 @@
     {
       "entryId": "US-candidate-standalone-3e5f903c59f53a",
       "name": "ZipRider — Icy Strait Point",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": null,
-      "siteId": null,
+      "locality": "108 Cannery Road, Hoonah, Alaska 99829",
+      "siteId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T13:26:27.797Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Excursion ZipRider active selon l’exploitant et le fabricant le 2 novembre 2026.",
+      "identityConfidence": "Attraction à réservation distincte sur le site touristique Icy Strait Point ; aucune fiche Park ou Standalone homonyme après recherches officielles Icy Strait, Hoonah et ZipRider ; photographie exacte et réutilisable vérifiée.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
-      "aliases": [],
+      "aliases": [
+        "World’s Largest ZipRider",
+        "Icy Strait ZipRider",
+        "ZipRider — Icy Strait Point"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T13:28:45.783Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a8093fbf-e328-48fb-b08f-fc71d409e73a",
+          "appliedAt": "2026-11-02T13:23:06.367Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
+          "evidence": "PARK_DATA_EDITOR:apply:a8093fbf-e328-48fb-b08f-fc71d409e73a",
+          "auditEvidence": null,
+          "summary": "Création privée de la fiche, identité, adresse, huit descriptions et statut d’exploitation"
+        },
+        {
+          "eventId": "image-85bc1bb3e7a243db9e4890bea58d9e66",
+          "appliedAt": "2026-11-02T13:23:35.947Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
+          "evidence": "PARK_DATA_EDITOR:image:85bc1bb3e7a243db9e4890bea58d9e66",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la tyrolienne importée avec auteur, licence, source et huit textes alternatifs/légendes"
+        },
+        {
+          "eventId": "apply-754f062d-78bd-46e4-acac-afa59013335d",
+          "appliedAt": "2026-11-02T13:25:46.942Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
+          "evidence": "PARK_DATA_EDITOR:apply:754f062d-78bd-46e4-acac-afa59013335d",
+          "auditEvidence": null,
+          "summary": "Réécriture des huit descriptions après contrôle du langage éditorial"
+        },
+        {
+          "eventId": "apply-ef21fd08-8e29-4e3c-bc03-c2346594f29b",
+          "appliedAt": "2026-11-02T13:28:45.783Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
+          "evidence": "PARK_DATA_EDITOR:apply:ef21fd08-8e29-4e3c-bc03-c2346594f29b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-icy-strait-20261102/audit.json",
+          "summary": "Correction finale de la description française après publication"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses preuves. Recontrôler les conditions de réservation et les restrictions avant une saison suivante ; rechercher une photographie récente sous licence réutilisable. Ne pas republier Facebook pour une simple révision.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/icy-strait-point/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — excursion et conditions de participation",
+          "url": "https://icystraitpoint.com/excursions/worlds-largest-ziprider/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — adresse et réservation",
+          "url": "https://icystraitpoint.com/contact/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — Jonathan Schilling, 12 août 2009, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Zip_line_at_Icy_Strait_Point,_Alaska_2009.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique — contrôle huit langues et image",
+          "url": "https://amusement-parks.fun/fr/attraction/0bfef2c1-04a3-4366-afa7-8649cd050b28/icy-strait-point-ziprider",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "ZipRider — Icy Strait Point",
@@ -71918,7 +73675,7 @@
             "sourceVenueName": "Icy Strait Point"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Excursion ZipRider réservée séparément, avec billetterie par compagnie de croisière ou demande directe à Icy Strait Point ; le site d’accueil est une destination touristique, pas un parc de loisirs nécessitant une admission générale."
       }
     },
     {
@@ -73022,6 +74779,816 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "US-candidate-discovery-f182f64e1743f5",
+      "name": "Orlando StarFlyer",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire volante géante",
+      "locality": "8265 International Drive, Orlando, Floride, États-Unis",
+      "siteId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T15:01:47.263Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie et horaires affichés sur le site officiel au 1er novembre 2026 ; divergence d’horaires entre accueil et page Contact signalée.",
+      "identityConfidence": "Nouvelle découverte hors inventaire, exploitant et emplacement propres ; recherches officielles Park/Standalone Orlando StarFlyer, StarFlyer et ICON Park sans fiche.",
+      "possibleMatches": [],
+      "aliases": [
+        "Orlando Star Flyer",
+        "StarFlyer Orlando",
+        "I-Drive StarFlyer"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T14:58:13.978Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-41a7156b-bdb8-4fb6-ab25-f3341dd2c339",
+          "appliedAt": "2026-11-01T14:52:05.496Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:41a7156b-bdb8-4fb6-ab25-f3341dd2c339",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après découverte hors inventaire, identité et huit descriptions"
+        },
+        {
+          "eventId": "apply-7d27762d-2484-49c0-bcda-d8e7bd9b3e0c",
+          "appliedAt": "2026-11-01T14:53:30.937Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:7d27762d-2484-49c0-bcda-d8e7bd9b3e0c",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs officiels au guichet et un prix en ligne intégrés en USD, avec taxes et conditions signalées"
+        },
+        {
+          "eventId": "apply-53611ec3-615a-4bb3-aba3-89c672566288",
+          "appliedAt": "2026-11-01T14:54:07.104Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:53611ec3-615a-4bb3-aba3-89c672566288",
+          "auditEvidence": null,
+          "summary": "Horaire affiché sur la page d’accueil intégré avec avertissement explicite sur la contradiction de la page Contact"
+        },
+        {
+          "eventId": "image-30e02b056d61429fb863e5448ee3a48d",
+          "appliedAt": "2026-11-01T14:54:35.079Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:image:30e02b056d61429fb863e5448ee3a48d",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte d’Orlando StarFlyer importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-1c246a266a7d4cbc8a5f2fa32d304ebd",
+          "appliedAt": "2026-11-01T14:54:54.652Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:image:1c246a266a7d4cbc8a5f2fa32d304ebd",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte d’Orlando StarFlyer importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-b87565c5aa164eb9bac8ae45037674d6",
+          "appliedAt": "2026-11-01T14:55:15.398Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:image:b87565c5aa164eb9bac8ae45037674d6",
+          "auditEvidence": null,
+          "summary": "Photo 3 exacte d’Orlando StarFlyer importée sous CC0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "apply-3bd4edda-a862-4443-9af5-d14de13fcf40",
+          "appliedAt": "2026-11-01T14:58:13.978Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:3bd4edda-a862-4443-9af5-d14de13fcf40",
+          "auditEvidence": null,
+          "summary": "Descriptions reformulées dans huit langues après contrôle éditorial des mesures brutes"
+        },
+        {
+          "eventId": "closure-3bd4edda-a862-4443-9af5-d14de13fcf40",
+          "appliedAt": "2026-11-01T14:58:13.978Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+          "evidence": "PARK_DATA_EDITOR:apply:3bd4edda-a862-4443-9af5-d14de13fcf40",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-starflyer-20261101/audit.json",
+          "summary": "Audit final 91/100 sans blocage et trois photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Faire confirmer les horaires divergents entre accueil et page Contact de l’exploitant, puis rectifier la règle horaire ; revérifier prix, taxes et conditions. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Orlando StarFlyer — accueil, expérience et horaire affiché",
+          "url": "https://starflyer.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Orlando StarFlyer — tarifs et conditions officiels",
+          "url": "https://starflyer.com/tickets/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Orlando StarFlyer — historique et caractéristiques",
+          "url": "https://starflyer.com/about/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Orlando StarFlyer — règles de visite",
+          "url": "https://starflyer.com/rules-information/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Orlando StarFlyer — adresse et horaire contradictoire",
+          "url": "https://starflyer.com/contact-2/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — point de l’adresse 8265 International Drive",
+          "url": "https://www.openstreetmap.org/search?query=8265%20International%20Drive%20Orlando",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Orlando StarFlyer, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_de_nuit_en_f%C3%A9vrier_2022.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Orlando StarFlyer, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_de_nuit_en_f%C3%A9vrier_2022_(2).jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Orlando StarFlyer, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Orlando_Starflyer_en_f%C3%A9vrier_2022.JPG",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Orlando StarFlyer",
+            "source": "Orlando StarFlyer — site officiel",
+            "url": "https://starflyer.com/",
+            "family": "Balançoire volante géante",
+            "sourceVenueName": "Orlando StarFlyer",
+            "sourceLifecycleSignal": "Billetterie spécifique et site actif au 1er novembre 2026",
+            "sourceLocality": "International Drive, Orlando",
+            "matchingMethod": "Exploitant, billets et adresse propres ; recherches officielles Park/Standalone sans fiche"
+          }
+        ],
+        "rationale": "L’attraction est opérée avec sa billetterie et ses règles propres sur International Drive, distincte des attractions de voisinage."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e/orlando-starflyer",
+          "publishedAtUtc": "2026-11-01T14:59:30.329Z",
+          "verifiedAtUtc": "2026-11-01T15:01:47.263Z",
+          "evidence": "PARK_DATA_EDITOR:apply:cf42d732-f5cd-4010-9f86-b190614cc130"
+        },
+        "facebook": {
+          "id": "dfca02a41ecb49bca1b149ddf6176c53",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T15:00:31.256Z",
+          "externalPostId": "1285475681307050_122125619649424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125619649424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:dfca02a41ecb49bca1b149ddf6176c53"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "30e02b056d61429fb863e5448ee3a48d",
+          "1c246a266a7d4cbc8a5f2fa32d304ebd",
+          "b87565c5aa164eb9bac8ae45037674d6"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T14:56:01.007Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:a4760002-e032-4761-b8a7-525f25e0c63f",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-starflyer-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-starflyer-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-0b298586d914cd",
+      "name": "Orlando SlingShot",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Reverse bungee",
+      "locality": "8433 International Drive, Orlando, Floride, États-Unis",
+      "siteId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T15:18:34.411Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie spécifique et heures « 10:00am – Late » affichées sur le site de l’exploitant au 1er novembre 2026.",
+      "identityConfidence": "Nouvelle découverte hors inventaire ; exploitant, billets et emplacement propres. Recherches officielles Park/Standalone Orlando SlingShot et SlingShot sans fiche.",
+      "possibleMatches": [],
+      "aliases": [
+        "Orlando Slingshot",
+        "SlingShot Orlando",
+        "ICON Park SlingShot"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T15:13:25.226Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-aa5b1ba7-dd38-4440-850f-7ad5fd4a73dc",
+          "appliedAt": "2026-11-01T15:08:05.602Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:apply:aa5b1ba7-dd38-4440-850f-7ad5fd4a73dc",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après découverte hors inventaire, identité et huit descriptions"
+        },
+        {
+          "eventId": "apply-a7d3e3fb-75fb-4dbc-917e-41bcc3d6e27e",
+          "appliedAt": "2026-11-01T15:10:46.736Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:apply:a7d3e3fb-75fb-4dbc-917e-41bcc3d6e27e",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels TTC et condition de paiement en espèces intégrés en USD"
+        },
+        {
+          "eventId": "image-2b84146f32a2406c80eaca5a4cc8c081",
+          "appliedAt": "2026-11-01T15:12:51.895Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:image:2b84146f32a2406c80eaca5a4cc8c081",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte d’Orlando SlingShot importée sous CC BY 4.0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-1f065235b3d44d148dce852caf5c5d51",
+          "appliedAt": "2026-11-01T15:13:25.226Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:image:1f065235b3d44d148dce852caf5c5d51",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte d’Orlando SlingShot importée sous CC BY 4.0, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "closure-1f065235b3d44d148dce852caf5c5d51",
+          "appliedAt": "2026-11-01T15:13:25.226Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+          "evidence": "PARK_DATA_EDITOR:image:1f065235b3d44d148dce852caf5c5d51",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-slingshot-20261101/audit.json",
+          "summary": "Audit 81/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Obtenir une heure de fermeture fiable de l’exploitant avant toute règle horaire ; revérifier prix, remise espèces et conditions. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Orlando SlingShot — site officiel, prix, conditions et horaires non précis",
+          "url": "https://orlandoslingshot.net/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "ICON Park — horaires spéciaux, contrôle contextuel sans extrapolation",
+          "url": "https://iconparkorlando.com/icon-park-special-hours/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Coasterpedia — photo des deux tours Orlando SlingShot",
+          "url": "https://coasterpedia.net/wiki/File:Orlando_SlingShot_2023_02.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Coasterpedia — photo de la structure Orlando SlingShot",
+          "url": "https://coasterpedia.net/wiki/File:Orlando_SlingShot_2023_01.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Orlando SlingShot",
+            "source": "Orlando SlingShot — site officiel",
+            "url": "https://orlandoslingshot.net/",
+            "family": "Reverse bungee",
+            "sourceVenueName": "Orlando SlingShot",
+            "sourceLifecycleSignal": "Billetterie spécifique et site actif au 1er novembre 2026",
+            "sourceLocality": "International Drive, Orlando",
+            "matchingMethod": "Exploitant, billets et adresse propres ; recherches officielles Park/Standalone sans fiche"
+          }
+        ],
+        "rationale": "L’attraction est opérée avec sa billetterie propre sur International Drive, distincte de l’entrée des attractions voisines."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/2a0c4cab-6d8e-45a4-a0d2-01329f001af7/orlando-slingshot",
+          "publishedAtUtc": "2026-11-01T15:16:03.370Z",
+          "verifiedAtUtc": "2026-11-01T15:18:34.411Z",
+          "evidence": "PARK_DATA_EDITOR:apply:5169e51a-baa0-4eaa-bb3b-80db24251eda"
+        },
+        "facebook": {
+          "id": "c125ea57b6f6424ea4c6721d71450f48",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T15:17:11.355Z",
+          "externalPostId": "1285475681307050_122125620675424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125620675424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:c125ea57b6f6424ea4c6721d71450f48"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "2b84146f32a2406c80eaca5a4cc8c081",
+          "1f065235b3d44d148dce852caf5c5d51"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T15:15:20.488Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:b2542600-7421-4e80-958c-ac727addfa9c",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-slingshot-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-orlando-slingshot-20261101/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-0cb8cee26bb3f2b9",
+      "name": "San Francisco Carousel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Carrousel",
+      "locality": "Pier 39, Beach Street & The Embarcadero, San Francisco, Californie 94133, États-Unis",
+      "siteId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T16:07:48.967Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Site direct, billetterie et fiche PIER 39 actifs au 1er novembre 2026.",
+      "identityConfidence": "Nouvelle découverte hors inventaire ; identité, emplacement et billet propre vérifiés ; recherches officielles Park/Standalone San Francisco Carousel, Carousel et Pier 39 sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Pier 39 Carousel",
+        "Carousel at Pier 39"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T16:04:55.689Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-21af2e61-f194-4a4d-80c9-b9a5a8c81969",
+          "appliedAt": "2026-11-01T16:01:58.487Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:apply:21af2e61-f194-4a4d-80c9-b9a5a8c81969",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après découverte hors inventaire : identité et huit descriptions"
+        },
+        {
+          "eventId": "apply-4b02e42a-d7f4-4cdd-8b25-fd1e5d4c1af0",
+          "appliedAt": "2026-11-01T16:03:20.568Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:apply:4b02e42a-d7f4-4cdd-8b25-fd1e5d4c1af0",
+          "auditEvidence": null,
+          "summary": "Horaire officiel Pier 39 intégré avec réserve météo"
+        },
+        {
+          "eventId": "image-867b606be4e745af84161c8c74d5b96c",
+          "appliedAt": "2026-11-01T16:04:07.726Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:image:867b606be4e745af84161c8c74d5b96c",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte du San Francisco Carousel importée avec licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-260b05b3358b486086aa3c6e06f5b1ea",
+          "appliedAt": "2026-11-01T16:04:28.368Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:image:260b05b3358b486086aa3c6e06f5b1ea",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte du San Francisco Carousel importée avec licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-f65d734ef7604c17a712d41d12cb6167",
+          "appliedAt": "2026-11-01T16:04:55.689Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:image:f65d734ef7604c17a712d41d12cb6167",
+          "auditEvidence": null,
+          "summary": "Photo 3 exacte du San Francisco Carousel importée avec licence et textes en huit langues"
+        },
+        {
+          "eventId": "closure-f65d734ef7604c17a712d41d12cb6167",
+          "appliedAt": "2026-11-01T16:04:55.689Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+          "evidence": "PARK_DATA_EDITOR:image:f65d734ef7604c17a712d41d12cb6167",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-san-francisco-carousel-20261101/audit.json",
+          "summary": "Audit final 78/100 sans blocage et trois photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Confirmer le prix courant sur l’affichage officiel ou la billetterie du carrousel avant de l’intégrer ; revérifier les horaires en cas de météo défavorable. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "San Francisco Carousel et Bay Plunge — site direct et conditions de billet",
+          "url": "https://www.sfcarousel.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "PIER 39 — carrousel, horaires et description",
+          "url": "https://www.pier39.com/attraction/san-francisco-carousel/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — point du San Francisco Carousel",
+          "url": "https://www.openstreetmap.org/node/128240118",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — San Francisco Carousel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:San_Francisco_Carousel_at_Pier_39.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — San Francisco Carousel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Pier_39_carousel_San_Francisco_2019.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — San Francisco Carousel, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Fisherman%E2%80%99s_Wharf_-_April_2018_%286232%29.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "San Francisco Carousel",
+            "source": "San Francisco Carousel — site direct",
+            "url": "https://www.sfcarousel.com/",
+            "family": "Carrousel",
+            "sourceVenueName": "Pier 39",
+            "sourceLifecycleSignal": "Billetterie et page directes actives au 1er novembre 2026",
+            "sourceLocality": "San Francisco",
+            "matchingMethod": "Billet propre sur promenade commerciale ouverte ; recherches officielles Park/Standalone négatives"
+          }
+        ],
+        "rationale": "Le carrousel dispose de sa caisse et de ses billets propres sur Pier 39, promenade commerciale ouverte et non parc à billet unique."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/da3367d0-cdca-4fbe-8790-364ac656da4c/san-francisco-carousel",
+          "publishedAtUtc": "2026-11-01T16:06:18.064Z",
+          "verifiedAtUtc": "2026-11-01T16:07:48.967Z",
+          "evidence": "PARK_DATA_EDITOR:apply:18edee89-d2bf-4b78-b2c3-8b509b0f2d28"
+        },
+        "facebook": {
+          "id": "febc2afd97ad4f44b707abe27ce9bdfb",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T16:07:06.282Z",
+          "externalPostId": "1285475681307050_122125625403424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125625403424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:febc2afd97ad4f44b707abe27ce9bdfb"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "867b606be4e745af84161c8c74d5b96c",
+          "260b05b3358b486086aa3c6e06f5b1ea",
+          "f65d734ef7604c17a712d41d12cb6167"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T16:05:38.257Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:c182b724-d2df-4cef-82b5-8ee250055fdf",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-san-francisco-carousel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-san-francisco-carousel-20261101/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-340f6212f0ce2e21",
+      "name": "SlotZilla Zip Line",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne",
+      "locality": "425 Fremont St #160, Las Vegas, Nevada 89101",
+      "siteId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating ; horaires courants indiqués sur la page officielle de SlotZilla.",
+      "identityConfidence": "Billetterie, tour, parcours et adresse propres ; recherche officielle sans fiche Park ni Standalone sous SlotZilla, Fremont Street, Zip-Zilla ou Zoom Line.",
+      "possibleMatches": [],
+      "aliases": [
+        "SlotZilla",
+        "Slotzilla Zipline",
+        "Zip-Zilla",
+        "Zoom Line"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T18:55:00.321Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-77a66c5b-0f36-473c-890e-4137657ee42b",
+          "appliedAt": "2026-11-02T18:49:53.233Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:apply:77a66c5b-0f36-473c-890e-4137657ee42b",
+          "auditEvidence": null,
+          "summary": "Création de la fiche autonome avec descriptions et coordonnées officielles en huit langues"
+        },
+        {
+          "eventId": "apply-40f45589-221b-4ce1-94ae-1af9af9444a8",
+          "appliedAt": "2026-11-02T18:52:08.853Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:apply:40f45589-221b-4ce1-94ae-1af9af9444a8",
+          "auditEvidence": null,
+          "summary": "Horaires nocturnes, conditions d’accès et deux tarifs dynamiques selon la source officielle"
+        },
+        {
+          "eventId": "image-3a04ca08f44e4193b7b54890ed4d5f97",
+          "appliedAt": "2026-11-02T18:52:30.009Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:3a04ca08f44e4193b7b54890ed4d5f97@2026-11-02T18:52:30.009Z",
+          "auditEvidence": null,
+          "summary": "Vue exacte de la tour SlotZilla importée depuis Commons, crédits et huit langues"
+        },
+        {
+          "eventId": "image-8d77894ea2eb45428a0a2b0f3552c102",
+          "appliedAt": "2026-11-02T18:52:54.115Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:8d77894ea2eb45428a0a2b0f3552c102@2026-11-02T18:52:54.115Z",
+          "auditEvidence": null,
+          "summary": "Deuxième photo exacte de la façade et de l’entrée importée avec crédits"
+        },
+        {
+          "eventId": "metadata-publish-3a04ca08f44e4193b7b54890ed4d5f97",
+          "appliedAt": "2026-11-02T18:53:23.523Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:3a04ca08f44e4193b7b54890ed4d5f97@2026-11-02T18:53:23.523Z",
+          "auditEvidence": null,
+          "summary": "Publication du média principal sous licence CC0"
+        },
+        {
+          "eventId": "metadata-publish-8d77894ea2eb45428a0a2b0f3552c102",
+          "appliedAt": "2026-11-02T18:53:43.719Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:8d77894ea2eb45428a0a2b0f3552c102@2026-11-02T18:53:43.719Z",
+          "auditEvidence": null,
+          "summary": "Publication du second média sous licence CC0"
+        },
+        {
+          "eventId": "metadata-final-8d77894ea2eb45428a0a2b0f3552c102",
+          "appliedAt": "2026-11-02T18:55:00.321Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+          "evidence": "PARK_DATA_EDITOR:image:8d77894ea2eb45428a0a2b0f3552c102@2026-11-02T18:55:00.321Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-slotzilla-20261102/audit.json",
+          "summary": "Description du second média distinguée après contrôle éditorial"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revoir tarifs, horaires et conditions avec l’exploitant avant novembre 2027 ; rechercher des photos CC0/CC BY montrant aussi les personnes en vol. Publication Facebook déjà faite ; ne pas la répéter pour ce lot.",
+      "sources": [
+        {
+          "label": "Fremont Street Experience — page officielle SlotZilla, deux parcours, tarifs, horaires et conditions",
+          "url": "https://fremontstreetexperience.com/slotzilla-zip-line/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — tour SlotZilla, Julian Lupyan, CC0 1.0, 2025",
+          "url": "https://commons.wikimedia.org/wiki/File:Slotzilla_at_the_Fremont_Street_Experience.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — façade et entrée, Julian Lupyan, CC0 1.0, 2025",
+          "url": "https://commons.wikimedia.org/wiki/File:Slotzilla_at_the_Fremont_Street_Experience_2.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique SlotZilla Zip Line",
+          "url": "https://amusement-parks.fun/fr/attraction/515db5e7-8c07-452f-83c9-ba9af1b50a2e/slotzilla-zip-line",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Découverte hors catalogue et vérification des alias dans les recherches officielles Park et Standalone.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "SlotZilla Zip Line",
+            "source": "Fremont Street Experience",
+            "url": "https://fremontstreetexperience.com/slotzilla-zip-line/",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "Fremont Street Experience",
+            "sourceLifecycleSignal": "Operating, horaires et billets publiés",
+            "sourceLocality": "Las Vegas, Nevada"
+          }
+        ],
+        "rationale": "Attraction fixe à billets séparés et tour propre au sein d’une rue de loisirs ; Fremont Street Experience n’est pas un parc structuré avec zones et parkItems."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/515db5e7-8c07-452f-83c9-ba9af1b50a2e/slotzilla-zip-line",
+          "publishedAtUtc": "2026-11-02T18:56:29.876Z",
+          "verifiedAtUtc": "2026-11-02T18:59:23.691Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c45d33b3-6d97-4b1a-80b0-8c31c92bbc48"
+        },
+        "facebook": {
+          "id": "da5511302ece4845874f620786204281",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T18:58:19.9674907Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125770513424431",
+          "externalPostId": "1285475681307050_122125770513424431",
+          "url": "https://amusement-parks.fun/fr/attraction/515db5e7-8c07-452f-83c9-ba9af1b50a2e/slotzilla-zip-line"
+        }
+      }
+    },
+    {
+      "entryId": "US-candidate-discovery-2201321359d5bd88",
+      "name": "SkyJump Las Vegas",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Descente contrôlée",
+      "locality": "The STRAT, 2000 Las Vegas Blvd S, Las Vegas, NV 89104",
+      "siteId": "86100cec-397a-44a4-8c02-9803753665dd",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating ; horaires mercredi–dimanche 12 h–20 h annoncés par The STRAT, lundi et mardi fermés, sous réserve de météo.",
+      "identityConfidence": "SkyJump à billet propre, sans fiche Park/Standalone correspondante ; le seul item de Stratosphere Tower est High Roller (fermé en 2005), vérifié par ExportPark officiel. Aucune migration de cet item historique.",
+      "possibleMatches": [],
+      "aliases": [
+        "SkyJump",
+        "The STRAT SkyJump",
+        "SkyJump at the STRAT"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T19:15:37.548Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-732b8ad4-9de7-4bae-811f-f730de0e8f1e",
+          "appliedAt": "2026-11-02T19:13:12.942Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86100cec-397a-44a4-8c02-9803753665dd",
+          "evidence": "PARK_DATA_EDITOR:apply:732b8ad4-9de7-4bae-811f-f730de0e8f1e",
+          "auditEvidence": null,
+          "summary": "Création privée de SkyJump avec identité, lieu et huit descriptions"
+        },
+        {
+          "eventId": "apply-2b402fa5-7fdb-4ddb-a08a-bd0961489f92",
+          "appliedAt": "2026-11-02T19:14:03.592Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86100cec-397a-44a4-8c02-9803753665dd",
+          "evidence": "PARK_DATA_EDITOR:apply:2b402fa5-7fdb-4ddb-a08a-bd0961489f92",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès, horaires météo et tarifs selon The STRAT intégrés"
+        },
+        {
+          "eventId": "image-31adadfc92914159bdaad50ee5930993",
+          "appliedAt": "2026-11-02T19:15:16.005Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86100cec-397a-44a4-8c02-9803753665dd",
+          "evidence": "PARK_DATA_EDITOR:image:31adadfc92914159bdaad50ee5930993@2026-11-02T19:15:16.005Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de SkyJump importée depuis Wikimedia Commons avec crédits dans huit langues"
+        },
+        {
+          "eventId": "metadata-publish-31adadfc92914159bdaad50ee5930993",
+          "appliedAt": "2026-11-02T19:15:37.548Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86100cec-397a-44a4-8c02-9803753665dd",
+          "evidence": "PARK_DATA_EDITOR:image:31adadfc92914159bdaad50ee5930993@2026-11-02T19:15:37.548Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyjump-qualification-20261102/audit.json",
+          "summary": "Photo SkyJump CC0 publiée après contrôle de la source et de la licence"
+        }
+      ],
+      "nextAction": "Conserver la ligne, les reçus, la photo et le post Facebook. Revoir horaires, météo et tarifs avant novembre 2027 ; chercher une seconde photo réutilisable avec participant en descente. Le Park legacy masqué et son High Roller historique restent à traiter séparément. Ne pas republier Facebook pour ce lot.",
+      "sources": [
+        {
+          "label": "The STRAT — SkyJump, tarifs, horaires, accès et fonctionnement officiels",
+          "url": "https://thestrat.com/attractions/skyjump",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — plateforme SkyJump, DCAllStar, CC0 1.0, février 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:SkyJump_Las_Vegas.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "RCDB — Stratosphere Tower, piste de fiche legacy (identité du parkItem à confirmer)",
+          "url": "https://rcdb.com/4556.htm",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique SkyJump Las Vegas",
+          "url": "https://amusement-parks.fun/fr/attraction/86100cec-397a-44a4-8c02-9803753665dd/skyjump-las-vegas",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Recherche indépendante de descente contrôlée, vérification source exploitant, photo Commons et recherche officielle site/legacy.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "SkyJump Las Vegas",
+            "source": "The STRAT — SkyJump",
+            "url": "https://thestrat.com/attractions/skyjump",
+            "family": "Descente contrôlée fixe",
+            "sourceVenueName": "The STRAT Hotel, Casino & Tower",
+            "sourceLifecycleSignal": "Operating, billets et horaires en cours publiés",
+            "sourceLocality": "Las Vegas, Nevada"
+          }
+        ],
+        "rationale": "Descente fixe à billet propre dans une tour d’hôtel touristique ; la seule attraction du Park legacy est High Roller, fermée en 2005, sans lien d’identité avec SkyJump."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/86100cec-397a-44a4-8c02-9803753665dd/skyjump-las-vegas",
+          "publishedAtUtc": "2026-11-02T19:16:39.991Z",
+          "verifiedAtUtc": "2026-11-02T19:18:29.129Z",
+          "evidence": "PARK_DATA_EDITOR:apply:1adb9139-de76-46f5-a776-da079b9472cd"
+        },
+        "facebook": {
+          "id": "461292bc68b44c1e8189fca68523c73e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T19:17:43.0040231Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125773357424431",
+          "externalPostId": "1285475681307050_122125773357424431",
+          "url": "https://amusement-parks.fun/fr/attraction/86100cec-397a-44a4-8c02-9803753665dd/skyjump-las-vegas"
+        }
+      }
     }
   ]
 }

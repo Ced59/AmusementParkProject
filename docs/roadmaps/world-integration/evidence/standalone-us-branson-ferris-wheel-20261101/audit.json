@@ -1,0 +1,92 @@
+{
+  "name": "The Branson Ferris Wheel",
+  "entryId": "US-candidate-3b680ad27a9128",
+  "standaloneAttractionId": "b7d1a5db-854c-453a-add8-0d95751eedea",
+  "qualification": "Roue de Track 4 à tarif propre, distincte des autres activités du site.",
+  "decision": "Published",
+  "score": 81,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 2,
+    "weeklyRules": 0,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "L’exploitant ne publie pas d’horaire hebdomadaire stable : consulter son calendrier du jour avant toute saisie de créneaux."
+  ],
+  "sources": [
+    {
+      "label": "The Track — Branson Ferris Wheel, tarifs et consignes officiels",
+      "url": "https://bransontracks.com/branson-ferris-wheel-homepage/"
+    },
+    {
+      "label": "Book.Branson — roue à Track 4, adresse propre",
+      "url": "https://book.branson.com/attractions/the-branson-ferris-wheel"
+    },
+    {
+      "label": "OpenStreetMap / Nominatim — périmètre de la roue",
+      "url": "https://www.openstreetmap.org/way/523737192"
+    },
+    {
+      "label": "Wikimedia Commons — Branson Ferris Wheel, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel,_Branson,_MO_IMG_1680_(2).JPG"
+    },
+    {
+      "label": "Wikimedia Commons — Branson Ferris Wheel, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Framing-Ferris_Wheel.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "91577beba83c410c92b3389ee90be2e7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ferris_wheel,_Branson,_MO_IMG_1680_(2).JPG",
+      "author": "Billy Hathorn",
+      "date": "2018-04-13",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "subject": "La Branson Ferris Wheel vue depuis la route 76",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "fe560586e48644259b13214ddd88814c",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Framing-Ferris_Wheel.jpg",
+      "author": "SharonDawn",
+      "date": "2019-11-09 13:23:21",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "subject": "Cabines rouges de la Branson Ferris Wheel derrière sa structure",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "7a562be976b27b9985fa05658f35a76b9ffa854828a4ed639efe1c6da4f83053",
+    "projectedScore": 81,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T12:10:16.780Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T12:06:27.113Z",
+    "photosPublishedAtUtc": "2026-11-01T12:07:15.683Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:e89888d2-c2ff-4ca8-9293-a8e6343f2d59"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/b7d1a5db-854c-453a-add8-0d95751eedea/the-branson-ferris-wheel",
+      "publishedAtUtc": "2026-11-01T12:07:43.256Z",
+      "applyOperationId": "4ac22e24-dad7-4a45-a081-5645aaf30615"
+    },
+    "facebook": {
+      "id": "11988982d40c4fb08f338d248c0dadfb",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T12:08:30.080Z",
+      "externalPostId": "1285475681307050_122125601877424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125601877424431"
+    }
+  }
+}

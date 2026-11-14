@@ -1,0 +1,110 @@
+{
+  "work": "Discovered Golden Reel outside the prior Macau backlog. Official editor searches for Golden Reel and Studio City in parks and standalone attractions found no counterpart. Studio City currently sells a separate wheel ticket. Created the standalone, added eight descriptions, the current MOP 100 standard fare and child access rule, imported two exact CC BY-SA 4.0 photographs, verified all eight public pages and both image binaries HTTP 200, and published Facebook.",
+  "qualification": "A fixed figure-eight observation wheel inside the Studio City hotel and casino complex, with its own ticket and entrance on level 3 of the East Wing. No amusement park parent is represented by the complex.",
+  "sources": {
+    "operatorRide": "https://www.studiocity-macau.com/en/attractions/golden-reel",
+    "operatorAddress": "https://www.studiocity-macau.com/en/contact-us",
+    "scenicCommons": "https://commons.wikimedia.org/wiki/File:Studio-City-Lucky-8.jpg",
+    "recentCommons": "https://commons.wikimedia.org/wiki/File:Studio_City_Golden_Reel_26-02-2023.jpg",
+    "openStreetMapStudioCity": "https://www.openstreetmap.org/search?query=Studio%20City%20Macau"
+  },
+  "duplicateSearches": {
+    "standaloneGoldenReel": 0,
+    "standaloneStudioCity": 0,
+    "parkGoldenReel": 0,
+    "parkStudioCity": 0
+  },
+  "entity": {
+    "id": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+    "name": "Golden Reel",
+    "kind": "StandaloneAttraction",
+    "countryCode": "MO",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "792c4015-f47d-4066-8862-707edc1c5364",
+      "appliedAtUtc": "2026-11-14T19:13:29.1908571Z",
+      "summary": "Created hidden standalone with eight descriptions and venue coordinates."
+    },
+    {
+      "imageId": "2dcca4c36c724d8ba875335d44a3387f",
+      "createdAtUtc": "2026-11-14T19:14:06.247Z",
+      "summary": "Imported 2016 photo of the exact figure-eight wheel, CC BY-SA 4.0."
+    },
+    {
+      "imageId": "1702179793ce40b0ba8f98a05c18f66a",
+      "createdAtUtc": "2026-11-14T19:14:25.660Z",
+      "summary": "Imported 2023 photo of the exact wheel, CC BY-SA 4.0."
+    },
+    {
+      "operationId": "73b51fe8-3f9b-4b3f-8f18-4ffcd3b443ba",
+      "appliedAtUtc": "2026-11-14T19:15:28.1913417Z",
+      "summary": "Added official MOP 100 fare and child accompaniment condition."
+    },
+    {
+      "operationId": "cfae1346-d291-4683-ac1c-9e0314c7449b",
+      "appliedAtUtc": "2026-11-14T19:16:42.686964Z",
+      "summary": "Refined eight descriptions to pass public text quality."
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "2dcca4c36c724d8ba875335d44a3387f",
+      "subject": "Exact Golden Reel wheel seen between Studio City towers",
+      "author": "Bjørn Christian Tørrissen",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2016-02-22",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "1702179793ce40b0ba8f98a05c18f66a",
+      "subject": "Exact Golden Reel wheel in the background of Cotai construction",
+      "author": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2023-02-26",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "pricingDecision": "Operator lists a standard Golden Reel ticket at MOP 100; verified 2026-11-14. Under age two free with valid ID; children up to twelve require adult accompaniment.",
+    "hoursDecision": "Operator lists 14:00–20:00 but directs visitors to a separate calendar for dark days. No unconditional weekly timetable was entered.",
+    "coordinatesDecision": "Approximate Studio City complex center from OpenStreetMap; exact level 3 East Wing entrance remains to verify."
+  },
+  "audit": {
+    "completenessScore": 78,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/a241ed1c-6ce5-456b-8126-8c1d7f08c50e/golden-reel",
+    "sitePublishedAtUtc": "2026-11-14T19:18:17.2925353Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:8c549e3d-1042-4abb-bdcb-eecf68ae24bd",
+    "facebookStatus": "Published",
+    "facebookId": "410a6829bad74b999ab5359e4ff46e97",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127362055424431",
+    "facebookPublishedAtUtc": "2026-11-14T19:19:04.3468157Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T19:16:42.686Z",
+  "remainingGaps": [
+    "Check the official dark-day calendar before displaying a structured weekly schedule.",
+    "Verify the exact wheel entrance coordinates rather than the hotel center.",
+    "Consider a more recent unobstructed free photograph when available."
+  ]
+}

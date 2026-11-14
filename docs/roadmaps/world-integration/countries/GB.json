@@ -420,20 +420,20 @@
     },
     {
       "entryId": "GB-candidate-standalone-e1ac3bd2b32736",
-      "name": "Alpine Coaster Wiegand — Snowdonia",
+      "name": "Fforest Coaster — piste Wiegand Snowdonia",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-14",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "La piste du constructeur correspond au Fforest Coaster du parc Zip World Fforest déjà masqué.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -442,29 +442,45 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver comme indice du ParkItem Fforest Coaster dans Zip World Fforest ; aucune fiche standalone à créer.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=199#location-id-1963",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — Fforest Coaster",
+          "url": "https://www.zipworld.co.uk/adventures/fforest-coaster",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — autres activités du site",
+          "url": "https://www.zipworld.co.uk/locations/betws-y-coed",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — photo du parcours et coordonnées",
+          "url": "https://commons.wikimedia.org/wiki/File:Rope_hauled_ascent_of_the_Alpine_Coaster_-_geograph.org.uk_-_7563014.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
-            "name": "Snowdonia",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=199#location-id-1963",
+            "name": "Fforest Coaster",
+            "source": "Exploitant",
+            "url": "https://www.zipworld.co.uk/adventures/fforest-coaster",
             "family": "Alpine coaster",
-            "sourceVenueName": "Snowdonia",
-            "referenceId": "location-id-1963"
+            "sourceVenueName": "Zip World Fforest",
+            "sourceLocality": "Betws-y-Coed, Pays de Galles"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Le Fforest Coaster est vendu au sein du site Zip World Fforest qui propose aussi tyroliennes, parcours en hauteur et chute libre ; fiche Park existante masquée. La piste Wiegand Snowdonia est le même lieu, pas une nouvelle standalone."
+      },
+      "duplicateOf": "GB-park-d79f8049-5df6-4800-8a11-dbb15677baca"
     },
     {
       "entryId": "GB-park-ee5582f9-0de4-4906-923c-5e564df16c2a",
@@ -8498,29 +8514,82 @@
     },
     {
       "entryId": "GB-candidate-standalone-7fe2cfe1af8ee8",
-      "name": "Luge Wiegand — Chatham",
-      "entityKind": "ToQualify",
+      "name": "Chatham Toboggan Run",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Capstone Road, Gillingham ME7 3JH, Kent",
+      "siteId": "5741e424-fd83-45bd-adbc-0f94155bba51",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T13:08:08.966Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation, réservation et tarifs confirmés par l’exploitant le 2 novembre 2026.",
+      "identityConfidence": "Piste propre et billetterie séparée au centre de sports de neige ; trois photos exactes vérifiées ; aucune fiche homonyme dans l’éditeur officiel.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Chatham"
+        "Chatham Snowsports Centre Toboggan",
+        "Chatham Ski Centre Toboggan",
+        "Luge Wiegand — Chatham"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T13:07:35.827Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-37309895-b015-45b1-99d1-22bd71d1bc88",
+          "appliedAt": "2026-11-02T13:04:21.748Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:apply:37309895-b015-45b1-99d1-22bd71d1bc88",
+          "auditEvidence": null,
+          "summary": "Création masquée de la fiche et huit descriptions"
+        },
+        {
+          "eventId": "apply-81c37d14-b678-4063-b957-bda2debe3f16",
+          "appliedAt": "2026-11-02T13:04:47.015Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:apply:81c37d14-b678-4063-b957-bda2debe3f16",
+          "auditEvidence": null,
+          "summary": "Trois tarifs de descente officiels structurés et localisés"
+        },
+        {
+          "eventId": "image-f0cd13597b87428291c8b0e30d9c8005",
+          "appliedAt": "2026-11-02T13:07:12.884Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:image:f0cd13597b87428291c8b0e30d9c8005",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 de la piste publiée avec droits, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-c8f8c39720514af58c0d715ec4226073",
+          "appliedAt": "2026-11-02T13:07:24.320Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:image:c8f8c39720514af58c0d715ec4226073",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 de la piste publiée avec droits, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-0761d3dca9a14166bedb9529915ad55e",
+          "appliedAt": "2026-11-02T13:07:35.827Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5741e424-fd83-45bd-adbc-0f94155bba51",
+          "evidence": "PARK_DATA_EDITOR:image:0761d3dca9a14166bedb9529915ad55e",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-chatham-20261102/audit.json",
+          "summary": "Photo exacte 3 de la piste publiée avec droits, crédits et textes en huit langues"
+        }
+      ],
+      "nextAction": "Conserver le dossier et les reçus. Revoir tarif et disponibilité auprès de l’exploitant ; chercher des photos plus récentes sous licence réutilisable. Ne pas republier Facebook pour une simple révision.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -8531,11 +8600,36 @@
           "label": "Opérateur référencé par la source",
           "url": "http://jnlchatham.co.uk/tubing/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste, âge, réservation et tarifs",
+          "url": "https://www.jnlchatham.co.uk/tobogganing-sno-tubing-in-chatham/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — adresse",
+          "url": "https://www.jnlchatham.co.uk/contact-us/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — Robin Webster, photo 1, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805480.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — Robin Webster, photo 2, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805505.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — Robin Webster, photo 3, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Toboggan_run,_Chatham_Snowsports_Centre_-_geograph.org.uk_-_6805499.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "Chatham",
@@ -8546,7 +8640,7 @@
             "referenceId": "location-id-1414"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Les descentes ont une billetterie distincte des cours de ski et du tubing ; le centre de sports de neige n’est pas un parc de loisirs à admission obligatoire."
       }
     },
     {
@@ -8695,29 +8789,82 @@
     },
     {
       "entryId": "GB-candidate-standalone-dd9a76b82b3d48",
-      "name": "Luge Wiegand — Llandudno",
-      "entityKind": "ToQualify",
+      "name": "Cresta Toboggan Run — Llandudno",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Great Orme, Llandudno LL30 2LR, Wales",
+      "siteId": "5bea846d-6151-426a-bb62-d471326f8b36",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T12:54:59.804Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation et billet de deux descentes confirmés par l’exploitant le 2 novembre 2026 ; seulement par temps sec.",
+      "identityConfidence": "Piste Cresta propre au centre, billetterie autonome et deux photos exactes vérifiées ; aucune fiche homonyme dans l’éditeur officiel.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Llandudno"
+        "Llandudno Cresta Toboggan Run",
+        "Llandudno Snowsports Centre Toboggan",
+        "Luge Wiegand — Llandudno"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T12:54:31.716Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-597e246f-d502-4915-b8e3-b083e255cb78",
+          "appliedAt": "2026-11-02T12:50:03.278Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:apply:597e246f-d502-4915-b8e3-b083e255cb78",
+          "auditEvidence": null,
+          "summary": "Création masquée de la fiche et huit descriptions"
+        },
+        {
+          "eventId": "apply-1ba6c62a-17e1-421f-bdc9-fa05b0cf924d",
+          "appliedAt": "2026-11-02T12:50:34.100Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:apply:1ba6c62a-17e1-421f-bdc9-fa05b0cf924d",
+          "auditEvidence": null,
+          "summary": "Tarif officiel de deux descentes structuré"
+        },
+        {
+          "eventId": "image-6670e2df75a94e95a9b9e2ee402c46e7",
+          "appliedAt": "2026-11-02T12:53:24.408Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:image:6670e2df75a94e95a9b9e2ee402c46e7",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2006 publiée avec provenance corrigée, crédits et textes localisés"
+        },
+        {
+          "eventId": "image-7842239cf7034d81b90b2d60b8ca957e",
+          "appliedAt": "2026-11-02T12:53:36.382Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:image:7842239cf7034d81b90b2d60b8ca957e",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2011 publiée avec crédits et textes localisés"
+        },
+        {
+          "eventId": "apply-fde10798-cb57-451b-bda2-34c681ed3cce",
+          "appliedAt": "2026-11-02T12:54:31.716Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5bea846d-6151-426a-bb62-d471326f8b36",
+          "evidence": "PARK_DATA_EDITOR:apply:fde10798-cb57-451b-bda2-34c681ed3cce",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-llandudno-20261102/audit.json",
+          "summary": "Mesure reformulée dans les textes publics et audit final"
+        }
+      ],
+      "nextAction": "Conserver le dossier et les reçus. Revoir régulièrement tarif, longueur annoncée et conditions météorologiques sur le site officiel ; ne pas republier Facebook pour une simple révision.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -8728,11 +8875,31 @@
           "label": "Opérateur référencé par la source",
           "url": "http://jnlllandudno.co.uk/tubing/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste Cresta, tarifs et accès",
+          "url": "https://www.jnlllandudno.co.uk/tobogganing-sno-tubing-in-llandudno/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — adresse et horaires variables",
+          "url": "https://www.jnlllandudno.co.uk/opening-times/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — John Breakwell, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Llandudno_ski_centre_-_geograph.org.uk_-_479513.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons / Geograph — Jeremy Bolwell, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Part_of_the_ski_slope_and_toboggan_run_above_Happy_Valley_-_geograph.org.uk_-_2277676.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "Llandudno",
@@ -8743,7 +8910,7 @@
             "referenceId": "location-id-1410"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Billet de deux descentes vendu séparément par le centre de sports de neige, sans admission obligatoire à un parc de loisirs. Le site est un centre sportif et la luge possède sa propre activité et billetterie."
       }
     },
     {
@@ -12610,18 +12777,18 @@
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Ancien Alpine Coaster retiré avant 2019 ; le centre reste actif pour le ski et le tubing, sans cette piste dans l’offre officielle actuelle.",
+      "identityConfidence": "La fiche RCDB désigne une ancienne installation ; le reportage de 2019 constate sa disparition et l’exploitant ne propose plus de coaster.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver l’ancienne référence RCDB et cette exclusion. Réouvrir seulement si l’exploitant annonce et documente une nouvelle piste alpine à Stoke Ski Centre ; ne pas créer une fiche pour l’ancienne installation.",
       "sources": [
         {
           "label": "RCDB",
@@ -12632,11 +12799,21 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14141.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Racer Ready — reportage de 2019 sur la disparition de la piste",
+          "url": "https://www.racer-ready.co.uk/post/2019/8/20/the-evolving-nature-of-stoke-ski-centre-venue-for-the-british-dry-slope-championships-in-2019",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Exploitant — activités actuelles sans alpine coaster",
+          "url": "https://stokeskicentre.com/",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "Alpine Coaster",
@@ -12649,7 +12826,7 @@
             "sourceOpenedYear": "2003"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "L’ancienne piste de luge/alpine coaster a disparu avant 2019 ; le centre est toujours ouvert mais ses activités officielles actuelles ne comprennent plus cette installation. Dossier historique, hors file des créations actuelles."
       }
     },
     {
@@ -15033,13 +15210,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche Park masquée confirmée par le site de l’exploitant ; plusieurs activités distinctes sur place.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer éditorialement la fiche Park masquée, avec Fforest Coaster comme ParkItem et au moins une photographie exacte. Vérifier aussi les tyroliennes, parcours en hauteur et chute libre ; conserver l’indice Wiegand comme doublon documentaire.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -15055,13 +15232,23 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/14126.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — parc et activités",
+          "url": "https://www.zipworld.co.uk/locations/betws-y-coed",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — Fforest Coaster",
+          "url": "https://www.zipworld.co.uk/adventures/fforest-coaster",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "GB",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Fforest Coaster",
@@ -15074,7 +15261,7 @@
             "sourceOpenedYear": "2017"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Le site Zip World Fforest comprend plusieurs activités commercialisées ensemble ; Fforest Coaster est un ParkItem, non une standalone autonome."
       }
     },
     {
@@ -15454,6 +15641,639 @@
         "score": 92,
         "publicationBlockers": [],
         "gapCount": 5
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-87f09723f38fd673",
+      "name": "Wheel of Liverpool",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "4 Keel Wharf, Liverpool",
+      "siteId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T19:47:00Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Site exploitant actif le 14 novembre 2026, horaires quotidiens et billets standard affichés.",
+      "identityConfidence": "Exploitant et adresse propres ; recherches officielles Park et StandaloneAttraction sous Wheel of Liverpool, Liverpool Wheel et Echo Wheel sans résultat.",
+      "possibleMatches": [],
+      "aliases": [
+        "Echo Wheel of Liverpool",
+        "Liverpool Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T19:45:35.061Z",
+      "integrationHistory": [
+        {
+          "eventId": "4f9ab097-a124-4fbf-8431-7d1539373688",
+          "appliedAt": "2026-11-14T19:43:45.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:apply:4f9ab097-a124-4fbf-8431-7d1539373688",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et huit descriptions"
+        },
+        {
+          "eventId": "image-c072bdc5eac940b3a7dbc503b9c7877a",
+          "appliedAt": "2026-11-14T19:44:19.586Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:import-photo:c072bdc5eac940b3a7dbc503b9c7877a",
+          "auditEvidence": null,
+          "summary": "Photo exacte de jour, licence et crédits vérifiés"
+        },
+        {
+          "eventId": "image-eec904e60d5d4b109e0f8fcf5f2316ad",
+          "appliedAt": "2026-11-14T19:44:39.376Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:import-photo:eec904e60d5d4b109e0f8fcf5f2316ad",
+          "auditEvidence": null,
+          "summary": "Photo exacte de nuit, licence et crédits vérifiés"
+        },
+        {
+          "eventId": "e0840cc2-75ea-4068-be1d-f8ec207035ec",
+          "appliedAt": "2026-11-14T19:45:35.061Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+          "evidence": "PARK_DATA_EDITOR:apply:e0840cc2-75ea-4068-be1d-f8ec207035ec",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-wheel-of-liverpool-20261114/audit.json",
+          "summary": "Horaires, accessibilité et audit final de publication"
+        }
+      ],
+      "nextAction": "Conserver la fiche, les deux photos et les reçus. Vérifier le tarif standard actif sur la billetterie officielle, les horaires du jour et le retour éventuel de la cabine VIP lors du prochain rafraîchissement.",
+      "sources": [
+        {
+          "label": "Exploitant — présentation",
+          "url": "https://thewheelofliverpool.com/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — visite et horaires",
+          "url": "https://thewheelofliverpool.com/plan-your-visit/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — billets",
+          "url": "https://thewheelofliverpool.com/tickets/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — roue de jour",
+          "url": "https://commons.wikimedia.org/wiki/File:Wheel_of_Liverpool_-_geograph.org.uk_-_6101005.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — roue de nuit",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Wheel_of_Liverpool_-_geograph.org.uk_-_3780283.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Grande roue fixe à billetterie propre ; absence de doublon Park et StandaloneAttraction confirmée par le client officiel ; fiche autonome publiée avec deux photos exactes."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac/wheel-of-liverpool",
+          "publishedAtUtc": "2026-11-14T19:46:55.675Z",
+          "verifiedAtUtc": "2026-11-14T19:47:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:6511d1bc-8d2b-4883-a457-e72bd197027c"
+        },
+        "facebook": {
+          "id": "85b7f13467d5446fb7c64a8310e6641c",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T19:49:41.770Z",
+          "externalPostId": "1285475681307050_122127365043424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127365043424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:85b7f13467d5446fb7c64a8310e6641c"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-wheel-of-liverpool-20261114/audit.json",
+        "score": 75,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-917b72e4fb69d19a",
+      "name": "The Falkirk Wheel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Élévateur rotatif à bateaux et excursion",
+      "locality": "Lime Road, Falkirk FK1 4RS",
+      "siteId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:00:45Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant Scottish Canals : excursions en bateau tarifées, horaires hiver 2026/2027 publiés au 14 novembre 2026.",
+      "identityConfidence": "Nom, adresse et exploitant officiels ; recherches Park/Standalone Falkirk Wheel, The Falkirk Wheel et Falkirk sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Falkirk Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T19:59:52.206Z",
+      "integrationHistory": [
+        {
+          "eventId": "93d3a701-bdde-413c-b1a5-4f8ad0ff6434",
+          "appliedAt": "2026-11-14T19:54:15.259Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:apply:93d3a701-bdde-413c-b1a5-4f8ad0ff6434",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et huit descriptions"
+        },
+        {
+          "eventId": "image-a9ee71ac623e464783b7f3d6f304428d",
+          "appliedAt": "2026-11-14T19:55:11Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:import-photo:a9ee71ac623e464783b7f3d6f304428d",
+          "auditEvidence": null,
+          "summary": "Photo latérale exacte et créditée"
+        },
+        {
+          "eventId": "image-9bb6505566864cc6ae118a2baeb6cfce",
+          "appliedAt": "2026-11-14T19:55:33Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:import-photo:9bb6505566864cc6ae118a2baeb6cfce",
+          "auditEvidence": null,
+          "summary": "Photo frontale exacte et créditée"
+        },
+        {
+          "eventId": "fc759688-a28d-4898-b287-ca90c75ef621",
+          "appliedAt": "2026-11-14T19:57:17.654Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:apply:fc759688-a28d-4898-b287-ca90c75ef621",
+          "auditEvidence": null,
+          "summary": "Tarifs minimums dynamiques et conditions de réservation"
+        },
+        {
+          "eventId": "d8675d96-2275-4e06-8c74-fa771ca4401d",
+          "appliedAt": "2026-11-14T19:59:52.206Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+          "evidence": "PARK_DATA_EDITOR:apply:d8675d96-2275-4e06-8c74-fa771ca4401d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-falkirk-wheel-20261114/audit.json",
+          "summary": "Descriptions corrigées et audit final sans blocage"
+        }
+      ],
+      "nextAction": "Conserver les reçus, les deux photos exactes et les publications. Recontrôler les créneaux de départ, les horaires saisonniers du centre et les tarifs minimums dans la billetterie officielle lors du prochain rafraîchissement.",
+      "sources": [
+        {
+          "label": "Scottish Canals — installation, excursions, horaires et prix",
+          "url": "https://www.scottishcanals.co.uk/visit/canals/visit-the-forth-clyde-canal/attractions/the-falkirk-wheel",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Scottish Canals — adresse",
+          "url": "https://www.scottishcanals.co.uk/visit/canals/visit-the-forth-clyde-canal/attractions/the-falkirk-wheel/location",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Scottish Canals — description de l’excursion",
+          "url": "https://www.scottishcanals.co.uk/visit/canals/visit_falkirk_wheel",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — roue de côté, septembre 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Falkirk_Wheel_-_geograph.org.uk_-_8416990.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — roue de face, septembre 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:The_Falkirk_Wheel_-_geograph.org.uk_-_8417000.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Élévateur à bateaux fixe avec excursion réservée et tarifée séparément ; pas de parc d’attractions à billet commun. Recherches officielles Park et StandaloneAttraction négatives avant création."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6/the-falkirk-wheel",
+          "publishedAtUtc": "2026-11-14T20:00:25.798Z",
+          "verifiedAtUtc": "2026-11-14T20:00:45Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2bcb093e-b495-40af-bde4-656d300bf939"
+        },
+        "facebook": {
+          "id": "bc535e30d5604a919e5750419168fdc8",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T20:01:15.569Z",
+          "externalPostId": "1285475681307050_122127366033424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127366033424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:bc535e30d5604a919e5750419168fdc8"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-falkirk-wheel-20261114/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-853eb2916325747e",
+      "name": "Brighton i360",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour d’observation mobile et capsule panoramique",
+      "locality": "Lower Kings Road, Brighton BN1 2LN",
+      "siteId": "e5307935-8773-462a-bf3d-7c0061615b31",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:21:50Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant Brighton i360 : réservation View 360 et calendrier de visites actifs le 14 novembre 2026.",
+      "identityConfidence": "Nom, adresse et exploitant officiels ; recherches Park et StandaloneAttraction sur i360 et Brighton sans fiche correspondante. Brighton Pier est un lieu distinct.",
+      "possibleMatches": [],
+      "aliases": [
+        "British Airways i360",
+        "BA i360"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T20:20:45.169Z",
+      "integrationHistory": [
+        {
+          "eventId": "06534d23-8761-404c-880d-06125f9b455c",
+          "appliedAt": "2026-11-14T20:15:23.500Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:apply:06534d23-8761-404c-880d-06125f9b455c",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et huit descriptions"
+        },
+        {
+          "eventId": "image-2ae3e3924b22476ea32370bb6535ef02",
+          "appliedAt": "2026-11-14T20:16:02Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:import-photo:2ae3e3924b22476ea32370bb6535ef02",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la capsule sous CC0"
+        },
+        {
+          "eventId": "image-c03b2647645c4723b2df67af838ad8fe",
+          "appliedAt": "2026-11-14T20:16:25Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:import-photo:c03b2647645c4723b2df67af838ad8fe",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la tour sous CC BY-SA 4.0"
+        },
+        {
+          "eventId": "6718d087-a531-4f77-a3d6-aea84d57028d",
+          "appliedAt": "2026-11-14T20:19:11.200Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:apply:6718d087-a531-4f77-a3d6-aea84d57028d",
+          "auditEvidence": null,
+          "summary": "Descriptions corrigées et détails techniques structurés"
+        },
+        {
+          "eventId": "423d5951-8ca0-4dbc-9176-df019b00aa2f",
+          "appliedAt": "2026-11-14T20:20:45.169Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e5307935-8773-462a-bf3d-7c0061615b31",
+          "evidence": "PARK_DATA_EDITOR:apply:423d5951-8ca0-4dbc-9176-df019b00aa2f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-brighton-i360-20261114/audit.json",
+          "summary": "Tarif adulte actuel, audit final sans bloqueur et publication"
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
+      "sources": [
+        {
+          "label": "Brighton i360 — site officiel",
+          "url": "https://www.brightoni360.co.uk/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Brighton i360 — expérience et tarif View 360",
+          "url": "https://www.brightoni360.co.uk/experiences/see-brighton-from-above",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Brighton i360 — calendrier et adresse",
+          "url": "https://www.brightoni360.co.uk/plan-your-visit",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Brighton i360 — durée et accessibilité",
+          "url": "https://www.brightoni360.co.uk/faqs",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Nightcap — hauteur et date d’ouverture",
+          "url": "https://www.nightcapvenues.com/venues/brighton-i360",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — capsule, Andy Li, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Brighton_i360_with_the_moon_2025-07-02.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — tour entière, José Luiz, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Brighton_i360_-_Brighton_-_England_2024.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 423d5951-8ca0-4dbc-9176-df019b00aa2f ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e5307935-8773-462a-bf3d-7c0061615b31/brighton-i360",
+          "publishedAtUtc": "2026-11-14T20:21:37.987Z",
+          "verifiedAtUtc": "2026-11-14T20:21:50Z",
+          "evidence": "PARK_DATA_EDITOR:apply:d147a9b0-befb-42ba-a0f2-860e7b971bb8"
+        },
+        "facebook": {
+          "id": "3fb63aa4f8464b3989a341c02e8de18e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T20:22:34.723Z",
+          "externalPostId": "1285475681307050_122127368421424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127368421424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:3fb63aa4f8464b3989a341c02e8de18e"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-brighton-i360-20261114/audit.json",
+        "score": 79,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-fb1f66688697ac68",
+      "name": "London Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique urbain panoramique",
+      "locality": "Greenwich Peninsula Terminal, Edmund Halley Way, London SE10 0FR",
+      "siteId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T20:35:05Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Billetterie actuelle TfL et statut de service actif le 14 novembre 2026.",
+      "identityConfidence": "Nom actuel, deux gares et billetterie TfL officiels ; recherches Park/Standalone sur London Cable Car, IFS Cloud et Emirates Air Line sans correspondance.",
+      "possibleMatches": [],
+      "aliases": [
+        "IFS Cloud Cable Car",
+        "Emirates Air Line"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T20:33:58.516Z",
+      "integrationHistory": [
+        {
+          "eventId": "c78a0b38-2c80-4f11-b376-1aa853f74ac1",
+          "appliedAt": "2026-11-14T20:29:17.115Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:apply:c78a0b38-2c80-4f11-b376-1aa853f74ac1",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-378d5149fc0443e5a10a4b3df20becdd",
+          "appliedAt": "2026-11-14T20:29:56Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:import-photo:378d5149fc0443e5a10a4b3df20becdd",
+          "auditEvidence": null,
+          "summary": "Photo exacte des cabines, ancienne livrée IFS"
+        },
+        {
+          "eventId": "image-2247d70da3b14adab978a9220a1f8d1a",
+          "appliedAt": "2026-11-14T20:30:15Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:import-photo:2247d70da3b14adab978a9220a1f8d1a",
+          "auditEvidence": null,
+          "summary": "Seconde photo exacte de la ligne"
+        },
+        {
+          "eventId": "576e7830-e849-4511-83b2-e39c303f29f3",
+          "appliedAt": "2026-11-14T20:33:58.516Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+          "evidence": "PARK_DATA_EDITOR:apply:576e7830-e849-4511-83b2-e39c303f29f3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-london-cable-car-20261114/audit.json",
+          "summary": "Conditions d’accès, tarifs réconciliés, audit et publication"
+        }
+      ],
+      "nextAction": "Conserver la ligne ; suivre séparément la publication et les prochaines mises à jour.",
+      "sources": [
+        {
+          "label": "TfL — billetterie et tarifs",
+          "url": "https://cablecartickets.tfl.gov.uk/en",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "TfL — trajet et accessibilité",
+          "url": "https://cablecartickets.tfl.gov.uk/en/about-us",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "TfL — gare et horaires",
+          "url": "https://tfl.gov.uk/help-with-travel/ways-to-travel/cable-car-location-opening-hours",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "TfL — ouverture et rôle touristique",
+          "url": "https://tfl-newsroom.prgloo.com/news/tfl-press-release-new-sponsorship-underway-for-ifs-cloud-cable-car",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — cabines, David Martin",
+          "url": "https://commons.wikimedia.org/wiki/File:IFS_Cloud_Cable_Car_-_geograph.org.uk_-_7671942.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Commons — cabine et pylônes, Calum Taylor",
+          "url": "https://commons.wikimedia.org/wiki/File:IFS_Cloud_Cable_Car_-_geograph.org.uk_-_8293525.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration 576e7830-e849-4511-83b2-e39c303f29f3 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a05c8736-0ce5-4a3d-bcdc-fb4fc4904108/london-cable-car",
+          "publishedAtUtc": "2026-11-14T20:34:47.119Z",
+          "verifiedAtUtc": "2026-11-14T20:35:05Z",
+          "evidence": "PARK_DATA_EDITOR:apply:54c54879-8a99-4f7f-8705-536ed824d963"
+        },
+        "facebook": {
+          "id": "cd200cbf59fb4386a50afee0c880c5b2",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T20:35:43.338Z",
+          "externalPostId": "1285475681307050_122127369339424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127369339424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:cd200cbf59fb4386a50afee0c880c5b2"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-london-cable-car-20261114/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
+      "entryId": "GB-candidate-discovery-163104924676f7b4",
+      "name": "Llandudno Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "Happy Valley, Llandudno LL30 2LP",
+      "siteId": "b17dcec6-82dc-4dcd-93e5-85741b1e2520",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T21:13:30.278Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Visit Conwy décrit une exploitation saisonnière du printemps à la fin octobre, sous réserve de la météo.",
+      "identityConfidence": "Nom, terminus Happy Valley et Great Orme, durée et inauguration confirmés par Visit Conwy ; recherches officielles Park et StandaloneAttraction sans doublon.",
+      "possibleMatches": [],
+      "aliases": [
+        "Great Orme Cable Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T21:12:09.055Z",
+      "integrationHistory": [
+        {
+          "eventId": "bf91b871-dd10-4e8d-88c3-414853931c8c",
+          "appliedAt": "2026-11-14T21:07:11.173Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b17dcec6-82dc-4dcd-93e5-85741b1e2520",
+          "evidence": "PARK_DATA_EDITOR:apply:bf91b871-dd10-4e8d-88c3-414853931c8c",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et descriptions en huit langues"
+        },
+        {
+          "eventId": "87903659-af60-47da-a468-cda10e2a5374",
+          "appliedAt": "2026-11-14T21:12:09.055Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b17dcec6-82dc-4dcd-93e5-85741b1e2520",
+          "evidence": "PARK_DATA_EDITOR:apply:87903659-af60-47da-a468-cda10e2a5374",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-gb-llandudno-cable-car-20261114/audit.json",
+          "summary": "Conditions d’accès sourcées, deux photos exactes et audit éditorial"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les preuves. Vérifier le prochain tarif saisonnier et les horaires officiels, puis rechercher un exploitant et un modèle fiables ; ne pas déduire un horaire fixe des seules dates de saison.",
+      "sources": [
+        {
+          "label": "Visit Conwy — fiche touristique et conditions de visite",
+          "url": "https://visitconwy-ws.newmindmedia.com/things-to-do/llandudno-cable-car-p277371",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Visit Wales — durée de la traversée",
+          "url": "https://traveltrade.visitwales.com/itineraries/the-wales-way/highlights-the-cambrian-way-north-wales",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — cabines, Jim Osley",
+          "url": "https://commons.wikimedia.org/wiki/File:Llandudno_,_cable_cars,_Great_Orme_-_geograph.org.uk_-_7831977.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — station supérieure, Stephen Craven",
+          "url": "https://commons.wikimedia.org/wiki/File:Top_station_of_the_Great_Orme_cable_car_-_geograph.org.uk_-_7811574.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "GB",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Téléphérique fixe avec billetterie propre, distinct du tramway et de la luge du Great Orme ; fiche autonome sourcée et publiée avec deux photos exactes."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b17dcec6-82dc-4dcd-93e5-85741b1e2520/llandudno-cable-car",
+          "publishedAtUtc": "2026-11-14T21:13:30.278Z",
+          "verifiedAtUtc": "2026-11-14T21:14:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:3521e1a0-4a05-405f-854e-6312fa5e7e3d"
+        },
+        "facebook": {
+          "id": "ff61580eb9d24c10852099893d3b31cd",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T21:14:42.218Z",
+          "externalPostId": "1285475681307050_122127372411424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127372411424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:ff61580eb9d24c10852099893d3b31cd"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-gb-llandudno-cable-car-20261114/audit.json",
+        "score": 69,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     }
   ]

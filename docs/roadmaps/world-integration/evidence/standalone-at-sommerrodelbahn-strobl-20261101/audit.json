@@ -1,0 +1,104 @@
+{
+  "name": "Sommerrodelbahn Strobl am Wolfgangsee",
+  "entryId": "AT-candidate-standalone-42f17ac205f210",
+  "standaloneAttractionId": "e57823f1-4282-4a2d-893d-d5992504465c",
+  "qualification": "Deux pistes parallèles exploitées comme une seule attraction autonome avec billet commun ; aucune fiche Park ou Standalone « Strobl » dans le client officiel. Saison 2026 achevée, reprise annoncée avril 2027.",
+  "decision": "Published",
+  "score": 72,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "historicalAdmissionOffers": 5,
+    "regularRules": 0,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "La date exacte de reprise et les tarifs 2027 ne sont pas publiés.",
+    "Les photographies sont des vues historiques de 2008 ; poursuivre la recherche de clichés récents libres."
+  ],
+  "sources": [
+    {
+      "label": "Sommerrodelbahn Strobl — exploitant, deux pistes, tarifs 2026 et fin de saison",
+      "url": "https://www.rodelnamsee.at/"
+    },
+    {
+      "label": "Rodelwelten — adresse et coordonnées de l’accès",
+      "url": "https://www.rodelwelten.com/rodelbahnen/detail/sommerrodelbahn-strobl"
+    },
+    {
+      "label": "Wikimedia Commons — remontée et Wolfgangsee en 2008",
+      "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_03.JPG"
+    },
+    {
+      "label": "Wikimedia Commons — piste vers le lac en 2008",
+      "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_02.JPG"
+    },
+    {
+      "label": "Wikimedia Commons — base de la remontée en 2008",
+      "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_01.JPG"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "28c4112323f041bc9fb283b6d20b20c2",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_03.JPG",
+      "author": "Immanuel Giel",
+      "date": "2008-07-18",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Public_domain",
+      "subject": "Vue historique de la remontée de Strobl en 2008",
+      "transformation": "fichier original Wikimedia Commons, sans recadrage"
+    },
+    {
+      "imageId": "bbe25ff62f6246f19cae70aa9b4a00b8",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_02.JPG",
+      "author": "Immanuel Giel",
+      "date": "2008-07-18",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Public_domain",
+      "subject": "La piste de Strobl et le lac, photographiés en 2008",
+      "transformation": "fichier original Wikimedia Commons, sans recadrage"
+    },
+    {
+      "imageId": "3cf93574365a4a139f04c99aa5b9f7ca",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_01.JPG",
+      "author": "Immanuel Giel",
+      "date": "2008-07",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Public_domain",
+      "subject": "Départ de la remontée en 2008 ; vue historique",
+      "transformation": "fichier original Wikimedia Commons, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "014fab0471a2142aa7d7355943660374f54f9284a114dc2f3f17931ce2945c4c",
+    "projectedScore": 72,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T10:04:10.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T10:01:33.030Z",
+    "photosPublishedAtUtc": "2026-11-01T10:02:20.183Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:53ba1ace-30d9-4f07-80fa-c25319fedbb5"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/e57823f1-4282-4a2d-893d-d5992504465c/sommerrodelbahn-strobl-am-wolfgangsee",
+      "publishedAtUtc": "2026-11-01T10:03:40.453Z",
+      "applyOperationId": "31eacfba-756d-40ac-8c5f-7ac5eaa4eefd"
+    },
+    "facebook": {
+      "id": "9eb0cbf3f79248f39cabb95e71ffdab6",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T10:05:32.364Z",
+      "externalPostId": "1285475681307050_122125585161424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125585161424431"
+    }
+  }
+}

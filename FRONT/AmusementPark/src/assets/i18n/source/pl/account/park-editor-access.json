@@ -1,0 +1,18 @@
+{
+  "parkEditorAccess": {
+    "title": "Dostęp do edytora danych parków",
+    "description": "Utwórz token dla tej sesji Codex. Przeglądarka zaszyfruje go przed skopiowaniem.",
+    "keyLabel": "Klucz publiczny od Codex",
+    "keyHelp": "Wklej pełny klucz publiczny otrzymany w tej rozmowie.",
+    "create": "Utwórz i zaszyfruj token",
+    "creating": "Tworzenie…",
+    "packageLabel": "Zaszyfrowany pakiet dla Codex",
+    "packageHelp": "Skopiuj ten pakiet do rozmowy. Nigdy nie udostępniaj hasła ani niezaszyfrowanego tokenu.",
+    "copy": "Kopiuj pakiet",
+    "copied": "Pakiet skopiowany",
+    "invalidKey": "Klucz publiczny jest nieprawidłowy lub szyfrowanie jest niedostępne. Nie utworzono tokenu.",
+    "createFailed": "Nie udało się utworzyć tokenu. Sprawdź połączenie i spróbuj ponownie.",
+    "revokeFailed": "Szyfrowanie nie powiodło się i nie udało się unieważnić tokenu. Unieważnij go w panelu zarządzania tokenami.",
+    "copyFailed": "Kopiowanie nie powiodło się. Zaznacz i skopiuj pakiet ręcznie."
+  }
+}

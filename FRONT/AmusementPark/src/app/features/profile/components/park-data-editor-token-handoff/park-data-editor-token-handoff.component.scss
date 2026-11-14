@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin-block-start: 1.5rem;
+}
+
+.editor-handoff,
+.editor-handoff__heading,
+.editor-handoff__result {
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.editor-handoff {
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+.editor-handoff__heading h2,
+.editor-handoff__heading p,
+.editor-handoff__help {
+  margin: 0;
+}
+
+.editor-handoff__textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
+  color: var(--app-text);
+  font: inherit;
+  overflow-wrap: anywhere;
+}
+
+.editor-handoff__help {
+  color: var(--app-text-muted);
+}
+
+.editor-handoff__error {
+  color: var(--app-danger);
+}
+
+@media (max-width: 40rem) {
+  .editor-handoff {
+    gap: 0.75rem;
+  }
+}

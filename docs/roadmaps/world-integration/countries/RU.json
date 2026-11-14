@@ -7788,37 +7788,154 @@
     {
       "entryId": "RU-candidate-0a9f178a14f2fd",
       "name": "Sun of Moscow",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "VDNKh , Moscow",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "2nd Ostankinskaya Street 3, Moscow, près de l’entrée sud VDNKh",
+      "siteId": "c119655f-712a-4060-b8d1-dbe322e09ac1",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T11:58:28.726Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Exploitation active et billetterie directe ; horaires de la roue publiés au 2 novembre 2026.",
+      "identityConfidence": "Identité, adresse, opérateur distinct, billetterie et deux photos exactes vérifiés ; cinq recherches officielles sans homonyme.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Солнце Москвы",
+        "Moscow Sun",
+        "Solntse Moskvy"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T11:55:21.454Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-9f18bbcd-e580-4825-91dc-54e155596cbe",
+          "appliedAt": "2026-11-02T11:51:37.880Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c119655f-712a-4060-b8d1-dbe322e09ac1",
+          "evidence": "PARK_DATA_EDITOR:apply:9f18bbcd-e580-4825-91dc-54e155596cbe",
+          "auditEvidence": null,
+          "summary": "Création masquée de la roue et descriptions éditoriales en huit langues"
+        },
+        {
+          "eventId": "apply-c3b1765d-c37f-47dd-a270-81be218f35ab",
+          "appliedAt": "2026-11-02T11:52:32.034Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c119655f-712a-4060-b8d1-dbe322e09ac1",
+          "evidence": "PARK_DATA_EDITOR:apply:c3b1765d-c37f-47dd-a270-81be218f35ab",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires propres à la roue depuis la page officielle"
+        },
+        {
+          "eventId": "image-7710f7be75804872a22a27fdfbadfe4f",
+          "appliedAt": "2026-11-02T11:53:18.517Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c119655f-712a-4060-b8d1-dbe322e09ac1",
+          "evidence": "PARK_DATA_EDITOR:image:7710f7be75804872a22a27fdfbadfe4f",
+          "auditEvidence": null,
+          "summary": "Import photo exacte de la roue prise en 2025, licence et crédits vérifiés"
+        },
+        {
+          "eventId": "image-75098dba9c3c4bbd97e996332666308a",
+          "appliedAt": "2026-11-02T11:53:39.645Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c119655f-712a-4060-b8d1-dbe322e09ac1",
+          "evidence": "PARK_DATA_EDITOR:image:75098dba9c3c4bbd97e996332666308a",
+          "auditEvidence": null,
+          "summary": "Import photo exacte de la roue prise en 2024, licence et crédits vérifiés"
+        },
+        {
+          "eventId": "photo-altfix-7710f7be75804872a22a27fdfbadfe4f",
+          "appliedAt": "2026-11-02T11:55:09.789Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c119655f-712a-4060-b8d1-dbe322e09ac1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:7710f7be75804872a22a27fdfbadfe4f",
+          "auditEvidence": null,
+          "summary": "Textes alternatifs distincts des légendes en huit langues pour la photo 2025"
+        },
+        {
+          "eventId": "photo-altfix-75098dba9c3c4bbd97e996332666308a",
+          "appliedAt": "2026-11-02T11:55:21.454Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c119655f-712a-4060-b8d1-dbe322e09ac1",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:75098dba9c3c4bbd97e996332666308a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ru-moscow-sun-20261102/audit.json",
+          "summary": "Textes alternatifs distincts des légendes en huit langues pour la photo 2024"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Structurer ultérieurement les tarifs variables par jour, jour férié et type de cabine ; actualiser les horaires selon l’exploitant. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Moscow Sun — site de l’exploitant",
+          "url": "https://en.moscow-sun.ru/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Moscow Sun — roue et caractéristiques",
+          "url": "https://en.moscow-sun.ru/koleso-obozreniya/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Moscow Sun — tarifs et horaires",
+          "url": "https://en.moscow-sun.ru/services/tariffs/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Moscow Sun — accès distinct de VDNKh",
+          "url": "https://en.moscow-sun.ru/information/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "VDNKh — ouverture en 2022",
+          "url": "https://vdnh.ru/places/koleso-obozreniya-solntse-moskvy/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — roue en 2025",
+          "url": "https://commons.wikimedia.org/wiki/File:Moscow_Sun_2025-03_1742747717.JPG",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — roue en 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Moscow_Sun_Ferris_wheel_01.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Roue et billetterie propres à son complexe, avec accès distinct au sud de VDNKh et hors du parc d’attractions Orion."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/c119655f-712a-4060-b8d1-dbe322e09ac1/sun-of-moscow",
+          "publishedAtUtc": "2026-11-02T11:56:34.122Z",
+          "verifiedAtUtc": "2026-11-02T11:58:28.726Z",
+          "evidence": "PARK_DATA_EDITOR:apply:326fa230-27ef-4f41-9963-0bb03bae4858"
+        },
+        "facebook": {
+          "id": "77a90755929849fcaafc79de5b3c6881",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T11:57:21.818Z",
+          "externalPostId": "1285475681307050_122125724355424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125724355424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:77a90755929849fcaafc79de5b3c6881"
+        }
       }
     },
     {

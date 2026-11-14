@@ -1,0 +1,35 @@
+{
+  "scope": "Read-only qualification of historical Stoke alpine coaster and the Malchow Family Fun Park; no site data was applied, so lastDataIntegrationAt stays null and histories stay empty.",
+  "stoke": {
+    "entryId": "GB-candidate-47faf173321fb2",
+    "decision": "Excluded from current standalone creations",
+    "evidence": [
+      "https://rcdb.com/14140.htm",
+      "https://rcdb.com/14141.htm",
+      "https://www.racer-ready.co.uk/post/2019/8/20/the-evolving-nature-of-stoke-ski-centre-venue-for-the-british-dry-slope-championships-in-2019",
+      "https://stokeskicentre.com/"
+    ],
+    "officialEditorSearches": {
+      "SearchParks Stoke Ski Centre": 0,
+      "SearchStandaloneAttractions Stoke Ski Centre": 0
+    },
+    "finding": "The centre remains open, but the former coaster was gone by 2019 and is absent from the current operator activity list."
+  },
+  "malchow": {
+    "parkEntryId": "DE-candidate-74e7fa77996173",
+    "manufacturerEntryId": "DE-candidate-standalone-99b3786c77a2e5",
+    "decision": "Park candidate with two luge parkItems; manufacturer lead retained as duplicate documentation",
+    "evidence": [
+      "https://www.sommerrodelbahn-malchow.de/",
+      "https://www.sommerrodelbahn-malchow.de/besuch-planen",
+      "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1267",
+      "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-2130"
+    ],
+    "officialEditorSearches": {
+      "SearchParks Malchow": 0,
+      "SearchStandaloneAttractions Malchow": 0
+    },
+    "finding": "The operator calls the venue a Family Fun Park and identifies two tracks plus a monkey park at one address. The manufacturer references remain intact for later parkItem integration."
+  },
+  "reviewedAt": "2026-11-02"
+}

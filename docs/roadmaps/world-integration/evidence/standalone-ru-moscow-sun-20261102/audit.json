@@ -1,0 +1,123 @@
+{
+  "work": "Sun of Moscow is operated and ticketed as its own wheel and multifunctional complex beside the VDNKh South Entrance, outside the Orion amusement park. Five official-editor searches in English and Russian found no matching Park or Standalone record. The operator states 140 m height, thirty enclosed cabins, fifteen riders per cabin, five transparent floors and an 18m40s rotation; VDNKh confirms the September 2022 opening. Official tariff page distinguishes wheel hours from the complex footer: Monday-Friday 12:00-22:00; weekends 11:00-22:00. Ticket prices vary by day, holiday and cabin; no fixed price was asserted. Two exact 2025/2024 Commons photos were visually checked, imported and published. The first audit found duplicate photo alt/caption wording; both images were corrected in all eight languages and the final audit has no blockers. All eight locale pages and both image binaries returned HTTP 200 before Facebook publication.",
+  "qualification": "Separate operator complex and dedicated wheel ticket adjacent to VDNKh; not an attraction of the Orion amusement park.",
+  "sources": {
+    "operator": "https://en.moscow-sun.ru/",
+    "wheel": "https://en.moscow-sun.ru/koleso-obozreniya/",
+    "tariffsHours": "https://en.moscow-sun.ru/services/tariffs/",
+    "directions": "https://en.moscow-sun.ru/information/",
+    "accessibility": "https://moscow-sun.ru/information/",
+    "vdnkh": "https://vdnh.ru/places/koleso-obozreniya-solntse-moskvy/",
+    "photo2025": "https://commons.wikimedia.org/wiki/File:Moscow_Sun_2025-03_1742747717.JPG",
+    "photo2024": "https://commons.wikimedia.org/wiki/File:Moscow_Sun_Ferris_wheel_01.jpg",
+    "osm": "https://www.openstreetmap.org/way/1093600277"
+  },
+  "duplicateSearches": {
+    "parkMoscowSun": 0,
+    "parkRussianName": 0,
+    "standaloneMoscowSun": 0,
+    "standaloneSunOfMoscow": 0,
+    "standaloneRussianName": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "9f18bbcd-e580-4825-91dc-54e155596cbe",
+      "appliedAtUtc": "2026-11-02T11:51:37.880Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "c3b1765d-c37f-47dd-a270-81be218f35ab",
+      "appliedAtUtc": "2026-11-02T11:52:32.034Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "imageId": "7710f7be75804872a22a27fdfbadfe4f",
+      "importFinishedAtUtc": "2026-11-02T11:53:18.517Z",
+      "altTextUpdateFinishedAtUtc": "2026-11-02T11:55:09.789Z"
+    },
+    {
+      "imageId": "75098dba9c3c4bbd97e996332666308a",
+      "importFinishedAtUtc": "2026-11-02T11:53:39.645Z",
+      "altTextUpdateFinishedAtUtc": "2026-11-02T11:55:21.454Z"
+    }
+  ],
+  "commercialData": {
+    "wheelHoursSource": "https://en.moscow-sun.ru/services/tariffs/",
+    "weeklyRules": 2,
+    "structuredOfferCount": 0,
+    "tariffs": "Official table varies by weekday, holiday and cabin type; check live booking.",
+    "lastBoarding": "20 minutes before closing per operator."
+  },
+  "photographs": [
+    {
+      "imageId": "7710f7be75804872a22a27fdfbadfe4f",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Moscow_Sun_2025-03_1742747717.JPG",
+      "author": "Artyom Svetlov",
+      "license": "CC BY 4.0",
+      "photographedAt": "2025-03-23",
+      "ownerId": "c119655f-712a-4060-b8d1-dbe322e09ac1",
+      "published": true,
+      "siteBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "75098dba9c3c4bbd97e996332666308a",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Moscow_Sun_Ferris_wheel_01.jpg",
+      "author": "MBH",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2024-04-07",
+      "ownerId": "c119655f-712a-4060-b8d1-dbe322e09ac1",
+      "published": true,
+      "siteBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "score": 78,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 2,
+    "weeklyHourRules": 2
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/c119655f-712a-4060-b8d1-dbe322e09ac1/sun-of-moscow",
+    "sitePublishedAtUtc": "2026-11-02T11:56:34.122Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:326fa230-27ef-4f41-9963-0bb03bae4858",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "77a90755929849fcaafc79de5b3c6881",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125724355424431",
+    "facebookPublishedAtUtc": "2026-11-02T11:57:21.818Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T11:55:21.454Z",
+  "remainingGaps": [
+    "Ajouter les tarifs du jour à l’aide d’un modèle compatible avec la variation par semaine, jour férié et type de cabine.",
+    "Mettre à jour les horaires si le calendrier officiel de la roue change."
+  ]
+}

@@ -3818,37 +3818,165 @@
     {
       "entryId": "NL-candidate-d11ee161bf385f",
       "name": "SkyView de Pier",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Scheveningen , The Hague",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Strandweg 156, 2586 JW Scheveningen, Pays-Bas",
+      "siteId": "4b5cb5ae-319f-4bee-8020-d177ac79e440",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T15:42:13.713Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Billetterie directe SkyView et horaires publiés au 1er novembre 2026 ; horaires divergents sur le site de la jetée signalés.",
+      "identityConfidence": "Identité, société, adresse et billet de la roue vérifiés ; recherches officielles Park/Standalone SkyView de Pier, SkyView et Scheveningen Pier sans fiche correspondante.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "SkyView Pier",
+        "Reuzenrad op de Pier",
+        "Scheveningen Ferris wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T15:39:26.948Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-9193cdc9-98cf-4df3-8798-f4fbb9e14675",
+          "appliedAt": "2026-11-01T15:36:10.296Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4b5cb5ae-319f-4bee-8020-d177ac79e440",
+          "evidence": "PARK_DATA_EDITOR:apply:9193cdc9-98cf-4df3-8798-f4fbb9e14675",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée à partir de la candidate conservée : identité et huit descriptions"
+        },
+        {
+          "eventId": "image-8eb8fa4d609a4bc18fb5b5c57a51cc71",
+          "appliedAt": "2026-11-01T15:36:35.707Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4b5cb5ae-319f-4bee-8020-d177ac79e440",
+          "evidence": "PARK_DATA_EDITOR:image:8eb8fa4d609a4bc18fb5b5c57a51cc71",
+          "auditEvidence": null,
+          "summary": "Photo 1 exacte de SkyView de Pier importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-efdbf6784fc046509754d306f25d79eb",
+          "appliedAt": "2026-11-01T15:36:55.439Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4b5cb5ae-319f-4bee-8020-d177ac79e440",
+          "evidence": "PARK_DATA_EDITOR:image:efdbf6784fc046509754d306f25d79eb",
+          "auditEvidence": null,
+          "summary": "Photo 2 exacte de SkyView de Pier importée avec licence, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "apply-326c9ead-5077-4e8b-bb75-06f3bb2e9404",
+          "appliedAt": "2026-11-01T15:39:26.948Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4b5cb5ae-319f-4bee-8020-d177ac79e440",
+          "evidence": "PARK_DATA_EDITOR:apply:326c9ead-5077-4e8b-bb75-06f3bb2e9404",
+          "auditEvidence": null,
+          "summary": "Horaires actuels de la page directe de SkyView intégrés avec avertissement sur la divergence avec le site de la jetée"
+        },
+        {
+          "eventId": "closure-326c9ead-5077-4e8b-bb75-06f3bb2e9404",
+          "appliedAt": "2026-11-01T15:39:26.948Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "4b5cb5ae-319f-4bee-8020-d177ac79e440",
+          "evidence": "PARK_DATA_EDITOR:apply:326c9ead-5077-4e8b-bb75-06f3bb2e9404",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nl-skyview-de-pier-20261101/audit.json",
+          "summary": "Audit final 78/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Faire confirmer les heures divergentes en semaine entre skyviewdepier.nl et le site de la jetée ; vérifier le créneau réservable. Obtenir le prix simple directement dans la billetterie de l’exploitant avant de l’afficher. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "SkyView de Pier — site direct, expérience et billetterie",
+          "url": "https://skyviewdepier.nl/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "SkyView de Pier — horaires affichés par l’exploitant",
+          "url": "https://skyviewdepier.nl/products/opening-hours/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "De Pier — horaires différents en semaine et billet autonome",
+          "url": "https://pier.nl/reuzenrad-op-de-pier/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — point de SkyView de Pier",
+          "url": "https://www.openstreetmap.org/node/4445667612",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyView de Pier, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_de_Pier_Scheveningen.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — SkyView de Pier, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Reuzenrad_Scheveningen_P1290182.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "SkyView de Pier",
+            "source": "SkyView de Pier — site direct",
+            "url": "https://skyviewdepier.nl/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "De Pier, Scheveningen",
+            "sourceLifecycleSignal": "Billetterie et site directs au 1er novembre 2026",
+            "sourceLocality": "Scheveningen, La Haye",
+            "matchingMethod": "Exploitant, billetterie et adresse de la roue distincts ; recherches officielles sans fiche"
+          }
+        ],
+        "rationale": "La roue possède une billetterie et une société propres, distinctes de la promenade de la jetée."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/4b5cb5ae-319f-4bee-8020-d177ac79e440/skyview-de-pier",
+          "publishedAtUtc": "2026-11-01T15:40:14.962Z",
+          "verifiedAtUtc": "2026-11-01T15:42:13.713Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ffac705b-5e5a-4253-859c-cf1adf161968"
+        },
+        "facebook": {
+          "id": "d0ca326859c34ca389084570561bcc0d",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T15:41:08.423Z",
+          "externalPostId": "1285475681307050_122125622703424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125622703424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:d0ca326859c34ca389084570561bcc0d"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "8eb8fa4d609a4bc18fb5b5c57a51cc71",
+          "efdbf6784fc046509754d306f25d79eb"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T15:38:13.719Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:1b395993-0d69-4a03-acf7-7d19a43b6634",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-nl-skyview-de-pier-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-nl-skyview-de-pier-20261101/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {

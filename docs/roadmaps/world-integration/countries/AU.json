@@ -297,25 +297,90 @@
     {
       "entryId": "AU-candidate-d3bccb5fb8945f",
       "name": "Arthurs Seat Eagle",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB)",
-      "locality": "Dromana , Victoria",
-      "siteId": null,
+      "category": "Télécabine panoramique",
+      "locality": "1085 Arthurs Seat Road, Dromana, Victoria",
+      "siteId": "e776be68-af58-4f31-9a9b-fd876ee48d07",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T11:04:56.600Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Exploitation confirmée par les horaires et tarifs officiels au 2 novembre 2026.",
+      "identityConfidence": "Exploitant, adresse et deux photos exactes concordent ; aucune fiche Park ni standalone homonyme dans l’éditeur officiel.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Arthur’s Seat Eagle",
+        "Arthurs Seat Gondola",
+        "Arthurs Seat Skylift"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T10:59:39.874Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-06fbbae0-73f5-4a03-87a9-39983bee0ad7",
+          "appliedAt": "2026-11-02T10:55:10.804Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e776be68-af58-4f31-9a9b-fd876ee48d07",
+          "evidence": "PARK_DATA_EDITOR:apply:06fbbae0-73f5-4a03-87a9-39983bee0ad7",
+          "auditEvidence": null,
+          "summary": "Création masquée de la télécabine, identité, accessibilité et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-a3033252-5d18-4836-bab5-3ed3a903fe41",
+          "appliedAt": "2026-11-02T10:55:51.677Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e776be68-af58-4f31-9a9b-fd876ee48d07",
+          "evidence": "PARK_DATA_EDITOR:apply:a3033252-5d18-4836-bab5-3ed3a903fe41",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires officiels et exception Melbourne Cup du 3 novembre 2026"
+        },
+        {
+          "eventId": "apply-2c0c4ac6-20a4-4e18-878e-8d06766da56f",
+          "appliedAt": "2026-11-02T10:57:06.897Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e776be68-af58-4f31-9a9b-fd876ee48d07",
+          "evidence": "PARK_DATA_EDITOR:apply:2c0c4ac6-20a4-4e18-878e-8d06766da56f",
+          "auditEvidence": null,
+          "summary": "Dix tarifs officiels AUD pour l’aller simple et l’aller-retour"
+        },
+        {
+          "eventId": "image-aaa559fdf1a9455886c0efacc58519e1",
+          "appliedAt": "2026-11-02T10:57:41.530Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e776be68-af58-4f31-9a9b-fd876ee48d07",
+          "evidence": "PARK_DATA_EDITOR:image:aaa559fdf1a9455886c0efacc58519e1",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 des cabines, prise en avril 2021, importée avec licence et huit légendes"
+        },
+        {
+          "eventId": "image-899a2ffcd21b493492c0abbf0bce0750",
+          "appliedAt": "2026-11-02T10:58:08.863Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e776be68-af58-4f31-9a9b-fd876ee48d07",
+          "evidence": "PARK_DATA_EDITOR:image:899a2ffcd21b493492c0abbf0bce0750",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 des cabines, prise en avril 2021, importée avec licence et huit légendes"
+        },
+        {
+          "eventId": "photo-metadata-899a2ffcd21b493492c0abbf0bce0750-20261102",
+          "appliedAt": "2026-11-02T10:59:39.874Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e776be68-af58-4f31-9a9b-fd876ee48d07",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:899a2ffcd21b493492c0abbf0bce0750:20261102",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-au-arthurs-seat-eagle-20261102/audit.json",
+          "summary": "Correction des textes de la seconde photo dans huit langues ; audit final sans blocage"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus ; vérifier les horaires et tarifs après Melbourne Cup. Suivre séparément le projet de luge alpine mentionné par RCDB et l’exploitant : son ouverture et son autonomie restent à confirmer. Ne pas répéter la publication Facebook.",
       "sources": [
         {
           "label": "RCDB",
@@ -326,11 +391,61 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/23819.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Arthurs Seat Eagle — site officiel",
+          "url": "https://aseagle.com.au/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Arthurs Seat Eagle — horaires et exception Melbourne Cup",
+          "url": "https://aseagle.com.au/opening-hours/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Arthurs Seat Eagle — dix tarifs aller/retour",
+          "url": "https://aseagle.com.au/tickets/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Arthurs Seat Eagle — cabines et durée",
+          "url": "https://aseagle.com.au/our-gondolas/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Arthurs Seat Eagle — accessibilité",
+          "url": "https://aseagle.com.au/accessibility/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Arthurs Seat Eagle — adresse des deux gares",
+          "url": "https://aseagle.com.au/getting-here/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Arthurs Seat Eagle — histoire",
+          "url": "https://aseagle.com.au/arthurs-seat-eagle-throughout-the-years-the-evolution-of-an-iconic-tourist-destination/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap via Mapcarta — gare basse",
+          "url": "https://mapcarta.com/W414633825",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — première photo des cabines en 2021",
+          "url": "https://commons.wikimedia.org/wiki/File:The_eagle_is_descending.png",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — seconde photo des cabines en 2021",
+          "url": "https://commons.wikimedia.org/wiki/File:The_eagle_is_descending_(again).png",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
             "name": "unknown",
@@ -343,7 +458,24 @@
             "sourceOpenedYear": "2028"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Télécabine panoramique à billet propre dans un parc naturel public. L’ancienne piste RCDB sur une future luge est conservée pour un suivi distinct, sans la présenter comme ouverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e776be68-af58-4f31-9a9b-fd876ee48d07/arthurs-seat-eagle",
+          "publishedAtUtc": "2026-11-02T11:00:48.617Z",
+          "verifiedAtUtc": "2026-11-02T11:04:56.600Z",
+          "evidence": "PARK_DATA_EDITOR:apply:767fa5fc-d1b6-44ce-a883-1a8c962d9b74"
+        },
+        "facebook": {
+          "id": "6916f4bc205d49b38927751115c78ee0",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T11:01:50.198Z",
+          "externalPostId": "1285475681307050_122125716981424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125716981424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:6916f4bc205d49b38927751115c78ee0"
+        }
       }
     },
     {
@@ -2454,8 +2586,8 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Catalogue officiel de Skypark Cairns consulté le 14 novembre 2026 : Bungy et Giant Swing sont proposés séparément ; disponibilité effective à revérifier.",
+      "identityConfidence": "Offre et adresse confirmées par le site local de l’exploitant ; recherche des fiches publiques et masquées par PARK_DATA_EDITOR encore requise avant création.",
       "possibleMatches": [],
       "aliases": [
         "AJ Hackett Cairns",
@@ -2464,12 +2596,27 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Rechercher Skypark Cairns, AJ Hackett Cairns, Bungy, Giant Swing, Roof Jump et Bungy Swing dans Park et StandaloneAttraction avec le client officiel. Résoudre la modélisation de ce site multi-activités et trouver une photo libre montrant réellement chaque attraction avant publication. La vue libre depuis le sommet de la tour ne suffit pas seule. Recontrôler tarifs et horaires avant Preview/Apply. Dossier : evidence/standalone-skypark-qualification-20261114/audit.json.",
       "sources": [
         {
           "label": "Découverte complémentaire — site officiel",
           "url": "https://www.skyparkcairns.com/activities/bungy",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — activités et tarifs de départ",
+          "url": "https://www.skyparkcairns.com/activities",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — adresse et horaires",
+          "url": "https://www.skyparkcairns.com/park-info",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Vue contextuelle non suffisante — MartinRe, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:BungyViewCairns.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "discovery": {
@@ -2479,7 +2626,7 @@
       },
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Skypark Cairns — Bungy et Giant Swing",
@@ -2490,9 +2637,29 @@
             "sourceLifecycleSignal": "Offre documentée par le site officiel ; état actuel à revérifier avant intégration.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Cairns"
+          },
+          {
+            "name": "Cairns Bungy",
+            "source": "Exploitant officiel — qualification 2026-11-14",
+            "url": "https://www.skyparkcairns.com/activities/bungy",
+            "family": "Saut à l’élastique fixe",
+            "sourceVenueName": "Cairns Bungy",
+            "sourceLifecycleSignal": "Offre affichée sur la page officielle le 14 novembre 2026 ; exploitation à revalider avant Apply.",
+            "matchingMethod": "Rapprochement avec les fiches du site non encore exécuté : accès au client officiel absent.",
+            "sourceLocality": "Cairns"
+          },
+          {
+            "name": "Cairns Giant Swing",
+            "source": "Exploitant officiel — qualification 2026-11-14",
+            "url": "https://www.skyparkcairns.com/activities",
+            "family": "Balançoire géante fixe",
+            "sourceVenueName": "Cairns Giant Swing",
+            "sourceLifecycleSignal": "Offre affichée sur la page officielle le 14 novembre 2026 ; exploitation à revalider avant Apply.",
+            "matchingMethod": "Rapprochement avec les fiches du site non encore exécuté : accès au client officiel absent.",
+            "sourceLocality": "Cairns"
           }
         ],
-        "rationale": "Installation documentée ; résoudre son identité, son parent et la permanence de l’exploitation avant de choisir création, enrichissement ou migration."
+        "rationale": "Plusieurs activités à billets distincts sont proposées dans la même installation. Le parent et les fiches existantes restent à résoudre ; la photo libre trouvée ne montre pas clairement un saut et ne valide pas la règle de photo exacte."
       }
     },
     {

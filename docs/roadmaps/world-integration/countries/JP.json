@@ -207,6 +207,180 @@
       ]
     },
     {
+      "entryId": "JP-candidate-discovery-87570422e6c85b",
+      "name": "MOSAIC Big Ferris Wheel",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "1-6-1 Higashikawasakicho, Chuo Ward, Kobe, Japon",
+      "siteId": "f6742708-a40b-4b45-b726-f43daff2259d",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:43:00.676Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Roue active au complexe Kobe Harborland umie ; tarif propre et horaire officiel publiés au 1er novembre 2026.",
+      "identityConfidence": "Découverte hors inventaire initial, confirmée par le site officiel ; recherches Park Harborland/Mosaic et Standalone Mosaic sans fiche.",
+      "possibleMatches": [],
+      "aliases": [
+        "モザイク大観覧車",
+        "MOSAIC Ferris Wheel",
+        "Kobe Harborland Ferris Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T11:39:25.449Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f13984eb-1811-4f70-8cb7-21f5420bf2f9",
+          "appliedAt": "2026-11-01T11:36:59.356Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:apply:f13984eb-1811-4f70-8cb7-21f5420bf2f9",
+          "auditEvidence": null,
+          "summary": "Nouvelle fiche privée créée après découverte hors inventaire, descriptions en huit langues"
+        },
+        {
+          "eventId": "image-a72b6db649494194a768508c9a53aa99",
+          "appliedAt": "2026-11-01T11:38:02.367Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:image:a72b6db649494194a768508c9a53aa99",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue MOSAIC importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-61da97cee6384787adf2d0a3464d0301",
+          "appliedAt": "2026-11-01T11:38:29.042Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:image:61da97cee6384787adf2d0a3464d0301",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue MOSAIC importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-0392a0e2-0745-4567-b85d-62f44c73d264",
+          "appliedAt": "2026-11-01T11:39:01.979Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:apply:0392a0e2-0745-4567-b85d-62f44c73d264",
+          "auditEvidence": null,
+          "summary": "Billet officiel de la roue à 800 JPY dès trois ans intégré"
+        },
+        {
+          "eventId": "apply-ad0fff4c-a593-465d-bed1-9924509bdc0f",
+          "appliedAt": "2026-11-01T11:39:25.449Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:apply:ad0fff4c-a593-465d-bed1-9924509bdc0f",
+          "auditEvidence": null,
+          "summary": "Horaire quotidien officiel 10–22 h intégré avec fuseau Asia/Tokyo"
+        },
+        {
+          "eventId": "closure-ad0fff4c-a593-465d-bed1-9924509bdc0f",
+          "appliedAt": "2026-11-01T11:39:25.449Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f6742708-a40b-4b45-b726-f43daff2259d",
+          "evidence": "PARK_DATA_EDITOR:apply:ad0fff4c-a593-465d-bed1-9924509bdc0f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mosaic-big-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Affiner le point cartographique, actuellement celui du complexe MOSAIC, et surveiller les changements de tarif/horaire. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Kobe Harborland umie — roue MOSAIC, tarif et trajet",
+          "url": "https://umie.jp/features/mosaickanransya",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Kobe Harborland umie — horaires de la roue distincts du centre",
+          "url": "https://umie.jp/static-pages/opening-hours",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Feel KOBE — passe touristique 2026 et roue MOSAIC",
+          "url": "https://www.feel-kobe.jp/en/smartpass/facility/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Hyogo Tourism — adresse 1-6-1 Higashikawasakicho",
+          "url": "https://www.hyogo-tourism.jp/world/review/detail_234.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — complexe MOSAIC, coordonnées approchées",
+          "url": "https://www.openstreetmap.org/search?query=Kobe%20Harborland%20Mosaic",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — MOSAIC Big Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Kobe_20210903185824_(51816719229).jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — MOSAIC Big Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Kobe%27s_Harborland,_Hyogo,_Japan_--_Night_View_of_Mosaic_Ferris_Wheel.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "MOSAIC Big Ferris Wheel",
+            "source": "Kobe Harborland umie — roue MOSAIC",
+            "url": "https://umie.jp/features/mosaickanransya",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Kobe Harborland umie MOSAIC",
+            "sourceLifecycleSignal": "Billet et horaire officiels au 1er novembre 2026",
+            "sourceLocality": "Chuo, Kobe",
+            "matchingMethod": "Billetterie propre et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "La roue du front de mer a son billet propre et n’était ni dans le backlog japonais ni dans les fiches Park ou Standalone interrogées."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/f6742708-a40b-4b45-b726-f43daff2259d/mosaic-big-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T11:40:54.107Z",
+          "verifiedAtUtc": "2026-11-01T11:43:00.676Z",
+          "evidence": "PARK_DATA_EDITOR:apply:2e7a0802-9610-4f4b-8d1b-379670d51d6a"
+        },
+        "facebook": {
+          "id": "953eaff095974b31afaa0db00c16bd99",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:41:40.413Z",
+          "externalPostId": "1285475681307050_122125598733424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125598733424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:953eaff095974b31afaa0db00c16bd99"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "a72b6db649494194a768508c9a53aa99",
+          "61da97cee6384787adf2d0a3464d0301"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:40:19.318Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:6a51de83-0442-46a8-9cc0-52cd3b83c6dd",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-mosaic-big-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-mosaic-big-ferris-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
       "entryId": "JP-candidate-c10792b8b5026c",
       "name": "アドベンチャーワールド",
       "entityKind": "Park",
@@ -473,37 +647,180 @@
     {
       "entryId": "JP-candidate-2a1dae09eb87da",
       "name": "Amuran",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Kagoshima , Kyushu",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Amu Plaza Kagoshima, 1-1 Chuocho, Kagoshima",
+      "siteId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T13:50:22.491Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Exploitation, horaires et tarifs courants publiés par JR Kagoshima City au 1er novembre 2026.",
+      "identityConfidence": "Grande roue à billet propre sur le toit du centre commercial ; recherches officielles sous Amuran, アミュラン et Amu Plaza sans fiche homonyme.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "アミュラン",
+        "Amuran Ferris Wheel",
+        "Amu Plaza Kagoshima Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T13:47:01.602Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-640b2649-3273-4520-8935-937bb23fbe0b",
+          "appliedAt": "2026-11-01T13:41:12.423Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:640b2649-3273-4520-8935-937bb23fbe0b",
+          "auditEvidence": null,
+          "summary": "Fiche Amuran créée en brouillon avec huit descriptions et position exacte de la roue"
+        },
+        {
+          "eventId": "apply-cc410a7e-da6a-40b7-b989-024919984e1d",
+          "appliedAt": "2026-11-01T13:43:00.814Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:cc410a7e-da6a-40b7-b989-024919984e1d",
+          "auditEvidence": null,
+          "summary": "Cinq tarifs officiels en JPY et conditions d’âge intégrés"
+        },
+        {
+          "eventId": "apply-e595d20f-243a-46a6-b7ae-2aa46d9473b3",
+          "appliedAt": "2026-11-01T13:43:35.137Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:e595d20f-243a-46a6-b7ae-2aa46d9473b3",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires et jours fériés de novembre 2026 intégrés, fuseau Asia/Tokyo"
+        },
+        {
+          "eventId": "image-1ced286e94b14cc7b8796c43aafe08a7",
+          "appliedAt": "2026-11-01T13:44:23.542Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:image:1ced286e94b14cc7b8796c43aafe08a7",
+          "auditEvidence": null,
+          "summary": "Photo 1 de la roue Amuran importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-66dc802f87ca43d182fa8030da0f8292",
+          "appliedAt": "2026-11-01T13:44:50.361Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:image:66dc802f87ca43d182fa8030da0f8292",
+          "auditEvidence": null,
+          "summary": "Photo 2 de la roue Amuran importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-91d364ab-0868-4154-9b50-d00bab373dcd",
+          "appliedAt": "2026-11-01T13:47:01.602Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:91d364ab-0868-4154-9b50-d00bab373dcd",
+          "auditEvidence": null,
+          "summary": "Légendes distinctes des textes alternatifs appliquées aux deux photos en huit langues"
+        },
+        {
+          "eventId": "closure-91d364ab-0868-4154-9b50-d00bab373dcd",
+          "appliedAt": "2026-11-01T13:47:01.602Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+          "evidence": "PARK_DATA_EDITOR:apply:91d364ab-0868-4154-9b50-d00bab373dcd",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-amuran-20261101/audit.json",
+          "summary": "Audit final 91/100 sans blocage, deux photos propres ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Renouveler les tarifs et horaires officiels ; compléter les exceptions des prochains jours fériés japonais et les changements exceptionnels. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "JR Kagoshima City — Amuran, tarifs, horaires, caractéristiques et conditions",
+          "url": "https://www.jrkagoshimacity.com/amuran/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "JR Kagoshima City — accès et adresse",
+          "url": "https://www.jrkagoshimacity.com/access/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — nœud de la roue Amuran",
+          "url": "https://www.openstreetmap.org/node/2144219417",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Amuran, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_and_Amu_Plaza_Kagoshima.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Amuran, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_and_Amu_Plaza_Kagoshima_2.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Amuran",
+            "source": "JR Kagoshima City — site officiel",
+            "url": "https://www.jrkagoshimacity.com/amuran/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Amu Plaza Kagoshima",
+            "sourceLifecycleSignal": "Billet et horaires propres au 1er novembre 2026",
+            "sourceLocality": "Kagoshima",
+            "matchingMethod": "Billetterie individuelle, exploitant officiel et recherches Park / Standalone sans homonyme"
+          }
+        ],
+        "rationale": "Amuran dispose de son propre tarif et de ses horaires sur le toit d’un centre commercial ; il ne s’agit pas d’une attraction intérieure à un parc d’attractions structuré."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/aacbd338-47e5-439b-ae61-6d5bcaa6449b/amuran",
+          "publishedAtUtc": "2026-11-01T13:48:08.499Z",
+          "verifiedAtUtc": "2026-11-01T13:50:22.491Z",
+          "evidence": "PARK_DATA_EDITOR:apply:a67395b1-6202-48a2-87e1-5a427cb5f65b"
+        },
+        "facebook": {
+          "id": "da24203102074bb68944c09eec67108b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T13:48:56.135Z",
+          "externalPostId": "1285475681307050_122125613145424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125613145424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:da24203102074bb68944c09eec67108b"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "1ced286e94b14cc7b8796c43aafe08a7",
+          "66dc802f87ca43d182fa8030da0f8292"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T13:45:59.863Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:442ddfb9-1ff6-425a-b224-7d92ad2c0760",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-amuran-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-amuran-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -1837,37 +2154,185 @@
     {
       "entryId": "JP-candidate-5e9f105844edd3",
       "name": "Diamond and Flower Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Kasai Rinkai Park , Tokyo , Honshū",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Kasai Rinkai Park, Edogawa, Tokyo",
+      "siteId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:04:31.458Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Exploitation, tarifs et calendrier actifs sur les pages de Senyo Kogyo au 1er novembre 2026.",
+      "identityConfidence": "Roue à tarif, billetterie et fermetures propres dans un parc public ; aucune fiche homonyme dans les quatre recherches officielles.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "ダイヤと花の大観覧車",
+        "Daiya to Hana no Daikanransha",
+        "Kasai Rinkai Park Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T14:00:30.530Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-27b7d9a6-75a2-4966-a27e-009494a5ca36",
+          "appliedAt": "2026-11-01T13:56:09.863Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:apply:27b7d9a6-75a2-4966-a27e-009494a5ca36",
+          "auditEvidence": null,
+          "summary": "Fiche autonome créée avec huit descriptions, emplacement de la roue et sources Senyo Kogyo"
+        },
+        {
+          "eventId": "apply-170362b7-313f-40ec-b0e2-0d8cb2f5f1c2",
+          "appliedAt": "2026-11-01T13:58:59.562Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:apply:170362b7-313f-40ec-b0e2-0d8cb2f5f1c2",
+          "auditEvidence": null,
+          "summary": "Cinq tarifs individuels et conditions officielles en JPY intégrés"
+        },
+        {
+          "eventId": "apply-aa19e246-e4be-4ee5-906f-9299fdd4ef87",
+          "appliedAt": "2026-11-01T13:59:34.722Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:apply:aa19e246-e4be-4ee5-906f-9299fdd4ef87",
+          "auditEvidence": null,
+          "summary": "Horaires et 34 exceptions datées dont 16 fermetures jusqu’en décembre 2027 intégrés"
+        },
+        {
+          "eventId": "image-998f40a5dd1a452d89832ad1662aa25b",
+          "appliedAt": "2026-11-01T14:00:11.474Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:image:998f40a5dd1a452d89832ad1662aa25b",
+          "auditEvidence": null,
+          "summary": "Photo 1 de la roue importée de Wikimedia Commons, textes et crédits en huit langues"
+        },
+        {
+          "eventId": "image-c2fee030157248999936185c843dc10a",
+          "appliedAt": "2026-11-01T14:00:30.530Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:image:c2fee030157248999936185c843dc10a",
+          "auditEvidence": null,
+          "summary": "Photo 2 de la roue importée de Wikimedia Commons, textes et crédits en huit langues"
+        },
+        {
+          "eventId": "closure-c2fee030157248999936185c843dc10a",
+          "appliedAt": "2026-11-01T14:00:30.530Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+          "evidence": "PARK_DATA_EDITOR:image:c2fee030157248999936185c843dc10a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-diamond-flower-20261101/audit.json",
+          "summary": "Audit final 91/100 sans blocage, deux photos propres ; publication du site et de Facebook ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Renouveler les tarifs et le calendrier de l’exploitant, surveiller les modifications ponctuelles et prolonger les exceptions au-delà de décembre 2027. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Senyo Kogyo — roue, expérience et règles de visite",
+          "url": "https://www.senyo.co.jp/kasai/giant_wheel.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Senyo Kogyo — tarifs officiels",
+          "url": "https://www.senyo.co.jp/kasai/fee.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Senyo Kogyo — horaires et fermetures",
+          "url": "https://www.senyo.co.jp/kasai/hours.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Senyo Kogyo — ouverture en 2001 et renouvellement LED en 2025",
+          "url": "https://www.senyo.co.jp/company/archivements/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Cabinet du Japon — jours fériés 2026–2027",
+          "url": "https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emprise de la grande roue",
+          "url": "https://www.openstreetmap.org/way/161931777",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Diamond and Flower, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_Wheel_@_Kasai_Rinkai_Park_@_Edogawa_City_(9553916915).jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Diamond and Flower, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Dia_to_Hana_no_Daikanransha_02.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Diamond and Flower Ferris Wheel",
+            "source": "Senyo Kogyo — site officiel",
+            "url": "https://www.senyo.co.jp/kasai/giant_wheel.html",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Kasai Rinkai Park",
+            "sourceLifecycleSignal": "Billetterie et calendrier propres au 1er novembre 2026",
+            "sourceLocality": "Edogawa, Tokyo",
+            "matchingMethod": "Billet individuel, exploitant officiel et recherches Park / Standalone sans homonyme"
+          }
+        ],
+        "rationale": "La roue se trouve dans le parc public de Kasai Rinkai, avec une billetterie et des jours de fermeture propres ; elle n’est pas un manège interne à un parc d’attractions structuré."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7e2dd93e-d506-4044-b6c1-8d20e913fddd/diamond-and-flower-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T14:02:17.845Z",
+          "verifiedAtUtc": "2026-11-01T14:04:31.458Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7adc6027-df44-4646-b1ee-c85d6656bbba"
+        },
+        "facebook": {
+          "id": "3d753d1057dc49e094ad97c9cc28cb55",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T14:03:17.627Z",
+          "externalPostId": "1285475681307050_122125614435424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125614435424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:3d753d1057dc49e094ad97c9cc28cb55"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "998f40a5dd1a452d89832ad1662aa25b",
+          "c2fee030157248999936185c843dc10a"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T14:01:15.062Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:e8cc4471-cd32-402f-919f-719cb0ffa2b0",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-diamond-flower-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-diamond-flower-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -4002,38 +4467,178 @@
     },
     {
       "entryId": "JP-candidate-49204b461ffa56",
-      "name": "HEP Five Wheel",
-      "entityKind": "ToQualify",
+      "name": "HEP FIVE Ferris Wheel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "HEP Five building, Osaka , Honshū",
-      "siteId": null,
+      "category": "Grande roue panoramique autonome",
+      "locality": "5-15 Kakudacho, Kita-ku, Osaka",
+      "siteId": "74c01914-71db-4158-affe-35bf4ceed79a",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-10-28T21:37:34.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Operating — horaires et tarifs de la grande roue confirmés par le site de l’exploitant et l’office du tourisme en octobre 2026.",
+      "identityConfidence": "Grande roue fixe à billet distinct au sein d’un centre commercial, non rattachée à un parc d’attractions ; recherches officielles Park et Standalone sur HEP et Umeda sans correspondance avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "HEP Five Wheel",
+        "HEP FIVE観覧車",
+        "Umeda HEP FIVE Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T21:34:14.358Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-cf15996a-9e47-4716-b401-b1a7b87c4d0f",
+          "appliedAt": "2026-10-28T21:27:12.464Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:apply:cf15996a-9e47-4716-b401-b1a7b87c4d0f",
+          "auditEvidence": null,
+          "summary": "Création privée de HEP FIVE Ferris Wheel, identité, lieu et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-a6b55e5c-6c7a-4232-bf8a-e088a8a0234a",
+          "appliedAt": "2026-10-28T21:27:52.862Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:apply:a6b55e5c-6c7a-4232-bf8a-e088a8a0234a",
+          "auditEvidence": null,
+          "summary": "Horaires quotidiens et dernière montée à bord vérifiés"
+        },
+        {
+          "eventId": "apply-2232e4f2-83ff-4771-b086-458b24a7979d",
+          "appliedAt": "2026-10-28T21:28:21.210Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:apply:2232e4f2-83ff-4771-b086-458b24a7979d",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels de la grande roue et gratuité jusqu’à 5 ans"
+        },
+        {
+          "eventId": "image-4d4eac5235684f879406e7339969d68a",
+          "appliedAt": "2026-10-28T21:29:27.019Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:image:4d4eac5235684f879406e7339969d68a",
+          "auditEvidence": null,
+          "summary": "Photographie spécifique de HEP FIVE #1, licence vérifiée et crédits multilingues"
+        },
+        {
+          "eventId": "image-1b2822a1903c439c88367727b01d7c17",
+          "appliedAt": "2026-10-28T21:29:47.918Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:image:1b2822a1903c439c88367727b01d7c17",
+          "auditEvidence": null,
+          "summary": "Photographie spécifique de HEP FIVE #2, licence vérifiée et crédits multilingues"
+        },
+        {
+          "eventId": "image-56c104eee16d4a3692864f20c653d189",
+          "appliedAt": "2026-10-28T21:30:13.936Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:image:56c104eee16d4a3692864f20c653d189",
+          "auditEvidence": null,
+          "summary": "Photographie spécifique de HEP FIVE #3, licence vérifiée et crédits multilingues"
+        },
+        {
+          "eventId": "apply-c5ccd448-2acc-48a8-8afb-71f02d340031",
+          "appliedAt": "2026-10-28T21:34:14.358Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "74c01914-71db-4158-affe-35bf4ceed79a",
+          "evidence": "PARK_DATA_EDITOR:apply:c5ccd448-2acc-48a8-8afb-71f02d340031",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-hep-five-20261028/hep-five-audit.json",
+          "summary": "Retrait d’une indication d’accessibilité non confirmée avant audit final"
+        }
+      ],
+      "nextAction": "Conserver les reçus et la fiche. Confirmer auprès de l’exploitant la date d’ouverture historique et les modalités d’accès en fauteuil avant de renseigner ces champs ; recontrôler horaires, tarif et jour de fermeture. Ne pas republier l’annonce Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "HEP FIVE — grande roue, horaires et tarifs officiels",
+          "url": "https://www.hepfive.jp/ferriswheel",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "HEP FIVE — accès et adresse officiels",
+          "url": "https://www.hepfive.jp/access",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Osaka Convention & Tourism Bureau — HEP FIVE Ferris Wheel",
+          "url": "https://www.osaka-info.jp/en/spot/hep-five-ferris-wheel/",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie HEP FIVE #1",
+          "url": "https://commons.wikimedia.org/wiki/File:HEP_FIVE_20260223.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie HEP FIVE #2",
+          "url": "https://commons.wikimedia.org/wiki/File:HEP_FIVE_on_26th_March_2025.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — photographie HEP FIVE #3",
+          "url": "https://commons.wikimedia.org/wiki/File:HEP_at_Night_in_201408.JPG",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-10-28",
+        "attractions": [
+          {
+            "name": "HEP FIVE Ferris Wheel",
+            "source": "HEP FIVE — site officiel",
+            "url": "https://www.hepfive.jp/ferriswheel",
+            "family": "Grande roue",
+            "sourceVenueName": "HEP FIVE shopping complex",
+            "sourceLifecycleSignal": "Billetterie et horaires de la roue actifs en octobre 2026.",
+            "matchingMethod": "Recherches Park et Standalone HEP et Umeda sans correspondance.",
+            "sourceLocality": "Osaka",
+            "referenceId": "hep-five-wheel-official"
+          }
+        ],
+        "rationale": "Grande roue à accès et tarif propres dans un centre commercial, sans parc d’attractions parent. Trois photos propres vérifiées, audit public 91/100 sans bloqueur."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/74c01914-71db-4158-affe-35bf4ceed79a/hep-five-ferris-wheel",
+          "publishedAtUtc": "2026-10-28T21:35:33.139Z",
+          "verifiedAtUtc": "2026-10-28T21:37:34.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:507ce563-1f88-48e6-9327-e79c2a6380ba"
+        },
+        "facebook": {
+          "id": "1b5228e3e1e049b490bf5cfdbba5b2c9",
+          "status": "Published",
+          "publishedAtUtc": "2026-10-28T21:36:45.379Z",
+          "externalPostId": "1285475681307050_122125093899424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125093899424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:1b5228e3e1e049b490bf5cfdbba5b2c9"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-hep-five-20261028/hep-five-audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
@@ -11492,38 +12097,180 @@
     },
     {
       "entryId": "JP-candidate-395e105b7b4012",
-      "name": "Redhorse Osaka Wheel",
-      "entityKind": "ToQualify",
+      "name": "OSAKA WHEEL",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Expocity, Suita, Osaka",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "EXPOCITY, 2-1 Senri Banpaku Kōen, Suita 565-0826, Japon",
+      "siteId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T17:06:24.449Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Exploitation suspendue depuis la fermeture pour maintenance annoncée au 26 novembre 2025 ; aucune réouverture annoncée au 1er novembre 2026.",
+      "identityConfidence": "Identité officielle, exploitant et billetterie séparés, recherches officielles Park/Standalone sans doublon, quatre photos exactes sous licence libre.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Redhorse Osaka Wheel",
+        "Redhorse OSAKA WHEEL"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T17:05:11.978Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a21d235f-1275-4dc7-a67a-356e1a4bb509",
+          "appliedAt": "2026-11-01T16:59:08.996Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+          "evidence": "PARK_DATA_EDITOR:apply:a21d235f-1275-4dc7-a67a-356e1a4bb509",
+          "auditEvidence": null,
+          "summary": "Création masquée de la fiche, identité et huit descriptions ; fermeture temporaire indiquée"
+        },
+        {
+          "eventId": "image-e8557d4baf7849b183bb0a3f7359f7b7",
+          "appliedAt": "2026-11-01T17:00:15.353Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+          "evidence": "PARK_DATA_EDITOR:image:e8557d4baf7849b183bb0a3f7359f7b7",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-e4b85758b77f41358335ca59017c72ee",
+          "appliedAt": "2026-11-01T17:00:34.391Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+          "evidence": "PARK_DATA_EDITOR:image:e4b85758b77f41358335ca59017c72ee",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-4a7514203aaf4f0982c7beefee859f1a",
+          "appliedAt": "2026-11-01T17:00:54.400Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+          "evidence": "PARK_DATA_EDITOR:image:4a7514203aaf4f0982c7beefee859f1a",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-6e71b6ce249c4ae0a2b9332b3c14ff7f",
+          "appliedAt": "2026-11-01T17:01:12.415Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+          "evidence": "PARK_DATA_EDITOR:image:6e71b6ce249c4ae0a2b9332b3c14ff7f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 4 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-e638e41c-0e9f-4f8a-924a-6df477d1df98",
+          "appliedAt": "2026-11-01T17:03:13.471Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+          "evidence": "PARK_DATA_EDITOR:apply:e638e41c-0e9f-4f8a-924a-6df477d1df98",
+          "auditEvidence": null,
+          "summary": "Réécriture du texte public après contrôle éditorial"
+        },
+        {
+          "eventId": "apply-371c4fda-bf87-4a05-aa4d-5824477101a6",
+          "appliedAt": "2026-11-01T17:05:11.978Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+          "evidence": "PARK_DATA_EDITOR:apply:371c4fda-bf87-4a05-aa4d-5824477101a6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-osaka-wheel-20261101/audit.json",
+          "summary": "Fiche rendue publique avec quatre photos ; fermeture temporaire conservée"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Surveiller la réouverture ; n’ajouter des horaires et tarifs actuels et modifier le statut qu’après confirmation officielle. Ne pas republier Facebook pour cette intégration.",
       "sources": [
         {
-          "label": "Wikipédia (découverte)",
-          "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
-          "accessedAt": "2026-10-22"
+          "label": "OSAKA WHEEL — exploitant",
+          "url": "https://osaka-wheel.com/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "EXPOCITY — annonce de fermeture pour maintenance",
+          "url": "https://mitsui-shopping-park.com/en/lalaport/expocity/info/3244856.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Osaka e-Pass — fermeture temporaire",
+          "url": "https://www.e-pass.osaka-info.jp/en/facility/detail?id=133",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Osaka Tourism — historique",
+          "url": "https://osaka-info.jp/experience/en/osaka/spot/418",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emplacement",
+          "url": "https://www.openstreetmap.org/way/467729369",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Expo70_Park_(Suite_Osaka)_hdsr_S5_07.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Redhorse_OSAKA_WHEEL.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:OSAKA_WHEEL_3.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 4",
+          "url": "https://commons.wikimedia.org/wiki/File:Nifrel_and_Osaka_wheel_Feb_26,_2017.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "OSAKA WHEEL",
+            "source": "Exploitant officiel et billetterie distincte",
+            "url": "https://osaka-wheel.com/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "EXPOCITY",
+            "sourceLifecycleSignal": "Exploitation suspendue, réouverture inconnue au 1er novembre 2026",
+            "sourceLocality": "Suita, Osaka",
+            "matchingMethod": "Exploitant et billets propres ; EXPOCITY est un complexe commercial, sans parc structuré parent ; recherches officielles sans doublon."
+          }
+        ],
+        "rationale": "Grande roue à billetterie propre dans un complexe commercial et de loisirs, sans parc d’attractions parent structuré."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e42ee082-9559-5e1d-b7cf-e8b0170b39f7/osaka-wheel",
+          "publishedAtUtc": "2026-11-01T17:05:11.978Z",
+          "verifiedAtUtc": "2026-11-01T17:06:24.449Z",
+          "evidence": "PARK_DATA_EDITOR:apply:371c4fda-bf87-4a05-aa4d-5824477101a6"
+        },
+        "facebook": {
+          "id": "c710e93fe9ed4bd6a5827ed5fd8b01b5",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T17:06:20.340Z",
+          "externalPostId": "1285475681307050_122125630479424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125630479424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:c710e93fe9ed4bd6a5827ed5fd8b01b5"
+        }
       }
     },
     {
@@ -13805,37 +14552,191 @@
     {
       "entryId": "JP-candidate-db542127e800ef",
       "name": "Tempozan Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Osaka , Honshū",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "1-1-10 Kaigandori, Minato Ward, Osaka, Japon",
+      "siteId": "c694fb12-2689-4933-89be-06ee6c8c467d",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:31:52.735Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active près de Kaiyukan ; tarifs 2026, horaires et billets propres documentés par KANSAI MaaS et Japan 47 GO.",
+      "identityConfidence": "Billetterie autonome au Tempozan Harbor Village, distincte de l’aquarium ; recherches officielles Park / Standalone Tempozan et Kaiyukan sans fiche.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "天保山大観覧車",
+        "Tempozan Giant Ferris Wheel",
+        "Tenpouzan Grand Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T11:28:56.685Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f9c63edf-cd60-41cb-9f81-8f6203709d3d",
+          "appliedAt": "2026-11-01T11:26:38.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:apply:f9c63edf-cd60-41cb-9f81-8f6203709d3d",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée, identité et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-06bd599729f145e8a56151ece9726638",
+          "appliedAt": "2026-11-01T11:27:45.764Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:image:06bd599729f145e8a56151ece9726638",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue Tempozan importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-f407c79c46144649b8c94bb58090f4d3",
+          "appliedAt": "2026-11-01T11:28:00.076Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:image:f407c79c46144649b8c94bb58090f4d3",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue Tempozan importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-c379e75037a8445da1c0296ab17d65ad",
+          "appliedAt": "2026-11-01T11:28:14.390Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:image:c379e75037a8445da1c0296ab17d65ad",
+          "auditEvidence": null,
+          "summary": "Photo #3 de la roue Tempozan importée de Wikimedia Commons sous CC BY-SA 4.0, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-4c781cc8-1c2b-4f7c-8353-87e92102088f",
+          "appliedAt": "2026-11-01T11:28:32.350Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:apply:4c781cc8-1c2b-4f7c-8353-87e92102088f",
+          "auditEvidence": null,
+          "summary": "Tarifs japonais officiels depuis avril 2026 intégrés en JPY, billet général et tarif réduit"
+        },
+        {
+          "eventId": "apply-d7d730d5-8af5-46e5-8315-7d2060d48faf",
+          "appliedAt": "2026-11-01T11:28:56.685Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:apply:d7d730d5-8af5-46e5-8315-7d2060d48faf",
+          "auditEvidence": null,
+          "summary": "Deux règles hebdomadaires Osaka Metro intégrées avec exceptions de météo et de maintenance documentées"
+        },
+        {
+          "eventId": "closure-d7d730d5-8af5-46e5-8315-7d2060d48faf",
+          "appliedAt": "2026-11-01T11:28:56.685Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c694fb12-2689-4933-89be-06ee6c8c467d",
+          "evidence": "PARK_DATA_EDITOR:apply:d7d730d5-8af5-46e5-8315-7d2060d48faf",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tempozan-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et trois photos de la roue ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier les jours de fermeture du Marketplace/Kaiyukan, la météo et la maintenance, ainsi que les tarifs lors d’une prochaine mise à jour. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "KANSAI MaaS / Osaka Metro — tarifs 2026 et horaires détaillés",
+          "url": "https://app.kansai-maas.jp/spots/14558",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Japan 47 GO — nouveaux tarifs depuis avril 2026 et adresse",
+          "url": "https://www.japan47go.travel/en/detail/a9b5b322-f75c-4db3-86f6-010a3fde6d77",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Osaka Convention & Tourism Bureau — vue et accès de la roue",
+          "url": "https://osaka-info.jp/spot/tempozan-ferris-wheel/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — point de la roue 天保山大観覧車",
+          "url": "https://www.openstreetmap.org/search?query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E5%A4%A7%E8%A6%B3%E8%A6%A7%E8%BB%8A",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Tempozan Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Grand_ferris_wheel_of_Tempozan_Harbor_Village.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Tempozan Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Grand_ferris_wheel_of_Tempozan_Harbor_Village_3.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Tempozan Ferris Wheel, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Ajigawa_River_and_grand_ferris_wheel_of_Tempozan_Harbor_Village_from_Tempozan_Ferry.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Tempozan Ferris Wheel",
+            "source": "KANSAI MaaS / Osaka Metro",
+            "url": "https://app.kansai-maas.jp/spots/14558",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Tempozan Harbor Village",
+            "sourceLifecycleSignal": "Tarifs 2026 et horaires hebdomadaires publiés",
+            "sourceLocality": "Minato, Osaka",
+            "matchingMethod": "Billetterie propre et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "La roue est une attraction payante spécifique dans le complexe Tempozan, distincte de l’aquarium Kaiyukan et des autres sites voisins."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/c694fb12-2689-4933-89be-06ee6c8c467d/tempozan-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T11:30:14.343Z",
+          "verifiedAtUtc": "2026-11-01T11:31:52.735Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c63409a1-1034-468b-9de2-840b9843eb83"
+        },
+        "facebook": {
+          "id": "ffeccdc6258c454d91a8664aeb67b365",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:30:55.106Z",
+          "externalPostId": "1285475681307050_122125597287424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125597287424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:ffeccdc6258c454d91a8664aeb67b365"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "06bd599729f145e8a56151ece9726638",
+          "f407c79c46144649b8c94bb58090f4d3",
+          "c379e75037a8445da1c0296ab17d65ad"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:29:50.963Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:d93ed686-6bb7-4100-a868-0cebc5c98c86",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-tempozan-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-tempozan-ferris-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
@@ -16392,6 +17293,365 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "JP-candidate-discovery-d4cf8880da9b16",
+      "name": "nORIA",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "Norbesa, Minami 3-jō Nishi 5-chōme 1-1, Chūō-ku, Sapporo, Japon",
+      "siteId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:21:25.956Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Roue sur le toit de Norbesa, billetterie et horaires officiels actifs au 1er novembre 2026 ; fermeture pour inspection annoncée le 9 novembre.",
+      "identityConfidence": "Découverte hors inventaire confirmée par Norbesa et OpenStreetMap ; recherches officielles Park Norbesa/ノルベサ et Standalone nORIA/観覧車ノリア sans fiche homonyme.",
+      "possibleMatches": [],
+      "aliases": [
+        "観覧車ノリア",
+        "Norbesa Ferris Wheel",
+        "Noria Sapporo"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T14:17:12.439Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-2a2ae1d2-ecb3-4892-84ff-2ecbed309270",
+          "appliedAt": "2026-11-01T14:11:55.569Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:apply:2a2ae1d2-ecb3-4892-84ff-2ecbed309270",
+          "auditEvidence": null,
+          "summary": "Fiche autonome créée après découverte hors inventaire, huit descriptions et localisation de la roue"
+        },
+        {
+          "eventId": "apply-f250859a-a001-40c3-959a-cebead9f2639",
+          "appliedAt": "2026-11-01T14:15:15.015Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:apply:f250859a-a001-40c3-959a-cebead9f2639",
+          "auditEvidence": null,
+          "summary": "Neuf offres tarifaires officielles en JPY et conditions associées intégrées"
+        },
+        {
+          "eventId": "apply-bddd15f0-0e3b-4b33-b907-1e005b6cfb36",
+          "appliedAt": "2026-11-01T14:15:51.947Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:apply:bddd15f0-0e3b-4b33-b907-1e005b6cfb36",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires et 19 exceptions datées, dont la fermeture du 9 novembre 2026, intégrés"
+        },
+        {
+          "eventId": "image-10b2f29e917a4d38b802a23e58c30bf4",
+          "appliedAt": "2026-11-01T14:16:35.434Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:image:10b2f29e917a4d38b802a23e58c30bf4",
+          "auditEvidence": null,
+          "summary": "Photo 1 de nORIA importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-e9ee54d8722341dc800e712481ea4dd6",
+          "appliedAt": "2026-11-01T14:17:12.439Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:image:e9ee54d8722341dc800e712481ea4dd6",
+          "auditEvidence": null,
+          "summary": "Photo 2 de nORIA importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "closure-e9ee54d8722341dc800e712481ea4dd6",
+          "appliedAt": "2026-11-01T14:17:12.439Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7aa68b76-331f-46ee-8b5c-95795629917a",
+          "evidence": "PARK_DATA_EDITOR:image:e9ee54d8722341dc800e712481ea4dd6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-noria-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et deux photos propres ; publication du site et de Facebook ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revérifier les tarifs, les horaires et les fermetures de maintenance ; prolonger les veilles de jours fériés après décembre 2027. Chercher une deuxième photo plus récente avec vue entière de la roue. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Norbesa — nORIA, horaires et tarifs officiels",
+          "url": "https://www.norbesa.jp/noria/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Norbesa — fiche de la roue",
+          "url": "https://www.norbesa.jp/shop/%E5%B1%8B%E4%B8%8A%E8%A6%B3%E8%A6%A7%E8%BB%8A%E3%83%8E%E3%83%AA%E3%82%A2/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Norbesa — fermeture pour inspection du 9 novembre 2026",
+          "url": "https://www.norbesa.jp/information/%e8%a6%b3%e8%a6%a7%e8%bb%8a%e3%83%8e%e3%83%aa%e3%82%a2%e7%82%b9%e6%a4%9c%e7%ad%89%e3%81%ab%e3%82%88%e3%82%8b%e4%bc%91%e6%a5%ad%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b-2/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Norbesa — adresse et accès",
+          "url": "https://www.norbesa.jp/access/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — roue nORIA",
+          "url": "https://www.openstreetmap.org/node/5628197721",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Cabinet du Japon — jours fériés 2026–2027",
+          "url": "https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — nORIA, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_in_Susukino_at_night_20250725.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — nORIA, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:NORBESA_01.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "nORIA",
+            "source": "Norbesa — site officiel",
+            "url": "https://www.norbesa.jp/noria/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Norbesa",
+            "sourceLifecycleSignal": "Billetterie et horaires propres au 1er novembre 2026",
+            "sourceLocality": "Sapporo, Hokkaidō",
+            "matchingMethod": "Roue à billets propres au centre commercial ; recherches officielles Park et Standalone sans fiche"
+          }
+        ],
+        "rationale": "nORIA dispose d’une entrée et de tarifs propres sur le toit du centre commercial Norbesa ; elle constitue une attraction autonome."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7aa68b76-331f-46ee-8b5c-95795629917a/noria",
+          "publishedAtUtc": "2026-11-01T14:19:01.681Z",
+          "verifiedAtUtc": "2026-11-01T14:21:25.956Z",
+          "evidence": "PARK_DATA_EDITOR:apply:747c3d68-90a9-4eaa-8ec5-002a1e40fc61"
+        },
+        "facebook": {
+          "id": "ad5dd844baab4a07afc0d54715b4dd11",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T14:19:58.696Z",
+          "externalPostId": "1285475681307050_122125616055424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125616055424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:ad5dd844baab4a07afc0d54715b4dd11"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "10b2f29e917a4d38b802a23e58c30bf4",
+          "e9ee54d8722341dc800e712481ea4dd6"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T14:18:00.249Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:7d71368f-121f-461a-a469-ccb82a587fa3",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-noria-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-noria-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
+    },
+    {
+      "entryId": "JP-candidate-discovery-d0b93173cbf01d",
+      "name": "Sky-Boat",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "Sunshine Sakae, Nishiki 3-chōme 24-4, Naka-ku, Nagoya, Japon",
+      "siteId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T14:45:22.008Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Roue à billet propre au troisième étage de Sunshine Sakae ; tarif et horaire actifs sur la page officielle au 1er novembre 2026.",
+      "identityConfidence": "Découverte hors inventaire confirmée par Sunshine Sakae ; cinq recherches officielles Park/Standalone sous Sky-Boat, スカイボート et Sunshine Sakae sans fiche.",
+      "possibleMatches": [],
+      "aliases": [
+        "SUNSHINE SAKAE Sky-Boat",
+        "サンシャインサカエ スカイボート",
+        "Sunshine Sakae Ferris Wheel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T14:41:22.186Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3bdc81e7-e1d0-45a6-909c-747e6400faa2",
+          "appliedAt": "2026-11-01T14:38:22.892Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:apply:3bdc81e7-e1d0-45a6-909c-747e6400faa2",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée après découverte hors inventaire, localisation et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-e4b77f25-1f0d-49db-b069-b2893de8b2a4",
+          "appliedAt": "2026-11-01T14:39:44.161Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:apply:e4b77f25-1f0d-49db-b069-b2893de8b2a4",
+          "auditEvidence": null,
+          "summary": "Trois offres tarifaires officielles en JPY, dont gratuité et réduction handicap, intégrées"
+        },
+        {
+          "eventId": "apply-9a15039c-1df8-4415-937f-d8a4a8887d02",
+          "appliedAt": "2026-11-01T14:40:15.459Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:apply:9a15039c-1df8-4415-937f-d8a4a8887d02",
+          "auditEvidence": null,
+          "summary": "Horaire quotidien et dernier embarquement officiels intégrés, fermetures irrégulières signalées"
+        },
+        {
+          "eventId": "image-1991bacb233f45ebb2de4f5cba71e60e",
+          "appliedAt": "2026-11-01T14:40:43.500Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:image:1991bacb233f45ebb2de4f5cba71e60e",
+          "auditEvidence": null,
+          "summary": "Photo 1 de Sky-Boat importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-374916e9bcc24071a6b6d3148b4c3b5c",
+          "appliedAt": "2026-11-01T14:41:02.892Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:image:374916e9bcc24071a6b6d3148b4c3b5c",
+          "auditEvidence": null,
+          "summary": "Photo 2 de Sky-Boat importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "image-95ba792c354c4e9ebb20ed521b607726",
+          "appliedAt": "2026-11-01T14:41:22.186Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:image:95ba792c354c4e9ebb20ed521b607726",
+          "auditEvidence": null,
+          "summary": "Photo 3 de Sky-Boat importée de Wikimedia Commons, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "closure-95ba792c354c4e9ebb20ed521b607726",
+          "appliedAt": "2026-11-01T14:41:22.186Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+          "evidence": "PARK_DATA_EDITOR:image:95ba792c354c4e9ebb20ed521b607726",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sky-boat-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et trois photos propres ; publication du site et de Facebook ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revérifier les fermetures irrégulières et le tarif de l’exploitant ; rechercher à terme des photos plus récentes de la roue. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Sunshine Sakae — Sky-Boat, tarif, horaires et caractéristiques officiels",
+          "url": "https://www.sunshine-sakae.jp/floor/3f/01.html",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Sunshine Sakae — accès et adresse",
+          "url": "https://www.sunshine-sakae.jp/access/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — Sunshine Sakae",
+          "url": "https://www.openstreetmap.org/search?query=Sunshine%20Sakae%20Nagoya",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Sky-Boat, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_of_Sunshine_Sakae_at_night_20150124.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Sky-Boat, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Sunshine_Sakae_in_Nagoya.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Sky-Boat, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:SUNSHINE_SAKAE_Sky-Boat_-_panoramio_(2).jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Sky-Boat",
+            "source": "Sunshine Sakae — site officiel",
+            "url": "https://www.sunshine-sakae.jp/floor/3f/01.html",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Sunshine Sakae",
+            "sourceLifecycleSignal": "Billetterie et horaires propres au 1er novembre 2026",
+            "sourceLocality": "Naka-ku, Nagoya",
+            "matchingMethod": "Billet et horaire autonomes ; cinq recherches officielles Park/Standalone sans fiche"
+          }
+        ],
+        "rationale": "Sky-Boat possède son propre tarif et point d’embarquement au troisième étage d’un centre commercial, sans rattachement à un parc d’attractions."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/16c6f079-ecd3-4a18-bc2b-4e7a2c337886/sky-boat",
+          "publishedAtUtc": "2026-11-01T14:43:32.075Z",
+          "verifiedAtUtc": "2026-11-01T14:45:22.008Z",
+          "evidence": "PARK_DATA_EDITOR:apply:aa62352e-aba3-4115-aa68-b56c76c7dca9"
+        },
+        "facebook": {
+          "id": "dd57223935e74e858712a8aa62a4fe69",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T14:44:23.823Z",
+          "externalPostId": "1285475681307050_122125618557424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125618557424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:dd57223935e74e858712a8aa62a4fe69"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "1991bacb233f45ebb2de4f5cba71e60e",
+          "374916e9bcc24071a6b6d3148b4c3b5c",
+          "95ba792c354c4e9ebb20ed521b607726"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T14:42:06.828Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:d45531fa-3c08-44d0-83e7-9cde820712e5",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-jp-sky-boat-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-jp-sky-boat-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }

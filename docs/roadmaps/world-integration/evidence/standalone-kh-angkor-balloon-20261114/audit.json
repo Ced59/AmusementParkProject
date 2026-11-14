@@ -1,0 +1,90 @@
+{
+  "work": "Aerophile currently lists the Angkor Wat balloon among its balloons in service and documents the Apsara installation near the temple from 2003. Official editor searches found no Angkor Balloon or Apsara standalone or Park. The distinct Angkor Eye ferris wheel was inspected. A CC0 photograph showing the actual tethered balloon was visually checked, imported, and published with eight-language alt text, captions and credits. Eight public pages and the OG image binary returned HTTP 200 before the Facebook post was published.",
+  "qualification": "Fixed tethered helium balloon near Angkor Wat, separately operated as an attraction beside a heritage site. It is not the Angkor Eye ferris wheel or a park ride.",
+  "sources": {
+    "manufacturer": "https://www.aerophile.com/en/clients/apsara/",
+    "currentStatusAndWeather": "https://www.aerophile.com/en/frequently-asked-questions/",
+    "photoCommons": "https://commons.wikimedia.org/wiki/File:Angkor_Balloon_(9728148765).jpg",
+    "photoFile": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Angkor_Balloon_%289728148765%29.jpg/960px-Angkor_Balloon_%289728148765%29.jpg"
+  },
+  "duplicateSearches": {
+    "standaloneNameKH": 0,
+    "standaloneApsaraKH": 0,
+    "standaloneAngkorKH": "Angkor Eye only, different installation",
+    "parkName": 0,
+    "parkApsara": 0
+  },
+  "entity": {
+    "id": "35d56008-8574-4662-a2e3-994eb36dedae",
+    "name": "Angkor Balloon",
+    "kind": "StandaloneAttraction",
+    "countryCode": "KH",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "3de18089-5917-4169-a838-7bca45e505ca",
+      "appliedAtUtc": "2026-11-14T18:32:16.640Z",
+      "summary": "Created hidden standalone with eight localized descriptions and manufacturer source."
+    },
+    {
+      "imageId": "85f74942f1514cd189bb99dd0238fd73",
+      "summary": "Imported exact CC0 photograph, initially unpublished."
+    },
+    {
+      "operationId": "e89c74d4-d29e-4ffd-93d1-388b02902546",
+      "appliedAtUtc": "2026-11-14T18:34:22.992Z",
+      "summary": "Added weather-dependent flight condition from manufacturer FAQ in eight languages."
+    }
+  ],
+  "photograph": {
+    "imageId": "85f74942f1514cd189bb99dd0238fd73",
+    "author": "Gary Todd",
+    "license": "CC0",
+    "photographedAt": "2012-10-03",
+    "historicalPhoto": true,
+    "ownerId": "35d56008-8574-4662-a2e3-994eb36dedae",
+    "isCurrent": true,
+    "published": true,
+    "publicBinaryHttpStatus": 200,
+    "eightLanguageAltTextCaptionCredit": true
+  },
+  "visitorInformation": {
+    "pricingDecision": "Operator website returned 404 and no current site-specific fare was verified; no price entered.",
+    "hoursDecision": "No current site-specific timetable from the operator; no hours entered.",
+    "accessConditions": 1,
+    "coordinatesDecision": "Approximate point from the exact 2012 Commons photo GPS, not a surveyed balloon anchor."
+  },
+  "audit": {
+    "completenessScore": 72,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/35d56008-8574-4662-a2e3-994eb36dedae/angkor-balloon",
+    "sitePublishedAtUtc": "2026-11-14T18:35:58.972Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:6e5a3dc9-e191-4967-b232-10cbb742f1cd",
+    "facebookStatus": "Published",
+    "facebookId": "71cd8c2c515c4aef8c150164c167a45c",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127356919424431",
+    "facebookPublishedAtUtc": "2026-11-14T18:37:19.530Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T18:34:22.992Z",
+  "remainingGaps": [
+    "Confirm the current balloon livery with a newer licensed photo; the published photograph is explicitly dated 2012.",
+    "Confirm exact launch point coordinates with an official map.",
+    "No verifiable current operator fare or balloon-specific timetable; do not derive either from generic Aerophile information."
+  ]
+}

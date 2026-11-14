@@ -123,7 +123,9 @@ def image_identity(runtime, reference, configured):
             raise DeploymentError("Rollback registry digest does not match the running image")
         runtime.run("docker", "manifest", "inspect", digest)
         return {"reference": digest, "id": image["Id"]}
-    return {"reference": digests[0] if len(digests) == 1 else image["Id"], "id": image["Id"]}
+    # A locally built image is restored by its exact image ID. Docker may add a
+    # RepoDigest to a local tag, but that digest is not necessarily pullable.
+    return {"reference": image["Id"], "id": image["Id"]}
 
 
 def current_pair(runtime):

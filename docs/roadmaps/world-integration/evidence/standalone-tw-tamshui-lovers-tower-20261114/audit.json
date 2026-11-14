@@ -1,0 +1,121 @@
+{
+  "work": "Tamshui Lover’s Tower is a separately ticketed rotating observation tower beside Fullon Hotel Tamsui Fisherman’s Wharf. The hotel operator publishes the attraction, current fare table, usual operating hours and maintenance closure. Intamin identifies the model as Super Gyro Tower. Searches through the official editor for Tamshui, Lover, 淡水 and hotel variants found no matching standalone or Park. A 2023 Commons photograph showing the tower was visually inspected and imported with CC BY 4.0 attribution. The photo and attraction were published in that order, then all eight public locale pages and the photo binary returned HTTP 200 before a Facebook post was published.",
+  "qualification": "Public tickets for a fixed tower adjacent to a hotel; no park inventory or artificial parent park is needed.",
+  "sources": {
+    "operator": "https://www.fullon-hotels.com.tw/fw/en/fac-detail/68/",
+    "manufacturer": "https://www.intamin.com/project/tamshui-lovers-tower/",
+    "photoCommons": "https://commons.wikimedia.org/wiki/File:Fullon_Hotel_Danshuei_Fishermen%27s_Wharf.jpg",
+    "photoFile": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Fullon_Hotel_Danshuei_Fishermen%27s_Wharf.jpg/960px-Fullon_Hotel_Danshuei_Fishermen%27s_Wharf.jpg"
+  },
+  "duplicateSearches": {
+    "standaloneLoverTWBeforeCreate": 0,
+    "standaloneTamsuiTWBeforeCreate": 0,
+    "standaloneChineseNameBeforeCreate": 0,
+    "parkTamsuiBeforeCreate": 0,
+    "parkLoverMatchingTW": 0,
+    "parkFullon": 0,
+    "standaloneFullonAfterCreate": "Only the new Tamshui Lover’s Tower record"
+  },
+  "entity": {
+    "id": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+    "name": "Tamshui Lover’s Tower",
+    "kind": "StandaloneAttraction",
+    "countryCode": "TW",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "83167929-8227-41e0-b949-7599b4b6721b",
+      "appliedAtUtc": "2026-11-14T18:03:22.403Z",
+      "created": 1,
+      "updated": 0,
+      "warnings": 0,
+      "errors": 0,
+      "summary": "Created hidden standalone with eight language descriptions and sourced structure."
+    },
+    {
+      "imageId": "f4c6483996f24b05837af19fef78c1b1",
+      "summary": "Imported one CC BY 4.0 image linked to the correct standalone, initially unpublished."
+    },
+    {
+      "operationId": "58ff4c63-349b-4e6a-b0e4-fe6d9ff783a5",
+      "appliedAtUtc": "2026-11-14T18:05:57.771Z",
+      "created": 2,
+      "updated": 0,
+      "warnings": 0,
+      "errors": 0,
+      "summary": "Added six TWD ticket offers and weekly hours; Tuesday maintenance closure takes precedence over conflicting weekday line."
+    },
+    {
+      "operationId": "ddae0f7b-91b1-48e6-8c48-ad3ffe71e74d",
+      "appliedAtUtc": "2026-11-14T18:07:14.802Z",
+      "created": 0,
+      "updated": 1,
+      "warnings": 0,
+      "errors": 0,
+      "summary": "Moved measurements and schedule details out of editorial descriptions."
+    },
+    {
+      "operationId": "7267bad2-1b93-4a45-8795-c9fc7209cf8b",
+      "appliedAtUtc": "2026-11-14T18:08:34.058Z",
+      "created": 0,
+      "updated": 1,
+      "warnings": 0,
+      "errors": 0,
+      "summary": "Removed a forbidden editorial phrase from the Portuguese description."
+    }
+  ],
+  "photograph": {
+    "imageId": "f4c6483996f24b05837af19fef78c1b1",
+    "author": "Mosbatho",
+    "license": "CC BY 4.0",
+    "photographedAt": "2023-07",
+    "ownerId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+    "isCurrent": true,
+    "published": true,
+    "publicBinaryHttpStatus": 200,
+    "eightLanguageAltTextCaptionCredit": true,
+    "note": "Shows the tower beside the hotel at the right of the frame; historical 2023 image, not claimed as its present colour."
+  },
+  "visitorInformation": {
+    "currencyCode": "TWD",
+    "offers": 6,
+    "weeklyRules": 4,
+    "timeZoneId": "Asia/Taipei",
+    "sourceCheckedAt": "2026-11-14",
+    "notes": "Tuesday listed among weekday departure slots but a specific routine maintenance note says closed each Tuesday; Wednesday unspecified. Weather and special events can affect hours."
+  },
+  "audit": {
+    "completenessScore": 88,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/029d88ba-768f-4f1b-9d1c-d1e961ab62c5/tamshui-lovers-tower",
+    "sitePublishedAtUtc": "2026-11-14T18:09:57.382Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:59a51a1d-829a-4d5c-b7a3-379b0e692194",
+    "facebookStatus": "Published",
+    "facebookId": "01f27b105a674c4caaccf070f7d4f95e",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127354069424431",
+    "facebookPublishedAtUtc": "2026-11-14T18:11:34.279Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T18:08:34.058Z",
+  "remainingGaps": [
+    "Operator map coordinate is a venue locator, not a surveyed cabin position.",
+    "Intamin model is sourced, but the shared manufacturer reference was not attached to avoid creating a duplicate.",
+    "No reliably sourced opening date or historical events were added.",
+    "Confirm operator schedule conflict and any future seasonal timetable before adding dated calendar coverage."
+  ]
+}

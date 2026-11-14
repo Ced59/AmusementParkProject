@@ -8,7 +8,7 @@ Cette liste versionnée fixe le périmètre de l'intégration nationale demandé
 
 Chaque ligne active est traitée avec le workflow `PARK_DATA_EDITOR`, les étapes 0 à 9 et un audit final individuel. Une ligne ne peut être marquée comme lot terminé, tout en restant dans le backlog, qu'après les deux résultats suivants :
 
-1. la fiche et ses contenus retenus sont réellement publics sur le site, le score post-publication est strictement supérieur à 95, aucun bloqueur ne subsiste et la page publique a été contrôlée anonymement ;
+1. la fiche et ses contenus retenus sont réellement publics sur le site, le score post-publication est strictement supérieur à 95, ou bénéficie de la tolérance accordée le 14 novembre 2026 aux parcs définitivement fermés avec note réelle et lacunes documentées ; aucun bloqueur ne subsiste et la page publique a été contrôlée anonymement ;
 2. l'annonce Facebook officielle de cette même fiche est au statut `Published`, sans recréer une publication existante.
 
 Une fusion de doublons ou un classement `NotRelevant` ne compte pas comme publication d'un parc et ne déclenche pas d'annonce Facebook artificielle. Une ligne d'attraction autonome suit en revanche sa propre fiche publique : elle ne peut être marquée comme lot terminé, tout en restant dans le backlog, qu'après publication et contrôle anonyme de la `StandaloneAttraction`, annonce Facebook `Published`, puis suppression effective de l'ancien parkItem et de l'ancien parc artificiel lorsqu'ils existent. Le simple masquage ou classement `NotRelevant` du legacy ne suffit pas.
@@ -16,6 +16,8 @@ Une fusion de doublons ou un classement `NotRelevant` ne compte pas comme public
 La météo est alimentée par le batch automatique. Une prévision momentanément absente ne bloque ni la complétude, ni la publication, ni la clôture conservée d'une ligne du backlog ; seul le bon fonctionnement de l'affichage lorsque le batch fournit des données fait partie du contrôle applicatif.
 
 La demande du 29 septembre 2026 autorise explicitement la publication Facebook de chaque fiche terminée. Cette autorisation sociale est propre à ce lot français et ne doit pas être déduite d'une future demande de complétude ordinaire.
+
+Le lot historique du 22 octobre atteint **dix parcs clôturés** le 14 novembre : Fami P.A.R.C, Florida Parc, Holly Park, Parc Avenue, Toison d’Or, Ty’Bamboo, Koaland, Eana, Marineland d’Antibes et Zygofolis. Les huit premiers ont été rapprochés du serveur ; Marineland est publié à 100/100, Zygofolis clôturé à 95/100 selon la tolérance explicite pour les fermés. Les dix annonces Facebook sont confirmées Published. [Lot et preuves](world-integration/evidence/france-historical-20261022/batch.json). La campagne entière reste en cours.
 
 ## Sources et photographie initiale
 
@@ -35,11 +37,11 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | Fiches déjà publiques à compléter | 13 | 0 |
 | Fiches privées existantes à intégrer | 82 | 50 |
 | Parcs en activité absents de la photographie FR | 60 | 59 |
-| Fiches historiques privées existantes | 10 | 4 |
-| Parcs historiques absents de la photographie FR | 20 | 19 |
+| Fiches historiques privées existantes | 10 | 3 |
+| Parcs historiques absents de la photographie FR | 20 | 18 |
 | Attractions autonomes à migrer ou intégrer | 40 | 0 |
 | Candidat historique distinct découvert lors de la qualification (Nouveau Tivoli) | 0 | 1 |
-| **Total** | **225** | **133** |
+| **Total** | **225** | **131** |
 
 ## 1. Fiches publiques à compléter
 

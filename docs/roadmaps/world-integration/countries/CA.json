@@ -4674,7 +4674,7 @@
           "summary": "Titres des conditions d’accès corrigés après vérification publique ; audit final sans blocage."
         }
       ],
-      "nextAction": "Conserver cette ligne et les reçus ; vérifier date de reprise, horaires et prix 2027 avant la saison, statut administratif ToReview et possibilité d’une photographie sous licence réutilisable.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver cette ligne et les reçus ; vérifier date de reprise, horaires et prix 2027 avant la saison, statut administratif ToReview et possibilité d’une photographie sous licence réutilisable. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Skyline Luge — saison et calendrier officiels",
@@ -4732,7 +4732,8 @@
         "facebookPublishedAtUtc": "2026-10-28T07:45:25.0239476Z",
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125005813424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ca-tremblant-20261028/tremblant-receipts.json"
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "CA-candidate-534923ad73742b",
@@ -5704,7 +5705,7 @@
           "summary": "Ouverture du parcours complet le 27 juin 2020 et histoire Hawk 2019 intégrées."
         }
       ],
-      "nextAction": "Conserver la fiche et les reçus ; vérifier la reprise, les tarifs futurs, les conditions d’accès, le statut administratif ToReview et une photographie sous licence réutilisable.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la fiche et les reçus ; vérifier la reprise, les tarifs futurs, les conditions d’accès, le statut administratif ToReview et une photographie sous licence réutilisable. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Mount Washington — ZipTour actuel, parcours, restrictions et prix 2026",
@@ -5757,7 +5758,8 @@
         "facebookPublishedAtUtc": "2026-10-28T08:14:47.9911097Z",
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125008891424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ca-mt-washington-20261028/mt-washington-receipts.json"
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "CA-candidate-standalone-8abe2e5d5d5cc0",
@@ -5878,6 +5880,204 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "CA-candidate-discovery-d9d575636efe74e7",
+      "name": "WildPlay Zipline to the Falls",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne",
+      "locality": "5920 Niagara Parkway, Niagara Falls, Ontario",
+      "siteId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Operating; horaires de la période 13 octobre 2026–1er janvier 2027 publiés par WildPlay.",
+      "identityConfidence": "Exploitant WildPlay et Niagara Parks concordants ; départ autonome avec billets propres à Grandview Marketplace ; recherches officielles Park et Standalone sans correspondance sous les noms et alias.",
+      "possibleMatches": [],
+      "aliases": [
+        "Zipline to the Falls",
+        "MistRider Zipline to the Falls",
+        "WildPlay Niagara Falls Zipline"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T18:36:33.955Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-fd526229-03ee-48be-9181-7d2172ffebdf",
+          "appliedAt": "2026-11-02T18:26:27.010Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:apply:fd526229-03ee-48be-9181-7d2172ffebdf",
+          "auditEvidence": null,
+          "summary": "Création privée de la tyrolienne, identité, géolocalisation et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-e5446872-60b1-42df-8327-d882acf1fe64",
+          "appliedAt": "2026-11-02T18:28:04.023Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:apply:e5446872-60b1-42df-8327-d882acf1fe64",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès, horaires datés et prix variable à partir de 69,99 CAD intégrés"
+        },
+        {
+          "eventId": "image-925be1efc48d43b396b6ba305a93d31e",
+          "appliedAt": "2026-11-02T18:29:00.298Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:image:925be1efc48d43b396b6ba305a93d31e@2026-11-02T18:29:00.298Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la plateforme importée depuis Commons avec licence et crédits multilingues"
+        },
+        {
+          "eventId": "image-795e1e78dc5c4f6eb864417ac9a4e47f",
+          "appliedAt": "2026-11-02T18:29:30.827Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:image:795e1e78dc5c4f6eb864417ac9a4e47f@2026-11-02T18:29:30.827Z",
+          "auditEvidence": null,
+          "summary": "Deuxième vue exacte de la plateforme importée avec textes dans huit langues"
+        },
+        {
+          "eventId": "metadata-publish-925be1efc48d43b396b6ba305a93d31e",
+          "appliedAt": "2026-11-02T18:30:09.001Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:image:925be1efc48d43b396b6ba305a93d31e@2026-11-02T18:30:09.001Z",
+          "auditEvidence": null,
+          "summary": "Publication du premier média après vérification de la licence"
+        },
+        {
+          "eventId": "metadata-publish-795e1e78dc5c4f6eb864417ac9a4e47f",
+          "appliedAt": "2026-11-02T18:30:25.800Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:image:795e1e78dc5c4f6eb864417ac9a4e47f@2026-11-02T18:30:25.800Z",
+          "auditEvidence": null,
+          "summary": "Publication du second média après vérification de la licence"
+        },
+        {
+          "eventId": "apply-8765ca29-51c1-44d3-8ee2-f8f31e8272fc",
+          "appliedAt": "2026-11-02T18:32:31.380Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:apply:8765ca29-51c1-44d3-8ee2-f8f31e8272fc",
+          "auditEvidence": null,
+          "summary": "Descriptions relues : détails techniques conservés dans les champs dédiés"
+        },
+        {
+          "eventId": "metadata-final-795e1e78dc5c4f6eb864417ac9a4e47f",
+          "appliedAt": "2026-11-02T18:32:50.898Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:image:795e1e78dc5c4f6eb864417ac9a4e47f@2026-11-02T18:32:50.898Z",
+          "auditEvidence": null,
+          "summary": "Description du second média précisée pour distinguer les deux vues"
+        },
+        {
+          "eventId": "apply-57cdc37c-22fa-4b98-bec9-c4ee48975e5c",
+          "appliedAt": "2026-11-02T18:34:31.838Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:apply:57cdc37c-22fa-4b98-bec9-c4ee48975e5c",
+          "auditEvidence": null,
+          "summary": "Horaires spéciaux publiés du 24 décembre 2026 au 1er janvier 2027 intégrés"
+        },
+        {
+          "eventId": "apply-574d5513-b7a3-4596-9ed1-e82a5ae6519f",
+          "appliedAt": "2026-11-02T18:36:33.955Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80755c3e-7eac-4c69-bade-a88121694e1f",
+          "evidence": "PARK_DATA_EDITOR:apply:574d5513-b7a3-4596-9ed1-e82a5ae6519f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-wildplay-zipline-20261102/audit.json",
+          "summary": "Libellés de tarif et de conditions corrigés après vérification de la page publique"
+        }
+      ],
+      "nextAction": "Conserver la ligne, les reçus et le post Facebook. Revoir les tarifs variables et les horaires après le 1er janvier 2027 ; chercher des photos récentes montrant aussi les participants en vol. Ne pas republier Facebook pour cette intégration.",
+      "sources": [
+        {
+          "label": "Niagara Parks — présentation officielle, tarif de départ, âge et adresse",
+          "url": "https://www.niagaraparks.com/attractions/wildplay-zipline-falls/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "WildPlay — parcours, horaires datés, billetterie et adresse",
+          "url": "https://www.wildplay.com/zipline-to-the-falls",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "WildPlay — conditions d’accès et FAQ Niagara Falls",
+          "url": "https://www.wildplay.com/faq",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — plateforme de départ, Jeff Hitchcock, CC BY 2.0, 2017",
+          "url": "https://commons.wikimedia.org/wiki/File:Zipline_to_the_Falls_(37486502431).jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — deuxième vue de la plateforme, Jeff Hitchcock, CC BY 2.0, 2017",
+          "url": "https://commons.wikimedia.org/wiki/File:Zipline_to_the_Falls_(37486499041).jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Fiche publique WildPlay Zipline to the Falls",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Découverte hors catalogue, recherche officielle des alias et comparaison du voisinage Clifton Hill.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "WildPlay Zipline to the Falls",
+            "source": "Niagara Parks et WildPlay",
+            "url": "https://www.niagaraparks.com/attractions/wildplay-zipline-falls/",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "Grandview Marketplace",
+            "sourceLifecycleSignal": "Operating, horaires en cours publiés",
+            "sourceLocality": "Niagara Falls, Ontario"
+          }
+        ],
+        "rationale": "Attraction fixe à billetterie distincte de l’exploitant WildPlay. Clifton Hill est un quartier de loisirs et Niagara Parks une autorité touristique ; aucun parc d’attractions structuré ne contient cette installation."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls",
+          "publishedAtUtc": "2026-11-02T18:35:20.503Z",
+          "verifiedAtUtc": "2026-11-02T18:40:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7f707b90-10e8-4741-ad88-bca1ef6086d1"
+        },
+        "facebook": {
+          "id": "0f8a1774a0de40948a2c9d74de4d4b3b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T18:38:20.0380428Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125768665424431",
+          "externalPostId": "1285475681307050_122125768665424431",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls"
+        }
+      }
     }
   ]
 }

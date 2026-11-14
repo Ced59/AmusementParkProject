@@ -1,0 +1,96 @@
+{
+  "name": "Datanla Alpine Coaster 1",
+  "entryId": "VN-candidate-discovery-c8ee724635c18d6e",
+  "standaloneAttractionId": "42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6",
+  "qualification": "Billet de luge 1 propre et séparé de l’entrée au parc et de la piste 3 ; tarifs et activité 2026 sur Dalattourist ; aucune fiche Park ou Standalone dans la recherche officielle.",
+  "decision": "Published",
+  "score": 81,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "regularRules": 0,
+    "admissionOffers": 2,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les heures d’accueil peuvent varier ; aucune règle hebdomadaire n’a été intégrée.",
+    "Les deux photographies libres vérifiées datent de 2007 ; rechercher des vues récentes du parcours 1 sans les confondre avec la piste 3."
+  ],
+  "sources": [
+    {
+      "label": "Dalattourist — piste 1, entrée séparée et conditions de visite",
+      "url": "https://dalattourist.com.vn/diem-den/khu-du-lich-datanla"
+    },
+    {
+      "label": "Dalattourist — tarifs et accueil du coaster 1",
+      "url": "https://dalattourist.com.vn/hoat-dong"
+    },
+    {
+      "label": "Dalattourist — billetterie piste 1 et piste 3",
+      "url": "https://dalattourist.com.vn/dat-ve/buoc1"
+    },
+    {
+      "label": "RCDB — Alpine Coaster, Datanla Waterfall Park",
+      "url": "https://rcdb.com/14139.htm"
+    },
+    {
+      "label": "Wikimedia Commons — Alpine Sled, Datanla Waterfall, 01 (2007)",
+      "url": "https://commons.wikimedia.org/wiki/File:Alpine_Sled,_Datanla_Waterfall,_01.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — Alpine Sled, Datanla Waterfall (2007)",
+      "url": "https://commons.wikimedia.org/wiki/File:Alpine_Sled,_Datanla_Waterfall.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "04cb9b5cd9ef439f9dff3c750bc65b42",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alpine_Sled,_Datanla_Waterfall,_01.jpg",
+      "author": "thalling55",
+      "date": "2007-09-04",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "subject": "Une luge sur la piste de Datanla en 2007",
+      "transformation": "vignette optimisée 960 px fournie par Wikimedia Commons, sans recadrage"
+    },
+    {
+      "imageId": "518099db5ac9489faea8b7356f75cf40",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alpine_Sled,_Datanla_Waterfall.jpg",
+      "author": "thalling55",
+      "date": "2007-09-04",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "subject": "Rails de la piste forestière de Datanla vus du chariot en 2007",
+      "transformation": "vignette optimisée 960 px fournie par Wikimedia Commons, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "c63a248b0aa8d18ca5cbfd3ed4f3006a130cf07585973a9888a9d1f5ecf5fdb8",
+    "projectedScore": 81,
+    "projectedBlockers": [],
+    "publicScore": 81,
+    "publicBlockers": [],
+    "publicPageCheckedAtUtc": "2026-10-28T23:47:17.000Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6/datanla-alpine-coaster-1",
+      "publishedAtUtc": "2026-10-28T23:45:03.691Z",
+      "applyOperationId": "11b08352-51e0-48c9-9fdc-c5126a8697fd"
+    },
+    "facebook": {
+      "id": "1ff6b89943c1418c9fcdd95abf1beb98",
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T23:45:58.382Z",
+      "externalPostId": "1285475681307050_122125103925424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125103925424431"
+    }
+  }
+}

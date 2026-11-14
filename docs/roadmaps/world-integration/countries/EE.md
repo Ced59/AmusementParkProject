@@ -13,10 +13,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 3 |
-| À qualifier | 10 |
+| À qualifier | 9 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 3 |
@@ -27,9 +27,9 @@ Pays proposé par rapprochement pour **3** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **3 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **9 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -47,7 +47,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | EE-candidate-06b658b99975bd | Noorus Veepark | Narva-Jõesuu | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Estonia) |
 | EE-candidate-68c28c7515f58d | Rocca al Mare Tivoli | Tallinn , Harju | Park | NotFound | Doublon conservé | Inconnue — non inventée | — | Identité rapprochée pendant l’extension mondiale : conserver cette trace et suivre EE-park-58dfe3b2-2298-426a-8bd2-e93db346677b. Ne pas créer de doublon. Cible : EE-park-58dfe3b2-2298-426a-8bd2-e93db346677b. [RCDB](https://rcdb.com/5467.htm) |
 | EE-park-58dfe3b2-2298-426a-8bd2-e93db346677b | Rocca al Mare Tivoli | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/5467.htm) |
-| EE-candidate-847a9466f32c0b | Skywheel of Tallinn | T1 Mall of Tallinn , Tallinn | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
+| EE-candidate-847a9466f32c0b | Skywheel of Tallinn | Peterburi tee 2, 11415 Tallinn, Estonie | StandaloneAttraction | Published | Intégration achevée | 2026-11-01T10:54:34.519Z | — | Conserver cette ligne et ses reçus. Vérifier les exceptions des jours fériés 2026 et les changements des tarifs ou horaires. Ne pas republier Facebook. Qualification standalone : AlreadyStandalone. La roue est une activité identifiable avec son propre ticket, indépendante du centre commercial et des autres activités de Super Skypark. Installations référencées : Skywheel of Tallinn. Signal source : Roue active sur le toit de T1 ; billetterie distincte, horaires 2026 et prix officiels publiés.. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) · [T1 Tallinn — Skywheel, autonomie, vente de billets et caractéristiques](https://t1tallinn.com/en/entertainment/skywheel-of-tallinn-ferris-wheel/) · [T1 Tallinn — horaires généraux et exceptions 2026](https://t1tallinn.com/en/important-info/opening-hours/) · [Super Skypark — tarifs de la roue depuis le 4 novembre 2025](https://superskypark.ee/en/prices/) · [OpenStreetMap / Nominatim — T1 keskus, Peterburi tee 2](https://www.openstreetmap.org/search?query=Peterburi%20tee%202%20Tallinn) · [Wikimedia Commons — Skywheel of Tallinn, photo 1](https://commons.wikimedia.org/wiki/File:Mall_of_Tallinn.jpg) · [Wikimedia Commons — Skywheel of Tallinn, photo 2](https://commons.wikimedia.org/wiki/File:T1-Kaubanduskeskus_T1_Mall_of_Tallinn.Okt.2022_2.jpg) |
 | EE-candidate-7879729897662e | Tallinn Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Estonia) · [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](http://www.tallinnzoo.ee) |
 | EE-candidate-b0651260264920 | Tallinna Loomaaed | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [EAZA](https://www.eaza.net/membership/) · [Site officiel référencé](https://www.tallinnzoo.ee) |
 | EE-candidate-a526b26ef5cdb7 | Tervise Paradiis | Pärnu | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Estonia) |

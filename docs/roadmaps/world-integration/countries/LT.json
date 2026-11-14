@@ -373,37 +373,150 @@
     {
       "entryId": "LT-candidate-5464edde20d57d",
       "name": "Palanga Sky Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Palanga , Lithuania",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "J. Basanavičiaus g. 43, Palanga",
+      "siteId": "1b45ed19-a646-4433-8b99-cd623bc0e39f",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T09:30:07.291Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Billetterie de Rota Fortuna active le 2 novembre 2026, roue signalée en exploitation en septembre 2026 ; horaires soumis à la météo.",
+      "identityConfidence": "Nom officiel, adresse, exploitant et coordonnées vérifiés ; recherches Park/Standalone en anglais, lituanien et par ville sans doublon.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Palangos apžvalgos ratas",
+        "Palanga Ferris Wheel",
+        "Palanga Observation Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T09:26:09.003Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f23bf4de-c621-403a-91e6-e292b6de2bdb",
+          "appliedAt": "2026-11-02T09:23:15.054Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1b45ed19-a646-4433-8b99-cd623bc0e39f",
+          "evidence": "PARK_DATA_EDITOR:apply:f23bf4de-c621-403a-91e6-e292b6de2bdb",
+          "auditEvidence": null,
+          "summary": "Création masquée, identité, exploitant, coordonnées, données techniques et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-d7233b56d29c48af97636b2add3df6bd",
+          "appliedAt": "2026-11-02T09:23:52.484Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1b45ed19-a646-4433-8b99-cd623bc0e39f",
+          "evidence": "PARK_DATA_EDITOR:image:d7233b56d29c48af97636b2add3df6bd",
+          "auditEvidence": null,
+          "summary": "Photo exacte importée avec licence CC BY-SA 4.0, crédit, date et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-1c22cab3-78e9-4a8b-bbe1-96475bed5083",
+          "appliedAt": "2026-11-02T09:25:24.485Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1b45ed19-a646-4433-8b99-cd623bc0e39f",
+          "evidence": "PARK_DATA_EDITOR:apply:1c22cab3-78e9-4a8b-bbe1-96475bed5083",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires relevés sur la billetterie officielle de Rota Fortuna"
+        },
+        {
+          "eventId": "apply-dacbdc38-b261-478e-89fe-93e1e94498f6",
+          "appliedAt": "2026-11-02T09:26:09.003Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1b45ed19-a646-4433-8b99-cd623bc0e39f",
+          "evidence": "PARK_DATA_EDITOR:apply:dacbdc38-b261-478e-89fe-93e1e94498f6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-lt-palanga-wheel-20261102/audit.json",
+          "summary": "Ouverture de mai 2022 intégrée à la chronologie et audit sans blocage"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier grille tarifaire de réservation, horaires météo et photo plus récente ; ne pas répéter la publication Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Rota Fortuna — site de la roue et tarif de départ",
+          "url": "https://palangosapzvalgosratas.lt/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Rota Fortuna — billetterie et horaires actuels",
+          "url": "https://bilietai.palangosapzvalgosratas.lt/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Office du tourisme de Palanga — identité et exploitation",
+          "url": "https://www.visit-palanga.lt/lankytinos-vietos/apzvalgos-ratas-palangoje/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Office du tourisme de Palanga — ouverture 2022",
+          "url": "https://www.visit-palanga.lt/naujiena/palanga-turistus-pasitinka-naujiena-auksciausias-apzvalgos-ratas-lietuvoje-veiksiantis-istisus-metus/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Bibliothèque publique de Palanga — coordonnées",
+          "url": "https://www.krastogidas.lt/objektai/apzvalgos-ratas?route=17638",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Palangos Tiltas — résolution du litige foncier en 2026",
+          "url": "https://www.palangostiltas.lt/naujienos/po-detaliojo-plano-korekcijos-statybu-inspekcija-paliko-palangos-apzvalgos-rato-valdytojus-ramybeje-23983",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "15min — exploitation constatée en septembre 2026",
+          "url": "https://www.15min.lt/naujiena/aktualu/lietuva/palangoje-apzvalgos-ratas-ne-sezono-metu-sukasi-pustustis-suaugusiojo-bilietas-pigesnis-nei-bus-kaune-56-2767348",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte de 2022",
+          "url": "https://commons.wikimedia.org/wiki/File:Palanga,_ap%C5%BEvalgos_ratas.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Palangos apžvalgos ratas",
+            "source": "Rota Fortuna — site et billetterie propres",
+            "url": "https://bilietai.palangosapzvalgosratas.lt/",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Palangos vasaros parkas",
+            "sourceLifecycleSignal": "Billetterie propre consultable en novembre 2026",
+            "sourceLocality": "Palanga",
+            "matchingMethod": "Roue située dans un complexe de loisirs mais exploitée par Rota Fortuna avec billetterie autonome, distincte des autres activités ; aucune fiche Park/Standalone homonyme."
+          }
+        ],
+        "rationale": "Rota Fortuna est un exploitant distinct avec réservation et entrée propres ; le complexe héberge plusieurs activités mais aucune fiche Park parent n’existe sur le site."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/1b45ed19-a646-4433-8b99-cd623bc0e39f/palangos-apzvalgos-ratas",
+          "publishedAtUtc": "2026-11-02T09:27:29.525Z",
+          "verifiedAtUtc": "2026-11-02T09:30:07.291Z",
+          "evidence": "PARK_DATA_EDITOR:apply:a3eb0677-2092-4d5e-91c6-3b905a05107a"
+        },
+        "facebook": {
+          "id": "2400f068437a4efbad08b69074d5779e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T09:28:59.005Z",
+          "externalPostId": "1285475681307050_122125709019424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125709019424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:2400f068437a4efbad08b69074d5779e"
+        }
       }
     },
     {

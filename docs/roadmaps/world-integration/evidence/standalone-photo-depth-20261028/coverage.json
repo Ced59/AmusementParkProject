@@ -1,0 +1,1656 @@
+{
+  "checkedAtUtc": "2026-10-28T18:20:07Z",
+  "method": "Public GET /api/images/8/{standaloneId}/8, page 1 size 50; all images in each response verified published.",
+  "totalPublishedStandalone": 128,
+  "totalPhotos": 366,
+  "distribution": {
+    "0": 8,
+    "1": 4,
+    "2": 47,
+    "3": 36,
+    "4": 10,
+    "5": 19,
+    "6": 3,
+    "7": 1
+  },
+  "entries": [
+    {
+      "country": "AE",
+      "entryId": "AE-candidate-bc470aaefff20d",
+      "name": "Ain Dubai",
+      "siteId": "f70328d1-79bf-492f-955a-3db69b7cc730",
+      "photoCount": 3,
+      "currentPhotoId": "05d42635d7d24b05aa6ba3e6e5dc5ede",
+      "photoIds": [
+        "cfffe28f5884407bbdeffd6fb312e6c1",
+        "6262c4eb095a4a7ca7f4b41518dba897",
+        "05d42635d7d24b05aa6ba3e6e5dc5ede"
+      ]
+    },
+    {
+      "country": "AE",
+      "entryId": "AE-candidate-discovery-2e3c4377ca5ef9",
+      "name": "The Dubai Balloon at Atlantis",
+      "siteId": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+      "photoCount": 0,
+      "currentPhotoId": null,
+      "photoIds": []
+    },
+    {
+      "country": "AE",
+      "entryId": "AE-candidate-discovery-fa74bdc4d250e2",
+      "name": "XLine Dubai Marina",
+      "siteId": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+      "photoCount": 3,
+      "currentPhotoId": "c2e38a455ce44bb292773d6e60cb20dd",
+      "photoIds": [
+        "c2e38a455ce44bb292773d6e60cb20dd",
+        "03a41d5279a84488a901aed30a16e418",
+        "1dfed3190993435bb67eb1e1d5a448c0"
+      ]
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-0c8ab99d-d1a8-434f-8785-6be618039172",
+      "name": "Alpine Coaster Imst",
+      "siteId": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+      "photoCount": 3,
+      "currentPhotoId": "944db7e1dd6f4048ae69f3a2efe98418",
+      "photoIds": [
+        "10e1ffd74bef4f02923848a8e5e57024",
+        "fa2e5619f45d438dabe0d79b614a4218",
+        "944db7e1dd6f4048ae69f3a2efe98418"
+      ]
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-candidate-discovery-5012808b5cf423",
+      "name": "Donauturm-Rutsche",
+      "siteId": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+      "photoCount": 1,
+      "currentPhotoId": "6e66a56de809450488a20e6ec7848c23",
+      "photoIds": [
+        "6e66a56de809450488a20e6ec7848c23"
+      ]
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-d45c859f-7df4-4f80-8851-9646c9ceb7e7",
+      "name": "EIBL Jet Türnitz",
+      "siteId": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+      "photoCount": 3,
+      "currentPhotoId": "c55ce027d30745dca556f7787cd8dd4e",
+      "photoIds": [
+        "f1432b68f9d74d1798792aab31d3cd4c",
+        "f81872fdb2c042a99e64fc5243d5f08c",
+        "c55ce027d30745dca556f7787cd8dd4e"
+      ]
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-4b096c01-c2d1-4f44-b8ab-f6b1cd362461",
+      "name": "Grünberg-Flitzer",
+      "siteId": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+      "photoCount": 2,
+      "currentPhotoId": null,
+      "photoIds": [
+        "c091dcc14e81402c9e3013a3fcedbb9b",
+        "2d22047f9c984518a948b146e2544d79"
+      ]
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-5c0e772c-7fcd-4081-b08b-7fb46f66c9f7",
+      "name": "Nocky Flitzer",
+      "siteId": "a3447c55-089a-4cf1-9531-223fbe763544",
+      "photoCount": 2,
+      "currentPhotoId": "d4157267d2cc45059837629249101cd7",
+      "photoIds": [
+        "bea1a1d1beac4cfb976d8303b20104b9",
+        "d4157267d2cc45059837629249101cd7"
+      ]
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-standalone-7ca75951-9be6-4705-9536-718759c7e0f0",
+      "name": "Pendolino",
+      "siteId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+      "photoCount": 2,
+      "currentPhotoId": "b77b1604c9f449118984720a30b233d2",
+      "photoIds": [
+        "c88dbe4a42974024ba8e1d90ad2b38b1",
+        "b77b1604c9f449118984720a30b233d2"
+      ]
+    },
+    {
+      "country": "AT",
+      "entryId": "AT-park-5400ddc6-e650-478c-88b5-aaa1a87f7dae",
+      "name": "Speed-Gleit-Bahn",
+      "siteId": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+      "photoCount": 0,
+      "currentPhotoId": null,
+      "photoIds": []
+    },
+    {
+      "country": "AU",
+      "entryId": "AU-candidate-61bc40d2c12cdc",
+      "name": "Wheel of Brisbane",
+      "siteId": "b62e8868-f6df-4728-9733-8b111469c42e",
+      "photoCount": 3,
+      "currentPhotoId": "cf49c44cfb564eb1b310fd56bd4294ee",
+      "photoIds": [
+        "be46c3b54f694e3ca1db3287c0634181",
+        "5eed670e1e5d42ffa97d36bc9563ec42",
+        "cf49c44cfb564eb1b310fd56bd4294ee"
+      ]
+    },
+    {
+      "country": "AZ",
+      "entryId": "AZ-candidate-56998578936897",
+      "name": "Shahdag Mountain Resort",
+      "siteId": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+      "photoCount": 4,
+      "currentPhotoId": "e12cdc19cd4048b3aa36e56fdb99689d",
+      "photoIds": [
+        "4467e7d5c8094103bd1c30267e201dc6",
+        "3050f65af4e14049a6763a7a7379c594",
+        "c62bb174d1b84217a26bc7cce43b872c",
+        "e12cdc19cd4048b3aa36e56fdb99689d"
+      ]
+    },
+    {
+      "country": "AZ",
+      "entryId": "AZ-candidate-f296136777add0",
+      "name": "Tufandağ Mountain Resort",
+      "siteId": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+      "photoCount": 2,
+      "currentPhotoId": "dbf47594bb0b428391143bb51465efb0",
+      "photoIds": [
+        "4dc352c2c16b4df59ce293e03b691992",
+        "dbf47594bb0b428391143bb51465efb0"
+      ]
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-standalone-abf154c8e98f1e",
+      "name": "Downhill Karting Calgary",
+      "siteId": "b8390695-b97a-4e15-a45d-a2234703a779",
+      "photoCount": 1,
+      "currentPhotoId": "e1019ba4cfc84e30992b9020d58d32c5",
+      "photoIds": [
+        "e1019ba4cfc84e30992b9020d58d32c5"
+      ]
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-standalone-52b944d77d3979",
+      "name": "Eagle’s Flight ZipTour — Mount Washington",
+      "siteId": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "photoCount": 0,
+      "currentPhotoId": null,
+      "photoIds": []
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-ff82b206858b7c",
+      "name": "Flyover Vancouver",
+      "siteId": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+      "photoCount": 3,
+      "currentPhotoId": "80779d80caec4527a4aaaf6ccefd2ea4",
+      "photoIds": [
+        "b8623ffd02c24a3e9ccebe531cec213d",
+        "f20faa89c8544e29bebcdcabf50c96e1",
+        "80779d80caec4527a4aaaf6ccefd2ea4"
+      ]
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-a9d972567fa851",
+      "name": "La Grande Roue de Montréal",
+      "siteId": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+      "photoCount": 4,
+      "currentPhotoId": "cd5c12f079474d48911f24384b33415f",
+      "photoIds": [
+        "c9fd416c2cef4cdc926fe48346d9217c",
+        "5202620098474c399b1cb6ee52fd61a6",
+        "19e853b74cc34a27b3f0dcab6a76908b",
+        "cd5c12f079474d48911f24384b33415f"
+      ]
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-6c82f89565e189",
+      "name": "Niagara SkyWheel",
+      "siteId": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+      "photoCount": 4,
+      "currentPhotoId": "53c439edaadc4e9bbdba1e2cb0cdbd50",
+      "photoIds": [
+        "7e43894c9d294d4ba993405f9e671862",
+        "efec7c4e4f58467c8074b5cfa372b18a",
+        "802a4eaf3a87492f9083ab3c34bd5b31",
+        "53c439edaadc4e9bbdba1e2cb0cdbd50"
+      ]
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-05e7f7645eafbd",
+      "name": "Panorama Mountain Resort",
+      "siteId": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+      "photoCount": 4,
+      "currentPhotoId": "af286dc9a7b3405d98e41d93258cc213",
+      "photoIds": [
+        "61691bd799224f359d54523e1fdfc967",
+        "9a75be9ef39540658424256fa1719483",
+        "07356894ef324a888d48c80cc1f40b65",
+        "af286dc9a7b3405d98e41d93258cc213"
+      ]
+    },
+    {
+      "country": "CA",
+      "entryId": "CA-candidate-standalone-d4c5e1d103913c",
+      "name": "Skyline Luge Mont-Tremblant",
+      "siteId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "photoCount": 0,
+      "currentPhotoId": null,
+      "photoIds": []
+    },
+    {
+      "country": "CZ",
+      "entryId": "CZ-candidate-standalone-16eabf1e7c1f3f",
+      "name": "Bobovka Prosek",
+      "siteId": "7c0caa68-3971-4854-8033-6d24f9927389",
+      "photoCount": 3,
+      "currentPhotoId": "bad0c8b9b7c24f4d8470518c5209ce3c",
+      "photoIds": [
+        "7e8d5d4efa6840ecace3271fd25549f9",
+        "1b59d937ec2347cea80167f4a782bad0",
+        "bad0c8b9b7c24f4d8470518c5209ce3c"
+      ]
+    },
+    {
+      "country": "CZ",
+      "entryId": "CZ-park-66243ab8-bdb3-43ae-8409-81fc0310c56f",
+      "name": "Bobovka u mlýna",
+      "siteId": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+      "photoCount": 3,
+      "currentPhotoId": "b1b00318b89d458f86662009757e344b",
+      "photoIds": [
+        "19bd633fca0a47ffb735c85d43adaa5a",
+        "c2a2f10c14714bdbbbfd57e5d379b47d",
+        "b1b00318b89d458f86662009757e344b"
+      ]
+    },
+    {
+      "country": "CZ",
+      "entryId": "CZ-park-813ec867-ebb5-48a3-b07a-e61062364612",
+      "name": "Bobová dráha Němčičky",
+      "siteId": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+      "photoCount": 3,
+      "currentPhotoId": "00f913caba2142cd88bac4f5787984c4",
+      "photoIds": [
+        "8f85ed97e05e44fb902dcc52ef7db5ca",
+        "374d38a8ecb74ce2aad6d78dd004f0bf",
+        "00f913caba2142cd88bac4f5787984c4"
+      ]
+    },
+    {
+      "country": "CZ",
+      "entryId": "CZ-park-a582a121-a620-4403-b6b6-d19e153d3ed8",
+      "name": "Bobová dráha Pastviny",
+      "siteId": "22b6e012-2b8b-4d6f-aa62-080d8756bfda",
+      "photoCount": 3,
+      "currentPhotoId": "60ff128394e24ce0b41a557f96001ef8",
+      "photoIds": [
+        "f0d6292db37e459f976a60b4977c5fb7",
+        "ea8be037144a42398fd6cb023664fbdf",
+        "60ff128394e24ce0b41a557f96001ef8"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-80836e64-0911-4e37-aef1-39cd7499d4aa",
+      "name": "Allwetterrodelbahn Schöne Aussicht Weißenfels",
+      "siteId": "80836e64-0911-4e37-aef1-39cd7499d4aa",
+      "photoCount": 5,
+      "currentPhotoId": "5d0f9f2e125f4b519395e59457e117b2",
+      "photoIds": [
+        "13fdba512aa64317a31bea7c326314ac",
+        "50b59d2273744e55aaf96880f92b1f44",
+        "b3f8090ecb57478889920e7e1e4d5d4a",
+        "3b37af252d1542759f9180ddae41868a",
+        "5d0f9f2e125f4b519395e59457e117b2"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+      "name": "Alpine Coaster Kolbensattel",
+      "siteId": "3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+      "photoCount": 5,
+      "currentPhotoId": "a773870c0ad34105be65f5afed5e4a62",
+      "photoIds": [
+        "8124723aac7b407792124379d25d48d3",
+        "23d01d3264d849a183f4f0c9efa1d532",
+        "b1335c5598af44e7bd53ba5f80ecdba5",
+        "e96bb28531a5422ea6130188d3bc3ad8",
+        "a773870c0ad34105be65f5afed5e4a62"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-b593d380-49b9-4c5d-b08c-00cc378182b3",
+      "name": "Alpsee Coaster",
+      "siteId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+      "photoCount": 5,
+      "currentPhotoId": "5dde7913f78d4160a3eb41c1036f225e",
+      "photoIds": [
+        "42ed1dcbbcf3484a93cd9b524e177bbe",
+        "11e8ade0a46a4d0a97dae1872cc047c6",
+        "5ec32e7da49c42ab873583a140253082",
+        "5b1e403ec38c4bf29fee4aca62b9e9cc",
+        "5dde7913f78d4160a3eb41c1036f225e"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+      "name": "AlpspitzCOASTER",
+      "siteId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+      "photoCount": 5,
+      "currentPhotoId": "62c88f1636394efbac3948ad5f345121",
+      "photoIds": [
+        "7d2fc1a72ef646b3af065dbf851e876b",
+        "e51d974c0e39456a91a02cea5f53f4a2",
+        "20dd79d21b2948dcbdfda3f77c6c6ce8",
+        "f24b3a9e72e84507a09e2cead798ce7b",
+        "62c88f1636394efbac3948ad5f345121"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "name": "Blomberg Blitz",
+      "siteId": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "photoCount": 5,
+      "currentPhotoId": "2237b72d8d2549d4b4451c03490f7ecd",
+      "photoIds": [
+        "d1d3c161d2e8469ba9d85b9c35e30c2d",
+        "baf3e4ac7d294afeb4c95e5ff14f3954",
+        "ba7a8426e935418389c88d2c5cec9fef",
+        "8c61b6b054424a46b72d536104061790",
+        "2237b72d8d2549d4b4451c03490f7ecd"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+      "name": "Bobbahn Donnstetten",
+      "siteId": "ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+      "photoCount": 4,
+      "currentPhotoId": "c3e753e12a55406598ae1d95a3498a3f",
+      "photoIds": [
+        "f200ee016b28481081317d8a5f5de410",
+        "c476c3a5e6394422a3f645714ad884b8",
+        "fde7c7c15f9141719a9f6bcb3f753461",
+        "c3e753e12a55406598ae1d95a3498a3f"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-8a0ad048-04c6-485a-827d-ec5c42617db4",
+      "name": "Brocken-Coaster",
+      "siteId": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+      "photoCount": 5,
+      "currentPhotoId": "b85c38a8665148f3a54f293992b1645d",
+      "photoIds": [
+        "c001e9c3141a423c865abe878668ced7",
+        "b85c38a8665148f3a54f293992b1645d",
+        "37a1332a3d06407c9bf42e7c4929995d",
+        "75a42be70a544bc3ae37bb805b3d805d",
+        "e937dfee26c64016b2d7c0d3b8370221"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-79535465-11be-4817-9e09-ca8fe376eb1f",
+      "name": "Chiemgau Coaster",
+      "siteId": "79535465-11be-4817-9e09-ca8fe376eb1f",
+      "photoCount": 5,
+      "currentPhotoId": "94a4223337d744459754bec8db4bab1f",
+      "photoIds": [
+        "f77dbba1543547489f184ad8382b062b",
+        "3d816f3f7155480892bfe3933031bf11",
+        "b4f69c365c61435cac845ad3227f5a53",
+        "7a7cf4d78f5c4185b4726ed6e0725eb7",
+        "94a4223337d744459754bec8db4bab1f"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+      "name": "Erlebnis-Rodelbahn Ruhla",
+      "siteId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+      "photoCount": 5,
+      "currentPhotoId": "2b891f3a821e4b01832c3a8afa00ec71",
+      "photoIds": [
+        "67398e1246b54104a7099d89311a4cca",
+        "ffe0d9dd7a0a41eb94877979dcd10d8d",
+        "b335c30c9ed74a0e923337eab2b184d6",
+        "949c396e1f5b4f0f800a1151643472a4",
+        "2b891f3a821e4b01832c3a8afa00ec71"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+      "name": "Fröschbrunna Coaster",
+      "siteId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+      "photoCount": 3,
+      "currentPhotoId": "7376f74bfff64c8bac503b0071cf2cfd",
+      "photoIds": [
+        "9da3ca151ad94f148578cbe590a71610",
+        "820b581baeab4218ae8965558c6607c0",
+        "7376f74bfff64c8bac503b0071cf2cfd"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-46a57823-75cd-4ff3-9fde-495ad0204b1b",
+      "name": "Hasenhorn Coaster",
+      "siteId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+      "photoCount": 3,
+      "currentPhotoId": "1085326d5fa44a7d833f17171192e094",
+      "photoIds": [
+        "a31c97be59a9415fb74c67e984ed3005",
+        "19046b57633c4c3ca44423b8ccfc9f6e",
+        "1085326d5fa44a7d833f17171192e094"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+      "name": "Jaudenhangflitzer",
+      "siteId": "cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+      "photoCount": 5,
+      "currentPhotoId": "04ac4378d77640739851ccc13bbb230a",
+      "photoIds": [
+        "6a1ce1455d2b44eabe7d235a8cbc996a",
+        "d81c6cd1a35243699ec53b1654b359df",
+        "d9562664240b46018dec88b36e03581b",
+        "0125899ddd4347aa921b665d70cce314",
+        "04ac4378d77640739851ccc13bbb230a"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+      "name": "LEITNER Natur-Bobbahn Berlin",
+      "siteId": "3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+      "photoCount": 4,
+      "currentPhotoId": "250bd46b182f4f3a947af8b331798088",
+      "photoIds": [
+        "e9894ef185ec40e59de4916d935ed038",
+        "250bd46b182f4f3a947af8b331798088",
+        "83af06552a6c4303a42a8282e2529f21",
+        "b63a30e2deb14ff5b87497b53a2703e5"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-8e2ee4e1-06a5-4805-bfd4-9898a9febd0c",
+      "name": "Rodelbahn Petersberg",
+      "siteId": "8e2ee4e1-06a5-4805-bfd4-9898a9febd0c",
+      "photoCount": 5,
+      "currentPhotoId": "7e0ce74a96b54e6ca05e2da3a7b4ce91",
+      "photoIds": [
+        "e90a31a0d25b4e39bacf1e5f172b781c",
+        "1fbf14507f2c4e94b84f18beba834a83",
+        "c7dcbc69e6fa40458b36ba0acda86cee",
+        "2a1ff7a3da3f4b5295489fe8b3b89a8b",
+        "7e0ce74a96b54e6ca05e2da3a7b4ce91"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+      "name": "Sommerrodelbahn Classic",
+      "siteId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+      "photoCount": 3,
+      "currentPhotoId": "983dd5f2db0e4506b43352ca2d02481e",
+      "photoIds": [
+        "31457308234e4e4196a1195d6ad3be47",
+        "eef8c57212b14dc9bed08968c1a1a8f0",
+        "983dd5f2db0e4506b43352ca2d02481e"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-standalone-d727843f-43ec-40b1-8c0e-8f303232c715",
+      "name": "Sommerrodelbahn Erbeskopf",
+      "siteId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+      "photoCount": 5,
+      "currentPhotoId": "2cbd839d203e4315941beb6eee1e67ca",
+      "photoIds": [
+        "c46ff55f1d2241aca8066d2e749ec553",
+        "99503ffc9d5643be997fdde1397f08f8",
+        "12cae856bcd54e93be0320b5fe283f8a",
+        "5ebe42f023004b4b9ab9acb1a6190c56",
+        "2cbd839d203e4315941beb6eee1e67ca"
+      ]
+    },
+    {
+      "country": "DE",
+      "entryId": "DE-candidate-2ae1371b43102d",
+      "name": "Sommerrodelbahn Oberwiesenthal",
+      "siteId": "6344aa13-1fa4-4df1-a464-42d98b493047",
+      "photoCount": 2,
+      "currentPhotoId": "241ee56f69154638a1c97293e094ca54",
+      "photoIds": [
+        "d96b5709edae400d81bdb16c6bdae8b8",
+        "241ee56f69154638a1c97293e094ca54"
+      ]
+    },
+    {
+      "country": "ES",
+      "entryId": "ES-candidate-discovery-1182b2f2f1a8d3",
+      "name": "Límite Zero — tyrolienne Espagne–Portugal",
+      "siteId": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "photoCount": 2,
+      "currentPhotoId": "87fff980b6ba45a09e3fb280bca8067f",
+      "photoIds": [
+        "0c1ce1eb88e4487a9f4614ab43e748dd",
+        "87fff980b6ba45a09e3fb280bca8067f"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-9a7818e7-3539-4845-9957-ff7e97028497",
+      "name": "Clécy Gliss",
+      "siteId": "9a7818e7-3539-4845-9957-ff7e97028497",
+      "photoCount": 2,
+      "currentPhotoId": "b8860d16a302486eac6b7cc9049716d5",
+      "photoIds": [
+        "d1f3809b899d40d4a5af1bd4395d6c03",
+        "b8860d16a302486eac6b7cc9049716d5"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-1e5b7e2c-331f-435a-a5d7-9842c1532b28",
+      "name": "Draco’Snow",
+      "siteId": "1e5b7e2c-331f-435a-a5d7-9842c1532b28",
+      "photoCount": 2,
+      "currentPhotoId": "95aa2878641447b7a8fad27ebaa0a941",
+      "photoIds": [
+        "c386aca710fc4d72b10ab4b08e7a110e",
+        "95aa2878641447b7a8fad27ebaa0a941"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-43a2af2a-30d5-4866-a3e3-47d069f902f9",
+      "name": "Déval’luge",
+      "siteId": "43a2af2a-30d5-4866-a3e3-47d069f902f9",
+      "photoCount": 2,
+      "currentPhotoId": "4b5fd4a5241840b1a24ec56222ab2f08",
+      "photoIds": [
+        "73cc8f162580495d896cc87d0f285697",
+        "4b5fd4a5241840b1a24ec56222ab2f08"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-5ba1d1f2-5e0e-4599-adab-386fb16b9728",
+      "name": "Dévoluge",
+      "siteId": "5ba1d1f2-5e0e-4599-adab-386fb16b9728",
+      "photoCount": 2,
+      "currentPhotoId": "1ddb68628e80480eb9e6cd329900ba57",
+      "photoIds": [
+        "13859a0cfb8e4376b1a609e7b496b45a",
+        "1ddb68628e80480eb9e6cd329900ba57"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-3e8cdb05-5ee8-4c0a-ad4f-34cd525240a9",
+      "name": "Guzet Express",
+      "siteId": "3e8cdb05-5ee8-4c0a-ad4f-34cd525240a9",
+      "photoCount": 2,
+      "currentPhotoId": "e42779ed3e414aad8298fd13c9d7caf3",
+      "photoIds": [
+        "4d5f64b071814d20b18e4d8ba777e268",
+        "e42779ed3e414aad8298fd13c9d7caf3"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-9b2259ea-f82e-456c-a606-621b82f65b7f",
+      "name": "L'Orrian Express",
+      "siteId": "9b2259ea-f82e-456c-a606-621b82f65b7f",
+      "photoCount": 2,
+      "currentPhotoId": "b1e6aaf7ede5402f85cf6041d3285b78",
+      "photoIds": [
+        "b312e2cf3a7c4daaaa9bac42dcb05f51",
+        "b1e6aaf7ede5402f85cf6041d3285b78"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-abb6cba3-8941-496a-adb4-831ab3c8fce0",
+      "name": "La Comète",
+      "siteId": "abb6cba3-8941-496a-adb4-831ab3c8fce0",
+      "photoCount": 4,
+      "currentPhotoId": "befa7ec7273c4d27b4126f018ff424e8",
+      "photoIds": [
+        "de2a2cba0e5741a78fd972913d0d389e",
+        "afac731c78314cec9fbf8f33709f109b",
+        "3c3620c4cae14344a291a2b764d9cfc3",
+        "befa7ec7273c4d27b4126f018ff424e8"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-0dd99206-5ff2-4721-af07-da8cfce99b1f",
+      "name": "La Luge Dévale",
+      "siteId": "0dd99206-5ff2-4721-af07-da8cfce99b1f",
+      "photoCount": 2,
+      "currentPhotoId": "bb66095d69d74bcba50935aac837b0aa",
+      "photoIds": [
+        "7335aa7ed04b433b861f5ab05c53b149",
+        "bb66095d69d74bcba50935aac837b0aa"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-a8b462e8-1dbf-4862-9151-6840c17d9183",
+      "name": "La Mine",
+      "siteId": "a8b462e8-1dbf-4862-9151-6840c17d9183",
+      "photoCount": 2,
+      "currentPhotoId": "539dc159070b4620bf67ae13983161e4",
+      "photoIds": [
+        "90bc7db244204e82b713bda771ac8df9",
+        "539dc159070b4620bf67ae13983161e4"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-ee2e2b60-e894-4cc5-b70b-82fe722ae5d4",
+      "name": "Lou Bac Mountain",
+      "siteId": "ee2e2b60-e894-4cc5-b70b-82fe722ae5d4",
+      "photoCount": 2,
+      "currentPhotoId": "65b71df46c8d42fd98d662dd9c05ac3c",
+      "photoIds": [
+        "92bf4f527ea74bc284fce888d442428b",
+        "65b71df46c8d42fd98d662dd9c05ac3c"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-46847372-e37d-4804-9db5-86fd17f1b6e9",
+      "name": "Luge 4 Saisons",
+      "siteId": "46847372-e37d-4804-9db5-86fd17f1b6e9",
+      "photoCount": 2,
+      "currentPhotoId": "ade8d6aa70a544ccafa6b6f7896b375c",
+      "photoIds": [
+        "f3cf67fd035048deb5d7025d51cafefc",
+        "ade8d6aa70a544ccafa6b6f7896b375c"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-530ffe49-3392-4aeb-9370-dd8cc0bd8817",
+      "name": "Luge 4 Saisons",
+      "siteId": "530ffe49-3392-4aeb-9370-dd8cc0bd8817",
+      "photoCount": 5,
+      "currentPhotoId": "843a64c581c9406e853bbe9ac8ff4404",
+      "photoIds": [
+        "fba88187768149e6a70178c7ce3313ad",
+        "0606884923384badb3cf9b0ff6bcc942",
+        "b4bf8b589c26424dabaa0a3edc9d8214",
+        "88e6073fc26c46e38bc7ea9d5a887a5d",
+        "843a64c581c9406e853bbe9ac8ff4404"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-49853230-a1a6-4592-90b1-ad7e03374d31",
+      "name": "Luge 4 Saisons de Bernex",
+      "siteId": "49853230-a1a6-4592-90b1-ad7e03374d31",
+      "photoCount": 2,
+      "currentPhotoId": "27e783a512774eecb388125f1e3535e1",
+      "photoIds": [
+        "fae447195db44b279196ae1a709894c3",
+        "27e783a512774eecb388125f1e3535e1"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-3ca66a78-92be-4265-bebd-935b861fc9d9",
+      "name": "Luge 4 saisons",
+      "siteId": "3ca66a78-92be-4265-bebd-935b861fc9d9",
+      "photoCount": 5,
+      "currentPhotoId": "c3f49240a765463595f7cfd5cb36837d",
+      "photoIds": [
+        "8183b7e09e224b86ac6712e08be09d86",
+        "b74df16221de4b998b3a813102fde7d3",
+        "db63fe1b7eea42c6844fcc9f03a734b0",
+        "5e5e8cf2d5f14e838d2fb4363bf49a47",
+        "c3f49240a765463595f7cfd5cb36837d"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-0b1678ed-01a3-4f48-9873-53ca8be2ddea",
+      "name": "Luge Alpine Coaster de Chamonix",
+      "siteId": "0b1678ed-01a3-4f48-9873-53ca8be2ddea",
+      "photoCount": 2,
+      "currentPhotoId": "1dcd90df64334b9e90ec97c32a3e1d96",
+      "photoIds": [
+        "eda5cecf6084494d97599671bbcba451",
+        "1dcd90df64334b9e90ec97c32a3e1d96"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-2d446d1d-f3f3-4880-9fce-88e75997e9c5",
+      "name": "Luge Coaster Chamrousse",
+      "siteId": "2d446d1d-f3f3-4880-9fce-88e75997e9c5",
+      "photoCount": 2,
+      "currentPhotoId": "0bda6825e555480b865eebfef0bab416",
+      "photoIds": [
+        "ab14d409c4e74a26b52ef442958a7494",
+        "0bda6825e555480b865eebfef0bab416"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-d598ac25-f4fb-4085-b366-2371ca95d7d8",
+      "name": "Luge Molines Sensation",
+      "siteId": "d598ac25-f4fb-4085-b366-2371ca95d7d8",
+      "photoCount": 2,
+      "currentPhotoId": "51dea2a6483e4be5950520f94a932c58",
+      "photoIds": [
+        "ec5a0ce5694b40bba847b5c66910d7e2",
+        "51dea2a6483e4be5950520f94a932c58"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-1ba2e17e-e7ea-4ef7-91dd-472e6011de40",
+      "name": "Luge Monty Express",
+      "siteId": "1ba2e17e-e7ea-4ef7-91dd-472e6011de40",
+      "photoCount": 2,
+      "currentPhotoId": "da6479c0ad5e4b5c8b2b4217c430fca1",
+      "photoIds": [
+        "8fdb2ac908b9490097a25bdd87d37167",
+        "da6479c0ad5e4b5c8b2b4217c430fca1"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-0bfdfd47-8363-4f9d-959b-6fd331dca6e4",
+      "name": "Luge alpine du Plan Incliné",
+      "siteId": "0bfdfd47-8363-4f9d-959b-6fd331dca6e4",
+      "photoCount": 2,
+      "currentPhotoId": "6d9a73b232d64d4d8cbe7cbd47f18a88",
+      "photoIds": [
+        "d3d33419f4534ab585dd5bd8bf75101f",
+        "6d9a73b232d64d4d8cbe7cbd47f18a88"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-3e265e8c-6dff-49da-b3d2-4a76eb4f83d8",
+      "name": "Luge des Bois",
+      "siteId": "3e265e8c-6dff-49da-b3d2-4a76eb4f83d8",
+      "photoCount": 2,
+      "currentPhotoId": "66c46ecb1d1b43faae22ead1b042eacb",
+      "photoIds": [
+        "50d2e23a5a474578bc401f76a0dbfd5d",
+        "66c46ecb1d1b43faae22ead1b042eacb"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-6af61037-c7eb-476f-86f3-3815bc9e4b53",
+      "name": "Luge des Cimes",
+      "siteId": "6af61037-c7eb-476f-86f3-3815bc9e4b53",
+      "photoCount": 5,
+      "currentPhotoId": "3c710060a6c1427e8768b610fc003756",
+      "photoIds": [
+        "a2dff62a3bbe41c19e6f94349f2ed740",
+        "2942e52d975b448fb9b325f04a27ab5b",
+        "8f7fb9d4708a4f8bb85d8327734aca3a",
+        "dfb5aab9813a4eca9e5f0914d23170e2",
+        "3c710060a6c1427e8768b610fc003756"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-30dd9346-98af-47ac-9df9-fc137eb3ed94",
+      "name": "Luge du Caribou",
+      "siteId": "30dd9346-98af-47ac-9df9-fc137eb3ed94",
+      "photoCount": 7,
+      "currentPhotoId": "b40e0e1288084dea9210b045ab62cb7a",
+      "photoIds": [
+        "57d99410948044f08a5491452f8b94dc",
+        "217e6456cd5544abae48b867fe843ad9",
+        "405ca6d89dca488e9985bbac0c245088",
+        "599fcda1c48e4def8a58e56f1c14c262",
+        "b35a3489670c4b768f43b1b289c7ab4f",
+        "c5796b6ad333474db81ece3aa0ed0bdd",
+        "b40e0e1288084dea9210b045ab62cb7a"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-b3b096be-faf3-4477-b340-1ee12d0803b6",
+      "name": "Luge d’été de La Colmiane",
+      "siteId": "b3b096be-faf3-4477-b340-1ee12d0803b6",
+      "photoCount": 2,
+      "currentPhotoId": "3ea7bb4fa89c44f4b636eb8ad3413f87",
+      "photoIds": [
+        "e56b073954534d1c8519d6d2eee3fc1b",
+        "3ea7bb4fa89c44f4b636eb8ad3413f87"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-7397a904-b8be-4077-9da2-32d71a4802ee",
+      "name": "Luge sur Rail de l'Alpe d'Huez",
+      "siteId": "7397a904-b8be-4077-9da2-32d71a4802ee",
+      "photoCount": 2,
+      "currentPhotoId": "26ccbd26f1474c4ca0b295ecbe4b7cfe",
+      "photoIds": [
+        "00fe479de2a748ea81d73a4b332fdc9f",
+        "26ccbd26f1474c4ca0b295ecbe4b7cfe"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-e579d256-0744-4f49-b887-6c3fa5b99031",
+      "name": "Luge sur rail du Markstein",
+      "siteId": "e579d256-0744-4f49-b887-6c3fa5b99031",
+      "photoCount": 2,
+      "currentPhotoId": "e709858eb3ff4b9e8c2dc2b2524967dc",
+      "photoIds": [
+        "81f72d81284e41d5ae0c7b1b259f2b2b",
+        "e709858eb3ff4b9e8c2dc2b2524967dc"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-258c419a-5081-484e-a827-b7728ed6587d",
+      "name": "Luge sur rails : JIM La Sambuy",
+      "siteId": "258c419a-5081-484e-a827-b7728ed6587d",
+      "photoCount": 2,
+      "currentPhotoId": "5e61dd0cd1154dd4980a6c6b0498db1c",
+      "photoIds": [
+        "7f50e8ba0ccf45f5a51d181cce84c80f",
+        "5e61dd0cd1154dd4980a6c6b0498db1c"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-eba6c813-59ed-4c60-9cea-14f0cc3ecb4c",
+      "name": "Luge sur rails de La Schlucht",
+      "siteId": "eba6c813-59ed-4c60-9cea-14f0cc3ecb4c",
+      "photoCount": 2,
+      "currentPhotoId": "0bb344c3740b45069c797f5b2d1e0300",
+      "photoIds": [
+        "43ad78b9eb6348c9ae3b15ad9fe6d77f",
+        "0bb344c3740b45069c797f5b2d1e0300"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-53f83007-496b-4e03-a8ec-2d33be9321ab",
+      "name": "Luge sur rails du col de la Faucille",
+      "siteId": "53f83007-496b-4e03-a8ec-2d33be9321ab",
+      "photoCount": 5,
+      "currentPhotoId": "5bc10e2873b5404894826068e3d0f919",
+      "photoIds": [
+        "9834fcbbfd1541a1bdafda3ae6a7c031",
+        "915f725fad6d4e38907bbc2a5c04dd56",
+        "8ab44a785c2649309e213ae2e44c735d",
+        "df705da8f11141e48b7dc78d23d7841c",
+        "5bc10e2873b5404894826068e3d0f919"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-0d88b893-b067-4368-8b1c-fd7a28440136",
+      "name": "Lugik Parc",
+      "siteId": "0d88b893-b067-4368-8b1c-fd7a28440136",
+      "photoCount": 2,
+      "currentPhotoId": "2fce360f0c2245e8bb0021357ab9570f",
+      "photoIds": [
+        "583a95ee86d74954b59a3e3439b6e5e3",
+        "2fce360f0c2245e8bb0021357ab9570f"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-c9110d54-f4dd-44a7-9817-7ffaf648101c",
+      "name": "Mountain Twister",
+      "siteId": "c9110d54-f4dd-44a7-9817-7ffaf648101c",
+      "photoCount": 2,
+      "currentPhotoId": "a2365ffcec1446e3a63ca5df0008cb3d",
+      "photoIds": [
+        "f1d9888418c24e599c89cda250a9392b",
+        "a2365ffcec1446e3a63ca5df0008cb3d"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-e703f8cf-d6e7-4a2b-ac7c-f9b6665d4755",
+      "name": "Norma Loops",
+      "siteId": "e703f8cf-d6e7-4a2b-ac7c-f9b6665d4755",
+      "photoCount": 2,
+      "currentPhotoId": "3170423099c6400e87efbf8df574b447",
+      "photoIds": [
+        "445da74c34cd4979934580ba4f91d735",
+        "3170423099c6400e87efbf8df574b447"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-88fc20bb-4927-42cf-a6c8-09ff966fee61",
+      "name": "Praloops",
+      "siteId": "88fc20bb-4927-42cf-a6c8-09ff966fee61",
+      "photoCount": 2,
+      "currentPhotoId": "e9c3673d4d9643e79d20c19eb6f8a702",
+      "photoIds": [
+        "76fcc6130b8641d3920fc2dbbb19102e",
+        "e9c3673d4d9643e79d20c19eb6f8a702"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-2c2d7646-80e9-4685-b911-005afef3d93b",
+      "name": "Schlitte Mountain",
+      "siteId": "2c2d7646-80e9-4685-b911-005afef3d93b",
+      "photoCount": 2,
+      "currentPhotoId": "8858f71107c641979516516177af4953",
+      "photoIds": [
+        "edfd770e240849578f8ce79b6a0b63bd",
+        "8858f71107c641979516516177af4953"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-ac34ddc0-9887-459b-ac11-6f3fe04920ca",
+      "name": "Speed Dragoz",
+      "siteId": "ac34ddc0-9887-459b-ac11-6f3fe04920ca",
+      "photoCount": 2,
+      "currentPhotoId": "57d531d80d234bd08843235dd37aed79",
+      "photoIds": [
+        "24e95b6979194da0851dad62bedddc38",
+        "57d531d80d234bd08843235dd37aed79"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-2be7c7a1-b10b-40b0-86ba-4df584faf181",
+      "name": "Speed Luge Vercors",
+      "siteId": "2be7c7a1-b10b-40b0-86ba-4df584faf181",
+      "photoCount": 5,
+      "currentPhotoId": "596577cc072043518b052bd5552c4755",
+      "photoIds": [
+        "6676b354c1654793bf2e464ee8e4457d",
+        "6bce669411664ee990bd32b1c1693b31",
+        "d44cb1b107804220b2c4c3d55211f30c",
+        "6e0dbd0e044445fd82d30ae4072acf62",
+        "596577cc072043518b052bd5552c4755"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-3283d263-279b-44a3-ba32-4dc04d7489d2",
+      "name": "Super Coaster",
+      "siteId": "3283d263-279b-44a3-ba32-4dc04d7489d2",
+      "photoCount": 6,
+      "currentPhotoId": "7405696802d94f4b9a7a2ef6946e3b91",
+      "photoIds": [
+        "ae759d4e6a27495e9871e115a3a71d86",
+        "dbb6cc94067c4c71a4e8e9c169df6645",
+        "7ff02c9ef6aa49de99e488daba99dbec",
+        "ca6dc92cee884165a4caa1dd1399f005",
+        "77daf75edb974fb0b20fcac1bf425ff8",
+        "7405696802d94f4b9a7a2ef6946e3b91"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-ce2e1fbf-374f-4730-a193-30bb8466f877",
+      "name": "Tricky Track",
+      "siteId": "ce2e1fbf-374f-4730-a193-30bb8466f877",
+      "photoCount": 6,
+      "currentPhotoId": "0cb899f233d24a93b443949a7792259a",
+      "photoIds": [
+        "3ebc8192db464362b415676ae1f2caa4",
+        "21794b98e2f04082b127518a82f75290",
+        "9c49ec171dde4578a31f3eebd685454c",
+        "d2b65fe2346c4807b086a9172b7c9422",
+        "fd35712d20304c61ae68c0bb869f421b",
+        "0cb899f233d24a93b443949a7792259a"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-97cd7fcb-9e78-4d2a-83f0-34d4df044836",
+      "name": "Verdon Express",
+      "siteId": "97cd7fcb-9e78-4d2a-83f0-34d4df044836",
+      "photoCount": 5,
+      "currentPhotoId": "a6c48936758241019e6ab23fb6bc49e0",
+      "photoIds": [
+        "f90c31371ed74d3a98c9039f9c2ed320",
+        "efa94fddc69d40e1a7b1a9eec295551d",
+        "70dcf55b5d384c5d981658f64417d103",
+        "4f58785c744b46d39c424df8a74fbb86",
+        "a6c48936758241019e6ab23fb6bc49e0"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-cdd41c34-e9c6-4d95-8220-909f8c308690",
+      "name": "Wiz Luge",
+      "siteId": "cdd41c34-e9c6-4d95-8220-909f8c308690",
+      "photoCount": 2,
+      "currentPhotoId": "981a33207ca944b5a400d27958ff79bf",
+      "photoIds": [
+        "d3009cf220464d98950aa46a2508e65c",
+        "981a33207ca944b5a400d27958ff79bf"
+      ]
+    },
+    {
+      "country": "FR",
+      "entryId": "FR-standalone-505a6507-0ee2-40b7-b127-56446ebc2ab7",
+      "name": "X’TREME Luge",
+      "siteId": "505a6507-0ee2-40b7-b127-56446ebc2ab7",
+      "photoCount": 2,
+      "currentPhotoId": "88cf29e99a964e3297f20ebd2fa6c84b",
+      "photoIds": [
+        "d9b175f0623c466a916b07c493da579b",
+        "88cf29e99a964e3297f20ebd2fa6c84b"
+      ]
+    },
+    {
+      "country": "GB",
+      "entryId": "GB-candidate-discovery-b19f183565d402",
+      "name": "Helix — ArcelorMittal Orbit",
+      "siteId": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+      "photoCount": 3,
+      "currentPhotoId": "b2b18b8daa1c4b5cb28da689989c07c3",
+      "photoIds": [
+        "cc28270f4083471f86b6993d403285b5",
+        "8c720011430e48c7a23906ed2b358cc7",
+        "b2b18b8daa1c4b5cb28da689989c07c3"
+      ]
+    },
+    {
+      "country": "GB",
+      "entryId": "GB-park-e2f54f75-6265-4aea-8752-6efaefb12f79",
+      "name": "Hillend Alpine Coaster",
+      "siteId": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+      "photoCount": 2,
+      "currentPhotoId": "5ee7ee18ba394980935a31863fde96b9",
+      "photoIds": [
+        "152ae7bbe77545718591e6d50cfdab2d",
+        "5ee7ee18ba394980935a31863fde96b9"
+      ]
+    },
+    {
+      "country": "GB",
+      "entryId": "GB-candidate-1846c28620b223",
+      "name": "London Eye",
+      "siteId": "1950afc0-e443-4031-a325-707feda5a8e8",
+      "photoCount": 3,
+      "currentPhotoId": "15187974c8a440c8828bbc4c36b50416",
+      "photoIds": [
+        "f297e3825c7146e79f3f114b72b265a5",
+        "9f80fe037fe648bb84d765ef8d13f67e",
+        "15187974c8a440c8828bbc4c36b50416"
+      ]
+    },
+    {
+      "country": "GB",
+      "entryId": "GB-candidate-discovery-629e501ddf0c64",
+      "name": "Velocity — Zip World Penrhyn Quarry",
+      "siteId": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "photoCount": 4,
+      "currentPhotoId": "9fadac94b54c4faba7688d8e19ffbb37",
+      "photoIds": [
+        "d327924a986440f2927a646cfc2a2edc",
+        "7ccab99bc216490cb9c3697a6e1fea5e",
+        "df4f2669470b465dbdade0e69123816e",
+        "9fadac94b54c4faba7688d8e19ffbb37"
+      ]
+    },
+    {
+      "country": "GE",
+      "entryId": "GE-candidate-discovery-e6d02474257cb3",
+      "name": "Tbilisi Balloon",
+      "siteId": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+      "photoCount": 2,
+      "currentPhotoId": "41c306b5214c44ac96856acd74f43b33",
+      "photoIds": [
+        "106f7ff5ef5244fc978495b302c1b7cd",
+        "41c306b5214c44ac96856acd74f43b33"
+      ]
+    },
+    {
+      "country": "HU",
+      "entryId": "HU-candidate-discovery-556b397ac50f58",
+      "name": "BalloonFly Budapest",
+      "siteId": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+      "photoCount": 3,
+      "currentPhotoId": "1769084c6e5343a0a1f362df250af0a3",
+      "photoIds": [
+        "5c1f2ef5a611458e91eaa2bd56c9bb21",
+        "679019e08b8a4d5d98bc0ec3255fa17e",
+        "1769084c6e5343a0a1f362df250af0a3"
+      ]
+    },
+    {
+      "country": "IS",
+      "entryId": "IS-candidate-631a8dcd6a53f2",
+      "name": "FlyOver Iceland",
+      "siteId": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+      "photoCount": 3,
+      "currentPhotoId": "244a46797081491898c6042008a55308",
+      "photoIds": [
+        "1e64ebdb930845b4b6d8e952b2d18906",
+        "3a78b0f17c864bb4ae4074a40fd16446",
+        "244a46797081491898c6042008a55308"
+      ]
+    },
+    {
+      "country": "IT",
+      "entryId": "IT-standalone-e1af2dac-4f6c-404d-9844-47b4e6048783",
+      "name": "Bardonecchia Alpine Coaster",
+      "siteId": "e1af2dac-4f6c-404d-9844-47b4e6048783",
+      "photoCount": 2,
+      "currentPhotoId": "b68c7ae0f6c14949993e7db0a8f3d13d",
+      "photoIds": [
+        "d1b66bf0539348ac95b254d307e987aa",
+        "b68c7ae0f6c14949993e7db0a8f3d13d"
+      ]
+    },
+    {
+      "country": "IT",
+      "entryId": "IT-standalone-85aea3b3-6974-4213-870e-d91a484103a3",
+      "name": "Bob Su Rotaia",
+      "siteId": "85aea3b3-6974-4213-870e-d91a484103a3",
+      "photoCount": 2,
+      "currentPhotoId": "4dee98c75f4a45c89c36e27fc84df9a8",
+      "photoIds": [
+        "73d3f6a93c434f1ebefa2b679e021b4c",
+        "4dee98c75f4a45c89c36e27fc84df9a8"
+      ]
+    },
+    {
+      "country": "JO",
+      "entryId": "JO-candidate-discovery-7db34fc67aae91",
+      "name": "Petra Balloon",
+      "siteId": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+      "photoCount": 2,
+      "currentPhotoId": "782618d142114ea583bf1907dbdeec2e",
+      "photoIds": [
+        "9f5309b7bac24f41ad4dd55bb80b3cec",
+        "782618d142114ea583bf1907dbdeec2e"
+      ]
+    },
+    {
+      "country": "JP",
+      "entryId": "JP-candidate-discovery-0c2e7732f201b4",
+      "name": "Osaka Sakai Balloon",
+      "siteId": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+      "photoCount": 4,
+      "currentPhotoId": "3c729f84c59c45a48d990a35150dfd03",
+      "photoIds": [
+        "b40378160e2745598b5181b2f2f5353b",
+        "f94504e9bffc4ad9b04efcd69f7a1f51",
+        "3c729f84c59c45a48d990a35150dfd03",
+        "53a3050aa0fb457abcb450e413e307bf"
+      ]
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-standalone-83338432442c73",
+      "name": "Arii Hills Zipwire — Jeongseon",
+      "siteId": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "photoCount": 0,
+      "currentPhotoId": null,
+      "photoIds": []
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-discovery-1ff4ac48854ae5",
+      "name": "Flying Suwon",
+      "siteId": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+      "photoCount": 3,
+      "currentPhotoId": "5681384349fa45eaa527c54d14134aaf",
+      "photoIds": [
+        "151f9912a00b4d7cac6867125bfef850",
+        "1ca8547a0c9a4486adb730c55e5f812f",
+        "5681384349fa45eaa527c54d14134aaf"
+      ]
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-discovery-220e0945c2e59e",
+      "name": "SEOULDAL — Seoul Moon",
+      "siteId": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+      "photoCount": 3,
+      "currentPhotoId": "db9c52d82acb427481de3930e9d89c60",
+      "photoIds": [
+        "7f37cbc18f87405e97fc470ea9488ef1",
+        "f4b2b58e2f4b406db82adc712845362d",
+        "db9c52d82acb427481de3930e9d89c60"
+      ]
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-standalone-0f95f79317187a",
+      "name": "Skyline Luge Busan",
+      "siteId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+      "photoCount": 0,
+      "currentPhotoId": null,
+      "photoIds": []
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-standalone-5f91351dd67b29",
+      "name": "Skyline Luge Tongyeong",
+      "siteId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+      "photoCount": 0,
+      "currentPhotoId": null,
+      "photoIds": []
+    },
+    {
+      "country": "KR",
+      "entryId": "KR-candidate-standalone-25023c9dd1cd28",
+      "name": "Skyline Zipwire — Nami Island",
+      "siteId": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "photoCount": 1,
+      "currentPhotoId": "c439e4ac6fcd424ab778b664b5ae5f4c",
+      "photoIds": [
+        "c439e4ac6fcd424ab778b664b5ae5f4c"
+      ]
+    },
+    {
+      "country": "MY",
+      "entryId": "MY-candidate-standalone-75acc28180ff3b",
+      "name": "Menara Taming Sari — Super Gyro Melaka",
+      "siteId": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+      "photoCount": 5,
+      "currentPhotoId": "d703d96226ff4344aaed82738c82410c",
+      "photoIds": [
+        "2216126be03a4d629c92a38fc910f83e",
+        "660c928d95bf45468eb9f263dc6b6e95",
+        "999fcfc5fd794223b459c00b174a24b6",
+        "efd1f35f39fe468081826c9b87481eda",
+        "d703d96226ff4344aaed82738c82410c"
+      ]
+    },
+    {
+      "country": "MY",
+      "entryId": "MY-candidate-standalone-346db9cd03d143",
+      "name": "Skyline Luge Kuala Lumpur",
+      "siteId": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+      "photoCount": 3,
+      "currentPhotoId": "83dac49a42564402b47f30b4cdcf1c8f",
+      "photoIds": [
+        "83dac49a42564402b47f30b4cdcf1c8f",
+        "d3d1c755d87a476c9591369801779c53",
+        "8e09351d489e44dc818ab9a8bebf4b30"
+      ]
+    },
+    {
+      "country": "NL",
+      "entryId": "NL-candidate-discovery-1825dcfb286f92",
+      "name": "Euroscoop — Euromast",
+      "siteId": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "photoCount": 2,
+      "currentPhotoId": "74a17ee23b3344819fb244b3f1b508b0",
+      "photoIds": [
+        "d3df8e517d8d419e8c3082a8c592b26e",
+        "74a17ee23b3344819fb244b3f1b508b0"
+      ]
+    },
+    {
+      "country": "NL",
+      "entryId": "NL-candidate-discovery-80445428d4593e",
+      "name": "Over the Edge — A’DAM LOOKOUT",
+      "siteId": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "photoCount": 3,
+      "currentPhotoId": "9d5bf1eb9b434b34808299ad5ffc80fc",
+      "photoIds": [
+        "3a3f91cc44b947f1b1ace1b695f24558",
+        "dab92bdb483e491fbc9c54f9f0162889",
+        "9d5bf1eb9b434b34808299ad5ffc80fc"
+      ]
+    },
+    {
+      "country": "NL",
+      "entryId": "NL-candidate-standalone-d1328a7cf0c136",
+      "name": "THIS IS HOLLAND",
+      "siteId": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+      "photoCount": 3,
+      "currentPhotoId": "0e7b838ae4ee4326923bacb3500bccd4",
+      "photoIds": [
+        "2fe6a1de322943af962ea7ae4a478e95",
+        "a393c9e3ddf245bb97c763de3b53a86b",
+        "0e7b838ae4ee4326923bacb3500bccd4"
+      ]
+    },
+    {
+      "country": "PL",
+      "entryId": "PL-candidate-discovery-472b096ce8a2e8",
+      "name": "Balon Widokowy — Kraków",
+      "siteId": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+      "photoCount": 3,
+      "currentPhotoId": "6cdebd6dfbcc4b8f93f84b35ca3571a7",
+      "photoIds": [
+        "7a08649d7aa14c8588330607a0ef6b33",
+        "03175a26ecb1416bbe1444dc00b1d80a",
+        "6cdebd6dfbcc4b8f93f84b35ca3571a7"
+      ]
+    },
+    {
+      "country": "PT",
+      "entryId": "PT-standalone-2a207fda-7479-405a-b1ce-d93dc3a0acd8",
+      "name": "DreamFly Lisboa",
+      "siteId": "2a207fda-7479-405a-b1ce-d93dc3a0acd8",
+      "photoCount": 3,
+      "currentPhotoId": "6ae676fe6f5c42ac8e10ad15bce28b80",
+      "photoIds": [
+        "aaa346afead84ea0ae3fa5f606b65270",
+        "c72b1c5bcf9d4dd6b65fb6b42cb5ba00",
+        "6ae676fe6f5c42ac8e10ad15bce28b80"
+      ]
+    },
+    {
+      "country": "PT",
+      "entryId": "PT-standalone-22507909-9fab-4452-a87d-27fded8b2e3c",
+      "name": "DreamFly Porto",
+      "siteId": "22507909-9fab-4452-a87d-27fded8b2e3c",
+      "photoCount": 2,
+      "currentPhotoId": "105b6e29564c47f8a190abd4e1529e12",
+      "photoIds": [
+        "8ed7e9f5d4c34102b4104be5cbd40414",
+        "105b6e29564c47f8a190abd4e1529e12"
+      ]
+    },
+    {
+      "country": "RO",
+      "entryId": "RO-candidate-6fa71332367544",
+      "name": "Predeal Mountain Coaster",
+      "siteId": "d1b09350-8591-437e-82d7-2957573535b3",
+      "photoCount": 4,
+      "currentPhotoId": "02ae7136e3bf49eba36b9cb9b8287c18",
+      "photoIds": [
+        "eab6c2c58244449aae52d4345dc850b1",
+        "d9b6723fa8f7446cb67ed8c3bebb7feb",
+        "dadff1cfe80e4e8c8982094779b0b0b6",
+        "02ae7136e3bf49eba36b9cb9b8287c18"
+      ]
+    },
+    {
+      "country": "SE",
+      "entryId": "SE-candidate-discovery-5993148c7fe7c6",
+      "name": "SkyView Stockholm",
+      "siteId": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+      "photoCount": 2,
+      "currentPhotoId": "1b4436e66be142c4a3d8850df1bc9192",
+      "photoIds": [
+        "a15cab9ba3a049e88e436451bb2c6f6d",
+        "1b4436e66be142c4a3d8850df1bc9192"
+      ]
+    },
+    {
+      "country": "SG",
+      "entryId": "SG-candidate-0b2ddef5675e0c",
+      "name": "Singapore Flyer",
+      "siteId": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+      "photoCount": 2,
+      "currentPhotoId": "8bf6f9316ea848db8a508b5311653e11",
+      "photoIds": [
+        "973a82ab604f4c5dbc7a858aa3733dc7",
+        "8bf6f9316ea848db8a508b5311653e11"
+      ]
+    },
+    {
+      "country": "SG",
+      "entryId": "SG-candidate-discovery-b43f63a4dd05a4",
+      "name": "SkyHelix Sentosa",
+      "siteId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+      "photoCount": 0,
+      "currentPhotoId": null,
+      "photoIds": []
+    },
+    {
+      "country": "SG",
+      "entryId": "SG-candidate-standalone-864d87f292e0f6",
+      "name": "Skyline Luge Singapore",
+      "siteId": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+      "photoCount": 3,
+      "currentPhotoId": "a7456384749f49f0ba649b022d8c566c",
+      "photoIds": [
+        "a7456384749f49f0ba649b022d8c566c",
+        "030fa54ab773481f982cb4e0b0addcc5",
+        "290c57b5382e40f49126cabdb1c907f7"
+      ]
+    },
+    {
+      "country": "SK",
+      "entryId": "SK-candidate-37f6a177200aa3",
+      "name": "Bobová dráha Bachledka",
+      "siteId": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+      "photoCount": 3,
+      "currentPhotoId": "cfbf80d32cc04ea48d4e60e43a7d90d0",
+      "photoIds": [
+        "50b0faab22c24921934d6e92ed4db924",
+        "df931aaead0e43bf935239200ef6dd46",
+        "cfbf80d32cc04ea48d4e60e43a7d90d0"
+      ]
+    },
+    {
+      "country": "SK",
+      "entryId": "SK-candidate-standalone-04c8ea259b65a0",
+      "name": "Luge Wiegand — Kosice",
+      "siteId": "256948c2-8731-422e-bc5c-016970bbf5fe",
+      "photoCount": 3,
+      "currentPhotoId": "90d1ba4f9be94a2888252afeec67930c",
+      "photoIds": [
+        "d4a3dd5cfcdb453ea218536ea0adf5d6",
+        "a3f38a1ec7664484b893c4955f3588de",
+        "90d1ba4f9be94a2888252afeec67930c"
+      ]
+    },
+    {
+      "country": "SK",
+      "entryId": "SK-park-c0d9c7fa-c8fa-435b-b24b-659217ab68be",
+      "name": "Tatrabob",
+      "siteId": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+      "photoCount": 3,
+      "currentPhotoId": "f50eadc14f114fb2b7c1d7312bb131b4",
+      "photoIds": [
+        "6d7aa9e78787460f8817744483436ce8",
+        "7ba781618f4b4b1a81400a7ef0260ee9",
+        "f50eadc14f114fb2b7c1d7312bb131b4"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-discovery-2f0e2b642d783e",
+      "name": "Aerophile — Disney Springs",
+      "siteId": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+      "photoCount": 3,
+      "currentPhotoId": "1bc604c04170442ab56de28a6aa258e2",
+      "photoIds": [
+        "07ffdcf41ae14e61ae1dde9550e6b732",
+        "2533c05a498b4107adeb8c79c00c9fad",
+        "1bc604c04170442ab56de28a6aa258e2"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-c58b1d3f354f4f",
+      "name": "Branson Coaster",
+      "siteId": "72b0aadb-436f-47f0-a978-15610e577f4c",
+      "photoCount": 3,
+      "currentPhotoId": "9364d89a43074c28af9ad4664b3e989b",
+      "photoIds": [
+        "0ef2067766c648699284b6b9f7f2db8c",
+        "9364d89a43074c28af9ad4664b3e989b",
+        "7ed8efd363f64551afe780a0ce841cd9"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-6259ed7a4dceb9",
+      "name": "Brush Creek Falls Resort",
+      "siteId": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+      "photoCount": 3,
+      "currentPhotoId": "dea4c03593de40abb844dbe2b4ceb35f",
+      "photoIds": [
+        "454bd2e33bce4dcb8533551e70576d0d",
+        "ae35b9d828c74f4791cbbaab6b335b32",
+        "dea4c03593de40abb844dbe2b4ceb35f"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-508928b8731e77",
+      "name": "Flathead Lake Alpine Coaster",
+      "siteId": "1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213",
+      "photoCount": 3,
+      "currentPhotoId": "b396d814a59f4fd7aee0fdfc713972df",
+      "photoIds": [
+        "b396d814a59f4fd7aee0fdfc713972df",
+        "549f3b1b23e24c83b344d87f824e6b0a",
+        "da6ba443b7514d61b66f12baab6534ad"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-standalone-cc3caa2f6fca41",
+      "name": "FlyOver America",
+      "siteId": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+      "photoCount": 1,
+      "currentPhotoId": "d31e892b00ff4c788eb535400af9dd9d",
+      "photoIds": [
+        "d31e892b00ff4c788eb535400af9dd9d"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-69a1a4b80393db",
+      "name": "Flyover Chicago",
+      "siteId": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+      "photoCount": 3,
+      "currentPhotoId": "0fd5f7f198704cd68ade7b6c40616870",
+      "photoIds": [
+        "ee6102dbc5b24adaa3f4e552b81e483c",
+        "56c8ff8fcf004d799a29e4080724b3fb",
+        "0fd5f7f198704cd68ade7b6c40616870"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-3005be6295777b",
+      "name": "Flyover Las Vegas",
+      "siteId": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+      "photoCount": 3,
+      "currentPhotoId": "c07bc337550444929ab609298adb6ed1",
+      "photoIds": [
+        "607f7e4613dc46c0a37df97d23388d32",
+        "c00db05be89c4dc0a51940838bb798d6",
+        "c07bc337550444929ab609298adb6ed1"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-discovery-177cb9d986d45d",
+      "name": "Great Park Balloon",
+      "siteId": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+      "photoCount": 3,
+      "currentPhotoId": "de326090475d4544b3fb8889638f65c3",
+      "photoIds": [
+        "326308240c6a48b3ab4b992e90065a6b",
+        "a120135870ca474e8405541623207dcf",
+        "de326090475d4544b3fb8889638f65c3"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-9e33a8dae9d141",
+      "name": "High Roller",
+      "siteId": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+      "photoCount": 5,
+      "currentPhotoId": "371960490d5941968bf78024a519456e",
+      "photoIds": [
+        "371960490d5941968bf78024a519456e",
+        "acc6503279f849858ccda02499c42c7e",
+        "bf514d5ebcd8457389e61675f278d03c",
+        "0aeaddbb5b134e0da50ed6cb1587a278",
+        "ecec96ba33c4403591a679a1fbee186b"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-b580f555d9d1fb",
+      "name": "SkyWheel Myrtle Beach",
+      "siteId": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+      "photoCount": 6,
+      "currentPhotoId": "78c591a8ff8a42369ba3964c236cdc1d",
+      "photoIds": [
+        "92382db66dc04d0abe3f691278210633",
+        "1e6b0926a9664efe8140574efda5c386",
+        "78c591a8ff8a42369ba3964c236cdc1d",
+        "e32d041d58b64499b0603fe8ad777cd2",
+        "14b215209c79495a81788d52aee29b94",
+        "7c92cfb94ed249d8b37b100dc7c6ce68"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-fe4e16c78ab379",
+      "name": "Smoky Mountain Alpine Coaster",
+      "siteId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+      "photoCount": 2,
+      "currentPhotoId": "08b63464c9404e2aa4ae7b9c52601595",
+      "photoIds": [
+        "08b63464c9404e2aa4ae7b9c52601595",
+        "fbba7d31225e49189cf3df9421569f6d"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-discovery-15a41c387081bc",
+      "name": "TILT — 360 CHICAGO",
+      "siteId": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "photoCount": 2,
+      "currentPhotoId": "61cf69c2280e465985ac7d8faff24da3",
+      "photoIds": [
+        "eee5ffc6814f4279b2ee8f21ee01d67f",
+        "61cf69c2280e465985ac7d8faff24da3"
+      ]
+    },
+    {
+      "country": "US",
+      "entryId": "US-candidate-discovery-ec2477b8468fba",
+      "name": "Wings Over Washington",
+      "siteId": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+      "photoCount": 3,
+      "currentPhotoId": "5a44892b948a4e768a206c492bd04612",
+      "photoIds": [
+        "2250eecd403b486992501ceb554e605f",
+        "c7e62b999e0b4b91afed3adcf7501563",
+        "5a44892b948a4e768a206c492bd04612"
+      ]
+    }
+  ]
+}

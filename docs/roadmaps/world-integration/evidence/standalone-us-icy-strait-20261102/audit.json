@@ -1,0 +1,104 @@
+{
+  "qualification": "Excursion ZipRider vendue séparément à Icy Strait Point, avec réservation par compagnie de croisière ; le site n’est pas un parc de loisirs à entrée obligatoire.",
+  "sources": {
+    "operator": "https://icystraitpoint.com/excursions/worlds-largest-ziprider/",
+    "manufacturer": "https://ziprider.com/locations/icy-strait-point/",
+    "address": "https://icystraitpoint.com/contact/",
+    "photograph": "https://commons.wikimedia.org/wiki/File:Zip_line_at_Icy_Strait_Point,_Alaska_2009.jpg"
+  },
+  "duplicateSearches": {
+    "parkIcyStrait": 0,
+    "standaloneIcyStrait": 0,
+    "parkHoonah": 0,
+    "standaloneHoonah": 0,
+    "parkZipRider": 0,
+    "standaloneZipRider": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "a8093fbf-e328-48fb-b08f-fc71d409e73a",
+      "appliedAtUtc": "2026-11-02T13:23:06.3672162Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "754f062d-78bd-46e4-acac-afa59013335d",
+      "appliedAtUtc": "2026-11-02T13:25:46.9423738Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "ef21fd08-8e29-4e3c-bc03-c2346594f29b",
+      "appliedAtUtc": "2026-11-02T13:28:45.7835381Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photo": {
+    "imageId": "85bc1bb3e7a243db9e4890bea58d9e66",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zip_line_at_Icy_Strait_Point,_Alaska_2009.jpg",
+    "author": "Jonathan Schilling",
+    "photographedDate": "2009-08-12",
+    "license": "CC BY-SA 3.0",
+    "visuallyVerified": "Icy Strait Point ZipRider six-cable landing area; not a generic port view",
+    "importedAtUtc": "2026-11-02T13:23:32.097Z",
+    "publishedAtUtc": "2026-11-02T13:23:58.327Z",
+    "published": true,
+    "eightLanguageAltTexts": 8,
+    "eightLanguageCaptions": 8,
+    "eightLanguageCredits": 8,
+    "publicBinaryHttpStatus": 200
+  },
+  "audit": {
+    "score": 69,
+    "dataQualityLevel": "Partial",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 1,
+    "prePublicationCorrection": "Initial audit blocked raw technical metrics and editorial phrasing; eight descriptions were rewritten and reaudited with no blockers. French repetition was then corrected and reaudited."
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/0bfef2c1-04a3-4366-afa7-8649cd050b28/icy-strait-point-ziprider",
+    "sitePublishedAtUtc": "2026-11-02T13:26:27.797238Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:60c20bd0-0d17-4ea8-af47-f17addc9a476",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "ogImageId": "85bc1bb3e7a243db9e4890bea58d9e66",
+    "facebookStatus": "Published",
+    "facebookId": "08ba2d22e4384eecbc6ccfa3c4b9da3f",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125735461424431",
+    "facebookPublishedAtUtc": "2026-11-02T13:27:28.4988281Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T13:28:45.783Z",
+  "remainingGaps": [
+    "Coordinates are approximate destination centre, not the precise launch or landing point.",
+    "No general price or fixed opening calendar published by the attraction operator: cruise-line prices and schedules vary.",
+    "Only one exact reusable photograph found, dating from 2009; seek newer imagery."
+  ]
+}

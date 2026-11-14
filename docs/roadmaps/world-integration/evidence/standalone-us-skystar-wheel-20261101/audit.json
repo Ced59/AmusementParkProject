@@ -1,0 +1,119 @@
+{
+  "name": "SkyStar Wheel",
+  "entryId": "US-candidate-a2121bfa4df7d3",
+  "standaloneAttractionId": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+  "qualification": "Grande roue à billetterie propre à Fisherman’s Wharf ; recherches officielles Park et Standalone sans correspondance.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "gateAdmissionOffers": 3,
+    "onlinePriceOffers": 0,
+    "weeklyRules": 1
+  },
+  "remainingGaps": [
+    "Le code postal varie entre la page Billets/FAQ de l’exploitant (94111) et sa page Contact (94133). 94133 est aussi utilisé par l’État de Californie ; la fiche retient ce dernier.",
+    "Les prix officiels peuvent changer les jours fériés ou lors d’événements, et les heures dépendent aussi de la météo."
+  ],
+  "sources": [
+    {
+      "label": "SkyStar Wheel — billets, tarifs et horaires",
+      "url": "https://www.skystarwheel.com/tickets/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "SkyStar Wheel — FAQ, durée, accès et météo",
+      "url": "https://www.skystarwheel.com/faq/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "SkyStar Wheel — contact, adresse et code postal",
+      "url": "https://www.skystarwheel.com/contact/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "État de Californie — exploitant et adresse de la roue (94133)",
+      "url": "https://www.dir.ca.gov/dosh/Reports/par-route-locations.pdf",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — SkyStar Wheel à Fisherman’s Wharf, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:SkyStar_Wheel_-_Fisherman%27s_Wharf_-_January_2024_%288774%29.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — SkyStar Wheel à Fisherman’s Wharf, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:SkyStar_Wheel_-_Fisherman%27s_Wharf_-_January_2024_%288775%29.jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — SkyStar Wheel à Fisherman’s Wharf, photo 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Fisherman%27s_Wharf,_San_Francisco_11-27-2025_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg",
+      "accessedAt": "2026-11-01"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "5eacdbce315341e4844cad3502ea8476",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SkyStar_Wheel_-_Fisherman%27s_Wharf_-_January_2024_%288774%29.jpg",
+      "author": "Gregory Varnum",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "photographedAt": "2024-01-27",
+      "subject": "La roue SkyStar illuminée devant la baie de San Francisco en janvier 2024.",
+      "transformation": "Vignette Wikimedia redimensionnée et optimisée en JPEG, sans recadrage"
+    },
+    {
+      "imageId": "af585df4c7964a4db2e39a0411b11f43",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SkyStar_Wheel_-_Fisherman%27s_Wharf_-_January_2024_%288775%29.jpg",
+      "author": "Gregory Varnum",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "photographedAt": "2024-01-27",
+      "subject": "L’entrée de SkyStar Wheel à Fisherman’s Wharf en janvier 2024.",
+      "transformation": "Vignette Wikimedia Commons, sans recadrage"
+    },
+    {
+      "imageId": "60dcc906ae124fb58fae0c06b8ce6a50",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fisherman%27s_Wharf,_San_Francisco_11-27-2025_-_Explored_-_Flickr_-_Sharon_Mollerus.jpg",
+      "author": "Sharon Mollerus",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "photographedAt": "2025-11-26",
+      "subject": "SkyStar Wheel au bord de la baie en novembre 2025, en noir et blanc.",
+      "transformation": "Vignette Wikimedia redimensionnée et optimisée en JPEG, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "4ce7964c95e67c08a80cec7413cba3cc4028ca1291ccfe2cd65ae7dcfffbd1b9",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T15:58:14.935Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T15:54:32.995Z",
+    "photosPublishedAtUtc": "2026-11-01T15:55:36.874Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:7c9d8584-7fa8-4e34-b19d-34fc88266af2"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/49ae82c6-f18c-48e0-bdbd-13fa3377a870/skystar-wheel",
+      "publishedAtUtc": "2026-11-01T15:56:10.871Z",
+      "applyOperationId": "6fa59752-740c-42ce-9189-a27731b4119a"
+    },
+    "facebook": {
+      "id": "67d7bce9daa8402a96f5d0aa73ae0a1a",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T15:57:22.814Z",
+      "externalPostId": "1285475681307050_122125624113424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125624113424431"
+    }
+  }
+}

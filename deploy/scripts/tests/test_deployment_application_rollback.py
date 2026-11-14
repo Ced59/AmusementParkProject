@@ -121,6 +121,18 @@ class ApplicationRollbackTests(unittest.TestCase):
         with self.assertRaisesRegex(DeploymentError, r"matching=0, recorded=0, repositories=none"):
             rollback.image_identity(self.runtime, self.old["api"], "ghcr.io/test/api:tag")
 
+    def test_local_image_uses_exact_id_even_when_docker_reports_one_digest(self):
+        self.runtime.run.side_effect = None
+        self.runtime.run.return_value = json.dumps([{
+            "Id": self.old["api"],
+            "RepoDigests": ["local-fixture@" + self.old["api"]],
+        }])
+
+        result = rollback.image_identity(self.runtime, self.old["api"], "local-fixture:old")
+
+        self.assertEqual(result, {"reference": self.old["api"], "id": self.old["api"]})
+        self.runtime.run.assert_called_once_with("docker", "image", "inspect", self.old["api"])
+
     def test_digest_diagnostics_report_repository_mismatch_without_mutation(self):
         self.runtime.run.side_effect = None
         for digests, expected in [

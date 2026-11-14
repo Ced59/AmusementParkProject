@@ -262,37 +262,195 @@
     {
       "entryId": "TW-candidate-a2cafea4bad92a",
       "name": "E-DA Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "E-DA Outlet Mall, Dashu , Kaohsiung",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "E-DA Outlet Mall, Zone A RF, No. 12 Section 1 Xuecheng Road, Dashu, Kaohsiung",
+      "siteId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:20:29.083Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active dans la galerie E-DA, billets et horaires officiels publiés ; fiche du parc voisin masquée.",
+      "identityConfidence": "Roue située sur le toit du centre commercial hors des portes du parc, billets autonomes confirmés par l’exploitant ; recherche Standalone sans fiche.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "義大摩天輪",
+        "E-Da Outlet Mall Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T11:17:04.343Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c1663721-b19d-4121-91c9-79f7c5804992",
+          "appliedAt": "2026-11-01T11:14:11.897Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:apply:c1663721-b19d-4121-91c9-79f7c5804992",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée, identité et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-e175173f8ca64990b21dcbb8ef6595e6",
+          "appliedAt": "2026-11-01T11:15:52.846Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:image:e175173f8ca64990b21dcbb8ef6595e6",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue E-DA importée de Wikimedia Commons, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "image-c47e6f21189e4c3d9f2ebb09210aec41",
+          "appliedAt": "2026-11-01T11:16:07.430Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:image:c47e6f21189e4c3d9f2ebb09210aec41",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue E-DA importée de Wikimedia Commons, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "image-bf218273be97446da9c26cfead0eb042",
+          "appliedAt": "2026-11-01T11:16:21.893Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:image:bf218273be97446da9c26cfead0eb042",
+          "auditEvidence": null,
+          "summary": "Photo #3 de la roue E-DA importée de Wikimedia Commons, licence et crédits en huit langues"
+        },
+        {
+          "eventId": "apply-d58e574e-4936-465c-9e82-4a5dc716a5cf",
+          "appliedAt": "2026-11-01T11:16:39.931Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:apply:d58e574e-4936-465c-9e82-4a5dc716a5cf",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels propres à la roue en TWD, gratuité avec bracelet du parc du jour documentée"
+        },
+        {
+          "eventId": "apply-98bf1b6d-8581-43c8-9a6d-989f45591687",
+          "appliedAt": "2026-11-01T11:17:04.343Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:apply:98bf1b6d-8581-43c8-9a6d-989f45591687",
+          "auditEvidence": null,
+          "summary": "Horaires officiels 14–22 h et dernières vente et embarquement intégrés"
+        },
+        {
+          "eventId": "closure-98bf1b6d-8581-43c8-9a6d-989f45591687",
+          "appliedAt": "2026-11-01T11:17:04.343Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+          "evidence": "PARK_DATA_EDITOR:apply:98bf1b6d-8581-43c8-9a6d-989f45591687",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-eda-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et trois photos propres ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier les fermetures de maintenance et éventuels changements de prix. La fiche Park E-DA Theme Park masquée (d06d2a59-a4a5-4576-958b-4d66dde743ab) reste à intégrer séparément. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "E-DA World — présentation officielle de la roue",
+          "url": "https://www.edaworld.com.tw/spots/ferriswheel",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "E-DA Theme Park — prix de la roue, bracelet et horaires",
+          "url": "https://www.edathemepark.com.tw/Info",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "E-DA Outlet Mall — roue sur le toit de la zone A",
+          "url": "https://www.edamall.com.tw/custom-page/page/4?lang=en",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "E-DA Outlet Mall — adresse de la galerie",
+          "url": "https://www.edamall.com.tw/?lang=en",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — galerie E-DA",
+          "url": "https://www.openstreetmap.org/search?query=E-DA%20Outlet%20Mall%20Kaohsiung",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — E-DA Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:%E7%BE%A9%E5%A4%A7%E4%B8%96%E7%95%8C%E6%91%A9%E5%A4%A9%E8%BC%AA%E5%85%A7%E9%83%A8.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — E-DA Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:E-Da_Outlet_Mall_ferris_wheel_20130228.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — E-DA Ferris Wheel, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:EDOM_ferris_wheel_20140831_night.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "E-DA Ferris Wheel",
+            "source": "E-DA Theme Park — prix et horaires de la roue",
+            "url": "https://www.edathemepark.com.tw/Info",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "E-DA Outlet Mall",
+            "sourceLifecycleSignal": "Tarifs et horaires officiels au 1er novembre 2026",
+            "sourceLocality": "Dashu, Kaohsiung",
+            "matchingMethod": "Roue sur le toit de la galerie, billets propres et recherche Standalone officielle sans fiche"
+          }
+        ],
+        "rationale": "La roue est placée sur le toit de la galerie E-DA et vend ses propres billets ; le parc à thème voisin a une fiche Park masquée, distincte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/82c5548b-c0bd-4418-9aba-e567f15895b5/e-da-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T11:18:42.856Z",
+          "verifiedAtUtc": "2026-11-01T11:20:29.083Z",
+          "evidence": "PARK_DATA_EDITOR:apply:8a23f464-a10c-486f-b40c-4a374d061dbd"
+        },
+        "facebook": {
+          "id": "26681e095403423cbc583d8ede304e04",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:19:29.250Z",
+          "externalPostId": "1285475681307050_122125595481424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125595481424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:26681e095403423cbc583d8ede304e04"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "e175173f8ca64990b21dcbb8ef6595e6",
+          "c47e6f21189e4c3d9f2ebb09210aec41",
+          "bf218273be97446da9c26cfead0eb042"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:17:58.245Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:62906e78-976b-4c2b-86cd-b338dbcd6d4e",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-tw-eda-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-eda-ferris-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
       }
     },
     {
@@ -747,37 +905,119 @@
     {
       "entryId": "TW-candidate-d04f792843150d",
       "name": "Kaohsiung Eye",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Dream Mall , Kaohsiung",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Toit du Dream Mall, No. 789 Zhonghua 5th Road, Qianzhen, Kaohsiung",
+      "siteId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T12:31:54.605Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue avec billetterie propre dans une promotion officielle valide jusqu’à fin 2026.",
+      "identityConfidence": "Nom corroboré par la ville, toit et adresse par le centre commercial, billet propre, deux photos exactes et six recherches de doublons sans résultat.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Dream Ferris Wheel",
+        "高雄之眼",
+        "夢時代摩天輪"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T12:28:25.671Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-53862efb-7a86-471b-b029-a146a402327e",
+          "appliedAt": "2026-11-02T12:27:46.905Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
+          "evidence": "PARK_DATA_EDITOR:apply:53862efb-7a86-471b-b029-a146a402327e",
+          "auditEvidence": null,
+          "summary": "Création masquée de la roue et descriptions éditoriales en huit langues"
+        },
+        {
+          "eventId": "image-e5b0fdd5eadf4e629dfa8fc0fab0db40",
+          "appliedAt": "2026-11-02T12:28:10.695Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
+          "evidence": "PARK_DATA_EDITOR:image:e5b0fdd5eadf4e629dfa8fc0fab0db40",
+          "auditEvidence": null,
+          "summary": "Import photo exacte 1 de la roue, droits et crédits vérifiés"
+        },
+        {
+          "eventId": "image-508b81cc300547689b1a8cdb4ab031ca",
+          "appliedAt": "2026-11-02T12:28:25.671Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "859a182e-f188-4e92-839a-b22e24a8a0e7",
+          "evidence": "PARK_DATA_EDITOR:image:508b81cc300547689b1a8cdb4ab031ca",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-kaohsiung-eye-20261102/audit.json",
+          "summary": "Import photo exacte 2 de la roue, droits et crédits vérifiés"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier directement les horaires et le plein tarif de la roue avant de les structurer ; remplacer le centroïde du centre commercial par les coordonnées de l’installation si disponibles. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Dream Mall — histoire et roue sur le toit",
+          "url": "https://www.dream-mall.com.tw/about/info",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Dream Mall — offre 2026 sur billet propre à la roue",
+          "url": "https://www.dream-mall.com.tw/news/p/sing",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Ville de Kaohsiung — nom Kaohsiung Eye et situation",
+          "url": "https://khh.travel/en/travel/lightrail-artery/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Dream Mall — niveau du toit",
+          "url": "https://www.dream-mall.com.tw/brand/Floor",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — roue en 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Dream_Ferris_Wheel_20240117.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — roue en 2007",
+          "url": "https://commons.wikimedia.org/wiki/File:%22dream_wheel%22_in_Dream_mall_(%E5%A4%A2%E6%99%82%E4%BB%A3%E8%B3%BC%E7%89%A9%E4%B8%AD%E5%BF%83),_Kaohsiung,_Taiwan.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Grande roue à billet propre sur le toit d’un centre commercial, distincte du parc E-DA."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/859a182e-f188-4e92-839a-b22e24a8a0e7/kaohsiung-eye",
+          "publishedAtUtc": "2026-11-02T12:29:35.737Z",
+          "verifiedAtUtc": "2026-11-02T12:31:54.605Z",
+          "evidence": "PARK_DATA_EDITOR:apply:1fe78079-c2f8-4ec1-bd4b-e90457769b3b"
+        },
+        "facebook": {
+          "id": "9c0a37c5c5f44ae2b4180f35a8a16b24",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T12:30:43.147Z",
+          "externalPostId": "1285475681307050_122125728261424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125728261424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:9c0a37c5c5f44ae2b4180f35a8a16b24"
+        }
       }
     },
     {
@@ -830,7 +1070,7 @@
         {
           "siteId": "bfeb1a05-fbdb-4bf8-8be8-2efa692d283c",
           "name": "Leofoo Village Theme Park",
-          "similarity": 84.0
+          "similarity": 84
         }
       ],
       "aliases": [],
@@ -1015,37 +1255,196 @@
     {
       "entryId": "TW-candidate-4c7dad24c6c000",
       "name": "Miramar Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Miramar Entertainment Park , Taipei",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "No. 20 Jingye 3rd Road, Zhongshan District, Taipei, Taiwan",
+      "siteId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T11:09:07.841Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue active sur le toit du centre Miramar ; billet propre, trois photos 2023/2024, distributeur actif au 1er novembre 2026.",
+      "identityConfidence": "Roue à billet distinct du centre commercial ; recherches officielles Park / Standalone Miramar sans fiche (Park Miramar Weinheim sans rapport).",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "美麗華摩天輪",
+        "美麗華百樂園摩天輪",
+        "Miramar Entertainment Park Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T11:05:33.247Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4783c21b-9ab2-47c2-9119-1b9f0d0d4a01",
+          "appliedAt": "2026-11-01T11:01:52.937Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:apply:4783c21b-9ab2-47c2-9119-1b9f0d0d4a01",
+          "auditEvidence": null,
+          "summary": "Fiche privée créée, identité et descriptions en huit langues"
+        },
+        {
+          "eventId": "image-661f6761206b4833af5ad1b17b87fbbc",
+          "appliedAt": "2026-11-01T11:02:36.607Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:image:661f6761206b4833af5ad1b17b87fbbc",
+          "auditEvidence": null,
+          "summary": "Photo #1 de la roue Miramar importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-5a63b69cbde842fa92580195caccbc97",
+          "appliedAt": "2026-11-01T11:02:51.035Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:image:5a63b69cbde842fa92580195caccbc97",
+          "auditEvidence": null,
+          "summary": "Photo #2 de la roue Miramar importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-5044d56bd59a4589ba2c723171a9b175",
+          "appliedAt": "2026-11-01T11:03:05.866Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:image:5044d56bd59a4589ba2c723171a9b175",
+          "auditEvidence": null,
+          "summary": "Photo #3 de la roue Miramar importée de Wikimedia Commons, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-844f65b2-e660-4383-aed7-1b6b6f7577c1",
+          "appliedAt": "2026-11-01T11:05:09.725Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:apply:844f65b2-e660-4383-aed7-1b6b6f7577c1",
+          "auditEvidence": null,
+          "summary": "Deux offres en ligne Taipei Fun Pass en TWD, source distributeur clairement indiquée"
+        },
+        {
+          "eventId": "apply-1dbba14b-051c-436e-b6c4-50e52fdc4ba3",
+          "appliedAt": "2026-11-01T11:05:33.247Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:apply:1dbba14b-051c-436e-b6c4-50e52fdc4ba3",
+          "auditEvidence": null,
+          "summary": "Deux règles horaires hebdomadaires du distributeur intégrées avec fuseau Asia/Taipei"
+        },
+        {
+          "eventId": "closure-1dbba14b-051c-436e-b6c4-50e52fdc4ba3",
+          "appliedAt": "2026-11-01T11:05:33.247Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+          "evidence": "PARK_DATA_EDITOR:apply:1dbba14b-051c-436e-b6c4-50e52fdc4ba3",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-miramar-ferris-wheel-20261101/audit.json",
+          "summary": "Audit 91/100 sans blocage et trois photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier directement auprès de l’exploitant le tarif à la caisse et les éventuelles exceptions d’horaires ; son site bloque actuellement l’accès automatisé. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Taipei Travel — Miramar Entertainment Park, roue et adresse",
+          "url": "https://www.travel.taipei/en/attraction/details/710",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Taiwan Tourism Administration — Miramar et roue panoramique",
+          "url": "https://eng.taiwan.net.tw/m1.aspx?id=5356&sNo=0002090",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Taipei Fun Pass — horaires de la roue et billets en ligne",
+          "url": "https://funpass.travel.taipei/store/info/pe1p",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Taipei Fun Pass — billet de semaine utilisable jusqu’en 2027",
+          "url": "https://funpass.travel.taipei/tour/paM3",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap / Nominatim — Miramar Entertainment Park",
+          "url": "https://www.openstreetmap.org/search?query=Miramar%20Entertainment%20Park%20Taipei",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Miramar Ferris Wheel, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel,_Taipei,_2024.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Miramar Ferris Wheel, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel-01.2023-06-02.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Miramar Ferris Wheel, photo 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel_at_night-01.2023-06-02.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Miramar Ferris Wheel",
+            "source": "Taipei Travel et Taipei Fun Pass",
+            "url": "https://funpass.travel.taipei/store/info/pe1p",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Miramar Entertainment Park",
+            "sourceLifecycleSignal": "Billets en ligne et horaires proposés au 1er novembre 2026",
+            "sourceLocality": "Dazhi, Taipei",
+            "matchingMethod": "Billetterie dédiée et recherches officielles Park / Standalone sans fiche"
+          }
+        ],
+        "rationale": "Le centre Miramar est un centre commercial ; sa grande roue possède une billetterie propre et constitue l’attraction à référencer."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/bdf7abcd-89d5-4393-bc04-845d92cb40f4/miramar-ferris-wheel",
+          "publishedAtUtc": "2026-11-01T11:07:23.442Z",
+          "verifiedAtUtc": "2026-11-01T11:09:07.841Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7385d503-4d6e-4346-87ee-4812db9816f8"
+        },
+        "facebook": {
+          "id": "522e4f450f224fcf9019fcab3eeaca30",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T11:08:13.981Z",
+          "externalPostId": "1285475681307050_122125593945424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125593945424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:522e4f450f224fcf9019fcab3eeaca30"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "661f6761206b4833af5ad1b17b87fbbc",
+          "5a63b69cbde842fa92580195caccbc97",
+          "5044d56bd59a4589ba2c723171a9b175"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T11:07:00.073Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:a7feaed3-e3fe-456b-b9ed-675955b043ad",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-tw-miramar-ferris-wheel-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-tw-miramar-ferris-wheel-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
@@ -1571,26 +1970,67 @@
     {
       "entryId": "TW-candidate-standalone-114163f2bb283b",
       "name": "Tamshui Lover’s Tower",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tour panoramique mécanique",
-      "locality": null,
-      "siteId": null,
+      "locality": "Tamsui, New Taipei City",
+      "siteId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T18:13:20.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Operating — operator page checked 2026-11-14",
+      "identityConfidence": "Nom, modèle et autonomie vérifiés auprès de l’exploitant et du constructeur",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T18:08:34.058Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-83167929-8227-41e0-b949-7599b4b6721b",
+          "appliedAt": "2026-11-14T18:03:22.403Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+          "evidence": "PARK_DATA_EDITOR:apply:83167929-8227-41e0-b949-7599b4b6721b",
+          "auditEvidence": null,
+          "summary": "Création masquée et descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-58ff4c63-349b-4e6a-b0e4-fe6d9ff783a5",
+          "appliedAt": "2026-11-14T18:05:57.771Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+          "evidence": "PARK_DATA_EDITOR:apply:58ff4c63-349b-4e6a-b0e4-fe6d9ff783a5",
+          "auditEvidence": null,
+          "summary": "Tarifs et horaires usuels sourcés intégrés"
+        },
+        {
+          "eventId": "apply-ddae0f7b-91b1-48e6-8c48-ad3ffe71e74d",
+          "appliedAt": "2026-11-14T18:07:14.802Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+          "evidence": "PARK_DATA_EDITOR:apply:ddae0f7b-91b1-48e6-8c48-ad3ffe71e74d",
+          "auditEvidence": null,
+          "summary": "Descriptions narratives corrigées après contrôle éditorial"
+        },
+        {
+          "eventId": "apply-7267bad2-1b93-4a45-8795-c9fc7209cf8b",
+          "appliedAt": "2026-11-14T18:08:34.058Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+          "evidence": "PARK_DATA_EDITOR:apply:7267bad2-1b93-4a45-8795-c9fc7209cf8b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-tw-tamshui-lovers-tower-20261114/audit.json",
+          "summary": "Audit sans bloqueur, photographie licenciée et données visiteurs intégrées"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier les coordonnées exactes de la tour, la contradiction des horaires du mardi et toute nouvelle période datée ; ne pas republier Facebook.",
       "sources": [
         {
           "label": "Intamin — référence constructeur",
@@ -1601,10 +2041,25 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.fullon-hotels.com.tw/fw/en/fac-detail/68/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Fullon Hotel — billets, horaires et accès vérifiés",
+          "url": "https://www.fullon-hotels.com.tw/fw/en/fac-detail/68/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Intamin — Super Gyro Tower",
+          "url": "https://www.intamin.com/project/tamshui-lovers-tower/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — photo Mosbatho, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Fullon_Hotel_Danshuei_Fishermen%27s_Wharf.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -1615,7 +2070,24 @@
             "sourceVenueName": "Tamshui Lover’s Tower"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration apply-7267bad2-1b93-4a45-8795-c9fc7209cf8b ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/029d88ba-768f-4f1b-9d1c-d1e961ab62c5/tamshui-lovers-tower",
+          "publishedAtUtc": "2026-11-14T18:09:57.382Z",
+          "verifiedAtUtc": "2026-11-14T18:13:20.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:59a51a1d-829a-4d5c-b7a3-379b0e692194"
+        },
+        "facebook": {
+          "id": "01f27b105a674c4caaccf070f7d4f95e",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T18:11:34.279Z",
+          "externalPostId": "1285475681307050_122127354069424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127354069424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:01f27b105a674c4caaccf070f7d4f95e"
+        }
       }
     },
     {

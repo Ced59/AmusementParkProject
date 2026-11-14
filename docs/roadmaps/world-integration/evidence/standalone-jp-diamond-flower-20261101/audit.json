@@ -1,0 +1,113 @@
+{
+  "name": "Diamond and Flower Ferris Wheel",
+  "entryId": "JP-candidate-5e9f105844edd3",
+  "standaloneAttractionId": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+  "qualification": "Roue à tarif et calendrier propres dans le parc public de Kasai Rinkai, confirmée par Senyo Kogyo ; aucune fiche homonyme dans les recherches officielles.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 2,
+    "admissionOffers": 5,
+    "weeklyRules": 2,
+    "dateOverrides": 34,
+    "closedDateOverrides": 16
+  },
+  "remainingGaps": [
+    "Les horaires exceptionnels ponctuels peuvent changer ; les exceptions datées s’arrêtent à décembre 2027."
+  ],
+  "sources": [
+    {
+      "label": "Senyo Kogyo — roue, expérience et règles de visite",
+      "url": "https://www.senyo.co.jp/kasai/giant_wheel.html",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Senyo Kogyo — tarifs officiels",
+      "url": "https://www.senyo.co.jp/kasai/fee.html",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Senyo Kogyo — horaires et fermetures",
+      "url": "https://www.senyo.co.jp/kasai/hours.html",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Senyo Kogyo — ouverture en 2001 et renouvellement LED en 2025",
+      "url": "https://www.senyo.co.jp/company/archivements/",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Cabinet du Japon — jours fériés 2026–2027",
+      "url": "https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "OpenStreetMap — emprise de la grande roue",
+      "url": "https://www.openstreetmap.org/way/161931777",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Diamond and Flower, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Ferris_Wheel_@_Kasai_Rinkai_Park_@_Edogawa_City_(9553916915).jpg",
+      "accessedAt": "2026-11-01"
+    },
+    {
+      "label": "Wikimedia Commons — Diamond and Flower, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Dia_to_Hana_no_Daikanransha_02.jpg",
+      "accessedAt": "2026-11-01"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "998f40a5dd1a452d89832ad1662aa25b",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ferris_Wheel_@_Kasai_Rinkai_Park_@_Edogawa_City_(9553916915).jpg",
+      "author": "Guilhem Vellut",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "photographedAt": "2013-08-20",
+      "subject": "La roue Diamond and Flower entière derrière les arbres du parc, photographiée en août 2013.",
+      "transformation": "vignette Wikimedia Commons, sans recadrage"
+    },
+    {
+      "imageId": "c2fee030157248999936185c843dc10a",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dia_to_Hana_no_Daikanransha_02.jpg",
+      "author": "kobakou",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "photographedAt": "2010-01-30",
+      "subject": "Jonquilles jaunes et blanches devant la roue Diamond and Flower, en janvier 2010.",
+      "transformation": "vignette Wikimedia Commons, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "9a6a7c8792250df766bf87efa2c5ccf5a8969e351a799f49911632d3caf8d091",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T14:04:31.458Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T14:00:30.530Z",
+    "photosPublishedAtUtc": "2026-11-01T14:01:15.062Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:e8cc4471-cd32-402f-919f-719cb0ffa2b0"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/7e2dd93e-d506-4044-b6c1-8d20e913fddd/diamond-and-flower-ferris-wheel",
+      "publishedAtUtc": "2026-11-01T14:02:17.845Z",
+      "applyOperationId": "7adc6027-df44-4646-b1ee-c85d6656bbba"
+    },
+    "facebook": {
+      "id": "3d753d1057dc49e094ad97c9cc28cb55",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T14:03:17.627Z",
+      "externalPostId": "1285475681307050_122125614435424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125614435424431"
+    }
+  }
+}

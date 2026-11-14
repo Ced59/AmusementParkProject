@@ -1,0 +1,158 @@
+{
+  "reviewedAt": "2026-11-02",
+  "entryId": "CH-candidate-standalone-e173d02f42dcd1",
+  "siteId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+  "decision": "Published standalone: separate Wastra GmbH operator and per-ride ticketing at Fräkmüntegg mountain destination; no structured amusement-park parent.",
+  "operatorSources": [
+    "https://www.rodelbahn.ch/",
+    "https://www.rodelbahn.ch/uber-uns/",
+    "https://www.rodelbahn.ch/preise/",
+    "https://www.rodelbahn.ch/kontakt/",
+    "https://www.rodelbahn.ch/sicherheit/",
+    "https://pilatus.ch/en/activities/toboggan"
+  ],
+  "duplicateSearches": {
+    "queries": [
+      "Fräkigaudi",
+      "Pilatus",
+      "Fräkmüntegg"
+    ],
+    "actions": [
+      "SearchParks",
+      "SearchStandaloneAttractions"
+    ],
+    "totalItems": 0
+  },
+  "photographs": [
+    {
+      "imageId": "b2a17b45e509434786148c567be9fc8e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pilatus_Slide.jpg",
+      "date": "2018-09-09",
+      "author": "Smry",
+      "license": "CC BY-SA 4.0",
+      "resolution": "1280x1281 imported from Commons optimized source",
+      "note": "Exact toboggan track visible across lower foreground; image is historical and includes a large panorama."
+    }
+  ],
+  "completeness": {
+    "score": 91,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": []
+  },
+  "coverage": {
+    "descriptions": 8,
+    "photoCount": 1,
+    "photoAltAndCaptionLanguages": 8,
+    "seasonalHours": {
+      "from": "2027-03-26",
+      "through": "2027-10-17",
+      "timeZone": "Europe/Zurich",
+      "daily": "10:00–16:00",
+      "weatherDependent": true
+    },
+    "pricedOffers": 3,
+    "accessConditions": 1,
+    "lengthMeters": 1350,
+    "onlineBooking": false
+  },
+  "knownGaps": [
+    "No verified opening date or historical event.",
+    "Manufacturer reference retained as discovery evidence but not linked to a resolved site manufacturer.",
+    "The exact reusable photo is historical and gives the track a small part of the frame; seek a more recent closer view.",
+    "Prices displayed on 2 November 2026 should be rechecked before the announced 2027 season."
+  ],
+  "lastDataIntegrationAt": "2026-11-02T15:14:59.585Z",
+  "sitePublication": {
+    "status": "Published",
+    "url": "https://amusement-parks.fun/fr/attraction/b43f4a36-4048-49cd-ab31-80cf7a7c7149/fraekigaudi",
+    "publishedAtUtc": "2026-11-02T15:11:02.5137579Z",
+    "verifiedAtUtc": "2026-11-02T15:13:55Z",
+    "evidence": "PARK_DATA_EDITOR:apply:d1ea024f-5444-4997-a40f-525f602ed97f"
+  },
+  "facebookPublication": {
+    "id": "4719cf2f1eac4c4e881db7ef297197db",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-02T15:13:00.5259494Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125746999424431",
+    "externalPostId": "1285475681307050_122125746999424431",
+    "url": "https://amusement-parks.fun/fr/attraction/b43f4a36-4048-49cd-ab31-80cf7a7c7149/fraekigaudi"
+  },
+  "events": [
+    {
+      "eventId": "apply-07177ebf-0b8a-4923-8a4f-2c77102c807a",
+      "appliedAt": "2026-11-02T15:05:13.788Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+      "evidence": "PARK_DATA_EDITOR:apply:07177ebf-0b8a-4923-8a4f-2c77102c807a",
+      "auditEvidence": null,
+      "summary": "Création privée de la piste avec huit descriptions, identité et géolocalisation OSM"
+    },
+    {
+      "eventId": "image-b2a17b45e509434786148c567be9fc8e",
+      "appliedAt": "2026-11-02T15:06:28.375Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+      "evidence": "PARK_DATA_EDITOR:image:b2a17b45e509434786148c567be9fc8e",
+      "auditEvidence": null,
+      "summary": "Photo exacte du tracé importée depuis Commons avec crédit, licence et textes dans huit langues"
+    },
+    {
+      "eventId": "apply-435c1b32-56a6-4fb0-92b1-772cad688299",
+      "appliedAt": "2026-11-02T15:07:47.029Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+      "evidence": "PARK_DATA_EDITOR:apply:435c1b32-56a6-4fb0-92b1-772cad688299",
+      "auditEvidence": null,
+      "summary": "Conditions d’âge, trois tarifs par descente et saison complète 2027 ajoutés depuis l’exploitant"
+    },
+    {
+      "eventId": "metadata-publish-b2a17b45e509434786148c567be9fc8e",
+      "appliedAt": "2026-11-02T15:08:12.969Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+      "evidence": "PARK_DATA_EDITOR:image:b2a17b45e509434786148c567be9fc8e@2026-11-02T15:08:12.969Z",
+      "auditEvidence": null,
+      "summary": "Publication de la photo après contrôle des métadonnées et de la licence"
+    },
+    {
+      "eventId": "apply-9f56518a-bf74-4ff4-b880-7e4f71ebcd2d",
+      "appliedAt": "2026-11-02T15:10:11.700Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+      "evidence": "PARK_DATA_EDITOR:apply:9f56518a-bf74-4ff4-b880-7e4f71ebcd2d",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-fraekigaudi-20261102/audit.json",
+      "summary": "Sources des conditions relues dans huit langues ; export final et complétude sans bloqueur"
+    },
+    {
+      "eventId": "metadata-final-b2a17b45e509434786148c567be9fc8e",
+      "appliedAt": "2026-11-02T15:14:59.585Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+      "evidence": "PARK_DATA_EDITOR:image:b2a17b45e509434786148c567be9fc8e@2026-11-02T15:14:59.585Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-fraekigaudi-20261102/audit.json",
+      "summary": "Description éditoriale de la photo affinée ; crédit et licence conservés, fiche publique et complétude vérifiées"
+    }
+  ],
+  "publicVerification": {
+    "httpStatusesByLanguage": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "heroImageHttpStatus": 200,
+    "socialPreviewHttpStatus": 200,
+    "incorrectOnlinePurchaseButtonPresent": false,
+    "revisedImageDescriptionPresent": true
+  }
+}

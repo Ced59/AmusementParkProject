@@ -1,0 +1,111 @@
+{
+  "work": "Batumi Panoramic Wheel is the waterfront Ferris wheel in the open public Miracle Park, not the decorative Ferris wheel on Batumi Tower. Five official Park/Standalone duplicate searches found no Georgia entity. Adjara and national tourism offices identify the wheel and location; Visit Batumi confirms 55 m, 10-minute rotation and no age restriction. Three exact reusable Commons photos were visually inspected, localized and published. The site and photo binaries returned HTTP 200 before Facebook publication. Current third-party fare figures conflict, and no operator hours or official tariff were located, so no price or schedule was invented.",
+  "qualification": "Individually ticketed attraction in a public seafront square, outside a structured admission amusement park.",
+  "sources": {
+    "localTourism": "https://visitbatumi.com/en/panoramic-wheel",
+    "miraclePark": "https://visitbatumi.com/en/parks/miracle-park",
+    "nationalTourism": "https://georgia.travel/family-attractions/the-panoramic-wheel",
+    "publicSpace": "https://georgia.travel/family-attractions/batumis-miracle-park",
+    "coordinates": "https://www.wikidata.org/wiki/Q32947597",
+    "photo1": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_is_Batumi_2023-07-01.jpg",
+    "photo2": "https://commons.wikimedia.org/wiki/File:Батуми,_старый_маяк_и_колесо_обозрения.jpg",
+    "photo3": "https://commons.wikimedia.org/wiki/File:Batumi2025wheel.jpg",
+    "conflictingFare10": "https://www.infobatumi.ge/en/ferris-wheel/",
+    "conflictingFare12": "https://madloba.info/en/blog/sights-of-georgia/ferris-wheels-tbilisi-batumi/",
+    "conflictingFare15": "https://dolidoki.com/en/things-to-do-in-batumi/"
+  },
+  "duplicateSearches": {
+    "parkBatumi": 0,
+    "parkMiraclePark": 0,
+    "standaloneBatumi": 0,
+    "standaloneBatumiWheel": 0,
+    "standalonePanoramicWheelGeorgia": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "a913932d-afcd-49d7-b5e4-9ac811f30f8e",
+      "appliedAtUtc": "2026-11-02T11:12:20.933Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "e2685f3571b140579a7e546d7a5def65",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Ferris_wheel_is_Batumi_2023-07-01.jpg",
+      "author": "Alexey Komarov",
+      "license": "CC BY-SA 4.0",
+      "ownerId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+      "published": true,
+      "isCurrent": true,
+      "siteBinaryHttpStatus": 200,
+      "sourceContext": "La roue de Batoumi face à la tour de l’Alphabet, photographiée le 1er juillet 2023."
+    },
+    {
+      "imageId": "5c66a407206147f7af6701b248979edc",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Батуми,_старый_маяк_и_колесо_обозрения.jpg",
+      "author": "Nikolai Bulykin",
+      "license": "CC BY-SA 4.0",
+      "ownerId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+      "published": true,
+      "isCurrent": false,
+      "siteBinaryHttpStatus": 200,
+      "sourceContext": "La roue et le phare de Batoumi sur une photo du 13 octobre 2024."
+    },
+    {
+      "imageId": "016a24f4aaa34641937d5d59b8a7bed9",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Batumi2025wheel.jpg",
+      "author": "Vitaly Zdanevich",
+      "license": "CC BY 4.0",
+      "ownerId": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+      "published": true,
+      "isCurrent": false,
+      "siteBinaryHttpStatus": 200,
+      "sourceContext": "Détail des nacelles et de la structure de la roue de Batoumi (fichier publié en 2025)."
+    }
+  ],
+  "audit": {
+    "score": 69,
+    "dataQualityLevel": "Partial",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 3,
+    "officialHoursAvailable": false,
+    "officialFareAvailable": false
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/a2f4ecb4-3131-49bf-b35b-7ff90201dd72/batumi-panoramic-wheel",
+    "sitePublishedAtUtc": "2026-11-02T11:16:05.103Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:4b138853-3282-4762-a49c-0ac404dece5d",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "2c89d05882fe4eb88cff17a14974b160",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125718871424431",
+    "facebookPublishedAtUtc": "2026-11-02T11:17:25.192Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T11:15:03.461Z",
+  "remainingGaps": [
+    "Obtenir auprès de l’exploitant les horaires et tarifs actuels pour pouvoir les intégrer.",
+    "Surveiller une éventuelle fermeture saisonnière ; l’office de tourisme décrit la roue sans calendrier."
+  ]
+}

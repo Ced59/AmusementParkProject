@@ -1,0 +1,108 @@
+{
+  "name": "Hong Kong Observation Wheel",
+  "entryId": "HK-candidate-558e4714d0a8c2",
+  "standaloneAttractionId": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+  "qualification": "Grande roue à billetterie propre au 33 Man Kwong Street ; site voisin de l’AIA Vitality Park. Recherches officielles Park et Standalone sans fiche.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "admissionOffers": 3,
+    "weeklyRules": 2,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les critères exacts du tarif réduit ne sont pas détaillés par la page actuelle.",
+    "Les exceptions de jours fériés sont signalées mais non représentées par des dates individuelles."
+  ],
+  "sources": [
+    {
+      "label": "Hong Kong Observation Wheel — exploitant, tarifs, horaires et adresse",
+      "url": "https://www.hkow.hk/"
+    },
+    {
+      "label": "Hong Kong Tourism Board — roue et AIA Vitality Park",
+      "url": "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-the-hong-kong-observation-wheel.html"
+    },
+    {
+      "label": "OpenStreetMap — contour du lieu et centre de la roue",
+      "url": "https://www.openstreetmap.org/way/323202866"
+    },
+    {
+      "label": "Wikimedia Commons — roue de Hong Kong, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:International_Finance_Centre,_Hong_Kong_and_Hong_Kong_Observation_Wheel_25-09-2024.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — roue de Hong Kong, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Observation_Wheel_Night_View.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — roue de Hong Kong, photo 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Observation_Wheel_by_AIA_Vitality.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "86924294bbba4abeb53a7fae48eba4e7",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:International_Finance_Centre,_Hong_Kong_and_Hong_Kong_Observation_Wheel_25-09-2024.jpg",
+      "author": "LN9267",
+      "date": "2024-09-25",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "La roue panoramique de Hong Kong en 2024",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "25c282e624734f5c8c17adc11750fb1e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Observation_Wheel_Night_View.jpg",
+      "author": "Hycaefsiam",
+      "date": "2024-08-21",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "La roue éclairée et les immeubles de Central, photographie nocturne de 2024",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "fb7f80fd4d084e75966c27af115d8def",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Observation_Wheel_by_AIA_Vitality.jpg",
+      "author": "Ceeseven",
+      "date": "2019-05-18",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "La roue panoramique de Hong Kong en 2019",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "0881ae7a5d0eb4e45e92808f2e09ab46633b9b441f35cfea69748681a3058b1a",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T10:45:37.070Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T10:41:10.626Z",
+    "photosPublishedAtUtc": "2026-11-01T10:41:59.466Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:5d76684e-f9a5-4514-bf24-01779dfb5706"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/b5b5127d-b1bc-49c5-a8cc-b2d73389934d/hong-kong-observation-wheel",
+      "publishedAtUtc": "2026-11-01T10:43:16.444Z",
+      "applyOperationId": "1ea086c9-c0ef-4b6b-9614-f14408f81136"
+    },
+    "facebook": {
+      "id": "d5e98f4969b44110b15c69fb292bc787",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T10:44:29.447Z",
+      "externalPostId": "1285475681307050_122125589217424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125589217424431"
+    }
+  }
+}

@@ -234,3 +234,40 @@ foreach ($ids in @(@(' ', ''), @('park-1', 'standalone-1'))) {
 }
 if ($script:completenessRequests.Count -ne 4) { throw 'Invalid targets must not contact the API.' }
 Write-Output 'Park data editor standalone-completeness tests passed.'
+
+$tokenGetterAst = $ast.Find(
+    {
+        param($node)
+        return $node -is [Management.Automation.Language.FunctionDefinitionAst] -and
+            $node.Name -eq 'Get-ParkDataEditorToken'
+    },
+    $true)
+if ($null -eq $tokenGetterAst) {
+    throw 'Get-ParkDataEditorToken was not found.'
+}
+Invoke-Expression $tokenGetterAst.Extent.Text
+
+if ([Runtime.InteropServices.RuntimeInformation]::IsOSPlatform([Runtime.InteropServices.OSPlatform]::Linux)) {
+    $EphemeralTokenPath = "/dev/shm/apf-pde-client-test-$([guid]::NewGuid().ToString('N')).token"
+    $expectedToken = 'apf_pde_0123456789abcdef0123456789abcdef.' + ('a' * 43)
+    try {
+        [IO.File]::WriteAllText($EphemeralTokenPath, $expectedToken)
+        chmod 600 $EphemeralTokenPath
+        if ((Get-ParkDataEditorToken) -cne $expectedToken) {
+            throw 'The cloud client did not load the owner-only temporary token.'
+        }
+
+        chmod 644 $EphemeralTokenPath
+        $message = ''
+        try { Get-ParkDataEditorToken | Out-Null } catch { $message = $_.Exception.Message }
+        if ($message -notlike '*mode 0600*') {
+            throw 'The cloud client accepted a world-readable token file.'
+        }
+    }
+    finally {
+        if (Test-Path -LiteralPath $EphemeralTokenPath) {
+            Remove-Item -LiteralPath $EphemeralTokenPath
+        }
+    }
+}
+Write-Output 'Park data editor temporary cloud token tests passed.'

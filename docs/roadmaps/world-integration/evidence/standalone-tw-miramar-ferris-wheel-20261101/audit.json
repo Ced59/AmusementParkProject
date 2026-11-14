@@ -1,0 +1,116 @@
+{
+  "name": "Miramar Ferris Wheel",
+  "entryId": "TW-candidate-4c7dad24c6c000",
+  "standaloneAttractionId": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+  "qualification": "Roue panoramique à billet propre sur le toit du centre commercial Miramar à Taipei. Recherches officielles Park et Standalone sans fiche.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "admissionOffers": 2,
+    "weeklyRules": 2,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Le site de l’exploitant bloque l’accès automatisé : prix en ligne et horaires proviennent du distributeur Taipei Fun Pass.",
+    "Le tarif à la caisse et les exceptions de fêtes ne sont pas confirmés directement par l’exploitant."
+  ],
+  "sources": [
+    {
+      "label": "Taipei Travel — Miramar Entertainment Park, roue et adresse",
+      "url": "https://www.travel.taipei/en/attraction/details/710"
+    },
+    {
+      "label": "Taiwan Tourism Administration — Miramar et roue panoramique",
+      "url": "https://eng.taiwan.net.tw/m1.aspx?id=5356&sNo=0002090"
+    },
+    {
+      "label": "Taipei Fun Pass — horaires de la roue et billets en ligne",
+      "url": "https://funpass.travel.taipei/store/info/pe1p"
+    },
+    {
+      "label": "Taipei Fun Pass — billet de semaine utilisable jusqu’en 2027",
+      "url": "https://funpass.travel.taipei/tour/paM3"
+    },
+    {
+      "label": "OpenStreetMap / Nominatim — Miramar Entertainment Park",
+      "url": "https://www.openstreetmap.org/search?query=Miramar%20Entertainment%20Park%20Taipei"
+    },
+    {
+      "label": "Wikimedia Commons — Miramar Ferris Wheel, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel,_Taipei,_2024.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — Miramar Ferris Wheel, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel-01.2023-06-02.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — Miramar Ferris Wheel, photo 3",
+      "url": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel_at_night-01.2023-06-02.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "661f6761206b4833af5ad1b17b87fbbc",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel,_Taipei,_2024.jpg",
+      "author": "Another Believer",
+      "date": "2024-11-26",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "La roue et ses cabines multicolores au-dessus du toit de Miramar",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "5a63b69cbde842fa92580195caccbc97",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel-01.2023-06-02.jpg",
+      "author": "阿道",
+      "date": "2023-06-02",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Structure et cabines vues depuis le pied de la roue",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    },
+    {
+      "imageId": "5044d56bd59a4589ba2c723171a9b175",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miramar_Ferris_Wheel_at_night-01.2023-06-02.jpg",
+      "author": "阿道",
+      "date": "2023-06-02",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "subject": "Éclairage vert de la roue au-dessus des façades de Miramar",
+      "transformation": "vignette Wikimedia Commons 960 px, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "8acb72f18768094b7431da5ccdfddcb865ade1cc3a55fcbefdae449458a603f4",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T11:09:07.841Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T11:05:33.247Z",
+    "photosPublishedAtUtc": "2026-11-01T11:07:00.073Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:a7feaed3-e3fe-456b-b9ed-675955b043ad"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/bdf7abcd-89d5-4393-bc04-845d92cb40f4/miramar-ferris-wheel",
+      "publishedAtUtc": "2026-11-01T11:07:23.442Z",
+      "applyOperationId": "7385d503-4d6e-4346-87ee-4812db9816f8"
+    },
+    "facebook": {
+      "id": "522e4f450f224fcf9019fcab3eeaca30",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T11:08:13.981Z",
+      "externalPostId": "1285475681307050_122125593945424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125593945424431"
+    }
+  }
+}

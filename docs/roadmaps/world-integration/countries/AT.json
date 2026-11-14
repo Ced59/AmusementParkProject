@@ -156,6 +156,174 @@
       ]
     },
     {
+      "entryId": "AT-candidate-discovery-876a04accdc1dc",
+      "name": "Alpbachtaler Lauser-Sauser",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": "Wiedersbergerhornbahn Bergstation, Alpbach, Tyrol, Autriche",
+      "siteId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T12:29:22.849Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Saison automne 2026 annoncée jusqu’au 8 novembre ; tarifs hiver 2026/27 publiés, horaires hiver à confirmer.",
+      "identityConfidence": "Découverte à partir de l’élément interne de la fiche Park masquée Ski Juwel ; coaster à billet propre confirmé. Fiche Park conservée pour décision éditoriale séparée.",
+      "possibleMatches": [],
+      "aliases": [
+        "Lauser-Sauser",
+        "Alpbachtaler Lauser Sauser"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T12:25:41.037Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6cad74bc-649d-4cd6-a5f8-912f7d9d8e0a",
+          "appliedAt": "2026-11-01T12:22:48.451Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:apply:6cad74bc-649d-4cd6-a5f8-912f7d9d8e0a",
+          "auditEvidence": null,
+          "summary": "Fiche privée du coaster créée sans modifier la fiche Park masquée du domaine"
+        },
+        {
+          "eventId": "image-91d6cd90fe5845a7bd152e27022707ba",
+          "appliedAt": "2026-11-01T12:24:13.573Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:image:91d6cd90fe5845a7bd152e27022707ba",
+          "auditEvidence": null,
+          "summary": "Photo #1 du parcours Lauser-Sauser importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "image-6310c37805af4394aecb5d49503784a3",
+          "appliedAt": "2026-11-01T12:24:33.165Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:image:6310c37805af4394aecb5d49503784a3",
+          "auditEvidence": null,
+          "summary": "Photo #2 du parcours Lauser-Sauser importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-f8534c3d-12d9-40bc-a848-91c3154202c2",
+          "appliedAt": "2026-11-01T12:25:10.768Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:apply:f8534c3d-12d9-40bc-a848-91c3154202c2",
+          "auditEvidence": null,
+          "summary": "Huit offres de descente pour les saisons été 2026 et hiver 2026/27, avec périodes explicites"
+        },
+        {
+          "eventId": "apply-c1785d66-3398-4ec8-b3dc-19c8f85999de",
+          "appliedAt": "2026-11-01T12:25:41.037Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:apply:c1785d66-3398-4ec8-b3dc-19c8f85999de",
+          "auditEvidence": null,
+          "summary": "Règle datée du 7 septembre au 8 novembre 2026 intégrée ; dépendance à la télécabine et à la météo documentée"
+        },
+        {
+          "eventId": "closure-c1785d66-3398-4ec8-b3dc-19c8f85999de",
+          "appliedAt": "2026-11-01T12:25:41.037Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+          "evidence": "PARK_DATA_EDITOR:apply:c1785d66-3398-4ec8-b3dc-19c8f85999de",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-alpbachtaler-lauser-sauser-20261101/audit.json",
+          "summary": "Audit 85/100 sans blocage et deux photos exactes ; site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Relever les horaires hiver 2026/27 quand publiés, vérifier les dates de télécabine et affiner le point exact de départ. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Alpbachtal Tourismus — Lauser-Sauser, horaires et tarifs été 2026",
+          "url": "https://www.alpbachtal.at/en/activitities/family-holidays/alpbachtaler-lauser-sauser",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Alpbachtal Tourismus — Lauser-Sauser, tarifs hiver 2026/27",
+          "url": "https://www.alpbachtal.at/en/activitities/ski-juwel-alpbachtal-wildschoenau/Alpbachtaler%20Lauser-Sauser%20Winter",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Alpbachtal Tourismus — fonctionnement de la Wiedersbergerhornbahn",
+          "url": "https://www.alpbachtal.at/en/activitities/summer-mountain-lifts/operating-times",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — gare supérieure, localisation approchée",
+          "url": "https://www.openstreetmap.org/node/414186374",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Lauser-Sauser, photo 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Alpbachtaler_Lauser-Sauser_2.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — Lauser-Sauser, photo 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Alpbachtaler_Lauser-Sauser_4.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Alpbachtaler Lauser-Sauser",
+            "source": "Alpbachtal Tourismus — coaster et billetterie",
+            "url": "https://www.alpbachtal.at/en/activitities/family-holidays/alpbachtaler-lauser-sauser",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Wiedersbergerhornbahn / Ski Juwel",
+            "sourceLifecycleSignal": "Ouverture automne 2026 et tarifs saisonniers",
+            "sourceLocality": "Alpbach, Tyrol",
+            "matchingMethod": "Élément Park interne retrouvé ; billet de coaster distinct de la télécabine"
+          }
+        ],
+        "rationale": "Le coaster se vend à la descente ou en combinaison avec le téléphérique ; la fiche Park masquée reste à qualifier comme domaine distinct."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/212a52d7-6a44-4ef5-861d-2c6d644ed77a/alpbachtaler-lauser-sauser",
+          "publishedAtUtc": "2026-11-01T12:27:04.102Z",
+          "verifiedAtUtc": "2026-11-01T12:29:22.849Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ff991718-784b-491b-b278-f20b023e7b1a"
+        },
+        "facebook": {
+          "id": "83986cd12cd34e40bfdc1bb08f1551ae",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T12:27:47.617Z",
+          "externalPostId": "1285475681307050_122125604463424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125604463424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:83986cd12cd34e40bfdc1bb08f1551ae"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "91d6cd90fe5845a7bd152e27022707ba",
+          "6310c37805af4394aecb5d49503784a3"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T12:26:35.353Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:de393069-7532-44e2-b820-db5ba1139c79",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-at-alpbachtaler-lauser-sauser-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-alpbachtaler-lauser-sauser-20261101/audit.json",
+        "score": 85,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
+    },
+    {
       "entryId": "AT-candidate-c89f11f044a041",
       "name": "Alpenrose Water Park",
       "entityKind": "Park",
@@ -469,29 +637,83 @@
     },
     {
       "entryId": "AT-candidate-standalone-7072065e1e6372",
-      "name": "Alpine Coaster Wiegand — Schöckel",
-      "entityKind": "ToQualify",
+      "name": "Hexenexpress",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
-      "locality": null,
-      "siteId": null,
+      "locality": "Schöckl plateau, Sankt Radegund bei Graz",
+      "siteId": "8cba8e15-650a-4931-8c82-91c43c485771",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T09:50:58.374Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Saison officielle terminée le 31 octobre 2026 ; fermeture hivernale, pas de date 2027 annoncée.",
+      "identityConfidence": "Holding Graz confirme le nom Hexenexpress, le plateau, la caisse propre et le calendrier ; aucun doublon Standalone. Schöckl Seilbahn masqué est le téléphérique distinct.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Schöckel"
+        "Schöckel",
+        "Alpine Coaster Wiegand — Schöckel",
+        "Schöckl Hexenexpress",
+        "Witches’ Express"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T09:48:57.960Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-30b8ebc5-2ae1-457f-94c2-b248c04657e3",
+          "appliedAt": "2026-11-02T09:38:10.782Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:apply:30b8ebc5-2ae1-457f-94c2-b248c04657e3",
+          "auditEvidence": null,
+          "summary": "Création masquée, identité, tracé, statut saisonnier et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-f05387f5140d4df99dd5735d07e269ec",
+          "appliedAt": "2026-11-02T09:39:21.184Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:image:f05387f5140d4df99dd5735d07e269ec",
+          "auditEvidence": null,
+          "summary": "Photo exacte montrant la piste sur le plateau importée avec licence, date, crédits et textes en huit langues"
+        },
+        {
+          "eventId": "apply-2f1c9d0f-46f7-46aa-a9ef-9711cd4f3c27",
+          "appliedAt": "2026-11-02T09:44:42.207Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:apply:2f1c9d0f-46f7-46aa-a9ef-9711cd4f3c27",
+          "auditEvidence": null,
+          "summary": "Trois conditions d’accès des enfants sourcées auprès de Holding Graz"
+        },
+        {
+          "eventId": "apply-b849e3fd-9114-48bd-8848-0fe5cd81dde7",
+          "appliedAt": "2026-11-02T09:45:06.480Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:apply:b849e3fd-9114-48bd-8848-0fe5cd81dde7",
+          "auditEvidence": null,
+          "summary": "Vingtième anniversaire du 9 juillet 2023 intégré à la chronologie"
+        },
+        {
+          "eventId": "apply-d8cca7b8-7a02-4b78-bb9a-0069f31903b4",
+          "appliedAt": "2026-11-02T09:48:57.960Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8cba8e15-650a-4931-8c82-91c43c485771",
+          "evidence": "PARK_DATA_EDITOR:apply:d8cca7b8-7a02-4b78-bb9a-0069f31903b4",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-hexenexpress-20261102/audit.json",
+          "summary": "Date d’ouverture précise retirée après constat du désaccord entre Holding Graz et RCDB ; audit final sans blocage"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier l’ouverture 2002/2003, les horaires et tarifs 2027, chercher une photo rapprochée et suivre la migration distincte du téléphérique Schöckl Seilbahn. Ne pas répéter Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -502,22 +724,66 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.holding-graz.at/de/freizeit/schoeckl/hexenexpress/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Holding Graz — saison, tarifs et conditions du Hexenexpress",
+          "url": "https://www.holding-graz.at/de/freizeit/schoeckl/hexenexpress/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Holding Graz — vingtième anniversaire 2023",
+          "url": "https://www.holding-graz.at/de/unser-hexenexpress-feiert-seinen-20er/",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap via Mapcarta — tracé du Hexenexpress",
+          "url": "https://mapcarta.com/W526760936",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "RCDB — année 2002 contradictoire à résoudre",
+          "url": "https://rcdb.com/13068.htm",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte du tracé en 2023",
+          "url": "https://commons.wikimedia.org/wiki/File:St._Radegund_bei_Graz_-_Sch%C3%B6ckl,_Gipfelareal.JPG",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
         "attractions": [
           {
-            "name": "Schöckel",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=369#location-id-950",
+            "name": "Hexenexpress",
+            "source": "Holding Graz — billet propre et saison",
+            "url": "https://www.holding-graz.at/de/freizeit/schoeckl/hexenexpress/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Schöckel",
-            "referenceId": "location-id-950"
+            "sourceVenueName": "Schöckl plateau / Schöckl Seilbahn",
+            "sourceLifecycleSignal": "Saison 2026 terminée, hiver fermé",
+            "sourceLocality": "Sankt Radegund bei Graz",
+            "matchingMethod": "Luge sur rails avec caisse et prix propres près de la gare supérieure ; la fiche Park masquée Schöckl Seilbahn correspond au téléphérique, pas à la luge."
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Billet propre sur un plateau de montagne ouvert aux activités ; le téléphérique est une entité distincte à migrer séparément."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/8cba8e15-650a-4931-8c82-91c43c485771/hexenexpress",
+          "publishedAtUtc": "2026-11-02T09:46:18.970Z",
+          "verifiedAtUtc": "2026-11-02T09:50:58.374Z",
+          "evidence": "PARK_DATA_EDITOR:apply:0b36763a-f390-4ce3-b029-c6298064f646"
+        },
+        "facebook": {
+          "id": "036bc9a32e0b4f3889f4db2a5d91aa9a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T09:47:40.625Z",
+          "externalPostId": "1285475681307050_122125710105424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125710105424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:036bc9a32e0b4f3889f4db2a5d91aa9a"
+        }
       }
     },
     {
@@ -727,6 +993,153 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "AT-candidate-discovery-75e6998d61e541",
+      "name": "Arena Coaster",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster / luge sur rails",
+      "locality": "Rohr 23, Talstation Rosenalmbahn, Zell am Ziller, Tyrol, Autriche",
+      "siteId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T13:21:09.517Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant publiant billets et horaires pour la période du 1er février au 11 avril 2027 ; pas d’ouverture annoncée en novembre 2026.",
+      "identityConfidence": "Billet propre et montée intégrée confirmés, distincts du domaine skiable ; Park Zillertal Arena masqué 410a98d7-c142-4716-8946-d0e2c0bc2f7c à qualifier séparément.",
+      "possibleMatches": [],
+      "aliases": [
+        "Arena Coaster Zillertal",
+        "Alpine coaster Zell am Ziller"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-01T13:17:13.883Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-9d32984f-fa90-4257-9140-f30424d75689",
+          "appliedAt": "2026-11-01T13:14:00.675Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:apply:9d32984f-fa90-4257-9140-f30424d75689",
+          "auditEvidence": null,
+          "summary": "Fiche privée du coaster créée sans modifier le Park masqué Zillertal Arena"
+        },
+        {
+          "eventId": "apply-15d10b29-a401-4bc3-bec6-e2569dc19042",
+          "appliedAt": "2026-11-01T13:16:10.879Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:apply:15d10b29-a401-4bc3-bec6-e2569dc19042",
+          "auditEvidence": null,
+          "summary": "Six offres de trajets et carnets pour l’hiver 2027 intégrées avec dates de validité"
+        },
+        {
+          "eventId": "image-bfc226758d174163928e07685f5e072a",
+          "appliedAt": "2026-11-01T13:16:34.412Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:image:bfc226758d174163928e07685f5e072a",
+          "auditEvidence": null,
+          "summary": "Photo exacte du tracé Arena Coaster importée de Wikimedia Commons avec crédits en huit langues"
+        },
+        {
+          "eventId": "apply-497cec31-3839-4ad7-b1e0-45410629654d",
+          "appliedAt": "2026-11-01T13:17:13.883Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:apply:497cec31-3839-4ad7-b1e0-45410629654d",
+          "auditEvidence": null,
+          "summary": "Règle datée du 1er février au 11 avril 2027 intégrée ; dépendance à la météo documentée"
+        },
+        {
+          "eventId": "closure-497cec31-3839-4ad7-b1e0-45410629654d",
+          "appliedAt": "2026-11-01T13:17:13.883Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+          "evidence": "PARK_DATA_EDITOR:apply:497cec31-3839-4ad7-b1e0-45410629654d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-arena-coaster-20261101/audit.json",
+          "summary": "Audit 81/100 sans blocage, photo exacte du parcours ; période d’hiver 2027 datée, site et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Relever l’ouverture et les tarifs d’été 2027 quand ils seront publiés ; vérifier météo et horaires avant la saison d’hiver. Qualifier la fiche Park Zillertal Arena liée sans dupliquer le coaster. Ne pas republier Facebook.",
+      "sources": [
+        {
+          "label": "Zillertal Arena — Arena Coaster, horaires et tarifs hiver 2026–27",
+          "url": "https://www.zillertalarena.com/winter/abseits-der-pisten/arena-coaster/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Zillertal Arena — Arena Coaster été, montée intégrée et billet propre",
+          "url": "https://www.zillertalarena.com/en/summer/sports-recreation/arena-coaster/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap — emprise du tracé Arena Coaster",
+          "url": "https://www.openstreetmap.org/way/230671364",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — tracé de l’Arena Coaster",
+          "url": "https://commons.wikimedia.org/wiki/File:Arena_Coaster_Zillertal_-_toboggan_track.jpg",
+          "accessedAt": "2026-11-01"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Arena Coaster",
+            "source": "Zillertal Arena — page officielle du coaster",
+            "url": "https://www.zillertalarena.com/winter/abseits-der-pisten/arena-coaster/",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Zillertal Arena, station inférieure Rosenalmbahn",
+            "sourceLifecycleSignal": "Billet propre et période hiver 2027 annoncée",
+            "sourceLocality": "Zell am Ziller, Tyrol",
+            "matchingMethod": "Billetterie propre, montée sans télécabine et recherche Standalone officielle sans fiche"
+          }
+        ],
+        "rationale": "Le domaine Zillertal Arena est plus large que cette luge à billet indépendant ; la fiche Park masquée est conservée pour qualification distincte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/a5f1a001-a685-45a5-99c3-f147dff1ff4a/arena-coaster",
+          "publishedAtUtc": "2026-11-01T13:19:04.988Z",
+          "verifiedAtUtc": "2026-11-01T13:21:09.517Z",
+          "evidence": "PARK_DATA_EDITOR:apply:969b8745-560b-4cfe-8e19-db540a68d8a6"
+        },
+        "facebook": {
+          "id": "332b626c865a4e4f8e9edefb703f9383",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T13:20:00.622Z",
+          "externalPostId": "1285475681307050_122125610295424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125610295424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:332b626c865a4e4f8e9edefb703f9383"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "bfc226758d174163928e07685f5e072a"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T13:18:25.975Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:fd15f025-28cf-414c-8b57-06e1c4a2ea6d",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-at-arena-coaster-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-arena-coaster-20261101/audit.json",
+        "score": 81,
+        "publicationBlockers": [],
+        "gapCount": 1
+      }
     },
     {
       "entryId": "AT-candidate-6dd0cf3d9229b2",
@@ -3803,29 +4216,101 @@
     },
     {
       "entryId": "AT-candidate-standalone-3f84eb294e7228",
-      "name": "Luge Wiegand — Laterns",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Laterns",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Kühboden 7, 6830 Laterns",
+      "siteId": "e530512a-1a28-4a74-b968-052fac792800",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T09:47:54.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Saison 2026 achevée le 18 octobre ; exploitant confirme la fermeture estivale au 1er novembre. Aucune date 2027 publiée.",
+      "identityConfidence": "Piste Wiegand à billetterie propre sur le domaine Laterns ; recherches officielles Park et Standalone « Laterns » sans correspondance ; photos du parcours vérifiées.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Laterns"
+        "Sommerrodelbahn Kühboden",
+        "Luge Wiegand — Laterns"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-10-28T23:58:16.188Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-e7f8ada3-4b3e-4f7a-b3a7-6f31077c7aad",
+          "appliedAt": "2026-10-28T23:52:56.767Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:e7f8ada3-4b3e-4f7a-b3a7-6f31077c7aad",
+          "auditEvidence": null,
+          "summary": "Fiche privée, descriptions en huit langues et fermeture de la saison 2026 documentées"
+        },
+        {
+          "eventId": "apply-8d55799c-abcb-4751-ad8d-8c0491ed9ce4",
+          "appliedAt": "2026-10-28T23:54:46.509Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:8d55799c-abcb-4751-ad8d-8c0491ed9ce4",
+          "auditEvidence": null,
+          "summary": "Cycle d’exploitation saisonnier clarifié sans annoncer de réouverture future"
+        },
+        {
+          "eventId": "apply-ea3714ff-8753-4ff7-97a0-b8b6c7982695",
+          "appliedAt": "2026-10-28T23:55:14.506Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:ea3714ff-8753-4ff7-97a0-b8b6c7982695",
+          "auditEvidence": null,
+          "summary": "Douze tarifs de la saison 2026 intégrés avec date de fin au 18 octobre"
+        },
+        {
+          "eventId": "image-abe0a404983e4d09987288a965bc8282",
+          "appliedAt": "2026-10-28T23:55:45.841Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:image:abe0a404983e4d09987288a965bc8282",
+          "auditEvidence": null,
+          "summary": "Photographie #1 propre à la piste importée de Wikimedia Commons, avec licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-8ac64514610d4f7b9073a64b2f31fdff",
+          "appliedAt": "2026-10-28T23:56:10.929Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:image:8ac64514610d4f7b9073a64b2f31fdff",
+          "auditEvidence": null,
+          "summary": "Photographie #2 propre à la piste importée de Wikimedia Commons, avec licence et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-16d56efd-6762-4460-aaaf-9d8eabbafb18",
+          "appliedAt": "2026-10-28T23:58:16.188Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:16d56efd-6762-4460-aaaf-9d8eabbafb18",
+          "auditEvidence": null,
+          "summary": "Trois périodes horaires 2026 bornées intégrées ; jours fériés supplémentaires et météo signalés"
+        },
+        {
+          "eventId": "closure-16d56efd-6762-4460-aaaf-9d8eabbafb18",
+          "appliedAt": "2026-10-28T23:58:16.188Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e530512a-1a28-4a74-b968-052fac792800",
+          "evidence": "PARK_DATA_EDITOR:apply:16d56efd-6762-4460-aaaf-9d8eabbafb18",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-laterns-20261101/audit.json",
+          "summary": "Audit éditorial final 75/100 sans blocage ; deux photographies propres publiées ensuite, avec preuve distincte."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier la date de réouverture et les nouveaux tarifs 2027 avant toute mise à jour des horaires ou du statut saisonnier ; ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -3836,22 +4321,86 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.laterns.net/web_s/index.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Seilbahnen Laterns — parcours de la luge et conditions d’âge",
+          "url": "https://www.laterns.net/sommer/angebot/sommerrodelbahn",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Seilbahnen Laterns — tarifs et périodes de la saison 2026",
+          "url": "https://www.laterns.net/sommer/tarife-betriebszeiten",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Seilbahnen Laterns — avis de fin de saison estivale",
+          "url": "https://www.laterns.net/sommer",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — Sommerrodelbahn Laterns",
+          "url": "https://nominatim.openstreetmap.org/search?q=Sommerrodelbahn+Laterns+K%C3%BChboden&format=json",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — piste de Laterns 01, Asurnipal, 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Laterns-Kuehboden-summer_toboggan-run_(type_Wiegand)-01ASD.jpg",
+          "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — piste de Laterns 02, Asurnipal, 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Laterns-Kuehboden-summer_toboggan-run_(type_Wiegand)-02ASD.jpg",
+          "accessedAt": "2026-10-28"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
         "attractions": [
           {
-            "name": "Laterns",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=369#location-id-1172",
+            "name": "Sommerrodelbahn Laterns",
+            "source": "Seilbahnen Laterns — exploitant",
+            "url": "https://www.laterns.net/sommer/angebot/sommerrodelbahn",
             "family": "Luge d’été",
-            "sourceVenueName": "Laterns",
-            "referenceId": "location-id-1172"
+            "sourceVenueName": "Seilbahnen Laterns",
+            "sourceLifecycleSignal": "Saison 2026 terminée le 18 octobre",
+            "sourceLocality": "Laterns",
+            "matchingMethod": "Billetterie propre à la descente, photos du parcours et recherches officielles Park / Standalone sans correspondance"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste à billet propre dans un domaine de montagne ; calendrier et tarifs de 2026 conservés avec leurs dates de fin, sans extrapolation vers 2027. Deux photos libres du parcours ; audit public 75/100 sans blocage."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e530512a-1a28-4a74-b968-052fac792800/sommerrodelbahn-laterns",
+          "publishedAtUtc": "2026-11-01T09:46:27.777Z",
+          "verifiedAtUtc": "2026-11-01T09:47:54.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7e1ead88-4025-42e3-9eb2-432fe8eecdde"
+        },
+        "facebook": {
+          "id": "05bbc0de1a03450899002848c044287b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T09:47:44.099Z",
+          "externalPostId": "1285475681307050_122125583043424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125583043424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:05bbc0de1a03450899002848c044287b"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-laterns-20261101/audit.json",
+        "score": 75,
+        "publicationBlockers": [],
+        "gapCount": 2
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "abe0a404983e4d09987288a965bc8282",
+          "8ac64514610d4f7b9073a64b2f31fdff"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T09:45:52.657Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:bfac2fdc-70dc-47b8-b597-c455f05bf3e9",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-laterns-20261101/audit.json"
       }
     },
     {
@@ -3911,31 +4460,105 @@
     },
     {
       "entryId": "AT-candidate-standalone-42f17ac205f210",
-      "name": "Luge Wiegand — Strobl am Wolfgangssee",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Strobl am Wolfgangsee",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Landauerstraße 15, 5350 Strobl",
+      "siteId": "e57823f1-4282-4a2d-893d-d5992504465c",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T10:04:10.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Saison 2026 terminée ; exploitant annonce une reprise en avril 2027 sans date précise. Fonctionnement uniquement par beau temps.",
+      "identityConfidence": "Billetterie unique pour deux pistes parallèles de 1 300 m ; recherches officielles Park et Standalone « Strobl » sans correspondance ; trois photographies du site vérifiées.",
       "possibleMatches": [],
       "possibleBacklogEntries": [
-        "AT-candidate-standalone-bbc5d4f43cbecb"
+        "AT-candidate-standalone-124367ff240c23"
       ],
       "aliases": [
+        "Luge Wiegand — Strobl am Wolfgangssee",
+        "Sommerrodelbahn Wolfgangsee",
+        "Strobl-Gschwendt",
         "Strobl am Wolfgangssee"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : AT-candidate-standalone-bbc5d4f43cbecb. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T10:01:33.030Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-47286af9-b8f6-45e3-8226-aae8d9a21205",
+          "appliedAt": "2026-11-01T09:56:29.593Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:apply:47286af9-b8f6-45e3-8226-aae8d9a21205",
+          "auditEvidence": null,
+          "summary": "Fiche privée et descriptions en huit langues avec saison 2026 achevée et reprise annoncée pour avril 2027"
+        },
+        {
+          "eventId": "image-28c4112323f041bc9fb283b6d20b20c2",
+          "appliedAt": "2026-11-01T09:57:45.885Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:image:28c4112323f041bc9fb283b6d20b20c2",
+          "auditEvidence": null,
+          "summary": "Photo historique #1 propre à la piste importée de Wikimedia Commons, domaine public et légendes en huit langues"
+        },
+        {
+          "eventId": "image-bbe25ff62f6246f19cae70aa9b4a00b8",
+          "appliedAt": "2026-11-01T09:58:10.090Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:image:bbe25ff62f6246f19cae70aa9b4a00b8",
+          "auditEvidence": null,
+          "summary": "Photo historique #2 propre à la piste importée de Wikimedia Commons, domaine public et légendes en huit langues"
+        },
+        {
+          "eventId": "image-3cf93574365a4a139f04c99aa5b9f7ca",
+          "appliedAt": "2026-11-01T09:58:55.189Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:image:3cf93574365a4a139f04c99aa5b9f7ca",
+          "auditEvidence": null,
+          "summary": "Photo historique #3 propre à la piste importée de Wikimedia Commons, domaine public et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-941a8bd1-b95f-41aa-a4bb-17dd35f6d92d",
+          "appliedAt": "2026-11-01T09:59:26.739Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:apply:941a8bd1-b95f-41aa-a4bb-17dd35f6d92d",
+          "auditEvidence": null,
+          "summary": "Cinq offres historiques de la saison 2026 bornées, 2027 non annoncé"
+        },
+        {
+          "eventId": "apply-07700c54-df0e-433f-b0f7-c776829d4d68",
+          "appliedAt": "2026-11-01T10:01:33.030Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:apply:07700c54-df0e-433f-b0f7-c776829d4d68",
+          "auditEvidence": null,
+          "summary": "Descriptions visiteurs corrigées en huit langues après contrôle du texte public"
+        },
+        {
+          "eventId": "closure-07700c54-df0e-433f-b0f7-c776829d4d68",
+          "appliedAt": "2026-11-01T10:01:33.030Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e57823f1-4282-4a2d-893d-d5992504465c",
+          "evidence": "PARK_DATA_EDITOR:apply:07700c54-df0e-433f-b0f7-c776829d4d68",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-strobl-20261101/audit.json",
+          "summary": "Audit 72/100 sans blocage ; trois photos propres importées, fiche et Facebook publiés ensuite."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus ; vérifier la date exacte de reprise et les tarifs 2027. Les trois photos datent de 2008 : rechercher des vues récentes libres. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -3946,43 +4569,102 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.rodelbahnen.at",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sommerrodelbahn Strobl — exploitant, deux pistes, tarifs 2026 et fin de saison",
+          "url": "https://www.rodelnamsee.at/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Rodelwelten — adresse et coordonnées de l’accès",
+          "url": "https://www.rodelwelten.com/rodelbahnen/detail/sommerrodelbahn-strobl",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — remontée et Wolfgangsee en 2008",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_03.JPG",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — piste vers le lac en 2008",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_02.JPG",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — base de la remontée en 2008",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wolfgangssee_01.JPG",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
         "attractions": [
           {
-            "name": "Strobl am Wolfgangssee",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=369#location-id-1170",
+            "name": "Sommerrodelbahn Strobl am Wolfgangsee",
+            "source": "Exploitant rodelnamsee.at",
+            "url": "https://www.rodelnamsee.at/",
             "family": "Luge d’été",
-            "sourceVenueName": "Strobl am Wolfgangssee",
-            "referenceId": "location-id-1170"
+            "sourceVenueName": "Sommerrodelbahn Strobl",
+            "sourceLifecycleSignal": "Fin de saison 2026, reprise annoncée en avril 2027",
+            "sourceLocality": "Strobl-Gschwendt",
+            "matchingMethod": "Exploitant unique, billetterie commune aux deux pistes, photos du parcours et recherches officielles Park / Standalone sans correspondance"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Deux pistes physiques sous une seule enseigne et une même billetterie ; une seule fiche autonome. Les tarifs 2026 sont historiques ; les trois photos du parcours sont datées de 2008."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e57823f1-4282-4a2d-893d-d5992504465c/sommerrodelbahn-strobl-am-wolfgangsee",
+          "publishedAtUtc": "2026-11-01T10:03:40.453Z",
+          "verifiedAtUtc": "2026-11-01T10:04:10.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:31eacfba-756d-40ac-8c5f-7ac5eaa4eefd"
+        },
+        "facebook": {
+          "id": "9eb0cbf3f79248f39cabb95e71ffdab6",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T10:05:32.364Z",
+          "externalPostId": "1285475681307050_122125585161424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125585161424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:9eb0cbf3f79248f39cabb95e71ffdab6"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "28c4112323f041bc9fb283b6d20b20c2",
+          "bbe25ff62f6246f19cae70aa9b4a00b8",
+          "3cf93574365a4a139f04c99aa5b9f7ca"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T10:02:20.183Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:53ba1ace-30d9-4f07-80fa-c25319fedbb5",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-strobl-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-strobl-20261101/audit.json",
+        "score": 72,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
       "entryId": "AT-candidate-standalone-124367ff240c23",
       "name": "Luge Wiegand — Strobl II am Wolfgangssee",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presenceObservedAt": "2026-11-01",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Seconde piste physique de la même Sommerrodelbahn Strobl ; l’exploitant vend les deux parcours sous une enseigne et un billet commun. Saison 2026 terminée.",
+      "identityConfidence": "Référence constructeur Strobl II réconciliée avec la seconde piste parallèle du site ; pas une seconde fiche visiteur autonome.",
       "possibleMatches": [],
       "possibleBacklogEntries": [
-        "AT-candidate-standalone-bbc5d4f43cbecb",
         "AT-candidate-standalone-42f17ac205f210"
       ],
       "aliases": [
@@ -3991,7 +4673,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Références proches : AT-candidate-standalone-bbc5d4f43cbecb, AT-candidate-standalone-42f17ac205f210. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la référence Strobl II et son lien constructeur comme trace de la seconde piste ; la fiche visiteur et la publication Facebook sont rattachées à AT-candidate-standalone-42f17ac205f210. Ne pas créer de doublon.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -4002,23 +4684,32 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.rodelbahnen.at",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sommerrodelbahn Strobl — exploitant, deux pistes, tarifs 2026 et fin de saison",
+          "url": "https://www.rodelnamsee.at/",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
         "attractions": [
           {
             "name": "Strobl II am Wolfgangssee",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=369#location-id-1169",
             "family": "Luge d’été",
-            "sourceVenueName": "Strobl II am Wolfgangssee",
-            "referenceId": "location-id-1169"
+            "sourceVenueName": "Sommerrodelbahn Strobl",
+            "sourceLifecycleSignal": "Piste parallèle du même site, saison 2026 terminée",
+            "sourceLocality": "Strobl-Gschwendt",
+            "matchingMethod": "Deux pistes annoncées par l’exploitant, billetterie commune et une seule enseigne"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Cette référence du constructeur désigne la deuxième piste de la même installation, déjà représentée par une unique fiche autonome. Pas de seconde création éditoriale."
+      },
+      "duplicateOf": "AT-candidate-standalone-42f17ac205f210",
+      "qualificationEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-sommerrodelbahn-strobl-20261101/audit.json"
     },
     {
       "entryId": "AT-candidate-standalone-d465e5bb59c809",
@@ -4346,13 +5037,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Identifiant du site pour le téléphérique ; la luge Hexenexpress possède désormais une fiche standalone distincte, sans fusion avec ce Park masqué.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Fiche Park masquée du téléphérique Schöckl Seilbahn : qualifier et préparer sa migration vers une StandaloneAttraction de téléphérique, sans supprimer cette ligne ni écraser son identifiant. La luge Hexenexpress est distincte et déjà publiée sous AT-candidate-standalone-7072065e1e6372 ; éviter de la recréer comme parkItem ou doublon. Vérifier le bon périmètre et la saison du téléphérique avant migration.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -4470,26 +5161,63 @@
     },
     {
       "entryId": "AT-park-5720c9f6-0944-4161-abae-3c9bb03adae1",
-      "name": "Serlesbahnen Mieders",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "5720c9f6-0944-4161-abae-3c9bb03adae1",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "name": "Serlesblitz — Sommerrodelbahn Mieders",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été / alpine coaster",
+      "locality": "Mieders, Tyrol",
+      "siteId": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+      "legacySiteIds": [
+        "5720c9f6-0944-4161-abae-3c9bb03adae1"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T19:01:53Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Migration officielle depuis la fiche Park masquée avec un seul item de luge ; recherches officielles et page publique autonome vérifiées le 14 novembre 2026.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Serlesbahnen Mieders",
+        "Sommerrodelbahn Serlesblitz",
+        "Sommerrodelbahn Stubai"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-14T20:07:41Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-df00f35a-ece1-43da-8eb5-00a7a3774bfd",
+          "appliedAt": "2026-11-14T18:56:20.387Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+          "evidence": "PARK_DATA_EDITOR:apply:df00f35a-ece1-43da-8eb5-00a7a3774bfd",
+          "auditEvidence": null,
+          "summary": "Migration de la fiche Park et de son unique parkItem vers une fiche standalone masquée ; huit descriptions et données techniques."
+        },
+        {
+          "eventId": "photo-8af38d3a0845411c9da466b5e2da8a45",
+          "appliedAt": "2026-11-14T18:59:36.284Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+          "evidence": "PARK_DATA_EDITOR:photo:8af38d3a0845411c9da466b5e2da8a45",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-serlesblitz-mieders-20261114/audit.json",
+          "summary": "Migration de la fiche Park masquée vers Serlesblitz autonome, contenus en huit langues et photographie créditée."
+        },
+        {
+          "eventId": "image-a1a7b47c280046b98f20a8b7e226371a",
+          "appliedAt": "2026-11-14T20:07:41Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+          "evidence": "PARK_DATA_EDITOR:import-photo:a1a7b47c280046b98f20a8b7e226371a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-serlesblitz-mieders-20261114/audit.json",
+          "summary": "Deuxième photo identifiée explicitement Serleslifte, publiée en image principale"
+        }
+      ],
+      "nextAction": "Conserver les deux photographies et la source Serleslifte explicite ; la photo secondaire du Stubaital de 2007 est appuyée par le contexte historique mais peut encore être confirmée par son auteur. Vérifier tarif, calendrier de la saison 2027 et entrée exacte dès publication des données opérateur.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -4505,13 +5233,43 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13002.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tyrol — Serlesbahnen et luge de Mieders",
+          "url": "https://www.tirol.at/aktivitaeten/sport/wandern/bergbahnen/gondelbahn-serles",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Tourisme régional — Serlesblitz",
+          "url": "https://www.tirol.tl/de/freizeit-aktiv/schienen-rodelbahnen-flieger/sommerrodelbahn-mieders/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — luge du Stubaital",
+          "url": "https://commons.wikimedia.org/wiki/File:Brandauer_Schlitten.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Photo exacte Serleslifte — Wikipedia germanophone",
+          "url": "https://de.wikipedia.org/wiki/Datei:Transport_Schlitten_Serleslifte.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Mieders — piste de la vallée documentée en 2007",
+          "url": "https://www-openpr-de.b-cdn.net/news/133282/Keine-Langeweile-in-der-Ferienzeit-Der-Sommer-Club-Micky-Maus-im-Stubaital.html",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Elfercoaster — seconde piste ouverte en 2026",
+          "url": "https://presse.tirol.at/en/grand-opening-of-the-elfercoaster/291751/",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "AT",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Sommerrodelbahn Serlesblitz",
@@ -4524,7 +5282,30 @@
             "sourceOpenedYear": "2004"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration image-a1a7b47c280046b98f20a8b7e226371a ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/5dc707a1-e000-4966-a85a-0a41b893dbf8/serlesblitz-sommerrodelbahn-mieders",
+          "publishedAtUtc": "2026-11-14T19:00:29.2474956Z",
+          "verifiedAtUtc": "2026-11-14T19:01:53Z",
+          "evidence": "PARK_DATA_EDITOR:apply:80ae5971-c8e9-4f94-a4b0-4475d33c1150"
+        },
+        "facebook": {
+          "id": "a3c2e19c3dfc42a3ae964148c7e76dfb",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T19:01:26.9099545Z",
+          "externalPostId": "1285475681307050_122127360105424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127360105424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:a3c2e19c3dfc42a3ae964148c7e76dfb"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-at-serlesblitz-mieders-20261114/audit.json",
+        "score": 72,
+        "publicationBlockers": [],
+        "gapCount": 3
       }
     },
     {
@@ -4542,13 +5323,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche Park du domaine existante et masquée, contenant un seul élément Lauser Sauser ; standalone à billet propre publiée séparément le 1er novembre 2026. Identité du domaine Park encore à qualifier.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Fiche Park masquée conservée. Son élément Alpbachtaler Lauser Sauser possède désormais la fiche standalone publiée 212a52d7-6a44-4ef5-861d-2c6d644ed77a (AT-candidate-discovery-876a04accdc1dc). Qualifier séparément le domaine Ski Juwel comme Park, puis décider de conserver, migrer ou retirer la coquille Park sans publier deux fois le coaster.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -4569,6 +5350,16 @@
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=369#location-id-1971",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Alpbachtal Tourismus — Lauser-Sauser, billet propre et accès via le domaine",
+          "url": "https://www.alpbachtal.at/en/activitities/family-holidays/alpbachtaler-lauser-sauser",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Fiche standalone Lauser-Sauser publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/212a52d7-6a44-4ef5-861d-2c6d644ed77a/alpbachtaler-lauser-sauser",
+          "accessedAt": "2026-11-01"
         }
       ],
       "countryCodeAtInventory": "AT",
@@ -4975,7 +5766,7 @@
           "summary": "Audit final 88/100 sans blocage ; site et Facebook publiés."
         }
       ],
-      "nextAction": "Conserver la ligne ; trouver une photographie réutilisable de la piste, renouveler calendrier et prix après le 31 octobre 2026, puis contrôler les conditions exactes des carnets.",
+      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la ligne ; trouver une photographie réutilisable de la piste, renouveler calendrier et prix après le 31 octobre 2026, puis contrôler les conditions exactes des carnets. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5063,7 +5854,8 @@
         "score": 88,
         "publicationBlockers": [],
         "gapCount": 4
-      }
+      },
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
     },
     {
       "entryId": "AT-candidate-f6b80dea57a125",
@@ -6342,13 +7134,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche Park du domaine existante et masquée, contenant un ParkItem ; coaster à billet propre publié séparément le 1er novembre 2026. Identité du domaine Park encore à qualifier.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Fiche Park masquée conservée. Son élément Arena Coaster possède désormais une fiche standalone publiée a5f1a001-a685-45a5-99c3-f147dff1ff4a (AT-candidate-discovery-75e6998d61e541). Qualifier séparément le domaine Zillertal Arena comme Park, puis décider du sort de son ParkItem masqué sans publier deux fois le coaster.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -6374,6 +7166,16 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.zillertalarena.com",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Zillertal Arena — Arena Coaster et billet propre",
+          "url": "https://www.zillertalarena.com/winter/abseits-der-pisten/arena-coaster/",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Fiche standalone Arena Coaster publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/a5f1a001-a685-45a5-99c3-f147dff1ff4a/arena-coaster",
+          "accessedAt": "2026-11-01"
         }
       ],
       "countryCodeAtInventory": "AT",
@@ -6592,6 +7394,70 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "AT-candidate-discovery-dd51ae961c9499fa",
+      "name": "Sommerrodelbahn am Biberg",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été",
+      "locality": "Kehlbach 55, 5760 Saalfelden am Steinernen Meer",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-02",
+      "editorialStatus": "Blocked",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Saison 2026 terminée ; source régionale annonce une reprise à l’été 2027.",
+      "identityConfidence": "Piste de 1,6 km confirmée par deux offices de tourisme ; recherches officielles Park et Standalone sous Biberg, Saalfelden et Huggenberg sans fiche. Autonomie commerciale à confirmer.",
+      "possibleMatches": [],
+      "aliases": [
+        "Riesenrutsche Biberg",
+        "Sommerrodelbahn Saalfelden"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Trouver au moins une photo libre montrant la piste ou un véhicule exact (la seule photo Commons trouvée ne montre qu’un panneau). Confirmer les tarifs propres et l’autonomie auprès de l’exploitant avant création ; vérifier la réouverture estivale 2027. Aucune fiche site ni annonce Facebook créées.",
+      "sources": [
+        {
+          "label": "Saalfelden Leogang — fiche de la piste et adresse",
+          "url": "https://www.saalfelden-leogang.com/de/news-events/a-z/sommerrodelbahn-am-biberg_az_36967",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Hochkönig — fermeture de la saison 2026 et reprise annoncée en 2027",
+          "url": "https://www.hochkoenig.at/de/sommer/sommerbahnen/sommerrodelbahn-am-biberg-in-saalfelden.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo de panneau uniquement, insuffisante",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Biberg.jpg",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Recherche de pistes depuis Wikimedia Commons puis vérification dans les sources touristiques et dans le client officiel.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn am Biberg",
+            "source": "Saalfelden Leogang et Hochkönig",
+            "url": "https://www.saalfelden-leogang.com/de/news-events/a-z/sommerrodelbahn-am-biberg_az_36967",
+            "family": "Luge d’été",
+            "sourceVenueName": "Biberg",
+            "sourceLifecycleSignal": "2026 closed; reopening announced for summer 2027",
+            "sourceLocality": "Saalfelden"
+          }
+        ],
+        "rationale": "Piste durable documentée mais autonomie commerciale et photographie du parcours non établies ; aucun lancement de publication."
+      }
     }
   ]
 }

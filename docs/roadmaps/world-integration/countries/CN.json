@@ -3895,37 +3895,180 @@
     {
       "entryId": "CN-candidate-f6764cf6b6da95",
       "name": "Bay Glory",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Qianhai Bay , Shenzhen",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "OH Bay, Bao’an District, Shenzhen",
+      "siteId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T08:52:54.774Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Billetterie de la roue active sur Ctrip et horaires relevés en novembre 2026 ; maintenance et météo à vérifier.",
+      "identityConfidence": "Billetterie propre dans un complexe urbain côtier, sans doublon Park/Standalone sous noms anglais et chinois ; Happy Valley Shenzhen est distinct.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "湾区之光",
+        "灣區之光",
+        "OH Bay Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T08:48:41.975Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-07298569-fd9c-4506-b2a8-aab4997f3cd3",
+          "appliedAt": "2026-11-02T08:41:33.588Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:apply:07298569-fd9c-4506-b2a8-aab4997f3cd3",
+          "auditEvidence": null,
+          "summary": "Création masquée, identité, données techniques et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-aae121aa8f804eab87473c2a5286c235",
+          "appliedAt": "2026-11-02T08:42:28.513Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:image:aae121aa8f804eab87473c2a5286c235",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-78b605edc3d744de861dbeb67171b296",
+          "appliedAt": "2026-11-02T08:42:48.432Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:image:78b605edc3d744de861dbeb67171b296",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-1b3e95929f0a45b789ac7f4ef8aaf813",
+          "appliedAt": "2026-11-02T08:43:18.993Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:image:1b3e95929f0a45b789ac7f4ef8aaf813",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-1b83d05e-e550-46b1-8530-8062508f1eda",
+          "appliedAt": "2026-11-02T08:45:12.804Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:apply:1b83d05e-e550-46b1-8530-8062508f1eda",
+          "auditEvidence": null,
+          "summary": "Horaires habituels propres à la roue, relevés et datés"
+        },
+        {
+          "eventId": "apply-0dcb03c7-1963-4a2a-8ee0-f52c4e17a1b0",
+          "appliedAt": "2026-11-02T08:45:48.478Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:apply:0dcb03c7-1963-4a2a-8ee0-f52c4e17a1b0",
+          "auditEvidence": null,
+          "summary": "Début du montage en 2019 et ouverture en 2021 intégrés"
+        },
+        {
+          "eventId": "apply-237344d8-1ae0-4863-bc34-35afd4ca3e8f",
+          "appliedAt": "2026-11-02T08:48:41.975Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+          "evidence": "PARK_DATA_EDITOR:apply:237344d8-1ae0-4863-bc34-35afd4ca3e8f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-bay-glory-20261102/audit.json",
+          "summary": "Textes publics corrigés et validés par l’audit sans blocage"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier une grille tarifaire actuellement vendue sur la billetterie officielle, un lien public stable de l’exploitant et les changements d’horaires ; ne pas répéter l’annonce Facebook de cette intégration.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ville de Shenzhen — identité, dimensions et billetterie séparée",
+          "url": "https://www.sz.gov.cn/en_szgov/news/infocus/SZCitywalk/Explore/Attractions/content/post_11857080.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Shenzhen News — chantier et ouverture",
+          "url": "https://www.sznews.com/news/content/2021-04/19/content_24142193.htm",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Ctrip — horaires relevés le 2 novembre 2026",
+          "url": "https://you.ctrip.com/sight/shenzhen26/112647075.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikidata — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q105888901",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Bendibao — recherche tarifaire 2026, non publiée",
+          "url": "https://m.bendibao.com/show977707.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Bay_Glory_2022.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Bay_Glory_Shenzhen_(side)_2022-01-09.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Entrance_of_Bay_Glory_Shenzhen_2022-01-09.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Bay Glory",
+            "source": "Ville de Shenzhen — roue du complexe OH Bay",
+            "url": "https://www.sz.gov.cn/en_szgov/news/infocus/SZCitywalk/Explore/Attractions/content/post_11857080.html",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "OH Bay",
+            "sourceLifecycleSignal": "Billetterie et horaires consultables en 2026",
+            "sourceLocality": "Shenzhen",
+            "matchingMethod": "Roue fixe avec réservation et billet propres dans un complexe de parc côtier et de commerces, distincte d’un parc d’attractions structuré et sans fiche homonyme dans l’éditeur officiel."
+          }
+        ],
+        "rationale": "La roue possède un accès payant autonome ; le complexe OH Bay n’est pas un parc d’attractions structuré avec parkItems."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/471f2f0a-3175-487c-bd16-12d7b7fef942/bay-glory",
+          "publishedAtUtc": "2026-11-02T08:49:41.299Z",
+          "verifiedAtUtc": "2026-11-02T08:52:54.774Z",
+          "evidence": "PARK_DATA_EDITOR:apply:639a432c-671e-499b-85fd-b2dba8b6b94a"
+        },
+        "facebook": {
+          "id": "04fe59ad2b96482dbd8032fa6c3de5ba",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T08:50:56.287Z",
+          "externalPostId": "1285475681307050_122125704999424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125704999424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:04fe59ad2b96482dbd8032fa6c3de5ba"
+        }
       }
     },
     {
@@ -6590,37 +6733,185 @@
     {
       "entryId": "CN-candidate-6700528a88949c",
       "name": "Changsha Ferris Wheel",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Changsha , Hunan",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "He Long Stadium, Tianxin District, Changsha",
+      "siteId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T09:14:25.022Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Roue du stade He Long signalée encore active par la presse du Hunan le 20 octobre 2026 ; horaires Ctrip relevés le 2 novembre 2026.",
+      "identityConfidence": "Adresse et coordonnées du stade He Long corroborées ; recherches Park et Standalone en anglais, chinois et par ville sans doublon. Roue du parc des Martyrs distincte.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "星城之眼",
+        "长沙摩天轮",
+        "Star City Eye"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T09:09:59.737Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a75217e9-43b8-4619-a345-8cd06ebb70d4",
+          "appliedAt": "2026-11-02T09:01:04.194Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:a75217e9-43b8-4619-a345-8cd06ebb70d4",
+          "auditEvidence": null,
+          "summary": "Création masquée, identité, coordonnées, données techniques et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-407ea16f38cd4044b54f066034d49a44",
+          "appliedAt": "2026-11-02T09:03:59.067Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:image:407ea16f38cd4044b54f066034d49a44",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-6dc8ac1cd57e4c038db00ff72e9e2f07",
+          "appliedAt": "2026-11-02T09:04:27.934Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:image:6dc8ac1cd57e4c038db00ff72e9e2f07",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-0ef9d6ee47eb43d6a1e63de0ffef2ce6",
+          "appliedAt": "2026-11-02T09:04:43.718Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:image:0ef9d6ee47eb43d6a1e63de0ffef2ce6",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-bbbb6e25-a6ee-4124-a6f6-f730b823a57e",
+          "appliedAt": "2026-11-02T09:06:48.719Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:bbbb6e25-a6ee-4124-a6f6-f730b823a57e",
+          "auditEvidence": null,
+          "summary": "Horaires habituels propres à la roue, relevés le 2 novembre 2026"
+        },
+        {
+          "eventId": "apply-ba03d76c-3ad0-4706-a60b-17816831de09",
+          "appliedAt": "2026-11-02T09:07:12.128Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:ba03d76c-3ad0-4706-a60b-17816831de09",
+          "auditEvidence": null,
+          "summary": "Ouverture de 2004 intégrée à la chronologie"
+        },
+        {
+          "eventId": "apply-5867776a-f516-45db-b32e-7eca69a02729",
+          "appliedAt": "2026-11-02T09:09:35.853Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:5867776a-f516-45db-b32e-7eca69a02729",
+          "auditEvidence": null,
+          "summary": "Descriptions publiques réécrites après audit"
+        },
+        {
+          "eventId": "apply-e793bf6b-d019-4336-b173-25f4d115bfd8",
+          "appliedAt": "2026-11-02T09:09:59.737Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+          "evidence": "PARK_DATA_EDITOR:apply:e793bf6b-d019-4336-b173-25f4d115bfd8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-changsha-ferris-wheel-20261102/audit.json",
+          "summary": "Texte historique corrigé et données validées sans blocage"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Vérifier prix actuellement vendus, site de l’exploitant, horaires et photo récente exacte ; ne pas répéter la publication Facebook de cette intégration.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tourisme de Hunan — ouverture, dimensions et cabines",
+          "url": "https://whhlyt.hunan.gov.cn/whhlyt/news/wlyw/201909/t20190910_5480863.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Hunan Online — roue du stade toujours active en octobre 2026",
+          "url": "https://hunan.voc.com.cn/news/202610/34039313.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Ctrip — horaires de la roue relevés le 2 novembre 2026",
+          "url": "https://you.ctrip.com/sight/changsha148/1917827.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikidata — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q1414985",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Changsha_Ferris_Wheel_in_2007.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Changsha_Ferris_Wheel.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Changsha_Ferris_Wheel,_Picture4.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Changsha Ferris Wheel",
+            "source": "Tourisme de Hunan et presse locale",
+            "url": "https://whhlyt.hunan.gov.cn/whhlyt/news/wlyw/201909/t20190910_5480863.html",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "He Long Stadium",
+            "sourceLifecycleSignal": "Signalée active en octobre 2026",
+            "sourceLocality": "Changsha",
+            "matchingMethod": "Roue fixe avec billet propre sur le toit près du stade He Long, sans parc d’attractions parent ni fiche homonyme dans l’éditeur officiel."
+          }
+        ],
+        "rationale": "Billetterie propre près d’un stade urbain ; distincte du parc des Martyrs et de Window of the World."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0ce70d70-20be-4393-aaab-6d74d5aaf815/changsha-ferris-wheel",
+          "publishedAtUtc": "2026-11-02T09:11:47.071Z",
+          "verifiedAtUtc": "2026-11-02T09:14:25.022Z",
+          "evidence": "PARK_DATA_EDITOR:apply:3dc25bb0-99c3-4cf2-99c0-6204dc8cde2d"
+        },
+        "facebook": {
+          "id": "3a86a5d58362478e8145203fbbfa0f77",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T09:13:12.719Z",
+          "externalPostId": "1285475681307050_122125707525424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125707525424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:3a86a5d58362478e8145203fbbfa0f77"
+        }
       }
     },
     {
@@ -45664,37 +45955,185 @@
     {
       "entryId": "CN-candidate-64246c8ed83953",
       "name": "Star of Nanchang",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Nanchang , Jiangxi",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Ganjiang Citizen Park, Honggutan, Nanchang, Jiangxi",
+      "siteId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-01T18:09:14.482Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Fermeture temporaire pour rénovation dès le 2 novembre 2026, réouverture non annoncée.",
+      "identityConfidence": "Roue urbaine à billetterie propre, séparée du parc Nanchang Sunac Land ; aucun doublon Park/Standalone trouvé en anglais ou chinois ; trois photos exactes libres.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "南昌之星",
+        "南昌之星摩天轮",
+        "Nanchang Star"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-01T18:03:00.721Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-ac4b44b3-a8ee-4493-b0b0-8b1afe21cae4",
+          "appliedAt": "2026-11-01T17:52:29.465Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:ac4b44b3-a8ee-4493-b0b0-8b1afe21cae4",
+          "auditEvidence": null,
+          "summary": "Création masquée de la fiche, identité et huit descriptions"
+        },
+        {
+          "eventId": "image-4e4fce9a62ed49f682aa059a518f1b59",
+          "appliedAt": "2026-11-01T17:53:54.263Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:image:4e4fce9a62ed49f682aa059a518f1b59",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 importée avec auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-6ade4dfda7674e8daaef7aed4fde2d30",
+          "appliedAt": "2026-11-01T17:54:26.875Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:image:6ade4dfda7674e8daaef7aed4fde2d30",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 importée avec auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "image-24e518938903493d8b0e344f73b7aa2a",
+          "appliedAt": "2026-11-01T17:54:49.218Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:image:24e518938903493d8b0e344f73b7aa2a",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 importée avec auteur, licence et textes en huit langues"
+        },
+        {
+          "eventId": "apply-a536f2d6-63d7-4aec-8c3e-ce4ecfeace76",
+          "appliedAt": "2026-11-01T17:57:54.193Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:a536f2d6-63d7-4aec-8c3e-ce4ecfeace76",
+          "auditEvidence": null,
+          "summary": "Relecture des formulations de la chronologie multilingue"
+        },
+        {
+          "eventId": "apply-c4b6086b-60b0-413a-8187-71ce129e8047",
+          "appliedAt": "2026-11-01T17:59:45.330Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:c4b6086b-60b0-413a-8187-71ce129e8047",
+          "auditEvidence": null,
+          "summary": "Chronologie d’ouverture et annonce de suspension finalisées"
+        },
+        {
+          "eventId": "apply-8a74ea36-6229-492a-9bce-83422acbe43c",
+          "appliedAt": "2026-11-01T18:01:07.667Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:8a74ea36-6229-492a-9bce-83422acbe43c",
+          "auditEvidence": null,
+          "summary": "Description publique révisée en huit langues"
+        },
+        {
+          "eventId": "apply-0804cb91-fd89-49cc-becc-31f7b6e389b7",
+          "appliedAt": "2026-11-01T18:03:00.721Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+          "evidence": "PARK_DATA_EDITOR:apply:0804cb91-fd89-49cc-becc-31f7b6e389b7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-star-of-nanchang-20261101/audit.json",
+          "summary": "Descriptions finalisées ; données techniques conservées dans les champs structurés"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier régulièrement l’annonce officielle de réouverture, puis seulement actualiser statut, horaires et tarif. Ne pas répéter la publication Facebook de cette intégration.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Gouvernement de Honggutan — ouverture le 1er mai 2006",
+          "url": "https://hgt.nc.gov.cn/hgtqrmzf/hgtfm/202604/64b0ce1e49bd44f4afb01588d607af48.shtml",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Gouvernement de Honggutan — hauteur et identité",
+          "url": "https://hgt.nc.gov.cn/hgtqrmzf/mtjj/202512/c87863688858494aabd7f2d82c2f3c9a.shtml",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Communiqué de l’exploitant — fermeture temporaire dès le 2 novembre 2026",
+          "url": "https://jx.ifeng.com/c/8xaVt47BkfG",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikidata — coordonnées de la roue",
+          "url": "https://www.wikidata.org/wiki/Q201422",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Start_of_Nanchang_20241003.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Star_of_Nanchang_20160211_180155.jpg",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:StarOfNanchang20070718.jpg",
+          "accessedAt": "2026-11-01"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-01",
+        "attractions": [
+          {
+            "name": "Star of Nanchang",
+            "source": "Gouvernement de Honggutan — monument et billetterie distincts",
+            "url": "https://hgt.nc.gov.cn/hgtqrmzf/hgtfm/202604/64b0ce1e49bd44f4afb01588d607af48.shtml",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Ganjiang Citizen Park",
+            "sourceLifecycleSignal": "Fermeture temporaire annoncée dès le 2 novembre 2026",
+            "sourceLocality": "Nanchang",
+            "matchingMethod": "Roue à accès distinct au bord du fleuve ; pas de parc d’attractions structuré parent ni de correspondance dans l’éditeur officiel."
+          }
+        ],
+        "rationale": "Grande roue panoramique autonome sur la rive urbaine du Gan, distincte de Nanchang Sunac Land."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/69415b5a-ef3b-575b-83a0-17455d5ddeb0/star-of-nanchang",
+          "publishedAtUtc": "2026-11-01T18:05:34.129Z",
+          "verifiedAtUtc": "2026-11-01T18:09:14.482Z",
+          "evidence": "PARK_DATA_EDITOR:apply:9bace5d8-e066-4e6c-a631-bf8dd9fb31bc"
+        },
+        "facebook": {
+          "id": "caf0a4efb61349e781cfbf4deb853cc3",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T18:06:22.633Z",
+          "externalPostId": "1285475681307050_122125634811424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125634811424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:caf0a4efb61349e781cfbf4deb853cc3"
+        }
       }
     },
     {
@@ -46312,36 +46751,56 @@
       "entryId": "CN-candidate-d0abf5eaa3a54f",
       "name": "Suzhou Ferris Wheel",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Standalone à qualifier",
       "locality": "Suzhou , Jiangsu",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Parc d’origine fermé en septembre 2018 ; ancienne roue démontée lors du chantier 2022.",
+      "identityConfidence": "Ancienne roue du parc à thème fermé en 2018, démantelée lors du réaménagement ; la nouvelle roue Suzhou Eye est suivie par une autre ligne.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la référence historique de l’ancienne roue, attraction interne au parc fermé en 2018, hors créations standalone actuelles. Vérifier ultérieurement si un parkItem historique doit lui être rattaché à CN-park-3b3368be-ba47-4c83-b1d5-7b4a84289521 ; la Suzhou Eye reconstruite est publiée sur une ligne distincte.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — fermeture du parc en 2018",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-2226.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — démantèlement de l’ancienne roue",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-4168.html",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Suzhou Ferris Wheel (former installation)",
+            "source": "Jinji Lake Scenic Area — former park closure and wheel dismantling",
+            "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-4168.html",
+            "family": "Observation wheel",
+            "sourceVenueName": "Suzhou Giant Wheel Park",
+            "sourceLifecycleSignal": "Parc fermé 2018, ancienne roue démontée 2022",
+            "matchingMethod": "Ancienne roue dans un vrai parc ; autre installation que la Suzhou Eye de 2025."
+          }
+        ],
+        "rationale": "Référence de la roue historique d’un parc fermé, distincte de la nouvelle attraction autonome."
       }
     },
     {
@@ -46358,8 +46817,8 @@
       "editorialStatus": "ToIntegrate",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Suzhou Giant Wheel Park fermé en septembre 2018 ; ancienne roue démontée lors du réaménagement.",
+      "identityConfidence": "Fiche Park masquée de l’ancien parc fermé, distincte de la Suzhou Eye reconstruite et ouverte en 2025 ; le statut Operating hérité doit être rectifié.",
       "possibleMatches": [],
       "aliases": [
         "Ferris Wheel Paradise Suzhou, China"
@@ -46367,7 +46826,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver la fiche Park masquée et vérifier/corriger son statut Operating hérité vers la fermeture de 2018 via l’éditeur officiel. Qualifier ses anciens parkItems, notamment la roue et l’éventuel ballon captif ; ne pas fusionner ce Park historique avec la nouvelle Suzhou Eye standalone.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -46383,6 +46842,16 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — fermeture du parc en 2018",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-2226.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — démantèlement de l’ancienne roue",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-4168.html",
+          "accessedAt": "2026-11-02"
         }
       ],
       "countryCodeAtInventory": "CN",
@@ -47973,37 +48442,205 @@
     {
       "entryId": "CN-candidate-f981b50796e94c",
       "name": "Tianjin Eye",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Yongle Bridge, Tianjin",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "Yongle Bridge, Hebei District, Tianjin",
+      "siteId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T08:31:34.933Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Billetterie annoncée par l’exploitant en septembre 2026 ; horaires relevés en novembre 2026, à confirmer en cas d’intempéries.",
+      "identityConfidence": "Roue du pont Yongle à billet séparé, sans doublon Park/Standalone sous noms anglais et chinois ; distincte des parcs de Tianjin.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "天津之眼",
+        "天津之眼摩天轮",
+        "Yongle Bridge Ferris Wheel"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-02T08:23:22.632Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-fcec452f-0d95-4e41-b9de-42fb033a9691",
+          "appliedAt": "2026-11-02T08:16:53.984Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+          "evidence": "PARK_DATA_EDITOR:apply:fcec452f-0d95-4e41-b9de-42fb033a9691",
+          "auditEvidence": null,
+          "summary": "Création masquée, identité et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-c01e975de66a409c8b37c3152bd6982b",
+          "appliedAt": "2026-11-02T08:19:47.937Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+          "evidence": "PARK_DATA_EDITOR:image:c01e975de66a409c8b37c3152bd6982b",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-b1824bb62de5427cbcf33ee3fd78dfb4",
+          "appliedAt": "2026-11-02T08:21:04.157Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+          "evidence": "PARK_DATA_EDITOR:image:b1824bb62de5427cbcf33ee3fd78dfb4",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-85519d37bdb9492096d2d3aa0e3babde",
+          "appliedAt": "2026-11-02T08:21:21.870Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+          "evidence": "PARK_DATA_EDITOR:image:85519d37bdb9492096d2d3aa0e3babde",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "image-3bb36f051ff946e5aa330c3e93f621c1",
+          "appliedAt": "2026-11-02T08:21:39.017Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+          "evidence": "PARK_DATA_EDITOR:image:3bb36f051ff946e5aa330c3e93f621c1",
+          "auditEvidence": null,
+          "summary": "Photo exacte 4 importée avec licence, crédits et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-862100ae-b71c-4589-a6d7-e3106355a0cc",
+          "appliedAt": "2026-11-02T08:22:23.431Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+          "evidence": "PARK_DATA_EDITOR:apply:862100ae-b71c-4589-a6d7-e3106355a0cc",
+          "auditEvidence": null,
+          "summary": "Horaires hebdomadaires relevés et source datée intégrés"
+        },
+        {
+          "eventId": "apply-333e8dc0-4db1-4c0f-b81a-eaa509a7c204",
+          "appliedAt": "2026-11-02T08:22:58.119Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+          "evidence": "PARK_DATA_EDITOR:apply:333e8dc0-4db1-4c0f-b81a-eaa509a7c204",
+          "auditEvidence": null,
+          "summary": "Tarifs adultes officiels de jour et de soirée intégrés"
+        },
+        {
+          "eventId": "apply-171a8e9f-9857-4896-92cc-99c5d7a57b79",
+          "appliedAt": "2026-11-02T08:23:22.632Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+          "evidence": "PARK_DATA_EDITOR:apply:171a8e9f-9857-4896-92cc-99c5d7a57b79",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-tianjin-eye-20261102/audit.json",
+          "summary": "Ouverture de 2009 et renouvellement des cabines de 2023 intégrés ; audit final sans blocage"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier les annonces du WeChat officiel pour les horaires et tarifs ; chercher une URL publique stable de l’exploitant. Ne pas répéter l’annonce Facebook de cette intégration.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ville de Tianjin — identité et cadre",
+          "url": "https://www.tj.gov.cn/sq/yztj/jqjs/202005/t20200520_2467986.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Ville de Tianjin — dimensions",
+          "url": "https://www.tj.gov.cn/sq/yztj/jgtp/202005/t20200520_2468039.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Bibliothèque de Tianjin — ouverture et renouvellement",
+          "url": "https://www.tjl.tj.cn/ArticleContent.aspx?ChannelId=241&ID=25268",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Annonce opérateur — tarifs applicables depuis avril 2026",
+          "url": "https://news.enorth.com.cn/system/2026/04/17/059327095.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Annonce opérateur — billets des vacances d’octobre 2026",
+          "url": "https://finance.sina.com.cn/jjxw/2026-09-25/doc-inisyywc4607763.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Ctrip — horaires relevés le 2 novembre 2026",
+          "url": "https://you.ctrip.com/sight/tianjin154/56364.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikidata — coordonnées",
+          "url": "https://www.wikidata.org/wiki/Q750548",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:%E5%A4%A9%E6%B4%A5%E4%B9%8B%E7%9C%BCfrom%E9%87%91%E5%88%9A%E6%A1%A5.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:%E5%A4%A9%E6%B4%A5%E4%B9%8B%E7%9C%BCTianjin_Eye.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:%E5%A4%A9%E6%B4%A5%E4%B9%8B%E7%9C%BC%E8%88%AA%E6%8B%8D_DJI_0042.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 4",
+          "url": "https://commons.wikimedia.org/wiki/File:Tianjin_Eye_11.jpg",
+          "accessedAt": "2026-11-02"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Tianjin Eye",
+            "source": "Ville de Tianjin — roue du pont Yongle",
+            "url": "https://www.tj.gov.cn/sq/yztj/jqjs/202005/t20200520_2467986.html",
+            "family": "Grande roue panoramique",
+            "sourceVenueName": "Yongle Bridge",
+            "sourceLifecycleSignal": "Billetterie active annoncée en 2026",
+            "sourceLocality": "Tianjin",
+            "matchingMethod": "Roue sur pont public avec billetterie propre, distincte d’un parc d’attractions et sans correspondance dans l’éditeur officiel."
+          }
+        ],
+        "rationale": "Grande roue urbaine sur le pont Yongle, accès séparé et aucun parc d’attractions structuré parent."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/8f7f349b-4e1d-5e92-b9a3-dca866363537/tianjin-eye",
+          "publishedAtUtc": "2026-11-02T08:28:04.113Z",
+          "verifiedAtUtc": "2026-11-02T08:31:34.933Z",
+          "evidence": "PARK_DATA_EDITOR:apply:c285ab8e-161e-4d90-8fee-27d1c40ee23b"
+        },
+        "facebook": {
+          "id": "4647250a607745bf90892a11e96ccc9f",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T08:29:10.770Z",
+          "externalPostId": "1285475681307050_122125702827424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125702827424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:4647250a607745bf90892a11e96ccc9f"
+        }
       }
     },
     {
@@ -60282,6 +60919,181 @@
       ],
       "countryCodeAtInventory": "CN",
       "countryResolution": null
+    },
+    {
+      "entryId": "CN-candidate-standalone-f04450aa802ebfe6",
+      "name": "Suzhou Eye",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Grande roue panoramique",
+      "locality": "Jinji Lake right bank, Suzhou, Jiangsu",
+      "siteId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-02T10:12:04.193Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Nouvelle roue ouverte en mars 2025 ; exploitation confirmée par le comité du parc industriel de Suzhou en septembre 2026.",
+      "identityConfidence": "Roue reconstruite de la rive droite avec billet propre ; le parc masqué est l’ancien parc fermé en 2018. Aucune fiche Standalone homonyme trouvée par l’éditeur officiel.",
+      "possibleMatches": [],
+      "aliases": [
+        "苏州之眼",
+        "苏州之眼摩天轮",
+        "Suzhou’s Eye",
+        "Eye of Suzhou"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-02T10:06:44.239Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a2b6a52f-4cb3-4167-baf7-13347c4a7112",
+          "appliedAt": "2026-11-02T10:01:44.780Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:apply:a2b6a52f-4cb3-4167-baf7-13347c4a7112",
+          "auditEvidence": null,
+          "summary": "Création masquée de la roue actuelle, identité, dimensions et huit descriptions localisées"
+        },
+        {
+          "eventId": "image-5784cdd1934b458f97e9d629ccb3bae6",
+          "appliedAt": "2026-11-02T10:02:54.720Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:image:5784cdd1934b458f97e9d629ccb3bae6",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 de la nouvelle roue, datée avant ouverture, importée avec licence et légendes en huit langues"
+        },
+        {
+          "eventId": "image-4a5316339d3d44d89a8bf931e6de1320",
+          "appliedAt": "2026-11-02T10:03:12.569Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:image:4a5316339d3d44d89a8bf931e6de1320",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 de la nouvelle roue, datée avant ouverture, importée avec licence et légendes en huit langues"
+        },
+        {
+          "eventId": "apply-e15ac5af-4cb5-4347-a2f2-62b0e08c00aa",
+          "appliedAt": "2026-11-02T10:04:14.425Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:apply:e15ac5af-4cb5-4347-a2f2-62b0e08c00aa",
+          "auditEvidence": null,
+          "summary": "Ouverture publique de mars 2025 intégrée à la chronologie"
+        },
+        {
+          "eventId": "apply-e3e85145-7d50-4723-8289-c844a9c3a441",
+          "appliedAt": "2026-11-02T10:06:04.394Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:apply:e3e85145-7d50-4723-8289-c844a9c3a441",
+          "auditEvidence": null,
+          "summary": "Adresse vérifiée auprès de l’office de tourisme de Suzhou"
+        },
+        {
+          "eventId": "apply-26384a41-c52f-4842-9fac-c2001c2f1976",
+          "appliedAt": "2026-11-02T10:06:44.239Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+          "evidence": "PARK_DATA_EDITOR:apply:26384a41-c52f-4842-9fac-c2001c2f1976",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-cn-suzhou-eye-20261102/audit.json",
+          "summary": "Source primaire de la fermeture de l’ancien parc ajoutée à la chronologie"
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Vérifier horaires, tarifs et maintenance de fin 2026 dans le mini-programme officiel, rechercher des photos sous licence postérieures à l’ouverture. Ne pas recréer la roue historique du parc fermé ni répéter la publication Facebook.",
+      "sources": [
+        {
+          "label": "Suzhou Industrial Park — ouverture de la nouvelle roue",
+          "url": "https://www.sipac.gov.cn/szgyyqenglish/tourism/202504/858d9d83612948dc87b0f825db1536fa.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Suzhou Industrial Park — installation et caractéristiques",
+          "url": "https://www.sipac.gov.cn/szgyyqenglish/News/202504/23f0a78bc0ac467da25275a4aaa5cb7e.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Suzhou Industrial Park — exploitation en septembre 2026",
+          "url": "https://www.sipac.gov.cn/szgyyq/202609shjnhmtijj/202609/b0e746e044e84301aae13f83220ded6e.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — fermeture de l’ancien parc",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-2226.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Jinji Lake Scenic Area — démantèlement de l’ancienne roue",
+          "url": "https://jinjilake.sipac.gov.cn/zuixinzixun_article-342-4168.html",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Suzhou Tourism — adresse",
+          "url": "https://visitsz.wglj.suzhou.com.cn/news-detail.aspx?id=2731",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "OpenStreetMap via Mapcarta — coordonnées",
+          "url": "https://mapcarta.com/W1332906658",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Suzhou Industrial Park — billetterie dans le mini-programme",
+          "url": "https://www.sipac.gov.cn/szgyyqenglish/tourism/202503/f42fd82df05c403582cb2c25b51d99cc.shtml",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — nouvelle roue, photo historique 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Suzhou_ferris_wheel-20241004.jpg",
+          "accessedAt": "2026-11-02"
+        },
+        {
+          "label": "Wikimedia Commons — nouvelle roue, photo historique 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Suzhou_ferris_wheel_and_other_buildings-20241004.jpg",
+          "accessedAt": "2026-11-02"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-02",
+        "attractions": [
+          {
+            "name": "Suzhou Eye",
+            "source": "Suzhou Industrial Park Administrative Committee — billetterie propre",
+            "url": "https://www.sipac.gov.cn/szgyyqenglish/tourism/202503/f42fd82df05c403582cb2c25b51d99cc.shtml",
+            "family": "Observation wheel",
+            "sourceVenueName": "Jinji Lake right bank",
+            "sourceLifecycleSignal": "Exploitation 2026 confirmée",
+            "sourceLocality": "Suzhou Industrial Park, Jiangsu",
+            "matchingMethod": "Roue actuelle remplaçant l’ancienne installation du parc fermé ; vente de billets dans un mini-programme dédié."
+          }
+        ],
+        "rationale": "Roue panoramique avec billet propre au sein du nouveau quartier riverain ; ancien parc d’attractions fermé et conservé séparément."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/86a4c0a1-c37e-4dc3-8a10-e8b34773ff18/suzhou-eye",
+          "publishedAtUtc": "2026-11-02T10:07:21.834Z",
+          "verifiedAtUtc": "2026-11-02T10:12:04.193Z",
+          "evidence": "PARK_DATA_EDITOR:apply:3504724e-038e-4b74-9ebc-6447a0de296d"
+        },
+        "facebook": {
+          "id": "90514bc3ceaa4fcebfe2da3877e56c58",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T10:08:34.624Z",
+          "externalPostId": "1285475681307050_122125712565424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125712565424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:90514bc3ceaa4fcebfe2da3877e56c58"
+        }
+      }
     }
   ]
 }

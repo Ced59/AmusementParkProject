@@ -1,0 +1,115 @@
+{
+  "name": "E-DA Ferris Wheel",
+  "entryId": "TW-candidate-a2cafea4bad92a",
+  "standaloneAttractionId": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+  "qualification": "Roue panoramique à billet propre sur le toit de la galerie E-DA, hors parc à thème E-DA dont une fiche Park masquée existe.",
+  "decision": "Published",
+  "score": 91,
+  "publicationBlockers": [],
+  "coverage": {
+    "languages": 8,
+    "ownPhotos": 3,
+    "admissionOffers": 3,
+    "weeklyRules": 1,
+    "historyEvents": 0
+  },
+  "remainingGaps": [
+    "Les fermetures de maintenance et jours spéciaux doivent être vérifiés dans les annonces du jour."
+  ],
+  "sources": [
+    {
+      "label": "E-DA World — présentation officielle de la roue",
+      "url": "https://www.edaworld.com.tw/spots/ferriswheel"
+    },
+    {
+      "label": "E-DA Theme Park — prix de la roue, bracelet et horaires",
+      "url": "https://www.edathemepark.com.tw/Info"
+    },
+    {
+      "label": "E-DA Outlet Mall — roue sur le toit de la zone A",
+      "url": "https://www.edamall.com.tw/custom-page/page/4?lang=en"
+    },
+    {
+      "label": "E-DA Outlet Mall — adresse de la galerie",
+      "url": "https://www.edamall.com.tw/?lang=en"
+    },
+    {
+      "label": "OpenStreetMap / Nominatim — galerie E-DA",
+      "url": "https://www.openstreetmap.org/search?query=E-DA%20Outlet%20Mall%20Kaohsiung"
+    },
+    {
+      "label": "Wikimedia Commons — E-DA Ferris Wheel, photo 1",
+      "url": "https://commons.wikimedia.org/wiki/File:%E7%BE%A9%E5%A4%A7%E4%B8%96%E7%95%8C%E6%91%A9%E5%A4%A9%E8%BC%AA%E5%85%A7%E9%83%A8.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — E-DA Ferris Wheel, photo 2",
+      "url": "https://commons.wikimedia.org/wiki/File:E-Da_Outlet_Mall_ferris_wheel_20130228.jpg"
+    },
+    {
+      "label": "Wikimedia Commons — E-DA Ferris Wheel, photo 3",
+      "url": "https://commons.wikimedia.org/wiki/File:EDOM_ferris_wheel_20140831_night.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "e175173f8ca64990b21dcbb8ef6595e6",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%BE%A9%E5%A4%A7%E4%B8%96%E7%95%8C%E6%91%A9%E5%A4%A9%E8%BC%AA%E5%85%A7%E9%83%A8.jpg",
+      "author": "菜國人",
+      "date": "2026-03-18",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "subject": "Cabine et structure illuminée vues pendant un trajet",
+      "transformation": "vignette Wikimedia Commons ou original, sans recadrage"
+    },
+    {
+      "imageId": "c47e6f21189e4c3d9f2ebb09210aec41",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:E-Da_Outlet_Mall_ferris_wheel_20130228.jpg",
+      "author": "pan vanessa",
+      "date": "2013-02-28",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "subject": "Vue complète de la roue depuis la place du centre commercial",
+      "transformation": "vignette Wikimedia Commons ou original, sans recadrage"
+    },
+    {
+      "imageId": "bf218273be97446da9c26cfead0eb042",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:EDOM_ferris_wheel_20140831_night.jpg",
+      "author": "ilottoe",
+      "date": "2014-08-31",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "subject": "Éclairage rose de la roue au-dessus de l’Outlet Mall",
+      "transformation": "vignette Wikimedia Commons ou original, sans recadrage"
+    }
+  ],
+  "audit": {
+    "prepublicationExportSha256": "6167565e028280c88e3bc86ba66a9d3de2a660f292186a2d87abac532d07aceb",
+    "projectedScore": 91,
+    "projectedBlockers": [],
+    "publicPageCheckedAtUtc": "2026-11-01T11:20:29.083Z",
+    "publicPageStatus": 200,
+    "publicPageIncludesOwnPhotos": true,
+    "publicImageHttpStatuses": [
+      200,
+      200,
+      200
+    ],
+    "lastDataIntegrationAtUtc": "2026-11-01T11:17:04.343Z",
+    "photosPublishedAtUtc": "2026-11-01T11:17:58.245Z",
+    "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:62906e78-976b-4c2b-86cd-b338dbcd6d4e"
+  },
+  "publication": {
+    "site": {
+      "url": "https://amusement-parks.fun/fr/attraction/82c5548b-c0bd-4418-9aba-e567f15895b5/e-da-ferris-wheel",
+      "publishedAtUtc": "2026-11-01T11:18:42.856Z",
+      "applyOperationId": "8a23f464-a10c-486f-b40c-4a374d061dbd"
+    },
+    "facebook": {
+      "id": "26681e095403423cbc583d8ede304e04",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-01T11:19:29.250Z",
+      "externalPostId": "1285475681307050_122125595481424431",
+      "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125595481424431"
+    }
+  }
+}

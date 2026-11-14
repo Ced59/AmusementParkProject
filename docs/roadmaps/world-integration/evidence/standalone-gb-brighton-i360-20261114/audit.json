@@ -1,0 +1,113 @@
+{
+  "work": "Created a standalone page for the moving Brighton i360 observation pod. Confirmed current operator site, location, opening calendar, standard adult View 360 fare, accessibility and trip duration; searched official Park and StandaloneAttraction catalogues; imported two exact, visually inspected licensed photographs; verified eight public pages and image binaries; published Facebook.",
+  "qualification": "Permanent, independently ticketed moving observation tower on Brighton seafront. Brighton Pier is a distinct park and not its parent.",
+  "sources": {
+    "operator": "https://www.brightoni360.co.uk/",
+    "operatorExperience": "https://www.brightoni360.co.uk/experiences/see-brighton-from-above",
+    "operatorPlan": "https://www.brightoni360.co.uk/plan-your-visit",
+    "operatorFaq": "https://www.brightoni360.co.uk/faqs",
+    "operatorGroup": "https://www.nightcapvenues.com/venues/brighton-i360",
+    "commonsPod": "https://commons.wikimedia.org/wiki/File:Brighton_i360_with_the_moon_2025-07-02.jpg",
+    "commonsTower": "https://commons.wikimedia.org/wiki/File:Brighton_i360_-_Brighton_-_England_2024.jpg"
+  },
+  "duplicateSearches": {
+    "standaloneI360": 0,
+    "standaloneBrighton": 0,
+    "parkI360": 0,
+    "parkBrightonI360": 0,
+    "parkBrighton": "Brighton Pier found, separate location"
+  },
+  "entity": {
+    "id": "e5307935-8773-462a-bf3d-7c0061615b31",
+    "name": "Brighton i360",
+    "kind": "StandaloneAttraction",
+    "countryCode": "GB",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "06534d23-8761-404c-880d-06125f9b455c",
+      "appliedAtUtc": "2026-11-14T20:15:23.5008304Z",
+      "summary": "Created hidden standalone with address, coordinates and eight descriptions."
+    },
+    {
+      "imageId": "2ae3e3924b22476ea32370bb6535ef02",
+      "createdAtUtc": "2026-11-14T20:16:02Z",
+      "summary": "Imported exact Brighton i360 pod photograph under CC0."
+    },
+    {
+      "imageId": "c03b2647645c4723b2df67af838ad8fe",
+      "createdAtUtc": "2026-11-14T20:16:25Z",
+      "summary": "Imported exact full tower photograph under CC BY-SA 4.0."
+    },
+    {
+      "operationId": "6718d087-a531-4f77-a3d6-aea84d57028d",
+      "appliedAtUtc": "2026-11-14T20:19:11.2007608Z",
+      "summary": "Revised eight public descriptions and added structured status, height, duration and accessibility."
+    },
+    {
+      "operationId": "423d5951-8ca0-4dbc-9176-df019b00aa2f",
+      "appliedAtUtc": "2026-11-14T20:20:45.1697845Z",
+      "summary": "Added current adult View 360 advertised minimum fare as dynamic price."
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "2ae3e3924b22476ea32370bb6535ef02",
+      "subject": "Actual Brighton i360 glass pod on tower",
+      "author": "Andy Li",
+      "license": "CC0 1.0",
+      "captureDate": "2025-07-02",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "c03b2647645c4723b2df67af838ad8fe",
+      "subject": "Actual Brighton i360 full tower and seafront",
+      "author": "José Luiz",
+      "license": "CC BY-SA 4.0",
+      "captureDate": "2024-06-25",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "pricingDecision": "Operator advertises standard View 360 adult aged 16+ at GBP 20.50 on experience page checked 2026-11-14. Mode Dynamic minimumAmount because final checkout price and time slot should be verified before payment. No stale child tariff entered.",
+    "hoursDecision": "Operator opening-times page generic weekly pod schedule conflicts with dated November plan-your-visit calendar. No evergreen weekly hours entered; visitors directed to live booking calendar.",
+    "accessibility": "Step-free pod; up to four wheelchairs per ride; lithium-powered wheelchair restriction and companion ticket on operator FAQ.",
+    "tripDuration": "Operator gives 25 minutes; request arrival 20 minutes ahead of booked slot."
+  },
+  "audit": {
+    "completenessScore": 79,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/e5307935-8773-462a-bf3d-7c0061615b31/brighton-i360",
+    "sitePublishedAtUtc": "2026-11-14T20:21:37.9879244Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:d147a9b0-befb-42ba-a0f2-860e7b971bb8",
+    "facebookStatus": "Published",
+    "facebookId": "3fb63aa4f8464b3989a341c02e8de18e",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127368421424431",
+    "facebookPublishedAtUtc": "2026-11-14T20:22:34.7231239Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T20:20:45.169Z",
+  "remainingGaps": [
+    "Check dated pod opening slots and temporary closures on next refresh before entering structured hours.",
+    "Confirm the checkout price for a selected visit date and add child tariff if verified."
+  ]
+}

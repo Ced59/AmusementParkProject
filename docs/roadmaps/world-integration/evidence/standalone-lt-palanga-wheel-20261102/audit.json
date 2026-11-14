@@ -1,0 +1,106 @@
+{
+  "work": "Palangos apžvalgos ratas has its own Rota Fortuna operator and ticket shop, although located on the Palangos vasaros parkas leisure-complex parcel. Official editor searches for Palanga, Palangos vasaros parkas, Palanga Sky Wheel and its Lithuanian name found no Park or Standalone record. Municipal tourism and operator sources document opening in May 2022 and operation year-round. September 2026 reporting confirms operation, and local reporting quotes the construction inspectorate saying the land-use issue was resolved in June 2026. Created and published a standalone record with eight authored descriptions, official live ticket-shop weekly hours and one exact inspected Commons photo. Site and Facebook are published.",
+  "qualification": "Wheel in a leisure complex but managed by a distinct operator with its own public booking and admission; no structured parent Park record in the official editor.",
+  "sources": {
+    "operator": "https://palangosapzvalgosratas.lt/",
+    "ticketShop": "https://bilietai.palangosapzvalgosratas.lt/",
+    "tourism": "https://www.visit-palanga.lt/lankytinos-vietos/apzvalgos-ratas-palangoje/",
+    "opening": "https://www.visit-palanga.lt/naujiena/palanga-turistus-pasitinka-naujiena-auksciausias-apzvalgos-ratas-lietuvoje-veiksiantis-istisus-metus/",
+    "coordinates": "https://www.krastogidas.lt/objektai/apzvalgos-ratas?route=17638",
+    "planningResolution": "https://www.palangostiltas.lt/naujienos/po-detaliojo-plano-korekcijos-statybu-inspekcija-paliko-palangos-apzvalgos-rato-valdytojus-ramybeje-23983",
+    "operationSeptember2026": "https://www.15min.lt/naujiena/aktualu/lietuva/palangoje-apzvalgos-ratas-ne-sezono-metu-sukasi-pustustis-suaugusiojo-bilietas-pigesnis-nei-bus-kaune-56-2767348"
+  },
+  "commercialData": {
+    "openingHours": "Live Rota Fortuna ticket shop checked 2026-11-02: Sunday–Thursday 11:00–20:00, Friday–Saturday 11:00–21:00, explicitly weather dependent. The tourism page has an older generic 10:00–22:00 figure; the current ticket shop takes precedence.",
+    "pricing": "Operator homepage says tickets from EUR 10; a September 2026 report describes an off-season EUR 10 standard ticket and family products. No single fixed current price was published because from-price and seasonality cannot be represented accurately by a fixed offer without confirming the checkout product."
+  },
+  "dataReceipts": [
+    {
+      "operationId": "f23bf4de-c621-403a-91e6-e292b6de2bdb",
+      "appliedAtUtc": "2026-11-02T09:23:15.054Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "1c22cab3-78e9-4a8b-bbe1-96475bed5083",
+      "appliedAtUtc": "2026-11-02T09:25:24.485Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "dacbdc38-b261-478e-89fe-93e1e94498f6",
+      "appliedAtUtc": "2026-11-02T09:26:09.003Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "d7233b56d29c48af97636b2add3df6bd",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Palanga,_ap%C5%BEvalgos_ratas.jpg",
+      "author": "Terminator216",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2022-07-27",
+      "ownerId": "1b45ed19-a646-4433-8b99-cd623bc0e39f",
+      "published": true,
+      "isCurrent": true,
+      "publishedAtUtc": "2026-11-02T09:24:13.495Z"
+    }
+  ],
+  "audit": {
+    "score": 86,
+    "earnedPoints": 60,
+    "applicableMaxPoints": 70,
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 1,
+    "visibleHistoryEvents": 1,
+    "knownScoringGaps": "A current fixed ticket grid was not verified at checkout; only a public starting price is available. The sole exact reusable image is dated 2022."
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/1b45ed19-a646-4433-8b99-cd623bc0e39f/palangos-apzvalgos-ratas",
+    "sitePublishedAtUtc": "2026-11-02T09:27:29.525Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:a3eb0677-2092-4d5e-91c6-3b905a05107a",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "2400f068437a4efbad08b69074d5779e",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125709019424431",
+    "facebookPublishedAtUtc": "2026-11-02T09:28:59.005Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T09:26:09.003Z",
+  "remainingGaps": [
+    "Verify a fixed current checkout product or add a price model that can explicitly represent a seasonal starting price.",
+    "Recheck weather-dependent hours on the operator ticket shop.",
+    "Look for newer exact reusable photographs; retain the 2022 date until then."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "parkEditorAccess": {
+    "title": "Park data editor access",
+    "description": "Create a token for this Codex session. Your browser will encrypt it before you copy it.",
+    "keyLabel": "Public key supplied by Codex",
+    "keyHelp": "Paste the complete public key received in this conversation.",
+    "create": "Create and encrypt token",
+    "creating": "Creating…",
+    "packageLabel": "Encrypted package for Codex",
+    "packageHelp": "Copy this package into the conversation. Never share your password or the raw token.",
+    "copy": "Copy package",
+    "copied": "Package copied",
+    "invalidKey": "The public key is invalid or encryption is unavailable. No token was created.",
+    "createFailed": "Token creation failed. Check your connection and try again.",
+    "revokeFailed": "Encryption failed and the token could not be revoked. Revoke it from token management.",
+    "copyFailed": "Copy failed. Select and copy the package manually."
+  }
+}

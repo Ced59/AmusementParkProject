@@ -13,7 +13,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 6 |
-| À qualifier | 5 |
+| À qualifier | 6 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 0 |
@@ -25,17 +25,18 @@ Couverture : **Pistes sourcées ; compléments locaux requis**. Observations ext
 
 Pays proposé par rapprochement pour **6** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **0 publiés**, **6 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **4 candidats sans fiche**.
+Parcs : **0 publiés**, **6 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **5 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **1 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **1 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
 | ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| KE-candidate-6e9ba4d1a7edbe | Eye of Kenya | Nairobi, Kenya | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
+| KE-candidate-6e9ba4d1a7edbe | Eye of Kenya | Nairobi, Kenya | À qualifier ; proposé : ToQualify | NotFound | À qualifier | Inconnue — non inventée | — | Intégrer l’Eye of Kenya comme parkItem du futur dossier Funscapes Two Rivers Theme Park ; ne pas créer de fiche standalone distincte. Conserver cette piste de découverte et le lien vers le parc. Qualification standalone : InsidePark. L’exploitant décrit un vrai parc extérieur à plusieurs manèges et situe la grande roue dans ce parc. Cette roue relève donc d’un parkItem du parc à créer, sans fiche standalone supplémentaire. Installations référencées : Eye of Kenya. Signal source : Attraction en fonctionnement dans Funscapes Two Rivers Theme Park selon l’exploitant.. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) · [Exploitant Funscapes — parc extérieur et attractions](https://funscapesgroup.com/about-us/) · [Exploitant Funscapes — horaires et accès au parc](https://funscapesgroup.com/faqs/) |
+| KE-candidate-discovery-7f5bd0e2a1c4ad | Funscapes Two Rivers Theme Park | Two Rivers, Nairobi | Park | NotFound | À qualifier | Inconnue — non inventée | — | Créer la fiche Park après qualification complète des données officielles ; y rattacher Eye of Kenya comme parkItem et vérifier les autres attractions. Coordonner avec la piste KE-candidate-6e9ba4d1a7edbe. Aucune intégration de données effectuée à ce stade. Signal source : Operating : site officiel actif, horaires quotidiens publiés par l’exploitant.. [Exploitant Funscapes — parc extérieur et attractions](https://funscapesgroup.com/about-us/) · [Exploitant Funscapes — horaires et accès au parc](https://funscapesgroup.com/faqs/) · [Exploitant Funscapes — accueil](https://funscapesgroup.com/) |
 | KE-park-0b6ecf15-8d39-477c-a713-9d2e9a95123c | Funworld Amusement Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/20592.htm) |
 | KE-candidate-4f83864295f9ad | Haller Park | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Kenya) |
 | KE-candidate-71f924a39f5bd1 | Luna Park | Nairobi | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Africa#Kenya) |

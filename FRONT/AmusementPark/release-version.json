@@ -1,6 +1,76 @@
 {
-  "version": "6.0.33",
+  "version": "6.0.38",
   "history": [
+    {
+      "version": "6.0.38",
+      "releasedAt": "2026-11-14",
+      "labels": {
+        "fr": "Fiabilité du déploiement renforcée",
+        "en": "More reliable deployments",
+        "de": "Zuverlässigere Bereitstellungen",
+        "nl": "Betrouwbaardere implementaties",
+        "it": "Distribuzioni più affidabili",
+        "es": "Despliegues más fiables",
+        "pl": "Bardziej niezawodne wdrożenia",
+        "pt": "Implementações mais fiáveis"
+      }
+    },
+    {
+      "version": "6.0.37",
+      "releasedAt": "2026-11-14",
+      "labels": {
+        "fr": "Fiabilité des outils de données améliorée",
+        "en": "Improved data tools reliability",
+        "de": "Zuverlässigere Datenwerkzeuge",
+        "nl": "Betrouwbaardere gegevenshulpmiddelen",
+        "it": "Maggiore affidabilità degli strumenti per i dati",
+        "es": "Mayor fiabilidad de las herramientas de datos",
+        "pl": "Większa niezawodność narzędzi danych",
+        "pt": "Maior fiabilidade das ferramentas de dados"
+      }
+    },
+    {
+      "version": "6.0.36",
+      "releasedAt": "2026-11-14",
+      "labels": {
+        "fr": "Accès sécurisé aux outils de données",
+        "en": "Secure access to data tools",
+        "de": "Sicherer Zugang zu Datenwerkzeugen",
+        "nl": "Veilige toegang tot gegevenshulpmiddelen",
+        "it": "Accesso sicuro agli strumenti per i dati",
+        "es": "Acceso seguro a las herramientas de datos",
+        "pl": "Bezpieczny dostęp do narzędzi danych",
+        "pt": "Acesso seguro às ferramentas de dados"
+      }
+    },
+    {
+      "version": "6.0.35",
+      "releasedAt": "2026-11-14",
+      "labels": {
+        "fr": "Fiabilité du déploiement améliorée",
+        "en": "Improved deployment reliability",
+        "de": "Zuverlässigkeit der Bereitstellung verbessert",
+        "nl": "Betrouwbaardere implementatie",
+        "it": "Affidabilità della distribuzione migliorata",
+        "es": "Mayor fiabilidad del despliegue",
+        "pl": "Większa niezawodność wdrażania",
+        "pt": "Fiabilidade da implementação melhorada"
+      }
+    },
+    {
+      "version": "6.0.34",
+      "releasedAt": "2026-10-28",
+      "labels": {
+        "fr": "Galerie photo des attractions isolées améliorée",
+        "en": "Improved standalone attraction photo galleries",
+        "de": "Verbesserte Fotogalerien eigenständiger Attraktionen",
+        "nl": "Verbeterde fotogalerijen van losstaande attracties",
+        "it": "Gallerie fotografiche delle attrazioni indipendenti migliorate",
+        "es": "Galerías de fotos de atracciones independientes mejoradas",
+        "pl": "Ulepszone galerie zdjęć samodzielnych atrakcji",
+        "pt": "Galerias de fotografias das atrações independentes melhoradas"
+      }
+    },
     {
       "version": "6.0.33",
       "releasedAt": "2026-10-28",

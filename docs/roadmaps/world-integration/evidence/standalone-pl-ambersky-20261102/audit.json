@@ -1,0 +1,103 @@
+{
+  "work": "The manufacturer states that the original AmberSky wheel was dismantled and replaced with a new 53 m wheel of 30 twelve-person gondolas, opened May 2026. The operator separately sells tickets at Ołowianka 1 and confirms accessible cabins. Five official-editor duplicate searches found no AmberSky or Amber Sky record; the unrelated hidden Majaland park in Gdańsk was not used. Eight official current PLN price categories were imported. Operator About page also contains a conflicting stale sentence calling gondolas six-person and gives a 60 m elevation above sea level; manufacturer and operator summary support twelve persons and 53 m structure height. A September 2026 Commons photo of the replacement wheel was visually checked and published. No dependable seasonal operating calendar was found, so no hours were invented. Eight locale site pages and photo binary returned HTTP 200 before Facebook publication.",
+  "qualification": "Sky Wheels operates this separately ticketed wheel on the public river island outside a structured amusement park.",
+  "sources": {
+    "operator": "https://ambersky.pl/",
+    "about": "https://ambersky.pl/o-nas/",
+    "contact": "https://ambersky.pl/kontakt/",
+    "tariffs": "https://ambersky.pl/cennik/",
+    "manufacturer": "https://www.dutchwheels.com/en/portfolio/ambersky-gdansk",
+    "tourism": "https://kartaturysty.visitgdansk.com/en/partners/ambersky-gdansk-33744",
+    "photo": "https://commons.wikimedia.org/wiki/File:Kładka_na_Ołowiankę_i_diabelski_młyn_noc.jpg",
+    "location": "https://en.wikipedia.org/wiki/Amber_Sky"
+  },
+  "duplicateSearches": {
+    "parkAmberSky": 0,
+    "parkGdansk": 0,
+    "standaloneAmberSky": 0,
+    "standaloneAmberSkySpaced": 0,
+    "standaloneGdansk": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "b78b7738-3c86-4fbd-8e51-1696b0c7681a",
+      "appliedAtUtc": "2026-11-02T11:29:44.560Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "254ad1eb-33fe-46ae-a9f6-dbdd2a51f4d8",
+      "appliedAtUtc": "2026-11-02T11:30:17.227Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "commercialData": {
+    "fareSource": "https://ambersky.pl/cennik/",
+    "currency": "PLN",
+    "structuredOfferCount": 8,
+    "standardGateFare": 49,
+    "reducedGateFare": 39,
+    "childrenUnderThree": "free per operator price page",
+    "hours": "No current dependable official calendar on the website; check before visit."
+  },
+  "photographs": [
+    {
+      "imageId": "7dff4c8334e3427caa5e312b10dd519a",
+      "commonsFile": "https://commons.wikimedia.org/wiki/File:Kładka_na_Ołowiankę_i_diabelski_młyn_noc.jpg",
+      "author": "Panek",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-09-29",
+      "ownerId": "ccf8eb6d-bd75-40d5-b7d2-98f39c9ed11e",
+      "published": true,
+      "siteBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "score": 81,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "eightLanguageDescriptions": 8,
+    "publishedImages": 1,
+    "structuredCurrentOffers": 8
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/ccf8eb6d-bd75-40d5-b7d2-98f39c9ed11e/ambersky-gdansk",
+    "sitePublishedAtUtc": "2026-11-02T11:31:44.195Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:d4cb4bea-4664-46c3-9321-892b67d6afaf",
+    "siteHttpStatusesByLocale": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "imageBinaryHttpStatuses": [
+      200
+    ],
+    "facebookStatus": "Published",
+    "facebookId": "12a4c88e16ce4c33a11f4d2370832e7a",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125720845424431",
+    "facebookPublishedAtUtc": "2026-11-02T11:32:46.050Z"
+  },
+  "lastDataIntegrationAt": "2026-11-02T11:31:06.219Z",
+  "remainingGaps": [
+    "Obtenir et structurer les horaires saisonniers actuels de l’exploitant.",
+    "Ajouter des vues de jour récentes sous licence réutilisable montrant la nouvelle roue."
+  ]
+}

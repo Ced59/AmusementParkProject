@@ -1,0 +1,39 @@
+{
+  "reviewedAt": "2026-11-02",
+  "entryIds": [
+    "DE-candidate-standalone-c086428f66d443",
+    "DE-candidate-9326de2cfb9998"
+  ],
+  "decision": "Excluded: historic summer toboggan ended 2022; present venue is a ski centre and restaurant, not a documented operating amusement park.",
+  "operatorHistory": "https://www.steckenberg.de/unternehmen/geschichte",
+  "operatorCurrentOffer": "https://www.steckenberg.de/",
+  "manufacturerReference": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1239",
+  "officialEditorSearches": [
+    {
+      "action": "SearchParks",
+      "query": "Steckenberg",
+      "observedAt": "2026-11-02",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchParks",
+      "query": "Unterammergau",
+      "observedAt": "2026-11-02",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Steckenberg",
+      "observedAt": "2026-11-02",
+      "totalItems": 0
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Unterammergau",
+      "observedAt": "2026-11-02",
+      "totalItems": 0
+    }
+  ],
+  "publication": "None: no operating attraction to integrate or announce.",
+  "lastDataIntegrationAt": null
+}

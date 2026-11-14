@@ -6,7 +6,7 @@
   "userRequestedOn": "2026-10-22",
   "sitePublicationAuthorized": true,
   "facebookPublicationAuthorized": true,
-  "completedInThisBatch": 8,
+  "completedInThisBatch": 10,
   "assignedEntryIds": [
     "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
     "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
@@ -20,7 +20,9 @@
     "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27",
     "FR-candidate-13b50050620a99",
     "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
-    "FR-candidate-605fde75a058d0"
+    "FR-candidate-605fde75a058d0",
+    "FR-candidate-d1ef8ca467e651",
+    "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff"
   ],
   "identityIssue": "Confirmed duplicate: Lillom retained privately as Duplicate of Parc de Lomme, the canonical integration target. Duplicate does not count as an integrated park.",
   "completedEntryIds": [
@@ -31,9 +33,11 @@
     "FR-park-66653da2-93bb-499f-95df-15e240673e58",
     "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27",
     "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
-    "FR-candidate-605fde75a058d0"
+    "FR-candidate-605fde75a058d0",
+    "FR-candidate-d1ef8ca467e651",
+    "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff"
   ],
-  "lastCompletedAtUtc": "2026-11-03T00:45:22.799471+00:00",
+  "lastCompletedAtUtc": "2026-11-14T23:24:02.685156+00:00",
   "activeEntryId": null,
   "blockedEntries": [
     {
@@ -52,14 +56,20 @@
     },
     {
       "entryId": "FR-candidate-13b50050620a99",
-      "blocker": "Accès rétabli ; publication site et Facebook déjà réussie, score92/100 restant sous le seuil de clôture.",
+      "blocker": "Ancien blocage de seuil92 levé par la tolérance propriétaire du14novembre ; rapprochement et validation actuelle requis avant clôture.",
       "audit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-intake-blocked.json",
       "dataApplied": true,
       "previousBlocker": "PARK_DATA_EDITOR Status HTTP500; production deployment backup failed: no space left on device",
-      "status": "AccessRestored",
+      "status": "PendingAuditConfirmation",
       "currentAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-publication-audit.json"
     }
   ],
   "identityEvidence": "evidence/france-historical-20261022/lillom-identity-reconciliation.json",
-  "nextAction": "Poursuivre les historiques, Zygofolis puis Parc de Lomme : rapprochement officiel avant nouveaux enrichissements. Huit clôtures dans ce lot, aucune PR avant dix ; aucun changement de version pour le registre."
+  "nextAction": "Lot de dix clôtures prêt pour PR documentaire sans hausse de version. Poursuivre Parc de Lomme puis les autres historiques et tous les parcs français en activité/standalone qualifiés ; aucune répétition Facebook.",
+  "closedParkScoreTolerance": {
+    "authorizedOnUtc": "2026-11-14",
+    "scope": "Parcs définitivement fermés de la campagne France ; ne remplace ni audit éditorial ni absence de bloqueur API.",
+    "firstCompletedException": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff",
+    "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-completion-20261114.json"
+  }
 }
