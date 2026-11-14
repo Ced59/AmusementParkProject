@@ -141,13 +141,13 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
 | **Total** | **91** | **1** | **41** | **64** | **311** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **49**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **50**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Allemagne : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Autriche : 6 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Espagne : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Finlande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
-- France : 12 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- France : 13 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Hongrie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Islande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Lettonie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.

@@ -36767,8 +36767,8 @@
       "siteId": "b2dca918-9747-4623-a0c0-38e89634aaff",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-01T14:05:34.4344162Z",
-      "editorialStatus": "InProgress",
+      "presenceObservedAt": "2026-11-14T23:15:03.2850098Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Parc définitivement fermé depuis1991 ; ancien statut Operating du catalogue à corriger.",
@@ -36779,7 +36779,7 @@
         "Zygo Parc",
         "Zygo Park"
       ],
-      "assignedTo": "Conversation France",
+      "assignedTo": null,
       "lastDataIntegrationAt": "2026-11-01T14:07:32.680Z",
       "integrationHistory": [
         {
@@ -37811,9 +37811,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-f7c5df3c-3f65-46ee-aede-0cb4e27f5f23",
           "auditEvidence": null,
           "summary": "Zygofolis : restauration canonique des 19 faits historiques après mise en ligne, sans modification éditoriale ; résultat partial conservé."
+        },
+        {
+          "eventId": "completed-after-closed-park-tolerance-20261114-apply-f7c5df3c-3f65-46ee-aede-0cb4e27f5f23",
+          "appliedAt": "2026-11-01T14:07:32.680Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-receipts.json#apply-f7c5df3c-3f65-46ee-aede-0cb4e27f5f23",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-completion-20261114.json",
+          "summary": "Clôture après audit confirmé : 95/100 sans bloqueur, tolérance propriétaire du 14 novembre pour les parcs définitivement fermés ; 54 lieux, 58 médias propres, 19 faits, article huit langues et deux plans. Site et Facebook existants vérifiés, lacunes conservées, aucune nouvelle mutation ni annonce."
         }
       ],
-      "nextAction": "Rapprochement officiel du 14 novembre : 54 éléments et 58 photos publics, 19 faits ; score95 sans bloqueur. Recherches complémentaires sans preuve nouvelle admissible de restriction ou constructeur. Voir zygofolis-recovery-20261114.json ; conserver partial et annonce Facebook existante, sans nouvel envoi.",
+      "nextAction": "Intégration clôturée avec tolérance propriétaire pour parc fermé : 95/100 sans bloqueur ; conserver les lacunes historiques dans l’audit. Site et Facebook vérifiés, aucune annonce à renvoyer.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -37849,7 +37859,29 @@
       "countryCodeAtInventory": "FR",
       "countryResolution": null,
       "finalContentAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-content-audit.json",
-      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-recovery-20261114.json"
+      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-completion-20261114.json",
+      "publicationEvidence": {
+        "status": "Published",
+        "publicUrl": "https://amusement-parks.fun/fr/park/b2dca918-9747-4623-a0c0-38e89634aaff/zygofolis-zygo-parc",
+        "publishedAtUtc": "2026-11-01T14:05:34.4344162Z",
+        "publicationOperationId": "bfe25133-ff1c-432a-9478-17ed7df4f8c8",
+        "observedAtUtc": "2026-11-14T23:15:03.2850098Z",
+        "newPublicationCalls": 0
+      },
+      "facebookPublicationEvidence": {
+        "status": "Published",
+        "publicationId": "08c4a4cd299a442285de99c48565009d",
+        "url": "https://www.facebook.com/1285475681307050/posts/122125614645424431",
+        "publishedAtUtc": null,
+        "observedAtUtc": "2026-11-14T23:15:36.9021138Z",
+        "newPublicationCalls": 0,
+        "note": "Annonce existante réconciliée. Le résolveur ne fournit pas sa date d’envoi ; aucune date déduite."
+      },
+      "acceptedScoreException": {
+        "score": 95,
+        "decisionDate": "2026-11-14",
+        "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-completion-20261114.json"
+      }
     },
     {
       "entryId": "FR-candidate-989aee8356c4ae",
