@@ -1,6 +1,20 @@
 {
-  "version": "6.0.35",
+  "version": "6.0.36",
   "history": [
+    {
+      "version": "6.0.36",
+      "releasedAt": "2026-11-14",
+      "labels": {
+        "fr": "Accès sécurisé aux outils de données",
+        "en": "Secure access to data tools",
+        "de": "Sicherer Zugang zu Datenwerkzeugen",
+        "nl": "Veilige toegang tot gegevenshulpmiddelen",
+        "it": "Accesso sicuro agli strumenti per i dati",
+        "es": "Acceso seguro a las herramientas de datos",
+        "pl": "Bezpieczny dostęp do narzędzi danych",
+        "pt": "Acesso seguro às ferramentas de dados"
+      }
+    },
     {
       "version": "6.0.35",
       "releasedAt": "2026-11-14",

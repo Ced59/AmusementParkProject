@@ -330,6 +330,22 @@
       "error": "Impossibile salvare il monitoraggio. Riprova."
     }
   },
+  "parkEditorAccess": {
+    "title": "Accesso all’editor dei dati dei parchi",
+    "description": "Crea un token per questa sessione Codex. Il browser lo cifrerà prima che tu lo copi.",
+    "keyLabel": "Chiave pubblica fornita da Codex",
+    "keyHelp": "Incolla la chiave pubblica completa ricevuta in questa conversazione.",
+    "create": "Crea e cifra il token",
+    "creating": "Creazione in corso…",
+    "packageLabel": "Pacchetto cifrato per Codex",
+    "packageHelp": "Copia questo pacchetto nella conversazione. Non condividere mai la password o il token in chiaro.",
+    "copy": "Copia il pacchetto",
+    "copied": "Pacchetto copiato",
+    "invalidKey": "La chiave pubblica non è valida o la cifratura non è disponibile. Non è stato creato alcun token.",
+    "createFailed": "Impossibile creare il token. Controlla la connessione e riprova.",
+    "revokeFailed": "La cifratura non è riuscita e il token non è stato revocato. Revocalo dalla gestione dei token.",
+    "copyFailed": "Copia non riuscita. Seleziona e copia manualmente il pacchetto."
+  },
   "parkFitProfiles": {
     "kicker": "Profili Park Fit privati",
     "title": "Le persone del tuo gruppo",

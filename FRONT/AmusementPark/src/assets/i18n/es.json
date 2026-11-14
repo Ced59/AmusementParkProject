@@ -330,6 +330,22 @@
       "error": "No se pudo guardar el seguimiento. Inténtalo de nuevo."
     }
   },
+  "parkEditorAccess": {
+    "title": "Acceso al editor de datos de parques",
+    "description": "Crea un token para esta sesión de Codex. El navegador lo cifrará antes de que lo copies.",
+    "keyLabel": "Clave pública proporcionada por Codex",
+    "keyHelp": "Pega la clave pública completa recibida en esta conversación.",
+    "create": "Crear y cifrar el token",
+    "creating": "Creando…",
+    "packageLabel": "Paquete cifrado para Codex",
+    "packageHelp": "Copia este paquete en la conversación. No compartas nunca la contraseña ni el token sin cifrar.",
+    "copy": "Copiar paquete",
+    "copied": "Paquete copiado",
+    "invalidKey": "La clave pública no es válida o el cifrado no está disponible. No se ha creado ningún token.",
+    "createFailed": "No se pudo crear el token. Comprueba la conexión e inténtalo de nuevo.",
+    "revokeFailed": "Falló el cifrado y no se pudo revocar el token. Revócalo desde la gestión de tokens.",
+    "copyFailed": "No se pudo copiar. Selecciona y copia el paquete manualmente."
+  },
   "parkFitProfiles": {
     "kicker": "Perfiles privados de Park Fit",
     "title": "Las personas de tu grupo",

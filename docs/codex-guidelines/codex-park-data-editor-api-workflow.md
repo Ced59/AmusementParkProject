@@ -39,7 +39,7 @@ Cette isolation ne crée aucune différence de qualité : logo, couverture des a
 - Le jeton est refusé par défaut sur toute route non explicitement ouverte à ce mécanisme.
 - Toutes ses requêtes, y compris les lectures, refus et erreurs HTTP, sont écrites dans l’audit avec l’utilisateur, le jeton, l’adresse IP, le User-Agent, le statut et le trace ID.
 - Un administrateur peut voir et révoquer un jeton, ou tous les jetons du compte, depuis la fiche utilisateur. Retirer le rôle est un coupe-circuit supplémentaire immédiat.
-- Le secret en clair n’est retourné qu’une fois. Le client le conserve hors du dépôt avec le chiffrement lié à l’utilisateur Windows courant.
+- Le secret en clair n’est retourné qu’une fois. Sur Windows, le client le conserve hors du dépôt avec le chiffrement lié à l’utilisateur courant. Le mode cloud temporaire décrit plus bas remet uniquement un paquet chiffré et n’enregistre le jeton déchiffré que dans `/dev/shm` pour la session.
 - Les identifiants du compte technique sont conservés séparément avec le même chiffrement Windows afin de permettre un renouvellement explicite sans navigateur. Ils ne sont jamais placés dans le dépôt, un fichier JSON, une ligne de commande en clair ou une sortie de log.
 
 ## Compte de référence et connexion courante
@@ -78,6 +78,14 @@ Cette procédure s’applique uniquement si le coffre local n’a pas encore ét
    Le client appelle `POST /api/auth/login`, puis `POST /api/park-data-editor/tokens` avec le JWT court obtenu. Un jeton technique ne peut jamais créer un autre jeton. Le secret retourné une seule fois est immédiatement chiffré localement et n’est pas affiché.
 
 Aucune session de navigateur n’est nécessaire à Codex. `SaveToken` reste disponible pour importer exceptionnellement un jeton créé par un autre client, toujours par le pipeline et sans l’afficher.
+
+### Remise chiffrée depuis un téléphone vers Codex Cloud
+
+Lorsque Codex travaille sur Linux sans le coffre Windows du propriétaire, le titulaire du compte `PARK_DATA_EDITOR` peut ouvrir **son propre profil** sur le site, coller une clé publique fournie par Codex, puis créer un jeton de 30 jours. Le navigateur chiffre immédiatement le secret avec RSA-OAEP/SHA-256 et ne montre que le paquet `APF-PDE1.…`. L’API existante n’autorise cette création qu’avec le JWT du titulaire du rôle ; la fiche administrateur d’un autre utilisateur ne peut pas créer de jeton pour lui.
+
+Codex génère la paire de clés avec `node tools/codex/park-data-editor-cloud-handoff.mjs generate`. La clé privée reste dans `/dev/shm`, en mode `0600`, hors du dépôt. Le propriétaire colle uniquement la **clé publique** dans son profil, puis peut remettre le paquet **chiffré** dans la conversation. Codex le déchiffre par l’entrée standard avec `node tools/codex/park-data-editor-cloud-handoff.mjs redeem CHEMIN_CLE_PRIVEE`. La commande écrit le jeton dans un fichier temporaire directement sous `/dev/shm`, en mode `0600`, efface la clé privée et n’affiche que le chemin du fichier.
+
+Sur cette machine Linux, appeler le client officiel avec `-EphemeralTokenPath CHEMIN_JETON` pour chaque action ; ce mode vérifie la localisation et les droits du fichier et ne charge jamais le coffre Windows. Tester d’abord `-Action Status`, puis les recherches requises. La remise chiffrée ne dispense d’aucune règle d’attente, d’audit ou de publication. À la fin de la session, `node tools/codex/park-data-editor-cloud-handoff.mjs clear CHEMIN_JETON` supprime la copie temporaire. Ne placer ni mot de passe ni jeton brut dans le dépôt, la conversation, les arguments de commande ou les logs. Une perte du fichier temporaire demande une nouvelle remise par le titulaire ; un `401` inattendu impose toujours l’arrêt et n’autorise aucune recréation automatique.
 
 Un jeton expiré n’est jamais réactivé. Après expiration naturelle, Codex peut exécuter explicitement `CreateToken` pour en créer un nouveau. Il ne doit jamais le faire automatiquement en réaction à un `401`.
 

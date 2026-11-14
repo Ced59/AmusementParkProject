@@ -1,0 +1,44 @@
+<section class="editor-handoff" appUiSurface="panel" appUiSurfacePadding="spacious">
+  <div class="editor-handoff__heading">
+    <h2>{{ 'parkEditorAccess.title' | translate }}</h2>
+    <p>{{ 'parkEditorAccess.description' | translate }}</p>
+  </div>
+
+  <label for="park-editor-recipient-key">{{ 'parkEditorAccess.keyLabel' | translate }}</label>
+  <textarea
+    id="park-editor-recipient-key"
+    class="editor-handoff__textarea"
+    rows="5"
+    [value]="publicKeyPem"
+    (input)="updatePublicKey($event)"
+    [attr.aria-describedby]="'park-editor-key-help'"
+    autocomplete="off"
+    autocapitalize="off"
+    spellcheck="false"></textarea>
+  <p id="park-editor-key-help" class="editor-handoff__help">{{ 'parkEditorAccess.keyHelp' | translate }}</p>
+
+  <button appUiButton="primary" type="button" [disabled]="busy()" (click)="createPackage()">
+    {{ (busy() ? 'parkEditorAccess.creating' : 'parkEditorAccess.create') | translate }}
+  </button>
+
+  @if (encryptedPackage(); as encrypted) {
+    <div class="editor-handoff__result">
+      <label for="park-editor-encrypted-package">{{ 'parkEditorAccess.packageLabel' | translate }}</label>
+      <textarea
+        id="park-editor-encrypted-package"
+        class="editor-handoff__textarea"
+        rows="5"
+        [value]="encrypted"
+        readonly
+        spellcheck="false"></textarea>
+      <p class="editor-handoff__help">{{ 'parkEditorAccess.packageHelp' | translate }}</p>
+      <button appUiButton="soft" type="button" (click)="copyPackage()">
+        {{ (copied() ? 'parkEditorAccess.copied' : 'parkEditorAccess.copy') | translate }}
+      </button>
+    </div>
+  }
+
+  @if (errorKey(); as error) {
+    <p class="editor-handoff__error" role="alert">{{ error | translate }}</p>
+  }
+</section>

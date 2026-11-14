@@ -330,6 +330,22 @@
       "error": "Le suivi n’a pas pu être enregistré. Réessaie."
     }
   },
+  "parkEditorAccess": {
+    "title": "Accès à l’éditeur des données",
+    "description": "Créez un jeton pour cette session Codex. Il sera chiffré dans votre navigateur avant d’être copié.",
+    "keyLabel": "Clé publique fournie par Codex",
+    "keyHelp": "Collez la clé publique complète reçue dans cette conversation.",
+    "create": "Créer et chiffrer le jeton",
+    "creating": "Création en cours…",
+    "packageLabel": "Paquet chiffré pour Codex",
+    "packageHelp": "Copiez ce paquet dans la conversation. Ne partagez jamais le mot de passe ni le jeton brut.",
+    "copy": "Copier le paquet",
+    "copied": "Paquet copié",
+    "invalidKey": "La clé publique est invalide ou le chiffrement est indisponible. Aucun jeton n’a été créé.",
+    "createFailed": "La création a échoué. Vérifiez votre connexion et réessayez.",
+    "revokeFailed": "Le chiffrement a échoué et le jeton n’a pas pu être révoqué. Révoquez-le depuis la gestion des jetons.",
+    "copyFailed": "La copie a échoué. Sélectionnez et copiez le paquet manuellement."
+  },
   "parkFitProfiles": {
     "kicker": "Profils privés Park Fit",
     "title": "Les personnes de ton groupe",
