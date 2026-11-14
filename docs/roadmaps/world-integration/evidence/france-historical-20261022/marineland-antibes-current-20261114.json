@@ -3,7 +3,7 @@
   "entryId": "FR-candidate-d1ef8ca467e651",
   "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
   "owner": "Conversation France",
-  "checkpointAtUtc": "2026-11-14T20:06:37.671548+00:00",
+  "checkpointAtUtc": "2026-11-14T20:28:21.051165+00:00",
   "partial": true,
   "priorState": "64 existing items with eight-language descriptions; 57 park/item photos plus logo, founder portrait and four official maps, private. Never recreate these.",
   "recoveredHistoricalOperations": 19,
@@ -287,6 +287,34 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-antarctica-current-20261114.json"
+    },
+    {
+      "stem": "09-final-language-review",
+      "operationId": "653c9ac1-3707-4d28-b571-c110902a1507",
+      "appliedAtUtc": "2026-11-14T20:11:01.0393917Z",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-final-language-review-20261114.json"
+    },
+    {
+      "stem": "09-media-language-review",
+      "operationId": "8144cd3b-5292-463b-970e-9de401eec3a3",
+      "appliedAtUtc": "2026-11-14T20:14:24.6828352Z",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 4,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-media-language-review-20261114.json"
     }
   ],
   "newImage": {
@@ -296,7 +324,7 @@
   },
   "currentConsolidatedState": {
     "items": 65,
-    "parkAndItemPhotosExcludingLogo": 73,
+    "parkAndItemPhotosExcludingLogo": 74,
     "logo": 1,
     "founderPortrait": 1,
     "officialMaps": 4,
@@ -310,7 +338,7 @@
   "historyDiagnostics": {
     "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
     "parkName": "Marineland d’Antibes",
-    "factCount": 37,
+    "factCount": 40,
     "relationCount": 0,
     "blockingIssueCount": 0,
     "issues": [],
@@ -375,7 +403,7 @@
       },
       {
         "stage": "Retracted",
-        "resourceCount": 12
+        "resourceCount": 15
       }
     ],
     "visits": {
@@ -396,7 +424,7 @@
     }
   },
   "noFinalFullExportYet": false,
-  "finalAuditCompleted": false,
+  "finalAuditCompleted": true,
   "sitePublicationCompleted": false,
   "facebookPublicationCompleted": false,
   "researchCorrections": {
@@ -422,10 +450,10 @@
     "followup": "Articles et références appliqués ; audit transversal en cours."
   },
   "nextSteps": [
-    "Terminer tableau de couverture et registre nominatif des lacunes sur état réconcilié ; vérifier les sources des ajouts.",
-    "Achever relecture transversale du corpus et classement des ressemblances ; idempotence par aperçus séparés.",
-    "Résoudre le score projeté 95 sans contourner le seuil utilisateur strictement >95 ; aucune exception nominative encore acceptée.",
-    "Après audit et conditions remplies : export de publication, mise en visibilité ciblée, score réel, routes publiques et Facebook."
+    "Obtenir acceptation exacte du score projeté 95 et des lacunes nommées, ou résoudre la limite avant publication.",
+    "Après accord : export de publication frais et comparaison avec état audité ; publication ciblée, parc en dernier ; score réel et HistoryDiagnostics.",
+    "Vérifier anonymement fiche, timeline, articles et rendu mobile ; ResolveFacebookPublication puis PublishFacebook sans doublon.",
+    "Conserver partial tant que contrôle publication et annonce non vérifiés."
   ],
   "recoveryNotes": [
     "Use the latest actual branch and local receipts before resuming.",
@@ -524,6 +552,12 @@
       "id": "3554b98273a44bad927c77a04daefd44",
       "updatedAtUtc": "2026-11-14T20:05:51.181Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-dolphin-underwater-20261114.json"
+    },
+    {
+      "stem": "orca-encounter-wide",
+      "id": "1be3baa154a142be84bc2a03b903cf62",
+      "updatedAtUtc": "2026-11-14T20:23:53.421Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-orca-encounter-wide-20261114.json"
     }
   ],
   "manufacturer": {
@@ -540,21 +574,21 @@
     "exportedAtUtc": "2026-11-14T19:12:29.5036951Z",
     "localPath": "/workspace/france-historical-20261022/marineland-antibes/recovery-20261114/09-final-full-export.json",
     "complete": true,
-    "auditComplete": false
+    "auditComplete": true
   },
   "projectedCompleteness": {
-    "verifiedAtUtc": "2026-11-14T20:00:37.5126707Z",
+    "verifiedAtUtc": "2026-11-14T20:27:30.5131092Z",
     "completenessScore": 95,
     "earnedPoints": 97,
     "applicableMaxPoints": 102,
     "publicationBlockers": [],
     "technicalFinding": "Projection excludes hidden parkItems from ParkItemsVisibleCount (2 pts) and their images from ParkItemPublishedImageCount (2 pts); remaining-debt point (1) also absent. Read-only source inspection, no implementation change."
   },
-  "nextWork": "Audit transversal final en cours : 65 items, 76 images dont 73 photos de parc/items, 25 faits privés, quatre articles huit langues. Contrôles idempotence à répartir : requête entière refusée HTTP 413, aucun Apply associé. Score projeté 95 à résoudre avant publication selon condition utilisateur >95. Aucun site ni Facebook publié.",
+  "nextWork": "Marineland audité : 65 items, 77 images dont 74 photos parc/items, 25 faits et 4 articles huit langues. 176 entités inchangées aux Previews ; 0 erreur/warning et 0 bloqueur technique. Score projeté 95/100 ; aucune exception exacte acceptée, donc tout reste privé. 12/17 lieux importants ont trois photos ; 31 items sans photo, 24 positions non prouvées, notices courtes et millésimes absents documentés dans audit. Ne pas republier ni réimporter. Attendre accord exact pour Marineland pendant poursuite des autres dossiers.",
   "auditWorkingState": {
     "localPath": "/workspace/france-historical-20261022/marineland-antibes/recovery-20261114/audit-working-state.json",
-    "sha256": "91118e00d98242d9724b32c8e95efad1b1f26a85032bd3b40026972ff7bf7ff0",
-    "imagesIncludingReferences": 76,
+    "sha256": "c948d51e130e307244c45a0a0982deb8c077814ff53e6ba60fefd8f56c005d62",
+    "imagesIncludingReferences": 77,
     "itemDescriptionsReviewedLanguages": [
       "fr",
       "en",
@@ -565,5 +599,8 @@
       "pl",
       "pt"
     ]
-  }
+  },
+  "finalAuditVerdict": "Audité ; publication bloquée par seuil projeté 95, exception nominative non acceptée.",
+  "finalAuditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-final-audit-20261114.json",
+  "publicationExceptionAccepted": false
 }
