@@ -6,6 +6,8 @@ param(
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
 
+    [string]$EphemeralTokenPath,
+
     [Parameter(ValueFromPipeline = $true)]
     [string]$SecretValue,
 
@@ -161,6 +163,41 @@ function Get-ParkDataEditorAccountCredential {
 }
 
 function Get-ParkDataEditorToken {
+    if (-not [string]::IsNullOrWhiteSpace($EphemeralTokenPath)) {
+        if ([Runtime.InteropServices.RuntimeInformation]::IsOSPlatform([Runtime.InteropServices.OSPlatform]::Windows)) {
+            throw 'EphemeralTokenPath is reserved for the Linux cloud workflow. Use the encrypted Windows store.'
+        }
+
+        $fullPath = [System.IO.Path]::GetFullPath($EphemeralTokenPath)
+        if ([System.IO.Path]::GetDirectoryName($fullPath) -cne '/dev/shm') {
+            throw 'The ephemeral token must be a file directly inside /dev/shm.'
+        }
+
+        $item = Get-Item -LiteralPath $fullPath -ErrorAction Stop
+        if (-not ($item -is [System.IO.FileInfo]) -or
+            ($item.Attributes -band [System.IO.FileAttributes]::ReparsePoint)) {
+            throw 'The ephemeral token must be a regular file, not a symbolic link.'
+        }
+
+        $mode = [System.IO.File]::GetUnixFileMode($fullPath)
+        $unsafeMode = [System.IO.UnixFileMode]::GroupRead -bor
+            [System.IO.UnixFileMode]::GroupWrite -bor
+            [System.IO.UnixFileMode]::GroupExecute -bor
+            [System.IO.UnixFileMode]::OtherRead -bor
+            [System.IO.UnixFileMode]::OtherWrite -bor
+            [System.IO.UnixFileMode]::OtherExecute
+        if (($mode -band $unsafeMode) -ne 0) {
+            throw 'The ephemeral token file must be accessible only to its owner (mode 0600).'
+        }
+
+        $ephemeralToken = [System.IO.File]::ReadAllText($fullPath).Trim()
+        if (-not $ephemeralToken.StartsWith('apf_pde_', [StringComparison]::Ordinal)) {
+            throw 'The ephemeral token file does not contain a park data editor token.'
+        }
+
+        return $ephemeralToken
+    }
+
     if (-not (Test-Path -LiteralPath $script:CredentialPath -PathType Leaf)) {
         throw 'No local park data editor token is stored. Run SaveToken first.'
     }

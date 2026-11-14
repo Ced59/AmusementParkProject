@@ -21,6 +21,7 @@ import { ProfilePageStateFacade } from '@features/profile/state/profile-page-sta
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import { LanguagePreferenceService } from '@app/services/localization/language-preference.service';
 import { PassportVisitQuickCreateComponent } from '@features/profile/passport/components/passport-visit-quick-create/passport-visit-quick-create.component';
+import { ParkDataEditorTokenHandoffComponent } from '@features/profile/components/park-data-editor-token-handoff/park-data-editor-token-handoff.component';
 
 @Component({
     selector: 'app-profile-page',
@@ -28,7 +29,7 @@ import { PassportVisitQuickCreateComponent } from '@features/profile/passport/co
     styleUrl: './profile-page.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ProfilePageStateFacade],
-    imports: [ProfilePageViewComponent, PassportVisitQuickCreateComponent]
+    imports: [ProfilePageViewComponent, PassportVisitQuickCreateComponent, ParkDataEditorTokenHandoffComponent]
 })
 export class ProfilePageComponent implements OnInit {
   private static readonly MaximumPublicDisplayNameLength = 60;

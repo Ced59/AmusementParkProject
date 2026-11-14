@@ -330,6 +330,22 @@
       "error": "Het volgen kon niet worden opgeslagen. Probeer het opnieuw."
     }
   },
+  "parkEditorAccess": {
+    "title": "Toegang tot de parkgegevenseditor",
+    "description": "Maak een token voor deze Codex-sessie. Uw browser versleutelt het voordat u het kopieert.",
+    "keyLabel": "Openbare sleutel van Codex",
+    "keyHelp": "Plak de volledige openbare sleutel uit dit gesprek.",
+    "create": "Token maken en versleutelen",
+    "creating": "Bezig met maken…",
+    "packageLabel": "Versleuteld pakket voor Codex",
+    "packageHelp": "Kopieer dit pakket naar het gesprek. Deel nooit uw wachtwoord of het onversleutelde token.",
+    "copy": "Pakket kopiëren",
+    "copied": "Pakket gekopieerd",
+    "invalidKey": "De openbare sleutel is ongeldig of versleuteling is niet beschikbaar. Er is geen token gemaakt.",
+    "createFailed": "Het maken van het token is mislukt. Controleer uw verbinding en probeer het opnieuw.",
+    "revokeFailed": "Versleuteling is mislukt en het token kon niet worden ingetrokken. Trek het in via tokenbeheer.",
+    "copyFailed": "Kopiëren is mislukt. Selecteer en kopieer het pakket handmatig."
+  },
   "parkFitProfiles": {
     "kicker": "Privéprofielen voor Park Fit",
     "title": "De personen in je groep",

@@ -26,5 +26,9 @@
   (passportVisitCreateClicked)="openPassportVisitDialog()">
 </app-profile-page-view>
 
+@if (user()?.roles?.includes('PARK_DATA_EDITOR')) {
+  <app-park-data-editor-token-handoff />
+}
+
 <app-passport-visit-quick-create [(visible)]="passportVisitDialogVisible">
 </app-passport-visit-quick-create>
