@@ -1,0 +1,97 @@
+{
+  "work": "Qualified and created the separately operated, fixed Llandudno Cable Car after official catalogue searches found no matching Park or StandaloneAttraction. Integrated eight descriptions, exact location and opening information, source-backed cash-only and wheelchair conditions, two visually inspected exact licensed photos, eight public routes and Facebook publication.",
+  "qualification": "Cable car between Happy Valley and Great Orme summit, separate from the Great Orme Tramway and the Cresta Toboggan Run. A durable scenic visitor attraction with its own ticketing; an independent StandaloneAttraction page is appropriate.",
+  "sources": {
+    "visitConwy": "https://visitconwy-ws.newmindmedia.com/things-to-do/llandudno-cable-car-p277371",
+    "visitWales": "https://traveltrade.visitwales.com/itineraries/the-wales-way/highlights-the-cambrian-way-north-wales",
+    "commonsCars": "https://commons.wikimedia.org/wiki/File:Llandudno_,_cable_cars,_Great_Orme_-_geograph.org.uk_-_7831977.jpg",
+    "commonsSummitStation": "https://commons.wikimedia.org/wiki/File:Top_station_of_the_Great_Orme_cable_car_-_geograph.org.uk_-_7811574.jpg"
+  },
+  "sourceLimitations": [
+    "Visit Conwy shows a 2025 fare table that conflicts with its own FAQ; no current price was imported.",
+    "Opening is seasonal and wind dependent. No fixed schedule was imported.",
+    "The venue operator and equipment model were not independently confirmed and are left unset."
+  ],
+  "duplicateSearches": {
+    "standaloneGreatOrmeGB": "Only Cresta Toboggan Run; distinct attraction",
+    "standaloneLlandudnoCableGlobal": 0,
+    "standaloneCableCarGB": "Only London Cable Car; distinct city and line",
+    "parksGreatOrmeGB": 0
+  },
+  "entity": {
+    "id": "b17dcec6-82dc-4dcd-93e5-85741b1e2520",
+    "name": "Llandudno Cable Car",
+    "countryCode": "GB",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "bf91b871-dd10-4e8d-88c3-414853931c8c",
+      "appliedAtUtc": "2026-11-14T21:07:11.1730777Z",
+      "summary": "Hidden standalone core, eight descriptions and structured attraction details"
+    },
+    {
+      "operationId": "87903659-af60-47da-a468-cda10e2a5374",
+      "appliedAtUtc": "2026-11-14T21:12:09.0553476Z",
+      "summary": "Source-backed cash payment and wheelchair access conditions"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "9866060905594c75beb7e831c08da36d",
+      "subject": "Orange and blue Llandudno Cable Car cabins above the Great Orme hillside",
+      "author": "Jim Osley",
+      "license": "CC BY-SA 2.0",
+      "photographedAt": "2024-07-18",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Llandudno_,_cable_cars,_Great_Orme_-_geograph.org.uk_-_7831977.jpg"
+    },
+    {
+      "imageId": "f90738ad2f974ebfa7bcec96d1f4ad60",
+      "subject": "Great Orme Cable Car summit station",
+      "author": "Stephen Craven",
+      "license": "CC BY-SA 2.0",
+      "photographedAt": "2024-06-21",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Top_station_of_the_Great_Orme_cable_car_-_geograph.org.uk_-_7811574.jpg"
+    }
+  ],
+  "audit": {
+    "completenessScore": 69,
+    "dataQualityLevel": "Partial",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "prePublicationExportSha256": "239ef3d91edb4fa14e38134123eeb4e3fb0d6e4288a455cdd4aab65d9c590ff7"
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/b17dcec6-82dc-4dcd-93e5-85741b1e2520/llandudno-cable-car",
+    "sitePublishedAtUtc": "2026-11-14T21:13:30.2789075Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:3521e1a0-4a05-405f-854e-6312fa5e7e3d",
+    "facebookStatus": "Published",
+    "facebookId": "ff61580eb9d24c10852099893d3b31cd",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127372411424431",
+    "facebookPublishedAtUtc": "2026-11-14T21:14:42.2185774Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T21:12:09.0553476Z",
+  "remainingGaps": [
+    "Recheck the current ticket price when the seasonal operator publishes an internally consistent fare.",
+    "Seek a dated official opening calendar or hours when the next season begins.",
+    "Verify the operator and cable car manufacturer/model if reliable sources become available."
+  ]
+}
