@@ -3,7 +3,7 @@
   "entryId": "FR-candidate-d1ef8ca467e651",
   "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
   "owner": "Conversation France",
-  "checkpointAtUtc": "2026-11-14T18:39:25.148Z",
+  "checkpointAtUtc": "2026-11-14T18:58:38.882Z",
   "partial": true,
   "priorState": "64 existing items with eight-language descriptions; 57 park/item photos plus logo, founder portrait and four official maps, private. Never recreate these.",
   "recoveredHistoricalOperations": 19,
@@ -91,6 +91,48 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-items-first-20261114.json"
+    },
+    {
+      "stem": "08-items-second",
+      "operationId": "0d548534-70d8-421e-94c3-c7b1387630c8",
+      "appliedAtUtc": "2026-11-14T18:49:03.8819867Z",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-items-second-20261114.json"
+    },
+    {
+      "stem": "05-cinema-manufacturer",
+      "operationId": "b60edc15-e8d1-41aa-b055-5f5ea931f40b",
+      "appliedAtUtc": "2026-11-14T18:54:13.2302225Z",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-05-cinema-manufacturer-20261114.json"
+    },
+    {
+      "stem": "05-reference-logo-history-images",
+      "operationId": "9838a5d4-a935-421b-a3d1-035439a11066",
+      "appliedAtUtc": "2026-11-14T18:57:30.8101632Z",
+      "counts": {
+        "created": 1,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-05-reference-logo-history-images-20261114.json"
     }
   ],
   "newImage": {
@@ -100,15 +142,16 @@
   },
   "currentConsolidatedState": {
     "items": 64,
-    "parkAndItemPhotosExcludingLogo": 58,
+    "parkAndItemPhotosExcludingLogo": 61,
     "logo": 1,
     "founderPortrait": 1,
     "officialMaps": 4,
     "activeParkHistoryEvents": 12,
-    "activeItemHistoryEvents": 6,
+    "activeItemHistoryEvents": 11,
     "developedArticles": 3,
     "allTextsEightLanguages": true,
-    "allNewContentPrivate": true
+    "allNewContentPrivate": true,
+    "manufacturerLogos": 1
   },
   "historyDiagnostics": {
     "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
@@ -221,16 +264,14 @@
       "https://www.tourmag.com/Marineland-prepare-l-ouverture-de-son-premier-hotel_a44187.html",
       "https://parcactu.wordpress.com/category/nouveaute/"
     ],
-    "manufacturerToResolve": "CL Corporation; now a Triotech division, historical maker must be resolved before attaching",
-    "followup": "Add hotel, lagoon, dolphin transfer, polar bear departure, emblematic item closures and article; resolve missing photos and manufacturer aliases."
+    "manufacturerToResolve": "RESOLVED: CL Corporation created 634770df-f4cd-43a5-ac5a-8ae938625f6a; not the pre-existing parent Triotech.",
+    "followup": "Finish polar article and remaining audit work; five additional item timelines and manufacturer/photographs already applied."
   },
   "nextSteps": [
-    "Finish hotel/lagoon/shark-encounter timelines and dolphin July 2026 transfer.",
-    "Add June 2021 polar-bear departure with a developed item article and emblematic item closures, without duplicating park facts.",
-    "Resolve CL Corporation manufacturer aliases through official Preview before creation or attachment; source Triotech project and 2018 park announcement.",
-    "Reconcile remaining photo and geolocation gaps, review full eight-language corpus and shared references.",
-    "Only after the above, perform the single planned complete export immediately before final audit; project completeness and apply the >95 blocker-free publication gate.",
-    "Publish images/history/articles/items/park as required, verify public history and actual score, ResolveFacebookPublication then PublishFacebook without duplicate."
+    "Attach already imported polar arrival photo 25b9b429f6af4173b5fed44aad2c2fb1 to existing fact c4a0a28e-b095-4d84-a877-ff780d1f1f0b and write a developed item article in eight languages.",
+    "Review remaining emblematic item closures, genuine image and geolocation gaps and full eight-language corpus. Existing cinema Happy Feet programme is corroborated by official programme 2024 and Triotech Mumble image; opening film remains Arctic 1.",
+    "Assess projected completeness, finish sourced corrections, then single complete export immediately before final audit.",
+    "Only after blocker-free audit and score >95: publish site and data, verify public history, then Resolve/Publish Facebook."
   ],
   "recoveryNotes": [
     "Use the latest actual branch and local receipts before resuming.",
@@ -238,5 +279,34 @@
     "The recovery targeted Items/Images/History export is not the final complete export.",
     "Retain marineland-antibes-receipts.json and the historical -receipts.json referenced by old events.",
     "No PR until ten completed batch parks; batch still eight completed before Marineland."
-  ]
+  ],
+  "additionalImages": [
+    {
+      "stem": "lagoon-20150702",
+      "id": "4565cb86e5434d81a6eb2710a1ba354a",
+      "updatedAtUtc": "2026-11-14T18:50:56.755Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-20150702-20261114.json"
+    },
+    {
+      "stem": "hotel-20150702",
+      "id": "c278b3b532db454bbdaa8faa759ad6db",
+      "updatedAtUtc": "2026-11-14T18:51:11.485Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-hotel-20150702-20261114.json"
+    },
+    {
+      "stem": "polar-arrival-family",
+      "id": "25b9b429f6af4173b5fed44aad2c2fb1",
+      "updatedAtUtc": "2026-11-14T18:58:00.969Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-polar-arrival-family-20261114.json"
+    }
+  ],
+  "manufacturer": {
+    "id": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+    "name": "CL Corporation",
+    "biographyEightLanguages": true,
+    "logoId": "02be8251dc2949dcaa9c4eea932dd35f",
+    "private": true,
+    "aliasesResolvedBeforeCreation": true
+  },
+  "historyDiagnosticsIsOlderThanLatestFacts": true
 }

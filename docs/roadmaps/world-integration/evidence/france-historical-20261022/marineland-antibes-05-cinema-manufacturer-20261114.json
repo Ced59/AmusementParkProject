@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "758aaa3681fce2e6fb15bad3bc014c00e5d1762b4a00eba8218b17e98a029a1e",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "b60edc15-e8d1-41aa-b055-5f5ea931f40b",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T18:54:13.2302219Z",
+    "appliedAtUtc": "2026-11-14T18:54:13.2302225Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+        "entityKey": "cl-corporation",
+        "displayName": "CL Corporation",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "legalName",
+            "oldValue": null,
+            "newValue": "TRIOTECH CL CORP. DIVISION"
+          },
+          {
+            "field": "foundedYear",
+            "oldValue": null,
+            "newValue": "2000"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "contactDetails",
+            "oldValue": null,
+            "newValue": "https://www.trio-tech.com/ | 6 avenue de la Croix Verte, ZA du Chêne Vert | Le Rheu | 35650 | FR"
+          },
+          {
+            "field": "biography.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein französisches Unternehmen für immersive Kinos</h2><p>CL Corporation, auch CL Corp genannt, ist ein französisches Unternehmen für die Gestaltung von Attraktionen, das 2000 gegründet wurde. Das im Raum Rennes ansässige und von Christophe Lucchini mitgegründete Unternehmen entwickelte Bewegungskinos, Simulatoren und Erlebnisse, die Film, Bewegung und Sinneseffekte verbinden.</p><h2>Kinoräume für Parks und Kulturstätten</h2><p>Zu seinen Projekten gehören das 2018 eröffnete Ciné 5D Adventure im Marineland und das Theater Attention Menhir! im Parc Astérix. Sie zeigen die Arbeit an Sälen, in denen Raumgestaltung und Effekte eine Filmgeschichte begleiten, sowohl in Freizeitparks als auch in Museen und Wissenswelten.</p><h2>Der Anschluss an Triotech</h2><p>Am 31. Januar 2020 gibt Triotech die Übernahme von CL Corporation bekannt. Das französische Unternehmen bringt seinen europäischen Standort und seine Erfahrung mit immersiven Erlebnissen in die Gruppe aus Québec ein. Es führt seine Tätigkeit unter dem Namen Triotech CL Corp. Division fort.</p>"
+          },
+          {
+            "field": "biography.en",
+            "oldValue": null,
+            "newValue": "<h2>A French immersive cinema company</h2><p>CL Corporation, also known as CL Corp, is a French attraction design company established in 2000. Based in the Rennes area and co-founded by Christophe Lucchini, it developed dynamic cinemas, simulators and experiences combining film, movement and sensory effects.</p><h2>Theatres for parks and cultural venues</h2><p>Its projects include Marineland’s Ciné 5D Adventure, which opened in 2018, and the Attention Menhir! theatre at Parc Astérix. These venues reflect its work on auditoriums where the setting and effects accompany a filmed story, serving amusement parks as well as museums and discovery attractions.</p><h2>Joining Triotech</h2><p>On 31 January 2020, Triotech announces its acquisition of CL Corporation. The French company brings its European base and expertise in immersive experiences to the Québec group. It continues its activities under the name Triotech CL Corp. Division.</p>"
+          },
+          {
+            "field": "biography.es",
+            "oldValue": null,
+            "newValue": "<h2>Una empresa francesa de cine inmersivo</h2><p>CL Corporation, también conocida como CL Corp, es una empresa francesa de diseño de atracciones fundada en 2000. Establecida en la región de Rennes y cofundada por Christophe Lucchini, desarrolló cines dinámicos, simuladores y experiencias que combinan imágenes, movimiento y efectos sensoriales.</p><h2>Salas para parques y espacios culturales</h2><p>Sus proyectos incluyen el Ciné 5D Adventure de Marineland, inaugurado en 2018, y el teatro Attention Menhir! de Parc Astérix. Estas realizaciones muestran su trabajo en salas donde la ambientación y los efectos acompañan una historia filmada, tanto en parques de ocio como en museos y espacios de descubrimiento.</p><h2>La incorporación a Triotech</h2><p>El 31 de enero de 2020, Triotech anuncia la adquisición de CL Corporation. La empresa francesa aporta al grupo quebequés su presencia europea y su experiencia en entornos inmersivos. Continúa su actividad con el nombre de Triotech CL Corp. Division.</p>"
+          },
+          {
+            "field": "biography.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une entreprise française du cinéma immersif</h2><p>CL Corporation, également connue sous le nom de CL Corp, est une entreprise française de conception d’attractions créée en 2000. Implantée dans la région rennaise et cofondée par Christophe Lucchini, elle a développé des cinémas dynamiques, des simulateurs et des expériences associant images, mouvements et effets sensoriels.</p><h2>Des salles pour les parcs et les lieux culturels</h2><p>Ses réalisations comprennent le Ciné 5D Adventure de Marineland, ouvert en 2018, et le théâtre Attention Menhir ! du Parc Astérix. Ces projets illustrent son travail sur des salles dont le décor et les effets accompagnent un récit filmé, pour des parcs de loisirs comme pour des musées et des espaces de découverte.</p><h2>Le rapprochement avec Triotech</h2><p>Le 31 janvier 2020, Triotech annonce l’acquisition de CL Corporation. L’entreprise française apporte au groupe québécois son implantation européenne et son savoir-faire dans les expériences immersives. Elle poursuit ses activités sous le nom de Triotech CL Corp. Division.</p>"
+          },
+          {
+            "field": "biography.it",
+            "oldValue": null,
+            "newValue": "<h2>Un’impresa francese del cinema immersivo</h2><p>CL Corporation, nota anche come CL Corp, è un’impresa francese di progettazione di attrazioni fondata nel 2000. Attiva nell’area di Rennes e cofondata da Christophe Lucchini, ha sviluppato cinema dinamici, simulatori ed esperienze che uniscono film, movimento ed effetti sensoriali.</p><h2>Sale per parchi e luoghi culturali</h2><p>Tra le sue realizzazioni figurano il Ciné 5D Adventure di Marineland, aperto nel 2018, e il teatro Attention Menhir! del Parc Astérix. Questi progetti mostrano il lavoro su sale in cui ambientazione ed effetti accompagnano una storia filmata, tanto nei parchi di divertimento quanto nei musei e negli spazi di scoperta.</p><h2>L’ingresso in Triotech</h2><p>Il 31 gennaio 2020 Triotech annuncia l’acquisizione di CL Corporation. L’impresa francese porta al gruppo del Québec la propria presenza europea e la propria esperienza negli ambienti immersivi. Prosegue le attività con il nome Triotech CL Corp. Division.</p>"
+          },
+          {
+            "field": "biography.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een Frans bedrijf voor immersieve cinema</h2><p>CL Corporation, ook bekend als CL Corp, is een Frans bedrijf dat attracties ontwerpt en in 2000 werd opgericht. Het bedrijf uit de regio Rennes, mede opgericht door Christophe Lucchini, ontwikkelde dynamische bioscopen, simulatoren en belevenissen waarin film, beweging en zintuiglijke effecten samenkomen.</p><h2>Zalen voor parken en culturele instellingen</h2><p>Tot de projecten behoren Ciné 5D Adventure in Marineland, geopend in 2018, en het theater Attention Menhir! in Parc Astérix. Ze tonen het werk aan zalen waarin de omgeving en effecten een filmverhaal begeleiden, voor pretparken maar ook voor musea en andere plekken waar ontdekking centraal staat.</p><h2>De aansluiting bij Triotech</h2><p>Op 31 januari 2020 maakt Triotech de overname van CL Corporation bekend. Het Franse bedrijf voegt zijn Europese vestiging en kennis van immersieve belevenissen toe aan de groep uit Québec. Het zet zijn activiteiten voort onder de naam Triotech CL Corp. Division.</p>"
+          },
+          {
+            "field": "biography.pl",
+            "oldValue": null,
+            "newValue": "<h2>Francuska firma tworząca kina immersyjne</h2><p>CL Corporation, znana także jako CL Corp, to francuska firma projektująca atrakcje, założona w 2000 roku. Firma, współtworzona przez Christophe’a Lucchiniego i działająca w okolicach Rennes, opracowywała kina dynamiczne, symulatory oraz doświadczenia łączące film, ruch i efekty oddziałujące na zmysły.</p><h2>Sale dla parków i instytucji kultury</h2><p>Wśród jej realizacji znajdują się Ciné 5D Adventure w Marineland, otwarte w 2018 roku, oraz teatr Attention Menhir! w Parc Astérix. Projekty te pokazują pracę nad salami, w których sceneria i efekty towarzyszą filmowej opowieści, zarówno w parkach rozrywki, jak i muzeach oraz ośrodkach popularyzujących wiedzę.</p><h2>Dołączenie do Triotech</h2><p>31 stycznia 2020 roku Triotech ogłasza przejęcie CL Corporation. Francuska firma wnosi do grupy z Québecu europejską siedzibę operacyjną oraz doświadczenie w tworzeniu immersyjnych atrakcji. Kontynuuje działalność pod nazwą Triotech CL Corp. Division.</p>"
+          },
+          {
+            "field": "biography.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma empresa francesa de cinema imersivo</h2><p>A CL Corporation, também conhecida como CL Corp, é uma empresa francesa de conceção de atrações fundada em 2000. Instalada na região de Rennes e cofundada por Christophe Lucchini, desenvolveu cinemas dinâmicos, simuladores e experiências que combinam imagens, movimento e efeitos sensoriais.</p><h2>Salas para parques e espaços culturais</h2><p>Entre os seus projetos estão o Ciné 5D Adventure do Marineland, inaugurado em 2018, e o teatro Attention Menhir! do Parc Astérix. Estas realizações mostram o trabalho em salas onde o ambiente e os efeitos acompanham uma história filmada, tanto em parques de lazer como em museus e espaços de descoberta.</p><h2>A integração na Triotech</h2><p>A 31 de janeiro de 2020, a Triotech anuncia a aquisição da CL Corporation. A empresa francesa acrescenta ao grupo do Québec a sua presença europeia e experiência em ambientes imersivos. Prossegue a atividade com o nome Triotech CL Corp. Division.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+        "entityKey": "marineland-cine-5d-adventure",
+        "displayName": "Ciné 5D Adventure",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "634770df-f4cd-43a5-ac5a-8ae938625f6a"
+          },
+          {
+            "field": "attractionDetails.model",
+            "oldValue": null,
+            "newValue": "Dynamic Seats Theater"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.europarcs.net/parcs/france/marineland/",
+            "newValue": "https://www.trio-tech.com/projects/marineland/"
+          },
+          {
+            "field": "attractionDetails.isAccessibleForReducedMobility",
+            "oldValue": null,
+            "newValue": "true"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-14T18:38:23.175Z",
+      "lastDataIntegrationAt": "2026-11-14T18:58:00.969Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -19471,9 +19471,69 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-items-first-20261114.json",
           "auditEvidence": null,
           "summary": "Six faits de parkItems privés et huit langues : bassins des orques 2000, Antarctica 2002 puis rénovation 2009, arrivée des otaries de Steller 2007, ours polaires 2010, Ciné 5D le 7 avril 2018 avec Arctic 1 ; aucune création de fiche."
+        },
+        {
+          "eventId": "apply-0d548534-70d8-421e-94c3-c7b1387630c8",
+          "appliedAt": "2026-11-14T18:49:03.881Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-items-second-20261114.json",
+          "auditEvidence": null,
+          "summary": "Cinq jalons privés en huit langues : rencontre requins 2011, hôtel avril 2015, lagon juillet 2015, départ des ours juin 2021 et transfert de huit dauphins juillet 2026 ; audit final restant."
+        },
+        {
+          "eventId": "image-4565cb86e5434d81a6eb2710a1ba354a",
+          "appliedAt": "2026-11-14T18:50:56.755Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-20150702-20261114.json",
+          "auditEvidence": null,
+          "summary": "Photographie privée du lagon à sa présentation du 2 juillet 2015, huit langues, source What About Nice vérifiée ; audit restant."
+        },
+        {
+          "eventId": "image-c278b3b532db454bbdaa8faa759ad6db",
+          "appliedAt": "2026-11-14T18:51:11.485Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-hotel-20150702-20261114.json",
+          "auditEvidence": null,
+          "summary": "Photographie privée du Marineland Resort du 2 juillet 2015, huit langues ; contexte de la première saison vérifié, audit restant."
+        },
+        {
+          "eventId": "apply-b60edc15-e8d1-41aa-b055-5f5ea931f40b",
+          "appliedAt": "2026-11-14T18:54:13.230Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-05-cinema-manufacturer-20261114.json",
+          "auditEvidence": null,
+          "summary": "CL Corporation créé après vérification des alias, biographie huit langues ; constructeur historique rattaché au Ciné5D avec modèle et accessibilité sourcés, données privées et audit restant."
+        },
+        {
+          "eventId": "apply-9838a5d4-a935-421b-a3d1-035439a11066",
+          "appliedAt": "2026-11-14T18:57:30.810Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-05-reference-logo-history-images-20261114.json",
+          "auditEvidence": null,
+          "summary": "Logo privé officiel de la division CL Corp importé, huit langues ; deux jalons de 2015 illustrés avec les photographies déjà importées, sans réimport."
+        },
+        {
+          "eventId": "image-25b9b429f6af4173b5fed44aad2c2fb1",
+          "appliedAt": "2026-11-14T18:58:00.969Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-polar-arrival-family-20261114.json",
+          "auditEvidence": null,
+          "summary": "Photographie privée de Flocke et de ses trois petits après leur arrivée au Yorkshire Wildlife Park en juin 2021 ; huit langues, lieu et contexte explicités, audit restant."
         }
       ],
-      "nextAction": "Marineland : 64 éléments, 58 photos parc/éléments, logo, portrait et 4 plans privés ; 12 faits parc + 6 faits parkItems et 3 articles huit langues appliqués. Finir les timelines des items, références/photos et audit final avant publication site/Facebook. Point de reprise : marineland-antibes-current-20261114.json.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Backlog national existant",

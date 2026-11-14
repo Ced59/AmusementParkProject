@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "25b9b429f6af4173b5fed44aad2c2fb1",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+    "path": "park_item/25b9b429f6af4173b5fed44aad2c2fb1",
+    "description": "Flocke et ses petits après leur arrivée depuis Antibes au Yorkshire Wildlife Park, en juin 2021.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 879,
+    "height": 660,
+    "sizeInBytes": 74716,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.yorkshirepost.co.uk/webimg/QVNIMTIxMDY4Mjc4.jpg?crop=3:2,smart&trim=&width=990&quality=70&enable=upscale",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Flocke et ses trois petits près d’un bassin herbeux au Yorkshire Wildlife Park."
+      },
+      {
+        "languageCode": "en",
+        "value": "Flocke and her three cubs beside a grassy pool at Yorkshire Wildlife Park."
+      },
+      {
+        "languageCode": "de",
+        "value": "Flocke und ihre drei Jungen an einem von Gras umgebenen Becken im Yorkshire Wildlife Park."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Flocke en haar drie jongen bij een bassin tussen het gras in Yorkshire Wildlife Park."
+      },
+      {
+        "languageCode": "it",
+        "value": "Flocke e i suoi tre cuccioli accanto a una vasca circondata d’erba allo Yorkshire Wildlife Park."
+      },
+      {
+        "languageCode": "es",
+        "value": "Flocke y sus tres crías junto a una piscina rodeada de hierba en Yorkshire Wildlife Park."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Flocke i jej troje młodych przy basenie otoczonym trawą w Yorkshire Wildlife Park."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Flocke e as suas três crias junto a um tanque rodeado de relva no Yorkshire Wildlife Park."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Flocke et ses petits après leur arrivée depuis Antibes au Yorkshire Wildlife Park, en juin 2021."
+      },
+      {
+        "languageCode": "en",
+        "value": "Flocke and her cubs after arriving from Antibes at Yorkshire Wildlife Park in June 2021."
+      },
+      {
+        "languageCode": "de",
+        "value": "Flocke und ihre Jungen nach ihrer Ankunft aus Antibes im Yorkshire Wildlife Park im Juni 2021."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Flocke en haar jongen na hun aankomst uit Antibes in Yorkshire Wildlife Park in juni 2021."
+      },
+      {
+        "languageCode": "it",
+        "value": "Flocke e i suoi cuccioli dopo l’arrivo da Antibes allo Yorkshire Wildlife Park nel giugno 2021."
+      },
+      {
+        "languageCode": "es",
+        "value": "Flocke y sus crías tras llegar desde Antibes a Yorkshire Wildlife Park en junio de 2021."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Flocke i jej młode po przyjeździe z Antibes do Yorkshire Wildlife Park w czerwcu 2021 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Flocke e as suas crias após a chegada de Antibes ao Yorkshire Wildlife Park, em junho de 2021."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "The Yorkshire Post, 14 juin 2021 — photographe non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Yorkshire Post, 14 June 2021 — photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "The Yorkshire Post, 14. Juni 2021 — Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "nl",
+        "value": "The Yorkshire Post, 14 juni 2021 — fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "it",
+        "value": "The Yorkshire Post, 14 giugno 2021 — fotografo non indicato."
+      },
+      {
+        "languageCode": "es",
+        "value": "The Yorkshire Post, 14 de junio de 2021 — fotógrafo no indicado."
+      },
+      {
+        "languageCode": "pl",
+        "value": "The Yorkshire Post, 14 czerwca 2021 — fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "The Yorkshire Post, 14 de junho de 2021 — fotógrafo não indicado."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T18:57:57.495Z",
+    "updatedAt": "2026-11-14T18:58:00.969Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T18:58:00.969Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false
+}

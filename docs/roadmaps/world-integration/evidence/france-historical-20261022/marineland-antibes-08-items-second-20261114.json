@@ -1,0 +1,478 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "fd34420046726b65dc6b251d6911aff26839531e405a9f448dbbbba11e4a1409",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "0d548534-70d8-421e-94c3-c7b1387630c8",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T18:49:03.8819859Z",
+    "appliedAtUtc": "2026-11-14T18:49:03.8819867Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 5,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5d24264c-05c5-4a14-b4f9-eec481f83bea",
+        "entityKey": "marineland-rencontre-requins-2011",
+        "displayName": "Une rencontre sous l’eau avec les requins",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-rencontre-requins-2011"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "c2b1881c-f785-4acd-9494-996749eb8068"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "c2b1881c-f785-4acd-9494-996749eb8068"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2011"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "0d19c9f7ab0e47db92a0a89a9a629f86"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eine Unterwasserbegegnung mit Haien, en:An underwater encounter with sharks, es:Un encuentro submarino con los tiburones, fr:Une rencontre sous l’eau avec les requins, it:Un incontro sott’acqua con gli squali, nl:Een ontmoeting met haaien onder water, pl:Podwodne spotkanie z rekinami, pt:Um encontro subaquático com tubarões"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2011 ergänzt Marineland sein Tierprogramm um eine Begegnung mit Haien. Teilnehmer steigen in einen Unterwasserkäfig, während Besucher im Tunnel sie beobachten können. Das große Aquarium wird damit auch zum Schauplatz einer betreuten Begegnung mit den Tieren., en:In 2011, Marineland adds a shark encounter to its animal experiences. Participants enter an underwater cage while visitors in the tunnel can watch them, giving the large aquarium a new role as the setting for a supervised encounter., es:En 2011, Marineland incorpora un encuentro con tiburones a sus experiencias con animales. Los participantes descienden a una jaula sumergida mientras los visitantes del túnel pueden observarlos: el gran acuario se convierte también en escenario de un encuentro acompañado., fr:En 2011, Marineland ajoute une rencontre avec les requins à ses expériences animalières. Des visiteurs descendent dans une cage immergée, tandis que ceux du tunnel peuvent les observer : le grand aquarium devient aussi le décor d’une rencontre accompagnée., it:Nel 2011 Marineland aggiunge un incontro con gli squali alle sue esperienze con gli animali. I partecipanti scendono in una gabbia immersa, mentre i visitatori nel tunnel possono osservarli: il grande acquario diventa anche lo scenario di un incontro guidato., nl:In 2011 voegt Marineland een ontmoeting met haaien toe aan zijn dierenactiviteiten. Deelnemers dalen af in een onderwaterkooi, terwijl bezoekers vanuit de tunnel kunnen toekijken. Het grote aquarium krijgt zo ook een rol als decor voor een begeleide ontmoeting., pl:W 2011 roku Marineland wprowadza spotkanie z rekinami. Uczestnicy schodzą do zanurzonej klatki, a zwiedzający tunel mogą ich obserwować. Wielkie akwarium zyskuje w ten sposób dodatkową rolę jako miejsce spotkania ze zwierzętami pod opieką personelu., pt:Em 2011, Marineland acrescenta um encontro com tubarões às suas experiências com animais. Os participantes descem a uma jaula submersa, enquanto os visitantes do túnel podem observá-los: o grande aquário torna-se também o cenário de um encontro acompanhado."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"ParcActu \\u2014 rencontre requins, 6 ao\\u00FBt 2011\",\"Url\":\"https://parcactu.wordpress.com/category/nouveaute/\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"TourMaG \\u2014 nouveaut\\u00E9s de Marineland, 15 avril 2011\",\"Url\":\"https://www.tourmag.com/Marineland-prepare-l-ouverture-de-son-premier-hotel_a44187.html\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6801f4b5-3c7b-466f-a22f-e6b3cd2d71a1",
+        "entityKey": "marineland-hotel-ouverture-201504",
+        "displayName": "Marineland ouvre son premier hôtel",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-hotel-ouverture-201504"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "481a7e33-f817-4a14-b638-293b0a994d7b"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "481a7e33-f817-4a14-b638-293b0a994d7b"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2015"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "4"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "8064e1e1219d4799984822843840ba09"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Marineland eröffnet sein erstes Hotel, en:Marineland opens its first hotel, es:Marineland abre su primer hotel, fr:Marineland ouvre son premier hôtel, it:Marineland apre il suo primo albergo, nl:Marineland opent zijn eerste hotel, pl:Marineland otwiera swój pierwszy hotel, pt:Marineland abre o seu primeiro hotel"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im April 2015 empfängt das Marineland Resort seine ersten Gäste neben dem Meerespark. Die Zimmer greifen bekannte Tiere aus Antibes auf, von Orcas bis zu Eisbären. Das Hotel überträgt die Tierwelt des Parks damit auf die Übernachtung., en:In April 2015, Marineland Resort welcomes its first guests beside the marine park. Its rooms take their themes from Antibes’ emblematic animals, from orcas to polar bears. The hotel extends the park’s animal imagery into overnight accommodation., es:En abril de 2015, Marineland Resort recibe a sus primeros huéspedes junto al parque marino. Sus habitaciones se inspiran en los animales emblemáticos de Antibes, desde las orcas hasta los osos polares. El hotel prolonga así el universo del parque en el alojamiento., fr:En avril 2015, Marineland Resort accueille ses premiers clients à côté du parc marin. Ses chambres reprennent les animaux emblématiques d’Antibes, des orques aux ours polaires. L’hôtel prolonge ainsi l’univers du parc jusque dans l’hébergement., it:Nell’aprile 2015 Marineland Resort accoglie i primi ospiti accanto al parco marino. Le camere si ispirano agli animali simbolo di Antibes, dalle orche agli orsi polari. L’albergo porta così l’immaginario del parco anche negli spazi dedicati al soggiorno., nl:In april 2015 ontvangt Marineland Resort zijn eerste gasten naast het zeepark. De kamers zijn geïnspireerd op de bekende dieren van Antibes, van orka’s tot ijsberen. Het hotel trekt de dierenwereld van het park door naar de overnachting., pl:W kwietniu 2015 roku Marineland Resort przyjmuje pierwszych gości obok parku morskiego. Motywy w pokojach nawiązują do charakterystycznych zwierząt z Antibes, od orek po niedźwiedzie polarne. Hotel przenosi w ten sposób świat parku również do części noclegowej., pt:Em abril de 2015, o Marineland Resort recebe os primeiros hóspedes junto ao parque marinho. Os quartos inspiram-se nos animais emblemáticos de Antibes, das orcas aos ursos-polares. O hotel prolonga assim o universo do parque no alojamento."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"TourMaG \\u2014 ouverture du Marineland Resort, 27 avril 2015\",\"Url\":\"https://www.tourmag.com/Antibes-Marineland-ouvre-son-premier-hotel_a73658.html\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5d2f1655-ba3a-46a3-b227-bb31193d1f95",
+        "entityKey": "marineland-lagoon-ouverture-20150711",
+        "displayName": "Marineland Lagoon ouvre à la baignade",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-lagoon-ouverture-20150711"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "fe54b968-2814-4b1e-9e06-a69e58570c55"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "fe54b968-2814-4b1e-9e06-a69e58570c55"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2015"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "7"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "11"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Marineland Lagoon öffnet zum Baden, en:Marineland Lagoon opens for swimming, es:Marineland Lagoon abre para el baño, fr:Marineland Lagoon ouvre à la baignade, it:Marineland Lagoon apre ai bagnanti, nl:Marineland Lagoon opent voor zwemmers, pl:Marineland Lagoon otwiera kąpielisko, pt:Marineland Lagoon abre aos banhistas"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 11. Juli 2015 eröffnet Marineland Lagoon mit einem Strand und Badebecken neben den Tierbecken. Der neue Bereich verbindet die Atmosphäre einer tropischen Lagune mit der Beobachtung von Delfinen, Schildkröten und Rochen, abseits der großen Showtribünen., en:On 11 July 2015, Marineland Lagoon opens around a beach and swimming pools beside the animal pools. The new area combines a tropical lagoon setting with views of dolphins, turtles and rays, away from the park’s large show stands., es:El 11 de julio de 2015 abre Marineland Lagoon, con una playa y piscinas de baño junto a las de los animales. El nuevo espacio combina un ambiente de laguna tropical con la observación de delfines, tortugas y rayas, separado de las grandes gradas., fr:Le 11 juillet 2015, Marineland Lagoon ouvre autour d’une plage et de bassins de baignade voisins de ceux des animaux. Le nouvel espace associe l’ambiance d’un lagon tropical à l’observation des dauphins, tortues et raies, dans un cadre distinct des grandes tribunes., it:L’11 luglio 2015 apre Marineland Lagoon, con una spiaggia e vasche balneabili accanto a quelle degli animali. La nuova area unisce l’atmosfera di una laguna tropicale all’osservazione di delfini, tartarughe e razze, lontano dalle grandi tribune degli spettacoli., nl:Op 11 juli 2015 opent Marineland Lagoon met een strand en zwembassins naast de dierenbassins. Het nieuwe gebied combineert de sfeer van een tropische lagune met uitzicht op dolfijnen, schildpadden en roggen, buiten de grote showtribunes van het park., pl:11 lipca 2015 roku otwiera się Marineland Lagoon z plażą i basenami kąpielowymi obok basenów dla zwierząt. Nowa strefa łączy atmosferę tropikalnej laguny z obserwacją delfinów, żółwi i płaszczek, z dala od wielkich trybun pokazowych., pt:A 11 de julho de 2015 abre o Marineland Lagoon, com uma praia e piscinas de banho junto aos tanques dos animais. O novo espaço combina o ambiente de uma lagoa tropical com a observação de golfinhos, tartarugas e raias, afastado das grandes bancadas."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"TourMaG \\u2014 Marineland Lagoon, 8 juillet 2015\",\"Url\":\"https://www.tourmag.com/Marineland-inaugure-son-hotel-et-ouvre-Marineland-Lagoon_a74899.html\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"What About Nice \\u2014 pr\\u00E9sentation de Marineland Lagoon en juillet 2015\",\"Url\":\"https://www.whataboutnice.fr/marineland-inaugure-son-hotel-et-son-nouveau-parc/\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c4a0a28e-b095-4d84-a877-ff780d1f1f0b",
+        "entityKey": "marineland-ours-depart-202106",
+        "displayName": "Flocke et ses trois petits quittent Antibes",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-ours-depart-202106"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "ec5f6423-dc54-4dea-95c3-3e9851cfab92"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "ec5f6423-dc54-4dea-95c3-3e9851cfab92"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2021"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Other"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Flocke und ihre drei Jungen verlassen Antibes, en:Flocke and her three cubs leave Antibes, es:Flocke y sus tres crías dejan Antibes, fr:Flocke et ses trois petits quittent Antibes, it:Flocke e i suoi tre cuccioli lasciano Antibes, nl:Flocke en haar drie jongen verlaten Antibes, pl:Flocke i jej troje młodych opuszczają Antibes, pt:Flocke e as suas três crias deixam Antibes"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im Juni 2021 ziehen Eisbärin Flocke und ihre Jungen Yuma, Indiana und Tala in den englischen Yorkshire Wildlife Park. Ihr im europäischen Zuchtprogramm empfohlener Umzug beendet die Haltung von Eisbären im Marineland von Antibes., en:In June 2021, polar bear Flocke and her cubs Yuma, Indiana and Tala move to Yorkshire Wildlife Park in England. Recommended through the European breeding programme, their transfer brings Marineland’s period of keeping polar bears to an end., es:En junio de 2021, la osa polar Flocke y sus crías Yuma, Indiana y Tala se trasladan al Yorkshire Wildlife Park, en Inglaterra. Su traslado, recomendado dentro del programa europeo de reproducción, pone fin a la presencia de osos polares en Marineland., fr:En juin 2021, l’ourse polaire Flocke et ses petits Yuma, Indiana et Tala rejoignent le Yorkshire Wildlife Park, en Angleterre. Leur transfert, recommandé dans le cadre du programme européen d’élevage, met fin à la présence des ours polaires à Marineland., it:Nel giugno 2021 l’orsa polare Flocke e i suoi cuccioli Yuma, Indiana e Tala raggiungono lo Yorkshire Wildlife Park, in Inghilterra. Il trasferimento, raccomandato nell’ambito del programma europeo di riproduzione, conclude la presenza degli orsi polari a Marineland., nl:In juni 2021 verhuizen ijsberin Flocke en haar jongen Yuma, Indiana en Tala naar Yorkshire Wildlife Park in Engeland. Hun overplaatsing, aanbevolen binnen het Europese fokprogramma, betekent het einde van de aanwezigheid van ijsberen in Marineland., pl:W czerwcu 2021 roku niedźwiedzica polarna Flocke i jej młode Yuma, Indiana oraz Tala trafiają do Yorkshire Wildlife Park w Anglii. Przeniesienie, zalecone w ramach europejskiego programu hodowlanego, kończy okres obecności niedźwiedzi polarnych w Marineland., pt:Em junho de 2021, a ursa-polar Flocke e as suas crias Yuma, Indiana e Tala mudam-se para o Yorkshire Wildlife Park, em Inglaterra. A transferência, recomendada no âmbito do programa europeu de reprodução, encerra a presença de ursos-polares em Marineland."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"My Polar Bear Friends \\u2014 fin de la pr\\u00E9sence des ours \\u00E0 Marineland, juin 2021\",\"Url\":\"https://polarbearsusa.blogspot.com/2021/06/end-of-era-at-marineland.html\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Yorkshire Post \\u2014 arriv\\u00E9e de Flocke et de ses petits, 14 juin 2021\",\"Url\":\"https://www.yorkshirepost.co.uk/whats-on/things-to-do/rare-polar-bear-triplets-and-mother-arrive-at-yorkshire-wildlife-park-3272165\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Yorkshire Wildlife Park \\u2014 parcours de Yuma et Indie, 4 juillet 2022\",\"Url\":\"https://www.yorkshirewildlifepark.com/news/polar-bears-on-the-move-at-yorkshire-wildlife-park/\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "b55140ea-39d4-4b60-950e-b49f0e8f703b",
+        "entityKey": "marineland-dauphins-transfert-20260723",
+        "displayName": "Huit dauphins sont transférés en Espagne",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-dauphins-transfert-20260723"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "c6210721-d0a6-44e7-84d0-3b7e7b864b33"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "c6210721-d0a6-44e7-84d0-3b7e7b864b33"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "7"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "23"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Other"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Acht Delfine werden nach Spanien gebracht, en:Eight dolphins are transferred to Spain, es:Ocho delfines son trasladados a España, fr:Huit dauphins sont transférés en Espagne, it:Otto delfini vengono trasferiti in Spagna, nl:Acht dolfijnen verhuizen naar Spanje, pl:Osiem delfinów trafia do Hiszpanii, pt:Oito golfinhos são transferidos para Espanha"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:In der Nacht vom 22. auf den 23. Juli 2026 verlassen acht der zwölf Delfine Antibes in Richtung Selwo Marina bei Málaga. Es ist der erste Abtransport von Walen und Delfinen seit der Parkschließung; die geplante spätere Aufnahme in Beauval wird im August aufgegeben., en:Overnight on 22–23 July 2026, eight of the twelve dolphins leave Antibes for Selwo Marina near Málaga. This first departure of cetaceans follows the park’s closure; the plan for their subsequent accommodation at Beauval is abandoned in August., es:En la noche del 22 al 23 de julio de 2026, ocho de los doce delfines dejan Antibes rumbo a Selwo Marina, cerca de Málaga. Es la primera salida de cetáceos desde el cierre del parque; el proyecto de acogerlos después en Beauval se abandona en agosto., fr:Dans la nuit du 22 au 23 juillet 2026, huit des douze dauphins quittent Antibes pour Selwo Marina, près de Malaga. Ce premier départ de cétacés intervient après la fermeture du parc ; le projet d’accueil ultérieur à Beauval sera abandonné en août., it:Nella notte tra il 22 e il 23 luglio 2026, otto dei dodici delfini lasciano Antibes per Selwo Marina, vicino a Málaga. È la prima partenza di cetacei dopo la chiusura del parco; il progetto di successiva accoglienza a Beauval viene abbandonato in agosto., nl:In de nacht van 22 op 23 juli 2026 vertrekken acht van de twaalf dolfijnen uit Antibes naar Selwo Marina bij Málaga. Het is het eerste vertrek van walvisachtigen sinds de parksluiting; het plan voor latere opvang in Beauval vervalt in augustus., pl:W nocy z 22 na 23 lipca 2026 roku osiem z dwunastu delfinów opuszcza Antibes i trafia do Selwo Marina koło Malagi. To pierwszy wyjazd waleni od zamknięcia parku; plan późniejszego przyjęcia zwierząt w Beauval zostaje porzucony w sierpniu., pt:Na noite de 22 para 23 de julho de 2026, oito dos doze golfinhos deixam Antibes rumo ao Selwo Marina, perto de Málaga. É a primeira saída de cetáceos desde o encerramento do parque; o projeto de posterior acolhimento em Beauval é abandonado em agosto."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Tribunal administratif de Nice \\u2014 autorisations vers Selwo Marina et Valence, 21 juillet 2026\",\"Url\":\"https://nice.tribunal-administratif.fr/decisions-de-justice/dernieres-decisions/transfert-des-dauphins-de-marineland-en-espagne-le-juge-des-referes-rejette-les-demandes-formulees-par-l-association-sea-shepherd-france\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"20 Minutes \\u2014 renoncement de Beauval, 28 ao\\u00FBt 2026\",\"Url\":\"https://www.20minutes.fr/planete/4241482-20260828-apres-renoncement-beauval-vont-devenir-19-dauphins-captifs-francais-devaient-etre-transferes\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Parcs \\u0026 Loisirs \\u2014 d\\u00E9part des huit dauphins, juillet 2026\",\"Url\":\"https://www.parcsetloisirs.fr/actualite/marineland-antibes-transfert-dauphins-2\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"TF1 Info \\u2014 arriv\\u00E9e \\u00E0 Selwo Marina, 23 juillet 2026\",\"Url\":\"https://www.tf1info.fr/environnement-ecologie/les-dauphins-vont-bien-zoom-sur-selwo-marina-ce-parc-espagnol-ou-sont-arrives-les-huit-cetaces-d-antibes-2454625.html\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}
