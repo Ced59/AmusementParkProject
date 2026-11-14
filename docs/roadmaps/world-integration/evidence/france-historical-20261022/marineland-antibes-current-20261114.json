@@ -3,7 +3,7 @@
   "entryId": "FR-candidate-d1ef8ca467e651",
   "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
   "owner": "Conversation France",
-  "checkpointAtUtc": "2026-11-14T18:58:38.882Z",
+  "checkpointAtUtc": "2026-11-14T19:14:11.141Z",
   "partial": true,
   "priorState": "64 existing items with eight-language descriptions; 57 park/item photos plus logo, founder portrait and four official maps, private. Never recreate these.",
   "recoveredHistoricalOperations": 19,
@@ -133,6 +133,48 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-05-reference-logo-history-images-20261114.json"
+    },
+    {
+      "stem": "03-access-polar-date",
+      "operationId": "827f8814-10e8-4a9c-83a3-e022e4bdae41",
+      "appliedAtUtc": "2026-11-14T19:02:21.8724792Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-03-access-polar-date-20261114.json"
+    },
+    {
+      "stem": "08-polar-article",
+      "operationId": "8c92508e-f82c-48f0-a0c5-14792f8582bd",
+      "appliedAtUtc": "2026-11-14T19:09:22.4247731Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-polar-article-20261114.json"
+    },
+    {
+      "stem": "03-access-provenance",
+      "operationId": "5742977d-0ddb-4f59-9e39-e3e4f0f1c2fb",
+      "appliedAtUtc": "2026-11-14T19:11:41.9531854Z",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-03-access-provenance-20261114.json"
     }
   ],
   "newImage": {
@@ -308,5 +350,20 @@
     "private": true,
     "aliasesResolvedBeforeCreation": true
   },
-  "historyDiagnosticsIsOlderThanLatestFacts": true
+  "historyDiagnosticsIsOlderThanLatestFacts": true,
+  "developedPrivateArticles": 4,
+  "fullAuditExport": {
+    "exportedAtUtc": "2026-11-14T19:12:29.5036951Z",
+    "localPath": "/workspace/france-historical-20261022/marineland-antibes/recovery-20261114/09-final-full-export.json",
+    "complete": true,
+    "auditComplete": false
+  },
+  "projectedCompleteness": {
+    "verifiedAtUtc": "2026-11-14T19:09:42.7829333Z",
+    "completenessScore": 95,
+    "earnedPoints": 97,
+    "applicableMaxPoints": 102,
+    "publicationBlockers": []
+  },
+  "nextWork": "Audit complet sur export du 14 novembre 19:12:29 UTC ; revue des textes et compléments ciblés des photos/cartes. Ne pas refaire un export complet routinier. Score projeté 95, seuil de publication non atteint. Aucun site ni Facebook publié."
 }

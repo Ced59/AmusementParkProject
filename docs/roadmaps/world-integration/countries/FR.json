@@ -18500,7 +18500,7 @@
         "Marineland Côte d’Azur"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-14T18:58:00.969Z",
+      "lastDataIntegrationAt": "2026-11-14T19:11:41.953Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -19531,6 +19531,36 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-polar-arrival-family-20261114.json",
           "auditEvidence": null,
           "summary": "Photographie privée de Flocke et de ses trois petits après leur arrivée au Yorkshire Wildlife Park en juin 2021 ; huit langues, lieu et contexte explicités, audit restant."
+        },
+        {
+          "eventId": "apply-827f8814-10e8-4a9c-83a3-e022e4bdae41",
+          "appliedAt": "2026-11-14T19:02:21.872Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-03-access-polar-date-20261114.json",
+          "auditEvidence": null,
+          "summary": "Conditions historiques de quatre expériences en huit langues, source officielle 2022 ; première présentation publique des ours corrigée au 6 mai 2010, distincte de leur arrivée le 23 avril."
+        },
+        {
+          "eventId": "apply-8c92508e-f82c-48f0-a0c5-14792f8582bd",
+          "appliedAt": "2026-11-14T19:09:22.424Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-polar-article-20261114.json",
+          "auditEvidence": null,
+          "summary": "Article développé sur les ours polaires appliqué en huit langues au fait existant de juin 2021 ; arrivée de 2010 et départ vers le Yorkshire illustrés par des photographies datées, contenu privé."
+        },
+        {
+          "eventId": "apply-5742977d-0ddb-4f59-9e39-e3e4f0f1c2fb",
+          "appliedAt": "2026-11-14T19:11:41.953Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-03-access-provenance-20261114.json",
+          "auditEvidence": null,
+          "summary": "Provenance officielle restaurée pour les sept conditions historiques de quatre expériences ; dates initiales connues conservées, nouvelle vérification datée et textes huit langues inchangés."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
