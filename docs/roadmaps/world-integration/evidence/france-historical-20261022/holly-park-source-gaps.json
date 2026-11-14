@@ -1,0 +1,272 @@
+{
+  "atUtc": "2026-10-23T01:01:24.607589+00:00",
+  "stage": "step5coveragefromverifiedimports;pre-final-export",
+  "parkId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+  "ownedImages": 18,
+  "sharedImages": 4,
+  "officialCurrentLogo": true,
+  "generalDistinctPhotographs": 2,
+  "originalPromotionalComposites": 2,
+  "generalPhotoMinimumGap": {
+    "achieved": 2,
+    "target": 5,
+    "reason": "Twoadequatebroadsiteviews;remainingcleanoriginalsareitem-focused,officialcompositesnotcountedasphotographs,andadditionalRCDB/Tripsnpicsviewsbearsignatures. Noquota-paddingduplicateorcrop.",
+    "sourcesSearched": [
+      "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+      "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+      "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+      "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+      "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+    ]
+  },
+  "importantItems": [
+    {
+      "name": "Alpina Bobs",
+      "images": 3,
+      "reason": "Bothcoastersestablishedparkidentityanddocumentedsuccessivehistories."
+    },
+    {
+      "name": "Family Coaster",
+      "images": 3,
+      "reason": "Bothcoastersestablishedparkidentityanddocumentedsuccessivehistories."
+    }
+  ],
+  "missingOwnerImages": [
+    {
+      "id": "02c24b8a-a97f-4ab8-a461-7438b701605d",
+      "name": "Bumper Boats",
+      "reason": "Wholeofficialmontageonly; usableindividualTrips’n’Picsphotohasvisiblethird-partywatermark.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    },
+    {
+      "id": "ad969680-88e5-4754-a121-644f78fd7cb4",
+      "name": "Petit Train",
+      "reason": "ExactyellowtrainpicturedinTrips’n’Picsbutwatermarked;oldofficialgalleryoriginalsunavailable,remaining120x90thumbstoolow.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    },
+    {
+      "id": "1423cbc1-1049-4c1c-bca6-797adfafe079",
+      "name": "Chevaux galopants",
+      "reason": "IndividualSoquetridephotosinTrips’n’Picsbearthird-partywatermarks. Officialmontagesnotreusedasfakeitemcoverage.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    },
+    {
+      "id": "6c30c408-104d-4e23-9740-2cbc95e99598",
+      "name": "Enterprise",
+      "reason": "CoastersWorldHolly-specificImageshackphotodead404;officialpromotionalmontageandsmallbackgroundviewonly. OtherEnterprisephotosarenotthisinstallation.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    },
+    {
+      "id": "2d6eb5f1-f574-4061-9647-07aea7aa018b",
+      "name": "Toboggan aquatique",
+      "reason": "Visibleinofficial2005composite;noindependentusablephotographrecoveredfromarchives/gallery/press.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    },
+    {
+      "id": "f8f11136-a17b-4bcd-8fc8-b409258516ce",
+      "name": "Cinéma 180°",
+      "reason": "Historicalticketingconfirmsattractionbutnophotoorprecisebuildingidentified. Officialfilm.htmlispromotionalvideo,notcinemaevidence.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    },
+    {
+      "id": "9c530df8-5a71-4ce0-a503-fc3ad36dc325",
+      "name": "Pause Café",
+      "reason": "Officialrestaurant/servicespageconfirmsmenu;historicaldedicatedresto3.png404.Nootherfoodstructureassignedwithoutidentity.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    },
+    {
+      "id": "5d24673a-4eb9-4bd9-97b7-32b24ff2a9f3",
+      "name": "Parking de Holly Park",
+      "reason": "OSMpolygonconfirmshistoricalcarpark,butnotaphotograph;noidentifiedgroundphoto.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    },
+    {
+      "id": "89c92b37-8199-4d4a-9f09-b1ba374d2fa6",
+      "name": "Aire de pique-nique",
+      "reason": "Officialservicespagedocumentsfacility;notpreciselyidentifiableinphotos,notreplacedwithgenericpicnictables.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    },
+    {
+      "id": "da9dbcba-729d-4faa-9ca0-945724cd0d6a",
+      "name": "Toilettes",
+      "reason": "Officialpageconfirmsaccessibletoilets;noidentifiedphotographorspecificbuilding.",
+      "sourcesSearched": [
+        "Archived official site2001-2015,CDXHTMLandimageinventories,2005/2011/2013promotionalassets and120x90gallerythumbnails",
+        "Contemporary Trips’n’Pics2008report andCoastersWorld2009firstHollypost (laterPapéapartkeptseparate)",
+        "RCDBoriginalcontributorphotographs,MartinValt2011,RichardBannister2008/2010,MartijnVenmans2012",
+        "FranceWeek-endHollygallery (upload2018isnotcapturedatetopretendparkopen)",
+        "Tourism/localpresssearches,Fnacticketing,CampingFrance,Sorties-enfants,Flickrtags(homonymsfiltered)"
+      ]
+    }
+  ],
+  "officialMaps": {
+    "acceptedAnnualEditions": [],
+    "notApplicableCurrentYear": "Permanentlyclosedafter2014;no2026operatingmap.",
+    "research": "OfficialCDXallavailableHTMLand124imagekeys;map/planqueriesinarchives,specialistandtourism. archive-carte.jpg600x438and535x394officialvariantareROADACCESSmaps,notonsiteparkplansandnotfalselyassignedannualeditions. Noonsiteannualeditionrecovered."
+  },
+  "referenceAudit": {
+    "Soquet": "ExistingglobalID,8specificbiographiesand3publicimagespreserved;alreadycheckedwithFami/Florida.",
+    "AntonSchwarzkopf": "8existingbiographiespersonallyread,publiclogo;manufacturerhistoryandspecialtiesratherthanattractionexperiencetext. Sharedrecordpreserved.",
+    "DPV": "Explicitsharedreference8languagefactualrewriteapplied,separatelyreviewedofficialDanielPinfari1985/1989/1996ventures;notrewrittenaroundHolly. NohistoricalDPVlogoestablished;currentPinfariRClogonotsubstituted.",
+    "operatorFounder": "TLLOISIRSaddress/activitymatchinsufficientdirectbrandlink;statutes/legalnoticeschecked,nofounderoroperatorinvented."
+  },
+  "fixedItemCoordinates": {
+    "located": 3,
+    "total": 19,
+    "gaps": [
+      {
+        "id": "dd1bf9f0-635b-431f-8d07-974607a335c2",
+        "name": "Ballade 1900",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "02c24b8a-a97f-4ab8-a461-7438b701605d",
+        "name": "Bumper Boats",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "ad969680-88e5-4754-a121-644f78fd7cb4",
+        "name": "Petit Train",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "1423cbc1-1049-4c1c-bca6-797adfafe079",
+        "name": "Chevaux galopants",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "6c30c408-104d-4e23-9740-2cbc95e99598",
+        "name": "Enterprise",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "1aa79203-c786-45f8-8933-0ed519a646da",
+        "name": "Autos tamponneuses",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "33784c90-9db9-4ddc-8ee3-b69262f952df",
+        "name": "Manège pour enfants",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "2d6eb5f1-f574-4061-9647-07aea7aa018b",
+        "name": "Toboggan aquatique",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "bd54d5dd-64a6-4fdf-9447-a1279a2ccf30",
+        "name": "Petits bateaux à manivelles",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "c656885d-aab8-4d84-b0fa-59539ecef57c",
+        "name": "Structures gonflables",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "f8f11136-a17b-4bcd-8fc8-b409258516ce",
+        "name": "Cinéma 180°",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "9c530df8-5a71-4ce0-a503-fc3ad36dc325",
+        "name": "Pause Café",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "dd509622-85f2-4e22-aed8-ae9222cd4cab",
+        "name": "Entrée de Holly Park",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "89c92b37-8199-4d4a-9f09-b1ba374d2fa6",
+        "name": "Aire de pique-nique",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "da9dbcba-729d-4faa-9ca0-945724cd0d6a",
+        "name": "Toilettes",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      },
+      {
+        "id": "bfdb2e48-07a1-4920-9383-3e15a1f3ef6f",
+        "name": "Château de la Grifferaie",
+        "reason": "RCDB/OSMhistoricpolygon/officialroadmaps/photographsinsufficienttogeolocatethisfixedownerprecisely;noautomaticpark-centrepoint."
+      }
+    ]
+  },
+  "accessConditions": {
+    "provenOwner": "Alpina Bobs",
+    "source": "Actual2011operatorboardMartinValtRCDB41245",
+    "covered": "140cmunaccompanied,120cmaccompanied,pregnancyandheartcontraindicationsinstructuredfields. Adultageminunknown.",
+    "other12Attractions": "Noadditionallegibleowner-specificconditionrecoveredfromofficialarchives/signs;ticketingagebandsdonotproveindividualrestrictions."
+  },
+  "shortEditorialExceptions": {
+    "basis": "Actualarchivesearchproduceslimitedsetting/appearanceandhistoricalidentity. Eachnewitemhas8personallywrittenversions;noinventedstoryorpaddingtohitwordbands.",
+    "coasters": "2h2/3pprovided;shorterthanmajorreferenceparkbecauseonlyspecificperiodfactsandsceneryareknown.",
+    "gardenRides": "Ballade1900,BumperBoats,PetitTrain2h2/3p;otherplay/water/thrillrides2h2/2pfromspecificvisualevidence.",
+    "cinema": "Oneconciseparagraph:only180°offerproved;noprogramme/building/storyinvented.",
+    "services": "Shortfactualfacilitynotices;PauseCafé1h2/1p;châteauexterior2h2/2pwithoutunprovedinteriorvisits."
+  },
+  "steps6and7": {
+    "openingHours": "Notapplicable:closedpark;noactivehours/eventscreated.",
+    "pricing": "Notapplicable:closedpark;historicalticketpricesnotrepresentedcurrent."
+  },
+  "historyImageFallbacks": "Seveneventsandonearticleusecorrectowner/periodimages. Actual2018JetStarphotofoundbutrejectedduetoCoasterriderwatermark;2011Alpinaoverallcaptiondatesviewexplicitly. Actualopening/closureceremonyphotosnotrecovered;officialperiodimageryretainedascontext.",
+  "finalSource": "09-fresh-full-export.json"
+}

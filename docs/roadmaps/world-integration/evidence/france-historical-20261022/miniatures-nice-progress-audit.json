@@ -1,0 +1,724 @@
+{
+  "entryId": "FR-candidate-2f3fddd5eab60a",
+  "parkId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+  "name": "Parc des Miniatures de Nice",
+  "checkedAtUtc": "2026-11-02T18:49:11.722576+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "contentAuditPassed": false,
+  "existingCorpusAuditPassed": true,
+  "publicationAuditPassed": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "publicationAttempted": false,
+  "facebookAttempted": false,
+  "dataIntegrationEvents": 31,
+  "lastDataIntegrationAtUtc": "2026-11-02T18:47:12.7327493Z",
+  "lastIntegrationEventId": "apply-b1c81a70-1291-4cdb-bdc4-030f86274b70",
+  "projectedCompleteness": {
+    "completenessScore": 76,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 92,
+    "earnedPoints": 70,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-02T18:43:38.9367791Z",
+    "items": 22,
+    "zones": 0,
+    "attractions": 19,
+    "attractionStatuses": {
+      "Removed": 19
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 17,
+    "attractionsWithImage": 11,
+    "attractionImageGaps": [
+      {
+        "id": "e721b859-3be6-4b13-a018-701bfa368ea6",
+        "name": "Cathédrale Saint-Nicolas"
+      },
+      {
+        "id": "10d2cca5-ab50-40c8-8ddd-29bfc5161d92",
+        "name": "Cathédrale Sainte-Réparate"
+      },
+      {
+        "id": "9f647185-5645-4b1c-9e1c-6d0746f1ad9b",
+        "name": "Gare du PLM"
+      },
+      {
+        "id": "8c7d1f7d-3bb2-4c14-8efe-f54f8076e4a3",
+        "name": "Gare du Sud"
+      },
+      {
+        "id": "e7bc6700-e3ab-480d-96d3-f5560569a242",
+        "name": "Musée d’art moderne et d’art contemporain"
+      },
+      {
+        "id": "db160f67-a4be-48b6-ba72-5cd0734e7f86",
+        "name": "Trains miniatures"
+      },
+      {
+        "id": "b35f20f0-c2a1-4f98-9ce1-d2d6d56a9bff",
+        "name": "Église Saint-François-de-Paule"
+      },
+      {
+        "id": "2efdc16c-9bb7-4d3b-bfe5-5bfb07bf82f3",
+        "name": "Église Saint-Martin-Saint-Augustin"
+      }
+    ],
+    "ownedImages": 18,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "abb3e446-0eca-4111-a926-6b5b9b22fc49",
+        "name": "Abbaye et église Saint-Pons",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d8e88749-b4b2-456d-82e4-60fe6ab8be8a",
+        "name": "Amphithéâtre de Cemenelum",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d8759365-284a-4ccf-b800-83f791b6078c",
+        "name": "Boutique",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "e721b859-3be6-4b13-a018-701bfa368ea6",
+        "name": "Cathédrale Saint-Nicolas",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "10d2cca5-ab50-40c8-8ddd-29bfc5161d92",
+        "name": "Cathédrale Sainte-Réparate",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "fc697892-add4-4695-b550-0f764e0fa185",
+        "name": "Château de Nice",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e5920094-37b8-4e50-9d3d-8a2bf36eb916",
+        "name": "Cours Saleya",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "ac11b62c-f49c-421d-862b-7051a120a2cd",
+        "name": "Forum antique",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "9f647185-5645-4b1c-9e1c-6d0746f1ad9b",
+        "name": "Gare du PLM",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "8c7d1f7d-3bb2-4c14-8efe-f54f8076e4a3",
+        "name": "Gare du Sud",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "974df2cd-c0d6-40a5-afab-c787ca7247c4",
+        "name": "Hôtel Negresco",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "2e1aaf14-1c93-4292-8b00-fede2870fa8a",
+        "name": "Moulin à blé",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e7bc6700-e3ab-480d-96d3-f5560569a242",
+        "name": "Musée d’art moderne et d’art contemporain",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "2bdf06e2-824c-4bdb-95fd-22f8ee620719",
+        "name": "Parking",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "eb578dbb-66db-446d-8f55-007fd6aba96a",
+        "name": "Port Lympia",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "42a7be36-f044-4439-9a26-ebb3d9983611",
+        "name": "Restaurant",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "5cd64ce6-86ac-4d43-ac6b-f8c59baa9c53",
+        "name": "Siège de Nice de 1543",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "342bef1d-5c11-41e5-a6e9-92f448c53dcc",
+        "name": "Temples diptère et à antes",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "db160f67-a4be-48b6-ba72-5cd0734e7f86",
+        "name": "Trains miniatures",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "c0dcb48e-3431-49e6-8025-14e72b543b7a",
+        "name": "Villa Masséna",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b35f20f0-c2a1-4f98-9ce1-d2d6d56a9bff",
+        "name": "Église Saint-François-de-Paule",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "2efdc16c-9bb7-4d3b-bfe5-5bfb07bf82f3",
+        "name": "Église Saint-Martin-Saint-Augustin",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "abb3e446-0eca-4111-a926-6b5b9b22fc49",
+        "name": "Abbaye et église Saint-Pons",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d8e88749-b4b2-456d-82e4-60fe6ab8be8a",
+        "name": "Amphithéâtre de Cemenelum",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d8759365-284a-4ccf-b800-83f791b6078c",
+        "name": "Boutique",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "e721b859-3be6-4b13-a018-701bfa368ea6",
+        "name": "Cathédrale Saint-Nicolas",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "10d2cca5-ab50-40c8-8ddd-29bfc5161d92",
+        "name": "Cathédrale Sainte-Réparate",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "fc697892-add4-4695-b550-0f764e0fa185",
+        "name": "Château de Nice",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e5920094-37b8-4e50-9d3d-8a2bf36eb916",
+        "name": "Cours Saleya",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "ac11b62c-f49c-421d-862b-7051a120a2cd",
+        "name": "Forum antique",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "9f647185-5645-4b1c-9e1c-6d0746f1ad9b",
+        "name": "Gare du PLM",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "8c7d1f7d-3bb2-4c14-8efe-f54f8076e4a3",
+        "name": "Gare du Sud",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "974df2cd-c0d6-40a5-afab-c787ca7247c4",
+        "name": "Hôtel Negresco",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "2e1aaf14-1c93-4292-8b00-fede2870fa8a",
+        "name": "Moulin à blé",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e7bc6700-e3ab-480d-96d3-f5560569a242",
+        "name": "Musée d’art moderne et d’art contemporain",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "2bdf06e2-824c-4bdb-95fd-22f8ee620719",
+        "name": "Parking",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "eb578dbb-66db-446d-8f55-007fd6aba96a",
+        "name": "Port Lympia",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "42a7be36-f044-4439-9a26-ebb3d9983611",
+        "name": "Restaurant",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "5cd64ce6-86ac-4d43-ac6b-f8c59baa9c53",
+        "name": "Siège de Nice de 1543",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "342bef1d-5c11-41e5-a6e9-92f448c53dcc",
+        "name": "Temples diptère et à antes",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "db160f67-a4be-48b6-ba72-5cd0734e7f86",
+        "name": "Trains miniatures",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "c0dcb48e-3431-49e6-8025-14e72b543b7a",
+        "name": "Villa Masséna",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b35f20f0-c2a1-4f98-9ce1-d2d6d56a9bff",
+        "name": "Église Saint-François-de-Paule",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "2efdc16c-9bb7-4d3b-bfe5-5bfb07bf82f3",
+        "name": "Église Saint-Martin-Saint-Augustin",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 6,
+    "parkHistory": 6,
+    "itemHistory": 0,
+    "historyWithSource": 6,
+    "historyWithImage": 1,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "parkDescriptionLanguages": 8,
+    "itemsWithEightDescriptions": 17,
+    "images": 18,
+    "authenticLogo": false,
+    "officialMapEditions": 0,
+    "canonicalDraftFacts": 6,
+    "canonicalRetractedFacts": 1,
+    "articleLanguages": 8,
+    "corpusFields": 834,
+    "allRequiredContentPresent": false
+  },
+  "roundtrip": {
+    "freshExportedAtUtc": "2026-11-02T18:43:38.9367791Z",
+    "checkedAtUtc": "2026-11-02T18:43:53.621206+00:00",
+    "comparedValues": 2266,
+    "unexplainedDifferences": [],
+    "exportContractNotes": [
+      "Year/month-only opening/closing dates are dateText withnulltypeddate; no inventedday.",
+      "Item keys and itemhistoryaliases exported as actualIDs. Unexposed inputitemId alias excluded; parkItemId/ownerId verified.",
+      "Image enum casing normalized. Importtimestamps/path/exifMetadata not exported; originalreceipts preserved.",
+      "Eight-language field/source ordering normalized; all persistedcontent otherwisecompared."
+    ],
+    "fullExportSha256": "6b0d676c8b62179a282a602f4bb3441a5908c799d2281c3da5f84d79e66515e7"
+  },
+  "corpus": {
+    "reviewedAtUtc": "2026-11-02T18:49:11.722576+00:00",
+    "fields": 834,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "personallyAuthoredAndReviewed": true,
+    "method": "Entire existing text corpus reviewed in the eight languages, including individual models, timeline, developed article, image descriptions, alternative texts, captions and source credits. Fresh export exactly matched 2266 accepted values. Headings and names removed for independent paragraph/sentence comparisons; all three matches personally adjudicated. Source images viewed without edits.",
+    "automaticEncodingIssues": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicates": 0,
+    "crossCorpusCandidates": 3,
+    "actionableCrossCorpusIssues": 0,
+    "decisions": [
+      {
+        "index": 0,
+        "language": "es",
+        "firstPath": "articles.parc-miniatures-nice-fabron-sauvaigo-histoire.blocks.7.texts.es",
+        "secondPath": "articles.parc-miniatures-nice-fabron-sauvaigo-histoire.blocks.9.texts.es",
+        "decision": "Caption and developed narrative name the same photographer and exact 7 March 1993 visit date; genuine event attribution, not transferable boilerplate.",
+        "actionable": false
+      },
+      {
+        "index": 1,
+        "language": "nl",
+        "firstPath": "items.5cd64ce6-86ac-4d43-ac6b-f8c59baa9c53.descriptions.nl",
+        "secondPath": "images.7dd81b23c6924b9d9a146d628376964e.captions.nl",
+        "decision": "The same historical scene is explicitly identified as the siege of Nice in 1543 in the description and its photograph caption; proper event identity retained.",
+        "actionable": false
+      },
+      {
+        "index": 2,
+        "language": "pt",
+        "firstPath": "articles.parc-miniatures-nice-fabron-sauvaigo-histoire.blocks.7.texts.pt",
+        "secondPath": "articles.parc-miniatures-nice-fabron-sauvaigo-histoire.blocks.9.texts.pt",
+        "decision": "Caption and developed narrative name the same photographer and exact 7 March 1993 visit date; genuine event attribution, not transferable boilerplate.",
+        "actionable": false
+      }
+    ],
+    "corrections": [
+      "Localized the attribution labels and dates for all18existingphotos/brochurepanels;126nonFrenchcreditfields.",
+      "Replaced generic brochure invitation caption with concrete squirrel/columnedarch photomontage description inall8languages plusFrenchdescription."
+    ],
+    "correctionApply": {
+      "operationId": "b1c81a70-1291-4cdb-bdc4-030f86274b70",
+      "appliedAtUtc": "2026-11-02T18:47:12.7327493Z",
+      "verifiedFullDiffMatch": true,
+      "freshExportSource": "09-full-export.json"
+    },
+    "limits": "Five empty private item descriptions remain a content gap; existing-text review does not mean full inventory or full integration completed."
+  },
+  "sourceGaps": {
+    "entryId": "FR-candidate-2f3fddd5eab60a",
+    "parkId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+    "checkedAtUtc": "2026-11-02T18:49:11.722576+00:00",
+    "status": "Audited partial, publication blocked",
+    "sourcesReviewed": [
+      {
+        "label": "Société nationale d’horticulture de France — Jardins d’acclimatation sur la Riviera",
+        "url": "https://www.snhf.org/jardins-dacclimatation-riviera/"
+      },
+      {
+        "label": "Nice-Matin, Véronique Mars, 11 novembre 2018 — Les grandes réalisations de Jacques Médecin",
+        "url": "https://www.nicematin.com/vie-locale/jacques-medecin-20-ans-apres-les-grandes-realisation-dun-maire-batisseur-adule-ou-critique-275911"
+      },
+      {
+        "label": "Bibliothèque patrimoniale Romain Gary — Fonds Jean-Luc Sauvaigo, catalogue public CCFr",
+        "url": "https://ccfr.bnf.fr/portailccfr/ark:/16871/004b79791294"
+      },
+      {
+        "label": "Didier Tougard — photographies du 7 mars 1993 et prospectus du Parc des Miniatures",
+        "url": "https://didiertougard.blogspot.com/2020/04/tourisme-sur-la-cote-dazur-les-sites.html"
+      },
+      {
+        "label": "NiceRendezVous, 26 octobre 2005 — Dernier acte pour le Parc des Miniatures",
+        "url": "https://nice-rendezvous.blogspot.com/2005/10/nice-dernier-acte-pour-le-parc-des.html?m=0"
+      },
+      {
+        "label": "Jean Mas — Ombre, catalogue des expositions de l’artiste",
+        "url": "https://www.jeanmas.com/ombre"
+      }
+    ],
+    "identity": {
+      "park": "Former miniature park in Fabron, distinct from Zygofolis, current Jardin Impératrice Eugénie/Villa Les Tropiques and current bus stop. Eight official global Park/Standalone alias searches reviewed before creation.",
+      "opening": "1989-03 Month, directly established by Nice-Matin11November2018",
+      "closing": null,
+      "closureConflict": "Retrospectivevisitor1995; publicmunicipalarchivalcataloguejudicialliquidation1996; contemporary2005NRVrelative7years suggests1998. No legaldateinvented asvisitorclosure.",
+      "excluded": [
+        "RealNicehistoricmonumentsasstandalone",
+        "NegrescoasactualHotelservice",
+        "Modeltrainsaspassengertransport",
+        "Unidentifiedumbrellashopmodelasparkretailservice",
+        "Brochurephotomontagesquirrelandsdovesasrealanimalexhibits"
+      ]
+    },
+    "inventory": {
+      "items": 22,
+      "miniatureExhibits": 19,
+      "services": 3,
+      "actualExhaustiveTotal": null,
+      "completeInventoryProven": false,
+      "reason": "152modelscommissionedbySauvaigoandhundredsreported;19distinctpubliclysourcedexhibitsidentified.33cataloguedarchivalplansnotreadandnotproofallwerebuilt. Pairedtemplesoneinstallation;SaintPonsabbey/churchoneensemble;threebaroquechurchesindividuallyidentified.",
+      "additionalExhibition": "Les ombres de Jean Mas,1990: sourced temporaryexhibition recordedasParkhistoryfact, notinventedpermanentattraction."
+    },
+    "descriptions": {
+      "parkLanguages": 8,
+      "itemsWithEightDescriptions": 17,
+      "itemsTotal": 22,
+      "attractionsWithEightDescriptions": 17,
+      "attractionsTotal": 19,
+      "missing": [
+        "Boutique",
+        "Gare du PLM",
+        "Gare du Sud",
+        "Parking",
+        "Restaurant"
+      ],
+      "missingReason": "GareduSudandPLMconfirmedbycontemporary2005NRV,butunlabelledoriginalstationphotocannotbesafelyassigned. ReferenceimagechecksfailedSNCF503/CPAPHIL403; no guess. Restaurant,shopandfreeparkingconfirmedbyoneoriginalbrochurelineonly; nophoto,menu,buildingorproductdetailsinvented.",
+      "shorterSourcedExceptions": [
+        {
+          "id": "e7bc6700-e3ab-480d-96d3-f5560569a242",
+          "name": "Musée d’art moderne et d’art contemporain",
+          "wordCounts": {
+            "fr": 97,
+            "en": 88,
+            "de": 86,
+            "nl": 88,
+            "it": 84,
+            "es": 94,
+            "pl": 73,
+            "pt": 87
+          },
+          "reason": "MAMAC model is explicitly identified and pictured in one small original brochure panel. Genuine research found no further model-specific detail. Concise observed white volumes and curved glazed passages retained in two headings/three paragraphs, without filler or copied full-size museum history."
+        }
+      ]
+    },
+    "media": {
+      "nativeImages": 18,
+      "actualVisitPhotos": 12,
+      "brochurePanels": 6,
+      "parkOwned": 7,
+      "attractionImageOwners": 11,
+      "attractionsTotal": 19,
+      "attractionsWithThreePhotos": 0,
+      "missingOwnedImages": [
+        "Cathédrale Saint-Nicolas",
+        "Cathédrale Sainte-Réparate",
+        "Gare du PLM",
+        "Gare du Sud",
+        "Musée d’art moderne et d’art contemporain",
+        "Trains miniatures",
+        "Église Saint-François-de-Paule",
+        "Église Saint-Martin-Saint-Augustin"
+      ],
+      "notes": "Threechurchesappearinthegeneralparkphoto;SaintNicolas,MAMACandtrainsappearinbrochurepanels. Sharedviewsnotduplicatedtoinflateownercoverage. Everyoriginalfilenativeunmodified; no crop/resize/recompression.",
+      "brochureDate": "Collectedin1993;printed1992tariffs, no fabricatededitionyear.",
+      "credits": "All18creditslocalizedpersonallyin8languages; exactphotographerandcollection/sourcepreserved."
+    },
+    "logo": {
+      "present": false,
+      "blocking": true,
+      "research": "Originalbrochurecover,publicmunicipalarchivecatalogue,localpress,1989guidecatalogueanddedicatedlogosearchesreviewed. No isolatedauthentichistoricalassetlocated.",
+      "rejected": "Fullbrochurephotomontage/titleisnotstandaloneLogo; nocroporreconstruction."
+    },
+    "officialMaps": {
+      "editions": 0,
+      "years": [],
+      "research": "Originalbrochure06containsNicecityaccessmap,notinsidevisitorlayout. No datedannualofficialparkmapfound.1989LaCollineàremonterletempsguidecataloguedbutnodigitizedcopylocated; publicfindingaidPDFHTTP500twice. Unpublishedarchivalplansnotaccessed."
+    },
+    "coordinates": {
+      "parkPoint": null,
+      "itemPoints": 0,
+      "itemTotal": 22,
+      "missing": [
+        "Abbaye et église Saint-Pons",
+        "Amphithéâtre de Cemenelum",
+        "Boutique",
+        "Cathédrale Saint-Nicolas",
+        "Cathédrale Sainte-Réparate",
+        "Château de Nice",
+        "Cours Saleya",
+        "Forum antique",
+        "Gare du PLM",
+        "Gare du Sud",
+        "Hôtel Negresco",
+        "Moulin à blé",
+        "Musée d’art moderne et d’art contemporain",
+        "Parking",
+        "Port Lympia",
+        "Restaurant",
+        "Siège de Nice de 1543",
+        "Temples diptère et à antes",
+        "Trains miniatures",
+        "Villa Masséna",
+        "Église Saint-François-de-Paule",
+        "Église Saint-Martin-Saint-Augustin"
+      ],
+      "reason": "Dismantledmodelsandhistoricalsitepositionscannotbeprovenonageoreferencedlayout. Currentbusstopnotparkcentroidoritemposition."
+    },
+    "references": "Sauvaigodesignerroleknown; notassumedfounder/operator/manufacturer. GilbertGrisonicommissionnotoperatorproof. Restaurantlegalrecordnotparkoperatorproof. Sharedglobalreferencesuntouched.",
+    "history": {
+      "currentFacts": 6,
+      "canonicalDraft": 6,
+      "canonicalRetracted": 1,
+      "canonicalPublished": 0,
+      "canonicalBlockers": 0,
+      "articles": 1,
+      "articleLanguages": 8,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "articleWordRange": [
+        351,
+        416
+      ],
+      "articleImages": 3,
+      "articleSources": 5,
+      "precision": [
+        "1989-03Month",
+        "1990Yearartistdeparture",
+        "1990Yearexhibition",
+        "1996Yearliquidation",
+        "2005-10Monthcessionoffer",
+        "2024-09-19Dayarchivedonation"
+      ],
+      "imageGaps": "Opening usesauthentic1993contextualphoto, dateexplicit. No actualexhibition,liquidation,cessionorarchivedonationphotographproven; theseeventsleftunillustrated. CurrentartistpageArmanillustrationnotassumed1990exhibitionimage."
+    },
+    "calendarPricing": "ClosedDefinitively: no currentcalendar orpricingneeded;1992tariffsremainonlyhistoricalbrochurecontent.",
+    "publication": "Private. Requiredlogoabsent andfiveitemdescriptions/inventory gaps. No site orFacebookpublication attempted; no scoreexceptioninferred."
+  },
+  "historyDiagnostics": {
+    "parkId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+    "parkName": "Parc des Miniatures de Nice",
+    "factCount": 7,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1980,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 1990,
+        "resourceCount": 3,
+        "sourcedResourceCount": 3,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2000,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2020,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 6
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 1
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "proofSha256": {
+    "09-full-export.json": "6b0d676c8b62179a282a602f4bb3441a5908c799d2281c3da5f84d79e66515e7",
+    "09-consolidated-audit-graph.json": "631fcb22da4ecff362750a19bbdf0851227b764e61479adb57a3914e333f17c8",
+    "09-roundtrip-before-refinement.json": "e09dc77fccef557a9d433f9e792d8ed28c58853b2280a97d45ad31ca55cc5978",
+    "09-refine-media-reviewed-apply.receipt.json": "e37433111911281dfcf0fb880f552ccba2b7388a0c4f88abf3d871e4dfb7457c",
+    "09-refine-media-reviewed-apply-verified.json": "5e673b8bc67e7cc7cc0ddac45e83f967426c40ae6d1e5ccb09163d88a2b302aa",
+    "09-completeness-final-receipt.json": "024a6f11f648b4d07da266ddf33e75ecbc19896cc627030caf904a904ab9a0f8",
+    "09-history-diagnostics-receipt.json": "a2dcdf00da9b2013eba7e4ee9b65b0d67d208c481bb956e31ae49cfd417233fe",
+    "09-personal-corpus-review.json": "2d3ba438b783831d6eec9a29e093621fc95b2bf33812c2eeed87001dd23e838d",
+    "09-source-gaps.json": "135da9e783054668d5c81878658cb86365140dfdfa28079175b2e2085874d747"
+  },
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false
+}

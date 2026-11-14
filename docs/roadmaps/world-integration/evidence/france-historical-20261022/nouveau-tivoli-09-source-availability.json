@@ -1,0 +1,117 @@
+[
+  {
+    "url": "https://www.paris-anecdote.fr/les-anciens-bals-de-montmartre/",
+    "label": "André Warnod — Les Bals de Paris, 1922, extrait",
+    "checkedAtUtc": "2026-11-02T21:40:31.772032+00:00",
+    "status": 200,
+    "finalUrl": "https://www.paris-anecdote.fr/les-anciens-bals-de-montmartre/",
+    "contentType": "text/html; charset=UTF-8",
+    "sampleBytes": 49385,
+    "sampleSha256": "243e0deba74012d2a12eddfba7c994beaa57ca96bcb3d346f8b810856dc83a51",
+    "reachable": true
+  },
+  {
+    "url": "https://www.ac-sciences-lettres-montpellier.fr/academie_edition/fichiers_conf/LAMBOLEY-2017.pdf",
+    "label": "Claude Lamboley — Étienne-Gaspard Robertson, 2017",
+    "checkedAtUtc": "2026-11-02T21:40:31.772740+00:00",
+    "status": 200,
+    "finalUrl": "https://www.ac-sciences-lettres-montpellier.fr/download/conferences/4400/LAMBOLEY-2017.pdf",
+    "contentType": "application/pdf",
+    "sampleBytes": 262144,
+    "sampleSha256": "3cf90cfb55602e7d993b49e9c299ca540d6bdd71aed7b7d0897761f38668f2de",
+    "reachable": true
+  },
+  {
+    "url": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+    "label": "9e Histoire — Folies, Tivoli…",
+    "checkedAtUtc": "2026-11-02T21:40:32.741797+00:00",
+    "status": 200,
+    "finalUrl": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+    "contentType": "text/html; charset=UTF-8",
+    "sampleBytes": 171506,
+    "sampleSha256": "2d31dbf2be6ceda31eae933b088c1ecf7046062f0c3b36ae4687adff63dd3255",
+    "reachable": true
+  },
+  {
+    "url": "https://cnum.cnam.fr/pgi/fpage.php?8XAE559.2/437/100/463/10/453#det-329",
+    "label": "Henry-René d’Allemagne — Musée rétrospectif, classe 100, 1900, p. 355",
+    "checkedAtUtc": "2026-11-02T21:40:33.648862+00:00",
+    "status": 200,
+    "finalUrl": "https://cnum.cnam.fr/pgi/fpage.php?8XAE559.2/437/100/463/10/453#det-329",
+    "contentType": "text/html; charset=iso-8859-1",
+    "sampleBytes": 126965,
+    "sampleSha256": "cf04702629b3fc0f1a6cb53aaa473c4dadf7cb20f18b32957e49cbb0ef1a4375",
+    "reachable": true
+  },
+  {
+    "url": "https://www.rollerenligne.com/dossier/jean-garcin-lun-des-pionniers-francais-de-patinage-a-roulettes/",
+    "label": "Alexandre Chartier — Jean Garcin, d’après Sam Nieswizski, Rollermania, 1991",
+    "checkedAtUtc": "2026-11-02T21:40:34.668649+00:00",
+    "status": 200,
+    "finalUrl": "https://www.rollerenligne.com/dossier/jean-garcin-lun-des-pionniers-francais-de-patinage-a-roulettes/",
+    "contentType": "text/html",
+    "sampleBytes": 150827,
+    "sampleSha256": "4302349dce91602b8859d86c94094802e1d1666a826c380e8773ca23011e7a57",
+    "reachable": true
+  },
+  {
+    "url": "https://fr.wikisource.org/wiki/Le_M%C3%A9canisme_de_la_Vie_moderne/15",
+    "label": "Georges d’Avenel — Le Mécanisme de la Vie moderne, 1899, chapitre 15",
+    "checkedAtUtc": "2026-11-02T21:40:35.981932+00:00",
+    "method": "Connected web tool open, full page readable 2Nov2026",
+    "reachable": true,
+    "webReference": "turn957165view1"
+  },
+  {
+    "url": "https://fr.wikisource.org/wiki/Lettres_parisiennes/Ann%C3%A9e_1837/15",
+    "label": "Delphine de Girardin — Lettre du 21 juin 1837, soirée de la veille",
+    "checkedAtUtc": "2026-11-02T21:40:35.981954+00:00",
+    "method": "Connected web tool open, full page readable 2Nov2026",
+    "reachable": true,
+    "webReference": "turn957165view0"
+  },
+  {
+    "url": "https://www.caue75.fr/content/vers-paris-2050_ilot-parisien",
+    "label": "CAUE de Paris — L’îlot parisien, Vers Paris 2050",
+    "checkedAtUtc": "2026-11-02T21:40:35.981961+00:00",
+    "status": 200,
+    "finalUrl": "https://www.caue75.fr/content/vers-paris-2050_ilot-parisien",
+    "contentType": "text/html; charset=UTF-8",
+    "sampleBytes": 89237,
+    "sampleSha256": "0c08d12578b9caeb4e1f7eb0dd3d7e4b30ea049ed09b027c6dedeeae182d6164",
+    "reachable": true
+  },
+  {
+    "url": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/une-allee-des-marronniers-dans-le-parc-de-l-ancien-tivoli-en-1835-angle-de",
+    "label": "Paris Musées, Carnavalet — Une allée de marronniers, 1835, D.16848",
+    "checkedAtUtc": "2026-11-02T21:40:37.934690+00:00",
+    "status": 200,
+    "finalUrl": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/une-allee-des-marronniers-dans-le-parc-de-l-ancien-tivoli-en-1835-angle-de",
+    "contentType": "text/html; charset=utf-8",
+    "sampleBytes": 166145,
+    "sampleSha256": "eb965d7789f995450ce56ef427359a27123e905a8b53f51ae9ff9d61f7588664",
+    "reachable": true
+  },
+  {
+    "url": "https://data.decalog.net/enap1/Liens/Gazette/ENAP_GAZETTE_TRIBUNAUX_18421109.pdf",
+    "label": "Gazette des tribunaux, 9 novembre 1842 — lotissement du Nouveau Tivoli",
+    "checkedAtUtc": "2026-11-02T21:40:38.764720+00:00",
+    "status": 200,
+    "finalUrl": "https://data.decalog.net/enap1/Liens/Gazette/ENAP_GAZETTE_TRIBUNAUX_18421109.pdf",
+    "contentType": "application/pdf",
+    "sampleBytes": 262144,
+    "sampleSha256": "e88a4971e9f2c7ad150b5cf94e2435f0f083dc9ba1b27f330f9abcf1250cd9c3",
+    "reachable": true
+  },
+  {
+    "url": "https://artefake.fr/fantasmagorie-de-robertson/",
+    "label": "Illustration source 5bb196f368d8479aa96528b160ee1419",
+    "checkedAtUtc": "2026-11-02T21:40:39.876957+00:00",
+    "status": 200,
+    "finalUrl": "https://artefake.fr/fantasmagorie-de-robertson/",
+    "contentType": "text/html; charset=UTF-8",
+    "sampleBytes": 148946,
+    "sampleSha256": "1c578c2f82ee494deea6f528738b697d0828e0c0f7fe86ccac6fa3a40831965d",
+    "reachable": true
+  }
+]

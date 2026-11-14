@@ -1,0 +1,77 @@
+{
+  "entryId": "FR-candidate-3a86527af9cd7e",
+  "name": "Canyon Park",
+  "conversation": "Conversation France",
+  "checkedAtUtc": "2026-11-02T09:13:35.414577+00:00",
+  "decision": "Relevant historical local AmusementPark in Épretot, multiple stable attractions; not a standalone, not Canyon Parc at Gréoux-les-Bains or Canyon Park in Italy/United States.",
+  "canonicalStatus": "ClosedDefinitively",
+  "initialCoverage": {
+    "existingParks": 0,
+    "items": 0,
+    "zones": 0,
+    "images": 0,
+    "historyEvents": 0,
+    "articles": 0
+  },
+  "officialSearches": {
+    "globalCanyonParks": 15,
+    "globalCanyonStandalone": 0,
+    "EpretotParks": 0,
+    "EpretotStandalone": 0,
+    "EpretotAccentParks": 0,
+    "MerchadouParks": 0,
+    "ValleeEnferParks": 0,
+    "excludedUnknownCountryMatch": {
+      "id": "9214ca82-20b4-44ea-bf28-8c44b4554790",
+      "name": "Grand Canyon",
+      "latitude": 33.84237,
+      "longitude": 35.925214,
+      "reason": "Coordinates far from Épretot; unrelated location. Other 14 results have distinct names and locations."
+    }
+  },
+  "aliases": [
+    "Canyon Parc",
+    "Parc d’attractions du Canyon"
+  ],
+  "sources": [
+    {
+      "label": "Infoparks archived presentation, captured 18 July 2001",
+      "url": "https://web.archive.org/web/20010718174140id_/http://www.infoparks.com:80/flashfr/r_parcs/france/parcs/F76002/inf01.htm"
+    },
+    {
+      "label": "Infoparks identity and public address, 2003",
+      "url": "https://web.archive.org/web/20030717231021id_/http://www.infoparks.com:80/flashfr/r_parcs/france/parcs/F76002/index.htm"
+    },
+    {
+      "label": "Le Petit Moutard historical listing explicitly closed",
+      "url": "https://www.lepetitmoutard.be/place/canyon-park_epretot_4349"
+    },
+    {
+      "label": "Les Zoos dans le Monde closed status and site coordinates",
+      "url": "https://www.leszoosdanslemonde.com/description.canyon-park.php"
+    }
+  ],
+  "dateDecision": {
+    "opening": "Not imported. Backlog/Wikipedia 1976 conflicts with Kronobase 22 April 1973, attributed to Havre Libre/Christian Leguillon without original article available.",
+    "closing": "Not imported. Backlog 2004 conflicts with specialist 2005?; business closures 2005 and 2007 are not visitor closure dates.",
+    "legalDatesNotOpeningDates": [
+      "1979-01-01 operator business creation",
+      "2004-05-01 commercial establishment",
+      "2005-06-30 Christiane Merchadou business closure",
+      "2005-09-30 L’Étrier establishment creation",
+      "2007-03-01 L’Étrier establishment closure"
+    ]
+  },
+  "referenceDecision": "No founder or final operator assigned. Merchadou business and subsequent L’Étrier address are evidence, not sufficient proof of founder or final park operating role.",
+  "locationDecision": "Historical Route de Saint Laurent, 76430 Épretot from contemporary Infoparks. Site coordinate from specialist, not geocoded business address or town centre.",
+  "initialGaps": [
+    "Historical logo format and importability",
+    "Original park and individual attraction photos",
+    "Official annual maps",
+    "Original opening article and final visitor closure date",
+    "Founder and final operator roles",
+    "Exact item positions and historical individual dates",
+    "Details needed for eight-language descriptions of every item"
+  ],
+  "nextStep": "01-park-core useful; create hidden record from qualified identity. Step02: Western village explicit, assess zone. Step03: archived named inventory. Steps04/05/08 research and editorial/media/history. Steps06/07 not applicable to closed park; no current hours/pricing. Step09 full export and final audit."
+}

@@ -1,0 +1,42 @@
+{
+  "reviewedAtUtc": "2026-11-02T20:06:53.087084+00:00",
+  "allEightPersonallyAuthoredAndReviewed": true,
+  "facts": 2,
+  "articleLanguages": 8,
+  "headings": 3,
+  "paragraphs": 6,
+  "wordCounts": {
+    "fr": 364,
+    "en": 322,
+    "de": 316,
+    "nl": 336,
+    "it": 341,
+    "es": 356,
+    "pl": 309,
+    "pt": 346
+  },
+  "imageChoice": "Three original contextual2001/2010 photos; neither actual1992openingnor2013closurephotofound. Timeline images omitted; articlecaptionsexplicitdates.",
+  "sources": [
+    {
+      "label": "Patrick Burtart — biographie et presse reproduite publiquement",
+      "url": "https://www.patrickburtart.fr/",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "Département de la Loire — Loire Magazine62, mars-avril2007, p29",
+      "url": "https://www.loire.fr/upload/docs/application/pdf/lm62.pdf",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "Michel Jourdan — photographies de la Droséra, été2001",
+      "url": "http://m.jourdan974.free.fr/photos5.htm",
+      "accessedAt": "2026-11-02"
+    },
+    {
+      "label": "École de Saint-Paul-de-Vézelin — visite du1erjuillet2010",
+      "url": "https://classedespetits.blogspot.com/2010/07/",
+      "accessedAt": "2026-11-02"
+    }
+  ],
+  "factsAndIdentity": "Creator1992–2013periodcorroboratedwith2007departmentand2010eyewitnessactivity. Nofalse2009closure, pool2012liquidationorresidentialchaletsconflation. No individualmodelinstallationsdated."
+}

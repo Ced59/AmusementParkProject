@@ -1,0 +1,377 @@
+{
+  "entryId": "FR-candidate-bc5ed7aa50e26f",
+  "parkId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+  "name": "Nouveau Tivoli (Folie La Bouëxière)",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-f2bfdce6-1a9f-443f-88f3-840a09e1896d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T20:51:28.619201Z",
+      "appliedAt": "2026-11-02T20:51:28.619Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "e92f697ebf51d0aba529eae19970fdd96492baac271f2862471bb426ff63668c",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 1,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "openingDate",
+        "openingDateText",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Création privée du Nouveau Tivoli de Robertson à la Folie La Bouëxière, distinct du Grand Tivoli : ouverture le 14 mai 1826, fermeture conservée à la précision 1841–1842, rue de Clichy à Paris ; coordonnées historiques non établies."
+    },
+    {
+      "eventId": "apply-0dfbce08-650d-4eb0-8f54-6220f1b0898b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T20:52:26.1816478Z",
+      "appliedAt": "2026-11-02T20:52:26.181Z",
+      "receiptFile": "01-founder-apply.receipt.json",
+      "receiptSha256": "7e3ff57f74ed989298e6b6d8a3cd5442c1a5057f0dcc40a704bd29605aea9417",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "founderId"
+      ],
+      "summary": "Création de la référence privée Étienne-Gaspard Robertson et rattachement comme fondateur du Nouveau Tivoli, sans modification de référence partagée."
+    },
+    {
+      "eventId": "apply-2f21ed2b-0d3e-4ca5-8bc2-fc84b17aea73",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T20:58:26.9187113Z",
+      "appliedAt": "2026-11-02T20:58:26.918Z",
+      "receiptFile": "03-inventory-apply.receipt.json",
+      "receiptSha256": "6c885b4de93e0b6ea9b682521acd4c1a6a1545ab7c676b3cdb8e3b92ed883523",
+      "counts": {
+        "created": 9,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.openingDateText",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type"
+      ],
+      "summary": "Inventaire historique privé : neuf entrées dont cinq attractions disparues et quatre spectacles ; piste de patinage Garcin datée1830, carrousel de Caroline correctement qualifié en spectacle équestre, salles et cafés non individualisables conservés comme lacunes."
+    },
+    {
+      "eventId": "apply-32bafb15-8787-40f2-b835-36af5b3f216d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T20:59:24.471992Z",
+      "appliedAt": "2026-11-02T20:59:24.471Z",
+      "receiptFile": "04-park-apply.receipt.json",
+      "receiptSha256": "b6ab4adea0d9e90b207e71ac6e55e7bd3f775f89e8ed8938f7cac6f259e036c2",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions originales du Nouveau Tivoli dans les huit langues : six paragraphes et trois sections sur La Bouëxière, Robertson, les jeux historiques, le carrousel équestre et le lotissement."
+    },
+    {
+      "eventId": "apply-a7fc80fe-56b4-41a5-a962-fe6efbe19cfd",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T21:09:26.0726818Z",
+      "appliedAt": "2026-11-02T21:09:26.072Z",
+      "receiptFile": "04-items-a-apply.receipt.json",
+      "receiptSha256": "458123f691d8fb249d86b11d3888b35e08539869763d0c9c28b14f4e69d6bad5",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Nouveau Tivoli :24 descriptions localisées relues, Caroline, patinage Garcin et Femme invisible ; aucune publication."
+    },
+    {
+      "eventId": "apply-f497fd2b-fbf5-4295-97c8-74bc0900db1b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T21:15:36.5509443Z",
+      "appliedAt": "2026-11-02T21:15:36.550Z",
+      "receiptFile": "04-items-b-apply.receipt.json",
+      "receiptSha256": "93ee2914e7dba8415988aef75ed432e92255f5c197c60b04a27129a521ed4146",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Nouveau Tivoli :24 descriptions localisées, Courses Éoliennes, tir aux pigeons et bals ; faits1827 et contexte social sourcés."
+    },
+    {
+      "eventId": "apply-90777431-b583-44f4-a45c-cf0c6a112387",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T21:16:15.1237321Z",
+      "appliedAt": "2026-11-02T21:16:15.123Z",
+      "receiptFile": "04-items-c-apply.receipt.json",
+      "receiptSha256": "9911985a2d87f5e04abb982f2c3fca1e7d7ecfd87feb5fc686453b82696d7436",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Nouveau Tivoli :24 descriptions des balançoires, cabinet de physique et fantasmagories ; exceptions de profondeur sourcées et consignées."
+    },
+    {
+      "eventId": "apply-644bf1a4-d725-4ab5-a422-477ec2a22f07",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T21:18:58.1921343Z",
+      "appliedAt": "2026-11-02T21:18:58.192Z",
+      "receiptFile": "05-founder-apply.receipt.json",
+      "receiptSha256": "e7b475206f2801bffee7c1d5f76796b0a9ecee42ff77d6eb311dbfb160b13683",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt",
+        "birthPlace",
+        "deathDate",
+        "occupation"
+      ],
+      "summary": "Nouveau Tivoli :biographie8langues d’Étienne-Gaspard Robertson, lieu de naissance, profession et décès sourcés."
+    },
+    {
+      "eventId": "import-photo-9057b5e831dd4c1590c14f3581b05760-2026-11-02T212223.079Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T21:22:23.079Z",
+      "appliedAt": "2026-11-02T21:22:23.079Z",
+      "receiptFile": "05-allee1835-import-receipt.json",
+      "receiptSha256": "97488130f94e13c2d54fd1575fe96f9a4d937a4c842a0acf1f7a09ba970413ff",
+      "imageId": "9057b5e831dd4c1590c14f3581b05760",
+      "ownerId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+      "createdAt": "2026-11-02T21:22:19.05Z",
+      "sourceUrl": "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/une-allee-des-marronniers-dans-le-parc-de-l-ancien-tivoli-en-1835-angle-de",
+      "summary": "Import privé du média historique 05-allee1835, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-0efe0a240f4c407f94545052abf8c441-2026-11-02T212238.258Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T21:22:38.258Z",
+      "appliedAt": "2026-11-02T21:22:38.258Z",
+      "receiptFile": "05-tir-import-receipt.json",
+      "receiptSha256": "0d059efa926d6140207e1d032a61132b193325fc7171744bb599fddf0597c5fc",
+      "imageId": "0efe0a240f4c407f94545052abf8c441",
+      "ownerId": "19dae9a4-58a3-482c-88bb-0bad898040ad",
+      "createdAt": "2026-11-02T21:22:34.608Z",
+      "sourceUrl": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+      "summary": "Import privé du média historique 05-tir, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5bb196f368d8479aa96528b160ee1419-2026-11-02T212420.056Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T21:24:20.056Z",
+      "appliedAt": "2026-11-02T21:24:20.056Z",
+      "receiptFile": "05-robertson-context-import-receipt.json",
+      "receiptSha256": "32acb59359e9c8137e0d4e56c4a5955e18dcfb0d7a72eac9c66736fb6587b249",
+      "imageId": "5bb196f368d8479aa96528b160ee1419",
+      "ownerId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+      "createdAt": "2026-11-02T21:24:16.556Z",
+      "sourceUrl": "https://artefake.fr/fantasmagorie-de-robertson/",
+      "summary": "Import privé du média historique 05-robertson-context, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-fd26cbf23a4e41f5a5ecfef89463789d-2026-11-02T212433.809Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T21:24:33.809Z",
+      "appliedAt": "2026-11-02T21:24:33.809Z",
+      "receiptFile": "05-osages-import-receipt.json",
+      "receiptSha256": "ff6637867dcb7793e1e787a8aadc40092ed9ae011d375f1febb8e7195b8e270d",
+      "imageId": "fd26cbf23a4e41f5a5ecfef89463789d",
+      "ownerId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+      "createdAt": "2026-11-02T21:24:30.4Z",
+      "sourceUrl": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+      "summary": "Import privé du média historique 05-osages, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-7e006189-9196-46c8-9318-3e87c924c6db",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T21:31:03.3152971Z",
+      "appliedAt": "2026-11-02T21:31:03.315Z",
+      "receiptFile": "08-park-timeline-apply.receipt.json",
+      "receiptSha256": "d1df549ce1f9b6687fe393ae7b94b8ec8f42a92ae688679995884522ebfb106d",
+      "counts": {
+        "created": 4,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Quatre jalons privés du Nouveau Tivoli : ouverture 1826, visiteurs osages 1827, lotissement 1841 et disparition 1842, avec sources et huit langues."
+    },
+    {
+      "eventId": "apply-b080e060-358c-4de4-8af2-0dae6c9e2628",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T21:36:56.4098511Z",
+      "appliedAt": "2026-11-02T21:36:56.409Z",
+      "receiptFile": "08-article-apply.receipt.json",
+      "receiptSha256": "0d363c415ff96b5962de3e90783c87a3e7eaf1cc1f11d462dbb1ea61673bdc0f",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article historique développé du Nouveau Tivoli en huit langues : quatre sections, huit paragraphes, trois illustrations contextualisées et neuf sources."
+    },
+    {
+      "eventId": "apply-f3643700-8e28-40bf-82a2-4746a0c3b829",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T21:38:58.3896039Z",
+      "appliedAt": "2026-11-02T21:38:58.389Z",
+      "receiptFile": "08-item-timelines-apply.receipt.json",
+      "receiptSha256": "2a41cba2079235593c55ba3ade31f6891e6e6bd89c179fa6720ba20b79c9a1e8",
+      "counts": {
+        "created": 3,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "entityType",
+        "eventType",
+        "isVisible",
+        "key",
+        "month",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Trois jalons privés propres aux éléments : essais Éoliennes 1827, école de Garcin à Tivoli 1830, spectacle équestre Caroline 1837 ; sources et huit langues."
+    },
+    {
+      "eventId": "apply-0b648f7f-1ab6-4905-b6e4-e193786f2a04",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T21:43:39.7054957Z",
+      "appliedAt": "2026-11-02T21:43:39.705Z",
+      "receiptFile": "09-history-images-apply.receipt.json",
+      "receiptSha256": "57573e58c612ee89c6226b1a2ee1d695eb1b87bbc2542195657ca92c184444f5",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "mainImageId"
+      ],
+      "summary": "Illustrations contextualisées des quatre jalons du parc : allée de 1835 et portraits osages de 1827, sans confusion avec des photographies des événements."
+    }
+  ],
+  "publicationOrNoop": []
+}

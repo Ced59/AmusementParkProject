@@ -1,0 +1,593 @@
+{
+  "entryId": "FR-candidate-a7f2b59d48ade2",
+  "owner": "Conversation France",
+  "parkId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+  "name": "American Park Marseille",
+  "auditedAtUtc": "2026-11-03T04:00:35.231143+00:00",
+  "outcome": "partial",
+  "stage": "Follow-up audited; authentic logo and six sourced descriptions remain necessary.",
+  "sitePublished": false,
+  "facebookPublished": false,
+  "facebookAction": "None while the site record remains hidden; existing user authorization retained.",
+  "projectedCompleteness": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 93,
+    "earnedPoints": 80,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "lastDataIntegrationAt": "2026-11-03T03:53:56.136Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-05b61cd8-bf70-48fd-ba97-b0970ed79f3f",
+  "previousAudit": "american-park-marseille-progress-audit.json",
+  "freshExportReconciliation": {
+    "checkedAtUtc": "2026-11-03T03:55:03.377895+00:00",
+    "freshExportAtUtc": "2026-11-03T03:54:26.7085858Z",
+    "sha256": "55add179bf34096a58834dace54c75a104face8d77c15e3c9e68929d85f150ff",
+    "differences": [],
+    "explicitEmptyFieldNormalizations": [
+      {
+        "blockId": "35766900bc64531b9f5fd12b34c92716",
+        "field": "headingLevel",
+        "default": null
+      },
+      {
+        "blockId": "35766900bc64531b9f5fd12b34c92716",
+        "field": "imageId",
+        "default": null
+      },
+      {
+        "blockId": "35766900bc64531b9f5fd12b34c92716",
+        "field": "imageIds",
+        "default": []
+      },
+      {
+        "blockId": "35766900bc64531b9f5fd12b34c92716",
+        "field": "captions",
+        "default": []
+      },
+      {
+        "blockId": "515afe0420a4538c9b035d66225f3958",
+        "field": "headingLevel",
+        "default": null
+      },
+      {
+        "blockId": "515afe0420a4538c9b035d66225f3958",
+        "field": "texts",
+        "default": []
+      },
+      {
+        "blockId": "515afe0420a4538c9b035d66225f3958",
+        "field": "imageIds",
+        "default": []
+      }
+    ],
+    "requestAliasNormalization": "Redundant request itemId absent from export; matching explicit ownerId and parkItemId checked for the five facts."
+  },
+  "idempotence": {
+    "operationId": "fce38f91-e986-48af-b98a-e170ac413bf3",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 27,
+      "warnings": 0,
+      "errors": 0
+    },
+    "applied": false
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-03T03:54:26.7085858Z",
+    "items": 12,
+    "zones": 0,
+    "attractions": 7,
+    "attractionStatuses": {
+      "Removed": 7
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 5,
+    "attractionsWithImage": 5,
+    "attractionImageGaps": [
+      {
+        "id": "7bb38f1c-f352-44c2-ae95-ee5f6496e429",
+        "name": "Cake-Walk"
+      },
+      {
+        "id": "741e0439-ce6e-4416-8efe-776cac80d4e4",
+        "name": "Tourbillon Railway"
+      }
+    ],
+    "ownedImages": 9,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "a98baf81-bee5-40b5-b27f-00d24eab6003",
+        "name": "Brasserie",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "b5de2d80-3175-4a23-864c-93c7eff0122b",
+        "name": "Buffet",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "7bb38f1c-f352-44c2-ae95-ee5f6496e429",
+        "name": "Cake-Walk",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "0e603f4f-bb29-4ab1-a261-551320d9e2e1",
+        "name": "Cinéma",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "83b9883b-8d49-427a-8890-fa826703ba44",
+        "name": "La Roulette humaine",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a8213893-f33f-4bee-a349-6126cea5e911",
+        "name": "Le Chatouilleur",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "6f0dfe55-f3af-4f40-b68b-dbf26e04f7de",
+        "name": "Le Château des soupirs",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "dd19a714-4868-4fed-b91c-1e18182bbb00",
+        "name": "Salle de danse",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "77b669af-eea4-45b4-8ba4-1bdf58b8805b",
+        "name": "Salle de skating",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "734b5d44-9eba-42df-b4c0-a8904f6d14fb",
+        "name": "Théâtre Tanagra",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "741e0439-ce6e-4416-8efe-776cac80d4e4",
+        "name": "Tourbillon Railway",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "6dc42c22-503d-487c-8b2a-2a677d6cf362",
+        "name": "Water Toboggan",
+        "category": "Attraction",
+        "images": 1
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "a98baf81-bee5-40b5-b27f-00d24eab6003",
+        "name": "Brasserie",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "b5de2d80-3175-4a23-864c-93c7eff0122b",
+        "name": "Buffet",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "7bb38f1c-f352-44c2-ae95-ee5f6496e429",
+        "name": "Cake-Walk",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0e603f4f-bb29-4ab1-a261-551320d9e2e1",
+        "name": "Cinéma",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "83b9883b-8d49-427a-8890-fa826703ba44",
+        "name": "La Roulette humaine",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a8213893-f33f-4bee-a349-6126cea5e911",
+        "name": "Le Chatouilleur",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6f0dfe55-f3af-4f40-b68b-dbf26e04f7de",
+        "name": "Le Château des soupirs",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "dd19a714-4868-4fed-b91c-1e18182bbb00",
+        "name": "Salle de danse",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "77b669af-eea4-45b4-8ba4-1bdf58b8805b",
+        "name": "Salle de skating",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "734b5d44-9eba-42df-b4c0-a8904f6d14fb",
+        "name": "Théâtre Tanagra",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "741e0439-ce6e-4416-8efe-776cac80d4e4",
+        "name": "Tourbillon Railway",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6dc42c22-503d-487c-8b2a-2a677d6cf362",
+        "name": "Water Toboggan",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 5,
+    "parkHistory": 3,
+    "itemHistory": 2,
+    "historyWithSource": 5,
+    "historyWithImage": 4,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "itemsWithEightDescriptions": 6,
+    "itemDescriptionGaps": [
+      {
+        "id": "a98baf81-bee5-40b5-b27f-00d24eab6003",
+        "name": "Brasserie"
+      },
+      {
+        "id": "b5de2d80-3175-4a23-864c-93c7eff0122b",
+        "name": "Buffet"
+      },
+      {
+        "id": "7bb38f1c-f352-44c2-ae95-ee5f6496e429",
+        "name": "Cake-Walk"
+      },
+      {
+        "id": "0e603f4f-bb29-4ab1-a261-551320d9e2e1",
+        "name": "Cinéma"
+      },
+      {
+        "id": "734b5d44-9eba-42df-b4c0-a8904f6d14fb",
+        "name": "Théâtre Tanagra"
+      },
+      {
+        "id": "741e0439-ce6e-4416-8efe-776cac80d4e4",
+        "name": "Tourbillon Railway"
+      }
+    ],
+    "officialLogo": null,
+    "generalParkPhotographs": {
+      "operatingParkViews": 1,
+      "wartimeContextViews": 1,
+      "targetOperatingViews": 5
+    },
+    "articleBlockCounts": {
+      "Heading": 4,
+      "Paragraph": 8,
+      "Image": 1
+    }
+  },
+  "publicTextReview": {
+    "textFields": 489,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "newCopyAndTranslationsPersonallyReviewed": true,
+    "unchangedCorpusPreservedAndRescanned": true,
+    "encodingFindings": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicates": 0,
+    "manualCrossSequenceReview": {
+      "reviewedAtUtc": "2026-11-03T04:00:35.231143+00:00",
+      "rawGroups": 2,
+      "properNameOnlyGroups": 2,
+      "unresolvedFormulaicGroups": 0,
+      "reviews": [
+        {
+          "language": "es",
+          "firstPath": "items.77b669af-eea4-45b4-8ba4-1bdf58b8805b.descriptions.es",
+          "secondPath": "articles.american-park-marseille-prado-1910-1914.blocks.4.texts.es",
+          "fingerprints": [
+            "palais de l énergie de la exposición de la",
+            "de l énergie de la exposición de la electricidad"
+          ],
+          "decision": "Proper historical building/exhibition name, not reusable sentence or paragraph.",
+          "reason": "Palais de l’Énergie de l’Exposition de l’électricité / Palais de l’Énergie de la Exposición de la Electricidad identifies the specific1908predecessor building. Distinct sentences explain room setting vs exhibition chronology. Both full paragraphs personally read; retaining truthful name."
+        },
+        {
+          "language": "fr",
+          "firstPath": "items.77b669af-eea4-45b4-8ba4-1bdf58b8805b.descriptions.fr",
+          "secondPath": "articles.american-park-marseille-prado-1910-1914.blocks.4.texts.fr",
+          "fingerprints": [
+            "palais de l énergie de l exposition de l",
+            "de l énergie de l exposition de l électricité"
+          ],
+          "decision": "Proper historical building/exhibition name, not reusable sentence or paragraph.",
+          "reason": "Palais de l’Énergie de l’Exposition de l’électricité / Palais de l’Énergie de la Exposición de la Electricidad identifies the specific1908predecessor building. Distinct sentences explain room setting vs exhibition chronology. Both full paragraphs personally read; retaining truthful name."
+        }
+      ],
+      "reviewBasis": "Both full Spanish and French paragraphs re-read. The overlap is the proper historical name of the Palais de l’Énergie and its exhibition, not a transferable sentence."
+    }
+  },
+  "historyCanonicalDiagnostics": {
+    "parkId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+    "parkName": "American Park Marseille",
+    "factCount": 8,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1910,
+        "resourceCount": 5,
+        "sourcedResourceCount": 5,
+        "publishedResourceCount": 0,
+        "subjectCount": 3,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 5
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 3
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "newPrimarySource": {
+    "url": "https://collections.marseille.fr/_recherche-images/show/31811/image/27450/0",
+    "file": "sources/10-followup/henri-para-american-park-oct1914.jpg",
+    "bytes": 323952,
+    "sha256": "81602ff0811c23929f8a294d12c6f30ae641b042200b1a897b0bee4f70dd37b1",
+    "size": [
+      2000,
+      852
+    ],
+    "downloadedAtUtc": "2026-11-03T03:50:19.991036+00:00",
+    "page": "https://collections.marseille.fr/ark:82766/1f1003997d416f7abb7e0050569abb5e/1/1.fiche=arko_fiche_68233baa18a97.moteur=arko_default_6273c75fc346f",
+    "title": "Façade de l’American Park derrière des soldats et habitants boulevard Michelet",
+    "date": "[octobre1914]",
+    "photographer": "Henri Para (1870–1948)",
+    "collection": "Archives municipales de Marseille, collection Société des Excursionnistes marseillais, fonds Henri Para",
+    "reference": "33 Fi 1500",
+    "rights": "domaine public ; usage libre selon la notice municipale"
+  },
+  "newImage": {
+    "id": "a137fc792f734028b5c51d52a2e6e80c",
+    "isPublished": false,
+    "sourceUrl": "https://collections.marseille.fr/_recherche-images/show/31811/image/27450/0",
+    "width": 2000,
+    "height": 852,
+    "visualReview": "Native two-panel stereoscopic photograph inspected. Indian and French soldiers and local residents on boulevard Michelet with the park façade behind. No image alteration. Wartime street context, not evidence that attractions operated in October 1914.",
+    "datePrecision": "Archive attribution [October 1914]; no exact day or closure date inferred."
+  },
+  "followupDataOperations": [
+    {
+      "eventId": "import-photo-a137fc792f734028b5c51d52a2e6e80c-2026-11-03T035217.921Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T03:52:17.921Z",
+      "appliedAt": "2026-11-03T03:52:17.921Z",
+      "receiptFile": "10-henri-para-1914-import-receipt.json",
+      "receiptSha256": "e28b7d90f46d5b15ff477afcc573b502ac2ba289a5ff7e212d2138337954e7bc",
+      "imageId": "a137fc792f734028b5c51d52a2e6e80c",
+      "ownerId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+      "createdAt": "2026-11-03T03:52:14.457Z",
+      "sourceUrl": "https://collections.marseille.fr/_recherche-images/show/31811/image/27450/0",
+      "summary": "Import privé du média historique 10-henri-para-1914, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-05b61cd8-bf70-48fd-ba97-b0970ed79f3f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T03:53:56.1362776Z",
+      "appliedAt": "2026-11-03T03:53:56.136Z",
+      "receiptFile": "10-war-context-apply.receipt.json",
+      "receiptSha256": "eee99ab352e2b7afe0a660e08791e8710d87f870b92914ff2dc59cec545570b2",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "mainImageId",
+        "sources"
+      ],
+      "summary": "Histoire de1914 enrichie dans huit langues depuis la photographie municipale d’Henri Para ; image de contexte contemporaine et source archivistique intégrées, audit final restant."
+    }
+  ],
+  "sourceFollowup": {
+    "Fortunio": "BNF catalogue confirms the periodical. A secondary index points to a 1914 American Park mention; original article inaccessible (Gallica HTTP403), so no factual claims added.",
+    "TourbillonRailway": "2008 Drouot lot279 lists a Marseille postcard; no viewable card image. Not imported or described as visually inspected.",
+    "CPArama": "Two apparent new cards were byte-identical to already reviewed sources; no duplicate imports.",
+    "logo": "No standalone historical brand asset authenticated. A company share, poster and park photograph do not establish a suitable logo."
+  },
+  "remainingGaps": {
+    "scope": "Historical park; incomplete and private. This is an interim audit, not a completed integration.",
+    "step2Zones": "No official public zoning established; no zones invented.",
+    "step4Descriptions": {
+      "writtenItems": 6,
+      "items": 12,
+      "missing": [
+        {
+          "key": "tourbillon-railway",
+          "reason": "Listed in historical accounts with engineering figures, but no reliable scene/experience source beyond pre-opening announcement. Do not turn dimensions into filler."
+        },
+        {
+          "key": "cake-walk",
+          "reason": "Confirmed name and class; no proved local setting or particular obstacle, no suitable image."
+        },
+        {
+          "key": "cinema",
+          "reason": "Existence confirmed, but hall, programmes and films not identified; no generic cinema paragraph."
+        },
+        {
+          "key": "theatre-tanagra",
+          "reason": "Existence and destruction in August1911 proved by contemporary press transcription. Particular show/illusion/interior not proved; timeline captures known fact."
+        },
+        {
+          "key": "brasserie",
+          "reason": "Period advertising proves name/function; menu, decor and exact room location unknown."
+        },
+        {
+          "key": "buffet",
+          "reason": "Period advertising proves separate name/function; cannot assume modern selfservice/all-you-can-eat, menu or room."
+        }
+      ],
+      "shorterDocumentedException": "Salle de danse: two factual paragraphs from primary entrance postcard; no invented interior or repertoire."
+    },
+    "step5Media": {
+      "logo": "No distinct historical logo asset found. CompleteWaterChuteposter, companyshare and parkstamps not substituted or cropped into a logo.",
+      "generalParkPhotographs": {
+        "actual": 1,
+        "target": 5,
+        "note": "1910 visitors portrait at identified park building; not panorama. Poster/share are documents; ride close-ups excluded."
+      },
+      "ridePhotographs": {
+        "covered": 5,
+        "total": 7,
+        "missing": [
+          "Tourbillon Railway",
+          "Cake-Walk"
+        ],
+        "importantRideTarget": "Only one distinct accepted image for each of five illustrated major attractions; duplicatecroppedcopies not imported."
+      },
+      "danceEntrancePhoto": "Original1356105bytes exceeds960KiB; no smaller uncropped publishedsource rendition found; not recompressed.",
+      "officialMaps": "None for1910–1914 found. 1908electricityexhibitionplan predatespark and cannot become a1910parkmap."
+    },
+    "step6OpeningHours": "Not applicable: ClosedDefinitively; historic advertisement hours not currentdata.",
+    "step7Pricing": "Not applicable: ClosedDefinitively; oldfranc prices not reused as currentprices orconvertedtoeuros.",
+    "step8History": {
+      "parkFacts": 3,
+      "itemFacts": 2,
+      "articles": 1,
+      "dateGaps": [
+        "Openingday15June vs1July1910 unresolved",
+        "Exact1911firedayunverified: editiondate21August noteventdate",
+        "Exact1914closuredayunknown",
+        "Individualoperatingperiods notderivedfromparkdates"
+      ],
+      "imageGaps": [
+        "Actual1911firephotographs notfound; château prefireviewexplicitcontextual",
+        "NoTanagrafacadeidentified"
+      ]
+    },
+    "geolocation": {
+      "fixedCovered": 0,
+      "fixedTotal": 12,
+      "reason": "Demolishedsite: historical postcards/1908predecessorplan do not prove precise positions against modernmap. Parkpoint nevercopied toitems."
+    },
+    "references": {
+      "founder": "AlbertRoman was director, not proved founder; Capacioli reportedconstructionengineer, not assumedride manufacturer.",
+      "operator": "SociétéMarseillaise de l’AmericanPark proved byshare; finaloperator chronology unknown, no sharedreference rewritten.",
+      "manufacturersAndAccessConditions": "None independentlyproved; notinferredfromgenericridetype."
+    },
+    "familiesSearched": [
+      "Commons historiccards/publicdomainposter",
+      "Tourisme-Marseille personalhistoricalblog andrawarchiveimages",
+      "CPArama postcardarchive",
+      "RinkHistory skatinghistory",
+      "COAA CarouselOrgan78 specialistarticle",
+      "Mathon transcriptionofPetitParisien1911",
+      "Wikipedia historicalreferences andcoordinatepoint",
+      "Targeted publicwebsearches opening/fire, theatre,cinema,restaurant,rollercoasters,bowling,logo,map",
+      "Gallica SRU andoriginal1918page attempted403; no bypass and no falseclaimofreading"
+    ],
+    "unqualifiedInventory": [
+      "Bowling announcedinsecondarypreopeningaccount butnotprovedoperational",
+      "Genericperformancehall mayoverlapTanagra/Cinema/Dance; noduplicatecreation"
+    ],
+    "publication": "Not requested while actual logo/editorial blockers remain; user authorization retained for later valid publication; noFacebook before sitepublication."
+  },
+  "batchCompletedCount": 8,
+  "prCreated": false,
+  "versionChanged": false
+}

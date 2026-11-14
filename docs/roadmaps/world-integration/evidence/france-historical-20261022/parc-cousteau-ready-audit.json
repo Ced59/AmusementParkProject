@@ -1,0 +1,1667 @@
+{
+  "entryId": "FR-candidate-d81bd703cc53f0",
+  "parkId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+  "name": "Parc océanique Cousteau",
+  "checkedAtUtc": "2026-11-01T12:17:23.323116+00:00",
+  "contentAuditPassed": true,
+  "publicationComplete": false,
+  "facebookComplete": false,
+  "state": "Audit éditorial terminé ; dépendances publiées, parc masqué. Attente de décision sur le score projeté 86/100 et les lacunes documentées.",
+  "exportedAtUtc": "2026-11-01T12:03:20.3312336Z",
+  "exportSha256": "2dc9afeb842a036cc9311929224402f11200ea590e59324e5680d34d82f575bb",
+  "verifiedCorrection": [
+    {
+      "stem": "09-editorial-corrections",
+      "operationId": "f3617991-477a-446d-a566-e339b1678854",
+      "appliedAtUtc": "2026-11-01T12:06:08.6111455Z"
+    }
+  ],
+  "coverage": {
+    "freshAtUtc": "2026-11-01T12:03:20.3312336Z",
+    "items": 5,
+    "zones": 0,
+    "attractions": 3,
+    "attractionStatuses": {
+      "Removed": 3
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 3,
+    "attractionsWithImage": 1,
+    "attractionImageGaps": [
+      {
+        "id": "521035ba-048c-4e8d-b156-e3f9b4bf2946",
+        "name": "Cinéma du Parc océanique"
+      },
+      {
+        "id": "163d8382-54d5-4c8d-ab55-e097609dd1f5",
+        "name": "Parcours sous-marin"
+      }
+    ],
+    "ownedImages": 4,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "36ca3c7a-8fe4-4470-932f-654c635c7cb2",
+        "name": "Baleine Jonas",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b557fd2a-3525-47d3-9d21-c893564c8432",
+        "name": "Boutique du Parc océanique",
+        "category": "Shop",
+        "images": 1
+      },
+      {
+        "id": "521035ba-048c-4e8d-b156-e3f9b4bf2946",
+        "name": "Cinéma du Parc océanique",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f0dc2a0c-f77b-42b5-82d8-ba05dc371002",
+        "name": "Entrée du Parc océanique",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "163d8382-54d5-4c8d-ab55-e097609dd1f5",
+        "name": "Parcours sous-marin",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "36ca3c7a-8fe4-4470-932f-654c635c7cb2",
+        "name": "Baleine Jonas",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b557fd2a-3525-47d3-9d21-c893564c8432",
+        "name": "Boutique du Parc océanique",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "521035ba-048c-4e8d-b156-e3f9b4bf2946",
+        "name": "Cinéma du Parc océanique",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f0dc2a0c-f77b-42b5-82d8-ba05dc371002",
+        "name": "Entrée du Parc océanique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "163d8382-54d5-4c8d-ab55-e097609dd1f5",
+        "name": "Parcours sous-marin",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 11,
+    "parkHistory": 6,
+    "itemHistory": 5,
+    "historyWithSource": 11,
+    "historyWithImage": 3,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "itemsWith8Descriptions": 5,
+    "attractionsCurrent": 0,
+    "attractionsAnnounced": 0,
+    "attractionsHistorical": 3,
+    "logo": {
+      "present": true,
+      "current": true,
+      "watermark": false
+    },
+    "parkMainPhoto": false,
+    "generalParkPhotos": {
+      "actual": 0,
+      "target": 5
+    },
+    "importantItemsWith3Photos": {
+      "actual": 0,
+      "total": 3
+    },
+    "officialMapYears": [],
+    "historyMajor": 10,
+    "articlesWith8Languages": 1
+  },
+  "depth": {
+    "fr": {
+      "articleBodyWords": 451,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "parkHeadings": 3,
+      "parkParagraphs": 5
+    },
+    "en": {
+      "articleBodyWords": 399,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "parkHeadings": 3,
+      "parkParagraphs": 5
+    },
+    "de": {
+      "articleBodyWords": 373,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "parkHeadings": 3,
+      "parkParagraphs": 5
+    },
+    "nl": {
+      "articleBodyWords": 420,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "parkHeadings": 3,
+      "parkParagraphs": 5
+    },
+    "it": {
+      "articleBodyWords": 415,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "parkHeadings": 3,
+      "parkParagraphs": 5
+    },
+    "es": {
+      "articleBodyWords": 454,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "parkHeadings": 3,
+      "parkParagraphs": 5
+    },
+    "pl": {
+      "articleBodyWords": 361,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "parkHeadings": 3,
+      "parkParagraphs": 5
+    },
+    "pt": {
+      "articleBodyWords": 437,
+      "articleSections": 4,
+      "articleParagraphs": 8,
+      "parkHeadings": 3,
+      "parkParagraphs": 5
+    }
+  },
+  "wordDistributions": {
+    "fr": {
+      "park": {
+        "min": 302,
+        "p10": 302,
+        "median": 302,
+        "p90": 302,
+        "max": 302,
+        "n": 1
+      },
+      "Attraction": {
+        "min": 111,
+        "p10": 111,
+        "median": 135,
+        "p90": 135,
+        "max": 147,
+        "n": 3
+      },
+      "Shop": {
+        "min": 95,
+        "p10": 95,
+        "median": 95,
+        "p90": 95,
+        "max": 95,
+        "n": 1
+      },
+      "Service": {
+        "min": 90,
+        "p10": 90,
+        "median": 90,
+        "p90": 90,
+        "max": 90,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 6,
+        "median": 7,
+        "p90": 8,
+        "max": 8,
+        "n": 11
+      },
+      "timeline-summaries": {
+        "min": 28,
+        "p10": 31,
+        "median": 35,
+        "p90": 40,
+        "max": 42,
+        "n": 11
+      },
+      "article-titles": {
+        "min": 10,
+        "p10": 10,
+        "median": 10,
+        "p90": 10,
+        "max": 10,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 15,
+        "p10": 15,
+        "median": 15,
+        "p90": 15,
+        "max": 15,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 37,
+        "p10": 37,
+        "median": 37,
+        "p90": 37,
+        "max": 37,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 6,
+        "p10": 6,
+        "median": 6.0,
+        "p90": 6,
+        "max": 7,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 31,
+        "p10": 31,
+        "median": 59.0,
+        "p90": 65,
+        "max": 68,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 11,
+        "p10": 11,
+        "median": 13,
+        "p90": 13,
+        "max": 15,
+        "n": 3
+      },
+      "image-description": {
+        "min": 20,
+        "p10": 20,
+        "median": 22.0,
+        "p90": 22,
+        "max": 26,
+        "n": 4
+      },
+      "image-altTexts": {
+        "min": 11,
+        "p10": 11,
+        "median": 15.5,
+        "p90": 17,
+        "max": 18,
+        "n": 4
+      },
+      "image-captions": {
+        "min": 20,
+        "p10": 20,
+        "median": 22.0,
+        "p90": 22,
+        "max": 26,
+        "n": 4
+      },
+      "image-credits": {
+        "min": 12,
+        "p10": 12,
+        "median": 18.0,
+        "p90": 18,
+        "max": 22,
+        "n": 4
+      },
+      "reference-founders": {
+        "min": 102,
+        "p10": 102,
+        "median": 102,
+        "p90": 102,
+        "max": 102,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 74,
+        "p10": 74,
+        "median": 74,
+        "p90": 74,
+        "max": 74,
+        "n": 1
+      }
+    },
+    "en": {
+      "park": {
+        "min": 271,
+        "p10": 271,
+        "median": 271,
+        "p90": 271,
+        "max": 271,
+        "n": 1
+      },
+      "Attraction": {
+        "min": 100,
+        "p10": 100,
+        "median": 124,
+        "p90": 124,
+        "max": 134,
+        "n": 3
+      },
+      "Shop": {
+        "min": 87,
+        "p10": 87,
+        "median": 87,
+        "p90": 87,
+        "max": 87,
+        "n": 1
+      },
+      "Service": {
+        "min": 80,
+        "p10": 80,
+        "median": 80,
+        "p90": 80,
+        "max": 80,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 6,
+        "median": 7,
+        "p90": 9,
+        "max": 9,
+        "n": 11
+      },
+      "timeline-summaries": {
+        "min": 27,
+        "p10": 28,
+        "median": 33,
+        "p90": 36,
+        "max": 37,
+        "n": 11
+      },
+      "article-titles": {
+        "min": 11,
+        "p10": 11,
+        "median": 11,
+        "p90": 11,
+        "max": 11,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 15,
+        "p10": 15,
+        "median": 15,
+        "p90": 15,
+        "max": 15,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 39,
+        "p10": 39,
+        "median": 39,
+        "p90": 39,
+        "max": 39,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 4.5,
+        "p90": 5,
+        "max": 6,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 29,
+        "p10": 29,
+        "median": 51.5,
+        "p90": 58,
+        "max": 60,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 12,
+        "p10": 12,
+        "median": 14,
+        "p90": 14,
+        "max": 15,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 11,
+        "p10": 11,
+        "median": 15.0,
+        "p90": 15,
+        "max": 15,
+        "n": 4
+      },
+      "image-captions": {
+        "min": 20,
+        "p10": 20,
+        "median": 21.5,
+        "p90": 22,
+        "max": 24,
+        "n": 4
+      },
+      "image-credits": {
+        "min": 11,
+        "p10": 11,
+        "median": 16.0,
+        "p90": 16,
+        "max": 20,
+        "n": 4
+      },
+      "reference-founders": {
+        "min": 89,
+        "p10": 89,
+        "median": 89,
+        "p90": 89,
+        "max": 89,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 59,
+        "p10": 59,
+        "median": 59,
+        "p90": 59,
+        "max": 59,
+        "n": 1
+      }
+    },
+    "de": {
+      "park": {
+        "min": 269,
+        "p10": 269,
+        "median": 269,
+        "p90": 269,
+        "max": 269,
+        "n": 1
+      },
+      "Attraction": {
+        "min": 88,
+        "p10": 88,
+        "median": 124,
+        "p90": 124,
+        "max": 126,
+        "n": 3
+      },
+      "Shop": {
+        "min": 89,
+        "p10": 89,
+        "median": 89,
+        "p90": 89,
+        "max": 89,
+        "n": 1
+      },
+      "Service": {
+        "min": 77,
+        "p10": 77,
+        "median": 77,
+        "p90": 77,
+        "max": 77,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 6,
+        "median": 7,
+        "p90": 9,
+        "max": 9,
+        "n": 11
+      },
+      "timeline-summaries": {
+        "min": 21,
+        "p10": 27,
+        "median": 31,
+        "p90": 33,
+        "max": 33,
+        "n": 11
+      },
+      "article-titles": {
+        "min": 9,
+        "p10": 9,
+        "median": 9,
+        "p90": 9,
+        "max": 9,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 12,
+        "p10": 12,
+        "median": 12,
+        "p90": 12,
+        "max": 12,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 33,
+        "p10": 33,
+        "median": 33,
+        "p90": 33,
+        "max": 33,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 4.5,
+        "p90": 5,
+        "max": 6,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 26,
+        "p10": 26,
+        "median": 47.0,
+        "p90": 53,
+        "max": 59,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 10,
+        "p10": 10,
+        "median": 11,
+        "p90": 11,
+        "max": 14,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 11,
+        "p10": 11,
+        "median": 13.5,
+        "p90": 15,
+        "max": 16,
+        "n": 4
+      },
+      "image-captions": {
+        "min": 18,
+        "p10": 18,
+        "median": 20.5,
+        "p90": 21,
+        "max": 22,
+        "n": 4
+      },
+      "image-credits": {
+        "min": 11,
+        "p10": 11,
+        "median": 17.5,
+        "p90": 18,
+        "max": 21,
+        "n": 4
+      },
+      "reference-founders": {
+        "min": 89,
+        "p10": 89,
+        "median": 89,
+        "p90": 89,
+        "max": 89,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 63,
+        "p10": 63,
+        "median": 63,
+        "p90": 63,
+        "max": 63,
+        "n": 1
+      }
+    },
+    "nl": {
+      "park": {
+        "min": 285,
+        "p10": 285,
+        "median": 285,
+        "p90": 285,
+        "max": 285,
+        "n": 1
+      },
+      "Attraction": {
+        "min": 102,
+        "p10": 102,
+        "median": 130,
+        "p90": 130,
+        "max": 138,
+        "n": 3
+      },
+      "Shop": {
+        "min": 95,
+        "p10": 95,
+        "median": 95,
+        "p90": 95,
+        "max": 95,
+        "n": 1
+      },
+      "Service": {
+        "min": 81,
+        "p10": 81,
+        "median": 81,
+        "p90": 81,
+        "max": 81,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 6,
+        "median": 7,
+        "p90": 9,
+        "max": 10,
+        "n": 11
+      },
+      "timeline-summaries": {
+        "min": 23,
+        "p10": 29,
+        "median": 33,
+        "p90": 35,
+        "max": 36,
+        "n": 11
+      },
+      "article-titles": {
+        "min": 9,
+        "p10": 9,
+        "median": 9,
+        "p90": 9,
+        "max": 9,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 11,
+        "p10": 11,
+        "median": 11,
+        "p90": 11,
+        "max": 11,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 39,
+        "p10": 39,
+        "median": 39,
+        "p90": 39,
+        "max": 39,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 4.5,
+        "p90": 5,
+        "max": 5,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 31,
+        "p10": 31,
+        "median": 53.0,
+        "p90": 62,
+        "max": 64,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 11,
+        "p10": 11,
+        "median": 13,
+        "p90": 13,
+        "max": 16,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 12,
+        "p10": 12,
+        "median": 15.0,
+        "p90": 16,
+        "max": 19,
+        "n": 4
+      },
+      "image-captions": {
+        "min": 21,
+        "p10": 21,
+        "median": 23.0,
+        "p90": 23,
+        "max": 24,
+        "n": 4
+      },
+      "image-credits": {
+        "min": 11,
+        "p10": 11,
+        "median": 18.0,
+        "p90": 18,
+        "max": 22,
+        "n": 4
+      },
+      "reference-founders": {
+        "min": 94,
+        "p10": 94,
+        "median": 94,
+        "p90": 94,
+        "max": 94,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 69,
+        "p10": 69,
+        "median": 69,
+        "p90": 69,
+        "max": 69,
+        "n": 1
+      }
+    },
+    "it": {
+      "park": {
+        "min": 274,
+        "p10": 274,
+        "median": 274,
+        "p90": 274,
+        "max": 274,
+        "n": 1
+      },
+      "Attraction": {
+        "min": 96,
+        "p10": 96,
+        "median": 122,
+        "p90": 122,
+        "max": 131,
+        "n": 3
+      },
+      "Shop": {
+        "min": 90,
+        "p10": 90,
+        "median": 90,
+        "p90": 90,
+        "max": 90,
+        "n": 1
+      },
+      "Service": {
+        "min": 77,
+        "p10": 77,
+        "median": 77,
+        "p90": 77,
+        "max": 77,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 5,
+        "median": 7,
+        "p90": 8,
+        "max": 8,
+        "n": 11
+      },
+      "timeline-summaries": {
+        "min": 26,
+        "p10": 27,
+        "median": 32,
+        "p90": 35,
+        "max": 36,
+        "n": 11
+      },
+      "article-titles": {
+        "min": 10,
+        "p10": 10,
+        "median": 10,
+        "p90": 10,
+        "max": 10,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 12,
+        "p10": 12,
+        "median": 12,
+        "p90": 12,
+        "max": 12,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 37,
+        "p10": 37,
+        "median": 37,
+        "p90": 37,
+        "max": 37,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 5.5,
+        "p90": 6,
+        "max": 6,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 28,
+        "p10": 28,
+        "median": 53.0,
+        "p90": 64,
+        "max": 66,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 13,
+        "p10": 13,
+        "median": 13,
+        "p90": 13,
+        "max": 15,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 11,
+        "p10": 11,
+        "median": 16.0,
+        "p90": 17,
+        "max": 18,
+        "n": 4
+      },
+      "image-captions": {
+        "min": 21,
+        "p10": 21,
+        "median": 21.5,
+        "p90": 22,
+        "max": 25,
+        "n": 4
+      },
+      "image-credits": {
+        "min": 12,
+        "p10": 12,
+        "median": 18.5,
+        "p90": 19,
+        "max": 23,
+        "n": 4
+      },
+      "reference-founders": {
+        "min": 94,
+        "p10": 94,
+        "median": 94,
+        "p90": 94,
+        "max": 94,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 64,
+        "p10": 64,
+        "median": 64,
+        "p90": 64,
+        "max": 64,
+        "n": 1
+      }
+    },
+    "es": {
+      "park": {
+        "min": 297,
+        "p10": 297,
+        "median": 297,
+        "p90": 297,
+        "max": 297,
+        "n": 1
+      },
+      "Attraction": {
+        "min": 111,
+        "p10": 111,
+        "median": 135,
+        "p90": 135,
+        "max": 144,
+        "n": 3
+      },
+      "Shop": {
+        "min": 98,
+        "p10": 98,
+        "median": 98,
+        "p90": 98,
+        "max": 98,
+        "n": 1
+      },
+      "Service": {
+        "min": 86,
+        "p10": 86,
+        "median": 86,
+        "p90": 86,
+        "max": 86,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 6,
+        "median": 8,
+        "p90": 9,
+        "max": 9,
+        "n": 11
+      },
+      "timeline-summaries": {
+        "min": 30,
+        "p10": 30,
+        "median": 35,
+        "p90": 38,
+        "max": 38,
+        "n": 11
+      },
+      "article-titles": {
+        "min": 10,
+        "p10": 10,
+        "median": 10,
+        "p90": 10,
+        "max": 10,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 15,
+        "p10": 15,
+        "median": 15,
+        "p90": 15,
+        "max": 15,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 41,
+        "p10": 41,
+        "median": 41,
+        "p90": 41,
+        "max": 41,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 5.0,
+        "p90": 5,
+        "max": 7,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 31,
+        "p10": 31,
+        "median": 55.0,
+        "p90": 71,
+        "max": 72,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 15,
+        "p10": 15,
+        "median": 16,
+        "p90": 16,
+        "max": 16,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 12,
+        "p10": 12,
+        "median": 16.0,
+        "p90": 17,
+        "max": 19,
+        "n": 4
+      },
+      "image-captions": {
+        "min": 22,
+        "p10": 22,
+        "median": 24.0,
+        "p90": 25,
+        "max": 29,
+        "n": 4
+      },
+      "image-credits": {
+        "min": 14,
+        "p10": 14,
+        "median": 19.5,
+        "p90": 20,
+        "max": 24,
+        "n": 4
+      },
+      "reference-founders": {
+        "min": 96,
+        "p10": 96,
+        "median": 96,
+        "p90": 96,
+        "max": 96,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 68,
+        "p10": 68,
+        "median": 68,
+        "p90": 68,
+        "max": 68,
+        "n": 1
+      }
+    },
+    "pl": {
+      "park": {
+        "min": 236,
+        "p10": 236,
+        "median": 236,
+        "p90": 236,
+        "max": 236,
+        "n": 1
+      },
+      "Attraction": {
+        "min": 86,
+        "p10": 86,
+        "median": 110,
+        "p90": 110,
+        "max": 114,
+        "n": 3
+      },
+      "Shop": {
+        "min": 74,
+        "p10": 74,
+        "median": 74,
+        "p90": 74,
+        "max": 74,
+        "n": 1
+      },
+      "Service": {
+        "min": 69,
+        "p10": 69,
+        "median": 69,
+        "p90": 69,
+        "max": 69,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 3,
+        "p10": 5,
+        "median": 6,
+        "p90": 6,
+        "max": 8,
+        "n": 11
+      },
+      "timeline-summaries": {
+        "min": 20,
+        "p10": 23,
+        "median": 27,
+        "p90": 33,
+        "max": 34,
+        "n": 11
+      },
+      "article-titles": {
+        "min": 9,
+        "p10": 9,
+        "median": 9,
+        "p90": 9,
+        "max": 9,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 13,
+        "p10": 13,
+        "median": 13,
+        "p90": 13,
+        "max": 13,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 34,
+        "p10": 34,
+        "median": 34,
+        "p90": 34,
+        "max": 34,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 3,
+        "p10": 3,
+        "median": 4.0,
+        "p90": 4,
+        "max": 4,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 26,
+        "p10": 26,
+        "median": 43.5,
+        "p90": 55,
+        "max": 57,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 13,
+        "p10": 13,
+        "median": 13,
+        "p90": 13,
+        "max": 14,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 8,
+        "p10": 8,
+        "median": 12.5,
+        "p90": 13,
+        "max": 14,
+        "n": 4
+      },
+      "image-captions": {
+        "min": 14,
+        "p10": 14,
+        "median": 20.5,
+        "p90": 21,
+        "max": 22,
+        "n": 4
+      },
+      "image-credits": {
+        "min": 12,
+        "p10": 12,
+        "median": 17.5,
+        "p90": 19,
+        "max": 20,
+        "n": 4
+      },
+      "reference-founders": {
+        "min": 84,
+        "p10": 84,
+        "median": 84,
+        "p90": 84,
+        "max": 84,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 65,
+        "p10": 65,
+        "median": 65,
+        "p90": 65,
+        "max": 65,
+        "n": 1
+      }
+    },
+    "pt": {
+      "park": {
+        "min": 286,
+        "p10": 286,
+        "median": 286,
+        "p90": 286,
+        "max": 286,
+        "n": 1
+      },
+      "Attraction": {
+        "min": 105,
+        "p10": 105,
+        "median": 123,
+        "p90": 123,
+        "max": 139,
+        "n": 3
+      },
+      "Shop": {
+        "min": 98,
+        "p10": 98,
+        "median": 98,
+        "p90": 98,
+        "max": 98,
+        "n": 1
+      },
+      "Service": {
+        "min": 83,
+        "p10": 83,
+        "median": 83,
+        "p90": 83,
+        "max": 83,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 6,
+        "median": 7,
+        "p90": 8,
+        "max": 10,
+        "n": 11
+      },
+      "timeline-summaries": {
+        "min": 28,
+        "p10": 28,
+        "median": 35,
+        "p90": 37,
+        "max": 38,
+        "n": 11
+      },
+      "article-titles": {
+        "min": 10,
+        "p10": 10,
+        "median": 10,
+        "p90": 10,
+        "max": 10,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 15,
+        "p10": 15,
+        "median": 15,
+        "p90": 15,
+        "max": 15,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 39,
+        "p10": 39,
+        "median": 39,
+        "p90": 39,
+        "max": 39,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 5.5,
+        "p90": 6,
+        "max": 6,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 31,
+        "p10": 31,
+        "median": 52.5,
+        "p90": 69,
+        "max": 70,
+        "n": 8
+      },
+      "article-Image-texts": {
+        "min": 14,
+        "p10": 14,
+        "median": 15,
+        "p90": 15,
+        "max": 15,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 13,
+        "p10": 13,
+        "median": 16.0,
+        "p90": 17,
+        "max": 19,
+        "n": 4
+      },
+      "image-captions": {
+        "min": 21,
+        "p10": 21,
+        "median": 23.5,
+        "p90": 24,
+        "max": 27,
+        "n": 4
+      },
+      "image-credits": {
+        "min": 14,
+        "p10": 14,
+        "median": 19.5,
+        "p90": 20,
+        "max": 23,
+        "n": 4
+      },
+      "reference-founders": {
+        "min": 102,
+        "p10": 102,
+        "median": 102,
+        "p90": 102,
+        "max": 102,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 67,
+        "p10": 67,
+        "median": 67,
+        "p90": 67,
+        "max": 67,
+        "n": 1
+      }
+    }
+  },
+  "roundtrip": {
+    "checkedAtUtc": "2026-11-01T12:07:30.585781+00:00",
+    "freshExportSha256": "2dc9afeb842a036cc9311929224402f11200ea590e59324e5680d34d82f575bb",
+    "consolidatedSha256": "1401a92889b5b577e8ccecf8ead4207ec8f1ebcb129623d836b61f50bbfa822e",
+    "verifiedCorrectionOperationId": "f3617991-477a-446d-a566-e339b1678854",
+    "valuesCompared": 852,
+    "differences": [],
+    "normalizedMetadataAndAliases": [
+      {
+        "path": "images.6edf042871a3409388daebc568e22f68.acceptedImportAtUtc",
+        "expected": "2026-11-01T11:33:33.603Z",
+        "actual": null,
+        "explanation": "Horodatage interne de reçu, absent du contrat export."
+      },
+      {
+        "path": "images.6edf042871a3409388daebc568e22f68.path",
+        "expected": "logo/6edf042871a3409388daebc568e22f68",
+        "actual": null,
+        "explanation": "Clé de stockage interne du reçu ; export expose internalUrl."
+      },
+      {
+        "path": "images.07d7e7c3775b465d94aa753a6ba33b71.acceptedImportAtUtc",
+        "expected": "2026-11-01T11:43:08.446Z",
+        "actual": null,
+        "explanation": "Horodatage interne de reçu, absent du contrat export."
+      },
+      {
+        "path": "images.07d7e7c3775b465d94aa753a6ba33b71.path",
+        "expected": "park_item/07d7e7c3775b465d94aa753a6ba33b71",
+        "actual": null,
+        "explanation": "Clé de stockage interne du reçu ; export expose internalUrl."
+      },
+      {
+        "path": "images.724f3de398154b658fe09b55e3da4ffa.acceptedImportAtUtc",
+        "expected": "2026-11-01T11:42:53.918Z",
+        "actual": null,
+        "explanation": "Horodatage interne de reçu, absent du contrat export."
+      },
+      {
+        "path": "images.724f3de398154b658fe09b55e3da4ffa.path",
+        "expected": "park_item/724f3de398154b658fe09b55e3da4ffa",
+        "actual": null,
+        "explanation": "Clé de stockage interne du reçu ; export expose internalUrl."
+      },
+      {
+        "path": "images.5aadcbe4bd514f629987cdc3e070d965.acceptedImportAtUtc",
+        "expected": "2026-11-01T11:43:22.754Z",
+        "actual": null,
+        "explanation": "Horodatage interne de reçu, absent du contrat export."
+      },
+      {
+        "path": "images.5aadcbe4bd514f629987cdc3e070d965.path",
+        "expected": "park_item/5aadcbe4bd514f629987cdc3e070d965",
+        "actual": null,
+        "explanation": "Clé de stockage interne du reçu ; export expose internalUrl."
+      },
+      {
+        "path": "history.cousteau-parcours-ouverture-1989.owner",
+        "expected": "cousteau-parcours-sous-marin",
+        "actual": "parkItem",
+        "explanation": "Alias de propriétaire normalisé en parkItem ; ownerId, parkItemId et contextParkId identiques."
+      },
+      {
+        "path": "history.cousteau-parcours-reemploi-1995.owner",
+        "expected": "cousteau-parcours-sous-marin",
+        "actual": "parkItem",
+        "explanation": "Alias de propriétaire normalisé en parkItem ; ownerId, parkItemId et contextParkId identiques."
+      },
+      {
+        "path": "history.cousteau-jonas-ouverture-1989.owner",
+        "expected": "cousteau-baleine-jonas",
+        "actual": "parkItem",
+        "explanation": "Alias de propriétaire normalisé en parkItem ; ownerId, parkItemId et contextParkId identiques."
+      },
+      {
+        "path": "history.cousteau-jonas-fin-halles-1992.owner",
+        "expected": "cousteau-baleine-jonas",
+        "actual": "parkItem",
+        "explanation": "Alias de propriétaire normalisé en parkItem ; ownerId, parkItemId et contextParkId identiques."
+      },
+      {
+        "path": "history.cousteau-cinema-1989.owner",
+        "expected": "cousteau-cinema",
+        "actual": "parkItem",
+        "explanation": "Alias de propriétaire normalisé en parkItem ; ownerId, parkItemId et contextParkId identiques."
+      }
+    ],
+    "publicAndStructuredValuesMatch": true
+  },
+  "sources": [
+    {
+      "url": "https://catalogue.bnf.fr/ark:/12148/cb36640719d.public",
+      "checkedAtUtc": "2026-11-01T11:45:16.715035+00:00",
+      "status": 200,
+      "title": "Notice bibliographique Ecologie et pouvoir : colloque organisé au Parc océanique Cousteau 13, 14, 15 décembre 1989 / Secrétariat d'Etat auprès du Premier Ministre chargé de l'environnement et de la prévention des risques technologiques et naturels majeurs ; [réd. par Julien Brunn et Yasmina Sahli] | Accueil | Catalogue général | BnF- Bibliothèque nationale de France",
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 78837
+    },
+    {
+      "url": "https://darkridedatabase.com/rides/images-studio/",
+      "checkedAtUtc": "2026-11-01T11:27:29.045097+00:00",
+      "status": 200,
+      "title": "Images Studio – Futuroscope – Dark Ride Database",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 120019
+    },
+    {
+      "url": "https://epistemocritique.org/dans-le-ventre-de-la-baleine-voyages-interieurs-et-metaphore-parasitaire-dans-la-culture-populaire/",
+      "checkedAtUtc": "2026-11-01T11:28:58.085436+00:00",
+      "status": 200,
+      "title": "7 – Dans le ventre de la baleine : voyages intérieurs et métaphore parasitaire dans la culture populaire – Épistémocritique",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 208114
+    },
+    {
+      "url": "https://filmmusiccreator.wixsite.com/johnscottcomposer/copie-de-world-of-cousteau",
+      "checkedAtUtc": "2026-11-01T11:28:19.190325+00:00",
+      "status": 200,
+      "title": "WORLD OF COUSTEAU | johnscottcomposer",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 573583,
+      "sourceQualification": "Site de spécialiste non officiel, indiqué comme tel dans son pied de page et dans la liste de sources. Ce n’est pas un témoignage primaire du compositeur."
+    },
+    {
+      "url": "https://pierregleizes.com/2026/07/22/en-levant-les-poings/",
+      "checkedAtUtc": "2026-11-01T11:28:58.084803+00:00",
+      "status": 200,
+      "title": "EN LEVANT LES POINGS – La planète de Pierre Gleizes",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 85517
+    },
+    {
+      "url": "https://sallesdecinemas.blogspot.com/2016/03/ugc-cine-cite-les-halles-paris-1er.html",
+      "checkedAtUtc": "2026-11-01T11:22:41.002316+00:00",
+      "status": 200,
+      "title": "Ciné-Façades: UGC Ciné-Cité Les Halles (Paris 1er)",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 570162
+    },
+    {
+      "url": "https://static1.squarespace.com/static/5af991161137a6aac67819bb/t/5f4bba6e23958d79eabf91d7/1598798448116/Sept.%2BNewsletter.pdf",
+      "checkedAtUtc": "2026-11-01T11:52:25.796850+00:00",
+      "status": 200,
+      "contentType": "application/pdf",
+      "bytes": 1350526
+    },
+    {
+      "url": "https://adu-montbeliard.fr/uploads/2022/09/TOU_2001_017_Etude_documentaire_Les_parcs_a_theme.pdf",
+      "checkedAtUtc": "2026-11-01T11:27:29.044297+00:00",
+      "status": 200,
+      "contentType": "application/pdf",
+      "bytes": 3073415
+    },
+    {
+      "url": "https://www.deseret.com/1989/10/1/18826687/paris-has-waterless-fishless-aquarium/",
+      "checkedAtUtc": "2026-11-01T11:18:19.442334+00:00",
+      "status": 200,
+      "title": "PARIS HAS WATERLESS, FISHLESS AQUARIUM – Deseret News",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 163765
+    },
+    {
+      "url": "https://www.lemonde.fr/archives/article/1991/04/11/le-lent-demarrage-d-un-centre-de-loisirs-le-parc-cousteau-entre-deux-eaux_4010134_1819218.html",
+      "checkedAtUtc": "2026-11-01T11:18:19.990377+00:00",
+      "status": 200,
+      "title": "Client Challenge",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 3038,
+      "accessLimitation": "Réponse directe : challenge client, pas le texte intégral. Seul l’extrait public indexé consulté sert à la fréquentation ; dépôt de bilan et fermeture recoupés dans l’étude ADU."
+    },
+    {
+      "url": "https://www.mediathequedelamer.com/jacques-yves-cousteau",
+      "checkedAtUtc": "2026-11-01T11:18:19.109331+00:00",
+      "status": 200,
+      "title": "Jacques-Yves COUSTEAU - La Médiathèque de la Mer, le magazine de La Cité de la Mer",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 150086
+    }
+  ],
+  "remainingGaps": [
+    {
+      "field": "Photographies générales et principale",
+      "coverage": "0/5 ; aucune photographie principale de parc",
+      "reason": "Aucune vue générale acceptable retrouvée après recherches institutionnelles, presse, photographes, archives d’architecte, collectionneurs, Wikimedia et Flickr. Les portraits filigranés ne sont pas réutilisés ; le logo, le disque et la vue UGC postérieure ne sont pas comptés comme photographies générales."
+    },
+    {
+      "field": "Photographies des attractions",
+      "coverage": "1/3 attractions ; 0/3 avec trois vues",
+      "reason": "Jonas : une vue de la baleine transférée à l’Aquaboulevard en 2018. Aucun intérieur fiable du parcours sous-marin ou du cinéma. La publicité INA montre un requin réel et non la salle ; rejetée. Le second cliché de Jonas, proche et moins net, n’a pas été ajouté artificiellement."
+    },
+    {
+      "field": "Géolocalisation des cinq équipements",
+      "coverage": "0/5",
+      "reason": "Installation historique souterraine à plusieurs niveaux ; aucune implantation intérieure suffisamment précise pour attribuer cinq points. Le plan du Forum situe l’accès, sans coordonnées prouvées de chaque entité."
+    },
+    {
+      "field": "Cartes officielles annuelles",
+      "coverage": "0 édition",
+      "reason": "Recherche des brochures et plans français/anglais, archives de Sérau, sources institutionnelles, revue Parcs Passion et collectionneurs. L’ancien plan du Forum retrouvé sur Flickr est une carte du centre commercial, sans millésime établi du parc ; il n’est pas importé comme plan annuel."
+    },
+    {
+      "field": "Constructeur et restrictions d’accès",
+      "coverage": "0/3 constructeur identifié ; 0/3 restrictions fiables",
+      "reason": "Dark Ride Database ne nomme pas le sous-traitant du système suspendu. Aucun fabricant prouvé pour Jonas ou le cinéma. Les tarifs enfants d’une publicité de 1989 ne sont pas des restrictions d’attraction."
+    },
+    {
+      "field": "Inventaire",
+      "coverage": "5 entités indépendantes prouvées",
+      "reason": "Les poissons à ressort et les conversations filmées cités dans Le Monde restent des composants de l’exposition ; autonomie, nom ou zone indépendante non établis. La piscine et le parking du Forum sont extérieurs au parc. Aucun équipement supplémentaire créé pour atteindre un seuil numérique."
+    },
+    {
+      "field": "Photographies des faits historiques",
+      "coverage": "3/11 faits avec image de contexte",
+      "reason": "Deux faits de Jonas utilisent sa vue datée de 2018 ; la reconversion utilise l’entrée UGC de 2010. Aucune photo acceptable des cérémonies, du dépôt de bilan, du colloque, de la fermeture ou des attractions en activité. L’article précise le contexte des trois images et conserve onze sources."
+    },
+    {
+      "field": "Textes courts",
+      "coverage": "3 exceptions de source : cinéma, boutique et entrée",
+      "reason": "Les descriptions restent développées en deux paragraphes sans inventer de décoration, de programmation, de catalogue commercial ni d’enseigne. La boutique et la vente du disque reposent sur une source spécialisée secondaire non officielle, recoupée pour les crédits par la pochette originale."
+    },
+    {
+      "field": "Site web actuel et exploitation",
+      "coverage": "Aucun site officiel actuel ; horaires et tarifs non applicables",
+      "reason": "Parc définitivement fermé en novembre 1992. Aucun site de loisirs actuel n’est substitué à son identité."
+    }
+  ],
+  "publicTextReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "corpusRows": 484,
+    "personallyReviewed": true,
+    "translationServiceUsed": false,
+    "encodingFindings": 0,
+    "mechanicalWordingFindingsAfterCorrections": 0,
+    "duplicateParagraphGroups": 0,
+    "imageCaptionReuse": "Les trois légendes de l’article ont été rédigées séparément des légendes de galerie ; zéro phrase ou séquence longue répétée après correction.",
+    "crossCorpusSequenceGroups": 0,
+    "finalOfficialBlockers": [],
+    "reviewedCorrectionOperationId": "092ff43e-25f1-4ccb-a514-df07571944ff"
+  },
+  "privateProjectedScoreBeforeDependencyPublication": {
+    "completenessScore": 82,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 93,
+    "earnedPoints": 76,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicationAuthorization": "Campagne France : publication du site et annonce Facebook explicitement demandées. Respect du seuil national et des exceptions nommées ; aucune annonce tant que la fiche reste masquée.",
+  "editorialReady": true,
+  "publicationReady": false,
+  "finalProjectedScore": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 93,
+    "earnedPoints": 80,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "lastDataIntegrationAtUtc": "2026-11-01T12:15:06.710Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-cousteau-receipts.json#apply-092ff43e-25f1-4ccb-a514-df07571944ff",
+  "publicationExport": {
+    "checkedAtUtc": "2026-11-01T12:10:12.632261+00:00",
+    "exportedAtUtc": "2026-11-01T12:09:22.1708103Z",
+    "sha256": "559f83f8d675f0f2756b05eb53bee0896cadeb1ed028bd1dc20751c2dd97d60e",
+    "matchesAuditedGraph": true,
+    "normalizations": [
+      "Export metadata timestamps",
+      "itemId redundant request alias; parkItemId and ownerId preserved",
+      "Collection order"
+    ]
+  },
+  "verifiedOperationsAfterPublicationExport": [
+    {
+      "stem": "09-publish-images",
+      "operationId": "939b9c0b-c676-4c47-8a3a-9a3fca87cb28",
+      "appliedAtUtc": "2026-11-01T12:10:40.435115Z"
+    },
+    {
+      "stem": "09-publish-dependent-content",
+      "operationId": "6bd1dd97-637e-4224-b940-f297e2e24243",
+      "appliedAtUtc": "2026-11-01T12:11:54.1018024Z"
+    },
+    {
+      "stem": "09-repetition-corrections-v2",
+      "operationId": "092ff43e-25f1-4ccb-a514-df07571944ff",
+      "appliedAtUtc": "2026-11-01T12:15:06.7100489Z"
+    }
+  ],
+  "idempotence": {
+    "operationId": "83c35dcc-b92c-4d80-80dd-152967de9469",
+    "unchanged": 23,
+    "created": 0,
+    "updated": 0,
+    "deleted": 0,
+    "warnings": 0,
+    "errors": 0
+  },
+  "remainingScorePoints": [
+    {
+      "points": 1,
+      "reason": "Aucun site web officiel actuel."
+    },
+    {
+      "points": 3,
+      "reason": "Cinq équipements indépendants prouvés ; le seuil National du calcul attend six. Aucune création artificielle."
+    },
+    {
+      "points": 1,
+      "reason": "Les trois attractions ne sont plus installées : Removed est conservé ; le critère fermé du calcul ne reconnaît pas ce statut."
+    },
+    {
+      "points": 3,
+      "reason": "Aucun constructeur d’attraction attribuable avec preuve."
+    },
+    {
+      "points": 2,
+      "reason": "Aucune restriction d’accès d’époque fiable."
+    },
+    {
+      "points": 2,
+      "reason": "Aucune photographie générale du parc ; le logo reste un logo."
+    },
+    {
+      "points": 1,
+      "reason": "Point de dette résiduelle non acquis dans la projection tant que des lacunes restent présentes."
+    }
+  ],
+  "publicationGate": {
+    "required": "Score strictement supérieur à 95 ou exception explicite nommée ; zéro bloqueur.",
+    "source": "docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+    "currentProjection": 86,
+    "acceptedException": false,
+    "nextChecksAfterApproval": [
+      "Export frais et rapprochement avant publication du parent",
+      "Complétude réelle et HistoryDiagnostics après mise en ligne",
+      "Fiche et lien Histoire, article et fiches majeures dans huit langues ; contrôle mobile",
+      "ResolveFacebookPublication puis annonce seulement si aucune annonce Published"
+    ]
+  }
+}

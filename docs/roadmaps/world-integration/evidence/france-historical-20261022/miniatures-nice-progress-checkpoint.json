@@ -1,0 +1,41 @@
+{
+  "entryId": "FR-candidate-2f3fddd5eab60a",
+  "parkId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+  "name": "Parc des Miniatures de Nice",
+  "owner": "Conversation France",
+  "updatedAtUtc": "2026-11-02T18:49:11.722576+00:00",
+  "phase": "partial-source-gaps",
+  "outcome": "partial",
+  "completed": false,
+  "finalAuditPerformed": true,
+  "parentVisible": false,
+  "items": 22,
+  "itemsWithEightDescriptions": 17,
+  "images": 18,
+  "logo": false,
+  "officialMaps": 0,
+  "historyFacts": 6,
+  "articleLanguages": 8,
+  "score": 76,
+  "publicationBlockers": [
+    "media.logo-required"
+  ],
+  "dataIntegrationEvents": 31,
+  "lastDataIntegrationAt": "2026-11-02T18:47:12.732Z",
+  "lastDataIntegrationRawUtc": "2026-11-02T18:47:12.7327493Z",
+  "lastOperation": "apply-b1c81a70-1291-4cdb-bdc4-030f86274b70",
+  "latestGraph": "09-consolidated-audit-graph.json",
+  "audit": "09-progress-audit.json",
+  "sourceGaps": "09-source-gaps.json",
+  "facebookStatus": "NotAttempted",
+  "next": "Continue qualification of remaining historical PiraPark,TivoliParis,VillageDroséra while retaining this source-blocked park; do not declare completed or publish.",
+  "warnings": [
+    "Initial04-parkPreviewusedignoredsingulardescription,neverapplied;correct04-park-reviewedapplied.",
+    "First09-refine-mediaPreviewhadunresolveditemowners,neverapplied;09-refine-media-reviewedwithidentitydependenciesappliedandverified.",
+    "Pre-refinementfullExportandoriginalmediaimportmetadata predatelocalizedcredits; useconsolidatedauditgraph.",
+    "Oldsave-progress.pyisobsoleteandassertsoldcounts;do not run."
+  ],
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false
+}

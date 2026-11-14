@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "dc5fa7d9803245aca4af80970b2b5897",
+    "category": "PARK",
+    "ownerType": "PARK",
+    "ownerId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "path": "park/dc5fa7d9803245aca4af80970b2b5897",
+    "description": "Les toboggans occupent la pente arborée ; les bassins et les terrasses se déploient devant les bâtiments d’entrée.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 634,
+    "height": 484,
+    "sizeInBytes": 200806,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210093258id_/http://acqua-gliss.com/photos/20/548/srfghjdtgjedtyjk.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Canon",
+      "cameraModel": "Canon DIGITAL IXUS 400",
+      "takenOnUtc": "2006-08-01T14:25:35Z",
+      "orientation": "1",
+      "focalLength": 12.875,
+      "aperture": 9,
+      "exposureTime": 0.005,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vue aérienne oblique d’Acqua Gliss, avec ses toboggans colorés, ses bassins, ses bâtiments et le parking en bord de route."
+      },
+      {
+        "languageCode": "en",
+        "value": "An oblique aerial view of Acqua Gliss, showing colourful slides, pools, buildings and roadside parking."
+      },
+      {
+        "languageCode": "de",
+        "value": "Schrägluftbild von Acqua Gliss mit bunten Rutschen, Becken, Gebäuden und dem Parkplatz an der Straße."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een schuine luchtfoto van Acqua Gliss met gekleurde glijbanen, zwembaden, gebouwen en de parkeerplaats langs de weg."
+      },
+      {
+        "languageCode": "it",
+        "value": "Veduta aerea obliqua di Acqua Gliss con gli scivoli colorati, le piscine, gli edifici e il parcheggio lungo la strada."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vista aérea oblicua de Acqua Gliss con sus toboganes de colores, piscinas, edificios y aparcamiento junto a la carretera."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Ukośne zdjęcie lotnicze Acqua Gliss z kolorowymi zjeżdżalniami, basenami, budynkami i parkingiem przy drodze."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vista aérea oblíqua do Acqua Gliss, com escorregas coloridos, piscinas, edifícios e estacionamento junto à estrada."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les toboggans occupent la pente arborée ; les bassins et les terrasses se déploient devant les bâtiments d’entrée."
+      },
+      {
+        "languageCode": "en",
+        "value": "The slides occupy the wooded slope, with pools and terraces in front of the entrance buildings."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Rutschen liegen am bewachsenen Hang; vor den Eingangsgebäuden breiten sich Becken und Terrassen aus."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De glijbanen liggen op de begroeide helling; voor de entreegebouwen liggen de zwembaden en terrassen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Gli scivoli occupano il pendio alberato; piscine e terrazze si estendono davanti agli edifici d’ingresso."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los toboganes ocupan la ladera arbolada; las piscinas y terrazas se extienden ante los edificios de entrada."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zjeżdżalnie zajmują zadrzewione zbocze, a baseny i tarasy rozciągają się przed budynkami wejściowymi."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os escorregas ocupam a encosta arborizada; as piscinas e os terraços estendem-se diante dos edifícios de entrada."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:34:16.138Z",
+    "updatedAt": "2026-11-14T21:34:19.81Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:34:19.810Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20140306204241/http://www.acqua-gliss.com/plan-d-acces-5810.html"
+}

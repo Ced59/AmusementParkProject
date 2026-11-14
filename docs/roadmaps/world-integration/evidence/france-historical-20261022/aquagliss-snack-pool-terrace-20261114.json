@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "8592fa4be82e4381af2fd3ef123cc26a",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "cb357854-20d4-44db-8890-214338653ab1",
+    "path": "park_item/8592fa4be82e4381af2fd3ef123cc26a",
+    "description": "Les tables du snack-bar donnent directement sur l’eau et la végétation d’Acqua Gliss.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 400,
+    "height": 268,
+    "sizeInBytes": 134804,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210093140id_/http://acqua-gliss.com/photos/20/548/hyhgggtyhu.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Canon",
+      "cameraModel": "Canon EOS-1D",
+      "takenOnUtc": "2003-08-14T13:04:14Z",
+      "orientation": "1",
+      "focalLength": 17,
+      "aperture": 10,
+      "exposureTime": 0.0025,
+      "iso": 400
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La terrasse du snack-bar borde un bassin bleu où se trouvent des baigneurs."
+      },
+      {
+        "languageCode": "en",
+        "value": "The snack-bar terrace stands beside a blue pool with bathers in the water."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Terrasse der Snackbar liegt an einem blauen Becken mit Badegästen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het terras van de snackbar grenst aan een blauw zwembad met zwemmers."
+      },
+      {
+        "languageCode": "it",
+        "value": "La terrazza dello snack-bar costeggia una piscina azzurra con alcuni bagnanti."
+      },
+      {
+        "languageCode": "es",
+        "value": "La terraza del bar bordea una piscina azul con bañistas en el agua."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Taras baru sąsiaduje z niebieskim basenem, w którym przebywają kąpiący się."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O terraço do snack-bar fica junto a uma piscina azul com banhistas na água."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les tables du snack-bar donnent directement sur l’eau et la végétation d’Acqua Gliss."
+      },
+      {
+        "languageCode": "en",
+        "value": "The snack-bar tables look directly onto the water and greenery at Acqua Gliss."
+      },
+      {
+        "languageCode": "de",
+        "value": "Von den Tischen der Snackbar blickt man direkt auf das Wasser und die Pflanzen von Acqua Gliss."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De tafels van de snackbar kijken direct uit op het water en het groen van Acqua Gliss."
+      },
+      {
+        "languageCode": "it",
+        "value": "Dai tavoli dello snack-bar si vedono direttamente l’acqua e la vegetazione di Acqua Gliss."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las mesas del bar dan directamente al agua y a la vegetación de Acqua Gliss."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Od stolików baru rozciąga się bezpośredni widok na wodę i roślinność Acqua Gliss."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As mesas do snack-bar têm vista direta para a água e a vegetação do Acqua Gliss."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:33:21.145Z",
+    "updatedAt": "2026-11-14T21:33:24.628Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:33:24.628Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202060429/http://acqua-gliss.com/restauration-5802.html"
+}

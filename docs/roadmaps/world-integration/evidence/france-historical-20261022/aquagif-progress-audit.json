@@ -1,0 +1,439 @@
+{
+  "entryId": "FR-candidate-d543949e4286d9",
+  "parkId": "ce026109-5388-4bbd-8e11-c0266adcb514",
+  "name": "Aquagif",
+  "owner": "Conversation France",
+  "auditedAtUtc": "2026-11-01T16:08:33.241228+00:00",
+  "lastDataIntegrationAt": "2026-11-01T16:06:29.248Z",
+  "lastDataOperation": "update-photo-a5e5e307a78d46049cc237a3bd22b112-2026-11-01T160629.248Z",
+  "outcome": "partial",
+  "editorialStatus": "Blocked",
+  "completed": false,
+  "fullExportAtUtc": "2026-11-01T16:02:43.6533819Z",
+  "fullExportSha256": "441691623eb240024cb82b470107aef34e69cff77dad17a97c916e29d6fe9aaa",
+  "consolidation": "Single fresh full export before step9, then one verified caption-metadata correction. Original export retained unchanged; final no-change Preview confirms consolidated state.",
+  "successfulDataOperations": 13,
+  "sitePublication": {
+    "status": "NotAttempted",
+    "isVisible": false,
+    "reason": "media.logo-required and eight missing item descriptions; no publication gate bypassed."
+  },
+  "facebook": {
+    "status": "NotAttempted",
+    "reason": "Park remains private. Existing authorization preserved for a future blocker-free audited publication."
+  },
+  "score": {
+    "completenessScore": 78,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 97,
+    "earnedPoints": 76,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "items": 11,
+    "aquaticRecords": 4,
+    "aquaticStatus": {
+      "Removed": 4
+    },
+    "groupingLimitation": "Toboggans intérieurs groups three slides and Bassins extérieurs groups two pools; individual names unresolved. Four records do not mean four individually identified aquatic installations.",
+    "zones": 0,
+    "parkDescriptionLanguages": 8,
+    "itemsWithEightDescriptions": 3,
+    "missingDescriptions": [
+      {
+        "id": "28cf6f8a-bc39-46f9-9678-f6957f41f01b",
+        "name": "Piscine à vagues",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "2b4db9fe-73d5-451f-a70c-46567ade296e",
+        "name": "Jacuzzi",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "dd95d717-a14e-417b-9f5b-d3a081bea519",
+        "name": "Sauna",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "c1704adf-da49-4e28-8f2e-25d85fc8d804",
+        "name": "Hammam",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "a9bc41d6-76b3-465f-99be-f4bf6be46bf8",
+        "name": "Cap Forme",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "608767bd-d219-46c4-87b2-a34beb43fad7",
+        "name": "Vestiaires",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "652e89ab-f689-438d-adc3-bad9c9338353",
+        "name": "Casiers",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "a2768e8f-42f5-4f32-8fea-b4dbfdef1954",
+        "name": "Parking",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      }
+    ],
+    "ownImages": 6,
+    "aquaticRecordsWithImage": 3,
+    "aquaticImageGaps": [
+      {
+        "id": "28cf6f8a-bc39-46f9-9678-f6957f41f01b",
+        "name": "Piscine à vagues"
+      }
+    ],
+    "generalScenePhotographs": 4,
+    "generalPhotoTarget": 5,
+    "generalPhotoQualification": "Municipal aerial, outdoor postcard with Pentagliss, interior postcard, exterior pool postcard. Two photographs of book spreads are separate event illustrations, not extra general daytime photos.",
+    "importantItemsMeetingThreePhotoTarget": 0,
+    "importantItemsTotal": 4,
+    "itemImageCounts": [
+      {
+        "id": "a75c7e97-96e6-47e0-b688-0de078052df6",
+        "name": "Bassins extérieurs",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a9bc41d6-76b3-465f-99be-f4bf6be46bf8",
+        "name": "Cap Forme",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "652e89ab-f689-438d-adc3-bad9c9338353",
+        "name": "Casiers",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "c1704adf-da49-4e28-8f2e-25d85fc8d804",
+        "name": "Hammam",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "2b4db9fe-73d5-451f-a70c-46567ade296e",
+        "name": "Jacuzzi",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "a2768e8f-42f5-4f32-8fea-b4dbfdef1954",
+        "name": "Parking",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "1e5b33cf-446a-4112-9848-446c528828d5",
+        "name": "Pentagliss",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "28cf6f8a-bc39-46f9-9678-f6957f41f01b",
+        "name": "Piscine à vagues",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "dd95d717-a14e-417b-9f5b-d3a081bea519",
+        "name": "Sauna",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "012f15b9-6059-464a-a0d1-d4f76af92289",
+        "name": "Toboggans intérieurs",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "608767bd-d219-46c4-87b2-a34beb43fad7",
+        "name": "Vestiaires",
+        "category": "Service",
+        "images": 0
+      }
+    ],
+    "logo": null,
+    "maps": [],
+    "fixedItemsWithCoordinates": 0,
+    "fixedItemsTotal": 11,
+    "geolocationGaps": [
+      {
+        "id": "a75c7e97-96e6-47e0-b688-0de078052df6",
+        "name": "Bassins extérieurs",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a9bc41d6-76b3-465f-99be-f4bf6be46bf8",
+        "name": "Cap Forme",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "652e89ab-f689-438d-adc3-bad9c9338353",
+        "name": "Casiers",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "c1704adf-da49-4e28-8f2e-25d85fc8d804",
+        "name": "Hammam",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "2b4db9fe-73d5-451f-a70c-46567ade296e",
+        "name": "Jacuzzi",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "a2768e8f-42f5-4f32-8fea-b4dbfdef1954",
+        "name": "Parking",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "1e5b33cf-446a-4112-9848-446c528828d5",
+        "name": "Pentagliss",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "28cf6f8a-bc39-46f9-9678-f6957f41f01b",
+        "name": "Piscine à vagues",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "dd95d717-a14e-417b-9f5b-d3a081bea519",
+        "name": "Sauna",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "012f15b9-6059-464a-a0d1-d4f76af92289",
+        "name": "Toboggans intérieurs",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "608767bd-d219-46c4-87b2-a34beb43fad7",
+        "name": "Vestiaires",
+        "category": "Service",
+        "status": null
+      }
+    ],
+    "parkHistoryFacts": 5,
+    "majorFacts": 4,
+    "itemHistoryFacts": 0,
+    "factsWithSources": 5,
+    "factsWithImages": 2,
+    "articles": 1,
+    "articleLanguages": 8,
+    "articleHeadingsPerLanguage": 4,
+    "articleParagraphsPerLanguage": 7,
+    "openingHours": "Not applicable: ClosedDefinitively",
+    "pricing": "Not applicable: ClosedDefinitively"
+  },
+  "historyDiagnostics": {
+    "factCount": 6,
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 5
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 1
+      }
+    ],
+    "blockingIssueCount": 0,
+    "issues": [],
+    "interpretation": "Five active Draft facts, one Retracted article revision preserved. No public-history gate expected for private park."
+  },
+  "roundtrip": {
+    "fieldsCompared": 653,
+    "differentFields": [],
+    "exportedAtUtc": "2026-11-01T16:02:43.6533819Z",
+    "sha256": "441691623eb240024cb82b470107aef34e69cff77dad17a97c916e29d6fe9aaa",
+    "contractNotes": [
+      "Created entity IDs taken only from Apply receipts.",
+      "Semantic item/reference keys are normalized to UUIDs by export; compared actual entity IDs.",
+      "Localized lists and dictionaries normalized by language; source order compared by URL.",
+      "Complete calendar dates compared as dates, not UTC serialization format.",
+      "ImportPhoto owner types PARK/PARK_ITEM normalize to Park/ParkItem in graph export; six contract-only differences retained separately, no owner identity changed."
+    ],
+    "counts": {
+      "items": 11,
+      "images": 6,
+      "history": 5
+    }
+  },
+  "metadataCorrection": {
+    "imageId": "a5e5e307a78d46049cc237a3bd22b112",
+    "updatedAt": "2026-11-01T16:06:29.248Z",
+    "allMetadataFieldsExact": true,
+    "ownerAndFlagsPreserved": true,
+    "sourceFileSha256Unchanged": true,
+    "receiptSha256": "ee375f9ca594ef474df9f51881d2c6f9978c2ecb98782147e1ec9387705be2ac"
+  },
+  "idempotence": {
+    "operationId": "3b525422-f42d-4b84-8e68-8f49d89a211a",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 24,
+      "warnings": 0,
+      "errors": 0
+    },
+    "applyAttempted": false
+  },
+  "editorialReview": {
+    "corpusFields": 374,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "encodingIssues": 0,
+    "automatedFlags": 0,
+    "paragraphDuplicates": 0,
+    "dateOnlySequenceGroups": 7,
+    "unresolvedBoilerplateGroups": 0,
+    "missingDescriptionsRemain": 8
+  },
+  "sourceGaps": {
+    "researchedAtUtc": "2026-11-01",
+    "missingDescriptions": [
+      {
+        "id": "28cf6f8a-bc39-46f9-9678-f6957f41f01b",
+        "name": "Piscine à vagues",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "2b4db9fe-73d5-451f-a70c-46567ade296e",
+        "name": "Jacuzzi",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "dd95d717-a14e-417b-9f5b-d3a081bea519",
+        "name": "Sauna",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "c1704adf-da49-4e28-8f2e-25d85fc8d804",
+        "name": "Hammam",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "a9bc41d6-76b3-465f-99be-f4bf6be46bf8",
+        "name": "Cap Forme",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "608767bd-d219-46c4-87b2-a34beb43fad7",
+        "name": "Vestiaires",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "652e89ab-f689-438d-adc3-bad9c9338353",
+        "name": "Casiers",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      },
+      {
+        "id": "a2768e8f-42f5-4f32-8fea-b4dbfdef1954",
+        "name": "Parking",
+        "reason": "Sources confirm existence only; no sufficient entity-specific scene or historical detail to produce natural eight-language description."
+      }
+    ],
+    "logo": {
+      "status": "missing",
+      "research": [
+        "Municipal historical gallery and Chevry exhibition",
+        "Museum exhibition PDF and original embedded objects",
+        "Historical press indices",
+        "Photographer Olivier Degorce and Dizonord edition",
+        "Exact Aquagif/Aqualand Gif logo and official-domain searches",
+        "Weecop link discarded: simulations, not historical client proof"
+      ],
+      "finding": "Aqualand Gif-sur-Yvette logo is visible on original postcards but no standalone source asset; no crop, reconstruction or generic present-day Aqualand logo used."
+    },
+    "officialMaps": {
+      "count": 0,
+      "finding": "No dated official annual visitor map found in municipal, museum, historical press, caving federation and photographer archives. Aerial photography is not a visitor map."
+    },
+    "individualItems": {
+      "coordinateCoverage": "0/11",
+      "attractionAccessConditions": "No reliable original restrictions recovered; no generic swim restrictions invented.",
+      "manufacturers": "None established; Pentagliss treated as historical attraction name, not automatic manufacturer identification.",
+      "names": "Three indoor slides and two outdoor pools remain grouped pending reliable individual identification.",
+      "restaurant": "Food service is attested, but distinct venues and count are unknown; no artificial restaurant created."
+    },
+    "referenceAudit": {
+      "operator": "SEMPA SIREN391201092, legal creation1993-02-01, legalclosure2009-04-02; facility administrative closure2002-07-08 is not public park closure2002-05-27.",
+      "formerOperator": "AQUALAND SIREN324592708; facility SIRET32459270800055 opened administratively1988-01-04 and closed1993-02-01. This is administrative evidence, not an invented exact operating-transfer day.",
+      "founder": "Municipality funded building; no individually proved founder.",
+      "sharedReferencesRewritten": false
+    },
+    "sourceLimits": [
+      "Le Parisien direct access blocked; only retrieved indexed excerpts used and documented.",
+      "Museum caption1988–2003 conflates operating span with demolition; park closure27May2002 supported by contemporary report.",
+      "Weecop Aquagif detail403 not bypassed; surrounding list describes simulations."
+    ],
+    "unacceptedExceptions": true
+  },
+  "lowerScoreExceptionAccepted": false,
+  "batch": {
+    "completedParks": 6,
+    "minimumBeforePullRequest": 10,
+    "pullRequestOpened": false,
+    "releaseVersionChanged": false
+  },
+  "nationalBacklogRemaining": {
+    "total": 134,
+    "principal": 111,
+    "historical": 23,
+    "standalone": 0
+  },
+  "nextAction": "Recover a separate authentic historical logo; complete eight entity-specific descriptions and resolve slide/pool identities from original material. Continue photo, map and geolocation research without invented names, cropped logos or generic descriptions. Then refresh the audit before any site/Facebook publication."
+}

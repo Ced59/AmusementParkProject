@@ -1,0 +1,75 @@
+{
+  "conversation": "Conversation France",
+  "priority": "historical parks first",
+  "minimumCompletedParksPerDocumentationPullRequest": 10,
+  "bumpVersionForBacklogOnly": false,
+  "userRequestedOn": "2026-10-22",
+  "sitePublicationAuthorized": true,
+  "facebookPublicationAuthorized": true,
+  "completedInThisBatch": 10,
+  "assignedEntryIds": [
+    "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
+    "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+    "FR-park-1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+    "FR-park-77106934-0f4c-4eb3-b075-4097ab6078cd",
+    "FR-park-6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+    "FR-park-f019e441-aecf-487b-93db-2b0246dce185",
+    "FR-park-66653da2-93bb-499f-95df-15e240673e58",
+    "FR-park-8167f80c-db82-49d8-91a6-bf5a1f6a6f51",
+    "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+    "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27",
+    "FR-candidate-13b50050620a99",
+    "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+    "FR-candidate-605fde75a058d0",
+    "FR-candidate-d1ef8ca467e651",
+    "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff"
+  ],
+  "identityIssue": "Confirmed duplicate: Lillom retained privately as Duplicate of Parc de Lomme, the canonical integration target. Duplicate does not count as an integrated park.",
+  "completedEntryIds": [
+    "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
+    "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+    "FR-park-1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+    "FR-park-f019e441-aecf-487b-93db-2b0246dce185",
+    "FR-park-66653da2-93bb-499f-95df-15e240673e58",
+    "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27",
+    "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+    "FR-candidate-605fde75a058d0",
+    "FR-candidate-d1ef8ca467e651",
+    "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff"
+  ],
+  "lastCompletedAtUtc": "2026-11-14T23:24:02.685156+00:00",
+  "activeEntryId": null,
+  "blockedEntries": [
+    {
+      "entryId": "FR-park-77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "projectedScore": 88,
+      "blocker": "media.logo-required",
+      "audit": "/workspace/france-historical-20261022/luna-park-paris/09-final-audit.json",
+      "sourceQuestionPending": true
+    },
+    {
+      "entryId": "FR-park-6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+      "projectedScore": 80,
+      "blocker": "media.logo-required",
+      "audit": "/workspace/france-historical-20261022/magic-city-paris/09-final-audit.json",
+      "otherPending": "Inventory aliases and final editorial release signoff."
+    },
+    {
+      "entryId": "FR-candidate-13b50050620a99",
+      "blocker": "Ancien blocage de seuil92 levé par la tolérance propriétaire du14novembre ; rapprochement et validation actuelle requis avant clôture.",
+      "audit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-intake-blocked.json",
+      "dataApplied": true,
+      "previousBlocker": "PARK_DATA_EDITOR Status HTTP500; production deployment backup failed: no space left on device",
+      "status": "PendingAuditConfirmation",
+      "currentAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-publication-audit.json"
+    }
+  ],
+  "identityEvidence": "evidence/france-historical-20261022/lillom-identity-reconciliation.json",
+  "nextAction": "Lot de dix clôtures prêt pour PR documentaire sans hausse de version. Poursuivre Parc de Lomme puis les autres historiques et tous les parcs français en activité/standalone qualifiés ; aucune répétition Facebook.",
+  "closedParkScoreTolerance": {
+    "authorizedOnUtc": "2026-11-14",
+    "scope": "Parcs définitivement fermés de la campagne France ; ne remplace ni audit éditorial ni absence de bloqueur API.",
+    "firstCompletedException": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff",
+    "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-completion-20261114.json"
+  }
+}

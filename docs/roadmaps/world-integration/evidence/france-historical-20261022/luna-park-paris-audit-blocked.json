@@ -1,0 +1,444 @@
+{
+  "entryId": "FR-park-77106934-0f4c-4eb3-b075-4097ab6078cd",
+  "parkId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+  "name": "Luna Park Paris",
+  "conversation": "Conversation France",
+  "auditAtUtc": "2026-10-23T03:35:22.604550+00:00",
+  "result": "partial_blocked",
+  "completed": false,
+  "editorialTextAuditPassed": true,
+  "publicationReady": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "freshExportAtUtc": "2026-10-23T03:19:11.8417924Z",
+  "freshExportSha256": "ffe3ad97649d3e81e2ea57f4f7acd056a58b17954222bdda5f8348250473b26e",
+  "verifiedPostExportCorrections": [
+    {
+      "receipt": "09-closure-article-v2-apply.receipt.json",
+      "operationId": "b52a3d0c-9051-4c41-aa9b-676d5d667746",
+      "appliedAtUtc": "2026-10-23T03:31:47.8353922Z"
+    }
+  ],
+  "coverage": {
+    "freshAtUtc": "2026-10-23T03:19:11.8417924Z",
+    "items": 25,
+    "zones": 0,
+    "attractions": 17,
+    "attractionStatuses": {
+      "Removed": 17
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 17,
+    "attractionsWithImage": 11,
+    "attractionImageGaps": [
+      {
+        "id": "4821626a-6ebe-4ba2-b394-97744c6fc095",
+        "name": "Autodrome"
+      },
+      {
+        "id": "b1eb0942-3b67-482e-b5e3-7b0ba330629d",
+        "name": "Avions Bolides"
+      },
+      {
+        "id": "79979ee2-9fb6-46d6-b962-db57cd21c89a",
+        "name": "Canots Automobiles"
+      },
+      {
+        "id": "4879e018-d10f-4dd8-aa1a-977e66a17bf4",
+        "name": "Ghost Train"
+      },
+      {
+        "id": "914054f0-e6d3-4e69-b45b-f32354c98db8",
+        "name": "Skooter"
+      },
+      {
+        "id": "22e8854d-64a2-4103-ad92-7e327e82b2df",
+        "name": "Witching Waves"
+      }
+    ],
+    "ownedImages": 29,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "4821626a-6ebe-4ba2-b394-97744c6fc095",
+        "name": "Autodrome",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "b1eb0942-3b67-482e-b5e3-7b0ba330629d",
+        "name": "Avions Bolides",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "8f3a6073-0c2a-4360-b381-c2fc47297677",
+        "name": "Baby Incubators — Couveuses d’Enfants",
+        "category": "Other",
+        "images": 1
+      },
+      {
+        "id": "79979ee2-9fb6-46d6-b962-db57cd21c89a",
+        "name": "Canots Automobiles",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "0c3f054d-a211-42b6-9087-4bfd0eb13ac6",
+        "name": "Dancing — Palais des Folies",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "44b1a269-afba-48c8-ad69-a8785e036ecd",
+        "name": "Entrée de la porte Maillot",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "d430ce0b-11f8-4f38-9519-b8d482777c3f",
+        "name": "Flying Turn",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "49d2367a-0ce4-4fb8-9918-6dd608cb2234",
+        "name": "Gaufres Plouvier Fils",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "4879e018-d10f-4dd8-aa1a-977e66a17bf4",
+        "name": "Ghost Train",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "67f2f91f-41b8-414c-8eef-aeafb511a78c",
+        "name": "La Crypte des Pharaons",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8f4d3f8d-d0ab-4935-9af3-4fa5765941a8",
+        "name": "La Destruction de Johnstown",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "8bb66908-e0d1-410f-b998-06cf403f3ac6",
+        "name": "Ménagerie Jouviano",
+        "category": "Animal",
+        "images": 0
+      },
+      {
+        "id": "3ab4744b-8920-4f36-b11f-1f1b8595a157",
+        "name": "Palais du Rire",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "7f424333-f53e-414f-bfab-6dc7e6298b35",
+        "name": "Rivière Mystérieuse",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "52326ec6-5037-49f7-866b-bc866fa7f71c",
+        "name": "Roller Skating Rink",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "3aed408b-b4e3-43d6-91e2-d575a5b104f2",
+        "name": "Roues diaboliques",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "0da662b6-8765-40bb-b07c-c26b8ff963e3",
+        "name": "Roulette humaine",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "314e4c40-6994-4ef8-a9b0-d9bc400882b5",
+        "name": "Scenic Railway",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "914054f0-e6d3-4e69-b45b-f32354c98db8",
+        "name": "Skooter",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "8e6880e8-c23d-4a5a-a195-5f270297221b",
+        "name": "Théâtre Hollywood",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "0a1910dd-4d90-4ea2-a760-fb7fe9b8aadf",
+        "name": "Théâtre Tanagra",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "acaf6c9b-c308-4a70-855f-32eaec601648",
+        "name": "Tickler",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "1e7e208a-29d3-42ed-a359-ea348e179550",
+        "name": "Vélodrome du Rire",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "6e9f1cc5-9260-404a-bf86-2eb5706578c4",
+        "name": "Water Chute",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "22e8854d-64a2-4103-ad92-7e327e82b2df",
+        "name": "Witching Waves",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "4821626a-6ebe-4ba2-b394-97744c6fc095",
+        "name": "Autodrome",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b1eb0942-3b67-482e-b5e3-7b0ba330629d",
+        "name": "Avions Bolides",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "8f3a6073-0c2a-4360-b381-c2fc47297677",
+        "name": "Baby Incubators — Couveuses d’Enfants",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "79979ee2-9fb6-46d6-b962-db57cd21c89a",
+        "name": "Canots Automobiles",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0c3f054d-a211-42b6-9087-4bfd0eb13ac6",
+        "name": "Dancing — Palais des Folies",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "44b1a269-afba-48c8-ad69-a8785e036ecd",
+        "name": "Entrée de la porte Maillot",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "d430ce0b-11f8-4f38-9519-b8d482777c3f",
+        "name": "Flying Turn",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "49d2367a-0ce4-4fb8-9918-6dd608cb2234",
+        "name": "Gaufres Plouvier Fils",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "4879e018-d10f-4dd8-aa1a-977e66a17bf4",
+        "name": "Ghost Train",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "67f2f91f-41b8-414c-8eef-aeafb511a78c",
+        "name": "La Crypte des Pharaons",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "8f4d3f8d-d0ab-4935-9af3-4fa5765941a8",
+        "name": "La Destruction de Johnstown",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "8bb66908-e0d1-410f-b998-06cf403f3ac6",
+        "name": "Ménagerie Jouviano",
+        "category": "Animal",
+        "status": null
+      },
+      {
+        "id": "3ab4744b-8920-4f36-b11f-1f1b8595a157",
+        "name": "Palais du Rire",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "7f424333-f53e-414f-bfab-6dc7e6298b35",
+        "name": "Rivière Mystérieuse",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "52326ec6-5037-49f7-866b-bc866fa7f71c",
+        "name": "Roller Skating Rink",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "3aed408b-b4e3-43d6-91e2-d575a5b104f2",
+        "name": "Roues diaboliques",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0da662b6-8765-40bb-b07c-c26b8ff963e3",
+        "name": "Roulette humaine",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "314e4c40-6994-4ef8-a9b0-d9bc400882b5",
+        "name": "Scenic Railway",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "914054f0-e6d3-4e69-b45b-f32354c98db8",
+        "name": "Skooter",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "8e6880e8-c23d-4a5a-a195-5f270297221b",
+        "name": "Théâtre Hollywood",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "0a1910dd-4d90-4ea2-a760-fb7fe9b8aadf",
+        "name": "Théâtre Tanagra",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "acaf6c9b-c308-4a70-855f-32eaec601648",
+        "name": "Tickler",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "1e7e208a-29d3-42ed-a359-ea348e179550",
+        "name": "Vélodrome du Rire",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6e9f1cc5-9260-404a-bf86-2eb5706578c4",
+        "name": "Water Chute",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "22e8854d-64a2-4103-ad92-7e327e82b2df",
+        "name": "Witching Waves",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 8,
+    "parkHistory": 4,
+    "itemHistory": 4,
+    "historyWithSource": 8,
+    "historyWithImage": 6,
+    "articles": 2,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true
+  },
+  "publicTextAudit": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "corpusRows": 1085,
+    "independentComparedTextRows": 992,
+    "freshTextComparisons": 1168,
+    "freshTextDifferences": 0,
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "nineWordSequenceOrSixWordSentenceDuplicateGroups": 0,
+    "manualReview": "All retained and new text reviewed language by language during source-backed authoring and actual Preview diff inspection; fresh complete export reconciled exactly with accepted reviewed fields. Closure article added after audit discovery, verified by Apply and merged without a second full export. Short archival entries recorded individually, no invented experiences or category padding."
+  },
+  "idempotence": {
+    "operationId": "3c059674-788c-4312-bfae-56ba6f742f3e",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 65,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "officialProjectedCompleteness": {
+    "completenessScore": 88,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 97,
+    "earnedPoints": 85,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "publicationBlockers": [
+    "Official API media.logo-required: authentic standalone park logo not located after documented archive search.",
+    "Projected score88 does not satisfy strict >95 gate; no named exact-score exception granted."
+  ],
+  "documentedGaps": [
+    "No official annual map edition identified; 1909 engineering sketch and aerial photos are not visitor-map editions.",
+    "No per-item georeferenced coordinates; keep null rather than repeat park centre.",
+    "Eleven of17 attractions have owned images; other exact ride photos/three-view targets unavailable after documented source searches.",
+    "Named candidates/possible aliases retained in research ledger rather than speculative duplicate entities."
+  ],
+  "evidenceFiles": [
+    "08-research-gaps.json",
+    "09-description-depth-exceptions.json",
+    "09-text-reconciliation.json",
+    "09-consolidation-proof.json"
+  ],
+  "nextAction": "Resolve authentic historic park logo; then re-audit projected score, publish only under applicable explicit scope/gates, verify public Histoire and Facebook. Continue another claimed historical park while source request is pending."
+}

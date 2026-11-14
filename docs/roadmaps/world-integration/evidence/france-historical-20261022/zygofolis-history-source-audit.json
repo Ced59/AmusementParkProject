@@ -1,0 +1,233 @@
+{
+  "checkedAtUtc": "2026-10-28T21:30:43.691728+00:00",
+  "allSourcesAccessible": true,
+  "sources": [
+    {
+      "url": "http://zygo.altervista.org/anfiteatri.php",
+      "checkedAtUtc": "2026-10-28T21:28:04.829819+00:00",
+      "status": 200,
+      "finalUrl": "http://zygo.altervista.org/anfiteatri.php",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 4394,
+      "title": "Gli anfiteatri",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "http://zygo.altervista.org/depliant.php",
+      "checkedAtUtc": "2026-10-28T21:28:04.830533+00:00",
+      "status": 200,
+      "finalUrl": "http://zygo.altervista.org/depliant.php",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 4787,
+      "title": "Zygofolis: depliant luglio 1987",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "http://zygo.altervista.org/deplizp.php",
+      "checkedAtUtc": "2026-10-28T21:28:04.831130+00:00",
+      "status": 200,
+      "finalUrl": "http://zygo.altervista.org/deplizp.php",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 12258,
+      "title": "Zygoparc - depliant 1991",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "http://zygo.altervista.org/stampa.php",
+      "checkedAtUtc": "2026-10-28T21:28:04.831812+00:00",
+      "status": 200,
+      "finalUrl": "http://zygo.altervista.org/stampa.php",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 15692,
+      "title": "Stampa - Presse",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "http://zygo.altervista.org/storia_91.php",
+      "checkedAtUtc": "2026-10-28T21:28:07.902619+00:00",
+      "status": 200,
+      "finalUrl": "http://zygo.altervista.org/storia_91.php",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 6253,
+      "title": "Storia - 1991",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "http://zygo.altervista.org/storia_oggi.php",
+      "checkedAtUtc": "2026-10-28T21:28:07.904839+00:00",
+      "status": 200,
+      "finalUrl": "http://zygo.altervista.org/storia_oggi.php",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 10634,
+      "title": "Storia - Oggi - Aujourd'hui",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://fr.wikipedia.org/wiki/Zygofolis",
+      "checkedAtUtc": "2026-10-28T21:28:07.944378+00:00",
+      "status": 200,
+      "finalUrl": "https://fr.wikipedia.org/wiki/Zygofolis",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 176377,
+      "title": "Zygofolis — Wikipédia",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://pretparken.be/NL/Attractie/175/Bounty",
+      "checkedAtUtc": "2026-10-28T21:28:08.340992+00:00",
+      "status": 200,
+      "finalUrl": "https://pretparken.be/NL/Attractie/175/Bounty",
+      "contentType": "text/html",
+      "bytes": 21776,
+      "title": "Bounty - Walibi Belgium - Pretparken.be",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://rcdb.com/1818.htm",
+      "checkedAtUtc": "2026-10-28T21:28:08.451774+00:00",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/1818.htm",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 59436,
+      "title": "Boomerang - Zygo Park (Nice, Provence-Alpes-Côte d'Azur, France)",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://rcdb.com/2398.htm",
+      "checkedAtUtc": "2026-10-28T21:28:08.598474+00:00",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/2398.htm",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 59342,
+      "title": "Tarzungle - Zygo Park (Nice, Provence-Alpes-Côte d'Azur, France)",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://rcdb.com/774.htm",
+      "checkedAtUtc": "2026-10-28T21:28:08.803354+00:00",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/774.htm",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 73975,
+      "title": "Drako - Walibi Holland (Biddinghuizen, Flevoland, Netherlands)",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://rcdb.com/941.htm",
+      "checkedAtUtc": "2026-10-28T21:28:08.819700+00:00",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/941.htm",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 70213,
+      "title": "Boomerang - Walygator Sud-Ouest (Roquefort, Nouvelle-Aquitaine, France)",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://www.assemblee-nationale.fr/legislatures/11/pdf/rap-info/i2311-626.pdf",
+      "checkedAtUtc": "2026-10-28T21:28:08.897408+00:00",
+      "status": 200,
+      "finalUrl": "https://www.assemblee-nationale.fr/legislatures/11/pdf/rap-info/i2311-626.pdf",
+      "contentType": "application/pdf",
+      "bytes": 785177,
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://www.lemonde.fr/archives/article/1987/03/22/rhone-alpes-zygofolis-pour-nice_4061396_1819218.html",
+      "checkedAtUtc": "2026-10-28T21:28:08.993202+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lemonde.fr/archives/article/1987/03/22/rhone-alpes-zygofolis-pour-nice_4061396_1819218.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 3038,
+      "title": "Client Challenge",
+      "accessible": true,
+      "reader": "Official web reader, title and actual article verified 28Oct2026; direct HTTP challenge not accepted as content.",
+      "contentVerified": true
+    },
+    {
+      "url": "https://www.lemonde.fr/archives/article/1989/02/19/provence-alpes-cote-d-azur-les-malheurs-de-zygofolis_4107183_1819218.html",
+      "checkedAtUtc": "2026-10-28T21:28:09.332690+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lemonde.fr/archives/article/1989/02/19/provence-alpes-cote-d-azur-les-malheurs-de-zygofolis_4107183_1819218.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 3038,
+      "title": "Client Challenge",
+      "accessible": true,
+      "reader": "Official web reader, title and actual article verified 28Oct2026; direct HTTP challenge not accepted as content.",
+      "contentVerified": true
+    },
+    {
+      "url": "https://www.lemonde.fr/archives/article/1989/07/27/l-enquete-une-nouvelle-industrie-touristique-des-parcs-de-loisirs-a-l-aventure_4141650_1819218.html",
+      "checkedAtUtc": "2026-10-28T21:28:09.612174+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lemonde.fr/archives/article/1989/07/27/l-enquete-une-nouvelle-industrie-touristique-des-parcs-de-loisirs-a-l-aventure_4141650_1819218.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 3038,
+      "title": "Client Challenge",
+      "accessible": true,
+      "reader": "Official web reader, title and actual article verified 28Oct2026; direct HTTP challenge not accepted as content.",
+      "contentVerified": true
+    },
+    {
+      "url": "https://www.paca.developpement-durable.gouv.fr/IMG/pdf/f09324p0085_piece_complementaire_1_gti_immobilier_complement_cas_par_cas_hub_c.pdf",
+      "checkedAtUtc": "2026-10-28T21:28:09.804515+00:00",
+      "status": 200,
+      "finalUrl": "https://www.paca.developpement-durable.gouv.fr/IMG/pdf/f09324p0085_piece_complementaire_1_gti_immobilier_complement_cas_par_cas_hub_c.pdf",
+      "contentType": "application/pdf",
+      "bytes": 8000000,
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://www.pappers.fr/entreprise/societe-du-parc-dattractions-de-nice-331660696",
+      "checkedAtUtc": "2026-10-28T21:28:09.828505+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pappers.fr/entreprise/ste-du-parc-dattractions-de-nice-331660696",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 156828,
+      "title": "Société STE DU PARC D'ATTRACTIONS DE NICE : Chiffre d'affaires, statuts, extrait d'immatriculation",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://www.parcplaza.net/2012/05/la-recre-des-3-cures-ouvre-sa-pieuvre.html",
+      "checkedAtUtc": "2026-10-28T21:28:09.935669+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2012/05/la-recre-des-3-cures-ouvre-sa-pieuvre.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 126792,
+      "title": "ParcPlaza.net: La Récré des 3 Curés ouvre sa Pieuvre",
+      "accessible": true,
+      "contentVerified": true
+    },
+    {
+      "url": "https://www.webtimemedias.com/article/logistique-la-cci-cherche-creer-un-pal-bis",
+      "checkedAtUtc": "2026-10-28T21:28:10.270614+00:00",
+      "status": 200,
+      "finalUrl": "https://www.webtimemedias.com/article/logistique-la-cci-cherche-creer-un-pal-bis",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 66921,
+      "title": "Logistique : la CCI cherche à créer un PAL bis | WebtimeMedias",
+      "accessible": true,
+      "contentVerified": true
+    }
+  ],
+  "leMondeEvidence": [
+    "turn327581view0",
+    "turn327581view1",
+    "turn327581view2"
+  ],
+  "notes": "All 20 referenced endpoints verified as intended content. Three LeMonde pages inspected in web reader due HTTP challenge; no authentication bypass. PDF primary sources, publisher archives, RCDB and articles retain exact URLs."
+}

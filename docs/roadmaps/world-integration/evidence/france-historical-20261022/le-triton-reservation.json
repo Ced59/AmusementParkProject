@@ -1,0 +1,50 @@
+{
+  "entryId": "FR-candidate-da3b95a7f543cb",
+  "owner": "Conversation France",
+  "name": "Le Triton",
+  "localityAtBacklog": "Yerres",
+  "checkedAtUtc": "2026-11-02T09:22:13.640967+00:00",
+  "masterChecked": "e6768e0192f49e0095b91e60935fd84ae2a60768",
+  "applicableRulesAndFranceRegistryChangedSinceAc3369de": false,
+  "otherBranchChecks": [
+    {
+      "branch": "europe",
+      "sha": "c3257bcf987ca3976f323f5e6b787c313d0f9f7b",
+      "checkedAtUtc": "2026-11-02T09:21:54.109347+00:00",
+      "entry": {
+        "entryId": "FR-candidate-da3b95a7f543cb",
+        "assignedTo": null,
+        "editorialStatus": "ToQualify",
+        "lastDataIntegrationAt": null,
+        "siteId": null
+      }
+    },
+    {
+      "branch": "france-reconciliation",
+      "sha": "4028cb0ccadc65c525cc8a1c768a29bb0123ed87",
+      "checkedAtUtc": "2026-11-02T09:21:54.355965+00:00",
+      "entry": {
+        "entryId": "FR-candidate-da3b95a7f543cb",
+        "assignedTo": null,
+        "editorialStatus": "ToQualify",
+        "lastDataIntegrationAt": null,
+        "siteId": null
+      }
+    },
+    {
+      "branch": "master",
+      "sha": "e6768e0192f49e0095b91e60935fd84ae2a60768",
+      "checkedAtUtc": "2026-11-02T09:21:54.657148+00:00",
+      "entry": {
+        "entryId": "FR-candidate-da3b95a7f543cb",
+        "assignedTo": null,
+        "editorialStatus": "ToQualify",
+        "lastDataIntegrationAt": null,
+        "siteId": null
+      }
+    }
+  ],
+  "phase": "reserved-for-qualification",
+  "lastDataIntegrationAt": null,
+  "creationAuthorizedOnlyAfterQualification": true
+}

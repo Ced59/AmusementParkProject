@@ -1,0 +1,156 @@
+{
+  "entryId": "FR-candidate-d543949e4286d9",
+  "owner": "Conversation France",
+  "stage": "identity-qualification",
+  "updatedAtUtc": "2026-11-01T15:30:49.744683+00:00",
+  "masterChecked": "ad6dfa90",
+  "masterChanges": "No changes to AGENTS, applicable guidelines, FR registry or national backlog sincebe653741.",
+  "siteId": null,
+  "lastDataIntegrationAt": null,
+  "aliasesToCheck": [
+    "Aquagif",
+    "Aqualand Gif-sur-Yvette",
+    "Aquagif-Cap Forme"
+  ],
+  "sourceLeads": [
+    "Ville de Gif-sur-Yvette, Chevry history and municipal archives photograph",
+    "Maison de Banlieue et de l’Architecture, exhibition on Essonne swimming pools",
+    "Public company register SEMPA391201092",
+    "Contemporary press chronology; LeParisien network access known blocked, indexed excerpts only when available"
+  ],
+  "unresolved": [
+    "Dates1988-07-27 and2002-05-27 press evidence tocrosscheck; 2003museumcaption mayreferdemolition ratherthanoperation",
+    "Identity and park/standalone duplicate searches required before creation",
+    "Operator1992handover inpress vsSEMPA1993legalcreation distinctdates",
+    "Actual historical logo and visitorinventory toresearch"
+  ],
+  "reservationOnly": true,
+  "qualification": {
+    "entryId": "FR-candidate-d543949e4286d9",
+    "owner": "Conversation France",
+    "qualifiedAtUtc": "2026-11-01T15:39:49.568003+00:00",
+    "qualification": "Ancien parc aquatique fixe des Prés-Mouchards à Gif-sur-Yvette, avec plusieurs attractions intérieures et extérieures. Ni standalone, ni attraction interne à un autre parc. Le Triton à Yerres et le nouvel équipement Oméga de Gif sont distincts.",
+    "searches": [
+      {
+        "receipt": "00-search-aquagif-parks.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-aquagif-standalone.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-aqualand-parks.json",
+        "pagination": {
+          "totalItems": 2,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": [
+          {
+            "id": "471064d0-2366-4708-bc47-f8ba6fab14ff",
+            "name": "Aqualand Köln",
+            "countryCode": "DE",
+            "city": "Köln"
+          },
+          {
+            "id": "5b920ecc-397d-4402-b4a5-0952ec8058d8",
+            "name": "Aquashow Family Park",
+            "countryCode": "PT",
+            "city": "Quarteira"
+          }
+        ]
+      },
+      {
+        "receipt": "00-search-aqualand-standalone.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-cap-forme-parks.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-cap-forme-standalone.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-gif-parks.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-gif-standalone.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      }
+    ],
+    "matchingExistingEntity": null,
+    "aliases": [
+      "Aqualand Gif-sur-Yvette",
+      "Aquagif-Cap Forme"
+    ],
+    "sourceUrls": [
+      "https://www.ville-gif.fr/875/que-faire-a-gif/histoire-et-patrimoine/nos-quartiers/quartier-de-chevry.htm",
+      "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf",
+      "https://recherche-entreprises.api.gouv.fr/search?q=39120109200023",
+      "https://www.leparisien.fr/essonne-91/l-histoire-d-un-enorme-flop-04-02-2005-2005673547.php",
+      "https://www.leparisien.fr/essonne-91/aquagif-ferme-ses-portes-definitivement-28-05-2002-2003104853.php",
+      "https://virtualglobetrotting.com/map/centre-aquatique-aquagif/"
+    ],
+    "decisions": {
+      "opening": "27 juillet 1988, chronologie de presse consultée par extrait indexé ; année corroborée par archives municipales et musée.",
+      "closing": "27 mai 2002 : liquidation et arrêt immédiat, article contemporain du 28 mai, corroboré par la chronique de 2005. Ne pas confondre 8 juillet 2002 (établissement Sirene), 2003 (démolition) ou 2009 (radiation société).",
+      "geolocation": "Point historique du parc publié par Virtual Globetrotting : 48.684522,2.125828. Pas une position précise des équipements disparus. Adresse SIRET de l’établissement distincte du siège mairie.",
+      "audience": "Local, choix prudent malgré fréquentation plus large possible dans le sud francilien.",
+      "founder": "Propriété municipale attestée, mais aucun fondateur individuel qualifié.",
+      "operator": "SEMPA, SIREN 391201092, création juridique 1 février 1993. Presse évoque reprise en 1992 : transition non datée précisément dans la fiche. Dernier exploitant confirmé lors de la liquidation de 2002.",
+      "website": "Aucun ancien domaine officiel établi ; pas de site officiel actuel attribué.",
+      "logo": "Logo Aqualand Gif-sur-Yvette visible sur des cartes postales du musée, mais aucun fichier de logo distinct établi. Recherche poursuivie étape 5 sans découper une photographie.",
+      "sources": "Le Parisien : extraits indexés consultés seulement, pas de lecture directe revendiquée. Sources municipales, musée, gouvernement et géographie consultées en entier. Weecop : liste de simulations, pas preuve de relation commerciale.",
+      "zones": "Aucune zone officiellement nommée prouvée ; ne pas inventer des zones intérieur/extérieur.",
+      "hoursPricing": "Non applicables à ce parc fermé : aucun horaire ni tarif actuel.",
+      "coverage": "Inventaire à qualifier : Pentagliss, trois toboggans, piscine à vagues, deux bassins extérieurs, jacuzzi, sauna, hammam, remise en forme, restauration et services attestés. Noms individuels et regroupements à résoudre avant création des items."
+    }
+  }
+}

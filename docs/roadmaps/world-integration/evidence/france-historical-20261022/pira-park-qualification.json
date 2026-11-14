@@ -1,0 +1,279 @@
+{
+  "entryId": "FR-candidate-796aafe5567a19",
+  "name": "Pira Park",
+  "claimedLocality": "Nice",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-02T18:56:27.674280+00:00",
+  "outcome": "blocked_identity_unverified",
+  "coordination": {
+    "checkedAtUtc": "2026-11-02 18:51:14 UTC",
+    "checks": [
+      {
+        "ref": "master",
+        "sha": "95cb37ba9b1fea6de172fcc041f26543a0431ce5",
+        "entries": [
+          {
+            "entryId": "FR-candidate-796aafe5567a19",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-2944bd4fd46f53",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          }
+        ]
+      },
+      {
+        "ref": "docs/europe-integration-backlog",
+        "sha": "5bde75508d1e151f375f2a0a40d1368ef5629476",
+        "entries": [
+          {
+            "entryId": "FR-candidate-796aafe5567a19",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-2944bd4fd46f53",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          }
+        ]
+      },
+      {
+        "ref": "docs/france-world-reconciliation-20261022",
+        "sha": "1d9207c2d770df1aba03d32260ec3b6a82e7ee19",
+        "entries": [
+          {
+            "entryId": "FR-candidate-796aafe5567a19",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          },
+          {
+            "entryId": "FR-candidate-2944bd4fd46f53",
+            "assignedTo": null,
+            "siteId": null,
+            "events": 0
+          }
+        ]
+      }
+    ]
+  },
+  "officialClientSearches": [
+    {
+      "action": "SearchParks",
+      "query": "Nice",
+      "page": 1,
+      "pagination": {
+        "totalItems": 29,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "responseSha256": "02a529a447510741063eeeda71bc237212617cd703d777eb51b73ddd9cfbe0f6",
+      "localReceipt": "/workspace/france-historical-20261022/pira-park/00-search-parks-nice-p1.json"
+    },
+    {
+      "action": "SearchParks",
+      "query": "Pira",
+      "page": 1,
+      "pagination": {
+        "totalItems": 144,
+        "totalPages": 3,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "responseSha256": "bec6fefd864bb50879058393197ee1050e092f3aeb6ea378a971382a43e87762",
+      "localReceipt": "/workspace/france-historical-20261022/pira-park/00-search-parks-pira-p1.json"
+    },
+    {
+      "action": "SearchParks",
+      "query": "Pira",
+      "page": 2,
+      "pagination": {
+        "totalItems": 144,
+        "totalPages": 3,
+        "currentPage": 2,
+        "itemsPerPage": 50
+      },
+      "responseSha256": "26a34a908159815fb405127378c795917f306ac1efb1087d93340a841ebbcad4",
+      "localReceipt": "/workspace/france-historical-20261022/pira-park/00-search-parks-pira-p2.json"
+    },
+    {
+      "action": "SearchParks",
+      "query": "Pira",
+      "page": 3,
+      "pagination": {
+        "totalItems": 144,
+        "totalPages": 3,
+        "currentPage": 3,
+        "itemsPerPage": 50
+      },
+      "responseSha256": "578696e1d8dda53bec0d84337f92e8188b53ac9b6d8967ce0629199b5709a1a7",
+      "localReceipt": "/workspace/france-historical-20261022/pira-park/00-search-parks-pira-p3.json"
+    },
+    {
+      "action": "SearchParks",
+      "query": "Pirapark",
+      "page": 1,
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "responseSha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "localReceipt": "/workspace/france-historical-20261022/pira-park/00-search-parks-pirapark-p1.json"
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Nice",
+      "page": 1,
+      "pagination": {
+        "totalItems": 4,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "responseSha256": "d76d9b40cd8d88ebb58d1efcf7e89c611ff306457665194b3e31814bafcb5ac6",
+      "localReceipt": "/workspace/france-historical-20261022/pira-park/00-search-standalone-nice-p1.json"
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Pira",
+      "page": 1,
+      "pagination": {
+        "totalItems": 21,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "responseSha256": "cf51f94c611fabea0c5cb707625a122e8d2d4e1a88bac3a0a884b9d2d942f396",
+      "localReceipt": "/workspace/france-historical-20261022/pira-park/00-search-standalone-pira-p1.json"
+    },
+    {
+      "action": "SearchStandaloneAttractions",
+      "query": "Pirapark",
+      "page": 1,
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "responseSha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "localReceipt": "/workspace/france-historical-20261022/pira-park/00-search-standalone-pirapark-p1.json"
+    }
+  ],
+  "allReturnedPagesReviewed": true,
+  "exactMatchFound": false,
+  "ruledOutMatches": [
+    {
+      "siteId": "fba6fd0b-56c2-4b46-b321-2f901bb363a7",
+      "name": "Pirat’Parc",
+      "reason": "Gruissan; official tourism and coordinates 43.117291,3.110998."
+    },
+    {
+      "siteId": "a2396980-0591-4ed6-8af2-ea683ef69503",
+      "name": "Piratland",
+      "reason": "Rochefort-du-Gard; coordinates 43.958387,4.732033."
+    },
+    {
+      "siteId": "ce238026-7156-4d70-99c1-2929b15ce6d9",
+      "name": "Piratland Kids",
+      "reason": "Official operator address proves Caissargues despite missing coordinates in the existing record."
+    },
+    {
+      "siteId": "b4d0ec22-0cc2-4e8d-9603-57b561859f80",
+      "name": "Nice Zone Family Park",
+      "reason": "Coordinates 19.615125,37.221801 do not identify Nice, France; untouched."
+    },
+    {
+      "siteId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+      "name": "Île aux Pirates",
+      "reason": "Capbreton, different location."
+    },
+    {
+      "siteId": "efac8649-a15b-4ed6-866c-2e926579d6de",
+      "name": "Île aux Pirates",
+      "reason": "La Tranche-sur-Mer, different location."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://fr.wikipedia.org/wiki/Liste_de_parcs_de_loisirs_en_France",
+      "assessment": "Discovery list claims Pira Park in Nice, pirates and 2019, without an individually verified location/operator or an independently established opening/closing. Retained as discovery only."
+    },
+    {
+      "url": "https://wikipedia.cabillot.eu/content/wikipedia_fr_all_maxi_2024-05/A/Liste_de_parcs_de_loisirs_en_France",
+      "assessment": "Wikipedia mirror; not independent corroboration."
+    },
+    {
+      "url": "https://infokontak.com/fr/Liste_de_parcs_de_loisirs_en_France",
+      "assessment": "Wikipedia mirror; not independent corroboration."
+    },
+    {
+      "url": "https://pro.weecop.fr/etude-de-cas/pira-park/",
+      "assessment": "Page explicitly describes a hypothetical cashless installation and shows zero visitors/turnover; generic listing is not evidence of an actual customer, address or venue."
+    },
+    {
+      "url": "https://piratlandkids.fr/contact/",
+      "assessment": "Official address 15 rue Grande Terre, Zone Euro 2000, 30132 Caissargues; this existing hidden homonym is not in Nice."
+    },
+    {
+      "url": "https://www.gruissan-mediterranee.com/en/equipement-loisir-gruissan/piratparc/",
+      "assessment": "Official Gruissan tourism identifies Pirat’Parc in Gruissan; different locality."
+    },
+    {
+      "url": "https://www.albesapark.com/politica-privacidad/",
+      "assessment": "PIRA PARK SL is a Spanish mobile-home business in Albesa, Lleida, not evidence for a Nice amusement park."
+    },
+    {
+      "url": "https://www.pirapark.com.br/",
+      "assessment": "Official Pirapark identifies a water park in Buritizeiro, Minas Gerais, Brazil; different entity."
+    }
+  ],
+  "researchQueries": [
+    "\"Pira Park\" Nice",
+    "\"Pirapark\" France",
+    "\"Pira Park\" 2019",
+    "\"Pirate Park\" Nice ouverture 2019",
+    "\"Pira Park\" site:nicematin.com",
+    "\"Pira Park\" site:nice.fr",
+    "\"Pira\" \"parc\" \"Nice\" pirates 2019",
+    "\"Pirapark\" Nice",
+    "\"Pira Park\" France parc adresse",
+    "\"Pira Park\" site:annuaire-entreprises.data.gouv.fr"
+  ],
+  "conclusion": "No independently verified address, operator, site-specific photograph or attraction inventory establishes this claimed Nice venue. This does not prove nonexistence. Retain candidate and source trail; do not manufacture a new park, conflate homonyms or assign 2019 as an established opening.",
+  "nextAction": "Find a primary local archive, operator, municipal record or independently identifiable contemporary venue photograph/address; rerun official alias/parent searches before any creation.",
+  "siteId": null,
+  "dataMutationPerformed": false,
+  "lastDataIntegrationAt": null,
+  "publicationAttempted": false,
+  "facebookAttempted": false,
+  "completed": false
+}

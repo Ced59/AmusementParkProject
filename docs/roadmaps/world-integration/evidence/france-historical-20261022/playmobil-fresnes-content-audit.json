@@ -1,0 +1,340 @@
+{
+  "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+  "entryId": "FR-candidate-13b50050620a99",
+  "contentAuditPassed": true,
+  "publicationAndFacebookCompleted": false,
+  "auditedAtUtc": "2026-10-28T18:28:21.898348+00:00",
+  "freshPublicationExportAtUtc": "2026-10-28T18:23:21.6176803Z",
+  "freshPublicationExportSha256": "09de96d29f9974eaf597b831be43c4f14bdf1f64bfa042951e1bb5aa4580316d",
+  "coverage": {
+    "freshAtUtc": "2026-10-28T18:23:21.6176803Z",
+    "items": 19,
+    "zones": 0,
+    "attractions": 12,
+    "attractionStatuses": {
+      "ClosedDefinitively": 12
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 12,
+    "attractionsWithImage": 10,
+    "attractionImageGaps": [
+      {
+        "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+        "name": "Le Zoo et les animaux"
+      },
+      {
+        "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+        "name": "L’Univers des dinosaures"
+      }
+    ],
+    "ownedImages": 24,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "edd7c8ac-d0b6-4bf4-88e3-bd5202641754",
+        "name": "La Boutique Playmobil",
+        "category": "Shop",
+        "images": 1
+      },
+      {
+        "id": "186b3503-feec-405b-a2e4-f3011daa4fc7",
+        "name": "La Ferme",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+        "name": "Le Bateau des pirates",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "ab96c94c-4fc8-4cb6-9c3c-b474a220af75",
+        "name": "Le Chantier",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "f042c241-1460-49b5-81f6-c9edc641f82c",
+        "name": "Le Chapiteau des animations",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "8063ad83-ef24-438a-8e18-73447bcb3367",
+        "name": "Le Château des chevaliers",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+        "name": "Le Château des princesses",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "93bcec4b-5af6-4b68-9cba-222fb1367b67",
+        "name": "Le Point accueil",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+        "name": "Le Zoo et les animaux",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "4be5431e-f824-4be0-b654-4a4df301f9b0",
+        "name": "Les Maisons et les commerçants",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "eccf56e9-3873-4894-b08a-aa5bb3d388d6",
+        "name": "Les Sanitaires de l’étage",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "59bb9521-a211-4c73-a24e-f9d2f9eac143",
+        "name": "Les Sanitaires du rez-de-chaussée",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "19d1d54a-8f44-4218-af01-32146ee2c3ee",
+        "name": "L’Aire des tout-petits",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "dd0ff973-daeb-41f0-9f9a-69b17d55394e",
+        "name": "L’Entrée du château",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "3bfc608b-09cf-4063-8f09-1eac4fd091ed",
+        "name": "L’Espace restauration",
+        "category": "Restaurant",
+        "images": 1
+      },
+      {
+        "id": "ea9a2965-fd8c-47df-b5cd-ac45d45fd03c",
+        "name": "L’Univers de la police",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+        "name": "L’Univers des dinosaures",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a370a43d-a4eb-485a-a6b6-701d9b91ae83",
+        "name": "L’Univers des pompiers",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e544659f-fb7c-4a35-90b0-20822387ef2e",
+        "name": "L’Univers du cirque",
+        "category": "Attraction",
+        "images": 1
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "edd7c8ac-d0b6-4bf4-88e3-bd5202641754",
+        "name": "La Boutique Playmobil",
+        "category": "Shop",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "186b3503-feec-405b-a2e4-f3011daa4fc7",
+        "name": "La Ferme",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+        "name": "Le Bateau des pirates",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ab96c94c-4fc8-4cb6-9c3c-b474a220af75",
+        "name": "Le Chantier",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "f042c241-1460-49b5-81f6-c9edc641f82c",
+        "name": "Le Chapiteau des animations",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8063ad83-ef24-438a-8e18-73447bcb3367",
+        "name": "Le Château des chevaliers",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+        "name": "Le Château des princesses",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "93bcec4b-5af6-4b68-9cba-222fb1367b67",
+        "name": "Le Point accueil",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+        "name": "Le Zoo et les animaux",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4be5431e-f824-4be0-b654-4a4df301f9b0",
+        "name": "Les Maisons et les commerçants",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "eccf56e9-3873-4894-b08a-aa5bb3d388d6",
+        "name": "Les Sanitaires de l’étage",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "59bb9521-a211-4c73-a24e-f9d2f9eac143",
+        "name": "Les Sanitaires du rez-de-chaussée",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "19d1d54a-8f44-4218-af01-32146ee2c3ee",
+        "name": "L’Aire des tout-petits",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "dd0ff973-daeb-41f0-9f9a-69b17d55394e",
+        "name": "L’Entrée du château",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "3bfc608b-09cf-4063-8f09-1eac4fd091ed",
+        "name": "L’Espace restauration",
+        "category": "Restaurant",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ea9a2965-fd8c-47df-b5cd-ac45d45fd03c",
+        "name": "L’Univers de la police",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+        "name": "L’Univers des dinosaures",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a370a43d-a4eb-485a-a6b6-701d9b91ae83",
+        "name": "L’Univers des pompiers",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "e544659f-fb7c-4a35-90b0-20822387ef2e",
+        "name": "L’Univers du cirque",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 6,
+    "parkHistory": 6,
+    "itemHistory": 0,
+    "historyWithSource": 6,
+    "historyWithImage": 6,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true
+  },
+  "generalParkPhotographs": {
+    "count": 4,
+    "target": 5,
+    "auctionPhotoIsAnEventImageNotGeneralOverview": true
+  },
+  "importantItemsWithThreePhotographs": {
+    "covered": 1,
+    "total": 3
+  },
+  "officialLogo": {
+    "imageId": "a7c9e2cf296d4474933308e23d1f96aa",
+    "current": true,
+    "source": "Native embedded image plus soft mask from official archived 2017 activity PDF, visually verified, no resize/crop/recompression.",
+    "evidence": "logo-extraction-proof.json"
+  },
+  "publicTextReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "storedComparisons": 1000,
+    "differences": 0,
+    "fullCorpusRows": 840,
+    "independentCorpusRows": 768,
+    "sameImageCaptionAliases": 0,
+    "formulaicGroups": 0,
+    "rawEncodingFindings": 0,
+    "personalReview": "All eight-language descriptions, operator biography, image metadata, six timeline entries and developed article were personally written/reviewed against their source facts. Current stored values match those accepted texts. Two English descriptions and eight princess image alternatives corrected in targeted audit Apply. Recent auction extension reviewed in all eight languages and compared to actual Preview. Same-photo article/media captions intentionally coincide. Official completeness flagged duplicated same-photo captions, all 16 article captions then rewritten, actual diff reviewed and Apply11506192 verified; final checker finds no repetition and official completeness has zero publication blockers."
+  },
+  "gapsEvidence": "step-applicability-and-source-gaps.json",
+  "sourceReview": "09-all-history-source-review.json",
+  "imageExclusionsEvidence": "additional-photo-exclusions.json",
+  "articleReviewSequenceEvidence": "08-article-actual-diff-verification.json",
+  "limits": "This validates content, not publication. Score gate, canonical history diagnostics, anonymous eight-language public navigation and Facebook outcome remain to be verified.",
+  "publicationGate": {
+    "projectedScore": 92,
+    "earnedPoints": 89,
+    "applicableMaxPoints": 97,
+    "publicationBlockers": [],
+    "requiredScore": "strictly above95 unless explicit named exact-score exception",
+    "remainingScoredGaps": {
+      "currentWebsite": 1,
+      "provenPersonalFounder": 1,
+      "provenAttractionStructureManufacturer": 3,
+      "individuallyDatedItemHistory": 2,
+      "remainingDebtPenalty": 1
+    },
+    "evidence": "09-prepublication-completeness-v2.json"
+  },
+  "correctiveOperationId": "11506192-84c0-4290-b702-a632be2fe093"
+}

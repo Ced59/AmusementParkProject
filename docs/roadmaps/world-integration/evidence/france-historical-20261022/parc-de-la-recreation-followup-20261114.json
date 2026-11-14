@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+  "name": "Parc de la Récréation",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "completed": false,
+  "verifiedAtUtc": "2026-11-14T21:54:13.8298616Z",
+  "lastDataIntegrationAt": "2026-11-14T21:53:14.187Z",
+  "newSuccessfulDataOperations": 4,
+  "newItems": 0,
+  "existingItemsDescribed": 2,
+  "newPrivatePhotos": 3,
+  "intake": {
+    "officialSearchAtUtc": "2026-11-14T21:44:03.0950436Z",
+    "existingVisibleClosedParkConfirmed": true,
+    "separateFamilyParkId": "2f436a73-8a36-4adc-9723-f14d569ed4f8",
+    "targetedExportSections": [
+      "ParkBasics",
+      "Items",
+      "Images"
+    ],
+    "targetedExportAtUtc": "2026-11-14T21:44:27.608677Z",
+    "targetedExportSha256": "6cae4a8311ba14865e8ee3520acf73106f3380325b4ae56a27f7b7ab4ff797d6",
+    "reason": "Prior local state lost; restore exact item/media IDs and reconcile before enrichment; no complete final-audit export."
+  },
+  "coverageAfter": {
+    "items": 30,
+    "itemsWithEightDescriptions": 22,
+    "missingDescriptions": [
+      "Balades en carriole",
+      "Billard hollandais",
+      "Mur d’escalade",
+      "Pétanque",
+      "Pêche à la ligne",
+      "Totem-ball",
+      "Tourni-pneu",
+      "Tyroliennes"
+    ],
+    "publicItems": 20,
+    "privateItems": 10,
+    "media": 24,
+    "logo": 1,
+    "otherMedia": 23,
+    "newPrivatePhotographs": 3,
+    "itemsWithImages": 15,
+    "historyFactsPreviouslyPublished": 4,
+    "articlesPreviouslyPublished": 1,
+    "historyReadAgainThisTurn": false,
+    "officialAnnualMaps": 0
+  },
+  "identityDecisions": [
+    "The tyre pyramid/tower and the separately named Mur d’escalade retain distinct existing IDs. The historical photograph of the tyre construction includes a wooden climbing face and is attached to the tyre tower only.",
+    "The Grande Voiture photograph shows four-wheel red/black pedal cars, distinct from the low three-wheel Slalom-kart photographs on the same original official page. Existing Voitures à pédales ID retained.",
+    "No manufacturer/model, exact coordinates or opening date inferred from the photographs. No broad generic Jeux de bois entity or guessed identities created."
+  ],
+  "sourceRecovery": {
+    "official2012GamesPage": "https://web.archive.org/web/20120219031551/http://www.la-recreation.com/Jeux/jeux.html",
+    "official2016GalleryPage": "https://web.archive.org/web/20161001075707/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+    "oldDomainImageIndexRows": 48,
+    "oldOfficialJpegOriginalsDownloaded": 12,
+    "officialJimdoArchivedUniqueFilesDownloaded": 3,
+    "selectedPhotoFiles": [
+      {
+        "file": "old-45.jpg",
+        "archiveUrl": "https://web.archive.org/web/20120330093316id_/http://www.la-recreation.com/Jeux/photos%20parc/pyramide%20de%20pneus.JPG",
+        "originalUrl": "http://www.la-recreation.com/Jeux/photos%20parc/pyramide%20de%20pneus.JPG",
+        "capture": "20120330093316",
+        "status": 200,
+        "bytes": 35653,
+        "sha256": "4688485887e8fda1d22759eb2a10f8dba88d79f1e5888d92484f98c0a331e3a6",
+        "retrievedAtUtc": "2026-11-14T21:47:18.167657+00:00",
+        "stem": "tyre-tower",
+        "ownerId": "53e02da1-dd83-4818-b06d-389810532904",
+        "sourcePageUrl": "https://web.archive.org/web/20120219031551/http://www.la-recreation.com/Jeux/jeux.html",
+        "datePrecision": "Archive capture is not asserted as photo date."
+      },
+      {
+        "file": "old-44.jpg",
+        "archiveUrl": "https://web.archive.org/web/20120331023919id_/http://www.la-recreation.com/Jeux/photos%20parc/Grande%20Voiture.jpg",
+        "originalUrl": "http://www.la-recreation.com/Jeux/photos%20parc/Grande%20Voiture.jpg",
+        "capture": "20120331023919",
+        "status": 200,
+        "bytes": 53941,
+        "sha256": "f791e9b706af1cefc12115b055419124fe4ffafdfa2e0fad424f313f41b9e5f9",
+        "retrievedAtUtc": "2026-11-14T21:47:17.442800+00:00",
+        "stem": "pedal-cars",
+        "ownerId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "sourcePageUrl": "https://web.archive.org/web/20120219031551/http://www.la-recreation.com/Jeux/jeux.html",
+        "datePrecision": "Archive capture is not asserted as photo date."
+      },
+      {
+        "url": "https://web.archive.org/web/20160909022113id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/background/ie923eb3b13a9a464/version/1421830818/image.jpg",
+        "originalUrl": "https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/background/ie923eb3b13a9a464/version/1421830818/image.jpg",
+        "file": "background-20160909022113.jpg",
+        "status": 200,
+        "bytes": 935082,
+        "sha256": "de47a28899e07e6bd81aefa85c04c7ee5789346c22056bc631ccf9c95b5cbcb5",
+        "stem": "park-clearing",
+        "ownerId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+        "sourcePageUrl": "https://web.archive.org/web/20161001075707/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+        "visualDedupe": "Existing park image ceae54d3b9dd44178649c7e6e23622ae personally viewed through its public page: it matches old-38.jpg, excluded. This wider background original shows a different vantage and different people, with additional paths and play areas."
+      }
+    ],
+    "sourceIntegrity": "All three accepted images retain original downloaded bytes and SHA-256; no crop, re-encoding or retouch. Eight alt texts, captions and credits personally written and reviewed for each. Capture timestamps are not photo dates.",
+    "rightsBasis": "Former official park photographs with honest rights-reserved credits; existing owner authorization for photo reuse.",
+    "oldDomainCaution": "Post-2021 generic travel/leisure website imagery is unrelated to the closed park and excluded.",
+    "exceptions": [
+      "Plan 2009.jpg is a regional road-access diagram, not an internal annual visitor map; excluded from official maps.",
+      "Official old-38.jpg duplicates existing public park photograph ceae54d3b9dd44178649c7e6e23622ae, confirmed by visual comparison with the exact image referenced by the anonymous public page; no reimport.",
+      "The official Jimdo background ie923eb3b13a9a464 is a different wider clearing view. The original gallery HTML explicitly references it in common_awesomebackground; accepted without modification.",
+      "The 2017 Entraide & Solidarités report distinguishes the park outing from the preceding summer party. Its two park photographs have baked-in decorative frames/reflections and small native resolution; neither is imported.",
+      "Other small official game photos confirm play equipment but do not yet resolve the remaining named items; no invented attachment or new duplicate entity.",
+      "Live Jimdo originals returned 403; access restriction not bypassed. Public Internet Archive versions used only where genuinely preserved."
+    ],
+    "additionalResearchSource": "https://entraide-et-solidarites.fr/wp-content/uploads/2018/05/RA-2017-slex-et-LT.pdf"
+  },
+  "descriptionReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "entities": 2,
+    "rawHtmlEntityFindings": 0,
+    "visibilityChanged": false,
+    "shortFormatReason": "Two concrete paragraphs per local historical item based on surviving primary photos and named official offer; no filler or invented chronology."
+  },
+  "reconciliationPreview": {
+    "atUtc": "2026-11-14T21:53:39.1295173Z",
+    "operationId": "e53d5b15-977e-4e7c-9332-00e29917b282",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 6,
+      "warnings": 0,
+      "errors": 0
+    },
+    "mutationsApplied": false
+  },
+  "projectedCompleteness": {
+    "receivedAtUtc": "2026-11-14T21:53:54.8536686Z",
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 94,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publication": {
+    "newSitePublicationPerformed": false,
+    "newPhotosRemainPrivate": true,
+    "descriptionOwnersRemainPrivate": true,
+    "fullFinalAuditPerformedThisTurn": false,
+    "reason": "Score remains 91/100, eight unfilled descriptions and factual gaps persist; no exact exception accepted."
+  },
+  "facebook": {
+    "resolvedAtUtc": "2026-11-14T21:54:13.8298616Z",
+    "existingPublicationId": "29717df3ec6f4c6d869aa236f0fb4bbb",
+    "status": "Published",
+    "url": "https://www.facebook.com/1285475681307050/posts/122125754151424431",
+    "newSendPerformed": false
+  },
+  "receipts": [
+    {
+      "kind": "Apply",
+      "operationId": "7f9aa69d-7828-47db-b1ff-ef927f9de334",
+      "serverAppliedAtUtc": "2026-11-14T21:50:06.702926Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-04-two-items-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "87689145d64d4266b88af29f3225359b",
+      "ownerId": "53e02da1-dd83-4818-b06d-389810532904",
+      "serverCreatedAtUtc": "2026-11-14T21:51:28.667Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:51:32.507Z",
+      "sourceFileSha256": "4688485887e8fda1d22759eb2a10f8dba88d79f1e5888d92484f98c0a331e3a6",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-tyre-tower-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "0307ea44e16a4f0aadded32668e4b229",
+      "ownerId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+      "serverCreatedAtUtc": "2026-11-14T21:51:50.065Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:51:53.56Z",
+      "sourceFileSha256": "f791e9b706af1cefc12115b055419124fe4ffafdfa2e0fad424f313f41b9e5f9",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-pedal-cars-20261114.json"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "314b4db3e89e4431b0a7fdbe818e3eb4",
+      "ownerId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+      "serverCreatedAtUtc": "2026-11-14T21:53:10.68Z",
+      "serverUpdatedAtUtc": "2026-11-14T21:53:14.187Z",
+      "sourceFileSha256": "de47a28899e07e6bd81aefa85c04c7ee5789346c22056bc631ccf9c95b5cbcb5",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-park-clearing-20261114.json"
+    }
+  ],
+  "nextAction": "Continue targeted historical sourcing for eight remaining private descriptions, additional photographs and proven positions. Do not substitute the 2009 road-access plan for an internal annual map. Keep partial; audit the whole corpus before publication under the >95 gate or an exact accepted exception. Existing Facebook announcement is Published; do not duplicate."
+}

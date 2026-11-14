@@ -1,0 +1,24 @@
+{
+  "updatedAtUtc": "2026-11-03T00:45:22.799471+00:00",
+  "entryId": "FR-candidate-605fde75a058d0",
+  "parkId": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
+  "completed": true,
+  "sitePublished": true,
+  "publishedItems": 32,
+  "images": 35,
+  "officialMaps": [
+    2008,
+    2009
+  ],
+  "score": 96,
+  "historyPublished": 9,
+  "hasPublicHistory": true,
+  "facebookStatus": "Published",
+  "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125705815424431",
+  "lastDataIntegrationAt": "2026-11-03T00:39:26.1795333Z",
+  "finalAudit": "12-final-audit.json",
+  "latestGraph": "12-public-graph.json",
+  "batchCompleted": 8,
+  "nationalRemaining": 133,
+  "next": "Eana terminé avec lacunes historiques documentées. Ne pas créer de publicationFacebook supplémentaire. Poursuivre les autres historiques ; aucune PR avant dix clôtures."
+}

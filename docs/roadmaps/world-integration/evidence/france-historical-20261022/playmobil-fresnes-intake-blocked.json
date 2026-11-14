@@ -1,0 +1,167 @@
+{
+  "entryId": "FR-candidate-13b50050620a99",
+  "conversation": "Conversation France",
+  "preparedAtUtc": "2026-10-28T08:39:45.651113+00:00",
+  "status": "Blocked before creation",
+  "siteId": null,
+  "lastDataIntegrationAt": null,
+  "dataApplied": false,
+  "identity": {
+    "name": "Playmobil FunPark Fresnes",
+    "aliases": [
+      "Playmobil FunPark Paris",
+      "PLAYMOBIL FunPark",
+      "Playmobil Fun Park"
+    ],
+    "countryCode": "FR",
+    "city": "Fresnes",
+    "street": "22-24 allée des Jachères",
+    "postalCode": "94260",
+    "entityKind": "Park",
+    "parkType": "ThemePark",
+    "audienceClassification": "Regional",
+    "status": "ClosedDefinitively",
+    "openingDateText": "1999-08",
+    "openingDate": null,
+    "closingDate": "2022-07-31",
+    "operator": "Jeux Jouets Services",
+    "operatorSiren": "398914564",
+    "founder": null,
+    "websiteUrl": null
+  },
+  "scopeDecision": "Parc couvert permanent à plusieurs espaces de jeu thématiques et services. Aucune montagne russe ni standalone supposée. Les FunParks de Zirndorf, Malte, Athènes et Palm Beach sont d’autres lieux.",
+  "officialSearches": [
+    {
+      "file": "00-searchparks-playmobil.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "totalItems": 0
+    },
+    {
+      "file": "00-searchparks-fresnes.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "totalItems": 0
+    },
+    {
+      "file": "00-searchstandaloneattractions-playmobil.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "totalItems": 0
+    }
+  ],
+  "remainingIdentityCheck": "SearchStandaloneAttractions Fresnes non exécuté : le Status préalable a échoué. Refaire cette recherche et rafraîchir les précédentes avant toute Preview de création.",
+  "geolocation": {
+    "latitude": 48.754988,
+    "longitude": 2.330392,
+    "precision": "Adresse officielle numéro 22, à recouper visuellement avant validation finale",
+    "source": "https://data.geopf.fr/geocodage/search?q=22+all%C3%A9e+des+Jach%C3%A8res+94260+Fresnes&limit=3",
+    "addressLabel": "22 Allée des Jachères 94260 Fresnes",
+    "banId": "711ff623-81d8-456e-bcaf-10c3e4b90c45"
+  },
+  "sources": [
+    {
+      "label": "Écomusée du Grand-Orly Seine Bièvre — mémoire du Playmobil FunPark",
+      "url": "https://ecomusee.grandorlyseinebievre.fr/le-playmobil-funpark",
+      "facts": [
+        "Ouverture en août 1999, jour non établi",
+        "Anciennement 24 allée des Jachères, Fresnes",
+        "Douze aires de jeux, boutique et restauration",
+        "Fermeture définitive le 31 juillet 2022",
+        "Entrée du lieu dans la collection écomuséale en 2025 : ne pas en déduire un don matériel des décors"
+      ]
+    },
+    {
+      "label": "Ville de Fresnes — Panorama 206, septembre 2022",
+      "url": "https://www.fresnes94.fr/app/uploads/2022/08/panorama_206.pdf",
+      "facts": [
+        "Fermeture le 31 juillet 2022",
+        "Retrait des décors annoncé avant décembre : ne prouve pas la date effective du démontage"
+      ]
+    },
+    {
+      "label": "Pappers — Jeux Jouets Services, SIREN 398914564",
+      "url": "https://www.pappers.fr/entreprise/jeux-jouets-services-398914564",
+      "facts": [
+        "Exploitant Jeux Jouets Services",
+        "Établissement Playmobil FunPark, 22-24 allée des Jachères",
+        "Création juridique du 16 août 1999 distincte du jour réel d’ouverture au public",
+        "Radiation du 5 juillet 2023 distincte de la fermeture du parc"
+      ]
+    },
+    {
+      "label": "Préfecture du Val-de-Marne — arrêté 2020/1870",
+      "url": "https://www.val-de-marne.gouv.fr/content/download/18627/127005/file/RAA%20N%C2%B041%20du%2029%20au%2030%20juillet%202020.pdf",
+      "facts": [
+        "Rapprochement explicite Jeux Jouets Services / Playmobil FunPark / 22-24 allée des Jachères"
+      ]
+    },
+    {
+      "label": "Sortiraparis — visite et galerie du parc de Fresnes",
+      "url": "https://www.sortiraparis.com/loisirs/articles/25629-le-playmobil-funpark-a-fresnes-definitivement-ferme",
+      "facts": [
+        "Aires de jeux thématiques couvertes distinctes des autres FunParks",
+        "Galerie de photographies des décors et des jouets"
+      ]
+    },
+    {
+      "label": "Family Globe Trotters — visite et photographies de mars 2022",
+      "url": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+      "facts": [
+        "Espace 18–36 mois près de l’entrée",
+        "Point accueil proche de la police",
+        "Restauration, boutique, sanitaires à deux niveaux",
+        "Chapiteau pour animations et anniversaires",
+        "Liste de thèmes plus longue que les douze espaces annoncés : ne pas transformer chaque gamme de jouets en attraction distincte"
+      ]
+    }
+  ],
+  "websiteDecision": "Le domaine historique playmobil-funpark.fr redirige maintenant vers playmobil-funpark.de : ne pas le publier comme site actuel de Fresnes.",
+  "provisionalInventory": {
+    "confirmedThemedPlayVenue": true,
+    "operatorReportedPlayAreas": 12,
+    "namedPlayAreasRequireReconciliation": true,
+    "zonesDecision": "Ne pas doubler les espaces de jeu comme zones et parkItems ; pas de lands officiels établis à ce stade.",
+    "servicesConfirmed": [
+      "Accueil",
+      "Restauration",
+      "Boutique",
+      "Sanitaires",
+      "Espace d’animations et anniversaires"
+    ],
+    "standaloneCandidates": 0,
+    "attractionManufacturerDecision": "La marque du jouet ne prouve pas le constructeur des décors ou installations ; aucun constructeur de manège supposé."
+  },
+  "mediaResearch": {
+    "originalPhotographsDownloaded": 16,
+    "publisher": "Sortiraparis",
+    "allUnder960KiB": true,
+    "visuallyReviewedContactSheet": true,
+    "importedImages": 0,
+    "logoResearchPending": true,
+    "annualOfficialMapResearchPending": true,
+    "rejectedClosureIllustration": "La page Sortiraparis de fermeture propose aussi une exposition de Versailles ; ne pas la présenter comme une photographie du parc de Fresnes."
+  },
+  "nextSteps": [
+    "Rétablir Status officiel et achever le rapprochement d’identité",
+    "Preview du lot 01 préparé puis lecture personnelle du diff avant Apply",
+    "Qualifier les espaces de jeu et leurs anciennes configurations",
+    "Rédiger et revoir les huit langues, importer les originaux retenus, rechercher logo et plans",
+    "Horaires et tarifs actuels non applicables au parc fermé",
+    "Histoire sourcée, export final unique, audit et publication puis résolution Facebook"
+  ],
+  "blocker": {
+    "endpoint": "PARK_DATA_EDITOR operations/status",
+    "httpStatus": 500,
+    "errorCode": "unexpected.error",
+    "traceIds": [
+      "0HNPKPFLOMR89:00000001",
+      "0HNPKPFLOMR8V:00000001",
+      "0HNPKPFLOMRA5:00000001",
+      "0HNPKPFLOMRCC:00000001"
+    ],
+    "productionRun": "https://github.com/Ced59/AmusementParkProject/actions/runs/40656256404",
+    "productionFailureAtUtc": "2026-10-28T08:27:53Z",
+    "productionError": "write /dev/stdout: no space left on device; MongoDB backup failed. Deployment aborted.",
+    "causality": "Échec de sauvegarde pour espace disque insuffisant confirmé dans le déploiement ; lien causal exact avec les réponses Status 500 non confirmé sans diagnostic serveur autorisé.",
+    "lastStatusFailureObservedAtUtc": "2026-10-28T08:40:52.484615+00:00",
+    "lastStatusFailureSha256": "9f64051b6cb7325bcc00069837f3068e7c84a941069c72c76936e66cdaf26aa1"
+  }
+}

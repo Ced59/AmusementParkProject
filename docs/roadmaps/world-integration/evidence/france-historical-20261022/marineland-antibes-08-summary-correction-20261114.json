@@ -1,0 +1,56 @@
+{
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "review": "Eight languages personally authored and reviewed; sourced facts preserved. Preview and Apply identical.",
+  "result": {
+    "operationId": "6eb00c03-8b68-406d-a968-3d54efc1dd5a",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T22:56:07.782928Z",
+    "appliedAtUtc": "2026-11-14T22:56:07.7829294Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8cbdc893-72d2-4f62-ba6e-c91f11a28aa2",
+        "entityKey": "marineland-grand-projet-2000",
+        "displayName": "Grand Marineland transforme le parc",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "summaries",
+            "oldValue": "de:Zwischen 2000 und 2002 gestaltet das Programm Grand Marineland große Teile des Geländes um. Auf die neuen Orcabecken folgen die Erneuerung bestehender Anlagen, Geschäfte und Restaurants sowie Antarctica und neue Lagunen., en:Between 2000 and 2002, the Grand Marineland programme reshapes a large part of the site. New orca pools are followed by the refurbishment of existing areas, shops and restaurants, then Antarctica and new lagoons., es:Entre 2000 y 2002, el programa Grand Marineland transforma gran parte del recinto. A las nuevas piscinas de las orcas les siguen la renovación de los espacios existentes, tiendas y restaurantes, y después Antarctica y nuevas lagunas., fr:Entre 2000 et 2002, le programme Grand Marineland remodèle une large partie du site. Aux nouveaux bassins des orques s’ajoutent la rénovation des espaces existants, des commerces et des restaurants, puis Antarctica et de nouveaux lagons., it:Fra il 2000 e il 2002, il programma Grand Marineland trasforma una vasta parte del sito. Alle nuove vasche delle orche seguono il rinnovo degli spazi esistenti, negozi e ristoranti, poi Antarctica e nuove lagune., nl:Tussen 2000 en 2002 verandert het programma Grand Marineland grote delen van het terrein. Na de nieuwe orkabassins volgen de vernieuwing van bestaande ruimtes, winkels en restaurants, en vervolgens Antarctica en nieuwe lagunes., pl:W latach 2000–2002 program Grand Marineland przekształca znaczną część terenu. Po nowych basenach orek powstają sklepy i restauracje, odnawiane są istniejące obiekty, a kolejną część rozbudowy stanowią Antarctica i nowe laguny., pt:Entre 2000 e 2002, o programa Grand Marineland transforma grande parte do recinto. Aos novos tanques das orcas seguem-se a renovação dos espaços existentes, lojas e restaurantes, e depois Antarctica e novas lagoas.",
+            "newValue": "de:Das Bauprogramm Grand Marineland verändert den Park zwischen 2000 und 2002 in mehreren Etappen. Neue Orcabecken und überdachte Tribünen bilden den Auftakt; Antarctica, Lagunen, Geschäfte und Restaurants folgen. Große Teile des Geländes erhalten durch die neuen und erneuerten Besucherbereiche eine andere räumliche Ordnung., en:The Grand Marineland project transforms the park in stages from 2000 to 2002. New orca pools and covered stands are followed by Antarctica, lagoons, shops and restaurants. The programme reorganises a substantial part of the grounds around these new and renewed visitor spaces., es:El proyecto Grand Marineland transforma el parque por etapas entre 2000 y 2002. Las nuevas piscinas de orcas y las gradas cubiertas dan paso a Antarctica, lagunas, tiendas y restaurantes. Los espacios nuevos o renovados cambian la distribución de una parte considerable del recinto., fr:Le chantier Grand Marineland transforme le parc par étapes de 2000 à 2002. Les orques reçoivent de nouveaux bassins et des gradins couverts ; la refonte se poursuit avec Antarctica, des lagons et de nouveaux commerces et restaurants. Ce programme donne une nouvelle organisation à une grande partie du site., it:Il progetto Grand Marineland trasforma il parco in più fasi, dal 2000 al 2002. Alle nuove vasche delle orche e alle tribune coperte seguono Antarctica, lagune, negozi e ristoranti. Questi spazi nuovi o rinnovati ridisegnano l’organizzazione di una parte consistente del sito., nl:Het bouwproject Grand Marineland vernieuwt het park in fasen, van 2000 tot 2002. Nieuwe orkabassins en overdekte tribunes vormen het begin; daarna volgen Antarctica, lagunes, winkels en restaurants. De nieuwe en aangepaste bezoekersgebieden geven een groot deel van het terrein een andere indeling., pl:Projekt Grand Marineland przebudowuje park etapami w latach 2000–2002. Po nowych basenach orek i zadaszonych trybunach powstają Antarctica, laguny, sklepy i restauracje. Nowe oraz odnowione przestrzenie dla odwiedzających zmieniają układ znacznej części terenu., pt:O projeto Grand Marineland transforma o parque por etapas, de 2000 a 2002. Às novas piscinas das orcas e às bancadas cobertas seguem-se Antarctica, lagoas, lojas e restaurantes. Os espaços novos ou renovados alteram a organização de uma parte considerável do recinto."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "requestSha256": "5194ec608ac60ad4981c900b005c6532e72efed9dc600a29eaa53f9695bc4831",
+  "siteVisible": true,
+  "facebookPublished": false
+}

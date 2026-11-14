@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "5a8b2457aef44d279df7bddec657b207",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "cb357854-20d4-44db-8890-214338653ab1",
+    "path": "park_item/5a8b2457aef44d279df7bddec657b207",
+    "description": "La façade ouverte du snack-bar réunit comptoir de service et vitrines sous la même toiture.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 334,
+    "height": 259,
+    "sizeInBytes": 89399,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210094632id_/http://acqua-gliss.com/photos/20/548/222005.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Samsung Techwin",
+      "cameraModel": "VLUU L310W  / Samsung L310W",
+      "takenOnUtc": "2009-06-14T14:28:38Z",
+      "orientation": "1",
+      "focalLength": 6,
+      "aperture": 2.8,
+      "exposureTime": 0.005555555555555556,
+      "iso": 80
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Le comptoir blanc du snack-bar, avec sa vitrine, ses boissons et son grand auvent."
+      },
+      {
+        "languageCode": "en",
+        "value": "The snack bar’s white counter, display case and drinks beneath a large canopy."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die weiße Theke der Snackbar mit Vitrine und Getränken unter einem großen Vordach."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De witte balie van de snackbar, met vitrine en dranken onder een grote overkapping."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il bancone bianco dello snack-bar, con la vetrina e le bevande sotto una grande copertura."
+      },
+      {
+        "languageCode": "es",
+        "value": "El mostrador blanco del bar, con su vitrina y bebidas bajo una gran cubierta."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Biała lada baru z witryną i napojami pod dużym zadaszeniem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O balcão branco do snack-bar, com a vitrina e as bebidas sob uma grande cobertura."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La façade ouverte du snack-bar réunit comptoir de service et vitrines sous la même toiture."
+      },
+      {
+        "languageCode": "en",
+        "value": "The snack bar’s open front brings the serving counter and display cases beneath one roof."
+      },
+      {
+        "languageCode": "de",
+        "value": "An der offenen Front der Snackbar liegen Ausgabetheke und Vitrinen unter einem gemeinsamen Dach."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Aan de open voorkant van de snackbar staan de uitgiftebalie en vitrines onder hetzelfde dak."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il fronte aperto dello snack-bar riunisce il bancone di servizio e le vetrine sotto un unico tetto."
+      },
+      {
+        "languageCode": "es",
+        "value": "El frente abierto del bar reúne el mostrador de servicio y las vitrinas bajo un mismo techo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Otwarty front baru mieści ladę obsługi i witryny pod jednym dachem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A frente aberta do snack-bar reúne o balcão de serviço e as vitrinas sob o mesmo teto."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:33:03.77Z",
+    "updatedAt": "2026-11-14T21:33:07.311Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:33:07.311Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202060429/http://acqua-gliss.com/restauration-5802.html"
+}

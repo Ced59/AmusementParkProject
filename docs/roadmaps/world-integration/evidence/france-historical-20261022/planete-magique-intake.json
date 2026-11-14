@@ -1,0 +1,136 @@
+{
+  "entryId": "FR-candidate-ecdb81d09bead4",
+  "qualifiedAtUtc": "2026-10-28T21:49:43.261559+00:00",
+  "matchedSiteId": null,
+  "entityKind": "Park",
+  "classification": "ThemePark",
+  "ownership": "Conversation France",
+  "officialSearches": [
+    {
+      "file": "00-search-gaiete.json",
+      "totalItems": 0,
+      "totalPages": 0,
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "candidates": []
+    },
+    {
+      "file": "00-search-gaite-ascii.json",
+      "totalItems": 0,
+      "totalPages": 0,
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "candidates": []
+    },
+    {
+      "file": "00-search-lyrique.json",
+      "totalItems": 0,
+      "totalPages": 0,
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "candidates": []
+    },
+    {
+      "file": "00-search-magique.json",
+      "totalItems": 4,
+      "totalPages": 1,
+      "sha256": "7fd0cc18e2ae1eada9884d8d11819d08964e890ddac6e948ed3fdf24fdd4f025",
+      "candidates": [
+        {
+          "name": "Cita-Parc",
+          "id": "1d4ec4ab-5f19-4b1b-b4cf-8e240dce3304"
+        },
+        {
+          "name": "Fermyland",
+          "id": "1345965d-9d8e-43e1-a1d3-13f0b5a5bdd4"
+        },
+        {
+          "name": "Kid Parc Île dʼAventures",
+          "id": "a48caf8e-871b-40cc-8b98-9faff4219e96"
+        },
+        {
+          "name": "Parc Spirou Provence",
+          "id": "fa6698dd-950b-4c78-b351-cd7deb501967"
+        }
+      ]
+    },
+    {
+      "file": "00-search-planete.json",
+      "totalItems": 6,
+      "totalPages": 1,
+      "sha256": "b2d9540477b1da390a6bfffbb0d20c89554fe1fa135921508730daa7707024f0",
+      "candidates": [
+        {
+          "name": "Babylon Park London",
+          "id": "6c9557a4-c49c-4eb3-ace0-b1817927a0b3"
+        },
+        {
+          "name": "Babylon Park Madrid",
+          "id": "6d0efa82-473d-4bcd-a3fe-c839f1291917"
+        },
+        {
+          "name": "Disney's Hollywood Studios",
+          "id": "b282d906-4e2c-4781-af36-4a90642196e7"
+        },
+        {
+          "name": "Parc Avenue",
+          "id": "f019e441-aecf-487b-93db-2b0246dce185"
+        },
+        {
+          "name": "Parc du Petit Prince",
+          "id": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f"
+        },
+        {
+          "name": "Porta do Mezio",
+          "id": "ebeea550-cb5a-4855-a67b-9b803faa81da"
+        }
+      ]
+    },
+    {
+      "file": "00-search-standalone-magique.json",
+      "totalItems": 0,
+      "totalPages": 0,
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "candidates": []
+    },
+    {
+      "file": "00-search-standalone.json",
+      "totalItems": 0,
+      "totalPages": 0,
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "candidates": []
+    }
+  ],
+  "aliasesReviewed": [
+    "Planète magique",
+    "Planète Magique",
+    "Planete Magique",
+    "Gaîté-Lyrique",
+    "Gaiete Lyrique",
+    "Gaite Lyrique"
+  ],
+  "decision": "Créer le parc couvert historique de la rue Papin, distinct du centre culturel actuel et de toute standalone. Attractions et espaces intérieurs à rattacher au parc après qualification individuelle. Aucun des résultats par mot-clef ne correspond à ce lieu.",
+  "evidence": {
+    "opening": "Catalogue exposition Bernard Deyriès, 19 décembre 1989",
+    "closure": "1991 certain ; mois et jour divergents entre récits, année seule retenue au socle",
+    "address": "3 bis rue Papin, Paris 75003, coordonnées BAN de ce numéro 48.866831, 2.353591",
+    "operator": "S.E.G.L. – Société d’exploitation de la Gaîté Lyrique, SIREN338070915 ; distinct de la SAS Gaîté Lyrique créée en2023",
+    "website": "Domaine gaitelyrique.com désormais en vente ; aucune URL commerciale actuelle présentée comme site du parc disparu",
+    "logo": "Recherche obligatoire à poursuivre, pas encore importé"
+  },
+  "sources": [
+    {
+      "label": "Catalogue Bernard Deyriès",
+      "url": "https://lta.hypotheses.org/files/2018/12/Catalogue-Deyries-BD.pdf"
+    },
+    {
+      "label": "Histoire du bâtiment, archives institutionnelles",
+      "url": "https://archives.gaite-lyrique.net/fabrique-de-lepoque/history"
+    },
+    {
+      "label": "Adresse BAN",
+      "url": "https://api-adresse.data.gouv.fr/search/?q=3bis+rue+Papin+75003+Paris&limit=3"
+    },
+    {
+      "label": "Identité SEGL",
+      "url": "https://www.pappers.fr/entreprise/segl-societe-dexploitation-de-la-gaite-lyrique-338070915"
+    }
+  ]
+}

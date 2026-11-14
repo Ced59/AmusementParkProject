@@ -1,0 +1,45 @@
+{
+  "checkedAtUtc": "2026-11-03T03:23:40.806439+00:00",
+  "entryId": "FR-candidate-ecdb81d09bead4",
+  "owner": "Conversation France",
+  "officialReconciliation": {
+    "parkSearch": "11-search-planete.json",
+    "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+    "standaloneSearch": "11-search-standalone.json",
+    "standaloneMatches": 0,
+    "actualCompleteness": "11-completeness.json"
+  },
+  "newPrimarySources": [
+    {
+      "url": "https://www.musiquedesplantes.fr/maxime-haudebourg",
+      "finding": "First-person CV names study/programming for the Navette and time machine; Navette six passengers. Does not establish manufacturer."
+    },
+    {
+      "url": "https://atelier-thierry-loubry.com/",
+      "finding": "Sculptor/decorator portfolio explicitly labels Planète Magique sets. BD Zap Gaston/Papyrus subjects match retained inventory; Gadget is directly labelled. Mini-Pouces files show a model only, not proof of an operated extra attraction."
+    },
+    {
+      "url": "https://stephane-paillard.fr/planete-magique-1990",
+      "finding": "Page title dates the project to 1989 despite URL suffix 1990. Identifies installation of Barbie and Yves Rocher spaces. Native photographs show workshop fabrication, unfinished installation, finished interiors and theatre. Retrospective WordPress October17 date is not used as an exact construction date."
+    },
+    {
+      "url": "https://www.montgeron.fr/wp-content/uploads/2023/09/Sucho.pdf",
+      "finding": "Christine Suchaud catalogue p15 lists Planète Magique set fabrication within 1989–1993 experience. No exact item attribution or contract date established; no guessed manufacturer record."
+    }
+  ],
+  "withheld": [
+    "No MS+ or decorator mapped to attraction manufacturer merely to raise score.",
+    "No theatre photo assigned to Planet Ciné: archived small cinema has blue/Egyptian interior; large classical stage and tiered seating correspond to Orphée Théâtre.",
+    "No new Mini-Pouces operated attraction from design-model photos alone.",
+    "No perfume-tree identification from the doll display; the finished photograph clearly shows Barbie dolls under cylinders.",
+    "Offsite workshop images do not count as general views of the operating park."
+  ],
+  "newMediaSelection": [
+    "BD Zap: Gaston office and Papyrus scene",
+    "Gadget: themed square",
+    "Barbie: installation, finished entrance, doll display",
+    "Vecteur beauté: working computer station",
+    "Orphée Théâtre: tiered seating and stage front"
+  ],
+  "sourceRights": "Reuse explicitly authorized by the user in this conversation; credit actual source holders and retain rights-reserved status. Do not imply an open licence or independent permission from the photographers."
+}

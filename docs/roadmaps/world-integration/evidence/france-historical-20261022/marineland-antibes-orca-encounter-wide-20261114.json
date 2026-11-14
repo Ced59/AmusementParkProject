@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "1be3baa154a142be84bc2a03b903cf62",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+    "path": "park_item/1be3baa154a142be84bc2a03b903cf62",
+    "description": "La rencontre avec les orques vue depuis l’escalier d’accès aux vitres sous-marines, dans le grand bassin de Marineland.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1100,
+    "height": 834,
+    "sizeInBytes": 327737,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://flashleman.ch/wp-content/uploads/2023/08/Cote_d_Azur_Marineland_rencontre_orque_bassin.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Apple",
+      "cameraModel": "iPhone 7",
+      "takenOnUtc": "2023-07-31T11:24:05Z",
+      "orientation": "1",
+      "focalLength": 3.99,
+      "aperture": 1.8,
+      "exposureTime": 0.00032299741602067185,
+      "iso": 20
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une orque devant la vitre du bassin, face à deux visiteurs et à une soigneuse ; les tribunes et un toit blanc apparaissent au-dessus de l’eau."
+      },
+      {
+        "languageCode": "en",
+        "value": "An orca at the pool window faces two visitors and a keeper, with the stands and a white roof above the water."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Orca steht an der Beckenscheibe zwei Besuchern und einer Tierpflegerin gegenüber; über dem Wasser sind die Tribünen und ein weißes Dach zu sehen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een orka bij de bassinruit kijkt naar twee bezoekers en een verzorgster; boven het water zijn de tribunes en een wit dak te zien."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un’orca davanti alla vetrata della vasca si avvicina a due visitatori e a una custode; sopra l’acqua si vedono le tribune e un tetto bianco."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una orca ante el cristal de la piscina se acerca a dos visitantes y una cuidadora; sobre el agua se ven las gradas y un techo blanco."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Orka przy szybie basenu naprzeciw dwojga odwiedzających i opiekunki; nad wodą widać trybuny i biały dach."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma orca junto à janela do tanque aproxima-se de dois visitantes e de uma tratadora; acima da água veem-se as bancadas e um telhado branco."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La rencontre avec les orques vue depuis l’escalier d’accès aux vitres sous-marines, dans le grand bassin de Marineland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The orca encounter seen from the stairs leading to the underwater windows in Marineland’s large pool."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Begegnung mit den Orcas, gesehen von der Treppe zu den Unterwasserscheiben des großen Marineland-Beckens."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De orkaontmoeting, gezien vanaf de trap naar de onderwaterramen van het grote bassin van Marineland."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’incontro con le orche visto dalla scala che conduce alle vetrate subacquee della grande vasca di Marineland."
+      },
+      {
+        "languageCode": "es",
+        "value": "El encuentro con las orcas visto desde la escalera de acceso a los cristales subacuáticos de la gran piscina de Marineland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Spotkanie z orkami widziane ze schodów prowadzących do podwodnych szyb wielkiego basenu Marineland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O encontro com as orcas visto da escada de acesso às janelas subaquáticas do grande tanque do Marineland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Flash Léman — Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Flash Léman — All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Flash Léman — Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Flash Léman — Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Flash Léman — Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Flash Léman — Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Flash Léman — Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Flash Léman — Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T20:23:49.79Z",
+    "updatedAt": "2026-11-14T20:23:53.421Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T20:23:53.421Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://flashleman.ch/cote-dazur-marineland-zoo-antibes-rencontre-animalier-orques-dauphin-otarie-requin-tortue-preservation/"
+}

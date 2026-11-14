@@ -1,0 +1,638 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "owner": "Conversation France",
+  "checkpointAtUtc": "2026-11-14T23:11:27.499216+00:00",
+  "partial": false,
+  "priorState": "64 existing items with eight-language descriptions; 57 park/item photos plus logo, founder portrait and four official maps, private. Never recreate these.",
+  "recoveredHistoricalOperations": 19,
+  "newOperations": [
+    {
+      "stem": "08-first",
+      "operationId": "c6c1cb22-2ed6-4b48-9593-5c55771e2fbe",
+      "appliedAtUtc": "2026-11-14T18:12:23.9505994Z",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-first-20261114.json"
+    },
+    {
+      "stem": "08-second",
+      "operationId": "8974fc4f-3d26-4095-99cc-1eb364c2856f",
+      "appliedAtUtc": "2026-11-14T18:19:57.2142051Z",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-second-20261114.json"
+    },
+    {
+      "stem": "08-flood",
+      "operationId": "98a72dad-fbc8-40f5-aeb3-91ea30d8f5b8",
+      "appliedAtUtc": "2026-11-14T18:23:07.4584913Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-flood-20261114.json"
+    },
+    {
+      "stem": "08-closure",
+      "operationId": "c2a3338c-db53-4565-884f-901b367f59ff",
+      "appliedAtUtc": "2026-11-14T18:28:05.3789919Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-closure-20261114.json"
+    },
+    {
+      "stem": "08-synthesis",
+      "operationId": "1697b3a0-707f-4e2f-92ec-b92632c3badc",
+      "appliedAtUtc": "2026-11-14T18:32:40.9696878Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-synthesis-20261114.json"
+    },
+    {
+      "stem": "08-items-first",
+      "operationId": "142b3819-cc14-4eae-9b53-262bab1cead2",
+      "appliedAtUtc": "2026-11-14T18:38:23.1758258Z",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-items-first-20261114.json"
+    },
+    {
+      "stem": "08-items-second",
+      "operationId": "0d548534-70d8-421e-94c3-c7b1387630c8",
+      "appliedAtUtc": "2026-11-14T18:49:03.8819867Z",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-items-second-20261114.json"
+    },
+    {
+      "stem": "05-cinema-manufacturer",
+      "operationId": "b60edc15-e8d1-41aa-b055-5f5ea931f40b",
+      "appliedAtUtc": "2026-11-14T18:54:13.2302225Z",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-05-cinema-manufacturer-20261114.json"
+    },
+    {
+      "stem": "05-reference-logo-history-images",
+      "operationId": "9838a5d4-a935-421b-a3d1-035439a11066",
+      "appliedAtUtc": "2026-11-14T18:57:30.8101632Z",
+      "counts": {
+        "created": 1,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-05-reference-logo-history-images-20261114.json"
+    },
+    {
+      "stem": "03-access-polar-date",
+      "operationId": "827f8814-10e8-4a9c-83a3-e022e4bdae41",
+      "appliedAtUtc": "2026-11-14T19:02:21.8724792Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-03-access-polar-date-20261114.json"
+    },
+    {
+      "stem": "08-polar-article",
+      "operationId": "8c92508e-f82c-48f0-a0c5-14792f8582bd",
+      "appliedAtUtc": "2026-11-14T19:09:22.4247731Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-polar-article-20261114.json"
+    },
+    {
+      "stem": "03-access-provenance",
+      "operationId": "5742977d-0ddb-4f59-9e39-e3e4f0f1c2fb",
+      "appliedAtUtc": "2026-11-14T19:11:41.9531854Z",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-03-access-provenance-20261114.json"
+    },
+    {
+      "stem": "09-editorial-corrections",
+      "operationId": "21cf7649-ccfe-47f7-ba28-4e6f32efc159",
+      "appliedAtUtc": "2026-11-14T19:29:04.386955Z",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-editorial-corrections-20261114.json"
+    },
+    {
+      "stem": "09-language-polish",
+      "operationId": "0916717a-842b-4b62-aff1-dd968d1eb275",
+      "appliedAtUtc": "2026-11-14T19:32:34.2168102Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-language-polish-20261114.json"
+    },
+    {
+      "stem": "09-history-audit-corrections",
+      "operationId": "ae8bc5c5-e23d-4d45-b2a2-4e2960f62af9",
+      "appliedAtUtc": "2026-11-14T19:37:19.6347587Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-history-audit-corrections-20261114.json"
+    },
+    {
+      "stem": "09-solagoon-enrichment",
+      "operationId": "454e8b44-1db5-448b-a088-b710d2875d41",
+      "appliedAtUtc": "2026-11-14T19:43:54.1024251Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-solagoon-enrichment-20261114.json"
+    },
+    {
+      "stem": "09-transfer-illustration",
+      "operationId": "b2760ea9-cf9a-440a-a68e-68646fc1c2e3",
+      "appliedAtUtc": "2026-11-14T19:49:01.2764605Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-transfer-illustration-20261114.json"
+    },
+    {
+      "stem": "09-item-closures",
+      "operationId": "d666281f-d826-4548-a0d9-19a030933c6c",
+      "appliedAtUtc": "2026-11-14T19:52:30.6561553Z",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-item-closures-20261114.json"
+    },
+    {
+      "stem": "09-antarctica-restaurant",
+      "operationId": "43c8a017-5dc4-490b-b503-80151a103d8a",
+      "appliedAtUtc": "2026-11-14T19:56:05.827783Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-antarctica-restaurant-20261114.json"
+    },
+    {
+      "stem": "09-antarctica-current",
+      "operationId": "7a6149ae-f480-40d0-ad95-d85b9ec96038",
+      "appliedAtUtc": "2026-11-14T19:58:23.126479Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-antarctica-current-20261114.json"
+    },
+    {
+      "stem": "09-final-language-review",
+      "operationId": "653c9ac1-3707-4d28-b571-c110902a1507",
+      "appliedAtUtc": "2026-11-14T20:11:01.0393917Z",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-final-language-review-20261114.json"
+    },
+    {
+      "stem": "09-media-language-review",
+      "operationId": "8144cd3b-5292-463b-970e-9de401eec3a3",
+      "appliedAtUtc": "2026-11-14T20:14:24.6828352Z",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 4,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-media-language-review-20261114.json"
+    }
+  ],
+  "newImage": {
+    "id": "3c5268c4ad964840980c08b6884853a7",
+    "metadataUpdatedAtUtc": "2026-11-14T18:15:03.541Z",
+    "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-closure-photo-20261114.json"
+  },
+  "currentConsolidatedState": {
+    "items": 65,
+    "parkAndItemPhotosExcludingLogo": 74,
+    "logo": 1,
+    "founderPortrait": 1,
+    "officialMaps": 4,
+    "activeParkHistoryEvents": 12,
+    "activeItemHistoryEvents": 13,
+    "developedArticles": 4,
+    "allTextsEightLanguages": true,
+    "allNewContentPrivate": true,
+    "manufacturerLogos": 1
+  },
+  "historyDiagnostics": {
+    "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "parkName": "Marineland d’Antibes",
+    "factCount": 40,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1970,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2000,
+        "resourceCount": 6,
+        "sourcedResourceCount": 6,
+        "publishedResourceCount": 0,
+        "subjectCount": 4,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2010,
+        "resourceCount": 7,
+        "sourcedResourceCount": 7,
+        "publishedResourceCount": 0,
+        "subjectCount": 6,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2020,
+        "resourceCount": 11,
+        "sourcedResourceCount": 11,
+        "publishedResourceCount": 0,
+        "subjectCount": 4,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 25
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 15
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "noFinalFullExportYet": false,
+  "finalAuditCompleted": true,
+  "sitePublicationCompleted": true,
+  "facebookPublicationCompleted": true,
+  "researchCorrections": {
+    "cinemaOpeningFilm": "Arctic 1 (not Happy Feet)",
+    "cinemaOpeningFilmEvidence": [
+      {
+        "label": "Marineland — communiqué reproduit par ParcPlaza, 6 avril 2018",
+        "url": "https://www.parcplaza.net/2018/04/marineland-inaugure-un-cinema-5d.html",
+        "accessedAt": "2026-11-14"
+      },
+      {
+        "label": "Triotech — projet Marineland 2018",
+        "url": "https://www.trio-tech.com/projects/marineland/",
+        "accessedAt": "2026-11-14"
+      }
+    ],
+    "sharkEncounterYear": 2011,
+    "sharkYearEvidence": [
+      "https://www.tourmag.com/Marineland-prepare-l-ouverture-de-son-premier-hotel_a44187.html",
+      "https://parcactu.wordpress.com/category/nouveaute/"
+    ],
+    "manufacturerToResolve": "RESOLVED: CL Corporation created 634770df-f4cd-43a5-ac5a-8ae938625f6a; not the pre-existing parent Triotech.",
+    "followup": "Articles et références appliqués ; audit transversal en cours."
+  },
+  "nextSteps": [
+    "Poursuivre le backlog français ; neuf parcs terminés dans le lot, PR après au moins dix."
+  ],
+  "recoveryNotes": [
+    "Use the latest actual branch and local receipts before resuming.",
+    "Official request envelope must contain targetParkId/createIfMissing:false/replaceCollections:false/document.",
+    "The recovery targeted Items/Images/History export is not the final complete export.",
+    "Retain marineland-antibes-receipts.json and the historical -receipts.json referenced by old events.",
+    "No PR until ten completed batch parks; batch still eight completed before Marineland."
+  ],
+  "additionalImages": [
+    {
+      "stem": "lagoon-20150702",
+      "id": "4565cb86e5434d81a6eb2710a1ba354a",
+      "updatedAtUtc": "2026-11-14T18:50:56.755Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-20150702-20261114.json"
+    },
+    {
+      "stem": "hotel-20150702",
+      "id": "c278b3b532db454bbdaa8faa759ad6db",
+      "updatedAtUtc": "2026-11-14T18:51:11.485Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-hotel-20150702-20261114.json"
+    },
+    {
+      "stem": "polar-arrival-family",
+      "id": "25b9b429f6af4173b5fed44aad2c2fb1",
+      "updatedAtUtc": "2026-11-14T18:58:00.969Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-polar-arrival-family-20261114.json"
+    },
+    {
+      "stem": "museum-models",
+      "id": "2a1053e4a0ce46e2a8fa5a1eb0639f09",
+      "updatedAtUtc": "2026-11-14T19:19:12.816Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-museum-models-20261114.json"
+    },
+    {
+      "stem": "museum-other",
+      "id": "428178587768457ab9dace4ba0b4dbe1",
+      "updatedAtUtc": "2026-11-14T19:19:43.195Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-museum-other-20261114.json"
+    },
+    {
+      "stem": "museum-gallery",
+      "id": "d4046c4421b04531b87bfbaa888594ec",
+      "updatedAtUtc": "2026-11-14T19:20:15.278Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-museum-gallery-20261114.json"
+    },
+    {
+      "stem": "lagoon-bathing",
+      "id": "85135a21f3e441129926d830668daf32",
+      "updatedAtUtc": "2026-11-14T19:33:56.192Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-bathing-20261114.json"
+    },
+    {
+      "stem": "lagoon-restaurant",
+      "id": "47ca1e978b614553a0ac4c21c76b5c50",
+      "updatedAtUtc": "2026-11-14T19:34:38.048Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-restaurant-20261114.json"
+    },
+    {
+      "stem": "lagoon-gardens",
+      "id": "614769d6ce8e4124a09cf67370db0464",
+      "updatedAtUtc": "2026-11-14T19:35:18.864Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-gardens-20261114.json"
+    },
+    {
+      "stem": "antarctica-restaurant-counter",
+      "id": "1d349d35e78c494280c9c721ac4e1d1e",
+      "updatedAtUtc": "2026-11-14T19:57:13.570Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-antarctica-restaurant-counter-20261114.json"
+    },
+    {
+      "stem": "antarctica-restaurant-rocks",
+      "id": "c53cafd1e9b14b02b9ad05a60fede2cc",
+      "updatedAtUtc": "2026-11-14T19:57:28.011Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-antarctica-restaurant-rocks-20261114.json"
+    },
+    {
+      "stem": "antarctica-restaurant-room",
+      "id": "22f42dbca2ca48d79fc12b9ed29b3bbf",
+      "updatedAtUtc": "2026-11-14T19:56:53.736Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-antarctica-restaurant-room-20261114.json"
+    },
+    {
+      "stem": "dolphin-transfer-night",
+      "id": "565a4b82ece448349e8c8feb54200a5b",
+      "updatedAtUtc": "2026-11-14T19:47:34.059Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-dolphin-transfer-night-20261114.json"
+    },
+    {
+      "stem": "lagoon-dolphin-neo",
+      "id": "7c48060eb7d6450e9697db214e39ec6b",
+      "updatedAtUtc": "2026-11-14T20:02:15.017Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-dolphin-neo-20261114.json"
+    },
+    {
+      "stem": "lagoon-dolphin-underwater",
+      "id": "3554b98273a44bad927c77a04daefd44",
+      "updatedAtUtc": "2026-11-14T20:05:51.181Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-lagoon-dolphin-underwater-20261114.json"
+    },
+    {
+      "stem": "orca-encounter-wide",
+      "id": "1be3baa154a142be84bc2a03b903cf62",
+      "updatedAtUtc": "2026-11-14T20:23:53.421Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-orca-encounter-wide-20261114.json"
+    }
+  ],
+  "manufacturer": {
+    "id": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+    "name": "CL Corporation",
+    "biographyEightLanguages": true,
+    "logoId": "02be8251dc2949dcaa9c4eea932dd35f",
+    "private": true,
+    "aliasesResolvedBeforeCreation": true
+  },
+  "historyDiagnosticsIsOlderThanLatestFacts": false,
+  "developedPrivateArticles": 0,
+  "fullAuditExport": {
+    "exportedAtUtc": "2026-11-14T19:12:29.5036951Z",
+    "localPath": "/workspace/france-historical-20261022/marineland-antibes/recovery-20261114/09-final-full-export.json",
+    "complete": true,
+    "auditComplete": true
+  },
+  "projectedCompleteness": {
+    "verifiedAtUtc": "2026-11-14T20:27:30.5131092Z",
+    "completenessScore": 95,
+    "earnedPoints": 97,
+    "applicableMaxPoints": 102,
+    "publicationBlockers": [],
+    "technicalFinding": "Projection excludes hidden parkItems from ParkItemsVisibleCount (2 pts) and their images from ParkItemPublishedImageCount (2 pts); remaining-debt point (1) also absent. Read-only source inspection, no implementation change."
+  },
+  "nextWork": "Marineland terminé et publié, Facebook Published confirmé. Ne pas réimporter ni republier. Poursuivre tous les parcs français, historiques puis actuels et standalone qualifiés.",
+  "auditWorkingState": {
+    "localPath": "/workspace/france-historical-20261022/marineland-antibes/recovery-20261114/audit-working-state.json",
+    "sha256": "c948d51e130e307244c45a0a0982deb8c077814ff53e6ba60fefd8f56c005d62",
+    "imagesIncludingReferences": 77,
+    "itemDescriptionsReviewedLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ]
+  },
+  "finalAuditVerdict": "Publication vérifiée : 100/100 sans bloqueur ; lacunes historiques conservées.",
+  "finalAuditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-final-audit-20261114.json",
+  "publicationExceptionAccepted": true,
+  "publicationFollowup": {
+    "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-20261114.json",
+    "finalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-final-audit-20261114.json",
+    "sitePublication": {
+      "status": "Published",
+      "appliedAtUtc": "2026-11-14T22:49:26.0884301Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "verifiedAtUtc": "2026-11-14T23:10:04.7340084Z",
+      "isVisible": true,
+      "adminReviewStatus": "Validated"
+    },
+    "facebookPublication": {
+      "status": "Published",
+      "publicationId": "2fcb25c478484d91ba53ec1dee9a739c",
+      "url": "https://www.facebook.com/1285475681307050/posts/122127379725424431",
+      "publishedAtUtc": null,
+      "observedAtUtc": "2026-11-14T23:09:07.0147738Z",
+      "dateNote": "Official draft resolves the existing published record but does not expose its sending time; no date inferred.",
+      "newPublishCalls": 0,
+      "action": "Existing automatic announcement confirmed with ResolveFacebookPublication; no duplicate created."
+    },
+    "lastDataIntegrationAt": "2026-11-14T23:07:07.875Z",
+    "visibilityOperationCount": 18
+  },
+  "finalPublicState": {
+    "items": 65,
+    "images": 77,
+    "parkItemPhotos": 74,
+    "maps": 4,
+    "historyFacts": 25,
+    "developedArticles": 4,
+    "publicScore": 100
+  },
+  "lastDataIntegrationAt": "2026-11-14T23:07:07.875Z",
+  "developedPublishedArticles": 4
+}

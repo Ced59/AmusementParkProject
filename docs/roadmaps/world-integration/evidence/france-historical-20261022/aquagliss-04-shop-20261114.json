@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "owner": "Conversation France",
+  "documentSha256": "abf4c16233cbcc2abcb2363568e871364049746dcba231e14747b6f59aede1fc",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "d1632952-f669-4c81-9f85-ddecf97376d9",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T21:35:59.6923315Z",
+    "appliedAtUtc": "2026-11-14T21:35:59.6923333Z",
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "targetParkName": "Acqua Gliss Porticcio",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "entityKey": "park",
+        "displayName": "Acqua Gliss Porticcio",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "entityKey": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "displayName": "Boutique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Süßigkeiten und Eis neben der Bar</h2><p>Der Laden von Acqua Gliss befand sich in einem kleinen hellen Raum mit weißen Wänden und roten Bodenfliesen. Süßigkeiten lagen in durchsichtigen Behältern entlang der Wand, neben blauen Eistruhen.</p><p>Die Ecke für Süßigkeiten und Eis gehörte zum Bereich der Snackbar. Bunte Verpackungen und Süßwarenplakate belebten den Innenraum; eine verglaste Öffnung gab den Blick auf die benachbarte Theke frei.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Sweets and ice cream beside the bar</h2><p>Acqua Gliss’s shop occupied a small, bright room with white walls and a red-tiled floor. Sweets were displayed in transparent bins along the wall, beside blue ice-cream freezers.</p><p>This sweets and ice-cream corner formed part of the snack-bar area. Colourful wrappers and confectionery posters brightened the interior, while a glazed opening looked onto the neighbouring counter.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Golosinas y helados junto al bar</h2><p>La tienda de Acqua Gliss ocupaba un pequeño espacio luminoso de paredes blancas y suelo de baldosas rojas. Las golosinas se exponían en recipientes transparentes alineados junto a la pared, al lado de los congeladores azules de helados.</p><p>Este rincón de golosinas y helados formaba parte de la zona del bar. Los envoltorios de colores y los carteles de dulces animaban el interior, mientras una abertura acristalada daba al mostrador contiguo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Bonbons et glaces près du bar</h2><p>La boutique d’Acqua Gliss occupait un petit espace clair aux murs blancs et au sol de carreaux rouges. Les bonbons étaient présentés dans des bacs transparents alignés contre le mur, à côté des congélateurs bleus remplis de glaces.</p><p>Ce coin confiseries et glaces faisait partie de l’ensemble du snack-bar. Les couleurs des emballages et les affiches de friandises animaient l’intérieur, tandis qu’une ouverture vitrée donnait sur le comptoir voisin.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Dolciumi e gelati accanto al bar</h2><p>Il negozio di Acqua Gliss occupava un piccolo ambiente luminoso con pareti bianche e piastrelle rosse sul pavimento. Le caramelle erano esposte in contenitori trasparenti lungo la parete, accanto ai congelatori blu dei gelati.</p><p>Questo angolo di dolciumi e gelati faceva parte dell’area dello snack-bar. Gli involucri colorati e i manifesti delle golosità ravvivavano l’interno, mentre un’apertura vetrata dava sul bancone adiacente.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Snoep en ijs naast de bar</h2><p>De winkel van Acqua Gliss zat in een kleine, lichte ruimte met witte muren en rode vloertegels. Het snoep lag in doorzichtige bakken langs de muur, naast blauwe vrieskisten met ijs.</p><p>Deze snoep- en ijshoek maakte deel uit van de snackbar. Gekleurde verpakkingen en snoepposters fleurden het interieur op, terwijl een glazen opening uitkeek op de aangrenzende balie.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Słodycze i lody obok baru</h2><p>Sklep Acqua Gliss zajmował niewielkie jasne pomieszczenie z białymi ścianami i czerwoną posadzką. Cukierki wystawiano w przezroczystych pojemnikach ustawionych wzdłuż ściany, obok niebieskich zamrażarek z lodami.</p><p>Ten kącik ze słodyczami i lodami był częścią strefy baru. Kolorowe opakowania i plakaty słodyczy ożywiały wnętrze, a przeszklony otwór wychodził na sąsiednią ladę.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Guloseimas e gelados junto ao bar</h2><p>A loja do Acqua Gliss ocupava um pequeno espaço luminoso, com paredes brancas e pavimento de mosaicos vermelhos. Os rebuçados estavam expostos em recipientes transparentes alinhados junto à parede, ao lado das arcas azuis de gelados.</p><p>Este recanto de guloseimas e gelados fazia parte da zona do snack-bar. As embalagens coloridas e os cartazes de doces animavam o interior, enquanto uma abertura envidraçada dava para o balcão adjacente.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

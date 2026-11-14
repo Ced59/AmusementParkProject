@@ -1,0 +1,760 @@
+{
+  "parkId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+  "parkName": "Ty'Bamboo",
+  "checkedAtUtc": "2026-10-28T08:01:57.042002+00:00",
+  "freshExportAtUtc": "2026-10-28T07:43:21.5806909Z",
+  "freshExportSha256": "62af694f99c9abdd0c1e1a5acbafa86fb1d84f538b4194acb3feaae975b57150",
+  "verifiedCorrections": [
+    {
+      "operationId": "7dc80f81-ac1c-4f0a-af12-9ad770b316c3",
+      "appliedAtUtc": "2026-10-28T07:51:57.2884424Z",
+      "receipt": "09-editorial-corrections-v2-apply.receipt.json"
+    },
+    {
+      "operationId": "5fa6564f-63c9-42d1-974b-06fe7511f2bb",
+      "appliedAtUtc": "2026-10-28T07:56:46.0914929Z",
+      "receipt": "09-publish-images-apply.receipt.json"
+    },
+    {
+      "operationId": "66f74127-8b29-413b-b835-78775e58d5fc",
+      "appliedAtUtc": "2026-10-28T07:58:00.3480964Z",
+      "receipt": "09-publish-dependent-content-apply.receipt.json"
+    },
+    {
+      "operationId": "39b41024-8470-4327-9fbc-28c9c3d813d1",
+      "appliedAtUtc": "2026-10-28T08:01:55.1579669Z",
+      "receipt": "09-article-metric-correction-apply.receipt.json"
+    },
+    {
+      "operationId": "db60096e-7cc0-40b5-92ca-9dcb93238916",
+      "appliedAtUtc": "2026-10-28T08:03:25.7272968Z",
+      "receipt": "09-publish-park-apply.receipt.json"
+    },
+    {
+      "operationId": "8f14a705-0902-447e-b48e-8a60018d0957",
+      "appliedAtUtc": "2026-10-28T08:12:12.086802Z",
+      "receipt": "09-history-canonical-repair-apply.receipt.json"
+    }
+  ],
+  "contentAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "scoreGate": "Actual post-publication score 98/100, zero publication blockers; full editorial audit and public checks complete.",
+  "coverage": {
+    "retainedItems": 35,
+    "confirmedItems": 34,
+    "excludedRetained": [
+      {
+        "id": "5e7142be-9e67-4c99-9baa-15ec4f1c5bf0",
+        "name": "Locomotive du hall",
+        "reason": "Locomotive décorative du hall ; fonctionnement comme attraction non établi, conservée masquée NotRelevant."
+      }
+    ],
+    "attractions": {
+      "total": 27,
+      "operating": 0,
+      "announcedOrConstruction": 0,
+      "historicalClosedOrRemoved": 27,
+      "canonicalStatus": 27,
+      "eightLanguageDescriptions": 27,
+      "withImage": 25
+    },
+    "otherItems": {
+      "restaurants": 2,
+      "services": 5,
+      "eightLanguageDescriptions": 7
+    },
+    "zones": 2,
+    "allItemsWithImage": 31,
+    "totalImages": 59,
+    "officialCurrentLogos": 1,
+    "generalParkPhotos": 5,
+    "importantItemsWithThreeImages": 9,
+    "importantItems": 13,
+    "geolocationCovered": 14,
+    "geolocationTotal": 34,
+    "parkHistory": 7,
+    "itemHistory": 5,
+    "allHistoryWithSourcesAndImages": 12,
+    "articles": 1,
+    "articleWordsByLanguage": {
+      "de": 587,
+      "it": 632,
+      "pl": 544,
+      "pt": 666,
+      "en": 597,
+      "fr": 668,
+      "nl": 625,
+      "es": 685
+    },
+    "officialMapYears": [],
+    "currentOpeningHours": "Non applicable : ClosedDefinitively",
+    "currentPricing": "Non applicable : ClosedDefinitively",
+    "byOwner": [
+      {
+        "id": "6bbc184b-a908-4a61-abbd-6ca6c9e5f5cd",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "images": 1,
+        "gps": true,
+        "important": false
+      },
+      {
+        "id": "025f8e61-aacd-4628-a189-77668edc05d9",
+        "name": "Bateau pirate",
+        "category": "Attraction",
+        "images": 3,
+        "gps": false,
+        "important": true
+      },
+      {
+        "id": "41bf2535-cb5d-46a1-8d35-6c5408b311fc",
+        "name": "Bulles sur l’eau",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "a99fdc17-13c0-494e-8e13-5cce23ac18b6",
+        "name": "Carrousel 1900",
+        "category": "Attraction",
+        "images": 3,
+        "gps": true,
+        "important": true
+      },
+      {
+        "id": "9ae93ae1-4cf3-4e08-ad60-608e56a4167b",
+        "name": "Château gonflable",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "1cd0c2df-4a5d-421c-ba15-e461c9f655fd",
+        "name": "Circuit de voitures",
+        "category": "Attraction",
+        "images": 3,
+        "gps": true,
+        "important": true
+      },
+      {
+        "id": "aacf031e-91bb-4a4f-af05-7e795a95c271",
+        "name": "Entrée de Ty’Bamboo",
+        "category": "Service",
+        "images": 1,
+        "gps": true,
+        "important": false
+      },
+      {
+        "id": "8101483b-bf4f-405e-9877-af7b0c31f490",
+        "name": "Espace des tout-petits",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "0ef22e06-8146-41f8-b948-8480eca08c7d",
+        "name": "Jumbo Circus",
+        "category": "Attraction",
+        "images": 3,
+        "gps": false,
+        "important": true
+      },
+      {
+        "id": "1a474e25-3413-45d8-ba4d-ed5e5ed7bf9a",
+        "name": "Kiosque de restauration extérieur",
+        "category": "Restaurant",
+        "images": 1,
+        "gps": true,
+        "important": false
+      },
+      {
+        "id": "2fc24205-5b98-4929-8e40-ae84b8d044a8",
+        "name": "La Cabane Bamboo",
+        "category": "Restaurant",
+        "images": 2,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "d137e904-0e88-4e9b-8d71-02fe7e5ebe50",
+        "name": "La Petite Roue",
+        "category": "Attraction",
+        "images": 2,
+        "gps": true,
+        "important": true
+      },
+      {
+        "id": "8153a59c-932c-428c-956c-fde9d9a323dd",
+        "name": "Labyrinthe de jeux",
+        "category": "Attraction",
+        "images": 3,
+        "gps": false,
+        "important": true
+      },
+      {
+        "id": "a9fffb5a-bc67-497d-8513-0569f2612ce6",
+        "name": "Le Robot Toboggan",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": true
+      },
+      {
+        "id": "f6c1cafe-e7e9-4bf7-88be-4ca149828bcf",
+        "name": "Les Chaises volantes",
+        "category": "Attraction",
+        "images": 3,
+        "gps": true,
+        "important": true
+      },
+      {
+        "id": "1bf4a4aa-bf2f-41c5-8bbe-4df0101beb68",
+        "name": "Manège de véhicules couvert",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "ba686d9c-bd2e-45b1-9386-3321d1a22c59",
+        "name": "Manège des animaux",
+        "category": "Attraction",
+        "images": 1,
+        "gps": true,
+        "important": false
+      },
+      {
+        "id": "cc3091b6-f16a-45e8-98fe-eaaa939f6738",
+        "name": "Manège des avions",
+        "category": "Attraction",
+        "images": 1,
+        "gps": true,
+        "important": false
+      },
+      {
+        "id": "f427bbd8-4703-4493-bb4a-c504f4ecb9a8",
+        "name": "Manège des tasses",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "c90665e1-5154-4755-a4c5-6ba6977f96f5",
+        "name": "Miroirs déformants",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "70c7b0cd-9018-4052-935f-f3a78c825de3",
+        "name": "Musée de la fête foraine",
+        "category": "Attraction",
+        "images": 0,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "55da62ac-4d72-44c4-a15f-425a936bc38e",
+        "name": "Parcours des Fantômes",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "b13d8b1a-cb1f-4812-89ea-9ca7dec88421",
+        "name": "Parcours préhistorique",
+        "category": "Attraction",
+        "images": 3,
+        "gps": false,
+        "important": true
+      },
+      {
+        "id": "93bff701-8deb-4921-81ae-590c396b7678",
+        "name": "Parking de Ty’Bamboo",
+        "category": "Service",
+        "images": 1,
+        "gps": true,
+        "important": false
+      },
+      {
+        "id": "12b55f36-4cdc-4657-ad89-f7a42b7fe15f",
+        "name": "Petit Grand Huit",
+        "category": "Attraction",
+        "images": 2,
+        "gps": true,
+        "important": true
+      },
+      {
+        "id": "227c27cb-0af1-4ec4-85f0-7c6588ddb03c",
+        "name": "Petit Train",
+        "category": "Attraction",
+        "images": 3,
+        "gps": true,
+        "important": true
+      },
+      {
+        "id": "c7933030-5121-4b78-b95a-9eb507a0f9ba",
+        "name": "Piscines à boules",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "0fbecbbb-7eda-484a-8994-f9f519313b13",
+        "name": "Safari",
+        "category": "Attraction",
+        "images": 3,
+        "gps": true,
+        "important": true
+      },
+      {
+        "id": "a693f13a-e693-4f2f-b586-c177adb6030b",
+        "name": "Salles d’anniversaire",
+        "category": "Service",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "16a2e9c4-16bc-4159-9f69-51d2b99fe19c",
+        "name": "Stands de jeux",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "1958c31c-90a6-48ff-8b1a-42c03fe00655",
+        "name": "Terrain de football",
+        "category": "Attraction",
+        "images": 0,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "06174f7a-acd6-4dc5-af1d-9d3d3b061f40",
+        "name": "Toboggan géant",
+        "category": "Attraction",
+        "images": 2,
+        "gps": true,
+        "important": true
+      },
+      {
+        "id": "fb388daa-1e8e-4edc-ab82-ce93ce1f0381",
+        "name": "Toilettes du hall",
+        "category": "Service",
+        "images": 0,
+        "gps": false,
+        "important": false
+      },
+      {
+        "id": "85a13565-fc6a-464f-8232-31c2e3fc6d16",
+        "name": "Trampolines",
+        "category": "Attraction",
+        "images": 1,
+        "gps": false,
+        "important": false
+      }
+    ]
+  },
+  "imageGaps": [
+    {
+      "id": "70c7b0cd-9018-4052-935f-f3a78c825de3",
+      "name": "Musée de la fête foraine",
+      "reason": "Official brochure and operator page confirm display but no photograph with securely identified museum objects. The hall locomotive and caravan cannot be attributed to collection or functioning ride."
+    },
+    {
+      "id": "1958c31c-90a6-48ff-8b1a-42c03fe00655",
+      "name": "Terrain de football",
+      "reason": "Operator indoor page confirms court; no identifiable football markings or goal in the 69-image operating-era report or usable archived operator media."
+    },
+    {
+      "id": "fb388daa-1e8e-4edc-ab82-ce93ce1f0381",
+      "name": "Toilettes du hall",
+      "reason": "Hard Deco primary text and rainbow corridor establish amenity; detailed decorator pictures bear third-party watermarks; hallway mirror photo does not provide a useful dedicated restroom view."
+    }
+  ],
+  "majorPhotoGaps": [
+    {
+      "id": "d137e904-0e88-4e9b-8d71-02fe7e5ebe50",
+      "name": "La Petite Roue",
+      "category": "Attraction",
+      "images": 2,
+      "gps": true,
+      "important": true,
+      "reason": "Deux vues nettes retenues ; nouvelles vues du blog floues ou répétitives, pas de troisième photographie de qualité complémentaire.",
+      "searchedFamilies": [
+        "Archives officielles",
+        "Sortiraparis 69 images",
+        "Mes 3 loulous 39 images",
+        "RCDB/CaptainCoaster",
+        "Presse et brochure de lancement",
+        "Hard Deco"
+      ]
+    },
+    {
+      "id": "a9fffb5a-bc67-497d-8513-0569f2612ce6",
+      "name": "Le Robot Toboggan",
+      "category": "Attraction",
+      "images": 1,
+      "gps": false,
+      "important": true,
+      "reason": "Une seule photographie authentifiée retrouvée, issue du billet de visite de 2013.",
+      "searchedFamilies": [
+        "Archives officielles",
+        "Sortiraparis 69 images",
+        "Mes 3 loulous 39 images",
+        "RCDB/CaptainCoaster",
+        "Presse et brochure de lancement",
+        "Hard Deco"
+      ]
+    },
+    {
+      "id": "12b55f36-4cdc-4657-ad89-f7a42b7fe15f",
+      "name": "Petit Grand Huit",
+      "category": "Attraction",
+      "images": 2,
+      "gps": true,
+      "important": true,
+      "reason": "Deux vues du reportage retrouvées ; pages RCDB sans photo exploitable supplémentaire, aucune troisième vue sûre dans les archives et brochures.",
+      "searchedFamilies": [
+        "Archives officielles",
+        "Sortiraparis 69 images",
+        "Mes 3 loulous 39 images",
+        "RCDB/CaptainCoaster",
+        "Presse et brochure de lancement",
+        "Hard Deco"
+      ]
+    },
+    {
+      "id": "06174f7a-acd6-4dc5-af1d-9d3d3b061f40",
+      "name": "Toboggan géant",
+      "category": "Attraction",
+      "images": 2,
+      "gps": true,
+      "important": true,
+      "reason": "Deux vues retenues ; autre vue du blog floue et très proche, ne justifie pas un ajout de qualité inférieure.",
+      "searchedFamilies": [
+        "Archives officielles",
+        "Sortiraparis 69 images",
+        "Mes 3 loulous 39 images",
+        "RCDB/CaptainCoaster",
+        "Presse et brochure de lancement",
+        "Hard Deco"
+      ]
+    }
+  ],
+  "geolocationGaps": [
+    {
+      "id": "025f8e61-aacd-4628-a189-77668edc05d9",
+      "name": "Bateau pirate",
+      "reason": "L’installation est identifiable dans les photographies, mais sa position précise ne peut être reliée sans ambiguïté à l’orthophoto IGN2012 ou a changé après cette prise de vue."
+    },
+    {
+      "id": "41bf2535-cb5d-46a1-8d35-6c5408b311fc",
+      "name": "Bulles sur l’eau",
+      "reason": "L’installation est identifiable dans les photographies, mais sa position précise ne peut être reliée sans ambiguïté à l’orthophoto IGN2012 ou a changé après cette prise de vue."
+    },
+    {
+      "id": "9ae93ae1-4cf3-4e08-ad60-608e56a4167b",
+      "name": "Château gonflable",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "8101483b-bf4f-405e-9877-af7b0c31f490",
+      "name": "Espace des tout-petits",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "0ef22e06-8146-41f8-b948-8480eca08c7d",
+      "name": "Jumbo Circus",
+      "reason": "L’installation est identifiable dans les photographies, mais sa position précise ne peut être reliée sans ambiguïté à l’orthophoto IGN2012 ou a changé après cette prise de vue."
+    },
+    {
+      "id": "2fc24205-5b98-4929-8e40-ae84b8d044a8",
+      "name": "La Cabane Bamboo",
+      "reason": "L’installation est identifiable dans les photographies, mais sa position précise ne peut être reliée sans ambiguïté à l’orthophoto IGN2012 ou a changé après cette prise de vue."
+    },
+    {
+      "id": "8153a59c-932c-428c-956c-fde9d9a323dd",
+      "name": "Labyrinthe de jeux",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "a9fffb5a-bc67-497d-8513-0569f2612ce6",
+      "name": "Le Robot Toboggan",
+      "reason": "Installation postérieure à l’orthophoto disponible ; le remplacement des Chaises volantes ne prouve pas un centre de coordonnées identique."
+    },
+    {
+      "id": "1bf4a4aa-bf2f-41c5-8bbe-4df0101beb68",
+      "name": "Manège de véhicules couvert",
+      "reason": "L’installation est identifiable dans les photographies, mais sa position précise ne peut être reliée sans ambiguïté à l’orthophoto IGN2012 ou a changé après cette prise de vue."
+    },
+    {
+      "id": "f427bbd8-4703-4493-bb4a-c504f4ecb9a8",
+      "name": "Manège des tasses",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "c90665e1-5154-4755-a4c5-6ba6977f96f5",
+      "name": "Miroirs déformants",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "70c7b0cd-9018-4052-935f-f3a78c825de3",
+      "name": "Musée de la fête foraine",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "55da62ac-4d72-44c4-a15f-425a936bc38e",
+      "name": "Parcours des Fantômes",
+      "reason": "L’installation est identifiable dans les photographies, mais sa position précise ne peut être reliée sans ambiguïté à l’orthophoto IGN2012 ou a changé après cette prise de vue."
+    },
+    {
+      "id": "b13d8b1a-cb1f-4812-89ea-9ca7dec88421",
+      "name": "Parcours préhistorique",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "c7933030-5121-4b78-b95a-9eb507a0f9ba",
+      "name": "Piscines à boules",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "a693f13a-e693-4f2f-b586-c177adb6030b",
+      "name": "Salles d’anniversaire",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "16a2e9c4-16bc-4159-9f69-51d2b99fe19c",
+      "name": "Stands de jeux",
+      "reason": "L’installation est identifiable dans les photographies, mais sa position précise ne peut être reliée sans ambiguïté à l’orthophoto IGN2012 ou a changé après cette prise de vue."
+    },
+    {
+      "id": "1958c31c-90a6-48ff-8b1a-42c03fe00655",
+      "name": "Terrain de football",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "fb388daa-1e8e-4edc-ab82-ce93ce1f0381",
+      "name": "Toilettes du hall",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    },
+    {
+      "id": "85a13565-fc6a-464f-8232-31c2e3fc6d16",
+      "name": "Trampolines",
+      "reason": "Emplacement intérieur non résolu à l’échelle de l’équipement ; aucune édition de plan du hall retrouvée."
+    }
+  ],
+  "mapGap": "All119archivedoperatorURLs and2011/2012/2013searches inspected. Openingbrochure obtainedandread: roadaccessdiagram, notannualparkmap. Undatedoperatoroverheadview and IGN2012orthophoto are research, notparkmapeditions.",
+  "globalReferenceReview": "Pinfari eight-language existing biography verified unchanged; founder/operator eight-language text personally authored and reviewed. Genuine founder portrait found, official Codex import forbids Founder scope, no bypass.",
+  "accessConditions": "All27 rides checked against operator pages, opening brochure, press and identifiable photos. Only toddler official historical2–5range established and stored; general park audiences and press descriptions of adult rides not substituted for verified manufacturer entry rules. Other exact height/accompaniment limits unavailable.",
+  "historyGapEvidence": "08-history-sourcing-and-applicability.json",
+  "sourceReview": "09-all-history-source-review.json",
+  "depthExceptions": [
+    "04-editorial-depth-evidence.json",
+    "03-robot-and-withdrawals-qualification.json",
+    "09-short-waterballs-exception.json"
+  ],
+  "publicTextReview": {
+    "languages": [
+      "de",
+      "en",
+      "es",
+      "fr",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "exactStoredComparisons": 2072,
+    "differences": 0,
+    "independentCorpusRows": 1576,
+    "fullCorpusRows": 1667,
+    "rawEncodingFindings": 0,
+    "formulaicGroups": 0,
+    "mechanicalFlags": 0,
+    "personalReview": "All public originals and eight-language localizations personally authored or individually reviewed in the step4/5/8 operations; current complete stored corpus reconciled byte-for-byte against those reviewed values. Joint prose review includes actual updated descriptions and all timeline/article language versions; same-image caption aliases and repeated announcements rewritten, documentary-method paragraph removed. Shared Pinfari biography personally read in all eight languages. No automatic translator accepted as final author."
+  },
+  "distributionEvidence": "step9-audit-current/word-distributions.json",
+  "entryId": "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27",
+  "conversation": "Conversation France",
+  "finalAuditPassed": true,
+  "finalAuditAtUtc": "2026-10-28T08:20:17.185059+00:00",
+  "realPostPublicationScore": {
+    "completenessScore": 98,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 108,
+    "earnedPoints": 106,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/park/6919c77b-1865-444d-8c5c-964b255d9c27/ty-bamboo",
+  "lastDataIntegrationAtUtc": "2026-10-28T08:12:12.086Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-receipts.json#apply-8f14a705-0902-447e-b48e-8a60018d0957",
+  "auditedConsolidatedSha256": "b289805aa13ff76b232f26c28a087d350901544b396b2e64f83f50890f8ab9db",
+  "nextGates": [],
+  "publicationVerification": {
+    "officialSearchVisible": true,
+    "officialSearchReviewStatus": "Validated",
+    "officialSearchLifecycle": "ClosedDefinitively",
+    "publishedItems": 34,
+    "publishedImages": 59,
+    "mobilePagesChecked": 24,
+    "mobileLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "desktopPagesChecked": 2,
+    "brokenImages": 0,
+    "horizontalOverflowPages": 0,
+    "normalHistoryClick": {
+      "checkedAtUtc": "2026-10-28T08:14:15.877206+00:00",
+      "url": "https://amusement-parks.fun/fr/park/6919c77b-1865-444d-8c5c-964b255d9c27/ty-bamboo",
+      "apiResponses": [
+        {
+          "url": "https://amusement-parks.fun/api/parks/6919c77b-1865-444d-8c5c-964b255d9c27/detail-summary",
+          "status": 200,
+          "hasPublicHistory": true,
+          "requestLanguage": "fr-FR",
+          "age": "109"
+        }
+      ],
+      "status": 200,
+      "buttons": [
+        "Parcs",
+        "m",
+        "Connexion / Inscription",
+        "FR",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Ajouter une visite",
+        "Retour à la liste",
+        "Lieux du parc",
+        "Copier",
+        "Plus",
+        "Profil",
+        " Accepter les cookies optionnels ",
+        " Continuer avec les cookies nécessaires "
+      ],
+      "historyLinkCount": 1,
+      "parkTitle": [
+        "Ty'Bamboo"
+      ],
+      "historyHref": "/fr/park/6919c77b-1865-444d-8c5c-964b255d9c27/ty-bamboo/history",
+      "destination": "https://amusement-parks.fun/fr/park/6919c77b-1865-444d-8c5c-964b255d9c27/ty-bamboo/history",
+      "historyTitle": [
+        "L'histoire de Ty'Bamboo"
+      ],
+      "historyBodyChars": 2552
+    },
+    "historyPublishedFacts": 12,
+    "historySourcedFacts": 12,
+    "historyCanonicalRepairOperationId": "8f14a705-0902-447e-b48e-8a60018d0957",
+    "articleLinkFromTimeline": {
+      "text": "Lire le récit complet",
+      "url": "https://amusement-parks.fun/fr/park/6919c77b-1865-444d-8c5c-964b255d9c27/ty-bamboo/history/1037f1e2-e4bd-4f8b-b259-b00084f4d6da/tybamboo-three-seasons-dammarie-les-lys"
+    },
+    "articleLanguagesChecked": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "idempotenceOperationId": "025d17af-df93-4983-9207-ff3ed482820c",
+    "idempotenceCounts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 112,
+      "warnings": 0,
+      "errors": 0
+    },
+    "screenshotsPersonallyViewed": [
+      "park-fr",
+      "article-tybamboo-closure-2013-fr",
+      "normal-fr-history-click",
+      "item-le-robot-toboggan",
+      "desktop-park",
+      "desktop-article"
+    ],
+    "facebookAction": "Official Resolve found the automatic park announcement already Published. No duplicate PublishFacebook was sent."
+  },
+  "interfaceObservations": [
+    {
+      "observation": "Historical year explorer is not indexable: no indexableKeyYears. The normal public History link, twelve sourced facts and the article work.",
+      "effectOnIntegration": "Annual snapshots remain unavailable; the official workflow requires the sourced public timeline, verified separately."
+    },
+    {
+      "observation": "The canonical timeline displays the application category OTHER for the Jumbo withdrawal and generic evidence labels for events without an article. Authored titles and summaries remain in all eight stored event versions.",
+      "evidence": "public-verification/history-fr-render.txt",
+      "effectOnIntegration": "Application rendering limitation retained explicitly; no event type or historical fact changed to disguise the label."
+    },
+    {
+      "observation": "The FR Robot item screenshot uses Outdoor area for one zone label although the breadcrumb and exported French name are Espace extérieur; all eight zone names are present.",
+      "evidence": "public-verification/item-le-robot-toboggan-viewport.png",
+      "effectOnIntegration": "Public interface locale inconsistency; source localization is correct and no translation was overwritten."
+    }
+  ],
+  "publicationOutcomes": {
+    "site": {
+      "status": "Published",
+      "publishedAtUtc": "2026-10-28T08:03:25.7272968Z",
+      "url": "https://amusement-parks.fun/fr/park/6919c77b-1865-444d-8c5c-964b255d9c27/ty-bamboo",
+      "evidenceOperationId": "db60096e-7cc0-40b5-92ca-9dcb93238916"
+    },
+    "facebook": {
+      "status": "Published",
+      "publishedAtUtc": null,
+      "observedAtUtc": "2026-10-28T08:20:17.185059+00:00",
+      "url": "https://www.facebook.com/1285475681307050/posts/122125007451424431",
+      "publicationId": "bec94248df5042c3be1b0b929c6c2e0e",
+      "dateNote": "Resolve confirms Published but exposes no publication timestamp. Observation time is retained separately."
+    }
+  },
+  "proofSha256": {
+    "09-fresh-full-export.json": "62af694f99c9abdd0c1e1a5acbafa86fb1d84f538b4194acb3feaae975b57150",
+    "09-history-repair-export.json": "04342dffefd92ac6ee3494de49f739b90791fc17854663a251a5b943554ecc21",
+    "09-history-canonical-repair-reconciliation.json": "d82859d33a2c3d329f8af8bf05bfb73e50c3fd6046df23c85991519e2d0a2adc",
+    "09-consolidated-audit-graph.json": "b289805aa13ff76b232f26c28a087d350901544b396b2e64f83f50890f8ab9db",
+    "09-text-reconciliation.json": "a97a01a9791281e94ef6c31976b5d110c61a6e12fcbc8b5cb87eb3f3e20da4f7",
+    "09-final-repetitions.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "09-published-completeness-after-repair.json": "6444516660aa89e633471bc7f655b7ca14c65c60af7b55804ddd49c6fe15d4a7",
+    "09-history-diagnostics-after-repair.json": "85d97ccf52d9371d055cffdfb658a36735314a29d6d6416c3d7b535351651c1d",
+    "09-history-canonical-repair-apply.receipt.json": "be629bc620a7c1b2a6454505ca3af4d650ed518c9f424c8da6e74d2d17433409",
+    "09-final-idempotence.preview.json": "684850caaf259d6c6a252138d94ba6f06acae0f6823672d900839264af418e0f",
+    "09-facebook-resolve.json": "cd40f72c7558551169a549fdd197f659a499700518141e0db31fe06fa8cb60e0",
+    "09-published-search.json": "366fcca5576cf9730f914b8852be234a0cddab50e459c39ec95c3de66325ffc5",
+    "public-verification/api-report.json": "711b08c06ffba49435b07b43d6e76a9316591e6d0db12ec440deefd3328a52b6",
+    "public-verification/normal-fr-history-click.json": "e5593d4fbcb429ea760d47f361d753f385876b4859afc5efb9a034a8e5fbd358",
+    "public-verification/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "c2e10675e907200b71871e7fc62954d2aa4eb49bd25766cfbdd1980c6812eb4c",
+    "public-verification/desktop-report.json": "5d7702cbfc11c898dc754a6d2369cacb1cf9c26fdecd36dbf4037b5b85981ae5"
+  }
+}

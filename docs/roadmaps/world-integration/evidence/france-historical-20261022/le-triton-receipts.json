@@ -1,0 +1,135 @@
+{
+  "entryId": "FR-candidate-da3b95a7f543cb",
+  "parkId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+  "name": "Le Triton",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-0f015566-7b36-4b9c-ac2f-8a7b7db7c764",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T10:08:54.3117583Z",
+      "appliedAt": "2026-11-02T10:08:54.311Z",
+      "receiptFile": "01-core-renewed-apply.receipt.json",
+      "receiptSha256": "3dda38e4a6ed095d142a889953ca4215fa6ba921b16f26d391d416d42f772885",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "operatorId",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Le Triton : création privée du parc historique de Yerres et de sa société exploitante confirmée ; huit recherches officielles sans doublon, dates contradictoires laissées vides, intégration partielle."
+    },
+    {
+      "eventId": "apply-e0c87d67-2e25-40df-b72d-6333c476bd56",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T10:12:43.9835484Z",
+      "appliedAt": "2026-11-02T10:12:43.983Z",
+      "receiptFile": "04-park-texts-apply.receipt.json",
+      "receiptSha256": "52073d691deb9147b451c89bddf245d8fc87400197faecfc29e3961acf19ad91",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Le Triton : descriptions historiques rédigées et relues dans les huit langues ; cinq paragraphes sourcés, sans date incertaine ni inventaire inventé, fiche privée."
+    },
+    {
+      "eventId": "import-photo-bbee0bcfdcb048d09ea721ef7a7462b4-2026-11-02T101416.315Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T10:14:16.315Z",
+      "appliedAt": "2026-11-02T10:14:16.315Z",
+      "receiptFile": "05-demolition-colour-import-receipt.json",
+      "receiptSha256": "649b0ab18726598f41bdc26ec4fee25a5d5d0220e1023331620a125fe53b0ab1",
+      "imageId": "bbee0bcfdcb048d09ea721ef7a7462b4",
+      "ownerId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+      "createdAt": "2026-11-02T10:14:12.744Z",
+      "sourceUrl": "https://www.yerres.fr/yerres_medias/2025/02/Bilan-30-ans.pdf",
+      "summary": "Import privé du média historique 05-demolition-colour, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-92a5842e0a0049aabfcbb86eb915439f-2026-11-02T101429.985Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T10:14:29.985Z",
+      "appliedAt": "2026-11-02T10:14:29.985Z",
+      "receiptFile": "05-demolition-workers-import-receipt.json",
+      "receiptSha256": "4599b77a1908cd08d2fb5dff5e4be246b44cd22842227f53be7fd743444462a1",
+      "imageId": "92a5842e0a0049aabfcbb86eb915439f",
+      "ownerId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+      "createdAt": "2026-11-02T10:14:26.539Z",
+      "sourceUrl": "https://www.yerres.fr/yerres_medias/2025/02/Bilan-30-ans.pdf",
+      "summary": "Import privé du média historique 05-demolition-workers, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-35428d2c6f4049a999d98c515dd3fbe5-2026-11-02T101443.844Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T10:14:43.844Z",
+      "appliedAt": "2026-11-02T10:14:43.844Z",
+      "receiptFile": "05-reconverted-riverbank-import-receipt.json",
+      "receiptSha256": "81b9816587b5871b478681f233b2b209fd914d49344481188ff8cf19dad9f61d",
+      "imageId": "35428d2c6f4049a999d98c515dd3fbe5",
+      "ownerId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+      "createdAt": "2026-11-02T10:14:40.449Z",
+      "sourceUrl": "https://www.yerres.fr/yerres_medias/2025/02/Bilan-30-ans.pdf",
+      "summary": "Import privé du média historique 05-reconverted-riverbank, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-65744550-7036-4e2f-a786-a121375b0384",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T10:22:25.5487402Z",
+      "appliedAt": "2026-11-02T10:22:25.548Z",
+      "receiptFile": "08-history-corrected-apply.receipt.json",
+      "receiptSha256": "be7ab2ead65f19ca8b7edf1990b9de04642e2372841260d9af3bb58df31f9e6f",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Le Triton : cinq jalons historiques et un article développé dans les huit langues, avec photographies authentiques de la démolition ; dates juridiques et reconversion distinctes des dates de visite, contenus privés."
+    }
+  ],
+  "publicationOrNoop": []
+}

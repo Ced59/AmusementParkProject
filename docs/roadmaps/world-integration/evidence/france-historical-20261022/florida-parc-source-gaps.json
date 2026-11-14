@@ -1,0 +1,325 @@
+{
+  "parkId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+  "sourceFamilies": [
+    "Pages officielles archivées de 2010 et 2016",
+    "Schémas officiels archivés en 2011 et 2016",
+    "Dépliant officiel de 2016",
+    "Site actuel du restaurant Le Florida",
+    "RCDB : parc 5980, Grand 8 TGV 3569 et photographies de contributeurs",
+    "Guide-O-Parc",
+    "Themeparkfreaks : fermeture du parc",
+    "Annonce légale de novembre 2016",
+    "OpenStreetMap : restaurant identifié et recherche bornée autour du site historique",
+    "Recherches photographiques Commons, Bannister et presse"
+  ],
+  "geolocation": {
+    "verified": [
+      {
+        "id": "b5ac93b5-483a-441d-8609-75c062f7c302",
+        "name": "Grand 8 TGV",
+        "latitude": 47.238899,
+        "longitude": 4.986024
+      },
+      {
+        "id": "54e0b278-7b0e-4158-b854-8b8e3e0aa2b2",
+        "name": "Restaurant Le Florida",
+        "latitude": 47.2394633,
+        "longitude": 4.9863947
+      }
+    ],
+    "gaps": [
+      {
+        "id": "6a682c97-4af5-4a18-9f28-3c12f12a49f0",
+        "name": "La Piste de Motos",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "994b3905-cded-4045-8e5a-3d183fc05122",
+        "name": "Les Bateaux Tamponneurs",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "22f982a9-4816-438a-aa18-dddb4aa9cafc",
+        "name": "Le Petit Train Campagnard",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "7aa678bd-90a9-4af8-81f8-52b2a3b28827",
+        "name": "La Rivière aux Bûches",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "4e615c33-d4fe-448b-8e4d-e240b54b89d6",
+        "name": "Les Chaises Volantes",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "65bf5c5e-6a45-4fed-b2dd-2b7613e8b60a",
+        "name": "Mini-Golf",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "66417e59-1fe7-495a-b6b9-773897dcfb1a",
+        "name": "Petits Jeux",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "2546a315-1530-4fed-abf6-19f1c34b3da8",
+        "name": "Enclos des Animaux",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "8d2e26ab-81ef-492b-a064-d7cc5f290ea2",
+        "name": "Volière",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "a95d9f08-d5c7-4508-8aa7-18d449530c4d",
+        "name": "Parking",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "27b7d5ee-2731-4e62-9122-6761725cc4b0",
+        "name": "Entrée du Parc",
+        "reason": "L’emplacement précis de ce lieu ancien ne peut pas être établi à partir du schéma officiel et des sources géographiques consultées. Les points non démontrés sont laissés vides."
+      },
+      {
+        "id": "a8c6dc78-4ac7-4c80-88fb-1d00d2f4d9c5",
+        "name": "Aire de Pique-Nique",
+        "reason": "Aire annoncée dans le dépliant officiel pour juillet et août 2016, sans position indiquée ; aucune coordonnée inventée."
+      }
+    ],
+    "rejectedPoint": "Le parking OSM way 621485027 (47.23816936, 4.98672262) est extérieur au parc et n’a pas été attribué à sa fiche."
+  },
+  "chronology": {
+    "opening": "Ouverture en 1981 ; jour et mois inconnus. Année confirmée par le trentième anniversaire officiel de 2011 et deux sources spécialisées.",
+    "closure": "Fermeture en octobre 2016. Le 31 octobre correspond à la fin du contrat de location-gérance, pas à un dernier jour d’accueil démontré.",
+    "founder": "Fondateur non établi. Patrick Debruille est le bailleur cité dans l’annonce légale ; ce rôle ne prouve pas qu’il a fondé le parc.",
+    "grand8": "Présence établie au plus tard en février 2004. L’ancienne date précise du 1er janvier 2006 a été supprimée. Le démontage est signalé par RCDB, mais sa date exacte reste inconnue.",
+    "petitTrain": "Constructeur et éventuelle destination après la fermeture non corroborés. La rumeur de transfert à Breizh Land n’a pas été reprise.",
+    "minorRides": "Dernière saison confirmée en 2016. Dates individuelles d’ouverture et de démontage non établies ; aucun événement inventé."
+  },
+  "images": {
+    "parkId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+    "beforeImports": {
+      "parkImages": 0,
+      "parkLogo": false,
+      "items": [
+        {
+          "id": "b5ac93b5-483a-441d-8609-75c062f7c302",
+          "key": "b5ac93b5-483a-441d-8609-75c062f7c302",
+          "name": "Grand 8 TGV",
+          "existingImages": 0
+        },
+        {
+          "id": "6a682c97-4af5-4a18-9f28-3c12f12a49f0",
+          "key": "florida-piste-motos",
+          "name": "La Piste de Motos",
+          "existingImages": 0
+        },
+        {
+          "id": "994b3905-cded-4045-8e5a-3d183fc05122",
+          "key": "florida-bateaux-tamponneurs",
+          "name": "Les Bateaux Tamponneurs",
+          "existingImages": 0
+        },
+        {
+          "id": "22f982a9-4816-438a-aa18-dddb4aa9cafc",
+          "key": "florida-petit-train",
+          "name": "Le Petit Train Campagnard",
+          "existingImages": 0
+        },
+        {
+          "id": "7aa678bd-90a9-4af8-81f8-52b2a3b28827",
+          "key": "florida-riviere-buches",
+          "name": "La Rivière aux Bûches",
+          "existingImages": 0
+        },
+        {
+          "id": "4e615c33-d4fe-448b-8e4d-e240b54b89d6",
+          "key": "florida-chaises-volantes",
+          "name": "Les Chaises Volantes",
+          "existingImages": 0
+        },
+        {
+          "id": "65bf5c5e-6a45-4fed-b2dd-2b7613e8b60a",
+          "key": "florida-mini-golf",
+          "name": "Mini-Golf",
+          "existingImages": 0
+        },
+        {
+          "id": "66417e59-1fe7-495a-b6b9-773897dcfb1a",
+          "key": "florida-petits-jeux",
+          "name": "Petits Jeux",
+          "existingImages": 0
+        },
+        {
+          "id": "2546a315-1530-4fed-abf6-19f1c34b3da8",
+          "key": "florida-enclos-animaux",
+          "name": "Enclos des Animaux",
+          "existingImages": 0
+        },
+        {
+          "id": "8d2e26ab-81ef-492b-a064-d7cc5f290ea2",
+          "key": "florida-voliere",
+          "name": "Volière",
+          "existingImages": 0
+        },
+        {
+          "id": "54e0b278-7b0e-4158-b854-8b8e3e0aa2b2",
+          "key": "florida-restaurant",
+          "name": "Restaurant Le Florida",
+          "existingImages": 0
+        },
+        {
+          "id": "a95d9f08-d5c7-4508-8aa7-18d449530c4d",
+          "key": "florida-parking",
+          "name": "Parking",
+          "existingImages": 0
+        },
+        {
+          "id": "27b7d5ee-2731-4e62-9122-6761725cc4b0",
+          "key": "florida-entree",
+          "name": "Entrée du Parc",
+          "existingImages": 0
+        },
+        {
+          "id": "a8c6dc78-4ac7-4c80-88fb-1d00d2f4d9c5",
+          "key": "florida-pique-nique",
+          "name": "Aire de Pique-Nique",
+          "existingImages": 0
+        }
+      ]
+    },
+    "sourcesReviewed": [
+      "Pages officielles des attractions en 2010 et 2016, avec leurs fichiers photographiques originaux",
+      "Schémas officiels archivés et dépliant de 2016",
+      "Fichiers WordPress originaux du restaurant actuel",
+      "Galeries RCDB du parc et du Grand 8 TGV : Martin Valt et Rik Engelen",
+      "Guide-O-Parc 197",
+      "Article de fermeture de Themeparkfreaks et album lié d’août 2016 devenu indisponible",
+      "Original Commons du Grand 8 supérieur à la limite d’import",
+      "Bannister indisponible (HTTP 503)",
+      "Recherches dans la presse et les photographies historiques du parc et de ses animaux"
+    ],
+    "knownGaps": [
+      "Aucune photographie identifiée de la volière, des enclos ou de l’aire de pique-nique de 2016. Une annonce de lamas à venir ne prouve pas leur arrivée.",
+      "Aucune photographie de l’ouverture de 1981 ni du dernier jour d’exploitation trouvée ; les vues retenues pour ces jalons sont contextuelles.",
+      "Quatre vues générales du parc utilisables ; aucune cinquième vue originale distincte trouvée après recherche dans les archives et galeries de contributeurs.",
+      "Seule l’édition 2016 du plan est reliée sans ambiguïté à une saison datée sur le site officiel. L’archive du schéma plus ancien ne prouve pas une édition annuelle 2011."
+    ],
+    "rejectedTransformations": "Aucun redimensionnement, recadrage, changement de compression, retrait de filigrane ou conversion colorimétrique n’a été effectué.",
+    "sharedViewDecision": "La photographie RCDB 108750 représente effectivement les deux trains dans le jardin. Le même original est rattaché au parc, au Grand 8 et au Petit Train, avec des textes propres à chaque sujet. Chaque attraction possède trois vues complémentaires ; aucun fichier n’est compté deux fois pour un même propriétaire."
+  },
+  "editorialDepth": {
+    "scope": "Petit parc historique local. Les quatorze lieux ont des descriptions rédigées et relues dans les huit langues. La longueur suit les informations effectivement retrouvées.",
+    "shortDescriptions": [
+      {
+        "id": "b5ac93b5-483a-441d-8609-75c062f7c302",
+        "name": "Grand 8 TGV",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "6a682c97-4af5-4a18-9f28-3c12f12a49f0",
+        "name": "La Piste de Motos",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "994b3905-cded-4045-8e5a-3d183fc05122",
+        "name": "Les Bateaux Tamponneurs",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "22f982a9-4816-438a-aa18-dddb4aa9cafc",
+        "name": "Le Petit Train Campagnard",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "7aa678bd-90a9-4af8-81f8-52b2a3b28827",
+        "name": "La Rivière aux Bûches",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "4e615c33-d4fe-448b-8e4d-e240b54b89d6",
+        "name": "Les Chaises Volantes",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "65bf5c5e-6a45-4fed-b2dd-2b7613e8b60a",
+        "name": "Mini-Golf",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "66417e59-1fe7-495a-b6b9-773897dcfb1a",
+        "name": "Petits Jeux",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "2546a315-1530-4fed-abf6-19f1c34b3da8",
+        "name": "Enclos des Animaux",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "8d2e26ab-81ef-492b-a064-d7cc5f290ea2",
+        "name": "Volière",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "54e0b278-7b0e-4158-b854-8b8e3e0aa2b2",
+        "name": "Restaurant Le Florida",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "a95d9f08-d5c7-4508-8aa7-18d449530c4d",
+        "name": "Parking",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "27b7d5ee-2731-4e62-9122-6761725cc4b0",
+        "name": "Entrée du Parc",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      },
+      {
+        "id": "a8c6dc78-4ac7-4c80-88fb-1d00d2f4d9c5",
+        "name": "Aire de Pique-Nique",
+        "reason": "Les pages officielles archivées, plans, photographies, RCDB et sources spécialisées ne permettent pas de développer davantage de faits distinctifs. La description reste concise sans compléter les lacunes par du texte générique."
+      }
+    ],
+    "inventoryNotes": [
+      "La mention Poneys du plan est conservée dans les enclos d’animaux ; elle ne prouve pas une attraction de promenade à poney distincte.",
+      "Aucun quartier thématique officiel retrouvé ; aucune zone créée artificiellement."
+    ]
+  },
+  "maps": {
+    "acceptedYears": [
+      2016
+    ],
+    "sourcePage": "https://web.archive.org/web/20160424091639id_/http://www.floridaparc.com:80/informations/",
+    "unaccepted": "Le schéma archivé en 2011 ne porte pas de millésime d’édition démontré. Le dépliant 2016 présente restaurant, calendrier et coupon, mais aucun plan du parc ; il n’est pas importé comme carte. Aucun plan actuel attendu pour ce parc fermé en 2016."
+  },
+  "restrictions": {
+    "verified": [
+      {
+        "item": "La Piste de Motos",
+        "rule": "MinAge4Year"
+      },
+      {
+        "item": "Les Bateaux Tamponneurs",
+        "rule": "MinAge2Year"
+      }
+    ],
+    "sources": [
+      "Pages officielles des attractions archivées en 2010",
+      "Accueil officiel de la saison 2016"
+    ],
+    "gaps": "Aucune autre restriction de taille, de santé ou d’accès fiable trouvée. La gratuité des moins de trois ans au train et aux bûches est tarifaire et ne constitue pas un âge minimum. Aucune condition d’accès actuelle promise pour ce parc fermé."
+  },
+  "hoursAndPricing": {
+    "openingHours": "Sans objet : parc définitivement fermé après la saison 2016. Le calendrier de 2016 sert uniquement de source historique.",
+    "pricing": "Sans objet : aucune offre actuelle d’entrée, d’abonnement ou de stationnement. La poursuite du restaurant ne signifie pas que le parc fonctionne encore. Aucun ancien tarif présenté comme actuel.",
+    "sources": [
+      "https://www.restaurantleflorida.com/",
+      "https://themeparkfreaks.eu/2017/03/florida-parc-sloot-de-deuren/"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "imageId": "9b278d994dcc41b1a1c7d537c8f4b5f3",
+  "uploadCreatedAtUtc": "2026-11-03T07:06:39.704Z",
+  "recoveredMetadataUpdatedAtUtc": "2026-11-03T07:09:45.688Z",
+  "initialError": "HTTP 502 after successful upload; final metadata response lost",
+  "status": "recovered without duplicate upload",
+  "checks": [
+    "Images-only export includes Park-owned images only; does not test ParkItem ownership",
+    "Preview on exact server-returned imageId reports no changes for ownership and all eight metadata translations",
+    "UpdatePhotoMetadata returns exact owner, private secondary status and all expected texts"
+  ],
+  "initialImportCompletedAtUtc": null,
+  "noDeletion": true,
+  "recoveryReceipt": "05-hotel-pool-metadata-update-receipt.json",
+  "previewCounts": {
+    "created": 0,
+    "updated": 0,
+    "deleted": 0,
+    "unchanged": 3,
+    "warnings": 0,
+    "errors": 0
+  },
+  "ledgerNote": "L’événement original est conservé sans modification dans -receipts.json, son chemin de preuve initial. Il est aussi recopié dans le journal nommé du parc ; aucune date inconnue remplacée."
+}

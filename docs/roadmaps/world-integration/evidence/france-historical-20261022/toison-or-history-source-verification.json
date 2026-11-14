@@ -1,0 +1,42 @@
+[
+  {
+    "key": "court",
+    "url": "https://www.ccomptes.fr/sites/default/files/EzPublish/BOL200006.pdf",
+    "status": 200,
+    "finalUrl": "https://www.ccomptes.fr/sites/default/files/EzPublish/BOL200006.pdf",
+    "bytes": 15959,
+    "accessedAtUtc": "2026-10-23T11:17:58.567673+00:00"
+  },
+  {
+    "key": "niglo",
+    "url": "https://niglofans.richardcrete.fr/reportages/1993-rachat-du-parc-de-la-toison-dor/",
+    "status": 200,
+    "finalUrl": "https://niglofans.richardcrete.fr/reportages/1993-rachat-du-parc-de-la-toison-dor/",
+    "bytes": 1184386,
+    "accessedAtUtc": "2026-10-23T11:17:59.528416+00:00"
+  },
+  {
+    "key": "tourism",
+    "url": "https://www.destinationdijon.com/patrimoine-naturel/parc-de-la-toison-dor/",
+    "status": 200,
+    "finalUrl": "https://www.destinationdijon.com/patrimoine-naturel/parc-de-la-toison-dor/",
+    "bytes": 72191,
+    "accessedAtUtc": "2026-10-23T11:17:58.296984+00:00"
+  },
+  {
+    "key": "france3",
+    "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+    "status": 200,
+    "finalUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+    "bytes": 755734,
+    "accessedAtUtc": "2026-10-23T11:17:58.009086+00:00"
+  },
+  {
+    "key": "closure",
+    "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/trop-cher-abandonne-par-walibi-pourquoi-le-parc-d-attraction-de-la-toison-d-or-n-a-dure-que-trois-saisons-3324689.html",
+    "status": 200,
+    "finalUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/trop-cher-abandonne-par-walibi-pourquoi-le-parc-d-attraction-de-la-toison-d-or-n-a-dure-que-trois-saisons-3324689.html",
+    "bytes": 726027,
+    "accessedAtUtc": "2026-10-23T11:17:58.523404+00:00"
+  }
+]

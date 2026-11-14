@@ -1,0 +1,15 @@
+{
+  "updatedAtUtc": "2026-11-02T23:54:20.230574+00:00",
+  "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+  "parkId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+  "status": "completed",
+  "score": 98,
+  "site": "https://amusement-parks.fun/fr/park/a01011e8-b400-40c7-bbe2-5635d7dd24f7/koaland",
+  "facebook": "https://www.facebook.com/1285475681307050/posts/122120989857424431",
+  "lastDataIntegrationAt": "2026-11-02T23:41:43.216Z",
+  "finalAudit": "koaland-final-audit.json",
+  "dataApplies": 25,
+  "photoImports": 52,
+  "publicationApplies": 2,
+  "next": "Continue historical France; no PR before ten retained completions."
+}

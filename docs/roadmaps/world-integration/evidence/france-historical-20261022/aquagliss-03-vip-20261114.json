@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "owner": "Conversation France",
+  "documentSha256": "2b5c01b96ebfddff6526a0903e5cf4b134e5a545f2b0b9a24ea6d2a08666c1e7",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "29a5fc78-6d3d-469a-89d6-bceebcb69088",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T21:27:57.1632736Z",
+    "appliedAtUtc": "2026-11-14T21:27:57.1632744Z",
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "targetParkName": "Acqua Gliss Porticcio",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "entityKey": "park",
+        "displayName": "Acqua Gliss Porticcio",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+        "entityKey": "aquagliss-espace-vip",
+        "displayName": "Espace VIP",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Sitzecke zwischen Oleanderbüschen</h2><p>Im VIP-Bereich von Acqua Gliss standen runde Sessel und ein Sofa mit hellen Polstern unter einem großen beigefarbenen Sonnenschirm. Blühende Oleanderbüsche und Palmen umgaben die kleine Sitzecke auf einer quadratischen Kunstrasenfläche nahe den Becken.</p><p>Die Sitzecke konnte für einen ganzen Tag exklusiv gemietet werden. Über eine Funkverbindung ließen sich Bestellungen direkt an die Bar übermitteln, ohne die Sessel rund um den niedrigen Tisch zu verlassen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A garden lounge among the oleanders</h2><p>Acqua Gliss’s VIP area brought together rounded armchairs and a sofa with pale cushions beneath a broad beige parasol. Flowering oleanders and palms surrounded this small garden lounge, set on a square of artificial grass near the pools.</p><p>The lounge could be reserved for private use for the day. A radio link allowed guests to order directly from the bar while remaining in the seats around the low table.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un salón de jardín entre adelfas</h2><p>El espacio VIP de Acqua Gliss reunía sillones redondeados y un sofá con cojines claros bajo una amplia sombrilla beige. Las adelfas en flor y las palmeras rodeaban este pequeño salón de jardín, instalado sobre un cuadrado de césped artificial cerca de las piscinas.</p><p>El salón podía reservarse en exclusiva durante todo el día. Una conexión por radio permitía hacer pedidos directamente al bar sin abandonar los asientos dispuestos alrededor de la mesa baja.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un salon parmi les lauriers-roses</h2><p>L’espace VIP d’Acqua Gliss réunissait des fauteuils arrondis et un canapé aux coussins clairs sous un large parasol beige. Les lauriers-roses en fleurs et les palmiers entouraient ce petit salon de jardin, installé sur un carré de gazon artificiel près des bassins.</p><p>Ce salon pouvait être privatisé à la journée. Une liaison radio permettait de passer les commandes directement au bar, sans quitter les fauteuils disposés autour de la table basse.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un salottino tra gli oleandri</h2><p>L’area VIP di Acqua Gliss riuniva poltrone arrotondate e un divano con cuscini chiari sotto un ampio ombrellone beige. Oleandri in fiore e palme circondavano questo piccolo salotto da giardino, sistemato su un quadrato di erba sintetica vicino alle piscine.</p><p>Il salottino poteva essere riservato in esclusiva per un’intera giornata. Un collegamento radio permetteva di ordinare direttamente al bar senza lasciare le poltrone disposte attorno al tavolino basso.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een zithoek tussen de oleanders</h2><p>De VIP-ruimte van Acqua Gliss bestond uit ronde fauteuils en een bank met lichte kussens onder een brede beige parasol. Bloeiende oleanders en palmen omringden de kleine zithoek, die op een vierkant stuk kunstgras bij de zwembaden stond.</p><p>De zithoek kon voor een hele dag privé worden gereserveerd. Via een radioverbinding konden gasten rechtstreeks bij de bar bestellen, zonder hun stoel rond de lage tafel te verlaten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Salon ogrodowy wśród oleandrów</h2><p>W strefie VIP Acqua Gliss pod szerokim beżowym parasolem stały zaokrąglone fotele i sofa z jasnymi poduszkami. Kwitnące oleandry oraz palmy otaczały ten niewielki salon ogrodowy, urządzony na kwadratowym fragmencie sztucznej trawy w pobliżu basenów.</p><p>Salon można było zarezerwować na wyłączność na cały dzień. Łączność radiowa umożliwiała składanie zamówień bezpośrednio w barze, bez wstawania z foteli ustawionych wokół niskiego stolika.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um recanto entre os loendros</h2><p>O espaço VIP do Acqua Gliss reunia poltronas arredondadas e um sofá com almofadas claras sob um grande guarda-sol bege. Loendros em flor e palmeiras rodeavam este pequeno salão de jardim, instalado num quadrado de relva artificial perto das piscinas.</p><p>O salão podia ser reservado em exclusivo por um dia inteiro. Uma ligação por rádio permitia fazer pedidos diretamente ao bar sem sair dos lugares dispostos em redor da mesa baixa.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

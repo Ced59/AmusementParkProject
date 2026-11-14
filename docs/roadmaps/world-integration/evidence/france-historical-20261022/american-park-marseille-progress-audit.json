@@ -1,0 +1,648 @@
+{
+  "entryId": "FR-candidate-a7f2b59d48ade2",
+  "owner": "Conversation France",
+  "parkId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+  "name": "American Park Marseille",
+  "auditedAtUtc": "2026-11-01T15:28:39.453718+00:00",
+  "outcome": "partial",
+  "stage": "Interim audit; source gaps and logo block publication. Not a completed park.",
+  "sitePublished": false,
+  "facebookPublished": false,
+  "facebookAction": "None: site remains hidden. Prior user authorization retained for publication once genuine blockers resolved.",
+  "projectedCompleteness": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 93,
+    "earnedPoints": 80,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "lastDataIntegrationAt": "2026-11-01T15:23:52.220Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/american-park-marseille-receipts.json#apply-5f281395-7bdf-4f54-94cb-7dabf9b09475",
+  "exportRoundtrip": {
+    "fieldsCompared": 1200,
+    "differentFields": 0,
+    "exportedAtUtc": "2026-11-01T15:24:03.9691496Z",
+    "sha256": "4f26dbbd44c3d4842dddb8a8ba01d60b0012ff347f46421a7a320bff9b37c403",
+    "contractNotes": [
+      "Request aliases names are not returned by current ParkItem export; no claim that localized item names persisted. Base names preserved.",
+      "itemId is a request alias; canonical ownerId/parkItemId checked."
+    ],
+    "counts": {
+      "items": 12,
+      "images": 8,
+      "history": 5,
+      "articles": 1
+    }
+  },
+  "idempotence": {
+    "operationId": "f86fc73c-34e0-4601-a45f-0ced6491f9ac",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 26,
+      "warnings": 0,
+      "errors": 0
+    },
+    "applied": false
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-01T15:24:03.9691496Z",
+    "items": 12,
+    "zones": 0,
+    "attractions": 7,
+    "attractionStatuses": {
+      "Removed": 7
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 5,
+    "attractionsWithImage": 5,
+    "attractionImageGaps": [
+      {
+        "id": "7bb38f1c-f352-44c2-ae95-ee5f6496e429",
+        "name": "Cake-Walk"
+      },
+      {
+        "id": "741e0439-ce6e-4416-8efe-776cac80d4e4",
+        "name": "Tourbillon Railway"
+      }
+    ],
+    "ownedImages": 8,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "a98baf81-bee5-40b5-b27f-00d24eab6003",
+        "name": "Brasserie",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "b5de2d80-3175-4a23-864c-93c7eff0122b",
+        "name": "Buffet",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "7bb38f1c-f352-44c2-ae95-ee5f6496e429",
+        "name": "Cake-Walk",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "0e603f4f-bb29-4ab1-a261-551320d9e2e1",
+        "name": "Cinéma",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "83b9883b-8d49-427a-8890-fa826703ba44",
+        "name": "La Roulette humaine",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a8213893-f33f-4bee-a349-6126cea5e911",
+        "name": "Le Chatouilleur",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "6f0dfe55-f3af-4f40-b68b-dbf26e04f7de",
+        "name": "Le Château des soupirs",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "dd19a714-4868-4fed-b91c-1e18182bbb00",
+        "name": "Salle de danse",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "77b669af-eea4-45b4-8ba4-1bdf58b8805b",
+        "name": "Salle de skating",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "734b5d44-9eba-42df-b4c0-a8904f6d14fb",
+        "name": "Théâtre Tanagra",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "741e0439-ce6e-4416-8efe-776cac80d4e4",
+        "name": "Tourbillon Railway",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "6dc42c22-503d-487c-8b2a-2a677d6cf362",
+        "name": "Water Toboggan",
+        "category": "Attraction",
+        "images": 1
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "a98baf81-bee5-40b5-b27f-00d24eab6003",
+        "name": "Brasserie",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "b5de2d80-3175-4a23-864c-93c7eff0122b",
+        "name": "Buffet",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "7bb38f1c-f352-44c2-ae95-ee5f6496e429",
+        "name": "Cake-Walk",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0e603f4f-bb29-4ab1-a261-551320d9e2e1",
+        "name": "Cinéma",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "83b9883b-8d49-427a-8890-fa826703ba44",
+        "name": "La Roulette humaine",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a8213893-f33f-4bee-a349-6126cea5e911",
+        "name": "Le Chatouilleur",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6f0dfe55-f3af-4f40-b68b-dbf26e04f7de",
+        "name": "Le Château des soupirs",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "dd19a714-4868-4fed-b91c-1e18182bbb00",
+        "name": "Salle de danse",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "77b669af-eea4-45b4-8ba4-1bdf58b8805b",
+        "name": "Salle de skating",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "734b5d44-9eba-42df-b4c0-a8904f6d14fb",
+        "name": "Théâtre Tanagra",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "741e0439-ce6e-4416-8efe-776cac80d4e4",
+        "name": "Tourbillon Railway",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6dc42c22-503d-487c-8b2a-2a677d6cf362",
+        "name": "Water Toboggan",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 5,
+    "parkHistory": 3,
+    "itemHistory": 2,
+    "historyWithSource": 5,
+    "historyWithImage": 4,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "itemsWithEightDescriptions": 6,
+    "itemDescriptionGaps": [
+      {
+        "id": "a98baf81-bee5-40b5-b27f-00d24eab6003",
+        "name": "Brasserie"
+      },
+      {
+        "id": "b5de2d80-3175-4a23-864c-93c7eff0122b",
+        "name": "Buffet"
+      },
+      {
+        "id": "7bb38f1c-f352-44c2-ae95-ee5f6496e429",
+        "name": "Cake-Walk"
+      },
+      {
+        "id": "0e603f4f-bb29-4ab1-a261-551320d9e2e1",
+        "name": "Cinéma"
+      },
+      {
+        "id": "734b5d44-9eba-42df-b4c0-a8904f6d14fb",
+        "name": "Théâtre Tanagra"
+      },
+      {
+        "id": "741e0439-ce6e-4416-8efe-776cac80d4e4",
+        "name": "Tourbillon Railway"
+      }
+    ],
+    "officialLogo": null,
+    "parkMainImage": "b6d8275142dd40338e251d574a6e75a8",
+    "generalParkPhotographs": {
+      "count": 1,
+      "target": 5,
+      "scope": "Historical visitors in front of identified park building; no panorama. Poster/share/ridecloseups excluded."
+    }
+  },
+  "publicTextReview": {
+    "textFields": 448,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "allAuthoredAndPersonallyReviewed": true,
+    "rawEncodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "rawCrossSequenceGroups": 2,
+    "manualProperNameGroups": 2,
+    "unresolvedFormulaicGroups": 0,
+    "manualReview": {
+      "reviewedAtUtc": "2026-11-01T15:27:08.224000+00:00",
+      "rawGroups": 2,
+      "properNameOnlyGroups": 2,
+      "unresolvedFormulaicGroups": 0,
+      "reviews": [
+        {
+          "language": "es",
+          "firstPath": "items.77b669af-eea4-45b4-8ba4-1bdf58b8805b.descriptions.es",
+          "secondPath": "articles.american-park-marseille-prado-1910-1914.blocks.4.texts.es",
+          "fingerprints": [
+            "palais de l énergie de la exposición de la",
+            "de l énergie de la exposición de la electricidad"
+          ],
+          "decision": "Proper historical building/exhibition name, not reusable sentence or paragraph.",
+          "reason": "Palais de l’Énergie de l’Exposition de l’électricité / Palais de l’Énergie de la Exposición de la Electricidad identifies the specific1908predecessor building. Distinct sentences explain room setting vs exhibition chronology. Both full paragraphs personally read; retaining truthful name."
+        },
+        {
+          "language": "fr",
+          "firstPath": "items.77b669af-eea4-45b4-8ba4-1bdf58b8805b.descriptions.fr",
+          "secondPath": "articles.american-park-marseille-prado-1910-1914.blocks.4.texts.fr",
+          "fingerprints": [
+            "palais de l énergie de l exposition de l",
+            "de l énergie de l exposition de l électricité"
+          ],
+          "decision": "Proper historical building/exhibition name, not reusable sentence or paragraph.",
+          "reason": "Palais de l’Énergie de l’Exposition de l’électricité / Palais de l’Énergie de la Exposición de la Electricidad identifies the specific1908predecessor building. Distinct sentences explain room setting vs exhibition chronology. Both full paragraphs personally read; retaining truthful name."
+        }
+      ]
+    },
+    "limitation": "Six missing descriptions are explicit editorial blockers despite API formulaicPublicTextIssue:null. Missing copy is not replaced by generic filler."
+  },
+  "historyCanonicalDiagnostics": {
+    "parkId": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+    "parkName": "American Park Marseille",
+    "factCount": 6,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1910,
+        "resourceCount": 5,
+        "sourcedResourceCount": 5,
+        "publishedResourceCount": 0,
+        "subjectCount": 3,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 5
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 1
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "remainingGaps": {
+    "scope": "Historical park; incomplete and private. This is an interim audit, not a completed integration.",
+    "step2Zones": "No official public zoning established; no zones invented.",
+    "step4Descriptions": {
+      "writtenItems": 6,
+      "items": 12,
+      "missing": [
+        {
+          "key": "tourbillon-railway",
+          "reason": "Listed in historical accounts with engineering figures, but no reliable scene/experience source beyond pre-opening announcement. Do not turn dimensions into filler."
+        },
+        {
+          "key": "cake-walk",
+          "reason": "Confirmed name and class; no proved local setting or particular obstacle, no suitable image."
+        },
+        {
+          "key": "cinema",
+          "reason": "Existence confirmed, but hall, programmes and films not identified; no generic cinema paragraph."
+        },
+        {
+          "key": "theatre-tanagra",
+          "reason": "Existence and destruction in August1911 proved by contemporary press transcription. Particular show/illusion/interior not proved; timeline captures known fact."
+        },
+        {
+          "key": "brasserie",
+          "reason": "Period advertising proves name/function; menu, decor and exact room location unknown."
+        },
+        {
+          "key": "buffet",
+          "reason": "Period advertising proves separate name/function; cannot assume modern selfservice/all-you-can-eat, menu or room."
+        }
+      ],
+      "shorterDocumentedException": "Salle de danse: two factual paragraphs from primary entrance postcard; no invented interior or repertoire."
+    },
+    "step5Media": {
+      "logo": "No distinct historical logo asset found. CompleteWaterChuteposter, companyshare and parkstamps not substituted or cropped into a logo.",
+      "generalParkPhotographs": {
+        "actual": 1,
+        "target": 5,
+        "note": "1910 visitors portrait at identified park building; not panorama. Poster/share are documents; ride close-ups excluded."
+      },
+      "ridePhotographs": {
+        "covered": 5,
+        "total": 7,
+        "missing": [
+          "Tourbillon Railway",
+          "Cake-Walk"
+        ],
+        "importantRideTarget": "Only one distinct accepted image for each of five illustrated major attractions; duplicatecroppedcopies not imported."
+      },
+      "danceEntrancePhoto": "Original1356105bytes exceeds960KiB; no smaller uncropped publishedsource rendition found; not recompressed.",
+      "officialMaps": "None for1910–1914 found. 1908electricityexhibitionplan predatespark and cannot become a1910parkmap."
+    },
+    "step6OpeningHours": "Not applicable: ClosedDefinitively; historic advertisement hours not currentdata.",
+    "step7Pricing": "Not applicable: ClosedDefinitively; oldfranc prices not reused as currentprices orconvertedtoeuros.",
+    "step8History": {
+      "parkFacts": 3,
+      "itemFacts": 2,
+      "articles": 1,
+      "dateGaps": [
+        "Openingday15June vs1July1910 unresolved",
+        "Exact1911firedayunverified: editiondate21August noteventdate",
+        "Exact1914closuredayunknown",
+        "Individualoperatingperiods notderivedfromparkdates"
+      ],
+      "imageGaps": [
+        "Actual1911firephotographs notfound; château prefireviewexplicitcontextual",
+        "NoTanagrafacadeidentified"
+      ]
+    },
+    "geolocation": {
+      "fixedCovered": 0,
+      "fixedTotal": 12,
+      "reason": "Demolishedsite: historical postcards/1908predecessorplan do not prove precise positions against modernmap. Parkpoint nevercopied toitems."
+    },
+    "references": {
+      "founder": "AlbertRoman was director, not proved founder; Capacioli reportedconstructionengineer, not assumedride manufacturer.",
+      "operator": "SociétéMarseillaise de l’AmericanPark proved byshare; finaloperator chronology unknown, no sharedreference rewritten.",
+      "manufacturersAndAccessConditions": "None independentlyproved; notinferredfromgenericridetype."
+    },
+    "familiesSearched": [
+      "Commons historiccards/publicdomainposter",
+      "Tourisme-Marseille personalhistoricalblog andrawarchiveimages",
+      "CPArama postcardarchive",
+      "RinkHistory skatinghistory",
+      "COAA CarouselOrgan78 specialistarticle",
+      "Mathon transcriptionofPetitParisien1911",
+      "Wikipedia historicalreferences andcoordinatepoint",
+      "Targeted publicwebsearches opening/fire, theatre,cinema,restaurant,rollercoasters,bowling,logo,map",
+      "Gallica SRU andoriginal1918page attempted403; no bypass and no falseclaimofreading"
+    ],
+    "unqualifiedInventory": [
+      "Bowling announcedinsecondarypreopeningaccount butnotprovedoperational",
+      "Genericperformancehall mayoverlapTanagra/Cinema/Dance; noduplicatecreation"
+    ],
+    "publication": "Not requested while actual logo/editorial blockers remain; user authorization retained for later valid publication; noFacebook before sitepublication."
+  },
+  "sourceManifests": [
+    [
+      {
+        "name": "wikipedia",
+        "url": "https://fr.wikipedia.org/wiki/American_Park",
+        "checkedAtUtc": "2026-11-01T14:43:03.385368+00:00",
+        "status": 200,
+        "finalUrl": "https://fr.wikipedia.org/wiki/American_Park",
+        "size": 94472,
+        "sha256": "dfc1b59fda16b7e011048e2f1a3224cd61656cc4e17095653d2d2e8cb1c45887"
+      },
+      {
+        "name": "tourisme-marseille",
+        "url": "https://tourisme-marseille.com/fiche/american-park-chateau-des-soupirs-rond-point-du-prado-marseille/",
+        "checkedAtUtc": "2026-11-01T14:43:03.386088+00:00",
+        "status": 200,
+        "finalUrl": "https://tourisme-marseille.com/fiche/american-park-chateau-des-soupirs-rond-point-du-prado-marseille/",
+        "size": 750039,
+        "sha256": "8596518d72e0e9a58e332411e861d19f98bc582d0d0e03c62e5b85d45d8619ce"
+      },
+      {
+        "name": "commons-category",
+        "url": "https://commons.wikimedia.org/wiki/Category:American_Park_(Marseille)",
+        "checkedAtUtc": "2026-11-01T14:43:03.386597+00:00",
+        "status": 200,
+        "finalUrl": "https://commons.wikimedia.org/wiki/Category:American_Park_(Marseille)",
+        "size": 61836,
+        "sha256": "87299d79b4411d91791094a2fbc2c48301ec402314d9e1b402daae7d053e95bb"
+      },
+      {
+        "name": "roller-rink",
+        "url": "https://rink-history.weebly.com/american-park-roller-rink-8203marseilles-fr.html",
+        "checkedAtUtc": "2026-11-01T14:43:03.860205+00:00",
+        "status": 200,
+        "finalUrl": "https://rink-history.weebly.com/american-park-roller-rink-8203marseilles-fr.html",
+        "size": 85623,
+        "sha256": "cb72f26c8851a6a15c0fb0b187f1a3ad6a5115085ea3a2be3b494f8b7922ee20"
+      }
+    ],
+    [
+      {
+        "file": "commons-poster.html",
+        "url": "https://commons.wikimedia.org/wiki/File:American_Park_1910.jpg",
+        "status": 200,
+        "finalUrl": "https://commons.wikimedia.org/wiki/File:American_Park_1910.jpg",
+        "bytes": 96605,
+        "sha256": "e97d3b9e433c21dd5ec398a289f83a1e758e2ae6e97a266a71a5e52a02cf9557",
+        "checkedAtUtc": "2026-11-01T14:51:02.252191+00:00"
+      },
+      {
+        "file": "commons-poster.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/American_Park_1910.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "status": 200,
+        "finalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/American_Park_1910.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "bytes": 349208,
+        "sha256": "761204496c0540e7742a43e5da7f6b50dd8619ccadee1350850a1842ef561a44",
+        "checkedAtUtc": "2026-11-01T14:51:02.735543+00:00"
+      },
+      {
+        "file": "commons-chateau.html",
+        "url": "https://commons.wikimedia.org/wiki/File:American_Park_-_1910_-_Ch%C3%A2teau_des_soupirs.jpg",
+        "status": 200,
+        "finalUrl": "https://commons.wikimedia.org/wiki/File:American_Park_-_1910_-_Ch%C3%A2teau_des_soupirs.jpg",
+        "bytes": 88270,
+        "sha256": "d59f4c6b19f761b1b4774fca011a260e2e1c36028f77cb4e7229b6d8b561269d",
+        "checkedAtUtc": "2026-11-01T14:51:03.042741+00:00"
+      },
+      {
+        "file": "commons-chateau.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/American_Park_-_1910_-_Ch%C3%A2teau_des_soupirs.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "status": 200,
+        "finalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/American_Park_-_1910_-_Ch%C3%A2teau_des_soupirs.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "bytes": 313914,
+        "sha256": "b2c735f639432d3a693bfe831a766d862291faf4d4b8acdd8224cc2d08081501",
+        "checkedAtUtc": "2026-11-01T14:51:03.390531+00:00"
+      },
+      {
+        "file": "commons-skating.html",
+        "url": "https://commons.wikimedia.org/wiki/File:American_Park_-_1910_-_Skating.jpg",
+        "status": 200,
+        "finalUrl": "https://commons.wikimedia.org/wiki/File:American_Park_-_1910_-_Skating.jpg",
+        "bytes": 88141,
+        "sha256": "263b698983b50609e14913370190d7918f2a68b1995afde15f37a05f4dc28c49",
+        "checkedAtUtc": "2026-11-01T14:51:03.882750+00:00"
+      },
+      {
+        "file": "commons-skating.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/American_Park_-_1910_-_Skating.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "status": 200,
+        "finalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/American_Park_-_1910_-_Skating.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "bytes": 254769,
+        "sha256": "63f37b924f109ed533004e2d4d60c16e4836df6b270a68c6fbf04aed36fff610",
+        "checkedAtUtc": "2026-11-01T14:51:04.061892+00:00"
+      },
+      {
+        "file": "commons-water.html",
+        "url": "https://commons.wikimedia.org/wiki/File:American_Park_-_Water_Toboggan.jpg",
+        "status": 200,
+        "finalUrl": "https://commons.wikimedia.org/wiki/File:American_Park_-_Water_Toboggan.jpg",
+        "bytes": 87342,
+        "sha256": "edd39500e8d47a370448dcb4ade4b40f1c86403ee3810bc8ff364502fadda3f8",
+        "checkedAtUtc": "2026-11-01T14:51:04.443888+00:00"
+      },
+      {
+        "file": "commons-water.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/American_Park_-_Water_Toboggan.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "status": 200,
+        "finalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/31/American_Park_-_Water_Toboggan.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "bytes": 162191,
+        "sha256": "151d5ebb149dc67e660f6a3824b70562992ef3eb0b283a69545e0eabc14510dc",
+        "checkedAtUtc": "2026-11-01T14:51:04.616362+00:00"
+      },
+      {
+        "file": "gil-blas-sru.xml",
+        "url": "https://gallica.bnf.fr/SRU?version=1.2&operation=searchRetrieve&query=dc.title+all+%22Gil+Blas%22+and+dc.date+all+%221910%2F07%2F10%22&maximumRecords=5",
+        "error": "HTTP Error 403: Forbidden"
+      },
+      {
+        "file": "mutile-1918-f3.html",
+        "url": "https://gallica.bnf.fr/ark:/12148/bpt6k5585428d/f3.texteBrut",
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ],
+    [
+      {
+        "name": "cparama",
+        "url": "https://www.cparama.com/forum/viewtopic.php?p=225824",
+        "status": 200,
+        "bytes": 361478,
+        "sha256": "b9af2cefad8876ea6edab24004c301e7f40e67f193d38a5008b0c32cb36db0a0",
+        "checkedAtUtc": "2026-11-01T14:53:10.901486+00:00"
+      },
+      {
+        "name": "carousel-organ78",
+        "url": "https://coaa.us/resources/Print-Files/Readings/Carousel-Organ-%2378.pdf",
+        "status": 200,
+        "bytes": 5276981,
+        "sha256": "233a5907100054e71aaa9cde96d0301233ce192305afe8aac63803a5430ef0ec",
+        "checkedAtUtc": "2026-11-01T14:53:11.784007+00:00"
+      }
+    ]
+  ],
+  "qualification": {
+    "qualified": true,
+    "kind": "Park",
+    "aliases": [
+      "American Park Marseille",
+      "Magic City Marseille",
+      "Parc américain de Marseille"
+    ],
+    "globalOfficialSearches": 10,
+    "allPagesReviewed": true,
+    "existingMatch": null,
+    "distinctions": [
+      "Magic City Paris6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+      "American Park Bordeaux distincthistoriccitypark"
+    ]
+  },
+  "prPolicy": "No PR before at least10completed parks; batch remains6. No releaseversion change."
+}

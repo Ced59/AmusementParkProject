@@ -1,0 +1,855 @@
+{
+  "entryId": "FR-park-77106934-0f4c-4eb3-b075-4097ab6078cd",
+  "parkId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+  "name": "Luna Park Paris",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-265743c7-e9d0-46b6-9f7f-3cffff8d932e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:36:49.9247159Z",
+      "appliedAt": "2026-10-23T01:36:49.924Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "410e37b68c90e1ca0465c8fb6a9efe56079dea155ac15022e90c6c6e69df7795",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "founderId"
+      ],
+      "summary": "Luna Park Paris : référence du cofondateur Gaston Akoun vérifiée et rattachée, identité existante conservée ; intégration partielle."
+    },
+    {
+      "eventId": "apply-48f48e01-c73c-4325-b5bc-af2c8ea97192",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:43:27.9140311Z",
+      "appliedAt": "2026-10-23T01:43:27.914Z",
+      "receiptFile": "03-items-apply.receipt.json",
+      "receiptSha256": "f5dad4cc40c8827c5dd85a6ff5a720622aaa7e8eb0b9770f218da109f04e22a4",
+      "counts": {
+        "created": 19,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.closingDateText",
+        "attractionDetails.manufacturerId",
+        "attractionDetails.model",
+        "attractionDetails.openingDateText",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "isVisible",
+        "name",
+        "type"
+      ],
+      "summary": "Luna Park Paris : inventaire historique porté à 25 éléments ; 18 ajouts, sept fiches conservées, Flying Turn identifié et constructeur Bartlett rattaché ; intégration partielle."
+    },
+    {
+      "eventId": "apply-6ba4e472-3e50-44e5-83f4-2a456855a03d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:48:38.2760671Z",
+      "appliedAt": "2026-10-23T01:48:38.276Z",
+      "receiptFile": "04-park-copy-apply.receipt.json",
+      "receiptSha256": "ca363ca9f47f966141da67d53900ef6f4256977afd38c536851b4ee377460250",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Luna Park Paris : descriptions du parc enrichies et relues dans huit langues, avec fondateurs, lieux nommés et distinction entre fermeture et démolition ; intégration partielle."
+    },
+    {
+      "eventId": "apply-e4d08079-a6dc-4842-8019-21f34cd13773",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:54:01.4854798Z",
+      "appliedAt": "2026-10-23T01:54:01.485Z",
+      "receiptFile": "04-items-1-apply.receipt.json",
+      "receiptSha256": "dfc73067837c30ddae59496925fa351ae1e309b3022ad824bffa5565004a930d",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Luna Park Paris : 24 descriptions originales en huit langues pour Roues diaboliques, Roulette humaine et Flying Turn ; intégration partielle."
+    },
+    {
+      "eventId": "apply-0eaa4b72-fde1-4119-aaab-c53a496918aa",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T02:09:01.9734906Z",
+      "appliedAt": "2026-10-23T02:09:01.973Z",
+      "receiptFile": "04-items-2-apply.receipt.json",
+      "receiptSha256": "7a278e5a1682311558b14acc308b0f00b5a5e10c58b02c21918cd80432001b93",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Water Chute et Scenic Railway enrichis ; Rivière Mystérieuse et couveuses décrites dans les huit langues, sources historiques vérifiées ; audit final restant."
+    },
+    {
+      "eventId": "apply-f872b022-68fd-438c-86d5-2a77ebb6c7af",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T02:14:02.0486799Z",
+      "appliedAt": "2026-10-23T02:14:02.048Z",
+      "receiptFile": "04-items-3-apply.receipt.json",
+      "receiptSha256": "4a900257aa903dd0ebe03bc5ac242f7eb09825804be3dd5b286c72c418434c9e",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Palais du Rire, Théâtre Tanagra et Crypte des Pharaons : 24 descriptions historiques relues et appliquées ; audit final restant."
+    },
+    {
+      "eventId": "apply-966287cd-566c-4cfa-a358-ccce4d5b0588",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T02:17:25.452243Z",
+      "appliedAt": "2026-10-23T02:17:25.452Z",
+      "receiptFile": "04-items-4-apply.receipt.json",
+      "receiptSha256": "c08c6d9ef023b19f07a26a29950380d2506085ea5b4b52a27c2692cb9d7b4f37",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Rink de 1909, Vélodrome du Rire et dancing : descriptions en huit langues appliquées, images historiques vérifiées ; audit final restant."
+    },
+    {
+      "eventId": "apply-9c09c2ac-3c79-44c5-95df-3243885cd7a3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T02:21:23.7341226Z",
+      "appliedAt": "2026-10-23T02:21:23.734Z",
+      "receiptFile": "04-items-5-apply.receipt.json",
+      "receiptSha256": "72e692cf5e2a688c802f67206736b74016de1410dbbcc53b9eac921bd1c37f54",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Notices des Gaufres Plouvier Fils, de l’entrée et de La Destruction de Johnstown appliquées en huit langues ; audit final restant."
+    },
+    {
+      "eventId": "apply-6c98613c-17b8-4059-8137-3b7f88ee0fa2",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T02:25:37.0577805Z",
+      "appliedAt": "2026-10-23T02:25:37.057Z",
+      "receiptFile": "04-items-6-apply.receipt.json",
+      "receiptSha256": "029c4a3ba430960fc2a506c3ba15ce458a0938103dd5a15a9f8f267a0b8a4f27",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Autodrome, Avions Bolides, Canots Automobiles et Ghost Train : notices sourcées en huit langues appliquées ; audit final restant."
+    },
+    {
+      "eventId": "apply-467fd162-5ca4-41a2-ae2e-e652db973252",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T02:28:17.3339092Z",
+      "appliedAt": "2026-10-23T02:28:17.333Z",
+      "receiptFile": "04-items-7-apply.receipt.json",
+      "receiptSha256": "38b9168e9d7a8a5095d2546857ddb2046280f24c62b70a38f86f0d16a793ab64",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Skooter, Théâtre Hollywood et Ménagerie Jouviano : huit langues appliquées, documentation publicitaire circonscrite ; audit final restant."
+    },
+    {
+      "eventId": "apply-318e2be4-1d3b-4c72-a2ab-dc7c025c88ab",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T02:29:28.198421Z",
+      "appliedAt": "2026-10-23T02:29:28.198Z",
+      "receiptFile": "04-items-8-apply.receipt.json",
+      "receiptSha256": "c9745de41c5bc11894cef54f428c8dfefb39fa8e0d085546dcd18ff756b95428",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Tickler et Witching Waves réécrits en huit langues avec détails historiques précis ; les 25 fiches ont leurs descriptions, audit final restant."
+    },
+    {
+      "eventId": "import-photo-746c5c4bcdf94777b6a6f3f497f1a2e4-2026-10-23T023132.284Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:31:32.284Z",
+      "appliedAt": "2026-10-23T02:31:32.284Z",
+      "receiptFile": "photo-01-overview-import-receipt.json",
+      "receiptSha256": "f66411b8a50bfdbb8d78ab722066ff89cf44a36e4917b4d41b0110ecba93df3c",
+      "imageId": "746c5c4bcdf94777b6a6f3f497f1a2e4",
+      "ownerId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "createdAt": "2026-10-23T02:31:27.938Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSjZzKCtz3zLvt9JI9W4tTczxyU0KviEbSWQUAcn-XuNA8L3gSMmrtCWz-PhX_2IsIlgqnwvU1_jWnUngUxBVUNYnZAot6q-CFf-T3DCOojQBApbzjKbgTu41XiA2w-iWIIIHe1RStWydd/s1600/vue+g%25C3%25A9n%25C3%25A9rale.jpg",
+      "summary": "Import privé du média historique photo-01-overview, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-d62676658e244ddfabca2a32d869a1cc-2026-10-23T023152.815Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:31:52.815Z",
+      "appliedAt": "2026-10-23T02:31:52.815Z",
+      "receiptFile": "photo-02-street-import-receipt.json",
+      "receiptSha256": "6dbdd2e999cfd0d9493eef6f33ab3bec0b1478f1cd533e08b5458280b91114d2",
+      "imageId": "d62676658e244ddfabca2a32d869a1cc",
+      "ownerId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "createdAt": "2026-10-23T02:31:48.865Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1zoxF8Q-A-992L250A-yqeu-9qg4GhTeXytP5k12osMQxIWC6R3myMAgXUIY91VV2D97GepVvUiwU0dFoeexGjzDt4-G-e73O_9e00usBClcRaJ1CYVMmQLkzAQupNxHaNXRr4Diy2aA2/s1600/entr%25C3%25A9e+porte+maillot.jpg",
+      "summary": "Import privé du média historique photo-02-street, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-866eacdc873241af81b3b6e2a87833b5-2026-10-23T023209.267Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:32:09.267Z",
+      "appliedAt": "2026-10-23T02:32:09.267Z",
+      "receiptFile": "photo-03-facade-import-receipt.json",
+      "receiptSha256": "edf4f6e1aa2752f28cac7639913dcef87a30e6a433df089655c083a22345aebf",
+      "imageId": "866eacdc873241af81b3b6e2a87833b5",
+      "ownerId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "createdAt": "2026-10-23T02:32:05.787Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1bN_EDTMU7hf7WC15F5lTkrbeW2UNGp7GvoZxlDvJFrCn8N1pBudT_OeLepBYGiINFMpGdo4VieLWN8m82qgWoDW54paPk_lXSCEZeO0Yc5WJ9m4LOVNBLlk9Kj5gVw_Jz0PlQuL8gsRn/s1600/th%25C3%25A9atre.jpg",
+      "summary": "Import privé du média historique photo-03-facade, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-2a06f5f8068f4081b1ea34ee0fb9ec53-2026-10-23T023224.519Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:32:24.519Z",
+      "appliedAt": "2026-10-23T02:32:24.519Z",
+      "receiptFile": "photo-04-artdeco-import-receipt.json",
+      "receiptSha256": "ff209e513fc0f7b0e8833d14ab602a2d54be21097a8fd05a716fa94d8f4c6732",
+      "imageId": "2a06f5f8068f4081b1ea34ee0fb9ec53",
+      "ownerId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "createdAt": "2026-10-23T02:32:20.897Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFLDrnNP4Dj7BfrSeLKGa-6dBYyjDIo8awXiUIch3CDaz2cF7iAkIYB3Q7IQjZvXSWOem6e8nK3p2ruoqXS_Ly7RxA0GGuHDL3WgKCaSOI6jhTg58xKvZCBkNYg2uV-eBBxK3_RSZu9d4L/s1600/entr%25C3%25A9e+luna+park.JPG",
+      "summary": "Import privé du média historique photo-04-artdeco, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-2a31fe84b515439a94f7e05d2e980b6c-2026-10-23T023408.597Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:34:08.597Z",
+      "appliedAt": "2026-10-23T02:34:08.597Z",
+      "receiptFile": "photo-05-night-import-receipt.json",
+      "receiptSha256": "ed6011c08c2f6e55c28f48e22507511683823da9e2ec9c52ffbdb78c2c5b3e0b",
+      "imageId": "2a31fe84b515439a94f7e05d2e980b6c",
+      "ownerId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "createdAt": "2026-10-23T02:34:05.197Z",
+      "sourceUrl": "https://www.unjourdeplusaparis.com/wp-content/uploads/2016/02/pierre-jahan-luna-park.jpg",
+      "summary": "Import privé du média historique photo-05-night, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-dbbec7c986f341c794813b8f19425e59-2026-10-23T023551.196Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:35:51.196Z",
+      "appliedAt": "2026-10-23T02:35:51.196Z",
+      "receiptFile": "photo-06-scenic-rocks-import-receipt.json",
+      "receiptSha256": "50593d93be7a3d583c052f3accdcbb395a71b2aa2270dd653d47c98a4ce2472f",
+      "imageId": "dbbec7c986f341c794813b8f19425e59",
+      "ownerId": "314e4c40-6994-4ef8-a9b0-d9bc400882b5",
+      "createdAt": "2026-10-23T02:35:47.485Z",
+      "sourceUrl": "https://cdn.paris.fr/paris/2021/04/06/original-b0526947710312e0c2c8be6d7b210ea1.jpg",
+      "summary": "Import privé du média historique photo-06-scenic-rocks, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3fecd2a66abe424799fd194a3add7b60-2026-10-23T023608.165Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:36:08.165Z",
+      "appliedAt": "2026-10-23T02:36:08.165Z",
+      "receiptFile": "photo-07-scenic-station-import-receipt.json",
+      "receiptSha256": "58cb27f2498463b484c9fe18666677ccd29d0e9bf90879f9861c8428ddde5e66",
+      "imageId": "3fecd2a66abe424799fd194a3add7b60",
+      "ownerId": "314e4c40-6994-4ef8-a9b0-d9bc400882b5",
+      "createdAt": "2026-10-23T02:36:04.799Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipAIpZZl0vtMyjWcJokRubcX_Z1wvCH-UMwdUX6xf8gN6hA-VegXG6MFaETQ8IkikDGMT11CLBpk5XF8682KCr-gAGZmFBQIxlvaJDoPrJ9tTo9Gf9kohQTeo5a8aZeimk_CxB_DuWBjv7/s1600/scenic+railway+gare.png",
+      "summary": "Import privé du média historique photo-07-scenic-station, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-817882c3a0074610a7ddae30939fd955-2026-10-23T023621.632Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:36:21.632Z",
+      "appliedAt": "2026-10-23T02:36:21.632Z",
+      "receiptFile": "photo-08-tickler-import-receipt.json",
+      "receiptSha256": "9e4e2170ed44be035072106750d90dbb13efe8dd2a9105018ac171b9c77b55d4",
+      "imageId": "817882c3a0074610a7ddae30939fd955",
+      "ownerId": "acaf6c9b-c308-4a70-855f-32eaec601648",
+      "createdAt": "2026-10-23T02:36:18.168Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7SuriaESBISr9wLE92Tl063dYaBGPil1o_HrROUfkEgpk8oJjV_I3P4ZBCfiLu1bbRDai0aBFosV4oHIKrV7iEph6VuEWZmizplEBc3iNMvf_Fy43ZCtL3iuMhyztL6DYRQI-ZBwpDoKN/s1600/le+chatouiilleur.jpg",
+      "summary": "Import privé du média historique photo-08-tickler, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-071e774e85844ef3aff5a9bb522e0de6-2026-10-23T023639.687Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:36:39.687Z",
+      "appliedAt": "2026-10-23T02:36:39.687Z",
+      "receiptFile": "photo-09-flying-turn-import-receipt.json",
+      "receiptSha256": "d06712a969d1e1452f5b2a678acc9e987db2a9aa45036eac3d0ffbd64586c5a3",
+      "imageId": "071e774e85844ef3aff5a9bb522e0de6",
+      "ownerId": "d430ce0b-11f8-4f38-9519-b8d482777c3f",
+      "createdAt": "2026-10-23T02:36:36.142Z",
+      "sourceUrl": "https://cdn.paris.fr/paris/2021/04/06/original-fc091a09b95e30fc8c1aec325f4b7f6e.jpg",
+      "summary": "Import privé du média historique photo-09-flying-turn, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-38bceaf28ff443e6a8be7af8e0bec2c8-2026-10-23T023815.837Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:38:15.837Z",
+      "appliedAt": "2026-10-23T02:38:15.837Z",
+      "receiptFile": "photo-10-water-pool-import-receipt.json",
+      "receiptSha256": "6cde8aef9f585405adbcf46f1b390282af98018abe50852765f3480589b2d745",
+      "imageId": "38bceaf28ff443e6a8be7af8e0bec2c8",
+      "ownerId": "6e9f1cc5-9260-404a-bf86-2eb5706578c4",
+      "createdAt": "2026-10-23T02:38:12.155Z",
+      "sourceUrl": "https://cdn.paris.fr/paris/2021/04/06/original-11c56390ae3f991ad042f93fab2f90a1.jpg",
+      "summary": "Import privé du média historique photo-10-water-pool, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-24e5200df19f4e869f7cbe2bfa7f8c96-2026-10-23T023836.683Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:38:36.683Z",
+      "appliedAt": "2026-10-23T02:38:36.683Z",
+      "receiptFile": "photo-11-water-landing-import-receipt.json",
+      "receiptSha256": "ff1cd0d9ea52f147705eaf67e6c6e2c6bc61d2ce36859a916985e706eedc85a7",
+      "imageId": "24e5200df19f4e869f7cbe2bfa7f8c96",
+      "ownerId": "6e9f1cc5-9260-404a-bf86-2eb5706578c4",
+      "createdAt": "2026-10-23T02:38:33.065Z",
+      "sourceUrl": "https://www.rollerenligne.com/wp-content/uploads/2021/02/water-chute-luna-park.jpg",
+      "summary": "Import privé du média historique photo-11-water-landing, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-fc1965538dd24f79b613082d897aa02c-2026-10-23T023859.059Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:38:59.059Z",
+      "appliedAt": "2026-10-23T02:38:59.059Z",
+      "receiptFile": "photo-12-water-panorama-import-receipt.json",
+      "receiptSha256": "4d2806cbde26bb55ed66522a179d4fcc4e648dcad313856167d62912c6fcbb15",
+      "imageId": "fc1965538dd24f79b613082d897aa02c",
+      "ownerId": "6e9f1cc5-9260-404a-bf86-2eb5706578c4",
+      "createdAt": "2026-10-23T02:38:55.561Z",
+      "sourceUrl": "https://www.unjourdeplusaparis.com/wp-content/uploads/2015/03/luna-park-paris.jpg",
+      "summary": "Import privé du média historique photo-12-water-panorama, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-de9ca061052f438f8f44fe549b05caa8-2026-10-23T023920.247Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:39:20.247Z",
+      "appliedAt": "2026-10-23T02:39:20.247Z",
+      "receiptFile": "photo-13-river-import-receipt.json",
+      "receiptSha256": "ec962e0d778338b0683fe577aee0743ae89783c893cff3e5e7b1d0950099e3b0",
+      "imageId": "de9ca061052f438f8f44fe549b05caa8",
+      "ownerId": "7f424333-f53e-414f-bfab-6dc7e6298b35",
+      "createdAt": "2026-10-23T02:39:16.79Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgorbqD1JD5kp8UXcnWg6pahVtkivtAdd1Z9VyKDk48PG5irZvPZg8Bqc-BF9KubvRordjGgNYmN21cgHqDlUnV94uUPh01frQD0WdYLX67nuacGghO5eeJgSigy92HC74qmLdWCQZIG2nZ/s1600/rivi%25C3%25A8re+myst%25C3%25A9rieuse.jpg",
+      "summary": "Import privé du média historique photo-13-river, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-846da4a62f9045d98984f51de5206c9d-2026-10-23T024123.974Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:41:23.974Z",
+      "appliedAt": "2026-10-23T02:41:23.974Z",
+      "receiptFile": "photo-14-roues-import-receipt.json",
+      "receiptSha256": "d11c04b7955f708278be7c349b0b8f711342637e58e4093cf937f7c15c34f3a4",
+      "imageId": "846da4a62f9045d98984f51de5206c9d",
+      "ownerId": "3aed408b-b4e3-43d6-91e2-d575a5b104f2",
+      "createdAt": "2026-10-23T02:41:20.517Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzauOfrM3-fFzMnQ03DE6UaRW_-2-3ZWzdpiuwdsShA0GWLG4nNll9UZcVrElIGU-9DTvBzBbjA-gAjTluivW5WTpFniOiRf3b3tUmnp5-HJ5JY9izSwEDIWquDvyNC76u-T9IvO4WxNhS/s1600/roue+diabolique.jpg",
+      "summary": "Import privé du média historique photo-14-roues, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-dcb0d46e0c8247c89ea10a0275973bd3-2026-10-23T024145.971Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:41:45.971Z",
+      "appliedAt": "2026-10-23T02:41:45.971Z",
+      "receiptFile": "photo-15-roulette-import-receipt.json",
+      "receiptSha256": "270f8f0d9982b6afe6b38f97fa603ae38eeb9e5f9c74df1618d6d2955235d79d",
+      "imageId": "dcb0d46e0c8247c89ea10a0275973bd3",
+      "ownerId": "0da662b6-8765-40bb-b07c-c26b8ff963e3",
+      "createdAt": "2026-10-23T02:41:42.466Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikezsb8xSV1cIQ2lgmT5URM59YAK6EI9TT4LcW-7FTuizMVnDoIZmqJmfDmpQ9ljY_KvFWnGlJFMww_upkxGWT_TwfXhNDRS9Kl37ntu0hmf5BHpJiJGD7H1qBI1OAlI0_21N1OmPNpcU_/s1600/la+roulette+humaine.jpg",
+      "summary": "Import privé du média historique photo-15-roulette, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-385fc0ec0a864c2ab307651a7c898beb-2026-10-23T024218.590Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:42:18.59Z",
+      "appliedAt": "2026-10-23T02:42:18.590Z",
+      "receiptFile": "photo-16-palais-rire-import-receipt.json",
+      "receiptSha256": "7f6eee9d85431033468576ed13530bc86d81a8bb005a6b24c551e18c8edac617",
+      "imageId": "385fc0ec0a864c2ab307651a7c898beb",
+      "ownerId": "3ab4744b-8920-4f36-b11f-1f1b8595a157",
+      "createdAt": "2026-10-23T02:42:13.525Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ-SXfqu_W8JMX1xTpjC7OV3_w27O_0ynZVDFvdSLbjLXnzVWRaqItWBGGxWPupPVptxXZwsqSJfBteEHfAta5diGBg-dIazNcYuZCssDRwuRD5V9yQBJCMOk25_WnmMHViRq713mubWzO/s1600/le+palais+du+rire.jpg",
+      "summary": "Import privé du média historique photo-16-palais-rire, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-d28ad15a630f4c0e9afbab71545ec1d8-2026-10-23T024233.152Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:42:33.152Z",
+      "appliedAt": "2026-10-23T02:42:33.152Z",
+      "receiptFile": "photo-17-dancing-import-receipt.json",
+      "receiptSha256": "3319ef4822bfbfdcdde6953ba7c722a2c3a0b7b49c31b5bdd2897c127e7b0c1e",
+      "imageId": "d28ad15a630f4c0e9afbab71545ec1d8",
+      "ownerId": "0c3f054d-a211-42b6-9087-4bfd0eb13ac6",
+      "createdAt": "2026-10-23T02:42:29.568Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjG2rDqdOLemgskpyHNBQgXjCaOl9PWwa7PSKj2-Gxcby7m51v40iZjXNraUco38WQuxC2WbcEzugz6fV7O4oBSyUXIJLAWhk6EnW97un4AEJFqhLwCBFkSDNhmLgSv50F9qoC-Dmbpbsu8/s1600/hall.jpg",
+      "summary": "Import privé du média historique photo-17-dancing, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-2a76a6d4b19c462f8a53154375cf0f75-2026-10-23T024347.556Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:43:47.556Z",
+      "appliedAt": "2026-10-23T02:43:47.556Z",
+      "receiptFile": "photo-18-skating-import-receipt.json",
+      "receiptSha256": "64eccb8217a0b7de5469d3fead22f26055322c29e3e63fe8601939daf74acf8e",
+      "imageId": "2a76a6d4b19c462f8a53154375cf0f75",
+      "ownerId": "52326ec6-5037-49f7-866b-bc866fa7f71c",
+      "createdAt": "2026-10-23T02:43:43.918Z",
+      "sourceUrl": "https://www.rollerenligne.com/wp-content/uploads/2021/02/skating-rink-luna-park.jpg",
+      "summary": "Import privé du média historique photo-18-skating, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-77bc3bd60e5e49e3b4e1afa2cd543e31-2026-10-23T024415.276Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:44:15.276Z",
+      "appliedAt": "2026-10-23T02:44:15.276Z",
+      "receiptFile": "photo-19-tumilet-import-receipt.json",
+      "receiptSha256": "60f72e72184eb862dae5a99db4cee9ac81e632a6cb2046b0f8b96bb518b8ad11",
+      "imageId": "77bc3bd60e5e49e3b4e1afa2cd543e31",
+      "ownerId": "52326ec6-5037-49f7-866b-bc866fa7f71c",
+      "createdAt": "2026-10-23T02:44:11.522Z",
+      "sourceUrl": "https://www.rollerenligne.com/wp-content/uploads/2021/02/carte-postale-skating-rink-luna-park-sam-nieswizski-03.jpg",
+      "summary": "Import privé du média historique photo-19-tumilet, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4533bb9df5854df6b65da2d638b63a47-2026-10-23T024437.559Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:44:37.559Z",
+      "appliedAt": "2026-10-23T02:44:37.559Z",
+      "receiptFile": "photo-20-velodrome-import-receipt.json",
+      "receiptSha256": "1e6c8a83d75224e7f6d2d7ef1fbe24726f7b8de96810c9ca521d30e2e5abd479",
+      "imageId": "4533bb9df5854df6b65da2d638b63a47",
+      "ownerId": "1e7e208a-29d3-42ed-a359-ea348e179550",
+      "createdAt": "2026-10-23T02:44:33.796Z",
+      "sourceUrl": "https://cdn.paris.fr/paris/2021/04/06/original-9dac18d23434689353f0aaeb72dc3b5b.jpg",
+      "summary": "Import privé du média historique photo-20-velodrome, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-1477432784a245d1b59becd606cd5a32-2026-10-23T024458.775Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:44:58.775Z",
+      "appliedAt": "2026-10-23T02:44:58.775Z",
+      "receiptFile": "photo-21-incubators-import-receipt.json",
+      "receiptSha256": "a87c02eb364924dbdf18920af4f5dc4beef3a1aa246ac550c0eb0c64f2180e3d",
+      "imageId": "1477432784a245d1b59becd606cd5a32",
+      "ownerId": "8f3a6073-0c2a-4360-b381-c2fc47297677",
+      "createdAt": "2026-10-23T02:44:55.188Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkWoMxrGjJgbCJcksZ_Oa5rnE0amPVpzQDzM08pydLuKpHESV91MERK6MO5bdKhEFCTjNeS2_58hHrzHpkDE8KXxIS-_ffmx_TPcPosRlGIjEF9qJ1zaixSpr-UIcFnqAklxztDrnQnZ3M/s1600/couveuse.jpg",
+      "summary": "Import privé du média historique photo-21-incubators, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-679619a1a4924eefb1b4d8faf76ac93a-2026-10-23T024545.485Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:45:45.485Z",
+      "appliedAt": "2026-10-23T02:45:45.485Z",
+      "receiptFile": "photo-22-crypte-import-receipt.json",
+      "receiptSha256": "2be0df57dea91ef812b0008eb3897ac28d93d015346c7c3e54a43176454d1324",
+      "imageId": "679619a1a4924eefb1b4d8faf76ac93a",
+      "ownerId": "67f2f91f-41b8-414c-8eef-aeafb511a78c",
+      "createdAt": "2026-10-23T02:45:42.079Z",
+      "sourceUrl": "https://sephardiclosangeles.org/wp-content/uploads/2019/07/76850.jpg",
+      "summary": "Import privé du média historique photo-22-crypte, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-7214d00c98b34577805788881eebd289-2026-10-23T024608.969Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:46:08.969Z",
+      "appliedAt": "2026-10-23T02:46:08.969Z",
+      "receiptFile": "photo-23-tanagra-import-receipt.json",
+      "receiptSha256": "2b067bb605d1ccc053535ba4c25aa38f4c61da6740c7227a79c6610530069a54",
+      "imageId": "7214d00c98b34577805788881eebd289",
+      "ownerId": "0a1910dd-4d90-4ea2-a760-fb7fe9b8aadf",
+      "createdAt": "2026-10-23T02:46:05.555Z",
+      "sourceUrl": "https://p.cartorum.fr/recto/800/000/741/719-paris-luna-park-theatre-tanagra-scene-grecque.jpg",
+      "summary": "Import privé du média historique photo-23-tanagra, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-72401ea6492844b792aa71bc200f4c3f-2026-10-23T024637.192Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:46:37.192Z",
+      "appliedAt": "2026-10-23T02:46:37.192Z",
+      "receiptFile": "photo-24-expropriation-import-receipt.json",
+      "receiptSha256": "e13ab3f094087655e9ee1c47c4baf0cadc66c182f6e522398890e4ee69cd2767",
+      "imageId": "72401ea6492844b792aa71bc200f4c3f",
+      "ownerId": "44b1a269-afba-48c8-ad69-a8785e036ecd",
+      "createdAt": "2026-10-23T02:46:33.822Z",
+      "sourceUrl": "https://cdn.paris.fr/paris/2021/04/06/original-91daace0f08930db3343309ee02234bc.jpg",
+      "summary": "Import privé du média historique photo-24-expropriation, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-a3405c8a60fb4c0b9d1aa310172f139a-2026-10-23T024707.270Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:47:07.27Z",
+      "appliedAt": "2026-10-23T02:47:07.270Z",
+      "receiptFile": "photo-25-boxing-import-receipt.json",
+      "receiptSha256": "6a2a0123af2799910952e4b58d7119a2d043c377e6f3fdfd3d4a26bd9c334d89",
+      "imageId": "a3405c8a60fb4c0b9d1aa310172f139a",
+      "ownerId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "createdAt": "2026-10-23T02:47:03.707Z",
+      "sourceUrl": "https://cdn.paris.fr/paris/2021/04/06/original-e7e9c97db847dcd5448124907c5413ce.jpg",
+      "summary": "Import privé du média historique photo-25-boxing, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-0b36527f006b40ba8c9f55bd01bb44b8-2026-10-23T024732.849Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T02:47:32.849Z",
+      "appliedAt": "2026-10-23T02:47:32.849Z",
+      "receiptFile": "photo-26-advert-import-receipt.json",
+      "receiptSha256": "9bc7d393384a9b47e710d4a6642fb00b8de3d0c22eda9e2fac55f0b0fafea62d",
+      "imageId": "0b36527f006b40ba8c9f55bd01bb44b8",
+      "ownerId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "createdAt": "2026-10-23T02:47:29.433Z",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiIi0lbxiEtJ4-xiEbdh2vuo9d1HCtbir0dw0ngPztZepQVf5lcFKbCqrvMGJuMXbpZJVlisvbdsO0QIdiq0ekanGhyphenhyphenYpQRBXZ95rVEysxMvTYA8ua0O5wGBjIIBCsBNB3D6SwTe8-qRvS/s1600/affiche+1936.jpg",
+      "summary": "Import privé du média historique photo-26-advert, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-6a7bfbe2-cbd9-4dec-948d-dc110b661dc1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T02:48:33.5097883Z",
+      "appliedAt": "2026-10-23T02:48:33.509Z",
+      "receiptFile": "04-items-9-apply.receipt.json",
+      "receiptSha256": "97362401d0b57c6f8711904d3f0357af8e27b98f50cad0dd2608933fa38101aa",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Théâtre Tanagra précisé dans les huit langues à partir de la scène grecque retrouvée ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5123d3d15ee049f184122a9df89f1436-2026-10-23T030135.627Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T03:01:35.627Z",
+      "appliedAt": "2026-10-23T03:01:35.627Z",
+      "receiptFile": "photo-27-pulbaum-object-import-receipt.json",
+      "receiptSha256": "04bc4f447f3ce129ad3f6e781a467a772f7077cc20b626a0cfea6ae03af35034",
+      "imageId": "5123d3d15ee049f184122a9df89f1436",
+      "ownerId": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+      "createdAt": "2026-10-23T03:01:32.041Z",
+      "sourceUrl": "https://www.citedelamer.com/wp-content/uploads/2023/03/La-Cite-de-la-Mer_Dossier-de-Presse_Exposition-Titanic-2023_V2.pdf",
+      "summary": "Import privé du média historique photo-27-pulbaum-object, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-c15c50a4-8535-4fc7-9f5c-ea38860642da",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T03:01:59.6893077Z",
+      "appliedAt": "2026-10-23T03:01:59.689Z",
+      "receiptFile": "05-reference-biographies-v2-apply.receipt.json",
+      "receiptSha256": "48134cd1caac0ba4056f419a3b625cec28f6817ca6ef2f3e50e6df8dc8525379",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt"
+      ],
+      "summary": "Biographies Akoun et Bartlett enrichies et relues en huit langues, références privées conservées."
+    },
+    {
+      "eventId": "apply-b7f8c0ba-f966-46e8-a23e-70ef9960c924",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T03:05:10.9537987Z",
+      "appliedAt": "2026-10-23T03:05:10.953Z",
+      "receiptFile": "08-timeline-existing-apply.receipt.json",
+      "receiptSha256": "30ae858b196dce6be5462246f58cdec64b8525914414385020dd9de03c6a4083",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "mainImageId",
+        "sources",
+        "summaries",
+        "titles"
+      ],
+      "summary": "Six jalons historiques réécrits en huit langues, quatre images attribuées, dates et article existant préservés."
+    },
+    {
+      "eventId": "apply-7685f1dc-6e93-4a81-b54e-457763140f5b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T03:09:34.8301447Z",
+      "appliedAt": "2026-10-23T03:09:34.830Z",
+      "receiptFile": "08-pulbaum-article-v2-apply.receipt.json",
+      "receiptSha256": "5962375f29b743698f7666d6e4d05683ab991fd6548b42ae3b461a24087ddcdb",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article Pulbaum–Titanic existant enrichi, illustré et relu dans les huit langues, slug et blocs antérieurs conservés."
+    },
+    {
+      "eventId": "apply-3afe6eb2-339d-4e58-8977-cfd341c53482",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T03:11:45.1985567Z",
+      "appliedAt": "2026-10-23T03:11:45.198Z",
+      "receiptFile": "08-timeline-additions-apply.receipt.json",
+      "receiptSha256": "6b867cc3f963b8262425c91331e364494b3eef15c3bd8fee562bd8287bc60a0b",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Ajout de deux jalons sourcés : construction Flying Turn en 1934 et fermeture skating en 1925, huit langues."
+    },
+    {
+      "eventId": "import-photo-e68c6ff3415941ca9b1be4de377a0fb1-2026-10-23T031407.985Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T03:14:07.985Z",
+      "appliedAt": "2026-10-23T03:14:07.985Z",
+      "receiptFile": "photo-28-scenic-bend-import-receipt.json",
+      "receiptSha256": "24bc4300f18291ac8d55075b8d6d72bcf9351128a85096900e455317e22fc848",
+      "imageId": "e68c6ff3415941ca9b1be4de377a0fb1",
+      "ownerId": "314e4c40-6994-4ef8-a9b0-d9bc400882b5",
+      "createdAt": "2026-10-23T03:14:04.136Z",
+      "sourceUrl": "https://p.cartorum.fr/recto/800/000/762/921-paris-luna-park-scenic-railway.jpg",
+      "summary": "Import privé du média historique photo-28-scenic-bend, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-77d7368e6f6f4e8b976f8e1012636ffa-2026-10-23T031432.980Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T03:14:32.98Z",
+      "appliedAt": "2026-10-23T03:14:32.980Z",
+      "receiptFile": "photo-29-coup-vent-import-receipt.json",
+      "receiptSha256": "de264c4923b2f492e778b828876fd825798b8b5bb1b354d32dee1a9817198ebd",
+      "imageId": "77d7368e6f6f4e8b976f8e1012636ffa",
+      "ownerId": "3ab4744b-8920-4f36-b11f-1f1b8595a157",
+      "createdAt": "2026-10-23T03:14:29.575Z",
+      "sourceUrl": "https://p.cartorum.fr/recto/800/000/684/774-paris-luna-park-coup-vent.jpg",
+      "summary": "Import privé du média historique photo-29-coup-vent, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-7ec5bd00-e186-4c77-a665-10c526df1255",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T03:17:09.266784Z",
+      "appliedAt": "2026-10-23T03:17:09.266Z",
+      "receiptFile": "08-editorial-cleanup-apply.receipt.json",
+      "receiptSha256": "4b1d330731eab2b7fe350199bb4c41e0aea914fdd1ec944a6b5c723787aab57e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Relecture finale Witching Waves : phrase générique retirée en huit langues et répétition espagnole corrigée."
+    },
+    {
+      "eventId": "apply-b52a3d0c-9051-4c41-aa9b-676d5d667746",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T03:31:47.8353922Z",
+      "appliedAt": "2026-10-23T03:31:47.835Z",
+      "receiptFile": "09-closure-article-v2-apply.receipt.json",
+      "receiptSha256": "c1c1c95435aad7a3e38e9e6a9405a16d711700fb3a764660a2292657eac1c2c0",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article de fermeture Luna Park–Porte Maillot ajouté en huit langues, sources primaires1946/1974 et image de1946, privé."
+    }
+  ],
+  "publicationOrNoop": []
+}

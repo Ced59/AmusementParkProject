@@ -1,0 +1,1306 @@
+{
+  "entryId": "FR-candidate-ecdb81d09bead4",
+  "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+  "name": "Planète magique",
+  "editorialAuditPassed": true,
+  "publicationAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "publicationAuthorization": {
+    "reviewedAtUtc": "2026-11-01T14:11:11.804999+00:00",
+    "authorizationDate": null,
+    "userInstructions": [
+      "Continue jusqu’à avoir terminé l’intégration de tous les parcs du backlog français […] Avec publication fb pour chaque une fois intégrés et publies.",
+      "Tu avance et publue également les parcs bloqués. […] Si c’est question de droit sur les photos pas de soucis tu peux y aller."
+    ],
+    "scope": "Publication initiale du parc historique masqué et annonce officielle ; aucun effacement, aucune clôture du backlog sous96 sans exception acceptée.",
+    "nationalRequirement": "La section Objectif du backlog national lie le seuil strictement supérieur à95 à la clôture de la ligne. La ligne reste partial.",
+    "publishedBacklogScope": "Le workflow published-park-backlog-workflow.md exige une fiche présente dans ce backlog et déjà visible au début ; Planète magique a été créé masqué dans cette campagne et relève de la publication explicitement autorisée à l’étape9.",
+    "priorPendingQuestion": "Une acceptation du score 92 reste nécessaire pour clôturer à ce score. Elle n’est pas déduite de Continue ; aucune exception enregistrée comme acceptée.",
+    "qualityGatesPreserved": [
+      "audit complet frais",
+      "logo officiel",
+      "zéro bloqueur API",
+      "corpus8langues relu",
+      "contrôles publics avant Facebook",
+      "pas de falsification des lacunes"
+    ],
+    "closureExceptionAccepted": false,
+    "actualScoreAfterPublication": 93,
+    "closureRequirement": "Le résultat réel 93/100 reste sous le seuil de clôture. Aucune acceptation de cette exception n’est déduite des instructions de publication."
+  },
+  "siteUrl": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique",
+  "publishedAtUtc": "2026-11-01T14:12:06.3729161Z",
+  "publicationOperationId": "139b5fb9-02b5-40ca-bcb3-b308d35ecb4d",
+  "checkedAtUtc": "2026-11-03T03:44:57.404610+00:00",
+  "outcome": "partial",
+  "state": "Enrichissement public vérifié : 69 médias dont premières photos de l’Orphée, quatre descriptions développées et section sur les collaborateurs dans les huit langues. Score93 sans bloqueur, intégration maintenue partielle.",
+  "lastDataIntegrationAtUtc": "2026-11-03T03:37:21.099Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-0fdd4ef3-61fd-4876-9c0e-7635f805794a",
+  "actualCompleteness": {
+    "completenessScore": 93,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 108,
+    "earnedPoints": 100,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-03T03:35:55.4976376Z",
+    "items": 45,
+    "zones": 1,
+    "attractions": 21,
+    "attractionStatuses": {
+      "Removed": 21
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 21,
+    "attractionsWithImage": 16,
+    "attractionImageGaps": [
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo"
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot"
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan"
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum"
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace"
+      }
+    ],
+    "ownedImages": 69,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "579545c3-3ef2-47a1-9a98-517e9173e14e",
+        "name": "Accueil groupes",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "da666920-9c51-4214-b6de-8b944f2d66eb",
+        "name": "Aladin",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "db31a440-1989-477f-89b9-ed0c5159b05e",
+        "name": "Apesantaria",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+        "name": "BD Zap",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "f9b76b19-80ab-4bd9-a6bc-0404f306228a",
+        "name": "Boutique partenaires",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "6decc4f5-4394-406c-87c3-2ae6583819cb",
+        "name": "Boutique principale",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "f21c94e8-ce22-4cc1-ba57-0f841359df6e",
+        "name": "Cartoon Center",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "ce166b97-2f91-4a06-9c29-2907cedecd93",
+        "name": "Croq’ Planète",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "73973e4f-1358-4a2f-b005-ebad4e6da35a",
+        "name": "Dragon bleu",
+        "category": "Other",
+        "images": 3
+      },
+      {
+        "id": "9d58901b-7740-4a87-937c-e15970ee4b36",
+        "name": "El Gringo",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "6485bef2-862a-4e33-9124-f6b6a2c32148",
+        "name": "Eldorado",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4a39d1bd-6380-4280-9e78-e4b2fceb011c",
+        "name": "Entrée de la rue Papin",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "8d04281d-4165-4a21-9640-1ff6cba9e9c8",
+        "name": "Espace bleu",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a4dc0b6c-a498-4b31-915c-de09c4619aa8",
+        "name": "Gadget",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a06fd2dc-d25c-4a47-8472-bdd2aa9d213f",
+        "name": "La Belle Eugénie",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "a613df39-66f9-424b-b6c7-db925094045a",
+        "name": "La Comète",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "d5d98cbf-0f6b-4f24-b5d8-83c215031ec9",
+        "name": "La Machine à voyager dans le temps",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+        "name": "La Maison de Barbie",
+        "category": "Attraction",
+        "images": 6
+      },
+      {
+        "id": "13d7e812-3d55-41a8-a5e9-6e99e9d5609c",
+        "name": "La Navette",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "7bae4ee1-e114-45a6-8e03-79ee6c993b9b",
+        "name": "Le Bouquet",
+        "category": "Show",
+        "images": 3
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "56eb5fd1-d60f-4d37-9844-0e1df416963e",
+        "name": "Le Triangle des Bermudes",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "dd7ea24c-0480-49ec-9fdd-6358a51d977b",
+        "name": "Les Cités d’Or",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "d533ee04-5159-442f-82fb-3941d2ff4086",
+        "name": "Les Entrechats",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f23dafb9-8267-41ea-97a3-60d3a9c6fcc7",
+        "name": "Mirage d’électrons",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+        "name": "Orphée Théâtre",
+        "category": "Show",
+        "images": 2
+      },
+      {
+        "id": "e44e3831-9825-4ddf-a5ee-b3738f75a986",
+        "name": "Ouragan",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "537e044d-954e-48e3-b20e-e39287ed56c9",
+        "name": "Planet Ciné",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "1f0adae9-0375-49d7-98e3-9a9bf021066c",
+        "name": "Planète Molle",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "63e345fc-1cd1-468e-80db-0fa62a1fd612",
+        "name": "Planète Roll",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "e7b412c0-114b-439d-997b-a36fc27192c5",
+        "name": "Point d’information",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "9d337a12-f7c7-4f67-a5ef-cd881571ae2d",
+        "name": "Point rencontre",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "dab88ec9-a998-4850-a908-f5c257121758",
+        "name": "Studio TV",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "d9573431-d334-4da0-b62c-306d34750100",
+        "name": "Talisman",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "615522fe-28e8-4bbb-8191-47464e61d1db",
+        "name": "Toilettes des îles",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "f900e0ee-91fd-4933-8755-3c5b56f3f37d",
+        "name": "Transistor",
+        "category": "Show",
+        "images": 2
+      },
+      {
+        "id": "8d4c4a34-3daf-4d8e-a57d-36de22da9469",
+        "name": "Vecteur beauté",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "278f1f45-e637-4fb9-aa08-46c97a3474b9",
+        "name": "Vestiaire groupes et individuel",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "c43cdf10-f50b-4b4d-adf3-daea132acdc9",
+        "name": "WC des stars",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "4f14c6c7-cc29-4c39-b3c2-c7ac23b7a0ec",
+        "name": "WC Scooter",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "ed8bb737-5828-4ac1-84d4-0a239b08f009",
+        "name": "WC Téléphone",
+        "category": "Service",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 1,
+    "geolocationGaps": [
+      {
+        "id": "579545c3-3ef2-47a1-9a98-517e9173e14e",
+        "name": "Accueil groupes",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "da666920-9c51-4214-b6de-8b944f2d66eb",
+        "name": "Aladin",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "db31a440-1989-477f-89b9-ed0c5159b05e",
+        "name": "Apesantaria",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+        "name": "BD Zap",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f9b76b19-80ab-4bd9-a6bc-0404f306228a",
+        "name": "Boutique partenaires",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "6decc4f5-4394-406c-87c3-2ae6583819cb",
+        "name": "Boutique principale",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "f21c94e8-ce22-4cc1-ba57-0f841359df6e",
+        "name": "Cartoon Center",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "ce166b97-2f91-4a06-9c29-2907cedecd93",
+        "name": "Croq’ Planète",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "73973e4f-1358-4a2f-b005-ebad4e6da35a",
+        "name": "Dragon bleu",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "9d58901b-7740-4a87-937c-e15970ee4b36",
+        "name": "El Gringo",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "6485bef2-862a-4e33-9124-f6b6a2c32148",
+        "name": "Eldorado",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "8d04281d-4165-4a21-9640-1ff6cba9e9c8",
+        "name": "Espace bleu",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a4dc0b6c-a498-4b31-915c-de09c4619aa8",
+        "name": "Gadget",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a06fd2dc-d25c-4a47-8472-bdd2aa9d213f",
+        "name": "La Belle Eugénie",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "a613df39-66f9-424b-b6c7-db925094045a",
+        "name": "La Comète",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "d5d98cbf-0f6b-4f24-b5d8-83c215031ec9",
+        "name": "La Machine à voyager dans le temps",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+        "name": "La Maison de Barbie",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "13d7e812-3d55-41a8-a5e9-6e99e9d5609c",
+        "name": "La Navette",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "7bae4ee1-e114-45a6-8e03-79ee6c993b9b",
+        "name": "Le Bouquet",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "56eb5fd1-d60f-4d37-9844-0e1df416963e",
+        "name": "Le Triangle des Bermudes",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "dd7ea24c-0480-49ec-9fdd-6358a51d977b",
+        "name": "Les Cités d’Or",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d533ee04-5159-442f-82fb-3941d2ff4086",
+        "name": "Les Entrechats",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f23dafb9-8267-41ea-97a3-60d3a9c6fcc7",
+        "name": "Mirage d’électrons",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+        "name": "Orphée Théâtre",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "e44e3831-9825-4ddf-a5ee-b3738f75a986",
+        "name": "Ouragan",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "537e044d-954e-48e3-b20e-e39287ed56c9",
+        "name": "Planet Ciné",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "1f0adae9-0375-49d7-98e3-9a9bf021066c",
+        "name": "Planète Molle",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "63e345fc-1cd1-468e-80db-0fa62a1fd612",
+        "name": "Planète Roll",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e7b412c0-114b-439d-997b-a36fc27192c5",
+        "name": "Point d’information",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "9d337a12-f7c7-4f67-a5ef-cd881571ae2d",
+        "name": "Point rencontre",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "dab88ec9-a998-4850-a908-f5c257121758",
+        "name": "Studio TV",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "d9573431-d334-4da0-b62c-306d34750100",
+        "name": "Talisman",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "615522fe-28e8-4bbb-8191-47464e61d1db",
+        "name": "Toilettes des îles",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "f900e0ee-91fd-4933-8755-3c5b56f3f37d",
+        "name": "Transistor",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "8d4c4a34-3daf-4d8e-a57d-36de22da9469",
+        "name": "Vecteur beauté",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "278f1f45-e637-4fb9-aa08-46c97a3474b9",
+        "name": "Vestiaire groupes et individuel",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "c43cdf10-f50b-4b4d-adf3-daea132acdc9",
+        "name": "WC des stars",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "4f14c6c7-cc29-4c39-b3c2-c7ac23b7a0ec",
+        "name": "WC Scooter",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "ed8bb737-5828-4ac1-84d4-0a239b08f009",
+        "name": "WC Téléphone",
+        "category": "Service",
+        "status": null
+      }
+    ],
+    "history": 9,
+    "parkHistory": 8,
+    "itemHistory": 1,
+    "historyWithSource": 9,
+    "historyWithImage": 9,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "publicItems": 45,
+    "allItemsWith8Descriptions": 45,
+    "itemsWithImage": 23,
+    "publishedImages": 69,
+    "majorItemsWithThreeImages": 9,
+    "majorItemsTotal": 18,
+    "articleHeadings": 5,
+    "articleParagraphs": 9,
+    "articleImageBlocks": 4,
+    "articleLanguages": 8
+  },
+  "freshExport": {
+    "checkedAtUtc": "2026-11-03T03:36:39.889572+00:00",
+    "freshExportAtUtc": "2026-11-03T03:35:55.4976376Z",
+    "sha256": "d21cf1f502869566a3911df73fb97fb05ee1b0df759b5a84ca4a9fb4db348417",
+    "differences": [],
+    "explicitEmptyFieldNormalizations": [
+      {
+        "blockId": "2f3ece19825651989658efc8b99f58a7",
+        "field": "imageId",
+        "default": null
+      },
+      {
+        "blockId": "2f3ece19825651989658efc8b99f58a7",
+        "field": "imageIds",
+        "default": []
+      },
+      {
+        "blockId": "2f3ece19825651989658efc8b99f58a7",
+        "field": "captions",
+        "default": []
+      },
+      {
+        "blockId": "dcc5e6a0f64e58db8c78d5f2c6ee6912",
+        "field": "imageId",
+        "default": null
+      },
+      {
+        "blockId": "dcc5e6a0f64e58db8c78d5f2c6ee6912",
+        "field": "imageIds",
+        "default": []
+      },
+      {
+        "blockId": "dcc5e6a0f64e58db8c78d5f2c6ee6912",
+        "field": "captions",
+        "default": []
+      },
+      {
+        "blockId": "c70fa0a1f9665876b34b182af71ba8d6",
+        "field": "headingLevel",
+        "default": null
+      },
+      {
+        "blockId": "c70fa0a1f9665876b34b182af71ba8d6",
+        "field": "texts",
+        "default": []
+      },
+      {
+        "blockId": "c70fa0a1f9665876b34b182af71ba8d6",
+        "field": "imageIds",
+        "default": []
+      }
+    ],
+    "requestAliasNormalization": "itemId redondant absent de export ; ownerId et parkItemId explicites identiques vérifiés pour les9faits."
+  },
+  "followupContentAudit": {
+    "reviewedAtUtc": "2026-11-03T03:38:19.083676+00:00",
+    "contentAuditPassed": true,
+    "entryId": "FR-candidate-ecdb81d09bead4",
+    "freshExportAtUtc": "2026-11-03T03:35:55.4976376Z",
+    "basis": "Fresh export reconciled to reviewed accepted state, followed only by three explicitly reviewed alt-text corrections. Whole corpus rescanned. Prior full language-by-language reviews preserved; all new prose, metadata, source qualifications and native photos personally reviewed.",
+    "comparisonDifferences": 0,
+    "corpusFields": 1877,
+    "encodingFindings": 0,
+    "paragraphDuplicates": 0,
+    "mechanicalFlags": 0,
+    "crossCorpusLongSequences": 0,
+    "currentScore": {
+      "completenessScore": 93,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "closedParkItems": "All21attractions retained Removed, no invented current operations, schedules, prices or GPS.",
+    "sourceGaps": "Prior map, manufacturer, access, missing photograph and individual date gaps retained. Navette six-passenger capacity proven by first-person programming CV only; no invented company responsibility.",
+    "photoIdentification": "Orphée large tiered auditorium corroborates archived dedicated theatre description; visibly modern black tiered seating, white fragmented columns, classical paintings and matching proscenium. Distinct from smaller basement cinema and the preserved historic foyer. Barbie organ-like display visibly contains dolls, not perfume dispensers.",
+    "idempotence": {
+      "operationId": "7e0fa6c0-a548-4ca9-a378-8701e1327294",
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 127,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    "imagesToPublish": [
+      "5a4aa12d52794c4ea85159e92a6b5029",
+      "18a8e4a691d64660aba5f98e4e627eac",
+      "107181381e504540b5f5cd6d47e2ada6",
+      "9a6d6d312e454749917b95c5b2584686",
+      "0a4d6d0646b2459382a9bae98f5c3132",
+      "b7e6000b815341c8a7bdea68da5b45e3",
+      "b4c351c4629042eeb7827c93a0bc6be5",
+      "3b04229fa95547d0826a81510c758cd7",
+      "3ff5515b24db4dd5944f272c1b845f77"
+    ],
+    "authorization": "Prior explicit France campaign instruction covers publication including blocked historical parks and photos. Integration closure remains partial at93; no exact score exception inferred. Existing Facebook announcement must not be duplicated.",
+    "proofSha256": {
+      "11-fresh-full-export.json": "d21cf1f502869566a3911df73fb97fb05ee1b0df759b5a84ca4a9fb4db348417",
+      "11-consolidated-audit-graph.json": "01df623ef0a6902d77d503d7a55270fbd93ea17f096c84c8b799ec3f8bcb18c4",
+      "11-export-reconciliation.json": "cb7266b00a6b464090ec1597ef589c3ea82bd026ada610b88dbf7309dcac07d5",
+      "11-idempotence.preview.json": "08193803abaa9d6ef56c32dac16ff06ebfa04a4989863356ed5cffffe7089077",
+      "11-primary-descriptions-personal-preview-review.json": "83eed03686622851fbbe183d0efb5b27f33c42183d435a376001800c4bd072cd",
+      "11-primary-article-personal-preview-review.json": "7ca5fc908635b4565826e6d9738d67054f182b57be60f47fad0c3eabd26ef04e",
+      "11-refine-alt-texts-personal-preview-review.json": "d074afffed464ffa2d47a4835f893b8df2fe978ab22459548d70ca6768716aae"
+    }
+  },
+  "historyDiagnostics": {
+    "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+    "parkName": "Planète magique",
+    "factCount": 35,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1980,
+        "resourceCount": 3,
+        "sourcedResourceCount": 3,
+        "publishedResourceCount": 3,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 1990,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 2,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2000,
+        "resourceCount": 3,
+        "sourcedResourceCount": 3,
+        "publishedResourceCount": 3,
+        "subjectCount": 2,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2010,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 1,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 0
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 9
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 26
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": true,
+      "hasCompleteSourceCoverage": true,
+      "hasMajorMilestone": true,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 9,
+      "sourcedFactCount": 9,
+      "majorFactCount": 9,
+      "indexableKeyYears": []
+    }
+  },
+  "backlogClosureEligible": false,
+  "acceptedScoreException": false,
+  "publicVerification": {
+    "mobilePages": 44,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "failures": [],
+    "desktop": {
+      "checkedAtUtc": "2026-11-03T03:44:43.804083+00:00",
+      "status": 200,
+      "historyLinkCount": 1,
+      "clickedUrl": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "horizontalOverflow": false
+    },
+    "normalMobileHistoryClick": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+    "orpheeCurrentImagePublicDto": {
+      "checkedAtUtc": "2026-11-03T03:44:57.360976+00:00",
+      "url": "https://amusement-parks.fun/api/park-items/d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+      "expectedCurrentImageId": "b4c351c4629042eeb7827c93a0bc6be5",
+      "actualCurrentImageId": null,
+      "matches": false
+    }
+  },
+  "previousAudit": "planete-magique-publication-audit.json",
+  "followupOperations": [
+    {
+      "step": "11-navette-capacity",
+      "operationId": "ca70a21d-35ab-4cdf-9b36-75cc4c4735f3",
+      "appliedAtUtc": "2026-11-03T03:26:21.072188Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "step": "11-primary-descriptions",
+      "operationId": "75d155d4-e252-425a-9f43-5fec7ec35917",
+      "appliedAtUtc": "2026-11-03T03:32:18.4146899Z",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "step": "11-primary-article",
+      "operationId": "124cb414-c6ee-4709-9f61-c0ce358a2a3e",
+      "appliedAtUtc": "2026-11-03T03:35:39.7147609Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "step": "11-refine-alt-texts",
+      "operationId": "0fdd4ef3-61fd-4876-9c0e-7635f805794a",
+      "appliedAtUtc": "2026-11-03T03:37:21.0996554Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "step": "11-publish-new-images",
+      "operationId": "a34ccae6-b358-4a30-8e70-d90d97bda54f",
+      "appliedAtUtc": "2026-11-03T03:38:52.0868428Z",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "step": "11-orphee-main-image",
+      "operationId": "b75a48e2-e491-47eb-96dc-f9df33337277",
+      "appliedAtUtc": "2026-11-03T03:41:25.1323667Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "publicationId": "04aa1a368f6d481a84d45873742c826f",
+    "externalUrl": "https://www.facebook.com/1285475681307050/posts/122125615305424431",
+    "publishedAtUtc": null,
+    "checkedAtUtc": "2026-11-03T03:44:57.404610+00:00",
+    "source": "ResolveFacebookPublication officiel ; annonce existante conservée, aucun nouvel envoi. Date exacte du post non retournée."
+  },
+  "newSources": {
+    "checkedAtUtc": "2026-11-03T03:23:40.806439+00:00",
+    "entryId": "FR-candidate-ecdb81d09bead4",
+    "owner": "Conversation France",
+    "officialReconciliation": {
+      "parkSearch": "11-search-planete.json",
+      "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+      "standaloneSearch": "11-search-standalone.json",
+      "standaloneMatches": 0,
+      "actualCompleteness": "11-completeness.json"
+    },
+    "newPrimarySources": [
+      {
+        "url": "https://www.musiquedesplantes.fr/maxime-haudebourg",
+        "finding": "First-person CV names study/programming for the Navette and time machine; Navette six passengers. Does not establish manufacturer."
+      },
+      {
+        "url": "https://atelier-thierry-loubry.com/",
+        "finding": "Sculptor/decorator portfolio explicitly labels Planète Magique sets. BD Zap Gaston/Papyrus subjects match retained inventory; Gadget is directly labelled. Mini-Pouces files show a model only, not proof of an operated extra attraction."
+      },
+      {
+        "url": "https://stephane-paillard.fr/planete-magique-1990",
+        "finding": "Page title dates the project to 1989 despite URL suffix 1990. Identifies installation of Barbie and Yves Rocher spaces. Native photographs show workshop fabrication, unfinished installation, finished interiors and theatre. Retrospective WordPress October17 date is not used as an exact construction date."
+      },
+      {
+        "url": "https://www.montgeron.fr/wp-content/uploads/2023/09/Sucho.pdf",
+        "finding": "Christine Suchaud catalogue p15 lists Planète Magique set fabrication within 1989–1993 experience. No exact item attribution or contract date established; no guessed manufacturer record."
+      }
+    ],
+    "withheld": [
+      "No MS+ or decorator mapped to attraction manufacturer merely to raise score.",
+      "No theatre photo assigned to Planet Ciné: archived small cinema has blue/Egyptian interior; large classical stage and tiered seating correspond to Orphée Théâtre.",
+      "No new Mini-Pouces operated attraction from design-model photos alone.",
+      "No perfume-tree identification from the doll display; the finished photograph clearly shows Barbie dolls under cylinders.",
+      "Offsite workshop images do not count as general views of the operating park."
+    ],
+    "newMediaSelection": [
+      "BD Zap: Gaston office and Papyrus scene",
+      "Gadget: themed square",
+      "Barbie: installation, finished entrance, doll display",
+      "Vecteur beauté: working computer station",
+      "Orphée Théâtre: tiered seating and stage front"
+    ],
+    "sourceRights": "Reuse explicitly authorized by the user in this conversation; credit actual source holders and retain rights-reserved status. Do not imply an open licence or independent permission from the photographers."
+  },
+  "newPhotoProofs": [
+    {
+      "key": "11-barbie-dolls",
+      "imageId": "5a4aa12d52794c4ea85159e92a6b5029",
+      "ownerId": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0179.jpg",
+      "importCreatedAtUtc": "2026-11-03T03:33:52.427Z",
+      "importUpdatedAtUtc": "2026-11-03T03:33:55.786Z",
+      "isPublished": true,
+      "isCurrent": false,
+      "sourceSha256": "299dc9003f2347deaaaab4c48a6ba32cd7cd26c96723c5f2625e6b87727e95dc",
+      "sourcePages": [
+        "https://stephane-paillard.fr/planete-magique-1990"
+      ],
+      "visualReview": "Finished original clearly shows fashion dolls inside transparent cylinders, ornamental organ pipes and adjacent Vecteur beauté label. The author identifies Barbie and Yves Rocher installations. Assign to Barbie display, never to perfume tree, Nintendo or a newly invented attraction. Photograph carries no third-party watermark.",
+      "rights": "User explicitly authorized photo reuse. Source holder credited, actual photographer unknown, rights reserved. No open licence or separate photographer permission claimed. Native source bytes retained, no crop, resize, recompression, added watermark or image alteration.",
+      "dateEvidence": "1989 is the explicit project year in the Paillard portfolio title; no exact day inferred."
+    },
+    {
+      "key": "11-barbie-entrance",
+      "imageId": "18a8e4a691d64660aba5f98e4e627eac",
+      "ownerId": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0182.jpg",
+      "importCreatedAtUtc": "2026-11-03T03:33:37.83Z",
+      "importUpdatedAtUtc": "2026-11-03T03:33:41.209Z",
+      "isPublished": true,
+      "isCurrent": false,
+      "sourceSha256": "3e03b0bd38237bbb5b8f5946e558ee8de59750e102d4342bef8fd0aac0b844f9",
+      "sourcePages": [
+        "https://stephane-paillard.fr/planete-magique-1990"
+      ],
+      "visualReview": "Legible exact La Maison de Barbie sign establishes owner unambiguously. Complete entrance and planted border differ from earlier abandoned images. Source title supplies project year, not a specific opening-day photograph.",
+      "rights": "User explicitly authorized photo reuse. Source holder credited, actual photographer unknown, rights reserved. No open licence or separate photographer permission claimed. Native source bytes retained, no crop, resize, recompression, added watermark or image alteration.",
+      "dateEvidence": "1989 is the explicit project year in the Paillard portfolio title; no exact day inferred."
+    },
+    {
+      "key": "11-barbie-installation",
+      "imageId": "107181381e504540b5f5cd6d47e2ada6",
+      "ownerId": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/imm-005.jpg",
+      "importCreatedAtUtc": "2026-11-03T03:33:23.649Z",
+      "importUpdatedAtUtc": "2026-11-03T03:33:27.042Z",
+      "isPublished": true,
+      "isCurrent": false,
+      "sourceSha256": "15bb4e79fbc4e7af41b40cabaaac199ed191ffad6ae2da976328a06f31972e9b",
+      "sourcePages": [
+        "https://stephane-paillard.fr/planete-magique-1990"
+      ],
+      "visualReview": "Paillard explicitly identifies the Barbie installation and dates project 1989. Pink arches, unfinished pastel cabinets and stepladders match his finished photos and retained 2004 remains. Actual on-site installation, not opening day. No exact date inferred.",
+      "rights": "User explicitly authorized photo reuse. Source holder credited, actual photographer unknown, rights reserved. No open licence or separate photographer permission claimed. Native source bytes retained, no crop, resize, recompression, added watermark or image alteration.",
+      "dateEvidence": "1989 is the explicit project year in the Paillard portfolio title; no exact day inferred."
+    },
+    {
+      "key": "11-bdzap-gaston",
+      "imageId": "9a6d6d312e454749917b95c5b2584686",
+      "ownerId": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+      "sourceUrl": "https://atelier-thierry-loubry.com/wp-content/uploads/2020/10/bureau-gaston-lagaffe-planete-magique-paris.jpg",
+      "importCreatedAtUtc": "2026-11-03T03:32:37.506Z",
+      "importUpdatedAtUtc": "2026-11-03T03:32:41.038Z",
+      "isPublished": true,
+      "isCurrent": false,
+      "sourceSha256": "c0dc481f3ed33a2b09ba77250db65dfe917e02a311da850aea36a113da580eb6",
+      "sourcePages": [
+        "https://atelier-thierry-loubry.com/"
+      ],
+      "visualReview": "Clearly labelled Gaston Lagaffe set in the primary portfolio. Sleeping character in cupboard, black cat, gull and two typewriters personally inspected. BD Zap retained description explicitly names Gaston; no invented date. Complements the prior Yoko and Tuniques Bleues views.",
+      "rights": "User explicitly authorized photo reuse. Source holder credited, actual photographer unknown, rights reserved. No open licence or separate photographer permission claimed. Native source bytes retained, no crop, resize, recompression, added watermark or image alteration.",
+      "dateEvidence": "Undated historical set photograph explicitly identified in the decorator portfolio."
+    },
+    {
+      "key": "11-bdzap-papyrus",
+      "imageId": "0a4d6d0646b2459382a9bae98f5c3132",
+      "ownerId": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+      "sourceUrl": "https://atelier-thierry-loubry.com/wp-content/uploads/2020/10/sculpture-decor-bd-planete-magique-paris.jpg",
+      "importCreatedAtUtc": "2026-11-03T03:32:53.676Z",
+      "importUpdatedAtUtc": "2026-11-03T03:32:57.052Z",
+      "isPublished": true,
+      "isCurrent": false,
+      "sourceSha256": "639d68a0eac5460cd059f53ea3b87057bce4249efff2606a65e1c5d118a33ce9",
+      "sourcePages": [
+        "https://atelier-thierry-loubry.com/"
+      ],
+      "visualReview": "Primary portfolio labels neighbouring detailed photo Téti Chérie and identifies all as Planète Magique BD scenery. Same black throne, columns and characters throughout the series. Existing sourced BD Zap inventory explicitly includes Papyrus. This is the broad complete scene, not the ambiguous cinema doorway.",
+      "rights": "User explicitly authorized photo reuse. Source holder credited, actual photographer unknown, rights reserved. No open licence or separate photographer permission claimed. Native source bytes retained, no crop, resize, recompression, added watermark or image alteration.",
+      "dateEvidence": "Undated historical set photograph explicitly identified in the decorator portfolio."
+    },
+    {
+      "key": "11-gadget-square",
+      "imageId": "b7e6000b815341c8a7bdea68da5b45e3",
+      "ownerId": "a4dc0b6c-a498-4b31-915c-de09c4619aa8",
+      "sourceUrl": "https://atelier-thierry-loubry.com/wp-content/uploads/2020/10/place-gadgets-planete-magique-paris.jpg",
+      "importCreatedAtUtc": "2026-11-03T03:33:09.332Z",
+      "importUpdatedAtUtc": "2026-11-03T03:33:12.732Z",
+      "isPublished": true,
+      "isCurrent": false,
+      "sourceSha256": "c61a7813037d9b9115a055ad06bcb05785771aac325318b237f238fc43b760dc",
+      "sourcePages": [
+        "https://atelier-thierry-loubry.com/"
+      ],
+      "visualReview": "Exact primary label Place Gadget; blue robot, bicycle, artificial tree, yellow walls and ceiling sky all visible. Actual installed set, not artwork or model; undated. New broad view complements existing close machine panels.",
+      "rights": "User explicitly authorized photo reuse. Source holder credited, actual photographer unknown, rights reserved. No open licence or separate photographer permission claimed. Native source bytes retained, no crop, resize, recompression, added watermark or image alteration.",
+      "dateEvidence": "Undated historical set photograph explicitly identified in the decorator portfolio."
+    },
+    {
+      "key": "11-orphee-seating",
+      "imageId": "b4c351c4629042eeb7827c93a0bc6be5",
+      "ownerId": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0175.jpg",
+      "importCreatedAtUtc": "2026-11-03T03:34:21.788Z",
+      "importUpdatedAtUtc": "2026-11-03T03:34:25.168Z",
+      "isPublished": true,
+      "isCurrent": true,
+      "sourceSha256": "67577476129cb6586bd9fb90c4b9afff156249bc27b44c517ac39ccb165801ba",
+      "sourcePages": [
+        "https://stephane-paillard.fr/planete-magique-1990"
+      ],
+      "visualReview": "Primary Planète Magique project gallery contains a coherent four-photo large theatre sequence. Tiered seating and tall stage fit the archived Orphée Théâtre description; separate small Planet Ciné has documented blue/Egyptian interior. Here seating, wall paintings and segmented columns are directly visible. Do not infer hydraulic motion from the still photograph.",
+      "rights": "User explicitly authorized photo reuse. Source holder credited, actual photographer unknown, rights reserved. No open licence or separate photographer permission claimed. Native source bytes retained, no crop, resize, recompression, added watermark or image alteration.",
+      "dateEvidence": "1989 is the explicit project year in the Paillard portfolio title; no exact day inferred."
+    },
+    {
+      "key": "11-orphee-stage",
+      "imageId": "3b04229fa95547d0826a81510c758cd7",
+      "ownerId": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0180.jpg",
+      "importCreatedAtUtc": "2026-11-03T03:34:36.857Z",
+      "importUpdatedAtUtc": "2026-11-03T03:34:40.332Z",
+      "isPublished": true,
+      "isCurrent": false,
+      "sourceSha256": "55d08fac67dd96051aa00e69f7f0645306282b13dacecdd461992e8faefd3a81",
+      "sourcePages": [
+        "https://stephane-paillard.fr/planete-magique-1990"
+      ],
+      "visualReview": "Same theatre room as the immediately preceding seating and side-wall photographs; proscenium and curtain visible from above. Separate from Egyptian-fronted Planet Ciné. Complements seating rather than duplicating it. People are small incidental figures, no identities inferred.",
+      "rights": "User explicitly authorized photo reuse. Source holder credited, actual photographer unknown, rights reserved. No open licence or separate photographer permission claimed. Native source bytes retained, no crop, resize, recompression, added watermark or image alteration.",
+      "dateEvidence": "1989 is the explicit project year in the Paillard portfolio title; no exact day inferred."
+    },
+    {
+      "key": "11-vecteur-computer",
+      "imageId": "3ff5515b24db4dd5944f272c1b845f77",
+      "ownerId": "8d4c4a34-3daf-4d8e-a57d-36de22da9469",
+      "sourceUrl": "https://stephane-paillard.fr/wp-content/uploads/2022/11/numerisation0005.jpg",
+      "importCreatedAtUtc": "2026-11-03T03:34:06.771Z",
+      "importUpdatedAtUtc": "2026-11-03T03:34:10.188Z",
+      "isPublished": true,
+      "isCurrent": false,
+      "sourceSha256": "53aa3e408afb4133c4617e5ad95bb20896736b78ac5348f00bddceff866cca9a",
+      "sourcePages": [
+        "https://stephane-paillard.fr/planete-magique-1990"
+      ],
+      "visualReview": "Computer screen displays faces, with attached printer and mouse, beneath the same foliage/arches as explicitly labelled Vecteur beauté in adjacent photographs. Identified primary Yves Rocher installation. This improves on stripped postclosure computers without claiming an exact visitor session.",
+      "rights": "User explicitly authorized photo reuse. Source holder credited, actual photographer unknown, rights reserved. No open licence or separate photographer permission claimed. Native source bytes retained, no crop, resize, recompression, added watermark or image alteration.",
+      "dateEvidence": "1989 is the explicit project year in the Paillard portfolio title; no exact day inferred."
+    }
+  ],
+  "remainingSourceGaps": {
+    "score": "93/100 réel ; aucune exception nominative acceptée.",
+    "manufacturerAndAccess": "Fabricants des installations et restrictions d’accès d’époque non établis. Le rôle d’étude et programmation de Haudebourg ne vaut pas constructeur.",
+    "missingAttractionPhotos": [
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo"
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot"
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan"
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum"
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace"
+      }
+    ],
+    "gps": "Un point établi sur45éléments ; installations disparues, aucune position inventée.",
+    "annualMaps": "Aucune édition officielle annuelle authentifiée ; brochure moderne en euros et plans non datés non convertis en cartes historiques datées.",
+    "photoAdvances": "BD Zap passe de2à4vues ; Orphée de0à2. Les cinq attractions encore sans image restent explicitement signalées."
+  },
+  "corpus": {
+    "reviewedAtUtc": "2026-11-03T03:38:19.083676+00:00",
+    "contentAuditPassed": true,
+    "entryId": "FR-candidate-ecdb81d09bead4",
+    "freshExportAtUtc": "2026-11-03T03:35:55.4976376Z",
+    "basis": "Fresh export reconciled to reviewed accepted state, followed only by three explicitly reviewed alt-text corrections. Whole corpus rescanned. Prior full language-by-language reviews preserved; all new prose, metadata, source qualifications and native photos personally reviewed.",
+    "comparisonDifferences": 0,
+    "corpusFields": 1877,
+    "encodingFindings": 0,
+    "paragraphDuplicates": 0,
+    "mechanicalFlags": 0,
+    "crossCorpusLongSequences": 0,
+    "currentScore": {
+      "completenessScore": 93,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "closedParkItems": "All21attractions retained Removed, no invented current operations, schedules, prices or GPS.",
+    "sourceGaps": "Prior map, manufacturer, access, missing photograph and individual date gaps retained. Navette six-passenger capacity proven by first-person programming CV only; no invented company responsibility.",
+    "photoIdentification": "Orphée large tiered auditorium corroborates archived dedicated theatre description; visibly modern black tiered seating, white fragmented columns, classical paintings and matching proscenium. Distinct from smaller basement cinema and the preserved historic foyer. Barbie organ-like display visibly contains dolls, not perfume dispensers.",
+    "idempotence": {
+      "operationId": "7e0fa6c0-a548-4ca9-a378-8701e1327294",
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 127,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    "imagesToPublish": [
+      "5a4aa12d52794c4ea85159e92a6b5029",
+      "18a8e4a691d64660aba5f98e4e627eac",
+      "107181381e504540b5f5cd6d47e2ada6",
+      "9a6d6d312e454749917b95c5b2584686",
+      "0a4d6d0646b2459382a9bae98f5c3132",
+      "b7e6000b815341c8a7bdea68da5b45e3",
+      "b4c351c4629042eeb7827c93a0bc6be5",
+      "3b04229fa95547d0826a81510c758cd7",
+      "3ff5515b24db4dd5944f272c1b845f77"
+    ],
+    "authorization": "Prior explicit France campaign instruction covers publication including blocked historical parks and photos. Integration closure remains partial at93; no exact score exception inferred. Existing Facebook announcement must not be duplicated.",
+    "proofSha256": {
+      "11-fresh-full-export.json": "d21cf1f502869566a3911df73fb97fb05ee1b0df759b5a84ca4a9fb4db348417",
+      "11-consolidated-audit-graph.json": "01df623ef0a6902d77d503d7a55270fbd93ea17f096c84c8b799ec3f8bcb18c4",
+      "11-export-reconciliation.json": "cb7266b00a6b464090ec1597ef589c3ea82bd026ada610b88dbf7309dcac07d5",
+      "11-idempotence.preview.json": "08193803abaa9d6ef56c32dac16ff06ebfa04a4989863356ed5cffffe7089077",
+      "11-primary-descriptions-personal-preview-review.json": "83eed03686622851fbbe183d0efb5b27f33c42183d435a376001800c4bd072cd",
+      "11-primary-article-personal-preview-review.json": "7ca5fc908635b4565826e6d9738d67054f182b57be60f47fad0c3eabd26ef04e",
+      "11-refine-alt-texts-personal-preview-review.json": "d074afffed464ffa2d47a4835f893b8df2fe978ab22459548d70ca6768716aae"
+    }
+  },
+  "publicChecks": {
+    "mobilePages": 44,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "failures": [],
+    "desktop": {
+      "checkedAtUtc": "2026-11-03T03:44:43.804083+00:00",
+      "status": 200,
+      "historyLinkCount": 1,
+      "clickedUrl": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+      "horizontalOverflow": false
+    },
+    "normalMobileHistoryClick": "https://amusement-parks.fun/fr/park/305f6144-8dc2-4b24-a23d-d44749fe7d83/planete-magique/history",
+    "orpheeCurrentImagePublicDto": {
+      "checkedAtUtc": "2026-11-03T03:44:57.360976+00:00",
+      "url": "https://amusement-parks.fun/api/park-items/d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+      "expectedCurrentImageId": "b4c351c4629042eeb7827c93a0bc6be5",
+      "actualCurrentImageId": null,
+      "matches": false
+    }
+  },
+  "idempotence": {
+    "operationId": "7e0fa6c0-a548-4ca9-a378-8701e1327294",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 127,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "batchCompletedCount": 8,
+  "prCreated": false,
+  "versionChanged": false,
+  "proofSha256": {
+    "11-fresh-full-export.json": "d21cf1f502869566a3911df73fb97fb05ee1b0df759b5a84ca4a9fb4db348417",
+    "11-consolidated-public-graph.json": "05b595944b6204784e04563efc3682ac6a92de0e6f3f028df3f40cf33d171358",
+    "11-idempotence.preview.json": "08193803abaa9d6ef56c32dac16ff06ebfa04a4989863356ed5cffffe7089077",
+    "11-post-main-completeness.json": "9f67cd1e427a4396d6c44539547115591c5fe5760f29a3144cf589270f16673e",
+    "11-facebook-resolve.json": "ba6c018499e321ec58932b8f6effa5c69612c92fc3413a577f0a2f06360503ab",
+    "public-verification-11/mobile-report.json": "1e4e41305f421e5b4e3d51eb87c282ea3d5b1815dc26d59fee354b04d3b8db20",
+    "public-verification-11/desktop-history.json": "a3a682534712943918cf58700bf463181178b82709bf042562eeef51dccfc85d"
+  }
+}

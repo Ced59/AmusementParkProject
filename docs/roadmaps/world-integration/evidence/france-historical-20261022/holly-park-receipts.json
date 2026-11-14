@@ -1,0 +1,738 @@
+{
+  "entryId": "FR-park-1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+  "parkId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+  "name": "Holly Park",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-7ce8cf28-4b98-4708-b6e3-71f6a0315b61",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:02:45.5091715Z",
+      "appliedAt": "2026-10-23T00:02:45.509Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "75f7e894deed603171fb1a1bbac74efb77bbe2313ab00e205f1f4775f406a627",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "openingDateText",
+        "position",
+        "postalCode",
+        "status",
+        "street",
+        "type",
+        "websiteUrl"
+      ],
+      "summary": "Holly Park : identité historique du parc de la Grifferaie, exploitation 2001–2014, adresse et coordonnées sourcées ; site officiel archivé conservé."
+    },
+    {
+      "eventId": "apply-952b7ee9-15fc-400b-bf29-2745f67e53c0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:16:57.3840531Z",
+      "appliedAt": "2026-10-23T00:16:57.384Z",
+      "receiptFile": "03-items-v2-apply.receipt.json",
+      "receiptSha256": "071cbee5505245ac990584bcade23f8df896778112424dfff6034e3769a6a156",
+      "counts": {
+        "created": 17,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.carsPerTrain",
+        "attractionDetails.closingDate",
+        "attractionDetails.closingDateText",
+        "attractionDetails.heightInFeet",
+        "attractionDetails.heightInMeters",
+        "attractionDetails.isIndoor",
+        "attractionDetails.lengthInFeet",
+        "attractionDetails.lengthInMeters",
+        "attractionDetails.manufacturerId",
+        "attractionDetails.model",
+        "attractionDetails.openingDate",
+        "attractionDetails.openingDateText",
+        "attractionDetails.restraintType",
+        "attractionDetails.ridersPerVehicle",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "attractionDetails.trainCount",
+        "category",
+        "position",
+        "type"
+      ],
+      "summary": "Holly Park : inventaire historique de 19 lieux, dont 13 attractions ; correction des deux coasters existants, dates annuelles et trois géolocalisations sourcées."
+    },
+    {
+      "eventId": "apply-db8f23ad-01df-4d9c-b283-d18a5c848653",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:19:34.7846727Z",
+      "appliedAt": "2026-10-23T00:19:34.784Z",
+      "receiptFile": "04-park-apply.receipt.json",
+      "receiptSha256": "32cae1e6c2b52bd3da78d2d538f85c1a7601ee37cb81978443f50cff64ec8804",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Holly Park : description éditoriale du parc en huit langues, domaine de la Grifferaie et patrimoine des attractions."
+    },
+    {
+      "eventId": "apply-f51831a1-7fe8-4231-9191-ca503747b5e8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:27:24.6302214Z",
+      "appliedAt": "2026-10-23T00:27:24.630Z",
+      "receiptFile": "04-coasters-v2-apply.receipt.json",
+      "receiptSha256": "13b556f67d5c0cf9ae4ce46e8d86421b7288685f256e45f7cec0cdb261624e38",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.accessConditions",
+        "attractionDetails.ridersPerVehicle",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Holly Park : descriptions des deux coasters en huit langues et conditions historiques d’Alpina Bobs vérifiées sur son panneau photographié."
+    },
+    {
+      "eventId": "apply-b2b3bf23-ea9e-4d0c-9ce5-5311444c163e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:30:16.1137994Z",
+      "appliedAt": "2026-10-23T00:30:16.113Z",
+      "receiptFile": "04-garden-rides-apply.receipt.json",
+      "receiptSha256": "2c57df50ff288b16d075903647aee48c1364657081584e8d2cf60ab48ad6359a",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Holly Park : tacots, petit train et chevaux galopants décrits en huit langues à partir des vues et récits d’époque."
+    },
+    {
+      "eventId": "apply-703cce5a-6af6-4e88-81b0-829f2e37499e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:30:52.7802976Z",
+      "appliedAt": "2026-10-23T00:30:52.780Z",
+      "receiptFile": "04-water-thrills-apply.receipt.json",
+      "receiptSha256": "193ada9fd0ce6fd399d2807f2051c3d24b17e7a84ba55a0d7922407c3c0844e8",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Holly Park : Enterprise, bateaux tamponneurs, toboggan aquatique et petits bateaux décrits en huit langues."
+    },
+    {
+      "eventId": "apply-52415b32-ab83-4780-a263-5fe0a438049d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:36:18.9379826Z",
+      "appliedAt": "2026-10-23T00:36:18.937Z",
+      "receiptFile": "04-play-rides-apply.receipt.json",
+      "receiptSha256": "f2363de549364e56d2b0c146798e96be2436df0096cf3d12ad1374697bae5519",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Holly Park : autos tamponneuses, manège pour enfants, gonflables et cinéma historique renseignés en huit langues."
+    },
+    {
+      "eventId": "apply-82cb9a99-c019-44b5-941e-3ac384403c53",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:37:18.5423878Z",
+      "appliedAt": "2026-10-23T00:37:18.542Z",
+      "receiptFile": "04-services-apply.receipt.json",
+      "receiptSha256": "f92d176a491d880cc09d82647d12bb5383f5e7a183633d65fdef0d6344ecf1e9",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Holly Park : restauration, accès, parking, pique-nique, sanitaires et château décrits en huit langues ; corpus local contrôlé."
+    },
+    {
+      "eventId": "import-photo-0443b432f5e34deba02ce7a28c8f8fdf-2026-10-23T004415.602Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:44:15.602Z",
+      "appliedAt": "2026-10-23T00:44:15.602Z",
+      "receiptFile": "05-logo-import-receipt.json",
+      "receiptSha256": "5fa60f8a16ea404bd99f581f98749dc93a27b9f14e9c97e8c4f50b980b21dd49",
+      "imageId": "0443b432f5e34deba02ce7a28c8f8fdf",
+      "ownerId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+      "createdAt": "2026-10-23T00:44:12.077Z",
+      "sourceUrl": "https://web.archive.org/web/20131215112526id_/http://www.hollypark.fr/wp-content/uploads/2013/03/cropped-cropped-cropped-bandeau_header-e1364504338278.png",
+      "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3b993d84243245cab60bca0522eee10f-2026-10-23T004443.309Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:44:43.309Z",
+      "appliedAt": "2026-10-23T00:44:43.309Z",
+      "receiptFile": "05-park-family-chateau-import-receipt.json",
+      "receiptSha256": "b6a8968f251b15eae579c8d5592b91b99b56322744af9cf7aadae359f653219e",
+      "imageId": "3b993d84243245cab60bca0522eee10f",
+      "ownerId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+      "createdAt": "2026-10-23T00:44:39.932Z",
+      "sourceUrl": "https://web.archive.org/web/20150107055528id_/http://www.hollypark.fr/wp-content/uploads/2014/03/img_accueil.jpg",
+      "summary": "Import privé du média historique 05-park-family-chateau, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-d94df72819f54fcfab8a1cca20a67352-2026-10-23T004508.258Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:45:08.258Z",
+      "appliedAt": "2026-10-23T00:45:08.258Z",
+      "receiptFile": "05-park-overview-import-receipt.json",
+      "receiptSha256": "30cbdaf882eea6dfec8cddd229a63d76475749d1e3804c0f5b4177732f55da5e",
+      "imageId": "d94df72819f54fcfab8a1cca20a67352",
+      "ownerId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+      "createdAt": "2026-10-23T00:45:04.087Z",
+      "sourceUrl": "https://rcdb.com/aacjaha",
+      "summary": "Import privé du média historique 05-park-overview, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-780b4058fff6404c91eb78332ba1eee4-2026-10-23T004522.333Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:45:22.333Z",
+      "appliedAt": "2026-10-23T00:45:22.333Z",
+      "receiptFile": "05-park-promo2005-import-receipt.json",
+      "receiptSha256": "99c8c8b7754fbdaf6e65298fdc002b3e62cb31c247523f88441474b9ee5f721f",
+      "imageId": "780b4058fff6404c91eb78332ba1eee4",
+      "ownerId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+      "createdAt": "2026-10-23T00:45:18.721Z",
+      "sourceUrl": "https://web.archive.org/web/20051012200138id_/http://www.hollypark.fr/images/fond.jpg",
+      "summary": "Import privé du média historique 05-park-promo2005, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-00f8730f092e405b88373855d5f62ff3-2026-10-23T004536.338Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:45:36.338Z",
+      "appliedAt": "2026-10-23T00:45:36.338Z",
+      "receiptFile": "05-park-promo2013-import-receipt.json",
+      "receiptSha256": "db8e284522a350b63a82b253fdc613729a569b87dcad86cbf66dab5d30352c4c",
+      "imageId": "00f8730f092e405b88373855d5f62ff3",
+      "ownerId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+      "createdAt": "2026-10-23T00:45:32.985Z",
+      "sourceUrl": "https://web.archive.org/web/20131215104220id_/http://www.hollypark.fr/wp-content/uploads/2013/03/accueil1.jpg",
+      "summary": "Import privé du média historique 05-park-promo2013, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-0223ad78b00c4d6db850b709b8204c6c-2026-10-23T004550.540Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:45:50.54Z",
+      "appliedAt": "2026-10-23T00:45:50.540Z",
+      "receiptFile": "05-entrance-import-receipt.json",
+      "receiptSha256": "2b9ab5d86317558fa95fa421564d91834ba92bfd7dc5249f8c02ed7860d327ff",
+      "imageId": "0223ad78b00c4d6db850b709b8204c6c",
+      "ownerId": "dd509622-85f2-4e22-aed8-ae9222cd4cab",
+      "createdAt": "2026-10-23T00:45:47.073Z",
+      "sourceUrl": "https://rcdb.com/aacjaea",
+      "summary": "Import privé du média historique 05-entrance, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-9fc7347f021b4aa0a3f03302d209c5be-2026-10-23T005031.587Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:50:31.587Z",
+      "appliedAt": "2026-10-23T00:50:31.587Z",
+      "receiptFile": "05-alpina-overall-import-receipt.json",
+      "receiptSha256": "a478e6ca7c4bb0d4416962962e52b0cf131380c9226a95518fdfac6145a016a6",
+      "imageId": "9fc7347f021b4aa0a3f03302d209c5be",
+      "ownerId": "cbff1a1d-2897-4aa6-bdb3-3040bc917e1b",
+      "createdAt": "2026-10-23T00:50:27.849Z",
+      "sourceUrl": "https://rcdb.com/aacjaka",
+      "summary": "Import privé du média historique 05-alpina-overall, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f15d42bc4786408c989c1e438b152103-2026-10-23T005045.982Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:50:45.982Z",
+      "appliedAt": "2026-10-23T00:50:45.982Z",
+      "receiptFile": "05-alpina-station-import-receipt.json",
+      "receiptSha256": "3e6983f63a1143c5cec975057822144ea82df3a46563be82e6f762bee0bf6701",
+      "imageId": "f15d42bc4786408c989c1e438b152103",
+      "ownerId": "cbff1a1d-2897-4aa6-bdb3-3040bc917e1b",
+      "createdAt": "2026-10-23T00:50:42.453Z",
+      "sourceUrl": "https://rcdb.com/aacjafa",
+      "summary": "Import privé du média historique 05-alpina-station, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4300c65585864678b91c2aadb7fe0469-2026-10-23T005103.109Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:51:03.109Z",
+      "appliedAt": "2026-10-23T00:51:03.109Z",
+      "receiptFile": "05-alpina-sign-import-receipt.json",
+      "receiptSha256": "e5dc64cdc92a290e8ad7d380412a8c5ae096e5dd4bbb97700a9152b65364773a",
+      "imageId": "4300c65585864678b91c2aadb7fe0469",
+      "ownerId": "cbff1a1d-2897-4aa6-bdb3-3040bc917e1b",
+      "createdAt": "2026-10-23T00:50:59.688Z",
+      "sourceUrl": "https://rcdb.com/aacjala",
+      "summary": "Import privé du média historique 05-alpina-sign, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-bee6824052a943189560f7af3541c263-2026-10-23T005125.324Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:51:25.324Z",
+      "appliedAt": "2026-10-23T00:51:25.324Z",
+      "receiptFile": "05-family-overall-import-receipt.json",
+      "receiptSha256": "676c15c302a87cbc8e48ea89e84710c3bfcca7a2e051876cbee2a650cbb7aeae",
+      "imageId": "bee6824052a943189560f7af3541c263",
+      "ownerId": "df3778a4-7c3e-434c-a142-2c33f0c2f1e7",
+      "createdAt": "2026-10-23T00:51:21.934Z",
+      "sourceUrl": "https://franceweek-end.com/wp-content/uploads/2018/05/grand-1373948668.jpg",
+      "summary": "Import privé du média historique 05-family-overall, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-fd2e565e8e7b4cdcb8c83c66bcef9236-2026-10-23T005154.058Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:51:54.058Z",
+      "appliedAt": "2026-10-23T00:51:54.058Z",
+      "receiptFile": "05-family-flowers-import-receipt.json",
+      "receiptSha256": "e7c80dfc217baf26e4613e1bbcf8ebfe1b83efeb5e707e4a94a3cfd973698ecc",
+      "imageId": "fd2e565e8e7b4cdcb8c83c66bcef9236",
+      "ownerId": "df3778a4-7c3e-434c-a142-2c33f0c2f1e7",
+      "createdAt": "2026-10-23T00:51:50.636Z",
+      "sourceUrl": "https://franceweek-end.com/wp-content/uploads/2018/05/grand-1373948663.jpg",
+      "summary": "Import privé du média historique 05-family-flowers, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-c5f3c62e87a24c7a95bc2e4111d4d978-2026-10-23T005217.733Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:52:17.733Z",
+      "appliedAt": "2026-10-23T00:52:17.733Z",
+      "receiptFile": "05-family-face-import-receipt.json",
+      "receiptSha256": "b78492c99f15d1200bf1615bacd263369647d3c2c1f5c8236b0741e6032a4d39",
+      "imageId": "c5f3c62e87a24c7a95bc2e4111d4d978",
+      "ownerId": "df3778a4-7c3e-434c-a142-2c33f0c2f1e7",
+      "createdAt": "2026-10-23T00:52:14.231Z",
+      "sourceUrl": "https://rcdb.com/aacjana",
+      "summary": "Import privé du média historique 05-family-face, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-0b84ef2d9b50405ea82a3838e392bb85-2026-10-23T005232.038Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:52:32.038Z",
+      "appliedAt": "2026-10-23T00:52:32.038Z",
+      "receiptFile": "05-ballade-import-receipt.json",
+      "receiptSha256": "c6ace9204a342dcf1359b833da59036ab8ddc7b63d1eae8315656c3f4fd3f06e",
+      "imageId": "0b84ef2d9b50405ea82a3838e392bb85",
+      "ownerId": "dd1bf9f0-635b-431f-8d07-974607a335c2",
+      "createdAt": "2026-10-23T00:52:28.342Z",
+      "sourceUrl": "https://franceweek-end.com/wp-content/uploads/2018/05/grand-1373948704.jpg",
+      "summary": "Import privé du média historique 05-ballade, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-1065d69865a145fb86ed6f6ba6393584-2026-10-23T005300.174Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:53:00.174Z",
+      "appliedAt": "2026-10-23T00:53:00.174Z",
+      "receiptFile": "05-autos-import-receipt.json",
+      "receiptSha256": "1386e9f41d93e6f560f873d4a61750e8cbb5eacb2628ec406fef353d4983cbe8",
+      "imageId": "1065d69865a145fb86ed6f6ba6393584",
+      "ownerId": "1aa79203-c786-45f8-8933-0ed519a646da",
+      "createdAt": "2026-10-23T00:52:56.425Z",
+      "sourceUrl": "https://franceweek-end.com/wp-content/uploads/2018/05/grand-1373948696.jpg",
+      "summary": "Import privé du média historique 05-autos, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e2185e7a949442febe9950a0a89e386e-2026-10-23T005318.750Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:53:18.75Z",
+      "appliedAt": "2026-10-23T00:53:18.750Z",
+      "receiptFile": "05-manege-import-receipt.json",
+      "receiptSha256": "af2feb7694a203fe0a899ce6299940067aea8fbdd449b5327b30c53d8a0fc5c6",
+      "imageId": "e2185e7a949442febe9950a0a89e386e",
+      "ownerId": "33784c90-9db9-4ddc-8ee3-b69262f952df",
+      "createdAt": "2026-10-23T00:53:14.643Z",
+      "sourceUrl": "https://franceweek-end.com/wp-content/uploads/2018/05/grand-1373948689.jpg",
+      "summary": "Import privé du média historique 05-manege, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-49a40cf1c66c4ca0a72b2d06827fa487-2026-10-23T005340.795Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:53:40.795Z",
+      "appliedAt": "2026-10-23T00:53:40.795Z",
+      "receiptFile": "05-petits-bateaux-import-receipt.json",
+      "receiptSha256": "4e941012858396afcd1cbd0c28d938085088978108386669199a61e8ce1f766f",
+      "imageId": "49a40cf1c66c4ca0a72b2d06827fa487",
+      "ownerId": "bd54d5dd-64a6-4fdf-9447-a1279a2ccf30",
+      "createdAt": "2026-10-23T00:53:37.286Z",
+      "sourceUrl": "https://franceweek-end.com/wp-content/uploads/2018/05/grand-1373948713.jpg",
+      "summary": "Import privé du média historique 05-petits-bateaux, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-63d6fcfd18e041d8b8efdf29b540380d-2026-10-23T005404.421Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:54:04.421Z",
+      "appliedAt": "2026-10-23T00:54:04.421Z",
+      "receiptFile": "05-gonflables-import-receipt.json",
+      "receiptSha256": "706aba675581c4a6a796bc5b14f4d968c940c39affea4eaa1dfc930c569d39d4",
+      "imageId": "63d6fcfd18e041d8b8efdf29b540380d",
+      "ownerId": "c656885d-aab8-4d84-b0fa-59539ecef57c",
+      "createdAt": "2026-10-23T00:54:00.731Z",
+      "sourceUrl": "https://franceweek-end.com/wp-content/uploads/2018/05/grand-1373948722.jpg",
+      "summary": "Import privé du média historique 05-gonflables, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-8537395a778846518f81a7212970b0ba-2026-10-23T005426.936Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T00:54:26.936Z",
+      "appliedAt": "2026-10-23T00:54:26.936Z",
+      "receiptFile": "05-chateau-import-receipt.json",
+      "receiptSha256": "c86cc4eab2f65a200bad000132ee5b75639b54aa6ee93cba2f3224a151d9da27",
+      "imageId": "8537395a778846518f81a7212970b0ba",
+      "ownerId": "bfdb2e48-07a1-4920-9383-3e15a1f3ef6f",
+      "createdAt": "2026-10-23T00:54:23.458Z",
+      "sourceUrl": "https://franceweek-end.com/wp-content/uploads/2018/05/grand-1373948718.jpg",
+      "summary": "Import privé du média historique 05-chateau, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-ff3cb7d6-ab2f-4b40-b521-09069ea8cdcb",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:57:34.8416333Z",
+      "appliedAt": "2026-10-23T00:57:34.841Z",
+      "receiptFile": "05-dpv-biography-apply.receipt.json",
+      "receiptSha256": "d7271816b4886864bd5a451e63c0f9b1bae1ce1bc45873f3ece7203e40e6c784",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt"
+      ],
+      "summary": "Holly Park : biographie transversale D.P.V. en huit langues vérifiée sur les sources officielles ; intégration encore partielle."
+    },
+    {
+      "eventId": "apply-ab150a86-4ee2-4fab-b4f0-38640d752097",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T00:59:14.822702Z",
+      "appliedAt": "2026-10-23T00:59:14.822Z",
+      "receiptFile": "08-park-history-apply.receipt.json",
+      "receiptSha256": "055b00fc09494d71012ad13cd3d3a0ff5249bd852a52fbd2bfcf759c822126e3",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Holly Park : ouverture et fermeture intégrées, sourcées et illustrées dans huit langues ; audit final à venir."
+    },
+    {
+      "eventId": "apply-9c07e7f6-5163-439b-94a3-19814f53204f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:02:15.5139553Z",
+      "appliedAt": "2026-10-23T01:02:15.513Z",
+      "receiptFile": "08-item-history-apply.receipt.json",
+      "receiptSha256": "7a1b6d1f57e9f43df33f98832ae9485f2d2e044f1f3f2eff544fff98509e4af9",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Holly Park : cinq jalons historiques des deux montagnes russes intégrés en huit langues ; audit final à venir."
+    },
+    {
+      "eventId": "apply-be4f8075-a396-480c-af2b-5832e8bb180b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:03:25.1522568Z",
+      "appliedAt": "2026-10-23T01:03:25.152Z",
+      "receiptFile": "05-media-captions-apply.receipt.json",
+      "receiptSha256": "ac9b2ce29c5862a8e34c7785f1b5480f35353d077892bbc5e7cf0d03a9c9e827",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "captions.de",
+        "captions.en",
+        "captions.es",
+        "captions.fr",
+        "captions.it",
+        "captions.nl",
+        "captions.pl",
+        "captions.pt",
+        "description"
+      ],
+      "summary": "Holly Park : légendes des vues générales clarifiées dans huit langues ; audit final à venir."
+    },
+    {
+      "eventId": "apply-b26b8360-1a10-424a-8968-b42d103db0d1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:05:30.9829674Z",
+      "appliedAt": "2026-10-23T01:05:30.982Z",
+      "receiptFile": "08-history-article-apply.receipt.json",
+      "receiptSha256": "a4cd5301cddcfc5c059c55fd9f98924f5e251bfdf7b80ebcf947a77bd20cc282",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Holly Park : article historique développé en huit langues, six paragraphes et trois illustrations ; audit final à venir."
+    },
+    {
+      "eventId": "apply-9eb49056-17e1-4e42-bd75-49fa84c380d2",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:11:34.1597185Z",
+      "appliedAt": "2026-10-23T01:11:34.159Z",
+      "receiptFile": "09-article-captions-apply.receipt.json",
+      "receiptSha256": "be09007cea72386a814eb80a19613800b140d4df21dda0170d5cd4dc70df9e1f",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Holly Park : légendes propres à l’article dans les huit langues, après contrôle de répétition ; audit final actualisé."
+    },
+    {
+      "eventId": "apply-76fafd94-2707-4bf4-b7a7-6769175fcba1",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:14:14.4455096Z",
+      "appliedAt": "2026-10-23T01:14:14.445Z",
+      "receiptFile": "09-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "fec40bdd8c03c1489627b0fdbd1e7f001fedf2aafcc2752072463f8454ec1b1c",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Holly Park : restauration canonique des sept faits historiques après visibilité du parc ; preuve finale publique en cours."
+    }
+  ],
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-b8650417-50a9-4773-818a-08ebffa3e467",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:07:57.2746377Z",
+      "appliedAt": "2026-10-23T01:07:57.274Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "20628cbbc164c6bcb143c8f31d331335f44d0d9537986b2c8ef6f9b733ced195",
+      "counts": {
+        "created": 0,
+        "updated": 18,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Holly Park : publication des 18 médias audités ; fiche encore masquée avant contrôle final."
+    },
+    {
+      "eventId": "apply-07438d6b-60fc-4304-83ef-c3c0faa3b144",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:08:46.9099133Z",
+      "appliedAt": "2026-10-23T01:08:46.909Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "b7ca8b059cfe71a143e574890582a7031bdfff97f7d01d3a2a9e4a58448e3745",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "isVisible"
+      ],
+      "summary": "Holly Park : publication des sept jalons et de l’article audités ; contrôle canonique après ouverture de la fiche."
+    },
+    {
+      "eventId": "apply-af68eb0f-22cb-423f-bf68-54bf1aac0757",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:10:01.5268705Z",
+      "appliedAt": "2026-10-23T01:10:01.526Z",
+      "receiptFile": "09-publish-items-apply.receipt.json",
+      "receiptSha256": "4f93a0d72f3b61cef65bac7e2587f5b230c9ad701d87a00235db491c2406e1d7",
+      "counts": {
+        "created": 0,
+        "updated": 19,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Holly Park : validation et publication des 19 éléments historiques audités ; score individuel avant visibilité du parc."
+    },
+    {
+      "eventId": "apply-b9bb85bf-36f0-43df-9b4a-96d3f87ddf54",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T01:12:32.7118567Z",
+      "appliedAt": "2026-10-23T01:12:32.711Z",
+      "receiptFile": "09-publish-park-apply.receipt.json",
+      "receiptSha256": "9ebe27db3c022264db9a55166975c9b6c553a32bbb7b4f1781ab9c15cd721124",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Holly Park : fiche publiée après audit individuel à 98/100, sans bloqueur ; vérifications publiques et Facebook en cours."
+    }
+  ]
+}

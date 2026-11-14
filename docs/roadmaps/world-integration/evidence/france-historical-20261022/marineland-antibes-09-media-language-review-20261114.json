@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "41bc63edcc72a96b6dcef55d28d3990eb72e41248060a84909b3459d050e6521",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "8144cd3b-5292-463b-970e-9de401eec3a3",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T20:14:24.6828345Z",
+    "appliedAtUtc": "2026-11-14T20:14:24.6828352Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 4,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+        "entityKey": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+        "displayName": "Soigneur dauphins, l’expérience inédite",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c2b1881c-f785-4acd-9494-996749eb8068",
+        "entityKey": "c2b1881c-f785-4acd-9494-996749eb8068",
+        "displayName": "Rencontre avec les requins",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+        "entityKey": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+        "displayName": "Rencontre avec les orques",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "d90e3f92b082438fa314601feb75af03",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Pendant l’expérience Soigneur dauphins de Marineland, les participants approchaient les animaux avec une soigneuse. Ici, le dauphin gardait la tête hors de l’eau, face au petit groupe équipé de cuissardes.",
+            "newValue": "Une soigneuse accompagne trois participants en cuissardes, tandis qu’un dauphin présente sa tête au-dessus de l’eau claire de Marineland."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Eine Tierpflegerin und drei Teilnehmerinnen stehen neben einem Delfin vor einer überfluteten Plattform im Wasser.",
+            "newValue": "Eine Tierpflegerin und drei Teilnehmende stehen neben einem Delfin vor einer überfluteten Plattform im Wasser."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Une soigneuse et trois participantes se tiennent dans l’eau auprès d’un dauphin, devant une plage immergée.",
+            "newValue": "Une soigneuse et trois participants se tiennent dans l’eau auprès d’un dauphin, devant une plage immergée."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Een verzorgster en drie deelneemsters staan in het water bij een dolfijn, voor een ondergelopen platform.",
+            "newValue": "Een verzorgster en drie deelnemers staan in het water bij een dolfijn, voor een ondergelopen platform."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Opiekunka i trzy uczestniczki stoją w wodzie obok delfina, przed zanurzoną platformą.",
+            "newValue": "Opiekunka i troje uczestników stoją w wodzie obok delfina, przed zanurzoną platformą."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Bei der Delfinpfleger-Erfahrung im Marineland näherten sich die Teilnehmer den Tieren mit einer Tierpflegerin. Hier hielt der Delfin seinen Kopf neben der kleinen Gruppe in Wathosen über Wasser.",
+            "newValue": "Eine Tierpflegerin begleitet drei Teilnehmende in Wathosen, während ein Delfin seinen Kopf über das klare Wasser im Marineland hält."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "During Marineland’s dolphin keeper experience, participants approached the animals with a keeper. Here, the dolphin held its head above the water beside the small group wearing waders.",
+            "newValue": "A keeper accompanies three participants in waders as a dolphin holds its head above the clear water at Marineland."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Durante la experiencia con cuidadores de delfines de Marineland, los participantes se acercaban a los animales con una cuidadora. Aquí, el delfín mantenía la cabeza fuera del agua ante el pequeño grupo equipado con vadeadores.",
+            "newValue": "Una cuidadora acompaña a tres participantes con vadeadores mientras un delfín mantiene la cabeza sobre el agua clara de Marineland."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Pendant l’expérience Soigneur dauphins de Marineland, les participants approchaient les animaux avec une soigneuse. Ici, le dauphin gardait la tête hors de l’eau, face au petit groupe équipé de cuissardes.",
+            "newValue": "Une soigneuse accompagne trois participants en cuissardes, tandis qu’un dauphin présente sa tête au-dessus de l’eau claire de Marineland."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Durante l’esperienza con gli addetti ai delfini di Marineland, i partecipanti si avvicinavano agli animali insieme a un’addetta. Qui il delfino teneva la testa fuori dall’acqua, davanti al piccolo gruppo in stivali da pesca.",
+            "newValue": "Un’addetta accompagna tre partecipanti in stivali da pesca, mentre un delfino tiene la testa fuori dall’acqua limpida di Marineland."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Tijdens de dolfijnverzorgerervaring van Marineland naderden deelnemers de dieren samen met een verzorgster. Hier hield de dolfijn zijn kop boven water bij de kleine groep in waadpakken.",
+            "newValue": "Een verzorgster begeleidt drie deelnemers in waadpakken, terwijl een dolfijn zijn kop boven het heldere water van Marineland houdt."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Podczas zajęć z opiekunami delfinów w Marineland uczestnicy podchodzili do zwierząt wraz z opiekunką. Na zdjęciu delfin trzyma głowę nad wodą przy niewielkiej grupie ubranej w wodery.",
+            "newValue": "Opiekunka towarzyszy trójce uczestników w woderach, a delfin unosi głowę ponad przejrzystą wodę w Marineland."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Durante a experiência com tratadores de golfinhos do Marineland, os participantes aproximavam-se dos animais com uma tratadora. Aqui, o golfinho mantinha a cabeça fora de água junto do pequeno grupo equipado com fatos impermeáveis de pesca.",
+            "newValue": "Uma tratadora acompanha três participantes com fatos impermeáveis de pesca, enquanto um golfinho mantém a cabeça fora da água límpida do Marineland."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "a3849450b0f94d15bbee686fa0225d83",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Au bord de la plateforme, un dauphin émergeait devant une participante et une soigneuse. Marineland présentait cette scène pour l’expérience « Soigneur dauphins ».",
+            "newValue": "Au bord de la plateforme de Marineland, un dauphin émergeait devant une participante assise auprès d’une soigneuse."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Ein Delfin tauchte neben der Plattform vor einer Teilnehmerin und einer Tierpflegerin auf. Marineland zeigte diese Szene für sein Delfinpfleger-Erlebnis.",
+            "newValue": "An der Plattform im Marineland tauchte ein Delfin vor einer Teilnehmerin auf, die neben einer Tierpflegerin saß."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "A dolphin surfaced beside the platform in front of a participant and a keeper. Marineland used this scene to illustrate its dolphin keeper experience.",
+            "newValue": "A dolphin surfaced beside Marineland’s platform in front of a participant sitting with a keeper."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Un delfín asomaba junto a la plataforma ante una participante y una cuidadora. Marineland mostraba esta escena para su experiencia de cuidador de delfines.",
+            "newValue": "Junto a la plataforma de Marineland, un delfín asomaba ante una participante sentada al lado de una cuidadora."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Au bord de la plateforme, un dauphin émergeait devant une participante et une soigneuse. Marineland présentait cette scène pour l’expérience « Soigneur dauphins ».",
+            "newValue": "Au bord de la plateforme de Marineland, un dauphin émergeait devant une participante assise auprès d’une soigneuse."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Un delfino emergeva accanto alla piattaforma davanti a una partecipante e a una custode. Marineland presentava questa scena per l’esperienza da custode dei delfini.",
+            "newValue": "Al bordo della piattaforma di Marineland, un delfino emergeva davanti a una partecipante seduta accanto a un’addetta."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Naast het platform kwam een dolfijn boven water, voor een deelneemster en een verzorgster. Marineland gebruikte dit beeld voor de ervaring als dolfijnenverzorger.",
+            "newValue": "Naast het platform van Marineland kwam een dolfijn boven water, voor een deelneemster die bij een verzorgster zat."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Delfin wynurzał się obok platformy przed uczestniczką i opiekunką. Marineland ilustrował tą sceną zajęcia pozwalające poznać pracę opiekuna delfinów.",
+            "newValue": "Przy platformie w Marineland delfin wynurzał się przed uczestniczką siedzącą obok opiekunki."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Um golfinho emergia junto à plataforma diante de uma participante e de uma tratadora. O Marineland apresentava esta cena na experiência de tratador de golfinhos.",
+            "newValue": "Junto à plataforma do Marineland, um golfinho emergia diante de uma participante sentada ao lado de uma tratadora."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "0d19c9f7ab0e47db92a0a89a9a629f86",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Le casque de plongée occupait le premier plan de cette photographie officielle des rencontres avec les requins à Marineland. Aucun requin n’apparaissait dans ce cadrage rapproché.",
+            "newValue": "Le visage d’une participante se dessine derrière la vitre de son casque de plongée jaune, au milieu des reflets de l’aquarium de Marineland."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Der Taucherhelm füllte den Vordergrund dieses offiziellen Fotos der Hai-Begegnungen im Marineland. In der Nahaufnahme war kein Hai zu sehen.",
+            "newValue": "Das Gesicht einer Teilnehmerin ist hinter der Scheibe ihres gelben Taucherhelms zu sehen, umgeben von Spiegelungen im Aquarium von Marineland."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "A diving helmet filled the foreground of this official photograph of Marineland’s shark encounters. No shark appeared in this close-up view.",
+            "newValue": "A participant’s face appears behind the window of her yellow diving helmet amid reflections in Marineland’s aquarium."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El casco de buceo ocupaba el primer plano de esta fotografía oficial de los encuentros con tiburones en Marineland. Ningún tiburón aparecía en este encuadre cercano.",
+            "newValue": "El rostro de una participante se ve tras el cristal de su casco de buceo amarillo, entre los reflejos del acuario de Marineland."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le casque de plongée occupait le premier plan de cette photographie officielle des rencontres avec les requins à Marineland. Aucun requin n’apparaissait dans ce cadrage rapproché.",
+            "newValue": "Le visage d’une participante se dessine derrière la vitre de son casque de plongée jaune, au milieu des reflets de l’aquarium de Marineland."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Il casco da immersione occupava il primo piano di questa fotografia ufficiale degli incontri con gli squali a Marineland. Nessuno squalo compariva nell’inquadratura ravvicinata.",
+            "newValue": "Il volto di una partecipante appare dietro il vetro del casco da immersione giallo, fra i riflessi dell’acquario di Marineland."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De duikhelm stond op de voorgrond van deze officiële foto van de haaienontmoetingen in Marineland. In deze close-up was geen haai te zien.",
+            "newValue": "Het gezicht van een deelneemster is zichtbaar achter het venster van haar gele duikhelm, tussen de weerspiegelingen in het aquarium van Marineland."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Hełm nurkowy zajmował pierwszy plan na tym oficjalnym zdjęciu spotkań z rekinami w Marineland. W zbliżeniu nie było widać żadnego rekina.",
+            "newValue": "Twarz uczestniczki widać przez szybę żółtego hełmu nurkowego, pośród refleksów w akwarium Marineland."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O capacete de mergulho ocupava o primeiro plano desta fotografia oficial dos encontros com tubarões no Marineland. Nenhum tubarão aparecia neste enquadramento próximo.",
+            "newValue": "O rosto de uma participante vê-se através da janela do capacete de mergulho amarelo, entre os reflexos do aquário do Marineland."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "bf3c2bf7ae42411eba895265680f92b0",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Cette photographie de Marineland accompagnait la présentation des rencontres avec les orques. L’animal s’appuyait sur la plage peu profonde du bassin, sans visiteur dans le cadre.",
+            "newValue": "La gorge blanche de l’orque se détache au-dessus de la plage jaune du bassin de Marineland, entre ses deux nageoires pectorales déployées."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Marineland stellte mit diesem Foto seine Orca-Begegnungen vor. Das Tier lag auf der flachen Uferzone des Beckens; Besucher waren nicht im Bild.",
+            "newValue": "Die weiße Kehle des Orcas hebt sich über der gelben Uferzone des Marineland-Beckens zwischen den ausgebreiteten Brustflossen ab."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Marineland used this photograph to present its orca encounters. The animal rested on the pool’s shallow shelf, with no visitors in view.",
+            "newValue": "The orca’s white throat stands out above the yellow shelf of Marineland’s pool, between its outstretched pectoral fins."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Marineland utilizaba esta fotografía para presentar los encuentros con orcas. El animal se apoyaba en la plataforma poco profunda de la piscina, sin visitantes en el encuadre.",
+            "newValue": "La garganta blanca de la orca destaca sobre la plataforma amarilla de la piscina de Marineland, entre las aletas pectorales extendidas."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Cette photographie de Marineland accompagnait la présentation des rencontres avec les orques. L’animal s’appuyait sur la plage peu profonde du bassin, sans visiteur dans le cadre.",
+            "newValue": "La gorge blanche de l’orque se détache au-dessus de la plage jaune du bassin de Marineland, entre ses deux nageoires pectorales déployées."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Marineland usava questa fotografia per presentare gli incontri con le orche. L’animale si appoggiava sulla parte bassa del bordo vasca, senza visitatori nell’inquadratura.",
+            "newValue": "La gola bianca dell’orca risalta sopra la piattaforma gialla della vasca di Marineland, fra le pinne pettorali aperte."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Marineland gebruikte deze foto voor de ontmoetingen met orka’s. Het dier lag op het ondiepe plateau van het bassin; er waren geen bezoekers in beeld.",
+            "newValue": "De witte keel van de orka steekt af boven het gele plateau van het bassin in Marineland, tussen de uitgespreide borstvinnen."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Marineland wykorzystywał to zdjęcie do prezentacji spotkań z orkami. Zwierzę opierało się na płytkiej platformie przy brzegu basenu; w kadrze nie było gości.",
+            "newValue": "Białe podgardle orki wyróżnia się nad żółtą platformą basenu Marineland, między rozłożonymi płetwami piersiowymi."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O Marineland utilizava esta fotografia para apresentar os encontros com orcas. O animal apoiava-se na plataforma pouco profunda do tanque, sem visitantes no enquadramento.",
+            "newValue": "A garganta branca da orca destaca-se acima da plataforma amarela do tanque do Marineland, entre as barbatanas peitorais abertas."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

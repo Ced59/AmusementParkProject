@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "daba65f2d835401eaafba5d2f2a76979",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+    "path": "park_item/daba65f2d835401eaafba5d2f2a76979",
+    "description": "Un instant suspendu sur les grandes pistes bleues, au milieu des éclaboussures.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 526,
+    "height": 361,
+    "sizeInBytes": 160871,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210092255id_/http://acqua-gliss.com/photos/20/548/004.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Deux baigneurs coiffés de chapeaux blancs sont soulevés au-dessus des pistes bleues d’Acqua Gliss."
+      },
+      {
+        "languageCode": "en",
+        "value": "Two bathers wearing white hats lift above the blue lanes at Acqua Gliss."
+      },
+      {
+        "languageCode": "de",
+        "value": "Zwei Badegäste mit weißen Hüten heben auf den blauen Bahnen von Acqua Gliss kurz ab."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Twee zwemmers met witte hoeden komen even los van de blauwe banen van Acqua Gliss."
+      },
+      {
+        "languageCode": "it",
+        "value": "Due bagnanti con cappelli bianchi si sollevano sopra le piste blu di Acqua Gliss."
+      },
+      {
+        "languageCode": "es",
+        "value": "Dos bañistas con sombreros blancos se elevan sobre las pistas azules de Acqua Gliss."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dwaj kąpiący się w białych kapeluszach unoszą się nad niebieskimi torami Acqua Gliss."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Dois banhistas com chapéus brancos elevam-se sobre as pistas azuis do Acqua Gliss."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un instant suspendu sur les grandes pistes bleues, au milieu des éclaboussures."
+      },
+      {
+        "languageCode": "en",
+        "value": "A moment in the air on the broad blue slides, surrounded by spray."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein kurzer Moment in der Luft auf den breiten blauen Rutschen, umgeben von Spritzwasser."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Even in de lucht op de brede blauwe glijbanen, tussen het opspattende water."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un istante sospeso sulle ampie piste blu, tra gli spruzzi d’acqua."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un instante en el aire sobre las amplias pistas azules, entre salpicaduras."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Chwila w powietrzu nad szerokimi niebieskimi zjeżdżalniami, wśród rozprysków wody."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um instante no ar sobre as largas pistas azuis, entre salpicos de água."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:32:15.854Z",
+    "updatedAt": "2026-11-14T21:32:19.303Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:32:19.303Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202044002/http://acqua-gliss.com/sensations-5804.html"
+}

@@ -1,0 +1,50 @@
+{
+  "observedAtUtc": "2026-10-23T12:41:36.925262+00:00",
+  "owner": "Conversation France",
+  "canonicalEntryId": "FR-park-a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+  "duplicateEntryId": "FR-park-8167f80c-db82-49d8-91a6-bf5a1f6a6f51",
+  "decision": "Two historical Park records represent the same Lillom / Parc de Lomme, closed in 1987. Preserve the richer Parc de Lomme identity and its existing four zones, four events and eight-language article; retain the private legacy duplicate without publication or deletion.",
+  "itemIdentity": {
+    "canonicalGrandHuit": "8eb7db06-5aa0-4554-8fd2-cdd1b50adc8b",
+    "duplicateGrandHuit": "d9b8cf56-a4f4-46ee-a94c-89b4595b1d52",
+    "decision": "Same park-owned coaster under two CaptainCoaster pages; not two rides or a standalone."
+  },
+  "officialEvidence": [
+    {
+      "file": "00-searchparks-lillom.json",
+      "sha256": "53eb6ea57dc4e65f542179c243e82ad70f4e97035e5264db718cf80df13c4a96"
+    },
+    {
+      "file": "00-searchparks-lomme.json",
+      "sha256": "9ef1b1473ae61e25c8f1e600624e64ffcc765bba63e016fc2f8222318a937623"
+    },
+    {
+      "file": "00-searchstandaloneattractions-lillom.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "file": "00-searchstandaloneattractions-lomme.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "file": "00-identity-items-lillom.json",
+      "sha256": "0ae1aaaf32cd32d223eac81ddb71ef91482881087e8e04cbd5711d1321c6830c"
+    },
+    {
+      "file": "00-identity-items-lomme.json",
+      "sha256": "6f54285130afa52633af574f724d93e00281b044215189e75f874d78c5d40089"
+    },
+    {
+      "file": "00-existing-dependencies.json",
+      "sha256": "6ef18626523cbbaaba67ccfa44033048665705723a7d933d3212b9bae65eea7b"
+    }
+  ],
+  "sourceUrls": [
+    "https://fr.wikipedia.org/wiki/Lillom",
+    "https://missionlocale-lille.fr/wp-content/uploads/2021/10/ML2020-Regards-Jeunes6.pdf",
+    "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html"
+  ],
+  "unknownOldIntegrationDatesRemainNull": true,
+  "dataMutationPerformed": false,
+  "countsAsCompletedPark": false
+}

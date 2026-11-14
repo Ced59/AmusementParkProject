@@ -1,0 +1,1669 @@
+{
+  "entryId": "FR-park-f019e441-aecf-487b-93db-2b0246dce185",
+  "parkId": "f019e441-aecf-487b-93db-2b0246dce185",
+  "name": "Parc Avenue",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-74ce545b-7332-4a0e-8c1f-e59da5218f13",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T03:41:25.924765Z",
+      "appliedAt": "2026-10-23T03:41:25.924Z",
+      "receiptFile": "01-core-lifecycle-apply.receipt.json",
+      "receiptSha256": "2215ab50a7bd787ae98982fe847b3bb0b3e7aa75f42496a1157d85073938d506",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "attractionDetails.closingDate",
+        "attractionDetails.closingDateText",
+        "attractionDetails.openingDate",
+        "attractionDetails.openingDateText",
+        "attractionDetails.status",
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "openingDateText",
+        "position",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Parc Avenue/Aérocity : fiche existante corrigée en parc fermé2014, coordonnées Lanas et dates/lifecycle des cinq coasters vérifiés ; intégration partielle."
+    },
+    {
+      "eventId": "import-photo-2d02a360818b485fb7fcd906153f0777-2026-10-23T035101.839Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T03:51:01.839Z",
+      "appliedAt": "2026-10-23T03:51:01.839Z",
+      "receiptFile": "photo-01-logo-import-receipt.json",
+      "receiptSha256": "28a34c44db6023fab92595fbc3157a431d80ff66cef6e008fb196580d235ec17",
+      "imageId": "2d02a360818b485fb7fcd906153f0777",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "createdAt": "2026-10-23T03:50:58.163Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/fr/e/e9/Parc-avenue-logo.jpg?utm_source=fr.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",
+      "summary": "Import privé du média historique photo-01-logo, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-map-aerocity-plan-1990-fr-8e3139aedb995099",
+      "action": "ImportOfficialMap",
+      "appliedAt": "2026-10-23T03:52:36.430Z",
+      "timeSource": "Actual client receipt completion UTC; official upload response has no server appliedAt field. Observed successful import time, not inferred historical date.",
+      "clientStartedAtUtc": "2026-10-23T03:52:14.441Z",
+      "clientCompletedAtUtc": "2026-10-23T03:52:36.430Z",
+      "receiptFile": "05-map1990-import-receipt.json",
+      "receiptSha256": "465dd606b6fcd7df0ad55f948cfedbf80305385c28f3fd2d2e86bc171c833a97",
+      "sourceSha256": "17924071339f05463f84023209dd71eb43056dda3f89ce00bdf97681069ff133",
+      "map": {
+        "Key": "aerocity-plan-1990-fr",
+        "Id": "aerocity-plan-1990-fr",
+        "Year": 1990,
+        "Format": "Image",
+        "StorageKey": "official-maps/f019e441-aecf-487b-93db-2b0246dce185/aerocity-plan-1990-fr.c99ba1df87fe480bbd83bd9bebe9e79d.jpg",
+        "OriginalFileName": "brochure-03.jpg",
+        "ContentType": "image/jpeg",
+        "SizeInBytes": 366177,
+        "SourcePageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWUmNNkMSwV-vBmDVrKGC3c9iRAE2k-cBqcnGdur9qbw7J5it3S18iSgpk4WnKiQOU3SFqKn8nMb-ZIoSbumQDcKYi9gYEBTKdbpsT7qfd9oFa7cla4WTYIxVaXEnDHN0BFxh1XcFsyZU/s1600/DSC_2762.JPG",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      },
+      "summary": "Plan officiel Aérocity 1990 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+    },
+    {
+      "eventId": "import-map-aerocity-plan-1991-fr-2efc048a188165a7",
+      "action": "ImportOfficialMap",
+      "appliedAt": "2026-10-23T03:52:47.518Z",
+      "timeSource": "Actual client receipt completion UTC; official upload response has no server appliedAt field. Observed successful import time, not inferred historical date.",
+      "clientStartedAtUtc": "2026-10-23T03:52:36.746Z",
+      "clientCompletedAtUtc": "2026-10-23T03:52:47.518Z",
+      "receiptFile": "05-map1991-import-receipt.json",
+      "receiptSha256": "d310fa4e4b727cbec61d2ff0a12b3448688b67f63f03fc5b11aad99ccc9be6a3",
+      "sourceSha256": "f16afcc7dc6c18291e55964b4ef3d7b3c81f52e7485dbbe7ed8a78df46e452fb",
+      "map": {
+        "Key": "aerocity-plan-1991-fr",
+        "Id": "aerocity-plan-1991-fr",
+        "Year": 1991,
+        "Format": "Image",
+        "StorageKey": "official-maps/f019e441-aecf-487b-93db-2b0246dce185/aerocity-plan-1991-fr.5d57675de94944e3921246d3768bf58a.jpg",
+        "OriginalFileName": "brochure-05.jpg",
+        "ContentType": "image/jpeg",
+        "SizeInBytes": 306474,
+        "SourcePageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-48cncx9x79ll6Zu9b2aoRjYRtlZEZ1q4c2b_t8NE5TUXgUJ9bNwuP0iQl9fcFQ1LpA8y_x4ArtWn12T0CluPt1BO0G7Mz9ymEYJ50LfnVm2h-v8wQ8GbC-TSwMqH2ql1H4Sbts2ovb4/s1600/DSC_2764.JPG",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      },
+      "summary": "Plan officiel Aérocity 1991 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+    },
+    {
+      "eventId": "import-map-aerocity-plan-1993-fr-47cb6cd54c9f07f4",
+      "action": "ImportOfficialMap",
+      "appliedAt": "2026-10-23T03:53:00.396Z",
+      "timeSource": "Actual client receipt completion UTC; official upload response has no server appliedAt field. Observed successful import time, not inferred historical date.",
+      "clientStartedAtUtc": "2026-10-23T03:52:47.809Z",
+      "clientCompletedAtUtc": "2026-10-23T03:53:00.396Z",
+      "receiptFile": "05-map1993-import-receipt.json",
+      "receiptSha256": "4613ef9d1f2ba6f7466e48d8f0dc8a431a9d8bb91547e883392b3fd2150b0168",
+      "sourceSha256": "1ca00aff7049e9338db512946d439e39c2496d835384c36c01a42cb287eedf7c",
+      "map": {
+        "Key": "aerocity-plan-1993-fr",
+        "Id": "aerocity-plan-1993-fr",
+        "Year": 1993,
+        "Format": "Image",
+        "StorageKey": "official-maps/f019e441-aecf-487b-93db-2b0246dce185/aerocity-plan-1993-fr.5bb8c84d3f6b4ed88a1ffac95fa81853.jpg",
+        "OriginalFileName": "brochure-07.jpg",
+        "ContentType": "image/jpeg",
+        "SizeInBytes": 277763,
+        "SourcePageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkLYBVWtqoV5znvc9HPP5gBTvUeoi79SD-KwHA-R50LLAq7t3oZRjiSgKYxNIU1QosStClk6dUAjuGF5CezwtyOeN9cYxJAEVq1nxJn-nxSyLro4qA9z_keZEOUqQam-VxvejKBwWGmg4/s1600/DSC_2766.JPG",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      },
+      "summary": "Plan officiel Aérocity 1993 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+    },
+    {
+      "eventId": "import-map-aerocity-plan-1996-fr-a4174e318c5b09af",
+      "action": "ImportOfficialMap",
+      "appliedAt": "2026-10-23T03:53:16.870Z",
+      "timeSource": "Actual client receipt completion UTC; official upload response has no server appliedAt field. Observed successful import time, not inferred historical date.",
+      "clientStartedAtUtc": "2026-10-23T03:53:00.756Z",
+      "clientCompletedAtUtc": "2026-10-23T03:53:16.870Z",
+      "receiptFile": "05-map1996-import-receipt.json",
+      "receiptSha256": "17780b61eba06abf40366d50b4545074dd39e3da30e9d7292eb765ca01b9e63d",
+      "sourceSha256": "7822340e91d82a739e61ebf8488e5ca5a52c099795a410029f9310ed38ff00c9",
+      "map": {
+        "Key": "aerocity-plan-1996-fr",
+        "Id": "aerocity-plan-1996-fr",
+        "Year": 1996,
+        "Format": "Image",
+        "StorageKey": "official-maps/f019e441-aecf-487b-93db-2b0246dce185/aerocity-plan-1996-fr.b32801ee58bb4534ae5f42bd726f9344.jpg",
+        "OriginalFileName": "brochure-10.jpg",
+        "ContentType": "image/jpeg",
+        "SizeInBytes": 341579,
+        "SourcePageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFfDExuTw_nRaKHUDo2MCEisbuY302yJw1ppyRTuOvKHUnGUu3FOB8-KxEAF-D1C_3NOuk1LdUIY2mMVxJnUkVCmGnZQ_zBrDtpaAewmTMinKOqkX64Y-oTmZwo03EL-QBdeH0UJtialY/s1600/DSC_2770.JPG",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      },
+      "summary": "Plan officiel Aérocity 1996 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+    },
+    {
+      "eventId": "import-map-aerocity-plan-1997-fr-098ed4767bb5b07b",
+      "action": "ImportOfficialMap",
+      "appliedAt": "2026-10-23T03:53:33.058Z",
+      "timeSource": "Actual client receipt completion UTC; official upload response has no server appliedAt field. Observed successful import time, not inferred historical date.",
+      "clientStartedAtUtc": "2026-10-23T03:53:17.207Z",
+      "clientCompletedAtUtc": "2026-10-23T03:53:33.058Z",
+      "receiptFile": "05-map1997-import-receipt.json",
+      "receiptSha256": "66d838d8ad26930d5d8428de0342bb690ac08441ba9ff947effa83c89b82e125",
+      "sourceSha256": "bd6df8f4b93c9c4de750ee21e1ed2c7e5aba355864fe7b33c0d591439e74f153",
+      "map": {
+        "Key": "aerocity-plan-1997-fr",
+        "Id": "aerocity-plan-1997-fr",
+        "Year": 1997,
+        "Format": "Image",
+        "StorageKey": "official-maps/f019e441-aecf-487b-93db-2b0246dce185/aerocity-plan-1997-fr.3369c40abe614854b129880a438dedfb.jpg",
+        "OriginalFileName": "brochure-12.jpg",
+        "ContentType": "image/jpeg",
+        "SizeInBytes": 311015,
+        "SourcePageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcEQs-22457Bnh3tOfG_lg3qMfeay9u08GPbHGdck7hOSas5oDLaE6A5gwWi84ZKjhR6XiKM4EXo1b0ccMEM56ESJBj6c64KgPTo2sheD8b6r1RPXrbl5eStpn7L6oBWbLtf4yxK59Q6o/s1600/DSC_2772.JPG",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      },
+      "summary": "Plan officiel Aérocity 1997 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+    },
+    {
+      "eventId": "apply-fb67d5fe-130a-4978-bdef-f0d3d1d8b299",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T03:56:31.1329228Z",
+      "appliedAt": "2026-10-23T03:56:31.132Z",
+      "receiptFile": "05-map-metadata-apply.receipt.json",
+      "receiptSha256": "11ead867917b50ddbcb13dfb5ea77d1c27d0ecfa5cb609d82f5278b4c18ffb9e",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "alternativeTexts.de",
+        "alternativeTexts.en",
+        "alternativeTexts.es",
+        "alternativeTexts.fr",
+        "alternativeTexts.it",
+        "alternativeTexts.nl",
+        "alternativeTexts.pl",
+        "alternativeTexts.pt",
+        "contentType",
+        "lastVerifiedAtUtc",
+        "originalFileName",
+        "sizeInBytes",
+        "sourcePageUrl",
+        "storageKey",
+        "titles.de",
+        "titles.en",
+        "titles.es",
+        "titles.fr",
+        "titles.it",
+        "titles.nl",
+        "titles.pl",
+        "titles.pt",
+        "year"
+      ],
+      "summary": "Parc Avenue/Aérocity : cinq plans officiels1990,1991,1993,1996,1997 intégrés avec titres et textes alternatifs relus dans huit langues, privés ; audit final restant."
+    },
+    {
+      "eventId": "apply-c454b63c-0ec2-4ace-a952-34e9ce368537",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:06:46.3072369Z",
+      "appliedAt": "2026-10-23T04:06:46.307Z",
+      "receiptFile": "03-inventory-rides-v2-apply.receipt.json",
+      "receiptSha256": "ea5d04d6e95134a4d5517617210346714c4aa48251d4d2763bd8de1587d725a6",
+      "counts": {
+        "created": 25,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.externalSource",
+        "attractionDetails.openingDateText",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "type"
+      ],
+      "summary": "Parc Avenue/Aérocity :25attractions historiques distinctes intégrées en privé depuis brochures officielles et sources photographiques ; dates inconnues conservées nulles, rédaction et audit final restants."
+    },
+    {
+      "eventId": "apply-bf390076-4b2a-446a-82a3-110df6c6a29b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:12:38.0679178Z",
+      "appliedAt": "2026-10-23T04:12:38.067Z",
+      "receiptFile": "04-park-copy-v2-apply.receipt.json",
+      "receiptSha256": "fbf93ac615e07f10aae91bc07cdafc72917812db03ececf3e2c26b22a7e0cfe7",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc Avenue/Aérocity : présentation éditoriale intégrée et relue personnellement dans huit langues, six paragraphes et trois sections spécifiques ; parc privé, audit final restant."
+    },
+    {
+      "eventId": "import-photo-e50a966edfb54e3eb40a3d2ba3165a0c-2026-10-23T041306.789Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:13:06.789Z",
+      "appliedAt": "2026-10-23T04:13:06.789Z",
+      "receiptFile": "photo-02-entrance-2011-import-receipt.json",
+      "receiptSha256": "e9411f86f1a7f91e164cb4c92940861b5d153ed8d3954f37323c75f96771796f",
+      "imageId": "e50a966edfb54e3eb40a3d2ba3165a0c",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "createdAt": "2026-10-23T04:13:02.688Z",
+      "sourceUrl": "https://rcdb.com/aaghqka",
+      "summary": "Import privé du média historique photo-02-entrance-2011, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-88b80dd6e7b54e8db7ba7278d227290a-2026-10-23T041329.793Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:13:29.793Z",
+      "appliedAt": "2026-10-23T04:13:29.793Z",
+      "receiptFile": "photo-03-entrance-2002-import-receipt.json",
+      "receiptSha256": "223ff84a3e04ec90842f6536db913cb410b2109e57aff1a71e0edd3af235a9b9",
+      "imageId": "88b80dd6e7b54e8db7ba7278d227290a",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "createdAt": "2026-10-23T04:13:25.394Z",
+      "sourceUrl": "https://rcdb.com/aabmjba",
+      "summary": "Import privé du média historique photo-03-entrance-2002, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-2c2bdf16a7874885937b88c61030b506-2026-10-23T041351.732Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:13:51.732Z",
+      "appliedAt": "2026-10-23T04:13:51.732Z",
+      "receiptFile": "photo-04-overlook-2002-import-receipt.json",
+      "receiptSha256": "7c26f00eeb5880c4510313d347a6387527d42e83d649c27190e8df8e57465591",
+      "imageId": "2c2bdf16a7874885937b88c61030b506",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "createdAt": "2026-10-23T04:13:48.17Z",
+      "sourceUrl": "https://rcdb.com/aabmjca",
+      "summary": "Import privé du média historique photo-04-overlook-2002, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-fb095f187c5d49448309c1599e1ebac4-2026-10-23T041406.994Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:14:06.994Z",
+      "appliedAt": "2026-10-23T04:14:06.994Z",
+      "receiptFile": "photo-05-aeroplane-landscape-import-receipt.json",
+      "receiptSha256": "2514afff0fc8154aa51c444baccebac7c5264541239f2d9a6c822bd4c40208b6",
+      "imageId": "fb095f187c5d49448309c1599e1ebac4",
+      "ownerId": "8f46adb0-aa2d-4d85-8907-8ca5bf0f587d",
+      "createdAt": "2026-10-23T04:14:03.044Z",
+      "sourceUrl": "https://rcdb.com/aaaivca",
+      "summary": "Import privé du média historique photo-05-aeroplane-landscape, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4a21ee0a8ebe4137ad2d7e3a88333362-2026-10-23T041427.278Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:14:27.278Z",
+      "appliedAt": "2026-10-23T04:14:27.278Z",
+      "receiptFile": "photo-06-aeroplane-riders-import-receipt.json",
+      "receiptSha256": "2b2692ed3774e172ffab9344e84854e4fba9b9b04a4847c27fe3520256f4443a",
+      "imageId": "4a21ee0a8ebe4137ad2d7e3a88333362",
+      "ownerId": "8f46adb0-aa2d-4d85-8907-8ca5bf0f587d",
+      "createdAt": "2026-10-23T04:14:23.685Z",
+      "sourceUrl": "https://rcdb.com/aaaivfa",
+      "summary": "Import privé du média historique photo-06-aeroplane-riders, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-77b6c0ece49e4fea9827bc085a125e59-2026-10-23T041454.983Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:14:54.983Z",
+      "appliedAt": "2026-10-23T04:14:54.983Z",
+      "receiptFile": "photo-07-aeroplane-platform-import-receipt.json",
+      "receiptSha256": "2a6e09dc1907aac0d3603d0599a27adfe8920db36c2f8bace5fb602ba2b6ba6c",
+      "imageId": "77b6c0ece49e4fea9827bc085a125e59",
+      "ownerId": "8f46adb0-aa2d-4d85-8907-8ca5bf0f587d",
+      "createdAt": "2026-10-23T04:14:51.406Z",
+      "sourceUrl": "https://rcdb.com/aaaivga",
+      "summary": "Import privé du média historique photo-07-aeroplane-platform, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-62a939695d75492fa0b8411af8767e21-2026-10-23T041533.708Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:15:33.708Z",
+      "appliedAt": "2026-10-23T04:15:33.708Z",
+      "receiptFile": "photo-08-starwars-overview-import-receipt.json",
+      "receiptSha256": "bb3c3d7dde5a1c72b7e0fef505c30702fd726c588e7e0fe6eaa9205b0c1b27c7",
+      "imageId": "62a939695d75492fa0b8411af8767e21",
+      "ownerId": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+      "createdAt": "2026-10-23T04:15:30.105Z",
+      "sourceUrl": "https://rcdb.com/aaaivla",
+      "summary": "Import privé du média historique photo-08-starwars-overview, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5637482863b84115ae7c8183b17a8a21-2026-10-23T041601.711Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:16:01.711Z",
+      "appliedAt": "2026-10-23T04:16:01.711Z",
+      "receiptFile": "photo-09-starwars-car-import-receipt.json",
+      "receiptSha256": "dd117cab5071d32757c41b3a878259f270a63ff574a4315f13af36b5e98ae882",
+      "imageId": "5637482863b84115ae7c8183b17a8a21",
+      "ownerId": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+      "createdAt": "2026-10-23T04:15:58.126Z",
+      "sourceUrl": "https://rcdb.com/aaaivma",
+      "summary": "Import privé du média historique photo-09-starwars-car, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f44613892b5b4c6798da9d311492a9fe-2026-10-23T041624.221Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:16:24.221Z",
+      "appliedAt": "2026-10-23T04:16:24.221Z",
+      "receiptFile": "photo-10-starwars-tower-import-receipt.json",
+      "receiptSha256": "5bd94c2ea5d0178c97a097c875d93e8bee190272c7a36af62061fec6e9adf0cb",
+      "imageId": "f44613892b5b4c6798da9d311492a9fe",
+      "ownerId": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+      "createdAt": "2026-10-23T04:16:20.766Z",
+      "sourceUrl": "https://rcdb.com/aaaivoa",
+      "summary": "Import privé du média historique photo-10-starwars-tower, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-c31c786c53ed49b99db2f81b55a64fbb-2026-10-23T041646.615Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:16:46.615Z",
+      "appliedAt": "2026-10-23T04:16:46.615Z",
+      "receiptFile": "photo-11-cityjet-train-import-receipt.json",
+      "receiptSha256": "9ae4704a15cd2d7ebf193c54675f2279a7176f0a10661616cb7a5ffd8c65bc94",
+      "imageId": "c31c786c53ed49b99db2f81b55a64fbb",
+      "ownerId": "1ff9de5d-6681-4d40-ab6d-e15fc99d3ec0",
+      "createdAt": "2026-10-23T04:16:43.106Z",
+      "sourceUrl": "https://rcdb.com/aaaivja",
+      "summary": "Import privé du média historique photo-11-cityjet-train, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-0aaddd4d88c947f79aeda178ab5a8d25-2026-10-23T041709.219Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:17:09.219Z",
+      "appliedAt": "2026-10-23T04:17:09.219Z",
+      "receiptFile": "photo-12-cityjet-course-import-receipt.json",
+      "receiptSha256": "fd8e8b8d91cca872d3eefdec41b698e21880bdc94089982d022007e52092b9d0",
+      "imageId": "0aaddd4d88c947f79aeda178ab5a8d25",
+      "ownerId": "1ff9de5d-6681-4d40-ab6d-e15fc99d3ec0",
+      "createdAt": "2026-10-23T04:17:05.607Z",
+      "sourceUrl": "https://rcdb.com/aaaivka",
+      "summary": "Import privé du média historique photo-12-cityjet-course, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b12e8286075a4f9c93558bc77f632c19-2026-10-23T041733.584Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:17:33.584Z",
+      "appliedAt": "2026-10-23T04:17:33.584Z",
+      "receiptFile": "photo-13-grand8-caterpillar-import-receipt.json",
+      "receiptSha256": "3cc73902d27791b9d9aca6d28b530daf4f589a1f2317c0cfbab9f8fd2af1e526",
+      "imageId": "b12e8286075a4f9c93558bc77f632c19",
+      "ownerId": "c54fb2d8-6bb5-4c44-a3b0-077557dabddd",
+      "createdAt": "2026-10-23T04:17:29.43Z",
+      "sourceUrl": "https://rcdb.com/aaciona",
+      "summary": "Import privé du média historique photo-13-grand8-caterpillar, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4114ad6539c3489697e02c521e57b04a-2026-10-23T041755.553Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:17:55.553Z",
+      "appliedAt": "2026-10-23T04:17:55.553Z",
+      "receiptFile": "photo-14-grand8-setting-import-receipt.json",
+      "receiptSha256": "9e7173c34d19bb49be6aa9f143b816758f4b0ded31a06c3254b0bbdbcc48961e",
+      "imageId": "4114ad6539c3489697e02c521e57b04a",
+      "ownerId": "c54fb2d8-6bb5-4c44-a3b0-077557dabddd",
+      "createdAt": "2026-10-23T04:17:51.644Z",
+      "sourceUrl": "https://rcdb.com/aacioma",
+      "summary": "Import privé du média historique photo-14-grand8-setting, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-c8085d49b55e4dd197b3b9ac0daf7b6b-2026-10-23T041814.293Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:18:14.293Z",
+      "appliedAt": "2026-10-23T04:18:14.293Z",
+      "receiptFile": "photo-15-grand8-platform-import-receipt.json",
+      "receiptSha256": "c52daea49e7681704e4b4fa5fb7694908d6a684ca330f742d17a86c78a9dca2b",
+      "imageId": "c8085d49b55e4dd197b3b9ac0daf7b6b",
+      "ownerId": "c54fb2d8-6bb5-4c44-a3b0-077557dabddd",
+      "createdAt": "2026-10-23T04:18:10.857Z",
+      "sourceUrl": "https://rcdb.com/aaciopa",
+      "summary": "Import privé du média historique photo-15-grand8-platform, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-map-parc-avenue-plan-2013-fr-755aaa04c1f1672f",
+      "action": "ImportOfficialMap",
+      "appliedAt": "2026-10-23T04:22:05.868Z",
+      "timeSource": "Actual client receipt completion UTC; official upload response has no server appliedAt field. Observed successful import time, not inferred historical date.",
+      "clientStartedAtUtc": "2026-10-23T04:21:51.815Z",
+      "clientCompletedAtUtc": "2026-10-23T04:22:05.868Z",
+      "receiptFile": "05-map2013-import-receipt.json",
+      "receiptSha256": "d1c36780fa1d41b61aa18367d1e8d948d44fed8cae77ba5c2000ddbaaae467d7",
+      "sourceSha256": "d3f304962013553d35d74fd2049b380db575241258d0d7413cb1b60d653ae926",
+      "map": {
+        "Key": "parc-avenue-plan-2013-fr",
+        "Id": "parc-avenue-plan-2013-fr",
+        "Year": 2013,
+        "Format": "Pdf",
+        "StorageKey": "official-maps/f019e441-aecf-487b-93db-2b0246dce185/parc-avenue-plan-2013-fr.bcfceb3110bc4ed58f01b7d661423480.pdf",
+        "OriginalFileName": "official-archive-depliant-ParcAvenue.pdf",
+        "ContentType": "application/pdf",
+        "SizeInBytes": 2826958,
+        "SourcePageUrl": "https://web.archive.org/web/20131228080716id_/http://www.parcavenue.fr/picts/depliant-ParcAvenue.pdf",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      },
+      "summary": "Plan officiel Parc Avenue 2013 : fichier original stocké via ImportOfficialMap ; métadonnées localisées et publication encore à appliquer."
+    },
+    {
+      "eventId": "apply-0d12f44e-4fb2-4834-bfe8-f44772f32a08",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:25:13.0823185Z",
+      "appliedAt": "2026-10-23T04:25:13.082Z",
+      "receiptFile": "03-reconcile-map2013-apply.receipt.json",
+      "receiptSha256": "6382a89270f2f654f00bbc3989a086dde73371bae079de511bb5185d4ffee002",
+      "counts": {
+        "created": 1,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "alternativeTexts.de",
+        "alternativeTexts.en",
+        "alternativeTexts.es",
+        "alternativeTexts.fr",
+        "alternativeTexts.it",
+        "alternativeTexts.nl",
+        "alternativeTexts.pl",
+        "alternativeTexts.pt",
+        "attractionDetails.closingDateText",
+        "attractionDetails.externalSource",
+        "attractionDetails.manufacturerId",
+        "attractionDetails.model",
+        "attractionDetails.openingDateText",
+        "attractionDetails.restraintType",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "contentType",
+        "format",
+        "lastVerifiedAtUtc",
+        "name",
+        "originalFileName",
+        "position",
+        "sizeInBytes",
+        "sourcePageUrl",
+        "storageKey",
+        "titles.de",
+        "titles.en",
+        "titles.es",
+        "titles.fr",
+        "titles.it",
+        "titles.nl",
+        "titles.pl",
+        "titles.pt",
+        "type",
+        "year"
+      ],
+      "summary": "Parc Avenue : plan officiel2013 et16textes localisés ; rapprochement Grande Roue/Enterprise2 sansdoublon, troisGPS sourcés et retraitd’une contention nonprouvée."
+    },
+    {
+      "eventId": "apply-cecec35d-1dd3-414f-a4a5-14c92d554ce6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:32:42.5579026Z",
+      "appliedAt": "2026-10-23T04:32:42.557Z",
+      "receiptFile": "03-inventory-services-v2-apply.receipt.json",
+      "receiptSha256": "30d407dbe65304ca7611fcb13ad541b655b84dcd5890171e1fdd68b13635add4",
+      "counts": {
+        "created": 24,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.externalSource",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type"
+      ],
+      "summary": "Parc Avenue :24équipements historiques sourcés, dontrestaurants, services, spectacles etespacesanimaliers ; fichesprivées, rédactionàcompléter."
+    },
+    {
+      "eventId": "apply-330f006a-856d-4bfb-a764-ff6475b9829f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:35:42.1105515Z",
+      "appliedAt": "2026-10-23T04:35:42.110Z",
+      "receiptFile": "03-inventory-water-play-v2-apply.receipt.json",
+      "receiptSha256": "c944bd0808d80278cbd0ecb7ff8f55bfc945d48f4c45ab1ef62fd1aadcf5798b",
+      "counts": {
+        "created": 16,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.externalSource",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "isVisible",
+        "sortOrder",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Parc Avenue :14équipements aquatiques, jeux etservices attestésen2013, plusdeuxzones ; intégrationprivée, textesetauditrestants."
+    },
+    {
+      "eventId": "apply-933b7c73-5522-4cd6-9fbf-bead29d60bc4",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:36:15.7807731Z",
+      "appliedAt": "2026-10-23T04:36:15.780Z",
+      "receiptFile": "04-coaster-copy-apply.receipt.json",
+      "receiptSha256": "91c7b1922e045b135cb46cf388e56351885343ae6b56a92e21ed5da66e1c80a7",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc Avenue : descriptionséditoriales des cinqmontagnesrusses, rédigéesetreluesdansleshuitlangues ; auditfinalencoreàfaire."
+    },
+    {
+      "eventId": "import-photo-5ec3d779ab1f48da993de337315be2e0-2026-10-23T043852.135Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:38:52.135Z",
+      "appliedAt": "2026-10-23T04:38:52.135Z",
+      "receiptFile": "photo-16-tower-2002-import-receipt.json",
+      "receiptSha256": "00cbbbfb12fb4f59616586dbfa95280a18a133b6ef7320aac4e5e48891bd54d7",
+      "imageId": "5ec3d779ab1f48da993de337315be2e0",
+      "ownerId": "829981e9-924d-464a-aa5d-5db1b3671bd9",
+      "createdAt": "2026-10-23T04:38:48.349Z",
+      "sourceUrl": "https://rcdb.com/aabmjda",
+      "summary": "Import privé du média historique photo-16-tower-2002, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5674678cdeb9457b937cf117c652cec3-2026-10-23T043906.324Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:39:06.324Z",
+      "appliedAt": "2026-10-23T04:39:06.324Z",
+      "receiptFile": "photo-17-crazy-shake-import-receipt.json",
+      "receiptSha256": "ffea7e9c4842c7087f757ddd448b845a3b3bc0dce567b8b1fc7e3db05d713532",
+      "imageId": "5674678cdeb9457b937cf117c652cec3",
+      "ownerId": "7f2ac9a9-56ce-44e5-8928-2cbd6a1bc58f",
+      "createdAt": "2026-10-23T04:39:02.86Z",
+      "sourceUrl": "https://rcdb.com/aabmjfa",
+      "summary": "Import privé du média historique photo-17-crazy-shake, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f15bfdbc92b145f3a763dd0451e865ef-2026-10-23T043922.639Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:39:22.639Z",
+      "appliedAt": "2026-10-23T04:39:22.639Z",
+      "receiptFile": "photo-18-queen-air-import-receipt.json",
+      "receiptSha256": "dd4ec866154e2a7c8c323ae9faa497e146597518497aed409dcecbe4a0988512",
+      "imageId": "f15bfdbc92b145f3a763dd0451e865ef",
+      "ownerId": "db5414c1-4f09-4045-8e9a-6893f5ecb5f8",
+      "createdAt": "2026-10-23T04:39:19.218Z",
+      "sourceUrl": "https://rcdb.com/aaghqla",
+      "summary": "Import privé du média historique photo-18-queen-air, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-a7f2ac269cc644de852fcf62c15e5fc7-2026-10-23T043937.687Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:39:37.687Z",
+      "appliedAt": "2026-10-23T04:39:37.687Z",
+      "receiptFile": "photo-19-breguet-side-import-receipt.json",
+      "receiptSha256": "04da5a25b5e2a2be6b33b9fc0889272df370592cc37125a0082d04cb7522b8e5",
+      "imageId": "a7f2ac269cc644de852fcf62c15e5fc7",
+      "ownerId": "37cc630a-f420-4759-b6da-dff9029a88f3",
+      "createdAt": "2026-10-23T04:39:34.143Z",
+      "sourceUrl": "https://aatlse.org/wp-content/uploads/ex_news/n594_3.jpg",
+      "summary": "Import privé du média historique photo-19-breguet-side, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3d44411e4e314be88e46e2571e2a2cf5-2026-10-23T043954.302Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:39:54.302Z",
+      "appliedAt": "2026-10-23T04:39:54.302Z",
+      "receiptFile": "photo-20-breguet-front-import-receipt.json",
+      "receiptSha256": "1ef8df0e3b8f02ab5b8d505b9fab4818e4b81db72ab9c99df781d66f693f9918",
+      "imageId": "3d44411e4e314be88e46e2571e2a2cf5",
+      "ownerId": "37cc630a-f420-4759-b6da-dff9029a88f3",
+      "createdAt": "2026-10-23T04:39:50.681Z",
+      "sourceUrl": "https://aatlse.org/wp-content/uploads/ex_news/n594_2.jpg",
+      "summary": "Import privé du média historique photo-20-breguet-front, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e80bcbe59c0244119a2c8b51a0112e16-2026-10-23T044021.996Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:40:21.996Z",
+      "appliedAt": "2026-10-23T04:40:21.996Z",
+      "receiptFile": "photo-21-breguet-wing-import-receipt.json",
+      "receiptSha256": "e0b051837a740daf531c6b9a37c05d3f701157a55713bafacab5b2a4680f863d",
+      "imageId": "e80bcbe59c0244119a2c8b51a0112e16",
+      "ownerId": "37cc630a-f420-4759-b6da-dff9029a88f3",
+      "createdAt": "2026-10-23T04:40:18.517Z",
+      "sourceUrl": "https://aatlse.org/wp-content/uploads/ex_news/n594_7.jpg",
+      "summary": "Import privé du média historique photo-21-breguet-wing, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3371cab2bbb0419e9b48aa19c9b1c9bf-2026-10-23T044037.505Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:40:37.505Z",
+      "appliedAt": "2026-10-23T04:40:37.505Z",
+      "receiptFile": "photo-22-breguet-recovery-import-receipt.json",
+      "receiptSha256": "be71cbccc840c1772ebe4058c3b182b6f13c37d38d9b5a6737ce956ac582146c",
+      "imageId": "3371cab2bbb0419e9b48aa19c9b1c9bf",
+      "ownerId": "37cc630a-f420-4759-b6da-dff9029a88f3",
+      "createdAt": "2026-10-23T04:40:34.079Z",
+      "sourceUrl": "https://aatlse.org/wp-content/uploads/ex_news/n594_8.jpg",
+      "summary": "Import privé du média historique photo-22-breguet-recovery, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-2eba18c8895f49b5baa6a1c89ed60c2b-2026-10-23T044051.919Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:40:51.919Z",
+      "appliedAt": "2026-10-23T04:40:51.919Z",
+      "receiptFile": "photo-23-tower-2011-import-receipt.json",
+      "receiptSha256": "623a84458afd4479ac9db5d7d422b1ae185505b219131290652b57cd76a5e9b0",
+      "imageId": "2eba18c8895f49b5baa6a1c89ed60c2b",
+      "ownerId": "829981e9-924d-464a-aa5d-5db1b3671bd9",
+      "createdAt": "2026-10-23T04:40:48.441Z",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/A81746C5-64BB-466B-9A67-511816B0E1E3/NW_detail/ouvert-initialement-en-1990-aerocity-ferme-une-premiere-fois-ses-portes-en-2002-apres-avoir-ete-repris-par-l-entrepreneur-andre-monfredo-le-parc-d-attraction-rouvre-en-2008-sous-le-nom-de-parc-avenue-(sur-la-photo-en-2011)-avant-de-fermer-definitivement-en-2014-archives-photo-le-dl-s-b-1735749402.jpg",
+      "summary": "Import privé du média historique photo-23-tower-2011, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-ae037460b0ae40e680477f189b63d6ed-2026-10-23T044106.135Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:41:06.135Z",
+      "appliedAt": "2026-10-23T04:41:06.135Z",
+      "receiptFile": "photo-24-petit-train-import-receipt.json",
+      "receiptSha256": "458f7d4be6eab7f1f16a69ee0d5536470433ba5066f6888a1b40f201945951f7",
+      "imageId": "ae037460b0ae40e680477f189b63d6ed",
+      "ownerId": "65739f3e-e24a-41f0-960c-d2047b4958f0",
+      "createdAt": "2026-10-23T04:41:02.498Z",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/A2C16E09-9A1F-4C4C-B0A2-DE9A5C3FBA2C/NW_detail/ouvert-initialement-en-1990-aerocity-ferme-une-premiere-fois-ses-portes-en-2002-apres-avoir-ete-repris-par-l-entrepreneur-andre-monfredo-le-parc-d-attraction-rouvre-en-2008-sous-le-nom-de-parc-avenue-(sur-la-photo-en-2011)-avant-de-fermer-definitivement-en-2014-archives-photo-le-dl-s-b-1735749402.jpg",
+      "summary": "Import privé du média historique photo-24-petit-train, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-48e1f64547b24331962de351678ba88c-2026-10-23T044120.055Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:41:20.055Z",
+      "appliedAt": "2026-10-23T04:41:20.055Z",
+      "receiptFile": "photo-25-enterprise-import-receipt.json",
+      "receiptSha256": "d121c119bd73dc6e7cd68724dc150f2a499c04bfda9966a2e221c3c79537dae7",
+      "imageId": "48e1f64547b24331962de351678ba88c",
+      "ownerId": "d2d2c343-5198-46d7-817c-325b487d8892",
+      "createdAt": "2026-10-23T04:41:16.602Z",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/483C0C71-59A5-49C2-B521-3489F6405B97/NW_detail/ouvert-initialement-en-1990-aerocity-ferme-une-premiere-fois-ses-portes-en-2002-apres-avoir-ete-repris-par-l-entrepreneur-andre-monfredo-le-parc-d-attraction-rouvre-en-2008-sous-le-nom-de-parc-avenue-(sur-la-photo-en-2011)-avant-de-fermer-definitivement-en-2014-archives-photo-le-dl-s-b-1735749402.jpg",
+      "summary": "Import privé du média historique photo-25-enterprise, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-bc4d4c34f22d4830bc66983eda53a7a5-2026-10-23T044133.673Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:41:33.673Z",
+      "appliedAt": "2026-10-23T04:41:33.673Z",
+      "receiptFile": "photo-26-tpacap-import-receipt.json",
+      "receiptSha256": "5ea1bf4224c1304cba5030f815fd4e9b4d1ff67f8030352cbc547ed3ed60b8ee",
+      "imageId": "bc4d4c34f22d4830bc66983eda53a7a5",
+      "ownerId": "3b719658-c3d6-480e-a216-cab10ede80fb",
+      "createdAt": "2026-10-23T04:41:30.285Z",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/C2F57805-7852-4943-8F5F-A41BE7381014/NW_detail/ouvert-initialement-en-1990-aerocity-ferme-une-premiere-fois-ses-portes-en-2002-apres-avoir-ete-repris-par-l-entrepreneur-andre-monfredo-le-parc-d-attraction-rouvre-en-2008-sous-le-nom-de-parc-avenue-(sur-la-photo-en-2011)-avant-de-fermer-definitivement-en-2014-archives-photo-le-dl-s-b-1735749402.jpg",
+      "summary": "Import privé du média historique photo-26-tpacap, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-89678bb143104830a6e2165816f97864-2026-10-23T044147.642Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:41:47.642Z",
+      "appliedAt": "2026-10-23T04:41:47.642Z",
+      "receiptFile": "photo-27-water-boats-import-receipt.json",
+      "receiptSha256": "46b586f5794a746c3c2f71f0d4c9fad7f46cef9f4506712a11786525657c43d7",
+      "imageId": "89678bb143104830a6e2165816f97864",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "createdAt": "2026-10-23T04:41:44.125Z",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/5103EF18-A829-4B46-A2D3-8072DBA3CCD4/NW_detail/ouvert-initialement-en-1990-aerocity-ferme-une-premiere-fois-ses-portes-en-2002-apres-avoir-ete-repris-par-l-entrepreneur-andre-monfredo-le-parc-d-attraction-rouvre-en-2008-sous-le-nom-de-parc-avenue-(sur-la-photo-en-2011)-avant-de-fermer-definitivement-en-2014-archives-photo-le-dl-s-b-1735749402.jpg",
+      "summary": "Import privé du média historique photo-27-water-boats, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-fd3c3050824d49cc8abc7445bfa646d0-2026-10-23T044201.657Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:42:01.657Z",
+      "appliedAt": "2026-10-23T04:42:01.657Z",
+      "receiptFile": "photo-28-water-slides-import-receipt.json",
+      "receiptSha256": "27112b8fe84ed9ab789b55fec5cc2794c37ab9da756d19f7744235818987e086",
+      "imageId": "fd3c3050824d49cc8abc7445bfa646d0",
+      "ownerId": "a5cfbc05-6e4a-4fb8-aac6-d66cb8d3d83c",
+      "createdAt": "2026-10-23T04:41:58.069Z",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/4C0D2819-AC3A-4F85-8342-99D11976F3DE/NW_detail/ouvert-initialement-en-1990-aerocity-ferme-une-premiere-fois-ses-portes-en-2002-apres-avoir-ete-repris-par-l-entrepreneur-andre-monfredo-le-parc-d-attraction-rouvre-en-2008-sous-le-nom-de-parc-avenue-(sur-la-photo-en-2011)-avant-de-fermer-definitivement-en-2014-archives-photo-le-dl-s-b-1735749402.jpg",
+      "summary": "Import privé du média historique photo-28-water-slides, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b42d170b373446cfbc0ca90a02f08b14-2026-10-23T044215.423Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:42:15.423Z",
+      "appliedAt": "2026-10-23T04:42:15.423Z",
+      "receiptFile": "photo-29-pentagliss-ruins-import-receipt.json",
+      "receiptSha256": "096dc5809f810aca754860c686190f8916dab09261af4201f69c6e7f0c2100d3",
+      "imageId": "b42d170b373446cfbc0ca90a02f08b14",
+      "ownerId": "07e7b451-b460-416d-a23c-0be7709fd0ab",
+      "createdAt": "2026-10-23T04:42:12.01Z",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/BED4149D-7E6E-4AB4-B991-5782852B1AA9/NW_detail/l-ancien-parc-d-attractions-aerocity-situe-a-lanas-en-ardeche-et-inaugure-en-1990-est-aujourd-hui-abandonne-et-prise-des-amateurs-d-urbex-(exploration-urbaine)-photo-le-dl-anthony-gonzalez-1735749402.jpg",
+      "summary": "Import privé du média historique photo-29-pentagliss-ruins, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e752eeb95c474c9a88a3913514fba25e-2026-10-23T044229.086Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:42:29.086Z",
+      "appliedAt": "2026-10-23T04:42:29.086Z",
+      "receiptFile": "photo-30-entrance-abandoned-import-receipt.json",
+      "receiptSha256": "db242f9e97552158e0dad18dc41d12be1917aa8c540189d39c6427c408d1076a",
+      "imageId": "e752eeb95c474c9a88a3913514fba25e",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "createdAt": "2026-10-23T04:42:25.753Z",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/60F19AA5-E482-40F3-9113-38547B2563D7/NW_detail/l-ancien-parc-d-attractions-aerocity-situe-a-lanas-en-ardeche-et-inaugure-en-1990-est-aujourd-hui-abandonne-et-prise-des-amateurs-d-urbex-(exploration-urbaine)-photo-le-dl-anthony-gonzalez-1735749402.jpg",
+      "summary": "Import privé du média historique photo-30-entrance-abandoned, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e01134156baa4a7f8a3310d5a9f0d2a8-2026-10-23T044242.772Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-10-23T04:42:42.772Z",
+      "appliedAt": "2026-10-23T04:42:42.772Z",
+      "receiptFile": "photo-31-waterarea-abandoned-import-receipt.json",
+      "receiptSha256": "52deee413ed90fc4aa23f2cdd29aef8c5ec663e9a6541f47aed2ecf26e0b66f5",
+      "imageId": "e01134156baa4a7f8a3310d5a9f0d2a8",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "createdAt": "2026-10-23T04:42:39.438Z",
+      "sourceUrl": "https://cdn-s-www.ledauphine.com/images/61493D5D-2C8D-4D33-B5D0-E646D152F3C0/NW_detail/l-ancien-parc-d-attractions-aerocity-situe-a-lanas-en-ardeche-et-inaugure-en-1990-est-aujourd-hui-abandonne-et-prise-des-amateurs-d-urbex-(exploration-urbaine)-photo-le-dl-anthony-gonzalez-1735749402.jpg",
+      "summary": "Import privé du média historique photo-31-waterarea-abandoned, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-50198fae-6a99-4e9f-ad8b-35ea0501c3e3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:45:33.4473294Z",
+      "appliedAt": "2026-10-23T04:45:33.447Z",
+      "receiptFile": "04-coaster-copy-v2-apply.receipt.json",
+      "receiptSha256": "bb0eb385ebbfc894c4b5a9dfe56e3b5c8d26ea76a9033fb5bbbf49afe82e4f9f",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc Avenue :32descriptions harmonisées aveclacharte ; chronologied’ouverture réservéeauxchampsstructurésetàl’histoire."
+    },
+    {
+      "eventId": "apply-909ed638-e284-41f8-9c0c-ea29700368ce",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:48:24.6616975Z",
+      "appliedAt": "2026-10-23T04:48:24.661Z",
+      "receiptFile": "05-references-v2-apply.receipt.json",
+      "receiptSha256": "65874688c13a850f9ee466ee6e585409fac5f9716c4da9f5593dd4e7da15b9ca",
+      "counts": {
+        "created": 1,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt",
+        "closedYear",
+        "contactDetails",
+        "description.de",
+        "description.en",
+        "description.es",
+        "description.fr",
+        "description.it",
+        "description.nl",
+        "description.pl",
+        "description.pt",
+        "foundedYear",
+        "legalName",
+        "operatorId"
+      ],
+      "summary": "Parc Avenue : exploitantFamilyLoisirs identifié etdocumenté ; biographieBigCountryMotioneering enrichie avecvérificationtransparcs, huitlanguesparréférence."
+    },
+    {
+      "eventId": "apply-2eed7e43-c291-4b80-88f0-c2c0bac24e9b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:50:43.4599324Z",
+      "appliedAt": "2026-10-23T04:50:43.459Z",
+      "receiptFile": "04-zone-copy-apply.receipt.json",
+      "receiptSha256": "f2b766def722b5d019161593004b8bab3aafddde72391d3e80b907aa42bc8052",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt",
+        "names.de",
+        "names.en",
+        "names.es",
+        "names.fr",
+        "names.it",
+        "names.nl",
+        "names.pl",
+        "names.pt"
+      ],
+      "summary": "Parc Avenue : descriptionsdeszonesAérosplashetdesjeuxenfantins en huitlangues, nomspropresconservés ; publicationtoujoursenattente d’audit."
+    },
+    {
+      "eventId": "apply-a346a761-b81e-40bc-a895-f4c6cb48f81e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T04:57:22.3322351Z",
+      "appliedAt": "2026-10-23T04:57:22.332Z",
+      "receiptFile": "04-historic-copy-1-v2-apply.receipt.json",
+      "receiptSha256": "a22e7683c318c3830f048b317d8a742977fb3ca40efeadd761c700d313d36d1b",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc Avenue :24descriptions reluespourleBreguet941S, lePaysdel’exploitetPierrotlaLune ; sourcesetlimitesdocumentées."
+    },
+    {
+      "eventId": "apply-d57ea84c-9e7e-45f4-81a7-7c1e39d77ed0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T05:10:14.3983641Z",
+      "appliedAt": "2026-10-23T05:10:14.398Z",
+      "receiptFile": "05-chance-biography-apply.receipt.json",
+      "receiptSha256": "24dadf61ba0986efc974883db4aa51fefc506a751cc2cd6b3b63cc0613768db3",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt"
+      ],
+      "summary": "Chance Rides: huit biographies factuelles vérifiées sur l’historique officiel, portée interparcs documentée."
+    },
+    {
+      "eventId": "apply-0f01a653-b42e-45b4-936a-bb217d3486a8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T05:11:32.0531211Z",
+      "appliedAt": "2026-10-23T05:11:32.053Z",
+      "receiptFile": "04-historic-copy-2-apply.receipt.json",
+      "receiptSha256": "1d4f81703a0d67478c0bb2cbe4f3e667db42aba097fd1a194d117c57cfe9c675",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Tour Chute Libre, Delta Junior, Jeunes Mermoz et Round Up : 32 textes historiques relus, limites documentaires individualisées."
+    },
+    {
+      "eventId": "apply-97fa7b97-5761-440a-978a-53e1455bc3b5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T05:14:53.470813Z",
+      "appliedAt": "2026-10-23T05:14:53.470Z",
+      "receiptFile": "04-historic-copy-3-apply.receipt.json",
+      "receiptSha256": "2e1ac32c646518e443ef1532806a085377d30e18401f10d72fc4b1e2b680e380",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Voltigeur, Turbo-Jet et Satellite : 24 descriptions historiques localisées, contrôlées sur les brochures originales."
+    },
+    {
+      "eventId": "apply-8b4ecdb6-3a3a-463c-9a26-6aa32ba6f804",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T05:19:14.2554642Z",
+      "appliedAt": "2026-10-23T05:19:14.255Z",
+      "receiptFile": "04-historic-copy-4-apply.receipt.json",
+      "receiptSha256": "191222a58d79964b8812a8768d88215636b4b1c97585756a7c6e01e303ba4a60",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Crazy Shake, Petit Train, Enterprise et T’PA CAP : 32 textes localisés relus avec photographies réelles et archives officielles."
+    },
+    {
+      "eventId": "apply-17977908-b376-4b9c-896a-03969b6570b3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T05:25:23.8147208Z",
+      "appliedAt": "2026-10-23T05:25:23.814Z",
+      "receiptFile": "04-service-copy-1-apply.receipt.json",
+      "receiptSha256": "ed12338a2997163009570dd9f38a0bfed6e0519580dcb0dd28541881e0358ce3",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Neuf services historiques de Parc Avenue : 72 textes localisés relus, emplacements distincts et limites de sources consignées."
+    },
+    {
+      "eventId": "apply-aaae1bdb-8514-4624-a872-d36902d400f6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T05:30:07.1184446Z",
+      "appliedAt": "2026-10-23T05:30:07.118Z",
+      "receiptFile": "04-food-shop-copy-apply.receipt.json",
+      "receiptSha256": "042bb4ff0a551c675a3afe0af36cbb0fbdb918c847706a597fe20655b91c420e",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Cinq restaurants et la boutique : 48 descriptions historiques localisées, continuité des lieux et offre sourcée vérifiées."
+    },
+    {
+      "eventId": "apply-90751a77-8409-47b4-852a-8f525c938bb7",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T05:34:18.1879794Z",
+      "appliedAt": "2026-10-23T05:34:18.187Z",
+      "receiptFile": "03-verified-geolocation-apply.receipt.json",
+      "receiptSha256": "3bd4b94bc8157ebad29330a05d0fba27b73dd6c43cc19643f45deb3460ca9f1c",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "position"
+      ],
+      "summary": "Géolocalisation vérifiée du parking et de Pentagliss : géométries OSM recoupées avec plans officiels et photographies."
+    },
+    {
+      "eventId": "apply-bdac1bc8-aa07-4068-864b-bb7a2a3b4953",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T05:41:14.1019119Z",
+      "appliedAt": "2026-10-23T05:41:14.101Z",
+      "receiptFile": "04-walking-copy-apply.receipt.json",
+      "receiptSha256": "c1987a88d71dc7da571d8379f918d52a3100e2f2b8f45fa7ace6685dd6df6258",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Cinq promenades et jeux historiques : 40 textes localisés, identités et composants recoupés sur les plans officiels."
+    },
+    {
+      "eventId": "apply-4a290217-cd0d-44e5-8091-9a63b9e3b77e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T05:55:22.6129471Z",
+      "appliedAt": "2026-10-23T05:55:22.612Z",
+      "receiptFile": "04-animals-aircraft-copy-v2-apply.receipt.json",
+      "receiptSha256": "29ccbdc817765950f956cedffb4b0e4ce947e4b1ad536483c65b5ecb765b98e1",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc Avenue : descriptions en huit langues de sept espaces animaliers et appareils exposés, preuves originales et limites de sources conservées."
+    },
+    {
+      "eventId": "apply-10902f2a-d80d-4508-b3f1-e028f4edd6a5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:02:43.8485329Z",
+      "appliedAt": "2026-10-23T06:02:43.848Z",
+      "receiptFile": "04-water-copy-v2-apply.receipt.json",
+      "receiptSha256": "4ad121841ad9a3e31d722a52db1cd8e39d96054aba0f8689eec7394eada4aa40",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc Avenue : sept espaces aquatiques décrits et relus en huit langues, identités historiques rapprochées et limites documentées."
+    },
+    {
+      "eventId": "apply-7fca3110-d220-491d-8be1-4256b7b5ffa3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:06:49.9792448Z",
+      "appliedAt": "2026-10-23T06:06:49.979Z",
+      "receiptFile": "04-old-games-copy-apply.receipt.json",
+      "receiptSha256": "9891ecf2c5cbfdc064f976d9f7c984f24e4e27ef30bea663ac682781a7c878f6",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc Avenue : cinq jeux et attractions historiques décrits en huit langues, dont Mini Galaxy/Galaxy sans doublon."
+    },
+    {
+      "eventId": "apply-c63b4cc7-204d-4851-849a-edb86304ebcd",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:11:51.5988886Z",
+      "appliedAt": "2026-10-23T06:11:51.598Z",
+      "receiptFile": "04-modern-games-copy-apply.receipt.json",
+      "receiptSha256": "d3a7d7d0532dd3637304be550dcfb17f330958af9d39fbdac18fbff7bdb039a6",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc Avenue : six jeux, aire enfantine et labyrinthe localisés en huit langues ; lacune éditoriale du Babyfoot conservée explicitement pour audit final."
+    },
+    {
+      "eventId": "apply-be91abc2-c345-4324-b5a2-b3cb31ffb3dc",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:16:31.7147011Z",
+      "appliedAt": "2026-10-23T06:16:31.714Z",
+      "receiptFile": "04-shows-copy-apply.receipt.json",
+      "receiptSha256": "980d495821d2b487d519628327da76fbc3be3eebf3205b3964bc5fd7b2102e5e",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Parc Avenue : quatre lieux de spectacle et animation décrits en huit langues ; toutes les 68 fiches possèdent leurs textes localisés, audit final encore à faire."
+    },
+    {
+      "eventId": "apply-9901a2e0-8ee2-468b-8e31-92db7371093e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:22:23.0847852Z",
+      "appliedAt": "2026-10-23T06:22:23.084Z",
+      "receiptFile": "08-park-history-apply.receipt.json",
+      "receiptSha256": "78fda032b579ac7b35747b37a29060cfb49a4aef5f51c804a995b84e0e8cae6c",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "newOwnerName",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Parc Avenue : six jalons historiques du parc en huit langues, de l’ouverture d’Aérocity à la liquidation de Family Loisirs ; faits privés et sourcés en attente d’audit."
+    },
+    {
+      "eventId": "apply-fc70ccf0-52e0-453c-b1d2-6e6ceadfca3e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:30:48.6103394Z",
+      "appliedAt": "2026-10-23T06:30:48.610Z",
+      "receiptFile": "08-item-history-a-apply.receipt.json",
+      "receiptSha256": "653c3e667c7fbdd5beee335ff888b3804b6c5fac30cdaa1c24e4fdfb56cf5ee4",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "locationLabel",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "relatedParkIds",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Parc Avenue : six jalons propres au Breguet, à l’Enterprise et à l’Aéroplane, dont sauvetage à Toulouse et transfert à Kingoland ; huit langues, sources et photos."
+    },
+    {
+      "eventId": "apply-a0fdfbac-f72d-4208-bbbe-287c1466a165",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:36:18.020531Z",
+      "appliedAt": "2026-10-23T06:36:18.020Z",
+      "receiptFile": "08-item-history-b-apply.receipt.json",
+      "receiptSha256": "6d46f6f5ac89a13f4c2e01f814564ef520ea3ab3d285f882a57d6896b5a0d137",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Parc Avenue : cinq jalons des montagnes russes, dont ouverture exacte du Grand 8 le 23 juin 2012 ; huit langues, preuves spécialisées et incertitude du contexte 2002–2003 conservées."
+    },
+    {
+      "eventId": "apply-e09c11ff-f556-4b75-9bea-4957f255e0be",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:43:27.6282238Z",
+      "appliedAt": "2026-10-23T06:43:27.628Z",
+      "receiptFile": "08-breguet-article-apply.receipt.json",
+      "receiptSha256": "7136c5b41b44549d0bff5f0703fded40de4f17eb63e6b6041efeaec235fe6a0b",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Parc Avenue : article développé en huit langues sur le sauvetage du Breguet, trois sections et six paragraphes, photographie réelle de l’opération et sources des Ailes Anciennes Toulouse."
+    },
+    {
+      "eventId": "apply-5ae3cb88-f99a-4dda-ade5-413f2ed38272",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:51:09.7327379Z",
+      "appliedAt": "2026-10-23T06:51:09.732Z",
+      "receiptFile": "08-park-article-apply.receipt.json",
+      "receiptSha256": "db26de88d8935450d3c8a70aefc5118b0318d900c3c9fc637462589268c50b9b",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Parc Avenue: synthèse historique Aérocity, reprise et fermeture dans huit langues; article sourcé et illustré conservé privé avant audit final."
+    },
+    {
+      "eventId": "apply-89a4735b-475b-4b83-ad8a-4c0b7ef3614b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:53:48.6921475Z",
+      "appliedAt": "2026-10-23T06:53:48.692Z",
+      "receiptFile": "04-final-copy-cleanup-apply.receipt.json",
+      "receiptSha256": "eb5363c816648bf78524bea1e409f7f141f72f34afb8f86835fa27ad923bfae7",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Relecture transversale des huit langues: suppression des rappels techniques et chronologiques dans quatre descriptions de grands huit, sans modifier leurs données historiques."
+    },
+    {
+      "eventId": "apply-046bc430-06c5-4c30-8d75-12c262f7bd5a",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T06:56:34.4861333Z",
+      "appliedAt": "2026-10-23T06:56:34.486Z",
+      "receiptFile": "04-last-editorial-apply.receipt.json",
+      "receiptSha256": "c8232da3b0a65ee1aa9a7b3d60b256c00167225e07deef408376764c5d06b30f",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.accessConditions",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Dernière reprise éditoriale du parc, de la zone enfantine et du point régional; ajout de la tranche 1–6 ans attestée par le plan officiel archivé, dans les conditions dédiées."
+    },
+    {
+      "eventId": "apply-5d1ceb3d-d959-44ac-8697-60019baf063f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T07:00:23.5162185Z",
+      "appliedAt": "2026-10-23T07:00:23.516Z",
+      "receiptFile": "09-corpus-correction-apply.receipt.json",
+      "receiptSha256": "13631492964c82caff16c834ed1bc1560bc34de4de397afaf91810eacc107ed2",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt",
+        "summaries"
+      ],
+      "summary": "Audit final: correction ciblée des huit descriptions Aérosplash et de deux résumés du jalon CCI, sources et identifiants conservés."
+    },
+    {
+      "eventId": "apply-ce8afb09-9a01-4707-b1cb-a60bf2ad930c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T07:06:51.0365899Z",
+      "appliedAt": "2026-10-23T07:06:51.036Z",
+      "receiptFile": "09-article-captions-apply.receipt.json",
+      "receiptSha256": "eb7e8db07b85276e41a00b5c4495ec75e8a50329ec54c9fa5714f34f90bc2f2c",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "summaries"
+      ],
+      "summary": "Correction ciblée du doublon de formulation signalé par le contrôle serveur et des32légendes d’articles; faits et images conservés."
+    },
+    {
+      "eventId": "apply-04118cf1-27c2-4adc-8d45-f6f2ef4e5251",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T07:09:08.5893892Z",
+      "appliedAt": "2026-10-23T07:09:08.589Z",
+      "receiptFile": "09-transport-copy-apply.receipt.json",
+      "receiptSha256": "f1b46c36edb02a0978d18d75e4d09072b8ec29e2028a5001642ec6f040f8f8a4",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article Breguet: retrait de la dimension de remorque dans les huit langues, récit du sauvetage et sources conservés."
+    },
+    {
+      "eventId": "apply-1f1983cd-c563-4e80-8c29-0a221fedf6de",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T07:12:18.4860281Z",
+      "appliedAt": "2026-10-23T07:12:18.486Z",
+      "receiptFile": "09-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "22ee6013d9166b7755cf1bfbead36a855be06c49c529befb2b1e1429ba94308c",
+      "counts": {
+        "created": 0,
+        "updated": 17,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Réparation officielle des17révisions historiques canoniques de Parc Avenue après sa publication, sans doublon ni modification éditoriale."
+    }
+  ],
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-c24b45ac-eb54-48f0-b81f-ed277a92311c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T07:03:29.3228076Z",
+      "appliedAt": "2026-10-23T07:03:29.322Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "3ed77925145d10110cd3184b38103d4dec223c98080935c8f2fdd6ad58386a01",
+      "counts": {
+        "created": 0,
+        "updated": 31,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Publication des31images auditées de Parc Avenue, dont son logo authentique; parc conservé masqué jusqu’au contrôle final."
+    },
+    {
+      "eventId": "apply-45597944-39b3-4fa6-a0ee-2666e2f06ead",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T07:04:10.8071465Z",
+      "appliedAt": "2026-10-23T07:04:10.807Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "8d6d35ec4e9ed591f6001465200411ff08db6eb12a6ca8cd74a4755ba6939328",
+      "counts": {
+        "created": 0,
+        "updated": 25,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "isVisible"
+      ],
+      "summary": "Publication des6plans officiels,2zones,17jalons sourcés et2articles audités de Parc Avenue; parc encore masqué."
+    },
+    {
+      "eventId": "apply-30446b9a-b859-4e82-9379-fdff44c9668c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T07:04:47.0733091Z",
+      "appliedAt": "2026-10-23T07:04:47.073Z",
+      "receiptFile": "09-publish-items-apply.receipt.json",
+      "receiptSha256": "7cb4e3e14065c0c1cb0c04a1cbc8ddc1e328487e3096fc0aee7050cf57380d9c",
+      "counts": {
+        "created": 0,
+        "updated": 68,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Publication ciblée des68éléments qualifiés et relus de Parc Avenue; statut historique conservé."
+    },
+    {
+      "eventId": "apply-7ca09281-593f-4412-8e58-940e71237ab5",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-10-23T07:10:15.2869679Z",
+      "appliedAt": "2026-10-23T07:10:15.286Z",
+      "receiptFile": "09-publish-park-apply.receipt.json",
+      "receiptSha256": "37c74e1a50de3e4ef1588be540a3511dac38cc87ca27c3755b5452135acacd64",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Parc Avenue publié après audit complet et score98sansbloqueur; contrôle public et Facebook à terminer."
+    }
+  ]
+}

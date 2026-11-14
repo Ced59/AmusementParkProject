@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "205968803790cae5b2eb2059a55d633b95780433b328950fc4c587b3622be14e",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "43c8a017-5dc4-490b-b503-80151a103d8a",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T19:56:05.827782Z",
+    "appliedAtUtc": "2026-11-14T19:56:05.827783Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+        "entityKey": "marineland-restaurant-antarctica",
+        "displayName": "Restaurant Antarctica",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Restaurant mit Blick auf die Pinguine</h2><p>Das Restaurant Antarctica besaß einen Speiseraum gegenüber der Pinguinanlage von Marineland. Der Name des Tierbereichs bezeichnete damit auch ein eigenständiges Restaurant, das zudem für Empfänge genutzt wurde. Im Inneren standen Tische zwischen dunklen Felsen und weißer Schneekulisse.</p><h2>Ein geformter Durchgang durch das Eis</h2><p>Eine breite rechteckige Öffnung verband die Bereiche des Speiseraums. Über diesem von Felsblöcken gerahmten Durchgang stand Antarctica in blauen Buchstaben. Auf den Vorsprüngen schien sich Schnee zu sammeln, der in unregelmäßigen Flächen an den Wänden hinabzog.</p><p>Der Empfangstresen griff diese Formen mit einem grauen Steinsockel und einer unebenen weißen Oberseite auf. Hinter den Fenstern bildeten Bäume und Tageslicht einen Kontrast zur polaren Szenerie. Zwischen den modellierten Wänden standen die Tische und Stühle des Restaurants.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A restaurant facing the penguins</h2><p>Antarctica restaurant occupied a dining room facing Marineland’s penguin enclosure. The animal exhibit’s name also belonged to a separate restaurant, which hosted receptions as well. Inside, tables stood among dark rock formations and white snow scenery.</p><h2>A sculpted entrance through the ice</h2><p>A broad rectangular opening connected different parts of the dining room. The name Antarctica, in blue letters, crowned this passage between blocks of rock. Snow appeared to gather on their ledges and run down the walls in irregular patches.</p><p>The welcome counter repeated these textures, with a grey stone base and a rough white top. Beyond the windows, the park’s trees and daylight contrasted with the polar setting. Tables and chairs remained visible among the sculpted walls.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un restaurante frente a los pingüinos</h2><p>El restaurante Antarctica ocupaba una sala orientada hacia el recinto de pingüinos de Marineland. El nombre del espacio de los animales también identificaba un restaurante independiente, utilizado además para recepciones. Dentro, las mesas se encontraban entre rocas oscuras y decorados de nieve blanca.</p><h2>Una entrada esculpida como un paso entre el hielo</h2><p>Una amplia abertura rectangular comunicaba las partes de la sala. La inscripción Antarctica, en letras azules, coronaba este paso enmarcado por bloques rocosos. La nieve parecía acumularse en sus salientes y descender por las paredes en manchas irregulares.</p><p>El mostrador de recepción repetía esos relieves, con una base de piedras grises y una parte superior blanca y rugosa. Tras los ventanales, los árboles y la luz del parque contrastaban con la ambientación polar. Las mesas y las sillas quedaban a la vista entre las paredes modeladas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un restaurant face aux manchots</h2><p>Le restaurant Antarctica occupait une salle tournée vers la manchotière de Marineland. Le nom de l’espace animalier se retrouvait ainsi dans un lieu de restauration à part entière, également utilisé pour des réceptions. À l’intérieur, les tables côtoyaient un décor de rochers sombres et de neige blanche.</p><h2>Une entrée sculptée comme un passage dans la glace</h2><p>Une large ouverture rectangulaire reliait les parties de la salle. L’inscription Antarctica, en lettres bleues, dominait ce passage encadré de blocs rocheux. La neige semblait s’accumuler sur leurs rebords et descendre en plaques irrégulières le long des parois.</p><p>Le comptoir d’accueil reprenait ce relief, avec une base de pierres grises et un dessus blanc bosselé. Derrière les baies vitrées, les arbres et la lumière du parc contrastaient avec cette évocation polaire. Le mobilier de tables et de chaises restait visible au milieu des parois sculptées.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un ristorante di fronte ai pinguini</h2><p>Il ristorante Antarctica occupava una sala rivolta verso il recinto dei pinguini di Marineland. Il nome dello spazio dedicato agli animali identificava quindi anche un ristorante distinto, utilizzato inoltre per ricevimenti. All’interno, i tavoli si trovavano fra rocce scure e scenografie di neve bianca.</p><h2>Un ingresso scolpito come un passaggio nel ghiaccio</h2><p>Un’ampia apertura rettangolare collegava le parti della sala. La scritta Antarctica, in lettere blu, sovrastava questo passaggio incorniciato da blocchi rocciosi. La neve sembrava accumularsi sulle sporgenze e scendere lungo le pareti in chiazze irregolari.</p><p>Il banco d’accoglienza riprendeva gli stessi rilievi, con una base di pietre grigie e una superficie bianca irregolare. Oltre le vetrate, gli alberi e la luce del parco contrastavano con l’ambientazione polare. Tavoli e sedie restavano visibili fra le pareti modellate.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een restaurant tegenover de pinguïns</h2><p>Restaurant Antarctica had een eetzaal tegenover het pinguïnverblijf van Marineland. De naam van het dierenverblijf hoorde dus ook bij een afzonderlijk restaurant, waar eveneens recepties plaatsvonden. Binnen stonden de tafels tussen donkere rotsen en witte sneeuwdecoraties.</p><h2>Een geboetseerde doorgang door het ijs</h2><p>Een brede rechthoekige opening verbond de delen van de eetzaal. Boven deze doorgang tussen rotsblokken stond Antarctica in blauwe letters. Op de richels leek sneeuw te liggen, die in onregelmatige vlakken langs de wanden naar beneden liep.</p><p>De ontvangstbalie herhaalde die vormen met een basis van grijze stenen en een hobbelige witte bovenkant. Achter de ramen contrasteerden de bomen en het daglicht van het park met het pooldecor. Tussen de gevormde wanden bleven de tafels en stoelen duidelijk zichtbaar.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Restauracja naprzeciw pingwinów</h2><p>Restauracja Antarctica zajmowała salę zwróconą ku wybiegowi pingwinów w Marineland. Nazwa części zoologicznej należała więc także do odrębnego lokalu gastronomicznego, w którym organizowano również przyjęcia. Wewnątrz stoły stały pośród ciemnych skał i dekoracji przedstawiających biały śnieg.</p><h2>Wejście wyrzeźbione jak przejście przez lód</h2><p>Szeroki prostokątny otwór łączył części sali. Nad tym przejściem, obramowanym skalnymi blokami, widniał niebieski napis Antarctica. Śnieg zdawał się gromadzić na występach i spływać nieregularnymi płatami po ścianach.</p><p>Lada przy wejściu powtarzała te kształty: miała podstawę z szarych kamieni i nierówny biały blat. Za oknami drzewa i dzienne światło parku kontrastowały z polarną scenerią. Pomiędzy modelowanymi ścianami widać było stoły i krzesła restauracji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um restaurante de frente para os pinguins</h2><p>O restaurante Antarctica ocupava uma sala virada para o recinto dos pinguins do Marineland. O nome do espaço dos animais identificava também um restaurante distinto, utilizado ainda para receções. No interior, as mesas encontravam-se entre rochas escuras e cenários de neve branca.</p><h2>Uma entrada esculpida como uma passagem pelo gelo</h2><p>Uma ampla abertura retangular ligava as partes da sala. A inscrição Antarctica, em letras azuis, coroava esta passagem enquadrada por blocos rochosos. A neve parecia acumular-se nas saliências e descer pelas paredes em manchas irregulares.</p><p>O balcão de acolhimento retomava esses relevos, com uma base de pedras cinzentas e um tampo branco irregular. Para lá das janelas, as árvores e a luz do parque contrastavam com o cenário polar. As mesas e as cadeiras permaneciam visíveis entre as paredes modeladas.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://lamomiedesign.wordpress.com/portfolio/marineland-antarctica-restaurant-2/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

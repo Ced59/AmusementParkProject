@@ -1,0 +1,685 @@
+{
+  "parkId": "f019e441-aecf-487b-93db-2b0246dce185",
+  "limits": [
+    {
+      "key": "avenue-cinema",
+      "exception": "Shorter than120words in several languages; originaloperator1990/91/93/96/97brochuresandarchived2013site searched. Confirmeddomeappearance/location/format, but exactfilmprogramme, filmmakers, runtimeandinteriorsnotdocumented. No inventedplotsorpadding. Twoheadings/threefactualparagraphs retained.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-pierrot",
+      "exception": "Shorter than120words afterremovinggenericinterpretation. Confirmedoriginalbrochureinteriorphotos,warmfairytalescenes, longbuildingfootprintandnamedneighbours. No inventedscenecharacters,ridevendor, openingdayorretimingdate. LaterWagonnets/TrainFantomealiasstillresearchcandidate, explicitlyretained.",
+      "sources": [
+        "source-assets/brochure-03.jpg",
+        "source-assets/brochure-10.jpg",
+        "source-assets/brochure-12.jpg",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-tour",
+      "exception": "German and Polish word counts below 120 reflect compact idiom; three developed paragraphs cover the whole proven tower/observation/dry Boa/parachute complex, not separate invented rides.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-delta",
+      "exception": "Original 1990 brochure identifies this children’s ride and location separately from Jeunes Mermoz. Later official brochures and exact-name web searches yield no reliable vehicle/model/scene detail. Preserve short 3-paragraph historical identification; do not invent equipment or experiences.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-mermoz",
+      "exception": "Original 1990 and 1997 plans identify the ride and locations, with aviation-related name; no independent detailed ride image or specification. Exact-name web search unsuccessful. Short three paragraphs preserve the distinct ride and changed map position without inventing a relocation date.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-round-up",
+      "exception": "Original 1993/1996/1997 plans support appearance and location; no suitable detailed attraction photo or named supplier found. Short three paragraphs retain the illustrated red enclosure and specific restaurant/cycle/Satellite surroundings without mechanical padding.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-voltigeur",
+      "exception": "Original 1997 official cover photograph and map identify swing carousel, colours and surroundings. No manufacturer, opening date or detailed standalone photo is established; keep concise 3-paragraph copy rather than specifications or padding.",
+      "sources": [
+        "sources/brochure-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-turbo-jet",
+      "exception": "Original official brochures identify aircraft-themed ride, map position and operator promise of piloting. Detailed controls, manufacturer and equipment identity relative to planned Double Bang remain unproved. Preserve concise paragraphs, no invented technical or narrative detail.",
+      "sources": [
+        "sources/brochure-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-satellite",
+      "exception": "Original 1997 brochure and map establish named ride, physical separation from Round Up, illustration and advertised sensations. Exact-name additional web search yielded unrelated Aerocity India results, excluded. No detailed suitable image, maker or later transfer proved; shorter factual three-paragraph description retained.",
+      "sources": [
+        "sources/brochure-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-crazy-shake",
+      "exception": "Source-limited description from personally inspected RCDB 25927 credited Robin Peeters and dated 22 July 2002; identity, facade, cars, bulbs and context established. Manufacturer, programme and operating dates unknown. No engineering story invented.",
+      "sources": [
+        "sources/asset-manifest.json",
+        "sources/dauphine-2025.html",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-petit-train",
+      "exception": "Official map identifies little magic train; original 2011 press image proves Santa Fe Express livery and environment. Exact itinerary, maker, ride duration and opening date unknown. Three concise paragraphs preserve only proven appearance and mapped setting.",
+      "sources": [
+        "sources/asset-manifest.json",
+        "sources/dauphine-2025.html",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-grande-roue",
+      "exception": "Shorter languages retain all three paragraphs: real 2011 press photo, official map adventure designation, HUSS operator attribution and supported later Gravity Kingoland identity. No unsupported former owner, model mechanics or opening date in prose.",
+      "sources": [
+        "sources/asset-manifest.json",
+        "sources/dauphine-2025.html",
+        "sources/official-archive-plan-parc.html",
+        "https://coasterpedia.net/wiki/Gravity_(Kingoland)"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-tpacap",
+      "exception": "Official archived site calls it a simulator; original 2011 press photo proves capsule, flame decoration and access. Film, interior, programme and maker remain unknown despite official archive/specialist/press search. Describe exterior and name without invented ride sequence.",
+      "sources": [
+        "sources/asset-manifest.json",
+        "sources/dauphine-2025.html",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-entree",
+      "exception": "Service-specific 2-paragraph shorter format after original map/archive/photo search: RCDB 110614 personally inspected: actual ticket booth, blue sign, white gates and event posters. Short service text; no invented opening hours or ticket conditions.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-parking",
+      "exception": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original 1990–1997 operator maps establish external parking and airfield-road context; surfaces, capacity and detailed layouts unverified. No invented amenities or current parking promise.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-infirmerie",
+      "exception": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original operator maps consistently identify first-aid service at entrance; interior, equipment and staffing undocumented. Two short factual paragraphs instead of fabricated care details.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-sanitaires-entree",
+      "exception": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original operator maps locate entrance toilets separately from Cosmos toilets. Interior, cubicle counts and individual accessibility facilities unverified; concise location-specific text only.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-sanitaires-cosmos",
+      "exception": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original operator maps locate toilet block at Cosmos Terrasse building end. Interior and equipment unknown; preserve separate historical identity without generic facilities promises.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-aerostop",
+      "exception": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Official 1990–1997 brochures identify multiple internal picnic/play areas and named swings. Grouped service retained; no unsupported individual opening dates or relocation asserted.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-ardeche-info",
+      "exception": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original 1990 map establishes named regional information point by Aéro Expo and games. Actual leaflet inventory, staffing and interior unknown; no invented sales or booking service.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-vestiaires",
+      "exception": "Service-specific 2-paragraph shorter format after original map/archive/photo search: 1997 official brochure groups changing rooms with Splash-bar; archived operator interactive map confirms changing rooms/showers at water area. Interior and equipment details unavailable.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-pique-nique",
+      "exception": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Printed 2013 official brochure explicitly says picnic area in front of park. Different location from internal Aérostop areas, no inferred replacement or precise opening date.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-aerogourmand",
+      "exception": "Source-limited food/shop two-paragraph format: 1990 bar/snack/terrace and 1997 snack-pizzeria are explicit original operator labels; no menu item, supplier or interior invented.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/ardeche-evasion.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-cosmos",
+      "exception": "Source-limited food/shop two-paragraph format: Original Cosmos Terrasse footprint and group/self-service role reconciled with 2013 official Les Saveurs du Parc. Archived Ardèche Évasion confirms buffet of prepared dishes. No named dishes or unproved menu promised.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/ardeche-evasion.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-bar-ailes",
+      "exception": "Source-limited food/shop two-paragraph format: 1990 official plan identifies bar/snack by Pierrot and Jeunes Mermoz. No detailed menu or interior found; retain brief venue-specific location and aviation name.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/ardeche-evasion.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-looping-bar",
+      "exception": "Source-limited food/shop two-paragraph format: 1993–1997 original operator map explicitly labels bar/glacier separately from Aéro Gourmand, near retail/games. No flavours, menu or continuity with later unnamed snack bar invented.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/ardeche-evasion.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-splash-bar",
+      "exception": "Source-limited food/shop two-paragraph format: 1997 original operator map labels bar/glacier with changing rooms and lockers beside Aérosplash. No products beyond verified ice-cream/bar category or interior invented.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/ardeche-evasion.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-boutique",
+      "exception": "Source-limited food/shop two-paragraph format: Original operator brochure lists souvenirs/models/T-shirts; store footprint matched with official 2013 Boutique Parc Avenue. Do not conflate with planned terroir shop or invent a range for later seasons.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/ardeche-evasion.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-avion-perdu",
+      "exception": "Original operator maps and bridge/aircraft scenery photos plus 2013 map support walking rock-water landscape and later cave/bridge components. No invented plot, species of prehistoric figures, precise equipment changes or opening date.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-route-heros",
+      "exception": "Only named walking route, map footprint and Bustes des héros established in original brochures. Individual commemorated people, statue artist and sculptural detail unproved after archive/source review. Removed thin documentary filler; two short paragraphs.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-velo-kangourou",
+      "exception": "Original maps separately label this course and VTT. No reliable close photograph or bike model/operating principle; two factual paragraphs preserve location and distinct identity without padding.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-vtt",
+      "exception": "Official 1991/1993 maps name mountain-bike course separately from vélo-kangourou. Surface, obstacles, difficulty and equipment unproved; two short paragraphs, no invented athletic sensations.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-village-cabanes",
+      "exception": "Original 1991/1993/1996 map illustrations show cluster of pointed-roof children’s cabins and position by play/water area. Materials, manufacturer, themed interiors and removal date unknown. Concise three-paragraph historical description.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-aeronimo",
+      "exception": "Original 1997 brochure establishes species, bird pond and hillside location; no precise enclosure design or opening date proved. Removed generic landscape sentence; concise two-paragraph format.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-voliere",
+      "exception": "Original map establishes separate named aviary at central avenue/Pierrot. Species and detailed enclosure photo not found across brochure/archive/specialist sources; two short paragraphs, no invented birds.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-mini-ferme",
+      "exception": "2013 official map lists llama, pony, miniature horse, donkey, sheep and goat, with train/Breguet context. Queen Air photograph shows nearby enclosures. Do not infer miniature horse identification from the pony photograph or promise feeding/petting.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-beechcraft",
+      "exception": "Actual RCDB 110615 photograph personally inspected: livery, stone supports and enclosure surroundings. Original brochures confirm earlier identity. Avoid unsupported air-service history; three concise paragraphs.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-fouga",
+      "exception": "Original brochures locate Fouga Magister at entrance. Genuine exact-name/Aérocity/Lanas photo search produced other museums only, rejected. No park-specific photo, aircraft serial or provenance established; short historical location description.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-alouette",
+      "exception": "Original brochures separately locate Alouette II near entrance aircraft. External exact-name search did not establish actual park photograph or serial. No manufacturer ride attribution or generic aircraft photo substituted.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-panther",
+      "exception": "1996/1997 original maps locate Panther separately by Breguet/Voltigeur/Pierrot. No verifiable park-specific photograph, serial or provenance after targeted searches; no substitution with unrelated museum helicopter.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-radeau",
+      "exception": "Original 1993/1996/1997 maps match irregular pond and embarkation Rad’eau/Mon’d’Eau. Detailed boats, propulsion, ride length and exact dates unavailable; two concise paragraphs on real location and name history.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-riviere-enfants",
+      "exception": "Original maps establish winding children’s watercourse, cinema/cabins location and Cité des Petits Princes. Identity with 2011 photographed paddle boats unproved; no photo assigned from that uncertain successor. No invented craft or technical detail.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-piscine",
+      "exception": "Original 1993 swimming photo, later brochures, 2013 official PDF and actual press photos establish outdoor pool setting in Aérosplash. Pool dimensions, depths and exact lifecycle unknown; two factual paragraphs.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-pentagliss",
+      "exception": "Official 2013 photo and press ruins photo personally viewed; form, colour, hillside steps and abandonment established. No lane count (map geometry differs), dimensions, material or operating sequence invented. Concise three-paragraph narrative.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-toboggans",
+      "exception": "Actual 2011 press image and original annual brochures show pale curved elevated slides, hillside and pool setting. No technical dimensions, manufacturer or precise opening chronology proved. Three factual paragraphs.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-pataugeoire",
+      "exception": "2013 official map separately labels paddling pool with swimming area. No close photograph establishes toys, exact form, depths or detailed accessibility. Short setting description; no invented amenities.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-fontaine",
+      "exception": "2013 official PDF gives actual fountain photo, musical designation and restaurant/cave location. No playlist, show sequence or lighting programme established. One heading and one specific paragraph accepted; generic water-as-spectacle filler removed rather than padding.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/asset-manifest.json",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-petits-lutins",
+      "exception": "Actual 1997 operator photograph shows children in lit blue/yellow saucer, original map establishes entrance games cluster. Exact-name web query returned unrelated childcare pages only; no interior story, movement, maker or opening date inferred. Two specific paragraphs.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "source-assets/brochure-12.jpg",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-galaxy",
+      "exception": "Original 1996/1997 brochures establish Mini Galaxy/Galaxy alias and exact relative position, but no identifiable close image or technical detail. Targeted web query yielded no park-specific evidence. One concise historical paragraph avoids padding.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "source-assets/brochure-12.jpg",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-jeux-video",
+      "exception": "Original 1997 brochure explicitly groups video games, tabletop pétanque and distorting mirrors in entrance shop/Aéro Expo building. No specific cabinet titles or brands established. Two factual paragraphs; no unproved projection or simulation claims.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "source-assets/brochure-12.jpg",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-voitures-telecommandees",
+      "exception": "Original operator maps locate model-car circuit beside Pierrot building. Exact cars, manufacturer and pricing not established after brochure/official archive search. Single concise paragraph; no invented rideable cars.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "source-assets/brochure-12.jpg",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-bateaux-telecommandes",
+      "exception": "Original operator maps locate model-boat pool separately from children’s river and Mon’d’Eau embarkation. Actual boat types/brands unknown; one short geographic paragraph, no conflation with later paddle boats.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "source-assets/brochure-12.jpg",
+        "sources/official-archive-plan-parc.html"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-ptits-bouts",
+      "exception": "Original 2013 map and archived interactive map establish children’s play sector, inflatables and adjacent trampolines. Components grouped in historical inventory, no invented equipment makers/characters. Two paragraphs; no assumption it is a rename of Cité des Petits Princes.",
+      "sources": [
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/official-archive-plan-parc.html",
+        "sources/interactive-photo-fetch-1.json",
+        "sources/interactive-cdx.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-echiquier",
+      "exception": "Actual photograph within original 2013 brochure shows large black/white chess set; mapped location establishes water/restaurant/cave context. No invented tournaments, precise piece heights or opening date. Two short paragraphs.",
+      "sources": [
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/official-archive-plan-parc.html",
+        "sources/interactive-photo-fetch-1.json",
+        "sources/interactive-cdx.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-bois",
+      "exception": "Original 2013 map names wood skill games and locates entrance-building row. Archived individual JPEG unavailable (interactive-photo-fetch-1.json, CDX empty). Specific games, rules and maker unproved; one concise geographic paragraph.",
+      "sources": [
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/official-archive-plan-parc.html",
+        "sources/interactive-photo-fetch-1.json",
+        "sources/interactive-cdx.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-manege-enfantin",
+      "exception": "Original official 2013 brochure photograph shows rounded red/white carousel canopy and position near shop/Breguet. Unknown maker and dates; no merge with old Delta/Mermoz/Galaxy without proof. Two short appearance/location paragraphs.",
+      "sources": [
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/official-archive-plan-parc.html",
+        "sources/interactive-photo-fetch-1.json",
+        "sources/interactive-cdx.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-babyfoot",
+      "exception": "Only original official interactive named activity and pairing with giant chess established. Genuine targeted web search found unrelated retailers; original image 23.jpg unavailable and CDX empty. Deliberately minimal single-sentence historical identification in eight languages. No invented human-football arena, table dimensions, capacity or equipment. This remains an explicit severe editorial source gap for final audit, not a full-length description claim.",
+      "sources": [
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/official-archive-plan-parc.html",
+        "sources/interactive-photo-fetch-1.json",
+        "sources/interactive-cdx.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-labyrinthe",
+      "exception": "2013 official map confirms rectangular plant maze by entrance and surrounding landscape. No close original image, plant species, height or exact route found. Two short map-based paragraphs; no invented dimensions or opening date.",
+      "sources": [
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/official-archive-plan-parc.html",
+        "sources/interactive-photo-fetch-1.json",
+        "sources/interactive-cdx.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-cirque",
+      "exception": "2011 specialist report quotes operator confirmation of Zavatta, local source identifies circus school; specific 1 April 2012 specialist article announces Bauer. No unverified acts, animals, tent appearance or exact replacement date. Two paragraphs distinguish periods and announcement.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/circus-2012-announcement.html",
+        "sources/parcplaza-enterprise2011.html",
+        "sources/lanas-local.txt"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-amphitheatre",
+      "exception": "Original early operator map establishes outdoor performance site in Cosmos area. No named production, close photograph, capacity or programme found across archives and historical brochures. One concise location paragraph.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/circus-2012-announcement.html",
+        "sources/parcplaza-enterprise2011.html",
+        "sources/lanas-local.txt"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-video-voyages",
+      "exception": "1991/1993/1996 operator labels and 1997 karaoke photograph establish entrance entertainment group and later karaoke. No invented video content or claim that every early film room became a particular stage. Two brief paragraphs.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/circus-2012-announcement.html",
+        "sources/parcplaza-enterprise2011.html",
+        "sources/lanas-local.txt"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-animations",
+      "exception": "2013 map and archived official interactive page identify activity reception, multipurpose/meeting spaces and puppet programme. No invented permanent show title, performer, timetable or auditorium equipment. Two concise paragraphs.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/official-archive-depliant-ParcAvenue.pdf",
+        "sources/circus-2012-announcement.html",
+        "sources/parcplaza-enterprise2011.html",
+        "sources/lanas-local.txt"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "4a85e8b9-eb90-4acd-b20d-2976c5f543d5",
+      "exception": "Two short specific paragraphs preserve identity and distinction from Grand 8 Familial. RCDB and Captain Coaster establish model/dates but no usable original photograph or scenic detail; no invented caterpillar setting.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/asset-manifest.json",
+        "sources/bigapple-captain-check.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+      "exception": "Two substantial visual paragraphs from three original RCDB photos; operating sequence/model/date appendix removed. Other documentary facts stored in structured fields and sourced timeline.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/asset-manifest.json",
+        "sources/bigapple-captain-check.json"
+      ],
+      "notPublicationApproved": true
+    },
+    {
+      "key": "avenue-zone-petits",
+      "exception": "Short zone account preserves mapped aggregate play landscape and actual neighbours. Further generic contextual paragraph removed. Individual components remain in the item inventory.",
+      "sources": [
+        "sources/brochure-manifest.json",
+        "sources/official-archive-plan-parc.html",
+        "sources/asset-manifest.json",
+        "sources/bigapple-captain-check.json"
+      ],
+      "notPublicationApproved": true
+    }
+  ],
+  "updatedAtUtc": "2026-10-23T06:16:01.663898+00:00"
+}

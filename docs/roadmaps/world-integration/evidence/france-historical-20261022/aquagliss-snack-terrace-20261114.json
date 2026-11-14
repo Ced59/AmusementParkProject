@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "49227d5857594f5cbfecc111b4c2395d",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "cb357854-20d4-44db-8890-214338653ab1",
+    "path": "park_item/49227d5857594f5cbfecc111b4c2395d",
+    "description": "La terrasse rassemble tables rondes, chaises blanches et nappes colorées à l’ombre des toiles.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 400,
+    "height": 268,
+    "sizeInBytes": 119876,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20131210095031id_/http://acqua-gliss.com/photos/20/548/74798.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "Canon",
+      "cameraModel": "Canon EOS-1D",
+      "takenOnUtc": "2003-08-14T13:03:52Z",
+      "orientation": "1",
+      "focalLength": 26,
+      "aperture": 10,
+      "exposureTime": 0.002,
+      "iso": 400
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des visiteurs attablés sous les toiles blanches de la terrasse du snack-bar d’Acqua Gliss."
+      },
+      {
+        "languageCode": "en",
+        "value": "Visitors seated beneath the white canopies on Acqua Gliss’s snack-bar terrace."
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher sitzen unter weißen Überdachungen auf der Terrasse der Snackbar von Acqua Gliss."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers zitten onder witte doeken op het terras van de snackbar van Acqua Gliss."
+      },
+      {
+        "languageCode": "it",
+        "value": "Visitatori seduti sotto le coperture bianche sulla terrazza dello snack-bar di Acqua Gliss."
+      },
+      {
+        "languageCode": "es",
+        "value": "Visitantes sentados bajo las lonas blancas de la terraza del bar de Acqua Gliss."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Goście siedzą pod białymi osłonami na tarasie baru w Acqua Gliss."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Visitantes sentados sob as coberturas brancas do terraço do snack-bar do Acqua Gliss."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La terrasse rassemble tables rondes, chaises blanches et nappes colorées à l’ombre des toiles."
+      },
+      {
+        "languageCode": "en",
+        "value": "Round tables, white chairs and colourful tablecloths fill the shaded terrace."
+      },
+      {
+        "languageCode": "de",
+        "value": "Runde Tische, weiße Stühle und bunte Tischdecken prägen die schattige Terrasse."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Ronde tafels, witte stoelen en kleurige tafelkleden vullen het schaduwrijke terras."
+      },
+      {
+        "languageCode": "it",
+        "value": "Tavoli rotondi, sedie bianche e tovaglie colorate occupano la terrazza all’ombra."
+      },
+      {
+        "languageCode": "es",
+        "value": "Mesas redondas, sillas blancas y manteles de colores llenan la terraza a la sombra."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Okrągłe stoły, białe krzesła i kolorowe obrusy wypełniają zacieniony taras."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Mesas redondas, cadeiras brancas e toalhas coloridas enchem o terraço à sombra."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Acqua Gliss — ancien site officiel, conservé par Internet Archive. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Acqua Gliss — former official website, preserved by Internet Archive. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Acqua Gliss — frühere offizielle Website, bewahrt im Internet Archive. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Acqua Gliss — voormalige officiële website, bewaard door Internet Archive. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Acqua Gliss — precedente sito ufficiale, conservato da Internet Archive. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Acqua Gliss — antiguo sitio oficial, conservado por Internet Archive. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Acqua Gliss — dawna oficjalna strona, zachowana w Internet Archive. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Acqua Gliss — antigo site oficial, preservado pelo Internet Archive. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:33:12.467Z",
+    "updatedAt": "2026-11-14T21:33:15.893Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:33:15.893Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20150202060429/http://acqua-gliss.com/restauration-5802.html"
+}

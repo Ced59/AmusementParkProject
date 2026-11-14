@@ -1,0 +1,428 @@
+{
+  "entryId": "FR-park-6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+  "parkId": "6cc196ad-27bc-444e-84e8-fb97c1baa9f0",
+  "name": "Magic City Paris",
+  "conversation": "Conversation France",
+  "auditAtUtc": "2026-10-23T09:28:01.952300+00:00",
+  "result": "partial_blocked",
+  "completed": false,
+  "publicationReady": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "freshExportAtUtc": "2026-10-23T09:16:53.2367541Z",
+  "freshExportSha256": "3d57da22e6cfbb37e15543e63fc3cb6efa9be6a24f8bfb133fefc8d30a9f5567",
+  "lastDataIntegrationAt": "2026-10-23T09:24:30.1862865Z",
+  "postExportCorrections": [
+    {
+      "action": "UpdatePhotoMetadata",
+      "receipt": "09-photo21-alt-metadata-update-receipt.json",
+      "updatedAt": "2026-10-23T09:19:04.35Z"
+    },
+    {
+      "action": "Apply",
+      "operationId": "e57e0eb2-f591-44ae-855a-f2a6d150b6ec",
+      "appliedAtUtc": "2026-10-23T09:24:30.1862865Z"
+    }
+  ],
+  "projectedCompleteness": {
+    "completenessScore": 80,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 92,
+    "earnedPoints": 74,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-10-23T09:16:53.2367541Z",
+    "items": 24,
+    "zones": 0,
+    "attractions": 14,
+    "attractionStatuses": {
+      "Removed": 14
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 14,
+    "attractionsWithImage": 12,
+    "attractionImageGaps": [
+      {
+        "id": "1c468434-979b-4281-90af-01a4b01c353b",
+        "name": "La Maison du Rire"
+      },
+      {
+        "id": "acd58084-d453-40ae-9b23-9f63bd56fc2b",
+        "name": "Le Jardin d’enfants"
+      }
+    ],
+    "ownedImages": 30,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "8f8bd3e2-90a6-4f90-a99e-5f41084910c2",
+        "name": "Electra",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "430ce6d6-a6c0-4bc2-9508-43ca3a324da6",
+        "name": "Entrée principale de Magic City",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "ba8c7c69-889a-44a5-a2c4-0d581e1a599a",
+        "name": "La Banquette magique",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4249fc07-d0d5-49fa-a491-abc1e0eccbd6",
+        "name": "La Cascade (Water Chute)",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "6a952525-c1f2-4853-a8f2-a011d8a7748c",
+        "name": "La Création",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "1c468434-979b-4281-90af-01a4b01c353b",
+        "name": "La Maison du Rire",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "539300d8-e246-4019-b53b-e0168723f366",
+        "name": "La Piste de bobsleigh",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a1c6d53d-54e1-4b08-b8e2-6c3b3f120a28",
+        "name": "La Roulette humaine",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "3bcc41f0-57c6-44dd-b39c-33449b5fd3e0",
+        "name": "Le Bowling",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "acd58084-d453-40ae-9b23-9f63bd56fc2b",
+        "name": "Le Jardin d’enfants",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "0f7db2ad-b4b7-485c-b5e4-e0592c54c4ca",
+        "name": "Le Kiosque à musique",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "fdc24b20-c6e8-47ad-a24f-7372331329bb",
+        "name": "Le Palais persan",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "f06ecf42-edce-4f0d-98e8-046cd8562fcb",
+        "name": "Le Paquebot fantastique",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "5d1f9f4e-274c-41f2-8c62-6c42e94a1acd",
+        "name": "Le Pont de la Folie",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "973e99a7-9780-4118-9127-8865072831fb",
+        "name": "Le Théâtre japonais",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "ca8a4397-a035-46be-8462-b6af64fd2a23",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "443ae60e-557e-40ae-aa05-f8b1a52e6e84",
+        "name": "Les Gondoles vénitiennes",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b991ab6e-bf1a-4b63-8ed9-3c01c3aec29f",
+        "name": "Les Sirènes",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "535feb38-91e8-445f-9314-8256a7b2f210",
+        "name": "Les Ânes sauvages",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "1a404dde-8d1f-4777-94ac-bbb1f667ae37",
+        "name": "Magic-Cinéma-Palace",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "877b38af-006d-4d51-8054-17fd32023797",
+        "name": "Restaurant de Magic City",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "b759a602-71c6-4778-af30-92b32c95a769",
+        "name": "Salles de bal de Magic City",
+        "category": "Show",
+        "images": 4
+      },
+      {
+        "id": "96b5bf41-da28-43b5-ba27-eb208d2783ff",
+        "name": "Scénic Railway",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e11a257f-f4f6-40b3-bd04-5310a8a15190",
+        "name": "Skating de Magic City",
+        "category": "Attraction",
+        "images": 1
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "8f8bd3e2-90a6-4f90-a99e-5f41084910c2",
+        "name": "Electra",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "430ce6d6-a6c0-4bc2-9508-43ca3a324da6",
+        "name": "Entrée principale de Magic City",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "ba8c7c69-889a-44a5-a2c4-0d581e1a599a",
+        "name": "La Banquette magique",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "4249fc07-d0d5-49fa-a491-abc1e0eccbd6",
+        "name": "La Cascade (Water Chute)",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6a952525-c1f2-4853-a8f2-a011d8a7748c",
+        "name": "La Création",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "1c468434-979b-4281-90af-01a4b01c353b",
+        "name": "La Maison du Rire",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "539300d8-e246-4019-b53b-e0168723f366",
+        "name": "La Piste de bobsleigh",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a1c6d53d-54e1-4b08-b8e2-6c3b3f120a28",
+        "name": "La Roulette humaine",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "3bcc41f0-57c6-44dd-b39c-33449b5fd3e0",
+        "name": "Le Bowling",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "acd58084-d453-40ae-9b23-9f63bd56fc2b",
+        "name": "Le Jardin d’enfants",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0f7db2ad-b4b7-485c-b5e4-e0592c54c4ca",
+        "name": "Le Kiosque à musique",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "fdc24b20-c6e8-47ad-a24f-7372331329bb",
+        "name": "Le Palais persan",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "f06ecf42-edce-4f0d-98e8-046cd8562fcb",
+        "name": "Le Paquebot fantastique",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "5d1f9f4e-274c-41f2-8c62-6c42e94a1acd",
+        "name": "Le Pont de la Folie",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "973e99a7-9780-4118-9127-8865072831fb",
+        "name": "Le Théâtre japonais",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "ca8a4397-a035-46be-8462-b6af64fd2a23",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "443ae60e-557e-40ae-aa05-f8b1a52e6e84",
+        "name": "Les Gondoles vénitiennes",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b991ab6e-bf1a-4b63-8ed9-3c01c3aec29f",
+        "name": "Les Sirènes",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "535feb38-91e8-445f-9314-8256a7b2f210",
+        "name": "Les Ânes sauvages",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "1a404dde-8d1f-4777-94ac-bbb1f667ae37",
+        "name": "Magic-Cinéma-Palace",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "877b38af-006d-4d51-8054-17fd32023797",
+        "name": "Restaurant de Magic City",
+        "category": "Restaurant",
+        "status": "Removed"
+      },
+      {
+        "id": "b759a602-71c6-4778-af30-92b32c95a769",
+        "name": "Salles de bal de Magic City",
+        "category": "Show",
+        "status": "Removed"
+      },
+      {
+        "id": "96b5bf41-da28-43b5-ba27-eb208d2783ff",
+        "name": "Scénic Railway",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e11a257f-f4f6-40b3-bd04-5310a8a15190",
+        "name": "Skating de Magic City",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 7,
+    "parkHistory": 5,
+    "itemHistory": 2,
+    "historyWithSource": 7,
+    "historyWithImage": 7,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": false
+  },
+  "parkDescriptions": {
+    "languages": 8,
+    "paragraphsPerLanguage": 7,
+    "headingsPerLanguage": 5
+  },
+  "allItemDescriptions": {
+    "items": 24,
+    "languagesPerItem": 8,
+    "total": 192
+  },
+  "generalParkPhotographs": {
+    "distinct": 5,
+    "target": 5,
+    "sourceKeys": [
+      "photo-04-park-panorama",
+      "photo-05-park-entrance",
+      "photo-20-entrance-general",
+      "photo-21-view-toboggan",
+      "photo-22-view-ballroom"
+    ],
+    "note": "War workshop and demolition photographs excluded from the five representative general views."
+  },
+  "editorialReview": {
+    "acceptedDiffsPersonallyReviewedInEightLanguages": true,
+    "rawCorpusRows": 950,
+    "independentRowsExcludingCaptionAliases": 888,
+    "encodingFindings": 0,
+    "paragraphDuplicateGroups": 0,
+    "automaticEditorialFlags": 0,
+    "apiFormulaicPublicTextIssue": null,
+    "remainingNgramMatches": "30 contextual overlaps of addresses, named dates, the same balls or the same historical period; no repeated paragraph bodies.",
+    "finalCompleteCorpusSignoff": false,
+    "remainingReview": "Full corpus release signoff and unresolved candidate identities remain required before completion; source-limited notices are not presented as a completed major-park editorial audit."
+  },
+  "idempotence": {
+    "operationId": "fc79c72c-dc8b-4237-8e9b-c0b2dc9298c2",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 62,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "publicChecks": {
+    "performed": false,
+    "reason": "Private park retained because official publication gate reports media.logo-required. No announcement can precede an audited public park."
+  },
+  "blockersAndRemainingWork": [
+    "Authenticated historical park logo absent; official media.logo-required blocker.",
+    "Individually recalculated projected score 80/100.",
+    "Named inventory candidates and possible aliases still require qualification.",
+    "Final complete-corpus editorial signoff remains pending; abbreviated sourced notices and image/history/GPS gaps retained."
+  ],
+  "sourceGapsEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/magic-city-paris-source-gaps.json"
+}

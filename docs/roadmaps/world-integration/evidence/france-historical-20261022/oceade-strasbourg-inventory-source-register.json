@@ -1,0 +1,129 @@
+{
+  "currentOffer": [],
+  "futureOffer": [],
+  "historicalItems": [
+    {
+      "key": "bassin-a-vagues",
+      "name": "Bassin à vagues",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "evidence": "Named by municipaljournal and original1989press; covered central pool,photoDNA02. Not same as separate outdoor pool.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "bassin-plein-air",
+      "name": "Bassin de plein air",
+      "sourceUrl": "https://participer.strasbourg.eu/documents/d/participer/journal_planches-compresse-2-pdf",
+      "evidence": "Named primarymunicipaljournal; rectangularoutdoor bathingpool withstone waterjet,photos01/03/05/09. Jetsarefeaturesofthispool,notextraattractionrows.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "pataugeoire-circulaire",
+      "name": "Pataugeoire circulaire",
+      "sourceUrl": "https://cdn-s-www.dna.fr/pdf/dce9dfaa-cd62-4276-8172-cb7a6c47dd15/21-07-1989-5-pdf.pdf",
+      "evidence": "Original1989press distinguishes shallowroundpoolforchildrenfromotherpool; photos07/11. Age3–6describesaudience,notformalMinAgecondition.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "toboggan-bleu",
+      "name": "Toboggan bleu",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "evidence": "Descriptivecolourname,actualblueenclosedslideonchapiteau,photo07/09/15; manufacturer/model/heightunknown.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "toboggan-vert",
+      "name": "Toboggan vert",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "evidence": "Distinctgreenclosedslidefromsamechapiteau visiblyseparate fromblueandyellow; no claimedcommercialname.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "toboggan-jaune",
+      "name": "Toboggan jaune",
+      "sourceUrl": "https://participer.strasbourg.eu/documents/d/participer/journal_planches-compresse-2-pdf",
+      "evidence": "Yellowdirectdescendinglane identifiedbyprimarymunicipaloralhistoryandphotos07/15. No unsupportedfatalitystoriesfromforum,no inventedmodelorspeed.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "toboggans-noirs",
+      "name": "Toboggans noirs",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "evidence": "Pairedshortblackoutdoorslides fromsamecolouredplatform into raisedpool,actualphotos08/12,onecombinedinstallationrow; do notinflatewithseparatearrivalpoolorwaterfall.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "petits-toboggans-interieurs",
+      "name": "Petits toboggans intérieurs",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "evidence": "Small slidesatbackofcoveredpool visibleDNA02 andretrospectivephotoKuriocity03; groupedinstallation,distinctfromlarge roofslides. Exactcountandnamesunproven.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "minigolf",
+      "name": "Minigolf",
+      "sourceUrl": "https://cdn-s-www.dna.fr/pdf/dce9dfaa-cd62-4276-8172-cb7a6c47dd15/21-07-1989-5-pdf.pdf",
+      "evidence": "Original1989report andDNA00: independentexternalaccessandticket butpartofOcéadecomplex; ParkItem,notnewstandalone. Floralborders,statuesandcolouredobstacles.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "piscine-a-balles",
+      "name": "Piscine à balles",
+      "sourceUrl": "https://cdn-s-www.dna.fr/pdf/dce9dfaa-cd62-4276-8172-cb7a6c47dd15/21-07-1989-5-pdf.pdf",
+      "evidence": "Original1989report describesfossewithgreenballs; no securelyidentifiedphoto yet. Introdate notexplicitlyasserted.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "aire-jeux-multicolore",
+      "name": "Aire de jeux multicolore",
+      "sourceUrl": "https://cdn-s-www.dna.fr/pdf/dce9dfaa-cd62-4276-8172-cb7a6c47dd15/21-07-1989-5-pdf.pdf",
+      "evidence": "OriginalJuly1989report sayscolouredplasticmodulesalreadyinstalledprevioussummer. ActualDNA04/13. Housesaremorenewseparateplayinstallation.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "maisons-champignons",
+      "name": "Maisons-champignons",
+      "sourceUrl": "https://cdn-s-www.dna.fr/pdf/dce9dfaa-cd62-4276-8172-cb7a6c47dd15/21-07-1989-5-pdf.pdf",
+      "evidence": "OriginalJuly1989article explicitlynewmushroomhousesbeside lastsummermodules; greenroundhouse yellowdomedroof redarchedentryvisibleDNA04. Descriptivehouses,notlicensedSchtroumpfbrandedattraction.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "riviere-exterieure",
+      "name": "Rivière extérieure",
+      "sourceUrl": "https://cdn-s-www.dna.fr/pdf/dce9dfaa-cd62-4276-8172-cb7a6c47dd15/21-07-1989-5-pdf.pdf",
+      "evidence": "Original1989report: windingartificialriver alreadyunusedduewater-treatmentrepairs; exactinitial/closingdates unknown. AerialnativeKuriocity05showsouterloop; not claimedoperatinguntil1996.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    },
+    {
+      "key": "parking",
+      "name": "Parking",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "evidence": "Historicalparking provedby1995SERSphotoKuriocity02,1999reuseGraine deCirque inDNA; doesnotmakecirqueschoolaParkItem.",
+      "position": null,
+      "geolocationGap": "Demolished site; photographs establish relative positions but no precise georeferenced historical control points yet."
+    }
+  ],
+  "excluded": [
+    "FormerPiscineduRhin1965–1985",
+    "PLM/Altea/Mercurehotel",
+    "StellaArtoisairlinerrestaurant1969–1978",
+    "Graine deCirqueafter1999",
+    "JardindesDeuxRives2004",
+    "Unrealized1989pedagogicalpoolanddivingpit",
+    "ProjectedArtDécowallpaintingnotprovedcompleted"
+  ],
+  "geolocationCoverage": "0/14",
+  "officialZones": []
+}

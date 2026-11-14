@@ -1,0 +1,1053 @@
+{
+  "qualifiedAtUtc": "2026-10-23T12:49:18.393457+00:00",
+  "passes": {
+    "current": 0,
+    "currentAnnouncedOrConstruction": 0,
+    "historicalConfirmed": 45,
+    "historicalAnnouncedImplementationUnknown": 1
+  },
+  "zones": {
+    "existingIdsPreserved": {
+      "Zone préhistorique": "50f5d179-e5eb-425c-abef-851b672dc1d6",
+      "Cité médiévale": "12d25551-c8b3-41f1-bc2c-5f131c748813",
+      "Belle Époque": "c6ae07e4-2208-4153-ae13-79a3771ef7f3",
+      "Univers futuriste": "57d4f92b-20be-40f9-adc8-521698d88967"
+    },
+    "decision": "Four historically established zones preserved; only explicit themed connections assigned, no inferred boundary for unlabeled rides."
+  },
+  "items": [
+    {
+      "item": {
+        "key": "grand-huit",
+        "name": "Grand Huit",
+        "category": "Attraction",
+        "type": "RollerCoaster",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed"
+        },
+        "id": "8eb7db06-5aa0-4554-8fd2-cdd1b50adc8b"
+      },
+      "planNumber": 44,
+      "sources": [
+        "https://rcdb.com/3441.htm",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Reuse canonical coaster8eb7db06; duplicate private park contains same coaster. RCDB3441 confirms one steel seated coaster1985–1987. Existing model retained pending RCDBdetail.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "telecombat",
+        "name": "Télécombat",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "4d2c5b10-2262-4642-8cf7-332e8c9505c0"
+      },
+      "planNumber": 23,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg",
+        "https://fr.wikipedia.org/wiki/Lillom"
+      ],
+      "qualification": "Separate from La Pieuvre: both are named in historical list; map23 is Télécombat. Model/manufacturer not inferred from pictogram.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "rapides-colorado",
+        "name": "Rapides du Colorado",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "7fc1cf1c-acd7-4911-aa0c-eeaa4e914bd0"
+      },
+      "planNumber": 26,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Flume; archive describes abandoned remains, subsequently replaced by parking. Unknown later destination.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "himalaya",
+        "name": "Himalaya",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "d7c076b2-4772-49a9-aa64-f6826eb1f194"
+      },
+      "planNumber": 45,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg",
+        "https://fr.wikipedia.org/wiki/Lillom"
+      ],
+      "qualification": "Named Himalaya; Music Express type reported by secondary history. No manufacturer guessed.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "bateau-corsaire",
+        "name": "Bateau corsaire",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "1429746d-e872-4bba-99d0-59e5eab15590"
+      },
+      "planNumber": 33,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Large ship beside lake in original plan; not the remote-controlled boats.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "auto-tamponneuses-enfants",
+        "name": "Auto-tamponneuses pour enfants",
+        "category": "Attraction",
+        "type": "FamilyRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://fr.wikipedia.org/wiki/Lillom"
+        },
+        "id": "fabb1e71-a45c-45fe-ba1d-59b66bf9ebef"
+      },
+      "planNumber": 18,
+      "sources": [
+        "https://fr.wikipedia.org/wiki/Lillom",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Historical list distinguishes bumper cars and carousel under children rides; no extra duplicate group item.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "carrousel-enfants",
+        "name": "Carrousel pour enfants",
+        "category": "Attraction",
+        "type": "FamilyRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://fr.wikipedia.org/wiki/Lillom"
+        },
+        "id": "459e55f1-b60b-49b9-898a-d0843819f977"
+      },
+      "planNumber": 18,
+      "sources": [
+        "https://fr.wikipedia.org/wiki/Lillom",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Distinct from bumper cars; descriptive name rather than invented branded title.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "chateau-gonflable",
+        "name": "Château gonflable",
+        "category": "Attraction",
+        "type": "Playground",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "564e5975-bd79-4bec-834e-c0322ada3dae"
+      },
+      "planNumber": 17,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named and numbered on operator plan, in children area.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "circuit-tacots",
+        "name": "Circuit tacots",
+        "category": "Attraction",
+        "type": "FamilyRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "496ff28a-e1e8-4e7e-9982-30ccba098e43"
+      },
+      "planNumber": 39,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Archive photo shows old-style cars and wooden departure shelter; alias Circuit des Vieux Tacots.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "pieuvre",
+        "name": "La Pieuvre",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html"
+        },
+        "id": "84b4cb77-b7d3-4138-aecb-3dd463baa43e"
+      },
+      "planNumber": null,
+      "sources": [
+        "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html"
+      ],
+      "qualification": "Distinct attraction photographed on archive: red octopus, yellow cars, water setting; not the Télécombat.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "monde-prehistoire",
+        "name": "Le Monde de la Préhistoire",
+        "category": "Attraction",
+        "type": "WalkThrough",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "50f5d179-e5eb-425c-abef-851b672dc1d6",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "6dd741a0-ca67-4017-b5c6-ee2a3bb8cbd1"
+      },
+      "planNumber": 24,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Walkthrough with prehistoric human and animal tableaux; archive original photo supplies exact scenery.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "explorer",
+        "name": "Explorer",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "a7b33910-b346-4717-a3b2-bf67c8372b23"
+      },
+      "planNumber": 43,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg",
+        "https://fr.wikipedia.org/wiki/Lillom"
+      ],
+      "qualification": "Circular ride beside Grand Huit on plan; secondary source calls it a Trabant-Wipeout without proven manufacturer.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "petit-train-western",
+        "name": "Petit train western",
+        "category": "Attraction",
+        "type": "TransportRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "e1dbfde2-0b60-4f4e-b23a-fcae11a9c322"
+      },
+      "planNumber": 21,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Children railway shown with central circular route on original plan; no exact technical length asserted.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "bateaux-telecommandes",
+        "name": "Bateaux télécommandés",
+        "category": "Attraction",
+        "type": "InteractiveExperience",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "47ffc7e8-97a7-4fa3-af6f-5e67ac26099c"
+      },
+      "planNumber": 22,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Small basin alongside prehistory path; distinct from lake pedal boats and enchanted river.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "riviere-enchantee",
+        "name": "La Rivière enchantée",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "46225a83-d842-42ec-be68-39a9b59511fc"
+      },
+      "planNumber": 27,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named in operator legend and secondary historical inventory; precise scenic content/boat mechanism unknown.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "pedalos",
+        "name": "Pédalos",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "5be98049-ee43-4689-8fbe-6b36a340763a"
+      },
+      "planNumber": 42,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Boating on central lake; landing point illustrated, not a demolished coordinate extrapolated today.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "tir-carabine",
+        "name": "Tir à la carabine",
+        "category": "Attraction",
+        "type": "Game",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "53e9fe8b-da99-4863-a62a-d887bd7b2655"
+      },
+      "planNumber": 38,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named shooting gallery on plan near tacot circuit; sporting game, no equipment details inferred.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "fort-apache",
+        "name": "Fort Apache",
+        "category": "Attraction",
+        "type": "Playground",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "c8de6ab5-0af6-41e8-9132-426fbde6269b"
+      },
+      "planNumber": 20,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named play area in children section, not a separately operated park.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "tir-arc",
+        "name": "Tir à l’arc",
+        "category": "Attraction",
+        "type": "Game",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "12d25551-c8b3-41f1-bc2c-5f131c748813",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "406b74ef-2e81-46a9-9a12-d67fe84124f4"
+      },
+      "planNumber": 35,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named target game inside medieval area; corroborated archive text.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "pulsar",
+        "name": "Pulsar",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "57d4f92b-20be-40f9-adc8-521698d88967",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "3e3871ef-2266-4da5-9d2b-53f9c3e32032"
+      },
+      "planNumber": 46,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Round attraction under Pulsar name in future section; ride mechanism/manufacturer unknown.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "cinema-2000",
+        "name": "Cinéma 2000",
+        "category": "Attraction",
+        "type": "Cinema",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "57d4f92b-20be-40f9-adc8-521698d88967",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "90f7ff42-85ea-4f30-9db0-46d002aaccf8"
+      },
+      "planNumber": 48,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Separate domed cinema from Kodak Multivision and Cosmovision on operator plan.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "kodak-multivision",
+        "name": "Kodak Multivision",
+        "category": "Attraction",
+        "type": "Cinema",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "57d4f92b-20be-40f9-adc8-521698d88967",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "61776169-668e-46a2-9272-e115371d439e"
+      },
+      "planNumber": 50,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Operator map names Multivision Kodak; preserves brand and distinguishes from Cinéma2000.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "cosmovision",
+        "name": "Cosmovision",
+        "category": "Attraction",
+        "type": "Attraction",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "57d4f92b-20be-40f9-adc8-521698d88967",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+        },
+        "id": "f585baf9-2444-41de-9314-3112fef9b71f"
+      },
+      "planNumber": 49,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Original plan names Cosmovision; archive Cosmodrome label may be same experience or generic concept. Do not create second entity. Exact projection format unverified.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "officine-monstradamus",
+        "name": "L’Officine de Monstradamus",
+        "category": "Attraction",
+        "type": "Attraction",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Unknown",
+          "sourceUrl": "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html"
+        },
+        "id": "d02864fb-c418-4a16-bb66-f0c9f53c4d83"
+      },
+      "planNumber": null,
+      "sources": [
+        "https://web.archive.org/web/20051023101952/http://pageperso.aol.fr/bottomcircle/Lillom.html"
+      ],
+      "qualification": "Original promotional image explicitly says Nouveauté87 and names the attraction; no opening date, location or format proved. Retain announced historical candidate with Unknown lifecycle, not claim operation.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "piscine-boules",
+        "name": "Piscine à boules",
+        "category": "Attraction",
+        "type": "Playground",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "https://lesfilms.archipop.org/les-films-parc-de-lomme-570-4984-1-0.html"
+        },
+        "id": "7a3201dd-e249-455a-a1fa-ff766d252693"
+      },
+      "planNumber": null,
+      "sources": [
+        "https://lesfilms.archipop.org/les-films-parc-de-lomme-570-4984-1-0.html"
+      ],
+      "qualification": "Archipop catalogue of Victor Gobert1985 park film explicitly describes children playing in plastic-ball pool. Descriptive name; location/independence within children area not fixed.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": "No period height/age conditions found in plan, archival pages or specialist sources."
+    },
+    {
+      "item": {
+        "key": "arenes-medievales",
+        "name": "Arènes médiévales",
+        "category": "Show",
+        "type": "Show",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "12d25551-c8b3-41f1-bc2c-5f131c748813",
+        "id": "8fd47cc7-f997-454d-9796-682b78bafce4"
+      },
+      "planNumber": 28,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Knight tournament behind medieval city; original brochure photo of mounted knights; venue and show represented together.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "music-hall",
+        "name": "Music Hall",
+        "category": "Show",
+        "type": "Show",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "c6ae07e4-2208-4153-ae13-79a3771ef7f3",
+        "id": "8f2ae7c4-1f85-4a88-b298-5d58d0fec8e9"
+      },
+      "planNumber": 4,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named MusicHall in entrance street on original operator plan; separate from BelleÉpoque theatre.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "marionnettes-enfants",
+        "name": "Théâtre de marionnettes pour enfants",
+        "category": "Show",
+        "type": "Show",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "566d72df-c6af-4e19-86e8-7b45b683cc11"
+      },
+      "planNumber": 19,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named children puppet theatre near children rides; distinct from BelleÉpoque puppet theatre.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "marionnettes-belle-epoque",
+        "name": "Théâtre de marionnettes Belle Époque",
+        "category": "Show",
+        "type": "Show",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "c6ae07e4-2208-4153-ae13-79a3771ef7f3",
+        "id": "7ac0f842-f545-45e6-8605-1183bf6c83d2"
+      },
+      "planNumber": 34,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named separately and positioned outside medieval city beside BelleÉpoque street.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "theatre-belle-epoque",
+        "name": "Théâtre de la Belle Époque",
+        "category": "Show",
+        "type": "Show",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "c6ae07e4-2208-4153-ae13-79a3771ef7f3",
+        "id": "b19c2141-dcdd-4fc7-b8d4-21f53d287bb5"
+      },
+      "planNumber": 40,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named performance theatre near lake; programme and individual show titles not found.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "pizzeria",
+        "name": "Pizzeria",
+        "category": "Restaurant",
+        "type": "Restaurant",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "3bcdc842-877d-4808-af62-5593f882cd6c"
+      },
+      "planNumber": 9,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named Pizzeria on entrance street plan; historical restaurant, no present menu or pricing invented.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "glacier",
+        "name": "Glacier",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "3b4dd85d-4e75-4e61-9c9a-3b2a4eab63a3"
+      },
+      "planNumber": 11,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named ice cream outlet on entrance street, separate plan number from confectioner.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "confiseur",
+        "name": "Confiseur",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "02d5d1a2-cf74-4e76-93bc-73f27f0c04d3"
+      },
+      "planNumber": 12,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named confectionery outlet on original plan; no product brands invented.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "restaurant-lac",
+        "name": "Restaurant du lac",
+        "category": "Restaurant",
+        "type": "Restaurant",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "641492e9-364e-4602-a3bb-52f682eec4d1"
+      },
+      "planNumber": 14,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named restaurant directly at lake end of main street on original plan.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "saloon",
+        "name": "Saloon",
+        "category": "Restaurant",
+        "type": "Restaurant",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "8080e4b2-94c1-41a1-b4f8-b45cd2c3c4c0"
+      },
+      "planNumber": 16,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named Saloon beside children western section; no independent proprietary title inferred.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "lommy-burger",
+        "name": "Lommy Burger",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "e7990934-3b08-47d6-b80f-77f5605ff306"
+      },
+      "planNumber": 25,
+      "sources": [
+        "https://web.archive.org/web/20051028014601/http://pageperso.aol.fr/bottomcircle/Lillom-2.html",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Name printed on mapped building near lake/prehistory; archive identifies building reused by fishing association.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "fontaine-quatre-saisons",
+        "name": "La Fontaine des 4 Saisons",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "12d25551-c8b3-41f1-bc2c-5f131c748813",
+        "id": "bc2c9c3f-8069-4c1d-a6b3-34cb7ae47be2"
+      },
+      "planNumber": 29,
+      "sources": [
+        "https://web.archive.org/web/20051028014601/http://pageperso.aol.fr/bottomcircle/Lillom-2.html",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named juice bar in medieval city; archive identifies fruit juices, not an ornamental fountain.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "taverne-imperiale",
+        "name": "La Taverne impériale",
+        "category": "Restaurant",
+        "type": "Restaurant",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "zoneId": "12d25551-c8b3-41f1-bc2c-5f131c748813",
+        "id": "4d580ae5-3a78-49d9-b788-af8dd2721315"
+      },
+      "planNumber": 30,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Name legible in restaurant legend and separate medieval courtyard point on original plan.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "creperie-bretonne",
+        "name": "La Crêperie bretonne",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "a8675ff1-1898-4525-8a53-6f4a6e18edeb"
+      },
+      "planNumber": 41,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Name in restaurant legend; map41 beside BelleÉpoque theatre and pedal-boat landing. Archive also mentions a medieval crêperie; do not create uncertain second crêperie.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "entree-caisses",
+        "name": "Entrée et caisses",
+        "category": "Service",
+        "type": "Service",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "f46cdf33-4182-4b35-b402-01780409c057"
+      },
+      "planNumber": 2,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Historical grand gate marked Lillom and ticket offices on original plan. Current garden entrance is not silently equated with it.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "parking",
+        "name": "Parking du parc",
+        "category": "Service",
+        "type": "Parking",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "ff1bda0f-2e44-40e6-91ee-707168f2d258"
+      },
+      "planNumber": 1,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Operator plan identifies peripheral parking by original entrance; no coordinates from current expanded commercial parking.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "aire-pique-nique",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "type": "Service",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "8b620c9c-bf40-4e62-9d94-f3896dd8da0b"
+      },
+      "planNumber": 3,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Distinct marked area outside main gate on operator plan; current municipal garden facilities are not substituted.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "poste-secourisme",
+        "name": "Poste de secourisme",
+        "category": "Service",
+        "type": "FirstAid",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "4a3c152d-a515-45a3-afea-4134106f5549"
+      },
+      "planNumber": 15,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Medical assistance point on operator plan close to central lake; no current service implied.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "information-change",
+        "name": "Point d’information et de change",
+        "category": "Service",
+        "type": "Information",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "4c1d09d4-5f06-414f-a652-2780a633734b"
+      },
+      "planNumber": 5,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Named information/change facility near park entrance in services legend; no exchange rates or present service invented.",
+      "geolocationGap": "Former installation or footprint is not precisely located on a georeferenced period map; no point invented.",
+      "historicalAccessConditions": null
+    },
+    {
+      "item": {
+        "key": "chateau-isenghien",
+        "name": "Château d’Isenghien",
+        "category": "Service",
+        "type": "Service",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "latitude": 50.6514,
+        "longitude": 2.98246,
+        "id": "f6ca4ea0-4ff5-4aec-a481-121426aeccb9"
+      },
+      "planNumber": 51,
+      "sources": [
+        "https://web.archive.org/web/20051028014601/http://pageperso.aol.fr/bottomcircle/Lillom-2.html",
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Pre-existing château used as park reception hall; archive1990/1996 photos and tourism2026 establish later integration into Kinepolis. Historical incarnation closed; building survives.",
+      "geolocationGap": null,
+      "historicalAccessConditions": null,
+      "positionEvidence": [
+        "https://www.wikidata.org/wiki/Q2968283",
+        "https://lucperino.com/img/textes/Lille%20-%20affiche%20-%20oct2016.pdf",
+        "https://www.openstreetmap.org/way/52027235"
+      ]
+    },
+    {
+      "item": {
+        "key": "theatre-futur",
+        "name": "Théâtre du Monde du Futur",
+        "category": "Show",
+        "type": "Show",
+        "zoneId": "57d4f92b-20be-40f9-adc8-521698d88967",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "b27c216d-ac8f-4c61-8dce-2e6f3215c101"
+      },
+      "planNumber": 47,
+      "sources": [
+        "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg"
+      ],
+      "qualification": "Theatre explicitly named in plan animations section and drawn in future area. Descriptive title records known function and setting, without pretending to transcribe illegible show title.",
+      "geolocationGap": "Period illustrated map is not georeferenced; exact footprint not proven."
+    }
+  ],
+  "unresolvedCandidates": [
+    {
+      "name": "Cosmodrome",
+      "reason": "Possible alias of Cosmovision or conceptual illustration; no separate item created."
+    },
+    {
+      "name": "Medieval games, workshops and shops",
+      "reason": "Several generic numbered functions shown, but stable named individual businesses not identified. Existing medieval zone narrative covers these without inventing tenants."
+    }
+  ],
+  "mapEdition": {
+    "source": "https://web.archive.org/web/20051028014839im_/http://pageperso.aol.fr/bottomcircle/images/lommemap.jpg",
+    "year": null,
+    "reason": "Original operator plan but no readable issue year; archive capture2005 is not an edition date."
+  },
+  "mediaExclusions": [
+    {
+      "file": "source-assets/archipop-poster.jpg",
+      "reason": "Visible Archipop watermark; retain catalogue as fact source, no image import."
+    },
+    {
+      "file": "source-assets/first-6.jpg",
+      "reason": "Futuristic concept illustration, not a verified photograph of an actual Lomme installation; no misleading Cosmovision photograph."
+    }
+  ],
+  "geolocationCoverage": {
+    "fixedItems": 46,
+    "geolocated": 1,
+    "namedUnproven": [
+      "Grand Huit",
+      "Télécombat",
+      "Rapides du Colorado",
+      "Himalaya",
+      "Bateau corsaire",
+      "Auto-tamponneuses pour enfants",
+      "Carrousel pour enfants",
+      "Château gonflable",
+      "Circuit tacots",
+      "La Pieuvre",
+      "Le Monde de la Préhistoire",
+      "Explorer",
+      "Petit train western",
+      "Bateaux télécommandés",
+      "La Rivière enchantée",
+      "Pédalos",
+      "Tir à la carabine",
+      "Fort Apache",
+      "Tir à l’arc",
+      "Pulsar",
+      "Cinéma 2000",
+      "Kodak Multivision",
+      "Cosmovision",
+      "L’Officine de Monstradamus",
+      "Piscine à boules",
+      "Arènes médiévales",
+      "Music Hall",
+      "Théâtre de marionnettes pour enfants",
+      "Théâtre de marionnettes Belle Époque",
+      "Théâtre de la Belle Époque",
+      "Pizzeria",
+      "Glacier",
+      "Confiseur",
+      "Restaurant du lac",
+      "Saloon",
+      "Lommy Burger",
+      "La Fontaine des 4 Saisons",
+      "La Taverne impériale",
+      "La Crêperie bretonne",
+      "Entrée et caisses",
+      "Parking du parc",
+      "Aire de pique-nique",
+      "Poste de secourisme",
+      "Point d’information et de change",
+      "Théâtre du Monde du Futur"
+    ],
+    "research": "Original park map compared with current OSMwater,buildings,railway and MELhistoric aerial. Only surviving château façade is independently pinpointed; no projection of defunct rides onto guessed current parking positions."
+  },
+  "verificationAtUtc": "2026-10-23T13:52:39.796068+00:00"
+}

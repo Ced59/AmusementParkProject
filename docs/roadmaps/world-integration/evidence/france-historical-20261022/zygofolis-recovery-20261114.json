@@ -1,0 +1,63 @@
+{
+  "entryId": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff",
+  "parkId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-14T20:36:53.679631+00:00",
+  "kind": "ReadOnlyReconciliation",
+  "dataMutation": false,
+  "newPublication": false,
+  "priorNextActionPreserved": "Fiche et Facebook publiés ; 19 faits historiques restaurés, lien Histoire vérifié dans huit langues. Score réel 95/100 sans bloqueur API. Ligne partial conservée : enrichir les lacunes documentées ou obtenir une exception nominative avant clôture. Ne pas republier Facebook. Voir zygofolis-publication-audit.json.",
+  "officialSearchObservedAtUtc": "2026-11-14T20:33:53.1058001Z",
+  "targetedExport": {
+    "sections": [
+      "ParkBasics",
+      "Items",
+      "Images",
+      "History"
+    ],
+    "exportedAtUtc": "2026-11-14T20:34:23.5915396Z",
+    "sha256": "f2d0cfdac485666ab780a9302df234b73ece93c011a8ca7389877750a4b6363c",
+    "localPath": "/workspace/france-historical-20261022/zygofolis/recovery-20261114/targeted-recovery-export.json",
+    "purpose": "Récupérer état perdu et IDs pour vérifier les lacunes ; ce n’est pas un nouvel export complet final."
+  },
+  "verifiedState": {
+    "publicItems": 54,
+    "publicParkItemAndParkImages": 58,
+    "historyEvents": 19,
+    "parkVisible": true
+  },
+  "currentCompleteness": {
+    "receivedAtUtc": "2026-11-14T20:35:10.9451515Z",
+    "action": "Completeness",
+    "startedAtUtc": "2026-11-14T20:35:10.1925678Z",
+    "result": {
+      "completenessScore": 95,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 103,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    }
+  },
+  "priorFinalAudit": "zygofolis-publication-audit.json",
+  "lastDataIntegrationAtUnchanged": "2026-11-01T14:07:32.680Z",
+  "researchFollowup": {
+    "queries": [
+      "Zygofolis autos tamponneuses photos",
+      "Zygofolis Offshore Rallye photo",
+      "Zygofolis taille Boomerang",
+      "Zygofolis minimum attractions",
+      "Zygofolis enfants 1m",
+      "Zygofolis Savage carrousel constructeur",
+      "Zygofolis photos enfants pédalos 1987 1991 archive"
+    ],
+    "newPageReviewed": "https://www.mirapolis.fr/viewtopic.php?p=2670",
+    "attachment": "https://www.mirapolis.fr/download/file.php?id=668",
+    "attachmentSha256": "15f4e204c13abc4583d2239828d0bb31f356218df44ab5509dd3ad546f26739b",
+    "attachmentDecision": "Fragment de brochure Zygo Parc, photos du Boomerang, Cascade et Bateau Ivre déjà documentés. Aucun équipement manquant ni panneau de restriction ; pas de nouvel import.",
+    "manufacturerDecision": "Résultats Savage reprennent même affirmation secondaire et miroirs Wikipedia ; aucun justificatif constructeur indépendant. Ne pas rattacher sur cette base.",
+    "accessDecision": "Résultats modernes des attractions relocalisées ne prouvent pas les restrictions de Nice en 1987–1991. Aucune règle ajoutée."
+  },
+  "nextAction": "Poursuivre les sources primaires sur conditions historiques et lieux encore sans photo ; score95 reste insuffisant pour clôture, sans exception nominative acceptée. Ne pas republier Facebook.",
+  "completed": false
+}

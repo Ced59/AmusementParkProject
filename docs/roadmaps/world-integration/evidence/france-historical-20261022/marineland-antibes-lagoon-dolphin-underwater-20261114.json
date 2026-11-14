@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "3554b98273a44bad927c77a04daefd44",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+    "path": "park_item/3554b98273a44bad927c77a04daefd44",
+    "description": "La silhouette d’un dauphin et son ombre dans l’un des bassins animaliers du Lagoon, distincts de la baignade des visiteurs.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 2048,
+    "height": 1536,
+    "sizeInBytes": 340948,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://media-cdn.tripadvisor.com/media/photo-o/08/88/7a/6b/le-paradis-le-bassin.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un dauphin nage sous la surface bleue du bassin animalier du Marineland Lagoon."
+      },
+      {
+        "languageCode": "en",
+        "value": "A dolphin swims beneath the blue surface of the animal pool at Marineland Lagoon."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Delfin schwimmt unter der blauen Wasseroberfläche des Tierbeckens im Marineland Lagoon."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een dolfijn zwemt onder het blauwe wateroppervlak van het dierenbassin in Marineland Lagoon."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un delfino nuota sotto la superficie azzurra della vasca degli animali al Marineland Lagoon."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un delfín nada bajo la superficie azul de la piscina de animales de Marineland Lagoon."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Delfin pływa pod błękitną powierzchnią wody w basenie zwierząt Marineland Lagoon."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um golfinho nada sob a superfície azul da piscina dos animais no Marineland Lagoon."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La silhouette d’un dauphin et son ombre dans l’un des bassins animaliers du Lagoon, distincts de la baignade des visiteurs."
+      },
+      {
+        "languageCode": "en",
+        "value": "A dolphin’s silhouette and shadow in one of the Lagoon’s animal pools, separate from the visitors’ swimming area."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Silhouette eines Delfins und sein Schatten in einem Tierbecken des Lagoon, getrennt vom Badebereich der Besucher."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het silhouet en de schaduw van een dolfijn in een dierenbassin van het Lagoon, gescheiden van het zwemgedeelte voor bezoekers."
+      },
+      {
+        "languageCode": "it",
+        "value": "La sagoma di un delfino e la sua ombra in una delle vasche degli animali del Lagoon, separate dall’area balneabile dei visitatori."
+      },
+      {
+        "languageCode": "es",
+        "value": "La silueta de un delfín y su sombra en una de las piscinas de animales del Lagoon, separadas de la zona de baño de los visitantes."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Sylwetka delfina i jego cień w jednym z basenów zwierząt w Lagoon, oddzielonych od kąpieliska dla odwiedzających."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A silhueta de um golfinho e a sua sombra numa das piscinas dos animais do Lagoon, separadas da área de banhos dos visitantes."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "cecilethiery46 — Tripadvisor. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "cecilethiery46 — Tripadvisor. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "cecilethiery46 — Tripadvisor. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "cecilethiery46 — Tripadvisor. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "cecilethiery46 — Tripadvisor. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "cecilethiery46 — Tripadvisor. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "cecilethiery46 — Tripadvisor. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "cecilethiery46 — Tripadvisor. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T20:05:47.313Z",
+    "updatedAt": "2026-11-14T20:05:51.181Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T20:05:51.181Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g187217-d8447965-i143161963-Marineland_Lagoon-Antibes_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote.html"
+}

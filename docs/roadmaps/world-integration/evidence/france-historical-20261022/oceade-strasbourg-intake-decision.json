@@ -1,0 +1,105 @@
+{
+  "entryId": "FR-candidate-018f58d346bda3",
+  "conversation": "Conversation France",
+  "qualifiedEntity": "Park",
+  "name": "Océade Strasbourg",
+  "checkedAtUtc": "2026-11-02T16:44:56.215452+00:00",
+  "coreDecision": "Historical water park, rue des Cavaliers, Strasbourg Port-du-Rhin. Global official Parks and Standalone searches for Océade, Oceade, Strasbourg and Parc du Rhin find no matching Strasbourg record; only distinct Océade Rouen. Municipal June2024 journal and contemporary press archive establish opening1986, DNA specifies closureNovember1996 and demolition2001. Secondary July30 opening day not independently corroborated; keep year precision. Former1965Piscine du Rhin and currentJardin des Deux-Rives are different identities. SERS developer proven but operating-company mapping unresolved; no founder/operator invented. No precise GPS established yet. Logo and official historical visitor maps still being sought. PrivateToReview, no current hours/prices.",
+  "officialSearches": [
+    {
+      "file": "00-search-standalone-parc-du-rhin.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-parks-oceade.json",
+      "pagination": {
+        "totalItems": 1,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": [
+        {
+          "id": "2a1f3436-df7a-4c19-8cb4-70300c6677a4",
+          "name": "Océade Rouen",
+          "countryCode": "FR",
+          "city": "Rouen",
+          "isVisible": false
+        }
+      ]
+    },
+    {
+      "file": "00-search-standalone-strasbourg.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-standalone-oceade-ascii.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-standalone-oceade.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-parks-strasbourg.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-parks-oceade-ascii.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    },
+    {
+      "file": "00-search-parks-parc-du-rhin.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "matches": []
+    }
+  ],
+  "sourceReferences": [
+    "https://participer.strasbourg.eu/documents/d/participer/journal_planches-compresse-2-pdf",
+    "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+    "https://www.archi-wiki.org/Adresse:Piscine_Océade_(Strasbourg)"
+  ],
+  "zonesDecision": "No official named zones established; no artificial subdivision.",
+  "dateConflict": "Demolition2004inKuriocity rejected: municipal2024journal,DNA2019andArchiWiki agree2001;2004isopeningoflaterpublicgarden."
+}

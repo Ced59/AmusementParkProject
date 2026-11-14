@@ -1,0 +1,949 @@
+{
+  "parkId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+  "entryId": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff",
+  "existingItems": [
+    {
+      "id": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "name": "Boomerang"
+    },
+    {
+      "id": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "name": "Tarzungle"
+    }
+  ],
+  "newItems": [
+    {
+      "item": {
+        "key": "zygo-crazy-river",
+        "name": "Crazy River",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 1",
+      "qualification": "Former Fleuve rapide; two paired tube channels form one named offering."
+    },
+    {
+      "item": {
+        "key": "zygo-speed-slides",
+        "name": "Speed Slides",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 2",
+      "qualification": "Former Toboggans rapides; paired slides, one named attraction."
+    },
+    {
+      "item": {
+        "key": "zygo-anacondas",
+        "name": "Anacondas",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 3",
+      "qualification": "Final official plural name for hillside slides; not the old lazy river called Anaconda."
+    },
+    {
+      "item": {
+        "key": "zygo-piscine-enfants",
+        "name": "Piscine des enfants",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 4",
+      "qualification": "Dedicated circular children pool, distinct from Village enfants on dry side."
+    },
+    {
+      "item": {
+        "key": "zygo-piscine-vagues",
+        "name": "Piscine à vagues",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 5",
+      "qualification": "Large main wave pool within lazy-river loop."
+    },
+    {
+      "item": {
+        "key": "zygo-piscine-adultes",
+        "name": "Piscine des adultes",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 6",
+      "qualification": "Separate adult pool beside wave pool, not an alias."
+    },
+    {
+      "item": {
+        "key": "zygo-nil",
+        "name": "Le Nil",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 7",
+      "qualification": "Lazy river formerly Anaconda; same loop on1987 and1991 plans, distinct from final Anacondas slides."
+    },
+    {
+      "item": {
+        "key": "zygo-offshore-rallye",
+        "name": "Offshore Rallye",
+        "category": "Attraction",
+        "type": "Game",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 8",
+      "qualification": "Remote-controlled boats and cars named as one attraction on final legend; not the pedal boats."
+    },
+    {
+      "item": {
+        "key": "zygo-cinema",
+        "name": "Cinéma 180°",
+        "category": "Attraction",
+        "type": "Cinema",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 9",
+      "qualification": "Named cinema beside lake/nautical boundary."
+    },
+    {
+      "item": {
+        "key": "zygo-village-enfants",
+        "name": "Village des enfants",
+        "category": "Attraction",
+        "type": "Playground",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 10",
+      "qualification": "Large dedicated children play building; distinct from nearby zone11."
+    },
+    {
+      "item": {
+        "key": "zygo-zone-enfants",
+        "name": "Zone des enfants",
+        "category": "Attraction",
+        "type": "Playground",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 11",
+      "qualification": "Separate cluster of children games beside Tarzungle; not a second official park zone."
+    },
+    {
+      "item": {
+        "key": "zygo-monstre",
+        "name": "Le Monstre",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 14",
+      "qualification": "Identified lakefront octopus ride; manufacturer and transfer to be corroborated before filling references/history."
+    },
+    {
+      "item": {
+        "key": "zygo-swingo",
+        "name": "Swingo – Wave Swinger",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 15",
+      "qualification": "Same chair ride, called Swingo earlier and Wave Swinger in1991; one identity."
+    },
+    {
+      "item": {
+        "key": "zygo-bateau-ivre",
+        "name": "Le Bateau Ivre",
+        "category": "Attraction",
+        "type": "ThrillRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 16",
+      "qualification": "Same lakefront looping ship across the two maps and dated photographs."
+    },
+    {
+      "item": {
+        "key": "zygo-carrousel",
+        "name": "Le Carrousel",
+        "category": "Attraction",
+        "type": "FamilyRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 17",
+      "qualification": "Horse carousel called Carosello in contributor text; one identity."
+    },
+    {
+      "item": {
+        "key": "zygo-cascade",
+        "name": "La Cascade – Log Flume",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 18",
+      "qualification": "Same log flume; later English label is an alias. Opening-day test status prevents invented exact opening date."
+    },
+    {
+      "item": {
+        "key": "zygo-autotamponneuses",
+        "name": "Les Autos-tamponneuses",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map 19",
+      "qualification": "Final official map location; earlier children bumper-car reference not assumed a second installation or a proven relocation."
+    },
+    {
+      "item": {
+        "key": "zygo-labyrinthe",
+        "name": "Le Labyrinthe aquatique",
+        "category": "Attraction",
+        "type": "WalkThrough",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/labirintoacquatico.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/labirintoacquatico.php",
+      "reference": "1987 map D4/E3 and dated1987photo",
+      "qualification": "Mirror columns on lake platform; water-themed name does not make this a water ride."
+    },
+    {
+      "item": {
+        "key": "zygo-orgues",
+        "name": "Les Orgues aquatiques",
+        "category": "Attraction",
+        "type": "InteractiveExperience",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/organiacquatici.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/organiacquatici.php",
+      "reference": "1991 photograph on lake platform",
+      "qualification": "Distinct sound-play apparatus adjacent to mirror labyrinth, not a concert copied into park calendar."
+    },
+    {
+      "item": {
+        "key": "zygo-tir",
+        "name": "Le Tir à la cible",
+        "category": "Attraction",
+        "type": "Game",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/tiroasegno.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/tiroasegno.php",
+      "reference": "1987 map E6 and1987photo",
+      "qualification": "Western shooting gallery; contributor video labelled1989 conflicts with park closure, that date is not reused."
+    },
+    {
+      "item": {
+        "key": "zygo-pedalos",
+        "name": "Les Pédalos",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 map D4",
+      "qualification": "Pedal boats in central lake; distinct from remote-controlled Offshore Rallye."
+    },
+    {
+      "item": {
+        "key": "zygo-helicoidaux",
+        "name": "Les Toboggans hélicoïdaux",
+        "category": "Attraction",
+        "type": "WaterRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/anaconda.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/anaconda.php",
+      "reference": "1988 photographs and lazy-river description",
+      "qualification": "Separate spiral slides inside river loop; not the hillside Anacondas or fast pair. Individual installation/removal year unproven."
+    },
+    {
+      "item": {
+        "key": "zygo-la-piscine",
+        "name": "La Piscine",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map A",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-nautilus",
+        "name": "Le Nautilus",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map B",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-farigoule",
+        "name": "La Farigoule",
+        "category": "Restaurant",
+        "type": "Restaurant",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map C",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-aquarium",
+        "name": "L’Aquarium",
+        "category": "Restaurant",
+        "type": "Restaurant",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map E",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-ptit-gourmand",
+        "name": "P’tit Gourmand",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map F",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-brochette",
+        "name": "La Brochette",
+        "category": "Restaurant",
+        "type": "Restaurant",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map G",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-amphi-food",
+        "name": "L’Amphi",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map H",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-fontaine",
+        "name": "La Fontaine",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map R",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-farandole",
+        "name": "La Farandole",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map S",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-lac-food",
+        "name": "Le Lac",
+        "category": "Restaurant",
+        "type": "Snack",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map T",
+      "qualification": "Named final-season food outlet; individual dates and earlier operator/brand succession not inferred."
+    },
+    {
+      "item": {
+        "key": "zygo-petit-amphi",
+        "name": "Le Petit Amphithéâtre",
+        "category": "Show",
+        "type": "Show",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map O;1987 performance photograph",
+      "qualification": "Permanent performance venue distinct from grand amphitheatre."
+    },
+    {
+      "item": {
+        "key": "zygo-grand-amphi",
+        "name": "Le Grand Amphithéâtre",
+        "category": "Show",
+        "type": "Show",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 map P; dated1988show and2016stands",
+      "qualification": "Closed venue with later surviving stands; not marked physically removed."
+    },
+    {
+      "item": {
+        "key": "zygo-broadway",
+        "name": "Broadway Show",
+        "category": "Show",
+        "type": "Show",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant88.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/depliant88.php",
+      "reference": "1988 official brochure",
+      "qualification": "Named show in grand amphitheatre; unnamed parade, Chinese acts and musicians kept as programme context rather than invented individual show titles."
+    },
+    {
+      "item": {
+        "key": "zygo-funiculaire",
+        "name": "Le Funiculaire",
+        "category": "Transport",
+        "type": "TransportRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1987 map H7/F5,1991 map J",
+      "qualification": "One transport installation with upper and lower terminals, not two independent rides."
+    },
+    {
+      "item": {
+        "key": "zygo-boutiques-place",
+        "name": "Les Boutiques de la place centrale",
+        "category": "Shop",
+        "type": "Shop",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 original map E2/E3/E5/E6 and shop photographs",
+      "qualification": "Group of shops around the central square; no unsupported individual brand names."
+    },
+    {
+      "item": {
+        "key": "zygo-boutique-entree",
+        "name": "La Boutique de l’entrée",
+        "category": "Shop",
+        "type": "Shop",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 original map I7",
+      "qualification": "Entrance-area shop separate from central-square shops; historical descriptive name."
+    },
+    {
+      "item": {
+        "key": "zygo-entree",
+        "name": "L’Entrée et les billetteries",
+        "category": "Service",
+        "type": "Service",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 H7/H8/I8;1991 main entry",
+      "qualification": "One entrance complex including general/group cashiers, not a ride."
+    },
+    {
+      "item": {
+        "key": "zygo-information",
+        "name": "Le Centre de renseignements",
+        "category": "Service",
+        "type": "Information",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 F5",
+      "qualification": "Information at lower arrival; not inferred to be same booth as upper ticket desks."
+    },
+    {
+      "item": {
+        "key": "zygo-infirmerie",
+        "name": "L’Infirmerie",
+        "category": "Service",
+        "type": "FirstAid",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 I;1987 G1",
+      "qualification": "Dedicated first-aid room on nautical edge."
+    },
+    {
+      "item": {
+        "key": "zygo-garderie",
+        "name": "La Halte-garderie",
+        "category": "Service",
+        "type": "Service",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 N",
+      "qualification": "Central-square nursery, distinct from both play areas."
+    },
+    {
+      "item": {
+        "key": "zygo-parking",
+        "name": "Le Parking",
+        "category": "Service",
+        "type": "Parking",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 J6/J7/J8;1991 access text",
+      "qualification": "Contiguous uphill visitor parking; not three fictitious separately named lots."
+    },
+    {
+      "item": {
+        "key": "zygo-wc-entree",
+        "name": "Les Sanitaires de l’entrée",
+        "category": "Service",
+        "type": "Toilets",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        }
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 map I7",
+      "qualification": "Separate sanitary location explicitly shown on original annual plan; descriptive location name, no fabricated exact coordinates."
+    },
+    {
+      "item": {
+        "key": "zygo-wc-nautique",
+        "name": "Les Sanitaires de l’accès nautique",
+        "category": "Service",
+        "type": "Toilets",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 map F4",
+      "qualification": "Separate sanitary location explicitly shown on original annual plan; descriptive location name, no fabricated exact coordinates."
+    },
+    {
+      "item": {
+        "key": "zygo-wc-infirmerie",
+        "name": "Les Sanitaires près de l’infirmerie",
+        "category": "Service",
+        "type": "Toilets",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 map G1",
+      "qualification": "Separate sanitary location explicitly shown on original annual plan; descriptive location name, no fabricated exact coordinates."
+    },
+    {
+      "item": {
+        "key": "zygo-wc-piscine-enfants",
+        "name": "Les Sanitaires de la piscine des enfants",
+        "category": "Service",
+        "type": "Toilets",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 map H1",
+      "qualification": "Separate sanitary location explicitly shown on original annual plan; descriptive location name, no fabricated exact coordinates."
+    },
+    {
+      "item": {
+        "key": "zygo-wc-riviere",
+        "name": "Les Sanitaires du fleuve rapide",
+        "category": "Service",
+        "type": "Toilets",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 map H2",
+      "qualification": "Separate sanitary location explicitly shown on original annual plan; descriptive location name, no fabricated exact coordinates."
+    },
+    {
+      "item": {
+        "key": "zygo-wc-slides",
+        "name": "Les Sanitaires des toboggans rapides",
+        "category": "Service",
+        "type": "Toilets",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        },
+        "zoneId": "518dc739-8b89-47cf-b934-a1b44b435c04"
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 map H3",
+      "qualification": "Separate sanitary location explicitly shown on original annual plan; descriptive location name, no fabricated exact coordinates."
+    },
+    {
+      "item": {
+        "key": "zygo-wc-jeux-enfants",
+        "name": "Les Sanitaires des jeux pour enfants",
+        "category": "Service",
+        "type": "Toilets",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "ClosedDefinitively",
+          "sourceUrl": "http://zygo.altervista.org/depliant.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/depliant.php",
+      "reference": "1987 map C2",
+      "qualification": "Separate sanitary location explicitly shown on original annual plan; descriptive location name, no fabricated exact coordinates."
+    }
+  ],
+  "pendingAliases": [
+    "Pizzalito versus1991 La Farigoule: both pizzeria on central square; no second item until independent physical identity confirmed.",
+    "Le Bœuf à Table versus1991 La Brochette: central food outlet; older brand retained in source inventory, physical succession unresolved.",
+    "Space Depot1987 map: function unproven, not fabricated as restaurant/shop.",
+    "1987 children bumper cars versus1991 map19: no second installation without evidence."
+  ],
+  "excluded": [
+    "Access paths, solarium and shaded areas are not independently named rides.",
+    "Promotional conceptual aerial artwork is not an as-built map.",
+    "Broadway Show is named; generic musicians/parade/Chinese acts do not become invented show titles."
+  ],
+  "sources": [
+    "http://zygo.altervista.org/depliant.php",
+    "http://zygo.altervista.org/deplizp.php",
+    "http://zygo.altervista.org/depliant88.php"
+  ],
+  "pendingCandidates": [
+    {
+      "item": {
+        "key": "zygo-red-baron",
+        "name": "Red Baron",
+        "category": "Attraction",
+        "type": "FamilyRide",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "attractionDetails": {
+          "status": "Removed",
+          "sourceUrl": "http://zygo.altervista.org/deplizp.php"
+        },
+        "zoneId": "4e8093d7-3813-4c3e-bc3d-c35f37bdcf38"
+      },
+      "source": "http://zygo.altervista.org/deplizp.php",
+      "reference": "1991 original brochure narrative",
+      "qualification": "Named in French promotional text; exact model/manufacturer and placement not inferred from name. Further photograph search required.",
+      "decision": "Withheld: actual installation identity and operation unresolved; no second attraction inferred solely from promotional name."
+    }
+  ],
+  "additionalQualifiedItems": [
+    {
+      "key": "zygo-high-diving",
+      "name": "The Great American High Diving Show",
+      "sourceUrl": "http://zygo.altervista.org/storia_88_4.php",
+      "evidence": "Named caption on dated 1988 gallery; personally inspected original 884_tuffatori.jpg and 884_tuffatori2.jpg showing actual divers, raised platforms, temporary pool and audience. Zone and debut date remain unknown."
+    }
+  ]
+}

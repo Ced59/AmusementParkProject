@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "81e3d4f3187cf3de4aade7cbe78542ab5b5fae1d45e3df55cd21633a997620a9",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "9838a5d4-a935-421b-a3d1-035439a11066",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T18:57:30.8101623Z",
+    "appliedAtUtc": "2026-11-14T18:57:30.8101632Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+        "entityKey": "cl-corporation",
+        "displayName": "CL Corporation",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "02be8251dc2949dcaa9c4eea932dd35f",
+        "entityKey": "manufacturer:cl-corporation",
+        "displayName": "Identité de CL Corporation après son rapprochement avec Triotech.",
+        "changeType": "Created",
+        "matchedBy": "sourceUrl",
+        "fields": [
+          {
+            "field": "sourceUrl",
+            "oldValue": null,
+            "newValue": "https://static.wixstatic.com/media/0a3e51_960983865d7a449e86612b1f109046a0~mv2.png"
+          },
+          {
+            "field": "ownerType",
+            "oldValue": null,
+            "newValue": "AttractionManufacturer"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": null,
+            "newValue": "634770df-f4cd-43a5-ac5a-8ae938625f6a"
+          },
+          {
+            "field": "category",
+            "oldValue": null,
+            "newValue": "Logo"
+          },
+          {
+            "field": "isPublished",
+            "oldValue": null,
+            "newValue": "false"
+          },
+          {
+            "field": "setAsCurrent",
+            "oldValue": null,
+            "newValue": "true"
+          },
+          {
+            "field": "withWatermark",
+            "oldValue": null,
+            "newValue": "false"
+          },
+          {
+            "field": "imageId",
+            "oldValue": null,
+            "newValue": "02be8251dc2949dcaa9c4eea932dd35f"
+          },
+          {
+            "field": "internalUrl",
+            "oldValue": null,
+            "newValue": "/images/02be8251dc2949dcaa9c4eea932dd35f"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6801f4b5-3c7b-466f-a22f-e6b3cd2d71a1",
+        "entityKey": "marineland-hotel-ouverture-201504",
+        "displayName": "Marineland ouvre son premier hôtel",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "mainImageId",
+            "oldValue": "8064e1e1219d4799984822843840ba09",
+            "newValue": "c278b3b532db454bbdaa8faa759ad6db"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5d2f1655-ba3a-46a3-b227-bb31193d1f95",
+        "entityKey": "marineland-lagoon-ouverture-20150711",
+        "displayName": "Marineland Lagoon ouvre à la baignade",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "4565cb86e5434d81a6eb2710a1ba354a"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

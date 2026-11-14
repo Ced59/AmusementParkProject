@@ -1,0 +1,30 @@
+{
+  "reviewedAtUtc": "2026-11-02T21:36:20.518720+00:00",
+  "allEightPersonallyAuthoredAndReviewed": true,
+  "languages": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "sections": 4,
+  "paragraphs": 8,
+  "illustrationBlocks": 3,
+  "wordCountsIncludingSummary": {
+    "fr": 603,
+    "en": 572,
+    "de": 556,
+    "nl": 580,
+    "it": 575,
+    "es": 613,
+    "pl": 549,
+    "pt": 596
+  },
+  "sourceChecks": "Estate architects and owners: 9e Histoire; exact 1826 opening: Lamboley and Warnod; 2 June 1827 trials: original CNAM p355 inspected; 1830 school relocation: Chartier/Nieswizski; 1837 performance: Girardin primary letter. Osages identified correctly, no Sioux conflation. Closure range rather than invented day.",
+  "eventImageSearch": "No actual 1826 opening or 1841–1842 demolition photograph found after museum, local history, historical books and urban history research. Early date substantially predates ordinary photographic documentation. Illustrations explicitly dated/contextual, not counted as photos.",
+  "operatorChronology": "Laurent succession undated, not implied to follow 1837 evening; no fabricated timeline transition."
+}

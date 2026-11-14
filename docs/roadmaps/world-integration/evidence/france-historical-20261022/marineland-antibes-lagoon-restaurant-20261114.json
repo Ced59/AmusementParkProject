@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "47ca1e978b614553a0ac4c21c76b5c50",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "ed280089-e6f2-4d82-8cee-2d0649a949e4",
+    "path": "park_item/47ca1e978b614553a0ac4c21c76b5c50",
+    "description": "Le bâtiment du buffet So Lagoon et sa terrasse au sein de l’espace de baignade.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 2048,
+    "height": 1536,
+    "sizeInBytes": 368805,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://media-cdn.tripadvisor.com/media/photo-o/08/88/7a/7d/le-paradis-le-bassin.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Façade en bois du restaurant So Lagoon, avec un balcon, un escalier extérieur et des parasols bleus."
+      },
+      {
+        "languageCode": "en",
+        "value": "The wooden façade of So Lagoon restaurant, with a balcony, outdoor staircase and blue parasols."
+      },
+      {
+        "languageCode": "de",
+        "value": "Holzfassade des Restaurants So Lagoon mit Balkon, Außentreppe und blauen Sonnenschirmen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Houten gevel van restaurant So Lagoon met een balkon, buitentrap en blauwe parasols."
+      },
+      {
+        "languageCode": "it",
+        "value": "Facciata in legno del ristorante So Lagoon, con balcone, scala esterna e ombrelloni blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fachada de madera del restaurante So Lagoon, con balcón, escalera exterior y sombrillas azules."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Drewniana fasada restauracji So Lagoon z balkonem, zewnętrznymi schodami i niebieskimi parasolami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fachada de madeira do restaurante So Lagoon, com varanda, escada exterior e chapéus de sol azuis."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le bâtiment du buffet So Lagoon et sa terrasse au sein de l’espace de baignade."
+      },
+      {
+        "languageCode": "en",
+        "value": "The So Lagoon buffet building and its terrace within the bathing area."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das Gebäude des Buffetrestaurants So Lagoon und seine Terrasse im Badebereich."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het gebouw van buffetrestaurant So Lagoon en het terras in het zwemgebied."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’edificio del buffet So Lagoon e la sua terrazza nell’area balneabile."
+      },
+      {
+        "languageCode": "es",
+        "value": "El edificio del bufé So Lagoon y su terraza en la zona de baño."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Budynek restauracji bufetowej So Lagoon i jej taras w strefie kąpielowej."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O edifício do buffet So Lagoon e a sua esplanada na área de banhos."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "cecilethiery46 — Tripadvisor. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "cecilethiery46 — Tripadvisor. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "cecilethiery46 — Tripadvisor. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "cecilethiery46 — Tripadvisor. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "cecilethiery46 — Tripadvisor. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "cecilethiery46 — Tripadvisor. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "cecilethiery46 — Tripadvisor. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "cecilethiery46 — Tripadvisor. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T19:34:34.406Z",
+    "updatedAt": "2026-11-14T19:34:38.048Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T19:34:38.048Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g187217-d8447965-i143161981-Marineland_Lagoon-Antibes_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote.html"
+}

@@ -1,0 +1,33 @@
+{
+  "reviewedAtUtc": "2026-10-23T11:40:31.197943+00:00",
+  "notApplicable": {
+    "currentHours": "Closedhistoricalamusementpark1993; currentmunicipalgardenhoursnotimported.",
+    "currentPricing": "No operatingpark admission/pass/parkingoffers; historic90F mentionedonly if usefulhistoricalcontext, notcurrentpricing.",
+    "confirmedFutureAttractions": 0
+  },
+  "maps": {
+    "acceptedYears": [
+      1989
+    ],
+    "nature": "Authenticpre-openingoperatorprojectplan, not fabricated1990operatingedition.",
+    "remainingYears": [
+      1990,
+      1991,
+      1992
+    ],
+    "research": [
+      "France3historicreportandpublishedarchivebrochure/map",
+      "Niglofansoriginaloperator1989mapand1993Niglobrochure",
+      "Dijonmunicipalarchives1992pedagogicalbookletcatalogue(noaccessiblefullscan)",
+      "Exactannualmapwebsearch1990/1991/1992; no additionalverifiedcompleteoperatorfile found."
+    ],
+    "decision": "Keep namedannualeditiongaps; no communitymap oryearinferredfromuploaddate."
+  },
+  "geolocation": "03-geolocation-final-proof.json",
+  "shortNotices": "04-editorial-source-limits.json",
+  "unprovenCandidates": "03-inventory-final-qualification.json",
+  "accessConditions": "No historicalheight/age/medicalrules reliably found for the19historicalattractions in operatorplan,periodphotographs,press,RCDB/Captainorrelocationrecords. Do notborrow currentNiglolandconditions. Existingverifiedtechnicalfieldsretained.",
+  "images": "Originalpublishedfilesretained; laterNigloland/Paris/currentgarden explicitlycaptioned. Unknownramcoasterviewnot assigned to eithercoaster. No identifiablehistoricalphotos found for remainingnamedimagegaps; fullauditwillenumerateIDs. Gallery17SHAduplicatephoto09excluded; croppedTapisWikiimageandNigloWorldwatermarkedbrochureexcluded.",
+  "references": "Newfounder/operatoridentitymatchedbyPreview;8languagebiography/descriptionreviewed, primarycourt+France3+officialSuezorigin. Sharedmanufacturersunchanged; exactdependencyIDs verified fromofficialexports.",
+  "historyImages": "Actualinaugurationanddismantlingphotosprioritized. No actualcontract/lease/judgementphoto found. Specificride transfers use correctlycaptionedlaterlocationorpreclosureview; no fictionaleventphoto."
+}

@@ -1,0 +1,1488 @@
+{
+  "entryId": "FR-candidate-33e1083778e134",
+  "owner": "Conversation France",
+  "reservedAtUtc": "2026-11-01T16:10:05.968334+00:00",
+  "masterChecked": "877e36d3",
+  "snapshot": {
+    "entryId": "FR-candidate-33e1083778e134",
+    "name": "Aquagliss",
+    "entityKind": "Park",
+    "proposedEntityKind": "Park",
+    "category": "Catégorie à qualifier",
+    "locality": "Porticcio",
+    "siteId": null,
+    "legacySiteIds": [],
+    "presence": "NotFound",
+    "presenceObservedAt": "2026-10-22",
+    "editorialStatus": "InProgress",
+    "siteReviewStatusAtInventory": null,
+    "lifecycleAtInventory": null,
+    "sourceLifecycleSignal": "Non vérifié",
+    "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+    "possibleMatches": [],
+    "aliases": [],
+    "assignedTo": "Conversation France",
+    "lastDataIntegrationAt": null,
+    "integrationHistory": [],
+    "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+    "sources": [
+      {
+        "label": "Backlog national existant",
+        "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "accessedAt": "2026-10-22"
+      }
+    ]
+  },
+  "stage": "identity-qualification",
+  "candidateAliases": [
+    "Aquagliss",
+    "Acqua Gliss",
+    "Acqua Cyrne Gliss"
+  ],
+  "siteId": null,
+  "lastDataIntegrationAt": null,
+  "reservationOnly": true,
+  "knownDisambiguation": "Porticcio/Grosseto-Prugna in Corse-du-Sud, not the active Aquagliss municipal pool in Freyming-Merlebach. Department and closure to verify independently of old lists.",
+  "qualification": {
+    "entryId": "FR-candidate-33e1083778e134",
+    "owner": "Conversation France",
+    "qualifiedAtUtc": "2026-11-01T16:24:02.426884+00:00",
+    "qualification": "Parc aquatique fixe de Porticcio, commune de Grosseto-Prugna, Corse-du-Sud. Huit toboggans, bassins et plusieurs services documentés par le site officiel archivé. Ni attraction standalone, ni équipement interne à un autre parc.",
+    "searches": [
+      {
+        "receipt": "00-search-acqua-parks-p1.json",
+        "pagination": {
+          "totalItems": 200,
+          "totalPages": 4,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": [
+          {
+            "id": "74d6c4cc-a870-496a-bb05-8b2607ec9ad7",
+            "name": "50. Yıl Parkı",
+            "countryCode": "TR",
+            "city": "Ankara"
+          },
+          {
+            "id": "f685b587-0380-4796-a70e-3cfbe24d3cba",
+            "name": "AATAPI Wonderland",
+            "countryCode": "IN",
+            "city": "Vadodara"
+          },
+          {
+            "id": "153fb94d-ade2-4ff7-a245-bb40a022e355",
+            "name": "ABpark",
+            "countryCode": "LV",
+            "city": "Lēdmanes pagasts"
+          },
+          {
+            "id": "6848411b-8114-4a29-a9b8-e7fd8bbd9343",
+            "name": "AQUApark Oberhausen",
+            "countryCode": "DE",
+            "city": "Oberhausen"
+          },
+          {
+            "id": "0149c9e6-78a1-4b8c-a351-1ccf9c330d97",
+            "name": "Abenteuer Alm",
+            "countryCode": "DE",
+            "city": "Neuss"
+          },
+          {
+            "id": "2bf32edd-f6c8-4fb9-bb31-967ae3e888a4",
+            "name": "AcquaFlash",
+            "countryCode": "IT",
+            "city": null
+          },
+          {
+            "id": "1566972b-fbf9-461c-ac92-5df9d6c3358e",
+            "name": "AcroJungle Outdoor",
+            "countryCode": "FR",
+            "city": "Serres-Castet"
+          },
+          {
+            "id": "a43172e1-9910-4a8c-9a5b-318ac5a0844a",
+            "name": "Adhari Park",
+            "countryCode": "BH",
+            "city": "Khamis"
+          },
+          {
+            "id": "ee7d4e02-344e-421e-bc6f-9e60db326ee7",
+            "name": "Adler Park of Culture and Recreation",
+            "countryCode": "RU",
+            "city": "Сочи"
+          },
+          {
+            "id": "baa57494-4d38-4050-b076-251bcfce4ffb",
+            "name": "Adventure Coast Southport",
+            "countryCode": "GB",
+            "city": "Southport"
+          },
+          {
+            "id": "c4075654-4107-40f1-b65a-2d80f3fba553",
+            "name": "Adventure Island",
+            "countryCode": "GB",
+            "city": "Southend-on-Sea"
+          },
+          {
+            "id": "082d938a-a518-4bf4-8542-c8d117afb9a3",
+            "name": "Adventure Park Geelong",
+            "countryCode": "AU",
+            "city": "Wallington"
+          },
+          {
+            "id": "5dac1a28-d311-4323-896d-616bcb28a893",
+            "name": "Adventure Wonderland",
+            "countryCode": "GB",
+            "city": "Hurn"
+          },
+          {
+            "id": "89293f95-94f0-474f-a505-3c2a9b7d37ed",
+            "name": "Adventure World Dammam",
+            "countryCode": "SA",
+            "city": "Dammam"
+          },
+          {
+            "id": "43173275-02d0-4bdc-a97f-75ae2f9033d1",
+            "name": "Adventureland Iowa",
+            "countryCode": "US",
+            "city": "Altoona"
+          },
+          {
+            "id": "b8559645-f5d2-4f07-bc80-880c8827a141",
+            "name": "Adventureland Long Island",
+            "countryCode": "US",
+            "city": "Farmingdale"
+          },
+          {
+            "id": "223e28fb-bfab-4a75-a2a5-9941994c5be8",
+            "name": "Afsona Land",
+            "countryCode": "UZ",
+            "city": "Namangan"
+          },
+          {
+            "id": "22c4b03b-9cc3-4b04-b611-adf3fb5b54f0",
+            "name": "Aktur Park",
+            "countryCode": "TR",
+            "city": "Konyaaltı / Antalya"
+          },
+          {
+            "id": "9f860a3e-f26f-403e-9e51-f8a18476e245",
+            "name": "Al Qasba",
+            "countryCode": "AE",
+            "city": "Sharjah"
+          },
+          {
+            "id": "a6096874-82df-4580-9b7d-7d5cf654b3db",
+            "name": "Al Watan Park",
+            "countryCode": "SA",
+            "city": "Riyadh"
+          },
+          {
+            "id": "11c0f59b-1604-4bf6-9c31-5c06e6815517",
+            "name": "Alabama Adventure & Splash Adventure",
+            "countryCode": "US",
+            "city": "Bessemer"
+          },
+          {
+            "id": "75fc4710-bdad-4797-8fc1-8d4d2b0cfe70",
+            "name": "Aladin Amusement Park",
+            "countryCode": "PK",
+            "city": "Karachi"
+          },
+          {
+            "id": "b4490b5f-5ddd-4f16-b9b7-abc8af6cba5d",
+            "name": "Altai Amusement Park",
+            "countryCode": "CN",
+            "city": "Hohhot"
+          },
+          {
+            "id": "4ad5492e-7a08-4a3a-a397-8937b11a04c9",
+            "name": "American Park Marseille",
+            "countryCode": "FR",
+            "city": "Marseille"
+          },
+          {
+            "id": "666740e4-c561-44b5-ac45-a4febd5b7f19",
+            "name": "Amigoland",
+            "countryCode": "FR",
+            "city": "Le Grau-du-Roi"
+          },
+          {
+            "id": "dbb5b642-3dba-486c-abc7-1d0e79a86e43",
+            "name": "Amrapali FunLand",
+            "countryCode": "IN",
+            "city": "Ahmedabad"
+          },
+          {
+            "id": "f95c7ed8-6564-4fce-a031-3d81d3bee764",
+            "name": "Amusementspark Tivoli",
+            "countryCode": "NL",
+            "city": "Berg en Dal"
+          },
+          {
+            "id": "66316bb5-6401-4103-88ee-c5fe8dce4052",
+            "name": "Animaparc Occitanie",
+            "countryCode": "FR",
+            "city": "Le Burgaud"
+          },
+          {
+            "id": "aad0075b-6449-41a5-a271-d624c8a98f0e",
+            "name": "Ankara Luna Park",
+            "countryCode": "TR",
+            "city": "Ankara"
+          },
+          {
+            "id": "b0607555-4092-407e-9ee6-7d61423a8c73",
+            "name": "Antibes Land",
+            "countryCode": "FR",
+            "city": "Antibes"
+          },
+          {
+            "id": "d4f14b40-bced-497b-aade-752e11348aeb",
+            "name": "AquaMagis Plettenberg",
+            "countryCode": "DE",
+            "city": "Plettenberg"
+          },
+          {
+            "id": "ce026109-5388-4bbd-8e11-c0266adcb514",
+            "name": "Aquagif",
+            "countryCode": "FR",
+            "city": "Gif-sur-Yvette"
+          },
+          {
+            "id": "471064d0-2366-4708-bc47-f8ba6fab14ff",
+            "name": "Aqualand Köln",
+            "countryCode": "DE",
+            "city": "Köln"
+          },
+          {
+            "id": "0df567fe-307f-4c28-9323-cf7bbee3d29e",
+            "name": "Aqualibi",
+            "countryCode": "BE",
+            "city": "Wavre"
+          },
+          {
+            "id": "14fe1db9-98eb-4301-86ff-21583bf31edf",
+            "name": "Aqualud",
+            "countryCode": "FR",
+            "city": "Le Touquet-Paris-Plage"
+          },
+          {
+            "id": "1f6dc5db-d598-46f3-9ef9-6855e3e4fbeb",
+            "name": "Aquascope",
+            "countryCode": "FR",
+            "city": "Chasseneuil-du-Poitou"
+          },
+          {
+            "id": "5b920ecc-397d-4402-b4a5-0952ec8058d8",
+            "name": "Aquashow Family Park",
+            "countryCode": "PT",
+            "city": "Quarteira"
+          },
+          {
+            "id": "6928f6b4-2df7-466e-bd14-b1810eb9a17a",
+            "name": "Arakawa Yuen",
+            "countryCode": "JP",
+            "city": "Arakawa City, Tokyo"
+          },
+          {
+            "id": "4cac6f4e-a5d5-4d38-95f2-53d6547fec6c",
+            "name": "Areál Mladé Buky",
+            "countryCode": "CZ",
+            "city": "Mladé Buky"
+          },
+          {
+            "id": "444d0ae3-ad1f-4e87-9304-139df277451d",
+            "name": "Armoripark",
+            "countryCode": "FR",
+            "city": "Bégard"
+          },
+          {
+            "id": "c8d92323-b1de-4abf-b3a5-b7cf450c352b",
+            "name": "Arnolds Park",
+            "countryCode": "US",
+            "city": "Arnolds Park"
+          },
+          {
+            "id": "f45829bf-5837-4a46-9276-7e02c552b045",
+            "name": "Athisayam",
+            "countryCode": "IN",
+            "city": "Madurai"
+          },
+          {
+            "id": "7d2d9366-c056-4dda-aec9-0e14c4e24b2a",
+            "name": "Atlantis Dorsten",
+            "countryCode": "DE",
+            "city": "Dorsten"
+          },
+          {
+            "id": "d2d9ee9f-e1c7-4a87-9dba-1a0e81cd6958",
+            "name": "Atlantis Land",
+            "countryCode": "ID",
+            "city": "Surabaya"
+          },
+          {
+            "id": "d586a0bc-107b-4537-a310-cbd5a6f5ada3",
+            "name": "Attractie- & Vakantiepark Slagharen",
+            "countryCode": "NL",
+            "city": "Slagharen"
+          },
+          {
+            "id": "b3e11451-5350-4d53-b6c4-3d586a338683",
+            "name": "Au Paradis des Enfants",
+            "countryCode": "FR",
+            "city": "Trappes"
+          },
+          {
+            "id": "1a4504c6-db5c-454b-9357-322096e6d02f",
+            "name": "Aussie World",
+            "countryCode": "AU",
+            "city": "Palmview"
+          },
+          {
+            "id": "7aed3b4b-8b37-4eef-821a-ea536aec147a",
+            "name": "Autostadt",
+            "countryCode": "DE",
+            "city": "Wolfsburg"
+          },
+          {
+            "id": "5c110f5e-5103-4a32-8abd-41c1a1e9c2de",
+            "name": "Avonturenpark Hellendoorn",
+            "countryCode": "NL",
+            "city": "Hellendoorn"
+          },
+          {
+            "id": "5bdbd8f7-bc0f-445e-bb33-01d35e2571b1",
+            "name": "BLVD World",
+            "countryCode": "SA",
+            "city": "Riyadh"
+          }
+        ]
+      },
+      {
+        "receipt": "00-search-acqua-parks-p2.json",
+        "pagination": {
+          "totalItems": 200,
+          "totalPages": 4,
+          "currentPage": 2,
+          "itemsPerPage": 50
+        },
+        "results": [
+          {
+            "id": "2652601b-d99d-4dd4-82fa-ac26f1a15cb7",
+            "name": "Baby Luna Park",
+            "countryCode": "IT",
+            "city": "Torino"
+          },
+          {
+            "id": "fbc42394-2f76-4526-826b-f877d1182155",
+            "name": "Bad Kleinkirchheimer Bergbahnen",
+            "countryCode": "AT",
+            "city": "Bad Kleinkirchheim"
+          },
+          {
+            "id": "e72e1891-2fcc-43b1-b1e0-44de99cd86f9",
+            "name": "Badeparadies Schwarzwald",
+            "countryCode": "DE",
+            "city": "Titisee-Neustadt"
+          },
+          {
+            "id": "3fa6b67c-463c-4d87-990f-8489c37c2987",
+            "name": "Bali Safari Park",
+            "countryCode": "ID",
+            "city": "Gianyar"
+          },
+          {
+            "id": "e2e430d2-6d0e-476d-bd09-1d3fd940fe33",
+            "name": "Bambino Super City",
+            "countryCode": "RW",
+            "city": "Kigali"
+          },
+          {
+            "id": "2b728a41-01b8-4455-9369-6b4c79423503",
+            "name": "Bao Son Paradise Park",
+            "countryCode": "VN",
+            "city": "Hanoi"
+          },
+          {
+            "id": "3028d008-9f11-4373-91e9-20ce525e04df",
+            "name": "Bayrampaşa Şehir Parkı Adapark",
+            "countryCode": "TR",
+            "city": "İstanbul"
+          },
+          {
+            "id": "252a8258-2e87-40c6-a351-44525d9f3916",
+            "name": "Beech Bend",
+            "countryCode": "US",
+            "city": "Bowling Green"
+          },
+          {
+            "id": "5eefa368-535c-4740-bff4-49c386a22143",
+            "name": "Beijing Shijingshan Amusement Park",
+            "countryCode": "CN",
+            "city": "Beijing"
+          },
+          {
+            "id": "5f389944-958c-4c9f-87fb-b7b851db9137",
+            "name": "Belantis",
+            "countryCode": "DE",
+            "city": "Leipzig"
+          },
+          {
+            "id": "c31436aa-3df2-42c1-b983-01d820ba1fa1",
+            "name": "Bellewaerde",
+            "countryCode": "BE",
+            "city": "Ieper"
+          },
+          {
+            "id": "44ae9029-6494-41be-aed2-0fc3e2d79a6a",
+            "name": "Bellewaerde Aquapark",
+            "countryCode": "BE",
+            "city": "Ieper"
+          },
+          {
+            "id": "8cc71760-e8b7-43ff-992f-c4a4b62b2197",
+            "name": "BergTierPark Blindham",
+            "countryCode": "DE",
+            "city": "Aying"
+          },
+          {
+            "id": "bb1605f3-58ca-45cd-bbca-6fdc811bee4c",
+            "name": "Bid'A Parc",
+            "countryCode": "FR",
+            "city": "Bidart"
+          },
+          {
+            "id": "010ef7e8-5aae-4085-8b97-959b36fc2f44",
+            "name": "BillyBird Hemelrijk",
+            "countryCode": "NL",
+            "city": "Volkel"
+          },
+          {
+            "id": "f80c19fb-cad2-4c48-976e-fdb12b00e843",
+            "name": "Bobbejaanland",
+            "countryCode": "BE",
+            "city": "Lichtaart"
+          },
+          {
+            "id": "7ae23198-36ee-43e6-9876-49d1f572f0fc",
+            "name": "Bommelwereld",
+            "countryCode": "NL",
+            "city": "Groenlo"
+          },
+          {
+            "id": "ab37a8a5-e579-4908-a733-d7266eee53f7",
+            "name": "Boudewijn Seapark",
+            "countryCode": "BE",
+            "city": "Brugge (Sint-Michiels)"
+          },
+          {
+            "id": "fa39635a-d689-43af-a243-ee43c537fa3b",
+            "name": "Bracalândia",
+            "countryCode": "PT",
+            "city": "Braga"
+          },
+          {
+            "id": "fd97efd8-9ebb-4a76-94cb-9cfa95100314",
+            "name": "Breizh Land Parc",
+            "countryCode": "FR",
+            "city": "Surzur"
+          },
+          {
+            "id": "f8190331-fb72-4ab0-b84c-345939334fba",
+            "name": "Bubenheimer Spieleland",
+            "countryCode": "DE",
+            "city": "Nörvenich"
+          },
+          {
+            "id": "eca9a06a-fc0b-409b-86b7-f0be583e3e1b",
+            "name": "Castaway Lagoon",
+            "countryCode": "VN",
+            "city": "Hanoi"
+          },
+          {
+            "id": "4f246cec-7a5a-4eb7-a98c-e32f9d5fa5b8",
+            "name": "Cigoland",
+            "countryCode": "FR",
+            "city": "Kintzheim"
+          },
+          {
+            "id": "1d4ec4ab-5f19-4b1b-b4cf-8e240dce3304",
+            "name": "Cita-Parc",
+            "countryCode": "FR",
+            "city": "Lille"
+          },
+          {
+            "id": "a2db3ed7-8f17-47dd-808f-4340936c82b7",
+            "name": "Cobac Parc",
+            "countryCode": "FR",
+            "city": "Lanhélin"
+          },
+          {
+            "id": "2a4c43b8-52ec-477e-940d-4b77bb54391a",
+            "name": "Copa Ca Backum",
+            "countryCode": "DE",
+            "city": "Herten"
+          },
+          {
+            "id": "fcbf4f7f-aa53-4b50-a42e-651a2af6bf46",
+            "name": "Copa Ca Backum",
+            "countryCode": "DE",
+            "city": "Herten"
+          },
+          {
+            "id": "a11082bc-a3a9-4ada-a235-2f76b0de130d",
+            "name": "Corbi Park",
+            "countryCode": "FR",
+            "city": "Corbières-en-Provence"
+          },
+          {
+            "id": "8023eb10-e761-4c67-8765-f079f3d66cd8",
+            "name": "Dennlys Parc",
+            "countryCode": "FR",
+            "city": "Dennebroeucq"
+          },
+          {
+            "id": "4653aba1-869f-42d3-9254-57417d71d72b",
+            "name": "Didi'Land",
+            "countryCode": "FR",
+            "city": "Morsbronn-les-Bains"
+          },
+          {
+            "id": "72b0c3d8-f53e-4dcc-a29b-f58abccf36a4",
+            "name": "DippieDoe Attractiepark",
+            "countryCode": "NL",
+            "city": "Best"
+          },
+          {
+            "id": "aa345711-a96a-4527-912c-28449bb77e3d",
+            "name": "Disney California Adventure",
+            "countryCode": "US",
+            "city": "Anaheim"
+          },
+          {
+            "id": "c628082d-0db6-4724-892e-8d904b734420",
+            "name": "Disney's Animal Kingdom",
+            "countryCode": "US",
+            "city": "Lake Buena Vista"
+          },
+          {
+            "id": "6e367136-d75d-4366-9d6a-ef4afb303e10",
+            "name": "Disneyland Paris - Disney Adventure World",
+            "countryCode": "FR",
+            "city": "Chessy"
+          },
+          {
+            "id": "f81b3b4c-b1d7-45ae-a7ab-7d2ee8f7e059",
+            "name": "DraculaLand",
+            "countryCode": "RO",
+            "city": "Gherghița"
+          },
+          {
+            "id": "5468b39f-0758-4671-ae1a-055820ed1970",
+            "name": "Drouwenerzand Attractiepark",
+            "countryCode": "NL",
+            "city": "Drouwen"
+          },
+          {
+            "id": "c9d5a7fc-770b-4f7f-a4c1-394edd79ef17",
+            "name": "Duinrell",
+            "countryCode": "NL",
+            "city": "Wassenaar"
+          },
+          {
+            "id": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
+            "name": "Eana",
+            "countryCode": "FR",
+            "city": "Gruchet-le-Valasse"
+          },
+          {
+            "id": "94a4c4df-5ab6-4dc3-b756-2de664e947c4",
+            "name": "Efteling",
+            "countryCode": "NL",
+            "city": "Kaatsheuvel"
+          },
+          {
+            "id": "30ef201a-088e-4274-8168-1230b91194e9",
+            "name": "Energylandia",
+            "countryCode": "PL",
+            "city": "Zator"
+          },
+          {
+            "id": "0e4bf60a-514e-476f-81c2-6ef49c54691c",
+            "name": "Entdeckerbad Damp",
+            "countryCode": "DE",
+            "city": "Damp"
+          },
+          {
+            "id": "5f8a2819-ae42-48c7-8f03-71a1d4813b20",
+            "name": "Erlebnispark Gevelsberg",
+            "countryCode": "DE",
+            "city": "Gevelsberg"
+          },
+          {
+            "id": "e52d3393-0f87-4da0-8090-c8104df677ef",
+            "name": "Erlebnispark Teichland",
+            "countryCode": "DE",
+            "city": "Teichland OT Neuendorf"
+          },
+          {
+            "id": "81643366-3581-44a0-8b9b-78d5dcd513cf",
+            "name": "Europa-Park",
+            "countryCode": "DE",
+            "city": "Rust"
+          },
+          {
+            "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+            "name": "Exposition Coloniale Internationale",
+            "countryCode": "FR",
+            "city": "Paris"
+          },
+          {
+            "id": "baf98de1-33de-44b5-8a03-c5c1b76d24ee",
+            "name": "Fabrikus World",
+            "countryCode": "FR",
+            "city": "Vias"
+          },
+          {
+            "id": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+            "name": "Fami P.A.R.C",
+            "countryCode": "FR",
+            "city": "Nonville"
+          },
+          {
+            "id": "2567c7b2-5312-4c6b-ad90-1c84330738ca",
+            "name": "Familiepark Drievliet",
+            "countryCode": "NL",
+            "city": "Den Haag"
+          },
+          {
+            "id": "09c94403-ae33-4321-82cf-330dfe37428e",
+            "name": "Family Golf Park",
+            "countryCode": "PT",
+            "city": "Vilamoura, Loulé"
+          },
+          {
+            "id": "2f436a73-8a36-4adc-9723-f14d569ed4f8",
+            "name": "Family Park",
+            "countryCode": "FR",
+            "city": "Sorigny"
+          }
+        ]
+      },
+      {
+        "receipt": "00-search-acqua-parks-p3.json",
+        "pagination": {
+          "totalItems": 200,
+          "totalPages": 4,
+          "currentPage": 3,
+          "itemsPerPage": 50
+        },
+        "results": [
+          {
+            "id": "1345965d-9d8e-43e1-a1d3-13f0b5a5bdd4",
+            "name": "Fermyland",
+            "countryCode": "FR",
+            "city": "Orcet"
+          },
+          {
+            "id": "4fc0aa20-b0d7-47cc-a403-81b0d6e10f04",
+            "name": "Festyland",
+            "countryCode": "FR",
+            "city": "Carpiquet"
+          },
+          {
+            "id": "0baa84a5-ee92-4959-9f22-341cb97fe9a8",
+            "name": "Fiesta Parc",
+            "countryCode": "FR",
+            "city": "Vic-la-Gardiole"
+          },
+          {
+            "id": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+            "name": "Florida Parc",
+            "countryCode": "FR",
+            "city": "Brochon"
+          },
+          {
+            "id": "ea22716e-64d2-44ef-b068-6b26ba5cf9d7",
+            "name": "Fraispertuis City",
+            "countryCode": "FR",
+            "city": "Jeanménil"
+          },
+          {
+            "id": "6407a639-14a5-49d1-9a21-2336d33161f5",
+            "name": "Futuroscope",
+            "countryCode": "FR",
+            "city": "Chasseneuil-du-Poitou"
+          },
+          {
+            "id": "711877e8-6309-4f30-8f4f-8cf24c99373d",
+            "name": "Fééryland",
+            "countryCode": "FR",
+            "city": "Tournehem-sur-la-Hem"
+          },
+          {
+            "id": "d5d59442-1fb4-4aca-a084-98029a6a9a58",
+            "name": "Grinyland",
+            "countryCode": "FR",
+            "city": "Sept-Saulx"
+          },
+          {
+            "id": "d536babf-4e8a-4cb8-9584-abe4d6d0ae6f",
+            "name": "Jacquou Parc",
+            "countryCode": "FR",
+            "city": "Saint-Félix-de-Reillac-et-Mortemart"
+          },
+          {
+            "id": "ce97d925-9044-47dd-ad19-47467f663ce1",
+            "name": "Jardin d'Acclimatation",
+            "countryCode": "FR",
+            "city": "Paris"
+          },
+          {
+            "id": "da438248-c5da-4c0a-8578-8d78ff2c64d2",
+            "name": "Jardin des Bêtes",
+            "countryCode": "FR",
+            "city": "Gages-le-Bas"
+          },
+          {
+            "id": "37859293-ebae-469d-b700-4f5952700e5f",
+            "name": "Julianatoren",
+            "countryCode": "NL",
+            "city": "Apeldoorn"
+          },
+          {
+            "id": "8a83c7d5-14d2-419b-bcd6-762e46e73acd",
+            "name": "Jungle City",
+            "countryCode": "BE",
+            "city": "Tournai"
+          },
+          {
+            "id": "e8e73483-c4f7-4839-b4a5-bcbe282ef9ee",
+            "name": "Jungle Park Anapa",
+            "countryCode": "RU",
+            "city": "Anapa"
+          },
+          {
+            "id": "bac6532e-ed3e-40dd-9c8f-2a9b50f3d980",
+            "name": "Kangoo Park Safari",
+            "countryCode": "FR",
+            "city": "La Grande-Motte"
+          },
+          {
+            "id": "a48caf8e-871b-40cc-8b98-9faff4219e96",
+            "name": "Kid Parc Île dʼAventures",
+            "countryCode": "FR",
+            "city": "Gujan-Mestras"
+          },
+          {
+            "id": "24b79a01-41e9-4ff7-b47b-43ac117314bc",
+            "name": "Kinderstad Heerlen",
+            "countryCode": "NL",
+            "city": "Heerlen"
+          },
+          {
+            "id": "900ceb7b-7bb8-40c0-9e4a-6340d019a6d8",
+            "name": "Kingoland",
+            "countryCode": "FR",
+            "city": "Plumelin"
+          },
+          {
+            "id": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+            "name": "L'Île aux Pirates",
+            "countryCode": "FR",
+            "city": "Capbreton"
+          },
+          {
+            "id": "e1fa4656-8011-4908-a1bf-e7d581285a83",
+            "name": "La Coccinelle",
+            "countryCode": "FR",
+            "city": "Gujan-Mestras"
+          },
+          {
+            "id": "01a421d6-35b8-4227-ae30-78bab25ca7e6",
+            "name": "La Mer de Sable",
+            "countryCode": "FR",
+            "city": "Ermenonville"
+          },
+          {
+            "id": "9cebd5ae-dc2c-4c8c-a6a4-d2a2dda33d1c",
+            "name": "La Récré des 3 Curés",
+            "countryCode": "FR",
+            "city": "Milizac-Guipronvel"
+          },
+          {
+            "id": "6f64d243-7b8f-4495-a731-9faa76c0bb62",
+            "name": "Labadee",
+            "countryCode": "HT",
+            "city": "Labadee"
+          },
+          {
+            "id": "6217cf87-1c79-45f1-b3ea-aaa3be949dfb",
+            "name": "Land of Sea Adventures – Panorama Morska",
+            "countryCode": "PL",
+            "city": "Jarosławiec"
+          },
+          {
+            "id": "da07fda1-4b87-4142-85d2-23e4c0bbb585",
+            "name": "Le Ch'ti Parc",
+            "countryCode": "FR",
+            "city": "Avion"
+          },
+          {
+            "id": "1675e96c-6361-48ff-862b-43218167facd",
+            "name": "Le PAL",
+            "countryCode": "FR",
+            "city": "Saint-Pourçain-sur-Besbre"
+          },
+          {
+            "id": "eb98bd7b-a068-41d5-b196-2aa301d0feed",
+            "name": "Loisiparc",
+            "countryCode": "FR",
+            "city": "Aubigny-au-Bac"
+          },
+          {
+            "id": "29c89bcf-d733-42f1-982b-a8aa54aeeb09",
+            "name": "Lulu Parc",
+            "countryCode": "FR",
+            "city": "Rochecorbon"
+          },
+          {
+            "id": "77106934-0f4c-4eb3-b075-4097ab6078cd",
+            "name": "Luna Park Paris",
+            "countryCode": "FR",
+            "city": "Paris"
+          },
+          {
+            "id": "4fc6bba6-42e5-4f34-8004-a8f55e3abe3a",
+            "name": "Lunapark Antwerp",
+            "countryCode": "BE",
+            "city": "Antwerpen"
+          },
+          {
+            "id": "a6123932-ff0b-41a8-9812-71ee96c4c67a",
+            "name": "Magic Park Land",
+            "countryCode": "FR",
+            "city": "Ensuès-la-Redonne"
+          },
+          {
+            "id": "f4b7fb8d-d2e0-4337-bd25-8f22cc652383",
+            "name": "Magikland",
+            "countryCode": "PT",
+            "city": "Penafiel"
+          },
+          {
+            "id": "fde6b1a5-c745-4d3d-887a-84c8c3d26420",
+            "name": "Maximare Erlebnistherme Bad Hamm",
+            "countryCode": "DE",
+            "city": "Hamm"
+          },
+          {
+            "id": "642d63e7-6f81-411c-9bff-92f7a06b15ec",
+            "name": "Meli Park Heysel",
+            "countryCode": "BE",
+            "city": "Bruxelles"
+          },
+          {
+            "id": "2825e63a-cf40-4bff-9e2b-b406fb573825",
+            "name": "Mid America Adventure",
+            "countryCode": "US",
+            "city": "Eureka"
+          },
+          {
+            "id": "fd1a6d57-8e35-4086-b00e-a9de15f34b6b",
+            "name": "Mignon's Park",
+            "countryCode": "FR",
+            "city": "Saint-Jean-Kerdaniel"
+          },
+          {
+            "id": "dd7ac106-c1c6-4ca8-9d73-09d029e2ede9",
+            "name": "Mini-Europe",
+            "countryCode": "BE",
+            "city": "Bruxelles"
+          },
+          {
+            "id": "7787637d-e506-4b9f-83fa-ac3aca8a969d",
+            "name": "Miramar Weinheim",
+            "countryCode": "DE",
+            "city": "Weinheim"
+          },
+          {
+            "id": "327f4af5-10e5-4744-aa77-d3755ec7a9dc",
+            "name": "Mirapolis",
+            "countryCode": "FR",
+            "city": "Courdimanche"
+          },
+          {
+            "id": "14d906a7-772c-4396-aafc-2d3b8c57f16b",
+            "name": "Mondo Verde",
+            "countryCode": "NL",
+            "city": "Landgraaf"
+          },
+          {
+            "id": "da14fdc3-bbda-4eb7-aa3a-0ec8daf05717",
+            "name": "Movie Park Germany",
+            "countryCode": "DE",
+            "city": "Bottrop"
+          },
+          {
+            "id": "81f86001-3485-418e-9266-7977dff7f56a",
+            "name": "O'Fun Park",
+            "countryCode": "FR",
+            "city": "Le Bernard"
+          },
+          {
+            "id": "6f17412f-5a84-4449-9e00-75927717b8bf",
+            "name": "O'Gliss Park",
+            "countryCode": "FR",
+            "city": "Le Bernard"
+          },
+          {
+            "id": "6ba29848-f17a-4982-b583-4f0dbba2e201",
+            "name": "OK Corral",
+            "countryCode": "FR",
+            "city": "Cuges-les-Pins"
+          },
+          {
+            "id": "3274297f-e3c1-417a-a4fd-9408943c9dcd",
+            "name": "Odet Loisirs",
+            "countryCode": "FR",
+            "city": "Elliant"
+          },
+          {
+            "id": "7facd673-4096-4ac2-8aea-30a7f06f54b1",
+            "name": "Pairi Daiza",
+            "countryCode": "BE",
+            "city": "Brugelette"
+          },
+          {
+            "id": "5c22b408-5e7c-4f3b-a55f-ccf4bbe16cd2",
+            "name": "Papéa Parc",
+            "countryCode": "FR",
+            "city": "Yvré-lʼÉvêque"
+          },
+          {
+            "id": "6c673827-ae94-450d-b164-73ffdf519491",
+            "name": "Parc Ange Michel",
+            "countryCode": "FR",
+            "city": "Saint-Martin-de-Landelles"
+          },
+          {
+            "id": "f019e441-aecf-487b-93db-2b0246dce185",
+            "name": "Parc Avenue",
+            "countryCode": "FR",
+            "city": "Lanas"
+          },
+          {
+            "id": "99f3ddbb-cb30-4a17-9814-c227706cc8c9",
+            "name": "Parc Babyland",
+            "countryCode": "FR",
+            "city": "Le Grau-du-Roi"
+          }
+        ]
+      },
+      {
+        "receipt": "00-search-acqua-parks-p4.json",
+        "pagination": {
+          "totalItems": 200,
+          "totalPages": 4,
+          "currentPage": 4,
+          "itemsPerPage": 50
+        },
+        "results": [
+          {
+            "id": "34fe89e3-3d5f-44db-9b98-8106e065929a",
+            "name": "Parc Bagatelle",
+            "countryCode": "FR",
+            "city": "Merlimont"
+          },
+          {
+            "id": "995d713b-a338-46f0-81de-b0e23656a2ca",
+            "name": "Parc Bellevue",
+            "countryCode": "FR",
+            "city": "Limoges"
+          },
+          {
+            "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+            "name": "Parc Fenestre",
+            "countryCode": "FR",
+            "city": "La Bourboule"
+          },
+          {
+            "id": "c392db57-10a8-4377-bc6c-ed08f90e680e",
+            "name": "Parc Merveilleux",
+            "countryCode": "LU",
+            "city": "Bettembourg"
+          },
+          {
+            "id": "6190c433-c7b4-4914-af6f-6c2646af08c5",
+            "name": "Parc Saint Paul",
+            "countryCode": "FR",
+            "city": "Saint-Paul"
+          },
+          {
+            "id": "fa6698dd-950b-4c78-b351-cd7deb501967",
+            "name": "Parc Spirou Provence",
+            "countryCode": "FR",
+            "city": "Monteux"
+          },
+          {
+            "id": "a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5",
+            "name": "Parc de Lomme",
+            "countryCode": "FR",
+            "city": "Lomme"
+          },
+          {
+            "id": "0bfbbbf6-cc60-4a37-8d11-d7265299fefe",
+            "name": "Parc de la Demi-Lune",
+            "countryCode": "FR",
+            "city": "Lannemezan"
+          },
+          {
+            "id": "d431c493-5727-400c-9693-d22e1b99ae30",
+            "name": "Parc de la Mignardière",
+            "countryCode": "FR",
+            "city": "Ballan-Miré"
+          },
+          {
+            "id": "66653da2-93bb-499f-95df-15e240673e58",
+            "name": "Parc de la Toison d'Or",
+            "countryCode": "FR",
+            "city": "Dijon"
+          },
+          {
+            "id": "f24b9993-8768-4e36-b3cb-544401210007",
+            "name": "Parc de la Vallée",
+            "countryCode": "FR",
+            "city": "Val en Vignes (Massais)"
+          },
+          {
+            "id": "e3c53897-49e5-4036-a165-b0e2ef9ac448",
+            "name": "Parc des Dunes",
+            "countryCode": "FR",
+            "city": "Brem-sur-Mer"
+          },
+          {
+            "id": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+            "name": "Parc des Naudières",
+            "countryCode": "FR",
+            "city": "Sautron"
+          },
+          {
+            "id": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+            "name": "Parc du Petit Prince",
+            "countryCode": "FR",
+            "city": "Ungersheim"
+          },
+          {
+            "id": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+            "name": "Parc océanique Cousteau",
+            "countryCode": "FR",
+            "city": "Paris"
+          },
+          {
+            "id": "88d6a482-9434-4283-b8a0-e7d2a589959d",
+            "name": "Plopsa Indoor Coevorden",
+            "countryCode": "NL",
+            "city": "Dalen"
+          },
+          {
+            "id": "4273e070-ca9e-4239-89ab-a47e96846a68",
+            "name": "Plopsa Indoor Hasselt",
+            "countryCode": "BE",
+            "city": "Hasselt"
+          },
+          {
+            "id": "b94c7d82-3178-4f56-876b-c944edb8ec1e",
+            "name": "Plopsaland Ardennes",
+            "countryCode": "BE",
+            "city": "Stavelot"
+          },
+          {
+            "id": "969feca2-c2f5-4d78-b14a-b720bd766d2b",
+            "name": "Plopsaland Belgium",
+            "countryCode": "BE",
+            "city": "De Panne"
+          },
+          {
+            "id": "cbaf293c-0ee9-4eda-b5cf-e8daad53443d",
+            "name": "Plopsaland Deutschland",
+            "countryCode": "DE",
+            "city": "Haßloch"
+          },
+          {
+            "id": "98e94635-7b7c-441a-a7a0-fd267aa934fb",
+            "name": "Plopsaqua De Panne",
+            "countryCode": "BE",
+            "city": "De Panne"
+          },
+          {
+            "id": "c4b1d2a3-9fb7-4658-b3e2-ef6907062860",
+            "name": "Plopsaqua Hannut-Landen",
+            "countryCode": "BE",
+            "city": "Hannut"
+          },
+          {
+            "id": "df4fbc60-2eeb-47be-b287-90e994881b5a",
+            "name": "Royaume des Enfants Neuville-sur-Oise",
+            "countryCode": "FR",
+            "city": "Neuville-sur-Oise"
+          },
+          {
+            "id": "7b22baed-4cc2-434f-b911-5b4667c74f1e",
+            "name": "Rulantica",
+            "countryCode": "DE",
+            "city": "Rust"
+          },
+          {
+            "id": "3018a662-0271-4561-ba4f-30b563b8ae92",
+            "name": "Six Flags America",
+            "countryCode": "US",
+            "city": "Upper Marlboro"
+          },
+          {
+            "id": "b9145a8c-3acd-486e-986c-604ee931aa81",
+            "name": "Six Flags Darien Lake",
+            "countryCode": "US",
+            "city": "Corfu"
+          },
+          {
+            "id": "3bd3b77f-6a09-4240-96ee-25f51ee9b1a5",
+            "name": "Six Flags Discovery Kingdom",
+            "countryCode": "US",
+            "city": "Vallejo"
+          },
+          {
+            "id": "47aa49f8-8cce-41dc-9fc4-034b649e2142",
+            "name": "Six Flags Fiesta Texas",
+            "countryCode": "US",
+            "city": "San Antonio"
+          },
+          {
+            "id": "dea21548-7975-4b25-a8a6-378916b068c4",
+            "name": "Six Flags Great Adventure",
+            "countryCode": "US",
+            "city": "Jackson Township"
+          },
+          {
+            "id": "dea1bc65-f203-466a-bdf3-3bc9fca35109",
+            "name": "Six Flags Great America",
+            "countryCode": "US",
+            "city": "Gurnee"
+          },
+          {
+            "id": "3b8ff68d-f3b7-4094-b84a-6cb52dfbbf18",
+            "name": "Six Flags Great Escape",
+            "countryCode": "US",
+            "city": "Queensbury"
+          },
+          {
+            "id": "72e9f95c-155c-4413-824b-8ca45933dc45",
+            "name": "Six Flags Magic Mountain",
+            "countryCode": "US",
+            "city": "Valencia"
+          },
+          {
+            "id": "dbb59396-d53c-430d-811e-42011335d332",
+            "name": "Six Flags New England",
+            "countryCode": "US",
+            "city": "Agawam"
+          },
+          {
+            "id": "1454f09f-2d2c-4b52-9fbe-bef7f6a91ba5",
+            "name": "Six Flags New Orleans",
+            "countryCode": "US",
+            "city": "New Orleans"
+          },
+          {
+            "id": "b16443c3-0bdd-4f7c-b4f3-9892a14c7943",
+            "name": "Six Flags Over Georgia",
+            "countryCode": "US",
+            "city": "Austell"
+          },
+          {
+            "id": "55d391fa-4dff-44df-a067-300c7b7bd6d4",
+            "name": "Six Flags Over Texas",
+            "countryCode": "US",
+            "city": "Arlington"
+          },
+          {
+            "id": "31da33cc-fc22-4abd-b474-217ae730a1ef",
+            "name": "Six Flags Qiddiya City",
+            "countryCode": "SA",
+            "city": "Qiddiya City"
+          },
+          {
+            "id": "9b05d0aa-edd0-47c4-8bf1-5539d768b693",
+            "name": "Slide & Splash",
+            "countryCode": "PT",
+            "city": "Estômbar, Lagoa"
+          },
+          {
+            "id": "f34d8e65-8a9e-4ebc-bd32-5d53762f1e70",
+            "name": "Sparkx Gent",
+            "countryCode": "BE",
+            "city": "Sint-Denijs-Westrem"
+          },
+          {
+            "id": "52b7b74c-f390-4e46-810a-7eddad5f8e4d",
+            "name": "Speelpark Oud Valkeveen",
+            "countryCode": "NL",
+            "city": "Naarden"
+          },
+          {
+            "id": "40bce3d1-0f94-4088-8dcc-83862810fc1f",
+            "name": "Timoks Wilde Welt",
+            "countryCode": "AT",
+            "city": "Fieberbrunn"
+          },
+          {
+            "id": "6679b2b2-9199-499c-a387-fdd638791623",
+            "name": "Toverland",
+            "countryCode": "NL",
+            "city": "Sevenum"
+          },
+          {
+            "id": "6353f6a4-d951-4f0f-b99a-5a0804b642a9",
+            "name": "Universal Studios Japan",
+            "countryCode": "JP",
+            "city": "Osaka"
+          },
+          {
+            "id": "a76637e3-2bf9-4d90-958b-52948bb05d75",
+            "name": "Walibi Belgium",
+            "countryCode": "BE",
+            "city": "Wavre"
+          },
+          {
+            "id": "8d145353-6f54-412b-b159-19c64ad6293b",
+            "name": "Walibi Holland",
+            "countryCode": "NL",
+            "city": "Biddinghuizen"
+          },
+          {
+            "id": "3edfd484-f1bb-4f35-91b0-0e6384661c5a",
+            "name": "ZoetWaterPark",
+            "countryCode": "BE",
+            "city": "Oud-Heverlee"
+          },
+          {
+            "id": "360d3e08-ccdf-49b5-a2d0-cec0d746367b",
+            "name": "Zoomarine Albufeira",
+            "countryCode": "PT",
+            "city": "Albufeira"
+          },
+          {
+            "id": "b2dca918-9747-4623-a0c0-38e89634aaff",
+            "name": "Zygofolis – Zygo Parc",
+            "countryCode": "FR",
+            "city": "Nice"
+          },
+          {
+            "id": "3b9abd45-167e-4b02-aeec-8d2904e58f0a",
+            "name": "Île de loisirs d'Étampes",
+            "countryCode": "FR",
+            "city": "Étampes"
+          },
+          {
+            "id": "6644b892-d03c-461e-855d-a61cadba76f4",
+            "name": "Ô Parc",
+            "countryCode": "FR",
+            "city": "Bannay"
+          }
+        ]
+      },
+      {
+        "receipt": "00-search-acqua-standalone-p1.json",
+        "pagination": {
+          "totalItems": 9,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": [
+          {
+            "id": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+            "name": "Diamond and Flower Ferris Wheel",
+            "countryCode": "JP",
+            "city": "Edogawa, Tokyo"
+          },
+          {
+            "id": "1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213",
+            "name": "Flathead Lake Alpine Coaster",
+            "countryCode": "US",
+            "city": "Lakeside"
+          },
+          {
+            "id": "0bfdfd47-8363-4f9d-959b-6fd331dca6e4",
+            "name": "Luge alpine du Plan Incliné",
+            "countryCode": "FR",
+            "city": "Saint-Louis"
+          },
+          {
+            "id": "f6742708-a40b-4b45-b726-f43daff2259d",
+            "name": "MOSAIC Big Ferris Wheel",
+            "countryCode": "JP",
+            "city": "Kobe"
+          },
+          {
+            "id": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+            "name": "Seattle Great Wheel",
+            "countryCode": "US",
+            "city": "Seattle"
+          },
+          {
+            "id": "4b5cb5ae-319f-4bee-8020-d177ac79e440",
+            "name": "SkyView de Pier",
+            "countryCode": "NL",
+            "city": "Scheveningen"
+          },
+          {
+            "id": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+            "name": "Skyline Zipwire — Nami Island",
+            "countryCode": "KR",
+            "city": "Gapyeong"
+          },
+          {
+            "id": "c694fb12-2689-4933-89be-06ee6c8c467d",
+            "name": "Tempozan Ferris Wheel",
+            "countryCode": "JP",
+            "city": "Osaka"
+          },
+          {
+            "id": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+            "name": "The Capital Wheel",
+            "countryCode": "US",
+            "city": "Oxon Hill"
+          }
+        ]
+      },
+      {
+        "receipt": "00-search-aquagliss-parks-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-aquagliss-standalone-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-cyrne-parks-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-cyrne-standalone-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-grosseto-parks-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-grosseto-standalone-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-porticcio-parks-p1.json",
+        "pagination": {
+          "totalItems": 1,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": [
+          {
+            "id": "6353f6a4-d951-4f0f-b99a-5a0804b642a9",
+            "name": "Universal Studios Japan",
+            "countryCode": "JP",
+            "city": "Osaka"
+          }
+        ]
+      },
+      {
+        "receipt": "00-search-porticcio-standalone-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      }
+    ],
+    "matchingExistingEntity": null,
+    "aliases": [
+      "Aquagliss",
+      "Acqua Gliss",
+      "Acqua Cyrne Gliss",
+      "Acqua Cyrné Gliss"
+    ],
+    "sourceUrls": [
+      "https://www.visit-corsica.com/fr/Mes-Favoris/AQUA-CYRNE-GLISS",
+      "https://www.parcs-aquatiques.com/acqua-gliss-porticcio/",
+      "https://web.archive.org/web/20100621044503id_/http://www.acqua-gliss.com:80/accueil-5798.html",
+      "https://web.archive.org/web/20100621091031id_/http://www.acqua-gliss.com:80/reglement-interieur-6091.html",
+      "https://recherche-entreprises.api.gouv.fr/search?q=334956463",
+      "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007196249",
+      "https://www.legifrance.gouv.fr/juri/id/JURITEXT000033432317"
+    ],
+    "decisions": {
+      "identitySearch": "Cinq recherches globales Parks et Standalone : Aquagliss, Acqua, Porticcio, Cyrne, Grosseto ; 13 pages lues. Les 200 résultats Parks Acqua et 9 standalone ne correspondent pas. Universal Studios Japan ressort pour Porticcio par son texte mais identité et pays japonais excluent cette correspondance. O’Gliss Park au Bernard est distinct. Aucun homonyme ou alias trouvé.",
+      "opening": "1986, année du backlog et des listes historiques, cohérente avec la société et le contrat d’assurance de mars 1986. Le jour exact n’est pas établi ; le 1 juin administratif n’est pas une date d’ouverture du parc.",
+      "closing": "Fin de l’été 2014 attestée par l’annuaire spécialisé, compatible avec les pièces judiciaires relatives à la saison 2014. Aucun jour exact ni date de démolition déduit.",
+      "department": "Corse-du-Sud, et non Haute-Corse indiqué dans certaines listes dérivées.",
+      "geolocation": "Point d’accès historique de l’annuaire spécialisé 41.9028320/8.8138599 confirmé par l’orthophotographie IGN 2006–2010 personnellement inspectée : bassins, trois pistes parallèles bleues, pistes orange et toboggans sinueux à cet emplacement. Le point de l’agence touristique est dans un champ 300 m au nord ; coordonnées du siège Sirene et de Gralon également erronées. Aucun de ces points écartés n’est repris.",
+      "operator": "SARL Acqua Cyrne Gliss, SIREN 334956463, dernier exploitant confirmé par le site officiel et les décisions judiciaires. Année juridique 1986. Aucun fondateur individuel établi.",
+      "website": "Ancien domaine acqua-gliss.com établi par les archives. Pas de site officiel actif renseigné pour un parc fermé ; aquagliss.com est ultérieurement parqué.",
+      "logo": "Emblème corse avec palmes et bandeau jaune retrouvé dans un fichier indépendant de l’annuaire spécialisé ; identité visuelle identique à celle de la bannière officielle archivée. Import étape 5 après métadonnées huit langues. Bannière GIF non transformée.",
+      "zones": "Aucune zone officielle nommée ; aucune zone inventée.",
+      "hoursPricing": "Pas d’horaires ni tarifs actuels pour un parc fermé. Règlement et tarifs 2010 sont historiques.",
+      "history": "Attentat matériel du 31 mai 1989 prouvé par arrêt de 1993 : auteur, motif, victimes non établis, aucune supposition. Permis de 35 logements du 7 mars 2014 prouvé par décision de 2016, sans prétendre que les logements furent construits. Le litige du parking ne prouve pas une fermeture forcée.",
+      "initialCoverage": {
+        "items": 0,
+        "descriptions8Languages": 0,
+        "images": 0,
+        "maps": 0,
+        "facts": 0,
+        "articles": 0
+      },
+      "scope": "Inventaire complet confirmé, descriptions propres en huit langues, médias originaux, histoire et article, audit final. Lacunes de dates et photos conservées après recherche."
+    }
+  }
+}

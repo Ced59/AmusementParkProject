@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-11-03T01:50:40.980548+00:00",
+  "rows": [
+    {
+      "key": "model-setienne",
+      "name": "Hôtel de ville de Saint-Étienne",
+      "sourcePage": "https://web.archive.org/web/20001208235900id_/http://www.parc-de-la-drosera.fr:80/setienne.html",
+      "nativeImage": "10-model-pages/Setienne.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-sours",
+      "name": "Volcan à ciel ouvert – Puy de Lemptégy",
+      "sourcePage": "https://web.archive.org/web/20010413000637id_/http://parc-de-la-drosera.fr:80/sours.html",
+      "nativeImage": "10-model-pages/Sours.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-unieux",
+      "name": "Pont du Pertuiset",
+      "sourcePage": "https://web.archive.org/web/20001209012700id_/http://www.parc-de-la-drosera.fr:80/unieux.html",
+      "nativeImage": "10-model-pages/Unieux.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

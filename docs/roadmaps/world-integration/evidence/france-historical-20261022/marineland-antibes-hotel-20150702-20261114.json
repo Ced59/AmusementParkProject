@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "c278b3b532db454bbdaa8faa759ad6db",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "481a7e33-f817-4a14-b638-293b0a994d7b",
+    "path": "park_item/c278b3b532db454bbdaa8faa759ad6db",
+    "description": "Le Marineland Resort le 2 juillet 2015, pendant sa première saison d’accueil.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 576,
+    "height": 1024,
+    "sizeInBytes": 145547,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.whataboutnice.fr/wp-content/uploads/2015/07/20150702_110313-576x1024.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "SAMSUNG",
+      "cameraModel": "SM-G850F",
+      "takenOnUtc": "2015-07-02T11:03:12Z",
+      "orientation": "1",
+      "focalLength": 4.09,
+      "aperture": 2.2,
+      "exposureTime": 0.0008928571428571428,
+      "iso": 40
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Façade blanche et brune du Marineland Resort, palmiers et bord de la piscine."
+      },
+      {
+        "languageCode": "en",
+        "value": "The white and brown façade of Marineland Resort, palm trees and the edge of the pool."
+      },
+      {
+        "languageCode": "de",
+        "value": "Weiße und braune Fassade des Marineland Resort mit Palmen am Pool."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De witte en bruine gevel van Marineland Resort, palmbomen en de rand van het zwembad."
+      },
+      {
+        "languageCode": "it",
+        "value": "Facciata bianca e marrone del Marineland Resort, palme e bordo della piscina."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fachada blanca y marrón del Marineland Resort, palmeras y borde de la piscina."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Biało-brązowa fasada Marineland Resort, palmy i brzeg basenu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fachada branca e castanha do Marineland Resort, palmeiras e borda da piscina."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le Marineland Resort le 2 juillet 2015, pendant sa première saison d’accueil."
+      },
+      {
+        "languageCode": "en",
+        "value": "Marineland Resort on 2 July 2015, during its first season welcoming guests."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das Marineland Resort am 2. Juli 2015 während seiner ersten Saison."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Marineland Resort op 2 juli 2015, tijdens het eerste seizoen voor hotelgasten."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il Marineland Resort il 2 luglio 2015, durante la sua prima stagione di attività."
+      },
+      {
+        "languageCode": "es",
+        "value": "El Marineland Resort el 2 de julio de 2015, durante su primera temporada de actividad."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Marineland Resort 2 lipca 2015 roku, podczas pierwszego sezonu przyjmowania gości."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Marineland Resort a 2 de julho de 2015, durante a sua primeira temporada de atividade."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Anne L. / What About Nice — 2015."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T18:51:07.915Z",
+    "updatedAt": "2026-11-14T18:51:11.485Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T18:51:11.485Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,26 @@
+{
+  "status": "Qualified photo identities; remaining map-only positions unresolved",
+  "refinedExistingId": "94629617-04df-4ed7-b932-72fd6fcacb42",
+  "previousTemporaryAggregateName": "Les Boutiques de la place centrale",
+  "canonicalPhotoName": "Airport Boutique",
+  "secondDistinctShop": {
+    "key": "zygo-boutique-pinces",
+    "nameIsDescriptive": true,
+    "sourcePhoto": "87_06_negozio.jpg"
+  },
+  "remainingMapMarkers": [
+    "G3",
+    "E3",
+    "E2",
+    "E5",
+    "E6",
+    "C4",
+    "H2"
+  ],
+  "gap": "Map markers locate retail but cannot reliably be crosswalked to the two photographed façades or to separate named tenants. No seven-store count inferred; no duplicate aggregate retained. I7 entrance shop separately proven.",
+  "sources": [
+    "http://zygo.altervista.org/depliant.php",
+    "http://zygo.altervista.org/storia_87.php",
+    "http://zygo.altervista.org/storia_88_2.php"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-11-03T01:53:23.126175+00:00",
+  "rows": [
+    {
+      "key": "model-sromain",
+      "name": "Prieuré de Saint-Romain-le-Puy",
+      "sourcePage": "https://web.archive.org/web/20001110050000id_/http://www.parc-de-la-drosera.fr:80/sromain.html",
+      "nativeImage": "10-model-pages/Sromain.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-smarcel",
+      "name": "Château de Saint-Marcel-de-Félines",
+      "sourcePage": "https://web.archive.org/web/20001209002800id_/http://www.parc-de-la-drosera.fr:80/smarcel.html",
+      "nativeImage": "10-model-pages/Smarcel.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-montrond",
+      "name": "Château de Montrond-les-Bains",
+      "sourcePage": "https://web.archive.org/web/20001110045200id_/http://www.parc-de-la-drosera.fr:80/montrond.html",
+      "nativeImage": "10-model-pages/Montrond.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

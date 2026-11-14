@@ -1,0 +1,1379 @@
+{
+  "checkedAtUtc": "2026-10-28T21:13:28.318412+00:00",
+  "state": "Pre-final source-gap register; no completion claim",
+  "coverage": {
+    "inventory": 54,
+    "attractions": 24,
+    "attractionsWithImage": 18,
+    "itemsWithImage": 27,
+    "imagesIncludingLogo": 58,
+    "distinctGeneralParkViews": 5,
+    "historicalSiteRemainsPhotos": 1,
+    "importantItemsWithAtLeast3Images": 11,
+    "importantItems": 18,
+    "geolocatedItems": 0,
+    "officialMapYears": [
+      1987,
+      1991
+    ]
+  },
+  "imageGaps": [
+    {
+      "id": "51246763-ca8d-45ca-ac15-990dedb43f5b",
+      "key": "zygo-piscine-enfants",
+      "name": "Piscine des enfants",
+      "category": "Attraction",
+      "images": 0,
+      "reason": "Child pool is clearly labelled on official maps, but aerial photographs do not securely isolate it from adult/wave pools. No inferred photo match.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "f8732b10-0137-4533-ab31-af2eddbed341",
+      "key": "zygo-offshore-rallye",
+      "name": "Offshore Rallye",
+      "category": "Attraction",
+      "images": 0,
+      "reason": "Remote-controlled boat/car area identified in original map, but no photographic basin/track scene could be securely matched. Actual full-size pedalboats are a different attraction.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "cbcd56ff-661f-43db-8bfd-e24d1c190fff",
+      "key": "zygo-village-enfants",
+      "name": "Village des enfants",
+      "category": "Attraction",
+      "images": 0,
+      "reason": "1987 ball-pit and net-play photographs are genuine, but cannot be cross-matched reliably to the two distinct labels Village des enfants / Zone des enfants on1991map. No arbitrary assignment or duplication of one playground picture to both owners.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "19ebfb06-ebf6-4b38-a8a9-7eb79c6eb266",
+      "key": "zygo-zone-enfants",
+      "name": "Zone des enfants",
+      "category": "Attraction",
+      "images": 0,
+      "reason": "1987 ball-pit and net-play photographs are genuine, but cannot be cross-matched reliably to the two distinct labels Village des enfants / Zone des enfants on1991map. No arbitrary assignment or duplication of one playground picture to both owners.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "a954c22f-d3d5-4674-a89f-4b6b503e8c9d",
+      "key": "zygo-autotamponneuses",
+      "name": "Les Autos-tamponneuses",
+      "category": "Attraction",
+      "images": 0,
+      "reason": "No original Nice photograph securely identified; later WalibiRhôneAlpes equipment not substituted without object-level identification and compatible historical period.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "f92305d7-0ecf-43cc-8919-811a80fd4376",
+      "key": "zygo-pedalos",
+      "name": "Les Pédalos",
+      "category": "Attraction",
+      "images": 0,
+      "reason": "Red pedal boats appear only as tiny background details of lake/Monstre photos already owned by other entities. No distinct useful photograph found; no reimport of the same stored photo or local crop.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "b2e206dc-0cdb-4d1f-83ee-f96e3245ddc0",
+      "key": "zygo-nautilus",
+      "name": "Le Nautilus",
+      "category": "Restaurant",
+      "images": 0,
+      "reason": "Official1991mapnames verified, but no distinct named building photo exceptLaPiscine/L’Aquarium already imported. Pizzalito/BateauFou/LaFarigoule andLeBœuf/LaBrochette cross-year aliases remain unproven; no fabricated matches.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "a65f27d9-46f3-4e68-9b24-5e22fa916e08",
+      "key": "zygo-farigoule",
+      "name": "La Farigoule",
+      "category": "Restaurant",
+      "images": 0,
+      "reason": "Official1991mapnames verified, but no distinct named building photo exceptLaPiscine/L’Aquarium already imported. Pizzalito/BateauFou/LaFarigoule andLeBœuf/LaBrochette cross-year aliases remain unproven; no fabricated matches.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "094b647b-803d-4282-ab04-f537ce58fd81",
+      "key": "zygo-ptit-gourmand",
+      "name": "P’tit Gourmand",
+      "category": "Restaurant",
+      "images": 0,
+      "reason": "Official1991mapnames verified, but no distinct named building photo exceptLaPiscine/L’Aquarium already imported. Pizzalito/BateauFou/LaFarigoule andLeBœuf/LaBrochette cross-year aliases remain unproven; no fabricated matches.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "cd564f00-f3d9-41be-858a-893f97f7ed1f",
+      "key": "zygo-brochette",
+      "name": "La Brochette",
+      "category": "Restaurant",
+      "images": 0,
+      "reason": "Official1991mapnames verified, but no distinct named building photo exceptLaPiscine/L’Aquarium already imported. Pizzalito/BateauFou/LaFarigoule andLeBœuf/LaBrochette cross-year aliases remain unproven; no fabricated matches.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "4ebe992f-3489-4756-915d-2182b2e09d89",
+      "key": "zygo-amphi-food",
+      "name": "L’Amphi",
+      "category": "Restaurant",
+      "images": 0,
+      "reason": "Official1991mapnames verified, but no distinct named building photo exceptLaPiscine/L’Aquarium already imported. Pizzalito/BateauFou/LaFarigoule andLeBœuf/LaBrochette cross-year aliases remain unproven; no fabricated matches.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "ef8dd69c-9389-4dd2-8889-16da9455db5c",
+      "key": "zygo-fontaine",
+      "name": "La Fontaine",
+      "category": "Restaurant",
+      "images": 0,
+      "reason": "Official1991mapnames verified, but no distinct named building photo exceptLaPiscine/L’Aquarium already imported. Pizzalito/BateauFou/LaFarigoule andLeBœuf/LaBrochette cross-year aliases remain unproven; no fabricated matches.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "f81d4bec-c31c-45f0-bb39-429b9d99c40c",
+      "key": "zygo-farandole",
+      "name": "La Farandole",
+      "category": "Restaurant",
+      "images": 0,
+      "reason": "Official1991mapnames verified, but no distinct named building photo exceptLaPiscine/L’Aquarium already imported. Pizzalito/BateauFou/LaFarigoule andLeBœuf/LaBrochette cross-year aliases remain unproven; no fabricated matches.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "dc08a07b-33b8-4928-98f3-3db2e708d093",
+      "key": "zygo-lac-food",
+      "name": "Le Lac",
+      "category": "Restaurant",
+      "images": 0,
+      "reason": "Official1991mapnames verified, but no distinct named building photo exceptLaPiscine/L’Aquarium already imported. Pizzalito/BateauFou/LaFarigoule andLeBœuf/LaBrochette cross-year aliases remain unproven; no fabricated matches.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "7fb5f729-5397-4904-ae86-8bbcb708fc75",
+      "key": "zygo-broadway",
+      "name": "Broadway Show",
+      "category": "Show",
+      "images": 0,
+      "reason": "1988 original brochure shows the named Broadway production, but only as an embedded photograph in a larger JPEG leaflet. No original stand-alone published photo or PDFnativeimage found; no prohibited local cropping. Anonymous1988GrandAmphi performance not assigned title without proof.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "26b7eda8-4a3e-4e2a-85cd-3d048aafd240",
+      "key": "zygo-boutique-entree",
+      "name": "La Boutique de l’entrée",
+      "category": "Shop",
+      "images": 0,
+      "reason": "No separately identifiable original photograph found after official brochure, archived contributor galleries, specialist and press searches. Map establishes existence but cannot substitute for a genuine photograph.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "b155938c-16df-4224-9db2-469392c267cb",
+      "key": "zygo-information",
+      "name": "Le Centre de renseignements",
+      "category": "Service",
+      "images": 0,
+      "reason": "No separately identifiable original photograph found after official brochure, archived contributor galleries, specialist and press searches. Map establishes existence but cannot substitute for a genuine photograph.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "b64b1fb8-affb-460f-8753-f15676f929d6",
+      "key": "zygo-infirmerie",
+      "name": "L’Infirmerie",
+      "category": "Service",
+      "images": 0,
+      "reason": "No separately identifiable original photograph found after official brochure, archived contributor galleries, specialist and press searches. Map establishes existence but cannot substitute for a genuine photograph.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "5891259b-316d-4e6b-9089-62e100261d01",
+      "key": "zygo-garderie",
+      "name": "La Halte-garderie",
+      "category": "Service",
+      "images": 0,
+      "reason": "No separately identifiable original photograph found after official brochure, archived contributor galleries, specialist and press searches. Map establishes existence but cannot substitute for a genuine photograph.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "d609a663-df3b-4c60-8335-169e47bbb562",
+      "key": "zygo-parking",
+      "name": "Le Parking",
+      "category": "Service",
+      "images": 0,
+      "reason": "No separately identifiable original photograph found after official brochure, archived contributor galleries, specialist and press searches. Map establishes existence but cannot substitute for a genuine photograph.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "c4332c0d-b728-4691-8a19-44e87c04e89a",
+      "key": "zygo-wc-entree",
+      "name": "Les Sanitaires de l’entrée",
+      "category": "Service",
+      "images": 0,
+      "reason": "Toilet marker on officialmap identifies historical location; no distinct exterior/interior photograph found. A neighbouringride or wholeparkview would not illustrate this service faithfully.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "5284158a-dbf5-49d8-ba50-609856cbc0f8",
+      "key": "zygo-wc-nautique",
+      "name": "Les Sanitaires de l’accès nautique",
+      "category": "Service",
+      "images": 0,
+      "reason": "Toilet marker on officialmap identifies historical location; no distinct exterior/interior photograph found. A neighbouringride or wholeparkview would not illustrate this service faithfully.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "6f2a7791-b848-4ceb-be33-58be080ddf8e",
+      "key": "zygo-wc-infirmerie",
+      "name": "Les Sanitaires près de l’infirmerie",
+      "category": "Service",
+      "images": 0,
+      "reason": "Toilet marker on officialmap identifies historical location; no distinct exterior/interior photograph found. A neighbouringride or wholeparkview would not illustrate this service faithfully.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "0a85c01f-6de8-4189-9639-1b874c076e73",
+      "key": "zygo-wc-piscine-enfants",
+      "name": "Les Sanitaires de la piscine des enfants",
+      "category": "Service",
+      "images": 0,
+      "reason": "Toilet marker on officialmap identifies historical location; no distinct exterior/interior photograph found. A neighbouringride or wholeparkview would not illustrate this service faithfully.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "4b5b8cf7-8dcd-4678-b26e-aec45f7a4625",
+      "key": "zygo-wc-riviere",
+      "name": "Les Sanitaires du fleuve rapide",
+      "category": "Service",
+      "images": 0,
+      "reason": "Toilet marker on officialmap identifies historical location; no distinct exterior/interior photograph found. A neighbouringride or wholeparkview would not illustrate this service faithfully.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "a3c42c96-76d0-40f8-aaa5-d6fd3ae44b56",
+      "key": "zygo-wc-slides",
+      "name": "Les Sanitaires des toboggans rapides",
+      "category": "Service",
+      "images": 0,
+      "reason": "Toilet marker on officialmap identifies historical location; no distinct exterior/interior photograph found. A neighbouringride or wholeparkview would not illustrate this service faithfully.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    },
+    {
+      "id": "7c93f74e-b86e-4d82-802e-b5dd532f9fef",
+      "key": "zygo-wc-jeux-enfants",
+      "name": "Les Sanitaires des jeux pour enfants",
+      "category": "Service",
+      "images": 0,
+      "reason": "Toilet marker on officialmap identifies historical location; no distinct exterior/interior photograph found. A neighbouringride or wholeparkview would not illustrate this service faithfully.",
+      "sourcesSearched": [
+        "http://zygo.altervista.org/depliant.php",
+        "http://zygo.altervista.org/depliant88.php",
+        "http://zygo.altervista.org/deplizp.php",
+        "http://zygo.altervista.org/storia_87.php",
+        "http://zygo.altervista.org/storia_88_1.php",
+        "http://zygo.altervista.org/storia_88_2.php",
+        "http://zygo.altervista.org/storia_88_3.php",
+        "http://zygo.altervista.org/storia_88_4.php",
+        "http://zygo.altervista.org/storia_91.php",
+        "http://zygo.altervista.org/storia_oggi.php",
+        "https://rcdb.com/5223.htm",
+        "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html"
+      ]
+    }
+  ],
+  "importantItemImageReview": [
+    {
+      "id": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "name": "Boomerang",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "name": "Tarzungle",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "f70b8452-5802-4bc5-8e92-d0b468c6f333",
+      "name": "Crazy River",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "99240dfe-986e-4898-adc9-f2fbf63315ab",
+      "name": "Speed Slides",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "40c9bb2b-9c53-4e58-9ecd-faee74174428",
+      "name": "Anacondas",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "f4786f98-0627-4da6-b7e3-04ffe68b04b1",
+      "name": "Piscine à vagues",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "32125849-cdd1-43f7-a023-1a5650ba65d7",
+      "name": "Piscine des adultes",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "c4c990d1-0b44-4891-b169-31e15e68e036",
+      "name": "Le Nil",
+      "images": 2,
+      "reason": "Only these distinct admissible original views found. Full archive inventory inspected; complementary event/site images retained separately without double-counting or near-identical quota pictures."
+    },
+    {
+      "id": "1a8bb753-3152-4309-81ef-7e1fe6120b31",
+      "name": "Le Monstre",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "49082268-7ae3-4342-a32b-660853f26bb7",
+      "name": "Swingo – Wave Swinger",
+      "images": 1,
+      "reason": "Only these distinct admissible original views found. Full archive inventory inspected; complementary event/site images retained separately without double-counting or near-identical quota pictures."
+    },
+    {
+      "id": "49b86e40-c113-4226-8f15-2fcb75dcd6f0",
+      "name": "Le Bateau Ivre",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "b18f768e-234b-4129-a64e-d705e9c74302",
+      "name": "Le Carrousel",
+      "images": 1,
+      "reason": "Only these distinct admissible original views found. Full archive inventory inspected; complementary event/site images retained separately without double-counting or near-identical quota pictures."
+    },
+    {
+      "id": "804270fa-6489-421f-8f2d-a7989eb03602",
+      "name": "La Cascade – Log Flume",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "6831984f-b5b4-4be0-a90c-b8aba3bc1356",
+      "name": "Le Petit Amphithéâtre",
+      "images": 1,
+      "reason": "Only these distinct admissible original views found. Full archive inventory inspected; complementary event/site images retained separately without double-counting or near-identical quota pictures."
+    },
+    {
+      "id": "d0dcecef-08a5-4ddf-9e80-c286bcbfee2c",
+      "name": "Le Grand Amphithéâtre",
+      "images": 1,
+      "reason": "Only these distinct admissible original views found. Full archive inventory inspected; complementary event/site images retained separately without double-counting or near-identical quota pictures."
+    },
+    {
+      "id": "7fb5f729-5397-4904-ae86-8bbcb708fc75",
+      "name": "Broadway Show",
+      "images": 0,
+      "reason": "1988 original brochure shows the named Broadway production, but only as an embedded photograph in a larger JPEG leaflet. No original stand-alone published photo or PDFnativeimage found; no prohibited local cropping. Anonymous1988GrandAmphi performance not assigned title without proof."
+    },
+    {
+      "id": "2b4dbff5-9125-4da5-9309-9c1e695516cf",
+      "name": "Le Funiculaire",
+      "images": 3,
+      "reason": null
+    },
+    {
+      "id": "617dc52c-ccd6-4e44-913c-3a6e11618a8c",
+      "name": "The Great American High Diving Show",
+      "images": 2,
+      "reason": "Only these distinct admissible original views found. Full archive inventory inspected; complementary event/site images retained separately without double-counting or near-identical quota pictures."
+    }
+  ],
+  "geolocationGaps": [
+    {
+      "id": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "key": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "name": "Boomerang",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "key": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "name": "Tarzungle",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "f70b8452-5802-4bc5-8e92-d0b468c6f333",
+      "key": "zygo-crazy-river",
+      "name": "Crazy River",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "99240dfe-986e-4898-adc9-f2fbf63315ab",
+      "key": "zygo-speed-slides",
+      "name": "Speed Slides",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "40c9bb2b-9c53-4e58-9ecd-faee74174428",
+      "key": "zygo-anacondas",
+      "name": "Anacondas",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "51246763-ca8d-45ca-ac15-990dedb43f5b",
+      "key": "zygo-piscine-enfants",
+      "name": "Piscine des enfants",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "f4786f98-0627-4da6-b7e3-04ffe68b04b1",
+      "key": "zygo-piscine-vagues",
+      "name": "Piscine à vagues",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "32125849-cdd1-43f7-a023-1a5650ba65d7",
+      "key": "zygo-piscine-adultes",
+      "name": "Piscine des adultes",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "c4c990d1-0b44-4891-b169-31e15e68e036",
+      "key": "zygo-nil",
+      "name": "Le Nil",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "f8732b10-0137-4533-ab31-af2eddbed341",
+      "key": "zygo-offshore-rallye",
+      "name": "Offshore Rallye",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "68b15a64-3f41-421b-acad-4d9820b18484",
+      "key": "zygo-cinema",
+      "name": "Cinéma 180°",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "cbcd56ff-661f-43db-8bfd-e24d1c190fff",
+      "key": "zygo-village-enfants",
+      "name": "Village des enfants",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "19ebfb06-ebf6-4b38-a8a9-7eb79c6eb266",
+      "key": "zygo-zone-enfants",
+      "name": "Zone des enfants",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "1a8bb753-3152-4309-81ef-7e1fe6120b31",
+      "key": "zygo-monstre",
+      "name": "Le Monstre",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "49082268-7ae3-4342-a32b-660853f26bb7",
+      "key": "zygo-swingo",
+      "name": "Swingo – Wave Swinger",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "49b86e40-c113-4226-8f15-2fcb75dcd6f0",
+      "key": "zygo-bateau-ivre",
+      "name": "Le Bateau Ivre",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "b18f768e-234b-4129-a64e-d705e9c74302",
+      "key": "zygo-carrousel",
+      "name": "Le Carrousel",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "804270fa-6489-421f-8f2d-a7989eb03602",
+      "key": "zygo-cascade",
+      "name": "La Cascade – Log Flume",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "a954c22f-d3d5-4674-a89f-4b6b503e8c9d",
+      "key": "zygo-autotamponneuses",
+      "name": "Les Autos-tamponneuses",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "46e7b041-6d93-41b7-be11-3a0d37befe5e",
+      "key": "zygo-labyrinthe",
+      "name": "Le Labyrinthe aquatique",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "8b559533-6ddb-4390-8c63-8f8476436c3b",
+      "key": "zygo-orgues",
+      "name": "Les Orgues aquatiques",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "0d111dae-1217-437b-b5a7-842f656d47c4",
+      "key": "zygo-tir",
+      "name": "Le Tir à la cible",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "f92305d7-0ecf-43cc-8919-811a80fd4376",
+      "key": "zygo-pedalos",
+      "name": "Les Pédalos",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "bb9977c0-f46c-4d73-9fc9-da2ea337e7d6",
+      "key": "zygo-helicoidaux",
+      "name": "Les Toboggans hélicoïdaux",
+      "category": "Attraction",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "83732beb-afb4-4d9a-9a4e-36458c87abda",
+      "key": "zygo-la-piscine",
+      "name": "La Piscine",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "b2e206dc-0cdb-4d1f-83ee-f96e3245ddc0",
+      "key": "zygo-nautilus",
+      "name": "Le Nautilus",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "a65f27d9-46f3-4e68-9b24-5e22fa916e08",
+      "key": "zygo-farigoule",
+      "name": "La Farigoule",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "a6afd3ff-f773-4568-84a6-896c753a134a",
+      "key": "zygo-aquarium",
+      "name": "L’Aquarium",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "094b647b-803d-4282-ab04-f537ce58fd81",
+      "key": "zygo-ptit-gourmand",
+      "name": "P’tit Gourmand",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "cd564f00-f3d9-41be-858a-893f97f7ed1f",
+      "key": "zygo-brochette",
+      "name": "La Brochette",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "4ebe992f-3489-4756-915d-2182b2e09d89",
+      "key": "zygo-amphi-food",
+      "name": "L’Amphi",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "ef8dd69c-9389-4dd2-8889-16da9455db5c",
+      "key": "zygo-fontaine",
+      "name": "La Fontaine",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "f81d4bec-c31c-45f0-bb39-429b9d99c40c",
+      "key": "zygo-farandole",
+      "name": "La Farandole",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "dc08a07b-33b8-4928-98f3-3db2e708d093",
+      "key": "zygo-lac-food",
+      "name": "Le Lac",
+      "category": "Restaurant",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "6831984f-b5b4-4be0-a90c-b8aba3bc1356",
+      "key": "zygo-petit-amphi",
+      "name": "Le Petit Amphithéâtre",
+      "category": "Show",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "d0dcecef-08a5-4ddf-9e80-c286bcbfee2c",
+      "key": "zygo-grand-amphi",
+      "name": "Le Grand Amphithéâtre",
+      "category": "Show",
+      "reason": "2016photographs prove surviving concrete terraces, but checked archive and publicsite references do not establish a precise reliable coordinate for this amphitheatre. No estimate from oblique photographs."
+    },
+    {
+      "id": "7fb5f729-5397-4904-ae86-8bbcb708fc75",
+      "key": "zygo-broadway",
+      "name": "Broadway Show",
+      "category": "Show",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "2b4dbff5-9125-4da5-9309-9c1e695516cf",
+      "key": "zygo-funiculaire",
+      "name": "Le Funiculaire",
+      "category": "Transport",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "94629617-04df-4ed7-b932-72fd6fcacb42",
+      "key": "zygo-boutiques-place",
+      "name": "Airport Boutique",
+      "category": "Shop",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "26b7eda8-4a3e-4e2a-85cd-3d048aafd240",
+      "key": "zygo-boutique-entree",
+      "name": "La Boutique de l’entrée",
+      "category": "Shop",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "33844fca-4515-479f-9581-13b163fddbfd",
+      "key": "zygo-entree",
+      "name": "L’Entrée et les billetteries",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "b155938c-16df-4224-9db2-469392c267cb",
+      "key": "zygo-information",
+      "name": "Le Centre de renseignements",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "b64b1fb8-affb-460f-8753-f15676f929d6",
+      "key": "zygo-infirmerie",
+      "name": "L’Infirmerie",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "5891259b-316d-4e6b-9089-62e100261d01",
+      "key": "zygo-garderie",
+      "name": "La Halte-garderie",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "d609a663-df3b-4c60-8335-169e47bbb562",
+      "key": "zygo-parking",
+      "name": "Le Parking",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "c4332c0d-b728-4691-8a19-44e87c04e89a",
+      "key": "zygo-wc-entree",
+      "name": "Les Sanitaires de l’entrée",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "5284158a-dbf5-49d8-ba50-609856cbc0f8",
+      "key": "zygo-wc-nautique",
+      "name": "Les Sanitaires de l’accès nautique",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "6f2a7791-b848-4ceb-be33-58be080ddf8e",
+      "key": "zygo-wc-infirmerie",
+      "name": "Les Sanitaires près de l’infirmerie",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "0a85c01f-6de8-4189-9639-1b874c076e73",
+      "key": "zygo-wc-piscine-enfants",
+      "name": "Les Sanitaires de la piscine des enfants",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "4b5b8cf7-8dcd-4678-b26e-aec45f7a4625",
+      "key": "zygo-wc-riviere",
+      "name": "Les Sanitaires du fleuve rapide",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "a3c42c96-76d0-40f8-aaa5-d6fd3ae44b56",
+      "key": "zygo-wc-slides",
+      "name": "Les Sanitaires des toboggans rapides",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "7c93f74e-b86e-4d82-802e-b5dd532f9fef",
+      "key": "zygo-wc-jeux-enfants",
+      "name": "Les Sanitaires des jeux pour enfants",
+      "category": "Service",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "617dc52c-ccd6-4e44-913c-3a6e11618a8c",
+      "key": "zygo-high-diving",
+      "name": "The Great American High Diving Show",
+      "category": "Show",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    },
+    {
+      "id": "69749b9a-71d2-4ce0-a96f-a0f2d7d68245",
+      "key": "zygo-boutique-pinces",
+      "name": "La Boutique aux pinces à linge",
+      "category": "Shop",
+      "reason": "Former installation on redeveloped closed site. Official1987/1991illustratedmaps and1987–1991photos give relative layout, not a sufficiently precise georeferenced point. No park-centre coordinate copied to this item."
+    }
+  ],
+  "geolocationSourcesChecked": [
+    "http://zygo.altervista.org/depliant.php",
+    "http://zygo.altervista.org/depliant88.php",
+    "http://zygo.altervista.org/deplizp.php",
+    "http://zygo.altervista.org/storia_87.php",
+    "http://zygo.altervista.org/storia_88_1.php",
+    "http://zygo.altervista.org/storia_88_2.php",
+    "http://zygo.altervista.org/storia_88_3.php",
+    "http://zygo.altervista.org/storia_88_4.php",
+    "http://zygo.altervista.org/storia_91.php",
+    "http://zygo.altervista.org/storia_oggi.php",
+    "https://rcdb.com/5223.htm",
+    "https://parcsdattractions.blogspot.com/2012/09/parc-zygofolis.html",
+    "http://zygo.altervista.org/anfiteatri.php",
+    "https://www.waymarking.com/waymarks/wm11YJT_Zygofolis_Nice_France",
+    "https://www.paca.developpement-durable.gouv.fr/IMG/pdf/f09324p0085_piece_complementaire_1_gti_immobilier_complement_cas_par_cas_hub_c.pdf"
+  ],
+  "geolocationFinding": "Only park-level coordinates and relative historical plans; Waymarkingpoint denotes currentsitevisitnotattraction, officialPALreportaerialscoverasubparcelnotallformerlocations. NoGPSinvented.",
+  "annualMapSearch": "1987officialItalianmap and1991officialFrenchmap imported asoriginals. 1988brochurefoundbutnoannualinternalmap;1989parkclosed;1990ticketandarchiveviewsfoundbutnoofficialmap. No inventedyears/communitysubstitute.",
+  "referenceGaps": "Ride manufacturers beyond five confirmedrideattachments remainunproven, includingReverchonoriginalbuildvsdocumentedlaterreuse andSavagecarouselclaim. Shortsharedbiographyreviewkeptseparately.",
+  "historyCoverage": {
+    "parkFacts": 8,
+    "itemFacts": 11,
+    "itemsWithSpecificFacts": 6,
+    "otherItems": [
+      {
+        "id": "f70b8452-5802-4bc5-8e92-d0b468c6f333",
+        "name": "Crazy River",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "99240dfe-986e-4898-adc9-f2fbf63315ab",
+        "name": "Speed Slides",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "40c9bb2b-9c53-4e58-9ecd-faee74174428",
+        "name": "Anacondas",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "51246763-ca8d-45ca-ac15-990dedb43f5b",
+        "name": "Piscine des enfants",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "f4786f98-0627-4da6-b7e3-04ffe68b04b1",
+        "name": "Piscine à vagues",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "32125849-cdd1-43f7-a023-1a5650ba65d7",
+        "name": "Piscine des adultes",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "c4c990d1-0b44-4891-b169-31e15e68e036",
+        "name": "Le Nil",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "f8732b10-0137-4533-ab31-af2eddbed341",
+        "name": "Offshore Rallye",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "68b15a64-3f41-421b-acad-4d9820b18484",
+        "name": "Cinéma 180°",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "cbcd56ff-661f-43db-8bfd-e24d1c190fff",
+        "name": "Village des enfants",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "19ebfb06-ebf6-4b38-a8a9-7eb79c6eb266",
+        "name": "Zone des enfants",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "b18f768e-234b-4129-a64e-d705e9c74302",
+        "name": "Le Carrousel",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "a954c22f-d3d5-4674-a89f-4b6b503e8c9d",
+        "name": "Les Autos-tamponneuses",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "46e7b041-6d93-41b7-be11-3a0d37befe5e",
+        "name": "Le Labyrinthe aquatique",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "8b559533-6ddb-4390-8c63-8f8476436c3b",
+        "name": "Les Orgues aquatiques",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "0d111dae-1217-437b-b5a7-842f656d47c4",
+        "name": "Le Tir à la cible",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "f92305d7-0ecf-43cc-8919-811a80fd4376",
+        "name": "Les Pédalos",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "bb9977c0-f46c-4d73-9fc9-da2ea337e7d6",
+        "name": "Les Toboggans hélicoïdaux",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "83732beb-afb4-4d9a-9a4e-36458c87abda",
+        "name": "La Piscine",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "b2e206dc-0cdb-4d1f-83ee-f96e3245ddc0",
+        "name": "Le Nautilus",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "a65f27d9-46f3-4e68-9b24-5e22fa916e08",
+        "name": "La Farigoule",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "a6afd3ff-f773-4568-84a6-896c753a134a",
+        "name": "L’Aquarium",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "094b647b-803d-4282-ab04-f537ce58fd81",
+        "name": "P’tit Gourmand",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "cd564f00-f3d9-41be-858a-893f97f7ed1f",
+        "name": "La Brochette",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "4ebe992f-3489-4756-915d-2182b2e09d89",
+        "name": "L’Amphi",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "ef8dd69c-9389-4dd2-8889-16da9455db5c",
+        "name": "La Fontaine",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "f81d4bec-c31c-45f0-bb39-429b9d99c40c",
+        "name": "La Farandole",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "dc08a07b-33b8-4928-98f3-3db2e708d093",
+        "name": "Le Lac",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "6831984f-b5b4-4be0-a90c-b8aba3bc1356",
+        "name": "Le Petit Amphithéâtre",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "d0dcecef-08a5-4ddf-9e80-c286bcbfee2c",
+        "name": "Le Grand Amphithéâtre",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "7fb5f729-5397-4904-ae86-8bbcb708fc75",
+        "name": "Broadway Show",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "2b4dbff5-9125-4da5-9309-9c1e695516cf",
+        "name": "Le Funiculaire",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "94629617-04df-4ed7-b932-72fd6fcacb42",
+        "name": "Airport Boutique",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "26b7eda8-4a3e-4e2a-85cd-3d048aafd240",
+        "name": "La Boutique de l’entrée",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "33844fca-4515-479f-9581-13b163fddbfd",
+        "name": "L’Entrée et les billetteries",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "b155938c-16df-4224-9db2-469392c267cb",
+        "name": "Le Centre de renseignements",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "b64b1fb8-affb-460f-8753-f15676f929d6",
+        "name": "L’Infirmerie",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "5891259b-316d-4e6b-9089-62e100261d01",
+        "name": "La Halte-garderie",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "d609a663-df3b-4c60-8335-169e47bbb562",
+        "name": "Le Parking",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "c4332c0d-b728-4691-8a19-44e87c04e89a",
+        "name": "Les Sanitaires de l’entrée",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "5284158a-dbf5-49d8-ba50-609856cbc0f8",
+        "name": "Les Sanitaires de l’accès nautique",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "6f2a7791-b848-4ceb-be33-58be080ddf8e",
+        "name": "Les Sanitaires près de l’infirmerie",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "0a85c01f-6de8-4189-9639-1b874c076e73",
+        "name": "Les Sanitaires de la piscine des enfants",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "4b5b8cf7-8dcd-4678-b26e-aec45f7a4625",
+        "name": "Les Sanitaires du fleuve rapide",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "a3c42c96-76d0-40f8-aaa5-d6fd3ae44b56",
+        "name": "Les Sanitaires des toboggans rapides",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "7c93f74e-b86e-4d82-802e-b5dd532f9fef",
+        "name": "Les Sanitaires des jeux pour enfants",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "617dc52c-ccd6-4e44-913c-3a6e11618a8c",
+        "name": "The Great American High Diving Show",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      },
+      {
+        "id": "69749b9a-71d2-4ce0-a96f-a0f2d7d68245",
+        "name": "La Boutique aux pinces à linge",
+        "reason": "No separately datable durable item event established beyond generalparkseasons, mapappearance andoperatingphotographs. No automatic duplicated opening/closure invented from inventory."
+      }
+    ]
+  },
+  "relocationConflicts": "See sources/reference-and-relocation-qualification.json. Bounty1992/1993, Swingodestination, carouselFamilyParkyear unresolved; confirmed transfers narrated without inventing date.",
+  "closedParkPracticalFields": {
+    "openingHours": "Not applicable: definitivelyclosed1991; no current opening promise.",
+    "pricing": "Not applicable: definitivelyclosed1991; originalbrochureprices remain historicalsourceonly.",
+    "website": "No current official operatingparkwebsite; archivalfanwebsite is citedasarchive, notpresentedofficial."
+  }
+}

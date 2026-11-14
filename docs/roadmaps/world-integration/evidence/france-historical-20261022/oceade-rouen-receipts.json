@@ -1,0 +1,180 @@
+{
+  "entryId": "FR-candidate-d4d165522b958e",
+  "parkId": "2a1f3436-df7a-4c19-8cb4-70300c6677a4",
+  "name": "Océade Rouen",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-acc1dd85-768b-490b-ab17-d7f5edf80d76",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:07:49.1729608Z",
+      "appliedAt": "2026-11-02T14:07:49.172Z",
+      "receiptFile": "01-core-exactpoint-apply.receipt.json",
+      "receiptSha256": "82c94896ceaf7eacada4bd307f7fef401f13ba77c1688fc378a52d3ab93c8569",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDate",
+        "closingDateText",
+        "openingDateText",
+        "operatorId",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Océade Rouen : création privée du parc historique et de SPAIL, identité vérifiée par huit recherches, dates rapprochées des sources municipales et contemporaines ; intégration partielle."
+    },
+    {
+      "eventId": "apply-5b983f85-f4e5-44cf-b38a-e8ab6b595d38",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:12:33.8759712Z",
+      "appliedAt": "2026-11-02T14:12:33.875Z",
+      "receiptFile": "03-historical-inventory-apply.receipt.json",
+      "receiptSha256": "aa0b16530b0a72f6b564ccd7e122e09ab1ba55a4955d9eb4d612bffbab530d24",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type"
+      ],
+      "summary": "Océade Rouen : inventaire privé de cinq équipements historiques attestés, dont deux attractions aquatiques fermées et trois services ; sources et lacunes géographiques conservées."
+    },
+    {
+      "eventId": "apply-96e72e8e-30d1-4d71-a7d8-51fb8f77da64",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:14:58.4280128Z",
+      "appliedAt": "2026-11-02T14:14:58.428Z",
+      "receiptFile": "04-park-texts-apply.receipt.json",
+      "receiptSha256": "e1bf5cdb982edb5ec065f8d55315bf4b684dc94dca194a8c2179c9a7925378a5",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Océade Rouen : descriptions éditoriales du parc dans les huit langues, fermeture et reconversion distinguées, corpus relu ; intégration encore partielle."
+    },
+    {
+      "eventId": "import-photo-23b5e44675f14875a0760cf4634c895d-2026-11-02T141531.110Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T14:15:31.11Z",
+      "appliedAt": "2026-11-02T14:15:31.110Z",
+      "receiptFile": "05-timber-hall-import-receipt.json",
+      "receiptSha256": "fbb5e4ae56d16bc7dcb27eb165260f4665972175c1446bb9103a72bb0e3e9bc3",
+      "imageId": "23b5e44675f14875a0760cf4634c895d",
+      "ownerId": "2a1f3436-df7a-4c19-8cb4-70300c6677a4",
+      "createdAt": "2026-11-02T14:15:27.053Z",
+      "sourceUrl": "https://www.metropole-rouen-normandie.fr/sites/default/files/publication/2019/Magazine17.pdf",
+      "summary": "Import privé du média historique 05-timber-hall, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-01c64bce5acc46538c6cb41068fec73e-2026-11-02T141544.838Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T14:15:44.838Z",
+      "appliedAt": "2026-11-02T14:15:44.838Z",
+      "receiptFile": "05-exterior-interior-import-receipt.json",
+      "receiptSha256": "a9031d1ae51508ff9477476e8654e7236c98412fb70e16c365707fc83dab2383",
+      "imageId": "01c64bce5acc46538c6cb41068fec73e",
+      "ownerId": "2a1f3436-df7a-4c19-8cb4-70300c6677a4",
+      "createdAt": "2026-11-02T14:15:41.149Z",
+      "sourceUrl": "https://www.metropole-rouen-normandie.fr/file-download/download/public/631239",
+      "summary": "Import privé du média historique 05-exterior-interior, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-c9fed2702d1c4225b166c27b9f13c378-2026-11-02T141558.759Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T14:15:58.759Z",
+      "appliedAt": "2026-11-02T14:15:58.759Z",
+      "receiptFile": "05-island-aerial-import-receipt.json",
+      "receiptSha256": "878f8522c5589ebdc21aa20bc521c8abfddcc3e05630d03087443d7a8fe67726",
+      "imageId": "c9fed2702d1c4225b166c27b9f13c378",
+      "ownerId": "2a1f3436-df7a-4c19-8cb4-70300c6677a4",
+      "createdAt": "2026-11-02T14:15:55.281Z",
+      "sourceUrl": "https://www.metropole-rouen-normandie.fr/file-download/download/public/631239",
+      "summary": "Import privé du média historique 05-island-aerial, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-168ab073-9551-423c-8a65-0c3dd43a9d43",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:23:50.1994102Z",
+      "appliedAt": "2026-11-02T14:23:50.199Z",
+      "receiptFile": "08-history-apply.receipt.json",
+      "receiptSha256": "89b288142605030355cbd1c092f6349ce0376e6175bd6cf58bff375b37430638",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "month",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Océade Rouen : cinq événements sourcés et article développé en huit langues, photographies contextuelles du site fermé, chronologie publique et juridique distinguée ; audit final restant."
+    },
+    {
+      "eventId": "apply-97a6cd51-8520-453e-ae16-f0c161f546bf",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T14:27:39.9268129Z",
+      "appliedAt": "2026-11-02T14:27:39.926Z",
+      "receiptFile": "09-editorial-refinement-apply.receipt.json",
+      "receiptSha256": "b9e0809df4f6a3b0236cb36bc317adbf4c79092a4f412d3041d754600479bd9e",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Océade Rouen : trois passages allemands et portugais affinés après revue complète du corpus pour supprimer des répétitions, faits et sources inchangés ; intégration partielle."
+    }
+  ],
+  "publicationOrNoop": []
+}

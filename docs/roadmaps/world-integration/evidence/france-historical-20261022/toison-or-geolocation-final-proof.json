@@ -1,0 +1,167 @@
+{
+  "reviewedAtUtc": "2026-10-23T11:40:31.197943+00:00",
+  "previousProof": "03-geolocation-proof.json",
+  "qualified": [
+    {
+      "key": "toison-theatre-homere",
+      "latitude": 47.354545,
+      "longitude": 5.054757,
+      "pointMeaning": "Representative point of surviving curved amphitheatre seating footprint, not park centre or an invented entrance.",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/way/58112241",
+        "https://www.leprogres.fr/culture-loisirs/2020/12/03/parc-recreatif-de-la-toison-d-or-du-reve-au-naufrage",
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "proof": "Original operator map #8 identifies Théâtre d’Homère as amphitheatre at lake edge; historical inventory describes this Roman-style amphitheatre. 2020 press photograph and 2026 aerial show surviving curved lake-edge seating and stage. OSM way58112241 is the exact curved seating footprint (cadastre2010); stage is adjacent way58112242. Matched manually against photographs and lake/bridge geometry. Coordinates rounded to six decimals from seating footprint representative centre. No claim that show still operates."
+    },
+    {
+      "key": "toison-plongeurs-acapulco",
+      "latitude": 47.354545,
+      "longitude": 5.054757,
+      "pointMeaning": "Same fixed historical diving-show venue as Theatre d’Homere, not a second arena.",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/way/58112241",
+        "https://www.leprogres.fr/culture-loisirs/2020/12/03/parc-recreatif-de-la-toison-d-or-du-reve-au-naufrage",
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "proof": "France3retrospective explicitly identifies the surviving antique theatre as diving-show venue. Pool and stands adjacent on1989plan, corroborated2020photo/currentOSMgeometry. See03-theatre-show-interpretation-revision.json."
+    }
+  ],
+  "unlocated": [
+    {
+      "key": "110209b3-2e0e-4d56-bcbf-8b16ceacc614",
+      "id": "110209b3-2e0e-4d56-bcbf-8b16ceacc614",
+      "name": "Mini Grand Huit",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "57b0b50d-7e7e-4452-b916-65f47595db0b",
+      "id": "57b0b50d-7e7e-4452-b916-65f47595db0b",
+      "name": "Train de Mine",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-riviere-sauvage",
+      "id": "4e3d1691-1010-400c-ae7f-999ffaea8d2d",
+      "name": "Rivière Sauvage",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-cinema-3d",
+      "id": "8c1ff248-a7be-44e7-b38b-939508bb5fd4",
+      "name": "Cinéma 3 Dimensions",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-labyrinthe",
+      "id": "61a776e5-2e2f-405d-9dd0-a81ceadf472b",
+      "name": "Labyrinthe",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-chateau-enfants",
+      "id": "ba78e0a1-aadb-4eb0-a76c-5ac696238dad",
+      "name": "Château des Enfants",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-tele-rally",
+      "id": "f0070bfc-ad23-4995-a2b0-28dfea387ec9",
+      "name": "Télé Rally",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-petit-train",
+      "id": "885385dc-c7ba-4e62-b737-aa718ba2e223",
+      "name": "Petit Train",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-tunnel-illusion",
+      "id": "0eda5566-59c3-4437-bef0-b29e8a319725",
+      "name": "Tunnel d’illusion",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-circuit-tacots",
+      "id": "e221a6c1-86b3-48ba-9175-36adfeb1f0fb",
+      "name": "Circuit des Tacots",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-montgolfieres",
+      "id": "4d62f970-211e-4645-ac88-f9a359a2af2b",
+      "name": "Les Montgolfières",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-bateaux-radiocommandes",
+      "id": "2f2231b2-70e5-4bfc-8e69-9f6c6caeaa53",
+      "name": "Bateaux radiocommandés",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-manege-ancien",
+      "id": "202685c3-653b-4a13-84d1-e0747cdd63b8",
+      "name": "Manège ancien",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-jeux-arcade",
+      "id": "1cff2639-ce5c-49ca-b30a-1500584acacd",
+      "name": "Jeux d’arcade",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-quads",
+      "id": "a0aad00a-dcf2-4919-9a75-814d612826a3",
+      "name": "Circuit de quads",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-pedalos",
+      "id": "a20ea995-b172-45a1-b335-a7d01da5883a",
+      "name": "Pédalos",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-minigolf",
+      "id": "c3d36198-9cad-4e0c-b050-0c9d1ddc8e6f",
+      "name": "Mini-golf",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-tapis-jason",
+      "id": "9007c41b-a315-4876-95ea-d9cd8fe9005e",
+      "name": "Tapis de Jason",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-entree",
+      "id": "839ba236-e0b3-45c4-995e-56b6aa293f19",
+      "name": "Entrée du Parc de la Toison d’Or",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-creperie-galere",
+      "id": "a6083a6f-ee04-4faa-b88c-448336af3469",
+      "name": "Crêperie de la galère grecque",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-noix",
+      "id": "b1537290-6ff2-40c2-98df-e6ab34cb91e3",
+      "name": "Manège de noix",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    },
+    {
+      "key": "toison-bateaux-promenade",
+      "id": "83be1ade-a4b8-494a-8c74-84ec9701a359",
+      "name": "Manège de bateaux",
+      "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+    }
+  ],
+  "research": "OSM official map API returned current cadastre geometry. Overpass query returned406; no need to retry after official public map data obtained. Municipal tourism source locates whole park only, not individual former rides. No current garden playground matched automatically to Château des Enfants or Mini Grand Huit."
+}

@@ -1,0 +1,2331 @@
+{
+  "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+  "parkId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+  "name": "Koaland",
+  "conversation": "Conversation France",
+  "auditedAtUtc": "2026-11-02T23:47:09.902550+00:00",
+  "contentAuditPassed": true,
+  "finalAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "baseFreshExportAtUtc": "2026-11-02T23:18:14.1871222Z",
+  "acceptedApplies": [
+    {
+      "operationId": "3267822c-5929-4d64-9308-dc19d9b24fcc",
+      "appliedAtUtc": "2026-11-02T22:00:28.7646215Z"
+    },
+    {
+      "operationId": "bddcbd6c-d7c1-4d17-992d-7c8a64be656f",
+      "appliedAtUtc": "2026-11-02T22:06:21.4854161Z"
+    },
+    {
+      "operationId": "4fcd1ee3-b9c3-4f36-a0bd-806f485476ba",
+      "appliedAtUtc": "2026-11-02T22:08:25.9340718Z"
+    },
+    {
+      "operationId": "6dddd2d6-02ef-4122-8caa-28edfffcb61c",
+      "appliedAtUtc": "2026-11-02T22:11:35.4470813Z"
+    },
+    {
+      "operationId": "fa47a4db-7e67-430b-b39d-d8368763b6e5",
+      "appliedAtUtc": "2026-11-02T22:13:28.468561Z"
+    },
+    {
+      "operationId": "1e6b4111-26aa-4d26-a124-87845ae4305c",
+      "appliedAtUtc": "2026-11-02T22:14:49.755831Z"
+    },
+    {
+      "operationId": "fc706c2c-909c-4fcf-a24b-8038a092a518",
+      "appliedAtUtc": "2026-11-02T22:16:39.7520947Z"
+    },
+    {
+      "operationId": "297fc64b-6b0c-48ac-ba16-cea5057155a1",
+      "appliedAtUtc": "2026-11-02T22:28:18.1046782Z"
+    },
+    {
+      "operationId": "f4e9e747-b351-42c9-84d8-4e63b23d31e3",
+      "appliedAtUtc": "2026-11-02T22:30:44.4108674Z"
+    },
+    {
+      "operationId": "ff35c1ef-1289-4c7c-977e-92b9a12a45fc",
+      "appliedAtUtc": "2026-11-02T22:37:20.5015195Z"
+    },
+    {
+      "operationId": "d90698c9-93ad-4c27-a01c-e6e8d71af31a",
+      "appliedAtUtc": "2026-11-02T22:41:49.6430582Z"
+    },
+    {
+      "operationId": "e82b2360-e20d-48c6-ac7a-638afd9618d2",
+      "appliedAtUtc": "2026-11-02T22:47:11.5947613Z"
+    },
+    {
+      "operationId": "b3f7bad3-2a52-4e9e-aef7-3bfb01fe12b6",
+      "appliedAtUtc": "2026-11-02T22:52:54.1197591Z"
+    },
+    {
+      "operationId": "da2ed77d-1dcc-46bb-8f29-7d9145d2d934",
+      "appliedAtUtc": "2026-11-02T22:54:25.2439005Z"
+    },
+    {
+      "operationId": "02a53bb9-8171-44c6-ac5f-77a6f725dc5b",
+      "appliedAtUtc": "2026-11-02T23:00:52.8394688Z"
+    },
+    {
+      "operationId": "ca570f92-50f1-43d9-b9b3-893a83680e7a",
+      "appliedAtUtc": "2026-11-02T23:14:26.2344116Z"
+    },
+    {
+      "operationId": "d32434de-9d6c-480b-bcd4-ba6116a3c182",
+      "appliedAtUtc": "2026-11-02T23:16:29.8806607Z"
+    },
+    {
+      "operationId": "6a35d4e8-a5b5-4a3e-936d-a8b080585edc",
+      "appliedAtUtc": "2026-11-02T23:17:46.7745121Z"
+    },
+    {
+      "operationId": "7457f53e-72e2-4d7d-b8e9-bfde1748d7fd",
+      "appliedAtUtc": "2026-11-02T23:23:18.0369036Z"
+    },
+    {
+      "operationId": "ee3e950a-7d4a-4f53-b5b1-2a8e4406c183",
+      "appliedAtUtc": "2026-11-02T23:25:23.806578Z"
+    },
+    {
+      "operationId": "f1ca5081-3360-4a28-af0e-15d6060cd4e3",
+      "appliedAtUtc": "2026-11-02T23:26:31.5846694Z"
+    },
+    {
+      "operationId": "a4cd7626-fd5e-4d6f-a06d-5e498b63e597",
+      "appliedAtUtc": "2026-11-02T23:30:10.9915046Z"
+    },
+    {
+      "operationId": "3b6d66d5-88e4-4122-af71-997461136c5c",
+      "appliedAtUtc": "2026-11-02T23:32:16.6062617Z"
+    },
+    {
+      "operationId": "e8d28c9b-a933-439d-bdb2-4b565f6e2937",
+      "appliedAtUtc": "2026-11-02T23:37:32.2666875Z"
+    },
+    {
+      "operationId": "759ff6d1-3874-44db-9d6d-2bf7a8240592",
+      "appliedAtUtc": "2026-11-02T23:41:43.2161598Z"
+    }
+  ],
+  "acceptedImports": [
+    {
+      "receipt": "05-aire-filets-import-receipt.json",
+      "imageId": "a80f55ad16b6411b96fd953dbe632820",
+      "importedAtUtc": "2026-11-02T22:16:57.325Z"
+    },
+    {
+      "receipt": "05-burger-comptoir-import-receipt.json",
+      "imageId": "cd9818da63054e87bfcb397a505acb3a",
+      "importedAtUtc": "2026-11-02T22:19:01.272Z"
+    },
+    {
+      "receipt": "05-carrousel-import-receipt.json",
+      "imageId": "3ddbc5e3d1e04ed2ac7e1c00425725c8",
+      "importedAtUtc": "2026-11-02T22:17:11.702Z"
+    },
+    {
+      "receipt": "05-circuit-import-receipt.json",
+      "imageId": "1e643df7dc1c490bba48eeb10b7e421e",
+      "importedAtUtc": "2026-11-02T22:18:18.192Z"
+    },
+    {
+      "receipt": "05-padel-import-receipt.json",
+      "imageId": "165f9d2bf14b4aaa9b309c5218524cf2",
+      "importedAtUtc": "2026-11-02T22:18:46.392Z"
+    },
+    {
+      "receipt": "05-paintball-import-receipt.json",
+      "imageId": "395db4b29ad4436985994ea1abccf2ee",
+      "importedAtUtc": "2026-11-02T22:18:32.342Z"
+    },
+    {
+      "receipt": "05-pouss-pouss-import-receipt.json",
+      "imageId": "3da361899ce64cedaf434fe8f97dc564",
+      "importedAtUtc": "2026-11-02T22:17:28.271Z"
+    },
+    {
+      "receipt": "05-trampolines-import-receipt.json",
+      "imageId": "e2bb839084ef4a3db193e887e3bc8c75",
+      "importedAtUtc": "2026-11-02T22:17:42.979Z"
+    },
+    {
+      "receipt": "05-aire-toboggans-import-receipt.json",
+      "imageId": "bff950f95999453390e96802d39c058c",
+      "importedAtUtc": "2026-11-02T22:24:14.189Z"
+    },
+    {
+      "receipt": "05-animations-import-receipt.json",
+      "imageId": "ec090688c2ac48ba85c6623b84c20fde",
+      "importedAtUtc": "2026-11-02T22:23:45.299Z"
+    },
+    {
+      "receipt": "05-anniversaires-import-receipt.json",
+      "imageId": "e7c1ad94990e4d7bad9bc04987f97289",
+      "importedAtUtc": "2026-11-02T22:23:59.549Z"
+    },
+    {
+      "receipt": "05-carrousel-cheval-import-receipt.json",
+      "imageId": "aabcee5e04054a36a6d5b1a0f64cad2f",
+      "importedAtUtc": "2026-11-02T22:24:28.24Z"
+    },
+    {
+      "receipt": "05-chenille-2011-ensemble-import-receipt.json",
+      "imageId": "908084fca0154b6fa90821aaff3c3a00",
+      "importedAtUtc": "2026-11-02T22:25:56.707Z"
+    },
+    {
+      "receipt": "05-chenille-2011-jardin-import-receipt.json",
+      "imageId": "2147f27ae3b446aa9e64d6b0eb99dcdd",
+      "importedAtUtc": "2026-11-02T22:25:42.101Z"
+    },
+    {
+      "receipt": "05-chenille-2011-station-import-receipt.json",
+      "imageId": "e214417588bc410aad2a6258e01592cc",
+      "importedAtUtc": "2026-11-02T22:25:27.331Z"
+    },
+    {
+      "receipt": "05-logo-complet-import-receipt.json",
+      "imageId": "67f43f3440204cd68ed4cf89ac5fd3e9",
+      "importedAtUtc": "2026-11-02T22:26:10.75Z"
+    },
+    {
+      "receipt": "05-parental-import-receipt.json",
+      "imageId": "2de9e70147c64786b8ee16b0fc02be04",
+      "importedAtUtc": "2026-11-02T22:23:30.69Z"
+    },
+    {
+      "receipt": "05-peche-import-receipt.json",
+      "imageId": "5a1219eb1fa24dc1b8147a633c7eb4f9",
+      "importedAtUtc": "2026-11-02T22:23:14.524Z"
+    },
+    {
+      "receipt": "05-fermeture-chantier-import-receipt.json",
+      "imageId": "68a5514ac29f4a158b632e0da3f99600",
+      "importedAtUtc": "2026-11-02T22:34:00.179Z"
+    },
+    {
+      "receipt": "05-reouverture-fevrier-import-receipt.json",
+      "imageId": "6647d031075f46328b8a7f06f12cd921",
+      "importedAtUtc": "2026-11-02T22:34:14.622Z"
+    },
+    {
+      "receipt": "05-equipe-juillet-import-receipt.json",
+      "imageId": "d6c4e8554c9d4a44b33547c0fa68c68b",
+      "importedAtUtc": "2026-11-02T22:34:28.926Z"
+    },
+    {
+      "receipt": "05-padel-filet-import-receipt.json",
+      "imageId": "441efc0682e64df39ec4d560b3fce13e",
+      "importedAtUtc": "2026-11-02T22:49:33.391Z"
+    },
+    {
+      "receipt": "05-padel-materiel-import-receipt.json",
+      "imageId": "85fa440dfb254dca9e3a31c5a1aaddcf",
+      "importedAtUtc": "2026-11-02T22:49:48.35Z"
+    },
+    {
+      "receipt": "05-paintball-equipe-import-receipt.json",
+      "imageId": "e195a2e713eb40ad8497ea631d2bce4e",
+      "importedAtUtc": "2026-11-02T22:50:07.924Z"
+    },
+    {
+      "receipt": "05-paintball-terrain-import-receipt.json",
+      "imageId": "d35189f79ad84fcfb3b50370a7433fef",
+      "importedAtUtc": "2026-11-02T22:50:22.839Z"
+    },
+    {
+      "receipt": "05-carrousel-moto-import-receipt.json",
+      "imageId": "519fd11727654dabaa5bb52ce1ebb12d",
+      "importedAtUtc": "2026-11-02T22:50:38.625Z"
+    },
+    {
+      "receipt": "05-autos-2008-piste-import-receipt.json",
+      "imageId": "7ad2508bf6574d23bbf5fa2f229a803c",
+      "importedAtUtc": "2026-11-02T23:03:08.194Z"
+    },
+    {
+      "receipt": "05-autos-2008-voitures-import-receipt.json",
+      "imageId": "b672e3b4d6c94217a6f75ea6ee4c6a2f",
+      "importedAtUtc": "2026-11-02T23:03:22.574Z"
+    },
+    {
+      "receipt": "05-minigolf-2008-decor-import-receipt.json",
+      "imageId": "56ca17363013456384a37cc8dd99543d",
+      "importedAtUtc": "2026-11-02T23:02:39.057Z"
+    },
+    {
+      "receipt": "05-minigolf-2008-pistes-import-receipt.json",
+      "imageId": "4d4fb69a101641bebc1827fab4168210",
+      "importedAtUtc": "2026-11-02T23:02:24.91Z"
+    },
+    {
+      "receipt": "05-minigolf-2008-tonneau-import-receipt.json",
+      "imageId": "34b1f7ae5cd14d058b7841021d9cced5",
+      "importedAtUtc": "2026-11-02T23:02:52.963Z"
+    },
+    {
+      "receipt": "05-parc-2008-allee-import-receipt.json",
+      "imageId": "9e841f94b5744f49abf903c0d96e8eae",
+      "importedAtUtc": "2026-11-02T23:03:36.815Z"
+    },
+    {
+      "receipt": "05-parc-2008-jardin-import-receipt.json",
+      "imageId": "67320df937d44cd88aa6e9d9ae397c9a",
+      "importedAtUtc": "2026-11-02T23:03:50.824Z"
+    },
+    {
+      "receipt": "05-parc-2008-terrasse-import-receipt.json",
+      "imageId": "b991b2f852f049458efa291464d18ec4",
+      "importedAtUtc": "2026-11-02T23:04:05.562Z"
+    },
+    {
+      "receipt": "05-pouss-pouss-2008-import-receipt.json",
+      "imageId": "24c21ff4df594447a50d5e900f97baef",
+      "importedAtUtc": "2026-11-02T23:04:19.684Z"
+    },
+    {
+      "receipt": "05-big-truck-2008-ensemble-import-receipt.json",
+      "imageId": "93e96133503e417e9b4cd77be970260b",
+      "importedAtUtc": "2026-11-02T23:06:39.466Z"
+    },
+    {
+      "receipt": "05-big-truck-2008-pompiers-import-receipt.json",
+      "imageId": "ff2764d307434feb92e250577f09499c",
+      "importedAtUtc": "2026-11-02T23:06:54.492Z"
+    },
+    {
+      "receipt": "05-carrousel-ancien-2008-import-receipt.json",
+      "imageId": "391acff43ea34079ba744f50a994ae9e",
+      "importedAtUtc": "2026-11-02T23:07:51.967Z"
+    },
+    {
+      "receipt": "05-jungle-2008-enseigne-import-receipt.json",
+      "imageId": "f8c48db6d9e34d39a26dba6d1294593d",
+      "importedAtUtc": "2026-11-02T23:05:55.877Z"
+    },
+    {
+      "receipt": "05-jungle-2008-jeux-import-receipt.json",
+      "imageId": "ab7261660efc4a63b12dabde24afbf35",
+      "importedAtUtc": "2026-11-02T23:05:41.922Z"
+    },
+    {
+      "receipt": "05-jungle-2008-portique-import-receipt.json",
+      "imageId": "22a2a6f665134a84ae32f539a5d27bcb",
+      "importedAtUtc": "2026-11-02T23:05:28.131Z"
+    },
+    {
+      "receipt": "05-karting-2008-import-receipt.json",
+      "imageId": "ce376fc020ae4bd6abbc80dbd7944883",
+      "importedAtUtc": "2026-11-02T23:06:10.727Z"
+    },
+    {
+      "receipt": "05-oiseaux-2008-import-receipt.json",
+      "imageId": "865080dc77cd4d6db95ac0ba3f9f121b",
+      "importedAtUtc": "2026-11-02T23:07:23.461Z"
+    },
+    {
+      "receipt": "05-petit-train-2008-import-receipt.json",
+      "imageId": "2f8fd3c84c7c49cebe817163a6ddec74",
+      "importedAtUtc": "2026-11-02T23:06:25.052Z"
+    },
+    {
+      "receipt": "05-phare-2008-import-receipt.json",
+      "imageId": "aad41ab7958d4160b6fafb7df36a067c",
+      "importedAtUtc": "2026-11-02T23:07:09.176Z"
+    },
+    {
+      "receipt": "05-pieuvre-2008-ensemble-import-receipt.json",
+      "imageId": "0186e612652f4bab8ecd9f61c26629b1",
+      "importedAtUtc": "2026-11-02T23:04:46.432Z"
+    },
+    {
+      "receipt": "05-pieuvre-2008-mouvement-import-receipt.json",
+      "imageId": "aa4a3fc6d5ce42d1a402591627f97189",
+      "importedAtUtc": "2026-11-02T23:05:14.141Z"
+    },
+    {
+      "receipt": "05-pieuvre-2008-nacelles-import-receipt.json",
+      "imageId": "42c6085b7b494eccbc7f527369b33cf3",
+      "importedAtUtc": "2026-11-02T23:05:00.26Z"
+    },
+    {
+      "receipt": "05-voitures-tournantes-2008-import-receipt.json",
+      "imageId": "75186447a5ad4fd1bb7400365065fd37",
+      "importedAtUtc": "2026-11-02T23:07:37.91Z"
+    },
+    {
+      "receipt": "05-cinema-promotion-import-receipt.json",
+      "imageId": "b4208201ca1e4109911ec7522f81397a",
+      "importedAtUtc": "2026-11-02T23:16:45.2Z"
+    },
+    {
+      "receipt": "05-tyrolienne-juillet-import-receipt.json",
+      "imageId": "5b39a8429a1d434eaac688a2132de972",
+      "importedAtUtc": "2026-11-02T23:15:46.655Z"
+    },
+    {
+      "receipt": "05-tyrolienne-officielle-import-receipt.json",
+      "imageId": "c116ad3fa8364e92bddd5a94b598f244",
+      "importedAtUtc": "2026-11-02T23:15:32.484Z"
+    }
+  ],
+  "coverage": {
+    "freshAtUtc": "2026-11-02T23:18:14.1871222Z",
+    "items": 36,
+    "zones": 0,
+    "attractions": 26,
+    "attractionStatuses": {
+      "Operating": 10,
+      "Removed": 15,
+      "Planned": 1
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 26,
+    "attractionsWithImage": 22,
+    "attractionImageGaps": [
+      {
+        "id": "542b3d19-e99e-4ae1-9709-87573e14b9cb",
+        "name": "Aire gonflable"
+      },
+      {
+        "id": "5a0eedbe-bead-4818-8cf8-5b89b9240e3c",
+        "name": "Canoë"
+      },
+      {
+        "id": "4228a874-15fb-4cae-9163-701b9c7c4e7c",
+        "name": "Jeux à pièces"
+      },
+      {
+        "id": "0350acdb-fd21-4d94-98b0-67270cfbebb7",
+        "name": "Music Lab"
+      }
+    ],
+    "ownedImages": 74,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "b13dde30-01d3-4c16-b837-6f6ebe8ec54d",
+        "name": "Accueil",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "d5b2b6fc-c851-4980-b09e-5b9e90f63889",
+        "name": "Aire de jeux",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "542b3d19-e99e-4ae1-9709-87573e14b9cb",
+        "name": "Aire gonflable",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "2377f63c-36aa-4e71-a6c2-433f4b27fe71",
+        "name": "Animations et spectacles",
+        "category": "Show",
+        "images": 2
+      },
+      {
+        "id": "79528ae2-d35b-467e-8cb7-3e7ff68b00d2",
+        "name": "Autos tamponneuses",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "9d1ba9f1-3f37-40c7-b538-0313f1d9f5b2",
+        "name": "Bassin naturel",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "01b3cbf2-d27f-4414-aa77-9160abb4613c",
+        "name": "Big Truck",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "5a0eedbe-bead-4818-8cf8-5b89b9240e3c",
+        "name": "Canoë",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "0ffd7da4-61cf-46be-8d93-22e291babd29",
+        "name": "Carrousel",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "228e7ec1-f461-4fdb-8287-44cfbce8839e",
+        "name": "Carrousel ancien",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "48ba0fbf-4c50-4d39-8737-21f0e2cca061",
+        "name": "Chenille",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "093c3294-39ae-4485-b789-de32befbb893",
+        "name": "Cinéma 5D",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "88695fba-c161-495c-86a4-dc8367b42939",
+        "name": "Circuit motos et voitures",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "b153a12b-d736-467d-af0e-4b2c4067ad2a",
+        "name": "Courts de padel",
+        "category": "Other",
+        "images": 4
+      },
+      {
+        "id": "9996cd77-0b02-4ed4-9965-60746b3d1cc1",
+        "name": "Espace anniversaires",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "01d5e892-aab7-4e00-82fc-b60927d20467",
+        "name": "Espace Fitness",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "4228a874-15fb-4cae-9163-701b9c7c4e7c",
+        "name": "Jeux à pièces",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f49eed69-b092-4d84-ad46-d03e41cf63fd",
+        "name": "Jungle",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "0bc41e49-e193-4203-8fae-49471efff0d5",
+        "name": "Karting",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e42c95e5-d38d-415a-8fce-9476c1c17a0f",
+        "name": "Koala Burger",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "edadd1dc-ac80-48ef-880f-a9f960bb272e",
+        "name": "La Pieuvre",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "29fd4986-93bb-4fec-935b-a10bbd1232f5",
+        "name": "Manège de voitures tournantes",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a3d7c2b8-ed46-4888-95ce-63918b643e9d",
+        "name": "Manège des oiseaux",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "2b26de54-e413-4ddd-a2bd-fecba6d9ad0c",
+        "name": "Manège du phare",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b5bde9dc-e927-42c1-a050-2f872a30c541",
+        "name": "Manèges à propulsion parentale",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d8a92cc5-0636-4bf9-9c09-7dcf8b54fafa",
+        "name": "Mini-golf",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "0350acdb-fd21-4d94-98b0-67270cfbebb7",
+        "name": "Music Lab",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "50fc6caa-8ee3-4b06-abd1-7edea61a3ce6",
+        "name": "Paintball",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "cceefff6-56a8-4a37-ad4b-7bf0524b1f59",
+        "name": "Paradis des lapins",
+        "category": "Animal",
+        "images": 1
+      },
+      {
+        "id": "af2606f5-1f39-49d6-abb2-5f24dcde71ef",
+        "name": "Petit train",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "34cc7f48-e20d-414d-8fe6-ebb8536becec",
+        "name": "Pouss Pouss",
+        "category": "Attraction",
+        "images": 5
+      },
+      {
+        "id": "814ce863-4bea-4bac-9cea-f7cf4bf5c3eb",
+        "name": "Pêche aux canards",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "3a7b06f8-833e-43df-83ba-66ab60fed783",
+        "name": "Tennis ballon",
+        "category": "Other",
+        "images": 1
+      },
+      {
+        "id": "80969d87-585f-46c5-bd2d-7c450a5ef1cb",
+        "name": "Toilettes",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "c7c66e97-c1da-41b2-8736-2a002e1c63e9",
+        "name": "Trampolines",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "5f9a35f4-679d-40eb-a990-852a972b8393",
+        "name": "Tyrolienne",
+        "category": "Attraction",
+        "images": 2
+      }
+    ],
+    "itemsWithCoordinates": 1,
+    "geolocationGaps": [
+      {
+        "id": "b13dde30-01d3-4c16-b837-6f6ebe8ec54d",
+        "name": "Accueil",
+        "category": "Service",
+        "status": "Operating"
+      },
+      {
+        "id": "d5b2b6fc-c851-4980-b09e-5b9e90f63889",
+        "name": "Aire de jeux",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "542b3d19-e99e-4ae1-9709-87573e14b9cb",
+        "name": "Aire gonflable",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "2377f63c-36aa-4e71-a6c2-433f4b27fe71",
+        "name": "Animations et spectacles",
+        "category": "Show",
+        "status": "Operating"
+      },
+      {
+        "id": "79528ae2-d35b-467e-8cb7-3e7ff68b00d2",
+        "name": "Autos tamponneuses",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "9d1ba9f1-3f37-40c7-b538-0313f1d9f5b2",
+        "name": "Bassin naturel",
+        "category": "Other",
+        "status": "Operating"
+      },
+      {
+        "id": "01b3cbf2-d27f-4414-aa77-9160abb4613c",
+        "name": "Big Truck",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "5a0eedbe-bead-4818-8cf8-5b89b9240e3c",
+        "name": "Canoë",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0ffd7da4-61cf-46be-8d93-22e291babd29",
+        "name": "Carrousel",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "228e7ec1-f461-4fdb-8287-44cfbce8839e",
+        "name": "Carrousel ancien",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "093c3294-39ae-4485-b789-de32befbb893",
+        "name": "Cinéma 5D",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "88695fba-c161-495c-86a4-dc8367b42939",
+        "name": "Circuit motos et voitures",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "b153a12b-d736-467d-af0e-4b2c4067ad2a",
+        "name": "Courts de padel",
+        "category": "Other",
+        "status": "Operating"
+      },
+      {
+        "id": "9996cd77-0b02-4ed4-9965-60746b3d1cc1",
+        "name": "Espace anniversaires",
+        "category": "Service",
+        "status": "Operating"
+      },
+      {
+        "id": "01d5e892-aab7-4e00-82fc-b60927d20467",
+        "name": "Espace Fitness",
+        "category": "Other",
+        "status": "Planned"
+      },
+      {
+        "id": "4228a874-15fb-4cae-9163-701b9c7c4e7c",
+        "name": "Jeux à pièces",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "f49eed69-b092-4d84-ad46-d03e41cf63fd",
+        "name": "Jungle",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0bc41e49-e193-4203-8fae-49471efff0d5",
+        "name": "Karting",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e42c95e5-d38d-415a-8fce-9476c1c17a0f",
+        "name": "Koala Burger",
+        "category": "Restaurant",
+        "status": "Operating"
+      },
+      {
+        "id": "edadd1dc-ac80-48ef-880f-a9f960bb272e",
+        "name": "La Pieuvre",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "29fd4986-93bb-4fec-935b-a10bbd1232f5",
+        "name": "Manège de voitures tournantes",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a3d7c2b8-ed46-4888-95ce-63918b643e9d",
+        "name": "Manège des oiseaux",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "2b26de54-e413-4ddd-a2bd-fecba6d9ad0c",
+        "name": "Manège du phare",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b5bde9dc-e927-42c1-a050-2f872a30c541",
+        "name": "Manèges à propulsion parentale",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "d8a92cc5-0636-4bf9-9c09-7dcf8b54fafa",
+        "name": "Mini-golf",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0350acdb-fd21-4d94-98b0-67270cfbebb7",
+        "name": "Music Lab",
+        "category": "Attraction",
+        "status": "Planned"
+      },
+      {
+        "id": "50fc6caa-8ee3-4b06-abd1-7edea61a3ce6",
+        "name": "Paintball",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "cceefff6-56a8-4a37-ad4b-7bf0524b1f59",
+        "name": "Paradis des lapins",
+        "category": "Animal",
+        "status": "Operating"
+      },
+      {
+        "id": "af2606f5-1f39-49d6-abb2-5f24dcde71ef",
+        "name": "Petit train",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "34cc7f48-e20d-414d-8fe6-ebb8536becec",
+        "name": "Pouss Pouss",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "814ce863-4bea-4bac-9cea-f7cf4bf5c3eb",
+        "name": "Pêche aux canards",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "3a7b06f8-833e-43df-83ba-66ab60fed783",
+        "name": "Tennis ballon",
+        "category": "Other",
+        "status": "Operating"
+      },
+      {
+        "id": "80969d87-585f-46c5-bd2d-7c450a5ef1cb",
+        "name": "Toilettes",
+        "category": "Service",
+        "status": "Operating"
+      },
+      {
+        "id": "c7c66e97-c1da-41b2-8736-2a002e1c63e9",
+        "name": "Trampolines",
+        "category": "Attraction",
+        "status": "Operating"
+      },
+      {
+        "id": "5f9a35f4-679d-40eb-a990-852a972b8393",
+        "name": "Tyrolienne",
+        "category": "Attraction",
+        "status": "Operating"
+      }
+    ],
+    "history": 6,
+    "parkHistory": 3,
+    "itemHistory": 3,
+    "historyWithSource": 6,
+    "historyWithImage": 6,
+    "articles": 1,
+    "officialMaps": [
+      {
+        "year": 2026,
+        "format": "Image",
+        "language": "fr"
+      }
+    ],
+    "pricing": {
+      "admissionOffers": 1,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 5,
+      "historicalSnapshots": 1
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 2,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "itemsWithEightDescriptions": 36,
+    "totalItemDescriptions": 288,
+    "images": 74,
+    "distinctPhotographs": 61,
+    "illustrativeAssets": 9,
+    "logos": 2,
+    "unpublishedDuplicateIds": [
+      "3da361899ce64cedaf434fe8f97dc564",
+      "aabcee5e04054a36a6d5b1a0f64cad2f"
+    ],
+    "attractionsWithPhotograph": 21,
+    "attractionsWithFaithfulIllustration": 22,
+    "generalPhotographs": {
+      "count": 5,
+      "required": 5,
+      "ids": [
+        "b991b2f852f049458efa291464d18ec4",
+        "67320df937d44cd88aa6e9d9ae397c9a",
+        "9e841f94b5744f49abf903c0d96e8eae",
+        "68a5514ac29f4a158b632e0da3f99600",
+        "6647d031075f46328b8a7f06f12cd921"
+      ],
+      "periods": "Trois vues2008,entréefermée2025,vuegénérale2026 ; dates explicites, aucune prétention de cinqvuesactuelles."
+    },
+    "importantItemsWithThreePhotos": {
+      "count": 10,
+      "total": 11,
+      "items": [
+        {
+          "id": "d5b2b6fc-c851-4980-b09e-5b9e90f63889",
+          "name": "Aire de jeux",
+          "distinctPhotographs": 3
+        },
+        {
+          "id": "0ffd7da4-61cf-46be-8d93-22e291babd29",
+          "name": "Carrousel",
+          "distinctPhotographs": 3
+        },
+        {
+          "id": "48ba0fbf-4c50-4d39-8737-21f0e2cca061",
+          "name": "Chenille",
+          "distinctPhotographs": 3
+        },
+        {
+          "id": "b153a12b-d736-467d-af0e-4b2c4067ad2a",
+          "name": "Courts de padel",
+          "distinctPhotographs": 3
+        },
+        {
+          "id": "f49eed69-b092-4d84-ad46-d03e41cf63fd",
+          "name": "Jungle",
+          "distinctPhotographs": 3
+        },
+        {
+          "id": "edadd1dc-ac80-48ef-880f-a9f960bb272e",
+          "name": "La Pieuvre",
+          "distinctPhotographs": 3
+        },
+        {
+          "id": "d8a92cc5-0636-4bf9-9c09-7dcf8b54fafa",
+          "name": "Mini-golf",
+          "distinctPhotographs": 3
+        },
+        {
+          "id": "50fc6caa-8ee3-4b06-abd1-7edea61a3ce6",
+          "name": "Paintball",
+          "distinctPhotographs": 3
+        },
+        {
+          "id": "34cc7f48-e20d-414d-8fe6-ebb8536becec",
+          "name": "Pouss Pouss",
+          "distinctPhotographs": 4
+        },
+        {
+          "id": "c7c66e97-c1da-41b2-8736-2a002e1c63e9",
+          "name": "Trampolines",
+          "distinctPhotographs": 3
+        },
+        {
+          "id": "5f9a35f4-679d-40eb-a990-852a972b8393",
+          "name": "Tyrolienne",
+          "distinctPhotographs": 2
+        }
+      ]
+    },
+    "logoToPublishAsCurrent": "67f43f3440204cd68ed4cf89ac5fd3e9",
+    "articleParagraphWordCounts": {
+      "fr": 416,
+      "en": 364,
+      "de": 343,
+      "nl": 362,
+      "it": 388,
+      "es": 412,
+      "pl": 320,
+      "pt": 399
+    },
+    "articleLanguages": 8,
+    "articleHeadings": 4,
+    "articleParagraphs": 8,
+    "articleImages": 5,
+    "fixedItemGeolocation": {
+      "located": 1,
+      "total": 35
+    },
+    "residualGaps": {
+      "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+      "parkId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+      "reviewedAtUtc": "2026-11-02T23:47:09.902550+00:00",
+      "foundingAndFounder": "1985 est annoncé par Nice-Matin en2026 ;1991 apparaît dans des sources secondaires. Aucun arbitrage documentaire fiable permettant une dateunique. Date de fondation et fondateur laissés inconnus ; création de la sociétéPARCKOALAND en2013 non substituée à ouverture du parc.",
+      "unqualifiedCandidates": [
+        {
+          "name": "Ancien trampoline à élastiques",
+          "reason": "Unitédistincte non établie."
+        },
+        {
+          "name": "Roue géante sur eau",
+          "reason": "Seul témoignageOttavia, identité et implantation à confirmer."
+        },
+        {
+          "name": "Maison-labyrinthe en mousse",
+          "reason": "Peut désigner une composante de Jungle ; pas de fiche dupliquée."
+        },
+        {
+          "name": "Revolution / Top Spin Paillet",
+          "reason": "onride56677 relaie un commentaireYouTube hypothétique ; pas depreuveKoaland."
+        }
+      ],
+      "resolvedAliases": {
+        "Balançoires": "PoussPouss, décor identique sur photographies2008et2026.",
+        "Bateau": "Manègeduphare identifié sur photos168/169, distinct des canoës.",
+        "Cinéma3D/4D": "Cinéma5D, nouveauté2011 dansCale13 ; une seulefiche.",
+        "Jungle": "Ancienensemble2008 distinct des nouvelles structures2026.",
+        "Karting": "AnciencircuitautourPieuvre, distinct des autostamponneuses couvertes.",
+        "Carrouselancien": "Installation2008 distincte du nouveaucarrousel2026.",
+        "Motos": "Offreancienne retrouvée, mais pasdepreuve de secondéquipement autonome ; ficheCircuitmotosetvoitures conservée."
+      },
+      "photoGaps": [
+        {
+          "id": "b13dde30-01d3-4c16-b837-6f6ebe8ec54d",
+          "name": "Accueil",
+          "status": "Operating",
+          "reason": "Photographie fidèle de cette unité non retrouvée après site officiel actuel et archivé, médiathèque WordPress, reportages et anciens avis. Aucune image d’un autre équipement substituée."
+        },
+        {
+          "id": "542b3d19-e99e-4ae1-9709-87573e14b9cb",
+          "name": "Aire gonflable",
+          "status": "Removed",
+          "reason": "Photographie fidèle de cette unité non retrouvée après site officiel actuel et archivé, médiathèque WordPress, reportages et anciens avis. Aucune image d’un autre équipement substituée."
+        },
+        {
+          "id": "9d1ba9f1-3f37-40c7-b538-0313f1d9f5b2",
+          "name": "Bassin naturel",
+          "status": "Operating",
+          "reason": "Photographie fidèle de cette unité non retrouvée après site officiel actuel et archivé, médiathèque WordPress, reportages et anciens avis. Aucune image d’un autre équipement substituée."
+        },
+        {
+          "id": "5a0eedbe-bead-4818-8cf8-5b89b9240e3c",
+          "name": "Canoë",
+          "status": "Removed",
+          "reason": "Photographie fidèle de cette unité non retrouvée après site officiel actuel et archivé, médiathèque WordPress, reportages et anciens avis. Aucune image d’un autre équipement substituée."
+        },
+        {
+          "id": "093c3294-39ae-4485-b789-de32befbb893",
+          "name": "Cinéma 5D",
+          "status": "Removed",
+          "reason": "Photographie fidèle de cette unité non retrouvée après site officiel actuel et archivé, médiathèque WordPress, reportages et anciens avis. Aucune image d’un autre équipement substituée."
+        },
+        {
+          "id": "01d5e892-aab7-4e00-82fc-b60927d20467",
+          "name": "Espace Fitness",
+          "status": "Planned",
+          "reason": "Projet annoncé : aucun équipement photographié comme ouvert."
+        },
+        {
+          "id": "4228a874-15fb-4cae-9163-701b9c7c4e7c",
+          "name": "Jeux à pièces",
+          "status": "Operating",
+          "reason": "Photographie fidèle de cette unité non retrouvée après site officiel actuel et archivé, médiathèque WordPress, reportages et anciens avis. Aucune image d’un autre équipement substituée."
+        },
+        {
+          "id": "0350acdb-fd21-4d94-98b0-67270cfbebb7",
+          "name": "Music Lab",
+          "status": "Planned",
+          "reason": "Projet annoncé : aucun équipement photographié comme ouvert."
+        },
+        {
+          "id": "cceefff6-56a8-4a37-ad4b-7bf0524b1f59",
+          "name": "Paradis des lapins",
+          "status": "Operating",
+          "reason": "Photographie fidèle de cette unité non retrouvée après site officiel actuel et archivé, médiathèque WordPress, reportages et anciens avis. Aucune image d’un autre équipement substituée."
+        },
+        {
+          "id": "3a7b06f8-833e-43df-83ba-66ab60fed783",
+          "name": "Tennis ballon",
+          "status": "Operating",
+          "reason": "Photographie fidèle de cette unité non retrouvée après site officiel actuel et archivé, médiathèque WordPress, reportages et anciens avis. Aucune image d’un autre équipement substituée."
+        },
+        {
+          "id": "80969d87-585f-46c5-bd2d-7c450a5ef1cb",
+          "name": "Toilettes",
+          "status": "Operating",
+          "reason": "Photographie fidèle de cette unité non retrouvée après site officiel actuel et archivé, médiathèque WordPress, reportages et anciens avis. Aucune image d’un autre équipement substituée."
+        }
+      ],
+      "importantPhotoGap": {
+        "id": "5f9a35f4-679d-40eb-a990-852a972b8393",
+        "name": "Tyrolienne",
+        "distinctPhotographs": 2
+      },
+      "geolocation": {
+        "fixedItems": 35,
+        "located": 1,
+        "locatedId": "48ba0fbf-4c50-4d39-8737-21f0e2cca061",
+        "source": "https://www.openstreetmap.org/node/6855854787",
+        "exceptions": [
+          {
+            "id": "b13dde30-01d3-4c16-b837-6f6ebe8ec54d",
+            "name": "Accueil",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "d5b2b6fc-c851-4980-b09e-5b9e90f63889",
+            "name": "Aire de jeux",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "542b3d19-e99e-4ae1-9709-87573e14b9cb",
+            "name": "Aire gonflable",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "79528ae2-d35b-467e-8cb7-3e7ff68b00d2",
+            "name": "Autos tamponneuses",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "9d1ba9f1-3f37-40c7-b538-0313f1d9f5b2",
+            "name": "Bassin naturel",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "01b3cbf2-d27f-4414-aa77-9160abb4613c",
+            "name": "Big Truck",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "5a0eedbe-bead-4818-8cf8-5b89b9240e3c",
+            "name": "Canoë",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "0ffd7da4-61cf-46be-8d93-22e291babd29",
+            "name": "Carrousel",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "228e7ec1-f461-4fdb-8287-44cfbce8839e",
+            "name": "Carrousel ancien",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "093c3294-39ae-4485-b789-de32befbb893",
+            "name": "Cinéma 5D",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "88695fba-c161-495c-86a4-dc8367b42939",
+            "name": "Circuit motos et voitures",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "b153a12b-d736-467d-af0e-4b2c4067ad2a",
+            "name": "Courts de padel",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "9996cd77-0b02-4ed4-9965-60746b3d1cc1",
+            "name": "Espace anniversaires",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "01d5e892-aab7-4e00-82fc-b60927d20467",
+            "name": "Espace Fitness",
+            "reason": "Installation annoncée ; position précise non documentée."
+          },
+          {
+            "id": "4228a874-15fb-4cae-9163-701b9c7c4e7c",
+            "name": "Jeux à pièces",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "f49eed69-b092-4d84-ad46-d03e41cf63fd",
+            "name": "Jungle",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "0bc41e49-e193-4203-8fae-49471efff0d5",
+            "name": "Karting",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "e42c95e5-d38d-415a-8fce-9476c1c17a0f",
+            "name": "Koala Burger",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "edadd1dc-ac80-48ef-880f-a9f960bb272e",
+            "name": "La Pieuvre",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "29fd4986-93bb-4fec-935b-a10bbd1232f5",
+            "name": "Manège de voitures tournantes",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "a3d7c2b8-ed46-4888-95ce-63918b643e9d",
+            "name": "Manège des oiseaux",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "2b26de54-e413-4ddd-a2bd-fecba6d9ad0c",
+            "name": "Manège du phare",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "b5bde9dc-e927-42c1-a050-2f872a30c541",
+            "name": "Manèges à propulsion parentale",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "d8a92cc5-0636-4bf9-9c09-7dcf8b54fafa",
+            "name": "Mini-golf",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "0350acdb-fd21-4d94-98b0-67270cfbebb7",
+            "name": "Music Lab",
+            "reason": "Installation annoncée ; position précise non documentée."
+          },
+          {
+            "id": "50fc6caa-8ee3-4b06-abd1-7edea61a3ce6",
+            "name": "Paintball",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "cceefff6-56a8-4a37-ad4b-7bf0524b1f59",
+            "name": "Paradis des lapins",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "af2606f5-1f39-49d6-abb2-5f24dcde71ef",
+            "name": "Petit train",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "34cc7f48-e20d-414d-8fe6-ebb8536becec",
+            "name": "Pouss Pouss",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "814ce863-4bea-4bac-9cea-f7cf4bf5c3eb",
+            "name": "Pêche aux canards",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "3a7b06f8-833e-43df-83ba-66ab60fed783",
+            "name": "Tennis ballon",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "80969d87-585f-46c5-bd2d-7c450a5ef1cb",
+            "name": "Toilettes",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "c7c66e97-c1da-41b2-8736-2a002e1c63e9",
+            "name": "Trampolines",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          },
+          {
+            "id": "5f9a35f4-679d-40eb-a990-852a972b8393",
+            "name": "Tyrolienne",
+            "reason": "Plan2026 illustré non géoréférencé ; anciens points OSM antérieurs au chantier ne prouvent pas les emplacements actuels, et les photos anciennes ne fournissent pas de coordonnées précises. Aucune position centrale ou approximative inventée."
+          }
+        ]
+      },
+      "officialMaps": {
+        "years": [
+          2026
+        ],
+        "formats": [
+          "Image/JPEG"
+        ],
+        "latestYear": 2026,
+        "languages": [
+          "fr"
+        ],
+        "archivalGap": "Plan présenté sur siteofficielarchivé2024 identifié ; original1207w et variante1024w introuvables à origine404 et disponibilitéWayback sanscapture. Deux réponses429 ont été respectées ; nouvellelecture réussie23:33confirme absence de capture1024. Aucune année déduite du dossieruploads2020 ; aucun fauxmillésime créé.",
+        "proof": [
+          "sources/official-manege-2024.html",
+          "sources/map2024-availability.json",
+          "sources/map2024-1024-retry-2333.json"
+        ]
+      },
+      "historyDates": "Pour la majorité des attractions disparues, présence2008ou2024 établie mais ouverture/retrait exacts inconnus. Aucun1erjanvier, événementdefermeture ou constructeur inventé. Chenille≤2003–2025/2026 ; Cinéma5Dnouveauté2011 ; mini-golfremplacé2026.",
+      "hours": {
+        "verifiedWeeklyDays": [
+          "Wednesday",
+          "Saturday",
+          "Sunday"
+        ],
+        "time": "10:00–19:00",
+        "otherDays": "Unknown",
+        "annualDatedHorizon": null,
+        "sourceConflict": "CalendrierICS juillet récurrent16–23 sansborneterminale opposé à annonceofficielle rentrée du2septembre2026. Règlehebdomadaire saisonnière retenue ; aucune validitéSep–Dec fabriquée et aucune fermeture déduite pour autresjours."
+      },
+      "pricing": {
+        "currentCurrency": "EUR",
+        "currentAdmissionOffers": 1,
+        "currentCreditOffers": 5,
+        "annualPasses": 0,
+        "parkingOffers": 0,
+        "historicalYears": [
+          2024
+        ],
+        "historicalOffers": 2,
+        "remaining": "Prix padel/paintball non publiés sur pages officielles consultées. Aucun passannuel ni parking vendu parparc retrouvé ; aucun tarif de stationnementmunicipal substitué. Autresannées sans grille datée fiable."
+      },
+      "technical": "Dimensions,modèles et fabricants des petits manèges anciens souvent inconnus ; SartoriBigTruck et FajumeChenille établis. Indication legacy5m pourChenille non confirmée par ficheRCDB actuelle, conservée comme donnée antérieure non nouvellement attestée.",
+      "sourceFamilies": [
+        "Site officiel actuel et médiathèque205assets",
+        "Page officielle capturée20septembre2024",
+        "ReportagePuffi2008avec51photographies",
+        "Nice-Matin2025et2026",
+        "RCDBphotos2011/2017etplaqueFajume",
+        "Sartori catalogueofficiel",
+        "Cale13ancienguide",
+        "RécréaNiceavisanciens",
+        "CoasterCloudetRivieraLoisirs",
+        "OSMpublicmap",
+        "ArchivesWayback"
+      ],
+      "shortDescriptionExceptions": [
+        {
+          "id": "b13dde30-01d3-4c16-b837-6f6ebe8ec54d",
+          "name": "Accueil",
+          "wordCounts": {
+            "fr": 44,
+            "en": 36,
+            "de": 37,
+            "nl": 38,
+            "it": 40,
+            "es": 42,
+            "pl": 30,
+            "pt": 42
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "d5b2b6fc-c851-4980-b09e-5b9e90f63889",
+          "name": "Aire de jeux",
+          "wordCounts": {
+            "fr": 115,
+            "en": 91,
+            "de": 90,
+            "nl": 91,
+            "it": 97,
+            "es": 102,
+            "pl": 78,
+            "pt": 101
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "542b3d19-e99e-4ae1-9709-87573e14b9cb",
+          "name": "Aire gonflable",
+          "wordCounts": {
+            "fr": 65,
+            "en": 55,
+            "de": 54,
+            "nl": 56,
+            "it": 57,
+            "es": 66,
+            "pl": 54,
+            "pt": 58
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "2377f63c-36aa-4e71-a6c2-433f4b27fe71",
+          "name": "Animations et spectacles",
+          "wordCounts": {
+            "fr": 86,
+            "en": 68,
+            "de": 69,
+            "nl": 75,
+            "it": 76,
+            "es": 80,
+            "pl": 65,
+            "pt": 77
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "79528ae2-d35b-467e-8cb7-3e7ff68b00d2",
+          "name": "Autos tamponneuses",
+          "wordCounts": {
+            "fr": 77,
+            "en": 68,
+            "de": 62,
+            "nl": 64,
+            "it": 68,
+            "es": 71,
+            "pl": 59,
+            "pt": 69
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "9d1ba9f1-3f37-40c7-b538-0313f1d9f5b2",
+          "name": "Bassin naturel",
+          "wordCounts": {
+            "fr": 75,
+            "en": 68,
+            "de": 67,
+            "nl": 69,
+            "it": 67,
+            "es": 73,
+            "pl": 54,
+            "pt": 70
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "01b3cbf2-d27f-4414-aa77-9160abb4613c",
+          "name": "Big Truck",
+          "wordCounts": {
+            "fr": 62,
+            "en": 58,
+            "de": 53,
+            "nl": 57,
+            "it": 60,
+            "es": 66,
+            "pl": 49,
+            "pt": 61
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "5a0eedbe-bead-4818-8cf8-5b89b9240e3c",
+          "name": "Canoë",
+          "wordCounts": {
+            "fr": 51,
+            "en": 50,
+            "de": 46,
+            "nl": 50,
+            "it": 53,
+            "es": 57,
+            "pl": 50,
+            "pt": 54
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "0ffd7da4-61cf-46be-8d93-22e291babd29",
+          "name": "Carrousel",
+          "wordCounts": {
+            "fr": 92,
+            "en": 72,
+            "de": 72,
+            "nl": 75,
+            "it": 82,
+            "es": 83,
+            "pl": 65,
+            "pt": 77
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "228e7ec1-f461-4fdb-8287-44cfbce8839e",
+          "name": "Carrousel ancien",
+          "wordCounts": {
+            "fr": 51,
+            "en": 44,
+            "de": 40,
+            "nl": 48,
+            "it": 46,
+            "es": 49,
+            "pl": 42,
+            "pt": 47
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "48ba0fbf-4c50-4d39-8737-21f0e2cca061",
+          "name": "Chenille",
+          "wordCounts": {
+            "fr": 112,
+            "en": 99,
+            "de": 87,
+            "nl": 95,
+            "it": 102,
+            "es": 107,
+            "pl": 86,
+            "pt": 104
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "093c3294-39ae-4485-b789-de32befbb893",
+          "name": "Cinéma 5D",
+          "wordCounts": {
+            "fr": 43,
+            "en": 36,
+            "de": 32,
+            "nl": 36,
+            "it": 32,
+            "es": 37,
+            "pl": 30,
+            "pt": 36
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "88695fba-c161-495c-86a4-dc8367b42939",
+          "name": "Circuit motos et voitures",
+          "wordCounts": {
+            "fr": 104,
+            "en": 91,
+            "de": 86,
+            "nl": 88,
+            "it": 96,
+            "es": 100,
+            "pl": 73,
+            "pt": 99
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "b153a12b-d736-467d-af0e-4b2c4067ad2a",
+          "name": "Courts de padel",
+          "wordCounts": {
+            "fr": 94,
+            "en": 80,
+            "de": 82,
+            "nl": 85,
+            "it": 88,
+            "es": 87,
+            "pl": 68,
+            "pt": 88
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "9996cd77-0b02-4ed4-9965-60746b3d1cc1",
+          "name": "Espace anniversaires",
+          "wordCounts": {
+            "fr": 47,
+            "en": 39,
+            "de": 33,
+            "nl": 35,
+            "it": 44,
+            "es": 45,
+            "pl": 31,
+            "pt": 45
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "01d5e892-aab7-4e00-82fc-b60927d20467",
+          "name": "Espace Fitness",
+          "wordCounts": {
+            "fr": 62,
+            "en": 56,
+            "de": 52,
+            "nl": 55,
+            "it": 57,
+            "es": 63,
+            "pl": 48,
+            "pt": 59
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "4228a874-15fb-4cae-9163-701b9c7c4e7c",
+          "name": "Jeux à pièces",
+          "wordCounts": {
+            "fr": 56,
+            "en": 43,
+            "de": 38,
+            "nl": 43,
+            "it": 50,
+            "es": 51,
+            "pl": 42,
+            "pt": 51
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "f49eed69-b092-4d84-ad46-d03e41cf63fd",
+          "name": "Jungle",
+          "wordCounts": {
+            "fr": 72,
+            "en": 59,
+            "de": 47,
+            "nl": 55,
+            "it": 65,
+            "es": 68,
+            "pl": 54,
+            "pt": 66
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "0bc41e49-e193-4203-8fae-49471efff0d5",
+          "name": "Karting",
+          "wordCounts": {
+            "fr": 44,
+            "en": 38,
+            "de": 37,
+            "nl": 40,
+            "it": 41,
+            "es": 43,
+            "pl": 34,
+            "pt": 40
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "e42c95e5-d38d-415a-8fce-9476c1c17a0f",
+          "name": "Koala Burger",
+          "wordCounts": {
+            "fr": 88,
+            "en": 68,
+            "de": 68,
+            "nl": 72,
+            "it": 76,
+            "es": 82,
+            "pl": 63,
+            "pt": 84
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "edadd1dc-ac80-48ef-880f-a9f960bb272e",
+          "name": "La Pieuvre",
+          "wordCounts": {
+            "fr": 65,
+            "en": 56,
+            "de": 55,
+            "nl": 57,
+            "it": 59,
+            "es": 60,
+            "pl": 48,
+            "pt": 61
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "29fd4986-93bb-4fec-935b-a10bbd1232f5",
+          "name": "Manège de voitures tournantes",
+          "wordCounts": {
+            "fr": 41,
+            "en": 39,
+            "de": 38,
+            "nl": 40,
+            "it": 38,
+            "es": 41,
+            "pl": 31,
+            "pt": 39
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "a3d7c2b8-ed46-4888-95ce-63918b643e9d",
+          "name": "Manège des oiseaux",
+          "wordCounts": {
+            "fr": 40,
+            "en": 33,
+            "de": 32,
+            "nl": 34,
+            "it": 35,
+            "es": 35,
+            "pl": 30,
+            "pt": 35
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "2b26de54-e413-4ddd-a2bd-fecba6d9ad0c",
+          "name": "Manège du phare",
+          "wordCounts": {
+            "fr": 52,
+            "en": 45,
+            "de": 39,
+            "nl": 45,
+            "it": 47,
+            "es": 50,
+            "pl": 37,
+            "pt": 46
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "b5bde9dc-e927-42c1-a050-2f872a30c541",
+          "name": "Manèges à propulsion parentale",
+          "wordCounts": {
+            "fr": 45,
+            "en": 38,
+            "de": 36,
+            "nl": 41,
+            "it": 43,
+            "es": 49,
+            "pl": 35,
+            "pt": 45
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "d8a92cc5-0636-4bf9-9c09-7dcf8b54fafa",
+          "name": "Mini-golf",
+          "wordCounts": {
+            "fr": 115,
+            "en": 102,
+            "de": 94,
+            "nl": 103,
+            "it": 107,
+            "es": 106,
+            "pl": 83,
+            "pt": 98
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "0350acdb-fd21-4d94-98b0-67270cfbebb7",
+          "name": "Music Lab",
+          "wordCounts": {
+            "fr": 40,
+            "en": 39,
+            "de": 38,
+            "nl": 40,
+            "it": 40,
+            "es": 44,
+            "pl": 32,
+            "pt": 41
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "50fc6caa-8ee3-4b06-abd1-7edea61a3ce6",
+          "name": "Paintball",
+          "wordCounts": {
+            "fr": 99,
+            "en": 80,
+            "de": 80,
+            "nl": 87,
+            "it": 86,
+            "es": 96,
+            "pl": 74,
+            "pt": 94
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "cceefff6-56a8-4a37-ad4b-7bf0524b1f59",
+          "name": "Paradis des lapins",
+          "wordCounts": {
+            "fr": 78,
+            "en": 73,
+            "de": 67,
+            "nl": 71,
+            "it": 72,
+            "es": 80,
+            "pl": 61,
+            "pt": 76
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "af2606f5-1f39-49d6-abb2-5f24dcde71ef",
+          "name": "Petit train",
+          "wordCounts": {
+            "fr": 43,
+            "en": 41,
+            "de": 37,
+            "nl": 36,
+            "it": 41,
+            "es": 47,
+            "pl": 29,
+            "pt": 44
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "34cc7f48-e20d-414d-8fe6-ebb8536becec",
+          "name": "Pouss Pouss",
+          "wordCounts": {
+            "fr": 108,
+            "en": 89,
+            "de": 84,
+            "nl": 87,
+            "it": 102,
+            "es": 104,
+            "pl": 77,
+            "pt": 98
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "814ce863-4bea-4bac-9cea-f7cf4bf5c3eb",
+          "name": "Pêche aux canards",
+          "wordCounts": {
+            "fr": 98,
+            "en": 82,
+            "de": 77,
+            "nl": 82,
+            "it": 90,
+            "es": 94,
+            "pl": 67,
+            "pt": 90
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "3a7b06f8-833e-43df-83ba-66ab60fed783",
+          "name": "Tennis ballon",
+          "wordCounts": {
+            "fr": 50,
+            "en": 38,
+            "de": 32,
+            "nl": 37,
+            "it": 39,
+            "es": 44,
+            "pl": 29,
+            "pt": 40
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "80969d87-585f-46c5-bd2d-7c450a5ef1cb",
+          "name": "Toilettes",
+          "wordCounts": {
+            "fr": 29,
+            "en": 25,
+            "de": 25,
+            "nl": 28,
+            "it": 28,
+            "es": 30,
+            "pl": 21,
+            "pt": 31
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "c7c66e97-c1da-41b2-8736-2a002e1c63e9",
+          "name": "Trampolines",
+          "wordCounts": {
+            "fr": 95,
+            "en": 77,
+            "de": 79,
+            "nl": 75,
+            "it": 88,
+            "es": 98,
+            "pl": 69,
+            "pt": 89
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        },
+        {
+          "id": "5f9a35f4-679d-40eb-a990-852a972b8393",
+          "name": "Tyrolienne",
+          "wordCounts": {
+            "fr": 78,
+            "en": 70,
+            "de": 67,
+            "nl": 70,
+            "it": 72,
+            "es": 75,
+            "pl": 56,
+            "pt": 74
+          },
+          "reason": "Texte limité aux faits propres à cet équipement, au décor photographié, à son emplacement relatif et à la période attestée. Les sources consultées ne justifient pas un récit plus long ; aucun conseil de visite, scène inventée ou remplissage générique ajouté."
+        }
+      ]
+    },
+    "accessConditions": {
+      "searched": 26,
+      "totalAttractions": 26,
+      "itemsWithStoredConditions": [
+        {
+          "id": "d5b2b6fc-c851-4980-b09e-5b9e90f63889",
+          "name": "Aire de jeux",
+          "conditions": 2
+        },
+        {
+          "id": "0ffd7da4-61cf-46be-8d93-22e291babd29",
+          "name": "Carrousel",
+          "conditions": 1
+        },
+        {
+          "id": "88695fba-c161-495c-86a4-dc8367b42939",
+          "name": "Circuit motos et voitures",
+          "conditions": 1
+        },
+        {
+          "id": "b5bde9dc-e927-42c1-a050-2f872a30c541",
+          "name": "Manèges à propulsion parentale",
+          "conditions": 1
+        },
+        {
+          "id": "c7c66e97-c1da-41b2-8736-2a002e1c63e9",
+          "name": "Trampolines",
+          "conditions": 1
+        },
+        {
+          "id": "5f9a35f4-679d-40eb-a990-852a972b8393",
+          "name": "Tyrolienne",
+          "conditions": 3
+        }
+      ],
+      "missingSourceForConditions": [
+        {
+          "id": "542b3d19-e99e-4ae1-9709-87573e14b9cb",
+          "name": "Aire gonflable"
+        },
+        {
+          "id": "79528ae2-d35b-467e-8cb7-3e7ff68b00d2",
+          "name": "Autos tamponneuses"
+        },
+        {
+          "id": "01b3cbf2-d27f-4414-aa77-9160abb4613c",
+          "name": "Big Truck"
+        },
+        {
+          "id": "5a0eedbe-bead-4818-8cf8-5b89b9240e3c",
+          "name": "Canoë"
+        },
+        {
+          "id": "228e7ec1-f461-4fdb-8287-44cfbce8839e",
+          "name": "Carrousel ancien"
+        },
+        {
+          "id": "48ba0fbf-4c50-4d39-8737-21f0e2cca061",
+          "name": "Chenille"
+        },
+        {
+          "id": "093c3294-39ae-4485-b789-de32befbb893",
+          "name": "Cinéma 5D"
+        },
+        {
+          "id": "4228a874-15fb-4cae-9163-701b9c7c4e7c",
+          "name": "Jeux à pièces"
+        },
+        {
+          "id": "f49eed69-b092-4d84-ad46-d03e41cf63fd",
+          "name": "Jungle"
+        },
+        {
+          "id": "0bc41e49-e193-4203-8fae-49471efff0d5",
+          "name": "Karting"
+        },
+        {
+          "id": "edadd1dc-ac80-48ef-880f-a9f960bb272e",
+          "name": "La Pieuvre"
+        },
+        {
+          "id": "29fd4986-93bb-4fec-935b-a10bbd1232f5",
+          "name": "Manège de voitures tournantes"
+        },
+        {
+          "id": "a3d7c2b8-ed46-4888-95ce-63918b643e9d",
+          "name": "Manège des oiseaux"
+        },
+        {
+          "id": "2b26de54-e413-4ddd-a2bd-fecba6d9ad0c",
+          "name": "Manège du phare"
+        },
+        {
+          "id": "d8a92cc5-0636-4bf9-9c09-7dcf8b54fafa",
+          "name": "Mini-golf"
+        },
+        {
+          "id": "0350acdb-fd21-4d94-98b0-67270cfbebb7",
+          "name": "Music Lab"
+        },
+        {
+          "id": "50fc6caa-8ee3-4b06-abd1-7edea61a3ce6",
+          "name": "Paintball"
+        },
+        {
+          "id": "af2606f5-1f39-49d6-abb2-5f24dcde71ef",
+          "name": "Petit train"
+        },
+        {
+          "id": "34cc7f48-e20d-414d-8fe6-ebb8536becec",
+          "name": "Pouss Pouss"
+        },
+        {
+          "id": "814ce863-4bea-4bac-9cea-f7cf4bf5c3eb",
+          "name": "Pêche aux canards"
+        }
+      ],
+      "searchBasis": "Current official ride pages and map, archived official 2024 ride page, historical photographs and specialist directories. Unpublished age or height limits were not inferred from equipment type."
+    }
+  },
+  "corpus": {
+    "reviewedAtUtc": "2026-11-02T23:47:09.902550+00:00",
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "fields": 2595,
+    "personallyAuthoredAndReviewed": true,
+    "basis": "Relecture cumulative des huit langues lors de rédaction de chaque lot, puis rapprochement de l’export complet frais et de chaque réponseApply vérifiée.2144valeurs comparées exactement avant reprisesciblées ; seize médias legacy inspectés visuellement, référenceSartoricorrigée, derniersparagraphesgénériquesretirés, toutes alternatives et légendes différenciées. Les preuves et payloads revus sont conservés individuellement.",
+    "encodingIssues": 0,
+    "paragraphDuplicates": 0,
+    "crossCorpusCandidates": 195,
+    "actionableCrossCorpusIssues": 0,
+    "crossCorpusExceptions": "192 répétitions de crédits attribuent les mêmes photographies au même auteur/reportage ; trois libellés tarifaires désignent exactement le même produit comparable2024/2026. Aucune variation artificielle de ces noms légitimes.",
+    "automaticFlags": [
+      {
+        "path": "items.d5b2b6fc-c851-4980-b09e-5b9e90f63889.accessConditions.1.sourceSummary.fr",
+        "kind": "access-sourceSummary",
+        "language": "fr",
+        "forbidden": [
+          "90 cm"
+        ],
+        "mechanicalTerms": [],
+        "text": "Taille minimale officielle : 90 cm."
+      },
+      {
+        "path": "items.5f9a35f4-679d-40eb-a990-852a972b8393.accessConditions.1.sourceSummary.fr",
+        "kind": "access-sourceSummary",
+        "language": "fr",
+        "forbidden": [
+          "115 cm"
+        ],
+        "mechanicalTerms": [],
+        "text": "Taille minimale officielle : 115 cm."
+      }
+    ],
+    "actionableEditorialFlags": 0,
+    "flagExplanation": "Les deux valeurs90cm et115cm appartiennent aux preuves des conditions d’accès structurées, où les limites de taille doivent être conservées. Aucune mesure technique injectée dans descriptions,histoire ou article."
+  },
+  "sourceAvailability": [
+    {
+      "url": "https://communicat409.wixsite.com/cale13-it/koaland",
+      "label": "Cale13 — Koaland, nouveauté2011 Cinéma5D",
+      "status": 200,
+      "finalUrl": "https://communicat409.wixsite.com/cale13-it/koaland",
+      "bytes": 429810,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:18.489708+00:00"
+    },
+    {
+      "url": "https://www.nicematin.com/loisirs/il-y-aura-des-activites-pour-enfants-et-adultes-actuellement-ferme-pour-travaux-le-parc-d-attractions-koaland-a-menton-aura-totalement-change-a-sa-reouverture-10656750",
+      "label": "Nice-Matin — fermeture pour transformation, 15 novembre 2025",
+      "status": 200,
+      "finalUrl": "https://www.nicematin.com/loisirs/il-y-aura-des-activites-pour-enfants-et-adultes-actuellement-ferme-pour-travaux-le-parc-d-attractions-koaland-a-menton-aura-totalement-change-a-sa-reouverture-10656750",
+      "bytes": 212500,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:19.844801+00:00"
+    },
+    {
+      "url": "https://rcdb.com/2462.htm",
+      "label": "RCDB — Chenille",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/2462.htm",
+      "bytes": 70787,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:20.050915+00:00"
+    },
+    {
+      "url": "https://www.nicematin.com/loisirs/sorties-famille/paintball-enclos-a-lapins-et-soirees-disney-koaland-a-vu-les-choses-en-grand-pour-sa-reouverture-apres-travaux-10696182",
+      "label": "Nice-Matin — réouverture après travaux, 31 juillet 2026",
+      "status": 200,
+      "finalUrl": "https://www.nicematin.com/loisirs/sorties-famille/paintball-enclos-a-lapins-et-soirees-disney-koaland-a-vu-les-choses-en-grand-pour-sa-reouverture-apres-travaux-10696182",
+      "bytes": 223940,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:20.912268+00:00"
+    },
+    {
+      "url": "https://freizeitparkweb.de/?forum=DCForumID39&thread=3344#post-122628",
+      "label": "Puffi — Koaland, reportage photographique de 2008",
+      "status": 200,
+      "finalUrl": "https://freizeitparkweb.de/?forum=DCForumID39&thread=3344#post-122628",
+      "bytes": 289712,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:22.287637+00:00"
+    },
+    {
+      "url": "https://www.nicematin.com/loisirs/a-menton-le-parc-d-attractions-koaland-rouvre-temporairement-ses-portes-pendant-les-vacances-10669957",
+      "label": "Nice-Matin — réouverture temporaire, 21 février 2026",
+      "status": 200,
+      "finalUrl": "https://www.nicematin.com/loisirs/a-menton-le-parc-d-attractions-koaland-rouvre-temporairement-ses-portes-pendant-les-vacances-10669957",
+      "bytes": 218365,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:23.323962+00:00"
+    },
+    {
+      "url": "https://koaland.fr/manege/",
+      "label": "Koaland — Manège",
+      "status": 200,
+      "finalUrl": "https://koaland.fr/manege/",
+      "bytes": 1059769,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:24.943095+00:00"
+    },
+    {
+      "url": "https://koaland.fr/sport/",
+      "label": "Koaland — Sport",
+      "status": 200,
+      "finalUrl": "https://koaland.fr/sport/",
+      "bytes": 1017244,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:26.480495+00:00"
+    },
+    {
+      "url": "https://koaland.fr/culture/",
+      "label": "Koaland — Culture",
+      "status": 200,
+      "finalUrl": "https://koaland.fr/culture/",
+      "bytes": 256485,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:26.904897+00:00"
+    },
+    {
+      "url": "https://koaland.fr/restauration/",
+      "label": "Koaland — Restauration",
+      "status": 200,
+      "finalUrl": "https://koaland.fr/restauration/",
+      "bytes": 250297,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:27.299623+00:00"
+    },
+    {
+      "url": "https://koaland.fr/accueil-new/",
+      "label": "Koaland — programme Koalaween et publications officielles",
+      "status": 200,
+      "finalUrl": "https://koaland.fr/accueil-new/",
+      "bytes": 1357525,
+      "reachable": true,
+      "checkedAtUtc": "2026-11-02T23:25:27.870780+00:00"
+    }
+  ],
+  "projectedCompletenessBeforeFinalCosmeticCorrections": {
+    "completenessScore": 98,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 102,
+    "earnedPoints": 100,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "nextGates": [],
+  "proofSha256": {
+    "09-full-export.json": "bb8b6af69b74fd9d65ed8a1571d1616114df87098b05992fdb486b7d5baad973",
+    "09-consolidated-audit-graph.json": "9db3e7b88a43cf657cea2d5f1508f4f577e4dba243abb876dcbd438b98da1d81",
+    "09-roundtrip-before-corrections.json": "814d5cfc46e355ddaf2b7a81304f049bdbdc60c4e92663d17b0f525ef5be952f",
+    "09-source-availability.json": "a7e9e35b6329ccd9712a9bf7d5e306fe1fa2e3105799d09a45f1d90acf827601",
+    "09-pricing-verification-export.json": "5afe26a68a3fa9e504a372f4ac536ed2dad8395c00ac6edb2af05f348f57ed35",
+    "09-legacy-media-personal-review.json": "97ff1f210df778d45590617c71c03c99e094faee9724a30680b3d84fb77897b9"
+  },
+  "batchCompletedCount": 7,
+  "prCreated": false,
+  "versionChanged": false,
+  "finalAuditAtUtc": "2026-11-02T23:54:20.230574+00:00",
+  "scoreGate": "Actual post-publication score 98/100; zero publication blockers; editorial audit and anonymous public checks completed.",
+  "realPostPublicationScore": {
+    "completenessScore": 98,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 102,
+    "earnedPoints": 100,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/park/a01011e8-b400-40c7-bbe2-5635d7dd24f7/koaland",
+  "lastDataIntegrationAtUtc": "2026-11-02T23:41:43.216Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-receipts.json#apply-759ff6d1-3874-44db-9d6d-2bf7a8240592",
+  "auditedConsolidatedSha256": "e6940c54012bf65a8d39c22f1772f84aa5e79e70144a898be3bb570e7855ae10",
+  "publicationVerification": {
+    "officialSearchVisible": true,
+    "officialSearchReviewStatus": "Validated",
+    "publishedItems": 36,
+    "publishedImages": 72,
+    "privateExactDuplicatesRetained": 2,
+    "currentOfficialLogoId": "67f43f3440204cd68ed4cf89ac5fd3e9",
+    "currentLogoSize": [
+      150,
+      150
+    ],
+    "mobilePagesChecked": 26,
+    "mobileLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "desktopPagesChecked": 2,
+    "brokenImages": 0,
+    "horizontalOverflowPages": 0,
+    "normalHistoryClick": {
+      "checkedAtUtc": "2026-11-02T23:50:05.680874+00:00",
+      "url": "https://amusement-parks.fun/fr/park/a01011e8-b400-40c7-bbe2-5635d7dd24f7/koaland",
+      "apiResponses": [
+        {
+          "url": "https://amusement-parks.fun/api/parks/a01011e8-b400-40c7-bbe2-5635d7dd24f7/detail-summary",
+          "status": 200,
+          "hasPublicHistory": true,
+          "requestLanguage": "fr-FR",
+          "age": "17"
+        }
+      ],
+      "status": 200,
+      "buttons": [
+        "Parcs",
+        "m",
+        "Connexion / Inscription",
+        "FR",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Ajouter une visite",
+        "Retour à la liste",
+        "Lieux du parc",
+        "Copier",
+        "Plus",
+        "Profil",
+        " Accepter les cookies optionnels ",
+        " Continuer avec les cookies nécessaires ",
+        ""
+      ],
+      "historyLinkCount": 1,
+      "parkTitle": [
+        "Koaland"
+      ],
+      "historyHref": "/fr/park/a01011e8-b400-40c7-bbe2-5635d7dd24f7/koaland/history",
+      "destination": "https://amusement-parks.fun/fr/park/a01011e8-b400-40c7-bbe2-5635d7dd24f7/koaland/history",
+      "historyTitle": [
+        "L'histoire de Koaland"
+      ],
+      "historyBodyChars": 1658
+    },
+    "historyPublishedFacts": 6,
+    "historySourcedFacts": 6,
+    "articleLanguagesChecked": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "idempotenceOperationId": "a55866f8-37d7-4109-ac33-096702914d65",
+    "idempotenceCounts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 123,
+      "warnings": 0,
+      "errors": 0
+    },
+    "mapIntegrity": {
+      "checkedAtUtc": "2026-11-02T23:50:06.957440+00:00",
+      "mapId": "koaland-map-2026",
+      "year": 2026,
+      "urls": {
+        "stored": "https://amusement-parks.fun/api/parks/a01011e8-b400-40c7-bbe2-5635d7dd24f7/official-maps/koaland-map-2026/file",
+        "source": "https://koaland.fr/wp-content/uploads/2026/08/Plan-Koaland.jpg"
+      },
+      "stored": {
+        "status": 200,
+        "mime": "image/jpeg",
+        "size": 2266165,
+        "sha256": "492aa637ed86cae0e05dd38b8eeff6e4d72aaa7b5dab5cafb687f9fdd2a410c6"
+      },
+      "source": {
+        "status": 200,
+        "mime": "image/jpeg",
+        "size": 2266165,
+        "sha256": "492aa637ed86cae0e05dd38b8eeff6e4d72aaa7b5dab5cafb687f9fdd2a410c6"
+      },
+      "sourceBytesMatch": true,
+      "exportedSizeMatches": true
+    },
+    "officialMapLinks": [
+      {
+        "text": "",
+        "url": "https://amusement-parks.fun/api/parks/a01011e8-b400-40c7-bbe2-5635d7dd24f7/official-maps/koaland-map-2026/file"
+      },
+      {
+        "text": "Voir la carte",
+        "url": "https://amusement-parks.fun/api/parks/a01011e8-b400-40c7-bbe2-5635d7dd24f7/official-maps/koaland-map-2026/file"
+      }
+    ],
+    "screenshotsPersonallyViewed": [
+      "park-fr",
+      "article-koaland-multiactivity-renewal-2026-fr",
+      "official-map-controls",
+      "normal-fr-history-click",
+      "item-big-truck",
+      "item-music-lab"
+    ],
+    "facebookAction": "Official Resolve confirmed an existing Published park announcement. No PublishFacebook call and no duplicate post."
+  },
+  "interfaceObservations": [
+    {
+      "observation": "The historical year explorer has no indexable key year; the normal public History link and all six sourced facts work.",
+      "effectOnIntegration": "Annual decision snapshots remain unavailable; this does not prevent the verified public timeline."
+    },
+    {
+      "observation": "The map lists no currently operating geolocated item; the one sourced coordinate belongs to the removed Chenille. The official 2026 map is accessible and its bytes match the official source.",
+      "effectOnIntegration": "No guessed coordinates added to manufacture interactive markers."
+    }
+  ],
+  "publicationOutcomes": {
+    "site": {
+      "status": "Published",
+      "publishedAtUtc": "2026-11-02T23:49:45.0661213Z",
+      "url": "https://amusement-parks.fun/fr/park/a01011e8-b400-40c7-bbe2-5635d7dd24f7/koaland",
+      "evidenceOperationId": "a2dbe12e-a002-402e-96ba-d6a5fd3c1e42",
+      "dateNote": "Completion of dependent-content publication; the park itself was already public."
+    },
+    "facebook": {
+      "status": "Published",
+      "publishedAtUtc": null,
+      "observedAtUtc": "2026-11-02T23:54:20.230574+00:00",
+      "url": "https://www.facebook.com/1285475681307050/posts/122120989857424431",
+      "publicationId": "48a087b5cf60408c9f921250f4e1617f",
+      "dateNote": "Resolve confirms Published without exposing the original publication date. Observation time is not substituted for that unknown date."
+    }
+  },
+  "finalProofSha256": {
+    "10-publication-export.json": "49e6000537d68ad9e047ff4549fe9da7df65b3f603d505c1cd8f70d4df11ab68",
+    "10-publication-export-reconciliation.json": "3723e831436ec45b3984bfa6f9527669e751d8e1393ed1ed12ed635c66ef600a",
+    "working-graph.json": "e6940c54012bf65a8d39c22f1772f84aa5e79e70144a898be3bb570e7855ae10",
+    "10-published-completeness.json": "9b83aae5a383ba183275fb7b04cfa6d772226721dfbdc3bb07fc2f958025a16e",
+    "10-history-diagnostics.json": "d934248b49436e59a956ee28d8124f6a7fa2380c5ac187535a0b3a031e179805",
+    "10-final-idempotence.preview.json": "268df55428021f592af3af1c8bec2bd0abd154b8959d39d0690ce2c3fba6f914",
+    "10-facebook-resolve.json": "96124ac2dacede42087065ffca3afd66c487e1936f099ed25e10a92ce30132e3",
+    "10-published-search.json": "7872bfbea6ac195b7f836fdbe0c7d4363354ffdd3c681c7d89753a5666fbc1b0",
+    "public-verification/api-report.json": "c865abf0f78ec1340fb14cb9b67b5686865b03e878ad89119c88f69eeb06b565",
+    "public-verification/normal-fr-history-click.json": "9c3e35dcae627e87d029d7f88f2d7c20a0c05cd9576e3d0377b84531e9f636b2",
+    "public-verification/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "2495a29834a3da0a9ec407048daeeec8ab81a0d88137ed5f57dbfb2fe7085530",
+    "public-verification/desktop-report.json": "af7d8ee2bcb1c66aa3ccd8e46e6555ffbb20d9c1962918dfcb9627e8a4bbcffc",
+    "public-verification/maps-public-integrity.json": "9914963d5a477cf8c2eba2dbe9fa28906809d1a8eca3a4b6d75440f9666315b7"
+  }
+}

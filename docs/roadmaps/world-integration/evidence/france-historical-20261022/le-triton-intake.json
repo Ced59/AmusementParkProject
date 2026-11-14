@@ -1,0 +1,102 @@
+{
+  "entryId": "FR-candidate-da3b95a7f543cb",
+  "name": "Le Triton",
+  "conversation": "Conversation France",
+  "checkedAtUtc": "2026-11-02T09:31:31.149615+00:00",
+  "decision": "Relevant historical WaterPark in Yerres, Essonne: aquatic play and slide centre confirmed by contemporary promotional posters preserved by Maison de Banlieue. Not standalone, not current Val de Forme/Pierre de Coubertin pool, not present Deux Rivières public garden, not Le Triton jazz venue in Les Lilas or Evere swimming pool.",
+  "canonicalStatus": "ClosedDefinitively",
+  "level": "Historical local park; exhaustive reliable historical evidence, no artificial inventory",
+  "officialSearches": [
+    {
+      "file": "00-search-parks-aqualand-yerres.json",
+      "matches": 0
+    },
+    {
+      "file": "00-search-parks-deux-rivieres.json",
+      "matches": 0
+    },
+    {
+      "file": "00-search-parks-objectif.json",
+      "matches": 0
+    },
+    {
+      "file": "00-search-parks-triton.json",
+      "matches": 0
+    },
+    {
+      "file": "00-search-parks-yerres.json",
+      "matches": 0
+    },
+    {
+      "file": "00-search-standalone-aqualand-yerres.json",
+      "matches": 0
+    },
+    {
+      "file": "00-search-standalone-triton.json",
+      "matches": 0
+    },
+    {
+      "file": "00-search-standalone-yerres.json",
+      "matches": 0
+    }
+  ],
+  "aliases": [
+    "Centre aquatique Le Triton",
+    "Aqualand de Yerres",
+    "Centre de loisirs nautiques Le Triton"
+  ],
+  "initialCoverage": {
+    "parks": 0,
+    "items": 0,
+    "zones": 0,
+    "images": 0,
+    "historyEvents": 0,
+    "articles": 0
+  },
+  "sources": [
+    {
+      "label": "Maison de Banlieue exhibition, page10, two authentic1988 Triton posters",
+      "url": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf"
+    },
+    {
+      "label": "Official parliament question51356 and Interior Ministry reply1992, operator and loan guarantees",
+      "url": "https://questions.assemblee-nationale.fr/q9/9-51356QE.htm"
+    },
+    {
+      "label": "Official business register YERRES OBJECTIFS LOISIRS SIREN339970162",
+      "url": "https://recherche-entreprises.api.gouv.fr/search?q=YERRES+OBJECTIF+LOISIRS"
+    },
+    {
+      "label": "Municipal retrospective2025 page6, demolition photograph and April1997 start",
+      "url": "https://www.yerres.fr/yerres_medias/2025/02/Bilan-30-ans.pdf"
+    },
+    {
+      "label": "Le Monde contemporary1994 report, abandoned site and legal chronology",
+      "url": "https://www.lemonde.fr/archives/article/1994/10/02/heures-locales-regions-essonne-les-habitants-de-yerres-reglent-les-comptes-du-triton_3843882_1819218.html"
+    },
+    {
+      "label": "Municipal current site and reconversion at confluence",
+      "url": "https://www.yerres.fr/carte_interactive/parc-des-deux-rivieres/"
+    },
+    {
+      "label": "Former centre address and coordinates; erroneous open status ignored",
+      "url": "https://fr.localitybiz.com/25217994/ancien-centre-aquatique-le-triton-yerres"
+    }
+  ],
+  "dateDecision": {
+    "opening": "Leave empty pending source reconciliation: Le Parisien retrospectives1987, museum1988 (poster says forthcoming), Institut Paris Région1990. No invented precise day.",
+    "closure": "Leave empty pending reconciliation: press1989 and contemporary1994 abandoned walls; municipal retrospectiveJune1995. Bankruptcy13November1989 and liquidationDecember1990 are separate legal milestones, not assumed visitor closing dates.",
+    "demolition": "StartApril1997 from primary municipal retrospective; press1998 may describe end. Do not collapse start and end."
+  },
+  "referenceDecision": "Operator Yerres Objectifs Loisirs confirmed by official register and parliamentary answer, separate from current Yerres Loisirs association. Municipality initiates/guarantees project; no personally named founder reference inferred from political role.",
+  "locationDecision": "Former-centre directory33RueRaymondPoincaré with48.7088552,2.4974139, crosschecked against municipal attribution to old site at Yerres/Réveillon confluence; no current garden visitor amenities imported.",
+  "initialGaps": [
+    "Detailed named attraction inventory and precise positions",
+    "Authentic standalone logo original",
+    "Original promotional media suitable for import: PDF CMYK images extract with inverted standalone display, do not recolour or recompress",
+    "Annual official map editions",
+    "Opening and last visitor closure dates",
+    "Full factual, neutral history avoiding partisan retrospective accusations"
+  ],
+  "nextSteps": "01 core and necessary operator;02 zones only if sourced;03 named historical items;04 eight-language text;05 original photos/logo/maps;06/07 no current hours/prices for closed park;08 substantive sourced history;09 fresh full export, corpus/coverage audit before any publication."
+}

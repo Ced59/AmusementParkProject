@@ -14,20 +14,20 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 
 | État éditorial | Nombre |
 | --- | ---: |
-| À intégrer | 31 |
-| À qualifier | 232 |
-| En cours | 3 |
-| Bloqué | 0 |
-| Intégration achevée | 3 |
-| Publié, date inconnue | 128 |
+| À intégrer | 20 |
+| À qualifier | 211 |
+| En cours | 11 |
+| Bloqué | 14 |
+| Intégration achevée | 13 |
+| Publié, date inconnue | 127 |
 | Hors périmètre enregistré | 99 |
-| Doublon conservé | 0 |
+| Doublon conservé | 2 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **616**. Sources : Aerophile — références constructeur, AmusementForce, Backlog national existant, Découverte complémentaire — site officiel, EAZA, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Sunkid — projet constructeur, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **94 publiés**, **31 masqués à intégrer**, **101 masqués NotRelevant à réexaminer**, **195 candidats sans fiche**.
+Parcs : **111 publiés**, **33 masqués à intégrer**, **101 masqués NotRelevant à réexaminer**, **175 candidats sans fiche**.
 
 Standalone : **40 publiées**, **0 masquées**, **11 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
@@ -40,4 +40,4 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent dans le JSON national.
 
 - [Page 1 — lignes 1 à 250](FR/001.md)
-- [Page 2 — lignes 251 à 496](FR/002.md)
+- [Page 2 — lignes 251 à 497](FR/002.md)

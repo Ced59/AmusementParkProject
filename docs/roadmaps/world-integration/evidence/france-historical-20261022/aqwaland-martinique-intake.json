@@ -1,0 +1,197 @@
+{
+  "entryId": "FR-candidate-e85014d661e1cf",
+  "owner": "Conversation France",
+  "reservedAtUtc": "2026-11-01T17:10:13.347589+00:00",
+  "masterChecked": "ef998048",
+  "snapshot": {
+    "entryId": "FR-candidate-e85014d661e1cf",
+    "name": "Aqwaland Martinique",
+    "entityKind": "Park",
+    "proposedEntityKind": "Park",
+    "category": "Catégorie à qualifier",
+    "locality": "Le Carbet",
+    "siteId": null,
+    "legacySiteIds": [],
+    "presence": "NotFound",
+    "presenceObservedAt": "2026-10-22",
+    "editorialStatus": "InProgress",
+    "siteReviewStatusAtInventory": null,
+    "lifecycleAtInventory": null,
+    "sourceLifecycleSignal": "Non vérifié",
+    "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+    "possibleMatches": [],
+    "aliases": [],
+    "assignedTo": "Conversation France",
+    "lastDataIntegrationAt": null,
+    "integrationHistory": [],
+    "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+    "sources": [
+      {
+        "label": "Backlog national existant",
+        "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+        "accessedAt": "2026-10-22"
+      }
+    ]
+  },
+  "stage": "Identity qualification",
+  "candidateAliases": [
+    "Aqwaland Martinique",
+    "Aqwaland",
+    "Aqualand Martinique",
+    "Parc aquatique de la Martinique"
+  ],
+  "reservationCommit": "01fe8deb",
+  "qualification": {
+    "entryId": "FR-candidate-e85014d661e1cf",
+    "owner": "Conversation France",
+    "qualifiedAtUtc": "2026-11-01T17:14:38.716965+00:00",
+    "qualification": "Parc aquatique historique fixe de quatre hectares au Carbet, Martinique. Plusieurs toboggans, piscine à vagues, espace enfants et services : Park, pas standalone ni attraction interne à un autre parc.",
+    "matchingExistingEntity": null,
+    "aliases": [
+      "Aqwaland Martinique",
+      "Aqwaland",
+      "Aqualand Martinique",
+      "Parc aquatique de la Martinique"
+    ],
+    "searches": [
+      {
+        "receipt": "00-search-aqualand-parks-p1.json",
+        "pagination": {
+          "totalItems": 3,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": [
+          {
+            "id": "ce026109-5388-4bbd-8e11-c0266adcb514",
+            "name": "Aquagif",
+            "countryCode": "FR",
+            "city": "Gif-sur-Yvette"
+          },
+          {
+            "id": "471064d0-2366-4708-bc47-f8ba6fab14ff",
+            "name": "Aqualand Köln",
+            "countryCode": "DE",
+            "city": "Köln"
+          },
+          {
+            "id": "5b920ecc-397d-4402-b4a5-0952ec8058d8",
+            "name": "Aquashow Family Park",
+            "countryCode": "PT",
+            "city": "Quarteira"
+          }
+        ]
+      },
+      {
+        "receipt": "00-search-aqualand-standalone-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-aqwaland-parks-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-aqwaland-standalone-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-carbet-parks-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-carbet-standalone-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-martinique-parks-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      },
+      {
+        "receipt": "00-search-martinique-standalone-p1.json",
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 50
+        },
+        "results": []
+      }
+    ],
+    "sourceUrls": [
+      "https://web.archive.org/web/20130617000729id_/http://aqwaland.fr:80/index.php",
+      "https://www.iedom.fr/IMG/pdf/ra2004_martinique-3.pdf",
+      "https://web.archive.org/web/20140817181708id_/http://aqwaland.fr/index.php?view=article&catid=66:communique&id=164:fin-de-saison&tmpl=component&print=1&layout=default&page=",
+      "https://web.archive.org/web/20130622011917id_/http://aqwaland.fr:80/plan-daccmenuaqualand",
+      "https://recherche-entreprises.api.gouv.fr/search?q=PARC%20AQUATIQUE%20MARTINIQUE",
+      "https://www.zetwal.mq/actualites/appel-a-projets-pour-la-reprise-du-site-de-lex-parc-aquatique-aqualand/",
+      "https://rci.fm/martinique/infos/Economie/La-CTM-met-en-vente-11-de-ses-proprietes-dont-le-site-dAqwaland-au-Carbet?pg=1"
+    ],
+    "decisions": {
+      "identitySearch": "Huit recherches globales Parks/Standalone Aqwaland, Aqualand, Carbet, Martinique, toutes pages traitées. Seuls trois faux positifs Aqualand : Aquagif (Gif-sur-Yvette), Aqualand Köln (Allemagne), Aquashow (Portugal). Aucun correspondant au Carbet.",
+      "opening": "Février 2004 confirmé par site officiel et rapport annuel IEDOM 2004 segment PDF page 11. Aucun jour inventé.",
+      "closing": "Dernier jour de saison 1 septembre 2013 confirmé par annonce officielle archivée. Maintenance longue durée devenue fermeture durable ; presse 2016 et propriétaire public parlent depuis de l’ancien parc à reprendre. Le 25 août 2016 est une date d’article, pas la fermeture.",
+      "operator": "Parc Aquatique de la Martinique, SIREN 433658846, création juridique 20 novembre 2000. L’activité administrative encore active ne prouve pas une exploitation du parc. CTM propriétaire depuis 2017, pas dernier exploitant supposé.",
+      "geolocation": "Point du site 14.71555,-61.16650, au sein du parc clairement identifié sur orthophoto IGN actuelle : cinq ensembles de glissades, piscine à vagues triangulaire et bâtiments. Coordonnées Sirene 14.718944382,-61.15860354 non reprises ; centre de carte officielle 14.713293,-61.175094 est un cadrage large, pas le point d’entrée.",
+      "website": "Ancien domaine aqwaland.fr attesté par site archivé et guide officiel tourisme 2015. Aucun site actif de parc ouvert inventé.",
+      "logo": "Logo original Aqwaland Martinique PNG retrouvé dans archive officielle du 25 juillet 2013, 16213 octets ; personnellement inspecté. Import à l’étape 5 avec huit métadonnées.",
+      "zones": "Aucune zone officielle encore établie ; Mini Parc traité à l’inventaire sans doublon automatique attraction/zone.",
+      "initialCoverage": {
+        "items": 0,
+        "descriptions8Languages": 0,
+        "images": 0,
+        "maps": 0,
+        "facts": 0,
+        "articles": 0
+      },
+      "provisionalInventory": "Six intitulés aquatiques identifiés : Black Hole, Piscine à vague, Mini Parc, Colorado, Super Slalom, Crazy race. Tyrolienne, restauration, services et spectacles à vérifier avant inventaire exhaustif.",
+      "depth": "Historique fermé, rayonnement régional ; matière officielle disponible pour traitement complet des lieux, huit langues, photos originales, jalons et article développé.",
+      "gapsToResearch": [
+        "Plans internes et millésimes : le Plan Sat. connu est une carte d’accès, pas une carte annuelle interne",
+        "Dates et fabricants des installations individuelles",
+        "Offre secondaire, ancienne identité Aqualand et chronologie de changement de nom",
+        "Photographies propres à chaque lieu et événements",
+        "Précision des implantations de tous les lieux fixes"
+      ],
+      "accessFailure": "Fichier de plan d’accès original /images/stories/photoparc/Plan/plan.jpg : HTTP 403, aucun contournement. Orthophoto IGN indépendante consultée pour localisation.",
+      "hoursPricing": "Parc fermé : pas de calendrier ni tarifs actuels."
+    },
+    "nextStep": "01 park core creation, private and ToReview, then official steps 2–9."
+  }
+}

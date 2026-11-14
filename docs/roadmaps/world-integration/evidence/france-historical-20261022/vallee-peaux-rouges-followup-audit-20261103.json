@@ -1,0 +1,489 @@
+{
+  "entryId": "FR-candidate-b96b33e2bd92d5",
+  "owner": "Conversation France",
+  "parkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+  "name": "La Vallée des Peaux-Rouges",
+  "auditedAtUtc": "2026-11-03T04:25:36.166031+00:00",
+  "outcome": "partial",
+  "sitePublished": false,
+  "facebookPublished": false,
+  "facebookAction": "Aucune annonce tant que la fiche reste masquée; autorisation utilisateur conservée.",
+  "projectedCompleteness": {
+    "completenessScore": 85,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 102,
+    "earnedPoints": 87,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "lastDataIntegrationAt": "2026-11-03T04:23:41.842Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-d7510d73-286a-43ae-9cdd-042111359d90",
+  "previousAudit": "vallee-peaux-rouges-progress-audit.json",
+  "freshExportReconciliation": {
+    "checkedAtUtc": "2026-11-03T04:24:36.832604+00:00",
+    "freshExportAtUtc": "2026-11-03T04:23:55.7330914Z",
+    "sha256": "07af8be4e220f6466cd7661f26a0b81be640e2f13a3986f1024a83cd5157aad5",
+    "differences": [],
+    "explicitEmptyFieldNormalizations": [
+      {
+        "imageId": "b88e019d30594bb2b2e2edba9d46b377",
+        "fields": [
+          "ownerKey",
+          "internalUrl"
+        ],
+        "reason": "Unchanged prior image: canonical park owner alias and deterministic internal resource URL returned by full export."
+      },
+      {
+        "blockId": "08c82892cff2503dade12113ccfe9fd2",
+        "field": "headingLevel",
+        "default": null
+      },
+      {
+        "blockId": "08c82892cff2503dade12113ccfe9fd2",
+        "field": "imageId",
+        "default": null
+      },
+      {
+        "blockId": "08c82892cff2503dade12113ccfe9fd2",
+        "field": "imageIds",
+        "default": []
+      },
+      {
+        "blockId": "08c82892cff2503dade12113ccfe9fd2",
+        "field": "captions",
+        "default": []
+      },
+      {
+        "blockId": "a980ec419f725f60a7a098ebd4b43836",
+        "field": "headingLevel",
+        "default": null
+      },
+      {
+        "blockId": "a980ec419f725f60a7a098ebd4b43836",
+        "field": "texts",
+        "default": []
+      },
+      {
+        "blockId": "a980ec419f725f60a7a098ebd4b43836",
+        "field": "imageIds",
+        "default": []
+      }
+    ],
+    "requestAliasNormalization": "Aucun changement de contenu après normalisation des champs techniques et des valeurs vides explicites."
+  },
+  "idempotence": {
+    "operationId": "ea57fffe-a004-495d-bb44-31e86bf462c9",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 35,
+      "warnings": 0,
+      "errors": 0
+    },
+    "applied": false
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-03T04:23:55.7330914Z",
+    "items": 8,
+    "zones": 2,
+    "attractions": 1,
+    "attractionStatuses": {
+      "Removed": 1
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 1,
+    "attractionsWithImage": 1,
+    "attractionImageGaps": [],
+    "ownedImages": 17,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "0a82fd7d-1fdf-4df8-8ddd-f3bbfa1ed21a",
+        "name": "Banque",
+        "category": "Other",
+        "images": 1
+      },
+      {
+        "id": "3ed8fe01-57cc-4a02-b526-178f91f634a4",
+        "name": "Bureau du shérif",
+        "category": "Other",
+        "images": 1
+      },
+      {
+        "id": "5c32d182-ab5a-40aa-8c6b-9dbe7b487c8d",
+        "name": "Fort",
+        "category": "Other",
+        "images": 0
+      },
+      {
+        "id": "e06a6ad3-d8db-4a8e-a9d7-42a32e39f80f",
+        "name": "Gare Fleurine Railways",
+        "category": "Transport",
+        "images": 0
+      },
+      {
+        "id": "ec93b373-bd50-437b-9b9c-5ca6eaa25373",
+        "name": "La Cantina",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "5b659d6e-4397-477a-8c87-a2507c9a7c3f",
+        "name": "Petit train",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "d35a2afc-3384-4882-8ef9-fe415ad75584",
+        "name": "Saloon",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "66f8393f-de85-4c8c-9b2c-bed78e0546d9",
+        "name": "Spectacles équestres",
+        "category": "Show",
+        "images": 3
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "0a82fd7d-1fdf-4df8-8ddd-f3bbfa1ed21a",
+        "name": "Banque",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "3ed8fe01-57cc-4a02-b526-178f91f634a4",
+        "name": "Bureau du shérif",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "5c32d182-ab5a-40aa-8c6b-9dbe7b487c8d",
+        "name": "Fort",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "e06a6ad3-d8db-4a8e-a9d7-42a32e39f80f",
+        "name": "Gare Fleurine Railways",
+        "category": "Transport",
+        "status": null
+      },
+      {
+        "id": "ec93b373-bd50-437b-9b9c-5ca6eaa25373",
+        "name": "La Cantina",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "5b659d6e-4397-477a-8c87-a2507c9a7c3f",
+        "name": "Petit train",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d35a2afc-3384-4882-8ef9-fe415ad75584",
+        "name": "Saloon",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "66f8393f-de85-4c8c-9b2c-bed78e0546d9",
+        "name": "Spectacles équestres",
+        "category": "Show",
+        "status": null
+      }
+    ],
+    "history": 6,
+    "parkHistory": 4,
+    "itemHistory": 2,
+    "historyWithSource": 6,
+    "historyWithImage": 6,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": false,
+    "itemsWithEightDescriptions": 8,
+    "officialLogo": null,
+    "generalHistoricalParkViews": {
+      "count": 4,
+      "target": 5,
+      "excludes": [
+        "full leaflet",
+        "record sleeve",
+        "modern adventure course image"
+      ]
+    },
+    "allItemsWithImages": {
+      "covered": 6,
+      "total": 8
+    },
+    "articleBlockCounts": {
+      "Heading": 4,
+      "Paragraph": 9,
+      "Image": 4
+    }
+  },
+  "publicTextReview": {
+    "textFields": 777,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "newCopyAndTranslationsPersonallyReviewed": true,
+    "unchangedCorpusPreservedAndRescanned": true,
+    "encodingFindings": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicates": 0,
+    "crossSequenceGroups": 0,
+    "finalEditorialApproval": false,
+    "manualRemainingFinding": "Fort : deux phrases générales insuffisantes pour la validation éditoriale finale; dossier privé maintenu."
+  },
+  "historyCanonicalDiagnostics": {
+    "parkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+    "parkName": "La Vallée des Peaux-Rouges",
+    "factCount": 11,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1960,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 0,
+        "subjectCount": 2,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 1970,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 1980,
+        "resourceCount": 2,
+        "sourcedResourceCount": 2,
+        "publishedResourceCount": 0,
+        "subjectCount": 2,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2010,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 6
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 5
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "sourceFollowup": {
+    "checkedAtUtc": "2026-11-03T04:20:42.083805+00:00",
+    "entryId": "FR-candidate-b96b33e2bd92d5",
+    "source": {
+      "label": "Jan Hertoghs — De laatste westerners en cowboydorpen van België (2), entretien et photographies historiques de Fleurines",
+      "url": "https://www.janhertoghs.be/reportages/ch6tbtnz6mdn6wii8i0ln1lbqngcoa",
+      "accessedAt": "2026-11-03"
+    },
+    "sourceType": "Journalist report with firsthand participant interview and specifically captioned historical photographs.",
+    "newPhotos": [
+      {
+        "source": "https://images.squarespace-cdn.com/content/v1/5dd5a0cbd0da3d744ae48b50/1602759364131-XN6T7M7MK6MQNHRD9UKQ/B+peaux+rouge.png",
+        "local": "/workspace/france-historical-20261022/vallee-peaux-rouges/sources/10-followup/hertoghs-6.png",
+        "bytes": 415863,
+        "dimensions": [
+          644,
+          456
+        ],
+        "sha256": "7d9568a723d347cf1a23bcb96eeff34f7bcfcae29d46dd0d79c340f813661144",
+        "sourcePage": "https://www.janhertoghs.be/reportages/ch6tbtnz6mdn6wii8i0ln1lbqngcoa",
+        "credit": "Reproduction published by Jan Hertoghs, attributed to forumwesternmovies.fr; original photographer unidentified."
+      },
+      {
+        "source": "https://images.squarespace-cdn.com/content/v1/5dd5a0cbd0da3d744ae48b50/1602759422561-0M5DFYZFDYSUECNP5AQ2/B+peau+2.png",
+        "local": "/workspace/france-historical-20261022/vallee-peaux-rouges/sources/10-followup/hertoghs-7.png",
+        "bytes": 464790,
+        "dimensions": [
+          643,
+          457
+        ],
+        "sha256": "85eda9da565c467c7ff405f982cb5317449375199caab0ba2a312c03b8fc0a17",
+        "sourcePage": "https://www.janhertoghs.be/reportages/ch6tbtnz6mdn6wii8i0ln1lbqngcoa",
+        "credit": "Reproduction published by Jan Hertoghs, attributed to forumwesternmovies.fr; original photographer unidentified."
+      }
+    ],
+    "bankVisualEvidence": "BANK, EXCHANGE and GOLD-SILVER signs directly read on the photograph; low bank façade next to taller saloon. First bank photo; no separately invented show.",
+    "campTestimony": "Participant describes annual monthlong stays and camp access viewed from outside. Attributed in article, not converted into timeless structured attraction restrictions.",
+    "exactPhotoDates": null,
+    "allEightLanguagesPersonallyAuthoredAndReviewed": true,
+    "bankFormat": "One specific heading and two factual paragraphs; retained source-limited format, no filler for a three-paragraph quota.",
+    "logo": "Historical official standalone logo still missing; cropping question pending, no image edit performed."
+  },
+  "followupDataOperations": [
+    {
+      "eventId": "import-photo-e72dc74105d044b68c025a05c4654b75-2026-11-03T041908.047Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T04:19:08.047Z",
+      "appliedAt": "2026-11-03T04:19:08.047Z",
+      "receiptFile": "10-camp-painted-tipi-import-receipt.json",
+      "receiptSha256": "2ee4dccd1d2595ab3e0c33f40d78914d858c153c788e8e3b7067e163a8e63de6",
+      "imageId": "e72dc74105d044b68c025a05c4654b75",
+      "ownerId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+      "createdAt": "2026-11-03T04:19:04.523Z",
+      "sourceUrl": "https://images.squarespace-cdn.com/content/v1/5dd5a0cbd0da3d744ae48b50/1602759364131-XN6T7M7MK6MQNHRD9UKQ/B+peaux+rouge.png",
+      "summary": "Import privé du média historique 10-camp-painted-tipi, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-392054d80b014a5aa7965e9bdf20b741-2026-11-03T041923.232Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T04:19:23.232Z",
+      "appliedAt": "2026-11-03T04:19:23.232Z",
+      "receiptFile": "10-bank-street-import-receipt.json",
+      "receiptSha256": "96660c7f5296f83b3a96aa13d338405c254bb44338e8e5c4c6c4af66c7b32bbd",
+      "imageId": "392054d80b014a5aa7965e9bdf20b741",
+      "ownerId": "0a82fd7d-1fdf-4df8-8ddd-f3bbfa1ed21a",
+      "createdAt": "2026-11-03T04:19:19.65Z",
+      "sourceUrl": "https://images.squarespace-cdn.com/content/v1/5dd5a0cbd0da3d744ae48b50/1602759422561-0M5DFYZFDYSUECNP5AQ2/B+peau+2.png",
+      "summary": "Import privé du média historique 10-bank-street, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-d7510d73-286a-43ae-9cdd-042111359d90",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:23:41.842598Z",
+      "appliedAt": "2026-11-03T04:23:41.842Z",
+      "receiptFile": "10-bank-and-camp-history-apply.receipt.json",
+      "receiptSha256": "b777f3fc13faeb9fe14ecf34391f4e97400714c2a7f094251e402472df2529c0",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Vallée des Peaux-Rouges : description de la banque enrichie en huit langues et article complété par une photographie de la banque et un témoignage sur la vie du camp. Sources, blocs précédents et confidentialité conservés; résultat partiel avant audit."
+    }
+  ],
+  "remainingGaps": [
+    {
+      "key": "logo",
+      "blocking": true,
+      "detail": "Logo historique exploitable encore absent. La brochure America Park constitue une piste authentique. Aucun interdit général de recadrage dans AGENTS.md : la mention ancienne « pas de recadrage » était un choix local, pas une règle du projet. Demande de méthode de recadrage fidèle en attente; pas de dessin généré ou de logo moderne substitué."
+    },
+    {
+      "key": "official-maps",
+      "blocking": false,
+      "detail": "Aucune édition officielle visiteurs retrouvée. Dépliant collectors limité à couverture ; vue aérienne annotée1968 et cartes municipales/PNR ne sont pas des plans officiels du parc."
+    },
+    {
+      "key": "geolocation",
+      "blocking": false,
+      "detail": "Sept installations fixes sans point exact prouvé. GPS de parc et de viaduc connus, mais aucun transfert arbitraire aux bâtiments ou gare. Photographies, plans municipaux et vue aérienne1968 contrôlés."
+    },
+    {
+      "key": "photos",
+      "blocking": false,
+      "detail": "4/5 vues générales historiques; banque désormais illustrée. Gare et fort sans photographie propre utilisable. 17 médias conservés, dont deux nouvelles photographies du reportage Jan Hertoghs."
+    },
+    {
+      "key": "operator-manufacturer-access",
+      "blocking": false,
+      "detail": "Exploitant juridique ancien, constructeur du train et conditions d’accès historiques non attribuables. JeanRichard acheteur1971 n’est pas fondateur. Société moderne et locomotives industrielles des anciennes sablières non transférées au parc."
+    },
+    {
+      "key": "closing-year",
+      "blocking": false,
+      "detail": "1988 retenu selon inventaire ferroviaire et notice Cinémathèque ; PNR2025 et extrait étude2006 donnent1989. Divergence conservée sans inventer jour, mois, ni précision supérieure aux sources."
+    },
+    {
+      "key": "short-secondary-building-copy",
+      "blocking": true,
+      "detail": "La banque a été développée sur photographie. Le fort reste décrit par deux phrases très générales : rechercher une source précise sur son décor ou son spectacle avant validation éditoriale finale. Les contrôles automatiques ne suffisent pas à lever cette réserve."
+    }
+  ],
+  "batchCompletedCount": 8,
+  "prCreated": false,
+  "versionChanged": false
+}

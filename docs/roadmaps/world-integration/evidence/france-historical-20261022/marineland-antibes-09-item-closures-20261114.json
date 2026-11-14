@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "8ca577246b2ca63a9e4edc7640a339f895b9cbc20a68192cbf231a0e34b8625b",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "d666281f-d826-4548-a0d9-19a030933c6c",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T19:52:30.6561544Z",
+    "appliedAtUtc": "2026-11-14T19:52:30.6561553Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c93f4096-102d-45f3-a3cb-072b764736b7",
+        "entityKey": "marineland-orques-fermeture-public-20250105",
+        "displayName": "Le dernier spectacle de Wikie et Keijo",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-orques-fermeture-public-20250105"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "1"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "DefinitiveClosure"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "178571da631e488e949c50f9ecb7bef7"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die letzte Show von Wikie und Keijo, en:Wikie and Keijo’s final show, es:El último espectáculo de Wikie y Keijo, fr:Le dernier spectacle de Wikie et Keijo, it:L’ultimo spettacolo di Wikie e Keijo, nl:De laatste show van Wikie en Keijo, pl:Ostatni pokaz Wikie i Keijo, pt:O último espetáculo de Wikie e Keijo"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 5. Januar 2025 treten Wikie und Keijo zum letzten Mal vor den Besuchern von Marineland auf. Mit der Schließung enden die öffentlichen Shows im großen Becken. Die beiden Orcas bleiben anschließend in Antibes, während nach einem Aufnahmeort gesucht wird., en:On 5 January 2025, Wikie and Keijo give their final performance for Marineland’s visitors. The closure ends public shows in the large pool. The two orcas remain in Antibes afterwards while a destination for them is sought., es:El 5 de enero de 2025, Wikie y Keijo actúan por última vez ante los visitantes de Marineland. El cierre pone fin a los espectáculos públicos en la gran piscina. Las dos orcas permanecen después en Antibes, a la espera de un lugar de acogida., fr:Le 5 janvier 2025, Wikie et Keijo donnent leur dernière représentation devant les visiteurs de Marineland. La fermeture met fin aux spectacles publics dans le grand bassin. Les deux orques restent ensuite à Antibes, dans l’attente d’une destination d’accueil., it:Il 5 gennaio 2025 Wikie e Keijo si esibiscono per l’ultima volta davanti ai visitatori di Marineland. La chiusura pone fine agli spettacoli pubblici nella grande vasca. Le due orche restano poi ad Antibes, in attesa di una struttura che le accolga., nl:Op 5 januari 2025 treden Wikie en Keijo voor het laatst op voor de bezoekers van Marineland. De sluiting beëindigt de openbare shows in het grote bassin. De twee orka’s blijven daarna in Antibes, in afwachting van een nieuwe verblijfplaats., pl:5 stycznia 2025 roku Wikie i Keijo występują po raz ostatni przed odwiedzającymi Marineland. Zamknięcie kończy publiczne pokazy w dużym basenie. Obie orki pozostają następnie w Antibes, czekając na miejsce, które będzie mogło je przyjąć., pt:A 5 de janeiro de 2025, Wikie e Keijo apresentam-se pela última vez perante os visitantes do Marineland. O encerramento põe fim aos espetáculos públicos no grande tanque. As duas orcas permanecem depois em Antibes, à espera de um local de acolhimento."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"AFP / La Gazette France \\u2014 fermeture du 5 janvier 2025\",\"Url\":\"https://www.lagazettefrance.fr/article/cote-d-azur-clap-de-fin-pour-les-orques-et-les-dauphins-du-marineland\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Marineland \\u2014 communiqu\\u00E9 du 4 d\\u00E9cembre 2024\",\"Url\":\"https://www.marineland.fr/content/dam/mar/fr/files/CP%20-%20Marineland%20annonce%20%C3%A0%20son%20CSE%20son%20projet%20de%20fermeture%20d%C3%A9finitive%20%C3%A0%20compter%20du%205%20janvier%202025.pdf\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "3eca869e-44e3-4ad6-b251-4938de361003",
+        "entityKey": "marineland-dauphins-fermeture-public-20250105",
+        "displayName": "Le delphinarium ferme aux visiteurs",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-dauphins-fermeture-public-20250105"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "c6210721-d0a6-44e7-84d0-3b7e7b864b33"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "c6210721-d0a6-44e7-84d0-3b7e7b864b33"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "1"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "DefinitiveClosure"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "3c5268c4ad964840980c08b6884853a7"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die Delfinanlage schließt für Besucher, en:The dolphin arena closes to visitors, es:El delfinario cierra a los visitantes, fr:Le delphinarium ferme aux visiteurs, it:Il delfinario chiude ai visitatori, nl:Het dolfinarium sluit voor bezoekers, pl:Delfinarium zamyka się dla zwiedzających, pt:O delfinário encerra aos visitantes"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Mit der Schließung von Marineland am 5. Januar 2025 bleiben die Tribünen der Delfinanlage für Besucher geschlossen. Zwölf Delfine bleiben vor Ort und werden weiter versorgt. Das Ende der öffentlichen Vorführungen liegt damit deutlich vor ihrem Wegzug, der mit dem Transfer von acht Tieren im Juli 2026 beginnt., en:When Marineland closes on 5 January 2025, the dolphin arena’s stands stop welcoming visitors. Twelve dolphins remain on site and continue to receive care. Public performances therefore end well before their departure, which begins with the transfer of eight animals in July 2026., es:Con el cierre de Marineland el 5 de enero de 2025, las gradas del delfinario dejan de recibir visitantes. Doce delfines permanecen allí y siguen recibiendo cuidados. El fin de las actuaciones precede así a su salida, que comienza con el traslado de ocho animales en julio de 2026., fr:Avec la fermeture de Marineland le 5 janvier 2025, les gradins du delphinarium cessent d’accueillir le public. Douze dauphins demeurent sur place et continuent de recevoir des soins. L’arrêt des représentations précède donc leur départ, qui commence avec le transfert de huit animaux en juillet 2026., it:Con la chiusura di Marineland il 5 gennaio 2025, le tribune del delfinario smettono di accogliere il pubblico. Dodici delfini rimangono sul posto e continuano a ricevere cure. La fine degli spettacoli precede quindi la loro partenza, che inizia con il trasferimento di otto animali nel luglio 2026., nl:Met de sluiting van Marineland op 5 januari 2025 ontvangen de tribunes van het dolfinarium geen bezoekers meer. Twaalf dolfijnen blijven ter plaatse en worden verder verzorgd. De openbare voorstellingen stoppen dus ruim vóór hun vertrek, dat begint met de overbrenging van acht dieren in juli 2026., pl:Po zamknięciu Marineland 5 stycznia 2025 roku trybuny delfinarium przestają przyjmować publiczność. Dwanaście delfinów pozostaje na miejscu i nadal otrzymuje opiekę. Pokazy kończą się więc przed ich wyjazdem, który rozpoczyna transfer ośmiu zwierząt w lipcu 2026 roku., pt:Com o encerramento do Marineland a 5 de janeiro de 2025, as bancadas do delfinário deixam de receber visitantes. Doze golfinhos permanecem no local e continuam a receber cuidados. O fim das apresentações antecede assim a sua partida, que começa com a transferência de oito animais em julho de 2026."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Tribunal administratif de Nice \\u2014 autorisations vers Selwo Marina et Valence, 21 juillet 2026\",\"Url\":\"https://nice.tribunal-administratif.fr/decisions-de-justice/dernieres-decisions/transfert-des-dauphins-de-marineland-en-espagne-le-juge-des-referes-rejette-les-demandes-formulees-par-l-association-sea-shepherd-france\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"One Voice / Savoir Animal \\u2014 photographie du chargement nocturne, 23 juillet 2026\",\"Url\":\"https://savoir-animal.fr/le-transfert-vers-espagne-dauphins-marineland-a-commence/\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"20 Minutes \\u2014 renoncement de Beauval, 28 ao\\u00FBt 2026\",\"Url\":\"https://www.20minutes.fr/planete/4241482-20260828-apres-renoncement-beauval-vont-devenir-19-dauphins-captifs-francais-devaient-etre-transferes\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"AFP / La Gazette France \\u2014 fermeture du 5 janvier 2025\",\"Url\":\"https://www.lagazettefrance.fr/article/cote-d-azur-clap-de-fin-pour-les-orques-et-les-dauphins-du-marineland\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Marineland \\u2014 communiqu\\u00E9 du 4 d\\u00E9cembre 2024\",\"Url\":\"https://www.marineland.fr/content/dam/mar/fr/files/CP%20-%20Marineland%20annonce%20%C3%A0%20son%20CSE%20son%20projet%20de%20fermeture%20d%C3%A9finitive%20%C3%A0%20compter%20du%205%20janvier%202025.pdf\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Parcs \\u0026 Loisirs \\u2014 d\\u00E9part des huit dauphins, juillet 2026\",\"Url\":\"https://www.parcsetloisirs.fr/actualite/marineland-antibes-transfert-dauphins-2\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

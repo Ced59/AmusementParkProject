@@ -1,0 +1,71 @@
+{
+  "checkedAtUtc": "2026-10-28T21:07:04.656692+00:00",
+  "scope": "Section-limited References export after attaching existing manufacturers; no full park export.",
+  "manufacturers": [
+    {
+      "id": "472bb510-935a-40ea-a443-7c14bfaed0a8",
+      "name": "Zierer",
+      "biographyLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wasChanged": false
+    },
+    {
+      "id": "65fcc0c9-0d4c-4dd8-a869-e79a9e0bc266",
+      "name": "Anton Schwarzkopf",
+      "biographyLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wasChanged": false
+    },
+    {
+      "id": "9d1a1efe-fcd8-4e5f-882d-2567cc18ca8a",
+      "name": "Vekoma",
+      "biographyLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wasChanged": false
+    },
+    {
+      "id": "a917c228-e220-4234-a6ff-603e13365607",
+      "name": "Intamin",
+      "biographyLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "wasChanged": false
+    }
+  ],
+  "sharedReferenceNotes": [
+    "All four shared manufacturers already have eight-language biographies. No shared biography modified in this park batch.",
+    "Existing Intamin summary contains broad engineering rhetoric; existing Schwarzkopf summary contains evaluative phrasing. Review retained for explicit fact-checked cross-park reference work; do not silently rewrite globally during this park batch."
+  ],
+  "acceptedFoundersOperators": "JacquesMédecin politicalinitiator andSPAN historicalcompany newlyapplied in thisbatch, sourcedand8langs."
+}

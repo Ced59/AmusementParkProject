@@ -1,0 +1,38 @@
+{
+  "recoveredAtUtc": "2026-11-03T01:58:17.832730+00:00",
+  "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+  "logoFormatProof": {
+    "atUtc": "2026-11-03T01:24:18.080299+00:00",
+    "purpose": "Lossless file-format serialization for official client JPEG/PNG/WebP compatibility; no visual editing or generated artwork.",
+    "originalFile": "10-official-logo3.gif",
+    "originalSha256": "e71932213873849a6379ebcfe0f466cebde2ec1d8faa5553b7abdeaeae80ca1f",
+    "serializedFile": "10-official-logo-lossless.png",
+    "serializedSha256": "c5ac92c5983ce540a07cfd313afc86b392659346a42407b35d4a5369ee161525",
+    "decodedRgbaSha256": "795eb3ae0cfd0ce7ffe8fc185bd249ff6d4352fc947979547b1f943e5f741d39",
+    "pixelEquality": true,
+    "dimensions": [
+      90,
+      90
+    ],
+    "frameCount": 1,
+    "transparencyPreserved": true,
+    "pngCompressionLevel": 0,
+    "noResizeCropRecolourOrWatermarkRemoval": true,
+    "sourcePage": "https://web.archive.org/web/20010212142526id_/http://www.parc-de-la-drosera.fr:80/menu.html",
+    "originalUrl": "https://web.archive.org/web/20010805090257id_/http://parc-de-la-drosera.fr:80/images/logo3.gif"
+  },
+  "models": {
+    "officialPages": 49,
+    "nativePhotosRecovered": 48,
+    "sourceIndex": "drosera-forez-recovered-model-index.json",
+    "progress": "drosera-forez-model-progress-20261103.json"
+  },
+  "additionalEvidence": [
+    "https://web.archive.org/web/20040703164732id_/http://www.parc-de-la-drosera.fr:80/boutique.html",
+    "https://web.archive.org/web/20040610133526id_/http://www.parc-de-la-drosera.fr:80/restaur.html",
+    "https://web.archive.org/web/20040406002123id_/http://www.parc-de-la-drosera.fr:80/promene.html"
+  ],
+  "mediaPolicy": "Original native photographs unchanged, including operator labels/logos. OnlystaticGIFlogo serialized to supportedPNGwithidenticaldecodedRGBApixels; proofincluded. No crop/recompression/watermarkremoval.",
+  "notCompleted": true,
+  "noFacebookYet": true
+}

@@ -1,0 +1,104 @@
+{
+  "entryId": "FR-candidate-2f3fddd5eab60a",
+  "parkId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+  "reviewedAtUtc": "2026-11-02T18:21:38.023422+00:00",
+  "status": "InProgress, no final audit yet",
+  "sourcesReviewed": [
+    {
+      "label": "Société nationale d’horticulture de France — Jardins d’acclimatation sur la Riviera",
+      "url": "https://www.snhf.org/jardins-dacclimatation-riviera/"
+    },
+    {
+      "label": "Nice-Matin, Véronique Mars, 11 novembre 2018 — Les grandes réalisations de Jacques Médecin",
+      "url": "https://www.nicematin.com/vie-locale/jacques-medecin-20-ans-apres-les-grandes-realisation-dun-maire-batisseur-adule-ou-critique-275911"
+    },
+    {
+      "label": "Bibliothèque patrimoniale Romain Gary — Fonds Jean-Luc Sauvaigo, catalogue public CCFr",
+      "url": "https://ccfr.bnf.fr/portailccfr/ark:/16871/004b79791294"
+    },
+    {
+      "label": "Didier Tougard — photographies du 7 mars 1993 et prospectus du Parc des Miniatures",
+      "url": "https://didiertougard.blogspot.com/2020/04/tourisme-sur-la-cote-dazur-les-sites.html"
+    },
+    {
+      "label": "NiceRendezVous, 26 octobre 2005 — Dernier acte pour le Parc des Miniatures",
+      "url": "https://nice-rendezvous.blogspot.com/2005/10/nice-dernier-acte-pour-le-parc-des.html?m=0"
+    }
+  ],
+  "identity": "HistoricalminiatureparkinFabron,notZygofolis,currentgarden,currentbusstoporfullsizemonuments.8officialglobalpaginatedPark/Standalonequeriesreviewed.",
+  "dates": {
+    "opening": "1989-03 confirmed directly by Nice-Matin11Nov2018, overrides initialinventory1990",
+    "closing": null,
+    "conflicts": "Visitorretrospective1995; municipalarchivecataloguejudicialliquidation1996; contemporaryNRV2005references7years earlier, around1998. Legaldatekeptseparate; no guessedvisitorclosedate.",
+    "artistContributionEnds": "1990",
+    "archiveDonation": "2024-09-19 exactpublicinstitutionalcatalogue"
+  },
+  "inventory": {
+    "items": 22,
+    "miniatureExhibits": 19,
+    "services": 3,
+    "exhaustiveTotal": null,
+    "gap": "152modelscommissionedbySauvaigoandhundredsreported,notfullbuiltinventoryproof;33cataloguedplansnotviewed.19distinctpubliclysourcedexhibitsknown.",
+    "decisions": [
+      "Pairedtemplesoneinstallation",
+      "AbbeyandchurchSaintPonsoneensemble",
+      "Threebaroquechurchesseparateidentifiedmodels",
+      "ModelNegresconotHotelservice",
+      "Modeltrainsnotpassengerride",
+      "No fabricatedparkzones"
+    ]
+  },
+  "descriptions": {
+    "parkLanguages": 8,
+    "itemsWithEightDescriptions": 6,
+    "missing": [
+      "Temples diptère et à antes",
+      "Forum antique",
+      "Château de Nice",
+      "Cours Saleya",
+      "Église Saint-Martin-Saint-Augustin",
+      "Cathédrale Sainte-Réparate",
+      "Église Saint-François-de-Paule",
+      "Villa Masséna",
+      "Cathédrale Saint-Nicolas",
+      "Gare du Sud",
+      "Gare du PLM",
+      "Musée d’art moderne et d’art contemporain",
+      "Trains miniatures",
+      "Restaurant",
+      "Boutique",
+      "Parking"
+    ],
+    "next": "Continueauthoringphoto-supportedminiaturedescriptionsbeforestep9."
+  },
+  "media": {
+    "images": 18,
+    "originalVisitPhotographs": 12,
+    "brochurePanels": 6,
+    "nativeBytesUnmodified": true,
+    "allEightLocalizedMetadata": true,
+    "attractionOwnersWithPhoto": 11,
+    "generalParkImages": 7,
+    "logo": false,
+    "logoGap": "Originalbrochurecoverhastitlewithphotomontage,notisolatedofficiallogo; no cropping,reconstructionorfullphotoaslogo. Dedicatedqueriesofficialhistoricalbrochure,municipalarchivecatalogue,localpressandoldguidefoundnoisolatedasset.",
+    "officialMaps": 0,
+    "mapGap": "Brochure06showscitystreetaccessmap,notinteriorparkplan; no visitorlayout/annualeditionfound.1989guideLaCollineàremonterletempscataloguedbutnotdigitizedlocated; publicfindingaidPDFHTTP500twice. No access tounpublishedarchives assumed.",
+    "brochureDate": "Collectedbyvisitor1993; printedprices1992, actualeditionyearnotasserted."
+  },
+  "coordinates": {
+    "parkPoint": null,
+    "itemsWithCoordinates": 0,
+    "itemsTotal": 22,
+    "reason": "No verifiedhistoricalgeoreferencedlayout; currentbusstopcoordinatesnotparkoritempoint."
+  },
+  "references": "Sauvaigoauthor/designerroleverified,butnotinventedfounder/operator/manufacturer. LePetitNicoisrestaurantlegalrecordnotassumedparkoperator.",
+  "history": {
+    "facts": 5,
+    "articles": 1,
+    "languages": 8,
+    "canonicalDiagnosticsPending": true,
+    "datePrecision": "1989-03Month,1990Year,1996Year,2005-10Month,2024-09-19Day",
+    "article": "4sections8paragraphs351–416wordsperlanguage,5sources,3contextualauthenticimages; no forgedeventphotos."
+  },
+  "calendarPricing": "ClosedDefinitively. Historical1992tariffandhoursremainarchivalbrochurecontent;nocurrentcalendarorprices."
+}

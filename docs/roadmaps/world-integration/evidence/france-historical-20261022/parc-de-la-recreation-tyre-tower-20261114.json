@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "87689145d64d4266b88af29f3225359b",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "53e02da1-dd83-4818-b06d-389810532904",
+    "path": "park_item/87689145d64d4266b88af29f3225359b",
+    "description": "Les pneus colorés et les filets verts se mêlaient au feuillage autour de la tour de pneus de La Récréation.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 500,
+    "height": 333,
+    "sizeInBytes": 35653,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20120330093316id_/http://www.la-recreation.com/Jeux/photos%20parc/pyramide%20de%20pneus.JPG",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Grimpeur sur une paroi de bois entourée de pneus rouges et jaunes, sous les branches."
+      },
+      {
+        "languageCode": "en",
+        "value": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches."
+      },
+      {
+        "languageCode": "de",
+        "value": "Kletterer an einer Holzwand zwischen roten und gelben Reifen unter den Ästen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een klimmer op een houten wand tussen rode en gele banden onder de takken."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una persona si arrampica su una parete di legno circondata da pneumatici rossi e gialli sotto i rami."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una persona trepa por una pared de madera rodeada de neumáticos rojos y amarillos bajo las ramas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Osoba wspinająca się po drewnianej ściance otoczonej czerwonymi i żółtymi oponami pod gałęziami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma pessoa sobe uma parede de madeira rodeada de pneus vermelhos e amarelos, debaixo dos ramos."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les pneus colorés et les filets verts se mêlaient au feuillage autour de la tour de pneus de La Récréation."
+      },
+      {
+        "languageCode": "en",
+        "value": "Painted tyres and green nets mingled with the foliage around La Récréation’s tyre tower."
+      },
+      {
+        "languageCode": "de",
+        "value": "Bemalte Reifen und grüne Netze verschwanden im Laub rund um den Reifenturm von La Récréation."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Geverfde banden en groene netten gingen op in het gebladerte rond de bandentoren van La Récréation."
+      },
+      {
+        "languageCode": "it",
+        "value": "Gli pneumatici colorati e le reti verdi si mescolavano al fogliame intorno alla torre di La Récréation."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los neumáticos de colores y las redes verdes se mezclaban con el follaje alrededor de la torre de La Récréation."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kolorowe opony i zielone siatki wtapiały się w liście wokół wieży z opon w La Récréation."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os pneus coloridos e as redes verdes misturavam-se com a folhagem em redor da torre de pneus do La Récréation."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "La Récréation — ancien site officiel, photographie conservée par Internet Archive ; droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Récréation — former official website, photograph preserved by Internet Archive; all rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Récréation — ehemalige offizielle Website, Foto im Internet Archive erhalten; alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Récréation — voormalige officiële website, foto bewaard door Internet Archive; alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Récréation — precedente sito ufficiale, fotografia conservata da Internet Archive; tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Récréation — antiguo sitio web oficial, fotografía conservada por Internet Archive; todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Récréation — dawna oficjalna strona, fotografia zachowana przez Internet Archive; wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Récréation — antigo sítio oficial, fotografia preservada pelo Internet Archive; todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:51:28.667Z",
+    "updatedAt": "2026-11-14T21:51:32.507Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:51:32.507Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20120219031551/http://www.la-recreation.com/Jeux/jeux.html"
+}

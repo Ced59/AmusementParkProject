@@ -1,0 +1,32 @@
+{
+  "entryId": "FR-candidate-d4d165522b958e",
+  "owner": "Conversation France",
+  "name": "Océade Rouen",
+  "checkedAtUtc": "2026-11-02T10:27:54.792029+00:00",
+  "phase": "reserved-for-qualification",
+  "lastDataIntegrationAt": null,
+  "masterChecked": "87eee3356f318f5d9a591c35bbeee9868222c308",
+  "otherBranchChecks": [
+    {
+      "branch": "docs/europe-integration-backlog",
+      "sha": "c3257bcf987ca3976f323f5e6b787c313d0f9f7b",
+      "assignedTo": null,
+      "siteId": null,
+      "editorialStatus": "ToQualify"
+    },
+    {
+      "branch": "docs/france-world-reconciliation-20261022",
+      "sha": "4028cb0ccadc65c525cc8a1c768a29bb0123ed87",
+      "assignedTo": null,
+      "siteId": null,
+      "editorialStatus": "ToQualify"
+    }
+  ],
+  "currentMasterEntry": {
+    "assignedTo": null,
+    "siteId": null,
+    "editorialStatus": "ToQualify"
+  },
+  "creationAuthorizedOnlyAfterQualification": true,
+  "note": "Backlog locality contains date range1989–1991, not an address. Qualify Rouen site/aliases, distinguish Strasbourg and Brussels, perform fresh official Park/Standalone searches."
+}

@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "3e195a615c30685c33ec47fd20caa5d704131b46ce4b129b93729cbf3399b08c",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "c6c1cb22-2ed6-4b48-9593-5c55771e2fbe",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T18:12:23.9505977Z",
+    "appliedAtUtc": "2026-11-14T18:12:23.9505994Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 6,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "3d8be0c8-6782-4227-ad5e-2883a32c241a",
+        "entityKey": "marineland-ouverture-1970",
+        "displayName": "Marineland ouvre à Antibes",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-ouverture-1970"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "1970"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "f518cf14b51840ca8484ec742d2ee23c"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Marineland eröffnet in Antibes, en:Marineland opens in Antibes, es:Marineland abre en Antibes, fr:Marineland ouvre à Antibes, it:Marineland apre ad Antibes, nl:Marineland opent in Antibes, pl:Otwarcie Marineland w Antibes, pt:O Marineland abre em Antibes"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Roland de La Poype gründet Marineland an der Küste von Antibes. Orcas stehen von der Eröffnung an im Mittelpunkt des Meeresparks, der später um weitere Becken und Aquarien erweitert wird., en:Roland de La Poype establishes Marineland on the Antibes coast. Orcas occupy a central place from the opening of this marine park, which will later expand with further pools and aquariums., es:Roland de La Poype funda Marineland en la costa de Antibes. Desde la apertura, las orcas ocupan un lugar central en este parque dedicado al mundo marino, que después crecerá con otras piscinas y acuarios., fr:Roland de La Poype fonde Marineland sur le littoral d’Antibes. Dès l’ouverture, les orques occupent une place centrale dans ce parc consacré au monde marin, qui s’étendra ensuite avec d’autres bassins et des aquariums., it:Roland de La Poype fonda Marineland sulla costa di Antibes. Fin dall’apertura, le orche occupano un posto centrale in questo parco dedicato al mondo marino, destinato ad ampliarsi con altre vasche e acquari., nl:Roland de La Poype richt Marineland op aan de kust van Antibes. Orka’s staan vanaf de opening centraal in dit park rond de zeewereld, dat later met meer bassins en aquaria wordt uitgebreid., pl:Roland de La Poype zakłada Marineland na wybrzeżu Antibes. Od otwarcia główną rolę w parku poświęconym światu morskiemu odgrywają orki. W kolejnych latach powstaną następne baseny i akwaria., pt:Roland de La Poype funda o Marineland no litoral de Antibes. Desde a abertura, as orcas ocupam um lugar central neste parque dedicado ao mundo marinho, que mais tarde crescerá com outros tanques e aquários."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"IGEDD \\u2014 mission sur l\\u2019avenir des c\\u00E9tac\\u00E9s, juin 2024\",\"Url\":\"https://igedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013623/015475-01_rapport-publie.pdf\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Ordre de la Lib\\u00E9ration \\u2014 Roland de La Poype\",\"Url\":\"https://www.ordredelaliberation.fr/fr/compagnons/roland-la-poype-de\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8cbdc893-72d2-4f62-ba6e-c91f11a28aa2",
+        "entityKey": "marineland-grand-projet-2000",
+        "displayName": "Grand Marineland transforme le parc",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-grand-projet-2000"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2000"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Expansion"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "99f10ef88d2649f98f3e22d1d7ba7060"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Grand Marineland verändert den Park, en:Grand Marineland transforms the park, es:Grand Marineland transforma el parque, fr:Grand Marineland transforme le parc, it:Grand Marineland trasforma il parco, nl:Grand Marineland verandert het park, pl:Grand Marineland zmienia park, pt:Grand Marineland transforma o parque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Zwischen 2000 und 2002 gestaltet das Programm Grand Marineland große Teile des Geländes um. Auf die neuen Orcabecken folgen die Erneuerung bestehender Anlagen, Geschäfte und Restaurants sowie Antarctica und neue Lagunen., en:Between 2000 and 2002, the Grand Marineland programme reshapes a large part of the site. New orca pools are followed by the refurbishment of existing areas, shops and restaurants, then Antarctica and new lagoons., es:Entre 2000 y 2002, el programa Grand Marineland transforma gran parte del recinto. A las nuevas piscinas de las orcas les siguen la renovación de los espacios existentes, tiendas y restaurantes, y después Antarctica y nuevas lagunas., fr:Entre 2000 et 2002, le programme Grand Marineland remodèle une large partie du site. Aux nouveaux bassins des orques s’ajoutent la rénovation des espaces existants, des commerces et des restaurants, puis Antarctica et de nouveaux lagons., it:Fra il 2000 e il 2002, il programma Grand Marineland trasforma una vasta parte del sito. Alle nuove vasche delle orche seguono il rinnovo degli spazi esistenti, negozi e ristoranti, poi Antarctica e nuove lagune., nl:Tussen 2000 en 2002 verandert het programma Grand Marineland grote delen van het terrein. Na de nieuwe orkabassins volgen de vernieuwing van bestaande ruimtes, winkels en restaurants, en vervolgens Antarctica en nieuwe lagunes., pl:W latach 2000–2002 program Grand Marineland przekształca znaczną część terenu. Po nowych basenach orek powstają sklepy i restauracje, odnawiane są istniejące obiekty, a kolejną część rozbudowy stanowią Antarctica i nowe laguny., pt:Entre 2000 e 2002, o programa Grand Marineland transforma grande parte do recinto. Aos novos tanques das orcas seguem-se a renovação dos espaços existentes, lojas e restaurantes, e depois Antarctica e novas lagoas."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Art\\u00E9mis Ing\\u00E9nierie \\u2014 Grand Marineland\",\"Url\":\"https://artemis-ing.fr/posts/c3/grand-marineland\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "1bfc4529-2c8a-4040-86a2-885b480ea515",
+        "entityKey": "marineland-acquisition-2006",
+        "displayName": "Parques Reunidos rachète Marineland",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-acquisition-2006"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2006"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Acquisition"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "dd4ca7e7a0a04ec4870cc96db7915897"
+          },
+          {
+            "field": "newOwnerName",
+            "oldValue": null,
+            "newValue": "Parques Reunidos"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Parques Reunidos übernimmt Marineland, en:Parques Reunidos acquires Marineland, es:Parques Reunidos adquiere Marineland, fr:Parques Reunidos rachète Marineland, it:Parques Reunidos acquisisce Marineland, nl:Parques Reunidos neemt Marineland over, pl:Parques Reunidos kupuje Marineland, pt:A Parques Reunidos adquire o Marineland"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Die spanische Gruppe Parques Reunidos übernimmt Marineland 2006. Der von Roland de La Poype gegründete Park wird Teil eines internationalen Freizeitverbunds, der künftig über größere Investitionen und die Umgestaltung des Geländes entscheidet., en:The Spanish group Parques Reunidos acquires Marineland in 2006. The park founded by Roland de La Poype joins an international leisure network that will oversee its later investments and decisions about its transformation., es:El grupo español Parques Reunidos adquiere Marineland en 2006. El parque fundado por Roland de La Poype entra así en una red internacional de ocio que dirigirá sus inversiones y sus posteriores decisiones de transformación., fr:Le groupe espagnol Parques Reunidos rachète Marineland en 2006. Le parc créé par Roland de La Poype rejoint ainsi un réseau international de loisirs, qui portera ses investissements et ses décisions de transformation ultérieures., it:Il gruppo spagnolo Parques Reunidos acquisisce Marineland nel 2006. Il parco fondato da Roland de La Poype entra così in una rete internazionale del tempo libero, che ne guiderà i successivi investimenti e le decisioni di trasformazione., nl:De Spaanse groep Parques Reunidos neemt Marineland in 2006 over. Het door Roland de La Poype opgerichte park sluit aan bij een internationaal recreatienetwerk dat voortaan de grote investeringen en plannen voor de toekomst bepaalt., pl:Hiszpańska grupa Parques Reunidos kupuje Marineland w 2006 roku. Park założony przez Rolanda de La Poype dołącza do międzynarodowej sieci rozrywkowej, która będzie odpowiadać za późniejsze inwestycje i decyzje o przekształceniu terenu., pt:O grupo espanhol Parques Reunidos adquire o Marineland em 2006. O parque fundado por Roland de La Poype passa a integrar uma rede internacional de lazer, responsável pelos investimentos e pelas decisões de transformação posteriores."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"IGEDD \\u2014 mission sur l\\u2019avenir des c\\u00E9tac\\u00E9s, juin 2024\",\"Url\":\"https://igedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013623/015475-01_rapport-publie.pdf\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "af75025d-f95a-4066-bd1b-fb3657f74873",
+        "entityKey": "marineland-inondation-20151003",
+        "displayName": "Les inondations submergent Marineland",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-inondation-20151003"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2015"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "10"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "3"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Flood"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "88e03dd2db3d441eb4448e443dabd429"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Marineland wird überflutet, en:Floodwater overwhelms Marineland, es:Las inundaciones anegan Marineland, fr:Les inondations submergent Marineland, it:Marineland viene allagato, nl:Marineland wordt overstroomd, pl:Powódź zalewa Marineland, pt:As inundações atingem o Marineland"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Die Unwetter vom 3. Oktober 2015 überfluten Marineland und beschädigen Becken sowie technische Anlagen. Für die Instandsetzung schließt der Park für Besucher; die Unterbrechung wird bis zum folgenden März dauern., en:The storms of 3 October 2015 flood Marineland, damaging pools and technical facilities. The park closes to visitors while repairs take place, an interruption that will last until the following March., es:El temporal del 3 de octubre de 2015 inunda Marineland y daña tanto las piscinas como las instalaciones técnicas. El parque cierra al público durante las reparaciones, una interrupción que durará hasta el mes de marzo siguiente., fr:Les intempéries du 3 octobre 2015 inondent Marineland et endommagent ses bassins comme ses installations techniques. Le parc ferme au public pendant la remise en état ; cette interruption s’étendra jusqu’au mois de mars suivant., it:Il maltempo del 3 ottobre 2015 allaga Marineland, danneggiando vasche e impianti tecnici. Il parco chiude al pubblico durante i lavori di ripristino; l’interruzione durerà fino al marzo successivo., nl:Het noodweer van 3 oktober 2015 zet Marineland onder water en beschadigt de bassins en technische installaties. Het park sluit voor bezoekers tijdens het herstel; die onderbreking zal tot maart van het volgende jaar duren., pl:Nawałnice z 3 października 2015 roku zalewają Marineland, uszkadzając baseny i instalacje techniczne. Park zostaje zamknięty dla zwiedzających na czas napraw. Przerwa potrwa do marca następnego roku., pt:O temporal de 3 de outubro de 2015 inunda o Marineland e danifica os tanques e as instalações técnicas. O parque fecha ao público durante a recuperação, uma interrupção que durará até março do ano seguinte."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Europe 1 \\u2014 les d\\u00E9g\\u00E2ts des inondations, 6 octobre 2015\",\"Url\":\"https://www.europe1.fr/societe/les-images-du-parc-aquatique-marineland-dantibes-devaste-2525171\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Europe 1 \\u2014 r\\u00E9ouverture du 21 mars 2016\",\"Url\":\"https://www.europe1.fr/societe/marineland-dantibes-remis-a-flot-apres-les-intemperies-sur-la-cote-dazur-rouvre-lundi-2698192\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "78ebc43a-8bb5-4067-b5a2-46894f5f524d",
+        "entityKey": "marineland-reouverture-20160321",
+        "displayName": "Marineland accueille de nouveau le public",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-reouverture-20160321"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2016"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "3"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "21"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Reopening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "dd4ca7e7a0a04ec4870cc96db7915897"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Marineland empfängt wieder Besucher, en:Marineland welcomes visitors again, es:Marineland vuelve a recibir visitantes, fr:Marineland accueille de nouveau le public, it:Marineland torna ad accogliere il pubblico, nl:Marineland ontvangt weer bezoekers, pl:Marineland ponownie przyjmuje gości, pt:O Marineland volta a receber visitantes"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Nach fast sechs Monaten Schließung und Reparaturen öffnet Marineland am 21. März 2016 wieder. Die Leitung verbindet den Neustart mit einer überarbeiteten Gestaltung der Vorführungen, die Bildung und Artenschutz stärker hervorheben soll., en:After almost six months of closure and repairs, Marineland reopens on 21 March 2016. Management accompanies the reopening with a revised approach to shows, giving more emphasis to education and conservation., es:Tras casi seis meses de cierre y reparaciones, Marineland reabre el 21 de marzo de 2016. La dirección acompaña la reapertura con un nuevo enfoque de los espectáculos, con mayor protagonismo de la educación y la conservación., fr:Après près de six mois de fermeture et de travaux, Marineland rouvre le 21 mars 2016. La direction accompagne cette reprise d’une nouvelle présentation des spectacles, avec davantage de place donnée à l’éducation et à la conservation., it:Dopo quasi sei mesi di chiusura e lavori, Marineland riapre il 21 marzo 2016. La direzione accompagna la ripresa con un nuovo approccio agli spettacoli, dando più spazio all’educazione e alla conservazione., nl:Na bijna zes maanden sluiting en herstelwerk opent Marineland op 21 maart 2016 opnieuw. De directie koppelt de heropening aan een andere aanpak van de voorstellingen, met meer nadruk op educatie en natuurbehoud., pl:Po niemal sześciu miesiącach zamknięcia i napraw Marineland otwiera się ponownie 21 marca 2016 roku. Dyrekcja łączy powrót gości ze zmianą formuły pokazów, kładąc większy nacisk na edukację i ochronę przyrody., pt:Após quase seis meses de encerramento e obras, o Marineland reabre a 21 de março de 2016. A direção acompanha o regresso dos visitantes com uma nova abordagem aos espetáculos, dando mais espaço à educação e à conservação."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Europe 1 \\u2014 r\\u00E9ouverture du 21 mars 2016\",\"Url\":\"https://www.europe1.fr/societe/marineland-dantibes-remis-a-flot-apres-les-intemperies-sur-la-cote-dazur-rouvre-lundi-2698192\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"SeeAntibes \\u2014 r\\u00E9ouverture du 21 mars 2016\",\"Url\":\"https://www.seeantibes.com/news/marineland-reopens-for-summer-2016-695105\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "9e4403a9-8d6f-4959-bccd-9073559ffc77",
+        "entityKey": "marineland-loi-20211130",
+        "displayName": "La loi fixe un terme aux spectacles de cétacés",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "marineland-loi-20211130"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "afd24c62-0972-4c98-860c-b5a55984f777"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2021"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "11"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "30"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "RegulatoryChange"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "178571da631e488e949c50f9ecb7bef7"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Das Gesetz setzt eine Frist für Wal- und Delfinshows, en:The law sets an end date for cetacean shows, es:La ley fija el fin de los espectáculos con cetáceos, fr:La loi fixe un terme aux spectacles de cétacés, it:La legge fissa la fine degli spettacoli con cetacei, nl:De wet stelt een einddatum voor shows met walvisachtigen, pl:Ustawa wyznacza kres pokazów waleni, pt:A lei fixa o fim dos espetáculos com cetáceos"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Das Gesetz vom 30. November 2021 sieht ab dem 1. Dezember 2026 ein Verbot von Wal- und Delfinshows sowie ihrer Haltung außerhalb geregelter Ausnahmen vor. Marineland muss damit die Zukunft der für seine Identität prägenden Tiere vorbereiten., en:The law of 30 November 2021 provides for a ban on cetacean shows and captivity outside regulated exceptions from 1 December 2026. For Marineland, it requires planning a future for the animals central to its identity., es:La ley del 30 de noviembre de 2021 prevé, desde el 1 de diciembre de 2026, la prohibición de los espectáculos con cetáceos y de su cautividad salvo excepciones reguladas. Marineland debe preparar así el futuro de los animales que definen su identidad., fr:La loi du 30 novembre 2021 prévoit, à compter du 1er décembre 2026, l’interdiction des spectacles de cétacés et de leur détention hors exceptions encadrées. Pour Marineland, elle impose de préparer l’avenir des animaux au cœur de son identité., it:La legge del 30 novembre 2021 prevede dal 1º dicembre 2026 il divieto degli spettacoli con cetacei e della loro detenzione al di fuori di eccezioni regolamentate. Marineland deve quindi preparare il futuro degli animali centrali per la propria identità., nl:De wet van 30 november 2021 voorziet vanaf 1 december 2026 in een verbod op shows met walvisachtigen en op het houden van deze dieren, met wettelijk geregelde uitzonderingen. Marineland moet daardoor een toekomst zoeken voor de dieren die zijn identiteit bepalen., pl:Ustawa z 30 listopada 2021 roku przewiduje od 1 grudnia 2026 zakaz pokazów waleni oraz ich przetrzymywania poza określonymi wyjątkami. Marineland musi zatem przygotować przyszłość zwierząt, które stanowią o tożsamości parku., pt:A lei de 30 de novembro de 2021 prevê, a partir de 1 de dezembro de 2026, a proibição dos espetáculos com cetáceos e da sua detenção fora de exceções regulamentadas. O Marineland tem assim de preparar o futuro dos animais centrais à sua identidade."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"IGEDD \\u2014 mission sur l\\u2019avenir des c\\u00E9tac\\u00E9s, juin 2024\",\"Url\":\"https://igedd.documentation.developpement-durable.gouv.fr/documents/Affaires-0013623/015475-01_rapport-publie.pdf\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

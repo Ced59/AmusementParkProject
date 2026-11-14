@@ -1,0 +1,64 @@
+{
+  "entryId": "FR-candidate-3a86527af9cd7e",
+  "owner": "Conversation France",
+  "name": "Canyon Park",
+  "localityAtBacklog": "Épretot",
+  "lifecycleAtBacklog": "1976–2004, à confirmer",
+  "checkedAtUtc": "2026-11-02T08:59:29.275046+00:00",
+  "masterChecked": "ac3369de",
+  "applicableRulesAndFranceRegistryChangedSince3f5eaebe": false,
+  "otherBranchChecks": [
+    {
+      "branch": "docs/europe-integration-backlog",
+      "sha": "c3257bcf987ca3976f323f5e6b787c313d0f9f7b",
+      "checkedAtUtc": "2026-11-02T08:58:41.017502+00:00",
+      "status": 200,
+      "entry": {
+        "entryId": "FR-candidate-3a86527af9cd7e",
+        "assignedTo": null,
+        "editorialStatus": "ToQualify",
+        "lastDataIntegrationAt": null,
+        "siteId": null
+      }
+    },
+    {
+      "branch": "docs/fix-france-audit-records",
+      "sha": "5c7a4acfa853a4a2d349037433c466d2a3033094",
+      "checkedAtUtc": "2026-11-02T08:58:41.018319+00:00",
+      "status": 404
+    },
+    {
+      "branch": "docs/france-world-reconciliation-20261022",
+      "sha": "4028cb0ccadc65c525cc8a1c768a29bb0123ed87",
+      "checkedAtUtc": "2026-11-02T08:58:41.018836+00:00",
+      "status": 200,
+      "entry": {
+        "entryId": "FR-candidate-3a86527af9cd7e",
+        "assignedTo": null,
+        "editorialStatus": "ToQualify",
+        "lastDataIntegrationAt": null,
+        "siteId": null
+      }
+    },
+    {
+      "branch": "docs/france-parks-integration-progress-8",
+      "sha": "a705e09b815238b45db38486a7306982c6fc4df0",
+      "checkedAtUtc": "2026-11-02T08:58:41.266884+00:00",
+      "status": 404
+    },
+    {
+      "branch": "docs/france-parks-publications-20261020",
+      "sha": "9e496b57587cb5d6f75d2fa26255bb5b199a8e3e",
+      "checkedAtUtc": "2026-11-02T08:58:41.358003+00:00",
+      "status": 404
+    }
+  ],
+  "phase": "reserved-for-qualification",
+  "lastDataIntegrationAt": null,
+  "qualificationRequired": [
+    "Official PARK_DATA_EDITOR searches in Park and StandaloneAttraction, including aliases and old identities",
+    "Original site identity, address, operator, opening and closing sources",
+    "Historical inventory distinct from similarly named current adventure sites"
+  ],
+  "creationAuthorizedOnlyAfterQualification": true
+}

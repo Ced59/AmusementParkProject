@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "22f42dbca2ca48d79fc12b9ed29b3bbf",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+    "path": "park_item/22f42dbca2ca48d79fc12b9ed29b3bbf",
+    "description": "Le décor réalisé du restaurant Antarctica, avec des rochers gris recouverts de neige sculptée autour du passage central.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 640,
+    "height": 478,
+    "sizeInBytes": 110310,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://lamomiedesign.wordpress.com/wp-content/uploads/2015/09/img_4906.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": null,
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Salle du restaurant Antarctica, avec son passage rocheux blanc, son enseigne bleue et ses tables."
+      },
+      {
+        "languageCode": "en",
+        "value": "Antarctica restaurant’s dining room, with its white rocky archway, blue sign and tables."
+      },
+      {
+        "languageCode": "de",
+        "value": "Speiseraum des Restaurants Antarctica mit weißem Felsdurchgang, blauem Schriftzug und Tischen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Eetzaal van restaurant Antarctica met een witte rotsdoorgang, blauwe letters en tafels."
+      },
+      {
+        "languageCode": "it",
+        "value": "Sala del ristorante Antarctica, con il passaggio roccioso bianco, l’insegna blu e i tavoli."
+      },
+      {
+        "languageCode": "es",
+        "value": "Sala del restaurante Antarctica, con su paso rocoso blanco, su rótulo azul y sus mesas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Sala restauracji Antarctica z białym skalnym przejściem, niebieskim napisem i stołami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Sala do restaurante Antarctica, com a passagem rochosa branca, o letreiro azul e as mesas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le décor réalisé du restaurant Antarctica, avec des rochers gris recouverts de neige sculptée autour du passage central."
+      },
+      {
+        "languageCode": "en",
+        "value": "The completed Antarctica restaurant décor, with grey rocks covered in sculpted snow around the central passage."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die ausgeführte Dekoration des Restaurants Antarctica: graue Felsen mit modelliertem Schnee rund um den zentralen Durchgang."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het gerealiseerde decor van restaurant Antarctica, met grijze rotsen en gevormde sneeuw rond de centrale doorgang."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il decoro realizzato del ristorante Antarctica, con rocce grigie ricoperte di neve modellata intorno al passaggio centrale."
+      },
+      {
+        "languageCode": "es",
+        "value": "El decorado realizado del restaurante Antarctica, con rocas grises cubiertas de nieve esculpida alrededor del paso central."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zrealizowany wystrój restauracji Antarctica: szare skały pokryte modelowanym śniegiem wokół centralnego przejścia."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A decoração construída do restaurante Antarctica, com rochas cinzentas cobertas de neve esculpida em redor da passagem central."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Philippe Augy Design / La Momie Design. Droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Philippe Augy Design / La Momie Design. All rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "Philippe Augy Design / La Momie Design. Alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Philippe Augy Design / La Momie Design. Alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "Philippe Augy Design / La Momie Design. Tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Philippe Augy Design / La Momie Design. Todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Philippe Augy Design / La Momie Design. Wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Philippe Augy Design / La Momie Design. Todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T19:56:50.297Z",
+    "updatedAt": "2026-11-14T19:56:53.736Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T19:56:53.736Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://lamomiedesign.wordpress.com/portfolio/marineland-antarctica-restaurant-2/"
+}

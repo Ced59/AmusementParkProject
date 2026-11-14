@@ -1,0 +1,58 @@
+{
+  "reviewedAtUtc": "2026-10-28T21:00:26.295962+00:00",
+  "languages": {
+    "fr": {
+      "words": 635,
+      "headings": 4,
+      "paragraphs": 8,
+      "personallyAuthoredAndReviewed": true
+    },
+    "en": {
+      "words": 585,
+      "headings": 4,
+      "paragraphs": 8,
+      "personallyAuthoredAndReviewed": true
+    },
+    "de": {
+      "words": 570,
+      "headings": 4,
+      "paragraphs": 8,
+      "personallyAuthoredAndReviewed": true
+    },
+    "nl": {
+      "words": 590,
+      "headings": 4,
+      "paragraphs": 8,
+      "personallyAuthoredAndReviewed": true
+    },
+    "it": {
+      "words": 597,
+      "headings": 4,
+      "paragraphs": 8,
+      "personallyAuthoredAndReviewed": true
+    },
+    "es": {
+      "words": 625,
+      "headings": 4,
+      "paragraphs": 8,
+      "personallyAuthoredAndReviewed": true
+    },
+    "pl": {
+      "words": 535,
+      "headings": 4,
+      "paragraphs": 8,
+      "personallyAuthoredAndReviewed": true
+    },
+    "pt": {
+      "words": 610,
+      "headings": 4,
+      "paragraphs": 8,
+      "personallyAuthoredAndReviewed": true
+    }
+  },
+  "photos": {
+    "1988": "Actual operating central square, context for project; not labelled opening day.",
+    "2016": "Actual documented amphitheatre remains after site redevelopment, no claim current2026orpublicaccess."
+  },
+  "facts": "Identical chronology and useful depth in all eight versions. Closed historicalpark, no presentdayvisitorinstructions, mechanicalgabarit, specificationssheet, inventeddates or genericsections."
+}

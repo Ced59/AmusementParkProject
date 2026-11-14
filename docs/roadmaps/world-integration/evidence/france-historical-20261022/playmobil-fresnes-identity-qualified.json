@@ -1,0 +1,39 @@
+{
+  "entryId": "FR-candidate-13b50050620a99",
+  "qualifiedAtUtc": "2026-10-28T16:49:22.990530+00:00",
+  "matchedSiteId": null,
+  "entityKind": "Park",
+  "classification": "ThemePark",
+  "ownership": "Conversation France",
+  "officialSearches": [
+    {
+      "file": "00-resume-searchparks-playmobil.json",
+      "totalItems": 0,
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "file": "00-resume-searchparks-fresnes.json",
+      "totalItems": 0,
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "file": "00-resume-searchstandaloneattractions-playmobil.json",
+      "totalItems": 0,
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    },
+    {
+      "file": "00-resume-searchstandaloneattractions-fresnes.json",
+      "totalItems": 0,
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d"
+    }
+  ],
+  "aliasesReviewed": [
+    "Playmobil",
+    "Playmobil FunPark Paris",
+    "Playmobil Fun Park",
+    "Fresnes"
+  ],
+  "decision": "Créer le parc couvert historique de Fresnes, distinct des autres FunParks et de toute standalone. Les aires de jeux seront des parkItems internes, après qualification individuelle.",
+  "sourceIntake": "playmobil-fresnes-intake-blocked.json",
+  "serviceRecovered": "2026-10-28T16:46:07.1470365Z"
+}

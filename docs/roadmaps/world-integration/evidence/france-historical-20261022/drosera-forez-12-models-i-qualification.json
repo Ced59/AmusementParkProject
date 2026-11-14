@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-11-03T02:23:13.011610+00:00",
+  "rows": [
+    {
+      "key": "model-sjust",
+      "name": "Croix de Chazeau",
+      "sourcePage": "https://web.archive.org/web/20001209002000id_/http://www.parc-de-la-drosera.fr:80/sjust.html",
+      "nativeImage": "10-model-pages/Sjust.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-chambost",
+      "name": "Chapelle de Chambost-Longessaigne",
+      "sourcePage": "https://web.archive.org/web/20001208200600id_/http://www.parc-de-la-drosera.fr:80/chambost.html",
+      "nativeImage": "10-model-pages/Chambost.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-pacaud",
+      "name": "Petit Louvre de La Pacaudière",
+      "sourcePage": "https://web.archive.org/web/20001208225200id_/http://www.parc-de-la-drosera.fr:80/pacaud.html",
+      "nativeImage": "10-model-pages/Pacaud.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

@@ -1,0 +1,623 @@
+{
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+  "name": "Parc de la Droséra – Forez Miniature",
+  "checkedAtUtc": "2026-11-02T20:12:06.988532+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "contentAuditPassed": false,
+  "existingCorpusAuditPassed": true,
+  "publicationAuditPassed": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "publicationAttempted": false,
+  "facebookAttempted": false,
+  "dataIntegrationEvents": 17,
+  "lastDataIntegrationAtUtc": "2026-11-02T20:10:50.93586Z",
+  "lastIntegrationEventId": "apply-0fa1da50-580c-4b36-a38b-a1c0dc699c05",
+  "projectedCompleteness": {
+    "completenessScore": 80,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 96,
+    "earnedPoints": 77,
+    "publicationBlockers": [
+      "media.logo-required"
+    ],
+    "formulaicPublicTextIssue": null
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-02T20:08:43.2881509Z",
+    "items": 9,
+    "zones": 0,
+    "attractions": 7,
+    "attractionStatuses": {
+      "ClosedDefinitively": 7
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 7,
+    "attractionsWithImage": 7,
+    "attractionImageGaps": [],
+    "ownedImages": 9,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "a5dc2de9-b48b-4048-ad9d-d67691d127ea",
+        "name": "Boutique",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "c088c2ac-6586-4220-ad8a-7851974bcd91",
+        "name": "Cathédrale de Clermont-Ferrand",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "60cd5e5d-6404-4139-8604-41a77f53cc1a",
+        "name": "Château de Chalmazel",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "0af447eb-ce93-4566-aa21-a0ed22d50615",
+        "name": "Château de la Bâtie d’Urfé",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4476e2ba-bd59-49de-9c77-3c6c5bb9a877",
+        "name": "Château de la Roche",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8168fe00-832e-44c5-b952-024d63c38ecb",
+        "name": "Collégiale de Saint-Bonnet-le-Château",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "ef231784-6388-4beb-8b78-33a903a0a36f",
+        "name": "Puits Couriot",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "c8b74765-ed0c-4c9f-81c9-46950b77765b",
+        "name": "Église de Feurs",
+        "category": "Attraction",
+        "images": 1
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "a5dc2de9-b48b-4048-ad9d-d67691d127ea",
+        "name": "Boutique",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "c088c2ac-6586-4220-ad8a-7851974bcd91",
+        "name": "Cathédrale de Clermont-Ferrand",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "60cd5e5d-6404-4139-8604-41a77f53cc1a",
+        "name": "Château de Chalmazel",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "0af447eb-ce93-4566-aa21-a0ed22d50615",
+        "name": "Château de la Bâtie d’Urfé",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4476e2ba-bd59-49de-9c77-3c6c5bb9a877",
+        "name": "Château de la Roche",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8168fe00-832e-44c5-b952-024d63c38ecb",
+        "name": "Collégiale de Saint-Bonnet-le-Château",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ef231784-6388-4beb-8b78-33a903a0a36f",
+        "name": "Puits Couriot",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c8b74765-ed0c-4c9f-81c9-46950b77765b",
+        "name": "Église de Feurs",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 2,
+    "parkHistory": 2,
+    "itemHistory": 0,
+    "historyWithSource": 2,
+    "historyWithImage": 0,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "parkDescriptionLanguages": 8,
+    "itemsWithEightDescriptions": 7,
+    "totalItemDescriptions": 56,
+    "images": 9,
+    "authenticLogo": false,
+    "founderBiographyLanguages": 8,
+    "officialMapEditions": 0,
+    "canonicalDraftFacts": 2,
+    "canonicalRetractedFacts": 1,
+    "articleLanguages": 8,
+    "corpusFields": 449,
+    "allRequiredContentPresent": false
+  },
+  "roundtrip": {
+    "freshExportedAtUtc": "2026-11-02T20:08:43.2881509Z",
+    "checkedAtUtc": "2026-11-02T20:09:53.342627+00:00",
+    "comparedValues": 1149,
+    "unexplainedDifferences": [],
+    "exportContractNotes": [
+      "Year/month-only opening/closing dates are dateText withnulltypeddate; no inventedday.",
+      "Item keys and itemhistoryaliases exported as actualIDs. Unexposed inputitemId alias excluded; parkItemId/ownerId verified.",
+      "Image enum casing and ParkItem ownerKey normalized to actualownerId, matching exportcontract. Importtimestamps/path/exifMetadata not exported; originalreceipts preserved.",
+      "Eight-language field/source ordering normalized; all persistedcontent otherwisecompared.",
+      "Global founder reference and parkfounderKey exportactualID; acceptedname/biography/idfullycompared. Referencevisibility/reviewflags not exposed in this exportcontract."
+    ],
+    "fullExportSha256": "fdaab310da5dd901fdb922ee6bcd53251dae2d5566b96fdba57847beca87af2c"
+  },
+  "corpus": {
+    "checkedAtUtc": "2026-11-02T20:12:06.988532+00:00",
+    "personallyAuthoredAndReviewed": true,
+    "fields": 449,
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "encodingIssues": 0,
+    "editorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "crossCorpusCandidates": 3,
+    "actionableCrossCorpusIssues": 0,
+    "decisions": [
+      {
+        "language": "es",
+        "firstPath": "park.descriptions.es",
+        "secondPath": "articles.drosera-forez-miniature-patrimoine-photos.blocks.2.texts.es",
+        "actionable": false,
+        "reason": "Same specifically attributed historical fact: Loire departmental magazine reports53models in2007, repeated in parkdescription and developedhistoricalarticle. Concrete factual repetition, not boilerplate transplanted between unrelateditems."
+      },
+      {
+        "language": "pl",
+        "firstPath": "park.descriptions.pl",
+        "secondPath": "articles.drosera-forez-miniature-patrimoine-photos.blocks.2.texts.pl",
+        "actionable": false,
+        "reason": "Same specifically attributed historical fact: Loire departmental magazine reports53models in2007, repeated in parkdescription and developedhistoricalarticle. Concrete factual repetition, not boilerplate transplanted between unrelateditems."
+      },
+      {
+        "language": "pt",
+        "firstPath": "park.descriptions.pt",
+        "secondPath": "articles.drosera-forez-miniature-patrimoine-photos.blocks.2.texts.pt",
+        "actionable": false,
+        "reason": "Same specifically attributed historical fact: Loire departmental magazine reports53models in2007, repeated in parkdescription and developedhistoricalarticle. Concrete factual repetition, not boilerplate transplanted between unrelateditems."
+      }
+    ],
+    "review": "Personally reviewed all8parktexts,56itemtexts,8founderbiographies,2facts,article8languages and9imagecaptions/alts/credits. Headings/entitynames stripped for crossparagraph/sentence checks. Polish mining sentence and Italian geography corrected beforeApply; finalaudit localizedphotoattribution and corrected source-labelspacing. No generated/externaltranslation adopted.",
+    "limits": "Two private services lack developed descriptions; complete53modelinventory not reconstructed. Existing corpus quality does not certify all requiredcontent present."
+  },
+  "sourceGaps": {
+    "entryId": "FR-candidate-2944bd4fd46f53",
+    "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "checkedAtUtc": "2026-11-02T20:12:06.988532+00:00",
+    "identity": {
+      "name": "Parc de la Droséra – Forez Miniature",
+      "period": "1992–2013 at year precision",
+      "locality": "Jeansagnière42920, now part of Chalmazel-Jeansagnière",
+      "founder": "Patrick Burtart",
+      "corrections": [
+        "National/wiki2009closure contradicted by primary schoolvisit1July2010 and creator1992–2013period",
+        "WikiButart spelling corrected from creatorprimarysite",
+        "Exact6June1992/August2013 not independentlyproved, yearsonly",
+        "Chaletvillage/poolcompany2012liquidation kept distinct fromminiaturepark"
+      ]
+    },
+    "inventory": {
+      "known2007ModelCount": 53,
+      "individuallyCorroboratedModels": 7,
+      "otherServices": 2,
+      "totalItems": 9,
+      "exhaustive": false,
+      "modelStatus": "ClosedDefinitively; physicalsurvival/removalunproven",
+      "describedItemsAll8": 7,
+      "missingDescriptions": [
+        {
+          "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+          "name": "Aire de pique-nique"
+        },
+        {
+          "id": "a5dc2de9-b48b-4048-ad9d-d67691d127ea",
+          "name": "Boutique"
+        }
+      ],
+      "unverifiedNamedCandidates": [
+        "Abbaye de La Bénisson-Dieu",
+        "Château d’Essalois",
+        "Cheminée Marrel",
+        "Tour de Cleppé",
+        "Château de Montrond",
+        "Prieuré de Pouilly-les-Feurs",
+        "Théâtre de Roanne",
+        "Château de Sail-sous-Couzan",
+        "Mairie de Saint-Étienne",
+        "Chapelle Notre-Dame de Pitié",
+        "Barrage de Grangent",
+        "Église Saint-Romain-le-Puy",
+        "Église Saint-Sixte",
+        "Chastel de Saint-Victor-sur-Loire",
+        "Les Vignerons Foréziens",
+        "Pont du Pertuiset",
+        "Tour Matagrin",
+        "Mairie ronde d’Ambert",
+        "Château du Pirou",
+        "Thermes de Vichy"
+      ],
+      "reason": "Seven models crosschecked using originalvisitphotos/namedinventory/monumentarchitecture, LaRoche additionallyprimaryschoolaccount.20secondary-onlynames retained forqualification. No inventedremainingmodels toreach53. Boutique/picnicarea verifiedtourism butinsufficientdistinctinformation fordevelopedcopy. No currentorannouncedoffer, no inventedphysicalzones."
+    },
+    "media": {
+      "total": 9,
+      "actualPhotographs": 9,
+      "parkOwned": 1,
+      "parkMain": "d116533f50f74d079fe8ba491e9434e8",
+      "itemOwners": 7,
+      "modelsWithImage": 7,
+      "modelsWithThreeImages": 0,
+      "generalImagesTarget": 5,
+      "generalImagesActual": 1,
+      "itemImageCounts": [
+        {
+          "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+          "name": "Aire de pique-nique",
+          "category": "Service",
+          "images": 0
+        },
+        {
+          "id": "a5dc2de9-b48b-4048-ad9d-d67691d127ea",
+          "name": "Boutique",
+          "category": "Shop",
+          "images": 0
+        },
+        {
+          "id": "c088c2ac-6586-4220-ad8a-7851974bcd91",
+          "name": "Cathédrale de Clermont-Ferrand",
+          "category": "Attraction",
+          "images": 2
+        },
+        {
+          "id": "60cd5e5d-6404-4139-8604-41a77f53cc1a",
+          "name": "Château de Chalmazel",
+          "category": "Attraction",
+          "images": 1
+        },
+        {
+          "id": "0af447eb-ce93-4566-aa21-a0ed22d50615",
+          "name": "Château de la Bâtie d’Urfé",
+          "category": "Attraction",
+          "images": 1
+        },
+        {
+          "id": "4476e2ba-bd59-49de-9c77-3c6c5bb9a877",
+          "name": "Château de la Roche",
+          "category": "Attraction",
+          "images": 1
+        },
+        {
+          "id": "8168fe00-832e-44c5-b952-024d63c38ecb",
+          "name": "Collégiale de Saint-Bonnet-le-Château",
+          "category": "Attraction",
+          "images": 1
+        },
+        {
+          "id": "ef231784-6388-4beb-8b78-33a903a0a36f",
+          "name": "Puits Couriot",
+          "category": "Attraction",
+          "images": 1
+        },
+        {
+          "id": "c8b74765-ed0c-4c9f-81c9-46950b77765b",
+          "name": "Église de Feurs",
+          "category": "Attraction",
+          "images": 1
+        }
+      ],
+      "sourceDates": [
+        "Summer2001:8original800x600JPEGs,MichelJourdan authorconfirmedhomepagealt",
+        "1July2010:1original1600x1200schoolphoto,blogpublication2July2010"
+      ],
+      "rights": "User explicitly authorized photo reuse. All native bytes preserved without resizing/cropping/recompression/watermark removal; sourcepublisher/photographer attribution retained in8languages.",
+      "qualification": "Schoolphotogroupdominatesforeground; actualChateauLaRochevisibleandexplicitlycaptioned, usedhonestlyascontextualview. Noindividualpupilidentification. BasinphotoPark-level, unprovenindividualcastlesnotnamed."
+    },
+    "logo": {
+      "present": false,
+      "blocking": true,
+      "searches": [
+        "Creatorofficialsite, publicpress, departmentmagazines, municipalformerpage, oldoperatorladrosera.fr andparc-de-la-drosera.fr, specialist/visitorpages",
+        "Targetedlogo/plan/prospectus/brochure queries repeated2Nov2026",
+        "Public archiveavailability retriedserially after>20min; HTTP429again20:08:52UTC, noRetryAfter; municipal503/CDX503/operator403 documented"
+      ],
+      "excluded": "CurrentÉditionsduDroserapublisherlogo is not historicparklogo. No visitorphoto/wholebrochure/cropped/generatedlogo substituted.",
+      "retryEvidence": "sources/archive-old-domain-retry.json"
+    },
+    "officialMaps": {
+      "editions": 0,
+      "years": [],
+      "gap": "No genuineannualoperatorvisitormap recovered. IGNarea mapandregionalnatureparkpublications are notparkvisitormaps. Oldoperatorarchives inaccessible; retrylater withinbackoff, no inventedyear."
+    },
+    "coordinates": {
+      "park": null,
+      "itemsWithCoordinates": 0,
+      "items": 9,
+      "namedGaps": [
+        {
+          "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+          "name": "Aire de pique-nique",
+          "category": "Service",
+          "status": null
+        },
+        {
+          "id": "a5dc2de9-b48b-4048-ad9d-d67691d127ea",
+          "name": "Boutique",
+          "category": "Shop",
+          "status": null
+        },
+        {
+          "id": "c088c2ac-6586-4220-ad8a-7851974bcd91",
+          "name": "Cathédrale de Clermont-Ferrand",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "60cd5e5d-6404-4139-8604-41a77f53cc1a",
+          "name": "Château de Chalmazel",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "0af447eb-ce93-4566-aa21-a0ed22d50615",
+          "name": "Château de la Bâtie d’Urfé",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "4476e2ba-bd59-49de-9c77-3c6c5bb9a877",
+          "name": "Château de la Roche",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "8168fe00-832e-44c5-b952-024d63c38ecb",
+          "name": "Collégiale de Saint-Bonnet-le-Château",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "ef231784-6388-4beb-8b78-33a903a0a36f",
+          "name": "Puits Couriot",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        },
+        {
+          "id": "c8b74765-ed0c-4c9f-81c9-46950b77765b",
+          "name": "Église de Feurs",
+          "category": "Attraction",
+          "status": "ClosedDefinitively"
+        }
+      ],
+      "reason": "Precisehistoricalentry/itemlocations unproven. Creatorcurrentpublishercontactaddress notusedasparkentrance. No citycentroid or fullsizemonumentcoordinates assignedtomodels."
+    },
+    "references": {
+      "founders": 1,
+      "biographyLanguages": 8,
+      "operator": null,
+      "manufacturers": 0,
+      "reason": "CreatorBurtartverified; no uncertainlegalentityrole or modelmanufacturerinvented, no existingglobalreference rewritten."
+    },
+    "history": {
+      "currentFacts": 2,
+      "draftFacts": 2,
+      "retractedRevisions": 1,
+      "canonicalBlockers": 0,
+      "itemFacts": 0,
+      "articles": 1,
+      "articleLanguages": 8,
+      "articleHeadings": 3,
+      "articleParagraphs": 6,
+      "articleWordRange": [
+        309,
+        364
+      ],
+      "articlePhotos": 3,
+      "articleSources": 4,
+      "factsWithImage": 0,
+      "imageGap": "No specific1992opening/2013closurephotographsfound. Articleusesexplicitlydated2001/2010contextphotographs, notfalseeventimages.",
+      "precision": "Opening1992,DefinitiveClosure2013,Year; no inventedmodelinstallationdates or schooltripasfabricatedmilestone."
+    },
+    "calendarAndPricing": "Permanentlyclosed: no currentcalendar/prices. Olddepartmenthourstariffs not importedascurrent.",
+    "sourceAvailability": [
+      {
+        "label": "Patrick Burtart",
+        "url": "https://www.patrickburtart.fr/",
+        "checkedAtUtc": "2026-11-02T20:08:37.436580+00:00",
+        "status": 200,
+        "finalUrl": "https://www.patrickburtart.fr/",
+        "bytes": 307439,
+        "sha256": "af04f6f70ae8ba8563925c76cd5b95f4bf8a05b46fffe0e08e2cdf2365e06706",
+        "expectedSubjectPresent": true
+      },
+      {
+        "label": "Loire Magazine62",
+        "url": "https://www.loire.fr/upload/docs/application/pdf/lm62.pdf",
+        "checkedAtUtc": "2026-11-02T20:08:37.437951+00:00",
+        "status": 200,
+        "finalUrl": "https://www.loire.fr/upload/docs/application/pdf/lm62.pdf",
+        "bytes": 1648249,
+        "sha256": "cf5d3736d07ca6bad5615c9eb5fbe552c9e8fa86c4a3f74787520f074c262a56",
+        "expectedSubjectPresent": true
+      },
+      {
+        "label": "Michel Jourdan",
+        "url": "http://m.jourdan974.free.fr/photos5.htm",
+        "checkedAtUtc": "2026-11-02T20:08:37.438725+00:00",
+        "status": 200,
+        "finalUrl": "http://m.jourdan974.free.fr/photos5.htm",
+        "bytes": 8074,
+        "sha256": "e3f005d21aea0b1d290b974e198346538badc5664186672a80ae2a21a005969a",
+        "expectedSubjectPresent": true
+      },
+      {
+        "label": "Visite scolaire2010",
+        "url": "https://classedespetits.blogspot.com/2010/07/",
+        "checkedAtUtc": "2026-11-02T20:08:37.787646+00:00",
+        "status": 200,
+        "finalUrl": "https://classedespetits.blogspot.com/2010/07/",
+        "bytes": 63103,
+        "sha256": "75048be56ad41e8045ff77967de8b4fd235ff1317275790e5d820423b1dd6b7e",
+        "expectedSubjectPresent": true
+      },
+      {
+        "label": "Historique du parcours",
+        "url": "https://www.infotourisme.net/circuit-touristique/1509/bienvenue-dans-les-montagnes-du-haut-forez",
+        "checkedAtUtc": "2026-11-02T20:08:37.920732+00:00",
+        "status": 200,
+        "finalUrl": "https://www.infotourisme.net/circuit-touristique/1509/bienvenue-dans-les-montagnes-du-haut-forez",
+        "bytes": 44992,
+        "sha256": "f86c3cdd0ba2c90c0ac5176ab1af77ac1aaf4defbec6837fc880fbccf92e30cf",
+        "expectedSubjectPresent": true
+      }
+    ],
+    "publication": "Partialprivate; requiredlogoabsent andotherrealgaps. No sitepublication orFacebookattempt; no low-score/logogapexception inferred."
+  },
+  "historyDiagnostics": {
+    "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "parkName": "Parc de la Droséra – Forez Miniature",
+    "factCount": 3,
+    "relationCount": 0,
+    "blockingIssueCount": 0,
+    "issues": [],
+    "decadeCoverage": [
+      {
+        "decade": 1990,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      },
+      {
+        "decade": 2010,
+        "resourceCount": 1,
+        "sourcedResourceCount": 1,
+        "publishedResourceCount": 0,
+        "subjectCount": 1,
+        "sourceCoveragePercentage": 100
+      }
+    ],
+    "workflow": [
+      {
+        "stage": "Draft",
+        "resourceCount": 2
+      },
+      {
+        "stage": "SourcesAttached",
+        "resourceCount": 0
+      },
+      {
+        "stage": "EditorialReview",
+        "resourceCount": 0
+      },
+      {
+        "stage": "StructuredValidation",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Published",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Corrected",
+        "resourceCount": 0
+      },
+      {
+        "stage": "Retracted",
+        "resourceCount": 1
+      }
+    ],
+    "visits": {
+      "potentiallyInconsistentVisitCount": 0,
+      "confirmedConflictVisitCount": 0,
+      "unverifiedVisitCount": 0
+    },
+    "rolloutGate": {
+      "isOpen": false,
+      "hasEnoughStructuredFacts": false,
+      "hasCompleteSourceCoverage": false,
+      "hasMajorMilestone": false,
+      "hasIndexableKeyYear": false,
+      "publishedFactCount": 0,
+      "sourcedFactCount": 0,
+      "majorFactCount": 0,
+      "indexableKeyYears": []
+    }
+  },
+  "proofSha256": {
+    "09-full-export.json": "fdaab310da5dd901fdb922ee6bcd53251dae2d5566b96fdba57847beca87af2c",
+    "09-consolidated-audit-graph.json": "c12e04429cb550265cd71f67a23b923c10273d9d53fd7da64c1dd36ba5060867",
+    "09-roundtrip-before-refinement.json": "92892c88522868b3ae8c51fdb74bc599024b36d02a13f552046cf6d4f93b9e88",
+    "09-source-labels-apply.receipt.json": "0b29b2a6fe9aca90b353bb9088d568ce94eded251a4aab218790c35c5f3583c2",
+    "09-source-labels-apply-verified.json": "57c1de979a78f4492bab69fee958d427bf72b9096d3a59bae1a6d8982f4ac67a",
+    "09-completeness-final-receipt.json": "8185b78ea23bb886647dd2719a2876394dfb8b2c1d2f3c44923f201edb09fc81",
+    "09-history-diagnostics-final-receipt.json": "429d7422e75ab2e89e52e72eb72c31849d36aed6352925d3fc0000f093679bb9",
+    "09-personal-corpus-review.json": "5ad2df71f142678bfb2b06d68c0fdabaad14f9245aab4bba92f7979d0005b2ce",
+    "09-source-gaps.json": "44b26efe51dba05fff0205d7fba0b6960277e8565d51d08f0a0a4629ec9ebb65",
+    "09-source-availability.json": "a4d17e559454c270448b07ccf1e03acfa9a5640f41ca04259af48aadf50b6878"
+  },
+  "batchCompletedCount": 6,
+  "prCreated": false,
+  "versionChanged": false
+}

@@ -1,0 +1,2106 @@
+{
+  "parkId": "f019e441-aecf-487b-93db-2b0246dce185",
+  "reviewedAtUtc": "2026-10-23T06:57:55.666810+00:00",
+  "sourceFamiliesConsulted": [
+    "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+    "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+    "RCDB individual coaster records and credited original park/item photographs",
+    "Captain Coaster individual Big Apple record",
+    "Ailes Anciennes Toulouse aircraft collection and rescue account",
+    "CALM aircraft-history PDF",
+    "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025",
+    "Local Lanas association pages, ParcPlaza reporting, Coasterpedia, operator/manufacturer official histories",
+    "OpenStreetMap original bbox and individually identified parking/Pentagliss features; unlabelled footprints not guessed"
+  ],
+  "inventoryEvidence": "03-inventory-research-ledger.json",
+  "editorialDepthExceptions": "04-editorial-source-limits.json",
+  "imageExceptions": [
+    {
+      "id": "4a85e8b9-eb90-4acd-b20d-2976c5f543d5",
+      "name": "Big Apple",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Two short specific paragraphs preserve identity and distinction from Grand 8 Familial. RCDB and Captain Coaster establish model/dates but no usable original photograph or scenic detail; no invented caterpillar setting.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "1ff9de5d-6681-4d40-ab6d-e15fc99d3ec0",
+      "name": "City Jet",
+      "count": 2,
+      "shortfallToThree": 1,
+      "reason": "All identified original RCDB/press/association photographs imported. No further suitable distinct attributable photograph found in operator archives and specialist sources.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "2220f55c-4f41-41ab-b38d-5e1089bddff9",
+      "name": "Le Pays de l’exploit",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Shorter than120words in several languages; originaloperator1990/91/93/96/97brochuresandarchived2013site searched. Confirmeddomeappearance/location/format, but exactfilmprogramme, filmmakers, runtimeandinteriorsnotdocumented. No inventedplotsorpadding. Twoheadings/threefactualparagraphs retained.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "9a8d00c6-136d-4ad1-b51a-7696a3067eb4",
+      "name": "Pierrot la Lune",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Shorter than120words afterremovinggenericinterpretation. Confirmedoriginalbrochureinteriorphotos,warmfairytalescenes, longbuildingfootprintandnamedneighbours. No inventedscenecharacters,ridevendor, openingdayorretimingdate. LaterWagonnets/TrainFantomealiasstillresearchcandidate, explicitlyretained.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "829981e9-924d-464a-aa5d-5db1b3671bd9",
+      "name": "Tour Chute Libre",
+      "count": 2,
+      "shortfallToThree": 1,
+      "reason": "German and Polish word counts below 120 reflect compact idiom; three developed paragraphs cover the whole proven tower/observation/dry Boa/parachute complex, not separate invented rides.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "0499c83b-700b-45fe-8646-855c7d1e10a0",
+      "name": "Delta Junior",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1990 brochure identifies this children’s ride and location separately from Jeunes Mermoz. Later official brochures and exact-name web searches yield no reliable vehicle/model/scene detail. Preserve short 3-paragraph historical identification; do not invent equipment or experiences.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "7e6a3c09-7a94-4eb5-9a93-f990afd7dfe4",
+      "name": "Les Jeunes Mermoz",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1990 and 1997 plans identify the ride and locations, with aviation-related name; no independent detailed ride image or specification. Exact-name web search unsuccessful. Short three paragraphs preserve the distinct ride and changed map position without inventing a relocation date.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "786398f3-0146-43ab-be6f-0b2582c5d883",
+      "name": "Round Up",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1993/1996/1997 plans support appearance and location; no suitable detailed attraction photo or named supplier found. Short three paragraphs retain the illustrated red enclosure and specific restaurant/cycle/Satellite surroundings without mechanical padding.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "c1a0006f-67fe-4791-b365-dd983b9f517c",
+      "name": "Le Voltigeur",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1997 official cover photograph and map identify swing carousel, colours and surroundings. No manufacturer, opening date or detailed standalone photo is established; keep concise 3-paragraph copy rather than specifications or padding.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "07781f45-3c8e-4ee6-b010-23ed60907cdc",
+      "name": "Turbo-Jet",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original official brochures identify aircraft-themed ride, map position and operator promise of piloting. Detailed controls, manufacturer and equipment identity relative to planned Double Bang remain unproved. Preserve concise paragraphs, no invented technical or narrative detail.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "43b5cc2f-a420-4355-8b52-9fd4cad2f028",
+      "name": "Satellite",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1997 brochure and map establish named ride, physical separation from Round Up, illustration and advertised sensations. Exact-name additional web search yielded unrelated Aerocity India results, excluded. No detailed suitable image, maker or later transfer proved; shorter factual three-paragraph description retained.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "ae651b31-fb40-4748-9081-bc0b60398c8f",
+      "name": "À la recherche de l’avion perdu",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original operator maps and bridge/aircraft scenery photos plus 2013 map support walking rock-water landscape and later cave/bridge components. No invented plot, species of prehistoric figures, precise equipment changes or opening date.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "4caa8b03-03ab-4621-aad9-5ac0f4647588",
+      "name": "La Route des héros",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Only named walking route, map footprint and Bustes des héros established in original brochures. Individual commemorated people, statue artist and sculptural detail unproved after archive/source review. Removed thin documentary filler; two short paragraphs.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "5f2d3f6b-44a6-4e7a-a6b1-cca09fe6254c",
+      "name": "Le Circuit vélo-kangourou",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original maps separately label this course and VTT. No reliable close photograph or bike model/operating principle; two factual paragraphs preserve location and distinct identity without padding.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "40386015-53d4-412f-b55c-0eed078f6f6e",
+      "name": "La Piste VTT",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Official 1991/1993 maps name mountain-bike course separately from vélo-kangourou. Surface, obstacles, difficulty and equipment unproved; two short paragraphs, no invented athletic sensations.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "ba69dbd3-47b0-4b58-a1d2-cb200768523c",
+      "name": "Le Village des cabanes",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1991/1993/1996 map illustrations show cluster of pointed-roof children’s cabins and position by play/water area. Materials, manufacturer, themed interiors and removal date unknown. Concise three-paragraph historical description.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "3d19f21e-d0cb-4989-bed7-de669b76db6b",
+      "name": "Le Circuit Rad’eau",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1993/1996/1997 maps match irregular pond and embarkation Rad’eau/Mon’d’Eau. Detailed boats, propulsion, ride length and exact dates unavailable; two concise paragraphs on real location and name history.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "40d875a0-0126-48b0-85e2-f06cc071f105",
+      "name": "La Rivière des enfants",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original maps establish winding children’s watercourse, cinema/cabins location and Cité des Petits Princes. Identity with 2011 photographed paddle boats unproved; no photo assigned from that uncertain successor. No invented craft or technical detail.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "e6bb1def-a99d-483f-9c14-68ffc6394784",
+      "name": "Les Petits Lutins de l’espace",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Actual 1997 operator photograph shows children in lit blue/yellow saucer, original map establishes entrance games cluster. Exact-name web query returned unrelated childcare pages only; no interior story, movement, maker or opening date inferred. Two specific paragraphs.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "1204b373-1a02-421a-b19b-912f657f8afe",
+      "name": "Galaxy",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1996/1997 brochures establish Mini Galaxy/Galaxy alias and exact relative position, but no identifiable close image or technical detail. Targeted web query yielded no park-specific evidence. One concise historical paragraph avoids padding.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "073fd604-8d8d-4169-8e13-00c1cea409fd",
+      "name": "La Cité des jeux vidéo",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1997 brochure explicitly groups video games, tabletop pétanque and distorting mirrors in entrance shop/Aéro Expo building. No specific cabinet titles or brands established. Two factual paragraphs; no unproved projection or simulation claims.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "41007839-6f45-46a0-aeac-a9d4dd91c147",
+      "name": "Les Petites Voitures télécommandées",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original operator maps locate model-car circuit beside Pierrot building. Exact cars, manufacturer and pricing not established after brochure/official archive search. Single concise paragraph; no invented rideable cars.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "07742203-c68f-4bc4-9bff-40cc5772a5a7",
+      "name": "Les Bateaux télécommandés",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original operator maps locate model-boat pool separately from children’s river and Mon’d’Eau embarkation. Actual boat types/brands unknown; one short geographic paragraph, no conflation with later paddle boats.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "7f2ac9a9-56ce-44e5-8928-2cbd6a1bc58f",
+      "name": "Crazy Shake",
+      "count": 1,
+      "shortfallToThree": 2,
+      "reason": "Source-limited description from personally inspected RCDB 25927 credited Robin Peeters and dated 22 July 2002; identity, facade, cars, bulbs and context established. Manufacturer, programme and operating dates unknown. No engineering story invented.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "65739f3e-e24a-41f0-960c-d2047b4958f0",
+      "name": "Le Petit Train",
+      "count": 1,
+      "shortfallToThree": 2,
+      "reason": "Official map identifies little magic train; original 2011 press image proves Santa Fe Express livery and environment. Exact itinerary, maker, ride duration and opening date unknown. Three concise paragraphs preserve only proven appearance and mapped setting.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "d2d2c343-5198-46d7-817c-325b487d8892",
+      "name": "L’Enterprise 2",
+      "count": 1,
+      "shortfallToThree": 2,
+      "reason": "Shorter languages retain all three paragraphs: real 2011 press photo, official map adventure designation, HUSS operator attribution and supported later Gravity Kingoland identity. No unsupported former owner, model mechanics or opening date in prose.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "f8be8072-e294-4403-bd7a-2fa0f2a02457",
+      "name": "La Fontaine musicale",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "2013 official PDF gives actual fountain photo, musical designation and restaurant/cave location. No playlist, show sequence or lighting programme established. One heading and one specific paragraph accepted; generic water-as-spectacle filler removed rather than padding.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "6554004d-2b67-4bbc-8c27-491dfcf8e09d",
+      "name": "Le Cirque",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "2011 specialist report quotes operator confirmation of Zavatta, local source identifies circus school; specific 1 April 2012 specialist article announces Bauer. No unverified acts, animals, tent appearance or exact replacement date. Two paragraphs distinguish periods and announcement.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "4705b380-1392-4f6a-ac61-8bf3751f2e48",
+      "name": "Aéronimo",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1997 brochure establishes species, bird pond and hillside location; no precise enclosure design or opening date proved. Removed generic landscape sentence; concise two-paragraph format.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "e44eff71-c665-4b45-9126-500ff3b33203",
+      "name": "La Volière exotique",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original map establishes separate named aviary at central avenue/Pierrot. Species and detailed enclosure photo not found across brochure/archive/specialist sources; two short paragraphs, no invented birds.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "e4263e44-e0bd-4baa-bd9a-9c5c941c37a0",
+      "name": "La Mini-Ferme",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "2013 official map lists llama, pony, miniature horse, donkey, sheep and goat, with train/Breguet context. Queen Air photograph shows nearby enclosures. Do not infer miniature horse identification from the pony photograph or promise feeding/petting.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "db5414c1-4f09-4045-8e9a-6893f5ecb5f8",
+      "name": "Beechcraft Queen Air",
+      "count": 1,
+      "shortfallToThree": 2,
+      "reason": "Actual RCDB 110615 photograph personally inspected: livery, stone supports and enclosure surroundings. Original brochures confirm earlier identity. Avoid unsupported air-service history; three concise paragraphs.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "8c305f40-9656-4155-8faf-5c80427685a5",
+      "name": "Fouga Magister",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original brochures locate Fouga Magister at entrance. Genuine exact-name/Aérocity/Lanas photo search produced other museums only, rejected. No park-specific photo, aircraft serial or provenance established; short historical location description.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "f19782da-0f44-4a64-b2f6-37e08265f903",
+      "name": "Alouette II",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original brochures separately locate Alouette II near entrance aircraft. External exact-name search did not establish actual park photograph or serial. No manufacturer ride attribution or generic aircraft photo substituted.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "bf11803c-80c3-4d71-9a0b-6e267800b753",
+      "name": "Hélicoptère Panther",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "1996/1997 original maps locate Panther separately by Breguet/Voltigeur/Pierrot. No verifiable park-specific photograph, serial or provenance after targeted searches; no substitution with unrelated museum helicopter.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "e1a1b702-75df-46ef-9586-6345871aec7d",
+      "name": "Entrée et billetterie",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Service-specific 2-paragraph shorter format after original map/archive/photo search: RCDB 110614 personally inspected: actual ticket booth, blue sign, white gates and event posters. Short service text; no invented opening hours or ticket conditions.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "b4533d75-1b19-469d-adc7-45030e3ca5e1",
+      "name": "Parking",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original 1990–1997 operator maps establish external parking and airfield-road context; surfaces, capacity and detailed layouts unverified. No invented amenities or current parking promise.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "c172a91f-34fc-415b-b108-b4ee76f2df7a",
+      "name": "Infirmerie",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original operator maps consistently identify first-aid service at entrance; interior, equipment and staffing undocumented. Two short factual paragraphs instead of fabricated care details.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "4f4c054a-2808-4769-a310-fbd91cc6b5e3",
+      "name": "Sanitaires de l’entrée",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original operator maps locate entrance toilets separately from Cosmos toilets. Interior, cubicle counts and individual accessibility facilities unverified; concise location-specific text only.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "9a821d16-c930-4697-a27a-6ea47d63a79c",
+      "name": "Sanitaires de Cosmos Terrasse",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original operator maps locate toilet block at Cosmos Terrasse building end. Interior and equipment unknown; preserve separate historical identity without generic facilities promises.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "8f61eab7-686b-403b-82f2-0dd06ca6d50a",
+      "name": "Les Aires Aérostop",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Official 1990–1997 brochures identify multiple internal picnic/play areas and named swings. Grouped service retained; no unsupported individual opening dates or relocation asserted.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "3874568a-639f-4cda-9947-1b1dd18cabe1",
+      "name": "Aéro Gourmand",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Source-limited food/shop two-paragraph format: 1990 bar/snack/terrace and 1997 snack-pizzeria are explicit original operator labels; no menu item, supplier or interior invented.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "fd351d9d-b887-49fe-8cc6-3f0c35a537a9",
+      "name": "Les Saveurs du Parc",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Source-limited food/shop two-paragraph format: Original Cosmos Terrasse footprint and group/self-service role reconciled with 2013 official Les Saveurs du Parc. Archived Ardèche Évasion confirms buffet of prepared dishes. No named dishes or unproved menu promised.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "372777cf-c40b-4ce0-bed2-08225da10bcd",
+      "name": "Le Bar des ailes",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Source-limited food/shop two-paragraph format: 1990 official plan identifies bar/snack by Pierrot and Jeunes Mermoz. No detailed menu or interior found; retain brief venue-specific location and aviation name.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "53bc502b-18f7-47a3-8abd-dcbccade31c9",
+      "name": "Looping-bar",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Source-limited food/shop two-paragraph format: 1993–1997 original operator map explicitly labels bar/glacier separately from Aéro Gourmand, near retail/games. No flavours, menu or continuity with later unnamed snack bar invented.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "4cbde9b0-8c99-4c72-a9b5-716cb1b5a029",
+      "name": "Splash-bar",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Source-limited food/shop two-paragraph format: 1997 original operator map labels bar/glacier with changing rooms and lockers beside Aérosplash. No products beyond verified ice-cream/bar category or interior invented.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "d8944190-f965-4876-ab8a-366573a3a66d",
+      "name": "La Boutique Parc Avenue",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Source-limited food/shop two-paragraph format: Original operator brochure lists souvenirs/models/T-shirts; store footprint matched with official 2013 Boutique Parc Avenue. Do not conflate with planned terroir shop or invent a range for later seasons.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "a6f63467-512a-4a2f-b07f-9cb84bbcb304",
+      "name": "Amphithéâtre",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original early operator map establishes outdoor performance site in Cosmos area. No named production, close photograph, capacity or programme found across archives and historical brochures. One concise location paragraph.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "89a025a3-5ba8-4326-8630-853b0f7c8536",
+      "name": "Vidéo Espace Voyages",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "1991/1993/1996 operator labels and 1997 karaoke photograph establish entrance entertainment group and later karaoke. No invented video content or claim that every early film room became a particular stage. Two brief paragraphs.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "d01e167a-825b-4d76-9b04-80c6737c187b",
+      "name": "Ardèche Info",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Original 1990 map establishes named regional information point by Aéro Expo and games. Actual leaflet inventory, staffing and interior unknown; no invented sales or booking service.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "3b719658-c3d6-480e-a216-cab10ede80fb",
+      "name": "T’PA CAP ?",
+      "count": 1,
+      "shortfallToThree": 2,
+      "reason": "Official archived site calls it a simulator; original 2011 press photo proves capsule, flame decoration and access. Film, interior, programme and maker remain unknown despite official archive/specialist/press search. Describe exterior and name without invented ride sequence.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "9877e1a1-31e1-4e24-a816-61405baba6bf",
+      "name": "Le Labyrinthe végétal",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "2013 official map confirms rectangular plant maze by entrance and surrounding landscape. No close original image, plant species, height or exact route found. Two short map-based paragraphs; no invented dimensions or opening date.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "b30155b6-31d9-4ab3-83ab-fb7a3851dc9b",
+      "name": "La Piscine",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 1993 swimming photo, later brochures, 2013 official PDF and actual press photos establish outdoor pool setting in Aérosplash. Pool dimensions, depths and exact lifecycle unknown; two factual paragraphs.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "07e7b451-b460-416d-a23c-0be7709fd0ab",
+      "name": "Pentagliss",
+      "count": 1,
+      "shortfallToThree": 2,
+      "reason": "Official 2013 photo and press ruins photo personally viewed; form, colour, hillside steps and abandonment established. No lane count (map geometry differs), dimensions, material or operating sequence invented. Concise three-paragraph narrative.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "a5cfbc05-6e4a-4fb8-aac6-d66cb8d3d83c",
+      "name": "Les Toboggans aquatiques",
+      "count": 1,
+      "shortfallToThree": 2,
+      "reason": "Actual 2011 press image and original annual brochures show pale curved elevated slides, hillside and pool setting. No technical dimensions, manufacturer or precise opening chronology proved. Three factual paragraphs.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "49c02c4d-8642-47d9-87ec-8da9caf5cef4",
+      "name": "La Pataugeoire",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "2013 official map separately labels paddling pool with swimming area. No close photograph establishes toys, exact form, depths or detailed accessibility. Short setting description; no invented amenities.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "c16fb49a-2fde-4e91-8b70-8c7f48db7aef",
+      "name": "P’tits bouts Parc",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 2013 map and archived interactive map establish children’s play sector, inflatables and adjacent trampolines. Components grouped in historical inventory, no invented equipment makers/characters. Two paragraphs; no assumption it is a rename of Cité des Petits Princes.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "cbab6a21-60c7-4bbd-a8c9-21b89955839d",
+      "name": "L’Échiquier géant",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Actual photograph within original 2013 brochure shows large black/white chess set; mapped location establishes water/restaurant/cave context. No invented tournaments, precise piece heights or opening date. Two short paragraphs.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "01e0e2a0-8396-48d8-80c7-d5a08b212103",
+      "name": "Les Jeux d’adresse en bois",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original 2013 map names wood skill games and locates entrance-building row. Archived individual JPEG unavailable (interactive-photo-fetch-1.json, CDX empty). Specific games, rules and maker unproved; one concise geographic paragraph.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "522e5807-6329-4565-a610-4b4d2f02fc6b",
+      "name": "Le Manège enfantin",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Original official 2013 brochure photograph shows rounded red/white carousel canopy and position near shop/Breguet. Unknown maker and dates; no merge with old Delta/Mermoz/Galaxy without proof. Two short appearance/location paragraphs.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "23543439-4570-43b1-b75e-a8d445bebf0c",
+      "name": "Le Babyfoot géant",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Only original official interactive named activity and pairing with giant chess established. Genuine targeted web search found unrelated retailers; original image 23.jpg unavailable and CDX empty. Deliberately minimal single-sentence historical identification in eight languages. No invented human-football arena, table dimensions, capacity or equipment. This remains an explicit severe editorial source gap for final audit, not a full-length description claim.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "9f2ca1bf-5d2b-47cc-8ddc-796a7ade4e05",
+      "name": "L’Espace animations",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "2013 map and archived official interactive page identify activity reception, multipurpose/meeting spaces and puppet programme. No invented permanent show title, performer, timetable or auditorium equipment. Two concise paragraphs.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "bfd1c0ea-d7f7-427a-b7d1-6a1b19b1becd",
+      "name": "Vestiaires et douches de la piscine",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Service-specific 2-paragraph shorter format after original map/archive/photo search: 1997 official brochure groups changing rooms with Splash-bar; archived operator interactive map confirms changing rooms/showers at water area. Interior and equipment details unavailable.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    },
+    {
+      "id": "dc590d90-1f88-49bc-a278-b7ede5ccca6a",
+      "name": "Aire de pique-nique de l’entrée",
+      "count": 0,
+      "shortfallToThree": 3,
+      "reason": "Service-specific 2-paragraph shorter format after original map/archive/photo search: Printed 2013 official brochure explicitly says picnic area in front of park. Different location from internal Aérostop areas, no inferred replacement or precise opening date.",
+      "sources": [
+        "Original operator brochures 1990,1991,1993,1994 outer cover,1996,1997 reprinted by ParcPlaza",
+        "Archived official parcavenue.fr interactive map and 2013 PDF brochure, archived home-page image originals, Wayback CDX image attempts",
+        "RCDB individual coaster records and credited original park/item photographs",
+        "Captain Coaster individual Big Apple record",
+        "Ailes Anciennes Toulouse aircraft collection and rescue account",
+        "CALM aircraft-history PDF",
+        "Le Dauphiné original press gallery, operating 2011 and abandoned-site report January2025"
+      ]
+    }
+  ],
+  "geolocationExceptions": [
+    {
+      "id": "4a85e8b9-eb90-4acd-b20d-2976c5f543d5",
+      "name": "Big Apple",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+      "name": "Star Wars",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "37cc630a-f420-4759-b6da-dff9029a88f3",
+      "name": "Breguet 941 S",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "2220f55c-4f41-41ab-b38d-5e1089bddff9",
+      "name": "Le Pays de l’exploit",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "9a8d00c6-136d-4ad1-b51a-7696a3067eb4",
+      "name": "Pierrot la Lune",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "829981e9-924d-464a-aa5d-5db1b3671bd9",
+      "name": "Tour Chute Libre",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "0499c83b-700b-45fe-8646-855c7d1e10a0",
+      "name": "Delta Junior",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "7e6a3c09-7a94-4eb5-9a93-f990afd7dfe4",
+      "name": "Les Jeunes Mermoz",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "786398f3-0146-43ab-be6f-0b2582c5d883",
+      "name": "Round Up",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "c1a0006f-67fe-4791-b365-dd983b9f517c",
+      "name": "Le Voltigeur",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "07781f45-3c8e-4ee6-b010-23ed60907cdc",
+      "name": "Turbo-Jet",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "43b5cc2f-a420-4355-8b52-9fd4cad2f028",
+      "name": "Satellite",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "ae651b31-fb40-4748-9081-bc0b60398c8f",
+      "name": "À la recherche de l’avion perdu",
+      "reason": "Walk, route or distributed play/picnic areas rather than a proved single fixed public point. No arbitrary centroid assigned.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "4caa8b03-03ab-4621-aad9-5ac0f4647588",
+      "name": "La Route des héros",
+      "reason": "Walk, route or distributed play/picnic areas rather than a proved single fixed public point. No arbitrary centroid assigned.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "5f2d3f6b-44a6-4e7a-a6b1-cca09fe6254c",
+      "name": "Le Circuit vélo-kangourou",
+      "reason": "Walk, route or distributed play/picnic areas rather than a proved single fixed public point. No arbitrary centroid assigned.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "40386015-53d4-412f-b55c-0eed078f6f6e",
+      "name": "La Piste VTT",
+      "reason": "Walk, route or distributed play/picnic areas rather than a proved single fixed public point. No arbitrary centroid assigned.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "ba69dbd3-47b0-4b58-a1d2-cb200768523c",
+      "name": "Le Village des cabanes",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "3d19f21e-d0cb-4989-bed7-de669b76db6b",
+      "name": "Le Circuit Rad’eau",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "40d875a0-0126-48b0-85e2-f06cc071f105",
+      "name": "La Rivière des enfants",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "e6bb1def-a99d-483f-9c14-68ffc6394784",
+      "name": "Les Petits Lutins de l’espace",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "1204b373-1a02-421a-b19b-912f657f8afe",
+      "name": "Galaxy",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "073fd604-8d8d-4169-8e13-00c1cea409fd",
+      "name": "La Cité des jeux vidéo",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "41007839-6f45-46a0-aeac-a9d4dd91c147",
+      "name": "Les Petites Voitures télécommandées",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "07742203-c68f-4bc4-9bff-40cc5772a5a7",
+      "name": "Les Bateaux télécommandés",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "7f2ac9a9-56ce-44e5-8928-2cbd6a1bc58f",
+      "name": "Crazy Shake",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "65739f3e-e24a-41f0-960c-d2047b4958f0",
+      "name": "Le Petit Train",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "d2d2c343-5198-46d7-817c-325b487d8892",
+      "name": "L’Enterprise 2",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "f8be8072-e294-4403-bd7a-2fa0f2a02457",
+      "name": "La Fontaine musicale",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "6554004d-2b67-4bbc-8c27-491dfcf8e09d",
+      "name": "Le Cirque",
+      "reason": "Show/animation venues documented but no precise durable named position established across changing programmes; no invented GPS point.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "4705b380-1392-4f6a-ac61-8bf3751f2e48",
+      "name": "Aéronimo",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "e44eff71-c665-4b45-9126-500ff3b33203",
+      "name": "La Volière exotique",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "e4263e44-e0bd-4baa-bd9a-9c5c941c37a0",
+      "name": "La Mini-Ferme",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "db5414c1-4f09-4045-8e9a-6893f5ecb5f8",
+      "name": "Beechcraft Queen Air",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "8c305f40-9656-4155-8faf-5c80427685a5",
+      "name": "Fouga Magister",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "f19782da-0f44-4a64-b2f6-37e08265f903",
+      "name": "Alouette II",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "bf11803c-80c3-4d71-9a0b-6e267800b753",
+      "name": "Hélicoptère Panther",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "e1a1b702-75df-46ef-9586-6345871aec7d",
+      "name": "Entrée et billetterie",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "c172a91f-34fc-415b-b108-b4ee76f2df7a",
+      "name": "Infirmerie",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "4f4c054a-2808-4769-a310-fbd91cc6b5e3",
+      "name": "Sanitaires de l’entrée",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "9a821d16-c930-4697-a27a-6ea47d63a79c",
+      "name": "Sanitaires de Cosmos Terrasse",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "8f61eab7-686b-403b-82f2-0dd06ca6d50a",
+      "name": "Les Aires Aérostop",
+      "reason": "Walk, route or distributed play/picnic areas rather than a proved single fixed public point. No arbitrary centroid assigned.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "3874568a-639f-4cda-9947-1b1dd18cabe1",
+      "name": "Aéro Gourmand",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "fd351d9d-b887-49fe-8cc6-3f0c35a537a9",
+      "name": "Les Saveurs du Parc",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "372777cf-c40b-4ce0-bed2-08225da10bcd",
+      "name": "Le Bar des ailes",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "53bc502b-18f7-47a3-8abd-dcbccade31c9",
+      "name": "Looping-bar",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "4cbde9b0-8c99-4c72-a9b5-716cb1b5a029",
+      "name": "Splash-bar",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "d8944190-f965-4876-ab8a-366573a3a66d",
+      "name": "La Boutique Parc Avenue",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "a6f63467-512a-4a2f-b07f-9cb84bbcb304",
+      "name": "Amphithéâtre",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "89a025a3-5ba8-4326-8630-853b0f7c8536",
+      "name": "Vidéo Espace Voyages",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "d01e167a-825b-4d76-9b04-80c6737c187b",
+      "name": "Ardèche Info",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "3b719658-c3d6-480e-a216-cab10ede80fb",
+      "name": "T’PA CAP ?",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "9877e1a1-31e1-4e24-a816-61405baba6bf",
+      "name": "Le Labyrinthe végétal",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "b30155b6-31d9-4ab3-83ab-fb7a3851dc9b",
+      "name": "La Piscine",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "a5cfbc05-6e4a-4fb8-aac6-d66cb8d3d83c",
+      "name": "Les Toboggans aquatiques",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "49c02c4d-8642-47d9-87ec-8da9caf5cef4",
+      "name": "La Pataugeoire",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "c16fb49a-2fde-4e91-8b70-8c7f48db7aef",
+      "name": "P’tits bouts Parc",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "cbab6a21-60c7-4bbd-a8c9-21b89955839d",
+      "name": "L’Échiquier géant",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "01e0e2a0-8396-48d8-80c7-d5a08b212103",
+      "name": "Les Jeux d’adresse en bois",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "522e5807-6329-4565-a610-4b4d2f02fc6b",
+      "name": "Le Manège enfantin",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "23543439-4570-43b1-b75e-a8d445bebf0c",
+      "name": "Le Babyfoot géant",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "9f2ca1bf-5d2b-47cc-8ddc-796a7ade4e05",
+      "name": "L’Espace animations",
+      "reason": "Show/animation venues documented but no precise durable named position established across changing programmes; no invented GPS point.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "bfd1c0ea-d7f7-427a-b7d1-6a1b19b1becd",
+      "name": "Vestiaires et douches de la piscine",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    },
+    {
+      "id": "dc590d90-1f88-49bc-a278-b7ede5ccca6a",
+      "name": "Aire de pique-nique de l’entrée",
+      "reason": "Historical or removed installation; illustrated plans are not a georeferenced survey. Exact named point cannot be established from remaining unlabeled OSM footprints and source photographs.",
+      "evidence": [
+        "sources/osm-site-map.xml",
+        "sources/verified-item-geolocation.json",
+        "sources/brochure-manifest.json",
+        "sources/official-archive-depliant-ParcAvenue.pdf"
+      ]
+    }
+  ],
+  "accessConditionExceptions": [
+    {
+      "id": "8f46adb0-aa2d-4d85-8907-8ca5bf0f587d",
+      "name": "Aéroplane",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "4a85e8b9-eb90-4acd-b20d-2976c5f543d5",
+      "name": "Big Apple",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "1ff9de5d-6681-4d40-ab6d-e15fc99d3ec0",
+      "name": "City Jet",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "c54fb2d8-6bb5-4c44-a3b0-077557dabddd",
+      "name": "Grand 8 Familial",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+      "name": "Star Wars",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "37cc630a-f420-4759-b6da-dff9029a88f3",
+      "name": "Breguet 941 S",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "2220f55c-4f41-41ab-b38d-5e1089bddff9",
+      "name": "Le Pays de l’exploit",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "9a8d00c6-136d-4ad1-b51a-7696a3067eb4",
+      "name": "Pierrot la Lune",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "829981e9-924d-464a-aa5d-5db1b3671bd9",
+      "name": "Tour Chute Libre",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "0499c83b-700b-45fe-8646-855c7d1e10a0",
+      "name": "Delta Junior",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "7e6a3c09-7a94-4eb5-9a93-f990afd7dfe4",
+      "name": "Les Jeunes Mermoz",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "786398f3-0146-43ab-be6f-0b2582c5d883",
+      "name": "Round Up",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "c1a0006f-67fe-4791-b365-dd983b9f517c",
+      "name": "Le Voltigeur",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "07781f45-3c8e-4ee6-b010-23ed60907cdc",
+      "name": "Turbo-Jet",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "43b5cc2f-a420-4355-8b52-9fd4cad2f028",
+      "name": "Satellite",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "ae651b31-fb40-4748-9081-bc0b60398c8f",
+      "name": "À la recherche de l’avion perdu",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "4caa8b03-03ab-4621-aad9-5ac0f4647588",
+      "name": "La Route des héros",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "5f2d3f6b-44a6-4e7a-a6b1-cca09fe6254c",
+      "name": "Le Circuit vélo-kangourou",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "40386015-53d4-412f-b55c-0eed078f6f6e",
+      "name": "La Piste VTT",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "ba69dbd3-47b0-4b58-a1d2-cb200768523c",
+      "name": "Le Village des cabanes",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "3d19f21e-d0cb-4989-bed7-de669b76db6b",
+      "name": "Le Circuit Rad’eau",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "40d875a0-0126-48b0-85e2-f06cc071f105",
+      "name": "La Rivière des enfants",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "e6bb1def-a99d-483f-9c14-68ffc6394784",
+      "name": "Les Petits Lutins de l’espace",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "1204b373-1a02-421a-b19b-912f657f8afe",
+      "name": "Galaxy",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "073fd604-8d8d-4169-8e13-00c1cea409fd",
+      "name": "La Cité des jeux vidéo",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "41007839-6f45-46a0-aeac-a9d4dd91c147",
+      "name": "Les Petites Voitures télécommandées",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "07742203-c68f-4bc4-9bff-40cc5772a5a7",
+      "name": "Les Bateaux télécommandés",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "7f2ac9a9-56ce-44e5-8928-2cbd6a1bc58f",
+      "name": "Crazy Shake",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "65739f3e-e24a-41f0-960c-d2047b4958f0",
+      "name": "Le Petit Train",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "d2d2c343-5198-46d7-817c-325b487d8892",
+      "name": "L’Enterprise 2",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "3b719658-c3d6-480e-a216-cab10ede80fb",
+      "name": "T’PA CAP ?",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "9877e1a1-31e1-4e24-a816-61405baba6bf",
+      "name": "Le Labyrinthe végétal",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "b30155b6-31d9-4ab3-83ab-fb7a3851dc9b",
+      "name": "La Piscine",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "07e7b451-b460-416d-a23c-0be7709fd0ab",
+      "name": "Pentagliss",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "a5cfbc05-6e4a-4fb8-aac6-d66cb8d3d83c",
+      "name": "Les Toboggans aquatiques",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "49c02c4d-8642-47d9-87ec-8da9caf5cef4",
+      "name": "La Pataugeoire",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "cbab6a21-60c7-4bbd-a8c9-21b89955839d",
+      "name": "L’Échiquier géant",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "01e0e2a0-8396-48d8-80c7-d5a08b212103",
+      "name": "Les Jeux d’adresse en bois",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "522e5807-6329-4565-a610-4b4d2f02fc6b",
+      "name": "Le Manège enfantin",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    },
+    {
+      "id": "23543439-4570-43b1-b75e-a8d445bebf0c",
+      "name": "Le Babyfoot géant",
+      "reason": "Original brochures, archived operator map/PDF and relevant individual specialist records checked; no attributable attraction-specific height/age/accompaniment requirement established. Permanently closed record; no current access promise inferred."
+    }
+  ],
+  "officialMaps": {
+    "years": [
+      1990,
+      1991,
+      1993,
+      1996,
+      1997,
+      2013
+    ],
+    "latest": 2013,
+    "reason": "Official illustrated plans in genuine dated operator brochures retained without cropping; only 1994 outer cover available, no invented annual interior. No2014orothercompleteannualeditionlocated in archived official/source collection. Parkclosed2014, no current map expected."
+  },
+  "imageExclusions": [
+    {
+      "files": [
+        "official-archive-parc-avenue-01.jpg",
+        "official-archive-parc-avenue-02.jpg",
+        "official-archive-parc-avenue-03.jpg"
+      ],
+      "reason": "Inspected original operator landing-page strips form promotional composite with plane in flight and montaged attractions; not a real general park photograph; no reconstruction or crop."
+    },
+    {
+      "source": "sources/interactive-photo-fetch-1.json",
+      "reason": "Archive interactive image URLs returned HTML rather than actual JPEG; no import; CDX returned no archived matching files."
+    },
+    {
+      "source": "sources/gravity-2015-source-check.json",
+      "reason": "Specific 2015 relocation article paywall/402, no bypass; factual transfer supported by readable Coasterpedia, original ParcAvenue 2011 photo explicitly contextual."
+    }
+  ],
+  "eventImageDecisions": [
+    {
+      "eventKey": "avenue-aerocity-opening-1990",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "mainImageId": "2c2bdf16a7874885937b88c61030b506",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-cci-acquisition-1993",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "mainImageId": "2c2bdf16a7874885937b88c61030b506",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-family-acquisition-2007",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "mainImageId": "e50a966edfb54e3eb40a3d2ba3165a0c",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-reopening-2008",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "mainImageId": "e50a966edfb54e3eb40a3d2ba3165a0c",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-definitive-closure-2014",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "mainImageId": "e752eeb95c474c9a88a3913514fba25e",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-family-liquidation-2015",
+      "ownerId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "mainImageId": "e752eeb95c474c9a88a3913514fba25e",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-breguet-arrival-1990",
+      "ownerId": "37cc630a-f420-4759-b6da-dff9029a88f3",
+      "mainImageId": "a7f2ac269cc644de852fcf62c15e5fc7",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-breguet-preservation-2015",
+      "ownerId": "37cc630a-f420-4759-b6da-dff9029a88f3",
+      "mainImageId": "3371cab2bbb0419e9b48aa19c9b1c9bf",
+      "choice": "Actual rescue operation image"
+    },
+    {
+      "eventKey": "avenue-enterprise-opening-2011",
+      "ownerId": "d2d2c343-5198-46d7-817c-325b487d8892",
+      "mainImageId": "48e1f64547b24331962de351678ba88c",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-enterprise-kingoland-2015",
+      "ownerId": "d2d2c343-5198-46d7-817c-325b487d8892",
+      "mainImageId": "48e1f64547b24331962de351678ba88c",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-aeroplane-opening-1990",
+      "ownerId": "8f46adb0-aa2d-4d85-8907-8ca5bf0f587d",
+      "mainImageId": "fb095f187c5d49448309c1599e1ebac4",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-aeroplane-closure-2013",
+      "ownerId": "8f46adb0-aa2d-4d85-8907-8ca5bf0f587d",
+      "mainImageId": "4a21ee0a8ebe4137ad2d7e3a88333362",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-grand8-opening-2012",
+      "ownerId": "c54fb2d8-6bb5-4c44-a3b0-077557dabddd",
+      "mainImageId": "b12e8286075a4f9c93558bc77f632c19",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-grand8-closure-2013",
+      "ownerId": "c54fb2d8-6bb5-4c44-a3b0-077557dabddd",
+      "mainImageId": "4114ad6539c3489697e02c521e57b04a",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-starwars-closure-2003",
+      "ownerId": "a41b9818-6120-40cf-adfc-2e36b3cacc4a",
+      "mainImageId": "62a939695d75492fa0b8411af8767e21",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-cityjet-closure-2003",
+      "ownerId": "1ff9de5d-6681-4d40-ab6d-e15fc99d3ec0",
+      "mainImageId": "c31c786c53ed49b99db2f81b55a64fbb",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    },
+    {
+      "eventKey": "avenue-bigapple-closure-2003",
+      "ownerId": "4a85e8b9-eb90-4acd-b20d-2976c5f543d5",
+      "mainImageId": "88b80dd6e7b54e8db7ba7278d227290a",
+      "choice": "Historical view of actual park or subject. Caption preserves real photo period; not represented as opening/closing ceremony or relocation-day photograph. No photograph of exact event located in checked sources."
+    }
+  ],
+  "chronologyAndIdentityLimits": [
+    {
+      "subject": "First general closure",
+      "reason": "Press says2002; individual RCDB records and Captain BigApple establish2003 rideclosure. Park synthesis says early2000s; no unsupported exact park closure day/year fabricated."
+    },
+    {
+      "subject": "Aéroplane interim reopening",
+      "reason": "RCDBrange2009–2011, no exactopeningevent guessed."
+    },
+    {
+      "subject": "BigApple/CityJet opening",
+      "reason": "RCDBrange1998–2002 retained as range, no 1January dates."
+    },
+    {
+      "subject": "1997 owner sale",
+      "reason": "Sale mentioned in CALM but buyer not established; no founder/operator invented."
+    },
+    {
+      "subject": "Aquatic reorientation",
+      "reason": "Gradual shift established; sources differ on2012/2013 start so no exact milestone invented."
+    },
+    {
+      "subject": "Unresolved candidates",
+      "reason": "DoubleBang/TurboJet continuity, Pierrot/TrainFantome-Wagonnets alias, Patinoire, MondeGeants, AeroExpo, RondeHeures and childrensriver/paddleboats retained in ledger pending proof; no duplicate creation."
+    }
+  ],
+  "nonApplicable": {
+    "currentPricing": "ClosedDefinitively since2014; no current ticket offers",
+    "openingHours": "ClosedDefinitively, no future calendar",
+    "founderPerson": "Department/SEATAS public project; no individual founder identity proved"
+  },
+  "publicationApproved": false
+}

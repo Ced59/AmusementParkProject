@@ -1,0 +1,139 @@
+{
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "conversation": "Conversation France",
+  "qualifiedEntity": "Park",
+  "name": "Parc de la Récréation",
+  "coreDecision": "Historical outdoor park at Le Petit Nétilly in Monts, parking across Sorigny boundary. National backlog expressly separates historical La Récréation from successor Family Park, whose existing public record 2f436a73-8a36-4adc-9723-f14d569ed4f8 remains untouched. All six aliases searched globally in Parks and Standalone including both Family Park result pages; no separate historical record found. Municipal May2018 PLU and October2018 council record confirm site occupation since1994 and closure2018; contemporary July2017 press says27years (implying1990), so first opening year left unresolved rather than equating implantation and foundation. Exact source point47.2612921,0.6719202 from archived official2016 access map, consistent with PLU location; malformed printed longitude and town-centre directory point rejected. Last operator LA RECREATION, RCS TOURS451133516, established by archived official legal notice; no founder attribution. No live website because old domain repurposed; no current hours/prices. Historical logo native file recovered from local lodging tourism page; import follows. Private ToReview.",
+  "officialSearches": [
+    {
+      "file": "00-search-parks-family-park-page2-receipt.json",
+      "pagination": {
+        "totalItems": 60,
+        "totalPages": 2,
+        "currentPage": 2,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-parks-family-park.json",
+      "pagination": {
+        "totalItems": 60,
+        "totalPages": 2,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-parks-monts.json",
+      "pagination": {
+        "totalItems": 3,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-parks-netilly-receipt.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-parks-recreation-ascii.json",
+      "pagination": {
+        "totalItems": 30,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-parks-recreation.json",
+      "pagination": {
+        "totalItems": 2,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-parks-sorigny-receipt.json",
+      "pagination": {
+        "totalItems": 1,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-standalone-family-park.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-standalone-monts.json",
+      "pagination": {
+        "totalItems": 4,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-standalone-netilly-receipt.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-standalone-recreation-ascii.json",
+      "pagination": {
+        "totalItems": 2,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-standalone-recreation.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    {
+      "file": "00-search-standalone-sorigny-receipt.json",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    }
+  ],
+  "dateConflict": {
+    "municipal": "Implantation1994;closed2018",
+    "contemporaryPress": "27 years old in July2017 implies1990",
+    "decision": "Leave original opening date blank; site-implantation fact1994 can be narrated with source attribution."
+  },
+  "zonesDecision": "No official named zones proven; no fabricated subdivision.",
+  "sourceReferences": [
+    "https://mairie-sorigny.com/wp-content/uploads/37159-rp-1-DP-Monts-28-05-18.pdf",
+    "https://web.archive.org/web/20161001081729id_/http://www.la-recreation.com/infos-pratiques",
+    "https://web.archive.org/web/20160912125428id_/http://www.la-recreation.com/about/",
+    "https://www.37degres-mag.fr/societe/vacances-en-touraine-que-faire-en-famille/"
+  ],
+  "next": "Private core and sourced historical inventory, eight-language copy, recovered native media, final audit before publication."
+}

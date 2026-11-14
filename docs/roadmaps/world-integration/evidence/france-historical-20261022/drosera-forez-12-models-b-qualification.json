@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-11-03T01:44:42.193239+00:00",
+  "rows": [
+    {
+      "key": "model-schamond",
+      "name": "Maison des Chanoines de Saint-Chamond",
+      "sourcePage": "https://web.archive.org/web/20001208235100id_/http://www.parc-de-la-drosera.fr:80/schamond.html",
+      "nativeImage": "10-model-pages/Schamond.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-cleppe",
+      "name": "Tour de Cleppé",
+      "sourcePage": "https://web.archive.org/web/20001208201900id_/http://www.parc-de-la-drosera.fr:80/cleppe.html",
+      "nativeImage": "10-model-pages/Cleppe.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-sgeorges",
+      "name": "Pont de Vaux de Saint-Georges-en-Couzan",
+      "sourcePage": "https://web.archive.org/web/20001209000400id_/http://www.parc-de-la-drosera.fr:80/sgeorges.html",
+      "nativeImage": "10-model-pages/Sgeorges.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

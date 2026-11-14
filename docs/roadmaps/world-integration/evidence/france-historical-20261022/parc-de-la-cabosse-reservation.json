@@ -1,0 +1,30 @@
+{
+  "entryId": "FR-candidate-fa6227365b97a9",
+  "name": "Parc de la Cabosse",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-02T14:34:53.485623+00:00",
+  "phase": "reserved-for-qualification",
+  "masterChecked": "3f663230f6311a75e02c83c9e674a486c0a88169",
+  "otherBranchChecks": [
+    {
+      "branch": "docs/europe-integration-backlog",
+      "sha": "c3257bcf987ca3976f323f5e6b787c313d0f9f7b",
+      "assignedTo": null,
+      "siteId": null
+    },
+    {
+      "branch": "docs/france-world-reconciliation-20261022",
+      "sha": "4028cb0ccadc65c525cc8a1c768a29bb0123ed87",
+      "assignedTo": null,
+      "siteId": null
+    }
+  ],
+  "currentMasterEntry": {
+    "assignedTo": null,
+    "siteId": null,
+    "editorialStatus": "ToQualify"
+  },
+  "lastDataIntegrationAt": null,
+  "creationAuthorizedOnlyAfterQualification": true,
+  "next": "Official Park/Standalone global searches Cabosse/Jurques, distinguish historical amusement park from 1977 successor zoo and unrelated names; inspect original promotion and photos."
+}

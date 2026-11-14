@@ -1,0 +1,94 @@
+{
+  "entryId": "FR-candidate-b96b33e2bd92d5",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-01T12:21:48.843449+00:00",
+  "officialSearches": [
+    {
+      "file": "00-search-peaux.json",
+      "sha256": "1996888ee2ad131fdd995ffbd7a703db23925a81c0b458b576a127ac003762be",
+      "total": 3,
+      "results": [
+        {
+          "id": "c0434ae9-1778-47f4-90b1-d514abc37985",
+          "name": "Parc de loisirs du Hautacam",
+          "country": "FR"
+        },
+        {
+          "id": "b16443c3-0bdd-4f7c-b4f3-9892a14c7943",
+          "name": "Six Flags Over Georgia",
+          "country": "US"
+        },
+        {
+          "id": "55d391fa-4dff-44df-a067-300c7b7bd6d4",
+          "name": "Six Flags Over Texas",
+          "country": "US"
+        }
+      ]
+    },
+    {
+      "file": "00-search-fleurines.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "total": 0,
+      "results": []
+    },
+    {
+      "file": "00-search-standalone-peaux.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "total": 0,
+      "results": []
+    },
+    {
+      "file": "00-search-standalone-fleurines.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "total": 0,
+      "results": []
+    }
+  ],
+  "matchingHistoricalEntity": null,
+  "qualification": {
+    "kind": "Park",
+    "type": "ThemePark",
+    "status": "ClosedDefinitively",
+    "openingYear": 1966,
+    "closingYear": 1988,
+    "precision": "Années uniquement ; aucun jour inventé.",
+    "founders": [
+      "Robert Mottura",
+      "Philippe Cart-Tanneur"
+    ],
+    "historicalOffer": [
+      "ville western",
+      "train",
+      "spectacles équestres",
+      "village à tipis",
+      "commerces et restauration"
+    ],
+    "distinctModernReuse": {
+      "name": "Parcours Aventure de la Vallée des Peaux Rouges",
+      "source": "https://www.parcoursaventure60.fr/",
+      "reason": "L’exploitant actuel situe lui-même son parc sur le site de l’ancienne Vallée. Aucune attribution de ses tarifs, horaires, logo, société ou attractions au parc western fermé."
+    },
+    "identityRisks": [
+      "Jean Richard : propriétaire ultérieur possible, pas fondateur ; acquisition en 1971 à recouper avant intégration.",
+      "La Mer de Sable à Ermenonville est un parc distinct.",
+      "Logo et exploitant historiques encore à établir."
+    ]
+  },
+  "additionalAliasChecks": {
+    "alias": "Red Skin Valley",
+    "source": "https://studiaethnologicapragensia.ff.cuni.cz/wp-content/uploads/sites/3/2017/12/Veronique_Campion-Vincent_13-29.pdf",
+    "query": "Red Skin",
+    "parkMatches": 0,
+    "standaloneMatches": 0,
+    "checkedAt": "2026-11-01T12:30:00Z"
+  },
+  "laterIdentityEvidence": {
+    "checkedAtUtc": "2026-11-01T13:33:42.836272+00:00",
+    "alias": "America Park",
+    "sourcePage": "https://repliquesoldwest.superforum.fr/t6075-qui-se-souvient-de-la-vallee-des-peaux-rouges",
+    "sourceImage": "https://i.servimg.com/u/f34/16/37/32/46/29784611.jpg",
+    "basis": "Nom et adresseFleurines lus sur prospectus, aucune datation précise supposée.",
+    "parkMatches": 0,
+    "standaloneMatches": 0
+  }
+}

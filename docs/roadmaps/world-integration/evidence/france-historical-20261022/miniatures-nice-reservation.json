@@ -1,0 +1,43 @@
+{
+  "checkedAtUtc": "2026-11-02T17:44:54.472Z",
+  "entryId": "FR-candidate-2f3fddd5eab60a",
+  "owner": "Conversation France",
+  "refs": [
+    {
+      "ref": "master",
+      "blob": "95cb37ba9b1fea6de172fcc041f26543a0431ce5",
+      "entry": {
+        "entryId": "FR-candidate-2f3fddd5eab60a",
+        "name": "Parc des Miniatures de Nice",
+        "assignedTo": null,
+        "editorialStatus": "ToQualify",
+        "siteId": null,
+        "integrationEvents": 0
+      }
+    },
+    {
+      "ref": "docs/europe-integration-backlog",
+      "blob": "5bde75508d1e151f375f2a0a40d1368ef5629476",
+      "entry": {
+        "entryId": "FR-candidate-2f3fddd5eab60a",
+        "name": "Parc des Miniatures de Nice",
+        "assignedTo": null,
+        "editorialStatus": "ToQualify",
+        "siteId": null,
+        "integrationEvents": 0
+      }
+    },
+    {
+      "ref": "docs/france-world-reconciliation-20261022",
+      "blob": "1d9207c2d770df1aba03d32260ec3b6a82e7ee19",
+      "entry": {
+        "entryId": "FR-candidate-2f3fddd5eab60a",
+        "name": "Parc des Miniatures de Nice",
+        "assignedTo": null,
+        "editorialStatus": "ToQualify",
+        "siteId": null,
+        "integrationEvents": 0
+      }
+    }
+  ]
+}

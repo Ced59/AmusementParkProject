@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "documentSha256": "536920b915700113c240f96c826a979eec4b557b33083b223a5feb8752e111dc",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "827f8814-10e8-4a9c-83a3-e022e4bdae41",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T19:02:21.872478Z",
+    "appliedAtUtc": "2026-11-14T19:02:21.8724792Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 6,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+        "entityKey": "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+        "displayName": "Rencontre avec les dauphins",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "MinHeight|||||120|Centimeter|||||1|1|Official|https://www.marineland.fr/content/dam/mar/fr/files/FICHES%20PRODUIT%202022%20cse%20assoc%20web.pdf|Brochure officielle CSE 2022, p.1, conditions des rencontres|2026-11-03T04:49:59.9750000Z|2026-11-03T04:49:59.9750000Z|fr||High|Attraction|||",
+            "newValue": "MinHeight|||||120|Centimeter||||de:2022 betrug die Mindestgröße 1,20 m., en:In 2022, the minimum height was 1.20 m., es:En 2022, la estatura mínima era de 1,20 m., fr:En 2022, la taille minimale était de 1,20 m., it:Nel 2022 l’altezza minima era di 1,20 m., nl:In 2022 gold een minimumlengte van 1,20 m., pl:W 2022 roku minimalny wzrost wynosił 1,20 m., pt:Em 2022, a altura mínima era de 1,20 m.|1|1|Unknown|||||||Unknown|Attraction||| || Custom|||||||||de:Begleitung von Kindern im Jahr 2022, en:Children’s accompaniment in 2022, es:Acompañamiento de menores en 2022, fr:Accompagnement des enfants en 2022, it:Accompagnamento dei bambini nel 2022, nl:Begeleiding van kinderen in 2022, pl:Opieka nad dziećmi w 2022 roku, pt:Acompanhamento de crianças em 2022|de:2022 mussten Kinder von vier bis zwölf Jahren von einem Erwachsenen begleitet werden, der ebenfalls eine Eintrittskarte für die Begegnung besaß., en:In 2022, children aged 4–12 had to be accompanied by an adult who also held a ticket for the encounter., es:En 2022, los niños de cuatro a doce años debían ir acompañados de un adulto que también tuviera una entrada para el encuentro., fr:En 2022, les enfants de 4 à 12 ans devaient être accompagnés d’un adulte disposant lui aussi d’un billet pour la rencontre., it:Nel 2022 i bambini dai quattro ai dodici anni dovevano essere accompagnati da un adulto anch’esso munito di biglietto per l’incontro., nl:In 2022 moesten kinderen van vier tot twaalf jaar worden begeleid door een volwassene die ook een ticket voor de ontmoeting had., pl:W 2022 roku dzieci w wieku od czterech do dwunastu lat musiały uczestniczyć z dorosłym, który również posiadał bilet na spotkanie., pt:Em 2022, as crianças dos quatro aos doze anos tinham de ser acompanhadas por um adulto que também tivesse bilhete para o encontro.|2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+        "entityKey": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+        "displayName": "Rencontre avec les orques",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "MinHeight|||||120|Centimeter|||||1|1|Official|https://www.marineland.fr/content/dam/mar/fr/files/FICHES%20PRODUIT%202022%20cse%20assoc%20web.pdf|Brochure officielle CSE 2022, p.1, conditions des rencontres|2026-11-03T04:49:59.9750000Z|2026-11-03T04:49:59.9750000Z|fr||High|Attraction|||",
+            "newValue": "MinHeight|||||120|Centimeter||||de:2022 betrug die Mindestgröße 1,20 m., en:In 2022, the minimum height was 1.20 m., es:En 2022, la estatura mínima era de 1,20 m., fr:En 2022, la taille minimale était de 1,20 m., it:Nel 2022 l’altezza minima era di 1,20 m., nl:In 2022 gold een minimumlengte van 1,20 m., pl:W 2022 roku minimalny wzrost wynosił 1,20 m., pt:Em 2022, a altura mínima era de 1,20 m.|1|1|Unknown|||||||Unknown|Attraction||| || Custom|||||||||de:Begleitung von Kindern im Jahr 2022, en:Children’s accompaniment in 2022, es:Acompañamiento de menores en 2022, fr:Accompagnement des enfants en 2022, it:Accompagnamento dei bambini nel 2022, nl:Begeleiding van kinderen in 2022, pl:Opieka nad dziećmi w 2022 roku, pt:Acompanhamento de crianças em 2022|de:2022 mussten Kinder von vier bis zwölf Jahren von einem Erwachsenen begleitet werden, der ebenfalls eine Eintrittskarte für die Begegnung besaß., en:In 2022, children aged 4–12 had to be accompanied by an adult who also held a ticket for the encounter., es:En 2022, los niños de cuatro a doce años debían ir acompañados de un adulto que también tuviera una entrada para el encuentro., fr:En 2022, les enfants de 4 à 12 ans devaient être accompagnés d’un adulte disposant lui aussi d’un billet pour la rencontre., it:Nel 2022 i bambini dai quattro ai dodici anni dovevano essere accompagnati da un adulto anch’esso munito di biglietto per l’incontro., nl:In 2022 moesten kinderen van vier tot twaalf jaar worden begeleid door een volwassene die ook een ticket voor de ontmoeting had., pl:W 2022 roku dzieci w wieku od czterech do dwunastu lat musiały uczestniczyć z dorosłym, który również posiadał bilet na spotkanie., pt:Em 2022, as crianças dos quatro aos doze anos tinham de ser acompanhadas por um adulto que também tivesse bilhete para o encontro.|2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+        "entityKey": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+        "displayName": "Soigneur dauphins, l’expérience inédite",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "MinAge|||||4|Year||||de:Laut der Broschüre von 2022 mussten Kinder von 4 bis 12 Jahren von einem teilnehmenden Erwachsenen begleitet werden., en:The 2022 brochure required children aged 4 to 12 to be accompanied by a participating adult., es:El folleto de 2022 exigía que los niños de 4 a 12 años fueran acompañados por un adulto participante., fr:Dans la brochure de 2022, les enfants de 4 à 12 ans devaient être accompagnés par un adulte participant., it:Secondo la brochure del 2022, i bambini dai 4 ai 12 anni dovevano essere accompagnati da un adulto partecipante., nl:Volgens de brochure uit 2022 moesten kinderen van 4 tot en met 12 jaar worden begeleid door een deelnemende volwassene., pl:Według broszury z 2022 roku dzieci w wieku od 4 do 12 lat musiały uczestniczyć z dorosłym opiekunem., pt:Segundo a brochura de 2022, as crianças dos 4 aos 12 anos tinham de estar acompanhadas por um adulto participante.|1|1|Official|https://www.marineland.fr/content/dam/mar/fr/files/FICHES%20PRODUIT%202022%20cse%20assoc%20web.pdf|Brochure officielle CSE 2022, p.1, conditions des rencontres|2026-11-03T04:49:59.9750000Z|2026-11-03T04:49:59.9750000Z|fr||High|Attraction|||",
+            "newValue": "MinAge|||||4|Year||||de:2022 war das Delfinpfleger-Erlebnis ab vier Jahren zugänglich., en:In 2022, the Dolphin Keeper experience was open to participants aged four and over., es:En 2022, la experiencia de cuidador de delfines era accesible a partir de los cuatro años., fr:En 2022, l’expérience Soigneur dauphins était accessible à partir de 4 ans., it:Nel 2022 l’esperienza da addetto alla cura dei delfini era accessibile dai quattro anni., nl:In 2022 was de ervaring als dolfijnenverzorger toegankelijk vanaf vier jaar., pl:W 2022 roku w doświadczeniu opiekuna delfinów mogły uczestniczyć osoby od czwartego roku życia., pt:Em 2022, a experiência de tratador de golfinhos estava acessível a partir dos quatro anos.|1|1|Unknown|||||||Unknown|Attraction||| || Custom|||||||||de:Begleitung von Kindern im Jahr 2022, en:Children’s accompaniment in 2022, es:Acompañamiento de menores en 2022, fr:Accompagnement des enfants en 2022, it:Accompagnamento dei bambini nel 2022, nl:Begeleiding van kinderen in 2022, pl:Opieka nad dziećmi w 2022 roku, pt:Acompanhamento de crianças em 2022|de:2022 mussten Kinder von vier bis zwölf Jahren von einem Erwachsenen begleitet werden, der ebenfalls eine Eintrittskarte für die Begegnung besaß., en:In 2022, children aged 4–12 had to be accompanied by an adult who also held a ticket for the encounter., es:En 2022, los niños de cuatro a doce años debían ir acompañados de un adulto que también tuviera una entrada para el encuentro., fr:En 2022, les enfants de 4 à 12 ans devaient être accompagnés d’un adulte disposant lui aussi d’un billet pour la rencontre., it:Nel 2022 i bambini dai quattro ai dodici anni dovevano essere accompagnati da un adulto anch’esso munito di biglietto per l’incontro., nl:In 2022 moesten kinderen van vier tot twaalf jaar worden begeleid door een volwassene die ook een ticket voor de ontmoeting had., pl:W 2022 roku dzieci w wieku od czterech do dwunastu lat musiały uczestniczyć z dorosłym, który również posiadał bilet na spotkanie., pt:Em 2022, as crianças dos quatro aos doze anos tinham de ser acompanhadas por um adulto que também tivesse bilhete para o encontro.|2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e448cdef-c243-4a67-a85c-007522789a06",
+        "entityKey": "e448cdef-c243-4a67-a85c-007522789a06",
+        "displayName": "Rencontre avec les otaries",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "Custom|||||||||de:Begleitung von Kindern im Jahr 2022, en:Children’s accompaniment in 2022, es:Acompañamiento de menores en 2022, fr:Accompagnement des enfants en 2022, it:Accompagnamento dei bambini nel 2022, nl:Begeleiding van kinderen in 2022, pl:Opieka nad dziećmi w 2022 roku, pt:Acompanhamento de crianças em 2022|de:2022 mussten Kinder von vier bis zwölf Jahren von einem Erwachsenen begleitet werden, der ebenfalls eine Eintrittskarte für die Begegnung besaß., en:In 2022, children aged 4–12 had to be accompanied by an adult who also held a ticket for the encounter., es:En 2022, los niños de cuatro a doce años debían ir acompañados de un adulto que también tuviera una entrada para el encuentro., fr:En 2022, les enfants de 4 à 12 ans devaient être accompagnés d’un adulte disposant lui aussi d’un billet pour la rencontre., it:Nel 2022 i bambini dai quattro ai dodici anni dovevano essere accompagnati da un adulto anch’esso munito di biglietto per l’incontro., nl:In 2022 moesten kinderen van vier tot twaalf jaar worden begeleid door een volwassene die ook een ticket voor de ontmoeting had., pl:W 2022 roku dzieci w wieku od czterech do dwunastu lat musiały uczestniczyć z dorosłym, który również posiadał bilet na spotkanie., pt:Em 2022, as crianças dos quatro aos doze anos tinham de ser acompanhadas por um adulto que também tivesse bilhete para o encontro.|2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+        "entityKey": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+        "displayName": "Ours polaires",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.yorkshirewildlifepark.com/news/polar-bears-on-the-move-at-yorkshire-wildlife-park/",
+            "newValue": "https://tiergarten.nuernberg.de/entdecken/aktuell/detail/news/2010-05-10-flocke-und-rasputin-geniessen-bad-in-meerwasser"
+          },
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": null,
+            "newValue": "2010-05-06"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": "2010",
+            "newValue": "2010-05-06"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "bf2e02ef-21ec-464c-9841-9cfa1326eeb0",
+        "entityKey": "marineland-ours-polaires-arrivee-2010",
+        "displayName": "Les ours polaires sont présentés au public",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "titles",
+            "oldValue": "de:Eisbären ziehen in Marineland ein, en:Polar bears join Marineland, es:Los osos polares llegan a Marineland, fr:Les ours polaires rejoignent Marineland, it:Gli orsi polari arrivano a Marineland, nl:IJsberen komen naar Marineland, pl:Niedźwiedzie polarne przybywają do Marineland, pt:Os ursos-polares chegam ao Marineland",
+            "newValue": "de:Die Eisbären sind erstmals für Besucher zu sehen, en:Polar bears go on public view, es:Los osos polares se presentan al público, fr:Les ours polaires sont présentés au public, it:Gli orsi polari vengono presentati al pubblico, nl:De ijsberen zijn voor het eerst te zien, pl:Niedźwiedzie polarne po raz pierwszy dostępne dla zwiedzających, pt:Os ursos-polares são apresentados ao público"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "de:2010 kommt ein junges Eisbärenpaar in einen neuen, in mehrere Gehege gegliederten Bereich. Becken und Landflächen ermöglichen den Besuchern die Beobachtung dieser Tiere und ergänzen den Park um eine arktische Tierart neben den Pinguinen., en:In 2010, a young pair of polar bears arrives in a new space divided into several enclosures. Pools and land areas allow visitors to discover these animals, adding an Arctic presence distinct from the park’s penguins., es:En 2010 llega una joven pareja de osos polares a un nuevo espacio dividido en varios recintos. Las piscinas y las zonas terrestres permiten al público observar a los animales, incorporando una presencia ártica distinta de la de los pingüinos., fr:En 2010, un jeune couple d’ours polaires arrive dans un nouvel espace aménagé en plusieurs enclos. Les bassins et les parties terrestres permettent au public de découvrir ces animaux, ajoutant une présence arctique distincte de celle des manchots., it:Nel 2010 una giovane coppia di orsi polari arriva in un nuovo spazio suddiviso in più recinti. Vasche e aree terrestri permettono al pubblico di osservare gli animali, aggiungendo una presenza artica distinta da quella dei pinguini., nl:In 2010 komt een jong ijsberenpaar naar een nieuw gebied met meerdere verblijven. Bassins en landgedeelten laten bezoekers de dieren bekijken en voegen een soort uit het noordpoolgebied toe, naast de pinguïns die al in het park leven., pl:W 2010 roku młoda para niedźwiedzi polarnych przybywa do nowej przestrzeni podzielonej na kilka wybiegów. Baseny i części lądowe umożliwiają zwiedzającym obserwację zwierząt, dodając do parku arktyczny gatunek odrębny od prezentowanych pingwinów., pt:Em 2010, um jovem casal de ursos-polares chega a um novo espaço dividido em vários recintos. Tanques e áreas terrestres permitem ao público observar os animais, acrescentando uma presença ártica distinta da dos pinguins.",
+            "newValue": "de:Am 6. Mai 2010 sehen Besucher Flocke und Rasputin erstmals in der neuen Eisbärenanlage. Die am 23. April aus Nürnberg eingetroffenen Tiere bewohnen eine Landschaft aus Felsen und Meerwasserbecken, in der sie auch beim Schwimmen beobachtet werden können., en:On 6 May 2010, visitors first see Flocke and Rasputin in the new polar bear habitat. Having arrived from Nuremberg on 23 April, the two animals occupy a landscape of rocks and seawater pools, with views of them swimming., es:El 6 de mayo de 2010, los visitantes ven por primera vez a Flocke y Rasputin en el nuevo recinto de osos polares. Llegados de Núremberg el 23 de abril, los animales ocupan un paisaje de rocas y piscinas de agua marina donde se puede observar cómo nadan., fr:Le 6 mai 2010, les visiteurs découvrent Flocke et Raspoutine dans le nouvel espace des ours polaires. Arrivés de Nuremberg le 23 avril, les deux animaux occupent un paysage de rochers et de bassins d’eau de mer, avec des vues sur la nage., it:Il 6 maggio 2010 i visitatori vedono per la prima volta Flocke e Rasputin nel nuovo spazio degli orsi polari. Arrivati da Norimberga il 23 aprile, i due animali occupano un paesaggio di rocce e vasche d’acqua marina, con punti di osservazione del nuoto., nl:Op 6 mei 2010 zien bezoekers Flocke en Rasputin voor het eerst in het nieuwe ijsberenverblijf. De twee dieren kwamen op 23 april uit Neurenberg aan en bewonen een landschap van rotsen en zeewaterbassins, waar ook hun zwemgedrag te zien is., pl:6 maja 2010 roku zwiedzający po raz pierwszy oglądają Flocke i Rasputina na nowym wybiegu niedźwiedzi polarnych. Zwierzęta przyjechały z Norymbergi 23 kwietnia. Zamieszkują przestrzeń ze skałami i basenami z wodą morską, umożliwiającą także obserwację pływania., pt:A 6 de maio de 2010, os visitantes veem Flocke e Rasputin pela primeira vez no novo espaço dos ursos-polares. Chegados de Nuremberga a 23 de abril, os animais ocupam uma paisagem de rochas e tanques de água do mar, com vistas para a natação."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"Les Zoos dans le Monde \\u2014 description de Marineland en 2012\",\"Url\":\"https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php\",\"AccessedAt\":\"2026-11-14\"}]",
+            "newValue": "[{\"Label\":\"Tiergarten N\\u00FCrnberg \\u2014 premi\\u00E8re pr\\u00E9sentation au public le 6 mai 2010\",\"Url\":\"https://tiergarten.nuernberg.de/entdecken/aktuell/detail/news/2010-05-10-flocke-und-rasputin-geniessen-bad-in-meerwasser\",\"AccessedAt\":\"2026-11-14\"},{\"Label\":\"Les Zoos dans le Monde \\u2014 description de Marineland en 2012\",\"Url\":\"https://www.leszoosdanslemonde.com/description.marineland-d-antibes-.php\",\"AccessedAt\":\"2026-11-14\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sitePublished": false,
+  "facebookPublished": false,
+  "finalAuditCompleted": false
+}

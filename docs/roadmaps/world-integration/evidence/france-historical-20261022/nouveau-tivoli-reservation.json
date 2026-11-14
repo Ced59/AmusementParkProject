@@ -1,0 +1,354 @@
+{
+  "entryId": "FR-candidate-bc5ed7aa50e26f",
+  "name": "Nouveau Tivoli (Folie La Bouëxière)",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-02T20:48:39.955463+00:00",
+  "coordination": {
+    "checkedAtUtc": "2026-11-02 20:13:14 UTC",
+    "checks": [
+      {
+        "ref": "master",
+        "sha": "95cb37ba9b1fea6de172fcc041f26543a0431ce5",
+        "entryCount": 496,
+        "matches": [
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "name": "Tivoli",
+            "assignedTo": null,
+            "siteId": null,
+            "lastDataIntegrationAt": null,
+            "events": 0
+          }
+        ]
+      },
+      {
+        "ref": "docs/europe-integration-backlog",
+        "sha": "5bde75508d1e151f375f2a0a40d1368ef5629476",
+        "entryCount": 468,
+        "matches": [
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "name": "Tivoli",
+            "assignedTo": null,
+            "siteId": null,
+            "lastDataIntegrationAt": null,
+            "events": 0
+          }
+        ]
+      },
+      {
+        "ref": "docs/france-world-reconciliation-20261022",
+        "sha": "1d9207c2d770df1aba03d32260ec3b6a82e7ee19",
+        "entryCount": 468,
+        "matches": [
+          {
+            "entryId": "FR-candidate-778dd6c0478ee2",
+            "name": "Tivoli",
+            "assignedTo": null,
+            "siteId": null,
+            "lastDataIntegrationAt": null,
+            "events": 0
+          }
+        ]
+      }
+    ]
+  },
+  "searches": [
+    {
+      "file": "00-search-parks-bouexiere-accent-p1.json",
+      "sha256": "c562a4ea766c7c637ebfc36ebc2feeb25cd9c97625d9ea0a0bd23bab1515b809",
+      "pagination": {
+        "totalItems": 1,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "results": [
+        {
+          "id": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "name": "Tivoli (Folie Boutin)",
+          "countryCode": "FR",
+          "city": "Paris"
+        }
+      ]
+    },
+    {
+      "file": "00-search-parks-bouexiere-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "results": []
+    },
+    {
+      "file": "00-search-parks-robertson-p1.json",
+      "sha256": "1a33ad22125053046f2d05000169f6002e531a0af7b59e543ca26e9b36a341f4",
+      "pagination": {
+        "totalItems": 2,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "results": [
+        {
+          "id": "2825e63a-cf40-4bff-9e2b-b406fb573825",
+          "name": "Mid America Adventure",
+          "countryCode": "US",
+          "city": "Eureka"
+        },
+        {
+          "id": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "name": "Tivoli (Folie Boutin)",
+          "countryCode": "FR",
+          "city": "Paris"
+        }
+      ]
+    },
+    {
+      "file": "00-search-parks-tivoli-p1.json",
+      "sha256": "08f13e208a7a80b3557906f54d9502530c619b4f5824dd49cdd01bc80de152ef",
+      "pagination": {
+        "totalItems": 31,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "results": [
+        {
+          "id": "f95c7ed8-6564-4fce-a031-3d81d3bee764",
+          "name": "Amusementspark Tivoli",
+          "countryCode": "NL",
+          "city": "Berg en Dal"
+        },
+        {
+          "id": "21a70506-e31a-4054-bf76-9c8a7b312905",
+          "name": "Ankers Tivoli",
+          "countryCode": "DK",
+          "city": null
+        },
+        {
+          "id": "e5b48105-642e-403a-b841-396e31e12f96",
+          "name": "Berglunds Tivoli",
+          "countryCode": "SE",
+          "city": null
+        },
+        {
+          "id": "95025178-c620-43c2-a57c-00f2769a33cf",
+          "name": "Bergströms Tivoli",
+          "countryCode": "NO",
+          "city": null
+        },
+        {
+          "id": "28d8ae5d-1875-48a8-b3c4-11920b1d76ff",
+          "name": "Fyns Tivoli",
+          "countryCode": "DK",
+          "city": null
+        },
+        {
+          "id": "a7a75186-ae90-4128-8013-a905075a64c5",
+          "name": "Herning Tivolipark",
+          "countryCode": "DK",
+          "city": null
+        },
+        {
+          "id": "37b88d26-4100-4979-87ce-4aaa3805ed28",
+          "name": "Hugos Tivoli",
+          "countryCode": "NO",
+          "city": null
+        },
+        {
+          "id": "b4451ce3-66c0-4ac0-8fca-840db7f3a1ff",
+          "name": "Kjærs Tivoli",
+          "countryCode": "DK",
+          "city": null
+        },
+        {
+          "id": "28a28181-b958-445f-bcdf-040da4f76709",
+          "name": "Kölner Tivoli",
+          "countryCode": "DE",
+          "city": null
+        },
+        {
+          "id": "959193f6-c899-40f7-95da-c40ba115d2ca",
+          "name": "Luna Park Tivoli",
+          "countryCode": "GR",
+          "city": null
+        },
+        {
+          "id": "6b9a6cab-0a93-497a-a936-e53bb2df69f7",
+          "name": "Lunds Tivoli",
+          "countryCode": "NO",
+          "city": null
+        },
+        {
+          "id": "30dcd18a-6e17-4eed-b800-62f28e4fe667",
+          "name": "Max Tivoli",
+          "countryCode": "SE",
+          "city": null
+        },
+        {
+          "id": "b7d7f175-28cd-44d5-bff4-44ccac3f26b3",
+          "name": "Möllers Tivoli AB",
+          "countryCode": "SE",
+          "city": null
+        },
+        {
+          "id": "5ce1a84f-0a3d-4799-9f70-979e57a4b916",
+          "name": "Nordisk Tivolipark",
+          "countryCode": "DK",
+          "city": null
+        },
+        {
+          "id": "58dfe3b2-2298-426a-8bd2-e93db346677b",
+          "name": "Rocca al Mare Tivoli",
+          "countryCode": null,
+          "city": null
+        },
+        {
+          "id": "b96d695d-b7fa-4eb1-90bf-2dd7b4c1a5c8",
+          "name": "Skandinavisk Tivolipark",
+          "countryCode": "NO",
+          "city": null
+        },
+        {
+          "id": "433f91e4-a8fe-4911-b9d7-f4b84553eaea",
+          "name": "Suomi Tivoli",
+          "countryCode": "FI",
+          "city": null
+        },
+        {
+          "id": "07c11d51-de76-442d-bc55-91e26aae66a1",
+          "name": "Tivoli (Folie Boutin)",
+          "countryCode": "FR",
+          "city": "Paris"
+        },
+        {
+          "id": "78401ecc-840e-4cd1-a18f-9a7b94b9f0cc",
+          "name": "Tivoli Friheden",
+          "countryCode": "DK",
+          "city": null
+        },
+        {
+          "id": "940f5b89-9336-4f54-bf00-20232691c8ba",
+          "name": "Tivoli Gardens",
+          "countryCode": "DK",
+          "city": null
+        },
+        {
+          "id": "88d00988-5b05-4f44-90f8-e628445f45b6",
+          "name": "Tivoli Karolinelund",
+          "countryCode": "DK",
+          "city": null
+        },
+        {
+          "id": "6b7c1e67-a18e-4354-83bf-691e03c0055e",
+          "name": "Tivoli Mokia Finland",
+          "countryCode": "FI",
+          "city": null
+        },
+        {
+          "id": "b92d7818-8485-403c-af23-798653d60993",
+          "name": "Tivoli Park (1973-1995)",
+          "countryCode": "ES",
+          "city": null
+        },
+        {
+          "id": "2957d46e-fc66-4713-938d-49a368832cc1",
+          "name": "Tivoli Park (2020)",
+          "countryCode": "BR",
+          "city": null
+        },
+        {
+          "id": "ba819e0f-dde1-422d-a85f-7aa0050ef9a6",
+          "name": "Tivoli Sariola",
+          "countryCode": "FI",
+          "city": null
+        },
+        {
+          "id": "ada68259-fcb7-49fa-b77f-86786cc34a1c",
+          "name": "Tivoli Seiterä",
+          "countryCode": "FI",
+          "city": null
+        },
+        {
+          "id": "96e1f029-be3d-4221-9598-c2ea17cd6c59",
+          "name": "Tivoli Suuronen",
+          "countryCode": "FI",
+          "city": null
+        },
+        {
+          "id": "069eb28d-6599-442d-bd8e-190051e82fa3",
+          "name": "Tivoli World",
+          "countryCode": "ES",
+          "city": null
+        },
+        {
+          "id": "62a3af4d-549d-4dc4-bfa2-4afd29ba4e6d",
+          "name": "Tivoliland",
+          "countryCode": "DK",
+          "city": null
+        },
+        {
+          "id": "b6fb2293-15b5-4408-b468-0075671643da",
+          "name": "Tšehhi Tivoli Eesti",
+          "countryCode": null,
+          "city": null
+        },
+        {
+          "id": "e70b8e99-ed93-492e-8e51-b70d0b86c181",
+          "name": "Vikings Tivoli AB",
+          "countryCode": "SE",
+          "city": null
+        }
+      ]
+    },
+    {
+      "file": "00-search-standalone-bouexiere-accent-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "results": []
+    },
+    {
+      "file": "00-search-standalone-bouexiere-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "results": []
+    },
+    {
+      "file": "00-search-standalone-robertson-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "results": []
+    },
+    {
+      "file": "00-search-standalone-tivoli-p1.json",
+      "sha256": "eda388626066ff634a19db02c1fb85d350f1597636bfa663dba508d49be9570d",
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      },
+      "results": []
+    }
+  ],
+  "decision": "Parc historique distinct, jamais standalone. Aucun résultat ne représente le Nouveau Tivoli de Robertson. Le Grand Tivoli (Folie Boutin), 07c11d51-de76-442d-bc55-91e26aae66a1, cite son successeur dans son texte mais demeure une autre entité. Les homonymes étrangers et Mid America Adventure sont exclus par localisation et identité. Aucune mutation à ce stade."
+}

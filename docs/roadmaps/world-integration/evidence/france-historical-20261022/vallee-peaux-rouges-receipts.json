@@ -1,0 +1,612 @@
+{
+  "entryId": "FR-candidate-b96b33e2bd92d5",
+  "parkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+  "name": "La Vallée des Peaux-Rouges",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-760394ca-4aef-4336-b48e-50af509de7c6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:30:14.0471527Z",
+      "appliedAt": "2026-11-01T12:30:14.047Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "9534aeb30dc65b3407bff21c428707ca87eaa00f67fb515895130e89595c5339",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "founderId",
+        "openingDateText",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Création privée de La Vallée des Peaux-Rouges après six recherches de rapprochement : identité, Fleurines, dates annuelles 1966–1988 et fondateur Robert Mottura ; intégration éditoriale à poursuivre."
+    },
+    {
+      "eventId": "apply-ac3139d8-ec10-4b75-a5b2-4fe4e78a04f2",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:35:31.9151458Z",
+      "appliedAt": "2026-11-01T12:35:31.915Z",
+      "receiptFile": "02-zones-apply.receipt.json",
+      "receiptSha256": "468279d9ea805ce21d559f22835ba617f14b0e5c99a4049b3edf79a67f361cff",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isVisible",
+        "names.de",
+        "names.en",
+        "names.es",
+        "names.fr",
+        "names.it",
+        "names.nl",
+        "names.pl",
+        "names.pt",
+        "sortOrder"
+      ],
+      "summary": "Deux espaces historiques privés ajoutés, Ville des pionniers et Camp indien, avec noms dans les huit langues ; sources filmiques et albums des anciens."
+    },
+    {
+      "eventId": "apply-7ffda5b3-1ae0-4f30-8166-ca6d3d869f1b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:37:39.8026063Z",
+      "appliedAt": "2026-11-01T12:37:39.802Z",
+      "receiptFile": "03-inventory-apply.receipt.json",
+      "receiptSha256": "dcbaf43843fd2057d75be4e46d5d22b354a306ec5b2f56ec483656f51ab8c5b5",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.closingDateText",
+        "attractionDetails.openingDateText",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type",
+        "zoneId"
+      ],
+      "summary": "Inventaire historique privé : petit train, spectacles équestres, saloon, La Cantina, gare Fleurine Railways et bureau du shérif. Couverture et cinq localisations précises non établies documentées."
+    },
+    {
+      "eventId": "apply-d0db4390-ab45-468e-9d9c-a2cc8ef9f34e",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:38:39.3515651Z",
+      "appliedAt": "2026-11-01T12:38:39.351Z",
+      "receiptFile": "04-park-description-apply.receipt.json",
+      "receiptSha256": "78b4c2f4a6e95e5ece23388ee9cd9be9d6d58deaaccba2d8ebb9d65411eb882b",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions historiques du parc rédigées et intégrées dans les huit langues, avec cinq paragraphes et trois intertitres ; sources et contexte western vérifiés."
+    },
+    {
+      "eventId": "apply-c4fac4f0-2738-4899-bf00-8d09f579412f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:44:09.327437Z",
+      "appliedAt": "2026-11-01T12:44:09.327Z",
+      "receiptFile": "04-zone-descriptions-apply.receipt.json",
+      "receiptSha256": "a1bd87b877650cd1c23f7cb7698550e37cbef4a7d4e0ab8a67b61e0553de6761",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Descriptions des deux zones historiques intégrées dans les huit langues ; décors et spectacles contextualisés d’après les archives visuelles."
+    },
+    {
+      "eventId": "apply-f4be6ad6-3339-46e7-b320-1ede3d1fb596",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:47:47.6524646Z",
+      "appliedAt": "2026-11-01T12:47:47.652Z",
+      "receiptFile": "04-item-descriptions-v2-apply.receipt.json",
+      "receiptSha256": "97a16e0f251ba101dfb72631884c8a4b2d3eac2a82b16cd70a1c2ad1442935fb",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Quarante-huit descriptions historiques intégrées pour les six parkItems ; huit langues relues et contrôle de répétitions sur le corpus de 72 descriptions."
+    },
+    {
+      "eventId": "import-photo-f56db475966c41aabb7f3f26080da886-2026-11-01T124830.863Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:48:30.863Z",
+      "appliedAt": "2026-11-01T12:48:30.863Z",
+      "receiptFile": "05-train-import-receipt.json",
+      "receiptSha256": "f2e180c64ba910c2e829dd397b8497ec77b7a04b007a0d12b6a1b9af8d80a92a",
+      "imageId": "f56db475966c41aabb7f3f26080da886",
+      "ownerId": "5b659d6e-4397-477a-8c87-a2507c9a7c3f",
+      "createdAt": "2026-11-01T12:48:27.166Z",
+      "sourceUrl": "https://live.staticflickr.com/5549/9430241052_de3be12830_b.jpg",
+      "summary": "Import privé du média historique 05-train, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3df5fe81073b4be9a5db9895c2801eb2-2026-11-01T124849.394Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:48:49.394Z",
+      "appliedAt": "2026-11-01T12:48:49.394Z",
+      "receiptFile": "05-camp-import-receipt.json",
+      "receiptSha256": "0e51e674f8ae1d41f7b366a8052ddbe0d4ca6fbc8450b96ce745cad8e7991e48",
+      "imageId": "3df5fe81073b4be9a5db9895c2801eb2",
+      "ownerId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+      "createdAt": "2026-11-01T12:48:46.015Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/la-vall-e-vu-par-kinou/camp-indien-kinou.jpg",
+      "summary": "Import privé du média historique 05-camp, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f183706f192b4519918938effd882844-2026-11-01T124911.263Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:49:11.263Z",
+      "appliedAt": "2026-11-01T12:49:11.263Z",
+      "receiptFile": "05-equestrian-import-receipt.json",
+      "receiptSha256": "38b450221a0859232f303d5e518d1170c56e2cdd49a2d3bafd62f9dcea4cb99f",
+      "imageId": "f183706f192b4519918938effd882844",
+      "ownerId": "66f8393f-de85-4c8c-9b2c-bed78e0546d9",
+      "createdAt": "2026-11-01T12:49:07.84Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/La-Val-e-par-Michel-Ponthieu/VOLTIGE--INDIENS-3.jpg",
+      "summary": "Import privé du média historique 05-equestrian, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-aa77827f7e3f49fd9b8b884815111531-2026-11-01T124933.232Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:49:33.232Z",
+      "appliedAt": "2026-11-01T12:49:33.232Z",
+      "receiptFile": "05-street-stunts-import-receipt.json",
+      "receiptSha256": "f669df34a855e0869435bb1d314d3e84a8143af8a1abb6d0cfbc547ffbb9e661",
+      "imageId": "aa77827f7e3f49fd9b8b884815111531",
+      "ownerId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+      "createdAt": "2026-11-01T12:49:29.809Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/La-Val-e-par-Michel-Ponthieu/ENTRAINEMENT-ATTAQUE--BANK.jpg",
+      "summary": "Import privé du média historique 05-street-stunts, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4dd9ca73c7e74ce8a697a64b80fc5723-2026-11-01T124956.534Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:49:56.534Z",
+      "appliedAt": "2026-11-01T12:49:56.534Z",
+      "receiptFile": "05-saloon-group-import-receipt.json",
+      "receiptSha256": "86bc0173c3c80dcdc51302eff877847a0dcb9fd9692a087813c569402abc9979",
+      "imageId": "4dd9ca73c7e74ce8a697a64b80fc5723",
+      "ownerId": "d35a2afc-3384-4882-8ef9-fe415ad75584",
+      "createdAt": "2026-11-01T12:49:53Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/La-Vall-e-vue-par-Jack-Launay/Groupe-saloon.jpg",
+      "summary": "Import privé du média historique 05-saloon-group, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-86088ccad68e45128751c09bea69ebb0-2026-11-01T125029.915Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:50:29.915Z",
+      "appliedAt": "2026-11-01T12:50:29.915Z",
+      "receiptFile": "05-cantina-front-import-receipt.json",
+      "receiptSha256": "af73d6fb06e5a28c4655a9aa2df6f66b499ea80333ae518fd9740358acebf9dc",
+      "imageId": "86088ccad68e45128751c09bea69ebb0",
+      "ownerId": "ec93b373-bd50-437b-9b9c-5ca6eaa25373",
+      "createdAt": "2026-11-01T12:50:26.389Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/La-Val-e-par-Michel-Ponthieu/ANIMATION--DE--RUE.jpg",
+      "summary": "Import privé du média historique 05-cantina-front, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-d0fd57e43d7145b7a627824c509e3725-2026-11-01T125053.348Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:50:53.348Z",
+      "appliedAt": "2026-11-01T12:50:53.348Z",
+      "receiptFile": "05-cantina-room-import-receipt.json",
+      "receiptSha256": "54bcc0349bdd277d5c5423e56a97bcab057d177207bc3116f689822455973366",
+      "imageId": "d0fd57e43d7145b7a627824c509e3725",
+      "ownerId": "ec93b373-bd50-437b-9b9c-5ca6eaa25373",
+      "createdAt": "2026-11-01T12:50:49.713Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/vall-e/cantina.jpg",
+      "summary": "Import privé du média historique 05-cantina-room, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-83b3491da56b41b6a7661beb68d5f6d8-2026-11-01T125115.752Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:51:15.752Z",
+      "appliedAt": "2026-11-01T12:51:15.752Z",
+      "receiptFile": "05-sheriff-import-receipt.json",
+      "receiptSha256": "5a7d100510b5004d5aee3beefadbaae0e2f36a8fdef4fbc6f53042b47d20dd99",
+      "imageId": "83b3491da56b41b6a7661beb68d5f6d8",
+      "ownerId": "3ed8fe01-57cc-4a02-b526-178f91f634a4",
+      "createdAt": "2026-11-01T12:51:12.281Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/la-vall-e-vue-par-yvon-mongiron/Sheriff-office2.jpg",
+      "summary": "Import privé du média historique 05-sheriff, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-05c2880e48e24fe69c9d1228ae7d8651-2026-11-01T125134.476Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:51:34.476Z",
+      "appliedAt": "2026-11-01T12:51:34.476Z",
+      "receiptFile": "05-farwesters-import-receipt.json",
+      "receiptSha256": "37009e7a8689a0ce1e143314d062e9b1dd723ede1defa606f836b53eaa312a47",
+      "imageId": "05c2880e48e24fe69c9d1228ae7d8651",
+      "ownerId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+      "createdAt": "2026-11-01T12:51:31.105Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/collector--s/farwester.jpg",
+      "summary": "Import privé du média historique 05-farwesters, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-6ee53c9a-a577-465a-8823-9748022bcad0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:53:56.8061709Z",
+      "appliedAt": "2026-11-01T12:53:56.806Z",
+      "receiptFile": "05-founder-biography-apply.receipt.json",
+      "receiptSha256": "2af336b2e19b4181188167a45d3e14e4ec54a0bb3cc4ff323e3f31f98fa863ad",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "biography.de",
+        "biography.en",
+        "biography.es",
+        "biography.fr",
+        "biography.it",
+        "biography.nl",
+        "biography.pl",
+        "biography.pt"
+      ],
+      "summary": "Biographie de Robert Mottura intégrée dans les huit langues, rôle télévisuel et cofondation avec Philippe Cart-Tanneur sourcés."
+    },
+    {
+      "eventId": "import-photo-eafbf568b96e48608dca22752b64fa5a-2026-11-01T125418.662Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:54:18.662Z",
+      "appliedAt": "2026-11-01T12:54:18.662Z",
+      "receiptFile": "05-riders-import-receipt.json",
+      "receiptSha256": "e07a25405402cc80b25945273fad2d10e1692eeb166e05d8464527873b567a89",
+      "imageId": "eafbf568b96e48608dca22752b64fa5a",
+      "ownerId": "66f8393f-de85-4c8c-9b2c-bed78e0546d9",
+      "createdAt": "2026-11-01T12:54:15.048Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/la-vall-e-vue-par-yvon-mongiron/Cavaliers2.jpg",
+      "summary": "Import privé du média historique 05-riders, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-1c835ef341bd40f191cadf1ec85433a9-2026-11-01T125432.371Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:54:32.371Z",
+      "appliedAt": "2026-11-01T12:54:32.371Z",
+      "receiptFile": "05-rider-white-horse-import-receipt.json",
+      "receiptSha256": "f46fe3677e355f508baf7ade4935ded7aaee966ad51d65f602492a93c8e7e9ec",
+      "imageId": "1c835ef341bd40f191cadf1ec85433a9",
+      "ownerId": "66f8393f-de85-4c8c-9b2c-bed78e0546d9",
+      "createdAt": "2026-11-01T12:54:29.007Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/La-Val-e-par-Michel-Ponthieu/MOI-A-CHEVAL.jpg",
+      "summary": "Import privé du média historique 05-rider-white-horse, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3fd78eaf06ef4725a9121ef8b21416a3-2026-11-01T125454.300Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T12:54:54.3Z",
+      "appliedAt": "2026-11-01T12:54:54.300Z",
+      "receiptFile": "05-saloon-porch-import-receipt.json",
+      "receiptSha256": "489549394e9c9a65d258c82e0d402008e90b6bfea133f543a3d892fe8230d85a",
+      "imageId": "3fd78eaf06ef4725a9121ef8b21416a3",
+      "ownerId": "d35a2afc-3384-4882-8ef9-fe415ad75584",
+      "createdAt": "2026-11-01T12:54:50.945Z",
+      "sourceUrl": "https://idata.over-blog.com/0/59/47/67/Jean-Pierre-Congo/Jean-Pierre-Congo-1.jpg",
+      "summary": "Import privé du média historique 05-saloon-porch, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-d8d703c6-3b77-4242-a38f-1e68d8ae7e71",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T12:58:06.0364751Z",
+      "appliedAt": "2026-11-01T12:58:06.036Z",
+      "receiptFile": "08-park-timeline-apply.receipt.json",
+      "receiptSha256": "a948b867b350f37fd473fbf021c7dfeb4094a2f6c0889641abf01fd37b957fe0",
+      "counts": {
+        "created": 4,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "newOwnerName",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Quatre faits HIST privés et sourcés intégrés : ouverture1966, rachat1971, fermeture1988, reconversion du terrain2012 ; huit langues, années seules et propriétaire distinct de l’exploitant."
+    },
+    {
+      "eventId": "apply-1657faf3-0a1f-4062-a9b1-7c56f82b0129",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T13:11:05.4176097Z",
+      "appliedAt": "2026-11-01T13:11:05.417Z",
+      "receiptFile": "08-history-article-apply.receipt.json",
+      "receiptSha256": "39e96f3221a012caf5720b11b72e33d106a6e765ffa69ecfd6b994bb938af1c3",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article historique en huit langues : création1966, spectacles et musique, chemin de fer, rachat1971, fermeture1988 et reconversion2012 ; treize sources et quatre images contextuelles. Intégration privée, audit final restant."
+    },
+    {
+      "eventId": "apply-bd247ed4-295c-4398-9978-fc45f54ac441",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T13:13:06.23724Z",
+      "appliedAt": "2026-11-01T13:13:06.237Z",
+      "receiptFile": "08-train-timeline-apply.receipt.json",
+      "receiptSha256": "6a5368d1c387dcb2c0277c561b1308bea8de004dd8bd1ee0e04fc29dcc8c53a9",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Petit train : ouverture1966 et fin exploitation1988, deux faits privés localisés dans huit langues, source ferroviaire et photographie contextuelle. Années seules, retrait ultérieur des rails non antidaté. Audit final restant."
+    },
+    {
+      "eventId": "apply-ae032815-4c0f-4527-91e5-a234df7c60e8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T13:17:59.2698625Z",
+      "appliedAt": "2026-11-01T13:17:59.269Z",
+      "receiptFile": "03-fort-supplement-apply.receipt.json",
+      "receiptSha256": "f1ab0048f5a23108deb4ad1a554025d052dc518052bc1305c809daa72dda9166",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "category",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt",
+        "type"
+      ],
+      "summary": "Fort ajouté à l’inventaire historique comme décor de spectacles Other/Other, sur source patrimoniale PNR. Huit descriptions courtes fidèles, sans dates ni emplacement inventés. Sept éléments intégrés ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4a9d3194007f43dda9b728eb0f7a30af-2026-11-01T131914.687Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T13:19:14.687Z",
+      "appliedAt": "2026-11-01T13:19:14.687Z",
+      "receiptFile": "05-poster-america-park-import-receipt.json",
+      "receiptSha256": "4949d4e54f10183aea8b9c0f00de7e1046f3cdc92c91e0828115e6e238234ef0",
+      "imageId": "4a9d3194007f43dda9b728eb0f7a30af",
+      "ownerId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+      "createdAt": "2026-11-01T13:19:11.302Z",
+      "sourceUrl": "https://i.servimg.com/u/f34/16/37/32/46/29784611.jpg",
+      "summary": "Import privé du média historique 05-poster-america-park, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f4118ed2b14346aa99d8c5b4002c0cf2-2026-11-01T131928.822Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T13:19:28.822Z",
+      "appliedAt": "2026-11-01T13:19:28.822Z",
+      "receiptFile": "05-show-postcard-import-receipt.json",
+      "receiptSha256": "9263276416eca711b8a4b957e4d0ee4b822238d67b32d840593742d2c5887f89",
+      "imageId": "f4118ed2b14346aa99d8c5b4002c0cf2",
+      "ownerId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+      "createdAt": "2026-11-01T13:19:25.365Z",
+      "sourceUrl": "https://i.servimg.com/u/f34/16/37/32/46/30704911.jpg",
+      "summary": "Import privé du média historique 05-show-postcard, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-605a72db-ca87-4215-b935-f5637b8d1210",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T13:21:21.921487Z",
+      "appliedAt": "2026-11-01T13:21:21.921Z",
+      "receiptFile": "03-bank-supplement-apply.receipt.json",
+      "receiptSha256": "41525f70ae38848288fd96fa8f1fb33857e507239ca738e2454e0c1ffe061ef9",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "category",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt",
+        "type"
+      ],
+      "summary": "Banque du décor western ajoutée sur reportage LeMonde2000 consulté en archive publique, huit descriptions brèves, aucune date ni coordonnées inventées. Huit éléments historiques désormais identifiés ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-b88e019d30594bb2b2e2edba9d46b377-2026-11-01T132627.015Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T13:26:27.015Z",
+      "appliedAt": "2026-11-01T13:26:27.015Z",
+      "receiptFile": "05-reuse-2012-import-receipt.json",
+      "receiptSha256": "3f83c013f1ba100a9ed10acfe75974c40392085e106d75cf1d7864b6bb0e43fd",
+      "imageId": "b88e019d30594bb2b2e2edba9d46b377",
+      "ownerId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+      "createdAt": "2026-11-01T13:26:23.553Z",
+      "sourceUrl": "https://parcoursaventure60.wordpress.com/wp-content/uploads/2012/08/293252_106489936164903_823968101_n.jpg?w=472&h=705",
+      "summary": "Import privé du média historique 05-reuse-2012, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-5ecac672-f905-4ca6-8b25-98206188e99b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T13:29:01.6528999Z",
+      "appliedAt": "2026-11-01T13:29:01.652Z",
+      "receiptFile": "09-history-audit-correction-apply.receipt.json",
+      "receiptSha256": "a312e3f27f0846699453f4ce7fad20075d5a7c81c2481444ab905ff030e705c1",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "mainImageId"
+      ],
+      "summary": "Reprise audit : six jalons désormais illustrés, photographie contemporaine pour reconversion2012 ; une phrase anglaise article reformulée et quatre libellés de sources corrigés. Données privées, blocage logo historique restant."
+    },
+    {
+      "eventId": "import-photo-e72dc74105d044b68c025a05c4654b75-2026-11-03T041908.047Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T04:19:08.047Z",
+      "appliedAt": "2026-11-03T04:19:08.047Z",
+      "receiptFile": "10-camp-painted-tipi-import-receipt.json",
+      "receiptSha256": "2ee4dccd1d2595ab3e0c33f40d78914d858c153c788e8e3b7067e163a8e63de6",
+      "imageId": "e72dc74105d044b68c025a05c4654b75",
+      "ownerId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+      "createdAt": "2026-11-03T04:19:04.523Z",
+      "sourceUrl": "https://images.squarespace-cdn.com/content/v1/5dd5a0cbd0da3d744ae48b50/1602759364131-XN6T7M7MK6MQNHRD9UKQ/B+peaux+rouge.png",
+      "summary": "Import privé du média historique 10-camp-painted-tipi, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-392054d80b014a5aa7965e9bdf20b741-2026-11-03T041923.232Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-03T04:19:23.232Z",
+      "appliedAt": "2026-11-03T04:19:23.232Z",
+      "receiptFile": "10-bank-street-import-receipt.json",
+      "receiptSha256": "96660c7f5296f83b3a96aa13d338405c254bb44338e8e5c4c6c4af66c7b32bbd",
+      "imageId": "392054d80b014a5aa7965e9bdf20b741",
+      "ownerId": "0a82fd7d-1fdf-4df8-8ddd-f3bbfa1ed21a",
+      "createdAt": "2026-11-03T04:19:19.65Z",
+      "sourceUrl": "https://images.squarespace-cdn.com/content/v1/5dd5a0cbd0da3d744ae48b50/1602759422561-0M5DFYZFDYSUECNP5AQ2/B+peau+2.png",
+      "summary": "Import privé du média historique 10-bank-street, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-d7510d73-286a-43ae-9cdd-042111359d90",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:23:41.842598Z",
+      "appliedAt": "2026-11-03T04:23:41.842Z",
+      "receiptFile": "10-bank-and-camp-history-apply.receipt.json",
+      "receiptSha256": "b777f3fc13faeb9fe14ecf34391f4e97400714c2a7f094251e402472df2529c0",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Vallée des Peaux-Rouges : description de la banque enrichie en huit langues et article complété par une photographie de la banque et un témoignage sur la vie du camp. Sources, blocs précédents et confidentialité conservés; résultat partiel avant audit."
+    }
+  ],
+  "publicationOrNoop": []
+}

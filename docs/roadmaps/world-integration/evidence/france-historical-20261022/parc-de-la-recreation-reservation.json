@@ -1,0 +1,30 @@
+{
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "name": "Parc de la Récréation",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-02T14:59:27.548732+00:00",
+  "phase": "reserved-for-qualification",
+  "masterChecked": "ec07e892348df74acb8c3e995111894d035c6984",
+  "otherBranchChecks": [
+    {
+      "branch": "docs/europe-integration-backlog",
+      "sha": "c3257bcf987ca3976f323f5e6b787c313d0f9f7b",
+      "assignedTo": null,
+      "siteId": null
+    },
+    {
+      "branch": "docs/france-world-reconciliation-20261022",
+      "sha": "4028cb0ccadc65c525cc8a1c768a29bb0123ed87",
+      "assignedTo": null,
+      "siteId": null
+    }
+  ],
+  "currentMasterEntry": {
+    "assignedTo": null,
+    "siteId": null,
+    "editorialStatus": "ToQualify"
+  },
+  "lastDataIntegrationAt": null,
+  "creationAuthorizedOnlyAfterQualification": true,
+  "identityCaution": "National backlog explicitly distinguishes closed1994–2018LaRécréation from successorFamilyPark. Current canonicalFamilyPark2f436a73-8a36-4adc-9723-f14d569ed4f8 public; formerly deleted artificialFamilyParkMonts duplicate must not be recreated. Check official aliases and targeted currentFamilyParkhistory before creation. RCDBtreats formername; municipal2018documents distinguish newoperator and remodeledpark."
+}

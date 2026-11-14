@@ -1,0 +1,42 @@
+{
+  "reviewedAtUtc": "2026-10-23T11:40:31.197943+00:00",
+  "initialQualificationPreserved": "03-inventory-qualification.json",
+  "parkItems": 24,
+  "attractions": 19,
+  "resolvedCandidates": [
+    {
+      "candidate": "Argonet / Argonef: plan #22 label uncertain; possible galley crêperie alias, no duplicate.",
+      "decision": "Argonef now legible in larger publisher1989mapcrop. Alias of existing Greekgalley creperie, no second restaurant. Description explicitly calls this the projectplan name."
+    },
+    {
+      "candidate": "Mack Dino Carousel and Round Boat Ride later P’tit Poucet / Rivière Enchantée at Nigloland: original Toison names and identities unproved; may be components of Monde des Enfants.",
+      "decision": "Two distinct Mack rides qualified by1993Niglolandbrochure and relocationreport; originalDijonnames unproved, neutraldescriptivenamesused. AlreadycreatedactualIDs retained."
+    }
+  ],
+  "retainedUnprovenCandidates": [
+    {
+      "candidate": "Maison de la Photo, Boutiques, Restaurant Village, Fast Food, Restaurant des Îles, Restaurant Groupe: shown in 1989 proposal; operating identity and final naming need confirmation.",
+      "decision": "Not created: operating-era identity/use still not established after authentic1989plan,2020/2026pressarchives,1993Niglo primarybrochure and exact-namewebsearch23Oct2026. Kept in evidence, not silently treated as absent or completed."
+    },
+    {
+      "candidate": "Tente des Ducs de Bourgogne: plan #9 and tent visible in operating photograph; individual use/name confirmation pending.",
+      "decision": "Not created: operating-era identity/use still not established after authentic1989plan,2020/2026pressarchives,1993Niglo primarybrochure and exact-namewebsearch23Oct2026. Kept in evidence, not silently treated as absent or completed."
+    }
+  ],
+  "exclusionsRetained": [
+    {
+      "name": "Les Cyclades / Oxygène",
+      "reason": "Separate aquatic centre in broader commercial complex, connected by plan exit #29; not a ride in the amusement park."
+    },
+    {
+      "name": "Pont du Train / Franchissement du Lac / Gare du Petit Train",
+      "reason": "Components of one Petit Train, no duplicate attraction records."
+    },
+    {
+      "name": "Current municipal zoo/playgrounds/carousel",
+      "reason": "Post-1993 public garden offer is not automatically historical amusement-park inventory."
+    }
+  ],
+  "showAndVenueRevision": "03-theatre-show-interpretation-revision.json",
+  "dateBoundary": "PublicopeningmonthApril1990;10/11Aprsourceconflict prevents inventedday. ClosureYear1993, exactcourt20Jan/17Mar andmunicipal15Nov separately documented."
+}

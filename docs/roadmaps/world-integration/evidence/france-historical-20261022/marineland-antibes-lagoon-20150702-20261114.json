@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "4565cb86e5434d81a6eb2710a1ba354a",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+    "path": "park_item/4565cb86e5434d81a6eb2710a1ba354a",
+    "description": "Marineland Lagoon lors de sa présentation du 2 juillet 2015, avant l’ouverture au public.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 576,
+    "height": 1024,
+    "sizeInBytes": 169523,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.whataboutnice.fr/wp-content/uploads/2015/07/20150702_121134-576x1024.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": "SAMSUNG",
+      "cameraModel": "SM-G850F",
+      "takenOnUtc": "2015-07-02T12:11:34Z",
+      "orientation": "1",
+      "focalLength": 4.09,
+      "aperture": 2.2,
+      "exposureTime": 0.00043554006968641115,
+      "iso": 40
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Transats sur la plage de sable de Marineland Lagoon, devant le bassin et les palmiers."
+      },
+      {
+        "languageCode": "en",
+        "value": "Sun loungers on Marineland Lagoon’s sandy beach, with the pool and palm trees beyond."
+      },
+      {
+        "languageCode": "de",
+        "value": "Liegestühle am Sandstrand von Marineland Lagoon vor dem Becken und Palmen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Ligstoelen op het zandstrand van Marineland Lagoon, met het bassin en palmbomen op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Lettini sulla spiaggia di sabbia di Marineland Lagoon, davanti alla vasca e alle palme."
+      },
+      {
+        "languageCode": "es",
+        "value": "Tumbonas en la playa de arena de Marineland Lagoon, delante de la piscina y las palmeras."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Leżaki na piaszczystej plaży Marineland Lagoon, przed basenem i palmami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Espreguiçadeiras na praia de areia do Marineland Lagoon, diante da piscina e das palmeiras."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Marineland Lagoon lors de sa présentation du 2 juillet 2015, avant l’ouverture au public."
+      },
+      {
+        "languageCode": "en",
+        "value": "Marineland Lagoon at its preview on 2 July 2015, before opening to the public."
+      },
+      {
+        "languageCode": "de",
+        "value": "Marineland Lagoon bei seiner Vorstellung am 2. Juli 2015, vor der Öffnung für Besucher."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Marineland Lagoon tijdens de presentatie op 2 juli 2015, vóór de opening voor het publiek."
+      },
+      {
+        "languageCode": "it",
+        "value": "Marineland Lagoon durante la presentazione del 2 luglio 2015, prima dell’apertura al pubblico."
+      },
+      {
+        "languageCode": "es",
+        "value": "Marineland Lagoon durante su presentación del 2 de julio de 2015, antes de abrir al público."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Marineland Lagoon podczas prezentacji 2 lipca 2015 roku, przed otwarciem dla zwiedzających."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Marineland Lagoon na apresentação de 2 de julho de 2015, antes da abertura ao público."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Anne L. / What About Nice — 2015."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Anne L. / What About Nice — 2015."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T18:50:53.183Z",
+    "updatedAt": "2026-11-14T18:50:56.755Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T18:50:56.755Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false
+}

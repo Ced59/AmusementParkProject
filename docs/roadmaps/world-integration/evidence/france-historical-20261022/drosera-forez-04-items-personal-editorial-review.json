@@ -1,0 +1,98 @@
+{
+  "personallyAuthoredAndReviewed": true,
+  "languages": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "wordCounts": {
+    "batie-urfe": {
+      "fr": 162,
+      "en": 142,
+      "de": 133,
+      "nl": 137,
+      "it": 143,
+      "es": 151,
+      "pl": 128,
+      "pt": 147
+    },
+    "chalmazel": {
+      "fr": 165,
+      "en": 146,
+      "de": 131,
+      "nl": 139,
+      "it": 147,
+      "es": 156,
+      "pl": 133,
+      "pt": 155
+    },
+    "chateau-roche": {
+      "fr": 159,
+      "en": 146,
+      "de": 136,
+      "nl": 144,
+      "it": 145,
+      "es": 154,
+      "pl": 135,
+      "pt": 154
+    },
+    "clermont-cathedrale": {
+      "fr": 160,
+      "en": 142,
+      "de": 133,
+      "nl": 148,
+      "it": 140,
+      "es": 152,
+      "pl": 131,
+      "pt": 144
+    },
+    "feurs-eglise": {
+      "fr": 167,
+      "en": 145,
+      "de": 133,
+      "nl": 139,
+      "it": 149,
+      "es": 157,
+      "pl": 135,
+      "pt": 153
+    },
+    "puits-couriot": {
+      "fr": 163,
+      "en": 137,
+      "de": 131,
+      "nl": 137,
+      "it": 141,
+      "es": 151,
+      "pl": 129,
+      "pt": 146
+    },
+    "saint-bonnet": {
+      "fr": 158,
+      "en": 147,
+      "de": 134,
+      "nl": 145,
+      "it": 139,
+      "es": 143,
+      "pl": 133,
+      "pt": 141
+    }
+  },
+  "headingsPerDescription": 2,
+  "paragraphsPerDescription": 3,
+  "sources": [
+    "http://m.jourdan974.free.fr/photos5.htm",
+    "https://classedespetits.blogspot.com/2010/07/",
+    "https://www.loiretourisme.com/la-loire/loire-forez/a-voir-a-faire/chateau-de-la-batie-urfe/",
+    "https://www.loiretourisme.com/activites/visiter/chateau-des-marcilly-talaru-chalmazel-fr-3632308/",
+    "https://www.loiretourisme.com/vos-envies/les-villages-de-caractere/saint-bonnet-le-chateau/"
+  ],
+  "gaps": [
+    "Two services insufficiently documented for developed descriptions",
+    "Unknown individual installation years/model fate/precisehistoricalGPS"
+  ]
+}

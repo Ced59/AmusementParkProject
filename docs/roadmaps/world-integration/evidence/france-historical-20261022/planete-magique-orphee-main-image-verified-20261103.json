@@ -1,0 +1,13 @@
+{
+  "checkedAtUtc": "2026-11-03T04:09:06.229025+00:00",
+  "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+  "itemId": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+  "itemName": "Orphée Théâtre",
+  "actualPublicMainImageId": "b4c351c4629042eeb7827c93a0bc6be5",
+  "expectedPublicMainImageId": "b4c351c4629042eeb7827c93a0bc6be5",
+  "matches": true,
+  "publicListUrl": "https://amusement-parks.fun/api/park-items/park/305f6144-8dc2-4b24-a23d-d44749fe7d83?search=Orph%C3%A9e&page=1&pageSize=20&closedFilter=all",
+  "explanation": "The public list supplies MainImageId via GetParkItemsByParkIdQueryHandler. The single-item response does not populate that field in ParkItemsHttpMappers.ToHttp(ParkItem), so its null value was not a reliable cache check. The public list correctly returns the applied Orphée seating image. No mutation required.",
+  "lastDataIntegrationAtUnchanged": "2026-11-03T03:37:21.099Z",
+  "additionalApiWrites": 0
+}

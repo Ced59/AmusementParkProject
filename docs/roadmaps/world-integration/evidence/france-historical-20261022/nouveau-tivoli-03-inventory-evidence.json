@@ -1,0 +1,112 @@
+{
+  "entryId": "FR-candidate-bc5ed7aa50e26f",
+  "parkId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+  "reviewedAt": "2026-11-02T20:55:39.682464+00:00",
+  "passes": {
+    "current": 0,
+    "announced": 0,
+    "historicalRetained": 9,
+    "historicalAttractions": 5
+  },
+  "items": [
+    {
+      "key": "courses-eoliennes",
+      "name": "Courses Éoliennes",
+      "sourceUrl": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+      "decision": "Montagnes anglaises nommées par 9eHistoire ; pas de fabricant, dimensions ou parcours inventés.",
+      "geolocation": "Non établie : installation disparue sur domaine loti, aucun point précis contemporain géoréférencé retrouvé. Pas de copie du centre du parc.",
+      "accessConditions": "Aucune restriction individuelle fiable trouvée dans les sources historiques consultées."
+    },
+    {
+      "key": "balancoires",
+      "name": "Balançoires du Nouveau Tivoli",
+      "sourceUrl": "https://www.ac-sciences-lettres-montpellier.fr/academie_edition/fichiers_conf/LAMBOLEY-2017.pdf",
+      "decision": "Lamboley 2017 p.12 : balançoires installées au Nouveau Tivoli. Ensemble documenté, aucun nombre ni modèle individuel établi.",
+      "geolocation": "Non établie : installation disparue sur domaine loti, aucun point précis contemporain géoréférencé retrouvé. Pas de copie du centre du parc.",
+      "accessConditions": "Aucune restriction individuelle fiable trouvée dans les sources historiques consultées."
+    },
+    {
+      "key": "tir-pigeons",
+      "name": "Tir aux pigeons",
+      "sourceUrl": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+      "decision": "Activité historique sur oiseaux vivants, pas tir forain à cibles inertes. Site figuré dans la gravure explicitement légendée Nouveau Tivoli.",
+      "geolocation": "Non établie : installation disparue sur domaine loti, aucun point précis contemporain géoréférencé retrouvé. Pas de copie du centre du parc.",
+      "accessConditions": "Aucune restriction individuelle fiable trouvée dans les sources historiques consultées."
+    },
+    {
+      "key": "patinage-ete",
+      "name": "Patinage d’été de Jean Garcin",
+      "sourceUrl": "https://www.rollerenligne.com/dossier/jean-garcin-lun-des-pionniers-francais-de-patinage-a-roulettes/",
+      "decision": "Gymnase transféré en1830 au Nouveau Tivoli, piste circulaire de patins à roulettes ; source spécialisée Alexandre Chartier citant Sam Nieswizski. Ne pas confondre avec première salle canal Saint-Martin ; durée et fermeture exactes ambiguës.",
+      "geolocation": "Non établie : installation disparue sur domaine loti, aucun point précis contemporain géoréférencé retrouvé. Pas de copie du centre du parc.",
+      "accessConditions": "Aucune restriction individuelle fiable trouvée dans les sources historiques consultées."
+    },
+    {
+      "key": "cabinet-physique",
+      "name": "Cabinet de physique de Robertson",
+      "sourceUrl": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+      "decision": "Cabinet de physique implanté au Nouveau Tivoli. Inventaire des appareils du domicile vendu1838 ne prouve pas la présence de chaque objet dans ce parc.",
+      "geolocation": "Non établie : installation disparue sur domaine loti, aucun point précis contemporain géoréférencé retrouvé. Pas de copie du centre du parc.",
+      "accessConditions": "Aucune restriction individuelle fiable trouvée dans les sources historiques consultées."
+    },
+    {
+      "key": "fantasmagories",
+      "name": "Fantasmagories de Robertson",
+      "sourceUrl": "https://www.ac-sciences-lettres-montpellier.fr/academie_edition/fichiers_conf/LAMBOLEY-2017.pdf",
+      "decision": "Spectacle confirmé rue de Clichy. Ne pas transposer tout le décor, les scènes ni les apparitions du couvent des Capucines1799 au parc1826.",
+      "geolocation": "Non établie : installation disparue sur domaine loti, aucun point précis contemporain géoréférencé retrouvé. Pas de copie du centre du parc.",
+      "accessConditions": "Sans objet pour ce spectacle historique."
+    },
+    {
+      "key": "femme-invisible",
+      "name": "La Femme invisible",
+      "sourceUrl": "https://www.histv.net/robertson",
+      "decision": "André Lange confirme fêtes1826 et publication universitaire2024 tableaup291 activité1826–1831. Installation exacte avec globe seulement supposée par auteur ; ne pas l’affirmer. Différente des pièces théâtrales homonymes de1800.",
+      "geolocation": "Non établie : installation disparue sur domaine loti, aucun point précis contemporain géoréférencé retrouvé. Pas de copie du centre du parc.",
+      "accessConditions": "Sans objet pour ce spectacle historique."
+    },
+    {
+      "key": "bals",
+      "name": "Bals du Nouveau Tivoli",
+      "sourceUrl": "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+      "decision": "Salles de danse et orchestre Baudouin attestés1827. Pas de salle unique baptisée inventée ; offre récurrente conservée en une entrée.",
+      "geolocation": "Non établie : installation disparue sur domaine loti, aucun point précis contemporain géoréférencé retrouvé. Pas de copie du centre du parc.",
+      "accessConditions": "Sans objet pour ce spectacle historique."
+    },
+    {
+      "key": "carrousel-caroline",
+      "name": "Carrousel dansant de Mlle Caroline",
+      "sourceUrl": "https://fr.wikisource.org/wiki/Lettres_parisiennes/Ann%C3%A9e_1837/15",
+      "decision": "Témoignage Delphine de Girardin21juin1837 relatant spectacle veille20juin : tournoi, chevaux vivants, costumes, contredanse et valse. Spectacle équestre, aucun manège mécanique. Ouverture du spectacle non connue.",
+      "geolocation": "Non établie : installation disparue sur domaine loti, aucun point précis contemporain géoréférencé retrouvé. Pas de copie du centre du parc.",
+      "accessConditions": "Sans objet pour ce spectacle historique."
+    }
+  ],
+  "unresolvedOrExcluded": [
+    {
+      "name": "Cirque et deux théâtres",
+      "reason": "Présence documentée mais dénominations, emplacements et relation avec les spectacles déjà retenus non résolus ; ne pas créer trois lieux fictivement distincts."
+    },
+    {
+      "name": "Cafés",
+      "reason": "Présence collective documentée, unités et noms non établis ; pas de restaurant inventé."
+    },
+    {
+      "name": "Feux d’artifice",
+      "reason": "Pratique du Nouveau Tivoli signalée par sources locales ; programmes, intitulé et espace propre non établis à ce stade."
+    },
+    {
+      "name": "Accueil et exhibition des visiteurs osages en1827",
+      "reason": "Événement humain historique à contextualiser dans la timeline et l’article, pas une attraction permanente ni un enclos."
+    },
+    {
+      "name": "Ménageries, aérostats et autres attractions du Grand Tivoli",
+      "reason": "Aucun transfert au Nouveau Tivoli présumé ; géographie et chronologie distinctes."
+    }
+  ],
+  "zones": {
+    "created": 0,
+    "reason": "Aucun secteur nommé officiellement établi."
+  },
+  "fixedGeolocationCoverage": "0/5 attractions fixes ; spectacles sans salle individuellement géolocalisable. Plan du jardin18e et plan de lotissement ne prouvent pas la position des installations1826–1841."
+}

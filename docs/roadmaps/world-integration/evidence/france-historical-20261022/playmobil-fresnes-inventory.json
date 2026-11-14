@@ -1,0 +1,286 @@
+{
+  "entryId": "FR-candidate-13b50050620a99",
+  "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+  "inventoryPasses": {
+    "current": 0,
+    "announced": 0,
+    "historical": 19,
+    "historicalAttractions": 12
+  },
+  "zones": {
+    "count": 0,
+    "reason": "Aires de jeu intégrées comme parkItems, sans duplication en lands non prouvés."
+  },
+  "items": [
+    {
+      "key": "fresnes-chevaliers",
+      "name": "Le Château des chevaliers",
+      "sourceUrl": "https://web.archive.org/web/20080614231936/http://www.playmobil.de/on/demandware.store/Sites-FR-Site/fr_FR/Link-Page?cid=PLAYAREA_PARIS",
+      "photoCandidates": [
+        "family-09",
+        "family-15",
+        "sortiraparis-03",
+        "sortiraparis-11",
+        "PLAYMOBIL_FunPark_Paris.jpg"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-princesses",
+      "name": "Le Château des princesses",
+      "sourceUrl": "https://web.archive.org/web/20080614231936/http://www.playmobil.de/on/demandware.store/Sites-FR-Site/fr_FR/Link-Page?cid=PLAYAREA_PARIS",
+      "photoCandidates": [
+        "family-24",
+        "family-26",
+        "sortiraparis-02",
+        "sortiraparis-15"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-pirates",
+      "name": "Le Bateau des pirates",
+      "sourceUrl": "https://web.archive.org/web/20080614231936/http://www.playmobil.de/on/demandware.store/Sites-FR-Site/fr_FR/Link-Page?cid=PLAYAREA_PARIS",
+      "photoCandidates": [
+        "sortiraparis-04",
+        "sortiraparis-05"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-ferme",
+      "name": "La Ferme",
+      "sourceUrl": "https://web.archive.org/web/20080614231936/http://www.playmobil.de/on/demandware.store/Sites-FR-Site/fr_FR/Link-Page?cid=PLAYAREA_PARIS",
+      "photoCandidates": [
+        "sortiraparis-09"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-animaux",
+      "name": "Le Zoo et les animaux",
+      "sourceUrl": "https://web.archive.org/web/20080614231936/http://www.playmobil.de/on/demandware.store/Sites-FR-Site/fr_FR/Link-Page?cid=PLAYAREA_PARIS",
+      "photoCandidates": [],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-vie-quotidienne",
+      "name": "Les Maisons et les commerçants",
+      "sourceUrl": "https://web.archive.org/web/20080614231936/http://www.playmobil.de/on/demandware.store/Sites-FR-Site/fr_FR/Link-Page?cid=PLAYAREA_PARIS",
+      "photoCandidates": [
+        "family-17",
+        "family-22"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-petits",
+      "name": "L’Aire des tout-petits",
+      "sourceUrl": "https://web.archive.org/web/20171127095007/http://company.playmobil.com/Company/fr-FR/funparks/playmobilr-funpark-paris",
+      "photoCandidates": [
+        "sortiraparis-13",
+        "sortiraparis-06"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-police",
+      "name": "L’Univers de la police",
+      "sourceUrl": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+      "photoCandidates": [
+        "family-16",
+        "family-18"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-pompiers",
+      "name": "L’Univers des pompiers",
+      "sourceUrl": "https://web.archive.org/web/20171127095007/http://company.playmobil.com/Company/fr-FR/funparks/playmobilr-funpark-paris",
+      "photoCandidates": [
+        "family-20",
+        "Jouer_en_famille_au_PLAYMOBIL_FunPark.jpg"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-chantier",
+      "name": "Le Chantier",
+      "sourceUrl": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+      "photoCandidates": [
+        "family-21",
+        "sortiraparis-08"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-cirque",
+      "name": "L’Univers du cirque",
+      "sourceUrl": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+      "photoCandidates": [
+        "family-10"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-dinosaures",
+      "name": "L’Univers des dinosaures",
+      "sourceUrl": "https://www.sortiraparis.com/loisirs/articles/25629-le-playmobil-funpark-a-fresnes-definitivement-ferme",
+      "photoCandidates": [],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-restauration",
+      "name": "L’Espace restauration",
+      "sourceUrl": "https://web.archive.org/web/20171127095007/http://company.playmobil.com/Company/fr-FR/funparks/playmobilr-funpark-paris",
+      "photoCandidates": [
+        "Espace_restauration_PLAYMOBIL_FunPark.jpg"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-boutique",
+      "name": "La Boutique Playmobil",
+      "sourceUrl": "https://web.archive.org/web/20171127095007/http://company.playmobil.com/Company/fr-FR/funparks/playmobilr-funpark-paris",
+      "photoCandidates": [
+        "family-27",
+        "Boutique_PLAYMOBIL_FunPark.jpg"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-accueil",
+      "name": "Le Point accueil",
+      "sourceUrl": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+      "photoCandidates": [
+        "family-13"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-entree",
+      "name": "L’Entrée du château",
+      "sourceUrl": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+      "photoCandidates": [
+        "family-12",
+        "Les_super_4_au_PLAYMOBIL_FunPark.jpg"
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-sanitaires-rdc",
+      "name": "Les Sanitaires du rez-de-chaussée",
+      "sourceUrl": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+      "photoCandidates": [],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-sanitaires-etage",
+      "name": "Les Sanitaires de l’étage",
+      "sourceUrl": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+      "photoCandidates": [],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    },
+    {
+      "key": "fresnes-chapiteau",
+      "name": "Le Chapiteau des animations",
+      "sourceUrl": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+      "photoCandidates": [],
+      "openingDate": null,
+      "closingDate": null,
+      "lifecycleRationale": "Parc fermé définitivement le 31 juillet 2022 ; date propre à cet espace non établie. Aucune ouverture en 1999 extrapolée.",
+      "gpsGap": "Installation intérieure ; archives officielles et galeries situent la salle, sans plan coté permettant un point fiable de cet espace."
+    }
+  ],
+  "deferredDistinctions": [
+    {
+      "name": "Espace",
+      "reason": "Thème de gamme cité, découpage permanent distinct non prouvé ; poursuivre la qualification sans créer un doublon."
+    },
+    {
+      "name": "Western",
+      "reason": "Thème de gamme cité, découpage permanent distinct non prouvé ; poursuivre la qualification sans créer un doublon."
+    },
+    {
+      "name": "Vikings",
+      "reason": "Thème de gamme cité, découpage permanent distinct non prouvé ; poursuivre la qualification sans créer un doublon."
+    },
+    {
+      "name": "Camping",
+      "reason": "Thème de gamme cité, découpage permanent distinct non prouvé ; poursuivre la qualification sans créer un doublon."
+    },
+    {
+      "name": "Hôpital",
+      "reason": "Thème de gamme cité, découpage permanent distinct non prouvé ; poursuivre la qualification sans créer un doublon."
+    },
+    {
+      "name": "Loisirs",
+      "reason": "Thème de gamme cité, découpage permanent distinct non prouvé ; poursuivre la qualification sans créer un doublon."
+    },
+    {
+      "name": "Arène romaine",
+      "reason": "Thème de gamme cité, découpage permanent distinct non prouvé ; poursuivre la qualification sans créer un doublon."
+    }
+  ],
+  "sources": {
+    "official2008": "https://web.archive.org/web/20080614231936/http://www.playmobil.de/on/demandware.store/Sites-FR-Site/fr_FR/Link-Page?cid=PLAYAREA_PARIS",
+    "official2017": "https://web.archive.org/web/20171127095007/http://company.playmobil.com/Company/fr-FR/funparks/playmobilr-funpark-paris",
+    "family": "https://www.familyglobe-trotters.com/carte-de-nos-voyages/fun-park-playmobil-paris-fresnes/",
+    "sortir": "https://www.sortiraparis.com/loisirs/articles/25629-le-playmobil-funpark-a-fresnes-definitivement-ferme"
+  },
+  "sourceCountDiscrepancy": "Le site officiel de 2008 annonce 11 aires sur l’accueil et 12 sur la page dédiée. Les listes de thèmes ne décrivent pas un découpage stable unique. Inventaire cumulatif sourcé, aucun douzième lieu inventé pour atteindre le chiffre annoncé."
+}

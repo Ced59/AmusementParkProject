@@ -1,0 +1,33 @@
+{
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-14T01:23:24.239191+00:00",
+  "isDataIntegration": false,
+  "executorAvailable": true,
+  "workspaceState": "Nouvelle machine ; anciens dossiers locaux et pièces jointes absents. Branche restaurée depuis GitHub sans recréation du parc.",
+  "restoredBranch": "docs/france-historical-lot-20261022",
+  "restoredCommit": "de8deb03e8cfbe5c6c6772d547c2d5c01ad057e8",
+  "remoteMasterObserved": "0323a563f07ffb26075a66a22818582530f45b48",
+  "officialClientPath": "tools/codex/park-data-editor.ps1",
+  "officialClientSha256": "aa1c815d17bfd0686d6ded6abd34cc88ebb4bded32ac95ba102a3f31b53167fb",
+  "officialClientAndGuidelinesIdenticalToMaster": true,
+  "powerShellVersion": "7.7.0",
+  "powerShellArchiveSha256": "c89d9c682d2c403dfe726f3df948e359675235a5bd6fab535776de69729ca0cb",
+  "localTokenPresent": false,
+  "localAccountCredentialPresent": false,
+  "configuredRuntimeSecrets": 0,
+  "clientCheck": {
+    "action": "SearchParks",
+    "query": "Marineland",
+    "countryCode": "FR",
+    "result": "BlockedBeforeHttp",
+    "error": "No local park data editor token is stored. Run SaveToken first."
+  },
+  "dataMutations": 0,
+  "sitePublications": 0,
+  "facebookPublications": 0,
+  "requiredRecovery": "Rattacher ou restaurer le coffre sécurisé de l’environnement Amusement Parks et son client cloud autorisé. Ne pas transmettre de secret dans le chat. Une vérification SearchParks réussie est nécessaire avant la reprise.",
+  "retainedStateEvidence": "marineland-antibes-recovery-20261114.json",
+  "resumeAfterRecovery": "Reprendre les IDs et preuves existants, récupérer les opérations manquantes par le client officiel, réconcilier le registre puis poursuivre le lot historique préparé. Aucune date d’intégration mise à jour pour ce diagnostic."
+}

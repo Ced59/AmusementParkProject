@@ -1,0 +1,424 @@
+{
+  "parkId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+  "entryId": "FR-park-1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+  "conversation": "Conversation France",
+  "contentAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "auditAtUtc": "2026-10-23T01:07:06.317706+00:00",
+  "freshExportAtUtc": "2026-10-23T01:05:47.5616359Z",
+  "freshExportSha256": "d3072f91c28c57ac252cc55acd570ae033e2c2bb30404fdfbddf61f4f265765a",
+  "freshReconciliationDifferences": 0,
+  "coverage": {
+    "freshAtUtc": "2026-10-23T01:05:47.5616359Z",
+    "items": 19,
+    "zones": 0,
+    "attractions": 13,
+    "attractionStatuses": {
+      "Removed": 2,
+      "ClosedDefinitively": 11
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 13,
+    "attractionsWithImage": 7,
+    "attractionImageGaps": [
+      {
+        "id": "02c24b8a-a97f-4ab8-a461-7438b701605d",
+        "name": "Bumper Boats"
+      },
+      {
+        "id": "1423cbc1-1049-4c1c-bca6-797adfafe079",
+        "name": "Chevaux galopants"
+      },
+      {
+        "id": "f8f11136-a17b-4bcd-8fc8-b409258516ce",
+        "name": "Cinéma 180°"
+      },
+      {
+        "id": "6c30c408-104d-4e23-9740-2cbc95e99598",
+        "name": "Enterprise"
+      },
+      {
+        "id": "ad969680-88e5-4754-a121-644f78fd7cb4",
+        "name": "Petit Train"
+      },
+      {
+        "id": "2d6eb5f1-f574-4061-9647-07aea7aa018b",
+        "name": "Toboggan aquatique"
+      }
+    ],
+    "ownedImages": 18,
+    "sharedImages": 4,
+    "itemImageCounts": [
+      {
+        "id": "89c92b37-8199-4d4a-9f09-b1ba374d2fa6",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "cbff1a1d-2897-4aa6-bdb3-3040bc917e1b",
+        "name": "Alpina Bobs",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "1aa79203-c786-45f8-8933-0ed519a646da",
+        "name": "Autos tamponneuses",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "dd1bf9f0-635b-431f-8d07-974607a335c2",
+        "name": "Ballade 1900",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "02c24b8a-a97f-4ab8-a461-7438b701605d",
+        "name": "Bumper Boats",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "1423cbc1-1049-4c1c-bca6-797adfafe079",
+        "name": "Chevaux galopants",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "bfdb2e48-07a1-4920-9383-3e15a1f3ef6f",
+        "name": "Château de la Grifferaie",
+        "category": "Other",
+        "images": 1
+      },
+      {
+        "id": "f8f11136-a17b-4bcd-8fc8-b409258516ce",
+        "name": "Cinéma 180°",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "6c30c408-104d-4e23-9740-2cbc95e99598",
+        "name": "Enterprise",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "dd509622-85f2-4e22-aed8-ae9222cd4cab",
+        "name": "Entrée de Holly Park",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "df3778a4-7c3e-434c-a142-2c33f0c2f1e7",
+        "name": "Family Coaster",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "33784c90-9db9-4ddc-8ee3-b69262f952df",
+        "name": "Manège pour enfants",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "5d24673a-4eb9-4bd9-97b7-32b24ff2a9f3",
+        "name": "Parking de Holly Park",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "9c530df8-5a71-4ce0-a503-fc3ad36dc325",
+        "name": "Pause Café",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "ad969680-88e5-4754-a121-644f78fd7cb4",
+        "name": "Petit Train",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "bd54d5dd-64a6-4fdf-9447-a1279a2ccf30",
+        "name": "Petits bateaux à manivelles",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "c656885d-aab8-4d84-b0fa-59539ecef57c",
+        "name": "Structures gonflables",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "2d6eb5f1-f574-4061-9647-07aea7aa018b",
+        "name": "Toboggan aquatique",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "da9dbcba-729d-4faa-9ca0-945724cd0d6a",
+        "name": "Toilettes",
+        "category": "Service",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 3,
+    "geolocationGaps": [
+      {
+        "id": "89c92b37-8199-4d4a-9f09-b1ba374d2fa6",
+        "name": "Aire de pique-nique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "1aa79203-c786-45f8-8933-0ed519a646da",
+        "name": "Autos tamponneuses",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "dd1bf9f0-635b-431f-8d07-974607a335c2",
+        "name": "Ballade 1900",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "02c24b8a-a97f-4ab8-a461-7438b701605d",
+        "name": "Bumper Boats",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "1423cbc1-1049-4c1c-bca6-797adfafe079",
+        "name": "Chevaux galopants",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "bfdb2e48-07a1-4920-9383-3e15a1f3ef6f",
+        "name": "Château de la Grifferaie",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "f8f11136-a17b-4bcd-8fc8-b409258516ce",
+        "name": "Cinéma 180°",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "6c30c408-104d-4e23-9740-2cbc95e99598",
+        "name": "Enterprise",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "dd509622-85f2-4e22-aed8-ae9222cd4cab",
+        "name": "Entrée de Holly Park",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "33784c90-9db9-4ddc-8ee3-b69262f952df",
+        "name": "Manège pour enfants",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "9c530df8-5a71-4ce0-a503-fc3ad36dc325",
+        "name": "Pause Café",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "ad969680-88e5-4754-a121-644f78fd7cb4",
+        "name": "Petit Train",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "bd54d5dd-64a6-4fdf-9447-a1279a2ccf30",
+        "name": "Petits bateaux à manivelles",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "c656885d-aab8-4d84-b0fa-59539ecef57c",
+        "name": "Structures gonflables",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "2d6eb5f1-f574-4061-9647-07aea7aa018b",
+        "name": "Toboggan aquatique",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "da9dbcba-729d-4faa-9ca0-945724cd0d6a",
+        "name": "Toilettes",
+        "category": "Service",
+        "status": null
+      }
+    ],
+    "history": 7,
+    "parkHistory": 2,
+    "itemHistory": 5,
+    "historyWithSource": 7,
+    "historyWithImage": 7,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true
+  },
+  "publicTextReview": {
+    "languages": [
+      "de",
+      "en",
+      "es",
+      "fr",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "method": "All authoredtexts and actualboundedPreviewdiffs personallyread,8languages.354freshcomparisons withacceptedworkingstatezeroerrors.830corpusrows audited;754independenttextrows afteridenticalimage-description/captionandarticleimagecaptionaliasesmerged. Zero9wordsequences/identical6wordsentencesafterstrippingheadings/entitynames. Manufacturerbiographies separatelyreviewed;DPVscopeexplicitcrossparkcheckedofficial1985/1989/1996history. Article-specific24captions personallyrewrittenandactualPreviewreviewed;all778independentrowscomparedincludingarticlecaptions;serverformulaicPublicTextIssuenowclear.",
+    "sourceReviewFiles": [
+      "01-core-personal-preview-review.json",
+      "03-items-v2-personal-preview-review.json",
+      "08-park-history-personal-preview-review.json",
+      "04-coasters-v2-personal-preview-review.json",
+      "08-item-history-personal-preview-review.json",
+      "04-play-rides-personal-preview-review.json",
+      "04-services-personal-preview-review.json",
+      "04-garden-rides-personal-preview-review.json",
+      "08-history-article-personal-preview-review.json",
+      "04-water-thrills-personal-preview-review.json",
+      "04-park-personal-preview-review.json",
+      "05-dpv-biography-personal-preview-review.json",
+      "05-media-captions-personal-preview-review.json"
+    ],
+    "encodingIssues": 0,
+    "paragraphDuplicateGroups": 0,
+    "mechanicalFlags": 0,
+    "independentRows": 778,
+    "articleCaptionCorrection": "09-article-captions-apply.receipt.json"
+  },
+  "sourceGaps": "holly-park-source-gaps.json",
+  "projectedPrevisibilityScore": {
+    "completenessScore": 98,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 94,
+    "earnedPoints": 92,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "finalPrevisibilityRecheckAtUtc": "2026-10-23T01:11:53.523238+00:00",
+  "auditedConsolidatedSha256": "3219c8543b5930fbc4727fa0bb877d3ae607cfe5ee54b586736f218495a3d321",
+  "finalAuditPassed": true,
+  "finalAuditAtUtc": "2026-10-23T01:25:29.165149Z",
+  "lastDataIntegrationAtUtc": "2026-10-23T01:14:14.4455096Z",
+  "realPostPublicationScore": {
+    "completenessScore": 97,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 100,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/park/1c5c0675-8d86-459c-9c7c-b2bc79c1dad4/holly-park",
+  "publicationVerification": {
+    "officialSearchVisible": true,
+    "officialSearchStatus": "ClosedDefinitively",
+    "officialSearchReview": "Validated",
+    "mobilePagesChecked": 22,
+    "mobileLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "renderErrors": 0,
+    "technicalIdentifiersExposed": 0,
+    "brokenImages": 0,
+    "horizontalOverflowPages": 0,
+    "screenshotsPersonallyViewed": [
+      "park-fr",
+      "article-holly-closure-2014-fr",
+      "map-fr"
+    ],
+    "normalHistoryClick": {
+      "checkedAtUtc": "2026-10-23T01:24:47.054883+00:00",
+      "url": "https://amusement-parks.fun/fr/park/1c5c0675-8d86-459c-9c7c-b2bc79c1dad4/holly-park",
+      "apiResponses": [
+        {
+          "url": "https://amusement-parks.fun/api/parks/1c5c0675-8d86-459c-9c7c-b2bc79c1dad4/detail-summary",
+          "status": 200,
+          "hasPublicHistory": true,
+          "requestLanguage": "fr-FR",
+          "age": "4"
+        }
+      ],
+      "status": 200,
+      "historyLinkCount": 1,
+      "parkTitle": [
+        "Holly Park"
+      ],
+      "historyHref": "/fr/park/1c5c0675-8d86-459c-9c7c-b2bc79c1dad4/holly-park/history",
+      "destination": "https://amusement-parks.fun/fr/park/1c5c0675-8d86-459c-9c7c-b2bc79c1dad4/holly-park/history",
+      "historyTitle": [
+        "L'histoire de Holly Park"
+      ],
+      "historyBodyChars": 1823
+    },
+    "historyPublishedFacts": 7,
+    "historySourcedFacts": 7,
+    "historyMajorFacts": 7,
+    "historyCanonicalRepairOperationId": "76fafd94-2707-4bf4-b7a7-6769175fcba1",
+    "historicalYearExplorerGap": "Aucune année-clé indexable dans le diagnostic. La fiche normale propose Histoire, le clic ouvre la chronologie publique ; sept faits et un article vérifiés.",
+    "idempotenceOperationId": "32ec003d-aa8b-4936-9226-67402d6de896",
+    "idempotenceCounts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 52,
+      "warnings": 0,
+      "errors": 0
+    },
+    "facebookPublicationId": "8eaea520e63546d9b84d825527bed061",
+    "facebookStatus": "Published",
+    "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122124225309424431",
+    "facebookAction": "Annonce automatique existante confirmée Published ; aucun doublon envoyé."
+  },
+  "proofSha256": {
+    "09-fresh-full-export.json": "d3072f91c28c57ac252cc55acd570ae033e2c2bb30404fdfbddf61f4f265765a",
+    "09-text-reconciliation.json": "3bc6242bb91f1f33dd0364f01a65cce37344f92061f9896763246ccb17ab3f64",
+    "09-consolidation-proof.json": "4b09cca8ab06b583f84b52c95dbc6984c9b6f49a552fab99bfde6a4db9df7e7d",
+    "09-published-completeness.json": "75600a31f4b7c10bed19096808ba68ffe06fa18e5c5f44c487f85ca60ac4a75a",
+    "09-final-idempotence.preview.json": "73135a9924a50cf76a6276b83f29ebb4acdcc846bc2ee3228cd1310066c75093",
+    "09-history-diagnostics-after-repair.json": "bb4f45780ee864e35ef1073d9e17c0e33dbe48a03f9adec40ef4684f39368a34",
+    "09-facebook-resolve.json": "9d07ba588b21c0f7d4781c737acbdf9dc9e1813e4855ce9305f4562308fb13c3",
+    "09-history-canonical-repair-apply.receipt.json": "fec40bdd8c03c1489627b0fdbd1e7f001fedf2aafcc2752072463f8454ec1b1c",
+    "09-final-search-exact.json": "32fd88805abfbc73352a6545e430f4c3205578a3f3d10bd01b21014bf1e40af0",
+    "public-verification/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "9666fba0c4b1e91d23d5b165a9d1f89f12810261dfd6595cde65bfd2a8471e99",
+    "public-verification/api-report.json": "2e6b861e298c342565f30e0618a192afb6ab0b3b03f5197f5232d50a731f0038",
+    "public-verification/normal-fr-history-click.json": "dea0f10269815e236e5e1790dd33c3d478a00f795d66ca58dcc0c79ba22e2260",
+    "09-final-repetitions.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  }
+}

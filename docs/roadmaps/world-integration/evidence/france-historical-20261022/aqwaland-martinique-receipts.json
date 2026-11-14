@@ -1,0 +1,791 @@
+{
+  "entryId": "FR-candidate-e85014d661e1cf",
+  "parkId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+  "name": "Aqwaland Martinique",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-02ec8895-c349-4194-a7bf-54c22a2458b6",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T17:15:44.4328327Z",
+      "appliedAt": "2026-11-01T17:15:44.432Z",
+      "receiptFile": "01-core-apply.receipt.json",
+      "receiptSha256": "a50a7d3d0a9c34e33c04f724aea65d28b04c09f9e80018a715bc22d5bac0dc18",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDate",
+        "closingDateText",
+        "contactDetails",
+        "foundedYear",
+        "legalName",
+        "openingDateText",
+        "operatorId",
+        "postalCode",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Création privée Aqwaland Martinique après huit recherches officielles sans doublon ; identité, exploitant, mois ouverture février 2004, fin de dernière saison 1 septembre 2013 et localisation historique vérifiés."
+    },
+    {
+      "eventId": "apply-068a7569-3698-4f9f-a75f-07d7faefcbf0",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T17:22:48.0934445Z",
+      "appliedAt": "2026-11-01T17:22:48.093Z",
+      "receiptFile": "03-inventory-apply.receipt.json",
+      "receiptSha256": "d0a01f08fb7c66230e06da2f248bd2579f4911bf4a3afc7f37ac4f2b27429691",
+      "counts": {
+        "created": 15,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.ridersPerVehicle",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "position",
+        "type"
+      ],
+      "summary": "Inventaire historique Aqwaland : quinze lieux privés, dont sept attractions, Sokol Show, quatre restaurations, Kazaland, entrée et parking ; six ensembles aquatiques géolocalisés."
+    },
+    {
+      "eventId": "apply-34f4ec03-bed7-49ff-a68e-31d3d5b7285f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T17:29:20.3058405Z",
+      "appliedAt": "2026-11-01T17:29:20.305Z",
+      "receiptFile": "04-park-copy-apply.receipt.json",
+      "receiptSha256": "e6ce76a5b3e1c8ceb4a94916cd68bf947b4016e2a34abc57015ffb9c9ac89ee1",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Description éditoriale Aqwaland intégrée dans huit langues après rédaction et relecture personnelle ; trois sections, six paragraphes, fiche toujours privée."
+    },
+    {
+      "eventId": "apply-71dbe674-90de-48c9-ba20-c3e46571866d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T17:34:18.8289352Z",
+      "appliedAt": "2026-11-01T17:34:18.828Z",
+      "receiptFile": "04-aquatic-copy-apply.receipt.json",
+      "receiptSha256": "c058602b3fde39495038e9347a0b5b88b7bc696d9b14b6560dd1c9a8b44d1f60",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Quarante-huit descriptions personnelles intégrées pour six ensembles aquatiques Aqwaland, huit langues ; décor vérifié sur les photographies officielles, aucune visibilité modifiée."
+    },
+    {
+      "eventId": "apply-1850d694-b16f-4a81-8e23-fd0d2b03ac3b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T17:38:53.2864493Z",
+      "appliedAt": "2026-11-01T17:38:53.286Z",
+      "receiptFile": "04-food-shop-copy-apply.receipt.json",
+      "receiptSha256": "65b56965acc881d3d0e1ddae2e2a0bf607765a6599b04900b4d4ecca758610c2",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Quarante descriptions personnelles intégrées pour quatre restaurations et Kazaland, huit langues ; exceptions de longueur documentées et aucune visibilité modifiée."
+    },
+    {
+      "eventId": "apply-e95b632a-68b5-40c6-b461-5f77a73b6c58",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T17:41:23.9540909Z",
+      "appliedAt": "2026-11-01T17:41:23.954Z",
+      "receiptFile": "04-other-copy-apply.receipt.json",
+      "receiptSha256": "4295d6ee06e72a25246da9aacfc729fecde03cd9af88c79c207a1078838181e0",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Vingt-quatre descriptions personnelles intégrées pour Sokol Show, entrée et parking ; huit langues, usages historiques sourcés. Tyrolienne laissée privée sans description suffisante."
+    },
+    {
+      "eventId": "import-photo-53642ef17b4047dd99c96d2445ab0586-2026-11-01T175410.987Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:54:10.987Z",
+      "appliedAt": "2026-11-01T17:54:10.987Z",
+      "receiptFile": "05-logo-import-receipt.json",
+      "receiptSha256": "006c744ac905f1e9dfe87d3120e80666c07b70c32980ec05d8bb603b628e2bf2",
+      "imageId": "53642ef17b4047dd99c96d2445ab0586",
+      "ownerId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+      "createdAt": "2026-11-01T17:54:07.374Z",
+      "sourceUrl": "https://web.archive.org/web/20130725050125id_/http://www.aqwaland.fr/images/stories/logo/logo-aqwaland_web.png",
+      "summary": "Import privé du média historique 05-logo, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f5f7fb6f9d444b48b60eb61ef54cc3e0-2026-11-01T175454.507Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:54:54.507Z",
+      "appliedAt": "2026-11-01T17:54:54.507Z",
+      "receiptFile": "05-panorama-import-receipt.json",
+      "receiptSha256": "18342b9d94289406fc76f7dbedd943f412e9185ebcca7c847555430838999241",
+      "imageId": "f5f7fb6f9d444b48b60eb61ef54cc3e0",
+      "ownerId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+      "createdAt": "2026-11-01T17:54:51.065Z",
+      "sourceUrl": "https://web.archive.org/web/20130725050100id_/http://www.aqwaland.fr/images/stories/photoparc/panoramique/panoramique.png",
+      "summary": "Import privé du média historique 05-panorama, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-53de82c7d273424c8d4c566f7aec0f1d-2026-11-01T175514.044Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:55:14.044Z",
+      "appliedAt": "2026-11-01T17:55:14.044Z",
+      "receiptFile": "05-aerial-import-receipt.json",
+      "receiptSha256": "82c162707fa6ef23e56c1eab8cea9d472e03fa918f6a523b5a2c8d19f672da87",
+      "imageId": "53de82c7d273424c8d4c566f7aec0f1d",
+      "ownerId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+      "createdAt": "2026-11-01T17:55:10.425Z",
+      "sourceUrl": "https://web.archive.org/web/20131219002642id_/http://aqwaland.fr/images/stories/photoparc/jeux/vu_aerien2.jpg",
+      "summary": "Import privé du média historique 05-aerial, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-9750ca40b43d42c49d9de7ac7b617939-2026-11-01T175536.882Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:55:36.882Z",
+      "appliedAt": "2026-11-01T17:55:36.882Z",
+      "receiptFile": "05-ctm-garden-import-receipt.json",
+      "receiptSha256": "cb8d81432f606c08cce9bbbde11d6430fa5246d6b580bf18969c0b1bdad9309a",
+      "imageId": "9750ca40b43d42c49d9de7ac7b617939",
+      "ownerId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+      "createdAt": "2026-11-01T17:55:33.485Z",
+      "sourceUrl": "https://medias.franceantilles.fr/api/v1/images/view/64e682c5bcbbec22bd155226/width_1000/image.jpg",
+      "summary": "Import privé du média historique 05-ctm-garden, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-bb449fa0e1a742ec82a1b3a54140de6e-2026-11-01T175559.380Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:55:59.38Z",
+      "appliedAt": "2026-11-01T17:55:59.380Z",
+      "receiptFile": "05-drone-2022-import-receipt.json",
+      "receiptSha256": "c62ce3a1cda9048c12e70a637f064ae83c519dd3c4af2642446167f484ac95dc",
+      "imageId": "bb449fa0e1a742ec82a1b3a54140de6e",
+      "ownerId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+      "createdAt": "2026-11-01T17:55:55.999Z",
+      "sourceUrl": "https://medias.franceantilles.fr/api/v1/images/view/6344324100e4b63c8f70a9ac/width_1000/image.jpg",
+      "summary": "Import privé du média historique 05-drone-2022, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-478ab7c09bb745e3a902b04bbeffb7db-2026-11-01T175622.815Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:56:22.815Z",
+      "appliedAt": "2026-11-01T17:56:22.815Z",
+      "receiptFile": "05-ign-site-import-receipt.json",
+      "receiptSha256": "ddafb62dbd89621a4bd4736b5d241f884c4f2513b293334a0ffc0e0aab45f40b",
+      "imageId": "478ab7c09bb745e3a902b04bbeffb7db",
+      "ownerId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+      "createdAt": "2026-11-01T17:56:19.315Z",
+      "sourceUrl": "https://data.geopf.fr/wms-r/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=ORTHOIMAGERY.ORTHOPHOTOS&STYLES=&CRS=CRS%3A84&BBOX=-61.1688%2C14.7146%2C-61.1649%2C14.7176&WIDTH=1300&HEIGHT=1000&FORMAT=image%2Fjpeg",
+      "summary": "Import privé du média historique 05-ign-site, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-05ef477d875f47b0b9bfb49a95d6ab21-2026-11-01T175641.496Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:56:41.496Z",
+      "appliedAt": "2026-11-01T17:56:41.496Z",
+      "receiptFile": "05-black-hole-mouth-import-receipt.json",
+      "receiptSha256": "781b5be4b9335021bb468779e316e0e790734380f9fa5a1e4eb3680f03e8faed",
+      "imageId": "05ef477d875f47b0b9bfb49a95d6ab21",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T17:56:38.067Z",
+      "sourceUrl": "https://web.archive.org/web/20131219000445id_/http://aqwaland.fr/images/stories/photoparc/toboggan/black_hole%20(2).jpg",
+      "summary": "Import privé du média historique 05-black-hole-mouth, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-af79d75abe8e4c87852fca84c231a0d2-2026-11-01T175655.014Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:56:55.014Z",
+      "appliedAt": "2026-11-01T17:56:55.014Z",
+      "receiptFile": "05-black-hole-finish-import-receipt.json",
+      "receiptSha256": "b6c45c0b64b70adb4057fdbe25e7fea58c2398a79421f03b2cc662b641df1266",
+      "imageId": "af79d75abe8e4c87852fca84c231a0d2",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T17:56:51.628Z",
+      "sourceUrl": "https://web.archive.org/web/20131219001146id_/http://aqwaland.fr/images/stories/photoparc/toboggan/black_hole%209.jpg",
+      "summary": "Import privé du média historique 05-black-hole-finish, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-a0a2f30f9fed412f9607b89beff2cfc0-2026-11-01T175718.293Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:57:18.293Z",
+      "appliedAt": "2026-11-01T17:57:18.293Z",
+      "receiptFile": "05-colorado-hillside-import-receipt.json",
+      "receiptSha256": "f68f80a57614bfcb66f1294167b4497f8623f6debb3ed24002e66ecf38c71f06",
+      "imageId": "a0a2f30f9fed412f9607b89beff2cfc0",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T17:57:14.903Z",
+      "sourceUrl": "https://www.zayactu.org/wp-content/uploads/2018/07/Marsupilami-aqwaland.jpg",
+      "summary": "Import privé du média historique 05-colorado-hillside, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-e77e3e19a47848b19072e5d053fdb734-2026-11-01T175746.244Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:57:46.244Z",
+      "appliedAt": "2026-11-01T17:57:46.244Z",
+      "receiptFile": "05-colorado-descent-import-receipt.json",
+      "receiptSha256": "20c565bef0bec47790e3c35da8de77e334790fd6f47d4cd7f7dbc6ebbfdcac27",
+      "imageId": "e77e3e19a47848b19072e5d053fdb734",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T17:57:42.855Z",
+      "sourceUrl": "https://web.archive.org/web/20131219000435id_/http://aqwaland.fr/images/stories/photoparc/toboggan/colorado%20%2811%29.jpg",
+      "summary": "Import privé du média historique 05-colorado-descent, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5c28e5a54d59428e91763e0f075efb74-2026-11-01T175809.359Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:58:09.359Z",
+      "appliedAt": "2026-11-01T17:58:09.359Z",
+      "receiptFile": "05-colorado-mouth-import-receipt.json",
+      "receiptSha256": "f8bd4b063eb2a9393fdcd3314fe07cd5eace3457de35efc02aac0c16838ffdfd",
+      "imageId": "5c28e5a54d59428e91763e0f075efb74",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T17:58:05.903Z",
+      "sourceUrl": "https://web.archive.org/web/20131219000700id_/http://aqwaland.fr/images/stories/photoparc/toboggan/colorado%20%281%29.jpg",
+      "summary": "Import privé du média historique 05-colorado-mouth, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-36a83ffad2fc4feb879b9152d55b21f8-2026-11-01T175833.441Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:58:33.441Z",
+      "appliedAt": "2026-11-01T17:58:33.441Z",
+      "receiptFile": "05-crazyrace-after-import-receipt.json",
+      "receiptSha256": "f00792f8192ee34c19520121e683cdee54f6e43ccde55cdfa77cbcf2f5f4ad2f",
+      "imageId": "36a83ffad2fc4feb879b9152d55b21f8",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T17:58:29.958Z",
+      "sourceUrl": "https://www.zayactu.org/wp-content/uploads/2019/05/Aqwaland.jpg",
+      "summary": "Import privé du média historique 05-crazyrace-after, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-699f1a4415bd47e7b2de86505cf46f8d-2026-11-01T175847.115Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:58:47.115Z",
+      "appliedAt": "2026-11-01T17:58:47.115Z",
+      "receiptFile": "05-super-slalom-setting-import-receipt.json",
+      "receiptSha256": "97caf9b6ccede62dc50ff9008b27318648220fa6d3339ff0ec25e9298c1581a1",
+      "imageId": "699f1a4415bd47e7b2de86505cf46f8d",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T17:58:43.622Z",
+      "sourceUrl": "https://web.archive.org/web/20131219001356id_/http://aqwaland.fr/images/stories/photoparc/toboggan/super_slalom%20%2827%29.jpg",
+      "summary": "Import privé du média historique 05-super-slalom-setting, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-3371a959e94d49a39baf03475bdc0b4e-2026-11-01T175910.112Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:59:10.112Z",
+      "appliedAt": "2026-11-01T17:59:10.112Z",
+      "receiptFile": "05-super-slalom-approach-import-receipt.json",
+      "receiptSha256": "cd10c1abe900abeb4285b263a811460800222f5a33fb1bfa7b64a95768321cf6",
+      "imageId": "3371a959e94d49a39baf03475bdc0b4e",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T17:59:06.673Z",
+      "sourceUrl": "https://web.archive.org/web/20131219000227id_/http://aqwaland.fr/images/stories/photoparc/toboggan/super_slalom%20%2829%29.jpg",
+      "summary": "Import privé du média historique 05-super-slalom-approach, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-46b7edb99b814a7da92d0a291a54096c-2026-11-01T175937.274Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T17:59:37.274Z",
+      "appliedAt": "2026-11-01T17:59:37.274Z",
+      "receiptFile": "05-super-slalom-riders-import-receipt.json",
+      "receiptSha256": "2242c0491bf375f91da799d757711a17e24126048e033e21ea982ce244e910e1",
+      "imageId": "46b7edb99b814a7da92d0a291a54096c",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T17:59:33.839Z",
+      "sourceUrl": "https://web.archive.org/web/20131219001021id_/http://aqwaland.fr/images/stories/photoparc/toboggan/super_slalom%20%2838%29.jpg",
+      "summary": "Import privé du média historique 05-super-slalom-riders, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f6dba3ef2b1340d38366700889cd63ea-2026-11-01T180005.944Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T18:00:05.944Z",
+      "appliedAt": "2026-11-01T18:00:05.944Z",
+      "receiptFile": "05-miniparc-ship-import-receipt.json",
+      "receiptSha256": "65f425884a9d6ce83f00e969f8c5d07163f578cb9aeab7ba46966aba05b058fa",
+      "imageId": "f6dba3ef2b1340d38366700889cd63ea",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T18:00:02.313Z",
+      "sourceUrl": "https://web.archive.org/web/20131219000259id_/http://aqwaland.fr/images/stories/photoparc/mini_parc/mini_parc%20(11).jpg",
+      "summary": "Import privé du média historique 05-miniparc-ship, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-786a66cc51f048d29a2b8b31a12be42b-2026-11-01T180025.158Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T18:00:25.158Z",
+      "appliedAt": "2026-11-01T18:00:25.158Z",
+      "receiptFile": "05-miniparc-slides-import-receipt.json",
+      "receiptSha256": "d254910953fc50935e90e8d9df4944f82e05c092a9d7eaacfe687d53c5c44481",
+      "imageId": "786a66cc51f048d29a2b8b31a12be42b",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T18:00:21.75Z",
+      "sourceUrl": "https://web.archive.org/web/20131219000743id_/http://aqwaland.fr/images/stories/photoparc/mini_parc/mini_parc%20(18).jpg",
+      "summary": "Import privé du média historique 05-miniparc-slides, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-c1b89f3ceb974404bb3393de41d42e02-2026-11-01T180048.080Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T18:00:48.08Z",
+      "appliedAt": "2026-11-01T18:00:48.080Z",
+      "receiptFile": "05-miniparc-fountain-import-receipt.json",
+      "receiptSha256": "d4720c3fbc9207fcceee5be11bf3cd03ef87ce9a2f233b88952c66e2ba1843ff",
+      "imageId": "c1b89f3ceb974404bb3393de41d42e02",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T18:00:44.671Z",
+      "sourceUrl": "https://web.archive.org/web/20131219000657id_/http://aqwaland.fr/images/stories/photoparc/mini_parc/mini_parc%20(13).jpg",
+      "summary": "Import privé du média historique 05-miniparc-fountain, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-00500da8275145faacbd3265a0ff8953-2026-11-01T180116.364Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T18:01:16.364Z",
+      "appliedAt": "2026-11-01T18:01:16.364Z",
+      "receiptFile": "05-wave-pool-overview-import-receipt.json",
+      "receiptSha256": "a17ff3b88536b5bd052bc1f745b52107da345a56d2a00a12fe2f4181f2479896",
+      "imageId": "00500da8275145faacbd3265a0ff8953",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T18:01:12.954Z",
+      "sourceUrl": "https://web.archive.org/web/20131219001334id_/http://aqwaland.fr/images/stories/photoparc/piscine/piscine%20(1).jpg",
+      "summary": "Import privé du média historique 05-wave-pool-overview, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-1d4e38ea181f44b99e8c7e9715944367-2026-11-01T180139.491Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T18:01:39.491Z",
+      "appliedAt": "2026-11-01T18:01:39.491Z",
+      "receiptFile": "05-wave-pool-palms-import-receipt.json",
+      "receiptSha256": "ce0af4c5785462e8abf7a51064661f6740c398a5850a8f14623478085c48b667",
+      "imageId": "1d4e38ea181f44b99e8c7e9715944367",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T18:01:36.099Z",
+      "sourceUrl": "https://web.archive.org/web/20131218235959id_/http://aqwaland.fr/images/stories/photoparc/piscine/piscine%20(15).jpg",
+      "summary": "Import privé du média historique 05-wave-pool-palms, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-60e156ef81aa41e489c93e53f21896a5-2026-11-01T180153.016Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T18:01:53.016Z",
+      "appliedAt": "2026-11-01T18:01:53.016Z",
+      "receiptFile": "05-wave-pool-shore-import-receipt.json",
+      "receiptSha256": "d31b4e8d33aca83f787871f8ceddc8749b011d36b3c7353089c48655ecf068aa",
+      "imageId": "60e156ef81aa41e489c93e53f21896a5",
+      "ownerId": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+      "createdAt": "2026-11-01T18:01:49.626Z",
+      "sourceUrl": "https://web.archive.org/web/20131219001740id_/http://aqwaland.fr/images/stories/photoparc/piscine/piscine%20%2820%29.jpg",
+      "summary": "Import privé du média historique 05-wave-pool-shore, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-960b9e4f09474868820792d279b92a95-2026-11-01T180206.949Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T18:02:06.949Z",
+      "appliedAt": "2026-11-01T18:02:06.949Z",
+      "receiptFile": "05-petit-piton-import-receipt.json",
+      "receiptSha256": "01113bb4db245bb6c65b3fcabd52208d9535b7ef3d3541751de642463856c7ba",
+      "imageId": "960b9e4f09474868820792d279b92a95",
+      "ownerId": "f5458282-2d9d-45bd-8560-d1a8a08d6b20",
+      "createdAt": "2026-11-01T18:02:03.396Z",
+      "sourceUrl": "https://web.archive.org/web/20131219001330id_/http://aqwaland.fr/images/stories/photoparc/restaurant/petit_piton/petit_piton%20%287%29.jpg",
+      "summary": "Import privé du média historique 05-petit-piton, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-5405cd0dbc7b4b0186f188a8bff6c431-2026-11-01T180221.422Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T18:02:21.422Z",
+      "appliedAt": "2026-11-01T18:02:21.422Z",
+      "receiptFile": "05-kazaland-import-receipt.json",
+      "receiptSha256": "88da82ef91af8072549c0444b723d8095d12a7bf4007d4dfa826322dc28fa6cc",
+      "imageId": "5405cd0dbc7b4b0186f188a8bff6c431",
+      "ownerId": "f5458282-2d9d-45bd-8560-d1a8a08d6b20",
+      "createdAt": "2026-11-01T18:02:17.84Z",
+      "sourceUrl": "https://web.archive.org/web/20131219003203id_/http://aqwaland.fr/images/stories/photoparc/boutique/boutique%20(2).jpg",
+      "summary": "Import privé du média historique 05-kazaland, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-a029851120124fa8920103e750e0a9f8-2026-11-01T180235.788Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-01T18:02:35.788Z",
+      "appliedAt": "2026-11-01T18:02:35.788Z",
+      "receiptFile": "05-entrance-import-receipt.json",
+      "receiptSha256": "8fbd39d88a9db0a9abe01efaf89972485ff806e591f62418ff16ad2221d121c0",
+      "imageId": "a029851120124fa8920103e750e0a9f8",
+      "ownerId": "407efabd-3619-4d9f-9f18-53e8bfcb73ae",
+      "createdAt": "2026-11-01T18:02:32.35Z",
+      "sourceUrl": "https://www.zayactu.org/wp-content/uploads/2018/07/Entrée-Aqwaland.jpg",
+      "summary": "Import privé du média historique 05-entrance, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-f861b4f0-d85e-4881-91de-762e0916099c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T18:08:03.0567151Z",
+      "appliedAt": "2026-11-01T18:08:03.056Z",
+      "receiptFile": "05-reference-and-zip-copy-v3-apply.receipt.json",
+      "receiptSha256": "ddd33264d06fd2bf71386005fad06e4c543d5d9717863fb3979e0affd5a2b7b5",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "description.de",
+        "description.en",
+        "description.es",
+        "description.fr",
+        "description.it",
+        "description.nl",
+        "description.pl",
+        "description.pt",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Tyrolienne et exploitant : huit descriptions chacun, sources historiques et légales recoupées ; audit final restant."
+    },
+    {
+      "eventId": "apply-266d7efd-1532-4332-908e-54955e4ff2cd",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-01T18:10:24.6518642Z",
+      "appliedAt": "2026-11-01T18:10:24.651Z",
+      "receiptFile": "05-media-owner-repair-apply.receipt.json",
+      "receiptSha256": "3350d5a9a4564356081ae628b9fe15783a92cff300d11e13d30ed6efed1f8836",
+      "counts": {
+        "created": 0,
+        "updated": 16,
+        "deleted": 0,
+        "unchanged": 9,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isCurrent",
+        "ownerId"
+      ],
+      "summary": "Correction vérifiée de seize rattachements de photos privées vers leurs vrais parkItems ; fichiers, textes et sources préservés, images principales à rétablir dans le lot suivant."
+    },
+    {
+      "eventId": "apply-c9f13937-e4c4-4598-975c-b4ecd68af023",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:14:22.7012365Z",
+      "appliedAt": "2026-11-02T08:14:22.701Z",
+      "receiptFile": "08-timeline-apply.receipt.json",
+      "receiptSha256": "243174b5a2338c6f3abfe5de99bb3d6fb82728cc7827345bff0000d89e0f5abb",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "newOwnerName",
+        "ownerId",
+        "parkId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Six faits historiques sourcés et illustrés, cinq majeurs, huit langues ; ouverture 2004, Domaine des Pitons, fermeture 2013, propriété CTM et démarches de reprise sans vente ni réouverture inventées."
+    },
+    {
+      "eventId": "apply-181d4d74-4161-4e87-99c9-39d4944c2541",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:16:30.4804562Z",
+      "appliedAt": "2026-11-02T08:16:30.480Z",
+      "receiptFile": "08-article-apply.receipt.json",
+      "receiptSha256": "73290992f140522449f7f7ba8ee24f5f86557ce686d3e2f71c487145aa45ca72",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Article historique développé en huit langues, quatre sections et huit paragraphes par langue, deux photographies datées du site fermé ; sources recoupées et publication encore privée."
+    },
+    {
+      "eventId": "apply-015f0373-c37e-4986-93b7-7799941cb254",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:18:09.4958183Z",
+      "appliedAt": "2026-11-02T08:18:09.495Z",
+      "receiptFile": "08-media-editorial-refinement-apply.receipt.json",
+      "receiptSha256": "1005b1d26ed0c2f3e10a518c847492d31fb65215fa057bf02730a169836e6ec4",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "captions.de",
+        "captions.en",
+        "captions.es",
+        "captions.fr",
+        "captions.it",
+        "captions.nl",
+        "captions.pl",
+        "captions.pt",
+        "description"
+      ],
+      "summary": "Cinq descriptions de photos et leurs quarante légendes précisées dans les huit langues à partir des scènes inspectées ; aucune modification de rattachement ou visibilité."
+    },
+    {
+      "eventId": "apply-6521e001-8327-4eab-a95f-5bdae9786d9f",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:27:58.2902601Z",
+      "appliedAt": "2026-11-02T08:27:58.290Z",
+      "receiptFile": "09-editorial-corrections-apply.receipt.json",
+      "receiptSha256": "2e319e2448c66dcaa8af8bffda5751463e04fc3ff61d043163d753db77fb0f06",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "altTexts.de",
+        "altTexts.en",
+        "altTexts.es",
+        "altTexts.fr",
+        "altTexts.it",
+        "altTexts.nl",
+        "altTexts.pl",
+        "altTexts.pt",
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Audit final Aqwaland : couleurs de l’enseigne Petit Piton corrigées dans huit descriptions et huit textes alternatifs, phrase PT Tyrolienne rendue distincte."
+    },
+    {
+      "eventId": "apply-4f5600b6-2b97-4a28-bf82-87cd7c6bcdfb",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:34:04.9151838Z",
+      "appliedAt": "2026-11-02T08:34:04.915Z",
+      "receiptFile": "10-history-canonical-repair-apply.receipt.json",
+      "receiptSha256": "2d1b2abc526618a7b4f2d68f6635909e8f84471f2f25623b2fc718c941791a90",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "canonicalHistory"
+      ],
+      "summary": "Aqwaland : restauration officielle des six révisions HIST canoniques après publication du parc, sans changer les faits, dates, sources, images ni article."
+    },
+    {
+      "eventId": "apply-33e1741f-644f-4f8a-910a-aa146efe0818",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:40:33.1565256Z",
+      "appliedAt": "2026-11-02T08:40:33.156Z",
+      "receiptFile": "10-park-prose-refinement-apply.receipt.json",
+      "receiptSha256": "a93317f8de833a580c80ac56a6f664f87936ddac9611deec437ef70a63caff67",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.en",
+        "descriptions.fr"
+      ],
+      "summary": "Aqwaland : relecture du rendu public, amélioration du paragraphe du galion en français et anglais pour supprimer les répétitions décor/décor et setting/setting, sans ajout factuel."
+    }
+  ],
+  "publicationOrNoop": [
+    {
+      "eventId": "apply-5bfaf397-fbe7-43a3-a497-bbcb167d4cba",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:10:04.6476653Z",
+      "appliedAt": "2026-11-02T08:10:04.647Z",
+      "receiptFile": "05-media-current-repair-apply.receipt.json",
+      "receiptSha256": "6714ad53d40a55c7e23d85ea4f8c78c20e2dcb84adcdd8ce7f2f57803763f89c",
+      "counts": {
+        "created": 0,
+        "updated": 9,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isCurrent"
+      ],
+      "summary": "Neuf images principales rétablies sur les six attractions aquatiques photographiées, Petit Piton, Kazaland et entrée ; propriétaires corrigés, audit final restant."
+    },
+    {
+      "eventId": "apply-fa181b4f-4363-4ccd-b4a7-45fd06d6a236",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:30:37.1405942Z",
+      "appliedAt": "2026-11-02T08:30:37.140Z",
+      "receiptFile": "09-publish-images-apply.receipt.json",
+      "receiptSha256": "4cc4c304b0c314690f24454d404f836039bde18360cb458ebbb11f1dd8d0627b",
+      "counts": {
+        "created": 0,
+        "updated": 24,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "isPublished"
+      ],
+      "summary": "Aqwaland : publication autorisée des 24 médias audités, sans modification de données ni réimportation."
+    },
+    {
+      "eventId": "apply-bdb49cd6-0648-4d1b-8026-c39c9e30eff8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:31:21.0898832Z",
+      "appliedAt": "2026-11-02T08:31:21.089Z",
+      "receiptFile": "09-publish-dependent-content-apply.receipt.json",
+      "receiptSha256": "25ca48920ede75772bb6d7c99d277a22ce6ffcf06a8efd347703866e54cd01bc",
+      "counts": {
+        "created": 0,
+        "updated": 22,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "article",
+        "isVisible"
+      ],
+      "summary": "Aqwaland : validation de l’exploitant, publication des quinze lieux et des six faits avec leur article ; seules visibilité et validation changent, parent encore masqué."
+    },
+    {
+      "eventId": "apply-3fcd1a1e-c09b-4215-82a7-b382dc928b60",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T08:32:10.7534405Z",
+      "appliedAt": "2026-11-02T08:32:10.753Z",
+      "receiptFile": "09-publish-park-apply.receipt.json",
+      "receiptSha256": "f19c482f05bceb5b4dde30a282d1948df5842eb6e1a39f5d096c0498129f8206",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "adminReviewStatus",
+        "isVisible"
+      ],
+      "summary": "Aqwaland : mise en visibilité du parc et validation après publication des dépendances ; score projeté 90 sans bloqueur, dossier partial maintenu."
+    }
+  ],
+  "trackingClarifications": [
+    {
+      "eventId": "apply-5bfaf397-fbe7-43a3-a497-bbcb167d4cba",
+      "reason": "isCurrent corrige ici la donnée de sélection de neuf images principales, sans publier le moindre contenu. Le reçu reste conservé dans son emplacement initial et l’intégration est aussi consignée dans FR.json à son UTC réel. Le classement automatique initial publicationOrNoop était trop large pour cette réparation."
+    }
+  ]
+}

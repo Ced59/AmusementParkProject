@@ -1,0 +1,749 @@
+{
+  "passes": {
+    "current": 0,
+    "confirmedFuture": 0,
+    "historical": 45
+  },
+  "items": [
+    {
+      "key": "navette",
+      "name": "La Navette",
+      "category": "Attraction",
+      "type": "TransportRide",
+      "sources": [
+        "retro",
+        "catalogue",
+        "apesantaria-witness"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "apesantaria",
+      "name": "Apesantaria",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "retro",
+        "catalogue",
+        "apesantaria-witness"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "talisman",
+      "name": "Talisman",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "retro",
+        "catalogue",
+        "parcspassion"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "ouragan",
+      "name": "Ouragan",
+      "category": "Attraction",
+      "type": "FlatRide",
+      "sources": [
+        "retro",
+        "gallery"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "voyage-temps",
+      "name": "La Machine à voyager dans le temps",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "retro",
+        "catalogue",
+        "gallery"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "cites-or",
+      "name": "Les Cités d’Or",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "retro",
+        "gallery",
+        "village"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "dragon-bleu",
+      "name": "Dragon bleu",
+      "category": "Other",
+      "type": "Other",
+      "sources": [
+        "gallery"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "bd-zap",
+      "name": "BD Zap",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "aladin",
+      "name": "Aladin",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "sources": [
+        "gallery"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "maison-barbie",
+      "name": "La Maison de Barbie",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "gadget",
+      "name": "Gadget",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "gallery",
+        "fermeture"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "entrechats",
+      "name": "Les Entrechats",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "gallery"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "vecteur-beaute",
+      "name": "Vecteur beauté",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "cartoon-center",
+      "name": "Cartoon Center",
+      "category": "Show",
+      "type": "Cinema",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "planete-roll",
+      "name": "Planète Roll",
+      "category": "Attraction",
+      "type": "Game",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "triangle-bermudes",
+      "name": "Le Triangle des Bermudes",
+      "category": "Attraction",
+      "type": "Game",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "transistor",
+      "name": "Transistor",
+      "category": "Show",
+      "type": "Show",
+      "sources": [
+        "gallery",
+        "discotheque"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "toboggan",
+      "name": "Le Toboggan",
+      "category": "Attraction",
+      "type": "Playground",
+      "sources": [
+        "gallery"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "bouquet",
+      "name": "Le Bouquet",
+      "category": "Show",
+      "type": "Show",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "planete-molle",
+      "name": "Planète Molle",
+      "category": "Attraction",
+      "type": "Playground",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "arbre-parfum",
+      "name": "L’Arbre à parfum",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "eldorado",
+      "name": "Eldorado",
+      "category": "Attraction",
+      "type": "Game",
+      "sources": [
+        "gallery",
+        "village",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "nintendo",
+      "name": "Espace Nintendo",
+      "category": "Attraction",
+      "type": "Game",
+      "sources": [
+        "gallery",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "jackpot",
+      "name": "Jackpot",
+      "category": "Attraction",
+      "type": "Attraction",
+      "sources": [
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "musee-espace",
+      "name": "Musée de l’espace",
+      "category": "Attraction",
+      "type": "Attraction",
+      "sources": [
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "croq-planete",
+      "name": "Croq’ Planète",
+      "category": "Restaurant",
+      "type": "Snack",
+      "sources": [
+        "crocplanete"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "el-gringo",
+      "name": "El Gringo",
+      "category": "Restaurant",
+      "type": "Snack",
+      "sources": [
+        "elgringo",
+        "village"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "mirage-electrons",
+      "name": "Mirage d’électrons",
+      "category": "Restaurant",
+      "type": "Restaurant",
+      "sources": [
+        "mirageelectron"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "belle-eugenie",
+      "name": "La Belle Eugénie",
+      "category": "Restaurant",
+      "type": "Restaurant",
+      "sources": [
+        "salonthe",
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "planet-cine",
+      "name": "Planet Ciné",
+      "category": "Show",
+      "type": "Cinema",
+      "sources": [
+        "cinema"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "orphee-theatre",
+      "name": "Orphée Théâtre",
+      "category": "Show",
+      "type": "Show",
+      "sources": [
+        "theatre"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "studio-tv",
+      "name": "Studio TV",
+      "category": "Show",
+      "type": "Show",
+      "sources": [
+        "studiotv"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "boutique-principale",
+      "name": "Boutique principale",
+      "category": "Shop",
+      "type": "Shop",
+      "sources": [
+        "boutique"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "boutique-partenaires",
+      "name": "Boutique partenaires",
+      "category": "Shop",
+      "type": "Shop",
+      "sources": [
+        "boutique"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "comete",
+      "name": "La Comète",
+      "category": "Service",
+      "type": "Service",
+      "sources": [
+        "comete"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "entree-papin",
+      "name": "Entrée de la rue Papin",
+      "category": "Service",
+      "type": "Service",
+      "sources": [
+        "batiment",
+        "BAN"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": true,
+        "reason": "Point BAN du3bisruePapin pour l’entrée."
+      }
+    },
+    {
+      "key": "wc-iles",
+      "name": "Toilettes des îles",
+      "category": "Service",
+      "type": "Toilets",
+      "sources": [
+        "boutique",
+        "decoration"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "wc-stars",
+      "name": "WC des stars",
+      "category": "Service",
+      "type": "Toilets",
+      "sources": [
+        "batiment",
+        "decoration"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "wc-scooter",
+      "name": "WC Scooter",
+      "category": "Service",
+      "type": "Toilets",
+      "sources": [
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "wc-telephone",
+      "name": "WC Téléphone",
+      "category": "Service",
+      "type": "Toilets",
+      "sources": [
+        "batiment",
+        "decoration"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "accueil-groupes",
+      "name": "Accueil groupes",
+      "category": "Service",
+      "type": "Information",
+      "sources": [
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "point-rencontre",
+      "name": "Point rencontre",
+      "category": "Service",
+      "type": "Service",
+      "sources": [
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "vestiaire",
+      "name": "Vestiaire groupes et individuel",
+      "category": "Service",
+      "type": "Locker",
+      "sources": [
+        "batiment"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "point-information",
+      "name": "Point d’information",
+      "category": "Service",
+      "type": "Information",
+      "sources": [
+        "batiment",
+        "billeterie"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    },
+    {
+      "key": "espace-bleu",
+      "name": "Espace bleu",
+      "category": "Service",
+      "type": "Service",
+      "sources": [
+        "batiment",
+        "reception"
+      ],
+      "dateDecision": "Pas de date individuelle extrapolée de l’ouverture du parc.",
+      "gps": {
+        "included": false,
+        "reason": "Intérieur démoli : emplacement horizontal précis non établi. Les niveaux seuls ne donnent pas de coordonnées. WC Scooter et WC Téléphone sont deux services multisites, non un point unique."
+      }
+    }
+  ],
+  "countsByCategory": {
+    "Attraction": 21,
+    "Other": 1,
+    "Show": 6,
+    "Restaurant": 4,
+    "Shop": 2,
+    "Service": 11
+  },
+  "fixedItemsGeolocated": 1,
+  "allItems": 45,
+  "sourceIndex": {
+    "gallery": "https://denniscooperblog.com/frances-lost-amusement-parks-planete-magique-december-20-1989-january-2-1990-mirapolis-1988-1991/",
+    "retro": "https://anotherretroworld.wordpress.com/2014/01/15/rendez-vous-sur-la-planete-magique/",
+    "catalogue": "https://lta.hypotheses.org/files/2018/12/Catalogue-Deyries-BD.pdf",
+    "parcspassion": "https://parcspassion.org/evenement/rendez-vous-2004-planete-magique-2/",
+    "apesantaria-witness": "https://paulmalairan.wixsite.com/lejoueurinclassable/post/sur-la-piste-d-apesantaria-l-attraction-reine-de-plan%C3%A8te-magique",
+    "BAN": "https://api-adresse.data.gouv.fr/search/?q=3bis+rue+Papin+75003+Paris&limit=3",
+    "batiment": "https://web.archive.org/web/20130818142636/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=batiment",
+    "decoration": "https://web.archive.org/web/20130818142707/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=decoration",
+    "billeterie": "https://web.archive.org/web/20130818142641/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=billeterie",
+    "village": "https://web.archive.org/web/20130818142753/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=villagemexicain",
+    "crocplanete": "https://web.archive.org/web/20130818142701/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=crocplanete",
+    "elgringo": "https://web.archive.org/web/20130818142717/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=elgringo",
+    "mirageelectron": "https://web.archive.org/web/20130818142723/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=mirageelectron",
+    "salonthe": "https://web.archive.org/web/20130818142733/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=salonthe",
+    "cinema": "https://web.archive.org/web/20130818142651/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=cinema",
+    "theatre": "https://web.archive.org/web/20130818142743/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=theatre",
+    "studiotv": "https://web.archive.org/web/20130818142738/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=studiotv",
+    "boutique": "https://web.archive.org/web/20130818142646/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=boutique",
+    "comete": "https://web.archive.org/web/20130818142656/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=comete",
+    "reception": "https://web.archive.org/web/20130818142727/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=reception",
+    "discotheque": "https://web.archive.org/web/20130818142712/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=discotheque",
+    "fermeture": "https://web.archive.org/web/20110501124723/http://planetemagique.gaitelyrique.com/historique.php?content=fermeture"
+  },
+  "exclusions": [
+    {
+      "name": "Les Minipouss",
+      "reason": "Projet non réalisé confirmé dans les archives ; ne pas créer une attraction exploitée."
+    },
+    {
+      "name": "Ulysse31",
+      "reason": "Identité de projet non confirmée en exploitation ; ne pas dupliquer le Musée de l’espace ou une autre attraction construite."
+    },
+    {
+      "name": "Garage Navette",
+      "reason": "Coulisses de La Navette, pas une attraction autonome."
+    },
+    {
+      "name": "La Princesse increvable",
+      "reason": "Comédie musicale annoncée ; représentation effective non établie."
+    },
+    {
+      "name": "Concerts et artistes ponctuels du programme1991",
+      "reason": "La programmation documente Orphée Théâtre/Planet Ciné ; pas de multiplication de chaque séance en équipement permanent."
+    },
+    {
+      "name": "Fumoir de l’Empereur",
+      "reason": "Espace décrit comme vide dans le restaurant ; pas d’exploitation distincte prouvée."
+    },
+    {
+      "name": "Téléphones, distributeurs et locaux internes",
+      "reason": "Équipements dispersés non nommés individuellement et locaux de personnel non accessibles au public."
+    }
+  ],
+  "aliasDecisions": [
+    "Apesantaria est distinct du décor Dragon bleu ; le descriptif mécanique accolé au Dragon bleu dans une reprise est erroné.",
+    "Chevaliers de la Lumière désigne la quête de Talisman, pas un autre parcours.",
+    "La Belle Eugénie et salon de thé de l’Impératrice Eugénie sont la même salle, distincte de la salle Mirage d’électrons dans le même restaurant.",
+    "Boutique Nintendo du sous-sol = Boutique partenaires ; Espace Nintendo du niveau4 est un jeu, non cette boutique.",
+    "La Comète est une promenade de circulation ; aucune mécanique ou capacité inventée."
+  ],
+  "gaps": [
+    "Fonctionnement détaillé et photographies de Jackpot et du Musée de l’espace à rechercher ; nom et niveau attestés par inventaire historique.",
+    "Constructeurs techniques non établis ; sponsors et concepteurs artistiques non convertis en fabricants.",
+    "Conditions d’accès exactes de chaque attraction non établies ; profils d’âge de carte magnétique ne sont pas des limites d’accès.",
+    "Navette et Apesantaria construites mais accès opérationnel très limité selon témoignage ; pas de date d’ouverture individuelle affirmée."
+  ]
+}

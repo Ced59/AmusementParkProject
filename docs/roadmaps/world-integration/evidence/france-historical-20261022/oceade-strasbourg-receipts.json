@@ -1,0 +1,615 @@
+{
+  "entryId": "FR-candidate-018f58d346bda3",
+  "parkId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+  "name": "Océade Strasbourg",
+  "owner": "Conversation France",
+  "dataIntegrations": [
+    {
+      "eventId": "apply-f53e9693-5b2b-49f8-bba3-c68957a97ea3",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:47:46.2587742Z",
+      "appliedAt": "2026-11-02T16:47:46.258Z",
+      "receiptFile": "01-core-reviewed-apply.receipt.json",
+      "receiptSha256": "bbaa65b5f4b2595bb451400ee095bf3affb4e1c1980950c74c904de9df195fb4",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 1,
+        "errors": 0
+      },
+      "changedFields": [
+        "audienceClassification",
+        "city",
+        "closingDateText",
+        "openingDateText",
+        "status",
+        "street",
+        "type"
+      ],
+      "summary": "Création privée du parc aquatique historique Océade Strasbourg, distinct des homonymes ; ouverture1986, fermeture novembre1996, adresse sourcée. Coordonnées encore non établies, intégration partielle."
+    },
+    {
+      "eventId": "apply-91588543-a886-43b3-a7ba-63add1c012d8",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:52:10.972341Z",
+      "appliedAt": "2026-11-02T16:52:10.972Z",
+      "receiptFile": "03-inventory-apply.receipt.json",
+      "receiptSha256": "c2674f3ed30dcaa4e25da6c2f8e319e8dacefaeccbf9f6e4952ebb03358aca5b",
+      "counts": {
+        "created": 14,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "attractionDetails.openingDateText",
+        "attractionDetails.sourceUrl",
+        "attractionDetails.status",
+        "category",
+        "type"
+      ],
+      "summary": "Inventaire privé de treize activités historiques et du parking, avec sources, statuts et deux années d’installation établies ; intégration partielle."
+    },
+    {
+      "eventId": "apply-b05f7e47-e6e1-49b9-a650-27ab7ca9f714",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T16:57:32.7635493Z",
+      "appliedAt": "2026-11-02T16:57:32.763Z",
+      "receiptFile": "04-park-apply.receipt.json",
+      "receiptSha256": "dc2b489e2384f9e89fd53055c2a0a76f073d3af08f4720cffe3450c58ee1e6c7",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Description historique du parc intégrée dans les huit langues, avec six paragraphes et trois sections spécifiques ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-1961d9b43df843f2a056fd9894e9d381-2026-11-02T165812.647Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T16:58:12.647Z",
+      "appliedAt": "2026-11-02T16:58:12.647Z",
+      "receiptFile": "05-park-main-import-receipt.json",
+      "receiptSha256": "3b069c02bef8988f3b4d2b1dee2b162c26144e16894a89b32dc3b2c2308bf3fc",
+      "imageId": "1961d9b43df843f2a056fd9894e9d381",
+      "ownerId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+      "createdAt": "2026-11-02T16:58:08.988Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-park-main, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-f4b8db5dbac84c26b6047303109d8dc4-2026-11-02T165827.514Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T16:58:27.514Z",
+      "appliedAt": "2026-11-02T16:58:27.514Z",
+      "receiptFile": "05-park-aerial-import-receipt.json",
+      "receiptSha256": "fbbb4934618ae8c136c6fdddf2abb58de766a7fa0b48ce8d5745bd10f43825f5",
+      "imageId": "f4b8db5dbac84c26b6047303109d8dc4",
+      "ownerId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+      "createdAt": "2026-11-02T16:58:24.063Z",
+      "sourceUrl": "https://www.kuriocity.fr/strasbourg-disparu-8-la-piscine-oceade/",
+      "summary": "Import privé du média historique 05-park-aerial, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-38aae5e4c5d6426e855db960329cfeb7-2026-11-02T165841.795Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T16:58:41.795Z",
+      "appliedAt": "2026-11-02T16:58:41.795Z",
+      "receiptFile": "05-park-interior-import-receipt.json",
+      "receiptSha256": "7de4646702f416c0da1423e67996c1ab56497fcff5248f898727d7dc320eebea",
+      "imageId": "38aae5e4c5d6426e855db960329cfeb7",
+      "ownerId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+      "createdAt": "2026-11-02T16:58:38.437Z",
+      "sourceUrl": "https://www.kuriocity.fr/strasbourg-disparu-8-la-piscine-oceade/",
+      "summary": "Import privé du média historique 05-park-interior, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-7d5254f2d86c4af08b98b0dc22cab4aa-2026-11-02T165856.397Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T16:58:56.397Z",
+      "appliedAt": "2026-11-02T16:58:56.397Z",
+      "receiptFile": "05-park-paddling-roof-import-receipt.json",
+      "receiptSha256": "a56f565f097ccbf794641a6dc06767b94bfdec7a727aa330596f72c625ae04b3",
+      "imageId": "7d5254f2d86c4af08b98b0dc22cab4aa",
+      "ownerId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+      "createdAt": "2026-11-02T16:58:53.038Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-park-paddling-roof, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-c954504b3059454ab8a11cc0fd39a7f9-2026-11-02T165910.935Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T16:59:10.935Z",
+      "appliedAt": "2026-11-02T16:59:10.935Z",
+      "receiptFile": "05-park-lawns-import-receipt.json",
+      "receiptSha256": "5dcbc36377343ca555608cfd793125af00280ee2d2e1b5b6937c54a6fa0b3dc8",
+      "imageId": "c954504b3059454ab8a11cc0fd39a7f9",
+      "ownerId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+      "createdAt": "2026-11-02T16:59:07.562Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-park-lawns, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-865806e39ef846dfbfd0d5214966562e-2026-11-02T165925.457Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T16:59:25.457Z",
+      "appliedAt": "2026-11-02T16:59:25.457Z",
+      "receiptFile": "05-fire-aftermath-import-receipt.json",
+      "receiptSha256": "0df2946d9959888025450daced5a0ed808838f100e0bec7d9a88ff599f4feaf1",
+      "imageId": "865806e39ef846dfbfd0d5214966562e",
+      "ownerId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+      "createdAt": "2026-11-02T16:59:22.067Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-fire-aftermath, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "update-photo-f4b8db5dbac84c26b6047303109d8dc4-2026-11-02T170917.094Z",
+      "action": "UpdatePhotoMetadata",
+      "rawAppliedAtUtc": "2026-11-02T17:09:17.094Z",
+      "appliedAt": "2026-11-02T17:09:17.094Z",
+      "receiptFile": "05-park-aerial-credit-metadata-update-receipt.json",
+      "receiptSha256": "f691dd7345c88759963e819b633d1fc6d3f8ad21fab220f1dd8a945fc07b8ff8",
+      "imageId": "f4b8db5dbac84c26b6047303109d8dc4",
+      "ownerId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+      "createdAt": "2026-11-02T16:58:24.063Z",
+      "sourceUrl": "https://www.kuriocity.fr/strasbourg-disparu-8-la-piscine-oceade/",
+      "summary": "Océade Strasbourg : crédit historique vérifié du média privé 05-park-aerial-credit ; aucun nouvel upload, audit final restant."
+    },
+    {
+      "eventId": "import-photo-317ca916fc374b1fa68e2c471fafcfae-2026-11-02T170947.206Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:09:47.206Z",
+      "appliedAt": "2026-11-02T17:09:47.206Z",
+      "receiptFile": "05-wave-import-receipt.json",
+      "receiptSha256": "0e2783aad26da2d3209b5adaa25c76a04552eb77b2ec70d946497d9a19851d44",
+      "imageId": "317ca916fc374b1fa68e2c471fafcfae",
+      "ownerId": "3decb631-55a8-42a9-bc21-94e56963b806",
+      "createdAt": "2026-11-02T17:09:43.751Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-wave, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-342468fa52b34539b8287b417083c461-2026-11-02T171002.396Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:10:02.396Z",
+      "appliedAt": "2026-11-02T17:10:02.396Z",
+      "receiptFile": "05-outdoor-import-receipt.json",
+      "receiptSha256": "bf6491d7e18105c1036d151d17e6db6b52d57e8ca0928296afe596992c5c1ed3",
+      "imageId": "342468fa52b34539b8287b417083c461",
+      "ownerId": "b089e421-19f8-4210-88e8-d0e7704d29fa",
+      "createdAt": "2026-11-02T17:09:58.818Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-outdoor, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-badd046bb83d45c58ecaae0f0711a9e8-2026-11-02T171017.608Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:10:17.608Z",
+      "appliedAt": "2026-11-02T17:10:17.608Z",
+      "receiptFile": "05-minigolf-import-receipt.json",
+      "receiptSha256": "b52bce5861ac6b59e758008839370d674fcb14497d69372f74c9a713f3862e8c",
+      "imageId": "badd046bb83d45c58ecaae0f0711a9e8",
+      "ownerId": "74e5cccd-2661-4e49-a5df-f20f098a74db",
+      "createdAt": "2026-11-02T17:10:14.121Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-minigolf, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-efcba10a0102439eaab37c95e0660350-2026-11-02T171032.332Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:10:32.332Z",
+      "appliedAt": "2026-11-02T17:10:32.332Z",
+      "receiptFile": "05-houses-import-receipt.json",
+      "receiptSha256": "3184337f37b382b0f32bb42faa173b79bf0914308966ccdaa2f7ecfad5615705",
+      "imageId": "efcba10a0102439eaab37c95e0660350",
+      "ownerId": "8c88ea55-1fce-4f18-91ec-b5c2b5fa1f8a",
+      "createdAt": "2026-11-02T17:10:28.877Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-houses, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-8b22fc59ae5b49d697006c5d863f1a1a-2026-11-02T171048.550Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:10:48.55Z",
+      "appliedAt": "2026-11-02T17:10:48.550Z",
+      "receiptFile": "05-play-import-receipt.json",
+      "receiptSha256": "fe616db1a311f9bc73ca31e99b48eb3fc82af57268e7cf7f021ff3e60f4bf512",
+      "imageId": "8b22fc59ae5b49d697006c5d863f1a1a",
+      "ownerId": "ba23ecf9-9f69-497e-bd1c-aa473767bfaa",
+      "createdAt": "2026-11-02T17:10:44.975Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-play, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-06999b2bebb949f49ae7066a2b724c73-2026-11-02T171103.501Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:11:03.501Z",
+      "appliedAt": "2026-11-02T17:11:03.501Z",
+      "receiptFile": "05-black-slides-import-receipt.json",
+      "receiptSha256": "750cc94a979bd2d0a354555a9611e9a2677f41ffa6c9de162e7ed3d8761192a9",
+      "imageId": "06999b2bebb949f49ae7066a2b724c73",
+      "ownerId": "819415bb-1235-4eff-9b1c-daff9162384d",
+      "createdAt": "2026-11-02T17:10:59.966Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-black-slides, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-4d4bd28b09c74c35af47f01acef24f5f-2026-11-02T171118.026Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:11:18.026Z",
+      "appliedAt": "2026-11-02T17:11:18.026Z",
+      "receiptFile": "05-small-slides-import-receipt.json",
+      "receiptSha256": "09f0b8ecee06109cbe5dcb6f8ccdd22e5e6445ba94350c2e28a30ed9d133d5dc",
+      "imageId": "4d4bd28b09c74c35af47f01acef24f5f",
+      "ownerId": "0097fc8a-60af-4a1d-9462-16fb7f89daa7",
+      "createdAt": "2026-11-02T17:11:14.505Z",
+      "sourceUrl": "https://pokaa.fr/2024/07/21/a-strasbourg-le-jardin-des-deux-rives-a-plus-de-20-ans-mais-avant-il-y-avait-quoi/",
+      "summary": "Import privé du média historique 05-small-slides, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-aa6c4bd20d8c4a779ecf8c8e0ccdf4a0-2026-11-02T171132.628Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:11:32.628Z",
+      "appliedAt": "2026-11-02T17:11:32.628Z",
+      "receiptFile": "05-parking-import-receipt.json",
+      "receiptSha256": "e3504199d41ed09a599765c409d2e736a4fc430086255b54071a450d19cab810",
+      "imageId": "aa6c4bd20d8c4a779ecf8c8e0ccdf4a0",
+      "ownerId": "ad9b343d-f675-45b7-a5d8-2d17c3fdc28e",
+      "createdAt": "2026-11-02T17:11:29.18Z",
+      "sourceUrl": "https://www.kuriocity.fr/strasbourg-disparu-8-la-piscine-oceade/",
+      "summary": "Import privé du média historique 05-parking, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-c061bc6f48af4e0d9f421651fe12ba85-2026-11-02T171149.279Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:11:49.279Z",
+      "appliedAt": "2026-11-02T17:11:49.279Z",
+      "receiptFile": "05-park-postcard-import-receipt.json",
+      "receiptSha256": "3725823bfcaaeffa20d12b2cdebc79f3c39b7557c85daaa5a89ea586d12adae8",
+      "imageId": "c061bc6f48af4e0d9f421651fe12ba85",
+      "ownerId": "4dfbb5d8-d562-4dc8-831e-a3e5beb44c66",
+      "createdAt": "2026-11-02T17:11:45.817Z",
+      "sourceUrl": "https://pokaa.fr/2024/07/21/a-strasbourg-le-jardin-des-deux-rives-a-plus-de-20-ans-mais-avant-il-y-avait-quoi/",
+      "summary": "Import privé du média historique 05-park-postcard, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-4a284eba-7b51-49fb-b541-c71ecb23a82c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T17:13:56.7278084Z",
+      "appliedAt": "2026-11-02T17:13:56.727Z",
+      "receiptFile": "04-items-a-apply.receipt.json",
+      "receiptSha256": "3471442b3ff79fbf7bd3dc5374db7cffd496df25a6de3045ca778ea9da14e7af",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Océade Strasbourg : descriptions originales du minigolf, de la rivière extérieure et des petits toboggans intérieurs en huit langues ; audit final restant."
+    },
+    {
+      "eventId": "update-photo-7d5254f2d86c4af08b98b0dc22cab4aa-2026-11-02T171433.010Z",
+      "action": "UpdatePhotoMetadata",
+      "rawAppliedAtUtc": "2026-11-02T17:14:33.01Z",
+      "appliedAt": "2026-11-02T17:14:33.010Z",
+      "receiptFile": "05-paddling-owner-metadata-update-receipt.json",
+      "receiptSha256": "ab9566ec7733f95fc2683b718d8d3a8ce6a7910ee7bab6b11054e37d9f05036c",
+      "imageId": "7d5254f2d86c4af08b98b0dc22cab4aa",
+      "ownerId": "3b327cc8-5708-444c-bc5a-291b919f9513",
+      "createdAt": "2026-11-02T16:58:53.038Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Océade Strasbourg : crédit historique vérifié du média privé 05-paddling-owner ; aucun nouvel upload, audit final restant."
+    },
+    {
+      "eventId": "apply-989c3aa2-cb74-43f4-a92c-1d7ae049f73b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T17:18:34.9078533Z",
+      "appliedAt": "2026-11-02T17:18:34.907Z",
+      "receiptFile": "08-timeline-apply.receipt.json",
+      "receiptSha256": "411809fb745658ba5b6d3e65ce8c9c5bca2bb716ba4da3cc6cc6b683ccae0197",
+      "counts": {
+        "created": 6,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contextParkId",
+        "datePrecision",
+        "day",
+        "entityType",
+        "eventType",
+        "isMajor",
+        "isVisible",
+        "key",
+        "mainImageId",
+        "month",
+        "ownerId",
+        "parkId",
+        "parkItemId",
+        "sources",
+        "summaries",
+        "titles",
+        "year"
+      ],
+      "summary": "Océade Strasbourg : six faits historiques privés en huit langues, dont deux ouvertures de jeux sourcées et incendie illustré par sa véritable photographie ; audit final restant."
+    },
+    {
+      "eventId": "apply-593b0478-2467-4f6c-b5f0-512ef24cf523",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T17:24:18.5790953Z",
+      "appliedAt": "2026-11-02T17:24:18.579Z",
+      "receiptFile": "08-article-apply.receipt.json",
+      "receiptSha256": "08df6da8b856c13ea8f3d0456d8ec1b50a384040c3679dd7aee5872531d81a38",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Océade Strasbourg : article historique développé en huit langues, quatre sections, trois photographies contextualisées et cinq sources ; audit final restant."
+    },
+    {
+      "eventId": "apply-177beb1a-8af4-43f2-a4ea-fcd3414e0b4c",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T17:26:32.7444033Z",
+      "appliedAt": "2026-11-02T17:26:32.744Z",
+      "receiptFile": "04-items-b-apply.receipt.json",
+      "receiptSha256": "174615dc55df46f9ef135346115322b77d86d571eb5d979c383d1acd5dcebc76",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Océade Strasbourg : aire de jeux multicolore et maisons-champignons décrites en huit langues, avec dates et photographies contemporaines ; audit final restant."
+    },
+    {
+      "eventId": "apply-dd0e9528-1d90-4bd1-b79e-7ce0002a59b9",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T17:30:47.297602Z",
+      "appliedAt": "2026-11-02T17:30:47.297Z",
+      "receiptFile": "04-items-c-apply.receipt.json",
+      "receiptSha256": "0ae5459d2505afc0aae69a57c755be12b23f29508bfbeee2bd0168c16f3adbac",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Océade Strasbourg : bassin à vagues et bassin de plein air décrits en huit langues à partir des photographies et sources historiques ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-c3934e416b094a03b45d527da3ee1829-2026-11-02T173251.319Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:32:51.319Z",
+      "appliedAt": "2026-11-02T17:32:51.319Z",
+      "receiptFile": "05-outdoor-jet-import-receipt.json",
+      "receiptSha256": "8f3fae4909c8eaa7364255a62ed9936a07bbc684cc3e0903901d9610a40854a4",
+      "imageId": "c3934e416b094a03b45d527da3ee1829",
+      "ownerId": "b089e421-19f8-4210-88e8-d0e7704d29fa",
+      "createdAt": "2026-11-02T17:32:47.863Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-outdoor-jet, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "import-photo-d070d85e698a46ba976aa84f9df24db7-2026-11-02T173307.303Z",
+      "action": "ImportPhoto",
+      "rawAppliedAtUtc": "2026-11-02T17:33:07.303Z",
+      "appliedAt": "2026-11-02T17:33:07.303Z",
+      "receiptFile": "05-black-slides-splash-import-receipt.json",
+      "receiptSha256": "cbdc3766d811bcd57953d4dae0163bf779dd9aaeca88812de420adfa88bb40a5",
+      "imageId": "d070d85e698a46ba976aa84f9df24db7",
+      "ownerId": "819415bb-1235-4eff-9b1c-daff9162384d",
+      "createdAt": "2026-11-02T17:33:03.749Z",
+      "sourceUrl": "https://www.dna.fr/actualite/2019/07/21/strasbourg-juillet-1989-le-succes-de-l-oceade-diaporama-et-une-mysterieuse-tete-humaine-sur-l-autoroute",
+      "summary": "Import privé du média historique 05-black-slides-splash, fichier et huit langues relus ; audit final restant."
+    },
+    {
+      "eventId": "apply-d28ad308-f643-4d7d-8186-46bdf60f9397",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T17:35:09.8826081Z",
+      "appliedAt": "2026-11-02T17:35:09.882Z",
+      "receiptFile": "04-items-d-apply.receipt.json",
+      "receiptSha256": "9c31b5006c97e685eb634cadf8ad4993bd156582dc71b9a6b7c6c6a9affcb5ba",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Océade Strasbourg : pataugeoire, toboggans noirs et ancien parking décrits en huit langues ; réemploi du parking en 1999 sourcé, audit final restant."
+    },
+    {
+      "eventId": "apply-34040307-0f54-4ff4-8923-81f835f7bd07",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-02T17:39:43.699104Z",
+      "appliedAt": "2026-11-02T17:39:43.699Z",
+      "receiptFile": "09-refine-copy-apply.receipt.json",
+      "receiptSha256": "b616afcd7f2d64a8faace1bd4994c32da624eea5f858679dee8e86b3587a4829",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article",
+        "descriptions.en"
+      ],
+      "summary": "Océade Strasbourg : correction sourcée des huit versions de l’article et affinage de deux formulations après audit intégral ; statut partiel conservé."
+    },
+    {
+      "eventId": "apply-2699d7fe-a979-42aa-b3c5-dd2853fe2438",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:05:24.523025Z",
+      "appliedAt": "2026-11-03T04:05:24.523Z",
+      "receiptFile": "10-sers-operator-apply.receipt.json",
+      "receiptSha256": "c0093d70d31b6d5b4c197bfd3f1ce3cfc8d91fb525f2aeb3522cb1a23b159170",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "contactDetails",
+        "foundedYear",
+        "legalName",
+        "operatorId"
+      ],
+      "summary": "Océade Strasbourg : exploitant historique SERS renseigné depuis le témoignage du directeur recoupé avec DNA1989 et sources officielles ; présentation huit langues et coordonnées actuelles, audit final restant."
+    },
+    {
+      "eventId": "apply-65007492-d67a-4ce7-9a00-265eaf93938d",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:07:44.5095135Z",
+      "appliedAt": "2026-11-03T04:07:44.509Z",
+      "receiptFile": "10-sers-description-apply.receipt.json",
+      "receiptSha256": "73277adee9e8c232941079948937c7059c5463c08656769bc8fd7ef963d69ec8",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "description.de",
+        "description.en",
+        "description.es",
+        "description.fr",
+        "description.it",
+        "description.nl",
+        "description.pl",
+        "description.pt"
+      ],
+      "summary": "SERS : huit descriptions appliquées au champ officiel description de la nouvelle référence, après contrôle des huit différences du Preview ; audit final restant."
+    },
+    {
+      "eventId": "apply-a005594a-1ded-4f2a-8505-5bba18a051bd",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:08:36.2787324Z",
+      "appliedAt": "2026-11-03T04:08:36.278Z",
+      "receiptFile": "10-two-sourced-descriptions-apply.receipt.json",
+      "receiptSha256": "7837cb057f1fd9441de634b959c35e5a17a27bc71620971f0797e0ec83694c1d",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "descriptions.de",
+        "descriptions.en",
+        "descriptions.es",
+        "descriptions.fr",
+        "descriptions.it",
+        "descriptions.nl",
+        "descriptions.pl",
+        "descriptions.pt"
+      ],
+      "summary": "Océade Strasbourg : piscine à balles et grand toboggan jaune décrits dans huit langues sur sources précises, formats historiques courts documentés ; audit final restant."
+    },
+    {
+      "eventId": "apply-fdd800e4-39d7-4503-819c-8612e423954b",
+      "action": "Apply",
+      "rawAppliedAtUtc": "2026-11-03T04:11:55.9418808Z",
+      "appliedAt": "2026-11-03T04:11:55.941Z",
+      "receiptFile": "10-refine-article-apply.receipt.json",
+      "receiptSha256": "0b3c27ec1678772e1845320fa2cd7993a87e07e249230bad9a57bdb3a6aa2ac3",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changedFields": [
+        "article"
+      ],
+      "summary": "Océade Strasbourg : deux passages de l’article repris dans huit langues pour éliminer les répétitions et une phrase de méthode, sans changer la chronologie sourcée ; audit final restant."
+    }
+  ],
+  "publicationOrNoop": []
+}

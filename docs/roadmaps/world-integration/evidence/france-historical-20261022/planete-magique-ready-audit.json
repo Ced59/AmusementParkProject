@@ -1,0 +1,2701 @@
+{
+  "parkId": "305f6144-8dc2-4b24-a23d-d44749fe7d83",
+  "parkName": "Planète magique",
+  "checkedAtUtc": "2026-10-28T23:49:52.848873+00:00",
+  "exportedAtUtc": "2026-10-28T23:30:46.1217042Z",
+  "exportSha256": "db582d27efe8de8000eba3b7bc615c088ee97dc74a61eedca0bf0ae431ccf7b9",
+  "contentAuditPassed": true,
+  "publicationComplete": false,
+  "facebookComplete": false,
+  "scoreGate": "92/100, zero blockers. Parent publication requires explicit user acceptance of this exact named lower score and factual gaps; no such acceptance received. Keep parent hidden, do not send Facebook yet.",
+  "coverage": {
+    "freshAtUtc": "2026-10-28T23:30:46.1217042Z",
+    "items": 45,
+    "zones": 1,
+    "attractions": 21,
+    "attractionStatuses": {
+      "Removed": 21
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 21,
+    "attractionsWithImage": 16,
+    "attractionImageGaps": [
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo"
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot"
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan"
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum"
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace"
+      }
+    ],
+    "ownedImages": 60,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "579545c3-3ef2-47a1-9a98-517e9173e14e",
+        "name": "Accueil groupes",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "da666920-9c51-4214-b6de-8b944f2d66eb",
+        "name": "Aladin",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "db31a440-1989-477f-89b9-ed0c5159b05e",
+        "name": "Apesantaria",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+        "name": "BD Zap",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "f9b76b19-80ab-4bd9-a6bc-0404f306228a",
+        "name": "Boutique partenaires",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "6decc4f5-4394-406c-87c3-2ae6583819cb",
+        "name": "Boutique principale",
+        "category": "Shop",
+        "images": 0
+      },
+      {
+        "id": "f21c94e8-ce22-4cc1-ba57-0f841359df6e",
+        "name": "Cartoon Center",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "ce166b97-2f91-4a06-9c29-2907cedecd93",
+        "name": "Croq’ Planète",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "73973e4f-1358-4a2f-b005-ebad4e6da35a",
+        "name": "Dragon bleu",
+        "category": "Other",
+        "images": 3
+      },
+      {
+        "id": "9d58901b-7740-4a87-937c-e15970ee4b36",
+        "name": "El Gringo",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "6485bef2-862a-4e33-9124-f6b6a2c32148",
+        "name": "Eldorado",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4a39d1bd-6380-4280-9e78-e4b2fceb011c",
+        "name": "Entrée de la rue Papin",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "8d04281d-4165-4a21-9640-1ff6cba9e9c8",
+        "name": "Espace bleu",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a4dc0b6c-a498-4b31-915c-de09c4619aa8",
+        "name": "Gadget",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a06fd2dc-d25c-4a47-8472-bdd2aa9d213f",
+        "name": "La Belle Eugénie",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "a613df39-66f9-424b-b6c7-db925094045a",
+        "name": "La Comète",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "d5d98cbf-0f6b-4f24-b5d8-83c215031ec9",
+        "name": "La Machine à voyager dans le temps",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+        "name": "La Maison de Barbie",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "13d7e812-3d55-41a8-a5e9-6e99e9d5609c",
+        "name": "La Navette",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "7bae4ee1-e114-45a6-8e03-79ee6c993b9b",
+        "name": "Le Bouquet",
+        "category": "Show",
+        "images": 3
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "56eb5fd1-d60f-4d37-9844-0e1df416963e",
+        "name": "Le Triangle des Bermudes",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "dd7ea24c-0480-49ec-9fdd-6358a51d977b",
+        "name": "Les Cités d’Or",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "d533ee04-5159-442f-82fb-3941d2ff4086",
+        "name": "Les Entrechats",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f23dafb9-8267-41ea-97a3-60d3a9c6fcc7",
+        "name": "Mirage d’électrons",
+        "category": "Restaurant",
+        "images": 2
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+        "name": "Orphée Théâtre",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "e44e3831-9825-4ddf-a5ee-b3738f75a986",
+        "name": "Ouragan",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "537e044d-954e-48e3-b20e-e39287ed56c9",
+        "name": "Planet Ciné",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "1f0adae9-0375-49d7-98e3-9a9bf021066c",
+        "name": "Planète Molle",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "63e345fc-1cd1-468e-80db-0fa62a1fd612",
+        "name": "Planète Roll",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "e7b412c0-114b-439d-997b-a36fc27192c5",
+        "name": "Point d’information",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "9d337a12-f7c7-4f67-a5ef-cd881571ae2d",
+        "name": "Point rencontre",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "dab88ec9-a998-4850-a908-f5c257121758",
+        "name": "Studio TV",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "d9573431-d334-4da0-b62c-306d34750100",
+        "name": "Talisman",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "615522fe-28e8-4bbb-8191-47464e61d1db",
+        "name": "Toilettes des îles",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "f900e0ee-91fd-4933-8755-3c5b56f3f37d",
+        "name": "Transistor",
+        "category": "Show",
+        "images": 2
+      },
+      {
+        "id": "8d4c4a34-3daf-4d8e-a57d-36de22da9469",
+        "name": "Vecteur beauté",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "278f1f45-e637-4fb9-aa08-46c97a3474b9",
+        "name": "Vestiaire groupes et individuel",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "c43cdf10-f50b-4b4d-adf3-daea132acdc9",
+        "name": "WC des stars",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "4f14c6c7-cc29-4c39-b3c2-c7ac23b7a0ec",
+        "name": "WC Scooter",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "ed8bb737-5828-4ac1-84d4-0a239b08f009",
+        "name": "WC Téléphone",
+        "category": "Service",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 1,
+    "geolocationGaps": [
+      {
+        "id": "579545c3-3ef2-47a1-9a98-517e9173e14e",
+        "name": "Accueil groupes",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "da666920-9c51-4214-b6de-8b944f2d66eb",
+        "name": "Aladin",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "db31a440-1989-477f-89b9-ed0c5159b05e",
+        "name": "Apesantaria",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+        "name": "BD Zap",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f9b76b19-80ab-4bd9-a6bc-0404f306228a",
+        "name": "Boutique partenaires",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "6decc4f5-4394-406c-87c3-2ae6583819cb",
+        "name": "Boutique principale",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "f21c94e8-ce22-4cc1-ba57-0f841359df6e",
+        "name": "Cartoon Center",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "ce166b97-2f91-4a06-9c29-2907cedecd93",
+        "name": "Croq’ Planète",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "73973e4f-1358-4a2f-b005-ebad4e6da35a",
+        "name": "Dragon bleu",
+        "category": "Other",
+        "status": null
+      },
+      {
+        "id": "9d58901b-7740-4a87-937c-e15970ee4b36",
+        "name": "El Gringo",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "6485bef2-862a-4e33-9124-f6b6a2c32148",
+        "name": "Eldorado",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "8d04281d-4165-4a21-9640-1ff6cba9e9c8",
+        "name": "Espace bleu",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a4dc0b6c-a498-4b31-915c-de09c4619aa8",
+        "name": "Gadget",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a06fd2dc-d25c-4a47-8472-bdd2aa9d213f",
+        "name": "La Belle Eugénie",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "a613df39-66f9-424b-b6c7-db925094045a",
+        "name": "La Comète",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "d5d98cbf-0f6b-4f24-b5d8-83c215031ec9",
+        "name": "La Machine à voyager dans le temps",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "052a47e7-63e9-4366-b24f-35e3c3666ee4",
+        "name": "La Maison de Barbie",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "13d7e812-3d55-41a8-a5e9-6e99e9d5609c",
+        "name": "La Navette",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "7bae4ee1-e114-45a6-8e03-79ee6c993b9b",
+        "name": "Le Bouquet",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "56eb5fd1-d60f-4d37-9844-0e1df416963e",
+        "name": "Le Triangle des Bermudes",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "dd7ea24c-0480-49ec-9fdd-6358a51d977b",
+        "name": "Les Cités d’Or",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d533ee04-5159-442f-82fb-3941d2ff4086",
+        "name": "Les Entrechats",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f23dafb9-8267-41ea-97a3-60d3a9c6fcc7",
+        "name": "Mirage d’électrons",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+        "name": "Orphée Théâtre",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "e44e3831-9825-4ddf-a5ee-b3738f75a986",
+        "name": "Ouragan",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "537e044d-954e-48e3-b20e-e39287ed56c9",
+        "name": "Planet Ciné",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "1f0adae9-0375-49d7-98e3-9a9bf021066c",
+        "name": "Planète Molle",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "63e345fc-1cd1-468e-80db-0fa62a1fd612",
+        "name": "Planète Roll",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e7b412c0-114b-439d-997b-a36fc27192c5",
+        "name": "Point d’information",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "9d337a12-f7c7-4f67-a5ef-cd881571ae2d",
+        "name": "Point rencontre",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "dab88ec9-a998-4850-a908-f5c257121758",
+        "name": "Studio TV",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "d9573431-d334-4da0-b62c-306d34750100",
+        "name": "Talisman",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "615522fe-28e8-4bbb-8191-47464e61d1db",
+        "name": "Toilettes des îles",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "f900e0ee-91fd-4933-8755-3c5b56f3f37d",
+        "name": "Transistor",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "8d4c4a34-3daf-4d8e-a57d-36de22da9469",
+        "name": "Vecteur beauté",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "278f1f45-e637-4fb9-aa08-46c97a3474b9",
+        "name": "Vestiaire groupes et individuel",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "c43cdf10-f50b-4b4d-adf3-daea132acdc9",
+        "name": "WC des stars",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "4f14c6c7-cc29-4c39-b3c2-c7ac23b7a0ec",
+        "name": "WC Scooter",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "ed8bb737-5828-4ac1-84d4-0a239b08f009",
+        "name": "WC Téléphone",
+        "category": "Service",
+        "status": null
+      }
+    ],
+    "history": 9,
+    "parkHistory": 8,
+    "itemHistory": 1,
+    "historyWithSource": 9,
+    "historyWithImage": 9,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "allItemsWith8Descriptions": 45,
+    "itemsWithImage": 22,
+    "officialCurrentLogo": "90169c9d95a7484ba2ff237d62f0db17",
+    "currentParkImage": "54bbe5114fa54ea7af3fbc9b8ad891e2",
+    "generalOldParkEnsemblePhotos": 2,
+    "reconversionContextPhotos": 4,
+    "majorItemsWithThreeImages": 8,
+    "majorItemsTotal": 18,
+    "articleLanguages": {
+      "fr": {
+        "words": 667,
+        "headings": 4,
+        "paragraphs": 8,
+        "imageBlocks": 3
+      },
+      "en": {
+        "words": 623,
+        "headings": 4,
+        "paragraphs": 8,
+        "imageBlocks": 3
+      },
+      "de": {
+        "words": 603,
+        "headings": 4,
+        "paragraphs": 8,
+        "imageBlocks": 3
+      },
+      "nl": {
+        "words": 646,
+        "headings": 4,
+        "paragraphs": 8,
+        "imageBlocks": 3
+      },
+      "it": {
+        "words": 620,
+        "headings": 4,
+        "paragraphs": 8,
+        "imageBlocks": 3
+      },
+      "es": {
+        "words": 690,
+        "headings": 4,
+        "paragraphs": 8,
+        "imageBlocks": 3
+      },
+      "pl": {
+        "words": 554,
+        "headings": 4,
+        "paragraphs": 8,
+        "imageBlocks": 3
+      },
+      "pt": {
+        "words": 658,
+        "headings": 4,
+        "paragraphs": 8,
+        "imageBlocks": 3
+      }
+    }
+  },
+  "publicTextReview": {
+    "languages": [
+      "de",
+      "en",
+      "es",
+      "fr",
+      "it",
+      "nl",
+      "pl",
+      "pt"
+    ],
+    "personallyAuthoredAndReviewed": true,
+    "corpusRows": 1700,
+    "storedValueComparisons": 2626,
+    "differences": 0,
+    "rawEncodingFindings": 0,
+    "duplicateParagraphsAfterHeadingAndNameStripping": 0,
+    "genuineMechanicalOrFormulaicFindings": 0,
+    "classifiedFlag": null,
+    "method": "All texts personally authored/reviewed in original bound Preview and image-import reviews, including all eight languages. Fresh export compared field-for-field against that reviewed copy. Whole corpus checked after heading/name removal, and the unique automatic flag personally classified. Short service and poorly documented attraction descriptions retain only specific building levels, named neighbours or observed decor, with genuine source limits; no invented detail or length padding.",
+    "comparisonCorpusRows": 1608,
+    "automaticEditorialFlags": 0,
+    "longSequenceOrSentenceGroups": 0,
+    "corrections": "Three bound revisions removed gallery/article caption copies, seven narrative/timeline long overlaps, and the detector-triggering English translation Court of Audit. The institution retains its exact French name Cour des comptes. Final official check and complete local corpus both clear."
+  },
+  "idempotence": {
+    "operationId": "a43fcb4f-5da4-46d6-9d87-d9bc2a12111b",
+    "unchanged": 118,
+    "mutations": 0,
+    "warnings": 0,
+    "errors": 0
+  },
+  "sources": [
+    {
+      "key": "catalogue",
+      "url": "https://lta.hypotheses.org/files/2018/12/Catalogue-Deyries-BD.pdf",
+      "checkedAtUtc": "2026-10-28T23:17:46.911014+00:00",
+      "status": 200,
+      "finalUrl": "https://lta.hypotheses.org/files/2018/12/Catalogue-Deyries-BD.pdf",
+      "contentType": "application/pdf",
+      "sha256": "3fb2d1974a11631d1a4c59d22a9382e704820d0b0a83618beaead80f0e0e85e9",
+      "bytes": 1103063
+    },
+    {
+      "key": "cour",
+      "url": "https://web.archive.org/web/20110501124716/http://planetemagique.gaitelyrique.com:80/historique.php?content=faillite",
+      "checkedAtUtc": "2026-10-28T23:17:46.911801+00:00",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20110501124716/http://planetemagique.gaitelyrique.com:80/historique.php?content=faillite",
+      "contentType": "text/html",
+      "sha256": "0b09de2267facaa0ebadc52b60b3f63d929e2a6d2d5243a11a907399e02cd17a",
+      "bytes": 39212,
+      "title": "Planete Magique / Gaite Lyrique - Faillite",
+      "bodySample": "Planete Magique / Gaite Lyrique - Faillite 4 captures 01 May 2011 - 20 Jan 2025 Apr MAY Jun 01 2010 2011 2012 success fail About this capture TIMESTAMPS The Wayback Machine - https://web.archive.org/web/20110501124716/http://planetemagique.gaitelyrique.com:80/historique.php?content=faillite 31\n            mai 1991 Accueil Historique Faillite RAPPORT PUBLIC Cour des comptes 1992 QUATRIEME PARTIE : COLLECTIVITES TERRITORIALES (Résumé) 28. - LE THEATRE DE LA GAITE LYRIQUE Construit sous le Second Empire, le Théâtre de \n  la Gaîté Lyrique, initialement consacré à l'opérette, \n  a été fermé en 1979. En 1987, la ville de Paris, qui en \n  est propriétaire, en a concédé les locaux à la Société \n  à "
+    },
+    {
+      "key": "apropos",
+      "url": "https://web.archive.org/web/20110501124920/http://planetemagique.gaitelyrique.com:80/apropos.php",
+      "checkedAtUtc": "2026-10-28T23:17:46.912615+00:00",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20110501124920/http://planetemagique.gaitelyrique.com:80/apropos.php",
+      "contentType": "text/html",
+      "sha256": "b9de73c7c32d36d82c1b91104af23f9185755b92e2f373bafe17b392c75e1e57",
+      "bytes": 34669,
+      "title": "Planete Magique / Gaite Lyrique - Complexe de loisirs urbains",
+      "bodySample": "Planete Magique / Gaite Lyrique - Complexe de loisirs urbains 4 captures 01 May 2011 - 10 Oct 2015 Apr MAY Jun 01 2010 2011 2012 success fail About this capture TIMESTAMPS The Wayback Machine - https://web.archive.org/web/20110501124920/http://planetemagique.gaitelyrique.com:80/apropos.php 31\n            mai 1991 Accueil A propos Ce site est le site officiel de la Planète Magique. Il a été réalisé par le guide qui a travaillé \n    sur les témoignages des visiteurs pendant 1 an et demi ainsi que sur \n    les restes d’archives trouvés dans le bâtiment et dans \n    la presse d’époque. Si vous possédez des documents ou témoignages \n  relatifs au parc, vous pouvez prendre contact avec l’auteur po"
+    },
+    {
+      "key": "demolition",
+      "url": "https://web.archive.org/web/20110501125801/http://planetemagique.gaitelyrique.com:80/historique.php?content=demolition",
+      "checkedAtUtc": "2026-10-28T23:17:47.636064+00:00",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20110501125801/http://planetemagique.gaitelyrique.com:80/historique.php?content=demolition",
+      "contentType": "text/html",
+      "sha256": "42b80a3969ba3cf83e7ac112e492ef84bab84ad0db949a2e53b63efd6e10d51b",
+      "bytes": 35563,
+      "title": "Planete Magique / Gaite Lyrique - Démolition",
+      "bodySample": "Planete Magique / Gaite Lyrique - Démolition 2 captures 01 May 2011 - 18 Aug 2013 Apr MAY Jun 01 2010 2011 2012 success fail About this capture TIMESTAMPS The Wayback Machine - https://web.archive.org/web/20110501125801/http://planetemagique.gaitelyrique.com:80/historique.php?content=demolition 31\n            mai 1991 Accueil Historique Démolition Planête Magique c'est terminé ! AUTOMNE 2004 : DEMOLITION DE \"PLANETE MAGIQUE\" \n  ! Ces photographies prises le 22 octobre 2004 rue Papin à Paris montrent \n  que, cette fois, le parc d'attractions Planète Magique a vécu. Les engins de démolition s'affairent autour du chantier de démolition \n  du parc de Jean Chalopin 14 années après sa fermeture..."
+    },
+    {
+      "key": "pp",
+      "url": "https://parcspassion.org/evenement/rendez-vous-2004-planete-magique-2/",
+      "checkedAtUtc": "2026-10-28T23:17:47.746679+00:00",
+      "status": 200,
+      "finalUrl": "https://parcspassion.org/evenement/rendez-vous-2004-planete-magique-2/",
+      "contentType": "text/html; charset=UTF-8",
+      "sha256": "025fe73f76acda6b948364c48ef62652cd14cefc62ac8b7078d00e3ad0c19026",
+      "bytes": 181426,
+      "title": "Rendez-Vous 2004 / Planète Magique 2 - Parcs Passion",
+      "bodySample": "Rendez-Vous 2004 / Planète Magique 2 - Parcs Passion Accueil L’association Evénements Galerie Actualité Boutique 0 0,00 € Adhérer ✕ « Tous les Évènements Cet évènement est passé. Rendez-Vous 2004 / Planète Magique 2 6 mars 2004 « Rendez-Vous 2004 / Planète Magique 1 Sortie 2004 / Nigloland » Suite au succès de la première visite et, avouons le, à une certaine addiction du lieu, une deuxième visite de Planète Magique fut organisée dans un sentiment d’urgence. En effet, les travaux de démolition du parc avaient déjà commencé. Notre guide, complètement habité par le lieu, fut heureux de retrouver un public intéressé et passionné. Il se fit un plaisir de nous raconter l’histoire de Planète Magiq"
+    },
+    {
+      "key": "ppjan",
+      "url": "https://parcspassion.org/evenement/rendez-vous-2004-planete-magique-1/",
+      "checkedAtUtc": "2026-10-28T23:17:48.200857+00:00",
+      "status": 200,
+      "finalUrl": "https://parcspassion.org/evenement/rendez-vous-2004-planete-magique-1/",
+      "contentType": "text/html; charset=UTF-8",
+      "sha256": "823605174175b1521e9c4e4c7efc06604589f5cc80c75f10606ee7eb81e107f9",
+      "bytes": 201146,
+      "title": "Rendez-Vous 2004 / Planète Magique 1 - Parcs Passion",
+      "bodySample": "Rendez-Vous 2004 / Planète Magique 1 - Parcs Passion Accueil L’association Evénements Galerie Actualité Boutique 0 0,00 € Adhérer ✕ « Tous les Évènements Cet évènement est passé. Rendez-Vous 2004 / Planète Magique 1 18 janvier 2004 « Noël 2003 / Disney Village Rendez-Vous 2004 / Planète Magique 2 » C’est au hasard de la lecture d’un journal qu’un adhérent découvrit qu’il était possible de visiter Planète Magique. Il n’en fallut pas moins pour organiser une sortie dans le parc mythique de Jean Chalopin. 32 adhérents répondirent à l’appel. On ne savait pas trop à quoi s’attendre et aucun d’entre nous n’avait eu la chance de connaître le parc ouvert. Une fois à l’intérieur, une lampe de poche à"
+    },
+    {
+      "key": "gaite",
+      "url": "https://archives.gaite-lyrique.net/fabrique-de-lepoque/history",
+      "checkedAtUtc": "2026-10-28T23:17:50.130789+00:00",
+      "status": 200,
+      "finalUrl": "https://archives.gaite-lyrique.net/fabrique-de-lepoque/history",
+      "contentType": "text/html; charset=UTF-8",
+      "sha256": "949f20330b4dff5f221eeebd9d4598622ce8065c5cd5a169039bd1a76b94a97c",
+      "bytes": 58335,
+      "title": "La Gaîté Lyrique | Histoire",
+      "bodySample": "La Gaîté Lyrique | Histoire La fabrique Menu Agenda Voir le nouveau site English version Bienvenue dans les archives de la Gaîté Lyrique La Fabrique de l'époque Histoire Projet Histoire Équipe Partenaires Espaces Restauration Programmes d'incubation En 2023, la Gaîté Lyrique lance son nouveau projet, la Fabrique de l’époque, porté par Arty Farty, ARTE, makesense, SINGA et Actes Sud. Un nouveau chapitre qui s'écrit entre des murs chargés d'histoire, au service des cultures populaires. Les débuts En 1862, à l'occasion des travaux réalisés par le baron Haussmann, un théâtre parisien situé boulevard du Temple est déplacé au 3 bis rue Papin : il s'agit du Théâtre de la Gaîté Lyrique. Bientôt, ave"
+    },
+    {
+      "key": "batiactu",
+      "url": "https://www.batiactu.com/edito/gaite-lyrique-fait-joie-numerique-diaporama-28293.php",
+      "checkedAtUtc": "2026-10-28T23:17:50.234203+00:00",
+      "status": 200,
+      "finalUrl": "https://www.batiactu.com/edito/gaite-lyrique-fait-joie-numerique-diaporama-28293.php",
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "9a9c350a44e8cc4de7b2f2a72575b5262ee24c8a06cc90e03568be371db3be48",
+      "bytes": 114107,
+      "title": "La Gaîté Lyrique fait la joie du numérique (diaporama)",
+      "bodySample": "La Gaîté Lyrique fait la joie du numérique (diaporama) Aller au contenu principal Actualité Produithèque Emploi Formation Newsletter Toggle navigation Se connecter BTP Architecture-Aménagement Immobilier Industrie-Énergie Tribune RH Tribune d'experts Produithèque Emploi BTP Formation Rechercher Se connecter S'abonner Se connecter S'abonner BTP Architecture-Aménagement Immobilier Industrie-Énergie Tribune RH Tribune d'experts UN PROJET, UNE PARTICULARITE La Gaîté Lyrique fait la joie du numérique (diaporama) En travaux depuis sept ans, la Gaîté Lyrique ouvre enfin ses portes au public. Désormais, celle qui a vu passer Offenbach et Luis Mariano est parée pour devenir le symbole des cultures nu"
+    },
+    {
+      "key": "comete",
+      "url": "https://web.archive.org/web/20130818142656/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=comete",
+      "checkedAtUtc": "2026-10-28T23:17:51.387593+00:00",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20130818142656/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=comete",
+      "contentType": "text/html",
+      "sha256": "504c6c95476134b226752a01862ceb829bb35b57d58c53ac34b9dc97ce25f53b",
+      "bytes": 49247,
+      "title": "Planete Magique / Gaite Lyrique - Le comète",
+      "bodySample": "Planete Magique / Gaite Lyrique - Le comète 1 capture 18 Aug 2013 Jul AUG Sep 18 2012 2013 2014 success fail About this capture TIMESTAMPS The Wayback Machine - https://web.archive.org/web/20130818142656/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=comete 31\n            mai 1991 Accueil Lieu\n            de vie Le comète Elle commence au 6éme étage à la grotte du Dragon bleu \n    donnant sur le village mexicain des cités d’or pour se terminer \n    au niveau 0 à l’espace BdZap. La comète est le couloir principal en spirale qui descend autour de \n    la structure en verre contenant la Navette. Ce puit de lumière central \n    permet d'en éclairer une bonne moitié (du sommet ju"
+    },
+    {
+      "key": "restaurant",
+      "url": "https://web.archive.org/web/20130818142723/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=mirageelectron",
+      "checkedAtUtc": "2026-10-28T23:17:52.122948+00:00",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20130818142723/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=mirageelectron",
+      "contentType": "text/html",
+      "sha256": "14e0c2e68c0ae85d4bbbc85f2dda9bce754c8ea1d918ab316c21b81a7aca8ecd",
+      "bytes": 61277,
+      "title": "Planete Magique / Gaite Lyrique - Mirage d'électrons",
+      "bodySample": "Planete Magique / Gaite Lyrique - Mirage d'électrons 1 capture 18 Aug 2013 Jul AUG Sep 18 2012 2013 2014 success fail About this capture TIMESTAMPS The Wayback Machine - https://web.archive.org/web/20130818142723/http://planetemagique.gaitelyrique.com:80/lieudevie.php?content=mirageelectron 31\n            mai 1991 Accueil Lieu\n            de vie Mirage d'électrons Situé au deuxième étage du parc, le restaurant principal \n    (95 couverts) de la Planète Magique comporte deux grandes salles fortement \n    stylisées dans des thèmes différents. La salle du Mirage d’Electron à \n  la décoration surchargée en couleurs et en formes industrielles \n  faisant très \"cartoon\", accueille les visiteurs en "
+    }
+  ],
+  "depthDistributions": {
+    "fr": {
+      "park": {
+        "min": 329,
+        "p10": 329,
+        "median": 329,
+        "p90": 329,
+        "max": 329,
+        "n": 1
+      },
+      "zone": {
+        "min": 122,
+        "p10": 122,
+        "median": 122,
+        "p90": 122,
+        "max": 122,
+        "n": 1
+      },
+      "Service": {
+        "min": 10,
+        "p10": 21,
+        "median": 30,
+        "p90": 33,
+        "max": 115,
+        "n": 11
+      },
+      "Attraction": {
+        "min": 23,
+        "p10": 29,
+        "median": 98,
+        "p90": 137,
+        "max": 145,
+        "n": 21
+      },
+      "Shop": {
+        "min": 104,
+        "p10": 104,
+        "median": 104.5,
+        "p90": 104,
+        "max": 105,
+        "n": 2
+      },
+      "Show": {
+        "min": 39,
+        "p10": 39,
+        "median": 103.5,
+        "p90": 109,
+        "max": 113,
+        "n": 6
+      },
+      "Restaurant": {
+        "min": 97,
+        "p10": 97,
+        "median": 112.0,
+        "p90": 112,
+        "max": 114,
+        "n": 4
+      },
+      "Other": {
+        "min": 102,
+        "p10": 102,
+        "median": 102,
+        "p90": 102,
+        "max": 102,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 4,
+        "median": 7,
+        "p90": 9,
+        "max": 10,
+        "n": 9
+      },
+      "timeline-summaries": {
+        "min": 33,
+        "p10": 33,
+        "median": 34,
+        "p90": 36,
+        "max": 37,
+        "n": 9
+      },
+      "article-titles": {
+        "min": 10,
+        "p10": 10,
+        "median": 10,
+        "p90": 10,
+        "max": 10,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 19,
+        "p10": 19,
+        "median": 19,
+        "p90": 19,
+        "max": 19,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 33,
+        "p10": 33,
+        "median": 33,
+        "p90": 33,
+        "max": 33,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 6,
+        "p10": 6,
+        "median": 7.0,
+        "p90": 7,
+        "max": 8,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 72,
+        "p10": 72,
+        "median": 74.5,
+        "p90": 80,
+        "max": 81,
+        "n": 8
+      },
+      "article-Image-captions": {
+        "min": 16,
+        "p10": 16,
+        "median": 18,
+        "p90": 18,
+        "max": 20,
+        "n": 3
+      },
+      "image-description": {
+        "min": 10,
+        "p10": 13,
+        "median": 16.0,
+        "p90": 19,
+        "max": 22,
+        "n": 60
+      },
+      "image-altTexts": {
+        "min": 6,
+        "p10": 8,
+        "median": 10.0,
+        "p90": 12,
+        "max": 15,
+        "n": 60
+      },
+      "image-captions": {
+        "min": 10,
+        "p10": 13,
+        "median": 16.0,
+        "p90": 19,
+        "max": 22,
+        "n": 60
+      },
+      "reference-founders": {
+        "min": 92,
+        "p10": 92,
+        "median": 92,
+        "p90": 92,
+        "max": 92,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 83,
+        "p10": 83,
+        "median": 83,
+        "p90": 83,
+        "max": 83,
+        "n": 1
+      }
+    },
+    "en": {
+      "park": {
+        "min": 295,
+        "p10": 295,
+        "median": 295,
+        "p90": 295,
+        "max": 295,
+        "n": 1
+      },
+      "zone": {
+        "min": 108,
+        "p10": 108,
+        "median": 108,
+        "p90": 108,
+        "max": 108,
+        "n": 1
+      },
+      "Service": {
+        "min": 12,
+        "p10": 20,
+        "median": 28,
+        "p90": 33,
+        "max": 98,
+        "n": 11
+      },
+      "Attraction": {
+        "min": 21,
+        "p10": 28,
+        "median": 86,
+        "p90": 127,
+        "max": 136,
+        "n": 21
+      },
+      "Shop": {
+        "min": 86,
+        "p10": 86,
+        "median": 94.0,
+        "p90": 86,
+        "max": 102,
+        "n": 2
+      },
+      "Show": {
+        "min": 39,
+        "p10": 39,
+        "median": 90.0,
+        "p90": 97,
+        "max": 101,
+        "n": 6
+      },
+      "Restaurant": {
+        "min": 89,
+        "p10": 89,
+        "median": 98.0,
+        "p90": 100,
+        "max": 108,
+        "n": 4
+      },
+      "Other": {
+        "min": 99,
+        "p10": 99,
+        "median": 99,
+        "p90": 99,
+        "max": 99,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 4,
+        "median": 6,
+        "p90": 7,
+        "max": 7,
+        "n": 9
+      },
+      "timeline-summaries": {
+        "min": 27,
+        "p10": 27,
+        "median": 30,
+        "p90": 35,
+        "max": 39,
+        "n": 9
+      },
+      "article-titles": {
+        "min": 10,
+        "p10": 10,
+        "median": 10,
+        "p90": 10,
+        "max": 10,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 16,
+        "p10": 16,
+        "median": 16,
+        "p90": 16,
+        "max": 16,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 31,
+        "p10": 31,
+        "median": 31,
+        "p90": 31,
+        "max": 31,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 5,
+        "p10": 5,
+        "median": 6.5,
+        "p90": 7,
+        "max": 8,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 67,
+        "p10": 67,
+        "median": 71.0,
+        "p90": 72,
+        "max": 73,
+        "n": 8
+      },
+      "article-Image-captions": {
+        "min": 14,
+        "p10": 14,
+        "median": 16,
+        "p90": 16,
+        "max": 16,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 5,
+        "p10": 7,
+        "median": 9.0,
+        "p90": 12,
+        "max": 16,
+        "n": 60
+      },
+      "image-captions": {
+        "min": 8,
+        "p10": 11,
+        "median": 14.0,
+        "p90": 17,
+        "max": 21,
+        "n": 60
+      },
+      "reference-founders": {
+        "min": 86,
+        "p10": 86,
+        "median": 86,
+        "p90": 86,
+        "max": 86,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 78,
+        "p10": 78,
+        "median": 78,
+        "p90": 78,
+        "max": 78,
+        "n": 1
+      }
+    },
+    "de": {
+      "park": {
+        "min": 285,
+        "p10": 285,
+        "median": 285,
+        "p90": 285,
+        "max": 285,
+        "n": 1
+      },
+      "zone": {
+        "min": 101,
+        "p10": 101,
+        "median": 101,
+        "p90": 101,
+        "max": 101,
+        "n": 1
+      },
+      "Service": {
+        "min": 10,
+        "p10": 20,
+        "median": 25,
+        "p90": 30,
+        "max": 99,
+        "n": 11
+      },
+      "Attraction": {
+        "min": 22,
+        "p10": 29,
+        "median": 85,
+        "p90": 128,
+        "max": 132,
+        "n": 21
+      },
+      "Shop": {
+        "min": 77,
+        "p10": 77,
+        "median": 81.0,
+        "p90": 77,
+        "max": 85,
+        "n": 2
+      },
+      "Show": {
+        "min": 34,
+        "p10": 34,
+        "median": 81.5,
+        "p90": 84,
+        "max": 91,
+        "n": 6
+      },
+      "Restaurant": {
+        "min": 87,
+        "p10": 87,
+        "median": 91.5,
+        "p90": 93,
+        "max": 93,
+        "n": 4
+      },
+      "Other": {
+        "min": 95,
+        "p10": 95,
+        "median": 95,
+        "p90": 95,
+        "max": 95,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 4,
+        "median": 6,
+        "p90": 8,
+        "max": 8,
+        "n": 9
+      },
+      "timeline-summaries": {
+        "min": 26,
+        "p10": 26,
+        "median": 29,
+        "p90": 34,
+        "max": 37,
+        "n": 9
+      },
+      "article-titles": {
+        "min": 8,
+        "p10": 8,
+        "median": 8,
+        "p90": 8,
+        "max": 8,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 17,
+        "p10": 17,
+        "median": 17,
+        "p90": 17,
+        "max": 17,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 31,
+        "p10": 31,
+        "median": 31,
+        "p90": 31,
+        "max": 31,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 6.0,
+        "p90": 7,
+        "max": 8,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 62,
+        "p10": 62,
+        "median": 70.0,
+        "p90": 71,
+        "max": 71,
+        "n": 8
+      },
+      "article-Image-captions": {
+        "min": 14,
+        "p10": 14,
+        "median": 14,
+        "p90": 14,
+        "max": 16,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 5,
+        "p10": 7,
+        "median": 9.0,
+        "p90": 11,
+        "max": 15,
+        "n": 60
+      },
+      "image-captions": {
+        "min": 8,
+        "p10": 11,
+        "median": 15.0,
+        "p90": 17,
+        "max": 21,
+        "n": 60
+      },
+      "reference-founders": {
+        "min": 88,
+        "p10": 88,
+        "median": 88,
+        "p90": 88,
+        "max": 88,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 67,
+        "p10": 67,
+        "median": 67,
+        "p90": 67,
+        "max": 67,
+        "n": 1
+      }
+    },
+    "nl": {
+      "park": {
+        "min": 303,
+        "p10": 303,
+        "median": 303,
+        "p90": 303,
+        "max": 303,
+        "n": 1
+      },
+      "zone": {
+        "min": 104,
+        "p10": 104,
+        "median": 104,
+        "p90": 104,
+        "max": 104,
+        "n": 1
+      },
+      "Service": {
+        "min": 12,
+        "p10": 22,
+        "median": 24,
+        "p90": 32,
+        "max": 95,
+        "n": 11
+      },
+      "Attraction": {
+        "min": 24,
+        "p10": 28,
+        "median": 88,
+        "p90": 128,
+        "max": 141,
+        "n": 21
+      },
+      "Shop": {
+        "min": 85,
+        "p10": 85,
+        "median": 90.5,
+        "p90": 85,
+        "max": 96,
+        "n": 2
+      },
+      "Show": {
+        "min": 38,
+        "p10": 38,
+        "median": 89.0,
+        "p90": 90,
+        "max": 98,
+        "n": 6
+      },
+      "Restaurant": {
+        "min": 89,
+        "p10": 89,
+        "median": 93.0,
+        "p90": 97,
+        "max": 100,
+        "n": 4
+      },
+      "Other": {
+        "min": 96,
+        "p10": 96,
+        "median": 96,
+        "p90": 96,
+        "max": 96,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 4,
+        "median": 7,
+        "p90": 7,
+        "max": 9,
+        "n": 9
+      },
+      "timeline-summaries": {
+        "min": 28,
+        "p10": 28,
+        "median": 33,
+        "p90": 35,
+        "max": 43,
+        "n": 9
+      },
+      "article-titles": {
+        "min": 9,
+        "p10": 9,
+        "median": 9,
+        "p90": 9,
+        "max": 9,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 20,
+        "p10": 20,
+        "median": 20,
+        "p90": 20,
+        "max": 20,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 32,
+        "p10": 32,
+        "median": 32,
+        "p90": 32,
+        "max": 32,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 5,
+        "p10": 5,
+        "median": 6.5,
+        "p90": 7,
+        "max": 8,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 66,
+        "p10": 66,
+        "median": 74.0,
+        "p90": 79,
+        "max": 80,
+        "n": 8
+      },
+      "article-Image-captions": {
+        "min": 16,
+        "p10": 16,
+        "median": 17,
+        "p90": 17,
+        "max": 18,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 7,
+        "p10": 8,
+        "median": 9.0,
+        "p90": 12,
+        "max": 16,
+        "n": 60
+      },
+      "image-captions": {
+        "min": 9,
+        "p10": 12,
+        "median": 16.0,
+        "p90": 19,
+        "max": 21,
+        "n": 60
+      },
+      "reference-founders": {
+        "min": 93,
+        "p10": 93,
+        "median": 93,
+        "p90": 93,
+        "max": 93,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 72,
+        "p10": 72,
+        "median": 72,
+        "p90": 72,
+        "max": 72,
+        "n": 1
+      }
+    },
+    "it": {
+      "park": {
+        "min": 302,
+        "p10": 302,
+        "median": 302,
+        "p90": 302,
+        "max": 302,
+        "n": 1
+      },
+      "zone": {
+        "min": 109,
+        "p10": 109,
+        "median": 109,
+        "p90": 109,
+        "max": 109,
+        "n": 1
+      },
+      "Service": {
+        "min": 10,
+        "p10": 20,
+        "median": 27,
+        "p90": 29,
+        "max": 99,
+        "n": 11
+      },
+      "Attraction": {
+        "min": 23,
+        "p10": 27,
+        "median": 89,
+        "p90": 129,
+        "max": 132,
+        "n": 21
+      },
+      "Shop": {
+        "min": 89,
+        "p10": 89,
+        "median": 89.5,
+        "p90": 89,
+        "max": 90,
+        "n": 2
+      },
+      "Show": {
+        "min": 38,
+        "p10": 38,
+        "median": 89.0,
+        "p90": 94,
+        "max": 95,
+        "n": 6
+      },
+      "Restaurant": {
+        "min": 91,
+        "p10": 91,
+        "median": 100.5,
+        "p90": 103,
+        "max": 105,
+        "n": 4
+      },
+      "Other": {
+        "min": 93,
+        "p10": 93,
+        "median": 93,
+        "p90": 93,
+        "max": 93,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 4,
+        "median": 7,
+        "p90": 8,
+        "max": 10,
+        "n": 9
+      },
+      "timeline-summaries": {
+        "min": 26,
+        "p10": 26,
+        "median": 31,
+        "p90": 34,
+        "max": 39,
+        "n": 9
+      },
+      "article-titles": {
+        "min": 8,
+        "p10": 8,
+        "median": 8,
+        "p90": 8,
+        "max": 8,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 18,
+        "p10": 18,
+        "median": 18,
+        "p90": 18,
+        "max": 18,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 34,
+        "p10": 34,
+        "median": 34,
+        "p90": 34,
+        "max": 34,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 5,
+        "p10": 5,
+        "median": 6.5,
+        "p90": 7,
+        "max": 7,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 65,
+        "p10": 65,
+        "median": 71.0,
+        "p90": 72,
+        "max": 72,
+        "n": 8
+      },
+      "article-Image-captions": {
+        "min": 14,
+        "p10": 14,
+        "median": 15,
+        "p90": 15,
+        "max": 16,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 6,
+        "p10": 8,
+        "median": 9.0,
+        "p90": 11,
+        "max": 14,
+        "n": 60
+      },
+      "image-captions": {
+        "min": 11,
+        "p10": 12,
+        "median": 15.0,
+        "p90": 18,
+        "max": 20,
+        "n": 60
+      },
+      "reference-founders": {
+        "min": 86,
+        "p10": 86,
+        "median": 86,
+        "p90": 86,
+        "max": 86,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 83,
+        "p10": 83,
+        "median": 83,
+        "p90": 83,
+        "max": 83,
+        "n": 1
+      }
+    },
+    "es": {
+      "park": {
+        "min": 329,
+        "p10": 329,
+        "median": 329,
+        "p90": 329,
+        "max": 329,
+        "n": 1
+      },
+      "zone": {
+        "min": 122,
+        "p10": 122,
+        "median": 122,
+        "p90": 122,
+        "max": 122,
+        "n": 1
+      },
+      "Service": {
+        "min": 12,
+        "p10": 24,
+        "median": 29,
+        "p90": 34,
+        "max": 107,
+        "n": 11
+      },
+      "Attraction": {
+        "min": 24,
+        "p10": 29,
+        "median": 96,
+        "p90": 137,
+        "max": 144,
+        "n": 21
+      },
+      "Shop": {
+        "min": 94,
+        "p10": 94,
+        "median": 97.5,
+        "p90": 94,
+        "max": 101,
+        "n": 2
+      },
+      "Show": {
+        "min": 39,
+        "p10": 39,
+        "median": 95.5,
+        "p90": 100,
+        "max": 106,
+        "n": 6
+      },
+      "Restaurant": {
+        "min": 95,
+        "p10": 95,
+        "median": 108.0,
+        "p90": 111,
+        "max": 113,
+        "n": 4
+      },
+      "Other": {
+        "min": 102,
+        "p10": 102,
+        "median": 102,
+        "p90": 102,
+        "max": 102,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 4,
+        "median": 7,
+        "p90": 9,
+        "max": 11,
+        "n": 9
+      },
+      "timeline-summaries": {
+        "min": 32,
+        "p10": 32,
+        "median": 36,
+        "p90": 38,
+        "max": 42,
+        "n": 9
+      },
+      "article-titles": {
+        "min": 9,
+        "p10": 9,
+        "median": 9,
+        "p90": 9,
+        "max": 9,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 20,
+        "p10": 20,
+        "median": 20,
+        "p90": 20,
+        "max": 20,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 34,
+        "p10": 34,
+        "median": 34,
+        "p90": 34,
+        "max": 34,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 7,
+        "p10": 7,
+        "median": 7.0,
+        "p90": 7,
+        "max": 9,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 73,
+        "p10": 73,
+        "median": 79.0,
+        "p90": 80,
+        "max": 80,
+        "n": 8
+      },
+      "article-Image-captions": {
+        "min": 15,
+        "p10": 15,
+        "median": 15,
+        "p90": 15,
+        "max": 15,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 7,
+        "p10": 8,
+        "median": 10.5,
+        "p90": 13,
+        "max": 15,
+        "n": 60
+      },
+      "image-captions": {
+        "min": 10,
+        "p10": 13,
+        "median": 16.0,
+        "p90": 20,
+        "max": 22,
+        "n": 60
+      },
+      "reference-founders": {
+        "min": 87,
+        "p10": 87,
+        "median": 87,
+        "p90": 87,
+        "max": 87,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 84,
+        "p10": 84,
+        "median": 84,
+        "p90": 84,
+        "max": 84,
+        "n": 1
+      }
+    },
+    "pl": {
+      "park": {
+        "min": 252,
+        "p10": 252,
+        "median": 252,
+        "p90": 252,
+        "max": 252,
+        "n": 1
+      },
+      "zone": {
+        "min": 90,
+        "p10": 90,
+        "median": 90,
+        "p90": 90,
+        "max": 90,
+        "n": 1
+      },
+      "Service": {
+        "min": 8,
+        "p10": 16,
+        "median": 21,
+        "p90": 27,
+        "max": 78,
+        "n": 11
+      },
+      "Attraction": {
+        "min": 18,
+        "p10": 24,
+        "median": 76,
+        "p90": 105,
+        "max": 115,
+        "n": 21
+      },
+      "Shop": {
+        "min": 77,
+        "p10": 77,
+        "median": 80.0,
+        "p90": 77,
+        "max": 83,
+        "n": 2
+      },
+      "Show": {
+        "min": 32,
+        "p10": 32,
+        "median": 74.0,
+        "p90": 82,
+        "max": 83,
+        "n": 6
+      },
+      "Restaurant": {
+        "min": 80,
+        "p10": 80,
+        "median": 80.0,
+        "p90": 80,
+        "max": 86,
+        "n": 4
+      },
+      "Other": {
+        "min": 78,
+        "p10": 78,
+        "median": 78,
+        "p90": 78,
+        "max": 78,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 4,
+        "p10": 4,
+        "median": 5,
+        "p90": 7,
+        "max": 7,
+        "n": 9
+      },
+      "timeline-summaries": {
+        "min": 22,
+        "p10": 22,
+        "median": 28,
+        "p90": 31,
+        "max": 32,
+        "n": 9
+      },
+      "article-titles": {
+        "min": 8,
+        "p10": 8,
+        "median": 8,
+        "p90": 8,
+        "max": 8,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 17,
+        "p10": 17,
+        "median": 17,
+        "p90": 17,
+        "max": 17,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 34,
+        "p10": 34,
+        "median": 34,
+        "p90": 34,
+        "max": 34,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 4,
+        "p10": 4,
+        "median": 6.5,
+        "p90": 7,
+        "max": 8,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 58,
+        "p10": 58,
+        "median": 61.0,
+        "p90": 63,
+        "max": 70,
+        "n": 8
+      },
+      "article-Image-captions": {
+        "min": 13,
+        "p10": 13,
+        "median": 13,
+        "p90": 13,
+        "max": 14,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 4,
+        "p10": 6,
+        "median": 8.0,
+        "p90": 11,
+        "max": 15,
+        "n": 60
+      },
+      "image-captions": {
+        "min": 8,
+        "p10": 10,
+        "median": 12.0,
+        "p90": 15,
+        "max": 18,
+        "n": 60
+      },
+      "reference-founders": {
+        "min": 78,
+        "p10": 78,
+        "median": 78,
+        "p90": 78,
+        "max": 78,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 66,
+        "p10": 66,
+        "median": 66,
+        "p90": 66,
+        "max": 66,
+        "n": 1
+      }
+    },
+    "pt": {
+      "park": {
+        "min": 307,
+        "p10": 307,
+        "median": 307,
+        "p90": 307,
+        "max": 307,
+        "n": 1
+      },
+      "zone": {
+        "min": 112,
+        "p10": 112,
+        "median": 112,
+        "p90": 112,
+        "max": 112,
+        "n": 1
+      },
+      "Service": {
+        "min": 12,
+        "p10": 22,
+        "median": 28,
+        "p90": 31,
+        "max": 104,
+        "n": 11
+      },
+      "Attraction": {
+        "min": 21,
+        "p10": 26,
+        "median": 90,
+        "p90": 129,
+        "max": 140,
+        "n": 21
+      },
+      "Shop": {
+        "min": 95,
+        "p10": 95,
+        "median": 95.5,
+        "p90": 95,
+        "max": 96,
+        "n": 2
+      },
+      "Show": {
+        "min": 38,
+        "p10": 38,
+        "median": 93.0,
+        "p90": 94,
+        "max": 99,
+        "n": 6
+      },
+      "Restaurant": {
+        "min": 92,
+        "p10": 92,
+        "median": 101.5,
+        "p90": 104,
+        "max": 106,
+        "n": 4
+      },
+      "Other": {
+        "min": 102,
+        "p10": 102,
+        "median": 102,
+        "p90": 102,
+        "max": 102,
+        "n": 1
+      },
+      "timeline-titles": {
+        "min": 5,
+        "p10": 5,
+        "median": 7,
+        "p90": 8,
+        "max": 9,
+        "n": 9
+      },
+      "timeline-summaries": {
+        "min": 30,
+        "p10": 30,
+        "median": 35,
+        "p90": 36,
+        "max": 39,
+        "n": 9
+      },
+      "article-titles": {
+        "min": 8,
+        "p10": 8,
+        "median": 8,
+        "p90": 8,
+        "max": 8,
+        "n": 1
+      },
+      "article-subtitles": {
+        "min": 19,
+        "p10": 19,
+        "median": 19,
+        "p90": 19,
+        "max": 19,
+        "n": 1
+      },
+      "article-summaries": {
+        "min": 35,
+        "p10": 35,
+        "median": 35,
+        "p90": 35,
+        "max": 35,
+        "n": 1
+      },
+      "article-Heading-texts": {
+        "min": 6,
+        "p10": 6,
+        "median": 7.0,
+        "p90": 7,
+        "max": 7,
+        "n": 4
+      },
+      "article-Paragraph-texts": {
+        "min": 70,
+        "p10": 70,
+        "median": 74.0,
+        "p90": 78,
+        "max": 78,
+        "n": 8
+      },
+      "article-Image-captions": {
+        "min": 15,
+        "p10": 15,
+        "median": 17,
+        "p90": 17,
+        "max": 18,
+        "n": 3
+      },
+      "image-altTexts": {
+        "min": 6,
+        "p10": 8,
+        "median": 10.0,
+        "p90": 13,
+        "max": 14,
+        "n": 60
+      },
+      "image-captions": {
+        "min": 10,
+        "p10": 13,
+        "median": 16.0,
+        "p90": 19,
+        "max": 20,
+        "n": 60
+      },
+      "reference-founders": {
+        "min": 91,
+        "p10": 91,
+        "median": 91,
+        "p90": 91,
+        "max": 91,
+        "n": 1
+      },
+      "reference-operators": {
+        "min": 81,
+        "p10": 81,
+        "median": 81,
+        "p90": 81,
+        "max": 81,
+        "n": 1
+      }
+    }
+  },
+  "sourceGaps": {
+    "checkedAtUtc": "2026-10-28T23:31:27.842042+00:00",
+    "coverage": {
+      "checkedAtUtc": "2026-10-28T23:26:23.805569+00:00",
+      "totalImages": 60,
+      "privateImages": 60,
+      "parkLogo": 1,
+      "parkImages": 6,
+      "parkImagesContext": "Two historical park interior ensembles, two actual demolition/reconstruction views, two retained-building views from the 2011 cultural conversion. These are not six operating-park views.",
+      "itemsWithImages": 22,
+      "itemsTotal": 45,
+      "attractionsWithImages": 16,
+      "attractionsTotal": 21,
+      "majorWithThreeOrMore": 8,
+      "majorTotal": 18
+    },
+    "sourceFamilies": {
+      "officialArchive": "Archived historical park site, including each relevant life-space page, building floor plans, photo JavaScript and source files. Three representative full-size cinema/theatre/salon images retried from archived exact source URLs on 28 October: all 404.",
+      "specialist": "Dennis Cooper original gallery (70 downloadable images), Retro World original files, Paul Malairan Apesantaria investigation and first-person recollection, Parcs Passion January/March 2004 visit reports and images.",
+      "pressHeritage": "Deyriès exhibition catalogue; Gaîté Lyrique official building history; Batiactu March 2011 architect/photographer credits and actual works images.",
+      "targetedSearch": "Additional 28 October web queries for Planet Ciné, Belle Eugénie, 1989 plan/brochure return existing galleries/Wikipedia and Palliam. Palliam direct image source is blocked by proxy 403, no bypass or uninspected import."
+    },
+    "ownerGaps": [
+      {
+        "key": "apesantaria",
+        "id": "db31a440-1989-477f-89b9-ed0c5159b05e",
+        "name": "Apesantaria",
+        "images": 2,
+        "major": true,
+        "reason": "One distinct installation photo plus one photographed mission panel. Panel is useful documentary material but not a second view of visitors operating the attraction. Shared park overview remains owned by park, no duplicate import.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "bd-zap",
+        "id": "364cdf6e-2e6b-49a9-b962-1c4a17fc9955",
+        "name": "BD Zap",
+        "images": 2,
+        "major": true,
+        "reason": "Two actual scene photos accepted; purported third gallery entry is a website screenshot and rejected.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "aladin",
+        "id": "da666920-9c51-4214-b6de-8b944f2d66eb",
+        "name": "Aladin",
+        "images": 2,
+        "major": true,
+        "reason": "Two distinct interior scenes; no third faithful distinct source established.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "transistor",
+        "id": "f900e0ee-91fd-4933-8755-3c5b56f3f37d",
+        "name": "Transistor",
+        "images": 2,
+        "major": true,
+        "reason": "Two complementary interior views. Archived disco page supplies description but no additional downloadable distinct original.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "toboggan",
+        "id": "0e9ab1b4-7bf2-4309-9d63-ea9c67abe361",
+        "name": "Le Toboggan",
+        "images": 0,
+        "major": false,
+        "reason": "Gallery contains one missing original (404) and ambiguous tube/duct images. Cannot confidently distinguish play slide from building ventilation; rejected instead of forced attribution.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "planete-molle",
+        "id": "1f0adae9-0375-49d7-98e3-9a9bf021066c",
+        "name": "Planète Molle",
+        "images": 2,
+        "major": true,
+        "reason": "Two complementary play-area views; no third distinct reusable image established.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "arbre-parfum",
+        "id": "6f92a124-65ee-41bf-bd47-edac9e1303d6",
+        "name": "L’Arbre à parfum",
+        "images": 0,
+        "major": false,
+        "reason": "Two gallery candidates are a golden female automaton and an insufficiently identified artificial tree. Source mislabelling elsewhere prevents confident assignment.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "nintendo",
+        "id": "39240183-ebdd-48ef-baf9-5641ff4c532d",
+        "name": "Espace Nintendo",
+        "images": 0,
+        "major": false,
+        "reason": "Gallery section shows musical automata/organ/Medusa rather than identifiable NES play stations. These are rejected; shop and game remain separate owners.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "jackpot",
+        "id": "01496eea-d90c-4aa1-ae10-ed55ded16ae2",
+        "name": "Jackpot",
+        "images": 0,
+        "major": false,
+        "reason": "Named in historical inventory but no reliably attributable photograph located.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "musee-espace",
+        "id": "83adc5e3-c217-458c-b4cf-07279de965e7",
+        "name": "Musée de l’espace",
+        "images": 0,
+        "major": false,
+        "reason": "Historical name/location supported, but no reliable photograph of the named museum identified.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "croq-planete",
+        "id": "ce166b97-2f91-4a06-9c29-2907cedecd93",
+        "name": "Croq’ Planète",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "el-gringo",
+        "id": "9d58901b-7740-4a87-937c-e15970ee4b36",
+        "name": "El Gringo",
+        "images": 2,
+        "major": true,
+        "reason": "Two original restaurant scenes in Retro World; remaining candidate views do not add a verified third scene.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "mirage-electrons",
+        "id": "f23dafb9-8267-41ea-97a3-60d3a9c6fcc7",
+        "name": "Mirage d’électrons",
+        "images": 2,
+        "major": true,
+        "reason": "Two original restaurant views; no third distinct downloadable image established.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "belle-eugenie",
+        "id": "a06fd2dc-d25c-4a47-8472-bdd2aa9d213f",
+        "name": "La Belle Eugénie",
+        "images": 0,
+        "major": true,
+        "reason": "Actual historic restaurant imagery unavailable; archived salon photo URL returns 404. 2011 foyer image used honestly for cultural conversion only, not represented as an operating-era restaurant photo.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "planet-cine",
+        "id": "537e044d-954e-48e3-b20e-e39287ed56c9",
+        "name": "Planet Ciné",
+        "images": 0,
+        "major": true,
+        "reason": "Archived dedicated cinema page identifies photographs, but full-size original probe returns 404; unrelated Cartoon Center sign is not used as a cinema-interior substitute.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "orphee-theatre",
+        "id": "d1cf6819-9d0d-40e0-9591-82da1d0c9825",
+        "name": "Orphée Théâtre",
+        "images": 0,
+        "major": true,
+        "reason": "Dedicated archive describes theatre and programme, but original photographic probe returns 404. No current performance space substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "studio-tv",
+        "id": "dab88ec9-a998-4850-a908-f5c257121758",
+        "name": "Studio TV",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "boutique-principale",
+        "id": "6decc4f5-4394-406c-87c3-2ae6583819cb",
+        "name": "Boutique principale",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "boutique-partenaires",
+        "id": "f9b76b19-80ab-4bd9-a6bc-0404f306228a",
+        "name": "Boutique partenaires",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "comete",
+        "id": "a613df39-66f9-424b-b6c7-db925094045a",
+        "name": "La Comète",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "entree-papin",
+        "id": "4a39d1bd-6380-4280-9e78-e4b2fceb011c",
+        "name": "Entrée de la rue Papin",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "wc-iles",
+        "id": "615522fe-28e8-4bbb-8191-47464e61d1db",
+        "name": "Toilettes des îles",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "wc-stars",
+        "id": "c43cdf10-f50b-4b4d-adf3-daea132acdc9",
+        "name": "WC des stars",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "wc-scooter",
+        "id": "4f14c6c7-cc29-4c39-b3c2-c7ac23b7a0ec",
+        "name": "WC Scooter",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "wc-telephone",
+        "id": "ed8bb737-5828-4ac1-84d4-0a239b08f009",
+        "name": "WC Téléphone",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "accueil-groupes",
+        "id": "579545c3-3ef2-47a1-9a98-517e9173e14e",
+        "name": "Accueil groupes",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "point-rencontre",
+        "id": "9d337a12-f7c7-4f67-a5ef-cd881571ae2d",
+        "name": "Point rencontre",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "vestiaire",
+        "id": "278f1f45-e637-4fb9-aa08-46c97a3474b9",
+        "name": "Vestiaire groupes et individuel",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "point-information",
+        "id": "e7b412c0-114b-439d-997b-a36fc27192c5",
+        "name": "Point d’information",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      },
+      {
+        "key": "espace-bleu",
+        "id": "8d04281d-4165-4a21-9640-1ff6cba9e9c8",
+        "name": "Espace bleu",
+        "images": 0,
+        "major": false,
+        "reason": "Relevant historical life-space/building pages and available contributor galleries checked; no distinct downloadable, unwatermarked photograph could be securely attributed to this exact service or venue. Nearby attraction and later cultural-building images are not substituted.",
+        "sourceFamiliesChecked": [
+          "officialArchive",
+          "specialist",
+          "pressHeritage",
+          "targetedSearch"
+        ]
+      }
+    ],
+    "generalParkCoverageGap": "Only two accepted old-park ensemble views. Two actual works and two 2011 preserved-building views bring historical context, not five contemporaneous operating-park views. Do not count logo, tight attraction details or near-duplicates as missing general views.",
+    "officialMaps": {
+      "importedYears": [],
+      "searched": "Historical official Batiment archive includes December 1989 floor-plan references, but image endpoints unavailable. Gallery plan too blurred/undated for annual official-map import. The Free.fr Flash brochure uses euros and is a later reconstruction, not an original 1989 annual edition; rejected. No current park map applies to this demolished closed park.",
+      "searchedOperatingYears": [
+        "1989",
+        "1990",
+        "1991"
+      ],
+      "noYearInvented": true
+    },
+    "references": {
+      "founder": {
+        "id": "1511cc92-7e2a-474a-b251-ec5b96bcb1fc",
+        "name": "Jean Chalopin",
+        "portraitLocated": true,
+        "source": "https://commons.wikimedia.org/wiki/File:Jean_Chalopin.jpg",
+        "author": "Nordine Zemrak",
+        "license": "CC BY-SA 4.0",
+        "bytes": 93461,
+        "visuallyInspected": true,
+        "imported": false,
+        "gap": "Official ImportPhoto client validates only PARK/PARK_ITEM/STANDALONE_ATTRACTION owners, bothcloud copy andrepo currentclientchecked. No reference-owner upload routeused, no improvised endpointorremoteJSONfallback. Portrait preserved locally pendingofficialsupportedflow."
+      },
+      "operator": {
+        "id": "504a5b5e-a0f3-481f-aa1d-48ccd273984c",
+        "name": "SEGLhistorique338070915",
+        "logoLocated": false,
+        "gap": "No historicalSEGLlogo established afterarchivedsite/perioddocs/legalregistry/websearch. ModernSEGL2016andGaiteculturebrand belongdifferentoperators andcannot be substituted."
+      }
+    },
+    "gps": {
+      "located": 1,
+      "total": 45,
+      "locatedKey": "entree-papin",
+      "gap": "Demolished interiors stacked on multiple floors. Historical descriptions establish vertical levels, not provable exact horizontal coordinates; no invented points for 44 interiors."
+    },
+    "hoursAndPricing": {
+      "applicable": false,
+      "reason": "Park permanently closed since 1991 and installations removed. No current calendar, tickets or named future events."
+    }
+  },
+  "historyApplicability": {
+    "parkFacts": 8,
+    "itemFacts": 1,
+    "majorFacts": 9,
+    "articleCount": 1,
+    "coverage": "Concept, concession, first opening, 1990 reopening, final closure, rediscovery visits, demolition, cultural redevelopment. Talisman exceptional 6 March 2004 visit separately owned by the item.",
+    "individualDates": "No common 1989 opening or 1991 closure date copied onto 45 equipment records. Navette/Apesantaria operating dates particularly uncertain. Park closure and disappearance narrated in developed article; named item gaps retain absent individual timelines.",
+    "images": "Actual demolition/conversion photographs prioritized. Early project/opening/closure events use later honestly captioned interiors after unsuccessful event-photo search. Talisman visit photographs have third-party watermarks; accepted Talisman interior is documented fallback."
+  },
+  "accessConditions": {
+    "attractionsSearched": 21,
+    "provenConditions": 0,
+    "sources": [
+      "Historical archive building/attraction pages",
+      "Period cards and brochure material",
+      "Deyriès catalogue",
+      "Original interior photographs",
+      "Apesantaria witness research"
+    ],
+    "reason": "Age profiles on magnetic game cards are not eligibility limits; no exact period height/accompaniment restrictions established. No current accessibility assertions for demolished installations."
+  },
+  "descriptionExceptions": "planete-magique-description-exceptions.json",
+  "referenceScope": "Existing founder Jean Chalopin and historical SEGL 338070915 biographies in eight languages, independently sourced. No invented manufacturer or sponsor-to-manufacturer mapping. Reference-image client limitation recorded.",
+  "editorialReady": true,
+  "publicationReady": false,
+  "projectedScore": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 102,
+    "earnedPoints": 94,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "lastDataIntegrationAtUtc": "2026-10-28T23:46:35.608Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/planete-magique-receipts.json#apply-e9ade902-70e4-407e-8632-f77e61e4919a",
+  "verifiedCorrections": [
+    {
+      "operationId": "0c8e1743-8cf8-46f4-9516-ac3ea1eaea41",
+      "appliedAtUtc": "2026-10-28T23:41:23.8561104Z",
+      "stem": "09-article-caption-correction"
+    },
+    {
+      "operationId": "2e5d5180-4dcb-4fe9-984e-5d664b260003",
+      "appliedAtUtc": "2026-10-28T23:44:18.1082683Z",
+      "stem": "09-repetition-correction"
+    },
+    {
+      "operationId": "e9ade902-70e4-407e-8632-f77e61e4919a",
+      "appliedAtUtc": "2026-10-28T23:46:35.6088697Z",
+      "stem": "09-institution-name-correction"
+    }
+  ],
+  "remainingScorePoints": [
+    {
+      "points": 1,
+      "reason": "No current official park website; old historical domain is no longer a current park site."
+    },
+    {
+      "points": 3,
+      "reason": "No attraction manufacturer reliably established. Sponsor or creative designer names are not substituted."
+    },
+    {
+      "points": 2,
+      "reason": "No exact period access restrictions established. Magnetic-card age profiles are not eligibility rules."
+    },
+    {
+      "points": 1,
+      "reason": "Removed is the correct lifecycle for all21demolished attractions; current scoring recognizes closed-text statuses for this criterion, not Removed. Do not falsify lifecycle."
+    },
+    {
+      "points": 1,
+      "reason": "Remaining-debt point is unavailable in publication projection while other factual gaps remain."
+    }
+  ],
+  "additionalManufacturerResearch": {
+    "checkedAtUtc": "2026-10-28T23:49:52.848873+00:00",
+    "queries": [
+      "Planète magique constructeur Navette Apesantaria",
+      "Planete Magique manufacturer",
+      "Apesantaria fabrication entreprise"
+    ],
+    "checkedSources": [
+      "Tilt70October1989",
+      "DeyrièsCatalogue",
+      "PaulMalairanApesantaria2019",
+      "RetroWorld2014"
+    ],
+    "outcome": "No supported manufacturer attribution. Existing artistic conception by Chalopin/Deyriès/Verpillat is retained as narrative, not manufacturer identity."
+  },
+  "futurePublicChecks": [
+    "Real post-publication score equals accepted92 and no new blocker",
+    "Official HistoryDiagnostics:8parkfacts+1itemfact, all sourced, no blocker",
+    "Normal park-card History link and article routes in8languages, mobile/desktop rendering",
+    "ResolveFacebookPublication; only publish default bilingual announcement if not already Published"
+  ]
+}

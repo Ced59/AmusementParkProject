@@ -1,0 +1,39 @@
+{
+  "observedAtUtc": "2026-10-28T18:32:48.435478+00:00",
+  "canonicalEntryId": "FR-park-b2dca918-9747-4623-a0c0-38e89634aaff",
+  "duplicateCandidateEntryId": "FR-candidate-989aee8356c4ae",
+  "siteId": "b2dca918-9747-4623-a0c0-38e89634aaff",
+  "siteName": "Zygo Park",
+  "reason": "Zygofolis became Zygo Parc in1991; RCDB5223 lists former name and exactly the two existing legacy coasters. Targeted official export confirms CaptainCoaster1325 Boomerang and1326 Tarzungle. Enrich the existing park, do not create second park.",
+  "confirmedExistingItems": [
+    {
+      "id": "2ce257f2-01ed-4c29-b6cc-c9cdf5fb17b4",
+      "name": "Boomerang",
+      "externalId": "1325",
+      "sourceUrl": "https://captaincoaster.com/fr/coasters/1325/boomerang-zygo-park"
+    },
+    {
+      "id": "23e2a501-6a1b-4c1d-a7e1-b4253bd0699b",
+      "name": "Tarzungle",
+      "externalId": "1326",
+      "sourceUrl": "https://captaincoaster.com/fr/coasters/1326/tarzungle-zygo-park"
+    }
+  ],
+  "sources": [
+    "https://rcdb.com/5223.htm",
+    "https://coaster.cloud/fr/parks/e12ff37d-zygo-parc",
+    "http://zygo.altervista.org/souvenirs.php"
+  ],
+  "exportSha256": "5798ee23b99a029c2e554769d495e2088695f42ad1dd77233b6aa259ff250916",
+  "searches": [
+    "00-parks-zygofolis.json",
+    "00-parks-zygo-park.json",
+    "00-parks-zygo-parc.json",
+    "00-standalone-zygofolis.json"
+  ],
+  "remainingCorrections": [
+    "Legacy park Operating is wrong; historical ClosedDefinitively required.",
+    "Both legacy ride statuses Délocalisé require Removed and source-backed relocation history.",
+    "1987-01-01/1991-01-01 legacy dates are year placeholders; retain reliable year precision without invented day."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "atUtc": "2026-11-03T02:10:34.208131+00:00",
+  "rows": [
+    {
+      "key": "model-ambert",
+      "name": "Hôtel de ville d’Ambert",
+      "sourcePage": "https://web.archive.org/web/20001208192200id_/http://www.parc-de-la-drosera.fr:80/ambert.html",
+      "nativeImage": "10-model-pages/Ambert.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-cottance",
+      "name": "Église de Cottance",
+      "sourcePage": "https://web.archive.org/web/20001208203500id_/http://www.parc-de-la-drosera.fr:80/cottance.html",
+      "nativeImage": "10-model-pages/Cottance.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    },
+    {
+      "key": "model-ollierg",
+      "name": "Château d’Olliergues",
+      "sourcePage": "https://web.archive.org/web/20001208223500id_/http://www.parc-de-la-drosera.fr:80/ollierg.html",
+      "nativeImage": "10-model-pages/Ollierg.jpg",
+      "visualReview": "Personally inspected complete original operator composition, including original logo/labels. Model identity and visible details checked. No visual changes.",
+      "shortCopyReason": "Historical single miniature; official dedicated page, explicit map entry and native photograph recovered. Monument history cannot be substituted for the miniature experience. Concise entity-specific three-paragraph description; no invented dates, fate, builders or coordinates.",
+      "existingAliasesChecked": "Seven existing models matched to other distinct official pages; this is an internal parkItem, not the actual full-size monument or a standalone."
+    }
+  ],
+  "allEightLanguagesPersonallyAuthoredAndReviewed": true
+}

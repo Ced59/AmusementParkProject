@@ -1,0 +1,157 @@
+{
+  "checkedAtUtc": "2026-11-01T16:49:32.363521+00:00",
+  "identity": "Aquagliss / Acqua Gliss / Acqua Cyrné Gliss, Porticcio (Grosseto-Prugna), Corse-du-Sud. Homonyme Moselle exclu.",
+  "dates": "1986 année du backlog secondaire cohérente avec société/assurance ; jour d’ouverture non établi. Fermeture fin été 2014 attestée par annuaire et contexte judiciaire, pas de jour précis. Événement de 1986 exprime la société et l’assurance, pas une cérémonie.",
+  "sourcesRead": "Archives officielles accueil, animation, règlement, organisation, renseignements, restauration, sensations et accès 2010 ; introduction 2011 ; tourisme Corse ; annuaire spécialisé ; Gralon ; Petit Futé ; blog 2012 ; Sirene ; décisions de cassation 1993 et 2016 ; IGN BD ORTHO.",
+  "failedAccess": [
+    {
+      "source": "Anciennes photos officielles",
+      "result": "28 fichiers non récupérés, HTTP404 ; 14 URL d’images conservées dans CDX, majoritairement menus et GIF.",
+      "fallback": "Véritable photographie aérienne officielle 800x600 retrouvée et importée."
+    },
+    {
+      "source": "Guide Ajaccio2014",
+      "result": "HTTP403 direct ; extrait indexé seulement, aucun contournement."
+    },
+    {
+      "source": "YouTube lié par annuaire",
+      "result": "Accès réseau refusé à la page source ; pas de téléchargement alternatif ni image extraite."
+    },
+    {
+      "source": "Cour de cassation1998",
+      "result": "Page JS/cookie challenge ; décision non lue directement."
+    },
+    {
+      "source": "Légifrance2005 fiscalité",
+      "result": "HTTP403 ; extrait indexé seulement, pas de certitude sur théâtre de l’eau/bibliothèque/écran avant1999."
+    }
+  ],
+  "inventory": "13 fiches dont9 attractions. Cinq ensembles de glissades représentent8 pistes, pas5 installations physiques : deux oranges et trois couloirs regroupés selon appellation officielle. Bassins enfants avec champignon regroupés, pas doublon.",
+  "missingDescriptions": [
+    {
+      "id": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "name": "Boutique",
+      "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+    },
+    {
+      "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "name": "Jeu de dames géant",
+      "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+    },
+    {
+      "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "name": "Ping-pong",
+      "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+    },
+    {
+      "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+      "name": "Volley",
+      "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+    }
+  ],
+  "shortDescriptions": "Six ensembles aquatiques :1h2/2p fondés sur observation ; snack-bar1h2/2p ; casiers1phrase strictement documentée ; parking1p judiciaire. Format historique local proportionné à la matière, pas du remplissage pour quotas.",
+  "photoCoverage": {
+    "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "owners": [
+      {
+        "key": "park",
+        "existingImages": 0,
+        "existingLogo": null
+      },
+      {
+        "key": "aquagliss-toboggan-jaune",
+        "id": "199638eb-e2e3-4e4b-9b3b-c0c84d5f7713",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-toboggan-vert",
+        "id": "6bce5108-6f61-4f49-991b-bd510243b0b8",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-toboggan-bleu",
+        "id": "db4b67c7-8bbc-4b92-846d-6acb6575d2b8",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-toboggans-oranges",
+        "id": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-trois-couloirs-bleus",
+        "id": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-bassins-enfants",
+        "id": "3419186e-37ba-4f58-9950-862c700a3dad",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-dames-geant",
+        "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-volley",
+        "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-ping-pong",
+        "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-snack-bar",
+        "id": "cb357854-20d4-44db-8890-214338653ab1",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-boutique",
+        "id": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-casiers",
+        "id": "78d6eea0-82d2-40ef-ba95-337ef4d8f0b0",
+        "existingImages": 0
+      },
+      {
+        "key": "aquagliss-parking",
+        "id": "7b9f8caf-bc31-4141-b690-8b0696162e1b",
+        "existingImages": 0
+      }
+    ],
+    "acceptedFiles": 5,
+    "logoFound": true,
+    "officialMapsFound": 0,
+    "generalPhotographs": 3,
+    "generalPhotoExplanation": "Official oblique aerial, poolside scene and IGN vertical aerial; banner and logo excluded. Poolside photo assigned to orange slides but also shows shared pool and visitors.",
+    "research": "Eight pages of official 2010 site, CDX all 14 surviving image URLs, primary tourism Corse, specialist directory, Gralon, Petit Futé, 2012 visitor blog, IGN, photographic web searches. Most official slide/restaurant/animation images return 404.",
+    "notImported": [
+      "Official GIF banner and animated entry button: unsupported format, no conversion",
+      "Two original official access-map files unavailable 404; they concern road access, no internal annual visitor map established",
+      "Gralon location map: third-party map, not official park plan; inaccurate point",
+      "Tourism guide 2014 direct 403; no bypass or claim of reading its images",
+      "YouTube video linked by directory: network access denied to source, no alternate extraction",
+      "Repeated views or arbitrary crops of official aerial to fabricate item photo coverage"
+    ],
+    "gaps": [
+      "Two additional distinct general photographs missing from the target of five",
+      "Only orange slide ensemble has its own assigned photo; other visible rides remain photo gaps in item galleries",
+      "No annual internal official map",
+      "No genuine photo identified for 1989 attack, parking restitution or 2014 closure",
+      "No founder, manufacturer or operator portrait/biography supported by more than corporate records"
+    ]
+  },
+  "geolocation": "Six ensembles aquatiques sur13 lieux ; correspondance entre photo officielle et orthophoto2006–2010, preuve géoréférencée. GPSduparc annuaire spécialisé confirmé, points tourisme,Gralon et siègeSirene divergents écartés. Sept positions de jeux/services non prouvées, parking variable selonépoque.",
+  "maps": "Aucun plan interne annuel retrouvé ; page plan d’accès ne prouve pas une édition interne. IGN et Gralon ne sont pas importés comme cartes officielles.",
+  "individualHistory": "Dates propres, constructeurs, modèles et relocalisations non établis ; pas de1986/2014 propagé aux items.",
+  "access": "Règlement2010 : accompagnement moinsde10ans auparc, brassards nonnageurs, nombre maximal d’utilisateurs parglissade ; pas de seuil de taille parattraction établi. Aucun minimum de taille ou constructeur supposé.",
+  "eventImages": "Aucune image réelle prouvée des cinq événements après recherches ciblées1989/2014/inauguration et archives. Photos duparc conservées comme contexte de l’article, pas comme photos de l’attentat ou dernierjour.",
+  "references": "Dernier exploitantAcquaCyrneGliss juridiquecréé1986, aucun fondateur/fabricant/portrait/biographie longue établis. Pas de logo inventé pour opérateur.",
+  "closureCausation": "Restitutionparking2013, permis35logements7mars2014, fermetureété2014. Aucune causalité forcée parking→fermeture ; tribunal souligne solutionalternative. Ni date ni réalisation de logements déduite dupermis.",
+  "publicationScope": "Neuf lieux décrits publiés ; Boutique, Jeu de dames géant, Ping-pong et Volley restent privés. Score réel 92/100 ; résultat partial sans exception acceptée."
+}

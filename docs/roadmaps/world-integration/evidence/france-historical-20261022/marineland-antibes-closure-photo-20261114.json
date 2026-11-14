@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "3c5268c4ad964840980c08b6884853a7",
+    "category": "PARK",
+    "ownerType": "PARK",
+    "ownerId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "path": "park/3c5268c4ad964840980c08b6884853a7",
+    "description": "Spectacle de dauphins à Marineland le 2 janvier 2025, trois jours avant la fermeture définitive au public.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 768,
+    "height": 512,
+    "sizeInBytes": 116099,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.lagazettefrance.fr/cache/thumb_article/media/imp/articles/2025/01/36RZ4E8.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un dauphin bondit devant une artiste au bord du bassin de Marineland."
+      },
+      {
+        "languageCode": "en",
+        "value": "A dolphin leaps in front of a performer beside a pool at Marineland."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Delfin springt vor einer Artistin am Beckenrand von Marineland aus dem Wasser."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een dolfijn springt uit het water voor een artieste naast het bassin van Marineland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un delfino salta davanti a un’artista sul bordo della vasca di Marineland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un delfín salta frente a una artista junto a la piscina de Marineland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Delfin wyskakuje z wody przed artystką przy basenie w Marineland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um golfinho salta diante de uma artista junto ao tanque do Marineland."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Spectacle de dauphins à Marineland le 2 janvier 2025, trois jours avant la fermeture définitive au public."
+      },
+      {
+        "languageCode": "en",
+        "value": "A dolphin show at Marineland on 2 January 2025, three days before the park permanently closed to visitors."
+      },
+      {
+        "languageCode": "de",
+        "value": "Delfinshow in Marineland am 2. Januar 2025, drei Tage vor der endgültigen Schließung für Besucher."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Dolfijnenshow in Marineland op 2 januari 2025, drie dagen voordat het park definitief voor bezoekers sloot."
+      },
+      {
+        "languageCode": "it",
+        "value": "Spettacolo di delfini a Marineland il 2 gennaio 2025, tre giorni prima della chiusura definitiva al pubblico."
+      },
+      {
+        "languageCode": "es",
+        "value": "Espectáculo de delfines en Marineland el 2 de enero de 2025, tres días antes del cierre definitivo al público."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pokaz delfinów w Marineland 2 stycznia 2025 roku, trzy dni przed ostatecznym zamknięciem parku dla zwiedzających."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Espetáculo de golfinhos no Marineland a 2 de janeiro de 2025, três dias antes do encerramento definitivo ao público."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Miguel Medina / AFP — La Gazette France, 2025-01-05."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Miguel Medina / AFP — La Gazette France, 2025-01-05."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Miguel Medina / AFP — La Gazette France, 2025-01-05."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Miguel Medina / AFP — La Gazette France, 2025-01-05."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Miguel Medina / AFP — La Gazette France, 2025-01-05."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Miguel Medina / AFP — La Gazette France, 2025-01-05."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Miguel Medina / AFP — La Gazette France, 2025-01-05."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Miguel Medina / AFP — La Gazette France, 2025-01-05."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T18:14:59.772Z",
+    "updatedAt": "2026-11-14T18:15:03.541Z"
+  },
+  "sourcePage": "https://www.lagazettefrance.fr/article/cote-d-azur-clap-de-fin-pour-les-orques-et-les-dauphins-du-marineland",
+  "visualReview": "Photographie de Miguel Medina / AFP du 2 janvier 2025, dauphin sautant devant une artiste ; aucune surimpression tierce. Contexte des derniers jours du parc, sans présenter cette image comme prise le 5 janvier. Autorisation photo de la conversation ; aucune transformation.",
+  "eightLanguagesPersonallyReviewed": true
+}

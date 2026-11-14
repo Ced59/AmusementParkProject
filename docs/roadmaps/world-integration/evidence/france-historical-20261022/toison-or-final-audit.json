@@ -1,0 +1,1142 @@
+{
+  "parkId": "66653da2-93bb-499f-95df-15e240673e58",
+  "entryId": "FR-park-66653da2-93bb-499f-95df-15e240673e58",
+  "conversation": "Conversation France",
+  "contentAuditPassed": true,
+  "publicationComplete": true,
+  "facebookComplete": true,
+  "auditAtUtc": "2026-10-23T12:03:13.831746+00:00",
+  "freshExportAtUtc": "2026-10-23T11:41:51.3365191Z",
+  "freshExportSha256": "2377d58c43ff7bab96febfb979b5d644098305a425c1aac5208ebd7ace5f2b38",
+  "auditedConsolidatedSha256": "e7fe7b175be86f0f9ea3ee947866652ee646ae6d2cea144959025cb49e11622f",
+  "freshReconciliationComparisons": 1336,
+  "freshReconciliationDifferences": 0,
+  "coverage": {
+    "freshAtUtc": "2026-10-23T11:41:51.3365191Z",
+    "items": 24,
+    "zones": 1,
+    "attractions": 19,
+    "attractionStatuses": {
+      "Removed": 17,
+      "ClosedDefinitively": 2
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 19,
+    "attractionsWithImage": 9,
+    "attractionImageGaps": [
+      {
+        "id": "2f2231b2-70e5-4bfc-8e69-9f6c6caeaa53",
+        "name": "Bateaux radiocommandés"
+      },
+      {
+        "id": "ba78e0a1-aadb-4eb0-a76c-5ac696238dad",
+        "name": "Château des Enfants"
+      },
+      {
+        "id": "a0aad00a-dcf2-4919-9a75-814d612826a3",
+        "name": "Circuit de quads"
+      },
+      {
+        "id": "1cff2639-ce5c-49ca-b30a-1500584acacd",
+        "name": "Jeux d’arcade"
+      },
+      {
+        "id": "61a776e5-2e2f-405d-9dd0-a81ceadf472b",
+        "name": "Labyrinthe"
+      },
+      {
+        "id": "110209b3-2e0e-4d56-bcbf-8b16ceacc614",
+        "name": "Mini Grand Huit"
+      },
+      {
+        "id": "c3d36198-9cad-4e0c-b050-0c9d1ddc8e6f",
+        "name": "Mini-golf"
+      },
+      {
+        "id": "57b0b50d-7e7e-4452-b916-65f47595db0b",
+        "name": "Train de Mine"
+      },
+      {
+        "id": "0eda5566-59c3-4437-bef0-b29e8a319725",
+        "name": "Tunnel d’illusion"
+      },
+      {
+        "id": "f0070bfc-ad23-4995-a2b0-28dfea387ec9",
+        "name": "Télé Rally"
+      }
+    ],
+    "ownedImages": 29,
+    "sharedImages": 4,
+    "itemImageCounts": [
+      {
+        "id": "2f2231b2-70e5-4bfc-8e69-9f6c6caeaa53",
+        "name": "Bateaux radiocommandés",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "ba78e0a1-aadb-4eb0-a76c-5ac696238dad",
+        "name": "Château des Enfants",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "8c1ff248-a7be-44e7-b38b-939508bb5fd4",
+        "name": "Cinéma 3 Dimensions",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "a0aad00a-dcf2-4919-9a75-814d612826a3",
+        "name": "Circuit de quads",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "e221a6c1-86b3-48ba-9175-36adfeb1f0fb",
+        "name": "Circuit des Tacots",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a6083a6f-ee04-4faa-b88c-448336af3469",
+        "name": "Crêperie de la galère grecque",
+        "category": "Restaurant",
+        "images": 1
+      },
+      {
+        "id": "839ba236-e0b3-45c4-995e-56b6aa293f19",
+        "name": "Entrée du Parc de la Toison d’Or",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "1cff2639-ce5c-49ca-b30a-1500584acacd",
+        "name": "Jeux d’arcade",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "61a776e5-2e2f-405d-9dd0-a81ceadf472b",
+        "name": "Labyrinthe",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "4d62f970-211e-4645-ac88-f9a359a2af2b",
+        "name": "Les Montgolfières",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "202685c3-653b-4a13-84d1-e0747cdd63b8",
+        "name": "Manège ancien",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "83be1ade-a4b8-494a-8c74-84ec9701a359",
+        "name": "Manège de bateaux",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b1537290-6ff2-40c2-98df-e6ab34cb91e3",
+        "name": "Manège de noix",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "110209b3-2e0e-4d56-bcbf-8b16ceacc614",
+        "name": "Mini Grand Huit",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "c3d36198-9cad-4e0c-b050-0c9d1ddc8e6f",
+        "name": "Mini-golf",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "885385dc-c7ba-4e62-b737-aa718ba2e223",
+        "name": "Petit Train",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "f602fba4-b3c5-4c1c-afb8-0e89878e5820",
+        "name": "Plongeurs d’Acapulco",
+        "category": "Show",
+        "images": 2
+      },
+      {
+        "id": "a20ea995-b172-45a1-b335-a7d01da5883a",
+        "name": "Pédalos",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4e3d1691-1010-400c-ae7f-999ffaea8d2d",
+        "name": "Rivière Sauvage",
+        "category": "Attraction",
+        "images": 4
+      },
+      {
+        "id": "9007c41b-a315-4876-95ea-d9cd8fe9005e",
+        "name": "Tapis de Jason",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "dd76aa69-5cb9-4a0b-a974-b48b7c69c5af",
+        "name": "Théâtre d’Homère",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "57b0b50d-7e7e-4452-b916-65f47595db0b",
+        "name": "Train de Mine",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "0eda5566-59c3-4437-bef0-b29e8a319725",
+        "name": "Tunnel d’illusion",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f0070bfc-ad23-4995-a2b0-28dfea387ec9",
+        "name": "Télé Rally",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 2,
+    "geolocationGaps": [
+      {
+        "id": "2f2231b2-70e5-4bfc-8e69-9f6c6caeaa53",
+        "name": "Bateaux radiocommandés",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "ba78e0a1-aadb-4eb0-a76c-5ac696238dad",
+        "name": "Château des Enfants",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8c1ff248-a7be-44e7-b38b-939508bb5fd4",
+        "name": "Cinéma 3 Dimensions",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "a0aad00a-dcf2-4919-9a75-814d612826a3",
+        "name": "Circuit de quads",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e221a6c1-86b3-48ba-9175-36adfeb1f0fb",
+        "name": "Circuit des Tacots",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a6083a6f-ee04-4faa-b88c-448336af3469",
+        "name": "Crêperie de la galère grecque",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "839ba236-e0b3-45c4-995e-56b6aa293f19",
+        "name": "Entrée du Parc de la Toison d’Or",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "1cff2639-ce5c-49ca-b30a-1500584acacd",
+        "name": "Jeux d’arcade",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "61a776e5-2e2f-405d-9dd0-a81ceadf472b",
+        "name": "Labyrinthe",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "4d62f970-211e-4645-ac88-f9a359a2af2b",
+        "name": "Les Montgolfières",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "202685c3-653b-4a13-84d1-e0747cdd63b8",
+        "name": "Manège ancien",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "83be1ade-a4b8-494a-8c74-84ec9701a359",
+        "name": "Manège de bateaux",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b1537290-6ff2-40c2-98df-e6ab34cb91e3",
+        "name": "Manège de noix",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "110209b3-2e0e-4d56-bcbf-8b16ceacc614",
+        "name": "Mini Grand Huit",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "c3d36198-9cad-4e0c-b050-0c9d1ddc8e6f",
+        "name": "Mini-golf",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "885385dc-c7ba-4e62-b737-aa718ba2e223",
+        "name": "Petit Train",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a20ea995-b172-45a1-b335-a7d01da5883a",
+        "name": "Pédalos",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "4e3d1691-1010-400c-ae7f-999ffaea8d2d",
+        "name": "Rivière Sauvage",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "9007c41b-a315-4876-95ea-d9cd8fe9005e",
+        "name": "Tapis de Jason",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "57b0b50d-7e7e-4452-b916-65f47595db0b",
+        "name": "Train de Mine",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0eda5566-59c3-4437-bef0-b29e8a319725",
+        "name": "Tunnel d’illusion",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f0070bfc-ad23-4995-a2b0-28dfea387ec9",
+        "name": "Télé Rally",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 15,
+    "parkHistory": 7,
+    "itemHistory": 8,
+    "historyWithSource": 15,
+    "historyWithImage": 12,
+    "articles": 1,
+    "officialMaps": [
+      {
+        "year": 1989,
+        "format": "Image",
+        "language": "fr"
+      }
+    ],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "attractionsCurrent": 0,
+    "attractionsPlanned": 0,
+    "attractionsHistorical": 19,
+    "allItemsWith8Descriptions": 24,
+    "officialLogo": {
+      "imageId": "5428654459a041ee8fd889a54b94a94b",
+      "category": "Logo",
+      "isCurrent": true,
+      "watermarked": false,
+      "historicalParkBrand": true
+    },
+    "majorItemThreePhotoCoverage": {
+      "numerator": 2,
+      "denominator": 11,
+      "items": [
+        {
+          "id": "8c1ff248-a7be-44e7-b38b-939508bb5fd4",
+          "name": "Cinéma 3 Dimensions",
+          "category": "Show",
+          "images": 1
+        },
+        {
+          "id": "61a776e5-2e2f-405d-9dd0-a81ceadf472b",
+          "name": "Labyrinthe",
+          "category": "Attraction",
+          "images": 0
+        },
+        {
+          "id": "4d62f970-211e-4645-ac88-f9a359a2af2b",
+          "name": "Les Montgolfières",
+          "category": "Attraction",
+          "images": 3
+        },
+        {
+          "id": "202685c3-653b-4a13-84d1-e0747cdd63b8",
+          "name": "Manège ancien",
+          "category": "Attraction",
+          "images": 2
+        },
+        {
+          "id": "110209b3-2e0e-4d56-bcbf-8b16ceacc614",
+          "name": "Mini Grand Huit",
+          "category": "Attraction",
+          "images": 0
+        },
+        {
+          "id": "885385dc-c7ba-4e62-b737-aa718ba2e223",
+          "name": "Petit Train",
+          "category": "Attraction",
+          "images": 2
+        },
+        {
+          "id": "f602fba4-b3c5-4c1c-afb8-0e89878e5820",
+          "name": "Plongeurs d’Acapulco",
+          "category": "Show",
+          "images": 2
+        },
+        {
+          "id": "4e3d1691-1010-400c-ae7f-999ffaea8d2d",
+          "name": "Rivière Sauvage",
+          "category": "Attraction",
+          "images": 4
+        },
+        {
+          "id": "9007c41b-a315-4876-95ea-d9cd8fe9005e",
+          "name": "Tapis de Jason",
+          "category": "Attraction",
+          "images": 1
+        },
+        {
+          "id": "dd76aa69-5cb9-4a0b-a974-b48b7c69c5af",
+          "name": "Théâtre d’Homère",
+          "category": "Show",
+          "images": 1
+        },
+        {
+          "id": "57b0b50d-7e7e-4452-b916-65f47595db0b",
+          "name": "Train de Mine",
+          "category": "Attraction",
+          "images": 0
+        }
+      ]
+    },
+    "historyImageGaps": [
+      {
+        "key": "toison-agreement-1988",
+        "reason": "No genuine photograph of this1988agreement,1989lease or1993judicialdecision found in contemporary/retrospectivepress,operatorarchive or primarycourt source."
+      },
+      {
+        "key": "toison-lease-1989",
+        "reason": "No genuine photograph of this1988agreement,1989lease or1993judicialdecision found in contemporary/retrospectivepress,operatorarchive or primarycourt source."
+      },
+      {
+        "key": "toison-administration-1993",
+        "reason": "No genuine photograph of this1988agreement,1989lease or1993judicialdecision found in contemporary/retrospectivepress,operatorarchive or primarycourt source."
+      }
+    ],
+    "generalParkPhotographs": {
+      "count": 5,
+      "target": 5,
+      "imageIds": [
+        "2953ea9ac7434e9d86bc4ef0c712b0fd",
+        "d7ae43a964d94fa8a8b279691f6a5572",
+        "df19176914e04ff5b9c7f690e57903a9",
+        "25238e8f7b104aedb29db211e28e44fb",
+        "38f394c24fc547319890fa9515ef9d9c"
+      ],
+      "periods": "Three operating-era views, late1980sconstructionpanorama and latermunicipalgardenaerial.",
+      "excludedEventCloseView": "64a25419a02f48a78cde265cc04bfeb8 remainsactual1993dismantlingcontext, notcounted asgeneralpanorama."
+    }
+  },
+  "publicTextReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "complete": true,
+    "method": "All8authoredpayloads andactualPreviewdiffs personallyreviewed. Finalfullcore/media corpuslanguage-by-language; article/historyreviewed atauthored/diff stage andexactlyreconciled. Corrected24articlecaptions afterserver detectedgalleryrepetition; addedone originalconstructionpanorama with16personallyauthored/reviewedlocalizedtexts. Final1336textcomparisonszero differences,1217corpusrows/1122independentfields,0repeatedparagraphsor9wordgroups afterheadings/entitynamesstripped. No mechanicalwording. Namedshortnoticespreservesourcelimits.",
+    "corpusRows": 1217,
+    "independentRows": 1122,
+    "mechanicalTextBlockers": [],
+    "languageCorpusSha256": {
+      "fr": "d1cc33344ffd0410e9361cff12396d8734f425166e5d69c2c83ed4bbcf28eff6",
+      "en": "4eee00bdf99e72a9f48dc4ebd35a54ef147926e9884ca384f584e5bce4c3d0cb",
+      "de": "12f29eafff0b1c9bbc2b56cc0e3328160e4f03bdf7bd3e5efdf41268e6b35e08",
+      "nl": "0854c8ea40f841f5a4b9f0b236f1459ab02ce2e6ebd07e04be97f641b21d8f63",
+      "it": "ed829ffb7528fdd3e71cf09aa7f0543fd9d41b155c8f8c1f489756c7e87bf5bb",
+      "es": "c01b5f4437d3b20cd8ee7fa3192504eb79f4d19adf1ebcc6a444ea4007e8a5b8",
+      "pl": "6b656de689d7db114d9ea8c909dec6cc2e8997a1f677338842e5fd5eabc426f3",
+      "pt": "e9ac47fc5df4bec25c8c822393dea7f8a28912e811ae489901875cc1aa6014c9"
+    }
+  },
+  "sourceGaps": {
+    "reviewedAtUtc": "2026-10-23T11:40:31.197943+00:00",
+    "notApplicable": {
+      "currentHours": "Closedhistoricalamusementpark1993; currentmunicipalgardenhoursnotimported.",
+      "currentPricing": "No operatingpark admission/pass/parkingoffers; historic90F mentionedonly if usefulhistoricalcontext, notcurrentpricing.",
+      "confirmedFutureAttractions": 0
+    },
+    "maps": {
+      "acceptedYears": [
+        1989
+      ],
+      "nature": "Authenticpre-openingoperatorprojectplan, not fabricated1990operatingedition.",
+      "remainingYears": [
+        1990,
+        1991,
+        1992
+      ],
+      "research": [
+        "France3historicreportandpublishedarchivebrochure/map",
+        "Niglofansoriginaloperator1989mapand1993Niglobrochure",
+        "Dijonmunicipalarchives1992pedagogicalbookletcatalogue(noaccessiblefullscan)",
+        "Exactannualmapwebsearch1990/1991/1992; no additionalverifiedcompleteoperatorfile found."
+      ],
+      "decision": "Keep namedannualeditiongaps; no communitymap oryearinferredfromuploaddate."
+    },
+    "geolocation": "03-geolocation-final-proof.json",
+    "shortNotices": "04-editorial-source-limits.json",
+    "unprovenCandidates": "03-inventory-final-qualification.json",
+    "accessConditions": "No historicalheight/age/medicalrules reliably found for the19historicalattractions in operatorplan,periodphotographs,press,RCDB/Captainorrelocationrecords. Do notborrow currentNiglolandconditions. Existingverifiedtechnicalfieldsretained.",
+    "images": "Originalpublishedfilesretained; laterNigloland/Paris/currentgarden explicitlycaptioned. Unknownramcoasterviewnot assigned to eithercoaster. No identifiablehistoricalphotos found for remainingnamedimagegaps; fullauditwillenumerateIDs. Gallery17SHAduplicatephoto09excluded; croppedTapisWikiimageandNigloWorldwatermarkedbrochureexcluded.",
+    "references": "Newfounder/operatoridentitymatchedbyPreview;8languagebiography/descriptionreviewed, primarycourt+France3+officialSuezorigin. Sharedmanufacturersunchanged; exactdependencyIDs verified fromofficialexports.",
+    "historyImages": "Actualinaugurationanddismantlingphotosprioritized. No actualcontract/lease/judgementphoto found. Specificride transfers use correctlycaptionedlaterlocationorpreclosureview; no fictionaleventphoto."
+  },
+  "depthExceptions": {
+    "Rivière Sauvage": {
+      "languages": 8,
+      "paragraphs": 3,
+      "headings": 2,
+      "reason": "Three developed paragraphs from individually inspected period photographs, operator plan, contemporary 1991 press photography, 2026 witness retrospectives and 2000 public audit. No ride-operation sequence, technical specifications, invented subjective sensations or uncertain relocation destination. Some languages are naturally shorter than 120 words; no padding."
+    },
+    "Petit Train": {
+      "languages": 8,
+      "paragraphs": 3,
+      "headings": 2,
+      "reason": "Three developed paragraphs from individually inspected period photographs, operator plan, contemporary 1991 press photography, 2026 witness retrospectives and 2000 public audit. No ride-operation sequence, technical specifications, invented subjective sensations or uncertain relocation destination. Some languages are naturally shorter than 120 words; no padding."
+    },
+    "Tapis de Jason": {
+      "languages": 8,
+      "paragraphs": 3,
+      "headings": 2,
+      "reason": "Three developed paragraphs from individually inspected period photographs, operator plan, contemporary 1991 press photography, 2026 witness retrospectives and 2000 public audit. No ride-operation sequence, technical specifications, invented subjective sensations or uncertain relocation destination. Some languages are naturally shorter than 120 words; no padding."
+    },
+    "Mini Grand Huit": {
+      "languages": 8,
+      "paragraphs": 2,
+      "headings": 2,
+      "reason": "Operator plan, RCDB, Captain Coaster, Coasterpedia, Niglofans and 2026 press searched. Exact Dijon ride scenes/photos not individually identified. Preserve sourced identity and relocation nuance without inventing scenery, sensations or importing later Malaysian operating conditions. Two-paragraph historical notice justified pending further evidence."
+    },
+    "Train de Mine": {
+      "languages": 8,
+      "paragraphs": 2,
+      "headings": 2,
+      "reason": "Operator plan, RCDB, Captain Coaster, Coasterpedia, Niglofans and 2026 press searched. Exact Dijon ride scenes/photos not individually identified. Preserve sourced identity and relocation nuance without inventing scenery, sensations or importing later Malaysian operating conditions. Two-paragraph historical notice justified pending further evidence."
+    },
+    "Les Montgolfières": {
+      "languages": 8,
+      "paragraphs": 3,
+      "headings": 2,
+      "reason": "Three paragraphs: individually inspected inauguration photo, period operator plan and independently sourced 1994 relocation to Nigloland. No mechanical operating sequence or unsupported exact relocation day."
+    },
+    "Manège ancien": {
+      "languages": 8,
+      "paragraphs": 3,
+      "headings": 2,
+      "reason": "Three paragraphs supported by personally inspected period postcard, undated period press photograph, specialist relocation report and Jeremy Thompson 2010 photo. No undocumented manufacturing date, original maker or later Corsica location asserted."
+    },
+    "Cinéma 3 Dimensions": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two-paragraph source-limited notices: original 1989 plan, 2026 witness retrospective, operating-period photographs and specialist inventory. No film programme, diver names, manufactured exact dates or unsupported maze superlative added. Specific archive searches produced no deeper reliable programme or individual views of maze; factual limits retained."
+    },
+    "Plongeurs d’Acapulco": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two-paragraph source-limited notices: original 1989 plan, 2026 witness retrospective, operating-period photographs and specialist inventory. No film programme, diver names, manufactured exact dates or unsupported maze superlative added. Specific archive searches produced no deeper reliable programme or individual views of maze; factual limits retained."
+    },
+    "Labyrinthe": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two-paragraph source-limited notices: original 1989 plan, 2026 witness retrospective, operating-period photographs and specialist inventory. No film programme, diver names, manufactured exact dates or unsupported maze superlative added. Specific archive searches produced no deeper reliable programme or individual views of maze; factual limits retained."
+    },
+    "Théâtre d’Homère": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Named venue with surviving architecture and actual diving-show use, two specific paragraphs from operator plan and2020/2026photographs. No unsupported modern performance programme."
+    },
+    "Château des Enfants": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "Explicit very short archive notices. Named and positioned by original1989operatorplan, corroborated historical inventory; dedicated quoted-name searches, press, operator-bookletcatalogue and specialist records yielded no reliable individual scenes, game rules, machine list, age restrictions or exact operating dates. Preserve only documented identity, spelling and plan geography; no invented experience or padded paragraphs. Candidate FastFood is mentioned only as map landmark, not silently integrated as proven operating restaurant."
+    },
+    "Télé Rally": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "Explicit very short archive notices. Named and positioned by original1989operatorplan, corroborated historical inventory; dedicated quoted-name searches, press, operator-bookletcatalogue and specialist records yielded no reliable individual scenes, game rules, machine list, age restrictions or exact operating dates. Preserve only documented identity, spelling and plan geography; no invented experience or padded paragraphs. Candidate FastFood is mentioned only as map landmark, not silently integrated as proven operating restaurant."
+    },
+    "Tunnel d’illusion": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "Explicit very short archive notices. Named and positioned by original1989operatorplan, corroborated historical inventory; dedicated quoted-name searches, press, operator-bookletcatalogue and specialist records yielded no reliable individual scenes, game rules, machine list, age restrictions or exact operating dates. Preserve only documented identity, spelling and plan geography; no invented experience or padded paragraphs. Candidate FastFood is mentioned only as map landmark, not silently integrated as proven operating restaurant."
+    },
+    "Jeux d’arcade": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "Explicit very short archive notices. Named and positioned by original1989operatorplan, corroborated historical inventory; dedicated quoted-name searches, press, operator-bookletcatalogue and specialist records yielded no reliable individual scenes, game rules, machine list, age restrictions or exact operating dates. Preserve only documented identity, spelling and plan geography; no invented experience or padded paragraphs. Candidate FastFood is mentioned only as map landmark, not silently integrated as proven operating restaurant."
+    },
+    "Circuit de quads": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "One or two specific paragraphs per entity, bounded by authentic1989plan,2026witnessreport and current official Dijon tourism page. No quad model/age limit, golf hole count, remote-control boat rules or exact demolished position found after source searches; no filler added. Current municipal mini-golf continuity explicitly unproved."
+    },
+    "Mini-golf": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "One or two specific paragraphs per entity, bounded by authentic1989plan,2026witnessreport and current official Dijon tourism page. No quad model/age limit, golf hole count, remote-control boat rules or exact demolished position found after source searches; no filler added. Current municipal mini-golf continuity explicitly unproved."
+    },
+    "Bateaux radiocommandés": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "One or two specific paragraphs per entity, bounded by authentic1989plan,2026witnessreport and current official Dijon tourism page. No quad model/age limit, golf hole count, remote-control boat rules or exact demolished position found after source searches; no filler added. Current municipal mini-golf continuity explicitly unproved."
+    },
+    "Circuit des Tacots": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "One or two specific paragraphs per entity, bounded by authentic1989plan,2026witnessreport and current official Dijon tourism page. No quad model/age limit, golf hole count, remote-control boat rules or exact demolished position found after source searches; no filler added. Current municipal mini-golf continuity explicitly unproved."
+    },
+    "Pédalos": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two specific paragraphs per entity from personally viewed historical photographs/postcard, operator1989plan and France3retrospective. Entrance only partly demolished in2010s; no invented exactyear. Argonef explicitly attributed to pre-openingplan, not asserted as proven operating-era commercialname. Pedal boat1991addition supported by contemporarypress and retrospective; no technical specs or fictional menu."
+    },
+    "Entrée du Parc de la Toison d’Or": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two specific paragraphs per entity from personally viewed historical photographs/postcard, operator1989plan and France3retrospective. Entrance only partly demolished in2010s; no invented exactyear. Argonef explicitly attributed to pre-openingplan, not asserted as proven operating-era commercialname. Pedal boat1991addition supported by contemporarypress and retrospective; no technical specs or fictional menu."
+    },
+    "Crêperie de la galère grecque": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two specific paragraphs per entity from personally viewed historical photographs/postcard, operator1989plan and France3retrospective. Entrance only partly demolished in2010s; no invented exactyear. Argonef explicitly attributed to pre-openingplan, not asserted as proven operating-era commercialname. Pedal boat1991addition supported by contemporarypress and retrospective; no technical specs or fictional menu."
+    },
+    "Manège de noix": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two substantive paragraphs per relocated ride, limited to verified Dijon origin, Mack identity and primary1993Nigloland brochure. Original Dijon commercial names and exact scenery remain unproved. Later Nigloland appearance explicitly dated/contextualized; no Dijon technical specifications inferred from later configuration."
+    },
+    "Manège de bateaux": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two substantive paragraphs per relocated ride, limited to verified Dijon origin, Mack identity and primary1993Nigloland brochure. Original Dijon commercial names and exact scenery remain unproved. Later Nigloland appearance explicitly dated/contextualized; no Dijon technical specifications inferred from later configuration."
+    },
+    "Monde des Enfants": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "Only authentic1989map and corroborated inventory allow this sector description; no invented independent opening date, theming narrative or current activity."
+    }
+  },
+  "geolocationProof": {
+    "reviewedAtUtc": "2026-10-23T11:40:31.197943+00:00",
+    "previousProof": "03-geolocation-proof.json",
+    "qualified": [
+      {
+        "key": "toison-theatre-homere",
+        "latitude": 47.354545,
+        "longitude": 5.054757,
+        "pointMeaning": "Representative point of surviving curved amphitheatre seating footprint, not park centre or an invented entrance.",
+        "sourceUrls": [
+          "https://www.openstreetmap.org/way/58112241",
+          "https://www.leprogres.fr/culture-loisirs/2020/12/03/parc-recreatif-de-la-toison-d-or-du-reve-au-naufrage",
+          "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+          "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+        ],
+        "proof": "Original operator map #8 identifies Théâtre d’Homère as amphitheatre at lake edge; historical inventory describes this Roman-style amphitheatre. 2020 press photograph and 2026 aerial show surviving curved lake-edge seating and stage. OSM way58112241 is the exact curved seating footprint (cadastre2010); stage is adjacent way58112242. Matched manually against photographs and lake/bridge geometry. Coordinates rounded to six decimals from seating footprint representative centre. No claim that show still operates."
+      },
+      {
+        "key": "toison-plongeurs-acapulco",
+        "latitude": 47.354545,
+        "longitude": 5.054757,
+        "pointMeaning": "Same fixed historical diving-show venue as Theatre d’Homere, not a second arena.",
+        "sourceUrls": [
+          "https://www.openstreetmap.org/way/58112241",
+          "https://www.leprogres.fr/culture-loisirs/2020/12/03/parc-recreatif-de-la-toison-d-or-du-reve-au-naufrage",
+          "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+          "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+        ],
+        "proof": "France3retrospective explicitly identifies the surviving antique theatre as diving-show venue. Pool and stands adjacent on1989plan, corroborated2020photo/currentOSMgeometry. See03-theatre-show-interpretation-revision.json."
+      }
+    ],
+    "unlocated": [
+      {
+        "key": "110209b3-2e0e-4d56-bcbf-8b16ceacc614",
+        "id": "110209b3-2e0e-4d56-bcbf-8b16ceacc614",
+        "name": "Mini Grand Huit",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "57b0b50d-7e7e-4452-b916-65f47595db0b",
+        "id": "57b0b50d-7e7e-4452-b916-65f47595db0b",
+        "name": "Train de Mine",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-riviere-sauvage",
+        "id": "4e3d1691-1010-400c-ae7f-999ffaea8d2d",
+        "name": "Rivière Sauvage",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-cinema-3d",
+        "id": "8c1ff248-a7be-44e7-b38b-939508bb5fd4",
+        "name": "Cinéma 3 Dimensions",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-labyrinthe",
+        "id": "61a776e5-2e2f-405d-9dd0-a81ceadf472b",
+        "name": "Labyrinthe",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-chateau-enfants",
+        "id": "ba78e0a1-aadb-4eb0-a76c-5ac696238dad",
+        "name": "Château des Enfants",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-tele-rally",
+        "id": "f0070bfc-ad23-4995-a2b0-28dfea387ec9",
+        "name": "Télé Rally",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-petit-train",
+        "id": "885385dc-c7ba-4e62-b737-aa718ba2e223",
+        "name": "Petit Train",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-tunnel-illusion",
+        "id": "0eda5566-59c3-4437-bef0-b29e8a319725",
+        "name": "Tunnel d’illusion",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-circuit-tacots",
+        "id": "e221a6c1-86b3-48ba-9175-36adfeb1f0fb",
+        "name": "Circuit des Tacots",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-montgolfieres",
+        "id": "4d62f970-211e-4645-ac88-f9a359a2af2b",
+        "name": "Les Montgolfières",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-bateaux-radiocommandes",
+        "id": "2f2231b2-70e5-4bfc-8e69-9f6c6caeaa53",
+        "name": "Bateaux radiocommandés",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-manege-ancien",
+        "id": "202685c3-653b-4a13-84d1-e0747cdd63b8",
+        "name": "Manège ancien",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-jeux-arcade",
+        "id": "1cff2639-ce5c-49ca-b30a-1500584acacd",
+        "name": "Jeux d’arcade",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-quads",
+        "id": "a0aad00a-dcf2-4919-9a75-814d612826a3",
+        "name": "Circuit de quads",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-pedalos",
+        "id": "a20ea995-b172-45a1-b335-a7d01da5883a",
+        "name": "Pédalos",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-minigolf",
+        "id": "c3d36198-9cad-4e0c-b050-0c9d1ddc8e6f",
+        "name": "Mini-golf",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-tapis-jason",
+        "id": "9007c41b-a315-4876-95ea-d9cd8fe9005e",
+        "name": "Tapis de Jason",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-entree",
+        "id": "839ba236-e0b3-45c4-995e-56b6aa293f19",
+        "name": "Entrée du Parc de la Toison d’Or",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-creperie-galere",
+        "id": "a6083a6f-ee04-4faa-b88c-448336af3469",
+        "name": "Crêperie de la galère grecque",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-noix",
+        "id": "b1537290-6ff2-40c2-98df-e6ab34cb91e3",
+        "name": "Manège de noix",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      },
+      {
+        "key": "toison-bateaux-promenade",
+        "id": "83be1ade-a4b8-494a-8c74-84ec9701a359",
+        "name": "Manège de bateaux",
+        "reason": "Historical position not sufficiently proved by pictorial1989projectplan and current landscape. No point borrowed from later Nigloland/Paris or current municipalplaygrounds; no invented park-centre coordinate."
+      }
+    ],
+    "research": "OSM official map API returned current cadastre geometry. Overpass query returned406; no need to retry after official public map data obtained. Municipal tourism source locates whole park only, not individual former rides. No current garden playground matched automatically to Château des Enfants or Mini Grand Huit."
+  },
+  "inventoryQualification": {
+    "reviewedAtUtc": "2026-10-23T11:40:31.197943+00:00",
+    "initialQualificationPreserved": "03-inventory-qualification.json",
+    "parkItems": 24,
+    "attractions": 19,
+    "resolvedCandidates": [
+      {
+        "candidate": "Argonet / Argonef: plan #22 label uncertain; possible galley crêperie alias, no duplicate.",
+        "decision": "Argonef now legible in larger publisher1989mapcrop. Alias of existing Greekgalley creperie, no second restaurant. Description explicitly calls this the projectplan name."
+      },
+      {
+        "candidate": "Mack Dino Carousel and Round Boat Ride later P’tit Poucet / Rivière Enchantée at Nigloland: original Toison names and identities unproved; may be components of Monde des Enfants.",
+        "decision": "Two distinct Mack rides qualified by1993Niglolandbrochure and relocationreport; originalDijonnames unproved, neutraldescriptivenamesused. AlreadycreatedactualIDs retained."
+      }
+    ],
+    "retainedUnprovenCandidates": [
+      {
+        "candidate": "Maison de la Photo, Boutiques, Restaurant Village, Fast Food, Restaurant des Îles, Restaurant Groupe: shown in 1989 proposal; operating identity and final naming need confirmation.",
+        "decision": "Not created: operating-era identity/use still not established after authentic1989plan,2020/2026pressarchives,1993Niglo primarybrochure and exact-namewebsearch23Oct2026. Kept in evidence, not silently treated as absent or completed."
+      },
+      {
+        "candidate": "Tente des Ducs de Bourgogne: plan #9 and tent visible in operating photograph; individual use/name confirmation pending.",
+        "decision": "Not created: operating-era identity/use still not established after authentic1989plan,2020/2026pressarchives,1993Niglo primarybrochure and exact-namewebsearch23Oct2026. Kept in evidence, not silently treated as absent or completed."
+      }
+    ],
+    "exclusionsRetained": [
+      {
+        "name": "Les Cyclades / Oxygène",
+        "reason": "Separate aquatic centre in broader commercial complex, connected by plan exit #29; not a ride in the amusement park."
+      },
+      {
+        "name": "Pont du Train / Franchissement du Lac / Gare du Petit Train",
+        "reason": "Components of one Petit Train, no duplicate attraction records."
+      },
+      {
+        "name": "Current municipal zoo/playgrounds/carousel",
+        "reason": "Post-1993 public garden offer is not automatically historical amusement-park inventory."
+      }
+    ],
+    "showAndVenueRevision": "03-theatre-show-interpretation-revision.json",
+    "dateBoundary": "PublicopeningmonthApril1990;10/11Aprsourceconflict prevents inventedday. ClosureYear1993, exactcourt20Jan/17Mar andmunicipal15Nov separately documented."
+  },
+  "encoding": {
+    "rawExportSha256": "e7fe7b175be86f0f9ea3ee947866652ee646ae6d2cea144959025cb49e11622f",
+    "findings": [],
+    "count": 0
+  },
+  "sources": [
+    {
+      "key": "court",
+      "url": "https://www.ccomptes.fr/sites/default/files/EzPublish/BOL200006.pdf",
+      "status": 200,
+      "finalUrl": "https://www.ccomptes.fr/sites/default/files/EzPublish/BOL200006.pdf",
+      "bytes": 15959,
+      "accessedAtUtc": "2026-10-23T11:17:58.567673+00:00"
+    },
+    {
+      "key": "niglo",
+      "url": "https://niglofans.richardcrete.fr/reportages/1993-rachat-du-parc-de-la-toison-dor/",
+      "status": 200,
+      "finalUrl": "https://niglofans.richardcrete.fr/reportages/1993-rachat-du-parc-de-la-toison-dor/",
+      "bytes": 1184386,
+      "accessedAtUtc": "2026-10-23T11:17:59.528416+00:00"
+    },
+    {
+      "key": "tourism",
+      "url": "https://www.destinationdijon.com/patrimoine-naturel/parc-de-la-toison-dor/",
+      "status": 200,
+      "finalUrl": "https://www.destinationdijon.com/patrimoine-naturel/parc-de-la-toison-dor/",
+      "bytes": 72191,
+      "accessedAtUtc": "2026-10-23T11:17:58.296984+00:00"
+    },
+    {
+      "key": "france3",
+      "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+      "status": 200,
+      "finalUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+      "bytes": 755734,
+      "accessedAtUtc": "2026-10-23T11:17:58.009086+00:00"
+    },
+    {
+      "key": "closure",
+      "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/trop-cher-abandonne-par-walibi-pourquoi-le-parc-d-attraction-de-la-toison-d-or-n-a-dure-que-trois-saisons-3324689.html",
+      "status": 200,
+      "finalUrl": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/trop-cher-abandonne-par-walibi-pourquoi-le-parc-d-attraction-de-la-toison-d-or-n-a-dure-que-trois-saisons-3324689.html",
+      "bytes": 726027,
+      "accessedAtUtc": "2026-10-23T11:17:58.523404+00:00"
+    }
+  ],
+  "prepublicationIdempotence": {
+    "operationId": "c91046d8-f943-47f8-877d-7968e0199ae0",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 79,
+      "warnings": 0,
+      "errors": 0
+    },
+    "ownerKeyNormalization": "Six imported legacy ownerKeys normalized only in verification payload to exported item keys using real ownerIds; second Preview79unchanged noerrors/warnings, noApply."
+  },
+  "nextGates": [],
+  "finalAuditPassed": true,
+  "finalAuditAtUtc": "2026-10-23T12:22:38.577110+00:00",
+  "lastDataIntegrationAtUtc": "2026-10-23T12:15:37.500Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-receipts.json#import-photo-38f394c24fc547319890fa9515ef9d9c-2026-10-23T121537.500Z",
+  "realPostPublicationScore": {
+    "completenessScore": 96,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 108,
+    "earnedPoints": 104,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicUrl": "https://amusement-parks.fun/fr/park/66653da2-93bb-499f-95df-15e240673e58/parc-de-la-toison-d-or",
+  "publicationVerification": {
+    "officialSearchVisible": true,
+    "officialSearchStatus": "ClosedDefinitively",
+    "officialSearchReview": "Validated",
+    "mobilePagesChecked": 24,
+    "mobileLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "desktopPagesChecked": 2,
+    "renderErrors": 0,
+    "technicalIdentifiersExposed": 0,
+    "brokenImages": 0,
+    "horizontalOverflowPages": 0,
+    "screenshotsPersonallyViewed": [
+      "park-fr",
+      "article-toison-closure-1993-fr",
+      "item-train-de-mine",
+      "normal-fr-history-click",
+      "official-map-controls",
+      "desktop-park",
+      "desktop-article"
+    ],
+    "normalHistoryClick": {
+      "checkedAtUtc": "2026-10-23T12:19:36.400193+00:00",
+      "url": "https://amusement-parks.fun/fr/park/66653da2-93bb-499f-95df-15e240673e58/parc-de-la-toison-d-or",
+      "apiResponses": [
+        {
+          "url": "https://amusement-parks.fun/api/parks/66653da2-93bb-499f-95df-15e240673e58/detail-summary",
+          "status": 200,
+          "hasPublicHistory": true,
+          "requestLanguage": "fr-FR",
+          "age": "4"
+        }
+      ],
+      "status": 200,
+      "buttons": [
+        "Parcs",
+        "m",
+        "Connexion / Inscription",
+        "FR",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Ajouter une visite",
+        "Retour à la liste",
+        "Lieux du parc",
+        "Copier",
+        "Plus",
+        "Profil",
+        " Accepter les cookies optionnels ",
+        " Continuer avec les cookies nécessaires ",
+        ""
+      ],
+      "historyLinkCount": 1,
+      "parkTitle": [
+        "Parc de la Toison d'Or"
+      ],
+      "historyHref": "/fr/park/66653da2-93bb-499f-95df-15e240673e58/parc-de-la-toison-d-or/history",
+      "destination": "https://amusement-parks.fun/fr/park/66653da2-93bb-499f-95df-15e240673e58/parc-de-la-toison-d-or/history",
+      "historyTitle": [
+        "L'histoire de Parc de la Toison d'Or"
+      ],
+      "historyBodyChars": 3292
+    },
+    "historyPublishedFacts": 15,
+    "historySourcedFacts": 15,
+    "historyMajorFacts": 15,
+    "historyCanonicalRepairOperationId": "c96679bf-d67c-41f5-b194-d4fdd600ad6c",
+    "historicalYearExplorerGap": "Noindexablekeyyear inofficialdiagnostic; actualnormalHistorylinkworks andopens15sourcedfacts. Articlepublicin8languages.",
+    "idempotenceOperationId": "23537faa-6077-48b7-b3c8-0f49abd89523",
+    "idempotenceCounts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 80,
+      "warnings": 0,
+      "errors": 0
+    },
+    "officialMapsAnonymousIntegrity": [
+      {
+        "id": "toison-plan-projet-1989-fr",
+        "year": 1989,
+        "checkedAtUtc": "2026-10-23T12:19:46.747524+00:00",
+        "status": 200,
+        "mime": "image/jpeg",
+        "size": 44869,
+        "exportedSizeMatches": true,
+        "sourceBytesMatch": true,
+        "sha256": "7fb287ab52aa72f1d7b883bb503b6ca1772b74ee3f78742537dcb8bfc7f2f527",
+        "url": "https://amusement-parks.fun/api/parks/66653da2-93bb-499f-95df-15e240673e58/official-maps/toison-plan-projet-1989-fr/file"
+      }
+    ],
+    "officialMapControls": {
+      "checkedAtUtc": "2026-10-23T12:19:42.583483+00:00",
+      "url": "https://amusement-parks.fun/fr/park/66653da2-93bb-499f-95df-15e240673e58/parc-de-la-toison-d-or/map",
+      "status": 200,
+      "selects": [],
+      "buttons": [
+        "Parcs",
+        "m",
+        "Connexion / Inscription",
+        "FR",
+        "",
+        "Carte interactive2",
+        "Cartes officielles1",
+        "Copier",
+        "Plus",
+        "Profil",
+        ""
+      ],
+      "links": [
+        {
+          "text": "",
+          "url": "https://amusement-parks.fun/api/parks/66653da2-93bb-499f-95df-15e240673e58/official-maps/toison-plan-projet-1989-fr/file"
+        },
+        {
+          "text": "Voir la carte",
+          "url": "https://amusement-parks.fun/api/parks/66653da2-93bb-499f-95df-15e240673e58/official-maps/toison-plan-projet-1989-fr/file"
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    "singleMapEditionBehavior": "One1989edition; no yearselectneeded. Original44869bytesaccessibleanonymously.",
+    "facebookPublicationId": "5914eeadfe3c45e9aa8ae8f0834d359b",
+    "facebookStatus": "Published",
+    "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122124285243424431",
+    "facebookAction": "Automaticannouncement alreadyPublished; confirmed withofficialResolve, no duplicate Publish sent."
+  },
+  "publicationOutcomes": {
+    "site": {
+      "status": "Published",
+      "publishedAtUtc": "2026-10-23T12:10:03.7172179Z",
+      "url": "https://amusement-parks.fun/fr/park/66653da2-93bb-499f-95df-15e240673e58/parc-de-la-toison-d-or",
+      "evidenceOperationId": "6194ac3f-37e2-4b70-b1c3-49ca277104f1"
+    },
+    "facebook": {
+      "status": "Published",
+      "publishedAtUtc": null,
+      "observedAtUtc": "2026-10-23T12:22:38.577110+00:00",
+      "url": "https://www.facebook.com/1285475681307050/posts/122124285243424431",
+      "publicationId": "5914eeadfe3c45e9aa8ae8f0834d359b",
+      "dateNote": "ResolveconfirmsPublished butdoesnotreturn publicationtimestamp; observeddateisnotinventedpublisheddate."
+    }
+  },
+  "proofSha256": {
+    "09-fresh-full-export.json": "2377d58c43ff7bab96febfb979b5d644098305a425c1aac5208ebd7ace5f2b38",
+    "09-text-reconciliation.json": "3c6185a6ede180a5f617cf731bd563e397f13dceebacce8ceb277a7c329e52f5",
+    "09-consolidation-proof.json": "e3204a4ee302e71d3a5afb488da46ef56530bcf3c76ce920321daf3823a0dbba",
+    "09-post-export-import-proof.json": "406dfb1ebd7b06bb64913817bc8ce9bc9a14dc02c6c608d4c8e6ab656bf89ac9",
+    "09-consolidated-audit-graph.json": "e7fe7b175be86f0f9ea3ee947866652ee646ae6d2cea144959025cb49e11622f",
+    "09-published-completeness-final.json": "ae8021b987a5c17fa00b64bf37c7364d42496616f28eb94c366c51998e46474e",
+    "09-final-idempotence.preview.json": "2a0f6480d2aadc5bb834e13fb7136980a55d956382ebc21593367d07016fe9e9",
+    "09-history-diagnostics-after-repair.json": "4ec1d9705abf3d65ab38f3b46ce9a2628cb4e1314b3610c12c405ceb4bb4b049",
+    "09-facebook-resolve.json": "a14b5c1ce191bf585096bb06fdfa5fadb0df81bd88c7c83ca5e5503f80ffe16b",
+    "09-history-canonical-repair-apply.receipt.json": "3dec6b041794061901a604044294183f285deb40d2728bf7d6d14435e344d70e",
+    "09-final-search-exact.json": "baba032cdaabcc2bb93c3e8df37324cd4f94e9e127a8e767731a66cd75a37579",
+    "public-verification/mobile-render-report-fr-en-de-nl-it-es-pl-pt.json": "638aae163b89a7e6e30e49033936aaa8e2baaf09a701418c0eb415ba086fc724",
+    "public-verification/api-report.json": "59d20ef619b9fd754e453738e922d61607809ac786cd2ad18c6cc30886851663",
+    "public-verification/normal-fr-history-click.json": "ecb6d623f39f6404fd0a7b3ee09dbe48d6ad6e7474709d32a9c5baf1848a794d",
+    "public-verification/maps-public-integrity.json": "f3530b7bfdfde8abdc360c7952cd20900fe0f4c55c2fcb858c72c0b05ca08194",
+    "public-verification/official-map-controls.json": "a84f9670219f9c180d45361a73b4d0ce238280df355c1921d66f6ca4e0060fad",
+    "public-verification/desktop-report.json": "560faa71ce178dc338267d01ac0b05e4eb77aa076921e2ae14d5b53fe00f93d7",
+    "09-final-repetitions.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "photo-29-construction-overview-import-receipt.json": "8da98e223551c8afa1a67a925e661d2dcccfd39665bacd3523b86f6189eff48c"
+  }
+}

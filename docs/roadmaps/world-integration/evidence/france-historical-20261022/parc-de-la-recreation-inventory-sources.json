@@ -1,0 +1,284 @@
+{
+  "passes": {
+    "current": 0,
+    "confirmedFuture": 0,
+    "historical": 30
+  },
+  "announcedGamesCount": 70,
+  "exhaustiveInventory": false,
+  "countCaution": "Seventy was the historical advertised games total, not seventy individually identifiable rides; thirty distinct sourced visitor facilities retained, including old discontinued activities.",
+  "zones": 0,
+  "fixedCoordinates": 0,
+  "entries": [
+    {
+      "key": "gliss-mouille",
+      "name": "Gliss’mouille",
+      "sourceUrl": "https://www.37degres-mag.fr/societe/vacances-en-touraine-que-faire-en-famille/",
+      "evidence": "Named in contemporary2017 reportage; official gallery labels Toboggans à eau. One attraction, not guessed number of slides.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "descente-baignoire",
+      "name": "Descente en baignoire",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Bathtub zipline, distinct from pedal taxi bathtub trailers.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "tyroliennes",
+      "name": "Tyroliennes",
+      "sourceUrl": "https://web.archive.org/web/20161030162206id_/http://www.la-recreation.com/le-parc",
+      "evidence": "Small and large ziplines attested; collective item because exact individual names/count unknown. Gallery Descente en câble included here.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "velos-taxis",
+      "name": "Vélos-taxis",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Bathtub and shopping-trolley trailers are vehicle variants, not separate attractions.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "tour-pneus",
+      "name": "Tour de pneus",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Official gallery name; pyramide de pneus in official main page is same attraction.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "parcours-insolite",
+      "name": "Parcours insolite",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Cordes folles, étriers, formes géométriques and tuyaux d’arrosage are documented stations of one named course, not four invented rides.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "mur-escalade",
+      "name": "Mur d’escalade",
+      "sourceUrl": "https://web.archive.org/web/20161030162206id_/http://www.la-recreation.com/le-parc",
+      "evidence": "Official name; no dimensions or manufacturer inferred.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "pentes-escalade",
+      "name": "Pentes d’escalade",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Distinct official gallery caption; not assimilated to vertical climbing wall.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "pont-filet",
+      "name": "Pont en filet",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Official individually captioned play installation.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "cordes-tarzan",
+      "name": "Cordes de Tarzan",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Official individually captioned play installation.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "pistes-velos",
+      "name": "Pistes de vélos",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Four tracks collectively identified by official gallery; unnamed individual tracks not invented.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "voitures-pedales",
+      "name": "Voitures à pédales",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Official gallery distinguishes this activity from Slalom-kart.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "slalom-kart",
+      "name": "Slalom-kart",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Official name only; propulsion, manufacturer and model remain unknown.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "beach-volley",
+      "name": "Beach-volley",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Named sports court.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "beach-soccer",
+      "name": "Beach-soccer",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Named sports court; archived2015 menu also mentions tournament.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "petanque",
+      "name": "Pétanque",
+      "sourceUrl": "https://web.archive.org/web/20161030162206id_/http://www.la-recreation.com/le-parc",
+      "evidence": "Named game area; number of courts not assumed.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "tourni-pneu",
+      "name": "Tourni-pneu",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Official name; separate from tyre pyramid.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "billard-hollandais",
+      "name": "Billard hollandais",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Named game; generic Jeux de bois umbrella not duplicated.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "totem-ball",
+      "name": "Totem-ball",
+      "sourceUrl": "https://web.archive.org/web/20161001075707id_/http://www.la-recreation.com/photos-et-vid%C3%A9os",
+      "evidence": "Official named game; rules not inferred from name.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "eco-lutin",
+      "name": "L’Éco-lutin",
+      "sourceUrl": "https://web.archive.org/web/20160921093428id_/http://www.la-recreation.com/parcours-p%C3%A9dagogique",
+      "evidence": "One educational trail with recycling games, information boards, reused-object hunt and sorting memory; worksheets not separate items.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "manege-pedales",
+      "name": "Manège à pédales",
+      "sourceUrl": "https://efreidoc.fr/L2%20-%20PL2/Communication/Projets/2C%20Mag/2014-15.projets.2CMag.com.pdf",
+      "evidence": "Native Groupon photo reproduced p11 and independent Tripadvisor accounts confirm adult-pedalled child carousel; no manufacturer/model inferred.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "archery-tag",
+      "name": "Archery Tag",
+      "sourceUrl": "https://web.archive.org/web/20150822194021id_/http://www.la-recreation.com/archery-tag/",
+      "evidence": "Official launch page archived2015 establishes existence by2015, not exact opening day/year. Paid separately; no current pricing.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "bubble-foot",
+      "name": "Bubble foot",
+      "sourceUrl": "https://www.37degres-mag.fr/societe/vacances-en-touraine-que-faire-en-famille/",
+      "evidence": "Explicit nouveauté2017 in contemporaryreportage, also official2017 homepage.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "animaux-ferme",
+      "name": "Animaux de la ferme",
+      "sourceUrl": "https://www.37degres-mag.fr/societe/vacances-en-touraine-que-faire-en-famille/",
+      "evidence": "Pony,sheep,goats,rabbits,chickens documented; one small farm area, not six invented enclosures.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "snack",
+      "name": "Snack",
+      "sourceUrl": "https://web.archive.org/web/20160923055759id_/http://www.la-recreation.com/repas",
+      "evidence": "Permanent food counter; RécréBurger and LutinBurger are menu items, not separate restaurants.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "accueil",
+      "name": "Accueil",
+      "sourceUrl": "https://web.archive.org/web/20160923055759id_/http://www.la-recreation.com/repas",
+      "evidence": "Welcome desk also sells drinks,ice cream,candy; no separate duplicate shop inferred.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "pique-nique-barbecues",
+      "name": "Aires de pique-nique et barbecues",
+      "sourceUrl": "https://web.archive.org/web/20160923055759id_/http://www.la-recreation.com/repas",
+      "evidence": "Covered and outdoor picnic provision, two communal barbecues; combined service area, not invented individual locations.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "parking",
+      "name": "Parking",
+      "sourceUrl": "https://mairie-sorigny.com/wp-content/uploads/37159-rp-1-DP-Monts-28-05-18.pdf",
+      "evidence": "Historical gravel parking on Sorigny boundary, meadow overflow. Do not use future Family Park extension or LGV works base as old parking.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "peche-ligne",
+      "name": "Pêche à la ligne",
+      "sourceUrl": "https://www.37degres-mag.fr/societe/vacances-en-touraine-que-faire-en-famille/",
+      "evidence": "Former activity explicitly replaced before2017; no operating years guessed.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    },
+    {
+      "key": "balades-carriole",
+      "name": "Balades en carriole",
+      "sourceUrl": "https://www.37degres-mag.fr/societe/vacances-en-touraine-que-faire-en-famille/",
+      "evidence": "Former activity explicitly replaced before2017; no horse species,route,manufacturer or operating years guessed.",
+      "coordinates": null,
+      "coordinateGap": "No georeferenced historical visitor map or unambiguous fixed individual position recovered; no centre point copied.",
+      "accessConditions": "No specific historical condition established from consulted source; not invented."
+    }
+  ]
+}

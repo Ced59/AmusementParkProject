@@ -1,0 +1,178 @@
+{
+  "entryId": "FR-candidate-2f3fddd5eab60a",
+  "parkId": "1df4e929-984e-4328-9e1b-0e9b93af11a5",
+  "checkedAtUtc": "2026-11-02T18:49:11.722576+00:00",
+  "status": "Audited partial, publication blocked",
+  "sourcesReviewed": [
+    {
+      "label": "Société nationale d’horticulture de France — Jardins d’acclimatation sur la Riviera",
+      "url": "https://www.snhf.org/jardins-dacclimatation-riviera/"
+    },
+    {
+      "label": "Nice-Matin, Véronique Mars, 11 novembre 2018 — Les grandes réalisations de Jacques Médecin",
+      "url": "https://www.nicematin.com/vie-locale/jacques-medecin-20-ans-apres-les-grandes-realisation-dun-maire-batisseur-adule-ou-critique-275911"
+    },
+    {
+      "label": "Bibliothèque patrimoniale Romain Gary — Fonds Jean-Luc Sauvaigo, catalogue public CCFr",
+      "url": "https://ccfr.bnf.fr/portailccfr/ark:/16871/004b79791294"
+    },
+    {
+      "label": "Didier Tougard — photographies du 7 mars 1993 et prospectus du Parc des Miniatures",
+      "url": "https://didiertougard.blogspot.com/2020/04/tourisme-sur-la-cote-dazur-les-sites.html"
+    },
+    {
+      "label": "NiceRendezVous, 26 octobre 2005 — Dernier acte pour le Parc des Miniatures",
+      "url": "https://nice-rendezvous.blogspot.com/2005/10/nice-dernier-acte-pour-le-parc-des.html?m=0"
+    },
+    {
+      "label": "Jean Mas — Ombre, catalogue des expositions de l’artiste",
+      "url": "https://www.jeanmas.com/ombre"
+    }
+  ],
+  "identity": {
+    "park": "Former miniature park in Fabron, distinct from Zygofolis, current Jardin Impératrice Eugénie/Villa Les Tropiques and current bus stop. Eight official global Park/Standalone alias searches reviewed before creation.",
+    "opening": "1989-03 Month, directly established by Nice-Matin11November2018",
+    "closing": null,
+    "closureConflict": "Retrospectivevisitor1995; publicmunicipalarchivalcataloguejudicialliquidation1996; contemporary2005NRVrelative7years suggests1998. No legaldateinvented asvisitorclosure.",
+    "excluded": [
+      "RealNicehistoricmonumentsasstandalone",
+      "NegrescoasactualHotelservice",
+      "Modeltrainsaspassengertransport",
+      "Unidentifiedumbrellashopmodelasparkretailservice",
+      "Brochurephotomontagesquirrelandsdovesasrealanimalexhibits"
+    ]
+  },
+  "inventory": {
+    "items": 22,
+    "miniatureExhibits": 19,
+    "services": 3,
+    "actualExhaustiveTotal": null,
+    "completeInventoryProven": false,
+    "reason": "152modelscommissionedbySauvaigoandhundredsreported;19distinctpubliclysourcedexhibitsidentified.33cataloguedarchivalplansnotreadandnotproofallwerebuilt. Pairedtemplesoneinstallation;SaintPonsabbey/churchoneensemble;threebaroquechurchesindividuallyidentified.",
+    "additionalExhibition": "Les ombres de Jean Mas,1990: sourced temporaryexhibition recordedasParkhistoryfact, notinventedpermanentattraction."
+  },
+  "descriptions": {
+    "parkLanguages": 8,
+    "itemsWithEightDescriptions": 17,
+    "itemsTotal": 22,
+    "attractionsWithEightDescriptions": 17,
+    "attractionsTotal": 19,
+    "missing": [
+      "Boutique",
+      "Gare du PLM",
+      "Gare du Sud",
+      "Parking",
+      "Restaurant"
+    ],
+    "missingReason": "GareduSudandPLMconfirmedbycontemporary2005NRV,butunlabelledoriginalstationphotocannotbesafelyassigned. ReferenceimagechecksfailedSNCF503/CPAPHIL403; no guess. Restaurant,shopandfreeparkingconfirmedbyoneoriginalbrochurelineonly; nophoto,menu,buildingorproductdetailsinvented.",
+    "shorterSourcedExceptions": [
+      {
+        "id": "e7bc6700-e3ab-480d-96d3-f5560569a242",
+        "name": "Musée d’art moderne et d’art contemporain",
+        "wordCounts": {
+          "fr": 97,
+          "en": 88,
+          "de": 86,
+          "nl": 88,
+          "it": 84,
+          "es": 94,
+          "pl": 73,
+          "pt": 87
+        },
+        "reason": "MAMAC model is explicitly identified and pictured in one small original brochure panel. Genuine research found no further model-specific detail. Concise observed white volumes and curved glazed passages retained in two headings/three paragraphs, without filler or copied full-size museum history."
+      }
+    ]
+  },
+  "media": {
+    "nativeImages": 18,
+    "actualVisitPhotos": 12,
+    "brochurePanels": 6,
+    "parkOwned": 7,
+    "attractionImageOwners": 11,
+    "attractionsTotal": 19,
+    "attractionsWithThreePhotos": 0,
+    "missingOwnedImages": [
+      "Cathédrale Saint-Nicolas",
+      "Cathédrale Sainte-Réparate",
+      "Gare du PLM",
+      "Gare du Sud",
+      "Musée d’art moderne et d’art contemporain",
+      "Trains miniatures",
+      "Église Saint-François-de-Paule",
+      "Église Saint-Martin-Saint-Augustin"
+    ],
+    "notes": "Threechurchesappearinthegeneralparkphoto;SaintNicolas,MAMACandtrainsappearinbrochurepanels. Sharedviewsnotduplicatedtoinflateownercoverage. Everyoriginalfilenativeunmodified; no crop/resize/recompression.",
+    "brochureDate": "Collectedin1993;printed1992tariffs, no fabricatededitionyear.",
+    "credits": "All18creditslocalizedpersonallyin8languages; exactphotographerandcollection/sourcepreserved."
+  },
+  "logo": {
+    "present": false,
+    "blocking": true,
+    "research": "Originalbrochurecover,publicmunicipalarchivecatalogue,localpress,1989guidecatalogueanddedicatedlogosearchesreviewed. No isolatedauthentichistoricalassetlocated.",
+    "rejected": "Fullbrochurephotomontage/titleisnotstandaloneLogo; nocroporreconstruction."
+  },
+  "officialMaps": {
+    "editions": 0,
+    "years": [],
+    "research": "Originalbrochure06containsNicecityaccessmap,notinsidevisitorlayout. No datedannualofficialparkmapfound.1989LaCollineàremonterletempsguidecataloguedbutnodigitizedcopylocated; publicfindingaidPDFHTTP500twice. Unpublishedarchivalplansnotaccessed."
+  },
+  "coordinates": {
+    "parkPoint": null,
+    "itemPoints": 0,
+    "itemTotal": 22,
+    "missing": [
+      "Abbaye et église Saint-Pons",
+      "Amphithéâtre de Cemenelum",
+      "Boutique",
+      "Cathédrale Saint-Nicolas",
+      "Cathédrale Sainte-Réparate",
+      "Château de Nice",
+      "Cours Saleya",
+      "Forum antique",
+      "Gare du PLM",
+      "Gare du Sud",
+      "Hôtel Negresco",
+      "Moulin à blé",
+      "Musée d’art moderne et d’art contemporain",
+      "Parking",
+      "Port Lympia",
+      "Restaurant",
+      "Siège de Nice de 1543",
+      "Temples diptère et à antes",
+      "Trains miniatures",
+      "Villa Masséna",
+      "Église Saint-François-de-Paule",
+      "Église Saint-Martin-Saint-Augustin"
+    ],
+    "reason": "Dismantledmodelsandhistoricalsitepositionscannotbeprovenonageoreferencedlayout. Currentbusstopnotparkcentroidoritemposition."
+  },
+  "references": "Sauvaigodesignerroleknown; notassumedfounder/operator/manufacturer. GilbertGrisonicommissionnotoperatorproof. Restaurantlegalrecordnotparkoperatorproof. Sharedglobalreferencesuntouched.",
+  "history": {
+    "currentFacts": 6,
+    "canonicalDraft": 6,
+    "canonicalRetracted": 1,
+    "canonicalPublished": 0,
+    "canonicalBlockers": 0,
+    "articles": 1,
+    "articleLanguages": 8,
+    "articleSections": 4,
+    "articleParagraphs": 8,
+    "articleWordRange": [
+      351,
+      416
+    ],
+    "articleImages": 3,
+    "articleSources": 5,
+    "precision": [
+      "1989-03Month",
+      "1990Yearartistdeparture",
+      "1990Yearexhibition",
+      "1996Yearliquidation",
+      "2005-10Monthcessionoffer",
+      "2024-09-19Dayarchivedonation"
+    ],
+    "imageGaps": "Opening usesauthentic1993contextualphoto, dateexplicit. No actualexhibition,liquidation,cessionorarchivedonationphotographproven; theseeventsleftunillustrated. CurrentartistpageArmanillustrationnotassumed1990exhibitionimage."
+  },
+  "calendarPricing": "ClosedDefinitively: no currentcalendar orpricingneeded;1992tariffsremainonlyhistoricalbrochurecontent.",
+  "publication": "Private. Requiredlogoabsent andfiveitemdescriptions/inventory gaps. No site orFacebookpublication attempted; no scoreexceptioninferred."
+}

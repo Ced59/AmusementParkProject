@@ -1,0 +1,256 @@
+{
+  "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+  "entryId": "FR-candidate-13b50050620a99",
+  "reviewedAtUtc": "2026-10-28",
+  "zones": {
+    "applicable": false,
+    "reason": "Indoor play areas are the inventoried parkItems; no independently named lands supported by official pages."
+  },
+  "openingHours": {
+    "applicable": false,
+    "reason": "Definitively closed 31 July 2022. No current calendar."
+  },
+  "pricing": {
+    "applicable": false,
+    "reason": "Definitively closed. Archived 2008/2017/2021 prices are historical evidence, not a current offer."
+  },
+  "maps": {
+    "accepted": 0,
+    "years": [],
+    "checked": [
+      "Official archived park and play-area pages 2008",
+      "Official archived page and activity/attendance calendars 2017",
+      "Official archived park page 2021",
+      "2019 French brand catalogue",
+      "Searches for Fresnes official annual map and floorplan"
+    ],
+    "exclusions": [
+      "2017 Plan link leads to Google access map, not annual park plan",
+      "2017 PDFs are attendance and activity calendars, not maps",
+      "2019 German FunPark plan depicts another park",
+      "French catalogue page is an advertisement, not a plan, and third-party PDF is watermarked"
+    ],
+    "reason": "No official annual floorplan located for this small indoor site; no edition year invented."
+  },
+  "geolocation": {
+    "covered": 0,
+    "total": 19,
+    "parkCoordinate": "Official archived Google place link supplies park point only. No georeferenced interior floorplan. Historical interior moved/reconfigured, current supermarket layout cannot locate former areas reliably.",
+    "missing": [
+      {
+        "id": "8063ad83-ef24-438a-8e18-73447bcb3367",
+        "name": "Le Château des chevaliers",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+        "name": "Le Château des princesses",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+        "name": "Le Bateau des pirates",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "186b3503-feec-405b-a2e4-f3011daa4fc7",
+        "name": "La Ferme",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+        "name": "Le Zoo et les animaux",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "4be5431e-f824-4be0-b654-4a4df301f9b0",
+        "name": "Les Maisons et les commerçants",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "19d1d54a-8f44-4218-af01-32146ee2c3ee",
+        "name": "L’Aire des tout-petits",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "ea9a2965-fd8c-47df-b5cd-ac45d45fd03c",
+        "name": "L’Univers de la police",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "a370a43d-a4eb-485a-a6b6-701d9b91ae83",
+        "name": "L’Univers des pompiers",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "ab96c94c-4fc8-4cb6-9c3c-b474a220af75",
+        "name": "Le Chantier",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "e544659f-fb7c-4a35-90b0-20822387ef2e",
+        "name": "L’Univers du cirque",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+        "name": "L’Univers des dinosaures",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "3bfc608b-09cf-4063-8f09-1eac4fd091ed",
+        "name": "L’Espace restauration",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "edd7c8ac-d0b6-4bf4-88e3-bd5202641754",
+        "name": "La Boutique Playmobil",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "93bcec4b-5af6-4b68-9cba-222fb1367b67",
+        "name": "Le Point accueil",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "dd0ff973-daeb-41f0-9f9a-69b17d55394e",
+        "name": "L’Entrée du château",
+        "reason": "Historic facade documented photographically, but precise entrance point not established by an identifiable georeferenced source; park centroid not copied."
+      },
+      {
+        "id": "59bb9521-a211-4c73-a24e-f9d2f9eac143",
+        "name": "Les Sanitaires du rez-de-chaussée",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "eccf56e9-3873-4894-b08a-aa5bb3d388d6",
+        "name": "Les Sanitaires de l’étage",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      },
+      {
+        "id": "f042c241-1460-49b5-81f6-c9edc641f82c",
+        "name": "Le Chapiteau des animations",
+        "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+      }
+    ]
+  },
+  "accessConditions": {
+    "checked": 12,
+    "known": [
+      "fresnes-petits: age 18–36 months from official archived page and 2022 report"
+    ],
+    "sources": [
+      "Official play areas 2008",
+      "Official facts 2008",
+      "Official park pages 2017 and 2021",
+      "2022 Family Globe-Trotters visit"
+    ],
+    "remaining": "Other play areas have no separately stated item-specific age, height or accompaniment limits. General park child-supervision rule is not invented as a ride restriction."
+  },
+  "shorterDescriptions": {
+    "reason": "Small indoor play installations rather than rides with independently documented histories. Specific scenery and play content described where visible; service text is limited to sourced function and placement. Word counts recorded in final audit; no padding.",
+    "particularlyLimited": [
+      {
+        "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+        "name": "Le Zoo et les animaux",
+        "reason": "Official archived theme list and 2022 closure reporting identify the toy theme, but no reliably attributable individual scene, date or setting detail survived searches."
+      },
+      {
+        "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+        "name": "L’Univers des dinosaures",
+        "reason": "Official archived theme list and 2022 closure reporting identify the toy theme, but no reliably attributable individual scene, date or setting detail survived searches."
+      }
+    ]
+  },
+  "itemTimelines": {
+    "created": 0,
+    "reason": "No individual opening, remodelling or closure date established. Historical inventory combines themes recorded at different dates; applying 1999 or 31 July 2022 to all would invent lifetimes. Park-level closure and article explain overall disappearance. No claims of transfer or object preservation."
+  },
+  "referenceImages": {
+    "operator": "Jeux Jouets Services legal operator has no separately verified brand logo/portrait in registry or official archive. Do not duplicate Playmobil park logo as legal-company logo.",
+    "founder": "No proven personal founder; brand creator not assumed to be Fresnes founder.",
+    "manufacturer": "Toy brand is not a proven attraction-structure manufacturer; no inferred manufacturer references."
+  },
+  "mediaResearch": {
+    "families": [
+      "Official archived PLAYMOBIL pages and six original photos",
+      "2017 official PDF native logo extraction",
+      "Sortiraparis 16 original gallery files",
+      "Family Globe-Trotters 25 visit photos",
+      "Le Parisien contemporary closure and reconversion reporting",
+      "Vinci Autoroutes",
+      "LotsaFunMaps",
+      "Écomusée local heritage page"
+    ],
+    "mainPhotoAndLogo": true,
+    "generalPhotos": {
+      "count": 4,
+      "target": 5,
+      "files": [
+        "05-park-hall",
+        "05-park-facade",
+        "05-park-aircraft",
+        "05-park-june2022"
+      ],
+      "reason": "Hall, facade at two distinct angles and decorated mezzanine. Other hall frames are near duplicates, attraction close-ups do not qualify. Wrong-park LotsaFunMaps and generic Vinci images rejected. No fifth independently useful overview found."
+    },
+    "importantItems": [
+      {
+        "id": "8063ad83-ef24-438a-8e18-73447bcb3367",
+        "name": "Le Château des chevaliers",
+        "count": 3,
+        "target": 3,
+        "reason": "Wide older scene, official play-table scene and 2022 dragon guard close-up provide complementary views."
+      },
+      {
+        "id": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+        "name": "Le Château des princesses",
+        "count": 2,
+        "target": 3,
+        "reason": "Whole palace scenery and close view of pink miniature palaces. Other 2022 frame foreground is a child and pirate toys, with princess backdrop soft/out of focus; not added just for count."
+      },
+      {
+        "id": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+        "name": "Le Bateau des pirates",
+        "count": 2,
+        "target": 3,
+        "reason": "Large walk-aboard ship and miniature boats at its base. Mascot/pirate portraits outside this area cannot be counted as a third installation view."
+      }
+    ],
+    "missing": [
+      {
+        "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+        "name": "Le Zoo et les animaux",
+        "reason": "No photograph attributable to the specific Fresnes zoo area. Shop animal shelves and other FunParks excluded."
+      },
+      {
+        "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+        "name": "L’Univers des dinosaures",
+        "reason": "No securely identified photograph of the Fresnes dinosaur play area. Generic toy imagery excluded."
+      },
+      {
+        "id": "59bb9521-a211-4c73-a24e-f9d2f9eac143",
+        "name": "Les Sanitaires du rez-de-chaussée",
+        "reason": "Visitor text identifies ground-floor block; no identified unobstructed photograph found."
+      },
+      {
+        "id": "eccf56e9-3873-4894-b08a-aa5bb3d388d6",
+        "name": "Les Sanitaires de l’étage",
+        "reason": "Visitor text identifies upper block; no identified photograph found."
+      },
+      {
+        "id": "f042c241-1460-49b5-81f6-c9edc641f82c",
+        "name": "Le Chapiteau des animations",
+        "reason": "Activity tent identified in visitor text; birthday-room photo and miniature toy circus are different spaces and were rejected as substitutes."
+      }
+    ],
+    "eventPhotos": {
+      "opening": "No contemporary 1999 opening photograph located; March 2022 operating hall explicitly captioned.",
+      "announcement": "Actual press photograph dated 24 June 2022 by LP/Fanny Delporte, source and caption checked, imported original bytes.",
+      "closure": "24 June 2022 facade contextualizes closure, not represented as final-day photograph.",
+      "reconversion": "Actual 13 December 2023 LP/Marine Legrand photo found. Original 1861849 bytes exceeds 960 KiB; published reduced variant blocked by proxy. No recompression; pre-closure facade caption clearly dates June 2022.",
+      "heritage": "No image of a physical donation inferred from collection recognition. Historical facade represents remembered place.",
+      "article": "June 2022 closure-announcement reportage main image, March 2022 hall within article."
+    }
+  }
+}

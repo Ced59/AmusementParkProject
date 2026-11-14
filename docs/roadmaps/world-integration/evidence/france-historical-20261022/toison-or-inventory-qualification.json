@@ -1,0 +1,342 @@
+{
+  "currentAmusementOffer": 0,
+  "confirmedFuture": 0,
+  "existingItems": 2,
+  "additionalQualified": [
+    {
+      "key": "toison-riviere-sauvage",
+      "name": "Rivière Sauvage",
+      "decision": "qualified historical parkItem",
+      "evidence": "France 3 archive photograph and 1991 Philippe Maupetit photographs prove actual log flume; original plan #2. Mack attribution from specialist historical inventory.",
+      "sourceUrls": [
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+        "https://www.leprogres.fr/culture-loisirs/2020/12/03/parc-recreatif-de-la-toison-d-or-du-reve-au-naufrage",
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-cinema-3d",
+      "name": "Cinéma 3 Dimensions",
+      "decision": "qualified historical parkItem",
+      "evidence": "Plan #5 and actual inauguration photograph of audience wearing 3D glasses; film title not established.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": null
+    },
+    {
+      "key": "toison-plongeurs-acapulco",
+      "name": "Plongeurs d’Acapulco",
+      "decision": "qualified historical parkItem",
+      "evidence": "Plan #7 plus actual high-diving photograph. This is the diving show; Théâtre d’Homère #8 is separately labelled on the plan.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": null
+    },
+    {
+      "key": "toison-theatre-homere",
+      "name": "Théâtre d’Homère",
+      "decision": "qualified historical parkItem",
+      "evidence": "Separate venue #8 on original plan, confirmed in historical inventory; no invented performance title.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": null
+    },
+    {
+      "key": "toison-labyrinthe",
+      "name": "Labyrinthe",
+      "decision": "qualified historical parkItem",
+      "evidence": "Plan #10 and 2026 retrospective witness account of wooden partition maze, later replaced by sports grounds.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-chateau-enfants",
+      "name": "Château des Enfants",
+      "decision": "qualified historical parkItem",
+      "evidence": "Distinct play structure #12 in named children’s area, corroborated historical inventory.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-tele-rally",
+      "name": "Télé Rally",
+      "decision": "qualified historical parkItem",
+      "evidence": "Named #14 on original plan and corroborated historical inventory as Télé rallye; operating details not established.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-petit-train",
+      "name": "Petit Train",
+      "decision": "qualified historical parkItem",
+      "evidence": "Actual lake-crossing photograph and period postcard. Plan labels station, bridge and lake crossing as parts of this one ride, not separate rides.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-tunnel-illusion",
+      "name": "Tunnel d’illusion",
+      "decision": "qualified historical parkItem",
+      "evidence": "Plan #18 and corroborated historical inventory; individual effects unknown.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-circuit-tacots",
+      "name": "Circuit des Tacots",
+      "decision": "qualified historical parkItem",
+      "evidence": "Plan #24 and current remnants identified in 2026 report. Vehicles removed; surviving route is not an operating ride.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-montgolfieres",
+      "name": "Les Montgolfières",
+      "decision": "qualified historical parkItem",
+      "evidence": "One Balloon Race, plan #25 and inauguration photo. Duplicate list labels Les Montgolfières / Manège montgolfière are aliases. Later installed at Nigloland in 1994.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+        "https://niglofans.richardcrete.fr/reportages/1993-rachat-du-parc-de-la-toison-dor/"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-bateaux-radiocommandes",
+      "name": "Bateaux radiocommandés",
+      "decision": "qualified historical parkItem",
+      "evidence": "Plan #26, corroborated historical inventory. Distinct from 1991 pedal boats.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-manege-ancien",
+      "name": "Manège ancien",
+      "decision": "qualified historical parkItem",
+      "evidence": "Plan #27, operating period postcard and 1991 press photo. Manège 1900 is alias, not a second carousel.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+        "https://www.leprogres.fr/culture-loisirs/2020/12/03/parc-recreatif-de-la-toison-d-or-du-reve-au-naufrage"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-jeux-arcade",
+      "name": "Jeux d’arcade",
+      "decision": "qualified historical parkItem",
+      "evidence": "Named #28 on original plan and corroborated historical inventory; one named arcade space, individual machines unknown.",
+      "sourceUrls": [
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg",
+        "https://fr.wikipedia.org/wiki/Parc_de_la_Toison_d%27or"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-quads",
+      "name": "Circuit de quads",
+      "decision": "qualified historical parkItem",
+      "evidence": "2026 report explicitly lists quads among 1991 additions; individual manufacturer and track geometry unknown.",
+      "sourceUrls": [
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html"
+      ],
+      "openingDateKnown": "1991",
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-pedalos",
+      "name": "Pédalos",
+      "decision": "qualified historical parkItem",
+      "evidence": "2026 report and contemporary 1991 photographs confirm second-season addition on central lake.",
+      "sourceUrls": [
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+        "https://www.leprogres.fr/culture-loisirs/2020/12/03/parc-recreatif-de-la-toison-d-or-du-reve-au-naufrage"
+      ],
+      "openingDateKnown": "1991",
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-minigolf",
+      "name": "Mini-golf",
+      "decision": "qualified historical parkItem",
+      "evidence": "2026 report explicitly lists 1991 addition. Modern municipal mini-golf is not automatically the same installation or reopening.",
+      "sourceUrls": [
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html"
+      ],
+      "openingDateKnown": "1991",
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-tapis-jason",
+      "name": "Tapis de Jason",
+      "decision": "qualified historical parkItem",
+      "evidence": "Named 1992 investment and actual photograph; Tapis volant is alias, one ride. Maker unproved.",
+      "sourceUrls": [
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html"
+      ],
+      "openingDateKnown": "1992",
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": "No reliable historical restriction found in consulted plan, press or specialist records."
+    },
+    {
+      "key": "toison-entree",
+      "name": "Entrée du Parc de la Toison d’Or",
+      "decision": "qualified historical parkItem",
+      "evidence": "Historic columns and domed entrance confirmed by period photographs and 2026 report; demolished during tram-era redevelopment, no invented exact year.",
+      "sourceUrls": [
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html",
+        "https://niglofans.richardcrete.fr/wp-content/uploads/2020/04/ParcToisonDor_Plan.jpg"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": null
+    },
+    {
+      "key": "toison-creperie-galere",
+      "name": "Crêperie de la galère grecque",
+      "decision": "qualified historical parkItem",
+      "evidence": "Floating Greek galley explicitly described as a crêperie by 2026 retrospective and visible in period postcard. Descriptive label; possible plan #22 name unresolved.",
+      "sourceUrls": [
+        "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/inaugure-avant-disneyland-rachete-par-nigloland-vous-rappelez-vous-du-parc-d-attractions-de-la-toison-d-or-3322928.html"
+      ],
+      "openingDateKnown": null,
+      "gps": null,
+      "gpsGap": "Precise historical position not yet established; pictorial plan alone is insufficient.",
+      "accessConditionsGap": null
+    }
+  ],
+  "zones": [
+    {
+      "name": "Monde des Enfants",
+      "proof": "Operator plan #11 and 2020 press caption confirm named children’s area; contains Château #12 and Mini Grand Huit #13."
+    }
+  ],
+  "unresolvedCandidates": [
+    "Maison de la Photo, Boutiques, Restaurant Village, Fast Food, Restaurant des Îles, Restaurant Groupe: shown in 1989 proposal; operating identity and final naming need confirmation.",
+    "Tente des Ducs de Bourgogne: plan #9 and tent visible in operating photograph; individual use/name confirmation pending.",
+    "Argonet / Argonef: plan #22 label uncertain; possible galley crêperie alias, no duplicate.",
+    "Mack Dino Carousel and Round Boat Ride later P’tit Poucet / Rivière Enchantée at Nigloland: original Toison names and identities unproved; may be components of Monde des Enfants."
+  ],
+  "excluded": [
+    {
+      "name": "Les Cyclades / Oxygène",
+      "reason": "Separate aquatic centre in broader commercial complex, connected by plan exit #29; not a ride in the amusement park."
+    },
+    {
+      "name": "Pont du Train / Franchissement du Lac / Gare du Petit Train",
+      "reason": "Components of one Petit Train, no duplicate attraction records."
+    },
+    {
+      "name": "Current municipal zoo/playgrounds/carousel",
+      "reason": "Post-1993 public garden offer is not automatically historical amusement-park inventory."
+    }
+  ],
+  "aliases": [
+    {
+      "canonical": "Les Montgolfières",
+      "aliases": [
+        "Manège montgolfière"
+      ]
+    },
+    {
+      "canonical": "Manège ancien",
+      "aliases": [
+        "Manège 1900"
+      ]
+    },
+    {
+      "canonical": "Tapis de Jason",
+      "aliases": [
+        "Tapis volant"
+      ]
+    },
+    {
+      "canonical": "Télé Rally",
+      "aliases": [
+        "Télé rallye"
+      ]
+    }
+  ],
+  "gpsResearchRemaining": true
+}

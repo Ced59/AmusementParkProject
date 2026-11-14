@@ -1,0 +1,93 @@
+{
+  "entryId": "FR-candidate-fa6227365b97a9",
+  "name": "Parc de la Cabosse",
+  "conversation": "Conversation France",
+  "checkedAtUtc": "2026-11-02T14:39:21.923931+00:00",
+  "decision": "Relevant historical fixed multi-attraction amusement park, independent of current zoo visitor offer and of Festyland near Caen. No matched live database identity.",
+  "canonicalStatus": "ClosedDefinitively",
+  "initialCoverage": {
+    "existingParks": 0,
+    "items": 0,
+    "zones": 0,
+    "images": 0,
+    "historyEvents": 0,
+    "articles": 0
+  },
+  "officialSearches": [
+    {
+      "file": "00-search-parks-cabosse.json",
+      "count": 0
+    },
+    {
+      "file": "00-search-parks-jurques.json",
+      "count": 0
+    },
+    {
+      "file": "00-search-standalone-cabosse.json",
+      "count": 0
+    },
+    {
+      "file": "00-search-standalone-jurques.json",
+      "count": 0
+    }
+  ],
+  "aliases": [
+    "La Cabosse",
+    "Parc La Cabosse"
+  ],
+  "sources": [
+    {
+      "label": "Historical promotional card1970,Cridam CC BY-SA3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:CarteDeVisiteParcLaCabosse.jpg"
+    },
+    {
+      "label": "Historical Surf Racing photograph1970,Cridam public domain",
+      "url": "https://commons.wikimedia.org/wiki/File:Surfracing.jpg"
+    },
+    {
+      "label": "Cabosse history and inventory, Wikimedia CC BY-SA",
+      "url": "https://fr.wikipedia.org/wiki/Parc_de_la_Cabosse"
+    },
+    {
+      "label": "Official successor zoo history, relocation1977",
+      "url": "https://www.zoodejurques.fr/histoire-du-zoo/"
+    },
+    {
+      "label": "Tourist office history; Festyland migration claim unresolved",
+      "url": "https://www.paysdevire-normandie-tourisme.fr/histoire-du-zoo-de-jurques/"
+    },
+    {
+      "label": "Current successor zoo access/location",
+      "url": "https://www.zoodejurques.fr/acces/"
+    },
+    {
+      "label": "Original first zoo advertisement1977, official archive",
+      "url": "https://www.zoodejurques.fr/wp-content/uploads/2019/05/pub-1.jpg"
+    }
+  ],
+  "coreDecision": "Historical local amusement park at La Cabosse, Jurques, distinct visitor offering from successor Zoo de Jurques installed in1977. Four fresh official global Park/Standalone searches Cabosse/Jurques returned zero. Historical promotion explicitly names La Cabosse/Jurques route de Vire. Opening May1970 retained at month precision: secondary source Sunday conflicts with16May1970which was Saturday, no exact day invented. Closure1977 at year precision corresponds to sale/conversion; official zoo history corroborates relocation1977. Founding Lebel/Ozenne family names only in secondary history; exact legal operator unresolved, no shared founder/operator reference invented. Historical park footprint not precisely georeferenced; current zoo map centre not automatically reused. No current website/hours/prices and no zoo animals imported. Local audience conservative. Private ToReview. Original promotional card carries historical wordmark but is1.50MB and not a standalone logo; no cropping or recompression. Carousel archival image appears on a village street, no verified operating-park photo attribution; Surf Racing1970image is a small historical source.",
+  "dateDecision": {
+    "opening": "1970-05; exact day contradictory in secondary source, contemporary cited press article not accessed",
+    "closure": "1977; conversion to successor zoo, no precise last visiting day known"
+  },
+  "referenceDecision": "No legal operator proved; founding family only secondary evidence, no shared reference created. Auguste Ourry founded successor zoo, not historical1970 amusement park.",
+  "identityCautions": [
+    "Tourist office retrospectively calls predecessor Festyland; specialist/history places Festyland foundation1989nearCaen. Do not merge two locations based on ambiguous retrospective.",
+    "Intercommunal landscape PDF says zoo1997, contradicting official zoo1977; presumed source typo, not adopted.",
+    "Current zoo prices, calendar, logo, maps and animal inventory are separate.",
+    "Original1977zoo advertisement says attractions gratuites. Historical independent-park end1977 is a conversion, not proof every ride disappeared then. Individual dates remain empty; timelineconversionOther."
+  ],
+  "initialGaps": [
+    "Original standalone historical logo",
+    "More than one authenticated operating-period photo",
+    "Official historical visitor maps",
+    "Historical footprint and item coordinates",
+    "Primary contemporary inventory corroboration",
+    "Legal operator and individual attraction dates",
+    "Details for rich item descriptions without generic padding"
+  ],
+  "nextStep": "Step01 create private qualified core. Step02 no proven named zones. Step03 named historical equipment. Step04 specific8languagecopy. Step05 source/media/logo/mapsearch. Steps06/07no currenthours/prices. Step08sourcedhistory thenfreshStep09audit.",
+  "sourceLimitations": [
+    "PrimarycontemporaryOuestFrance29August1970andLeBocageLibrearchives not directly accessed; names/foundingfamily/inventory secondary only."
+  ]
+}

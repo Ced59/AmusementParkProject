@@ -1,0 +1,1044 @@
+{
+  "logo": {
+    "blocking": true,
+    "finding": "No authenticated standalone historical park logo found. The name on an entrance, a period advertisement, a book cover and the modern Éléana tour branding are not substitutes. A memoir mentions an interior MAGIC-CITY mosaic, but no identified image was found.",
+    "sources": [
+      "Ville de Paris",
+      "Paris Musées / Carnavalet catalogues",
+      "BnF / Gallica / Commons",
+      "CPArama period postcards and press references",
+      "Paris1900",
+      "André Vagnon / Bibletango / Éléana book and interactive archive",
+      "Targeted historic logo, programme and entrance searches"
+    ]
+  },
+  "officialMaps": {
+    "count": 0,
+    "years": [],
+    "reason": "No dated operator park map found. Rejected as official maps: 1900 exposition map, 1909 property plan, 1923 city-guide illustration and 2016 interactive reconstruction.",
+    "sources": [
+      "CPArama",
+      "Paris Commission du Vieux Paris 4 July 2022",
+      "André Vagnon public book excerpt and interactive tour",
+      "Paris Musées catalogues"
+    ]
+  },
+  "geolocation": {
+    "located": 0,
+    "total": 24,
+    "reason": "Demolished historical site. Surviving street alignment and pictorial views do not establish exact individual points. Existing park coordinates preserved; no item coordinates invented.",
+    "items": [
+      {
+        "id": "8f8bd3e2-90a6-4f90-a99e-5f41084910c2",
+        "name": "Electra",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "430ce6d6-a6c0-4bc2-9508-43ca3a324da6",
+        "name": "Entrée principale de Magic City",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "ba8c7c69-889a-44a5-a2c4-0d581e1a599a",
+        "name": "La Banquette magique",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "4249fc07-d0d5-49fa-a491-abc1e0eccbd6",
+        "name": "La Cascade (Water Chute)",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "6a952525-c1f2-4853-a8f2-a011d8a7748c",
+        "name": "La Création",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "1c468434-979b-4281-90af-01a4b01c353b",
+        "name": "La Maison du Rire",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "539300d8-e246-4019-b53b-e0168723f366",
+        "name": "La Piste de bobsleigh",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "a1c6d53d-54e1-4b08-b8e2-6c3b3f120a28",
+        "name": "La Roulette humaine",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "3bcc41f0-57c6-44dd-b39c-33449b5fd3e0",
+        "name": "Le Bowling",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "acd58084-d453-40ae-9b23-9f63bd56fc2b",
+        "name": "Le Jardin d’enfants",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "0f7db2ad-b4b7-485c-b5e4-e0592c54c4ca",
+        "name": "Le Kiosque à musique",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "fdc24b20-c6e8-47ad-a24f-7372331329bb",
+        "name": "Le Palais persan",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "f06ecf42-edce-4f0d-98e8-046cd8562fcb",
+        "name": "Le Paquebot fantastique",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "5d1f9f4e-274c-41f2-8c62-6c42e94a1acd",
+        "name": "Le Pont de la Folie",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "973e99a7-9780-4118-9127-8865072831fb",
+        "name": "Le Théâtre japonais",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "ca8a4397-a035-46be-8462-b6af64fd2a23",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "443ae60e-557e-40ae-aa05-f8b1a52e6e84",
+        "name": "Les Gondoles vénitiennes",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b991ab6e-bf1a-4b63-8ed9-3c01c3aec29f",
+        "name": "Les Sirènes",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "535feb38-91e8-445f-9314-8256a7b2f210",
+        "name": "Les Ânes sauvages",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "1a404dde-8d1f-4777-94ac-bbb1f667ae37",
+        "name": "Magic-Cinéma-Palace",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "877b38af-006d-4d51-8054-17fd32023797",
+        "name": "Restaurant de Magic City",
+        "category": "Restaurant",
+        "status": "Removed"
+      },
+      {
+        "id": "b759a602-71c6-4778-af30-92b32c95a769",
+        "name": "Salles de bal de Magic City",
+        "category": "Show",
+        "status": "Removed"
+      },
+      {
+        "id": "96b5bf41-da28-43b5-ba27-eb208d2783ff",
+        "name": "Scénic Railway",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "e11a257f-f4f6-40b3-bd04-5310a8a15190",
+        "name": "Skating de Magic City",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ]
+  },
+  "attractionImages": [
+    {
+      "id": "1c468434-979b-4281-90af-01a4b01c353b",
+      "name": "La Maison du Rire"
+    },
+    {
+      "id": "acd58084-d453-40ae-9b23-9f63bd56fc2b",
+      "name": "Le Jardin d’enfants"
+    }
+  ],
+  "allItemImageCounts": [
+    {
+      "id": "8f8bd3e2-90a6-4f90-a99e-5f41084910c2",
+      "name": "Electra",
+      "category": "Show",
+      "images": 0
+    },
+    {
+      "id": "430ce6d6-a6c0-4bc2-9508-43ca3a324da6",
+      "name": "Entrée principale de Magic City",
+      "category": "Service",
+      "images": 0
+    },
+    {
+      "id": "ba8c7c69-889a-44a5-a2c4-0d581e1a599a",
+      "name": "La Banquette magique",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "4249fc07-d0d5-49fa-a491-abc1e0eccbd6",
+      "name": "La Cascade (Water Chute)",
+      "category": "Attraction",
+      "images": 3
+    },
+    {
+      "id": "6a952525-c1f2-4853-a8f2-a011d8a7748c",
+      "name": "La Création",
+      "category": "Show",
+      "images": 1
+    },
+    {
+      "id": "1c468434-979b-4281-90af-01a4b01c353b",
+      "name": "La Maison du Rire",
+      "category": "Attraction",
+      "images": 0
+    },
+    {
+      "id": "539300d8-e246-4019-b53b-e0168723f366",
+      "name": "La Piste de bobsleigh",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "a1c6d53d-54e1-4b08-b8e2-6c3b3f120a28",
+      "name": "La Roulette humaine",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "3bcc41f0-57c6-44dd-b39c-33449b5fd3e0",
+      "name": "Le Bowling",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "acd58084-d453-40ae-9b23-9f63bd56fc2b",
+      "name": "Le Jardin d’enfants",
+      "category": "Attraction",
+      "images": 0
+    },
+    {
+      "id": "0f7db2ad-b4b7-485c-b5e4-e0592c54c4ca",
+      "name": "Le Kiosque à musique",
+      "category": "Show",
+      "images": 1
+    },
+    {
+      "id": "fdc24b20-c6e8-47ad-a24f-7372331329bb",
+      "name": "Le Palais persan",
+      "category": "Show",
+      "images": 0
+    },
+    {
+      "id": "f06ecf42-edce-4f0d-98e8-046cd8562fcb",
+      "name": "Le Paquebot fantastique",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "5d1f9f4e-274c-41f2-8c62-6c42e94a1acd",
+      "name": "Le Pont de la Folie",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "973e99a7-9780-4118-9127-8865072831fb",
+      "name": "Le Théâtre japonais",
+      "category": "Show",
+      "images": 0
+    },
+    {
+      "id": "ca8a4397-a035-46be-8462-b6af64fd2a23",
+      "name": "Le Toboggan",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "443ae60e-557e-40ae-aa05-f8b1a52e6e84",
+      "name": "Les Gondoles vénitiennes",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "b991ab6e-bf1a-4b63-8ed9-3c01c3aec29f",
+      "name": "Les Sirènes",
+      "category": "Show",
+      "images": 0
+    },
+    {
+      "id": "535feb38-91e8-445f-9314-8256a7b2f210",
+      "name": "Les Ânes sauvages",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "1a404dde-8d1f-4777-94ac-bbb1f667ae37",
+      "name": "Magic-Cinéma-Palace",
+      "category": "Show",
+      "images": 1
+    },
+    {
+      "id": "877b38af-006d-4d51-8054-17fd32023797",
+      "name": "Restaurant de Magic City",
+      "category": "Restaurant",
+      "images": 2
+    },
+    {
+      "id": "b759a602-71c6-4778-af30-92b32c95a769",
+      "name": "Salles de bal de Magic City",
+      "category": "Show",
+      "images": 4
+    },
+    {
+      "id": "96b5bf41-da28-43b5-ba27-eb208d2783ff",
+      "name": "Scénic Railway",
+      "category": "Attraction",
+      "images": 1
+    },
+    {
+      "id": "e11a257f-f4f6-40b3-bd04-5310a8a15190",
+      "name": "Skating de Magic City",
+      "category": "Attraction",
+      "images": 1
+    }
+  ],
+  "importantItemPhotographs": {
+    "withAtLeast3": 2,
+    "total": 18,
+    "definition": "All 14 identified attractions plus the ballrooms, Création, Palais persan and cinema.",
+    "items": [
+      {
+        "id": "ba8c7c69-889a-44a5-a2c4-0d581e1a599a",
+        "name": "La Banquette magique",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "4249fc07-d0d5-49fa-a491-abc1e0eccbd6",
+        "name": "La Cascade (Water Chute)",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "6a952525-c1f2-4853-a8f2-a011d8a7748c",
+        "name": "La Création",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "1c468434-979b-4281-90af-01a4b01c353b",
+        "name": "La Maison du Rire",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "539300d8-e246-4019-b53b-e0168723f366",
+        "name": "La Piste de bobsleigh",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "a1c6d53d-54e1-4b08-b8e2-6c3b3f120a28",
+        "name": "La Roulette humaine",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "3bcc41f0-57c6-44dd-b39c-33449b5fd3e0",
+        "name": "Le Bowling",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "acd58084-d453-40ae-9b23-9f63bd56fc2b",
+        "name": "Le Jardin d’enfants",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "fdc24b20-c6e8-47ad-a24f-7372331329bb",
+        "name": "Le Palais persan",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "f06ecf42-edce-4f0d-98e8-046cd8562fcb",
+        "name": "Le Paquebot fantastique",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "5d1f9f4e-274c-41f2-8c62-6c42e94a1acd",
+        "name": "Le Pont de la Folie",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "ca8a4397-a035-46be-8462-b6af64fd2a23",
+        "name": "Le Toboggan",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "443ae60e-557e-40ae-aa05-f8b1a52e6e84",
+        "name": "Les Gondoles vénitiennes",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "535feb38-91e8-445f-9314-8256a7b2f210",
+        "name": "Les Ânes sauvages",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "1a404dde-8d1f-4777-94ac-bbb1f667ae37",
+        "name": "Magic-Cinéma-Palace",
+        "category": "Show",
+        "images": 1
+      },
+      {
+        "id": "b759a602-71c6-4778-af30-92b32c95a769",
+        "name": "Salles de bal de Magic City",
+        "category": "Show",
+        "images": 4
+      },
+      {
+        "id": "96b5bf41-da28-43b5-ba27-eb208d2783ff",
+        "name": "Scénic Railway",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e11a257f-f4f6-40b3-bd04-5310a8a15190",
+        "name": "Skating de Magic City",
+        "category": "Attraction",
+        "images": 1
+      }
+    ],
+    "qualification": "Context images of Skating and Bowling show their signs, not the interior experience; whole source composite files count once, never as two images."
+  },
+  "sourceLimitedCopy": {
+    "Restaurant de Magic City": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Interior/exterior originalpostcards give precise architecture, no menu/chef/operatingdetail. Removed generic conclusion instead of padding to3paragraphs. Sources ParisDAC314, Paris1900PADinterior, CPAramaPADexterior andindexedCarnavaletstaircase."
+    },
+    "Scénic Railway": {
+      "languages": 8,
+      "paragraphs": 3,
+      "reason": "Shorter historical account grounded in two periodphotographs andRCDB/Captain; no inventedrideexperience or dates."
+    },
+    "La Cascade (Water Chute)": {
+      "languages": 8,
+      "paragraphs": 3,
+      "reason": "Historic photos provide specific setting and visitor scenes; uncertainoperatingdetails excluded."
+    },
+    "La Banquette magique": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Original postcard and contemporary press checked; no verified interior staging or attraction mechanism. Specific visible setting described without padding or invented operation. Sources Paris1900 original postcards and CPArama reproduction of Le Petit Journal 6 July 1911."
+    },
+    "La Création": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Original postcard and contemporary press checked; no verified interior staging or attraction mechanism. Specific visible setting described without padding or invented operation. Sources Paris1900 original postcards and CPArama reproduction of Le Petit Journal 6 July 1911."
+    },
+    "Entrée principale de Magic City": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two original postcard scenes personally inspected, official Paris historical overview and specialist/auction searches cross-checked. No reliable additional attraction-specific mechanism, exact operational dates or interior details; two specific paragraphs retained without generic length padding."
+    },
+    "La Roulette humaine": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Two original postcard scenes personally inspected, official Paris historical overview and specialist/auction searches cross-checked. No reliable additional attraction-specific mechanism, exact operational dates or interior details; two specific paragraphs retained without generic length padding."
+    },
+    "Les Gondoles vénitiennes": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Original PAD/Publicitas postcards personally inspected, contemporary press naming and archive searches reviewed. No invented navigation mechanism or interior show. Two precise paragraphs per item; source-limited historical account."
+    },
+    "Le Paquebot fantastique": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Original PAD/Publicitas postcards personally inspected, contemporary press naming and archive searches reviewed. No invented navigation mechanism or interior show. Two precise paragraphs per item; source-limited historical account."
+    },
+    "Le Pont de la Folie": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Distinct PAD/Publicitas original postcards and Le Petit Journal 4 April 1914 via CPArama personally reviewed. Mechanisms, exact opening dates and Chemin du Bonheur identity remain unproven; concise visual/historical description without inferring them."
+    },
+    "La Piste de bobsleigh": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Distinct PAD/Publicitas original postcards and Le Petit Journal 4 April 1914 via CPArama personally reviewed. Mechanisms, exact opening dates and Chemin du Bonheur identity remain unproven; concise visual/historical description without inferring them."
+    },
+    "Le Palais persan": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Excelsior20February1914 and LePetitJournal4April1914 viaCPArama, officialParisDAC314 and archive photo searches reviewed. No verified film titles, cast, architecturalinterior or openingdate. Two precise archival paragraphs; 1932 latercinema kept separate pending identity evidence."
+    },
+    "Magic-Cinéma-Palace": {
+      "languages": 8,
+      "paragraphs": 3,
+      "reason": "Specific archival interior or entrance photograph now supplements the period press programme; actual copy remains short because no fuller reliable account of the experience or exact opening/closing dates was found."
+    },
+    "Skating de Magic City": {
+      "languages": 8,
+      "paragraphs": 3,
+      "reason": "Specific archival interior or entrance photograph now supplements the period press programme; actual copy remains short because no fuller reliable account of the experience or exact opening/closing dates was found."
+    },
+    "Le Kiosque à musique": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Skating: original PAD staircase postcard, ParisDAC314 and CPArama1919reopening account; prior categoryfiller removed. Kiosk: named PAD22 postcard and CPArama concertaccount. No invented exact dates, rinkdimensions, concertrepertoire or directorship. Two specific paragraphs, source-limited historical descriptions."
+    },
+    "Electra": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "Le Petit Journal6July1911 reproduced byCPArama checked; targetedname searches plus officialParis/museum/BnF/archivecollections searched. One concise factualparagraph deliberately retained rather than inventing experience or filling threeparagraphs. Miniature livingperformers verified, no cast/programme or independentstagephotograph found; opticalengineering omitted from publiccopy.",
+      "finalAuditRequired": true
+    },
+    "Le Jardin d’enfants": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "Le Petit Journal6July1911 reproduced byCPArama checked; targetedname searches plus officialParis/museum/BnF/archivecollections searched. One concise factualparagraph deliberately retained rather than inventing experience or filling threeparagraphs. Small slide explicitly documented. Other games, layout, age limits and precise location unknown; no currentaccessadvice.",
+      "finalAuditRequired": true
+    },
+    "Les Sirènes": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "Le Petit Journal6July1911 reproduced byCPArama checked; targetedname searches plus officialParis/museum/BnF/archivecollections searched. One concise factualparagraph deliberately retained rather than inventing experience or filling threeparagraphs. Only named performance verified. No reliable staging, performers, photograph or scenario found. Source limitation is substantial and must remain named in finalaudit.",
+      "finalAuditRequired": true
+    },
+    "La Maison du Rire": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "Le Petit Journal6July1911 reproduced byCPArama checked; targetedname searches plus officialParis/museum/BnF/archivecollections searched. One concise factualparagraph deliberately retained rather than inventing experience or filling threeparagraphs. Included admission is historical1911 only; interior effects, dimensions, exactdates and photographs unknown. No borrowedfunhousecontent.",
+      "finalAuditRequired": true
+    },
+    "Le Toboggan": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Publicitas postcards 3 and 21 personally inspected in the public Éléana/Bibletango archive. Two specific paragraphs replace name-only notices. No exact opening date, engineering sequence or unproved alias asserted; Toboggan and Bassin relationship remains recorded without a separate duplicate."
+    },
+    "Les Ânes sauvages": {
+      "languages": 8,
+      "paragraphs": 2,
+      "reason": "Publicitas postcards 3 and 21 personally inspected in the public Éléana/Bibletango archive. Two specific paragraphs replace name-only notices. No exact opening date, engineering sequence or unproved alias asserted; Toboggan and Bassin relationship remains recorded without a separate duplicate."
+    },
+    "Le Théâtre japonais": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "LePetitJournal6July1911 viaCPArama and original postcard fromtopofballroom with theatre sign personally read. No named plays, performers, cast nationality or exact dates verified. Historicaladvertising attributed as such; one precise paragraph.",
+      "finalAuditRequired": true
+    },
+    "Le Bowling": {
+      "languages": 8,
+      "paragraphs": 1,
+      "reason": "PAD/Publicitas original postcard Vueprise duPalaisPersan personally inspected: clear Bowling sign. Exactyear, interior, lanecount and technicalconfiguration unknown; no inferred1914opening. One factual description, finalaudit limitation retained.",
+      "finalAuditRequired": true
+    }
+  },
+  "inventoryQualification": {
+    "currentOffer": 0,
+    "confirmedFuture": 0,
+    "previousItems": 5,
+    "additionalQualified": [
+      {
+        "key": "magic-roulette-humaine",
+        "name": "La Roulette humaine",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Photographic postcard titled La Roulette humaine; initial twelve attractions in specialist history.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-gondoles-venitiennes",
+        "name": "Les Gondoles vénitiennes",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Alias Rivière de Venise / Rivière vénitienne, one ride. Postcard18 has gondolas belowScenic; PetitJournal6July1911 nameswaterjourney.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-toboggan",
+        "name": "Le Toboggan",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Named in initialtwelve and periodpostcard Un coin vu duToboggan. Do notconflate children’s miniature slide.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-pont-folie",
+        "name": "Le Pont de la Folie",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Initialinventory and specialistcaptionofgeneralview identifybridge. PontdesMaboules possiblealias retained, notcreatedtwice.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-paquebot-fantastique",
+        "name": "Le Paquebot fantastique",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "PeriodPADpostcard1explicitname, decorativeLusitania visible. No operatingmechanism guessed.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-anes-sauvages",
+        "name": "Les Ânes sauvages",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Initialinventory confirmsnamedattraction; livinganimal vsmechanicaldevice notproved. No Animal classification guessed.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-banquette-magique",
+        "name": "La Banquette magique",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Periodpostcard12explicitname andscene ofparticipants onbench; initialinventory.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099",
+          "http://paris1900.lartnouveau.com/paris07/lieux/magic_city.htm"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-bobsleigh",
+        "name": "La Piste de bobsleigh",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Bobsleigh namedinitialinventory andwinter-sportsChamonixApril1914; firstopeningnotpreciselyproved. No rollercoaster classification.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1914",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-creation",
+        "name": "La Création",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Periodpostcard LaCréation exterior, linkedtoCreationduMonde inPetitJournal6July1911. Showeffectdetailslimited.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099",
+          "http://paris1900.lartnouveau.com/paris07/lieux/magic_city.htm"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-electra",
+        "name": "Electra",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "PetitJournal6July1911 quotedinCPArama describesopticalpresentation ofperformers. No inventedtechnicalspecs.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-sirenes",
+        "name": "Les Sirènes",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Namedshow inPetitJournal6July1911 reproduction; exactstagingunproved.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-theatre-japonais",
+        "name": "Le Théâtre japonais",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Namedstage inPetitJournal6July1911 reproduction; castsandprogrammeunproved.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-jardin-enfants",
+        "name": "Le Jardin d’enfants",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "PetitJournal6July1911 mentionschildren’sgardenwithsmallslide, distinctlargeToboggan.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-maison-rire",
+        "name": "La Maison du Rire",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Namedvisitorattraction inPetitJournal6July1911; rooms/effectsnotproved.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-kiosque-musique",
+        "name": "Le Kiosque à musique",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "PADpostcard22WaterChuteetKiosqueàMusique, dailyconcerts corroboratedVilledeParisDAC314.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-palais-persan",
+        "name": "Le Palais persan",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Venue confirmedofficialDAC314andExcelsior20Feb1914quotation; do notinvent1930s closureday.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1914",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-cinema-palace",
+        "name": "Magic-Cinéma-Palace",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Excelsior20Feb1914 andPetitJournal4Apr1914filmprogramme; cinema independentlyconfirmedofficialDAC314.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1914",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-entree-principale",
+        "name": "Entrée principale de Magic City",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "Largearch onquaidOrsay/avenueBosquet inperiodentrancephotograph, notthelaterRueUniversité ballroomentrance.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099",
+          "http://paris1900.lartnouveau.com/paris07/lieux/magic_city.htm"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Earliestattestation is not a proved openingdate. Period retained forresearch; no falseprecision.",
+        "knownByYear": "1911",
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      },
+      {
+        "key": "magic-bowling",
+        "name": "Le Bowling",
+        "decision": "qualified historicalinternalparkItem",
+        "proof": "BOWLING signclearlyvisibleperiodPADpostcardVuepriseduPalaisPersan; preciseopeningunknown.",
+        "sourceUrls": [
+          "https://www.cparama.com/forum/viewtopic.php?p=242099"
+        ],
+        "individualOpeningDate": null,
+        "reasonDate": "Undated period photograph confirms the Bowling sign; no individual opening year can be inferred.",
+        "knownByYear": null,
+        "gps": null,
+        "gpsReason": "Demolishedsite; street/pictorialmap insufficientfora preciseindividualpoint."
+      }
+    ],
+    "unresolvedCandidates": [
+      "Chemin de fer panoramique: postcardshows samegrottoasScenicRailway; possiblealiasdespitespecialistlistseparating. No creationuntilresolved.",
+      "Manège aérien photographed1913: temporary/permanentidentity andpossiblefauteuilstournantsaliasunresolved.",
+      "Cakewalk: Wikipediaonly, sourcequalificationpending.",
+      "Bassin desNigauds / corde surleau / PalaisdesFleurs / Planètes / RouedelaDanse / Chemin duBonheur / Artsvivants / WaltzRide / Tourbillon / LifeTargets: namedperiodpress leads; qualifyidentity/aliasesbeforeadditionalcreation.",
+      "Canadian Shooting Gallery: sign visible beside Scenic; relation to LifeTargets and Pathé cine-target unknown.",
+      "Enigma, Balles russes lumineux, Étoiles Lilliput, Au Logis des Humoristes, Visions esthétiques and skating-bear performance: secondary archive reports programmes; durable identities, dates and possible aliases not established. No invented permanent item.",
+      "Chemin du Bonheur: named together with Bobsleigh on postcard. Separate entrance or independent experience not proved.",
+      "Pont des Maboules: probable Pont de la Folie alias, retained as qualification lead; not created twice."
+    ],
+    "zones": "No verifiedofficialzoneorganisation; no syntheticzones.",
+    "sourcesConsulted": [
+      "Paris.fr2025",
+      "ParisDAC3142024PDF",
+      "RCDB21209/21210",
+      "CaptainCoaster6039",
+      "ParisMuséesindexedpostcardcatalogue:live503",
+      "CPArama2024historicalresearchwithperiodpressreferences",
+      "Paris1900originalpostcards; narrative1900openingrejected",
+      "Commons/BnF/AgenceRol",
+      "Bibletango",
+      "André Vagnon / Éléana public book excerpt",
+      "Éléana/Bibletango interactive archive and PAD/Publicitas postcards 3,10,21",
+      "Farid Chenoune English published research PDF",
+      "INA fonds Fernsehsender Paris",
+      "Paris Commission du Vieux Paris 4 July 2022: later property history, conflicting dates not adopted"
+    ],
+    "latestSourceReviewAtUtc": "2026-10-23T09:14:48.725862+00:00",
+    "tourEvidence": {
+      "url": "https://magic-city.bibletango.com",
+      "provenance": "André Vagnon / Éléana public documentary tour, 2016. Public runtime and original image files personally examined. Modern visualization is neither an operator map nor a park logo.",
+      "decisions": [
+        {
+          "name": "Les Ânes sauvages",
+          "decision": "PAD/Publicitas postcard 3 identifies artificial donkey mounts; no live-animal enclosure and no engineered motion asserted."
+        },
+        {
+          "name": "Toboggan / Bassin des Nigauds",
+          "decision": "PAD/Publicitas postcard 21 names both together. Retain one existing Toboggan entity, no separate Bassin until independence is established."
+        },
+        {
+          "name": "Chemin de fer panoramique / Scenic Railway",
+          "decision": "Multiple period views show the same grotto frontage and railway setting; sources conflict on separate identities. No second entity created."
+        },
+        {
+          "name": "Magic-Cinéma-Palace",
+          "decision": "Wartime entrance photo identifies the prewar cinema sign. Later 1932 cinema building not conflated."
+        }
+      ]
+    }
+  },
+  "individualDatesAndHistory": {
+    "finding": "Exact opening/removal dates remain unproved for most individual attractions. No artificial parkItem opening or closure event was generated from the park dates. Existing Scénic Railway chronology to 1934 conflicts with the official park closure in 1926 and remains explicitly unresolved.",
+    "items": [
+      {
+        "id": "8f8bd3e2-90a6-4f90-a99e-5f41084910c2",
+        "name": "Electra"
+      },
+      {
+        "id": "430ce6d6-a6c0-4bc2-9508-43ca3a324da6",
+        "name": "Entrée principale de Magic City"
+      },
+      {
+        "id": "ba8c7c69-889a-44a5-a2c4-0d581e1a599a",
+        "name": "La Banquette magique"
+      },
+      {
+        "id": "4249fc07-d0d5-49fa-a491-abc1e0eccbd6",
+        "name": "La Cascade (Water Chute)"
+      },
+      {
+        "id": "6a952525-c1f2-4853-a8f2-a011d8a7748c",
+        "name": "La Création"
+      },
+      {
+        "id": "1c468434-979b-4281-90af-01a4b01c353b",
+        "name": "La Maison du Rire"
+      },
+      {
+        "id": "539300d8-e246-4019-b53b-e0168723f366",
+        "name": "La Piste de bobsleigh"
+      },
+      {
+        "id": "a1c6d53d-54e1-4b08-b8e2-6c3b3f120a28",
+        "name": "La Roulette humaine"
+      },
+      {
+        "id": "3bcc41f0-57c6-44dd-b39c-33449b5fd3e0",
+        "name": "Le Bowling"
+      },
+      {
+        "id": "acd58084-d453-40ae-9b23-9f63bd56fc2b",
+        "name": "Le Jardin d’enfants"
+      },
+      {
+        "id": "0f7db2ad-b4b7-485c-b5e4-e0592c54c4ca",
+        "name": "Le Kiosque à musique"
+      },
+      {
+        "id": "fdc24b20-c6e8-47ad-a24f-7372331329bb",
+        "name": "Le Palais persan"
+      },
+      {
+        "id": "f06ecf42-edce-4f0d-98e8-046cd8562fcb",
+        "name": "Le Paquebot fantastique"
+      },
+      {
+        "id": "5d1f9f4e-274c-41f2-8c62-6c42e94a1acd",
+        "name": "Le Pont de la Folie"
+      },
+      {
+        "id": "973e99a7-9780-4118-9127-8865072831fb",
+        "name": "Le Théâtre japonais"
+      },
+      {
+        "id": "ca8a4397-a035-46be-8462-b6af64fd2a23",
+        "name": "Le Toboggan"
+      },
+      {
+        "id": "443ae60e-557e-40ae-aa05-f8b1a52e6e84",
+        "name": "Les Gondoles vénitiennes"
+      },
+      {
+        "id": "b991ab6e-bf1a-4b63-8ed9-3c01c3aec29f",
+        "name": "Les Sirènes"
+      },
+      {
+        "id": "535feb38-91e8-445f-9314-8256a7b2f210",
+        "name": "Les Ânes sauvages"
+      },
+      {
+        "id": "1a404dde-8d1f-4777-94ac-bbb1f667ae37",
+        "name": "Magic-Cinéma-Palace"
+      },
+      {
+        "id": "877b38af-006d-4d51-8054-17fd32023797",
+        "name": "Restaurant de Magic City"
+      },
+      {
+        "id": "b759a602-71c6-4778-af30-92b32c95a769",
+        "name": "Salles de bal de Magic City"
+      },
+      {
+        "id": "96b5bf41-da28-43b5-ba27-eb208d2783ff",
+        "name": "Scénic Railway"
+      },
+      {
+        "id": "e11a257f-f4f6-40b3-bd04-5310a8a15190",
+        "name": "Skating de Magic City"
+      }
+    ]
+  },
+  "accessConditions": {
+    "verifiedConditions": 0,
+    "attractionsResearched": 14,
+    "reason": "Period programme, postcards and archival press do not establish reliable height, age, accompaniment or medical conditions. None inferred from photographs."
+  },
+  "founderOperatorManufacturer": {
+    "linkedReferences": 0,
+    "reason": "Brown is documented as constructor/director, not a verified sole founder. Ownership, lease and operating-company chronology require qualification before assigning global references; no shared reference rewritten."
+  },
+  "hoursPricingCurrent": {
+    "applicable": false,
+    "reason": "Park definitively closed in 1926; ballroom activity thereafter is not an operating amusement park. No current calendar or pricing created."
+  },
+  "historyImages": {
+    "magic-paris-1911-opening": {
+      "selection": "Contextual entrance photograph of1914 byLansiaux; not openingceremony. OfficialParis andmuseum/BnFpostcard searches didnotfind reusable inaugurationphoto."
+    },
+    "magic-paris-1914-war-closure": {
+      "selection": "Actual wartimephotos showing soldiers andshoefactory, pairedsourceoriginal preserved."
+    },
+    "magic-paris-1926-park-closure": {
+      "selection": "Contextual laterdemolitionphoto19April1928;captionstatesactualdate, notclaimed1926closurephoto."
+    },
+    "magic-paris-1928-rue-cognacq-jay": {
+      "selection": "ActualdemolitionphotographAndréGardès, LePetitJournal19April1928, plannedstreetmarked."
+    },
+    "magic-paris-ballrooms-1934-mid-lent-ban": {
+      "selection": "Contemporary1934seasonphotographinMarianne,poster17February; explicitlypredatesprohibition, nofalseimageofcancelledball."
+    },
+    "magic-paris-ballroom-1943-television": {
+      "selection": "Actual1943studiointeriorafterconversion, Bibletango before/afterpairpersonallychecked."
+    },
+    "magic-paris-2025-history-panel": {
+      "selection": "Actual2025panelphoto stillsought; no substitutionyet."
+    },
+    "2025MemorialContextFallback": {
+      "eventKey": "magic-paris-2025-history-panel",
+      "imageId": "488d164ef99142d9b572d80b3a468043",
+      "reason": "Paris.fr official commemoration, named 17 November 2025 panel, photo searches and memorial queries found no downloadable identified photograph of the panel. Historical 1914 entrance photo contextualizes the place commemorated; retained caption explicitly identifies 1914 and does not claim to show the inauguration."
+    }
+  },
+  "sources": {
+    "checks": "sources/09-history-source-checks.json",
+    "unreachableLinkReplaced": "INHA returns 503; same Farid Chenoune research preserved through accessible Duperré English PDF. Original source record retained in 08-source-url-replacements.json."
+  }
+}

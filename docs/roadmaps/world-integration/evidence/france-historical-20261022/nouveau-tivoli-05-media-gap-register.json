@@ -1,0 +1,113 @@
+{
+  "reviewedAt": "2026-11-02T21:25:38.409758+00:00",
+  "parkId": "78f95c85-02a3-4b8d-b383-ab3b08bb0c22",
+  "illustrations": 4,
+  "actualPhotographs": 0,
+  "parkIllustrations": 3,
+  "itemIllustrations": 1,
+  "actualGeneralPhotos": "0/5",
+  "majorItemsWith3Photos": "0/9",
+  "attractionsWithFaithfulImage": "1/5",
+  "logo": {
+    "present": false,
+    "blocker": "No authentic standalone historical park emblem identified. Poster lettering, museum marks, portrait and modernTivolicar/hotel logos are not substitutes. Park not genuinely very small; no exception inferred."
+  },
+  "officialMaps": {
+    "count": 0,
+    "years": [],
+    "finding": "No operator-issued annual visitor edition found. Girard1836 cityplan and18thestateplans are not officialparkmaps. 9eHistoire lotissementimage actually has modernstreetoverlay includingAdolpheMax; not an original1841operatorplan. No edition/year invented."
+  },
+  "sourcesSearched": [
+    "https://www.neufhistoire.fr/articles.php?lng=fr&pg=2324&prt=1",
+    "https://www.parismuseescollections.paris.fr/fr/musee-carnavalet/oeuvres/une-allee-des-marronniers-dans-le-parc-de-l-ancien-tivoli-en-1835-angle-de",
+    "https://cnum.cnam.fr/pgi/redir.php?ident=8XAE559.2&onglet=d",
+    "https://www.histv.net/robertson",
+    "https://www.rollerenligne.com/dossier/jean-garcin-lun-des-pionniers-francais-de-patinage-a-roulettes/",
+    "https://artefake.fr/fantasmagorie-de-robertson/",
+    "https://commons.wikimedia.org/wiki/Category:Jardin_de_Tivoli,_Paris",
+    "https://www.caue75.fr/content/vers-paris-2050_ilot-parisien"
+  ],
+  "ownerGaps": [
+    {
+      "itemId": "276f0a33-50c6-4c2e-8b43-08057ebc034d",
+      "key": "courses-eoliennes",
+      "images": 0,
+      "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+    },
+    {
+      "itemId": "d6a51eea-4a6e-495e-817f-a449640f977c",
+      "key": "balancoires",
+      "images": 0,
+      "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+    },
+    {
+      "itemId": "19dae9a4-58a3-482c-88bb-0bad898040ad",
+      "key": "tir-pigeons",
+      "images": 1,
+      "reason": "One explicitly captioned historicalengraving retained. No actualphotos or distinctadditionalviews found."
+    },
+    {
+      "itemId": "982819fb-8db7-4ab3-afa4-2e925781e929",
+      "key": "patinage-ete",
+      "images": 0,
+      "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+    },
+    {
+      "itemId": "2143c68a-93eb-470f-9ed4-1fb3cb013ade",
+      "key": "cabinet-physique",
+      "images": 0,
+      "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+    },
+    {
+      "itemId": "f0922670-232a-4af8-bb5c-4a458cc830c6",
+      "key": "fantasmagories",
+      "images": 0,
+      "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+    },
+    {
+      "itemId": "89de0d71-ee51-494f-8e20-8515e022b3ff",
+      "key": "femme-invisible",
+      "images": 0,
+      "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+    },
+    {
+      "itemId": "89636f10-2db6-463b-bbdc-88d10dd5a4b4",
+      "key": "bals",
+      "images": 0,
+      "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+    },
+    {
+      "itemId": "e15a8399-0bbe-4c23-8149-5ede6cf1b57e",
+      "key": "carrousel-caroline",
+      "images": 0,
+      "reason": "Historical site demolished1841–42. No unambiguous image of this preciseinstallation found in museum, archive and specialist sources."
+    }
+  ],
+  "rejectedOrDeferred": [
+    {
+      "file": "delarue-1827.jpg",
+      "reason": "MuseumTivoli1827productiondate alone does not resolve whether depiction is GrandTivoli or NouveauTivoli; no import."
+    },
+    {
+      "file": "cnam-eoliennes-p355.gif",
+      "reason": "Booktext proves1827trials, adjacentalphabetillustrationgeneric notexactride; no import or GIFconversion."
+    },
+    {
+      "file": "emplacements-garcin.jpg",
+      "reason": "Moderncomparisonmap two skatingschoollocations; not pictureofinstallation, notofficialparkmap; no import."
+    },
+    {
+      "file": "plan-lotissement.jpg",
+      "reason": "Modernstreetsoverlay explicitAdolpheMax/rueBallu on18thestateplan; notphotograph andnotdated1841operator map. Retainresearchonly."
+    },
+    {
+      "file": "ohio-figure59.png",
+      "reason": "1845L’Illustration image is DIFFERENT from accepted9eHistoiretir image; potentiallyrueRocherhomonym, excluded."
+    },
+    {
+      "source": "https://fitasc.info/sp/content/11/1",
+      "reason": "Two503responses, stoppedrepeatdownloads; searchcaption1830notused asdateofacceptedengraving withoutvisualcomparison."
+    }
+  ],
+  "founderPortraitLimit": "Nativeportrait prepared asFounder import rejected locally beforeAPI; sameportrait imported once assecondaryPark articleillustration. No wronglycategorizedlogo or duplicate. Founder8languagebiography complete, referenceimage remainsunfilled."
+}
