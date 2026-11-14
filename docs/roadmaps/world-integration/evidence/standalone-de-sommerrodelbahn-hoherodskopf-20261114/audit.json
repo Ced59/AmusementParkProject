@@ -1,0 +1,105 @@
+{
+  "work": "The Wiegand operator currently lists its fixed Hoherodskopf summer toboggan trough, separate ticket, prices, age rules and weather-dependent operation. Official editor searches for Hoherodskopf and Sommerrodelbahn Hoherodskopf found neither a standalone nor a Park. Two exact Commons photographs, showing the 2023 lift and 2006 downhill trough, were visually checked and published with full credits in eight languages. Eight public pages and both image binaries returned HTTP 200 before Facebook publication.",
+  "qualification": "The ski and toboggan arena is a broader mountain destination; the separately ticketed fixed summer run is the appropriate standalone. Two backlog clues describe this same installation, so the venue clue is retained as a duplicate.",
+  "sources": {
+    "operatorRide": "https://www.ski-und-rodelarena-hoherodskopf.de/sommersaison/sommerrodelbahn/",
+    "operatorPrices": "https://www.ski-und-rodelarena-hoherodskopf.de/infos/preise/preise-sommer/",
+    "operatorCurrentHours": "https://www.ski-und-rodelarena-hoherodskopf.de/infos/oeffnungszeiten/",
+    "tourismSite": "https://www.erlebnisberg-hoherodskopf.de/sommerrodelbahn/",
+    "liftCommons": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Hoherodskopf.jpg",
+    "trackCommons": "https://commons.wikimedia.org/wiki/File:Hoherodskopf_suedblick_an_der_sommerrodelbahn_ds_06_2066.jpg"
+  },
+  "duplicateSearches": {
+    "standaloneHoherodskopfDE": 0,
+    "standaloneSommerrodelbahnHoherodskopfDE": 0,
+    "parkHoherodskopf": 0,
+    "backlogVenueClue": "DE-candidate-a345b088e91866"
+  },
+  "entity": {
+    "id": "f95ad842-8a79-4067-a063-0cf1fc625349",
+    "name": "Sommerrodelbahn Hoherodskopf",
+    "kind": "StandaloneAttraction",
+    "countryCode": "DE",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "3f9e3ab8-60bd-4d86-8e07-18b0992b1741",
+      "appliedAtUtc": "2026-11-14T18:41:07.135Z",
+      "summary": "Created hidden summer toboggan run, eight descriptions and technical details."
+    },
+    {
+      "imageId": "cc698bb56c604f5097376765b39141a2",
+      "summary": "Imported 2023 lift photo, CC BY-SA 4.0."
+    },
+    {
+      "imageId": "93e9f574a3104023883a25f20625a3f8",
+      "summary": "Imported 2006 downhill track photo, CC BY-SA 3.0."
+    },
+    {
+      "operationId": "ad07e5fa-ef1b-48b5-a601-f1b13275637d",
+      "appliedAtUtc": "2026-11-14T18:43:46.645Z",
+      "summary": "Added six official EUR fares and two access conditions."
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "cc698bb56c604f5097376765b39141a2",
+      "subject": "Exact lift track",
+      "author": "Freak-Line-Community",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2023-08-15",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "93e9f574a3104023883a25f20625a3f8",
+      "subject": "Exact downhill trough",
+      "author": "Dirk Schmidt (Celsius)",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2006-06",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "pricingDecision": "Six operator fares in EUR verified 2026-11-14, single, six and ten rides for adults and children. Ten-ride tickets online only.",
+    "hoursDecision": "Operator live status says closed as of 2026-11-14, with conditional weekend opening. It also gives high/low-season ranges; no guaranteed weekly hours structured because weather and seasonal status require live confirmation.",
+    "accessConditions": 2,
+    "coordinatesDecision": "Approximate lift point from GPS of the exact 2023 Commons photo."
+  },
+  "audit": {
+    "completenessScore": 88,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/f95ad842-8a79-4067-a063-0cf1fc625349/sommerrodelbahn-hoherodskopf",
+    "sitePublishedAtUtc": "2026-11-14T18:45:18.985Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:d413473f-100f-455b-af82-3cca2848f347",
+    "facebookStatus": "Published",
+    "facebookId": "e9e8a597307149b5bf6133720ff0842d",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127358065424431",
+    "facebookPublishedAtUtc": "2026-11-14T18:46:05.809Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T18:43:46.645Z",
+  "remainingGaps": [
+    "Check live operator status before every visit; weather-dependent and seasonal hours are not represented by a stable weekly calendar.",
+    "Confirm exact entrance coordinates on an official map.",
+    "The 2023 lift photo is current; the downhill track photo is explicitly historical (2006)."
+  ]
+}
