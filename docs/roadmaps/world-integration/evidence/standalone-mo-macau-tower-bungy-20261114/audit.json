@@ -1,0 +1,108 @@
+{
+  "work": "Qualified the former combined Skypark Macau Tower clue against official Park and StandaloneAttraction searches. No Macau Tower or Bungy entity existed; the generic hidden SkyPark Park has no location and holds a retired Cyclone roller coaster, so is unrelated. Created the Macau Tower Bungy Jump as a separately ticketed fixed attraction, with eight descriptions, official current price and access rules, two exact licensed photographs, eight public pages and two image binaries HTTP 200, and a published Facebook post.",
+  "qualification": "Skypark Macau Tower offers several distinct activities in a tourist observation tower. This entry covers only the Bungy Jump; Skyjump, Skywalk and Tower Climb remain separate candidates. The historic 2009 photograph shows an actual Macau Tower Bungy jump; the 2023 photograph shows its Level 61 zone.",
+  "sources": {
+    "operatorBungy": "https://www.skyparkmacau.com/activities/bungy",
+    "operatorParkInfo": "https://www.skyparkmacau.com/park-info",
+    "operatorActivities": "https://www.skyparkmacau.com/activities",
+    "jumpCommons": "https://commons.wikimedia.org/wiki/File:Bungee_jumping_from_Macau_Tower,_2009_(3455431798).jpg",
+    "platformCommons": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Level_61_Bungee_Jumping_16-03-2023(1).jpg",
+    "openStreetMapTower": "https://www.openstreetmap.org/search?query=Macau%20Tower"
+  },
+  "duplicateSearches": {
+    "standaloneSkyparkMacau": 0,
+    "standaloneMacauTower": 0,
+    "parkSkyparkMacau": 0,
+    "parkMacauTower": 0,
+    "genericSkyPark": "aa1d0d43-2163-462c-b9fd-c27b25fea395; unrelated retired Cyclone item"
+  },
+  "entity": {
+    "id": "1e6aaf84-ba08-4acd-b068-5e0ae206ed29",
+    "name": "Macau Tower Bungy Jump",
+    "kind": "StandaloneAttraction",
+    "countryCode": "MO",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "5bd8cfbe-43f3-43fa-a1fc-810db4ffa905",
+      "appliedAtUtc": "2026-11-14T19:24:20.2008409Z",
+      "summary": "Created hidden Bungy standalone with eight descriptions and tower location."
+    },
+    {
+      "imageId": "78054585a5a8422dbcd32d05e68f164b",
+      "createdAtUtc": "2026-11-14T19:24:58.849Z",
+      "summary": "Imported exact 2009 jump photograph, CC BY 2.0."
+    },
+    {
+      "imageId": "7a34444b1eb74d0f90d1a531de07b95c",
+      "createdAtUtc": "2026-11-14T19:25:19.059Z",
+      "summary": "Imported exact 2023 Bungy platform photograph, CC BY-SA 4.0."
+    },
+    {
+      "operationId": "600c5837-2300-48ab-8f34-ba65065392bf",
+      "appliedAtUtc": "2026-11-14T19:26:29.2925331Z",
+      "summary": "Added MOP 3088 individual Bungy fare and two official access conditions."
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "78054585a5a8422dbcd32d05e68f164b",
+      "subject": "Actual Macau Tower Bungy jump",
+      "author": "Sylvain Kalache",
+      "license": "CC BY 2.0",
+      "photographedAt": "2009-03-30",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "7a34444b1eb74d0f90d1a531de07b95c",
+      "subject": "Actual Macau Tower Bungy platform zone",
+      "author": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2023-03-16",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "pricingDecision": "Operator lists MOP 3088 per person for Bungy, with tower admission; verified 2026-11-14.",
+    "hoursDecision": "Skypark Macau publishes venue hours, but the Bungy jump has booked slots and weather or safety interruptions. No universal attraction weekly schedule was entered.",
+    "accessConditions": 2,
+    "coordinatesDecision": "Macau Tower point from OpenStreetMap; jumping platform is within the tower."
+  },
+  "audit": {
+    "completenessScore": 78,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 2,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/1e6aaf84-ba08-4acd-b068-5e0ae206ed29/macau-tower-bungy-jump",
+    "sitePublishedAtUtc": "2026-11-14T19:27:46.8087432Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:24b7d3da-0c72-4a93-85db-786ab673a7e4",
+    "facebookStatus": "Published",
+    "facebookId": "7f0bde277e8a420b9cd28c0f128e2107",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127363051424431",
+    "facebookPublishedAtUtc": "2026-11-14T19:28:34.2765108Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T19:26:29.292Z",
+  "remainingGaps": [
+    "Review any updated bookable time slots and fare before next visitor-information refresh.",
+    "Find an exact reusable Skyjump photograph before creating that distinct activity.",
+    "Skywalk and Tower Climb also need distinct qualification."
+  ]
+}
