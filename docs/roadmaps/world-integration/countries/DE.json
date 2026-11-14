@@ -9463,38 +9463,69 @@
     },
     {
       "entryId": "DE-candidate-44f688323c6694",
-      "name": "Freizeitpark Sommerrodelbahn",
+      "name": "Freizeitpark Sommerrodelbahn Ibbenbüren",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Fun and Amusement Parks",
-      "locality": "Ibbenbüren",
+      "proposedEntityKind": "Park",
+      "category": "Parc familial",
+      "locality": "Münsterstraße 265, 49479 Ibbenbüren",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-11-14",
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Saison 2026 achevée ; calendrier 2027 annoncé pour février 2027.",
+      "identityConfidence": "Parc confirmé par l’exploitant, plusieurs attractions distinctes ; recherches officielles Park et Standalone « Ibbenbüren » sans résultat le 14 novembre 2026.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sommerrodelbahn Ibbenbüren",
+        "Märchenwald Ibbenbüren"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Créer une fiche Park après vérification des identités et du calendrier 2027 : Sommerrodelbahn historique, Märchenwald, Reise um die Welt, Zwergen-Flitzer et Oldtimer-Express comme attractions distinctes. Rechercher au moins une photo exacte sous licence. Ne pas créer une standalone pour la luge.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/freizeitpark-sommerrodelbahn/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — présentation du parc et centenaire 2026",
+          "url": "https://sommerrodelbahn.de/park/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — attractions et tarifs",
+          "url": "https://sommerrodelbahn.de/park/eintrittspreise/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — fin de saison 2026",
+          "url": "https://sommerrodelbahn.de/park/oeffnungszeiten/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte de la luge",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Ibbenb%C3%BCren.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-14",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Ibbenbüren",
+            "source": "Exploitant",
+            "url": "https://sommerrodelbahn.de/park/sommerrodelbahn/",
+            "family": "Luge d’été",
+            "sourceVenueName": "Freizeitpark Sommerrodelbahn Ibbenbüren"
+          }
+        ],
+        "rationale": "L’exploitant vend aussi Märchenwald, Reise um die Welt, Zwergen-Flitzer et Oldtimer-Express : le lieu est un parc familial multi-attractions."
       }
     },
     {
@@ -23080,11 +23111,11 @@
     },
     {
       "entryId": "DE-park-6935479e-4632-4088-8ab1-a79bf21bee6f",
-      "name": "Sommer-Rodelbahn Bodenwerder",
+      "name": "Rodelpark Bodenwerder",
       "entityKind": "Park",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": null,
-      "locality": null,
+      "locality": "Grüne Schleite 1, 37619 Bodenwerder",
       "siteId": "6935479e-4632-4088-8ab1-a79bf21bee6f",
       "legacySiteIds": [],
       "presence": "Hidden",
@@ -23093,7 +23124,7 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche Park masquée et identité actuelle de l’exploitant confirmées ; plusieurs attractions payantes distinctes.",
       "possibleMatches": [],
       "aliases": [
         "Rodelbahn Bodenwerder"
@@ -23101,7 +23132,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la fiche Park masquée existante comme Rodelpark Bodenwerder, avec la Sommerrodelbahn et l’Adventure Golf comme ParkItems ; vérifier les autres attractions et importer des photos exactes sous licence. Ne pas créer de standalone séparée.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -23132,13 +23163,18 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.rodelpark.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — accueil, parc et attractions",
+          "url": "https://www.rodelpark.de/",
+          "accessedAt": "2026-11-14"
         }
       ],
       "countryCodeAtInventory": "DE",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-14",
         "attractions": [
           {
             "name": "Rodelbahn",
@@ -23160,7 +23196,7 @@
             "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Le site officiel exploite la luge, un Adventure Golf de 12 trous, des bateaux et voitures électriques et une aire de jeux sous une identité commune Rodelpark Bodenwerder. La fiche Park masquée est la bonne cible éditoriale."
       }
     },
     {
