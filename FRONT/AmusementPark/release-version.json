@@ -1,6 +1,20 @@
 {
-  "version": "6.0.36",
+  "version": "6.0.37",
   "history": [
+    {
+      "version": "6.0.37",
+      "releasedAt": "2026-11-14",
+      "labels": {
+        "fr": "Fiabilité des outils de données améliorée",
+        "en": "Improved data tools reliability",
+        "de": "Zuverlässigere Datenwerkzeuge",
+        "nl": "Betrouwbaardere gegevenshulpmiddelen",
+        "it": "Maggiore affidabilità degli strumenti per i dati",
+        "es": "Mayor fiabilidad de las herramientas de datos",
+        "pl": "Większa niezawodność narzędzi danych",
+        "pt": "Maior fiabilidade das ferramentas de dados"
+      }
+    },
     {
       "version": "6.0.36",
       "releasedAt": "2026-11-14",
