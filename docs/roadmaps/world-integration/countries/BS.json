@@ -175,27 +175,48 @@
     {
       "entryId": "BS-candidate-discovery-cc71f37b21c4cd",
       "name": "Up, Up and Away — CocoCay",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
-      "locality": "CocoCay",
-      "siteId": null,
+      "locality": "CocoCay (Little Stirrup Cay), Berry Islands",
+      "siteId": "eb245e32-fab8-49ee-9114-8d7c548707d0",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T18:26:53.000Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Operating — Royal Caribbean page checked 2026-11-14",
+      "identityConfidence": "Ballon et réservation distincte confirmés par l’exploitant ; référence constructeur de 2019",
       "possibleMatches": [],
       "aliases": [
         "Royal Caribbean Cruises CocoCay, Bahamas"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-11-14T18:23:33.752Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c5900b1f-e371-4db7-89eb-87a9451e52d6",
+          "appliedAt": "2026-11-14T18:21:19.922Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eb245e32-fab8-49ee-9114-8d7c548707d0",
+          "evidence": "PARK_DATA_EDITOR:apply:c5900b1f-e371-4db7-89eb-87a9451e52d6",
+          "auditEvidence": null,
+          "summary": "Création masquée du ballon avec descriptions en huit langues"
+        },
+        {
+          "eventId": "apply-e23f28ca-8dd9-4ac4-8897-227a82965ae0",
+          "appliedAt": "2026-11-14T18:23:33.752Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "eb245e32-fab8-49ee-9114-8d7c548707d0",
+          "evidence": "PARK_DATA_EDITOR:apply:e23f28ca-8dd9-4ac4-8897-227a82965ae0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-bs-up-up-away-cococay-20261114/audit.json",
+          "summary": "Conditions de réservation et météo intégrées ; photo et audit final validés"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Rechercher un tarif public daté, le calendrier propre au ballon et les coordonnées exactes de son ancrage ; ne pas republier Facebook.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -206,6 +227,21 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Royal Caribbean — ballon, réservation et conditions météo",
+          "url": "https://www.royalcaribbean.com/cococay-cruises",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Aerophile — ballon captif de CocoCay en 2019",
+          "url": "https://www.aerophile.com/en/clients/royal-caribbean-cruises/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — photo Larry D. Moore, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Balloon_Ride_CocoCay_Bahamas_2024.jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "discovery": {
@@ -214,7 +250,7 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "AlreadyStandalone",
         "reviewedAt": "2026-10-22",
         "attractions": [
           {
@@ -229,7 +265,24 @@
             "referenceId": "aerophile-royal-caribbean-cruises"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Type StandaloneAttraction confirmé par le reçu d’intégration apply-e23f28ca-8dd9-4ac4-8897-227a82965ae0 ; conserver les références de découverte."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/eb245e32-fab8-49ee-9114-8d7c548707d0/up-up-away-cococay",
+          "publishedAtUtc": "2026-11-14T18:24:58.328Z",
+          "verifiedAtUtc": "2026-11-14T18:26:53.000Z",
+          "evidence": "PARK_DATA_EDITOR:apply:abacdc8f-d958-4098-842a-e296434ff446"
+        },
+        "facebook": {
+          "id": "f95bad1291f44a8f894e2f3841a780eb",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T18:26:02.441Z",
+          "externalPostId": "1285475681307050_122127355593424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127355593424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:f95bad1291f44a8f894e2f3841a780eb"
+        }
       }
     }
   ]
