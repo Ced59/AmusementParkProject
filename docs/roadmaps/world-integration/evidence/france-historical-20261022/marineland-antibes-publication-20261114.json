@@ -1,0 +1,5043 @@
+{
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "authorization": "Publie tout avec fb aussi. Les parcs définitivement fermes on peut avoir une tolérance sur la note. Et tu finis l’intégration de tous les parcs francais. Pas seulement les définitivement fermes.",
+  "scoreTolerance": "Explicit owner authorization for permanently closed French parks; factual gaps retained in final audit.",
+  "preflight": {
+    "checkedAtUtc": "2026-11-14T22:44:38.761005+00:00",
+    "publicationExportAtUtc": "2026-11-14T22:39:28.6839719Z",
+    "auditFile": "marineland-antibes-final-audit-20261114.json",
+    "exportSha256": "c72881952f468db90a9b87cfbe84388f69360c12fcbbeb8a9a2d8aec4675de69",
+    "differences": {
+      "total": 25,
+      "editorial": 0,
+      "explanation": "One local symbolic item key canonicalized to its existing UUID; 24 enum casing/underscore normalizations."
+    },
+    "rawPublicStringsChecked": 4164,
+    "encodingIssues": [],
+    "localizedEditorialFields": 2837,
+    "duplicateReview": "42 exact pairs reuse the identical photo caption within its own article; 2 near pairs describe the same Grand Marineland 2000-2002 event in the article and timeline; 2 German pairs are date sentence-splitting artifacts. No generic cross-entity paragraphs.",
+    "eightLanguagesValidated": true,
+    "ownerAuthorization": "Publie tout avec fb aussi. Les parcs définitivement fermes on peut avoir une tolérance sur la note. Et tu finis l’intégration de tous les parcs francais. Pas seulement les définitivement fermes.",
+    "projectedScore": 95,
+    "residualGapsReference": "marineland-antibes-final-audit-20261114.json",
+    "decision": "publish audited contents under owner permanently closed park score tolerance"
+  },
+  "audit": "marineland-antibes-final-audit-20261114.json",
+  "visibilityOperations": [
+    {
+      "batch": "01-images-1",
+      "operationId": "7a590e69-1fb8-4496-9981-3761ab457e60",
+      "appliedAtUtc": "2026-11-14T22:46:02.6516597Z",
+      "counts": {
+        "created": 0,
+        "updated": 26,
+        "deleted": 0,
+        "unchanged": 14,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "35dfbe39-9044-44e7-9e80-cc0249691110",
+          "entityKey": "35dfbe39-9044-44e7-9e80-cc0249691110",
+          "displayName": "Entrée de Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "14e2ac1f-7727-45e7-86fb-c03c63e66c59",
+          "entityKey": "14e2ac1f-7727-45e7-86fb-c03c63e66c59",
+          "displayName": "Lagoon Center",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "1bed7e61-c55a-41a7-8df5-4c3e006c59ab",
+          "entityKey": "1bed7e61-c55a-41a7-8df5-4c3e006c59ab",
+          "displayName": "Manchots de Humboldt — bassin de l’entrée",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2009fa0e-81c4-4ee7-94fc-1c3cbdc61fe8",
+          "entityKey": "2009fa0e-81c4-4ee7-94fc-1c3cbdc61fe8",
+          "displayName": "Neptune Grill",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "297c2783-183f-4338-94d1-a6b865f7d747",
+          "entityKey": "297c2783-183f-4338-94d1-a6b865f7d747",
+          "displayName": "Ocean Dreams Boutique",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "40e5ff7d-66ca-441f-8d3e-abc7e25771b5",
+          "entityKey": "40e5ff7d-66ca-441f-8d3e-abc7e25771b5",
+          "displayName": "Otaries de Californie",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "21cf466e-54fa-49f6-afd2-80874359b282",
+          "entityKey": "21cf466e-54fa-49f6-afd2-80874359b282",
+          "displayName": "Otaries de Steller",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+          "entityKey": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+          "displayName": "Restaurant Antarctica",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+          "entityKey": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+          "displayName": "Soigneur dauphins, l’expérience inédite",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "02be8251dc2949dcaa9c4eea932dd35f",
+          "entityKey": null,
+          "displayName": "0a3e51_960983865d7a449e86612b1f109046a0~mv2.png",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "614769d6ce8e4124a09cf67370db0464",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "3c5268c4ad964840980c08b6884853a7",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "99f10ef88d2649f98f3e22d1d7ba7060",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "dd4ca7e7a0a04ec4870cc96db7915897",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "88e03dd2db3d441eb4448e443dabd429",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "178571da631e488e949c50f9ecb7bef7",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "f6bb041458eb41179cf8f16a42b6bfa0",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "eb70f014fa044a4abfbe3f7850be2f25",
+          "entityKey": null,
+          "displayName": "codex-import.png",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "f518cf14b51840ca8484ec742d2ee23c",
+          "entityKey": null,
+          "displayName": "630e789618d4961067de52e3.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "d90e3f92b082438fa314601feb75af03",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "a3849450b0f94d15bbee686fa0225d83",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "fcd3ec6c0b7748eaa020309c27a9fcc8",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "388408fbd48c42d3a045c4572a0e5e77",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "264a6b1232554963b805315a57c00f2b",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "283a521603624532a15f39b24019d96c",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "9e817ec2a4f344bc8d8edcd49f832885",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "e91bed2e89f54427a7da4b6d36de2d71",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "7122dbb2f2904aa3b661869a8e86fffb",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "c6779982ae0844e380d0c81d8913e8d4",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "84416da7f57e4f0faa7385faf8cca31b",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "3260d6d5fc884896879f29fa21c6bd8d",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "c53cafd1e9b14b02b9ad05a60fede2cc",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "1d349d35e78c494280c9c721ac4e1d1e",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "22f42dbca2ca48d79fc12b9ed29b3bbf",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "02aa6d5713ab4cec8158e73fc18bb589",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "03fb3fa4f912c7517ce28cebebdfc300b7ef483dfe542f95f089e92ff7540ac4",
+      "receiptSha256": "20e15d54532a9d594eba26fddb115e659be995d1d7136982c046fbbbfdd5941f",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "01-images-2",
+      "operationId": "c5293973-8243-4be6-b6ba-f301e5b7ed61",
+      "appliedAtUtc": "2026-11-14T22:46:16.6892129Z",
+      "counts": {
+        "created": 0,
+        "updated": 26,
+        "deleted": 0,
+        "unchanged": 18,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "795b1224-7843-4721-84a5-028157b10a32",
+          "entityKey": "795b1224-7843-4721-84a5-028157b10a32",
+          "displayName": "Aquariums tropicaux",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "entityKey": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "displayName": "Bassins des orques",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+          "entityKey": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+          "displayName": "Ciné 5D Adventure",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9bbac6c5-3143-40bb-a489-bf8051edbbff",
+          "entityKey": "9bbac6c5-3143-40bb-a489-bf8051edbbff",
+          "displayName": "Marineland Store",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9da44996-3b58-4bfa-bf9e-80c54da0f65e",
+          "entityKey": "9da44996-3b58-4bfa-bf9e-80c54da0f65e",
+          "displayName": "Musée de la Marine et espace d’exposition",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "40e5ff7d-66ca-441f-8d3e-abc7e25771b5",
+          "entityKey": "40e5ff7d-66ca-441f-8d3e-abc7e25771b5",
+          "displayName": "Otaries de Californie",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9438a711-6914-4224-99d4-7d63dede2455",
+          "entityKey": "9438a711-6914-4224-99d4-7d63dede2455",
+          "displayName": "Phoques veaux-marins",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+          "entityKey": "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+          "displayName": "Rencontre avec les dauphins",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "481a7e33-f817-4a14-b638-293b0a994d7b",
+          "entityKey": "481a7e33-f817-4a14-b638-293b0a994d7b",
+          "displayName": "SoBlue Hôtel — ancien Marineland Hôtel",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "6402a4b2-620f-4c6f-a612-5a3dd37ec3ff",
+          "entityKey": "6402a4b2-620f-4c6f-a612-5a3dd37ec3ff",
+          "displayName": "Spectacle des rapaces",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "886a3e24-2092-43f6-9cad-2d157ab95634",
+          "entityKey": "886a3e24-2092-43f6-9cad-2d157ab95634",
+          "displayName": "Tortues marines",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "4c2c9c9b-3079-49d3-ba60-6f440591f541",
+          "entityKey": "4c2c9c9b-3079-49d3-ba60-6f440591f541",
+          "displayName": "Tropical Wave Boutique",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "6bb27aa5-4e60-4c61-b838-5322128666ed",
+          "entityKey": "6bb27aa5-4e60-4c61-b838-5322128666ed",
+          "displayName": "Tunnel des requins",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "d21a030cfe43478f90a1f247d18a4a15",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "c2aa3d54546f449a810fc1db59d4a69d",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "c278b3b532db454bbdaa8faa759ad6db",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "8064e1e1219d4799984822843840ba09",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "9b278d994dcc41b1a1c7d537c8f4b5f3",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "604154fb98eb4358ab33b0006cd480a6",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "25a3be2f02f34dfc945334d4d91bafdc",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "4176a0b018634f2bb97e23731443905a",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "b7f6a047871a4539b479ae0458a4c930",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "fc0bb9d914b34c8490cbdd2104feec6f",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "5d16e6ed325d4ccca88c2c341c307964",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "c00b9e0e89794d88abfa6ce850fa500c",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "9c5d2f93b12c4597ab6d9f9423a52519",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "a8993c92c475402f8032dc9b6b3369cf",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "8c380a11410a457b94e4ccbe49a32fdd",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "5c14e05ccabc4c828879a251d4cc61df",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "5fe96fa9007b42e39032a40cca050b7c",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "549d82a778f6459ebbda56cdc9c53aef",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "1d1e428e05bc49478904f1f9da59ef8d",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "3554b98273a44bad927c77a04daefd44",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "7c48060eb7d6450e9697db214e39ec6b",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "b4df70ef15bd4739b12a386af547f6c8",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "348ab5c5f20b4d80886fa4590f88cac2",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "b75209b58970486988e592620de4fc56",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "c6eaf043e30d409890411d37e97dd66b",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "d4046c4421b04531b87bfbaa888594ec",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "5f6c7490af1b1c8e95498c9715af418ea5ed1b710949b85740df4fce2f805e6f",
+      "receiptSha256": "f5fa054ece6c86a574b016dc80a0d38806e07a2afaccec7337a1ef154c54f81d",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "01-images-3",
+      "operationId": "2f345235-f977-4b7c-a7f7-3040048c833a",
+      "appliedAtUtc": "2026-11-14T22:46:46.7894728Z",
+      "counts": {
+        "created": 0,
+        "updated": 25,
+        "deleted": 0,
+        "unchanged": 19,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "entityKey": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "displayName": "Antarctica",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+          "entityKey": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+          "displayName": "Bassin des dauphins",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+          "entityKey": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+          "displayName": "Lagon de baignade",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "b365683c-4099-4817-b45f-262cbe8447de",
+          "entityKey": "b365683c-4099-4817-b45f-262cbe8447de",
+          "displayName": "Le Central",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "cd455cf9-c7f3-4f73-9a06-7ba21d89b863",
+          "entityKey": "cd455cf9-c7f3-4f73-9a06-7ba21d89b863",
+          "displayName": "Les Trésors de la mer",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9da44996-3b58-4bfa-bf9e-80c54da0f65e",
+          "entityKey": "9da44996-3b58-4bfa-bf9e-80c54da0f65e",
+          "displayName": "Musée de la Marine et espace d’exposition",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "a5725055-8241-4c63-8ac3-e5a777ed8546",
+          "entityKey": "a5725055-8241-4c63-8ac3-e5a777ed8546",
+          "displayName": "Otaries de Patagonie",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+          "entityKey": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+          "displayName": "Otaries d’Afrique du Sud",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "entityKey": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "displayName": "Ours polaires",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fdac797f-833c-4b80-ae6f-2ba2c24574f4",
+          "entityKey": "fdac797f-833c-4b80-ae6f-2ba2c24574f4",
+          "displayName": "Pélicans — ancien espace près du tunnel",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+          "entityKey": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+          "displayName": "Rencontre avec les orques",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "e448cdef-c243-4a67-a85c-007522789a06",
+          "entityKey": "e448cdef-c243-4a67-a85c-007522789a06",
+          "displayName": "Rencontre avec les otaries",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c2b1881c-f785-4acd-9494-996749eb8068",
+          "entityKey": "c2b1881c-f785-4acd-9494-996749eb8068",
+          "displayName": "Rencontre avec les requins",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ed280089-e6f2-4d82-8cee-2d0649a949e4",
+          "entityKey": "ed280089-e6f2-4d82-8cee-2d0649a949e4",
+          "displayName": "So Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "428178587768457ab9dace4ba0b4dbe1",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "2a1053e4a0ce46e2a8fa5a1eb0639f09",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "4e39b391d01c4f53917bdf25d3432642",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "bea0a6079a374f8b96a9cd27f58a5bec",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "0d19c9f7ab0e47db92a0a89a9a629f86",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "565a4b82ece448349e8c8feb54200a5b",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "3c21cd0fb0894ca5a1d05e7f37040139",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "139419233d044d1499e216985afacac2",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "7143c87fbe6c490c97c9b9003ad1e515",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "007f9d4707fd441a8a83fc56db5c1c23",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "cb3b6b1477624cb8bc35e7b121702466",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "1be3baa154a142be84bc2a03b903cf62",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "d2b3f39696a841d8ad9d41a3f955e149",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "bf3c2bf7ae42411eba895265680f92b0",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "79f335f325eb45dd94749b3cd6131137",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "cfd23a73990d4195a6c726d10c8648fe",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "25b9b429f6af4173b5fed44aad2c2fb1",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "9a4111f1bf644d828c065939e39750a5",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "7c5c67b81a7041b6b2785fb36063dd84",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "940f08a29a074242b504daf70748a69f",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "47ca1e978b614553a0ac4c21c76b5c50",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "1b3e35a2b12d404a9384ac121a57061e",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "bcba04c26f0e47018a81ebdbfc52cb57",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "85135a21f3e441129926d830668daf32",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "4565cb86e5434d81a6eb2710a1ba354a",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "f87a733e3cdc5fdc0242ca8ab66f6dccd3b7307f318135c7075271b73ed9cf2e",
+      "receiptSha256": "7be5650fbbe5e8acecb4d8912555d7a883db7f68884d9f8bebb5e6b3cda1918e",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "02-references-zones",
+      "operationId": "0bf6eb6b-bf50-4198-88a3-123a4d236470",
+      "appliedAtUtc": "2026-11-14T22:47:13.6159976Z",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "bf5bfc436b37452287a2167c002674c06f429db4616214680743d0780b8fbeb0",
+      "receiptSha256": "f3c2c83a02ecfe1ae3ca56dff28cdcca7af619d0ecf0363f39bbccf887ceaebf",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "03-items-1",
+      "operationId": "281977e1-a497-4952-a41a-20eea6ad7096",
+      "appliedAtUtc": "2026-11-14T22:47:26.7583681Z",
+      "counts": {
+        "created": 0,
+        "updated": 22,
+        "deleted": 0,
+        "unchanged": 5,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "5a176a88-fe1e-4b1a-9688-d535a90e7631",
+          "entityKey": "5a176a88-fe1e-4b1a-9688-d535a90e7631",
+          "displayName": "Accueil",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "8c0dc3a6-354d-4aa3-a21c-6250551a5f01",
+          "entityKey": "8c0dc3a6-354d-4aa3-a21c-6250551a5f01",
+          "displayName": "Aire de jeux près de l’espace d’exposition",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "52b5c00b-e211-4981-9aff-1be987673b88",
+          "entityKey": "52b5c00b-e211-4981-9aff-1be987673b88",
+          "displayName": "Aire de jeux près du Ciné 5D",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "entityKey": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "displayName": "Antarctica",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "795b1224-7843-4721-84a5-028157b10a32",
+          "entityKey": "795b1224-7843-4721-84a5-028157b10a32",
+          "displayName": "Aquariums tropicaux",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "18513c0c-91ef-4547-a617-6db749ba7e65",
+          "entityKey": "18513c0c-91ef-4547-a617-6db749ba7e65",
+          "displayName": "Atlantis",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+          "entityKey": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+          "displayName": "Bassin des dauphins",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "entityKey": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "displayName": "Bassins des orques",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "06ce5b59-1545-4288-8846-0c848b0a6d86",
+          "entityKey": "06ce5b59-1545-4288-8846-0c848b0a6d86",
+          "displayName": "Calypso Market Café",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+          "entityKey": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+          "displayName": "Ciné 5D Adventure",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "35dfbe39-9044-44e7-9e80-cc0249691110",
+          "entityKey": "35dfbe39-9044-44e7-9e80-cc0249691110",
+          "displayName": "Entrée de Marineland",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "5b7ced9c-fc1d-45eb-9c4a-2feb575a2554",
+          "entityKey": "5b7ced9c-fc1d-45eb-9c4a-2feb575a2554",
+          "displayName": "Flamants de Cuba",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "24af301b-ff18-4aab-8666-04fc643a9235",
+          "entityKey": "24af301b-ff18-4aab-8666-04fc643a9235",
+          "displayName": "Fontaine",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "b614c9b8-b324-4d09-bc96-3ea6366e06ed",
+          "entityKey": "b614c9b8-b324-4d09-bc96-3ea6366e06ed",
+          "displayName": "Granita Requins",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2a4c9d3a-acc6-4fdc-9247-5b37dbe84758",
+          "entityKey": "2a4c9d3a-acc6-4fdc-9247-5b37dbe84758",
+          "displayName": "Hot Dog Crêpes",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "0ef608ec-b260-4569-bddc-e91fcfcd67fa",
+          "entityKey": "0ef608ec-b260-4569-bddc-e91fcfcd67fa",
+          "displayName": "Kiosque Aquarium",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+          "entityKey": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+          "displayName": "Lagon de baignade",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "14e2ac1f-7727-45e7-86fb-c03c63e66c59",
+          "entityKey": "14e2ac1f-7727-45e7-86fb-c03c63e66c59",
+          "displayName": "Lagoon Center",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "b365683c-4099-4817-b45f-262cbe8447de",
+          "entityKey": "b365683c-4099-4817-b45f-262cbe8447de",
+          "displayName": "Le Central",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "97855268-d46e-40f6-91e9-b93e03c66ac5",
+          "entityKey": "97855268-d46e-40f6-91e9-b93e03c66ac5",
+          "displayName": "Le Sous-Marin",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "cd455cf9-c7f3-4f73-9a06-7ba21d89b863",
+          "entityKey": "cd455cf9-c7f3-4f73-9a06-7ba21d89b863",
+          "displayName": "Les Trésors de la mer",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f75f8c9f-dde9-443f-becf-585f5cc0135e",
+          "entityKey": "f75f8c9f-dde9-443f-becf-585f5cc0135e",
+          "displayName": "Manchots de Humboldt — ancien espace des ours",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "1b3975674b81d5940a58006f09819252f149686ef4d2a7a451430896453b0597",
+      "receiptSha256": "93428b5b8239da6c1814efbffd9a27dc26a7368909b4b024d0629c85c538b449",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "03-items-2",
+      "operationId": "f3c7688f-c40b-4280-a743-117e1d17cc35",
+      "appliedAtUtc": "2026-11-14T22:47:42.6019976Z",
+      "counts": {
+        "created": 0,
+        "updated": 22,
+        "deleted": 0,
+        "unchanged": 5,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "1bed7e61-c55a-41a7-8df5-4c3e006c59ab",
+          "entityKey": "1bed7e61-c55a-41a7-8df5-4c3e006c59ab",
+          "displayName": "Manchots de Humboldt — bassin de l’entrée",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "4a64804d-a8bd-4375-9e0d-ded1bc346757",
+          "entityKey": "4a64804d-a8bd-4375-9e0d-ded1bc346757",
+          "displayName": "Manhattan Hot Dog",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "965eddde-4348-4959-9aba-40579a7f128c",
+          "entityKey": "965eddde-4348-4959-9aba-40579a7f128c",
+          "displayName": "Marina Bay Show Cooking",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9bbac6c5-3143-40bb-a489-bf8051edbbff",
+          "entityKey": "9bbac6c5-3143-40bb-a489-bf8051edbbff",
+          "displayName": "Marineland Store",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c8bb9408-b700-474a-b43e-d70085c5bd70",
+          "entityKey": "c8bb9408-b700-474a-b43e-d70085c5bd70",
+          "displayName": "Mer profonde",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9da44996-3b58-4bfa-bf9e-80c54da0f65e",
+          "entityKey": "9da44996-3b58-4bfa-bf9e-80c54da0f65e",
+          "displayName": "Musée de la Marine et espace d’exposition",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fd8d55b3-a677-422b-aee7-8c892993d21e",
+          "entityKey": "fd8d55b3-a677-422b-aee7-8c892993d21e",
+          "displayName": "Nautilus",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2009fa0e-81c4-4ee7-94fc-1c3cbdc61fe8",
+          "entityKey": "2009fa0e-81c4-4ee7-94fc-1c3cbdc61fe8",
+          "displayName": "Neptune Grill",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "297c2783-183f-4338-94d1-a6b865f7d747",
+          "entityKey": "297c2783-183f-4338-94d1-a6b865f7d747",
+          "displayName": "Ocean Dreams Boutique",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "40e5ff7d-66ca-441f-8d3e-abc7e25771b5",
+          "entityKey": "40e5ff7d-66ca-441f-8d3e-abc7e25771b5",
+          "displayName": "Otaries de Californie",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "a5725055-8241-4c63-8ac3-e5a777ed8546",
+          "entityKey": "a5725055-8241-4c63-8ac3-e5a777ed8546",
+          "displayName": "Otaries de Patagonie",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "21cf466e-54fa-49f6-afd2-80874359b282",
+          "entityKey": "21cf466e-54fa-49f6-afd2-80874359b282",
+          "displayName": "Otaries de Steller",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+          "entityKey": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+          "displayName": "Otaries d’Afrique du Sud",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "entityKey": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "displayName": "Ours polaires",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "94e04dcb-33e1-4aec-8eb1-5bc828630e95",
+          "entityKey": "94e04dcb-33e1-4aec-8eb1-5bc828630e95",
+          "displayName": "O’Délices",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "e28556e2-4229-46d2-b24b-063c2909a650",
+          "entityKey": "e28556e2-4229-46d2-b24b-063c2909a650",
+          "displayName": "O’Polaire",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "bd3921fa-c5ad-4e63-8ee5-f85915edd128",
+          "entityKey": "bd3921fa-c5ad-4e63-8ee5-f85915edd128",
+          "displayName": "Parking P1",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "87c81b14-f171-4d46-abb4-4e9d7f2742a1",
+          "entityKey": "87c81b14-f171-4d46-abb4-4e9d7f2742a1",
+          "displayName": "Parking P2",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ba1fdf5e-fa44-49a3-ac23-948f1c53bbfa",
+          "entityKey": "ba1fdf5e-fa44-49a3-ac23-948f1c53bbfa",
+          "displayName": "Parking P3",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2e55ed17-700c-4f14-8436-406594a19a8c",
+          "entityKey": "2e55ed17-700c-4f14-8436-406594a19a8c",
+          "displayName": "Parking P4 — hôtel",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "e0c00a78-8e6f-4dd3-9d13-bf995b21c834",
+          "entityKey": "e0c00a78-8e6f-4dd3-9d13-bf995b21c834",
+          "displayName": "Parking P5",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9438a711-6914-4224-99d4-7d63dede2455",
+          "entityKey": "9438a711-6914-4224-99d4-7d63dede2455",
+          "displayName": "Phoques veaux-marins",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "c6a37a97065e4b4b3ff242450ea2c5a8c0e26da36007c6056f97302d11b62d82",
+      "receiptSha256": "e6f92e68ce45f3dcefd5389182e6a758cabe281e4cf0c9b467099608a781578c",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "03-items-3",
+      "operationId": "187bf685-1b83-4d7d-8d0e-4dd4ccf03535",
+      "appliedAtUtc": "2026-11-14T22:48:00.5201925Z",
+      "counts": {
+        "created": 0,
+        "updated": 21,
+        "deleted": 0,
+        "unchanged": 5,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "67949975-909f-4e37-a2e0-45f74e48ded9",
+          "entityKey": "67949975-909f-4e37-a2e0-45f74e48ded9",
+          "displayName": "Poste de premiers secours",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9f015dbf-e312-4d78-a522-4facc1b12a38",
+          "entityKey": "9f015dbf-e312-4d78-a522-4facc1b12a38",
+          "displayName": "Poséïdon",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fdac797f-833c-4b80-ae6f-2ba2c24574f4",
+          "entityKey": "fdac797f-833c-4b80-ae6f-2ba2c24574f4",
+          "displayName": "Pélicans — ancien espace près du tunnel",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "70004438-22ac-495e-b897-715038a46be4",
+          "entityKey": "70004438-22ac-495e-b897-715038a46be4",
+          "displayName": "Raies",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+          "entityKey": "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+          "displayName": "Rencontre avec les dauphins",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+          "entityKey": "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+          "displayName": "Rencontre avec les orques",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "e448cdef-c243-4a67-a85c-007522789a06",
+          "entityKey": "e448cdef-c243-4a67-a85c-007522789a06",
+          "displayName": "Rencontre avec les otaries",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c2b1881c-f785-4acd-9494-996749eb8068",
+          "entityKey": "c2b1881c-f785-4acd-9494-996749eb8068",
+          "displayName": "Rencontre avec les requins",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+          "entityKey": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+          "displayName": "Restaurant Antarctica",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ed280089-e6f2-4d82-8cee-2d0649a949e4",
+          "entityKey": "ed280089-e6f2-4d82-8cee-2d0649a949e4",
+          "displayName": "So Lagoon",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "481a7e33-f817-4a14-b638-293b0a994d7b",
+          "entityKey": "481a7e33-f817-4a14-b638-293b0a994d7b",
+          "displayName": "SoBlue Hôtel — ancien Marineland Hôtel",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+          "entityKey": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+          "displayName": "Soigneur dauphins, l’expérience inédite",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "6402a4b2-620f-4c6f-a612-5a3dd37ec3ff",
+          "entityKey": "6402a4b2-620f-4c6f-a612-5a3dd37ec3ff",
+          "displayName": "Spectacle des rapaces",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3fb9b7f5-0e3f-43a0-9379-8c44f079ca8a",
+          "entityKey": "3fb9b7f5-0e3f-43a0-9379-8c44f079ca8a",
+          "displayName": "Subway",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "d7490deb-2ba2-4f28-a5c0-5f9434107484",
+          "entityKey": "d7490deb-2ba2-4f28-a5c0-5f9434107484",
+          "displayName": "Séréna",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "886a3e24-2092-43f6-9cad-2d157ab95634",
+          "entityKey": "886a3e24-2092-43f6-9cad-2d157ab95634",
+          "displayName": "Tortues marines",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "61421414-3a74-4008-abd5-1a259f40ce02",
+          "entityKey": "61421414-3a74-4008-abd5-1a259f40ce02",
+          "displayName": "Trattoria Le Capri",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "4c2c9c9b-3079-49d3-ba60-6f440591f541",
+          "entityKey": "4c2c9c9b-3079-49d3-ba60-6f440591f541",
+          "displayName": "Tropical Wave Boutique",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "6bb27aa5-4e60-4c61-b838-5322128666ed",
+          "entityKey": "6bb27aa5-4e60-4c61-b838-5322128666ed",
+          "displayName": "Tunnel des requins",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "605c77d3-dfd0-46e2-9186-857a3fc34062",
+          "entityKey": "605c77d3-dfd0-46e2-9186-857a3fc34062",
+          "displayName": "Volière",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2395c540-61ad-434b-8cbc-96fcbb35f3f9",
+          "entityKey": "2395c540-61ad-434b-8cbc-96fcbb35f3f9",
+          "displayName": "Éléphants de mer",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "5ecb2b614c5e3d56acae6e93155f7f472274bf7b2374d9f2ce75d7b86832f192",
+      "receiptSha256": "e82c6a25b2d72f787727c1422e5ead08186c8adae0329bce9bcf3033ba83e480",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "04-history-1",
+      "operationId": "c890868b-4c81-4a43-a25f-0dba583661a0",
+      "appliedAtUtc": "2026-11-14T22:48:28.0318417Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 8,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "entityKey": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "displayName": "Antarctica",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "entityKey": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "displayName": "Bassins des orques",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "21cf466e-54fa-49f6-afd2-80874359b282",
+          "entityKey": "21cf466e-54fa-49f6-afd2-80874359b282",
+          "displayName": "Otaries de Steller",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "3d8be0c8-6782-4227-ad5e-2883a32c241a",
+          "entityKey": "marineland-ouverture-1970",
+          "displayName": "Marineland ouvre à Antibes",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "article",
+              "oldValue": "isPublished: false; audited article unchanged",
+              "newValue": "isPublished: true; audited article unchanged"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "8cbdc893-72d2-4f62-ba6e-c91f11a28aa2",
+          "entityKey": "marineland-grand-projet-2000",
+          "displayName": "Grand Marineland transforme le parc",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "76af3987-b951-49d1-85d8-0f928e44a1e7",
+          "entityKey": "marineland-orques-nouveaux-bassins-2000",
+          "displayName": "Un nouveau complexe pour les orques",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "8fbf6ed5-a1ab-4cee-b74d-984c63802469",
+          "entityKey": "marineland-antarctica-creation-2002",
+          "displayName": "Antarctica prend place dans le parc",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "1bfc4529-2c8a-4040-86a2-885b480ea515",
+          "entityKey": "marineland-acquisition-2006",
+          "displayName": "Parques Reunidos rachète Marineland",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "fe899fc0-1675-486e-be4a-b55a249ecb55",
+          "entityKey": "marineland-steller-arrivee-2007",
+          "displayName": "Deux otaries de Steller arrivent à Antibes",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "57a04c3e390fec80952e5162ce4789bb504fe77f373902063c98adb6045a82dd",
+      "receiptSha256": "c77b7b16a1a812f030b7f17b5e77b91c7586f92de4541cf5cca22e95081c1714",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "04-history-2",
+      "operationId": "a412521b-ca37-4481-8b21-a3e72892b3e6",
+      "appliedAtUtc": "2026-11-14T22:48:40.0962334Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 10,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "entityKey": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "displayName": "Antarctica",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+          "entityKey": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+          "displayName": "Lagon de baignade",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "entityKey": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "displayName": "Ours polaires",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c2b1881c-f785-4acd-9494-996749eb8068",
+          "entityKey": "c2b1881c-f785-4acd-9494-996749eb8068",
+          "displayName": "Rencontre avec les requins",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "481a7e33-f817-4a14-b638-293b0a994d7b",
+          "entityKey": "481a7e33-f817-4a14-b638-293b0a994d7b",
+          "displayName": "SoBlue Hôtel — ancien Marineland Hôtel",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "1af181ca-344f-402c-94bc-0b0acf9a78a2",
+          "entityKey": "marineland-antarctica-renovation-2009",
+          "displayName": "L’espace des manchots est agrandi",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "bf2e02ef-21ec-464c-9841-9cfa1326eeb0",
+          "entityKey": "marineland-ours-polaires-arrivee-2010",
+          "displayName": "Les ours polaires sont présentés au public",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5d24264c-05c5-4a14-b4f9-eec481f83bea",
+          "entityKey": "marineland-rencontre-requins-2011",
+          "displayName": "Une rencontre sous l’eau avec les requins",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "6801f4b5-3c7b-466f-a22f-e6b3cd2d71a1",
+          "entityKey": "marineland-hotel-ouverture-201504",
+          "displayName": "Marineland ouvre son premier hôtel",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5d2f1655-ba3a-46a3-b227-bb31193d1f95",
+          "entityKey": "marineland-lagoon-ouverture-20150711",
+          "displayName": "Marineland Lagoon ouvre à la baignade",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "af75025d-f95a-4066-bd1b-fb3657f74873",
+          "entityKey": "marineland-inondation-20151003",
+          "displayName": "Les inondations submergent Marineland",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "article",
+              "oldValue": "isPublished: false; audited article unchanged",
+              "newValue": "isPublished: true; audited article unchanged"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "7f6e4b8966d3554794d2a5fe0fb5b923e3395405d322576c223fcd4c9d43475f",
+      "receiptSha256": "1417845fca4e0953f195ecb7f7458160aefe6d4621fa7fe11bff261e1d4f7ad1",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "04-history-3",
+      "operationId": "3796d65b-7f70-42ac-8ca4-61f47f616c01",
+      "appliedAtUtc": "2026-11-14T22:48:51.7084129Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 7,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+          "entityKey": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+          "displayName": "Ciné 5D Adventure",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "entityKey": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "displayName": "Ours polaires",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "78ebc43a-8bb5-4067-b5a2-46894f5f524d",
+          "entityKey": "marineland-reouverture-20160321",
+          "displayName": "Marineland accueille de nouveau le public",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "fe1b3c8f-1763-4e9e-89d9-ed184f020a0a",
+          "entityKey": "marineland-cine5d-ouverture-20180407",
+          "displayName": "Ciné 5D Adventure ouvre sous les tribunes",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "c4a0a28e-b095-4d84-a877-ff780d1f1f0b",
+          "entityKey": "marineland-ours-depart-202106",
+          "displayName": "Flocke et ses trois petits quittent Antibes",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "article",
+              "oldValue": "isPublished: false; audited article unchanged",
+              "newValue": "isPublished: true; audited article unchanged"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "9e4403a9-8d6f-4959-bccd-9073559ffc77",
+          "entityKey": "marineland-loi-20211130",
+          "displayName": "La loi fixe un terme aux spectacles de cétacés",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "4a380884-5501-4556-9f59-b00c474fa899",
+          "entityKey": "marineland-reconversion-projet-2022",
+          "displayName": "Un projet de reconversion sans animaux",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "50deb371-8559-4dc4-aa42-0294ef01f274",
+          "entityKey": "marineland-annonce-fermeture-20241204",
+          "displayName": "La direction annonce la fermeture définitive",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "5dab722fccf210f105f15f43df3468219782bb6a47d7f300f3d712aa9f7ab783",
+      "receiptSha256": "98d5a0eaef63de18b331130f097f6cf7f5704c7407415d945ae7e0cb7685fe07",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "04-history-4",
+      "operationId": "0d6360c1-6d9e-4412-b80d-426212f97baa",
+      "appliedAtUtc": "2026-11-14T22:49:03.1813125Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 7,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+          "entityKey": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+          "displayName": "Bassin des dauphins",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "entityKey": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "displayName": "Bassins des orques",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "3eca869e-44e3-4ad6-b251-4938de361003",
+          "entityKey": "marineland-dauphins-fermeture-public-20250105",
+          "displayName": "Le delphinarium ferme aux visiteurs",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5ae3f383-1e86-4963-bb62-4ac66df93bed",
+          "entityKey": "marineland-fermeture-20250105",
+          "displayName": "Marineland ferme au public",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "article",
+              "oldValue": "isPublished: false; audited article unchanged",
+              "newValue": "isPublished: true; audited article unchanged"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "c93f4096-102d-45f3-a3cb-072b764736b7",
+          "entityKey": "marineland-orques-fermeture-public-20250105",
+          "displayName": "Le dernier spectacle de Wikie et Keijo",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "9a43190b-f88b-4219-a7da-7f157a30812c",
+          "entityKey": "marineland-orientations-cetaces-20251213",
+          "displayName": "L’État privilégie un sanctuaire canadien",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "b24daebf-a774-4ca9-92a1-417067d848b6",
+          "entityKey": "marineland-orientations-espagne-20260515",
+          "displayName": "Le gouvernement se tourne vers l’Espagne",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "b55140ea-39d4-4b60-950e-b49f0e8f703b",
+          "entityKey": "marineland-dauphins-transfert-20260723",
+          "displayName": "Huit dauphins sont transférés en Espagne",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "cf84ea9e2a730c1648889b1ba64586d43aa77d3734a6a4ac44e5fb6d296698de",
+      "receiptSha256": "cfc158f6ea6fa5450bcf775a021d823c2f9f33139ea27bc41ec1c40171862192",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "04-history-5",
+      "operationId": "5f483077-fc19-4f88-8a1c-5ab59462bd29",
+      "appliedAtUtc": "2026-11-14T22:49:13.6530922Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 5,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5761f4f9-7219-44fd-bb56-c588fe24a6d2",
+          "entityKey": "marineland-abandon-projet-beauval-202608",
+          "displayName": "Beauval abandonne son projet d’accueil",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "5ecc6618d48dfc431d782e69145e4dbb7d50c1a84b86cb0219f156a59d7c9484",
+      "receiptSha256": "d4d2a4dd1253ee62691d17da0cc329a0090ade05aca842c7d9139f8a055de143",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "05-park",
+      "operationId": "1bc7c3dc-e943-4a51-9ef8-ccdce2266d66",
+      "appliedAtUtc": "2026-11-14T22:49:26.0884301Z",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 4,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOfficialMap",
+          "entityId": "marineland-antibes-plan-2012-fr",
+          "entityKey": "marineland-antibes-plan-2012-fr",
+          "displayName": "Carte officielle 2012 (fr, Image)",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkOfficialMap",
+          "entityId": "marineland-antibes-plan-2010-fr",
+          "entityKey": "marineland-antibes-plan-2010-fr",
+          "displayName": "Carte officielle 2010 (fr, Image)",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkOfficialMap",
+          "entityId": "marineland-antibes-plan-2008-fr",
+          "entityKey": "marineland-antibes-plan-2008-fr",
+          "displayName": "Carte officielle 2008 (fr, Image)",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkOfficialMap",
+          "entityId": "marineland-antibes-plan-1997-fr",
+          "entityKey": "marineland-antibes-plan-1997-fr",
+          "displayName": "Carte officielle 1997 (fr, Image)",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        }
+      ],
+      "requestSha256": "8e07680c752d029708989fe36ddca6bb54117a34aa29cae955a35822036ce45e",
+      "receiptSha256": "9b650381ecee2157b377cdb6748e1a6095dcfd8905f5f2f70fa1511890d92d21",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "06-history-reconcile-1",
+      "operationId": "af8fbb72-f9fb-4951-ac82-cc891faee508",
+      "appliedAtUtc": "2026-11-14T22:51:00.1975545Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 8,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "entityKey": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "displayName": "Antarctica",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "entityKey": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "displayName": "Bassins des orques",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "21cf466e-54fa-49f6-afd2-80874359b282",
+          "entityKey": "21cf466e-54fa-49f6-afd2-80874359b282",
+          "displayName": "Otaries de Steller",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "3d8be0c8-6782-4227-ad5e-2883a32c241a",
+          "entityKey": "marineland-ouverture-1970",
+          "displayName": "Marineland ouvre à Antibes",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "8cbdc893-72d2-4f62-ba6e-c91f11a28aa2",
+          "entityKey": "marineland-grand-projet-2000",
+          "displayName": "Grand Marineland transforme le parc",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "76af3987-b951-49d1-85d8-0f928e44a1e7",
+          "entityKey": "marineland-orques-nouveaux-bassins-2000",
+          "displayName": "Un nouveau complexe pour les orques",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "8fbf6ed5-a1ab-4cee-b74d-984c63802469",
+          "entityKey": "marineland-antarctica-creation-2002",
+          "displayName": "Antarctica prend place dans le parc",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "1bfc4529-2c8a-4040-86a2-885b480ea515",
+          "entityKey": "marineland-acquisition-2006",
+          "displayName": "Parques Reunidos rachète Marineland",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "fe899fc0-1675-486e-be4a-b55a249ecb55",
+          "entityKey": "marineland-steller-arrivee-2007",
+          "displayName": "Deux otaries de Steller arrivent à Antibes",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "feb37c0dbf367f072fe82317cc99ea252edf39326211a23df176851ed9148a46",
+      "receiptSha256": "a2a906f47df0f15532e248d1d71feeb18e2f797243aa352cdda11d56a730b77e",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "06-history-reconcile-2",
+      "operationId": "ec60d7f4-b332-468c-8f76-e19f4528adb6",
+      "appliedAtUtc": "2026-11-14T22:51:15.2469491Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 10,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "entityKey": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+          "displayName": "Antarctica",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+          "entityKey": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+          "displayName": "Lagon de baignade",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "entityKey": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "displayName": "Ours polaires",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c2b1881c-f785-4acd-9494-996749eb8068",
+          "entityKey": "c2b1881c-f785-4acd-9494-996749eb8068",
+          "displayName": "Rencontre avec les requins",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "481a7e33-f817-4a14-b638-293b0a994d7b",
+          "entityKey": "481a7e33-f817-4a14-b638-293b0a994d7b",
+          "displayName": "SoBlue Hôtel — ancien Marineland Hôtel",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "1af181ca-344f-402c-94bc-0b0acf9a78a2",
+          "entityKey": "marineland-antarctica-renovation-2009",
+          "displayName": "L’espace des manchots est agrandi",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "bf2e02ef-21ec-464c-9841-9cfa1326eeb0",
+          "entityKey": "marineland-ours-polaires-arrivee-2010",
+          "displayName": "Les ours polaires sont présentés au public",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5d24264c-05c5-4a14-b4f9-eec481f83bea",
+          "entityKey": "marineland-rencontre-requins-2011",
+          "displayName": "Une rencontre sous l’eau avec les requins",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "6801f4b5-3c7b-466f-a22f-e6b3cd2d71a1",
+          "entityKey": "marineland-hotel-ouverture-201504",
+          "displayName": "Marineland ouvre son premier hôtel",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5d2f1655-ba3a-46a3-b227-bb31193d1f95",
+          "entityKey": "marineland-lagoon-ouverture-20150711",
+          "displayName": "Marineland Lagoon ouvre à la baignade",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "af75025d-f95a-4066-bd1b-fb3657f74873",
+          "entityKey": "marineland-inondation-20151003",
+          "displayName": "Les inondations submergent Marineland",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "645b97595a108bf6b0fd73ccbaf7060558113fdc71a0b7bfcdbbd0ca5f3efb6b",
+      "receiptSha256": "fdec78f22dc8ba8736501724951d64d6e5cb3c996f80d1613bc6e62dccc70f35",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "06-history-reconcile-3",
+      "operationId": "a6bc31d9-5065-4a7f-8705-fa2ce58c4b40",
+      "appliedAtUtc": "2026-11-14T22:51:26.7141622Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 7,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+          "entityKey": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+          "displayName": "Ciné 5D Adventure",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "entityKey": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+          "displayName": "Ours polaires",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "78ebc43a-8bb5-4067-b5a2-46894f5f524d",
+          "entityKey": "marineland-reouverture-20160321",
+          "displayName": "Marineland accueille de nouveau le public",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "fe1b3c8f-1763-4e9e-89d9-ed184f020a0a",
+          "entityKey": "marineland-cine5d-ouverture-20180407",
+          "displayName": "Ciné 5D Adventure ouvre sous les tribunes",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "c4a0a28e-b095-4d84-a877-ff780d1f1f0b",
+          "entityKey": "marineland-ours-depart-202106",
+          "displayName": "Flocke et ses trois petits quittent Antibes",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "9e4403a9-8d6f-4959-bccd-9073559ffc77",
+          "entityKey": "marineland-loi-20211130",
+          "displayName": "La loi fixe un terme aux spectacles de cétacés",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "4a380884-5501-4556-9f59-b00c474fa899",
+          "entityKey": "marineland-reconversion-projet-2022",
+          "displayName": "Un projet de reconversion sans animaux",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "50deb371-8559-4dc4-aa42-0294ef01f274",
+          "entityKey": "marineland-annonce-fermeture-20241204",
+          "displayName": "La direction annonce la fermeture définitive",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "8099fadc063d8ab2e11a52ba9256894d8edab127780fbbd8e7ea5a319ab8654f",
+      "receiptSha256": "c300d7a0c8f637719d3621af80b0592ad62ef05d46f044177d0e63a933967df2",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "06-history-reconcile-4",
+      "operationId": "2826e1f5-9e7f-4e8b-ab31-23f989d79b74",
+      "appliedAtUtc": "2026-11-14T22:51:38.4284778Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 7,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+          "entityKey": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+          "displayName": "Bassin des dauphins",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "entityKey": "78e93dcd-bbe3-4d09-b70b-38fc5af0785e",
+          "displayName": "Bassins des orques",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "3eca869e-44e3-4ad6-b251-4938de361003",
+          "entityKey": "marineland-dauphins-fermeture-public-20250105",
+          "displayName": "Le delphinarium ferme aux visiteurs",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5ae3f383-1e86-4963-bb62-4ac66df93bed",
+          "entityKey": "marineland-fermeture-20250105",
+          "displayName": "Marineland ferme au public",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "c93f4096-102d-45f3-a3cb-072b764736b7",
+          "entityKey": "marineland-orques-fermeture-public-20250105",
+          "displayName": "Le dernier spectacle de Wikie et Keijo",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "9a43190b-f88b-4219-a7da-7f157a30812c",
+          "entityKey": "marineland-orientations-cetaces-20251213",
+          "displayName": "L’État privilégie un sanctuaire canadien",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "b24daebf-a774-4ca9-92a1-417067d848b6",
+          "entityKey": "marineland-orientations-espagne-20260515",
+          "displayName": "Le gouvernement se tourne vers l’Espagne",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "b55140ea-39d4-4b60-950e-b49f0e8f703b",
+          "entityKey": "marineland-dauphins-transfert-20260723",
+          "displayName": "Huit dauphins sont transférés en Espagne",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "934ea1eb400ae4694880d11984ad724daf17a93bf685c7aec966e575eb7d7450",
+      "receiptSha256": "e4d107f181747b1363361bee0c0fc6d193813133dcb0453437a209675ea9f7ad",
+      "nature": "publication only; no new editorial integration date"
+    },
+    {
+      "batch": "06-history-reconcile-5",
+      "operationId": "8f447d8a-330f-4333-8bd2-ff6bc150438c",
+      "appliedAtUtc": "2026-11-14T22:51:49.368985Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 5,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+          "displayName": "Roland de La Poype",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+          "displayName": "Marineland",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+          "displayName": "CL Corporation",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "entityKey": "park",
+          "displayName": "Marineland d’Antibes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+          "displayName": "Marineland Lagoon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5761f4f9-7219-44fd-bb56-c588fe24a6d2",
+          "entityKey": "marineland-abandon-projet-beauval-202608",
+          "displayName": "Beauval abandonne son projet d’accueil",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "canonicalHistory",
+              "oldValue": "incomplete",
+              "newValue": "restored"
+            }
+          ]
+        }
+      ],
+      "requestSha256": "81f54cc7cefec38e0b9a6a340077645700481c14c927f47be3f1d2216bd90b39",
+      "receiptSha256": "f894589f3d16b0c1b624f55a1342e5e052ff30adc04e4616c7144e3deb98c3f8",
+      "nature": "publication only; no new editorial integration date"
+    }
+  ],
+  "sitePublication": {
+    "status": "Published",
+    "appliedAtUtc": "2026-11-14T22:49:26.0884301Z",
+    "publicUrl": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+    "verifiedAtUtc": "2026-11-14T23:10:04.7340084Z",
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "facebookPublication": {
+    "status": "Published",
+    "publicationId": "2fcb25c478484d91ba53ec1dee9a739c",
+    "url": "https://www.facebook.com/1285475681307050/posts/122127379725424431",
+    "publishedAtUtc": null,
+    "observedAtUtc": "2026-11-14T23:09:07.0147738Z",
+    "dateNote": "Official draft resolves the existing published record but does not expose its sending time; no date inferred.",
+    "newPublishCalls": 0,
+    "action": "Existing automatic announcement confirmed with ResolveFacebookPublication; no duplicate created."
+  },
+  "lastDataIntegrationAt": "2026-11-14T23:07:07.875Z",
+  "finalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-final-audit-20261114.json"
+}

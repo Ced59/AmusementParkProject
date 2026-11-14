@@ -1,0 +1,2191 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+  "owner": "Conversation France",
+  "auditedAtUtc": "2026-11-14T23:11:27.499216+00:00",
+  "decision": "Completed, published and Facebook verified; residual research gaps retained",
+  "finalAuditPassed": true,
+  "sitePublished": true,
+  "facebookPublished": true,
+  "ownerAuthorization": "Publie tout avec fb aussi. Les parcs définitivement fermes on peut avoir une tolérance sur la note. Et tu finis l’intégration de tous les parcs francais. Pas seulement les définitivement fermes.",
+  "scoreToleranceAppliedAtPublication": {
+    "projectedBeforePublication": 95,
+    "ownerAcceptedClosedParkTolerance": true,
+    "actualFinalScore": 100,
+    "lowerScoreExceptionRequiredForFinalResult": false
+  },
+  "priorFullEditorialAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-final-audit-20261114.json",
+  "publicationExport": {
+    "exportedAtUtc": "2026-11-14T22:39:28.6839719Z",
+    "sha256": "c72881952f468db90a9b87cfbe84388f69360c12fcbbeb8a9a2d8aec4675de69",
+    "purpose": "Separate authorized publication export; final audit export preserved unchanged."
+  },
+  "coverage": {
+    "items": 65,
+    "categories": {
+      "Service": 9,
+      "Attraction": 11,
+      "Animal": 18,
+      "Restaurant": 19,
+      "Other": 2,
+      "Shop": 4,
+      "Hotel": 1,
+      "Show": 1
+    },
+    "itemsEightLanguages": 65,
+    "allImages": 77,
+    "parkAndItemPhotos": 74,
+    "parkLogo": "eb70f014fa044a4abfbe3f7850be2f25",
+    "parkMainImage": "178571da631e488e949c50f9ecb7bef7",
+    "generalParkPhotographs": {
+      "count": 5,
+      "target": 5,
+      "imageIds": [
+        "99f10ef88d2649f98f3e22d1d7ba7060",
+        "dd4ca7e7a0a04ec4870cc96db7915897",
+        "178571da631e488e949c50f9ecb7bef7",
+        "f6bb041458eb41179cf8f16a42b6bfa0",
+        "614769d6ce8e4124a09cf67370db0464"
+      ],
+      "additionalEventImageNotCounted": "88e03dd2db3d441eb4448e443dabd429"
+    },
+    "itemsWithPhoto": 34,
+    "itemsWithoutPhoto": 31,
+    "importantItemsWithThreePhotos": 12,
+    "importantItems": 17,
+    "positionedItems": 41,
+    "inventoryItemsAssessedForPosition": 65,
+    "positionGaps": 24,
+    "positionScope": "Dénominateur conservateur de tout l’inventaire ; prestations mobiles et lieux disparus ne reçoivent pas de faux point fixe.",
+    "attractions": {
+      "total": 11,
+      "operating": 0,
+      "plannedOrUnderConstruction": 0,
+      "permanentlyClosed": 11,
+      "canonicalLifecycle": 11,
+      "invalidLifecycleIds": [],
+      "eightLanguages": 11,
+      "withPhoto": 8,
+      "missingPhotoIds": [
+        "8c0dc3a6-354d-4aa3-a21c-6250551a5f01",
+        "52b5c00b-e211-4981-9aff-1be987673b88",
+        "c8bb9408-b700-474a-b43e-d70085c5bd70"
+      ]
+    },
+    "history": {
+      "parkFacts": 12,
+      "itemFacts": 13,
+      "sourcedAndIllustrated": 25,
+      "developedEightLanguageArticles": 4,
+      "publishedFacts": 25,
+      "publishedArticles": 4
+    },
+    "officialMaps": {
+      "count": 4,
+      "years": [
+        1997,
+        2008,
+        2010,
+        2012
+      ],
+      "newestYear": 2012,
+      "documentLanguages": [
+        "fr"
+      ],
+      "publicMetadataLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ],
+      "formats": [
+        "Image"
+      ],
+      "private": false
+    },
+    "openingHoursAndPricing": {
+      "applicable": false,
+      "reason": "Parc fermé définitivement depuis le 5 janvier 2025. Aucun calendrier futur ou tarif actuel du zoo. Hôtel SoBlue et restaurant Le Central conservés Operating, sans étendre ce statut au parc."
+    },
+    "historicalAccessConditions": {
+      "rules": 10,
+      "items": 7,
+      "checkedAttractionIds": [
+        "8c0dc3a6-354d-4aa3-a21c-6250551a5f01",
+        "52b5c00b-e211-4981-9aff-1be987673b88",
+        "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+        "fe54b968-2814-4b1e-9e06-a69e58570c55",
+        "c8bb9408-b700-474a-b43e-d70085c5bd70",
+        "889ea4c5-b6a6-4958-923a-0169bb3f8b77",
+        "d4ef18c7-b95d-469b-8bd0-74ae431bee64",
+        "e448cdef-c243-4a67-a85c-007522789a06",
+        "c2b1881c-f785-4acd-9494-996749eb8068",
+        "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+        "6bb27aa5-4e60-4c61-b838-5322128666ed"
+      ],
+      "unknownRules": "Les conditions non retrouvées ne deviennent pas une autorisation sans restriction. Les règles conservées sont historiques et portent leur source."
+    },
+    "itemsPublished": 65,
+    "mediaPublished": 77
+  },
+  "residualGaps": {
+    "missingPhotos": [
+      {
+        "id": "5a176a88-fe1e-4b1a-9688-d535a90e7631",
+        "name": "Accueil",
+        "reason": "Plans, pages pratiques et vues générales consultés ; absence de photographie suffisamment lisible et attribuable au service ou à ce parking précis.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "8c0dc3a6-354d-4aa3-a21c-6250551a5f01",
+        "name": "Aire de jeux près de l’espace d’exposition",
+        "reason": "Deux aires distinctes attestées ; aucune photographie ne permet l’attribution à celle de l’exposition sans confusion.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "52b5c00b-e211-4981-9aff-1be987673b88",
+        "name": "Aire de jeux près du Ciné 5D",
+        "reason": "Deux aires distinctes attestées ; aucune photographie ne permet l’attribution à celle du cinéma sans confusion.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "18513c0c-91ef-4547-a617-6db749ba7e65",
+        "name": "Atlantis",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "06ce5b59-1545-4288-8846-0c848b0a6d86",
+        "name": "Calypso Market Café",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "5b7ced9c-fc1d-45eb-9c4a-2feb575a2554",
+        "name": "Flamants de Cuba",
+        "reason": "Photographies historiques légendées flamants nains : autre espèce. Aucun cliché authentifié des flamants de Cuba retenu.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "24af301b-ff18-4aab-8666-04fc643a9235",
+        "name": "Fontaine",
+        "reason": "Repère historique sur plans ; aucun cliché daté et localisé permettant de distinguer cette fontaine des bassins et décors aquatiques.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "b614c9b8-b324-4d09-bc96-3ea6366e06ed",
+        "name": "Granita Requins",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "2a4c9d3a-acc6-4fdc-9247-5b37dbe84758",
+        "name": "Hot Dog Crêpes",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "0ef608ec-b260-4569-bddc-e91fcfcd67fa",
+        "name": "Kiosque Aquarium",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "97855268-d46e-40f6-91e9-b93e03c66ac5",
+        "name": "Le Sous-Marin",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "f75f8c9f-dde9-443f-becf-585f5cc0135e",
+        "name": "Manchots de Humboldt — ancien espace des ours",
+        "reason": "Photos des ours avant juin 2021 et des Humboldt de l’entrée exclues ; aucun cliché de la transformation de cet enclos authentifié.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "4a64804d-a8bd-4375-9e0d-ded1bc346757",
+        "name": "Manhattan Hot Dog",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "965eddde-4348-4959-9aba-40579a7f128c",
+        "name": "Marina Bay Show Cooking",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "c8bb9408-b700-474a-b43e-d70085c5bd70",
+        "name": "Mer profonde",
+        "reason": "Nom confirmé au programme 2024 ; les aires de jeux ou bassins génériques ne prouvent pas l’identité de cette installation.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "fd8d55b3-a677-422b-aee7-8c892993d21e",
+        "name": "Nautilus",
+        "reason": "Enseigne visible derrière les tribunes sur une photographie de spectacle de Flash Léman ; sujet principal et détail disponibles insuffisants pour une photo représentative du restaurant.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "94e04dcb-33e1-4aec-8eb1-5bc828630e95",
+        "name": "O’Délices",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "e28556e2-4229-46d2-b24b-063c2909a650",
+        "name": "O’Polaire",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "bd3921fa-c5ad-4e63-8ee5-f85915edd128",
+        "name": "Parking P1",
+        "reason": "Plans, pages pratiques et vues générales consultés ; absence de photographie suffisamment lisible et attribuable au service ou à ce parking précis.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "87c81b14-f171-4d46-abb4-4e9d7f2742a1",
+        "name": "Parking P2",
+        "reason": "Plans, pages pratiques et vues générales consultés ; absence de photographie suffisamment lisible et attribuable au service ou à ce parking précis.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "ba1fdf5e-fa44-49a3-ac23-948f1c53bbfa",
+        "name": "Parking P3",
+        "reason": "Plans, pages pratiques et vues générales consultés ; absence de photographie suffisamment lisible et attribuable au service ou à ce parking précis.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "2e55ed17-700c-4f14-8436-406594a19a8c",
+        "name": "Parking P4 — hôtel",
+        "reason": "Plans, pages pratiques et vues générales consultés ; absence de photographie suffisamment lisible et attribuable au service ou à ce parking précis.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "e0c00a78-8e6f-4dd3-9d13-bf995b21c834",
+        "name": "Parking P5",
+        "reason": "Plans, pages pratiques et vues générales consultés ; absence de photographie suffisamment lisible et attribuable au service ou à ce parking précis.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "67949975-909f-4e37-a2e0-45f74e48ded9",
+        "name": "Poste de premiers secours",
+        "reason": "Plans, pages pratiques et vues générales consultés ; absence de photographie suffisamment lisible et attribuable au service ou à ce parking précis.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "9f015dbf-e312-4d78-a522-4facc1b12a38",
+        "name": "Poséïdon",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "70004438-22ac-495e-b897-715038a46be4",
+        "name": "Raies",
+        "reason": "Espèce et bassin des clichés retrouvés non appariés de façon sûre aux présentations successives ; pas de photo générique de raie.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "3fb9b7f5-0e3f-43a0-9379-8c44f079ca8a",
+        "name": "Subway",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "d7490deb-2ba2-4f28-a5c0-5f9434107484",
+        "name": "Séréna",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "61421414-3a74-4008-abd5-1a259f40ce02",
+        "name": "Trattoria Le Capri",
+        "reason": "Plans et noms/alias recoupés ; anciennes pages officielles, index et galeries consultés, sans photographie identifiable de cette enseigne. Images génériques de chaîne et photographies d’autres restaurants exclues.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "605c77d3-dfd0-46e2-9186-857a3fc34062",
+        "name": "Volière",
+        "reason": "Plan et photographies générales du Lagoon consultés, mais aucun intérieur ou groupe d’oiseaux attribuable à cette volière avec certitude.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      },
+      {
+        "id": "2395c540-61ad-434b-8cbc-96fcbb35f3f9",
+        "name": "Éléphants de mer",
+        "reason": "Présence historique attestée, mais les anciennes cartes ne sont pas des photographies ; espèce et identité des photographies extérieures non prouvées.",
+        "sourcesChecked": [
+          "Pages et brochures Marineland, plans historiques et dernier plan officiel",
+          "Galeries légendées Les Zoos dans le monde / Jonas Livet",
+          "Wikimedia Commons et recherche web du nom/alias",
+          "Flash Léman, RécréaNice et presse touristique pour les lieux concernés"
+        ]
+      }
+    ],
+    "importantPhotosBelowThree": [
+      {
+        "id": "f7697eab-4fce-48c3-ab1f-957f8d5da1c0",
+        "name": "Antarctica",
+        "photos": 1,
+        "target": 3,
+        "reason": "Une photo authentifiée de manchot royal ; photos des Humboldt exclues comme mauvaise installation, galerie Jonas Livet signée non importée sans suppression de signature.",
+        "sourcesChecked": [
+          "Site officiel et brochure CSE 2022",
+          "Galeries Flash Léman, RécréaNice, Tripadvisor et Commons",
+          "Constructeur/Blooloop pour le cinéma ; archives de presse et spécialiste zoologique pour Antarctica"
+        ]
+      },
+      {
+        "id": "4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da",
+        "name": "Ciné 5D Adventure",
+        "photos": 1,
+        "target": 3,
+        "reason": "Une photographie native de la salle via Blooloop ; trois fichiers de la page constructeur renvoient 404, personnages et affiche de film ne sont pas des vues de la salle.",
+        "sourcesChecked": [
+          "Site officiel et brochure CSE 2022",
+          "Galeries Flash Léman, RécréaNice, Tripadvisor et Commons",
+          "Constructeur/Blooloop pour le cinéma ; archives de presse et spécialiste zoologique pour Antarctica"
+        ]
+      },
+      {
+        "id": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+        "name": "Lagon de baignade",
+        "photos": 2,
+        "target": 3,
+        "reason": "Deux vues distinctes de baignade ; jardins, restaurant et bassins animaliers sont des sujets différents et ne sont pas comptés comme autres photos de baignade.",
+        "sourcesChecked": [
+          "Site officiel et brochure CSE 2022",
+          "Galeries Flash Léman, RécréaNice, Tripadvisor et Commons",
+          "Constructeur/Blooloop pour le cinéma ; archives de presse et spécialiste zoologique pour Antarctica"
+        ]
+      },
+      {
+        "id": "e448cdef-c243-4a67-a85c-007522789a06",
+        "name": "Rencontre avec les otaries",
+        "photos": 1,
+        "target": 3,
+        "reason": "Une photo officielle de la rencontre ; les photographies de spectacle d’otaries ne prouvent pas cette expérience en petit groupe.",
+        "sourcesChecked": [
+          "Site officiel et brochure CSE 2022",
+          "Galeries Flash Léman, RécréaNice, Tripadvisor et Commons",
+          "Constructeur/Blooloop pour le cinéma ; archives de presse et spécialiste zoologique pour Antarctica"
+        ]
+      },
+      {
+        "id": "c2b1881c-f785-4acd-9494-996749eb8068",
+        "name": "Rencontre avec les requins",
+        "photos": 1,
+        "target": 3,
+        "reason": "Une photo officielle du participant équipé du casque ; le tunnel public des requins est une autre expérience. Ancienne cage de 2011 distincte des formats ultérieurs.",
+        "sourcesChecked": [
+          "Site officiel et brochure CSE 2022",
+          "Galeries Flash Léman, RécréaNice, Tripadvisor et Commons",
+          "Constructeur/Blooloop pour le cinéma ; archives de presse et spécialiste zoologique pour Antarctica"
+        ]
+      }
+    ],
+    "unprovenPositions": [
+      {
+        "id": "5a176a88-fe1e-4b1a-9688-d535a90e7631",
+        "name": "Accueil",
+        "reason": "Pavillon devant accès représenté sur plan; plusieurs bâtiments non nommés dans données cartographiques, pas de point de service identifié.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "795b1224-7843-4721-84a5-028157b10a32",
+        "name": "Aquariums tropicaux",
+        "reason": "Complexe au voisinage du musée identifiable sur plans, mais OSM regroupe bâtiments et musée sous une emprise commune; porte ou salle exacte non prouvée.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "35dfbe39-9044-44e7-9e80-cc0249691110",
+        "name": "Entrée de Marineland",
+        "reason": "Entrée/sortie et sortie par boutique ont changé; nœud OSM devant magasin ne prouve pas le dernier contrôle d’entrée.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "24af301b-ff18-4aab-8666-04fc643a9235",
+        "name": "Fontaine",
+        "reason": "Repère sur plans 2003/2008 sans correspondance certaine dans cartographie ultérieure après transformation du secteur.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "b614c9b8-b324-4d09-bc96-3ea6366e06ed",
+        "name": "Granita Requins",
+        "reason": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "2a4c9d3a-acc6-4fdc-9247-5b37dbe84758",
+        "name": "Hot Dog Crêpes",
+        "reason": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "0ef608ec-b260-4569-bddc-e91fcfcd67fa",
+        "name": "Kiosque Aquarium",
+        "reason": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "fe54b968-2814-4b1e-9e06-a69e58570c55",
+        "name": "Lagon de baignade",
+        "reason": "Plan illustre un bassin de baignade au sein Lagoon, distinct des bassins animaliers; OSM ne le nomme pas, le point du bassin des dauphins ne peut servir de substitut.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "14e2ac1f-7727-45e7-86fb-c03c63e66c59",
+        "name": "Lagoon Center",
+        "reason": "Salles face au lagon décrites dans encart officiel 2019; plusieurs bâtiments voisins, aucun appariement exact avec OSM.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "97855268-d46e-40f6-91e9-b93e03c66ac5",
+        "name": "Le Sous-Marin",
+        "reason": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "c8bb9408-b700-474a-b43e-d70085c5bd70",
+        "name": "Mer profonde",
+        "reason": "Nom attesté programme septembre 2024. Plan officiel indique plusieurs aires de jeux; les polygones OSM sans nom ne permettent pas une attribution certaine au dispositif aquatique.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "a5725055-8241-4c63-8ac3-e5a777ed8546",
+        "name": "Otaries de Patagonie",
+        "reason": "Le programme 2024 distingue les espèces mais le plan utilise plusieurs icônes génériques d’otaries; les deux bassins OSM ne portent pas leur espèce. Attribution individuelle non démontrée.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "e4b64366-6e1e-402c-9d86-87d7f4c453ee",
+        "name": "Otaries d’Afrique du Sud",
+        "reason": "Le programme 2024 distingue les espèces mais les bassins OSM sont génériques. Aucune photographie légendée ne prouve quel bassin correspond précisément à cette espèce.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "ba1fdf5e-fa44-49a3-ac23-948f1c53bbfa",
+        "name": "Parking P3",
+        "reason": "Plan2019/2023 le distingue de P2; cartographie consultée ne fournit aucun parking nommé P3.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "2e55ed17-700c-4f14-8436-406594a19a8c",
+        "name": "Parking P4 — hôtel",
+        "reason": "Parking de hôtel dessiné sur plan; emprise du parking non distinguée de celle des bâtiments et allées, aucune coordonnée du centre de l’hôtel recopiée.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "67949975-909f-4e37-a2e0-45f74e48ded9",
+        "name": "Poste de premiers secours",
+        "reason": "Pictogramme officiel près entrée sans correspondance sûre avec bâtiment actuel.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "fdac797f-833c-4b80-ae6f-2ba2c24574f4",
+        "name": "Pélicans — ancien espace près du tunnel",
+        "reason": "Ancien espace de pélicans près du tunnel documenté par photographie ; correspondance exacte avec les emprises actuelles non démontrée.",
+        "sourcesChecked": [
+          "Plans officiels, cartographie nommée et photographie/portfolio du lieu"
+        ]
+      },
+      {
+        "id": "70004438-22ac-495e-b897-715038a46be4",
+        "name": "Raies",
+        "reason": "Plans anciens et programme 2024 confirment des raies; visites peuvent concerner bassin tactile ou aquariums. Localisation individuelle stable non démontrée.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "e448cdef-c243-4a67-a85c-007522789a06",
+        "name": "Rencontre avec les otaries",
+        "reason": "Point des rencontres déplacé entre plan 2012 et 2023; photographie2012 du bassin mixte ne situe pas la dernière incarnation.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "113df4c4-2060-46d8-82f5-a4d6c04f2f0b",
+        "name": "Soigneur dauphins, l’expérience inédite",
+        "reason": "Prestation avec déplacement et point de rassemblement dessiné près dauphins; aucun point précis géographique du rassemblement attesté.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "6402a4b2-620f-4c6f-a612-5a3dd37ec3ff",
+        "name": "Spectacle des rapaces",
+        "reason": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "d7490deb-2ba2-4f28-a5c0-5f9434107484",
+        "name": "Séréna",
+        "reason": "Ancien lieu nommé sur plan, absent sous ce nom de la cartographie précise consultée. Transformation ou renommage non démontré; aucun point voisin utilisé.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "2395c540-61ad-434b-8cbc-96fcbb35f3f9",
+        "name": "Éléphants de mer",
+        "reason": "Ancienne offre disparue, carte archivée 1985 à datation contestée; localisation historique précise insuffisante.",
+        "sourcesChecked": [
+          "Plans officiels 1985–2023 et programmes 2024",
+          "OpenStreetMap noms et géométries, requêtes locales bornées du 3 novembre 2026",
+          "Photographies légendées Jonas Livet du 16 juin 2012"
+        ]
+      },
+      {
+        "id": "3cd2bae7-09f6-4680-8d24-ddbf04f08267",
+        "name": "Restaurant Antarctica",
+        "reason": "Restaurant attesté par plans et portfolio du décorateur ; ne pas reprendre le point de la manchotière Antarctica, lieu distinct. Bâtiment exact non apparié de façon certaine.",
+        "sourcesChecked": [
+          "Plans officiels, cartographie nommée et photographie/portfolio du lieu"
+        ]
+      }
+    ],
+    "descriptionLength": "Exceptions nominatives dans items[].lengthException ; distributions intégrales en annexe. So Lagoon enrichi, ancienne exception levée.",
+    "officialMaps": {
+      "checkedAtUtc": "2026-11-14T19:45:42.889708+00:00",
+      "accepted": [
+        {
+          "year": 1997,
+          "basis": "Horaires valables du 01/07/97 au 31/08/97 imprimés en bas à droite.",
+          "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_1997.jpg",
+          "sha256": "b28a848d52b4cb74433640ae49c125c07f627fad5aa69ee1e1ade67a3758f239",
+          "visuallyInspected": true
+        },
+        {
+          "year": 2008,
+          "basis": "Pastilles Nouveauté 2008 imprimées sur le plan (rencontres et otaries de Steller notamment).",
+          "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2008.jpg",
+          "sha256": "7635c5b3af81cc005d1365cd880289c57cd673266ddb90d96e3fccd946799a1e",
+          "visuallyInspected": true
+        },
+        {
+          "year": 2010,
+          "basis": "Nouveauté 2010 imprimée auprès des ours polaires et Shark River.",
+          "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2010.jpg",
+          "sha256": "50c8c6e4648cb7e0d2ed82210266163859114752bc378d8422faafd073696245",
+          "visuallyInspected": true
+        },
+        {
+          "year": 2012,
+          "basis": "Événement été 2012 imprimé pour exposition dinosaures ; accès Magic River 16 juin–9 septembre 2012.",
+          "sourceUrl": "https://www.leszoosdanslemonde.com/zoos/europe/france/antibes/maps/antibes_plan_2012.jpg",
+          "sha256": "2e1f3894bb055f9eb73c10e97cb23619a361aec1b95a39b451cfac13ed828506",
+          "visuallyInspected": true
+        }
+      ],
+      "notImported": [
+        {
+          "source": "MLD_map.pdf",
+          "reason": "Plan officiel non millésimé ; programme 2024 distinct ne prouve pas son année."
+        },
+        {
+          "source": "antibes_plan_2019.jpg",
+          "reason": "Année seulement dans classement archive ; aucun millésime imprimé ni corroboration officielle retrouvée."
+        },
+        {
+          "source": "antibes_plan_2003.jpg",
+          "reason": "Mention réouverture 21 février 2004, pas de millésime 2003 imprimé."
+        },
+        {
+          "source": "antibes_plan_2007.jpg",
+          "reason": "Année seulement dans classement archive ; aucun millésime imprimé."
+        },
+        {
+          "source": "Marineland_2024_Programme_Septembre.pdf",
+          "reason": "Programme et QR code, pas un plan annuel."
+        },
+        {
+          "source": "mldbrochuregroupe2017web.pdf",
+          "reason": "Brochure officielle 2017, sans plan du parc utilisable ; carte routière régionale exclue."
+        }
+      ]
+    },
+    "historicalDates": "Aucun jour/mois ajouté à une année seule ; dates de retrait individuelles inconnues laissées nulles. La fermeture du zoo n’est pas présentée comme la date du dernier spectacle de chaque installation.",
+    "mediaResolution": "Certaines archives n’existent qu’en résolution native modeste, dont photographie officielle du casque requins 576×144 ; aucun agrandissement artificiel ni suppression de signature."
+  },
+  "residualGapPolicy": "These genuine source/photographic/location gaps remain documented; score 100 does not imply exhaustive photographic or geographical coverage. No invented coordinates or years.",
+  "officialCompleteness": {
+    "startedAtUtc": "2026-11-14T23:07:39.4665362Z",
+    "receivedAtUtc": "2026-11-14T23:07:40.7381365Z",
+    "action": "Completeness",
+    "result": {
+      "completenessScore": 100,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 107,
+      "earnedPoints": 107,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    }
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+      "parkName": "Marineland d’Antibes",
+      "factCount": 110,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1970,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 6,
+          "sourcedResourceCount": 6,
+          "publishedResourceCount": 6,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 7,
+          "sourcedResourceCount": 7,
+          "publishedResourceCount": 7,
+          "subjectCount": 6,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 11,
+          "sourcedResourceCount": 11,
+          "publishedResourceCount": 11,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 25
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 85
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 25,
+        "sourcedFactCount": 25,
+        "majorFactCount": 25,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-14T23:08:45.4724162Z",
+    "receivedAtUtc": "2026-11-14T23:08:46.5077482Z"
+  },
+  "historyCanonicalRecovery": "Publication while parent hidden left canonical drafts. Targeted History export and five bounded official merge replays restored publication after parent visibility; existing events retained, no duplicate imports.",
+  "historicalYearIndexing": "Rollout gate lacks an indexable key year. Public park/item timelines and articles are available and verified; no extra indexable year page claimed.",
+  "publicCorpusReview": {
+    "sourceSha256": "69db3f66833b9925794bccbc9e5ec84346b38343e0e63603e68cd310cfda2c57",
+    "rawPublicStringsChecked": 4167,
+    "localizedEditorialFields": 2837,
+    "encodingIssues": [],
+    "crossEntityExactMatches": 0,
+    "crossEntityNearMatches": 0,
+    "personalEightLanguageReview": true,
+    "basis": "Prior complete personal review plus personal review of every subsequent targeted change; final API blocker check clear."
+  },
+  "publicPages": [
+    {
+      "checkedAtUtc": "2026-11-14T22:59:45.877570+00:00",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "status": 200,
+      "title": "Marineland d’Antibes à Antibes, en France : fermé définitivement — Amusement Parks",
+      "bodyCharacters": 6263,
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T22:59:48.191073+00:00",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "status": 200,
+      "title": "L'histoire de Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 5078,
+      "h1": [
+        "L'histoire de Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T22:59:50.482086+00:00",
+      "language": "fr",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/3d8be0c8-6782-4227-ad5e-2883a32c241a/marineland-antibes-histoire-1970-2025",
+      "status": 200,
+      "title": "Article : Marineland d’Antibes, une histoire construite autour du monde marin — Amusement Parks",
+      "bodyCharacters": 5893,
+      "h1": [
+        "Marineland d’Antibes, une histoire construite autour du monde marin"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T22:59:52.322702+00:00",
+      "language": "fr",
+      "kind": "article-2",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/af75025d-f95a-4066-bd1b-fb3657f74873/marineland-antibes-inondations-2015-reouverture-2016",
+      "status": 200,
+      "title": "Article : Marineland : des inondations de 2015 à la réouverture - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4112,
+      "h1": [
+        "Marineland : des inondations de 2015 à la réouverture"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T22:59:54.462496+00:00",
+      "language": "fr",
+      "kind": "article-3",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/ec5f6423-dc54-4dea-95c3-3e9851cfab92/ours-polaires/history/c4a0a28e-b095-4d84-a877-ff780d1f1f0b/flocke-ours-polaires-marineland-antibes-yorkshire",
+      "status": 200,
+      "title": "Article : Flocke et les ours polaires : onze années à Marineland - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4886,
+      "h1": [
+        "Flocke et les ours polaires : onze années à Marineland"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": false
+    },
+    {
+      "checkedAtUtc": "2026-11-14T22:59:56.449807+00:00",
+      "language": "fr",
+      "kind": "article-4",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/5ae3f383-1e86-4963-bb62-4ac66df93bed/marineland-antibes-fermeture-2025-avenir-animaux",
+      "status": 200,
+      "title": "Article : Marineland ferme ses portes : que deviennent ses animaux ? - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 6198,
+      "h1": [
+        "Marineland ferme ses portes : que deviennent ses animaux ?"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T22:59:58.784207+00:00",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "status": 200,
+      "title": "Marineland d’Antibes — Antibes, France: permanently closed — Amusement Parks",
+      "bodyCharacters": 5683,
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:00.574294+00:00",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "status": 200,
+      "title": "The history of Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4826,
+      "h1": [
+        "The history of Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:02.191140+00:00",
+      "language": "en",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/en/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/3d8be0c8-6782-4227-ad5e-2883a32c241a/marineland-antibes-histoire-1970-2025",
+      "status": 200,
+      "title": "Article: Marineland d’Antibes: a history built around marine life — Amusement Parks",
+      "bodyCharacters": 5379,
+      "h1": [
+        "Marineland d’Antibes: a history built around marine life"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:07.921971+00:00",
+      "language": "en",
+      "kind": "article-2",
+      "url": "https://amusement-parks.fun/en/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/af75025d-f95a-4066-bd1b-fb3657f74873/marineland-antibes-inondations-2015-reouverture-2016",
+      "status": 200,
+      "title": "Article: Marineland: from the 2015 floods to reopening - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 3635,
+      "h1": [
+        "Marineland: from the 2015 floods to reopening"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:16.914437+00:00",
+      "language": "en",
+      "kind": "article-3",
+      "url": "https://amusement-parks.fun/en/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/ec5f6423-dc54-4dea-95c3-3e9851cfab92/ours-polaires/history/c4a0a28e-b095-4d84-a877-ff780d1f1f0b/flocke-ours-polaires-marineland-antibes-yorkshire",
+      "status": 200,
+      "title": "Article: Flocke and the polar bears: eleven years at Marineland - Ours polaires - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4638,
+      "h1": [
+        "Flocke and the polar bears: eleven years at Marineland"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": false
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:20.552844+00:00",
+      "language": "en",
+      "kind": "article-4",
+      "url": "https://amusement-parks.fun/en/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/5ae3f383-1e86-4963-bb62-4ac66df93bed/marineland-antibes-fermeture-2025-avenir-animaux",
+      "status": 200,
+      "title": "Article: Marineland closes its gates: what happens to its animals? - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 5803,
+      "h1": [
+        "Marineland closes its gates: what happens to its animals?"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:23.002227+00:00",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "status": 200,
+      "title": "Marineland d’Antibes — Antibes, Frankreich: dauerhaft geschlossen — Amusement Parks",
+      "bodyCharacters": 6235,
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:26.007985+00:00",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "status": 200,
+      "title": "Die Geschichte von Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 5263,
+      "h1": [
+        "Die Geschichte von Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:29.479924+00:00",
+      "language": "de",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/de/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/3d8be0c8-6782-4227-ad5e-2883a32c241a/marineland-antibes-histoire-1970-2025",
+      "status": 200,
+      "title": "Artikel: Marineland d’Antibes: eine Geschichte rund um die Meereswelt — Amusement Parks",
+      "bodyCharacters": 5865,
+      "h1": [
+        "Marineland d’Antibes: eine Geschichte rund um die Meereswelt"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:31.027809+00:00",
+      "language": "de",
+      "kind": "article-2",
+      "url": "https://amusement-parks.fun/de/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/af75025d-f95a-4066-bd1b-fb3657f74873/marineland-antibes-inondations-2015-reouverture-2016",
+      "status": 200,
+      "title": "Artikel: Marineland: von der Flut 2015 bis zur Wiedereröffnung - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4097,
+      "h1": [
+        "Marineland: von der Flut 2015 bis zur Wiedereröffnung"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:32.643974+00:00",
+      "language": "de",
+      "kind": "article-3",
+      "url": "https://amusement-parks.fun/de/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/ec5f6423-dc54-4dea-95c3-3e9851cfab92/ours-polaires/history/c4a0a28e-b095-4d84-a877-ff780d1f1f0b/flocke-ours-polaires-marineland-antibes-yorkshire",
+      "status": 200,
+      "title": "Artikel: Flocke und die Eisbären: elf Jahre im Marineland - Ours polaires - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4861,
+      "h1": [
+        "Flocke und die Eisbären: elf Jahre im Marineland"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": false
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:34.268036+00:00",
+      "language": "de",
+      "kind": "article-4",
+      "url": "https://amusement-parks.fun/de/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/5ae3f383-1e86-4963-bb62-4ac66df93bed/marineland-antibes-fermeture-2025-avenir-animaux",
+      "status": 200,
+      "title": "Artikel: Marineland schließt: Was wird aus den Tieren? - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 6276,
+      "h1": [
+        "Marineland schließt: Was wird aus den Tieren?"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:36.139153+00:00",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "status": 200,
+      "title": "Marineland d’Antibes — Antibes, Frankrijk: definitief gesloten — Amusement Parks",
+      "bodyCharacters": 6032,
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:39.211659+00:00",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "status": 200,
+      "title": "De geschiedenis van Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 5527,
+      "h1": [
+        "De geschiedenis van Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:40.784475+00:00",
+      "language": "nl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/nl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/3d8be0c8-6782-4227-ad5e-2883a32c241a/marineland-antibes-histoire-1970-2025",
+      "status": 200,
+      "title": "Artikelpagina: Marineland d’Antibes: een geschiedenis rond de zeewereld — Amusement Parks",
+      "bodyCharacters": 5677,
+      "h1": [
+        "Marineland d’Antibes: een geschiedenis rond de zeewereld"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:42.353235+00:00",
+      "language": "nl",
+      "kind": "article-2",
+      "url": "https://amusement-parks.fun/nl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/af75025d-f95a-4066-bd1b-fb3657f74873/marineland-antibes-inondations-2015-reouverture-2016",
+      "status": 200,
+      "title": "Artikelpagina: Marineland: van de overstromingen van 2015 tot de heropening - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 3887,
+      "h1": [
+        "Marineland: van de overstromingen van 2015 tot de heropening"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:43.899442+00:00",
+      "language": "nl",
+      "kind": "article-3",
+      "url": "https://amusement-parks.fun/nl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/ec5f6423-dc54-4dea-95c3-3e9851cfab92/ours-polaires/history/c4a0a28e-b095-4d84-a877-ff780d1f1f0b/flocke-ours-polaires-marineland-antibes-yorkshire",
+      "status": 200,
+      "title": "Artikelpagina: Flocke en de ijsberen: elf jaar in Marineland - Ours polaires - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4754,
+      "h1": [
+        "Flocke en de ijsberen: elf jaar in Marineland"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": false
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:45.742781+00:00",
+      "language": "nl",
+      "kind": "article-4",
+      "url": "https://amusement-parks.fun/nl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/5ae3f383-1e86-4963-bb62-4ac66df93bed/marineland-antibes-fermeture-2025-avenir-animaux",
+      "status": 200,
+      "title": "Artikelpagina: Marineland sluit zijn poorten: wat gebeurt er met de dieren? - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 6100,
+      "h1": [
+        "Marineland sluit zijn poorten: wat gebeurt er met de dieren?"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:47.910336+00:00",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "status": 200,
+      "title": "Marineland d’Antibes — Antibes, Francia: chiuso definitivamente — Amusement Parks",
+      "bodyCharacters": 6035,
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:50.402951+00:00",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "status": 200,
+      "title": "La storia di Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 5075,
+      "h1": [
+        "La storia di Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:51.956465+00:00",
+      "language": "it",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/it/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/3d8be0c8-6782-4227-ad5e-2883a32c241a/marineland-antibes-histoire-1970-2025",
+      "status": 200,
+      "title": "Articolo: Marineland d’Antibes, una storia costruita intorno al mare — Amusement Parks",
+      "bodyCharacters": 5703,
+      "h1": [
+        "Marineland d’Antibes, una storia costruita intorno al mare"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:53.446652+00:00",
+      "language": "it",
+      "kind": "article-2",
+      "url": "https://amusement-parks.fun/it/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/af75025d-f95a-4066-bd1b-fb3657f74873/marineland-antibes-inondations-2015-reouverture-2016",
+      "status": 200,
+      "title": "Articolo: Marineland: dalle alluvioni del 2015 alla riapertura - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 3950,
+      "h1": [
+        "Marineland: dalle alluvioni del 2015 alla riapertura"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:54.893887+00:00",
+      "language": "it",
+      "kind": "article-3",
+      "url": "https://amusement-parks.fun/it/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/ec5f6423-dc54-4dea-95c3-3e9851cfab92/ours-polaires/history/c4a0a28e-b095-4d84-a877-ff780d1f1f0b/flocke-ours-polaires-marineland-antibes-yorkshire",
+      "status": 200,
+      "title": "Articolo: Flocke e gli orsi polari: undici anni a Marineland - Ours polaires - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4969,
+      "h1": [
+        "Flocke e gli orsi polari: undici anni a Marineland"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": false
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:56.387005+00:00",
+      "language": "it",
+      "kind": "article-4",
+      "url": "https://amusement-parks.fun/it/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/5ae3f383-1e86-4963-bb62-4ac66df93bed/marineland-antibes-fermeture-2025-avenir-animaux",
+      "status": 200,
+      "title": "Articolo: Marineland chiude: che cosa accade ai suoi animali? - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 6096,
+      "h1": [
+        "Marineland chiude: che cosa accade ai suoi animali?"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:00:59.665181+00:00",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "status": 200,
+      "title": "Marineland d’Antibes — Antibes, Francia: cerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 6188,
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:02.766731+00:00",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "status": 200,
+      "title": "La historia de Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 5031,
+      "h1": [
+        "La historia de Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:04.406634+00:00",
+      "language": "es",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/es/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/3d8be0c8-6782-4227-ad5e-2883a32c241a/marineland-antibes-histoire-1970-2025",
+      "status": 200,
+      "title": "Artículo: Marineland d’Antibes, una historia construida alrededor del mar — Amusement Parks",
+      "bodyCharacters": 5817,
+      "h1": [
+        "Marineland d’Antibes, una historia construida alrededor del mar"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:06.168142+00:00",
+      "language": "es",
+      "kind": "article-2",
+      "url": "https://amusement-parks.fun/es/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/af75025d-f95a-4066-bd1b-fb3657f74873/marineland-antibes-inondations-2015-reouverture-2016",
+      "status": 200,
+      "title": "Artículo: Marineland: de las inundaciones de 2015 a la reapertura - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4059,
+      "h1": [
+        "Marineland: de las inundaciones de 2015 a la reapertura"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:07.773583+00:00",
+      "language": "es",
+      "kind": "article-3",
+      "url": "https://amusement-parks.fun/es/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/ec5f6423-dc54-4dea-95c3-3e9851cfab92/ours-polaires/history/c4a0a28e-b095-4d84-a877-ff780d1f1f0b/flocke-ours-polaires-marineland-antibes-yorkshire",
+      "status": 200,
+      "title": "Artículo: Flocke y los osos polares: once años en Marineland - Ours polaires - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4864,
+      "h1": [
+        "Flocke y los osos polares: once años en Marineland"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": false
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:09.693499+00:00",
+      "language": "es",
+      "kind": "article-4",
+      "url": "https://amusement-parks.fun/es/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/5ae3f383-1e86-4963-bb62-4ac66df93bed/marineland-antibes-fermeture-2025-avenir-animaux",
+      "status": 200,
+      "title": "Artículo: Marineland cierra sus puertas: ¿qué ocurre con sus animales? - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 6239,
+      "h1": [
+        "Marineland cierra sus puertas: ¿qué ocurre con sus animales?"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:11.933601+00:00",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "status": 200,
+      "title": "Marineland d’Antibes — Antibes, Francja: zamknięty na stałe — Amusement Parks",
+      "bodyCharacters": 5805,
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:14.117482+00:00",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "status": 200,
+      "title": "Historia Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 5329,
+      "h1": [
+        "Historia Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:15.724920+00:00",
+      "language": "pl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/3d8be0c8-6782-4227-ad5e-2883a32c241a/marineland-antibes-histoire-1970-2025",
+      "status": 200,
+      "title": "Artykuł: Marineland d’Antibes: historia zbudowana wokół morskiego świata — Amusement Parks",
+      "bodyCharacters": 5668,
+      "h1": [
+        "Marineland d’Antibes: historia zbudowana wokół morskiego świata"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:17.189933+00:00",
+      "language": "pl",
+      "kind": "article-2",
+      "url": "https://amusement-parks.fun/pl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/af75025d-f95a-4066-bd1b-fb3657f74873/marineland-antibes-inondations-2015-reouverture-2016",
+      "status": 200,
+      "title": "Artykuł: Marineland: od powodzi w 2015 roku do ponownego otwarcia - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 3972,
+      "h1": [
+        "Marineland: od powodzi w 2015 roku do ponownego otwarcia"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:18.708389+00:00",
+      "language": "pl",
+      "kind": "article-3",
+      "url": "https://amusement-parks.fun/pl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/ec5f6423-dc54-4dea-95c3-3e9851cfab92/ours-polaires/history/c4a0a28e-b095-4d84-a877-ff780d1f1f0b/flocke-ours-polaires-marineland-antibes-yorkshire",
+      "status": 200,
+      "title": "Artykuł: Flocke i niedźwiedzie polarne: jedenaście lat w Marineland - Ours polaires - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4716,
+      "h1": [
+        "Flocke i niedźwiedzie polarne: jedenaście lat w Marineland"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": false
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:20.189802+00:00",
+      "language": "pl",
+      "kind": "article-4",
+      "url": "https://amusement-parks.fun/pl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/5ae3f383-1e86-4963-bb62-4ac66df93bed/marineland-antibes-fermeture-2025-avenir-animaux",
+      "status": 200,
+      "title": "Artykuł: Marineland zamyka bramy: co stanie się ze zwierzętami? - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 5970,
+      "h1": [
+        "Marineland zamyka bramy: co stanie się ze zwierzętami?"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:22.315213+00:00",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "status": 200,
+      "title": "Marineland d’Antibes — Antibes, França: encerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 6061,
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:24.564507+00:00",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "status": 200,
+      "title": "A história de Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 5061,
+      "h1": [
+        "A história de Marineland d’Antibes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:26.109529+00:00",
+      "language": "pt",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pt/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/3d8be0c8-6782-4227-ad5e-2883a32c241a/marineland-antibes-histoire-1970-2025",
+      "status": 200,
+      "title": "Artigo: Marineland d’Antibes, uma história construída em torno do mar — Amusement Parks",
+      "bodyCharacters": 5659,
+      "h1": [
+        "Marineland d’Antibes, uma história construída em torno do mar"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:27.550733+00:00",
+      "language": "pt",
+      "kind": "article-2",
+      "url": "https://amusement-parks.fun/pt/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/af75025d-f95a-4066-bd1b-fb3657f74873/marineland-antibes-inondations-2015-reouverture-2016",
+      "status": 200,
+      "title": "Artigo: Marineland: das inundações de 2015 à reabertura - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 3940,
+      "h1": [
+        "Marineland: das inundações de 2015 à reabertura"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:29.076778+00:00",
+      "language": "pt",
+      "kind": "article-3",
+      "url": "https://amusement-parks.fun/pt/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/ec5f6423-dc54-4dea-95c3-3e9851cfab92/ours-polaires/history/c4a0a28e-b095-4d84-a877-ff780d1f1f0b/flocke-ours-polaires-marineland-antibes-yorkshire",
+      "status": 200,
+      "title": "Artigo: Flocke e os ursos-polares: onze anos no Marineland - Ours polaires - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 4802,
+      "h1": [
+        "Flocke e os ursos-polares: onze anos no Marineland"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": false
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:01:30.616969+00:00",
+      "language": "pt",
+      "kind": "article-4",
+      "url": "https://amusement-parks.fun/pt/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history/5ae3f383-1e86-4963-bb62-4ac66df93bed/marineland-antibes-fermeture-2025-avenir-animaux",
+      "status": 200,
+      "title": "Artigo: O Marineland fecha as portas: o que acontece aos animais? - Marineland d’Antibes — Amusement Parks",
+      "bodyCharacters": 6128,
+      "h1": [
+        "O Marineland fecha as portas: o que acontece aos animais?"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    }
+  ],
+  "publicFlow": [
+    {
+      "label": "final-park-mobile",
+      "checkedAtUtc": "2026-11-14T23:07:41.278666+00:00",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": false
+    },
+    {
+      "label": "final-normal-history-click",
+      "checkedAtUtc": "2026-11-14T23:07:41.378747+00:00",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": false
+    },
+    {
+      "label": "final-cinema-fr",
+      "checkedAtUtc": "2026-11-14T23:07:44.234612+00:00",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure",
+      "h1": [
+        "Ciné 5D Adventure"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": true
+    },
+    {
+      "label": "final-cinema-history-fr",
+      "checkedAtUtc": "2026-11-14T23:07:44.334533+00:00",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure",
+      "h1": [
+        "Ciné 5D Adventure"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": true
+    },
+    {
+      "label": "final-cinema-en",
+      "checkedAtUtc": "2026-11-14T23:07:46.700570+00:00",
+      "url": "https://amusement-parks.fun/en/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure",
+      "h1": [
+        "Ciné 5D Adventure"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": true
+    },
+    {
+      "label": "final-cinema-de",
+      "checkedAtUtc": "2026-11-14T23:07:48.605119+00:00",
+      "url": "https://amusement-parks.fun/de/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure",
+      "h1": [
+        "Ciné 5D Adventure"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": true
+    },
+    {
+      "label": "final-cinema-nl",
+      "checkedAtUtc": "2026-11-14T23:07:50.633116+00:00",
+      "url": "https://amusement-parks.fun/nl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure",
+      "h1": [
+        "Ciné 5D Adventure"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": true
+    },
+    {
+      "label": "final-cinema-it",
+      "checkedAtUtc": "2026-11-14T23:07:52.716015+00:00",
+      "url": "https://amusement-parks.fun/it/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure",
+      "h1": [
+        "Ciné 5D Adventure"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": true
+    },
+    {
+      "label": "final-cinema-es",
+      "checkedAtUtc": "2026-11-14T23:07:54.700342+00:00",
+      "url": "https://amusement-parks.fun/es/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure",
+      "h1": [
+        "Ciné 5D Adventure"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": true
+    },
+    {
+      "label": "final-cinema-pl",
+      "checkedAtUtc": "2026-11-14T23:07:56.666079+00:00",
+      "url": "https://amusement-parks.fun/pl/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure",
+      "h1": [
+        "Ciné 5D Adventure"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": true
+    },
+    {
+      "label": "final-cinema-pt",
+      "checkedAtUtc": "2026-11-14T23:07:58.766471+00:00",
+      "url": "https://amusement-parks.fun/pt/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure",
+      "h1": [
+        "Ciné 5D Adventure"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": true
+    },
+    {
+      "label": "final-park-mobile-360",
+      "checkedAtUtc": "2026-11-14T23:08:00.328883+00:00",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": false
+    },
+    {
+      "label": "final-park-desktop",
+      "checkedAtUtc": "2026-11-14T23:08:00.445317+00:00",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "h1": [
+        "Marineland d’Antibes"
+      ],
+      "overflow": 0,
+      "technical": [],
+      "manufacturerNameVisible": false
+    }
+  ],
+  "verifiedHistoryNavigation": [
+    {
+      "target": "park",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "href": "/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/history",
+      "h1": [
+        "L'histoire de Marineland d’Antibes"
+      ],
+      "bodyLength": 4758,
+      "technical": [],
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-14T23:08:48.523967+00:00"
+    },
+    {
+      "target": "cinema",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure/history",
+      "href": "/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/4ef981e0-5e36-44e8-bf3a-0cfe94e4d9da/cine-5d-adventure/history",
+      "h1": [
+        "Histoire de Ciné 5D Adventure"
+      ],
+      "bodyLength": 1242,
+      "technical": [],
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-14T23:08:51.735141+00:00"
+    },
+    {
+      "target": "dolphins",
+      "url": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/c6210721-d0a6-44e7-84d0-3b7e7b864b33/bassin-des-dauphins/history",
+      "href": "/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes/item/c6210721-d0a6-44e7-84d0-3b7e7b864b33/bassin-des-dauphins/history",
+      "h1": [
+        "Histoire de Bassin des dauphins"
+      ],
+      "bodyLength": 1630,
+      "technical": [],
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-14T23:08:54.060889+00:00"
+    }
+  ],
+  "publicTimeline": {
+    "url": "https://amusement-parks.fun/api/public/parks/afd24c62-0972-4c98-860c-b5a55984f777/history/timeline?page=1&pageSize=25",
+    "status": 200,
+    "pagination": {
+      "totalItems": 25,
+      "totalPages": 1,
+      "currentPage": 1,
+      "itemsPerPage": 25
+    }
+  },
+  "publicHistoryFlag": true,
+  "publishedItems": 65,
+  "officialMapPublicFiles": [
+    {
+      "id": "marineland-antibes-plan-2012-fr",
+      "year": 2012,
+      "url": "https://amusement-parks.fun/api/parks/afd24c62-0972-4c98-860c-b5a55984f777/official-maps/marineland-antibes-plan-2012-fr/file",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1891518",
+      "exportedSizeInBytes": 1891518,
+      "checkedAtUtc": "2026-11-14T23:09:39.405464+00:00"
+    },
+    {
+      "id": "marineland-antibes-plan-2010-fr",
+      "year": 2010,
+      "url": "https://amusement-parks.fun/api/parks/afd24c62-0972-4c98-860c-b5a55984f777/official-maps/marineland-antibes-plan-2010-fr/file",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "685928",
+      "exportedSizeInBytes": 685928,
+      "checkedAtUtc": "2026-11-14T23:09:39.571083+00:00"
+    },
+    {
+      "id": "marineland-antibes-plan-2008-fr",
+      "year": 2008,
+      "url": "https://amusement-parks.fun/api/parks/afd24c62-0972-4c98-860c-b5a55984f777/official-maps/marineland-antibes-plan-2008-fr/file",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "1598181",
+      "exportedSizeInBytes": 1598181,
+      "checkedAtUtc": "2026-11-14T23:09:39.738937+00:00"
+    },
+    {
+      "id": "marineland-antibes-plan-1997-fr",
+      "year": 1997,
+      "url": "https://amusement-parks.fun/api/parks/afd24c62-0972-4c98-860c-b5a55984f777/official-maps/marineland-antibes-plan-1997-fr/file",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "contentLength": "2042982",
+      "exportedSizeInBytes": 2042982,
+      "checkedAtUtc": "2026-11-14T23:09:39.905038+00:00"
+    }
+  ],
+  "idempotence": {
+    "previews": [
+      {
+        "operationId": "a4629688-de6d-4d92-876e-b0036bc4d3bc",
+        "previewedAtUtc": "2026-11-14T23:06:14.4917118Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 74,
+          "warnings": 0,
+          "errors": 0
+        },
+        "sha256": "1fb41f947009b8b1570ac854747e602d419f25c7b8565d0d65a26fe94b2d7e52"
+      },
+      {
+        "operationId": "67df41fc-de40-4f42-9f52-b49f00a0afbb",
+        "previewedAtUtc": "2026-11-14T23:06:20.1704908Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 116,
+          "warnings": 0,
+          "errors": 0
+        },
+        "sha256": "54db414b80174e59fb3d9c77160eeb27461cafd8ae1a3ed8b017c31e65b595f3"
+      },
+      {
+        "operationId": "85e4b8f0-1cfa-454b-a29a-45c17eb3419a",
+        "previewedAtUtc": "2026-11-14T23:08:06.2626338Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 39,
+          "warnings": 0,
+          "errors": 0
+        },
+        "sha256": "8811df4d112279c7689c29f52513c6a47365f831b2409c0ef7ded2e5cf8cd9a5"
+      }
+    ],
+    "uniqueEntities": 176,
+    "unexpectedMutations": 0
+  },
+  "initialCachedObservations": "The first French history render retained generic OTHER labels and the first HTML lacked a history link; normal uncached-by-expiry navigation was rechecked without a cache-busting URL or purge. Final ordinary click resolves the correct timeline with no raw enums. Two early click probes ran before SPA navigation completed and are superseded by verifiedHistoryNavigation.",
+  "screenshotsPersonallyViewed": [
+    "final-cinema-fr.png",
+    "final-park-mobile-360.png"
+  ],
+  "facebook": {
+    "status": "Published",
+    "publicationId": "2fcb25c478484d91ba53ec1dee9a739c",
+    "url": "https://www.facebook.com/1285475681307050/posts/122127379725424431",
+    "publishedAtUtc": null,
+    "observedAtUtc": "2026-11-14T23:09:07.0147738Z",
+    "dateNote": "Official draft resolves the existing published record but does not expose its sending time; no date inferred.",
+    "newPublishCalls": 0,
+    "action": "Existing automatic announcement confirmed with ResolveFacebookPublication; no duplicate created."
+  },
+  "site": {
+    "status": "Published",
+    "appliedAtUtc": "2026-11-14T22:49:26.0884301Z",
+    "publicUrl": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+    "verifiedAtUtc": "2026-11-14T23:10:04.7340084Z",
+    "isVisible": true,
+    "adminReviewStatus": "Validated"
+  },
+  "lastDataIntegrationAt": "2026-11-14T23:07:07.875Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-14-source-article-title-20261114.json",
+  "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-20261114.json",
+  "batchCompletedCount": 9,
+  "prCreated": false,
+  "releaseVersionChanged": false
+}

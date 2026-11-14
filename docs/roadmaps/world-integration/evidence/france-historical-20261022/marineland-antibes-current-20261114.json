@@ -3,8 +3,8 @@
   "entryId": "FR-candidate-d1ef8ca467e651",
   "parkId": "afd24c62-0972-4c98-860c-b5a55984f777",
   "owner": "Conversation France",
-  "checkpointAtUtc": "2026-11-14T20:28:21.051165+00:00",
-  "partial": true,
+  "checkpointAtUtc": "2026-11-14T23:11:27.499216+00:00",
+  "partial": false,
   "priorState": "64 existing items with eight-language descriptions; 57 park/item photos plus logo, founder portrait and four official maps, private. Never recreate these.",
   "recoveredHistoricalOperations": 19,
   "newOperations": [
@@ -425,8 +425,8 @@
   },
   "noFinalFullExportYet": false,
   "finalAuditCompleted": true,
-  "sitePublicationCompleted": false,
-  "facebookPublicationCompleted": false,
+  "sitePublicationCompleted": true,
+  "facebookPublicationCompleted": true,
   "researchCorrections": {
     "cinemaOpeningFilm": "Arctic 1 (not Happy Feet)",
     "cinemaOpeningFilmEvidence": [
@@ -450,10 +450,7 @@
     "followup": "Articles et références appliqués ; audit transversal en cours."
   },
   "nextSteps": [
-    "Obtenir acceptation exacte du score projeté 95 et des lacunes nommées, ou résoudre la limite avant publication.",
-    "Après accord : export de publication frais et comparaison avec état audité ; publication ciblée, parc en dernier ; score réel et HistoryDiagnostics.",
-    "Vérifier anonymement fiche, timeline, articles et rendu mobile ; ResolveFacebookPublication puis PublishFacebook sans doublon.",
-    "Conserver partial tant que contrôle publication et annonce non vérifiés."
+    "Poursuivre le backlog français ; neuf parcs terminés dans le lot, PR après au moins dix."
   ],
   "recoveryNotes": [
     "Use the latest actual branch and local receipts before resuming.",
@@ -569,7 +566,7 @@
     "aliasesResolvedBeforeCreation": true
   },
   "historyDiagnosticsIsOlderThanLatestFacts": false,
-  "developedPrivateArticles": 4,
+  "developedPrivateArticles": 0,
   "fullAuditExport": {
     "exportedAtUtc": "2026-11-14T19:12:29.5036951Z",
     "localPath": "/workspace/france-historical-20261022/marineland-antibes/recovery-20261114/09-final-full-export.json",
@@ -584,7 +581,7 @@
     "publicationBlockers": [],
     "technicalFinding": "Projection excludes hidden parkItems from ParkItemsVisibleCount (2 pts) and their images from ParkItemPublishedImageCount (2 pts); remaining-debt point (1) also absent. Read-only source inspection, no implementation change."
   },
-  "nextWork": "Marineland audité : 65 items, 77 images dont 74 photos parc/items, 25 faits et 4 articles huit langues. 176 entités inchangées aux Previews ; 0 erreur/warning et 0 bloqueur technique. Score projeté 95/100 ; aucune exception exacte acceptée, donc tout reste privé. 12/17 lieux importants ont trois photos ; 31 items sans photo, 24 positions non prouvées, notices courtes et millésimes absents documentés dans audit. Ne pas republier ni réimporter. Attendre accord exact pour Marineland pendant poursuite des autres dossiers.",
+  "nextWork": "Marineland terminé et publié, Facebook Published confirmé. Ne pas réimporter ni republier. Poursuivre tous les parcs français, historiques puis actuels et standalone qualifiés.",
   "auditWorkingState": {
     "localPath": "/workspace/france-historical-20261022/marineland-antibes/recovery-20261114/audit-working-state.json",
     "sha256": "c948d51e130e307244c45a0a0982deb8c077814ff53e6ba60fefd8f56c005d62",
@@ -600,7 +597,42 @@
       "pt"
     ]
   },
-  "finalAuditVerdict": "Audité ; publication bloquée par seuil projeté 95, exception nominative non acceptée.",
-  "finalAuditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-final-audit-20261114.json",
-  "publicationExceptionAccepted": false
+  "finalAuditVerdict": "Publication vérifiée : 100/100 sans bloqueur ; lacunes historiques conservées.",
+  "finalAuditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-final-audit-20261114.json",
+  "publicationExceptionAccepted": true,
+  "publicationFollowup": {
+    "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-20261114.json",
+    "finalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-final-audit-20261114.json",
+    "sitePublication": {
+      "status": "Published",
+      "appliedAtUtc": "2026-11-14T22:49:26.0884301Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+      "verifiedAtUtc": "2026-11-14T23:10:04.7340084Z",
+      "isVisible": true,
+      "adminReviewStatus": "Validated"
+    },
+    "facebookPublication": {
+      "status": "Published",
+      "publicationId": "2fcb25c478484d91ba53ec1dee9a739c",
+      "url": "https://www.facebook.com/1285475681307050/posts/122127379725424431",
+      "publishedAtUtc": null,
+      "observedAtUtc": "2026-11-14T23:09:07.0147738Z",
+      "dateNote": "Official draft resolves the existing published record but does not expose its sending time; no date inferred.",
+      "newPublishCalls": 0,
+      "action": "Existing automatic announcement confirmed with ResolveFacebookPublication; no duplicate created."
+    },
+    "lastDataIntegrationAt": "2026-11-14T23:07:07.875Z",
+    "visibilityOperationCount": 18
+  },
+  "finalPublicState": {
+    "items": 65,
+    "images": 77,
+    "parkItemPhotos": 74,
+    "maps": 4,
+    "historyFacts": 25,
+    "developedArticles": 4,
+    "publicScore": 100
+  },
+  "lastDataIntegrationAt": "2026-11-14T23:07:07.875Z",
+  "developedPublishedArticles": 4
 }

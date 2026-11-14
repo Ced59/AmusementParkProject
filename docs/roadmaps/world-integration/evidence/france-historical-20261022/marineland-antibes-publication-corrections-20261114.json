@@ -1,0 +1,214 @@
+{
+  "entryId": "FR-candidate-d1ef8ca467e651",
+  "owner": "Conversation France",
+  "review": "P5 rewritten and personally reviewed in eight languages; source facts unchanged. Animal transfers classified with supported Transfer and their sourced arrival locations.",
+  "result": {
+    "operationId": "e0efd784-dd01-4453-881a-3914973e812e",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T22:54:43.0416136Z",
+    "appliedAtUtc": "2026-11-14T22:54:43.0416149Z",
+    "targetParkId": "afd24c62-0972-4c98-860c-b5a55984f777",
+    "targetParkName": "Marineland d’Antibes",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 8,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkFounder",
+        "entityId": "2ec647c6-36dd-4de6-995b-fa313babc009",
+        "entityKey": "2ec647c6-36dd-4de6-995b-fa313babc009",
+        "displayName": "Roland de La Poype",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkOperator",
+        "entityId": "57d215b7-985f-44e6-bbfa-353d8322605e",
+        "entityKey": "57d215b7-985f-44e6-bbfa-353d8322605e",
+        "displayName": "Marineland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+        "entityKey": "634770df-f4cd-43a5-ac5a-8ae938625f6a",
+        "displayName": "CL Corporation",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+        "entityKey": "park",
+        "displayName": "Marineland d’Antibes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "4625a29c-1918-400f-b09e-c465e8e1119a",
+        "entityKey": "4625a29c-1918-400f-b09e-c465e8e1119a",
+        "displayName": "Marineland Lagoon",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e0c00a78-8e6f-4dd3-9d13-bf995b21c834",
+        "entityKey": "e0c00a78-8e6f-4dd3-9d13-bf995b21c834",
+        "displayName": "Parking P5",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Der Parkplatz bei den Tierbegegnungen</h2><p>P5 lag auf der Seite der Begegnungsbecken für Delfine und Seelöwen. Diese Parkzufahrt befand sich hinter dem nördlichen Bereich von Marineland, nahe der Lagune und dem Restaurant Marina Bay.</p>",
+            "newValue": "<h2>P5 hinter dem nördlichen Parkbereich</h2><p>Der Parkplatz P5 befand sich hinter dem nördlichen Teil von Marineland, unweit von Marina Bay und der Lagune. Er lag auf der Seite des Parks, die den Tierbegegnungen gewidmet war und die Anlagen für Delfine und Seelöwen umfasste.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The car park near the animal encounters</h2><p>P5 stood on the side of the dolphin and sea-lion encounter pools. This parking access lay behind Marineland’s northern area, near the lagoon and Marina Bay restaurant.</p>",
+            "newValue": "<h2>P5 behind the northern area</h2><p>The P5 car park lay behind the northern part of Marineland, close to Marina Bay and the lagoon. It was on the side of the park devoted to animal encounters, where the dolphins and sea lions were housed.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El aparcamiento junto a los encuentros con animales</h2><p>El P5 estaba del lado de las piscinas de encuentros con delfines y leones marinos. Este acceso de estacionamiento quedaba detrás del sector norte de Marineland, cerca de la laguna y del restaurante Marina Bay.</p>",
+            "newValue": "<h2>El P5 detrás del sector norte</h2><p>El aparcamiento P5 se encontraba detrás de la parte norte de Marineland, cerca de Marina Bay y de la laguna. Ocupaba el lado del parque dedicado a los encuentros con animales, donde estaban las instalaciones de delfines y leones marinos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le parking près des rencontres animalières</h2><p>Le P5 se trouvait du côté des bassins de rencontres avec les dauphins et les otaries. Cet accès de stationnement apparaissait à l’arrière du secteur nord de Marineland, près du lagon et du restaurant Marina Bay.</p>",
+            "newValue": "<h2>Le P5 derrière le secteur nord</h2><p>Le parking P5 se situait à l’arrière de la partie nord de Marineland, à proximité de Marina Bay et du lagon. Il occupait le côté du parc consacré aux rencontres animalières, où se trouvaient les dauphins et les otaries.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Il parcheggio vicino agli incontri con gli animali</h2><p>Il P5 si trovava sul lato delle vasche degli incontri con delfini e otarie. Questo accesso al parcheggio era dietro la zona settentrionale di Marineland, vicino alla laguna e al ristorante Marina Bay.</p>",
+            "newValue": "<h2>Il P5 dietro il settore settentrionale</h2><p>Il parcheggio P5 si trovava alle spalle della parte settentrionale di Marineland, a poca distanza da Marina Bay e dalla laguna. Era sul lato del parco dedicato agli incontri con gli animali, dove erano ospitati delfini e otarie.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De parkeerplaats bij de dierontmoetingen</h2><p>P5 lag aan de kant van de bassins voor ontmoetingen met dolfijnen en zeeleeuwen. Deze parkeertoegang bevond zich achter het noordelijke deel van Marineland, bij de lagune en restaurant Marina Bay.</p>",
+            "newValue": "<h2>P5 achter het noordelijke parkdeel</h2><p>Parkeerplaats P5 lag achter het noordelijke gedeelte van Marineland, vlak bij Marina Bay en de lagune. Aan deze kant van het park stonden de ontmoetingen met dieren centraal, met verblijven voor dolfijnen en zeeleeuwen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Parking przy spotkaniach ze zwierzętami</h2><p>P5 leżał od strony basenów spotkań z delfinami i uchatkami. Ten wjazd na parking znajdował się za północną częścią Marineland, niedaleko laguny i restauracji Marina Bay.</p>",
+            "newValue": "<h2>P5 za północną częścią parku</h2><p>Parking P5 znajdował się za północną częścią Marineland, w pobliżu Marina Bay i laguny. Leżał po stronie parku przeznaczonej na spotkania ze zwierzętami, gdzie mieściły się baseny delfinów i uchatek.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O estacionamento perto dos encontros com animais</h2><p>O P5 ficava do lado das piscinas de encontros com golfinhos e leões-marinhos. Este acesso ao estacionamento situava-se atrás do setor norte do Marineland, perto da lagoa e do restaurante Marina Bay.</p>",
+            "newValue": "<h2>O P5 atrás do setor norte</h2><p>O estacionamento P5 situava-se nas traseiras da zona norte do Marineland, perto do Marina Bay e da lagoa. Ficava do lado do parque dedicado aos encontros com animais, onde se encontravam os espaços dos golfinhos e dos leões-marinhos.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+        "entityKey": "c6210721-d0a6-44e7-84d0-3b7e7b864b33",
+        "displayName": "Bassin des dauphins",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "21cf466e-54fa-49f6-afd2-80874359b282",
+        "entityKey": "21cf466e-54fa-49f6-afd2-80874359b282",
+        "displayName": "Otaries de Steller",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+        "entityKey": "ec5f6423-dc54-4dea-95c3-3e9851cfab92",
+        "displayName": "Ours polaires",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "fe899fc0-1675-486e-be4a-b55a249ecb55",
+        "entityKey": "marineland-steller-arrivee-2007",
+        "displayName": "Deux otaries de Steller arrivent à Antibes",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "eventType",
+            "oldValue": "Other",
+            "newValue": "Transfer"
+          },
+          {
+            "field": "locationLabel",
+            "oldValue": null,
+            "newValue": "Marineland d’Antibes"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c4a0a28e-b095-4d84-a877-ff780d1f1f0b",
+        "entityKey": "marineland-ours-depart-202106",
+        "displayName": "Flocke et ses trois petits quittent Antibes",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "eventType",
+            "oldValue": "Other",
+            "newValue": "Transfer"
+          },
+          {
+            "field": "locationLabel",
+            "oldValue": null,
+            "newValue": "Yorkshire Wildlife Park"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "b55140ea-39d4-4b60-950e-b49f0e8f703b",
+        "entityKey": "marineland-dauphins-transfert-20260723",
+        "displayName": "Huit dauphins sont transférés en Espagne",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "eventType",
+            "oldValue": "Other",
+            "newValue": "Transfer"
+          },
+          {
+            "field": "locationLabel",
+            "oldValue": null,
+            "newValue": "Selwo Marina"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "requestSha256": "40869dd5487d921b5fc3e878f0699cf4db79d5b7f0869c85be8d5b213831f474",
+  "siteVisible": true,
+  "facebookPublished": false
+}

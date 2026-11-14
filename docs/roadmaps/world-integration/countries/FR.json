@@ -18632,9 +18632,9 @@
       "locality": "Antibes",
       "siteId": "afd24c62-0972-4c98-860c-b5a55984f777",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-11-14T18:05:22.668Z",
-      "editorialStatus": "Blocked",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T23:10:04.7340084Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
@@ -18644,8 +18644,8 @@
         "Marineland",
         "Marineland Côte d’Azur"
       ],
-      "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-14T20:23:53.421Z",
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T23:07:07.875Z",
       "integrationHistory": [
         {
           "eventId": "apply-61c860e6-ece7-4130-bff1-928f62afb6e6",
@@ -19936,9 +19936,89 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-orca-encounter-wide-20261114.json",
           "auditEvidence": null,
           "summary": "Troisième photo distincte de la rencontre avec les orques : vue d’ensemble des vitres sous-marines ; huit langues et crédits vérifiés, média privé."
+        },
+        {
+          "eventId": "apply-e0efd784-dd01-4453-881a-3914973e812e",
+          "appliedAt": "2026-11-14T22:54:43.041Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-corrections-20261114.json",
+          "auditEvidence": null,
+          "summary": "Correction publique relue dans les huit langues du P5 et trois transferts d’animaux classés précisément ; audit de publication et Facebook en cours."
+        },
+        {
+          "eventId": "apply-6eb00c03-8b68-406d-a968-3d54efc1dd5a",
+          "appliedAt": "2026-11-14T22:56:07.782Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-08-summary-correction-20261114.json",
+          "auditEvidence": null,
+          "summary": "Résumé du chantier Grand Marineland réécrit et relu dans les huit langues pour le distinguer de l’article ; dates, sources et faits conservés."
+        },
+        {
+          "eventId": "apply-6b197237-fc46-46b8-8e34-4246c731c040",
+          "appliedAt": "2026-11-14T22:59:19.908Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-09-article-polish-20261114.json",
+          "auditEvidence": null,
+          "summary": "Relecture publique : formulations des articles et du jalon de transfert différenciées dans les huit langues, sans changer les faits, les sources ni les dates."
+        },
+        {
+          "eventId": "apply-08849096-19c6-4163-aa91-b73887dc96e7",
+          "appliedAt": "2026-11-14T23:00:53.915Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-10-caption-polish-20261114.json",
+          "auditEvidence": null,
+          "summary": "Quatre légendes d’articles rédigées et relues dans les huit langues pour les différencier de la galerie ; mêmes photographies et faits sourcés."
+        },
+        {
+          "eventId": "apply-2efa841b-69f5-4abe-8ce8-6d372f8670f9",
+          "appliedAt": "2026-11-14T23:03:23.401Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-11-final-text-polish-20261114.json",
+          "auditEvidence": null,
+          "summary": "Dernière relecture ciblée des formulations historiques et de sept phrases communes : faits et sources conservés, variantes linguistiques relues personnellement."
+        },
+        {
+          "eventId": "apply-38f33469-d07a-4d50-8816-2e7bd6fccf31",
+          "appliedAt": "2026-11-14T23:05:39.892Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-12-source-labels-20261114.json",
+          "auditEvidence": null,
+          "summary": "Libellés des quatre citations du journal 20 Minutes précisés par son domaine 20minutes.fr pour corriger un faux positif de durée ; liens, attribution et faits conservés."
+        },
+        {
+          "eventId": "apply-f4932857-1bea-4edb-99b3-c74ae8eebbb6",
+          "appliedAt": "2026-11-14T23:07:07.875Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-14-source-article-title-20261114.json",
+          "auditEvidence": null,
+          "summary": "Citations présentées par le sujet exact de l’article et sa date ; URLs du journal conservées après détection du nom numérique comme durée technique."
+        },
+        {
+          "eventId": "completed-after-audit-f4932857-1bea-4edb-99b3-c74ae8eebbb6",
+          "appliedAt": "2026-11-14T23:07:07.875Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "afd24c62-0972-4c98-860c-b5a55984f777",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-14-source-article-title-20261114.json",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-final-audit-20261114.json",
+          "summary": "Audit final de publication réussi : 100/100 sans bloqueur, 65 lieux, 77 médias, 25 faits et 4 articles huit langues ; site et Facebook vérifiés, lacunes documentées conservées."
         }
       ],
-      "nextAction": "Audit final réalisé : score projeté 95/100. Attendre exception exacte Marineland (score et lacunes nominatives), puis export publication, visibilité, contrôles publics et Facebook. 65 items/8 langues, 74 photos parc/items, 25 faits et 4 articles privés ; pas de réimport.",
+      "nextAction": "Intégration et publications vérifiées à 100/100. Conserver les lacunes historiques documentées pour enrichissements ultérieurs (photos, positions prouvées, millésimes). Aucune nouvelle annonce Facebook à envoyer.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -19972,7 +20052,25 @@
         }
       ],
       "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-intake-20261103.json",
-      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-final-audit-20261114.json"
+      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/marineland-antibes-publication-final-audit-20261114.json",
+      "publicationEvidence": {
+        "status": "Published",
+        "appliedAtUtc": "2026-11-14T22:49:26.0884301Z",
+        "publicUrl": "https://amusement-parks.fun/fr/park/afd24c62-0972-4c98-860c-b5a55984f777/marineland-d-antibes",
+        "verifiedAtUtc": "2026-11-14T23:10:04.7340084Z",
+        "isVisible": true,
+        "adminReviewStatus": "Validated"
+      },
+      "facebookPublicationEvidence": {
+        "status": "Published",
+        "publicationId": "2fcb25c478484d91ba53ec1dee9a739c",
+        "url": "https://www.facebook.com/1285475681307050/posts/122127379725424431",
+        "publishedAtUtc": null,
+        "observedAtUtc": "2026-11-14T23:09:07.0147738Z",
+        "dateNote": "Official draft resolves the existing published record but does not expose its sending time; no date inferred.",
+        "newPublishCalls": 0,
+        "action": "Existing automatic announcement confirmed with ResolveFacebookPublication; no duplicate created."
+      }
     },
     {
       "entryId": "FR-candidate-b985933907dc00",
