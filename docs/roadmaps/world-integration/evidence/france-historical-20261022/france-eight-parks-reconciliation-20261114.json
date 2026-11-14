@@ -1,0 +1,253 @@
+{
+  "checkedAtUtc": "2026-11-14T20:33:41.106685+00:00",
+  "parks": [
+    {
+      "name": "Fami P.A.R.C",
+      "parkId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
+      "entryId": "FR-park-bafa7e08-9858-472d-8357-9c84aa7479b7",
+      "searchObservedAtUtc": "2026-11-14T20:32:06.0004071Z",
+      "visible": true,
+      "reviewStatus": "Validated",
+      "lifecycle": "ClosedDefinitively",
+      "currentCompleteness": {
+        "completenessScore": 96,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 108,
+        "earnedPoints": 104,
+        "publicationBlockers": [],
+        "formulaicPublicTextIssue": null
+      },
+      "completenessObservedAtUtc": "2026-11-14T20:32:07.3207806Z",
+      "existingFacebook": {
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "71da20f56b1e4347989066329e9363be",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124213591424431"
+      },
+      "facebookObservedAtUtc": "2026-11-14T20:32:08.1331109Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/bafa7e08-9858-472d-8357-9c84aa7479b7/fami-p-a-r-c",
+      "priorFinalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-final-audit.json",
+      "lastDataIntegrationAtUnchanged": "2026-10-22T22:44:51.062Z",
+      "priorEventCountPreserved": 84,
+      "newPublicationCalls": 0
+    },
+    {
+      "name": "Florida Parc",
+      "parkId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+      "entryId": "FR-park-b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
+      "searchObservedAtUtc": "2026-11-14T20:33:14.7303042Z",
+      "visible": true,
+      "reviewStatus": "Validated",
+      "lifecycle": "ClosedDefinitively",
+      "currentCompleteness": {
+        "completenessScore": 98,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 103,
+        "earnedPoints": 101,
+        "publicationBlockers": [],
+        "formulaicPublicTextIssue": null
+      },
+      "completenessObservedAtUtc": "2026-11-14T20:33:15.6972894Z",
+      "existingFacebook": {
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "46a5488e02b6416f96a0144cc77cb5dd",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124219921424431"
+      },
+      "facebookObservedAtUtc": "2026-11-14T20:33:16.5012750Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5/florida-parc",
+      "priorFinalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-final-audit.json",
+      "lastDataIntegrationAtUnchanged": "2026-10-22T23:52:31.180Z",
+      "priorEventCountPreserved": 37,
+      "newPublicationCalls": 0
+    },
+    {
+      "name": "Holly Park",
+      "parkId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+      "entryId": "FR-park-1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
+      "searchObservedAtUtc": "2026-11-14T20:33:25.1045475Z",
+      "visible": true,
+      "reviewStatus": "Validated",
+      "lifecycle": "ClosedDefinitively",
+      "currentCompleteness": {
+        "completenessScore": 97,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 103,
+        "earnedPoints": 100,
+        "publicationBlockers": [],
+        "formulaicPublicTextIssue": null
+      },
+      "completenessObservedAtUtc": "2026-11-14T20:33:26.0510751Z",
+      "existingFacebook": {
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "8eaea520e63546d9b84d825527bed061",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124225309424431"
+      },
+      "facebookObservedAtUtc": "2026-11-14T20:33:26.7051779Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/1c5c0675-8d86-459c-9c7c-b2bc79c1dad4/holly-park",
+      "priorFinalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-final-audit.json",
+      "lastDataIntegrationAtUnchanged": "2026-10-23T01:14:14.445Z",
+      "priorEventCountPreserved": 34,
+      "newPublicationCalls": 0
+    },
+    {
+      "name": "Parc Avenue",
+      "parkId": "f019e441-aecf-487b-93db-2b0246dce185",
+      "entryId": "FR-park-f019e441-aecf-487b-93db-2b0246dce185",
+      "searchObservedAtUtc": "2026-11-14T20:33:27.9034922Z",
+      "visible": true,
+      "reviewStatus": "Validated",
+      "lifecycle": "ClosedDefinitively",
+      "currentCompleteness": {
+        "completenessScore": 97,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 108,
+        "earnedPoints": 105,
+        "publicationBlockers": [],
+        "formulaicPublicTextIssue": null
+      },
+      "completenessObservedAtUtc": "2026-11-14T20:33:28.8117556Z",
+      "existingFacebook": {
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "272764fac9444a9f8e25cf1ea97fce65",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124255363424431"
+      },
+      "facebookObservedAtUtc": "2026-11-14T20:33:29.4401797Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/f019e441-aecf-487b-93db-2b0246dce185/parc-avenue",
+      "priorFinalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-avenue-final-audit.json",
+      "lastDataIntegrationAtUnchanged": "2026-10-23T07:12:18.486Z",
+      "priorEventCountPreserved": 74,
+      "newPublicationCalls": 0
+    },
+    {
+      "name": "Parc de la Toison d'Or",
+      "parkId": "66653da2-93bb-499f-95df-15e240673e58",
+      "entryId": "FR-park-66653da2-93bb-499f-95df-15e240673e58",
+      "searchObservedAtUtc": "2026-11-14T20:33:30.8364948Z",
+      "visible": true,
+      "reviewStatus": "Validated",
+      "lifecycle": "ClosedDefinitively",
+      "currentCompleteness": {
+        "completenessScore": 96,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 108,
+        "earnedPoints": 104,
+        "publicationBlockers": [],
+        "formulaicPublicTextIssue": null
+      },
+      "completenessObservedAtUtc": "2026-11-14T20:33:31.7035203Z",
+      "existingFacebook": {
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "5914eeadfe3c45e9aa8ae8f0834d359b",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124285243424431"
+      },
+      "facebookObservedAtUtc": "2026-11-14T20:33:32.3967095Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/66653da2-93bb-499f-95df-15e240673e58/parc-de-la-toison-d-or",
+      "priorFinalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/toison-or-final-audit.json",
+      "lastDataIntegrationAtUnchanged": "2026-10-23T12:15:37.500Z",
+      "priorEventCountPreserved": 61,
+      "newPublicationCalls": 0
+    },
+    {
+      "name": "Ty'Bamboo",
+      "parkId": "6919c77b-1865-444d-8c5c-964b255d9c27",
+      "entryId": "FR-park-6919c77b-1865-444d-8c5c-964b255d9c27",
+      "searchObservedAtUtc": "2026-11-14T20:33:33.6841558Z",
+      "visible": true,
+      "reviewStatus": "Validated",
+      "lifecycle": "ClosedDefinitively",
+      "currentCompleteness": {
+        "completenessScore": 98,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 108,
+        "earnedPoints": 106,
+        "publicationBlockers": [],
+        "formulaicPublicTextIssue": null
+      },
+      "completenessObservedAtUtc": "2026-11-14T20:33:34.5538558Z",
+      "existingFacebook": {
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "bec94248df5042c3be1b0b929c6c2e0e",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122125007451424431"
+      },
+      "facebookObservedAtUtc": "2026-11-14T20:33:35.2443252Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/6919c77b-1865-444d-8c5c-964b255d9c27/ty-bamboo",
+      "priorFinalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ty-bamboo-final-audit.json",
+      "lastDataIntegrationAtUnchanged": "2026-10-28T08:12:12.086Z",
+      "priorEventCountPreserved": 88,
+      "newPublicationCalls": 0
+    },
+    {
+      "name": "Koaland",
+      "parkId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+      "entryId": "FR-park-a01011e8-b400-40c7-bbe2-5635d7dd24f7",
+      "searchObservedAtUtc": "2026-11-14T20:33:36.3179458Z",
+      "visible": true,
+      "reviewStatus": "Validated",
+      "lifecycle": "Operating",
+      "currentCompleteness": {
+        "completenessScore": 98,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 102,
+        "earnedPoints": 100,
+        "publicationBlockers": [],
+        "formulaicPublicTextIssue": null
+      },
+      "completenessObservedAtUtc": "2026-11-14T20:33:37.2048101Z",
+      "existingFacebook": {
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "48a087b5cf60408c9f921250f4e1617f",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122120989857424431"
+      },
+      "facebookObservedAtUtc": "2026-11-14T20:33:37.8650477Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/a01011e8-b400-40c7-bbe2-5635d7dd24f7/koaland",
+      "priorFinalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/koaland-final-audit.json",
+      "lastDataIntegrationAtUnchanged": "2026-11-02T23:41:43.216Z",
+      "priorEventCountPreserved": 78,
+      "newPublicationCalls": 0
+    },
+    {
+      "name": "Eana",
+      "parkId": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
+      "entryId": "FR-candidate-605fde75a058d0",
+      "searchObservedAtUtc": "2026-11-14T20:33:39.4956659Z",
+      "visible": true,
+      "reviewStatus": "Validated",
+      "lifecycle": "ClosedDefinitively",
+      "currentCompleteness": {
+        "completenessScore": 96,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 108,
+        "earnedPoints": 104,
+        "publicationBlockers": [],
+        "formulaicPublicTextIssue": null
+      },
+      "completenessObservedAtUtc": "2026-11-14T20:33:40.4278297Z",
+      "existingFacebook": {
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "ddec684b67c744fbb6d98d946932ec7b",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122125705815424431"
+      },
+      "facebookObservedAtUtc": "2026-11-14T20:33:41.0496904Z",
+      "publicUrl": "https://amusement-parks.fun/fr/park/c30d2efd-a204-47ce-b8d3-f32a2e0c700f/eana",
+      "priorFinalAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/eana-final-audit.json",
+      "lastDataIntegrationAtUnchanged": "2026-11-03T00:39:26.179Z",
+      "priorEventCountPreserved": 65,
+      "newPublicationCalls": 0
+    }
+  ],
+  "owner": "Conversation France",
+  "completedBatchCount": 8,
+  "newIntegrations": 0,
+  "newPublications": 0,
+  "masterRef": "0930e27",
+  "masterFranceEntriesPreserved": 496,
+  "masterIntegrationEventsPreserved": true,
+  "datePolicy": "Dates de dernière intégration conservées aux valeurs réelles antérieures ; dates de vérification séparées. Dates de posts absentes du résolveur non inventées."
+}

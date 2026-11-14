@@ -5990,7 +5990,7 @@
       "siteId": "bafa7e08-9858-472d-8357-9c84aa7479b7",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22T22:54:57.925619Z",
+      "presenceObservedAt": "2026-11-14T20:32:06.0004071Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
@@ -6869,7 +6869,8 @@
       ],
       "countryCodeAtInventory": "FR",
       "countryResolution": null,
-      "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-final-audit.json"
+      "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fami-parc-final-audit.json",
+      "publicationReconciliationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/france-eight-parks-reconciliation-20261114.json"
     },
     {
       "entryId": "FR-park-2f436a73-8a36-4adc-9723-f14d569ed4f8",
@@ -7167,7 +7168,7 @@
       "siteId": "b8ab1e68-5fe5-4bb9-8986-daf2fd3fe1e5",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22T23:57:38.925648Z",
+      "presenceObservedAt": "2026-11-14T20:33:14.7303042Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
@@ -7574,7 +7575,8 @@
       ],
       "countryCodeAtInventory": "FR",
       "countryResolution": null,
-      "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-final-audit.json"
+      "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/florida-parc-final-audit.json",
+      "publicationReconciliationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/france-eight-parks-reconciliation-20261114.json"
     },
     {
       "entryId": "FR-park-ea22716e-64d2-44ef-b068-6b26ba5cf9d7",
@@ -8534,7 +8536,7 @@
       "siteId": "1c5c0675-8d86-459c-9c7c-b2bc79c1dad4",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-23T01:25:29.165149Z",
+      "presenceObservedAt": "2026-11-14T20:33:25.1045475Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
@@ -8911,7 +8913,8 @@
       ],
       "countryCodeAtInventory": "FR",
       "countryResolution": null,
-      "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-final-audit.json"
+      "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/holly-park-final-audit.json",
+      "publicationReconciliationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/france-eight-parks-reconciliation-20261114.json"
     },
     {
       "entryId": "FR-park-3b9abd45-167e-4b02-aeec-8d2904e58f0a",
@@ -11699,7 +11702,7 @@
       "siteId": "a01011e8-b400-40c7-bbe2-5635d7dd24f7",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-02T23:54:20.294388+00:00",
+      "presenceObservedAt": "2026-11-14T20:33:36.3179458Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
@@ -12537,7 +12540,8 @@
           "publicationId": "48a087b5cf60408c9f921250f4e1617f",
           "dateNote": "Resolve confirms Published without exposing the original publication date. Observation time is not substituted for that unknown date."
         }
-      }
+      },
+      "publicationReconciliationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/france-eight-parks-reconciliation-20261114.json"
     },
     {
       "entryId": "FR-candidate-9f8d93dee15c52",
@@ -22366,7 +22370,7 @@
       "siteId": "f019e441-aecf-487b-93db-2b0246dce185",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-23T07:43:15.084942+00:00",
+      "presenceObservedAt": "2026-11-14T20:33:27.9034922Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
@@ -23137,7 +23141,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "publicationReconciliationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/france-eight-parks-reconciliation-20261114.json"
     },
     {
       "entryId": "FR-park-99f3ddbb-cb30-4a17-9814-c227706cc8c9",
@@ -24221,7 +24226,7 @@
       "siteId": "66653da2-93bb-499f-95df-15e240673e58",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-23T12:23:38.481227+00:00",
+      "presenceObservedAt": "2026-11-14T20:33:30.8364948Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
@@ -24869,7 +24874,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "publicationReconciliationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/france-eight-parks-reconciliation-20261114.json"
     },
     {
       "entryId": "FR-park-f24b9993-8768-4e36-b3cb-544401210007",
@@ -26531,7 +26537,7 @@
       "siteId": "c30d2efd-a204-47ce-b8d3-f32a2e0c700f",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-03T00:45:22.799471+00:00",
+      "presenceObservedAt": "2026-11-14T20:33:39.4956659Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -27222,7 +27228,8 @@
           "publicationId": "ddec684b67c744fbb6d98d946932ec7b",
           "dateNote": "Date originale non renvoyée par Resolve ; observation distincte, aucune date inventée."
         }
-      }
+      },
+      "publicationReconciliationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/france-eight-parks-reconciliation-20261114.json"
     },
     {
       "entryId": "FR-candidate-d36edba7f3b1b3",
@@ -32733,7 +32740,7 @@
       "siteId": "6919c77b-1865-444d-8c5c-964b255d9c27",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-28T08:21:02.737015+00:00",
+      "presenceObservedAt": "2026-11-14T20:33:33.6841558Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
@@ -33665,7 +33672,8 @@
           "publicationId": "bec94248df5042c3be1b0b929c6c2e0e",
           "dateNote": "Resolve confirms Published but exposes no publication timestamp. Observation time is retained separately."
         }
-      }
+      },
+      "publicationReconciliationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/france-eight-parks-reconciliation-20261114.json"
     },
     {
       "entryId": "FR-park-8e05ac0f-c8aa-4224-882f-354bc4fc7672",
@@ -37525,7 +37533,7 @@
           "summary": "Zygofolis : restauration canonique des 19 faits historiques après mise en ligne, sans modification éditoriale ; résultat partial conservé."
         }
       ],
-      "nextAction": "Fiche et Facebook publiés ; 19 faits historiques restaurés, lien Histoire vérifié dans huit langues. Score réel 95/100 sans bloqueur API. Ligne partial conservée : enrichir les lacunes documentées ou obtenir une exception nominative avant clôture. Ne pas republier Facebook. Voir zygofolis-publication-audit.json.",
+      "nextAction": "Rapprochement officiel du 14 novembre : 54 éléments et 58 photos publics, 19 faits ; score95 sans bloqueur. Recherches complémentaires sans preuve nouvelle admissible de restriction ou constructeur. Voir zygofolis-recovery-20261114.json ; conserver partial et annonce Facebook existante, sans nouvel envoi.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -37560,7 +37568,8 @@
       ],
       "countryCodeAtInventory": "FR",
       "countryResolution": null,
-      "finalContentAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-content-audit.json"
+      "finalContentAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-content-audit.json",
+      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/zygofolis-recovery-20261114.json"
     },
     {
       "entryId": "FR-candidate-989aee8356c4ae",
