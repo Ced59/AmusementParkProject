@@ -627,6 +627,126 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "HK-candidate-discovery-bdf95c6242a3c6fc",
+      "name": "Ngong Ping 360 Cable Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "Tung Chung Cable Car Terminal, Lantau",
+      "siteId": "d99d6e51-cb0d-4088-a7e0-557fcf945838",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T21:31:07.542Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant actif le 14 novembre 2026 : billets aller-retour, horaires ordinaires et services passagers publiés.",
+      "identityConfidence": "Billetterie propre, terminus et itinéraire officiels ; recherches Park et StandaloneAttraction pour Ngong Ping au territoire et dans le monde sans fiche correspondante.",
+      "possibleMatches": [],
+      "aliases": [
+        "Ngong Ping Cable Car",
+        "Tung Chung Cable Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T21:28:49.751Z",
+      "integrationHistory": [
+        {
+          "eventId": "e9b4514a-d7fb-4b13-912b-d0339aee2ab8",
+          "appliedAt": "2026-11-14T21:25:27.647Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d99d6e51-cb0d-4088-a7e0-557fcf945838",
+          "evidence": "PARK_DATA_EDITOR:apply:e9b4514a-d7fb-4b13-912b-d0339aee2ab8",
+          "auditEvidence": null,
+          "summary": "Création de la fiche masquée et descriptions en huit langues"
+        },
+        {
+          "eventId": "79f54045-4393-4272-b2df-82fb847352ba",
+          "appliedAt": "2026-11-14T21:28:49.751Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d99d6e51-cb0d-4088-a7e0-557fcf945838",
+          "evidence": "PARK_DATA_EDITOR:apply:79f54045-4393-4272-b2df-82fb847352ba",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hk-ngong-ping-360-20261114/audit.json",
+          "summary": "Conditions d’accès, neuf tarifs, horaires ordinaires, trois photos exactes et audit final"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Actualiser les annonces d’horaires spéciaux, contrôler les tarifs à la prochaine saison et confirmer la date d’ouverture exacte ainsi que le fabricant si une source fiable apparaît.",
+      "sources": [
+        {
+          "label": "Exploitant — téléphérique et parcours",
+          "url": "https://www.np360.com.hk/en/cable-cars/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — billets et tarifs",
+          "url": "https://www.np360.com.hk/en/tickets-promotions/tickets-tours/cable-car-tickets",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — horaires et gare",
+          "url": "https://www.np360.com.hk/en/visitor-information/tourist-guide/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — FAQ et accessibilité",
+          "url": "https://www.np360.com.hk/en/visitor-information/faqs/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — vingtième anniversaire",
+          "url": "https://www.np360.com.hk/en/tickets-promotions/promotions/back-to-the-opening-price-special-offer/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — Cable car and Hong Kong International Airport panorama",
+          "url": "https://commons.wikimedia.org/wiki/File:Ngong_Ping_360_Cable_Car_and_HKG_2021-09.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — Crystal+ cabin at a Ngong Ping 360 station",
+          "url": "https://commons.wikimedia.org/wiki/File:NP360_Crystal%2B_Cabin.jpg",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — Ngong Ping 360 cabin 115 at station",
+          "url": "https://commons.wikimedia.org/wiki/File:Ngong_Ping_360_Cable_Car_115_22-06-2020.jpg",
+          "accessedAt": "2026-11-14"
+        }
+      ],
+      "countryCodeAtInventory": "HK",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [],
+        "rationale": "Téléphérique permanent à billet propre et terminus distincts ; les activités du village adjacent ne transforment pas cette traversée en ParkItem. Trois photos exactes sont publiées."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/d99d6e51-cb0d-4088-a7e0-557fcf945838/ngong-ping-360-cable-car",
+          "publishedAtUtc": "2026-11-14T21:31:07.542Z",
+          "verifiedAtUtc": "2026-11-14T21:31:28Z",
+          "evidence": "PARK_DATA_EDITOR:apply:589057f8-ca11-49e4-a41f-00a2bdb16f4c"
+        },
+        "facebook": {
+          "id": "4dbeb4653318460c8a30979cc580cddd",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-14T21:32:45.307Z",
+          "externalPostId": "1285475681307050_122127373545424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127373545424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:4dbeb4653318460c8a30979cc580cddd"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-hk-ngong-ping-360-20261114/audit.json",
+        "score": 92,
+        "publicationBlockers": [],
+        "gapCount": 3
+      }
     }
   ]
 }
