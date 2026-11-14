@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "0307ea44e16a4f0aadded32668e4b229",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+    "path": "park_item/0307ea44e16a4f0aadded32668e4b229",
+    "description": "Les voitures à pédales de La Récréation circulaient dans le sous-bois de Nétilly.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 640,
+    "height": 480,
+    "sizeInBytes": 53941,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20120331023919id_/http://www.la-recreation.com/Jeux/photos%20parc/Grande%20Voiture.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Voitures à pédales rouges à capot noir et motifs à damier, sur une allée entre les arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "Red pedal cars with black bonnets and chequered markings on a path between trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Rote Tretautos mit schwarzen Motorhauben und Karomustern auf einem Weg zwischen Bäumen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Rode trapauto’s met zwarte motorkappen en geblokte versiering op een pad tussen de bomen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Auto a pedali rosse con cofani neri e motivi a scacchi su un sentiero tra gli alberi."
+      },
+      {
+        "languageCode": "es",
+        "value": "Coches de pedales rojos con capós negros y motivos de cuadros en un sendero entre árboles."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Czerwone samochodziki na pedały z czarnymi maskami i motywami szachownicy na alejce między drzewami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Carros a pedais vermelhos com capôs pretos e motivos axadrezados num caminho entre árvores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les voitures à pédales de La Récréation circulaient dans le sous-bois de Nétilly."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Récréation’s pedal cars travelled through the woodland at Nétilly."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Tretautos von La Récréation fuhren durch den Wald von Nétilly."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De trapauto’s van La Récréation reden door het bos van Nétilly."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le auto a pedali di La Récréation percorrevano il bosco di Nétilly."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los coches de pedales de La Récréation recorrían el bosque de Nétilly."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Samochodziki na pedały w La Récréation jeździły przez las w Nétilly."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os carros a pedais do La Récréation percorriam o bosque de Nétilly."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "La Récréation — ancien site officiel, photographie conservée par Internet Archive ; droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Récréation — former official website, photograph preserved by Internet Archive; all rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Récréation — ehemalige offizielle Website, Foto im Internet Archive erhalten; alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Récréation — voormalige officiële website, foto bewaard door Internet Archive; alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Récréation — precedente sito ufficiale, fotografia conservata da Internet Archive; tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Récréation — antiguo sitio web oficial, fotografía conservada por Internet Archive; todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Récréation — dawna oficjalna strona, fotografia zachowana przez Internet Archive; wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Récréation — antigo sítio oficial, fotografia preservada pelo Internet Archive; todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:51:50.065Z",
+    "updatedAt": "2026-11-14T21:51:53.56Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:51:53.560Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20120219031551/http://www.la-recreation.com/Jeux/jeux.html"
+}

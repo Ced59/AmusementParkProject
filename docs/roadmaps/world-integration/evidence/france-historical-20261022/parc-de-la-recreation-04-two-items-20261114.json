@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "owner": "Conversation France",
+  "documentSha256": "23649dcebe59aef8cbd9a11943c7cd07eeefc064e45ecae02bf0909835c7c943",
+  "review": "Huit langues rédigées et relues personnellement ; toutes les sources vérifiées, aperçu et changements relus avant Apply.",
+  "result": {
+    "operationId": "7f9aa69d-7828-47db-b1ff-ef927f9de334",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-14T21:50:06.702924Z",
+    "appliedAtUtc": "2026-11-14T21:50:06.702926Z",
+    "targetParkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+    "targetParkName": "Parc de la Récréation",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+        "entityKey": "park",
+        "displayName": "Parc de la Récréation",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53e02da1-dd83-4818-b06d-389810532904",
+        "entityKey": "53e02da1-dd83-4818-b06d-389810532904",
+        "displayName": "Tour de pneus",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine bunte Pyramide unter den Ästen</h2><p>Der Reifenturm stand im Wald von La Récréation. Rot, gelb und grün bemalte Reifen umgaben eine Holzwand mit Klettergriffen und setzten sich nach oben fort, zwischen grünen Netzen und tief hängenden Ästen.</p><p>Hier wurde mitten im Laub geklettert: Ausgediente Reifen bildeten eine kleine Landschaft zum Erkunden. Gelbliches Holz, kräftige Farben und die Schatten der Bäume verliehen dieser Ecke des Parks den Charakter einer aus wiederverwendeten Gegenständen gebauten Waldhütte.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A colourful pyramid beneath the branches</h2><p>The tyre tower stood in La Récréation’s woodland. Tyres painted red, yellow and green surrounded a wooden wall fitted with climbing holds and continued upwards towards the top, between green nets and low branches.</p><p>Climbers made their way through the foliage on a structure that turned discarded tyres into a landscape to explore. Yellowed wood, bright colours and shifting tree shadows gave this corner of the park the feel of a den built from reclaimed objects.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una pirámide de colores bajo las ramas</h2><p>La torre de neumáticos se alzaba en el bosque de La Récréation. Neumáticos pintados de rojo, amarillo y verde rodeaban una pared de madera con presas de escalada y continuaban hacia lo alto, entre redes verdes y ramas bajas.</p><p>Se trepaba en medio del follaje, por una construcción que convertía neumáticos usados en un pequeño paisaje por explorar. La madera amarillenta, los colores vivos y las sombras de los árboles daban a este rincón del parque el aspecto de una cabaña hecha con objetos recuperados.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une pyramide colorée sous les branches</h2><p>La tour de pneus se dressait dans le sous-bois de La Récréation. Des pneus peints en rouge, jaune et vert entouraient une paroi de bois munie de prises et se poursuivaient vers le sommet, entre les filets verts et les branches basses.</p><p>L’escalade se déroulait au milieu du feuillage, sur cette construction où les pneus usagés devenaient un relief à explorer. Le bois jauni, les couleurs vives et les ombres des arbres donnaient à ce coin du parc l’allure d’une cabane fabriquée avec des objets récupérés.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una piramide colorata sotto i rami</h2><p>La torre di pneumatici sorgeva nel bosco di La Récréation. Gomme dipinte di rosso, giallo e verde circondavano una parete di legno con prese per arrampicarsi e proseguivano verso la sommità, tra reti verdi e rami bassi.</p><p>Ci si arrampicava in mezzo al fogliame, su una costruzione che trasformava vecchi pneumatici in un piccolo paesaggio da esplorare. Il legno ingiallito, i colori vivaci e le ombre degli alberi davano a questo angolo del parco l’aspetto di una capanna costruita con oggetti recuperati.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een kleurige piramide onder de takken</h2><p>De bandentoren stond in het bos van La Récréation. Rood, geel en groen geverfde banden omringden een houten wand met klimgrepen en liepen verder naar boven, tussen groene netten en laaghangende takken.</p><p>Het klimmen speelde zich midden in het gebladerte af, op een bouwwerk dat afgedankte banden veranderde in een landschap om te verkennen. Gelige planken, felle kleuren en boomschaduwen gaven dit stukje park iets van een boshut die met hergebruikte spullen was gebouwd.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kolorowa piramida pod gałęziami</h2><p>Wieża z opon stała w lesie La Récréation. Opony pomalowane na czerwono, żółto i zielono otaczały drewnianą ściankę z uchwytami wspinaczkowymi i piętrzyły się ku górze, między zielonymi siatkami a nisko zwieszonymi gałęziami.</p><p>Wspinaczka odbywała się wśród liści, na konstrukcji, która zamieniała zużyte opony w niewielki krajobraz do odkrywania. Pożółkłe drewno, jaskrawe barwy i cienie drzew sprawiały, że ten zakątek parku przypominał leśną chatkę zbudowaną z odzyskanych przedmiotów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma pirâmide colorida debaixo dos ramos</h2><p>A torre de pneus erguia-se no bosque do La Récréation. Pneus pintados de vermelho, amarelo e verde rodeavam uma parede de madeira com presas de escalada e prolongavam-se até ao topo, entre redes verdes e ramos baixos.</p><p>A escalada fazia-se no meio da folhagem, numa construção que transformava pneus usados numa pequena paisagem para explorar. A madeira amarelada, as cores vivas e as sombras das árvores davam a este recanto do parque o aspeto de uma cabana feita com objetos recuperados.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "entityKey": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "displayName": "Voitures à pédales",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Rote Autos zwischen den Bäumen</h2><p>Die Tretautos von La Récréation sahen mit ihren langen schwarzen Motorhauben, roten Rahmen und Karomustern wie kleine Rennwagen aus. Sie fuhren auf einem hellen Waldweg zwischen Baumstämmen und den bemalten Reifen, die das Gelände säumten.</p><p>Mehrere Fahrer konnten sich auf demselben Weg begegnen, die Hände am Lenkrad und den Blick auf die Lücke zwischen den Bäumen gerichtet. Unter dem Blätterdach entstand so eine kleine Rennszene mitten im Wald.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Red cars among the trees</h2><p>La Récréation’s pedal cars looked like small racing cars, with long black bonnets, red frames and chequered markings. They travelled along a pale woodland path beside tree trunks and painted tyres dotted around the grounds.</p><p>Several drivers could share the same path, hands on their steering wheels and eyes on the gap between the trees. Beneath the leaves, the cars created a miniature racing scene in a woodland setting.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Coches rojos entre los árboles</h2><p>Los coches de pedales de La Récréation parecían pequeños vehículos de carreras, con su largo capó negro, su bastidor rojo y sus motivos de cuadros. Recorrían un sendero claro del bosque, junto a los troncos y los neumáticos pintados que salpicaban el terreno.</p><p>Varios conductores podían compartir el mismo camino, con las manos en el volante y la mirada puesta en el paso entre los árboles. Bajo el follaje, aquellos coches componían una escena de carreras en miniatura en pleno bosque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des voitures rouges entre les arbres</h2><p>Les voitures à pédales de La Récréation avaient une silhouette de petite voiture de course, avec leur long capot noir, leur châssis rouge et leurs motifs à damier. Elles circulaient sur une allée claire du sous-bois, à côté des troncs et des pneus peints qui jalonnaient le terrain.</p><p>Plusieurs conducteurs pouvaient ainsi se retrouver sur le même chemin, les mains au volant et le regard tourné vers le passage entre les arbres. Sous les feuillages, ces voitures composaient une scène de course miniature au milieu du bois.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Automobiline rosse tra gli alberi</h2><p>Le auto a pedali di La Récréation somigliavano a piccole vetture da corsa, con il lungo cofano nero, il telaio rosso e i motivi a scacchi. Percorrevano un sentiero chiaro nel bosco, accanto ai tronchi e agli pneumatici dipinti che punteggiavano il terreno.</p><p>Più guidatori potevano ritrovarsi sullo stesso sentiero, con le mani sul volante e lo sguardo rivolto al passaggio tra gli alberi. Sotto le fronde, le automobiline creavano una scena di corse in miniatura immersa nel bosco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Rode auto’s tussen de bomen</h2><p>De trapauto’s van La Récréation leken op kleine racewagens, met hun lange zwarte motorkap, rode frame en geblokte versiering. Ze reden over een lichtgekleurd bospad langs boomstammen en de geverfde banden die over het terrein verspreid stonden.</p><p>Verschillende bestuurders konden hetzelfde pad delen, met hun handen aan het stuur en hun blik op de doorgang tussen de bomen. Onder het bladerdak ontstond zo een kleine racescène midden in het bos.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Czerwone samochodziki między drzewami</h2><p>Samochodziki na pedały w La Récréation przypominały małe auta wyścigowe: miały długie czarne maski, czerwone ramy i motywy szachownicy. Jeździły jasną leśną alejką, obok pni drzew i malowanych opon rozmieszczonych na terenie parku.</p><p>Kilku kierowców mogło spotkać się na tej samej alejce, trzymając ręce na kierownicy i wypatrując przejazdu między drzewami. Pod liśćmi samochodziki tworzyły miniaturową scenę wyścigową w leśnej scenerii.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Carros vermelhos entre as árvores</h2><p>Os carros a pedais do La Récréation pareciam pequenos automóveis de corrida, com o capô preto comprido, a estrutura vermelha e os motivos axadrezados. Circulavam por um caminho claro no bosque, junto dos troncos e dos pneus pintados que pontuavam o terreno.</p><p>Vários condutores podiam encontrar-se no mesmo caminho, com as mãos no volante e o olhar voltado para a passagem entre as árvores. Debaixo da folhagem, os carros criavam uma cena de corridas em miniatura no meio do bosque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

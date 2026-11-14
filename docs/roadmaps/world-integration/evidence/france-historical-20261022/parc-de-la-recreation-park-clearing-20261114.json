@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "314b4db3e89e4431b0a7fdbe818e3eb4",
+    "category": "PARK",
+    "ownerType": "PARK",
+    "ownerId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+    "path": "park/314b4db3e89e4431b0a7fdbe818e3eb4",
+    "description": "Le Gliss’mouille dominait une clairière où se côtoyaient le volley, les tables et les jeux colorés de La Récréation.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 2000,
+    "height": 1500,
+    "sizeInBytes": 935082,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://web.archive.org/web/20160909022113id_/https://image.jimcdn.com/app/cms/image/transf/none/path/sd959ab0fd8877d08/background/ie923eb3b13a9a464/version/1421830818/image.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vue du terrain de volley, des toboggans bleus et des aires de jeux entre les arbres de La Récréation."
+      },
+      {
+        "languageCode": "en",
+        "value": "View of La Récréation’s volleyball court, blue slides and play areas among the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Blick auf Volleyballfeld, blaue Rutschen und Spielbereiche zwischen den Bäumen von La Récréation."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Zicht op het volleybalveld, de blauwe glijbanen en de speelplekken tussen de bomen van La Récréation."
+      },
+      {
+        "languageCode": "it",
+        "value": "Veduta del campo da pallavolo, degli scivoli blu e delle aree gioco tra gli alberi di La Récréation."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vista de la pista de voleibol, los toboganes azules y las zonas de juego entre los árboles de La Récréation."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Widok na boisko do siatkówki, niebieskie zjeżdżalnie i miejsca zabaw między drzewami w La Récréation."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vista do campo de voleibol, dos escorregas azuis e das zonas de jogos entre as árvores do La Récréation."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le Gliss’mouille dominait une clairière où se côtoyaient le volley, les tables et les jeux colorés de La Récréation."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Gliss’mouille overlooked a clearing shared by La Récréation’s volleyball court, tables and colourful games."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Gliss’mouille überragte eine Lichtung mit Volleyballfeld, Tischen und bunten Spielen von La Récréation."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De Gliss’mouille keek uit over een open plek met het volleybalveld, tafels en kleurrijke spellen van La Récréation."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il Gliss’mouille dominava una radura con il campo da pallavolo, i tavoli e i giochi colorati di La Récréation."
+      },
+      {
+        "languageCode": "es",
+        "value": "El Gliss’mouille dominaba un claro con la pista de voleibol, las mesas y los juegos de colores de La Récréation."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Gliss’mouille górował nad polaną z boiskiem do siatkówki, stołami i kolorowymi grami La Récréation."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Gliss’mouille dominava uma clareira onde se encontravam o campo de voleibol, as mesas e os jogos coloridos do La Récréation."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "La Récréation — ancien site officiel, photographie conservée par Internet Archive ; droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Récréation — former official website, photograph preserved by Internet Archive; all rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Récréation — ehemalige offizielle Website, Foto im Internet Archive erhalten; alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Récréation — voormalige officiële website, foto bewaard door Internet Archive; alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Récréation — precedente sito ufficiale, fotografia conservata da Internet Archive; tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Récréation — antiguo sitio web oficial, fotografía conservada por Internet Archive; todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Récréation — dawna oficjalna strona, fotografia zachowana przez Internet Archive; wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Récréation — antigo sítio oficial, fotografia preservada pelo Internet Archive; todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-14T21:53:10.68Z",
+    "updatedAt": "2026-11-14T21:53:14.187Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-14T21:53:14.187Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://web.archive.org/web/20161001075707/http://www.la-recreation.com/photos-et-vid%C3%A9os"
+}
