@@ -15,10 +15,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 6 |
-| À qualifier | 44 |
+| À qualifier | 43 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 3 |
+| Intégration achevée | 4 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -29,7 +29,7 @@ Pays proposé par rapprochement pour **6** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **6 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **36 candidats sans fiche**.
 
-Standalone : **3 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **5 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **4 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **5 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **3 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -79,7 +79,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | TW-candidate-95fab0e37c7408 | Taipei Childrens Recreation Center | Taipei , Taipei | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/9936.htm) |
 | TW-candidate-13fe7dac303125 | Taipei Water Park | Taipei | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Taiwan) |
 | TW-candidate-7c3a67f372741e | Taipei Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Taiwan) |
-| TW-candidate-standalone-114163f2bb283b | Tamshui Lover’s Tower | — | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : IndependentCandidate. Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Installations référencées : Tamshui Lover’s Tower. [Intamin — référence constructeur](https://www.intamin.com/project/tamshui-lovers-tower/) · [Opérateur référencé par la source](https://www.fullon-hotels.com.tw/fw/en/fac-detail/68/) |
+| TW-candidate-standalone-114163f2bb283b | Tamshui Lover’s Tower | Tamsui, New Taipei City | StandaloneAttraction | Published | Intégration achevée | 2026-11-14T18:08:34.058Z | — | Conserver la ligne et les reçus. Vérifier les coordonnées exactes de la tour, la contradiction des horaires du mardi et toute nouvelle période datée ; ne pas republier Facebook. Qualification standalone : AlreadyStandalone. Type StandaloneAttraction confirmé par le reçu d’intégration apply-7267bad2-1b93-4a45-8795-c9fc7209cf8b ; conserver les références de découverte. Installations référencées : Tamshui Lover’s Tower. Signal source : Operating — operator page checked 2026-11-14. [Intamin — référence constructeur](https://www.intamin.com/project/tamshui-lovers-tower/) · [Opérateur référencé par la source](https://www.fullon-hotels.com.tw/fw/en/fac-detail/68/) · [Fullon Hotel — billets, horaires et accès vérifiés](https://www.fullon-hotels.com.tw/fw/en/fac-detail/68/) · [Intamin — Super Gyro Tower](https://www.intamin.com/project/tamshui-lovers-tower/) · [Wikimedia Commons — photo Mosbatho, CC BY 4.0](https://commons.wikimedia.org/wiki/File:Fullon_Hotel_Danshuei_Fishermen%27s_Wharf.jpg) |
 | TW-candidate-016e01733c591d | Taoyuan Aquarium Xpark - Taoyuan | Taiwan | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#Taiwan) |
 | TW-candidate-379745f9632a22 | Wan Ruey Forest Paradise | Hengshan , Hsinchu | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/10874.htm) |
 | TW-candidate-f597d7fa433adc | Wanpi World Safari Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Taiwan) |
