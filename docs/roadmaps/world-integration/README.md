@@ -17,9 +17,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 324 | 1871 | 7552 |
-| Standalone | 259 | 1 | 125 |
+| Standalone | 260 | 1 | 124 |
 
-**Reprise standalone :** en plus des 125 candidates sans correspondance, **210 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **555 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **70 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 124 candidates sans correspondance, **210 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **555 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **70 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **72** types à décider, **1269** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -365,7 +365,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Qatar](countries/QA.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [R.A.S. chinoise de Hong Kong](countries/HK.md) | 2 | 0 | 0 | 1 | 0 | 0 |
 | [R.A.S. chinoise de Macao](countries/MO.md) | 4 | 0 | 1 | 0 | 0 | 0 |
-| [Singapour](countries/SG.md) | 4 | 0 | 1 | 0 | 1 | 0 |
+| [Singapour](countries/SG.md) | 5 | 0 | 0 | 0 | 1 | 0 |
 | [Sri Lanka](countries/LK.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Syrie](countries/SY.md) | 0 | 0 | 1 | 0 | 0 | 0 |
 | [Tadjikistan](countries/TJ.md) | 0 | 0 | 0 | 0 | 1 | 0 |
@@ -376,9 +376,9 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Turkménistan](countries/TM.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Viêt Nam](countries/VN.md) | 1 | 0 | 3 | 1 | 21 | 0 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **47** | **0** | **52** | **4** | **689** | **0** |
+| **Total** | **48** | **0** | **51** | **4** | **689** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **46**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **47**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Cambodge : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Chine : 5 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -391,7 +391,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - Népal : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - R.A.S. chinoise de Hong Kong : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - R.A.S. chinoise de Macao : 4 intégrations achevées et auditées, dont 0 fiches encore masquées.
-- Singapour : 4 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Singapour : 5 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Taïwan : 4 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Viêt Nam : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier

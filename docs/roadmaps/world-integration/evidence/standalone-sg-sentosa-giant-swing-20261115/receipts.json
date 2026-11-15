@@ -1,0 +1,36 @@
+{
+  "entityId": "7a96dc58-1a52-4255-b641-d5593eb0b441",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "732a64ee-1089-4f91-a176-2020abe4d336",
+      "appliedAtUtc": "2026-11-15T19:18:50.6977898Z"
+    },
+    {
+      "step": "visitorData",
+      "operationId": "88769e9d-c94a-4c02-af7d-2a11183ae749",
+      "appliedAtUtc": "2026-11-15T19:20:33.1999342Z"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "b0c79f67e51b4f809e32611332569aae",
+      "createdAtUtc": "2026-11-15T19:19:11.97Z",
+      "sourceUrl": "https://www.flickr.com/photos/25802865@N08/53131229278/",
+      "published": true,
+      "current": true
+    }
+  ],
+  "sitePublication": {
+    "operationId": "ee59e1c2-a09d-478f-af26-7079be69c1dd",
+    "appliedAtUtc": "2026-11-15T19:21:10.9505475Z",
+    "url": "https://amusement-parks.fun/fr/attraction/7a96dc58-1a52-4255-b641-d5593eb0b441/sentosa-giant-swing"
+  },
+  "facebookPublication": {
+    "id": "e232ea2426a74318b2a515fb937636bb",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-15T19:22:04.2821114Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127499749424431",
+    "externalPostId": "1285475681307050_122127499749424431"
+  }
+}

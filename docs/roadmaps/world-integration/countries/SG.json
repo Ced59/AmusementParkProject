@@ -1864,50 +1864,130 @@
     {
       "entryId": "SG-candidate-discovery-cefe9df983d182be",
       "name": "Sentosa Giant Swing",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Balançoire géante fixe",
       "locality": "30 Siloso Beach Walk, Sentosa",
-      "siteId": null,
+      "siteId": "7a96dc58-1a52-4255-b641-d5593eb0b441",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-11-14",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T19:21:25Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Offre distincte actuelle sur la page officielle de Skypark Sentosa ; billet individuel propre, photo libre exacte encore à trouver.",
-      "identityConfidence": "Nom, lieu et billet propres vérifiés chez l’exploitant ; recherche officielle StandaloneAttraction Giant Swing à Singapour et Park Skypark Sentosa sans résultat.",
+      "sourceLifecycleSignal": "Offre Giant Swing active sur le site officiel ; horaires selon le jour et la météo.",
+      "identityConfidence": "Billet propre de l’exploitant, photo exacte sous licence, recherche officielle sans homonyme.",
       "possibleMatches": [],
       "aliases": [
         "Skypark Sentosa Giant Swing"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Vérifier de nouveau les doublons et les conditions, puis trouver une photo réutilisable montrant le Giant Swing lui-même avant de créer et publier la fiche. Ne pas réutiliser la photo du Bungy.",
-      "sources": [
+      "lastDataIntegrationAt": "2026-11-15T19:20:33.199Z",
+      "integrationHistory": [
         {
-          "label": "Exploitant — Giant Swing",
-          "url": "https://www.skyparksentosa.com/activities/giant-swing",
-          "accessedAt": "2026-11-14"
+          "eventId": "apply-732a64ee-1089-4f91-a176-2020abe4d336",
+          "appliedAt": "2026-11-15T19:18:50.697Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7a96dc58-1a52-4255-b641-d5593eb0b441",
+          "evidence": "PARK_DATA_EDITOR:apply:732a64ee-1089-4f91-a176-2020abe4d336",
+          "auditEvidence": null,
+          "summary": "Fiche masquée du Giant Swing et huit descriptions éditoriales créées."
         },
         {
-          "label": "Exploitant — activités de Skypark Sentosa",
+          "eventId": "photo-b0c79f67e51b4f809e32611332569aae",
+          "appliedAt": "2026-11-15T19:19:11.970Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7a96dc58-1a52-4255-b641-d5593eb0b441",
+          "evidence": "PARK_DATA_EDITOR:photo:b0c79f67e51b4f809e32611332569aae",
+          "auditEvidence": null,
+          "summary": "Photo exacte de deux personnes sur le Giant Swing, CC BY 2.0, crédits et textes alternatifs localisés."
+        },
+        {
+          "eventId": "apply-88769e9d-c94a-4c02-af7d-2a11183ae749",
+          "appliedAt": "2026-11-15T19:20:33.199Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7a96dc58-1a52-4255-b641-d5593eb0b441",
+          "evidence": "PARK_DATA_EDITOR:apply:88769e9d-c94a-4c02-af7d-2a11183ae749",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-sentosa-giant-swing-20261115/audit.json",
+          "summary": "Tarif et conditions officiels intégrés ; fiche avec photo publiée, audit sans blocage, huit pages vérifiées."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Réexaminer tarif, horaires et conditions à la prochaine mise à jour officielle ; rechercher d’autres photographies exactes sous licence compatible.",
+      "sources": [
+        {
+          "label": "Skypark Sentosa — Giant Swing : tarif et conditions",
+          "url": "https://www.skyparksentosa.com/activities/giant-swing",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Skypark Sentosa — activités distinctes",
           "url": "https://www.skyparksentosa.com/activities",
-          "accessedAt": "2026-11-14"
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Sentosa — Skypark et horaires du site",
+          "url": "https://www.sentosa.com.sg/en/things-to-do/attractions/skypark-sentosa-by-aj-hackett/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Choo Yut Shing, Giant Swing 2023, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/25802865@N08/53131229278/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Sentosa Giant Swing",
+          "url": "https://amusement-parks.fun/fr/attraction/7a96dc58-1a52-4255-b641-d5593eb0b441/sentosa-giant-swing",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "SG",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-11-14",
-        "attractions": [],
-        "rationale": "Installation fixe vendue séparément du Bungy. Photographie exacte et qualification finale de l’autonomie en attente."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Sentosa Giant Swing",
+            "source": "Skypark Sentosa",
+            "url": "https://www.skyparksentosa.com/activities/giant-swing",
+            "family": "Balançoire géante fixe",
+            "sourceVenueName": "Skypark Sentosa by AJ Hackett",
+            "sourceLifecycleSignal": "Billet actuel à 69 SGD, créneaux sur réservation.",
+            "matchingMethod": "Recherche officielle Park et StandaloneAttraction, Preview et Apply contrôlés.",
+            "sourceLocality": "Sentosa, Singapore"
+          }
+        ],
+        "rationale": "Attraction fixe avec billet individuel propre, distincte du Bungy du même site."
       },
       "possibleBacklogEntries": [
         "SG-candidate-discovery-0bc9f9fd511d6f"
-      ]
+      ],
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/7a96dc58-1a52-4255-b641-d5593eb0b441/sentosa-giant-swing",
+          "publishedAtUtc": "2026-11-15T19:21:10.9505475Z",
+          "verifiedAtUtc": "2026-11-15T19:21:25Z",
+          "evidence": "PARK_DATA_EDITOR:apply:ee59e1c2-a09d-478f-af26-7079be69c1dd"
+        },
+        "facebook": {
+          "id": "e232ea2426a74318b2a515fb937636bb",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T19:22:04.2821114Z",
+          "externalPostId": "1285475681307050_122127499749424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127499749424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:e232ea2426a74318b2a515fb937636bb"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-sentosa-giant-swing-20261115/audit.json",
+        "score": 78,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }

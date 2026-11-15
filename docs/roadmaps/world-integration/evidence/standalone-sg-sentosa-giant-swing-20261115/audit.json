@@ -1,0 +1,71 @@
+{
+  "work": "Sentosa Giant Swing qualifié comme attraction à billet individuel de Skypark Sentosa. Huit descriptions, billet officiel, quatre conditions d’accès, photo exacte CC BY 2.0, huit pages publiques et publication Facebook vérifiés.",
+  "qualification": "Billet propre Giant Swing à 69 SGD, distinct du Bungy et des autres activités du Skypark. Recherche officielle StandaloneAttraction et Park sans homonyme Sentosa Giant Swing.",
+  "sources": {
+    "Skypark Sentosa — Giant Swing : tarif et conditions": "https://www.skyparksentosa.com/activities/giant-swing",
+    "Skypark Sentosa — activités distinctes": "https://www.skyparksentosa.com/activities",
+    "Sentosa — Skypark et horaires du site": "https://www.sentosa.com.sg/en/things-to-do/attractions/skypark-sentosa-by-aj-hackett/",
+    "Flickr — Choo Yut Shing, Giant Swing 2023, CC BY 2.0": "https://www.flickr.com/photos/25802865@N08/53131229278/",
+    "Fiche publique Sentosa Giant Swing": "https://amusement-parks.fun/fr/attraction/7a96dc58-1a52-4255-b641-d5593eb0b441/sentosa-giant-swing"
+  },
+  "entity": {
+    "id": "7a96dc58-1a52-4255-b641-d5593eb0b441",
+    "name": "Sentosa Giant Swing",
+    "countryCode": "SG",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "b0c79f67e51b4f809e32611332569aae",
+      "author": "Choo Yut Shing",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/25802865@N08/53131229278/",
+      "takenOn": "2023-08-12",
+      "createdAtUtc": "2026-11-15T19:19:11.97Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "price": "69 SGD par personne le 15 novembre 2026 ; réservation préalable.",
+    "capacity": "Une à trois personnes.",
+    "height": "Taille minimale 120 cm ; harnais adapté.",
+    "weight": "Enfant au moins 30 kg, solo adulte au moins 60 kg, adulte au plus 150 kg, groupe au plus 300 kg.",
+    "minors": "Accord et signature du parent ou tuteur.",
+    "weather": "Créneau soumis à la météo et aux consignes de sécurité ; consulter le jour même.",
+    "address": "30 Siloso Beach Walk, Singapore 099011"
+  },
+  "audit": {
+    "completenessScore": 78,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/7a96dc58-1a52-4255-b641-d5593eb0b441/sentosa-giant-swing",
+    "sitePublishedAtUtc": "2026-11-15T19:21:10.9505475Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:ee59e1c2-a09d-478f-af26-7079be69c1dd",
+    "facebookStatus": "Published",
+    "facebookId": "e232ea2426a74318b2a515fb937636bb",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127499749424431",
+    "facebookPublishedAtUtc": "2026-11-15T19:22:04.2821114Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T19:20:33.1999342Z",
+  "remainingGaps": [
+    "Ajouter d’autres photos exactes sous licence compatible si elles deviennent disponibles.",
+    "Réexaminer les horaires et le tarif lors d’une nouvelle vérification de l’exploitant."
+  ]
+}
