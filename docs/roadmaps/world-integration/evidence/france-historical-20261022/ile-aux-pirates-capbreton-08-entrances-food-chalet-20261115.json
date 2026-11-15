@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "a2267ab2ca25b0f3ac9e56be8dbcfe5c26294ab2baffcee8b5f0a371d3a7bc10",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "d38eb680-0db9-45bf-88f6-46dcaac3d7f4",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T02:52:58.7869862Z",
+    "appliedAtUtc": "2026-11-15T02:52:58.786987Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 3,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
+        "entityKey": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
+        "displayName": "Crêperie",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "ed054ceb-74ce-4f1f-8bb8-a67fd28e1b16",
+        "entityKey": "capbreton-entrance-towers-2016",
+        "displayName": "Une nouvelle entrée entre deux tours",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "capbreton-entrance-towers-2016"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2016"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "InfrastructureChange"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ein neuer Eingang zwischen zwei Türmen, en:A new entrance between two towers, es:Una nueva entrada entre dos torres, fr:Une nouvelle entrée entre deux tours, it:Un nuovo ingresso tra due torri, nl:Een nieuwe ingang tussen twee torens, pl:Nowe wejście między dwiema wieżami, pt:Uma nova entrada entre duas torres"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Zur Saison 2016 präsentiert der Park einen neuen Eingang zwischen zwei grauen Zinnentürmen. Die Festungsfassade unterscheidet sich vom schlichten Holzrahmen auf den Bildern von 2013 und betont das Piratenmotiv beim Zugang vom Hafen., en:For the 2016 season, the park presents a new entrance framed by two grey crenellated towers. This fortress façade differs from the simple wooden frame visible in 2013 and strengthens the pirate scenery on arrival from the harbour., es:Para la temporada de 2016, el parque presenta una nueva entrada entre dos torres grises almenadas. Esta fachada de fortaleza se distingue del sencillo marco de madera visible en 2013 y refuerza el decorado pirata al llegar desde el puerto., fr:Pour la saison 2016, le parc présente une nouvelle entrée encadrée de deux tours grises à créneaux. Cette façade de forteresse se distingue du simple encadrement de bois visible en 2013 et renforce le décor pirate à l’arrivée depuis le port., it:Per la stagione 2016 il parco presenta un nuovo ingresso tra due torri grigie merlate. La facciata da fortezza si distingue dalla semplice cornice di legno visibile nel 2013 e rafforza lo scenario piratesco all’arrivo dal porto., nl:Voor het seizoen 2016 presenteert het park een nieuwe ingang tussen twee grijze torens met kantelen. Deze vestinggevel verschilt van het eenvoudige houten raamwerk op de beelden uit 2013 en versterkt het piratendecor bij aankomst vanaf de haven., pl:Na sezon 2016 park przedstawia nowe wejście między dwiema szarymi wieżami z blankami. Fasada twierdzy różni się od prostej drewnianej konstrukcji widocznej w 2013 roku i podkreśla piracką scenerię od strony portu., pt:Para a época de 2016, o parque apresenta uma nova entrada entre duas torres cinzentas com ameias. Esta fachada de fortaleza distingue-se da simples estrutura de madeira visível em 2013 e reforça o cenário pirata na chegada a partir do porto."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Turbo Kermis \\u2014 reportage et photographies de la saison 2016\",\"Url\":\"https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-1264.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "70b9bd49-57db-4d99-8937-ea4fad122c0e",
+        "entityKey": "capbreton-food-chalet-opening-2016",
+        "displayName": "Le chalet des douceurs remplace le décor de ferme",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "capbreton-food-chalet-opening-2016"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2016"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "e1484c0336ee4cf78a4e0bface74cce2"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Das Süßwarenchalet ersetzt die Bauernhofkulisse, en:The sweet-food chalet replaces the farm scenery, es:El chalé de dulces sustituye al decorado de granja, fr:Le chalet des douceurs remplace le décor de ferme, it:Lo chalet dei dolci sostituisce lo scenario della fattoria, nl:Het zoetwarenkraampje vervangt het boerderijdecor, pl:Drewniany kiosk ze słodyczami zastępuje dekorację farmy, pt:O chalé de doces substitui o cenário da quinta"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2016 bezieht das neue Imbisschalet den bisherigen Platz von Animaux de la ferme. Crêpes, Waffeln und Süßwaren ziehen dort ein; die zuvor in der Bauernhofkulisse versammelten elektrischen Tiere fahren nun durch den Park., en:In 2016, the new food chalet occupies the former Animaux de la ferme site. Crêpes, waffles and sweets take its place, while the electric animals previously grouped within the farm scenery now circulate through the park., es:En 2016, el nuevo chalé de comida ocupa el espacio de Animaux de la ferme. Crêpes, gofres y dulces toman su lugar, mientras los animales eléctricos antes reunidos en aquel decorado pasan a circular por el parque., fr:Le nouveau chalet de restauration occupe en 2016 l’emplacement des Animaux de la ferme. Crêpes, gaufres et confiseries y prennent place, tandis que les animaux électriques auparavant rassemblés dans ce décor circulent désormais dans le parc., it:Nel 2016 il nuovo chalet di ristoro occupa l’area degli Animaux de la ferme. Crêpe, waffle e dolciumi prendono posto dove si trovava la fattoria, mentre gli animali elettrici prima riuniti nella scenografia iniziano a circolare nel parco., nl:In 2016 komt het nieuwe eetkraampje op de voormalige plek van Animaux de la ferme. Crêpes, wafels en snoep nemen de plaats in, terwijl de elektrische dieren die eerst in het boerderijdecor stonden voortaan door het park rijden., pl:W 2016 roku nowy drewniany kiosk gastronomiczny zajmuje dawne miejsce Animaux de la ferme. Pojawiają się tam naleśniki, gofry i słodycze, a elektryczne zwierzęta wcześniej zgromadzone w dekoracji farmy zaczynają jeździć po parku., pt:Em 2016, o novo chalé de restauração ocupa o espaço dos Animaux de la ferme. Crêpes, waffles e guloseimas tomam o lugar da quinta, enquanto os animais elétricos antes reunidos naquele cenário passam a circular pelo parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Turbo Kermis \\u2014 reportage et photographies de la saison 2016\",\"Url\":\"https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-1264.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "1934963d-1c0b-4a32-9938-4e5d9ba23a6c",
+        "entityKey": "capbreton-single-entrance-2019",
+        "displayName": "Le parc adopte une entrée unique",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "capbreton-single-entrance-2019"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2019"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "InfrastructureChange"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Der Park erhält einen einzigen Eingang, en:The park adopts a single entrance, es:El parque adopta una entrada única, fr:Le parc adopte une entrée unique, it:Il parco adotta un unico ingresso, nl:Het park krijgt één ingang, pl:Park wprowadza jedno wejście, pt:O parque adota uma entrada única"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der Bericht vom Sommer 2019 nennt einen einzigen Eingang für L’Île aux Pirates. Damit wird der Zugang zum kleinen Hafenareal neu geordnet; in derselben Saison kommen zwei neue Hüpfburgen hinzu., en:The summer 2019 report records a single entrance to L’Île aux Pirates. This change reorganises access to the small harbour site during a season that also brings two new inflatables., es:El reportaje del verano de 2019 señala una entrada única para L’Île aux Pirates. El cambio reorganiza el acceso al pequeño conjunto del puerto, en una temporada que también incorpora dos nuevos hinchables., fr:Le reportage de l’été 2019 relève une entrée unique pour L’Île aux Pirates. Ce changement organise l’accès au petit ensemble du port, au cours d’une saison également marquée par l’arrivée de deux nouveaux gonflables., it:Il reportage dell’estate 2019 segnala un unico ingresso per L’Île aux Pirates. Il cambiamento riorganizza l’accesso al piccolo complesso del porto, durante una stagione che vede anche l’arrivo di due nuovi gonfiabili., nl:Het verslag uit de zomer van 2019 vermeldt één ingang voor L’Île aux Pirates. Deze verandering ordent de toegang tot het kleine haventerrein opnieuw, in een seizoen waarin ook twee nieuwe springkussens verschijnen., pl:Reportaż z lata 2019 roku odnotowuje jedno wejście do L’Île aux Pirates. Zmiana porządkuje dostęp do niewielkiego terenu przy porcie w sezonie, w którym pojawiają się również dwa nowe dmuchańce., pt:A reportagem do verão de 2019 assinala uma entrada única para a L’Île aux Pirates. A mudança reorganiza o acesso ao pequeno conjunto do porto, numa época em que também chegam dois novos insufláveis."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Turbo Kermis \\u2014 reportage et photographies de la saison 2019\",\"Url\":\"https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

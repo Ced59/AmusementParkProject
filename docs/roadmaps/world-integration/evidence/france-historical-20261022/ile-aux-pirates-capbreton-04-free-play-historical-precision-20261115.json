@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "6bf95ed53ff2982b51e0e56f24b4df656bda9a0910ab1011a07299609032661a",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "6866ffac-169d-4bff-ae16-6689d7d69450",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T02:41:46.2380703Z",
+    "appliedAtUtc": "2026-11-15T02:41:46.2381763Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bfbde670-567f-49e8-93d4-e03d69bc84b2",
+        "entityKey": "bfbde670-567f-49e8-93d4-e03d69bc84b2",
+        "displayName": "Espace de jeux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein offener Bereich für junge Crews</h2><p>Der Spielbereich bündelt die freien Momente rund um die Attraktionen von LʼÎle aux Pirates. Unter freiem Himmel begegnen Kinder den Farben, Meeresfiguren und der fröhlichen Energie, die den Park prägen.</p><p>Seine Gestaltung gibt dem kleinen Hafenort Zusammenhalt: Das Piratenthema endet nicht an einem Fahrgeschäft, sondern begleitet Wege und Entdeckungen zwischen den verschiedenen Spielen.</p><h2>Das familiäre Herz des Ortes</h2><p>Als Ausstattung vor Ort genannt, zeigt der Spielbereich die Hauptidee des Ortes: Jüngeren Kindern eine Welt in ihrer Größe zu bieten, die direkt mit Promenade und Hafenlandschaft verbunden ist.</p>",
+            "newValue": "<h2>Der kostenlose Spielbereich von 2004</h2><p>2004 gehörte zu L’Île aux Pirates am Hafen von Capbreton ein kostenloser, für alle zugänglicher Spielbereich. Er wurde getrennt vom Spieleladen Red’s Club und Attraktionen wie Aquanimal oder Manège Disney aufgeführt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>An open space for young crews</h2><p>The play area brings together the free-form moments around the attractions of LʼÎle aux Pirates. In this outdoor setting, children find the colours, maritime figures and cheerful energy that define the park.</p><p>Its presence gives continuity to this compact harbour venue: the pirate theme does not stop at one ride, but follows movement and discovery between the different games.</p><h2>The family heart of the venue</h2><p>Listed among the facilities available on site, the play area expresses the venueʼs main purpose: giving younger children a world at their scale, directly connected to the promenade and harbour landscape.</p>",
+            "newValue": "<h2>The free play area in 2004</h2><p>In 2004, L’Île aux Pirates included a free play area open to everyone at Capbreton harbour. This space was listed separately from the Red’s Club games shop and attractions such as Aquanimal and Manège Disney.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un espacio abierto para jóvenes tripulaciones</h2><p>La zona de juegos reúne los momentos libres que rodean las atracciones de LʼÎle aux Pirates. Al aire libre, los niños encuentran los colores, las figuras marinas y la energía alegre que definen el parque.</p><p>Su presencia da continuidad a este pequeño espacio portuario: el tema pirata no termina en una sola atracción, sino que acompaña los desplazamientos y descubrimientos entre los distintos juegos.</p><h2>El corazón familiar del lugar</h2><p>Mencionada entre los equipamientos del recinto, la zona de juegos expresa su vocación principal: ofrecer a los más pequeños un mundo a su medida, conectado directamente con el paseo y el paisaje del puerto.</p>",
+            "newValue": "<h2>La zona gratuita de 2004</h2><p>En 2004, L’Île aux Pirates incluía una zona de juegos gratuita y accesible a todos en el puerto de Capbreton. Este espacio figuraba por separado de la tienda de juegos Red’s Club y de atracciones como Aquanimal o Manège Disney.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Un espace ouvert aux jeunes équipages</h2><p>LʼEspace de jeux réunit les moments libres qui entourent les attractions de LʼÎle aux Pirates. Dans ce cadre de plein air, les enfants retrouvent les couleurs, les figures marines et lʼénergie joyeuse qui définissent le parc.</p><p>Sa présence donne de la continuité à cette petite aire portuaire : le thème pirate ne sʼarrête pas à un seul manège, mais accompagne les déplacements et les découvertes entre les différents jeux.</p><h2>Le cœur familial du site</h2><p>Mentionné parmi les équipements proposés sur place, lʼEspace de jeux exprime la vocation première du site : offrir aux plus jeunes un univers à leur échelle, directement lié à la promenade et au paysage du port.</p>",
+            "newValue": "<h2>L’aire gratuite de 2004</h2><p>En 2004, L’Île aux Pirates comprend une aire de jeux gratuite et accessible à tous sur le port de Capbreton. Cet espace figure séparément de la boutique de jeux Red’s Club et des attractions comme Aquanimal ou le Manège Disney.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Uno spazio aperto ai giovani equipaggi</h2><p>Lʼarea giochi riunisce i momenti liberi intorno alle attrazioni di LʼÎle aux Pirates. Allʼaperto, i bambini ritrovano colori, figure marine e lʼenergia allegra che definisce il parco.</p><p>La sua presenza dà continuità a questo piccolo spazio portuale: il tema piratesco non si ferma a una sola giostra, ma accompagna movimenti e scoperte tra i diversi giochi.</p><h2>Il cuore familiare del luogo</h2><p>Indicata tra i servizi disponibili, lʼarea giochi esprime la vocazione principale del luogo: offrire ai più piccoli un mondo alla loro misura, direttamente legato alla passeggiata e al paesaggio del porto.</p>",
+            "newValue": "<h2>L’area gratuita del 2004</h2><p>Nel 2004 L’Île aux Pirates comprendeva un’area giochi gratuita e accessibile a tutti nel porto di Capbreton. Questo spazio era indicato separatamente dal negozio di giochi Red’s Club e da attrazioni come Aquanimal o Manège Disney.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een open plek voor jonge bemanningen</h2><p>De speelplek bundelt de vrije momenten rond de attracties van LʼÎle aux Pirates. In de openlucht vinden kinderen de kleuren, zeefiguren en vrolijke energie terug die het park kenmerken.</p><p>De plek geeft samenhang aan dit compacte haventerrein: het piratenthema stopt niet bij één attractie, maar begeleidt de verplaatsingen en ontdekkingen tussen de verschillende spellen.</p><h2>Het familiehart van de plek</h2><p>De speelplek staat bij de voorzieningen ter plaatse en verwoordt het hoofddoel van de plek: jonge kinderen een wereld op hun schaal geven, direct verbonden met de promenade en het havenlandschap.</p>",
+            "newValue": "<h2>De gratis speelruimte van 2004</h2><p>In 2004 had L’Île aux Pirates aan de haven van Capbreton een gratis speelruimte die voor iedereen toegankelijk was. Deze ruimte werd apart vermeld van de spellenwinkel Red’s Club en attracties zoals Aquanimal en Manège Disney.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Otwarta przestrzeń dla młodych załóg</h2><p>Strefa zabawy łączy swobodne chwile wokół atrakcji LʼÎle aux Pirates. Na świeżym powietrzu dzieci spotykają barwy, morskie postacie i radosną energię tworzącą charakter parku.</p><p>Jej obecność spaja niewielki teren portowy: piracki motyw nie kończy się na jednej atrakcji, lecz towarzyszy przejściom i odkryciom między różnymi zabawami.</p><h2>Rodzinne serce miejsca</h2><p>Wymieniona wśród udogodnień strefa zabawy wyraża główną ideę miejsca: daje młodszym dzieciom świat w ich skali, bezpośrednio związany z promenadą i portowym krajobrazem.</p>",
+            "newValue": "<h2>Bezpłatny plac zabaw w 2004 roku</h2><p>W 2004 roku L’Île aux Pirates obejmował bezpłatny, dostępny dla wszystkich plac zabaw w porcie Capbreton. Przestrzeń tę wymieniano oddzielnie od sklepu z grami Red’s Club oraz atrakcji takich jak Aquanimal i Manège Disney.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Um espaço aberto para jovens tripulações</h2><p>A zona de jogos reúne os momentos livres em torno das atrações da LʼÎle aux Pirates. Ao ar livre, as crianças encontram as cores, as figuras marinhas e a energia alegre que definem o parque.</p><p>A sua presença dá continuidade a este pequeno espaço portuário: o tema pirata não termina numa só diversão, acompanhando os movimentos e descobertas entre os diferentes jogos.</p><h2>O coração familiar do espaço</h2><p>Indicada entre os equipamentos disponíveis, a zona de jogos exprime a principal vocação do local: oferecer aos mais novos um mundo à sua escala, diretamente ligado ao passeio e à paisagem do porto.</p>",
+            "newValue": "<h2>A área gratuita de 2004</h2><p>Em 2004, a L’Île aux Pirates incluía uma área de jogos gratuita e acessível a todos no porto de Capbreton. Este espaço era apresentado separadamente da loja de jogos Red’s Club e de atrações como Aquanimal ou Manège Disney.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

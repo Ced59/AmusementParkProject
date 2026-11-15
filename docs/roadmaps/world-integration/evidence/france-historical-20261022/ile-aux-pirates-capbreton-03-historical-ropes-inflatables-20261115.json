@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "a8fab37016519cd4379542eb8867b803106675713fcd40a3b1249029ef046829",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "9956bde7-a625-4d86-94cb-85d93853c448",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T02:46:26.3650419Z",
+    "appliedAtUtc": "2026-11-15T02:46:26.3650433Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 3,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9405d573-5666-4003-a97f-7ea8523d99c5",
+        "entityKey": "capbreton-pirates-aventures",
+        "displayName": "Pirates Aventures",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Taue zwischen den Masten</h2><p>Die Parkvorstellung von 2009 beschreibt Pirates Aventures als kleine Galeonenkulisse. Fotos von 2013 zeigen ein Holzgerüst, hängende Laufstege und Taue über einer blauen Matte. Schwarze Flaggen ragen an den Pfosten empor.</p><p>Eine Holztreppe führt in die von Netzen gesäumte Anlage. Ein Steuerrad schmückt die Palisade am Eingang neben Palmen und der großen benachbarten Hüpfburg. Dieser Parcours mit Sicherungsgurt ist vom Laufgeschäft mit seinen bemalten Fassaden zu unterscheiden.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Ropes between the masts</h2><p>In the park’s 2009 presentation, Pirates Aventures invites visitors into a small galleon setting. Photographs from 2013 show a wooden framework, suspended walkways and ropes above a blue mat. Black flags rise on the posts.</p><p>A wooden staircase leads into the net-lined installation. A ship’s wheel decorates the entrance palisade beside palms and the neighbouring large inflatable. This harness-based course is distinct from the funhouse with its painted façades.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cuerdas entre los mástiles</h2><p>En la presentación del parque de 2009, Pirates Aventures invita a recorrer un pequeño decorado de galeón. Las fotografías de 2013 muestran una estructura de madera, pasarelas suspendidas y cuerdas sobre una alfombra azul. Banderas negras se alzan en los postes.</p><p>Una escalera de madera da acceso a la instalación rodeada de redes. Un timón adorna la empalizada de entrada, junto a las palmeras y al gran hinchable vecino. Este recorrido con arnés es distinto de la casa de la risa de fachadas pintadas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des cordages entre les mâts</h2><p>Dans la présentation du parc de 2009, Pirates Aventures invite à traverser un petit paysage de galion. Les photographies de 2013 montrent une ossature de bois, des passerelles suspendues et des cordages au-dessus d’un tapis bleu. Des pavillons noirs montent sur les poteaux.</p><p>Un escalier de bois donne accès à cette installation bordée de filets. Une barre de navire orne la palissade de l’entrée, près des palmiers et du grand gonflable voisin. Ce parcours avec harnais est distinct du Palais du rire aux façades peintes.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Corde tra gli alberi della nave</h2><p>Nella presentazione del parco del 2009, Pirates Aventures invita a entrare in una piccola scenografia da galeone. Le fotografie del 2013 mostrano un’intelaiatura di legno, passerelle sospese e corde sopra un tappeto blu. Bandiere nere svettano sui pali.</p><p>Una scala di legno introduce nell’installazione bordata di reti. Un timone decora la palizzata d’ingresso, accanto alle palme e al grande gonfiabile vicino. Questo percorso con imbracatura è distinto dal palazzo del divertimento con le sue facciate dipinte.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Touwen tussen de masten</h2><p>In de parkpresentatie uit 2009 voert Pirates Aventures bezoekers een klein galjoendecor binnen. Foto’s uit 2013 tonen een houten raamwerk, hangende loopbruggen en touwen boven een blauwe mat. Zwarte vlaggen hangen aan de palen.</p><p>Een houten trap leidt naar de door netten omgeven installatie. Een scheepsroer siert de palissade bij de ingang, naast palmen en het grote springkussen ernaast. Dit parcours met harnas is een andere attractie dan het funhouse met zijn geschilderde gevels.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Liny pomiędzy masztami</h2><p>W opisie parku z 2009 roku Pirates Aventures zaprasza do niewielkiej scenerii galeonu. Zdjęcia z 2013 roku pokazują drewniany szkielet, wiszące kładki i liny nad niebieską matą. Na słupach powiewają czarne flagi.</p><p>Drewniane schody prowadzą do instalacji otoczonej siatkami. Koło sterowe zdobi palisadę przy wejściu, obok palm i dużego sąsiedniego dmuchańca. Ten pokonywany w uprzęży tor jest odrębną atrakcją od pałacu śmiechu z malowanymi fasadami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cordas entre os mastros</h2><p>Na apresentação do parque de 2009, Pirates Aventures convida a entrar num pequeno cenário de galeão. As fotografias de 2013 mostram uma estrutura de madeira, passadiços suspensos e cordas sobre um tapete azul. Bandeiras negras erguem-se nos postes.</p><p>Uma escada de madeira dá acesso à instalação rodeada por redes. Um leme decora a paliçada da entrada, junto às palmeiras e ao grande insuflável vizinho. Este percurso com arnês é distinto da casa de diversões com fachadas pintadas.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-pirates-aventures"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ace8e97e-fad6-4040-a9a1-375866602d62",
+        "entityKey": "capbreton-gonflable-pirates",
+        "displayName": "Gonflable Pirates",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Hai zwischen Palmen</h2><p>Auf den Ansichten von 2013 bildet diese kleine Piraten-Hüpfburg ein gelbes Quadrat mit blauem Boden. Ein bärtiger Piratenkopf bewacht den Eingang; zwischen Palmen mit braunen Stämmen und grünen Blättern ragt ein grauer Hai aus den Hindernissen.</p><p>Am vorderen Rand steht Pirates. Hinter der niedrigen Kulisse erheben sich ein Spielschiff mit Netzen und die große Rutsche Aladdin Adventure. Es handelt sich nicht um Parcours Safari mit seinen Giraffen und Löwen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A shark among the palms</h2><p>In the 2013 views, this small pirate inflatable forms a yellow square with a blue floor. A bearded pirate’s head guards the entrance, while a grey shark rises among the obstacles between palms with brown trunks and green leaves.</p><p>The word Pirates appears on the front edge. Behind the low scenery stand a netted play ship and the large Aladdin Adventure slide. This is distinct from Parcours Safari with its giraffes and lions.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El tiburón entre las palmeras</h2><p>En las vistas de 2013, este pequeño hinchable pirata forma un cuadrado amarillo con suelo azul. Una cabeza de pirata barbudo guarda la entrada; un tiburón gris asoma entre los obstáculos y las palmeras de troncos marrones y hojas verdes.</p><p>La inscripción Pirates aparece en el borde delantero. Detrás del decorado bajo se alzan un barco de juegos con redes y el gran tobogán Aladdin Adventure. No es el Parcours Safari de jirafas y leones.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le requin entre les palmiers</h2><p>Sur les vues de 2013, ce petit gonflable pirate forme un carré jaune au sol bleu. Une tête de pirate barbu garde l’entrée ; un requin gris sort au milieu des obstacles, entre des palmiers aux troncs bruns et aux feuilles vertes.</p><p>L’inscription Pirates apparaît sur le bord avant. Derrière ce décor bas se dressent un navire de jeux à filets et le grand toboggan Aladdin Adventure. Il ne s’agit pas du Parcours Safari aux girafes et aux lions.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Lo squalo tra le palme</h2><p>Nelle vedute del 2013, questo piccolo gonfiabile piratesco forma un quadrato giallo con pavimento blu. Una testa di pirata barbuto sorveglia l’ingresso; uno squalo grigio emerge tra gli ostacoli, in mezzo a palme con tronchi marroni e foglie verdi.</p><p>La scritta Pirates compare sul bordo anteriore. Dietro il basso scenario si alzano una nave di giochi con reti e il grande scivolo Aladdin Adventure. Non è il Parcours Safari con giraffe e leoni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een haai tussen de palmen</h2><p>Op de beelden uit 2013 vormt dit kleine piratenspringkussen een geel vierkant met een blauwe vloer. Een piratenhoofd met baard bewaakt de ingang; tussen palmen met bruine stammen en groene bladeren steekt een grijze haai boven de obstakels uit.</p><p>Op de voorrand staat Pirates. Achter het lage decor staan een speelschip met netten en de grote glijbaan Aladdin Adventure. Dit is niet Parcours Safari met zijn giraffen en leeuwen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Rekin między palmami</h2><p>Na zdjęciach z 2013 roku ten mały piracki dmuchaniec tworzy żółty kwadrat z niebieską podłogą. Wejścia pilnuje głowa brodatego pirata, a szary rekin wystaje spośród przeszkód i palm o brązowych pniach oraz zielonych liściach.</p><p>Na przednim brzegu widnieje napis Pirates. Za niską dekoracją wznoszą się statek do zabawy z siatkami i duża zjeżdżalnia Aladdin Adventure. To inna atrakcja niż Parcours Safari z żyrafami i lwami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O tubarão entre as palmeiras</h2><p>Nas vistas de 2013, este pequeno insuflável pirata forma um quadrado amarelo com chão azul. Uma cabeça de pirata barbudo guarda a entrada; um tubarão cinzento surge entre os obstáculos e as palmeiras de troncos castanhos e folhas verdes.</p><p>A inscrição Pirates aparece no rebordo da frente. Atrás do cenário baixo erguem-se um navio de jogos com redes e o grande escorrega Aladdin Adventure. Não se trata do Parcours Safari com girafas e leões.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-gonflable-pirates"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cf47d719-ffcf-48df-ab5d-1d3bc12892c1",
+        "entityKey": "capbreton-aladdin-adventure",
+        "displayName": "Aladdin Adventure",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Kuppeln über gelben Rutschbahnen</h2><p>Aladdin Adventure erscheint auf Parkfotos von 2013 als violetter, rosa und gelber aufblasbarer Palast. Gestreifte Säulen tragen grüne, gelbe und rote Kuppeln; das Namensschild überspannt die Fassade über den breiten gelben Rutschflächen.</p><p>Rosa Bögen rahmen die Bahnen bis zum großen gelben Polster auf dem grünen Boden. Die Rutsche überragt die benachbarte kleine Piraten-Hüpfburg, während hinter ihren Türmen eine Piratenfigur und Masten hervorschauen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Domes above the yellow slopes</h2><p>Aladdin Adventure forms a purple, pink and yellow inflatable palace in the park’s 2013 photographs. Striped columns carry green, yellow and red domes, with the sign spanning the façade above the broad yellow slopes.</p><p>Pink curves frame the slides down to the large yellow cushion on the green ground. The slide towers over the neighbouring small Pirates inflatable, while a pirate figure and masts appear behind its towers.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cúpulas sobre las pistas amarillas</h2><p>En las fotografías del parque de 2013, Aladdin Adventure dibuja un palacio hinchable morado, rosa y amarillo. Columnas a rayas sostienen cúpulas verdes, amarillas y rojas; el letrero cruza la fachada sobre las anchas pendientes amarillas.</p><p>Curvas rosas enmarcan los toboganes hasta el gran cojín amarillo apoyado en el suelo verde. El tobogán domina el pequeño hinchable Pirates vecino, mientras una figura de pirata y varios mástiles asoman detrás de sus torres.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des dômes au-dessus des pistes jaunes</h2><p>Aladdin Adventure dessine un palais gonflable violet, rose et jaune dans les photographies du parc de 2013. Des colonnes rayées portent des dômes verts, jaunes et rouges ; l’enseigne traverse la façade au-dessus des larges pentes jaunes.</p><p>Les courbes roses encadrent les descentes jusqu’au grand boudin jaune posé sur le sol vert. Le toboggan domine le petit gonflable Pirates voisin, tandis qu’une silhouette de pirate et des mâts apparaissent derrière ses tours.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Cupole sopra le discese gialle</h2><p>Nelle fotografie del parco del 2013, Aladdin Adventure disegna un palazzo gonfiabile viola, rosa e giallo. Colonne a strisce sostengono cupole verdi, gialle e rosse; l’insegna attraversa la facciata sopra le ampie discese gialle.</p><p>Curve rosa incorniciano gli scivoli fino al grande cuscino giallo appoggiato sul terreno verde. Lo scivolo domina il piccolo gonfiabile Pirates vicino, mentre una figura di pirata e alcuni alberi di nave spuntano dietro le torri.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Koepels boven de gele glijbanen</h2><p>Aladdin Adventure vormt op de parkfoto’s uit 2013 een paars, roze en geel opblaaspaleis. Gestreepte zuilen dragen groene, gele en rode koepels; het naambord loopt over de gevel boven de brede gele glijvlakken.</p><p>Roze bogen omringen de glijbanen tot aan het grote gele kussen op de groene grond. De glijbaan torent boven het kleine piratenspringkussen ernaast uit, terwijl een piratenfiguur en masten achter de torens verschijnen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kopuły nad żółtymi zjeżdżalniami</h2><p>Na zdjęciach parku z 2013 roku Aladdin Adventure tworzy fioletowo-różowo-żółty dmuchany pałac. Pasiaste kolumny podtrzymują zielone, żółte i czerwone kopuły; szyld rozciąga się nad szerokimi żółtymi pochylniami.</p><p>Różowe łuki otaczają zjeżdżalnie aż do dużej żółtej poduszki na zielonym podłożu. Zjeżdżalnia góruje nad małym sąsiednim dmuchańcem Pirates, a za jej wieżami wystają postać pirata i maszty.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cúpulas sobre as pistas amarelas</h2><p>Nas fotografias do parque de 2013, Aladdin Adventure desenha um palácio insuflável roxo, rosa e amarelo. Colunas às riscas sustentam cúpulas verdes, amarelas e vermelhas; o letreiro atravessa a fachada sobre as largas descidas amarelas.</p><p>Curvas cor-de-rosa enquadram os escorregas até à grande almofada amarela assente no chão verde. O escorrega domina o pequeno insuflável Pirates vizinho, enquanto uma figura de pirata e mastros surgem atrás das torres.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-aladdin-adventure"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T02:53:32.712Z",
+  "result": {
+    "id": "716a42b5d6ee48e3b84d2bfec4722092",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "9405d573-5666-4003-a97f-7ea8523d99c5",
+    "path": "park_item/716a42b5d6ee48e3b84d2bfec4722092",
+    "description": "Pirates Aventures et son décor de galion à Capbreton en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 74634,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130398%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Parcours de cordes entre poteaux de bois, avec escalier, filets, pavillons noirs et barre de navire à l’entrée."
+      },
+      {
+        "languageCode": "en",
+        "value": "Ropes course between wooden posts, with a staircase, nets, black flags and a ship’s wheel at the entrance."
+      },
+      {
+        "languageCode": "de",
+        "value": "Seilparcours zwischen Holzpfosten mit Treppe, Netzen, schwarzen Flaggen und einem Steuerrad am Eingang."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Touwenparcours tussen houten palen, met trap, netten, zwarte vlaggen en een scheepsroer bij de ingang."
+      },
+      {
+        "languageCode": "it",
+        "value": "Percorso di corde tra pali di legno, con scala, reti, bandiere nere e timone all’ingresso."
+      },
+      {
+        "languageCode": "es",
+        "value": "Recorrido de cuerdas entre postes de madera, con escalera, redes, banderas negras y timón en la entrada."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Tor linowy między drewnianymi słupami, ze schodami, siatkami, czarnymi flagami i kołem sterowym przy wejściu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Percurso de cordas entre postes de madeira, com escada, redes, bandeiras negras e leme à entrada."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Pirates Aventures et son décor de galion à Capbreton en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pirates Aventures and its galleon scenery at Capbreton in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Pirates Aventures mit seiner Galeonenkulisse in Capbreton im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Pirates Aventures met zijn galjoendecor in Capbreton in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Pirates Aventures e il suo scenario da galeone a Capbreton nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pirates Aventures y su decorado de galeón en Capbreton en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pirates Aventures w scenerii galeonu w Capbreton w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Pirates Aventures e o seu cenário de galeão em Capbreton em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T02:53:29.041Z",
+    "updatedAt": "2026-11-15T02:53:32.712Z"
+  },
+  "sourceEvidence": {
+    "stem": "pirates-aventures-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130398%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "9405d573-5666-4003-a97f-7ea8523d99c5",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-32.jpg",
+    "sha256": "4a38ef715c6a76aa322f6f4d0ad284bd1db5ba93632a7d3de06b5354ebb3e515",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Galerie de visiteur publique, crédit auteur conservé. Autorisation propriétaire pour campagne ; aucune licence ouverte spécifique revendiquée.",
+    "review": "Original800×600 inspecté sansfiligranevisible, aucunrecadrage/retouche. Identitéphysiqueetnomqualifiés avant création."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

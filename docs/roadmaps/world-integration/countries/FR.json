@@ -13099,7 +13099,7 @@
         "L’île aux Pirates"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T02:36:11.373Z",
+      "lastDataIntegrationAt": "2026-11-15T02:57:35.721Z",
       "integrationHistory": [
         {
           "eventId": "apply-8416c072-412b-438f-947a-9176ef5d7d73",
@@ -13230,6 +13230,66 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-05-correct-pirate-image-owner-20261115.json",
           "auditEvidence": null,
           "summary": "Capbreton : photographie9713a59239f2474c8f54b01670c540c1 rattachée au parc au lieu du Safari ; décor pirate/requin décrit huit langues, visibilité conservée, image principale inchangée, fichier non réimporté. Attribution conservée sans licence/version non prouvée."
+        },
+        {
+          "eventId": "apply-6866ffac-169d-4bff-ae16-6689d7d69450",
+          "appliedAt": "2026-11-15T02:41:46.238Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-free-play-historical-precision-20261115.json",
+          "auditEvidence": null,
+          "summary": "Capbreton : texte générique de l’espace de jeux remplacé dans huit langues par une notice brève fidèle à la présentation officielle2004 ; distinction avec Red’sClub conservée, équipement/position/devenir non inventés et toujours à qualifier."
+        },
+        {
+          "eventId": "apply-9956bde7-a625-4d86-94cb-85d93853c448",
+          "appliedAt": "2026-11-15T02:46:26.365Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-03-historical-ropes-inflatables-20261115.json",
+          "auditEvidence": null,
+          "summary": "Capbreton : PiratesAventures, GonflablePirates et AladdinAdventure créés privés après rapprochement d’inventaire ; 24 descriptions relues huit langues, statutcourantUnknown aprèsrecherche, aucunjourouannéeouverture/fermetureinventé."
+        },
+        {
+          "eventId": "apply-d38eb680-0db9-45bf-88f6-46dcaac3d7f4",
+          "appliedAt": "2026-11-15T02:52:58.786Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-08-entrances-food-chalet-20261115.json",
+          "auditEvidence": null,
+          "summary": "Capbreton : trois faits2016/2019 privés sourcés, huit langues ; nouvelleentrée2016, chalet2016 sur sa proprefrise et entréeunique2019. PrécisionYear, datesdepublicationnontransforméesen inaugurations ; photochalet2018contextuelle explicitée."
+        },
+        {
+          "eventId": "image-716a42b5d6ee48e3b84d2bfec4722092",
+          "appliedAt": "2026-11-15T02:53:32.712Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-pirates-aventures-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée pirates-aventures-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-a41faa85e11646139fb65b38ca253cda",
+          "appliedAt": "2026-11-15T02:57:13.235Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-gonflable-pirates-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée gonflable-pirates-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-75c9c5e536a44ac7b9b1c61bd11ceabc",
+          "appliedAt": "2026-11-15T02:57:35.721Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-aladdin-adventure-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée aladdin-adventure-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

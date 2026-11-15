@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T02:57:13.235Z",
+  "result": {
+    "id": "a41faa85e11646139fb65b38ca253cda",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "ace8e97e-fad6-4040-a9a1-375866602d62",
+    "path": "park_item/a41faa85e11646139fb65b38ca253cda",
+    "description": "Le gonflable Pirates devant le navire de jeux à filets, en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 67952,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130369%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Entrée du gonflable Pirates, avec palmiers, tête de pirate et requin gris sur un sol bleu entre des bords jaunes."
+      },
+      {
+        "languageCode": "en",
+        "value": "Entrance to the Pirates inflatable, with palms, a pirate’s head and a grey shark on a blue floor between yellow edges."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eingang der Piraten-Hüpfburg mit Palmen, Piratenkopf und grauem Hai auf blauem Boden zwischen gelben Rändern."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Ingang van het Pirates-springkussen, met palmen, een piratenhoofd en een grijze haai op een blauwe vloer met gele randen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Ingresso del gonfiabile Pirates, con palme, testa di pirata e squalo grigio su un pavimento blu tra bordi gialli."
+      },
+      {
+        "languageCode": "es",
+        "value": "Entrada del hinchable Pirates, con palmeras, cabeza de pirata y tiburón gris sobre un suelo azul entre bordes amarillos."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wejście do dmuchańca Pirates, z palmami, głową pirata i szarym rekinem na niebieskiej podłodze między żółtymi brzegami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Entrada do insuflável Pirates, com palmeiras, cabeça de pirata e tubarão cinzento num chão azul entre rebordos amarelos."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le gonflable Pirates devant le navire de jeux à filets, en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Pirates inflatable in front of the netted play ship in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Piraten-Hüpfburg vor dem Spielschiff mit Netzen im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het Pirates-springkussen voor het speelschip met netten in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il gonfiabile Pirates davanti alla nave di giochi con reti nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "El hinchable Pirates delante del barco de juegos con redes en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dmuchaniec Pirates przed statkiem do zabawy z siatkami w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O insuflável Pirates diante do navio de jogos com redes em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T02:57:09.393Z",
+    "updatedAt": "2026-11-15T02:57:13.235Z"
+  },
+  "sourceEvidence": {
+    "stem": "gonflable-pirates-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130369%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "ace8e97e-fad6-4040-a9a1-375866602d62",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-35.jpg",
+    "sha256": "2b273339bc95f409b66cd4f0067eadf0a68d59032c1222c7b5c479a81ea9367a",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Galerie de visiteur publique, crédit auteur conservé. Autorisation propriétaire pour campagne ; aucune licence ouverte spécifique revendiquée.",
+    "review": "Original800×600 inspecté sansfiligranevisible, aucunrecadrage/retouche. Identitéphysiqueetnomqualifiés avant création."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

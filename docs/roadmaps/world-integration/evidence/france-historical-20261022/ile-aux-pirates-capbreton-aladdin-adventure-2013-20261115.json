@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T02:57:35.721Z",
+  "result": {
+    "id": "75c9c5e536a44ac7b9b1c61bd11ceabc",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "cf47d719-ffcf-48df-ab5d-1d3bc12892c1",
+    "path": "park_item/75c9c5e536a44ac7b9b1c61bd11ceabc",
+    "description": "Aladdin Adventure, photographié dans le parc de Capbreton en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 57410,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130538%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Toboggan Aladdin Adventure rose, violet et jaune, avec colonnes rayées, dômes multicolores et enseigne au-dessus des descentes."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pink, purple and yellow Aladdin Adventure slide with striped columns, multicoloured domes and a sign above the slopes."
+      },
+      {
+        "languageCode": "de",
+        "value": "Rosa, violette und gelbe Rutsche Aladdin Adventure mit gestreiften Säulen, bunten Kuppeln und Namensschild über den Bahnen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Roze, paarse en gele Aladdin Adventure-glijbaan met gestreepte zuilen, kleurrijke koepels en een naambord boven de glijvlakken."
+      },
+      {
+        "languageCode": "it",
+        "value": "Scivolo Aladdin Adventure rosa, viola e giallo, con colonne a strisce, cupole multicolori e insegna sopra le discese."
+      },
+      {
+        "languageCode": "es",
+        "value": "Tobogán Aladdin Adventure rosa, morado y amarillo, con columnas a rayas, cúpulas multicolores y letrero sobre las pistas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Różowo-fioletowo-żółta zjeżdżalnia Aladdin Adventure z pasiastymi kolumnami, wielobarwnymi kopułami i szyldem nad pochylniami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Escorrega Aladdin Adventure rosa, roxo e amarelo, com colunas às riscas, cúpulas multicolores e letreiro sobre as descidas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Aladdin Adventure, photographié dans le parc de Capbreton en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "Aladdin Adventure, photographed at the Capbreton park in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Aladdin Adventure, aufgenommen im Park von Capbreton im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Aladdin Adventure, gefotografeerd in het park van Capbreton in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Aladdin Adventure, fotografato nel parco di Capbreton nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "Aladdin Adventure, fotografiado en el parque de Capbreton en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Aladdin Adventure, sfotografowany w parku w Capbreton w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Aladdin Adventure, fotografado no parque de Capbreton em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T02:57:31.895Z",
+    "updatedAt": "2026-11-15T02:57:35.721Z"
+  },
+  "sourceEvidence": {
+    "stem": "aladdin-adventure-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130538%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "cf47d719-ffcf-48df-ab5d-1d3bc12892c1",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-2.jpg",
+    "sha256": "02c85b24feca654443085aac70f075255523fa72a61d6c7df5bc46dde3e0a515",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Galerie de visiteur publique, crédit auteur conservé. Autorisation propriétaire pour campagne ; aucune licence ouverte spécifique revendiquée.",
+    "review": "Original800×600 inspecté sansfiligranevisible, aucunrecadrage/retouche. Identitéphysiqueetnomqualifiés avant création."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}
