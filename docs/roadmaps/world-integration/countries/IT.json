@@ -1471,7 +1471,7 @@
         "Alpyland Mottarone Alpine Coaster"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-15T09:40:54.870Z",
+      "lastDataIntegrationAt": "2026-11-15T10:07:05.052Z",
       "integrationHistory": [
         {
           "eventId": "apply-e19c34d7-f709-4f8d-9598-22fad7bdd7eb",
@@ -1542,6 +1542,16 @@
           "evidence": "PARK_DATA_EDITOR:apply:1aee0842-810f-4b2e-bd75-57ce63cd38f1",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-alpyland-20261115/audit.json",
           "summary": "Ancien ParkItem masqué reclassé NotRelevant dans le cadre de la migration."
+        },
+        {
+          "eventId": "apply-fb13795a-391a-42eb-9f2b-b8addeb8db02",
+          "appliedAt": "2026-11-15T10:07:05.052Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+          "evidence": "PARK_DATA_EDITOR:apply:fb13795a-391a-42eb-9f2b-b8addeb8db02",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-alpyland-20261115/audit.json",
+          "summary": "Tutoiement corrigé dans la description française publique ; fiche publiée et score qualité 89/100 confirmés."
         }
       ],
       "nextAction": "Conserver cette ligne et son historique. Vérifier régulièrement le calendrier météo et les tarifs de l’exploitant. Finaliser le statut NotRelevant du parc legacy masqué : la requête serveur de retrait du parent a expiré, tandis que son ParkItem est déjà retraité. Aucune nouvelle annonce Facebook pour cette intégration.",

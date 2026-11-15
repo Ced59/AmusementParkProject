@@ -4,7 +4,7 @@
   "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
   "name": "Alpyland Mottarone",
   "countryCode": "IT",
-  "auditAtUtc": "2026-11-15T09:43:59.961978Z",
+  "auditAtUtc": "2026-11-15T10:10:38.483Z",
   "operatorSources": [
     "https://www.alpyland.com/en/",
     "https://www.alpyland.com/en/opening-hours-and-rates/",
@@ -65,7 +65,7 @@
     "postUrl": "https://www.facebook.com/1285475681307050/posts/122127434745424431",
     "publishedAtUtc": "2026-11-15T09:40:05.230161Z"
   },
-  "lastDataIntegrationAt": "2026-11-15T09:40:54.870Z",
+  "lastDataIntegrationAt": "2026-11-15T10:07:05.052Z",
   "dataReceipts": [
     {
       "kind": "Apply",
@@ -96,6 +96,12 @@
       "stage": "retire-item",
       "operationId": "1aee0842-810f-4b2e-bd75-57ce63cd38f1",
       "appliedAtUtc": "2026-11-15T09:40:54.8703182Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "fr-tutoiement",
+      "operationId": "fb13795a-391a-42eb-9f2b-b8addeb8db02",
+      "appliedAtUtc": "2026-11-15T10:07:05.0524527Z"
     }
   ],
   "publicationReceipt": {
