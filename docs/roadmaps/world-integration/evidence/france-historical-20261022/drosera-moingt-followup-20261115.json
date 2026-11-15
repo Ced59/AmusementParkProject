@@ -1,0 +1,804 @@
+{
+  "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "personalEightLanguageReview": true,
+  "sourceResearch": {
+    "checkedAtUtc": "2026-11-15T08:53:18.612342+00:00",
+    "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "entryId": "FR-candidate-2944bd4fd46f53",
+    "workType": "Public-source research only; no PARK_DATA_EDITOR call, no Git command, no repository edit, no public mutation.",
+    "baseline": {
+      "status": "partial",
+      "privateItems": [
+        {
+          "id": "b6dbddd0-125b-4644-a87c-104897d2cb73",
+          "name": "Aire de pique-nique"
+        },
+        {
+          "id": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+          "name": "Tour de Moingt"
+        }
+      ],
+      "inventory": "49 explicit historical models + Roanne theatre = 50 distinct across periods; 53 reported in 2007 remains unresolved."
+    },
+    "supportedChanges": [
+      {
+        "itemId": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "name": "Tour de Moingt",
+        "finding": "An official miniature photograph was recovered from the successor ladrosera.fr domain. The old parc-de-la-drosera.fr Moingt.jpg failure does not cover this different official asset.",
+        "sourcePage": "https://web.archive.org/web/20061123205004id_/http://www.ladrosera.fr/carte/moingt.html",
+        "sourcePageIdentity": "La tour de MOINGT; Photo de la maquette du parc",
+        "imageUrl": "https://web.archive.org/web/20061123205016id_/http://www.ladrosera.fr/carte/images/moingt.jpg",
+        "localImage": "official-moingt-2006.jpg",
+        "imageDimensions": {
+          "width": 155,
+          "height": 225
+        },
+        "imageSha256": "894e82f513412b366c84f1ccfaf642a27cd5b04a6706604737e1c3d2e0449f3c",
+        "personallyViewed": true,
+        "observedFeatures": [
+          "Round pale tower with small vertical openings",
+          "Clock faces near the upper part",
+          "Small reddish-brown roof",
+          "Low adjoining pale walls/buildings with an arched doorway",
+          "Uneven rocky base with low vegetation"
+        ],
+        "proposal": "Root can now write a concise, specific eight-language notice for this existing item using the exact miniature image. Do not create a new item. Keep individual creation/opening dates unknown.",
+        "mediaLimit": "Native image only 155x225, already small; do not enlarge, reconstruct, crop the route plan, or claim a high-resolution usable photograph. Exact-URL CDX has one distinct binary.",
+        "dateLimit": "2006 is archive evidence of presence, not an opening or capture date. Monument history on the page describes full-size Moingt; never use its dates as dates of the miniature."
+      }
+    ],
+    "otherFindings": [
+      {
+        "subject": "Aire de pique-nique",
+        "sources": [
+          "https://web.archive.org/web/20061123195554id_/http://www.ladrosera.fr/parc.html",
+          "https://web.archive.org/web/20061123213940id_/http://www.ladrosera.fr/images/page_ecole.jpg",
+          "https://classedespetits.blogspot.com/2013/06/notre-voyage-scolaire.html"
+        ],
+        "finding": "Official 2006 park page lists the picnic area; original school brochure also labels aire de pique nique; school account explicitly confirms lunch in the Droséra park on June 10, 2013.",
+        "limits": "These sources prove existence/use but no table material/count, shelter, precise location or photograph of the actual picnic facility. No such characteristics should be inferred from brochure layout. The July 2010 picnic remains at Moulin des Massons outside the park."
+      },
+      {
+        "subject": "Play equipment qualification lead",
+        "sources": [
+          "https://web.archive.org/web/20061123210729id_/http://www.ladrosera.fr/groupes_enfants.html",
+          "https://web.archive.org/web/20061123213940id_/http://www.ladrosera.fr/images/page_ecole.jpg"
+        ],
+        "finding": "Official school page says Un parc magique - un espace de jeux. Its original groupe23.jpg shows children on a low rope balance crossing between timber uprights. The school brochure includes an additional photo of suspended elements from a timber crossbeam.",
+        "limits": "No separate equipment name, boundaries, individual opening date, or proof that it is the picnic area. Record as a new qualification lead; root should inspect present inventory and decide scope before creation. Do not classify the residential village pool/chalets as park attractions by default."
+      },
+      {
+        "subject": "Broad official panoramas",
+        "sources": [
+          "https://web.archive.org/web/20061123195626id_/http://www.ladrosera.fr/images/pano_ete.jpg",
+          "https://web.archive.org/web/20061123195606id_/http://www.ladrosera.fr/images/pano_hiver.jpg"
+        ],
+        "finding": "Two original panoramas recovered and viewed. Summer panorama labels restaurant/terrace, shop, pool/seminar building and miniature park entrance. Winter panorama shows same frontage under snow.",
+        "limits": "Both are visibly stitched panoramas, summer additionally annotated. Treat as contextual research; do not import as single unaltered camera exposure or assign fabricated capture date. Existing photo hashes must be compared before any possible future import."
+      },
+      {
+        "subject": "2006 model map",
+        "source": "https://web.archive.org/web/20061123195444id_/http://www.ladrosera.fr/carte/carte.html",
+        "finding": "Successor site map contains the familiar historical model links plus Jeansagnière; no newly identified missing model. It says plus de 50 while general page says 50.",
+        "limits": "Do not count Jeansagnière as a miniature without dedicated page/photo proof, or infer contemporaneous inventory from incompatible aggregate totals."
+      },
+      {
+        "subject": "2008 Affection visitor album",
+        "source": "https://www.affection.org/visite-parc-drosera-aout-2008_28453_album_photo/",
+        "finding": "Current HTTP200 resolves to empty photo shell without album title/content/images; exact historical CDX query returned no captures.",
+        "limits": "No login or private endpoint access attempted. No usable evidence recovered."
+      }
+    ],
+    "unchangedGaps": [
+      "2007 reported 53 models cannot yet be reconciled by names and periods.",
+      "Picnic area physical setting remains undocumented.",
+      "Annual maps and precise park/item coordinates remain unproven.",
+      "No basis to mark the park completed from this research."
+    ],
+    "evidenceFiles": [
+      {
+        "name": "DSC06672.JPG",
+        "bytes": 585868,
+        "sha256": "970aefd94e163dd78fee6ca7c209b86a27bdbf4dda5bbb2620d51b35b6859e5a",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "name": "DSC06674.JPG",
+        "bytes": 599472,
+        "sha256": "10aeb8b18f4473b127c22b42df9314d3d252bfc844d77c0a3cd2576624495633",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "name": "DSC06676.JPG",
+        "bytes": 525900,
+        "sha256": "1dd7146f5fcf9a9558b468a986cbb6f602a21b80c0699e94c9f6e7ce6fe5ac26",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "name": "DSC06678.JPG",
+        "bytes": 538025,
+        "sha256": "a7616360cf931b5e3ac226c6f2c819154c936881e75f40c9a637f712026f3b3f",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "name": "DSC06694.JPG",
+        "bytes": 280177,
+        "sha256": "fb8172cb95fba6cf15293fb6455a343da6b3e9d1e501e31dcca0b44f88268cda",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "name": "academic.html",
+        "bytes": 41062,
+        "sha256": "e446e972e2bea636fd706371136d9464a8ab7a7f4508c5742af0fdbdda13e138"
+      },
+      {
+        "name": "affection-2008.html",
+        "bytes": 16996,
+        "sha256": "de4d0a4237735d1ca5a58b6ed24a8228e541c5547bb0b212a49f748ea21da87a"
+      },
+      {
+        "name": "affection-cdx-metadata.json",
+        "bytes": 345,
+        "sha256": "0c2e44a97ffa9d87093f7c9a0626de5387d207921a00a7c2c45ff7dbea36cd52"
+      },
+      {
+        "name": "affection-cdx.json",
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "name": "jourdan.html",
+        "bytes": 8074,
+        "sha256": "e3f005d21aea0b1d290b974e198346538badc5664186672a80ae2a21a005969a"
+      },
+      {
+        "name": "ladrosera-cdx-metadata.json",
+        "bytes": 389,
+        "sha256": "ec19bb6dcb76bb3f8a351525825ac7504b160ed03917affbe4ac4ac81e412e47"
+      },
+      {
+        "name": "ladrosera-cdx.json",
+        "bytes": 16777,
+        "sha256": "5671e84c59ff1e55aed07d3bccd0e328a0169068c95cf4f08fd51d0e8d73b83c"
+      },
+      {
+        "name": "ladrosera-moingt-cdx-metadata.json",
+        "bytes": 363,
+        "sha256": "6d8b36184e996e5a078fa5189f0c189fee2646bc2de45b6191d663f6c4a677ba"
+      },
+      {
+        "name": "ladrosera-moingt-cdx.json",
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "name": "ladrosera-parc-cdx-metadata.json",
+        "bytes": 360,
+        "sha256": "718befb2d4b02d052412394a667b8aa4af1749172ae56cf9ac27500d40834118"
+      },
+      {
+        "name": "ladrosera-parc-cdx.json",
+        "bytes": 535,
+        "sha256": "29c0656e08dac37466ae2afa495976832ddce37ba98e98e8ba54d8cf7420dbd0"
+      },
+      {
+        "name": "moingt-image-exact-cdx-metadata.json",
+        "bytes": 398,
+        "sha256": "ef29b5e08a6bbca1584c99139f2541ffa9a3a7458de7e871bb8cc9bc44d55e1f"
+      },
+      {
+        "name": "moingt-image-exact-cdx.json",
+        "bytes": 201,
+        "sha256": "c06f21ee7257111905a001c6053823cb7c28bad8c92b6ec32c712450bd709781"
+      },
+      {
+        "name": "official-2006-extra-media-metadata.json",
+        "bytes": 962,
+        "sha256": "5a3f9aea73cfb8b367da867090a35c74356acf985f0ca47095b98614e514e643"
+      },
+      {
+        "name": "official-2006-games-metadata.json",
+        "bytes": 360,
+        "sha256": "1db8edd1210aca71b1e7c9af53bf8ab91eb7d5010a4abb5783b47301c04ad665"
+      },
+      {
+        "name": "official-2006-games.html",
+        "bytes": 11163,
+        "sha256": "cca1e050c812d72ad8df5fb34205386d65fb192907d84f7b79e38d77551c9a3f"
+      },
+      {
+        "name": "official-2006-games.txt",
+        "bytes": 502,
+        "sha256": "1ac35ce10188159b36e610b3f7d1ad8e2f5877d478fe5a4780cfa90c38ee093f"
+      },
+      {
+        "name": "official-2006-groups-17-metadata.json",
+        "bytes": 380,
+        "sha256": "2c659e500bff1cc24d54d566bba3744a151d045e21b37de367be73892e648b21"
+      },
+      {
+        "name": "official-2006-groups-17.jpg",
+        "bytes": 67713,
+        "sha256": "2fd501d3df9ef7ca96e12a43d33f157bc5443332e334870a677137616e9a5fec",
+        "width": 198,
+        "height": 94
+      },
+      {
+        "name": "official-2006-groups-23-metadata.json",
+        "bytes": 380,
+        "sha256": "b96d4897e3374d4a310145585f7de262b12aa1f31a64613864002dca3cb2deca"
+      },
+      {
+        "name": "official-2006-groups-23.jpg",
+        "bytes": 80765,
+        "sha256": "4cbdd9246857dd3bffb7c0f332cd0e0fa19386f0aa112dcc57c65a667a7d6359",
+        "width": 198,
+        "height": 130
+      },
+      {
+        "name": "official-2006-groups-forfaits-metadata.json",
+        "bytes": 274,
+        "sha256": "7a8b617120ad23aacb78311a35ad3693c57f4f62f582653dfd1677d7d51ce1a8"
+      },
+      {
+        "name": "official-2006-groups-forfaits.html",
+        "bytes": 1962,
+        "sha256": "7ae76974cac0aea80034bc3a6af959121fc3c1d0b6660710ddd147a6159c67a6"
+      },
+      {
+        "name": "official-2006-groups-forfaits.txt",
+        "bytes": 102,
+        "sha256": "cc9130f7008a33b6e770af0cf1d4e5f65cc34500ebd153f7b9eb5d33e740f999"
+      },
+      {
+        "name": "official-2006-groups-metadata.json",
+        "bytes": 274,
+        "sha256": "4061a4552e0796b0670bb74ca12deead7a9f229e169d7011f860a4bdbeb47cfc"
+      },
+      {
+        "name": "official-2006-groups-tarifs-metadata.json",
+        "bytes": 395,
+        "sha256": "eeee01f83717796e6e0a3c7e328a4dfb526ebc06ceca55c2b5ae9e134797ffc9"
+      },
+      {
+        "name": "official-2006-groups-tarifs.html",
+        "bytes": 1970,
+        "sha256": "a41c79ff7da7ff41a036f3674f9003e1928a76312e75bf0fcd0a2437649df82c"
+      },
+      {
+        "name": "official-2006-groups-tarifs.txt",
+        "bytes": 99,
+        "sha256": "003caca34b8785e16291d9c00010681ac766acf02cf585eba13da772178b494f"
+      },
+      {
+        "name": "official-2006-groups.html",
+        "bytes": 11886,
+        "sha256": "61f71cdd121eaccf2e1d061b3f2ff846feaa30b2e1929674e2f750fdf85abaa1"
+      },
+      {
+        "name": "official-2006-groups.txt",
+        "bytes": 621,
+        "sha256": "5c507595caf25b622f5070aac67045440341ba4cdd5d0139e284dc1a213d4f23"
+      },
+      {
+        "name": "official-2006-loisirs-int-metadata.json",
+        "bytes": 270,
+        "sha256": "e10e870b4d25581357cc0a5909e478c5080ecb31e9a3ecedc194047979886ea5"
+      },
+      {
+        "name": "official-2006-loisirs-int.html",
+        "bytes": 13448,
+        "sha256": "2b6e226bb348a92fb32c09c6eea2155f911ea7720b9f7df8a4d57ef20d931533"
+      },
+      {
+        "name": "official-2006-loisirs-int.txt",
+        "bytes": 474,
+        "sha256": "6d0fd71a38a7703ffd9803de5bdac2dafcfcbe1aa3be66c2228bf4d005588a71"
+      },
+      {
+        "name": "official-2006-loisirs-metadata.json",
+        "bytes": 270,
+        "sha256": "e278f564864a8abe9ee0698a474d3ded1ebbea9038aa04ea0109c15f494b2f1d"
+      },
+      {
+        "name": "official-2006-loisirs.html",
+        "bytes": 10851,
+        "sha256": "705adbc0598fdd76c5df2d064e3e6eb417c74003576f6843d3dfa1ef36a50fdf"
+      },
+      {
+        "name": "official-2006-loisirs.txt",
+        "bytes": 485,
+        "sha256": "d4b74c568cb6ca9bc0f3d0b1e4420c72288ba7b9f96ccf1baaff3bf86d243fbf"
+      },
+      {
+        "name": "official-2006-map-metadata.json",
+        "bytes": 270,
+        "sha256": "9510372574d4bfac3081578857043b625aa5a442edca3af927a258d0bd4bf902"
+      },
+      {
+        "name": "official-2006-map.html",
+        "bytes": 15641,
+        "sha256": "338db61289e75c6bb9bbcb1ad311eb46248bda3b2b39ad7269088bef55f63e42"
+      },
+      {
+        "name": "official-2006-map.txt",
+        "bytes": 528,
+        "sha256": "ad7b18b9a5a8434e566c463098159523dea4749cad8fd8229e8ce3184d81f1d2"
+      },
+      {
+        "name": "official-2006-maquettes-metadata.json",
+        "bytes": 272,
+        "sha256": "24294f8058e5662a9418268bb637989bbd5bc21e61e018d057644f8c51c09fed"
+      },
+      {
+        "name": "official-2006-maquettes.html",
+        "bytes": 5892,
+        "sha256": "e38c8b61d608d533eda61b1999b5e4a5d374d7ad23a8def7f6c5b15d2ba8f77a"
+      },
+      {
+        "name": "official-2006-maquettes.txt",
+        "bytes": 2299,
+        "sha256": "2962c684a46308b29276f303ea98953d294fb37fbbede6f3f14c10d12618a89e"
+      },
+      {
+        "name": "official-2006-moingt-metadata.json",
+        "bytes": 270,
+        "sha256": "0c1365f27c38fc6782f37f04d359f84efa89c2463c4c5fd5f64b8304b6c18f7b"
+      },
+      {
+        "name": "official-2006-moingt.html",
+        "bytes": 3921,
+        "sha256": "c6f44f0d0b39a84a6c4fe857947599e6d4efaa3bc6aa1e43cc7955a415096839"
+      },
+      {
+        "name": "official-2006-moingt.txt",
+        "bytes": 1631,
+        "sha256": "7ef274b1459ed5be821ae55c610ca4935477608e0b4be7aebbc92d10cbf5947a"
+      },
+      {
+        "name": "official-2006-parc-metadata.json",
+        "bytes": 263,
+        "sha256": "8aaed7081085f4dc6ee6a04884665beec5ca256b77258646bf39e7169e6548b4"
+      },
+      {
+        "name": "official-2006-parc.html",
+        "bytes": 13903,
+        "sha256": "1c5ca60b17baf263a145bf308b0508955c9f216ed947428a3981dbc47f99dd7b"
+      },
+      {
+        "name": "official-2006-parc.txt",
+        "bytes": 1657,
+        "sha256": "fa364819c6eb148dfcf1dd98dbb96d9c219e99b861c5750aaeb165cc5629b5f5"
+      },
+      {
+        "name": "official-groups-forfait-metadata.json",
+        "bytes": 379,
+        "sha256": "52e99b2ce99e64cbe8cd63b93a2d9e981addc64040599c2ff9f3cba0b248ef16"
+      },
+      {
+        "name": "official-groups-forfait.jpg",
+        "bytes": 110921,
+        "sha256": "a86e45f01989e628992c251264f25076885801d3be699cb6fda896b1da1eb55b",
+        "width": 591,
+        "height": 827
+      },
+      {
+        "name": "official-moingt-2006-metadata.json",
+        "bytes": 419,
+        "sha256": "405da743374be5ed03a61ae94cdb3984c89b1a2203253bbbce4660be088f4ef3"
+      },
+      {
+        "name": "official-moingt-2006.jpg",
+        "bytes": 56630,
+        "sha256": "894e82f513412b366c84f1ccfaf642a27cd5b04a6706604737e1c3d2e0449f3c",
+        "width": 155,
+        "height": 225
+      },
+      {
+        "name": "official-panorama-ete.jpg",
+        "bytes": 222937,
+        "sha256": "e765bc4c79653e87640e3ea6edce067a57003e49e7301e23b86ea3a4ef0f20bf",
+        "width": 2521,
+        "height": 297
+      },
+      {
+        "name": "official-panorama-hiver.jpg",
+        "bytes": 429923,
+        "sha256": "21bd6ce85fb13b8c0abfefe7fad4457dc5eac3cbcea0f129d54594b0b01e41eb",
+        "width": 1965,
+        "height": 246
+      },
+      {
+        "name": "official-school-brochure-metadata.json",
+        "bytes": 385,
+        "sha256": "b335b05cb3d891b2def469afaaecd96b100b5ba3040d4e9e6f69ffb41b0480b2"
+      },
+      {
+        "name": "official-school-brochure.jpg",
+        "bytes": 113440,
+        "sha256": "34c1c53ac34741a643afa31bb5a28c4d24f524809c6d1c55740c6c2d6706ccc9",
+        "width": 591,
+        "height": 827
+      },
+      {
+        "name": "school-2013-images.json",
+        "bytes": 7825,
+        "sha256": "fa275164a9a923e7e03dac4fa33b9ddba32ec1d510f37ae292d73ec4eb2c209b"
+      },
+      {
+        "name": "school-2013-metadata.json",
+        "bytes": 255,
+        "sha256": "d53ff8bf3fc9621aa849cc58fa733aa4069287d9ce07db2fa87142b0de87e7d7"
+      },
+      {
+        "name": "school-2013-photo-metadata.json",
+        "bytes": 2577,
+        "sha256": "cc0db0271ca84f4f354bd47f5e5aa8f75fa4b27906b2786d493da028a458d4d3"
+      },
+      {
+        "name": "school-2013.html",
+        "bytes": 65002,
+        "sha256": "c780263f9eb2c3cc84d865f01f6c2a5cf0b6cc2c5d85ddcf0f5e56ee2e119045"
+      },
+      {
+        "name": "school-2013.txt",
+        "bytes": 1749,
+        "sha256": "6a57c8ae2a4cc4f1b071acbfeac8ccc6dc46f327eb027af953b529d516732c51"
+      }
+    ]
+  },
+  "rootReview": "Photographie officielle originale155×225 personnellement inspectée : tour ronde claire, deux cadrans visibles, toiture brun-rouge, mur voisin à porte en arc et végétation. Date2006=archive, pas création/ouverture/prise de vue. Histoire du monument réel explicitement distincte de celle de la maquette.",
+  "photoImportPerformed": false,
+  "imageQualityGap": "Seul natif155×225 retrouvé, conservé comme preuve visuelle et non importé ni agrandi.",
+  "shortCopyException": "Notice courte et spécifique fondée sur la photographie et la page officielle du monument, aucune matière supplémentaire inventée.",
+  "document": {
+    "targetParkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "id": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "name": "Parc de la Droséra – Forez Miniature",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "key": "park",
+        "name": "Parc de la Droséra – Forez Miniature"
+      },
+      "items": [
+        {
+          "key": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+          "id": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+          "name": "Tour de Moingt",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "subtype": null,
+          "zoneId": null,
+          "zoneKey": null,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La tour et sa petite porte</h2><p>À la Droséra, la maquette de Moingt dressait une tour ronde et claire au-dessus d’une enceinte basse. Deux cadrans d’horloge se détachaient près du sommet, sous un petit toit brun-rouge. Quelques ouvertures étroites ponctuaient le fût de la tour, tandis qu’une porte en arc s’ouvrait dans le mur voisin.</p><p>Le pied de l’ensemble se mêlait aux pierres et à la végétation du décor miniature. Le modèle évoquait la vieille tour conservée à Moingt, près de Montbrison, vestige du château médiéval : une silhouette locale reconnaissable parmi les monuments du Forez réunis dans le parc.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The tower and its little gateway</h2><p>At La Droséra, the Moingt model featured a pale round tower rising above a low enclosure. Two clock faces stood out near the top, beneath a small reddish-brown roof. Narrow openings punctuated the tower, while an arched doorway opened through the adjoining wall.</p><p>Stones and vegetation surrounded the base in the miniature landscape. The model recalled the old tower surviving at Moingt, near Montbrison, a remnant of the medieval castle: a distinctive local outline among the monuments of Forez brought together in the park.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Der Turm und sein kleines Tor</h2><p>Das Modell von Moingt in La Droséra zeigte einen hellen Rundturm über einer niedrigen Umfassungsmauer. Nahe der Spitze hoben sich zwei Zifferblätter unter einem kleinen rotbraunen Dach ab. Schmale Öffnungen gliederten den Turm, während ein Torbogen durch die angrenzende Mauer führte.</p><p>Steine und Pflanzen umgaben den Fuß des Bauwerks in der Miniaturlandschaft. Das Modell erinnerte an den alten Turm von Moingt bei Montbrison, einen Überrest der mittelalterlichen Burg: eine markante örtliche Silhouette unter den im Park versammelten Baudenkmälern des Forez.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De toren en zijn kleine poort</h2><p>De maquette van Moingt in La Droséra toonde een lichte ronde toren boven een lage ommuring. Vlak onder een klein roodbruin dak vielen twee wijzerplaten op. Smalle openingen onderbraken de torenwand en een boogpoort gaf toegang door de aangrenzende muur.</p><p>Stenen en planten omringden de voet van het bouwwerk in het miniatuurlandschap. Het model verwees naar de oude toren van Moingt bij Montbrison, een overblijfsel van het middeleeuwse kasteel: een herkenbaar plaatselijk silhouet tussen de monumenten van de Forez die in het park waren samengebracht.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La torre e la piccola porta</h2><p>Alla Droséra, il modellino di Moingt mostrava una torre rotonda e chiara sopra una bassa cinta muraria. Due quadranti d’orologio risaltavano vicino alla sommità, sotto un piccolo tetto bruno-rossastro. Strette aperture punteggiavano la torre, mentre una porta ad arco si apriva nel muro adiacente.</p><p>Pietre e vegetazione circondavano la base nel paesaggio in miniatura. Il modello richiamava l’antica torre conservata a Moingt, vicino a Montbrison, resto del castello medievale: una sagoma locale riconoscibile tra i monumenti del Forez riuniti nel parco.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La torre y su pequeña puerta</h2><p>En La Droséra, la maqueta de Moingt levantaba una torre redonda y clara sobre un recinto de muros bajos. Dos esferas de reloj destacaban cerca de la cima, bajo un pequeño tejado marrón rojizo. Estrechas aberturas salpicaban la torre, mientras una puerta de arco se abría en el muro contiguo.</p><p>Piedras y vegetación rodeaban la base dentro del paisaje en miniatura. El modelo evocaba la antigua torre conservada en Moingt, cerca de Montbrison, vestigio del castillo medieval: una silueta local reconocible entre los monumentos del Forez reunidos en el parque.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wieża i niewielka brama</h2><p>Makieta Moingt w La Droséra przedstawiała jasną okrągłą wieżę górującą nad niskim murem. Blisko szczytu, pod małym czerwonobrązowym dachem, wyróżniały się dwie tarcze zegarowe. Wieżę zdobiły wąskie otwory, a w przylegającym murze znajdowała się łukowa brama.</p><p>Podstawę budowli otaczały kamienie i rośliny miniaturowego krajobrazu. Model nawiązywał do starej wieży zachowanej w Moingt koło Montbrison, pozostałości średniowiecznego zamku: rozpoznawalnej lokalnej sylwetki wśród zabytków Forez zgromadzonych w parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A torre e a pequena porta</h2><p>Na Droséra, a maquete de Moingt apresentava uma torre redonda e clara acima de uma cerca baixa. Dois mostradores de relógio destacavam-se perto do topo, sob um pequeno telhado castanho-avermelhado. Aberturas estreitas marcavam a torre, enquanto uma porta em arco se abria no muro contíguo.</p><p>Pedras e vegetação rodeavam a base na paisagem em miniatura. O modelo evocava a antiga torre conservada em Moingt, perto de Montbrison, vestígio do castelo medieval: uma silhueta local reconhecível entre os monumentos do Forez reunidos no parque.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": "https://web.archive.org/web/20061123205004id_/http://www.ladrosera.fr/carte/moingt.html",
+            "status": "ClosedDefinitively",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": null,
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": null,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          },
+          "attractionLocations": null,
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "latitude": null,
+          "longitude": null
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "2285edc0-1a6e-4b35-903c-4ecd9745a804",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:01:07.2155166Z",
+    "appliedAtUtc": null,
+    "targetParkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "targetParkName": "Parc de la Droséra – Forez Miniature",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "entityKey": "park",
+        "displayName": "Parc de la Droséra – Forez Miniature",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "entityKey": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "displayName": "Tour de Moingt",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der Turm und sein kleines Tor</h2><p>Das Modell von Moingt in La Droséra zeigte einen hellen Rundturm über einer niedrigen Umfassungsmauer. Nahe der Spitze hoben sich zwei Zifferblätter unter einem kleinen rotbraunen Dach ab. Schmale Öffnungen gliederten den Turm, während ein Torbogen durch die angrenzende Mauer führte.</p><p>Steine und Pflanzen umgaben den Fuß des Bauwerks in der Miniaturlandschaft. Das Modell erinnerte an den alten Turm von Moingt bei Montbrison, einen Überrest der mittelalterlichen Burg: eine markante örtliche Silhouette unter den im Park versammelten Baudenkmälern des Forez.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The tower and its little gateway</h2><p>At La Droséra, the Moingt model featured a pale round tower rising above a low enclosure. Two clock faces stood out near the top, beneath a small reddish-brown roof. Narrow openings punctuated the tower, while an arched doorway opened through the adjoining wall.</p><p>Stones and vegetation surrounded the base in the miniature landscape. The model recalled the old tower surviving at Moingt, near Montbrison, a remnant of the medieval castle: a distinctive local outline among the monuments of Forez brought together in the park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La torre y su pequeña puerta</h2><p>En La Droséra, la maqueta de Moingt levantaba una torre redonda y clara sobre un recinto de muros bajos. Dos esferas de reloj destacaban cerca de la cima, bajo un pequeño tejado marrón rojizo. Estrechas aberturas salpicaban la torre, mientras una puerta de arco se abría en el muro contiguo.</p><p>Piedras y vegetación rodeaban la base dentro del paisaje en miniatura. El modelo evocaba la antigua torre conservada en Moingt, cerca de Montbrison, vestigio del castillo medieval: una silueta local reconocible entre los monumentos del Forez reunidos en el parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La tour et sa petite porte</h2><p>À la Droséra, la maquette de Moingt dressait une tour ronde et claire au-dessus d’une enceinte basse. Deux cadrans d’horloge se détachaient près du sommet, sous un petit toit brun-rouge. Quelques ouvertures étroites ponctuaient le fût de la tour, tandis qu’une porte en arc s’ouvrait dans le mur voisin.</p><p>Le pied de l’ensemble se mêlait aux pierres et à la végétation du décor miniature. Le modèle évoquait la vieille tour conservée à Moingt, près de Montbrison, vestige du château médiéval : une silhouette locale reconnaissable parmi les monuments du Forez réunis dans le parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La torre e la piccola porta</h2><p>Alla Droséra, il modellino di Moingt mostrava una torre rotonda e chiara sopra una bassa cinta muraria. Due quadranti d’orologio risaltavano vicino alla sommità, sotto un piccolo tetto bruno-rossastro. Strette aperture punteggiavano la torre, mentre una porta ad arco si apriva nel muro adiacente.</p><p>Pietre e vegetazione circondavano la base nel paesaggio in miniatura. Il modello richiamava l’antica torre conservata a Moingt, vicino a Montbrison, resto del castello medievale: una sagoma locale riconoscibile tra i monumenti del Forez riuniti nel parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De toren en zijn kleine poort</h2><p>De maquette van Moingt in La Droséra toonde een lichte ronde toren boven een lage ommuring. Vlak onder een klein roodbruin dak vielen twee wijzerplaten op. Smalle openingen onderbraken de torenwand en een boogpoort gaf toegang door de aangrenzende muur.</p><p>Stenen en planten omringden de voet van het bouwwerk in het miniatuurlandschap. Het model verwees naar de oude toren van Moingt bij Montbrison, een overblijfsel van het middeleeuwse kasteel: een herkenbaar plaatselijk silhouet tussen de monumenten van de Forez die in het park waren samengebracht.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wieża i niewielka brama</h2><p>Makieta Moingt w La Droséra przedstawiała jasną okrągłą wieżę górującą nad niskim murem. Blisko szczytu, pod małym czerwonobrązowym dachem, wyróżniały się dwie tarcze zegarowe. Wieżę zdobiły wąskie otwory, a w przylegającym murze znajdowała się łukowa brama.</p><p>Podstawę budowli otaczały kamienie i rośliny miniaturowego krajobrazu. Model nawiązywał do starej wieży zachowanej w Moingt koło Montbrison, pozostałości średniowiecznego zamku: rozpoznawalnej lokalnej sylwetki wśród zabytków Forez zgromadzonych w parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A torre e a pequena porta</h2><p>Na Droséra, a maquete de Moingt apresentava uma torre redonda e clara acima de uma cerca baixa. Dois mostradores de relógio destacavam-se perto do topo, sob um pequeno telhado castanho-avermelhado. Aberturas estreitas marcavam a torre, enquanto uma porta em arco se abria no muro contíguo.</p><p>Pedras e vegetação rodeavam a base na paisagem em miniatura. O modelo evocava a antiga torre conservada em Moingt, perto de Montbrison, vestígio do castelo medieval: uma silhueta local reconhecível entre os monumentos do Forez reunidos no parque.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://web.archive.org/web/20001208215700id_/http://www.parc-de-la-drosera.fr:80/moingt.html",
+            "newValue": "https://web.archive.org/web/20061123205004id_/http://www.ladrosera.fr/carte/moingt.html"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "3df5cda3-0096-45d3-8e70-13376ce9c4a7",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:01:22.8849164Z",
+    "appliedAtUtc": "2026-11-15T09:01:22.8849172Z",
+    "targetParkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "targetParkName": "Parc de la Droséra – Forez Miniature",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "entityKey": "park",
+        "displayName": "Parc de la Droséra – Forez Miniature",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "entityKey": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "displayName": "Tour de Moingt",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der Turm und sein kleines Tor</h2><p>Das Modell von Moingt in La Droséra zeigte einen hellen Rundturm über einer niedrigen Umfassungsmauer. Nahe der Spitze hoben sich zwei Zifferblätter unter einem kleinen rotbraunen Dach ab. Schmale Öffnungen gliederten den Turm, während ein Torbogen durch die angrenzende Mauer führte.</p><p>Steine und Pflanzen umgaben den Fuß des Bauwerks in der Miniaturlandschaft. Das Modell erinnerte an den alten Turm von Moingt bei Montbrison, einen Überrest der mittelalterlichen Burg: eine markante örtliche Silhouette unter den im Park versammelten Baudenkmälern des Forez.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The tower and its little gateway</h2><p>At La Droséra, the Moingt model featured a pale round tower rising above a low enclosure. Two clock faces stood out near the top, beneath a small reddish-brown roof. Narrow openings punctuated the tower, while an arched doorway opened through the adjoining wall.</p><p>Stones and vegetation surrounded the base in the miniature landscape. The model recalled the old tower surviving at Moingt, near Montbrison, a remnant of the medieval castle: a distinctive local outline among the monuments of Forez brought together in the park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La torre y su pequeña puerta</h2><p>En La Droséra, la maqueta de Moingt levantaba una torre redonda y clara sobre un recinto de muros bajos. Dos esferas de reloj destacaban cerca de la cima, bajo un pequeño tejado marrón rojizo. Estrechas aberturas salpicaban la torre, mientras una puerta de arco se abría en el muro contiguo.</p><p>Piedras y vegetación rodeaban la base dentro del paisaje en miniatura. El modelo evocaba la antigua torre conservada en Moingt, cerca de Montbrison, vestigio del castillo medieval: una silueta local reconocible entre los monumentos del Forez reunidos en el parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La tour et sa petite porte</h2><p>À la Droséra, la maquette de Moingt dressait une tour ronde et claire au-dessus d’une enceinte basse. Deux cadrans d’horloge se détachaient près du sommet, sous un petit toit brun-rouge. Quelques ouvertures étroites ponctuaient le fût de la tour, tandis qu’une porte en arc s’ouvrait dans le mur voisin.</p><p>Le pied de l’ensemble se mêlait aux pierres et à la végétation du décor miniature. Le modèle évoquait la vieille tour conservée à Moingt, près de Montbrison, vestige du château médiéval : une silhouette locale reconnaissable parmi les monuments du Forez réunis dans le parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La torre e la piccola porta</h2><p>Alla Droséra, il modellino di Moingt mostrava una torre rotonda e chiara sopra una bassa cinta muraria. Due quadranti d’orologio risaltavano vicino alla sommità, sotto un piccolo tetto bruno-rossastro. Strette aperture punteggiavano la torre, mentre una porta ad arco si apriva nel muro adiacente.</p><p>Pietre e vegetazione circondavano la base nel paesaggio in miniatura. Il modello richiamava l’antica torre conservata a Moingt, vicino a Montbrison, resto del castello medievale: una sagoma locale riconoscibile tra i monumenti del Forez riuniti nel parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De toren en zijn kleine poort</h2><p>De maquette van Moingt in La Droséra toonde een lichte ronde toren boven een lage ommuring. Vlak onder een klein roodbruin dak vielen twee wijzerplaten op. Smalle openingen onderbraken de torenwand en een boogpoort gaf toegang door de aangrenzende muur.</p><p>Stenen en planten omringden de voet van het bouwwerk in het miniatuurlandschap. Het model verwees naar de oude toren van Moingt bij Montbrison, een overblijfsel van het middeleeuwse kasteel: een herkenbaar plaatselijk silhouet tussen de monumenten van de Forez die in het park waren samengebracht.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wieża i niewielka brama</h2><p>Makieta Moingt w La Droséra przedstawiała jasną okrągłą wieżę górującą nad niskim murem. Blisko szczytu, pod małym czerwonobrązowym dachem, wyróżniały się dwie tarcze zegarowe. Wieżę zdobiły wąskie otwory, a w przylegającym murze znajdowała się łukowa brama.</p><p>Podstawę budowli otaczały kamienie i rośliny miniaturowego krajobrazu. Model nawiązywał do starej wieży zachowanej w Moingt koło Montbrison, pozostałości średniowiecznego zamku: rozpoznawalnej lokalnej sylwetki wśród zabytków Forez zgromadzonych w parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A torre e a pequena porta</h2><p>Na Droséra, a maquete de Moingt apresentava uma torre redonda e clara acima de uma cerca baixa. Dois mostradores de relógio destacavam-se perto do topo, sob um pequeno telhado castanho-avermelhado. Aberturas estreitas marcavam a torre, enquanto uma porta em arco se abria no muro contíguo.</p><p>Pedras e vegetação rodeavam a base na paisagem em miniatura. O modelo evocava a antiga torre conservada em Moingt, perto de Montbrison, vestígio do castelo medieval: uma silhueta local reconhecível entre os monumentos do Forez reunidos no parque.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://web.archive.org/web/20001208215700id_/http://www.parc-de-la-drosera.fr:80/moingt.html",
+            "newValue": "https://web.archive.org/web/20061123205004id_/http://www.ladrosera.fr/carte/moingt.html"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "publicationPerformed": false,
+  "idempotence": {
+    "operationId": "ad222038-91fd-445a-a26f-88b9b491893f",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:02:19.1276487Z",
+    "appliedAtUtc": null,
+    "targetParkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "targetParkName": "Parc de la Droséra – Forez Miniature",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "entityKey": "park",
+        "displayName": "Parc de la Droséra – Forez Miniature",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "entityKey": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "displayName": "Tour de Moingt",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "completeness": {
+    "startedAtUtc": "2026-11-15T09:02:29.0919204Z",
+    "action": "Completeness",
+    "result": {
+      "completenessScore": 88,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 102,
+      "earnedPoints": 90,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "receivedAtUtc": "2026-11-15T09:02:29.8604231Z"
+  }
+}

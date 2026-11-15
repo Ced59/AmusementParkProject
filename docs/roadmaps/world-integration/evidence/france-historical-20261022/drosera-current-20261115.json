@@ -1,0 +1,60 @@
+{
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+  "owner": "Conversation France",
+  "updatedAtUtc": "2026-11-15T09:03:26.869692Z",
+  "status": "partial",
+  "localDirectory": "/workspace/france-historical-20261114/drosera/recovery-20261115",
+  "lastActualIntegrationAtUtc": "2026-11-15T09:01:22.8849172Z",
+  "lastApplyOperationId": "3df5cda3-0096-45d3-8e70-13376ce9c4a7",
+  "counts": {
+    "items": 53,
+    "publicItems": 51,
+    "describedItems": 52,
+    "media": 61,
+    "historyEvents": 2
+  },
+  "completeness": {
+    "startedAtUtc": "2026-11-15T09:02:29.0919204Z",
+    "action": "Completeness",
+    "result": {
+      "completenessScore": 88,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 102,
+      "earnedPoints": 90,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "receivedAtUtc": "2026-11-15T09:02:29.8604231Z"
+  },
+  "closedParkScoreToleranceAuthorized": true,
+  "facebookExisting": {
+    "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "entryId": "FR-candidate-2944bd4fd46f53",
+    "name": "Village de la Droséra - Forez Miniature",
+    "publicUrl": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+    "hasPublishedParkAnnouncement": true,
+    "facebookPublicationId": "218045e9e02741c4bf5859bc8cd97a43",
+    "status": "Published",
+    "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125808271424431",
+    "verifiedAtUtc": "2026-11-15T08:50:21.0607802Z",
+    "receiptFile": "/workspace/france-historical-20261114/facebook-recheck-20261115/official/7879f5dc-db40-4fcf-a637-86c58754040d-result.json",
+    "previousEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-publication-audit-20261103.json",
+    "newPublicationPerformed": false
+  },
+  "proofs": [
+    "drosera-moingt-followup-20261115.json",
+    "drosera-recovered-state-20261115.json",
+    "drosera-forez-publication-audit-20261103.json"
+  ],
+  "remaining": [
+    "Auditer et publier la notice Moingt encore privée ; son seul original155×225 sert à la qualification, pas à un import agrandi.",
+    "Aire de pique-nique existante toujours privée sans description des aménagements, même si présence et usage2013 confirmés.",
+    "49 maquettes nommées plus théâtre de Roanne=50 selon les périodes ; annonce53 maquettes2007 reste à rapprocher. Les53items actuels incluent des services et ne prouvent pas53maquettes.",
+    "Jeux en cordes sur brochure officielle : qualification séparée, pas alias de pique-nique ni maquette manquante.",
+    "Tolérance88/100 acquise pour ce parc fermé ; elle ne clôt pas un inventaire encore en recherche.",
+    "Facebook existant Published ; visibilité externe à distinguer selon la preuve globale."
+  ],
+  "fullAuditExportPerformedThisRecovery": false,
+  "newPublicationPerformed": false
+}
