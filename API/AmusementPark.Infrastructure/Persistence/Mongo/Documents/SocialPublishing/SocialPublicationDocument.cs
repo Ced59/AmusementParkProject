@@ -33,6 +33,10 @@ public sealed class SocialPublicationDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? RequestedByUserId { get; set; }
 
+    [BsonElement("createdByUserId")]
+    [BsonIgnoreIfNull]
+    public string? CreatedByUserId { get; set; }
+
     [BsonElement("deduplicationKey")]
     [BsonIgnoreIfNull]
     public string? DeduplicationKey { get; set; }

@@ -20,6 +20,8 @@ public sealed class SocialPublication : AuditableEntity
 
     public string? RequestedByUserId { get; set; }
 
+    public string? CreatedByUserId { get; set; }
+
     public string? DeduplicationKey { get; set; }
 
     public DateTime RequestedAtUtc { get; set; } = DateTime.UtcNow;
