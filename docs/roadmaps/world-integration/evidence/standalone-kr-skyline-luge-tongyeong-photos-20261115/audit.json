@@ -1,0 +1,115 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+  "entryId": "KR-candidate-standalone-5f91351dd67b29",
+  "name": "Skyline Luge Tongyeong",
+  "countryCode": "KR",
+  "auditAtUtc": "2026-11-15T14:12:38Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "existingFacebookPublication": "https://www.facebook.com/1285475681307050/posts/122124313677424431",
+  "photoCountBefore": 0,
+  "photoCountAfter": 3,
+  "publicImageEndpoint": "https://amusement-parks.fun/api/images/STANDALONE_ATTRACTION/c4a7a4ae-bbb1-486f-aa6a-b362498628af/STANDALONE_ATTRACTION?page=1&size=10",
+  "photos": [
+    {
+      "imageId": "5379dd51ddf744f5aec77cb91dc15bf6",
+      "sourcePage": "https://hantabi.org/korea/articles/busan-to-tongyeong",
+      "sourceUrl": "https://hantabi.org/assets/img/tongyeong-skyline-luge-base-building-2019-07.jpg",
+      "creator": "Kim Ji-ho / Korea Tourism Organization (KTO Content Lab)",
+      "photoIdentifier": "yUki6a",
+      "license": "KOGL Type 1 (attribution), stated next to the exact image by Hantabi",
+      "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+      "rightsEvidenceUrl": "https://hantabi.org/korea/articles/busan-to-tongyeong",
+      "sourceSha256": "cb75c3855a2a1b1c6f9794e1c239ac5d59d0ba3ed90e81903d29635ad8429f59",
+      "isCurrent": false,
+      "isPublished": true,
+      "altCaptionCreditLocales": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T14:09:59.895Z",
+      "lastMetadataUpdatedAtUtc": "2026-11-15T14:11:03.817Z"
+    },
+    {
+      "imageId": "c87148581bc0474f89c985519a2af2a8",
+      "sourcePage": "https://hantabi.org/korea/articles/busan-to-tongyeong",
+      "sourceUrl": "https://hantabi.org/assets/img/tongyeong-skyline-luge-chairlift-2019-07.jpg",
+      "creator": "Kim Ji-ho / Korea Tourism Organization (KTO Content Lab)",
+      "photoIdentifier": "yUki8a",
+      "license": "KOGL Type 1 (attribution), stated next to the exact image by Hantabi",
+      "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+      "rightsEvidenceUrl": "https://hantabi.org/korea/articles/busan-to-tongyeong",
+      "sourceSha256": "4ff48cb9c008eaff9c74175671bd88ce2960fa264a22b3c3b275882576818f45",
+      "isCurrent": false,
+      "isPublished": true,
+      "altCaptionCreditLocales": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T14:10:11.302Z",
+      "lastMetadataUpdatedAtUtc": "2026-11-15T14:11:10.854Z"
+    },
+    {
+      "imageId": "e985b55e4ced4d86b0e62aa89db390c9",
+      "sourcePage": "https://hantabi.org/korea/articles/busan-to-tongyeong",
+      "sourceUrl": "https://hantabi.org/assets/img/tongyeong-skyline-luge-track-sea-view-2019-07.jpg",
+      "creator": "Kim Ji-ho / Korea Tourism Organization (KTO Content Lab)",
+      "photoIdentifier": "yUkiba",
+      "license": "KOGL Type 1 (attribution), stated next to the exact image by Hantabi",
+      "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+      "rightsEvidenceUrl": "https://hantabi.org/korea/articles/busan-to-tongyeong",
+      "sourceSha256": "92e5019d9cdadf4386824cf2fff0d1ce182bdea993c0cec80cd029db6db85cbc",
+      "isCurrent": true,
+      "isPublished": true,
+      "altCaptionCreditLocales": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T14:10:22.294Z",
+      "lastMetadataUpdatedAtUtc": "2026-11-15T14:11:17.803Z"
+    }
+  ],
+  "completenessAfter": {
+    "score": 87,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "lastDataIntegrationAt": "2026-11-15T14:11:17.803Z",
+  "rightsNote": "Hantabi identifies the exact three KTO Content Lab images by photographer, photo identifier and KOGL Type 1 next to each image. The site URLs used here are resized copies attributed to KTO; the KTO photograph identifier is preserved in every public credit. This is secondary license evidence, not independent KTO metadata verification.",
+  "note": "Trois photos exactes du site, de la remontée et de la piste ; huit textes alternatifs, légendes distinctes et crédits par photo. Le post Facebook publié le 23 octobre est conservé, sans nouvelle annonce pour ce rattrapage.",
+  "remainingGaps": [
+    "Actualiser tarifs et horaires variables selon la saison et la météo sur le site officiel.",
+    "Rechercher si les fiches KTO originales des photos yUki6a, yUki8a et yUkiba peuvent être citées directement pour renforcer la chaîne de droits."
+  ]
+}
