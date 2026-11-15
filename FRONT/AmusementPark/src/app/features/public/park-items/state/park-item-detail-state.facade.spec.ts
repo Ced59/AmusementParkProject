@@ -452,6 +452,7 @@ describe('ParkItemDetailStateFacade', () => {
       {
         page: 1,
         size: 1,
+        includeItems: false,
         ownerType: VideoOwnerType.PARK_ITEM,
         ownerId: 'item-1',
       },

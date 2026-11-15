@@ -107,6 +107,22 @@ public sealed class HistoryController : ControllerBase
         return this.Ok(result.Value.ToHttp());
     }
 
+    [HttpGet("park-items/{parkItemId}/availability")]
+    [AllowAnonymous]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+    public async Task<IActionResult> HasParkItemHistoryAsync([FromRoute] string parkItemId, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<HistoryTimelineResult> result = await this.getParkItemTimelineHandler.HandleAsync(
+            new GetParkItemHistoryTimelineQuery(parkItemId, this.UserCanSeeNonVisible(),
+                HistoryTimelinePaging.DefaultPage, HistoryTimelinePaging.DefaultPageSize), cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+        return this.Ok(result.Value.Events.Count > 0);
+    }
+
     [HttpGet("articles/{eventId}")]
     [AllowAnonymous]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]

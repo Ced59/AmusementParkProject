@@ -1,6 +1,7 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of, Subject, throwError } from 'rxjs';
+import { mapNearbyDestinationResponse } from '@data-access/parks/nearby-destination-response.mapper';
 import { NearbyDestination } from '@app/models/parks/nearby-destination';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
@@ -37,6 +38,47 @@ describe('NearbyDestinationsFacade', () => {
     expect(facade.cards()[0].card.shortDescription!.length).toBeLessThanOrEqual(140);
     expect(getNearby.mock.calls[0].slice(0, 3)).toEqual([kind, 'source', 4]);
     expect(getNearby.mock.calls[0][3].context.get(SKIP_AUTHORIZATION_HEADER)).toBe(true);
+  });
+
+  it('preserves the exact cards after compact transport for all languages and both measurement systems', () => {
+    const raw = mixedNearbyDestinations();
+    raw[0].standaloneAttraction!.descriptions = [{ languageCode: 'fr', value: '<p>1 <<b>2> 3</p>' }, { languageCode: 'en', value: '<p>An English card</p>' }];
+    getNearby.mockReturnValue(of(raw));
+    facade.load('Park', 'source');
+    const expected = new Map<string, ReturnType<typeof facade.cards>>();
+    const languages = ['en', 'fr', 'de', 'nl', 'it', 'es', 'pl', 'pt'];
+    const summaries = raw.map(() => [] as { languageCode: string; value: string }[]);
+    for (const language of languages) {
+      facade.setLanguage(language);
+      for (const system of ['Metric', 'Imperial'] as const) {
+        preference.set(system);
+        expected.set(`${language}:${system}`, facade.cards());
+      }
+      facade.cards().forEach((target, index) => summaries[index].push({ languageCode: language, value: target.card.shortDescription! }));
+    }
+    const compact = raw.map((target, index) => {
+      const entity = target.park ?? target.standaloneAttraction!;
+      return mapNearbyDestinationResponse({
+        kind: target.kind, id: entity.id!, name: entity.name!, countryCode: entity.countryCode ?? null,
+        city: entity.city ?? null, street: entity.street ?? null, postalCode: entity.postalCode ?? null,
+        latitude: entity.latitude ?? null, longitude: entity.longitude ?? null,
+        websiteUrl: target.park?.webSiteUrl ?? target.standaloneAttraction?.websiteUrl ?? null,
+        logoImageId: target.park?.currentLogoImageId ?? null, photoImageId: target.photoImageId ?? null,
+        parkStatus: target.park?.status ?? null, attractionStatus: target.standaloneAttraction?.attractionDetails?.status ?? null,
+        shortDescriptions: summaries[index], distanceKilometers: target.distanceKilometers,
+        estimatedTravelDurationMinutes: target.estimatedTravelDurationMinutes, proximityRank: target.proximityRank
+      });
+    });
+    getNearby.mockReturnValue(of(compact));
+    facade.load('Park', 'source');
+    for (const language of languages) {
+      facade.setLanguage(language);
+      for (const system of ['Metric', 'Imperial'] as const) {
+        preference.set(system);
+        expect(facade.cards()).toEqual(expected.get(`${language}:${system}`));
+      }
+    }
+    expect(getNearby).toHaveBeenCalledTimes(2);
   });
 
   it('updates distances and links without another request when units or language change', () => {

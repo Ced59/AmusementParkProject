@@ -241,7 +241,7 @@ public sealed class ImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp());
+        PagedResponseDto<ImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp(), pagination.IncludeItems);
         return this.Ok(response);
     }
 
@@ -261,7 +261,7 @@ public sealed class ImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ParkItemImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp());
+        PagedResponseDto<ParkItemImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp(), pagination.IncludeItems);
         return this.Ok(response);
     }
 
@@ -340,7 +340,7 @@ public sealed class ImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp());
+        PagedResponseDto<ImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp(), pagination.IncludeItems);
         return this.Ok(response);
     }
 

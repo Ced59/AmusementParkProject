@@ -98,7 +98,7 @@ public sealed class VideosController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<VideoDto> response = result.Value.ToPagedResponse(static video => video.ToHttp());
+        PagedResponseDto<VideoDto> response = result.Value.ToPagedResponse(static video => video.ToHttp(), pagination.IncludeItems);
         return this.Ok(response);
     }
 
@@ -142,7 +142,7 @@ public sealed class VideosController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ParkItemVideoDto> response = result.Value.ToPagedResponse(static videoValue => videoValue.ToHttp());
+        PagedResponseDto<ParkItemVideoDto> response = result.Value.ToPagedResponse(static videoValue => videoValue.ToHttp(), pagination.IncludeItems);
         return this.Ok(response);
     }
 

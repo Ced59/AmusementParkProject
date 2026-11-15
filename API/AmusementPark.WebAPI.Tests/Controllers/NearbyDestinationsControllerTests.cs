@@ -13,6 +13,61 @@ namespace AmusementPark.WebAPI.Tests.Controllers;
 
 public sealed class NearbyDestinationsControllerTests
 {
+    [Fact]
+    public async Task CardView_PreservesLanguagesAndVisibleFieldsWithoutNestedEntityData()
+    {
+        Park park = new Park { Id = "park", Name = "Disneyland", CountryCode = "US", City = "Anaheim", CurrentLogoImageId = "logo" };
+        park.SetPosition(33.8, -117.9);
+        foreach (string language in new[] { "en", "fr", "de", "nl", "it", "es", "pl", "pt" })
+        {
+            park.Descriptions.Add(new AmusementPark.Core.Localization.LocalizedText(language, "<p>" + new string('a', 200) + "</p>"));
+        }
+        NearbyDestinationResult[] targets = { new NearbyDestinationResult(park, null, 360.1, 240, 4) };
+        Mock<IQueryHandler<GetNearbyDestinationsQuery, ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>>> handler = new();
+        handler.Setup(queryHandler => queryHandler.HandleAsync(It.IsAny<GetNearbyDestinationsQuery>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>.Success(targets));
+        OkObjectResult result = Assert.IsType<OkObjectResult>(await new NearbyDestinationsController(handler.Object).GetAsync(
+            NearbyDestinationKind.Park, "source", cardView: true));
+        NearbyDestinationCardDto card = Assert.Single(Assert.IsType<NearbyDestinationCardDto[]>(result.Value));
+        Assert.Equal("park", card.Id);
+        Assert.Equal("Disneyland", card.Name);
+        Assert.Equal("logo", card.LogoImageId);
+        Assert.Equal("Operating", card.ParkStatus);
+        Assert.Equal(33.8, card.Latitude);
+        Assert.Equal(360.1, card.DistanceKilometers);
+        Assert.Equal(4, card.ProximityRank);
+        Assert.Equal(8, card.ShortDescriptions.Count);
+        Assert.All(card.ShortDescriptions, text => Assert.Equal(new string('a', 137) + "...", text.Value));
+        string json = System.Text.Json.JsonSerializer.Serialize(card);
+        Assert.DoesNotContain("AdminReviewStatus", json);
+        Assert.DoesNotContain("AttractionDetails", json);
+        Assert.True(json.Length < 2500);
+    }
+
+    [Fact]
+    public async Task CardView_PreservesStandaloneStatusPhotoAndAddressWithoutAccessConditionPayloads()
+    {
+        StandaloneAttraction attraction = new StandaloneAttraction
+        {
+            Id = "ride", Name = "SkyJump", CountryCode = "US", City = "Las Vegas", Street = "Strip",
+            AttractionDetails = new AttractionDetails { Status = "Operating" },
+        };
+        attraction.SetPosition(36.1, -115.1);
+        NearbyDestinationResult[] targets = { new NearbyDestinationResult(null, attraction, 1.65, 2, 1, "photo") };
+        Mock<IQueryHandler<GetNearbyDestinationsQuery, ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>>> handler = new();
+        handler.Setup(queryHandler => queryHandler.HandleAsync(It.IsAny<GetNearbyDestinationsQuery>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<IReadOnlyCollection<NearbyDestinationResult>>.Success(targets));
+        OkObjectResult result = Assert.IsType<OkObjectResult>(await new NearbyDestinationsController(handler.Object).GetAsync(
+            NearbyDestinationKind.Park, "source", cardView: true));
+        NearbyDestinationCardDto card = Assert.Single(Assert.IsType<NearbyDestinationCardDto[]>(result.Value));
+        Assert.Equal("StandaloneAttraction", card.Kind);
+        Assert.Equal("Operating", card.AttractionStatus);
+        Assert.Null(card.ParkStatus);
+        Assert.Equal("photo", card.PhotoImageId);
+        Assert.Equal("Strip", card.Street);
+        Assert.Equal(36.1, card.Latitude);
+    }
+
     [Theory]
     [InlineData(NearbyDestinationKind.Park)]
     [InlineData(NearbyDestinationKind.StandaloneAttraction)]

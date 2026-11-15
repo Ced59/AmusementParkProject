@@ -1,3 +1,4 @@
+import { resolveLocalizedValue } from '@shared/utils/localization';
 import { NearbyDestination } from '@app/models/parks/nearby-destination';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
@@ -35,6 +36,10 @@ export function mapNearbyDestinationToCard(
     longitude: attraction!.longitude!,
     descriptions: attraction!.descriptions
   }, language, countries, truncator);
+  if (target.shortDescriptions !== undefined) {
+    // Already formatted by the card transport; do not strip or truncate a second time.
+    card.shortDescription = resolveLocalizedValue(target.shortDescriptions, language) ?? null;
+  }
   if (attraction) {
     card.photoImageId = target.photoImageId?.trim() || null;
     card.statusLabelKey = getAttractionStatusValueKey(attraction.attractionDetails?.status);

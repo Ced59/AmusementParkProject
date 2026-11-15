@@ -1,4 +1,4 @@
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 import { HistoryTimeline } from '@app/models/history/history.models';
 
@@ -99,8 +99,8 @@ export class FakeHistoryPort implements ParkItemDetailHistoryPort {
   );
   public readonly calls: string[] = [];
 
-  getParkItemTimeline(parkItemId: string): Observable<HistoryTimeline> {
+  hasParkItemHistory(parkItemId: string): Observable<boolean> {
     this.calls.push(parkItemId);
-    return this.timelineResponse$;
+    return this.timelineResponse$.pipe(map(timeline => timeline.events.length > 0));
   }
 }

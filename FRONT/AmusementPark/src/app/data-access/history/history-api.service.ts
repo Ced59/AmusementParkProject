@@ -72,6 +72,11 @@ export class HistoryApiService {
     return this.getTimeline(url, options);
   }
 
+  hasParkItemHistory(parkItemId: string, options: HistoryHttpOptions = {}): Observable<boolean> {
+    const url: string = `${environment.apiBaseUrl}history/park-items/${encodeURIComponent(parkItemId)}/availability`;
+    return this.http.get<boolean>(url, options);
+  }
+
   getParkItemTimeline(parkItemId: string, options: HistoryHttpOptions = {}, page: number = 1): Observable<HistoryTimeline> {
     const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getParkItemTimeline(parkItemId, page)}`;
     return this.getTimeline(url, options);

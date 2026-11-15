@@ -384,12 +384,13 @@ describe('ParkDetailStateFacade', () => {
       {
         page: 1,
         size: 1,
+        includeItems: false,
         ownerType: VideoOwnerType.PARK,
         ownerId: 'park-1',
       },
     ]);
     expect(context.videosPort.itemVideoCalls).toEqual([
-      { parkId: 'park-1', query: { page: 1, size: 1 } },
+      { parkId: 'park-1', query: { page: 1, size: 1, includeItems: false } },
     ]);
     expect(context.parksPort.weatherCalls).toEqual([{ id: 'park-1', days: 7 }]);
     expect(context.parksPort.openingHoursCalls.length).toBe(1);

@@ -1,6 +1,20 @@
 {
-  "version": "6.0.39",
+  "version": "6.0.40",
   "history": [
+    {
+      "version": "6.0.40",
+      "releasedAt": "2026-11-15",
+      "labels": {
+        "fr": "Pages plus légères, expérience préservée",
+        "en": "Lighter pages, same experience",
+        "de": "Schlankere Seiten, gleiches Erlebnis",
+        "nl": "Lichtere pagina’s, dezelfde ervaring",
+        "it": "Pagine più leggere, stessa esperienza",
+        "es": "Páginas más ligeras, misma experiencia",
+        "pl": "Lżejsze strony, takie same wrażenia",
+        "pt": "Páginas mais leves, a mesma experiência"
+      }
+    },
     {
       "version": "6.0.39",
       "releasedAt": "2026-11-15",

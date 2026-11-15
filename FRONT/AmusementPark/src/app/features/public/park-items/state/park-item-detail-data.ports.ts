@@ -8,7 +8,6 @@ import { Park } from '@app/models/parks/park';
 import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
-import { HistoryTimeline } from '@app/models/history/history.models';
 import { TechnicalPage } from '@app/models/technical-pages/technical-page';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
@@ -60,7 +59,7 @@ export interface ParkItemDetailTechnicalPagesPort {
 }
 
 export interface ParkItemDetailHistoryPort {
-  getParkItemTimeline(parkItemId: string, options?: AnonymousHttpOptions): Observable<HistoryTimeline>;
+  hasParkItemHistory(parkItemId: string, options?: AnonymousHttpOptions): Observable<boolean>;
 }
 
 export const PARK_ITEM_DETAIL_ITEMS_PORT = new InjectionToken<ParkItemDetailItemsPort>('PARK_ITEM_DETAIL_ITEMS_PORT', {
