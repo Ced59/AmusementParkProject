@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/coaster-logo-followup/official-logo.png",
+    "kind": "Logo",
+    "source": {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/logo_pokeyland_dark.png",
+      "accessedAtUtc": "2026-11-15T10:52:17.688129+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/logo_pokeyland_dark.png",
+      "contentType": "image/png",
+      "bytes": 5112,
+      "sha256": "23f800db9bb711d221eb52bd1877903246898342b5f318f10fc8ff2cf120b6eb",
+      "file": "official-logo.png"
+    },
+    "width": 500,
+    "height": 120,
+    "mode": "P",
+    "hasTransparency": true,
+    "embeddedDateTimes": {},
+    "personallyViewed": true,
+    "locallyEdited": false,
+    "captureDate": null,
+    "creditQualification": "Published by Pokeyland; no individual photographer identified and no open licence claimed.",
+    "sourcePage": "https://www.pokeyland.com/activites/parc/la-pomme/",
+    "discovery": "Official header custom-logo and Organization structured logo both point to this exact standalone PNG.",
+    "visualDescription": "Dark POKEYLAND wordmark, orange stylized O/fox motif, small PARC DE LOISIRS above and NOTRE NATURE, C’EST L’AVENTURE below. Transparent background.",
+    "qualification": "Actual standalone official logo, not cropped from a card. 500x120 source size; do not upscale or reconstruct. The2022upload directory is not a proven adoption date."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/logo_pokeyland_dark.png",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/coaster-logo-followup/official-logo.png",
+      "Category": "LOGO",
+      "OwnerType": "PARK",
+      "OwnerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": true,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/01-logo-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/01-logo-import-result.json"
+  },
+  "metadata": {
+    "description": "Logo officiel utilisé sur le site de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/logo_pokeyland_dark.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Logo Pokeyland : nom sombre, lettre O orange stylisée et devise « Notre nature, c’est l’aventure »."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pokeyland logo with dark lettering, a stylised orange O and the French motto “Notre nature, c’est l’aventure”."
+      },
+      {
+        "languageCode": "de",
+        "value": "Pokeyland-Logo mit dunkler Schrift, stilisiertem orangefarbenem O und dem französischen Motto „Notre nature, c’est l’aventure“."
+      },
+      {
+        "languageCode": "es",
+        "value": "Logotipo de Pokeyland con letras oscuras, una O naranja estilizada y el lema francés « Notre nature, c’est l’aventure »."
+      },
+      {
+        "languageCode": "it",
+        "value": "Logo di Pokeyland con lettere scure, una O arancione stilizzata e il motto francese « Notre nature, c’est l’aventure »."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Pokeyland-logo met donkere letters, een gestileerde oranje O en het Franse motto “Notre nature, c’est l’aventure”."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Logo Pokeylandu z ciemnymi literami, stylizowanym pomarańczowym O i francuskim hasłem „Notre nature, c’est l’aventure”."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Logótipo do Pokeyland com letras escuras, um O laranja estilizado e o lema francês « Notre nature, c’est l’aventure »."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Logo officiel utilisé sur le site de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "Official logo used on the Pokeyland website."
+      },
+      {
+        "languageCode": "de",
+        "value": "Offizielles Logo auf der Website von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Logotipo oficial utilizado en el sitio web de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Logo ufficiale utilizzato sul sito di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Officieel logo op de website van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Oficjalne logo używane na stronie Pokeylandu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Logótipo oficial utilizado no sítio do Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland"
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland"
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T11:04:55.7273549Z",
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T11:04:47.9046684Z",
+    "result": {
+      "id": "c71e7771f1a247f5b9dbf49cf3c69aca",
+      "category": "LOGO",
+      "ownerType": "PARK",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "path": "logo/c71e7771f1a247f5b9dbf49cf3c69aca",
+      "description": "Logo officiel utilisé sur le site de Pokeyland.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 500,
+      "height": 120,
+      "sizeInBytes": 5112,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/logo_pokeyland_dark.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Logo Pokeyland : nom sombre, lettre O orange stylisée et devise « Notre nature, c’est l’aventure »."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland logo with dark lettering, a stylised orange O and the French motto “Notre nature, c’est l’aventure”."
+        },
+        {
+          "languageCode": "de",
+          "value": "Pokeyland-Logo mit dunkler Schrift, stilisiertem orangefarbenem O und dem französischen Motto „Notre nature, c’est l’aventure“."
+        },
+        {
+          "languageCode": "es",
+          "value": "Logotipo de Pokeyland con letras oscuras, una O naranja estilizada y el lema francés « Notre nature, c’est l’aventure »."
+        },
+        {
+          "languageCode": "it",
+          "value": "Logo di Pokeyland con lettere scure, una O arancione stilizzata e il motto francese « Notre nature, c’est l’aventure »."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Pokeyland-logo met donkere letters, een gestileerde oranje O en het Franse motto “Notre nature, c’est l’aventure”."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Logo Pokeylandu z ciemnymi literami, stylizowanym pomarańczowym O i francuskim hasłem „Notre nature, c’est l’aventure”."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Logótipo do Pokeyland com letras escuras, um O laranja estilizado e o lema francês « Notre nature, c’est l’aventure »."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Logo officiel utilisé sur le site de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Official logo used on the Pokeyland website."
+        },
+        {
+          "languageCode": "de",
+          "value": "Offizielles Logo auf der Website von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Logotipo oficial utilizado en el sitio web de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Logo ufficiale utilizzato sul sito di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Officieel logo op de website van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oficjalne logo używane na stronie Pokeylandu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Logótipo oficial utilizado no sítio do Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland"
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:04:49.147Z",
+      "updatedAt": "2026-11-15T11:04:52.614Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedFullNativeImage": true,
+    "officialStandaloneLogo": true,
+    "noCropRecreationOrUpscale": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "uploadDirectoryNotIdentityAdoptionDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "dateRecorded": "APIresult.createdAt actual importUTC; receivedAt not substituted. updatedAt retained in receipt for metadata processing.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

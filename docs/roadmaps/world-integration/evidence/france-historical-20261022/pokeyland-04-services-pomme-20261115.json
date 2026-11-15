@@ -1,0 +1,1477 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-services-and-pomme",
+        "step": "03-food-services-and-existing-coaster",
+        "notes": "16named current places from official currentfood/services/map, no adjacent thirdpartyrestaurants/campground included. Picnic is officialservice acrossparking/accrobranche edge, no interiorGPSor inventedbuilding. Sanitaires groups several officialmapWC icons; no inventeduniquephysicalpoint. PokeyBeach named mapfoodslot9, historicalPokeyPlage equivalence still research. ExistingPomme kept sameID and manufacturer; officialLaPomme name variant is not a newride or datedrename. CaptainCoaster opening05/04/2025 and RCDB22635 time datetime2025-04-05 correct inherited2025-05-04. RCDBphoto copy_date2025-05-04 is separate; cause of oldbadimport not asserted. Mapexplicit92–120cm kept as source limits, no accompanimentrule invented. Allnewplaces private; no descriptions/media/GPSinferred."
+      },
+      "items": [
+        {
+          "key": "pokeyland-petit-creux",
+          "name": "Le Petit Creux",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/restauration/"
+          }
+        },
+        {
+          "key": "pokeyland-gourmand",
+          "name": "Le Gourmand",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/restauration/"
+          }
+        },
+        {
+          "key": "pokeyland-grill",
+          "name": "Le Grill",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/restauration/"
+          }
+        },
+        {
+          "key": "pokeyland-escale",
+          "name": "L’Escale",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/restauration/"
+          }
+        },
+        {
+          "key": "pokeyland-pokey-beach",
+          "name": "Pokey Beach",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-accueil",
+          "name": "Caisse d’accueil",
+          "category": "Service",
+          "type": "Information",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-salle-seminaire",
+          "name": "Salle de séminaire",
+          "category": "Service",
+          "type": "Service",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-peche-pokey",
+          "name": "La Pêche de Pokey",
+          "category": "Attraction",
+          "type": "Game",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-salle-arcade",
+          "name": "Salle d’arcade",
+          "category": "Attraction",
+          "type": "Game",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-scene-pokeyshow",
+          "name": "Scène Pokeyshow",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-accueil-accrobranche",
+          "name": "Accueil accrobranche",
+          "category": "Service",
+          "type": "Information",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+        },
+        {
+          "key": "pokeyland-parkings",
+          "name": "Parkings",
+          "category": "Service",
+          "type": "Parking",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
+          }
+        },
+        {
+          "key": "pokeyland-poste-secours",
+          "name": "Poste de secours",
+          "category": "Service",
+          "type": "FirstAid",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
+          }
+        },
+        {
+          "key": "pokeyland-aires-pique-nique",
+          "name": "Aires de pique-nique",
+          "category": "Service",
+          "type": "Service",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
+          }
+        },
+        {
+          "key": "pokeyland-casiers",
+          "name": "Casiers",
+          "category": "Service",
+          "type": "Locker",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
+          }
+        },
+        {
+          "key": "pokeyland-sanitaires",
+          "name": "Sanitaires",
+          "category": "Service",
+          "type": "Toilets",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          }
+        },
+        {
+          "key": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+          "id": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+          "name": "La Pomme",
+          "category": "Attraction",
+          "type": "RollerCoaster",
+          "attractionDetails": {
+            "manufacturerId": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
+            "openingDate": "2025-04-05",
+            "openingDateText": "2025-04-05",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 92,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              },
+              {
+                "type": "MaxHeight",
+                "value": 120,
+                "unit": "Centimeter",
+                "displayOrder": 2
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "46a3c34d-32a9-484d-aa63-70cea470e16f",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:59:35.0251784Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 16,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fff2f890-2c58-40b1-92e7-601c2c27653d",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/restauration/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6c982aa3-7bae-4fc3-aad0-ed6af4b8121d",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/restauration/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "938304c6-e090-437a-b415-3c561ed394dd",
+        "entityKey": "pokeyland-grill",
+        "displayName": "Le Grill",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/restauration/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "893878d7-25fb-4ef6-a7f4-c53d85f020c4",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/restauration/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e1c5e97f-ad8a-48c0-8a03-0891df054d16",
+        "entityKey": "pokeyland-pokey-beach",
+        "displayName": "Pokey Beach",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1eaeec45-4557-4f9c-aa2c-b9541aebcd01",
+        "entityKey": "pokeyland-accueil",
+        "displayName": "Caisse d’accueil",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Information"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fdc65e8c-1881-42bb-8fdc-1f0d0d0fbe13",
+        "entityKey": "pokeyland-salle-seminaire",
+        "displayName": "Salle de séminaire",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b192a015-aa8b-4380-b11a-183232ec5e85",
+        "entityKey": "pokeyland-peche-pokey",
+        "displayName": "La Pêche de Pokey",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "543353ac-c06d-4c2c-bcb5-3bcb115dc107",
+        "entityKey": "pokeyland-salle-arcade",
+        "displayName": "Salle d’arcade",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3dd8cc88-b8aa-4194-8566-4b04af76e8f0",
+        "entityKey": "pokeyland-scene-pokeyshow",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4d209453-43a1-4a0d-afd1-023ca4188ecd",
+        "entityKey": "pokeyland-accueil-accrobranche",
+        "displayName": "Accueil accrobranche",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Information"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2a2fe00f-5fd4-4d87-ac84-101f3c4c7ee9",
+        "entityKey": "pokeyland-parkings",
+        "displayName": "Parkings",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Parking"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/services-a-disposition/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c11449b7-c8d6-4416-8e54-d2d3fe8f9675",
+        "entityKey": "pokeyland-poste-secours",
+        "displayName": "Poste de secours",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FirstAid"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/services-a-disposition/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "91cb60de-b105-4ae2-95da-515c1eb3002c",
+        "entityKey": "pokeyland-aires-pique-nique",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/services-a-disposition/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2a1f5bb4-3dda-40b2-ad4a-cd5d9ed13047",
+        "entityKey": "pokeyland-casiers",
+        "displayName": "Casiers",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Locker"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/services-a-disposition/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "358b81f8-b889-40a8-a6fd-954850c37725",
+        "entityKey": "pokeyland-sanitaires",
+        "displayName": "Sanitaires",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Toilets"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "Pomme",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "name",
+            "oldValue": "Pomme",
+            "newValue": "La Pomme"
+          },
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": "2025-05-04",
+            "newValue": "2025-04-05"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2025-04-05"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||92|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||120|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "236afdf0-df03-4629-bedd-accfc4516062",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:59:59.147837Z",
+    "appliedAtUtc": "2026-11-15T10:59:59.1478384Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 16,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/restauration/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/restauration/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "pokeyland-grill",
+        "displayName": "Le Grill",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/restauration/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/restauration/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+        "entityKey": "pokeyland-pokey-beach",
+        "displayName": "Pokey Beach",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "entityKey": "pokeyland-accueil",
+        "displayName": "Caisse d’accueil",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Information"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "entityKey": "pokeyland-salle-seminaire",
+        "displayName": "Salle de séminaire",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+        "entityKey": "pokeyland-peche-pokey",
+        "displayName": "La Pêche de Pokey",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+        "entityKey": "pokeyland-salle-arcade",
+        "displayName": "Salle d’arcade",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "pokeyland-scene-pokeyshow",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+        "entityKey": "pokeyland-accueil-accrobranche",
+        "displayName": "Accueil accrobranche",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Information"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "entityKey": "pokeyland-parkings",
+        "displayName": "Parkings",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Parking"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/services-a-disposition/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+        "entityKey": "pokeyland-poste-secours",
+        "displayName": "Poste de secours",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FirstAid"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/services-a-disposition/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "entityKey": "pokeyland-aires-pique-nique",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/services-a-disposition/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+        "entityKey": "pokeyland-casiers",
+        "displayName": "Casiers",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Locker"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/services-a-disposition/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+        "entityKey": "pokeyland-sanitaires",
+        "displayName": "Sanitaires",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Toilets"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "Pomme",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "name",
+            "oldValue": "Pomme",
+            "newValue": "La Pomme"
+          },
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": "2025-05-04",
+            "newValue": "2025-04-05"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2025-04-05"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||92|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||120|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coasterResearch": {
+    "createdAtUtc": "2026-11-15T10:55:59.850419+00:00",
+    "scope": "Public source research only. No PARK_DATA_EDITOR, Git, registry, reservation, import, retouching or publication.",
+    "identity": {
+      "park": "Pokeyland",
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "itemIdReadFromTargetedIntake": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "currentOfficialName": "La Pomme",
+      "databaseName": "Pomme",
+      "captainCoasterId": "6501",
+      "rcdbId": "22635",
+      "manufacturer": "Güven Amusement Rides Factory",
+      "model": "Brucomela",
+      "manufacturerIdReadFromTargetedIntake": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b"
+    },
+    "openingDateAssessment": {
+      "inheritedValue": "2025-05-04T00:00:00Z",
+      "supportedValue": "2025-04-05",
+      "evidence": [
+        {
+          "source": {
+            "url": "https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme",
+            "accessedAtUtc": "2026-11-15T10:52:33.216664+00:00",
+            "status": 200,
+            "finalUrl": "https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme",
+            "contentType": "text/html; charset=UTF-8",
+            "bytes": 87831,
+            "sha256": "1561201cb8c4e848847277bf9e87b90035a3c3aeea2beb392779b0e1dee237a6",
+            "file": "captain-pomme.html"
+          },
+          "field": "Ouverture",
+          "verbatimValue": "05/04/2025",
+          "interpretation": "French date display:5April2025. This is explicitly the opening field, not a review or visit date."
+        },
+        {
+          "source": {
+            "url": "https://rcdb.com/22635.htm",
+            "accessedAtUtc": "2026-11-15T10:52:15.316538+00:00",
+            "status": 200,
+            "finalUrl": "https://rcdb.com/22635.htm",
+            "contentType": "text/html; charset=UTF-8",
+            "bytes": 63422,
+            "sha256": "10cc3bcacbe94fcf5f055d6da797cb0904eb051373f2164841483f5a6f4e9f5a",
+            "file": "rcdb-pomme.html"
+          },
+          "field": "Operating since / time datetime",
+          "verbatimValue": "2025-04-05",
+          "interpretation": "Machine-readable unambiguous ISO date embedded in the public HTML."
+        },
+        {
+          "source": {
+            "url": "https://coasterpedia.net/wiki/Pomme_%28Pokeyland%29",
+            "accessedAtUtc": "2026-11-15T10:52:16.203021+00:00",
+            "status": 200,
+            "finalUrl": "https://coasterpedia.net/wiki/Pomme_%28Pokeyland%29",
+            "contentType": "text/html; charset=UTF-8",
+            "bytes": 91404,
+            "sha256": "206122916fe821287e806aea4f003ce211cdc25665bf6b50adf04b52dab89957",
+            "file": "coasterpedia-pomme.html"
+          },
+          "field": "Opened",
+          "verbatimValue": "5 April2025",
+          "interpretation": "Explicit secondary-database opening date; its external reference points to RCDB, so do not count as wholly independent corroboration."
+        },
+        {
+          "source": {
+            "url": "https://www.directfm.fr/lorraine-le-parc-pokeyland-s-agrandit-en-2025",
+            "accessedAtUtc": "2026-11-15T10:53:49.208594+00:00",
+            "status": 200,
+            "finalUrl": "https://www.directfm.fr/lorraine-le-parc-pokeyland-s-agrandit-en-2025",
+            "contentType": "text/html; charset=utf-8",
+            "bytes": 54145,
+            "sha256": "d73a25d3ae9aaeb24bf4aa1a232a29499f8d16f49c131bf6c3ed47aadb61b895",
+            "file": "news-directfm-new2025.html"
+          },
+          "field": "Season / new ride zone announcement",
+          "verbatimValue": "Opening planned for5April2025",
+          "interpretation": "Contemporary17January2025 article names a chenille pomme among the forthcoming rides, but a planned park opening alone is not proof the individual coaster ran that day."
+        }
+      ],
+      "photoDate": {
+        "value": "2025-05-04",
+        "source": "rcdb-pomme.html embedded photo metadata",
+        "photoIds": [
+          148812,
+          148813
+        ],
+        "credit": "Max Korzonnek",
+        "field": "copy_date",
+        "meaning": "Photo attribution date; not an opening date and not necessarily a independently verified capture day."
+      },
+      "conclusion": "The inherited4May2025 date conflicts with the currently linked CaptainCoaster opening field and the explicit RCDB ISO opening date. It coincides with RCDB photo copy_date.5April2025 is the supported database opening date. The mechanism of the old bad import is not proven: do not assert a particular date-parser bug or that a photo date was definitely copied.",
+      "remainingLimit": "No separate official first-day operating receipt found. Keep database sources named rather than presenting the January announcement as retrospective proof."
+    },
+    "manufacturerAssessment": {
+      "specificRideSources": [
+        "captain-pomme.html",
+        "rcdb-pomme.html"
+      ],
+      "primaryModelSource": {
+        "url": "https://guvenlunapark.com/pdf/Brucomela.pdf",
+        "accessedAtUtc": "2026-11-15T10:53:51.918657+00:00",
+        "status": 200,
+        "finalUrl": "https://guvenlunapark.com/pdf/Brucomela.pdf",
+        "contentType": "application/pdf",
+        "bytes": 1226836,
+        "sha256": "4c586761be108b72ba3c2a1b4c9f27b6c9cbb4755576e81c2a878a92a597d80d",
+        "file": "manufacturer-brucomela.pdf"
+      },
+      "modelEvidence": "Official Güven product sheet is titled Brucomela. It describes a family coaster with6carriages/24seats and notes that track length and carriage count may be customized.",
+      "decision": "Manufacturer attribution is directly given by CaptainCoaster and RCDB, not inferred from caterpillar styling. The manufacturer PDF supports the model name but does not identify this individual delivered installation.",
+      "doNotTranspose": "The brochure’s138m rail length,4.5m height and other generic specifications must not be assigned to Pokeyland without installation-specific confirmation."
+    },
+    "namesAndStatus": {
+      "nameEquivalence": "Official page and2026map use La Pomme; CaptainCoaster andRCDB use Pomme for the same Pokeyland coaster. The leading article is a naming variant, not a second attraction.",
+      "statusEvidence": [
+        "Current official activity page and2026map include LaPomme.",
+        "CaptainCoaster says En fonctionnement and lists1coaster atPokeyland.",
+        "RCDB park22634 lists1operating coaster, Pomme."
+      ],
+      "statusLimit": "Operating as a seasonal inventory classification does not assert the ride is physically open on15November. Operator judicial reorganisation is not proof of permanent coaster closure.",
+      "notEstablished": [
+        "No proven former ride name beyond Pomme/LaPomme.",
+        "Brucomela is a model name; BigApple/WackyWorm is a family/layout label, not automatically a previous local name.",
+        "No proven year of manufacture or earlier travelling itinerary.",
+        "RCDB says from BernardAmusement travelling company; Coasterpedia calls it onloan. These do not establish a legal loan contract, ownership transfer date, or every previous fair location."
+      ],
+      "homonymsExcluded": [
+        "Pomme atParcSaintPaul",
+        "GrossePomme atWinnoland",
+        "Pomme/Brucomela/TraineauduPèreNoël ofWilliamBourez",
+        "1001Pattes/Pomme ofGuevar"
+      ]
+    },
+    "mediaInventory": "official-photo-logo-inventory.json",
+    "secondaryMediaInventory": "secondary-photo-source-inventory.json",
+    "sourceFiles": [
+      "captain-pomme.html",
+      "rcdb-pomme.html",
+      "rcdb-pokeyland.html",
+      "coasterpedia-pomme.html",
+      "news-directfm-new2025.html",
+      "manufacturer-brucomela.pdf",
+      "coastersworld-2025.html"
+    ],
+    "forumQualification": "CoastersWorld records arrival inMarch2025 and links an official Facebook post. This is a lead only: arrival is not public opening, and forum speculation about purchase/loan is not ownership proof.",
+    "officialPageAlreadySaved": "../activity-la-pomme.html",
+    "reviewBoundary": "One official real photo and one standalone official logo were downloaded and personally viewed. Five CaptainCoaster photo URLs and two RCDB original URLs are inventoried but their binaries are not fetched or accepted for import."
+  },
+  "currentInventoryAdded": 16,
+  "totalItems": 57,
+  "personalReview": "Food/services officialpages and fullmap reviewed. RCDB opening ISO2025-04-05 separately inspected fromphoto copy_date2025-05-04; CaptainCoasterFrench05/04/2025 crosschecked. ExistingcoasterID/manufacturer retained, no duplicate.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

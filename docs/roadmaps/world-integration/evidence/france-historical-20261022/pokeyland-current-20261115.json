@@ -112,15 +112,15 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T10:57:26.5722096Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T11:08:33.783672Z",
   "newApplyPerformed": true,
-  "newPhotoImported": false,
+  "newPhotoImported": true,
   "fullAuditExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Complete food/services and historical inventory, correct Pomme opening date from current CaptainCoaster/RCDB sources, founder research, then personal8-language editorial work and media. Singlefullaudit not performed; no publication.",
+  "nextAction": "Historical inventory qualification, eight-language zone/item descriptions, genuinephotos/maps/currentcalendar/pricing/history, then onlysinglefullaudit. GPSresearch and Vulcanianextdossierpublicresearch active in agents, rootexclusiveAPI. ExistingPomme corrected5April2025 preservingID. FounderBrunoPoquet ID6fc80030-d7d3-420b-b2ca-3093af8d4104, operatorf3164e8b-dcbf-4019-a2e1-e2fd27a27f01. Prepare-references helper has initial operator.biography error; finaldocument uses description and is authoritative.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -136,13 +136,38 @@
       "proof": "pokeyland-03-adventures-20261115.json",
       "operationId": "626eaae6-6df0-4e0e-8bca-8cdf8c4f4e85",
       "appliedAtUtc": "2026-11-15T10:57:26.5722096Z"
+    },
+    {
+      "proof": "pokeyland-04-services-pomme-20261115.json",
+      "operationId": "236afdf0-df03-4629-bedd-accfc4516062",
+      "appliedAtUtc": "2026-11-15T10:59:59.1478384Z"
+    },
+    {
+      "proof": "pokeyland-05-references-20261115.json",
+      "operationId": "e4866cf7-2f6c-44c5-9a6c-01a0ff87f643",
+      "appliedAtUtc": "2026-11-15T11:03:21.0597255Z"
+    },
+    {
+      "proof": "pokeyland-06-park-description-20261115.json",
+      "operationId": "b3a1ae1b-bfed-4bcc-8835-365f5d3d898e",
+      "appliedAtUtc": "2026-11-15T11:08:33.783672Z"
     }
   ],
   "currentCounts": {
-    "items": 41,
+    "items": 57,
     "publicItems": 0,
     "zones": 3,
-    "media": 0,
-    "descriptions": 0
-  }
+    "media": 1,
+    "privateLogo": true,
+    "parkDescribedLanguages": 8,
+    "itemsDescribed": 0,
+    "referenceLocalizedTexts": 16
+  },
+  "imports": [
+    {
+      "proof": "pokeyland-logo-20261115.json",
+      "imageId": "c71e7771f1a247f5b9dbf49cf3c69aca",
+      "createdAtUtc": "2026-11-15T11:04:49.147Z"
+    }
+  ]
 }

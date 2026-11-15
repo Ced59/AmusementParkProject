@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T10:57:26.572Z",
+      "lastDataIntegrationAt": "2026-11-15T11:08:33.783Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33038,6 +33038,46 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-03-adventures-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland :3zones et15lieux privés créés depuis les pages officielles et le plan :9parcours accrobranche,5terrains paintball,1Waterjump. Total41lieux; restauration, services et histoire à poursuivre."
+        },
+        {
+          "eventId": "apply-236afdf0-df03-4629-bedd-accfc4516062",
+          "appliedAt": "2026-11-15T10:59:59.147Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-04-services-pomme-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland :16lieux de restauration/services/jeux créés privés. Pomme existante rapprochée comme LaPomme, ouverture corrigée au5avril2025 selon CaptainCoaster/RCDB, distincte des photos datées4mai.57lieux privés, auditnonterminé."
+        },
+        {
+          "eventId": "apply-e4866cf7-2f6c-44c5-9a6c-01a0ff87f643",
+          "appliedAt": "2026-11-15T11:03:21.059Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-05-references-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland :fondateur BrunoPoquet résolu et rattaché;16textes personnels huitlangues fondateur/exploitant intégrés. NicolasPoquet et NicolasVosgien distincts, vente2023/direction2024/redressement2026 séparés; aucunepublicationduparc."
+        },
+        {
+          "eventId": "import-photo-c71e7771f1a247f5b9dbf49cf3c69aca",
+          "appliedAt": "2026-11-15T11:04:49.147Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-logo-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland :logo officiel autonome natif500×120 importéprivé, déclaré logo courant,24métadonnées huitlangues relues. Aucunrecadrage,agrandissement,dateidentitéinventée ou publication."
+        },
+        {
+          "eventId": "apply-b3a1ae1b-bfed-4bcc-8835-365f5d3d898e",
+          "appliedAt": "2026-11-15T11:08:33.783Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-06-park-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé :description parc huitlangues personnellement rédigée/relue,3intertitres6paragraphes par langue,279–343mots. Forêt/décorspaintball/accrobranche/eau/manèges décrits sans horaires/restrictions/datesouverture ni remplissage."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

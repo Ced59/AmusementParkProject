@@ -1,0 +1,773 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-references",
+        "step": "01-founder-and-04-reference-biographies",
+        "notes": "Root personally authored/reviewed16texts. Bruno is father/projectinitiator, not asserted exclusivefounder; NicolasPoquet and NicolasVosgien distinct. SourcesLoractu13Apr2017/BODACC14Jul2015p34/MOSL1Jul2024/BODACCsaleandOct2026judgment. No birthdate, portrait, foundedYear or legaldissolution invented. OperatorID created in this sameparkcampaign, biography scoped explicitly to verifiedPokeyland business, no unrelatedcompanyclaim. Newfounder/privatepark preserve review state; operator has description field and review status, no operator visibility field claimed.2023sale differs2024direction,2026receivership differsclosure,2027reopening remainsintent."
+      },
+      "park": {
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "founderKey": "bruno-poquet-pokeyland"
+      },
+      "references": {
+        "founders": [
+          {
+            "key": "bruno-poquet-pokeyland",
+            "name": "Bruno Poquet",
+            "biography": [
+              {
+                "languageCode": "fr",
+                "value": "<h2>Le projet familial de Féy</h2><p>Bruno Poquet est à l’origine du projet familial devenu Pokeyland, ouvert au public le 20 juin 2015 dans la forêt de Féy, en Moselle. L’achat de cette parcelle boisée précède la création d’un parc où les activités de plein air côtoient des terrains de paintball aux décors élaborés.</p><p>Bruno préside la société exploitante historique, tandis que son fils Nicolas Poquet participe à son développement et dirige le parc. La famille cède le fonds à Bernard-Amusement par un acte du 29 novembre 2023. Nicolas accompagne ensuite la transition, jusqu’au changement de direction opérationnelle de décembre 2024.</p>"
+              },
+              {
+                "languageCode": "en",
+                "value": "<h2>The family project in Féy</h2><p>Bruno Poquet initiated the family project that became Pokeyland, which opened to the public on 20 June 2015 in the woodland of Féy, Moselle. The purchase of this wooded site preceded the creation of a park combining outdoor activities with elaborately themed paintball fields.</p><p>Bruno chaired the original operating company, while his son Nicolas Poquet helped develop the business and managed the park. The family sold the business to Bernard-Amusement under a deed signed on 29 November 2023. Nicolas then supported the transition until the change in operational management in December 2024.</p>"
+              },
+              {
+                "languageCode": "de",
+                "value": "<h2>Das Familienprojekt in Féy</h2><p>Bruno Poquet gab den Anstoß zu dem Familienprojekt, aus dem Pokeyland hervorging. Der Park im Wald von Féy im Département Moselle öffnete am 20. Juni 2015 für Besucher. Nach dem Kauf des bewaldeten Grundstücks entstand ein Freizeitpark, der Aktivitäten im Freien mit aufwendig gestalteten Paintballgeländen verband.</p><p>Bruno stand der ursprünglichen Betreibergesellschaft vor. Sein Sohn Nicolas Poquet wirkte am Ausbau mit und leitete den Park. Mit einem Vertrag vom 29. November 2023 verkaufte die Familie den Geschäftsbetrieb an Bernard-Amusement. Nicolas begleitete den Übergang bis zum Wechsel der operativen Leitung im Dezember 2024.</p>"
+              },
+              {
+                "languageCode": "es",
+                "value": "<h2>El proyecto familiar de Féy</h2><p>Bruno Poquet impulsó el proyecto familiar que dio origen a Pokeyland, abierto al público el 20 de junio de 2015 en el bosque de Féy, en Mosela. La compra de este terreno arbolado precedió a la creación de un parque que combinaba actividades al aire libre con campos de paintball de cuidada ambientación.</p><p>Bruno presidía la sociedad operadora original, mientras su hijo Nicolas Poquet participaba en el desarrollo y dirigía el parque. La familia vendió el negocio a Bernard-Amusement mediante un contrato del 29 de noviembre de 2023. Nicolas acompañó la transición hasta el cambio de dirección operativa en diciembre de 2024.</p>"
+              },
+              {
+                "languageCode": "it",
+                "value": "<h2>Il progetto familiare di Féy</h2><p>Bruno Poquet avviò il progetto familiare da cui nacque Pokeyland, aperto al pubblico il 20 giugno 2015 nel bosco di Féy, nella Mosella. L’acquisto del terreno alberato precedette la creazione di un parco che univa attività all’aperto e campi da paintball dalle scenografie curate.</p><p>Bruno presiedeva la società di gestione originaria, mentre il figlio Nicolas Poquet contribuiva allo sviluppo e dirigeva il parco. La famiglia cedette l’attività a Bernard-Amusement con un atto del 29 novembre 2023. Nicolas accompagnò poi la transizione fino al cambio della direzione operativa nel dicembre 2024.</p>"
+              },
+              {
+                "languageCode": "nl",
+                "value": "<h2>Het familieproject in Féy</h2><p>Bruno Poquet nam het initiatief voor het familieproject waaruit Pokeyland ontstond. Het park in het bos van Féy, in Moselle, ging op 20 juni 2015 open voor bezoekers. Na de aankoop van het beboste terrein ontstond een park met buitenactiviteiten en uitvoerig aangeklede paintballterreinen.</p><p>Bruno was voorzitter van de oorspronkelijke exploitatiemaatschappij. Zijn zoon Nicolas Poquet werkte mee aan de ontwikkeling en leidde het park. De familie verkocht het bedrijf aan Bernard-Amusement met een akte van 29 november 2023. Nicolas begeleidde vervolgens de overgang tot de wisseling van de dagelijkse leiding in december 2024.</p>"
+              },
+              {
+                "languageCode": "pl",
+                "value": "<h2>Rodzinny projekt w Féy</h2><p>Bruno Poquet zapoczątkował rodzinny projekt, z którego powstał Pokeyland. Park w lesie w Féy, w departamencie Mozela, otwarto dla zwiedzających 20 czerwca 2015 roku. Zakup zalesionej działki poprzedził stworzenie miejsca łączącego aktywności na świeżym powietrzu z rozbudowaną scenografią pól paintballowych.</p><p>Bruno był prezesem pierwotnej spółki prowadzącej park, a jego syn Nicolas Poquet uczestniczył w rozwoju przedsięwzięcia i kierował parkiem. Rodzina sprzedała działalność firmie Bernard-Amusement na mocy aktu z 29 listopada 2023 roku. Nicolas wspierał następnie okres przejściowy, aż do zmiany kierownictwa operacyjnego w grudniu 2024 roku.</p>"
+              },
+              {
+                "languageCode": "pt",
+                "value": "<h2>O projeto familiar de Féy</h2><p>Bruno Poquet iniciou o projeto familiar que deu origem ao Pokeyland, aberto ao público em 20 de junho de 2015 na floresta de Féy, na Mosela. A compra deste terreno arborizado antecedeu a criação de um parque que combinava atividades ao ar livre com campos de paintball de cenários elaborados.</p><p>Bruno presidia à sociedade exploradora original, enquanto o seu filho Nicolas Poquet participava no desenvolvimento e dirigia o parque. A família vendeu o negócio à Bernard-Amusement por um ato de 29 de novembro de 2023. Nicolas acompanhou depois a transição até à mudança da direção operacional em dezembro de 2024.</p>"
+              }
+            ],
+            "isVisible": false,
+            "adminReviewStatus": "ToReview"
+          }
+        ],
+        "operators": [
+          {
+            "key": "bernard-amusement-pokeyland",
+            "id": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+            "name": "BERNARD-AMUSEMENT",
+            "description": [
+              {
+                "languageCode": "fr",
+                "value": "<h2>De la Belgique à Pokeyland</h2><p>Bernard-Amusement est une société belge devenue exploitante de Pokeyland, à Féy. Elle acquiert le fonds de commerce de la société Pokeyland par un acte du 29 novembre 2023. Cette reprise précède le renouvellement complet de la direction opérationnelle en décembre 2024, après une période de transition accompagnée par Nicolas Poquet.</p><p>Le développement des manèges élargit alors l’offre du parc forestier, avec notamment La Pomme parmi les arrivées de 2025. Le 1er octobre 2026, Bernard-Amusement est placée en redressement judiciaire. La poursuite de l’activité et une réouverture du parc en 2027 restent les objectifs annoncés ; cette dernière n’est pas encore réalisée.</p>"
+              },
+              {
+                "languageCode": "en",
+                "value": "<h2>From Belgium to Pokeyland</h2><p>Bernard-Amusement is a Belgian company that became the operator of Pokeyland in Féy. It acquired the park business from the company Pokeyland under a deed dated 29 November 2023. The takeover preceded the full change in operational management in December 2024, following a transition supported by Nicolas Poquet.</p><p>The expansion of the ride offering broadened the woodland park’s attractions, with La Pomme among the arrivals in 2025. On 1 October 2026, Bernard-Amusement entered court-supervised reorganisation. Continuing the business and reopening the park in 2027 remain the stated aims; that reopening has not yet taken place.</p>"
+              },
+              {
+                "languageCode": "de",
+                "value": "<h2>Von Belgien nach Pokeyland</h2><p>Bernard-Amusement ist ein belgisches Unternehmen, das den Betrieb von Pokeyland in Féy übernahm. Mit einem Vertrag vom 29. November 2023 erwarb es den Geschäftsbetrieb von der Gesellschaft Pokeyland. Nach einer von Nicolas Poquet begleiteten Übergangszeit wechselte im Dezember 2024 auch die operative Leitung vollständig.</p><p>Zusätzliche Fahrgeschäfte erweiterten das Angebot des Waldparks; zu den Neuzugängen 2025 gehörte La Pomme. Am 1. Oktober 2026 wurde für Bernard-Amusement ein gerichtliches Sanierungsverfahren eröffnet. Die Fortführung des Betriebs und eine Wiedereröffnung des Parks 2027 bleiben die erklärten Ziele; diese Wiedereröffnung hat noch nicht stattgefunden.</p>"
+              },
+              {
+                "languageCode": "es",
+                "value": "<h2>De Bélgica a Pokeyland</h2><p>Bernard-Amusement es una sociedad belga que pasó a explotar Pokeyland, en Féy. Adquirió el negocio de la sociedad Pokeyland mediante un contrato del 29 de noviembre de 2023. La compra precedió al relevo completo de la dirección operativa en diciembre de 2024, tras una transición acompañada por Nicolas Poquet.</p><p>La incorporación de más atracciones mecánicas amplió la oferta del parque forestal, con La Pomme entre las llegadas de 2025. El 1 de octubre de 2026, Bernard-Amusement entró en un procedimiento judicial de reorganización. Continuar la actividad y reabrir el parque en 2027 siguen siendo los objetivos anunciados; esa reapertura aún no se ha producido.</p>"
+              },
+              {
+                "languageCode": "it",
+                "value": "<h2>Dal Belgio a Pokeyland</h2><p>Bernard-Amusement è una società belga diventata gestore di Pokeyland, a Féy. Ha acquisito l’attività della società Pokeyland con un atto del 29 novembre 2023. Il passaggio ha preceduto il completo rinnovo della direzione operativa nel dicembre 2024, dopo una transizione accompagnata da Nicolas Poquet.</p><p>L’arrivo di altre giostre ha ampliato l’offerta del parco nel bosco, con La Pomme fra le novità del 2025. Il 1º ottobre 2026, Bernard-Amusement è stata sottoposta a una procedura giudiziaria di risanamento. Proseguire l’attività e riaprire il parco nel 2027 restano gli obiettivi annunciati; questa riapertura non è ancora avvenuta.</p>"
+              },
+              {
+                "languageCode": "nl",
+                "value": "<h2>Van België naar Pokeyland</h2><p>Bernard-Amusement is een Belgische onderneming die de exploitatie van Pokeyland in Féy overnam. Met een akte van 29 november 2023 kocht zij de parkactiviteiten van de vennootschap Pokeyland. Na een door Nicolas Poquet begeleide overgang volgde in december 2024 de volledige wisseling van de dagelijkse leiding.</p><p>Meer attracties breidden het aanbod van het bospark uit, met La Pomme als een van de aanwinsten in 2025. Op 1 oktober 2026 kwam Bernard-Amusement onder gerechtelijke reorganisatie te staan. Het bedrijf voortzetten en het park in 2027 heropenen blijven de aangekondigde doelen; die heropening heeft nog niet plaatsgevonden.</p>"
+              },
+              {
+                "languageCode": "pl",
+                "value": "<h2>Z Belgii do Pokeylandu</h2><p>Bernard-Amusement to belgijska spółka, która została operatorem Pokeylandu w Féy. Na mocy aktu z 29 listopada 2023 roku nabyła działalność parku od spółki Pokeyland. Po okresie przejściowym wspieranym przez Nicolasa Poqueta w grudniu 2024 roku nastąpiła pełna zmiana kierownictwa operacyjnego.</p><p>Kolejne urządzenia rozrywkowe poszerzyły ofertę leśnego parku; wśród nowości z 2025 roku znalazła się La Pomme. 1 października 2026 roku Bernard-Amusement objęto sądowym postępowaniem naprawczym. Kontynuacja działalności i ponowne otwarcie parku w 2027 roku pozostają zapowiedzianymi celami; do tego otwarcia jeszcze nie doszło.</p>"
+              },
+              {
+                "languageCode": "pt",
+                "value": "<h2>Da Bélgica ao Pokeyland</h2><p>A Bernard-Amusement é uma sociedade belga que passou a explorar o Pokeyland, em Féy. Adquiriu o negócio da sociedade Pokeyland por um ato de 29 de novembro de 2023. A aquisição antecedeu a mudança completa da direção operacional em dezembro de 2024, após uma transição acompanhada por Nicolas Poquet.</p><p>A chegada de mais divertimentos ampliou a oferta do parque florestal, com La Pomme entre as novidades de 2025. Em 1 de outubro de 2026, a Bernard-Amusement entrou num processo judicial de recuperação. Prosseguir a atividade e reabrir o parque em 2027 continuam a ser os objetivos anunciados; essa reabertura ainda não ocorreu.</p>"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "preview": {
+    "operationId": "c78cf1f8-ce4f-496b-b164-ff162fefbf95",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:02:54.896278Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkFounder",
+        "entityId": "74344638-966e-4e5f-b028-61eaeec2f81b",
+        "entityKey": "bruno-poquet-pokeyland",
+        "displayName": "Bruno Poquet",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "biography.de",
+            "oldValue": null,
+            "newValue": "<h2>Das Familienprojekt in Féy</h2><p>Bruno Poquet gab den Anstoß zu dem Familienprojekt, aus dem Pokeyland hervorging. Der Park im Wald von Féy im Département Moselle öffnete am 20. Juni 2015 für Besucher. Nach dem Kauf des bewaldeten Grundstücks entstand ein Freizeitpark, der Aktivitäten im Freien mit aufwendig gestalteten Paintballgeländen verband.</p><p>Bruno stand der ursprünglichen Betreibergesellschaft vor. Sein Sohn Nicolas Poquet wirkte am Ausbau mit und leitete den Park. Mit einem Vertrag vom 29. November 2023 verkaufte die Familie den Geschäftsbetrieb an Bernard-Amusement. Nicolas begleitete den Übergang bis zum Wechsel der operativen Leitung im Dezember 2024.</p>"
+          },
+          {
+            "field": "biography.en",
+            "oldValue": null,
+            "newValue": "<h2>The family project in Féy</h2><p>Bruno Poquet initiated the family project that became Pokeyland, which opened to the public on 20 June 2015 in the woodland of Féy, Moselle. The purchase of this wooded site preceded the creation of a park combining outdoor activities with elaborately themed paintball fields.</p><p>Bruno chaired the original operating company, while his son Nicolas Poquet helped develop the business and managed the park. The family sold the business to Bernard-Amusement under a deed signed on 29 November 2023. Nicolas then supported the transition until the change in operational management in December 2024.</p>"
+          },
+          {
+            "field": "biography.es",
+            "oldValue": null,
+            "newValue": "<h2>El proyecto familiar de Féy</h2><p>Bruno Poquet impulsó el proyecto familiar que dio origen a Pokeyland, abierto al público el 20 de junio de 2015 en el bosque de Féy, en Mosela. La compra de este terreno arbolado precedió a la creación de un parque que combinaba actividades al aire libre con campos de paintball de cuidada ambientación.</p><p>Bruno presidía la sociedad operadora original, mientras su hijo Nicolas Poquet participaba en el desarrollo y dirigía el parque. La familia vendió el negocio a Bernard-Amusement mediante un contrato del 29 de noviembre de 2023. Nicolas acompañó la transición hasta el cambio de dirección operativa en diciembre de 2024.</p>"
+          },
+          {
+            "field": "biography.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le projet familial de Féy</h2><p>Bruno Poquet est à l’origine du projet familial devenu Pokeyland, ouvert au public le 20 juin 2015 dans la forêt de Féy, en Moselle. L’achat de cette parcelle boisée précède la création d’un parc où les activités de plein air côtoient des terrains de paintball aux décors élaborés.</p><p>Bruno préside la société exploitante historique, tandis que son fils Nicolas Poquet participe à son développement et dirige le parc. La famille cède le fonds à Bernard-Amusement par un acte du 29 novembre 2023. Nicolas accompagne ensuite la transition, jusqu’au changement de direction opérationnelle de décembre 2024.</p>"
+          },
+          {
+            "field": "biography.it",
+            "oldValue": null,
+            "newValue": "<h2>Il progetto familiare di Féy</h2><p>Bruno Poquet avviò il progetto familiare da cui nacque Pokeyland, aperto al pubblico il 20 giugno 2015 nel bosco di Féy, nella Mosella. L’acquisto del terreno alberato precedette la creazione di un parco che univa attività all’aperto e campi da paintball dalle scenografie curate.</p><p>Bruno presiedeva la società di gestione originaria, mentre il figlio Nicolas Poquet contribuiva allo sviluppo e dirigeva il parco. La famiglia cedette l’attività a Bernard-Amusement con un atto del 29 novembre 2023. Nicolas accompagnò poi la transizione fino al cambio della direzione operativa nel dicembre 2024.</p>"
+          },
+          {
+            "field": "biography.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het familieproject in Féy</h2><p>Bruno Poquet nam het initiatief voor het familieproject waaruit Pokeyland ontstond. Het park in het bos van Féy, in Moselle, ging op 20 juni 2015 open voor bezoekers. Na de aankoop van het beboste terrein ontstond een park met buitenactiviteiten en uitvoerig aangeklede paintballterreinen.</p><p>Bruno was voorzitter van de oorspronkelijke exploitatiemaatschappij. Zijn zoon Nicolas Poquet werkte mee aan de ontwikkeling en leidde het park. De familie verkocht het bedrijf aan Bernard-Amusement met een akte van 29 november 2023. Nicolas begeleidde vervolgens de overgang tot de wisseling van de dagelijkse leiding in december 2024.</p>"
+          },
+          {
+            "field": "biography.pl",
+            "oldValue": null,
+            "newValue": "<h2>Rodzinny projekt w Féy</h2><p>Bruno Poquet zapoczątkował rodzinny projekt, z którego powstał Pokeyland. Park w lesie w Féy, w departamencie Mozela, otwarto dla zwiedzających 20 czerwca 2015 roku. Zakup zalesionej działki poprzedził stworzenie miejsca łączącego aktywności na świeżym powietrzu z rozbudowaną scenografią pól paintballowych.</p><p>Bruno był prezesem pierwotnej spółki prowadzącej park, a jego syn Nicolas Poquet uczestniczył w rozwoju przedsięwzięcia i kierował parkiem. Rodzina sprzedała działalność firmie Bernard-Amusement na mocy aktu z 29 listopada 2023 roku. Nicolas wspierał następnie okres przejściowy, aż do zmiany kierownictwa operacyjnego w grudniu 2024 roku.</p>"
+          },
+          {
+            "field": "biography.pt",
+            "oldValue": null,
+            "newValue": "<h2>O projeto familiar de Féy</h2><p>Bruno Poquet iniciou o projeto familiar que deu origem ao Pokeyland, aberto ao público em 20 de junho de 2015 na floresta de Féy, na Mosela. A compra deste terreno arborizado antecedeu a criação de um parque que combinava atividades ao ar livre com campos de paintball de cenários elaborados.</p><p>Bruno presidia à sociedade exploradora original, enquanto o seu filho Nicolas Poquet participava no desenvolvimento e dirigia o parque. A família vendeu o negócio à Bernard-Amusement por um ato de 29 de novembro de 2023. Nicolas acompanhou depois a transição até à mudança da direção operacional em dezembro de 2024.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOperator",
+        "entityId": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "entityKey": "bernard-amusement-pokeyland",
+        "displayName": "BERNARD-AMUSEMENT",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "description.de",
+            "oldValue": null,
+            "newValue": "<h2>Von Belgien nach Pokeyland</h2><p>Bernard-Amusement ist ein belgisches Unternehmen, das den Betrieb von Pokeyland in Féy übernahm. Mit einem Vertrag vom 29. November 2023 erwarb es den Geschäftsbetrieb von der Gesellschaft Pokeyland. Nach einer von Nicolas Poquet begleiteten Übergangszeit wechselte im Dezember 2024 auch die operative Leitung vollständig.</p><p>Zusätzliche Fahrgeschäfte erweiterten das Angebot des Waldparks; zu den Neuzugängen 2025 gehörte La Pomme. Am 1. Oktober 2026 wurde für Bernard-Amusement ein gerichtliches Sanierungsverfahren eröffnet. Die Fortführung des Betriebs und eine Wiedereröffnung des Parks 2027 bleiben die erklärten Ziele; diese Wiedereröffnung hat noch nicht stattgefunden.</p>"
+          },
+          {
+            "field": "description.en",
+            "oldValue": null,
+            "newValue": "<h2>From Belgium to Pokeyland</h2><p>Bernard-Amusement is a Belgian company that became the operator of Pokeyland in Féy. It acquired the park business from the company Pokeyland under a deed dated 29 November 2023. The takeover preceded the full change in operational management in December 2024, following a transition supported by Nicolas Poquet.</p><p>The expansion of the ride offering broadened the woodland park’s attractions, with La Pomme among the arrivals in 2025. On 1 October 2026, Bernard-Amusement entered court-supervised reorganisation. Continuing the business and reopening the park in 2027 remain the stated aims; that reopening has not yet taken place.</p>"
+          },
+          {
+            "field": "description.es",
+            "oldValue": null,
+            "newValue": "<h2>De Bélgica a Pokeyland</h2><p>Bernard-Amusement es una sociedad belga que pasó a explotar Pokeyland, en Féy. Adquirió el negocio de la sociedad Pokeyland mediante un contrato del 29 de noviembre de 2023. La compra precedió al relevo completo de la dirección operativa en diciembre de 2024, tras una transición acompañada por Nicolas Poquet.</p><p>La incorporación de más atracciones mecánicas amplió la oferta del parque forestal, con La Pomme entre las llegadas de 2025. El 1 de octubre de 2026, Bernard-Amusement entró en un procedimiento judicial de reorganización. Continuar la actividad y reabrir el parque en 2027 siguen siendo los objetivos anunciados; esa reapertura aún no se ha producido.</p>"
+          },
+          {
+            "field": "description.fr",
+            "oldValue": null,
+            "newValue": "<h2>De la Belgique à Pokeyland</h2><p>Bernard-Amusement est une société belge devenue exploitante de Pokeyland, à Féy. Elle acquiert le fonds de commerce de la société Pokeyland par un acte du 29 novembre 2023. Cette reprise précède le renouvellement complet de la direction opérationnelle en décembre 2024, après une période de transition accompagnée par Nicolas Poquet.</p><p>Le développement des manèges élargit alors l’offre du parc forestier, avec notamment La Pomme parmi les arrivées de 2025. Le 1er octobre 2026, Bernard-Amusement est placée en redressement judiciaire. La poursuite de l’activité et une réouverture du parc en 2027 restent les objectifs annoncés ; cette dernière n’est pas encore réalisée.</p>"
+          },
+          {
+            "field": "description.it",
+            "oldValue": null,
+            "newValue": "<h2>Dal Belgio a Pokeyland</h2><p>Bernard-Amusement è una società belga diventata gestore di Pokeyland, a Féy. Ha acquisito l’attività della società Pokeyland con un atto del 29 novembre 2023. Il passaggio ha preceduto il completo rinnovo della direzione operativa nel dicembre 2024, dopo una transizione accompagnata da Nicolas Poquet.</p><p>L’arrivo di altre giostre ha ampliato l’offerta del parco nel bosco, con La Pomme fra le novità del 2025. Il 1º ottobre 2026, Bernard-Amusement è stata sottoposta a una procedura giudiziaria di risanamento. Proseguire l’attività e riaprire il parco nel 2027 restano gli obiettivi annunciati; questa riapertura non è ancora avvenuta.</p>"
+          },
+          {
+            "field": "description.nl",
+            "oldValue": null,
+            "newValue": "<h2>Van België naar Pokeyland</h2><p>Bernard-Amusement is een Belgische onderneming die de exploitatie van Pokeyland in Féy overnam. Met een akte van 29 november 2023 kocht zij de parkactiviteiten van de vennootschap Pokeyland. Na een door Nicolas Poquet begeleide overgang volgde in december 2024 de volledige wisseling van de dagelijkse leiding.</p><p>Meer attracties breidden het aanbod van het bospark uit, met La Pomme als een van de aanwinsten in 2025. Op 1 oktober 2026 kwam Bernard-Amusement onder gerechtelijke reorganisatie te staan. Het bedrijf voortzetten en het park in 2027 heropenen blijven de aangekondigde doelen; die heropening heeft nog niet plaatsgevonden.</p>"
+          },
+          {
+            "field": "description.pl",
+            "oldValue": null,
+            "newValue": "<h2>Z Belgii do Pokeylandu</h2><p>Bernard-Amusement to belgijska spółka, która została operatorem Pokeylandu w Féy. Na mocy aktu z 29 listopada 2023 roku nabyła działalność parku od spółki Pokeyland. Po okresie przejściowym wspieranym przez Nicolasa Poqueta w grudniu 2024 roku nastąpiła pełna zmiana kierownictwa operacyjnego.</p><p>Kolejne urządzenia rozrywkowe poszerzyły ofertę leśnego parku; wśród nowości z 2025 roku znalazła się La Pomme. 1 października 2026 roku Bernard-Amusement objęto sądowym postępowaniem naprawczym. Kontynuacja działalności i ponowne otwarcie parku w 2027 roku pozostają zapowiedzianymi celami; do tego otwarcia jeszcze nie doszło.</p>"
+          },
+          {
+            "field": "description.pt",
+            "oldValue": null,
+            "newValue": "<h2>Da Bélgica ao Pokeyland</h2><p>A Bernard-Amusement é uma sociedade belga que passou a explorar o Pokeyland, em Féy. Adquiriu o negócio da sociedade Pokeyland por um ato de 29 de novembro de 2023. A aquisição antecedeu a mudança completa da direção operacional em dezembro de 2024, após uma transição acompanhada por Nicolas Poquet.</p><p>A chegada de mais divertimentos ampliou a oferta do parque florestal, com La Pomme entre as novidades de 2025. Em 1 de outubro de 2026, a Bernard-Amusement entrou num processo judicial de recuperação. Prosseguir a atividade e reabrir o parque em 2027 continuam a ser os objetivos anunciados; essa reabertura ainda não ocorreu.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "founderId",
+            "oldValue": null,
+            "newValue": "74344638-966e-4e5f-b028-61eaeec2f81b"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "e4866cf7-2f6c-44c5-9a6c-01a0ff87f643",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:03:21.0597237Z",
+    "appliedAtUtc": "2026-11-15T11:03:21.0597255Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkFounder",
+        "entityId": "6fc80030-d7d3-420b-b2ca-3093af8d4104",
+        "entityKey": "bruno-poquet-pokeyland",
+        "displayName": "Bruno Poquet",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "biography.de",
+            "oldValue": null,
+            "newValue": "<h2>Das Familienprojekt in Féy</h2><p>Bruno Poquet gab den Anstoß zu dem Familienprojekt, aus dem Pokeyland hervorging. Der Park im Wald von Féy im Département Moselle öffnete am 20. Juni 2015 für Besucher. Nach dem Kauf des bewaldeten Grundstücks entstand ein Freizeitpark, der Aktivitäten im Freien mit aufwendig gestalteten Paintballgeländen verband.</p><p>Bruno stand der ursprünglichen Betreibergesellschaft vor. Sein Sohn Nicolas Poquet wirkte am Ausbau mit und leitete den Park. Mit einem Vertrag vom 29. November 2023 verkaufte die Familie den Geschäftsbetrieb an Bernard-Amusement. Nicolas begleitete den Übergang bis zum Wechsel der operativen Leitung im Dezember 2024.</p>"
+          },
+          {
+            "field": "biography.en",
+            "oldValue": null,
+            "newValue": "<h2>The family project in Féy</h2><p>Bruno Poquet initiated the family project that became Pokeyland, which opened to the public on 20 June 2015 in the woodland of Féy, Moselle. The purchase of this wooded site preceded the creation of a park combining outdoor activities with elaborately themed paintball fields.</p><p>Bruno chaired the original operating company, while his son Nicolas Poquet helped develop the business and managed the park. The family sold the business to Bernard-Amusement under a deed signed on 29 November 2023. Nicolas then supported the transition until the change in operational management in December 2024.</p>"
+          },
+          {
+            "field": "biography.es",
+            "oldValue": null,
+            "newValue": "<h2>El proyecto familiar de Féy</h2><p>Bruno Poquet impulsó el proyecto familiar que dio origen a Pokeyland, abierto al público el 20 de junio de 2015 en el bosque de Féy, en Mosela. La compra de este terreno arbolado precedió a la creación de un parque que combinaba actividades al aire libre con campos de paintball de cuidada ambientación.</p><p>Bruno presidía la sociedad operadora original, mientras su hijo Nicolas Poquet participaba en el desarrollo y dirigía el parque. La familia vendió el negocio a Bernard-Amusement mediante un contrato del 29 de noviembre de 2023. Nicolas acompañó la transición hasta el cambio de dirección operativa en diciembre de 2024.</p>"
+          },
+          {
+            "field": "biography.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le projet familial de Féy</h2><p>Bruno Poquet est à l’origine du projet familial devenu Pokeyland, ouvert au public le 20 juin 2015 dans la forêt de Féy, en Moselle. L’achat de cette parcelle boisée précède la création d’un parc où les activités de plein air côtoient des terrains de paintball aux décors élaborés.</p><p>Bruno préside la société exploitante historique, tandis que son fils Nicolas Poquet participe à son développement et dirige le parc. La famille cède le fonds à Bernard-Amusement par un acte du 29 novembre 2023. Nicolas accompagne ensuite la transition, jusqu’au changement de direction opérationnelle de décembre 2024.</p>"
+          },
+          {
+            "field": "biography.it",
+            "oldValue": null,
+            "newValue": "<h2>Il progetto familiare di Féy</h2><p>Bruno Poquet avviò il progetto familiare da cui nacque Pokeyland, aperto al pubblico il 20 giugno 2015 nel bosco di Féy, nella Mosella. L’acquisto del terreno alberato precedette la creazione di un parco che univa attività all’aperto e campi da paintball dalle scenografie curate.</p><p>Bruno presiedeva la società di gestione originaria, mentre il figlio Nicolas Poquet contribuiva allo sviluppo e dirigeva il parco. La famiglia cedette l’attività a Bernard-Amusement con un atto del 29 novembre 2023. Nicolas accompagnò poi la transizione fino al cambio della direzione operativa nel dicembre 2024.</p>"
+          },
+          {
+            "field": "biography.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het familieproject in Féy</h2><p>Bruno Poquet nam het initiatief voor het familieproject waaruit Pokeyland ontstond. Het park in het bos van Féy, in Moselle, ging op 20 juni 2015 open voor bezoekers. Na de aankoop van het beboste terrein ontstond een park met buitenactiviteiten en uitvoerig aangeklede paintballterreinen.</p><p>Bruno was voorzitter van de oorspronkelijke exploitatiemaatschappij. Zijn zoon Nicolas Poquet werkte mee aan de ontwikkeling en leidde het park. De familie verkocht het bedrijf aan Bernard-Amusement met een akte van 29 november 2023. Nicolas begeleidde vervolgens de overgang tot de wisseling van de dagelijkse leiding in december 2024.</p>"
+          },
+          {
+            "field": "biography.pl",
+            "oldValue": null,
+            "newValue": "<h2>Rodzinny projekt w Féy</h2><p>Bruno Poquet zapoczątkował rodzinny projekt, z którego powstał Pokeyland. Park w lesie w Féy, w departamencie Mozela, otwarto dla zwiedzających 20 czerwca 2015 roku. Zakup zalesionej działki poprzedził stworzenie miejsca łączącego aktywności na świeżym powietrzu z rozbudowaną scenografią pól paintballowych.</p><p>Bruno był prezesem pierwotnej spółki prowadzącej park, a jego syn Nicolas Poquet uczestniczył w rozwoju przedsięwzięcia i kierował parkiem. Rodzina sprzedała działalność firmie Bernard-Amusement na mocy aktu z 29 listopada 2023 roku. Nicolas wspierał następnie okres przejściowy, aż do zmiany kierownictwa operacyjnego w grudniu 2024 roku.</p>"
+          },
+          {
+            "field": "biography.pt",
+            "oldValue": null,
+            "newValue": "<h2>O projeto familiar de Féy</h2><p>Bruno Poquet iniciou o projeto familiar que deu origem ao Pokeyland, aberto ao público em 20 de junho de 2015 na floresta de Féy, na Mosela. A compra deste terreno arborizado antecedeu a criação de um parque que combinava atividades ao ar livre com campos de paintball de cenários elaborados.</p><p>Bruno presidia à sociedade exploradora original, enquanto o seu filho Nicolas Poquet participava no desenvolvimento e dirigia o parque. A família vendeu o negócio à Bernard-Amusement por um ato de 29 de novembro de 2023. Nicolas acompanhou depois a transição até à mudança da direção operacional em dezembro de 2024.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOperator",
+        "entityId": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "entityKey": "bernard-amusement-pokeyland",
+        "displayName": "BERNARD-AMUSEMENT",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "description.de",
+            "oldValue": null,
+            "newValue": "<h2>Von Belgien nach Pokeyland</h2><p>Bernard-Amusement ist ein belgisches Unternehmen, das den Betrieb von Pokeyland in Féy übernahm. Mit einem Vertrag vom 29. November 2023 erwarb es den Geschäftsbetrieb von der Gesellschaft Pokeyland. Nach einer von Nicolas Poquet begleiteten Übergangszeit wechselte im Dezember 2024 auch die operative Leitung vollständig.</p><p>Zusätzliche Fahrgeschäfte erweiterten das Angebot des Waldparks; zu den Neuzugängen 2025 gehörte La Pomme. Am 1. Oktober 2026 wurde für Bernard-Amusement ein gerichtliches Sanierungsverfahren eröffnet. Die Fortführung des Betriebs und eine Wiedereröffnung des Parks 2027 bleiben die erklärten Ziele; diese Wiedereröffnung hat noch nicht stattgefunden.</p>"
+          },
+          {
+            "field": "description.en",
+            "oldValue": null,
+            "newValue": "<h2>From Belgium to Pokeyland</h2><p>Bernard-Amusement is a Belgian company that became the operator of Pokeyland in Féy. It acquired the park business from the company Pokeyland under a deed dated 29 November 2023. The takeover preceded the full change in operational management in December 2024, following a transition supported by Nicolas Poquet.</p><p>The expansion of the ride offering broadened the woodland park’s attractions, with La Pomme among the arrivals in 2025. On 1 October 2026, Bernard-Amusement entered court-supervised reorganisation. Continuing the business and reopening the park in 2027 remain the stated aims; that reopening has not yet taken place.</p>"
+          },
+          {
+            "field": "description.es",
+            "oldValue": null,
+            "newValue": "<h2>De Bélgica a Pokeyland</h2><p>Bernard-Amusement es una sociedad belga que pasó a explotar Pokeyland, en Féy. Adquirió el negocio de la sociedad Pokeyland mediante un contrato del 29 de noviembre de 2023. La compra precedió al relevo completo de la dirección operativa en diciembre de 2024, tras una transición acompañada por Nicolas Poquet.</p><p>La incorporación de más atracciones mecánicas amplió la oferta del parque forestal, con La Pomme entre las llegadas de 2025. El 1 de octubre de 2026, Bernard-Amusement entró en un procedimiento judicial de reorganización. Continuar la actividad y reabrir el parque en 2027 siguen siendo los objetivos anunciados; esa reapertura aún no se ha producido.</p>"
+          },
+          {
+            "field": "description.fr",
+            "oldValue": null,
+            "newValue": "<h2>De la Belgique à Pokeyland</h2><p>Bernard-Amusement est une société belge devenue exploitante de Pokeyland, à Féy. Elle acquiert le fonds de commerce de la société Pokeyland par un acte du 29 novembre 2023. Cette reprise précède le renouvellement complet de la direction opérationnelle en décembre 2024, après une période de transition accompagnée par Nicolas Poquet.</p><p>Le développement des manèges élargit alors l’offre du parc forestier, avec notamment La Pomme parmi les arrivées de 2025. Le 1er octobre 2026, Bernard-Amusement est placée en redressement judiciaire. La poursuite de l’activité et une réouverture du parc en 2027 restent les objectifs annoncés ; cette dernière n’est pas encore réalisée.</p>"
+          },
+          {
+            "field": "description.it",
+            "oldValue": null,
+            "newValue": "<h2>Dal Belgio a Pokeyland</h2><p>Bernard-Amusement è una società belga diventata gestore di Pokeyland, a Féy. Ha acquisito l’attività della società Pokeyland con un atto del 29 novembre 2023. Il passaggio ha preceduto il completo rinnovo della direzione operativa nel dicembre 2024, dopo una transizione accompagnata da Nicolas Poquet.</p><p>L’arrivo di altre giostre ha ampliato l’offerta del parco nel bosco, con La Pomme fra le novità del 2025. Il 1º ottobre 2026, Bernard-Amusement è stata sottoposta a una procedura giudiziaria di risanamento. Proseguire l’attività e riaprire il parco nel 2027 restano gli obiettivi annunciati; questa riapertura non è ancora avvenuta.</p>"
+          },
+          {
+            "field": "description.nl",
+            "oldValue": null,
+            "newValue": "<h2>Van België naar Pokeyland</h2><p>Bernard-Amusement is een Belgische onderneming die de exploitatie van Pokeyland in Féy overnam. Met een akte van 29 november 2023 kocht zij de parkactiviteiten van de vennootschap Pokeyland. Na een door Nicolas Poquet begeleide overgang volgde in december 2024 de volledige wisseling van de dagelijkse leiding.</p><p>Meer attracties breidden het aanbod van het bospark uit, met La Pomme als een van de aanwinsten in 2025. Op 1 oktober 2026 kwam Bernard-Amusement onder gerechtelijke reorganisatie te staan. Het bedrijf voortzetten en het park in 2027 heropenen blijven de aangekondigde doelen; die heropening heeft nog niet plaatsgevonden.</p>"
+          },
+          {
+            "field": "description.pl",
+            "oldValue": null,
+            "newValue": "<h2>Z Belgii do Pokeylandu</h2><p>Bernard-Amusement to belgijska spółka, która została operatorem Pokeylandu w Féy. Na mocy aktu z 29 listopada 2023 roku nabyła działalność parku od spółki Pokeyland. Po okresie przejściowym wspieranym przez Nicolasa Poqueta w grudniu 2024 roku nastąpiła pełna zmiana kierownictwa operacyjnego.</p><p>Kolejne urządzenia rozrywkowe poszerzyły ofertę leśnego parku; wśród nowości z 2025 roku znalazła się La Pomme. 1 października 2026 roku Bernard-Amusement objęto sądowym postępowaniem naprawczym. Kontynuacja działalności i ponowne otwarcie parku w 2027 roku pozostają zapowiedzianymi celami; do tego otwarcia jeszcze nie doszło.</p>"
+          },
+          {
+            "field": "description.pt",
+            "oldValue": null,
+            "newValue": "<h2>Da Bélgica ao Pokeyland</h2><p>A Bernard-Amusement é uma sociedade belga que passou a explorar o Pokeyland, em Féy. Adquiriu o negócio da sociedade Pokeyland por um ato de 29 de novembro de 2023. A aquisição antecedeu a mudança completa da direção operacional em dezembro de 2024, após uma transição acompanhada por Nicolas Poquet.</p><p>A chegada de mais divertimentos ampliou a oferta do parque florestal, com La Pomme entre as novidades de 2025. Em 1 de outubro de 2026, a Bernard-Amusement entrou num processo judicial de recuperação. Prosseguir a atividade e reabrir o parque em 2027 continuam a ser os objetivos anunciados; essa reabertura ainda não ocorreu.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "founderId",
+            "oldValue": null,
+            "newValue": "6fc80030-d7d3-420b-b2ca-3093af8d4104"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "research": {
+    "schemaVersion": 1,
+    "reportType": "Public research only, founder/operator identity and transition chronology",
+    "createdAtUtc": "2026-11-15T10:58:19.284000+00:00",
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+    "parkName": "Pokeyland",
+    "scope": {
+      "pdeCalls": 0,
+      "gitCommands": 0,
+      "registryChanges": 0,
+      "contacts": 0,
+      "onlyOutputDirectoryWritten": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/founder-followup"
+    },
+    "conclusionFr": "Les rôles sont séparables et les dates de 2023 et 2024 ne sont pas contradictoires : la famille Poquet porte le projet, Bruno est identifié comme le père fondateur, Nicolas Poquet dirige puis accompagne la transition, et Nicolas Vosgien conçoit les décors et dirige l’exploitation à l’ouverture. Bernard-Amusement acquiert le fonds par acte du 29 novembre 2023 ; la direction opérationnelle passe entièrement à la nouvelle équipe en décembre 2024.",
+    "identities": [
+      {
+        "name": "Famille Poquet",
+        "qualifiedRole": "Famille fondatrice de Pokeyland",
+        "supportedBy": [
+          "S2",
+          "S3",
+          "S9",
+          "S11"
+        ],
+        "limits": [
+          "Ne pas transformer tous les membres de la famille en cofondateurs individuels.",
+          "Aucune liste exhaustive de fondateurs ou actionnaires du projet initial établie."
+        ]
+      },
+      {
+        "name": "Bruno Poquet",
+        "qualifiedRole": "Père fondateur/porteur du projet ; président de la société exploitante historique à l’ouverture.",
+        "supportedBy": [
+          "S2",
+          "S5",
+          "S7",
+          "S11"
+        ],
+        "evidenceAssessment": "Étiquette fondateur explicite dans le corps TF1 extrait par le fournisseur ; projet initié par le père dans Loractu directement lisible ; identité et fonction de président confirmées par BODACC primaire. Le BODACC seul ne suffit pas à attribuer la fondation.",
+        "notSupported": [
+          "Date ou lieu de naissance",
+          "Biographie professionnelle générale hors parc",
+          "Fondateur unique à exclusion de toute autre personne",
+          "Date exacte de conception du projet",
+          "Portrait identifié avec certitude dans les sources étudiées"
+        ]
+      },
+      {
+        "name": "Nicolas Poquet",
+        "qualifiedRole": "Directeur général puis directeur du parc, membre de la famille fondatrice et accompagnateur de la transition.",
+        "supportedBy": [
+          "S2",
+          "S3",
+          "S5",
+          "S8",
+          "S9",
+          "S10"
+        ],
+        "evidenceAssessment": "L’agence officielle MOSL fournit une biographie lisible : études de commerce, entrée dans l’entreprise familiale, fonctions polyvalentes puis direction. Ne pas le rebaptiser fondateur unique.",
+        "notSupported": [
+          "Nicolas Vosgien comme alias",
+          "Une date exacte de début de direction à partir de la seule date de publication BODACC",
+          "Âge ou date de naissance",
+          "Titre juridique inchangé au sein de la SAS historique jusqu’en décembre 2024"
+        ]
+      },
+      {
+        "name": "Nicolas Vosgien",
+        "qualifiedRole": "Directeur d’exploitation à l’ouverture et concepteur des décors/scénographies.",
+        "supportedBy": [
+          "S1",
+          "S11"
+        ],
+        "evidenceAssessment": "ToutMetz le présente et décrit son travail sur les espaces de paintball en 2015. TF1 le qualifie de décorateur présent depuis les débuts. Pas de preuve de qualité de fondateur, de membre de la famille Poquet ou de propriétaire.",
+        "notSupported": [
+          "Alias de Nicolas Poquet",
+          "Fondateur du parc",
+          "Responsabilités actuelles en 2026"
+        ]
+      },
+      {
+        "name": "Jean-Claude Legros",
+        "qualifiedRole": "Représentant de Bernard-Amusement, puis nouveau dirigeant du parc à la transition de décembre 2024.",
+        "supportedBy": [
+          "S6",
+          "S7",
+          "S10"
+        ],
+        "limits": [
+          "Le qualifiant de nouveau PDG vient de la presse ; pour une référence juridique, préférer dirigeant en France de la société étrangère / administrateur de Bernard-Amusement selon la notice.",
+          "Pas fondateur de Pokeyland en 2015."
+        ]
+      },
+      {
+        "name": "Thomas Veishar",
+        "qualifiedRole": "Directeur d’exploitation présenté en avril 2017 ; adjoint de la nouvelle direction dans l’annonce de novembre 2024.",
+        "supportedBy": [
+          "S2",
+          "S9"
+        ],
+        "limits": [
+          "Ne pas inférer une présence ininterrompue de 2017 à 2024."
+        ]
+      }
+    ],
+    "chronology": [
+      {
+        "date": "2015-06-20",
+        "precision": "day",
+        "event": "Ouverture au public du parc",
+        "sources": [
+          "S1"
+        ],
+        "limit": "Les démarches/projets de 2013 et l’âge approximatif cité en 2022 ne sont pas une autre ouverture."
+      },
+      {
+        "date": "2015-07-14",
+        "precision": "day",
+        "event": "Publication BODACC de la répartition des fonctions Bruno président / Nicolas directeur général",
+        "sources": [
+          "S5"
+        ],
+        "limit": "Date de publication du bulletin, pas date de nomination présumée."
+      },
+      {
+        "date": "2023-11-29",
+        "precision": "day",
+        "event": "Signature de l’acte de cession du fonds de POKEYLAND à BERNARD-AMUSEMENT",
+        "sources": [
+          "S6",
+          "S7",
+          "S8"
+        ],
+        "limit": "Peut servir de date d’acte. Ne pas présenter comme la fin immédiate de l’accompagnement de Nicolas."
+      },
+      {
+        "date": "2023-11-30",
+        "precision": "day",
+        "event": "Prise d’effet du transfert de propriété et de jouissance selon le texte de la notice JAL reproduite",
+        "originalTimeWording": "30 novembre 2023 à minuit",
+        "sources": [
+          "S7"
+        ],
+        "limit": "Source miroir de la notice ; conserver le libellé, ne pas convertir en UTC ou choisir arbitrairement début/fin de journée."
+      },
+      {
+        "date": "2023-12-01",
+        "precision": "day",
+        "event": "Fin des fonctions juridiques de directeur général de Nicolas Poquet dans la société historique POKEYLAND",
+        "sources": [
+          "S7",
+          "S8"
+        ],
+        "limit": "Décision du 5 décembre, publiée le 22 décembre ; ne signifie pas départ opérationnel du parc ce jour-là."
+      },
+      {
+        "date": "2024-05-05",
+        "precision": "day",
+        "event": "Publication BODACC A 20240088 annonce 918 de la vente",
+        "sources": [
+          "S6"
+        ],
+        "limit": "Publication administrative tardive, pas nouvelle acquisition en mai 2024."
+      },
+      {
+        "date": "2024-06-25",
+        "precision": "day",
+        "event": "Remise de la médaille de bronze du tourisme à Nicolas Poquet lors de l’assemblée de Moselle Attractivité",
+        "sources": [
+          "S3"
+        ],
+        "limit": "Date de remise, pas nécessairement date de l’arrêté d’attribution ; détail biographique facultatif."
+      },
+      {
+        "date": "2024-11-29",
+        "precision": "day",
+        "event": "Annonce du départ de Nicolas après transition et de la nouvelle direction au 1er décembre",
+        "sources": [
+          "S9"
+        ],
+        "limit": "Annonce, à distinguer de son effet."
+      },
+      {
+        "date": "2024-12-01",
+        "precision": "day",
+        "event": "Changement de direction opérationnelle annoncé, ensuite confirmé par la presse du 3 décembre",
+        "sources": [
+          "S9",
+          "S10"
+        ],
+        "limit": "Ce changement ne constitue pas une seconde vente du fonds."
+      }
+    ],
+    "operator": {
+      "historicalEntity": {
+        "name": "POKEYLAND",
+        "siren": "791387434",
+        "parkOperatorUntilSale": true,
+        "notes": "La société historique survit à la vente dans une activité immobilière, puis change de nom en B IMMOBILIER en avril 2026. Ne pas déclarer sa dissolution, ni rattacher ce nouveau nom au parc comme son opérateur actuel."
+      },
+      "buyerAndCurrentOperator": {
+        "name": "BERNARD-AMUSEMENT",
+        "sirenFrance": "982057358",
+        "belgianEnterpriseNumberFromSaleNotice": "0804.102.086",
+        "frenchParkEstablishmentSiretFromExistingResearch": "98205735800029",
+        "legalFormInOfficialBodacc": "Société de droit étranger",
+        "sources": [
+          "S6",
+          "S7"
+        ],
+        "notes": "Distinguer cette personne morale du parc et de Jean-Claude Legros. La date française d’immatriculation ne prouve pas à elle seule la date de fondation internationale de la société. Les CGV mélangent encore des éléments hérités : préférer les actes officiels pour le statut juridique."
+      }
+    },
+    "usableFrenchBiographyDraftsForRootReview": {
+      "collectiveFounder": "La famille Poquet est à l’origine de Pokeyland, ouvert au public à Féy le 20 juin 2015. Bruno Poquet porte le projet, puis son fils Nicolas participe à son exploitation et à son développement. Le parc associe activités de plein air et espaces de jeux aménagés dans un environnement boisé. Après la cession du fonds à Bernard-Amusement à la fin de novembre 2023, Nicolas accompagne la transition avant le changement de direction de décembre 2024.",
+      "brunoPoquet": "Bruno Poquet est le père à l’origine du projet familial Pokeyland, dont l’ouverture au public intervient à Féy le 20 juin 2015. Il préside la société exploitante historique, tandis que son fils Nicolas prend la direction du parc et en accompagne le développement. Le fonds de commerce est cédé à Bernard-Amusement par un acte du 29 novembre 2023. Cette vente précède d’un an le passage complet à la nouvelle direction opérationnelle.",
+      "nicolasPoquetContext": "Nicolas Poquet rejoint l’entreprise familiale après des études de commerce. Il exerce d’abord des fonctions polyvalentes, puis prend la direction de Pokeyland et développe son offre de loisirs. Après la vente du fonds à Bernard-Amusement en novembre 2023, il accompagne la transition jusqu’au changement de direction de décembre 2024. Son rôle se distingue de celui de Nicolas Vosgien, concepteur des décors et directeur d’exploitation présenté à l’ouverture.",
+      "draftStatus": "Research proposals only, not applied, not translated. Root must personally review final eight-language wording and reconcile any existing reference ID before using."
+    },
+    "exclusionsAndLimits": [
+      "TF1 direct HTTP 403 recorded previously: no retry or bypass. Provider returned readable article body, and provenance is explicit.",
+      "TF1 approximate foundation age in 2022 is not used to invent a 2012 opening.",
+      "Pappers PDF URL for the 5 December 2023 decision returned 404 once. No workaround or repeated request; public legal notice mirrors supply that information and are labelled accordingly.",
+      "Official forest-extension PDF was obtained but its text extraction yielded no readable Pokeyland passage; not used to prove any finding.",
+      "BODACC May 2024 registration-date anomaly 07/11/2023 remains documented; the mirror of the JAL and the December 2023 bulletin instead show 07/12/2023. No silent source correction.",
+      "No birth dates, private home addresses, portraits, individual ownership percentages, qualifications not stated in the cited sources, or alleged family relationships beyond the father/son relation substantiated above are proposed.",
+      "No park data mutation, new publication, acquisition replay, or operator-reference creation is requested by this report."
+    ],
+    "sources": [
+      {
+        "sourceId": "S1",
+        "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/news-toutmetz-opening-2015.html",
+        "sha256": "7c6ea3fde10a6d13864d0ac73da7626c860438bcc1bd9b3482bc9350ae46bba4",
+        "bytes": 347811,
+        "publicationDate": "2015-06-20",
+        "authority": "Contemporary local reporting with named interviewee and photographed opening preparations.",
+        "notes": "Full locally preserved article personally read. Nicolas Vosgien is named as director of operations and designer of themed environments; public opening on 20 June 2015.",
+        "accessedAtUtc": "2026-11-15T10:42:31.499476+00:00",
+        "status": 200
+      },
+      {
+        "sourceId": "S2",
+        "url": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/founder-followup/loractu-2017.html",
+        "sha256": "54699215c76a4826922188935fa727b06cbe838bfb55a688b0a0a0b1dae8d976",
+        "bytes": 63951,
+        "publicationDate": "2017-04-13",
+        "authority": "Contemporary local reporting.",
+        "notes": "Visible date 13/04/2017 15h04. Nicolas Poquet manages a project initiated by his father; Thomas Veishar is the recent director of operations. Full article read. The file was initially named 2016 while downloading and was renamed after reading the actual date.",
+        "accessedAtUtc": "2026-11-15T10:54:31.052609+00:00",
+        "status": 200
+      },
+      {
+        "sourceId": "S3",
+        "url": "https://www.blog.mosl.fr/agence-sans-limite/un-bilan-remarquable-pour-moselle-attractivite-en-2023/",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/founder-followup/mosl-2024.html",
+        "sha256": "2ec55fdb776a796dfad9fa8249453b8d6ff5b3b185dff0181bb21eab553ac151",
+        "bytes": 150511,
+        "publicationDate": "2024-07-01",
+        "authority": "Primary tourism agency account of its own general assembly and awards.",
+        "notes": "Full official article read. Nicolas Poquet joined the family business after business studies, worked in multiple roles and became general manager. Opening 2015. Bronze tourism medal presented on 25 June 2024; no birth date supplied.",
+        "accessedAtUtc": "2026-11-15T10:54:31.050857+00:00",
+        "status": 200
+      },
+      {
+        "sourceId": "S4",
+        "url": "https://www.lagazettefrance.fr/article/trois-ambassadeurs-du-tourisme-mosellan-a-l-honneur",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/founder-followup/gazette-2024.html",
+        "sha256": "7a707abe63e6092c47c60ee6d670ea2086bd5c7ad6c00978c2b4904df8201c89",
+        "bytes": 99511,
+        "publicationDate": "2024-07-02",
+        "authority": "Local press, Laurent Siatka.",
+        "notes": "Full article read, corroborates the MOSL biography. Similar account should not be counted as wholly independent source for every detail.",
+        "accessedAtUtc": "2026-11-15T10:54:31.053330+00:00",
+        "status": 200
+      },
+      {
+        "sourceId": "S5",
+        "url": "https://www.bodacc.fr/telechargements/COMMERCIALES/PDF/B/BODACC-B_20150133_0001_p000.pdf",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/founder-followup/bodacc-directors-20150714.pdf",
+        "sha256": "56312a9c01022e376920414c694b7da576589983f33c301a04b7b1bbac9e7df5",
+        "bytes": 1500036,
+        "publicationDate": "2015-07-14",
+        "authority": "Official BODACC publication, announcement 916.",
+        "notes": "Page 34 names Bruno Poquet president and Nicolas Poquet general manager of SAS POKEYLAND (791387434). Establishes different legal roles; not by itself proof that every director is a founder.",
+        "accessedAtUtc": "2026-11-15T10:54:32.808812+00:00",
+        "status": 200,
+        "pages": [
+          34
+        ]
+      },
+      {
+        "sourceId": "S6",
+        "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/bodacc-sale-browser.html",
+        "sha256": "6ca72f1aa7d27a9d285900d0754876e0d06e2a379a96a9aeb605fd9240863bf9",
+        "bytes": 425521,
+        "publicationDate": "2024-05-05",
+        "authority": "Official BODACC sale announcement.",
+        "notes": "Full rendered text read. Sale deed 29 November 2023. Seller POKEYLAND 791387434, buyer BERNARD-AMUSEMENT 982057358, French representative Jean-Claude Legros. Registration date printed as 07/11/2023 conflicts with other notices; not silently corrected.",
+        "accessedAtUtc": "2026-11-15T10:44:01.046988+00:00",
+        "status": 200
+      },
+      {
+        "sourceId": "S7",
+        "url": "https://www.societe.com/societe/b-immobilier-791387434.html",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/founder-followup/sale-jal-societe.html",
+        "sha256": "9204c0c5d26069589abe3838304c77d41d0c7f175686a7bd9da15159b025354b",
+        "bytes": 206861,
+        "publicationDate": null,
+        "authority": "Public mirror of legal notices, not the original deed.",
+        "notes": "Full page read and decoded using declared iso-8859-1. Sale notice gives deed 29 November 2023, registration 7 December 2023, transfer of ownership and enjoyment 30 November 2023 at midnight. A different notice says Nicolas left the old company general-manager office from 1 December 2023. This is a corporate-office date, not the park operational departure in 2024.",
+        "accessedAtUtc": "2026-11-15T10:55:40.326115+00:00",
+        "status": 200
+      },
+      {
+        "sourceId": "S8",
+        "url": "https://entreprises.lefigaro.fr/pokeyland-54/entreprise-791387434",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/registry-old-pokeyland-figaro.html",
+        "sha256": "845d629d59b3cacf83e2f54d605a1178bff98060b77e1bdf90c72f26a1ceb774",
+        "bytes": 135655,
+        "publicationDate": null,
+        "authority": "Public mirror of BODACC and legal notices.",
+        "notes": "Full relevant notices read. JAL published 22 December 2023 (tabletteslorraines.fr) records decision of 5 December and Nicolas office cessation effective 1 December 2023. The same legal entity later operates in property and becomes B IMMOBILIER on 14 April 2026: do not treat that rename as a rename/closure of the park.",
+        "accessedAtUtc": "2026-11-15T10:42:35.146612+00:00",
+        "status": 200
+      },
+      {
+        "sourceId": "S9",
+        "url": "https://www.directfm.fr/exclu-d-rect-fm-pokeyland-change-de-direction",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/news-directfm-transition.html",
+        "sha256": "1566bc3e4534bed928adb3635f3cc20d36bc52608b444d9a5e7b8a2f687f3058",
+        "bytes": 49940,
+        "publicationDate": "2024-11-29",
+        "authority": "Contemporary local radio reporting, Yoann Masson.",
+        "notes": "Full text read. Family sale in November 2023; Nicolas handled transition; new direction announced for 1 December 2024, accompanied by deputy Thomas Veishar.",
+        "accessedAtUtc": "2026-11-15T10:41:48.463032+00:00",
+        "status": 200
+      },
+      {
+        "sourceId": "S10",
+        "url": "https://moselle.tv/nouvelles-attractions-nouveaux-prix-recrutement-ca-bouge-a-pokeyland/",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/news-moselletv-transition.html",
+        "sha256": "f1516c231f0db059156d3b0f626c34a2eabd3843e8b76c83c25fa27a70be6932",
+        "bytes": 345950,
+        "publicationDate": "2024-12-03",
+        "authority": "Contemporary local television reporting, Coline Lexpert.",
+        "notes": "Full text read. After about one year accompanying Bernard Amusement, Nicolas gives way; article identifies Jean-Claude Legros as the new head of the park. Confirms the direction change occurred, beyond the earlier announcement.",
+        "accessedAtUtc": "2026-11-15T10:41:50.656350+00:00",
+        "status": 200
+      },
+      {
+        "sourceId": "S11",
+        "url": "https://www.tf1info.fr/voyages/video-un-parc-d-attraction-pas-comme-les-autres-en-lorraine-2218818.html",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/founder-followup/founder-search-1.json",
+        "sha256": "365a3210621f548a3a2c93c16b4aa712af671f23209e4d2c6af31d472b9a3fb8",
+        "bytes": 29580,
+        "publicationDate": "2022-05-05",
+        "authority": "TF1 report by G. Gruber and V. Ruckly, readable as public search-provider article extraction only.",
+        "notes": "Exact publisher article body is returned by the search service, beyond a vague snippet, explicitly calling Bruno father and founder and Nicolas Vosgien decorator. Original direct request failed 403 in the baseline; not retried and not bypassed. Retain that access limitation. Its approximate age claim about foundation is not used to date public opening.",
+        "accessedAtUtc": null,
+        "status": null
+      }
+    ],
+    "newSourceAccessLog": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/founder-followup/source-access.json"
+  },
+  "personalReview": {
+    "eightLanguagesWrittenAndReviewed": true,
+    "localizedTexts": 16,
+    "founderNotDirectorAlias": true,
+    "sale2023NotManagement2024": true,
+    "courtReorganisationNotPermanentClosure": true,
+    "noBirthdateOrFounderPortraitInvented": true
+  },
+  "correctedBeforeApply": "InitialPreview accepted founder.biography but ignored operator.biography; finaldocument uses official operator.description, eight exact fields checked beforeApply. InitialPreview neverapplied.",
+  "operatorVisibility": "Operator graph exposes review status, not a publication flag; park stays hidden and reference review preserved.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -499,7 +499,7 @@
   "decisions": [
     "Existing park selected by exact ID, no duplicate created.",
     "Public opening20June2015 established by contemporary20June2015Tout-Metz report; constructionMay2013 not opening.",
-    "Legal operator BERNARD-AMUSEMENT matched through official Preview; new private reference without unproved foundedYear.",
+    "Legal operator BERNARD-AMUSEMENT matched through official Preview; new reference with ToReview status without unproved foundedYear; operator visibility is not an exposed graph field.",
     "Sale29Nov2023, direction transition1Dec2024 and receivership1Oct2026 remain distinct.",
     "Regional scope and AmusementPark classification based on permanent multiactivity forest park; seasonalOperating preserved.",
     "Founder requires further disambiguation. Existing coordinates and private Pomme ID preserved."
