@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T18:30:04.011Z",
+      "lastDataIntegrationAt": "2026-11-15T18:43:31.580Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38598,6 +38598,76 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-42-foret-dragons-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : photo officielle de Forêt des dragons importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-238644f5-96e7-48a2-a448-2613c0b3e966",
+          "appliedAt": "2026-11-15T18:36:58.363Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-43-hawai-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : Expédition Hawaï décrite et relue personnellement en huit langues, Lila et lac de lave, entrée réelle sous verrière et succession d’Abyss en 2026; fiche privée, aucune date précise ou restriction contradictoire inventée."
+        },
+        {
+          "eventId": "import-photo-d6206d2553ad4eccbc08f8b6184be024",
+          "appliedAt": "2026-11-15T18:38:18.470Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-44-hawai-entrance-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Expédition Hawaï importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-6a45d27a89084fb690e5caa8bcdda23b",
+          "appliedAt": "2026-11-15T18:38:37.224Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-45-hawai-platform-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Expédition Hawaï importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-bc84977c466245e7827273c42abd2220",
+          "appliedAt": "2026-11-15T18:38:49.525Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-46-hawai-screens-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Expédition Hawaï importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-7606ee73-27ef-492c-9d22-f99baea46670",
+          "appliedAt": "2026-11-15T18:41:37.510Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-47-two-geology-exhibitions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : deux expositions Séismes et Volcans d’Auvergne décrites et relues personnellement en huit langues. Visite guidée dans la même exposition, ajout numérique été2024 sans fausse date d’ouverture globale. Fiches privées et identités préservées."
+        },
+        {
+          "eventId": "import-photo-659517b47e5f4b5a95c9eb439c0b7263",
+          "appliedAt": "2026-11-15T18:43:21.230Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-48-seismes-rescue-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Séismes, quand la Terre tremble importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-d1b3a21b0ac347ca8570153a9b873f32",
+          "appliedAt": "2026-11-15T18:43:31.580Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-49-volcans-auvergne-trail-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Volcans d’Auvergne importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38650,7 +38720,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-5c5c7f0bde5f4bd58eb3ab3ede97d9eb ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-d1b3a21b0ac347ca8570153a9b873f32 ; conserver les références de découverte."
       }
     },
     {

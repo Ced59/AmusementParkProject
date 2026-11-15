@@ -560,7 +560,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/volcans-dauvergne/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Le paysage devient une exposition</h2><p>Volcans d’Auvergne prolonge l’exploration de Vulcania à l’extérieur, au contact du panorama qui entoure le parc. Des panneaux, des maquettes et des roches volcaniques jalonnent le parcours. Les formes du relief et les pierres rencontrées prennent ainsi place dans une même lecture du patrimoine géologique auvergnat.</p><p>La Chaîne des Puys et la faille de Limagne occupent une place centrale dans cette découverte. Le parcours rappelle l’inscription de cet ensemble au patrimoine mondial de l’Unesco en 2018, en reliant les explications au paysage présent.</p><h2>Retrouver les paysages anciens</h2><p>Depuis l’été 2024, une expérience sur smartphone superpose au panorama des reconstitutions de périodes anciennes. Les vues remontent notamment à 11 000, 13 000 et 100 000 ans. Ce prolongement numérique permet de comparer la formation des volcans avec le relief actuel, sans faire disparaître les roches et les paysages qui constituent le cœur du parcours.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The landscape as an exhibition</h2><p>Volcans d’Auvergne takes Vulcania’s exploration outdoors, into the panorama surrounding the park. Panels, models and volcanic rocks mark the route. Landforms and stones encountered along the way become parts of a shared account of Auvergne’s geological heritage.</p><p>The Chaîne des Puys and Limagne fault are central to this exploration. The trail recalls the site’s addition to the UNESCO World Heritage List in 2018, connecting explanations with the landscape around visitors.</p><h2>Revisiting ancient landscapes</h2><p>Since summer 2024, a smartphone experience has overlaid reconstructions of earlier periods onto the panorama. These views include landscapes from 11,000, 13,000 and 100,000 years ago. The digital addition compares the formation of the volcanoes with today’s terrain, while the actual rocks and scenery remain at the heart of the trail.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Landschaft als Ausstellung</h2><p>Volcans d’Auvergne setzt Vulcanias Entdeckungsreise im Freien fort, mitten im Panorama rund um den Park. Tafeln, Modelle und Vulkangesteine begleiten den Weg. Geländeformen und Steine werden dabei zu Teilen einer gemeinsamen Erzählung über das geologische Erbe der Auvergne.</p><p>Im Mittelpunkt stehen die Chaîne des Puys und die Limagne-Verwerfung. Der Rundgang erinnert an ihre Aufnahme in die UNESCO-Welterbeliste 2018. Die Erläuterungen beziehen sich auf die unmittelbar umgebende Landschaft.</p><h2>Frühere Landschaften wiedersehen</h2><p>Seit Sommer 2024 ergänzt ein Smartphone-Erlebnis das Panorama mit Rekonstruktionen vergangener Zeiten. Dazu gehören Ansichten von vor 11.000, 13.000 und 100.000 Jahren. Die digitale Ergänzung stellt die Entstehung der Vulkane dem heutigen Relief gegenüber; die wirklichen Gesteine und Landschaften bleiben dabei das Herzstück des Weges.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Het landschap als tentoonstelling</h2><p>Volcans d’Auvergne zet de ontdekking van Vulcania buiten voort, te midden van het panorama rond het park. Panelen, maquettes en vulkanische stenen begeleiden het parcours. De vormen van het landschap en de rotsen langs de route krijgen samen een plaats in het verhaal van het geologische erfgoed van Auvergne.</p><p>De Chaîne des Puys en de Limagnebreuk staan centraal. Het parcours herinnert aan hun opname op de UNESCO-Werelderfgoedlijst in 2018. De uitleg sluit aan bij het landschap rondom de bezoekers.</p><h2>Oude landschappen terugzien</h2><p>Sinds de zomer van 2024 legt een smartphone-ervaring reconstructies uit eerdere perioden over het panorama heen. Daaronder zijn landschappen van 11.000, 13.000 en 100.000 jaar geleden. Deze digitale aanvulling vergelijkt de vorming van de vulkanen met het huidige reliëf, terwijl de echte rotsen en uitzichten de kern van het parcours blijven.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Il paesaggio diventa una mostra</h2><p>Volcans d’Auvergne prosegue l’esplorazione di Vulcania all’aperto, a contatto con il panorama che circonda il parco. Pannelli, plastici e rocce vulcaniche scandiscono il percorso. Le forme del rilievo e le pietre incontrate entrano così in una lettura comune del patrimonio geologico dell’Alvernia.</p><p>La Chaîne des Puys e la faglia di Limagne sono al centro della scoperta. Il percorso ricorda la loro iscrizione al patrimonio mondiale dell’UNESCO nel 2018, collegando le spiegazioni al paesaggio circostante.</p><h2>Ritrovare i paesaggi antichi</h2><p>Dall’estate 2024, un’esperienza su smartphone sovrappone al panorama ricostruzioni di epoche precedenti. Le vedute risalgono, tra l’altro, a 11.000, 13.000 e 100.000 anni fa. Questa aggiunta digitale confronta la formazione dei vulcani con il rilievo attuale, lasciando alle rocce e ai paesaggi reali il ruolo centrale nel percorso.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>El paisaje se convierte en exposición</h2><p>Volcans d’Auvergne prolonga la exploración de Vulcania al aire libre, en contacto con el panorama que rodea el parque. Paneles, maquetas y rocas volcánicas jalonan el recorrido. Las formas del relieve y las piedras encontradas se integran así en una misma lectura del patrimonio geológico de Auvernia.</p><p>La Chaîne des Puys y la falla de Limagne ocupan un lugar central. El recorrido recuerda su inscripción en el patrimonio mundial de la UNESCO en 2018, vinculando las explicaciones al paisaje que rodea a los visitantes.</p><h2>Recuperar paisajes antiguos</h2><p>Desde el verano de 2024, una experiencia para teléfonos móviles superpone reconstrucciones de épocas anteriores al panorama. Incluye vistas de hace 11.000, 13.000 y 100.000 años. Esta ampliación digital compara la formación de los volcanes con el relieve actual, mientras las rocas y los paisajes reales siguen siendo el corazón del recorrido.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Krajobraz staje się wystawą</h2><p>Volcans d’Auvergne przenosi odkrywanie Vulcanii na zewnątrz, w panoramę otaczającą park. Trasę wyznaczają tablice, makiety i skały wulkaniczne. Formy terenu oraz napotykane kamienie tworzą wspólną opowieść o geologicznym dziedzictwie Owernii.</p><p>W centrum uwagi znajdują się Chaîne des Puys i uskok Limagne. Wystawa przypomina wpisanie tego obszaru na listę światowego dziedzictwa UNESCO w 2018 roku. Objaśnienia odnoszą się do krajobrazu wokół zwiedzających.</p><h2>Powrót do dawnych krajobrazów</h2><p>Od lata 2024 roku doświadczenie na smartfonie nakłada na panoramę rekonstrukcje wcześniejszych epok. Obejmują one między innymi widoki sprzed 11 000, 13 000 i 100 000 lat. Cyfrowe uzupełnienie pozwala zestawić powstawanie wulkanów z dzisiejszą rzeźbą terenu. Rzeczywiste skały i krajobrazy nadal pozostają najważniejszą częścią trasy.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A paisagem transforma-se em exposição</h2><p>Volcans d’Auvergne prolonga a exploração de Vulcania ao ar livre, em contacto com o panorama que rodeia o parque. Painéis, maquetas e rochas vulcânicas pontuam o percurso. As formas do relevo e as pedras encontradas integram uma mesma leitura do património geológico da Auvérnia.</p><p>A Chaîne des Puys e a falha de Limagne ocupam um lugar central. O percurso recorda a sua inscrição no património mundial da UNESCO em 2018, relacionando as explicações com a paisagem envolvente.</p><h2>Reencontrar paisagens antigas</h2><p>Desde o verão de 2024, uma experiência para smartphone sobrepõe ao panorama reconstituições de épocas anteriores. Inclui vistas de há 11 000, 13 000 e 100 000 anos. Este complemento digital compara a formação dos vulcões com o relevo atual, mantendo as rochas e as paisagens reais no centro do percurso.</p>"
+        }
+      ]
     },
     {
       "id": "bec6f046-3be4-4245-8681-1650e706a6e7",
@@ -1185,7 +1219,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/seismes/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La Terre sous surveillance</h2><p>Séismes, quand la Terre tremble s’intéresse aux secousses qui révèlent l’activité géologique de notre planète. L’exposition relie ces phénomènes à la tectonique des plaques et confronte leur place dans l’histoire de la Terre à leurs conséquences pour les populations. La France trouve sa place dans cette lecture mondiale du risque sismique.</p><p>Les appareils de mesure et les différentes ondes sismiques constituent des fils conducteurs de la découverte. Expériences et démonstrations permettent d’aborder ce que la sismologie apprend sur l’intérieur du globe, tout en retraçant l’évolution de l’étude des tremblements de terre.</p><h2>Des scientifiques aux sauveteurs</h2><p>Le parcours présente aussi les personnes qui observent les séismes, préviennent leurs effets ou interviennent après les secousses. Lors des visites accompagnées, un animateur scientifique reprend les questions soulevées par les ondes, les appareils de mesure et la protection des populations. La recherche et les secours apparaissent ainsi comme deux réponses humaines à une même Terre en mouvement.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Watching a restless Earth</h2><p>Séismes, quand la Terre tremble examines the tremors that reveal our planet’s geological activity. The exhibition connects earthquakes with plate tectonics, setting their role in Earth’s history alongside their consequences for people. France features within this worldwide picture of seismic risk.</p><p>Measuring instruments and different kinds of seismic waves guide the exploration. Experiments and demonstrations address what seismology reveals about the planet’s interior, while tracing how the study of earthquakes has developed over time.</p><h2>From scientists to rescuers</h2><p>The exhibition also considers those who monitor earthquakes, work to reduce their effects or respond after a disaster. During guided visits, a science presenter explores questions raised by seismic waves, measuring instruments and protecting communities. Research and rescue emerge as two human responses to the same restless Earth.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die unruhige Erde beobachten</h2><p>Séismes, quand la Terre tremble widmet sich den Erschütterungen, die von der geologischen Aktivität unseres Planeten zeugen. Die Ausstellung verbindet Erdbeben mit der Plattentektonik und stellt ihrer Rolle in der Erdgeschichte die Folgen für Menschen gegenüber. Auch Frankreich gehört zu diesem weltweiten Blick auf das Erdbebenrisiko.</p><p>Messgeräte und unterschiedliche seismische Wellen bilden wichtige Themen des Rundgangs. Experimente und Vorführungen zeigen, was die Seismologie über das Erdinnere verrät. Zugleich wird nachvollziehbar, wie sich die Erforschung von Erdbeben im Laufe der Zeit verändert hat.</p><h2>Forschung und Rettung</h2><p>Die Ausstellung stellt auch Menschen vor, die Erdbeben beobachten, Vorsorge betreiben oder nach Erschütterungen Hilfe leisten. Bei Führungen erläutert ein Wissenschaftsvermittler Fragen zu seismischen Wellen, Messgeräten und dem Schutz der Bevölkerung. Forschung und Rettung erscheinen so als zwei menschliche Antworten auf dieselbe unruhige Erde.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een onrustige aarde volgen</h2><p>Séismes, quand la Terre tremble gaat over de schokken die de geologische activiteit van onze planeet zichtbaar maken. De tentoonstelling verbindt aardbevingen met platentektoniek en plaatst hun rol in de geschiedenis van de aarde naast hun gevolgen voor mensen. Frankrijk maakt deel uit van dit wereldwijde beeld van aardbevingsrisico’s.</p><p>Meetinstrumenten en verschillende soorten seismische golven vormen een leidraad. Proeven en demonstraties laten zien wat seismologie over het binnenste van de aarde vertelt. Daarbij komt ook de ontwikkeling van het onderzoek naar aardbevingen aan bod.</p><h2>Van onderzoekers tot reddingswerkers</h2><p>De tentoonstelling belicht mensen die aardbevingen volgen, de gevolgen proberen te beperken of na een ramp hulp bieden. Tijdens rondleidingen bespreekt een wetenschapsmedewerker vragen over seismische golven, meetinstrumenten en de bescherming van de bevolking. Onderzoek en reddingswerk tonen zo twee menselijke reacties op dezelfde onrustige aarde.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La Terra sotto osservazione</h2><p>Séismes, quand la Terre tremble affronta le scosse che rivelano l’attività geologica del pianeta. La mostra collega i terremoti alla tettonica delle placche, accostando il loro ruolo nella storia della Terra alle conseguenze per le persone. Anche la Francia trova spazio in questa lettura mondiale del rischio sismico.</p><p>Gli strumenti di misura e i diversi tipi di onde sismiche guidano la scoperta. Esperimenti e dimostrazioni illustrano ciò che la sismologia rivela sull’interno del globo, ripercorrendo al tempo stesso l’evoluzione degli studi sui terremoti.</p><h2>Dagli scienziati ai soccorritori</h2><p>Il percorso presenta anche chi osserva i sismi, lavora alla prevenzione o interviene dopo le scosse. Durante le visite guidate, un animatore scientifico approfondisce le domande sulle onde sismiche, sugli strumenti di misura e sulla protezione delle persone. Ricerca e soccorso emergono come due risposte umane alla stessa Terra in movimento.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La Tierra bajo observación</h2><p>Séismes, quand la Terre tremble aborda las sacudidas que revelan la actividad geológica del planeta. La exposición relaciona los terremotos con la tectónica de placas y contrapone su papel en la historia de la Tierra a sus consecuencias para las personas. Francia forma parte de esta visión mundial del riesgo sísmico.</p><p>Los instrumentos de medida y los distintos tipos de ondas sísmicas sirven de hilo conductor. Experimentos y demostraciones explican lo que la sismología revela sobre el interior del globo, mientras recorren la evolución del estudio de los terremotos.</p><h2>De los científicos a los equipos de rescate</h2><p>El recorrido presenta también a quienes observan los sismos, trabajan en la prevención o intervienen tras las sacudidas. Durante las visitas guiadas, un divulgador científico aborda las preguntas sobre las ondas sísmicas, los instrumentos de medida y la protección de la población. La investigación y el rescate aparecen como dos respuestas humanas a la misma Tierra en movimiento.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Ziemia pod obserwacją</h2><p>Séismes, quand la Terre tremble opowiada o wstrząsach ujawniających aktywność geologiczną naszej planety. Wystawa łączy trzęsienia ziemi z tektoniką płyt, zestawiając ich rolę w dziejach Ziemi ze skutkami dla ludzi. Francja stanowi część tego światowego obrazu zagrożenia sejsmicznego.</p><p>Przyrządy pomiarowe i różne rodzaje fal sejsmicznych wyznaczają ważne wątki ekspozycji. Doświadczenia i pokazy przybliżają wiedzę, jaką sejsmologia przynosi o wnętrzu globu. Opowieść obejmuje również rozwój badań nad trzęsieniami ziemi.</p><h2>Od naukowców do ratowników</h2><p>Ekspozycja przedstawia osoby obserwujące wstrząsy, ograniczające ich skutki i niosące pomoc po katastrofie. Podczas zwiedzania z popularyzatorem nauki pojawiają się pytania o fale sejsmiczne, przyrządy pomiarowe i ochronę ludności. Badania i ratownictwo ukazują dwie ludzkie odpowiedzi na tę samą niespokojną Ziemię.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A Terra sob observação</h2><p>Séismes, quand la Terre tremble aborda os abalos que revelam a atividade geológica do planeta. A exposição relaciona os sismos com a tectónica de placas e confronta o seu papel na história da Terra com as consequências para as pessoas. A França integra esta perspetiva mundial do risco sísmico.</p><p>Os instrumentos de medição e os diferentes tipos de ondas sísmicas orientam a descoberta. Experiências e demonstrações apresentam o que a sismologia revela sobre o interior do globo, acompanhando também a evolução do estudo dos terramotos.</p><h2>Dos cientistas às equipas de socorro</h2><p>O percurso apresenta ainda quem observa os sismos, trabalha na prevenção ou intervém após os abalos. Nas visitas guiadas, um animador científico explora as questões levantadas pelas ondas sísmicas, pelos instrumentos de medição e pela proteção das populações. A investigação e o socorro surgem como duas respostas humanas à mesma Terra em movimento.</p>"
+        }
+      ]
     },
     {
       "id": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
@@ -1294,7 +1362,41 @@
         "sourceUrl": "https://www.vulcania.com/animation/expedition-hawai/",
         "durationInSeconds": 900,
         "openingDate": "2026"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La mission de Lila</h2><p>Sous une verrière, une arche en bois portant le nom de l’expédition et une végétation abondante annoncent le départ vers Hawaï. Lila, la volcanologue qui accompagne l’aventure, entraîne ses visiteurs au plus près d’un paysage de lave : la mission consiste à surfer sur un lac incandescent et à suivre ses coulées.</p><p>Dans le module d’exploration, les grandes images de reliefs volcaniques et de lave rougeoyante entourent le groupe. Les décors et les effets spéciaux donnent à cette rencontre avec le volcanisme hawaïen la forme d’une aventure en plusieurs étapes, où l’explication scientifique se mêle à la fiction.</p><h2>Une nouvelle expédition en 2026</h2><p>Cette aventure prend la suite d’Abyss Explorer en 2026. L’univers des profondeurs océaniques laisse place aux coulées d’Hawaï, avec une nouvelle guide et un récit centré sur la lave. Ce changement de destination renouvelle l’histoire racontée dans cet espace de Vulcania.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Lila’s mission</h2><p>Beneath a glass roof, a wooden arch bearing the expedition’s name rises amid lush planting. It introduces the journey to Hawaii, led by volcanologist Lila. Her mission brings visitors close to a landscape of molten rock, surfing across a lava lake and following its glowing flows.</p><p>Inside the exploration module, large images of volcanic terrain and red-hot lava surround the group. Sets and special effects turn Hawaiian volcanism into an adventure unfolding through several stages, combining scientific explanation with a fictional expedition.</p><h2>A new expedition in 2026</h2><p>The experience succeeds Abyss Explorer in 2026. Ocean depths give way to Hawaiian lava flows, with a new guide and a different story. This change of destination reshapes the adventure told within this part of Vulcania.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Lilas Forschungsreise</h2><p>Unter einem Glasdach erhebt sich zwischen üppigen Pflanzen ein Holzbogen mit dem Namen der Expedition. Hier beginnt die Reise nach Hawaii unter der Leitung der Vulkanologin Lila. Sie führt ihre Gäste in eine Landschaft aus glühendem Gestein: Die Mission folgt Lavaströmen und führt surfend über einen Lavasee.</p><p>Im Erkundungsmodul umgeben großflächige Bilder vulkanischer Landschaften und rot leuchtender Lava die Gruppe. Kulissen und Spezialeffekte machen den hawaiianischen Vulkanismus zum Schauplatz eines mehrteiligen Abenteuers. Wissenschaftliche Erklärungen verbinden sich dabei mit einer erfundenen Expedition.</p><h2>Eine neue Expedition ab 2026</h2><p>Das Erlebnis löst 2026 Abyss Explorer ab. An die Stelle der Meerestiefen treten Hawaiis Lavaströme, begleitet von einer neuen Führungsfigur und einer anderen Geschichte. Der Wechsel des Reiseziels gibt diesem Bereich von Vulcania eine neue Erzählung.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De missie van Lila</h2><p>Onder een glazen dak staat tussen weelderige planten een houten boog met de naam van de expeditie. Hier begint de reis naar Hawaï onder leiding van vulkanoloog Lila. Haar missie voert bezoekers door een landschap van gloeiend gesteente, surfend over een lavameer en langs vurige lavastromen.</p><p>In de verkenningsmodule wordt de groep omringd door grote beelden van vulkanische landschappen en roodgloeiende lava. Decors en speciale effecten vormen een avontuur in verschillende etappes. Wetenschappelijke uitleg over het Hawaïaanse vulkanisme krijgt zo een plaats binnen een fictieve expeditie.</p><h2>Een nieuwe expeditie in 2026</h2><p>Deze ervaring volgt Abyss Explorer op in 2026. De oceaandiepten maken plaats voor de lavastromen van Hawaï, met een nieuwe gids en een ander verhaal. De nieuwe bestemming verandert het avontuur dat in dit deel van Vulcania wordt verteld.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La missione di Lila</h2><p>Sotto una copertura di vetro, un arco di legno con il nome della spedizione emerge tra piante rigogliose. Introduce il viaggio alle Hawaii, guidato dalla vulcanologa Lila. La sua missione porta i visitatori in un paesaggio di roccia incandescente, a surfare su un lago di lava e a seguirne le colate.</p><p>Nel modulo di esplorazione, grandi immagini di rilievi vulcanici e lava rovente circondano il gruppo. Scenografie ed effetti speciali trasformano il vulcanismo hawaiano in un’avventura articolata in più tappe, nella quale le spiegazioni scientifiche si intrecciano con una spedizione immaginaria.</p><h2>Una nuova spedizione nel 2026</h2><p>L’esperienza prende il posto di Abyss Explorer nel 2026. Le profondità oceaniche lasciano spazio alle colate delle Hawaii, con una nuova guida e un racconto diverso. Il cambio di destinazione rinnova la storia narrata in questo spazio di Vulcania.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La misión de Lila</h2><p>Bajo una cubierta de cristal, un arco de madera con el nombre de la expedición se alza entre una vegetación abundante. Anuncia el viaje a Hawái, guiado por la vulcanóloga Lila. Su misión lleva a los visitantes a un paisaje de roca incandescente, surfeando sobre un lago de lava y siguiendo sus coladas.</p><p>En el módulo de exploración, grandes imágenes de relieves volcánicos y lava al rojo vivo rodean al grupo. Los decorados y los efectos especiales convierten el vulcanismo hawaiano en una aventura con varias etapas, donde la explicación científica se entrelaza con una expedición ficticia.</p><h2>Una nueva expedición en 2026</h2><p>La experiencia sucede a Abyss Explorer en 2026. Las profundidades oceánicas dan paso a las coladas de Hawái, con una nueva guía y una historia diferente. El cambio de destino renueva el relato de este espacio de Vulcania.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Misja Lili</h2><p>Pod szklanym dachem, wśród bujnej roślinności, stoi drewniany łuk z nazwą wyprawy. To początek podróży na Hawaje prowadzonej przez wulkanolożkę Lilę. Jej misja zabiera uczestników w krajobraz rozżarzonej skały: na surfing po jeziorze lawy i wędrówkę wzdłuż jej płynących strumieni.</p><p>W module badawczym grupę otaczają wielkie obrazy wulkanicznych krajobrazów i czerwonej lawy. Scenografia oraz efekty specjalne zmieniają hawajski wulkanizm w przygodę złożoną z kilku etapów. Naukowe objaśnienia towarzyszą tu fikcyjnej ekspedycji.</p><h2>Nowa wyprawa w 2026 roku</h2><p>Atrakcja zastępuje Abyss Explorer w 2026 roku. Oceaniczne głębiny ustępują miejsca hawajskim potokom lawy, nowej przewodniczce i odmiennej opowieści. Zmiana celu podróży nadaje nowy charakter historii rozgrywającej się w tej części Vulcanii.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A missão de Lila</h2><p>Sob uma cobertura de vidro, um arco de madeira com o nome da expedição ergue-se entre plantas abundantes. Anuncia a viagem ao Havai, orientada pela vulcanóloga Lila. A sua missão leva os visitantes a uma paisagem de rocha incandescente, a surfar num lago de lava e a acompanhar as suas escoadas.</p><p>No módulo de exploração, grandes imagens de relevos vulcânicos e lava em brasa envolvem o grupo. Os cenários e os efeitos especiais transformam o vulcanismo havaiano numa aventura com várias etapas, em que a explicação científica se cruza com uma expedição fictícia.</p><h2>Uma nova expedição em 2026</h2><p>A experiência sucede a Abyss Explorer em 2026. As profundezas oceânicas dão lugar às escoadas do Havai, com uma nova guia e uma história diferente. A mudança de destino renova a narrativa deste espaço de Vulcania.</p>"
+        }
+      ]
     },
     {
       "id": "12128369-e7ee-4498-a97a-1bfa2a470b10",
@@ -5518,6 +5620,650 @@
       "key": "5c5c7f0bde5f4bd58eb3ab3ede97d9eb",
       "imageId": "5c5c7f0bde5f4bd58eb3ab3ede97d9eb",
       "ownerKey": "bec6f046-3be4-4245-8681-1650e706a6e7"
+    },
+    {
+      "id": "d6206d2553ad4eccbc08f8b6184be024",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "path": "park_item/d6206d2553ad4eccbc08f8b6184be024",
+      "description": "Quelques marches passent sous l’arche, à côté d’une silhouette d’explorateur et de la végétation de la serre.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 980,
+      "height": 735,
+      "sizeInBytes": 338499,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://static.wixstatic.com/media/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg/v1/fill/w_980,h_735,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Arche en bois portant l’enseigne Expédition Hawaï au milieu des fougères, sous une verrière."
+        },
+        {
+          "languageCode": "en",
+          "value": "Wooden arch bearing the Expédition Hawaï sign among ferns beneath a glass roof."
+        },
+        {
+          "languageCode": "de",
+          "value": "Holzbogen mit dem Schild Expédition Hawaï zwischen Farnen unter einem Glasdach."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Houten boog met het bord Expédition Hawaï tussen varens onder een glazen dak."
+        },
+        {
+          "languageCode": "it",
+          "value": "Arco di legno con l’insegna Expédition Hawaï tra felci sotto una copertura di vetro."
+        },
+        {
+          "languageCode": "es",
+          "value": "Arco de madera con el letrero Expédition Hawaï entre helechos bajo una cubierta de cristal."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Drewniany łuk z szyldem Expédition Hawaï wśród paproci pod szklanym dachem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Arco de madeira com a placa Expédition Hawaï entre fetos sob uma cobertura de vidro."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Quelques marches passent sous l’arche, à côté d’une silhouette d’explorateur et de la végétation de la serre."
+        },
+        {
+          "languageCode": "en",
+          "value": "Steps lead beneath the arch beside an explorer cutout and the greenhouse planting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Stufen führen unter dem Bogen hindurch, neben einer Entdeckerfigur und den Pflanzen des Gewächshauses."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Treden voeren onder de boog door, langs een uitgesneden ontdekkingsreiziger en de planten in de kas."
+        },
+        {
+          "languageCode": "it",
+          "value": "Alcuni gradini passano sotto l’arco, accanto alla sagoma di un esploratore e alle piante della serra."
+        },
+        {
+          "languageCode": "es",
+          "value": "Unos escalones pasan bajo el arco, junto a la silueta de un explorador y las plantas del invernadero."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Schodki prowadzą pod łukiem, obok sylwetki odkrywcy i roślin w szklarni."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Alguns degraus passam sob o arco, junto da figura recortada de um explorador e das plantas da estufa."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie publiée par Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph published by Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto veröffentlicht von Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto gepubliceerd door Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia pubblicata da Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía publicada por Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia opublikowana przez Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia publicada pela Parcs & Loisirs Magazine."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:38:18.47Z",
+      "updatedAt": "2026-11-15T18:38:21.995Z",
+      "key": "d6206d2553ad4eccbc08f8b6184be024",
+      "imageId": "d6206d2553ad4eccbc08f8b6184be024",
+      "ownerKey": "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+    },
+    {
+      "id": "6a45d27a89084fb690e5caa8bcdda23b",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "path": "park_item/6a45d27a89084fb690e5caa8bcdda23b",
+      "description": "La vue de profil montre le groupe au garde-corps, éclairé de bleu, face au paysage volcanique projeté.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1920,
+      "height": 1440,
+      "sizeInBytes": 281289,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://static.wixstatic.com/media/1150bb_9643744f016c4f468dda5d16ea7b2b47~mv2.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Trois visiteurs devant des écrans montrant des coulées de lave dans Expédition Hawaï."
+        },
+        {
+          "languageCode": "en",
+          "value": "Three visitors facing screens showing lava flows inside Expédition Hawaï."
+        },
+        {
+          "languageCode": "de",
+          "value": "Drei Besucher vor Bildschirmen mit Lavaströmen in Expédition Hawaï."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Drie bezoekers voor schermen met lavastromen in Expédition Hawaï."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tre visitatori davanti a schermi con colate di lava in Expédition Hawaï."
+        },
+        {
+          "languageCode": "es",
+          "value": "Tres visitantes ante pantallas con coladas de lava en Expédition Hawaï."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Troje zwiedzających przed ekranami z potokami lawy w Expédition Hawaï."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Três visitantes diante de ecrãs com escoadas de lava em Expédition Hawaï."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La vue de profil montre le groupe au garde-corps, éclairé de bleu, face au paysage volcanique projeté."
+        },
+        {
+          "languageCode": "en",
+          "value": "This side view shows the group at the railing in blue light, facing the projected volcanic landscape."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Seitenansicht zeigt die Gruppe im blauen Licht am Geländer vor der projizierten Vulkanlandschaft."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het zijaanzicht toont de groep bij de reling in blauw licht, voor het geprojecteerde vulkaanlandschap."
+        },
+        {
+          "languageCode": "it",
+          "value": "La vista laterale mostra il gruppo alla ringhiera, illuminato di blu, davanti al paesaggio vulcanico proiettato."
+        },
+        {
+          "languageCode": "es",
+          "value": "La vista lateral muestra al grupo junto a la barandilla, iluminado de azul, ante el paisaje volcánico proyectado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok z boku ukazuje grupę przy poręczy, w niebieskim świetle, przed wyświetlanym krajobrazem wulkanicznym."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A vista lateral mostra o grupo junto ao corrimão, iluminado a azul, diante da paisagem vulcânica projetada."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie publiée par Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph published by Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto veröffentlicht von Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto gepubliceerd door Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia pubblicata da Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía publicada por Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia opublikowana przez Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia publicada pela Parcs & Loisirs Magazine."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:38:37.224Z",
+      "updatedAt": "2026-11-15T18:38:40.961Z",
+      "key": "6a45d27a89084fb690e5caa8bcdda23b",
+      "imageId": "6a45d27a89084fb690e5caa8bcdda23b",
+      "ownerKey": "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+    },
+    {
+      "id": "bc84977c466245e7827273c42abd2220",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "path": "park_item/bc84977c466245e7827273c42abd2220",
+      "description": "La lumière rouge des projections se reflète au plafond au-dessus du groupe installé derrière les garde-corps.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1920,
+      "height": 1440,
+      "sizeInBytes": 250021,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://static.wixstatic.com/media/1150bb_aa52c4b33a4248c39780ca88c5b35141~mv2.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs vus de dos devant deux grands écrans de lave orangée dans Expédition Hawaï."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors seen from behind facing two large screens of orange lava inside Expédition Hawaï."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher von hinten vor zwei großen Bildschirmen mit orangefarbener Lava in Expédition Hawaï."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers van achteren gezien voor twee grote schermen met oranje lava in Expédition Hawaï."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori visti da dietro davanti a due grandi schermi di lava arancione in Expédition Hawaï."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes vistos de espaldas ante dos grandes pantallas de lava anaranjada en Expédition Hawaï."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zwiedzający widziani od tyłu przed dwoma dużymi ekranami z pomarańczową lawą w Expédition Hawaï."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes vistos de costas diante de dois grandes ecrãs de lava alaranjada em Expédition Hawaï."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La lumière rouge des projections se reflète au plafond au-dessus du groupe installé derrière les garde-corps."
+        },
+        {
+          "languageCode": "en",
+          "value": "Red light from the projections reflects on the ceiling above the group behind the railings."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das rote Licht der Projektionen spiegelt sich an der Decke über der Gruppe hinter den Geländern."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het rode licht van de projecties weerkaatst op het plafond boven de groep achter de relingen."
+        },
+        {
+          "languageCode": "it",
+          "value": "La luce rossa delle proiezioni si riflette sul soffitto sopra il gruppo dietro le ringhiere."
+        },
+        {
+          "languageCode": "es",
+          "value": "La luz roja de las proyecciones se refleja en el techo sobre el grupo situado tras las barandillas."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone światło projekcji odbija się na suficie nad grupą stojącą za poręczami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A luz vermelha das projeções reflete-se no teto acima do grupo atrás dos corrimões."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie publiée par Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph published by Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto veröffentlicht von Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto gepubliceerd door Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia pubblicata da Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía publicada por Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia opublikowana przez Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia publicada pela Parcs & Loisirs Magazine."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:38:49.525Z",
+      "updatedAt": "2026-11-15T18:38:53.034Z",
+      "key": "bc84977c466245e7827273c42abd2220",
+      "imageId": "bc84977c466245e7827273c42abd2220",
+      "ownerKey": "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+    },
+    {
+      "id": "659517b47e5f4b5a95c9eb439c0b7263",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+      "path": "park_item/659517b47e5f4b5a95c9eb439c0b7263",
+      "description": "Des sangles et des équipements rouges accompagnent les boîtes de nourriture, sous des photographies consacrées aux secours.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 119346,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/header-expo-seismes_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vitrine de l’exposition Séismes avec un casque orange, du matériel de secours et des provisions sur un fond bleu."
+        },
+        {
+          "languageCode": "en",
+          "value": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vitrine der Ausstellung Séismes mit orangefarbenem Helm, Rettungsausrüstung und Proviant vor blauem Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vitrine in de tentoonstelling Séismes met een oranje helm, reddingsmateriaal en proviand tegen een blauwe achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vetrina della mostra Séismes con casco arancione, attrezzature di soccorso e provviste su sfondo blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vitrina de la exposición Séismes con casco naranja, material de rescate y provisiones sobre fondo azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Gablota wystawy Séismes z pomarańczowym kaskiem, sprzętem ratowniczym i zapasami żywności na niebieskim tle."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vitrina da exposição Séismes com capacete laranja, equipamento de socorro e provisões sobre fundo azul."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des sangles et des équipements rouges accompagnent les boîtes de nourriture, sous des photographies consacrées aux secours."
+        },
+        {
+          "languageCode": "en",
+          "value": "Red straps and equipment sit beside food tins beneath photographs about rescue work."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rote Gurte und Ausrüstungsgegenstände liegen neben Konservendosen unter Fotos von Rettungseinsätzen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rode banden en uitrusting liggen naast voedselblikken, onder foto’s over reddingswerk."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cinghie e attrezzature rosse affiancano le scatole di cibo, sotto fotografie dedicate ai soccorsi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Correas y equipos rojos acompañan las latas de comida, bajo fotografías dedicadas a las labores de rescate."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone pasy i elementy wyposażenia leżą obok puszek z żywnością, pod zdjęciami poświęconymi akcjom ratunkowym."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cintas e equipamentos vermelhos acompanham as latas de comida, sob fotografias dedicadas ao socorro."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:43:21.23Z",
+      "updatedAt": "2026-11-15T18:43:24.833Z",
+      "key": "659517b47e5f4b5a95c9eb439c0b7263",
+      "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+      "ownerKey": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a"
+    },
+    {
+      "id": "d1b3a21b0ac347ca8570153a9b873f32",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "69045c46-360e-4fed-890b-f4c64b39c415",
+      "path": "park_item/d1b3a21b0ac347ca8570153a9b873f32",
+      "description": "Les panneaux « Qu’est-ce qu’un volcan ? » et « Les cônes de scories » ponctuent la pelouse au pied du bâtiment conique.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 214686,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/02/volcans-dauvergne_3000x1100-1-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Panneaux rouges et maquette en coupe d’un volcan sur le parcours extérieur Volcans d’Auvergne, avec le cône de Vulcania en arrière-plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "Red panels and a cutaway volcano model on the outdoor Volcans d’Auvergne trail, with Vulcania’s cone behind."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rote Tafeln und ein aufgeschnittenes Vulkanmodell auf dem Außenrundgang Volcans d’Auvergne, mit Vulcanias Kegel im Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rode panelen en een doorsnedemodel van een vulkaan op het buitenparcours Volcans d’Auvergne, met de kegel van Vulcania erachter."
+        },
+        {
+          "languageCode": "it",
+          "value": "Pannelli rossi e un modello in sezione di un vulcano lungo il percorso esterno Volcans d’Auvergne, con il cono di Vulcania sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Paneles rojos y una maqueta seccionada de un volcán en el recorrido exterior Volcans d’Auvergne, con el cono de Vulcania al fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone tablice i przekrój modelu wulkanu na plenerowej trasie Volcans d’Auvergne, ze stożkiem Vulcanii w tle."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Painéis vermelhos e uma maqueta em corte de um vulcão no percurso exterior Volcans d’Auvergne, com o cone de Vulcania ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les panneaux « Qu’est-ce qu’un volcan ? » et « Les cônes de scories » ponctuent la pelouse au pied du bâtiment conique."
+        },
+        {
+          "languageCode": "en",
+          "value": "Panels titled “What is a volcano?” and “Scoria cones” stand on the lawn below the conical building."
+        },
+        {
+          "languageCode": "de",
+          "value": "Tafeln mit den Themen „Was ist ein Vulkan?“ und „Schlackenkegel“ stehen auf der Rasenfläche vor dem kegelförmigen Gebäude."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Panelen over “Wat is een vulkaan?” en “Slakkenkegels” staan op het grasveld bij het kegelvormige gebouw."
+        },
+        {
+          "languageCode": "it",
+          "value": "I pannelli «Che cos’è un vulcano?» e «I coni di scorie» scandiscono il prato ai piedi dell’edificio conico."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los paneles «¿Qué es un volcán?» y «Los conos de escoria» se distribuyen por el césped al pie del edificio cónico."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Tablice „Czym jest wulkan?” i „Stożki żużlowe” stoją na trawniku u stóp stożkowatego budynku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os painéis «O que é um vulcão?» e «Os cones de escórias» pontuam o relvado junto ao edifício cónico."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:43:31.58Z",
+      "updatedAt": "2026-11-15T18:43:35.202Z",
+      "key": "d1b3a21b0ac347ca8570153a9b873f32",
+      "imageId": "d1b3a21b0ac347ca8570153a9b873f32",
+      "ownerKey": "69045c46-360e-4fed-890b-f4c64b39c415"
     }
   ],
   "history": {

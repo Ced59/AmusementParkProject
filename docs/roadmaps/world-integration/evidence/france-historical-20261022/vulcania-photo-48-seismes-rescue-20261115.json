@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-48-seismes-rescue",
+    "ownerId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+    "itemName": "Séismes, quand la Terre tremble",
+    "current": true,
+    "source": {
+      "key": "seismes-hero",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/05/header-expo-seismes_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/seismes/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/seismes-hero-1845.jpg",
+      "http": 200,
+      "bytes": 119346,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "6dca363687ce41ed916def8970b4243eeaab205962f58bb9465b24f9bda7552d",
+      "accessedAtUtc": "2026-11-15T18:42:01.542728+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Original individually viewed; actual exhibition photographed. Rescue case is not a disaster photograph; outdoor trail panel titles visible. Forty-eight metadata fields personally authored/reviewed. Digital smartphone landscape composite excluded, not a real visitor photo. No pixel editing or capture date inferred."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/header-expo-seismes_3000x1100-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/seismes-hero-1845.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-48-seismes-rescue-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-48-seismes-rescue-import-result.json"
+  },
+  "metadata": {
+    "description": "Des sangles et des équipements rouges accompagnent les boîtes de nourriture, sous des photographies consacrées aux secours.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/header-expo-seismes_3000x1100-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vitrine de l’exposition Séismes avec un casque orange, du matériel de secours et des provisions sur un fond bleu."
+      },
+      {
+        "languageCode": "en",
+        "value": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background."
+      },
+      {
+        "languageCode": "de",
+        "value": "Vitrine der Ausstellung Séismes mit orangefarbenem Helm, Rettungsausrüstung und Proviant vor blauem Hintergrund."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vitrine in de tentoonstelling Séismes met een oranje helm, reddingsmateriaal en proviand tegen een blauwe achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vetrina della mostra Séismes con casco arancione, attrezzature di soccorso e provviste su sfondo blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vitrina de la exposición Séismes con casco naranja, material de rescate y provisiones sobre fondo azul."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Gablota wystawy Séismes z pomarańczowym kaskiem, sprzętem ratowniczym i zapasami żywności na niebieskim tle."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vitrina da exposição Séismes com capacete laranja, equipamento de socorro e provisões sobre fundo azul."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des sangles et des équipements rouges accompagnent les boîtes de nourriture, sous des photographies consacrées aux secours."
+      },
+      {
+        "languageCode": "en",
+        "value": "Red straps and equipment sit beside food tins beneath photographs about rescue work."
+      },
+      {
+        "languageCode": "de",
+        "value": "Rote Gurte und Ausrüstungsgegenstände liegen neben Konservendosen unter Fotos von Rettungseinsätzen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Rode banden en uitrusting liggen naast voedselblikken, onder foto’s over reddingswerk."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cinghie e attrezzature rosse affiancano le scatole di cibo, sotto fotografie dedicate ai soccorsi."
+      },
+      {
+        "languageCode": "es",
+        "value": "Correas y equipos rojos acompañan las latas de comida, bajo fotografías dedicadas a las labores de rescate."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Czerwone pasy i elementy wyposażenia leżą obok puszek z żywnością, pod zdjęciami poświęconymi akcjom ratunkowym."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cintas e equipamentos vermelhos acompanham as latas de comida, sob fotografias dedicadas ao socorro."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T18:43:19.1867340Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "659517b47e5f4b5a95c9eb439c0b7263",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+      "path": "park_item/659517b47e5f4b5a95c9eb439c0b7263",
+      "description": "Des sangles et des équipements rouges accompagnent les boîtes de nourriture, sous des photographies consacrées aux secours.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 119346,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/header-expo-seismes_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vitrine de l’exposition Séismes avec un casque orange, du matériel de secours et des provisions sur un fond bleu."
+        },
+        {
+          "languageCode": "en",
+          "value": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vitrine der Ausstellung Séismes mit orangefarbenem Helm, Rettungsausrüstung und Proviant vor blauem Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vitrine in de tentoonstelling Séismes met een oranje helm, reddingsmateriaal en proviand tegen een blauwe achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vetrina della mostra Séismes con casco arancione, attrezzature di soccorso e provviste su sfondo blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vitrina de la exposición Séismes con casco naranja, material de rescate y provisiones sobre fondo azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Gablota wystawy Séismes z pomarańczowym kaskiem, sprzętem ratowniczym i zapasami żywności na niebieskim tle."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vitrina da exposição Séismes com capacete laranja, equipamento de socorro e provisões sobre fundo azul."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des sangles et des équipements rouges accompagnent les boîtes de nourriture, sous des photographies consacrées aux secours."
+        },
+        {
+          "languageCode": "en",
+          "value": "Red straps and equipment sit beside food tins beneath photographs about rescue work."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rote Gurte und Ausrüstungsgegenstände liegen neben Konservendosen unter Fotos von Rettungseinsätzen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rode banden en uitrusting liggen naast voedselblikken, onder foto’s over reddingswerk."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cinghie e attrezzature rosse affiancano le scatole di cibo, sotto fotografie dedicate ai soccorsi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Correas y equipos rojos acompañan las latas de comida, bajo fotografías dedicadas a las labores de rescate."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone pasy i elementy wyposażenia leżą obok puszek z żywnością, pod zdjęciami poświęconymi akcjom ratunkowym."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cintas e equipamentos vermelhos acompanham as latas de comida, sob fotografias dedicadas ao socorro."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:43:21.23Z",
+      "updatedAt": "2026-11-15T18:43:24.833Z"
+    },
+    "receivedAtUtc": "2026-11-15T18:43:27.9457963Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

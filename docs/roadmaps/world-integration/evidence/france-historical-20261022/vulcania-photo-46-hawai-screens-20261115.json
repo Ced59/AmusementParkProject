@@ -1,0 +1,303 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-46-hawai-screens",
+    "ownerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+    "itemName": "Expédition Hawaï",
+    "current": true,
+    "source": {
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/hawai-screens-vulcania-magazine.jpg",
+      "url": "https://static.wixstatic.com/media/1150bb_aa52c4b33a4248c39780ca88c5b35141~mv2.jpg",
+      "sourcePageLocal": "hawai-press-magazine.html",
+      "captionOrAlt": "Des visiteurs face aux écrans d’Expédition Hawaï",
+      "status": 200,
+      "resolvedUrl": "https://static.wixstatic.com/media/1150bb_aa52c4b33a4248c39780ca88c5b35141~mv2.jpg",
+      "utc": "2026-11-15T13:58:43.078565+00:00",
+      "bytes": 250021,
+      "width": 1920,
+      "height": 1440,
+      "sha256": "35efb034cf0ad42cf45884c790c1c4aeb1aba4eb9b73596d55ef8fbb7ecebaee",
+      "exif": {},
+      "captureDate": null,
+      "nativePublisherBytes": true,
+      "localPixelTransformation": false,
+      "under960KiB": true,
+      "visualReviewCompleted": true,
+      "qualification": "qualified-current-photo",
+      "suggestedIdentityOnly": "Expédition Hawaï",
+      "visualObservation": "Visiteurs vus de dos devant deux écrans orangés de lave, garde-corps et structure de salle. Exposition/angle distincts de la vue de profil, pas simple variante.",
+      "rights": {
+        "openLicenseEstablished": false,
+        "individualPhotographer": null
+      },
+      "credit": "Vulcania (crédit photographique explicite de Parcs & Loisirs Magazine)",
+      "watermarkVisible": false,
+      "newImportAuthorizedByThisReport": false,
+      "dimensions": [
+        1920,
+        1440
+      ],
+      "sourcePage": "https://www.parcsloisirsmagazine.com/post/vulcania-une-saison-2026-en-l%C3%A9ger-recul-mais-riche-en-nouveaut%C3%A9s-avant-ses-25-ans"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; Vulcania credit explicitly supplied by publisher, no open licence claimed.",
+    "qualification": "Personally inspected genuine photograph of current Hawaii experience. Three different views; entrance is native publisher 980px variant of oversized original, no local editing or duplicate of original. Former Abyss image remains attached to historical item. Seventy-two metadata fields personally authored/reviewed."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "SourceUrl": "https://static.wixstatic.com/media/1150bb_aa52c4b33a4248c39780ca88c5b35141~mv2.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/hawai-screens-vulcania-magazine.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-46-hawai-screens-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-46-hawai-screens-import-result.json"
+  },
+  "metadata": {
+    "description": "La lumière rouge des projections se reflète au plafond au-dessus du groupe installé derrière les garde-corps.",
+    "sourceUrl": "https://static.wixstatic.com/media/1150bb_aa52c4b33a4248c39780ca88c5b35141~mv2.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Visiteurs vus de dos devant deux grands écrans de lave orangée dans Expédition Hawaï."
+      },
+      {
+        "languageCode": "en",
+        "value": "Visitors seen from behind facing two large screens of orange lava inside Expédition Hawaï."
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher von hinten vor zwei großen Bildschirmen mit orangefarbener Lava in Expédition Hawaï."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers van achteren gezien voor twee grote schermen met oranje lava in Expédition Hawaï."
+      },
+      {
+        "languageCode": "it",
+        "value": "Visitatori visti da dietro davanti a due grandi schermi di lava arancione in Expédition Hawaï."
+      },
+      {
+        "languageCode": "es",
+        "value": "Visitantes vistos de espaldas ante dos grandes pantallas de lava anaranjada en Expédition Hawaï."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zwiedzający widziani od tyłu przed dwoma dużymi ekranami z pomarańczową lawą w Expédition Hawaï."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Visitantes vistos de costas diante de dois grandes ecrãs de lava alaranjada em Expédition Hawaï."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La lumière rouge des projections se reflète au plafond au-dessus du groupe installé derrière les garde-corps."
+      },
+      {
+        "languageCode": "en",
+        "value": "Red light from the projections reflects on the ceiling above the group behind the railings."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das rote Licht der Projektionen spiegelt sich an der Decke über der Gruppe hinter den Geländern."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het rode licht van de projecties weerkaatst op het plafond boven de groep achter de relingen."
+      },
+      {
+        "languageCode": "it",
+        "value": "La luce rossa delle proiezioni si riflette sul soffitto sopra il gruppo dietro le ringhiere."
+      },
+      {
+        "languageCode": "es",
+        "value": "La luz roja de las proyecciones se refleja en el techo sobre el grupo situado tras las barandillas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Czerwone światło projekcji odbija się na suficie nad grupą stojącą za poręczami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A luz vermelha das projeções reflete-se no teto acima do grupo atrás dos corrimões."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie publiée par Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph published by Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto veröffentlicht von Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto gepubliceerd door Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia pubblicata da Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía publicada por Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia opublikowana przez Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia publicada pela Parcs & Loisirs Magazine."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "bc84977c466245e7827273c42abd2220",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "path": "park_item/bc84977c466245e7827273c42abd2220",
+      "description": "La lumière rouge des projections se reflète au plafond au-dessus du groupe installé derrière les garde-corps.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1920,
+      "height": 1440,
+      "sizeInBytes": 250021,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://static.wixstatic.com/media/1150bb_aa52c4b33a4248c39780ca88c5b35141~mv2.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs vus de dos devant deux grands écrans de lave orangée dans Expédition Hawaï."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors seen from behind facing two large screens of orange lava inside Expédition Hawaï."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher von hinten vor zwei großen Bildschirmen mit orangefarbener Lava in Expédition Hawaï."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers van achteren gezien voor twee grote schermen met oranje lava in Expédition Hawaï."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori visti da dietro davanti a due grandi schermi di lava arancione in Expédition Hawaï."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes vistos de espaldas ante dos grandes pantallas de lava anaranjada en Expédition Hawaï."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zwiedzający widziani od tyłu przed dwoma dużymi ekranami z pomarańczową lawą w Expédition Hawaï."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes vistos de costas diante de dois grandes ecrãs de lava alaranjada em Expédition Hawaï."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La lumière rouge des projections se reflète au plafond au-dessus du groupe installé derrière les garde-corps."
+        },
+        {
+          "languageCode": "en",
+          "value": "Red light from the projections reflects on the ceiling above the group behind the railings."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das rote Licht der Projektionen spiegelt sich an der Decke über der Gruppe hinter den Geländern."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het rode licht van de projecties weerkaatst op het plafond boven de groep achter de relingen."
+        },
+        {
+          "languageCode": "it",
+          "value": "La luce rossa delle proiezioni si riflette sul soffitto sopra il gruppo dietro le ringhiere."
+        },
+        {
+          "languageCode": "es",
+          "value": "La luz roja de las proyecciones se refleja en el techo sobre el grupo situado tras las barandillas."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone światło projekcji odbija się na suficie nad grupą stojącą za poręczami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A luz vermelha das projeções reflete-se no teto acima do grupo atrás dos corrimões."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie publiée par Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph published by Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto veröffentlicht von Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto gepubliceerd door Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia pubblicata da Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía publicada por Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia opublikowana przez Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia publicada pela Parcs & Loisirs Magazine."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:38:49.525Z",
+      "updatedAt": "2026-11-15T18:38:53.034Z"
+    },
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T18:38:45.7030532Z",
+    "receivedAtUtc": "2026-11-15T18:38:56.1339367Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

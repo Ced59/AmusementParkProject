@@ -1,0 +1,115 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "recordedAtUtc": "2026-11-15T18:44:15.137033+00:00",
+  "newNotices": 3,
+  "localizedNotices": 24,
+  "personalReviews": [
+    {
+      "personallyReviewedLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ],
+      "newDescriptions": 8,
+      "paragraphWordCounts": {
+        "vulcania-expedition-hawai": {
+          "fr": 148,
+          "en": 120,
+          "de": 117,
+          "nl": 125,
+          "it": 132,
+          "es": 135,
+          "pl": 103,
+          "pt": 130
+        }
+      },
+      "headingsAndEntityNamesStripped": true,
+      "itemCorpusRepeated12WordSequences": [],
+      "sourceNotes": "Eight descriptions personally written and reviewed. Official current page expedition-hawai: Lila volcanologist, lava lake and incandescent flows, exploration module and several stages. Primary 2026 livret explicitly identifies former Abyss Explorer. Genuine entrance/platform/screen photographs inspected, Parcs et Loisirs Magazine credits Vulcania. Legacy underwater meta/OG ignored; no exact opening day, maker, duration or disputed 90/110cm restriction inferred. Two headings and three paragraphs; private item preserved.",
+      "operationId": "238644f5-96e7-48a2-a448-2613c0b3e966",
+      "appliedAtUtc": "2026-11-15T18:36:58.3634285Z",
+      "exactAppliedFields": 8
+    },
+    {
+      "personallyReviewedLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ],
+      "newDescriptions": 16,
+      "paragraphWordCounts": {
+        "vulcania-seismes": {
+          "fr": 157,
+          "en": 125,
+          "de": 126,
+          "nl": 131,
+          "it": 137,
+          "es": 147,
+          "pl": 109,
+          "pt": 138
+        },
+        "vulcania-volcans-auvergne": {
+          "fr": 145,
+          "en": 129,
+          "de": 119,
+          "nl": 136,
+          "it": 133,
+          "es": 140,
+          "pl": 108,
+          "pt": 129
+        }
+      },
+      "headingsAndEntityNamesStripped": true,
+      "itemCorpusRepeated12WordSequences": [],
+      "sourceNotes": "Sixteen descriptions personally written/revised and reviewed eight languages against full official pages https://www.vulcania.com/animation/seismes/ and https://www.vulcania.com/animation/volcans-auvergne/ . Same Séismes exhibition guided sessions not duplicated. Tectonics, instruments, waves, seismology history, scientists/rescuers sourced. Outdoor volcano trail: panels/models/rocks, local UNESCO2018 context; summer2024 applies only to smartphone overlay, not entire exhibition opening. No new date, fabricated physical display or geolocation. All private; two headings/three developed paragraphs.",
+      "operationId": "7606ee73-27ef-492c-9d22-f99baea46670",
+      "appliedAtUtc": "2026-11-15T18:41:37.5100835Z",
+      "exactAppliedFields": 16
+    }
+  ],
+  "newPhotos": [
+    {
+      "imageId": "d6206d2553ad4eccbc08f8b6184be024",
+      "createdAtUtc": "2026-11-15T18:38:18.47Z",
+      "proof": "vulcania-photo-44-hawai-entrance-20261115.json"
+    },
+    {
+      "imageId": "6a45d27a89084fb690e5caa8bcdda23b",
+      "createdAtUtc": "2026-11-15T18:38:37.224Z",
+      "proof": "vulcania-photo-45-hawai-platform-20261115.json"
+    },
+    {
+      "imageId": "bc84977c466245e7827273c42abd2220",
+      "createdAtUtc": "2026-11-15T18:38:49.525Z",
+      "proof": "vulcania-photo-46-hawai-screens-20261115.json"
+    },
+    {
+      "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+      "createdAtUtc": "2026-11-15T18:43:21.23Z",
+      "proof": "vulcania-photo-48-seismes-rescue-20261115.json"
+    },
+    {
+      "imageId": "d1b3a21b0ac347ca8570153a9b873f32",
+      "createdAtUtc": "2026-11-15T18:43:31.58Z",
+      "proof": "vulcania-photo-49-volcans-auvergne-trail-20261115.json"
+    }
+  ],
+  "photoMetadataFieldsPersonallyReviewed": 120,
+  "exclusions": [
+    "Former Abyss photograph is not current Hawaii; retained only with historical item.",
+    "Hawaii entrance oversized1920original and published980variant share exposure: only native980variant imported.",
+    "Volcans Auvergne smartphone panorama composite is illustrative, not imported as photograph."
+  ],
+  "sitePublicationPerformed": false,
+  "finalAuditCompleted": false
+}

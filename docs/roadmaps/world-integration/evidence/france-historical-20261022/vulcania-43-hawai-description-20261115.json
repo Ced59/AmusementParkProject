@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+          "key": "vulcania-expedition-hawai",
+          "name": "Expédition Hawaï",
+          "type": "InteractiveExperience",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La mission de Lila</h2><p>Sous une verrière, une arche en bois portant le nom de l’expédition et une végétation abondante annoncent le départ vers Hawaï. Lila, la volcanologue qui accompagne l’aventure, entraîne ses visiteurs au plus près d’un paysage de lave : la mission consiste à surfer sur un lac incandescent et à suivre ses coulées.</p><p>Dans le module d’exploration, les grandes images de reliefs volcaniques et de lave rougeoyante entourent le groupe. Les décors et les effets spéciaux donnent à cette rencontre avec le volcanisme hawaïen la forme d’une aventure en plusieurs étapes, où l’explication scientifique se mêle à la fiction.</p><h2>Une nouvelle expédition en 2026</h2><p>Cette aventure prend la suite d’Abyss Explorer en 2026. L’univers des profondeurs océaniques laisse place aux coulées d’Hawaï, avec une nouvelle guide et un récit centré sur la lave. Ce changement de destination renouvelle l’histoire racontée dans cet espace de Vulcania.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Lila’s mission</h2><p>Beneath a glass roof, a wooden arch bearing the expedition’s name rises amid lush planting. It introduces the journey to Hawaii, led by volcanologist Lila. Her mission brings visitors close to a landscape of molten rock, surfing across a lava lake and following its glowing flows.</p><p>Inside the exploration module, large images of volcanic terrain and red-hot lava surround the group. Sets and special effects turn Hawaiian volcanism into an adventure unfolding through several stages, combining scientific explanation with a fictional expedition.</p><h2>A new expedition in 2026</h2><p>The experience succeeds Abyss Explorer in 2026. Ocean depths give way to Hawaiian lava flows, with a new guide and a different story. This change of destination reshapes the adventure told within this part of Vulcania.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Lilas Forschungsreise</h2><p>Unter einem Glasdach erhebt sich zwischen üppigen Pflanzen ein Holzbogen mit dem Namen der Expedition. Hier beginnt die Reise nach Hawaii unter der Leitung der Vulkanologin Lila. Sie führt ihre Gäste in eine Landschaft aus glühendem Gestein: Die Mission folgt Lavaströmen und führt surfend über einen Lavasee.</p><p>Im Erkundungsmodul umgeben großflächige Bilder vulkanischer Landschaften und rot leuchtender Lava die Gruppe. Kulissen und Spezialeffekte machen den hawaiianischen Vulkanismus zum Schauplatz eines mehrteiligen Abenteuers. Wissenschaftliche Erklärungen verbinden sich dabei mit einer erfundenen Expedition.</p><h2>Eine neue Expedition ab 2026</h2><p>Das Erlebnis löst 2026 Abyss Explorer ab. An die Stelle der Meerestiefen treten Hawaiis Lavaströme, begleitet von einer neuen Führungsfigur und einer anderen Geschichte. Der Wechsel des Reiseziels gibt diesem Bereich von Vulcania eine neue Erzählung.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De missie van Lila</h2><p>Onder een glazen dak staat tussen weelderige planten een houten boog met de naam van de expeditie. Hier begint de reis naar Hawaï onder leiding van vulkanoloog Lila. Haar missie voert bezoekers door een landschap van gloeiend gesteente, surfend over een lavameer en langs vurige lavastromen.</p><p>In de verkenningsmodule wordt de groep omringd door grote beelden van vulkanische landschappen en roodgloeiende lava. Decors en speciale effecten vormen een avontuur in verschillende etappes. Wetenschappelijke uitleg over het Hawaïaanse vulkanisme krijgt zo een plaats binnen een fictieve expeditie.</p><h2>Een nieuwe expeditie in 2026</h2><p>Deze ervaring volgt Abyss Explorer op in 2026. De oceaandiepten maken plaats voor de lavastromen van Hawaï, met een nieuwe gids en een ander verhaal. De nieuwe bestemming verandert het avontuur dat in dit deel van Vulcania wordt verteld.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La missione di Lila</h2><p>Sotto una copertura di vetro, un arco di legno con il nome della spedizione emerge tra piante rigogliose. Introduce il viaggio alle Hawaii, guidato dalla vulcanologa Lila. La sua missione porta i visitatori in un paesaggio di roccia incandescente, a surfare su un lago di lava e a seguirne le colate.</p><p>Nel modulo di esplorazione, grandi immagini di rilievi vulcanici e lava rovente circondano il gruppo. Scenografie ed effetti speciali trasformano il vulcanismo hawaiano in un’avventura articolata in più tappe, nella quale le spiegazioni scientifiche si intrecciano con una spedizione immaginaria.</p><h2>Una nuova spedizione nel 2026</h2><p>L’esperienza prende il posto di Abyss Explorer nel 2026. Le profondità oceaniche lasciano spazio alle colate delle Hawaii, con una nuova guida e un racconto diverso. Il cambio di destinazione rinnova la storia narrata in questo spazio di Vulcania.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La misión de Lila</h2><p>Bajo una cubierta de cristal, un arco de madera con el nombre de la expedición se alza entre una vegetación abundante. Anuncia el viaje a Hawái, guiado por la vulcanóloga Lila. Su misión lleva a los visitantes a un paisaje de roca incandescente, surfeando sobre un lago de lava y siguiendo sus coladas.</p><p>En el módulo de exploración, grandes imágenes de relieves volcánicos y lava al rojo vivo rodean al grupo. Los decorados y los efectos especiales convierten el vulcanismo hawaiano en una aventura con varias etapas, donde la explicación científica se entrelaza con una expedición ficticia.</p><h2>Una nueva expedición en 2026</h2><p>La experiencia sucede a Abyss Explorer en 2026. Las profundidades oceánicas dan paso a las coladas de Hawái, con una nueva guía y una historia diferente. El cambio de destino renueva el relato de este espacio de Vulcania.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Misja Lili</h2><p>Pod szklanym dachem, wśród bujnej roślinności, stoi drewniany łuk z nazwą wyprawy. To początek podróży na Hawaje prowadzonej przez wulkanolożkę Lilę. Jej misja zabiera uczestników w krajobraz rozżarzonej skały: na surfing po jeziorze lawy i wędrówkę wzdłuż jej płynących strumieni.</p><p>W module badawczym grupę otaczają wielkie obrazy wulkanicznych krajobrazów i czerwonej lawy. Scenografia oraz efekty specjalne zmieniają hawajski wulkanizm w przygodę złożoną z kilku etapów. Naukowe objaśnienia towarzyszą tu fikcyjnej ekspedycji.</p><h2>Nowa wyprawa w 2026 roku</h2><p>Atrakcja zastępuje Abyss Explorer w 2026 roku. Oceaniczne głębiny ustępują miejsca hawajskim potokom lawy, nowej przewodniczce i odmiennej opowieści. Zmiana celu podróży nadaje nowy charakter historii rozgrywającej się w tej części Vulcanii.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A missão de Lila</h2><p>Sob uma cobertura de vidro, um arco de madeira com o nome da expedição ergue-se entre plantas abundantes. Anuncia a viagem ao Havai, orientada pela vulcanóloga Lila. A sua missão leva os visitantes a uma paisagem de rocha incandescente, a surfar num lago de lava e a acompanhar as suas escoadas.</p><p>No módulo de exploração, grandes imagens de relevos vulcânicos e lava em brasa envolvem o grupo. Os cenários e os efeitos especiais transformam o vulcanismo havaiano numa aventura com várias etapas, em que a explicação científica se cruza com uma expedição fictícia.</p><h2>Uma nova expedição em 2026</h2><p>A experiência sucede a Abyss Explorer em 2026. As profundezas oceânicas dão lugar às escoadas do Havai, com uma nova guia e uma história diferente. A mudança de destino renova a narrativa deste espaço de Vulcania.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-43-hawai-description",
+        "notes": "Eight descriptions personally written and reviewed. Official current page expedition-hawai: Lila volcanologist, lava lake and incandescent flows, exploration module and several stages. Primary 2026 livret explicitly identifies former Abyss Explorer. Genuine entrance/platform/screen photographs inspected, Parcs et Loisirs Magazine credits Vulcania. Legacy underwater meta/OG ignored; no exact opening day, maker, duration or disputed 90/110cm restriction inferred. Two headings and three paragraphs; private item preserved."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "ebbd3f95-b03b-4bac-b9e0-a9898ee85d27",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:36:35.3333778Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+        "entityKey": "vulcania-expedition-hawai",
+        "displayName": "Expédition Hawaï",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Lilas Forschungsreise</h2><p>Unter einem Glasdach erhebt sich zwischen üppigen Pflanzen ein Holzbogen mit dem Namen der Expedition. Hier beginnt die Reise nach Hawaii unter der Leitung der Vulkanologin Lila. Sie führt ihre Gäste in eine Landschaft aus glühendem Gestein: Die Mission folgt Lavaströmen und führt surfend über einen Lavasee.</p><p>Im Erkundungsmodul umgeben großflächige Bilder vulkanischer Landschaften und rot leuchtender Lava die Gruppe. Kulissen und Spezialeffekte machen den hawaiianischen Vulkanismus zum Schauplatz eines mehrteiligen Abenteuers. Wissenschaftliche Erklärungen verbinden sich dabei mit einer erfundenen Expedition.</p><h2>Eine neue Expedition ab 2026</h2><p>Das Erlebnis löst 2026 Abyss Explorer ab. An die Stelle der Meerestiefen treten Hawaiis Lavaströme, begleitet von einer neuen Führungsfigur und einer anderen Geschichte. Der Wechsel des Reiseziels gibt diesem Bereich von Vulcania eine neue Erzählung.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Lila’s mission</h2><p>Beneath a glass roof, a wooden arch bearing the expedition’s name rises amid lush planting. It introduces the journey to Hawaii, led by volcanologist Lila. Her mission brings visitors close to a landscape of molten rock, surfing across a lava lake and following its glowing flows.</p><p>Inside the exploration module, large images of volcanic terrain and red-hot lava surround the group. Sets and special effects turn Hawaiian volcanism into an adventure unfolding through several stages, combining scientific explanation with a fictional expedition.</p><h2>A new expedition in 2026</h2><p>The experience succeeds Abyss Explorer in 2026. Ocean depths give way to Hawaiian lava flows, with a new guide and a different story. This change of destination reshapes the adventure told within this part of Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La misión de Lila</h2><p>Bajo una cubierta de cristal, un arco de madera con el nombre de la expedición se alza entre una vegetación abundante. Anuncia el viaje a Hawái, guiado por la vulcanóloga Lila. Su misión lleva a los visitantes a un paisaje de roca incandescente, surfeando sobre un lago de lava y siguiendo sus coladas.</p><p>En el módulo de exploración, grandes imágenes de relieves volcánicos y lava al rojo vivo rodean al grupo. Los decorados y los efectos especiales convierten el vulcanismo hawaiano en una aventura con varias etapas, donde la explicación científica se entrelaza con una expedición ficticia.</p><h2>Una nueva expedición en 2026</h2><p>La experiencia sucede a Abyss Explorer en 2026. Las profundidades oceánicas dan paso a las coladas de Hawái, con una nueva guía y una historia diferente. El cambio de destino renueva el relato de este espacio de Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La mission de Lila</h2><p>Sous une verrière, une arche en bois portant le nom de l’expédition et une végétation abondante annoncent le départ vers Hawaï. Lila, la volcanologue qui accompagne l’aventure, entraîne ses visiteurs au plus près d’un paysage de lave : la mission consiste à surfer sur un lac incandescent et à suivre ses coulées.</p><p>Dans le module d’exploration, les grandes images de reliefs volcaniques et de lave rougeoyante entourent le groupe. Les décors et les effets spéciaux donnent à cette rencontre avec le volcanisme hawaïen la forme d’une aventure en plusieurs étapes, où l’explication scientifique se mêle à la fiction.</p><h2>Une nouvelle expédition en 2026</h2><p>Cette aventure prend la suite d’Abyss Explorer en 2026. L’univers des profondeurs océaniques laisse place aux coulées d’Hawaï, avec une nouvelle guide et un récit centré sur la lave. Ce changement de destination renouvelle l’histoire racontée dans cet espace de Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La missione di Lila</h2><p>Sotto una copertura di vetro, un arco di legno con il nome della spedizione emerge tra piante rigogliose. Introduce il viaggio alle Hawaii, guidato dalla vulcanologa Lila. La sua missione porta i visitatori in un paesaggio di roccia incandescente, a surfare su un lago di lava e a seguirne le colate.</p><p>Nel modulo di esplorazione, grandi immagini di rilievi vulcanici e lava rovente circondano il gruppo. Scenografie ed effetti speciali trasformano il vulcanismo hawaiano in un’avventura articolata in più tappe, nella quale le spiegazioni scientifiche si intrecciano con una spedizione immaginaria.</p><h2>Una nuova spedizione nel 2026</h2><p>L’esperienza prende il posto di Abyss Explorer nel 2026. Le profondità oceaniche lasciano spazio alle colate delle Hawaii, con una nuova guida e un racconto diverso. Il cambio di destinazione rinnova la storia narrata in questo spazio di Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De missie van Lila</h2><p>Onder een glazen dak staat tussen weelderige planten een houten boog met de naam van de expeditie. Hier begint de reis naar Hawaï onder leiding van vulkanoloog Lila. Haar missie voert bezoekers door een landschap van gloeiend gesteente, surfend over een lavameer en langs vurige lavastromen.</p><p>In de verkenningsmodule wordt de groep omringd door grote beelden van vulkanische landschappen en roodgloeiende lava. Decors en speciale effecten vormen een avontuur in verschillende etappes. Wetenschappelijke uitleg over het Hawaïaanse vulkanisme krijgt zo een plaats binnen een fictieve expeditie.</p><h2>Een nieuwe expeditie in 2026</h2><p>Deze ervaring volgt Abyss Explorer op in 2026. De oceaandiepten maken plaats voor de lavastromen van Hawaï, met een nieuwe gids en een ander verhaal. De nieuwe bestemming verandert het avontuur dat in dit deel van Vulcania wordt verteld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Misja Lili</h2><p>Pod szklanym dachem, wśród bujnej roślinności, stoi drewniany łuk z nazwą wyprawy. To początek podróży na Hawaje prowadzonej przez wulkanolożkę Lilę. Jej misja zabiera uczestników w krajobraz rozżarzonej skały: na surfing po jeziorze lawy i wędrówkę wzdłuż jej płynących strumieni.</p><p>W module badawczym grupę otaczają wielkie obrazy wulkanicznych krajobrazów i czerwonej lawy. Scenografia oraz efekty specjalne zmieniają hawajski wulkanizm w przygodę złożoną z kilku etapów. Naukowe objaśnienia towarzyszą tu fikcyjnej ekspedycji.</p><h2>Nowa wyprawa w 2026 roku</h2><p>Atrakcja zastępuje Abyss Explorer w 2026 roku. Oceaniczne głębiny ustępują miejsca hawajskim potokom lawy, nowej przewodniczce i odmiennej opowieści. Zmiana celu podróży nadaje nowy charakter historii rozgrywającej się w tej części Vulcanii.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A missão de Lila</h2><p>Sob uma cobertura de vidro, um arco de madeira com o nome da expedição ergue-se entre plantas abundantes. Anuncia a viagem ao Havai, orientada pela vulcanóloga Lila. A sua missão leva os visitantes a uma paisagem de rocha incandescente, a surfar num lago de lava e a acompanhar as suas escoadas.</p><p>No módulo de exploração, grandes imagens de relevos vulcânicos e lava em brasa envolvem o grupo. Os cenários e os efeitos especiais transformam o vulcanismo havaiano numa aventura com várias etapas, em que a explicação científica se cruza com uma expedição fictícia.</p><h2>Uma nova expedição em 2026</h2><p>A experiência sucede a Abyss Explorer em 2026. As profundezas oceânicas dão lugar às escoadas do Havai, com uma nova guia e uma história diferente. A mudança de destino renova a narrativa deste espaço de Vulcania.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "238644f5-96e7-48a2-a448-2613c0b3e966",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:36:58.363428Z",
+    "appliedAtUtc": "2026-11-15T18:36:58.3634285Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+        "entityKey": "vulcania-expedition-hawai",
+        "displayName": "Expédition Hawaï",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Lilas Forschungsreise</h2><p>Unter einem Glasdach erhebt sich zwischen üppigen Pflanzen ein Holzbogen mit dem Namen der Expedition. Hier beginnt die Reise nach Hawaii unter der Leitung der Vulkanologin Lila. Sie führt ihre Gäste in eine Landschaft aus glühendem Gestein: Die Mission folgt Lavaströmen und führt surfend über einen Lavasee.</p><p>Im Erkundungsmodul umgeben großflächige Bilder vulkanischer Landschaften und rot leuchtender Lava die Gruppe. Kulissen und Spezialeffekte machen den hawaiianischen Vulkanismus zum Schauplatz eines mehrteiligen Abenteuers. Wissenschaftliche Erklärungen verbinden sich dabei mit einer erfundenen Expedition.</p><h2>Eine neue Expedition ab 2026</h2><p>Das Erlebnis löst 2026 Abyss Explorer ab. An die Stelle der Meerestiefen treten Hawaiis Lavaströme, begleitet von einer neuen Führungsfigur und einer anderen Geschichte. Der Wechsel des Reiseziels gibt diesem Bereich von Vulcania eine neue Erzählung.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Lila’s mission</h2><p>Beneath a glass roof, a wooden arch bearing the expedition’s name rises amid lush planting. It introduces the journey to Hawaii, led by volcanologist Lila. Her mission brings visitors close to a landscape of molten rock, surfing across a lava lake and following its glowing flows.</p><p>Inside the exploration module, large images of volcanic terrain and red-hot lava surround the group. Sets and special effects turn Hawaiian volcanism into an adventure unfolding through several stages, combining scientific explanation with a fictional expedition.</p><h2>A new expedition in 2026</h2><p>The experience succeeds Abyss Explorer in 2026. Ocean depths give way to Hawaiian lava flows, with a new guide and a different story. This change of destination reshapes the adventure told within this part of Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La misión de Lila</h2><p>Bajo una cubierta de cristal, un arco de madera con el nombre de la expedición se alza entre una vegetación abundante. Anuncia el viaje a Hawái, guiado por la vulcanóloga Lila. Su misión lleva a los visitantes a un paisaje de roca incandescente, surfeando sobre un lago de lava y siguiendo sus coladas.</p><p>En el módulo de exploración, grandes imágenes de relieves volcánicos y lava al rojo vivo rodean al grupo. Los decorados y los efectos especiales convierten el vulcanismo hawaiano en una aventura con varias etapas, donde la explicación científica se entrelaza con una expedición ficticia.</p><h2>Una nueva expedición en 2026</h2><p>La experiencia sucede a Abyss Explorer en 2026. Las profundidades oceánicas dan paso a las coladas de Hawái, con una nueva guía y una historia diferente. El cambio de destino renueva el relato de este espacio de Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La mission de Lila</h2><p>Sous une verrière, une arche en bois portant le nom de l’expédition et une végétation abondante annoncent le départ vers Hawaï. Lila, la volcanologue qui accompagne l’aventure, entraîne ses visiteurs au plus près d’un paysage de lave : la mission consiste à surfer sur un lac incandescent et à suivre ses coulées.</p><p>Dans le module d’exploration, les grandes images de reliefs volcaniques et de lave rougeoyante entourent le groupe. Les décors et les effets spéciaux donnent à cette rencontre avec le volcanisme hawaïen la forme d’une aventure en plusieurs étapes, où l’explication scientifique se mêle à la fiction.</p><h2>Une nouvelle expédition en 2026</h2><p>Cette aventure prend la suite d’Abyss Explorer en 2026. L’univers des profondeurs océaniques laisse place aux coulées d’Hawaï, avec une nouvelle guide et un récit centré sur la lave. Ce changement de destination renouvelle l’histoire racontée dans cet espace de Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La missione di Lila</h2><p>Sotto una copertura di vetro, un arco di legno con il nome della spedizione emerge tra piante rigogliose. Introduce il viaggio alle Hawaii, guidato dalla vulcanologa Lila. La sua missione porta i visitatori in un paesaggio di roccia incandescente, a surfare su un lago di lava e a seguirne le colate.</p><p>Nel modulo di esplorazione, grandi immagini di rilievi vulcanici e lava rovente circondano il gruppo. Scenografie ed effetti speciali trasformano il vulcanismo hawaiano in un’avventura articolata in più tappe, nella quale le spiegazioni scientifiche si intrecciano con una spedizione immaginaria.</p><h2>Una nuova spedizione nel 2026</h2><p>L’esperienza prende il posto di Abyss Explorer nel 2026. Le profondità oceaniche lasciano spazio alle colate delle Hawaii, con una nuova guida e un racconto diverso. Il cambio di destinazione rinnova la storia narrata in questo spazio di Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De missie van Lila</h2><p>Onder een glazen dak staat tussen weelderige planten een houten boog met de naam van de expeditie. Hier begint de reis naar Hawaï onder leiding van vulkanoloog Lila. Haar missie voert bezoekers door een landschap van gloeiend gesteente, surfend over een lavameer en langs vurige lavastromen.</p><p>In de verkenningsmodule wordt de groep omringd door grote beelden van vulkanische landschappen en roodgloeiende lava. Decors en speciale effecten vormen een avontuur in verschillende etappes. Wetenschappelijke uitleg over het Hawaïaanse vulkanisme krijgt zo een plaats binnen een fictieve expeditie.</p><h2>Een nieuwe expeditie in 2026</h2><p>Deze ervaring volgt Abyss Explorer op in 2026. De oceaandiepten maken plaats voor de lavastromen van Hawaï, met een nieuwe gids en een ander verhaal. De nieuwe bestemming verandert het avontuur dat in dit deel van Vulcania wordt verteld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Misja Lili</h2><p>Pod szklanym dachem, wśród bujnej roślinności, stoi drewniany łuk z nazwą wyprawy. To początek podróży na Hawaje prowadzonej przez wulkanolożkę Lilę. Jej misja zabiera uczestników w krajobraz rozżarzonej skały: na surfing po jeziorze lawy i wędrówkę wzdłuż jej płynących strumieni.</p><p>W module badawczym grupę otaczają wielkie obrazy wulkanicznych krajobrazów i czerwonej lawy. Scenografia oraz efekty specjalne zmieniają hawajski wulkanizm w przygodę złożoną z kilku etapów. Naukowe objaśnienia towarzyszą tu fikcyjnej ekspedycji.</p><h2>Nowa wyprawa w 2026 roku</h2><p>Atrakcja zastępuje Abyss Explorer w 2026 roku. Oceaniczne głębiny ustępują miejsca hawajskim potokom lawy, nowej przewodniczce i odmiennej opowieści. Zmiana celu podróży nadaje nowy charakter historii rozgrywającej się w tej części Vulcanii.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A missão de Lila</h2><p>Sob uma cobertura de vidro, um arco de madeira com o nome da expedição ergue-se entre plantas abundantes. Anuncia a viagem ao Havai, orientada pela vulcanóloga Lila. A sua missão leva os visitantes a uma paisagem de rocha incandescente, a surfar num lago de lava e a acompanhar as suas escoadas.</p><p>No módulo de exploração, grandes imagens de relevos vulcânicos e lava em brasa envolvem o grupo. Os cenários e os efeitos especiais transformam o vulcanismo havaiano numa aventura com várias etapas, em que a explicação científica se cruza com uma expedição fictícia.</p><h2>Uma nova expedição em 2026</h2><p>A experiência sucede a Abyss Explorer em 2026. As profundezas oceânicas dão lugar às escoadas do Havai, com uma nova guia e uma história diferente. A mudança de destino renova a narrativa deste espaço de Vulcania.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : Expédition Hawaï décrite et relue personnellement en huit langues, Lila et lac de lave, entrée réelle sous verrière et succession d’Abyss en 2026; fiche privée, aucune date précise ou restriction contradictoire inventée.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Eight descriptions personally written and reviewed. Official current page expedition-hawai: Lila volcanologist, lava lake and incandescent flows, exploration module and several stages. Primary 2026 livret explicitly identifies former Abyss Explorer. Genuine entrance/platform/screen photographs inspected, Parcs et Loisirs Magazine credits Vulcania. Legacy underwater meta/OG ignored; no exact opening day, maker, duration or disputed 90/110cm restriction inferred. Two headings and three paragraphs; private item preserved."
+}

@@ -1,0 +1,310 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-44-hawai-entrance",
+    "ownerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+    "itemName": "Expédition Hawaï",
+    "current": true,
+    "source": {
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/hawai-entrance-magazine-native-980.jpeg",
+      "url": "https://static.wixstatic.com/media/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg/v1/fill/w_980,h_735,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg",
+      "sourcePage": "https://www.parcsloisirsmagazine.com/post/vulcania-une-saison-2026-en-l%C3%A9ger-recul-mais-riche-en-nouveaut%C3%A9s-avant-ses-25-ans",
+      "status": 200,
+      "utc": "2026-11-15T14:00:10.656586+00:00",
+      "bytes": 338499,
+      "width": 980,
+      "height": 735,
+      "format": "JPEG",
+      "sha256": "309998282aa839ae7b6de8ff2d77f3e0e88e7b3d30081ceb58c488900f3b414c",
+      "captureDate": null,
+      "credit": "Vulcania (crédit photographique explicite de Parcs & Loisirs Magazine)",
+      "nativePublisherVariant": true,
+      "localPixelTransformation": false,
+      "sameExposureAs": "hawai-entrance-vulcania-magazine.jpg",
+      "under960KiB": true,
+      "visualReviewCompleted": true,
+      "qualification": "qualified-current-photo",
+      "suggestedIdentityOnly": "Expédition Hawaï",
+      "visualObservation": "Variante CDN publiée et observée après affichage normal de l’image : même cadre/exposition que l’original 1920×1440. 980×735, sans modification locale, distincte des deux photos de plateforme.",
+      "rights": {
+        "openLicenseEstablished": false,
+        "individualPhotographer": null
+      },
+      "watermarkVisible": false,
+      "newImportAuthorizedByThisReport": false,
+      "dimensions": [
+        980,
+        735
+      ]
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; Vulcania credit explicitly supplied by publisher, no open licence claimed.",
+    "qualification": "Personally inspected genuine photograph of current Hawaii experience. Three different views; entrance is native publisher 980px variant of oversized original, no local editing or duplicate of original. Former Abyss image remains attached to historical item. Seventy-two metadata fields personally authored/reviewed."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "SourceUrl": "https://static.wixstatic.com/media/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg/v1/fill/w_980,h_735,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/hawai-entrance-magazine-native-980.jpeg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-44-hawai-entrance-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-44-hawai-entrance-import-result.json"
+  },
+  "metadata": {
+    "description": "Quelques marches passent sous l’arche, à côté d’une silhouette d’explorateur et de la végétation de la serre.",
+    "sourceUrl": "https://static.wixstatic.com/media/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg/v1/fill/w_980,h_735,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Arche en bois portant l’enseigne Expédition Hawaï au milieu des fougères, sous une verrière."
+      },
+      {
+        "languageCode": "en",
+        "value": "Wooden arch bearing the Expédition Hawaï sign among ferns beneath a glass roof."
+      },
+      {
+        "languageCode": "de",
+        "value": "Holzbogen mit dem Schild Expédition Hawaï zwischen Farnen unter einem Glasdach."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Houten boog met het bord Expédition Hawaï tussen varens onder een glazen dak."
+      },
+      {
+        "languageCode": "it",
+        "value": "Arco di legno con l’insegna Expédition Hawaï tra felci sotto una copertura di vetro."
+      },
+      {
+        "languageCode": "es",
+        "value": "Arco de madera con el letrero Expédition Hawaï entre helechos bajo una cubierta de cristal."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Drewniany łuk z szyldem Expédition Hawaï wśród paproci pod szklanym dachem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Arco de madeira com a placa Expédition Hawaï entre fetos sob uma cobertura de vidro."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Quelques marches passent sous l’arche, à côté d’une silhouette d’explorateur et de la végétation de la serre."
+      },
+      {
+        "languageCode": "en",
+        "value": "Steps lead beneath the arch beside an explorer cutout and the greenhouse planting."
+      },
+      {
+        "languageCode": "de",
+        "value": "Stufen führen unter dem Bogen hindurch, neben einer Entdeckerfigur und den Pflanzen des Gewächshauses."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Treden voeren onder de boog door, langs een uitgesneden ontdekkingsreiziger en de planten in de kas."
+      },
+      {
+        "languageCode": "it",
+        "value": "Alcuni gradini passano sotto l’arco, accanto alla sagoma di un esploratore e alle piante della serra."
+      },
+      {
+        "languageCode": "es",
+        "value": "Unos escalones pasan bajo el arco, junto a la silueta de un explorador y las plantas del invernadero."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Schodki prowadzą pod łukiem, obok sylwetki odkrywcy i roślin w szklarni."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Alguns degraus passam sob o arco, junto da figura recortada de um explorador e das plantas da estufa."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie publiée par Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph published by Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto veröffentlicht von Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto gepubliceerd door Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia pubblicata da Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía publicada por Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia opublikowana przez Parcs & Loisirs Magazine."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia publicada pela Parcs & Loisirs Magazine."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T18:38:16.3004523Z",
+    "result": {
+      "id": "d6206d2553ad4eccbc08f8b6184be024",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "path": "park_item/d6206d2553ad4eccbc08f8b6184be024",
+      "description": "Quelques marches passent sous l’arche, à côté d’une silhouette d’explorateur et de la végétation de la serre.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 980,
+      "height": 735,
+      "sizeInBytes": 338499,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://static.wixstatic.com/media/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg/v1/fill/w_980,h_735,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/1150bb_ca2162b4f50c46bba1da84ea73ba67a2~mv2.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Arche en bois portant l’enseigne Expédition Hawaï au milieu des fougères, sous une verrière."
+        },
+        {
+          "languageCode": "en",
+          "value": "Wooden arch bearing the Expédition Hawaï sign among ferns beneath a glass roof."
+        },
+        {
+          "languageCode": "de",
+          "value": "Holzbogen mit dem Schild Expédition Hawaï zwischen Farnen unter einem Glasdach."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Houten boog met het bord Expédition Hawaï tussen varens onder een glazen dak."
+        },
+        {
+          "languageCode": "it",
+          "value": "Arco di legno con l’insegna Expédition Hawaï tra felci sotto una copertura di vetro."
+        },
+        {
+          "languageCode": "es",
+          "value": "Arco de madera con el letrero Expédition Hawaï entre helechos bajo una cubierta de cristal."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Drewniany łuk z szyldem Expédition Hawaï wśród paproci pod szklanym dachem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Arco de madeira com a placa Expédition Hawaï entre fetos sob uma cobertura de vidro."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Quelques marches passent sous l’arche, à côté d’une silhouette d’explorateur et de la végétation de la serre."
+        },
+        {
+          "languageCode": "en",
+          "value": "Steps lead beneath the arch beside an explorer cutout and the greenhouse planting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Stufen führen unter dem Bogen hindurch, neben einer Entdeckerfigur und den Pflanzen des Gewächshauses."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Treden voeren onder de boog door, langs een uitgesneden ontdekkingsreiziger en de planten in de kas."
+        },
+        {
+          "languageCode": "it",
+          "value": "Alcuni gradini passano sotto l’arco, accanto alla sagoma di un esploratore e alle piante della serra."
+        },
+        {
+          "languageCode": "es",
+          "value": "Unos escalones pasan bajo el arco, junto a la silueta de un explorador y las plantas del invernadero."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Schodki prowadzą pod łukiem, obok sylwetki odkrywcy i roślin w szklarni."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Alguns degraus passam sob o arco, junto da figura recortada de um explorador e das plantas da estufa."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie publiée par Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph published by Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto veröffentlicht von Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto gepubliceerd door Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia pubblicata da Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía publicada por Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia opublikowana przez Parcs & Loisirs Magazine."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia publicada pela Parcs & Loisirs Magazine."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:38:18.47Z",
+      "updatedAt": "2026-11-15T18:38:21.995Z"
+    },
+    "receivedAtUtc": "2026-11-15T18:38:25.0916778Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

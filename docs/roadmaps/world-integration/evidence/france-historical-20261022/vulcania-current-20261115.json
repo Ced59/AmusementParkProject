@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T18:30:04.011Z",
+  "lastDataIntegrationAt": "2026-11-15T18:43:31.58Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 19,
-  "realImportCount": 25,
-  "lastOperationId": "ca3b00af-d71a-4e60-8179-e945225e3b21",
+  "realApplyCount": 21,
+  "realImportCount": 30,
+  "lastOperationId": "7606ee73-27ef-492c-9d22-f99baea46670",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -161,22 +161,24 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-31-collections-and-models-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-32-two-journeys-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-36-house-and-minerals-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-37-three-child-worlds-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-37-three-child-worlds-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-43-hawai-description-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-47-two-geology-exhibitions-20261115.json"
   ],
   "currentCoverage": {
     "items": 47,
     "publicItems": 0,
-    "describedItems8Languages": 23,
+    "describedItems8Languages": 26,
     "zones": 0,
-    "ownMedia": 25,
+    "ownMedia": 30,
     "historyEvents": 4,
     "privateHistoryEvents": 4,
     "officialMaps": 2,
-    "privateOwnMedia": 25,
+    "privateOwnMedia": 30,
     "articles": 1,
     "privateArticles": 1
   },
-  "lastApplyOperationId": "ca3b00af-d71a-4e60-8179-e945225e3b21",
+  "lastApplyOperationId": "7606ee73-27ef-492c-9d22-f99baea46670",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -302,6 +304,31 @@
       "imageId": "5c5c7f0bde5f4bd58eb3ab3ede97d9eb",
       "createdAt": "2026-11-15T18:30:04.011Z",
       "proof": "vulcania-photo-42-foret-dragons-20261115.json"
+    },
+    {
+      "imageId": "d6206d2553ad4eccbc08f8b6184be024",
+      "createdAt": "2026-11-15T18:38:18.47Z",
+      "proof": "vulcania-photo-44-hawai-entrance-20261115.json"
+    },
+    {
+      "imageId": "6a45d27a89084fb690e5caa8bcdda23b",
+      "createdAt": "2026-11-15T18:38:37.224Z",
+      "proof": "vulcania-photo-45-hawai-platform-20261115.json"
+    },
+    {
+      "imageId": "bc84977c466245e7827273c42abd2220",
+      "createdAt": "2026-11-15T18:38:49.525Z",
+      "proof": "vulcania-photo-46-hawai-screens-20261115.json"
+    },
+    {
+      "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+      "createdAt": "2026-11-15T18:43:21.23Z",
+      "proof": "vulcania-photo-48-seismes-rescue-20261115.json"
+    },
+    {
+      "imageId": "d1b3a21b0ac347ca8570153a9b873f32",
+      "createdAt": "2026-11-15T18:43:31.58Z",
+      "proof": "vulcania-photo-49-volcans-auvergne-trail-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -362,6 +389,7 @@
   },
   "followupProofs": [
     "vulcania-projection-and-exhibitions-followup-20261115.json",
-    "vulcania-child-spaces-followup-20261115.json"
+    "vulcania-child-spaces-followup-20261115.json",
+    "vulcania-hawai-and-geology-followup-20261115.json"
   ]
 }
