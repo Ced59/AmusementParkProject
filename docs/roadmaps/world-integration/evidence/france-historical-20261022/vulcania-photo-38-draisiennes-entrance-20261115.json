@@ -1,0 +1,295 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-38-draisiennes-entrance",
+    "ownerId": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+    "itemName": "Draisiennes de Tambora",
+    "current": true,
+    "source": {
+      "key": "draisiennes-real",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/draisiennes-tambora_3000x1100-2-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/draisiennes-real.jpg",
+      "http": 200,
+      "bytes": 173229,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "19dd4d7bb03bd5c282cb4fb49a8acd91a9e284e18d408744834227ce154e15d0",
+      "accessedAtUtc": "2026-11-15T18:19:10.982405+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence or individual photographer permission claimed.",
+    "qualification": "Real photograph individually inspected, no cropping or edits. Draisiennes OG composite excluded. Galerie 1200x630 alternate same exposure excluded in favour of 2048x751 original. No visitor identity or age inferred; no virtual-tour screenshot imported."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/draisiennes-tambora_3000x1100-2-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/draisiennes-real.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-38-draisiennes-entrance-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-38-draisiennes-entrance-import-result.json"
+  },
+  "metadata": {
+    "description": "Une employée en polo rouge se tient derrière l’enseigne, près d’une silhouette de vélo découpée.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/draisiennes-tambora_3000x1100-2-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Accueil des Draisiennes de Tambora avec un comptoir coloré et de petites bicyclettes rangées sur le côté."
+      },
+      {
+        "languageCode": "en",
+        "value": "Draisiennes de Tambora entrance with a colourful counter and small bicycles lined up at the side."
+      },
+      {
+        "languageCode": "de",
+        "value": "Empfang der Draisiennes de Tambora mit farbigem Tresen und seitlich aufgestellten kleinen Fahrrädern."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Ontvangst van Draisiennes de Tambora met een kleurrijke balie en kleine fietsen aan de zijkant."
+      },
+      {
+        "languageCode": "it",
+        "value": "Ingresso delle Draisiennes de Tambora con banco colorato e piccole biciclette allineate di lato."
+      },
+      {
+        "languageCode": "es",
+        "value": "Recepción de Draisiennes de Tambora con un mostrador de colores y pequeñas bicicletas colocadas al lado."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wejście do Draisiennes de Tambora z kolorową ladą i małymi rowerkami ustawionymi z boku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Receção das Draisiennes de Tambora com balcão colorido e pequenas bicicletas alinhadas ao lado."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une employée en polo rouge se tient derrière l’enseigne, près d’une silhouette de vélo découpée."
+      },
+      {
+        "languageCode": "en",
+        "value": "A staff member in a red polo shirt stands behind the sign beside a cut-out bicycle shape."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Mitarbeiterin im roten Poloshirt steht hinter dem Schild neben einer ausgeschnittenen Fahrradsilhouette."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een medewerker in een rode polo staat achter het bord naast een uitgesneden fietssilhouet."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un’addetta con polo rossa si trova dietro l’insegna, vicino a una sagoma ritagliata di bicicletta."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una empleada con polo rojo está detrás del letrero, junto a una silueta recortada de bicicleta."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pracownica w czerwonej koszulce polo stoi za szyldem obok wyciętej sylwetki roweru."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma funcionária de polo vermelho está atrás da placa, junto de uma silhueta recortada de bicicleta."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T18:28:50.2371799Z",
+    "result": {
+      "id": "9165d5c6d6574c21bb8d7ca626be26f1",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+      "path": "park_item/9165d5c6d6574c21bb8d7ca626be26f1",
+      "description": "Une employée en polo rouge se tient derrière l’enseigne, près d’une silhouette de vélo découpée.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 173229,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/draisiennes-tambora_3000x1100-2-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Accueil des Draisiennes de Tambora avec un comptoir coloré et de petites bicyclettes rangées sur le côté."
+        },
+        {
+          "languageCode": "en",
+          "value": "Draisiennes de Tambora entrance with a colourful counter and small bicycles lined up at the side."
+        },
+        {
+          "languageCode": "de",
+          "value": "Empfang der Draisiennes de Tambora mit farbigem Tresen und seitlich aufgestellten kleinen Fahrrädern."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ontvangst van Draisiennes de Tambora met een kleurrijke balie en kleine fietsen aan de zijkant."
+        },
+        {
+          "languageCode": "it",
+          "value": "Ingresso delle Draisiennes de Tambora con banco colorato e piccole biciclette allineate di lato."
+        },
+        {
+          "languageCode": "es",
+          "value": "Recepción de Draisiennes de Tambora con un mostrador de colores y pequeñas bicicletas colocadas al lado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wejście do Draisiennes de Tambora z kolorową ladą i małymi rowerkami ustawionymi z boku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Receção das Draisiennes de Tambora com balcão colorido e pequenas bicicletas alinhadas ao lado."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une employée en polo rouge se tient derrière l’enseigne, près d’une silhouette de vélo découpée."
+        },
+        {
+          "languageCode": "en",
+          "value": "A staff member in a red polo shirt stands behind the sign beside a cut-out bicycle shape."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Mitarbeiterin im roten Poloshirt steht hinter dem Schild neben einer ausgeschnittenen Fahrradsilhouette."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een medewerker in een rode polo staat achter het bord naast een uitgesneden fietssilhouet."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un’addetta con polo rossa si trova dietro l’insegna, vicino a una sagoma ritagliata di bicicletta."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una empleada con polo rojo está detrás del letrero, junto a una silueta recortada de bicicleta."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pracownica w czerwonej koszulce polo stoi za szyldem obok wyciętej sylwetki roweru."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma funcionária de polo vermelho está atrás da placa, junto de uma silhueta recortada de bicicleta."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:28:52.634Z",
+      "updatedAt": "2026-11-15T18:28:56.357Z"
+    },
+    "receivedAtUtc": "2026-11-15T18:28:59.4596945Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T18:15:49.992Z",
+  "lastDataIntegrationAt": "2026-11-15T18:30:04.011Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 17,
-  "realImportCount": 20,
-  "lastOperationId": "48dede54-a4f6-417e-bf2d-8d0d1132cfc4",
+  "realApplyCount": 19,
+  "realImportCount": 25,
+  "lastOperationId": "ca3b00af-d71a-4e60-8179-e945225e3b21",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -159,22 +159,24 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-27-projection-venues-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-28-two-exhibitions-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-31-collections-and-models-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-32-two-journeys-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-32-two-journeys-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-36-house-and-minerals-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-37-three-child-worlds-20261115.json"
   ],
   "currentCoverage": {
     "items": 47,
     "publicItems": 0,
-    "describedItems8Languages": 18,
+    "describedItems8Languages": 23,
     "zones": 0,
-    "ownMedia": 20,
+    "ownMedia": 25,
     "historyEvents": 4,
     "privateHistoryEvents": 4,
     "officialMaps": 2,
-    "privateOwnMedia": 20,
+    "privateOwnMedia": 25,
     "articles": 1,
     "privateArticles": 1
   },
-  "lastApplyOperationId": "0be325ce-b104-4ece-b4bc-1ef49f0d3229",
+  "lastApplyOperationId": "ca3b00af-d71a-4e60-8179-e945225e3b21",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -275,6 +277,31 @@
       "imageId": "4fe6f6c0da1f4994af54006f3a04a994",
       "createdAt": "2026-11-15T18:15:49.992Z",
       "proof": "vulcania-photo-35-planete-devoilee-20261115.json"
+    },
+    {
+      "imageId": "9165d5c6d6574c21bb8d7ca626be26f1",
+      "createdAt": "2026-11-15T18:28:52.634Z",
+      "proof": "vulcania-photo-38-draisiennes-entrance-20261115.json"
+    },
+    {
+      "imageId": "33b66af74c3c4adaa439769785a212d3",
+      "createdAt": "2026-11-15T18:29:12.199Z",
+      "proof": "vulcania-photo-39-maison-pitoufeu-20261115.json"
+    },
+    {
+      "imageId": "9c77d947e431462291012359d2c1e2b9",
+      "createdAt": "2026-11-15T18:29:36.397Z",
+      "proof": "vulcania-photo-40-galerie-pitoufeu-20261115.json"
+    },
+    {
+      "imageId": "5ca0ba406e924e5a8792e88852f8e9ed",
+      "createdAt": "2026-11-15T18:29:46.348Z",
+      "proof": "vulcania-photo-41-riviere-mineraux-20261115.json"
+    },
+    {
+      "imageId": "5c5c7f0bde5f4bd58eb3ab3ede97d9eb",
+      "createdAt": "2026-11-15T18:30:04.011Z",
+      "proof": "vulcania-photo-42-foret-dragons-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -334,6 +361,7 @@
     "decision": "CinéMax remains an eligible internal Vulcania parkItem. Independent cinemas are outside the campaign. No item was deleted, hidden or marked excluded during the clarification."
   },
   "followupProofs": [
-    "vulcania-projection-and-exhibitions-followup-20261115.json"
+    "vulcania-projection-and-exhibitions-followup-20261115.json",
+    "vulcania-child-spaces-followup-20261115.json"
   ]
 }

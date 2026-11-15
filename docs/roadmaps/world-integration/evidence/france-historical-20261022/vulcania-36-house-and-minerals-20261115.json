@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+          "key": "vulcania-maison-pitoufeu",
+          "name": "Maison Pitoufeu",
+          "type": "Playground",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La maison d’un petit explorateur</h2><p>La Maison Pitoufeu donne une demeure à la mascotte de Vulcania dans une aire de jeux extérieure. Sa silhouette évoque un volcan coiffé de rouge, avec un visage souriant en hauteur et des parois habillées de bois. Autour de la maison, les arbres et la prairie composent le cadre du jeu.</p><p>L’intérieur reprend les pièces du quotidien : salon, cuisine et chambre font partie de l’univers de Pitoufeu. Des images de ses voyages auprès des volcans du monde racontent sa vie d’explorateur et prolongent le thème du parc jusque dans son logement imaginaire.</p><h2>Passerelles et glissade</h2><p>Un pont suspendu et un toboggan accompagnent la découverte de la maison. Le grand tube gris descend sur le côté du bâtiment, tandis que les passages en bois relient les jeux alentour. Les enfants traversent ainsi un décor qui associe maison de personnage et paysage volcanique miniature.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A home for a little explorer</h2><p>Maison Pitoufeu gives Vulcania’s mascot a home within an outdoor playground. Its shape recalls a volcano with a red top, a smiling face high up and walls clad in wood. Trees and meadow provide the setting around the house.</p><p>Inside, familiar rooms form part of Pitoufeu’s world: a living room, kitchen and bedroom. Pictures of his travels to volcanoes around the world tell the story of an explorer, carrying the park’s theme into his imaginary home.</p><h2>Bridges and a slide</h2><p>A suspension bridge and slide accompany the exploration of the house. A large grey tube descends beside the building, while wooden passages link the surrounding play areas. Children move through a setting that combines a character’s home with a miniature volcanic landscape.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Das Zuhause eines kleinen Entdeckers</h2><p>Die Maison Pitoufeu gibt Vulcanias Maskottchen ein Zuhause auf einem Außenspielplatz. Ihre Form erinnert an einen Vulkan mit roter Spitze, einem lächelnden Gesicht hoch oben und holzverkleideten Wänden. Bäume und Wiese bilden die Umgebung des Hauses.</p><p>Im Inneren gehören vertraute Wohnräume zu Pitoufeus Welt: Wohnzimmer, Küche und Schlafzimmer. Bilder seiner Reisen zu Vulkanen rund um den Globus erzählen von seinem Entdeckerleben und tragen das Parkthema in sein Fantasiehaus.</p><h2>Brücken und Rutsche</h2><p>Eine Hängebrücke und eine Rutsche begleiten die Erkundung. Eine große graue Röhre führt seitlich am Gebäude hinunter, während Holzpassagen die umliegenden Spielbereiche verbinden. So durchqueren Kinder eine Kulisse, die das Haus einer Figur mit einer kleinen Vulkanlandschaft verbindet.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Het huis van een kleine ontdekkingsreiziger</h2><p>Maison Pitoufeu geeft de mascotte van Vulcania een woning in een buitenspeeltuin. Het silhouet doet denken aan een vulkaan met een rode top, een glimlachend gezicht hoog bovenaan en wanden met houten bekleding. Bomen en grasland vormen de omgeving van het huis.</p><p>Binnen horen vertrouwde kamers bij de wereld van Pitoufeu: woonkamer, keuken en slaapkamer. Afbeeldingen van zijn reizen naar vulkanen over de hele wereld vertellen over zijn leven als ontdekkingsreiziger en brengen het parkthema tot in zijn fantasiewoning.</p><h2>Bruggen en een glijbaan</h2><p>Een hangbrug en een glijbaan begeleiden de verkenning. Een grote grijze buis loopt langs de zijkant van het gebouw naar beneden, terwijl houten doorgangen de speelplekken eromheen verbinden. Kinderen trekken zo door een decor dat een personagehuis met een klein vulkaanlandschap combineert.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La casa di un piccolo esploratore</h2><p>La Maison Pitoufeu offre una dimora alla mascotte di Vulcania in un’area giochi all’aperto. La sagoma ricorda un vulcano dalla sommità rossa, con un volto sorridente in alto e pareti rivestite di legno. Alberi e prato circondano la casa.</p><p>All’interno, soggiorno, cucina e camera da letto fanno parte dell’universo di Pitoufeu. Le immagini dei suoi viaggi tra i vulcani del mondo raccontano la sua vita da esploratore, portando il tema del parco nella sua abitazione immaginaria.</p><h2>Passerelle e scivolo</h2><p>Un ponte sospeso e uno scivolo accompagnano l’esplorazione. Il grande tubo grigio scende sul lato dell’edificio, mentre passaggi in legno collegano i giochi circostanti. I bambini attraversano così uno scenario che unisce la casa di un personaggio a un piccolo paesaggio vulcanico.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La casa de un pequeño explorador</h2><p>La Maison Pitoufeu da un hogar a la mascota de Vulcania dentro de un área de juegos al aire libre. Su silueta recuerda a un volcán de cima roja, con un rostro sonriente en lo alto y paredes revestidas de madera. Los árboles y la pradera rodean la casa.</p><p>En el interior, salón, cocina y dormitorio forman parte del universo de Pitoufeu. Las imágenes de sus viajes por los volcanes del mundo cuentan su vida de explorador y llevan el tema del parque hasta su vivienda imaginaria.</p><h2>Pasarelas y tobogán</h2><p>Un puente colgante y un tobogán acompañan la exploración. El gran tubo gris desciende por el lateral del edificio, mientras los pasos de madera conectan los juegos de alrededor. Los niños recorren así un decorado que une la casa de un personaje con un pequeño paisaje volcánico.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Dom małego odkrywcy</h2><p>Maison Pitoufeu daje maskotce Vulcanii własny dom na plenerowym placu zabaw. Bryła przypomina wulkan z czerwoną górą, uśmiechniętą twarzą wysoko nad wejściem i ścianami obłożonymi drewnem. Dom otaczają drzewa i łąka.</p><p>Wewnątrz do świata Pitoufeu należą znajome pomieszczenia: salon, kuchnia i sypialnia. Zdjęcia jego podróży do wulkanów świata opowiadają o życiu odkrywcy, przenosząc tematykę parku do jego wyobrażonego mieszkania.</p><h2>Kładki i zjeżdżalnia</h2><p>Odkrywaniu domu towarzyszą wiszący most i zjeżdżalnia. Duża szara rura opada wzdłuż boku budynku, a drewniane przejścia łączą pobliskie miejsca zabawy. Dzieci przemierzają scenerię, w której dom postaci spotyka się z niewielkim wulkanicznym krajobrazem.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A casa de um pequeno explorador</h2><p>A Maison Pitoufeu dá uma morada à mascote do Vulcania numa área de jogos ao ar livre. A silhueta lembra um vulcão com o topo vermelho, um rosto sorridente em altura e paredes revestidas de madeira. As árvores e o prado envolvem a casa.</p><p>No interior, sala, cozinha e quarto fazem parte do universo de Pitoufeu. Imagens das suas viagens pelos vulcões do mundo contam a sua vida de explorador e prolongam o tema do parque até à sua habitação imaginária.</p><h2>Passadiços e escorrega</h2><p>Uma ponte suspensa e um escorrega acompanham a descoberta. O grande tubo cinzento desce pela lateral do edifício, enquanto passagens de madeira ligam os jogos em redor. As crianças atravessam assim um cenário que combina a casa de uma personagem com uma pequena paisagem vulcânica.</p>"
+            }
+          ]
+        },
+        {
+          "id": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+          "key": "vulcania-riviere-mineraux",
+          "name": "Rivière des minéraux",
+          "type": "InteractiveExperience",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une rivière de pierres à découvrir</h2><p>La Rivière des minéraux transpose l’imaginaire des chercheurs d’or dans un atelier de découverte des pierres. Installés le long d’un canal en bois, les enfants fouillent le sable et observent les trouvailles qui apparaissent dans leurs tamis. L’eau, les petites pelles colorées et les cadres de bois donnent à l’activité une atmosphère de chantier de prospection.</p><p>La récolte conduit vers la pyrite, le quartz rose, l’obsidienne neige, l’améthyste et la citrine. Leurs teintes et leurs aspects différents deviennent le point de départ d’une observation, à l’aide d’une carte qui permet d’identifier les pierres.</p><h2>Du trésor à l’observation</h2><p>Le plaisir de trouver se prolonge ainsi par celui de reconnaître. Un diplôme de chercheur de pierres précieuses conclut l’atelier : le souvenir de la prospection accompagne la découverte de noms et de matières que l’enfant a pu regarder de près.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A stream of stones to discover</h2><p>Rivière des minéraux brings the imagery of gold prospecting into a stone-discovery workshop. Along a wooden channel, children search through sand and examine the finds appearing in their sieves. Water, colourful little shovels and wooden frames give the activity the atmosphere of a prospecting site.</p><p>The discoveries include pyrite, rose quartz, snowflake obsidian, amethyst and citrine. Their different colours and appearances provide a starting point for observation, supported by a card that helps identify the stones.</p><h2>From treasure to observation</h2><p>The pleasure of finding continues with the pleasure of recognising. A gemstone prospector’s certificate concludes the workshop, linking the memory of the search with names and materials that each child has examined at close quarters.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Bach voller Steine zum Entdecken</h2><p>Die Rivière des minéraux überträgt die Welt der Goldsuche in einen Workshop zur Entdeckung von Steinen. An einer Holzrinne durchsuchen Kinder den Sand und betrachten die Funde in ihren Sieben. Wasser, bunte kleine Schaufeln und Holzrahmen erinnern an einen Schürfplatz.</p><p>Zu entdecken sind Pyrit, Rosenquarz, Schneeflockenobsidian, Amethyst und Citrin. Ihre unterschiedlichen Farben und Erscheinungsformen bieten Anlass zum genauen Hinsehen. Eine Bestimmungskarte hilft, die Steine zu erkennen.</p><h2>Vom Schatz zum genauen Blick</h2><p>Auf die Freude am Finden folgt die am Wiedererkennen. Eine Urkunde für Edelsteinsucher bildet den Abschluss des Workshops. Sie verbindet die Erinnerung an die Suche mit Namen und Materialien, die das Kind aus nächster Nähe betrachten konnte.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een stroom vol stenen om te ontdekken</h2><p>Rivière des minéraux brengt de wereld van goudzoekers naar een workshop over stenen. Langs een houten goot doorzoeken kinderen het zand en bekijken ze wat in hun zeven verschijnt. Water, kleine gekleurde schepjes en houten kaders geven de activiteit de sfeer van een vindplaats.</p><p>Er zijn pyriet, rozenkwarts, sneeuwvlokobsidiaan, amethist en citrien te ontdekken. Hun verschillende kleuren en uiterlijk vormen het begin van een observatie. Een herkenningskaart helpt om de stenen een naam te geven.</p><h2>Van schat naar herkenning</h2><p>Op het plezier van het vinden volgt het plezier van het herkennen. Een diploma voor edelsteenvinders sluit de workshop af. Zo blijft de herinnering aan het zoeken verbonden met namen en materialen die het kind van dichtbij heeft bekeken.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un corso d’acqua e pietre da scoprire</h2><p>La Rivière des minéraux porta l’immaginario dei cercatori d’oro in un laboratorio dedicato alle pietre. Lungo un canale di legno, i bambini esplorano la sabbia e osservano ciò che compare nei setacci. Acqua, piccole palette colorate e telai di legno creano l’atmosfera di un sito di ricerca.</p><p>Tra le scoperte figurano pirite, quarzo rosa, ossidiana fiocco di neve, ametista e citrino. Colori e aspetti differenti invitano all’osservazione, con l’aiuto di una scheda per riconoscere le pietre.</p><h2>Dal tesoro all’osservazione</h2><p>Il piacere di trovare continua con quello di riconoscere. Un diploma da cercatore di pietre preziose conclude il laboratorio, collegando il ricordo della ricerca ai nomi e ai materiali che ogni bambino ha potuto osservare da vicino.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un río de piedras por descubrir</h2><p>La Rivière des minéraux lleva el imaginario de los buscadores de oro a un taller dedicado a las piedras. A lo largo de un canal de madera, los niños exploran la arena y observan los hallazgos que aparecen en sus tamices. El agua, las pequeñas palas de colores y los marcos de madera crean un ambiente de prospección.</p><p>Entre los hallazgos se encuentran pirita, cuarzo rosa, obsidiana nevada, amatista y citrino. Sus distintos colores y aspectos invitan a observar, con ayuda de una tarjeta para identificar las piedras.</p><h2>Del tesoro a la observación</h2><p>El placer de encontrar continúa con el de reconocer. Un diploma de buscador de piedras preciosas cierra el taller y relaciona el recuerdo de la búsqueda con nombres y materiales que cada niño ha podido examinar de cerca.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Strumień kamieni do odkrycia</h2><p>Rivière des minéraux przenosi świat poszukiwaczy złota do warsztatów poświęconych kamieniom. Wzdłuż drewnianego kanału dzieci przeszukują piasek i oglądają znaleziska pojawiające się w sitach. Woda, kolorowe łopatki i drewniane ramki tworzą atmosferę miejsca poszukiwań.</p><p>Wśród znalezisk są piryt, kwarc różowy, obsydian śnieżny, ametyst i cytryn. Ich odmienne barwy i wygląd stają się punktem wyjścia do obserwacji. Karta rozpoznawcza pomaga nazwać oglądane kamienie.</p><h2>Od skarbu do obserwacji</h2><p>Radość znalezienia łączy się z radością rozpoznania. Warsztaty kończy dyplom poszukiwacza kamieni szlachetnych. Wspomnienie poszukiwań towarzyszy w ten sposób poznawaniu nazw i materiałów, które dziecko mogło obejrzeć z bliska.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um curso de água com pedras por descobrir</h2><p>A Rivière des minéraux transporta o imaginário dos garimpeiros para uma oficina dedicada às pedras. Ao longo de um canal de madeira, as crianças exploram a areia e observam os achados nos crivos. A água, as pequenas pás coloridas e as armações de madeira criam um ambiente de prospeção.</p><p>Entre os achados contam-se pirite, quartzo rosa, obsidiana floco de neve, ametista e citrino. As diferentes cores e aparências convidam à observação, com a ajuda de um cartão para identificar as pedras.</p><h2>Do tesouro à observação</h2><p>O prazer de encontrar continua no de reconhecer. Um diploma de pesquisador de pedras preciosas conclui a oficina, ligando a memória da procura aos nomes e materiais que cada criança pôde observar de perto.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-36-house-and-minerals",
+        "notes": "Sixteen descriptions personally authored and reviewed in eight languages. Full primary pages and original photographs inspected: https://www.vulcania.com/animation/la-maison-de-pitoufeu/ ; https://www.vulcania.com/animation/la-riviere-des-mineraux/ . Maison: physical wooden volcano-like house, red top/face/grey tube, rooms and travel gallery sourced; conflicting official floor count deliberately omitted. Rivière: real wooden channel, sand, sieves and named stones; no promise of finding actual gold, no admission schedule inferred. Operational conditions remain in structured existing fields. Two specific headings and three paragraphs each; no invented dates or makers."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "ca4cbadb-02b0-4a61-a0ca-163e532df0c4",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:22:33.9407179Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+        "entityKey": "vulcania-maison-pitoufeu",
+        "displayName": "Maison Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Das Zuhause eines kleinen Entdeckers</h2><p>Die Maison Pitoufeu gibt Vulcanias Maskottchen ein Zuhause auf einem Außenspielplatz. Ihre Form erinnert an einen Vulkan mit roter Spitze, einem lächelnden Gesicht hoch oben und holzverkleideten Wänden. Bäume und Wiese bilden die Umgebung des Hauses.</p><p>Im Inneren gehören vertraute Wohnräume zu Pitoufeus Welt: Wohnzimmer, Küche und Schlafzimmer. Bilder seiner Reisen zu Vulkanen rund um den Globus erzählen von seinem Entdeckerleben und tragen das Parkthema in sein Fantasiehaus.</p><h2>Brücken und Rutsche</h2><p>Eine Hängebrücke und eine Rutsche begleiten die Erkundung. Eine große graue Röhre führt seitlich am Gebäude hinunter, während Holzpassagen die umliegenden Spielbereiche verbinden. So durchqueren Kinder eine Kulisse, die das Haus einer Figur mit einer kleinen Vulkanlandschaft verbindet.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A home for a little explorer</h2><p>Maison Pitoufeu gives Vulcania’s mascot a home within an outdoor playground. Its shape recalls a volcano with a red top, a smiling face high up and walls clad in wood. Trees and meadow provide the setting around the house.</p><p>Inside, familiar rooms form part of Pitoufeu’s world: a living room, kitchen and bedroom. Pictures of his travels to volcanoes around the world tell the story of an explorer, carrying the park’s theme into his imaginary home.</p><h2>Bridges and a slide</h2><p>A suspension bridge and slide accompany the exploration of the house. A large grey tube descends beside the building, while wooden passages link the surrounding play areas. Children move through a setting that combines a character’s home with a miniature volcanic landscape.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La casa de un pequeño explorador</h2><p>La Maison Pitoufeu da un hogar a la mascota de Vulcania dentro de un área de juegos al aire libre. Su silueta recuerda a un volcán de cima roja, con un rostro sonriente en lo alto y paredes revestidas de madera. Los árboles y la pradera rodean la casa.</p><p>En el interior, salón, cocina y dormitorio forman parte del universo de Pitoufeu. Las imágenes de sus viajes por los volcanes del mundo cuentan su vida de explorador y llevan el tema del parque hasta su vivienda imaginaria.</p><h2>Pasarelas y tobogán</h2><p>Un puente colgante y un tobogán acompañan la exploración. El gran tubo gris desciende por el lateral del edificio, mientras los pasos de madera conectan los juegos de alrededor. Los niños recorren así un decorado que une la casa de un personaje con un pequeño paisaje volcánico.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La maison d’un petit explorateur</h2><p>La Maison Pitoufeu donne une demeure à la mascotte de Vulcania dans une aire de jeux extérieure. Sa silhouette évoque un volcan coiffé de rouge, avec un visage souriant en hauteur et des parois habillées de bois. Autour de la maison, les arbres et la prairie composent le cadre du jeu.</p><p>L’intérieur reprend les pièces du quotidien : salon, cuisine et chambre font partie de l’univers de Pitoufeu. Des images de ses voyages auprès des volcans du monde racontent sa vie d’explorateur et prolongent le thème du parc jusque dans son logement imaginaire.</p><h2>Passerelles et glissade</h2><p>Un pont suspendu et un toboggan accompagnent la découverte de la maison. Le grand tube gris descend sur le côté du bâtiment, tandis que les passages en bois relient les jeux alentour. Les enfants traversent ainsi un décor qui associe maison de personnage et paysage volcanique miniature.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La casa di un piccolo esploratore</h2><p>La Maison Pitoufeu offre una dimora alla mascotte di Vulcania in un’area giochi all’aperto. La sagoma ricorda un vulcano dalla sommità rossa, con un volto sorridente in alto e pareti rivestite di legno. Alberi e prato circondano la casa.</p><p>All’interno, soggiorno, cucina e camera da letto fanno parte dell’universo di Pitoufeu. Le immagini dei suoi viaggi tra i vulcani del mondo raccontano la sua vita da esploratore, portando il tema del parco nella sua abitazione immaginaria.</p><h2>Passerelle e scivolo</h2><p>Un ponte sospeso e uno scivolo accompagnano l’esplorazione. Il grande tubo grigio scende sul lato dell’edificio, mentre passaggi in legno collegano i giochi circostanti. I bambini attraversano così uno scenario che unisce la casa di un personaggio a un piccolo paesaggio vulcanico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het huis van een kleine ontdekkingsreiziger</h2><p>Maison Pitoufeu geeft de mascotte van Vulcania een woning in een buitenspeeltuin. Het silhouet doet denken aan een vulkaan met een rode top, een glimlachend gezicht hoog bovenaan en wanden met houten bekleding. Bomen en grasland vormen de omgeving van het huis.</p><p>Binnen horen vertrouwde kamers bij de wereld van Pitoufeu: woonkamer, keuken en slaapkamer. Afbeeldingen van zijn reizen naar vulkanen over de hele wereld vertellen over zijn leven als ontdekkingsreiziger en brengen het parkthema tot in zijn fantasiewoning.</p><h2>Bruggen en een glijbaan</h2><p>Een hangbrug en een glijbaan begeleiden de verkenning. Een grote grijze buis loopt langs de zijkant van het gebouw naar beneden, terwijl houten doorgangen de speelplekken eromheen verbinden. Kinderen trekken zo door een decor dat een personagehuis met een klein vulkaanlandschap combineert.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Dom małego odkrywcy</h2><p>Maison Pitoufeu daje maskotce Vulcanii własny dom na plenerowym placu zabaw. Bryła przypomina wulkan z czerwoną górą, uśmiechniętą twarzą wysoko nad wejściem i ścianami obłożonymi drewnem. Dom otaczają drzewa i łąka.</p><p>Wewnątrz do świata Pitoufeu należą znajome pomieszczenia: salon, kuchnia i sypialnia. Zdjęcia jego podróży do wulkanów świata opowiadają o życiu odkrywcy, przenosząc tematykę parku do jego wyobrażonego mieszkania.</p><h2>Kładki i zjeżdżalnia</h2><p>Odkrywaniu domu towarzyszą wiszący most i zjeżdżalnia. Duża szara rura opada wzdłuż boku budynku, a drewniane przejścia łączą pobliskie miejsca zabawy. Dzieci przemierzają scenerię, w której dom postaci spotyka się z niewielkim wulkanicznym krajobrazem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A casa de um pequeno explorador</h2><p>A Maison Pitoufeu dá uma morada à mascote do Vulcania numa área de jogos ao ar livre. A silhueta lembra um vulcão com o topo vermelho, um rosto sorridente em altura e paredes revestidas de madeira. As árvores e o prado envolvem a casa.</p><p>No interior, sala, cozinha e quarto fazem parte do universo de Pitoufeu. Imagens das suas viagens pelos vulcões do mundo contam a sua vida de explorador e prolongam o tema do parque até à sua habitação imaginária.</p><h2>Passadiços e escorrega</h2><p>Uma ponte suspensa e um escorrega acompanham a descoberta. O grande tubo cinzento desce pela lateral do edifício, enquanto passagens de madeira ligam os jogos em redor. As crianças atravessam assim um cenário que combina a casa de uma personagem com uma pequena paisagem vulcânica.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+        "entityKey": "vulcania-riviere-mineraux",
+        "displayName": "Rivière des minéraux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Bach voller Steine zum Entdecken</h2><p>Die Rivière des minéraux überträgt die Welt der Goldsuche in einen Workshop zur Entdeckung von Steinen. An einer Holzrinne durchsuchen Kinder den Sand und betrachten die Funde in ihren Sieben. Wasser, bunte kleine Schaufeln und Holzrahmen erinnern an einen Schürfplatz.</p><p>Zu entdecken sind Pyrit, Rosenquarz, Schneeflockenobsidian, Amethyst und Citrin. Ihre unterschiedlichen Farben und Erscheinungsformen bieten Anlass zum genauen Hinsehen. Eine Bestimmungskarte hilft, die Steine zu erkennen.</p><h2>Vom Schatz zum genauen Blick</h2><p>Auf die Freude am Finden folgt die am Wiedererkennen. Eine Urkunde für Edelsteinsucher bildet den Abschluss des Workshops. Sie verbindet die Erinnerung an die Suche mit Namen und Materialien, die das Kind aus nächster Nähe betrachten konnte.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A stream of stones to discover</h2><p>Rivière des minéraux brings the imagery of gold prospecting into a stone-discovery workshop. Along a wooden channel, children search through sand and examine the finds appearing in their sieves. Water, colourful little shovels and wooden frames give the activity the atmosphere of a prospecting site.</p><p>The discoveries include pyrite, rose quartz, snowflake obsidian, amethyst and citrine. Their different colours and appearances provide a starting point for observation, supported by a card that helps identify the stones.</p><h2>From treasure to observation</h2><p>The pleasure of finding continues with the pleasure of recognising. A gemstone prospector’s certificate concludes the workshop, linking the memory of the search with names and materials that each child has examined at close quarters.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un río de piedras por descubrir</h2><p>La Rivière des minéraux lleva el imaginario de los buscadores de oro a un taller dedicado a las piedras. A lo largo de un canal de madera, los niños exploran la arena y observan los hallazgos que aparecen en sus tamices. El agua, las pequeñas palas de colores y los marcos de madera crean un ambiente de prospección.</p><p>Entre los hallazgos se encuentran pirita, cuarzo rosa, obsidiana nevada, amatista y citrino. Sus distintos colores y aspectos invitan a observar, con ayuda de una tarjeta para identificar las piedras.</p><h2>Del tesoro a la observación</h2><p>El placer de encontrar continúa con el de reconocer. Un diploma de buscador de piedras preciosas cierra el taller y relaciona el recuerdo de la búsqueda con nombres y materiales que cada niño ha podido examinar de cerca.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une rivière de pierres à découvrir</h2><p>La Rivière des minéraux transpose l’imaginaire des chercheurs d’or dans un atelier de découverte des pierres. Installés le long d’un canal en bois, les enfants fouillent le sable et observent les trouvailles qui apparaissent dans leurs tamis. L’eau, les petites pelles colorées et les cadres de bois donnent à l’activité une atmosphère de chantier de prospection.</p><p>La récolte conduit vers la pyrite, le quartz rose, l’obsidienne neige, l’améthyste et la citrine. Leurs teintes et leurs aspects différents deviennent le point de départ d’une observation, à l’aide d’une carte qui permet d’identifier les pierres.</p><h2>Du trésor à l’observation</h2><p>Le plaisir de trouver se prolonge ainsi par celui de reconnaître. Un diplôme de chercheur de pierres précieuses conclut l’atelier : le souvenir de la prospection accompagne la découverte de noms et de matières que l’enfant a pu regarder de près.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un corso d’acqua e pietre da scoprire</h2><p>La Rivière des minéraux porta l’immaginario dei cercatori d’oro in un laboratorio dedicato alle pietre. Lungo un canale di legno, i bambini esplorano la sabbia e osservano ciò che compare nei setacci. Acqua, piccole palette colorate e telai di legno creano l’atmosfera di un sito di ricerca.</p><p>Tra le scoperte figurano pirite, quarzo rosa, ossidiana fiocco di neve, ametista e citrino. Colori e aspetti differenti invitano all’osservazione, con l’aiuto di una scheda per riconoscere le pietre.</p><h2>Dal tesoro all’osservazione</h2><p>Il piacere di trovare continua con quello di riconoscere. Un diploma da cercatore di pietre preziose conclude il laboratorio, collegando il ricordo della ricerca ai nomi e ai materiali che ogni bambino ha potuto osservare da vicino.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een stroom vol stenen om te ontdekken</h2><p>Rivière des minéraux brengt de wereld van goudzoekers naar een workshop over stenen. Langs een houten goot doorzoeken kinderen het zand en bekijken ze wat in hun zeven verschijnt. Water, kleine gekleurde schepjes en houten kaders geven de activiteit de sfeer van een vindplaats.</p><p>Er zijn pyriet, rozenkwarts, sneeuwvlokobsidiaan, amethist en citrien te ontdekken. Hun verschillende kleuren en uiterlijk vormen het begin van een observatie. Een herkenningskaart helpt om de stenen een naam te geven.</p><h2>Van schat naar herkenning</h2><p>Op het plezier van het vinden volgt het plezier van het herkennen. Een diploma voor edelsteenvinders sluit de workshop af. Zo blijft de herinnering aan het zoeken verbonden met namen en materialen die het kind van dichtbij heeft bekeken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Strumień kamieni do odkrycia</h2><p>Rivière des minéraux przenosi świat poszukiwaczy złota do warsztatów poświęconych kamieniom. Wzdłuż drewnianego kanału dzieci przeszukują piasek i oglądają znaleziska pojawiające się w sitach. Woda, kolorowe łopatki i drewniane ramki tworzą atmosferę miejsca poszukiwań.</p><p>Wśród znalezisk są piryt, kwarc różowy, obsydian śnieżny, ametyst i cytryn. Ich odmienne barwy i wygląd stają się punktem wyjścia do obserwacji. Karta rozpoznawcza pomaga nazwać oglądane kamienie.</p><h2>Od skarbu do obserwacji</h2><p>Radość znalezienia łączy się z radością rozpoznania. Warsztaty kończy dyplom poszukiwacza kamieni szlachetnych. Wspomnienie poszukiwań towarzyszy w ten sposób poznawaniu nazw i materiałów, które dziecko mogło obejrzeć z bliska.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um curso de água com pedras por descobrir</h2><p>A Rivière des minéraux transporta o imaginário dos garimpeiros para uma oficina dedicada às pedras. Ao longo de um canal de madeira, as crianças exploram a areia e observam os achados nos crivos. A água, as pequenas pás coloridas e as armações de madeira criam um ambiente de prospeção.</p><p>Entre os achados contam-se pirite, quartzo rosa, obsidiana floco de neve, ametista e citrino. As diferentes cores e aparências convidam à observação, com a ajuda de um cartão para identificar as pedras.</p><h2>Do tesouro à observação</h2><p>O prazer de encontrar continua no de reconhecer. Um diploma de pesquisador de pedras preciosas conclui a oficina, ligando a memória da procura aos nomes e materiais que cada criança pôde observar de perto.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "bf30a1c8-88f2-4be2-8278-a05ad7facc90",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:23:03.1475136Z",
+    "appliedAtUtc": "2026-11-15T18:23:03.1475144Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+        "entityKey": "vulcania-maison-pitoufeu",
+        "displayName": "Maison Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Das Zuhause eines kleinen Entdeckers</h2><p>Die Maison Pitoufeu gibt Vulcanias Maskottchen ein Zuhause auf einem Außenspielplatz. Ihre Form erinnert an einen Vulkan mit roter Spitze, einem lächelnden Gesicht hoch oben und holzverkleideten Wänden. Bäume und Wiese bilden die Umgebung des Hauses.</p><p>Im Inneren gehören vertraute Wohnräume zu Pitoufeus Welt: Wohnzimmer, Küche und Schlafzimmer. Bilder seiner Reisen zu Vulkanen rund um den Globus erzählen von seinem Entdeckerleben und tragen das Parkthema in sein Fantasiehaus.</p><h2>Brücken und Rutsche</h2><p>Eine Hängebrücke und eine Rutsche begleiten die Erkundung. Eine große graue Röhre führt seitlich am Gebäude hinunter, während Holzpassagen die umliegenden Spielbereiche verbinden. So durchqueren Kinder eine Kulisse, die das Haus einer Figur mit einer kleinen Vulkanlandschaft verbindet.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A home for a little explorer</h2><p>Maison Pitoufeu gives Vulcania’s mascot a home within an outdoor playground. Its shape recalls a volcano with a red top, a smiling face high up and walls clad in wood. Trees and meadow provide the setting around the house.</p><p>Inside, familiar rooms form part of Pitoufeu’s world: a living room, kitchen and bedroom. Pictures of his travels to volcanoes around the world tell the story of an explorer, carrying the park’s theme into his imaginary home.</p><h2>Bridges and a slide</h2><p>A suspension bridge and slide accompany the exploration of the house. A large grey tube descends beside the building, while wooden passages link the surrounding play areas. Children move through a setting that combines a character’s home with a miniature volcanic landscape.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La casa de un pequeño explorador</h2><p>La Maison Pitoufeu da un hogar a la mascota de Vulcania dentro de un área de juegos al aire libre. Su silueta recuerda a un volcán de cima roja, con un rostro sonriente en lo alto y paredes revestidas de madera. Los árboles y la pradera rodean la casa.</p><p>En el interior, salón, cocina y dormitorio forman parte del universo de Pitoufeu. Las imágenes de sus viajes por los volcanes del mundo cuentan su vida de explorador y llevan el tema del parque hasta su vivienda imaginaria.</p><h2>Pasarelas y tobogán</h2><p>Un puente colgante y un tobogán acompañan la exploración. El gran tubo gris desciende por el lateral del edificio, mientras los pasos de madera conectan los juegos de alrededor. Los niños recorren así un decorado que une la casa de un personaje con un pequeño paisaje volcánico.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La maison d’un petit explorateur</h2><p>La Maison Pitoufeu donne une demeure à la mascotte de Vulcania dans une aire de jeux extérieure. Sa silhouette évoque un volcan coiffé de rouge, avec un visage souriant en hauteur et des parois habillées de bois. Autour de la maison, les arbres et la prairie composent le cadre du jeu.</p><p>L’intérieur reprend les pièces du quotidien : salon, cuisine et chambre font partie de l’univers de Pitoufeu. Des images de ses voyages auprès des volcans du monde racontent sa vie d’explorateur et prolongent le thème du parc jusque dans son logement imaginaire.</p><h2>Passerelles et glissade</h2><p>Un pont suspendu et un toboggan accompagnent la découverte de la maison. Le grand tube gris descend sur le côté du bâtiment, tandis que les passages en bois relient les jeux alentour. Les enfants traversent ainsi un décor qui associe maison de personnage et paysage volcanique miniature.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La casa di un piccolo esploratore</h2><p>La Maison Pitoufeu offre una dimora alla mascotte di Vulcania in un’area giochi all’aperto. La sagoma ricorda un vulcano dalla sommità rossa, con un volto sorridente in alto e pareti rivestite di legno. Alberi e prato circondano la casa.</p><p>All’interno, soggiorno, cucina e camera da letto fanno parte dell’universo di Pitoufeu. Le immagini dei suoi viaggi tra i vulcani del mondo raccontano la sua vita da esploratore, portando il tema del parco nella sua abitazione immaginaria.</p><h2>Passerelle e scivolo</h2><p>Un ponte sospeso e uno scivolo accompagnano l’esplorazione. Il grande tubo grigio scende sul lato dell’edificio, mentre passaggi in legno collegano i giochi circostanti. I bambini attraversano così uno scenario che unisce la casa di un personaggio a un piccolo paesaggio vulcanico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het huis van een kleine ontdekkingsreiziger</h2><p>Maison Pitoufeu geeft de mascotte van Vulcania een woning in een buitenspeeltuin. Het silhouet doet denken aan een vulkaan met een rode top, een glimlachend gezicht hoog bovenaan en wanden met houten bekleding. Bomen en grasland vormen de omgeving van het huis.</p><p>Binnen horen vertrouwde kamers bij de wereld van Pitoufeu: woonkamer, keuken en slaapkamer. Afbeeldingen van zijn reizen naar vulkanen over de hele wereld vertellen over zijn leven als ontdekkingsreiziger en brengen het parkthema tot in zijn fantasiewoning.</p><h2>Bruggen en een glijbaan</h2><p>Een hangbrug en een glijbaan begeleiden de verkenning. Een grote grijze buis loopt langs de zijkant van het gebouw naar beneden, terwijl houten doorgangen de speelplekken eromheen verbinden. Kinderen trekken zo door een decor dat een personagehuis met een klein vulkaanlandschap combineert.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Dom małego odkrywcy</h2><p>Maison Pitoufeu daje maskotce Vulcanii własny dom na plenerowym placu zabaw. Bryła przypomina wulkan z czerwoną górą, uśmiechniętą twarzą wysoko nad wejściem i ścianami obłożonymi drewnem. Dom otaczają drzewa i łąka.</p><p>Wewnątrz do świata Pitoufeu należą znajome pomieszczenia: salon, kuchnia i sypialnia. Zdjęcia jego podróży do wulkanów świata opowiadają o życiu odkrywcy, przenosząc tematykę parku do jego wyobrażonego mieszkania.</p><h2>Kładki i zjeżdżalnia</h2><p>Odkrywaniu domu towarzyszą wiszący most i zjeżdżalnia. Duża szara rura opada wzdłuż boku budynku, a drewniane przejścia łączą pobliskie miejsca zabawy. Dzieci przemierzają scenerię, w której dom postaci spotyka się z niewielkim wulkanicznym krajobrazem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A casa de um pequeno explorador</h2><p>A Maison Pitoufeu dá uma morada à mascote do Vulcania numa área de jogos ao ar livre. A silhueta lembra um vulcão com o topo vermelho, um rosto sorridente em altura e paredes revestidas de madeira. As árvores e o prado envolvem a casa.</p><p>No interior, sala, cozinha e quarto fazem parte do universo de Pitoufeu. Imagens das suas viagens pelos vulcões do mundo contam a sua vida de explorador e prolongam o tema do parque até à sua habitação imaginária.</p><h2>Passadiços e escorrega</h2><p>Uma ponte suspensa e um escorrega acompanham a descoberta. O grande tubo cinzento desce pela lateral do edifício, enquanto passagens de madeira ligam os jogos em redor. As crianças atravessam assim um cenário que combina a casa de uma personagem com uma pequena paisagem vulcânica.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+        "entityKey": "vulcania-riviere-mineraux",
+        "displayName": "Rivière des minéraux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Bach voller Steine zum Entdecken</h2><p>Die Rivière des minéraux überträgt die Welt der Goldsuche in einen Workshop zur Entdeckung von Steinen. An einer Holzrinne durchsuchen Kinder den Sand und betrachten die Funde in ihren Sieben. Wasser, bunte kleine Schaufeln und Holzrahmen erinnern an einen Schürfplatz.</p><p>Zu entdecken sind Pyrit, Rosenquarz, Schneeflockenobsidian, Amethyst und Citrin. Ihre unterschiedlichen Farben und Erscheinungsformen bieten Anlass zum genauen Hinsehen. Eine Bestimmungskarte hilft, die Steine zu erkennen.</p><h2>Vom Schatz zum genauen Blick</h2><p>Auf die Freude am Finden folgt die am Wiedererkennen. Eine Urkunde für Edelsteinsucher bildet den Abschluss des Workshops. Sie verbindet die Erinnerung an die Suche mit Namen und Materialien, die das Kind aus nächster Nähe betrachten konnte.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A stream of stones to discover</h2><p>Rivière des minéraux brings the imagery of gold prospecting into a stone-discovery workshop. Along a wooden channel, children search through sand and examine the finds appearing in their sieves. Water, colourful little shovels and wooden frames give the activity the atmosphere of a prospecting site.</p><p>The discoveries include pyrite, rose quartz, snowflake obsidian, amethyst and citrine. Their different colours and appearances provide a starting point for observation, supported by a card that helps identify the stones.</p><h2>From treasure to observation</h2><p>The pleasure of finding continues with the pleasure of recognising. A gemstone prospector’s certificate concludes the workshop, linking the memory of the search with names and materials that each child has examined at close quarters.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un río de piedras por descubrir</h2><p>La Rivière des minéraux lleva el imaginario de los buscadores de oro a un taller dedicado a las piedras. A lo largo de un canal de madera, los niños exploran la arena y observan los hallazgos que aparecen en sus tamices. El agua, las pequeñas palas de colores y los marcos de madera crean un ambiente de prospección.</p><p>Entre los hallazgos se encuentran pirita, cuarzo rosa, obsidiana nevada, amatista y citrino. Sus distintos colores y aspectos invitan a observar, con ayuda de una tarjeta para identificar las piedras.</p><h2>Del tesoro a la observación</h2><p>El placer de encontrar continúa con el de reconocer. Un diploma de buscador de piedras preciosas cierra el taller y relaciona el recuerdo de la búsqueda con nombres y materiales que cada niño ha podido examinar de cerca.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une rivière de pierres à découvrir</h2><p>La Rivière des minéraux transpose l’imaginaire des chercheurs d’or dans un atelier de découverte des pierres. Installés le long d’un canal en bois, les enfants fouillent le sable et observent les trouvailles qui apparaissent dans leurs tamis. L’eau, les petites pelles colorées et les cadres de bois donnent à l’activité une atmosphère de chantier de prospection.</p><p>La récolte conduit vers la pyrite, le quartz rose, l’obsidienne neige, l’améthyste et la citrine. Leurs teintes et leurs aspects différents deviennent le point de départ d’une observation, à l’aide d’une carte qui permet d’identifier les pierres.</p><h2>Du trésor à l’observation</h2><p>Le plaisir de trouver se prolonge ainsi par celui de reconnaître. Un diplôme de chercheur de pierres précieuses conclut l’atelier : le souvenir de la prospection accompagne la découverte de noms et de matières que l’enfant a pu regarder de près.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un corso d’acqua e pietre da scoprire</h2><p>La Rivière des minéraux porta l’immaginario dei cercatori d’oro in un laboratorio dedicato alle pietre. Lungo un canale di legno, i bambini esplorano la sabbia e osservano ciò che compare nei setacci. Acqua, piccole palette colorate e telai di legno creano l’atmosfera di un sito di ricerca.</p><p>Tra le scoperte figurano pirite, quarzo rosa, ossidiana fiocco di neve, ametista e citrino. Colori e aspetti differenti invitano all’osservazione, con l’aiuto di una scheda per riconoscere le pietre.</p><h2>Dal tesoro all’osservazione</h2><p>Il piacere di trovare continua con quello di riconoscere. Un diploma da cercatore di pietre preziose conclude il laboratorio, collegando il ricordo della ricerca ai nomi e ai materiali che ogni bambino ha potuto osservare da vicino.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een stroom vol stenen om te ontdekken</h2><p>Rivière des minéraux brengt de wereld van goudzoekers naar een workshop over stenen. Langs een houten goot doorzoeken kinderen het zand en bekijken ze wat in hun zeven verschijnt. Water, kleine gekleurde schepjes en houten kaders geven de activiteit de sfeer van een vindplaats.</p><p>Er zijn pyriet, rozenkwarts, sneeuwvlokobsidiaan, amethist en citrien te ontdekken. Hun verschillende kleuren en uiterlijk vormen het begin van een observatie. Een herkenningskaart helpt om de stenen een naam te geven.</p><h2>Van schat naar herkenning</h2><p>Op het plezier van het vinden volgt het plezier van het herkennen. Een diploma voor edelsteenvinders sluit de workshop af. Zo blijft de herinnering aan het zoeken verbonden met namen en materialen die het kind van dichtbij heeft bekeken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Strumień kamieni do odkrycia</h2><p>Rivière des minéraux przenosi świat poszukiwaczy złota do warsztatów poświęconych kamieniom. Wzdłuż drewnianego kanału dzieci przeszukują piasek i oglądają znaleziska pojawiające się w sitach. Woda, kolorowe łopatki i drewniane ramki tworzą atmosferę miejsca poszukiwań.</p><p>Wśród znalezisk są piryt, kwarc różowy, obsydian śnieżny, ametyst i cytryn. Ich odmienne barwy i wygląd stają się punktem wyjścia do obserwacji. Karta rozpoznawcza pomaga nazwać oglądane kamienie.</p><h2>Od skarbu do obserwacji</h2><p>Radość znalezienia łączy się z radością rozpoznania. Warsztaty kończy dyplom poszukiwacza kamieni szlachetnych. Wspomnienie poszukiwań towarzyszy w ten sposób poznawaniu nazw i materiałów, które dziecko mogło obejrzeć z bliska.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um curso de água com pedras por descobrir</h2><p>A Rivière des minéraux transporta o imaginário dos garimpeiros para uma oficina dedicada às pedras. Ao longo de um canal de madeira, as crianças exploram a areia e observam os achados nos crivos. A água, as pequenas pás coloridas e as armações de madeira criam um ambiente de prospeção.</p><p>Entre os achados contam-se pirite, quartzo rosa, obsidiana floco de neve, ametista e citrino. As diferentes cores e aparências convidam à observação, com a ajuda de um cartão para identificar as pedras.</p><h2>Do tesouro à observação</h2><p>O prazer de encontrar continua no de reconhecer. Um diploma de pesquisador de pedras preciosas conclui a oficina, ligando a memória da procura aos nomes e materiais que cada criança pôde observar de perto.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Maison Pitoufeu et Rivière des minéraux : seize notices personnelles en huit langues, jeux et décors vérifiés ; contradiction du nombre de niveaux omise, aucune date inventée, deux fiches privées avant audit.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen descriptions personally authored and reviewed in eight languages. Full primary pages and original photographs inspected: https://www.vulcania.com/animation/la-maison-de-pitoufeu/ ; https://www.vulcania.com/animation/la-riviere-des-mineraux/ . Maison: physical wooden volcano-like house, red top/face/grey tube, rooms and travel gallery sourced; conflicting official floor count deliberately omitted. Rivière: real wooden channel, sand, sieves and named stones; no promise of finding actual gold, no admission schedule inferred. Operational conditions remain in structured existing fields. Two specific headings and three paragraphs each; no invented dates or makers."
+}

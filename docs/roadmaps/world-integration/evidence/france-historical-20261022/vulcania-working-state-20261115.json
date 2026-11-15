@@ -418,7 +418,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/",
         "durationInSeconds": 600
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un petit circuit au nom du Tambora</h2><p>Les Draisiennes de Tambora installent les premières escapades à vélo dans un parcours extérieur thématisé. Le nom évoque le volcan indonésien, tandis que le jeu s’adresse aux petits explorateurs encore à l’âge des draisiennes.</p><p>À l’entrée, le comptoir porte le nom de l’activité sur un décor de bandes colorées. Une grande silhouette de vélo découpée accompagne l’accueil, à côté des petites bicyclettes mises à disposition : le thème est lisible avant même d’entrer sur le parcours.</p><h2>Le vélo dans l’univers des volcans</h2><p>La présentation de l’activité rapproche l’histoire des draisiennes de celle du Tambora. Ce lien choisi par Vulcania donne au circuit une place particulière parmi ses jeux : l’univers du vélo y rencontre le récit des volcans.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A small circuit named after Tambora</h2><p>Draisiennes de Tambora places early cycling adventures on a themed outdoor course. Its name evokes the Indonesian volcano, while the play activity is intended for young explorers still at balance-bike age.</p><p>At the entrance, the counter carries the activity’s name against coloured bands. A large cut-out bicycle shape stands beside the welcome area and the small bikes provided for visitors, making the theme visible before the course begins.</p><h2>Bicycles in a volcanic setting</h2><p>Vulcania’s presentation links the history of balance bikes with that of Tambora. This chosen connection gives the circuit its particular place among the park’s play areas, bringing bicycles into the story of volcanoes.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein kleiner Parcours im Zeichen des Tambora</h2><p>Die Draisiennes de Tambora verlegen erste Radausflüge auf einen thematisch gestalteten Außenparcours. Der Name erinnert an den indonesischen Vulkan; das Spiel richtet sich an kleine Entdecker im Laufradalter.</p><p>Am Eingang trägt der Empfangstresen den Namen der Aktivität vor farbigen Streifen. Eine große ausgeschnittene Fahrradsilhouette steht neben den bereitgestellten kleinen Rädern. Das Thema wird damit schon vor dem Betreten des Parcours sichtbar.</p><h2>Das Fahrrad in der Vulkanwelt</h2><p>Vulcania stellt in der Präsentation einen Zusammenhang zwischen der Geschichte der Laufräder und dem Tambora her. Diese gewählte Verbindung gibt dem Parcours seinen besonderen Platz unter den Spielbereichen: Die Welt des Fahrrads begegnet der Erzählung über Vulkane.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een klein parcours met de naam Tambora</h2><p>Draisiennes de Tambora brengt de eerste fietsavonturen naar een gethematiseerd buitenparcours. De naam verwijst naar de Indonesische vulkaan, terwijl het spel bedoeld is voor kleine ontdekkingsreizigers die nog op loopfietsen rijden.</p><p>Bij de ingang staat de naam op een balie met gekleurde banen. Een groot uitgesneden fietssilhouet begeleidt de ontvangst, naast de kleine fietsen die beschikbaar worden gesteld. Het thema is zo al zichtbaar voordat het parcours begint.</p><h2>Fietsen in een vulkanische wereld</h2><p>In de presentatie verbindt Vulcania de geschiedenis van loopfietsen met die van Tambora. Die gekozen relatie geeft het parcours een eigen plek tussen de speelgebieden: de wereld van de fiets ontmoet het verhaal van vulkanen.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un piccolo circuito nel segno del Tambora</h2><p>Les Draisiennes de Tambora colloca le prime avventure in bicicletta su un percorso tematizzato all’aperto. Il nome richiama il vulcano indonesiano, mentre il gioco si rivolge ai piccoli esploratori ancora nell’età delle biciclette senza pedali.</p><p>All’ingresso, il banco porta il nome dell’attività su fasce colorate. Una grande sagoma ritagliata di bicicletta accompagna l’accoglienza, accanto alle piccole bici messe a disposizione. Il tema è riconoscibile prima di entrare nel percorso.</p><h2>La bicicletta nel mondo dei vulcani</h2><p>La presentazione di Vulcania accosta la storia delle draisienne a quella del Tambora. Questo legame scelto dal parco dà al circuito un posto particolare tra i giochi, facendo incontrare la bicicletta con il racconto dei vulcani.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un pequeño circuito con el nombre del Tambora</h2><p>Les Draisiennes de Tambora sitúa las primeras aventuras en bicicleta en un recorrido tematizado al aire libre. El nombre recuerda al volcán indonesio, mientras la actividad se dirige a pequeños exploradores que todavía usan bicicletas de equilibrio.</p><p>En la entrada, el mostrador lleva el nombre de la actividad sobre franjas de colores. Una gran silueta recortada de bicicleta acompaña la recepción, junto a las pequeñas bicis disponibles. El tema resulta reconocible antes de entrar en el recorrido.</p><h2>La bicicleta entre volcanes</h2><p>La presentación de Vulcania relaciona la historia de las bicicletas de equilibrio con la del Tambora. Ese vínculo elegido por el parque da al circuito un lugar propio entre sus juegos, acercando el mundo de la bicicleta al relato de los volcanes.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Mały tor pod znakiem Tambory</h2><p>Draisiennes de Tambora przenosi pierwsze rowerowe przygody na tematyczny tor pod gołym niebem. Nazwa przywołuje indonezyjski wulkan, a zabawa jest przeznaczona dla małych odkrywców korzystających jeszcze z rowerków biegowych.</p><p>Przy wejściu nazwa atrakcji widnieje na ladzie ozdobionej kolorowymi pasami. Duża wycięta sylwetka roweru stoi obok miejsca powitania i przygotowanych małych rowerków. Motyw jest więc widoczny jeszcze przed wejściem na tor.</p><h2>Rower w świecie wulkanów</h2><p>W prezentacji Vulcania zestawia historię rowerków biegowych z dziejami Tambory. Wybrane przez park powiązanie nadaje torowi własne miejsce wśród terenów zabawy, łącząc świat roweru z opowieścią o wulkanach.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um pequeno circuito com o nome do Tambora</h2><p>Les Draisiennes de Tambora leva as primeiras aventuras de bicicleta para um percurso temático ao ar livre. O nome evoca o vulcão indonésio, enquanto o jogo se destina a pequenos exploradores que ainda usam bicicletas de equilíbrio.</p><p>À entrada, o balcão apresenta o nome da atividade sobre faixas coloridas. Uma grande silhueta recortada de bicicleta acompanha a receção, junto das pequenas bicicletas disponíveis. O tema é reconhecível antes de entrar no percurso.</p><h2>A bicicleta no universo dos vulcões</h2><p>A apresentação do Vulcania aproxima a história das bicicletas de equilíbrio da do Tambora. Esta ligação escolhida pelo parque dá ao circuito um lugar próprio entre os jogos, juntando o mundo da bicicleta à narrativa dos vulcões.</p>"
+        }
+      ]
     },
     {
       "id": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
@@ -432,7 +466,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/la-riviere-des-mineraux/",
         "durationInSeconds": 600
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une rivière de pierres à découvrir</h2><p>La Rivière des minéraux transpose l’imaginaire des chercheurs d’or dans un atelier de découverte des pierres. Installés le long d’un canal en bois, les enfants fouillent le sable et observent les trouvailles qui apparaissent dans leurs tamis. L’eau, les petites pelles colorées et les cadres de bois donnent à l’activité une atmosphère de chantier de prospection.</p><p>La récolte conduit vers la pyrite, le quartz rose, l’obsidienne neige, l’améthyste et la citrine. Leurs teintes et leurs aspects différents deviennent le point de départ d’une observation, à l’aide d’une carte qui permet d’identifier les pierres.</p><h2>Du trésor à l’observation</h2><p>Le plaisir de trouver se prolonge ainsi par celui de reconnaître. Un diplôme de chercheur de pierres précieuses conclut l’atelier : le souvenir de la prospection accompagne la découverte de noms et de matières que l’enfant a pu regarder de près.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A stream of stones to discover</h2><p>Rivière des minéraux brings the imagery of gold prospecting into a stone-discovery workshop. Along a wooden channel, children search through sand and examine the finds appearing in their sieves. Water, colourful little shovels and wooden frames give the activity the atmosphere of a prospecting site.</p><p>The discoveries include pyrite, rose quartz, snowflake obsidian, amethyst and citrine. Their different colours and appearances provide a starting point for observation, supported by a card that helps identify the stones.</p><h2>From treasure to observation</h2><p>The pleasure of finding continues with the pleasure of recognising. A gemstone prospector’s certificate concludes the workshop, linking the memory of the search with names and materials that each child has examined at close quarters.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein Bach voller Steine zum Entdecken</h2><p>Die Rivière des minéraux überträgt die Welt der Goldsuche in einen Workshop zur Entdeckung von Steinen. An einer Holzrinne durchsuchen Kinder den Sand und betrachten die Funde in ihren Sieben. Wasser, bunte kleine Schaufeln und Holzrahmen erinnern an einen Schürfplatz.</p><p>Zu entdecken sind Pyrit, Rosenquarz, Schneeflockenobsidian, Amethyst und Citrin. Ihre unterschiedlichen Farben und Erscheinungsformen bieten Anlass zum genauen Hinsehen. Eine Bestimmungskarte hilft, die Steine zu erkennen.</p><h2>Vom Schatz zum genauen Blick</h2><p>Auf die Freude am Finden folgt die am Wiedererkennen. Eine Urkunde für Edelsteinsucher bildet den Abschluss des Workshops. Sie verbindet die Erinnerung an die Suche mit Namen und Materialien, die das Kind aus nächster Nähe betrachten konnte.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een stroom vol stenen om te ontdekken</h2><p>Rivière des minéraux brengt de wereld van goudzoekers naar een workshop over stenen. Langs een houten goot doorzoeken kinderen het zand en bekijken ze wat in hun zeven verschijnt. Water, kleine gekleurde schepjes en houten kaders geven de activiteit de sfeer van een vindplaats.</p><p>Er zijn pyriet, rozenkwarts, sneeuwvlokobsidiaan, amethist en citrien te ontdekken. Hun verschillende kleuren en uiterlijk vormen het begin van een observatie. Een herkenningskaart helpt om de stenen een naam te geven.</p><h2>Van schat naar herkenning</h2><p>Op het plezier van het vinden volgt het plezier van het herkennen. Een diploma voor edelsteenvinders sluit de workshop af. Zo blijft de herinnering aan het zoeken verbonden met namen en materialen die het kind van dichtbij heeft bekeken.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un corso d’acqua e pietre da scoprire</h2><p>La Rivière des minéraux porta l’immaginario dei cercatori d’oro in un laboratorio dedicato alle pietre. Lungo un canale di legno, i bambini esplorano la sabbia e osservano ciò che compare nei setacci. Acqua, piccole palette colorate e telai di legno creano l’atmosfera di un sito di ricerca.</p><p>Tra le scoperte figurano pirite, quarzo rosa, ossidiana fiocco di neve, ametista e citrino. Colori e aspetti differenti invitano all’osservazione, con l’aiuto di una scheda per riconoscere le pietre.</p><h2>Dal tesoro all’osservazione</h2><p>Il piacere di trovare continua con quello di riconoscere. Un diploma da cercatore di pietre preziose conclude il laboratorio, collegando il ricordo della ricerca ai nomi e ai materiali che ogni bambino ha potuto osservare da vicino.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un río de piedras por descubrir</h2><p>La Rivière des minéraux lleva el imaginario de los buscadores de oro a un taller dedicado a las piedras. A lo largo de un canal de madera, los niños exploran la arena y observan los hallazgos que aparecen en sus tamices. El agua, las pequeñas palas de colores y los marcos de madera crean un ambiente de prospección.</p><p>Entre los hallazgos se encuentran pirita, cuarzo rosa, obsidiana nevada, amatista y citrino. Sus distintos colores y aspectos invitan a observar, con ayuda de una tarjeta para identificar las piedras.</p><h2>Del tesoro a la observación</h2><p>El placer de encontrar continúa con el de reconocer. Un diploma de buscador de piedras preciosas cierra el taller y relaciona el recuerdo de la búsqueda con nombres y materiales que cada niño ha podido examinar de cerca.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Strumień kamieni do odkrycia</h2><p>Rivière des minéraux przenosi świat poszukiwaczy złota do warsztatów poświęconych kamieniom. Wzdłuż drewnianego kanału dzieci przeszukują piasek i oglądają znaleziska pojawiające się w sitach. Woda, kolorowe łopatki i drewniane ramki tworzą atmosferę miejsca poszukiwań.</p><p>Wśród znalezisk są piryt, kwarc różowy, obsydian śnieżny, ametyst i cytryn. Ich odmienne barwy i wygląd stają się punktem wyjścia do obserwacji. Karta rozpoznawcza pomaga nazwać oglądane kamienie.</p><h2>Od skarbu do obserwacji</h2><p>Radość znalezienia łączy się z radością rozpoznania. Warsztaty kończy dyplom poszukiwacza kamieni szlachetnych. Wspomnienie poszukiwań towarzyszy w ten sposób poznawaniu nazw i materiałów, które dziecko mogło obejrzeć z bliska.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um curso de água com pedras por descobrir</h2><p>A Rivière des minéraux transporta o imaginário dos garimpeiros para uma oficina dedicada às pedras. Ao longo de um canal de madeira, as crianças exploram a areia e observam os achados nos crivos. A água, as pequenas pás coloridas e as armações de madeira criam um ambiente de prospeção.</p><p>Entre os achados contam-se pirite, quartzo rosa, obsidiana floco de neve, ametista e citrino. As diferentes cores e aparências convidam à observação, com a ajuda de um cartão para identificar as pedras.</p><h2>Do tesouro à observação</h2><p>O prazer de encontrar continua no de reconhecer. Um diploma de pesquisador de pedras preciosas conclui a oficina, ligando a memória da procura aos nomes e materiais que cada criança pôde observar de perto.</p>"
+        }
+      ]
     },
     {
       "id": "00af79dd-c205-41f0-b789-ef489f8b70f7",
@@ -445,7 +513,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/la-maison-de-pitoufeu/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La maison d’un petit explorateur</h2><p>La Maison Pitoufeu donne une demeure à la mascotte de Vulcania dans une aire de jeux extérieure. Sa silhouette évoque un volcan coiffé de rouge, avec un visage souriant en hauteur et des parois habillées de bois. Autour de la maison, les arbres et la prairie composent le cadre du jeu.</p><p>L’intérieur reprend les pièces du quotidien : salon, cuisine et chambre font partie de l’univers de Pitoufeu. Des images de ses voyages auprès des volcans du monde racontent sa vie d’explorateur et prolongent le thème du parc jusque dans son logement imaginaire.</p><h2>Passerelles et glissade</h2><p>Un pont suspendu et un toboggan accompagnent la découverte de la maison. Le grand tube gris descend sur le côté du bâtiment, tandis que les passages en bois relient les jeux alentour. Les enfants traversent ainsi un décor qui associe maison de personnage et paysage volcanique miniature.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A home for a little explorer</h2><p>Maison Pitoufeu gives Vulcania’s mascot a home within an outdoor playground. Its shape recalls a volcano with a red top, a smiling face high up and walls clad in wood. Trees and meadow provide the setting around the house.</p><p>Inside, familiar rooms form part of Pitoufeu’s world: a living room, kitchen and bedroom. Pictures of his travels to volcanoes around the world tell the story of an explorer, carrying the park’s theme into his imaginary home.</p><h2>Bridges and a slide</h2><p>A suspension bridge and slide accompany the exploration of the house. A large grey tube descends beside the building, while wooden passages link the surrounding play areas. Children move through a setting that combines a character’s home with a miniature volcanic landscape.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Das Zuhause eines kleinen Entdeckers</h2><p>Die Maison Pitoufeu gibt Vulcanias Maskottchen ein Zuhause auf einem Außenspielplatz. Ihre Form erinnert an einen Vulkan mit roter Spitze, einem lächelnden Gesicht hoch oben und holzverkleideten Wänden. Bäume und Wiese bilden die Umgebung des Hauses.</p><p>Im Inneren gehören vertraute Wohnräume zu Pitoufeus Welt: Wohnzimmer, Küche und Schlafzimmer. Bilder seiner Reisen zu Vulkanen rund um den Globus erzählen von seinem Entdeckerleben und tragen das Parkthema in sein Fantasiehaus.</p><h2>Brücken und Rutsche</h2><p>Eine Hängebrücke und eine Rutsche begleiten die Erkundung. Eine große graue Röhre führt seitlich am Gebäude hinunter, während Holzpassagen die umliegenden Spielbereiche verbinden. So durchqueren Kinder eine Kulisse, die das Haus einer Figur mit einer kleinen Vulkanlandschaft verbindet.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Het huis van een kleine ontdekkingsreiziger</h2><p>Maison Pitoufeu geeft de mascotte van Vulcania een woning in een buitenspeeltuin. Het silhouet doet denken aan een vulkaan met een rode top, een glimlachend gezicht hoog bovenaan en wanden met houten bekleding. Bomen en grasland vormen de omgeving van het huis.</p><p>Binnen horen vertrouwde kamers bij de wereld van Pitoufeu: woonkamer, keuken en slaapkamer. Afbeeldingen van zijn reizen naar vulkanen over de hele wereld vertellen over zijn leven als ontdekkingsreiziger en brengen het parkthema tot in zijn fantasiewoning.</p><h2>Bruggen en een glijbaan</h2><p>Een hangbrug en een glijbaan begeleiden de verkenning. Een grote grijze buis loopt langs de zijkant van het gebouw naar beneden, terwijl houten doorgangen de speelplekken eromheen verbinden. Kinderen trekken zo door een decor dat een personagehuis met een klein vulkaanlandschap combineert.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La casa di un piccolo esploratore</h2><p>La Maison Pitoufeu offre una dimora alla mascotte di Vulcania in un’area giochi all’aperto. La sagoma ricorda un vulcano dalla sommità rossa, con un volto sorridente in alto e pareti rivestite di legno. Alberi e prato circondano la casa.</p><p>All’interno, soggiorno, cucina e camera da letto fanno parte dell’universo di Pitoufeu. Le immagini dei suoi viaggi tra i vulcani del mondo raccontano la sua vita da esploratore, portando il tema del parco nella sua abitazione immaginaria.</p><h2>Passerelle e scivolo</h2><p>Un ponte sospeso e uno scivolo accompagnano l’esplorazione. Il grande tubo grigio scende sul lato dell’edificio, mentre passaggi in legno collegano i giochi circostanti. I bambini attraversano così uno scenario che unisce la casa di un personaggio a un piccolo paesaggio vulcanico.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La casa de un pequeño explorador</h2><p>La Maison Pitoufeu da un hogar a la mascota de Vulcania dentro de un área de juegos al aire libre. Su silueta recuerda a un volcán de cima roja, con un rostro sonriente en lo alto y paredes revestidas de madera. Los árboles y la pradera rodean la casa.</p><p>En el interior, salón, cocina y dormitorio forman parte del universo de Pitoufeu. Las imágenes de sus viajes por los volcanes del mundo cuentan su vida de explorador y llevan el tema del parque hasta su vivienda imaginaria.</p><h2>Pasarelas y tobogán</h2><p>Un puente colgante y un tobogán acompañan la exploración. El gran tubo gris desciende por el lateral del edificio, mientras los pasos de madera conectan los juegos de alrededor. Los niños recorren así un decorado que une la casa de un personaje con un pequeño paisaje volcánico.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Dom małego odkrywcy</h2><p>Maison Pitoufeu daje maskotce Vulcanii własny dom na plenerowym placu zabaw. Bryła przypomina wulkan z czerwoną górą, uśmiechniętą twarzą wysoko nad wejściem i ścianami obłożonymi drewnem. Dom otaczają drzewa i łąka.</p><p>Wewnątrz do świata Pitoufeu należą znajome pomieszczenia: salon, kuchnia i sypialnia. Zdjęcia jego podróży do wulkanów świata opowiadają o życiu odkrywcy, przenosząc tematykę parku do jego wyobrażonego mieszkania.</p><h2>Kładki i zjeżdżalnia</h2><p>Odkrywaniu domu towarzyszą wiszący most i zjeżdżalnia. Duża szara rura opada wzdłuż boku budynku, a drewniane przejścia łączą pobliskie miejsca zabawy. Dzieci przemierzają scenerię, w której dom postaci spotyka się z niewielkim wulkanicznym krajobrazem.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A casa de um pequeno explorador</h2><p>A Maison Pitoufeu dá uma morada à mascote do Vulcania numa área de jogos ao ar livre. A silhueta lembra um vulcão com o topo vermelho, um rosto sorridente em altura e paredes revestidas de madeira. As árvores e o prado envolvem a casa.</p><p>No interior, sala, cozinha e quarto fazem parte do universo de Pitoufeu. Imagens das suas viagens pelos vulcões do mundo contam a sua vida de explorador e prolongam o tema do parque até à sua habitação imaginária.</p><h2>Passadiços e escorrega</h2><p>Uma ponte suspensa e um escorrega acompanham a descoberta. O grande tubo cinzento desce pela lateral do edifício, enquanto passagens de madeira ligam os jogos em redor. As crianças atravessam assim um cenário que combina a casa de uma personagem com uma pequena paisagem vulcânica.</p>"
+        }
+      ]
     },
     {
       "id": "69045c46-360e-4fed-890b-f4c64b39c415",
@@ -471,7 +573,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/la-foret-des-dragons/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des dragons parmi les arbres</h2><p>La Forêt des dragons est un parcours extérieur où des créatures animées apparaissent au milieu des arbres. À l’entrée, un long cou écailleux se dresse au-dessus du panneau de la forêt ; la tête cornue et la gueule ouverte donnent le ton de cette rencontre avec les monstres des légendes.</p><p>Le parcours rassemble des récits venus de différentes régions du monde. Les dragons y sont associés à des phénomènes que les sociétés cherchaient à expliquer : éclipses, tsunamis, sécheresses et orages font partie des thèmes abordés.</p><h2>Passer de la légende à l’explication</h2><p>Les histoires sont mises en regard d’explications scientifiques. Le cheminement conserve ainsi la présence imaginaire des dragons tout en revenant aux mécanismes naturels derrière les récits. Il relie une promenade dans les sous-bois à la découverte de la manière dont les humains ont interprété les forces de la nature.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Dragons among the trees</h2><p>Forêt des dragons is an outdoor trail where animated creatures appear among the trees. At the entrance, a long scaled neck rises above the forest sign. A horned head and open mouth set the scene for an encounter with the monsters of legend.</p><p>The trail brings together stories from different parts of the world. Dragons are linked to phenomena that societies sought to explain, including eclipses, tsunamis, droughts and thunderstorms.</p><h2>From legend to explanation</h2><p>The stories are placed alongside scientific explanations. The route preserves the imaginary presence of dragons while returning to the natural processes behind the tales. A walk through woodland becomes an exploration of how people have interpreted the forces of nature.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Drachen zwischen den Bäumen</h2><p>Die Forêt des dragons ist ein Außenpfad, auf dem bewegte Kreaturen zwischen den Bäumen erscheinen. Am Eingang ragt ein langer geschuppter Hals über das Waldschild. Ein gehörntes Haupt und das offene Maul stimmen auf die Begegnung mit den Ungeheuern der Legenden ein.</p><p>Der Weg vereint Geschichten aus verschiedenen Weltregionen. Darin stehen Drachen für Erscheinungen, die Gesellschaften zu erklären versuchten: Finsternisse, Tsunamis, Dürren und Gewitter gehören zu den Themen.</p><h2>Von der Legende zur Erklärung</h2><p>Den Geschichten stehen wissenschaftliche Erklärungen gegenüber. Der Rundgang bewahrt so die fantasievolle Gegenwart der Drachen und führt zugleich zu den natürlichen Vorgängen hinter den Erzählungen. Der Waldspaziergang zeigt, wie Menschen die Kräfte der Natur gedeutet haben.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Draken tussen de bomen</h2><p>Forêt des dragons is een buitenpad waar bewegende wezens tussen de bomen verschijnen. Bij de ingang steekt een lange geschubde nek boven het bord van het bos uit. De gehoornde kop en open muil zetten de toon voor een ontmoeting met monsters uit legenden.</p><p>Het pad verzamelt verhalen uit verschillende delen van de wereld. Draken worden verbonden met verschijnselen waarvoor samenlevingen verklaringen zochten, zoals verduisteringen, tsunami’s, droogte en onweer.</p><h2>Van legende naar verklaring</h2><p>Wetenschappelijke uitleg staat naast de verhalen. Zo blijft de denkbeeldige aanwezigheid van draken behouden, terwijl de route terugkeert naar de natuurlijke processen achter de vertellingen. De boswandeling laat zien hoe mensen de krachten van de natuur hebben geïnterpreteerd.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Draghi tra gli alberi</h2><p>La Forêt des dragons è un percorso all’aperto in cui creature animate appaiono tra gli alberi. All’ingresso, un lungo collo squamoso si alza sopra il cartello della foresta. La testa cornuta e le fauci aperte introducono l’incontro con i mostri delle leggende.</p><p>Il percorso riunisce racconti provenienti da diverse regioni del mondo. I draghi vi sono associati a fenomeni che le società cercavano di spiegare, tra cui eclissi, tsunami, siccità e temporali.</p><h2>Dalla leggenda alla spiegazione</h2><p>Le storie vengono affiancate da spiegazioni scientifiche. Il cammino conserva così la presenza immaginaria dei draghi e torna ai processi naturali dietro i racconti. La passeggiata nel bosco diventa una scoperta del modo in cui gli esseri umani hanno interpretato le forze della natura.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Dragones entre los árboles</h2><p>La Forêt des dragons es un recorrido exterior donde aparecen criaturas animadas entre los árboles. En la entrada, un largo cuello escamoso se eleva sobre el cartel del bosque. La cabeza cornuda y las fauces abiertas introducen el encuentro con los monstruos de las leyendas.</p><p>El recorrido reúne relatos de distintas regiones del mundo. Los dragones se relacionan con fenómenos que las sociedades trataban de explicar, entre ellos eclipses, tsunamis, sequías y tormentas.</p><h2>De la leyenda a la explicación</h2><p>Las historias se presentan junto a explicaciones científicas. El camino conserva así la presencia imaginaria de los dragones y vuelve a los procesos naturales detrás de los relatos. El paseo por el bosque permite descubrir cómo las personas han interpretado las fuerzas de la naturaleza.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Smoki pośród drzew</h2><p>Forêt des dragons to trasa pod gołym niebem, na której ruchome stworzenia pojawiają się między drzewami. Przy wejściu długa łuskowata szyja wznosi się ponad tablicą lasu. Rogata głowa i otwarta paszcza zapowiadają spotkanie z potworami znanymi z legend.</p><p>Trasa gromadzi opowieści z różnych regionów świata. Smoki wiążą się w nich ze zjawiskami, które ludzie próbowali wyjaśnić: zaćmieniami, tsunami, suszami i burzami.</p><h2>Od legendy do wyjaśnienia</h2><p>Opowieści zestawiono z naukowymi wyjaśnieniami. Szlak zachowuje wyobrażoną obecność smoków, a zarazem wraca do procesów naturalnych kryjących się za legendami. Spacer po lesie łączy się z poznawaniem tego, jak ludzie interpretowali siły przyrody.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Dragões entre as árvores</h2><p>A Forêt des dragons é um percurso exterior onde criaturas animadas surgem entre as árvores. À entrada, um longo pescoço escamoso ergue-se sobre a placa da floresta. A cabeça com chifres e a boca aberta dão o tom ao encontro com os monstros das lendas.</p><p>O percurso reúne histórias de diferentes regiões do mundo. Os dragões aparecem associados a fenómenos que as sociedades procuravam explicar, incluindo eclipses, tsunamis, secas e trovoadas.</p><h2>Da lenda à explicação</h2><p>As histórias são acompanhadas por explicações científicas. O caminho conserva a presença imaginária dos dragões e regressa aos processos naturais por detrás dos relatos. O passeio pelo bosque revela, assim, como os seres humanos interpretaram as forças da natureza.</p>"
+        }
+      ]
     },
     {
       "id": "162784ea-824c-4a01-93de-81d0de53ae4c",
@@ -484,7 +620,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/galerie-pitoufeu/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les couleurs de Pitoufeu à l’intérieur</h2><p>La Galerie Pitoufeu est l’aire de jeux intérieure dédiée au jeune univers de la mascotte. Son entrée associe un grand portrait de Pitoufeu sur fond bleu à une enseigne rouge portant le nom de la galerie.</p><p>À l’intérieur, les structures de jeu reprennent des tons rouges et orangés. Des filets entourent des modules et des passages où les enfants explorent cet espace coloré.</p><h2>Un décor pour sauter et se faufiler</h2><p>Un passage arrondi transparent se trouve au milieu des surfaces rouges et orange. Les enfants y découvrent des jeux pour sauter et se faufiler, dans une galerie distincte de la maison extérieure de Pitoufeu.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Pitoufeu’s colours indoors</h2><p>Galerie Pitoufeu is the indoor play area devoted to the mascot’s young world. Its entrance combines a large portrait of Pitoufeu on a blue background with a red sign bearing the gallery’s name.</p><p>Inside, the play structures use red and orange tones. Nets surround modules and passages that children explore within the colourful space.</p><h2>A setting for jumping and crawling</h2><p>A rounded transparent passage sits among the red and orange surfaces. Children discover places to jump and crawl in this gallery, which is separate from Pitoufeu’s outdoor house.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Pitoufeus Farben im Innenraum</h2><p>Die Galerie Pitoufeu ist der Innenspielbereich rund um die Welt des Maskottchens. Am Eingang stehen ein großes Bild von Pitoufeu auf blauem Grund und ein rotes Schild mit dem Namen der Galerie.</p><p>Im Inneren greifen die Spielstrukturen Rot- und Orangetöne auf. Netze umgeben Module und Durchgänge, die Kinder in diesem farbigen Raum erkunden.</p><h2>Raum zum Hüpfen und Hindurchkriechen</h2><p>Ein abgerundeter transparenter Durchgang liegt zwischen roten und orangefarbenen Flächen. Kinder entdecken hier Möglichkeiten zum Hüpfen und Hindurchkriechen in einer Galerie, die von Pitoufeus Haus im Freien getrennt ist.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De kleuren van Pitoufeu binnen</h2><p>Galerie Pitoufeu is de binnenspeelruimte rond de wereld van de mascotte. Bij de ingang staat een groot portret van Pitoufeu op een blauwe achtergrond, naast een rood bord met de naam van de galerie.</p><p>Binnen hebben de speelstructuren rode en oranje tinten. Netten omringen modules en doorgangen die kinderen in deze kleurrijke ruimte verkennen.</p><h2>Een decor om te springen en te kruipen</h2><p>Een afgeronde doorzichtige doorgang ligt tussen rode en oranje oppervlakken. Kinderen vinden hier plekken om te springen en te kruipen, in een galerie die losstaat van het buitenhuis van Pitoufeu.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>I colori di Pitoufeu al coperto</h2><p>La Galerie Pitoufeu è l’area giochi interna dedicata al mondo della mascotte. All’ingresso, un grande ritratto di Pitoufeu su fondo blu accompagna un’insegna rossa con il nome della galleria.</p><p>All’interno, le strutture di gioco riprendono tonalità rosse e arancioni. Reti circondano moduli e passaggi che i bambini esplorano in questo spazio colorato.</p><h2>Uno scenario per saltare e infilarsi</h2><p>Un passaggio arrotondato trasparente si trova tra superfici rosse e arancioni. I bambini scoprono giochi per saltare e infilarsi, in una galleria distinta dalla casa all’aperto di Pitoufeu.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Los colores de Pitoufeu bajo techo</h2><p>La Galerie Pitoufeu es el área de juegos interior dedicada al mundo de la mascota. Su entrada combina un gran retrato de Pitoufeu sobre fondo azul con un letrero rojo que lleva el nombre de la galería.</p><p>Dentro, las estructuras de juego presentan tonos rojos y naranjas. Las redes rodean módulos y pasos que los niños exploran en este espacio de colores.</p><h2>Un decorado para saltar y deslizarse</h2><p>Un paso redondeado transparente aparece entre superficies rojas y naranjas. Los niños encuentran espacios para saltar y colarse por los pasos, en una galería distinta de la casa exterior de Pitoufeu.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kolory Pitoufeu pod dachem</h2><p>Galerie Pitoufeu to wewnętrzny plac zabaw związany ze światem maskotki. Przy wejściu duży portret Pitoufeu na niebieskim tle sąsiaduje z czerwonym szyldem z nazwą galerii.</p><p>W środku konstrukcje do zabawy utrzymano w czerwieni i pomarańczu. Siatki otaczają moduły i przejścia, które dzieci odkrywają w tej barwnej przestrzeni.</p><h2>Sceneria do skakania i przeciskania się</h2><p>Zaokrąglone przezroczyste przejście znajduje się wśród czerwonych i pomarańczowych powierzchni. Dzieci odkrywają miejsca do skakania i przeciskania się w galerii odrębnej od domu Pitoufeu na zewnątrz.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>As cores de Pitoufeu no interior</h2><p>A Galerie Pitoufeu é a área de jogos interior dedicada ao mundo da mascote. À entrada, um grande retrato de Pitoufeu sobre fundo azul acompanha uma placa vermelha com o nome da galeria.</p><p>No interior, as estruturas de jogo apresentam tons vermelhos e laranja. Redes envolvem módulos e passagens que as crianças exploram neste espaço colorido.</p><h2>Um cenário para saltar e passar</h2><p>Uma passagem arredondada transparente encontra-se entre superfícies vermelhas e laranja. As crianças descobrem jogos para saltar e passar pelos módulos, numa galeria distinta da casa de Pitoufeu ao ar livre.</p>"
+        }
+      ]
     },
     {
       "id": "bce899da-5c92-4077-bf35-97a6e004db61",
@@ -4704,6 +4874,650 @@
       "key": "4fe6f6c0da1f4994af54006f3a04a994",
       "imageId": "4fe6f6c0da1f4994af54006f3a04a994",
       "ownerKey": "9fe653b3-fd97-4d4c-ac43-d06466236fa3"
+    },
+    {
+      "id": "9165d5c6d6574c21bb8d7ca626be26f1",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+      "path": "park_item/9165d5c6d6574c21bb8d7ca626be26f1",
+      "description": "Une employée en polo rouge se tient derrière l’enseigne, près d’une silhouette de vélo découpée.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 173229,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/draisiennes-tambora_3000x1100-2-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Accueil des Draisiennes de Tambora avec un comptoir coloré et de petites bicyclettes rangées sur le côté."
+        },
+        {
+          "languageCode": "en",
+          "value": "Draisiennes de Tambora entrance with a colourful counter and small bicycles lined up at the side."
+        },
+        {
+          "languageCode": "de",
+          "value": "Empfang der Draisiennes de Tambora mit farbigem Tresen und seitlich aufgestellten kleinen Fahrrädern."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Ontvangst van Draisiennes de Tambora met een kleurrijke balie en kleine fietsen aan de zijkant."
+        },
+        {
+          "languageCode": "it",
+          "value": "Ingresso delle Draisiennes de Tambora con banco colorato e piccole biciclette allineate di lato."
+        },
+        {
+          "languageCode": "es",
+          "value": "Recepción de Draisiennes de Tambora con un mostrador de colores y pequeñas bicicletas colocadas al lado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wejście do Draisiennes de Tambora z kolorową ladą i małymi rowerkami ustawionymi z boku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Receção das Draisiennes de Tambora com balcão colorido e pequenas bicicletas alinhadas ao lado."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une employée en polo rouge se tient derrière l’enseigne, près d’une silhouette de vélo découpée."
+        },
+        {
+          "languageCode": "en",
+          "value": "A staff member in a red polo shirt stands behind the sign beside a cut-out bicycle shape."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Mitarbeiterin im roten Poloshirt steht hinter dem Schild neben einer ausgeschnittenen Fahrradsilhouette."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een medewerker in een rode polo staat achter het bord naast een uitgesneden fietssilhouet."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un’addetta con polo rossa si trova dietro l’insegna, vicino a una sagoma ritagliata di bicicletta."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una empleada con polo rojo está detrás del letrero, junto a una silueta recortada de bicicleta."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pracownica w czerwonej koszulce polo stoi za szyldem obok wyciętej sylwetki roweru."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma funcionária de polo vermelho está atrás da placa, junto de uma silhueta recortada de bicicleta."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:28:52.634Z",
+      "updatedAt": "2026-11-15T18:28:56.357Z",
+      "key": "9165d5c6d6574c21bb8d7ca626be26f1",
+      "imageId": "9165d5c6d6574c21bb8d7ca626be26f1",
+      "ownerKey": "41eeed22-c7c7-416a-9123-61feb691bcc4"
+    },
+    {
+      "id": "33b66af74c3c4adaa439769785a212d3",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+      "path": "park_item/33b66af74c3c4adaa439769785a212d3",
+      "description": "Le visage souriant domine l’entrée ; des passerelles en bois entourent la maison au bord de la prairie.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 452210,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/La-maison-de-Pitoufeu-1.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Maison Pitoufeu en forme de volcan de bois, avec une partie supérieure rouge et un toboggan gris sur le côté."
+        },
+        {
+          "languageCode": "en",
+          "value": "Maison Pitoufeu shaped like a wooden volcano, with a red upper section and grey slide at the side."
+        },
+        {
+          "languageCode": "de",
+          "value": "Maison Pitoufeu in Form eines Holzvulkans mit rotem oberen Teil und seitlicher grauer Rutsche."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Maison Pitoufeu in de vorm van een houten vulkaan, met een rode bovenkant en een grijze glijbaan aan de zijkant."
+        },
+        {
+          "languageCode": "it",
+          "value": "Maison Pitoufeu a forma di vulcano di legno, con la parte superiore rossa e uno scivolo grigio laterale."
+        },
+        {
+          "languageCode": "es",
+          "value": "Maison Pitoufeu con forma de volcán de madera, parte superior roja y tobogán gris lateral."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Maison Pitoufeu w kształcie drewnianego wulkanu, z czerwoną górą i szarą zjeżdżalnią z boku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Maison Pitoufeu em forma de vulcão de madeira, com a parte superior vermelha e um escorrega cinzento lateral."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le visage souriant domine l’entrée ; des passerelles en bois entourent la maison au bord de la prairie."
+        },
+        {
+          "languageCode": "en",
+          "value": "A smiling face rises above the entrance, with wooden walkways around the house beside the meadow."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das lächelnde Gesicht ragt über dem Eingang auf; Holzstege umgeben das Haus am Wiesenrand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een glimlachend gezicht staat boven de ingang; houten loopbruggen omringen het huis aan de rand van het grasland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il volto sorridente sovrasta l’ingresso; passerelle di legno circondano la casa ai margini del prato."
+        },
+        {
+          "languageCode": "es",
+          "value": "El rostro sonriente domina la entrada; pasarelas de madera rodean la casa junto a la pradera."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uśmiechnięta twarz góruje nad wejściem, a drewniane kładki otaczają dom przy skraju łąki."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O rosto sorridente domina a entrada; passadiços de madeira rodeiam a casa junto ao prado."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:29:12.199Z",
+      "updatedAt": "2026-11-15T18:29:15.839Z",
+      "key": "33b66af74c3c4adaa439769785a212d3",
+      "imageId": "33b66af74c3c4adaa439769785a212d3",
+      "ownerKey": "00af79dd-c205-41f0-b789-ef489f8b70f7"
+    },
+    {
+      "id": "9c77d947e431462291012359d2c1e2b9",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "162784ea-824c-4a01-93de-81d0de53ae4c",
+      "path": "park_item/9c77d947e431462291012359d2c1e2b9",
+      "description": "L’enfant replie les jambes devant la paroi arrondie du jeu intérieur.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 583540,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/La-galerie-de-pitoufeu.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un enfant joue dans un passage transparent de la Galerie Pitoufeu, entouré de surfaces rouges et orange."
+        },
+        {
+          "languageCode": "en",
+          "value": "A child plays in a transparent passage in Galerie Pitoufeu, surrounded by red and orange surfaces."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Kind spielt in einem transparenten Durchgang der Galerie Pitoufeu zwischen roten und orangefarbenen Flächen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kind speelt in een doorzichtige doorgang van Galerie Pitoufeu, omringd door rode en oranje oppervlakken."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un bambino gioca in un passaggio trasparente della Galerie Pitoufeu, circondato da superfici rosse e arancioni."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un niño juega en un paso transparente de la Galerie Pitoufeu, rodeado de superficies rojas y naranjas."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko bawi się w przezroczystym przejściu Galerie Pitoufeu, otoczone czerwonymi i pomarańczowymi powierzchniami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma criança brinca numa passagem transparente da Galerie Pitoufeu, rodeada de superfícies vermelhas e laranja."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "L’enfant replie les jambes devant la paroi arrondie du jeu intérieur."
+        },
+        {
+          "languageCode": "en",
+          "value": "The child folds their legs in front of the curved wall of the indoor play feature."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Kind zieht die Beine vor der gebogenen Wand des Innenspielgeräts an."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het kind trekt de benen op voor de gebogen wand van het binnenspeeltoestel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il bambino raccoglie le gambe davanti alla parete curva del gioco al coperto."
+        },
+        {
+          "languageCode": "es",
+          "value": "El niño recoge las piernas ante la pared curva del juego interior."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko podkurcza nogi przed zakrzywioną ścianą wewnętrznego urządzenia do zabawy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A criança encolhe as pernas diante da parede curva do jogo interior."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:29:36.397Z",
+      "updatedAt": "2026-11-15T18:29:40.033Z",
+      "key": "9c77d947e431462291012359d2c1e2b9",
+      "imageId": "9c77d947e431462291012359d2c1e2b9",
+      "ownerKey": "162784ea-824c-4a01-93de-81d0de53ae4c"
+    },
+    {
+      "id": "5ca0ba406e924e5a8792e88852f8e9ed",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+      "path": "park_item/5ca0ba406e924e5a8792e88852f8e9ed",
+      "description": "Au premier plan, une pelle rouge verse du sable dans un cadre posé au-dessus de l’eau.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 667,
+      "height": 667,
+      "sizeInBytes": 94225,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/02/DSC02809.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfants et adultes de la Rivière des minéraux penchés sur un canal de bois avec des tamis et des pelles colorées."
+        },
+        {
+          "languageCode": "en",
+          "value": "Children and adults at Rivière des minéraux leaning over a wooden channel with sieves and colourful shovels."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kinder und Erwachsene an der Rivière des minéraux beugen sich mit Sieben und bunten Schaufeln über eine Holzrinne."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kinderen en volwassenen bij Rivière des minéraux buigen zich met zeven en gekleurde schepjes over een houten goot."
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambini e adulti alla Rivière des minéraux si chinano su un canale di legno con setacci e palette colorate."
+        },
+        {
+          "languageCode": "es",
+          "value": "Niños y adultos de Rivière des minéraux se inclinan sobre un canal de madera con tamices y palas de colores."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dzieci i dorośli przy Rivière des minéraux pochylają się nad drewnianym kanałem z sitami i kolorowymi łopatkami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Crianças e adultos na Rivière des minéraux inclinam-se sobre um canal de madeira com crivos e pás coloridas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Au premier plan, une pelle rouge verse du sable dans un cadre posé au-dessus de l’eau."
+        },
+        {
+          "languageCode": "en",
+          "value": "In the foreground, a red shovel pours sand into a frame positioned over the water."
+        },
+        {
+          "languageCode": "de",
+          "value": "Im Vordergrund schüttet eine rote Schaufel Sand in einen Rahmen über dem Wasser."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Op de voorgrond schept een rode schep zand in een kader boven het water."
+        },
+        {
+          "languageCode": "it",
+          "value": "In primo piano, una paletta rossa versa sabbia in un telaio posto sopra l’acqua."
+        },
+        {
+          "languageCode": "es",
+          "value": "En primer plano, una pala roja vierte arena en un marco situado sobre el agua."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Na pierwszym planie czerwona łopatka wsypuje piasek do ramki umieszczonej nad wodą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em primeiro plano, uma pá vermelha deita areia numa armação colocada sobre a água."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:29:46.348Z",
+      "updatedAt": "2026-11-15T18:29:49.832Z",
+      "key": "5ca0ba406e924e5a8792e88852f8e9ed",
+      "imageId": "5ca0ba406e924e5a8792e88852f8e9ed",
+      "ownerKey": "fa38fb69-eaa8-4266-8375-2bb024480e5a"
+    },
+    {
+      "id": "5c5c7f0bde5f4bd58eb3ab3ede97d9eb",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "bec6f046-3be4-4245-8681-1650e706a6e7",
+      "path": "park_item/5c5c7f0bde5f4bd58eb3ab3ede97d9eb",
+      "description": "Des dragons multicolores sont dessinés sur la palissade au pied de la créature cornue.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 616914,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/La-foret-des-dragons-2-1.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Dragon au long cou et à la gueule ouverte derrière l’enseigne de la Forêt des dragons, parmi les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "A long-necked dragon with an open mouth behind the Forêt des dragons sign among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein langhalsiger Drache mit offenem Maul hinter dem Schild der Forêt des dragons zwischen den Bäumen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een draak met lange nek en open muil achter het bord van Forêt des dragons, tussen de bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Drago dal lungo collo e dalle fauci aperte dietro l’insegna della Forêt des dragons, tra gli alberi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Dragón de cuello largo y fauces abiertas detrás del letrero de Forêt des dragons, entre los árboles."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Smok o długiej szyi i otwartej paszczy za szyldem Forêt des dragons, pośród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Dragão de pescoço longo e boca aberta atrás da placa da Forêt des dragons, entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des dragons multicolores sont dessinés sur la palissade au pied de la créature cornue."
+        },
+        {
+          "languageCode": "en",
+          "value": "Multicoloured dragons are painted on the wooden screen beneath the horned creature."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bunte Drachen sind auf die Holzwand unterhalb der gehörnten Kreatur gemalt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Veelkleurige draken zijn geschilderd op de houten wand onder het gehoornde wezen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Draghi multicolori sono dipinti sulla palizzata ai piedi della creatura cornuta."
+        },
+        {
+          "languageCode": "es",
+          "value": "Dragones multicolores aparecen pintados en la empalizada a los pies de la criatura cornuda."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wielobarwne smoki namalowano na drewnianej ścianie u stóp rogatego stworzenia."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Dragões multicolores estão pintados na paliçada aos pés da criatura com chifres."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:30:04.011Z",
+      "updatedAt": "2026-11-15T18:30:07.522Z",
+      "key": "5c5c7f0bde5f4bd58eb3ab3ede97d9eb",
+      "imageId": "5c5c7f0bde5f4bd58eb3ab3ede97d9eb",
+      "ownerKey": "bec6f046-3be4-4245-8681-1650e706a6e7"
     }
   ],
   "history": {

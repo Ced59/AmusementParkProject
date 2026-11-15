@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-39-maison-pitoufeu",
+    "ownerId": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+    "itemName": "Maison Pitoufeu",
+    "current": true,
+    "source": {
+      "key": "maison-pitoufeu",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/La-maison-de-Pitoufeu-1.png",
+      "sourcePage": "https://www.vulcania.com/animation/la-maison-de-pitoufeu/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/maison-pitoufeu-official-og.png",
+      "http": 200,
+      "bytes": 452210,
+      "dimensions": [
+        1200,
+        630
+      ],
+      "sha256": "189d15cc19d17cd030a871877bea5189dd7c7056ddab53103f039ca42ffd43e1",
+      "accessedAtUtc": "2026-11-15T18:18:21.974546+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence or individual photographer permission claimed.",
+    "qualification": "Real photograph individually inspected, no cropping or edits. Draisiennes OG composite excluded. Galerie 1200x630 alternate same exposure excluded in favour of 2048x751 original. No visitor identity or age inferred; no virtual-tour screenshot imported."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/La-maison-de-Pitoufeu-1.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/maison-pitoufeu-official-og.png",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-39-maison-pitoufeu-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-39-maison-pitoufeu-import-result.json"
+  },
+  "metadata": {
+    "description": "Le visage souriant domine l’entrée ; des passerelles en bois entourent la maison au bord de la prairie.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/La-maison-de-Pitoufeu-1.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Maison Pitoufeu en forme de volcan de bois, avec une partie supérieure rouge et un toboggan gris sur le côté."
+      },
+      {
+        "languageCode": "en",
+        "value": "Maison Pitoufeu shaped like a wooden volcano, with a red upper section and grey slide at the side."
+      },
+      {
+        "languageCode": "de",
+        "value": "Maison Pitoufeu in Form eines Holzvulkans mit rotem oberen Teil und seitlicher grauer Rutsche."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Maison Pitoufeu in de vorm van een houten vulkaan, met een rode bovenkant en een grijze glijbaan aan de zijkant."
+      },
+      {
+        "languageCode": "it",
+        "value": "Maison Pitoufeu a forma di vulcano di legno, con la parte superiore rossa e uno scivolo grigio laterale."
+      },
+      {
+        "languageCode": "es",
+        "value": "Maison Pitoufeu con forma de volcán de madera, parte superior roja y tobogán gris lateral."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Maison Pitoufeu w kształcie drewnianego wulkanu, z czerwoną górą i szarą zjeżdżalnią z boku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Maison Pitoufeu em forma de vulcão de madeira, com a parte superior vermelha e um escorrega cinzento lateral."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le visage souriant domine l’entrée ; des passerelles en bois entourent la maison au bord de la prairie."
+      },
+      {
+        "languageCode": "en",
+        "value": "A smiling face rises above the entrance, with wooden walkways around the house beside the meadow."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das lächelnde Gesicht ragt über dem Eingang auf; Holzstege umgeben das Haus am Wiesenrand."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een glimlachend gezicht staat boven de ingang; houten loopbruggen omringen het huis aan de rand van het grasland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il volto sorridente sovrasta l’ingresso; passerelle di legno circondano la casa ai margini del prato."
+      },
+      {
+        "languageCode": "es",
+        "value": "El rostro sonriente domina la entrada; pasarelas de madera rodean la casa junto a la pradera."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Uśmiechnięta twarz góruje nad wejściem, a drewniane kładki otaczają dom przy skraju łąki."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O rosto sorridente domina a entrada; passadiços de madeira rodeiam a casa junto ao prado."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T18:29:01.4897041Z",
+    "receivedAtUtc": "2026-11-15T18:29:18.9516312Z",
+    "result": {
+      "id": "33b66af74c3c4adaa439769785a212d3",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+      "path": "park_item/33b66af74c3c4adaa439769785a212d3",
+      "description": "Le visage souriant domine l’entrée ; des passerelles en bois entourent la maison au bord de la prairie.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 452210,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/La-maison-de-Pitoufeu-1.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Maison Pitoufeu en forme de volcan de bois, avec une partie supérieure rouge et un toboggan gris sur le côté."
+        },
+        {
+          "languageCode": "en",
+          "value": "Maison Pitoufeu shaped like a wooden volcano, with a red upper section and grey slide at the side."
+        },
+        {
+          "languageCode": "de",
+          "value": "Maison Pitoufeu in Form eines Holzvulkans mit rotem oberen Teil und seitlicher grauer Rutsche."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Maison Pitoufeu in de vorm van een houten vulkaan, met een rode bovenkant en een grijze glijbaan aan de zijkant."
+        },
+        {
+          "languageCode": "it",
+          "value": "Maison Pitoufeu a forma di vulcano di legno, con la parte superiore rossa e uno scivolo grigio laterale."
+        },
+        {
+          "languageCode": "es",
+          "value": "Maison Pitoufeu con forma de volcán de madera, parte superior roja y tobogán gris lateral."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Maison Pitoufeu w kształcie drewnianego wulkanu, z czerwoną górą i szarą zjeżdżalnią z boku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Maison Pitoufeu em forma de vulcão de madeira, com a parte superior vermelha e um escorrega cinzento lateral."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le visage souriant domine l’entrée ; des passerelles en bois entourent la maison au bord de la prairie."
+        },
+        {
+          "languageCode": "en",
+          "value": "A smiling face rises above the entrance, with wooden walkways around the house beside the meadow."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das lächelnde Gesicht ragt über dem Eingang auf; Holzstege umgeben das Haus am Wiesenrand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een glimlachend gezicht staat boven de ingang; houten loopbruggen omringen het huis aan de rand van het grasland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il volto sorridente sovrasta l’ingresso; passerelle di legno circondano la casa ai margini del prato."
+        },
+        {
+          "languageCode": "es",
+          "value": "El rostro sonriente domina la entrada; pasarelas de madera rodean la casa junto a la pradera."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uśmiechnięta twarz góruje nad wejściem, a drewniane kładki otaczają dom przy skraju łąki."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O rosto sorridente domina a entrada; passadiços de madeira rodeiam a casa junto ao prado."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:29:12.199Z",
+      "updatedAt": "2026-11-15T18:29:15.839Z"
+    }
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

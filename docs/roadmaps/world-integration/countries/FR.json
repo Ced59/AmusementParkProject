@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T18:15:49.992Z",
+      "lastDataIntegrationAt": "2026-11-15T18:30:04.011Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38528,6 +38528,76 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-35-planete-devoilee-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : photo officielle de Planète dévoilée importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-bf30a1c8-88f2-4be2-8278-a05ad7facc90",
+          "appliedAt": "2026-11-15T18:23:03.147Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-36-house-and-minerals-20261115.json",
+          "auditEvidence": null,
+          "summary": "Maison Pitoufeu et Rivière des minéraux : seize notices personnelles en huit langues, jeux et décors vérifiés ; contradiction du nombre de niveaux omise, aucune date inventée, deux fiches privées avant audit."
+        },
+        {
+          "eventId": "apply-ca3b00af-d71a-4e60-8179-e945225e3b21",
+          "appliedAt": "2026-11-15T18:28:17.113Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-37-three-child-worlds-20261115.json",
+          "auditEvidence": null,
+          "summary": "Draisiennes de Tambora, Galerie Pitoufeu et Forêt des dragons : vingt-quatre notices personnelles en huit langues, photos réelles et visite virtuelle qualifiées ; trois fiches privées, aucune confusion Galerie/Dragon Ride."
+        },
+        {
+          "eventId": "import-photo-9165d5c6d6574c21bb8d7ca626be26f1",
+          "appliedAt": "2026-11-15T18:28:52.634Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-38-draisiennes-entrance-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Draisiennes de Tambora importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-33b66af74c3c4adaa439769785a212d3",
+          "appliedAt": "2026-11-15T18:29:12.199Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-39-maison-pitoufeu-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Maison Pitoufeu importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-9c77d947e431462291012359d2c1e2b9",
+          "appliedAt": "2026-11-15T18:29:36.397Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-40-galerie-pitoufeu-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Galerie Pitoufeu importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-5ca0ba406e924e5a8792e88852f8e9ed",
+          "appliedAt": "2026-11-15T18:29:46.348Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-41-riviere-mineraux-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Rivière des minéraux importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-5c5c7f0bde5f4bd58eb3ab3ede97d9eb",
+          "appliedAt": "2026-11-15T18:30:04.011Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-42-foret-dragons-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Forêt des dragons importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38580,7 +38650,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-4fe6f6c0da1f4994af54006f3a04a994 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-5c5c7f0bde5f4bd58eb3ab3ede97d9eb ; conserver les références de découverte."
       }
     },
     {

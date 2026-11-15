@@ -1,0 +1,262 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "recordedAtUtc": "2026-11-15T18:30:59.283724+00:00",
+  "newNotices": 5,
+  "localizedNotices": 40,
+  "personalReviews": [
+    {
+      "personallyReviewedLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ],
+      "newDescriptions": 16,
+      "paragraphWordCounts": {
+        "vulcania-maison-pitoufeu": {
+          "fr": 142,
+          "en": 122,
+          "de": 106,
+          "nl": 121,
+          "it": 124,
+          "es": 134,
+          "pl": 93,
+          "pt": 126
+        },
+        "vulcania-riviere-mineraux": {
+          "fr": 146,
+          "en": 113,
+          "de": 103,
+          "nl": 114,
+          "it": 118,
+          "es": 126,
+          "pl": 91,
+          "pt": 116
+        }
+      },
+      "headingsAndEntityNamesStripped": true,
+      "itemCorpusRepeated12WordSequences": [],
+      "sourceNotes": "Sixteen descriptions personally authored and reviewed in eight languages. Full primary pages and original photographs inspected: https://www.vulcania.com/animation/la-maison-de-pitoufeu/ ; https://www.vulcania.com/animation/la-riviere-des-mineraux/ . Maison: physical wooden volcano-like house, red top/face/grey tube, rooms and travel gallery sourced; conflicting official floor count deliberately omitted. Rivière: real wooden channel, sand, sieves and named stones; no promise of finding actual gold, no admission schedule inferred. Operational conditions remain in structured existing fields. Two specific headings and three paragraphs each; no invented dates or makers.",
+      "operationId": "bf30a1c8-88f2-4be2-8278-a05ad7facc90",
+      "appliedAtUtc": "2026-11-15T18:23:03.1475144Z",
+      "exactAppliedFields": 16
+    },
+    {
+      "personallyReviewedLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ],
+      "newDescriptions": 24,
+      "paragraphWordCounts": {
+        "vulcania-draisiennes-tambora": {
+          "fr": 119,
+          "en": 106,
+          "de": 98,
+          "nl": 103,
+          "it": 110,
+          "es": 119,
+          "pl": 88,
+          "pt": 109
+        },
+        "vulcania-galerie-pitoufeu": {
+          "fr": 99,
+          "en": 85,
+          "de": 82,
+          "nl": 84,
+          "it": 85,
+          "es": 93,
+          "pl": 73,
+          "pt": 87
+        },
+        "vulcania-foret-dragons": {
+          "fr": 137,
+          "en": 110,
+          "de": 104,
+          "nl": 108,
+          "it": 119,
+          "es": 118,
+          "pl": 94,
+          "pt": 111
+        }
+      },
+      "headingsAndEntityNamesStripped": true,
+      "itemCorpusRepeated12WordSequences": [],
+      "sourceNotes": "Twenty-four descriptions personally written/reviewed in eight languages. Official pages read and original photographs individually inspected: les-draisiennes-de-tambora, galerie-pitoufeu, la-foret-des-dragons under https://www.vulcania.com/animation/ . Draisiennes official OG is a promotional composite, rejected; genuine named entrance photo used for qualification. Source causality Tambora-to-bicycle is attributed only as park presentation, not asserted as historical causation. Galerie official panorama reached through normal page iframe after declining optional cookies: entrance label explicitly Galerie Pitoufeu, Google venue title Dragon Ride is broad/incongruent and not used as alias; no screenshot imported or geolocation applied. Galerie notice is a justified shorter exception after primary text/photo/tour review; no invented modules or category filler. Forêt physical entrance dragon and myth/science theme verified, no invented cultural identity. All three remain private.",
+      "operationId": "ca3b00af-d71a-4e60-8179-e945225e3b21",
+      "appliedAtUtc": "2026-11-15T18:28:17.1138403Z",
+      "exactAppliedFields": 24
+    }
+  ],
+  "newPhotos": [
+    "9165d5c6d6574c21bb8d7ca626be26f1",
+    "33b66af74c3c4adaa439769785a212d3",
+    "9c77d947e431462291012359d2c1e2b9",
+    "5ca0ba406e924e5a8792e88852f8e9ed",
+    "5c5c7f0bde5f4bd58eb3ab3ede97d9eb"
+  ],
+  "photoMetadataFieldsPersonallyReviewed": 120,
+  "sourceManifests": [
+    [
+      {
+        "key": "draisiennes",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Les-draisiennes-de-Tombora.png",
+        "sourcePage": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/draisiennes-official-og.png",
+        "http": 200,
+        "bytes": 440381,
+        "dimensions": [
+          1200,
+          630
+        ],
+        "sha256": "7b7179e3b2c422c66f7d78d6a2a01330683b0b95cc21e77ce0652e2d2250ed8b",
+        "accessedAtUtc": "2026-11-15T18:18:21.684717+00:00",
+        "captureDate": null,
+        "photographer": null,
+        "localPixelTransformation": false
+      },
+      {
+        "key": "maison-pitoufeu",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/La-maison-de-Pitoufeu-1.png",
+        "sourcePage": "https://www.vulcania.com/animation/la-maison-de-pitoufeu/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/maison-pitoufeu-official-og.png",
+        "http": 200,
+        "bytes": 452210,
+        "dimensions": [
+          1200,
+          630
+        ],
+        "sha256": "189d15cc19d17cd030a871877bea5189dd7c7056ddab53103f039ca42ffd43e1",
+        "accessedAtUtc": "2026-11-15T18:18:21.974546+00:00",
+        "captureDate": null,
+        "photographer": null,
+        "localPixelTransformation": false
+      },
+      {
+        "key": "galerie-pitoufeu",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/La-galerie-Pitoufeu.png",
+        "sourcePage": "https://www.vulcania.com/animation/galerie-pitoufeu/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/galerie-pitoufeu-official-og.png",
+        "http": 200,
+        "bytes": 310318,
+        "dimensions": [
+          1200,
+          630
+        ],
+        "sha256": "8552b5a09b03115172f78e40cfb4c115c6d63e119920b475f0d35782a9817b9f",
+        "accessedAtUtc": "2026-11-15T18:18:22.190304+00:00",
+        "captureDate": null,
+        "photographer": null,
+        "localPixelTransformation": false
+      },
+      {
+        "key": "riviere",
+        "url": "https://www.vulcania.com/wp-content/uploads/2024/02/DSC02809.jpg",
+        "sourcePage": "https://www.vulcania.com/animation/la-riviere-des-mineraux/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/riviere-official-og.jpg",
+        "http": 200,
+        "bytes": 94225,
+        "dimensions": [
+          667,
+          667
+        ],
+        "sha256": "6e7f46cdeb800042dd713c90869560d235b52f91f839f96a7909b669988c687c",
+        "accessedAtUtc": "2026-11-15T18:18:22.383110+00:00",
+        "captureDate": null,
+        "photographer": null,
+        "localPixelTransformation": false
+      },
+      {
+        "key": "foret-dragons",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/La-foret-des-dragons-2-1.png",
+        "sourcePage": "https://www.vulcania.com/animation/la-foret-des-dragons/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/foret-dragons-official-og.png",
+        "http": 200,
+        "bytes": 616914,
+        "dimensions": [
+          1200,
+          630
+        ],
+        "sha256": "3a9a1c3be395a112d240f32825724b4a95e264eabc33a05913d2fbe02ec38a3a",
+        "accessedAtUtc": "2026-11-15T18:18:22.567429+00:00",
+        "captureDate": null,
+        "photographer": null,
+        "localPixelTransformation": false
+      }
+    ],
+    [
+      {
+        "key": "draisiennes-real",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/draisiennes-tambora_3000x1100-2-scaled.jpg",
+        "sourcePage": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/draisiennes-real.jpg",
+        "http": 200,
+        "bytes": 173229,
+        "dimensions": [
+          2048,
+          751
+        ],
+        "sha256": "19dd4d7bb03bd5c282cb4fb49a8acd91a9e284e18d408744834227ce154e15d0",
+        "accessedAtUtc": "2026-11-15T18:19:10.982405+00:00",
+        "captureDate": null,
+        "photographer": null,
+        "localPixelTransformation": false
+      },
+      {
+        "key": "galerie-wide",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/La-galerie-de-pitoufeu.png",
+        "sourcePage": "https://www.vulcania.com/animation/galerie-pitoufeu/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/galerie-wide.png",
+        "http": 200,
+        "bytes": 583540,
+        "dimensions": [
+          2048,
+          751
+        ],
+        "sha256": "631db77774e22c5302e30b590b1a85e1a3fd53e3a5de4704262cc085ed80e277",
+        "accessedAtUtc": "2026-11-15T18:19:11.439380+00:00",
+        "captureDate": null,
+        "photographer": null,
+        "localPixelTransformation": false
+      }
+    ]
+  ],
+  "excludedImages": [
+    {
+      "key": "draisiennes",
+      "reason": "Official OG promotional montage of mascot/bike on volcanic landscape, not a photograph of the actual circuit."
+    },
+    {
+      "key": "galerie-pitoufeu",
+      "reason": "1200x630 alternate of the same exposure; 2048x751 original accepted once."
+    }
+  ],
+  "virtualTour": {
+    "sourcePage": "https://www.vulcania.com/animation/galerie-pitoufeu/",
+    "access": {
+      "url": "https://www.vulcania.com/animation/galerie-pitoufeu/",
+      "http": 200,
+      "accessedAtUtc": "2026-11-15T18:20:49.651210+00:00",
+      "screenshot": "official-page-iframe.png",
+      "imageImportPerformed": false
+    },
+    "cookieChoice": {
+      "atUtc": "2026-11-15T18:22:33.311503+00:00",
+      "optionalCookiesDeclined": true,
+      "iframeTitle": "Dragon Ride à Vulcania",
+      "noScreenshotImported": true
+    },
+    "rootVisualFindings": "Actual Galerie Pitoufeu name on entrance, mascot portrait on blue background, red/orange netted play structures. Google panorama title Dragon Ride is not an alias of the gallery. A normal forward navigation brought the entrance and structures into view. No screenshot imported and no map point applied. Direct embed URL first displayed iframe-use requirement; normal official-page iframe then worked without any bypass."
+  },
+  "finalAuditCompleted": false,
+  "publicationPerformed": false
+}
