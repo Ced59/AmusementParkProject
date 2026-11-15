@@ -1,0 +1,376 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-commons-08",
+    "source": {
+      "title": "File:Vulcania mars 2000.jpg",
+      "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_mars_2000.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vulcania_mars_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vulcania_mars_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 521,
+      "height": 788,
+      "bytes": 458699,
+      "license": "CC BY-SA 4.0",
+      "artist": " Jules Rhin ",
+      "description": "Etat de la construction de Vulcania en mars 2000. Montage du cône suivant les plans de l'architecte autrichien Hans Hollein.",
+      "date": "2021-04-28 17:41:10",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vulcania_mars_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "accessedAtUtc": "2026-11-15T16:47:29.275178+00:00",
+      "localFile": "candidate-08.jpg",
+      "status": 200,
+      "downloadBytes": 458699,
+      "sha256": "55e18c160f18d1f38c30c4608dfeba1d59b76375964c008a1fdbafe3f71ed20f"
+    },
+    "dimensions": [
+      521,
+      788
+    ],
+    "reuseLicenseEvidence": {
+      "DateTime": {
+        "value": "2021-04-28 16:54:23",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Vulcania mars 2000",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Vulcania|Self-published work",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Etat de la construction de Vulcania en mars 2000. Montage du cône suivant les plans de l'architecte autrichien Hans Hollein.",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2021-04-28 17:41:10",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Jules_Rhin\" title=\"User:Jules Rhin\">Jules Rhin</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY-SA 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution-Share Alike 4.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-sa-4.0",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    },
+    "rootPersonalVisualReview": true,
+    "all24TextsPersonallyAuthoredAndReviewed": true,
+    "capturedAtUtc": null,
+    "dateDecision": "Only caption month/year; no UTC instant inferred. Construction is March2000 per source description; conflicting2021 metadata is not a capture date.",
+    "classification": "Historical construction, not a current view."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_mars_2000.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/commons-media-1646/candidate-08.jpg",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-commons-08-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-commons-08-import-result.json"
+  },
+  "metadata": {
+    "description": "Le cône de Hans Hollein en cours de construction, en mars 2000.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_mars_2000.jpg",
+    "isPublished": false,
+    "isCurrent": false,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Chantier de Vulcania avec l’ossature du cône, une grue et des parois de béton au-dessus d’une excavation rocheuse."
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcania’s construction site with the cone’s frame, a crane and concrete walls above a rocky excavation."
+      },
+      {
+        "languageCode": "de",
+        "value": "Baustelle von Vulcania mit dem Gerüst des Kegels, einem Kran und Betonwänden über einer felsigen Baugrube."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De bouwplaats van Vulcania met het geraamte van de kegel, een kraan en betonnen wanden boven een rotsachtige bouwput."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cantiere di Vulcania con l’ossatura del cono, una gru e pareti di cemento sopra uno scavo nella roccia."
+      },
+      {
+        "languageCode": "es",
+        "value": "Obras de Vulcania con el armazón del cono, una grúa y paredes de hormigón sobre una excavación rocosa."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Budowa Vulcanii z konstrukcją stożka, żurawiem i betonowymi ścianami nad wykopem w skale."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Obras de Vulcania com a estrutura do cone, uma grua e paredes de betão sobre uma escavação rochosa."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le cône de Hans Hollein en cours de construction, en mars 2000."
+      },
+      {
+        "languageCode": "en",
+        "value": "Hans Hollein’s cone under construction in March 2000."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Kegel von Hans Hollein im Bau, März 2000."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De kegel van Hans Hollein in aanbouw, maart 2000."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il cono di Hans Hollein in costruzione, marzo 2000."
+      },
+      {
+        "languageCode": "es",
+        "value": "El cono de Hans Hollein en construcción, marzo de 2000."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Stożek Hansa Holleina w trakcie budowy, marzec 2000 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O cone de Hans Hollein em construção, março de 2000."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T16:57:11.2855563Z",
+    "result": {
+      "id": "8b9479d31a074fc98a5468865e32759e",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/8b9479d31a074fc98a5468865e32759e",
+      "description": "Le cône de Hans Hollein en cours de construction, en mars 2000.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 521,
+      "height": 788,
+      "sizeInBytes": 458699,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_mars_2000.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Chantier de Vulcania avec l’ossature du cône, une grue et des parois de béton au-dessus d’une excavation rocheuse."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania’s construction site with the cone’s frame, a crane and concrete walls above a rocky excavation."
+        },
+        {
+          "languageCode": "de",
+          "value": "Baustelle von Vulcania mit dem Gerüst des Kegels, einem Kran und Betonwänden über einer felsigen Baugrube."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De bouwplaats van Vulcania met het geraamte van de kegel, een kraan en betonnen wanden boven een rotsachtige bouwput."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cantiere di Vulcania con l’ossatura del cono, una gru e pareti di cemento sopra uno scavo nella roccia."
+        },
+        {
+          "languageCode": "es",
+          "value": "Obras de Vulcania con el armazón del cono, una grúa y paredes de hormigón sobre una excavación rocosa."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Budowa Vulcanii z konstrukcją stożka, żurawiem i betonowymi ścianami nad wykopem w skale."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Obras de Vulcania com a estrutura do cone, uma grua e paredes de betão sobre uma escavação rochosa."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le cône de Hans Hollein en cours de construction, en mars 2000."
+        },
+        {
+          "languageCode": "en",
+          "value": "Hans Hollein’s cone under construction in March 2000."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Kegel von Hans Hollein im Bau, März 2000."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kegel van Hans Hollein in aanbouw, maart 2000."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il cono di Hans Hollein in costruzione, marzo 2000."
+        },
+        {
+          "languageCode": "es",
+          "value": "El cono de Hans Hollein en construcción, marzo de 2000."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stożek Hansa Holleina w trakcie budowy, marzec 2000 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cone de Hans Hollein em construção, março de 2000."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:57:12.36Z",
+      "updatedAt": "2026-11-15T16:57:15.832Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T16:57:18.9377129Z"
+  },
+  "personalReview": "Original downloaded binary personally viewed,24localizedmetadata fields personally authored and reviewed, no cropping/compression/localtransform, no UTC capture invented. Historical image noncurrent and private.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

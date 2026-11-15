@@ -1,0 +1,390 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-commons-03",
+    "source": {
+      "title": "File:Vulcania - panoramio - Sietze Kraak.jpg",
+      "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_-_Sietze_Kraak.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Vulcania_-_panoramio_-_Sietze_Kraak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Vulcania_-_panoramio_-_Sietze_Kraak.jpg/960px-Vulcania_-_panoramio_-_Sietze_Kraak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2848,
+      "height": 4288,
+      "bytes": 5531433,
+      "license": "CC BY 3.0",
+      "artist": " Sietze Kraak ",
+      "description": "Vulcania",
+      "date": "Taken on 10 August 2010",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Vulcania_-_panoramio_-_Sietze_Kraak.jpg/960px-Vulcania_-_panoramio_-_Sietze_Kraak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "accessedAtUtc": "2026-11-15T16:47:27.576194+00:00",
+      "localFile": "candidate-03.jpg",
+      "status": 200,
+      "downloadBytes": 288498,
+      "sha256": "9e19a29036c6e2a47f1db3bcbabfb57d407c7d9f80ea76abd4dc4ffe49d7884f"
+    },
+    "dimensions": [
+      960,
+      1445
+    ],
+    "reuseLicenseEvidence": {
+      "DateTime": {
+        "value": "2016-11-07 15:36:48",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Vulcania - panoramio - Sietze Kraak",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Vulcania|Panoramio files uploaded by Panoramio upload bot|Panoramio images reviewed by trusted users|Photos from Panoramio|Files with coordinates missing SDC location of creation|France photographs taken on 2010-08-10|Photos from Panoramio ID 2703152",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "GPSLatitude": {
+        "value": "45.813647",
+        "source": "commons-desc-page"
+      },
+      "GPSLongitude": {
+        "value": "2.939685",
+        "source": "commons-desc-page"
+      },
+      "GPSMapDatum": {
+        "value": "WGS-84",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Vulcania",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "Taken on 10 August 2010",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://web.archive.org/web/20161017080652/http://www.panoramio.com/photo/40023937\">https://web.archive.org/web/20161017080652/http://www.panoramio.com/photo/40023937</a>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://web.archive.org/web/20161017080655/http://www.panoramio.com/user/2703152?with_photo_id=40023937\">Sietze Kraak</a>",
+        "source": "commons-desc-page"
+      },
+      "Permission": {
+        "value": "<div class=\"responsive-license-cc layouttemplate licensetpl\" dir=\"ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/120px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/250px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"744\" data-file-height=\"300\"></span></span><br>\n<span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/40px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/60px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"64\" data-file-height=\"64\"></span></span></div><div class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"//creativecommons.org/licenses/by/3.0/deed.en\" class=\"extiw\" title=\"creativecommons:by/3.0/deed.en\">Attribution 3.0 Unported</a> license.</div><div class=\"rlicense-attr\" style=\"font-weight: bold;\">Attribution: <div style=\"display:inline;font-size:larger;\" class=\"licensetpl_attr\">Sietze Kraak</div></div><div class=\"rlicense-desc\" style=\"text-align:start;\" dir=\"ltr\" lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> – to copy, distribute and transmit the work</li>\n<li><b>to remix</b> – to adapt the work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b> – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li></ul></dd></dl>\n</div><span class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/licenses/by/3.0</span><span class=\"licensetpl_short\" style=\"display:none;\">CC BY 3.0 </span><span class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Attribution 3.0 </span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div>\n<style data-mw-deduplicate=\"TemplateStyles:r901585720\">.mw-parser-output .panoramioreview{width:100%;margin:0.5em 0;background-color:var(--background-color-warning-subtle,#fffff0);padding:5px;border:1px solid var(--border-color-warning,#aa8);color:inherit}.mw-parser-output .panoramioreview-failed{background-color:var(--background-color-error-subtle,#fcc);color:inherit}.mw-parser-output .panoramioreview-passed{background-color:var(--background-color-success-subtle,#efe);color:inherit}</style>\n<table class=\"panoramioreview panoramioreview-passed\" lang=\"en\" dir=\"ltr\">\n\n<tbody><tr>\n<td><span typeof=\"mw:File\"><span><img alt=\"\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/60px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"48\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/120px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"160\" data-file-height=\"153\"></span></span>\n</td>\n<td>This image, which was originally posted to <b><span lang=\"en\" dir=\"ltr\"><a href=\"https://en.wikipedia.org/wiki/Panoramio\" class=\"extiw\" title=\"en:Panoramio\">Panoramio</a></span></b>, was automatically reviewed on 7 November 2016 by <b><a href=\"//commons.wikimedia.org/wiki/User:Panoramio_upload_bot\" title=\"User:Panoramio upload bot\">Panoramio upload bot</a></b>, who confirmed that it was available on Panoramio under the above license on that date.\n</td>\n<td><span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:Star_and_ring.svg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/60px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"50\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/120px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"75\" data-file-height=\"75\"></a></span>\n</td></tr></tbody></table>",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseShortName": {
+        "value": "CC BY 3.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution 3.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Attribution": {
+        "value": "Sietze Kraak",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/3.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-3.0",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    },
+    "rootPersonalVisualReview": true,
+    "all24TextsPersonallyAuthoredAndReviewed": true,
+    "capturedAtUtc": null,
+    "dateDecision": "Historical month/year in caption, no UTC instant inferred.",
+    "classification": "Historical park view, noncurrent, private pending audit."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_-_Sietze_Kraak.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/commons-media-1646/candidate-03.jpg",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-commons-03-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-commons-03-import-result.json"
+  },
+  "metadata": {
+    "description": "Le cône et sa passerelle au milieu des visiteurs, en août 2010.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_-_Sietze_Kraak.jpg",
+    "isPublished": false,
+    "isCurrent": false,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Visiteurs au pied des hautes parois grises du cône de Vulcania, traversées par une passerelle métallique."
+      },
+      {
+        "languageCode": "en",
+        "value": "Visitors beneath Vulcania’s tall grey cone walls, crossed by a metal footbridge."
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher unter den hohen grauen Wänden des Vulcania-Kegels, über die eine Metallbrücke führt."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers onder de hoge grijze wanden van de kegel van Vulcania, met een metalen loopbrug ertussen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Visitatori ai piedi delle alte pareti grigie del cono di Vulcania, attraversate da una passerella metallica."
+      },
+      {
+        "languageCode": "es",
+        "value": "Visitantes al pie de las altas paredes grises del cono de Vulcania, atravesadas por una pasarela metálica."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zwiedzający u stóp wysokich szarych ścian stożka Vulcanii, pomiędzy którymi biegnie metalowa kładka."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Visitantes junto às altas paredes cinzentas do cone de Vulcania, atravessadas por uma passerelle metálica."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le cône et sa passerelle au milieu des visiteurs, en août 2010."
+      },
+      {
+        "languageCode": "en",
+        "value": "The cone and its footbridge among visitors in August 2010."
+      },
+      {
+        "languageCode": "de",
+        "value": "Kegel und Fußbrücke zwischen den Besuchern im August 2010."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De kegel en de loopbrug tussen de bezoekers in augustus 2010."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il cono e la passerella tra i visitatori, nell’agosto 2010."
+      },
+      {
+        "languageCode": "es",
+        "value": "El cono y su pasarela entre los visitantes, en agosto de 2010."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Stożek i kładka wśród zwiedzających, sierpień 2010 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O cone e a passerelle entre os visitantes, em agosto de 2010."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T16:51:49.7344472Z",
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T16:51:40.7552949Z",
+    "result": {
+      "id": "7455ffc28d574c158809574ac5c022bd",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/7455ffc28d574c158809574ac5c022bd",
+      "description": "Le cône et sa passerelle au milieu des visiteurs, en août 2010.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 960,
+      "height": 1445,
+      "sizeInBytes": 288498,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_-_Sietze_Kraak.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs au pied des hautes parois grises du cône de Vulcania, traversées par une passerelle métallique."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors beneath Vulcania’s tall grey cone walls, crossed by a metal footbridge."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher unter den hohen grauen Wänden des Vulcania-Kegels, über die eine Metallbrücke führt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers onder de hoge grijze wanden van de kegel van Vulcania, met een metalen loopbrug ertussen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori ai piedi delle alte pareti grigie del cono di Vulcania, attraversate da una passerella metallica."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes al pie de las altas paredes grises del cono de Vulcania, atravesadas por una pasarela metálica."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zwiedzający u stóp wysokich szarych ścian stożka Vulcanii, pomiędzy którymi biegnie metalowa kładka."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes junto às altas paredes cinzentas do cone de Vulcania, atravessadas por uma passerelle metálica."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le cône et sa passerelle au milieu des visiteurs, en août 2010."
+        },
+        {
+          "languageCode": "en",
+          "value": "The cone and its footbridge among visitors in August 2010."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kegel und Fußbrücke zwischen den Besuchern im August 2010."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kegel en de loopbrug tussen de bezoekers in augustus 2010."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il cono e la passerella tra i visitatori, nell’agosto 2010."
+        },
+        {
+          "languageCode": "es",
+          "value": "El cono y su pasarela entre los visitantes, en agosto de 2010."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stożek i kładka wśród zwiedzających, sierpień 2010 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cone e a passerelle entre os visitantes, em agosto de 2010."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:51:42.968Z",
+      "updatedAt": "2026-11-15T16:51:46.632Z"
+    }
+  },
+  "personalReview": "Original downloaded binary personally viewed,24localizedmetadata fields personally authored and reviewed, no cropping/compression/localtransform, no UTC capture invented. Historical image noncurrent and private.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

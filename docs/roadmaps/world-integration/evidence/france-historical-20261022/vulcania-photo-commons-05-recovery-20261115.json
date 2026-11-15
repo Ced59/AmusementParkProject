@@ -1,0 +1,193 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "imageId": "db289dbe8d05476d8918eb31ddd1f1ad",
+  "failure": "ImportPhoto after upload/link: HTTP502 before successful metadata response. Sequence stopped, no retry import.",
+  "status": {
+    "result": {
+      "serverTimeUtc": "2026-11-15T16:55:30.4117744Z",
+      "isBusy": false,
+      "hasActiveExport": false,
+      "canStartResourceIntensiveOperation": true,
+      "activeRequestCount": 0,
+      "activeExportCount": 0,
+      "maxConcurrentRequests": 2,
+      "maxConcurrentResourceIntensiveOperations": 1,
+      "recommendedPollIntervalSeconds": 5,
+      "retryAfterSeconds": 5,
+      "activeRequests": [],
+      "activeExports": []
+    },
+    "startedAtUtc": "2026-11-15T16:55:29.7651096Z",
+    "receivedAtUtc": "2026-11-15T16:55:30.5436278Z",
+    "action": "Status"
+  },
+  "targetedImagesExport": {
+    "path": "/workspace/france-historical-20261114/vulcania/09-import-recovery-images.json",
+    "metadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T16:55:38.3421657Z"
+    }
+  },
+  "recoveredImage": {
+    "imageId": "db289dbe8d05476d8918eb31ddd1f1ad",
+    "id": "db289dbe8d05476d8918eb31ddd1f1ad",
+    "ownerType": "Park",
+    "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "ownerKey": "park",
+    "category": "Park",
+    "isPublished": false,
+    "isCurrent": false,
+    "setAsCurrent": false,
+    "withWatermark": false,
+    "isWatermarked": false,
+    "sourceUrl": null,
+    "internalUrl": "/images/db289dbe8d05476d8918eb31ddd1f1ad",
+    "description": "",
+    "altTexts": [],
+    "captions": [],
+    "credits": [],
+    "tagIds": [],
+    "geoLocation": null,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "width": 960,
+    "height": 638,
+    "sizeInBytes": 185014
+  },
+  "decision": "Image is already correctly linked and private. Complete metadata through documented UpdatePhotoMetadata without upload or deletion.",
+  "importCreatedAt": "2026-11-15T16:52:15.335Z",
+  "deletionPerformed": false,
+  "metadataUpdatedAt": "2026-11-15T16:56:11.835Z",
+  "metadataReceipt": {
+    "action": "UpdatePhotoMetadata",
+    "startedAtUtc": "2026-11-15T16:56:11.0148786Z",
+    "receivedAtUtc": "2026-11-15T16:56:14.9301062Z",
+    "result": {
+      "id": "db289dbe8d05476d8918eb31ddd1f1ad",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/db289dbe8d05476d8918eb31ddd1f1ad",
+      "description": "Le parc et les reliefs de la Chaîne des Puys vus depuis les jardins, en août 2010.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 960,
+      "height": 638,
+      "sizeInBytes": 185014,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue de Vulcania depuis les jardins, avec le cône gris et doré, les bâtiments bas et un puy boisé en arrière-plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania seen from the gardens, with its grey and golden cone, low buildings and a wooded volcanic hill behind."
+        },
+        {
+          "languageCode": "de",
+          "value": "Blick aus den Gärten auf Vulcania mit dem grauen und goldfarbenen Kegel, niedrigen Gebäuden und einem bewaldeten Vulkankegel im Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania gezien vanuit de tuinen, met de grijze en goudkleurige kegel, lage gebouwen en een beboste vulkaanheuvel op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vulcania vista dai giardini, con il cono grigio e dorato, gli edifici bassi e un rilievo vulcanico boscoso sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vulcania vista desde los jardines, con el cono gris y dorado, edificios bajos y un relieve volcánico arbolado al fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok na Vulcanię z ogrodów: szaro-złocisty stożek, niskie budynki i zalesione wzgórze wulkaniczne w tle."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vulcania vista dos jardins, com o cone cinzento e dourado, os edifícios baixos e uma colina vulcânica arborizada ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le parc et les reliefs de la Chaîne des Puys vus depuis les jardins, en août 2010."
+        },
+        {
+          "languageCode": "en",
+          "value": "The park and the hills of the Chaîne des Puys seen from the gardens in August 2010."
+        },
+        {
+          "languageCode": "de",
+          "value": "Park und Hügel der Chaîne des Puys von den Gärten aus gesehen, August 2010."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het park en de heuvels van de Chaîne des Puys vanuit de tuinen, augustus 2010."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il parco e i rilievi della Chaîne des Puys visti dai giardini, agosto 2010."
+        },
+        {
+          "languageCode": "es",
+          "value": "El parque y los relieves de la Chaîne des Puys desde los jardines, agosto de 2010."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Park i wzgórza Chaîne des Puys widziane z ogrodów, sierpień 2010 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O parque e os relevos da Chaîne des Puys vistos dos jardins, agosto de 2010."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:52:15.335Z",
+      "updatedAt": "2026-11-15T16:56:11.835Z"
+    },
+    "recoveryNote": "This is the actual UpdatePhotoMetadata receipt, NOT a successful ImportPhoto receipt. Original import HTTP502 after upload/link; createdAt recovered from this metadata response. No reupload."
+  },
+  "recoveryComplete": true,
+  "reuploadPerformed": false
+}

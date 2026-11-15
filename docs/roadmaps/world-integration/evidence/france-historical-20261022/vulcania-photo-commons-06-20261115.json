@@ -1,0 +1,376 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-commons-06",
+    "source": {
+      "title": "File:Vulcania janvier 2010.jpg",
+      "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_janvier_2010.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Vulcania_janvier_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Vulcania_janvier_2010.jpg/960px-Vulcania_janvier_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1500,
+      "height": 1000,
+      "bytes": 641757,
+      "license": "CC BY-SA 4.0",
+      "artist": " Jules Rhin ",
+      "description": "Vulcanie en sommeil au cours de l'hiver 2009-2010. Derrière le cône de Vulcania, on aperçoit le Puy de Côme et, au fond à gauche, le sommet du Puy de Dôme.",
+      "date": "2010-01-12 22:36:06",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Vulcania_janvier_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "accessedAtUtc": "2026-11-15T16:47:28.294156+00:00",
+      "localFile": "candidate-06.jpg",
+      "status": 200,
+      "downloadBytes": 641757,
+      "sha256": "88fb241e8be72bcb02c0ed8e9647419a4c7c076319fd0202df45b465f030b634"
+    },
+    "dimensions": [
+      1500,
+      1000
+    ],
+    "reuseLicenseEvidence": {
+      "DateTime": {
+        "value": "2021-04-28 16:54:24",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Vulcania janvier 2010",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Vulcania|Self-published work",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Vulcanie en sommeil au cours de l'hiver 2009-2010. Derrière le cône de Vulcania, on aperçoit le Puy de Côme et, au fond à gauche, le sommet du Puy de Dôme.",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2010-01-12 22:36:06",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Jules_Rhin\" title=\"User:Jules Rhin\">Jules Rhin</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY-SA 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution-Share Alike 4.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-sa-4.0",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    },
+    "rootPersonalVisualReview": true,
+    "all24TextsPersonallyAuthoredAndReviewed": true,
+    "capturedAtUtc": null,
+    "dateDecision": "Historical month/year in caption, no UTC instant inferred.",
+    "classification": "Historical park view, noncurrent, private pending audit."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_janvier_2010.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/commons-media-1646/candidate-06.jpg",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-commons-06-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-commons-06-import-result.json"
+  },
+  "metadata": {
+    "description": "Vulcania dans le paysage enneigé de janvier 2010.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_janvier_2010.jpg",
+    "isPublished": false,
+    "isCurrent": false,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Bâtiments et cône de Vulcania sous la neige, avec le puy de Côme et le sommet du puy de Dôme au loin."
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcania’s buildings and cone beneath snow, with Puy de Côme and the summit of Puy de Dôme in the distance."
+      },
+      {
+        "languageCode": "de",
+        "value": "Gebäude und Kegel von Vulcania im Schnee, dahinter der Puy de Côme und der Gipfel des Puy de Dôme."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De gebouwen en kegel van Vulcania onder de sneeuw, met de Puy de Côme en de top van de Puy de Dôme in de verte."
+      },
+      {
+        "languageCode": "it",
+        "value": "Gli edifici e il cono di Vulcania sotto la neve, con il puy de Côme e la cima del puy de Dôme in lontananza."
+      },
+      {
+        "languageCode": "es",
+        "value": "Edificios y cono de Vulcania bajo la nieve, con el puy de Côme y la cima del puy de Dôme a lo lejos."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Budynki i stożek Vulcanii pod śniegiem, z puy de Côme i szczytem puy de Dôme w oddali."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os edifícios e o cone de Vulcania sob a neve, com o puy de Côme e o cume do puy de Dôme ao longe."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Vulcania dans le paysage enneigé de janvier 2010."
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcania in the snowy landscape of January 2010."
+      },
+      {
+        "languageCode": "de",
+        "value": "Vulcania in der verschneiten Landschaft im Januar 2010."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vulcania in het besneeuwde landschap van januari 2010."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vulcania nel paesaggio innevato del gennaio 2010."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vulcania en el paisaje nevado de enero de 2010."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Vulcania w śnieżnym krajobrazie stycznia 2010 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vulcania na paisagem nevada de janeiro de 2010."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T16:56:50.9269364Z",
+    "result": {
+      "id": "0cd6c65c08224e81be09418fc0da591d",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/0cd6c65c08224e81be09418fc0da591d",
+      "description": "Vulcania dans le paysage enneigé de janvier 2010.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1500,
+      "height": 1000,
+      "sizeInBytes": 641757,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_janvier_2010.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "Canon",
+        "cameraModel": "Canon EOS 350D DIGITAL",
+        "takenOnUtc": "2010-01-12T22:36:06Z",
+        "orientation": "1",
+        "focalLength": 35,
+        "aperture": 13,
+        "exposureTime": 0.004,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Bâtiments et cône de Vulcania sous la neige, avec le puy de Côme et le sommet du puy de Dôme au loin."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania’s buildings and cone beneath snow, with Puy de Côme and the summit of Puy de Dôme in the distance."
+        },
+        {
+          "languageCode": "de",
+          "value": "Gebäude und Kegel von Vulcania im Schnee, dahinter der Puy de Côme und der Gipfel des Puy de Dôme."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De gebouwen en kegel van Vulcania onder de sneeuw, met de Puy de Côme en de top van de Puy de Dôme in de verte."
+        },
+        {
+          "languageCode": "it",
+          "value": "Gli edifici e il cono di Vulcania sotto la neve, con il puy de Côme e la cima del puy de Dôme in lontananza."
+        },
+        {
+          "languageCode": "es",
+          "value": "Edificios y cono de Vulcania bajo la nieve, con el puy de Côme y la cima del puy de Dôme a lo lejos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Budynki i stożek Vulcanii pod śniegiem, z puy de Côme i szczytem puy de Dôme w oddali."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os edifícios e o cone de Vulcania sob a neve, com o puy de Côme e o cume do puy de Dôme ao longe."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Vulcania dans le paysage enneigé de janvier 2010."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania in the snowy landscape of January 2010."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcania in der verschneiten Landschaft im Januar 2010."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania in het besneeuwde landschap van januari 2010."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vulcania nel paesaggio innevato del gennaio 2010."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vulcania en el paisaje nevado de enero de 2010."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Vulcania w śnieżnym krajobrazie stycznia 2010 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vulcania na paisagem nevada de janeiro de 2010."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:56:53.084Z",
+      "updatedAt": "2026-11-15T16:56:56.633Z"
+    },
+    "receivedAtUtc": "2026-11-15T16:56:59.7322364Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Original downloaded binary personally viewed,24localizedmetadata fields personally authored and reviewed, no cropping/compression/localtransform, no UTC capture invented. Historical image noncurrent and private.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

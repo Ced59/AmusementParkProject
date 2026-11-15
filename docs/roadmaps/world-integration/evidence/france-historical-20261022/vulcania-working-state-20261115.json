@@ -30,7 +30,42 @@
     "audienceClassification": "National",
     "street": "2 route de Mazayes",
     "city": "Saint-Ours-les-Roches",
-    "postalCode": "63230"
+    "postalCode": "63230",
+    "key": "park",
+    "descriptions": [
+      {
+        "languageCode": "fr",
+        "value": "<h2>La Chaîne des Puys, au-dessus et sous la terre</h2><p>À Saint-Ours-les-Roches, Vulcania prend place dans le paysage volcanique de la Chaîne des Puys. Les reliefs d’Auvergne qui entourent le parc donnent une présence bien réelle aux questions abordées dans ses expositions : comment naît un volcan, pourquoi la terre tremble, quelles traces une éruption laisse-t-elle dans un paysage ? Ici, les sciences de la Terre se racontent aussi à travers des aventures et des images monumentales.</p><p>L’architecture de Hans Hollein accompagne cette exploration. Une grande partie du bâtiment se déploie sous le sol, tandis que le cône aux parois intérieures dorées et le cratère ouvrent des perspectives vers le ciel. La roche sombre, les passages souterrains et la lumière venue d’en haut composent un décor directement lié au sujet du parc.</p><h2>Des collections des Krafft aux séismes de Namazu</h2><p>Les photographies et les roches rapportées par Maurice et Katia Krafft donnent un visage humain à l’étude des volcans. Dans Machine Terre, des paysages, des images et des manipulations élargissent le regard à la naissance de la planète et à la vie qu’elle abrite. Terre de volcans fait apparaître autour des visiteurs des coulées de lave et des geysers, avec les couleurs contrastées des régions volcaniques.</p><p>Namazu transpose les tremblements de terre dans l’histoire d’une base scientifique installée sur une faille instable. Le paysage fissuré et les bâtiments éprouvés par les secousses annoncent l’expédition mouvementée des montagnes russes. Les dragons et les croyances liées aux volcans occupent un autre registre : la Forêt des dragons et Volcans sacrés mettent en scène les récits imaginés pour expliquer ces forces inquiétantes.</p><h2>Des petits chercheurs aux voyages dans l’espace</h2><p>Le regard s’élève avec Premier envol, qui survole l’Auvergne du point de vue d’un aigle. L’Astrodôme ouvre ensuite le champ de l’exploration aux étoiles et à l’Univers. Films, séances accompagnées et animations scientifiques abordent la Terre dans son environnement cosmique, au-delà des seuls phénomènes volcaniques.</p><p>À la Cité des enfants, l’eau, les ombres, les couleurs et les mouvements deviennent matière à expérimenter. Le spectacle Expériences, c’est show ! aborde la science sur un ton plus turbulent : le professeur Yapadrisk interrompt les animateurs et remplace leurs démonstrations par ses propres expériences détonantes. Ce savant fantasque fait ainsi surgir la comédie au milieu des manipulations scientifiques.</p>"
+      },
+      {
+        "languageCode": "en",
+        "value": "<h2>The Chaîne des Puys, above and below ground</h2><p>At Saint-Ours-les-Roches, Vulcania stands among the volcanic landscapes of the Chaîne des Puys. The surrounding hills of Auvergne give a tangible setting to the questions explored in its exhibitions: how does a volcano form, why does the ground shake, and what traces does an eruption leave behind? Earth science is also told through adventures and images on an imposing scale.</p><p>Hans Hollein’s architecture makes the landscape part of that exploration. Much of the building lies underground, while the cone with its golden inner walls and the crater frame views of the sky. Dark rock, subterranean passages and daylight from above create surroundings closely connected to the park’s volcanic subject.</p><h2>From the Kraffts’ collections to Namazu’s earthquakes</h2><p>The photographs and rocks brought back by Maurice and Katia Krafft reveal the people behind the study of volcanoes. In Machine Terre, landscapes, images and hands-on exhibits broaden the story to the planet’s formation and the life it supports. Terre de volcans surrounds visitors with lava flows and geysers, showing the strikingly different colours of volcanic regions.</p><p>Namazu brings earthquakes into the fictional world of a scientific outpost on an unstable fault. Cracked ground and buildings scarred by tremors set the scene for the roller coaster’s turbulent expedition. Dragons and volcanic beliefs tell a different kind of story: Forêt des dragons and Volcans sacrés explore the legends people imagined to explain these unsettling forces.</p><h2>Young experimenters and journeys into space</h2><p>Premier envol takes an eagle’s view of Auvergne, lifting the gaze above the landscape. The Astrodôme extends the exploration to the stars and the Universe. Films, hosted sessions and scientific presentations consider Earth within its cosmic surroundings, reaching beyond volcanic phenomena alone.</p><p>At Cité des enfants, water, shadows, colours and movement become things to investigate through play. Expériences, c’est show ! gives science a more unruly stage: Professor Yapadrisk interrupts the presenters and replaces their demonstrations with his own explosive experiments. The eccentric scientist brings comedy into the midst of the scientific demonstrations.</p>"
+      },
+      {
+        "languageCode": "de",
+        "value": "<h2>Die Chaîne des Puys über und unter der Erde</h2><p>In Saint-Ours-les-Roches liegt Vulcania mitten in der Vulkanlandschaft der Chaîne des Puys. Die Hügel der Auvergne verleihen den Fragen in den Ausstellungen einen greifbaren Hintergrund: Wie entsteht ein Vulkan, warum bebt die Erde und welche Spuren hinterlässt ein Ausbruch in der Landschaft? Geowissenschaften werden hier auch in Abenteuern und großformatigen Bildern erzählt.</p><p>Die Architektur von Hans Hollein bezieht die Landschaft in diese Erkundung ein. Ein großer Teil des Gebäudes liegt unter der Erde, während der Kegel mit seinen goldfarbenen Innenwänden und der Krater den Blick zum Himmel öffnen. Dunkles Gestein, unterirdische Gänge und Licht von oben schaffen eine Umgebung, die eng mit dem vulkanischen Thema verbunden ist.</p><h2>Von den Sammlungen der Kraffts zu den Erdbeben bei Namazu</h2><p>Die Fotografien und Gesteinsproben von Maurice und Katia Krafft erzählen auch von den Menschen hinter der Vulkanforschung. In Machine Terre erweitern Landschaftsbilder und interaktive Stationen die Perspektive auf die Entstehung der Erde und das Leben auf ihr. Terre de volcans umgibt die Besucher mit Lavaströmen und Geysiren und zeigt die überraschende Farbenvielfalt vulkanischer Regionen.</p><p>Namazu versetzt Erdbeben in die Geschichte einer Forschungsstation an einer instabilen Verwerfung. Aufgerissener Boden und von Erschütterungen gezeichnete Gebäude bereiten auf die turbulente Expedition mit der Achterbahn vor. Drachen und Vulkanmythen erzählen dagegen von menschlichen Vorstellungen: Forêt des dragons und Volcans sacrés zeigen Geschichten, mit denen sich Menschen diese beunruhigenden Kräfte erklärten.</p><h2>Kleine Forscher und Reisen ins All</h2><p>Premier envol zeigt die Auvergne aus der Sicht eines Adlers und hebt den Blick über die Landschaft. Im Astrodôme führt die Entdeckungsreise weiter zu den Sternen und ins Universum. Filme, begleitete Vorführungen und wissenschaftliche Animationen betrachten die Erde in ihrem kosmischen Umfeld, weit über den Vulkanismus hinaus.</p><p>In der Cité des enfants werden Wasser, Schatten, Farben und Bewegungen spielerisch erforscht. Bei Expériences, c’est show ! geht es turbulenter zu: Professor Yapadrisk unterbricht das Animationsteam und ersetzt dessen Vorführungen durch seine eigenen explosiven Experimente. Der eigenwillige Wissenschaftler bringt damit Komik in die wissenschaftlichen Demonstrationen.</p>"
+      },
+      {
+        "languageCode": "nl",
+        "value": "<h2>De Chaîne des Puys boven en onder de grond</h2><p>Vulcania ligt bij Saint-Ours-les-Roches in het vulkanische landschap van de Chaîne des Puys. De heuvels van de Auvergne geven een tastbare achtergrond aan de vragen in de tentoonstellingen: hoe ontstaat een vulkaan, waarom beeft de aarde en welke sporen laat een uitbarsting achter? Aardwetenschappen krijgen hier ook vorm in avonturen en beelden op indrukwekkende schaal.</p><p>De architectuur van Hans Hollein maakt het landschap onderdeel van die ontdekkingstocht. Een groot deel van het gebouw bevindt zich onder de grond, terwijl de kegel met zijn goudkleurige binnenwanden en de krater zicht bieden op de hemel. Donker gesteente, ondergrondse gangen en licht van boven sluiten nauw aan bij het vulkanische onderwerp van het park.</p><h2>Van de collecties van de Kraffts tot de aardbevingen van Namazu</h2><p>De foto’s en gesteenten die Maurice en Katia Krafft meebrachten, tonen de mensen achter het vulkaanonderzoek. In Machine Terre verbreden landschappen, beelden en interactieve opstellingen het verhaal naar het ontstaan van de aarde en het leven daarop. Terre de volcans omringt bezoekers met lavastromen en geisers en laat de uiteenlopende kleuren van vulkanische gebieden zien.</p><p>Namazu verwerkt aardbevingen in het verhaal van een wetenschappelijke basis op een onstabiele breuklijn. Gescheurde grond en gebouwen met sporen van schokken vormen het decor voor de onstuimige achtbaanexpeditie. Draken en vulkaanmythen vertellen een ander verhaal: Forêt des dragons en Volcans sacrés brengen de vertellingen tot leven waarmee mensen deze onrustbarende krachten probeerden te verklaren.</p><h2>Jonge onderzoekers en reizen door de ruimte</h2><p>Premier envol laat de Auvergne zien door de ogen van een adelaar en brengt het landschap vanuit de lucht in beeld. Het Astrodôme voert de verkenning verder naar de sterren en het heelal. Films, begeleide voorstellingen en wetenschappelijke presentaties bekijken de aarde in haar kosmische omgeving, voorbij het vulkanisme alleen.</p><p>In de Cité des enfants worden water, schaduwen, kleuren en bewegingen al spelend onderzocht. Expériences, c’est show ! brengt wetenschap op een onstuimiger podium: professor Yapadrisk onderbreekt de begeleiders en vervangt hun demonstraties door zijn eigen knallende experimenten. Deze zonderlinge wetenschapper laat komedie en wetenschappelijke proeven door elkaar lopen.</p>"
+      },
+      {
+        "languageCode": "it",
+        "value": "<h2>La Chaîne des Puys, sopra e sotto la terra</h2><p>A Saint-Ours-les-Roches, Vulcania sorge nel paesaggio vulcanico della Chaîne des Puys. I rilievi dell’Alvernia danno uno sfondo concreto alle domande delle esposizioni: come nasce un vulcano, perché la terra trema e quali tracce lascia un’eruzione nel paesaggio? Le scienze della Terra si raccontano anche attraverso avventure e immagini di grande impatto.</p><p>L’architettura di Hans Hollein fa del paesaggio una parte dell’esplorazione. Gran parte dell’edificio si sviluppa sottoterra, mentre il cono dalle pareti interne dorate e il cratere aprono lo sguardo verso il cielo. Roccia scura, passaggi sotterranei e luce proveniente dall’alto compongono un ambiente strettamente legato al tema vulcanico del parco.</p><h2>Dalle collezioni dei Krafft ai terremoti di Namazu</h2><p>Le fotografie e le rocce raccolte da Maurice e Katia Krafft mostrano il volto umano dello studio dei vulcani. In Machine Terre, paesaggi, immagini e attività interattive allargano il racconto alla formazione del pianeta e alla vita che ospita. Terre de volcans circonda i visitatori di colate laviche e geyser, mostrando i colori contrastanti delle regioni vulcaniche.</p><p>Namazu inserisce i terremoti nella storia di una base scientifica costruita su una faglia instabile. Il terreno spaccato e gli edifici segnati dalle scosse preparano l’atmosfera della movimentata spedizione sulle montagne russe. Draghi e credenze vulcaniche appartengono a un altro racconto: Forêt des dragons e Volcans sacrés mettono in scena le leggende nate per spiegare queste forze inquietanti.</p><h2>Piccoli ricercatori e viaggi nello spazio</h2><p>Premier envol osserva l’Alvernia dal punto di vista di un’aquila, portando lo sguardo sopra il paesaggio. L’Astrodôme amplia l’esplorazione alle stelle e all’Universo. Film, incontri accompagnati e animazioni scientifiche presentano la Terra nel suo ambiente cosmico, oltre i soli fenomeni vulcanici.</p><p>Alla Cité des enfants, acqua, ombre, colori e movimento diventano occasioni di sperimentazione attraverso il gioco. Expériences, c’est show ! porta la scienza su un palcoscenico più turbolento: il professor Yapadrisk interrompe gli animatori e sostituisce le loro dimostrazioni con i propri esperimenti esplosivi. Lo stravagante scienziato introduce così la comicità tra le dimostrazioni scientifiche.</p>"
+      },
+      {
+        "languageCode": "es",
+        "value": "<h2>La Chaîne des Puys, por encima y por debajo del suelo</h2><p>En Saint-Ours-les-Roches, Vulcania se integra en el paisaje volcánico de la Chaîne des Puys. Los relieves de Auvernia dan un contexto tangible a las preguntas de sus exposiciones: ¿cómo nace un volcán, por qué tiembla la tierra y qué huellas deja una erupción en el paisaje? Las ciencias de la Tierra también se cuentan mediante aventuras e imágenes de gran formato.</p><p>La arquitectura de Hans Hollein incorpora el paisaje a esta exploración. Buena parte del edificio se extiende bajo tierra, mientras que el cono de paredes interiores doradas y el cráter abren perspectivas hacia el cielo. La roca oscura, los pasajes subterráneos y la luz que llega desde arriba componen un entorno estrechamente ligado al tema volcánico del parque.</p><h2>De las colecciones de los Krafft a los terremotos de Namazu</h2><p>Las fotografías y las rocas recogidas por Maurice y Katia Krafft muestran el lado humano del estudio de los volcanes. En Machine Terre, paisajes, imágenes y actividades interactivas amplían el relato al origen del planeta y a la vida que alberga. Terre de volcans rodea a los visitantes de coladas de lava y géiseres, con los colores contrastados de las regiones volcánicas.</p><p>Namazu incorpora los terremotos a la historia de una base científica situada sobre una falla inestable. El suelo agrietado y los edificios marcados por las sacudidas anuncian la agitada expedición de la montaña rusa. Dragones y creencias volcánicas pertenecen a otro tipo de relato: Forêt des dragons y Volcans sacrés escenifican las leyendas creadas para explicar estas fuerzas inquietantes.</p><h2>Pequeños investigadores y viajes al espacio</h2><p>Premier envol contempla Auvernia desde el punto de vista de un águila, elevando la mirada sobre el paisaje. El Astrodôme amplía la exploración a las estrellas y al Universo. Películas, sesiones acompañadas y animaciones científicas sitúan la Tierra en su entorno cósmico, más allá de los fenómenos volcánicos.</p><p>En la Cité des enfants, el agua, las sombras, los colores y el movimiento se convierten en materia de experimentación mediante el juego. Expériences, c’est show ! presenta una ciencia más alborotada: el profesor Yapadrisk interrumpe a los animadores y sustituye sus demostraciones por sus propios experimentos explosivos. Este científico excéntrico introduce así la comedia entre las demostraciones científicas.</p>"
+      },
+      {
+        "languageCode": "pl",
+        "value": "<h2>Chaîne des Puys nad i pod ziemią</h2><p>W miejscowości Saint-Ours-les-Roches Vulcania zajmuje teren wśród wulkanicznych krajobrazów Chaîne des Puys. Wzgórza Owernii stanowią namacalne tło dla pytań stawianych na wystawach: jak powstaje wulkan, dlaczego ziemia drży i jakie ślady pozostawia erupcja? Nauki o Ziemi są tu przedstawiane także poprzez przygodowe opowieści i obrazy w wielkiej skali.</p><p>Architektura Hansa Holleina włącza krajobraz w tę wyprawę. Znaczna część budynku znajduje się pod ziemią, natomiast stożek o złocistych ścianach wewnętrznych i krater otwierają widok ku niebu. Ciemna skała, podziemne przejścia i światło wpadające z góry tworzą otoczenie ściśle związane z wulkanicznym tematem parku.</p><h2>Od zbiorów Krafftów po trzęsienia ziemi w Namazu</h2><p>Fotografie i skały przywiezione przez Maurice’a i Katię Krafft pokazują ludzi stojących za badaniami wulkanów. W Machine Terre krajobrazy, obrazy i interaktywne stanowiska rozszerzają opowieść na powstanie planety oraz rozwijające się na niej życie. Terre de volcans otacza zwiedzających obrazami potoków lawy i gejzerów, ukazując kontrastowe barwy regionów wulkanicznych.</p><p>Namazu wpisuje trzęsienia ziemi w historię bazy naukowej położonej na niestabilnym uskoku. Popękana ziemia i budynki noszące ślady wstrząsów zapowiadają burzliwą ekspedycję kolejką górską. Smoki i wierzenia związane z wulkanami należą do innej opowieści: Forêt des dragons oraz Volcans sacrés przedstawiają legendy, za pomocą których ludzie tłumaczyli te niepokojące siły.</p><h2>Mali badacze i podróże w kosmos</h2><p>Premier envol pokazuje Owernię oczami orła, unosząc spojrzenie ponad krajobraz. Astrodôme poszerza tę perspektywę o gwiazdy i Wszechświat. Filmy, seanse z prowadzącymi i pokazy naukowe przedstawiają Ziemię w jej kosmicznym otoczeniu, wykraczając poza same zjawiska wulkaniczne.</p><p>W Cité des enfants woda, cienie, kolory i ruch stają się przedmiotem eksperymentów poprzez zabawę. Expériences, c’est show ! przedstawia naukę w bardziej burzliwym wydaniu: profesor Yapadrisk przerywa animatorom i zastępuje ich pokazy własnymi wybuchowymi doświadczeniami. Ekscentryczny uczony wprowadza w ten sposób komedię w sam środek naukowych demonstracji.</p>"
+      },
+      {
+        "languageCode": "pt",
+        "value": "<h2>A Chaîne des Puys, à superfície e debaixo da terra</h2><p>Em Saint-Ours-les-Roches, Vulcania insere-se na paisagem vulcânica da Chaîne des Puys. Os relevos da Auvérnia dão um contexto palpável às perguntas das exposições: como nasce um vulcão, porque treme a terra e que marcas deixa uma erupção na paisagem? As ciências da Terra também são contadas através de aventuras e imagens de grande dimensão.</p><p>A arquitetura de Hans Hollein torna a paisagem parte desta exploração. Grande parte do edifício desenvolve-se no subsolo, enquanto o cone de paredes interiores douradas e a cratera abrem perspetivas para o céu. A rocha escura, as passagens subterrâneas e a luz vinda de cima compõem um ambiente intimamente ligado ao tema vulcânico do parque.</p><h2>Das coleções dos Krafft aos sismos de Namazu</h2><p>As fotografias e as rochas recolhidas por Maurice e Katia Krafft revelam o lado humano do estudo dos vulcões. Em Machine Terre, paisagens, imagens e atividades interativas alargam a narrativa à formação do planeta e à vida que nele existe. Terre de volcans envolve os visitantes em imagens de escoadas de lava e géiseres, com as cores contrastantes das regiões vulcânicas.</p><p>Namazu integra os sismos na história de uma base científica situada sobre uma falha instável. O solo fendido e os edifícios marcados pelos abalos anunciam a movimentada expedição da montanha-russa. Dragões e crenças vulcânicas contam outra história: Forêt des dragons e Volcans sacrés encenam as lendas criadas para explicar estas forças inquietantes.</p><h2>Pequenos investigadores e viagens pelo espaço</h2><p>Premier envol mostra a Auvérnia pelo olhar de uma águia, elevando a perspetiva sobre a paisagem. O Astrodôme alarga a exploração às estrelas e ao Universo. Filmes, sessões acompanhadas e animações científicas apresentam a Terra no seu contexto cósmico, para além dos fenómenos vulcânicos.</p><p>Na Cité des enfants, a água, as sombras, as cores e o movimento tornam-se matéria para experimentar através da brincadeira. Expériences, c’est show ! apresenta a ciência num palco mais agitado: o professor Yapadrisk interrompe os animadores e substitui as suas demonstrações pelas próprias experiências explosivas. Este cientista excêntrico introduz assim a comédia entre as demonstrações científicas.</p>"
+      }
+    ]
   },
   "references": {
     "founders": [],
@@ -119,7 +154,40 @@
       "subtype": null,
       "zoneId": null,
       "zoneKey": null,
-      "descriptions": [],
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La base scientifique sur la faille</h2><p>Namazu accueille ses visiteurs dans un laboratoire de sismologie dont l’implantation semble bien imprudente : les chercheurs surveillent une faille particulièrement instable. Le décor donne corps à cette situation. Des lézardes parcourent les constructions, les chemins paraissent déchirés et le sol semble s’être soulevé par endroits. Avant même l’expédition, les traces du tremblement de terre installent une tension entre la curiosité scientifique et le danger du terrain.</p><p>La responsable de l’équipe présente la mission depuis cette base avancée. L’histoire entraîne ensuite les visiteurs vers les chercheurs partis sur le terrain, avec une aventure de montagnes russes qui prolonge l’agitation suggérée par les décors. La station et le paysage accidenté appartiennent au même récit d’exploration d’une zone sismique.</p><h2>Un poisson-chat dans l’imaginaire japonais</h2><p>Le nom Namazu renvoie au poisson-chat géant auquel une tradition japonaise attribue les tremblements de terre. Immobilisée par une divinité, la créature chercherait à se libérer lorsque sa surveillance se relâche. Ce récit légendaire accompagne la fiction du laboratoire, où les secousses deviennent cette fois un sujet d’observation scientifique.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A research outpost on the fault</h2><p>Namazu welcomes visitors to a seismology laboratory in a decidedly precarious location: its researchers monitor a particularly unstable fault. The setting makes that situation tangible. Cracks run through the buildings, paths appear torn apart and the ground seems to have risen in places. Before the expedition begins, these traces of an earthquake establish a tension between scientific curiosity and the dangers of the terrain.</p><p>The team’s lead scientist introduces the mission from the forward base. The story then draws visitors towards the researchers working in the field, with a roller coaster adventure that carries the disturbance suggested by the scenery into the experience itself. The station and the damaged landscape belong to the same account of exploring a seismic zone.</p><h2>A catfish from Japanese folklore</h2><p>The name Namazu refers to the giant catfish blamed for earthquakes in a Japanese tradition. Held still by a deity, the creature is said to struggle free when its guardian’s attention slips. This legend accompanies the laboratory’s fictional expedition, in which tremors become a subject of scientific observation.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Forschungsstation an der Verwerfung</h2><p>Namazu empfängt die Besucher in einem seismologischen Labor an einem denkbar unsicheren Ort: Das Forschungsteam beobachtet eine besonders instabile Verwerfung. Die Gestaltung macht diese Lage anschaulich. Risse durchziehen die Gebäude, Wege wirken aufgebrochen und der Boden scheint sich stellenweise gehoben zu haben. Noch vor der Expedition erzeugen diese Erdbebenspuren eine Spannung zwischen wissenschaftlicher Neugier und den Gefahren des Geländes.</p><p>Die leitende Wissenschaftlerin stellt den Auftrag in der vorgeschobenen Basis vor. Anschließend führt die Geschichte zu den Forschern draußen im Gelände. Das Achterbahnabenteuer setzt die Unruhe fort, die sich bereits in den Kulissen ankündigt. Station und beschädigte Landschaft gehören zu derselben Erzählung über die Erforschung eines Erdbebengebiets.</p><h2>Ein Wels aus der japanischen Überlieferung</h2><p>Der Name Namazu verweist auf den riesigen Wels, der in einer japanischen Tradition für Erdbeben verantwortlich gemacht wird. Eine Gottheit hält ihn fest; lässt ihre Wachsamkeit nach, soll das Tier versuchen, sich zu befreien. Diese Legende begleitet die fiktive Forschungsexpedition, in der die Erschütterungen Gegenstand wissenschaftlicher Beobachtung sind.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een onderzoeksbasis op de breuklijn</h2><p>Namazu ontvangt bezoekers in een seismologisch laboratorium op een bijzonder onzekere plek: de onderzoekers volgen er een zeer onstabiele breuklijn. Het decor maakt die situatie tastbaar. Scheuren lopen door de gebouwen, paden lijken opengereten en de grond oogt plaatselijk omhooggeduwd. Nog voordat de expeditie begint, zorgen deze aardbevingssporen voor spanning tussen wetenschappelijke nieuwsgierigheid en het gevaar van het terrein.</p><p>De leidende onderzoekster licht de opdracht toe vanuit de vooruitgeschoven basis. Daarna voert het verhaal naar de onderzoekers die buiten aan het werk zijn. Het achtbaanavontuur zet de onrust voort die de omgeving al oproept. Het station en het beschadigde landschap maken deel uit van hetzelfde verhaal over onderzoek in een aardbevingsgebied.</p><h2>Een meerval uit de Japanse overlevering</h2><p>De naam Namazu verwijst naar de reusachtige meerval die in een Japanse traditie aardbevingen veroorzaakt. Een godheid houdt het dier vast; zodra diens aandacht verslapt, zou het proberen te ontsnappen. Deze legende vergezelt de fictieve onderzoeksexpeditie, waarin de schokken juist onderwerp van wetenschappelijke waarneming zijn.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La base scientifica sulla faglia</h2><p>Namazu accoglie i visitatori in un laboratorio di sismologia dalla posizione decisamente precaria: i ricercatori sorvegliano una faglia particolarmente instabile. La scenografia rende concreta questa situazione. Crepe attraversano gli edifici, i sentieri sembrano squarciati e in alcuni punti il terreno appare sollevato. Prima ancora della spedizione, le tracce del terremoto creano una tensione tra curiosità scientifica e pericolo del territorio.</p><p>La responsabile della squadra presenta la missione dalla base avanzata. Il racconto conduce poi verso i ricercatori impegnati sul campo, con un’avventura sulle montagne russe che prolunga l’agitazione suggerita dai luoghi. La stazione e il paesaggio danneggiato appartengono alla stessa storia di esplorazione di una zona sismica.</p><h2>Un pesce gatto nell’immaginario giapponese</h2><p>Il nome Namazu richiama il gigantesco pesce gatto al quale una tradizione giapponese attribuisce i terremoti. Immobilizzata da una divinità, la creatura cercherebbe di liberarsi quando la sorveglianza si allenta. Questa leggenda accompagna la spedizione immaginaria del laboratorio, dove le scosse diventano invece oggetto di osservazione scientifica.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La base científica sobre la falla</h2><p>Namazu recibe a los visitantes en un laboratorio de sismología situado en un lugar muy precario: sus investigadores vigilan una falla especialmente inestable. El decorado hace tangible esta situación. Las grietas recorren los edificios, los caminos parecen desgarrados y el suelo da la impresión de haberse levantado en algunos puntos. Antes de comenzar la expedición, las huellas del terremoto crean una tensión entre la curiosidad científica y los peligros del terreno.</p><p>La responsable del equipo presenta la misión desde la base avanzada. Después, el relato conduce hacia los investigadores que trabajan sobre el terreno, con una aventura de montaña rusa que prolonga la agitación sugerida por el entorno. La estación y el paisaje dañado forman parte de una misma historia de exploración sísmica.</p><h2>Un pez gato del imaginario japonés</h2><p>El nombre Namazu alude al gigantesco pez gato al que una tradición japonesa atribuye los terremotos. Una divinidad lo mantiene inmóvil; cuando su vigilancia se relaja, la criatura intentaría liberarse. Esta leyenda acompaña la expedición ficticia del laboratorio, donde las sacudidas se convierten en objeto de observación científica.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Baza badawcza na uskoku</h2><p>Namazu wita gości w laboratorium sejsmologicznym położonym w wyjątkowo niepewnym miejscu: badacze obserwują szczególnie niestabilny uskok. Scenografia nadaje tej sytuacji konkretny kształt. Budynki przecinają pęknięcia, ścieżki wyglądają na rozerwane, a ziemia miejscami wydaje się wypiętrzona. Jeszcze przed wyprawą ślady trzęsienia ziemi budują napięcie między naukową ciekawością a niebezpieczeństwem terenu.</p><p>Kierowniczka zespołu przedstawia zadanie w wysuniętej bazie. Opowieść prowadzi następnie ku badaczom pracującym w terenie, a przygoda na kolejce górskiej podtrzymuje niepokój zapowiadany przez otoczenie. Stacja i zniszczony krajobraz należą do tej samej historii eksploracji obszaru sejsmicznego.</p><h2>Sum z japońskich wierzeń</h2><p>Nazwa Namazu odwołuje się do olbrzymiego suma, któremu japońska tradycja przypisuje wywoływanie trzęsień ziemi. Stworzenie jest unieruchomione przez bóstwo, lecz podobno próbuje się uwolnić, gdy jego strażnik traci czujność. Legenda towarzyszy fikcyjnej wyprawie laboratorium, w której wstrząsy stają się przedmiotem naukowych obserwacji.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A base científica sobre a falha</h2><p>Namazu recebe os visitantes num laboratório de sismologia situado num local particularmente precário: os investigadores vigiam uma falha muito instável. O cenário torna essa situação palpável. Fendas atravessam os edifícios, os caminhos parecem rasgados e o solo aparenta ter-se elevado em alguns pontos. Antes da expedição, os vestígios do sismo já criam uma tensão entre a curiosidade científica e os perigos do terreno.</p><p>A responsável pela equipa apresenta a missão a partir da base avançada. A narrativa conduz depois aos investigadores que trabalham no terreno, numa aventura de montanha-russa que prolonga a agitação sugerida pelo cenário. A estação e a paisagem danificada pertencem à mesma história de exploração de uma zona sísmica.</p><h2>Um peixe-gato do imaginário japonês</h2><p>O nome Namazu remete para o enorme peixe-gato ao qual uma tradição japonesa atribui os sismos. Imobilizada por uma divindade, a criatura tentaria libertar-se quando a vigilância abranda. Esta lenda acompanha a expedição fictícia do laboratório, onde os abalos se tornam, por sua vez, objeto de observação científica.</p>"
+        }
+      ],
       "attractionDetails": {
         "manufacturerId": "a917c228-e220-4234-a6ff-603e13365607",
         "manufacturerKey": "a917c228-e220-4234-a6ff-603e13365607",
@@ -263,7 +331,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/cite-des-enfants/",
         "durationInSeconds": 1800
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>L’eau et les mouvements comme terrain d’essai</h2><p>La Cité des enfants de Vulcania a été conçue avec la Cité des sciences et de l’industrie, à Paris. Ses espaces abordent l’eau, les mouvements, les sens et la lumière à travers des jeux à manipuler. Dans la partie consacrée à l’eau, bassins, tourbillons et colonnes à bulles donnent à voir des phénomènes familiers sous des formes inhabituelles, avec notamment des balles maintenues au-dessus de jets d’eau.</p><p>Les machines à boules, les balances et les engrenages composent un autre paysage d’expériences. Les enfants y observent des équilibres, des mouvements et les effets de leurs propres gestes. L’exposition laisse une place à l’essai et à la surprise : ses objets invitent à comparer ce que l’on imaginait avec ce qui se produit réellement.</p><h2>Des odeurs aux dessins lumineux</h2><p>Les tubes à odeurs et les tubes sonores sollicitent d’autres façons d’explorer. Dans l’espace obscur consacré à la lumière, des couleurs, des ombres et un stylo lumineux deviennent des matières à jouer et à dessiner. La lumière s’y découvre comme une trace, une couleur ou une ombre, tandis que les autres dispositifs sollicitent plus particulièrement l’ouïe ou l’odorat.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Water and movement as experiments</h2><p>Vulcania’s Cité des enfants was developed with the Cité des sciences et de l’industrie in Paris. Its spaces explore water, movement, the senses and light through hands-on play. In the water area, pools, whirlpools and bubble columns present familiar phenomena in unusual forms, including balls held above jets of water.</p><p>Ball machines, balances and gears create another landscape of experiments. Children can observe balance, movement and the effects of their own actions. Trial and surprise are part of the exhibition: its objects invite comparisons between what someone expected and what actually happens.</p><h2>From scents to drawings made of light</h2><p>Scent tubes and sound tubes offer other ways of exploring. In the darkened area devoted to light, colours, shadows and a light pen become materials for play and drawing. Light appears as a trace, a colour or a shadow, while other stations focus particularly on hearing or smell.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Mit Wasser und Bewegung experimentieren</h2><p>Vulcanias Cité des enfants entstand gemeinsam mit der Cité des sciences et de l’industrie in Paris. Ihre Bereiche widmen sich Wasser, Bewegung, den Sinnen und dem Licht, jeweils durch Spiele zum Ausprobieren. Im Wasserbereich zeigen Becken, Strudel und Blasensäulen vertraute Phänomene in ungewohnter Form. Dazu gehören Bälle, die über Wasserstrahlen schweben.</p><p>Kugelmaschinen, Waagen und Zahnräder bilden eine weitere Experimentierlandschaft. Hier können Kinder Gleichgewicht, Bewegungen und die Folgen ihres eigenen Handelns beobachten. Ausprobieren und Überraschungen gehören zur Ausstellung: Die Objekte regen dazu an, die eigenen Erwartungen mit dem tatsächlichen Geschehen zu vergleichen.</p><h2>Von Düften zu Lichtzeichnungen</h2><p>Duftrohre und Klangröhren eröffnen andere Zugänge zur Erkundung. Im abgedunkelten Lichtbereich werden Farben, Schatten und ein Lichtstift zu Materialien zum Spielen und Zeichnen. Licht lässt sich hier als Spur, als Farbe und als Schatten wahrnehmen, während die anderen Stationen gezielt das Hören oder Riechen ansprechen.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Water en beweging als proefterrein</h2><p>De Cité des enfants van Vulcania is ontwikkeld met de Cité des sciences et de l’industrie in Parijs. De ruimtes behandelen water, beweging, zintuigen en licht via spelonderdelen die kinderen zelf onderzoeken. In het watergedeelte tonen bassins, draaikolken en bellenkolommen vertrouwde verschijnselen in ongewone vormen, waaronder ballen die boven waterstralen blijven hangen.</p><p>Kogelbanen, weegschalen en tandwielen vormen een ander landschap van experimenten. Kinderen bekijken er evenwicht, beweging en de gevolgen van hun eigen handelingen. Uitproberen en verrast worden horen bij de tentoonstelling: de voorwerpen nodigen uit om verwachtingen te vergelijken met wat er werkelijk gebeurt.</p><h2>Van geuren tot tekeningen van licht</h2><p>Geurbuizen en klankbuizen bieden andere manieren om te ontdekken. In de verduisterde ruimte rond licht worden kleuren, schaduwen en een lichtpen materialen om mee te spelen en te tekenen. Licht verschijnt hier als spoor, kleur of schaduw, terwijl de andere opstellingen juist het gehoor of de reuk aanspreken.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Sperimentare con l’acqua e il movimento</h2><p>La Cité des enfants di Vulcania è stata realizzata con la Cité des sciences et de l’industrie di Parigi. I suoi spazi affrontano acqua, movimento, sensi e luce attraverso giochi da esplorare direttamente. Nell’area dell’acqua, vasche, vortici e colonne di bolle mostrano fenomeni familiari in forme insolite, comprese le palline sostenute sopra i getti d’acqua.</p><p>Macchine con palline, bilance e ingranaggi compongono un altro paesaggio di esperimenti. I bambini osservano equilibri, movimenti e conseguenze dei propri gesti. Tentativi e sorprese fanno parte dell’esposizione: gli oggetti invitano a confrontare quello che si immaginava con ciò che avviene realmente.</p><h2>Dagli odori ai disegni di luce</h2><p>Tubi olfattivi e tubi sonori propongono altre modalità di esplorazione. Nello spazio oscurato dedicato alla luce, colori, ombre e una penna luminosa diventano materiali per giocare e disegnare. La luce appare come traccia, colore e ombra, mentre le altre postazioni si rivolgono in particolare all’udito o all’olfatto.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Experimentar con el agua y el movimiento</h2><p>La Cité des enfants de Vulcania fue creada con la Cité des sciences et de l’industrie de París. Sus espacios abordan el agua, el movimiento, los sentidos y la luz mediante juegos que se pueden manipular. En la zona del agua, estanques, remolinos y columnas de burbujas muestran fenómenos familiares de maneras poco habituales, como las pelotas sostenidas sobre chorros de agua.</p><p>Máquinas con bolas, balanzas y engranajes componen otro paisaje de experimentos. Los niños observan equilibrios, movimientos y consecuencias de sus propios gestos. Los intentos y las sorpresas forman parte de la exposición: los objetos invitan a comparar lo que se imaginaba con lo que realmente ocurre.</p><h2>De los olores a los dibujos de luz</h2><p>Los tubos de olores y los tubos sonoros ofrecen otras formas de explorar. En el espacio oscurecido dedicado a la luz, colores, sombras y un lápiz luminoso se convierten en materiales para jugar y dibujar. La luz aparece como trazo, color y sombra, mientras que otras estaciones se dirigen especialmente al oído o al olfato.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Eksperymenty z wodą i ruchem</h2><p>Cité des enfants w Vulcanii powstała we współpracy z paryską Cité des sciences et de l’industrie. Jej przestrzenie dotyczą wody, ruchu, zmysłów i światła, poznawanych przez samodzielną zabawę. W części wodnej zbiorniki, wiry i kolumny bąbelków pokazują znane zjawiska w nietypowych formach. Są tu również piłeczki utrzymywane nad strumieniami wody.</p><p>Urządzenia z kulkami, wagi i koła zębate tworzą kolejny krajobraz doświadczeń. Dzieci obserwują równowagę, ruch oraz skutki własnych działań. Próby i zaskoczenie są częścią wystawy: jej przedmioty zachęcają do porównywania oczekiwań z tym, co rzeczywiście się wydarza.</p><h2>Od zapachów do rysowania światłem</h2><p>Rury zapachowe i dźwiękowe proponują inne sposoby odkrywania. W zaciemnionej części poświęconej światłu kolory, cienie i świetlne pióro stają się materiałami do zabawy oraz rysowania. Światło przybiera tu postać śladu, barwy i cienia, podczas gdy pozostałe stanowiska zwracają się szczególnie ku słuchowi lub węchowi.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Experimentar com a água e o movimento</h2><p>A Cité des enfants de Vulcania foi desenvolvida com a Cité des sciences et de l’industrie de Paris. Os seus espaços abordam a água, o movimento, os sentidos e a luz através de jogos que podem ser explorados diretamente. Na zona da água, tanques, remoinhos e colunas de bolhas mostram fenómenos familiares de formas invulgares, incluindo bolas suspensas sobre jatos de água.</p><p>Máquinas com bolas, balanças e engrenagens compõem outra paisagem de experiências. As crianças observam equilíbrios, movimentos e consequências dos seus próprios gestos. Tentativas e surpresas fazem parte da exposição: os objetos convidam a comparar o que se imaginava com aquilo que realmente acontece.</p><h2>Dos cheiros aos desenhos de luz</h2><p>Tubos de cheiros e tubos sonoros propõem outras formas de explorar. No espaço escurecido dedicado à luz, cores, sombras e uma caneta luminosa tornam-se materiais para brincar e desenhar. A luz aparece como traço, cor e sombra, enquanto outras estações se dirigem sobretudo à audição ou ao olfato.</p>"
+        }
+      ]
     },
     {
       "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
@@ -377,7 +479,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/machine-terre/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une planète à explorer dans la lave</h2><p>Machine Terre occupe un espace creusé au cœur de véritables coulées de lave. Un papillon accompagne symboliquement la découverte, reliant le récit de la planète à la fragilité du vivant. Les cercles thématiques abordent aussi bien les profondeurs de la Terre que les paysages visibles à sa surface : les roches du lieu forment ainsi un cadre concret à cette exploration.</p><p>La formation du Système solaire ouvre une perspective bien plus vaste que celle des seuls volcans. Le grand globe de la vie poursuit ce récit avec l’apparition et le développement des êtres vivants. Images projetées, représentations de l’intérieur terrestre et paysages à observer font passer d’une échelle à l’autre, de la planète entière aux phénomènes qui la transforment.</p><h2>Lire les paysages, interroger les images</h2><p>Des représentations holographiques de volcans côtoient les images de Katia et Maurice Krafft. Les tables consacrées aux paysages proposent de reconnaître les indices de leur histoire, tandis que d’autres espaces abordent les séismes et les plaques tectoniques. Les interventions des animateurs complètent ces découvertes par une discussion sur la formation de la Terre et l’origine du magma.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Exploring a planet within the lava</h2><p>Machine Terre occupies a space excavated within genuine lava flows. A butterfly serves as a symbolic companion, connecting the planet’s story with the fragility of living things. The exhibition’s thematic circles consider both Earth’s depths and the landscapes visible on its surface. The rock enclosing the exhibition gives this exploration a tangible setting.</p><p>The formation of the Solar System opens a perspective far wider than volcanoes alone. The large globe of life continues the story with the emergence and development of living organisms. Projected images, depictions of Earth’s interior and landscapes to examine move between scales, from the whole planet to the phenomena that reshape it.</p><h2>Reading landscapes and questioning images</h2><p>Holographic representations of volcanoes appear alongside images by Katia and Maurice Krafft. Landscape tables invite visitors to recognise clues to the places’ history, while other areas address earthquakes and tectonic plates. Sessions with the presenters add a conversation about the formation of Earth and the origins of magma to the exhibits themselves.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Einen Planeten in der Lava erkunden</h2><p>Machine Terre befindet sich in einem Raum, der in echte Lavaströme gegraben wurde. Ein Schmetterling begleitet die Entdeckung symbolisch und verbindet die Geschichte des Planeten mit der Verletzlichkeit des Lebens. Die Themenkreise der Ausstellung behandeln sowohl das Erdinnere als auch die sichtbaren Landschaften an der Oberfläche. Das umgebende Gestein verleiht dieser Erkundung einen greifbaren Rahmen.</p><p>Die Entstehung des Sonnensystems eröffnet eine Perspektive weit über die Vulkane hinaus. Der große Globus des Lebens setzt die Geschichte mit dem Auftreten und der Entwicklung von Lebewesen fort. Projektionen, Darstellungen des Erdinneren und Landschaftsbilder wechseln zwischen unterschiedlichen Maßstäben: vom gesamten Planeten bis zu den Vorgängen, die ihn verändern.</p><h2>Landschaften lesen und Bilder hinterfragen</h2><p>Holografische Vulkandarstellungen stehen neben Aufnahmen von Katia und Maurice Krafft. An den Landschaftstischen lassen sich Hinweise auf die Geschichte der dargestellten Orte entdecken, während andere Bereiche Erdbeben und tektonische Platten behandeln. Bei den begleiteten Angeboten ergänzen Gespräche über die Entstehung der Erde und den Ursprung von Magma die ausgestellten Bilder und Modelle.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een planeet verkennen in de lava</h2><p>Machine Terre ligt in een ruimte die is uitgegraven in echte lavastromen. Een vlinder begeleidt de ontdekking symbolisch en verbindt het verhaal van de planeet met de kwetsbaarheid van het leven. De thematische kringen van de tentoonstelling behandelen zowel het binnenste van de aarde als de zichtbare landschappen aan het oppervlak. Het omringende gesteente geeft die verkenning een tastbaar kader.</p><p>Het ontstaan van het zonnestelsel opent een perspectief dat veel verder reikt dan vulkanen. De grote wereldbol van het leven vervolgt het verhaal met het ontstaan en de ontwikkeling van levende organismen. Projecties, beelden van het binnenste van de aarde en landschappen om te onderzoeken wisselen van schaal: van de hele planeet tot de verschijnselen die haar veranderen.</p><h2>Landschappen lezen en vragen stellen bij beelden</h2><p>Holografische voorstellingen van vulkanen staan naast beelden van Katia en Maurice Krafft. Bij de landschapstafels zijn aanwijzingen te ontdekken voor de geschiedenis van de afgebeelde plekken. Andere delen behandelen aardbevingen en tektonische platen. De begeleide presentaties voegen gesprekken over het ontstaan van de aarde en de oorsprong van magma toe aan de beelden en modellen.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Esplorare un pianeta nella lava</h2><p>Machine Terre occupa uno spazio scavato all’interno di vere colate laviche. Una farfalla accompagna simbolicamente la scoperta, collegando la storia del pianeta alla fragilità della vita. I percorsi tematici dell’esposizione affrontano sia le profondità della Terra sia i paesaggi visibili in superficie. La roccia circostante offre così una cornice concreta all’esplorazione.</p><p>La formazione del Sistema solare apre una prospettiva molto più ampia di quella dei soli vulcani. Il grande globo della vita prosegue il racconto con la comparsa e lo sviluppo degli esseri viventi. Immagini proiettate, rappresentazioni dell’interno terrestre e paesaggi da osservare passano da una scala all’altra, dal pianeta nel suo insieme ai fenomeni che lo trasformano.</p><h2>Leggere i paesaggi, interrogare le immagini</h2><p>Rappresentazioni olografiche dei vulcani affiancano le immagini di Katia e Maurice Krafft. I tavoli dedicati ai paesaggi invitano a riconoscere gli indizi della loro storia, mentre altri spazi affrontano terremoti e placche tettoniche. Gli incontri con gli animatori completano immagini e modelli con un dialogo sulla formazione della Terra e sull’origine del magma.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Explorar un planeta entre la lava</h2><p>Machine Terre ocupa un espacio excavado en auténticas coladas de lava. Una mariposa acompaña simbólicamente el descubrimiento y conecta la historia del planeta con la fragilidad de la vida. Los círculos temáticos de la exposición abordan tanto las profundidades terrestres como los paisajes visibles en la superficie. La roca que rodea el espacio da un marco tangible a esta exploración.</p><p>La formación del Sistema Solar abre una perspectiva mucho más amplia que la de los volcanes. El gran globo de la vida continúa el relato con la aparición y el desarrollo de los seres vivos. Imágenes proyectadas, representaciones del interior de la Tierra y paisajes para observar cambian de escala, desde el planeta entero hasta los fenómenos que lo transforman.</p><h2>Leer paisajes e interrogar imágenes</h2><p>Las representaciones holográficas de volcanes acompañan las imágenes de Katia y Maurice Krafft. Las mesas dedicadas a los paisajes invitan a reconocer indicios de su historia, mientras otros espacios tratan los terremotos y las placas tectónicas. Las sesiones con animadores añaden a imágenes y modelos una conversación sobre la formación de la Tierra y el origen del magma.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Poznać planetę we wnętrzu lawy</h2><p>Machine Terre zajmuje przestrzeń wydrążoną w autentycznych potokach lawy. Symbolicznym towarzyszem odkrywania jest motyl, łączący historię planety z kruchością życia. Kręgi tematyczne wystawy dotyczą zarówno głębi Ziemi, jak i krajobrazów widocznych na jej powierzchni. Otaczająca skała nadaje tej eksploracji namacalną oprawę.</p><p>Powstanie Układu Słonecznego otwiera perspektywę znacznie szerszą niż same wulkany. Wielki glob życia rozwija opowieść o pojawieniu się i rozwoju organizmów. Projekcje, przedstawienia wnętrza Ziemi oraz krajobrazy do obserwowania pozwalają przechodzić między skalami: od całej planety po zjawiska, które ją przeobrażają.</p><h2>Czytanie krajobrazów i pytania o obrazy</h2><p>Holograficzne przedstawienia wulkanów sąsiadują ze zdjęciami Katii i Maurice’a Krafftów. Stoły poświęcone krajobrazom zachęcają do rozpoznawania śladów historii przedstawionych miejsc. Inne przestrzenie dotyczą trzęsień ziemi i płyt tektonicznych. Spotkania z animatorami uzupełniają obrazy oraz modele rozmową o powstaniu Ziemi i pochodzeniu magmy.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Explorar um planeta entre a lava</h2><p>Machine Terre ocupa um espaço escavado no interior de verdadeiras escoadas de lava. Uma borboleta acompanha simbolicamente a descoberta, ligando a história do planeta à fragilidade da vida. Os círculos temáticos da exposição abordam tanto as profundezas da Terra como as paisagens visíveis à superfície. A rocha envolvente dá assim um enquadramento palpável à exploração.</p><p>A formação do Sistema Solar abre uma perspetiva muito mais ampla do que a dos vulcões. O grande globo da vida continua a narrativa com o aparecimento e o desenvolvimento dos seres vivos. Imagens projetadas, representações do interior terrestre e paisagens para observar mudam de escala, do planeta inteiro aos fenómenos que o transformam.</p><h2>Ler paisagens e interrogar imagens</h2><p>Representações holográficas de vulcões surgem junto das imagens de Katia e Maurice Krafft. As mesas dedicadas às paisagens convidam a reconhecer indícios da sua história, enquanto outros espaços tratam dos sismos e das placas tectónicas. As sessões com animadores acrescentam às imagens e aos modelos uma conversa sobre a formação da Terra e a origem do magma.</p>"
+        }
+      ]
     },
     {
       "id": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
@@ -1292,6 +1428,780 @@
       "width": 250,
       "height": 51,
       "sizeInBytes": 10579
+    },
+    {
+      "id": "7455ffc28d574c158809574ac5c022bd",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/7455ffc28d574c158809574ac5c022bd",
+      "description": "Le cône et sa passerelle au milieu des visiteurs, en août 2010.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 960,
+      "height": 1445,
+      "sizeInBytes": 288498,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_-_Sietze_Kraak.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs au pied des hautes parois grises du cône de Vulcania, traversées par une passerelle métallique."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors beneath Vulcania’s tall grey cone walls, crossed by a metal footbridge."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher unter den hohen grauen Wänden des Vulcania-Kegels, über die eine Metallbrücke führt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers onder de hoge grijze wanden van de kegel van Vulcania, met een metalen loopbrug ertussen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori ai piedi delle alte pareti grigie del cono di Vulcania, attraversate da una passerella metallica."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes al pie de las altas paredes grises del cono de Vulcania, atravesadas por una pasarela metálica."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zwiedzający u stóp wysokich szarych ścian stożka Vulcanii, pomiędzy którymi biegnie metalowa kładka."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes junto às altas paredes cinzentas do cone de Vulcania, atravessadas por uma passerelle metálica."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le cône et sa passerelle au milieu des visiteurs, en août 2010."
+        },
+        {
+          "languageCode": "en",
+          "value": "The cone and its footbridge among visitors in August 2010."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kegel und Fußbrücke zwischen den Besuchern im August 2010."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kegel en de loopbrug tussen de bezoekers in augustus 2010."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il cono e la passerella tra i visitatori, nell’agosto 2010."
+        },
+        {
+          "languageCode": "es",
+          "value": "El cono y su pasarela entre los visitantes, en agosto de 2010."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stożek i kładka wśród zwiedzających, sierpień 2010 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cone e a passerelle entre os visitantes, em agosto de 2010."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:51:42.968Z",
+      "updatedAt": "2026-11-15T16:51:46.632Z",
+      "key": "7455ffc28d574c158809574ac5c022bd",
+      "imageId": "7455ffc28d574c158809574ac5c022bd"
+    },
+    {
+      "id": "3656194cc2cf40c8a1f02b9390da5010",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/3656194cc2cf40c8a1f02b9390da5010",
+      "description": "Des roches exposées en plein air dans le paysage de Vulcania, en août 2010.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 960,
+      "height": 638,
+      "sizeInBytes": 183610,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Blocs de roche sombre disposés sur une surface de gravier à Vulcania, devant une prairie et des reliefs boisés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Dark rock blocks on a gravel surface at Vulcania, with meadow and wooded hills behind."
+        },
+        {
+          "languageCode": "de",
+          "value": "Dunkle Gesteinsblöcke auf einer Kiesfläche in Vulcania, dahinter eine Wiese und bewaldete Hügel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Donkere rotsblokken op een grindvlak in Vulcania, met een weide en beboste heuvels op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Blocchi di roccia scura su una superficie ghiaiosa a Vulcania, davanti a un prato e a rilievi boscosi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Bloques de roca oscura sobre grava en Vulcania, delante de una pradera y relieves arbolados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ciemne bloki skalne na żwirowym podłożu w Vulcanii, z łąką i zalesionymi wzgórzami w tle."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Blocos de rocha escura sobre gravilha em Vulcania, diante de um prado e de colinas arborizadas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des roches exposées en plein air dans le paysage de Vulcania, en août 2010."
+        },
+        {
+          "languageCode": "en",
+          "value": "Rocks displayed outdoors within Vulcania’s landscape in August 2010."
+        },
+        {
+          "languageCode": "de",
+          "value": "Im Freien ausgestellte Gesteine in der Landschaft von Vulcania im August 2010."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rotsblokken in de buitenruimte van Vulcania in augustus 2010."
+        },
+        {
+          "languageCode": "it",
+          "value": "Rocce esposte all’aperto nel paesaggio di Vulcania, nell’agosto 2010."
+        },
+        {
+          "languageCode": "es",
+          "value": "Rocas expuestas al aire libre en el paisaje de Vulcania, en agosto de 2010."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Skały prezentowane na otwartej przestrzeni Vulcanii, sierpień 2010 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Rochas expostas ao ar livre na paisagem de Vulcania, em agosto de 2010."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:52:05.512Z",
+      "updatedAt": "2026-11-15T16:52:08.979Z",
+      "key": "3656194cc2cf40c8a1f02b9390da5010",
+      "imageId": "3656194cc2cf40c8a1f02b9390da5010"
+    },
+    {
+      "id": "db289dbe8d05476d8918eb31ddd1f1ad",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/db289dbe8d05476d8918eb31ddd1f1ad",
+      "description": "Le parc et les reliefs de la Chaîne des Puys vus depuis les jardins, en août 2010.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 960,
+      "height": 638,
+      "sizeInBytes": 185014,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue de Vulcania depuis les jardins, avec le cône gris et doré, les bâtiments bas et un puy boisé en arrière-plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania seen from the gardens, with its grey and golden cone, low buildings and a wooded volcanic hill behind."
+        },
+        {
+          "languageCode": "de",
+          "value": "Blick aus den Gärten auf Vulcania mit dem grauen und goldfarbenen Kegel, niedrigen Gebäuden und einem bewaldeten Vulkankegel im Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania gezien vanuit de tuinen, met de grijze en goudkleurige kegel, lage gebouwen en een beboste vulkaanheuvel op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vulcania vista dai giardini, con il cono grigio e dorato, gli edifici bassi e un rilievo vulcanico boscoso sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vulcania vista desde los jardines, con el cono gris y dorado, edificios bajos y un relieve volcánico arbolado al fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok na Vulcanię z ogrodów: szaro-złocisty stożek, niskie budynki i zalesione wzgórze wulkaniczne w tle."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vulcania vista dos jardins, com o cone cinzento e dourado, os edifícios baixos e uma colina vulcânica arborizada ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le parc et les reliefs de la Chaîne des Puys vus depuis les jardins, en août 2010."
+        },
+        {
+          "languageCode": "en",
+          "value": "The park and the hills of the Chaîne des Puys seen from the gardens in August 2010."
+        },
+        {
+          "languageCode": "de",
+          "value": "Park und Hügel der Chaîne des Puys von den Gärten aus gesehen, August 2010."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het park en de heuvels van de Chaîne des Puys vanuit de tuinen, augustus 2010."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il parco e i rilievi della Chaîne des Puys visti dai giardini, agosto 2010."
+        },
+        {
+          "languageCode": "es",
+          "value": "El parque y los relieves de la Chaîne des Puys desde los jardines, agosto de 2010."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Park i wzgórza Chaîne des Puys widziane z ogrodów, sierpień 2010 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O parque e os relevos da Chaîne des Puys vistos dos jardins, agosto de 2010."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:52:15.335Z",
+      "updatedAt": "2026-11-15T16:56:11.835Z",
+      "key": "db289dbe8d05476d8918eb31ddd1f1ad",
+      "imageId": "db289dbe8d05476d8918eb31ddd1f1ad"
+    },
+    {
+      "id": "0cd6c65c08224e81be09418fc0da591d",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/0cd6c65c08224e81be09418fc0da591d",
+      "description": "Vulcania dans le paysage enneigé de janvier 2010.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1500,
+      "height": 1000,
+      "sizeInBytes": 641757,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_janvier_2010.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "Canon",
+        "cameraModel": "Canon EOS 350D DIGITAL",
+        "takenOnUtc": "2010-01-12T22:36:06Z",
+        "orientation": "1",
+        "focalLength": 35,
+        "aperture": 13,
+        "exposureTime": 0.004,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Bâtiments et cône de Vulcania sous la neige, avec le puy de Côme et le sommet du puy de Dôme au loin."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania’s buildings and cone beneath snow, with Puy de Côme and the summit of Puy de Dôme in the distance."
+        },
+        {
+          "languageCode": "de",
+          "value": "Gebäude und Kegel von Vulcania im Schnee, dahinter der Puy de Côme und der Gipfel des Puy de Dôme."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De gebouwen en kegel van Vulcania onder de sneeuw, met de Puy de Côme en de top van de Puy de Dôme in de verte."
+        },
+        {
+          "languageCode": "it",
+          "value": "Gli edifici e il cono di Vulcania sotto la neve, con il puy de Côme e la cima del puy de Dôme in lontananza."
+        },
+        {
+          "languageCode": "es",
+          "value": "Edificios y cono de Vulcania bajo la nieve, con el puy de Côme y la cima del puy de Dôme a lo lejos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Budynki i stożek Vulcanii pod śniegiem, z puy de Côme i szczytem puy de Dôme w oddali."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os edifícios e o cone de Vulcania sob a neve, com o puy de Côme e o cume do puy de Dôme ao longe."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Vulcania dans le paysage enneigé de janvier 2010."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania in the snowy landscape of January 2010."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcania in der verschneiten Landschaft im Januar 2010."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania in het besneeuwde landschap van januari 2010."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vulcania nel paesaggio innevato del gennaio 2010."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vulcania en el paisaje nevado de enero de 2010."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Vulcania w śnieżnym krajobrazie stycznia 2010 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vulcania na paisagem nevada de janeiro de 2010."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:56:53.084Z",
+      "updatedAt": "2026-11-15T16:56:56.633Z",
+      "key": "0cd6c65c08224e81be09418fc0da591d",
+      "imageId": "0cd6c65c08224e81be09418fc0da591d"
+    },
+    {
+      "id": "c196e76eafc343fabd54b180e5457dc8",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/c196e76eafc343fabd54b180e5457dc8",
+      "description": "La paroi dorée du cône au-dessus des bâtiments de Vulcania, en octobre 2009.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 960,
+      "height": 720,
+      "sizeInBytes": 238841,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_Schlot.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Façade vitrée et terrasse de Vulcania devant le cône ouvert sur sa paroi dorée, entre des arbres et une pelouse."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania’s glass frontage and terrace beneath the open cone’s golden inner wall, among trees and lawn."
+        },
+        {
+          "languageCode": "de",
+          "value": "Glasfassade und Terrasse von Vulcania vor der goldfarbenen Innenwand des offenen Kegels, zwischen Bäumen und Rasen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Glazen gevel en terras van Vulcania onder de goudkleurige binnenwand van de open kegel, tussen bomen en gazon."
+        },
+        {
+          "languageCode": "it",
+          "value": "Facciata vetrata e terrazza di Vulcania davanti alla parete dorata del cono aperto, tra alberi e prato."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fachada acristalada y terraza de Vulcania ante la pared dorada del cono abierto, entre árboles y césped."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przeszklona fasada i taras Vulcanii przed złocistą ścianą otwartego stożka, wśród drzew i trawnika."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fachada envidraçada e terraço de Vulcania diante da parede dourada do cone aberto, entre árvores e relvado."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La paroi dorée du cône au-dessus des bâtiments de Vulcania, en octobre 2009."
+        },
+        {
+          "languageCode": "en",
+          "value": "The cone’s golden wall above Vulcania’s buildings in October 2009."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die goldfarbene Kegelwand über den Gebäuden von Vulcania im Oktober 2009."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De goudkleurige wand van de kegel boven de gebouwen van Vulcania in oktober 2009."
+        },
+        {
+          "languageCode": "it",
+          "value": "La parete dorata del cono sopra gli edifici di Vulcania, nell’ottobre 2009."
+        },
+        {
+          "languageCode": "es",
+          "value": "La pared dorada del cono sobre los edificios de Vulcania, en octubre de 2009."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Złocista ściana stożka ponad budynkami Vulcanii, październik 2009 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A parede dourada do cone acima dos edifícios de Vulcania, em outubro de 2009."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:57:03.161Z",
+      "updatedAt": "2026-11-15T16:57:06.614Z",
+      "key": "c196e76eafc343fabd54b180e5457dc8",
+      "imageId": "c196e76eafc343fabd54b180e5457dc8"
+    },
+    {
+      "id": "8b9479d31a074fc98a5468865e32759e",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/8b9479d31a074fc98a5468865e32759e",
+      "description": "Le cône de Hans Hollein en cours de construction, en mars 2000.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 521,
+      "height": 788,
+      "sizeInBytes": 458699,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_mars_2000.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Chantier de Vulcania avec l’ossature du cône, une grue et des parois de béton au-dessus d’une excavation rocheuse."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania’s construction site with the cone’s frame, a crane and concrete walls above a rocky excavation."
+        },
+        {
+          "languageCode": "de",
+          "value": "Baustelle von Vulcania mit dem Gerüst des Kegels, einem Kran und Betonwänden über einer felsigen Baugrube."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De bouwplaats van Vulcania met het geraamte van de kegel, een kraan en betonnen wanden boven een rotsachtige bouwput."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cantiere di Vulcania con l’ossatura del cono, una gru e pareti di cemento sopra uno scavo nella roccia."
+        },
+        {
+          "languageCode": "es",
+          "value": "Obras de Vulcania con el armazón del cono, una grúa y paredes de hormigón sobre una excavación rocosa."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Budowa Vulcanii z konstrukcją stożka, żurawiem i betonowymi ścianami nad wykopem w skale."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Obras de Vulcania com a estrutura do cone, uma grua e paredes de betão sobre uma escavação rochosa."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le cône de Hans Hollein en cours de construction, en mars 2000."
+        },
+        {
+          "languageCode": "en",
+          "value": "Hans Hollein’s cone under construction in March 2000."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Kegel von Hans Hollein im Bau, März 2000."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kegel van Hans Hollein in aanbouw, maart 2000."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il cono di Hans Hollein in costruzione, marzo 2000."
+        },
+        {
+          "languageCode": "es",
+          "value": "El cono de Hans Hollein en construcción, marzo de 2000."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stożek Hansa Holleina w trakcie budowy, marzec 2000 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cone de Hans Hollein em construção, março de 2000."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Jules Rhin. Wikimedia Commons, CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:57:12.36Z",
+      "updatedAt": "2026-11-15T16:57:15.832Z",
+      "key": "8b9479d31a074fc98a5468865e32759e",
+      "imageId": "8b9479d31a074fc98a5468865e32759e"
     }
   ],
   "history": {

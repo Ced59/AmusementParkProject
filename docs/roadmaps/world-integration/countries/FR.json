@@ -38117,7 +38117,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T15:29:20.102Z",
+      "lastDataIntegrationAt": "2026-11-15T16:57:12.360Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38158,6 +38158,96 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-04-current-offers-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : 21 offres actuelles privées ajoutées, cinq points de restauration, quatre boutiques et douze spectacles ou animations; salles et programmes rapprochés, aucune date ou position inventée."
+        },
+        {
+          "eventId": "apply-bcc27c8d-721d-4665-830e-61f0877044c1",
+          "appliedAt": "2026-11-15T16:40:34.199Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-05-park-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : description personnelle du parc rédigée et relue en huit langues, trois sections et six paragraphes, 275–356 mots par langue. Parc toujours privé ; inventaire et notices à poursuivre."
+        },
+        {
+          "eventId": "apply-1845e50b-2c2a-4672-aa78-12daa1fa977a",
+          "appliedAt": "2026-11-15T16:46:34.783Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-06-first-item-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : Namazu, Machine Terre et Cité des enfants décrits personnellement en huit langues, vingt-quatre notices relues de 124 à 180 mots. Trois fiches privées sur quarante-quatre sont décrites ; aucune date, position ou visibilité modifiée."
+        },
+        {
+          "eventId": "import-photo-7455ffc28d574c158809574ac5c022bd",
+          "appliedAt": "2026-11-15T16:51:42.968Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-commons-03-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie historique importée privée, provenance et licence Commons vérifiées, vingt-quatre métadonnées relues en huit langues. Aucun réimport, recadrage ou instant de prise de vue inventé."
+        },
+        {
+          "eventId": "import-photo-3656194cc2cf40c8a1f02b9390da5010",
+          "appliedAt": "2026-11-15T16:52:05.512Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-commons-04-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie historique importée privée, provenance et licence Commons vérifiées, vingt-quatre métadonnées relues en huit langues. Aucun réimport, recadrage ou instant de prise de vue inventé."
+        },
+        {
+          "eventId": "import-photo-db289dbe8d05476d8918eb31ddd1f1ad",
+          "appliedAt": "2026-11-15T16:52:15.335Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-commons-05-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie historique importée privée, provenance et licence Commons vérifiées, vingt-quatre métadonnées relues en huit langues. Aucun réimport, recadrage ou instant de prise de vue inventé."
+        },
+        {
+          "eventId": "update-photo-metadata-db289dbe8d05476d8918eb31ddd1f1ad-20261115-165611",
+          "appliedAt": "2026-11-15T16:56:11.835Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-commons-05-recovery-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : métadonnées en huit langues complétées sur la photographie déjà rattachée après erreur 502. ID et date de création réconciliés par export ciblé et reçu officiel ; aucun réimport ni suppression."
+        },
+        {
+          "eventId": "import-photo-0cd6c65c08224e81be09418fc0da591d",
+          "appliedAt": "2026-11-15T16:56:53.084Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-commons-06-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie historique importée privée, provenance et licence Commons vérifiées, vingt-quatre métadonnées relues en huit langues. Aucun réimport, recadrage ou instant de prise de vue inventé."
+        },
+        {
+          "eventId": "import-photo-c196e76eafc343fabd54b180e5457dc8",
+          "appliedAt": "2026-11-15T16:57:03.161Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-commons-07-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie historique importée privée, provenance et licence Commons vérifiées, vingt-quatre métadonnées relues en huit langues. Aucun réimport, recadrage ou instant de prise de vue inventé."
+        },
+        {
+          "eventId": "import-photo-8b9479d31a074fc98a5468865e32759e",
+          "appliedAt": "2026-11-15T16:57:12.360Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-commons-08-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie historique importée privée, provenance et licence Commons vérifiées, vingt-quatre métadonnées relues en huit langues. Aucun réimport, recadrage ou instant de prise de vue inventé."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38210,7 +38300,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-0f39c1be-ad52-4349-b4d3-c8b2d3064da4 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-8b9479d31a074fc98a5468865e32759e ; conserver les références de découverte."
       }
     },
     {

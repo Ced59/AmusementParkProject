@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+          "key": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+          "name": "Namazu",
+          "type": "RollerCoaster",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La base scientifique sur la faille</h2><p>Namazu accueille ses visiteurs dans un laboratoire de sismologie dont l’implantation semble bien imprudente : les chercheurs surveillent une faille particulièrement instable. Le décor donne corps à cette situation. Des lézardes parcourent les constructions, les chemins paraissent déchirés et le sol semble s’être soulevé par endroits. Avant même l’expédition, les traces du tremblement de terre installent une tension entre la curiosité scientifique et le danger du terrain.</p><p>La responsable de l’équipe présente la mission depuis cette base avancée. L’histoire entraîne ensuite les visiteurs vers les chercheurs partis sur le terrain, avec une aventure de montagnes russes qui prolonge l’agitation suggérée par les décors. La station et le paysage accidenté appartiennent au même récit d’exploration d’une zone sismique.</p><h2>Un poisson-chat dans l’imaginaire japonais</h2><p>Le nom Namazu renvoie au poisson-chat géant auquel une tradition japonaise attribue les tremblements de terre. Immobilisée par une divinité, la créature chercherait à se libérer lorsque sa surveillance se relâche. Ce récit légendaire accompagne la fiction du laboratoire, où les secousses deviennent cette fois un sujet d’observation scientifique.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A research outpost on the fault</h2><p>Namazu welcomes visitors to a seismology laboratory in a decidedly precarious location: its researchers monitor a particularly unstable fault. The setting makes that situation tangible. Cracks run through the buildings, paths appear torn apart and the ground seems to have risen in places. Before the expedition begins, these traces of an earthquake establish a tension between scientific curiosity and the dangers of the terrain.</p><p>The team’s lead scientist introduces the mission from the forward base. The story then draws visitors towards the researchers working in the field, with a roller coaster adventure that carries the disturbance suggested by the scenery into the experience itself. The station and the damaged landscape belong to the same account of exploring a seismic zone.</p><h2>A catfish from Japanese folklore</h2><p>The name Namazu refers to the giant catfish blamed for earthquakes in a Japanese tradition. Held still by a deity, the creature is said to struggle free when its guardian’s attention slips. This legend accompanies the laboratory’s fictional expedition, in which tremors become a subject of scientific observation.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Forschungsstation an der Verwerfung</h2><p>Namazu empfängt die Besucher in einem seismologischen Labor an einem denkbar unsicheren Ort: Das Forschungsteam beobachtet eine besonders instabile Verwerfung. Die Gestaltung macht diese Lage anschaulich. Risse durchziehen die Gebäude, Wege wirken aufgebrochen und der Boden scheint sich stellenweise gehoben zu haben. Noch vor der Expedition erzeugen diese Erdbebenspuren eine Spannung zwischen wissenschaftlicher Neugier und den Gefahren des Geländes.</p><p>Die leitende Wissenschaftlerin stellt den Auftrag in der vorgeschobenen Basis vor. Anschließend führt die Geschichte zu den Forschern draußen im Gelände. Das Achterbahnabenteuer setzt die Unruhe fort, die sich bereits in den Kulissen ankündigt. Station und beschädigte Landschaft gehören zu derselben Erzählung über die Erforschung eines Erdbebengebiets.</p><h2>Ein Wels aus der japanischen Überlieferung</h2><p>Der Name Namazu verweist auf den riesigen Wels, der in einer japanischen Tradition für Erdbeben verantwortlich gemacht wird. Eine Gottheit hält ihn fest; lässt ihre Wachsamkeit nach, soll das Tier versuchen, sich zu befreien. Diese Legende begleitet die fiktive Forschungsexpedition, in der die Erschütterungen Gegenstand wissenschaftlicher Beobachtung sind.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een onderzoeksbasis op de breuklijn</h2><p>Namazu ontvangt bezoekers in een seismologisch laboratorium op een bijzonder onzekere plek: de onderzoekers volgen er een zeer onstabiele breuklijn. Het decor maakt die situatie tastbaar. Scheuren lopen door de gebouwen, paden lijken opengereten en de grond oogt plaatselijk omhooggeduwd. Nog voordat de expeditie begint, zorgen deze aardbevingssporen voor spanning tussen wetenschappelijke nieuwsgierigheid en het gevaar van het terrein.</p><p>De leidende onderzoekster licht de opdracht toe vanuit de vooruitgeschoven basis. Daarna voert het verhaal naar de onderzoekers die buiten aan het werk zijn. Het achtbaanavontuur zet de onrust voort die de omgeving al oproept. Het station en het beschadigde landschap maken deel uit van hetzelfde verhaal over onderzoek in een aardbevingsgebied.</p><h2>Een meerval uit de Japanse overlevering</h2><p>De naam Namazu verwijst naar de reusachtige meerval die in een Japanse traditie aardbevingen veroorzaakt. Een godheid houdt het dier vast; zodra diens aandacht verslapt, zou het proberen te ontsnappen. Deze legende vergezelt de fictieve onderzoeksexpeditie, waarin de schokken juist onderwerp van wetenschappelijke waarneming zijn.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La base scientifica sulla faglia</h2><p>Namazu accoglie i visitatori in un laboratorio di sismologia dalla posizione decisamente precaria: i ricercatori sorvegliano una faglia particolarmente instabile. La scenografia rende concreta questa situazione. Crepe attraversano gli edifici, i sentieri sembrano squarciati e in alcuni punti il terreno appare sollevato. Prima ancora della spedizione, le tracce del terremoto creano una tensione tra curiosità scientifica e pericolo del territorio.</p><p>La responsabile della squadra presenta la missione dalla base avanzata. Il racconto conduce poi verso i ricercatori impegnati sul campo, con un’avventura sulle montagne russe che prolunga l’agitazione suggerita dai luoghi. La stazione e il paesaggio danneggiato appartengono alla stessa storia di esplorazione di una zona sismica.</p><h2>Un pesce gatto nell’immaginario giapponese</h2><p>Il nome Namazu richiama il gigantesco pesce gatto al quale una tradizione giapponese attribuisce i terremoti. Immobilizzata da una divinità, la creatura cercherebbe di liberarsi quando la sorveglianza si allenta. Questa leggenda accompagna la spedizione immaginaria del laboratorio, dove le scosse diventano invece oggetto di osservazione scientifica.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La base científica sobre la falla</h2><p>Namazu recibe a los visitantes en un laboratorio de sismología situado en un lugar muy precario: sus investigadores vigilan una falla especialmente inestable. El decorado hace tangible esta situación. Las grietas recorren los edificios, los caminos parecen desgarrados y el suelo da la impresión de haberse levantado en algunos puntos. Antes de comenzar la expedición, las huellas del terremoto crean una tensión entre la curiosidad científica y los peligros del terreno.</p><p>La responsable del equipo presenta la misión desde la base avanzada. Después, el relato conduce hacia los investigadores que trabajan sobre el terreno, con una aventura de montaña rusa que prolonga la agitación sugerida por el entorno. La estación y el paisaje dañado forman parte de una misma historia de exploración sísmica.</p><h2>Un pez gato del imaginario japonés</h2><p>El nombre Namazu alude al gigantesco pez gato al que una tradición japonesa atribuye los terremotos. Una divinidad lo mantiene inmóvil; cuando su vigilancia se relaja, la criatura intentaría liberarse. Esta leyenda acompaña la expedición ficticia del laboratorio, donde las sacudidas se convierten en objeto de observación científica.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Baza badawcza na uskoku</h2><p>Namazu wita gości w laboratorium sejsmologicznym położonym w wyjątkowo niepewnym miejscu: badacze obserwują szczególnie niestabilny uskok. Scenografia nadaje tej sytuacji konkretny kształt. Budynki przecinają pęknięcia, ścieżki wyglądają na rozerwane, a ziemia miejscami wydaje się wypiętrzona. Jeszcze przed wyprawą ślady trzęsienia ziemi budują napięcie między naukową ciekawością a niebezpieczeństwem terenu.</p><p>Kierowniczka zespołu przedstawia zadanie w wysuniętej bazie. Opowieść prowadzi następnie ku badaczom pracującym w terenie, a przygoda na kolejce górskiej podtrzymuje niepokój zapowiadany przez otoczenie. Stacja i zniszczony krajobraz należą do tej samej historii eksploracji obszaru sejsmicznego.</p><h2>Sum z japońskich wierzeń</h2><p>Nazwa Namazu odwołuje się do olbrzymiego suma, któremu japońska tradycja przypisuje wywoływanie trzęsień ziemi. Stworzenie jest unieruchomione przez bóstwo, lecz podobno próbuje się uwolnić, gdy jego strażnik traci czujność. Legenda towarzyszy fikcyjnej wyprawie laboratorium, w której wstrząsy stają się przedmiotem naukowych obserwacji.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A base científica sobre a falha</h2><p>Namazu recebe os visitantes num laboratório de sismologia situado num local particularmente precário: os investigadores vigiam uma falha muito instável. O cenário torna essa situação palpável. Fendas atravessam os edifícios, os caminhos parecem rasgados e o solo aparenta ter-se elevado em alguns pontos. Antes da expedição, os vestígios do sismo já criam uma tensão entre a curiosidade científica e os perigos do terreno.</p><p>A responsável pela equipa apresenta a missão a partir da base avançada. A narrativa conduz depois aos investigadores que trabalham no terreno, numa aventura de montanha-russa que prolonga a agitação sugerida pelo cenário. A estação e a paisagem danificada pertencem à mesma história de exploração de uma zona sísmica.</p><h2>Um peixe-gato do imaginário japonês</h2><p>O nome Namazu remete para o enorme peixe-gato ao qual uma tradição japonesa atribui os sismos. Imobilizada por uma divindade, a criatura tentaria libertar-se quando a vigilância abranda. Esta lenda acompanha a expedição fictícia do laboratório, onde os abalos se tornam, por sua vez, objeto de observação científica.</p>"
+            }
+          ]
+        },
+        {
+          "id": "77e77316-bdd5-4584-b437-068962f32241",
+          "key": "vulcania-machine-terre",
+          "name": "Machine Terre",
+          "type": "InteractiveExperience",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une planète à explorer dans la lave</h2><p>Machine Terre occupe un espace creusé au cœur de véritables coulées de lave. Un papillon accompagne symboliquement la découverte, reliant le récit de la planète à la fragilité du vivant. Les cercles thématiques abordent aussi bien les profondeurs de la Terre que les paysages visibles à sa surface : les roches du lieu forment ainsi un cadre concret à cette exploration.</p><p>La formation du Système solaire ouvre une perspective bien plus vaste que celle des seuls volcans. Le grand globe de la vie poursuit ce récit avec l’apparition et le développement des êtres vivants. Images projetées, représentations de l’intérieur terrestre et paysages à observer font passer d’une échelle à l’autre, de la planète entière aux phénomènes qui la transforment.</p><h2>Lire les paysages, interroger les images</h2><p>Des représentations holographiques de volcans côtoient les images de Katia et Maurice Krafft. Les tables consacrées aux paysages proposent de reconnaître les indices de leur histoire, tandis que d’autres espaces abordent les séismes et les plaques tectoniques. Les interventions des animateurs complètent ces découvertes par une discussion sur la formation de la Terre et l’origine du magma.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Exploring a planet within the lava</h2><p>Machine Terre occupies a space excavated within genuine lava flows. A butterfly serves as a symbolic companion, connecting the planet’s story with the fragility of living things. The exhibition’s thematic circles consider both Earth’s depths and the landscapes visible on its surface. The rock enclosing the exhibition gives this exploration a tangible setting.</p><p>The formation of the Solar System opens a perspective far wider than volcanoes alone. The large globe of life continues the story with the emergence and development of living organisms. Projected images, depictions of Earth’s interior and landscapes to examine move between scales, from the whole planet to the phenomena that reshape it.</p><h2>Reading landscapes and questioning images</h2><p>Holographic representations of volcanoes appear alongside images by Katia and Maurice Krafft. Landscape tables invite visitors to recognise clues to the places’ history, while other areas address earthquakes and tectonic plates. Sessions with the presenters add a conversation about the formation of Earth and the origins of magma to the exhibits themselves.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Einen Planeten in der Lava erkunden</h2><p>Machine Terre befindet sich in einem Raum, der in echte Lavaströme gegraben wurde. Ein Schmetterling begleitet die Entdeckung symbolisch und verbindet die Geschichte des Planeten mit der Verletzlichkeit des Lebens. Die Themenkreise der Ausstellung behandeln sowohl das Erdinnere als auch die sichtbaren Landschaften an der Oberfläche. Das umgebende Gestein verleiht dieser Erkundung einen greifbaren Rahmen.</p><p>Die Entstehung des Sonnensystems eröffnet eine Perspektive weit über die Vulkane hinaus. Der große Globus des Lebens setzt die Geschichte mit dem Auftreten und der Entwicklung von Lebewesen fort. Projektionen, Darstellungen des Erdinneren und Landschaftsbilder wechseln zwischen unterschiedlichen Maßstäben: vom gesamten Planeten bis zu den Vorgängen, die ihn verändern.</p><h2>Landschaften lesen und Bilder hinterfragen</h2><p>Holografische Vulkandarstellungen stehen neben Aufnahmen von Katia und Maurice Krafft. An den Landschaftstischen lassen sich Hinweise auf die Geschichte der dargestellten Orte entdecken, während andere Bereiche Erdbeben und tektonische Platten behandeln. Bei den begleiteten Angeboten ergänzen Gespräche über die Entstehung der Erde und den Ursprung von Magma die ausgestellten Bilder und Modelle.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een planeet verkennen in de lava</h2><p>Machine Terre ligt in een ruimte die is uitgegraven in echte lavastromen. Een vlinder begeleidt de ontdekking symbolisch en verbindt het verhaal van de planeet met de kwetsbaarheid van het leven. De thematische kringen van de tentoonstelling behandelen zowel het binnenste van de aarde als de zichtbare landschappen aan het oppervlak. Het omringende gesteente geeft die verkenning een tastbaar kader.</p><p>Het ontstaan van het zonnestelsel opent een perspectief dat veel verder reikt dan vulkanen. De grote wereldbol van het leven vervolgt het verhaal met het ontstaan en de ontwikkeling van levende organismen. Projecties, beelden van het binnenste van de aarde en landschappen om te onderzoeken wisselen van schaal: van de hele planeet tot de verschijnselen die haar veranderen.</p><h2>Landschappen lezen en vragen stellen bij beelden</h2><p>Holografische voorstellingen van vulkanen staan naast beelden van Katia en Maurice Krafft. Bij de landschapstafels zijn aanwijzingen te ontdekken voor de geschiedenis van de afgebeelde plekken. Andere delen behandelen aardbevingen en tektonische platen. De begeleide presentaties voegen gesprekken over het ontstaan van de aarde en de oorsprong van magma toe aan de beelden en modellen.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Esplorare un pianeta nella lava</h2><p>Machine Terre occupa uno spazio scavato all’interno di vere colate laviche. Una farfalla accompagna simbolicamente la scoperta, collegando la storia del pianeta alla fragilità della vita. I percorsi tematici dell’esposizione affrontano sia le profondità della Terra sia i paesaggi visibili in superficie. La roccia circostante offre così una cornice concreta all’esplorazione.</p><p>La formazione del Sistema solare apre una prospettiva molto più ampia di quella dei soli vulcani. Il grande globo della vita prosegue il racconto con la comparsa e lo sviluppo degli esseri viventi. Immagini proiettate, rappresentazioni dell’interno terrestre e paesaggi da osservare passano da una scala all’altra, dal pianeta nel suo insieme ai fenomeni che lo trasformano.</p><h2>Leggere i paesaggi, interrogare le immagini</h2><p>Rappresentazioni olografiche dei vulcani affiancano le immagini di Katia e Maurice Krafft. I tavoli dedicati ai paesaggi invitano a riconoscere gli indizi della loro storia, mentre altri spazi affrontano terremoti e placche tettoniche. Gli incontri con gli animatori completano immagini e modelli con un dialogo sulla formazione della Terra e sull’origine del magma.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Explorar un planeta entre la lava</h2><p>Machine Terre ocupa un espacio excavado en auténticas coladas de lava. Una mariposa acompaña simbólicamente el descubrimiento y conecta la historia del planeta con la fragilidad de la vida. Los círculos temáticos de la exposición abordan tanto las profundidades terrestres como los paisajes visibles en la superficie. La roca que rodea el espacio da un marco tangible a esta exploración.</p><p>La formación del Sistema Solar abre una perspectiva mucho más amplia que la de los volcanes. El gran globo de la vida continúa el relato con la aparición y el desarrollo de los seres vivos. Imágenes proyectadas, representaciones del interior de la Tierra y paisajes para observar cambian de escala, desde el planeta entero hasta los fenómenos que lo transforman.</p><h2>Leer paisajes e interrogar imágenes</h2><p>Las representaciones holográficas de volcanes acompañan las imágenes de Katia y Maurice Krafft. Las mesas dedicadas a los paisajes invitan a reconocer indicios de su historia, mientras otros espacios tratan los terremotos y las placas tectónicas. Las sesiones con animadores añaden a imágenes y modelos una conversación sobre la formación de la Tierra y el origen del magma.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Poznać planetę we wnętrzu lawy</h2><p>Machine Terre zajmuje przestrzeń wydrążoną w autentycznych potokach lawy. Symbolicznym towarzyszem odkrywania jest motyl, łączący historię planety z kruchością życia. Kręgi tematyczne wystawy dotyczą zarówno głębi Ziemi, jak i krajobrazów widocznych na jej powierzchni. Otaczająca skała nadaje tej eksploracji namacalną oprawę.</p><p>Powstanie Układu Słonecznego otwiera perspektywę znacznie szerszą niż same wulkany. Wielki glob życia rozwija opowieść o pojawieniu się i rozwoju organizmów. Projekcje, przedstawienia wnętrza Ziemi oraz krajobrazy do obserwowania pozwalają przechodzić między skalami: od całej planety po zjawiska, które ją przeobrażają.</p><h2>Czytanie krajobrazów i pytania o obrazy</h2><p>Holograficzne przedstawienia wulkanów sąsiadują ze zdjęciami Katii i Maurice’a Krafftów. Stoły poświęcone krajobrazom zachęcają do rozpoznawania śladów historii przedstawionych miejsc. Inne przestrzenie dotyczą trzęsień ziemi i płyt tektonicznych. Spotkania z animatorami uzupełniają obrazy oraz modele rozmową o powstaniu Ziemi i pochodzeniu magmy.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Explorar um planeta entre a lava</h2><p>Machine Terre ocupa um espaço escavado no interior de verdadeiras escoadas de lava. Uma borboleta acompanha simbolicamente a descoberta, ligando a história do planeta à fragilidade da vida. Os círculos temáticos da exposição abordam tanto as profundezas da Terra como as paisagens visíveis à superfície. A rocha envolvente dá assim um enquadramento palpável à exploração.</p><p>A formação do Sistema Solar abre uma perspetiva muito mais ampla do que a dos vulcões. O grande globo da vida continua a narrativa com o aparecimento e o desenvolvimento dos seres vivos. Imagens projetadas, representações do interior terrestre e paisagens para observar mudam de escala, do planeta inteiro aos fenómenos que o transformam.</p><h2>Ler paisagens e interrogar imagens</h2><p>Representações holográficas de vulcões surgem junto das imagens de Katia e Maurice Krafft. As mesas dedicadas às paisagens convidam a reconhecer indícios da sua história, enquanto outros espaços tratam dos sismos e das placas tectónicas. As sessões com animadores acrescentam às imagens e aos modelos uma conversa sobre a formação da Terra e a origem do magma.</p>"
+            }
+          ]
+        },
+        {
+          "id": "bce899da-5c92-4077-bf35-97a6e004db61",
+          "key": "vulcania-cite-enfants",
+          "name": "Cité des enfants",
+          "type": "InteractiveExperience",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>L’eau et les mouvements comme terrain d’essai</h2><p>La Cité des enfants de Vulcania a été conçue avec la Cité des sciences et de l’industrie, à Paris. Ses espaces abordent l’eau, les mouvements, les sens et la lumière à travers des jeux à manipuler. Dans la partie consacrée à l’eau, bassins, tourbillons et colonnes à bulles donnent à voir des phénomènes familiers sous des formes inhabituelles, avec notamment des balles maintenues au-dessus de jets d’eau.</p><p>Les machines à boules, les balances et les engrenages composent un autre paysage d’expériences. Les enfants y observent des équilibres, des mouvements et les effets de leurs propres gestes. L’exposition laisse une place à l’essai et à la surprise : ses objets invitent à comparer ce que l’on imaginait avec ce qui se produit réellement.</p><h2>Des odeurs aux dessins lumineux</h2><p>Les tubes à odeurs et les tubes sonores sollicitent d’autres façons d’explorer. Dans l’espace obscur consacré à la lumière, des couleurs, des ombres et un stylo lumineux deviennent des matières à jouer et à dessiner. La lumière s’y découvre comme une trace, une couleur ou une ombre, tandis que les autres dispositifs sollicitent plus particulièrement l’ouïe ou l’odorat.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Water and movement as experiments</h2><p>Vulcania’s Cité des enfants was developed with the Cité des sciences et de l’industrie in Paris. Its spaces explore water, movement, the senses and light through hands-on play. In the water area, pools, whirlpools and bubble columns present familiar phenomena in unusual forms, including balls held above jets of water.</p><p>Ball machines, balances and gears create another landscape of experiments. Children can observe balance, movement and the effects of their own actions. Trial and surprise are part of the exhibition: its objects invite comparisons between what someone expected and what actually happens.</p><h2>From scents to drawings made of light</h2><p>Scent tubes and sound tubes offer other ways of exploring. In the darkened area devoted to light, colours, shadows and a light pen become materials for play and drawing. Light appears as a trace, a colour or a shadow, while other stations focus particularly on hearing or smell.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Mit Wasser und Bewegung experimentieren</h2><p>Vulcanias Cité des enfants entstand gemeinsam mit der Cité des sciences et de l’industrie in Paris. Ihre Bereiche widmen sich Wasser, Bewegung, den Sinnen und dem Licht, jeweils durch Spiele zum Ausprobieren. Im Wasserbereich zeigen Becken, Strudel und Blasensäulen vertraute Phänomene in ungewohnter Form. Dazu gehören Bälle, die über Wasserstrahlen schweben.</p><p>Kugelmaschinen, Waagen und Zahnräder bilden eine weitere Experimentierlandschaft. Hier können Kinder Gleichgewicht, Bewegungen und die Folgen ihres eigenen Handelns beobachten. Ausprobieren und Überraschungen gehören zur Ausstellung: Die Objekte regen dazu an, die eigenen Erwartungen mit dem tatsächlichen Geschehen zu vergleichen.</p><h2>Von Düften zu Lichtzeichnungen</h2><p>Duftrohre und Klangröhren eröffnen andere Zugänge zur Erkundung. Im abgedunkelten Lichtbereich werden Farben, Schatten und ein Lichtstift zu Materialien zum Spielen und Zeichnen. Licht lässt sich hier als Spur, als Farbe und als Schatten wahrnehmen, während die anderen Stationen gezielt das Hören oder Riechen ansprechen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Water en beweging als proefterrein</h2><p>De Cité des enfants van Vulcania is ontwikkeld met de Cité des sciences et de l’industrie in Parijs. De ruimtes behandelen water, beweging, zintuigen en licht via spelonderdelen die kinderen zelf onderzoeken. In het watergedeelte tonen bassins, draaikolken en bellenkolommen vertrouwde verschijnselen in ongewone vormen, waaronder ballen die boven waterstralen blijven hangen.</p><p>Kogelbanen, weegschalen en tandwielen vormen een ander landschap van experimenten. Kinderen bekijken er evenwicht, beweging en de gevolgen van hun eigen handelingen. Uitproberen en verrast worden horen bij de tentoonstelling: de voorwerpen nodigen uit om verwachtingen te vergelijken met wat er werkelijk gebeurt.</p><h2>Van geuren tot tekeningen van licht</h2><p>Geurbuizen en klankbuizen bieden andere manieren om te ontdekken. In de verduisterde ruimte rond licht worden kleuren, schaduwen en een lichtpen materialen om mee te spelen en te tekenen. Licht verschijnt hier als spoor, kleur of schaduw, terwijl de andere opstellingen juist het gehoor of de reuk aanspreken.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Sperimentare con l’acqua e il movimento</h2><p>La Cité des enfants di Vulcania è stata realizzata con la Cité des sciences et de l’industrie di Parigi. I suoi spazi affrontano acqua, movimento, sensi e luce attraverso giochi da esplorare direttamente. Nell’area dell’acqua, vasche, vortici e colonne di bolle mostrano fenomeni familiari in forme insolite, comprese le palline sostenute sopra i getti d’acqua.</p><p>Macchine con palline, bilance e ingranaggi compongono un altro paesaggio di esperimenti. I bambini osservano equilibri, movimenti e conseguenze dei propri gesti. Tentativi e sorprese fanno parte dell’esposizione: gli oggetti invitano a confrontare quello che si immaginava con ciò che avviene realmente.</p><h2>Dagli odori ai disegni di luce</h2><p>Tubi olfattivi e tubi sonori propongono altre modalità di esplorazione. Nello spazio oscurato dedicato alla luce, colori, ombre e una penna luminosa diventano materiali per giocare e disegnare. La luce appare come traccia, colore e ombra, mentre le altre postazioni si rivolgono in particolare all’udito o all’olfatto.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Experimentar con el agua y el movimiento</h2><p>La Cité des enfants de Vulcania fue creada con la Cité des sciences et de l’industrie de París. Sus espacios abordan el agua, el movimiento, los sentidos y la luz mediante juegos que se pueden manipular. En la zona del agua, estanques, remolinos y columnas de burbujas muestran fenómenos familiares de maneras poco habituales, como las pelotas sostenidas sobre chorros de agua.</p><p>Máquinas con bolas, balanzas y engranajes componen otro paisaje de experimentos. Los niños observan equilibrios, movimientos y consecuencias de sus propios gestos. Los intentos y las sorpresas forman parte de la exposición: los objetos invitan a comparar lo que se imaginaba con lo que realmente ocurre.</p><h2>De los olores a los dibujos de luz</h2><p>Los tubos de olores y los tubos sonoros ofrecen otras formas de explorar. En el espacio oscurecido dedicado a la luz, colores, sombras y un lápiz luminoso se convierten en materiales para jugar y dibujar. La luz aparece como trazo, color y sombra, mientras que otras estaciones se dirigen especialmente al oído o al olfato.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Eksperymenty z wodą i ruchem</h2><p>Cité des enfants w Vulcanii powstała we współpracy z paryską Cité des sciences et de l’industrie. Jej przestrzenie dotyczą wody, ruchu, zmysłów i światła, poznawanych przez samodzielną zabawę. W części wodnej zbiorniki, wiry i kolumny bąbelków pokazują znane zjawiska w nietypowych formach. Są tu również piłeczki utrzymywane nad strumieniami wody.</p><p>Urządzenia z kulkami, wagi i koła zębate tworzą kolejny krajobraz doświadczeń. Dzieci obserwują równowagę, ruch oraz skutki własnych działań. Próby i zaskoczenie są częścią wystawy: jej przedmioty zachęcają do porównywania oczekiwań z tym, co rzeczywiście się wydarza.</p><h2>Od zapachów do rysowania światłem</h2><p>Rury zapachowe i dźwiękowe proponują inne sposoby odkrywania. W zaciemnionej części poświęconej światłu kolory, cienie i świetlne pióro stają się materiałami do zabawy oraz rysowania. Światło przybiera tu postać śladu, barwy i cienia, podczas gdy pozostałe stanowiska zwracają się szczególnie ku słuchowi lub węchowi.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Experimentar com a água e o movimento</h2><p>A Cité des enfants de Vulcania foi desenvolvida com a Cité des sciences et de l’industrie de Paris. Os seus espaços abordam a água, o movimento, os sentidos e a luz através de jogos que podem ser explorados diretamente. Na zona da água, tanques, remoinhos e colunas de bolhas mostram fenómenos familiares de formas invulgares, incluindo bolas suspensas sobre jatos de água.</p><p>Máquinas com bolas, balanças e engrenagens compõem outra paisagem de experiências. As crianças observam equilíbrios, movimentos e consequências dos seus próprios gestos. Tentativas e surpresas fazem parte da exposição: os objetos convidam a comparar o que se imaginava com aquilo que realmente acontece.</p><h2>Dos cheiros aos desenhos de luz</h2><p>Tubos de cheiros e tubos sonoros propõem outras formas de explorar. No espaço escurecido dedicado à luz, cores, sombras e uma caneta luminosa tornam-se materiais para brincar e desenhar. A luz aparece como traço, cor e sombra, enquanto outras estações se dirigem sobretudo à audição ou ao olfato.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-first-item-editorial",
+        "step": "04-rich-description-localization",
+        "notes": "Three specific manually authored and personally reviewed descriptions in each of eight languages. Namazu fictional research expedition and Japanese catfish legend distinguished from factual geology. Machine Terre real lava setting, butterfly motif and science displays; Cité des enfants partnership and four experimental themes. No ages, booking conflict, ride dimensions or duration copied into prose. All24texts reviewed, no generic footer or name-swapping template. No visibility, status, restriction, date or GPS change. No import. Remaining41items still need narratives."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "63f02eb6-ddc8-4691-aba4-792e8d43c8dd",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:45:54.5941331Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "entityKey": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "displayName": "Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Forschungsstation an der Verwerfung</h2><p>Namazu empfängt die Besucher in einem seismologischen Labor an einem denkbar unsicheren Ort: Das Forschungsteam beobachtet eine besonders instabile Verwerfung. Die Gestaltung macht diese Lage anschaulich. Risse durchziehen die Gebäude, Wege wirken aufgebrochen und der Boden scheint sich stellenweise gehoben zu haben. Noch vor der Expedition erzeugen diese Erdbebenspuren eine Spannung zwischen wissenschaftlicher Neugier und den Gefahren des Geländes.</p><p>Die leitende Wissenschaftlerin stellt den Auftrag in der vorgeschobenen Basis vor. Anschließend führt die Geschichte zu den Forschern draußen im Gelände. Das Achterbahnabenteuer setzt die Unruhe fort, die sich bereits in den Kulissen ankündigt. Station und beschädigte Landschaft gehören zu derselben Erzählung über die Erforschung eines Erdbebengebiets.</p><h2>Ein Wels aus der japanischen Überlieferung</h2><p>Der Name Namazu verweist auf den riesigen Wels, der in einer japanischen Tradition für Erdbeben verantwortlich gemacht wird. Eine Gottheit hält ihn fest; lässt ihre Wachsamkeit nach, soll das Tier versuchen, sich zu befreien. Diese Legende begleitet die fiktive Forschungsexpedition, in der die Erschütterungen Gegenstand wissenschaftlicher Beobachtung sind.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A research outpost on the fault</h2><p>Namazu welcomes visitors to a seismology laboratory in a decidedly precarious location: its researchers monitor a particularly unstable fault. The setting makes that situation tangible. Cracks run through the buildings, paths appear torn apart and the ground seems to have risen in places. Before the expedition begins, these traces of an earthquake establish a tension between scientific curiosity and the dangers of the terrain.</p><p>The team’s lead scientist introduces the mission from the forward base. The story then draws visitors towards the researchers working in the field, with a roller coaster adventure that carries the disturbance suggested by the scenery into the experience itself. The station and the damaged landscape belong to the same account of exploring a seismic zone.</p><h2>A catfish from Japanese folklore</h2><p>The name Namazu refers to the giant catfish blamed for earthquakes in a Japanese tradition. Held still by a deity, the creature is said to struggle free when its guardian’s attention slips. This legend accompanies the laboratory’s fictional expedition, in which tremors become a subject of scientific observation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La base científica sobre la falla</h2><p>Namazu recibe a los visitantes en un laboratorio de sismología situado en un lugar muy precario: sus investigadores vigilan una falla especialmente inestable. El decorado hace tangible esta situación. Las grietas recorren los edificios, los caminos parecen desgarrados y el suelo da la impresión de haberse levantado en algunos puntos. Antes de comenzar la expedición, las huellas del terremoto crean una tensión entre la curiosidad científica y los peligros del terreno.</p><p>La responsable del equipo presenta la misión desde la base avanzada. Después, el relato conduce hacia los investigadores que trabajan sobre el terreno, con una aventura de montaña rusa que prolonga la agitación sugerida por el entorno. La estación y el paisaje dañado forman parte de una misma historia de exploración sísmica.</p><h2>Un pez gato del imaginario japonés</h2><p>El nombre Namazu alude al gigantesco pez gato al que una tradición japonesa atribuye los terremotos. Una divinidad lo mantiene inmóvil; cuando su vigilancia se relaja, la criatura intentaría liberarse. Esta leyenda acompaña la expedición ficticia del laboratorio, donde las sacudidas se convierten en objeto de observación científica.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La base scientifique sur la faille</h2><p>Namazu accueille ses visiteurs dans un laboratoire de sismologie dont l’implantation semble bien imprudente : les chercheurs surveillent une faille particulièrement instable. Le décor donne corps à cette situation. Des lézardes parcourent les constructions, les chemins paraissent déchirés et le sol semble s’être soulevé par endroits. Avant même l’expédition, les traces du tremblement de terre installent une tension entre la curiosité scientifique et le danger du terrain.</p><p>La responsable de l’équipe présente la mission depuis cette base avancée. L’histoire entraîne ensuite les visiteurs vers les chercheurs partis sur le terrain, avec une aventure de montagnes russes qui prolonge l’agitation suggérée par les décors. La station et le paysage accidenté appartiennent au même récit d’exploration d’une zone sismique.</p><h2>Un poisson-chat dans l’imaginaire japonais</h2><p>Le nom Namazu renvoie au poisson-chat géant auquel une tradition japonaise attribue les tremblements de terre. Immobilisée par une divinité, la créature chercherait à se libérer lorsque sa surveillance se relâche. Ce récit légendaire accompagne la fiction du laboratoire, où les secousses deviennent cette fois un sujet d’observation scientifique.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La base scientifica sulla faglia</h2><p>Namazu accoglie i visitatori in un laboratorio di sismologia dalla posizione decisamente precaria: i ricercatori sorvegliano una faglia particolarmente instabile. La scenografia rende concreta questa situazione. Crepe attraversano gli edifici, i sentieri sembrano squarciati e in alcuni punti il terreno appare sollevato. Prima ancora della spedizione, le tracce del terremoto creano una tensione tra curiosità scientifica e pericolo del territorio.</p><p>La responsabile della squadra presenta la missione dalla base avanzata. Il racconto conduce poi verso i ricercatori impegnati sul campo, con un’avventura sulle montagne russe che prolunga l’agitazione suggerita dai luoghi. La stazione e il paesaggio danneggiato appartengono alla stessa storia di esplorazione di una zona sismica.</p><h2>Un pesce gatto nell’immaginario giapponese</h2><p>Il nome Namazu richiama il gigantesco pesce gatto al quale una tradizione giapponese attribuisce i terremoti. Immobilizzata da una divinità, la creatura cercherebbe di liberarsi quando la sorveglianza si allenta. Questa leggenda accompagna la spedizione immaginaria del laboratorio, dove le scosse diventano invece oggetto di osservazione scientifica.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een onderzoeksbasis op de breuklijn</h2><p>Namazu ontvangt bezoekers in een seismologisch laboratorium op een bijzonder onzekere plek: de onderzoekers volgen er een zeer onstabiele breuklijn. Het decor maakt die situatie tastbaar. Scheuren lopen door de gebouwen, paden lijken opengereten en de grond oogt plaatselijk omhooggeduwd. Nog voordat de expeditie begint, zorgen deze aardbevingssporen voor spanning tussen wetenschappelijke nieuwsgierigheid en het gevaar van het terrein.</p><p>De leidende onderzoekster licht de opdracht toe vanuit de vooruitgeschoven basis. Daarna voert het verhaal naar de onderzoekers die buiten aan het werk zijn. Het achtbaanavontuur zet de onrust voort die de omgeving al oproept. Het station en het beschadigde landschap maken deel uit van hetzelfde verhaal over onderzoek in een aardbevingsgebied.</p><h2>Een meerval uit de Japanse overlevering</h2><p>De naam Namazu verwijst naar de reusachtige meerval die in een Japanse traditie aardbevingen veroorzaakt. Een godheid houdt het dier vast; zodra diens aandacht verslapt, zou het proberen te ontsnappen. Deze legende vergezelt de fictieve onderzoeksexpeditie, waarin de schokken juist onderwerp van wetenschappelijke waarneming zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Baza badawcza na uskoku</h2><p>Namazu wita gości w laboratorium sejsmologicznym położonym w wyjątkowo niepewnym miejscu: badacze obserwują szczególnie niestabilny uskok. Scenografia nadaje tej sytuacji konkretny kształt. Budynki przecinają pęknięcia, ścieżki wyglądają na rozerwane, a ziemia miejscami wydaje się wypiętrzona. Jeszcze przed wyprawą ślady trzęsienia ziemi budują napięcie między naukową ciekawością a niebezpieczeństwem terenu.</p><p>Kierowniczka zespołu przedstawia zadanie w wysuniętej bazie. Opowieść prowadzi następnie ku badaczom pracującym w terenie, a przygoda na kolejce górskiej podtrzymuje niepokój zapowiadany przez otoczenie. Stacja i zniszczony krajobraz należą do tej samej historii eksploracji obszaru sejsmicznego.</p><h2>Sum z japońskich wierzeń</h2><p>Nazwa Namazu odwołuje się do olbrzymiego suma, któremu japońska tradycja przypisuje wywoływanie trzęsień ziemi. Stworzenie jest unieruchomione przez bóstwo, lecz podobno próbuje się uwolnić, gdy jego strażnik traci czujność. Legenda towarzyszy fikcyjnej wyprawie laboratorium, w której wstrząsy stają się przedmiotem naukowych obserwacji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A base científica sobre a falha</h2><p>Namazu recebe os visitantes num laboratório de sismologia situado num local particularmente precário: os investigadores vigiam uma falha muito instável. O cenário torna essa situação palpável. Fendas atravessam os edifícios, os caminhos parecem rasgados e o solo aparenta ter-se elevado em alguns pontos. Antes da expedição, os vestígios do sismo já criam uma tensão entre a curiosidade científica e os perigos do terreno.</p><p>A responsável pela equipa apresenta a missão a partir da base avançada. A narrativa conduz depois aos investigadores que trabalham no terreno, numa aventura de montanha-russa que prolonga a agitação sugerida pelo cenário. A estação e a paisagem danificada pertencem à mesma história de exploração de uma zona sísmica.</p><h2>Um peixe-gato do imaginário japonês</h2><p>O nome Namazu remete para o enorme peixe-gato ao qual uma tradição japonesa atribui os sismos. Imobilizada por uma divindade, a criatura tentaria libertar-se quando a vigilância abranda. Esta lenda acompanha a expedição fictícia do laboratório, onde os abalos se tornam, por sua vez, objeto de observação científica.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77e77316-bdd5-4584-b437-068962f32241",
+        "entityKey": "vulcania-machine-terre",
+        "displayName": "Machine Terre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Einen Planeten in der Lava erkunden</h2><p>Machine Terre befindet sich in einem Raum, der in echte Lavaströme gegraben wurde. Ein Schmetterling begleitet die Entdeckung symbolisch und verbindet die Geschichte des Planeten mit der Verletzlichkeit des Lebens. Die Themenkreise der Ausstellung behandeln sowohl das Erdinnere als auch die sichtbaren Landschaften an der Oberfläche. Das umgebende Gestein verleiht dieser Erkundung einen greifbaren Rahmen.</p><p>Die Entstehung des Sonnensystems eröffnet eine Perspektive weit über die Vulkane hinaus. Der große Globus des Lebens setzt die Geschichte mit dem Auftreten und der Entwicklung von Lebewesen fort. Projektionen, Darstellungen des Erdinneren und Landschaftsbilder wechseln zwischen unterschiedlichen Maßstäben: vom gesamten Planeten bis zu den Vorgängen, die ihn verändern.</p><h2>Landschaften lesen und Bilder hinterfragen</h2><p>Holografische Vulkandarstellungen stehen neben Aufnahmen von Katia und Maurice Krafft. An den Landschaftstischen lassen sich Hinweise auf die Geschichte der dargestellten Orte entdecken, während andere Bereiche Erdbeben und tektonische Platten behandeln. Bei den begleiteten Angeboten ergänzen Gespräche über die Entstehung der Erde und den Ursprung von Magma die ausgestellten Bilder und Modelle.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Exploring a planet within the lava</h2><p>Machine Terre occupies a space excavated within genuine lava flows. A butterfly serves as a symbolic companion, connecting the planet’s story with the fragility of living things. The exhibition’s thematic circles consider both Earth’s depths and the landscapes visible on its surface. The rock enclosing the exhibition gives this exploration a tangible setting.</p><p>The formation of the Solar System opens a perspective far wider than volcanoes alone. The large globe of life continues the story with the emergence and development of living organisms. Projected images, depictions of Earth’s interior and landscapes to examine move between scales, from the whole planet to the phenomena that reshape it.</p><h2>Reading landscapes and questioning images</h2><p>Holographic representations of volcanoes appear alongside images by Katia and Maurice Krafft. Landscape tables invite visitors to recognise clues to the places’ history, while other areas address earthquakes and tectonic plates. Sessions with the presenters add a conversation about the formation of Earth and the origins of magma to the exhibits themselves.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Explorar un planeta entre la lava</h2><p>Machine Terre ocupa un espacio excavado en auténticas coladas de lava. Una mariposa acompaña simbólicamente el descubrimiento y conecta la historia del planeta con la fragilidad de la vida. Los círculos temáticos de la exposición abordan tanto las profundidades terrestres como los paisajes visibles en la superficie. La roca que rodea el espacio da un marco tangible a esta exploración.</p><p>La formación del Sistema Solar abre una perspectiva mucho más amplia que la de los volcanes. El gran globo de la vida continúa el relato con la aparición y el desarrollo de los seres vivos. Imágenes proyectadas, representaciones del interior de la Tierra y paisajes para observar cambian de escala, desde el planeta entero hasta los fenómenos que lo transforman.</p><h2>Leer paisajes e interrogar imágenes</h2><p>Las representaciones holográficas de volcanes acompañan las imágenes de Katia y Maurice Krafft. Las mesas dedicadas a los paisajes invitan a reconocer indicios de su historia, mientras otros espacios tratan los terremotos y las placas tectónicas. Las sesiones con animadores añaden a imágenes y modelos una conversación sobre la formación de la Tierra y el origen del magma.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une planète à explorer dans la lave</h2><p>Machine Terre occupe un espace creusé au cœur de véritables coulées de lave. Un papillon accompagne symboliquement la découverte, reliant le récit de la planète à la fragilité du vivant. Les cercles thématiques abordent aussi bien les profondeurs de la Terre que les paysages visibles à sa surface : les roches du lieu forment ainsi un cadre concret à cette exploration.</p><p>La formation du Système solaire ouvre une perspective bien plus vaste que celle des seuls volcans. Le grand globe de la vie poursuit ce récit avec l’apparition et le développement des êtres vivants. Images projetées, représentations de l’intérieur terrestre et paysages à observer font passer d’une échelle à l’autre, de la planète entière aux phénomènes qui la transforment.</p><h2>Lire les paysages, interroger les images</h2><p>Des représentations holographiques de volcans côtoient les images de Katia et Maurice Krafft. Les tables consacrées aux paysages proposent de reconnaître les indices de leur histoire, tandis que d’autres espaces abordent les séismes et les plaques tectoniques. Les interventions des animateurs complètent ces découvertes par une discussion sur la formation de la Terre et l’origine du magma.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Esplorare un pianeta nella lava</h2><p>Machine Terre occupa uno spazio scavato all’interno di vere colate laviche. Una farfalla accompagna simbolicamente la scoperta, collegando la storia del pianeta alla fragilità della vita. I percorsi tematici dell’esposizione affrontano sia le profondità della Terra sia i paesaggi visibili in superficie. La roccia circostante offre così una cornice concreta all’esplorazione.</p><p>La formazione del Sistema solare apre una prospettiva molto più ampia di quella dei soli vulcani. Il grande globo della vita prosegue il racconto con la comparsa e lo sviluppo degli esseri viventi. Immagini proiettate, rappresentazioni dell’interno terrestre e paesaggi da osservare passano da una scala all’altra, dal pianeta nel suo insieme ai fenomeni che lo trasformano.</p><h2>Leggere i paesaggi, interrogare le immagini</h2><p>Rappresentazioni olografiche dei vulcani affiancano le immagini di Katia e Maurice Krafft. I tavoli dedicati ai paesaggi invitano a riconoscere gli indizi della loro storia, mentre altri spazi affrontano terremoti e placche tettoniche. Gli incontri con gli animatori completano immagini e modelli con un dialogo sulla formazione della Terra e sull’origine del magma.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een planeet verkennen in de lava</h2><p>Machine Terre ligt in een ruimte die is uitgegraven in echte lavastromen. Een vlinder begeleidt de ontdekking symbolisch en verbindt het verhaal van de planeet met de kwetsbaarheid van het leven. De thematische kringen van de tentoonstelling behandelen zowel het binnenste van de aarde als de zichtbare landschappen aan het oppervlak. Het omringende gesteente geeft die verkenning een tastbaar kader.</p><p>Het ontstaan van het zonnestelsel opent een perspectief dat veel verder reikt dan vulkanen. De grote wereldbol van het leven vervolgt het verhaal met het ontstaan en de ontwikkeling van levende organismen. Projecties, beelden van het binnenste van de aarde en landschappen om te onderzoeken wisselen van schaal: van de hele planeet tot de verschijnselen die haar veranderen.</p><h2>Landschappen lezen en vragen stellen bij beelden</h2><p>Holografische voorstellingen van vulkanen staan naast beelden van Katia en Maurice Krafft. Bij de landschapstafels zijn aanwijzingen te ontdekken voor de geschiedenis van de afgebeelde plekken. Andere delen behandelen aardbevingen en tektonische platen. De begeleide presentaties voegen gesprekken over het ontstaan van de aarde en de oorsprong van magma toe aan de beelden en modellen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Poznać planetę we wnętrzu lawy</h2><p>Machine Terre zajmuje przestrzeń wydrążoną w autentycznych potokach lawy. Symbolicznym towarzyszem odkrywania jest motyl, łączący historię planety z kruchością życia. Kręgi tematyczne wystawy dotyczą zarówno głębi Ziemi, jak i krajobrazów widocznych na jej powierzchni. Otaczająca skała nadaje tej eksploracji namacalną oprawę.</p><p>Powstanie Układu Słonecznego otwiera perspektywę znacznie szerszą niż same wulkany. Wielki glob życia rozwija opowieść o pojawieniu się i rozwoju organizmów. Projekcje, przedstawienia wnętrza Ziemi oraz krajobrazy do obserwowania pozwalają przechodzić między skalami: od całej planety po zjawiska, które ją przeobrażają.</p><h2>Czytanie krajobrazów i pytania o obrazy</h2><p>Holograficzne przedstawienia wulkanów sąsiadują ze zdjęciami Katii i Maurice’a Krafftów. Stoły poświęcone krajobrazom zachęcają do rozpoznawania śladów historii przedstawionych miejsc. Inne przestrzenie dotyczą trzęsień ziemi i płyt tektonicznych. Spotkania z animatorami uzupełniają obrazy oraz modele rozmową o powstaniu Ziemi i pochodzeniu magmy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Explorar um planeta entre a lava</h2><p>Machine Terre ocupa um espaço escavado no interior de verdadeiras escoadas de lava. Uma borboleta acompanha simbolicamente a descoberta, ligando a história do planeta à fragilidade da vida. Os círculos temáticos da exposição abordam tanto as profundezas da Terra como as paisagens visíveis à superfície. A rocha envolvente dá assim um enquadramento palpável à exploração.</p><p>A formação do Sistema Solar abre uma perspetiva muito mais ampla do que a dos vulcões. O grande globo da vida continua a narrativa com o aparecimento e o desenvolvimento dos seres vivos. Imagens projetadas, representações do interior terrestre e paisagens para observar mudam de escala, do planeta inteiro aos fenómenos que o transformam.</p><h2>Ler paisagens e interrogar imagens</h2><p>Representações holográficas de vulcões surgem junto das imagens de Katia e Maurice Krafft. As mesas dedicadas às paisagens convidam a reconhecer indícios da sua história, enquanto outros espaços tratam dos sismos e das placas tectónicas. As sessões com animadores acrescentam às imagens e aos modelos uma conversa sobre a formação da Terra e a origem do magma.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bce899da-5c92-4077-bf35-97a6e004db61",
+        "entityKey": "vulcania-cite-enfants",
+        "displayName": "Cité des enfants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Mit Wasser und Bewegung experimentieren</h2><p>Vulcanias Cité des enfants entstand gemeinsam mit der Cité des sciences et de l’industrie in Paris. Ihre Bereiche widmen sich Wasser, Bewegung, den Sinnen und dem Licht, jeweils durch Spiele zum Ausprobieren. Im Wasserbereich zeigen Becken, Strudel und Blasensäulen vertraute Phänomene in ungewohnter Form. Dazu gehören Bälle, die über Wasserstrahlen schweben.</p><p>Kugelmaschinen, Waagen und Zahnräder bilden eine weitere Experimentierlandschaft. Hier können Kinder Gleichgewicht, Bewegungen und die Folgen ihres eigenen Handelns beobachten. Ausprobieren und Überraschungen gehören zur Ausstellung: Die Objekte regen dazu an, die eigenen Erwartungen mit dem tatsächlichen Geschehen zu vergleichen.</p><h2>Von Düften zu Lichtzeichnungen</h2><p>Duftrohre und Klangröhren eröffnen andere Zugänge zur Erkundung. Im abgedunkelten Lichtbereich werden Farben, Schatten und ein Lichtstift zu Materialien zum Spielen und Zeichnen. Licht lässt sich hier als Spur, als Farbe und als Schatten wahrnehmen, während die anderen Stationen gezielt das Hören oder Riechen ansprechen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Water and movement as experiments</h2><p>Vulcania’s Cité des enfants was developed with the Cité des sciences et de l’industrie in Paris. Its spaces explore water, movement, the senses and light through hands-on play. In the water area, pools, whirlpools and bubble columns present familiar phenomena in unusual forms, including balls held above jets of water.</p><p>Ball machines, balances and gears create another landscape of experiments. Children can observe balance, movement and the effects of their own actions. Trial and surprise are part of the exhibition: its objects invite comparisons between what someone expected and what actually happens.</p><h2>From scents to drawings made of light</h2><p>Scent tubes and sound tubes offer other ways of exploring. In the darkened area devoted to light, colours, shadows and a light pen become materials for play and drawing. Light appears as a trace, a colour or a shadow, while other stations focus particularly on hearing or smell.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Experimentar con el agua y el movimiento</h2><p>La Cité des enfants de Vulcania fue creada con la Cité des sciences et de l’industrie de París. Sus espacios abordan el agua, el movimiento, los sentidos y la luz mediante juegos que se pueden manipular. En la zona del agua, estanques, remolinos y columnas de burbujas muestran fenómenos familiares de maneras poco habituales, como las pelotas sostenidas sobre chorros de agua.</p><p>Máquinas con bolas, balanzas y engranajes componen otro paisaje de experimentos. Los niños observan equilibrios, movimientos y consecuencias de sus propios gestos. Los intentos y las sorpresas forman parte de la exposición: los objetos invitan a comparar lo que se imaginaba con lo que realmente ocurre.</p><h2>De los olores a los dibujos de luz</h2><p>Los tubos de olores y los tubos sonoros ofrecen otras formas de explorar. En el espacio oscurecido dedicado a la luz, colores, sombras y un lápiz luminoso se convierten en materiales para jugar y dibujar. La luz aparece como trazo, color y sombra, mientras que otras estaciones se dirigen especialmente al oído o al olfato.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’eau et les mouvements comme terrain d’essai</h2><p>La Cité des enfants de Vulcania a été conçue avec la Cité des sciences et de l’industrie, à Paris. Ses espaces abordent l’eau, les mouvements, les sens et la lumière à travers des jeux à manipuler. Dans la partie consacrée à l’eau, bassins, tourbillons et colonnes à bulles donnent à voir des phénomènes familiers sous des formes inhabituelles, avec notamment des balles maintenues au-dessus de jets d’eau.</p><p>Les machines à boules, les balances et les engrenages composent un autre paysage d’expériences. Les enfants y observent des équilibres, des mouvements et les effets de leurs propres gestes. L’exposition laisse une place à l’essai et à la surprise : ses objets invitent à comparer ce que l’on imaginait avec ce qui se produit réellement.</p><h2>Des odeurs aux dessins lumineux</h2><p>Les tubes à odeurs et les tubes sonores sollicitent d’autres façons d’explorer. Dans l’espace obscur consacré à la lumière, des couleurs, des ombres et un stylo lumineux deviennent des matières à jouer et à dessiner. La lumière s’y découvre comme une trace, une couleur ou une ombre, tandis que les autres dispositifs sollicitent plus particulièrement l’ouïe ou l’odorat.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sperimentare con l’acqua e il movimento</h2><p>La Cité des enfants di Vulcania è stata realizzata con la Cité des sciences et de l’industrie di Parigi. I suoi spazi affrontano acqua, movimento, sensi e luce attraverso giochi da esplorare direttamente. Nell’area dell’acqua, vasche, vortici e colonne di bolle mostrano fenomeni familiari in forme insolite, comprese le palline sostenute sopra i getti d’acqua.</p><p>Macchine con palline, bilance e ingranaggi compongono un altro paesaggio di esperimenti. I bambini osservano equilibri, movimenti e conseguenze dei propri gesti. Tentativi e sorprese fanno parte dell’esposizione: gli oggetti invitano a confrontare quello che si immaginava con ciò che avviene realmente.</p><h2>Dagli odori ai disegni di luce</h2><p>Tubi olfattivi e tubi sonori propongono altre modalità di esplorazione. Nello spazio oscurato dedicato alla luce, colori, ombre e una penna luminosa diventano materiali per giocare e disegnare. La luce appare come traccia, colore e ombra, mentre le altre postazioni si rivolgono in particolare all’udito o all’olfatto.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Water en beweging als proefterrein</h2><p>De Cité des enfants van Vulcania is ontwikkeld met de Cité des sciences et de l’industrie in Parijs. De ruimtes behandelen water, beweging, zintuigen en licht via spelonderdelen die kinderen zelf onderzoeken. In het watergedeelte tonen bassins, draaikolken en bellenkolommen vertrouwde verschijnselen in ongewone vormen, waaronder ballen die boven waterstralen blijven hangen.</p><p>Kogelbanen, weegschalen en tandwielen vormen een ander landschap van experimenten. Kinderen bekijken er evenwicht, beweging en de gevolgen van hun eigen handelingen. Uitproberen en verrast worden horen bij de tentoonstelling: de voorwerpen nodigen uit om verwachtingen te vergelijken met wat er werkelijk gebeurt.</p><h2>Van geuren tot tekeningen van licht</h2><p>Geurbuizen en klankbuizen bieden andere manieren om te ontdekken. In de verduisterde ruimte rond licht worden kleuren, schaduwen en een lichtpen materialen om mee te spelen en te tekenen. Licht verschijnt hier als spoor, kleur of schaduw, terwijl de andere opstellingen juist het gehoor of de reuk aanspreken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Eksperymenty z wodą i ruchem</h2><p>Cité des enfants w Vulcanii powstała we współpracy z paryską Cité des sciences et de l’industrie. Jej przestrzenie dotyczą wody, ruchu, zmysłów i światła, poznawanych przez samodzielną zabawę. W części wodnej zbiorniki, wiry i kolumny bąbelków pokazują znane zjawiska w nietypowych formach. Są tu również piłeczki utrzymywane nad strumieniami wody.</p><p>Urządzenia z kulkami, wagi i koła zębate tworzą kolejny krajobraz doświadczeń. Dzieci obserwują równowagę, ruch oraz skutki własnych działań. Próby i zaskoczenie są częścią wystawy: jej przedmioty zachęcają do porównywania oczekiwań z tym, co rzeczywiście się wydarza.</p><h2>Od zapachów do rysowania światłem</h2><p>Rury zapachowe i dźwiękowe proponują inne sposoby odkrywania. W zaciemnionej części poświęconej światłu kolory, cienie i świetlne pióro stają się materiałami do zabawy oraz rysowania. Światło przybiera tu postać śladu, barwy i cienia, podczas gdy pozostałe stanowiska zwracają się szczególnie ku słuchowi lub węchowi.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Experimentar com a água e o movimento</h2><p>A Cité des enfants de Vulcania foi desenvolvida com a Cité des sciences et de l’industrie de Paris. Os seus espaços abordam a água, o movimento, os sentidos e a luz através de jogos que podem ser explorados diretamente. Na zona da água, tanques, remoinhos e colunas de bolhas mostram fenómenos familiares de formas invulgares, incluindo bolas suspensas sobre jatos de água.</p><p>Máquinas com bolas, balanças e engrenagens compõem outra paisagem de experiências. As crianças observam equilíbrios, movimentos e consequências dos seus próprios gestos. Tentativas e surpresas fazem parte da exposição: os objetos convidam a comparar o que se imaginava com aquilo que realmente acontece.</p><h2>Dos cheiros aos desenhos de luz</h2><p>Tubos de cheiros e tubos sonoros propõem outras formas de explorar. No espaço escurecido dedicado à luz, cores, sombras e uma caneta luminosa tornam-se materiais para brincar e desenhar. A luz aparece como traço, cor e sombra, enquanto outras estações se dirigem sobretudo à audição ou ao olfato.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "1845e50b-2c2a-4672-aa78-12daa1fa977a",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:46:34.7831449Z",
+    "appliedAtUtc": "2026-11-15T16:46:34.7831455Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "entityKey": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "displayName": "Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Forschungsstation an der Verwerfung</h2><p>Namazu empfängt die Besucher in einem seismologischen Labor an einem denkbar unsicheren Ort: Das Forschungsteam beobachtet eine besonders instabile Verwerfung. Die Gestaltung macht diese Lage anschaulich. Risse durchziehen die Gebäude, Wege wirken aufgebrochen und der Boden scheint sich stellenweise gehoben zu haben. Noch vor der Expedition erzeugen diese Erdbebenspuren eine Spannung zwischen wissenschaftlicher Neugier und den Gefahren des Geländes.</p><p>Die leitende Wissenschaftlerin stellt den Auftrag in der vorgeschobenen Basis vor. Anschließend führt die Geschichte zu den Forschern draußen im Gelände. Das Achterbahnabenteuer setzt die Unruhe fort, die sich bereits in den Kulissen ankündigt. Station und beschädigte Landschaft gehören zu derselben Erzählung über die Erforschung eines Erdbebengebiets.</p><h2>Ein Wels aus der japanischen Überlieferung</h2><p>Der Name Namazu verweist auf den riesigen Wels, der in einer japanischen Tradition für Erdbeben verantwortlich gemacht wird. Eine Gottheit hält ihn fest; lässt ihre Wachsamkeit nach, soll das Tier versuchen, sich zu befreien. Diese Legende begleitet die fiktive Forschungsexpedition, in der die Erschütterungen Gegenstand wissenschaftlicher Beobachtung sind.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A research outpost on the fault</h2><p>Namazu welcomes visitors to a seismology laboratory in a decidedly precarious location: its researchers monitor a particularly unstable fault. The setting makes that situation tangible. Cracks run through the buildings, paths appear torn apart and the ground seems to have risen in places. Before the expedition begins, these traces of an earthquake establish a tension between scientific curiosity and the dangers of the terrain.</p><p>The team’s lead scientist introduces the mission from the forward base. The story then draws visitors towards the researchers working in the field, with a roller coaster adventure that carries the disturbance suggested by the scenery into the experience itself. The station and the damaged landscape belong to the same account of exploring a seismic zone.</p><h2>A catfish from Japanese folklore</h2><p>The name Namazu refers to the giant catfish blamed for earthquakes in a Japanese tradition. Held still by a deity, the creature is said to struggle free when its guardian’s attention slips. This legend accompanies the laboratory’s fictional expedition, in which tremors become a subject of scientific observation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La base científica sobre la falla</h2><p>Namazu recibe a los visitantes en un laboratorio de sismología situado en un lugar muy precario: sus investigadores vigilan una falla especialmente inestable. El decorado hace tangible esta situación. Las grietas recorren los edificios, los caminos parecen desgarrados y el suelo da la impresión de haberse levantado en algunos puntos. Antes de comenzar la expedición, las huellas del terremoto crean una tensión entre la curiosidad científica y los peligros del terreno.</p><p>La responsable del equipo presenta la misión desde la base avanzada. Después, el relato conduce hacia los investigadores que trabajan sobre el terreno, con una aventura de montaña rusa que prolonga la agitación sugerida por el entorno. La estación y el paisaje dañado forman parte de una misma historia de exploración sísmica.</p><h2>Un pez gato del imaginario japonés</h2><p>El nombre Namazu alude al gigantesco pez gato al que una tradición japonesa atribuye los terremotos. Una divinidad lo mantiene inmóvil; cuando su vigilancia se relaja, la criatura intentaría liberarse. Esta leyenda acompaña la expedición ficticia del laboratorio, donde las sacudidas se convierten en objeto de observación científica.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La base scientifique sur la faille</h2><p>Namazu accueille ses visiteurs dans un laboratoire de sismologie dont l’implantation semble bien imprudente : les chercheurs surveillent une faille particulièrement instable. Le décor donne corps à cette situation. Des lézardes parcourent les constructions, les chemins paraissent déchirés et le sol semble s’être soulevé par endroits. Avant même l’expédition, les traces du tremblement de terre installent une tension entre la curiosité scientifique et le danger du terrain.</p><p>La responsable de l’équipe présente la mission depuis cette base avancée. L’histoire entraîne ensuite les visiteurs vers les chercheurs partis sur le terrain, avec une aventure de montagnes russes qui prolonge l’agitation suggérée par les décors. La station et le paysage accidenté appartiennent au même récit d’exploration d’une zone sismique.</p><h2>Un poisson-chat dans l’imaginaire japonais</h2><p>Le nom Namazu renvoie au poisson-chat géant auquel une tradition japonaise attribue les tremblements de terre. Immobilisée par une divinité, la créature chercherait à se libérer lorsque sa surveillance se relâche. Ce récit légendaire accompagne la fiction du laboratoire, où les secousses deviennent cette fois un sujet d’observation scientifique.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La base scientifica sulla faglia</h2><p>Namazu accoglie i visitatori in un laboratorio di sismologia dalla posizione decisamente precaria: i ricercatori sorvegliano una faglia particolarmente instabile. La scenografia rende concreta questa situazione. Crepe attraversano gli edifici, i sentieri sembrano squarciati e in alcuni punti il terreno appare sollevato. Prima ancora della spedizione, le tracce del terremoto creano una tensione tra curiosità scientifica e pericolo del territorio.</p><p>La responsabile della squadra presenta la missione dalla base avanzata. Il racconto conduce poi verso i ricercatori impegnati sul campo, con un’avventura sulle montagne russe che prolunga l’agitazione suggerita dai luoghi. La stazione e il paesaggio danneggiato appartengono alla stessa storia di esplorazione di una zona sismica.</p><h2>Un pesce gatto nell’immaginario giapponese</h2><p>Il nome Namazu richiama il gigantesco pesce gatto al quale una tradizione giapponese attribuisce i terremoti. Immobilizzata da una divinità, la creatura cercherebbe di liberarsi quando la sorveglianza si allenta. Questa leggenda accompagna la spedizione immaginaria del laboratorio, dove le scosse diventano invece oggetto di osservazione scientifica.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een onderzoeksbasis op de breuklijn</h2><p>Namazu ontvangt bezoekers in een seismologisch laboratorium op een bijzonder onzekere plek: de onderzoekers volgen er een zeer onstabiele breuklijn. Het decor maakt die situatie tastbaar. Scheuren lopen door de gebouwen, paden lijken opengereten en de grond oogt plaatselijk omhooggeduwd. Nog voordat de expeditie begint, zorgen deze aardbevingssporen voor spanning tussen wetenschappelijke nieuwsgierigheid en het gevaar van het terrein.</p><p>De leidende onderzoekster licht de opdracht toe vanuit de vooruitgeschoven basis. Daarna voert het verhaal naar de onderzoekers die buiten aan het werk zijn. Het achtbaanavontuur zet de onrust voort die de omgeving al oproept. Het station en het beschadigde landschap maken deel uit van hetzelfde verhaal over onderzoek in een aardbevingsgebied.</p><h2>Een meerval uit de Japanse overlevering</h2><p>De naam Namazu verwijst naar de reusachtige meerval die in een Japanse traditie aardbevingen veroorzaakt. Een godheid houdt het dier vast; zodra diens aandacht verslapt, zou het proberen te ontsnappen. Deze legende vergezelt de fictieve onderzoeksexpeditie, waarin de schokken juist onderwerp van wetenschappelijke waarneming zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Baza badawcza na uskoku</h2><p>Namazu wita gości w laboratorium sejsmologicznym położonym w wyjątkowo niepewnym miejscu: badacze obserwują szczególnie niestabilny uskok. Scenografia nadaje tej sytuacji konkretny kształt. Budynki przecinają pęknięcia, ścieżki wyglądają na rozerwane, a ziemia miejscami wydaje się wypiętrzona. Jeszcze przed wyprawą ślady trzęsienia ziemi budują napięcie między naukową ciekawością a niebezpieczeństwem terenu.</p><p>Kierowniczka zespołu przedstawia zadanie w wysuniętej bazie. Opowieść prowadzi następnie ku badaczom pracującym w terenie, a przygoda na kolejce górskiej podtrzymuje niepokój zapowiadany przez otoczenie. Stacja i zniszczony krajobraz należą do tej samej historii eksploracji obszaru sejsmicznego.</p><h2>Sum z japońskich wierzeń</h2><p>Nazwa Namazu odwołuje się do olbrzymiego suma, któremu japońska tradycja przypisuje wywoływanie trzęsień ziemi. Stworzenie jest unieruchomione przez bóstwo, lecz podobno próbuje się uwolnić, gdy jego strażnik traci czujność. Legenda towarzyszy fikcyjnej wyprawie laboratorium, w której wstrząsy stają się przedmiotem naukowych obserwacji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A base científica sobre a falha</h2><p>Namazu recebe os visitantes num laboratório de sismologia situado num local particularmente precário: os investigadores vigiam uma falha muito instável. O cenário torna essa situação palpável. Fendas atravessam os edifícios, os caminhos parecem rasgados e o solo aparenta ter-se elevado em alguns pontos. Antes da expedição, os vestígios do sismo já criam uma tensão entre a curiosidade científica e os perigos do terreno.</p><p>A responsável pela equipa apresenta a missão a partir da base avançada. A narrativa conduz depois aos investigadores que trabalham no terreno, numa aventura de montanha-russa que prolonga a agitação sugerida pelo cenário. A estação e a paisagem danificada pertencem à mesma história de exploração de uma zona sísmica.</p><h2>Um peixe-gato do imaginário japonês</h2><p>O nome Namazu remete para o enorme peixe-gato ao qual uma tradição japonesa atribui os sismos. Imobilizada por uma divindade, a criatura tentaria libertar-se quando a vigilância abranda. Esta lenda acompanha a expedição fictícia do laboratório, onde os abalos se tornam, por sua vez, objeto de observação científica.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77e77316-bdd5-4584-b437-068962f32241",
+        "entityKey": "vulcania-machine-terre",
+        "displayName": "Machine Terre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Einen Planeten in der Lava erkunden</h2><p>Machine Terre befindet sich in einem Raum, der in echte Lavaströme gegraben wurde. Ein Schmetterling begleitet die Entdeckung symbolisch und verbindet die Geschichte des Planeten mit der Verletzlichkeit des Lebens. Die Themenkreise der Ausstellung behandeln sowohl das Erdinnere als auch die sichtbaren Landschaften an der Oberfläche. Das umgebende Gestein verleiht dieser Erkundung einen greifbaren Rahmen.</p><p>Die Entstehung des Sonnensystems eröffnet eine Perspektive weit über die Vulkane hinaus. Der große Globus des Lebens setzt die Geschichte mit dem Auftreten und der Entwicklung von Lebewesen fort. Projektionen, Darstellungen des Erdinneren und Landschaftsbilder wechseln zwischen unterschiedlichen Maßstäben: vom gesamten Planeten bis zu den Vorgängen, die ihn verändern.</p><h2>Landschaften lesen und Bilder hinterfragen</h2><p>Holografische Vulkandarstellungen stehen neben Aufnahmen von Katia und Maurice Krafft. An den Landschaftstischen lassen sich Hinweise auf die Geschichte der dargestellten Orte entdecken, während andere Bereiche Erdbeben und tektonische Platten behandeln. Bei den begleiteten Angeboten ergänzen Gespräche über die Entstehung der Erde und den Ursprung von Magma die ausgestellten Bilder und Modelle.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Exploring a planet within the lava</h2><p>Machine Terre occupies a space excavated within genuine lava flows. A butterfly serves as a symbolic companion, connecting the planet’s story with the fragility of living things. The exhibition’s thematic circles consider both Earth’s depths and the landscapes visible on its surface. The rock enclosing the exhibition gives this exploration a tangible setting.</p><p>The formation of the Solar System opens a perspective far wider than volcanoes alone. The large globe of life continues the story with the emergence and development of living organisms. Projected images, depictions of Earth’s interior and landscapes to examine move between scales, from the whole planet to the phenomena that reshape it.</p><h2>Reading landscapes and questioning images</h2><p>Holographic representations of volcanoes appear alongside images by Katia and Maurice Krafft. Landscape tables invite visitors to recognise clues to the places’ history, while other areas address earthquakes and tectonic plates. Sessions with the presenters add a conversation about the formation of Earth and the origins of magma to the exhibits themselves.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Explorar un planeta entre la lava</h2><p>Machine Terre ocupa un espacio excavado en auténticas coladas de lava. Una mariposa acompaña simbólicamente el descubrimiento y conecta la historia del planeta con la fragilidad de la vida. Los círculos temáticos de la exposición abordan tanto las profundidades terrestres como los paisajes visibles en la superficie. La roca que rodea el espacio da un marco tangible a esta exploración.</p><p>La formación del Sistema Solar abre una perspectiva mucho más amplia que la de los volcanes. El gran globo de la vida continúa el relato con la aparición y el desarrollo de los seres vivos. Imágenes proyectadas, representaciones del interior de la Tierra y paisajes para observar cambian de escala, desde el planeta entero hasta los fenómenos que lo transforman.</p><h2>Leer paisajes e interrogar imágenes</h2><p>Las representaciones holográficas de volcanes acompañan las imágenes de Katia y Maurice Krafft. Las mesas dedicadas a los paisajes invitan a reconocer indicios de su historia, mientras otros espacios tratan los terremotos y las placas tectónicas. Las sesiones con animadores añaden a imágenes y modelos una conversación sobre la formación de la Tierra y el origen del magma.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une planète à explorer dans la lave</h2><p>Machine Terre occupe un espace creusé au cœur de véritables coulées de lave. Un papillon accompagne symboliquement la découverte, reliant le récit de la planète à la fragilité du vivant. Les cercles thématiques abordent aussi bien les profondeurs de la Terre que les paysages visibles à sa surface : les roches du lieu forment ainsi un cadre concret à cette exploration.</p><p>La formation du Système solaire ouvre une perspective bien plus vaste que celle des seuls volcans. Le grand globe de la vie poursuit ce récit avec l’apparition et le développement des êtres vivants. Images projetées, représentations de l’intérieur terrestre et paysages à observer font passer d’une échelle à l’autre, de la planète entière aux phénomènes qui la transforment.</p><h2>Lire les paysages, interroger les images</h2><p>Des représentations holographiques de volcans côtoient les images de Katia et Maurice Krafft. Les tables consacrées aux paysages proposent de reconnaître les indices de leur histoire, tandis que d’autres espaces abordent les séismes et les plaques tectoniques. Les interventions des animateurs complètent ces découvertes par une discussion sur la formation de la Terre et l’origine du magma.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Esplorare un pianeta nella lava</h2><p>Machine Terre occupa uno spazio scavato all’interno di vere colate laviche. Una farfalla accompagna simbolicamente la scoperta, collegando la storia del pianeta alla fragilità della vita. I percorsi tematici dell’esposizione affrontano sia le profondità della Terra sia i paesaggi visibili in superficie. La roccia circostante offre così una cornice concreta all’esplorazione.</p><p>La formazione del Sistema solare apre una prospettiva molto più ampia di quella dei soli vulcani. Il grande globo della vita prosegue il racconto con la comparsa e lo sviluppo degli esseri viventi. Immagini proiettate, rappresentazioni dell’interno terrestre e paesaggi da osservare passano da una scala all’altra, dal pianeta nel suo insieme ai fenomeni che lo trasformano.</p><h2>Leggere i paesaggi, interrogare le immagini</h2><p>Rappresentazioni olografiche dei vulcani affiancano le immagini di Katia e Maurice Krafft. I tavoli dedicati ai paesaggi invitano a riconoscere gli indizi della loro storia, mentre altri spazi affrontano terremoti e placche tettoniche. Gli incontri con gli animatori completano immagini e modelli con un dialogo sulla formazione della Terra e sull’origine del magma.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een planeet verkennen in de lava</h2><p>Machine Terre ligt in een ruimte die is uitgegraven in echte lavastromen. Een vlinder begeleidt de ontdekking symbolisch en verbindt het verhaal van de planeet met de kwetsbaarheid van het leven. De thematische kringen van de tentoonstelling behandelen zowel het binnenste van de aarde als de zichtbare landschappen aan het oppervlak. Het omringende gesteente geeft die verkenning een tastbaar kader.</p><p>Het ontstaan van het zonnestelsel opent een perspectief dat veel verder reikt dan vulkanen. De grote wereldbol van het leven vervolgt het verhaal met het ontstaan en de ontwikkeling van levende organismen. Projecties, beelden van het binnenste van de aarde en landschappen om te onderzoeken wisselen van schaal: van de hele planeet tot de verschijnselen die haar veranderen.</p><h2>Landschappen lezen en vragen stellen bij beelden</h2><p>Holografische voorstellingen van vulkanen staan naast beelden van Katia en Maurice Krafft. Bij de landschapstafels zijn aanwijzingen te ontdekken voor de geschiedenis van de afgebeelde plekken. Andere delen behandelen aardbevingen en tektonische platen. De begeleide presentaties voegen gesprekken over het ontstaan van de aarde en de oorsprong van magma toe aan de beelden en modellen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Poznać planetę we wnętrzu lawy</h2><p>Machine Terre zajmuje przestrzeń wydrążoną w autentycznych potokach lawy. Symbolicznym towarzyszem odkrywania jest motyl, łączący historię planety z kruchością życia. Kręgi tematyczne wystawy dotyczą zarówno głębi Ziemi, jak i krajobrazów widocznych na jej powierzchni. Otaczająca skała nadaje tej eksploracji namacalną oprawę.</p><p>Powstanie Układu Słonecznego otwiera perspektywę znacznie szerszą niż same wulkany. Wielki glob życia rozwija opowieść o pojawieniu się i rozwoju organizmów. Projekcje, przedstawienia wnętrza Ziemi oraz krajobrazy do obserwowania pozwalają przechodzić między skalami: od całej planety po zjawiska, które ją przeobrażają.</p><h2>Czytanie krajobrazów i pytania o obrazy</h2><p>Holograficzne przedstawienia wulkanów sąsiadują ze zdjęciami Katii i Maurice’a Krafftów. Stoły poświęcone krajobrazom zachęcają do rozpoznawania śladów historii przedstawionych miejsc. Inne przestrzenie dotyczą trzęsień ziemi i płyt tektonicznych. Spotkania z animatorami uzupełniają obrazy oraz modele rozmową o powstaniu Ziemi i pochodzeniu magmy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Explorar um planeta entre a lava</h2><p>Machine Terre ocupa um espaço escavado no interior de verdadeiras escoadas de lava. Uma borboleta acompanha simbolicamente a descoberta, ligando a história do planeta à fragilidade da vida. Os círculos temáticos da exposição abordam tanto as profundezas da Terra como as paisagens visíveis à superfície. A rocha envolvente dá assim um enquadramento palpável à exploração.</p><p>A formação do Sistema Solar abre uma perspetiva muito mais ampla do que a dos vulcões. O grande globo da vida continua a narrativa com o aparecimento e o desenvolvimento dos seres vivos. Imagens projetadas, representações do interior terrestre e paisagens para observar mudam de escala, do planeta inteiro aos fenómenos que o transformam.</p><h2>Ler paisagens e interrogar imagens</h2><p>Representações holográficas de vulcões surgem junto das imagens de Katia e Maurice Krafft. As mesas dedicadas às paisagens convidam a reconhecer indícios da sua história, enquanto outros espaços tratam dos sismos e das placas tectónicas. As sessões com animadores acrescentam às imagens e aos modelos uma conversa sobre a formação da Terra e a origem do magma.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bce899da-5c92-4077-bf35-97a6e004db61",
+        "entityKey": "vulcania-cite-enfants",
+        "displayName": "Cité des enfants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Mit Wasser und Bewegung experimentieren</h2><p>Vulcanias Cité des enfants entstand gemeinsam mit der Cité des sciences et de l’industrie in Paris. Ihre Bereiche widmen sich Wasser, Bewegung, den Sinnen und dem Licht, jeweils durch Spiele zum Ausprobieren. Im Wasserbereich zeigen Becken, Strudel und Blasensäulen vertraute Phänomene in ungewohnter Form. Dazu gehören Bälle, die über Wasserstrahlen schweben.</p><p>Kugelmaschinen, Waagen und Zahnräder bilden eine weitere Experimentierlandschaft. Hier können Kinder Gleichgewicht, Bewegungen und die Folgen ihres eigenen Handelns beobachten. Ausprobieren und Überraschungen gehören zur Ausstellung: Die Objekte regen dazu an, die eigenen Erwartungen mit dem tatsächlichen Geschehen zu vergleichen.</p><h2>Von Düften zu Lichtzeichnungen</h2><p>Duftrohre und Klangröhren eröffnen andere Zugänge zur Erkundung. Im abgedunkelten Lichtbereich werden Farben, Schatten und ein Lichtstift zu Materialien zum Spielen und Zeichnen. Licht lässt sich hier als Spur, als Farbe und als Schatten wahrnehmen, während die anderen Stationen gezielt das Hören oder Riechen ansprechen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Water and movement as experiments</h2><p>Vulcania’s Cité des enfants was developed with the Cité des sciences et de l’industrie in Paris. Its spaces explore water, movement, the senses and light through hands-on play. In the water area, pools, whirlpools and bubble columns present familiar phenomena in unusual forms, including balls held above jets of water.</p><p>Ball machines, balances and gears create another landscape of experiments. Children can observe balance, movement and the effects of their own actions. Trial and surprise are part of the exhibition: its objects invite comparisons between what someone expected and what actually happens.</p><h2>From scents to drawings made of light</h2><p>Scent tubes and sound tubes offer other ways of exploring. In the darkened area devoted to light, colours, shadows and a light pen become materials for play and drawing. Light appears as a trace, a colour or a shadow, while other stations focus particularly on hearing or smell.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Experimentar con el agua y el movimiento</h2><p>La Cité des enfants de Vulcania fue creada con la Cité des sciences et de l’industrie de París. Sus espacios abordan el agua, el movimiento, los sentidos y la luz mediante juegos que se pueden manipular. En la zona del agua, estanques, remolinos y columnas de burbujas muestran fenómenos familiares de maneras poco habituales, como las pelotas sostenidas sobre chorros de agua.</p><p>Máquinas con bolas, balanzas y engranajes componen otro paisaje de experimentos. Los niños observan equilibrios, movimientos y consecuencias de sus propios gestos. Los intentos y las sorpresas forman parte de la exposición: los objetos invitan a comparar lo que se imaginaba con lo que realmente ocurre.</p><h2>De los olores a los dibujos de luz</h2><p>Los tubos de olores y los tubos sonoros ofrecen otras formas de explorar. En el espacio oscurecido dedicado a la luz, colores, sombras y un lápiz luminoso se convierten en materiales para jugar y dibujar. La luz aparece como trazo, color y sombra, mientras que otras estaciones se dirigen especialmente al oído o al olfato.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’eau et les mouvements comme terrain d’essai</h2><p>La Cité des enfants de Vulcania a été conçue avec la Cité des sciences et de l’industrie, à Paris. Ses espaces abordent l’eau, les mouvements, les sens et la lumière à travers des jeux à manipuler. Dans la partie consacrée à l’eau, bassins, tourbillons et colonnes à bulles donnent à voir des phénomènes familiers sous des formes inhabituelles, avec notamment des balles maintenues au-dessus de jets d’eau.</p><p>Les machines à boules, les balances et les engrenages composent un autre paysage d’expériences. Les enfants y observent des équilibres, des mouvements et les effets de leurs propres gestes. L’exposition laisse une place à l’essai et à la surprise : ses objets invitent à comparer ce que l’on imaginait avec ce qui se produit réellement.</p><h2>Des odeurs aux dessins lumineux</h2><p>Les tubes à odeurs et les tubes sonores sollicitent d’autres façons d’explorer. Dans l’espace obscur consacré à la lumière, des couleurs, des ombres et un stylo lumineux deviennent des matières à jouer et à dessiner. La lumière s’y découvre comme une trace, une couleur ou une ombre, tandis que les autres dispositifs sollicitent plus particulièrement l’ouïe ou l’odorat.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sperimentare con l’acqua e il movimento</h2><p>La Cité des enfants di Vulcania è stata realizzata con la Cité des sciences et de l’industrie di Parigi. I suoi spazi affrontano acqua, movimento, sensi e luce attraverso giochi da esplorare direttamente. Nell’area dell’acqua, vasche, vortici e colonne di bolle mostrano fenomeni familiari in forme insolite, comprese le palline sostenute sopra i getti d’acqua.</p><p>Macchine con palline, bilance e ingranaggi compongono un altro paesaggio di esperimenti. I bambini osservano equilibri, movimenti e conseguenze dei propri gesti. Tentativi e sorprese fanno parte dell’esposizione: gli oggetti invitano a confrontare quello che si immaginava con ciò che avviene realmente.</p><h2>Dagli odori ai disegni di luce</h2><p>Tubi olfattivi e tubi sonori propongono altre modalità di esplorazione. Nello spazio oscurato dedicato alla luce, colori, ombre e una penna luminosa diventano materiali per giocare e disegnare. La luce appare come traccia, colore e ombra, mentre le altre postazioni si rivolgono in particolare all’udito o all’olfatto.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Water en beweging als proefterrein</h2><p>De Cité des enfants van Vulcania is ontwikkeld met de Cité des sciences et de l’industrie in Parijs. De ruimtes behandelen water, beweging, zintuigen en licht via spelonderdelen die kinderen zelf onderzoeken. In het watergedeelte tonen bassins, draaikolken en bellenkolommen vertrouwde verschijnselen in ongewone vormen, waaronder ballen die boven waterstralen blijven hangen.</p><p>Kogelbanen, weegschalen en tandwielen vormen een ander landschap van experimenten. Kinderen bekijken er evenwicht, beweging en de gevolgen van hun eigen handelingen. Uitproberen en verrast worden horen bij de tentoonstelling: de voorwerpen nodigen uit om verwachtingen te vergelijken met wat er werkelijk gebeurt.</p><h2>Van geuren tot tekeningen van licht</h2><p>Geurbuizen en klankbuizen bieden andere manieren om te ontdekken. In de verduisterde ruimte rond licht worden kleuren, schaduwen en een lichtpen materialen om mee te spelen en te tekenen. Licht verschijnt hier als spoor, kleur of schaduw, terwijl de andere opstellingen juist het gehoor of de reuk aanspreken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Eksperymenty z wodą i ruchem</h2><p>Cité des enfants w Vulcanii powstała we współpracy z paryską Cité des sciences et de l’industrie. Jej przestrzenie dotyczą wody, ruchu, zmysłów i światła, poznawanych przez samodzielną zabawę. W części wodnej zbiorniki, wiry i kolumny bąbelków pokazują znane zjawiska w nietypowych formach. Są tu również piłeczki utrzymywane nad strumieniami wody.</p><p>Urządzenia z kulkami, wagi i koła zębate tworzą kolejny krajobraz doświadczeń. Dzieci obserwują równowagę, ruch oraz skutki własnych działań. Próby i zaskoczenie są częścią wystawy: jej przedmioty zachęcają do porównywania oczekiwań z tym, co rzeczywiście się wydarza.</p><h2>Od zapachów do rysowania światłem</h2><p>Rury zapachowe i dźwiękowe proponują inne sposoby odkrywania. W zaciemnionej części poświęconej światłu kolory, cienie i świetlne pióro stają się materiałami do zabawy oraz rysowania. Światło przybiera tu postać śladu, barwy i cienia, podczas gdy pozostałe stanowiska zwracają się szczególnie ku słuchowi lub węchowi.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Experimentar com a água e o movimento</h2><p>A Cité des enfants de Vulcania foi desenvolvida com a Cité des sciences et de l’industrie de Paris. Os seus espaços abordam a água, o movimento, os sentidos e a luz através de jogos que podem ser explorados diretamente. Na zona da água, tanques, remoinhos e colunas de bolhas mostram fenómenos familiares de formas invulgares, incluindo bolas suspensas sobre jatos de água.</p><p>Máquinas com bolas, balanças e engrenagens compõem outra paisagem de experiências. As crianças observam equilíbrios, movimentos e consequências dos seus próprios gestos. Tentativas e surpresas fazem parte da exposição: os objetos convidam a comparar o que se imaginava com aquilo que realmente acontece.</p><h2>Dos cheiros aos desenhos de luz</h2><p>Tubos de cheiros e tubos sonoros propõem outras formas de explorar. No espaço escurecido dedicado à luz, cores, sombras e uma caneta luminosa tornam-se materiais para brincar e desenhar. A luz aparece como traço, cor e sombra, enquanto outras estações se dirigem sobretudo à audição ou ao olfato.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : Namazu, Machine Terre et Cité des enfants décrits personnellement en huit langues, vingt-quatre notices relues de 124 à 180 mots. Trois fiches privées sur quarante-quatre sont décrites ; aucune date, position ou visibilité modifiée.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Three specific manually authored and personally reviewed descriptions in each of eight languages. Namazu fictional research expedition and Japanese catfish legend distinguished from factual geology. Machine Terre real lava setting, butterfly motif and science displays; Cité des enfants partnership and four experimental themes. No ages, booking conflict, ride dimensions or duration copied into prose. All24texts reviewed, no generic footer or name-swapping template. No visibility, status, restriction, date or GPS change. No import. Remaining41items still need narratives."
+}

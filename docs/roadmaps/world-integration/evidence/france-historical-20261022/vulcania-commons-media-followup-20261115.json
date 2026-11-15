@@ -1,0 +1,1022 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "qualification": {
+    "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "sources": [
+      {
+        "title": "File:Namazu.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Namazu.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Namazu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Namazu.jpg/960px-Namazu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 6016,
+        "height": 4000,
+        "bytes": 13637739,
+        "license": "CC BY-SA 4.0",
+        "artist": "Mathis Demoulinger",
+        "description": "Première descente de la montagne russe Namazu à Vulcania. Localisation : France. Namazu est une montagne russe assise construite par Intamin AG et ouverte en 2021.",
+        "date": "2024-08-23",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Namazu.jpg/960px-Namazu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:26.044693+00:00",
+        "localFile": "candidate-00.jpg",
+        "status": 200,
+        "downloadBytes": 139929,
+        "sha256": "3c50621fc0faac7df85acc4f33274f2ad036aaef9af515e7b4e4a429848675d3"
+      },
+      {
+        "title": "File:Namazu Deuxième Lanceur.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Namazu_Deuxi%C3%A8me_Lanceur.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Namazu_Deuxi%C3%A8me_Lanceur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Namazu_Deuxi%C3%A8me_Lanceur.jpg/960px-Namazu_Deuxi%C3%A8me_Lanceur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 6720,
+        "height": 4480,
+        "bytes": 30893757,
+        "license": "CC BY-SA 4.0",
+        "artist": "Aurelien Studio",
+        "description": "La montagne russe Namazu envoyée sur le deuxième point le plus haut du circuit grâce au deuxième lanceur. Localisation : France. Namazu est une montagne russe assise construite par Intamin AG et ouverte en 2021.",
+        "date": "06/12/2024",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Namazu_Deuxi%C3%A8me_Lanceur.jpg/960px-Namazu_Deuxi%C3%A8me_Lanceur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:26.744990+00:00",
+        "localFile": "candidate-01.jpg",
+        "status": 200,
+        "downloadBytes": 304146,
+        "sha256": "87783fccc9eca86c93d97bd5b71dc09f15530fc67fcd59c6b88f42773ff54d6f"
+      },
+      {
+        "title": "File:Namazu Murs Décoratifs Failles.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Namazu_Murs_D%C3%A9coratifs_Failles.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Namazu_Murs_D%C3%A9coratifs_Failles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Namazu_Murs_D%C3%A9coratifs_Failles.jpg/960px-Namazu_Murs_D%C3%A9coratifs_Failles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4752,
+        "height": 3168,
+        "bytes": 7416282,
+        "license": "CC BY-SA 4.0",
+        "artist": "Parc Vulcania",
+        "description": "Les murs représentant des failles sismiques à l'extérieur de l'attraction Namazu. Ils servent à ajouter à la thématique des secousses de la Terre et sont trouvés un peu partout en extérieur, certains servant même à cacher le bâtiment pour qu'il se fonde dans le décor.",
+        "date": "21/07/2021",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Namazu_Murs_D%C3%A9coratifs_Failles.jpg/960px-Namazu_Murs_D%C3%A9coratifs_Failles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:27.180234+00:00",
+        "localFile": "candidate-02.jpg",
+        "status": 200,
+        "downloadBytes": 214561,
+        "sha256": "c9071e742b3fd178048786f4243f3abb5fd5deb375c4106e72a5c0d6fdd5ab9f"
+      },
+      {
+        "title": "File:Vulcania - panoramio - Sietze Kraak.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_-_Sietze_Kraak.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Vulcania_-_panoramio_-_Sietze_Kraak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Vulcania_-_panoramio_-_Sietze_Kraak.jpg/960px-Vulcania_-_panoramio_-_Sietze_Kraak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2848,
+        "height": 4288,
+        "bytes": 5531433,
+        "license": "CC BY 3.0",
+        "artist": " Sietze Kraak ",
+        "description": "Vulcania",
+        "date": "Taken on 10 August 2010",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Vulcania_-_panoramio_-_Sietze_Kraak.jpg/960px-Vulcania_-_panoramio_-_Sietze_Kraak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:27.576194+00:00",
+        "localFile": "candidate-03.jpg",
+        "status": 200,
+        "downloadBytes": 288498,
+        "sha256": "9e19a29036c6e2a47f1db3bcbabfb57d407c7d9f80ea76abd4dc4ffe49d7884f"
+      },
+      {
+        "title": "File:Vulcania - panoramio.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Vulcania_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Vulcania_-_panoramio.jpg/960px-Vulcania_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4288,
+        "height": 2848,
+        "bytes": 6759553,
+        "license": "CC BY 3.0",
+        "artist": " Sietze Kraak ",
+        "description": "Vulcania",
+        "date": "Taken on 10 August 2010",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Vulcania_-_panoramio.jpg/960px-Vulcania_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:27.876938+00:00",
+        "localFile": "candidate-04.jpg",
+        "status": 200,
+        "downloadBytes": 183610,
+        "sha256": "a6eed2dd865387f320ecefe85e66b88018bd09522f5615a99ae35075ddda824f"
+      },
+      {
+        "title": "File:Vulcania - panoramio (1).jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Vulcania_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Vulcania_-_panoramio_%281%29.jpg/960px-Vulcania_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4288,
+        "height": 2848,
+        "bytes": 6111146,
+        "license": "CC BY 3.0",
+        "artist": " Sietze Kraak ",
+        "description": "Vulcania",
+        "date": "Taken on 10 August 2010",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Vulcania_-_panoramio_%281%29.jpg/960px-Vulcania_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:28.128842+00:00",
+        "localFile": "candidate-05.jpg",
+        "status": 200,
+        "downloadBytes": 185014,
+        "sha256": "4fe25526888245f005301bde41d4be8692a18e7a5c7dba6c969771f73eeb2248"
+      },
+      {
+        "title": "File:Vulcania janvier 2010.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_janvier_2010.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Vulcania_janvier_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Vulcania_janvier_2010.jpg/960px-Vulcania_janvier_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 1500,
+        "height": 1000,
+        "bytes": 641757,
+        "license": "CC BY-SA 4.0",
+        "artist": " Jules Rhin ",
+        "description": "Vulcanie en sommeil au cours de l'hiver 2009-2010. Derrière le cône de Vulcania, on aperçoit le Puy de Côme et, au fond à gauche, le sommet du Puy de Dôme.",
+        "date": "2010-01-12 22:36:06",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Vulcania_janvier_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "accessedAtUtc": "2026-11-15T16:47:28.294156+00:00",
+        "localFile": "candidate-06.jpg",
+        "status": 200,
+        "downloadBytes": 641757,
+        "sha256": "88fb241e8be72bcb02c0ed8e9647419a4c7c076319fd0202df45b465f030b634"
+      },
+      {
+        "title": "File:Vulcania Schlot.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_Schlot.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Vulcania_Schlot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Vulcania_Schlot.jpg/960px-Vulcania_Schlot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2592,
+        "height": 1944,
+        "bytes": 1231084,
+        "license": "CC BY 4.0",
+        "artist": " Friedhelm Dröge ",
+        "description": "Freizeitpark in Frankreich",
+        "date": "2009-10-28 11:50:24",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Vulcania_Schlot.jpg/960px-Vulcania_Schlot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:28.951202+00:00",
+        "localFile": "candidate-07.jpg",
+        "status": 200,
+        "downloadBytes": 238841,
+        "sha256": "2cbd93b77fe9a21c6177f231bed5dc67d4574372ab2f8621bbce9df9bd47653f"
+      },
+      {
+        "title": "File:Vulcania mars 2000.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_mars_2000.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vulcania_mars_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vulcania_mars_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "width": 521,
+        "height": 788,
+        "bytes": 458699,
+        "license": "CC BY-SA 4.0",
+        "artist": " Jules Rhin ",
+        "description": "Etat de la construction de Vulcania en mars 2000. Montage du cône suivant les plans de l'architecte autrichien Hans Hollein.",
+        "date": "2021-04-28 17:41:10",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vulcania_mars_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "accessedAtUtc": "2026-11-15T16:47:29.275178+00:00",
+        "localFile": "candidate-08.jpg",
+        "status": 200,
+        "downloadBytes": 458699,
+        "sha256": "55e18c160f18d1f38c30c4608dfeba1d59b76375964c008a1fdbafe3f71ed20f"
+      }
+    ],
+    "acceptedForPrivateImport": [
+      "photo-commons-03",
+      "photo-commons-04",
+      "photo-commons-05",
+      "photo-commons-06",
+      "photo-commons-07",
+      "photo-commons-08"
+    ],
+    "rejected": [
+      {
+        "index": 1,
+        "reason": "Visible GET YOUR GUIDE watermark; do not remove or import."
+      }
+    ],
+    "deferred": [
+      {
+        "index": 0,
+        "reason": "Commons CC BY-SA claim but source keepeek and named external photographer; underlying authorization not yet corroborated."
+      },
+      {
+        "index": 2,
+        "reason": "Commons CC BY-SA claim but source keepeek/ParcVulcania; verify rights before import."
+      }
+    ],
+    "notParkLogo": "Namazu Logo Version Finale is the attraction logo, not Vulcania’s park logo; not imported.",
+    "misclassificationPrevented": "Planetarium exterior previously downloaded is an architectural rendering, not a real photograph. Promotional cone view carries overlay; not imported.",
+    "noLocalRetouch": true,
+    "noGpsTransferFromPhotoMetadata": true,
+    "generalCoverageQualification": "03cone/plaza,04rock display/landscape,05garden overview,06snow panorama,07buildings/cone are five distinct historical park contexts, not five current panoramas;08construction separately."
+  },
+  "manifest": [
+    {
+      "stem": "photo-commons-03",
+      "source": {
+        "title": "File:Vulcania - panoramio - Sietze Kraak.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_-_Sietze_Kraak.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Vulcania_-_panoramio_-_Sietze_Kraak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Vulcania_-_panoramio_-_Sietze_Kraak.jpg/960px-Vulcania_-_panoramio_-_Sietze_Kraak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2848,
+        "height": 4288,
+        "bytes": 5531433,
+        "license": "CC BY 3.0",
+        "artist": " Sietze Kraak ",
+        "description": "Vulcania",
+        "date": "Taken on 10 August 2010",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Vulcania_-_panoramio_-_Sietze_Kraak.jpg/960px-Vulcania_-_panoramio_-_Sietze_Kraak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:27.576194+00:00",
+        "localFile": "candidate-03.jpg",
+        "status": 200,
+        "downloadBytes": 288498,
+        "sha256": "9e19a29036c6e2a47f1db3bcbabfb57d407c7d9f80ea76abd4dc4ffe49d7884f"
+      },
+      "dimensions": [
+        960,
+        1445
+      ],
+      "reuseLicenseEvidence": {
+        "DateTime": {
+          "value": "2016-11-07 15:36:48",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Vulcania - panoramio - Sietze Kraak",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Vulcania|Panoramio files uploaded by Panoramio upload bot|Panoramio images reviewed by trusted users|Photos from Panoramio|Files with coordinates missing SDC location of creation|France photographs taken on 2010-08-10|Photos from Panoramio ID 2703152",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "45.813647",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "2.939685",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Vulcania",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "Taken on 10 August 2010",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://web.archive.org/web/20161017080652/http://www.panoramio.com/photo/40023937\">https://web.archive.org/web/20161017080652/http://www.panoramio.com/photo/40023937</a>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://web.archive.org/web/20161017080655/http://www.panoramio.com/user/2703152?with_photo_id=40023937\">Sietze Kraak</a>",
+          "source": "commons-desc-page"
+        },
+        "Permission": {
+          "value": "<div class=\"responsive-license-cc layouttemplate licensetpl\" dir=\"ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/120px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/250px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"744\" data-file-height=\"300\"></span></span><br>\n<span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/40px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/60px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"64\" data-file-height=\"64\"></span></span></div><div class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"//creativecommons.org/licenses/by/3.0/deed.en\" class=\"extiw\" title=\"creativecommons:by/3.0/deed.en\">Attribution 3.0 Unported</a> license.</div><div class=\"rlicense-attr\" style=\"font-weight: bold;\">Attribution: <div style=\"display:inline;font-size:larger;\" class=\"licensetpl_attr\">Sietze Kraak</div></div><div class=\"rlicense-desc\" style=\"text-align:start;\" dir=\"ltr\" lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> – to copy, distribute and transmit the work</li>\n<li><b>to remix</b> – to adapt the work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b> – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li></ul></dd></dl>\n</div><span class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/licenses/by/3.0</span><span class=\"licensetpl_short\" style=\"display:none;\">CC BY 3.0 </span><span class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Attribution 3.0 </span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div>\n<style data-mw-deduplicate=\"TemplateStyles:r901585720\">.mw-parser-output .panoramioreview{width:100%;margin:0.5em 0;background-color:var(--background-color-warning-subtle,#fffff0);padding:5px;border:1px solid var(--border-color-warning,#aa8);color:inherit}.mw-parser-output .panoramioreview-failed{background-color:var(--background-color-error-subtle,#fcc);color:inherit}.mw-parser-output .panoramioreview-passed{background-color:var(--background-color-success-subtle,#efe);color:inherit}</style>\n<table class=\"panoramioreview panoramioreview-passed\" lang=\"en\" dir=\"ltr\">\n\n<tbody><tr>\n<td><span typeof=\"mw:File\"><span><img alt=\"\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/60px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"48\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/120px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"160\" data-file-height=\"153\"></span></span>\n</td>\n<td>This image, which was originally posted to <b><span lang=\"en\" dir=\"ltr\"><a href=\"https://en.wikipedia.org/wiki/Panoramio\" class=\"extiw\" title=\"en:Panoramio\">Panoramio</a></span></b>, was automatically reviewed on 7 November 2016 by <b><a href=\"//commons.wikimedia.org/wiki/User:Panoramio_upload_bot\" title=\"User:Panoramio upload bot\">Panoramio upload bot</a></b>, who confirmed that it was available on Panoramio under the above license on that date.\n</td>\n<td><span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:Star_and_ring.svg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/60px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"50\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/120px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"75\" data-file-height=\"75\"></a></span>\n</td></tr></tbody></table>",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseShortName": {
+          "value": "CC BY 3.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution 3.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Attribution": {
+          "value": "Sietze Kraak",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by/3.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-3.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "rootPersonalVisualReview": true,
+      "all24TextsPersonallyAuthoredAndReviewed": true,
+      "capturedAtUtc": null,
+      "dateDecision": "Historical month/year in caption, no UTC instant inferred.",
+      "classification": "Historical park view, noncurrent, private pending audit."
+    },
+    {
+      "stem": "photo-commons-04",
+      "source": {
+        "title": "File:Vulcania - panoramio.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Vulcania_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Vulcania_-_panoramio.jpg/960px-Vulcania_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4288,
+        "height": 2848,
+        "bytes": 6759553,
+        "license": "CC BY 3.0",
+        "artist": " Sietze Kraak ",
+        "description": "Vulcania",
+        "date": "Taken on 10 August 2010",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Vulcania_-_panoramio.jpg/960px-Vulcania_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:27.876938+00:00",
+        "localFile": "candidate-04.jpg",
+        "status": 200,
+        "downloadBytes": 183610,
+        "sha256": "a6eed2dd865387f320ecefe85e66b88018bd09522f5615a99ae35075ddda824f"
+      },
+      "dimensions": [
+        960,
+        638
+      ],
+      "reuseLicenseEvidence": {
+        "DateTime": {
+          "value": "2016-11-07 15:36:38",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Vulcania - panoramio",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Vulcania|Panoramio files uploaded by Panoramio upload bot|Panoramio images reviewed by trusted users|Photos from Panoramio|Files with coordinates missing SDC location of creation|France photographs taken on 2010-08-10|Photos from Panoramio ID 2703152",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "45.813599",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "2.941273",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Vulcania",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "Taken on 10 August 2010",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.panoramio.com/photo/40023922\">https://www.panoramio.com/photo/40023922</a>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.panoramio.com/user/2703152?with_photo_id=40023922\">Sietze Kraak</a>",
+          "source": "commons-desc-page"
+        },
+        "Permission": {
+          "value": "<div class=\"responsive-license-cc layouttemplate licensetpl\" dir=\"ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/120px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/250px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"744\" data-file-height=\"300\"></span></span><br>\n<span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/40px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/60px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"64\" data-file-height=\"64\"></span></span></div><div class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"//creativecommons.org/licenses/by/3.0/deed.en\" class=\"extiw\" title=\"creativecommons:by/3.0/deed.en\">Attribution 3.0 Unported</a> license.</div><div class=\"rlicense-attr\" style=\"font-weight: bold;\">Attribution: <div style=\"display:inline;font-size:larger;\" class=\"licensetpl_attr\">Sietze Kraak</div></div><div class=\"rlicense-desc\" style=\"text-align:start;\" dir=\"ltr\" lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> – to copy, distribute and transmit the work</li>\n<li><b>to remix</b> – to adapt the work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b> – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li></ul></dd></dl>\n</div><span class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/licenses/by/3.0</span><span class=\"licensetpl_short\" style=\"display:none;\">CC BY 3.0 </span><span class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Attribution 3.0 </span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div>\n<style data-mw-deduplicate=\"TemplateStyles:r901585720\">.mw-parser-output .panoramioreview{width:100%;margin:0.5em 0;background-color:var(--background-color-warning-subtle,#fffff0);padding:5px;border:1px solid var(--border-color-warning,#aa8);color:inherit}.mw-parser-output .panoramioreview-failed{background-color:var(--background-color-error-subtle,#fcc);color:inherit}.mw-parser-output .panoramioreview-passed{background-color:var(--background-color-success-subtle,#efe);color:inherit}</style>\n<table class=\"panoramioreview panoramioreview-passed\" lang=\"en\" dir=\"ltr\">\n\n<tbody><tr>\n<td><span typeof=\"mw:File\"><span><img alt=\"\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/60px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"48\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/120px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"160\" data-file-height=\"153\"></span></span>\n</td>\n<td>This image, which was originally posted to <b><span lang=\"en\" dir=\"ltr\"><a href=\"https://en.wikipedia.org/wiki/Panoramio\" class=\"extiw\" title=\"en:Panoramio\">Panoramio</a></span></b>, was automatically reviewed on 7 November 2016 by <b><a href=\"//commons.wikimedia.org/wiki/User:Panoramio_upload_bot\" title=\"User:Panoramio upload bot\">Panoramio upload bot</a></b>, who confirmed that it was available on Panoramio under the above license on that date.\n</td>\n<td><span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:Star_and_ring.svg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/60px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"50\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/120px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"75\" data-file-height=\"75\"></a></span>\n</td></tr></tbody></table>",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseShortName": {
+          "value": "CC BY 3.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution 3.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Attribution": {
+          "value": "Sietze Kraak",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by/3.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-3.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "rootPersonalVisualReview": true,
+      "all24TextsPersonallyAuthoredAndReviewed": true,
+      "capturedAtUtc": null,
+      "dateDecision": "Historical month/year in caption, no UTC instant inferred.",
+      "classification": "Historical park view, noncurrent, private pending audit."
+    },
+    {
+      "stem": "photo-commons-05",
+      "source": {
+        "title": "File:Vulcania - panoramio (1).jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Vulcania_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Vulcania_-_panoramio_%281%29.jpg/960px-Vulcania_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4288,
+        "height": 2848,
+        "bytes": 6111146,
+        "license": "CC BY 3.0",
+        "artist": " Sietze Kraak ",
+        "description": "Vulcania",
+        "date": "Taken on 10 August 2010",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Vulcania_-_panoramio_%281%29.jpg/960px-Vulcania_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:28.128842+00:00",
+        "localFile": "candidate-05.jpg",
+        "status": 200,
+        "downloadBytes": 185014,
+        "sha256": "4fe25526888245f005301bde41d4be8692a18e7a5c7dba6c969771f73eeb2248"
+      },
+      "dimensions": [
+        960,
+        638
+      ],
+      "reuseLicenseEvidence": {
+        "DateTime": {
+          "value": "2016-11-20 16:09:31",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Vulcania - panoramio (1)",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Vulcania|Panoramio files uploaded by Panoramio upload bot|Panoramio images reviewed by trusted users|Photos from Panoramio|Files with coordinates missing SDC location of creation|France photographs taken on 2010-08-10|Photos from Panoramio ID 2703152",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "45.814275",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "2.939422",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Vulcania",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "Taken on 10 August 2010",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://web.archive.org/web/20161017155553/http://www.panoramio.com/photo/44658216\">https://web.archive.org/web/20161017155553/http://www.panoramio.com/photo/44658216</a>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://web.archive.org/web/20161017155554/http://www.panoramio.com/user/2703152?with_photo_id=44658216\">Sietze Kraak</a>",
+          "source": "commons-desc-page"
+        },
+        "Permission": {
+          "value": "<div class=\"responsive-license-cc layouttemplate licensetpl\" dir=\"ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/120px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/250px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"744\" data-file-height=\"300\"></span></span><br>\n<span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/40px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/60px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"64\" data-file-height=\"64\"></span></span></div><div class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"//creativecommons.org/licenses/by/3.0/deed.en\" class=\"extiw\" title=\"creativecommons:by/3.0/deed.en\">Attribution 3.0 Unported</a> license.</div><div class=\"rlicense-attr\" style=\"font-weight: bold;\">Attribution: <div style=\"display:inline;font-size:larger;\" class=\"licensetpl_attr\">Sietze Kraak</div></div><div class=\"rlicense-desc\" style=\"text-align:start;\" dir=\"ltr\" lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> – to copy, distribute and transmit the work</li>\n<li><b>to remix</b> – to adapt the work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b> – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li></ul></dd></dl>\n</div><span class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/licenses/by/3.0</span><span class=\"licensetpl_short\" style=\"display:none;\">CC BY 3.0 </span><span class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Attribution 3.0 </span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div>\n<style data-mw-deduplicate=\"TemplateStyles:r901585720\">.mw-parser-output .panoramioreview{width:100%;margin:0.5em 0;background-color:var(--background-color-warning-subtle,#fffff0);padding:5px;border:1px solid var(--border-color-warning,#aa8);color:inherit}.mw-parser-output .panoramioreview-failed{background-color:var(--background-color-error-subtle,#fcc);color:inherit}.mw-parser-output .panoramioreview-passed{background-color:var(--background-color-success-subtle,#efe);color:inherit}</style>\n<table class=\"panoramioreview panoramioreview-passed\" lang=\"en\" dir=\"ltr\">\n\n<tbody><tr>\n<td><span typeof=\"mw:File\"><span><img alt=\"\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/60px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"48\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/120px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"160\" data-file-height=\"153\"></span></span>\n</td>\n<td>This image, which was originally posted to <b><span lang=\"en\" dir=\"ltr\"><a href=\"https://en.wikipedia.org/wiki/Panoramio\" class=\"extiw\" title=\"en:Panoramio\">Panoramio</a></span></b>, was automatically reviewed on 20 November 2016 by <b><a href=\"//commons.wikimedia.org/wiki/User:Panoramio_upload_bot\" title=\"User:Panoramio upload bot\">Panoramio upload bot</a></b>, who confirmed that it was available on Panoramio under the above license on that date.\n</td>\n<td><span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:Star_and_ring.svg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/60px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"50\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/120px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"75\" data-file-height=\"75\"></a></span>\n</td></tr></tbody></table>",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseShortName": {
+          "value": "CC BY 3.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution 3.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Attribution": {
+          "value": "Sietze Kraak",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by/3.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-3.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "rootPersonalVisualReview": true,
+      "all24TextsPersonallyAuthoredAndReviewed": true,
+      "capturedAtUtc": null,
+      "dateDecision": "Historical month/year in caption, no UTC instant inferred.",
+      "classification": "Historical park view, noncurrent, private pending audit."
+    },
+    {
+      "stem": "photo-commons-06",
+      "source": {
+        "title": "File:Vulcania janvier 2010.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_janvier_2010.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Vulcania_janvier_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Vulcania_janvier_2010.jpg/960px-Vulcania_janvier_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 1500,
+        "height": 1000,
+        "bytes": 641757,
+        "license": "CC BY-SA 4.0",
+        "artist": " Jules Rhin ",
+        "description": "Vulcanie en sommeil au cours de l'hiver 2009-2010. Derrière le cône de Vulcania, on aperçoit le Puy de Côme et, au fond à gauche, le sommet du Puy de Dôme.",
+        "date": "2010-01-12 22:36:06",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Vulcania_janvier_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "accessedAtUtc": "2026-11-15T16:47:28.294156+00:00",
+        "localFile": "candidate-06.jpg",
+        "status": 200,
+        "downloadBytes": 641757,
+        "sha256": "88fb241e8be72bcb02c0ed8e9647419a4c7c076319fd0202df45b465f030b634"
+      },
+      "dimensions": [
+        1500,
+        1000
+      ],
+      "reuseLicenseEvidence": {
+        "DateTime": {
+          "value": "2021-04-28 16:54:24",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Vulcania janvier 2010",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Vulcania|Self-published work",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Vulcanie en sommeil au cours de l'hiver 2009-2010. Derrière le cône de Vulcania, on aperçoit le Puy de Côme et, au fond à gauche, le sommet du Puy de Dôme.",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2010-01-12 22:36:06",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Jules_Rhin\" title=\"User:Jules Rhin\">Jules Rhin</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "rootPersonalVisualReview": true,
+      "all24TextsPersonallyAuthoredAndReviewed": true,
+      "capturedAtUtc": null,
+      "dateDecision": "Historical month/year in caption, no UTC instant inferred.",
+      "classification": "Historical park view, noncurrent, private pending audit."
+    },
+    {
+      "stem": "photo-commons-07",
+      "source": {
+        "title": "File:Vulcania Schlot.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_Schlot.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Vulcania_Schlot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Vulcania_Schlot.jpg/960px-Vulcania_Schlot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2592,
+        "height": 1944,
+        "bytes": 1231084,
+        "license": "CC BY 4.0",
+        "artist": " Friedhelm Dröge ",
+        "description": "Freizeitpark in Frankreich",
+        "date": "2009-10-28 11:50:24",
+        "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Vulcania_Schlot.jpg/960px-Vulcania_Schlot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "accessedAtUtc": "2026-11-15T16:47:28.951202+00:00",
+        "localFile": "candidate-07.jpg",
+        "status": 200,
+        "downloadBytes": 238841,
+        "sha256": "2cbd93b77fe9a21c6177f231bed5dc67d4574372ab2f8621bbce9df9bd47653f"
+      },
+      "dimensions": [
+        960,
+        720
+      ],
+      "reuseLicenseEvidence": {
+        "DateTime": {
+          "value": "2025-08-03 13:10:30",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Vulcania Schlot",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Hans Hollein|Vulcania|Self-published work",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Freizeitpark in Frankreich",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2009-10-28 11:50:24",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Friedhelm_Dr%C3%B6ge\" title=\"User:Friedhelm Dröge\">Friedhelm Dröge</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "rootPersonalVisualReview": true,
+      "all24TextsPersonallyAuthoredAndReviewed": true,
+      "capturedAtUtc": null,
+      "dateDecision": "Historical month/year in caption, no UTC instant inferred.",
+      "classification": "Historical park view, noncurrent, private pending audit."
+    },
+    {
+      "stem": "photo-commons-08",
+      "source": {
+        "title": "File:Vulcania mars 2000.jpg",
+        "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_mars_2000.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vulcania_mars_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vulcania_mars_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "width": 521,
+        "height": 788,
+        "bytes": 458699,
+        "license": "CC BY-SA 4.0",
+        "artist": " Jules Rhin ",
+        "description": "Etat de la construction de Vulcania en mars 2000. Montage du cône suivant les plans de l'architecte autrichien Hans Hollein.",
+        "date": "2021-04-28 17:41:10",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Vulcania_mars_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "accessedAtUtc": "2026-11-15T16:47:29.275178+00:00",
+        "localFile": "candidate-08.jpg",
+        "status": 200,
+        "downloadBytes": 458699,
+        "sha256": "55e18c160f18d1f38c30c4608dfeba1d59b76375964c008a1fdbafe3f71ed20f"
+      },
+      "dimensions": [
+        521,
+        788
+      ],
+      "reuseLicenseEvidence": {
+        "DateTime": {
+          "value": "2021-04-28 16:54:23",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Vulcania mars 2000",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Vulcania|Self-published work",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Etat de la construction de Vulcania en mars 2000. Montage du cône suivant les plans de l'architecte autrichien Hans Hollein.",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2021-04-28 17:41:10",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Jules_Rhin\" title=\"User:Jules Rhin\">Jules Rhin</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY-SA 4.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution-Share Alike 4.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-sa-4.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      },
+      "rootPersonalVisualReview": true,
+      "all24TextsPersonallyAuthoredAndReviewed": true,
+      "capturedAtUtc": null,
+      "dateDecision": "Only caption month/year; no UTC instant inferred. Construction is March2000 per source description; conflicting2021 metadata is not a capture date.",
+      "classification": "Historical construction, not a current view."
+    }
+  ],
+  "pageAccess": [
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_-_Sietze_Kraak.jpg",
+      "atUtc": "2026-11-15T16:50:32.372458+00:00",
+      "status": 200,
+      "bytes": 115799,
+      "finalUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_-_Sietze_Kraak.jpg"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio.jpg",
+      "atUtc": "2026-11-15T16:50:33.265017+00:00",
+      "status": 200,
+      "bytes": 99192,
+      "finalUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio.jpg"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg",
+      "atUtc": "2026-11-15T16:50:34.143460+00:00",
+      "status": 200,
+      "bytes": 114891,
+      "finalUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Vulcania_janvier_2010.jpg",
+      "atUtc": "2026-11-15T16:50:34.815577+00:00",
+      "status": 200,
+      "bytes": 109605,
+      "finalUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_janvier_2010.jpg"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Vulcania_Schlot.jpg",
+      "atUtc": "2026-11-15T16:50:35.187522+00:00",
+      "status": 200,
+      "bytes": 96353,
+      "finalUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_Schlot.jpg"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Vulcania_mars_2000.jpg",
+      "atUtc": "2026-11-15T16:50:35.800726+00:00",
+      "status": 200,
+      "bytes": 98062,
+      "finalUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_mars_2000.jpg"
+    }
+  ],
+  "editorialIdempotence": {
+    "operationId": "e0c7630f-0bfc-409a-b90f-b02a7bccfbdc",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:47:41.6548389Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 4,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "entityKey": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "displayName": "Namazu",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77e77316-bdd5-4584-b437-068962f32241",
+        "entityKey": "vulcania-machine-terre",
+        "displayName": "Machine Terre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bce899da-5c92-4077-bf35-97a6e004db61",
+        "entityKey": "vulcania-cite-enfants",
+        "displayName": "Cité des enfants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "recoveryProof": "vulcania-photo-commons-05-recovery-20261115.json",
+  "fullAuditPerformed": false,
+  "sitePublicationPerformed": false
+}

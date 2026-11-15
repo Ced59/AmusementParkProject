@@ -1,0 +1,172 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "personallyAuthoredAndReviewedLanguages": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "sourceReceipts": [
+    {
+      "key": "region-history",
+      "url": "https://www.vulcania.com/vulcania-et-la-region-auvergne-rhone-alpes/",
+      "file": "region-history.html",
+      "accessedAtUtc": "2026-11-15T14:10:30.888950+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/vulcania-et-la-region-auvergne-rhone-alpes/",
+      "bytes": 131234,
+      "sha256": "7a4f86aaefd2b79cb26882b4f43d84ee940dec158a2b31ae2c51f8ce01d56d4f",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "key": "batiactu2002",
+      "url": "https://www.batiactu.com/edito/vulcania-sort-enfin-terre-11847.php",
+      "file": "batiactu2002.html",
+      "accessedAtUtc": "2026-11-15T14:10:38.698185+00:00",
+      "status": 200,
+      "finalUrl": "https://www.batiactu.com/edito/vulcania-sort-enfin-terre-11847.php",
+      "bytes": 75749,
+      "sha256": "7cf0f922624a427cf9b406937ce3d94307e0016db8ffbf2a1f5e6ca14277cbc3",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/machine-terre/",
+      "file": "machine-terre.html",
+      "accessedAtUtc": "2026-11-15T14:10:47.746333+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/machine-terre/",
+      "bytes": 150500,
+      "sha256": "9596a18d8699f84c1ab2aea5470d018906724631046685aa875b23b9a53e43c7"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/maurice-et-katia-krafft/",
+      "file": "krafft.html",
+      "accessedAtUtc": "2026-11-15T14:10:48.430763+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/maurice-et-katia-krafft/",
+      "bytes": 130500,
+      "sha256": "717387da158e40780039da89c473dc91ff08b1efd969f118f6652ac3ec0d1e8e"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/la-foret-des-dragons/",
+      "file": "foret-dragons.html",
+      "accessedAtUtc": "2026-11-15T14:12:05.165403+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/la-foret-des-dragons/",
+      "bytes": 122180,
+      "sha256": "67f24de17a0aa9060304b9e1dd50f104fd82b1204fe65e1c6356ca2d7fdfa426"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/cite-des-enfants/",
+      "file": "cite-enfants.html",
+      "accessedAtUtc": "2026-11-15T14:12:06.283351+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/cite-des-enfants/",
+      "bytes": 132795,
+      "sha256": "2773e1cddb9d6a1981d80a671dd31cde997affcaa08775f7854826a90eeec050"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/terre-de-volcans/",
+      "file": "immersion.html",
+      "accessedAtUtc": "2026-11-15T14:12:06.844435+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/terre-de-volcans/",
+      "bytes": 133644,
+      "sha256": "b6af8d077e42efcf902843a433e5c7c8b1a026852363482fc185c52498daa091"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/premier-envol/",
+      "finalUrl": "https://www.vulcania.com/animation/premier-envol/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:18.212416+00:00",
+      "file": "premier-envol.html",
+      "sha256": "9f4a79ab359849bfdbaf78768cd596ea4c15e64adc2da5cde7d3a7cc23c3058e"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/volcans-sacres/",
+      "finalUrl": "https://www.vulcania.com/animation/volcans-sacres/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:18.984100+00:00",
+      "file": "volcans-sacres.html",
+      "sha256": "3003caae0ff5e5e88775ee8c8662ed9a92734fd387e2cbf948b3efee0149e992"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/namazu/",
+      "finalUrl": "https://www.vulcania.com/animation/namazu/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:19.434858+00:00",
+      "file": "namazu.html",
+      "sha256": "22496798220c93f49d7a27d7670f346d2a038a950a7c451e44dacc2b5db72840"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/experiences-cest-show/",
+      "file": "experiences-show.html",
+      "accessedAtUtc": "2026-11-15T14:12:05.728862+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/experiences-cest-show/",
+      "bytes": 123513,
+      "sha256": "930f7b112e3539b45fd5daf27b1a01272941c3c83b691a80cccf9b6f7ff857ac"
+    }
+  ],
+  "visualReview": [
+    "Cone interior golden lining, photograph with promotional overlay; no import.",
+    "Namazu actual ride photograph with wooded volcanic relief; no new image added.",
+    "Planetarium exterior is a rendering; excluded as genuine park photograph."
+  ],
+  "structure": {
+    "fr": {
+      "headings": 3,
+      "paragraphs": 6,
+      "bodyWords": 356,
+      "sha256": "8eb4ce1c6e5da9d880df7d0a875fd84e1361713af6dbf306b0debdd52cb02b84"
+    },
+    "en": {
+      "headings": 3,
+      "paragraphs": 6,
+      "bodyWords": 316,
+      "sha256": "5a05f71462e3132f9b5b1f6ee776cb03fa65730792d29cf380934a2be59ce225"
+    },
+    "de": {
+      "headings": 3,
+      "paragraphs": 6,
+      "bodyWords": 306,
+      "sha256": "d27c1d2a68e3f78027730668e4e99fa93e12c30af0062fb956a7e1241ea69ee7"
+    },
+    "nl": {
+      "headings": 3,
+      "paragraphs": 6,
+      "bodyWords": 320,
+      "sha256": "e1b30dc589a7f67a861b40d60b4e49be5e45d8f354f59a7081e65bdacb95c406"
+    },
+    "it": {
+      "headings": 3,
+      "paragraphs": 6,
+      "bodyWords": 312,
+      "sha256": "d38b03acbe181d5db3d3b54303a2c01b1fbd28260bf2b5baa8ad9d99ab8137dc"
+    },
+    "es": {
+      "headings": 3,
+      "paragraphs": 6,
+      "bodyWords": 347,
+      "sha256": "420d50000d633155a50b936f80b472806c7fb57eb27faf85914e5bdc1ef70b60"
+    },
+    "pl": {
+      "headings": 3,
+      "paragraphs": 6,
+      "bodyWords": 275,
+      "sha256": "39598cae389708d497cc8a2e2cc2e68b573f2463c1292ecee09759a07e7f4267"
+    },
+    "pt": {
+      "headings": 3,
+      "paragraphs": 6,
+      "bodyWords": 323,
+      "sha256": "b04847e706484342a71f7e52e2738a578dde9e47f7f9a7fcac42c92eb84f9221"
+    }
+  },
+  "limits": "This is park text only, not a final corpus audit or completion of the44item descriptions. No artificial public opening day or timetable filled.",
+  "finalEditorialReview": "Generic final sentences about shared science and mascot atmosphere replaced with the specific comic interruption by Professor Yapadrisk in Expériences,c’estshow!, in all eight languages. All paragraphs personally reread, semantic alignment checked."
+}

@@ -1,0 +1,391 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-commons-05",
+    "source": {
+      "title": "File:Vulcania - panoramio (1).jpg",
+      "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Vulcania_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Vulcania_-_panoramio_%281%29.jpg/960px-Vulcania_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4288,
+      "height": 2848,
+      "bytes": 6111146,
+      "license": "CC BY 3.0",
+      "artist": " Sietze Kraak ",
+      "description": "Vulcania",
+      "date": "Taken on 10 August 2010",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Vulcania_-_panoramio_%281%29.jpg/960px-Vulcania_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "accessedAtUtc": "2026-11-15T16:47:28.128842+00:00",
+      "localFile": "candidate-05.jpg",
+      "status": 200,
+      "downloadBytes": 185014,
+      "sha256": "4fe25526888245f005301bde41d4be8692a18e7a5c7dba6c969771f73eeb2248"
+    },
+    "dimensions": [
+      960,
+      638
+    ],
+    "reuseLicenseEvidence": {
+      "DateTime": {
+        "value": "2016-11-20 16:09:31",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Vulcania - panoramio (1)",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Vulcania|Panoramio files uploaded by Panoramio upload bot|Panoramio images reviewed by trusted users|Photos from Panoramio|Files with coordinates missing SDC location of creation|France photographs taken on 2010-08-10|Photos from Panoramio ID 2703152",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "GPSLatitude": {
+        "value": "45.814275",
+        "source": "commons-desc-page"
+      },
+      "GPSLongitude": {
+        "value": "2.939422",
+        "source": "commons-desc-page"
+      },
+      "GPSMapDatum": {
+        "value": "WGS-84",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Vulcania",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "Taken on 10 August 2010",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://web.archive.org/web/20161017155553/http://www.panoramio.com/photo/44658216\">https://web.archive.org/web/20161017155553/http://www.panoramio.com/photo/44658216</a>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://web.archive.org/web/20161017155554/http://www.panoramio.com/user/2703152?with_photo_id=44658216\">Sietze Kraak</a>",
+        "source": "commons-desc-page"
+      },
+      "Permission": {
+        "value": "<div class=\"responsive-license-cc layouttemplate licensetpl\" dir=\"ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/120px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/250px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"744\" data-file-height=\"300\"></span></span><br>\n<span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/40px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/60px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"64\" data-file-height=\"64\"></span></span></div><div class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"//creativecommons.org/licenses/by/3.0/deed.en\" class=\"extiw\" title=\"creativecommons:by/3.0/deed.en\">Attribution 3.0 Unported</a> license.</div><div class=\"rlicense-attr\" style=\"font-weight: bold;\">Attribution: <div style=\"display:inline;font-size:larger;\" class=\"licensetpl_attr\">Sietze Kraak</div></div><div class=\"rlicense-desc\" style=\"text-align:start;\" dir=\"ltr\" lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> – to copy, distribute and transmit the work</li>\n<li><b>to remix</b> – to adapt the work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b> – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li></ul></dd></dl>\n</div><span class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/licenses/by/3.0</span><span class=\"licensetpl_short\" style=\"display:none;\">CC BY 3.0 </span><span class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Attribution 3.0 </span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div>\n<style data-mw-deduplicate=\"TemplateStyles:r901585720\">.mw-parser-output .panoramioreview{width:100%;margin:0.5em 0;background-color:var(--background-color-warning-subtle,#fffff0);padding:5px;border:1px solid var(--border-color-warning,#aa8);color:inherit}.mw-parser-output .panoramioreview-failed{background-color:var(--background-color-error-subtle,#fcc);color:inherit}.mw-parser-output .panoramioreview-passed{background-color:var(--background-color-success-subtle,#efe);color:inherit}</style>\n<table class=\"panoramioreview panoramioreview-passed\" lang=\"en\" dir=\"ltr\">\n\n<tbody><tr>\n<td><span typeof=\"mw:File\"><span><img alt=\"\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/60px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"48\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Checked_copyright_icon.svg/120px-Checked_copyright_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"160\" data-file-height=\"153\"></span></span>\n</td>\n<td>This image, which was originally posted to <b><span lang=\"en\" dir=\"ltr\"><a href=\"https://en.wikipedia.org/wiki/Panoramio\" class=\"extiw\" title=\"en:Panoramio\">Panoramio</a></span></b>, was automatically reviewed on 20 November 2016 by <b><a href=\"//commons.wikimedia.org/wiki/User:Panoramio_upload_bot\" title=\"User:Panoramio upload bot\">Panoramio upload bot</a></b>, who confirmed that it was available on Panoramio under the above license on that date.\n</td>\n<td><span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:Star_and_ring.svg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/60px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"50\" height=\"50\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Star_and_ring.svg/120px-Star_and_ring.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"75\" data-file-height=\"75\"></a></span>\n</td></tr></tbody></table>",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseShortName": {
+        "value": "CC BY 3.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution 3.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Attribution": {
+        "value": "Sietze Kraak",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/3.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-3.0",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    },
+    "rootPersonalVisualReview": true,
+    "all24TextsPersonallyAuthoredAndReviewed": true,
+    "capturedAtUtc": null,
+    "dateDecision": "Historical month/year in caption, no UTC instant inferred.",
+    "classification": "Historical park view, noncurrent, private pending audit."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/commons-media-1646/candidate-05.jpg",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-commons-05-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-commons-05-import-result.json"
+  },
+  "metadata": {
+    "description": "Le parc et les reliefs de la Chaîne des Puys vus depuis les jardins, en août 2010.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg",
+    "isPublished": false,
+    "isCurrent": false,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vue de Vulcania depuis les jardins, avec le cône gris et doré, les bâtiments bas et un puy boisé en arrière-plan."
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcania seen from the gardens, with its grey and golden cone, low buildings and a wooded volcanic hill behind."
+      },
+      {
+        "languageCode": "de",
+        "value": "Blick aus den Gärten auf Vulcania mit dem grauen und goldfarbenen Kegel, niedrigen Gebäuden und einem bewaldeten Vulkankegel im Hintergrund."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vulcania gezien vanuit de tuinen, met de grijze en goudkleurige kegel, lage gebouwen en een beboste vulkaanheuvel op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vulcania vista dai giardini, con il cono grigio e dorato, gli edifici bassi e un rilievo vulcanico boscoso sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vulcania vista desde los jardines, con el cono gris y dorado, edificios bajos y un relieve volcánico arbolado al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Widok na Vulcanię z ogrodów: szaro-złocisty stożek, niskie budynki i zalesione wzgórze wulkaniczne w tle."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vulcania vista dos jardins, com o cone cinzento e dourado, os edifícios baixos e uma colina vulcânica arborizada ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le parc et les reliefs de la Chaîne des Puys vus depuis les jardins, en août 2010."
+      },
+      {
+        "languageCode": "en",
+        "value": "The park and the hills of the Chaîne des Puys seen from the gardens in August 2010."
+      },
+      {
+        "languageCode": "de",
+        "value": "Park und Hügel der Chaîne des Puys von den Gärten aus gesehen, August 2010."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het park en de heuvels van de Chaîne des Puys vanuit de tuinen, augustus 2010."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il parco e i rilievi della Chaîne des Puys visti dai giardini, agosto 2010."
+      },
+      {
+        "languageCode": "es",
+        "value": "El parque y los relieves de la Chaîne des Puys desde los jardines, agosto de 2010."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Park i wzgórza Chaîne des Puys widziane z ogrodów, sierpień 2010 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O parque e os relevos da Chaîne des Puys vistos dos jardins, agosto de 2010."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+      }
+    ]
+  },
+  "receipt": {
+    "action": "UpdatePhotoMetadata",
+    "startedAtUtc": "2026-11-15T16:56:11.0148786Z",
+    "receivedAtUtc": "2026-11-15T16:56:14.9301062Z",
+    "result": {
+      "id": "db289dbe8d05476d8918eb31ddd1f1ad",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/db289dbe8d05476d8918eb31ddd1f1ad",
+      "description": "Le parc et les reliefs de la Chaîne des Puys vus depuis les jardins, en août 2010.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 960,
+      "height": 638,
+      "sizeInBytes": 185014,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_-_panoramio_(1).jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue de Vulcania depuis les jardins, avec le cône gris et doré, les bâtiments bas et un puy boisé en arrière-plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania seen from the gardens, with its grey and golden cone, low buildings and a wooded volcanic hill behind."
+        },
+        {
+          "languageCode": "de",
+          "value": "Blick aus den Gärten auf Vulcania mit dem grauen und goldfarbenen Kegel, niedrigen Gebäuden und einem bewaldeten Vulkankegel im Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania gezien vanuit de tuinen, met de grijze en goudkleurige kegel, lage gebouwen en een beboste vulkaanheuvel op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vulcania vista dai giardini, con il cono grigio e dorato, gli edifici bassi e un rilievo vulcanico boscoso sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vulcania vista desde los jardines, con el cono gris y dorado, edificios bajos y un relieve volcánico arbolado al fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok na Vulcanię z ogrodów: szaro-złocisty stożek, niskie budynki i zalesione wzgórze wulkaniczne w tle."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vulcania vista dos jardins, com o cone cinzento e dourado, os edifícios baixos e uma colina vulcânica arborizada ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le parc et les reliefs de la Chaîne des Puys vus depuis les jardins, en août 2010."
+        },
+        {
+          "languageCode": "en",
+          "value": "The park and the hills of the Chaîne des Puys seen from the gardens in August 2010."
+        },
+        {
+          "languageCode": "de",
+          "value": "Park und Hügel der Chaîne des Puys von den Gärten aus gesehen, August 2010."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het park en de heuvels van de Chaîne des Puys vanuit de tuinen, augustus 2010."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il parco e i rilievi della Chaîne des Puys visti dai giardini, agosto 2010."
+        },
+        {
+          "languageCode": "es",
+          "value": "El parque y los relieves de la Chaîne des Puys desde los jardines, agosto de 2010."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Park i wzgórza Chaîne des Puys widziane z ogrodów, sierpień 2010 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O parque e os relevos da Chaîne des Puys vistos dos jardins, agosto de 2010."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Sietze Kraak. Wikimedia Commons, CC BY 3.0. https://creativecommons.org/licenses/by/3.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:52:15.335Z",
+      "updatedAt": "2026-11-15T16:56:11.835Z"
+    },
+    "recoveryNote": "This is the actual UpdatePhotoMetadata receipt, NOT a successful ImportPhoto receipt. Original import HTTP502 after upload/link; createdAt recovered from this metadata response. No reupload."
+  },
+  "personalReview": "Original downloaded binary personally viewed,24localizedmetadata fields personally authored and reviewed, no cropping/compression/localtransform, no UTC capture invented. Historical image noncurrent and private.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,197 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "languagesPersonallyAuthoredAndReviewed": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "localizedDescriptionCount": 24,
+  "sourceReceipts": [
+    {
+      "url": "https://www.vulcania.com/animation/machine-terre/",
+      "file": "machine-terre.html",
+      "accessedAtUtc": "2026-11-15T14:10:47.746333+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/machine-terre/",
+      "bytes": 150500,
+      "sha256": "9596a18d8699f84c1ab2aea5470d018906724631046685aa875b23b9a53e43c7"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/cite-des-enfants/",
+      "file": "cite-enfants.html",
+      "accessedAtUtc": "2026-11-15T14:12:06.283351+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/cite-des-enfants/",
+      "bytes": 132795,
+      "sha256": "2773e1cddb9d6a1981d80a671dd31cde997affcaa08775f7854826a90eeec050"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/namazu/",
+      "finalUrl": "https://www.vulcania.com/animation/namazu/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:19.434858+00:00",
+      "file": "namazu.html",
+      "sha256": "22496798220c93f49d7a27d7670f346d2a038a950a7c451e44dacc2b5db72840"
+    }
+  ],
+  "semanticReview": "Alllanguages retain the same scene, fictional framing and educational themes. FinalFR/ENCitéparagraphs aligned to otherlanguages without generic comparison sentence. MachineTerre butterfly is a symbolic companion, no invented central physical butterfly around which displays would be arranged. Namazu deity unnamed in all languages; no fabricated scenario beyond official account.",
+  "structure": {
+    "Namazu": {
+      "fr": {
+        "words": 166,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "2543294fcf196ebbb831a7659937c0004ce2afa6d66d63675d4709b216f14cd1"
+      },
+      "en": {
+        "words": 168,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "1221e8d837a50c35e08c41c165009486f5c701f866c71a22fb07faf7a72467dc"
+      },
+      "de": {
+        "words": 154,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "daf189054c0d7af72724e5a5f3e0823dba0f2473ad3d3dd8176fd8aa748076e6"
+      },
+      "nl": {
+        "words": 156,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "5c46ac398b4d48c0b6091cdd555455d716de0be3954b0a8fd1d225fdcb054cb2"
+      },
+      "it": {
+        "words": 154,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "96c93517b2ba3b48979a5421f5f4a5cc5a55606e7c4b657048fe21f0bf1c05ac"
+      },
+      "es": {
+        "words": 171,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "e44e20c823a47fa670f985edcb770065b1a2d557facf4e10926eaba4adfade6e"
+      },
+      "pl": {
+        "words": 128,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "6e43fff24877ff854d9bb5a00adb88e2a913944e8bcc5ae142f064f19fd02754"
+      },
+      "pt": {
+        "words": 160,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "50e5bdb86ed25f71a9bbf1842b7c3fd4302271f121f73d46562c5a56e6c878d2"
+      }
+    },
+    "Machine Terre": {
+      "fr": {
+        "words": 176,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "a9467728157f249387b0f05658f6f87daf9d3a15861d45984c37e730b6269acb"
+      },
+      "en": {
+        "words": 158,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "38a27cd9414557514377f7915d23655b9a5355542f03cc554e29d50b69751554"
+      },
+      "de": {
+        "words": 156,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "f495e4f7f95a37595fc28bedd755db3767a30ac11cbcc557bddb143032c4070b"
+      },
+      "nl": {
+        "words": 173,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "a7011096ad790445cb0156b5b8b7052eca3875eeae76ecb842cc22879bbdf194"
+      },
+      "it": {
+        "words": 161,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "fb486ccae284645ff146aa50dd275a441b6acbd0817242797b3a000004ddcb7e"
+      },
+      "es": {
+        "words": 178,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "fed9fb73bbf32c967a8ebca34bd2f6674039d966b0a933b4f576648b2af03d2b"
+      },
+      "pl": {
+        "words": 124,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "aa757c5d71abbb7e4d1b021a7077da81c908641e459e3f3fcc370721df2acc33"
+      },
+      "pt": {
+        "words": 166,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "b7c53f46503862a8f1d00d1548fdc1245841b95a1b270a8b5fa9bd24e2e1651f"
+      }
+    },
+    "Cité des enfants": {
+      "fr": {
+        "words": 180,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "48b947c1edb3cafb1f713620dcd02d7a2d69dade013b5fdb2c83dee6765a0cdd"
+      },
+      "en": {
+        "words": 140,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "889ebcfbd5862d2893599b2802b6ef5358338b725d8bf588ce79bcb2cba633d6"
+      },
+      "de": {
+        "words": 136,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "b925ab287c5fc11ecf958b6c41eae75788fd74c004534aa78161dfcf1d55b8e1"
+      },
+      "nl": {
+        "words": 143,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "a88295edf82d3fb45b5a1a34d63facc3969d4db2a4cf2fb78554405c5a9e4524"
+      },
+      "it": {
+        "words": 144,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "d411dfdad676245e434b4b204e5ed7b658d830b79a1a5ed2b9dc87ec8045d7db"
+      },
+      "es": {
+        "words": 163,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "2fc3e48391b75852dcd3b60268d8abece041ffe7fae567d5cb78c21aa759241e"
+      },
+      "pl": {
+        "words": 131,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "7de33c28088fbabecc3faac473143b0c7e3c2d807810ce66712689c4b11083b0"
+      },
+      "pt": {
+        "words": 153,
+        "headings": 2,
+        "paragraphs": 3,
+        "sha256": "74cf3c93bf007b14eaf31f3648a8c25f93261da1094553a7399b9965d28ac698"
+      }
+    }
+  },
+  "exactTenWordSequencesAfterNamesAndHeadingsRemoved": [],
+  "publication": false
+}

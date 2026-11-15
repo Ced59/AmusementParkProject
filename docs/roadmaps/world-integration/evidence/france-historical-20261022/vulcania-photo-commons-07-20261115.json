@@ -1,0 +1,367 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-commons-07",
+    "source": {
+      "title": "File:Vulcania Schlot.jpg",
+      "descriptionPage": "https://commons.wikimedia.org/wiki/File:Vulcania_Schlot.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Vulcania_Schlot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Vulcania_Schlot.jpg/960px-Vulcania_Schlot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2592,
+      "height": 1944,
+      "bytes": 1231084,
+      "license": "CC BY 4.0",
+      "artist": " Friedhelm Dröge ",
+      "description": "Freizeitpark in Frankreich",
+      "date": "2009-10-28 11:50:24",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Vulcania_Schlot.jpg/960px-Vulcania_Schlot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "accessedAtUtc": "2026-11-15T16:47:28.951202+00:00",
+      "localFile": "candidate-07.jpg",
+      "status": 200,
+      "downloadBytes": 238841,
+      "sha256": "2cbd93b77fe9a21c6177f231bed5dc67d4574372ab2f8621bbce9df9bd47653f"
+    },
+    "dimensions": [
+      960,
+      720
+    ],
+    "reuseLicenseEvidence": {
+      "DateTime": {
+        "value": "2025-08-03 13:10:30",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Vulcania Schlot",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Hans Hollein|Vulcania|Self-published work",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Freizeitpark in Frankreich",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2009-10-28 11:50:24",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Friedhelm_Dr%C3%B6ge\" title=\"User:Friedhelm Dröge\">Friedhelm Dröge</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution 4.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-4.0",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    },
+    "rootPersonalVisualReview": true,
+    "all24TextsPersonallyAuthoredAndReviewed": true,
+    "capturedAtUtc": null,
+    "dateDecision": "Historical month/year in caption, no UTC instant inferred.",
+    "classification": "Historical park view, noncurrent, private pending audit."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_Schlot.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/commons-media-1646/candidate-07.jpg",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-commons-07-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-commons-07-import-result.json"
+  },
+  "metadata": {
+    "description": "La paroi dorée du cône au-dessus des bâtiments de Vulcania, en octobre 2009.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_Schlot.jpg",
+    "isPublished": false,
+    "isCurrent": false,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Façade vitrée et terrasse de Vulcania devant le cône ouvert sur sa paroi dorée, entre des arbres et une pelouse."
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcania’s glass frontage and terrace beneath the open cone’s golden inner wall, among trees and lawn."
+      },
+      {
+        "languageCode": "de",
+        "value": "Glasfassade und Terrasse von Vulcania vor der goldfarbenen Innenwand des offenen Kegels, zwischen Bäumen und Rasen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Glazen gevel en terras van Vulcania onder de goudkleurige binnenwand van de open kegel, tussen bomen en gazon."
+      },
+      {
+        "languageCode": "it",
+        "value": "Facciata vetrata e terrazza di Vulcania davanti alla parete dorata del cono aperto, tra alberi e prato."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fachada acristalada y terraza de Vulcania ante la pared dorada del cono abierto, entre árboles y césped."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Przeszklona fasada i taras Vulcanii przed złocistą ścianą otwartego stożka, wśród drzew i trawnika."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fachada envidraçada e terraço de Vulcania diante da parede dourada do cone aberto, entre árvores e relvado."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La paroi dorée du cône au-dessus des bâtiments de Vulcania, en octobre 2009."
+      },
+      {
+        "languageCode": "en",
+        "value": "The cone’s golden wall above Vulcania’s buildings in October 2009."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die goldfarbene Kegelwand über den Gebäuden von Vulcania im Oktober 2009."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De goudkleurige wand van de kegel boven de gebouwen van Vulcania in oktober 2009."
+      },
+      {
+        "languageCode": "it",
+        "value": "La parete dorata del cono sopra gli edifici di Vulcania, nell’ottobre 2009."
+      },
+      {
+        "languageCode": "es",
+        "value": "La pared dorada del cono sobre los edificios de Vulcania, en octubre de 2009."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Złocista ściana stożka ponad budynkami Vulcanii, październik 2009 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A parede dourada do cone acima dos edifícios de Vulcania, em outubro de 2009."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "c196e76eafc343fabd54b180e5457dc8",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "park/c196e76eafc343fabd54b180e5457dc8",
+      "description": "La paroi dorée du cône au-dessus des bâtiments de Vulcania, en octobre 2009.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 960,
+      "height": 720,
+      "sizeInBytes": 238841,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vulcania_Schlot.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Façade vitrée et terrasse de Vulcania devant le cône ouvert sur sa paroi dorée, entre des arbres et une pelouse."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania’s glass frontage and terrace beneath the open cone’s golden inner wall, among trees and lawn."
+        },
+        {
+          "languageCode": "de",
+          "value": "Glasfassade und Terrasse von Vulcania vor der goldfarbenen Innenwand des offenen Kegels, zwischen Bäumen und Rasen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Glazen gevel en terras van Vulcania onder de goudkleurige binnenwand van de open kegel, tussen bomen en gazon."
+        },
+        {
+          "languageCode": "it",
+          "value": "Facciata vetrata e terrazza di Vulcania davanti alla parete dorata del cono aperto, tra alberi e prato."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fachada acristalada y terraza de Vulcania ante la pared dorada del cono abierto, entre árboles y césped."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przeszklona fasada i taras Vulcanii przed złocistą ścianą otwartego stożka, wśród drzew i trawnika."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fachada envidraçada e terraço de Vulcania diante da parede dourada do cone aberto, entre árvores e relvado."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La paroi dorée du cône au-dessus des bâtiments de Vulcania, en octobre 2009."
+        },
+        {
+          "languageCode": "en",
+          "value": "The cone’s golden wall above Vulcania’s buildings in October 2009."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die goldfarbene Kegelwand über den Gebäuden von Vulcania im Oktober 2009."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De goudkleurige wand van de kegel boven de gebouwen van Vulcania in oktober 2009."
+        },
+        {
+          "languageCode": "it",
+          "value": "La parete dorata del cono sopra gli edifici di Vulcania, nell’ottobre 2009."
+        },
+        {
+          "languageCode": "es",
+          "value": "La pared dorada del cono sobre los edificios de Vulcania, en octubre de 2009."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Złocista ściana stożka ponad budynkami Vulcanii, październik 2009 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A parede dourada do cone acima dos edifícios de Vulcania, em outubro de 2009."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Friedhelm Dröge. Wikimedia Commons, CC BY 4.0. https://creativecommons.org/licenses/by/4.0"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T16:57:03.161Z",
+      "updatedAt": "2026-11-15T16:57:06.614Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T16:57:09.7197257Z",
+    "startedAtUtc": "2026-11-15T16:57:01.3846283Z"
+  },
+  "personalReview": "Original downloaded binary personally viewed,24localizedmetadata fields personally authored and reviewed, no cropping/compression/localtransform, no UTC capture invented. Historical image noncurrent and private.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

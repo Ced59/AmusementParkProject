@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T15:29:20.1021724Z",
+  "lastDataIntegrationAt": "2026-11-15T16:57:12.36Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,20 +139,72 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 4,
-  "realImportCount": 0,
-  "lastOperationId": "0f39c1be-ad52-4349-b4d3-c8b2d3064da4",
+  "realApplyCount": 6,
+  "realImportCount": 6,
+  "lastOperationId": null,
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-03-current-attractions-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-04-current-offers-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-04-current-offers-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-05-park-description-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-06-first-item-descriptions-20261115.json"
   ],
   "currentCoverage": {
     "items": 44,
     "publicItems": 0,
-    "describedItems8Languages": 0,
+    "describedItems8Languages": 3,
     "zones": 0,
-    "ownMedia": 0
-  }
+    "ownMedia": 6,
+    "privateOwnMedia": 6
+  },
+  "lastApplyOperationId": "1845e50b-2c2a-4672-aa78-12daa1fa977a",
+  "photoImports": [
+    {
+      "imageId": "7455ffc28d574c158809574ac5c022bd",
+      "createdAt": "2026-11-15T16:51:42.968Z",
+      "proof": "vulcania-photo-commons-03-20261115.json"
+    },
+    {
+      "imageId": "3656194cc2cf40c8a1f02b9390da5010",
+      "createdAt": "2026-11-15T16:52:05.512Z",
+      "proof": "vulcania-photo-commons-04-20261115.json"
+    },
+    {
+      "imageId": "db289dbe8d05476d8918eb31ddd1f1ad",
+      "createdAt": "2026-11-15T16:52:15.335Z",
+      "proof": "vulcania-photo-commons-05-20261115.json"
+    },
+    {
+      "imageId": "0cd6c65c08224e81be09418fc0da591d",
+      "createdAt": "2026-11-15T16:56:53.084Z",
+      "proof": "vulcania-photo-commons-06-20261115.json"
+    },
+    {
+      "imageId": "c196e76eafc343fabd54b180e5457dc8",
+      "createdAt": "2026-11-15T16:57:03.161Z",
+      "proof": "vulcania-photo-commons-07-20261115.json"
+    },
+    {
+      "imageId": "8b9479d31a074fc98a5468865e32759e",
+      "createdAt": "2026-11-15T16:57:12.36Z",
+      "proof": "vulcania-photo-commons-08-20261115.json"
+    }
+  ],
+  "photoMetadataUpdates": [
+    {
+      "imageId": "db289dbe8d05476d8918eb31ddd1f1ad",
+      "updatedAt": "2026-11-15T16:56:11.835Z",
+      "proof": "vulcania-photo-commons-05-recovery-20261115.json"
+    }
+  ],
+  "photoRecoveryProof": "vulcania-photo-commons-05-recovery-20261115.json",
+  "editorialIdempotenceProof": "vulcania-commons-media-followup-20261115.json",
+  "nextSteps": [
+    "Remaining41item descriptions and historical/service inventory",
+    "Current official logo and annual maps",
+    "References, history and articles",
+    "Qualified positions, pricing and published calendar",
+    "Single full audit and authorized publication with recorded score/date/hour exception"
+  ]
 }
