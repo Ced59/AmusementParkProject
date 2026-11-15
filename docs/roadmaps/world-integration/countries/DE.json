@@ -24071,18 +24071,49 @@
       "siteId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:18:42.288Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Non vérifié",
+      "sourceLifecycleSignal": "Exploitation au jour le jour selon météo et piste sèche ; 15 novembre 2026 fermé pour humidité et gel sur la page horaire officielle.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:17:07.439Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-0b1e4224-2e30-4390-93af-e8e1bee77995",
+          "appliedAt": "2026-11-15T15:15:55.960Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+          "evidence": "PARK_DATA_EDITOR:apply:0b1e4224-2e30-4390-93af-e8e1bee77995",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-classic-20261115/audit.json",
+          "summary": "Huit descriptions, huit tarifs 2026, accès depuis la station intermédiaire et fermeture météo du 15 novembre intégrés."
+        },
+        {
+          "eventId": "image-47feaeafca424dc5916afb0bccda7093",
+          "appliedAt": "2026-11-15T15:16:25.433Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+          "evidence": "PARK_DATA_EDITOR:image:47feaeafca424dc5916afb0bccda7093@2026-11-15T15:16:25.433Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-classic-20261115/audit.json",
+          "summary": "Photo exacte de la piste en auge et du télésiège, Strubbl, CC BY-SA 4.0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "apply-0bec5e94-fc58-4278-8808-754e49c33e21",
+          "appliedAt": "2026-11-15T15:17:07.439Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+          "evidence": "PARK_DATA_EDITOR:apply:0bec5e94-fc58-4278-8808-754e49c33e21",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-blomberg-classic-20261115/audit.json",
+          "summary": "Libellés des offres précisés dans les huit langues ; contrôle final à 92/100 sans blocage."
+        }
+      ],
+      "nextAction": "Contrôler chaque nouveau jour et la saison 2027 sur le calendrier officiel ; vérifier les droits des trois anciennes images.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -24093,6 +24124,21 @@
           "label": "Site officiel enregistré (à revérifier)",
           "url": "https://www.der-blomberg.de/sommerrodelbahn",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — tarifs 2026",
+          "url": "https://www.der-blomberg.de/blomberg-preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — horaires quotidiens",
+          "url": "https://www.der-blomberg.de/oeffnungszeiten",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Ende_der_Sommerrodelbahn_am_Blomberg_2024-09-21.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
