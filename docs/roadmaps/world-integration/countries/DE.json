@@ -16542,29 +16542,132 @@
     },
     {
       "entryId": "DE-candidate-standalone-565d6e02d9562d",
-      "name": "Luge Wiegand — Stausee Oberwald, Callenberg",
-      "entityKind": "ToQualify",
+      "name": "Sparkassen-Sommerrodelbahn am Stausee Oberwald",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Stausee Oberwald, 09337 Callenberg, Saxe",
+      "siteId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T02:16:57.049Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitant consulté le 2026-11-15 : piste fermée en attente de la nouvelle saison.",
+      "identityConfidence": "Piste autonome à billet propre confirmée sur le site de l’exploitant ; aucun Park ni StandaloneAttraction existant dans les recherches de l’éditeur.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Stausee Oberwald, Callenberg"
+        "Sommerrodelbahn Stausee Oberwald",
+        "Luge Wiegand — Stausee Oberwald, Callenberg",
+        "Sommerrodelbahn Callenberg"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T02:15:58.331Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1b23ddc8-d566-4269-9b83-e82026f617d3",
+          "appliedAt": "2026-11-15T02:10:53.131Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:apply:1b23ddc8-d566-4269-9b83-e82026f617d3",
+          "auditEvidence": null,
+          "summary": "Création de la fiche autonome et huit descriptions."
+        },
+        {
+          "eventId": "apply-b0bdf27e-4894-479c-bbe9-352cec9d5b1d",
+          "appliedAt": "2026-11-15T02:11:48.437Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:apply:b0bdf27e-4894-479c-bbe9-352cec9d5b1d",
+          "auditEvidence": null,
+          "summary": "Longueur officielle de descente, condition d’accès et statut saisonnier."
+        },
+        {
+          "eventId": "image-cda8e0bc8bc7407cb5c3ecdf67836df3",
+          "appliedAt": "2026-11-15T02:12:38.482Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:cda8e0bc8bc7407cb5c3ecdf67836df3",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-123a9d1468a242b2b4e5fbd19cb0f287",
+          "appliedAt": "2026-11-15T02:12:55.008Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:123a9d1468a242b2b4e5fbd19cb0f287",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-e7f3ca38cf2347eaa6c9361109236660",
+          "appliedAt": "2026-11-15T02:13:13.226Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:e7f3ca38cf2347eaa6c9361109236660",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-cda8e0bc8bc7407cb5c3ecdf67836df3",
+          "appliedAt": "2026-11-15T02:14:26.701Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:cda8e0bc8bc7407cb5c3ecdf67836df3",
+          "auditEvidence": null,
+          "summary": "Description spécifique, crédits et licence confirmés."
+        },
+        {
+          "eventId": "image-metadata-123a9d1468a242b2b4e5fbd19cb0f287",
+          "appliedAt": "2026-11-15T02:14:37.547Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:123a9d1468a242b2b4e5fbd19cb0f287",
+          "auditEvidence": null,
+          "summary": "Description spécifique, crédits et licence confirmés."
+        },
+        {
+          "eventId": "image-metadata-e7f3ca38cf2347eaa6c9361109236660",
+          "appliedAt": "2026-11-15T02:14:48.404Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:e7f3ca38cf2347eaa6c9361109236660",
+          "auditEvidence": null,
+          "summary": "Description spécifique, crédits et licence confirmés."
+        },
+        {
+          "eventId": "apply-4335c578-8b53-4d5c-a529-148bfed54ceb",
+          "appliedAt": "2026-11-15T02:15:58.331Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:apply:4335c578-8b53-4d5c-a529-148bfed54ceb",
+          "auditEvidence": null,
+          "summary": "Huit descriptions corrigées pour supprimer les mesures techniques brutes."
+        },
+        {
+          "eventId": "closure-b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "appliedAt": "2026-11-15T02:15:58.331Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:apply:4335c578-8b53-4d5c-a529-148bfed54ceb",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-oberwald-20261115/audit.json",
+          "summary": "Audit final : huit pages et trois photos HTTP 200, complétude 74 sans bloqueur, Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et sa date réelle. Revoir la prochaine ouverture, les horaires propres à la piste et les tarifs alors en vigueur ; trois photos exactes et la publication Facebook sont déjà intégrées.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16575,22 +16678,47 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.stausee-oberwald.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Stausee Oberwald — piste et caractéristiques",
+          "url": "https://www.stausee-oberwald.de/rodeln",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Stausee Oberwald — statut saisonnier",
+          "url": "https://www.stausee-oberwald.de/oeffnungszeiten-eintritt",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Kora27, CC BY-SA 3.0, photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:370_m_lange_Sommerrodelbahn_am_Stausee_Oberwald..IMG_7399WI.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Kora27, CC BY-SA 3.0, photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn._Stausee_Oberwald...IMG_7392WI.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Kora27, CC BY-SA 3.0, photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn._Stausee_Oberwald..IMG_7406WI.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Stausee Oberwald, Callenberg",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1247",
+            "name": "Sparkassen-Sommerrodelbahn am Stausee Oberwald",
+            "source": "Stausee Oberwald",
+            "url": "https://www.stausee-oberwald.de/rodeln",
             "family": "Luge d’été",
-            "sourceVenueName": "Stausee Oberwald, Callenberg",
-            "referenceId": "location-id-1247"
+            "sourceVenueName": "Stausee Oberwald",
+            "sourceLocality": "Callenberg"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste fixe avec billet de luge distinct dans un domaine de baignade, camping et loisirs ; intégration en StandaloneAttraction, pas de création Park."
       }
     },
     {
@@ -25135,23 +25263,31 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Domaine de loisirs lacustre avec baignade, camping, minigolf et luge ; la piste à billet séparé a sa fiche autonome publiée.",
+      "identityConfidence": "L’exploitant décrit le Stausee Oberwald comme une aire de loisirs ; sa luge d’été est intégrée dans la ligne standalone liée. Aucune fiche Park supplémentaire à créer.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Décider parc, standalone, équipement interne ou hors périmètre avant toute création ; vérifier l’identité et les doublons.",
+      "nextAction": "Conserver cette ligne de découverte comme lieu de rattachement, sans créer un faux parc ; la piste autonome est intégrée sous DE-candidate-standalone-565d6e02d9562d.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/stausee-oberwald/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Stausee Oberwald — offre du domaine et piste distincte",
+          "url": "https://www.stausee-oberwald.de/rodeln",
+          "accessedAt": "2026-11-15"
         }
+      ],
+      "possibleBacklogEntries": [
+        "DE-candidate-standalone-565d6e02d9562d"
       ]
     },
     {
