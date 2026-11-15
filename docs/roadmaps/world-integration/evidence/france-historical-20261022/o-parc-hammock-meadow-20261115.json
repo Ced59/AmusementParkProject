@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T04:35:59.148Z",
+  "result": {
+    "id": "e0f48f45039b4d06a10d8153d6eb705e",
+    "category": "PARK",
+    "ownerType": "PARK",
+    "ownerId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "path": "park/e0f48f45039b4d06a10d8153d6eb705e",
+    "description": "Un hamac à l’ombre, au bord de la prairie d’Ô Parc.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 720,
+    "height": 960,
+    "sizeInBytes": 144428,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.koikispass.com/wp-content/uploads/2020/10/o-parc-1.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une personne lit dans un hamac rayé à l’ombre des arbres, devant les tables de pique-nique et les gonflables d’Ô Parc."
+      },
+      {
+        "languageCode": "en",
+        "value": "A person reads in a striped hammock under the trees, with Ô Parc’s picnic tables and inflatables beyond."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Person liest in einer gestreiften Hängematte im Baumschatten; dahinter stehen Picknicktische und Hüpfanlagen von Ô Parc."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Iemand leest in een gestreepte hangmat onder de bomen, met de picknicktafels en springkussens van Ô Parc op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una persona legge su un’amaca a righe all’ombra degli alberi, davanti ai tavoli da picnic e ai gonfiabili di Ô Parc."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una persona lee en una hamaca de rayas a la sombra de los árboles, ante las mesas de pícnic y los hinchables de Ô Parc."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Osoba czyta w pasiastym hamaku w cieniu drzew, a za nią widać stoły piknikowe i dmuchańce Ô Parc."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma pessoa lê numa rede às riscas à sombra das árvores, diante das mesas de piquenique e dos insufláveis do Ô Parc."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un hamac à l’ombre, au bord de la prairie d’Ô Parc."
+      },
+      {
+        "languageCode": "en",
+        "value": "A shaded hammock beside Ô Parc’s meadow."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Hängematte im Schatten am Rand der Wiese von Ô Parc."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een hangmat in de schaduw aan de rand van het grasveld van Ô Parc."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un’amaca all’ombra, sul margine del prato di Ô Parc."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una hamaca a la sombra, junto a la pradera de Ô Parc."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Hamak w cieniu na skraju łąki Ô Parc."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma rede à sombra, junto ao prado do Ô Parc."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Koikispass"
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Koikispass"
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Koikispass"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Koikispass"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Koikispass"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Koikispass"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Koikispass"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Koikispass"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T04:35:55.579Z",
+    "updatedAt": "2026-11-15T04:35:59.148Z"
+  },
+  "sourceEvidence": {
+    "stem": "hammock-meadow",
+    "path": "/workspace/france-historical-20261114/o-parc/source-images/koikispass-o-parc-1.jpg",
+    "sourcePage": "https://www.koikispass.com/evadez-vous-8-escapades-insolites-dans-la-nievre/",
+    "url": "https://www.koikispass.com/wp-content/uploads/2020/10/o-parc-1.jpg",
+    "photographer": "Photographer not individually credited; source Koikispass. Page originally published2017,updated2024, image URL2020 does not establish capturedate.",
+    "sha256": "e6fd467afe2a99a34ea8d7a74199dbc4023916b68ca59620a63a168e8ec6bb97",
+    "review": "Original inspecté personnellement, distinct des médias existants, sans filigrane, intact ; huit langues rédigées et relues. Prise de vue non datée, privée, noncourante. Aucun usage de la date de publication comme date de photo.",
+    "rights": "Owner authorized researched photographs; no open licence asserted",
+    "ownerType": "PARK",
+    "ownerId": "6644b892-d03c-461e-855d-a61cadba76f4"
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original source inspecté personnellement ; page source et identité vérifiées, crédit exact de la source conservé sans inventer de photographe individuel. Alternative, légende et crédit relus dans les huit langues. Aucun recadrage ni image générée."
+}

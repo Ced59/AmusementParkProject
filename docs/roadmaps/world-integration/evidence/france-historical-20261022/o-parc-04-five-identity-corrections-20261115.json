@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "33cd5889eb16602a9d17268a0ed07c081f83c5da352fe274d31f94518951cdd5",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "cfb47c19-3212-4abe-b20d-042912ba2c57",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T04:31:18.2468626Z",
+    "appliedAtUtc": "2026-11-15T04:31:18.2468643Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "495fea26-5385-456e-beab-b875c69e7d95",
+        "entityKey": "495fea26-5385-456e-beab-b875c69e7d95",
+        "displayName": "Saloon",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Saloon</h2><p>Der Saloon war ein kleines offenes Holzgebäude mit einer Fassade nach Vorbildern des amerikanischen Westens.</p><h2>Eine kleine Westernkulisse</h2><p>Im Inneren konnten kleine Kinder den Unterstand je nach eigener Geschichte in Haus, Theke oder Bühne verwandeln.</p><p>Am hinteren Ende der Baby Zone ergänzte die Kulisse die Bewegungsgeräte um freies Rollenspiel.</p>",
+            "newValue": "<h2>Ein aufblasbarer Saloon</h2><p>Saloon verlieh einer kleinen Hüpfanlage in der Baby Zone eine Westernkulisse. Auf dem Plan von 2025 umrahmte die rosa-blaue Fassade einen mittigen Eingang mit nach oben gerichteten Verzierungen.</p><h2>Die Spiele der Baby Zone</h2><p>Hier standen auch Baby Volcan, Poulailler, Piscine à balles und Aire de jeux. Der Plan zeigte ihn neben dem Poulailler, nahe dem Gastronomiechalet.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Saloon</h2><p>The Saloon took the form of a small open timber structure with a front inspired by buildings of the American West.</p><h2>A miniature western setting</h2><p>Inside, young children could turn the shelter into a house, counter or stage according to their own story.</p><p>Placed at the back of the Baby Zone, the structure added imaginative play beside the movement-based equipment.</p>",
+            "newValue": "<h2>An inflatable saloon</h2><p>Saloon gave a small Baby Zone inflatable a western setting. On the 2025 map, its pink-and-blue façade framed a central entrance, with upward-pointing ornaments.</p><h2>The Baby Zone games</h2><p>It shared this area with Baby Volcan, Poulailler, Piscine à balles and Aire de jeux. The map placed it beside Poulailler, near the food chalet.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Saloon</h2><p>El Saloon era una pequeña construcción abierta de madera con fachada inspirada en los edificios del Oeste americano.</p><h2>Un decorado del oeste en miniatura</h2><p>Dentro, los niños podían convertir el refugio en casa, mostrador o escenario según su propia historia.</p><p>Situada al fondo de la Baby Zone, la estructura añadía juego imaginativo junto a los equipos de movimiento.</p>",
+            "newValue": "<h2>Un saloon hinchable</h2><p>Saloon daba una ambientación del Oeste a un pequeño hinchable de Baby Zone. En el plano de 2025, su fachada rosa y azul enmarcaba una entrada central, con adornos orientados hacia arriba.</p><h2>Los juegos de Baby Zone</h2><p>Compartía esta zona con Baby Volcan, Poulailler, Piscine à balles y Aire de jeux. El plano lo situaba junto al Poulailler, cerca del chalet de comida.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Saloon</h2><p>Le Saloon prenait la forme dʼune petite construction de bois ouverte, avec une façade inspirée des bâtiments de lʼOuest américain.</p><h2>Un décor de western miniature</h2><p>À lʼintérieur, les jeunes enfants pouvaient transformer lʼabri en maison, comptoir ou scène selon leur propre histoire.</p><p>Placée au fond de la Baby Zone, la structure donnait une dimension de jeu dʼimagination à côté des équipements de motricité.</p>",
+            "newValue": "<h2>Un saloon gonflable</h2><p>Le Saloon donnait un décor de western à un petit gonflable de la Baby Zone. Sur le plan de 2025, sa façade rose et bleue entourait une entrée centrale et portait des ornements aux formes relevées.</p><h2>Les jeux de la Baby Zone</h2><p>Il partageait cet espace avec Baby Volcan, le Poulailler, la Piscine à balles et l’Aire de jeux. Le plan le situait à côté du Poulailler, près du chalet de restauration.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Saloon</h2><p>Il Saloon era una piccola costruzione aperta in legno, con facciata ispirata agli edifici del West americano.</p><h2>Un piccolo scenario western</h2><p>Allʼinterno, i piccoli potevano trasformare il riparo in casa, bancone o palcoscenico secondo la propria storia.</p><p>Collocata in fondo alla Baby Zone, la struttura aggiungeva gioco dʼimmaginazione accanto agli attrezzi motori.</p>",
+            "newValue": "<h2>Un saloon gonfiabile</h2><p>Il Saloon dava un’ambientazione western a un piccolo gonfiabile della Baby Zone. Sulla mappa del 2025, la facciata rosa e blu incorniciava un ingresso centrale, con ornamenti rivolti verso l’alto.</p><h2>I giochi della Baby Zone</h2><p>Condivideva quest’area con Baby Volcan, Poulailler, Piscine à balles e Aire de jeux. La mappa lo collocava accanto al Poulailler, vicino allo chalet di ristorazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Saloon</h2><p>De Saloon was een kleine open houten constructie met een gevel geïnspireerd op gebouwen uit het Amerikaanse Westen.</p><h2>Een westerndecor op kindermaat</h2><p>Binnen konden jonge kinderen het huisje veranderen in een woning, toonbank of podium volgens hun eigen verhaal.</p><p>Achteraan in de Baby Zone voegde de constructie fantasiespel toe naast de bewegingsmaterialen.</p>",
+            "newValue": "<h2>Een opblaasbare saloon</h2><p>Saloon gaf een klein springkussen in Baby Zone een westerndecor. Op de plattegrond van 2025 omlijstte de roze en blauwe gevel een centrale ingang, met omhoogstekende versieringen.</p><h2>De spelen van Baby Zone</h2><p>Hier stonden ook Baby Volcan, Poulailler, Piscine à balles en Aire de jeux. De kaart plaatste Saloon naast Poulailler, vlak bij het eetchalet.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Saloon</h2><p>Saloon miał formę niewielkiej otwartej drewnianej budowli z fasadą inspirowaną amerykańskim Zachodem.</p><h2>Miniaturowa sceneria westernowa</h2><p>W środku najmłodsi mogli zmienić schronienie w dom, ladę albo scenę zgodnie z własną opowieścią.</p><p>Położona w głębi Baby Zone konstrukcja uzupełniała sprzęty ruchowe zabawą wyobraźni.</p>",
+            "newValue": "<h2>Dmuchany saloon</h2><p>Saloon nadawał małemu dmuchańcowi w Baby Zone westernową scenerię. Na planie z 2025 roku różowo-niebieska fasada otaczała środkowe wejście, ze skierowanymi ku górze ozdobami.</p><h2>Zabawy w Baby Zone</h2><p>W tej części znajdowały się również Baby Volcan, Poulailler, Piscine à balles i Aire de jeux. Plan umieszczał go obok Poulailler, w pobliżu domku gastronomicznego.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Saloon</h2><p>O Saloon tinha a forma de uma pequena construção aberta em madeira, com fachada inspirada nos edifícios do Oeste americano.</p><h2>Um cenário de western em miniatura</h2><p>No interior, as crianças podiam transformar o abrigo em casa, balcão ou palco conforme a própria história.</p><p>Colocada no fundo da Baby Zone, a estrutura acrescentava jogo imaginativo junto aos equipamentos de movimento.</p>",
+            "newValue": "<h2>Um saloon insuflável</h2><p>O Saloon dava um cenário de western a um pequeno insuflável da Baby Zone. No mapa de 2025, a fachada rosa e azul enquadrava uma entrada central, com ornamentos voltados para cima.</p><h2>Os jogos da Baby Zone</h2><p>Partilhava esta área com Baby Volcan, Poulailler, Piscine à balles e Aire de jeux. O mapa situava-o ao lado do Poulailler, perto do chalé de restauração.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2265a05c-9519-4086-856f-1f26f4ac9756",
+        "entityKey": "2265a05c-9519-4086-856f-1f26f4ac9756",
+        "displayName": "La Valse des Tasses",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>La Valse des Tasses</h2><p>La Valse des Tasses ordnete übergroße Tassenfahrzeuge um ein helles, farbig akzentuiertes Zentrum an.</p><h2>Tassen in Bewegung</h2><p>Die Plattform drehte sich, während jede Tasse eine eigene Bewegung ergänzte; so entstand zugleich ein gemeinsames und individuelles Erlebnis.</p><p>2025 gegenüber den Seilrutschen eröffnet, gehörte sie mit Safari Buggy zur letzten bekannten Welle dauerhafter Neuheiten.</p>",
+            "newValue": "<h2>Ein süßes Teeservice</h2><p>La Valse des Tasses bildete ein übergroßes Teeservice mit hellen Tassen, großen Henkeln und einer hohen Kaffeekanne in der Mitte. Farbige Tropfenmuster und grüne Lichter ließen das Ensemble wie eine Süßwarenkulisse wirken.</p><h2>Die Neuheiten von 2025</h2><p>Neben Safari Buggy gehörte das Karussell zu den vorgestellten Neuheiten der Saison 2025. Auf dem Plan dieses Jahres standen die Tassen nahe den Tyroliennes unter dem Namen Les Tasses Magiques.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>La Valse des Tasses</h2><p>La Valse des Tasses arranged oversized cup-shaped vehicles around a pale central feature accented with bright colours.</p><h2>Cups in motion</h2><p>The platform rotated while each cup added its own motion, giving groups an experience that was both shared and individual.</p><p>Added in 2025 opposite the zip lines, it joined Safari Buggy in the parkʼs final known wave of permanent additions.</p>",
+            "newValue": "<h2>A sweet-looking tea set</h2><p>La Valse des Tasses formed an oversized tea set, with pale cups, large handles and a tall coffee pot in the centre. Coloured drips and green lights gave the scene a confectionery-like appearance.</p><h2>The 2025 additions</h2><p>Alongside Safari Buggy, the ride was among the additions presented for the 2025 season. On that year’s map, the cups appeared near Tyroliennes under the name Les Tasses Magiques.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>La Valse des Tasses</h2><p>La Valse des Tasses distribuía grandes vehículos en forma de taza alrededor de un centro claro con detalles vivos.</p><h2>Tazas en movimiento</h2><p>La plataforma giraba mientras cada taza añadía su propio movimiento, creando una experiencia colectiva y personal a la vez.</p><p>Llegó en 2025 frente a las tirolinas y formó con Safari Buggy la última oleada conocida de novedades permanentes.</p>",
+            "newValue": "<h2>Un dulce juego de té</h2><p>La Valse des Tasses formaba un juego de té desmesurado, con tazas claras, grandes asas y una alta cafetera en el centro. Las gotas de colores y las luces verdes daban al conjunto aspecto de decorado de golosinas.</p><h2>Las novedades de 2025</h2><p>Junto con Safari Buggy, la atracción figuraba entre las novedades presentadas para la temporada 2025. En el plano de aquel año, las tazas aparecían cerca de las Tyroliennes bajo el nombre Les Tasses Magiques.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>La Valse des Tasses</h2><p>La Valse des Tasses disposait des véhicules en forme de grandes tasses autour dʼun décor central clair, ponctué de touches colorées.</p><h2>Des tasses en mouvement</h2><p>La plateforme tournait tandis que chaque tasse ajoutait son propre mouvement, donnant aux groupes une expérience à la fois collective et personnelle.</p><p>Arrivée en 2025 face aux Tyroliennes, elle constitua avec Safari Buggy la dernière vague connue de nouveautés permanentes.</p>",
+            "newValue": "<h2>Un service à thé gourmand</h2><p>La Valse des Tasses composait un service à thé démesuré : des tasses claires, de grandes anses et une haute cafetière au centre. Des coulures colorées et des lumières vertes donnaient à cet ensemble l’allure d’un décor de confiserie.</p><h2>Les nouveautés de 2025</h2><p>Avec Safari Buggy, le manège faisait partie des nouveautés présentées pour la saison 2025. Sur le plan de cette année-là, les tasses apparaissaient près des Tyroliennes, sous le nom Les Tasses Magiques.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La Valse des Tasses</h2><p>La Valse des Tasses disponeva grandi veicoli a forma di tazza attorno a un elemento centrale chiaro dai tocchi vivaci.</p><h2>Tazze in movimento</h2><p>La piattaforma ruotava mentre ogni tazza aggiungeva un proprio movimento, creando unʼesperienza insieme collettiva e personale.</p><p>Arrivata nel 2025 di fronte alle teleferiche, formò con Safari Buggy lʼultima ondata nota di novità permanenti.</p>",
+            "newValue": "<h2>Un goloso servizio da tè</h2><p>La Valse des Tasses componeva un servizio da tè gigantesco, con tazze chiare, grandi manici e un’alta caffettiera al centro. Colature colorate e luci verdi davano all’insieme l’aspetto di uno scenario di dolciumi.</p><h2>Le novità del 2025</h2><p>Insieme a Safari Buggy, la giostra figurava tra le novità presentate per la stagione 2025. Sulla mappa di quell’anno, le tazze comparivano vicino alle Tyroliennes con il nome Les Tasses Magiques.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>La Valse des Tasses</h2><p>La Valse des Tasses plaatste grote voertuigen in kopjesvorm rond een lichte middenpartij met heldere kleuraccenten.</p><h2>Draaiende kopjes</h2><p>Het platform draaide terwijl elk kopje zijn eigen beweging toevoegde, waardoor groepen tegelijk samen en afzonderlijk beleefden.</p><p>Ze kwam in 2025 tegenover de tokkelbanen en vormde met Safari Buggy de laatste bekende reeks vaste nieuwigheden.</p>",
+            "newValue": "<h2>Een zoet theeservies</h2><p>La Valse des Tasses vormde een uitvergroot theeservies met lichte kopjes, grote oren en een hoge koffiepot in het midden. Gekleurde druipers en groene lichtjes gaven het geheel de uitstraling van een snoepdecor.</p><h2>De nieuwigheden van 2025</h2><p>Samen met Safari Buggy hoorde de attractie bij de aangekondigde nieuwigheden voor seizoen 2025. Op de plattegrond van dat jaar stonden de kopjes bij de Tyroliennes onder de naam Les Tasses Magiques.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>La Valse des Tasses</h2><p>La Valse des Tasses ustawiała duże pojazdy w kształcie filiżanek wokół jasnego środka z kolorowymi akcentami.</p><h2>Filiżanki w ruchu</h2><p>Platforma obracała się, a każda filiżanka dodawała własny ruch, łącząc wspólne przeżycie z indywidualnym rytmem.</p><p>Dodana w 2025 roku naprzeciw tyrolek, wraz z Safari Buggy tworzyła ostatnią znaną falę stałych nowości.</p>",
+            "newValue": "<h2>Słodki serwis do herbaty</h2><p>La Valse des Tasses tworzyła olbrzymi serwis do herbaty z jasnymi filiżankami, dużymi uchami i wysokim dzbankiem do kawy pośrodku. Kolorowe zacieki i zielone światełka nadawały całości wygląd cukierkowej scenerii.</p><h2>Nowości z 2025 roku</h2><p>Wraz z Safari Buggy karuzela należała do nowości przedstawionych na sezon 2025. Na planie z tego roku filiżanki znajdowały się w pobliżu Tyroliennes pod nazwą Les Tasses Magiques.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>La Valse des Tasses</h2><p>La Valse des Tasses dispunha grandes veículos em forma de chávena em redor de um centro claro com apontamentos vivos.</p><h2>Chávenas em movimento</h2><p>A plataforma rodava enquanto cada chávena acrescentava o seu próprio movimento, criando uma experiência coletiva e pessoal.</p><p>Chegou em 2025 diante das tirolesas e formou com Safari Buggy a última vaga conhecida de novidades permanentes.</p>",
+            "newValue": "<h2>Um doce serviço de chá</h2><p>La Valse des Tasses compunha um serviço de chá de grandes dimensões, com chávenas claras, asas grandes e uma cafeteira alta ao centro. Escorridos coloridos e luzes verdes davam ao conjunto o aspeto de um cenário de guloseimas.</p><h2>As novidades de 2025</h2><p>A par do Safari Buggy, a atração fazia parte das novidades apresentadas para a época de 2025. No mapa desse ano, as chávenas surgiam perto das Tyroliennes com o nome Les Tasses Magiques.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "86bf248f-070a-4b95-b4d2-962375788eb3",
+        "entityKey": "86bf248f-070a-4b95-b4d2-962375788eb3",
+        "displayName": "Ô Pirates",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ô Pirates</h2><p>Ô Pirates war ein großes schwingendes Schiff mit braunem Rumpf, Segeln und Freibeutersymbolen.</p><h2>Das Schiff im Zentrum</h2><p>Die wechselnde Bewegung hob Bug und Heck nacheinander an und machte das Deck vor den Zuschauenden zur gemeinsamen Schaukel.</p><p>Der hohe Holzrahmen prägte das Zentrum des Plans von 2026 und setzte das Piratenthema von Leuchtturm und Rutschen fort.</p>",
+            "newValue": "<h2>Das große Piratenschiff</h2><p>Ô Pirates war an seinem großen braun-roten Boot mit hochgezogenen Enden und Freibeuterdekorationen zu erkennen. Ein hohes Schild trug den Namen über dem Schiff; Piratenporträts schmückten die Tafeln rund um den Einstieg.</p><h2>Eine Neuheit von 2024</h2><p>Das 2024 als Neuheit vorgestellte Schiff ergänzte einen Park, in dem Le Phare des Pirates und Toboggan des pirates bereits die Piratenwelt prägten. Auf dem Plan der letzten Saison nahm es weiterhin einen auffälligen Platz ein.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Ô Pirates</h2><p>Ô Pirates was a large swinging ship decorated with a brown hull, sails and buccaneer symbols.</p><h2>The ship at the heart of the park</h2><p>The alternating motion raised bow and stern in turn, turning the deck into a shared swing in front of onlookers.</p><p>Its tall timber frame dominated the centre of the 2026 map and extended the pirate theme of the lighthouse and slides.</p>",
+            "newValue": "<h2>The large pirate ship</h2><p>Ô Pirates was recognisable by its large brown-and-red boat, raised ends and buccaneer decorations. A high sign carried its name above the vessel, while pirate portraits decorated the panels around the boarding area.</p><h2>An addition in 2024</h2><p>Presented as a new attraction in 2024, the ship joined a park where Le Phare des Pirates and Toboggan des pirates already brought pirate scenery to life. It still held a prominent position on the map of the final season.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Ô Pirates</h2><p>Ô Pirates era un gran barco oscilante decorado con casco marrón, velas y símbolos de filibusteros.</p><h2>El barco en el centro del parque</h2><p>El movimiento alterno elevaba proa y popa por turnos, convirtiendo la cubierta en un columpio colectivo ante el público.</p><p>Su alta estructura de madera dominaba el centro del plano de 2026 y prolongaba el tema pirata del faro y los toboganes.</p>",
+            "newValue": "<h2>El gran barco pirata</h2><p>Ô Pirates se reconocía por su gran barco marrón y rojo, con los extremos elevados y decoración de filibusteros. Un alto letrero llevaba su nombre sobre el navío, mientras retratos de piratas adornaban los paneles alrededor del embarque.</p><h2>Una novedad de 2024</h2><p>Presentado como novedad en 2024, el barco se sumaba a un parque donde Le Phare des Pirates y Toboggan des pirates ya daban forma al mundo de los corsarios. Seguía ocupando un lugar destacado en el plano de la última temporada.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Ô Pirates</h2><p>Ô Pirates était un grand bateau à bascule décoré dʼune coque brune, de voiles et de symboles de flibustiers.</p><h2>Le navire au cœur du parc</h2><p>Le mouvement alterné élevait successivement la proue et la poupe, transformant le pont en balançoire collective face aux spectateurs.</p><p>Sa haute charpente de bois dominait le centre du plan 2026 et prolongeait le thème pirate du phare et des toboggans.</p>",
+            "newValue": "<h2>Le grand navire des pirates</h2><p>Ô Pirates se reconnaissait à son grand bateau brun et rouge, aux extrémités relevées et aux décors de flibustiers. Une haute enseigne portait son nom au-dessus du navire, tandis que des portraits de pirates habillaient les panneaux autour de l’embarquement.</p><h2>Une nouveauté de 2024</h2><p>Présenté comme une nouveauté en 2024, le bateau rejoignait un parc où le Phare des Pirates et le Toboggan des pirates donnaient déjà leurs formes à l’univers des corsaires. Il occupait encore une place importante sur le plan de la dernière saison.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Ô Pirates</h2><p>Ô Pirates era una grande nave oscillante decorata con scafo marrone, vele e simboli da filibustieri.</p><h2>La nave nel cuore del parco</h2><p>Il movimento alternato sollevava a turno prua e poppa, trasformando il ponte in unʼaltalena collettiva davanti agli spettatori.</p><p>Lʼalta struttura in legno dominava il centro della mappa del 2026 e prolungava il tema piratesco del faro e degli scivoli.</p>",
+            "newValue": "<h2>Il grande vascello dei pirati</h2><p>Ô Pirates si riconosceva dalla grande barca marrone e rossa, con estremità rialzate e decorazioni da filibustieri. Un’alta insegna ne portava il nome sopra lo scafo, mentre ritratti di pirati decoravano i pannelli attorno all’imbarco.</p><h2>Una novità del 2024</h2><p>Presentato come novità nel 2024, il vascello si aggiungeva a un parco dove Le Phare des Pirates e Toboggan des pirates davano già forma al mondo dei corsari. Conservava un posto di rilievo sulla mappa dell’ultima stagione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Ô Pirates</h2><p>Ô Pirates was een groot schommelschip met een bruine romp, zeilen en vrijbuitersymbolen.</p><h2>Het schip in het hart van het park</h2><p>De afwisselende beweging tilde boeg en achtersteven om beurten op en maakte van het dek een gezamenlijke schommel.</p><p>Het hoge houten frame beheerste het midden van de kaart van 2026 en zette het piratenthema van vuurtoren en glijbanen voort.</p>",
+            "newValue": "<h2>Het grote piratenschip</h2><p>Ô Pirates was herkenbaar aan zijn grote bruine en rode schip, hoge uiteinden en zeeroversdecor. Een hoog bord droeg de naam boven het schip, terwijl piratenportretten de panelen rond de instap sierden.</p><h2>Een nieuwigheid in 2024</h2><p>Het schip werd in 2024 als nieuwigheid gepresenteerd en sloot aan bij het piratendecor van Le Phare des Pirates en Toboggan des pirates. Ook op de kaart van het laatste seizoen nam het nog een opvallende plek in.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Ô Pirates</h2><p>Ô Pirates był dużym kołyszącym się statkiem z brązowym kadłubem, żaglami i korsarskimi symbolami.</p><h2>Statek w sercu parku</h2><p>Naprzemienny ruch unosił dziób i rufę, zmieniając pokład we wspólną huśtawkę na oczach widzów.</p><p>Wysoka drewniana rama dominowała nad centrum mapy z 2026 roku i rozwijała piracki motyw latarni oraz zjeżdżalni.</p>",
+            "newValue": "<h2>Wielki statek piracki</h2><p>Ô Pirates wyróżniał się dużą brązowo-czerwoną łodzią z uniesionymi końcami i pirackimi dekoracjami. Wysoki szyld z nazwą górował nad statkiem, a portrety piratów zdobiły panele wokół miejsca wsiadania.</p><h2>Nowość z 2024 roku</h2><p>Statek przedstawiono jako nowość w 2024 roku, w parku, gdzie Le Phare des Pirates i Toboggan des pirates tworzyły już korsarską scenerię. Nadal zajmował ważne miejsce na planie ostatniego sezonu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Ô Pirates</h2><p>Ô Pirates era um grande navio oscilante decorado com casco castanho, velas e símbolos de corsários.</p><h2>O navio no coração do parque</h2><p>O movimento alternado elevava proa e popa à vez, transformando o convés num baloiço coletivo diante dos espectadores.</p><p>A alta estrutura de madeira dominava o centro do mapa de 2026 e prolongava o tema pirata do farol e dos escorregas.</p>",
+            "newValue": "<h2>O grande navio pirata</h2><p>O Ô Pirates reconhecia-se pelo grande barco castanho e vermelho, com extremidades elevadas e decorações de corsários. Um letreiro alto exibia o nome sobre o navio, enquanto retratos de piratas adornavam os painéis em redor do embarque.</p><h2>Uma novidade de 2024</h2><p>Apresentado como novidade em 2024, o navio juntava-se a um parque onde Le Phare des Pirates e Toboggan des pirates já davam forma ao universo dos corsários. Conservava um lugar de destaque no mapa da última época.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "entityKey": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "displayName": "Chaises Volantes",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Die weiß-blaue Krone</h2><p>Die Chaises Volantes waren an ihrer breiten, ausgestellten Krone mit weißen und blauen Streifen zu erkennen. Von dieser Konstruktion führten Ketten zu den einzelnen Sitzen, die sich bei der Drehung nach außen bewegten.</p><h2>Ein Sitzkreis über der Wiese</h2><p>Ein niedriger Holzzaun umgab das Karussell; darüber verliefen bunte Wimpelketten. Auf den Fotografien schweben die Fahrgäste vor den großen Hüpfanlagen des Parks und der Baumreihe vorbei. Der Plan von 2026 verortete die Chaises Volantes in der Mitte, zwischen den Trampolinen und Home-ball.</p>",
+            "newValue": "<h2>Die weiß-blaue Krone</h2><p>Eine breite, ausgestellte Krone mit weißen und blauen Streifen prägte die Chaises Volantes. Ringsum schwebten die Fahrgäste über der Wiese vor den großen bunten Hüpfanlagen und der Baumreihe.</p><h2>Wimpel unter dem Karussell</h2><p>Ein niedriger Holzzaun umgab das Karussell; bunte Wimpelketten verliefen über dem Gras. Der Plan der letzten Saison platzierte die Krone in der Parkmitte nahe den Trampolinen und Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The white-and-blue crown</h2><p>Chaises Volantes was recognisable by its broad, flared crown with white and blue stripes. Chains descended from this structure to individual seats, which swung outwards as the ride turned.</p><h2>A circle of seats in the meadow</h2><p>A low wooden fence surrounded the ride, with colourful bunting stretched above the grass. Photographs show passengers passing the park’s large inflatables and the line of trees. The 2026 map placed Chaises Volantes in the centre, between the trampolines and Home-ball.</p>",
+            "newValue": "<h2>The white-and-blue crown</h2><p>A broad, flared crown striped in white and blue dominated Chaises Volantes. Around it, passengers suspended above the meadow faced the large colourful inflatables and the line of trees.</p><h2>Bunting below the ride</h2><p>A low wooden fence surrounded the ride, with multicoloured bunting stretched above the grass. The final season’s map placed this crown in the centre of the park, near Trampolines and Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>La corona blanca y azul</h2><p>Las Chaises Volantes se reconocían por su amplia corona ensanchada, con franjas blancas y azules. De la estructura bajaban cadenas hasta los asientos individuales, que se abrían hacia fuera cuando giraba la atracción.</p><h2>Un círculo de asientos sobre el césped</h2><p>Una valla baja de madera rodeaba la atracción, con banderines multicolores tendidos sobre la hierba. En las fotografías los pasajeros pasan ante los grandes hinchables del parque y la hilera de árboles. El plano de 2026 situaba las Chaises Volantes en el centro, entre las camas elásticas y Home-ball.</p>",
+            "newValue": "<h2>La corona blanca y azul</h2><p>Una gran corona ensanchada, con franjas blancas y azules, dominaba las Chaises Volantes. A su alrededor, los pasajeros suspendidos sobre la pradera miraban hacia los grandes hinchables de colores y la hilera de árboles.</p><h2>Banderines al pie de la atracción</h2><p>Una valla baja de madera rodeaba la atracción, con banderines multicolores sobre la hierba. El plano de la última temporada situaba esta corona en el centro del parque, cerca de los Trampolines y Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>La couronne blanche et bleue</h2><p>Les Chaises Volantes se reconnaissaient à leur grande couronne évasée, rayée de blanc et de bleu. Les chaînes descendaient de cette structure jusqu’aux sièges individuels, qui s’écartaient vers l’extérieur lorsque le manège tournait.</p><h2>Un cercle de sièges dans la prairie</h2><p>Une clôture basse en bois entourait le manège, avec des fanions multicolores tendus au-dessus de l’herbe. Sur les photographies, les passagers passaient devant les grands gonflables du parc et la lisière d’arbres. Le plan de 2026 plaçait les Chaises Volantes au centre, entre les trampolines et le Home-ball.</p>",
+            "newValue": "<h2>La couronne blanche et bleue</h2><p>Une grande couronne évasée, rayée de blanc et de bleu, dominait les Chaises Volantes. Autour d’elle, les passagers suspendus au-dessus de la prairie faisaient face aux grands gonflables colorés et à la lisière d’arbres.</p><h2>Les fanions au pied du manège</h2><p>Une clôture basse en bois entourait le manège, avec des fanions multicolores tendus au-dessus de l’herbe. Le plan de la dernière saison plaçait cette couronne au centre du parc, près des Trampolines et du Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La corona bianca e blu</h2><p>Le Chaises Volantes erano riconoscibili dall’ampia corona svasata a strisce bianche e blu. Le catene scendevano dalla struttura fino ai sedili individuali, che si allargavano verso l’esterno durante la rotazione.</p><h2>Un cerchio di sedili sul prato</h2><p>Una bassa recinzione di legno circondava la giostra, con festoni di bandierine colorate sopra l’erba. Nelle fotografie i passeggeri passano davanti ai grandi gonfiabili del parco e alla fila di alberi. La mappa del 2026 collocava le Chaises Volantes al centro, tra i trampolini e Home-ball.</p>",
+            "newValue": "<h2>La corona bianca e blu</h2><p>Una grande corona svasata a strisce bianche e blu dominava le Chaises Volantes. Attorno, i passeggeri sospesi sopra il prato si trovavano di fronte ai grandi gonfiabili colorati e alla fila di alberi.</p><h2>Le bandierine ai piedi della giostra</h2><p>Una bassa recinzione di legno circondava la giostra, con festoni di bandierine multicolori sopra l’erba. La mappa dell’ultima stagione collocava questa corona al centro del parco, vicino ai Trampolines e a Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De witte en blauwe kroon</h2><p>De Chaises Volantes waren herkenbaar aan hun brede, uitlopende kroon met witte en blauwe strepen. Kettingen liepen van deze constructie naar afzonderlijke stoelen, die tijdens het draaien naar buiten zwaaiden.</p><h2>Een kring stoelen boven het gras</h2><p>Een laag houten hek omsloot de attractie, met kleurrijke vlaggetjes boven het gras. Op de foto’s zweven bezoekers langs de grote springkussens van het park en de bomenrij. De plattegrond van 2026 plaatste de Chaises Volantes centraal, tussen de trampolines en Home-ball.</p>",
+            "newValue": "<h2>De witte en blauwe kroon</h2><p>Een brede, uitlopende kroon met witte en blauwe strepen bepaalde het beeld van de Chaises Volantes. Daaromheen zweefden bezoekers boven het grasveld, met zicht op de grote kleurrijke springkussens en de bomenrij.</p><h2>Vlaggetjes onder de attractie</h2><p>Een laag houten hek omsloot de attractie, met veelkleurige vlaggetjes boven het gras. De plattegrond van het laatste seizoen plaatste deze kroon midden in het park, bij de Trampolines en Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Biało-niebieska korona</h2><p>Chaises Volantes wyróżniała szeroka, rozszerzająca się korona w białe i niebieskie pasy. Z konstrukcji zwisały łańcuchy z pojedynczymi siedzeniami, które podczas obrotu odchylały się na zewnątrz.</p><h2>Krąg siedzeń nad łąką</h2><p>Karuzelę otaczał niski drewniany płot, a nad trawą rozciągały się kolorowe proporczyki. Na fotografiach pasażerowie przelatują przed dużymi dmuchańcami i rzędem drzew. Plan z 2026 roku umieszczał Chaises Volantes pośrodku terenu, między trampolinami a Home-ball.</p>",
+            "newValue": "<h2>Biało-niebieska korona</h2><p>Nad Chaises Volantes górowała duża, rozszerzająca się korona w białe i niebieskie pasy. Wokół niej pasażerowie unosili się nad łąką, mając przed sobą duże kolorowe dmuchańce i rząd drzew.</p><h2>Proporczyki pod karuzelą</h2><p>Karuzelę otaczał niski drewniany płot, a nad trawą rozciągały się wielobarwne proporczyki. Plan ostatniego sezonu umieszczał tę koronę pośrodku parku, w pobliżu trampolin i Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>A coroa branca e azul</h2><p>As Chaises Volantes distinguiam-se pela larga coroa alargada no topo, com riscas brancas e azuis. As correntes desciam da estrutura até aos assentos individuais, que se afastavam para fora enquanto a atração rodava.</p><h2>Um círculo de assentos sobre o relvado</h2><p>Uma cerca baixa de madeira rodeava a atração, com bandeirolas multicolores estendidas sobre a relva. Nas fotografias, os passageiros passam diante dos grandes insufláveis do parque e da fila de árvores. O mapa de 2026 situava as Chaises Volantes ao centro, entre os trampolins e o Home-ball.</p>",
+            "newValue": "<h2>A coroa branca e azul</h2><p>Uma grande coroa alargada no topo, com riscas brancas e azuis, dominava as Chaises Volantes. Em redor, os passageiros suspensos sobre o prado tinham diante de si os grandes insufláveis coloridos e a fila de árvores.</p><h2>As bandeirolas ao pé da atração</h2><p>Uma cerca baixa de madeira rodeava a atração, com bandeirolas multicolores sobre a relva. O mapa da última época situava esta coroa no centro do parque, perto dos Trampolines e do Home-ball.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "displayName": "Safari Buggy",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Kleine Autos in der Savanne</h2><p>Safari Buggy gehörte neben La Valse des Tasses zu den beiden angekündigten Neuheiten der Saison 2025. Die blauen, gelben und roten Fahrzeuge hatten Lenkräder, schwarze Sitze und Metallbügel. Sie fuhren um eine Sandinsel mit einer großen Giraffe.</p><h2>Ein Rundkurs vor den Hüpfanlagen</h2><p>Unter den kleinen Autos verlief die grüne Plattform in Wellen. Daneben stand eine grüne, mit Tieren dekorierte Kabine; dahinter ragten Konga und Toboggan des pirates über den Holzzaun. Die Vorstellung von 2025 beschrieb eine Savannenkulisse mit Löwen, Giraffen und Elefanten.</p>",
+            "newValue": "<h2>Eine Giraffe zwischen kleinen Autos</h2><p>Eine große Giraffe ragte über den blauen, gelben und roten Autos von Safari Buggy auf. Ihre Sandinsel und die benachbarte Kabine mit Tiermotiven bildeten eine kleine Savanne vor Konga und Toboggan des pirates.</p><h2>Eine neue Savanne im Jahr 2025</h2><p>Safari Buggy gehörte neben La Valse des Tasses zu den vorgestellten Neuheiten von 2025. Die für die Kulisse angekündigten Löwen, Giraffen und Elefanten führten das Tiermotiv über die große Figur in der Mitte hinaus.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Small cars in the savannah</h2><p>Safari Buggy was one of the two additions announced for the 2025 season, alongside La Valse des Tasses. Its blue, yellow and red vehicles had steering wheels, black seats and metal bars. They travelled around a sandy island with a tall giraffe.</p><h2>A circuit in front of the inflatables</h2><p>The green platform rose and dipped beneath the small cars. Beside it stood a green booth decorated with animals; behind, Konga and Toboggan des pirates rose above the wooden fence. The 2025 presentation described savannah scenery with lions, giraffes and elephants.</p>",
+            "newValue": "<h2>A giraffe among the small cars</h2><p>A tall giraffe rose above Safari Buggy’s blue, yellow and red cars. Its sandy island and the neighbouring animal-decorated booth formed a miniature savannah in front of Konga and Toboggan des pirates.</p><h2>A new savannah in 2025</h2><p>Safari Buggy was among the additions presented in 2025, alongside La Valse des Tasses. The lions, giraffes and elephants announced for its scenery extended the animal theme beyond the large figure at the ride’s centre.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Pequeños coches en la sabana</h2><p>Safari Buggy era una de las dos novedades anunciadas para la temporada 2025, junto con La Valse des Tasses. Sus vehículos azules, amarillos y rojos tenían volante, asientos negros y barras metálicas. Circulaban alrededor de una isla de arena con una gran jirafa.</p><h2>Un circuito ante los hinchables</h2><p>La plataforma verde ondulaba bajo los pequeños coches. A su lado había una cabina verde decorada con animales; detrás, Konga y Toboggan des pirates sobresalían de la valla de madera. La presentación de 2025 describía un decorado de sabana con leones, jirafas y elefantes.</p>",
+            "newValue": "<h2>Una jirafa entre los pequeños coches</h2><p>Una gran jirafa dominaba los coches azules, amarillos y rojos del Safari Buggy. Su isla de arena y la cabina vecina decorada con animales dibujaban una sabana en miniatura ante las siluetas de Konga y Toboggan des pirates.</p><h2>Una nueva sabana en 2025</h2><p>Safari Buggy figuraba entre las novedades presentadas en 2025, junto con La Valse des Tasses. Los leones, jirafas y elefantes anunciados para su decorado extendían la temática animal más allá de la gran figura del centro de la atracción.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Les petites voitures de la savane</h2><p>Safari Buggy faisait partie des deux nouveautés annoncées pour la saison 2025, avec La Valse des Tasses. Ses véhicules bleus, jaunes et rouges possédaient un volant, des sièges noirs et un arceau métallique. Ils circulaient autour d’un îlot de sable où se dressait une grande girafe.</p><h2>Un circuit devant les gonflables</h2><p>La plateforme verte ondulait sous les petites voitures. À côté se trouvait une cabine verte décorée d’animaux ; derrière, les silhouettes de Konga et du Toboggan des pirates dépassaient la clôture en bois. La présentation de 2025 annonçait un décor de savane avec lions, girafes et éléphants.</p>",
+            "newValue": "<h2>La girafe au milieu des petites voitures</h2><p>Une grande girafe dominait les petites voitures bleues, jaunes et rouges du Safari Buggy. Son îlot de sable et la cabine voisine décorée d’animaux dessinaient une savane miniature, devant les silhouettes de Konga et du Toboggan des pirates.</p><h2>Une nouvelle savane en 2025</h2><p>Safari Buggy faisait partie des nouveautés présentées en 2025, avec La Valse des Tasses. Les lions, girafes et éléphants annoncés pour son décor poursuivaient le thème animalier au-delà du grand personnage visible au centre du manège.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Piccole auto nella savana</h2><p>Safari Buggy era una delle due novità annunciate per la stagione 2025, insieme a La Valse des Tasses. I veicoli blu, gialli e rossi avevano volante, sedili neri e barre metalliche. Giravano attorno a un’isola di sabbia su cui si innalzava una grande giraffa.</p><h2>Un circuito davanti ai gonfiabili</h2><p>La piattaforma verde formava saliscendi sotto le piccole auto. Accanto si trovava una cabina verde decorata con animali; dietro, Konga e Toboggan des pirates spuntavano oltre la recinzione di legno. La presentazione del 2025 descriveva una savana con leoni, giraffe ed elefanti.</p>",
+            "newValue": "<h2>Una giraffa tra le piccole auto</h2><p>Una grande giraffa dominava le auto blu, gialle e rosse del Safari Buggy. L’isola di sabbia e la vicina cabina decorata con animali disegnavano una savana in miniatura davanti alle sagome di Konga e Toboggan des pirates.</p><h2>Una nuova savana nel 2025</h2><p>Safari Buggy figurava tra le novità presentate nel 2025, insieme a La Valse des Tasses. Leoni, giraffe ed elefanti annunciati per la scenografia estendevano il tema animale oltre la grande figura al centro della giostra.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Kleine auto’s in de savanne</h2><p>Safari Buggy was samen met La Valse des Tasses een van de twee aangekondigde nieuwigheden voor seizoen 2025. De blauwe, gele en rode voertuigen hadden een stuur, zwarte stoelen en metalen beugels. Ze reden rond een zanderig eiland met een grote giraffe.</p><h2>Een circuit voor de springkussens</h2><p>Het groene platform golfde onder de kleine auto’s. Ernaast stond een groene cabine met dierendecoraties; daarachter staken Konga en Toboggan des pirates boven het houten hek uit. De presentatie uit 2025 beschreef een savannedecor met leeuwen, giraffen en olifanten.</p>",
+            "newValue": "<h2>Een giraffe tussen de kleine auto’s</h2><p>Een grote giraffe torende boven de blauwe, gele en rode auto’s van Safari Buggy uit. Het zandeiland en de naburige cabine met dierendecoraties vormden een savanne in het klein, voor Konga en Toboggan des pirates.</p><h2>Een nieuwe savanne in 2025</h2><p>Safari Buggy hoorde samen met La Valse des Tasses bij de nieuwigheden die in 2025 werden gepresenteerd. De aangekondigde leeuwen, giraffen en olifanten breidden het dierenthema uit buiten de grote figuur in het midden van de attractie.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Małe samochody na sawannie</h2><p>Safari Buggy było jedną z dwóch nowości zapowiedzianych na sezon 2025, obok La Valse des Tasses. Niebieskie, żółte i czerwone pojazdy miały kierownice, czarne siedzenia i metalowe pałąki. Jeździły wokół piaszczystej wyspy z wysoką żyrafą.</p><h2>Tor przed dmuchańcami</h2><p>Zielona platforma tworzyła wzniesienia i zagłębienia pod małymi samochodami. Obok stała zielona kabina ozdobiona zwierzętami; za drewnianym płotem wznosiły się Konga i Toboggan des pirates. Prezentacja z 2025 roku zapowiadała scenerię sawanny z lwami, żyrafami i słoniami.</p>",
+            "newValue": "<h2>Żyrafa wśród małych samochodów</h2><p>Wysoka żyrafa górowała nad niebieskimi, żółtymi i czerwonymi samochodami Safari Buggy. Piaszczysta wyspa i sąsiednia budka z motywami zwierząt tworzyły miniaturową sawannę przed sylwetkami Konga i Toboggan des pirates.</p><h2>Nowa sawanna w 2025 roku</h2><p>Safari Buggy należało do nowości przedstawionych w 2025 roku wraz z La Valse des Tasses. Zapowiadane w dekoracji lwy, żyrafy i słonie rozszerzały motyw zwierzęcy poza dużą figurę pośrodku karuzeli.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Pequenos carros na savana</h2><p>O Safari Buggy era uma das duas novidades anunciadas para a época de 2025, a par de La Valse des Tasses. Os veículos azuis, amarelos e vermelhos tinham volante, bancos pretos e barras metálicas. Circulavam em redor de uma ilha de areia com uma grande girafa.</p><h2>Um circuito diante dos insufláveis</h2><p>A plataforma verde ondulava sob os pequenos carros. Ao lado ficava uma cabina verde decorada com animais; atrás, Konga e Toboggan des pirates elevavam-se sobre a cerca de madeira. A apresentação de 2025 descrevia um cenário de savana com leões, girafas e elefantes.</p>",
+            "newValue": "<h2>Uma girafa entre os pequenos carros</h2><p>Uma grande girafa dominava os carros azuis, amarelos e vermelhos do Safari Buggy. A ilha de areia e a cabina vizinha decorada com animais desenhavam uma savana em miniatura diante das silhuetas de Konga e Toboggan des pirates.</p><h2>Uma nova savana em 2025</h2><p>O Safari Buggy fazia parte das novidades apresentadas em 2025, a par de La Valse des Tasses. Os leões, girafas e elefantes anunciados para o cenário prolongavam o tema animal para além da grande figura no centro da atração.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

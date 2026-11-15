@@ -21760,7 +21760,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T04:22:17.368Z",
+      "lastDataIntegrationAt": "2026-11-15T04:37:14.273Z",
       "integrationHistory": [
         {
           "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
@@ -21831,6 +21831,46 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-three-historical-items-20261115.json",
           "auditEvidence": null,
           "summary": "Ô Parc : trois anciennes attractions internes qualifiées et créées privées, Ô Petit Train, Ô p’tits quads et Le Gorille ; 24 descriptions relues, dates individuelles et constructeur inconnus laissés vides."
+        },
+        {
+          "eventId": "apply-cfb47c19-3212-4abe-b20d-042912ba2c57",
+          "appliedAt": "2026-11-15T04:31:18.246Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-five-identity-corrections-20261115.json",
+          "auditEvidence": null,
+          "summary": "Cinq notices réécrites et relues dans les huit langues : Saloon gonflable, décor des Tasses et alias cartographique, bateau Ô Pirates de 2024, descriptions de Chaises Volantes et Safari Buggy centrées sur leurs décors. Visibilité préservée ; audit final à venir."
+        },
+        {
+          "eventId": "image-bddcd54627fe42c98abadc171f53b5cb",
+          "appliedAt": "2026-11-15T04:35:32.083Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-chenille-wide-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée chenille-wide, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "image-e0f48f45039b4d06a10d8153d6eb705e",
+          "appliedAt": "2026-11-15T04:35:59.148Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-hammock-meadow-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée hammock-meadow, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "apply-06958e41-ade4-4fce-92cc-f28ca2f3b75e",
+          "appliedAt": "2026-11-15T04:37:14.273Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-05-founder-portrait-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ajout privé du portrait de Steeve et Guillaume à la référence globale existante des fondateurs, par upsert officiel ; source Koikispass et identités de la légende vérifiées, huit langues relues. Charles non représenté, aucune date de prise de vue inventée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

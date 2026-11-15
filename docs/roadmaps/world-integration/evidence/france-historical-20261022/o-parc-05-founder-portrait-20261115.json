@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "b1d41876bab4dd229d48f0569319d322b330c2290c88ad54a68971b1ac2dec11",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "06958e41-ade4-4fce-92cc-f28ca2f3b75e",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T04:37:14.2734004Z",
+    "appliedAtUtc": "2026-11-15T04:37:14.2734017Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkFounder",
+        "entityId": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+        "entityKey": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+        "displayName": "Steeve, Charles et Guillaume",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "d88725b539ed461cb3de15199120b365",
+        "entityKey": "founder:f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+        "displayName": "Steeve et Guillaume, deux des trois créateurs d’Ô Parc.",
+        "changeType": "Created",
+        "matchedBy": "sourceUrl",
+        "fields": [
+          {
+            "field": "sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.koikispass.com/wp-content/uploads/2020/10/o-parc-8-1.jpg"
+          },
+          {
+            "field": "ownerType",
+            "oldValue": null,
+            "newValue": "ParkFounder"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": null,
+            "newValue": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab"
+          },
+          {
+            "field": "category",
+            "oldValue": null,
+            "newValue": "Founder"
+          },
+          {
+            "field": "isPublished",
+            "oldValue": null,
+            "newValue": "false"
+          },
+          {
+            "field": "setAsCurrent",
+            "oldValue": null,
+            "newValue": "false"
+          },
+          {
+            "field": "withWatermark",
+            "oldValue": null,
+            "newValue": "false"
+          },
+          {
+            "field": "imageId",
+            "oldValue": null,
+            "newValue": "d88725b539ed461cb3de15199120b365"
+          },
+          {
+            "field": "internalUrl",
+            "oldValue": null,
+            "newValue": "/images/d88725b539ed461cb3de15199120b365"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

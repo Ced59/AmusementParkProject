@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "observedAtUtc": "2026-11-15T04:38:41.506340+00:00",
+  "sourceAccess": [
+    {
+      "name": "official-chenille",
+      "url": "https://www.o-parc.fr/la-chenille/",
+      "error": "HTTP Error 404: Not Found",
+      "checkedAtUtc": "2026-11-15T04:32:04.671953+00:00"
+    },
+    {
+      "name": "coasterfriends-chenille",
+      "url": "https://coasterfriends.de/joomla/parkcheckpoint/achterbahn/Parc/Chenille",
+      "status": 200,
+      "bytes": 61492,
+      "sha256": "6c47941960621e4a7499c4079fc9a2929939383b2e82cf4e6a70205872273285",
+      "images": 11,
+      "checkedAtUtc": "2026-11-15T04:32:06.587011+00:00"
+    },
+    {
+      "name": "themeparkfreaks-closure",
+      "url": "https://themeparkfreaks.eu/2026/09/o-parc-sluit-voor-het-laatst-de-deuren/",
+      "status": 200,
+      "bytes": 81596,
+      "sha256": "db6163a864945dfad8695ac66bdfcfd33c85d7b18da599071c6d3bd058288f79",
+      "images": 3,
+      "checkedAtUtc": "2026-11-15T04:32:08.113142+00:00"
+    },
+    {
+      "url": "https://www.koikispass.com/evadez-vous-8-escapades-insolites-dans-la-nievre/",
+      "status": 200,
+      "bytes": 462684,
+      "sha256": "3cd307650ae230202ab797227b57ffea0bf322ec896911c18f58bd08b389d1d7",
+      "retrievedAtUtc": "2026-11-15T04:33:11.758934+00:00"
+    }
+  ],
+  "archiveRetry": {
+    "url": "https://web.archive.org/web/20190720202035id_/https://www.o-parc.fr/les-activites/parc-de-loisirs-maneges/",
+    "checkedAtUtc": "2026-11-15T04:35:54.909376+00:00",
+    "status": 429,
+    "error": "HTTP Error 429: Too Many Requests",
+    "retryAfter": null
+  },
+  "imageDownloads": [
+    {
+      "file": "coasterfriends-chenille-5.jpg",
+      "url": "https://coasterfriends.de/joomla//images/pcp_coasters/e_europa/FR_france/16517_chenille/8o23fbc57wx598.jpg",
+      "bytes": 186486,
+      "status": 200,
+      "sha256": "ab646ead815b122791f88509adf6cc4f85f0b52a5184e223b6f321c907b4a5b6",
+      "retrievedAtUtc": "2026-11-15T04:32:43.774638+00:00"
+    },
+    {
+      "file": "coasterfriends-chenille-6.jpg",
+      "url": "https://coasterfriends.de/joomla//images/pcp_coasters/e_europa/FR_france/16517_chenille/4jymxqada4kgy2.jpg",
+      "bytes": 193891,
+      "status": 200,
+      "sha256": "652715058e24eb9bb2dcd91d9dd782772f3c7188b12ccf7291ebc1fbeec17052",
+      "retrievedAtUtc": "2026-11-15T04:32:44.311561+00:00"
+    },
+    {
+      "file": "coasterfriends-chenille-7.jpg",
+      "url": "https://coasterfriends.de/joomla//images/pcp_coasters/e_europa/FR_france/16517_chenille/a1joe7o41fpj2o.jpg",
+      "bytes": 127185,
+      "status": 200,
+      "sha256": "ac12807a4a3710eb31c6b175776ed6d3765459101112b06a32b107d8f070d5c4",
+      "retrievedAtUtc": "2026-11-15T04:32:44.663384+00:00"
+    },
+    {
+      "file": "themeparkfreaks-closure.webp",
+      "url": "https://themeparkfreaks.eu/wp-content/uploads/2026/09/O-Parc.webp",
+      "bytes": 132166,
+      "status": 200,
+      "sha256": "5a3cd76bab60b15d0635b614bacb782b6244155a2a3bc700b4f3f59cb7f579fa",
+      "retrievedAtUtc": "2026-11-15T04:32:45.492688+00:00"
+    },
+    {
+      "file": "koikispass-o-parc-1.jpg",
+      "url": "https://www.koikispass.com/wp-content/uploads/2020/10/o-parc-1.jpg",
+      "bytes": 144428,
+      "sha256": "e6fd467afe2a99a34ea8d7a74199dbc4023916b68ca59620a63a168e8ec6bb97",
+      "retrievedAtUtc": "2026-11-15T04:33:54.378385+00:00"
+    },
+    {
+      "file": "koikispass-o-parc-8-1.jpg",
+      "url": "https://www.koikispass.com/wp-content/uploads/2020/10/o-parc-8-1.jpg",
+      "bytes": 269174,
+      "sha256": "4e125fe4505f3457ec2adc91a66623238cb8e2d1039ba2533917a37e7069fe7a",
+      "retrievedAtUtc": "2026-11-15T04:33:54.750629+00:00"
+    },
+    {
+      "file": "koikispass-oparc_bando_attractions-1.jpg",
+      "url": "https://www.koikispass.com/wp-content/uploads/2020/10/oparc_bando_attractions-1.jpg",
+      "bytes": 239570,
+      "sha256": "d9c221e6063abe6dce2984e9db6c106eb9c4ddad44290dc7714faf5644b28f4f",
+      "retrievedAtUtc": "2026-11-15T04:33:55.024080+00:00"
+    }
+  ],
+  "facts": {
+    "Koikispass": "Published2017-07-06,modified2024-04-11; three creators Steeve,Charles,Guillaume; photo caption identifies Steeve/Guillaume, collectiveportrait private. ImageURL2020notcapturedate. Mentions coursebags,karts,gianttwister,chairs,tyro,babyzone,inflatables.",
+    "Themeparkfreaks": "21September2026 article, exactcreditFotoTPF-BobVanDyck. Landleaseexpiry31December reported, municipalrenewaldirectwithlandowner. DistinguishAug31lastvisitingday,Sep7closureannouncement,Dec31claimedleaseexpiry. Saysridesdismantledandcoasterapparentlyforsale; noactualsaleproven.",
+    "Coasterfriends": "Chenille opening20June2020 corroborated; photosLavalampesignedandnotimported."
+  },
+  "newIntegrationEvidence": [
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-five-identity-corrections-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-chenille-wide-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-hammock-meadow-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-05-founder-portrait-20261115.json"
+  ],
+  "clientLimitation": "ImportPhoto FOUNDER rejected locally beforeHTTP; no failedmutation. Founderportrait thenaddedviaofficialdocumentedreferenceimagesupsert Preview/Apply, minimalfounder redeclared andprivate flags. Noofficialclientmodified.",
+  "finalAuditCompleted": false,
+  "newPublicationPerformed": false
+}

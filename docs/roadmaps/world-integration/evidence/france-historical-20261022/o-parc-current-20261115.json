@@ -3,7 +3,7 @@
   "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
   "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T04:23:59.950241+00:00",
+  "observedAtUtc": "2026-11-15T04:38:41.506340+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -123,6 +123,16 @@
       "operationId": "4875ae6a-0d76-4581-b057-c566a627d503",
       "appliedAtUtc": "2026-11-15T04:22:17.3680294Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-three-historical-items-20261115.json"
+    },
+    {
+      "operationId": "cfb47c19-3212-4abe-b20d-042912ba2c57",
+      "appliedAtUtc": "2026-11-15T04:31:18.2468643Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-five-identity-corrections-20261115.json"
+    },
+    {
+      "operationId": "06958e41-ade4-4fce-92cc-f28ca2f3b75e",
+      "appliedAtUtc": "2026-11-15T04:37:14.2734017Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-05-founder-portrait-20261115.json"
     }
   ],
   "acceptedImports": [
@@ -135,14 +145,24 @@
       "imageId": "9dd30bfd5ef34dd39d697238e1d220ae",
       "serverIntegrationAtUtc": "2026-11-15T04:08:39.623Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-safari-2025-20261115.json"
+    },
+    {
+      "imageId": "bddcd54627fe42c98abadc171f53b5cb",
+      "serverIntegrationAtUtc": "2026-11-15T04:35:32.083Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-chenille-wide-20261115.json"
+    },
+    {
+      "imageId": "e0f48f45039b4d06a10d8153d6eb705e",
+      "serverIntegrationAtUtc": "2026-11-15T04:35:59.148Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-hammock-meadow-20261115.json"
     }
   ],
   "counts": {
     "items": 34,
-    "itemDescriptionsRewrittenEightLanguages": 12,
-    "itemDescriptionsStillToReview": 22,
-    "images": 13,
-    "newImagesPrivate": 2,
+    "itemDescriptionsRewrittenEightLanguages": 15,
+    "itemDescriptionsStillToReview": 19,
+    "images": 16,
+    "newImagesPrivate": 5,
     "zones": 2,
     "historyEvents": 8,
     "articles": 1,
@@ -263,7 +283,14 @@
       "safari-2025-768.png",
       "reopening-2025-0.png",
       "reopening-2025-1.jpg",
-      "summer-2024-0.jpg"
+      "summer-2024-0.jpg",
+      "coasterfriends-chenille-5.jpg",
+      "coasterfriends-chenille-6.jpg",
+      "coasterfriends-chenille-7.jpg",
+      "themeparkfreaks-closure.webp",
+      "koikispass-o-parc-1.jpg",
+      "koikispass-o-parc-8-1.jpg",
+      "koikispass-oparc_bando_attractions-1.jpg"
     ],
     "duplicateViewsExcluded": [
       "tourism-0 already existing general Chaises",
@@ -281,7 +308,7 @@
     "Bac à sable",
     "Pêche aux canards"
   ],
-  "aliasToCheck": "Bienvenue au saloon in the undated map versus Saloon in2026; do not infer wooden building from drawing alone.",
+  "aliasToCheck": "Saloon corrigé gonflable en huitlangues ; TassesMagiques aliascartographique deValseTasses, aucune fiche doublon.",
   "sourceWarnings": [
     "Official home200empty,le-parc/presentation404; cached search excerpts not treated as fresh page retrieval.",
     "Infoptimum directory404,its last-week2026article200; tourist office gallery and2025Berryarticle200.",
@@ -290,9 +317,10 @@
     "Founder collective / legal operator identity and closingYear require source review; no global-reference mutation yet.",
     "Wayback CDX returned42publicpageURLs; first archived2019ridespage returned429, stoppedretrieval. Currentactivitiespage404. No bypass.",
     "BerryProvincegallery personallyinspected: fiveimages duplicateprevious touristgallery; noimport. Credit©ÔParcexplicit onsource, usefulforChaisescreditsenrichment.",
-    "HistoricGorille andKonga aredistinctsameoldmap; quadsandkartsdistinct; trainandChenilledistinct2025andoldermap. Noindividualopening/closingdatesinvented."
+    "HistoricGorille andKonga aredistinctsameoldmap; quadsandkartsdistinct; trainandChenilledistinct2025andoldermap. Noindividualopening/closingdatesinvented.",
+    "Deuxième essai de la même archive2019 à04:35:54UTC :429 sansRetryAfter ; arrêté, aucunbypass. LaChenilleofficielle404. Coasterfriends3photos©Lavalamperejetéesfiligrane. TPFphotoBobVanDycksansfiligraneacceptée. Koikispass3fichiers:portrait ethamacacceptés,collagede2vuesChaisesnonimporté."
   ],
-  "nextAction": "Poursuivre22notices anciennes et5identités historiques restantes ; corrigerSaloonfausseconstructionbois/Piratescharpentebois, tasses chocolat,donnéesparc/histoire/références. Nouveaux3itemsprivés,2photosprivées,plan2025privé ; pasfullauditexport/publicationnouvelle.",
+  "nextAction": "Poursuivre19notices anciennes et5identités historiques restantes ; donnéesparc/histoire/références ; sourcesphotos etplans. Nouveaux3itemsprivés,2photosprivées,plan2025privé ; aucunfullauditexport ni nouvellepublication.",
   "acceptedMapUploads": [
     {
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-map-2025-upload-20261115.json",
@@ -319,5 +347,13 @@
       "name": "Le Gorille",
       "private": true
     }
-  ]
+  ],
+  "newFounderPortrait": {
+    "imageId": "d88725b539ed461cb3de15199120b365",
+    "ownerId": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+    "private": true,
+    "sourcePage": "https://www.koikispass.com/evadez-vous-8-escapades-insolites-dans-la-nievre/",
+    "identification": "Source caption names Steeve and Guillaume, two of three founders. No left/right identity inferred."
+  },
+  "researchEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-source-followup-20261115.json"
 }

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T04:35:32.083Z",
+  "result": {
+    "id": "bddcd54627fe42c98abadc171f53b5cb",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+    "path": "park_item/bddcd54627fe42c98abadc171f53b5cb",
+    "description": "La Chenille dans le paysage ouvert d’Ô Parc.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1080,
+    "height": 600,
+    "sizeInBytes": 132166,
+    "originalFileName": "codex-import.webp",
+    "contentType": "image/webp",
+    "sourceUrl": "https://themeparkfreaks.eu/wp-content/uploads/2026/09/O-Parc.webp",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": null,
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La Chenille et ses passagers au-dessus de la prairie, avec les gonflables à l’arrière-plan."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Chenille and its passengers above the meadow, with inflatables in the background."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Chenille mit Fahrgästen über der Wiese und Hüpfanlagen im Hintergrund."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Chenille met bezoekers boven het grasveld, met springkussens op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Chenille con i passeggeri sopra il prato e i gonfiabili sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Chenille con pasajeros sobre la pradera y los hinchables al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Chenille z pasażerami ponad łąką, z dmuchańcami w tle."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Chenille com passageiros sobre o prado e insufláveis ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La Chenille dans le paysage ouvert d’Ô Parc."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Chenille in Ô Parc’s open landscape."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Chenille in der offenen Landschaft von Ô Parc."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Chenille in het open landschap van Ô Parc."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Chenille nel paesaggio aperto di Ô Parc."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Chenille en el paisaje abierto de Ô Parc."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Chenille w otwartej przestrzeni Ô Parc."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Chenille na paisagem aberta do Ô Parc."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Bob Van Dyck — Themeparkfreaks"
+      },
+      {
+        "languageCode": "en",
+        "value": "© Bob Van Dyck — Themeparkfreaks"
+      },
+      {
+        "languageCode": "de",
+        "value": "© Bob Van Dyck — Themeparkfreaks"
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Bob Van Dyck — Themeparkfreaks"
+      },
+      {
+        "languageCode": "it",
+        "value": "© Bob Van Dyck — Themeparkfreaks"
+      },
+      {
+        "languageCode": "es",
+        "value": "© Bob Van Dyck — Themeparkfreaks"
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Bob Van Dyck — Themeparkfreaks"
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Bob Van Dyck — Themeparkfreaks"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T04:35:28.497Z",
+    "updatedAt": "2026-11-15T04:35:32.083Z"
+  },
+  "sourceEvidence": {
+    "stem": "chenille-wide",
+    "path": "/workspace/france-historical-20261114/o-parc/source-images/themeparkfreaks-closure.webp",
+    "sourcePage": "https://themeparkfreaks.eu/2026/09/o-parc-sluit-voor-het-laatst-de-deuren/",
+    "url": "https://themeparkfreaks.eu/wp-content/uploads/2026/09/O-Parc.webp",
+    "photographer": "Bob Van Dyck — Themeparkfreaks; explicit page credit Foto: TPF- Bob Van Dyck",
+    "sha256": "5a3cd76bab60b15d0635b614bacb782b6244155a2a3bc700b4f3f59cb7f579fa",
+    "review": "Original inspecté personnellement, distinct des médias existants, sans filigrane, intact ; huit langues rédigées et relues. Prise de vue non datée, privée, noncourante. Aucun usage de la date de publication comme date de photo.",
+    "rights": "Owner authorized researched photographs; no open licence asserted",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1"
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original source inspecté personnellement ; page source et identité vérifiées, crédit exact de la source conservé sans inventer de photographe individuel. Alternative, légende et crédit relus dans les huit langues. Aucun recadrage ni image générée."
+}
