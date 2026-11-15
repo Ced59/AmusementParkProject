@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 12,
+    "activityName": "Le Batoo",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/parc/le-batoo/",
+      "accessedAtUtc": "2026-11-15T10:37:43.078052+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/parc/le-batoo/",
+      "sha256": "2f7fe0bcc76aa9690e6b563189efa43deda29c0f5d6e24f9288154369ed56594",
+      "bytes": 82081,
+      "file": "activity-le-batoo.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-batoo-pokeyland-metz-1350x900.jpg",
+    "file": "12-le-batoo.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-batoo-pokeyland-metz-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:18.611100+00:00",
+    "bytes": 88339,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "08dba52ac6af47ea67dc9e08fb1b09da05ee47e732e95874c9bf29ccf20d8ae9",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "12-le-batoo.jpg",
+    "visualDescriptionFr": "Passagères sur une banquette derrière une barre de retenue, dans un décor de cabine de bateau portant clairement l’enseigne LE BATOO.",
+    "identityAndCaptionLimitsFr": "Identité nominale forte. Photo très rapprochée, lumineuse et moins détaillée ; ne pas déduire mécanisme exact, amplitude ou silhouette complète du bateau.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-batoo-pokeyland-metz-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/12-le-batoo.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-12-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-12-import-result.json"
+  },
+  "metadata": {
+    "description": "Le bateau coloré est entouré d’arches blanches, de motifs de vagues et de lanternes qui composent son décor nautique.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-batoo-pokeyland-metz-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Le Batoo jaune, bleu et rouge sous ses arches blanches"
+      },
+      {
+        "languageCode": "en",
+        "value": "Yellow, blue and red Le Batoo beneath its white arches"
+      },
+      {
+        "languageCode": "de",
+        "value": "Le Batoo in Gelb, Blau und Rot unter weißen Bögen"
+      },
+      {
+        "languageCode": "es",
+        "value": "Le Batoo amarillo, azul y rojo bajo sus arcos blancos"
+      },
+      {
+        "languageCode": "it",
+        "value": "Le Batoo giallo, blu e rosso sotto gli archi bianchi"
+      },
+      {
+        "languageCode": "nl",
+        "value": "De gele, blauwe en rode Le Batoo onder witte bogen"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Żółto-niebiesko-czerwony Le Batoo pod białymi łukami"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Le Batoo amarelo, azul e vermelho sob os arcos brancos"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le bateau coloré est entouré d’arches blanches, de motifs de vagues et de lanternes qui composent son décor nautique."
+      },
+      {
+        "languageCode": "en",
+        "value": "White arches, wave motifs and lanterns surround the colourful boat and form its nautical setting."
+      },
+      {
+        "languageCode": "de",
+        "value": "Weiße Bögen, Wellenmotive und Laternen umgeben das bunte Boot und bilden seine nautische Kulisse."
+      },
+      {
+        "languageCode": "es",
+        "value": "Arcos blancos, motivos de olas y faroles rodean el barco de colores y forman su decorado náutico."
+      },
+      {
+        "languageCode": "it",
+        "value": "Archi bianchi, motivi a onde e lanterne circondano la barca colorata e compongono la scenografia nautica."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Witte bogen, golfmotieven en lantaarns omringen de kleurrijke boot en vormen het nautische decor."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Białe łuki, motywy fal i latarnie otaczają kolorową łódź, tworząc jej żeglarską scenerię."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Arcos brancos, motivos de ondas e lanternas rodeiam o barco colorido e compõem o seu cenário náutico."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "6be2dd0f36e94f61801bee58bb41c311",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+      "path": "park_item/6be2dd0f36e94f61801bee58bb41c311",
+      "description": "Le bateau coloré est entouré d’arches blanches, de motifs de vagues et de lanternes qui composent son décor nautique.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 88339,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-batoo-pokeyland-metz-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Batoo jaune, bleu et rouge sous ses arches blanches"
+        },
+        {
+          "languageCode": "en",
+          "value": "Yellow, blue and red Le Batoo beneath its white arches"
+        },
+        {
+          "languageCode": "de",
+          "value": "Le Batoo in Gelb, Blau und Rot unter weißen Bögen"
+        },
+        {
+          "languageCode": "es",
+          "value": "Le Batoo amarillo, azul y rojo bajo sus arcos blancos"
+        },
+        {
+          "languageCode": "it",
+          "value": "Le Batoo giallo, blu e rosso sotto gli archi bianchi"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De gele, blauwe en rode Le Batoo onder witte bogen"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Żółto-niebiesko-czerwony Le Batoo pod białymi łukami"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Le Batoo amarelo, azul e vermelho sob os arcos brancos"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le bateau coloré est entouré d’arches blanches, de motifs de vagues et de lanternes qui composent son décor nautique."
+        },
+        {
+          "languageCode": "en",
+          "value": "White arches, wave motifs and lanterns surround the colourful boat and form its nautical setting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Weiße Bögen, Wellenmotive und Laternen umgeben das bunte Boot und bilden seine nautische Kulisse."
+        },
+        {
+          "languageCode": "es",
+          "value": "Arcos blancos, motivos de olas y faroles rodean el barco de colores y forman su decorado náutico."
+        },
+        {
+          "languageCode": "it",
+          "value": "Archi bianchi, motivi a onde e lanterne circondano la barca colorata e compongono la scenografia nautica."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Witte bogen, golfmotieven en lantaarns omringen de kleurrijke boot en vormen het nautische decor."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Białe łuki, motywy fal i latarnie otaczają kolorową łódź, tworząc jej żeglarską scenerię."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Arcos brancos, motivos de ondas e lanternas rodeiam o barco colorido e compõem o seu cenário náutico."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:27:19.701Z",
+      "updatedAt": "2026-11-15T13:27:23.35Z"
+    },
+    "startedAtUtc": "2026-11-15T13:27:18.1768245Z",
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T13:27:26.4791961Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

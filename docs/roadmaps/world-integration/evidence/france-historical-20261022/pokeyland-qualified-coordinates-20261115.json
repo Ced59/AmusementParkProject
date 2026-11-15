@@ -1,0 +1,2084 @@
+{
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "a82dabf5-da88-4717-85f9-d22234c0654c",
+          "key": "pokeyland-bumper-boat",
+          "name": "Bumper Boat",
+          "latitude": 49.0208421,
+          "longitude": 6.1010609
+        },
+        {
+          "id": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+          "key": "pokeyland-escalade",
+          "name": "Escalade",
+          "latitude": 49.0217484,
+          "longitude": 6.100698
+        },
+        {
+          "id": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+          "key": "pokeyland-laser-game",
+          "name": "Laser Game",
+          "latitude": 49.0219226,
+          "longitude": 6.1013606
+        },
+        {
+          "id": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+          "key": "pokeyland-mini-golf",
+          "name": "Mini-golf",
+          "latitude": 49.021277,
+          "longitude": 6.1000569
+        },
+        {
+          "id": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+          "key": "pokeyland-poney",
+          "name": "Poney",
+          "latitude": 49.0216332,
+          "longitude": 6.1003377
+        },
+        {
+          "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+          "key": "pokeyland-parcours-sportif",
+          "name": "Parcours sportif",
+          "latitude": 49.0183877,
+          "longitude": 6.1011601
+        },
+        {
+          "id": "73ff7670-39ee-4c19-b339-907707fc8711",
+          "key": "pokeyland-waterjump",
+          "name": "Waterjump",
+          "latitude": 49.0216452,
+          "longitude": 6.1031501
+        },
+        {
+          "id": "e267af4d-a394-4ddb-9cb5-597582e077da",
+          "key": "pokeyland-petit-creux",
+          "name": "Le Petit Creux",
+          "latitude": 49.0211269,
+          "longitude": 6.101518
+        },
+        {
+          "id": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+          "key": "pokeyland-gourmand",
+          "name": "Le Gourmand",
+          "latitude": 49.0215437,
+          "longitude": 6.1008841
+        },
+        {
+          "id": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+          "key": "pokeyland-escale",
+          "name": "L’Escale",
+          "latitude": 49.0193189,
+          "longitude": 6.1002579
+        }
+      ],
+      "metadata": {
+        "source": "Conversation France — dix nœuds nommés OSM toujours publiés le 15 novembre 2026, coordonnées relues directement dans le XML, identités et voisinages comparés au plan officiel actuel. Historique 2021–2024 et précision inconnue conservés dans la preuve ; pas de relevé terrain2026 prétendu, pas centre calculé, pas point mobile ni itinéraire complet. Crazy Kart/Quad Kids exclus pour inversion des repères entre plans, aucune permutation arbitraire."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "8730a53a-f7bf-4f39-bc9f-cc85970de6cb",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:32:43.7846862Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 10,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "entityKey": "pokeyland-bumper-boat",
+        "displayName": "Bumper Boat",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0208421,6.1010609"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "pokeyland-escalade",
+        "displayName": "Escalade",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0217484,6.100698"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0219226,6.1013606"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "pokeyland-mini-golf",
+        "displayName": "Mini-golf",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.021277,6.1000569"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "pokeyland-poney",
+        "displayName": "Poney",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0216332,6.1003377"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0183877,6.1011601"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0216452,6.1031501"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0211269,6.101518"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0215437,6.1008841"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0193189,6.1002579"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "c9bf08c8-dac8-43dd-970f-6c7ddc07ae0e",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:33:12.6654711Z",
+    "appliedAtUtc": "2026-11-15T13:33:12.6654719Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 10,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "entityKey": "pokeyland-bumper-boat",
+        "displayName": "Bumper Boat",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0208421,6.1010609"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "pokeyland-escalade",
+        "displayName": "Escalade",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0217484,6.100698"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0219226,6.1013606"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "pokeyland-mini-golf",
+        "displayName": "Mini-golf",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.021277,6.1000569"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "pokeyland-poney",
+        "displayName": "Poney",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0216332,6.1003377"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0183877,6.1011601"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0216452,6.1031501"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0211269,6.101518"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0215437,6.1008841"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "position",
+            "oldValue": null,
+            "newValue": "49.0193189,6.1002579"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sourceQualification": {
+    "createdAtUtc": "2026-11-15T13:30:51.284400+00:00",
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "scope": "Public requalification of exactly the 11 previously identified unique named OSM points against the 74-item working inventory and preserved official plans. No API PDE, Git, registry mutation, imported coordinates or existing-report rewrite.",
+    "workingStateSnapshot": {
+      "file": "/workspace/france-historical-20261114/pokeyland/working-state.json",
+      "sha256": "77f5d28fc8fa692a9bded69cc87ffc1b1253bd04ebe7f4cdb0f994cfd54d0eaa",
+      "itemCount": 74,
+      "readAtUtc": "2026-11-15T13:30:51.284400+00:00"
+    },
+    "result": {
+      "reviewedPoints": 11,
+      "currentVisibleNodes": 11,
+      "currentNodesUnchangedSincePriorPublicSnapshot": 11,
+      "conditionallyUsableNamedPoints": 10,
+      "heldForConcreteConflict": 1,
+      "heldNames": [
+        "Crazy Kart"
+      ],
+      "newCoordinatesInventedOrDerived": 0
+    },
+    "dateInterpretation": {
+      "lastEditedAtUtc": "Date of the latest OSM object edit (2021–2024), not a visit, image-capture date, 2026 survey or verification that no physical change occurred.",
+      "currentResponseRetrievedAtUtc": "Actual UTC time of the fresh documented read-only OSM response in which each named node remains visible. A currently published point can still contain historical survey data."
+    },
+    "planUse": "Official plans were read only for names, aliases and broad spatial/zone relationships. No plan georeferencing, pixel-coordinate conversion, polygon centre, point averaging, arbitrary node selection or inferred GPS replacement.",
+    "conflict": "Apparent adjacent-track marker inversion for Crazy Kart / Quad Kids between official 2022 and 2026 plans. A physical move is not proven, but this is a concrete reason to withhold old Crazy Kart GPS until resolved. No automatic swap.",
+    "rows": [
+      {
+        "currentItemId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "currentItemKey": "pokeyland-bumper-boat",
+        "currentName": "Bumper Boat",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+        "osmNodeId": "8693886382",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8693886382",
+        "osmName": "Bumper Boat",
+        "latitudeExactSourceString": "49.0208421",
+        "longitudeExactSourceString": "6.1010609",
+        "latitude": 49.0208421,
+        "longitude": 6.1010609,
+        "version": 2,
+        "lastEditedAtUtc": "2023-08-28T08:50:13Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "140483317",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/140483317",
+        "changesetMetadata": {
+          "changesets_count": "403",
+          "comment": "Mise à jour parc Pokey-Land, suite à nouvelle photos aériennes.",
+          "created_by": "iD 2.27.1",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "local knowledge;aerial imagery;survey"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 37,
+          "label": "BUMPER BOAT"
+        },
+        "officialMap2022": {
+          "number": 32,
+          "label": "BUMPER BOAT"
+        },
+        "identityAssessment": "Exact nominal match in both official plans and the current activity page. Distinct from Waterjump and from the Bumper Car vehicle attraction.",
+        "zoneScaleCompatibility": "The current plan places the boats on the tree-lined pond beside Scène Pokeyshow. The explicit OSM node lies in that pond’s outer water ring (relation 17986912 / outer way 935294132), separate from the Waterjump basin.",
+        "movementOrReplacementEvidence": "Both plans retain the pond/Scène Pokeyshow relationship. No positive evidence of relocation or replacement found in the consulted source corpus.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Named point for the boat activity, not the momentary position of a boat or an individual boarding place.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "currentItemKey": "pokeyland-crazy-kart",
+        "currentName": "Crazy Kart",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+        "osmNodeId": "8693886368",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8693886368",
+        "osmName": "Crazy Kart",
+        "latitudeExactSourceString": "49.0223188",
+        "longitudeExactSourceString": "6.1018769",
+        "latitude": 49.0223188,
+        "longitude": 6.1018769,
+        "version": 2,
+        "lastEditedAtUtc": "2022-07-19T11:35:47Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "123803839",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/123803839",
+        "changesetMetadata": {
+          "changesets_count": "346",
+          "comment": "Amélioration cartographie 2 points d'activité parc Pokey Land, commune de Fey.",
+          "created_by": "iD 2.21.1",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/plan-du-parc/;local knowledge;survey"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 34,
+          "label": "CRAZY KART"
+        },
+        "officialMap2022": {
+          "number": 30,
+          "label": "CRAZY KART"
+        },
+        "identityAssessment": "Name and pedal-kart offer remain current, but identity alone does not settle which adjacent track is represented by the old node.",
+        "zoneScaleCompatibility": "The 2022 plan labels Crazy Kart 30 at the adjacent upper track/marker and Quads Kids 29 at the lower winding track/marker. The 2026 drawing places Kid’s Quad 35 at the old Crazy Kart marker and Crazy Kart 34 at the old Quads Kids marker.",
+        "movementOrReplacementEvidence": "Apparent inversion of two adjacent circuit labels between the official plans. This does not establish whether the physical activities moved, the graphic was corrected, or the new graphic is mistaken. The OSM named Crazy Kart and Quad Kids nodes have not been revised since July 2022.",
+        "verdict": "HOLD_CONCRETE_ADJACENT_TRACK_LABEL_CONFLICT",
+        "integrableAsSourcedNamedPoint": false,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Do not apply the old Crazy Kart coordinate as the current ride location, and do not swap it automatically with Quad Kids.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "conflictingAdjacentNode": {
+          "osmNodeId": "8693886369",
+          "osmName": "Quad Kids",
+          "sourceFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/osm-park-bbox.xml",
+          "sourceRetrievedAtUtc": "2026-11-15T11:09:29.678106+00:00",
+          "version": 2,
+          "lastEditedAtUtc": "2022-07-19T11:35:47Z",
+          "mustNotSwapOrAssignToCurrentItem": true
+        }
+      },
+      {
+        "currentItemId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "currentItemKey": "pokeyland-escalade",
+        "currentName": "Escalade",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/escalade/",
+        "osmNodeId": "8668010591",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8668010591",
+        "osmName": "Escalade",
+        "latitudeExactSourceString": "49.0217484",
+        "longitudeExactSourceString": "6.1006980",
+        "latitude": 49.0217484,
+        "longitude": 6.100698,
+        "version": 2,
+        "lastEditedAtUtc": "2021-05-03T14:13:11Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "104062489",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/104062489",
+        "changesetMetadata": {
+          "changesets_count": "229",
+          "comment": "Ajout des noms des attractions sur le parc PokeyLand - Fey (57)",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 31,
+          "label": "ESCALADE"
+        },
+        "officialMap2022": {
+          "number": 25,
+          "label": "ESCALADE"
+        },
+        "identityAssessment": "Exact name of the climbing-wall activity, supported by the current official page; not a generic treetop-course location.",
+        "zoneScaleCompatibility": "Both plans place the wall in the central arrival/ticket-building cluster, next to the climbing structures near the park entrance. The OSM node is in the same arrival cluster, close to the explicit ticket-building footprint.",
+        "movementOrReplacementEvidence": "The wall remains represented in the same broad cluster in 2022 and 2026. No source read reports a move or replacement.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Point of the named climbing attraction, not a guarantee of the location of a particular wall face or safety station.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "currentItemKey": "pokeyland-laser-game",
+        "currentName": "Laser Game",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/laser-game/",
+        "osmNodeId": "8693886371",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8693886371",
+        "osmName": "Laser Game",
+        "latitudeExactSourceString": "49.0219226",
+        "longitudeExactSourceString": "6.1013606",
+        "latitude": 49.0219226,
+        "longitude": 6.1013606,
+        "version": 1,
+        "lastEditedAtUtc": "2021-05-03T14:13:11Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "104062489",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/104062489",
+        "changesetMetadata": {
+          "changesets_count": "229",
+          "comment": "Ajout des noms des attractions sur le parc PokeyLand - Fey (57)",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 36,
+          "label": "LASER GAMES"
+        },
+        "officialMap2022": {
+          "number": 31,
+          "label": "LASER GAME"
+        },
+        "identityAssessment": "Current singular web-page name and plural plan label refer to the same outdoor laser-tag offer. Not a paintball-field alias.",
+        "zoneScaleCompatibility": "Both illustrated plans place its marker in the northern part of the central activity cluster, below the Waterjump facilities and before the separate large paintball area. The named OSM point is likewise north of the central arrival/food cluster, distinct from the named paintball polygons.",
+        "movementOrReplacementEvidence": "No relocation notice found; corresponding activity marker remains in the same broad zone on both plans.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Source publishes one named point for an offer described as involving playing areas; it is not a boundary or the coordinates of every laser-game field.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "currentItemKey": "pokeyland-mini-golf",
+        "currentName": "Mini-golf",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/mini-golf/",
+        "osmNodeId": "8668010592",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8668010592",
+        "osmName": "Mini-golf",
+        "latitudeExactSourceString": "49.0212770",
+        "longitudeExactSourceString": "6.1000569",
+        "latitude": 49.021277,
+        "longitude": 6.1000569,
+        "version": 1,
+        "lastEditedAtUtc": "2021-04-26T10:06:56Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "103626697",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/103626697",
+        "changesetMetadata": {
+          "changesets_count": "225",
+          "comment": "Mise à jour des chemins et pictogrammes sur le parc d'attraction de Pokeyland, commune de Fey.",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 28,
+          "label": "MINI-GOLF"
+        },
+        "officialMap2022": {
+          "number": 22,
+          "label": "MINI-GOLF"
+        },
+        "identityAssessment": "Exact name, current official page specifies fifteen holes; no competing current mini-golf identity in the 74-item inventory.",
+        "zoneScaleCompatibility": "The two plans keep Mini-golf beside Balade de poney and Cabanes de Pokey on the forest side of the arrival cluster. The explicit OSM point is in this same cluster, near the pony point and Cabanes footprint.",
+        "movementOrReplacementEvidence": "Current map retains the same named offer and neighbouring attractions. The newly read 2021 creation changeset cites the official 2020 plan and local knowledge.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Use only the explicit named node; no centroid of the fifteen-hole course was computed.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "currentItemKey": "pokeyland-poney",
+        "currentName": "Poney",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/poney/",
+        "osmNodeId": "8668302510",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8668302510",
+        "osmName": "Balade à Poney",
+        "latitudeExactSourceString": "49.0216332",
+        "longitudeExactSourceString": "6.1003377",
+        "latitude": 49.0216332,
+        "longitude": 6.1003377,
+        "version": 2,
+        "lastEditedAtUtc": "2021-05-03T14:13:11Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "104062489",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/104062489",
+        "changesetMetadata": {
+          "changesets_count": "229",
+          "comment": "Ajout des noms des attractions sur le parc PokeyLand - Fey (57)",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 27,
+          "label": "BALADE DE PONEY"
+        },
+        "officialMap2022": {
+          "number": 21,
+          "label": "BALADE À PONEY"
+        },
+        "identityAssessment": "OSM Balade à Poney, current web-page Poney and map Balade de Poney identify the live-animal outing. Les p’tits chevaux 39 is a separate mechanical attraction and must not receive this coordinate.",
+        "zoneScaleCompatibility": "Both official plans place the pony activity beside Mini-golf, on the forest side of the central arrival area. The named OSM point has the corresponding relationship to the Mini-golf point.",
+        "movementOrReplacementEvidence": "The current site explicitly describes riding real ponies on a reserved forest route. No source consulted reports relocation or replacement by mechanical horses.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "named_offer_point_not_route_or_animal",
+        "qualificationLimit": "Explicit OSM point of the offer only. It is not a full route, a proven trailhead/boarding station, or the position of an animal or mobile unit.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "currentItemKey": "pokeyland-parcours-sportif",
+        "currentName": "Parcours sportif",
+        "currentSourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "osmNodeId": "8693886383",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8693886383",
+        "osmName": "Parcours Sportif",
+        "latitudeExactSourceString": "49.0183877",
+        "longitudeExactSourceString": "6.1011601",
+        "latitude": 49.0183877,
+        "longitude": 6.1011601,
+        "version": 1,
+        "lastEditedAtUtc": "2021-05-03T14:13:11Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "104062489",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/104062489",
+        "changesetMetadata": {
+          "changesets_count": "229",
+          "comment": "Ajout des noms des attractions sur le parc PokeyLand - Fey (57)",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 18,
+          "label": "PARCOURS SPORTIF"
+        },
+        "officialMap2022": {
+          "number": 17,
+          "label": "PARCOURS SPORTIF"
+        },
+        "identityAssessment": "Unique current sporting treetop course within the accrobranche zone, separate from Parcours Aventure, Famille and Tyrolienne.",
+        "zoneScaleCompatibility": "The 2022 and 2026 plans show the red sporting-course loop in the far treetop sector beside the accrobranche reception. The explicit OSM point belongs to that southern treetop sector with the other named courses, well apart from the central ride cluster.",
+        "movementOrReplacementEvidence": "Course name, red route grouping and broad sector are retained. No source read establishes a later move; the unchanged OSM edit is not itself proof of a 2026 survey.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "named_offer_point_not_course_geometry",
+        "qualificationLimit": "Explicit named point of the sporting-course offer only, not its complete itinerary, every platform, a measured starting point or the entire accrobranche zone.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "currentItemKey": "pokeyland-waterjump",
+        "currentName": "Waterjump",
+        "currentSourceUrl": "https://www.pokeyland.com/packs/waterjump/",
+        "osmNodeId": "9897015491",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/9897015491",
+        "osmName": "Waterjump",
+        "latitudeExactSourceString": "49.0216452",
+        "longitudeExactSourceString": "6.1031501",
+        "latitude": 49.0216452,
+        "longitude": 6.1031501,
+        "version": 2,
+        "lastEditedAtUtc": "2023-08-28T08:50:13Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "140483317",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/140483317",
+        "changesetMetadata": {
+          "changesets_count": "403",
+          "comment": "Mise à jour parc Pokey-Land, suite à nouvelle photos aériennes.",
+          "created_by": "iD 2.27.1",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "local knowledge;aerial imagery;survey"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 20,
+          "label": "WATERJUMP"
+        },
+        "officialMap2022": {
+          "number": 19,
+          "label": "WATER JUMP - Point de vente activités"
+        },
+        "identityAssessment": "Unique aquatic-slide complex named on both plans and the current official Waterjump page. Distinct from the Bumper Boat pond.",
+        "zoneScaleCompatibility": "Plans show the dedicated slide-and-basin complex set back from the main ride cluster. OSM places the named node in that complex by the separately mapped Waterjump basin 1079720771, east of the central park; the node is not inside the basin polygon itself.",
+        "movementOrReplacementEvidence": "Same broad dedicated aquatic complex in 2022 and 2026. OSM last revision followed new aerial imagery in 2023. No relocation or replacement evidenced in the read corpus.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Named facility point beside the basin, not a swimming coordinate or any individual slide. Do not move the point into the water or compute a basin centre.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "currentItemKey": "pokeyland-petit-creux",
+        "currentName": "Le Petit Creux",
+        "currentSourceUrl": "https://www.pokeyland.com/restauration/",
+        "osmNodeId": "8667758730",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8667758730",
+        "osmName": "Le petit creux",
+        "latitudeExactSourceString": "49.0211269",
+        "longitudeExactSourceString": "6.1015180",
+        "latitude": 49.0211269,
+        "longitude": 6.101518,
+        "version": 2,
+        "lastEditedAtUtc": "2024-08-29T18:57:21Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "155943658",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/155943658",
+        "changesetMetadata": {
+          "changesets_count": "534",
+          "comment": "Pokeland — attractions",
+          "created_by": "iD 2.30.2",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "en-US"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 5,
+          "label": "LE PETIT CREUX"
+        },
+        "officialMap2022": {
+          "number": 5,
+          "label": "LE PETIT CREUX"
+        },
+        "identityAssessment": "Exact restaurant identity apart from capitalisation; current official food page still lists burgers, salads and hot dogs at Le petit Creux.",
+        "zoneScaleCompatibility": "Both official plans retain marker 5 beside Salle de séminaire and near Scène Pokeyshow, above the central entrance buildings in the drawing. OSM has a unique same-name food point in that central food/event cluster.",
+        "movementOrReplacementEvidence": "Label and neighbouring venue relationships are unchanged in the two plans. No source read reports relocation.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Named food outlet point; not coordinates inferred from its photograph or a general centre of the restaurant zone.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "currentItemKey": "pokeyland-gourmand",
+        "currentName": "Le Gourmand",
+        "currentSourceUrl": "https://www.pokeyland.com/restauration/",
+        "osmNodeId": "8667758734",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8667758734",
+        "osmName": "Le gourmand",
+        "latitudeExactSourceString": "49.0215437",
+        "longitudeExactSourceString": "6.1008841",
+        "latitude": 49.0215437,
+        "longitude": 6.1008841,
+        "version": 2,
+        "lastEditedAtUtc": "2024-08-29T18:57:21Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "155943658",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/155943658",
+        "changesetMetadata": {
+          "changesets_count": "534",
+          "comment": "Pokeland — attractions",
+          "created_by": "iD 2.30.2",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "en-US"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 8,
+          "label": "LE GOURMAND"
+        },
+        "officialMap2022": {
+          "number": 8,
+          "label": "LE GOURMAND"
+        },
+        "identityAssessment": "Exact snack identity apart from case; current official restaurant page retains the sweet-snack offer.",
+        "zoneScaleCompatibility": "Both plans retain marker 8 on the central arrival building near the ticket/arcade cluster. The OSM node is in that central building cluster and within a building footprint separately named L’orée de Pokey.",
+        "movementOrReplacementEvidence": "Stable current label and broad cluster. The building’s separate name is not evidence that Le Gourmand is an alias of the whole building; a food point can be housed there.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Apply only to the named snack outlet, not to Salle de séminaire, Le Grill or the entire L’orée de Pokey building.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "currentItemKey": "pokeyland-escale",
+        "currentName": "L’Escale",
+        "currentSourceUrl": "https://www.pokeyland.com/restauration/",
+        "osmNodeId": "8667758731",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8667758731",
+        "osmName": "Snack l'Escale",
+        "latitudeExactSourceString": "49.0193189",
+        "longitudeExactSourceString": "6.1002579",
+        "latitude": 49.0193189,
+        "longitude": 6.1002579,
+        "version": 1,
+        "lastEditedAtUtc": "2021-04-26T09:16:46Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "103622468",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/103622468",
+        "changesetMetadata": {
+          "changesets_count": "224",
+          "comment": "Mise à jour des chemins et pictogrammes sur le parc d'attraction de Pokeyland, commune de Fey.",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "Cadastre;BDOrtho IGN",
+          "locale": "fr",
+          "resolved:almost_junction:highway-highway": "1",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge;aerial imagery;cadastre DGI 04/2021"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 7,
+          "label": "L’ESCALE"
+        },
+        "officialMap2022": {
+          "number": 7,
+          "label": "L’ESCALE"
+        },
+        "identityAssessment": "Snack l’Escale in OSM and L’Escale in the two plans/current restaurant page identify the same snack offer, with a descriptive prefix only.",
+        "zoneScaleCompatibility": "Both official plans put marker 7 beside the accrobranche reception in the far treetop sector. The OSM node is south of the central food outlets and close to that named treetop sector.",
+        "movementOrReplacementEvidence": "Label and relationship to accrobranche reception retained. No positive evidence of later relocation in consulted sources.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Named snack outlet point, not a centre of the treetop area.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      }
+    ],
+    "sourceFiles": [
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2026.pdf",
+        "bytes": 362538,
+        "sha256": "995e99a02b0da75695b33206915fd292abef9c5a6a4efd614a6df14e00dc3db6",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+        "originalAccessedAtUtc": "2026-11-15T10:36:57.087598+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2026.png",
+        "bytes": 5553952,
+        "sha256": "5eb2d84aec6734ef5e7d482d2d956ec6d32f981b0195954a2aba639b727a31cd",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "role": "Previously rendered view of the corresponding official PDF, personally read; no pixel-to-GPS transformation."
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2022.pdf",
+        "bytes": 4042269,
+        "sha256": "507ee6aaadb5f3e80cac2da0c645226293bf10160c6ea65d5cd4a46071e96798",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+        "originalAccessedAtUtc": "2026-11-15T10:36:57.806942+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2022.png",
+        "bytes": 4943819,
+        "sha256": "599977f5167b6327ec83cea9cab435ac797911fda24b11f16efcab15a8cb96ba",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "role": "Previously rendered view of the corresponding official PDF, personally read; no pixel-to-GPS transformation."
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-restauration.html",
+        "bytes": 97919,
+        "sha256": "e66380686b2e78d5de6bd6d21594d83739af744e773e7eb450d438f55ca2c12d",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/restauration/",
+        "originalAccessedAtUtc": "2026-11-15T10:37:45.706394+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-restauration.txt",
+        "bytes": 2695,
+        "sha256": "c27fe0c7173df4a703e801a1f7f912540d2bee0257bb0b563b9c0dc029cecb03",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-poney.html",
+        "bytes": 89945,
+        "sha256": "44e079087b5fd3240867c6bae295522581536ef67d9104fa7552c5b3aa8a0426",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/activites/explorateurs/poney/",
+        "originalAccessedAtUtc": "2026-11-15T10:37:44.654975+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-poney.txt",
+        "bytes": 2404,
+        "sha256": "405fa06269e593b63c1efe296c853523723cc5e547c66847673f60cb635546ef",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-waterjump.html",
+        "bytes": 103159,
+        "sha256": "37510fc5408c687a032f058bcb0e39bda26d4ea2089b3652a58c5d6eb2c163fc",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/packs/waterjump/",
+        "originalAccessedAtUtc": "2026-11-15T10:37:46.767853+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-waterjump.txt",
+        "bytes": 4394,
+        "sha256": "16d3ce6c4609fffa04b2b5a5ac413cf58a015ecf56f93c17864a867b3672d63e",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-crazy-kart.html",
+        "bytes": 89908,
+        "sha256": "850e1d8c558838938c2a6b47883c63c5fbd1c2ccc148423719c25c00f9ae6845",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+        "originalAccessedAtUtc": "2026-11-15T10:37:41.527958+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-crazy-kart.txt",
+        "bytes": 2245,
+        "sha256": "a2f2ca9acf465fbf19a3025cb1579a595ca5d2881bfc68fc7db48cea73680a9a",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-laser-game.html",
+        "bytes": 89187,
+        "sha256": "d3845cfe7c0c5d17439f914d3f00d09a51d27aef677a5a5e93af2846ccc4f8e6",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/activites/explorateurs/laser-game/",
+        "originalAccessedAtUtc": "2026-11-15T10:37:42.906359+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-laser-game.txt",
+        "bytes": 2184,
+        "sha256": "64ec8dfb42b21a9c62397f1c4504d588dd50f1e3db839ec4397c796a49a29319",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-escalade.html",
+        "bytes": 91250,
+        "sha256": "6154b95b00ec631b3ca80916ff9d1ead6b78785ef9de02587722bfe59335122b",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/activites/explorateurs/escalade/",
+        "originalAccessedAtUtc": "2026-11-15T10:37:41.870155+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-mini-golf.html",
+        "bytes": 89822,
+        "sha256": "77b739d2e37076d40a27b50ccd48c4d672d398ac2bfa52214841029b69a00c4e",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/activites/explorateurs/mini-golf/",
+        "originalAccessedAtUtc": "2026-11-15T10:37:44.136361+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-bumper-boat.html",
+        "bytes": 90117,
+        "sha256": "738580b6a258b28ed29e530d4654ab167c4e858a3df653061412749c3074d786",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+        "originalAccessedAtUtc": "2026-11-15T10:37:41.331365+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/osm-park-bbox.xml",
+        "bytes": 456926,
+        "sha256": "d3b8c40b3cae4bef91bad67eeab17314cd7e9374b9779517b08388a8d6c85ee2",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.openstreetmap.org/api/0.6/map?bbox=6.0980793,49.0170726,6.1064761,49.026658600000005",
+        "originalAccessedAtUtc": "2026-11-15T11:09:29.678106+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/osm-changesets.xml",
+        "bytes": 5050,
+        "sha256": "7e99f19d9a93d20a2bc3fa3d8fd5166accb8dcacc857de53464f5d1ea4891440",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false,
+        "url": "https://www.openstreetmap.org/api/0.6/changesets?changesets=103622468,104062489,123803839,140483317,155943658,155291567,109860356",
+        "originalAccessedAtUtc": "2026-11-15T11:10:59.865717+00:00",
+        "httpStatus": 200,
+        "hashMatchesAccessReceipt": true
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/item-geolocation-coverage.json",
+        "bytes": 82045,
+        "sha256": "cf876bc070b70d788c1b4c702115c86fccaebee761e3fbd4f3f259b8064966c9",
+        "rereadAtUtc": "2026-11-15T13:30:51.284400+00:00",
+        "networkRepeated": false
+      }
+    ],
+    "newPublicRequests": [
+      {
+        "url": "https://www.openstreetmap.org/api/0.6/nodes?nodes=8693886382,8693886368,8668010591,8693886371,8668010592,8668302510,8693886383,9897015491,8667758730,8667758734,8667758731",
+        "accessedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "status": 200,
+        "finalUrl": "https://www.openstreetmap.org/api/0.6/nodes?nodes=8693886382,8693886368,8668010591,8693886371,8668010592,8668302510,8693886383,9897015491,8667758730,8667758734,8667758731",
+        "contentType": "application/xml; charset=utf-8",
+        "bytes": 3037,
+        "sha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "file": "current-named-nodes.xml"
+      },
+      {
+        "url": "https://www.openstreetmap.org/api/0.6/changeset/103626697",
+        "accessedAtUtc": "2026-11-15T13:26:06.674823+00:00",
+        "status": 200,
+        "finalUrl": "https://www.openstreetmap.org/api/0.6/changeset/103626697",
+        "contentType": "application/xml; charset=utf-8",
+        "bytes": 1014,
+        "sha256": "a22f5292f8d3ab8a75e4dfddda9662c3c5e55cac95a577d95ed83cbf3a29df89",
+        "file": "mini-golf-creation-changeset.xml"
+      }
+    ],
+    "globalLimits": [
+      "Ten points are defensible sourced cartographic candidates, not guaranteed field measurements from 2026.",
+      "Absence of a geotagged photograph is not evidence that a node is wrong.",
+      "No proof of relocation found is not proof of no relocation.",
+      "Poney and Parcours sportif are named points of offers; they do not map an animal, route, trailhead or entire circuit.",
+      "Root must re-read points, current inventory and official plan before any Apply.",
+      "Only these 11 items were assessed; no coordinates should be copied onto other current or historical items."
+    ],
+    "noMutationPerformed": true
+  },
+  "acceptedPoints": {
+    "createdAtUtc": "2026-11-15T13:30:51.284400+00:00",
+    "notAnApplyDocument": true,
+    "requiresRootReview": true,
+    "count": 10,
+    "items": [
+      {
+        "currentItemId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "currentItemKey": "pokeyland-bumper-boat",
+        "currentName": "Bumper Boat",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+        "osmNodeId": "8693886382",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8693886382",
+        "osmName": "Bumper Boat",
+        "latitudeExactSourceString": "49.0208421",
+        "longitudeExactSourceString": "6.1010609",
+        "latitude": 49.0208421,
+        "longitude": 6.1010609,
+        "version": 2,
+        "lastEditedAtUtc": "2023-08-28T08:50:13Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "140483317",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/140483317",
+        "changesetMetadata": {
+          "changesets_count": "403",
+          "comment": "Mise à jour parc Pokey-Land, suite à nouvelle photos aériennes.",
+          "created_by": "iD 2.27.1",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "local knowledge;aerial imagery;survey"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 37,
+          "label": "BUMPER BOAT"
+        },
+        "officialMap2022": {
+          "number": 32,
+          "label": "BUMPER BOAT"
+        },
+        "identityAssessment": "Exact nominal match in both official plans and the current activity page. Distinct from Waterjump and from the Bumper Car vehicle attraction.",
+        "zoneScaleCompatibility": "The current plan places the boats on the tree-lined pond beside Scène Pokeyshow. The explicit OSM node lies in that pond’s outer water ring (relation 17986912 / outer way 935294132), separate from the Waterjump basin.",
+        "movementOrReplacementEvidence": "Both plans retain the pond/Scène Pokeyshow relationship. No positive evidence of relocation or replacement found in the consulted source corpus.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Named point for the boat activity, not the momentary position of a boat or an individual boarding place.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "currentItemKey": "pokeyland-escalade",
+        "currentName": "Escalade",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/escalade/",
+        "osmNodeId": "8668010591",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8668010591",
+        "osmName": "Escalade",
+        "latitudeExactSourceString": "49.0217484",
+        "longitudeExactSourceString": "6.1006980",
+        "latitude": 49.0217484,
+        "longitude": 6.100698,
+        "version": 2,
+        "lastEditedAtUtc": "2021-05-03T14:13:11Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "104062489",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/104062489",
+        "changesetMetadata": {
+          "changesets_count": "229",
+          "comment": "Ajout des noms des attractions sur le parc PokeyLand - Fey (57)",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 31,
+          "label": "ESCALADE"
+        },
+        "officialMap2022": {
+          "number": 25,
+          "label": "ESCALADE"
+        },
+        "identityAssessment": "Exact name of the climbing-wall activity, supported by the current official page; not a generic treetop-course location.",
+        "zoneScaleCompatibility": "Both plans place the wall in the central arrival/ticket-building cluster, next to the climbing structures near the park entrance. The OSM node is in the same arrival cluster, close to the explicit ticket-building footprint.",
+        "movementOrReplacementEvidence": "The wall remains represented in the same broad cluster in 2022 and 2026. No source read reports a move or replacement.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Point of the named climbing attraction, not a guarantee of the location of a particular wall face or safety station.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "currentItemKey": "pokeyland-laser-game",
+        "currentName": "Laser Game",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/laser-game/",
+        "osmNodeId": "8693886371",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8693886371",
+        "osmName": "Laser Game",
+        "latitudeExactSourceString": "49.0219226",
+        "longitudeExactSourceString": "6.1013606",
+        "latitude": 49.0219226,
+        "longitude": 6.1013606,
+        "version": 1,
+        "lastEditedAtUtc": "2021-05-03T14:13:11Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "104062489",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/104062489",
+        "changesetMetadata": {
+          "changesets_count": "229",
+          "comment": "Ajout des noms des attractions sur le parc PokeyLand - Fey (57)",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 36,
+          "label": "LASER GAMES"
+        },
+        "officialMap2022": {
+          "number": 31,
+          "label": "LASER GAME"
+        },
+        "identityAssessment": "Current singular web-page name and plural plan label refer to the same outdoor laser-tag offer. Not a paintball-field alias.",
+        "zoneScaleCompatibility": "Both illustrated plans place its marker in the northern part of the central activity cluster, below the Waterjump facilities and before the separate large paintball area. The named OSM point is likewise north of the central arrival/food cluster, distinct from the named paintball polygons.",
+        "movementOrReplacementEvidence": "No relocation notice found; corresponding activity marker remains in the same broad zone on both plans.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Source publishes one named point for an offer described as involving playing areas; it is not a boundary or the coordinates of every laser-game field.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "currentItemKey": "pokeyland-mini-golf",
+        "currentName": "Mini-golf",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/mini-golf/",
+        "osmNodeId": "8668010592",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8668010592",
+        "osmName": "Mini-golf",
+        "latitudeExactSourceString": "49.0212770",
+        "longitudeExactSourceString": "6.1000569",
+        "latitude": 49.021277,
+        "longitude": 6.1000569,
+        "version": 1,
+        "lastEditedAtUtc": "2021-04-26T10:06:56Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "103626697",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/103626697",
+        "changesetMetadata": {
+          "changesets_count": "225",
+          "comment": "Mise à jour des chemins et pictogrammes sur le parc d'attraction de Pokeyland, commune de Fey.",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 28,
+          "label": "MINI-GOLF"
+        },
+        "officialMap2022": {
+          "number": 22,
+          "label": "MINI-GOLF"
+        },
+        "identityAssessment": "Exact name, current official page specifies fifteen holes; no competing current mini-golf identity in the 74-item inventory.",
+        "zoneScaleCompatibility": "The two plans keep Mini-golf beside Balade de poney and Cabanes de Pokey on the forest side of the arrival cluster. The explicit OSM point is in this same cluster, near the pony point and Cabanes footprint.",
+        "movementOrReplacementEvidence": "Current map retains the same named offer and neighbouring attractions. The newly read 2021 creation changeset cites the official 2020 plan and local knowledge.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Use only the explicit named node; no centroid of the fifteen-hole course was computed.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "currentItemKey": "pokeyland-poney",
+        "currentName": "Poney",
+        "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/poney/",
+        "osmNodeId": "8668302510",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8668302510",
+        "osmName": "Balade à Poney",
+        "latitudeExactSourceString": "49.0216332",
+        "longitudeExactSourceString": "6.1003377",
+        "latitude": 49.0216332,
+        "longitude": 6.1003377,
+        "version": 2,
+        "lastEditedAtUtc": "2021-05-03T14:13:11Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "104062489",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/104062489",
+        "changesetMetadata": {
+          "changesets_count": "229",
+          "comment": "Ajout des noms des attractions sur le parc PokeyLand - Fey (57)",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 27,
+          "label": "BALADE DE PONEY"
+        },
+        "officialMap2022": {
+          "number": 21,
+          "label": "BALADE À PONEY"
+        },
+        "identityAssessment": "OSM Balade à Poney, current web-page Poney and map Balade de Poney identify the live-animal outing. Les p’tits chevaux 39 is a separate mechanical attraction and must not receive this coordinate.",
+        "zoneScaleCompatibility": "Both official plans place the pony activity beside Mini-golf, on the forest side of the central arrival area. The named OSM point has the corresponding relationship to the Mini-golf point.",
+        "movementOrReplacementEvidence": "The current site explicitly describes riding real ponies on a reserved forest route. No source consulted reports relocation or replacement by mechanical horses.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "named_offer_point_not_route_or_animal",
+        "qualificationLimit": "Explicit OSM point of the offer only. It is not a full route, a proven trailhead/boarding station, or the position of an animal or mobile unit.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "currentItemKey": "pokeyland-parcours-sportif",
+        "currentName": "Parcours sportif",
+        "currentSourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "osmNodeId": "8693886383",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8693886383",
+        "osmName": "Parcours Sportif",
+        "latitudeExactSourceString": "49.0183877",
+        "longitudeExactSourceString": "6.1011601",
+        "latitude": 49.0183877,
+        "longitude": 6.1011601,
+        "version": 1,
+        "lastEditedAtUtc": "2021-05-03T14:13:11Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "104062489",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/104062489",
+        "changesetMetadata": {
+          "changesets_count": "229",
+          "comment": "Ajout des noms des attractions sur le parc PokeyLand - Fey (57)",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 18,
+          "label": "PARCOURS SPORTIF"
+        },
+        "officialMap2022": {
+          "number": 17,
+          "label": "PARCOURS SPORTIF"
+        },
+        "identityAssessment": "Unique current sporting treetop course within the accrobranche zone, separate from Parcours Aventure, Famille and Tyrolienne.",
+        "zoneScaleCompatibility": "The 2022 and 2026 plans show the red sporting-course loop in the far treetop sector beside the accrobranche reception. The explicit OSM point belongs to that southern treetop sector with the other named courses, well apart from the central ride cluster.",
+        "movementOrReplacementEvidence": "Course name, red route grouping and broad sector are retained. No source read establishes a later move; the unchanged OSM edit is not itself proof of a 2026 survey.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "named_offer_point_not_course_geometry",
+        "qualificationLimit": "Explicit named point of the sporting-course offer only, not its complete itinerary, every platform, a measured starting point or the entire accrobranche zone.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "currentItemKey": "pokeyland-waterjump",
+        "currentName": "Waterjump",
+        "currentSourceUrl": "https://www.pokeyland.com/packs/waterjump/",
+        "osmNodeId": "9897015491",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/9897015491",
+        "osmName": "Waterjump",
+        "latitudeExactSourceString": "49.0216452",
+        "longitudeExactSourceString": "6.1031501",
+        "latitude": 49.0216452,
+        "longitude": 6.1031501,
+        "version": 2,
+        "lastEditedAtUtc": "2023-08-28T08:50:13Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "140483317",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/140483317",
+        "changesetMetadata": {
+          "changesets_count": "403",
+          "comment": "Mise à jour parc Pokey-Land, suite à nouvelle photos aériennes.",
+          "created_by": "iD 2.27.1",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "fr",
+          "source": "local knowledge;aerial imagery;survey"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 20,
+          "label": "WATERJUMP"
+        },
+        "officialMap2022": {
+          "number": 19,
+          "label": "WATER JUMP - Point de vente activités"
+        },
+        "identityAssessment": "Unique aquatic-slide complex named on both plans and the current official Waterjump page. Distinct from the Bumper Boat pond.",
+        "zoneScaleCompatibility": "Plans show the dedicated slide-and-basin complex set back from the main ride cluster. OSM places the named node in that complex by the separately mapped Waterjump basin 1079720771, east of the central park; the node is not inside the basin polygon itself.",
+        "movementOrReplacementEvidence": "Same broad dedicated aquatic complex in 2022 and 2026. OSM last revision followed new aerial imagery in 2023. No relocation or replacement evidenced in the read corpus.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Named facility point beside the basin, not a swimming coordinate or any individual slide. Do not move the point into the water or compute a basin centre.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "currentItemKey": "pokeyland-petit-creux",
+        "currentName": "Le Petit Creux",
+        "currentSourceUrl": "https://www.pokeyland.com/restauration/",
+        "osmNodeId": "8667758730",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8667758730",
+        "osmName": "Le petit creux",
+        "latitudeExactSourceString": "49.0211269",
+        "longitudeExactSourceString": "6.1015180",
+        "latitude": 49.0211269,
+        "longitude": 6.101518,
+        "version": 2,
+        "lastEditedAtUtc": "2024-08-29T18:57:21Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "155943658",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/155943658",
+        "changesetMetadata": {
+          "changesets_count": "534",
+          "comment": "Pokeland — attractions",
+          "created_by": "iD 2.30.2",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "en-US"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 5,
+          "label": "LE PETIT CREUX"
+        },
+        "officialMap2022": {
+          "number": 5,
+          "label": "LE PETIT CREUX"
+        },
+        "identityAssessment": "Exact restaurant identity apart from capitalisation; current official food page still lists burgers, salads and hot dogs at Le petit Creux.",
+        "zoneScaleCompatibility": "Both official plans retain marker 5 beside Salle de séminaire and near Scène Pokeyshow, above the central entrance buildings in the drawing. OSM has a unique same-name food point in that central food/event cluster.",
+        "movementOrReplacementEvidence": "Label and neighbouring venue relationships are unchanged in the two plans. No source read reports relocation.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Named food outlet point; not coordinates inferred from its photograph or a general centre of the restaurant zone.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "currentItemKey": "pokeyland-gourmand",
+        "currentName": "Le Gourmand",
+        "currentSourceUrl": "https://www.pokeyland.com/restauration/",
+        "osmNodeId": "8667758734",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8667758734",
+        "osmName": "Le gourmand",
+        "latitudeExactSourceString": "49.0215437",
+        "longitudeExactSourceString": "6.1008841",
+        "latitude": 49.0215437,
+        "longitude": 6.1008841,
+        "version": 2,
+        "lastEditedAtUtc": "2024-08-29T18:57:21Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "155943658",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/155943658",
+        "changesetMetadata": {
+          "changesets_count": "534",
+          "comment": "Pokeland — attractions",
+          "created_by": "iD 2.30.2",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "BDOrtho IGN",
+          "locale": "en-US"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 8,
+          "label": "LE GOURMAND"
+        },
+        "officialMap2022": {
+          "number": 8,
+          "label": "LE GOURMAND"
+        },
+        "identityAssessment": "Exact snack identity apart from case; current official restaurant page retains the sweet-snack offer.",
+        "zoneScaleCompatibility": "Both plans retain marker 8 on the central arrival building near the ticket/arcade cluster. The OSM node is in that central building cluster and within a building footprint separately named L’orée de Pokey.",
+        "movementOrReplacementEvidence": "Stable current label and broad cluster. The building’s separate name is not evidence that Le Gourmand is an alias of the whole building; a food point can be housed there.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Apply only to the named snack outlet, not to Salle de séminaire, Le Grill or the entire L’orée de Pokey building.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      },
+      {
+        "currentItemId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "currentItemKey": "pokeyland-escale",
+        "currentName": "L’Escale",
+        "currentSourceUrl": "https://www.pokeyland.com/restauration/",
+        "osmNodeId": "8667758731",
+        "osmNodeUrl": "https://www.openstreetmap.org/node/8667758731",
+        "osmName": "Snack l'Escale",
+        "latitudeExactSourceString": "49.0193189",
+        "longitudeExactSourceString": "6.1002579",
+        "latitude": 49.0193189,
+        "longitude": 6.1002579,
+        "version": 1,
+        "lastEditedAtUtc": "2021-04-26T09:16:46Z",
+        "visibleInCurrentResponse": true,
+        "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+        "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+        "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+        "matchesEarlierPublicSnapshot": true,
+        "changesetId": "103622468",
+        "changesetUrl": "https://www.openstreetmap.org/changeset/103622468",
+        "changesetMetadata": {
+          "changesets_count": "224",
+          "comment": "Mise à jour des chemins et pictogrammes sur le parc d'attraction de Pokeyland, commune de Fey.",
+          "created_by": "iD 2.19.6",
+          "host": "https://www.openstreetmap.org/edit",
+          "imagery_used": "Cadastre;BDOrtho IGN",
+          "locale": "fr",
+          "resolved:almost_junction:highway-highway": "1",
+          "source": "https://www.pokeyland.com/wp-content/uploads/2020/06/Plan-Pokey2020-1.jpg;local knowledge;aerial imagery;cadastre DGI 04/2021"
+        },
+        "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+        "officialMap2026": {
+          "number": 7,
+          "label": "L’ESCALE"
+        },
+        "officialMap2022": {
+          "number": 7,
+          "label": "L’ESCALE"
+        },
+        "identityAssessment": "Snack l’Escale in OSM and L’Escale in the two plans/current restaurant page identify the same snack offer, with a descriptive prefix only.",
+        "zoneScaleCompatibility": "Both official plans put marker 7 beside the accrobranche reception in the far treetop sector. The OSM node is south of the central food outlets and close to that named treetop sector.",
+        "movementOrReplacementEvidence": "Label and relationship to accrobranche reception retained. No positive evidence of later relocation in consulted sources.",
+        "verdict": "CONDITIONALLY_USABLE_EXPLICIT_CURRENT_OSM_NAMED_POINT",
+        "integrableAsSourcedNamedPoint": true,
+        "rootReviewRequiredBeforeApply": true,
+        "pointSemantics": "explicit_named_facility_point",
+        "qualificationLimit": "Named snack outlet point, not a centre of the treetop area.",
+        "surveyedIn2026": false,
+        "surveyAccuracyMetres": null,
+        "routeOrAreaGeometryDerived": false,
+        "coordinateGeneratedFromIllustratedPlan": false,
+        "absenceOfGeotaggedPhotoTreatedAsError": false,
+        "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00"
+      }
+    ]
+  },
+  "excludedCrazyKartConflict": {
+    "currentItemId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+    "currentItemKey": "pokeyland-crazy-kart",
+    "currentName": "Crazy Kart",
+    "currentSourceUrl": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+    "osmNodeId": "8693886368",
+    "osmNodeUrl": "https://www.openstreetmap.org/node/8693886368",
+    "osmName": "Crazy Kart",
+    "latitudeExactSourceString": "49.0223188",
+    "longitudeExactSourceString": "6.1018769",
+    "latitude": 49.0223188,
+    "longitude": 6.1018769,
+    "version": 2,
+    "lastEditedAtUtc": "2022-07-19T11:35:47Z",
+    "visibleInCurrentResponse": true,
+    "currentResponseRetrievedAtUtc": "2026-11-15T13:26:05.996369+00:00",
+    "currentResponseFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-qualification-1325/current-named-nodes.xml",
+    "currentResponseSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+    "matchesEarlierPublicSnapshot": true,
+    "changesetId": "123803839",
+    "changesetUrl": "https://www.openstreetmap.org/changeset/123803839",
+    "changesetMetadata": {
+      "changesets_count": "346",
+      "comment": "Amélioration cartographie 2 points d'activité parc Pokey Land, commune de Fey.",
+      "created_by": "iD 2.21.1",
+      "host": "https://www.openstreetmap.org/edit",
+      "imagery_used": "BDOrtho IGN",
+      "locale": "fr",
+      "source": "https://www.pokeyland.com/plan-du-parc/;local knowledge;survey"
+    },
+    "sourceProvenanceNote": "Changeset source/comment/imagery describe the mapping edit. They are not a 2026 ground survey and may cover several edits rather than one exact point.",
+    "officialMap2026": {
+      "number": 34,
+      "label": "CRAZY KART"
+    },
+    "officialMap2022": {
+      "number": 30,
+      "label": "CRAZY KART"
+    },
+    "identityAssessment": "Name and pedal-kart offer remain current, but identity alone does not settle which adjacent track is represented by the old node.",
+    "zoneScaleCompatibility": "The 2022 plan labels Crazy Kart 30 at the adjacent upper track/marker and Quads Kids 29 at the lower winding track/marker. The 2026 drawing places Kid’s Quad 35 at the old Crazy Kart marker and Crazy Kart 34 at the old Quads Kids marker.",
+    "movementOrReplacementEvidence": "Apparent inversion of two adjacent circuit labels between the official plans. This does not establish whether the physical activities moved, the graphic was corrected, or the new graphic is mistaken. The OSM named Crazy Kart and Quad Kids nodes have not been revised since July 2022.",
+    "verdict": "HOLD_CONCRETE_ADJACENT_TRACK_LABEL_CONFLICT",
+    "integrableAsSourcedNamedPoint": false,
+    "rootReviewRequiredBeforeApply": true,
+    "pointSemantics": "explicit_named_facility_point",
+    "qualificationLimit": "Do not apply the old Crazy Kart coordinate as the current ride location, and do not swap it automatically with Quad Kids.",
+    "surveyedIn2026": false,
+    "surveyAccuracyMetres": null,
+    "routeOrAreaGeometryDerived": false,
+    "coordinateGeneratedFromIllustratedPlan": false,
+    "absenceOfGeotaggedPhotoTreatedAsError": false,
+    "reviewedAtUtc": "2026-11-15T13:30:51.284400+00:00",
+    "conflictingAdjacentNode": {
+      "osmNodeId": "8693886369",
+      "osmName": "Quad Kids",
+      "sourceFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/osm-park-bbox.xml",
+      "sourceRetrievedAtUtc": "2026-11-15T11:09:29.678106+00:00",
+      "version": 2,
+      "lastEditedAtUtc": "2022-07-19T11:35:47Z",
+      "mustNotSwapOrAssignToCurrentItem": true
+    }
+  },
+  "sourceXmlSha256": "149cfe39c30c869dae123413067c1bc595aaf34a529d33ef6ae689bf456f41eb",
+  "rootReview": {
+    "personallyReadAllTenRowsAndNativeCurrentXml": true,
+    "officialPlanPersonallyViewed": true,
+    "noComputedCentroidsOrSwappedCoordinates": true,
+    "oldEditDatesRetainedNotPresentedAs2026Survey": true,
+    "ponyAndSportingCourseAreNamedOfferPointsNotRoutesOrMovingSubjects": true
+  },
+  "coverageAfter": {
+    "totalItems": 74,
+    "explicitlySourcedItemPoints": 10,
+    "itemsWithoutAppliedPoint": 64
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "postApplyIdempotence": {
+    "operationId": "7951b3e0-b96e-401e-afd5-293300917181",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:37:49.856185Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 13,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "entityKey": "pokeyland-bumper-boat",
+        "displayName": "Bumper Boat",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "pokeyland-escalade",
+        "displayName": "Escalade",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "pokeyland-mini-golf",
+        "displayName": "Mini-golf",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "pokeyland-poney",
+        "displayName": "Poney",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "entityKey": "pokeyland-parkings",
+        "displayName": "Parkings",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "entityKey": "pokeyland-aires-pique-nique",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

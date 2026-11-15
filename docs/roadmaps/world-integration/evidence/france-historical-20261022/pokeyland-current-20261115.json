@@ -112,7 +112,7 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T13:20:41.6487431Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T13:33:12.6654719Z",
   "newApplyPerformed": true,
   "newPhotoImported": true,
   "fullAuditExportPerformed": false,
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Continue Pokeyland remaining 34 item descriptions, actual photographs, historical inventory reconciliation, fixed positions and reference dependencies. Article completed privately in eight languages, 4 sections / 8 paragraphs (549–623 body words), six private item opening facts added to four park facts. Calendar model and daily-ticket sales-channel gaps remain documented. No full final audit/export or publication.",
+  "nextAction": "Continue 32 missing item descriptions and remaining photographs, preserve 64 unproved item positions and Crazy Kart conflict. Ten exact named OSM points have been qualified against the current official plan, with old edit dates and offer-point limits retained. Calendar representation, sales-channel and historical-identity gaps remain. No final audit or publication.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -236,16 +236,26 @@
       "proof": "pokeyland-item-openings-20261115.json",
       "operationId": "e09ec867-2572-4970-92f8-ee232b25f74e",
       "appliedAtUtc": "2026-11-15T13:20:41.6487431Z"
+    },
+    {
+      "operationId": "497a376f-f312-4748-9f0a-739fbc9e49e3",
+      "appliedAtUtc": "2026-11-15T13:32:17.6298764Z",
+      "proof": "pokeyland-29-parking-picnic-descriptions-20261115.json"
+    },
+    {
+      "operationId": "c9bf08c8-dac8-43dd-970f-6c7ddc07ae0e",
+      "appliedAtUtc": "2026-11-15T13:33:12.6654719Z",
+      "proof": "pokeyland-qualified-coordinates-20261115.json"
     }
   ],
   "currentCounts": {
     "items": 74,
     "publicItems": 0,
     "zones": 3,
-    "media": 31,
+    "media": 46,
     "privateLogo": true,
     "parkDescribedLanguages": 8,
-    "itemsDescribed": 40,
+    "itemsDescribed": 42,
     "referenceLocalizedTexts": 16,
     "historicalUnknownItems": 17,
     "zonesDescribed": 3,
@@ -257,7 +267,12 @@
     "itemFacts": 6,
     "privateItemFacts": 6,
     "articles": 1,
-    "privateArticles": 1
+    "privateArticles": 1,
+    "privateItems": 74,
+    "itemsWithEightLanguageDescriptions": 42,
+    "privateMedia": 46,
+    "publicMedia": 0,
+    "itemPositions": 10
   },
   "imports": [
     {
@@ -414,9 +429,84 @@
       "proof": "pokeyland-photo-historical-bigair-20261115.json",
       "imageId": "73a1c7d039244b45b8e2973e13a36f61",
       "createdAtUtc": "2026-11-15T13:17:49.49Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-11-20261115.json",
+      "imageId": "564dfc5df72f451e9a3b435d8ae51a27",
+      "createdAtUtc": "2026-11-15T13:27:09.091Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-12-20261115.json",
+      "imageId": "6be2dd0f36e94f61801bee58bb41c311",
+      "createdAtUtc": "2026-11-15T13:27:19.701Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-13-20261115.json",
+      "imageId": "490b9c348df1440ab5ca688ed39613a8",
+      "createdAtUtc": "2026-11-15T13:27:29.594Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-14-20261115.json",
+      "imageId": "23c8dbb7dcd248eb8d0186222443f2d2",
+      "createdAtUtc": "2026-11-15T13:27:39.164Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-15-20261115.json",
+      "imageId": "1f693f389f2d435daee1e38782d47ee1",
+      "createdAtUtc": "2026-11-15T13:27:48.651Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-16-20261115.json",
+      "imageId": "b1d250d753c849bd9bbcdb78a06db9b4",
+      "createdAtUtc": "2026-11-15T13:27:58.477Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-17-20261115.json",
+      "imageId": "e9a95a64a5e847a0bc8867e71dd8ee5b",
+      "createdAtUtc": "2026-11-15T13:28:08.065Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-18-20261115.json",
+      "imageId": "f4e5db0fd4da432599a6968adcecbb75",
+      "createdAtUtc": "2026-11-15T13:28:17.957Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-19-20261115.json",
+      "imageId": "3fb34d48ddaa4460b16f774a3fc45004",
+      "createdAtUtc": "2026-11-15T13:28:27.28Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-20-20261115.json",
+      "imageId": "7a93467a6c1c4c3daf2f468274195c34",
+      "createdAtUtc": "2026-11-15T13:28:36.363Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-21-20261115.json",
+      "imageId": "52be7f0705244106aa5219bb47fb6359",
+      "createdAtUtc": "2026-11-15T13:28:46.141Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-22-20261115.json",
+      "imageId": "157b717d3f6045058612279d0f4e1540",
+      "createdAtUtc": "2026-11-15T13:28:55.601Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-23-20261115.json",
+      "imageId": "a72bf58bb08242f78f564f71704d70ac",
+      "createdAtUtc": "2026-11-15T13:29:05.291Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-24-20261115.json",
+      "imageId": "aec2045ac03e42eebcc6f8c3db977b4f",
+      "createdAtUtc": "2026-11-15T13:29:15.108Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-25-20261115.json",
+      "imageId": "96d60d7c6c0c40d79627a733c4ae2ff5",
+      "createdAtUtc": "2026-11-15T13:29:24.955Z"
     }
   ],
-  "updatedAtUtc": "2026-11-15T13:22:23.911342+00:00",
+  "updatedAtUtc": "2026-11-15T13:38:24.378745+00:00",
   "idempotence": {
     "proof": "pokeyland-idempotence-followup-20261115.json",
     "counts": {
@@ -977,6 +1067,147 @@
         "displayName": "Le Saut dans le vide rejoint les aventures",
         "changeType": "Unchanged",
         "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "latestPositionDescriptionIdempotence": {
+    "operationId": "7951b3e0-b96e-401e-afd5-293300917181",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:37:49.856185Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 13,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "entityKey": "pokeyland-bumper-boat",
+        "displayName": "Bumper Boat",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "pokeyland-escalade",
+        "displayName": "Escalade",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "pokeyland-mini-golf",
+        "displayName": "Mini-golf",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "pokeyland-poney",
+        "displayName": "Poney",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "entityKey": "pokeyland-parkings",
+        "displayName": "Parkings",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "entityKey": "pokeyland-aires-pique-nique",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
         "fields": []
       }
     ],

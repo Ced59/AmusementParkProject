@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 18,
+    "activityName": "Mono-Rail",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/parc/mono-rail/",
+      "accessedAtUtc": "2026-11-15T10:37:44.308151+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/parc/mono-rail/",
+      "sha256": "8bfaff3cf830bf36adae0a562974de35bd8d9c65645f02f302bbc02ce215a7b4",
+      "bytes": 81760,
+      "file": "activity-mono-rail.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-055-1350x900.jpg",
+    "file": "18-mono-rail.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-055-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:20.711873+00:00",
+    "bytes": 291581,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "35dc2025f00c7e5135ff31ffc63b20d6d234829d3c9546b9a8445dfe6a80d804",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "18-mono-rail.jpg",
+    "visualDescriptionFr": "Enfant dans une nacelle blanche en forme d’hélicoptère, avec rotor décoratif, au milieu des branches.",
+    "identityAndCaptionLimitsFr": "Correspond au Mono-Rail par la page source. Le rail et les pédales ne sont pas visibles dans ce cadrage, donc ne pas les décrire dans l’alt de l’image.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-055-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/18-mono-rail.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "776a9555-8156-4199-980f-e07ccbd44a31",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-18-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-18-import-result.json"
+  },
+  "metadata": {
+    "description": "Un enfant occupe le petit hélicoptère blanc, surmonté d’un rotor décoratif noir, au milieu du feuillage.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-055-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Véhicule blanc en forme d’hélicoptère sur le Mono-Rail"
+      },
+      {
+        "languageCode": "en",
+        "value": "White helicopter-shaped vehicle on the Mono-Rail"
+      },
+      {
+        "languageCode": "de",
+        "value": "Weißes Hubschrauberfahrzeug auf dem Mono-Rail"
+      },
+      {
+        "languageCode": "es",
+        "value": "Vehículo blanco con forma de helicóptero en el Mono-Rail"
+      },
+      {
+        "languageCode": "it",
+        "value": "Veicolo bianco a forma di elicottero sul Mono-Rail"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Wit helikoptervoertuig op de Mono-Rail"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Biały pojazd w kształcie helikoptera na Mono-Rail"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Veículo branco em forma de helicóptero no Mono-Rail"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un enfant occupe le petit hélicoptère blanc, surmonté d’un rotor décoratif noir, au milieu du feuillage."
+      },
+      {
+        "languageCode": "en",
+        "value": "A child sits in the small white helicopter with a black decorative rotor, surrounded by foliage."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Kind sitzt im kleinen weißen Hubschrauber mit schwarzem Zierrotor, umgeben von Laub."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un niño ocupa el pequeño helicóptero blanco con un rotor decorativo negro, rodeado de hojas."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un bambino occupa il piccolo elicottero bianco con rotore decorativo nero, circondato dal fogliame."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een kind zit in de kleine witte helikopter met zwarte sierrotor, omringd door bladeren."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dziecko siedzi w małym białym helikopterze z czarnym ozdobnym wirnikiem, pośród liści."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma criança ocupa o pequeno helicóptero branco com rotor decorativo preto, rodeado de folhagem."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T13:28:24.5508855Z",
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T13:28:16.3438173Z",
+    "result": {
+      "id": "f4e5db0fd4da432599a6968adcecbb75",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "776a9555-8156-4199-980f-e07ccbd44a31",
+      "path": "park_item/f4e5db0fd4da432599a6968adcecbb75",
+      "description": "Un enfant occupe le petit hélicoptère blanc, surmonté d’un rotor décoratif noir, au milieu du feuillage.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 291581,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-055-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Véhicule blanc en forme d’hélicoptère sur le Mono-Rail"
+        },
+        {
+          "languageCode": "en",
+          "value": "White helicopter-shaped vehicle on the Mono-Rail"
+        },
+        {
+          "languageCode": "de",
+          "value": "Weißes Hubschrauberfahrzeug auf dem Mono-Rail"
+        },
+        {
+          "languageCode": "es",
+          "value": "Vehículo blanco con forma de helicóptero en el Mono-Rail"
+        },
+        {
+          "languageCode": "it",
+          "value": "Veicolo bianco a forma di elicottero sul Mono-Rail"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Wit helikoptervoertuig op de Mono-Rail"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Biały pojazd w kształcie helikoptera na Mono-Rail"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Veículo branco em forma de helicóptero no Mono-Rail"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un enfant occupe le petit hélicoptère blanc, surmonté d’un rotor décoratif noir, au milieu du feuillage."
+        },
+        {
+          "languageCode": "en",
+          "value": "A child sits in the small white helicopter with a black decorative rotor, surrounded by foliage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Kind sitzt im kleinen weißen Hubschrauber mit schwarzem Zierrotor, umgeben von Laub."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un niño ocupa el pequeño helicóptero blanco con un rotor decorativo negro, rodeado de hojas."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un bambino occupa il piccolo elicottero bianco con rotore decorativo nero, circondato dal fogliame."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kind zit in de kleine witte helikopter met zwarte sierrotor, omringd door bladeren."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko siedzi w małym białym helikopterze z czarnym ozdobnym wirnikiem, pośród liści."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma criança ocupa o pequeno helicóptero branco com rotor decorativo preto, rodeado de folhagem."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:17.957Z",
+      "updatedAt": "2026-11-15T13:28:21.434Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

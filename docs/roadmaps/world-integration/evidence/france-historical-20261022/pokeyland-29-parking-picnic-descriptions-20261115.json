@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-29-parking-picnic-descriptions",
+        "step": "04-items",
+        "notes": "Deux notices privées huit langues personnellement rédigées et relues : source officielle services, gratuité/PMR et périmètre exact du pique-nique ; deux photographies natives officielles examinées intégralement. Description visuelle explicitement attribuée à la vue publiée, pas configuration de chaque aire ni date photo prétendues. Aucun nombre de places/tables, GPS, généralisation de revêtement ou droit de pique-niquer partout inventés. Notices courtes justifiées par les sources disponibles, sans remplissage."
+      },
+      "items": [
+        {
+          "id": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+          "key": "pokeyland-parkings",
+          "name": "Parkings",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le stationnement dans les bois</h2><p>Les espaces de stationnement de Pokeyland se trouvent dans un environnement arboré. La vue officielle montre deux rangées de voitures de part et d’autre d’une large allée, avec les troncs et le feuillage à proximité des emplacements.</p><h2>Gratuité et places réservées</h2><p>Le parc annonce un stationnement gratuit.</p><p>Ses informations d’accessibilité mentionnent également des places réservées aux personnes à mobilité réduite.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Parking among the trees</h2><p>Pokeyland’s parking areas occupy a wooded setting. The official view shows two rows of cars on either side of a wide aisle, with tree trunks and foliage close to the spaces.</p><h2>Free parking and reserved spaces</h2><p>The park advertises free parking.</p><p>Its accessibility information also mentions spaces reserved for people with reduced mobility.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Parken zwischen den Bäumen</h2><p>Die Parkflächen von Pokeyland liegen in einer bewaldeten Umgebung. Die offizielle Ansicht zeigt zwei Autoreihen beiderseits einer breiten Fahrgasse, mit Baumstämmen und Laub nahe den Stellplätzen.</p><h2>Kostenlose und reservierte Stellplätze</h2><p>Der Park kündigt kostenloses Parken an.</p><p>Seine Informationen zur Barrierefreiheit nennen außerdem reservierte Stellplätze für Menschen mit eingeschränkter Mobilität.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Aparcar entre los árboles</h2><p>Los aparcamientos de Pokeyland se sitúan en un entorno arbolado. La vista oficial muestra dos filas de coches a ambos lados de un pasillo ancho, con troncos y follaje cerca de las plazas.</p><h2>Gratuidad y plazas reservadas</h2><p>El parque anuncia aparcamiento gratuito.</p><p>Su información de accesibilidad también menciona plazas reservadas para personas con movilidad reducida.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Parcheggiare tra gli alberi</h2><p>Le aree di parcheggio di Pokeyland si trovano in un ambiente alberato. La veduta ufficiale mostra due file di automobili ai lati di un ampio passaggio, con tronchi e fogliame vicino agli stalli.</p><h2>Gratuità e posti riservati</h2><p>Il parco annuncia il parcheggio gratuito.</p><p>Le informazioni sull’accessibilità citano anche posti riservati alle persone con mobilità ridotta.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Parkeren tussen de bomen</h2><p>De parkeerterreinen van Pokeyland liggen in een bosrijke omgeving. De officiële foto toont twee rijen auto’s aan weerszijden van een brede rijstrook, met boomstammen en bladeren dicht bij de plaatsen.</p><h2>Gratis parkeren en gereserveerde plaatsen</h2><p>Het park vermeldt gratis parkeren.</p><p>De toegankelijkheidsinformatie noemt ook gereserveerde plaatsen voor mensen met beperkte mobiliteit.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Parkowanie wśród drzew</h2><p>Parkingi Pokeyland znajdują się w zadrzewionym otoczeniu. Oficjalne zdjęcie pokazuje dwa rzędy samochodów po obu stronach szerokiego przejazdu, z pniami i listowiem blisko stanowisk.</p><h2>Bezpłatne i zarezerwowane miejsca</h2><p>Park informuje o bezpłatnym parkowaniu.</p><p>Informacje o dostępności wymieniają także miejsca zarezerwowane dla osób o ograniczonej mobilności.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Estacionar entre as árvores</h2><p>Os espaços de estacionamento do Pokeyland situam-se num ambiente arborizado. A vista oficial mostra duas filas de automóveis de cada lado de uma faixa larga, com troncos e folhagem junto dos lugares.</p><h2>Gratuitidade e lugares reservados</h2><p>O parque anuncia estacionamento gratuito.</p><p>As informações de acessibilidade também mencionam lugares reservados a pessoas com mobilidade reduzida.</p>"
+            }
+          ]
+        },
+        {
+          "id": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+          "key": "pokeyland-aires-pique-nique",
+          "name": "Aires de pique-nique",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des espaces désignés pour les repas</h2><p>Les aires de pique-nique annoncées par Pokeyland se trouvent sur le parking et à proximité de l’accrobranche. Les repas tirés du sac sont réservés à ces espaces dédiés ; ils ne sont pas autorisés dans les autres parties du parc.</p><h2>Des tables dans un cadre arboré</h2><p>La photographie diffusée par le parc montre des tables et des bancs à plateaux orangés, installés sur un sol couvert de copeaux.</p><p>Les visiteurs y sont réunis sous les arbres, avec un filet et les obstacles d’un terrain de paintball à l’arrière-plan.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Designated spaces for meals</h2><p>Pokeyland identifies picnic areas in the car park and near the treetop courses. Meals brought from outside are limited to these designated spaces and are not allowed elsewhere in the park.</p><h2>Tables in a wooded setting</h2><p>The photograph published by the park shows tables and benches with orange-toned tops on ground covered with woodchips.</p><p>Visitors gather beneath the trees, with a net and paintball obstacles in the background.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ausgewiesene Bereiche für Mahlzeiten</h2><p>Pokeyland nennt Picknickbereiche auf dem Parkplatz und in der Nähe der Kletterparcours. Mitgebrachte Mahlzeiten sind auf diese ausgewiesenen Flächen beschränkt und in den übrigen Parkbereichen nicht gestattet.</p><h2>Tische zwischen den Bäumen</h2><p>Das vom Park veröffentlichte Foto zeigt Tische und Bänke mit orangefarbenen Flächen auf einem mit Holzspänen bedeckten Boden.</p><p>Besucher kommen unter den Bäumen zusammen; im Hintergrund sind ein Netz und Hindernisse eines Paintballfelds zu sehen.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Espacios designados para comer</h2><p>Pokeyland sitúa sus áreas de pícnic en el aparcamiento y cerca de los circuitos entre árboles. Las comidas traídas de fuera se limitan a estos espacios designados y no están permitidas en las demás zonas del parque.</p><h2>Mesas en un entorno arbolado</h2><p>La fotografía difundida por el parque muestra mesas y bancos de superficies anaranjadas sobre un suelo cubierto de virutas.</p><p>Los visitantes se reúnen bajo los árboles, con una red y obstáculos de un campo de paintball al fondo.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Spazi dedicati ai pasti</h2><p>Pokeyland indica aree picnic nel parcheggio e vicino ai percorsi sugli alberi. I pasti portati da fuori sono limitati a questi spazi dedicati e non sono consentiti nelle altre parti del parco.</p><h2>Tavoli in un ambiente alberato</h2><p>La fotografia pubblicata dal parco mostra tavoli e panche con superfici aranciate su un terreno coperto di trucioli.</p><p>I visitatori si riuniscono sotto gli alberi, con una rete e gli ostacoli di un campo da paintball sullo sfondo.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Aangewezen plekken om te eten</h2><p>Pokeyland noemt picknickplaatsen op het parkeerterrein en bij de boomparcoursen. Zelf meegebrachte maaltijden zijn beperkt tot deze aangewezen plekken en zijn in de overige delen van het park niet toegestaan.</p><h2>Tafels in een bosrijke omgeving</h2><p>De door het park gepubliceerde foto toont tafels en banken met oranjeachtige bladen op een ondergrond met houtsnippers.</p><p>Bezoekers zitten onder de bomen, met een net en obstakels van een paintballveld op de achtergrond.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wyznaczone miejsca na posiłki</h2><p>Pokeyland wskazuje miejsca piknikowe na parkingu i w pobliżu tras linowych. Własne posiłki można spożywać tylko w tych wyznaczonych przestrzeniach; w pozostałych częściach parku nie jest to dozwolone.</p><h2>Stoły wśród drzew</h2><p>Zdjęcie udostępnione przez park pokazuje stoły i ławki o pomarańczowych powierzchniach na podłożu pokrytym zrębkami.</p><p>Goście gromadzą się pod drzewami, a w tle widać siatkę i przeszkody pola paintballowego.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Espaços destinados às refeições</h2><p>O Pokeyland indica áreas de piquenique no estacionamento e perto dos percursos de arborismo. As refeições trazidas de fora ficam limitadas a esses espaços próprios e não são permitidas nas restantes partes do parque.</p><h2>Mesas num ambiente arborizado</h2><p>A fotografia divulgada pelo parque mostra mesas e bancos com superfícies alaranjadas sobre um piso coberto de aparas de madeira.</p><p>Os visitantes reúnem-se sob as árvores, com uma rede e obstáculos de um campo de paintball ao fundo.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "d0f850eb-c878-4429-83e2-4a8c4fd6fa7f",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:31:19.1770678Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "entityKey": "pokeyland-parkings",
+        "displayName": "Parkings",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Parken zwischen den Bäumen</h2><p>Die Parkflächen von Pokeyland liegen in einer bewaldeten Umgebung. Die offizielle Ansicht zeigt zwei Autoreihen beiderseits einer breiten Fahrgasse, mit Baumstämmen und Laub nahe den Stellplätzen.</p><h2>Kostenlose und reservierte Stellplätze</h2><p>Der Park kündigt kostenloses Parken an.</p><p>Seine Informationen zur Barrierefreiheit nennen außerdem reservierte Stellplätze für Menschen mit eingeschränkter Mobilität.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Parking among the trees</h2><p>Pokeyland’s parking areas occupy a wooded setting. The official view shows two rows of cars on either side of a wide aisle, with tree trunks and foliage close to the spaces.</p><h2>Free parking and reserved spaces</h2><p>The park advertises free parking.</p><p>Its accessibility information also mentions spaces reserved for people with reduced mobility.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Aparcar entre los árboles</h2><p>Los aparcamientos de Pokeyland se sitúan en un entorno arbolado. La vista oficial muestra dos filas de coches a ambos lados de un pasillo ancho, con troncos y follaje cerca de las plazas.</p><h2>Gratuidad y plazas reservadas</h2><p>El parque anuncia aparcamiento gratuito.</p><p>Su información de accesibilidad también menciona plazas reservadas para personas con movilidad reducida.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le stationnement dans les bois</h2><p>Les espaces de stationnement de Pokeyland se trouvent dans un environnement arboré. La vue officielle montre deux rangées de voitures de part et d’autre d’une large allée, avec les troncs et le feuillage à proximité des emplacements.</p><h2>Gratuité et places réservées</h2><p>Le parc annonce un stationnement gratuit.</p><p>Ses informations d’accessibilité mentionnent également des places réservées aux personnes à mobilité réduite.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Parcheggiare tra gli alberi</h2><p>Le aree di parcheggio di Pokeyland si trovano in un ambiente alberato. La veduta ufficiale mostra due file di automobili ai lati di un ampio passaggio, con tronchi e fogliame vicino agli stalli.</p><h2>Gratuità e posti riservati</h2><p>Il parco annuncia il parcheggio gratuito.</p><p>Le informazioni sull’accessibilità citano anche posti riservati alle persone con mobilità ridotta.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Parkeren tussen de bomen</h2><p>De parkeerterreinen van Pokeyland liggen in een bosrijke omgeving. De officiële foto toont twee rijen auto’s aan weerszijden van een brede rijstrook, met boomstammen en bladeren dicht bij de plaatsen.</p><h2>Gratis parkeren en gereserveerde plaatsen</h2><p>Het park vermeldt gratis parkeren.</p><p>De toegankelijkheidsinformatie noemt ook gereserveerde plaatsen voor mensen met beperkte mobiliteit.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Parkowanie wśród drzew</h2><p>Parkingi Pokeyland znajdują się w zadrzewionym otoczeniu. Oficjalne zdjęcie pokazuje dwa rzędy samochodów po obu stronach szerokiego przejazdu, z pniami i listowiem blisko stanowisk.</p><h2>Bezpłatne i zarezerwowane miejsca</h2><p>Park informuje o bezpłatnym parkowaniu.</p><p>Informacje o dostępności wymieniają także miejsca zarezerwowane dla osób o ograniczonej mobilności.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Estacionar entre as árvores</h2><p>Os espaços de estacionamento do Pokeyland situam-se num ambiente arborizado. A vista oficial mostra duas filas de automóveis de cada lado de uma faixa larga, com troncos e folhagem junto dos lugares.</p><h2>Gratuitidade e lugares reservados</h2><p>O parque anuncia estacionamento gratuito.</p><p>As informações de acessibilidade também mencionam lugares reservados a pessoas com mobilidade reduzida.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "entityKey": "pokeyland-aires-pique-nique",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ausgewiesene Bereiche für Mahlzeiten</h2><p>Pokeyland nennt Picknickbereiche auf dem Parkplatz und in der Nähe der Kletterparcours. Mitgebrachte Mahlzeiten sind auf diese ausgewiesenen Flächen beschränkt und in den übrigen Parkbereichen nicht gestattet.</p><h2>Tische zwischen den Bäumen</h2><p>Das vom Park veröffentlichte Foto zeigt Tische und Bänke mit orangefarbenen Flächen auf einem mit Holzspänen bedeckten Boden.</p><p>Besucher kommen unter den Bäumen zusammen; im Hintergrund sind ein Netz und Hindernisse eines Paintballfelds zu sehen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Designated spaces for meals</h2><p>Pokeyland identifies picnic areas in the car park and near the treetop courses. Meals brought from outside are limited to these designated spaces and are not allowed elsewhere in the park.</p><h2>Tables in a wooded setting</h2><p>The photograph published by the park shows tables and benches with orange-toned tops on ground covered with woodchips.</p><p>Visitors gather beneath the trees, with a net and paintball obstacles in the background.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Espacios designados para comer</h2><p>Pokeyland sitúa sus áreas de pícnic en el aparcamiento y cerca de los circuitos entre árboles. Las comidas traídas de fuera se limitan a estos espacios designados y no están permitidas en las demás zonas del parque.</p><h2>Mesas en un entorno arbolado</h2><p>La fotografía difundida por el parque muestra mesas y bancos de superficies anaranjadas sobre un suelo cubierto de virutas.</p><p>Los visitantes se reúnen bajo los árboles, con una red y obstáculos de un campo de paintball al fondo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des espaces désignés pour les repas</h2><p>Les aires de pique-nique annoncées par Pokeyland se trouvent sur le parking et à proximité de l’accrobranche. Les repas tirés du sac sont réservés à ces espaces dédiés ; ils ne sont pas autorisés dans les autres parties du parc.</p><h2>Des tables dans un cadre arboré</h2><p>La photographie diffusée par le parc montre des tables et des bancs à plateaux orangés, installés sur un sol couvert de copeaux.</p><p>Les visiteurs y sont réunis sous les arbres, avec un filet et les obstacles d’un terrain de paintball à l’arrière-plan.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Spazi dedicati ai pasti</h2><p>Pokeyland indica aree picnic nel parcheggio e vicino ai percorsi sugli alberi. I pasti portati da fuori sono limitati a questi spazi dedicati e non sono consentiti nelle altre parti del parco.</p><h2>Tavoli in un ambiente alberato</h2><p>La fotografia pubblicata dal parco mostra tavoli e panche con superfici aranciate su un terreno coperto di trucioli.</p><p>I visitatori si riuniscono sotto gli alberi, con una rete e gli ostacoli di un campo da paintball sullo sfondo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Aangewezen plekken om te eten</h2><p>Pokeyland noemt picknickplaatsen op het parkeerterrein en bij de boomparcoursen. Zelf meegebrachte maaltijden zijn beperkt tot deze aangewezen plekken en zijn in de overige delen van het park niet toegestaan.</p><h2>Tafels in een bosrijke omgeving</h2><p>De door het park gepubliceerde foto toont tafels en banken met oranjeachtige bladen op een ondergrond met houtsnippers.</p><p>Bezoekers zitten onder de bomen, met een net en obstakels van een paintballveld op de achtergrond.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wyznaczone miejsca na posiłki</h2><p>Pokeyland wskazuje miejsca piknikowe na parkingu i w pobliżu tras linowych. Własne posiłki można spożywać tylko w tych wyznaczonych przestrzeniach; w pozostałych częściach parku nie jest to dozwolone.</p><h2>Stoły wśród drzew</h2><p>Zdjęcie udostępnione przez park pokazuje stoły i ławki o pomarańczowych powierzchniach na podłożu pokrytym zrębkami.</p><p>Goście gromadzą się pod drzewami, a w tle widać siatkę i przeszkody pola paintballowego.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Espaços destinados às refeições</h2><p>O Pokeyland indica áreas de piquenique no estacionamento e perto dos percursos de arborismo. As refeições trazidas de fora ficam limitadas a esses espaços próprios e não são permitidas nas restantes partes do parque.</p><h2>Mesas num ambiente arborizado</h2><p>A fotografia divulgada pelo parque mostra mesas e bancos com superfícies alaranjadas sobre um piso coberto de aparas de madeira.</p><p>Os visitantes reúnem-se sob as árvores, com uma rede e obstáculos de um campo de paintball ao fundo.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "497a376f-f312-4748-9f0a-739fbc9e49e3",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:32:17.6298758Z",
+    "appliedAtUtc": "2026-11-15T13:32:17.6298764Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "entityKey": "pokeyland-parkings",
+        "displayName": "Parkings",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Parken zwischen den Bäumen</h2><p>Die Parkflächen von Pokeyland liegen in einer bewaldeten Umgebung. Die offizielle Ansicht zeigt zwei Autoreihen beiderseits einer breiten Fahrgasse, mit Baumstämmen und Laub nahe den Stellplätzen.</p><h2>Kostenlose und reservierte Stellplätze</h2><p>Der Park kündigt kostenloses Parken an.</p><p>Seine Informationen zur Barrierefreiheit nennen außerdem reservierte Stellplätze für Menschen mit eingeschränkter Mobilität.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Parking among the trees</h2><p>Pokeyland’s parking areas occupy a wooded setting. The official view shows two rows of cars on either side of a wide aisle, with tree trunks and foliage close to the spaces.</p><h2>Free parking and reserved spaces</h2><p>The park advertises free parking.</p><p>Its accessibility information also mentions spaces reserved for people with reduced mobility.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Aparcar entre los árboles</h2><p>Los aparcamientos de Pokeyland se sitúan en un entorno arbolado. La vista oficial muestra dos filas de coches a ambos lados de un pasillo ancho, con troncos y follaje cerca de las plazas.</p><h2>Gratuidad y plazas reservadas</h2><p>El parque anuncia aparcamiento gratuito.</p><p>Su información de accesibilidad también menciona plazas reservadas para personas con movilidad reducida.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le stationnement dans les bois</h2><p>Les espaces de stationnement de Pokeyland se trouvent dans un environnement arboré. La vue officielle montre deux rangées de voitures de part et d’autre d’une large allée, avec les troncs et le feuillage à proximité des emplacements.</p><h2>Gratuité et places réservées</h2><p>Le parc annonce un stationnement gratuit.</p><p>Ses informations d’accessibilité mentionnent également des places réservées aux personnes à mobilité réduite.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Parcheggiare tra gli alberi</h2><p>Le aree di parcheggio di Pokeyland si trovano in un ambiente alberato. La veduta ufficiale mostra due file di automobili ai lati di un ampio passaggio, con tronchi e fogliame vicino agli stalli.</p><h2>Gratuità e posti riservati</h2><p>Il parco annuncia il parcheggio gratuito.</p><p>Le informazioni sull’accessibilità citano anche posti riservati alle persone con mobilità ridotta.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Parkeren tussen de bomen</h2><p>De parkeerterreinen van Pokeyland liggen in een bosrijke omgeving. De officiële foto toont twee rijen auto’s aan weerszijden van een brede rijstrook, met boomstammen en bladeren dicht bij de plaatsen.</p><h2>Gratis parkeren en gereserveerde plaatsen</h2><p>Het park vermeldt gratis parkeren.</p><p>De toegankelijkheidsinformatie noemt ook gereserveerde plaatsen voor mensen met beperkte mobiliteit.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Parkowanie wśród drzew</h2><p>Parkingi Pokeyland znajdują się w zadrzewionym otoczeniu. Oficjalne zdjęcie pokazuje dwa rzędy samochodów po obu stronach szerokiego przejazdu, z pniami i listowiem blisko stanowisk.</p><h2>Bezpłatne i zarezerwowane miejsca</h2><p>Park informuje o bezpłatnym parkowaniu.</p><p>Informacje o dostępności wymieniają także miejsca zarezerwowane dla osób o ograniczonej mobilności.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Estacionar entre as árvores</h2><p>Os espaços de estacionamento do Pokeyland situam-se num ambiente arborizado. A vista oficial mostra duas filas de automóveis de cada lado de uma faixa larga, com troncos e folhagem junto dos lugares.</p><h2>Gratuitidade e lugares reservados</h2><p>O parque anuncia estacionamento gratuito.</p><p>As informações de acessibilidade também mencionam lugares reservados a pessoas com mobilidade reduzida.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "entityKey": "pokeyland-aires-pique-nique",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ausgewiesene Bereiche für Mahlzeiten</h2><p>Pokeyland nennt Picknickbereiche auf dem Parkplatz und in der Nähe der Kletterparcours. Mitgebrachte Mahlzeiten sind auf diese ausgewiesenen Flächen beschränkt und in den übrigen Parkbereichen nicht gestattet.</p><h2>Tische zwischen den Bäumen</h2><p>Das vom Park veröffentlichte Foto zeigt Tische und Bänke mit orangefarbenen Flächen auf einem mit Holzspänen bedeckten Boden.</p><p>Besucher kommen unter den Bäumen zusammen; im Hintergrund sind ein Netz und Hindernisse eines Paintballfelds zu sehen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Designated spaces for meals</h2><p>Pokeyland identifies picnic areas in the car park and near the treetop courses. Meals brought from outside are limited to these designated spaces and are not allowed elsewhere in the park.</p><h2>Tables in a wooded setting</h2><p>The photograph published by the park shows tables and benches with orange-toned tops on ground covered with woodchips.</p><p>Visitors gather beneath the trees, with a net and paintball obstacles in the background.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Espacios designados para comer</h2><p>Pokeyland sitúa sus áreas de pícnic en el aparcamiento y cerca de los circuitos entre árboles. Las comidas traídas de fuera se limitan a estos espacios designados y no están permitidas en las demás zonas del parque.</p><h2>Mesas en un entorno arbolado</h2><p>La fotografía difundida por el parque muestra mesas y bancos de superficies anaranjadas sobre un suelo cubierto de virutas.</p><p>Los visitantes se reúnen bajo los árboles, con una red y obstáculos de un campo de paintball al fondo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des espaces désignés pour les repas</h2><p>Les aires de pique-nique annoncées par Pokeyland se trouvent sur le parking et à proximité de l’accrobranche. Les repas tirés du sac sont réservés à ces espaces dédiés ; ils ne sont pas autorisés dans les autres parties du parc.</p><h2>Des tables dans un cadre arboré</h2><p>La photographie diffusée par le parc montre des tables et des bancs à plateaux orangés, installés sur un sol couvert de copeaux.</p><p>Les visiteurs y sont réunis sous les arbres, avec un filet et les obstacles d’un terrain de paintball à l’arrière-plan.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Spazi dedicati ai pasti</h2><p>Pokeyland indica aree picnic nel parcheggio e vicino ai percorsi sugli alberi. I pasti portati da fuori sono limitati a questi spazi dedicati e non sono consentiti nelle altre parti del parco.</p><h2>Tavoli in un ambiente alberato</h2><p>La fotografia pubblicata dal parco mostra tavoli e panche con superfici aranciate su un terreno coperto di trucioli.</p><p>I visitatori si riuniscono sotto gli alberi, con una rete e gli ostacoli di un campo da paintball sullo sfondo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Aangewezen plekken om te eten</h2><p>Pokeyland noemt picknickplaatsen op het parkeerterrein en bij de boomparcoursen. Zelf meegebrachte maaltijden zijn beperkt tot deze aangewezen plekken en zijn in de overige delen van het park niet toegestaan.</p><h2>Tafels in een bosrijke omgeving</h2><p>De door het park gepubliceerde foto toont tafels en banken met oranjeachtige bladen op een ondergrond met houtsnippers.</p><p>Bezoekers zitten onder de bomen, met een net en obstakels van een paintballveld op de achtergrond.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wyznaczone miejsca na posiłki</h2><p>Pokeyland wskazuje miejsca piknikowe na parkingu i w pobliżu tras linowych. Własne posiłki można spożywać tylko w tych wyznaczonych przestrzeniach; w pozostałych częściach parku nie jest to dozwolone.</p><h2>Stoły wśród drzew</h2><p>Zdjęcie udostępnione przez park pokazuje stoły i ławki o pomarańczowych powierzchniach na podłożu pokrytym zrębkami.</p><p>Goście gromadzą się pod drzewami, a w tle widać siatkę i przeszkody pola paintballowego.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Espaços destinados às refeições</h2><p>O Pokeyland indica áreas de piquenique no estacionamento e perto dos percursos de arborismo. As refeições trazidas de fora ficam limitadas a esses espaços próprios e não são permitidas nas restantes partes do parque.</p><h2>Mesas num ambiente arborizado</h2><p>A fotografia divulgada pelo parque mostra mesas e bancos com superfícies alaranjadas sobre um piso coberto de aparas de madeira.</p><p>Os visitantes reúnem-se sob as árvores, com uma rede e obstáculos de um campo de paintball ao fundo.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Deux notices privées huit langues personnellement rédigées et relues : source officielle services, gratuité/PMR et périmètre exact du pique-nique ; deux photographies natives officielles examinées intégralement. Description visuelle explicitement attribuée à la vue publiée, pas configuration de chaque aire ni date photo prétendues. Aucun nombre de places/tables, GPS, généralisation de revêtement ou droit de pique-niquer partout inventés. Notices courtes justifiées par les sources disponibles, sans remplissage.",
+    "wordCounts": {
+      "Parkings": {
+        "fr": 65,
+        "en": 57,
+        "de": 53,
+        "es": 59,
+        "it": 59,
+        "nl": 55,
+        "pl": 48,
+        "pt": 58
+      },
+      "Aires de pique-nique": {
+        "fr": 94,
+        "en": 72,
+        "de": 70,
+        "es": 84,
+        "it": 79,
+        "nl": 74,
+        "pl": 64,
+        "pt": 80
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "postApplyIdempotence": {
+    "operationId": "7951b3e0-b96e-401e-afd5-293300917181",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:37:49.856185Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 13,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "entityKey": "pokeyland-bumper-boat",
+        "displayName": "Bumper Boat",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "pokeyland-escalade",
+        "displayName": "Escalade",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "pokeyland-mini-golf",
+        "displayName": "Mini-golf",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "pokeyland-poney",
+        "displayName": "Poney",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "entityKey": "pokeyland-parkings",
+        "displayName": "Parkings",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "entityKey": "pokeyland-aires-pique-nique",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

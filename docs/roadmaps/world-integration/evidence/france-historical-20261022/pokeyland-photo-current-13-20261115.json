@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 13,
+    "activityName": "Le p’tit train",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/parc/le-ptit-train/",
+      "accessedAtUtc": "2026-11-15T10:37:43.263126+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/parc/le-ptit-train/",
+      "sha256": "8ad175e3fc3106363a00f9dd785ee85f2a3b704c97c51dc59c19bb603a92ef8e",
+      "bytes": 80588,
+      "file": "activity-le-ptit-train.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-ptit-train-parc-pokeyland-loisir-1350x900.jpg",
+    "file": "13-le-ptit-train.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-ptit-train-parc-pokeyland-loisir-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:18.736831+00:00",
+    "bytes": 209992,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "0406d6fb1e050b30e87528cfcb3511de98c6c006dd3e98d19f85b17f63913307",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "13-le-ptit-train.jpg",
+    "visualDescriptionFr": "Locomotive décorative verte, jaune et rouge marquée RIO GRANDE et OLD TIMER, avec voitures derrière, à quai sous une charpente en bois.",
+    "identityAndCaptionLimitsFr": "Le p’tit train est un train guidé ; la photo ne permet pas d’identifier son fabricant ni de confondre le marquage du matériel avec un nom officiel de l’activité.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-ptit-train-parc-pokeyland-loisir-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/13-le-ptit-train.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-13-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-13-import-result.json"
+  },
+  "metadata": {
+    "description": "La locomotive porte une cheminée rouge et les inscriptions Rio Grande et Old Timer, dans un décor de petite gare en bois.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-ptit-train-parc-pokeyland-loisir-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Locomotive verte et jaune du p’tit train devant une station en bois"
+      },
+      {
+        "languageCode": "en",
+        "value": "Green and yellow locomotive of Le p’tit train beside a wooden station"
+      },
+      {
+        "languageCode": "de",
+        "value": "Grün-gelbe Lokomotive des p’tit train vor einer Holzstation"
+      },
+      {
+        "languageCode": "es",
+        "value": "Locomotora verde y amarilla de Le p’tit train ante una estación de madera"
+      },
+      {
+        "languageCode": "it",
+        "value": "Locomotiva verde e gialla del p’tit train davanti a una stazione in legno"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Groen-gele locomotief van Le p’tit train bij een houten station"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zielono-żółta lokomotywa Le p’tit train przed drewnianą stacją"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Locomotiva verde e amarela do p’tit train junto de uma estação de madeira"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La locomotive porte une cheminée rouge et les inscriptions Rio Grande et Old Timer, dans un décor de petite gare en bois."
+      },
+      {
+        "languageCode": "en",
+        "value": "The locomotive has a red chimney and Rio Grande and Old Timer markings, within a small wooden-station setting."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Lokomotive trägt einen roten Schornstein sowie die Aufschriften Rio Grande und Old Timer in einer kleinen Holzbahnhofskulisse."
+      },
+      {
+        "languageCode": "es",
+        "value": "La locomotora tiene una chimenea roja y las inscripciones Rio Grande y Old Timer en un decorado de pequeña estación de madera."
+      },
+      {
+        "languageCode": "it",
+        "value": "La locomotiva ha un fumaiolo rosso e le scritte Rio Grande e Old Timer, nella scenografia di una piccola stazione in legno."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De locomotief heeft een rode schoorsteen en de opschriften Rio Grande en Old Timer, in het decor van een klein houten station."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Lokomotywa ma czerwony komin i napisy Rio Grande oraz Old Timer w scenerii niewielkiej drewnianej stacji."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A locomotiva tem uma chaminé vermelha e as inscrições Rio Grande e Old Timer, no cenário de uma pequena estação de madeira."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "490b9c348df1440ab5ca688ed39613a8",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+      "path": "park_item/490b9c348df1440ab5ca688ed39613a8",
+      "description": "La locomotive porte une cheminée rouge et les inscriptions Rio Grande et Old Timer, dans un décor de petite gare en bois.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 209992,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-ptit-train-parc-pokeyland-loisir-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Locomotive verte et jaune du p’tit train devant une station en bois"
+        },
+        {
+          "languageCode": "en",
+          "value": "Green and yellow locomotive of Le p’tit train beside a wooden station"
+        },
+        {
+          "languageCode": "de",
+          "value": "Grün-gelbe Lokomotive des p’tit train vor einer Holzstation"
+        },
+        {
+          "languageCode": "es",
+          "value": "Locomotora verde y amarilla de Le p’tit train ante una estación de madera"
+        },
+        {
+          "languageCode": "it",
+          "value": "Locomotiva verde e gialla del p’tit train davanti a una stazione in legno"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Groen-gele locomotief van Le p’tit train bij een houten station"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielono-żółta lokomotywa Le p’tit train przed drewnianą stacją"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Locomotiva verde e amarela do p’tit train junto de uma estação de madeira"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La locomotive porte une cheminée rouge et les inscriptions Rio Grande et Old Timer, dans un décor de petite gare en bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "The locomotive has a red chimney and Rio Grande and Old Timer markings, within a small wooden-station setting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Lokomotive trägt einen roten Schornstein sowie die Aufschriften Rio Grande und Old Timer in einer kleinen Holzbahnhofskulisse."
+        },
+        {
+          "languageCode": "es",
+          "value": "La locomotora tiene una chimenea roja y las inscripciones Rio Grande y Old Timer en un decorado de pequeña estación de madera."
+        },
+        {
+          "languageCode": "it",
+          "value": "La locomotiva ha un fumaiolo rosso e le scritte Rio Grande e Old Timer, nella scenografia di una piccola stazione in legno."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De locomotief heeft een rode schoorsteen en de opschriften Rio Grande en Old Timer, in het decor van een klein houten station."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Lokomotywa ma czerwony komin i napisy Rio Grande oraz Old Timer w scenerii niewielkiej drewnianej stacji."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A locomotiva tem uma chaminé vermelha e as inscrições Rio Grande e Old Timer, no cenário de uma pequena estação de madeira."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:27:29.594Z",
+      "updatedAt": "2026-11-15T13:27:33.103Z"
+    },
+    "startedAtUtc": "2026-11-15T13:27:27.9210386Z",
+    "receivedAtUtc": "2026-11-15T13:27:36.2081218Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

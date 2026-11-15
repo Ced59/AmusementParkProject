@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 20,
+    "activityName": "Poney",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/explorateurs/poney/",
+      "accessedAtUtc": "2026-11-15T10:37:44.654975+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/poney/",
+      "sha256": "44e079087b5fd3240867c6bae295522581536ef67d9104fa7552c5b3aa8a0426",
+      "bytes": 89945,
+      "file": "activity-poney.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/poneys.jpg",
+    "file": "20-poney.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/poneys.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:20.828876+00:00",
+    "bytes": 61314,
+    "dimensions": [
+      1000,
+      667
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "b5c0e4c97d87e60da40088edc1ad6da9f978da24bf145b52ec499a6172128433",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "20-poney.jpg",
+    "visualDescriptionFr": "Enfant casquée sur un vrai poney, accompagnée à pied sur une allée bordée de clôtures en bois.",
+    "identityAndCaptionLimitsFr": "Correspond à Poney, distinct des chevaux mécaniques ; vue de dos, aucun nom d’animal ou de personne à inférer.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/poneys.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/20-poney.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-20-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-20-import-result.json"
+  },
+  "metadata": {
+    "description": "Le poney avance avec un enfant en selle et une personne marchant à ses côtés, près d’une clôture au milieu des arbres.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/poneys.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Enfant casqué à poney sur un chemin boisé de Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Helmeted child riding a pony on a wooded path at Pokeyland"
+      },
+      {
+        "languageCode": "de",
+        "value": "Kind mit Helm auf einem Pony auf einem Waldweg in Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Niño con casco montado en poni en un camino arbolado de Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Bambino con casco su un pony lungo un sentiero alberato di Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Kind met helm op een pony op een bospad in Pokeyland"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dziecko w kasku na kucyku na leśnej ścieżce w Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Criança com capacete num pónei num caminho arborizado do Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le poney avance avec un enfant en selle et une personne marchant à ses côtés, près d’une clôture au milieu des arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "The pony carries a child while a person walks alongside, near a fence among the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das Pony trägt ein Kind, während eine Person daneben läuft, nahe einem Zaun zwischen den Bäumen."
+      },
+      {
+        "languageCode": "es",
+        "value": "El poni lleva a un niño mientras una persona camina a su lado, junto a una cerca entre los árboles."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il pony porta un bambino mentre una persona cammina accanto, vicino a una recinzione tra gli alberi."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De pony draagt een kind terwijl iemand ernaast loopt, bij een hek tussen de bomen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kucyk niesie dziecko, a obok idzie osoba towarzysząca, przy ogrodzeniu wśród drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O pónei leva uma criança enquanto uma pessoa caminha ao lado, junto de uma vedação entre as árvores."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T13:28:42.9049995Z",
+    "result": {
+      "id": "7a93467a6c1c4c3daf2f468274195c34",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+      "path": "park_item/7a93467a6c1c4c3daf2f468274195c34",
+      "description": "Le poney avance avec un enfant en selle et une personne marchant à ses côtés, près d’une clôture au milieu des arbres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1000,
+      "height": 667,
+      "sizeInBytes": 61314,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/poneys.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant casqué à poney sur un chemin boisé de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Helmeted child riding a pony on a wooded path at Pokeyland"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind mit Helm auf einem Pony auf einem Waldweg in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño con casco montado en poni en un camino arbolado de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino con casco su un pony lungo un sentiero alberato di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind met helm op een pony op een bospad in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko w kasku na kucyku na leśnej ścieżce w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança com capacete num pónei num caminho arborizado do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le poney avance avec un enfant en selle et une personne marchant à ses côtés, près d’une clôture au milieu des arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "The pony carries a child while a person walks alongside, near a fence among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Pony trägt ein Kind, während eine Person daneben läuft, nahe einem Zaun zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "El poni lleva a un niño mientras una persona camina a su lado, junto a una cerca entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il pony porta un bambino mentre una persona cammina accanto, vicino a una recinzione tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De pony draagt een kind terwijl iemand ernaast loopt, bij een hek tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kucyk niesie dziecko, a obok idzie osoba towarzysząca, przy ogrodzeniu wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O pónei leva uma criança enquanto uma pessoa caminha ao lado, junto de uma vedação entre as árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:36.363Z",
+      "updatedAt": "2026-11-15T13:28:39.8Z"
+    },
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T13:28:35.5274473Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

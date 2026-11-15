@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 24,
+    "activityName": "Tubing",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/baroudeurs/tubing/",
+      "accessedAtUtc": "2026-11-15T10:37:45.179591+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/baroudeurs/tubing/",
+      "sha256": "adf125ed8a1e8f1aa43c4498294b9f7b3710aee40bc07a8efb57f75c41b3bcb7",
+      "bytes": 89268,
+      "file": "activity-tubing.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7889-1350x900.jpg",
+    "file": "24-tubing.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7889-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:21.081745+00:00",
+    "bytes": 187748,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "f63630d63594569adc6e1488b77b0573ea6ddf9054d248e4a85332a21ae86190",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "24-tubing.jpg",
+    "visualDescriptionFr": "Une adulte et un enfant dans une bouée jaune/verte Pokeyland descendent une piste verte de tubing bordée de filets orange.",
+    "identityAndCaptionLimitsFr": "Image réelle ; le logo Pokeyland et l’inscription Neveplast sont imprimés sur la bouée, pas des filigranes sur la photo. Ne pas déduire le fabricant de tout le parcours à partir de la seule marque de la bouée.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7889-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/24-tubing.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-24-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-24-import-result.json"
+  },
+  "metadata": {
+    "description": "La piste verte est bordée d’éléments orange. Une bouée à fond jaune et motif camouflage se trouve sur la surface de glisse.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7889-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Bouée à motif camouflage sur la piste verte du Tubing"
+      },
+      {
+        "languageCode": "en",
+        "value": "Camouflage-patterned tube on the green Tubing lane"
+      },
+      {
+        "languageCode": "de",
+        "value": "Reifen mit Tarnmuster auf der grünen Tubingbahn"
+      },
+      {
+        "languageCode": "es",
+        "value": "Flotador de camuflaje en la pista verde de Tubing"
+      },
+      {
+        "languageCode": "it",
+        "value": "Ciambella mimetica sulla pista verde del Tubing"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Band met camouflagepatroon op de groene Tubingbaan"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Koło z wzorem maskującym na zielonym torze Tubing"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Boia com padrão de camuflagem na pista verde do Tubing"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La piste verte est bordée d’éléments orange. Une bouée à fond jaune et motif camouflage se trouve sur la surface de glisse."
+      },
+      {
+        "languageCode": "en",
+        "value": "Orange elements line the green lane. A camouflage-patterned tube with a yellow base sits on the sliding surface."
+      },
+      {
+        "languageCode": "de",
+        "value": "Orange Elemente begrenzen die grüne Bahn. Ein Reifen mit gelbem Boden und Tarnmuster liegt auf der Gleitfläche."
+      },
+      {
+        "languageCode": "es",
+        "value": "Elementos naranjas bordean la pista verde. Un flotador de base amarilla y estampado de camuflaje está en la superficie de deslizamiento."
+      },
+      {
+        "languageCode": "it",
+        "value": "Elementi arancioni delimitano la pista verde. Una ciambella con fondo giallo e motivo mimetico si trova sulla superficie di scivolamento."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Oranje elementen begrenzen de groene baan. Een band met gele bodem en camouflagepatroon ligt op het glijoppervlak."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pomarańczowe elementy otaczają zielony tor. Koło z żółtym spodem i wzorem maskującym znajduje się na powierzchni zjazdu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Elementos laranja delimitam a pista verde. Uma boia com base amarela e padrão de camuflagem está na superfície de deslize."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T13:29:13.4169323Z",
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T13:29:21.6540116Z",
+    "result": {
+      "id": "aec2045ac03e42eebcc6f8c3db977b4f",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+      "path": "park_item/aec2045ac03e42eebcc6f8c3db977b4f",
+      "description": "La piste verte est bordée d’éléments orange. Une bouée à fond jaune et motif camouflage se trouve sur la surface de glisse.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 187748,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7889-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Bouée à motif camouflage sur la piste verte du Tubing"
+        },
+        {
+          "languageCode": "en",
+          "value": "Camouflage-patterned tube on the green Tubing lane"
+        },
+        {
+          "languageCode": "de",
+          "value": "Reifen mit Tarnmuster auf der grünen Tubingbahn"
+        },
+        {
+          "languageCode": "es",
+          "value": "Flotador de camuflaje en la pista verde de Tubing"
+        },
+        {
+          "languageCode": "it",
+          "value": "Ciambella mimetica sulla pista verde del Tubing"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Band met camouflagepatroon op de groene Tubingbaan"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Koło z wzorem maskującym na zielonym torze Tubing"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Boia com padrão de camuflagem na pista verde do Tubing"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La piste verte est bordée d’éléments orange. Une bouée à fond jaune et motif camouflage se trouve sur la surface de glisse."
+        },
+        {
+          "languageCode": "en",
+          "value": "Orange elements line the green lane. A camouflage-patterned tube with a yellow base sits on the sliding surface."
+        },
+        {
+          "languageCode": "de",
+          "value": "Orange Elemente begrenzen die grüne Bahn. Ein Reifen mit gelbem Boden und Tarnmuster liegt auf der Gleitfläche."
+        },
+        {
+          "languageCode": "es",
+          "value": "Elementos naranjas bordean la pista verde. Un flotador de base amarilla y estampado de camuflaje está en la superficie de deslizamiento."
+        },
+        {
+          "languageCode": "it",
+          "value": "Elementi arancioni delimitano la pista verde. Una ciambella con fondo giallo e motivo mimetico si trova sulla superficie di scivolamento."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Oranje elementen begrenzen de groene baan. Een band met gele bodem en camouflagepatroon ligt op het glijoppervlak."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowe elementy otaczają zielony tor. Koło z żółtym spodem i wzorem maskującym znajduje się na powierzchni zjazdu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Elementos laranja delimitam a pista verde. Uma boia com base amarela e padrão de camuflagem está na superfície de deslize."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:29:15.108Z",
+      "updatedAt": "2026-11-15T13:29:18.542Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

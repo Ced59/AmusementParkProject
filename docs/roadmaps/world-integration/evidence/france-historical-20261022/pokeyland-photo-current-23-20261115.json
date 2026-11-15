@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 23,
+    "activityName": "Trampoline",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/explorateurs/trampoline/",
+      "accessedAtUtc": "2026-11-15T10:37:45.000354+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/trampoline/",
+      "sha256": "9da5babf203d7179586ee4a3176561d435864496e2905d6eba1d7c5db883b977",
+      "bytes": 90069,
+      "file": "activity-trampoline.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A9743-1350x900.jpg",
+    "file": "23-trampoline.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A9743-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:20.948737+00:00",
+    "bytes": 98676,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "d40b0067ccaac83488e18d35c87425b1080a688699ca23ac35bfd76850418b54",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "23-trampoline.jpg",
+    "visualDescriptionFr": "Détail d’un enfant en harnais jaune/noir relié à des élastiques et mousquetons, avec les jambes en l’air devant les arbres.",
+    "identityAndCaptionLimitsFr": "Photo de la fiche Trampoline ; cadrage serré, toile de rebond hors champ et tête partiellement coupée. Admissible pour montrer l’équipement mais moins descriptive que pourrait l’être une vue d’ensemble ; ne pas affirmer une confusion avec Ejector uniquement sur la présence du harnais.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A9743-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/23-trampoline.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-23-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-23-import-result.json"
+  },
+  "metadata": {
+    "description": "Le harnais du participant est relié aux cordes orange au-dessus d’une zone bordée de protections jaunes.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A9743-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Enfant en harnais noir entre les cordes orange du trampoline"
+      },
+      {
+        "languageCode": "en",
+        "value": "Child in a black harness between the trampoline’s orange cords"
+      },
+      {
+        "languageCode": "de",
+        "value": "Kind mit schwarzem Gurt zwischen den orangefarbenen Trampolinseilen"
+      },
+      {
+        "languageCode": "es",
+        "value": "Niño con arnés negro entre las cuerdas naranjas del trampolín"
+      },
+      {
+        "languageCode": "it",
+        "value": "Bambino con imbracatura nera tra le corde arancioni del trampolino"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Kind met zwart harnas tussen de oranje trampolinekoorden"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dziecko w czarnej uprzęży między pomarańczowymi linami trampoliny"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Criança com arnês preto entre as cordas laranja do trampolim"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le harnais du participant est relié aux cordes orange au-dessus d’une zone bordée de protections jaunes."
+      },
+      {
+        "languageCode": "en",
+        "value": "The participant’s harness is connected to orange cords above an area edged with yellow padding."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Gurt des Teilnehmers ist mit orangefarbenen Seilen über einem gelb gepolsterten Bereich verbunden."
+      },
+      {
+        "languageCode": "es",
+        "value": "El arnés del participante está unido a cuerdas naranjas sobre una zona bordeada de protecciones amarillas."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’imbracatura del partecipante è collegata a corde arancioni sopra un’area delimitata da protezioni gialle."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het harnas van de deelnemer is verbonden met oranje koorden boven een gebied met gele beschermranden."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Uprząż uczestnika jest połączona z pomarańczowymi linami nad strefą otoczoną żółtymi osłonami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O arnês do participante está ligado a cordas laranja sobre uma zona delimitada por proteções amarelas."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "a72bf58bb08242f78f564f71704d70ac",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+      "path": "park_item/a72bf58bb08242f78f564f71704d70ac",
+      "description": "Le harnais du participant est relié aux cordes orange au-dessus d’une zone bordée de protections jaunes.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 98676,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A9743-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant en harnais noir entre les cordes orange du trampoline"
+        },
+        {
+          "languageCode": "en",
+          "value": "Child in a black harness between the trampoline’s orange cords"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind mit schwarzem Gurt zwischen den orangefarbenen Trampolinseilen"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño con arnés negro entre las cuerdas naranjas del trampolín"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino con imbracatura nera tra le corde arancioni del trampolino"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind met zwart harnas tussen de oranje trampolinekoorden"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko w czarnej uprzęży między pomarańczowymi linami trampoliny"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança com arnês preto entre as cordas laranja do trampolim"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le harnais du participant est relié aux cordes orange au-dessus d’une zone bordée de protections jaunes."
+        },
+        {
+          "languageCode": "en",
+          "value": "The participant’s harness is connected to orange cords above an area edged with yellow padding."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Gurt des Teilnehmers ist mit orangefarbenen Seilen über einem gelb gepolsterten Bereich verbunden."
+        },
+        {
+          "languageCode": "es",
+          "value": "El arnés del participante está unido a cuerdas naranjas sobre una zona bordeada de protecciones amarillas."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’imbracatura del partecipante è collegata a corde arancioni sopra un’area delimitata da protezioni gialle."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het harnas van de deelnemer is verbonden met oranje koorden boven een gebied met gele beschermranden."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uprząż uczestnika jest połączona z pomarańczowymi linami nad strefą otoczoną żółtymi osłonami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O arnês do participante está ligado a cordas laranja sobre uma zona delimitada por proteções amarelas."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:29:05.291Z",
+      "updatedAt": "2026-11-15T13:29:08.747Z"
+    },
+    "startedAtUtc": "2026-11-15T13:29:03.6589901Z",
+    "receivedAtUtc": "2026-11-15T13:29:11.8672045Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

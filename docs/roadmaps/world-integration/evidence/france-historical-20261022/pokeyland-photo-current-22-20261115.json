@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 22,
+    "activityName": "Tir à l’arc",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/explorateurs/tir-a-larc/",
+      "accessedAtUtc": "2026-11-15T10:37:44.827620+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/tir-a-larc/",
+      "sha256": "5f34f87e00dec082f8d1e1f907a9ca62675e00b2c8f91f2ed2f96dd9e049526d",
+      "bytes": 89654,
+      "file": "activity-tir-a-larc.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7458-1350x900.jpg",
+    "file": "22-tir-a-larc.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7458-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:20.950345+00:00",
+    "bytes": 101432,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "3e9d1c74d577da7608d0fd3111ae9ebdfbf47727e7ac59198de35bb9d1092e58",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "22-tir-a-larc.jpg",
+    "visualDescriptionFr": "Enfant au tir à l’arc, vu de dos, devant trois cibles circulaires au bout de couloirs bordés de bois et protégés par des filets.",
+    "identityAndCaptionLimitsFr": "Correspond au stand de tir à l’arc. La photo ne mesure pas la longueur des couloirs.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7458-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/22-tir-a-larc.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-22-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-22-import-result.json"
+  },
+  "metadata": {
+    "description": "Le jeune archer fait face aux cibles installées devant un filet, dans l’espace de tir à l’arc du parc.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7458-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Enfant tenant un arc devant les panneaux de cibles"
+      },
+      {
+        "languageCode": "en",
+        "value": "Child holding a bow in front of target panels"
+      },
+      {
+        "languageCode": "de",
+        "value": "Kind mit Bogen vor Zieltafeln"
+      },
+      {
+        "languageCode": "es",
+        "value": "Niño con un arco ante los paneles de dianas"
+      },
+      {
+        "languageCode": "it",
+        "value": "Bambino con arco davanti ai pannelli dei bersagli"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Kind met boog voor de doelpanelen"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dziecko z łukiem przed panelami tarcz"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Criança com arco diante dos painéis de alvos"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le jeune archer fait face aux cibles installées devant un filet, dans l’espace de tir à l’arc du parc."
+      },
+      {
+        "languageCode": "en",
+        "value": "The young archer faces targets placed in front of a net in the park’s archery area."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der junge Bogenschütze steht vor Zielscheiben mit einem dahinterliegenden Netz im Bogenschießbereich des Parks."
+      },
+      {
+        "languageCode": "es",
+        "value": "El joven arquero mira hacia las dianas situadas delante de una red en la zona de tiro con arco del parque."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il giovane arciere è rivolto verso bersagli posti davanti a una rete nell’area di tiro con l’arco del parco."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De jonge boogschutter staat tegenover doelen vóór een net in het boogschietgedeelte van het park."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Młody łucznik stoi przed tarczami umieszczonymi na tle siatki w parkowej strefie łuczniczej."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O jovem arqueiro está voltado para os alvos colocados diante de uma rede na zona de tiro com arco do parque."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "157b717d3f6045058612279d0f4e1540",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+      "path": "park_item/157b717d3f6045058612279d0f4e1540",
+      "description": "Le jeune archer fait face aux cibles installées devant un filet, dans l’espace de tir à l’arc du parc.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 101432,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7458-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant tenant un arc devant les panneaux de cibles"
+        },
+        {
+          "languageCode": "en",
+          "value": "Child holding a bow in front of target panels"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind mit Bogen vor Zieltafeln"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño con un arco ante los paneles de dianas"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino con arco davanti ai pannelli dei bersagli"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind met boog voor de doelpanelen"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko z łukiem przed panelami tarcz"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança com arco diante dos painéis de alvos"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le jeune archer fait face aux cibles installées devant un filet, dans l’espace de tir à l’arc du parc."
+        },
+        {
+          "languageCode": "en",
+          "value": "The young archer faces targets placed in front of a net in the park’s archery area."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der junge Bogenschütze steht vor Zielscheiben mit einem dahinterliegenden Netz im Bogenschießbereich des Parks."
+        },
+        {
+          "languageCode": "es",
+          "value": "El joven arquero mira hacia las dianas situadas delante de una red en la zona de tiro con arco del parque."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il giovane arciere è rivolto verso bersagli posti davanti a una rete nell’area di tiro con l’arco del parco."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De jonge boogschutter staat tegenover doelen vóór een net in het boogschietgedeelte van het park."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Młody łucznik stoi przed tarczami umieszczonymi na tle siatki w parkowej strefie łuczniczej."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O jovem arqueiro está voltado para os alvos colocados diante de uma rede na zona de tiro com arco do parque."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:55.601Z",
+      "updatedAt": "2026-11-15T13:28:59.03Z"
+    },
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T13:28:54.1838386Z",
+    "receivedAtUtc": "2026-11-15T13:29:02.1664416Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

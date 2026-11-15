@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 11,
+    "activityName": "Laser Game",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/explorateurs/laser-game/",
+      "accessedAtUtc": "2026-11-15T10:37:42.906359+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/laser-game/",
+      "sha256": "d3845cfe7c0c5d17439f914d3f00d09a51d27aef677a5a5e93af2846ccc4f8e6",
+      "bytes": 89187,
+      "file": "activity-laser-game.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_4683-1350x900.jpg",
+    "file": "11-laser-game.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_4683-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:18.487587+00:00",
+    "bytes": 111355,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "5bb4d56773f1fba42fe86ddc2d896b4e8aad0257d044c4daf974522170f99eb2",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "11-laser-game.jpg",
+    "visualDescriptionFr": "Deux joueuses casquées en orange se déplacent avec des équipements laser au milieu de décors en fausses pierres, sous les arbres.",
+    "identityAndCaptionLimitsFr": "Photo propre Laser Game. Le nom d’un terrain de paintball ne peut être déduit de ce décor ; ne pas l’attribuer à un terrain nommé sans autre preuve.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_4683-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/11-laser-game.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-11-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-11-import-result.json"
+  },
+  "metadata": {
+    "description": "Un adulte et un enfant portent leur équipement de jeu devant des façades grises vieillies et une porte en bois, au milieu des arbres.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_4683-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Deux joueurs casqués en orange au Laser Game de Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Two players wearing orange helmets at Pokeyland’s Laser Game"
+      },
+      {
+        "languageCode": "de",
+        "value": "Zwei Spieler mit orangefarbenen Helmen beim Laser Game in Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Dos jugadores con cascos naranjas en el Laser Game de Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Due giocatori con caschi arancioni al Laser Game di Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Twee spelers met oranje helmen bij Laser Game in Pokeyland"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dwoje graczy w pomarańczowych kaskach na Laser Game w Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Dois jogadores com capacetes laranja no Laser Game do Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un adulte et un enfant portent leur équipement de jeu devant des façades grises vieillies et une porte en bois, au milieu des arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "An adult and a child carry their game equipment in front of weathered grey façades and a wooden door among the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Erwachsener und ein Kind tragen ihre Spielausrüstung vor verwitterten grauen Fassaden und einer Holztür zwischen den Bäumen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un adulto y un niño llevan su equipo de juego ante fachadas grises envejecidas y una puerta de madera entre los árboles."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un adulto e un bambino portano l’attrezzatura da gioco davanti a facciate grigie invecchiate e una porta in legno tra gli alberi."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een volwassene en een kind dragen hun speluitrusting voor verweerde grijze gevels en een houten deur tussen de bomen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dorosły i dziecko trzymają sprzęt do gry przed postarzałymi szarymi fasadami i drewnianymi drzwiami wśród drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um adulto e uma criança levam o equipamento de jogo diante de fachadas cinzentas envelhecidas e de uma porta de madeira entre as árvores."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T13:27:06.5274157Z",
+    "result": {
+      "id": "564dfc5df72f451e9a3b435d8ae51a27",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+      "path": "park_item/564dfc5df72f451e9a3b435d8ae51a27",
+      "description": "Un adulte et un enfant portent leur équipement de jeu devant des façades grises vieillies et une porte en bois, au milieu des arbres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 111355,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_4683-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Deux joueurs casqués en orange au Laser Game de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Two players wearing orange helmets at Pokeyland’s Laser Game"
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Spieler mit orangefarbenen Helmen beim Laser Game in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos jugadores con cascos naranjas en el Laser Game de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Due giocatori con caschi arancioni al Laser Game di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee spelers met oranje helmen bij Laser Game in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwoje graczy w pomarańczowych kaskach na Laser Game w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Dois jogadores com capacetes laranja no Laser Game do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un adulte et un enfant portent leur équipement de jeu devant des façades grises vieillies et une porte en bois, au milieu des arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "An adult and a child carry their game equipment in front of weathered grey façades and a wooden door among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Erwachsener und ein Kind tragen ihre Spielausrüstung vor verwitterten grauen Fassaden und einer Holztür zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un adulto y un niño llevan su equipo de juego ante fachadas grises envejecidas y una puerta de madera entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un adulto e un bambino portano l’attrezzatura da gioco davanti a facciate grigie invecchiate e una porta in legno tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een volwassene en een kind dragen hun speluitrusting voor verweerde grijze gevels en een houten deur tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dorosły i dziecko trzymają sprzęt do gry przed postarzałymi szarymi fasadami i drewnianymi drzwiami wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um adulto e uma criança levam o equipamento de jogo diante de fachadas cinzentas envelhecidas e de uma porta de madeira entre as árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:27:09.091Z",
+      "updatedAt": "2026-11-15T13:27:13.077Z"
+    },
+    "receivedAtUtc": "2026-11-15T13:27:16.1839239Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

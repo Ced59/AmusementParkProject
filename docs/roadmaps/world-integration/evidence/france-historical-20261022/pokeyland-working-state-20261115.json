@@ -689,7 +689,9 @@
           "languageCode": "pt",
           "value": "<h2>Barcos laranja no lago</h2><p>As pequenas embarcações redondas de Bumper Boat dão um toque laranja ao lago rodeado de árvores. Os rebordos pretos destacam-se nos reflexos verdes da água.</p><p>Os encontros na água transformam-se em pequenos choques e batalhas de salpicos. Um jato sai da frente do barco: molhar os adversários faz parte do jogo tanto como conduzir.</p><h2>Uma cena à superfície da água</h2><p>A fotografia oficial mostra um passageiro com colete salva-vidas, pouco acima da superfície. Atrás do barco, as margens arborizadas enquadram a área de jogo e os salpicos.</p>"
         }
-      ]
+      ],
+      "latitude": 49.0208421,
+      "longitude": 6.1010609
     },
     {
       "key": "pokeyland-bumper-car",
@@ -877,7 +879,9 @@
           "languageCode": "pt",
           "value": "<h2>Presas coloridas numa parede clara</h2><p>A escalada de Pokeyland contrapõe o fundo claro das paredes às presas verdes, azuis, vermelhas e castanhas. A fotografia do parque mostra um jovem escalador entre estas manchas de cor, com a mão estendida para a presa seguinte.</p><p>Uma campainha no topo assinala a meta. As paredes oferecem diferentes dificuldades: a atenção centra-se nas presas e no som que remata a subida.</p>"
         }
-      ]
+      ],
+      "latitude": 49.0217484,
+      "longitude": 6.100698
     },
     {
       "key": "pokeyland-kids-swing",
@@ -1040,7 +1044,9 @@
           "languageCode": "pt",
           "value": "<h2>Uma partida entre cenários da floresta</h2><p>O Laser Game de Pokeyland realiza-se ao ar livre, em terrenos preparados entre as árvores. Os jogadores apontam aos adversários para somar pontos, com disparos laser sem projéteis de tinta. Existem espaços destinados às crianças.</p><p>Fachadas cinzentas envelhecidas, portas de tábuas e aberturas nas paredes compõem o cenário. Os troncos mantêm-se entre estas construções, sobre um chão de terra. O equipamento preto e os capacetes laranja visíveis durante uma partida destacam-se entre os muros e a vegetação.</p>"
         }
-      ]
+      ],
+      "latitude": 49.0219226,
+      "longitude": 6.1013606
     },
     {
       "key": "pokeyland-le-batoo",
@@ -1360,7 +1366,9 @@
           "languageCode": "pt",
           "value": "<h2>Quinze pistas com obstáculos entre as árvores</h2><p>O Mini-golf de Pokeyland reúne quinze buracos num ambiente com sombra. Os jogadores usam os tacos disponíveis para fazer avançar a bola entre os obstáculos e comparar as pontuações ao longo do percurso.</p><p>Uma pista tem uma superfície rosa-salmão com bordas vermelhas e grandes obstáculos em forma de cogumelos de cor creme. A vedação de madeira e as árvores rodeiam esta superfície colorida, onde a bola e o taco se destacam. O jogo combina pequenas decorações com a vegetação do parque.</p>"
         }
-      ]
+      ],
+      "latitude": 49.021277,
+      "longitude": 6.1000569
     },
     {
       "key": "pokeyland-mono-rail",
@@ -1516,7 +1524,9 @@
           "languageCode": "pt",
           "value": "<h2>Um passeio com póneis pela floresta</h2><p>A atividade Poney permite descobrir a equitação ao ar livre num percurso reservado na floresta de Pokeyland. A criança monta um animal vivo, acompanhada a pé durante o passeio.</p><p>O caminho de terra passa entre vedações de madeira e vegetação. O pónei, o jovem cavaleiro de capacete e as pessoas que caminham ao lado partilham esta alameda com sombra. Este encontro com os animais constitui uma atividade distinta dos cavalos mecânicos de Les p’tits chevaux.</p>"
         }
-      ]
+      ],
+      "latitude": 49.0216332,
+      "longitude": 6.1003377
     },
     {
       "key": "pokeyland-quad-kids",
@@ -2026,7 +2036,9 @@
         ]
       },
       "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
-      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9",
+      "latitude": 49.0183877,
+      "longitude": 6.1011601
     },
     {
       "key": "pokeyland-parcours-tyrolienne",
@@ -2351,7 +2363,9 @@
           "languageCode": "pt",
           "value": "<h2>Cores à beira de água</h2><p>Amarelo, azul, vermelho e cinzento: as encostas do Waterjump destacam-se diante das árvores do Pokeyland. Na base, a piscina reflete as cores das pistas e as frentes de madeira que ladeiam os trampolins.</p><p>Aqui, deslizar ganha um lado acrobático, entre descidas para a água e voos sobre a piscina. As partes vermelhas e cinzentas dominam este conjunto ao ar livre, onde a mascote raposa aparece numa parede de madeira.</p><h2>Uma aventura de verão desde 2022</h2><p>Já disponível em 2022, o Waterjump surge na brochura do ano seguinte ao lado do paintball e dos percursos nas árvores. Boias e pranchas dão uma dimensão aquática às aventuras do parque florestal.</p>"
         }
-      ]
+      ],
+      "latitude": 49.0216452,
+      "longitude": 6.1031501
     },
     {
       "key": "pokeyland-petit-creux",
@@ -2364,7 +2378,9 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/restauration/"
       },
-      "id": "e267af4d-a394-4ddb-9cb5-597582e077da"
+      "id": "e267af4d-a394-4ddb-9cb5-597582e077da",
+      "latitude": 49.0211269,
+      "longitude": 6.101518
     },
     {
       "key": "pokeyland-gourmand",
@@ -2377,7 +2393,9 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/restauration/"
       },
-      "id": "731d71c3-50aa-4898-8a78-de37c0b1437c"
+      "id": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+      "latitude": 49.0215437,
+      "longitude": 6.1008841
     },
     {
       "key": "pokeyland-grill",
@@ -2403,7 +2421,9 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/restauration/"
       },
-      "id": "698bf2fb-d43e-4a13-988c-f25ecee12095"
+      "id": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+      "latitude": 49.0193189,
+      "longitude": 6.1002579
     },
     {
       "key": "pokeyland-pokey-beach",
@@ -2576,7 +2596,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
       },
-      "id": "4404aa32-40c6-409e-9bc7-52700a6a6e72"
+      "id": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Le stationnement dans les bois</h2><p>Les espaces de stationnement de Pokeyland se trouvent dans un environnement arboré. La vue officielle montre deux rangées de voitures de part et d’autre d’une large allée, avec les troncs et le feuillage à proximité des emplacements.</p><h2>Gratuité et places réservées</h2><p>Le parc annonce un stationnement gratuit.</p><p>Ses informations d’accessibilité mentionnent également des places réservées aux personnes à mobilité réduite.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Parking among the trees</h2><p>Pokeyland’s parking areas occupy a wooded setting. The official view shows two rows of cars on either side of a wide aisle, with tree trunks and foliage close to the spaces.</p><h2>Free parking and reserved spaces</h2><p>The park advertises free parking.</p><p>Its accessibility information also mentions spaces reserved for people with reduced mobility.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Parken zwischen den Bäumen</h2><p>Die Parkflächen von Pokeyland liegen in einer bewaldeten Umgebung. Die offizielle Ansicht zeigt zwei Autoreihen beiderseits einer breiten Fahrgasse, mit Baumstämmen und Laub nahe den Stellplätzen.</p><h2>Kostenlose und reservierte Stellplätze</h2><p>Der Park kündigt kostenloses Parken an.</p><p>Seine Informationen zur Barrierefreiheit nennen außerdem reservierte Stellplätze für Menschen mit eingeschränkter Mobilität.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Aparcar entre los árboles</h2><p>Los aparcamientos de Pokeyland se sitúan en un entorno arbolado. La vista oficial muestra dos filas de coches a ambos lados de un pasillo ancho, con troncos y follaje cerca de las plazas.</p><h2>Gratuidad y plazas reservadas</h2><p>El parque anuncia aparcamiento gratuito.</p><p>Su información de accesibilidad también menciona plazas reservadas para personas con movilidad reducida.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Parcheggiare tra gli alberi</h2><p>Le aree di parcheggio di Pokeyland si trovano in un ambiente alberato. La veduta ufficiale mostra due file di automobili ai lati di un ampio passaggio, con tronchi e fogliame vicino agli stalli.</p><h2>Gratuità e posti riservati</h2><p>Il parco annuncia il parcheggio gratuito.</p><p>Le informazioni sull’accessibilità citano anche posti riservati alle persone con mobilità ridotta.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Parkeren tussen de bomen</h2><p>De parkeerterreinen van Pokeyland liggen in een bosrijke omgeving. De officiële foto toont twee rijen auto’s aan weerszijden van een brede rijstrook, met boomstammen en bladeren dicht bij de plaatsen.</p><h2>Gratis parkeren en gereserveerde plaatsen</h2><p>Het park vermeldt gratis parkeren.</p><p>De toegankelijkheidsinformatie noemt ook gereserveerde plaatsen voor mensen met beperkte mobiliteit.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Parkowanie wśród drzew</h2><p>Parkingi Pokeyland znajdują się w zadrzewionym otoczeniu. Oficjalne zdjęcie pokazuje dwa rzędy samochodów po obu stronach szerokiego przejazdu, z pniami i listowiem blisko stanowisk.</p><h2>Bezpłatne i zarezerwowane miejsca</h2><p>Park informuje o bezpłatnym parkowaniu.</p><p>Informacje o dostępności wymieniają także miejsca zarezerwowane dla osób o ograniczonej mobilności.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Estacionar entre as árvores</h2><p>Os espaços de estacionamento do Pokeyland situam-se num ambiente arborizado. A vista oficial mostra duas filas de automóveis de cada lado de uma faixa larga, com troncos e folhagem junto dos lugares.</p><h2>Gratuitidade e lugares reservados</h2><p>O parque anuncia estacionamento gratuito.</p><p>As informações de acessibilidade também mencionam lugares reservados a pessoas com mobilidade reduzida.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-poste-secours",
@@ -2602,7 +2656,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
       },
-      "id": "eeb57071-2903-41d0-875c-008dfbe36ee0"
+      "id": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des espaces désignés pour les repas</h2><p>Les aires de pique-nique annoncées par Pokeyland se trouvent sur le parking et à proximité de l’accrobranche. Les repas tirés du sac sont réservés à ces espaces dédiés ; ils ne sont pas autorisés dans les autres parties du parc.</p><h2>Des tables dans un cadre arboré</h2><p>La photographie diffusée par le parc montre des tables et des bancs à plateaux orangés, installés sur un sol couvert de copeaux.</p><p>Les visiteurs y sont réunis sous les arbres, avec un filet et les obstacles d’un terrain de paintball à l’arrière-plan.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Designated spaces for meals</h2><p>Pokeyland identifies picnic areas in the car park and near the treetop courses. Meals brought from outside are limited to these designated spaces and are not allowed elsewhere in the park.</p><h2>Tables in a wooded setting</h2><p>The photograph published by the park shows tables and benches with orange-toned tops on ground covered with woodchips.</p><p>Visitors gather beneath the trees, with a net and paintball obstacles in the background.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ausgewiesene Bereiche für Mahlzeiten</h2><p>Pokeyland nennt Picknickbereiche auf dem Parkplatz und in der Nähe der Kletterparcours. Mitgebrachte Mahlzeiten sind auf diese ausgewiesenen Flächen beschränkt und in den übrigen Parkbereichen nicht gestattet.</p><h2>Tische zwischen den Bäumen</h2><p>Das vom Park veröffentlichte Foto zeigt Tische und Bänke mit orangefarbenen Flächen auf einem mit Holzspänen bedeckten Boden.</p><p>Besucher kommen unter den Bäumen zusammen; im Hintergrund sind ein Netz und Hindernisse eines Paintballfelds zu sehen.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Espacios designados para comer</h2><p>Pokeyland sitúa sus áreas de pícnic en el aparcamiento y cerca de los circuitos entre árboles. Las comidas traídas de fuera se limitan a estos espacios designados y no están permitidas en las demás zonas del parque.</p><h2>Mesas en un entorno arbolado</h2><p>La fotografía difundida por el parque muestra mesas y bancos de superficies anaranjadas sobre un suelo cubierto de virutas.</p><p>Los visitantes se reúnen bajo los árboles, con una red y obstáculos de un campo de paintball al fondo.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Spazi dedicati ai pasti</h2><p>Pokeyland indica aree picnic nel parcheggio e vicino ai percorsi sugli alberi. I pasti portati da fuori sono limitati a questi spazi dedicati e non sono consentiti nelle altre parti del parco.</p><h2>Tavoli in un ambiente alberato</h2><p>La fotografia pubblicata dal parco mostra tavoli e panche con superfici aranciate su un terreno coperto di trucioli.</p><p>I visitatori si riuniscono sotto gli alberi, con una rete e gli ostacoli di un campo da paintball sullo sfondo.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Aangewezen plekken om te eten</h2><p>Pokeyland noemt picknickplaatsen op het parkeerterrein en bij de boomparcoursen. Zelf meegebrachte maaltijden zijn beperkt tot deze aangewezen plekken en zijn in de overige delen van het park niet toegestaan.</p><h2>Tafels in een bosrijke omgeving</h2><p>De door het park gepubliceerde foto toont tafels en banken met oranjeachtige bladen op een ondergrond met houtsnippers.</p><p>Bezoekers zitten onder de bomen, met een net en obstakels van een paintballveld op de achtergrond.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Wyznaczone miejsca na posiłki</h2><p>Pokeyland wskazuje miejsca piknikowe na parkingu i w pobliżu tras linowych. Własne posiłki można spożywać tylko w tych wyznaczonych przestrzeniach; w pozostałych częściach parku nie jest to dozwolone.</p><h2>Stoły wśród drzew</h2><p>Zdjęcie udostępnione przez park pokazuje stoły i ławki o pomarańczowych powierzchniach na podłożu pokrytym zrębkami.</p><p>Goście gromadzą się pod drzewami, a w tle widać siatkę i przeszkody pola paintballowego.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Espaços destinados às refeições</h2><p>O Pokeyland indica áreas de piquenique no estacionamento e perto dos percursos de arborismo. As refeições trazidas de fora ficam limitadas a esses espaços próprios e não são permitidas nas restantes partes do parque.</p><h2>Mesas num ambiente arborizado</h2><p>A fotografia divulgada pelo parque mostra mesas e bancos com superfícies alaranjadas sobre um piso coberto de aparas de madeira.</p><p>Os visitantes reúnem-se sob as árvores, com uma rede e obstáculos de um campo de paintball ao fundo.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-casiers",
@@ -7027,6 +7115,1905 @@
       "updatedAt": "2026-11-15T13:17:52.944Z",
       "key": "73a1c7d039244b45b8e2973e13a36f61",
       "imageId": "73a1c7d039244b45b8e2973e13a36f61"
+    },
+    {
+      "id": "564dfc5df72f451e9a3b435d8ae51a27",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+      "path": "park_item/564dfc5df72f451e9a3b435d8ae51a27",
+      "description": "Un adulte et un enfant portent leur équipement de jeu devant des façades grises vieillies et une porte en bois, au milieu des arbres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 111355,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_4683-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Deux joueurs casqués en orange au Laser Game de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Two players wearing orange helmets at Pokeyland’s Laser Game"
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Spieler mit orangefarbenen Helmen beim Laser Game in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos jugadores con cascos naranjas en el Laser Game de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Due giocatori con caschi arancioni al Laser Game di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee spelers met oranje helmen bij Laser Game in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwoje graczy w pomarańczowych kaskach na Laser Game w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Dois jogadores com capacetes laranja no Laser Game do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un adulte et un enfant portent leur équipement de jeu devant des façades grises vieillies et une porte en bois, au milieu des arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "An adult and a child carry their game equipment in front of weathered grey façades and a wooden door among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Erwachsener und ein Kind tragen ihre Spielausrüstung vor verwitterten grauen Fassaden und einer Holztür zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un adulto y un niño llevan su equipo de juego ante fachadas grises envejecidas y una puerta de madera entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un adulto e un bambino portano l’attrezzatura da gioco davanti a facciate grigie invecchiate e una porta in legno tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een volwassene en een kind dragen hun speluitrusting voor verweerde grijze gevels en een houten deur tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dorosły i dziecko trzymają sprzęt do gry przed postarzałymi szarymi fasadami i drewnianymi drzwiami wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um adulto e uma criança levam o equipamento de jogo diante de fachadas cinzentas envelhecidas e de uma porta de madeira entre as árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:27:09.091Z",
+      "updatedAt": "2026-11-15T13:27:13.077Z",
+      "key": "564dfc5df72f451e9a3b435d8ae51a27",
+      "imageId": "564dfc5df72f451e9a3b435d8ae51a27"
+    },
+    {
+      "id": "6be2dd0f36e94f61801bee58bb41c311",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+      "path": "park_item/6be2dd0f36e94f61801bee58bb41c311",
+      "description": "Le bateau coloré est entouré d’arches blanches, de motifs de vagues et de lanternes qui composent son décor nautique.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 88339,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-batoo-pokeyland-metz-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Batoo jaune, bleu et rouge sous ses arches blanches"
+        },
+        {
+          "languageCode": "en",
+          "value": "Yellow, blue and red Le Batoo beneath its white arches"
+        },
+        {
+          "languageCode": "de",
+          "value": "Le Batoo in Gelb, Blau und Rot unter weißen Bögen"
+        },
+        {
+          "languageCode": "es",
+          "value": "Le Batoo amarillo, azul y rojo bajo sus arcos blancos"
+        },
+        {
+          "languageCode": "it",
+          "value": "Le Batoo giallo, blu e rosso sotto gli archi bianchi"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De gele, blauwe en rode Le Batoo onder witte bogen"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Żółto-niebiesko-czerwony Le Batoo pod białymi łukami"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Le Batoo amarelo, azul e vermelho sob os arcos brancos"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le bateau coloré est entouré d’arches blanches, de motifs de vagues et de lanternes qui composent son décor nautique."
+        },
+        {
+          "languageCode": "en",
+          "value": "White arches, wave motifs and lanterns surround the colourful boat and form its nautical setting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Weiße Bögen, Wellenmotive und Laternen umgeben das bunte Boot und bilden seine nautische Kulisse."
+        },
+        {
+          "languageCode": "es",
+          "value": "Arcos blancos, motivos de olas y faroles rodean el barco de colores y forman su decorado náutico."
+        },
+        {
+          "languageCode": "it",
+          "value": "Archi bianchi, motivi a onde e lanterne circondano la barca colorata e compongono la scenografia nautica."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Witte bogen, golfmotieven en lantaarns omringen de kleurrijke boot en vormen het nautische decor."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Białe łuki, motywy fal i latarnie otaczają kolorową łódź, tworząc jej żeglarską scenerię."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Arcos brancos, motivos de ondas e lanternas rodeiam o barco colorido e compõem o seu cenário náutico."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:27:19.701Z",
+      "updatedAt": "2026-11-15T13:27:23.35Z",
+      "key": "6be2dd0f36e94f61801bee58bb41c311",
+      "imageId": "6be2dd0f36e94f61801bee58bb41c311"
+    },
+    {
+      "id": "490b9c348df1440ab5ca688ed39613a8",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+      "path": "park_item/490b9c348df1440ab5ca688ed39613a8",
+      "description": "La locomotive porte une cheminée rouge et les inscriptions Rio Grande et Old Timer, dans un décor de petite gare en bois.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 209992,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/le-ptit-train-parc-pokeyland-loisir-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Locomotive verte et jaune du p’tit train devant une station en bois"
+        },
+        {
+          "languageCode": "en",
+          "value": "Green and yellow locomotive of Le p’tit train beside a wooden station"
+        },
+        {
+          "languageCode": "de",
+          "value": "Grün-gelbe Lokomotive des p’tit train vor einer Holzstation"
+        },
+        {
+          "languageCode": "es",
+          "value": "Locomotora verde y amarilla de Le p’tit train ante una estación de madera"
+        },
+        {
+          "languageCode": "it",
+          "value": "Locomotiva verde e gialla del p’tit train davanti a una stazione in legno"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Groen-gele locomotief van Le p’tit train bij een houten station"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielono-żółta lokomotywa Le p’tit train przed drewnianą stacją"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Locomotiva verde e amarela do p’tit train junto de uma estação de madeira"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La locomotive porte une cheminée rouge et les inscriptions Rio Grande et Old Timer, dans un décor de petite gare en bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "The locomotive has a red chimney and Rio Grande and Old Timer markings, within a small wooden-station setting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Lokomotive trägt einen roten Schornstein sowie die Aufschriften Rio Grande und Old Timer in einer kleinen Holzbahnhofskulisse."
+        },
+        {
+          "languageCode": "es",
+          "value": "La locomotora tiene una chimenea roja y las inscripciones Rio Grande y Old Timer en un decorado de pequeña estación de madera."
+        },
+        {
+          "languageCode": "it",
+          "value": "La locomotiva ha un fumaiolo rosso e le scritte Rio Grande e Old Timer, nella scenografia di una piccola stazione in legno."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De locomotief heeft een rode schoorsteen en de opschriften Rio Grande en Old Timer, in het decor van een klein houten station."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Lokomotywa ma czerwony komin i napisy Rio Grande oraz Old Timer w scenerii niewielkiej drewnianej stacji."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A locomotiva tem uma chaminé vermelha e as inscrições Rio Grande e Old Timer, no cenário de uma pequena estação de madeira."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:27:29.594Z",
+      "updatedAt": "2026-11-15T13:27:33.103Z",
+      "key": "490b9c348df1440ab5ca688ed39613a8",
+      "imageId": "490b9c348df1440ab5ca688ed39613a8"
+    },
+    {
+      "id": "23c8dbb7dcd248eb8d0186222443f2d2",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "38922aa5-2307-4973-b0f5-b076325642a9",
+      "path": "park_item/23c8dbb7dcd248eb8d0186222443f2d2",
+      "description": "La banquette est placée contre le mât blanc, avec des lumières rouges sur sa façade et les jambes des passagers suspendues sous les sièges.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 100055,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/j-061-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Passagers sur la banquette verte et blanche de Fall Tower"
+        },
+        {
+          "languageCode": "en",
+          "value": "Riders on Fall Tower’s green and white bench"
+        },
+        {
+          "languageCode": "de",
+          "value": "Fahrgäste auf der grün-weißen Sitzbank des Fall Tower"
+        },
+        {
+          "languageCode": "es",
+          "value": "Pasajeros en el banco verde y blanco de Fall Tower"
+        },
+        {
+          "languageCode": "it",
+          "value": "Passeggeri sulla panca verde e bianca di Fall Tower"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers op de groen-witte zitbank van Fall Tower"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pasażerowie na zielono-białej ławce Fall Tower"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Passageiros no banco verde e branco da Fall Tower"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La banquette est placée contre le mât blanc, avec des lumières rouges sur sa façade et les jambes des passagers suspendues sous les sièges."
+        },
+        {
+          "languageCode": "en",
+          "value": "The bench sits against the white mast, with red lights across its front and riders’ legs hanging below the seats."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Sitzbank befindet sich am weißen Mast, mit roten Lichtern an der Vorderseite und frei hängenden Beinen unter den Sitzen."
+        },
+        {
+          "languageCode": "es",
+          "value": "El banco se sitúa junto al mástil blanco, con luces rojas en el frontal y las piernas de los pasajeros colgando bajo los asientos."
+        },
+        {
+          "languageCode": "it",
+          "value": "La panca si trova contro il pilone bianco, con luci rosse sul frontale e le gambe dei passeggeri sospese sotto i sedili."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De zitbank staat tegen de witte mast, met rode lampen aan de voorkant en de benen van de bezoekers onder de stoelen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ławka znajduje się przy białym maszcie, z czerwonymi światłami z przodu i nogami pasażerów zwisającymi pod siedzeniami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O banco está junto do mastro branco, com luzes vermelhas na frente e as pernas dos passageiros suspensas sob os assentos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:27:39.164Z",
+      "updatedAt": "2026-11-15T13:27:42.606Z",
+      "key": "23c8dbb7dcd248eb8d0186222443f2d2",
+      "imageId": "23c8dbb7dcd248eb8d0186222443f2d2"
+    },
+    {
+      "id": "1f693f389f2d435daee1e38782d47ee1",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+      "path": "park_item/1f693f389f2d435daee1e38782d47ee1",
+      "description": "Les petits avions sont fixés aux bras du manège, autour d’un élément central décoré de carreaux noirs et blancs.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 281070,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/les-avions-parc-pokeyland-moselle-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Avions rouges, bleus et blancs autour du centre à damier"
+        },
+        {
+          "languageCode": "en",
+          "value": "Red, blue and white planes around a chequered centre"
+        },
+        {
+          "languageCode": "de",
+          "value": "Rote, blaue und weiße Flugzeuge um eine karierte Mitte"
+        },
+        {
+          "languageCode": "es",
+          "value": "Aviones rojos, azules y blancos alrededor del centro ajedrezado"
+        },
+        {
+          "languageCode": "it",
+          "value": "Aerei rossi, blu e bianchi intorno al centro a scacchi"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rode, blauwe en witte vliegtuigen rond een geblokt middelpunt"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone, niebieskie i białe samoloty wokół środka w szachownicę"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Aviões vermelhos, azuis e brancos em redor do centro axadrezado"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les petits avions sont fixés aux bras du manège, autour d’un élément central décoré de carreaux noirs et blancs."
+        },
+        {
+          "languageCode": "en",
+          "value": "Small planes are attached to the ride’s arms around a central element decorated with black and white squares."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die kleinen Flugzeuge sitzen an den Armen des Fahrgeschäfts um ein mit schwarzen und weißen Quadraten gestaltetes Mittelteil."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los pequeños aviones están unidos a los brazos de la atracción alrededor de un elemento central decorado con cuadrados blancos y negros."
+        },
+        {
+          "languageCode": "it",
+          "value": "I piccoli aerei sono fissati ai bracci della giostra intorno a un elemento centrale decorato con quadrati bianchi e neri."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kleine vliegtuigen zijn bevestigd aan de armen van de attractie rond een middenstuk met zwarte en witte vierkanten."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Małe samoloty są przymocowane do ramion karuzeli wokół centralnego elementu ozdobionego czarno-białymi kwadratami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os pequenos aviões estão presos aos braços da atração em torno de um elemento central decorado com quadrados pretos e brancos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:27:48.651Z",
+      "updatedAt": "2026-11-15T13:27:52.105Z",
+      "key": "1f693f389f2d435daee1e38782d47ee1",
+      "imageId": "1f693f389f2d435daee1e38782d47ee1"
+    },
+    {
+      "id": "b1d250d753c849bd9bbcdb78a06db9b4",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+      "path": "park_item/b1d250d753c849bd9bbcdb78a06db9b4",
+      "description": "Des chevaux bruns, blancs et noirs se suivent sur le parcours bas, à proximité d’une toiture en bois et de bordures vertes et jaunes.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 261142,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/les-ptits-chevaux-pokeyland-parc-metz-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Chevaux sculptés à selles orange près d’un abri en bois"
+        },
+        {
+          "languageCode": "en",
+          "value": "Sculpted horses with orange saddles beside a wooden shelter"
+        },
+        {
+          "languageCode": "de",
+          "value": "Pferdefiguren mit orangefarbenen Sätteln an einem Holzunterstand"
+        },
+        {
+          "languageCode": "es",
+          "value": "Caballos esculpidos con sillas naranjas junto a un cobertizo de madera"
+        },
+        {
+          "languageCode": "it",
+          "value": "Cavalli scolpiti con selle arancioni accanto a una tettoia in legno"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Paardenfiguren met oranje zadels bij een houten overkapping"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rzeźbione konie z pomarańczowymi siodłami przy drewnianej wiacie"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cavalos esculpidos com selas laranja junto de um abrigo de madeira"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des chevaux bruns, blancs et noirs se suivent sur le parcours bas, à proximité d’une toiture en bois et de bordures vertes et jaunes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Brown, white and black horses follow the low route beside a wooden roof and green and yellow edging."
+        },
+        {
+          "languageCode": "de",
+          "value": "Braune, weiße und schwarze Pferde folgen der niedrigen Strecke neben einem Holzdach und grün-gelben Einfassungen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Caballos marrones, blancos y negros siguen el recorrido bajo junto a un tejado de madera y bordes verdes y amarillos."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cavalli marroni, bianchi e neri si susseguono sul percorso basso, vicino a un tetto in legno e bordi verdi e gialli."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bruine, witte en zwarte paarden volgen het lage parcours bij een houten dak en groene en gele randen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Brązowe, białe i czarne konie ustawione są na niskiej trasie przy drewnianym dachu oraz zielonych i żółtych obrzeżach."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cavalos castanhos, brancos e pretos seguem o percurso baixo, junto de uma cobertura de madeira e de bordaduras verdes e amarelas."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:27:58.477Z",
+      "updatedAt": "2026-11-15T13:28:01.975Z",
+      "key": "b1d250d753c849bd9bbcdb78a06db9b4",
+      "imageId": "b1d250d753c849bd9bbcdb78a06db9b4"
+    },
+    {
+      "id": "e9a95a64a5e847a0bc8867e71dd8ee5b",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+      "path": "park_item/e9a95a64a5e847a0bc8867e71dd8ee5b",
+      "description": "Un club vert accompagne la balle bleue sur une piste saumon à bordures rouges, ponctuée d’un obstacle en forme de champignon.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1000,
+      "height": 667,
+      "sizeInBytes": 129868,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/mini-golf.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Piste rose du mini-golf avec champignon clair et balle bleue"
+        },
+        {
+          "languageCode": "en",
+          "value": "Pink mini-golf lane with a pale mushroom and blue ball"
+        },
+        {
+          "languageCode": "de",
+          "value": "Rosa Minigolfbahn mit hellem Pilz und blauem Ball"
+        },
+        {
+          "languageCode": "es",
+          "value": "Pista rosa de minigolf con seta clara y pelota azul"
+        },
+        {
+          "languageCode": "it",
+          "value": "Pista rosa del minigolf con fungo chiaro e pallina blu"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Roze midgetgolfbaan met lichte paddenstoel en blauwe bal"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Różowy tor minigolfa z jasnym grzybem i niebieską piłką"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pista rosa de minigolfe com cogumelo claro e bola azul"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un club vert accompagne la balle bleue sur une piste saumon à bordures rouges, ponctuée d’un obstacle en forme de champignon."
+        },
+        {
+          "languageCode": "en",
+          "value": "A green club is beside the blue ball on a salmon-coloured lane with red edges and a mushroom-shaped obstacle."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein grüner Schläger liegt neben dem blauen Ball auf einer lachsfarbenen Bahn mit roten Rändern und einem pilzförmigen Hindernis."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un palo verde acompaña a la pelota azul en una pista color salmón con bordes rojos y un obstáculo en forma de seta."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una mazza verde affianca la pallina blu su una pista color salmone con bordi rossi e un ostacolo a forma di fungo."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een groene club staat bij de blauwe bal op een zalmkleurige baan met rode randen en een paddenstoelvormig obstakel."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielony kij znajduje się przy niebieskiej piłce na łososiowym torze z czerwonymi brzegami i przeszkodą w kształcie grzyba."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um taco verde acompanha a bola azul numa pista salmão com bordas vermelhas e um obstáculo em forma de cogumelo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:08.065Z",
+      "updatedAt": "2026-11-15T13:28:11.517Z",
+      "key": "e9a95a64a5e847a0bc8867e71dd8ee5b",
+      "imageId": "e9a95a64a5e847a0bc8867e71dd8ee5b"
+    },
+    {
+      "id": "f4e5db0fd4da432599a6968adcecbb75",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "776a9555-8156-4199-980f-e07ccbd44a31",
+      "path": "park_item/f4e5db0fd4da432599a6968adcecbb75",
+      "description": "Un enfant occupe le petit hélicoptère blanc, surmonté d’un rotor décoratif noir, au milieu du feuillage.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 291581,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-055-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Véhicule blanc en forme d’hélicoptère sur le Mono-Rail"
+        },
+        {
+          "languageCode": "en",
+          "value": "White helicopter-shaped vehicle on the Mono-Rail"
+        },
+        {
+          "languageCode": "de",
+          "value": "Weißes Hubschrauberfahrzeug auf dem Mono-Rail"
+        },
+        {
+          "languageCode": "es",
+          "value": "Vehículo blanco con forma de helicóptero en el Mono-Rail"
+        },
+        {
+          "languageCode": "it",
+          "value": "Veicolo bianco a forma di elicottero sul Mono-Rail"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Wit helikoptervoertuig op de Mono-Rail"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Biały pojazd w kształcie helikoptera na Mono-Rail"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Veículo branco em forma de helicóptero no Mono-Rail"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un enfant occupe le petit hélicoptère blanc, surmonté d’un rotor décoratif noir, au milieu du feuillage."
+        },
+        {
+          "languageCode": "en",
+          "value": "A child sits in the small white helicopter with a black decorative rotor, surrounded by foliage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Kind sitzt im kleinen weißen Hubschrauber mit schwarzem Zierrotor, umgeben von Laub."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un niño ocupa el pequeño helicóptero blanco con un rotor decorativo negro, rodeado de hojas."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un bambino occupa il piccolo elicottero bianco con rotore decorativo nero, circondato dal fogliame."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kind zit in de kleine witte helikopter met zwarte sierrotor, omringd door bladeren."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko siedzi w małym białym helikopterze z czarnym ozdobnym wirnikiem, pośród liści."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma criança ocupa o pequeno helicóptero branco com rotor decorativo preto, rodeado de folhagem."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:17.957Z",
+      "updatedAt": "2026-11-15T13:28:21.434Z",
+      "key": "f4e5db0fd4da432599a6968adcecbb75",
+      "imageId": "f4e5db0fd4da432599a6968adcecbb75"
+    },
+    {
+      "id": "3fb34d48ddaa4460b16f774a3fc45004",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+      "path": "park_item/3fb34d48ddaa4460b16f774a3fc45004",
+      "description": "Des rondins séparent les différentes surfaces du chemin, avec des graviers gris et blancs, du sable et de l’herbe sur les côtés.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1000,
+      "height": 667,
+      "sizeInBytes": 220348,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/pieds-nus.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Cases de sable et de graviers du parcours pieds nus"
+        },
+        {
+          "languageCode": "en",
+          "value": "Sand and gravel sections of the barefoot trail"
+        },
+        {
+          "languageCode": "de",
+          "value": "Sand- und Kiesfelder des Barfußpfads"
+        },
+        {
+          "languageCode": "es",
+          "value": "Tramos de arena y grava del recorrido descalzo"
+        },
+        {
+          "languageCode": "it",
+          "value": "Sezioni di sabbia e ghiaia del percorso a piedi nudi"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vakken met zand en grind op het blotevoetenpad"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pola piasku i żwiru na ścieżce bosych stóp"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Secções de areia e gravilha do percurso descalço"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des rondins séparent les différentes surfaces du chemin, avec des graviers gris et blancs, du sable et de l’herbe sur les côtés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Logs divide the path’s surfaces, including grey and white gravel and sand, with grass along the sides."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rundhölzer trennen die Wegflächen mit grauem und weißem Kies sowie Sand; an den Seiten wächst Gras."
+        },
+        {
+          "languageCode": "es",
+          "value": "Troncos separan las superficies del camino, con grava gris y blanca, arena y hierba a los lados."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tronchi separano le superfici del sentiero, con ghiaia grigia e bianca, sabbia ed erba ai lati."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Boomstammen scheiden de oppervlakken van het pad, met grijs en wit grind, zand en gras langs de zijkanten."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Bale oddzielają nawierzchnie ścieżki z szarym i białym żwirem oraz piaskiem, a po bokach rośnie trawa."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Troncos separam as superfícies do caminho, com gravilha cinzenta e branca, areia e relva nas laterais."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:27.28Z",
+      "updatedAt": "2026-11-15T13:28:30.718Z",
+      "key": "3fb34d48ddaa4460b16f774a3fc45004",
+      "imageId": "3fb34d48ddaa4460b16f774a3fc45004"
+    },
+    {
+      "id": "7a93467a6c1c4c3daf2f468274195c34",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+      "path": "park_item/7a93467a6c1c4c3daf2f468274195c34",
+      "description": "Le poney avance avec un enfant en selle et une personne marchant à ses côtés, près d’une clôture au milieu des arbres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1000,
+      "height": 667,
+      "sizeInBytes": 61314,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/poneys.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant casqué à poney sur un chemin boisé de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Helmeted child riding a pony on a wooded path at Pokeyland"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind mit Helm auf einem Pony auf einem Waldweg in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño con casco montado en poni en un camino arbolado de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino con casco su un pony lungo un sentiero alberato di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind met helm op een pony op een bospad in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko w kasku na kucyku na leśnej ścieżce w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança com capacete num pónei num caminho arborizado do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le poney avance avec un enfant en selle et une personne marchant à ses côtés, près d’une clôture au milieu des arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "The pony carries a child while a person walks alongside, near a fence among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Pony trägt ein Kind, während eine Person daneben läuft, nahe einem Zaun zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "El poni lleva a un niño mientras una persona camina a su lado, junto a una cerca entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il pony porta un bambino mentre una persona cammina accanto, vicino a una recinzione tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De pony draagt een kind terwijl iemand ernaast loopt, bij een hek tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kucyk niesie dziecko, a obok idzie osoba towarzysząca, przy ogrodzeniu wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O pónei leva uma criança enquanto uma pessoa caminha ao lado, junto de uma vedação entre as árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:36.363Z",
+      "updatedAt": "2026-11-15T13:28:39.8Z",
+      "key": "7a93467a6c1c4c3daf2f468274195c34",
+      "imageId": "7a93467a6c1c4c3daf2f468274195c34"
+    },
+    {
+      "id": "52be7f0705244106aa5219bb47fb6359",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+      "path": "park_item/52be7f0705244106aa5219bb47fb6359",
+      "description": "Le petit véhicule caréné est posé sur une piste pavée bordée de protections noires ; son volant se trouve devant le siège.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 185736,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-060-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Kart orange, noir et blanc du Kid’s Racer avec volant"
+        },
+        {
+          "languageCode": "en",
+          "value": "Orange, black and white Kid’s Racer kart with a steering wheel"
+        },
+        {
+          "languageCode": "de",
+          "value": "Orange-schwarz-weißes Kart des Kid’s Racer mit Lenkrad"
+        },
+        {
+          "languageCode": "es",
+          "value": "Kart naranja, negro y blanco de Kid’s Racer con volante"
+        },
+        {
+          "languageCode": "it",
+          "value": "Kart arancione, nero e bianco di Kid’s Racer con volante"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Oranje, zwarte en witte kart van Kid’s Racer met stuur"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowo-czarno-biały gokart Kid’s Racer z kierownicą"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Kart laranja, preto e branco do Kid’s Racer com volante"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le petit véhicule caréné est posé sur une piste pavée bordée de protections noires ; son volant se trouve devant le siège."
+        },
+        {
+          "languageCode": "en",
+          "value": "The small bodied vehicle is on a paved track edged with black barriers, with its steering wheel in front of the seat."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das kleine verkleidete Fahrzeug steht auf einer gepflasterten Strecke mit schwarzen Begrenzungen; das Lenkrad befindet sich vor dem Sitz."
+        },
+        {
+          "languageCode": "es",
+          "value": "El pequeño vehículo carenado está en una pista pavimentada bordeada por protecciones negras, con el volante delante del asiento."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il piccolo veicolo carenato si trova su una pista pavimentata delimitata da protezioni nere, con il volante davanti al sedile."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het kleine voertuig met carrosserie staat op een verharde baan met zwarte barrières; het stuur zit vóór de stoel."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mały pojazd z nadwoziem stoi na utwardzonym torze z czarnymi osłonami; kierownica znajduje się przed siedzeniem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O pequeno veículo com carroçaria está numa pista pavimentada com proteções pretas, com o volante à frente do banco."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:46.141Z",
+      "updatedAt": "2026-11-15T13:28:49.649Z",
+      "key": "52be7f0705244106aa5219bb47fb6359",
+      "imageId": "52be7f0705244106aa5219bb47fb6359"
+    },
+    {
+      "id": "157b717d3f6045058612279d0f4e1540",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+      "path": "park_item/157b717d3f6045058612279d0f4e1540",
+      "description": "Le jeune archer fait face aux cibles installées devant un filet, dans l’espace de tir à l’arc du parc.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 101432,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7458-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant tenant un arc devant les panneaux de cibles"
+        },
+        {
+          "languageCode": "en",
+          "value": "Child holding a bow in front of target panels"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind mit Bogen vor Zieltafeln"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño con un arco ante los paneles de dianas"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino con arco davanti ai pannelli dei bersagli"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind met boog voor de doelpanelen"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko z łukiem przed panelami tarcz"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança com arco diante dos painéis de alvos"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le jeune archer fait face aux cibles installées devant un filet, dans l’espace de tir à l’arc du parc."
+        },
+        {
+          "languageCode": "en",
+          "value": "The young archer faces targets placed in front of a net in the park’s archery area."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der junge Bogenschütze steht vor Zielscheiben mit einem dahinterliegenden Netz im Bogenschießbereich des Parks."
+        },
+        {
+          "languageCode": "es",
+          "value": "El joven arquero mira hacia las dianas situadas delante de una red en la zona de tiro con arco del parque."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il giovane arciere è rivolto verso bersagli posti davanti a una rete nell’area di tiro con l’arco del parco."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De jonge boogschutter staat tegenover doelen vóór een net in het boogschietgedeelte van het park."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Młody łucznik stoi przed tarczami umieszczonymi na tle siatki w parkowej strefie łuczniczej."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O jovem arqueiro está voltado para os alvos colocados diante de uma rede na zona de tiro com arco do parque."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:55.601Z",
+      "updatedAt": "2026-11-15T13:28:59.03Z",
+      "key": "157b717d3f6045058612279d0f4e1540",
+      "imageId": "157b717d3f6045058612279d0f4e1540"
+    },
+    {
+      "id": "a72bf58bb08242f78f564f71704d70ac",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+      "path": "park_item/a72bf58bb08242f78f564f71704d70ac",
+      "description": "Le harnais du participant est relié aux cordes orange au-dessus d’une zone bordée de protections jaunes.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 98676,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A9743-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant en harnais noir entre les cordes orange du trampoline"
+        },
+        {
+          "languageCode": "en",
+          "value": "Child in a black harness between the trampoline’s orange cords"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind mit schwarzem Gurt zwischen den orangefarbenen Trampolinseilen"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño con arnés negro entre las cuerdas naranjas del trampolín"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino con imbracatura nera tra le corde arancioni del trampolino"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind met zwart harnas tussen de oranje trampolinekoorden"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko w czarnej uprzęży między pomarańczowymi linami trampoliny"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança com arnês preto entre as cordas laranja do trampolim"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le harnais du participant est relié aux cordes orange au-dessus d’une zone bordée de protections jaunes."
+        },
+        {
+          "languageCode": "en",
+          "value": "The participant’s harness is connected to orange cords above an area edged with yellow padding."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Gurt des Teilnehmers ist mit orangefarbenen Seilen über einem gelb gepolsterten Bereich verbunden."
+        },
+        {
+          "languageCode": "es",
+          "value": "El arnés del participante está unido a cuerdas naranjas sobre una zona bordeada de protecciones amarillas."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’imbracatura del partecipante è collegata a corde arancioni sopra un’area delimitata da protezioni gialle."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het harnas van de deelnemer is verbonden met oranje koorden boven een gebied met gele beschermranden."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uprząż uczestnika jest połączona z pomarańczowymi linami nad strefą otoczoną żółtymi osłonami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O arnês do participante está ligado a cordas laranja sobre uma zona delimitada por proteções amarelas."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:29:05.291Z",
+      "updatedAt": "2026-11-15T13:29:08.747Z",
+      "key": "a72bf58bb08242f78f564f71704d70ac",
+      "imageId": "a72bf58bb08242f78f564f71704d70ac"
+    },
+    {
+      "id": "aec2045ac03e42eebcc6f8c3db977b4f",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+      "path": "park_item/aec2045ac03e42eebcc6f8c3db977b4f",
+      "description": "La piste verte est bordée d’éléments orange. Une bouée à fond jaune et motif camouflage se trouve sur la surface de glisse.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 187748,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7889-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Bouée à motif camouflage sur la piste verte du Tubing"
+        },
+        {
+          "languageCode": "en",
+          "value": "Camouflage-patterned tube on the green Tubing lane"
+        },
+        {
+          "languageCode": "de",
+          "value": "Reifen mit Tarnmuster auf der grünen Tubingbahn"
+        },
+        {
+          "languageCode": "es",
+          "value": "Flotador de camuflaje en la pista verde de Tubing"
+        },
+        {
+          "languageCode": "it",
+          "value": "Ciambella mimetica sulla pista verde del Tubing"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Band met camouflagepatroon op de groene Tubingbaan"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Koło z wzorem maskującym na zielonym torze Tubing"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Boia com padrão de camuflagem na pista verde do Tubing"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La piste verte est bordée d’éléments orange. Une bouée à fond jaune et motif camouflage se trouve sur la surface de glisse."
+        },
+        {
+          "languageCode": "en",
+          "value": "Orange elements line the green lane. A camouflage-patterned tube with a yellow base sits on the sliding surface."
+        },
+        {
+          "languageCode": "de",
+          "value": "Orange Elemente begrenzen die grüne Bahn. Ein Reifen mit gelbem Boden und Tarnmuster liegt auf der Gleitfläche."
+        },
+        {
+          "languageCode": "es",
+          "value": "Elementos naranjas bordean la pista verde. Un flotador de base amarilla y estampado de camuflaje está en la superficie de deslizamiento."
+        },
+        {
+          "languageCode": "it",
+          "value": "Elementi arancioni delimitano la pista verde. Una ciambella con fondo giallo e motivo mimetico si trova sulla superficie di scivolamento."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Oranje elementen begrenzen de groene baan. Een band met gele bodem en camouflagepatroon ligt op het glijoppervlak."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowe elementy otaczają zielony tor. Koło z żółtym spodem i wzorem maskującym znajduje się na powierzchni zjazdu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Elementos laranja delimitam a pista verde. Uma boia com base amarela e padrão de camuflagem está na superfície de deslize."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:29:15.108Z",
+      "updatedAt": "2026-11-15T13:29:18.542Z",
+      "key": "aec2045ac03e42eebcc6f8c3db977b4f",
+      "imageId": "aec2045ac03e42eebcc6f8c3db977b4f"
+    },
+    {
+      "id": "96d60d7c6c0c40d79627a733c4ae2ff5",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+      "path": "park_item/96d60d7c6c0c40d79627a733c4ae2ff5",
+      "description": "La passerelle en filet traverse les arbres ; un enfant progresse entre les parois souples de cette liaison suspendue.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 286004,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_6078-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant sur une passerelle en filet dans les Cabanes de Pokey"
+        },
+        {
+          "languageCode": "en",
+          "value": "Child on a net bridge in Cabanes de Pokey"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind auf einer Netzbrücke in den Cabanes de Pokey"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño en una pasarela de red de Cabanes de Pokey"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino su una passerella di rete nelle Cabanes de Pokey"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind op een netbrug in Cabanes de Pokey"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko na siatkowej kładce w Cabanes de Pokey"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança numa passagem de rede nas Cabanes de Pokey"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La passerelle en filet traverse les arbres ; un enfant progresse entre les parois souples de cette liaison suspendue."
+        },
+        {
+          "languageCode": "en",
+          "value": "The net bridge runs through the trees, with a child moving between the flexible sides of this suspended link."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Netzbrücke führt durch die Bäume; ein Kind bewegt sich zwischen den flexiblen Seiten dieser hängenden Verbindung."
+        },
+        {
+          "languageCode": "es",
+          "value": "La pasarela de red atraviesa los árboles; un niño avanza entre los laterales flexibles de este enlace suspendido."
+        },
+        {
+          "languageCode": "it",
+          "value": "La passerella di rete attraversa gli alberi; un bambino avanza tra le pareti flessibili del collegamento sospeso."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De netbrug loopt tussen de bomen; een kind beweegt tussen de soepele wanden van deze hangende verbinding."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Siatkowa kładka biegnie między drzewami; dziecko porusza się pomiędzy elastycznymi bokami zawieszonego przejścia."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A passagem de rede atravessa as árvores; uma criança avança entre as paredes flexíveis desta ligação suspensa."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:29:24.955Z",
+      "updatedAt": "2026-11-15T13:29:28.426Z",
+      "key": "96d60d7c6c0c40d79627a733c4ae2ff5",
+      "imageId": "96d60d7c6c0c40d79627a733c4ae2ff5"
     }
   ],
   "history": {

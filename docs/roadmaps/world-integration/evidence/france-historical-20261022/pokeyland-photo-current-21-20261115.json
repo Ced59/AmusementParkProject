@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 21,
+    "activityName": "Kid’s Racer",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/explorateurs/quad-kids/",
+      "accessedAtUtc": "2026-11-15T10:37:42.219230+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/quad-kids/",
+      "sha256": "d0d213fcfed1271a8509272aca2e9ebe74d47a892d95c03da0f344d66b533757",
+      "bytes": 88776,
+      "file": "activity-quad-kids.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-060-1350x900.jpg",
+    "file": "21-quad-kids.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-060-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:20.832628+00:00",
+    "bytes": 185736,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "8cfab01e4a73e45e75f4cde2cc68d1e3b1e43b1984823f891218110b1a139ee8",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "21-quad-kids.jpg",
+    "visualDescriptionFr": "Pilote casqué dans un petit kart caréné orange/noir, avec volant et pare-chocs périphérique, sur un circuit asphalté bordé de protections noires.",
+    "identityAndCaptionLimitsFr": "La fiche actuelle Kid’s Racer montre un kart, pas un quad à guidon. Le plan mentionne Kid’s Quad et le slug quad-kids persiste : ne pas déclarer un alias/remplacement daté sans autre preuve. Ne pas le confondre avec Crazy Kart à pédales.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-060-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/21-quad-kids.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-21-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-21-import-result.json"
+  },
+  "metadata": {
+    "description": "Le petit véhicule caréné est posé sur une piste pavée bordée de protections noires ; son volant se trouve devant le siège.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-060-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Kart orange, noir et blanc du Kid’s Racer avec volant"
+      },
+      {
+        "languageCode": "en",
+        "value": "Orange, black and white Kid’s Racer kart with a steering wheel"
+      },
+      {
+        "languageCode": "de",
+        "value": "Orange-schwarz-weißes Kart des Kid’s Racer mit Lenkrad"
+      },
+      {
+        "languageCode": "es",
+        "value": "Kart naranja, negro y blanco de Kid’s Racer con volante"
+      },
+      {
+        "languageCode": "it",
+        "value": "Kart arancione, nero e bianco di Kid’s Racer con volante"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Oranje, zwarte en witte kart van Kid’s Racer met stuur"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pomarańczowo-czarno-biały gokart Kid’s Racer z kierownicą"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Kart laranja, preto e branco do Kid’s Racer com volante"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le petit véhicule caréné est posé sur une piste pavée bordée de protections noires ; son volant se trouve devant le siège."
+      },
+      {
+        "languageCode": "en",
+        "value": "The small bodied vehicle is on a paved track edged with black barriers, with its steering wheel in front of the seat."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das kleine verkleidete Fahrzeug steht auf einer gepflasterten Strecke mit schwarzen Begrenzungen; das Lenkrad befindet sich vor dem Sitz."
+      },
+      {
+        "languageCode": "es",
+        "value": "El pequeño vehículo carenado está en una pista pavimentada bordeada por protecciones negras, con el volante delante del asiento."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il piccolo veicolo carenato si trova su una pista pavimentata delimitata da protezioni nere, con il volante davanti al sedile."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het kleine voertuig met carrosserie staat op een verharde baan met zwarte barrières; het stuur zit vóór de stoel."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Mały pojazd z nadwoziem stoi na utwardzonym torze z czarnymi osłonami; kierownica znajduje się przed siedzeniem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O pequeno veículo com carroçaria está numa pista pavimentada com proteções pretas, com o volante à frente do banco."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "52be7f0705244106aa5219bb47fb6359",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+      "path": "park_item/52be7f0705244106aa5219bb47fb6359",
+      "description": "Le petit véhicule caréné est posé sur une piste pavée bordée de protections noires ; son volant se trouve devant le siège.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 185736,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-060-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Kart orange, noir et blanc du Kid’s Racer avec volant"
+        },
+        {
+          "languageCode": "en",
+          "value": "Orange, black and white Kid’s Racer kart with a steering wheel"
+        },
+        {
+          "languageCode": "de",
+          "value": "Orange-schwarz-weißes Kart des Kid’s Racer mit Lenkrad"
+        },
+        {
+          "languageCode": "es",
+          "value": "Kart naranja, negro y blanco de Kid’s Racer con volante"
+        },
+        {
+          "languageCode": "it",
+          "value": "Kart arancione, nero e bianco di Kid’s Racer con volante"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Oranje, zwarte en witte kart van Kid’s Racer met stuur"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowo-czarno-biały gokart Kid’s Racer z kierownicą"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Kart laranja, preto e branco do Kid’s Racer com volante"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le petit véhicule caréné est posé sur une piste pavée bordée de protections noires ; son volant se trouve devant le siège."
+        },
+        {
+          "languageCode": "en",
+          "value": "The small bodied vehicle is on a paved track edged with black barriers, with its steering wheel in front of the seat."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das kleine verkleidete Fahrzeug steht auf einer gepflasterten Strecke mit schwarzen Begrenzungen; das Lenkrad befindet sich vor dem Sitz."
+        },
+        {
+          "languageCode": "es",
+          "value": "El pequeño vehículo carenado está en una pista pavimentada bordeada por protecciones negras, con el volante delante del asiento."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il piccolo veicolo carenato si trova su una pista pavimentata delimitata da protezioni nere, con il volante davanti al sedile."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het kleine voertuig met carrosserie staat op een verharde baan met zwarte barrières; het stuur zit vóór de stoel."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mały pojazd z nadwoziem stoi na utwardzonym torze z czarnymi osłonami; kierownica znajduje się przed siedzeniem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O pequeno veículo com carroçaria está numa pista pavimentada com proteções pretas, com o volante à frente do banco."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:28:46.141Z",
+      "updatedAt": "2026-11-15T13:28:49.649Z"
+    },
+    "startedAtUtc": "2026-11-15T13:28:44.6083344Z",
+    "receivedAtUtc": "2026-11-15T13:28:52.7563587Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

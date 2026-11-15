@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 25,
+    "activityName": "Cabanes de Pokey",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+      "accessedAtUtc": "2026-11-15T10:31:27.072888+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+      "sha256": "db328dcbb8d3298a3ddc0833e4a74a6ff5713c7676fe2f6941cc6d19b4a45437",
+      "bytes": 90288,
+      "file": "pokeyland-cabanes.html",
+      "reusedFrom": "/workspace/france-historical-20261114/new-france-candidates-sources-20261115/pokeyland-cabanes.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_6078-1350x900.jpg",
+    "file": "25-cabanes.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_6078-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:21.076660+00:00",
+    "bytes": 286004,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "65eb2b290ac31dd5027ff20876680f279319a9969c01615bfd729a01ebdb58af",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "25-cabanes.jpg",
+    "visualDescriptionFr": "Enfant traversant une passerelle en filet fermée sur les côtés et au-dessus, dans les arbres.",
+    "identityAndCaptionLimitsFr": "Photo propre des Cabanes de Pokey selon la page officielle ; elle montre une liaison filet, pas l’intérieur ou toutes les cabanes, et ne permet pas de compter les modules.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "publisherUploadDateNotCaptureDate": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_6078-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/25-cabanes.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-25-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-25-import-result.json"
+  },
+  "metadata": {
+    "description": "La passerelle en filet traverse les arbres ; un enfant progresse entre les parois souples de cette liaison suspendue.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_6078-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Enfant sur une passerelle en filet dans les Cabanes de Pokey"
+      },
+      {
+        "languageCode": "en",
+        "value": "Child on a net bridge in Cabanes de Pokey"
+      },
+      {
+        "languageCode": "de",
+        "value": "Kind auf einer Netzbrücke in den Cabanes de Pokey"
+      },
+      {
+        "languageCode": "es",
+        "value": "Niño en una pasarela de red de Cabanes de Pokey"
+      },
+      {
+        "languageCode": "it",
+        "value": "Bambino su una passerella di rete nelle Cabanes de Pokey"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Kind op een netbrug in Cabanes de Pokey"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dziecko na siatkowej kładce w Cabanes de Pokey"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Criança numa passagem de rede nas Cabanes de Pokey"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La passerelle en filet traverse les arbres ; un enfant progresse entre les parois souples de cette liaison suspendue."
+      },
+      {
+        "languageCode": "en",
+        "value": "The net bridge runs through the trees, with a child moving between the flexible sides of this suspended link."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Netzbrücke führt durch die Bäume; ein Kind bewegt sich zwischen den flexiblen Seiten dieser hängenden Verbindung."
+      },
+      {
+        "languageCode": "es",
+        "value": "La pasarela de red atraviesa los árboles; un niño avanza entre los laterales flexibles de este enlace suspendido."
+      },
+      {
+        "languageCode": "it",
+        "value": "La passerella di rete attraversa gli alberi; un bambino avanza tra le pareti flessibili del collegamento sospeso."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De netbrug loopt tussen de bomen; een kind beweegt tussen de soepele wanden van deze hangende verbinding."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Siatkowa kładka biegnie między drzewami; dziecko porusza się pomiędzy elastycznymi bokami zawieszonego przejścia."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A passagem de rede atravessa as árvores; uma criança avança entre as paredes flexíveis desta ligação suspensa."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T13:29:31.5438929Z",
+    "startedAtUtc": "2026-11-15T13:29:23.1334904Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "96d60d7c6c0c40d79627a733c4ae2ff5",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+      "path": "park_item/96d60d7c6c0c40d79627a733c4ae2ff5",
+      "description": "La passerelle en filet traverse les arbres ; un enfant progresse entre les parois souples de cette liaison suspendue.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 286004,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_6078-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant sur une passerelle en filet dans les Cabanes de Pokey"
+        },
+        {
+          "languageCode": "en",
+          "value": "Child on a net bridge in Cabanes de Pokey"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind auf einer Netzbrücke in den Cabanes de Pokey"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño en una pasarela de red de Cabanes de Pokey"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino su una passerella di rete nelle Cabanes de Pokey"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind op een netbrug in Cabanes de Pokey"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko na siatkowej kładce w Cabanes de Pokey"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança numa passagem de rede nas Cabanes de Pokey"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La passerelle en filet traverse les arbres ; un enfant progresse entre les parois souples de cette liaison suspendue."
+        },
+        {
+          "languageCode": "en",
+          "value": "The net bridge runs through the trees, with a child moving between the flexible sides of this suspended link."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Netzbrücke führt durch die Bäume; ein Kind bewegt sich zwischen den flexiblen Seiten dieser hängenden Verbindung."
+        },
+        {
+          "languageCode": "es",
+          "value": "La pasarela de red atraviesa los árboles; un niño avanza entre los laterales flexibles de este enlace suspendido."
+        },
+        {
+          "languageCode": "it",
+          "value": "La passerella di rete attraversa gli alberi; un bambino avanza tra le pareti flessibili del collegamento sospeso."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De netbrug loopt tussen de bomen; een kind beweegt tussen de soepele wanden van deze hangende verbinding."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Siatkowa kładka biegnie między drzewami; dziecko porusza się pomiędzy elastycznymi bokami zawieszonego przejścia."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A passagem de rede atravessa as árvores; uma criança avança entre as paredes flexíveis desta ligação suspensa."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:29:24.955Z",
+      "updatedAt": "2026-11-15T13:29:28.426Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
