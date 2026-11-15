@@ -3,7 +3,7 @@
   "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
   "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T06:15:43.342373Z",
+  "observedAtUtc": "2026-11-15T06:32:49.458541+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": true,
@@ -508,7 +508,7 @@
     "Références fondateurs et exploitant relues et corrigées par Apply5a3caae1 ; closedYear exploitant null faute de preuve de dissolution, parc ClosedDefinitively préservé.",
     "Inspection directe logo5bbfbad: fichiercorrect avecmotPARCbleu-violet/liondansÔrouge, anciensaltvert faux corrigés. AltMiniGolf prétendait2enfants inexistants, corrigé. PremierPreviewzonesmedia10ownersnonrésolus nonappliqué, ownerKey+itemsminimaux redéclarés puisPreviewzérowarnings."
   ],
-  "nextAction": "Périmètre audité publié : 43 lieux,23 médias,deux plans,huit faits canoniques,article huit langues. Terminer les contrôles publics langues/items/frises/plans et enregistrer leur preuve ; garder partial pour Twister géant et deux gonflables non identifiés. Ne pas réexporter pour audit, ne pas republier ni réimporter. Deux anciens brouillons exclus restent privés, aucune suppression autorisée.",
+  "nextAction": "Publication vérifiée : 43 lieux, 23 médias, 2 plans et 8 faits publics ; Facebook existant Published. Conserver partial et rechercher les identités du Twister géant 2017, de la pieuvre orange et du château jaune 2020 ; 32 photos de lieux et toutes positions non prouvées restent documentées. Affichage du plan 2025 encore absent en néerlandais uniquement : recontrôle après renouvellement normal du cache, sans réappliquer ni nouvel export d’audit.",
   "acceptedMapUploads": [
     {
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-map-2025-upload-20261115.json",
@@ -954,5 +954,7 @@
       }
     }
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T06:09:54.0516313Z"
+  "lastActualIntegrationAtUtc": "2026-11-15T06:09:54.0516313Z",
+  "publicationFollowupEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-publication-followup-20261115.json",
+  "publicVerificationCompleted": false
 }

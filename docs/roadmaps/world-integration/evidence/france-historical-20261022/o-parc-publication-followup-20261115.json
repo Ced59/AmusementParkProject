@@ -1,0 +1,4399 @@
+{
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "verifiedAtUtc": "2026-11-15T06:32:49.458541+00:00",
+  "outcome": "partial",
+  "scopeAuditPassed": true,
+  "finalAuditCompleted": false,
+  "overallInventoryQualified": false,
+  "sitePublicationVerified": true,
+  "allPublicUiChecksPassed": false,
+  "publicMapDiscoveryIssue": {
+    "language": "nl",
+    "year": 2025,
+    "detail": "La page et la navigation normales néerlandaises ne proposent encore que 2026, alors que les sept autres langues proposent les deux plans. Fichier public 2025 accessible HTTP200. Aucune purge ni URL spéciale utilisée.",
+    "remainingAction": "Recontrôler la page néerlandaise après renouvellement normal du cache ; ne pas réappliquer les données déjà publiées."
+  },
+  "newFacebookPublicationPerformed": false,
+  "lastActualIntegrationAtUtc": "2026-11-15T06:09:54.0516313Z",
+  "scopeAuditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-publication-scope-audit-20261115.json",
+  "fullAuditExport": {
+    "exportedAtUtc": "2026-11-15T05:51:36.2702944Z",
+    "sha256": "3ce693a93eca2ab9a0eb7f6ba13e7d7841b111067f703926e693c17ef8c692ed"
+  },
+  "publicationExport": {
+    "exportedAtUtc": "2026-11-15T06:07:50.4486243Z",
+    "sha256": "e5d0a4855cc7c6ab2c77f9a3f857b4e076d01c34f695678e4fc2fdac1ff93822",
+    "metadataOnlyDifferenceToAuditedState": true
+  },
+  "publicationOperations": [
+    {
+      "operationId": "24d70554-7e1d-4950-81fc-469b38f1cabc",
+      "appliedAtUtc": "2026-11-15T06:08:53.8499047Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-10-publish-images-20261115.json"
+    },
+    {
+      "operationId": "3bd52b4c-91ba-46c4-b719-e1d137a70972",
+      "appliedAtUtc": "2026-11-15T06:09:29.8408252Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-11-publish-items-map-20261115.json"
+    },
+    {
+      "operationId": "64892bd3-3d16-4bff-8ee0-c11b3e1b3d30",
+      "appliedAtUtc": "2026-11-15T06:09:54.0516313Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-12-publish-item-history-20261115.json"
+    }
+  ],
+  "coverage": {
+    "publicItems": 43,
+    "descriptionsEightLanguages": 43,
+    "attractions": 35,
+    "publicMedia": 23,
+    "publicOfficialMapYears": [
+      2025,
+      2026
+    ],
+    "canonicalPublishedFacts": 8,
+    "legacyDraftsExcluded": 2,
+    "developedArticlesEightLanguages": 1,
+    "itemsWithoutOwnPhoto": 32,
+    "itemsWithProvenCoordinates": 0
+  },
+  "actualCompleteness": {
+    "result": {
+      "completenessScore": 96,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 104,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "startedAtUtc": "2026-11-15T06:10:06.2127870Z",
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T06:10:07.5705308Z"
+  },
+  "canonicalHistory": {
+    "startedAtUtc": "2026-11-15T06:10:19.6987920Z",
+    "action": "HistoryDiagnostics",
+    "receivedAtUtc": "2026-11-15T06:10:20.2936395Z",
+    "result": {
+      "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "parkName": "Ô Parc",
+      "factCount": 41,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 9,
+          "sourcedResourceCount": 9,
+          "publishedResourceCount": 7,
+          "subjectCount": 6,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 2
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 8
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 31
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 8,
+        "sourcedFactCount": 8,
+        "majorFactCount": 2,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "facebook": {
+    "action": "ResolveFacebookPublication",
+    "startedAtUtc": "2026-11-15T06:11:50.6922270Z",
+    "receivedAtUtc": "2026-11-15T06:11:51.5038725Z",
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Ô Parc ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Ô Parc! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Ô Parc",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "b7460ad400174cf8a0496fdc1fe3386c",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122121487455424431",
+      "images": {
+        "data": [
+          {
+            "id": "e0f48f45039b4d06a10d8153d6eb705e",
+            "label": "Un hamac à l’ombre, au bord de la prairie d’Ô Parc.",
+            "isCurrent": false,
+            "width": 720,
+            "height": 960
+          },
+          {
+            "id": "aae9deb7df2c4f49932e0ee1c0223ae9",
+            "label": "Les grands gonflables et la piste de karts en 2020.",
+            "isCurrent": false,
+            "width": 1024,
+            "height": 768
+          },
+          {
+            "id": "ad051cad0785452d93d515619bacea17",
+            "label": "Le paysage de la prairie d’Ô Parc en 2020.",
+            "isCurrent": false,
+            "width": 1024,
+            "height": 768
+          },
+          {
+            "id": "8976847a7add4386a59e30a020a80270",
+            "label": "Du mini-golf à l’entrée d’Ô Parc, en 2020.",
+            "isCurrent": false,
+            "width": 1024,
+            "height": 768
+          },
+          {
+            "id": "7b8a30b154c34801a74f9d4cce98ba99",
+            "label": "La prairie et ses tonnelles vues depuis le Méga Slide.",
+            "isCurrent": true,
+            "width": 1200,
+            "height": 676
+          }
+        ],
+        "pagination": {
+          "totalItems": 5,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    }
+  },
+  "publicCorePages": [
+    {
+      "checkedAtUtc": "2026-11-15T06:10:14.014713+00:00",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "status": 200,
+      "title": "Ô Parc à Bannay, en France : fermé définitivement — Amusement Parks",
+      "bodyCharacters": 5416,
+      "h1": [
+        "Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:16.314802+00:00",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history",
+      "status": 200,
+      "title": "L'histoire de Ô Parc — Amusement Parks",
+      "bodyCharacters": 2337,
+      "h1": [
+        "L'histoire de Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:18.205637+00:00",
+      "language": "fr",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history/23a722eb-f02f-4c9a-80b3-92bae27a696a/o-parc-dix-saisons-de-loisirs-sur-l-ile-de-cosne",
+      "status": 200,
+      "title": "Article : Ô Parc, dix saisons de loisirs sur lʼîle de Cosne — Amusement Parks",
+      "bodyCharacters": 4682,
+      "h1": [
+        "Ô Parc, dix saisons de loisirs sur lʼîle de Cosne"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:20.400958+00:00",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "status": 200,
+      "title": "Ô Parc — Bannay, France: permanently closed — Amusement Parks",
+      "bodyCharacters": 4937,
+      "h1": [
+        "Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:21.854961+00:00",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history",
+      "status": 200,
+      "title": "The history of Ô Parc — Amusement Parks",
+      "bodyCharacters": 2103,
+      "h1": [
+        "The history of Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:23.278611+00:00",
+      "language": "en",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history/23a722eb-f02f-4c9a-80b3-92bae27a696a/o-parc-dix-saisons-de-loisirs-sur-l-ile-de-cosne",
+      "status": 200,
+      "title": "Article: Ô Parc, ten seasons of leisure on the Île de Cosne — Amusement Parks",
+      "bodyCharacters": 4373,
+      "h1": [
+        "Ô Parc, ten seasons of leisure on the Île de Cosne"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:25.235376+00:00",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "status": 200,
+      "title": "Ô Parc — Bannay, Frankreich: dauerhaft geschlossen — Amusement Parks",
+      "bodyCharacters": 5283,
+      "h1": [
+        "Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:27.076458+00:00",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history",
+      "status": 200,
+      "title": "Die Geschichte von Ô Parc — Amusement Parks",
+      "bodyCharacters": 2332,
+      "h1": [
+        "Die Geschichte von Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:28.602335+00:00",
+      "language": "de",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history/23a722eb-f02f-4c9a-80b3-92bae27a696a/o-parc-dix-saisons-de-loisirs-sur-l-ile-de-cosne",
+      "status": 200,
+      "title": "Artikel: Ô Parc: zehn Freizeitsaisons auf der Île de Cosne — Amusement Parks",
+      "bodyCharacters": 4654,
+      "h1": [
+        "Ô Parc: zehn Freizeitsaisons auf der Île de Cosne"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:30.544218+00:00",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "status": 200,
+      "title": "Ô Parc — Bannay, Frankrijk: definitief gesloten — Amusement Parks",
+      "bodyCharacters": 5130,
+      "h1": [
+        "Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:31.939927+00:00",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history",
+      "status": 200,
+      "title": "De geschiedenis van Ô Parc — Amusement Parks",
+      "bodyCharacters": 2380,
+      "h1": [
+        "De geschiedenis van Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:33.509814+00:00",
+      "language": "nl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history/23a722eb-f02f-4c9a-80b3-92bae27a696a/o-parc-dix-saisons-de-loisirs-sur-l-ile-de-cosne",
+      "status": 200,
+      "title": "Artikelpagina: Ô Parc, tien recreatieseizoenen op het eiland Île de Cosne — Amusement Parks",
+      "bodyCharacters": 4542,
+      "h1": [
+        "Ô Parc, tien recreatieseizoenen op het eiland Île de Cosne"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:35.425366+00:00",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "status": 200,
+      "title": "Ô Parc — Bannay, Francia: chiuso definitivamente — Amusement Parks",
+      "bodyCharacters": 5284,
+      "h1": [
+        "Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:36.851855+00:00",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history",
+      "status": 200,
+      "title": "La storia di Ô Parc — Amusement Parks",
+      "bodyCharacters": 2260,
+      "h1": [
+        "La storia di Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:38.297700+00:00",
+      "language": "it",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history/23a722eb-f02f-4c9a-80b3-92bae27a696a/o-parc-dix-saisons-de-loisirs-sur-l-ile-de-cosne",
+      "status": 200,
+      "title": "Articolo: Ô Parc, dieci stagioni di svago sullʼÎle de Cosne — Amusement Parks",
+      "bodyCharacters": 4605,
+      "h1": [
+        "Ô Parc, dieci stagioni di svago sullʼÎle de Cosne"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:40.264399+00:00",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "status": 200,
+      "title": "Ô Parc — Bannay, Francia: cerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5352,
+      "h1": [
+        "Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:41.929898+00:00",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history",
+      "status": 200,
+      "title": "La historia de Ô Parc — Amusement Parks",
+      "bodyCharacters": 2246,
+      "h1": [
+        "La historia de Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:43.384296+00:00",
+      "language": "es",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history/23a722eb-f02f-4c9a-80b3-92bae27a696a/o-parc-dix-saisons-de-loisirs-sur-l-ile-de-cosne",
+      "status": 200,
+      "title": "Artículo: Ô Parc, diez temporadas de ocio en la Île de Cosne — Amusement Parks",
+      "bodyCharacters": 4662,
+      "h1": [
+        "Ô Parc, diez temporadas de ocio en la Île de Cosne"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:45.365315+00:00",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "status": 200,
+      "title": "Ô Parc — Bannay, Francja: zamknięty na stałe — Amusement Parks",
+      "bodyCharacters": 5110,
+      "h1": [
+        "Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:46.535492+00:00",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history",
+      "status": 200,
+      "title": "Historia Ô Parc — Amusement Parks",
+      "bodyCharacters": 2019,
+      "h1": [
+        "Historia Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:48.033501+00:00",
+      "language": "pl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history/23a722eb-f02f-4c9a-80b3-92bae27a696a/o-parc-dix-saisons-de-loisirs-sur-l-ile-de-cosne",
+      "status": 200,
+      "title": "Artykuł: Ô Parc — dziesięć sezonów zabawy na Île de Cosne — Amusement Parks",
+      "bodyCharacters": 4380,
+      "h1": [
+        "Ô Parc — dziesięć sezonów zabawy na Île de Cosne"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:49.854920+00:00",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "status": 200,
+      "title": "Ô Parc — Bannay, França: encerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5219,
+      "h1": [
+        "Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:51.226511+00:00",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history",
+      "status": 200,
+      "title": "A história de Ô Parc — Amusement Parks",
+      "bodyCharacters": 2242,
+      "h1": [
+        "A história de Ô Parc"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T06:10:52.662634+00:00",
+      "language": "pt",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history/23a722eb-f02f-4c9a-80b3-92bae27a696a/o-parc-dix-saisons-de-loisirs-sur-l-ile-de-cosne",
+      "status": 200,
+      "title": "Artigo: Ô Parc, dez épocas de lazer na Île de Cosne — Amusement Parks",
+      "bodyCharacters": 4510,
+      "h1": [
+        "Ô Parc, dez épocas de lazer na Île de Cosne"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    }
+  ],
+  "publicItemPages": [
+    {
+      "itemId": "bf459997-db22-423d-8933-432580c3c724",
+      "name": "Aire de jeux",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/bf459997-db22-423d-8933-432580c3c724/aire-de-jeux",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:36.917007+00:00",
+      "h1": [
+        "Aire de jeux"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2062
+    },
+    {
+      "itemId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1eded582-ce65-46c3-8210-8a83df5fa62a/baby-pirate",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:38.989905+00:00",
+      "h1": [
+        "Baby pirate"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1948
+    },
+    {
+      "itemId": "1d29b123-8524-4fa3-b697-fd744e1e2628",
+      "name": "Baby Volcan",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1d29b123-8524-4fa3-b697-fd744e1e2628/baby-volcan",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:41.021206+00:00",
+      "h1": [
+        "Baby Volcan"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2114
+    },
+    {
+      "itemId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/08e6caac-8b9b-447c-ae1b-21fe4001111b/bac-a-sable",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:42.922817+00:00",
+      "h1": [
+        "Bac à sable"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1836
+    },
+    {
+      "itemId": "2aee0336-0409-4f5d-a0f5-6d8d8cc002f2",
+      "name": "Bulle de savon",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2aee0336-0409-4f5d-a0f5-6d8d8cc002f2/bulle-de-savon",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:44.872169+00:00",
+      "h1": [
+        "Bulle de savon"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1929
+    },
+    {
+      "itemId": "b9f88323-62c3-4043-8ec1-08955e172ab5",
+      "name": "Caisse & souvenirs",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/b9f88323-62c3-4043-8ec1-08955e172ab5/caisse-souvenirs",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:46.619038+00:00",
+      "h1": [
+        "Caisse & souvenirs"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1757
+    },
+    {
+      "itemId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+      "name": "Chaises Volantes",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed/chaises-volantes",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:48.594476+00:00",
+      "h1": [
+        "Chaises Volantes"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2208
+    },
+    {
+      "itemId": "aba7141a-dbb3-40e1-9696-2501297f46e9",
+      "name": "Course Ô Sac",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/aba7141a-dbb3-40e1-9696-2501297f46e9/course-o-sac",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:50.502769+00:00",
+      "h1": [
+        "Course Ô Sac"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1900
+    },
+    {
+      "itemId": "e10a994d-4972-41a4-879e-352738ce47d4",
+      "name": "Fun Slide",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/e10a994d-4972-41a4-879e-352738ce47d4/fun-slide",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:52.382386+00:00",
+      "h1": [
+        "Fun Slide"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2186
+    },
+    {
+      "itemId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+      "name": "Hamacs",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3e84e9fe-51e1-424b-a731-50c14a663ecc/hamacs",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:53.899019+00:00",
+      "h1": [
+        "Hamacs"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2520
+    },
+    {
+      "itemId": "69ee63cd-8188-4b97-8d23-a593420d7d32",
+      "name": "Home-ball",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/69ee63cd-8188-4b97-8d23-a593420d7d32/home-ball",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:55.833221+00:00",
+      "h1": [
+        "Home-ball"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1762
+    },
+    {
+      "itemId": "866d7199-ce94-4b42-a6c9-21fb695e883f",
+      "name": "Jeux dʼadresse",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/866d7199-ce94-4b42-a6c9-21fb695e883f/jeux-d-adresse",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:57.735831+00:00",
+      "h1": [
+        "Jeux dʼadresse"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1884
+    },
+    {
+      "itemId": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+      "name": "Karts à pédales",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1e6c56b5-076b-45bd-be2f-2392ee5487ce/karts-a-pedales",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:13:59.611597+00:00",
+      "h1": [
+        "Karts à pédales"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1872
+    },
+    {
+      "itemId": "cc4a0552-04ba-46be-87c2-d66617f6ef3a",
+      "name": "La Boule",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/cc4a0552-04ba-46be-87c2-d66617f6ef3a/la-boule",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:01.280209+00:00",
+      "h1": [
+        "La Boule"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1810
+    },
+    {
+      "itemId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+      "name": "La Chenille",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3551c8d1-d2e4-459c-bc86-047f026fb0a1/la-chenille",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:03.700726+00:00",
+      "h1": [
+        "La Chenille"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2464
+    },
+    {
+      "itemId": "2265a05c-9519-4086-856f-1f26f4ac9756",
+      "name": "La Valse des Tasses",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2265a05c-9519-4086-856f-1f26f4ac9756/la-valse-des-tasses",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:06.486534+00:00",
+      "h1": [
+        "La Valse des Tasses"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2022
+    },
+    {
+      "itemId": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/87d59498-a481-46ba-9a52-475cca5b161c/le-gorille",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:08.525942+00:00",
+      "h1": [
+        "Le Gorille"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1869
+    },
+    {
+      "itemId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1cc708d6-3000-43c2-a43d-171969fa8c28/le-geant-des-mers",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:10.424693+00:00",
+      "h1": [
+        "Le Géant des mers"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1864
+    },
+    {
+      "itemId": "66672916-7314-4c65-ae4b-95d56c40fd49",
+      "name": "Le Phare des Pirates",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/66672916-7314-4c65-ae4b-95d56c40fd49/le-phare-des-pirates",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:12.387027+00:00",
+      "h1": [
+        "Le Phare des Pirates"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2022
+    },
+    {
+      "itemId": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+      "name": "Mini-Golf",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f0f4406e-3924-4b79-a9dd-c50575974ea3/mini-golf",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:16.083642+00:00",
+      "h1": [
+        "Mini-Golf"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1910
+    },
+    {
+      "itemId": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+      "name": "Méga Slide",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d/mega-slide",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:18.025416+00:00",
+      "h1": [
+        "Méga Slide"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2294
+    },
+    {
+      "itemId": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+      "name": "Parcours de la Jungle",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/81ab6e88-547b-4ea0-8906-aad0c1db4a55/parcours-de-la-jungle",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:20.033158+00:00",
+      "h1": [
+        "Parcours de la Jungle"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1955
+    },
+    {
+      "itemId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/5d420723-34b1-472f-b4c7-d412c365eb11/parcours-de-l-extreme",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:21.992195+00:00",
+      "h1": [
+        "Parcours de l’extrême"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1870
+    },
+    {
+      "itemId": "42e01028-c743-47e0-8dbf-427f67cba865",
+      "name": "Parking",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/42e01028-c743-47e0-8dbf-427f67cba865/parking",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:23.537330+00:00",
+      "h1": [
+        "Parking"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2440
+    },
+    {
+      "itemId": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+      "name": "Pataugeoire Géante",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/daab49ab-d253-49ae-80d9-50a397a2b52b/pataugeoire-geante",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:25.490744+00:00",
+      "h1": [
+        "Pataugeoire Géante"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2244
+    },
+    {
+      "itemId": "336dc675-0619-4024-be24-f793ed3f721a",
+      "name": "Piscine à balles",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/336dc675-0619-4024-be24-f793ed3f721a/piscine-a-balles",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:27.363790+00:00",
+      "h1": [
+        "Piscine à balles"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2082
+    },
+    {
+      "itemId": "4f70d138-7e80-4703-aa2f-02e9f56d296e",
+      "name": "Poulailler",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/4f70d138-7e80-4703-aa2f-02e9f56d296e/poulailler",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:29.203620+00:00",
+      "h1": [
+        "Poulailler"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2064
+    },
+    {
+      "itemId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3f5145d6-bfad-4178-96f4-aee63661909f/peche-aux-canards",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:31.165091+00:00",
+      "h1": [
+        "Pêche aux canards"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1856
+    },
+    {
+      "itemId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+      "name": "Safari Buggy",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/0bb56b79-d78c-47e6-a47e-4fd30814a6dd/safari-buggy",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:33.505469+00:00",
+      "h1": [
+        "Safari Buggy"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2268
+    },
+    {
+      "itemId": "495fea26-5385-456e-beab-b875c69e7d95",
+      "name": "Saloon",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/495fea26-5385-456e-beab-b875c69e7d95/saloon",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:35.558697+00:00",
+      "h1": [
+        "Saloon"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1972
+    },
+    {
+      "itemId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+      "name": "Sanitaires et table à langer",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/db3309fb-8986-4dd1-a54d-7e49bd4f0ca3/sanitaires-et-table-a-langer",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:37.169263+00:00",
+      "h1": [
+        "Sanitaires et table à langer"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2513
+    },
+    {
+      "itemId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+      "name": "Tables de pique-nique",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f4a73774-cd01-4b0b-bbf0-cb09cffb8da6/tables-de-pique-nique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:38.831394+00:00",
+      "h1": [
+        "Tables de pique-nique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2590
+    },
+    {
+      "itemId": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+      "name": "Toboggan des pirates",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/23712697-5abc-4250-afe8-d93d3ffd3da5/toboggan-des-pirates",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:41.525043+00:00",
+      "h1": [
+        "Toboggan des pirates"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2109
+    },
+    {
+      "itemId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+      "name": "Toboggan Konga",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b/toboggan-konga",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:43.498880+00:00",
+      "h1": [
+        "Toboggan Konga"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2045
+    },
+    {
+      "itemId": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+      "name": "Trampolines",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/5b0e7536-f02e-4563-a3d0-7f624754857b/trampolines",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:45.464657+00:00",
+      "h1": [
+        "Trampolines"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2161
+    },
+    {
+      "itemId": "612bb456-e15e-4768-bd59-c4563ec14611",
+      "name": "Tyroliennes",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/612bb456-e15e-4768-bd59-c4563ec14611/tyroliennes",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:47.401067+00:00",
+      "h1": [
+        "Tyroliennes"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1961
+    },
+    {
+      "itemId": "7d5591a1-f7b7-4a27-8019-aa58df889b4f",
+      "name": "Zone Arcade",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/7d5591a1-f7b7-4a27-8019-aa58df889b4f/zone-arcade",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:49.976491+00:00",
+      "h1": [
+        "Zone Arcade"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1848
+    },
+    {
+      "itemId": "e6da3884-fb1d-4f45-845f-d0ff4550f8de",
+      "name": "Échelles Dingos",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/e6da3884-fb1d-4f45-845f-d0ff4550f8de/echelles-dingos",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:51.898124+00:00",
+      "h1": [
+        "Échelles Dingos"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1879
+    },
+    {
+      "itemId": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+      "name": "Ô Chalet Gourmand",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f373a4c7-f3f4-4c93-8f31-686f72f5d851/o-chalet-gourmand",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:53.687376+00:00",
+      "h1": [
+        "Ô Chalet Gourmand"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2153
+    },
+    {
+      "itemId": "cb149211-44b6-43dd-98a1-44acd27811cd",
+      "name": "Ô Corner Glacé",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/cb149211-44b6-43dd-98a1-44acd27811cd/o-corner-glace",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:55.320197+00:00",
+      "h1": [
+        "Ô Corner Glacé"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2057
+    },
+    {
+      "itemId": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3907da4a-6351-420f-ac42-953e8814da0b/o-petit-train",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:57.027489+00:00",
+      "h1": [
+        "Ô Petit Train"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1994
+    },
+    {
+      "itemId": "86bf248f-070a-4b95-b4d2-962375788eb3",
+      "name": "Ô Pirates",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/86bf248f-070a-4b95-b4d2-962375788eb3/o-pirates",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:14:58.965985+00:00",
+      "h1": [
+        "Ô Pirates"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2226
+    },
+    {
+      "itemId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/a8ce4072-d1bb-47ec-a1f0-07b868014782/o-p-tits-quads",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:00.690553+00:00",
+      "h1": [
+        "Ô p’tits quads"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1917
+    },
+    {
+      "itemId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1eded582-ce65-46c3-8210-8a83df5fa62a/baby-pirate",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:03.103641+00:00",
+      "h1": [
+        "Baby pirate"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1771
+    },
+    {
+      "itemId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/08e6caac-8b9b-447c-ae1b-21fe4001111b/bac-a-sable",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:05.521630+00:00",
+      "h1": [
+        "Bac à sable"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1656
+    },
+    {
+      "itemId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+      "name": "Hamacs",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3e84e9fe-51e1-424b-a731-50c14a663ecc/hamacs",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:07.363916+00:00",
+      "h1": [
+        "Hamacs"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2311
+    },
+    {
+      "itemId": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/87d59498-a481-46ba-9a52-475cca5b161c/le-gorille",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:09.391448+00:00",
+      "h1": [
+        "Le Gorille"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1708
+    },
+    {
+      "itemId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1cc708d6-3000-43c2-a43d-171969fa8c28/le-geant-des-mers",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:11.350390+00:00",
+      "h1": [
+        "Le Géant des mers"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1693
+    },
+    {
+      "itemId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/5d420723-34b1-472f-b4c7-d412c365eb11/parcours-de-l-extreme",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:13.339015+00:00",
+      "h1": [
+        "Parcours de l’extrême"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1682
+    },
+    {
+      "itemId": "42e01028-c743-47e0-8dbf-427f67cba865",
+      "name": "Parking",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/42e01028-c743-47e0-8dbf-427f67cba865/parking",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:15.106145+00:00",
+      "h1": [
+        "Parking"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2281
+    },
+    {
+      "itemId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3f5145d6-bfad-4178-96f4-aee63661909f/peche-aux-canards",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:17.049465+00:00",
+      "h1": [
+        "Pêche aux canards"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1677
+    },
+    {
+      "itemId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+      "name": "Sanitaires et table à langer",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/db3309fb-8986-4dd1-a54d-7e49bd4f0ca3/sanitaires-et-table-a-langer",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:18.587325+00:00",
+      "h1": [
+        "Sanitaires et table à langer"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2310
+    },
+    {
+      "itemId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+      "name": "Tables de pique-nique",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f4a73774-cd01-4b0b-bbf0-cb09cffb8da6/tables-de-pique-nique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:20.130589+00:00",
+      "h1": [
+        "Tables de pique-nique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2362
+    },
+    {
+      "itemId": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3907da4a-6351-420f-ac42-953e8814da0b/o-petit-train",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:21.992911+00:00",
+      "h1": [
+        "Ô Petit Train"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1784
+    },
+    {
+      "itemId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/a8ce4072-d1bb-47ec-a1f0-07b868014782/o-p-tits-quads",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:23.973117+00:00",
+      "h1": [
+        "Ô p’tits quads"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1710
+    },
+    {
+      "itemId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1eded582-ce65-46c3-8210-8a83df5fa62a/baby-pirate",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:25.983405+00:00",
+      "h1": [
+        "Baby pirate"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1949
+    },
+    {
+      "itemId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/08e6caac-8b9b-447c-ae1b-21fe4001111b/bac-a-sable",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:27.786746+00:00",
+      "h1": [
+        "Bac à sable"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1831
+    },
+    {
+      "itemId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+      "name": "Hamacs",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3e84e9fe-51e1-424b-a731-50c14a663ecc/hamacs",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:29.326782+00:00",
+      "h1": [
+        "Hamacs"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2460
+    },
+    {
+      "itemId": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/87d59498-a481-46ba-9a52-475cca5b161c/le-gorille",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:31.046936+00:00",
+      "h1": [
+        "Le Gorille"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1898
+    },
+    {
+      "itemId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1cc708d6-3000-43c2-a43d-171969fa8c28/le-geant-des-mers",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:32.971673+00:00",
+      "h1": [
+        "Le Géant des mers"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1895
+    },
+    {
+      "itemId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/5d420723-34b1-472f-b4c7-d412c365eb11/parcours-de-l-extreme",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:34.838632+00:00",
+      "h1": [
+        "Parcours de l’extrême"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1876
+    },
+    {
+      "itemId": "42e01028-c743-47e0-8dbf-427f67cba865",
+      "name": "Parking",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/42e01028-c743-47e0-8dbf-427f67cba865/parking",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:36.386310+00:00",
+      "h1": [
+        "Parking"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2420
+    },
+    {
+      "itemId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3f5145d6-bfad-4178-96f4-aee63661909f/peche-aux-canards",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:38.262680+00:00",
+      "h1": [
+        "Pêche aux canards"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1848
+    },
+    {
+      "itemId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+      "name": "Sanitaires et table à langer",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/db3309fb-8986-4dd1-a54d-7e49bd4f0ca3/sanitaires-et-table-a-langer",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:40.117054+00:00",
+      "h1": [
+        "Sanitaires et table à langer"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2478
+    },
+    {
+      "itemId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+      "name": "Tables de pique-nique",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f4a73774-cd01-4b0b-bbf0-cb09cffb8da6/tables-de-pique-nique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:41.666208+00:00",
+      "h1": [
+        "Tables de pique-nique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2532
+    },
+    {
+      "itemId": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3907da4a-6351-420f-ac42-953e8814da0b/o-petit-train",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:43.578846+00:00",
+      "h1": [
+        "Ô Petit Train"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1971
+    },
+    {
+      "itemId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/a8ce4072-d1bb-47ec-a1f0-07b868014782/o-p-tits-quads",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:45.547905+00:00",
+      "h1": [
+        "Ô p’tits quads"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1884
+    },
+    {
+      "itemId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1eded582-ce65-46c3-8210-8a83df5fa62a/baby-pirate",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:47.572399+00:00",
+      "h1": [
+        "Baby pirate"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1887
+    },
+    {
+      "itemId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/08e6caac-8b9b-447c-ae1b-21fe4001111b/bac-a-sable",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:49.350623+00:00",
+      "h1": [
+        "Bac à sable"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1786
+    },
+    {
+      "itemId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+      "name": "Hamacs",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3e84e9fe-51e1-424b-a731-50c14a663ecc/hamacs",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:50.904719+00:00",
+      "h1": [
+        "Hamacs"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2464
+    },
+    {
+      "itemId": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/87d59498-a481-46ba-9a52-475cca5b161c/le-gorille",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:52.686705+00:00",
+      "h1": [
+        "Le Gorille"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1841
+    },
+    {
+      "itemId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1cc708d6-3000-43c2-a43d-171969fa8c28/le-geant-des-mers",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:54.589963+00:00",
+      "h1": [
+        "Le Géant des mers"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1839
+    },
+    {
+      "itemId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/5d420723-34b1-472f-b4c7-d412c365eb11/parcours-de-l-extreme",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:56.527027+00:00",
+      "h1": [
+        "Parcours de l’extrême"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1837
+    },
+    {
+      "itemId": "42e01028-c743-47e0-8dbf-427f67cba865",
+      "name": "Parking",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/42e01028-c743-47e0-8dbf-427f67cba865/parking",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:15:58.318526+00:00",
+      "h1": [
+        "Parking"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2400
+    },
+    {
+      "itemId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3f5145d6-bfad-4178-96f4-aee63661909f/peche-aux-canards",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:05.142487+00:00",
+      "h1": [
+        "Pêche aux canards"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1804
+    },
+    {
+      "itemId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+      "name": "Sanitaires et table à langer",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/db3309fb-8986-4dd1-a54d-7e49bd4f0ca3/sanitaires-et-table-a-langer",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:07.087204+00:00",
+      "h1": [
+        "Sanitaires et table à langer"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2473
+    },
+    {
+      "itemId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+      "name": "Tables de pique-nique",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f4a73774-cd01-4b0b-bbf0-cb09cffb8da6/tables-de-pique-nique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:08.951857+00:00",
+      "h1": [
+        "Tables de pique-nique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2526
+    },
+    {
+      "itemId": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3907da4a-6351-420f-ac42-953e8814da0b/o-petit-train",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:11.014087+00:00",
+      "h1": [
+        "Ô Petit Train"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1923
+    },
+    {
+      "itemId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/a8ce4072-d1bb-47ec-a1f0-07b868014782/o-p-tits-quads",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:12.969115+00:00",
+      "h1": [
+        "Ô p’tits quads"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1813
+    },
+    {
+      "itemId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1eded582-ce65-46c3-8210-8a83df5fa62a/baby-pirate",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:15.123615+00:00",
+      "h1": [
+        "Baby pirate"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1945
+    },
+    {
+      "itemId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/08e6caac-8b9b-447c-ae1b-21fe4001111b/bac-a-sable",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:16.924721+00:00",
+      "h1": [
+        "Bac à sable"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1848
+    },
+    {
+      "itemId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+      "name": "Hamacs",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3e84e9fe-51e1-424b-a731-50c14a663ecc/hamacs",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:18.454145+00:00",
+      "h1": [
+        "Hamacs"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2516
+    },
+    {
+      "itemId": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/87d59498-a481-46ba-9a52-475cca5b161c/le-gorille",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:20.502465+00:00",
+      "h1": [
+        "Le Gorille"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1881
+    },
+    {
+      "itemId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1cc708d6-3000-43c2-a43d-171969fa8c28/le-geant-des-mers",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:22.427703+00:00",
+      "h1": [
+        "Le Géant des mers"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1890
+    },
+    {
+      "itemId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/5d420723-34b1-472f-b4c7-d412c365eb11/parcours-de-l-extreme",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:24.315453+00:00",
+      "h1": [
+        "Parcours de l’extrême"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1881
+    },
+    {
+      "itemId": "42e01028-c743-47e0-8dbf-427f67cba865",
+      "name": "Parking",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/42e01028-c743-47e0-8dbf-427f67cba865/parking",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:26.104931+00:00",
+      "h1": [
+        "Parking"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2464
+    },
+    {
+      "itemId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3f5145d6-bfad-4178-96f4-aee63661909f/peche-aux-canards",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:28.615748+00:00",
+      "h1": [
+        "Pêche aux canards"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1849
+    },
+    {
+      "itemId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+      "name": "Sanitaires et table à langer",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/db3309fb-8986-4dd1-a54d-7e49bd4f0ca3/sanitaires-et-table-a-langer",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:30.486461+00:00",
+      "h1": [
+        "Sanitaires et table à langer"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2533
+    },
+    {
+      "itemId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+      "name": "Tables de pique-nique",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f4a73774-cd01-4b0b-bbf0-cb09cffb8da6/tables-de-pique-nique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:31.959175+00:00",
+      "h1": [
+        "Tables de pique-nique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2564
+    },
+    {
+      "itemId": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3907da4a-6351-420f-ac42-953e8814da0b/o-petit-train",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:33.709158+00:00",
+      "h1": [
+        "Ô Petit Train"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1986
+    },
+    {
+      "itemId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/a8ce4072-d1bb-47ec-a1f0-07b868014782/o-p-tits-quads",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:35.510110+00:00",
+      "h1": [
+        "Ô p’tits quads"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1921
+    },
+    {
+      "itemId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1eded582-ce65-46c3-8210-8a83df5fa62a/baby-pirate",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:37.588463+00:00",
+      "h1": [
+        "Baby pirate"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1950
+    },
+    {
+      "itemId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/08e6caac-8b9b-447c-ae1b-21fe4001111b/bac-a-sable",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:41.063436+00:00",
+      "h1": [
+        "Bac à sable"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1855
+    },
+    {
+      "itemId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+      "name": "Hamacs",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3e84e9fe-51e1-424b-a731-50c14a663ecc/hamacs",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:42.848653+00:00",
+      "h1": [
+        "Hamacs"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2542
+    },
+    {
+      "itemId": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/87d59498-a481-46ba-9a52-475cca5b161c/le-gorille",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:44.789850+00:00",
+      "h1": [
+        "Le Gorille"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1905
+    },
+    {
+      "itemId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1cc708d6-3000-43c2-a43d-171969fa8c28/le-geant-des-mers",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:46.734851+00:00",
+      "h1": [
+        "Le Géant des mers"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1892
+    },
+    {
+      "itemId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/5d420723-34b1-472f-b4c7-d412c365eb11/parcours-de-l-extreme",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:48.589162+00:00",
+      "h1": [
+        "Parcours de l’extrême"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1897
+    },
+    {
+      "itemId": "42e01028-c743-47e0-8dbf-427f67cba865",
+      "name": "Parking",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/42e01028-c743-47e0-8dbf-427f67cba865/parking",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:50.136226+00:00",
+      "h1": [
+        "Parking"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2483
+    },
+    {
+      "itemId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3f5145d6-bfad-4178-96f4-aee63661909f/peche-aux-canards",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:52.103339+00:00",
+      "h1": [
+        "Pêche aux canards"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1873
+    },
+    {
+      "itemId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+      "name": "Sanitaires et table à langer",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/db3309fb-8986-4dd1-a54d-7e49bd4f0ca3/sanitaires-et-table-a-langer",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:53.831260+00:00",
+      "h1": [
+        "Sanitaires et table à langer"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2505
+    },
+    {
+      "itemId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+      "name": "Tables de pique-nique",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f4a73774-cd01-4b0b-bbf0-cb09cffb8da6/tables-de-pique-nique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:55.622007+00:00",
+      "h1": [
+        "Tables de pique-nique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2578
+    },
+    {
+      "itemId": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3907da4a-6351-420f-ac42-953e8814da0b/o-petit-train",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:57.597835+00:00",
+      "h1": [
+        "Ô Petit Train"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1985
+    },
+    {
+      "itemId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/a8ce4072-d1bb-47ec-a1f0-07b868014782/o-p-tits-quads",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:16:59.479486+00:00",
+      "h1": [
+        "Ô p’tits quads"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1959
+    },
+    {
+      "itemId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1eded582-ce65-46c3-8210-8a83df5fa62a/baby-pirate",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:01.647702+00:00",
+      "h1": [
+        "Baby pirate"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1757
+    },
+    {
+      "itemId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/08e6caac-8b9b-447c-ae1b-21fe4001111b/bac-a-sable",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:05.277077+00:00",
+      "h1": [
+        "Bac à sable"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1641
+    },
+    {
+      "itemId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+      "name": "Hamacs",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3e84e9fe-51e1-424b-a731-50c14a663ecc/hamacs",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:06.805926+00:00",
+      "h1": [
+        "Hamacs"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2294
+    },
+    {
+      "itemId": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/87d59498-a481-46ba-9a52-475cca5b161c/le-gorille",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:08.722832+00:00",
+      "h1": [
+        "Le Gorille"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1698
+    },
+    {
+      "itemId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1cc708d6-3000-43c2-a43d-171969fa8c28/le-geant-des-mers",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:10.588214+00:00",
+      "h1": [
+        "Le Géant des mers"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1690
+    },
+    {
+      "itemId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/5d420723-34b1-472f-b4c7-d412c365eb11/parcours-de-l-extreme",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:12.462294+00:00",
+      "h1": [
+        "Parcours de l’extrême"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1710
+    },
+    {
+      "itemId": "42e01028-c743-47e0-8dbf-427f67cba865",
+      "name": "Parking",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/42e01028-c743-47e0-8dbf-427f67cba865/parking",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:14.189819+00:00",
+      "h1": [
+        "Parking"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2261
+    },
+    {
+      "itemId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3f5145d6-bfad-4178-96f4-aee63661909f/peche-aux-canards",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:16.061655+00:00",
+      "h1": [
+        "Pêche aux canards"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1672
+    },
+    {
+      "itemId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+      "name": "Sanitaires et table à langer",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/db3309fb-8986-4dd1-a54d-7e49bd4f0ca3/sanitaires-et-table-a-langer",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:17.585675+00:00",
+      "h1": [
+        "Sanitaires et table à langer"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2289
+    },
+    {
+      "itemId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+      "name": "Tables de pique-nique",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f4a73774-cd01-4b0b-bbf0-cb09cffb8da6/tables-de-pique-nique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:19.290158+00:00",
+      "h1": [
+        "Tables de pique-nique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2349
+    },
+    {
+      "itemId": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3907da4a-6351-420f-ac42-953e8814da0b/o-petit-train",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:21.556563+00:00",
+      "h1": [
+        "Ô Petit Train"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1791
+    },
+    {
+      "itemId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/a8ce4072-d1bb-47ec-a1f0-07b868014782/o-p-tits-quads",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:23.382910+00:00",
+      "h1": [
+        "Ô p’tits quads"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1739
+    },
+    {
+      "itemId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1eded582-ce65-46c3-8210-8a83df5fa62a/baby-pirate",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:25.409019+00:00",
+      "h1": [
+        "Baby pirate"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1901
+    },
+    {
+      "itemId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/08e6caac-8b9b-447c-ae1b-21fe4001111b/bac-a-sable",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:27.213307+00:00",
+      "h1": [
+        "Bac à sable"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1799
+    },
+    {
+      "itemId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+      "name": "Hamacs",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3e84e9fe-51e1-424b-a731-50c14a663ecc/hamacs",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:28.946199+00:00",
+      "h1": [
+        "Hamacs"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2482
+    },
+    {
+      "itemId": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/87d59498-a481-46ba-9a52-475cca5b161c/le-gorille",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:31.049004+00:00",
+      "h1": [
+        "Le Gorille"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1842
+    },
+    {
+      "itemId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1cc708d6-3000-43c2-a43d-171969fa8c28/le-geant-des-mers",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:32.923340+00:00",
+      "h1": [
+        "Le Géant des mers"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1847
+    },
+    {
+      "itemId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/5d420723-34b1-472f-b4c7-d412c365eb11/parcours-de-l-extreme",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:34.820455+00:00",
+      "h1": [
+        "Parcours de l’extrême"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1847
+    },
+    {
+      "itemId": "42e01028-c743-47e0-8dbf-427f67cba865",
+      "name": "Parking",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/42e01028-c743-47e0-8dbf-427f67cba865/parking",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:36.555053+00:00",
+      "h1": [
+        "Parking"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2449
+    },
+    {
+      "itemId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3f5145d6-bfad-4178-96f4-aee63661909f/peche-aux-canards",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:38.311494+00:00",
+      "h1": [
+        "Pêche aux canards"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1809
+    },
+    {
+      "itemId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+      "name": "Sanitaires et table à langer",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/db3309fb-8986-4dd1-a54d-7e49bd4f0ca3/sanitaires-et-table-a-langer",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:40.045950+00:00",
+      "h1": [
+        "Sanitaires et table à langer"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2465
+    },
+    {
+      "itemId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+      "name": "Tables de pique-nique",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/f4a73774-cd01-4b0b-bbf0-cb09cffb8da6/tables-de-pique-nique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:41.814268+00:00",
+      "h1": [
+        "Tables de pique-nique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 2514
+    },
+    {
+      "itemId": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3907da4a-6351-420f-ac42-953e8814da0b/o-petit-train",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:44.000507+00:00",
+      "h1": [
+        "Ô Petit Train"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1934
+    },
+    {
+      "itemId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/a8ce4072-d1bb-47ec-a1f0-07b868014782/o-p-tits-quads",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T06:17:46.042985+00:00",
+      "h1": [
+        "Ô p’tits quads"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "missingAuditedParagraphs": [],
+      "bodyCharacters": 1875
+    }
+  ],
+  "publicItemTimelines": [
+    {
+      "eventKey": "o-parc-chenille-opening-2020",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3551c8d1-d2e4-459c-bc86-047f026fb0a1/la-chenille/history",
+      "checkedAtUtc": "2026-11-15T06:19:29.640736+00:00",
+      "expectedTitle": "La Chenille ouvre à Bannay",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1526
+    },
+    {
+      "eventKey": "o-parc-pirates-opening-2024",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/86bf248f-070a-4b95-b4d2-962375788eb3/o-pirates/history",
+      "checkedAtUtc": "2026-11-15T06:19:33.937072+00:00",
+      "expectedTitle": "Ô Pirates arrive en 2024",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1538
+    },
+    {
+      "eventKey": "o-parc-jungle-opening-2025",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/81ab6e88-547b-4ea0-8906-aad0c1db4a55/parcours-de-la-jungle/history",
+      "checkedAtUtc": "2026-11-15T06:19:38.112730+00:00",
+      "expectedTitle": "Le Parcours de la Jungle rejoint le plan 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1618
+    },
+    {
+      "eventKey": "o-parc-safari-buggy-opening-2025",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/0bb56b79-d78c-47e6-a47e-4fd30814a6dd/safari-buggy/history",
+      "checkedAtUtc": "2026-11-15T06:19:42.642852+00:00",
+      "expectedTitle": "Safari Buggy rejoint la saison 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1587
+    },
+    {
+      "eventKey": "o-parc-valse-tasses-opening-2025",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2265a05c-9519-4086-856f-1f26f4ac9756/la-valse-des-tasses/history",
+      "checkedAtUtc": "2026-11-15T06:19:46.748617+00:00",
+      "expectedTitle": "La Valse des Tasses apparaît parmi les nouveautés",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1595
+    },
+    {
+      "eventKey": "o-parc-chenille-opening-2020",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3551c8d1-d2e4-459c-bc86-047f026fb0a1/la-chenille/history",
+      "checkedAtUtc": "2026-11-15T06:19:51.830631+00:00",
+      "expectedTitle": "La Chenille opens in Bannay",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1339
+    },
+    {
+      "eventKey": "o-parc-pirates-opening-2024",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/86bf248f-070a-4b95-b4d2-962375788eb3/o-pirates/history",
+      "checkedAtUtc": "2026-11-15T06:19:56.962827+00:00",
+      "expectedTitle": "Ô Pirates arrives in 2024",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1341
+    },
+    {
+      "eventKey": "o-parc-jungle-opening-2025",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/81ab6e88-547b-4ea0-8906-aad0c1db4a55/parcours-de-la-jungle/history",
+      "checkedAtUtc": "2026-11-15T06:20:01.670493+00:00",
+      "expectedTitle": "Parcours de la Jungle joins the 2025 map",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1417
+    },
+    {
+      "eventKey": "o-parc-safari-buggy-opening-2025",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/0bb56b79-d78c-47e6-a47e-4fd30814a6dd/safari-buggy/history",
+      "checkedAtUtc": "2026-11-15T06:20:08.148442+00:00",
+      "expectedTitle": "Safari Buggy joins the 2025 season",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1387
+    },
+    {
+      "eventKey": "o-parc-valse-tasses-opening-2025",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2265a05c-9519-4086-856f-1f26f4ac9756/la-valse-des-tasses/history",
+      "checkedAtUtc": "2026-11-15T06:20:13.257081+00:00",
+      "expectedTitle": "La Valse des Tasses appears among the new attractions",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1420
+    },
+    {
+      "eventKey": "o-parc-chenille-opening-2020",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3551c8d1-d2e4-459c-bc86-047f026fb0a1/la-chenille/history",
+      "checkedAtUtc": "2026-11-15T06:20:18.265364+00:00",
+      "expectedTitle": "La Chenille eröffnet in Bannay",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1505
+    },
+    {
+      "eventKey": "o-parc-pirates-opening-2024",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/86bf248f-070a-4b95-b4d2-962375788eb3/o-pirates/history",
+      "checkedAtUtc": "2026-11-15T06:20:23.293294+00:00",
+      "expectedTitle": "Ô Pirates kommt 2024 hinzu",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1537
+    },
+    {
+      "eventKey": "o-parc-jungle-opening-2025",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/81ab6e88-547b-4ea0-8906-aad0c1db4a55/parcours-de-la-jungle/history",
+      "checkedAtUtc": "2026-11-15T06:20:28.030386+00:00",
+      "expectedTitle": "Parcours de la Jungle erscheint auf dem Plan von 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1616
+    },
+    {
+      "eventKey": "o-parc-safari-buggy-opening-2025",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/0bb56b79-d78c-47e6-a47e-4fd30814a6dd/safari-buggy/history",
+      "checkedAtUtc": "2026-11-15T06:20:32.887108+00:00",
+      "expectedTitle": "Safari Buggy kommt zur Saison 2025 hinzu",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1580
+    },
+    {
+      "eventKey": "o-parc-valse-tasses-opening-2025",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2265a05c-9519-4086-856f-1f26f4ac9756/la-valse-des-tasses/history",
+      "checkedAtUtc": "2026-11-15T06:20:37.680499+00:00",
+      "expectedTitle": "La Valse des Tasses gehört zu den Neuheiten",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1592
+    },
+    {
+      "eventKey": "o-parc-chenille-opening-2020",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3551c8d1-d2e4-459c-bc86-047f026fb0a1/la-chenille/history",
+      "checkedAtUtc": "2026-11-15T06:20:42.362052+00:00",
+      "expectedTitle": "La Chenille opent in Bannay",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1433
+    },
+    {
+      "eventKey": "o-parc-pirates-opening-2024",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/86bf248f-070a-4b95-b4d2-962375788eb3/o-pirates/history",
+      "checkedAtUtc": "2026-11-15T06:20:46.902349+00:00",
+      "expectedTitle": "Ô Pirates arriveert in 2024",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1468
+    },
+    {
+      "eventKey": "o-parc-jungle-opening-2025",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/81ab6e88-547b-4ea0-8906-aad0c1db4a55/parcours-de-la-jungle/history",
+      "checkedAtUtc": "2026-11-15T06:20:51.463301+00:00",
+      "expectedTitle": "Parcours de la Jungle verschijnt op de kaart van 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1537
+    },
+    {
+      "eventKey": "o-parc-safari-buggy-opening-2025",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/0bb56b79-d78c-47e6-a47e-4fd30814a6dd/safari-buggy/history",
+      "checkedAtUtc": "2026-11-15T06:20:56.189053+00:00",
+      "expectedTitle": "Safari Buggy komt erbij in seizoen 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1511
+    },
+    {
+      "eventKey": "o-parc-valse-tasses-opening-2025",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2265a05c-9519-4086-856f-1f26f4ac9756/la-valse-des-tasses/history",
+      "checkedAtUtc": "2026-11-15T06:21:00.974713+00:00",
+      "expectedTitle": "La Valse des Tasses verschijnt bij de nieuwigheden",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1516
+    },
+    {
+      "eventKey": "o-parc-chenille-opening-2020",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3551c8d1-d2e4-459c-bc86-047f026fb0a1/la-chenille/history",
+      "checkedAtUtc": "2026-11-15T06:21:06.504600+00:00",
+      "expectedTitle": "La Chenille apre a Bannay",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1476
+    },
+    {
+      "eventKey": "o-parc-pirates-opening-2024",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/86bf248f-070a-4b95-b4d2-962375788eb3/o-pirates/history",
+      "checkedAtUtc": "2026-11-15T06:21:11.398378+00:00",
+      "expectedTitle": "Ô Pirates arriva nel 2024",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1488
+    },
+    {
+      "eventKey": "o-parc-jungle-opening-2025",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/81ab6e88-547b-4ea0-8906-aad0c1db4a55/parcours-de-la-jungle/history",
+      "checkedAtUtc": "2026-11-15T06:21:15.913984+00:00",
+      "expectedTitle": "Parcours de la Jungle compare sulla mappa del 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1575
+    },
+    {
+      "eventKey": "o-parc-safari-buggy-opening-2025",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/0bb56b79-d78c-47e6-a47e-4fd30814a6dd/safari-buggy/history",
+      "checkedAtUtc": "2026-11-15T06:21:20.653684+00:00",
+      "expectedTitle": "Safari Buggy arriva per la stagione 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1547
+    },
+    {
+      "eventKey": "o-parc-valse-tasses-opening-2025",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2265a05c-9519-4086-856f-1f26f4ac9756/la-valse-des-tasses/history",
+      "checkedAtUtc": "2026-11-15T06:21:25.224922+00:00",
+      "expectedTitle": "La Valse des Tasses compare fra le novità",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1539
+    },
+    {
+      "eventKey": "o-parc-chenille-opening-2020",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3551c8d1-d2e4-459c-bc86-047f026fb0a1/la-chenille/history",
+      "checkedAtUtc": "2026-11-15T06:21:29.927537+00:00",
+      "expectedTitle": "La Chenille abre en Bannay",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1483
+    },
+    {
+      "eventKey": "o-parc-pirates-opening-2024",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/86bf248f-070a-4b95-b4d2-962375788eb3/o-pirates/history",
+      "checkedAtUtc": "2026-11-15T06:21:34.764405+00:00",
+      "expectedTitle": "Ô Pirates llega en 2024",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1480
+    },
+    {
+      "eventKey": "o-parc-jungle-opening-2025",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/81ab6e88-547b-4ea0-8906-aad0c1db4a55/parcours-de-la-jungle/history",
+      "checkedAtUtc": "2026-11-15T06:21:39.363908+00:00",
+      "expectedTitle": "Parcours de la Jungle aparece en el plano de 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1573
+    },
+    {
+      "eventKey": "o-parc-safari-buggy-opening-2025",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/0bb56b79-d78c-47e6-a47e-4fd30814a6dd/safari-buggy/history",
+      "checkedAtUtc": "2026-11-15T06:21:44.136125+00:00",
+      "expectedTitle": "Safari Buggy llega en la temporada 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1552
+    },
+    {
+      "eventKey": "o-parc-valse-tasses-opening-2025",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2265a05c-9519-4086-856f-1f26f4ac9756/la-valse-des-tasses/history",
+      "checkedAtUtc": "2026-11-15T06:21:48.752343+00:00",
+      "expectedTitle": "La Valse des Tasses figura entre las novedades",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1534
+    },
+    {
+      "eventKey": "o-parc-chenille-opening-2020",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3551c8d1-d2e4-459c-bc86-047f026fb0a1/la-chenille/history",
+      "checkedAtUtc": "2026-11-15T06:21:53.685686+00:00",
+      "expectedTitle": "La Chenille otwiera się w Bannay",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1445
+    },
+    {
+      "eventKey": "o-parc-pirates-opening-2024",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/86bf248f-070a-4b95-b4d2-962375788eb3/o-pirates/history",
+      "checkedAtUtc": "2026-11-15T06:21:58.321998+00:00",
+      "expectedTitle": "Ô Pirates pojawia się w 2024 roku",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1441
+    },
+    {
+      "eventKey": "o-parc-jungle-opening-2025",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/81ab6e88-547b-4ea0-8906-aad0c1db4a55/parcours-de-la-jungle/history",
+      "checkedAtUtc": "2026-11-15T06:22:02.997374+00:00",
+      "expectedTitle": "Parcours de la Jungle pojawia się na planie z 2025 roku",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1517
+    },
+    {
+      "eventKey": "o-parc-safari-buggy-opening-2025",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/0bb56b79-d78c-47e6-a47e-4fd30814a6dd/safari-buggy/history",
+      "checkedAtUtc": "2026-11-15T06:22:07.951976+00:00",
+      "expectedTitle": "Safari Buggy dołącza w sezonie 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1469
+    },
+    {
+      "eventKey": "o-parc-valse-tasses-opening-2025",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2265a05c-9519-4086-856f-1f26f4ac9756/la-valse-des-tasses/history",
+      "checkedAtUtc": "2026-11-15T06:22:13.261138+00:00",
+      "expectedTitle": "La Valse des Tasses pojawia się wśród nowości",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1478
+    },
+    {
+      "eventKey": "o-parc-chenille-opening-2020",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/3551c8d1-d2e4-459c-bc86-047f026fb0a1/la-chenille/history",
+      "checkedAtUtc": "2026-11-15T06:22:18.251217+00:00",
+      "expectedTitle": "La Chenille abre em Bannay",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1500
+    },
+    {
+      "eventKey": "o-parc-pirates-opening-2024",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/86bf248f-070a-4b95-b4d2-962375788eb3/o-pirates/history",
+      "checkedAtUtc": "2026-11-15T06:22:22.738477+00:00",
+      "expectedTitle": "Ô Pirates chega em 2024",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1485
+    },
+    {
+      "eventKey": "o-parc-jungle-opening-2025",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/81ab6e88-547b-4ea0-8906-aad0c1db4a55/parcours-de-la-jungle/history",
+      "checkedAtUtc": "2026-11-15T06:22:27.338131+00:00",
+      "expectedTitle": "Parcours de la Jungle surge no mapa de 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1572
+    },
+    {
+      "eventKey": "o-parc-safari-buggy-opening-2025",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/0bb56b79-d78c-47e6-a47e-4fd30814a6dd/safari-buggy/history",
+      "checkedAtUtc": "2026-11-15T06:22:32.330326+00:00",
+      "expectedTitle": "Safari Buggy chega na época de 2025",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1540
+    },
+    {
+      "eventKey": "o-parc-valse-tasses-opening-2025",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/2265a05c-9519-4086-856f-1f26f4ac9756/la-valse-des-tasses/history",
+      "checkedAtUtc": "2026-11-15T06:24:14.082013+00:00",
+      "expectedTitle": "La Valse des Tasses surge entre as novidades",
+      "titlePresent": true,
+      "technical": [],
+      "overflow": 0,
+      "bodyCharacters": 1534,
+      "note": "Premier contrôle interrompu par délai de chargement du lien ; reprise ciblée via navigation normale réussie, aucun changement de données."
+    }
+  ],
+  "publicOfficialMaps": [
+    {
+      "year": 2026,
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Plan officiel de la dernière saison 2026",
+      "titleVisible": true,
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-final-map-2026/file",
+        "status": 200,
+        "bytes": 1175725,
+        "contentType": "image/jpeg",
+        "sha256": "6c97cd0b12644dba8cc7f1de1b16003950c4275bbf4dad791a5559afa1f54dc3",
+        "checkedAtUtc": "2026-11-15T06:23:25.634282+00:00"
+      },
+      "overflow": 0
+    },
+    {
+      "year": 2025,
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Plan officiel d’Ô Parc — 2025",
+      "titleVisible": true,
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-map-2025/file",
+        "status": 200,
+        "bytes": 1866222,
+        "contentType": "image/jpeg",
+        "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+        "checkedAtUtc": "2026-11-15T06:23:26.569861+00:00"
+      },
+      "overflow": 0
+    },
+    {
+      "year": 2026,
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Official map of the final 2026 season",
+      "titleVisible": true,
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-final-map-2026/file",
+        "status": 200,
+        "bytes": 1175725,
+        "contentType": "image/jpeg",
+        "sha256": "6c97cd0b12644dba8cc7f1de1b16003950c4275bbf4dad791a5559afa1f54dc3",
+        "checkedAtUtc": "2026-11-15T06:23:25.634282+00:00"
+      },
+      "overflow": 0
+    },
+    {
+      "year": 2025,
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Official Ô Parc map — 2025",
+      "titleVisible": true,
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-map-2025/file",
+        "status": 200,
+        "bytes": 1866222,
+        "contentType": "image/jpeg",
+        "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+        "checkedAtUtc": "2026-11-15T06:23:26.569861+00:00"
+      },
+      "overflow": 0
+    },
+    {
+      "year": 2026,
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Offizieller Plan der letzten Saison 2026",
+      "titleVisible": true,
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-final-map-2026/file",
+        "status": 200,
+        "bytes": 1175725,
+        "contentType": "image/jpeg",
+        "sha256": "6c97cd0b12644dba8cc7f1de1b16003950c4275bbf4dad791a5559afa1f54dc3",
+        "checkedAtUtc": "2026-11-15T06:23:25.634282+00:00"
+      },
+      "overflow": 0
+    },
+    {
+      "year": 2025,
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Offizieller Plan von Ô Parc — 2025",
+      "titleVisible": true,
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-map-2025/file",
+        "status": 200,
+        "bytes": 1866222,
+        "contentType": "image/jpeg",
+        "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+        "checkedAtUtc": "2026-11-15T06:23:26.569861+00:00"
+      },
+      "overflow": 0
+    },
+    {
+      "language": "nl",
+      "year": 2026,
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Officiële plattegrond van het laatste seizoen 2026",
+      "titleVisible": true,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:22.612857+00:00",
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-final-map-2026/file",
+        "status": 200,
+        "bytes": 1175725,
+        "contentType": "image/jpeg",
+        "sha256": "6c97cd0b12644dba8cc7f1de1b16003950c4275bbf4dad791a5559afa1f54dc3",
+        "checkedAtUtc": "2026-11-15T06:23:25.634282+00:00"
+      }
+    },
+    {
+      "language": "nl",
+      "year": 2025,
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Officiële plattegrond van Ô Parc — 2025",
+      "titleVisible": false,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:22.617757+00:00",
+      "observation": "La page publique ne propose que le plan 2026 ; aucun sélecteur 2025. Le fichier public 2025 lui-même est accessible, voir contrôles français.",
+      "pageText": "AMUSEMENT-PARKS\n.\nfun\nm\nNL\nParkenlijst\n›\nÔ Parc\n›\nKaart van Ô Parc\nPARKKAART\nÔ PARC\nKaart van Ô Parc\n\nVerken de locaties van Ô Parc op de interactieve kaart of bekijk de beschikbare officiële parkplattegronden.\n\nTerug naar Ô Parc\nPlekken in het park\nDefinitief gesloten park\n\nDeze pagina bewaart de geschiedenis van het park, de locaties en eerdere bezoeken.\n\nInteractieve kaart\n0\nOfficiële kaarten\n1\nOFFICIËLE EDITIES\nOfficiële kaarten van Ô Parc\n\nBekijk de door het park gepubliceerde plattegronden per jaar. De nieuwste editie is standaard geselecteerd.\n\n2026\nAfbeelding\nFR\n1,1 MB\nOfficiële plattegrond van het laatste seizoen 2026\n\n69ce8f6e050b7_capture-d-ecran_2-4-2026_174619_.jpg\n\nKaart bekijken\nOfficiële bron\nDeze kaart delen\n\nStuur de kaart van Ô Parc naar iemand die zijn route plant.\n\nKopiëren\nLinkedIn\nFacebook\nX\nReddit\nMeer\nStart\nParken\nRanglijsten\nTechniek\nBouwers\nProfiel\nAMUSEMENT-PARKS\n.\nfun\n\nZORGVULDIGE DATA\nvoor nog meer fun\n\nONTDEKKEN\nAlle parken\nInteractieve kaart\nSitemap\nOVER\nHet project\nContact\nVersiegeschiedenis\nPrivacy\nTALEN\nEnglish\nFrançais\nEspañol\nDeutsch\nItaliano\nPolski\nNederlands\nPortuguês\n© 2026 AmusementPark — Gemaakt met ❤️ en adrenaline\nVERSIE 6.0.39"
+    },
+    {
+      "language": "it",
+      "year": 2026,
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Mappa ufficiale dellʼultima stagione 2026",
+      "titleVisible": true,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:25.003666+00:00",
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-final-map-2026/file",
+        "status": 200,
+        "bytes": 1175725,
+        "contentType": "image/jpeg",
+        "sha256": "6c97cd0b12644dba8cc7f1de1b16003950c4275bbf4dad791a5559afa1f54dc3",
+        "checkedAtUtc": "2026-11-15T06:23:25.634282+00:00"
+      }
+    },
+    {
+      "language": "it",
+      "year": 2025,
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Mappa ufficiale di Ô Parc — 2025",
+      "titleVisible": true,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:25.032043+00:00",
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-map-2025/file",
+        "status": 200,
+        "bytes": 1866222,
+        "contentType": "image/jpeg",
+        "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+        "checkedAtUtc": "2026-11-15T06:23:26.569861+00:00"
+      }
+    },
+    {
+      "language": "es",
+      "year": 2026,
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Plano oficial de la última temporada 2026",
+      "titleVisible": true,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:27.796154+00:00",
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-final-map-2026/file",
+        "status": 200,
+        "bytes": 1175725,
+        "contentType": "image/jpeg",
+        "sha256": "6c97cd0b12644dba8cc7f1de1b16003950c4275bbf4dad791a5559afa1f54dc3",
+        "checkedAtUtc": "2026-11-15T06:23:25.634282+00:00"
+      }
+    },
+    {
+      "language": "es",
+      "year": 2025,
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Plano oficial de Ô Parc — 2025",
+      "titleVisible": true,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:27.826901+00:00",
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-map-2025/file",
+        "status": 200,
+        "bytes": 1866222,
+        "contentType": "image/jpeg",
+        "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+        "checkedAtUtc": "2026-11-15T06:23:26.569861+00:00"
+      }
+    },
+    {
+      "language": "pl",
+      "year": 2026,
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Oficjalna mapa ostatniego sezonu 2026",
+      "titleVisible": true,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:30.348568+00:00",
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-final-map-2026/file",
+        "status": 200,
+        "bytes": 1175725,
+        "contentType": "image/jpeg",
+        "sha256": "6c97cd0b12644dba8cc7f1de1b16003950c4275bbf4dad791a5559afa1f54dc3",
+        "checkedAtUtc": "2026-11-15T06:23:25.634282+00:00"
+      }
+    },
+    {
+      "language": "pl",
+      "year": 2025,
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Oficjalna mapa Ô Parc — 2025",
+      "titleVisible": true,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:30.370775+00:00",
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-map-2025/file",
+        "status": 200,
+        "bytes": 1866222,
+        "contentType": "image/jpeg",
+        "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+        "checkedAtUtc": "2026-11-15T06:23:26.569861+00:00"
+      }
+    },
+    {
+      "language": "pt",
+      "year": 2026,
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Mapa oficial da última época de 2026",
+      "titleVisible": true,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:32.776108+00:00",
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-final-map-2026/file",
+        "status": 200,
+        "bytes": 1175725,
+        "contentType": "image/jpeg",
+        "sha256": "6c97cd0b12644dba8cc7f1de1b16003950c4275bbf4dad791a5559afa1f54dc3",
+        "checkedAtUtc": "2026-11-15T06:23:25.634282+00:00"
+      }
+    },
+    {
+      "language": "pt",
+      "year": 2025,
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/map",
+      "expectedTitle": "Mapa oficial do Ô Parc — 2025",
+      "titleVisible": true,
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T06:32:32.793409+00:00",
+      "file": {
+        "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/official-maps/o-parc-map-2025/file",
+        "status": 200,
+        "bytes": 1866222,
+        "contentType": "image/jpeg",
+        "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+        "checkedAtUtc": "2026-11-15T06:23:26.569861+00:00"
+      }
+    }
+  ],
+  "publicMedia": [
+    {
+      "imageId": "8976847a7add4386a59e30a020a80270",
+      "url": "https://amusement-parks.fun/api/images/binary/8976847a7add4386a59e30a020a80270",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 238366,
+      "sha256": "a2662298c64f61b65d605fda9984bbdebc5d8a6687ba184b541de718d1b09dc9",
+      "checkedAtUtc": "2026-11-15T06:14:50.787910+00:00"
+    },
+    {
+      "imageId": "ad051cad0785452d93d515619bacea17",
+      "url": "https://amusement-parks.fun/api/images/binary/ad051cad0785452d93d515619bacea17",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 182535,
+      "sha256": "d4ffb3a175b722977a706058b660e0b4f6bb3a24b5a48473c145dc9c843e4306",
+      "checkedAtUtc": "2026-11-15T06:14:51.145383+00:00"
+    },
+    {
+      "imageId": "aae9deb7df2c4f49932e0ee1c0223ae9",
+      "url": "https://amusement-parks.fun/api/images/binary/aae9deb7df2c4f49932e0ee1c0223ae9",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 165657,
+      "sha256": "d3ac3a575865790fd1e8fe0451b50905713d1c93e30a29803112a946d76f1d03",
+      "checkedAtUtc": "2026-11-15T06:14:51.367860+00:00"
+    },
+    {
+      "imageId": "e0f48f45039b4d06a10d8153d6eb705e",
+      "url": "https://amusement-parks.fun/api/images/binary/e0f48f45039b4d06a10d8153d6eb705e",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 177833,
+      "sha256": "106563d0454a595a1881d7f6c830fe818557aa497417f05b8124b9d08f7400c3",
+      "checkedAtUtc": "2026-11-15T06:14:51.557806+00:00"
+    },
+    {
+      "imageId": "d88725b539ed461cb3de15199120b365",
+      "url": "https://amusement-parks.fun/api/images/binary/d88725b539ed461cb3de15199120b365",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 279694,
+      "sha256": "e3bb5a0efd02f5c07e1c9d5b7bcdc542ca95d171d3a8eb802763a1eab0af0e87",
+      "checkedAtUtc": "2026-11-15T06:14:51.747186+00:00"
+    },
+    {
+      "imageId": "9dd30bfd5ef34dd39d697238e1d220ae",
+      "url": "https://amusement-parks.fun/api/images/binary/9dd30bfd5ef34dd39d697238e1d220ae",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 257524,
+      "sha256": "12cb63c00e87c67b5b4f4164952c8442a147c73a1c1b8535137c4d3eb4615fd1",
+      "checkedAtUtc": "2026-11-15T06:14:51.931700+00:00"
+    },
+    {
+      "imageId": "9fe7c4c0634d49b1af7f53709763619c",
+      "url": "https://amusement-parks.fun/api/images/binary/9fe7c4c0634d49b1af7f53709763619c",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 176409,
+      "sha256": "64fa080b5ffac507d7867716cd0cd5993ca2865b3ba4a2c3903cce2030eedb5f",
+      "checkedAtUtc": "2026-11-15T06:14:52.337582+00:00"
+    },
+    {
+      "imageId": "bddcd54627fe42c98abadc171f53b5cb",
+      "url": "https://amusement-parks.fun/api/images/binary/bddcd54627fe42c98abadc171f53b5cb",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 256099,
+      "sha256": "26041ad50d00deb8759b272618327f98c4c86e67d29fe988d3b133d893a17521",
+      "checkedAtUtc": "2026-11-15T06:14:52.736466+00:00"
+    },
+    {
+      "imageId": "26ae6a5a3e5d47ac883f63e16089edb2",
+      "url": "https://amusement-parks.fun/api/images/binary/26ae6a5a3e5d47ac883f63e16089edb2",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 185571,
+      "sha256": "b43bd7f922e743ca13fe93427317591908a987d2b5afd50aa1d60490f8784c58",
+      "checkedAtUtc": "2026-11-15T06:14:52.918271+00:00"
+    },
+    {
+      "imageId": "955672abe0e942bcba38bf146c4ba96f",
+      "url": "https://amusement-parks.fun/api/images/binary/955672abe0e942bcba38bf146c4ba96f",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 228693,
+      "sha256": "12d569d4e7a21b73760d875b706f22ce3aeb565647e237643fb75e71c844c116",
+      "checkedAtUtc": "2026-11-15T06:14:53.160675+00:00"
+    },
+    {
+      "imageId": "6b98288bb740472f9380b57f16f436da",
+      "url": "https://amusement-parks.fun/api/images/binary/6b98288bb740472f9380b57f16f436da",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 214004,
+      "sha256": "b60cbad4087190616ab7ede05e134e8fe7c2aedad3603a609e87e29bef978983",
+      "checkedAtUtc": "2026-11-15T06:14:53.336362+00:00"
+    },
+    {
+      "imageId": "3b0ed553df9e43e294f3b23d63e587a7",
+      "url": "https://amusement-parks.fun/api/images/binary/3b0ed553df9e43e294f3b23d63e587a7",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 195762,
+      "sha256": "fc8a7d986ffbdd295e3c6dac59db0115870906c98c03eca5787644b757fc77c1",
+      "checkedAtUtc": "2026-11-15T06:14:53.515558+00:00"
+    }
+  ],
+  "publicHistoryApiProof": {
+    "url": "https://amusement-parks.fun/api/public/parks/6644b892-d03c-461e-855d-a61cadba76f4/history/timeline?page=1&pageSize=1",
+    "status": 200,
+    "checkedAtUtc": "2026-11-15T06:25:04.645144+00:00",
+    "body": {
+      "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "parkName": "Ô Parc",
+      "hasDecisionSnapshots": false,
+      "events": [
+        {
+          "subjectType": "Park",
+          "subjectId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "subjectLabel": "Ô Parc",
+          "currentSubjectName": null,
+          "hasPublishedLineage": false,
+          "factType": "Opening",
+          "period": {
+            "start": {
+              "year": 2017,
+              "month": null,
+              "day": null,
+              "precision": "Year",
+              "isApproximate": false,
+              "qualifier": null
+            },
+            "end": {
+              "year": 2017,
+              "month": null,
+              "day": null,
+              "precision": "Year",
+              "isApproximate": false,
+              "qualifier": null
+            },
+            "startConfidence": "Confirmed",
+            "endConfidence": "Confirmed"
+          },
+          "evidenceState": "Probable",
+          "importance": "Major",
+          "attributeKind": null,
+          "previousDisplayValue": null,
+          "nextDisplayValue": null,
+          "otherTypeLabel": null,
+          "narrative": {
+            "eventId": "23a722eb-f02f-4c9a-80b3-92bae27a696a",
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Ô Parc, dix saisons de loisirs sur lʼîle de Cosne"
+              },
+              {
+                "languageCode": "en",
+                "value": "Ô Parc, ten seasons of leisure on the Île de Cosne"
+              },
+              {
+                "languageCode": "de",
+                "value": "Ô Parc: zehn Freizeitsaisons auf der Île de Cosne"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Ô Parc, tien recreatieseizoenen op het eiland Île de Cosne"
+              },
+              {
+                "languageCode": "it",
+                "value": "Ô Parc, dieci stagioni di svago sullʼÎle de Cosne"
+              },
+              {
+                "languageCode": "es",
+                "value": "Ô Parc, diez temporadas de ocio en la Île de Cosne"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Ô Parc — dziesięć sezonów zabawy na Île de Cosne"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Ô Parc, dez épocas de lazer na Île de Cosne"
+              }
+            ]
+          },
+          "uncertaintyExplanations": [
+            {
+              "languageCode": "de",
+              "value": "Diese Information gilt anhand der verfügbaren Quellen als wahrscheinlich."
+            },
+            {
+              "languageCode": "en",
+              "value": "This information is considered probable based on the available sources."
+            },
+            {
+              "languageCode": "es",
+              "value": "Esta información se considera probable según las fuentes disponibles."
+            },
+            {
+              "languageCode": "fr",
+              "value": "Cette information est considérée comme probable au vu des sources disponibles."
+            },
+            {
+              "languageCode": "it",
+              "value": "Questa informazione è considerata probabile in base alle fonti disponibili."
+            },
+            {
+              "languageCode": "nl",
+              "value": "Deze informatie wordt op basis van de beschikbare bronnen als waarschijnlijk beschouwd."
+            },
+            {
+              "languageCode": "pl",
+              "value": "Ta informacja jest uznawana za prawdopodobną na podstawie dostępnych źródeł."
+            },
+            {
+              "languageCode": "pt",
+              "value": "Esta informação é considerada provável com base nas fontes disponíveis."
+            }
+          ],
+          "sources": [
+            {
+              "type": "Other",
+              "title": "Koikispass — trois créateurs et jeux du parc",
+              "publisherOrAuthor": "www.koikispass.com",
+              "url": "https://www.koikispass.com/evadez-vous-8-escapades-insolites-dans-la-nievre/",
+              "bibliographicReference": null,
+              "publishedOn": null,
+              "accessedOn": "2026-11-15",
+              "languageCode": null,
+              "archiveUrl": null,
+              "accessibility": "Accessible"
+            },
+            {
+              "type": "Other",
+              "title": "Infoptimum — été2024 et bateau Ô Pirates",
+              "publisherOrAuthor": "www.bourges.infoptimum.com",
+              "url": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-site-de-loisirs-et-dattractions-en-plein-air-a-bannay-5090.html",
+              "bibliographicReference": null,
+              "publishedOn": null,
+              "accessedOn": "2026-11-15",
+              "languageCode": null,
+              "archiveUrl": null,
+              "accessibility": "Accessible"
+            }
+          ]
+        }
+      ],
+      "pagination": {
+        "totalItems": 8,
+        "totalPages": 8,
+        "currentPage": 1,
+        "itemsPerPage": 1
+      }
+    }
+  },
+  "publicHistoryNavigation": {
+    "url": "https://amusement-parks.fun/api/parks/6644b892-d03c-461e-855d-a61cadba76f4/detail-summary",
+    "status": 200,
+    "body": {
+      "park": {
+        "id": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "name": "Ô Parc",
+        "countryCode": "FR",
+        "type": "AmusementPark",
+        "audienceClassification": "Regional",
+        "status": "ClosedDefinitively",
+        "openingDate": null,
+        "closingDate": "2026-08-31T00:00:00Z",
+        "openingDateText": "2017",
+        "closingDateText": "31 août 2026",
+        "founderId": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+        "operatorId": "c24f0c34-e5c9-4cd4-9919-bca752583450",
+        "latitude": 47.409273,
+        "longitude": 2.917806,
+        "descriptions": [
+          {
+            "languageCode": "fr",
+            "value": "<h2>Une prairie de loisirs sur l’île de Cosne</h2><p>À Bannay, Ô Parc occupait une prairie de deux hectares et demi sur l’île de Cosne, près du camping et face à Cosne-sur-Loire. Créé en 2017 par Steeve, Charles et Guillaume, le parc réunissait des jeux de plein air, des gonflables et des manèges installés pour la saison. Des hamacs sous les arbres et des tables de pique-nique accompagnaient cette implantation ouverte.</p><p>La couronne blanche et bleue des Chaises Volantes, la silhouette souriante de La Chenille et les grands personnages des toboggans donnaient ses repères au paysage. Les karts à pédales, les courses en sacs et le mini-golf conservaient aussi une place parmi les attractions.</p><h2>Des pirates aux jeux d’eau</h2><p>L’Aqua Zone associait une grande pataugeoire, le Méga Slide et le Fun Slide. Dans la Baby Zone, le Saloon gonflable, Baby Volcan, le Poulailler et la Piscine à balles composaient un ensemble plus petit, près du chalet de restauration. Le plan de 2026 recensait vingt-huit activités et représentait également les espaces de restauration et la caisse-boutique.</p><p>L’offre avait évolué au fil des saisons : La Chenille était arrivée en 2020, le bateau Ô Pirates en 2024, puis Safari Buggy et La Valse des Tasses en 2025. Le petit train, les petits quads et Le Gorille figuraient sur des documents plus anciens : ces jeux étaient distincts du grand huit, des karts et de Konga.</p><h2>La dernière saison, en 2026</h2><p>La dernière journée d’ouverture eut lieu le 31 août 2026. Le 7 septembre, l’équipe annonça la fermeture définitive, invoquant les incertitudes entourant l’avenir du terrain. Elle indiquait que les installations devaient être retirées et la parcelle remise dans son état initial. Cette annonce mit fin à dix saisons de loisirs à Bannay.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<h2>A leisure meadow on the Île de Cosne</h2><p>In Bannay, Ô Parc occupied a two-and-a-half-hectare meadow on the Île de Cosne, near the campsite and opposite Cosne-sur-Loire. Founded in 2017 by Steeve, Charles and Guillaume, it brought together outdoor games, inflatables and rides set up for the season. Hammocks beneath the trees and picnic tables shared this open setting.</p><p>The white-and-blue crown of Chaises Volantes, La Chenille’s smiling silhouette and the giant slide characters gave the landscape its landmarks. Pedal karts, sack races and mini-golf also retained their place among the attractions.</p><h2>From pirates to water play</h2><p>Aqua Zone combined a large paddling pool with Méga Slide and Fun Slide. In Baby Zone, the inflatable Saloon, Baby Volcan, Poulailler and Piscine à balles formed a smaller group near the food chalet. The 2026 map listed twenty-eight activities and also showed the food outlets and ticket office-shop.</p><p>The park changed over successive seasons: La Chenille arrived in 2020, the Ô Pirates boat in 2024, then Safari Buggy and La Valse des Tasses in 2025. The small train, small quads and Le Gorille appeared in older material; they were distinct from the roller coaster, karts and Konga.</p><h2>The final season in 2026</h2><p>The last opening day was 31 August 2026. On 7 September, the team announced permanent closure, citing uncertainty over the land’s future. It said that the installations would be removed and the plot returned to its original condition. The announcement ended ten seasons of leisure in Bannay.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<h2>Eine Freizeitwiese auf der Île de Cosne</h2><p>In Bannay lag Ô Parc auf einer zweieinhalb Hektar großen Wiese auf der Île de Cosne, nahe dem Campingplatz und gegenüber von Cosne-sur-Loire. Steeve, Charles und Guillaume gründeten den Park 2017. Er vereinte Spiele im Freien, Hüpfanlagen und saisonal aufgestellte Fahrgeschäfte. Hängematten unter den Bäumen und Picknicktische gehörten zu diesem offenen Gelände.</p><p>Die weiß-blaue Krone der Chaises Volantes, das lächelnde Gesicht von La Chenille und die großen Rutschenfiguren prägten das Bild. Auch Tretkarts, Sackhüpfen und Minigolf behielten ihren Platz unter den Attraktionen.</p><h2>Von Piraten zu Wasserspielen</h2><p>Die Aqua Zone verband ein großes Planschbecken mit Méga Slide und Fun Slide. In der Baby Zone bildeten der aufblasbare Saloon, Baby Volcan, Poulailler und Piscine à balles eine kleinere Gruppe nahe dem Gastronomiechalet. Der Plan von 2026 verzeichnete achtundzwanzig Aktivitäten sowie Gastronomie und Kasse mit Laden.</p><p>Das Angebot entwickelte sich über die Jahre: La Chenille kam 2020 hinzu, das Boot Ô Pirates 2024, Safari Buggy und La Valse des Tasses 2025. In älteren Unterlagen erschienen die kleine Eisenbahn, kleine Quads und Le Gorille als eigenständige Angebote neben Achterbahn, Karts und Konga.</p><h2>Die letzte Saison 2026</h2><p>Der letzte Öffnungstag war der 31. August 2026. Am 7. September kündigte das Team die endgültige Schließung an und verwies auf die ungewisse Zukunft des Grundstücks. Die Anlagen sollten entfernt und das Gelände in seinen ursprünglichen Zustand zurückversetzt werden. Damit endeten zehn Freizeitsaisons in Bannay.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<h2>Een recreatieweide op het eiland Île de Cosne</h2><p>In Bannay lag Ô Parc op een weide van tweeënhalve hectare op het eiland Île de Cosne, bij de camping en tegenover Cosne-sur-Loire. Steeve, Charles en Guillaume richtten het park in 2017 op. Het bracht buitenspelen, springkussens en seizoensattracties samen. Hangmatten onder de bomen en picknicktafels maakten deel uit van dit open terrein.</p><p>De witte en blauwe kroon van Chaises Volantes, het lachende gezicht van La Chenille en de grote figuren op de glijbanen bepaalden het beeld. Ook trapkarts, zaklopen en minigolf behielden hun plek tussen de attracties.</p><h2>Van piraten tot waterspelen</h2><p>Aqua Zone combineerde een groot peuterbad met Méga Slide en Fun Slide. In Baby Zone vormden de opblaasbare Saloon, Baby Volcan, Poulailler en Piscine à balles een kleinere groep bij het eetchalet. De kaart van 2026 vermeldde achtentwintig activiteiten en toonde ook de eetgelegenheden en de kassa met winkel.</p><p>Het aanbod veranderde door de jaren heen: La Chenille kwam in 2020, het schip Ô Pirates in 2024 en Safari Buggy en La Valse des Tasses in 2025. Het treintje, de kleine quads en Le Gorille stonden op oudere documenten en waren afzonderlijke attracties naast de achtbaan, karts en Konga.</p><h2>Het laatste seizoen in 2026</h2><p>De laatste openingsdag was 31 augustus 2026. Op 7 september kondigde het team de definitieve sluiting aan vanwege onzekerheid over de toekomst van het terrein. De installaties zouden worden verwijderd en de grond zou in de oorspronkelijke staat worden teruggebracht. Daarmee eindigden tien recreatieseizoenen in Bannay.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<h2>Un prato di svaghi sull’Île de Cosne</h2><p>A Bannay, Ô Parc occupava un prato di due ettari e mezzo sull’Île de Cosne, vicino al campeggio e di fronte a Cosne-sur-Loire. Fondato nel 2017 da Steeve, Charles e Guillaume, riuniva giochi all’aperto, gonfiabili e giostre installate per la stagione. Amache sotto gli alberi e tavoli da picnic facevano parte di questo ambiente aperto.</p><p>La corona bianca e blu delle Chaises Volantes, il volto sorridente di La Chenille e i grandi personaggi degli scivoli caratterizzavano il paesaggio. Anche kart a pedali, corse nei sacchi e minigolf conservavano un posto fra le attrazioni.</p><h2>Dai pirati ai giochi d’acqua</h2><p>L’Aqua Zone riuniva una grande vasca per bambini, Méga Slide e Fun Slide. Nella Baby Zone, il Saloon gonfiabile, Baby Volcan, Poulailler e Piscine à balles formavano un gruppo più piccolo vicino allo chalet di ristorazione. La mappa del 2026 elencava ventotto attività e mostrava anche i punti ristoro e la cassa con negozio.</p><p>L’offerta cambiò nel corso delle stagioni: La Chenille arrivò nel 2020, la barca Ô Pirates nel 2024, poi Safari Buggy e La Valse des Tasses nel 2025. Il trenino, i piccoli quad e Le Gorille comparivano nei documenti più antichi come attrazioni distinte dalle montagne russe, dai kart e da Konga.</p><h2>L’ultima stagione nel 2026</h2><p>L’ultimo giorno di apertura fu il 31 agosto 2026. Il 7 settembre la squadra annunciò la chiusura definitiva, citando le incertezze sul futuro del terreno. Le installazioni avrebbero dovuto essere rimosse e l’area riportata allo stato originario. L’annuncio pose fine a dieci stagioni di svago a Bannay.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<h2>Una pradera de ocio en la Île de Cosne</h2><p>En Bannay, Ô Parc ocupaba una pradera de dos hectáreas y media en la Île de Cosne, cerca del camping y frente a Cosne-sur-Loire. Fundado en 2017 por Steeve, Charles y Guillaume, reunía juegos al aire libre, hinchables y atracciones instaladas para la temporada. Las hamacas bajo los árboles y las mesas de pícnic formaban parte de este espacio abierto.</p><p>La corona blanca y azul de Chaises Volantes, el rostro sonriente de La Chenille y los grandes personajes de los toboganes daban identidad al paisaje. Los karts de pedales, las carreras de sacos y el minigolf también conservaban su lugar entre las actividades.</p><h2>De los piratas a los juegos de agua</h2><p>Aqua Zone reunía una gran piscina infantil, Méga Slide y Fun Slide. En Baby Zone, el Saloon hinchable, Baby Volcan, Poulailler y Piscine à balles formaban un conjunto menor cerca del chalet de comida. El plano de 2026 enumeraba veintiocho actividades y mostraba también la restauración y la taquilla con tienda.</p><p>La oferta evolucionó con las temporadas: La Chenille llegó en 2020, el barco Ô Pirates en 2024 y Safari Buggy y La Valse des Tasses en 2025. El trenecito, los pequeños quads y Le Gorille aparecían en documentos anteriores como atracciones distintas de la montaña rusa, los karts y Konga.</p><h2>La última temporada, en 2026</h2><p>El último día de apertura fue el 31 de agosto de 2026. El 7 de septiembre, el equipo anunció el cierre definitivo, alegando incertidumbre sobre el futuro del terreno. Indicó que las instalaciones debían retirarse y la parcela devolverse a su estado original. El anuncio puso fin a diez temporadas de ocio en Bannay.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<h2>Rekreacyjna łąka na Île de Cosne</h2><p>W Bannay Ô Parc zajmował dwuipółhektarową łąkę na Île de Cosne, obok kempingu i naprzeciw Cosne-sur-Loire. Założony w 2017 roku przez Steeve’a, Charles’a i Guillaume’a park łączył zabawy na świeżym powietrzu, dmuchańce i sezonowo ustawiane karuzele. W tej otwartej przestrzeni były również hamaki pod drzewami i stoły piknikowe.</p><p>Biało-niebieska korona Chaises Volantes, uśmiechnięty przód La Chenille i wielkie postacie na zjeżdżalniach nadawały krajobrazowi rozpoznawalny charakter. Wśród atrakcji swoje miejsce zachowały też gokarty na pedały, wyścigi w workach i minigolf.</p><h2>Od piratów do wodnych zabaw</h2><p>Aqua Zone łączyła duży brodzik, Méga Slide i Fun Slide. W Baby Zone dmuchany Saloon, Baby Volcan, Poulailler i Piscine à balles tworzyły mniejszy zespół w pobliżu domku gastronomicznego. Plan z 2026 roku wymieniał dwadzieścia osiem aktywności oraz punkty gastronomiczne i kasę ze sklepem.</p><p>Oferta zmieniała się z sezonu na sezon: La Chenille pojawiła się w 2020 roku, łódź Ô Pirates w 2024, a Safari Buggy i La Valse des Tasses w 2025. Mały pociąg, małe quady i Le Gorille występowały w starszych materiałach jako odrębne atrakcje obok kolejki górskiej, gokartów i Konga.</p><h2>Ostatni sezon w 2026 roku</h2><p>Ostatnim dniem otwarcia był 31 sierpnia 2026 roku. Dnia 7 września zespół ogłosił definitywne zamknięcie, wskazując na niepewność co do przyszłości terenu. Zapowiedział usunięcie instalacji i przywrócenie działki do pierwotnego stanu. Ogłoszenie zakończyło dziesięć sezonów rekreacji w Bannay.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<h2>Um prado de lazer na Île de Cosne</h2><p>Em Bannay, o Ô Parc ocupava um prado de dois hectares e meio na Île de Cosne, junto ao parque de campismo e diante de Cosne-sur-Loire. Criado em 2017 por Steeve, Charles e Guillaume, reunia jogos ao ar livre, insufláveis e diversões montadas para a época. Redes à sombra das árvores e mesas de piquenique faziam parte deste espaço aberto.</p><p>A coroa branca e azul das Chaises Volantes, o rosto sorridente da La Chenille e as grandes figuras dos escorregas davam identidade à paisagem. Os karts a pedais, as corridas de sacos e o minigolfe também conservavam o seu lugar entre as atividades.</p><h2>Dos piratas aos jogos de água</h2><p>A Aqua Zone reunia uma grande piscina infantil, o Méga Slide e o Fun Slide. Na Baby Zone, o Saloon insuflável, Baby Volcan, Poulailler e Piscine à balles formavam um conjunto mais pequeno perto do chalé de restauração. O mapa de 2026 enumerava vinte e oito atividades e mostrava ainda os pontos de restauração e a bilheteira com loja.</p><p>A oferta evoluiu ao longo das épocas: La Chenille chegou em 2020, o barco Ô Pirates em 2024 e Safari Buggy e La Valse des Tasses em 2025. O pequeno comboio, os pequenos quads e Le Gorille surgiam em documentos mais antigos como atrações distintas da montanha-russa, dos karts e do Konga.</p><h2>A última época, em 2026</h2><p>O último dia de abertura foi 31 de agosto de 2026. A 7 de setembro, a equipa anunciou o encerramento definitivo, invocando incertezas quanto ao futuro do terreno. As instalações deveriam ser retiradas e o espaço devolvido ao estado original. O anúncio encerrou dez épocas de lazer em Bannay.</p>"
+          }
+        ],
+        "isVisible": true,
+        "adminReviewStatus": "Validated",
+        "isFeaturedOnHome": false,
+        "featuredHomeOrder": null,
+        "isFeaturedOnHomeSponsored": false,
+        "webSiteUrl": "https://www.o-parc.fr/",
+        "street": "Île de Cosne",
+        "city": "Bannay",
+        "postalCode": "18300",
+        "currentLogoImageId": "5bbfbad268de44458d6c706ba70add6f",
+        "parkItemsTotalCount": null,
+        "parkItemsVisibleCount": null,
+        "openingHours": null
+      },
+      "mainImage": {
+        "id": "7b8a30b154c34801a74f9d4cce98ba99",
+        "category": "PARK",
+        "ownerType": "PARK",
+        "ownerId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "path": "park/7b8a30b154c34801a74f9d4cce98ba99",
+        "description": "La prairie et ses tonnelles vues depuis le Méga Slide.",
+        "isCurrent": true,
+        "isPublished": true,
+        "isWatermarked": false,
+        "width": 1200,
+        "height": 676,
+        "sizeInBytes": 108354,
+        "originalFileName": "codex-import.webp",
+        "contentType": "image/webp",
+        "sourceUrl": "https://cdn.iris-etourism.io/media/berry_province/LOICENBERV50214B/e8826e7c7bf47728.webp",
+        "geoLocation": null,
+        "exifMetadata": null,
+        "altTexts": [
+          {
+            "languageCode": "fr",
+            "value": "Un enfant au sommet du Méga Slide ; au-dessous, les tonnelles turquoise, les trampolines et les gonflables de la prairie."
+          },
+          {
+            "languageCode": "en",
+            "value": "A child at the top of Méga Slide, with turquoise canopies, trampolines and the meadow’s inflatables below."
+          },
+          {
+            "languageCode": "de",
+            "value": "Ein Kind oben auf dem Méga Slide; darunter türkisfarbene Pavillons, Trampoline und Hüpfanlagen auf der Wiese."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een kind bovenaan Méga Slide, met daaronder turquoise partytenten, trampolines en springkussens op het grasveld."
+          },
+          {
+            "languageCode": "it",
+            "value": "Un bambino in cima al Méga Slide; sotto, gazebo turchesi, trampolini e gonfiabili del prato."
+          },
+          {
+            "languageCode": "es",
+            "value": "Un niño en lo alto de Méga Slide; debajo, cenadores turquesas, trampolines e hinchables en la pradera."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Dziecko na szczycie Méga Slide; poniżej turkusowe altany, trampoliny i dmuchańce na łące."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Uma criança no topo do Méga Slide; em baixo, toldos turquesa, trampolins e insufláveis no prado."
+          }
+        ],
+        "captions": [
+          {
+            "languageCode": "fr",
+            "value": "La prairie et ses tonnelles vues depuis le Méga Slide."
+          },
+          {
+            "languageCode": "en",
+            "value": "The meadow and its canopies seen from Méga Slide."
+          },
+          {
+            "languageCode": "de",
+            "value": "Die Wiese mit ihren Pavillons vom Méga Slide aus."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Het grasveld en de partytenten gezien vanaf Méga Slide."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il prato e i gazebo visti dal Méga Slide."
+          },
+          {
+            "languageCode": "es",
+            "value": "La pradera y sus cenadores vistos desde Méga Slide."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Łąka i altany widziane z Méga Slide."
+          },
+          {
+            "languageCode": "pt",
+            "value": "O prado e os toldos vistos do Méga Slide."
+          }
+        ],
+        "credits": [
+          {
+            "languageCode": "fr",
+            "value": "© Ô Parc — Berry Province."
+          },
+          {
+            "languageCode": "en",
+            "value": "© Ô Parc — Berry Province."
+          },
+          {
+            "languageCode": "de",
+            "value": "© Ô Parc — Berry Province."
+          },
+          {
+            "languageCode": "nl",
+            "value": "© Ô Parc — Berry Province."
+          },
+          {
+            "languageCode": "it",
+            "value": "© Ô Parc — Berry Province."
+          },
+          {
+            "languageCode": "es",
+            "value": "© Ô Parc — Berry Province."
+          },
+          {
+            "languageCode": "pl",
+            "value": "© Ô Parc — Berry Province."
+          },
+          {
+            "languageCode": "pt",
+            "value": "© Ô Parc — Berry Province."
+          }
+        ],
+        "tagIds": [],
+        "createdAt": "2026-10-05T20:16:13.261Z",
+        "updatedAt": "2026-11-15T05:33:30.436Z"
+      },
+      "references": {
+        "founderName": "Steeve, Charles et Guillaume",
+        "operatorName": "Ô Parc"
+      },
+      "rating": {
+        "targetType": "Park",
+        "targetId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "ratingCount": 0,
+        "ratingObservationCount": 0,
+        "uniqueContributorCount": 0,
+        "averageRating": 0,
+        "bayesianScore": 3.5,
+        "rank": null,
+        "generatedAtUtc": null,
+        "evidence": {
+          "level": "NoEvidence",
+          "isEligibleForMainRanking": false,
+          "directParkContributorCount": null,
+          "itemContributorCount": null,
+          "eligibleItemCount": null,
+          "eligibleCategoryCount": null,
+          "ineligibilityReason": "NoRatings",
+          "nextThreshold": 3
+        },
+        "methodologyVersion": "ratings-2026-01"
+      },
+      "hasCurrentPricing": false,
+      "hasPublicHistory": true,
+      "stats": {
+        "totalItems": 7,
+        "zoneCount": 2,
+        "mappableItemsCount": 0,
+        "officialMapsCount": 2,
+        "attractionCount": 0,
+        "restaurantCount": 2,
+        "showCount": 0,
+        "shopCount": 1,
+        "hotelCount": 0,
+        "countsByCategory": {
+          "Restaurant": 2,
+          "Service": 4,
+          "Shop": 1
+        }
+      }
+    }
+  },
+  "verificationNotes": [
+    "Contrôles anonymes par navigation publique normale. Aucun paramètre de purge, contournement, administration ni changement de code.",
+    "Un délai ponctuel sur la frise Tasses en portugais a été résolu par navigation normale ; aucune mutation de données.",
+    "Les premiers contrôles qui n’attendaient pas la navigation ont été écartés ; les observations finales attendent la route carte et le chargement de la carte 2026."
+  ],
+  "remainingInventory": [
+    "Twister géant cité par Koikispass en 2017 : identité et alias non établis.",
+    "Gonflable pieuvre orange et château jaune photographiés en 2020 : noms et correspondances non établis."
+  ],
+  "preservedGaps": [
+    "32 lieux sans photo propre ; deux lieux ont trois photographies distinctes.",
+    "Aucune position individuelle prouvée ; installations saisonnières démontées.",
+    "Plans 2025 et 2026 conservés ; aucune année artificielle attribuée au plan ancien non millésimé.",
+    "Descriptions courtes justifiées par les sources, sans remplissage.",
+    "Deux faits legacy laissés Draft ; aucun retrait de contenu public ni suppression."
+  ],
+  "runtimeReconciliation": {
+    "master": "152dedfe2442cf2d1c59c3d9d01d96fef92eaf52",
+    "mergeCommit": "cbac90f0",
+    "countries": 251,
+    "registryEntries": 12332,
+    "frEntries": 497,
+    "officialClientSha256": "5c0033b977ce5fd7022e9847d89f8deb0190d314505c76b9b4ed9a6af599b152",
+    "modifiedOfficialClient": false,
+    "statusReceipt": {
+      "receivedAtUtc": "2026-11-15T06:17:42.3470351Z",
+      "result": {
+        "serverTimeUtc": "2026-11-15T06:17:42.2052857Z",
+        "isBusy": false,
+        "hasActiveExport": false,
+        "canStartResourceIntensiveOperation": true,
+        "activeRequestCount": 0,
+        "activeExportCount": 0,
+        "maxConcurrentRequests": 2,
+        "maxConcurrentResourceIntensiveOperations": 1,
+        "recommendedPollIntervalSeconds": 5,
+        "retryAfterSeconds": 5,
+        "activeRequests": [],
+        "activeExports": []
+      },
+      "startedAtUtc": "2026-11-15T06:17:41.8334394Z",
+      "action": "Status"
+    }
+  },
+  "batchCompletedCount": 3,
+  "prCreated": false,
+  "versionChanged": false,
+  "postPublicationIdempotence": {
+    "13-idempotence-published-images-preview.json": {
+      "operationId": "6eb75f06-8372-416a-9591-b4c3350d5331",
+      "mode": "merge",
+      "isApplied": false,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T06:11:08.0580256Z",
+      "appliedAtUtc": null,
+      "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "targetParkName": "Ô Parc",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 19,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+          "entityKey": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+          "displayName": "Steeve, Charles et Guillaume",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "entityKey": "park",
+          "displayName": "Ô Parc",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+          "entityKey": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+          "displayName": "Chaises Volantes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+          "entityKey": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+          "displayName": "La Chenille",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "displayName": "Safari Buggy",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+          "entityKey": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+          "displayName": "Toboggan Konga",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+          "entityKey": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+          "displayName": "Trampolines",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "8976847a7add4386a59e30a020a80270",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "ad051cad0785452d93d515619bacea17",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "aae9deb7df2c4f49932e0ee1c0223ae9",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "e0f48f45039b4d06a10d8153d6eb705e",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "d88725b539ed461cb3de15199120b365",
+          "entityKey": null,
+          "displayName": "o-parc-8-1.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "9dd30bfd5ef34dd39d697238e1d220ae",
+          "entityKey": null,
+          "displayName": "codex-import.png",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "9fe7c4c0634d49b1af7f53709763619c",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "bddcd54627fe42c98abadc171f53b5cb",
+          "entityKey": null,
+          "displayName": "codex-import.webp",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "26ae6a5a3e5d47ac883f63e16089edb2",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "955672abe0e942bcba38bf146c4ba96f",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "6b98288bb740472f9380b57f16f436da",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "3b0ed553df9e43e294f3b23d63e587a7",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "13-idempotence-published-items-map-preview.json": {
+      "operationId": "9391239b-7a58-4690-a14f-d5399cbfbb04",
+      "mode": "merge",
+      "isApplied": false,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T06:11:17.8301182Z",
+      "appliedAtUtc": null,
+      "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "targetParkName": "Ô Parc",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 14,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkOfficialMap",
+          "entityId": "o-parc-map-2025",
+          "entityKey": "o-parc-map-2025",
+          "displayName": "Carte officielle 2025 (fr, Image)",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "entityKey": "park",
+          "displayName": "Ô Parc",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+          "entityKey": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+          "displayName": "Baby pirate",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+          "entityKey": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+          "displayName": "Bac à sable",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+          "entityKey": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+          "displayName": "Hamacs",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "87d59498-a481-46ba-9a52-475cca5b161c",
+          "entityKey": "87d59498-a481-46ba-9a52-475cca5b161c",
+          "displayName": "Le Gorille",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+          "entityKey": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+          "displayName": "Le Géant des mers",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+          "entityKey": "5d420723-34b1-472f-b4c7-d412c365eb11",
+          "displayName": "Parcours de l’extrême",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "42e01028-c743-47e0-8dbf-427f67cba865",
+          "entityKey": "42e01028-c743-47e0-8dbf-427f67cba865",
+          "displayName": "Parking",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+          "entityKey": "3f5145d6-bfad-4178-96f4-aee63661909f",
+          "displayName": "Pêche aux canards",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+          "entityKey": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+          "displayName": "Sanitaires et table à langer",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+          "entityKey": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+          "displayName": "Tables de pique-nique",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3907da4a-6351-420f-ac42-953e8814da0b",
+          "entityKey": "3907da4a-6351-420f-ac42-953e8814da0b",
+          "displayName": "Ô Petit Train",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+          "entityKey": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+          "displayName": "Ô p’tits quads",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "13-idempotence-published-history-preview.json": {
+      "operationId": "b507d3d0-6329-4c23-84b9-6285df2d7408",
+      "mode": "merge",
+      "isApplied": false,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T06:11:35.1476607Z",
+      "appliedAtUtc": null,
+      "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "targetParkName": "Ô Parc",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 7,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "entityKey": "park",
+          "displayName": "Ô Parc",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+          "entityKey": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+          "displayName": "Parcours de la Jungle",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "displayName": "Safari Buggy",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "86bf248f-070a-4b95-b4d2-962375788eb3",
+          "entityKey": "86bf248f-070a-4b95-b4d2-962375788eb3",
+          "displayName": "Ô Pirates",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "17a343b3-eb0c-47fb-993b-f3b33eb818fe",
+          "entityKey": "o-parc-pirates-opening-2024",
+          "displayName": "Ô Pirates arrive en 2024",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5e2e8be3-f24a-4f99-a5d0-0947becc6408",
+          "entityKey": "o-parc-jungle-opening-2025",
+          "displayName": "Le Parcours de la Jungle rejoint le plan 2025",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "efa7ed22-3d1c-47af-844a-395f2d9766db",
+          "entityKey": "o-parc-safari-buggy-opening-2025",
+          "displayName": "Safari Buggy rejoint la saison 2025",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  },
+  "visualMapReview": {
+    "checkedAtUtc": "2026-11-15T06:33:20.986722+00:00",
+    "screenshotSha256": "b351b02facdb84e03bd909e36fd025b15eaef1a4991e27c4bd6606c699eb47cf",
+    "naturalWidth": 2000,
+    "naturalHeight": 1414,
+    "imageLoaded": true,
+    "personallyReviewed": true,
+    "mobileViewportWidth": 390,
+    "result": "Plan 2025 visible, légende, sélecteur et deux liens de document lisibles sans débordement."
+  }
+}
