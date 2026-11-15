@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T17:22:40.1995488Z",
+  "lastDataIntegrationAt": "2026-11-15T17:41:54.5241231Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 9,
-  "realImportCount": 7,
-  "lastOperationId": "9c613e7d-bdd2-4b7a-b31b-233ce8bea9af",
+  "realApplyCount": 12,
+  "realImportCount": 10,
+  "lastOperationId": "82eeb5d6-5d1d-4ced-b7dc-6e5df830cd84",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -151,14 +151,19 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-06-first-item-descriptions-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-11-historical-identities-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-13-map-association-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-14-three-cinema-descriptions-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-14-three-cinema-descriptions-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-18-operator-description-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-first-park-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-20-four-experiences-20261115.json"
   ],
   "currentCoverage": {
     "items": 47,
     "publicItems": 0,
-    "describedItems8Languages": 6,
+    "describedItems8Languages": 10,
     "zones": 0,
-    "ownMedia": 7,
+    "ownMedia": 10,
+    "historyEvents": 4,
+    "privateHistoryEvents": 4,
     "officialMaps": 2
   },
   "lastApplyOperationId": "0be325ce-b104-4ece-b4bc-1ef49f0d3229",
@@ -197,6 +202,21 @@
       "imageId": "2eeb41e9d92a420e8ad3b1fbb98a7741",
       "createdAt": "2026-11-15T17:17:18.095Z",
       "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-logo-20261115.json"
+    },
+    {
+      "imageId": "305cf7c2f2b64a66ab8c8e1efb7efdc7",
+      "createdAt": "2026-11-15T17:29:24.142Z",
+      "proof": "vulcania-photo-15-namazu-wide-20261115.json"
+    },
+    {
+      "imageId": "9222c51f692d4d2bacbdc5ddb83631db",
+      "createdAt": "2026-11-15T17:29:36.519Z",
+      "proof": "vulcania-photo-16-namazu-close-20261115.json"
+    },
+    {
+      "imageId": "2609d09da2864a06aaff9d0e640db0cd",
+      "createdAt": "2026-11-15T17:29:47.928Z",
+      "proof": "vulcania-photo-17-abyss-cabin-20261115.json"
     }
   ],
   "photoMetadataUpdates": [

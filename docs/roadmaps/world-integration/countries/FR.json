@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T17:22:40.199Z",
+      "lastDataIntegrationAt": "2026-11-15T17:41:54.524Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38318,6 +38318,66 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-14-three-cinema-descriptions-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania :24notices personnelles en huit langues pour Abyss Explorer, Magma Explorer III et Dragon Ride, récits relus sur les sources du créateur. Identités, statuts et visibilité privée préservés; aucune publication."
+        },
+        {
+          "eventId": "import-photo-305cf7c2f2b64a66ab8c8e1efb7efdc7",
+          "appliedAt": "2026-11-15T17:29:24.142Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-15-namazu-wide-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Namazu importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-9222c51f692d4d2bacbdc5ddb83631db",
+          "appliedAt": "2026-11-15T17:29:36.519Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-16-namazu-close-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Namazu importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-2609d09da2864a06aaff9d0e640db0cd",
+          "appliedAt": "2026-11-15T17:29:47.928Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-17-abyss-cabin-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Abyss Explorer importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-4971988e-af67-40c2-b44b-06b5109a13c9",
+          "appliedAt": "2026-11-15T17:30:46.734Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-18-operator-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : description de la SEM Volcans rédigée et relue en huit langues; distinction entre exploitant sous délégation et Région propriétaire. Référence globale existante réutilisée, dates et contacts préservés."
+        },
+        {
+          "eventId": "apply-7f447e81-97b7-4821-9f69-c7d66d6a5671",
+          "appliedAt": "2026-11-15T17:37:10.870Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-first-park-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : quatre jalons privés (décision régionale1992, ouverture février2002, renouvellement2007, présentation Olympus25 du15avril2026),64titres/résumés personnels relus en huit langues. Dates et projets futurs distingués, sources officielles/CRC accessibles, aucune publication."
+        },
+        {
+          "eventId": "apply-82eeb5d6-5d1d-4ced-b7dc-6e5df830cd84",
+          "appliedAt": "2026-11-15T17:41:54.524Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-20-four-experiences-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : Terre en colère, Premier envol, Volcans sacrés et Réveil des géants décrits personnellement en huit langues, 32 notices relues et comparées aux réponses officielles. Fiction, risques climatiques et activité géologique distingués ; quatre lieux privés, aucune publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38370,7 +38430,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-9c613e7d-bdd2-4b7a-b31b-233ce8bea9af ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-82eeb5d6-5d1d-4ced-b7dc-6e5df830cd84 ; conserver les références de découverte."
       }
     },
     {

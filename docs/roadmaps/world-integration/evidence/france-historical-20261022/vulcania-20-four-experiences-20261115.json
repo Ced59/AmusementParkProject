@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+          "key": "vulcania-terre-colere",
+          "name": "Terre en colère",
+          "type": "InteractiveExperience",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Face aux phénomènes naturels</h2><p>Terre en colère met en scène une planète traversée par des événements extrêmes. Tempêtes, inondations, mégafeux et fonte des glaces côtoient séismes et éruptions dans cette expérience de cinéma dynamique. Les images plongent dans des situations d’urgence, à l’échelle de paysages bouleversés par l’eau, le feu ou les mouvements de la Terre.</p><p>Gaïa, une intelligence artificielle intégrée au récit, accompagne cette confrontation. Elle apporte des explications sur les phénomènes rencontrés et pose des questions au public : la découverte passe aussi par les réponses des visiteurs.</p><h2>Comprendre au milieu du spectacle</h2><p>La nouvelle version présentée en 2025 associe ainsi une mise en scène spectaculaire à un échange sur les connaissances. Son sujet rassemble plusieurs familles de risques naturels ; les événements climatiques et les manifestations de l’activité interne de la Terre y ont chacun leur place.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Confronting natural forces</h2><p>Terre en colère depicts a planet caught in extreme events. Storms, floods, megafires and melting ice appear alongside earthquakes and eruptions in this motion cinema experience. The images enter emergency situations, showing landscapes transformed by water, fire and movements within the Earth.</p><p>Gaïa, an artificial intelligence character within the story, accompanies this encounter. She explains the phenomena and asks the audience questions, making visitors’ answers part of the experience.</p><h2>Understanding the spectacle</h2><p>The version introduced in 2025 combines dramatic scenes with an exchange about what the audience knows. Its subject brings together several kinds of natural hazards, giving a place both to climatic events and to the effects of activity deep inside the Earth.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Naturgewalten aus nächster Nähe</h2><p>Terre en colère zeigt einen Planeten im Zeichen extremer Ereignisse. Stürme, Überschwemmungen, Großbrände und schmelzendes Eis stehen in diesem Bewegungskino neben Erdbeben und Vulkanausbrüchen. Die Bilder führen in Notlagen und zeigen Landschaften, die Wasser, Feuer oder Vorgänge im Erdinneren verändern.</p><p>Gaïa, eine künstliche Intelligenz innerhalb der Geschichte, begleitet diese Begegnung. Sie erläutert die jeweiligen Phänomene und stellt dem Publikum Fragen. Auch die Antworten der Besucher gehören damit zum Erlebnis.</p><h2>Wissen hinter eindrucksvollen Bildern</h2><p>Die 2025 vorgestellte Fassung verbindet dramatische Szenen mit einem Austausch über das Wissen des Publikums. Sie behandelt unterschiedliche Arten von Naturgefahren: Klimatische Ereignisse erhalten ebenso Raum wie die Folgen der Aktivität im Inneren der Erde.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Natuurgeweld van dichtbij</h2><p>Terre en colère toont een planeet die door extreme gebeurtenissen wordt getroffen. Stormen, overstromingen, megabranden en smeltend ijs staan in deze bewegingsbioscoop naast aardbevingen en uitbarstingen. De beelden voeren naar noodsituaties, met landschappen die door water, vuur of bewegingen in de aarde veranderen.</p><p>Gaïa, een kunstmatige intelligentie die deel uitmaakt van het verhaal, begeleidt deze confrontatie. Ze legt de verschijnselen uit en stelt vragen aan het publiek. Ook de antwoorden van bezoekers maken zo deel uit van de ervaring.</p><h2>De verschijnselen achter het spektakel</h2><p>De in 2025 gepresenteerde versie verbindt indrukwekkende scènes met een gesprek over kennis. Verschillende soorten natuurgevaar komen aan bod: zowel klimatologische gebeurtenissen als de gevolgen van activiteit diep in de aarde krijgen aandacht.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Frente a las fuerzas naturales</h2><p>Terre en colère representa un planeta sacudido por fenómenos extremos. Tormentas, inundaciones, grandes incendios y deshielo comparten protagonismo con terremotos y erupciones en esta experiencia de cine dinámico. Las imágenes muestran situaciones de emergencia y paisajes transformados por el agua, el fuego o la actividad interna de la Tierra.</p><p>Gaïa, una inteligencia artificial que forma parte del relato, acompaña este encuentro. Explica los fenómenos y plantea preguntas al público, de modo que las respuestas de los visitantes también intervienen en la experiencia.</p><h2>Comprender lo que muestra la pantalla</h2><p>La versión presentada en 2025 combina escenas espectaculares con un intercambio de conocimientos. Su temática reúne distintas familias de riesgos naturales, dando espacio tanto a los acontecimientos climáticos como a las manifestaciones de la actividad del interior terrestre.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Di fronte alle forze naturali</h2><p>Terre en colère mette in scena un pianeta attraversato da eventi estremi. Tempeste, inondazioni, grandi incendi e scioglimento dei ghiacci affiancano terremoti ed eruzioni in questa esperienza di cinema dinamico. Le immagini mostrano situazioni di emergenza e paesaggi trasformati dall’acqua, dal fuoco o dall’attività interna della Terra.</p><p>Gaïa, un’intelligenza artificiale inserita nel racconto, accompagna questo incontro. Spiega i fenomeni e rivolge domande al pubblico: anche le risposte dei visitatori contribuiscono così all’esperienza.</p><h2>Capire ciò che appare sullo schermo</h2><p>La versione presentata nel 2025 unisce scene spettacolari a uno scambio di conoscenze. Il tema comprende diverse famiglie di rischi naturali, lasciando spazio sia agli eventi climatici sia alle manifestazioni dell’attività nelle profondità della Terra.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>W obliczu sił natury</h2><p>Terre en colère przedstawia planetę doświadczającą ekstremalnych zjawisk. Burze, powodzie, wielkie pożary i topnienie lodu pojawiają się obok trzęsień ziemi i erupcji w tym kinie z efektami ruchowymi. Obrazy ukazują sytuacje zagrożenia oraz krajobrazy zmieniane przez wodę, ogień lub aktywność wnętrza Ziemi.</p><p>Gaïa, sztuczna inteligencja występująca w opowieści, towarzyszy widzom podczas tego spotkania. Wyjaśnia zjawiska i zadaje publiczności pytania, dzięki czemu odpowiedzi odwiedzających stają się częścią doświadczenia.</p><h2>Wiedza za widowiskowymi obrazami</h2><p>Wersja zaprezentowana w 2025 roku łączy dramatyczne sceny z wymianą wiedzy. Temat obejmuje różne rodzaje zagrożeń naturalnych: miejsce znajdują tu zarówno wydarzenia klimatyczne, jak i przejawy aktywności głęboko wewnątrz Ziemi.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Perante as forças da natureza</h2><p>Terre en colère apresenta um planeta atravessado por acontecimentos extremos. Tempestades, inundações, grandes incêndios e degelo surgem a par de sismos e erupções nesta experiência de cinema dinâmico. As imagens mostram situações de emergência e paisagens transformadas pela água, pelo fogo ou pela atividade interna da Terra.</p><p>Gaïa, uma inteligência artificial integrada na história, acompanha este encontro. Explica os fenómenos e coloca perguntas ao público, fazendo das respostas dos visitantes uma parte da experiência.</p><h2>Compreender as imagens</h2><p>A versão apresentada em 2025 combina cenas espetaculares com uma troca de conhecimentos. O seu tema reúne diferentes tipos de riscos naturais, dando espaço tanto aos acontecimentos climáticos como às manifestações da atividade nas profundezas da Terra.</p>"
+            }
+          ]
+        },
+        {
+          "id": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+          "key": "vulcania-premier-envol",
+          "name": "Premier envol",
+          "type": "Cinema",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>L’Auvergne dans le regard d’un aigle</h2><p>Premier envol suit les débuts d’un aigle royal dans le ciel auvergnat. Le paysage volcanique devient le territoire de son premier vol : la Chaîne des Puys et les reliefs d’Auvergne se découvrent depuis le point de vue de l’oiseau, au-dessus d’une nature façonnée par les volcans.</p><p>La projection enveloppante prolonge les images jusque sous le regard du spectateur. Elle donne à cette découverte de la région une impression de survol, où les paysages et la vie sauvage occupent le premier plan.</p><h2>Un paysage vivant</h2><p>Le récit s’attache aussi à la biodiversité de ces espaces. Le regard de l’aigle relie ainsi les reliefs volcaniques aux milieux naturels qui les recouvrent : l’Auvergne apparaît comme un territoire habité, au-delà de sa seule histoire géologique.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Auvergne through an eagle’s eyes</h2><p>Premier envol follows a golden eagle taking to the skies over Auvergne. The volcanic landscape becomes the setting for its first flight: the Chaîne des Puys and the region’s hills unfold from the bird’s perspective above countryside shaped by volcanoes.</p><p>Surrounding projections extend the imagery beneath the viewer’s gaze. They give this encounter with the region a sense of flight, placing the landscapes and wildlife at the heart of the experience.</p><h2>A living landscape</h2><p>The story also explores the biodiversity of these places. Through the eagle’s eyes, volcanic landforms connect with the natural habitats covering them. Auvergne emerges as a living territory whose identity reaches beyond its geological past.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die Auvergne mit den Augen eines Adlers</h2><p>Premier envol begleitet einen Steinadler bei seinem ersten Flug über die Auvergne. Die Vulkanlandschaft wird zum Schauplatz seiner Entdeckung: Die Chaîne des Puys und die Höhenzüge der Region entfalten sich aus der Perspektive des Vogels über einer von Vulkanen geprägten Natur.</p><p>Die umgebende Projektion setzt die Bilder unterhalb des Blickfelds fort. Dadurch erhält die Begegnung mit der Region den Eindruck eines Überflugs, bei dem Landschaften und Tierwelt im Mittelpunkt stehen.</p><h2>Eine belebte Landschaft</h2><p>Die Geschichte widmet sich auch der Artenvielfalt dieser Gebiete. Der Blick des Adlers verbindet vulkanische Geländeformen mit den Lebensräumen, die sie heute bedecken. So erscheint die Auvergne als lebendige Landschaft mit einer Identität, die über ihre geologische Vergangenheit hinausgeht.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Auvergne door de ogen van een arend</h2><p>Premier envol volgt de eerste vlucht van een steenarend boven Auvergne. Het vulkanische landschap wordt zijn ontdekkingsterrein: de Chaîne des Puys en de heuvels van de streek ontvouwen zich vanuit het perspectief van de vogel, boven een door vulkanen gevormde natuur.</p><p>De omringende projectie laat de beelden ook onder de blik van de toeschouwer doorlopen. Zo ontstaat de indruk boven de streek te vliegen, met landschappen en wilde dieren als middelpunt.</p><h2>Een levend landschap</h2><p>Het verhaal besteedt ook aandacht aan de biodiversiteit van deze gebieden. De blik van de arend verbindt de vulkanische vormen met de natuurlijke leefgebieden die ze bedekken. Auvergne verschijnt daardoor als een levend landschap met meer dan alleen een geologisch verleden.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Auvernia a través de un águila</h2><p>Premier envol acompaña el primer vuelo de un águila real sobre Auvernia. El paisaje volcánico se convierte en su territorio de descubrimiento: la Chaîne des Puys y los relieves de la región aparecen desde la perspectiva del ave, sobre una naturaleza modelada por los volcanes.</p><p>La proyección envolvente prolonga las imágenes por debajo de la mirada del espectador. Así, este encuentro con la región adquiere una sensación de vuelo, con los paisajes y la fauna como protagonistas.</p><h2>Un paisaje lleno de vida</h2><p>El relato también aborda la biodiversidad de estos espacios. La mirada del águila relaciona las formas volcánicas con los hábitats naturales que las cubren. Auvernia aparece como un territorio vivo cuya identidad va más allá de su pasado geológico.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>L’Alvernia attraverso gli occhi di un’aquila</h2><p>Premier envol segue il primo volo di un’aquila reale sopra l’Alvernia. Il paesaggio vulcanico diventa il suo territorio di scoperta: la Chaîne des Puys e i rilievi della regione appaiono dalla prospettiva dell’uccello, al di sopra di una natura modellata dai vulcani.</p><p>La proiezione avvolgente estende le immagini anche sotto lo sguardo dello spettatore. Questo incontro con la regione assume così la sensazione di un sorvolo, con paesaggi e fauna selvatica al centro dell’esperienza.</p><h2>Un paesaggio vivo</h2><p>Il racconto esplora anche la biodiversità di questi luoghi. Lo sguardo dell’aquila collega le forme vulcaniche agli ambienti naturali che le ricoprono. L’Alvernia appare come un territorio vivo, la cui identità si estende oltre il passato geologico.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Owernia widziana oczami orła</h2><p>Premier envol towarzyszy pierwszemu lotowi orła przedniego nad Owernią. Krajobraz wulkaniczny staje się obszarem jego odkryć: pasmo Chaîne des Puys i okoliczne wzgórza ukazują się z perspektywy ptaka, ponad przyrodą ukształtowaną przez wulkany.</p><p>Otaczająca widza projekcja rozciąga obrazy także poniżej jego spojrzenia. Spotkanie z regionem nabiera dzięki temu wrażenia przelotu, w którym na pierwszym planie znajdują się krajobrazy i dzikie zwierzęta.</p><h2>Żywy krajobraz</h2><p>Opowieść przybliża również różnorodność biologiczną tych miejsc. Spojrzenie orła łączy wulkaniczne formy terenu z pokrywającymi je siedliskami. Owernia jawi się jako żywy region, którego tożsamość wykracza poza geologiczną przeszłość.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A Auvérnia pelos olhos de uma águia</h2><p>Premier envol acompanha o primeiro voo de uma águia-real sobre a Auvérnia. A paisagem vulcânica torna-se o seu território de descoberta: a Chaîne des Puys e os relevos da região surgem da perspetiva da ave, acima de uma natureza moldada pelos vulcões.</p><p>A projeção envolvente prolonga as imagens por baixo do olhar do espetador. Este encontro com a região ganha assim uma sensação de sobrevoo, com as paisagens e a vida selvagem no centro da experiência.</p><h2>Uma paisagem viva</h2><p>A história também explora a biodiversidade destes espaços. O olhar da águia liga as formas vulcânicas aos habitats naturais que as cobrem. A Auvérnia surge como um território vivo, cuja identidade vai além do seu passado geológico.</p>"
+            }
+          ]
+        },
+        {
+          "id": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+          "key": "vulcania-volcans-sacres",
+          "name": "Volcans sacrés",
+          "type": "DarkRide",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les volcans dans les légendes</h2><p>Volcans sacrés explore les récits nés de la présence des volcans dans la vie des peuples. La peur des éruptions et l’attrait pour ces montagnes nourrissent un voyage à travers les croyances : les paysages volcaniques deviennent le cadre d’histoires transmises pour donner un sens à une puissance difficile à maîtriser.</p><p>Une coulée de lave reconstituée sert de fil conducteur à cette découverte. Les décors, les personnages animés et les ambiances sonores donnent forme aux légendes, en plaçant les visiteurs au milieu de scènes inspirées de cette relation entre les hommes et les volcans.</p><h2>Un imaginaire lié au feu</h2><p>Le parcours s’intéresse à la dimension culturelle du volcanisme. La montagne menaçante peut aussi fasciner et prendre une place sacrée dans les récits ; cette ambiguïté donne à l’expérience son atmosphère, entre inquiétude et attirance.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Volcanoes in legend</h2><p>Volcans sacrés explores stories born from the presence of volcanoes in people’s lives. Fear of eruptions and fascination with these mountains shape a journey through beliefs. Volcanic landscapes become the setting for tales passed down to make sense of a power that is difficult to control.</p><p>A recreated lava flow provides the thread for this encounter. Sets, animated figures and soundscapes give form to the legends, placing visitors among scenes inspired by the relationship between people and volcanoes.</p><h2>Imagining the power of fire</h2><p>The attraction explores the cultural meaning of volcanism. A threatening mountain can also inspire fascination and become sacred within a story. This ambiguity gives the experience its atmosphere, poised between unease and attraction.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Vulkane in den Legenden</h2><p>Volcans sacrés erkundet Geschichten, die aus dem Zusammenleben von Menschen und Vulkanen entstanden sind. Die Furcht vor Ausbrüchen und die Faszination für diese Berge prägen eine Reise durch Glaubensvorstellungen. Vulkanlandschaften werden zum Schauplatz überlieferter Erzählungen, die einer schwer beherrschbaren Kraft Bedeutung verleihen.</p><p>Ein nachgebildeter Lavastrom bildet den roten Faden. Kulissen, animierte Figuren und Klangwelten geben den Legenden Gestalt und versetzen die Besucher in Szenen, die von der Beziehung zwischen Menschen und Vulkanen inspiriert sind.</p><h2>Die Vorstellungskraft des Feuers</h2><p>Die Attraktion widmet sich der kulturellen Bedeutung des Vulkanismus. Ein bedrohlicher Berg kann zugleich faszinieren und in Erzählungen eine heilige Stellung einnehmen. Diese Doppeldeutigkeit prägt die Atmosphäre zwischen Unbehagen und Anziehung.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Vulkanen in legenden</h2><p>Volcans sacrés verkent verhalen die ontstonden doordat vulkanen deel uitmaakten van het leven van mensen. Angst voor uitbarstingen en fascinatie voor deze bergen vormen een reis door geloofsvoorstellingen. Vulkanische landschappen worden het decor voor overgeleverde verhalen die betekenis geven aan een moeilijk te beheersen kracht.</p><p>Een nagebootste lavastroom vormt de rode draad. Decors, bewegende figuren en geluidslandschappen geven de legenden vorm en plaatsen bezoekers midden in scènes die zijn geïnspireerd op de verhouding tussen mensen en vulkanen.</p><h2>De verbeelding van vuur</h2><p>De attractie onderzoekt de culturele betekenis van vulkanisme. Een dreigende berg kan tegelijk fascineren en een heilige plaats innemen in verhalen. Die dubbelzinnigheid bepaalt de sfeer, tussen onrust en aantrekkingskracht.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Los volcanes en las leyendas</h2><p>Volcans sacrés explora relatos nacidos de la presencia de los volcanes en la vida de los pueblos. El temor a las erupciones y la fascinación por estas montañas dan forma a un viaje por las creencias. Los paisajes volcánicos se convierten en escenarios de historias transmitidas para dar sentido a una fuerza difícil de dominar.</p><p>Una colada de lava recreada sirve de hilo conductor. Los decorados, las figuras animadas y los ambientes sonoros dan forma a las leyendas, situando a los visitantes entre escenas inspiradas en la relación entre las personas y los volcanes.</p><h2>El imaginario del fuego</h2><p>La atracción aborda la dimensión cultural del vulcanismo. Una montaña amenazante también puede fascinar y adquirir un lugar sagrado en los relatos. Esa ambigüedad define la atmósfera de la experiencia, entre inquietud y atracción.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>I vulcani nelle leggende</h2><p>Volcans sacrés esplora racconti nati dalla presenza dei vulcani nella vita dei popoli. La paura delle eruzioni e il fascino di queste montagne delineano un viaggio fra le credenze. I paesaggi vulcanici diventano lo scenario di storie tramandate per dare un significato a una forza difficile da controllare.</p><p>Una colata lavica ricostruita costituisce il filo conduttore. Scenografie, figure animate e ambientazioni sonore danno forma alle leggende, collocando i visitatori fra scene ispirate al rapporto tra gli esseri umani e i vulcani.</p><h2>L’immaginario del fuoco</h2><p>L’attrazione affronta la dimensione culturale del vulcanismo. Una montagna minacciosa può anche affascinare e assumere un ruolo sacro nei racconti. Questa ambiguità definisce l’atmosfera dell’esperienza, fra inquietudine e attrazione.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wulkany w legendach</h2><p>Volcans sacrés przedstawia opowieści zrodzone z obecności wulkanów w życiu ludzi. Strach przed erupcjami i fascynacja tymi górami wyznaczają podróż przez wierzenia. Krajobrazy wulkaniczne stają się scenerią przekazywanych z pokolenia na pokolenie historii, które nadają znaczenie trudnej do opanowania sile.</p><p>Odtworzony strumień lawy stanowi motyw przewodni tej wyprawy. Dekoracje, ruchome postacie i dźwięki nadają legendom formę, umieszczając widzów pośród scen inspirowanych relacją człowieka z wulkanami.</p><h2>Wyobraźnia związana z ogniem</h2><p>Atrakcja poświęcona jest kulturowemu wymiarowi wulkanizmu. Groźna góra może również fascynować i zajmować w opowieściach święte miejsce. Ta dwoistość kształtuje atmosferę doświadczenia, zawieszoną między niepokojem a przyciąganiem.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Os vulcões nas lendas</h2><p>Volcans sacrés explora histórias nascidas da presença dos vulcões na vida dos povos. O medo das erupções e o fascínio por estas montanhas dão forma a uma viagem pelas crenças. As paisagens vulcânicas tornam-se cenários de relatos transmitidos para dar sentido a uma força difícil de dominar.</p><p>Uma escoada de lava recriada serve de fio condutor. Os cenários, as figuras animadas e os ambientes sonoros dão forma às lendas, colocando os visitantes entre cenas inspiradas na relação entre as pessoas e os vulcões.</p><h2>O imaginário do fogo</h2><p>A atração aborda a dimensão cultural do vulcanismo. Uma montanha ameaçadora pode também fascinar e ocupar um lugar sagrado nas histórias. Essa ambiguidade define a atmosfera da experiência, entre inquietação e atração.</p>"
+            }
+          ]
+        },
+        {
+          "id": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+          "key": "vulcania-reveil-geants",
+          "name": "Réveil des géants d’Auvergne",
+          "type": "Cinema",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Et si les volcans d’Auvergne se réveillaient ?</h2><p>Réveil des géants d’Auvergne transforme une question sur le sommeil des volcans en scénario de cinéma. Les paysages de la Chaîne des Puys servent de cadre à un réveil imaginé, où le calme apparent des reliefs laisse place à plusieurs manifestations de l’activité volcanique.</p><p>Le film mêle des vues réelles à des scènes reconstituées. Éruptions explosives, nuées ardentes et coulées de lave donnent des visages différents à cette hypothèse, dans une salle où le relief et les effets renforcent la proximité des événements.</p><h2>Une hypothèse mise en images</h2><p>Le spectacle raconte les conséquences imaginées d’un réveil dans un paysage auvergnat reconnaissable. Il donne corps à cette hypothèse à travers une fiction ancrée dans le territoire de Vulcania, où la familiarité des reliefs rend la puissance des éruptions particulièrement frappante.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>What if Auvergne’s volcanoes awoke?</h2><p>Réveil des géants d’Auvergne turns a question about dormant volcanoes into a cinema scenario. The landscapes of the Chaîne des Puys provide the setting for an imagined awakening, as apparently peaceful hills give way to several expressions of volcanic activity.</p><p>The film combines real views with reconstructed scenes. Explosive eruptions, pyroclastic flows and streams of lava reveal different aspects of this hypothesis, in a theatre where stereoscopic imagery and effects bring the events closer to the audience.</p><h2>Imagining an awakening</h2><p>The show imagines the consequences of an awakening in a recognisable Auvergne landscape. Its fictional story is rooted in the territory around Vulcania, where familiar landforms make the power of the eruptions particularly striking.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Was wäre, wenn die Vulkane der Auvergne erwachten?</h2><p>Réveil des géants d’Auvergne verwandelt die Frage nach ruhenden Vulkanen in ein Filmszenario. Die Landschaften der Chaîne des Puys bilden die Kulisse eines erdachten Erwachens. Hinter der scheinbaren Ruhe der Höhenzüge treten unterschiedliche Erscheinungen vulkanischer Aktivität hervor.</p><p>Der Film verbindet reale Aufnahmen mit nachgestellten Szenen. Explosive Ausbrüche, pyroklastische Ströme und Lavaflüsse zeigen verschiedene Seiten dieser Vorstellung. Räumliche Bilder und Effekte lassen die Ereignisse im Kinosaal näher rücken.</p><h2>Ein gedankliches Szenario im Film</h2><p>Die Vorstellung erzählt von den erdachten Folgen eines Erwachens in einer wiedererkennbaren Landschaft der Auvergne. Ihre fiktive Geschichte ist in der Umgebung von Vulcania verankert. Gerade die vertrauten Geländeformen lassen die Kraft der Ausbrüche besonders eindrucksvoll erscheinen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Wat als de vulkanen van Auvergne ontwaken?</h2><p>Réveil des géants d’Auvergne maakt van een vraag over slapende vulkanen een filmscenario. De landschappen van de Chaîne des Puys vormen het decor voor een denkbeeldig ontwaken. De schijnbare rust van de heuvels maakt plaats voor verschillende uitingen van vulkanische activiteit.</p><p>De film combineert echte opnamen met nagebootste scènes. Explosieve uitbarstingen, pyroclastische stromen en lavastromen laten verschillende kanten van dit scenario zien. Driedimensionale beelden en effecten brengen de gebeurtenissen in de zaal dichterbij.</p><h2>Een denkbeeldig ontwaken in beeld</h2><p>De voorstelling verbeeldt de gevolgen van een ontwaken in een herkenbaar landschap van Auvergne. Het fictieve verhaal is geworteld in de omgeving van Vulcania, waar de vertrouwde vormen van het landschap de kracht van de uitbarstingen bijzonder indringend maken.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>¿Y si despertaran los volcanes de Auvernia?</h2><p>Réveil des géants d’Auvergne convierte una pregunta sobre los volcanes dormidos en un argumento cinematográfico. Los paisajes de la Chaîne des Puys sirven de escenario a un despertar imaginado, en el que la aparente calma del relieve da paso a distintas manifestaciones de actividad volcánica.</p><p>La película mezcla imágenes reales con escenas recreadas. Erupciones explosivas, flujos piroclásticos y coladas de lava muestran distintas facetas de esta hipótesis. Las imágenes en relieve y los efectos acercan los acontecimientos al público de la sala.</p><h2>Una hipótesis llevada al cine</h2><p>El espectáculo imagina las consecuencias de un despertar en un paisaje reconocible de Auvernia. Su ficción está arraigada en el territorio que rodea Vulcania, donde la familiaridad del relieve hace especialmente impactante la fuerza de las erupciones.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>E se i vulcani dell’Alvernia si risvegliassero?</h2><p>Réveil des géants d’Auvergne trasforma una domanda sui vulcani dormienti in un racconto cinematografico. I paesaggi della Chaîne des Puys fanno da scenario a un risveglio immaginato, nel quale l’apparente quiete dei rilievi lascia spazio a diverse manifestazioni dell’attività vulcanica.</p><p>Il film unisce riprese reali e scene ricostruite. Eruzioni esplosive, flussi piroclastici e colate di lava mostrano diversi aspetti di questa ipotesi. Le immagini tridimensionali e gli effetti avvicinano gli avvenimenti al pubblico della sala.</p><h2>Un’ipotesi raccontata per immagini</h2><p>Lo spettacolo immagina le conseguenze di un risveglio in un paesaggio riconoscibile dell’Alvernia. La sua storia di fantasia è radicata nel territorio che circonda Vulcania, dove la familiarità dei rilievi rende particolarmente impressionante la forza delle eruzioni.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Co by było, gdyby wulkany Owernii się obudziły?</h2><p>Réveil des géants d’Auvergne zamienia pytanie o uśpione wulkany w filmową opowieść. Krajobrazy Chaîne des Puys stanowią scenerię wyobrażonego przebudzenia, w którym pozorny spokój wzgórz ustępuje różnym przejawom aktywności wulkanicznej.</p><p>Film łączy rzeczywiste ujęcia z odtworzonymi scenami. Gwałtowne erupcje, spływy piroklastyczne i potoki lawy przedstawiają rozmaite aspekty tego założenia. Trójwymiarowe obrazy i efekty przybliżają wydarzenia publiczności w sali.</p><h2>Hipoteza opowiedziana obrazami</h2><p>Widowisko wyobraża skutki przebudzenia w rozpoznawalnym krajobrazie Owernii. Fikcyjna opowieść jest osadzona w okolicach Vulcanii, gdzie znajome kształty terenu sprawiają, że siła erupcji robi szczególnie duże wrażenie.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>E se os vulcões da Auvérnia despertassem?</h2><p>Réveil des géants d’Auvergne transforma uma pergunta sobre vulcões adormecidos numa história de cinema. As paisagens da Chaîne des Puys servem de cenário a um despertar imaginado, em que a aparente tranquilidade dos relevos dá lugar a várias manifestações da atividade vulcânica.</p><p>O filme combina imagens reais com cenas recriadas. Erupções explosivas, fluxos piroclásticos e escoadas de lava mostram diferentes aspetos desta hipótese. As imagens em relevo e os efeitos aproximam os acontecimentos do público na sala.</p><h2>Uma hipótese contada em imagens</h2><p>O espetáculo imagina as consequências de um despertar numa paisagem reconhecível da Auvérnia. A sua ficção está enraizada no território que rodeia Vulcania, onde a familiaridade dos relevos torna a força das erupções particularmente impressionante.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-four-experiences",
+        "notes": "32 descriptions personally written and reviewed in eight languages; official pages read in full. Terre en colère: avoid the source wording that conflates climatic events with causes of earthquakes and eruptions. Réveil: hypothetical scenario, not prediction or current eruption. Premier envol: golden eagle and Auvergne landscape, no invented named landmarks. Volcans sacrés: legends and staged settings, no specific culture inferred. Two headings and three paragraphs per language; source-limited editorial depth recorded, no filler, ride specifications kept out of copy. Sources: https://www.vulcania.com/animation/terre-en-colere/ ; https://www.vulcania.com/animation/premier-envol/ ; https://www.vulcania.com/animation/volcans-sacres/ ; https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/ ; https://www.vulcania.com/actualites/olympus-25/ ."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "495ea42f-4af0-4526-a16a-9fbf2db3c095",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:41:36.3530856Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "entityKey": "vulcania-terre-colere",
+        "displayName": "Terre en colère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Naturgewalten aus nächster Nähe</h2><p>Terre en colère zeigt einen Planeten im Zeichen extremer Ereignisse. Stürme, Überschwemmungen, Großbrände und schmelzendes Eis stehen in diesem Bewegungskino neben Erdbeben und Vulkanausbrüchen. Die Bilder führen in Notlagen und zeigen Landschaften, die Wasser, Feuer oder Vorgänge im Erdinneren verändern.</p><p>Gaïa, eine künstliche Intelligenz innerhalb der Geschichte, begleitet diese Begegnung. Sie erläutert die jeweiligen Phänomene und stellt dem Publikum Fragen. Auch die Antworten der Besucher gehören damit zum Erlebnis.</p><h2>Wissen hinter eindrucksvollen Bildern</h2><p>Die 2025 vorgestellte Fassung verbindet dramatische Szenen mit einem Austausch über das Wissen des Publikums. Sie behandelt unterschiedliche Arten von Naturgefahren: Klimatische Ereignisse erhalten ebenso Raum wie die Folgen der Aktivität im Inneren der Erde.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Confronting natural forces</h2><p>Terre en colère depicts a planet caught in extreme events. Storms, floods, megafires and melting ice appear alongside earthquakes and eruptions in this motion cinema experience. The images enter emergency situations, showing landscapes transformed by water, fire and movements within the Earth.</p><p>Gaïa, an artificial intelligence character within the story, accompanies this encounter. She explains the phenomena and asks the audience questions, making visitors’ answers part of the experience.</p><h2>Understanding the spectacle</h2><p>The version introduced in 2025 combines dramatic scenes with an exchange about what the audience knows. Its subject brings together several kinds of natural hazards, giving a place both to climatic events and to the effects of activity deep inside the Earth.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Frente a las fuerzas naturales</h2><p>Terre en colère representa un planeta sacudido por fenómenos extremos. Tormentas, inundaciones, grandes incendios y deshielo comparten protagonismo con terremotos y erupciones en esta experiencia de cine dinámico. Las imágenes muestran situaciones de emergencia y paisajes transformados por el agua, el fuego o la actividad interna de la Tierra.</p><p>Gaïa, una inteligencia artificial que forma parte del relato, acompaña este encuentro. Explica los fenómenos y plantea preguntas al público, de modo que las respuestas de los visitantes también intervienen en la experiencia.</p><h2>Comprender lo que muestra la pantalla</h2><p>La versión presentada en 2025 combina escenas espectaculares con un intercambio de conocimientos. Su temática reúne distintas familias de riesgos naturales, dando espacio tanto a los acontecimientos climáticos como a las manifestaciones de la actividad del interior terrestre.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Face aux phénomènes naturels</h2><p>Terre en colère met en scène une planète traversée par des événements extrêmes. Tempêtes, inondations, mégafeux et fonte des glaces côtoient séismes et éruptions dans cette expérience de cinéma dynamique. Les images plongent dans des situations d’urgence, à l’échelle de paysages bouleversés par l’eau, le feu ou les mouvements de la Terre.</p><p>Gaïa, une intelligence artificielle intégrée au récit, accompagne cette confrontation. Elle apporte des explications sur les phénomènes rencontrés et pose des questions au public : la découverte passe aussi par les réponses des visiteurs.</p><h2>Comprendre au milieu du spectacle</h2><p>La nouvelle version présentée en 2025 associe ainsi une mise en scène spectaculaire à un échange sur les connaissances. Son sujet rassemble plusieurs familles de risques naturels ; les événements climatiques et les manifestations de l’activité interne de la Terre y ont chacun leur place.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Di fronte alle forze naturali</h2><p>Terre en colère mette in scena un pianeta attraversato da eventi estremi. Tempeste, inondazioni, grandi incendi e scioglimento dei ghiacci affiancano terremoti ed eruzioni in questa esperienza di cinema dinamico. Le immagini mostrano situazioni di emergenza e paesaggi trasformati dall’acqua, dal fuoco o dall’attività interna della Terra.</p><p>Gaïa, un’intelligenza artificiale inserita nel racconto, accompagna questo incontro. Spiega i fenomeni e rivolge domande al pubblico: anche le risposte dei visitatori contribuiscono così all’esperienza.</p><h2>Capire ciò che appare sullo schermo</h2><p>La versione presentata nel 2025 unisce scene spettacolari a uno scambio di conoscenze. Il tema comprende diverse famiglie di rischi naturali, lasciando spazio sia agli eventi climatici sia alle manifestazioni dell’attività nelle profondità della Terra.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Natuurgeweld van dichtbij</h2><p>Terre en colère toont een planeet die door extreme gebeurtenissen wordt getroffen. Stormen, overstromingen, megabranden en smeltend ijs staan in deze bewegingsbioscoop naast aardbevingen en uitbarstingen. De beelden voeren naar noodsituaties, met landschappen die door water, vuur of bewegingen in de aarde veranderen.</p><p>Gaïa, een kunstmatige intelligentie die deel uitmaakt van het verhaal, begeleidt deze confrontatie. Ze legt de verschijnselen uit en stelt vragen aan het publiek. Ook de antwoorden van bezoekers maken zo deel uit van de ervaring.</p><h2>De verschijnselen achter het spektakel</h2><p>De in 2025 gepresenteerde versie verbindt indrukwekkende scènes met een gesprek over kennis. Verschillende soorten natuurgevaar komen aan bod: zowel klimatologische gebeurtenissen als de gevolgen van activiteit diep in de aarde krijgen aandacht.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>W obliczu sił natury</h2><p>Terre en colère przedstawia planetę doświadczającą ekstremalnych zjawisk. Burze, powodzie, wielkie pożary i topnienie lodu pojawiają się obok trzęsień ziemi i erupcji w tym kinie z efektami ruchowymi. Obrazy ukazują sytuacje zagrożenia oraz krajobrazy zmieniane przez wodę, ogień lub aktywność wnętrza Ziemi.</p><p>Gaïa, sztuczna inteligencja występująca w opowieści, towarzyszy widzom podczas tego spotkania. Wyjaśnia zjawiska i zadaje publiczności pytania, dzięki czemu odpowiedzi odwiedzających stają się częścią doświadczenia.</p><h2>Wiedza za widowiskowymi obrazami</h2><p>Wersja zaprezentowana w 2025 roku łączy dramatyczne sceny z wymianą wiedzy. Temat obejmuje różne rodzaje zagrożeń naturalnych: miejsce znajdują tu zarówno wydarzenia klimatyczne, jak i przejawy aktywności głęboko wewnątrz Ziemi.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Perante as forças da natureza</h2><p>Terre en colère apresenta um planeta atravessado por acontecimentos extremos. Tempestades, inundações, grandes incêndios e degelo surgem a par de sismos e erupções nesta experiência de cinema dinâmico. As imagens mostram situações de emergência e paisagens transformadas pela água, pelo fogo ou pela atividade interna da Terra.</p><p>Gaïa, uma inteligência artificial integrada na história, acompanha este encontro. Explica os fenómenos e coloca perguntas ao público, fazendo das respostas dos visitantes uma parte da experiência.</p><h2>Compreender as imagens</h2><p>A versão apresentada em 2025 combina cenas espetaculares com uma troca de conhecimentos. O seu tema reúne diferentes tipos de riscos naturais, dando espaço tanto aos acontecimentos climáticos como às manifestações da atividade nas profundezas da Terra.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "entityKey": "vulcania-premier-envol",
+        "displayName": "Premier envol",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Auvergne mit den Augen eines Adlers</h2><p>Premier envol begleitet einen Steinadler bei seinem ersten Flug über die Auvergne. Die Vulkanlandschaft wird zum Schauplatz seiner Entdeckung: Die Chaîne des Puys und die Höhenzüge der Region entfalten sich aus der Perspektive des Vogels über einer von Vulkanen geprägten Natur.</p><p>Die umgebende Projektion setzt die Bilder unterhalb des Blickfelds fort. Dadurch erhält die Begegnung mit der Region den Eindruck eines Überflugs, bei dem Landschaften und Tierwelt im Mittelpunkt stehen.</p><h2>Eine belebte Landschaft</h2><p>Die Geschichte widmet sich auch der Artenvielfalt dieser Gebiete. Der Blick des Adlers verbindet vulkanische Geländeformen mit den Lebensräumen, die sie heute bedecken. So erscheint die Auvergne als lebendige Landschaft mit einer Identität, die über ihre geologische Vergangenheit hinausgeht.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne through an eagle’s eyes</h2><p>Premier envol follows a golden eagle taking to the skies over Auvergne. The volcanic landscape becomes the setting for its first flight: the Chaîne des Puys and the region’s hills unfold from the bird’s perspective above countryside shaped by volcanoes.</p><p>Surrounding projections extend the imagery beneath the viewer’s gaze. They give this encounter with the region a sense of flight, placing the landscapes and wildlife at the heart of the experience.</p><h2>A living landscape</h2><p>The story also explores the biodiversity of these places. Through the eagle’s eyes, volcanic landforms connect with the natural habitats covering them. Auvergne emerges as a living territory whose identity reaches beyond its geological past.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Auvernia a través de un águila</h2><p>Premier envol acompaña el primer vuelo de un águila real sobre Auvernia. El paisaje volcánico se convierte en su territorio de descubrimiento: la Chaîne des Puys y los relieves de la región aparecen desde la perspectiva del ave, sobre una naturaleza modelada por los volcanes.</p><p>La proyección envolvente prolonga las imágenes por debajo de la mirada del espectador. Así, este encuentro con la región adquiere una sensación de vuelo, con los paisajes y la fauna como protagonistas.</p><h2>Un paisaje lleno de vida</h2><p>El relato también aborda la biodiversidad de estos espacios. La mirada del águila relaciona las formas volcánicas con los hábitats naturales que las cubren. Auvernia aparece como un territorio vivo cuya identidad va más allá de su pasado geológico.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’Auvergne dans le regard d’un aigle</h2><p>Premier envol suit les débuts d’un aigle royal dans le ciel auvergnat. Le paysage volcanique devient le territoire de son premier vol : la Chaîne des Puys et les reliefs d’Auvergne se découvrent depuis le point de vue de l’oiseau, au-dessus d’une nature façonnée par les volcans.</p><p>La projection enveloppante prolonge les images jusque sous le regard du spectateur. Elle donne à cette découverte de la région une impression de survol, où les paysages et la vie sauvage occupent le premier plan.</p><h2>Un paysage vivant</h2><p>Le récit s’attache aussi à la biodiversité de ces espaces. Le regard de l’aigle relie ainsi les reliefs volcaniques aux milieux naturels qui les recouvrent : l’Auvergne apparaît comme un territoire habité, au-delà de sa seule histoire géologique.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>L’Alvernia attraverso gli occhi di un’aquila</h2><p>Premier envol segue il primo volo di un’aquila reale sopra l’Alvernia. Il paesaggio vulcanico diventa il suo territorio di scoperta: la Chaîne des Puys e i rilievi della regione appaiono dalla prospettiva dell’uccello, al di sopra di una natura modellata dai vulcani.</p><p>La proiezione avvolgente estende le immagini anche sotto lo sguardo dello spettatore. Questo incontro con la regione assume così la sensazione di un sorvolo, con paesaggi e fauna selvatica al centro dell’esperienza.</p><h2>Un paesaggio vivo</h2><p>Il racconto esplora anche la biodiversità di questi luoghi. Lo sguardo dell’aquila collega le forme vulcaniche agli ambienti naturali che le ricoprono. L’Alvernia appare come un territorio vivo, la cui identità si estende oltre il passato geologico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne door de ogen van een arend</h2><p>Premier envol volgt de eerste vlucht van een steenarend boven Auvergne. Het vulkanische landschap wordt zijn ontdekkingsterrein: de Chaîne des Puys en de heuvels van de streek ontvouwen zich vanuit het perspectief van de vogel, boven een door vulkanen gevormde natuur.</p><p>De omringende projectie laat de beelden ook onder de blik van de toeschouwer doorlopen. Zo ontstaat de indruk boven de streek te vliegen, met landschappen en wilde dieren als middelpunt.</p><h2>Een levend landschap</h2><p>Het verhaal besteedt ook aandacht aan de biodiversiteit van deze gebieden. De blik van de arend verbindt de vulkanische vormen met de natuurlijke leefgebieden die ze bedekken. Auvergne verschijnt daardoor als een levend landschap met meer dan alleen een geologisch verleden.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Owernia widziana oczami orła</h2><p>Premier envol towarzyszy pierwszemu lotowi orła przedniego nad Owernią. Krajobraz wulkaniczny staje się obszarem jego odkryć: pasmo Chaîne des Puys i okoliczne wzgórza ukazują się z perspektywy ptaka, ponad przyrodą ukształtowaną przez wulkany.</p><p>Otaczająca widza projekcja rozciąga obrazy także poniżej jego spojrzenia. Spotkanie z regionem nabiera dzięki temu wrażenia przelotu, w którym na pierwszym planie znajdują się krajobrazy i dzikie zwierzęta.</p><h2>Żywy krajobraz</h2><p>Opowieść przybliża również różnorodność biologiczną tych miejsc. Spojrzenie orła łączy wulkaniczne formy terenu z pokrywającymi je siedliskami. Owernia jawi się jako żywy region, którego tożsamość wykracza poza geologiczną przeszłość.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Auvérnia pelos olhos de uma águia</h2><p>Premier envol acompanha o primeiro voo de uma águia-real sobre a Auvérnia. A paisagem vulcânica torna-se o seu território de descoberta: a Chaîne des Puys e os relevos da região surgem da perspetiva da ave, acima de uma natureza moldada pelos vulcões.</p><p>A projeção envolvente prolonga as imagens por baixo do olhar do espetador. Este encontro com a região ganha assim uma sensação de sobrevoo, com as paisagens e a vida selvagem no centro da experiência.</p><h2>Uma paisagem viva</h2><p>A história também explora a biodiversidade destes espaços. O olhar da águia liga as formas vulcânicas aos habitats naturais que as cobrem. A Auvérnia surge como um território vivo, cuja identidade vai além do seu passado geológico.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+        "entityKey": "vulcania-volcans-sacres",
+        "displayName": "Volcans sacrés",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Vulkane in den Legenden</h2><p>Volcans sacrés erkundet Geschichten, die aus dem Zusammenleben von Menschen und Vulkanen entstanden sind. Die Furcht vor Ausbrüchen und die Faszination für diese Berge prägen eine Reise durch Glaubensvorstellungen. Vulkanlandschaften werden zum Schauplatz überlieferter Erzählungen, die einer schwer beherrschbaren Kraft Bedeutung verleihen.</p><p>Ein nachgebildeter Lavastrom bildet den roten Faden. Kulissen, animierte Figuren und Klangwelten geben den Legenden Gestalt und versetzen die Besucher in Szenen, die von der Beziehung zwischen Menschen und Vulkanen inspiriert sind.</p><h2>Die Vorstellungskraft des Feuers</h2><p>Die Attraktion widmet sich der kulturellen Bedeutung des Vulkanismus. Ein bedrohlicher Berg kann zugleich faszinieren und in Erzählungen eine heilige Stellung einnehmen. Diese Doppeldeutigkeit prägt die Atmosphäre zwischen Unbehagen und Anziehung.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Volcanoes in legend</h2><p>Volcans sacrés explores stories born from the presence of volcanoes in people’s lives. Fear of eruptions and fascination with these mountains shape a journey through beliefs. Volcanic landscapes become the setting for tales passed down to make sense of a power that is difficult to control.</p><p>A recreated lava flow provides the thread for this encounter. Sets, animated figures and soundscapes give form to the legends, placing visitors among scenes inspired by the relationship between people and volcanoes.</p><h2>Imagining the power of fire</h2><p>The attraction explores the cultural meaning of volcanism. A threatening mountain can also inspire fascination and become sacred within a story. This ambiguity gives the experience its atmosphere, poised between unease and attraction.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los volcanes en las leyendas</h2><p>Volcans sacrés explora relatos nacidos de la presencia de los volcanes en la vida de los pueblos. El temor a las erupciones y la fascinación por estas montañas dan forma a un viaje por las creencias. Los paisajes volcánicos se convierten en escenarios de historias transmitidas para dar sentido a una fuerza difícil de dominar.</p><p>Una colada de lava recreada sirve de hilo conductor. Los decorados, las figuras animadas y los ambientes sonoros dan forma a las leyendas, situando a los visitantes entre escenas inspiradas en la relación entre las personas y los volcanes.</p><h2>El imaginario del fuego</h2><p>La atracción aborda la dimensión cultural del vulcanismo. Una montaña amenazante también puede fascinar y adquirir un lugar sagrado en los relatos. Esa ambigüedad define la atmósfera de la experiencia, entre inquietud y atracción.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les volcans dans les légendes</h2><p>Volcans sacrés explore les récits nés de la présence des volcans dans la vie des peuples. La peur des éruptions et l’attrait pour ces montagnes nourrissent un voyage à travers les croyances : les paysages volcaniques deviennent le cadre d’histoires transmises pour donner un sens à une puissance difficile à maîtriser.</p><p>Une coulée de lave reconstituée sert de fil conducteur à cette découverte. Les décors, les personnages animés et les ambiances sonores donnent forme aux légendes, en plaçant les visiteurs au milieu de scènes inspirées de cette relation entre les hommes et les volcans.</p><h2>Un imaginaire lié au feu</h2><p>Le parcours s’intéresse à la dimension culturelle du volcanisme. La montagne menaçante peut aussi fasciner et prendre une place sacrée dans les récits ; cette ambiguïté donne à l’expérience son atmosphère, entre inquiétude et attirance.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I vulcani nelle leggende</h2><p>Volcans sacrés esplora racconti nati dalla presenza dei vulcani nella vita dei popoli. La paura delle eruzioni e il fascino di queste montagne delineano un viaggio fra le credenze. I paesaggi vulcanici diventano lo scenario di storie tramandate per dare un significato a una forza difficile da controllare.</p><p>Una colata lavica ricostruita costituisce il filo conduttore. Scenografie, figure animate e ambientazioni sonore danno forma alle leggende, collocando i visitatori fra scene ispirate al rapporto tra gli esseri umani e i vulcani.</p><h2>L’immaginario del fuoco</h2><p>L’attrazione affronta la dimensione culturale del vulcanismo. Una montagna minacciosa può anche affascinare e assumere un ruolo sacro nei racconti. Questa ambiguità definisce l’atmosfera dell’esperienza, fra inquietudine e attrazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vulkanen in legenden</h2><p>Volcans sacrés verkent verhalen die ontstonden doordat vulkanen deel uitmaakten van het leven van mensen. Angst voor uitbarstingen en fascinatie voor deze bergen vormen een reis door geloofsvoorstellingen. Vulkanische landschappen worden het decor voor overgeleverde verhalen die betekenis geven aan een moeilijk te beheersen kracht.</p><p>Een nagebootste lavastroom vormt de rode draad. Decors, bewegende figuren en geluidslandschappen geven de legenden vorm en plaatsen bezoekers midden in scènes die zijn geïnspireerd op de verhouding tussen mensen en vulkanen.</p><h2>De verbeelding van vuur</h2><p>De attractie onderzoekt de culturele betekenis van vulkanisme. Een dreigende berg kan tegelijk fascineren en een heilige plaats innemen in verhalen. Die dubbelzinnigheid bepaalt de sfeer, tussen onrust en aantrekkingskracht.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wulkany w legendach</h2><p>Volcans sacrés przedstawia opowieści zrodzone z obecności wulkanów w życiu ludzi. Strach przed erupcjami i fascynacja tymi górami wyznaczają podróż przez wierzenia. Krajobrazy wulkaniczne stają się scenerią przekazywanych z pokolenia na pokolenie historii, które nadają znaczenie trudnej do opanowania sile.</p><p>Odtworzony strumień lawy stanowi motyw przewodni tej wyprawy. Dekoracje, ruchome postacie i dźwięki nadają legendom formę, umieszczając widzów pośród scen inspirowanych relacją człowieka z wulkanami.</p><h2>Wyobraźnia związana z ogniem</h2><p>Atrakcja poświęcona jest kulturowemu wymiarowi wulkanizmu. Groźna góra może również fascynować i zajmować w opowieściach święte miejsce. Ta dwoistość kształtuje atmosferę doświadczenia, zawieszoną między niepokojem a przyciąganiem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os vulcões nas lendas</h2><p>Volcans sacrés explora histórias nascidas da presença dos vulcões na vida dos povos. O medo das erupções e o fascínio por estas montanhas dão forma a uma viagem pelas crenças. As paisagens vulcânicas tornam-se cenários de relatos transmitidos para dar sentido a uma força difícil de dominar.</p><p>Uma escoada de lava recriada serve de fio condutor. Os cenários, as figuras animadas e os ambientes sonoros dão forma às lendas, colocando os visitantes entre cenas inspiradas na relação entre as pessoas e os vulcões.</p><h2>O imaginário do fogo</h2><p>A atração aborda a dimensão cultural do vulcanismo. Uma montanha ameaçadora pode também fascinar e ocupar um lugar sagrado nas histórias. Essa ambiguidade define a atmosfera da experiência, entre inquietação e atração.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+        "entityKey": "vulcania-reveil-geants",
+        "displayName": "Réveil des géants d’Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Was wäre, wenn die Vulkane der Auvergne erwachten?</h2><p>Réveil des géants d’Auvergne verwandelt die Frage nach ruhenden Vulkanen in ein Filmszenario. Die Landschaften der Chaîne des Puys bilden die Kulisse eines erdachten Erwachens. Hinter der scheinbaren Ruhe der Höhenzüge treten unterschiedliche Erscheinungen vulkanischer Aktivität hervor.</p><p>Der Film verbindet reale Aufnahmen mit nachgestellten Szenen. Explosive Ausbrüche, pyroklastische Ströme und Lavaflüsse zeigen verschiedene Seiten dieser Vorstellung. Räumliche Bilder und Effekte lassen die Ereignisse im Kinosaal näher rücken.</p><h2>Ein gedankliches Szenario im Film</h2><p>Die Vorstellung erzählt von den erdachten Folgen eines Erwachens in einer wiedererkennbaren Landschaft der Auvergne. Ihre fiktive Geschichte ist in der Umgebung von Vulcania verankert. Gerade die vertrauten Geländeformen lassen die Kraft der Ausbrüche besonders eindrucksvoll erscheinen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>What if Auvergne’s volcanoes awoke?</h2><p>Réveil des géants d’Auvergne turns a question about dormant volcanoes into a cinema scenario. The landscapes of the Chaîne des Puys provide the setting for an imagined awakening, as apparently peaceful hills give way to several expressions of volcanic activity.</p><p>The film combines real views with reconstructed scenes. Explosive eruptions, pyroclastic flows and streams of lava reveal different aspects of this hypothesis, in a theatre where stereoscopic imagery and effects bring the events closer to the audience.</p><h2>Imagining an awakening</h2><p>The show imagines the consequences of an awakening in a recognisable Auvergne landscape. Its fictional story is rooted in the territory around Vulcania, where familiar landforms make the power of the eruptions particularly striking.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>¿Y si despertaran los volcanes de Auvernia?</h2><p>Réveil des géants d’Auvergne convierte una pregunta sobre los volcanes dormidos en un argumento cinematográfico. Los paisajes de la Chaîne des Puys sirven de escenario a un despertar imaginado, en el que la aparente calma del relieve da paso a distintas manifestaciones de actividad volcánica.</p><p>La película mezcla imágenes reales con escenas recreadas. Erupciones explosivas, flujos piroclásticos y coladas de lava muestran distintas facetas de esta hipótesis. Las imágenes en relieve y los efectos acercan los acontecimientos al público de la sala.</p><h2>Una hipótesis llevada al cine</h2><p>El espectáculo imagina las consecuencias de un despertar en un paisaje reconocible de Auvernia. Su ficción está arraigada en el territorio que rodea Vulcania, donde la familiaridad del relieve hace especialmente impactante la fuerza de las erupciones.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Et si les volcans d’Auvergne se réveillaient ?</h2><p>Réveil des géants d’Auvergne transforme une question sur le sommeil des volcans en scénario de cinéma. Les paysages de la Chaîne des Puys servent de cadre à un réveil imaginé, où le calme apparent des reliefs laisse place à plusieurs manifestations de l’activité volcanique.</p><p>Le film mêle des vues réelles à des scènes reconstituées. Éruptions explosives, nuées ardentes et coulées de lave donnent des visages différents à cette hypothèse, dans une salle où le relief et les effets renforcent la proximité des événements.</p><h2>Une hypothèse mise en images</h2><p>Le spectacle raconte les conséquences imaginées d’un réveil dans un paysage auvergnat reconnaissable. Il donne corps à cette hypothèse à travers une fiction ancrée dans le territoire de Vulcania, où la familiarité des reliefs rend la puissance des éruptions particulièrement frappante.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>E se i vulcani dell’Alvernia si risvegliassero?</h2><p>Réveil des géants d’Auvergne trasforma una domanda sui vulcani dormienti in un racconto cinematografico. I paesaggi della Chaîne des Puys fanno da scenario a un risveglio immaginato, nel quale l’apparente quiete dei rilievi lascia spazio a diverse manifestazioni dell’attività vulcanica.</p><p>Il film unisce riprese reali e scene ricostruite. Eruzioni esplosive, flussi piroclastici e colate di lava mostrano diversi aspetti di questa ipotesi. Le immagini tridimensionali e gli effetti avvicinano gli avvenimenti al pubblico della sala.</p><h2>Un’ipotesi raccontata per immagini</h2><p>Lo spettacolo immagina le conseguenze di un risveglio in un paesaggio riconoscibile dell’Alvernia. La sua storia di fantasia è radicata nel territorio che circonda Vulcania, dove la familiarità dei rilievi rende particolarmente impressionante la forza delle eruzioni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Wat als de vulkanen van Auvergne ontwaken?</h2><p>Réveil des géants d’Auvergne maakt van een vraag over slapende vulkanen een filmscenario. De landschappen van de Chaîne des Puys vormen het decor voor een denkbeeldig ontwaken. De schijnbare rust van de heuvels maakt plaats voor verschillende uitingen van vulkanische activiteit.</p><p>De film combineert echte opnamen met nagebootste scènes. Explosieve uitbarstingen, pyroclastische stromen en lavastromen laten verschillende kanten van dit scenario zien. Driedimensionale beelden en effecten brengen de gebeurtenissen in de zaal dichterbij.</p><h2>Een denkbeeldig ontwaken in beeld</h2><p>De voorstelling verbeeldt de gevolgen van een ontwaken in een herkenbaar landschap van Auvergne. Het fictieve verhaal is geworteld in de omgeving van Vulcania, waar de vertrouwde vormen van het landschap de kracht van de uitbarstingen bijzonder indringend maken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Co by było, gdyby wulkany Owernii się obudziły?</h2><p>Réveil des géants d’Auvergne zamienia pytanie o uśpione wulkany w filmową opowieść. Krajobrazy Chaîne des Puys stanowią scenerię wyobrażonego przebudzenia, w którym pozorny spokój wzgórz ustępuje różnym przejawom aktywności wulkanicznej.</p><p>Film łączy rzeczywiste ujęcia z odtworzonymi scenami. Gwałtowne erupcje, spływy piroklastyczne i potoki lawy przedstawiają rozmaite aspekty tego założenia. Trójwymiarowe obrazy i efekty przybliżają wydarzenia publiczności w sali.</p><h2>Hipoteza opowiedziana obrazami</h2><p>Widowisko wyobraża skutki przebudzenia w rozpoznawalnym krajobrazie Owernii. Fikcyjna opowieść jest osadzona w okolicach Vulcanii, gdzie znajome kształty terenu sprawiają, że siła erupcji robi szczególnie duże wrażenie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>E se os vulcões da Auvérnia despertassem?</h2><p>Réveil des géants d’Auvergne transforma uma pergunta sobre vulcões adormecidos numa história de cinema. As paisagens da Chaîne des Puys servem de cenário a um despertar imaginado, em que a aparente tranquilidade dos relevos dá lugar a várias manifestações da atividade vulcânica.</p><p>O filme combina imagens reais com cenas recriadas. Erupções explosivas, fluxos piroclásticos e escoadas de lava mostram diferentes aspetos desta hipótese. As imagens em relevo e os efeitos aproximam os acontecimentos do público na sala.</p><h2>Uma hipótese contada em imagens</h2><p>O espetáculo imagina as consequências de um despertar numa paisagem reconhecível da Auvérnia. A sua ficção está enraizada no território que rodeia Vulcania, onde a familiaridade dos relevos torna a força das erupções particularmente impressionante.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "82eeb5d6-5d1d-4ced-b7dc-6e5df830cd84",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:41:54.5241224Z",
+    "appliedAtUtc": "2026-11-15T17:41:54.5241231Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "entityKey": "vulcania-terre-colere",
+        "displayName": "Terre en colère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Naturgewalten aus nächster Nähe</h2><p>Terre en colère zeigt einen Planeten im Zeichen extremer Ereignisse. Stürme, Überschwemmungen, Großbrände und schmelzendes Eis stehen in diesem Bewegungskino neben Erdbeben und Vulkanausbrüchen. Die Bilder führen in Notlagen und zeigen Landschaften, die Wasser, Feuer oder Vorgänge im Erdinneren verändern.</p><p>Gaïa, eine künstliche Intelligenz innerhalb der Geschichte, begleitet diese Begegnung. Sie erläutert die jeweiligen Phänomene und stellt dem Publikum Fragen. Auch die Antworten der Besucher gehören damit zum Erlebnis.</p><h2>Wissen hinter eindrucksvollen Bildern</h2><p>Die 2025 vorgestellte Fassung verbindet dramatische Szenen mit einem Austausch über das Wissen des Publikums. Sie behandelt unterschiedliche Arten von Naturgefahren: Klimatische Ereignisse erhalten ebenso Raum wie die Folgen der Aktivität im Inneren der Erde.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Confronting natural forces</h2><p>Terre en colère depicts a planet caught in extreme events. Storms, floods, megafires and melting ice appear alongside earthquakes and eruptions in this motion cinema experience. The images enter emergency situations, showing landscapes transformed by water, fire and movements within the Earth.</p><p>Gaïa, an artificial intelligence character within the story, accompanies this encounter. She explains the phenomena and asks the audience questions, making visitors’ answers part of the experience.</p><h2>Understanding the spectacle</h2><p>The version introduced in 2025 combines dramatic scenes with an exchange about what the audience knows. Its subject brings together several kinds of natural hazards, giving a place both to climatic events and to the effects of activity deep inside the Earth.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Frente a las fuerzas naturales</h2><p>Terre en colère representa un planeta sacudido por fenómenos extremos. Tormentas, inundaciones, grandes incendios y deshielo comparten protagonismo con terremotos y erupciones en esta experiencia de cine dinámico. Las imágenes muestran situaciones de emergencia y paisajes transformados por el agua, el fuego o la actividad interna de la Tierra.</p><p>Gaïa, una inteligencia artificial que forma parte del relato, acompaña este encuentro. Explica los fenómenos y plantea preguntas al público, de modo que las respuestas de los visitantes también intervienen en la experiencia.</p><h2>Comprender lo que muestra la pantalla</h2><p>La versión presentada en 2025 combina escenas espectaculares con un intercambio de conocimientos. Su temática reúne distintas familias de riesgos naturales, dando espacio tanto a los acontecimientos climáticos como a las manifestaciones de la actividad del interior terrestre.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Face aux phénomènes naturels</h2><p>Terre en colère met en scène une planète traversée par des événements extrêmes. Tempêtes, inondations, mégafeux et fonte des glaces côtoient séismes et éruptions dans cette expérience de cinéma dynamique. Les images plongent dans des situations d’urgence, à l’échelle de paysages bouleversés par l’eau, le feu ou les mouvements de la Terre.</p><p>Gaïa, une intelligence artificielle intégrée au récit, accompagne cette confrontation. Elle apporte des explications sur les phénomènes rencontrés et pose des questions au public : la découverte passe aussi par les réponses des visiteurs.</p><h2>Comprendre au milieu du spectacle</h2><p>La nouvelle version présentée en 2025 associe ainsi une mise en scène spectaculaire à un échange sur les connaissances. Son sujet rassemble plusieurs familles de risques naturels ; les événements climatiques et les manifestations de l’activité interne de la Terre y ont chacun leur place.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Di fronte alle forze naturali</h2><p>Terre en colère mette in scena un pianeta attraversato da eventi estremi. Tempeste, inondazioni, grandi incendi e scioglimento dei ghiacci affiancano terremoti ed eruzioni in questa esperienza di cinema dinamico. Le immagini mostrano situazioni di emergenza e paesaggi trasformati dall’acqua, dal fuoco o dall’attività interna della Terra.</p><p>Gaïa, un’intelligenza artificiale inserita nel racconto, accompagna questo incontro. Spiega i fenomeni e rivolge domande al pubblico: anche le risposte dei visitatori contribuiscono così all’esperienza.</p><h2>Capire ciò che appare sullo schermo</h2><p>La versione presentata nel 2025 unisce scene spettacolari a uno scambio di conoscenze. Il tema comprende diverse famiglie di rischi naturali, lasciando spazio sia agli eventi climatici sia alle manifestazioni dell’attività nelle profondità della Terra.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Natuurgeweld van dichtbij</h2><p>Terre en colère toont een planeet die door extreme gebeurtenissen wordt getroffen. Stormen, overstromingen, megabranden en smeltend ijs staan in deze bewegingsbioscoop naast aardbevingen en uitbarstingen. De beelden voeren naar noodsituaties, met landschappen die door water, vuur of bewegingen in de aarde veranderen.</p><p>Gaïa, een kunstmatige intelligentie die deel uitmaakt van het verhaal, begeleidt deze confrontatie. Ze legt de verschijnselen uit en stelt vragen aan het publiek. Ook de antwoorden van bezoekers maken zo deel uit van de ervaring.</p><h2>De verschijnselen achter het spektakel</h2><p>De in 2025 gepresenteerde versie verbindt indrukwekkende scènes met een gesprek over kennis. Verschillende soorten natuurgevaar komen aan bod: zowel klimatologische gebeurtenissen als de gevolgen van activiteit diep in de aarde krijgen aandacht.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>W obliczu sił natury</h2><p>Terre en colère przedstawia planetę doświadczającą ekstremalnych zjawisk. Burze, powodzie, wielkie pożary i topnienie lodu pojawiają się obok trzęsień ziemi i erupcji w tym kinie z efektami ruchowymi. Obrazy ukazują sytuacje zagrożenia oraz krajobrazy zmieniane przez wodę, ogień lub aktywność wnętrza Ziemi.</p><p>Gaïa, sztuczna inteligencja występująca w opowieści, towarzyszy widzom podczas tego spotkania. Wyjaśnia zjawiska i zadaje publiczności pytania, dzięki czemu odpowiedzi odwiedzających stają się częścią doświadczenia.</p><h2>Wiedza za widowiskowymi obrazami</h2><p>Wersja zaprezentowana w 2025 roku łączy dramatyczne sceny z wymianą wiedzy. Temat obejmuje różne rodzaje zagrożeń naturalnych: miejsce znajdują tu zarówno wydarzenia klimatyczne, jak i przejawy aktywności głęboko wewnątrz Ziemi.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Perante as forças da natureza</h2><p>Terre en colère apresenta um planeta atravessado por acontecimentos extremos. Tempestades, inundações, grandes incêndios e degelo surgem a par de sismos e erupções nesta experiência de cinema dinâmico. As imagens mostram situações de emergência e paisagens transformadas pela água, pelo fogo ou pela atividade interna da Terra.</p><p>Gaïa, uma inteligência artificial integrada na história, acompanha este encontro. Explica os fenómenos e coloca perguntas ao público, fazendo das respostas dos visitantes uma parte da experiência.</p><h2>Compreender as imagens</h2><p>A versão apresentada em 2025 combina cenas espetaculares com uma troca de conhecimentos. O seu tema reúne diferentes tipos de riscos naturais, dando espaço tanto aos acontecimentos climáticos como às manifestações da atividade nas profundezas da Terra.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "entityKey": "vulcania-premier-envol",
+        "displayName": "Premier envol",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Auvergne mit den Augen eines Adlers</h2><p>Premier envol begleitet einen Steinadler bei seinem ersten Flug über die Auvergne. Die Vulkanlandschaft wird zum Schauplatz seiner Entdeckung: Die Chaîne des Puys und die Höhenzüge der Region entfalten sich aus der Perspektive des Vogels über einer von Vulkanen geprägten Natur.</p><p>Die umgebende Projektion setzt die Bilder unterhalb des Blickfelds fort. Dadurch erhält die Begegnung mit der Region den Eindruck eines Überflugs, bei dem Landschaften und Tierwelt im Mittelpunkt stehen.</p><h2>Eine belebte Landschaft</h2><p>Die Geschichte widmet sich auch der Artenvielfalt dieser Gebiete. Der Blick des Adlers verbindet vulkanische Geländeformen mit den Lebensräumen, die sie heute bedecken. So erscheint die Auvergne als lebendige Landschaft mit einer Identität, die über ihre geologische Vergangenheit hinausgeht.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne through an eagle’s eyes</h2><p>Premier envol follows a golden eagle taking to the skies over Auvergne. The volcanic landscape becomes the setting for its first flight: the Chaîne des Puys and the region’s hills unfold from the bird’s perspective above countryside shaped by volcanoes.</p><p>Surrounding projections extend the imagery beneath the viewer’s gaze. They give this encounter with the region a sense of flight, placing the landscapes and wildlife at the heart of the experience.</p><h2>A living landscape</h2><p>The story also explores the biodiversity of these places. Through the eagle’s eyes, volcanic landforms connect with the natural habitats covering them. Auvergne emerges as a living territory whose identity reaches beyond its geological past.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Auvernia a través de un águila</h2><p>Premier envol acompaña el primer vuelo de un águila real sobre Auvernia. El paisaje volcánico se convierte en su territorio de descubrimiento: la Chaîne des Puys y los relieves de la región aparecen desde la perspectiva del ave, sobre una naturaleza modelada por los volcanes.</p><p>La proyección envolvente prolonga las imágenes por debajo de la mirada del espectador. Así, este encuentro con la región adquiere una sensación de vuelo, con los paisajes y la fauna como protagonistas.</p><h2>Un paisaje lleno de vida</h2><p>El relato también aborda la biodiversidad de estos espacios. La mirada del águila relaciona las formas volcánicas con los hábitats naturales que las cubren. Auvernia aparece como un territorio vivo cuya identidad va más allá de su pasado geológico.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’Auvergne dans le regard d’un aigle</h2><p>Premier envol suit les débuts d’un aigle royal dans le ciel auvergnat. Le paysage volcanique devient le territoire de son premier vol : la Chaîne des Puys et les reliefs d’Auvergne se découvrent depuis le point de vue de l’oiseau, au-dessus d’une nature façonnée par les volcans.</p><p>La projection enveloppante prolonge les images jusque sous le regard du spectateur. Elle donne à cette découverte de la région une impression de survol, où les paysages et la vie sauvage occupent le premier plan.</p><h2>Un paysage vivant</h2><p>Le récit s’attache aussi à la biodiversité de ces espaces. Le regard de l’aigle relie ainsi les reliefs volcaniques aux milieux naturels qui les recouvrent : l’Auvergne apparaît comme un territoire habité, au-delà de sa seule histoire géologique.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>L’Alvernia attraverso gli occhi di un’aquila</h2><p>Premier envol segue il primo volo di un’aquila reale sopra l’Alvernia. Il paesaggio vulcanico diventa il suo territorio di scoperta: la Chaîne des Puys e i rilievi della regione appaiono dalla prospettiva dell’uccello, al di sopra di una natura modellata dai vulcani.</p><p>La proiezione avvolgente estende le immagini anche sotto lo sguardo dello spettatore. Questo incontro con la regione assume così la sensazione di un sorvolo, con paesaggi e fauna selvatica al centro dell’esperienza.</p><h2>Un paesaggio vivo</h2><p>Il racconto esplora anche la biodiversità di questi luoghi. Lo sguardo dell’aquila collega le forme vulcaniche agli ambienti naturali che le ricoprono. L’Alvernia appare come un territorio vivo, la cui identità si estende oltre il passato geologico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne door de ogen van een arend</h2><p>Premier envol volgt de eerste vlucht van een steenarend boven Auvergne. Het vulkanische landschap wordt zijn ontdekkingsterrein: de Chaîne des Puys en de heuvels van de streek ontvouwen zich vanuit het perspectief van de vogel, boven een door vulkanen gevormde natuur.</p><p>De omringende projectie laat de beelden ook onder de blik van de toeschouwer doorlopen. Zo ontstaat de indruk boven de streek te vliegen, met landschappen en wilde dieren als middelpunt.</p><h2>Een levend landschap</h2><p>Het verhaal besteedt ook aandacht aan de biodiversiteit van deze gebieden. De blik van de arend verbindt de vulkanische vormen met de natuurlijke leefgebieden die ze bedekken. Auvergne verschijnt daardoor als een levend landschap met meer dan alleen een geologisch verleden.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Owernia widziana oczami orła</h2><p>Premier envol towarzyszy pierwszemu lotowi orła przedniego nad Owernią. Krajobraz wulkaniczny staje się obszarem jego odkryć: pasmo Chaîne des Puys i okoliczne wzgórza ukazują się z perspektywy ptaka, ponad przyrodą ukształtowaną przez wulkany.</p><p>Otaczająca widza projekcja rozciąga obrazy także poniżej jego spojrzenia. Spotkanie z regionem nabiera dzięki temu wrażenia przelotu, w którym na pierwszym planie znajdują się krajobrazy i dzikie zwierzęta.</p><h2>Żywy krajobraz</h2><p>Opowieść przybliża również różnorodność biologiczną tych miejsc. Spojrzenie orła łączy wulkaniczne formy terenu z pokrywającymi je siedliskami. Owernia jawi się jako żywy region, którego tożsamość wykracza poza geologiczną przeszłość.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Auvérnia pelos olhos de uma águia</h2><p>Premier envol acompanha o primeiro voo de uma águia-real sobre a Auvérnia. A paisagem vulcânica torna-se o seu território de descoberta: a Chaîne des Puys e os relevos da região surgem da perspetiva da ave, acima de uma natureza moldada pelos vulcões.</p><p>A projeção envolvente prolonga as imagens por baixo do olhar do espetador. Este encontro com a região ganha assim uma sensação de sobrevoo, com as paisagens e a vida selvagem no centro da experiência.</p><h2>Uma paisagem viva</h2><p>A história também explora a biodiversidade destes espaços. O olhar da águia liga as formas vulcânicas aos habitats naturais que as cobrem. A Auvérnia surge como um território vivo, cuja identidade vai além do seu passado geológico.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+        "entityKey": "vulcania-volcans-sacres",
+        "displayName": "Volcans sacrés",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Vulkane in den Legenden</h2><p>Volcans sacrés erkundet Geschichten, die aus dem Zusammenleben von Menschen und Vulkanen entstanden sind. Die Furcht vor Ausbrüchen und die Faszination für diese Berge prägen eine Reise durch Glaubensvorstellungen. Vulkanlandschaften werden zum Schauplatz überlieferter Erzählungen, die einer schwer beherrschbaren Kraft Bedeutung verleihen.</p><p>Ein nachgebildeter Lavastrom bildet den roten Faden. Kulissen, animierte Figuren und Klangwelten geben den Legenden Gestalt und versetzen die Besucher in Szenen, die von der Beziehung zwischen Menschen und Vulkanen inspiriert sind.</p><h2>Die Vorstellungskraft des Feuers</h2><p>Die Attraktion widmet sich der kulturellen Bedeutung des Vulkanismus. Ein bedrohlicher Berg kann zugleich faszinieren und in Erzählungen eine heilige Stellung einnehmen. Diese Doppeldeutigkeit prägt die Atmosphäre zwischen Unbehagen und Anziehung.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Volcanoes in legend</h2><p>Volcans sacrés explores stories born from the presence of volcanoes in people’s lives. Fear of eruptions and fascination with these mountains shape a journey through beliefs. Volcanic landscapes become the setting for tales passed down to make sense of a power that is difficult to control.</p><p>A recreated lava flow provides the thread for this encounter. Sets, animated figures and soundscapes give form to the legends, placing visitors among scenes inspired by the relationship between people and volcanoes.</p><h2>Imagining the power of fire</h2><p>The attraction explores the cultural meaning of volcanism. A threatening mountain can also inspire fascination and become sacred within a story. This ambiguity gives the experience its atmosphere, poised between unease and attraction.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los volcanes en las leyendas</h2><p>Volcans sacrés explora relatos nacidos de la presencia de los volcanes en la vida de los pueblos. El temor a las erupciones y la fascinación por estas montañas dan forma a un viaje por las creencias. Los paisajes volcánicos se convierten en escenarios de historias transmitidas para dar sentido a una fuerza difícil de dominar.</p><p>Una colada de lava recreada sirve de hilo conductor. Los decorados, las figuras animadas y los ambientes sonoros dan forma a las leyendas, situando a los visitantes entre escenas inspiradas en la relación entre las personas y los volcanes.</p><h2>El imaginario del fuego</h2><p>La atracción aborda la dimensión cultural del vulcanismo. Una montaña amenazante también puede fascinar y adquirir un lugar sagrado en los relatos. Esa ambigüedad define la atmósfera de la experiencia, entre inquietud y atracción.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les volcans dans les légendes</h2><p>Volcans sacrés explore les récits nés de la présence des volcans dans la vie des peuples. La peur des éruptions et l’attrait pour ces montagnes nourrissent un voyage à travers les croyances : les paysages volcaniques deviennent le cadre d’histoires transmises pour donner un sens à une puissance difficile à maîtriser.</p><p>Une coulée de lave reconstituée sert de fil conducteur à cette découverte. Les décors, les personnages animés et les ambiances sonores donnent forme aux légendes, en plaçant les visiteurs au milieu de scènes inspirées de cette relation entre les hommes et les volcans.</p><h2>Un imaginaire lié au feu</h2><p>Le parcours s’intéresse à la dimension culturelle du volcanisme. La montagne menaçante peut aussi fasciner et prendre une place sacrée dans les récits ; cette ambiguïté donne à l’expérience son atmosphère, entre inquiétude et attirance.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I vulcani nelle leggende</h2><p>Volcans sacrés esplora racconti nati dalla presenza dei vulcani nella vita dei popoli. La paura delle eruzioni e il fascino di queste montagne delineano un viaggio fra le credenze. I paesaggi vulcanici diventano lo scenario di storie tramandate per dare un significato a una forza difficile da controllare.</p><p>Una colata lavica ricostruita costituisce il filo conduttore. Scenografie, figure animate e ambientazioni sonore danno forma alle leggende, collocando i visitatori fra scene ispirate al rapporto tra gli esseri umani e i vulcani.</p><h2>L’immaginario del fuoco</h2><p>L’attrazione affronta la dimensione culturale del vulcanismo. Una montagna minacciosa può anche affascinare e assumere un ruolo sacro nei racconti. Questa ambiguità definisce l’atmosfera dell’esperienza, fra inquietudine e attrazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vulkanen in legenden</h2><p>Volcans sacrés verkent verhalen die ontstonden doordat vulkanen deel uitmaakten van het leven van mensen. Angst voor uitbarstingen en fascinatie voor deze bergen vormen een reis door geloofsvoorstellingen. Vulkanische landschappen worden het decor voor overgeleverde verhalen die betekenis geven aan een moeilijk te beheersen kracht.</p><p>Een nagebootste lavastroom vormt de rode draad. Decors, bewegende figuren en geluidslandschappen geven de legenden vorm en plaatsen bezoekers midden in scènes die zijn geïnspireerd op de verhouding tussen mensen en vulkanen.</p><h2>De verbeelding van vuur</h2><p>De attractie onderzoekt de culturele betekenis van vulkanisme. Een dreigende berg kan tegelijk fascineren en een heilige plaats innemen in verhalen. Die dubbelzinnigheid bepaalt de sfeer, tussen onrust en aantrekkingskracht.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wulkany w legendach</h2><p>Volcans sacrés przedstawia opowieści zrodzone z obecności wulkanów w życiu ludzi. Strach przed erupcjami i fascynacja tymi górami wyznaczają podróż przez wierzenia. Krajobrazy wulkaniczne stają się scenerią przekazywanych z pokolenia na pokolenie historii, które nadają znaczenie trudnej do opanowania sile.</p><p>Odtworzony strumień lawy stanowi motyw przewodni tej wyprawy. Dekoracje, ruchome postacie i dźwięki nadają legendom formę, umieszczając widzów pośród scen inspirowanych relacją człowieka z wulkanami.</p><h2>Wyobraźnia związana z ogniem</h2><p>Atrakcja poświęcona jest kulturowemu wymiarowi wulkanizmu. Groźna góra może również fascynować i zajmować w opowieściach święte miejsce. Ta dwoistość kształtuje atmosferę doświadczenia, zawieszoną między niepokojem a przyciąganiem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os vulcões nas lendas</h2><p>Volcans sacrés explora histórias nascidas da presença dos vulcões na vida dos povos. O medo das erupções e o fascínio por estas montanhas dão forma a uma viagem pelas crenças. As paisagens vulcânicas tornam-se cenários de relatos transmitidos para dar sentido a uma força difícil de dominar.</p><p>Uma escoada de lava recriada serve de fio condutor. Os cenários, as figuras animadas e os ambientes sonoros dão forma às lendas, colocando os visitantes entre cenas inspiradas na relação entre as pessoas e os vulcões.</p><h2>O imaginário do fogo</h2><p>A atração aborda a dimensão cultural do vulcanismo. Uma montanha ameaçadora pode também fascinar e ocupar um lugar sagrado nas histórias. Essa ambiguidade define a atmosfera da experiência, entre inquietação e atração.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+        "entityKey": "vulcania-reveil-geants",
+        "displayName": "Réveil des géants d’Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Was wäre, wenn die Vulkane der Auvergne erwachten?</h2><p>Réveil des géants d’Auvergne verwandelt die Frage nach ruhenden Vulkanen in ein Filmszenario. Die Landschaften der Chaîne des Puys bilden die Kulisse eines erdachten Erwachens. Hinter der scheinbaren Ruhe der Höhenzüge treten unterschiedliche Erscheinungen vulkanischer Aktivität hervor.</p><p>Der Film verbindet reale Aufnahmen mit nachgestellten Szenen. Explosive Ausbrüche, pyroklastische Ströme und Lavaflüsse zeigen verschiedene Seiten dieser Vorstellung. Räumliche Bilder und Effekte lassen die Ereignisse im Kinosaal näher rücken.</p><h2>Ein gedankliches Szenario im Film</h2><p>Die Vorstellung erzählt von den erdachten Folgen eines Erwachens in einer wiedererkennbaren Landschaft der Auvergne. Ihre fiktive Geschichte ist in der Umgebung von Vulcania verankert. Gerade die vertrauten Geländeformen lassen die Kraft der Ausbrüche besonders eindrucksvoll erscheinen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>What if Auvergne’s volcanoes awoke?</h2><p>Réveil des géants d’Auvergne turns a question about dormant volcanoes into a cinema scenario. The landscapes of the Chaîne des Puys provide the setting for an imagined awakening, as apparently peaceful hills give way to several expressions of volcanic activity.</p><p>The film combines real views with reconstructed scenes. Explosive eruptions, pyroclastic flows and streams of lava reveal different aspects of this hypothesis, in a theatre where stereoscopic imagery and effects bring the events closer to the audience.</p><h2>Imagining an awakening</h2><p>The show imagines the consequences of an awakening in a recognisable Auvergne landscape. Its fictional story is rooted in the territory around Vulcania, where familiar landforms make the power of the eruptions particularly striking.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>¿Y si despertaran los volcanes de Auvernia?</h2><p>Réveil des géants d’Auvergne convierte una pregunta sobre los volcanes dormidos en un argumento cinematográfico. Los paisajes de la Chaîne des Puys sirven de escenario a un despertar imaginado, en el que la aparente calma del relieve da paso a distintas manifestaciones de actividad volcánica.</p><p>La película mezcla imágenes reales con escenas recreadas. Erupciones explosivas, flujos piroclásticos y coladas de lava muestran distintas facetas de esta hipótesis. Las imágenes en relieve y los efectos acercan los acontecimientos al público de la sala.</p><h2>Una hipótesis llevada al cine</h2><p>El espectáculo imagina las consecuencias de un despertar en un paisaje reconocible de Auvernia. Su ficción está arraigada en el territorio que rodea Vulcania, donde la familiaridad del relieve hace especialmente impactante la fuerza de las erupciones.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Et si les volcans d’Auvergne se réveillaient ?</h2><p>Réveil des géants d’Auvergne transforme une question sur le sommeil des volcans en scénario de cinéma. Les paysages de la Chaîne des Puys servent de cadre à un réveil imaginé, où le calme apparent des reliefs laisse place à plusieurs manifestations de l’activité volcanique.</p><p>Le film mêle des vues réelles à des scènes reconstituées. Éruptions explosives, nuées ardentes et coulées de lave donnent des visages différents à cette hypothèse, dans une salle où le relief et les effets renforcent la proximité des événements.</p><h2>Une hypothèse mise en images</h2><p>Le spectacle raconte les conséquences imaginées d’un réveil dans un paysage auvergnat reconnaissable. Il donne corps à cette hypothèse à travers une fiction ancrée dans le territoire de Vulcania, où la familiarité des reliefs rend la puissance des éruptions particulièrement frappante.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>E se i vulcani dell’Alvernia si risvegliassero?</h2><p>Réveil des géants d’Auvergne trasforma una domanda sui vulcani dormienti in un racconto cinematografico. I paesaggi della Chaîne des Puys fanno da scenario a un risveglio immaginato, nel quale l’apparente quiete dei rilievi lascia spazio a diverse manifestazioni dell’attività vulcanica.</p><p>Il film unisce riprese reali e scene ricostruite. Eruzioni esplosive, flussi piroclastici e colate di lava mostrano diversi aspetti di questa ipotesi. Le immagini tridimensionali e gli effetti avvicinano gli avvenimenti al pubblico della sala.</p><h2>Un’ipotesi raccontata per immagini</h2><p>Lo spettacolo immagina le conseguenze di un risveglio in un paesaggio riconoscibile dell’Alvernia. La sua storia di fantasia è radicata nel territorio che circonda Vulcania, dove la familiarità dei rilievi rende particolarmente impressionante la forza delle eruzioni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Wat als de vulkanen van Auvergne ontwaken?</h2><p>Réveil des géants d’Auvergne maakt van een vraag over slapende vulkanen een filmscenario. De landschappen van de Chaîne des Puys vormen het decor voor een denkbeeldig ontwaken. De schijnbare rust van de heuvels maakt plaats voor verschillende uitingen van vulkanische activiteit.</p><p>De film combineert echte opnamen met nagebootste scènes. Explosieve uitbarstingen, pyroclastische stromen en lavastromen laten verschillende kanten van dit scenario zien. Driedimensionale beelden en effecten brengen de gebeurtenissen in de zaal dichterbij.</p><h2>Een denkbeeldig ontwaken in beeld</h2><p>De voorstelling verbeeldt de gevolgen van een ontwaken in een herkenbaar landschap van Auvergne. Het fictieve verhaal is geworteld in de omgeving van Vulcania, waar de vertrouwde vormen van het landschap de kracht van de uitbarstingen bijzonder indringend maken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Co by było, gdyby wulkany Owernii się obudziły?</h2><p>Réveil des géants d’Auvergne zamienia pytanie o uśpione wulkany w filmową opowieść. Krajobrazy Chaîne des Puys stanowią scenerię wyobrażonego przebudzenia, w którym pozorny spokój wzgórz ustępuje różnym przejawom aktywności wulkanicznej.</p><p>Film łączy rzeczywiste ujęcia z odtworzonymi scenami. Gwałtowne erupcje, spływy piroklastyczne i potoki lawy przedstawiają rozmaite aspekty tego założenia. Trójwymiarowe obrazy i efekty przybliżają wydarzenia publiczności w sali.</p><h2>Hipoteza opowiedziana obrazami</h2><p>Widowisko wyobraża skutki przebudzenia w rozpoznawalnym krajobrazie Owernii. Fikcyjna opowieść jest osadzona w okolicach Vulcanii, gdzie znajome kształty terenu sprawiają, że siła erupcji robi szczególnie duże wrażenie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>E se os vulcões da Auvérnia despertassem?</h2><p>Réveil des géants d’Auvergne transforma uma pergunta sobre vulcões adormecidos numa história de cinema. As paisagens da Chaîne des Puys servem de cenário a um despertar imaginado, em que a aparente tranquilidade dos relevos dá lugar a várias manifestações da atividade vulcânica.</p><p>O filme combina imagens reais com cenas recriadas. Erupções explosivas, fluxos piroclásticos e escoadas de lava mostram diferentes aspetos desta hipótese. As imagens em relevo e os efeitos aproximam os acontecimentos do público na sala.</p><h2>Uma hipótese contada em imagens</h2><p>O espetáculo imagina as consequências de um despertar numa paisagem reconhecível da Auvérnia. A sua ficção está enraizada no território que rodeia Vulcania, onde a familiaridade dos relevos torna a força das erupções particularmente impressionante.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : Terre en colère, Premier envol, Volcans sacrés et Réveil des géants décrits personnellement en huit langues, 32 notices relues et comparées aux réponses officielles. Fiction, risques climatiques et activité géologique distingués ; quatre lieux privés, aucune publication.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "32 descriptions personally written and reviewed in eight languages; official pages read in full. Terre en colère: avoid the source wording that conflates climatic events with causes of earthquakes and eruptions. Réveil: hypothetical scenario, not prediction or current eruption. Premier envol: golden eagle and Auvergne landscape, no invented named landmarks. Volcans sacrés: legends and staged settings, no specific culture inferred. Two headings and three paragraphs per language; source-limited editorial depth recorded, no filler, ride specifications kept out of copy. Sources: https://www.vulcania.com/animation/terre-en-colere/ ; https://www.vulcania.com/animation/premier-envol/ ; https://www.vulcania.com/animation/volcans-sacres/ ; https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/ ; https://www.vulcania.com/actualites/olympus-25/ .",
+  "editorialReview": {
+    "newItems": 4,
+    "newLanguages": 32,
+    "personalReview": true,
+    "fullCurrentItemCorpusItems": 10,
+    "duplicate12WordSequences": [],
+    "encodingErrors": 0,
+    "lengthDecision": "Source-limited notices use two headings and three paragraphs, covering the specific story, landscape, staging and cultural/scientific theme; no invented history or category filler. Official source pages retained in current-rides-1527/source-access.json; Olympus25 confirms 2025 Terre en colère renewal.",
+    "sha256": "2f5576397069deef68c433ddbb367b10c12c667bf9e53a3e41b125f416d1eb00"
+  }
+}

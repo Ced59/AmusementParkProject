@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "references": {
+        "operators": [
+          {
+            "id": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+            "key": "sem-volcans-vulcania",
+            "name": "SEM Volcans",
+            "description": [
+              {
+                "languageCode": "fr",
+                "value": "<h2>L’exploitant du parc scientifique</h2><p>La SEM Volcans est la société chargée d’exploiter Vulcania pour le compte de la Région, propriétaire du parc. Constituée à l’initiative de l’Auvergne en 1999, elle exerce cette mission dans le cadre d’une délégation de service public. La propriété des installations et leur exploitation relèvent ainsi de deux acteurs distincts.</p><h2>Un capital ancré dans le territoire</h2><p>Son actionnariat réunit des collectivités auvergnates et des partenaires privés, parmi lesquels des établissements financiers et des entreprises telles que Michelin, Limagrain et Volvic. Cette composition relie la gestion du parc à l’économie régionale.</p><p>Le mandat de la société associe la diffusion des sciences de la Terre au développement touristique. Les délégations successives ont également fait évoluer sa participation aux investissements et au renouvellement des expériences proposées à Vulcania.</p>"
+              },
+              {
+                "languageCode": "en",
+                "value": "<h2>Operating the science park</h2><p>SEM Volcans is the company that operates Vulcania on behalf of the Region, which owns the park. Established at Auvergne’s initiative in 1999, it carries out this role under a public-service delegation agreement. Ownership of the facilities and their operation therefore belong to separate organisations.</p><h2>Regional shareholders</h2><p>Its shareholders include Auvergne local authorities and private partners, among them financial institutions and companies such as Michelin, Limagrain and Volvic. This structure connects the park’s management with the regional economy.</p><p>The company’s remit combines sharing Earth sciences with tourism development. Successive delegation agreements have also changed its involvement in investment and in renewing the experiences offered at Vulcania.</p>"
+              },
+              {
+                "languageCode": "de",
+                "value": "<h2>Betreiberin des Wissenschaftsparks</h2><p>Die SEM Volcans betreibt Vulcania im Auftrag der Region, der Eigentümerin des Parks. Die Gesellschaft wurde 1999 auf Initiative der Auvergne gegründet und erfüllt ihre Aufgabe im Rahmen einer Übertragung öffentlicher Dienstleistungen. Eigentum an den Anlagen und deren Betrieb liegen somit bei unterschiedlichen Akteuren.</p><h2>Regional verankerte Gesellschafter</h2><p>Zum Gesellschafterkreis gehören Gebietskörperschaften der Auvergne und private Partner, darunter Finanzinstitute sowie Unternehmen wie Michelin, Limagrain und Volvic. Diese Zusammensetzung verbindet die Parkverwaltung mit der regionalen Wirtschaft.</p><p>Der Auftrag der Gesellschaft verknüpft die Vermittlung von Geowissenschaften mit der touristischen Entwicklung. Aufeinanderfolgende Betreiberverträge haben auch ihre Beteiligung an Investitionen und an der Erneuerung der Angebote in Vulcania verändert.</p>"
+              },
+              {
+                "languageCode": "nl",
+                "value": "<h2>Exploitant van het wetenschapspark</h2><p>SEM Volcans exploiteert Vulcania namens de regio, die eigenaar van het park is. De vennootschap werd in 1999 op initiatief van de Auvergne opgericht en vervult haar taak binnen een overeenkomst voor gedelegeerde openbare dienstverlening. Eigendom en exploitatie van de voorzieningen liggen daardoor bij verschillende partijen.</p><h2>Aandeelhouders uit de regio</h2><p>De aandeelhouders omvatten overheden uit de Auvergne en private partners, waaronder financiële instellingen en ondernemingen als Michelin, Limagrain en Volvic. Deze samenstelling verbindt het parkbeheer met de regionale economie.</p><p>De opdracht van de onderneming combineert het delen van kennis over aardwetenschappen met toeristische ontwikkeling. Opeenvolgende exploitatieovereenkomsten veranderden ook haar aandeel in investeringen en de vernieuwing van de ervaringen in Vulcania.</p>"
+              },
+              {
+                "languageCode": "it",
+                "value": "<h2>Il gestore del parco scientifico</h2><p>SEM Volcans è la società che gestisce Vulcania per conto della Regione, proprietaria del parco. Costituita nel 1999 su iniziativa dell’Alvernia, svolge questa missione attraverso una delega di servizio pubblico. La proprietà degli impianti e la loro gestione fanno quindi capo a soggetti distinti.</p><h2>Azionisti radicati nel territorio</h2><p>Il suo azionariato riunisce enti locali dell’Alvernia e partner privati, tra cui istituti finanziari e imprese come Michelin, Limagrain e Volvic. Questa composizione lega la gestione del parco all’economia regionale.</p><p>Il mandato della società associa la divulgazione delle scienze della Terra allo sviluppo turistico. Le successive deleghe hanno modificato anche la sua partecipazione agli investimenti e al rinnovamento delle esperienze proposte a Vulcania.</p>"
+              },
+              {
+                "languageCode": "es",
+                "value": "<h2>La empresa que gestiona el parque científico</h2><p>SEM Volcans explota Vulcania por encargo de la Región, propietaria del parque. Constituida en 1999 por iniciativa de Auvernia, desempeña esta misión mediante una delegación de servicio público. La propiedad de las instalaciones y su explotación corresponden, por tanto, a entidades distintas.</p><h2>Accionistas vinculados al territorio</h2><p>Su accionariado reúne a administraciones locales de Auvernia y socios privados, entre ellos entidades financieras y empresas como Michelin, Limagrain y Volvic. Esta composición vincula la gestión del parque con la economía regional.</p><p>La misión de la sociedad combina la divulgación de las ciencias de la Tierra con el desarrollo turístico. Las sucesivas delegaciones también han modificado su participación en las inversiones y en la renovación de las experiencias de Vulcania.</p>"
+              },
+              {
+                "languageCode": "pl",
+                "value": "<h2>Operator parku naukowego</h2><p>SEM Volcans jest spółką prowadzącą Vulcanię na zlecenie regionu, który pozostaje właścicielem parku. Powstała w 1999 roku z inicjatywy Owernii i realizuje swoje zadania na podstawie umowy o powierzeniu usług publicznych. Własność obiektów i ich eksploatacja należą zatem do odrębnych podmiotów.</p><h2>Akcjonariusze związani z regionem</h2><p>Wśród akcjonariuszy znajdują się samorządy Owernii i partnerzy prywatni, w tym instytucje finansowe oraz firmy Michelin, Limagrain i Volvic. Taka struktura łączy zarządzanie parkiem z regionalną gospodarką.</p><p>Zadania spółki obejmują popularyzację nauk o Ziemi i rozwój turystyki. Kolejne umowy zmieniały także jej udział w finansowaniu inwestycji oraz odnowie atrakcji oferowanych w Vulcanii.</p>"
+              },
+              {
+                "languageCode": "pt",
+                "value": "<h2>A operadora do parque científico</h2><p>A SEM Volcans é a sociedade que explora o Vulcania por conta da Região, proprietária do parque. Constituída em 1999 por iniciativa da Auvérnia, cumpre esta missão através de uma delegação de serviço público. A propriedade das instalações e a sua exploração pertencem, assim, a entidades distintas.</p><h2>Acionistas ligados ao território</h2><p>O seu capital reúne autarquias da Auvérnia e parceiros privados, entre os quais instituições financeiras e empresas como Michelin, Limagrain e Volvic. Esta composição liga a gestão do parque à economia regional.</p><p>A missão da sociedade associa a divulgação das ciências da Terra ao desenvolvimento turístico. As sucessivas delegações também alteraram a sua participação nos investimentos e na renovação das experiências propostas no Vulcania.</p>"
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-france-vulcania-sem-volcans-description",
+        "notes": "Existingglobaloperator37e01605 reused;8personaldescriptionsreviewed. OfficialSEMpage andCRC2018 synthesis/p6–7/p9 distinguishRegionalownership fromSEMoperation/DSP. foundedYear1999 andexistinglegal/contactfields preserved; nofictionaldate ofdissolution, nofounderidentitycollapsed. Nooperatorlogoidentified. https://www.vulcania.com/la-sem-volcans/ ; https://www.vulcania.com/historique/ ; exactCRCURLretainedincorehistorysourceaccess."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "987219cc-3f66-425d-933a-4eb38605ea2e",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:30:16.2255227Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+        "entityKey": "sem-volcans-vulcania",
+        "displayName": "SEM Volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "description.de",
+            "oldValue": null,
+            "newValue": "<h2>Betreiberin des Wissenschaftsparks</h2><p>Die SEM Volcans betreibt Vulcania im Auftrag der Region, der Eigentümerin des Parks. Die Gesellschaft wurde 1999 auf Initiative der Auvergne gegründet und erfüllt ihre Aufgabe im Rahmen einer Übertragung öffentlicher Dienstleistungen. Eigentum an den Anlagen und deren Betrieb liegen somit bei unterschiedlichen Akteuren.</p><h2>Regional verankerte Gesellschafter</h2><p>Zum Gesellschafterkreis gehören Gebietskörperschaften der Auvergne und private Partner, darunter Finanzinstitute sowie Unternehmen wie Michelin, Limagrain und Volvic. Diese Zusammensetzung verbindet die Parkverwaltung mit der regionalen Wirtschaft.</p><p>Der Auftrag der Gesellschaft verknüpft die Vermittlung von Geowissenschaften mit der touristischen Entwicklung. Aufeinanderfolgende Betreiberverträge haben auch ihre Beteiligung an Investitionen und an der Erneuerung der Angebote in Vulcania verändert.</p>"
+          },
+          {
+            "field": "description.en",
+            "oldValue": null,
+            "newValue": "<h2>Operating the science park</h2><p>SEM Volcans is the company that operates Vulcania on behalf of the Region, which owns the park. Established at Auvergne’s initiative in 1999, it carries out this role under a public-service delegation agreement. Ownership of the facilities and their operation therefore belong to separate organisations.</p><h2>Regional shareholders</h2><p>Its shareholders include Auvergne local authorities and private partners, among them financial institutions and companies such as Michelin, Limagrain and Volvic. This structure connects the park’s management with the regional economy.</p><p>The company’s remit combines sharing Earth sciences with tourism development. Successive delegation agreements have also changed its involvement in investment and in renewing the experiences offered at Vulcania.</p>"
+          },
+          {
+            "field": "description.es",
+            "oldValue": null,
+            "newValue": "<h2>La empresa que gestiona el parque científico</h2><p>SEM Volcans explota Vulcania por encargo de la Región, propietaria del parque. Constituida en 1999 por iniciativa de Auvernia, desempeña esta misión mediante una delegación de servicio público. La propiedad de las instalaciones y su explotación corresponden, por tanto, a entidades distintas.</p><h2>Accionistas vinculados al territorio</h2><p>Su accionariado reúne a administraciones locales de Auvernia y socios privados, entre ellos entidades financieras y empresas como Michelin, Limagrain y Volvic. Esta composición vincula la gestión del parque con la economía regional.</p><p>La misión de la sociedad combina la divulgación de las ciencias de la Tierra con el desarrollo turístico. Las sucesivas delegaciones también han modificado su participación en las inversiones y en la renovación de las experiencias de Vulcania.</p>"
+          },
+          {
+            "field": "description.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’exploitant du parc scientifique</h2><p>La SEM Volcans est la société chargée d’exploiter Vulcania pour le compte de la Région, propriétaire du parc. Constituée à l’initiative de l’Auvergne en 1999, elle exerce cette mission dans le cadre d’une délégation de service public. La propriété des installations et leur exploitation relèvent ainsi de deux acteurs distincts.</p><h2>Un capital ancré dans le territoire</h2><p>Son actionnariat réunit des collectivités auvergnates et des partenaires privés, parmi lesquels des établissements financiers et des entreprises telles que Michelin, Limagrain et Volvic. Cette composition relie la gestion du parc à l’économie régionale.</p><p>Le mandat de la société associe la diffusion des sciences de la Terre au développement touristique. Les délégations successives ont également fait évoluer sa participation aux investissements et au renouvellement des expériences proposées à Vulcania.</p>"
+          },
+          {
+            "field": "description.it",
+            "oldValue": null,
+            "newValue": "<h2>Il gestore del parco scientifico</h2><p>SEM Volcans è la società che gestisce Vulcania per conto della Regione, proprietaria del parco. Costituita nel 1999 su iniziativa dell’Alvernia, svolge questa missione attraverso una delega di servizio pubblico. La proprietà degli impianti e la loro gestione fanno quindi capo a soggetti distinti.</p><h2>Azionisti radicati nel territorio</h2><p>Il suo azionariato riunisce enti locali dell’Alvernia e partner privati, tra cui istituti finanziari e imprese come Michelin, Limagrain e Volvic. Questa composizione lega la gestione del parco all’economia regionale.</p><p>Il mandato della società associa la divulgazione delle scienze della Terra allo sviluppo turistico. Le successive deleghe hanno modificato anche la sua partecipazione agli investimenti e al rinnovamento delle esperienze proposte a Vulcania.</p>"
+          },
+          {
+            "field": "description.nl",
+            "oldValue": null,
+            "newValue": "<h2>Exploitant van het wetenschapspark</h2><p>SEM Volcans exploiteert Vulcania namens de regio, die eigenaar van het park is. De vennootschap werd in 1999 op initiatief van de Auvergne opgericht en vervult haar taak binnen een overeenkomst voor gedelegeerde openbare dienstverlening. Eigendom en exploitatie van de voorzieningen liggen daardoor bij verschillende partijen.</p><h2>Aandeelhouders uit de regio</h2><p>De aandeelhouders omvatten overheden uit de Auvergne en private partners, waaronder financiële instellingen en ondernemingen als Michelin, Limagrain en Volvic. Deze samenstelling verbindt het parkbeheer met de regionale economie.</p><p>De opdracht van de onderneming combineert het delen van kennis over aardwetenschappen met toeristische ontwikkeling. Opeenvolgende exploitatieovereenkomsten veranderden ook haar aandeel in investeringen en de vernieuwing van de ervaringen in Vulcania.</p>"
+          },
+          {
+            "field": "description.pl",
+            "oldValue": null,
+            "newValue": "<h2>Operator parku naukowego</h2><p>SEM Volcans jest spółką prowadzącą Vulcanię na zlecenie regionu, który pozostaje właścicielem parku. Powstała w 1999 roku z inicjatywy Owernii i realizuje swoje zadania na podstawie umowy o powierzeniu usług publicznych. Własność obiektów i ich eksploatacja należą zatem do odrębnych podmiotów.</p><h2>Akcjonariusze związani z regionem</h2><p>Wśród akcjonariuszy znajdują się samorządy Owernii i partnerzy prywatni, w tym instytucje finansowe oraz firmy Michelin, Limagrain i Volvic. Taka struktura łączy zarządzanie parkiem z regionalną gospodarką.</p><p>Zadania spółki obejmują popularyzację nauk o Ziemi i rozwój turystyki. Kolejne umowy zmieniały także jej udział w finansowaniu inwestycji oraz odnowie atrakcji oferowanych w Vulcanii.</p>"
+          },
+          {
+            "field": "description.pt",
+            "oldValue": null,
+            "newValue": "<h2>A operadora do parque científico</h2><p>A SEM Volcans é a sociedade que explora o Vulcania por conta da Região, proprietária do parque. Constituída em 1999 por iniciativa da Auvérnia, cumpre esta missão através de uma delegação de serviço público. A propriedade das instalações e a sua exploração pertencem, assim, a entidades distintas.</p><h2>Acionistas ligados ao território</h2><p>O seu capital reúne autarquias da Auvérnia e parceiros privados, entre os quais instituições financeiras e empresas como Michelin, Limagrain e Volvic. Esta composição liga a gestão do parque à economia regional.</p><p>A missão da sociedade associa a divulgação das ciências da Terra ao desenvolvimento turístico. As sucessivas delegações também alteraram a sua participação nos investimentos e na renovação das experiências propostas no Vulcania.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "4971988e-af67-40c2-b44b-06b5109a13c9",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:30:46.7342036Z",
+    "appliedAtUtc": "2026-11-15T17:30:46.7342044Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+        "entityKey": "sem-volcans-vulcania",
+        "displayName": "SEM Volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "description.de",
+            "oldValue": null,
+            "newValue": "<h2>Betreiberin des Wissenschaftsparks</h2><p>Die SEM Volcans betreibt Vulcania im Auftrag der Region, der Eigentümerin des Parks. Die Gesellschaft wurde 1999 auf Initiative der Auvergne gegründet und erfüllt ihre Aufgabe im Rahmen einer Übertragung öffentlicher Dienstleistungen. Eigentum an den Anlagen und deren Betrieb liegen somit bei unterschiedlichen Akteuren.</p><h2>Regional verankerte Gesellschafter</h2><p>Zum Gesellschafterkreis gehören Gebietskörperschaften der Auvergne und private Partner, darunter Finanzinstitute sowie Unternehmen wie Michelin, Limagrain und Volvic. Diese Zusammensetzung verbindet die Parkverwaltung mit der regionalen Wirtschaft.</p><p>Der Auftrag der Gesellschaft verknüpft die Vermittlung von Geowissenschaften mit der touristischen Entwicklung. Aufeinanderfolgende Betreiberverträge haben auch ihre Beteiligung an Investitionen und an der Erneuerung der Angebote in Vulcania verändert.</p>"
+          },
+          {
+            "field": "description.en",
+            "oldValue": null,
+            "newValue": "<h2>Operating the science park</h2><p>SEM Volcans is the company that operates Vulcania on behalf of the Region, which owns the park. Established at Auvergne’s initiative in 1999, it carries out this role under a public-service delegation agreement. Ownership of the facilities and their operation therefore belong to separate organisations.</p><h2>Regional shareholders</h2><p>Its shareholders include Auvergne local authorities and private partners, among them financial institutions and companies such as Michelin, Limagrain and Volvic. This structure connects the park’s management with the regional economy.</p><p>The company’s remit combines sharing Earth sciences with tourism development. Successive delegation agreements have also changed its involvement in investment and in renewing the experiences offered at Vulcania.</p>"
+          },
+          {
+            "field": "description.es",
+            "oldValue": null,
+            "newValue": "<h2>La empresa que gestiona el parque científico</h2><p>SEM Volcans explota Vulcania por encargo de la Región, propietaria del parque. Constituida en 1999 por iniciativa de Auvernia, desempeña esta misión mediante una delegación de servicio público. La propiedad de las instalaciones y su explotación corresponden, por tanto, a entidades distintas.</p><h2>Accionistas vinculados al territorio</h2><p>Su accionariado reúne a administraciones locales de Auvernia y socios privados, entre ellos entidades financieras y empresas como Michelin, Limagrain y Volvic. Esta composición vincula la gestión del parque con la economía regional.</p><p>La misión de la sociedad combina la divulgación de las ciencias de la Tierra con el desarrollo turístico. Las sucesivas delegaciones también han modificado su participación en las inversiones y en la renovación de las experiencias de Vulcania.</p>"
+          },
+          {
+            "field": "description.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’exploitant du parc scientifique</h2><p>La SEM Volcans est la société chargée d’exploiter Vulcania pour le compte de la Région, propriétaire du parc. Constituée à l’initiative de l’Auvergne en 1999, elle exerce cette mission dans le cadre d’une délégation de service public. La propriété des installations et leur exploitation relèvent ainsi de deux acteurs distincts.</p><h2>Un capital ancré dans le territoire</h2><p>Son actionnariat réunit des collectivités auvergnates et des partenaires privés, parmi lesquels des établissements financiers et des entreprises telles que Michelin, Limagrain et Volvic. Cette composition relie la gestion du parc à l’économie régionale.</p><p>Le mandat de la société associe la diffusion des sciences de la Terre au développement touristique. Les délégations successives ont également fait évoluer sa participation aux investissements et au renouvellement des expériences proposées à Vulcania.</p>"
+          },
+          {
+            "field": "description.it",
+            "oldValue": null,
+            "newValue": "<h2>Il gestore del parco scientifico</h2><p>SEM Volcans è la società che gestisce Vulcania per conto della Regione, proprietaria del parco. Costituita nel 1999 su iniziativa dell’Alvernia, svolge questa missione attraverso una delega di servizio pubblico. La proprietà degli impianti e la loro gestione fanno quindi capo a soggetti distinti.</p><h2>Azionisti radicati nel territorio</h2><p>Il suo azionariato riunisce enti locali dell’Alvernia e partner privati, tra cui istituti finanziari e imprese come Michelin, Limagrain e Volvic. Questa composizione lega la gestione del parco all’economia regionale.</p><p>Il mandato della società associa la divulgazione delle scienze della Terra allo sviluppo turistico. Le successive deleghe hanno modificato anche la sua partecipazione agli investimenti e al rinnovamento delle esperienze proposte a Vulcania.</p>"
+          },
+          {
+            "field": "description.nl",
+            "oldValue": null,
+            "newValue": "<h2>Exploitant van het wetenschapspark</h2><p>SEM Volcans exploiteert Vulcania namens de regio, die eigenaar van het park is. De vennootschap werd in 1999 op initiatief van de Auvergne opgericht en vervult haar taak binnen een overeenkomst voor gedelegeerde openbare dienstverlening. Eigendom en exploitatie van de voorzieningen liggen daardoor bij verschillende partijen.</p><h2>Aandeelhouders uit de regio</h2><p>De aandeelhouders omvatten overheden uit de Auvergne en private partners, waaronder financiële instellingen en ondernemingen als Michelin, Limagrain en Volvic. Deze samenstelling verbindt het parkbeheer met de regionale economie.</p><p>De opdracht van de onderneming combineert het delen van kennis over aardwetenschappen met toeristische ontwikkeling. Opeenvolgende exploitatieovereenkomsten veranderden ook haar aandeel in investeringen en de vernieuwing van de ervaringen in Vulcania.</p>"
+          },
+          {
+            "field": "description.pl",
+            "oldValue": null,
+            "newValue": "<h2>Operator parku naukowego</h2><p>SEM Volcans jest spółką prowadzącą Vulcanię na zlecenie regionu, który pozostaje właścicielem parku. Powstała w 1999 roku z inicjatywy Owernii i realizuje swoje zadania na podstawie umowy o powierzeniu usług publicznych. Własność obiektów i ich eksploatacja należą zatem do odrębnych podmiotów.</p><h2>Akcjonariusze związani z regionem</h2><p>Wśród akcjonariuszy znajdują się samorządy Owernii i partnerzy prywatni, w tym instytucje finansowe oraz firmy Michelin, Limagrain i Volvic. Taka struktura łączy zarządzanie parkiem z regionalną gospodarką.</p><p>Zadania spółki obejmują popularyzację nauk o Ziemi i rozwój turystyki. Kolejne umowy zmieniały także jej udział w finansowaniu inwestycji oraz odnowie atrakcji oferowanych w Vulcanii.</p>"
+          },
+          {
+            "field": "description.pt",
+            "oldValue": null,
+            "newValue": "<h2>A operadora do parque científico</h2><p>A SEM Volcans é a sociedade que explora o Vulcania por conta da Região, proprietária do parque. Constituída em 1999 por iniciativa da Auvérnia, cumpre esta missão através de uma delegação de serviço público. A propriedade das instalações e a sua exploração pertencem, assim, a entidades distintas.</p><h2>Acionistas ligados ao território</h2><p>O seu capital reúne autarquias da Auvérnia e parceiros privados, entre os quais instituições financeiras e empresas como Michelin, Limagrain e Volvic. Esta composição liga a gestão do parque à economia regional.</p><p>A missão da sociedade associa a divulgação das ciências da Terra ao desenvolvimento turístico. As sucessivas delegações também alteraram a sua participação nos investimentos e na renovação das experiências propostas no Vulcania.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : description de la SEM Volcans rédigée et relue en huit langues; distinction entre exploitant sous délégation et Région propriétaire. Référence globale existante réutilisée, dates et contacts préservés.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Existingglobaloperator37e01605 reused;8personaldescriptionsreviewed. OfficialSEMpage andCRC2018 synthesis/p6–7/p9 distinguishRegionalownership fromSEMoperation/DSP. foundedYear1999 andexistinglegal/contactfields preserved; nofictionaldate ofdissolution, nofounderidentitycollapsed. Nooperatorlogoidentified. https://www.vulcania.com/la-sem-volcans/ ; https://www.vulcania.com/historique/ ; exactCRCURLretainedincorehistorysourceaccess."
+}

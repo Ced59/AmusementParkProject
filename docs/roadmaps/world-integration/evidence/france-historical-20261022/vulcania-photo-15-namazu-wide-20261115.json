@@ -1,0 +1,288 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-15-namazu-wide",
+    "ownerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+    "itemName": "Namazu",
+    "current": true,
+    "source": {
+      "key": "namazu-main",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/03/namazu-3.png",
+      "sourcePage": "https://www.vulcania.com/animation/namazu/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/namazu-main.png",
+      "accessedAtUtc": "2026-11-15T13:54:24.508596+00:00",
+      "http": 200,
+      "bytes": 799220,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "d8b575b15d0f19c3c2196ea7f37ad8a79fc0829bdb90a815c653ad64cac44b59",
+      "over960KiB": false,
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false,
+      "verifiedAtUtc": "2026-11-15T17:27:55.136009+00:00"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "ExistingownerFrancecampaignmediaauthorization; no openlicense or individualphotographerpermissionclaim.",
+    "qualification": "Distinctrealphotograph. AbysslegacyimageassignedonlytohistoricalAbyss, notcurrentHawaii. Currentconeimagewithpromotionaltext/logoexcluded; no cropping."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/namazu-3.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/namazu-main.png",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-15-namazu-wide-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-15-namazu-wide-import-result.json"
+  },
+  "metadata": {
+    "description": "La silhouette du cône apparaît à gauche des voitures rouges et de leurs arceaux jaunes.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/namazu-3.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Train rouge de Namazu sur la voie sombre, avec le cône de Vulcania et une colline boisée à l’arrière-plan."
+      },
+      {
+        "languageCode": "en",
+        "value": "Red Namazu train on the dark track, with Vulcania’s cone and a wooded hill in the background."
+      },
+      {
+        "languageCode": "de",
+        "value": "Roter Namazu-Zug auf dunkler Schiene, dahinter der Kegel von Vulcania und ein bewaldeter Hügel."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Rode trein van Namazu op de donkere baan, met de kegel van Vulcania en een beboste heuvel op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Treno rosso di Namazu sul binario scuro, con il cono di Vulcania e una collina boscosa sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Tren rojo de Namazu sobre la vía oscura, con el cono de Vulcania y una colina boscosa al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Czerwony pociąg Namazu na ciemnym torze, a w tle stożek Vulcanii i zalesione wzgórze."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Comboio vermelho do Namazu nos carris escuros, com o cone do Vulcania e uma colina arborizada ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La silhouette du cône apparaît à gauche des voitures rouges et de leurs arceaux jaunes."
+      },
+      {
+        "languageCode": "en",
+        "value": "The cone’s silhouette appears to the left of the red cars and their yellow frames."
+      },
+      {
+        "languageCode": "de",
+        "value": "Links von den roten Wagen mit ihren gelben Bügeln zeichnet sich der Kegel ab."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het silhouet van de kegel is links van de rode wagens met hun gele beugels te zien."
+      },
+      {
+        "languageCode": "it",
+        "value": "La sagoma del cono compare a sinistra delle vetture rosse con le strutture gialle."
+      },
+      {
+        "languageCode": "es",
+        "value": "La silueta del cono aparece a la izquierda de los vagones rojos con sus estructuras amarillas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Sylwetka stożka widoczna jest po lewej stronie czerwonych wagoników z żółtymi ramami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A silhueta do cone surge à esquerda das carruagens vermelhas com as suas estruturas amarelas."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Vulcania."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Vulcania."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "305cf7c2f2b64a66ab8c8e1efb7efdc7",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "path": "park_item/305cf7c2f2b64a66ab8c8e1efb7efdc7",
+      "description": "La silhouette du cône apparaît à gauche des voitures rouges et de leurs arceaux jaunes.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 799220,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/namazu-3.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Train rouge de Namazu sur la voie sombre, avec le cône de Vulcania et une colline boisée à l’arrière-plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "Red Namazu train on the dark track, with Vulcania’s cone and a wooded hill in the background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Roter Namazu-Zug auf dunkler Schiene, dahinter der Kegel von Vulcania und ein bewaldeter Hügel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rode trein van Namazu op de donkere baan, met de kegel van Vulcania en een beboste heuvel op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Treno rosso di Namazu sul binario scuro, con il cono di Vulcania e una collina boscosa sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Tren rojo de Namazu sobre la vía oscura, con el cono de Vulcania y una colina boscosa al fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwony pociąg Namazu na ciemnym torze, a w tle stożek Vulcanii i zalesione wzgórze."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Comboio vermelho do Namazu nos carris escuros, com o cone do Vulcania e uma colina arborizada ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La silhouette du cône apparaît à gauche des voitures rouges et de leurs arceaux jaunes."
+        },
+        {
+          "languageCode": "en",
+          "value": "The cone’s silhouette appears to the left of the red cars and their yellow frames."
+        },
+        {
+          "languageCode": "de",
+          "value": "Links von den roten Wagen mit ihren gelben Bügeln zeichnet sich der Kegel ab."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het silhouet van de kegel is links van de rode wagens met hun gele beugels te zien."
+        },
+        {
+          "languageCode": "it",
+          "value": "La sagoma del cono compare a sinistra delle vetture rosse con le strutture gialle."
+        },
+        {
+          "languageCode": "es",
+          "value": "La silueta del cono aparece a la izquierda de los vagones rojos con sus estructuras amarillas."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sylwetka stożka widoczna jest po lewej stronie czerwonych wagoników z żółtymi ramami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A silhueta do cone surge à esquerda das carruagens vermelhas com as suas estruturas amarelas."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:29:24.142Z",
+      "updatedAt": "2026-11-15T17:29:27.77Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T17:29:30.8669665Z",
+    "startedAtUtc": "2026-11-15T17:29:14.6842117Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

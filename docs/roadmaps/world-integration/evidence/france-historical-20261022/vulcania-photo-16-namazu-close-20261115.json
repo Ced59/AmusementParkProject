@@ -1,0 +1,288 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-16-namazu-close",
+    "ownerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+    "itemName": "Namazu",
+    "current": false,
+    "source": {
+      "key": "namazu-social",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/03/Namazu-5.png",
+      "sourcePage": "https://www.vulcania.com/animation/namazu/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/namazu-social.png",
+      "accessedAtUtc": "2026-11-15T13:54:24.809556+00:00",
+      "http": 200,
+      "bytes": 461591,
+      "dimensions": [
+        1200,
+        630
+      ],
+      "sha256": "9b3adef8a0f9d32b7831b3d778b97ef5a1d51701f6c01ef6789140b73011f878",
+      "over960KiB": false,
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false,
+      "verifiedAtUtc": "2026-11-15T17:27:55.418580+00:00"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "ExistingownerFrancecampaignmediaauthorization; no openlicense or individualphotographerpermissionclaim.",
+    "qualification": "Distinctrealphotograph. AbysslegacyimageassignedonlytohistoricalAbyss, notcurrentHawaii. Currentconeimagewithpromotionaltext/logoexcluded; no cropping."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/Namazu-5.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/namazu-social.png",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-16-namazu-close-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-16-namazu-close-import-result.json"
+  },
+  "metadata": {
+    "description": "Des mains levées se détachent au-dessus du train, encadré par les grands supports de la voie.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/Namazu-5.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Passagers de Namazu dans les voitures rouges aux cadres jaunes, au-dessus des arbres et sous un ciel bleu."
+      },
+      {
+        "languageCode": "en",
+        "value": "Namazu passengers in red cars with yellow frames above the trees under a blue sky."
+      },
+      {
+        "languageCode": "de",
+        "value": "Fahrgäste von Namazu in roten Wagen mit gelben Rahmen über den Bäumen unter blauem Himmel."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Passagiers van Namazu in rode wagens met gele frames boven de bomen onder een blauwe lucht."
+      },
+      {
+        "languageCode": "it",
+        "value": "Passeggeri di Namazu nelle vetture rosse con telai gialli, sopra gli alberi e sotto un cielo azzurro."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pasajeros de Namazu en vagones rojos con marcos amarillos, sobre los árboles y bajo un cielo azul."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pasażerowie Namazu w czerwonych wagonikach z żółtymi ramami, ponad drzewami pod błękitnym niebem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Passageiros do Namazu em carruagens vermelhas com estruturas amarelas, acima das árvores e sob um céu azul."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des mains levées se détachent au-dessus du train, encadré par les grands supports de la voie."
+      },
+      {
+        "languageCode": "en",
+        "value": "Raised hands stand out above the train, framed by the track’s tall supports."
+      },
+      {
+        "languageCode": "de",
+        "value": "Über dem Zug zeichnen sich erhobene Hände ab, eingerahmt von den hohen Schienenstützen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Opgestoken handen steken boven de trein uit, tussen de hoge steunen van de baan."
+      },
+      {
+        "languageCode": "it",
+        "value": "Mani alzate spiccano sopra il treno, incorniciato dagli alti sostegni del binario."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las manos alzadas destacan sobre el tren, enmarcado por los altos soportes de la vía."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Ponad pociągiem widać uniesione ręce, a po bokach wysokie podpory toru."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Mãos erguidas destacam-se acima do comboio, enquadrado pelos altos suportes dos carris."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Vulcania."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Vulcania."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T17:29:43.1925284Z",
+    "startedAtUtc": "2026-11-15T17:29:32.6761335Z",
+    "result": {
+      "id": "9222c51f692d4d2bacbdc5ddb83631db",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "path": "park_item/9222c51f692d4d2bacbdc5ddb83631db",
+      "description": "Des mains levées se détachent au-dessus du train, encadré par les grands supports de la voie.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 461591,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/Namazu-5.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Passagers de Namazu dans les voitures rouges aux cadres jaunes, au-dessus des arbres et sous un ciel bleu."
+        },
+        {
+          "languageCode": "en",
+          "value": "Namazu passengers in red cars with yellow frames above the trees under a blue sky."
+        },
+        {
+          "languageCode": "de",
+          "value": "Fahrgäste von Namazu in roten Wagen mit gelben Rahmen über den Bäumen unter blauem Himmel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Passagiers van Namazu in rode wagens met gele frames boven de bomen onder een blauwe lucht."
+        },
+        {
+          "languageCode": "it",
+          "value": "Passeggeri di Namazu nelle vetture rosse con telai gialli, sopra gli alberi e sotto un cielo azzurro."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pasajeros de Namazu en vagones rojos con marcos amarillos, sobre los árboles y bajo un cielo azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pasażerowie Namazu w czerwonych wagonikach z żółtymi ramami, ponad drzewami pod błękitnym niebem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Passageiros do Namazu em carruagens vermelhas com estruturas amarelas, acima das árvores e sob um céu azul."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des mains levées se détachent au-dessus du train, encadré par les grands supports de la voie."
+        },
+        {
+          "languageCode": "en",
+          "value": "Raised hands stand out above the train, framed by the track’s tall supports."
+        },
+        {
+          "languageCode": "de",
+          "value": "Über dem Zug zeichnen sich erhobene Hände ab, eingerahmt von den hohen Schienenstützen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Opgestoken handen steken boven de trein uit, tussen de hoge steunen van de baan."
+        },
+        {
+          "languageCode": "it",
+          "value": "Mani alzate spiccano sopra il treno, incorniciato dagli alti sostegni del binario."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las manos alzadas destacan sobre el tren, enmarcado por los altos soportes de la vía."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ponad pociągiem widać uniesione ręce, a po bokach wysokie podpory toru."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mãos erguidas destacam-se acima do comboio, enquadrado pelos altos suportes dos carris."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:29:36.519Z",
+      "updatedAt": "2026-11-15T17:29:40.084Z"
+    }
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

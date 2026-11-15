@@ -1,0 +1,1411 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-history-regional-project-1992",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 1992,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Announcement",
+            "isMajor": false,
+            "isVisible": false,
+            "mainImageId": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "La Région lance le projet de parc scientifique"
+              },
+              {
+                "languageCode": "en",
+                "value": "The Region launches the science park project"
+              },
+              {
+                "languageCode": "de",
+                "value": "Die Region startet das Wissenschaftspark-Projekt"
+              },
+              {
+                "languageCode": "nl",
+                "value": "De regio begint aan het wetenschapsparkproject"
+              },
+              {
+                "languageCode": "it",
+                "value": "La Regione avvia il progetto del parco scientifico"
+              },
+              {
+                "languageCode": "es",
+                "value": "La Región impulsa el proyecto de parque científico"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Region rozpoczyna projekt parku naukowego"
+              },
+              {
+                "languageCode": "pt",
+                "value": "A Região lança o projeto do parque científico"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le Conseil régional d’Auvergne décide de créer un parc scientifique et un musée du volcanisme dans la Chaîne des Puys. Le site choisi est un ancien terrain militaire, au sein du parc naturel régional. Le projet concrétise l’idée de parc portée par Katia et Maurice Krafft et soutenue par Valéry Giscard d’Estaing."
+              },
+              {
+                "languageCode": "en",
+                "value": "Auvergne’s Regional Council decides to create a science park and a museum of volcanism in the Chaîne des Puys. The chosen site is former military land within the regional nature park. The project develops the park idea championed by Katia and Maurice Krafft and supported by Valéry Giscard d’Estaing."
+              },
+              {
+                "languageCode": "de",
+                "value": "Der Regionalrat der Auvergne beschließt einen Wissenschaftspark mit einem Vulkanismusmuseum in der Chaîne des Puys. Als Standort dient ein ehemaliges Militärgelände im regionalen Naturpark. Das Projekt greift die Parkidee von Katia und Maurice Krafft auf, die Valéry Giscard d’Estaing unterstützt hatte."
+              },
+              {
+                "languageCode": "nl",
+                "value": "De regionale raad van de Auvergne besluit een wetenschapspark en een museum over vulkanisme in de Chaîne des Puys te creëren. De gekozen locatie is voormalig militair terrein in het regionale natuurpark. Het project bouwt voort op het parkidee van Katia en Maurice Krafft, gesteund door Valéry Giscard d’Estaing."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il Consiglio regionale dell’Alvernia decide di creare un parco scientifico e un museo del vulcanismo nella Chaîne des Puys. Il sito prescelto è un’ex area militare nel parco naturale regionale. Il progetto concretizza l’idea di parco promossa da Katia e Maurice Krafft e sostenuta da Valéry Giscard d’Estaing."
+              },
+              {
+                "languageCode": "es",
+                "value": "El Consejo Regional de Auvernia decide crear un parque científico y un museo del vulcanismo en la Chaîne des Puys. El lugar elegido es un antiguo terreno militar dentro del parque natural regional. El proyecto desarrolla la idea de parque de Katia y Maurice Krafft, apoyada por Valéry Giscard d’Estaing."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Rada regionalna Owernii postanawia stworzyć park naukowy i muzeum wulkanizmu w Chaîne des Puys. Wybiera dawne tereny wojskowe w regionalnym parku przyrody. Projekt rozwija pomysł parku propagowany przez Katię i Maurice’a Krafftów, wspierany przez Valéry’ego Giscarda d’Estaing."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Conselho Regional da Auvérnia decide criar um parque científico e um museu do vulcanismo na Chaîne des Puys. O local escolhido é um antigo terreno militar no parque natural regional. O projeto concretiza a ideia de parque defendida por Katia e Maurice Krafft e apoiada por Valéry Giscard d’Estaing."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vulcania — historique officiel",
+                "url": "https://www.vulcania.com/historique/",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          },
+          {
+            "key": "vulcania-history-public-opening-2002",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2002,
+            "month": 2,
+            "day": null,
+            "datePrecision": "Month",
+            "eventType": "Opening",
+            "isMajor": true,
+            "isVisible": false,
+            "mainImageId": "7455ffc28d574c158809574ac5c022bd",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Vulcania accueille ses premiers visiteurs"
+              },
+              {
+                "languageCode": "en",
+                "value": "Vulcania welcomes its first visitors"
+              },
+              {
+                "languageCode": "de",
+                "value": "Vulcania empfängt seine ersten Besucher"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Vulcania ontvangt zijn eerste bezoekers"
+              },
+              {
+                "languageCode": "it",
+                "value": "Vulcania accoglie i primi visitatori"
+              },
+              {
+                "languageCode": "es",
+                "value": "Vulcania recibe a sus primeros visitantes"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Vulcania przyjmuje pierwszych gości"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Vulcania recebe os primeiros visitantes"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le parc ouvre en février 2002 à Saint-Ours-les-Roches, dans l’architecture conçue par Hans Hollein. La Région en reste propriétaire et confie son exploitation à la SEM Volcans. Le centre consacré au volcanisme doit conjuguer diffusion scientifique et développement touristique de l’Auvergne."
+              },
+              {
+                "languageCode": "en",
+                "value": "The park opens in February 2002 at Saint-Ours-les-Roches, in buildings designed by Hans Hollein. The Region retains ownership and entrusts operation to SEM Volcans. Dedicated to volcanism, the centre is intended to combine science education with tourism development in Auvergne."
+              },
+              {
+                "languageCode": "de",
+                "value": "Der Park eröffnet im Februar 2002 in Saint-Ours-les-Roches mit der Architektur von Hans Hollein. Die Region bleibt Eigentümerin und überträgt den Betrieb an die SEM Volcans. Das dem Vulkanismus gewidmete Zentrum soll Wissensvermittlung und touristische Entwicklung der Auvergne verbinden."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het park opent in februari 2002 in Saint-Ours-les-Roches, in de door Hans Hollein ontworpen gebouwen. De regio blijft eigenaar en vertrouwt de exploitatie toe aan SEM Volcans. Het centrum over vulkanisme moet wetenschapsvoorlichting combineren met de toeristische ontwikkeling van de Auvergne."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il parco apre nel febbraio 2002 a Saint-Ours-les-Roches, negli edifici progettati da Hans Hollein. La Regione ne conserva la proprietà e ne affida la gestione a SEM Volcans. Il centro dedicato al vulcanismo deve unire divulgazione scientifica e sviluppo turistico dell’Alvernia."
+              },
+              {
+                "languageCode": "es",
+                "value": "El parque abre en febrero de 2002 en Saint-Ours-les-Roches, en los edificios diseñados por Hans Hollein. La Región mantiene la propiedad y encomienda su explotación a SEM Volcans. El centro dedicado al vulcanismo pretende unir divulgación científica y desarrollo turístico de Auvernia."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Park otwiera się w lutym 2002 roku w Saint-Ours-les-Roches, w obiektach zaprojektowanych przez Hansa Holleina. Region zachowuje własność i powierza eksploatację spółce SEM Volcans. Ośrodek poświęcony wulkanizmowi ma łączyć popularyzację nauki z rozwojem turystyki w Owernii."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O parque abre em fevereiro de 2002 em Saint-Ours-les-Roches, nos edifícios concebidos por Hans Hollein. A Região mantém a propriedade e confia a exploração à SEM Volcans. O centro dedicado ao vulcanismo pretende unir divulgação científica e desenvolvimento turístico da Auvérnia."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vulcania — historique officiel",
+                "url": "https://www.vulcania.com/historique/",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Chambre régionale des comptes — SAEM des Volcans, rapport2018, préambule",
+                "url": "https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          },
+          {
+            "key": "vulcania-history-renewal-2007",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2007,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Redevelopment",
+            "isMajor": false,
+            "isVisible": false,
+            "mainImageId": "3656194cc2cf40c8a1f02b9390da5010",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Un renouvellement tourné vers les familles"
+              },
+              {
+                "languageCode": "en",
+                "value": "Renewal with families in mind"
+              },
+              {
+                "languageCode": "de",
+                "value": "Erneuerung mit Blick auf Familien"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Vernieuwing met aandacht voor gezinnen"
+              },
+              {
+                "languageCode": "it",
+                "value": "Un rinnovamento rivolto alle famiglie"
+              },
+              {
+                "languageCode": "es",
+                "value": "Una renovación orientada a las familias"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Odnowa z myślą o rodzinach"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Uma renovação orientada para as famílias"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "À partir de 2007, de nouveaux investissements renforcent la dimension ludique de Vulcania pour élargir son public, notamment auprès des plus jeunes. Cette évolution accompagne une nouvelle délégation de service public, mise en place après les difficultés financières des premières années."
+              },
+              {
+                "languageCode": "en",
+                "value": "From 2007, new investment strengthens Vulcania’s playful dimension to broaden its audience, particularly among younger visitors. This evolution accompanies a new public-service delegation agreement introduced after the financial difficulties of the early years."
+              },
+              {
+                "languageCode": "de",
+                "value": "Ab 2007 stärken neue Investitionen die spielerische Seite von Vulcania, um ein breiteres Publikum und insbesondere jüngere Besucher anzusprechen. Die Entwicklung begleitet einen neuen Betreibervertrag nach den finanziellen Schwierigkeiten der ersten Jahre."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Vanaf 2007 versterken nieuwe investeringen het speelse karakter van Vulcania om een breder publiek te bereiken, vooral jongere bezoekers. Deze ontwikkeling gaat samen met een nieuwe overeenkomst voor openbare dienstverlening na de financiële problemen van de beginjaren."
+              },
+              {
+                "languageCode": "it",
+                "value": "Dal 2007 nuovi investimenti rafforzano la dimensione ludica di Vulcania per ampliarne il pubblico, in particolare tra i più giovani. L’evoluzione accompagna una nuova delega di servizio pubblico, introdotta dopo le difficoltà finanziarie dei primi anni."
+              },
+              {
+                "languageCode": "es",
+                "value": "A partir de 2007, nuevas inversiones refuerzan la dimensión lúdica de Vulcania para ampliar su público, especialmente entre los más jóvenes. Esta evolución acompaña una nueva delegación de servicio público, establecida tras las dificultades financieras de los primeros años."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Od 2007 roku nowe inwestycje wzmacniają rozrywkowy wymiar Vulcanii, aby przyciągnąć szerszą publiczność, zwłaszcza najmłodszych. Zmiana towarzyszy nowej umowie o świadczenie usług publicznych, zawartej po trudnościach finansowych pierwszych lat."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A partir de 2007, novos investimentos reforçam a vertente lúdica do Vulcania para alargar o público, sobretudo entre os mais jovens. Esta evolução acompanha uma nova delegação de serviço público, estabelecida após as dificuldades financeiras dos primeiros anos."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Chambre régionale des comptes — SAEM des Volcans, rapport2018, synthèse et préambule",
+                "url": "https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          },
+          {
+            "key": "vulcania-history-olympus-25-announcement-2026",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2026,
+            "month": 4,
+            "day": 15,
+            "datePrecision": "Day",
+            "eventType": "Masterplan",
+            "isMajor": true,
+            "isVisible": false,
+            "mainImageId": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Vulcania détaille le programme Olympus 25"
+              },
+              {
+                "languageCode": "en",
+                "value": "Vulcania sets out the Olympus 25 programme"
+              },
+              {
+                "languageCode": "de",
+                "value": "Vulcania erläutert das Programm Olympus 25"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Vulcania licht het programma Olympus 25 toe"
+              },
+              {
+                "languageCode": "it",
+                "value": "Vulcania presenta il programma Olympus 25"
+              },
+              {
+                "languageCode": "es",
+                "value": "Vulcania detalla el programa Olympus 25"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Vulcania przedstawia program Olympus 25"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Vulcania apresenta o programa Olympus 25"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Dans une présentation publiée le 15 avril, Vulcania détaille un programme de 29 millions d’euros financé par la SEM Volcans et la Région. Olympus 25 prévoit un renouvellement régulier des attractions, des hébergements thématiques à partir de 2028 et une nouvelle attraction en 2029 : ces derniers éléments restent des projets annoncés."
+              },
+              {
+                "languageCode": "en",
+                "value": "In a presentation published on 15 April, Vulcania details a €29 million programme funded by SEM Volcans and the Region. Olympus 25 calls for regular attraction renewal, themed accommodation from 2028 and a new attraction in 2029; the latter developments remain announced projects."
+              },
+              {
+                "languageCode": "de",
+                "value": "In einer am 15. April veröffentlichten Darstellung erläutert Vulcania ein von SEM Volcans und der Region finanziertes Programm über 29 Millionen Euro. Olympus 25 sieht regelmäßige Attraktionserneuerungen, thematische Unterkünfte ab 2028 und eine neue Attraktion 2029 vor. Die beiden letztgenannten Vorhaben bleiben angekündigte Projekte."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In een publicatie van 15 april beschrijft Vulcania een programma van 29 miljoen euro, gefinancierd door SEM Volcans en de regio. Olympus 25 voorziet in regelmatige vernieuwing van attracties, thematische accommodaties vanaf 2028 en een nieuwe attractie in 2029. Die laatste ontwikkelingen blijven aangekondigde projecten."
+              },
+              {
+                "languageCode": "it",
+                "value": "In una presentazione pubblicata il 15 aprile, Vulcania illustra un programma da 29 milioni di euro finanziato da SEM Volcans e dalla Regione. Olympus 25 prevede un rinnovamento regolare delle attrazioni, alloggi a tema dal 2028 e una nuova attrazione nel 2029: questi ultimi interventi restano progetti annunciati."
+              },
+              {
+                "languageCode": "es",
+                "value": "En una presentación publicada el 15 de abril, Vulcania detalla un programa de 29 millones de euros financiado por SEM Volcans y la Región. Olympus 25 prevé la renovación regular de atracciones, alojamientos temáticos a partir de 2028 y una nueva atracción en 2029; estas últimas actuaciones siguen siendo proyectos anunciados."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W publikacji z 15 kwietnia Vulcania przedstawia program o wartości 29 milionów euro, finansowany przez SEM Volcans i region. Olympus 25 zakłada regularną odnowę atrakcji, zakwaterowanie tematyczne od 2028 roku oraz nową atrakcję w 2029 roku. Te dwa ostatnie przedsięwzięcia pozostają zapowiedzianymi projektami."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Numa apresentação publicada a 15 de abril, o Vulcania detalha um programa de 29 milhões de euros financiado pela SEM Volcans e pela Região. O Olympus 25 prevê a renovação regular das atrações, alojamentos temáticos a partir de 2028 e uma nova atração em 2029; estes últimos elementos continuam a ser projetos anunciados."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vulcania — Olympus25, présentation officielle du15avril2026",
+                "url": "https://www.vulcania.com/actualites/olympus-25/",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-france-vulcania-first-park-history",
+        "notes": "Fourprivatesourcedparkfacts,64personallywritten/reviewed8languagefields.1992regionaldecisionnotsoleKrafft/VGEfoundation;2002Februarymonth becauseofficial20vscontemporarypublic21Februaryconflict.2007renewalnotsecondopeningnorinventedownershipchange.15April2026isofficialpublication/announcementdate,notstartofOlympusworks;2028/29futureplansnotbuiltfacilities. Noitemopeningsduplicatedinparktimeline.2002/2007imagesarecaptioned2010contextnotphotographsofevents;nofaithful1992/2026eventphotosyet.1994Holleindesignselectiontobedevelopedarticlewithoutfaketype."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "39ca2cd8-fb46-439a-9de9-7dfa17aa4dac",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:32:55.6358522Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "41dfb550-2940-498f-89d9-722a2bbe64c3",
+        "entityKey": "vulcania-history-regional-project-1992",
+        "displayName": "La Région lance le projet de parc scientifique",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-history-regional-project-1992"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "1992"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die Region startet das Wissenschaftspark-Projekt, en:The Region launches the science park project, es:La Región impulsa el proyecto de parque científico, fr:La Région lance le projet de parc scientifique, it:La Regione avvia il progetto del parco scientifico, nl:De regio begint aan het wetenschapsparkproject, pl:Region rozpoczyna projekt parku naukowego, pt:A Região lança o projeto do parque científico"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der Regionalrat der Auvergne beschließt einen Wissenschaftspark mit einem Vulkanismusmuseum in der Chaîne des Puys. Als Standort dient ein ehemaliges Militärgelände im regionalen Naturpark. Das Projekt greift die Parkidee von Katia und Maurice Krafft auf, die Valéry Giscard d’Estaing unterstützt hatte., en:Auvergne’s Regional Council decides to create a science park and a museum of volcanism in the Chaîne des Puys. The chosen site is former military land within the regional nature park. The project develops the park idea championed by Katia and Maurice Krafft and supported by Valéry Giscard d’Estaing., es:El Consejo Regional de Auvernia decide crear un parque científico y un museo del vulcanismo en la Chaîne des Puys. El lugar elegido es un antiguo terreno militar dentro del parque natural regional. El proyecto desarrolla la idea de parque de Katia y Maurice Krafft, apoyada por Valéry Giscard d’Estaing., fr:Le Conseil régional d’Auvergne décide de créer un parc scientifique et un musée du volcanisme dans la Chaîne des Puys. Le site choisi est un ancien terrain militaire, au sein du parc naturel régional. Le projet concrétise l’idée de parc portée par Katia et Maurice Krafft et soutenue par Valéry Giscard d’Estaing., it:Il Consiglio regionale dell’Alvernia decide di creare un parco scientifico e un museo del vulcanismo nella Chaîne des Puys. Il sito prescelto è un’ex area militare nel parco naturale regionale. Il progetto concretizza l’idea di parco promossa da Katia e Maurice Krafft e sostenuta da Valéry Giscard d’Estaing., nl:De regionale raad van de Auvergne besluit een wetenschapspark en een museum over vulkanisme in de Chaîne des Puys te creëren. De gekozen locatie is voormalig militair terrein in het regionale natuurpark. Het project bouwt voort op het parkidee van Katia en Maurice Krafft, gesteund door Valéry Giscard d’Estaing., pl:Rada regionalna Owernii postanawia stworzyć park naukowy i muzeum wulkanizmu w Chaîne des Puys. Wybiera dawne tereny wojskowe w regionalnym parku przyrody. Projekt rozwija pomysł parku propagowany przez Katię i Maurice’a Krafftów, wspierany przez Valéry’ego Giscarda d’Estaing., pt:O Conselho Regional da Auvérnia decide criar um parque científico e um museu do vulcanismo na Chaîne des Puys. O local escolhido é um antigo terreno militar no parque natural regional. O projeto concretiza a ideia de parque defendida por Katia e Maurice Krafft e apoiada por Valéry Giscard d’Estaing."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 historique officiel\",\"Url\":\"https://www.vulcania.com/historique/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "b57419a8-569a-4210-aa76-8ff96ea48675",
+        "entityKey": "vulcania-history-public-opening-2002",
+        "displayName": "Vulcania accueille ses premiers visiteurs",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-history-public-opening-2002"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2002"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "2"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "7455ffc28d574c158809574ac5c022bd"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Vulcania empfängt seine ersten Besucher, en:Vulcania welcomes its first visitors, es:Vulcania recibe a sus primeros visitantes, fr:Vulcania accueille ses premiers visiteurs, it:Vulcania accoglie i primi visitatori, nl:Vulcania ontvangt zijn eerste bezoekers, pl:Vulcania przyjmuje pierwszych gości, pt:O Vulcania recebe os primeiros visitantes"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der Park eröffnet im Februar 2002 in Saint-Ours-les-Roches mit der Architektur von Hans Hollein. Die Region bleibt Eigentümerin und überträgt den Betrieb an die SEM Volcans. Das dem Vulkanismus gewidmete Zentrum soll Wissensvermittlung und touristische Entwicklung der Auvergne verbinden., en:The park opens in February 2002 at Saint-Ours-les-Roches, in buildings designed by Hans Hollein. The Region retains ownership and entrusts operation to SEM Volcans. Dedicated to volcanism, the centre is intended to combine science education with tourism development in Auvergne., es:El parque abre en febrero de 2002 en Saint-Ours-les-Roches, en los edificios diseñados por Hans Hollein. La Región mantiene la propiedad y encomienda su explotación a SEM Volcans. El centro dedicado al vulcanismo pretende unir divulgación científica y desarrollo turístico de Auvernia., fr:Le parc ouvre en février 2002 à Saint-Ours-les-Roches, dans l’architecture conçue par Hans Hollein. La Région en reste propriétaire et confie son exploitation à la SEM Volcans. Le centre consacré au volcanisme doit conjuguer diffusion scientifique et développement touristique de l’Auvergne., it:Il parco apre nel febbraio 2002 a Saint-Ours-les-Roches, negli edifici progettati da Hans Hollein. La Regione ne conserva la proprietà e ne affida la gestione a SEM Volcans. Il centro dedicato al vulcanismo deve unire divulgazione scientifica e sviluppo turistico dell’Alvernia., nl:Het park opent in februari 2002 in Saint-Ours-les-Roches, in de door Hans Hollein ontworpen gebouwen. De regio blijft eigenaar en vertrouwt de exploitatie toe aan SEM Volcans. Het centrum over vulkanisme moet wetenschapsvoorlichting combineren met de toeristische ontwikkeling van de Auvergne., pl:Park otwiera się w lutym 2002 roku w Saint-Ours-les-Roches, w obiektach zaprojektowanych przez Hansa Holleina. Region zachowuje własność i powierza eksploatację spółce SEM Volcans. Ośrodek poświęcony wulkanizmowi ma łączyć popularyzację nauki z rozwojem turystyki w Owernii., pt:O parque abre em fevereiro de 2002 em Saint-Ours-les-Roches, nos edifícios concebidos por Hans Hollein. A Região mantém a propriedade e confia a exploração à SEM Volcans. O centro dedicado ao vulcanismo pretende unir divulgação científica e desenvolvimento turístico da Auvérnia."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Chambre r\\u00E9gionale des comptes \\u2014 SAEM des Volcans, rapport2018, pr\\u00E9ambule\",\"Url\":\"https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 historique officiel\",\"Url\":\"https://www.vulcania.com/historique/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "97064b39-bb98-42cd-ad6c-f3638ec34a5f",
+        "entityKey": "vulcania-history-renewal-2007",
+        "displayName": "Un renouvellement tourné vers les familles",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-history-renewal-2007"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2007"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Redevelopment"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "3656194cc2cf40c8a1f02b9390da5010"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Erneuerung mit Blick auf Familien, en:Renewal with families in mind, es:Una renovación orientada a las familias, fr:Un renouvellement tourné vers les familles, it:Un rinnovamento rivolto alle famiglie, nl:Vernieuwing met aandacht voor gezinnen, pl:Odnowa z myślą o rodzinach, pt:Uma renovação orientada para as famílias"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Ab 2007 stärken neue Investitionen die spielerische Seite von Vulcania, um ein breiteres Publikum und insbesondere jüngere Besucher anzusprechen. Die Entwicklung begleitet einen neuen Betreibervertrag nach den finanziellen Schwierigkeiten der ersten Jahre., en:From 2007, new investment strengthens Vulcania’s playful dimension to broaden its audience, particularly among younger visitors. This evolution accompanies a new public-service delegation agreement introduced after the financial difficulties of the early years., es:A partir de 2007, nuevas inversiones refuerzan la dimensión lúdica de Vulcania para ampliar su público, especialmente entre los más jóvenes. Esta evolución acompaña una nueva delegación de servicio público, establecida tras las dificultades financieras de los primeros años., fr:À partir de 2007, de nouveaux investissements renforcent la dimension ludique de Vulcania pour élargir son public, notamment auprès des plus jeunes. Cette évolution accompagne une nouvelle délégation de service public, mise en place après les difficultés financières des premières années., it:Dal 2007 nuovi investimenti rafforzano la dimensione ludica di Vulcania per ampliarne il pubblico, in particolare tra i più giovani. L’evoluzione accompagna una nuova delega di servizio pubblico, introdotta dopo le difficoltà finanziarie dei primi anni., nl:Vanaf 2007 versterken nieuwe investeringen het speelse karakter van Vulcania om een breder publiek te bereiken, vooral jongere bezoekers. Deze ontwikkeling gaat samen met een nieuwe overeenkomst voor openbare dienstverlening na de financiële problemen van de beginjaren., pl:Od 2007 roku nowe inwestycje wzmacniają rozrywkowy wymiar Vulcanii, aby przyciągnąć szerszą publiczność, zwłaszcza najmłodszych. Zmiana towarzyszy nowej umowie o świadczenie usług publicznych, zawartej po trudnościach finansowych pierwszych lat., pt:A partir de 2007, novos investimentos reforçam a vertente lúdica do Vulcania para alargar o público, sobretudo entre os mais jovens. Esta evolução acompanha uma nova delegação de serviço público, estabelecida após as dificuldades financeiras dos primeiros anos."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Chambre r\\u00E9gionale des comptes \\u2014 SAEM des Volcans, rapport2018, synth\\u00E8se et pr\\u00E9ambule\",\"Url\":\"https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "87875d49-5f37-414a-b12e-ff3881e2d05c",
+        "entityKey": "vulcania-history-olympus-25-announcement-2026",
+        "displayName": "Vulcania détaille le programme Olympus 25",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-history-olympus-25-announcement-2026"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "4"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "15"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Masterplan"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Vulcania erläutert das Programm Olympus 25, en:Vulcania sets out the Olympus 25 programme, es:Vulcania detalla el programa Olympus 25, fr:Vulcania détaille le programme Olympus 25, it:Vulcania presenta il programma Olympus 25, nl:Vulcania licht het programma Olympus 25 toe, pl:Vulcania przedstawia program Olympus 25, pt:O Vulcania apresenta o programa Olympus 25"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:In einer am 15. April veröffentlichten Darstellung erläutert Vulcania ein von SEM Volcans und der Region finanziertes Programm über 29 Millionen Euro. Olympus 25 sieht regelmäßige Attraktionserneuerungen, thematische Unterkünfte ab 2028 und eine neue Attraktion 2029 vor. Die beiden letztgenannten Vorhaben bleiben angekündigte Projekte., en:In a presentation published on 15 April, Vulcania details a €29 million programme funded by SEM Volcans and the Region. Olympus 25 calls for regular attraction renewal, themed accommodation from 2028 and a new attraction in 2029; the latter developments remain announced projects., es:En una presentación publicada el 15 de abril, Vulcania detalla un programa de 29 millones de euros financiado por SEM Volcans y la Región. Olympus 25 prevé la renovación regular de atracciones, alojamientos temáticos a partir de 2028 y una nueva atracción en 2029; estas últimas actuaciones siguen siendo proyectos anunciados., fr:Dans une présentation publiée le 15 avril, Vulcania détaille un programme de 29 millions d’euros financé par la SEM Volcans et la Région. Olympus 25 prévoit un renouvellement régulier des attractions, des hébergements thématiques à partir de 2028 et une nouvelle attraction en 2029 : ces derniers éléments restent des projets annoncés., it:In una presentazione pubblicata il 15 aprile, Vulcania illustra un programma da 29 milioni di euro finanziato da SEM Volcans e dalla Regione. Olympus 25 prevede un rinnovamento regolare delle attrazioni, alloggi a tema dal 2028 e una nuova attrazione nel 2029: questi ultimi interventi restano progetti annunciati., nl:In een publicatie van 15 april beschrijft Vulcania een programma van 29 miljoen euro, gefinancierd door SEM Volcans en de regio. Olympus 25 voorziet in regelmatige vernieuwing van attracties, thematische accommodaties vanaf 2028 en een nieuwe attractie in 2029. Die laatste ontwikkelingen blijven aangekondigde projecten., pl:W publikacji z 15 kwietnia Vulcania przedstawia program o wartości 29 milionów euro, finansowany przez SEM Volcans i region. Olympus 25 zakłada regularną odnowę atrakcji, zakwaterowanie tematyczne od 2028 roku oraz nową atrakcję w 2029 roku. Te dwa ostatnie przedsięwzięcia pozostają zapowiedzianymi projektami., pt:Numa apresentação publicada a 15 de abril, o Vulcania detalha um programa de 29 milhões de euros financiado pela SEM Volcans e pela Região. O Olympus 25 prevê a renovação regular das atrações, alojamentos temáticos a partir de 2028 e uma nova atração em 2029; estes últimos elementos continuam a ser projetos anunciados."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 Olympus25, pr\\u00E9sentation officielle du15avril2026\",\"Url\":\"https://www.vulcania.com/actualites/olympus-25/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "7f447e81-97b7-4821-9f69-c7d66d6a5671",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:37:10.8702991Z",
+    "appliedAtUtc": "2026-11-15T17:37:10.8702997Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "eca411f5-6231-4319-baf6-8fb0ccd79c16",
+        "entityKey": "vulcania-history-regional-project-1992",
+        "displayName": "La Région lance le projet de parc scientifique",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-history-regional-project-1992"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "1992"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die Region startet das Wissenschaftspark-Projekt, en:The Region launches the science park project, es:La Región impulsa el proyecto de parque científico, fr:La Région lance le projet de parc scientifique, it:La Regione avvia il progetto del parco scientifico, nl:De regio begint aan het wetenschapsparkproject, pl:Region rozpoczyna projekt parku naukowego, pt:A Região lança o projeto do parque científico"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der Regionalrat der Auvergne beschließt einen Wissenschaftspark mit einem Vulkanismusmuseum in der Chaîne des Puys. Als Standort dient ein ehemaliges Militärgelände im regionalen Naturpark. Das Projekt greift die Parkidee von Katia und Maurice Krafft auf, die Valéry Giscard d’Estaing unterstützt hatte., en:Auvergne’s Regional Council decides to create a science park and a museum of volcanism in the Chaîne des Puys. The chosen site is former military land within the regional nature park. The project develops the park idea championed by Katia and Maurice Krafft and supported by Valéry Giscard d’Estaing., es:El Consejo Regional de Auvernia decide crear un parque científico y un museo del vulcanismo en la Chaîne des Puys. El lugar elegido es un antiguo terreno militar dentro del parque natural regional. El proyecto desarrolla la idea de parque de Katia y Maurice Krafft, apoyada por Valéry Giscard d’Estaing., fr:Le Conseil régional d’Auvergne décide de créer un parc scientifique et un musée du volcanisme dans la Chaîne des Puys. Le site choisi est un ancien terrain militaire, au sein du parc naturel régional. Le projet concrétise l’idée de parc portée par Katia et Maurice Krafft et soutenue par Valéry Giscard d’Estaing., it:Il Consiglio regionale dell’Alvernia decide di creare un parco scientifico e un museo del vulcanismo nella Chaîne des Puys. Il sito prescelto è un’ex area militare nel parco naturale regionale. Il progetto concretizza l’idea di parco promossa da Katia e Maurice Krafft e sostenuta da Valéry Giscard d’Estaing., nl:De regionale raad van de Auvergne besluit een wetenschapspark en een museum over vulkanisme in de Chaîne des Puys te creëren. De gekozen locatie is voormalig militair terrein in het regionale natuurpark. Het project bouwt voort op het parkidee van Katia en Maurice Krafft, gesteund door Valéry Giscard d’Estaing., pl:Rada regionalna Owernii postanawia stworzyć park naukowy i muzeum wulkanizmu w Chaîne des Puys. Wybiera dawne tereny wojskowe w regionalnym parku przyrody. Projekt rozwija pomysł parku propagowany przez Katię i Maurice’a Krafftów, wspierany przez Valéry’ego Giscarda d’Estaing., pt:O Conselho Regional da Auvérnia decide criar um parque científico e um museu do vulcanismo na Chaîne des Puys. O local escolhido é um antigo terreno militar no parque natural regional. O projeto concretiza a ideia de parque defendida por Katia e Maurice Krafft e apoiada por Valéry Giscard d’Estaing."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 historique officiel\",\"Url\":\"https://www.vulcania.com/historique/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "193478ec-f80a-4507-9929-8530a432808b",
+        "entityKey": "vulcania-history-public-opening-2002",
+        "displayName": "Vulcania accueille ses premiers visiteurs",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-history-public-opening-2002"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2002"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "2"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "7455ffc28d574c158809574ac5c022bd"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Vulcania empfängt seine ersten Besucher, en:Vulcania welcomes its first visitors, es:Vulcania recibe a sus primeros visitantes, fr:Vulcania accueille ses premiers visiteurs, it:Vulcania accoglie i primi visitatori, nl:Vulcania ontvangt zijn eerste bezoekers, pl:Vulcania przyjmuje pierwszych gości, pt:O Vulcania recebe os primeiros visitantes"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der Park eröffnet im Februar 2002 in Saint-Ours-les-Roches mit der Architektur von Hans Hollein. Die Region bleibt Eigentümerin und überträgt den Betrieb an die SEM Volcans. Das dem Vulkanismus gewidmete Zentrum soll Wissensvermittlung und touristische Entwicklung der Auvergne verbinden., en:The park opens in February 2002 at Saint-Ours-les-Roches, in buildings designed by Hans Hollein. The Region retains ownership and entrusts operation to SEM Volcans. Dedicated to volcanism, the centre is intended to combine science education with tourism development in Auvergne., es:El parque abre en febrero de 2002 en Saint-Ours-les-Roches, en los edificios diseñados por Hans Hollein. La Región mantiene la propiedad y encomienda su explotación a SEM Volcans. El centro dedicado al vulcanismo pretende unir divulgación científica y desarrollo turístico de Auvernia., fr:Le parc ouvre en février 2002 à Saint-Ours-les-Roches, dans l’architecture conçue par Hans Hollein. La Région en reste propriétaire et confie son exploitation à la SEM Volcans. Le centre consacré au volcanisme doit conjuguer diffusion scientifique et développement touristique de l’Auvergne., it:Il parco apre nel febbraio 2002 a Saint-Ours-les-Roches, negli edifici progettati da Hans Hollein. La Regione ne conserva la proprietà e ne affida la gestione a SEM Volcans. Il centro dedicato al vulcanismo deve unire divulgazione scientifica e sviluppo turistico dell’Alvernia., nl:Het park opent in februari 2002 in Saint-Ours-les-Roches, in de door Hans Hollein ontworpen gebouwen. De regio blijft eigenaar en vertrouwt de exploitatie toe aan SEM Volcans. Het centrum over vulkanisme moet wetenschapsvoorlichting combineren met de toeristische ontwikkeling van de Auvergne., pl:Park otwiera się w lutym 2002 roku w Saint-Ours-les-Roches, w obiektach zaprojektowanych przez Hansa Holleina. Region zachowuje własność i powierza eksploatację spółce SEM Volcans. Ośrodek poświęcony wulkanizmowi ma łączyć popularyzację nauki z rozwojem turystyki w Owernii., pt:O parque abre em fevereiro de 2002 em Saint-Ours-les-Roches, nos edifícios concebidos por Hans Hollein. A Região mantém a propriedade e confia a exploração à SEM Volcans. O centro dedicado ao vulcanismo pretende unir divulgação científica e desenvolvimento turístico da Auvérnia."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Chambre r\\u00E9gionale des comptes \\u2014 SAEM des Volcans, rapport2018, pr\\u00E9ambule\",\"Url\":\"https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 historique officiel\",\"Url\":\"https://www.vulcania.com/historique/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "57c0341c-a6dc-4a07-ad68-9a0d3d21dae1",
+        "entityKey": "vulcania-history-renewal-2007",
+        "displayName": "Un renouvellement tourné vers les familles",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-history-renewal-2007"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2007"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Redevelopment"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "3656194cc2cf40c8a1f02b9390da5010"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Erneuerung mit Blick auf Familien, en:Renewal with families in mind, es:Una renovación orientada a las familias, fr:Un renouvellement tourné vers les familles, it:Un rinnovamento rivolto alle famiglie, nl:Vernieuwing met aandacht voor gezinnen, pl:Odnowa z myślą o rodzinach, pt:Uma renovação orientada para as famílias"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Ab 2007 stärken neue Investitionen die spielerische Seite von Vulcania, um ein breiteres Publikum und insbesondere jüngere Besucher anzusprechen. Die Entwicklung begleitet einen neuen Betreibervertrag nach den finanziellen Schwierigkeiten der ersten Jahre., en:From 2007, new investment strengthens Vulcania’s playful dimension to broaden its audience, particularly among younger visitors. This evolution accompanies a new public-service delegation agreement introduced after the financial difficulties of the early years., es:A partir de 2007, nuevas inversiones refuerzan la dimensión lúdica de Vulcania para ampliar su público, especialmente entre los más jóvenes. Esta evolución acompaña una nueva delegación de servicio público, establecida tras las dificultades financieras de los primeros años., fr:À partir de 2007, de nouveaux investissements renforcent la dimension ludique de Vulcania pour élargir son public, notamment auprès des plus jeunes. Cette évolution accompagne une nouvelle délégation de service public, mise en place après les difficultés financières des premières années., it:Dal 2007 nuovi investimenti rafforzano la dimensione ludica di Vulcania per ampliarne il pubblico, in particolare tra i più giovani. L’evoluzione accompagna una nuova delega di servizio pubblico, introdotta dopo le difficoltà finanziarie dei primi anni., nl:Vanaf 2007 versterken nieuwe investeringen het speelse karakter van Vulcania om een breder publiek te bereiken, vooral jongere bezoekers. Deze ontwikkeling gaat samen met een nieuwe overeenkomst voor openbare dienstverlening na de financiële problemen van de beginjaren., pl:Od 2007 roku nowe inwestycje wzmacniają rozrywkowy wymiar Vulcanii, aby przyciągnąć szerszą publiczność, zwłaszcza najmłodszych. Zmiana towarzyszy nowej umowie o świadczenie usług publicznych, zawartej po trudnościach finansowych pierwszych lat., pt:A partir de 2007, novos investimentos reforçam a vertente lúdica do Vulcania para alargar o público, sobretudo entre os mais jovens. Esta evolução acompanha uma nova delegação de serviço público, estabelecida após as dificuldades financeiras dos primeiros anos."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Chambre r\\u00E9gionale des comptes \\u2014 SAEM des Volcans, rapport2018, synth\\u00E8se et pr\\u00E9ambule\",\"Url\":\"https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6f9960d8-d5af-4ac4-b42c-c3f38a086d94",
+        "entityKey": "vulcania-history-olympus-25-announcement-2026",
+        "displayName": "Vulcania détaille le programme Olympus 25",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-history-olympus-25-announcement-2026"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "4"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "15"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Masterplan"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Vulcania erläutert das Programm Olympus 25, en:Vulcania sets out the Olympus 25 programme, es:Vulcania detalla el programa Olympus 25, fr:Vulcania détaille le programme Olympus 25, it:Vulcania presenta il programma Olympus 25, nl:Vulcania licht het programma Olympus 25 toe, pl:Vulcania przedstawia program Olympus 25, pt:O Vulcania apresenta o programa Olympus 25"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:In einer am 15. April veröffentlichten Darstellung erläutert Vulcania ein von SEM Volcans und der Region finanziertes Programm über 29 Millionen Euro. Olympus 25 sieht regelmäßige Attraktionserneuerungen, thematische Unterkünfte ab 2028 und eine neue Attraktion 2029 vor. Die beiden letztgenannten Vorhaben bleiben angekündigte Projekte., en:In a presentation published on 15 April, Vulcania details a €29 million programme funded by SEM Volcans and the Region. Olympus 25 calls for regular attraction renewal, themed accommodation from 2028 and a new attraction in 2029; the latter developments remain announced projects., es:En una presentación publicada el 15 de abril, Vulcania detalla un programa de 29 millones de euros financiado por SEM Volcans y la Región. Olympus 25 prevé la renovación regular de atracciones, alojamientos temáticos a partir de 2028 y una nueva atracción en 2029; estas últimas actuaciones siguen siendo proyectos anunciados., fr:Dans une présentation publiée le 15 avril, Vulcania détaille un programme de 29 millions d’euros financé par la SEM Volcans et la Région. Olympus 25 prévoit un renouvellement régulier des attractions, des hébergements thématiques à partir de 2028 et une nouvelle attraction en 2029 : ces derniers éléments restent des projets annoncés., it:In una presentazione pubblicata il 15 aprile, Vulcania illustra un programma da 29 milioni di euro finanziato da SEM Volcans e dalla Regione. Olympus 25 prevede un rinnovamento regolare delle attrazioni, alloggi a tema dal 2028 e una nuova attrazione nel 2029: questi ultimi interventi restano progetti annunciati., nl:In een publicatie van 15 april beschrijft Vulcania een programma van 29 miljoen euro, gefinancierd door SEM Volcans en de regio. Olympus 25 voorziet in regelmatige vernieuwing van attracties, thematische accommodaties vanaf 2028 en een nieuwe attractie in 2029. Die laatste ontwikkelingen blijven aangekondigde projecten., pl:W publikacji z 15 kwietnia Vulcania przedstawia program o wartości 29 milionów euro, finansowany przez SEM Volcans i region. Olympus 25 zakłada regularną odnowę atrakcji, zakwaterowanie tematyczne od 2028 roku oraz nową atrakcję w 2029 roku. Te dwa ostatnie przedsięwzięcia pozostają zapowiedzianymi projektami., pt:Numa apresentação publicada a 15 de abril, o Vulcania detalha um programa de 29 milhões de euros financiado pela SEM Volcans e pela Região. O Olympus 25 prevê a renovação regular das atrações, alojamentos temáticos a partir de 2028 e uma nova atração em 2029; estes últimos elementos continuam a ser projetos anunciados."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 Olympus25, pr\\u00E9sentation officielle du15avril2026\",\"Url\":\"https://www.vulcania.com/actualites/olympus-25/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-history-regional-project-1992",
+      "entityType": "Park",
+      "owner": "park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 1992,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Announcement",
+      "isMajor": false,
+      "isVisible": false,
+      "mainImageId": null,
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "La Région lance le projet de parc scientifique"
+        },
+        {
+          "languageCode": "en",
+          "value": "The Region launches the science park project"
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Region startet das Wissenschaftspark-Projekt"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De regio begint aan het wetenschapsparkproject"
+        },
+        {
+          "languageCode": "it",
+          "value": "La Regione avvia il progetto del parco scientifico"
+        },
+        {
+          "languageCode": "es",
+          "value": "La Región impulsa el proyecto de parque científico"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Region rozpoczyna projekt parku naukowego"
+        },
+        {
+          "languageCode": "pt",
+          "value": "A Região lança o projeto do parque científico"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le Conseil régional d’Auvergne décide de créer un parc scientifique et un musée du volcanisme dans la Chaîne des Puys. Le site choisi est un ancien terrain militaire, au sein du parc naturel régional. Le projet concrétise l’idée de parc portée par Katia et Maurice Krafft et soutenue par Valéry Giscard d’Estaing."
+        },
+        {
+          "languageCode": "en",
+          "value": "Auvergne’s Regional Council decides to create a science park and a museum of volcanism in the Chaîne des Puys. The chosen site is former military land within the regional nature park. The project develops the park idea championed by Katia and Maurice Krafft and supported by Valéry Giscard d’Estaing."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Regionalrat der Auvergne beschließt einen Wissenschaftspark mit einem Vulkanismusmuseum in der Chaîne des Puys. Als Standort dient ein ehemaliges Militärgelände im regionalen Naturpark. Das Projekt greift die Parkidee von Katia und Maurice Krafft auf, die Valéry Giscard d’Estaing unterstützt hatte."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De regionale raad van de Auvergne besluit een wetenschapspark en een museum over vulkanisme in de Chaîne des Puys te creëren. De gekozen locatie is voormalig militair terrein in het regionale natuurpark. Het project bouwt voort op het parkidee van Katia en Maurice Krafft, gesteund door Valéry Giscard d’Estaing."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Consiglio regionale dell’Alvernia decide di creare un parco scientifico e un museo del vulcanismo nella Chaîne des Puys. Il sito prescelto è un’ex area militare nel parco naturale regionale. Il progetto concretizza l’idea di parco promossa da Katia e Maurice Krafft e sostenuta da Valéry Giscard d’Estaing."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Consejo Regional de Auvernia decide crear un parque científico y un museo del vulcanismo en la Chaîne des Puys. El lugar elegido es un antiguo terreno militar dentro del parque natural regional. El proyecto desarrolla la idea de parque de Katia y Maurice Krafft, apoyada por Valéry Giscard d’Estaing."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rada regionalna Owernii postanawia stworzyć park naukowy i muzeum wulkanizmu w Chaîne des Puys. Wybiera dawne tereny wojskowe w regionalnym parku przyrody. Projekt rozwija pomysł parku propagowany przez Katię i Maurice’a Krafftów, wspierany przez Valéry’ego Giscarda d’Estaing."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Conselho Regional da Auvérnia decide criar um parque científico e um museu do vulcanismo na Chaîne des Puys. O local escolhido é um antigo terreno militar no parque natural regional. O projeto concretiza a ideia de parque defendida por Katia e Maurice Krafft e apoiada por Valéry Giscard d’Estaing."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vulcania — historique officiel",
+          "url": "https://www.vulcania.com/historique/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "eca411f5-6231-4319-baf6-8fb0ccd79c16"
+    },
+    {
+      "key": "vulcania-history-public-opening-2002",
+      "entityType": "Park",
+      "owner": "park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2002,
+      "month": 2,
+      "day": null,
+      "datePrecision": "Month",
+      "eventType": "Opening",
+      "isMajor": true,
+      "isVisible": false,
+      "mainImageId": "7455ffc28d574c158809574ac5c022bd",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Vulcania accueille ses premiers visiteurs"
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania welcomes its first visitors"
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcania empfängt seine ersten Besucher"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania ontvangt zijn eerste bezoekers"
+        },
+        {
+          "languageCode": "it",
+          "value": "Vulcania accoglie i primi visitatori"
+        },
+        {
+          "languageCode": "es",
+          "value": "Vulcania recibe a sus primeros visitantes"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Vulcania przyjmuje pierwszych gości"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Vulcania recebe os primeiros visitantes"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le parc ouvre en février 2002 à Saint-Ours-les-Roches, dans l’architecture conçue par Hans Hollein. La Région en reste propriétaire et confie son exploitation à la SEM Volcans. Le centre consacré au volcanisme doit conjuguer diffusion scientifique et développement touristique de l’Auvergne."
+        },
+        {
+          "languageCode": "en",
+          "value": "The park opens in February 2002 at Saint-Ours-les-Roches, in buildings designed by Hans Hollein. The Region retains ownership and entrusts operation to SEM Volcans. Dedicated to volcanism, the centre is intended to combine science education with tourism development in Auvergne."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Park eröffnet im Februar 2002 in Saint-Ours-les-Roches mit der Architektur von Hans Hollein. Die Region bleibt Eigentümerin und überträgt den Betrieb an die SEM Volcans. Das dem Vulkanismus gewidmete Zentrum soll Wissensvermittlung und touristische Entwicklung der Auvergne verbinden."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het park opent in februari 2002 in Saint-Ours-les-Roches, in de door Hans Hollein ontworpen gebouwen. De regio blijft eigenaar en vertrouwt de exploitatie toe aan SEM Volcans. Het centrum over vulkanisme moet wetenschapsvoorlichting combineren met de toeristische ontwikkeling van de Auvergne."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il parco apre nel febbraio 2002 a Saint-Ours-les-Roches, negli edifici progettati da Hans Hollein. La Regione ne conserva la proprietà e ne affida la gestione a SEM Volcans. Il centro dedicato al vulcanismo deve unire divulgazione scientifica e sviluppo turistico dell’Alvernia."
+        },
+        {
+          "languageCode": "es",
+          "value": "El parque abre en febrero de 2002 en Saint-Ours-les-Roches, en los edificios diseñados por Hans Hollein. La Región mantiene la propiedad y encomienda su explotación a SEM Volcans. El centro dedicado al vulcanismo pretende unir divulgación científica y desarrollo turístico de Auvernia."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Park otwiera się w lutym 2002 roku w Saint-Ours-les-Roches, w obiektach zaprojektowanych przez Hansa Holleina. Region zachowuje własność i powierza eksploatację spółce SEM Volcans. Ośrodek poświęcony wulkanizmowi ma łączyć popularyzację nauki z rozwojem turystyki w Owernii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O parque abre em fevereiro de 2002 em Saint-Ours-les-Roches, nos edifícios concebidos por Hans Hollein. A Região mantém a propriedade e confia a exploração à SEM Volcans. O centro dedicado ao vulcanismo pretende unir divulgação científica e desenvolvimento turístico da Auvérnia."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vulcania — historique officiel",
+          "url": "https://www.vulcania.com/historique/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Chambre régionale des comptes — SAEM des Volcans, rapport2018, préambule",
+          "url": "https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "193478ec-f80a-4507-9929-8530a432808b"
+    },
+    {
+      "key": "vulcania-history-renewal-2007",
+      "entityType": "Park",
+      "owner": "park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2007,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Redevelopment",
+      "isMajor": false,
+      "isVisible": false,
+      "mainImageId": "3656194cc2cf40c8a1f02b9390da5010",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Un renouvellement tourné vers les familles"
+        },
+        {
+          "languageCode": "en",
+          "value": "Renewal with families in mind"
+        },
+        {
+          "languageCode": "de",
+          "value": "Erneuerung mit Blick auf Familien"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vernieuwing met aandacht voor gezinnen"
+        },
+        {
+          "languageCode": "it",
+          "value": "Un rinnovamento rivolto alle famiglie"
+        },
+        {
+          "languageCode": "es",
+          "value": "Una renovación orientada a las familias"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Odnowa z myślą o rodzinach"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma renovação orientada para as famílias"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "À partir de 2007, de nouveaux investissements renforcent la dimension ludique de Vulcania pour élargir son public, notamment auprès des plus jeunes. Cette évolution accompagne une nouvelle délégation de service public, mise en place après les difficultés financières des premières années."
+        },
+        {
+          "languageCode": "en",
+          "value": "From 2007, new investment strengthens Vulcania’s playful dimension to broaden its audience, particularly among younger visitors. This evolution accompanies a new public-service delegation agreement introduced after the financial difficulties of the early years."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ab 2007 stärken neue Investitionen die spielerische Seite von Vulcania, um ein breiteres Publikum und insbesondere jüngere Besucher anzusprechen. Die Entwicklung begleitet einen neuen Betreibervertrag nach den finanziellen Schwierigkeiten der ersten Jahre."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vanaf 2007 versterken nieuwe investeringen het speelse karakter van Vulcania om een breder publiek te bereiken, vooral jongere bezoekers. Deze ontwikkeling gaat samen met een nieuwe overeenkomst voor openbare dienstverlening na de financiële problemen van de beginjaren."
+        },
+        {
+          "languageCode": "it",
+          "value": "Dal 2007 nuovi investimenti rafforzano la dimensione ludica di Vulcania per ampliarne il pubblico, in particolare tra i più giovani. L’evoluzione accompagna una nuova delega di servizio pubblico, introdotta dopo le difficoltà finanziarie dei primi anni."
+        },
+        {
+          "languageCode": "es",
+          "value": "A partir de 2007, nuevas inversiones refuerzan la dimensión lúdica de Vulcania para ampliar su público, especialmente entre los más jóvenes. Esta evolución acompaña una nueva delegación de servicio público, establecida tras las dificultades financieras de los primeros años."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Od 2007 roku nowe inwestycje wzmacniają rozrywkowy wymiar Vulcanii, aby przyciągnąć szerszą publiczność, zwłaszcza najmłodszych. Zmiana towarzyszy nowej umowie o świadczenie usług publicznych, zawartej po trudnościach finansowych pierwszych lat."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A partir de 2007, novos investimentos reforçam a vertente lúdica do Vulcania para alargar o público, sobretudo entre os mais jovens. Esta evolução acompanha uma nova delegação de serviço público, estabelecida após as dificuldades financeiras dos primeiros anos."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Chambre régionale des comptes — SAEM des Volcans, rapport2018, synthèse et préambule",
+          "url": "https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "57c0341c-a6dc-4a07-ad68-9a0d3d21dae1"
+    },
+    {
+      "key": "vulcania-history-olympus-25-announcement-2026",
+      "entityType": "Park",
+      "owner": "park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2026,
+      "month": 4,
+      "day": 15,
+      "datePrecision": "Day",
+      "eventType": "Masterplan",
+      "isMajor": true,
+      "isVisible": false,
+      "mainImageId": null,
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Vulcania détaille le programme Olympus 25"
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania sets out the Olympus 25 programme"
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcania erläutert das Programm Olympus 25"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania licht het programma Olympus 25 toe"
+        },
+        {
+          "languageCode": "it",
+          "value": "Vulcania presenta il programma Olympus 25"
+        },
+        {
+          "languageCode": "es",
+          "value": "Vulcania detalla el programa Olympus 25"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Vulcania przedstawia program Olympus 25"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Vulcania apresenta o programa Olympus 25"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Dans une présentation publiée le 15 avril, Vulcania détaille un programme de 29 millions d’euros financé par la SEM Volcans et la Région. Olympus 25 prévoit un renouvellement régulier des attractions, des hébergements thématiques à partir de 2028 et une nouvelle attraction en 2029 : ces derniers éléments restent des projets annoncés."
+        },
+        {
+          "languageCode": "en",
+          "value": "In a presentation published on 15 April, Vulcania details a €29 million programme funded by SEM Volcans and the Region. Olympus 25 calls for regular attraction renewal, themed accommodation from 2028 and a new attraction in 2029; the latter developments remain announced projects."
+        },
+        {
+          "languageCode": "de",
+          "value": "In einer am 15. April veröffentlichten Darstellung erläutert Vulcania ein von SEM Volcans und der Region finanziertes Programm über 29 Millionen Euro. Olympus 25 sieht regelmäßige Attraktionserneuerungen, thematische Unterkünfte ab 2028 und eine neue Attraktion 2029 vor. Die beiden letztgenannten Vorhaben bleiben angekündigte Projekte."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In een publicatie van 15 april beschrijft Vulcania een programma van 29 miljoen euro, gefinancierd door SEM Volcans en de regio. Olympus 25 voorziet in regelmatige vernieuwing van attracties, thematische accommodaties vanaf 2028 en een nieuwe attractie in 2029. Die laatste ontwikkelingen blijven aangekondigde projecten."
+        },
+        {
+          "languageCode": "it",
+          "value": "In una presentazione pubblicata il 15 aprile, Vulcania illustra un programma da 29 milioni di euro finanziato da SEM Volcans e dalla Regione. Olympus 25 prevede un rinnovamento regolare delle attrazioni, alloggi a tema dal 2028 e una nuova attrazione nel 2029: questi ultimi interventi restano progetti annunciati."
+        },
+        {
+          "languageCode": "es",
+          "value": "En una presentación publicada el 15 de abril, Vulcania detalla un programa de 29 millones de euros financiado por SEM Volcans y la Región. Olympus 25 prevé la renovación regular de atracciones, alojamientos temáticos a partir de 2028 y una nueva atracción en 2029; estas últimas actuaciones siguen siendo proyectos anunciados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W publikacji z 15 kwietnia Vulcania przedstawia program o wartości 29 milionów euro, finansowany przez SEM Volcans i region. Olympus 25 zakłada regularną odnowę atrakcji, zakwaterowanie tematyczne od 2028 roku oraz nową atrakcję w 2029 roku. Te dwa ostatnie przedsięwzięcia pozostają zapowiedzianymi projektami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Numa apresentação publicada a 15 de abril, o Vulcania detalha um programa de 29 milhões de euros financiado pela SEM Volcans e pela Região. O Olympus 25 prevê a renovação regular das atrações, alojamentos temáticos a partir de 2028 e uma nova atração em 2029; estes últimos elementos continuam a ser projetos anunciados."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vulcania — Olympus25, présentation officielle du15avril2026",
+          "url": "https://www.vulcania.com/actualites/olympus-25/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "6f9960d8-d5af-4ac4-b42c-c3f38a086d94"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "sourceAccess": [
+    {
+      "name": "official-history",
+      "url": "https://www.vulcania.com/historique/",
+      "finalUrl": "https://www.vulcania.com/historique/",
+      "status": 200,
+      "file": "/workspace/france-historical-20261114/vulcania/history-source-freshness-1732/official-history.html",
+      "sha256": "4363ff059d698bd1eb6fce8e06fe36c95f45d1c0c8fcdbfdba083d74b7fa6c84",
+      "verifiedAtUtc": "2026-11-15T17:30:48.064380+00:00"
+    },
+    {
+      "name": "official-olympus",
+      "url": "https://www.vulcania.com/actualites/olympus-25/",
+      "finalUrl": "https://www.vulcania.com/actualites/olympus-25/",
+      "status": 200,
+      "file": "/workspace/france-historical-20261114/vulcania/history-source-freshness-1732/official-olympus.html",
+      "sha256": "7e448c0319d2d19fdc3a6026ef265ce47c00e7abdd67992421d23738fdb1eccc",
+      "verifiedAtUtc": "2026-11-15T17:30:48.319499+00:00"
+    },
+    {
+      "name": "crc2018",
+      "url": "https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf",
+      "finalUrl": "https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf",
+      "status": 200,
+      "file": "/workspace/france-historical-20261114/vulcania/history-source-freshness-1732/crc2018.pdf",
+      "sha256": "b8c9e2b7d36e38187edf92d33867895836a869881af023c65196eb9f57718f2e",
+      "verifiedAtUtc": "2026-11-15T17:30:57.115506+00:00"
+    }
+  ],
+  "dateDecisions": [
+    "1992regionalprojectdecision, no precise date invented.",
+    "February2002month only: official20February andcontemporarypublic21Februaryconflict preserved.",
+    "2007startofrenewalperiod, no invented day.",
+    "15April2026ispublicationdateofOlympus25presentation;programmeincludesearlier2025workandfuture2028/29projects,notallcompletedonthatdate."
+  ],
+  "imageDecisions": "2002/2007usecaptioned2010parkcontext; noteventphotographs.1992/2026noeventimageyet; researchremainsopen. Neithernewcurrentridesnorfutureaccommodationcreatedfromtheseparkfacts.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "localizedPreviewVerification": {
+    "fields": 64,
+    "exact": true,
+    "method": "Each titles/summaries Preview aggregate compared exactly with all eight input languageCode:value pairs sorted by languageCode. Apply fields compared to Preview excluding generated entity IDs."
+  }
+}

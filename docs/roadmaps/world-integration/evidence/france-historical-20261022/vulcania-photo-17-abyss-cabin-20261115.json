@@ -1,0 +1,288 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-17-abyss-cabin",
+    "ownerId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+    "itemName": "Abyss Explorer",
+    "current": false,
+    "source": {
+      "key": "hawai-social-legacy",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/03/Abyss-explorer.png",
+      "sourcePage": "https://www.vulcania.com/animation/expedition-hawai/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/hawai-social-legacy.png",
+      "accessedAtUtc": "2026-11-15T13:54:24.042722+00:00",
+      "http": 200,
+      "bytes": 370635,
+      "dimensions": [
+        1200,
+        630
+      ],
+      "sha256": "a43da4ec64f4b3a24fa3554b8df748ba737bdaf62e9b6c0f28219e97bc2ee744",
+      "over960KiB": false,
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false,
+      "verifiedAtUtc": "2026-11-15T17:27:55.663103+00:00"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "ExistingownerFrancecampaignmediaauthorization; no openlicense or individualphotographerpermissionclaim.",
+    "qualification": "Distinctrealphotograph. AbysslegacyimageassignedonlytohistoricalAbyss, notcurrentHawaii. Currentconeimagewithpromotionaltext/logoexcluded; no cropping."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/Abyss-explorer.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/hawai-social-legacy.png",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-17-abyss-cabin-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-17-abyss-cabin-import-result.json"
+  },
+  "metadata": {
+    "description": "L’éclairage bleu et les hublots composent la cabine du bathyscaphe de cette ancienne aventure sous-marine.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/Abyss-explorer.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Ancien décor intérieur d’Abyss Explorer, avec des images sous-marines projetées dans quatre hublots ronds au-dessus d’un garde-corps."
+      },
+      {
+        "languageCode": "en",
+        "value": "Former Abyss Explorer interior with underwater imagery projected into four round portholes above a railing."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ehemalige Innenkulisse von Abyss Explorer mit Unterwasserbildern in vier runden Bullaugen über einem Geländer."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Voormalig interieurdecor van Abyss Explorer met onderwaterbeelden in vier ronde patrijspoorten boven een leuning."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vecchia scenografia interna di Abyss Explorer con immagini sottomarine proiettate in quattro oblò rotondi sopra una ringhiera."
+      },
+      {
+        "languageCode": "es",
+        "value": "Antiguo decorado interior de Abyss Explorer con imágenes submarinas proyectadas en cuatro ojos de buey sobre una barandilla."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dawna scenografia wnętrza Abyss Explorer z podwodnymi obrazami wyświetlanymi w czterech okrągłych iluminatorach nad barierką."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Antigo cenário interior do Abyss Explorer com imagens submarinas projetadas em quatro vigias redondas acima de um corrimão."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "L’éclairage bleu et les hublots composent la cabine du bathyscaphe de cette ancienne aventure sous-marine."
+      },
+      {
+        "languageCode": "en",
+        "value": "Blue lighting and portholes form the bathyscaphe cabin of this former underwater adventure."
+      },
+      {
+        "languageCode": "de",
+        "value": "Blaues Licht und Bullaugen prägen die Tauchbootkabine dieses ehemaligen Unterwasserabenteuers."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Blauwe verlichting en patrijspoorten vormen de cabine van de bathyscaaf uit dit vroegere onderwateravontuur."
+      },
+      {
+        "languageCode": "it",
+        "value": "La luce blu e gli oblò compongono la cabina del batiscafo di questa passata avventura sottomarina."
+      },
+      {
+        "languageCode": "es",
+        "value": "La iluminación azul y los ojos de buey componen la cabina del batiscafo de esta antigua aventura submarina."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Niebieskie światło i iluminatory tworzą kabinę batyskafu z tej dawnej podwodnej przygody."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A iluminação azul e as vigias compõem a cabine do batiscafo desta antiga aventura submarina."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Vulcania."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Vulcania."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T17:29:44.7581289Z",
+    "result": {
+      "id": "2609d09da2864a06aaff9d0e640db0cd",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+      "path": "park_item/2609d09da2864a06aaff9d0e640db0cd",
+      "description": "L’éclairage bleu et les hublots composent la cabine du bathyscaphe de cette ancienne aventure sous-marine.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 370635,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/Abyss-explorer.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Ancien décor intérieur d’Abyss Explorer, avec des images sous-marines projetées dans quatre hublots ronds au-dessus d’un garde-corps."
+        },
+        {
+          "languageCode": "en",
+          "value": "Former Abyss Explorer interior with underwater imagery projected into four round portholes above a railing."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ehemalige Innenkulisse von Abyss Explorer mit Unterwasserbildern in vier runden Bullaugen über einem Geländer."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Voormalig interieurdecor van Abyss Explorer met onderwaterbeelden in vier ronde patrijspoorten boven een leuning."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vecchia scenografia interna di Abyss Explorer con immagini sottomarine proiettate in quattro oblò rotondi sopra una ringhiera."
+        },
+        {
+          "languageCode": "es",
+          "value": "Antiguo decorado interior de Abyss Explorer con imágenes submarinas proyectadas en cuatro ojos de buey sobre una barandilla."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dawna scenografia wnętrza Abyss Explorer z podwodnymi obrazami wyświetlanymi w czterech okrągłych iluminatorach nad barierką."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Antigo cenário interior do Abyss Explorer com imagens submarinas projetadas em quatro vigias redondas acima de um corrimão."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "L’éclairage bleu et les hublots composent la cabine du bathyscaphe de cette ancienne aventure sous-marine."
+        },
+        {
+          "languageCode": "en",
+          "value": "Blue lighting and portholes form the bathyscaphe cabin of this former underwater adventure."
+        },
+        {
+          "languageCode": "de",
+          "value": "Blaues Licht und Bullaugen prägen die Tauchbootkabine dieses ehemaligen Unterwasserabenteuers."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Blauwe verlichting en patrijspoorten vormen de cabine van de bathyscaaf uit dit vroegere onderwateravontuur."
+        },
+        {
+          "languageCode": "it",
+          "value": "La luce blu e gli oblò compongono la cabina del batiscafo di questa passata avventura sottomarina."
+        },
+        {
+          "languageCode": "es",
+          "value": "La iluminación azul y los ojos de buey componen la cabina del batiscafo de esta antigua aventura submarina."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Niebieskie światło i iluminatory tworzą kabinę batyskafu z tej dawnej podwodnej przygody."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A iluminação azul e as vigias compõem a cabine do batiscafo desta antiga aventura submarina."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:29:47.928Z",
+      "updatedAt": "2026-11-15T17:29:51.43Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T17:29:54.5497102Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
