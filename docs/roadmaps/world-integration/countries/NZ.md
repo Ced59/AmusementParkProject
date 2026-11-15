@@ -17,7 +17,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 28 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 5 |
+| Intégration achevée | 6 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -28,7 +28,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **1 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **24 candidats sans fiche**.
 
-Standalone : **5 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **6 publiées**, **0 masquées**, **3 candidates sans fiche**. Autres dossiers : **0 types à décider**, **1 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -70,3 +70,4 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | NZ-candidate-9ccd6ce81d59f7 | Waterworld | Hamilton | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Oceania#New_Zealand) |
 | NZ-candidate-6c849b9254fb19 | Wellington Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) |
 | NZ-candidate-1b144d29d9234c | Willowbank Wildlife Reserve | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand) |
+| NZ-candidate-discovery-fafa5c7f080917 | ZORB Rotorua | 525 Ngongotaha Road, Fairy Springs, Rotorua | StandaloneAttraction | Published | Intégration achevée | 2026-11-15T12:53:47.941Z | — | Conserver cette ligne. Recontrôler prix, horaires, restrictions et éventuelle évolution des quatre pistes sous 90 jours. Obtenir des photos exactes plus récentes avec droit de réutilisation : les trois images actuelles sont historiques (2008, 2009, 2011) et ne prouvent pas le tracé actuel. Ne pas republier Facebook pour une simple actualisation. Qualification standalone : AlreadyStandalone. Site autonome dédié à une même activité de descente en boule, avec quatre variantes de piste vendues à la descente. Installations référencées : ZORB Rotorua. Signal source : Activité exploitée en 2026 avec quatre pistes, billetterie active et horaires officiels.. [Exploitant — site officiel](https://zorb.com/) · [Exploitant — quatre pistes et tarifs](https://zorb.com/rides-3/) · [Exploitant — FAQ et restrictions](https://zorb.com/faqs/) · [Exploitant — adresse et horaires](https://zorb.com/contact-us/) · [Exploitant — billetterie](https://bookings.zorb.com/) · [Wikimedia Commons — Master Man from Spain, CC BY 2.0, 2008-02-06](https://commons.wikimedia.org/wiki/File:Zorb_05.jpg) · [Wikimedia Commons — Harry Malsch, CC BY 2.0, 2009-04-21](https://commons.wikimedia.org/wiki/File:Zorb_01.jpg) · [Wikimedia Commons — Gonzalo Baeza, CC BY 3.0, 2011-12-13](https://commons.wikimedia.org/wiki/File:ZORB_EXPERIENCE_-_panoramio.jpg) |

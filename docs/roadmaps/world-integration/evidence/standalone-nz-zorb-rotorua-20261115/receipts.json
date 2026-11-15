@@ -1,0 +1,87 @@
+{
+  "entryId": "NZ-candidate-discovery-fafa5c7f080917",
+  "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+  "integrationHistory": [
+    {
+      "eventId": "apply-786f7c1b-4458-42c5-92cd-a2db05c41f2d",
+      "appliedAt": "2026-11-15T12:50:37.672Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+      "evidence": "PARK_DATA_EDITOR:apply:786f7c1b-4458-42c5-92cd-a2db05c41f2d",
+      "auditEvidence": null,
+      "summary": "Création de ZORB Rotorua, position GPS de l’exploitant et textes sur les quatre pistes en huit langues."
+    },
+    {
+      "eventId": "image-890b318052ec4139ac86aa8fd1c7c993",
+      "appliedAt": "2026-11-15T12:51:39.147Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+      "evidence": "PARK_DATA_EDITOR:image:890b318052ec4139ac86aa8fd1c7c993",
+      "auditEvidence": null,
+      "summary": "Photo historique exacte de ZORB Rotorua, datée et créditée en huit langues ; Master Man from Spain, CC BY 2.0, 2008-02-06."
+    },
+    {
+      "eventId": "image-2c392c0161134275af518329a167d886",
+      "appliedAt": "2026-11-15T12:52:34.446Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+      "evidence": "PARK_DATA_EDITOR:image:2c392c0161134275af518329a167d886",
+      "auditEvidence": null,
+      "summary": "Photo historique exacte de ZORB Rotorua, datée et créditée en huit langues ; Harry Malsch, CC BY 2.0, 2009-04-21."
+    },
+    {
+      "eventId": "image-9a3d85b801ce48a3bef345f353eadcbd",
+      "appliedAt": "2026-11-15T12:52:51.639Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+      "evidence": "PARK_DATA_EDITOR:image:9a3d85b801ce48a3bef345f353eadcbd",
+      "auditEvidence": null,
+      "summary": "Photo historique exacte de ZORB Rotorua, datée et créditée en huit langues ; Gonzalo Baeza, CC BY 3.0, 2011-12-13."
+    },
+    {
+      "eventId": "apply-4a9f4879-a5ad-4049-834d-06f96278f323",
+      "appliedAt": "2026-11-15T12:53:47.941Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "31dc1a2d-bfed-4ff8-b5fb-483e8efb9803",
+      "evidence": "PARK_DATA_EDITOR:apply:4a9f4879-a5ad-4049-834d-06f96278f323",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-zorb-rotorua-20261115/audit.json",
+      "summary": "Horaires officiels sept jours sur sept avec Noël fermé, quatre prix, âge, poids, santé et météo en huit langues."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "e749c92b-3e7c-493f-a1a3-6ec229761dbd",
+    "appliedAtUtc": "2026-11-15T12:54:19.3158895Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127455529424431",
+    "publishedAtUtc": "2026-11-15T12:54:57.9027839Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "890b318052ec4139ac86aa8fd1c7c993",
+      "uploadedAtUtc": "2026-11-15T12:51:35.671Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:51:39.147Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "2c392c0161134275af518329a167d886",
+      "uploadedAtUtc": "2026-11-15T12:52:30.985Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:52:34.446Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "9a3d85b801ce48a3bef345f353eadcbd",
+      "uploadedAtUtc": "2026-11-15T12:52:48.009Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:52:51.639Z"
+    }
+  ]
+}
