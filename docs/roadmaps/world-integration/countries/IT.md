@@ -13,11 +13,11 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 
 | État éditorial | Nombre |
 | --- | ---: |
-| À intégrer | 98 |
+| À intégrer | 97 |
 | À qualifier | 112 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 1 |
+| Intégration achevée | 2 |
 | Publié, date inconnue | 7 |
 | Hors périmètre enregistré | 134 |
 | Doublon conservé | 2 |
@@ -26,11 +26,11 @@ Couverture : **Pistes sourcées ; compléments locaux requis**. Observations ext
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **5 publiés**, **98 masqués à intégrer**, **139 masqués NotRelevant à réexaminer**, **81 candidats sans fiche**.
+Parcs : **5 publiés**, **97 masqués à intégrer**, **139 masqués NotRelevant à réexaminer**, **81 candidats sans fiche**.
 
-Standalone : **3 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **2 anciens parcs liés à une standalone**.
+Standalone : **4 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **2 anciens parcs liés à une standalone**.
 
-Revue standalone : **19 pistes dans des fiches Park masquées**, **2 dans des fiches Park publiées**, **18 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **18 pistes dans des fiches Park masquées**, **2 dans des fiches Park publiées**, **18 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
