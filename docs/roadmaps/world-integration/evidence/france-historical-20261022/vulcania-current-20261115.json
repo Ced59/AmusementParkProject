@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T14:37:00.7314505Z",
+  "lastDataIntegrationAt": "2026-11-15T15:29:20.1021724Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,15 +139,17 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 2,
+  "realApplyCount": 4,
   "realImportCount": 0,
-  "lastOperationId": "a2322d06-a575-48de-9f8b-4ce06599503c",
+  "lastOperationId": "0f39c1be-ad52-4349-b4d3-c8b2d3064da4",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-03-current-attractions-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-04-current-offers-20261115.json"
   ],
   "currentCoverage": {
-    "items": 1,
+    "items": 44,
     "publicItems": 0,
     "describedItems8Languages": 0,
     "zones": 0,

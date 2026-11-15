@@ -156,13 +156,640 @@
         "isAccessibleForReducedMobility": null,
         "isIndoor": null,
         "waterExposureLevel": null,
-        "accessConditions": []
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 120,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
       },
       "attractionLocations": null,
       "isVisible": false,
       "adminReviewStatus": "ToReview",
       "latitude": null,
       "longitude": null
+    },
+    {
+      "id": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+      "key": "vulcania-draisiennes-tambora",
+      "name": "Draisiennes de Tambora",
+      "category": "Attraction",
+      "type": "Playground",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/",
+        "durationInSeconds": 600
+      }
+    },
+    {
+      "id": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+      "key": "vulcania-riviere-mineraux",
+      "name": "Rivière des minéraux",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/la-riviere-des-mineraux/",
+        "durationInSeconds": 600
+      }
+    },
+    {
+      "id": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+      "key": "vulcania-maison-pitoufeu",
+      "name": "Maison Pitoufeu",
+      "category": "Attraction",
+      "type": "Playground",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/la-maison-de-pitoufeu/"
+      }
+    },
+    {
+      "id": "69045c46-360e-4fed-890b-f4c64b39c415",
+      "key": "vulcania-volcans-auvergne",
+      "name": "Volcans d’Auvergne",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/volcans-dauvergne/"
+      }
+    },
+    {
+      "id": "bec6f046-3be4-4245-8681-1650e706a6e7",
+      "key": "vulcania-foret-dragons",
+      "name": "Forêt des dragons",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/la-foret-des-dragons/"
+      }
+    },
+    {
+      "id": "162784ea-824c-4a01-93de-81d0de53ae4c",
+      "key": "vulcania-galerie-pitoufeu",
+      "name": "Galerie Pitoufeu",
+      "category": "Attraction",
+      "type": "Playground",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/galerie-pitoufeu/"
+      }
+    },
+    {
+      "id": "bce899da-5c92-4077-bf35-97a6e004db61",
+      "key": "vulcania-cite-enfants",
+      "name": "Cité des enfants",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/cite-des-enfants/",
+        "durationInSeconds": 1800
+      }
+    },
+    {
+      "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "key": "vulcania-terre-colere",
+      "name": "Terre en colère",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/terre-en-colere/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 110,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ],
+        "durationInSeconds": 540
+      }
+    },
+    {
+      "id": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+      "key": "vulcania-premier-envol",
+      "name": "Premier envol",
+      "category": "Attraction",
+      "type": "Cinema",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/premier-envol/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 90,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ],
+        "durationInSeconds": 600
+      }
+    },
+    {
+      "id": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+      "key": "vulcania-volcans-sacres",
+      "name": "Volcans sacrés",
+      "category": "Attraction",
+      "type": "DarkRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/volcans-sacres/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 80,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ],
+        "durationInSeconds": 300
+      }
+    },
+    {
+      "id": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+      "key": "vulcania-reveil-geants",
+      "name": "Réveil des géants d’Auvergne",
+      "category": "Attraction",
+      "type": "Cinema",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 110,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ],
+        "durationInSeconds": 1200
+      }
+    },
+    {
+      "id": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+      "key": "vulcania-maquettes",
+      "name": "Les maquettes géantes",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/maquettes/"
+      }
+    },
+    {
+      "id": "77e77316-bdd5-4584-b437-068962f32241",
+      "key": "vulcania-machine-terre",
+      "name": "Machine Terre",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/machine-terre/"
+      }
+    },
+    {
+      "id": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+      "key": "vulcania-dragon-ride",
+      "name": "Dragon Ride",
+      "category": "Attraction",
+      "type": "Cinema",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/dragon-ride/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 110,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ],
+        "durationInSeconds": 360
+      }
+    },
+    {
+      "id": "73863436-ae90-414d-8ae8-0e4973a3581c",
+      "key": "vulcania-vulcania-story",
+      "name": "Vulcania Story",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/vulcania-story/"
+      }
+    },
+    {
+      "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+      "key": "vulcania-terre-volcans",
+      "name": "Terre de volcans : l’immersion volcanique",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/terre-de-volcans/"
+      }
+    },
+    {
+      "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+      "key": "vulcania-seismes",
+      "name": "Séismes, quand la Terre tremble",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/seismes/"
+      }
+    },
+    {
+      "id": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+      "key": "vulcania-krafft-exposition",
+      "name": "Maurice et Katia Krafft, histoires de volcanologues",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/maurice-et-katia-krafft/"
+      }
+    },
+    {
+      "id": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+      "key": "vulcania-carnets-voyage",
+      "name": "Carnets de voyage",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/carnets-de-voyage/"
+      }
+    },
+    {
+      "id": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "key": "vulcania-expedition-hawai",
+      "name": "Expédition Hawaï",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/expedition-hawai/",
+        "durationInSeconds": 900,
+        "openingDate": "2026"
+      }
+    },
+    {
+      "id": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "key": "vulcania-astrodome",
+      "name": "Astrodôme – Planétarium",
+      "category": "Attraction",
+      "type": "Cinema",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/planetarium/",
+        "openingDate": "2023"
+      }
+    },
+    {
+      "id": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+      "key": "vulcania-cinemax",
+      "name": "CinéMax",
+      "category": "Attraction",
+      "type": "Cinema",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/les-films-sur-ecrans-geants/"
+      }
+    },
+    {
+      "id": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+      "key": "vulcania-comptoir-cratere",
+      "name": "Le Comptoir du cratère",
+      "category": "Restaurant",
+      "type": "Snack",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/comptoir-du-cratere/"
+      }
+    },
+    {
+      "id": "26f977fb-834f-41df-9705-60846988a756",
+      "key": "vulcania-cafeteria-puys",
+      "name": "La Cafétéria des Puys",
+      "category": "Restaurant",
+      "type": "Restaurant",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/cafeteria-des-puys/"
+      }
+    },
+    {
+      "id": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+      "key": "vulcania-magma-cafe",
+      "name": "Le Magma café",
+      "category": "Restaurant",
+      "type": "Snack",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/magma-cafe/"
+      }
+    },
+    {
+      "id": "1f3ce41f-f763-4389-b823-eb4a13816111",
+      "key": "vulcania-snack-planetarium",
+      "name": "Le Snack du Planétarium",
+      "category": "Restaurant",
+      "type": "Snack",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/snack-du-planetarium/"
+      }
+    },
+    {
+      "id": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+      "key": "vulcania-kiosque-namazu",
+      "name": "Le Kiosque Namazu",
+      "category": "Restaurant",
+      "type": "Snack",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/kiosque-namazu/"
+      }
+    },
+    {
+      "id": "52885720-2ed0-4d51-b940-33e955b2df3f",
+      "key": "vulcania-planete-auvergne",
+      "name": "Planète Auvergne",
+      "category": "Shop",
+      "type": "Shop",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/boutiques/"
+      }
+    },
+    {
+      "id": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+      "key": "vulcania-planete-sciences",
+      "name": "Planète Sciences",
+      "category": "Shop",
+      "type": "Shop",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/boutiques/"
+      }
+    },
+    {
+      "id": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+      "key": "vulcania-planete-vulcania",
+      "name": "Planète Vulcania",
+      "category": "Shop",
+      "type": "Shop",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/boutiques/"
+      }
+    },
+    {
+      "id": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+      "key": "vulcania-corner-espace",
+      "name": "Corner Espace du Planétarium",
+      "category": "Shop",
+      "type": "Shop",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/boutiques/"
+      }
+    },
+    {
+      "id": "6c8ed372-384b-4dab-8395-696f62e48db8",
+      "key": "vulcania-rapaces",
+      "name": "Rapaces en vol libre",
+      "category": "Show",
+      "type": "Show",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/presentation-de-rapaces-en-vol-libre/",
+        "durationInSeconds": 1800
+      }
+    },
+    {
+      "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+      "key": "vulcania-yapadrisk",
+      "name": "Yapadrisk et la flamme des volcans",
+      "category": "Show",
+      "type": "Show",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/yapadrisk-flamme-des-volcans/"
+      }
+    },
+    {
+      "id": "ba34b618-1876-4355-b842-2d10f6975525",
+      "key": "vulcania-primordia",
+      "name": "Primordia, la naissance du monde",
+      "category": "Show",
+      "type": "Show",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
+        "durationInSeconds": 1080,
+        "openingDate": "2026"
+      }
+    },
+    {
+      "id": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+      "key": "vulcania-contes",
+      "name": "Contes et légendes volcaniques",
+      "category": "Show",
+      "type": "Show",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/contes-et-legendes-volcaniques/",
+        "durationInSeconds": 1800
+      }
+    },
+    {
+      "id": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+      "key": "vulcania-experiences-show",
+      "name": "Expériences, c’est show !",
+      "category": "Show",
+      "type": "Show",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/experiences-cest-show/",
+        "durationInSeconds": 1800
+      }
+    },
+    {
+      "id": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+      "key": "vulcania-cratere-anime",
+      "name": "Le cratère s’anime !",
+      "category": "Show",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/le-cratere-sanime/",
+        "durationInSeconds": 1800
+      }
+    },
+    {
+      "id": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+      "key": "vulcania-danse-pitoufeu",
+      "name": "Danse de Pitoufeu",
+      "category": "Show",
+      "type": "MeetAndGreet",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/photo-avec-pitoufeu-et-ses-amis/",
+        "durationInSeconds": 1200
+      }
+    },
+    {
+      "id": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+      "key": "vulcania-cent-volcans",
+      "name": "100% volcans",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/100-pour-cent-volcans/",
+        "durationInSeconds": 1800
+      }
+    },
+    {
+      "id": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+      "key": "vulcania-ateliers-planetarium",
+      "name": "Ateliers du Planétarium",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/plan-du-parc/"
+      }
+    },
+    {
+      "id": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+      "key": "vulcania-ateliers-volcans",
+      "name": "Ateliers des volcans",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/plan-du-parc/"
+      }
+    },
+    {
+      "id": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+      "key": "vulcania-planete-devoilee",
+      "name": "Planète dévoilée",
+      "category": "Show",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/planete-devoilee/",
+        "durationInSeconds": 1800
+      }
+    },
+    {
+      "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+      "key": "vulcania-cest-pas-sorcier",
+      "name": "C’est pas sorcier les volcans !",
+      "category": "Show",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/animation/cest-pas-sorcier-les-volcans/",
+        "durationInSeconds": 1800
+      }
     }
   ],
   "images": [

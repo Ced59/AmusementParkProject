@@ -1,0 +1,356 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "observedAtUtc": "2026-11-15T15:30:24.006414+00:00",
+  "sources": [
+    {
+      "url": "https://www.vulcania.com/animation/premier-envol/",
+      "finalUrl": "https://www.vulcania.com/animation/premier-envol/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:18.212416+00:00",
+      "file": "premier-envol.html",
+      "sha256": "9f4a79ab359849bfdbaf78768cd596ea4c15e64adc2da5cde7d3a7cc23c3058e"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/",
+      "finalUrl": "https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:18.476585+00:00",
+      "file": "reveil-des-geants-d-auvergne.html",
+      "sha256": "bf4daf38890c2c988559f5c76c0d937670f2f292d6cdfa6bf1ac4b6b5cae69b4"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/terre-en-colere/",
+      "finalUrl": "https://www.vulcania.com/animation/terre-en-colere/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:18.740008+00:00",
+      "file": "terre-en-colere.html",
+      "sha256": "967d21a1b75d15731714adc7b514ae2567ef6004d07f61a254c76d4e078899c3"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/volcans-sacres/",
+      "finalUrl": "https://www.vulcania.com/animation/volcans-sacres/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:18.984100+00:00",
+      "file": "volcans-sacres.html",
+      "sha256": "3003caae0ff5e5e88775ee8c8662ed9a92734fd387e2cbf948b3efee0149e992"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/dragon-ride/",
+      "finalUrl": "https://www.vulcania.com/animation/dragon-ride/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:19.186648+00:00",
+      "file": "dragon-ride.html",
+      "sha256": "51f657dcbf88943f294e0bae105da08a6e89431af88057ab2dd78aea094e54ba"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/namazu/",
+      "finalUrl": "https://www.vulcania.com/animation/namazu/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:19.434858+00:00",
+      "file": "namazu.html",
+      "sha256": "22496798220c93f49d7a27d7670f346d2a038a950a7c451e44dacc2b5db72840"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/expedition-hawai/",
+      "finalUrl": "https://www.vulcania.com/animation/expedition-hawai/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T15:26:19.641370+00:00",
+      "file": "expedition-hawai.html",
+      "sha256": "0b29c0ae1155beb49efb141d64e3b20c60c519b2da8dd840624531691570ea20"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/planete-devoilee/",
+      "file": "planete-devoilee.html",
+      "accessedAtUtc": "2026-11-15T14:10:46.447843+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/planete-devoilee/",
+      "bytes": 132358,
+      "sha256": "0d6794fdaaa897d051bbc8d5e0556fddfcb3ba688b639b3aa3045fe6dce9ac79"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/chaine-des-puys-racontee/",
+      "file": "chaine-puys.html",
+      "accessedAtUtc": "2026-11-15T14:10:47.432687+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/chaine-des-puys-racontee/",
+      "bytes": 134136,
+      "sha256": "8a87429f68845b479bd8a03edacec22cd1dea58475a27aaed1032caff9deb9ba"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/machine-terre/",
+      "file": "machine-terre.html",
+      "accessedAtUtc": "2026-11-15T14:10:47.746333+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/machine-terre/",
+      "bytes": 150500,
+      "sha256": "9596a18d8699f84c1ab2aea5470d018906724631046685aa875b23b9a53e43c7"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/seismes/",
+      "file": "seismes.html",
+      "accessedAtUtc": "2026-11-15T14:10:48.068710+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/seismes/",
+      "bytes": 123371,
+      "sha256": "4ae964d8732e97b3d1c950729c80686bb54efb023c44b3603a47d7116d770bc5"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/carnets-de-voyage/",
+      "file": "carnets.html",
+      "accessedAtUtc": "2026-11-15T14:10:48.251422+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/carnets-de-voyage/",
+      "bytes": 135587,
+      "sha256": "2119048ccf59e50465f7fd5952d05403bbf89ac69d4a481e1e257405cef74ba7"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/maurice-et-katia-krafft/",
+      "file": "krafft.html",
+      "accessedAtUtc": "2026-11-15T14:10:48.430763+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/maurice-et-katia-krafft/",
+      "bytes": 130500,
+      "sha256": "717387da158e40780039da89c473dc91ff08b1efd969f118f6652ac3ec0d1e8e"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/photo-avec-pitoufeu-et-ses-amis/",
+      "file": "pitoufeu-show.html",
+      "accessedAtUtc": "2026-11-15T14:10:48.648117+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/photo-avec-pitoufeu-et-ses-amis/",
+      "bytes": 133901,
+      "sha256": "1ad6a87e51a56bd1cd3989309d579d1d7a1e32ef12fc19c00022b8db41d7842f"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
+      "file": "primordia.html",
+      "accessedAtUtc": "2026-11-15T14:10:48.860821+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
+      "bytes": 133100,
+      "sha256": "068a659585a38d66ed81f55c932b34b3e60345c0ebefe6c078b83a1c02ac043e"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/yapadrisk-flamme-des-volcans/",
+      "file": "yapadrisk.html",
+      "accessedAtUtc": "2026-11-15T14:10:49.055512+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/yapadrisk-flamme-des-volcans/",
+      "bytes": 122167,
+      "sha256": "534ead03389b0bd78d5596f8863107e2e2d374704a73bac3e3da868357d077d2"
+    },
+    {
+      "url": "https://www.vulcania.com/boutiques/",
+      "file": "boutiques.html",
+      "accessedAtUtc": "2026-11-15T14:10:49.230633+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/boutiques/",
+      "bytes": 151086,
+      "sha256": "06c7573fc0e4b921d5ca37e40b99cae10ad153b8792140061ab9e88e7464c0b1"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/comptoir-du-cratere/",
+      "file": "comptoir.html",
+      "accessedAtUtc": "2026-11-15T14:10:49.430217+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/comptoir-du-cratere/",
+      "bytes": 190616,
+      "sha256": "342780476aecbdd947a28d2063a6f94d6b0c30d63616a6ada2bfed3b5afb41da"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/cafeteria-des-puys/",
+      "file": "cafeteria.html",
+      "accessedAtUtc": "2026-11-15T14:10:49.617755+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/cafeteria-des-puys/",
+      "bytes": 153751,
+      "sha256": "0c695c08eeefe319008c1f172ce7499076667fbdccdeaab4cb01d8ffdb179d3c"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/magma-cafe/",
+      "file": "magma-cafe.html",
+      "accessedAtUtc": "2026-11-15T14:10:49.795520+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/magma-cafe/",
+      "bytes": 184898,
+      "sha256": "49bb0eced36fbc8966b561e75a1d3f7009bf1e048ad653f704e7867e32428c8e"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/snack-du-planetarium/",
+      "file": "snack-planetarium.html",
+      "accessedAtUtc": "2026-11-15T14:10:49.978733+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/snack-du-planetarium/",
+      "bytes": 146467,
+      "sha256": "b3f52acb1b91abee1122fdabd0f3ea5e23e8cc2413a7abce039849e21b60760d"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/kiosque-namazu/",
+      "file": "kiosque-namazu.html",
+      "accessedAtUtc": "2026-11-15T14:10:50.177349+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/kiosque-namazu/",
+      "bytes": 156604,
+      "sha256": "40e39180724ba4396fca4131f02738f3095cbfa7a69fae390086480c97fb0a17"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/le-cratere-sanime/",
+      "file": "cratere-anime.html",
+      "accessedAtUtc": "2026-11-15T14:12:03.457672+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/le-cratere-sanime/",
+      "bytes": 123208,
+      "sha256": "99aa2bd6d0564ad61232f522835c5a46f2012e9cc60c155d1f9c644cc94192df"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/cest-pas-sorcier-les-volcans/",
+      "file": "cest-pas-sorcier.html",
+      "accessedAtUtc": "2026-11-15T14:12:04.026801+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/cest-pas-sorcier-les-volcans/",
+      "bytes": 120563,
+      "sha256": "f47bc6869cceb4c26ecea440d25bc5c48f1dff1a8c96620d54b5dc85db452819"
+    },
+    {
+      "url": "https://www.vulcania.com/les-expositions/",
+      "file": "expositions.html",
+      "accessedAtUtc": "2026-11-15T14:12:04.225191+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/les-expositions/",
+      "bytes": 107198,
+      "sha256": "619ced99a4b98bae70eb415de5cd0bec04bbe2dd7074d0b01cb3e35e7e602a78"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/",
+      "file": "draisiennes.html",
+      "accessedAtUtc": "2026-11-15T14:12:04.411022+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/",
+      "bytes": 123399,
+      "sha256": "8aa5d2e8ce755b31be7fabe1f39c4d332dc923ca1c801962e21be62dc4c5af85"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/la-riviere-des-mineraux/",
+      "file": "riviere.html",
+      "accessedAtUtc": "2026-11-15T14:12:04.598020+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/la-riviere-des-mineraux/",
+      "bytes": 137373,
+      "sha256": "01779d5d5b0bb8468997d256ca9a5d989ad2b0484c99aaecd7beefad7eb9c591"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/la-maison-de-pitoufeu/",
+      "file": "maison-pitoufeu.html",
+      "accessedAtUtc": "2026-11-15T14:12:04.787844+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/la-maison-de-pitoufeu/",
+      "bytes": 132396,
+      "sha256": "50a9b707847087c91ed22bbf6adcfaa543af1e6c83e4ea48f5a9c97bb7ad899d"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/volcans-dauvergne/",
+      "file": "volcans-auvergne.html",
+      "accessedAtUtc": "2026-11-15T14:12:04.973599+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/volcans-dauvergne/",
+      "bytes": 135222,
+      "sha256": "1a9d946ed40755eb20634bd757f19871dbf7c87871fee1b036fa1134d6956def"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/la-foret-des-dragons/",
+      "file": "foret-dragons.html",
+      "accessedAtUtc": "2026-11-15T14:12:05.165403+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/la-foret-des-dragons/",
+      "bytes": 122180,
+      "sha256": "67f24de17a0aa9060304b9e1dd50f104fd82b1204fe65e1c6356ca2d7fdfa426"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/presentation-de-rapaces-en-vol-libre/",
+      "file": "rapaces.html",
+      "accessedAtUtc": "2026-11-15T14:12:05.352347+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/presentation-de-rapaces-en-vol-libre/",
+      "bytes": 120923,
+      "sha256": "440a42722463a392714c2db5dd00d7ef8186c39fa1ec3693b2dd724c47118cc2"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/contes-et-legendes-volcaniques/",
+      "file": "contes.html",
+      "accessedAtUtc": "2026-11-15T14:12:05.541039+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/contes-et-legendes-volcaniques/",
+      "bytes": 124579,
+      "sha256": "dbc7c531b2f520c77c17864deb915045b9a35d9be0feba82c17220ab8bbe7a5f"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/experiences-cest-show/",
+      "file": "experiences-show.html",
+      "accessedAtUtc": "2026-11-15T14:12:05.728862+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/experiences-cest-show/",
+      "bytes": 123513,
+      "sha256": "930f7b112e3539b45fd5daf27b1a01272941c3c83b691a80cccf9b6f7ff857ac"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/100-pour-cent-volcans/",
+      "file": "cent-volcans.html",
+      "accessedAtUtc": "2026-11-15T14:12:05.911032+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/100-pour-cent-volcans/",
+      "bytes": 131617,
+      "sha256": "be7726bf34b1d8cf5a5a7387fbc67d30874ae4247315f68cd40d642a0fe17b81"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/galerie-pitoufeu/",
+      "file": "galerie-pitoufeu.html",
+      "accessedAtUtc": "2026-11-15T14:12:06.096452+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/galerie-pitoufeu/",
+      "bytes": 134940,
+      "sha256": "b80e2924204b91696f5fda672c165dc5a81bdfdec137c073f64699e524eadd6c"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/cite-des-enfants/",
+      "file": "cite-enfants.html",
+      "accessedAtUtc": "2026-11-15T14:12:06.283351+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/cite-des-enfants/",
+      "bytes": 132795,
+      "sha256": "2773e1cddb9d6a1981d80a671dd31cde997affcaa08775f7854826a90eeec050"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/maquettes/",
+      "file": "maquettes.html",
+      "accessedAtUtc": "2026-11-15T14:12:06.478821+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/maquettes/",
+      "bytes": 119465,
+      "sha256": "1f7338f716bb2631f3dddc633766cce10b0e76046a2674894b1747a7ecedd65e"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/vulcania-story/",
+      "file": "vulcania-story.html",
+      "accessedAtUtc": "2026-11-15T14:12:06.663271+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/vulcania-story/",
+      "bytes": 119622,
+      "sha256": "a24219a9637355c2bc3f396819de3ce60bfeb72b39749efe526990280700bc89"
+    },
+    {
+      "url": "https://www.vulcania.com/animation/terre-de-volcans/",
+      "file": "immersion.html",
+      "accessedAtUtc": "2026-11-15T14:12:06.844435+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/terre-de-volcans/",
+      "bytes": 133644,
+      "sha256": "b6af8d077e42efcf902843a433e5c7c8b1a026852363482fc185c52498daa091"
+    }
+  ],
+  "mapPersonallyReviewed": {
+    "file": "/workspace/france-historical-20261114/vulcania-public-research-20261115/map-2026.jpg",
+    "sha256": "a693c29506d1107112933b761d37bd4aa674f969318c2b1be5107bcfa9ea20c6",
+    "notes": "A-D vertical levels, not thematic lands. Exhibition + guided programme share venue; Astrodôme/CinéMax programme not duplicated into cinemas.44private items after03/04. Historical offer and services remain open."
+  },
+  "localAssertionNote": "Before03Apply, a local diagnostic incorrectly assumed Created fields must explicitly contain defaultfalse isVisible. It omitted defaults and raised, while shell continued to officialApply. Source document explicitlyfalse for all22new; officialPreview/Apply no warnings/errors and working-statefalse. No retry or visibility mutation."
+}

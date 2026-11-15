@@ -1,0 +1,1721 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "metadata": {
+        "source": "codex-france-vulcania-current-inventory",
+        "step": "03-current-physical-items",
+        "notes": "Pass1 current seasonal offer:22 new private items plus120cm sourced Namazu condition. Existing Namazu ID/model/date preserved. Map2026 personally inspected; A-D are vertical levels, not thematic lands. Films/programmes at Astrodôme/CinéMax belong to their existing named physical venues and are not duplicate cinemas. Machine Terre/Seismes guided visits belong to their exhibitions. No GPS from schematic underground map; exact position research remains. No guessed opening dates: Astrodôme2023 and Hawaï2026 only, latter inaugurated1July but inauguration not assumed first public day. Hawaï90/110cm sources conflict, no restriction asserted until qualified. Playground age ranges and accessibility conditions to complete separately, no MaxAge enum invented. Durations are official whole-experience durations. No public description yet, private until editorial audit. Carnets2026 display content not a new permanent installation date. Official Terre en colère copy misleadingly groups earthquakes/volcanoes with climate change; do not adopt causal statement in prose. Historical/replaced offer pass still required."
+      },
+      "items": [
+        {
+          "key": "vulcania-draisiennes-tambora",
+          "name": "Draisiennes de Tambora",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/",
+            "durationInSeconds": 600
+          }
+        },
+        {
+          "key": "vulcania-riviere-mineraux",
+          "name": "Rivière des minéraux",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/la-riviere-des-mineraux/",
+            "durationInSeconds": 600
+          }
+        },
+        {
+          "key": "vulcania-maison-pitoufeu",
+          "name": "Maison Pitoufeu",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/la-maison-de-pitoufeu/"
+          }
+        },
+        {
+          "key": "vulcania-volcans-auvergne",
+          "name": "Volcans d’Auvergne",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/volcans-dauvergne/"
+          }
+        },
+        {
+          "key": "vulcania-foret-dragons",
+          "name": "Forêt des dragons",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/la-foret-des-dragons/"
+          }
+        },
+        {
+          "key": "vulcania-galerie-pitoufeu",
+          "name": "Galerie Pitoufeu",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/galerie-pitoufeu/"
+          }
+        },
+        {
+          "key": "vulcania-cite-enfants",
+          "name": "Cité des enfants",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/cite-des-enfants/",
+            "durationInSeconds": 1800
+          }
+        },
+        {
+          "key": "vulcania-terre-colere",
+          "name": "Terre en colère",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/terre-en-colere/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 110,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ],
+            "durationInSeconds": 540
+          }
+        },
+        {
+          "key": "vulcania-premier-envol",
+          "name": "Premier envol",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/premier-envol/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 90,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ],
+            "durationInSeconds": 600
+          }
+        },
+        {
+          "key": "vulcania-volcans-sacres",
+          "name": "Volcans sacrés",
+          "category": "Attraction",
+          "type": "DarkRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/volcans-sacres/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 80,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ],
+            "durationInSeconds": 300
+          }
+        },
+        {
+          "key": "vulcania-reveil-geants",
+          "name": "Réveil des géants d’Auvergne",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 110,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ],
+            "durationInSeconds": 1200
+          }
+        },
+        {
+          "key": "vulcania-maquettes",
+          "name": "Les maquettes géantes",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/maquettes/"
+          }
+        },
+        {
+          "key": "vulcania-machine-terre",
+          "name": "Machine Terre",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/machine-terre/"
+          }
+        },
+        {
+          "key": "vulcania-dragon-ride",
+          "name": "Dragon Ride",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/dragon-ride/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 110,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ],
+            "durationInSeconds": 360
+          }
+        },
+        {
+          "key": "vulcania-vulcania-story",
+          "name": "Vulcania Story",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/vulcania-story/"
+          }
+        },
+        {
+          "key": "vulcania-terre-volcans",
+          "name": "Terre de volcans : l’immersion volcanique",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/terre-de-volcans/"
+          }
+        },
+        {
+          "key": "vulcania-seismes",
+          "name": "Séismes, quand la Terre tremble",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/seismes/"
+          }
+        },
+        {
+          "key": "vulcania-krafft-exposition",
+          "name": "Maurice et Katia Krafft, histoires de volcanologues",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/maurice-et-katia-krafft/"
+          }
+        },
+        {
+          "key": "vulcania-carnets-voyage",
+          "name": "Carnets de voyage",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/carnets-de-voyage/"
+          }
+        },
+        {
+          "key": "vulcania-expedition-hawai",
+          "name": "Expédition Hawaï",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/expedition-hawai/",
+            "durationInSeconds": 900,
+            "openingDate": "2026"
+          }
+        },
+        {
+          "key": "vulcania-astrodome",
+          "name": "Astrodôme – Planétarium",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/planetarium/",
+            "openingDate": "2023"
+          }
+        },
+        {
+          "key": "vulcania-cinemax",
+          "name": "CinéMax",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/les-films-sur-ecrans-geants/"
+          }
+        },
+        {
+          "key": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+          "id": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+          "name": "Namazu",
+          "category": "Attraction",
+          "type": "RollerCoaster",
+          "attractionDetails": {
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 120,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "243cd108-cb02-4763-981a-03ce08118687",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:27:24.3349592Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 22,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dd81e605-5855-40a7-82ff-9cc75a5104f5",
+        "entityKey": "vulcania-draisiennes-tambora",
+        "displayName": "Draisiennes de Tambora",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "600"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "57c7251a-46b7-49c6-a62c-d245edc9381b",
+        "entityKey": "vulcania-riviere-mineraux",
+        "displayName": "Rivière des minéraux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/la-riviere-des-mineraux/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "600"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "561a8683-2130-4d26-add4-46df4fcfdbac",
+        "entityKey": "vulcania-maison-pitoufeu",
+        "displayName": "Maison Pitoufeu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/la-maison-de-pitoufeu/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8e03b524-4b07-4cea-87e8-e23a1304e621",
+        "entityKey": "vulcania-volcans-auvergne",
+        "displayName": "Volcans d’Auvergne",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/volcans-dauvergne/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "24516462-0de8-43e7-92a7-25e6ab519ad1",
+        "entityKey": "vulcania-foret-dragons",
+        "displayName": "Forêt des dragons",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/la-foret-des-dragons/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "276690a5-7ac1-4f1d-ae23-4c58d3f90b44",
+        "entityKey": "vulcania-galerie-pitoufeu",
+        "displayName": "Galerie Pitoufeu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/galerie-pitoufeu/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6f2a1ddf-5f22-4652-bc42-5ac0651bb7f1",
+        "entityKey": "vulcania-cite-enfants",
+        "displayName": "Cité des enfants",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/cite-des-enfants/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b73c5596-0d39-4283-9761-7f87acdec4ec",
+        "entityKey": "vulcania-terre-colere",
+        "displayName": "Terre en colère",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/terre-en-colere/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "540"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||110|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6f7acd6d-64be-481e-9978-b6a719d614e0",
+        "entityKey": "vulcania-premier-envol",
+        "displayName": "Premier envol",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/premier-envol/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "600"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||90|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bfc61b3f-93be-47ba-9f7e-21c2aab7cc3b",
+        "entityKey": "vulcania-volcans-sacres",
+        "displayName": "Volcans sacrés",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "DarkRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/volcans-sacres/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "300"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||80|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "19aee107-5e1f-439e-b3f2-ce09ab7b1d49",
+        "entityKey": "vulcania-reveil-geants",
+        "displayName": "Réveil des géants d’Auvergne",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1200"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||110|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "49efd0d8-6ac2-4323-a291-1c4c3b24b8d7",
+        "entityKey": "vulcania-maquettes",
+        "displayName": "Les maquettes géantes",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/maquettes/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5eafa328-a70f-434e-811d-29e627c86561",
+        "entityKey": "vulcania-machine-terre",
+        "displayName": "Machine Terre",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/machine-terre/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ad764f4d-62a6-4343-9ff4-784aa07f15ce",
+        "entityKey": "vulcania-dragon-ride",
+        "displayName": "Dragon Ride",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/dragon-ride/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "360"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||110|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "500da634-a1a5-4a0f-a609-ef60c594e2fc",
+        "entityKey": "vulcania-vulcania-story",
+        "displayName": "Vulcania Story",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/vulcania-story/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4b4df54d-7987-4c4f-a483-31538b241c18",
+        "entityKey": "vulcania-terre-volcans",
+        "displayName": "Terre de volcans : l’immersion volcanique",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/terre-de-volcans/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c5b734c5-be07-4639-a0af-fb4445cf6ec1",
+        "entityKey": "vulcania-seismes",
+        "displayName": "Séismes, quand la Terre tremble",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/seismes/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5edc7b45-fcde-43a2-96b1-7d9cba8cff5f",
+        "entityKey": "vulcania-krafft-exposition",
+        "displayName": "Maurice et Katia Krafft, histoires de volcanologues",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/maurice-et-katia-krafft/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77e20f17-6fc8-476c-a55e-a1c13cc5a5c0",
+        "entityKey": "vulcania-carnets-voyage",
+        "displayName": "Carnets de voyage",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/carnets-de-voyage/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7e0cdb85-8ed7-4a8b-99ff-762d1d489d8f",
+        "entityKey": "vulcania-expedition-hawai",
+        "displayName": "Expédition Hawaï",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/expedition-hawai/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2026"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "900"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fb997795-6781-488e-a571-0c8742eb5b35",
+        "entityKey": "vulcania-astrodome",
+        "displayName": "Astrodôme – Planétarium",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/planetarium/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2023"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "26d39527-dd76-4f7b-98b8-1317a808c8e9",
+        "entityKey": "vulcania-cinemax",
+        "displayName": "CinéMax",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/les-films-sur-ecrans-geants/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "entityKey": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "displayName": "Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "b0c3e3b7-8795-43b7-a67f-74218cb44502",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:27:40.0347926Z",
+    "appliedAtUtc": "2026-11-15T15:27:40.0347931Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 22,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+        "entityKey": "vulcania-draisiennes-tambora",
+        "displayName": "Draisiennes de Tambora",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/les-draisiennes-de-tambora/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "600"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+        "entityKey": "vulcania-riviere-mineraux",
+        "displayName": "Rivière des minéraux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/la-riviere-des-mineraux/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "600"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+        "entityKey": "vulcania-maison-pitoufeu",
+        "displayName": "Maison Pitoufeu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/la-maison-de-pitoufeu/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "69045c46-360e-4fed-890b-f4c64b39c415",
+        "entityKey": "vulcania-volcans-auvergne",
+        "displayName": "Volcans d’Auvergne",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/volcans-dauvergne/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bec6f046-3be4-4245-8681-1650e706a6e7",
+        "entityKey": "vulcania-foret-dragons",
+        "displayName": "Forêt des dragons",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/la-foret-des-dragons/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "162784ea-824c-4a01-93de-81d0de53ae4c",
+        "entityKey": "vulcania-galerie-pitoufeu",
+        "displayName": "Galerie Pitoufeu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/galerie-pitoufeu/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bce899da-5c92-4077-bf35-97a6e004db61",
+        "entityKey": "vulcania-cite-enfants",
+        "displayName": "Cité des enfants",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/cite-des-enfants/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "entityKey": "vulcania-terre-colere",
+        "displayName": "Terre en colère",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/terre-en-colere/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "540"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||110|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "entityKey": "vulcania-premier-envol",
+        "displayName": "Premier envol",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/premier-envol/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "600"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||90|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+        "entityKey": "vulcania-volcans-sacres",
+        "displayName": "Volcans sacrés",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "DarkRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/volcans-sacres/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "300"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||80|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+        "entityKey": "vulcania-reveil-geants",
+        "displayName": "Réveil des géants d’Auvergne",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1200"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||110|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+        "entityKey": "vulcania-maquettes",
+        "displayName": "Les maquettes géantes",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/maquettes/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77e77316-bdd5-4584-b437-068962f32241",
+        "entityKey": "vulcania-machine-terre",
+        "displayName": "Machine Terre",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/machine-terre/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+        "entityKey": "vulcania-dragon-ride",
+        "displayName": "Dragon Ride",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/dragon-ride/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "360"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||110|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73863436-ae90-414d-8ae8-0e4973a3581c",
+        "entityKey": "vulcania-vulcania-story",
+        "displayName": "Vulcania Story",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/vulcania-story/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "entityKey": "vulcania-terre-volcans",
+        "displayName": "Terre de volcans : l’immersion volcanique",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/terre-de-volcans/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "entityKey": "vulcania-seismes",
+        "displayName": "Séismes, quand la Terre tremble",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/seismes/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+        "entityKey": "vulcania-krafft-exposition",
+        "displayName": "Maurice et Katia Krafft, histoires de volcanologues",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/maurice-et-katia-krafft/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+        "entityKey": "vulcania-carnets-voyage",
+        "displayName": "Carnets de voyage",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/carnets-de-voyage/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+        "entityKey": "vulcania-expedition-hawai",
+        "displayName": "Expédition Hawaï",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/expedition-hawai/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2026"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "900"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "entityKey": "vulcania-astrodome",
+        "displayName": "Astrodôme – Planétarium",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/planetarium/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2023"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+        "entityKey": "vulcania-cinemax",
+        "displayName": "CinéMax",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/les-films-sur-ecrans-geants/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "entityKey": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "displayName": "Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : 22 lieux actuels privés créés après rapprochement du plan et des sources officielles, Namazu conservé avec restriction120cm; descriptions, inventaire historique et audit restent à traiter.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Pass1 current seasonal offer:22 new private items plus120cm sourced Namazu condition. Existing Namazu ID/model/date preserved. Map2026 personally inspected; A-D are vertical levels, not thematic lands. Films/programmes at Astrodôme/CinéMax belong to their existing named physical venues and are not duplicate cinemas. Machine Terre/Seismes guided visits belong to their exhibitions. No GPS from schematic underground map; exact position research remains. No guessed opening dates: Astrodôme2023 and Hawaï2026 only, latter inaugurated1July but inauguration not assumed first public day. Hawaï90/110cm sources conflict, no restriction asserted until qualified. Playground age ranges and accessibility conditions to complete separately, no MaxAge enum invented. Durations are official whole-experience durations. No public description yet, private until editorial audit. Carnets2026 display content not a new permanent installation date. Official Terre en colère copy misleadingly groups earthquakes/volcanoes with climate change; do not adopt causal statement in prose. Historical/replaced offer pass still required."
+}

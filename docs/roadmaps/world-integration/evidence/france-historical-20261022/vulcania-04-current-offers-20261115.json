@@ -1,0 +1,1691 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "metadata": {
+        "source": "codex-france-vulcania-current-offers",
+        "step": "03-current-shows-food-shops",
+        "notes": "21 named seasonal offers:5 food outlets,4 shops,7 shows/meet-and-greet,2 workshop areas,100%volcans collaborative animation (NOT static exhibition),2 distinct presented programmes at shared B30. Current official pages personally read, map2026 inspected. Ateliers names group official programmes into their named venue, not one duplicated room per session. Planète dévoilée and C’est pas sorcier have separate named experiences/pages, same mapcodeB30; no invented separate theatre or GPS. Shared A22 for Yapadrisk/Primordia likewise. Seasonal no-show days and Snack/Kiosque banners Fermé are not permanent closures: Kiosque banner says reopening20October with2026menu, no invented actual reopening day or2027schedule. Four shops explicitly named despite stale discount paragraph sayingthree. Dates/capacities/GPS/manufacturers unknown retained empty. Under18/age restrictions and durations with varying programmes kept for separate qualification. All private before8languagewriting/audit. No duplicate physical cinema for films. Historical offer and public services inventory still pending."
+      },
+      "items": [
+        {
+          "key": "vulcania-comptoir-cratere",
+          "name": "Le Comptoir du cratère",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/comptoir-du-cratere/"
+          }
+        },
+        {
+          "key": "vulcania-cafeteria-puys",
+          "name": "La Cafétéria des Puys",
+          "category": "Restaurant",
+          "type": "Restaurant",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/cafeteria-des-puys/"
+          }
+        },
+        {
+          "key": "vulcania-magma-cafe",
+          "name": "Le Magma café",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/magma-cafe/"
+          }
+        },
+        {
+          "key": "vulcania-snack-planetarium",
+          "name": "Le Snack du Planétarium",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/snack-du-planetarium/"
+          }
+        },
+        {
+          "key": "vulcania-kiosque-namazu",
+          "name": "Le Kiosque Namazu",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/kiosque-namazu/"
+          }
+        },
+        {
+          "key": "vulcania-planete-auvergne",
+          "name": "Planète Auvergne",
+          "category": "Shop",
+          "type": "Shop",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/boutiques/"
+          }
+        },
+        {
+          "key": "vulcania-planete-sciences",
+          "name": "Planète Sciences",
+          "category": "Shop",
+          "type": "Shop",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/boutiques/"
+          }
+        },
+        {
+          "key": "vulcania-planete-vulcania",
+          "name": "Planète Vulcania",
+          "category": "Shop",
+          "type": "Shop",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/boutiques/"
+          }
+        },
+        {
+          "key": "vulcania-corner-espace",
+          "name": "Corner Espace du Planétarium",
+          "category": "Shop",
+          "type": "Shop",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/boutiques/"
+          }
+        },
+        {
+          "key": "vulcania-rapaces",
+          "name": "Rapaces en vol libre",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/presentation-de-rapaces-en-vol-libre/",
+            "durationInSeconds": 1800
+          }
+        },
+        {
+          "key": "vulcania-yapadrisk",
+          "name": "Yapadrisk et la flamme des volcans",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/yapadrisk-flamme-des-volcans/"
+          }
+        },
+        {
+          "key": "vulcania-primordia",
+          "name": "Primordia, la naissance du monde",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
+            "durationInSeconds": 1080,
+            "openingDate": "2026"
+          }
+        },
+        {
+          "key": "vulcania-contes",
+          "name": "Contes et légendes volcaniques",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/contes-et-legendes-volcaniques/",
+            "durationInSeconds": 1800
+          }
+        },
+        {
+          "key": "vulcania-experiences-show",
+          "name": "Expériences, c’est show !",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/experiences-cest-show/",
+            "durationInSeconds": 1800
+          }
+        },
+        {
+          "key": "vulcania-cratere-anime",
+          "name": "Le cratère s’anime !",
+          "category": "Show",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/le-cratere-sanime/",
+            "durationInSeconds": 1800
+          }
+        },
+        {
+          "key": "vulcania-danse-pitoufeu",
+          "name": "Danse de Pitoufeu",
+          "category": "Show",
+          "type": "MeetAndGreet",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/photo-avec-pitoufeu-et-ses-amis/",
+            "durationInSeconds": 1200
+          }
+        },
+        {
+          "key": "vulcania-cent-volcans",
+          "name": "100% volcans",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/100-pour-cent-volcans/",
+            "durationInSeconds": 1800
+          }
+        },
+        {
+          "key": "vulcania-ateliers-planetarium",
+          "name": "Ateliers du Planétarium",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/plan-du-parc/"
+          }
+        },
+        {
+          "key": "vulcania-ateliers-volcans",
+          "name": "Ateliers des volcans",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/plan-du-parc/"
+          }
+        },
+        {
+          "key": "vulcania-planete-devoilee",
+          "name": "Planète dévoilée",
+          "category": "Show",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/planete-devoilee/",
+            "durationInSeconds": 1800
+          }
+        },
+        {
+          "key": "vulcania-cest-pas-sorcier",
+          "name": "C’est pas sorcier les volcans !",
+          "category": "Show",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/animation/cest-pas-sorcier-les-volcans/",
+            "durationInSeconds": 1800
+          }
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "be0ffde4-4823-469d-87cc-87429da2c725",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:29:04.6679962Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 21,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a52c8532-5db6-4750-8780-048d94b23d1c",
+        "entityKey": "vulcania-comptoir-cratere",
+        "displayName": "Le Comptoir du cratère",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/comptoir-du-cratere/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b4c117e2-00c8-47f7-8754-ee4d196c3836",
+        "entityKey": "vulcania-cafeteria-puys",
+        "displayName": "La Cafétéria des Puys",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/cafeteria-des-puys/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4520f32-22d6-4332-86ce-d7a909f7a627",
+        "entityKey": "vulcania-magma-cafe",
+        "displayName": "Le Magma café",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/magma-cafe/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "64fd0d9d-5c18-4661-ba32-330d14259f98",
+        "entityKey": "vulcania-snack-planetarium",
+        "displayName": "Le Snack du Planétarium",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/snack-du-planetarium/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b99cd7a9-559c-475d-95ac-072a01969b2d",
+        "entityKey": "vulcania-kiosque-namazu",
+        "displayName": "Le Kiosque Namazu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/kiosque-namazu/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0cd2750e-fd2f-4b0c-afca-2fb9b76c235e",
+        "entityKey": "vulcania-planete-auvergne",
+        "displayName": "Planète Auvergne",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/boutiques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f79bca13-b879-4ade-91aa-649db3f74f6c",
+        "entityKey": "vulcania-planete-sciences",
+        "displayName": "Planète Sciences",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/boutiques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "50316e43-4656-4614-83c1-3873a67be51a",
+        "entityKey": "vulcania-planete-vulcania",
+        "displayName": "Planète Vulcania",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/boutiques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "106e3128-12e9-40be-bb48-5f6457caaabf",
+        "entityKey": "vulcania-corner-espace",
+        "displayName": "Corner Espace du Planétarium",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/boutiques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc1f445e-5eea-4897-a4ef-c25a476c2552",
+        "entityKey": "vulcania-rapaces",
+        "displayName": "Rapaces en vol libre",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/presentation-de-rapaces-en-vol-libre/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1de4edb7-e37e-4860-a7bb-feae2681de83",
+        "entityKey": "vulcania-yapadrisk",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/yapadrisk-flamme-des-volcans/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "76983fb0-c8b5-4289-aedc-fb7191d23c02",
+        "entityKey": "vulcania-primordia",
+        "displayName": "Primordia, la naissance du monde",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2026"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1080"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b630f3c9-580c-47ea-80bc-0f9920c55270",
+        "entityKey": "vulcania-contes",
+        "displayName": "Contes et légendes volcaniques",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/contes-et-legendes-volcaniques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "62b517b3-21e3-41a7-af0b-d825a3105860",
+        "entityKey": "vulcania-experiences-show",
+        "displayName": "Expériences, c’est show !",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/experiences-cest-show/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "15e00cab-790a-4665-aeb2-9856c8e9b93e",
+        "entityKey": "vulcania-cratere-anime",
+        "displayName": "Le cratère s’anime !",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/le-cratere-sanime/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9e6b9c14-41bc-4eb5-a51d-eae9394a8e66",
+        "entityKey": "vulcania-danse-pitoufeu",
+        "displayName": "Danse de Pitoufeu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "MeetAndGreet"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/photo-avec-pitoufeu-et-ses-amis/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1200"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1aaee5b9-acf7-427f-86c6-c246f32e6cbd",
+        "entityKey": "vulcania-cent-volcans",
+        "displayName": "100% volcans",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/100-pour-cent-volcans/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7cf0360c-e687-435b-8759-ffd1ffabfaa7",
+        "entityKey": "vulcania-ateliers-planetarium",
+        "displayName": "Ateliers du Planétarium",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/plan-du-parc/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2a592278-988a-4e4d-8206-0be8cf3061aa",
+        "entityKey": "vulcania-ateliers-volcans",
+        "displayName": "Ateliers des volcans",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/plan-du-parc/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4a56ce22-555d-4134-93de-2d73a435d8c0",
+        "entityKey": "vulcania-planete-devoilee",
+        "displayName": "Planète dévoilée",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/planete-devoilee/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "76292219-94a3-435f-8a55-39b99d5f81c4",
+        "entityKey": "vulcania-cest-pas-sorcier",
+        "displayName": "C’est pas sorcier les volcans !",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/cest-pas-sorcier-les-volcans/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "0f39c1be-ad52-4349-b4d3-c8b2d3064da4",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:29:20.1021714Z",
+    "appliedAtUtc": "2026-11-15T15:29:20.1021724Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 21,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+        "entityKey": "vulcania-comptoir-cratere",
+        "displayName": "Le Comptoir du cratère",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/comptoir-du-cratere/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "26f977fb-834f-41df-9705-60846988a756",
+        "entityKey": "vulcania-cafeteria-puys",
+        "displayName": "La Cafétéria des Puys",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/cafeteria-des-puys/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+        "entityKey": "vulcania-magma-cafe",
+        "displayName": "Le Magma café",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/magma-cafe/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1f3ce41f-f763-4389-b823-eb4a13816111",
+        "entityKey": "vulcania-snack-planetarium",
+        "displayName": "Le Snack du Planétarium",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/snack-du-planetarium/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+        "entityKey": "vulcania-kiosque-namazu",
+        "displayName": "Le Kiosque Namazu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Restaurant"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Snack"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/kiosque-namazu/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52885720-2ed0-4d51-b940-33e955b2df3f",
+        "entityKey": "vulcania-planete-auvergne",
+        "displayName": "Planète Auvergne",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/boutiques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+        "entityKey": "vulcania-planete-sciences",
+        "displayName": "Planète Sciences",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/boutiques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+        "entityKey": "vulcania-planete-vulcania",
+        "displayName": "Planète Vulcania",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/boutiques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+        "entityKey": "vulcania-corner-espace",
+        "displayName": "Corner Espace du Planétarium",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/boutiques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6c8ed372-384b-4dab-8395-696f62e48db8",
+        "entityKey": "vulcania-rapaces",
+        "displayName": "Rapaces en vol libre",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/presentation-de-rapaces-en-vol-libre/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "entityKey": "vulcania-yapadrisk",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/yapadrisk-flamme-des-volcans/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba34b618-1876-4355-b842-2d10f6975525",
+        "entityKey": "vulcania-primordia",
+        "displayName": "Primordia, la naissance du monde",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2026"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1080"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+        "entityKey": "vulcania-contes",
+        "displayName": "Contes et légendes volcaniques",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/contes-et-legendes-volcaniques/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+        "entityKey": "vulcania-experiences-show",
+        "displayName": "Expériences, c’est show !",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/experiences-cest-show/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+        "entityKey": "vulcania-cratere-anime",
+        "displayName": "Le cratère s’anime !",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/le-cratere-sanime/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+        "entityKey": "vulcania-danse-pitoufeu",
+        "displayName": "Danse de Pitoufeu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "MeetAndGreet"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/photo-avec-pitoufeu-et-ses-amis/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1200"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+        "entityKey": "vulcania-cent-volcans",
+        "displayName": "100% volcans",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/100-pour-cent-volcans/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+        "entityKey": "vulcania-ateliers-planetarium",
+        "displayName": "Ateliers du Planétarium",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/plan-du-parc/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+        "entityKey": "vulcania-ateliers-volcans",
+        "displayName": "Ateliers des volcans",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/plan-du-parc/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+        "entityKey": "vulcania-planete-devoilee",
+        "displayName": "Planète dévoilée",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/planete-devoilee/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "entityKey": "vulcania-cest-pas-sorcier",
+        "displayName": "C’est pas sorcier les volcans !",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/cest-pas-sorcier-les-volcans/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.durationInSeconds",
+            "oldValue": null,
+            "newValue": "1800"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : 21 offres actuelles privées ajoutées, cinq points de restauration, quatre boutiques et douze spectacles ou animations; salles et programmes rapprochés, aucune date ou position inventée.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "21 named seasonal offers:5 food outlets,4 shops,7 shows/meet-and-greet,2 workshop areas,100%volcans collaborative animation (NOT static exhibition),2 distinct presented programmes at shared B30. Current official pages personally read, map2026 inspected. Ateliers names group official programmes into their named venue, not one duplicated room per session. Planète dévoilée and C’est pas sorcier have separate named experiences/pages, same mapcodeB30; no invented separate theatre or GPS. Shared A22 for Yapadrisk/Primordia likewise. Seasonal no-show days and Snack/Kiosque banners Fermé are not permanent closures: Kiosque banner says reopening20October with2026menu, no invented actual reopening day or2027schedule. Four shops explicitly named despite stale discount paragraph sayingthree. Dates/capacities/GPS/manufacturers unknown retained empty. Under18/age restrictions and durations with varying programmes kept for separate qualification. All private before8languagewriting/audit. No duplicate physical cinema for films. Historical offer and public services inventory still pending."
+}

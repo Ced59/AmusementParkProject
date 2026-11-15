@@ -38047,7 +38047,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T14:37:00.731Z",
+      "lastDataIntegrationAt": "2026-11-15T15:29:20.102Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38068,6 +38068,26 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
           "auditEvidence": null,
           "summary": "Namazu privé : ouverture corrigée au10juillet2021 et modèle Multi Dimension Launch Coaster selon Intamin14juillet2021 ; ancien ID, constructeur et dimensions conservés. Aucun audit final ni publication."
+        },
+        {
+          "eventId": "apply-b0c3e3b7-8795-43b7-a67f-74218cb44502",
+          "appliedAt": "2026-11-15T15:27:40.034Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-03-current-attractions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : 22 lieux actuels privés créés après rapprochement du plan et des sources officielles, Namazu conservé avec restriction120cm; descriptions, inventaire historique et audit restent à traiter."
+        },
+        {
+          "eventId": "apply-0f39c1be-ad52-4349-b4d3-c8b2d3064da4",
+          "appliedAt": "2026-11-15T15:29:20.102Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-04-current-offers-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : 21 offres actuelles privées ajoutées, cinq points de restauration, quatre boutiques et douze spectacles ou animations; salles et programmes rapprochés, aucune date ou position inventée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38120,7 +38140,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-a2322d06-a575-48de-9f8b-4ce06599503c ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-0f39c1be-ad52-4349-b4d3-c8b2d3064da4 ; conserver les références de découverte."
       }
     },
     {
