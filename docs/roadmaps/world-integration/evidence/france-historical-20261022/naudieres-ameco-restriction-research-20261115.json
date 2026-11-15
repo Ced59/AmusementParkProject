@@ -1,0 +1,363 @@
+{
+  "documentType": "PublicSourceResearchNoMutation",
+  "generatedAtUtc": "2026-11-15T09:56:27.253119Z",
+  "parkName": "Les Naudières",
+  "parkIdentityFromWorkingState": {
+    "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "id": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "name": "Parc des Naudières",
+    "countryCode": "FR"
+  },
+  "itemId": "fb84e11a-e735-40c2-ad0f-6a8055cbe456",
+  "itemName": "Maison Ameco",
+  "scope": "Maison Ameco only. Public source research and local evidence review. No PDE calls, Git, registry/repository edits, user contact, image import, or mutation.",
+  "conclusion": {
+    "identity": "Confirmed: existing Maison Ameco is a covered indoor exploration/play structure, listed by its own name on the official current catalogue and 2026 brochure, not Kids Land or Aquabully.",
+    "restriction": "Unresolved official-source contradiction; no definitive min/max age, height limit or accompanying-adult condition newly established.",
+    "chronology": "The under-five recommendation comes from a dated 2025 article still online, whereas the current catalogue is undated. There is no evidence of the effective date or direction of any change.",
+    "recommendedHandling": "Do not certify or publish a replacement age, reinterpret minimum as maximum, or infer age from photographed children. Preserve the contradiction and existing evidence for editorial review. The existing private MinAge10/High condition has a direct official quotation, but its certainty is undermined by the conflicting official article."
+  },
+  "baselineReadOnly": {
+    "visibility": false,
+    "adminReviewStatus": "ToReview",
+    "status": "Operating",
+    "isIndoor": true,
+    "existingAccessCondition": [
+      {
+        "type": "MinAge",
+        "typeKey": null,
+        "isCustom": null,
+        "customTypeKey": null,
+        "customTypeLabel": [],
+        "value": 10,
+        "unit": "Year",
+        "requiresAccompaniment": null,
+        "minimumCompanionAge": null,
+        "label": [
+          {
+            "languageCode": "fr",
+            "value": "Âge minimal : 10 ans."
+          },
+          {
+            "languageCode": "en",
+            "value": "Minimum age: 10 years."
+          },
+          {
+            "languageCode": "de",
+            "value": "Mindestalter: 10 Jahre."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Minimumleeftijd: 10 jaar."
+          },
+          {
+            "languageCode": "it",
+            "value": "Età minima: 10 anni."
+          },
+          {
+            "languageCode": "es",
+            "value": "Edad mínima: 10 años."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Minimalny wiek: 10 lat."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Idade mínima: 10 anos."
+          }
+        ],
+        "description": [],
+        "displayOrder": 1,
+        "provenanceSchemaVersion": 1,
+        "sourceKind": "Official",
+        "sourceUrl": "https://www.lesnaudieres.com/univers-parc/",
+        "sourceReference": null,
+        "collectedAtUtc": "2026-10-19T22:26:10.588Z",
+        "verifiedAtUtc": "2026-10-19T22:26:10.588Z",
+        "sourceLanguageCode": "fr",
+        "sourceSummary": [
+          {
+            "languageCode": "fr",
+            "value": "Âge minimal : 10 ans."
+          },
+          {
+            "languageCode": "en",
+            "value": "Minimum age: 10 years."
+          },
+          {
+            "languageCode": "de",
+            "value": "Mindestalter: 10 Jahre."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Minimumleeftijd: 10 jaar."
+          },
+          {
+            "languageCode": "it",
+            "value": "Età minima: 10 anni."
+          },
+          {
+            "languageCode": "es",
+            "value": "Edad mínima: 10 años."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Minimalny wiek: 10 lat."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Idade mínima: 10 anos."
+          }
+        ],
+        "sourceConfidence": "High",
+        "scope": "Attraction",
+        "scopeDetail": null,
+        "effectiveFrom": null,
+        "effectiveTo": null
+      }
+    ],
+    "existingIdsPreserved": true
+  },
+  "chronology": [
+    {
+      "period": "2017",
+      "evidence": "Existing operator brochure, dated by its 2017 issue/tariffs, lists Maison Ameco / Ameco House.",
+      "source": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+      "supports": "Historical named presence, not first opening date or age rule.",
+      "ageEvidence": null
+    },
+    {
+      "period": "2020/04 upload path",
+      "evidence": "Three official gallery files are served under a 2020/04 upload folder and associated with Maison Ameco on Exploration.",
+      "supports": "Photograph identity and visible decor; upload path is not a capture date.",
+      "ageEvidence": null
+    },
+    {
+      "period": "2025-05-30 / 2025-06-03",
+      "evidence": "Official Printemps au Parc des Naudières Article JSON-LD datePublished=2025-05-30T12:58:09+00:00; dateModified=2025-06-03T16:03:50+00:00.",
+      "quote": "Moins de 5 ans : Mini-ferme, Kids Land, embarcation d’exploration, Maison Ameco",
+      "interpretation": "Promotional grouping of suitable activities, not an explicit formal maximum-age restriction. It is nevertheless incompatible with treating a minimum age of10 as unambiguously established.",
+      "source": "https://www.lesnaudieres.com/printemps-au-parc-des-naudieres/"
+    },
+    {
+      "period": "2026 brochure",
+      "evidence": "Official PDF title flyer-3 volets-10x21cm-2026.indd; creation 2026-02-11 09:39:20+01:00, modification09:39:36+01:00; HTTP Last-Modified2026-03-24T11:19:47Z. These are file metadata, not attraction-event dates.",
+      "quote": "10 - Maison Ameco",
+      "interpretation": "Listed as attraction number10 in green Exploration category.10 is the map number, not an age. The brochure specifies height limits for other rides but no age/height restriction for Ameco. Full page2 visually reviewed.",
+      "source": "https://www.lesnaudieres.com/wp-content/uploads/2026/03/Brochure-Parc-des-Naudieres-2026.pdf"
+    },
+    {
+      "period": "2026-11-15 observed current catalogue",
+      "evidence": "Preserved official Exploration page retrieved08:24:44.920271Z; current web index corroborates the same wording. No publication/modification date in CollectionPage metadata.",
+      "quote": "Une maison à l’abri de la pluie composé de jeux d’exploration, de balles, de grimpe … • Âge minimum 10 ans",
+      "interpretation": "The text is explicitly attached to Maison Ameco; it is not a wrong search-snippet attribution. The repeated Univers catalogue is the same official content, not an independent rule confirmation.",
+      "source": "https://www.lesnaudieres.com/univers/exploration/"
+    },
+    {
+      "period": "2026-11-15 current regulation",
+      "evidence": "Official park règlement intérieur fetched09:54:42.575207Z.",
+      "quote": "Les mineurs restent en permanence sous la responsabilité et la surveillance d’un adulte. Les visiteurs sont priés de respecter les consignes de sécurité de chaque attraction",
+      "interpretation": "General supervision and attraction-specific instructions; no Ameco-specific age or requirement for adult entry into the play structure.",
+      "source": "https://www.lesnaudieres.com/reglement-interieur/"
+    }
+  ],
+  "qualifiedPhysicalDescription": {
+    "sourceAssociation": "Three photos embedded under Maison Ameco on official Exploration catalogue; personally inspected again in this research.",
+    "observed": [
+      "Covered play structure with blue mesh, tubular supports wrapped in yellow/blue padding and passages at different heights.",
+      "Red-and-white cylindrical play element with yellow handles on a circular blue base; orange hanging handles visible in another plane.",
+      "Blue padded inclined passage with red/yellow/green footholds and a round blue opening."
+    ],
+    "notEstablished": [
+      "No readable age-restriction sign in the three official photos.",
+      "No manufacturer/model inferred from the Ameco name.",
+      "No exact floor count or equipment capacity inferred.",
+      "No photographed child age inferred.",
+      "No first opening, modification, replacement or effective restriction date established."
+    ]
+  },
+  "importantDistinctions": [
+    "The separate sentence « Réservé aux enfants de moins de5ans » on Exploration belongs to Aquabully, not Maison Ameco. Search snippets can juxtapose these records misleadingly. The real under-five contradiction is the separate Printemps article.",
+    "The brochure marker10 does not validate an age restriction. The catalogue literally says minimum10 independently, so no claim of a proven data-entry mix-up is made.",
+    "Official catalogue presence supports named inclusion in the current offer, not an invented first-open date. No inferred reopening or closure.",
+    "The two official catalogue views can share one content source; counting them twice does not resolve contradiction.",
+    "An older article still online is not proof the current catalogue changed later. No dated change notice found."
+  ],
+  "researchLimits": {
+    "searchQueries": [
+      "site:lesnaudieres.com \"Ameco\"",
+      "\"Maison Ameco\" \"ans\"",
+      "\"Ameco\" \"Naudières\" \"moins\"",
+      "\"Ameco\" \"Naudières\" \"maximum\"",
+      "site:lesnaudieres.com \"Ameco\" \"2020\"",
+      "site:lesnaudieres.com \"Maison Ameco\" -univers -printemps -pdf",
+      "\"maison ameco\" \"interdit\""
+    ],
+    "result": "No official dated correction, attraction-specific regulation, legible posted restriction or verifiable effective-date announcement found in the public sources reviewed.",
+    "archives": "Existing CDX mentions an Ameco page capture in2007; archived content was not read in this task. No replay attempted because prior research documented Wayback429, and no bypass was used.",
+    "thirdParty": "Third-party leisure listings mention children/three storeys but do not resolve the official-age conflict; no third-party number promoted to a rule.",
+    "photos": "Three existing official images reviewed without editing or new downloads. No image imported.990128-byteDSC02244-2 still exceeds960KiB and remains a research original."
+  },
+  "sourceEvidence": [
+    {
+      "url": "https://www.lesnaudieres.com/univers/exploration/",
+      "localPath": "/workspace/france-historical-20261114/naudieres/exploration-current.html",
+      "bytes": 90231,
+      "sha256": "972a5e367c8967b3a427b0cbb78af67ac274cea744fc382bbbba6553957c3288",
+      "readAtUtc": "2026-11-15T09:56:27.253119Z",
+      "accessReceipt": {
+        "name": "exploration-current",
+        "url": "https://www.lesnaudieres.com/univers/exploration/",
+        "finalUrl": "https://www.lesnaudieres.com/univers/exploration/",
+        "status": 200,
+        "retrievedAtUtc": "2026-11-15T08:24:44.920271+00:00",
+        "bytes": 90231,
+        "sha256": "972a5e367c8967b3a427b0cbb78af67ac274cea744fc382bbbba6553957c3288"
+      },
+      "notes": "Reused preserved official HTML; no new fetch. CollectionPage has no datePublished/dateModified."
+    },
+    {
+      "url": "https://www.lesnaudieres.com/printemps-au-parc-des-naudieres/",
+      "localPath": "/workspace/france-historical-20261114/naudieres/spring-ameco-current.html",
+      "bytes": 66139,
+      "sha256": "c6ba8095bc942c4fd15f00e87d4bcef672df76cd2c691918eaa58bd05a1edf73",
+      "readAtUtc": "2026-11-15T09:56:27.253119Z",
+      "accessReceipt": {
+        "url": "https://www.lesnaudieres.com/printemps-au-parc-des-naudieres/",
+        "finalUrl": "https://www.lesnaudieres.com/printemps-au-parc-des-naudieres/",
+        "status": 200,
+        "retrievedAtUtc": "2026-11-15T08:31:52.955690Z",
+        "sha256": "c6ba8095bc942c4fd15f00e87d4bcef672df76cd2c691918eaa58bd05a1edf73",
+        "observation": "La page de printemps classe encore Maison Ameco parmi les moins de cinq ans. Le catalogue Exploration indique dix ans minimum. Contradiction actuelle confirmée ; aucun âge certain fabriqué, fiche maintenue privée."
+      },
+      "notes": "Reused preserved official HTML. Article published 2025-05-30T12:58:09+00:00, modified 2025-06-03T16:03:50+00:00."
+    },
+    {
+      "url": "https://www.lesnaudieres.com/reglement-interieur/",
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-ameco-20261115/official-regulations.html",
+      "bytes": 58625,
+      "sha256": "b0288beff08a110aa02c943ec52141c57e1086118e145e3c40802b9cd7811c5b",
+      "readAtUtc": "2026-11-15T09:56:27.253119Z",
+      "accessReceipt": {
+        "url": "https://www.lesnaudieres.com/reglement-interieur/",
+        "attemptedAtUtc": "2026-11-15T09:54:42.575207Z",
+        "status": 200,
+        "finalUrl": "https://www.lesnaudieres.com/reglement-interieur/",
+        "contentType": "text/html; charset=UTF-8",
+        "lastModified": null,
+        "retryAfter": null,
+        "bytes": 58625,
+        "sha256": "b0288beff08a110aa02c943ec52141c57e1086118e145e3c40802b9cd7811c5b",
+        "localPath": "/workspace/france-historical-20261114/naudieres/parallel-ameco-20261115/official-regulations.html"
+      },
+      "notes": null
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2026/03/Brochure-Parc-des-Naudieres-2026.pdf",
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-ameco-20261115/official-brochure-2026.pdf",
+      "bytes": 5330215,
+      "sha256": "d2a0bacaa9efea137c9b9c3cc39d34f542cb55b9ae324b0bd37bf946691fe0d5",
+      "readAtUtc": "2026-11-15T09:56:27.253119Z",
+      "accessReceipt": {
+        "url": "https://www.lesnaudieres.com/wp-content/uploads/2026/03/Brochure-Parc-des-Naudieres-2026.pdf",
+        "attemptedAtUtc": "2026-11-15T09:54:44.701342Z",
+        "status": 200,
+        "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2026/03/Brochure-Parc-des-Naudieres-2026.pdf",
+        "contentType": "application/pdf",
+        "lastModified": "Tue, 24 Mar 2026 11:19:47 GMT",
+        "retryAfter": null,
+        "bytes": 5330215,
+        "sha256": "d2a0bacaa9efea137c9b9c3cc39d34f542cb55b9ae324b0bd37bf946691fe0d5",
+        "localPath": "/workspace/france-historical-20261114/naudieres/parallel-ameco-20261115/official-brochure-2026.pdf",
+        "pdfMetadata": {
+          "format": "PDF 1.6",
+          "title": "flyer-3 volets-10x21cm-2026.indd",
+          "author": "",
+          "subject": "",
+          "keywords": "",
+          "creator": "Adobe InDesign 21.2 (Windows)",
+          "producer": "Adobe PDF Library 18.0",
+          "creationDate": "D:20260211093920+01'00'",
+          "modDate": "D:20260211093936+01'00'",
+          "trapped": "",
+          "encryption": null
+        }
+      },
+      "notes": null
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC09142-scaled-1707xauto_0_1.jpg",
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/ameco-DSC09142.jpg",
+      "bytes": 516438,
+      "sha256": "340226d78aa7d4c3b5ba686322e532086efa95950c29b3a40ab930935eb5f266",
+      "readAtUtc": "2026-11-15T09:56:27.253119Z",
+      "accessReceipt": {
+        "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC09142-scaled-1707xauto_0_1.jpg",
+        "attemptedAtUtc": "2026-11-15T09:45:19.168467Z",
+        "status": 200,
+        "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC09142-scaled-1707xauto_0_1.jpg",
+        "contentType": "image/jpeg",
+        "bytes": 516438,
+        "sha256": "340226d78aa7d4c3b5ba686322e532086efa95950c29b3a40ab930935eb5f266",
+        "retryAfter": null
+      },
+      "notes": "Existing file reused; image upload folder date is not capture date. No image transformed or imported."
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02243-1-scaled-1707xauto_0_1.jpg",
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/ameco-DSC02243-1.jpg",
+      "bytes": 355236,
+      "sha256": "6ac15c642f5d028fd5bb6d3ed3aa510fcc657592d607d255f90b02ea9712739e",
+      "readAtUtc": "2026-11-15T09:56:27.253119Z",
+      "accessReceipt": {
+        "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02243-1-scaled-1707xauto_0_1.jpg",
+        "attemptedAtUtc": "2026-11-15T09:45:20.254096Z",
+        "status": 200,
+        "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02243-1-scaled-1707xauto_0_1.jpg",
+        "contentType": "image/jpeg",
+        "bytes": 355236,
+        "sha256": "6ac15c642f5d028fd5bb6d3ed3aa510fcc657592d607d255f90b02ea9712739e",
+        "retryAfter": null
+      },
+      "notes": "Existing file reused; image upload folder date is not capture date. No image transformed or imported."
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02244-2-scaled-1707xauto_0_1.jpg",
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/ameco-DSC02244-2.jpg",
+      "bytes": 990128,
+      "sha256": "e14e337f2d81bda1f72ceb9ecc317c0aba501c2cfadc81869efaf44013a0f22a",
+      "readAtUtc": "2026-11-15T09:56:27.253119Z",
+      "accessReceipt": {
+        "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02244-2-scaled-1707xauto_0_1.jpg",
+        "attemptedAtUtc": "2026-11-15T09:45:20.485919Z",
+        "status": 200,
+        "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02244-2-scaled-1707xauto_0_1.jpg",
+        "contentType": "image/jpeg",
+        "bytes": 990128,
+        "sha256": "e14e337f2d81bda1f72ceb9ecc317c0aba501c2cfadc81869efaf44013a0f22a",
+        "retryAfter": null
+      },
+      "notes": "Existing file reused; image upload folder date is not capture date. No image transformed or imported."
+    },
+    {
+      "url": "https://www.triplancar.com/sites/triplancar.com/files/lieu/825/brochurenaudieres2017.pdf",
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+      "bytes": 13287847,
+      "sha256": "9829a212ef04ca56991c9c86c6a01b35b276dc214fb99bf8d33272213f19f1c4",
+      "readAtUtc": "2026-11-15T09:56:27.253119Z",
+      "accessReceipt": {
+        "url": "https://www.triplancar.com/sites/triplancar.com/files/lieu/825/brochurenaudieres2017.pdf",
+        "attemptedAtUtc": "2026-11-15T09:40:00.046256Z",
+        "status": 200,
+        "finalUrl": "https://www.triplancar.com/sites/triplancar.com/files/lieu/825/brochurenaudieres2017.pdf",
+        "contentType": "application/pdf",
+        "bytes": 13287847,
+        "sha256": "9829a212ef04ca56991c9c86c6a01b35b276dc214fb99bf8d33272213f19f1c4",
+        "retryAfter": null
+      },
+      "notes": "Existing file reused; image upload folder date is not capture date. No image transformed or imported."
+    }
+  ],
+  "mutationPerformed": false
+}

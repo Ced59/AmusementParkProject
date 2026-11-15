@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "kind": "public-research-only",
+  "createdAtUtc": "2026-11-15T09:44:26.032797+00:00",
+  "entryId": "FR-candidate-fa6227365b97a9",
+  "parkId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+  "name": "Parc de la Cabosse",
+  "locality": "Jurques, Calvados, France",
+  "identityDecision": "Ancien parc de loisirs indépendant de La Cabosse, ouvert en mai 1970 et site reconverti en zoo en 1977. Dottignies n’est pas sa localité. Zoo de Jurques/ancienne appellation zoologique Cabosse et Festyland à Bretteville-sur-Odon restent des identités distinctes.",
+  "mutations": {
+    "apiCalls": 0,
+    "imports": 0,
+    "registriesEdited": 0,
+    "gitCommands": 0,
+    "messagesSentToThirdParties": 0,
+    "imagesAltered": 0
+  },
+  "baselineFilesRead": [
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-reservation.json",
+      "sha256": "5b275a1b17f5cd64d436187fbbeabcdfe5007f60a340b7169e914de3efd4a03e",
+      "bytes": 1034
+    },
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-intake.json",
+      "sha256": "76a0e5d1855d32af67459ac72ad9fd4456531d85e687805c85ec531d192d0fde",
+      "bytes": 5091
+    },
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-source-gaps.json",
+      "sha256": "ea678fe291ec2bcbd561cd10050634d8cd6150d3165e81a74b171f8cdc6f1e89",
+      "bytes": 7566
+    },
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-progress-audit.json",
+      "sha256": "26a14d646e932f06318c9252031a65a29d11c2cc7c1cbbfd0a2043a79c3be6ac",
+      "bytes": 18779
+    },
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-receipts.json",
+      "sha256": "a5cda269afc70c784733916fb0391f19999e0c45e16cea9d7ec8c065d66a14e2",
+      "bytes": 5584
+    }
+  ],
+  "lastActualIntegrationAtPreserved": "2026-11-02T14:56:30.390Z",
+  "priorState": {
+    "items": 12,
+    "itemsDescribedIn8Languages": 2,
+    "itemPhotos": 1,
+    "private": true,
+    "oldProjectedScore": 75,
+    "oldApiBlockers": [
+      "media.logo-required"
+    ],
+    "newScoreCalculated": false
+  },
+  "outcome": "No new authenticated amusement-park logo, direct item photo, or primary item-detail source found in this bounded public search. No data integration justified.",
+  "targets": [
+    {
+      "itemId": "6dab9d49-75e9-4a88-93f1-bbab86e0c327",
+      "name": "Autorail",
+      "newPrimaryEvidence": false,
+      "newUsablePhoto": false,
+      "decision": "Les recherches ramènent à la liste secondaire Wikipédia et à ses reprises. Aucun détail nouveau corroboré pour rédiger une notice spécifique ou identifier une photo."
+    },
+    {
+      "itemId": "978c645e-7407-4189-b54b-99f47ee79600",
+      "name": "Bicyclettes humoristiques",
+      "newPrimaryEvidence": false,
+      "newUsablePhoto": false,
+      "decision": "Les recherches ramènent à la liste secondaire Wikipédia et à ses reprises. Aucun détail nouveau corroboré pour rédiger une notice spécifique ou identifier une photo."
+    },
+    {
+      "itemId": "39aff3cc-0b25-4341-ad37-a91431345d9a",
+      "name": "Bowling",
+      "newPrimaryEvidence": false,
+      "newUsablePhoto": false,
+      "decision": "Les recherches ramènent à la liste secondaire Wikipédia et à ses reprises. Aucun détail nouveau corroboré pour rédiger une notice spécifique ou identifier une photo."
+    },
+    {
+      "itemId": "6acc1f50-7b60-4916-a390-2b7f4291b95a",
+      "name": "Jeux en bois",
+      "newPrimaryEvidence": false,
+      "newUsablePhoto": false,
+      "decision": "Les recherches ramènent à la liste secondaire Wikipédia et à ses reprises. Aucun détail nouveau corroboré pour rédiger une notice spécifique ou identifier une photo."
+    },
+    {
+      "itemId": "003fa2b3-f9cc-417b-a4c9-6a9d5071ec34",
+      "name": "Mini kartings électriques",
+      "newPrimaryEvidence": false,
+      "newUsablePhoto": false,
+      "decision": "Les recherches ramènent à la liste secondaire Wikipédia et à ses reprises. Aucun détail nouveau corroboré pour rédiger une notice spécifique ou identifier une photo."
+    }
+  ],
+  "newSourceReviews": [
+    {
+      "url": "https://www.ebay.fr/itm/227535114396",
+      "sourceType": "public sales listing with historical postcard scans",
+      "readVia": "public web parser; execution fetch landed on a challenge and was not retried",
+      "imageReceipts": [
+        {
+          "url": "https://i.ebayimg.com/images/g/KEQAAeSwAfRqs0qq/s-l1600.webp",
+          "status": 200,
+          "retrievedAtUtc": "2026-11-15T09:40:32.657195+00:00",
+          "sha256": "65bdcd29a89994de6ae383d9edc982d19138f37366d1cdc4c8a9fc735b161d75",
+          "bytes": 580642,
+          "file": "ebay-card-front.webp"
+        },
+        {
+          "url": "https://i.ebayimg.com/images/g/-6AAAeSwAkJqs0qq/s-l1600.webp",
+          "status": 200,
+          "retrievedAtUtc": "2026-11-15T09:40:33.414615+00:00",
+          "sha256": "28fdf92fd3eb107c38ef6e55615d929b13ba88321cd9a0b0fa944b6badad82ae",
+          "bytes": 199378,
+          "file": "ebay-card-back.webp"
+        }
+      ],
+      "visualReviewComplete": true,
+      "finding": "Recto : neuf vues animalières et titre nos amis des zoos. Verso : localisation Jurques D577, offre d’entrée gratuite pour enfant accompagné, aucun millésime ou inventaire d’attractions.",
+      "decision": "Exclu comme preuve du parc d’attractions 1970–1977 ; document zoologique sans date établie, ni logo autonome du parc historique. Ne pas attribuer les animaux aux 12 items historiques, ne pas dater arbitrairement la carte.",
+      "license": null
+    },
+    {
+      "url": "https://www.zoodejurques.fr/histoire-du-zoo/",
+      "receipt": "zoo-history-fetch.json",
+      "finding": "Page officielle relue HTTP 200. Images et légendes : zoo de Lessay 1970, Auguste/Thérèse Ourry, première publicité zoo 1977. Aucun détail nouveau sur les cinq attractions ciblées.",
+      "decision": "Reconversion et successeur seulement ; ne pas transférer les images de Lessay, logo ou équipements actuels au parc historique."
+    },
+    {
+      "url": "https://www.paysdevire-normandie-tourisme.fr/histoire-du-zoo-de-jurques/",
+      "receipt": "tourism-history-fetch.json",
+      "finding": "Page actuelle relue HTTP 200. Continue à nommer le prédécesseur Festyland et à présenter un déménagement vers Bretteville-sur-Odon en 1977.",
+      "decision": "Confusion rétrospective déjà documentée ; aucune fusion d’identités ou date de transfert d’attraction adoptée."
+    },
+    {
+      "url": "https://parcsdattractions.blogspot.com/2012/01/",
+      "receipt": "blog-2012-fetch.json",
+      "finding": "Index public reprend les mêmes noms d’attractions sans preuve primaire indépendante. Fetch local redirige vers consentement Google, pas de contournement.",
+      "decision": "Pas de corroboration primaire, aucune matière nouvelle."
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:CarteDeVisiteParcLaCabosse.jpg",
+      "finding": "Description publique relue : carte 1970 Cridam, original 2796×1846 et 1502726 octets, CC BY-SA 3.0 entre autres licences. Même document déjà connu, pas logo autonome. Tentative binaire locale 403, arrêt.",
+      "decision": "Aucun recadrage, recompression, reconstruction ou import ; anciennes preuves et refus conservés."
+    }
+  ],
+  "concreteRemainingLeads": [
+    {
+      "source": "Ouest-France, 29 août 1970",
+      "title": "À la Cabosse, paradis des enfants… les chevaux de bois sont centenaires",
+      "why": "Référence primaire précise citée par la source secondaire ; pourrait documenter l’attraction et des vues contemporaines.",
+      "status": "Original non consulté. Service officiel de demande d’archives identifié et lu via recherche publique ; accès local403. Service payant, aucun formulaire envoyé ni contact effectué.",
+      "publicService": "https://demande-archive.ouest-france.fr/",
+      "notClaimed": "Ne pas traiter la citation bibliographique comme lecture de l’article."
+    },
+    {
+      "source": "Archives Le Bocage Libre",
+      "status": "Référence trop vague, numéro/date/article non identifiés. Aucun original consulté. Les recherches de presse publique n’ont pas fourni de scan de la période du parc.",
+      "notClaimed": "Ne pas confondre Le Bocage Libre, La Voix du Bocage ou titres anciens homonymes ; aucun détail de notice dérivé de cette référence seule."
+    }
+  ],
+  "explicitExclusions": [
+    "Dottignies : aucune identité locale correspondant à cette entrée ; FR prouve Jurques.",
+    "Bayeux Aventure : image de parcours en filets renvoyée par recherche d’images, autre parc, exclue.",
+    "Zoo de Jurques/La Cabosse : cartes animalières, logos, plans, prix et horaires actuels ne prouvent pas l’inventaire du parc indépendant.",
+    "Zoo de Lessay : vues officielles de 1970 concernent un autre site.",
+    "Festyland : récit touristique de déménagement non adopté sans corroboration.",
+    "La Cabosse chocolateries, mots communs et village fictif du film Tout l’or du monde : hors sujet.",
+    "Ancienne image Carousel-cabosse.jpg : scène de rue anciennement exclue, non réhabilitée.",
+    "BRGM/cartes de mine : ni plan visiteur ni preuve de position d’attraction."
+  ],
+  "searchEvidence": "public-search-results.json",
+  "nextActions": [
+    "Ne pas relancer l’import Surf Racing déjà intégré ni fabriquer un logo depuis la carte.",
+    "Piste la plus précise : consultation autorisée de l’article Ouest-France du 29 août 1970 ou reproduction provenant de son détenteur ; aucun contact effectué dans ce sous-travail.",
+    "Maintenir les dix notices manquantes et le blocage logo documentés ; tolérance de note ne qualifie pas le contenu absent."
+  ]
+}

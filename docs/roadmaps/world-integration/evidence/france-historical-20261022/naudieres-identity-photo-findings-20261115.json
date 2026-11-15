@@ -1,0 +1,369 @@
+{
+  "documentType": "public-research-only",
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "parkName": "Parc des Naudières",
+  "generatedAtUtc": "2026-11-15T09:50:40.968835Z",
+  "scope": "Recherches publiques parallèles ; aucune action PARK_DATA_EDITOR, Git, registre, publication ou modification du working-state. Observations pour examen personnel du parent, pas de légendes finales.",
+  "baseline": {
+    "workingStatePath": "/workspace/france-historical-20261114/naudieres/working-state.json",
+    "selectedItemsReadAtUtc": "2026-11-15T09:50:40.968845Z",
+    "descriptionCounts": {
+      "La Dune": 0,
+      "Le Cheval gonflable": 0,
+      "Les Échasses": 0,
+      "Baby-foot humain": 0,
+      "Maison Ameco": 8
+    },
+    "note": "Les dates de nouveautés 2016/2017 sont déjà intégrées selon rapprochement parent ; aucun changement de dates proposé."
+  },
+  "qualifiedIdentity": [
+    {
+      "itemId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+      "name": "La Dune",
+      "confidence": "high: lettering visible on both photos, independent from filename",
+      "sourcePage": "https://www.lesnaudieres.com/univers/chateau-gonflable/",
+      "htmlEvidence": "Le carrousel collectif Les Aventuriers (rel galP[10895]) contient ces deux images. Le Dôme dispose de son propre carrousel et reste distinct. La Dune apparaît aussi séparément dans la liste des autres attractions.",
+      "photographs": [
+        "gonflable-dune-official.jpg",
+        "aventuriers-gonflables2.jpg"
+      ],
+      "visualObservations": [
+        "Grande inscription LA DUNE sur la structure, soleil souriant rouge/orange aux rayons jaunes au-dessus.",
+        "Enceinte gonflable bleue, jaune et orange avec filets latéraux et relief intérieur jaune/brun.",
+        "Dessins de cactus, serpent et scorpion sur les montants ; rampe avant gonflable visible sur la première vue.",
+        "Panneau à gauche de la première photo paraît lire La Dune de John : parent doit relire avant tout nouvel alias."
+      ],
+      "limits": [
+        "Ne pas lier au Dôme ni dupliquer la fiche existante.",
+        "La limite moins de 8 ans appartient au groupe Les Aventuriers ; ne pas la transposer automatiquement sans qualification propre.",
+        "La date /2023/02 du chemin de fichier ne prouve ni date de prise de vue ni ouverture.",
+        "Absence de constructeur, dimensions, date individuelle ou GPS vérifiés."
+      ]
+    }
+  ],
+  "candidatesForParentReview": [
+    {
+      "itemId": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+      "name": "Les Échasses",
+      "confidence": "name attested by official 2017 brochure; matching equipment visibly used in 2022 visitor photo",
+      "sourcePage": "https://www.trips-n-pics.com/parc-des-naudiegraveres.html",
+      "photographs": [
+        "tnp-314.jpg"
+      ],
+      "visualObservations": [
+        "Plusieurs visiteurs utilisent des échasses à longues tiges en bois et petits appuis pour les pieds sur la pelouse, près de la grande enceinte des trampolines.",
+        "Un petit groupe d’échasses est visible au premier plan à gauche."
+      ],
+      "limits": [
+        "Photo de contexte, appareil petit dans le cadre ; juger qualité pour illustration propre.",
+        "Présence historique 2017 et photo de reportage présenté comme 2022 ; pas de date de première ouverture ni confirmation actuelle déduite.",
+        "Ne pas déduire nombre disponible, matériau des petites fixations, âge ou taille minimum."
+      ]
+    },
+    {
+      "itemId": "19344a2e-b190-4cf9-8b86-3727f7de34d4",
+      "name": "Le Cheval gonflable",
+      "confidence": "probable visual match; current official list names Le cheval but photograph is contextual and no name sign is readable",
+      "sourcePages": [
+        "https://www.lesnaudieres.com/univers/chateau-gonflable/",
+        "https://www.trips-n-pics.com/parc-des-naudiegraveres.html"
+      ],
+      "photographs": [
+        "tnp-312.jpg"
+      ],
+      "visualObservations": [
+        "Derrière Grand Frisson, grande figure de cheval brun gonflable, avec crinière et tête au sommet, jambes encadrant une partie jaune.",
+        "Structure distincte du manège de chevaux Poney Trek."
+      ],
+      "limits": [
+        "Rapprochement à valider personnellement ; pas de panneau nominal lisible propre au cheval.",
+        "Aucune identité de modèle, fabricant, ouverture, capacité ou fonctionnement précis déduite.",
+        "Ne pas considérer la présence dans une photo présentée comme 2022 comme preuve de fonctionnement en 2026."
+      ]
+    },
+    {
+      "itemId": "fb84e11a-e735-40c2-ad0f-6a8055cbe456",
+      "name": "Maison Ameco",
+      "confidence": "photo association certain; age conflict remains unresolved",
+      "sourcePage": "https://www.lesnaudieres.com/univers/exploration/",
+      "photographs": [
+        "ameco-DSC09142.jpg",
+        "ameco-DSC02243-1.jpg",
+        "ameco-DSC02244-2.jpg"
+      ],
+      "visualObservations": [
+        "Intérieur d’une structure tubulaire rembourrée avec filets bleus, poteaux jaunes/bleus, passages à différents niveaux.",
+        "Cylindre rouge/blanc avec poignées jaunes et plateforme ronde bleue ; anneaux orange suspendus au plafond dans une vue.",
+        "Rampe bleue à prises rembourrées rouge, jaune et verte et anneau de passage bleu dans la troisième vue."
+      ],
+      "limits": [
+        "Ces images sous le titre Maison Ameco confirment le décor, pas la règle d’âge.",
+        "Aucun panneau d’âge suffisamment lisible ; ne pas déduire l’âge réel des enfants photographiés.",
+        "Conserver la contradiction moins de5ans de la page Printemps / âge minimum10ans de la page Exploration ; descriptions déjà présentes.",
+        "ameco-DSC02244-2.jpg fait990128octets, dépasse960KiB ; recherche seulement, aucun import sans variante native admissible et examen."
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "name": "Crazy",
+      "itemId": "85a1d9ff-0caf-410f-8e82-961221d66e3b",
+      "finding": "Pages officielles dédiées identifiées dans CDX (2008 s03p14_crazy.php ; 2011 s03p20_crazy.php). Premier replay2008 a répondu429 sans Retry-After, arrêté sans répétition ni contournement. Aucun contenu ou photographie nominative récupéré ; nom sur plan2017 seul insuffisant."
+    },
+    {
+      "name": "Baby-foot humain",
+      "itemId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+      "finding": "Liste officielle actuelle et compte rendu primaire A2R Été2026 attestent des parties. Les trois photos A2R montrent chaises volantes/coaster/pentagliss, aucune photo du babyfoot. Une partie du terrain avec joueurs est visible à l’extrême gauche de tnp314 mais trop petite pour une description physique complète ou illustration propre."
+    },
+    {
+      "name": "Tournesol / Balançoire horizontale / portiques",
+      "finding": "La photo Julesetmoa IMG9967 (visite mai2018 selon texte ; article juillet2018) montre quatre sièges-pneus suspendus sur armature tournante, avec volant central et panneau Tournez le volant. Auteur légende Chaises seulement. Ne pas attribuer arbitrairement à Tournesol ou Balançoire horizontale."
+    },
+    {
+      "name": "Tricycles / Vélos drôles",
+      "finding": "Julesetmoa IMG9981 montre véhicules à trois roues biplaces rouge/jaune, devant bâtiment avec panneau Tricycles partiellement visible à droite. L’image ne montre pas assez de panneau pour relier tout le matériel sans ambiguïté ; à examiner. Aucun fabricant ou mécanique détaillée déduit."
+    },
+    {
+      "name": "Home Ball, Le Duel, Zone51, Grand Défi, Gueule du loup, Arche des bambins, Aire des Bambinos",
+      "finding": "Brochure2017 confirme noms et nouveautés déjà enregistrées, mais leurs illustrations de plan sont graphiques, pas photographiques. Pas de description visuelle inventée à partir des pictogrammes."
+    }
+  ],
+  "sourceLimits": [
+    "Trips’n’Pics page dit dernière mise à jour avril2022 et titre de reportage avril2022, tandis que filenames contiennent20220626 : ne pas convertir le filename en date de prise de vue certaine.",
+    "Les photos associativesA2R ont des noms/chemins juin2026, mais compte rendu est titré Été2026 : pas de jour de prise de vue inventé.",
+    "Les sources secondaires comportent parfois erreurs géographiques/modèles et textes génériques : aucune assertion du moteur d’image sur type constructeur/loops/dates adoptée.",
+    "Vidéo officielle intégrée iyMJbupACG4 non accessible au navigateur de recherche ; pas de contournement."
+  ],
+  "sourceAccess": [
+    {
+      "url": "https://www.triplancar.com/sites/triplancar.com/files/lieu/825/brochurenaudieres2017.pdf",
+      "attemptedAtUtc": "2026-11-15T09:40:00.046256Z",
+      "status": 200,
+      "finalUrl": "https://www.triplancar.com/sites/triplancar.com/files/lieu/825/brochurenaudieres2017.pdf",
+      "contentType": "application/pdf",
+      "bytes": 13287847,
+      "sha256": "9829a212ef04ca56991c9c86c6a01b35b276dc214fb99bf8d33272213f19f1c4",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf"
+    },
+    {
+      "url": "https://www.lesnaudieres.com/univers/attraction-aventure/",
+      "attemptedAtUtc": "2026-11-15T09:45:13.192825Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/univers/attraction-aventure/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 77343,
+      "sha256": "3ce155fd3f9ffb909b81f9d13911d135f798264924046f39d389dd06e3b13442",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html"
+    },
+    {
+      "url": "https://nantes.a2r-insertion.fr/actualite/actualites-2026/",
+      "attemptedAtUtc": "2026-11-15T09:41:07.926758Z",
+      "status": 200,
+      "finalUrl": "https://nantes.a2r-insertion.fr/actualite/actualites-2026/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 145783,
+      "sha256": "bc4314fbea6cbbd255e50a6a907e8b455d55bd14492e9c07bf428d6edd8b109b",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/a2r-2026.html"
+    },
+    {
+      "url": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+      "attemptedAtUtc": "2026-11-15T09:47:14.821887Z",
+      "status": 200,
+      "finalUrl": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 49557,
+      "sha256": "ae1bd3b8fadffbf3ddad3508a8880bbcf7aad9b1f470021f182c8cbe5b1daf8c",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html"
+    },
+    {
+      "url": "https://www.trips-n-pics.com/parc-des-naudiegraveres.html",
+      "attemptedAtUtc": "2026-11-15T09:47:25.902098Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/parc-des-naudiegraveres.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 62682,
+      "sha256": "5df51b9772d4de95fb2a84372020449c5a4ee15ce427d607503531c38004e70b",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tripsnpics.html"
+    },
+    {
+      "url": "https://web.archive.org/web/20080207075155id_/http://www.lesnaudieres.com:80/fr/s03_attractions/s03p14_crazy.php",
+      "attemptedAtUtc": "2026-11-15T09:40:58.885879Z",
+      "status": 429,
+      "error": "HTTP Error 429: Too Many Requests",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/crazy-2008.html"
+    }
+  ],
+  "photographEvidence": [
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonflable-Dune-scaled-1920xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T09:44:20.887921Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonflable-Dune-scaled-1920xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 462731,
+      "sha256": "13ffde9defab04f1f3595a61f7c600fd6217c018346e80d40ab396412a63b00f",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/gonflable-dune-official.jpg",
+      "dimensions": {
+        "width": 1920,
+        "height": 1280
+      }
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonfables-2-scaled-1707xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T09:45:10.182364Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonfables-2-scaled-1707xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 775540,
+      "sha256": "54fe0b07ec8f1edc7448ac895c27a271dcd29949b48df2e64a8b06aaa58fba61",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/aventuriers-gonflables2.jpg",
+      "dimensions": {
+        "width": 1707,
+        "height": 2560
+      }
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/DJI_0534-scaled-1440xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T09:45:12.264747Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/DJI_0534-scaled-1440xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 506032,
+      "sha256": "28647fdd61fba2f71096faf03fd1839c3d7fe724700f201a15f6971626cbcff9",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/aventuriers-dji0534.jpg",
+      "dimensions": {
+        "width": 1440,
+        "height": 2560
+      }
+    },
+    {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/20220626-fr-naudiere-312_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T09:48:34.144831Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/20220626-fr-naudiere-312_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 421317,
+      "sha256": "842f90ef341b2f5975ba7434741caf049dbf50eb66a19181504b4d6802bc134c",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-312.jpg",
+      "dimensions": {
+        "width": 1067,
+        "height": 800
+      }
+    },
+    {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/20220626-fr-naudiere-314_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T09:48:35.241450Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/20220626-fr-naudiere-314_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 420045,
+      "sha256": "39f0ae1411f73a6b3dbf8d00d6ad9323896eca6999da84093fff1a1a04c03664",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-314.jpg",
+      "dimensions": {
+        "width": 1067,
+        "height": 800
+      }
+    },
+    {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/20220626-fr-naudiere-315_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T09:48:35.683931Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/20220626-fr-naudiere-315_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 398158,
+      "sha256": "8f81ee958614f4d67aff7bd068aa50a1aa7738b9df809747d78595248ad121f3",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-315.jpg",
+      "dimensions": {
+        "width": 1067,
+        "height": 800
+      }
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC09142-scaled-1707xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T09:45:19.168467Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC09142-scaled-1707xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 516438,
+      "sha256": "340226d78aa7d4c3b5ba686322e532086efa95950c29b3a40ab930935eb5f266",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/ameco-DSC09142.jpg",
+      "dimensions": {
+        "width": 1707,
+        "height": 2560
+      }
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02243-1-scaled-1707xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T09:45:20.254096Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02243-1-scaled-1707xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 355236,
+      "sha256": "6ac15c642f5d028fd5bb6d3ed3aa510fcc657592d607d255f90b02ea9712739e",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/ameco-DSC02243-1.jpg",
+      "dimensions": {
+        "width": 1707,
+        "height": 2560
+      }
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02244-2-scaled-1707xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T09:45:20.485919Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02244-2-scaled-1707xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 990128,
+      "sha256": "e14e337f2d81bda1f72ceb9ecc317c0aba501c2cfadc81869efaf44013a0f22a",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/ameco-DSC02244-2.jpg",
+      "dimensions": {
+        "width": 1707,
+        "height": 2560
+      }
+    },
+    {
+      "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJVL7EeQ_OOWW3HGJXx4EXU_MxYFTNRmDrXI2T9lxRjPM773nNOy-JkUM18gzMzQRmJ_0GS2DAbiEmqkaJiIVeU9T7Y8NXvO4xgt8hRb8-lzV6g5_f3nRgc7Y7BKglY4QKdBklQua1Vhcr/s1600/IMG_9967.jpg",
+      "attemptedAtUtc": "2026-11-15T09:47:50.089936Z",
+      "status": 200,
+      "finalUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJVL7EeQ_OOWW3HGJXx4EXU_MxYFTNRmDrXI2T9lxRjPM773nNOy-JkUM18gzMzQRmJ_0GS2DAbiEmqkaJiIVeU9T7Y8NXvO4xgt8hRb8-lzV6g5_f3nRgc7Y7BKglY4QKdBklQua1Vhcr/s1600/IMG_9967.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 740550,
+      "sha256": "71d48dd937637d302e344fb5241f015996419a546fe607391b5e769ddcc3af22",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9967.jpg",
+      "dimensions": {
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoXWs1Ln05UPoO2PQKOQg9HY82SlsED6dp_86u78MFS34U5idCoV8V7W9McIQeLnBw6uoP7BYP2ieDZ1rH4-1-krL_X5TWVlYZIynKP3-9yvGuy01KUrSNKUvuVcgMRhSl5sXKHsXf-0I4/s1600/IMG_9981.jpg",
+      "attemptedAtUtc": "2026-11-15T09:47:53.159074Z",
+      "status": 200,
+      "finalUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoXWs1Ln05UPoO2PQKOQg9HY82SlsED6dp_86u78MFS34U5idCoV8V7W9McIQeLnBw6uoP7BYP2ieDZ1rH4-1-krL_X5TWVlYZIynKP3-9yvGuy01KUrSNKUvuVcgMRhSl5sXKHsXf-0I4/s1600/IMG_9981.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 486876,
+      "sha256": "b8811b207c4e5ae3119dd50094ed2d0700fe38ba81ed8ef0edb6b57690e729da",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9981.jpg",
+      "dimensions": {
+        "width": 1200,
+        "height": 1600
+      }
+    }
+  ]
+}

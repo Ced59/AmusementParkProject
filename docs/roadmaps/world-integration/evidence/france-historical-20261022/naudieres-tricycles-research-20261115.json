@@ -1,0 +1,78 @@
+{
+  "documentType": "public-research-only-supplement",
+  "generatedAtUtc": "2026-11-15T09:56:28.648807Z",
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "subject": "Tricycles distincts des Vélos drôles",
+  "existingItemIds": {
+    "tricycles": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+    "velosDroles": "b5b35100-ae8e-47c8-a8df-925257e13d12"
+  },
+  "conclusion": "Rapprochement historique Tricycles fortement étayé par la photographie personnelle avec panneau du parc dans le même cadre et par la mention nominale de la page officielle Exploration. Ne pas fusionner avec Vélos drôles. Pas de preuve supplémentaire de maintien du même matériel en2026.",
+  "primaryPhotographicSource": {
+    "pageUrl": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+    "localPage": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html",
+    "pageMetadata": {
+      "url": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+      "attemptedAtUtc": "2026-11-15T09:47:14.821887Z",
+      "status": 200,
+      "finalUrl": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 49557,
+      "sha256": "ae1bd3b8fadffbf3ddad3508a8880bbcf7aad9b1f470021f182c8cbe5b1daf8c",
+      "retryAfter": null
+    },
+    "authorCredit": "Caroline / Julesetmoa",
+    "visitDateEvidence": "Le texte dit mai dernier dans cet article de juillet2018 : mois de visite mai2018, aucun jour de prise de vue prouvé.",
+    "photo": {
+      "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoXWs1Ln05UPoO2PQKOQg9HY82SlsED6dp_86u78MFS34U5idCoV8V7W9McIQeLnBw6uoP7BYP2ieDZ1rH4-1-krL_X5TWVlYZIynKP3-9yvGuy01KUrSNKUvuVcgMRhSl5sXKHsXf-0I4/s0/IMG_9981.jpg",
+      "attemptedAtUtc": "2026-11-15T09:55:29.382035Z",
+      "status": 200,
+      "finalUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoXWs1Ln05UPoO2PQKOQg9HY82SlsED6dp_86u78MFS34U5idCoV8V7W9McIQeLnBw6uoP7BYP2ieDZ1rH4-1-krL_X5TWVlYZIynKP3-9yvGuy01KUrSNKUvuVcgMRhSl5sXKHsXf-0I4/s0/IMG_9981.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 560910,
+      "sha256": "a071108199bf853abdf587802ae05fd5de68c8e2c0039e9f89363055e0fc9fb9",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9981-native.jpg",
+      "dimensions": {
+        "width": 1536,
+        "height": 2048
+      },
+      "variantNote": "Variante native publique Blogger /s0/ du lien /s1600/ déjà référencé dans le reportage. Même cadre, aucun recadrage ni retouche locale. Fichier précédent conservé."
+    },
+    "observations": [
+      "Panneau intitulé Tricycles visible au bord droit du bâtiment bleu dans la même scène.",
+      "Deux véhicules rouge et jaune, chacune avec assise avant et emplacement arrière occupé, roues basses et châssis tubulaire.",
+      "Trois roues sur le véhicule jaune : une à l’avant et deux à l’arrière ; arrière droit visible, autre arrière en partie masqué par les occupants.",
+      "Le guidon est placé devant le conducteur et le siège derrière ; pas de selle mise à la place du guidon comme dans la description déjà intégrée des Vélos drôles."
+    ],
+    "restrictions": "Panneau coupé par bord droit ; aucune restriction d’âge, taille ou nombre autorisé extrapolée. Le nombre de personnes visibles n’est pas une certification de capacité."
+  },
+  "officialNominalEvidence": {
+    "url": "https://www.lesnaudieres.com/univers/exploration/",
+    "localPath": "/workspace/france-historical-20261114/naudieres/exploration-current.html",
+    "sha256": "972a5e367c8967b3a427b0cbb78af67ac274cea744fc382bbbba6553957c3288",
+    "content": "Tricycles est cité dans Nos autres attractions Exploration ; cette mention ne décrit ni modèles ni particularités ni dates individuelles."
+  },
+  "distinctVelosDrolesEvidence": {
+    "workingStateSha256": "85d4bf98195a7872292c78446b91124e39da41f19a4c958539083dd2130d38f0",
+    "sourceUrlAlreadyInItem": "https://www.citizenkid.com/sortie/parc-les-naudieres-nantes-a105150",
+    "existingSpecificDescription": "Selles et guidons échangent leurs places. Description huit langues présente sur l’autre item ; aucune raison de la réécrire ou de lui attribuer la photo des tricycles."
+  },
+  "otherResearch": {
+    "newPageAccess": {
+      "url": "https://www.cseairbusnantes.com/com/page/2498",
+      "attemptedAtUtc": "2026-11-15T09:54:48.941926Z",
+      "status": 200,
+      "finalUrl": "https://www.cseairbusnantes.com/com/page/2498",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 148503,
+      "sha256": "1a520ac722165d4acbbcb062f428a8dbe1d1ad0c67d004b07c5b9a2e528dd84f",
+      "retryAfter": null
+    },
+    "result": "CSEAirbus cite des tricycles originaux dans son offre2026 mais sans photographie nominative du matériel. Cette prose généraliste ne précise pas l’identité et ne justifie pas une nouvelle zone Le Monde des Roues. Source non retenue pour qualifier le matériel.",
+    "noAdditionalNominalPhotoFound": true,
+    "archive": "CDX déjà conservé identifie une ancienne page vélos drôles2008. Pas de replay supplémentaire après429 antérieur."
+  },
+  "suggestedScopeForParent": "Notice historique fondée sur les deux véhicules photographiés et le panneau ; dates de première ouverture/fermeture, constructeur, modèle, restrictions, GPS restent inconnus. Parent rédige et relit les huit langues.",
+  "actionsPerformed": "Recherche publique et complément local uniquement : aucun PDE, Git, registre, import ni modification du working-state."
+}

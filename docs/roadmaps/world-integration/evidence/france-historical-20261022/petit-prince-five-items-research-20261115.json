@@ -1,0 +1,479 @@
+{
+  "schemaVersion": 1,
+  "preparedAtUtc": "2026-11-15T09:44:33.949309+00:00",
+  "parkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+  "parkName": "Parc du Petit Prince",
+  "scope": "Public research only: five private items with Unknown lifecycle; no ownership edits, API, Git or registry mutations",
+  "workingStateSha256": "a5a4366b4eb9f00865beb38b5690bb3bd197659b35684413247b6e7bdb422056",
+  "inventoryRead": {
+    "totalItems": 100,
+    "privateUnknownItems": [
+      {
+        "id": "9c8d6152-c243-4a90-8c4f-51ea14cf41df",
+        "name": "Danse avec les Moutons",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "a2297b7a-9fe2-4a11-97a8-b70f77247acf",
+        "name": "De Planète en Planète — parcours de 2014",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "71fee38e-39cd-44dd-8639-64df57c293af",
+        "name": "Le Chemin des Froussards",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "979ae526-819d-47b3-b83a-0d3027281008",
+        "name": "Le Jardin des Papillons",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "48dbd40c-6e66-496c-b32c-b4a6dd319a86",
+        "name": "Le Petit Prince et la Cigogne",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+        "name": "Le Petit Prince VR",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "3befd91d-9ffd-4b50-bc4e-39185ba369e8",
+        "name": "Les Questions Astronomiques",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "1184447e-6e94-4ee1-860d-623dc21f6ac5",
+        "name": "Les Tout-Petits Princes",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "63fab021-17ff-4f3d-837f-8932088fb59c",
+        "name": "L’Aviateur vous raconte",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "422875bc-0b6c-4113-804b-d5359a9c076d",
+        "name": "Mission Petit Prince",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "f605c248-9c5a-401f-a05b-f60c052170e8",
+        "name": "Pigeon Vole",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "8743bb58-8dd3-4827-9623-f72a605929f1",
+        "name": "Poneys",
+        "status": "Unknown",
+        "isVisible": false
+      },
+      {
+        "id": "cd09c5dd-8c37-4a05-8f01-8119f50f14ab",
+        "name": "Serres aux Papillons",
+        "status": "Unknown",
+        "isVisible": false
+      }
+    ]
+  },
+  "mutationsPerformed": false,
+  "pdeApiCalls": 0,
+  "gitCommands": 0,
+  "registryEdits": 0,
+  "findingCount": 5,
+  "findings": [
+    {
+      "itemId": "71fee38e-39cd-44dd-8639-64df57c293af",
+      "name": "Le Chemin des Froussards",
+      "confirmedIdentity": "Seasonal Halloween route, already distinguished from other attractions.",
+      "evidence": [
+        {
+          "file": "official-halloween-2024.html",
+          "url": "https://www.lepetitprince.com/evenements-autour-du-monde/halloween-sinvite-au-parc-du-petit-prince-frissons-garantis/",
+          "date": "2024-10-04",
+          "type": "Dated rights-holder seasonal announcement",
+          "conclusion": "Names this route in the programme advertised for 5 October–3 November 2024."
+        },
+        {
+          "file": "official-halloween-2026.html",
+          "url": "https://parcdupetitprince.com/actualites/halloween-2026-au-parc-du-petit-prince",
+          "date": "2026-09-18",
+          "type": "Official park seasonal announcement with public embedded article data",
+          "conclusion": "Names Petit Labyrinthe and Labyrinthe du Serpent for 17 October–1 November 2026. Does not name Chemin des Froussards."
+        }
+      ],
+      "rejectedInference": "The 2026 Le Parisien/Petit Futé listings repeat the older Manoir/Froussards/Tour de la Mygale list. They are insufficient to establish actual operation in 2026 or an alias with either newly named labyrinth.",
+      "safeRecommendation": "Preserve the seasonal historical identity; no invented 2026 operation, permanent closure, replacement or opening date.",
+      "currentLifecycleResolved": false
+    },
+    {
+      "itemId": "422875bc-0b6c-4113-804b-d5359a9c076d",
+      "name": "Mission Petit Prince",
+      "confirmedIdentity": "The 180° projected tunnel programme with Pog, replacing the former butterfly Metamorphose film in the same structure.",
+      "evidence": [
+        {
+          "file": "coasterrider-2021.html",
+          "url": "https://coasterrider.fr/parc/parc-du-petit-prince/29-juin-2021",
+          "visitDate": "2021-06-29",
+          "publicationDate": "2021-07-02",
+          "type": "Press visit report with photograph",
+          "conclusion": "The installation and projected programme were observed during the press visit; this is not the general-public opening day."
+        },
+        {
+          "file": "madeinalsace-mission-2021.html",
+          "url": "https://www.madeinalsace.com/parc-du-petit-prince-incontournable-en-alsace/",
+          "publicationDate": "2021-07-30",
+          "type": "Contemporary editorial coverage",
+          "conclusion": "Lists Mission Petit Prince among the new seasonal experiences."
+        }
+      ],
+      "photo": {
+        "file": "coasterrider-mission-20210629.jpg",
+        "url": "https://coasterrider.fr/content/medias/1625073197/source/20210629_121746.jpg",
+        "sourcePage": "https://coasterrider.fr/parc/parc-du-petit-prince/29-juin-2021",
+        "visuallyInspected": true,
+        "observed": "Standing visitors inside a curved tunnel with pink building facades and green projected foliage.",
+        "watermark": "Visible Coasterrider mark, top right",
+        "importRecommendation": "Excluded; retain solely as source evidence, no crop or watermark removal."
+      },
+      "rejectedInference": "The current official list again uses Metamorphose (immersive photo experience). Neither that listing nor the absence of Mission proves when the 2021 programme stopped or whether it was renamed. A separate Mission Petit Prince space-research initiative with a 2027 horizon is unrelated to this park item.",
+      "safeRecommendation": "Keep the known 2021 date precision and existing identity; retain Unknown lifecycle until direct replacement/closure proof.",
+      "currentLifecycleResolved": false
+    },
+    {
+      "itemId": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+      "name": "Le Petit Prince VR",
+      "confirmedIdentity": "Red Accent interactive adaptation of the book; separate from the captive-balloon 360° film.",
+      "evidence": [
+        {
+          "file": "saint-exupery-vr-2018.html",
+          "url": "https://www.antoinedesaintexupery.org/archives/5eme-saison-du-parc-du-petit-prince/",
+          "publicationDate": "2018-03-30",
+          "metadataModifiedDate": "2025-11-12",
+          "type": "Rights-holder archive",
+          "conclusion": "Retrospective launch of the fifth park season on 30 March 2018; distinguishes the balloon VR film from the interactive Petit Prince VR programme."
+        },
+        {
+          "file": "mk2-vr.html",
+          "url": "https://mk2films.com/film/le-petit-prince/",
+          "type": "Distributor catalogue",
+          "conclusion": "Identifies Red Accent Studios and the interactive adaptation. Does not establish continued operation at Ungersheim."
+        }
+      ],
+      "rejectedInference": "Do not merge this item with Le Grand Ballon Captif: experience VR, which remains separately named by the park. Do not use the general software launch in October 2017 as the park opening date. The 2018 season opening does not alone prove this individual experience opened on the exact same day.",
+      "safeRecommendation": "2018 season is supported; precise attraction opening and closing dates remain unproved.",
+      "currentLifecycleResolved": false
+    },
+    {
+      "itemId": "f605c248-9c5a-401f-a05b-f60c052170e8",
+      "name": "Pigeon Vole",
+      "confirmedIdentity": "Named flying/acrobatic-pigeon presentation documented in the 2021 visit.",
+      "evidence": [
+        {
+          "file": "coasterrider-2021.html",
+          "url": "https://coasterrider.fr/parc/parc-du-petit-prince/29-juin-2021",
+          "visitDate": "2021-06-29",
+          "publicationDate": "2021-07-02",
+          "type": "Contemporary visit report",
+          "conclusion": "Names Pigeon vole next to a photographed aviary containing the birds."
+        },
+        {
+          "file": "official-shows-current.html",
+          "url": "https://parcdupetitprince.com/spectacles",
+          "type": "Current official shows page read through public web rendering",
+          "conclusion": "Current listing names Course de pigeons and La Planete des Animaux. No explicit rename relation to Pigeon Vole was found."
+        }
+      ],
+      "photo": {
+        "file": "coasterrider-pigeon-20210629.jpg",
+        "url": "https://coasterrider.fr/content/medias/1625073197/source/P1011245.jpg",
+        "visuallyInspected": true,
+        "observed": "White and darker pigeons in a screened aviary, blue triangular perches and circular black access ports. The photograph does not itself show a flying performance.",
+        "watermark": "Visible Coasterrider mark, top right",
+        "importRecommendation": "Excluded; source evidence only."
+      },
+      "rejectedInference": "Similar birds and related programming do not establish that Course de pigeons is an alias or direct replacement. An aviary photograph does not independently prove a show occurred for the public on that date.",
+      "safeRecommendation": "Preserve historical identity and 2021 named presence; do not merge the two show items or assign a closure date.",
+      "currentLifecycleResolved": false
+    },
+    {
+      "itemId": "8743bb58-8dd3-4827-9623-f72a605929f1",
+      "name": "Poneys",
+      "confirmedIdentity": "Ponies forming part of the mini-farm; separate question from pony-ride availability.",
+      "evidence": [
+        {
+          "file": "coasterrider-2021.html",
+          "url": "https://coasterrider.fr/parc/parc-du-petit-prince/29-juin-2021",
+          "publicationDate": "2021-07-02",
+          "type": "Press briefing report",
+          "conclusion": "Reports that ponies, first introduced in 2019, were due to return for the 2021 season; the announcement alone is not proof of actual reopening."
+        },
+        {
+          "file": "periscope-202212.pdf",
+          "url": "https://le-periscope.info/wp-content/uploads/2022/12/Periscope_n%C2%B059_exe_web.pdf",
+          "issueDateText": "Decembre 2022 / Janvier 2023",
+          "pdfPage": 3,
+          "author": "Emilie Jafrate",
+          "type": "Dated interview/report with the park communications manager",
+          "conclusion": "Specifically lists ponies among the mini-farm animals, supporting documented presence by that publication period. Does not say that pony rides operated then."
+        }
+      ],
+      "sourceCaution": "The same Periscope article contains technical inaccuracies elsewhere (it groups the log flume with coasters and calls the Aerobar a captive balloon). Those statements are not adopted. Pony presence is retained as a specific contemporary report, not a 2026 guarantee.",
+      "safeRecommendation": "Useful additional historical presence source for the private item. Keep 2026 status and closure date unknown; do not infer pony-ride availability.",
+      "currentLifecycleResolved": false
+    }
+  ],
+  "seasonContext": {
+    "observedAtUtc": "2026-11-15T09:40:43.761723+00:00",
+    "source": "https://parcdupetitprince.com/attractions",
+    "publicHtmlEmbeddedNextOpeningUtc": "2027-03-26T09:00:00Z",
+    "localAnnouncement": "26 March 2027 at 10:00 Europe/Paris",
+    "meaning": "Announced next park opening only. Not proof of completed opening, operation of each item, or any 2027 new ride.",
+    "halloween2026": {
+      "officialArticlePublished": "2026-09-18 17:00:22",
+      "timeZoneUnspecified": true,
+      "announcedEventStart": "2026-10-17",
+      "announcedEventEnd": "2026-11-01",
+      "namedRoutes": [
+        "Petit Labyrinthe",
+        "Labyrinthe du Serpent"
+      ],
+      "relationToCheminDesFroussards": null
+    },
+    "acquisitionAndOperators": "No re-reading into a new Apply; existing acquisition fact and operators untouched."
+  },
+  "newImagesSuitableForImport": 0,
+  "currentLifecycleUpdatesReady": 0,
+  "limits": [
+    "Current omission is not proof of removal or permanent closure.",
+    "Seasonal announcement is not proof that each advertised experience actually opened.",
+    "Unknown must not be converted to Removed or Closed merely to complete the inventory.",
+    "No confidential material or credentials were read. Repository checkpoint and working state were inspected read-only; no API, Git or repository mutation occurred."
+  ],
+  "sourceAccess": [
+    {
+      "url": "https://parcdupetitprince.com/attractions",
+      "file": "official-attractions-current.html",
+      "accessedAtUtc": "2026-11-15T09:40:43.761723+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "finalUrl": "https://parcdupetitprince.com/attractions",
+      "bytes": 18001,
+      "sha256": "901917176f4a4cb6704e4ef5d974ec5ee21b1d8a1dc722834b30d293c50f9421"
+    },
+    {
+      "url": "https://parcdupetitprince.com/spectacles",
+      "file": "official-shows-current.html",
+      "accessedAtUtc": "2026-11-15T09:40:44.980201+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "finalUrl": "https://parcdupetitprince.com/spectacles",
+      "bytes": 16534,
+      "sha256": "b48bf57b9f7f641cc9e6b3b743ea5053227674aba32311475d68a35f1c3497fd"
+    },
+    {
+      "url": "https://parcdupetitprince.com/actualites/halloween-2026-au-parc-du-petit-prince",
+      "file": "official-halloween-2026.html",
+      "accessedAtUtc": "2026-11-15T09:40:45.509091+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "finalUrl": "https://parcdupetitprince.com/actualites/halloween-2026-au-parc-du-petit-prince",
+      "bytes": 35347,
+      "sha256": "a593be28d04ae246049a71bdfb9ad6b31c52b78b609b599a0c8ae4a35dbaf2df"
+    },
+    {
+      "url": "https://www.antoinedesaintexupery.org/archives/5eme-saison-du-parc-du-petit-prince/",
+      "file": "saint-exupery-vr-2018.html",
+      "accessedAtUtc": "2026-11-15T09:40:46.197696+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "finalUrl": "https://www.antoinedesaintexupery.org/archives/5eme-saison-du-parc-du-petit-prince/",
+      "bytes": 207419,
+      "sha256": "169d942ad3069fa790c1db130e86eb240937a3394fc9dde343f438a532ac86aa"
+    },
+    {
+      "url": "https://coasterrider.fr/parc/parc-du-petit-prince/29-juin-2021",
+      "file": "coasterrider-2021.html",
+      "accessedAtUtc": "2026-11-15T09:40:49.123560+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "finalUrl": "https://coasterrider.fr/parc/parc-du-petit-prince/29-juin-2021",
+      "bytes": 309109,
+      "sha256": "eba87f1493ad00fc1a945c04dbfd7bf491274c3149e07164beaea7ac3d55d0f9"
+    },
+    {
+      "url": "https://www.madeinalsace.com/parc-du-petit-prince-incontournable-en-alsace/",
+      "file": "madeinalsace-mission-2021.html",
+      "accessedAtUtc": "2026-11-15T09:40:50.574521+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "finalUrl": "https://www.madeinalsace.com/parc-du-petit-prince-incontournable-en-alsace/",
+      "bytes": 297359,
+      "sha256": "7fc97e036a0dfe6d7eb6e7f387a4c9e35706226bec23a9107dbf1806e14bed31"
+    },
+    {
+      "url": "https://coasterrider.fr/content/medias/1625073197/source/20210629_121746.jpg",
+      "file": "coasterrider-mission-20210629.jpg",
+      "accessedAtUtc": "2026-11-15T09:42:19.989952+00:00",
+      "status": 200,
+      "bytes": 1271822,
+      "sha256": "e02fdde8903bda4cc403e93ec40c2d00126f6d929bc1be0a304886340c0d12d5",
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://coasterrider.fr/content/medias/1625073197/source/P1011245.jpg",
+      "file": "coasterrider-pigeon-20210629.jpg",
+      "accessedAtUtc": "2026-11-15T09:42:21.653503+00:00",
+      "status": 200,
+      "bytes": 1069934,
+      "sha256": "30c2cbe0b7621162e2f6da78ff5bade32939b5090b46901d06850bb7a4d7638c",
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://le-periscope.info/wp-content/uploads/2022/12/Periscope_n%C2%B059_exe_web.pdf",
+      "file": "periscope-202212.pdf",
+      "accessedAtUtc": "2026-11-15T09:42:21.986858+00:00",
+      "status": 200,
+      "bytes": 7711303,
+      "sha256": "01287c86cca0bae9bcc42440ea7455537d546e2641be69da98b185a3e0cc3fda",
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://mk2films.com/film/le-petit-prince/",
+      "file": "mk2-vr.html",
+      "accessedAtUtc": "2026-11-15T09:42:25.160627+00:00",
+      "status": 200,
+      "bytes": 67964,
+      "sha256": "f36ca5a5602706a1bfa162a1859fc308ccd7edd0392c9af5057faf76c3f211b7",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.lepetitprince.com/evenements-autour-du-monde/halloween-sinvite-au-parc-du-petit-prince-frissons-garantis/",
+      "file": "official-halloween-2024.html",
+      "accessedAtUtc": "2026-11-15T09:42:27.579432+00:00",
+      "status": 200,
+      "bytes": 155480,
+      "sha256": "8a664dcd1d1aa73bef9ce03cfd677d7246c7a15db780788a203e800b1c22dcc7",
+      "contentType": "text/html; charset=UTF-8"
+    }
+  ],
+  "outputFiles": [
+    {
+      "file": "access-log.jsonl",
+      "bytes": 4026,
+      "sha256": "8745234331e13863bc75656106edddad90dfd28b09d8e79e1878d90640119910"
+    },
+    {
+      "file": "coasterrider-2021.html",
+      "bytes": 309109,
+      "sha256": "eba87f1493ad00fc1a945c04dbfd7bf491274c3149e07164beaea7ac3d55d0f9"
+    },
+    {
+      "file": "coasterrider-2021.txt",
+      "bytes": 78709,
+      "sha256": "254c549631ca3c91b43fb1d3287d1d4e7f861047a6a2dcb8bae82e3838bf88d4"
+    },
+    {
+      "file": "coasterrider-mission-20210629.jpg",
+      "bytes": 1271822,
+      "sha256": "e02fdde8903bda4cc403e93ec40c2d00126f6d929bc1be0a304886340c0d12d5"
+    },
+    {
+      "file": "coasterrider-pigeon-20210629.jpg",
+      "bytes": 1069934,
+      "sha256": "30c2cbe0b7621162e2f6da78ff5bade32939b5090b46901d06850bb7a4d7638c"
+    },
+    {
+      "file": "madeinalsace-mission-2021.html",
+      "bytes": 297359,
+      "sha256": "7fc97e036a0dfe6d7eb6e7f387a4c9e35706226bec23a9107dbf1806e14bed31"
+    },
+    {
+      "file": "mk2-vr.html",
+      "bytes": 67964,
+      "sha256": "f36ca5a5602706a1bfa162a1859fc308ccd7edd0392c9af5057faf76c3f211b7"
+    },
+    {
+      "file": "official-attractions-current-embedded.json",
+      "bytes": 24088,
+      "sha256": "06684c7cd06646de4aef528fc8c9362eeb3800bb813b325d0b21864a80be52e7"
+    },
+    {
+      "file": "official-attractions-current.html",
+      "bytes": 18001,
+      "sha256": "901917176f4a4cb6704e4ef5d974ec5ee21b1d8a1dc722834b30d293c50f9421"
+    },
+    {
+      "file": "official-attractions-current.txt",
+      "bytes": 251,
+      "sha256": "ebb8fe5196894a5026f20497940fd0fcd069667d8a0c6ad21678b86009385a34"
+    },
+    {
+      "file": "official-halloween-2024.html",
+      "bytes": 155480,
+      "sha256": "8a664dcd1d1aa73bef9ce03cfd677d7246c7a15db780788a203e800b1c22dcc7"
+    },
+    {
+      "file": "official-halloween-2026-embedded.json",
+      "bytes": 43245,
+      "sha256": "f980f4c36d92f6880ed04725ba413f537d2df010ad411bb487812700fa191e09"
+    },
+    {
+      "file": "official-halloween-2026.html",
+      "bytes": 35347,
+      "sha256": "a593be28d04ae246049a71bdfb9ad6b31c52b78b609b599a0c8ae4a35dbaf2df"
+    },
+    {
+      "file": "official-halloween-2026.txt",
+      "bytes": 300,
+      "sha256": "a762a4254910bbd024fa47d55509940f331dda388cf753394022e019ea91a5e0"
+    },
+    {
+      "file": "official-shows-current-embedded.json",
+      "bytes": 21145,
+      "sha256": "2c86de78003acfb7560226fa1025138f8c7d6c8e9e18b8c30f09c50b1ff0937c"
+    },
+    {
+      "file": "official-shows-current.html",
+      "bytes": 16534,
+      "sha256": "b48bf57b9f7f641cc9e6b3b743ea5053227674aba32311475d68a35f1c3497fd"
+    },
+    {
+      "file": "official-shows-current.txt",
+      "bytes": 251,
+      "sha256": "dfb3663d833e153f85b85f3a6d32f6d2998155505b8390c41bb2d2726231bd2f"
+    },
+    {
+      "file": "periscope-202212.pdf",
+      "bytes": 7711303,
+      "sha256": "01287c86cca0bae9bcc42440ea7455537d546e2641be69da98b185a3e0cc3fda"
+    },
+    {
+      "file": "periscope-page-3.png",
+      "bytes": 1201223,
+      "sha256": "c931c8edf0d7d697e86bfba5ba26355ea31d748439377ba86e51bc64baa88e45"
+    },
+    {
+      "file": "periscope-relevant-page.txt",
+      "bytes": 9142,
+      "sha256": "229541d9018fdf822e398e97cd6bd361e9be4fcd250db973ba4c6df8c442b609"
+    },
+    {
+      "file": "saint-exupery-vr-2018.html",
+      "bytes": 207419,
+      "sha256": "169d942ad3069fa790c1db130e86eb240937a3394fc9dde343f438a532ac86aa"
+    }
+  ]
+}
