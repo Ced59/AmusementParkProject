@@ -16,7 +16,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 43 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 4 |
+| Intégration achevée | 5 |
 | Publié, date inconnue | 1 |
 | Hors périmètre enregistré | 14 |
 | Doublon conservé | 0 |
@@ -27,7 +27,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **1 publiés**, **25 masqués à intégrer**, **14 masqués NotRelevant à réexaminer**, **31 candidats sans fiche**.
 
-Standalone : **4 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **12 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **5 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **12 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **13 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **12 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **1 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -35,6 +35,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 
 | ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| CH-candidate-discovery-651263f938d4c8 | 007 Bungy Verzasca | Barrage de Verzasca, Vogorno, Tessin | StandaloneAttraction | Published | Intégration achevée | 2026-11-15T11:42:07.993Z | — | Conserver la ligne. Recontrôler les horaires exacts et les tarifs avant la saison du 26 mars 2027, puis les conditions d’accès sous 90 jours. Qualifier séparément 007 Skywalk, sans doublonner le saut. Ne pas republier Facebook pour une simple actualisation. Qualification standalone : AlreadyStandalone. Saut vendu et exploité indépendamment depuis le barrage. Skywalk traité comme offre distincte. Fiche propre créée après recherche de doublons. Installations référencées : 007 Bungy Verzasca. Signal source : Saut saisonnier actif ; saison 2026 achevée et saison 2027 annoncée du 26 mars au 31 octobre.. [Exploitant — site officiel, saison 2027](https://www.007bungy.ch/en/) · [Exploitant — informations générales et conditions](https://www.007bungy.ch/en/general-information) · [Exploitant — Classic Jump et tarifs](https://www.007bungy.ch/en/bungy_jumps/1-007-classic-jump) · [Exploitant trekking.ch — histoire et ouverture](https://www.trekking.ch/ueber-uns?lang=en) · [Exploitant — actualités et 30 ans](https://www.007bungy.ch/en/news_items) · [Wikimedia Commons — photo exacte, Irene Grassi, CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:Jump!_(15536887802).jpg) · [Wikimedia Commons — photo exacte, Corradox, CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Verzasca_Bungee.JPG) · [Wikimedia Commons — photo exacte, Hollerz, CC BY-SA 3.0](https://commons.wikimedia.org/wiki/File:Verzasca_Dam_Bungee.jpg) |
 | CH-candidate-68a57a64933d7e | Alpamare | Freienbach | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Europe#Switzerland) · [AmusementForce](https://www.amusementforce.com/parks/alpamare-pfaffikon-switzerland) |
 | CH-candidate-standalone-fa7e0716a8d973 | Alpine Coaster Wiegand — La Robella | — | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Installations référencées : La Robella. [Wiegand — références constructeur](https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=216#location-id-1095) · [Opérateur référencé par la source](http://www.robella.ch) |
 | CH-park-1dbd3542-678a-4c97-9d9c-3ab9568f83f2 | Andrea Odermatt | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |

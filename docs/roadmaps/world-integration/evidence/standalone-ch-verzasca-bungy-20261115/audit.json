@@ -1,0 +1,138 @@
+{
+  "entryId": "CH-candidate-discovery-651263f938d4c8",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+  "name": "007 Bungy Verzasca",
+  "countryCode": "CH",
+  "auditAtUtc": "2026-11-15T11:46:07.142Z",
+  "qualification": "Saut fixe depuis le barrage de Verzasca, billet et règles propres. Le Skywalk est une offre distincte. Recherche préalable via le client officiel : aucun Park ni StandaloneAttraction correspondant à Verzasca, 007 Bungy ou GoldenEye.",
+  "operatorSources": [
+    "https://www.007bungy.ch/en/",
+    "https://www.007bungy.ch/en/general-information",
+    "https://www.007bungy.ch/en/bungy_jumps/1-007-classic-jump",
+    "https://www.trekking.ch/ueber-uns?lang=en",
+    "https://www.007bungy.ch/en/news_items"
+  ],
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/c380d180-ca44-4f6a-8bf4-7e24e93a184c/007-bungy-verzasca",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "es",
+    "it",
+    "nl",
+    "pt",
+    "pl"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "e5f47091a57f4248b1fb2790e5114918",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Jump!_(15536887802).jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Jump%21_%2815536887802%29.jpg/960px-Jump%21_%2815536887802%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Irene Grassi",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "photographedAt": "2014-08-24",
+      "importedAtUtc": "2026-11-15T11:40:44.457Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "cacc9fdfef6247ce9159c32bed9caf86",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Verzasca_Bungee.JPG",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Verzasca_Bungee.JPG/960px-Verzasca_Bungee.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Corradox",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "photographedAt": "2009-06-28",
+      "importedAtUtc": "2026-11-15T11:41:05.301Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "a19e6d8140e54bcfaa7fda942a500d3e",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Verzasca_Dam_Bungee.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Verzasca_Dam_Bungee.jpg/960px-Verzasca_Dam_Bungee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Hollerz",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "photographedAt": null,
+      "importedAtUtc": "2026-11-15T11:41:21.923Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Classic Jump : CHF 255 adulte dès 20 ans, CHF 195 pour moins de 20 ans et étudiants, suivant la page officielle consultée le 15 novembre 2026.",
+  "openingHoursAssessment": "Saison 2026 terminée le 27 octobre ; fermeture jusqu’au 25 mars 2027. Saison 2027 annoncée du 26 mars au 31 octobre : avril surtout fins de semaine, mai et octobre vendredi à dimanche, juin à mi-septembre mercredi à dimanche après-midi. L’exploitant ne publie pas encore d’horaires d’horloge exacts pour 2027 ; aucun créneau précis n’est inventé.",
+  "accessAssessment": "Poids 45 à 115 kg. Mineurs avec accord signé ; plus de 65 ans avec certificat médical. Vérifier restrictions de santé et présence au créneau confirmé auprès de l’exploitant.",
+  "geoAssessment": "Coordonnées GPS officielles N46°11′43″ E8°51′2″ converties en 46.1952778, 8.8505556 ; position du barrage, pas du village.",
+  "historyAssessment": "Chronologie de l’exploitant trekking.ch : ouverture du saut en 1996 ; l’annonce de 30 ans en 2026 confirme l’année. Pas de jour/mois inféré.",
+  "completeness": {
+    "score": 95,
+    "level": "Excellent",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127447699424431",
+    "publishedAtUtc": "2026-11-15T11:44:59.5105195Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T11:42:07.993Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "7ccc657a-f3a8-458d-a146-d2d2496e0d34",
+      "appliedAtUtc": "2026-11-15T11:38:49.4867402Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "176e3200-c292-4feb-b6ad-32297b3dae95",
+      "appliedAtUtc": "2026-11-15T11:39:55.4397472Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "history",
+      "operationId": "55328fd3-4296-4dd1-9a22-a81bc316a3a1",
+      "appliedAtUtc": "2026-11-15T11:42:07.9930456Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "e5f47091a57f4248b1fb2790e5114918",
+      "appliedAtUtc": "2026-11-15T11:40:44.457Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "cacc9fdfef6247ce9159c32bed9caf86",
+      "appliedAtUtc": "2026-11-15T11:41:05.301Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "a19e6d8140e54bcfaa7fda942a500d3e",
+      "appliedAtUtc": "2026-11-15T11:41:21.923Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "0c6308e1-e05d-47c2-818d-ffd3b853e9f5",
+    "appliedAtUtc": "2026-11-15T11:44:13.9554631Z"
+  },
+  "nextAction": "Conserver la ligne. Recontrôler les horaires exacts et les tarifs avant la saison du 26 mars 2027, puis les conditions d’accès sous 90 jours. Qualifier séparément 007 Skywalk, sans doublonner le saut. Ne pas republier Facebook pour une simple actualisation."
+}
