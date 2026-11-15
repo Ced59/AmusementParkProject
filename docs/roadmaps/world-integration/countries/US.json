@@ -75957,6 +75957,171 @@
       },
       "countryCodeAtInventory": "US",
       "countryResolution": null
+    },
+    {
+      "entryId": "US-candidate-discovery-53834c6432eb545a",
+      "name": "Park City Alpine Slide",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été sur piste",
+      "locality": "Park City Mountain Village, Park City, Utah",
+      "siteId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T18:57:06Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant actif ; Alpine Slide fermée après la saison 2026, réouverture à confirmer.",
+      "identityConfidence": "Billet individuel Adventure Park Single Ride et page propre ; recherches officielles Park/StandaloneAttraction sans homonyme Park City.",
+      "possibleMatches": [],
+      "aliases": [
+        "Alpine Slide — Park City Mountain",
+        "Park City Mountain Alpine Slide"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T18:55:26.454Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-abc0e7c1-570a-4772-b89e-faeb52eace5d",
+          "appliedAt": "2026-11-15T18:50:03.240Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:apply:abc0e7c1-570a-4772-b89e-faeb52eace5d",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées avec statut de fermeture saisonnière."
+        },
+        {
+          "eventId": "photo-ffc854eb74be476fb4b11309bf7ebae9",
+          "appliedAt": "2026-11-15T18:51:06.792Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:photo:ffc854eb74be476fb4b11309bf7ebae9",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de l’Alpine Slide importée, licence CC BY 2.0, crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "photo-fee9fef0e6ea4dd9931bbfea167fb47e",
+          "appliedAt": "2026-11-15T18:51:20.639Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:photo:fee9fef0e6ea4dd9931bbfea167fb47e",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de l’Alpine Slide importée, licence CC BY-SA 2.0, crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "photo-ce791d1122024cb383fac73c4729243b",
+          "appliedAt": "2026-11-15T18:51:39.487Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:photo:ce791d1122024cb383fac73c4729243b",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de l’Alpine Slide importée, licence CC0 1.0, crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "apply-18ca86ea-ca0a-4b94-b42a-795f8616f81d",
+          "appliedAt": "2026-11-15T18:55:26.454Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+          "evidence": "PARK_DATA_EDITOR:apply:18ca86ea-ca0a-4b94-b42a-795f8616f81d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-park-city-alpine-slide-20261115/audit.json",
+          "summary": "Texte éditorial relu, longueur conservée en donnée structurée, audit sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier la saison suivante, les prix et les restrictions officielles avant de mettre à jour la fiche ; supprimer en administration la copie photo non publiée dca590035e2e45569419b6086ab01b49.",
+      "sources": [
+        {
+          "label": "Park City Mountain — Alpine Slide",
+          "url": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-slide.aspx",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — calendrier été 2026",
+          "url": "https://www.parkcitymountain.com/Explore%20the%20Resort/About%20the%20Resort/Hours%20of%20Operation.aspx",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — billet Adventure Park Single Ride",
+          "url": "https://www.parkcitymountain.com/travel-guide/perfect-summer-itinerary",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — adresse Mountain Village",
+          "url": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/getting-here",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo Alpine Slide 2009, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Alpine_Slide_at_Mountain_side_Resort_in_Park_City,_Utah.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Jeremy Thompson, Alpine Slide 2024, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53836479452/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Ken Lund, Alpine Slide 2013, CC BY-SA 2.0",
+          "url": "https://www.flickr.com/photos/kenlund/9387923671",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Park City Alpine Slide",
+          "url": "https://amusement-parks.fun/fr/attraction/147f06a4-958b-420e-a863-0807b3c06ea9/park-city-alpine-slide",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "US",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Park City Alpine Slide",
+            "source": "Park City Mountain Resort",
+            "url": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-slide.aspx",
+            "family": "Luge d’été sur piste",
+            "sourceVenueName": "Park City Mountain Adventure Park",
+            "sourceLifecycleSignal": "Activité de l’été 2026 terminée le 27 septembre ; saison suivante à confirmer.",
+            "matchingMethod": "Recherches officielles Park et StandaloneAttraction, Preview et Apply contrôlés.",
+            "sourceLocality": "Park City, Utah"
+          }
+        ],
+        "rationale": "Piste fixe de descente avec produit de billet individuel, différenciée du Mountain Coaster et des autres activités de l’Adventure Park."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-4a1028e22d6130",
+        "US-candidate-standalone-ad74e1b287c010"
+      ],
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/147f06a4-958b-420e-a863-0807b3c06ea9/park-city-alpine-slide",
+          "publishedAtUtc": "2026-11-15T18:55:52.719Z",
+          "verifiedAtUtc": "2026-11-15T18:57:06Z",
+          "evidence": "PARK_DATA_EDITOR:apply:99a1356f-3a1e-47a2-9db8-28baa9ee582e"
+        },
+        "facebook": {
+          "id": "2b88f87220e8416d8a72e8add677570a",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T18:57:06.583Z",
+          "externalPostId": "1285475681307050_122127496989424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127496989424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:2b88f87220e8416d8a72e8add677570a"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-park-city-alpine-slide-20261115/audit.json",
+        "score": 84,
+        "publicationBlockers": [],
+        "gapCount": 2
+      }
     }
   ]
 }

@@ -1,0 +1,51 @@
+{
+  "entityId": "147f06a4-958b-420e-a863-0807b3c06ea9",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "abc0e7c1-570a-4772-b89e-faeb52eace5d",
+      "appliedAtUtc": "2026-11-15T18:50:03.240Z"
+    },
+    {
+      "step": "editorialText",
+      "operationId": "18ca86ea-ca0a-4b94-b42a-795f8616f81d",
+      "appliedAtUtc": "2026-11-15T18:55:26.454Z"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "ffc854eb74be476fb4b11309bf7ebae9",
+      "createdAtUtc": "2026-11-15T18:51:06.792Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53836479452/",
+      "published": true,
+      "current": true
+    },
+    {
+      "imageId": "fee9fef0e6ea4dd9931bbfea167fb47e",
+      "createdAtUtc": "2026-11-15T18:51:20.639Z",
+      "sourceUrl": "https://www.flickr.com/photos/kenlund/9387923671",
+      "published": true,
+      "current": false
+    },
+    {
+      "imageId": "ce791d1122024cb383fac73c4729243b",
+      "createdAtUtc": "2026-11-15T18:51:39.487Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alpine_Slide_at_Mountain_side_Resort_in_Park_City,_Utah.jpg",
+      "published": true,
+      "current": false
+    }
+  ],
+  "sitePublication": {
+    "operationId": "99a1356f-3a1e-47a2-9db8-28baa9ee582e",
+    "appliedAtUtc": "2026-11-15T18:55:52.719Z",
+    "url": "https://amusement-parks.fun/fr/attraction/147f06a4-958b-420e-a863-0807b3c06ea9/park-city-alpine-slide"
+  },
+  "facebookPublication": {
+    "id": "2b88f87220e8416d8a72e8add677570a",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-15T18:57:06.583Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127496989424431",
+    "externalPostId": "1285475681307050_122127496989424431"
+  },
+  "unpublishedDuplicateImageId": "dca590035e2e45569419b6086ab01b49"
+}

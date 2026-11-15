@@ -1,0 +1,92 @@
+{
+  "work": "Park City Alpine Slide créé comme attraction de luge d’été à billet individuel dans l’Adventure Park de Park City Mountain. Huit descriptions, trois photographies exactes et créditées, huit pages publiques et annonce Facebook vérifiés.",
+  "qualification": "Piste fixe distincte du Mountain Coaster, décrite séparément par l’exploitant et accessible avec le billet Adventure Park Single Ride. Recherches officielles Park et StandaloneAttraction sur Park City et Alpine Slide sans homonyme. Les horaires de la saison 2026 se sont achevés le 27 septembre ; aucune réouverture 2027 déduite.",
+  "sources": {
+    "Park City Mountain — Alpine Slide": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-slide.aspx",
+    "Park City Mountain — calendrier été 2026": "https://www.parkcitymountain.com/Explore%20the%20Resort/About%20the%20Resort/Hours%20of%20Operation.aspx",
+    "Park City Mountain — billet Adventure Park Single Ride": "https://www.parkcitymountain.com/travel-guide/perfect-summer-itinerary",
+    "Park City Mountain — adresse Mountain Village": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/getting-here",
+    "Wikimedia Commons — photo Alpine Slide 2009, CC0": "https://commons.wikimedia.org/wiki/File:Alpine_Slide_at_Mountain_side_Resort_in_Park_City,_Utah.jpg",
+    "Flickr — Jeremy Thompson, Alpine Slide 2024, CC BY 2.0": "https://www.flickr.com/photos/rollercoasterphilosophy/53836479452/",
+    "Flickr — Ken Lund, Alpine Slide 2013, CC BY-SA 2.0": "https://www.flickr.com/photos/kenlund/9387923671",
+    "Fiche publique Park City Alpine Slide": "https://amusement-parks.fun/fr/attraction/147f06a4-958b-420e-a863-0807b3c06ea9/park-city-alpine-slide"
+  },
+  "entity": {
+    "id": "147f06a4-958b-420e-a863-0807b3c06ea9",
+    "name": "Park City Alpine Slide",
+    "countryCode": "US",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "ffc854eb74be476fb4b11309bf7ebae9",
+      "author": "Jeremy Thompson (Roller Coaster Philosophy)",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53836479452/",
+      "createdAtUtc": "2026-11-15T18:51:06.792Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "fee9fef0e6ea4dd9931bbfea167fb47e",
+      "author": "Ken Lund",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/kenlund/9387923671",
+      "createdAtUtc": "2026-11-15T18:51:20.639Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "ce791d1122024cb383fac73c4729243b",
+      "author": "Rockclaw1030",
+      "license": "CC0 1.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alpine_Slide_at_Mountain_side_Resort_in_Park_City,_Utah.jpg",
+      "createdAtUtc": "2026-11-15T18:51:39.487Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "season": "Fermeture saisonnière après le 27 septembre 2026 ; prochaines dates et tarifs non encore publiés.",
+    "ticket": "Adventure Park Single Ride confirmé par l’exploitant ; aucun tarif expiré affiché.",
+    "route": "Payday chairlift to start, trough slide down to Mountain Village.",
+    "address": "1345 Lowell Avenue, Park City, UT 84060",
+    "lengthMeters": 914
+  },
+  "audit": {
+    "completenessScore": 84,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 3,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/147f06a4-958b-420e-a863-0807b3c06ea9/park-city-alpine-slide",
+    "sitePublishedAtUtc": "2026-11-15T18:55:52.719Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:99a1356f-3a1e-47a2-9db8-28baa9ee582e",
+    "facebookStatus": "Published",
+    "facebookId": "2b88f87220e8416d8a72e8add677570a",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127496989424431",
+    "facebookPublishedAtUtc": "2026-11-15T18:57:06.583Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T18:55:26.454Z",
+  "housekeeping": "One accidental second import of the 2009 image, dca590035e2e45569419b6086ab01b49, was marked unpublished and its duplicate copy text changed. Public gallery contains three distinct photos. PDE token scope has no photo deletion action; remove the unpublished duplicate during a later admin cleanup.",
+  "remainingGaps": [
+    "Vérifier les prochaines dates et tarifs quand l’exploitant ouvre la saison suivante.",
+    "Contrôler les restrictions d’âge et de taille sur une source officielle dédiée avant de les structurer."
+  ]
+}
