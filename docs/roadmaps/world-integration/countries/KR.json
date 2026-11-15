@@ -3171,7 +3171,7 @@
       "possibleBacklogEntries": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T15:35:03.957Z",
+      "lastDataIntegrationAt": "2026-11-15T04:28:07.221Z",
       "integrationHistory": [
         {
           "eventId": "apply-18be5cf1-7ce3-47e5-8eb2-6b1085fe878b",
@@ -3232,9 +3232,29 @@
           "evidence": "PARK_DATA_EDITOR:apply:edc476f8-5b10-4e8b-86d6-3f721496228d",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-20261023/busan-audit.json",
           "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
+        },
+        {
+          "eventId": "image-f2b9b5eb34e04adb9587e661d57a3d6d",
+          "appliedAt": "2026-11-15T04:27:32.790Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:image:f2b9b5eb34e04adb9587e661d57a3d6d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-photos-20261115/audit.json",
+          "summary": "Vue des luges sur un virage de Skyline Luge Busan. Image officielle VisitKorea publiée avec crédit et licence KOGL Type 1."
+        },
+        {
+          "eventId": "image-b49a8883af0846eeaa40bacd3129e05f",
+          "appliedAt": "2026-11-15T04:28:07.221Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+          "evidence": "PARK_DATA_EDITOR:image:b49a8883af0846eeaa40bacd3129e05f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-photos-20261115/audit.json",
+          "summary": "Vue plongeante sur les pistes de Skyline Luge Busan. Image officielle VisitKorea publiée avec crédit et licence KOGL Type 1."
         }
       ],
-      "nextAction": "Audit public du 15 novembre 2026 : aucune photo propre publiée. Rechercher une vue exacte des pistes ou luges Skyline Luge Busan dans l’emprise Osiria, avec licence ou autorisation vérifiable ; importer et contrôler la publication dans les huit langues avant de dater le reçu.",
+      "nextAction": "Deux photos exactes de Skyline Luge Busan importées le 15 novembre 2026, visibles dans les huit langues ; conserver la publication Facebook originale du 23 octobre. Contrôler les horaires hebdomadaires et les tarifs lors de la prochaine saison, puis poursuivre la recherche de vues supplémentaires avec licence et attribution vérifiées.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3290,6 +3310,26 @@
           "label": "Source vérifiée — intégration standalone",
           "url": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
           "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "VisitKorea — Skyline Luge Busan et photos officielles",
+          "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=187019",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "VisitKorea — photographie de la piste 3495811",
+          "url": "https://tong.visitkorea.or.kr/cms/resource/11/3495811_image2_1.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "VisitKorea — photographie des virages 3495812",
+          "url": "https://tong.visitkorea.or.kr/cms/resource/12/3495812_image2_1.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "KOGL — licence de réutilisation type 1",
+          "url": "https://www.kogl.or.kr/info/licenseType1.do",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
@@ -3323,12 +3363,13 @@
         }
       },
       "lastEditorialAudit": {
-        "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-20261023/busan-audit.json",
-        "score": 81,
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-photos-20261115/audit.json",
+        "score": 87,
         "publicationBlockers": [],
-        "gapCount": 3
+        "gapCount": 2
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json",
+      "photoRepairEvidence": "docs/roadmaps/world-integration/evidence/standalone-kr-skyline-luge-busan-photos-20261115/audit.json"
     },
     {
       "entryId": "KR-candidate-standalone-5f91351dd67b29",
