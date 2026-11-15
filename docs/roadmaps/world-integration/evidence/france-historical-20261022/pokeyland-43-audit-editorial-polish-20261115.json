@@ -1,0 +1,545 @@
+{
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "countryCode": "FR"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-audit-correction",
+        "step": "04-rich-descriptions",
+        "notes": "Relecture de l’export unique audit42: retrait du dernier paragraphe répétitif Bazooka; Trampoline rédigé plus court sans conclusions génériques ni inventaire technique; Tubing réécrit autour du décor, longueur officielle80m transférée au champ structuré. Toutes8langues personnellement relues. Sources initiales officielles et photos déjà inspectées inchangées, formats courts justifiés, aucun nouveau fullauditexport requis."
+      },
+      "items": [
+        {
+          "id": "798894e0-5efa-45b0-953c-baad70dab44a",
+          "key": "798894e0-5efa-45b0-953c-baad70dab44a",
+          "name": "Bazooka ball",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des balles jaunes dans les bois</h2><p>Bazooka ball transforme les terrains extérieurs de Pokeyland en partie d’équipe à balles de mousse. Les lanceurs noirs aux embouts verts et les projectiles jaunes tranchent avec le feuillage ; les joueurs portent des protections pour les yeux.</p><p>Le jeu reprend l’affrontement entre équipes du paintball, avec des balles de mousse à la place des billes de peinture. Les décors des terrains donnent des repères aux adversaires qui se cherchent entre les arbres.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Yellow balls among the trees</h2><p>Bazooka ball turns Pokeyland’s outdoor playing fields into a team game with foam balls. Black launchers with green muzzles and yellow projectiles stand out against the foliage; players wear eye protection.</p><p>The game borrows paintball’s team contest, using foam balls instead of paint pellets. The field scenery provides landmarks as opponents look for one another among the trees.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Gelbe Bälle zwischen den Bäumen</h2><p>Bei Bazooka ball werden die Außenflächen von Pokeyland zum Schauplatz eines Mannschaftsspiels mit Schaumstoffbällen. Schwarze Werfer mit grünen Mündungen und gelbe Bälle heben sich vom Laub ab; die Spieler tragen Augenschutz.</p><p>Das Spiel übernimmt den Wettstreit zwischen Paintball-Teams, verwendet aber Schaumstoffbälle statt Farbkugeln. Die Kulissen der Spielfelder bieten Orientierung, während sich die Gegner zwischen den Bäumen suchen.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Bolas amarillas entre los árboles</h2><p>Bazooka ball convierte los terrenos al aire libre de Pokeyland en un juego por equipos con bolas de espuma. Los lanzadores negros con bocas verdes y los proyectiles amarillos destacan entre el follaje; los jugadores llevan protección ocular.</p><p>El juego retoma el enfrentamiento por equipos del paintball, con bolas de espuma en lugar de pintura. Los decorados del terreno sirven de referencia mientras los adversarios se buscan entre los árboles.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Palline gialle tra gli alberi</h2><p>Bazooka ball trasforma i campi all’aperto di Pokeyland in un gioco di squadra con palline di gommapiuma. I lanciatori neri dalle estremità verdi e i proiettili gialli risaltano sul fogliame; i giocatori indossano protezioni per gli occhi.</p><p>Il gioco riprende il confronto tra squadre del paintball, sostituendo le palline di vernice con quelle di gommapiuma. Le scenografie dei campi offrono punti di riferimento agli avversari che si cercano tra gli alberi.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Gele ballen tussen de bomen</h2><p>Bij Bazooka ball veranderen de buitenterreinen van Pokeyland in het decor van een teamspel met schuimballen. Zwarte lanceerders met groene uiteinden en gele ballen vallen op tussen het gebladerte; de spelers dragen oogbescherming.</p><p>Het spel neemt de strijd tussen paintballteams over, maar gebruikt schuimballen in plaats van verfballetjes. De aankleding van het terrein biedt herkenningspunten terwijl tegenstanders elkaar tussen de bomen zoeken.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Żółte piłki między drzewami</h2><p>Bazooka ball zamienia plenerowe pola Pokeyland w teren drużynowej gry piankowymi piłkami. Czarne wyrzutnie z zielonymi wylotami oraz żółte pociski wyróżniają się na tle liści; gracze noszą ochronę oczu.</p><p>Gra nawiązuje do rywalizacji drużyn w paintballu, lecz zamiast kulek z farbą wykorzystuje piankowe piłki. Dekoracje pól są punktami orientacyjnymi dla przeciwników szukających się między drzewami.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Bolas amarelas entre as árvores</h2><p>Bazooka ball transforma os campos ao ar livre de Pokeyland num jogo de equipas com bolas de espuma. Os lançadores pretos com bocas verdes e os projéteis amarelos destacam-se na folhagem; os jogadores usam proteção ocular.</p><p>O jogo retoma o confronto entre equipas do paintball, com bolas de espuma em vez de bolas de tinta. Os cenários dos campos servem de referência aos adversários que se procuram entre as árvores.</p>"
+            }
+          ]
+        },
+        {
+          "id": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+          "key": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+          "name": "Trampoline",
+          "category": "Attraction",
+          "type": "Playground",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des bonds devant les arbres</h2><p>Des cordons orange et des protections jaunes dessinent l’espace Trampoline au milieu des arbres de Pokeyland. Les sauteurs portent un harnais noir et s’élancent dans de grands bonds accompagnés par les élastiques.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Jumping in front of the trees</h2><p>Orange cords and yellow padding mark out Pokeyland’s Trampoline area among the trees. Wearing black harnesses, participants spring into high jumps supported by elastic cords.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Sprünge vor den Bäumen</h2><p>Orangefarbene Seile und gelbe Polster prägen den Bereich Trampoline zwischen den Bäumen von Pokeyland. Mit schwarzen Gurten gesichert, setzen die Teilnehmer zu hohen Sprüngen an, die von elastischen Seilen unterstützt werden.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Saltos entre los árboles</h2><p>Las cuerdas naranjas y las protecciones amarillas dan color al espacio Trampoline entre los árboles de Pokeyland. Los participantes llevan arneses negros y dan grandes saltos con la ayuda de las cuerdas elásticas.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Salti davanti agli alberi</h2><p>Corde arancioni e protezioni gialle caratterizzano l’area Trampoline tra gli alberi di Pokeyland. I partecipanti indossano imbracature nere e si lanciano in grandi salti accompagnati dalle corde elastiche.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Springen tussen de bomen</h2><p>Oranje koorden en gele beschermkussens kleuren de Trampoline-zone tussen de bomen van Pokeyland. De deelnemers dragen zwarte harnassen en maken hoge sprongen, ondersteund door de elastische koorden.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Skoki na tle drzew</h2><p>Pomarańczowe liny i żółte osłony wyróżniają strefę Trampoline wśród drzew Pokeyland. Uczestnicy zakładają czarne uprzęże i wykonują wysokie skoki wspomagane przez elastyczne liny.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Saltos entre as árvores</h2><p>Cordas laranja e proteções amarelas dão cor ao espaço Trampoline entre as árvores de Pokeyland. Os participantes usam arneses pretos e dão grandes saltos com o apoio das cordas elásticas.</p>"
+            }
+          ]
+        },
+        {
+          "id": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+          "key": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+          "name": "Tubing",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une pente verte bordée d’orange</h2><p>Au Tubing, les grandes bouées de Pokeyland descendent une pente verte encadrée par la végétation. Assis au creux de la bouée, le visiteur glisse près des bordures orange de la piste.</p><p>Les bouées arborent des motifs de camouflage orange et vert, avec le nom du parc. Leur fond jaune ajoute une autre touche vive à cette descente dans les bois.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A green slope edged in orange</h2><p>At Tubing, Pokeyland’s large tubes slide down a green slope framed by vegetation. Sitting inside a tube, riders glide past the orange edges of the run.</p><p>The tubes carry orange and green camouflage patterns and the park’s name. Yellow bases add another bright colour to this woodland descent.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine grüne Bahn mit orangefarbenen Rändern</h2><p>Beim Tubing gleiten die großen Reifen von Pokeyland eine grüne, von Pflanzen eingerahmte Bahn hinunter. Im Reifen sitzend fahren die Besucher an den orangefarbenen Rändern vorbei.</p><p>Die Reifen tragen orange-grüne Tarnmuster und den Namen des Parks. Ihre gelben Böden setzen einen weiteren leuchtenden Akzent bei dieser Abfahrt im Wald.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una pista verde con bordes naranjas</h2><p>En Tubing, los grandes flotadores de Pokeyland se deslizan por una pendiente verde rodeada de vegetación. Sentados dentro del flotador, los visitantes pasan junto a los bordes naranjas de la pista.</p><p>Los flotadores llevan motivos de camuflaje naranja y verde y el nombre del parque. Su base amarilla añade otro color vivo a este descenso entre los árboles.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una pista verde dai bordi arancioni</h2><p>Al Tubing, le grandi ciambelle di Pokeyland scivolano lungo una pista verde incorniciata dalla vegetazione. Seduti nella ciambella, i visitatori passano accanto ai bordi arancioni della discesa.</p><p>Le ciambelle hanno motivi mimetici arancioni e verdi e riportano il nome del parco. Il fondo giallo aggiunge un altro colore vivace a questa discesa tra gli alberi.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een groene helling met oranje randen</h2><p>Bij Tubing glijden de grote banden van Pokeyland over een groene helling tussen de begroeiing. Zittend in een band zoeven bezoekers langs de oranje randen van de baan.</p><p>De banden hebben oranje-groene camouflagepatronen en dragen de naam van het park. Hun gele bodem voegt nog een felle kleur toe aan de afdaling door het bos.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Zielony tor z pomarańczowymi brzegami</h2><p>Na Tubing duże opony Pokeyland zjeżdżają po zielonym torze otoczonym roślinnością. Uczestnicy siedzą wewnątrz opony i ślizgają się wzdłuż pomarańczowych brzegów trasy.</p><p>Opony zdobią pomarańczowo-zielone wzory maskujące i nazwa parku. Żółty spód dodaje kolejnego wyrazistego koloru tej leśnej zjeżdżalni.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma pista verde com bordas laranja</h2><p>No Tubing, as grandes boias do Pokeyland deslizam por uma pista verde rodeada de vegetação. Sentados dentro da boia, os visitantes passam junto às bordas laranja da descida.</p><p>As boias apresentam padrões de camuflagem laranja e verde e o nome do parque. O fundo amarelo acrescenta outra cor viva a esta descida entre as árvores.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "lengthInMeters": 80
+          }
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "6a033b14-c7d8-4df2-9f6d-c86923abc3e4",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:41:30.221276Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "entityKey": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "displayName": "Bazooka ball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Gelbe Bälle zwischen den Bäumen</h2><p>Bei Bazooka ball werden die Außenflächen von Pokeyland zum Schauplatz eines Mannschaftsspiels mit Schaumstoffbällen. Schwarze Werfer mit grünen Mündungen und gelbe Bälle heben sich vom Laub ab; die Spieler tragen Augenschutz.</p><p>Das Spiel übernimmt den Wettstreit zwischen Paintball-Teams, verwendet aber Schaumstoffbälle statt Farbkugeln. Die Kulissen der Spielfelder bieten Orientierung, während sich die Gegner zwischen den Bäumen suchen.</p><h2>Der Wald als Kulisse</h2><p>Der Wald bleibt Teil der Szenerie: Auf dem offiziellen Foto füllt die Vegetation den Hintergrund hinter den Spielern. Die leuchtenden Farben der Bälle und Werfer treten in dieser Freiluftszene hervor.</p>",
+            "newValue": "<h2>Gelbe Bälle zwischen den Bäumen</h2><p>Bei Bazooka ball werden die Außenflächen von Pokeyland zum Schauplatz eines Mannschaftsspiels mit Schaumstoffbällen. Schwarze Werfer mit grünen Mündungen und gelbe Bälle heben sich vom Laub ab; die Spieler tragen Augenschutz.</p><p>Das Spiel übernimmt den Wettstreit zwischen Paintball-Teams, verwendet aber Schaumstoffbälle statt Farbkugeln. Die Kulissen der Spielfelder bieten Orientierung, während sich die Gegner zwischen den Bäumen suchen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Yellow balls among the trees</h2><p>Bazooka ball turns Pokeyland’s outdoor playing fields into a team game with foam balls. Black launchers with green muzzles and yellow projectiles stand out against the foliage; players wear eye protection.</p><p>The game borrows paintball’s team contest, using foam balls instead of paint pellets. The field scenery provides landmarks as opponents look for one another among the trees.</p><h2>A woodland setting</h2><p>The woods remain part of the setting: in the official photograph, vegetation fills the background behind the players. The bright balls and launchers stand out in this outdoor scene.</p>",
+            "newValue": "<h2>Yellow balls among the trees</h2><p>Bazooka ball turns Pokeyland’s outdoor playing fields into a team game with foam balls. Black launchers with green muzzles and yellow projectiles stand out against the foliage; players wear eye protection.</p><p>The game borrows paintball’s team contest, using foam balls instead of paint pellets. The field scenery provides landmarks as opponents look for one another among the trees.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Bolas amarillas entre los árboles</h2><p>Bazooka ball convierte los terrenos al aire libre de Pokeyland en un juego por equipos con bolas de espuma. Los lanzadores negros con bocas verdes y los proyectiles amarillos destacan entre el follaje; los jugadores llevan protección ocular.</p><p>El juego retoma el enfrentamiento por equipos del paintball, con bolas de espuma en lugar de pintura. Los decorados del terreno sirven de referencia mientras los adversarios se buscan entre los árboles.</p><h2>El bosque como escenario</h2><p>El bosque forma parte del entorno: en la fotografía oficial, la vegetación llena el fondo detrás de los jugadores. Los colores vivos de las bolas y los lanzadores resaltan en esta escena al aire libre.</p>",
+            "newValue": "<h2>Bolas amarillas entre los árboles</h2><p>Bazooka ball convierte los terrenos al aire libre de Pokeyland en un juego por equipos con bolas de espuma. Los lanzadores negros con bocas verdes y los proyectiles amarillos destacan entre el follaje; los jugadores llevan protección ocular.</p><p>El juego retoma el enfrentamiento por equipos del paintball, con bolas de espuma en lugar de pintura. Los decorados del terreno sirven de referencia mientras los adversarios se buscan entre los árboles.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Des balles jaunes dans les bois</h2><p>Bazooka ball transforme les terrains extérieurs de Pokeyland en partie d’équipe à balles de mousse. Les lanceurs noirs aux embouts verts et les projectiles jaunes tranchent avec le feuillage ; les joueurs portent des protections pour les yeux.</p><p>Le jeu reprend l’affrontement entre équipes du paintball, avec des balles de mousse à la place des billes de peinture. Les décors des terrains donnent des repères aux adversaires qui se cherchent entre les arbres.</p><h2>La forêt pour décor</h2><p>Le cadre reste ouvert sur les bois : sur la photographie officielle, la végétation remplit l’arrière-plan derrière les joueurs. Les couleurs vives des balles et des lanceurs ressortent dans cette scène de plein air.</p>",
+            "newValue": "<h2>Des balles jaunes dans les bois</h2><p>Bazooka ball transforme les terrains extérieurs de Pokeyland en partie d’équipe à balles de mousse. Les lanceurs noirs aux embouts verts et les projectiles jaunes tranchent avec le feuillage ; les joueurs portent des protections pour les yeux.</p><p>Le jeu reprend l’affrontement entre équipes du paintball, avec des balles de mousse à la place des billes de peinture. Les décors des terrains donnent des repères aux adversaires qui se cherchent entre les arbres.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Palline gialle tra gli alberi</h2><p>Bazooka ball trasforma i campi all’aperto di Pokeyland in un gioco di squadra con palline di gommapiuma. I lanciatori neri dalle estremità verdi e i proiettili gialli risaltano sul fogliame; i giocatori indossano protezioni per gli occhi.</p><p>Il gioco riprende il confronto tra squadre del paintball, sostituendo le palline di vernice con quelle di gommapiuma. Le scenografie dei campi offrono punti di riferimento agli avversari che si cercano tra gli alberi.</p><h2>Il bosco come sfondo</h2><p>Il bosco resta parte della scena: nella fotografia ufficiale, la vegetazione riempie lo sfondo dietro ai giocatori. I colori vivaci delle palline e dei lanciatori spiccano in questo ambiente all’aperto.</p>",
+            "newValue": "<h2>Palline gialle tra gli alberi</h2><p>Bazooka ball trasforma i campi all’aperto di Pokeyland in un gioco di squadra con palline di gommapiuma. I lanciatori neri dalle estremità verdi e i proiettili gialli risaltano sul fogliame; i giocatori indossano protezioni per gli occhi.</p><p>Il gioco riprende il confronto tra squadre del paintball, sostituendo le palline di vernice con quelle di gommapiuma. Le scenografie dei campi offrono punti di riferimento agli avversari che si cercano tra gli alberi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Gele ballen tussen de bomen</h2><p>Bij Bazooka ball veranderen de buitenterreinen van Pokeyland in het decor van een teamspel met schuimballen. Zwarte lanceerders met groene uiteinden en gele ballen vallen op tussen het gebladerte; de spelers dragen oogbescherming.</p><p>Het spel neemt de strijd tussen paintballteams over, maar gebruikt schuimballen in plaats van verfballetjes. De aankleding van het terrein biedt herkenningspunten terwijl tegenstanders elkaar tussen de bomen zoeken.</p><h2>Het bos als decor</h2><p>Het bos blijft onderdeel van de omgeving: op de officiële foto vult de begroeiing de achtergrond achter de spelers. De felle kleuren van de ballen en lanceerders springen eruit in deze buitenscène.</p>",
+            "newValue": "<h2>Gele ballen tussen de bomen</h2><p>Bij Bazooka ball veranderen de buitenterreinen van Pokeyland in het decor van een teamspel met schuimballen. Zwarte lanceerders met groene uiteinden en gele ballen vallen op tussen het gebladerte; de spelers dragen oogbescherming.</p><p>Het spel neemt de strijd tussen paintballteams over, maar gebruikt schuimballen in plaats van verfballetjes. De aankleding van het terrein biedt herkenningspunten terwijl tegenstanders elkaar tussen de bomen zoeken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Żółte piłki między drzewami</h2><p>Bazooka ball zamienia plenerowe pola Pokeyland w teren drużynowej gry piankowymi piłkami. Czarne wyrzutnie z zielonymi wylotami oraz żółte pociski wyróżniają się na tle liści; gracze noszą ochronę oczu.</p><p>Gra nawiązuje do rywalizacji drużyn w paintballu, lecz zamiast kulek z farbą wykorzystuje piankowe piłki. Dekoracje pól są punktami orientacyjnymi dla przeciwników szukających się między drzewami.</p><h2>Las w roli scenografii</h2><p>Las pozostaje częścią scenerii: na oficjalnym zdjęciu roślinność wypełnia tło za graczami. Żywe kolory piłek i wyrzutni wyraźnie odcinają się od tej plenerowej przestrzeni.</p>",
+            "newValue": "<h2>Żółte piłki między drzewami</h2><p>Bazooka ball zamienia plenerowe pola Pokeyland w teren drużynowej gry piankowymi piłkami. Czarne wyrzutnie z zielonymi wylotami oraz żółte pociski wyróżniają się na tle liści; gracze noszą ochronę oczu.</p><p>Gra nawiązuje do rywalizacji drużyn w paintballu, lecz zamiast kulek z farbą wykorzystuje piankowe piłki. Dekoracje pól są punktami orientacyjnymi dla przeciwników szukających się między drzewami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Bolas amarelas entre as árvores</h2><p>Bazooka ball transforma os campos ao ar livre de Pokeyland num jogo de equipas com bolas de espuma. Os lançadores pretos com bocas verdes e os projéteis amarelos destacam-se na folhagem; os jogadores usam proteção ocular.</p><p>O jogo retoma o confronto entre equipas do paintball, com bolas de espuma em vez de bolas de tinta. Os cenários dos campos servem de referência aos adversários que se procuram entre as árvores.</p><h2>O bosque como cenário</h2><p>O bosque faz parte do ambiente: na fotografia oficial, a vegetação preenche o fundo atrás dos jogadores. As cores vivas das bolas e dos lançadores sobressaem nesta cena ao ar livre.</p>",
+            "newValue": "<h2>Bolas amarelas entre as árvores</h2><p>Bazooka ball transforma os campos ao ar livre de Pokeyland num jogo de equipas com bolas de espuma. Os lançadores pretos com bocas verdes e os projéteis amarelos destacam-se na folhagem; os jogadores usam proteção ocular.</p><p>O jogo retoma o confronto entre equipas do paintball, com bolas de espuma em vez de bolas de tinta. Os cenários dos campos servem de referência aos adversários que se procuram entre as árvores.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "entityKey": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "displayName": "Trampoline",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Springen mit elastischen Seilen</h2><p>Der Bereich Trampoline in Pokeyland umfasst acht Trampoline. Die Teilnehmer tragen einen Gurt, der mit elastischen Seilen verbunden ist und ihre Sprünge begleitet. In der bewaldeten Umgebung des Parks steht hier die Bewegung nach oben und unten im Mittelpunkt.</p><p>Orangefarbene Seile und gelbe Polster heben sich von den Bäumen ab. Ein schwarzer Gurt umschließt den Körper des Springers; die Befestigungen bleiben auf beiden Seiten sichtbar. Die Farben der Ausrüstung prägen das Erscheinungsbild dieser Aktivität.</p>",
+            "newValue": "<h2>Sprünge vor den Bäumen</h2><p>Orangefarbene Seile und gelbe Polster prägen den Bereich Trampoline zwischen den Bäumen von Pokeyland. Mit schwarzen Gurten gesichert, setzen die Teilnehmer zu hohen Sprüngen an, die von elastischen Seilen unterstützt werden.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Jumping with elastic cords</h2><p>Pokeyland’s Trampoline area contains eight trampolines. Participants wear a harness connected to elastic cords that accompany their jumps. The installation centres the activity on vertical movement within the park’s wooded surroundings.</p><p>Orange cords and yellow padding stand out against the trees. A black harness surrounds the jumper’s body, with the attachments visible on either side. The equipment’s colours provide the activity’s main visual markers.</p>",
+            "newValue": "<h2>Jumping in front of the trees</h2><p>Orange cords and yellow padding mark out Pokeyland’s Trampoline area among the trees. Wearing black harnesses, participants spring into high jumps supported by elastic cords.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Saltar con cuerdas elásticas</h2><p>El espacio Trampoline de Pokeyland reúne ocho camas elásticas. El participante lleva un arnés unido a cuerdas elásticas que acompañan sus saltos. La instalación centra la actividad en el movimiento vertical, dentro del entorno arbolado del parque.</p><p>Las cuerdas naranjas y las protecciones amarillas destacan sobre el fondo de árboles. Un arnés negro rodea el cuerpo del saltador y las sujeciones permanecen visibles a ambos lados. Los colores del equipo constituyen los principales rasgos visuales de esta actividad.</p>",
+            "newValue": "<h2>Saltos entre los árboles</h2><p>Las cuerdas naranjas y las protecciones amarillas dan color al espacio Trampoline entre los árboles de Pokeyland. Los participantes llevan arneses negros y dan grandes saltos con la ayuda de las cuerdas elásticas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Sauter avec des élastiques</h2><p>L’espace Trampoline de Pokeyland rassemble huit trampolines. Le participant porte un harnais relié à des élastiques, qui accompagnent ses bonds. Cette installation place le mouvement vertical au centre du jeu, dans le cadre boisé du parc.</p><p>Les cordons orange et les protections jaunes ressortent sur le fond des arbres. Le harnais noir entoure le corps du sauteur, tandis que les attaches restent visibles de part et d’autre. Les couleurs de l’équipement forment ainsi le principal repère visuel de cette activité.</p>",
+            "newValue": "<h2>Des bonds devant les arbres</h2><p>Des cordons orange et des protections jaunes dessinent l’espace Trampoline au milieu des arbres de Pokeyland. Les sauteurs portent un harnais noir et s’élancent dans de grands bonds accompagnés par les élastiques.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Saltare con le corde elastiche</h2><p>L’area Trampoline di Pokeyland riunisce otto trampolini. Il partecipante indossa un’imbracatura collegata a corde elastiche che accompagnano i suoi salti. L’installazione pone il movimento verticale al centro del gioco, nell’ambiente boschivo del parco.</p><p>Le corde arancioni e le protezioni gialle risaltano sullo sfondo degli alberi. L’imbracatura nera circonda il corpo di chi salta, con gli attacchi visibili ai due lati. I colori dell’attrezzatura costituiscono i principali riferimenti visivi dell’attività.</p>",
+            "newValue": "<h2>Salti davanti agli alberi</h2><p>Corde arancioni e protezioni gialle caratterizzano l’area Trampoline tra gli alberi di Pokeyland. I partecipanti indossano imbracature nere e si lanciano in grandi salti accompagnati dalle corde elastiche.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Springen met elastische koorden</h2><p>De zone Trampoline van Pokeyland telt acht trampolines. De deelnemer draagt een harnas dat verbonden is met elastische koorden die de sprongen begeleiden. De verticale beweging staat centraal in deze activiteit, in de bosrijke omgeving van het park.</p><p>Oranje koorden en gele beschermkussens steken af tegen de bomen. Een zwart harnas omsluit het lichaam van de springer; de bevestigingen blijven aan beide kanten zichtbaar. De kleuren van de uitrusting bepalen zo het uiterlijk van deze activiteit.</p>",
+            "newValue": "<h2>Springen tussen de bomen</h2><p>Oranje koorden en gele beschermkussens kleuren de Trampoline-zone tussen de bomen van Pokeyland. De deelnemers dragen zwarte harnassen en maken hoge sprongen, ondersteund door de elastische koorden.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Skoki z elastycznymi linami</h2><p>Strefa Trampoline w Pokeyland obejmuje osiem trampolin. Uczestnik zakłada uprząż połączoną z elastycznymi linami, które towarzyszą jego skokom. Ta instalacja stawia ruch pionowy w centrum zabawy, w leśnym otoczeniu parku.</p><p>Pomarańczowe liny i żółte osłony wyróżniają się na tle drzew. Czarna uprząż otacza ciało skaczącej osoby, a mocowania pozostają widoczne po obu stronach. Kolory wyposażenia stanowią główne rozpoznawalne elementy tej atrakcji.</p>",
+            "newValue": "<h2>Skoki na tle drzew</h2><p>Pomarańczowe liny i żółte osłony wyróżniają strefę Trampoline wśród drzew Pokeyland. Uczestnicy zakładają czarne uprzęże i wykonują wysokie skoki wspomagane przez elastyczne liny.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Saltar com cordas elásticas</h2><p>O espaço Trampoline de Pokeyland reúne oito trampolins. O participante usa um arnês ligado a cordas elásticas que acompanham os seus saltos. A instalação coloca o movimento vertical no centro da atividade, no ambiente arborizado do parque.</p><p>As cordas laranja e as proteções amarelas destacam-se no fundo de árvores. O arnês preto envolve o corpo de quem salta, com as ligações visíveis dos dois lados. As cores do equipamento constituem os principais elementos visuais desta atividade.</p>",
+            "newValue": "<h2>Saltos entre as árvores</h2><p>Cordas laranja e proteções amarelas dão cor ao espaço Trampoline entre as árvores de Pokeyland. Os participantes usam arneses pretos e dão grandes saltos com o apoio das cordas elásticas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "entityKey": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "displayName": "Tubing",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine Reifenfahrt auf grüner Bahn</h2><p>Beim Tubing in Pokeyland gleiten die Besucher in einem großen Reifen eine achtzig Meter lange Bahn hinunter. Ein Förderband ermöglicht anschließend den Weg zurück nach oben innerhalb des Spielbereichs. Die Abfahrt folgt einem angelegten Belag inmitten der Parkvegetation.</p><p>Orangefarbene Elemente begrenzen die grüne Fläche. Die Reifen tragen unter anderem orange-grüne Tarnmuster, einen Griff und den Namen Pokeyland. Ihre runde Form und der gelbe Boden sind auf der Bahn gut zu erkennen.</p>",
+            "newValue": "<h2>Eine grüne Bahn mit orangefarbenen Rändern</h2><p>Beim Tubing gleiten die großen Reifen von Pokeyland eine grüne, von Pflanzen eingerahmte Bahn hinunter. Im Reifen sitzend fahren die Besucher an den orangefarbenen Rändern vorbei.</p><p>Die Reifen tragen orange-grüne Tarnmuster und den Namen des Parks. Ihre gelben Böden setzen einen weiteren leuchtenden Akzent bei dieser Abfahrt im Wald.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A tube ride down a green slope</h2><p>Pokeyland’s Tubing sends riders downhill seated in a large tube on an eighty-metre run. A conveyor then provides the uphill return within the play area. The descent follows a prepared surface amid the park’s vegetation.</p><p>Orange elements border the green surface. The tubes include orange and green camouflage patterns, a handle and the Pokeyland name. Their round shape and yellow base remain clearly visible when the tube is on the slope.</p>",
+            "newValue": "<h2>A green slope edged in orange</h2><p>At Tubing, Pokeyland’s large tubes slide down a green slope framed by vegetation. Sitting inside a tube, riders glide past the orange edges of the run.</p><p>The tubes carry orange and green camouflage patterns and the park’s name. Yellow bases add another bright colour to this woodland descent.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un descenso en flotador por una pista verde</h2><p>El Tubing de Pokeyland propone deslizarse sentado en un gran flotador por una pista de ochenta metros. Una cinta permite después volver a subir dentro del espacio de juego. El descenso sigue una superficie preparada, entre la vegetación del parque.</p><p>Elementos naranjas bordean la superficie verde. Los flotadores llevan, entre otros detalles, dibujos de camuflaje naranja y verde, un asa y el nombre de Pokeyland. Su forma redonda y su base amarilla se distinguen bien cuando están sobre la pista.</p>",
+            "newValue": "<h2>Una pista verde con bordes naranjas</h2><p>En Tubing, los grandes flotadores de Pokeyland se deslizan por una pendiente verde rodeada de vegetación. Sentados dentro del flotador, los visitantes pasan junto a los bordes naranjas de la pista.</p><p>Los flotadores llevan motivos de camuflaje naranja y verde y el nombre del parque. Su base amarilla añade otro color vivo a este descenso entre los árboles.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une descente en bouée sur une piste verte</h2><p>Le Tubing de Pokeyland propose de glisser assis dans une grande bouée sur une piste de quatre-vingts mètres. Un tapis permet ensuite la remontée dans l’espace de jeu. La descente suit un revêtement aménagé, dans le cadre végétal du parc.</p><p>La surface verte est bordée d’éléments orange. Les bouées portent notamment des motifs de camouflage orange et vert, une poignée et le nom de Pokeyland. Leur forme ronde et leur fond jaune restent bien visibles lorsque l’engin se trouve sur la piste.</p>",
+            "newValue": "<h2>Une pente verte bordée d’orange</h2><p>Au Tubing, les grandes bouées de Pokeyland descendent une pente verte encadrée par la végétation. Assis au creux de la bouée, le visiteur glisse près des bordures orange de la piste.</p><p>Les bouées arborent des motifs de camouflage orange et vert, avec le nom du parc. Leur fond jaune ajoute une autre touche vive à cette descente dans les bois.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Una discesa in ciambella su una pista verde</h2><p>Il Tubing di Pokeyland propone di scivolare seduti in una grande ciambella su una pista di ottanta metri. Un tappeto permette poi la risalita all’interno dell’area giochi. La discesa segue una superficie predisposta, tra la vegetazione del parco.</p><p>Elementi arancioni delimitano la superficie verde. Le ciambelle presentano, fra gli altri dettagli, motivi mimetici arancioni e verdi, una maniglia e il nome Pokeyland. La forma rotonda e il fondo giallo restano ben visibili quando si trovano sulla pista.</p>",
+            "newValue": "<h2>Una pista verde dai bordi arancioni</h2><p>Al Tubing, le grandi ciambelle di Pokeyland scivolano lungo una pista verde incorniciata dalla vegetazione. Seduti nella ciambella, i visitatori passano accanto ai bordi arancioni della discesa.</p><p>Le ciambelle hanno motivi mimetici arancioni e verdi e riportano il nome del parco. Il fondo giallo aggiunge un altro colore vivace a questa discesa tra gli alberi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Op een band van een groene helling</h2><p>Bij Tubing in Pokeyland glijden bezoekers zittend in een grote band over een tachtig meter lange baan naar beneden. Een transportband brengt hen vervolgens weer omhoog binnen het speelterrein. De afdaling verloopt over een aangelegde ondergrond tussen het groen van het park.</p><p>Oranje elementen begrenzen het groene oppervlak. De banden hebben onder meer oranje-groene camouflagepatronen, een handgreep en de naam Pokeyland. Hun ronde vorm en gele bodem zijn op de helling duidelijk zichtbaar.</p>",
+            "newValue": "<h2>Een groene helling met oranje randen</h2><p>Bij Tubing glijden de grote banden van Pokeyland over een groene helling tussen de begroeiing. Zittend in een band zoeven bezoekers langs de oranje randen van de baan.</p><p>De banden hebben oranje-groene camouflagepatronen en dragen de naam van het park. Hun gele bodem voegt nog een felle kleur toe aan de afdaling door het bos.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Zjazd na oponie po zielonym torze</h2><p>Tubing w Pokeyland pozwala zjeżdżać na dużej oponie po osiemdziesięciometrowym torze. Przenośnik umożliwia następnie powrót pod górę w obrębie strefy zabawy. Zjazd prowadzi po przygotowanej nawierzchni wśród roślinności parku.</p><p>Pomarańczowe elementy wyznaczają krawędzie zielonej powierzchni. Opony mają między innymi pomarańczowo-zielony wzór maskujący, uchwyt i nazwę Pokeyland. Ich okrągły kształt i żółty spód są dobrze widoczne na torze.</p>",
+            "newValue": "<h2>Zielony tor z pomarańczowymi brzegami</h2><p>Na Tubing duże opony Pokeyland zjeżdżają po zielonym torze otoczonym roślinnością. Uczestnicy siedzą wewnątrz opony i ślizgają się wzdłuż pomarańczowych brzegów trasy.</p><p>Opony zdobią pomarańczowo-zielone wzory maskujące i nazwa parku. Żółty spód dodaje kolejnego wyrazistego koloru tej leśnej zjeżdżalni.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma descida em boia numa pista verde</h2><p>O Tubing de Pokeyland propõe deslizar sentado numa grande boia por uma pista de oitenta metros. Um tapete permite depois regressar à parte de cima do espaço de jogos. A descida segue uma superfície preparada, entre a vegetação do parque.</p><p>Elementos laranja delimitam a superfície verde. As boias apresentam, entre outros detalhes, padrões de camuflagem laranja e verde, uma pega e o nome Pokeyland. A forma redonda e o fundo amarelo mantêm-se bem visíveis quando se encontram na pista.</p>",
+            "newValue": "<h2>Uma pista verde com bordas laranja</h2><p>No Tubing, as grandes boias do Pokeyland deslizam por uma pista verde rodeada de vegetação. Sentados dentro da boia, os visitantes passam junto às bordas laranja da descida.</p><p>As boias apresentam padrões de camuflagem laranja e verde e o nome do parque. O fundo amarelo acrescenta outra cor viva a esta descida entre as árvores.</p>"
+          },
+          {
+            "field": "attractionDetails.lengthInMeters",
+            "oldValue": null,
+            "newValue": "80"
+          },
+          {
+            "field": "attractionDetails.lengthInFeet",
+            "oldValue": null,
+            "newValue": "262.47"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "b2930965-9353-457a-bec7-f8942c2194c9",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:42:13.5854313Z",
+    "appliedAtUtc": "2026-11-15T14:42:13.585432Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "entityKey": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "displayName": "Bazooka ball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Gelbe Bälle zwischen den Bäumen</h2><p>Bei Bazooka ball werden die Außenflächen von Pokeyland zum Schauplatz eines Mannschaftsspiels mit Schaumstoffbällen. Schwarze Werfer mit grünen Mündungen und gelbe Bälle heben sich vom Laub ab; die Spieler tragen Augenschutz.</p><p>Das Spiel übernimmt den Wettstreit zwischen Paintball-Teams, verwendet aber Schaumstoffbälle statt Farbkugeln. Die Kulissen der Spielfelder bieten Orientierung, während sich die Gegner zwischen den Bäumen suchen.</p><h2>Der Wald als Kulisse</h2><p>Der Wald bleibt Teil der Szenerie: Auf dem offiziellen Foto füllt die Vegetation den Hintergrund hinter den Spielern. Die leuchtenden Farben der Bälle und Werfer treten in dieser Freiluftszene hervor.</p>",
+            "newValue": "<h2>Gelbe Bälle zwischen den Bäumen</h2><p>Bei Bazooka ball werden die Außenflächen von Pokeyland zum Schauplatz eines Mannschaftsspiels mit Schaumstoffbällen. Schwarze Werfer mit grünen Mündungen und gelbe Bälle heben sich vom Laub ab; die Spieler tragen Augenschutz.</p><p>Das Spiel übernimmt den Wettstreit zwischen Paintball-Teams, verwendet aber Schaumstoffbälle statt Farbkugeln. Die Kulissen der Spielfelder bieten Orientierung, während sich die Gegner zwischen den Bäumen suchen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Yellow balls among the trees</h2><p>Bazooka ball turns Pokeyland’s outdoor playing fields into a team game with foam balls. Black launchers with green muzzles and yellow projectiles stand out against the foliage; players wear eye protection.</p><p>The game borrows paintball’s team contest, using foam balls instead of paint pellets. The field scenery provides landmarks as opponents look for one another among the trees.</p><h2>A woodland setting</h2><p>The woods remain part of the setting: in the official photograph, vegetation fills the background behind the players. The bright balls and launchers stand out in this outdoor scene.</p>",
+            "newValue": "<h2>Yellow balls among the trees</h2><p>Bazooka ball turns Pokeyland’s outdoor playing fields into a team game with foam balls. Black launchers with green muzzles and yellow projectiles stand out against the foliage; players wear eye protection.</p><p>The game borrows paintball’s team contest, using foam balls instead of paint pellets. The field scenery provides landmarks as opponents look for one another among the trees.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Bolas amarillas entre los árboles</h2><p>Bazooka ball convierte los terrenos al aire libre de Pokeyland en un juego por equipos con bolas de espuma. Los lanzadores negros con bocas verdes y los proyectiles amarillos destacan entre el follaje; los jugadores llevan protección ocular.</p><p>El juego retoma el enfrentamiento por equipos del paintball, con bolas de espuma en lugar de pintura. Los decorados del terreno sirven de referencia mientras los adversarios se buscan entre los árboles.</p><h2>El bosque como escenario</h2><p>El bosque forma parte del entorno: en la fotografía oficial, la vegetación llena el fondo detrás de los jugadores. Los colores vivos de las bolas y los lanzadores resaltan en esta escena al aire libre.</p>",
+            "newValue": "<h2>Bolas amarillas entre los árboles</h2><p>Bazooka ball convierte los terrenos al aire libre de Pokeyland en un juego por equipos con bolas de espuma. Los lanzadores negros con bocas verdes y los proyectiles amarillos destacan entre el follaje; los jugadores llevan protección ocular.</p><p>El juego retoma el enfrentamiento por equipos del paintball, con bolas de espuma en lugar de pintura. Los decorados del terreno sirven de referencia mientras los adversarios se buscan entre los árboles.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Des balles jaunes dans les bois</h2><p>Bazooka ball transforme les terrains extérieurs de Pokeyland en partie d’équipe à balles de mousse. Les lanceurs noirs aux embouts verts et les projectiles jaunes tranchent avec le feuillage ; les joueurs portent des protections pour les yeux.</p><p>Le jeu reprend l’affrontement entre équipes du paintball, avec des balles de mousse à la place des billes de peinture. Les décors des terrains donnent des repères aux adversaires qui se cherchent entre les arbres.</p><h2>La forêt pour décor</h2><p>Le cadre reste ouvert sur les bois : sur la photographie officielle, la végétation remplit l’arrière-plan derrière les joueurs. Les couleurs vives des balles et des lanceurs ressortent dans cette scène de plein air.</p>",
+            "newValue": "<h2>Des balles jaunes dans les bois</h2><p>Bazooka ball transforme les terrains extérieurs de Pokeyland en partie d’équipe à balles de mousse. Les lanceurs noirs aux embouts verts et les projectiles jaunes tranchent avec le feuillage ; les joueurs portent des protections pour les yeux.</p><p>Le jeu reprend l’affrontement entre équipes du paintball, avec des balles de mousse à la place des billes de peinture. Les décors des terrains donnent des repères aux adversaires qui se cherchent entre les arbres.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Palline gialle tra gli alberi</h2><p>Bazooka ball trasforma i campi all’aperto di Pokeyland in un gioco di squadra con palline di gommapiuma. I lanciatori neri dalle estremità verdi e i proiettili gialli risaltano sul fogliame; i giocatori indossano protezioni per gli occhi.</p><p>Il gioco riprende il confronto tra squadre del paintball, sostituendo le palline di vernice con quelle di gommapiuma. Le scenografie dei campi offrono punti di riferimento agli avversari che si cercano tra gli alberi.</p><h2>Il bosco come sfondo</h2><p>Il bosco resta parte della scena: nella fotografia ufficiale, la vegetazione riempie lo sfondo dietro ai giocatori. I colori vivaci delle palline e dei lanciatori spiccano in questo ambiente all’aperto.</p>",
+            "newValue": "<h2>Palline gialle tra gli alberi</h2><p>Bazooka ball trasforma i campi all’aperto di Pokeyland in un gioco di squadra con palline di gommapiuma. I lanciatori neri dalle estremità verdi e i proiettili gialli risaltano sul fogliame; i giocatori indossano protezioni per gli occhi.</p><p>Il gioco riprende il confronto tra squadre del paintball, sostituendo le palline di vernice con quelle di gommapiuma. Le scenografie dei campi offrono punti di riferimento agli avversari che si cercano tra gli alberi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Gele ballen tussen de bomen</h2><p>Bij Bazooka ball veranderen de buitenterreinen van Pokeyland in het decor van een teamspel met schuimballen. Zwarte lanceerders met groene uiteinden en gele ballen vallen op tussen het gebladerte; de spelers dragen oogbescherming.</p><p>Het spel neemt de strijd tussen paintballteams over, maar gebruikt schuimballen in plaats van verfballetjes. De aankleding van het terrein biedt herkenningspunten terwijl tegenstanders elkaar tussen de bomen zoeken.</p><h2>Het bos als decor</h2><p>Het bos blijft onderdeel van de omgeving: op de officiële foto vult de begroeiing de achtergrond achter de spelers. De felle kleuren van de ballen en lanceerders springen eruit in deze buitenscène.</p>",
+            "newValue": "<h2>Gele ballen tussen de bomen</h2><p>Bij Bazooka ball veranderen de buitenterreinen van Pokeyland in het decor van een teamspel met schuimballen. Zwarte lanceerders met groene uiteinden en gele ballen vallen op tussen het gebladerte; de spelers dragen oogbescherming.</p><p>Het spel neemt de strijd tussen paintballteams over, maar gebruikt schuimballen in plaats van verfballetjes. De aankleding van het terrein biedt herkenningspunten terwijl tegenstanders elkaar tussen de bomen zoeken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Żółte piłki między drzewami</h2><p>Bazooka ball zamienia plenerowe pola Pokeyland w teren drużynowej gry piankowymi piłkami. Czarne wyrzutnie z zielonymi wylotami oraz żółte pociski wyróżniają się na tle liści; gracze noszą ochronę oczu.</p><p>Gra nawiązuje do rywalizacji drużyn w paintballu, lecz zamiast kulek z farbą wykorzystuje piankowe piłki. Dekoracje pól są punktami orientacyjnymi dla przeciwników szukających się między drzewami.</p><h2>Las w roli scenografii</h2><p>Las pozostaje częścią scenerii: na oficjalnym zdjęciu roślinność wypełnia tło za graczami. Żywe kolory piłek i wyrzutni wyraźnie odcinają się od tej plenerowej przestrzeni.</p>",
+            "newValue": "<h2>Żółte piłki między drzewami</h2><p>Bazooka ball zamienia plenerowe pola Pokeyland w teren drużynowej gry piankowymi piłkami. Czarne wyrzutnie z zielonymi wylotami oraz żółte pociski wyróżniają się na tle liści; gracze noszą ochronę oczu.</p><p>Gra nawiązuje do rywalizacji drużyn w paintballu, lecz zamiast kulek z farbą wykorzystuje piankowe piłki. Dekoracje pól są punktami orientacyjnymi dla przeciwników szukających się między drzewami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Bolas amarelas entre as árvores</h2><p>Bazooka ball transforma os campos ao ar livre de Pokeyland num jogo de equipas com bolas de espuma. Os lançadores pretos com bocas verdes e os projéteis amarelos destacam-se na folhagem; os jogadores usam proteção ocular.</p><p>O jogo retoma o confronto entre equipas do paintball, com bolas de espuma em vez de bolas de tinta. Os cenários dos campos servem de referência aos adversários que se procuram entre as árvores.</p><h2>O bosque como cenário</h2><p>O bosque faz parte do ambiente: na fotografia oficial, a vegetação preenche o fundo atrás dos jogadores. As cores vivas das bolas e dos lançadores sobressaem nesta cena ao ar livre.</p>",
+            "newValue": "<h2>Bolas amarelas entre as árvores</h2><p>Bazooka ball transforma os campos ao ar livre de Pokeyland num jogo de equipas com bolas de espuma. Os lançadores pretos com bocas verdes e os projéteis amarelos destacam-se na folhagem; os jogadores usam proteção ocular.</p><p>O jogo retoma o confronto entre equipas do paintball, com bolas de espuma em vez de bolas de tinta. Os cenários dos campos servem de referência aos adversários que se procuram entre as árvores.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "entityKey": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "displayName": "Trampoline",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Springen mit elastischen Seilen</h2><p>Der Bereich Trampoline in Pokeyland umfasst acht Trampoline. Die Teilnehmer tragen einen Gurt, der mit elastischen Seilen verbunden ist und ihre Sprünge begleitet. In der bewaldeten Umgebung des Parks steht hier die Bewegung nach oben und unten im Mittelpunkt.</p><p>Orangefarbene Seile und gelbe Polster heben sich von den Bäumen ab. Ein schwarzer Gurt umschließt den Körper des Springers; die Befestigungen bleiben auf beiden Seiten sichtbar. Die Farben der Ausrüstung prägen das Erscheinungsbild dieser Aktivität.</p>",
+            "newValue": "<h2>Sprünge vor den Bäumen</h2><p>Orangefarbene Seile und gelbe Polster prägen den Bereich Trampoline zwischen den Bäumen von Pokeyland. Mit schwarzen Gurten gesichert, setzen die Teilnehmer zu hohen Sprüngen an, die von elastischen Seilen unterstützt werden.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Jumping with elastic cords</h2><p>Pokeyland’s Trampoline area contains eight trampolines. Participants wear a harness connected to elastic cords that accompany their jumps. The installation centres the activity on vertical movement within the park’s wooded surroundings.</p><p>Orange cords and yellow padding stand out against the trees. A black harness surrounds the jumper’s body, with the attachments visible on either side. The equipment’s colours provide the activity’s main visual markers.</p>",
+            "newValue": "<h2>Jumping in front of the trees</h2><p>Orange cords and yellow padding mark out Pokeyland’s Trampoline area among the trees. Wearing black harnesses, participants spring into high jumps supported by elastic cords.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Saltar con cuerdas elásticas</h2><p>El espacio Trampoline de Pokeyland reúne ocho camas elásticas. El participante lleva un arnés unido a cuerdas elásticas que acompañan sus saltos. La instalación centra la actividad en el movimiento vertical, dentro del entorno arbolado del parque.</p><p>Las cuerdas naranjas y las protecciones amarillas destacan sobre el fondo de árboles. Un arnés negro rodea el cuerpo del saltador y las sujeciones permanecen visibles a ambos lados. Los colores del equipo constituyen los principales rasgos visuales de esta actividad.</p>",
+            "newValue": "<h2>Saltos entre los árboles</h2><p>Las cuerdas naranjas y las protecciones amarillas dan color al espacio Trampoline entre los árboles de Pokeyland. Los participantes llevan arneses negros y dan grandes saltos con la ayuda de las cuerdas elásticas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Sauter avec des élastiques</h2><p>L’espace Trampoline de Pokeyland rassemble huit trampolines. Le participant porte un harnais relié à des élastiques, qui accompagnent ses bonds. Cette installation place le mouvement vertical au centre du jeu, dans le cadre boisé du parc.</p><p>Les cordons orange et les protections jaunes ressortent sur le fond des arbres. Le harnais noir entoure le corps du sauteur, tandis que les attaches restent visibles de part et d’autre. Les couleurs de l’équipement forment ainsi le principal repère visuel de cette activité.</p>",
+            "newValue": "<h2>Des bonds devant les arbres</h2><p>Des cordons orange et des protections jaunes dessinent l’espace Trampoline au milieu des arbres de Pokeyland. Les sauteurs portent un harnais noir et s’élancent dans de grands bonds accompagnés par les élastiques.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Saltare con le corde elastiche</h2><p>L’area Trampoline di Pokeyland riunisce otto trampolini. Il partecipante indossa un’imbracatura collegata a corde elastiche che accompagnano i suoi salti. L’installazione pone il movimento verticale al centro del gioco, nell’ambiente boschivo del parco.</p><p>Le corde arancioni e le protezioni gialle risaltano sullo sfondo degli alberi. L’imbracatura nera circonda il corpo di chi salta, con gli attacchi visibili ai due lati. I colori dell’attrezzatura costituiscono i principali riferimenti visivi dell’attività.</p>",
+            "newValue": "<h2>Salti davanti agli alberi</h2><p>Corde arancioni e protezioni gialle caratterizzano l’area Trampoline tra gli alberi di Pokeyland. I partecipanti indossano imbracature nere e si lanciano in grandi salti accompagnati dalle corde elastiche.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Springen met elastische koorden</h2><p>De zone Trampoline van Pokeyland telt acht trampolines. De deelnemer draagt een harnas dat verbonden is met elastische koorden die de sprongen begeleiden. De verticale beweging staat centraal in deze activiteit, in de bosrijke omgeving van het park.</p><p>Oranje koorden en gele beschermkussens steken af tegen de bomen. Een zwart harnas omsluit het lichaam van de springer; de bevestigingen blijven aan beide kanten zichtbaar. De kleuren van de uitrusting bepalen zo het uiterlijk van deze activiteit.</p>",
+            "newValue": "<h2>Springen tussen de bomen</h2><p>Oranje koorden en gele beschermkussens kleuren de Trampoline-zone tussen de bomen van Pokeyland. De deelnemers dragen zwarte harnassen en maken hoge sprongen, ondersteund door de elastische koorden.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Skoki z elastycznymi linami</h2><p>Strefa Trampoline w Pokeyland obejmuje osiem trampolin. Uczestnik zakłada uprząż połączoną z elastycznymi linami, które towarzyszą jego skokom. Ta instalacja stawia ruch pionowy w centrum zabawy, w leśnym otoczeniu parku.</p><p>Pomarańczowe liny i żółte osłony wyróżniają się na tle drzew. Czarna uprząż otacza ciało skaczącej osoby, a mocowania pozostają widoczne po obu stronach. Kolory wyposażenia stanowią główne rozpoznawalne elementy tej atrakcji.</p>",
+            "newValue": "<h2>Skoki na tle drzew</h2><p>Pomarańczowe liny i żółte osłony wyróżniają strefę Trampoline wśród drzew Pokeyland. Uczestnicy zakładają czarne uprzęże i wykonują wysokie skoki wspomagane przez elastyczne liny.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Saltar com cordas elásticas</h2><p>O espaço Trampoline de Pokeyland reúne oito trampolins. O participante usa um arnês ligado a cordas elásticas que acompanham os seus saltos. A instalação coloca o movimento vertical no centro da atividade, no ambiente arborizado do parque.</p><p>As cordas laranja e as proteções amarelas destacam-se no fundo de árvores. O arnês preto envolve o corpo de quem salta, com as ligações visíveis dos dois lados. As cores do equipamento constituem os principais elementos visuais desta atividade.</p>",
+            "newValue": "<h2>Saltos entre as árvores</h2><p>Cordas laranja e proteções amarelas dão cor ao espaço Trampoline entre as árvores de Pokeyland. Os participantes usam arneses pretos e dão grandes saltos com o apoio das cordas elásticas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "entityKey": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "displayName": "Tubing",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine Reifenfahrt auf grüner Bahn</h2><p>Beim Tubing in Pokeyland gleiten die Besucher in einem großen Reifen eine achtzig Meter lange Bahn hinunter. Ein Förderband ermöglicht anschließend den Weg zurück nach oben innerhalb des Spielbereichs. Die Abfahrt folgt einem angelegten Belag inmitten der Parkvegetation.</p><p>Orangefarbene Elemente begrenzen die grüne Fläche. Die Reifen tragen unter anderem orange-grüne Tarnmuster, einen Griff und den Namen Pokeyland. Ihre runde Form und der gelbe Boden sind auf der Bahn gut zu erkennen.</p>",
+            "newValue": "<h2>Eine grüne Bahn mit orangefarbenen Rändern</h2><p>Beim Tubing gleiten die großen Reifen von Pokeyland eine grüne, von Pflanzen eingerahmte Bahn hinunter. Im Reifen sitzend fahren die Besucher an den orangefarbenen Rändern vorbei.</p><p>Die Reifen tragen orange-grüne Tarnmuster und den Namen des Parks. Ihre gelben Böden setzen einen weiteren leuchtenden Akzent bei dieser Abfahrt im Wald.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A tube ride down a green slope</h2><p>Pokeyland’s Tubing sends riders downhill seated in a large tube on an eighty-metre run. A conveyor then provides the uphill return within the play area. The descent follows a prepared surface amid the park’s vegetation.</p><p>Orange elements border the green surface. The tubes include orange and green camouflage patterns, a handle and the Pokeyland name. Their round shape and yellow base remain clearly visible when the tube is on the slope.</p>",
+            "newValue": "<h2>A green slope edged in orange</h2><p>At Tubing, Pokeyland’s large tubes slide down a green slope framed by vegetation. Sitting inside a tube, riders glide past the orange edges of the run.</p><p>The tubes carry orange and green camouflage patterns and the park’s name. Yellow bases add another bright colour to this woodland descent.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un descenso en flotador por una pista verde</h2><p>El Tubing de Pokeyland propone deslizarse sentado en un gran flotador por una pista de ochenta metros. Una cinta permite después volver a subir dentro del espacio de juego. El descenso sigue una superficie preparada, entre la vegetación del parque.</p><p>Elementos naranjas bordean la superficie verde. Los flotadores llevan, entre otros detalles, dibujos de camuflaje naranja y verde, un asa y el nombre de Pokeyland. Su forma redonda y su base amarilla se distinguen bien cuando están sobre la pista.</p>",
+            "newValue": "<h2>Una pista verde con bordes naranjas</h2><p>En Tubing, los grandes flotadores de Pokeyland se deslizan por una pendiente verde rodeada de vegetación. Sentados dentro del flotador, los visitantes pasan junto a los bordes naranjas de la pista.</p><p>Los flotadores llevan motivos de camuflaje naranja y verde y el nombre del parque. Su base amarilla añade otro color vivo a este descenso entre los árboles.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une descente en bouée sur une piste verte</h2><p>Le Tubing de Pokeyland propose de glisser assis dans une grande bouée sur une piste de quatre-vingts mètres. Un tapis permet ensuite la remontée dans l’espace de jeu. La descente suit un revêtement aménagé, dans le cadre végétal du parc.</p><p>La surface verte est bordée d’éléments orange. Les bouées portent notamment des motifs de camouflage orange et vert, une poignée et le nom de Pokeyland. Leur forme ronde et leur fond jaune restent bien visibles lorsque l’engin se trouve sur la piste.</p>",
+            "newValue": "<h2>Une pente verte bordée d’orange</h2><p>Au Tubing, les grandes bouées de Pokeyland descendent une pente verte encadrée par la végétation. Assis au creux de la bouée, le visiteur glisse près des bordures orange de la piste.</p><p>Les bouées arborent des motifs de camouflage orange et vert, avec le nom du parc. Leur fond jaune ajoute une autre touche vive à cette descente dans les bois.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Una discesa in ciambella su una pista verde</h2><p>Il Tubing di Pokeyland propone di scivolare seduti in una grande ciambella su una pista di ottanta metri. Un tappeto permette poi la risalita all’interno dell’area giochi. La discesa segue una superficie predisposta, tra la vegetazione del parco.</p><p>Elementi arancioni delimitano la superficie verde. Le ciambelle presentano, fra gli altri dettagli, motivi mimetici arancioni e verdi, una maniglia e il nome Pokeyland. La forma rotonda e il fondo giallo restano ben visibili quando si trovano sulla pista.</p>",
+            "newValue": "<h2>Una pista verde dai bordi arancioni</h2><p>Al Tubing, le grandi ciambelle di Pokeyland scivolano lungo una pista verde incorniciata dalla vegetazione. Seduti nella ciambella, i visitatori passano accanto ai bordi arancioni della discesa.</p><p>Le ciambelle hanno motivi mimetici arancioni e verdi e riportano il nome del parco. Il fondo giallo aggiunge un altro colore vivace a questa discesa tra gli alberi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Op een band van een groene helling</h2><p>Bij Tubing in Pokeyland glijden bezoekers zittend in een grote band over een tachtig meter lange baan naar beneden. Een transportband brengt hen vervolgens weer omhoog binnen het speelterrein. De afdaling verloopt over een aangelegde ondergrond tussen het groen van het park.</p><p>Oranje elementen begrenzen het groene oppervlak. De banden hebben onder meer oranje-groene camouflagepatronen, een handgreep en de naam Pokeyland. Hun ronde vorm en gele bodem zijn op de helling duidelijk zichtbaar.</p>",
+            "newValue": "<h2>Een groene helling met oranje randen</h2><p>Bij Tubing glijden de grote banden van Pokeyland over een groene helling tussen de begroeiing. Zittend in een band zoeven bezoekers langs de oranje randen van de baan.</p><p>De banden hebben oranje-groene camouflagepatronen en dragen de naam van het park. Hun gele bodem voegt nog een felle kleur toe aan de afdaling door het bos.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Zjazd na oponie po zielonym torze</h2><p>Tubing w Pokeyland pozwala zjeżdżać na dużej oponie po osiemdziesięciometrowym torze. Przenośnik umożliwia następnie powrót pod górę w obrębie strefy zabawy. Zjazd prowadzi po przygotowanej nawierzchni wśród roślinności parku.</p><p>Pomarańczowe elementy wyznaczają krawędzie zielonej powierzchni. Opony mają między innymi pomarańczowo-zielony wzór maskujący, uchwyt i nazwę Pokeyland. Ich okrągły kształt i żółty spód są dobrze widoczne na torze.</p>",
+            "newValue": "<h2>Zielony tor z pomarańczowymi brzegami</h2><p>Na Tubing duże opony Pokeyland zjeżdżają po zielonym torze otoczonym roślinnością. Uczestnicy siedzą wewnątrz opony i ślizgają się wzdłuż pomarańczowych brzegów trasy.</p><p>Opony zdobią pomarańczowo-zielone wzory maskujące i nazwa parku. Żółty spód dodaje kolejnego wyrazistego koloru tej leśnej zjeżdżalni.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma descida em boia numa pista verde</h2><p>O Tubing de Pokeyland propõe deslizar sentado numa grande boia por uma pista de oitenta metros. Um tapete permite depois regressar à parte de cima do espaço de jogos. A descida segue uma superfície preparada, entre a vegetação do parque.</p><p>Elementos laranja delimitam a superfície verde. As boias apresentam, entre outros detalhes, padrões de camuflagem laranja e verde, uma pega e o nome Pokeyland. A forma redonda e o fundo amarelo mantêm-se bem visíveis quando se encontram na pista.</p>",
+            "newValue": "<h2>Uma pista verde com bordas laranja</h2><p>No Tubing, as grandes boias do Pokeyland deslizam por uma pista verde rodeada de vegetação. Sentados dentro da boia, os visitantes passam junto às bordas laranja da descida.</p><p>As boias apresentam padrões de camuflagem laranja e verde e o nome do parque. O fundo amarelo acrescenta outra cor viva a esta descida entre as árvores.</p>"
+          },
+          {
+            "field": "attractionDetails.lengthInMeters",
+            "oldValue": null,
+            "newValue": "80"
+          },
+          {
+            "field": "attractionDetails.lengthInFeet",
+            "oldValue": null,
+            "newValue": "262.47"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "auditReference": "42-publication-scope-audit-export.json",
+  "personalReview": "24 revised texts personally written and reviewed in all8languages; source facts and images unchanged. Short-source exceptions retained.",
+  "finalAuditCompleted": false,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false
+}

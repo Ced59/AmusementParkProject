@@ -1,0 +1,2941 @@
+{
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+          "key": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+          "name": "Aire de jeux",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+          "key": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+          "name": "Aires de pique-nique",
+          "category": "Service",
+          "type": "Service",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "798894e0-5efa-45b0-953c-baad70dab44a",
+          "key": "798894e0-5efa-45b0-953c-baad70dab44a",
+          "name": "Bazooka ball",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+          "key": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+          "name": "Big Air Jump",
+          "category": "Attraction",
+          "type": "ThrillRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "a82dabf5-da88-4717-85f9-d22234c0654c",
+          "key": "a82dabf5-da88-4717-85f9-d22234c0654c",
+          "name": "Bumper Boat",
+          "category": "Attraction",
+          "type": "WaterRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+          "key": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+          "name": "Cabanes de Pokey",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "00739144-e99b-45a1-8694-3594553ca3a2",
+          "key": "00739144-e99b-45a1-8694-3594553ca3a2",
+          "name": "Caisse d’accueil",
+          "category": "Service",
+          "type": "Information",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+          "key": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+          "name": "Cannibale",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+          "key": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+          "name": "Checkpoint",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+          "key": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+          "name": "Crazy Kart",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "d7074297-19a0-44e6-a196-c251ea484d46",
+          "key": "d7074297-19a0-44e6-a196-c251ea484d46",
+          "name": "Dog One",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "11978677-6ea2-457a-af26-cfc2fda129df",
+          "key": "11978677-6ea2-457a-af26-cfc2fda129df",
+          "name": "Ejector",
+          "category": "Attraction",
+          "type": "ThrillRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+          "key": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+          "name": "Escalade",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "38922aa5-2307-4973-b0f5-b076325642a9",
+          "key": "38922aa5-2307-4973-b0f5-b076325642a9",
+          "name": "Fall Tower",
+          "category": "Attraction",
+          "type": "DropTower",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+          "key": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+          "name": "Fox Two",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+          "key": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+          "name": "Kid’s Racer",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "53432ace-37a0-4149-9153-a418b86da889",
+          "key": "53432ace-37a0-4149-9153-a418b86da889",
+          "name": "Kid’s Swing",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+          "key": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+          "name": "La Pomme",
+          "category": "Attraction",
+          "type": "RollerCoaster",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+          "key": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+          "name": "La Roue",
+          "category": "Attraction",
+          "type": "ObservationRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+          "key": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+          "name": "Laser Game",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+          "key": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+          "name": "Le Batoo",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+          "key": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+          "name": "Le Gourmand",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "538a604f-6fe1-4460-9740-7b0c576b0214",
+          "key": "538a604f-6fe1-4460-9740-7b0c576b0214",
+          "name": "Le Grill",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "e267af4d-a394-4ddb-9cb5-597582e077da",
+          "key": "e267af4d-a394-4ddb-9cb5-597582e077da",
+          "name": "Le Petit Creux",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+          "key": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+          "name": "Le p’tit train",
+          "category": "Attraction",
+          "type": "TransportRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+          "key": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+          "name": "Les as du ciel",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+          "key": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+          "name": "Les as du volant",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+          "key": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+          "name": "Les avions",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+          "key": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+          "name": "Les p’tits chevaux",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+          "key": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+          "name": "L’Escale",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+          "key": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+          "name": "Mini-buggy",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+          "key": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+          "name": "Mini-ferme",
+          "category": "Animal",
+          "type": "AnimalExhibit",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+          "key": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+          "name": "Mini-golf",
+          "category": "Attraction",
+          "type": "Game",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "776a9555-8156-4199-980f-e07ccbd44a31",
+          "key": "776a9555-8156-4199-980f-e07ccbd44a31",
+          "name": "Mono-Rail",
+          "category": "Attraction",
+          "type": "ObservationRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+          "key": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+          "name": "Panama",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+          "key": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+          "name": "Parcours découverte",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+          "key": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+          "name": "Parcours famille",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+          "key": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+          "name": "Parcours pieds nus",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+          "key": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+          "name": "Parcours sportif",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+          "key": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+          "name": "Parcours tyrolienne",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+          "key": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+          "name": "Parkings",
+          "category": "Service",
+          "type": "Parking",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+          "key": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+          "name": "Poney",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+          "key": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+          "name": "Rotor Jump",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+          "key": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+          "name": "Salle de séminaire",
+          "category": "Service",
+          "type": "Service",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+          "key": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+          "name": "Saut dans le vide",
+          "category": "Attraction",
+          "type": "ThrillRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+          "key": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+          "name": "Scène Pokeyshow",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+          "key": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+          "name": "Segway",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+          "key": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+          "name": "Tir à l’arc",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+          "key": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+          "name": "Trampoline",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+          "key": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+          "name": "Tubing",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "73ff7670-39ee-4c19-b339-907707fc8711",
+          "key": "73ff7670-39ee-4c19-b339-907707fc8711",
+          "name": "Waterjump",
+          "category": "Attraction",
+          "type": "WaterRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+          "key": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+          "name": "Zombie",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        }
+      ],
+      "zones": [
+        {
+          "key": "15802825-0835-40e0-b211-410bc26e14b9",
+          "id": "15802825-0835-40e0-b211-410bc26e14b9",
+          "name": "Accrobranche",
+          "isVisible": true
+        },
+        {
+          "key": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+          "id": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+          "name": "Paintball",
+          "isVisible": true
+        },
+        {
+          "key": "161766a5-cdcd-4675-aef8-3acc9e078098",
+          "id": "161766a5-cdcd-4675-aef8-3acc9e078098",
+          "name": "Waterjump",
+          "isVisible": true
+        }
+      ],
+      "park": {
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "officialMaps": [
+          {
+            "key": "pokeyland-map-2026-fr",
+            "id": "pokeyland-map-2026-fr",
+            "year": 2026,
+            "format": "Pdf",
+            "documentUrl": null,
+            "storageKey": "official-maps/dc876288-7c8b-4684-8150-993908cdcf7a/pokeyland-map-2026-fr.ddba2c505c544a4583efe1467a3e80ee.pdf",
+            "originalFileName": "official-map-2026.pdf",
+            "contentType": "application/pdf",
+            "sizeInBytes": 362538,
+            "previewImageUrl": null,
+            "sourcePageUrl": "https://www.pokeyland.com/plan-du-parc/",
+            "languageCode": "fr",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Plan officiel de Pokeyland — 2026"
+              },
+              {
+                "languageCode": "en",
+                "value": "Official Pokeyland map — 2026"
+              },
+              {
+                "languageCode": "de",
+                "value": "Offizieller Parkplan von Pokeyland — 2026"
+              },
+              {
+                "languageCode": "es",
+                "value": "Plano oficial de Pokeyland — 2026"
+              },
+              {
+                "languageCode": "it",
+                "value": "Mappa ufficiale di Pokeyland — 2026"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Officiële plattegrond van Pokeyland — 2026"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Oficjalny plan Pokeyland — 2026"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Mapa oficial de Pokeyland — 2026"
+              }
+            ],
+            "alternativeTexts": [],
+            "isVisible": true,
+            "lastVerifiedAtUtc": "2026-11-15T10:36:57.087Z"
+          }
+        ]
+      },
+      "references": {
+        "operators": [
+          {
+            "key": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+            "id": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+            "name": "BERNARD-AMUSEMENT",
+            "adminReviewStatus": "Validated"
+          }
+        ],
+        "manufacturers": [
+          {
+            "key": "a20298e7-7075-4a0d-811e-3985c3299882",
+            "id": "a20298e7-7075-4a0d-811e-3985c3299882",
+            "name": "Lukylud",
+            "isVisible": true,
+            "adminReviewStatus": "Validated"
+          }
+        ]
+      },
+      "metadata": {
+        "source": "Conversation France — publication ciblée du périmètre audité; tolérance de score propriétaire15novembre2026; inventaire global partial"
+      }
+    }
+  },
+  "preview": {
+    "operationId": "cfeeb0e9-18b6-4372-9dc6-50dcd0b02723",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:54:58.8725868Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 58,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "entityKey": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "displayName": "BERNARD-AMUSEMENT",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "entityKey": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "displayName": "Lukylud",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "pokeyland-map-2026-fr",
+        "entityKey": "pokeyland-map-2026-fr",
+        "displayName": "Carte officielle 2026 (fr, Pdf)",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "15802825-0835-40e0-b211-410bc26e14b9",
+        "entityKey": "15802825-0835-40e0-b211-410bc26e14b9",
+        "displayName": "Accrobranche",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "entityKey": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "displayName": "Paintball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "161766a5-cdcd-4675-aef8-3acc9e078098",
+        "entityKey": "161766a5-cdcd-4675-aef8-3acc9e078098",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "entityKey": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "displayName": "Aire de jeux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "entityKey": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "entityKey": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "displayName": "Bazooka ball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "displayName": "Big Air Jump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "entityKey": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "displayName": "Bumper Boat",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "entityKey": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "displayName": "Cabanes de Pokey",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "entityKey": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "displayName": "Caisse d’accueil",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "entityKey": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "displayName": "Cannibale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "entityKey": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "displayName": "Checkpoint",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "entityKey": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "displayName": "Crazy Kart",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "entityKey": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "displayName": "Dog One",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "entityKey": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "displayName": "Ejector",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "displayName": "Escalade",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "entityKey": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "displayName": "Fall Tower",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "entityKey": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "displayName": "Fox Two",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "entityKey": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "displayName": "Kid’s Racer",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53432ace-37a0-4149-9153-a418b86da889",
+        "entityKey": "53432ace-37a0-4149-9153-a418b86da889",
+        "displayName": "Kid’s Swing",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "La Pomme",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "entityKey": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "displayName": "La Roue",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "displayName": "Laser Game",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "entityKey": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "displayName": "Le Batoo",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "displayName": "Le Gourmand",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "displayName": "Le Grill",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "displayName": "Le Petit Creux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "entityKey": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "displayName": "Le p’tit train",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "entityKey": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "displayName": "Les as du ciel",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "entityKey": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "displayName": "Les as du volant",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "entityKey": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "displayName": "Les avions",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "entityKey": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "displayName": "Les p’tits chevaux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "displayName": "L’Escale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "entityKey": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "displayName": "Mini-buggy",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "displayName": "Mini-ferme",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "displayName": "Mini-golf",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "entityKey": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "displayName": "Mono-Rail",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "entityKey": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "displayName": "Panama",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "displayName": "Parcours découverte",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "displayName": "Parcours famille",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "entityKey": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "displayName": "Parcours pieds nus",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "displayName": "Parcours sportif",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "entityKey": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "displayName": "Parkings",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "displayName": "Poney",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "displayName": "Rotor Jump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "entityKey": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "displayName": "Salle de séminaire",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "displayName": "Saut dans le vide",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "entityKey": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "displayName": "Segway",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "entityKey": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "displayName": "Tir à l’arc",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "entityKey": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "displayName": "Trampoline",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "entityKey": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "displayName": "Tubing",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "entityKey": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "displayName": "Zombie",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "ca4651d9-9200-490d-8583-2aef9116190d",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:55:20.4036631Z",
+    "appliedAtUtc": "2026-11-15T14:55:20.4036637Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 58,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "entityKey": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "displayName": "BERNARD-AMUSEMENT",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "entityKey": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "displayName": "Lukylud",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "pokeyland-map-2026-fr",
+        "entityKey": "pokeyland-map-2026-fr",
+        "displayName": "Carte officielle 2026 (fr, Pdf)",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "15802825-0835-40e0-b211-410bc26e14b9",
+        "entityKey": "15802825-0835-40e0-b211-410bc26e14b9",
+        "displayName": "Accrobranche",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "entityKey": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "displayName": "Paintball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "161766a5-cdcd-4675-aef8-3acc9e078098",
+        "entityKey": "161766a5-cdcd-4675-aef8-3acc9e078098",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "entityKey": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "displayName": "Aire de jeux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "entityKey": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "entityKey": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "displayName": "Bazooka ball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "displayName": "Big Air Jump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "entityKey": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "displayName": "Bumper Boat",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "entityKey": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "displayName": "Cabanes de Pokey",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "entityKey": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "displayName": "Caisse d’accueil",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "entityKey": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "displayName": "Cannibale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "entityKey": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "displayName": "Checkpoint",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "entityKey": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "displayName": "Crazy Kart",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "entityKey": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "displayName": "Dog One",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "entityKey": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "displayName": "Ejector",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "displayName": "Escalade",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "entityKey": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "displayName": "Fall Tower",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "entityKey": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "displayName": "Fox Two",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "entityKey": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "displayName": "Kid’s Racer",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53432ace-37a0-4149-9153-a418b86da889",
+        "entityKey": "53432ace-37a0-4149-9153-a418b86da889",
+        "displayName": "Kid’s Swing",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "La Pomme",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "entityKey": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "displayName": "La Roue",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "displayName": "Laser Game",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "entityKey": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "displayName": "Le Batoo",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "displayName": "Le Gourmand",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "displayName": "Le Grill",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "displayName": "Le Petit Creux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "entityKey": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "displayName": "Le p’tit train",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "entityKey": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "displayName": "Les as du ciel",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "entityKey": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "displayName": "Les as du volant",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "entityKey": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "displayName": "Les avions",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "entityKey": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "displayName": "Les p’tits chevaux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "displayName": "L’Escale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "entityKey": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "displayName": "Mini-buggy",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "displayName": "Mini-ferme",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "displayName": "Mini-golf",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "entityKey": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "displayName": "Mono-Rail",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "entityKey": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "displayName": "Panama",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "displayName": "Parcours découverte",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "displayName": "Parcours famille",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "entityKey": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "displayName": "Parcours pieds nus",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "displayName": "Parcours sportif",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "entityKey": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "displayName": "Parkings",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "displayName": "Poney",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "displayName": "Rotor Jump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "entityKey": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "displayName": "Salle de séminaire",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "displayName": "Saut dans le vide",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "entityKey": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "displayName": "Segway",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "entityKey": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "displayName": "Tir à l’arc",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "entityKey": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "displayName": "Trampoline",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "entityKey": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "displayName": "Tubing",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "entityKey": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "displayName": "Zombie",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "scopeAudit": "pokeyland-publication-scope-audit-20261115.json",
+  "scorePolicy": "france-publication-score-policy-20261115.json",
+  "publicationExportComparison": {
+    "metadataOnlyDifference": true,
+    "differences": [],
+    "auditMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T14:38:07.2997847Z"
+    },
+    "publicationMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T14:52:53.9653767Z"
+    }
+  },
+  "globalCompletion": false,
+  "facebookPublicationPerformed": false
+}

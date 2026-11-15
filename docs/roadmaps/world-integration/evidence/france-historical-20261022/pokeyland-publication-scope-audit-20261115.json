@@ -1,0 +1,6635 @@
+{
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "auditedAtUtc": "2026-11-15T14:52:40.518078+00:00",
+  "decision": "Ready for publication of the explicitly selected audited scope; global inventory remains partial",
+  "globalCompletion": false,
+  "scoreAuthorization": "france-publication-score-policy-20261115.json",
+  "projectedCompleteness": {
+    "result": {
+      "completenessScore": 91,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 98,
+      "earnedPoints": 89,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "startedAtUtc": "2026-11-15T14:51:27.0324148Z",
+    "receivedAtUtc": "2026-11-15T14:51:27.9519371Z",
+    "action": "Completeness"
+  },
+  "historyBeforePublication": {
+    "action": "HistoryDiagnostics",
+    "receivedAtUtc": "2026-11-15T14:51:45.5618666Z",
+    "startedAtUtc": "2026-11-15T14:51:44.6151220Z",
+    "result": {
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkName": "Pokeyland",
+      "factCount": 11,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 0,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 0,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 10
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 1
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": false,
+        "hasCompleteSourceCoverage": false,
+        "hasMajorMilestone": false,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 0,
+        "sourcedFactCount": 0,
+        "majorFactCount": 0,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "uniqueAuditExport": {
+    "exportedAtUtc": "2026-11-15T14:38:07.2997847Z",
+    "sha256": "be53dab0bb1242539006e82d34c5c38ee03ed91a719d0982b1789e891d1cf31d",
+    "correctionOperation": "b2930965-9353-457a-bec7-f8942c2194c9",
+    "correctionAppliedAtUtc": "2026-11-15T14:42:13.585432Z"
+  },
+  "scope": {
+    "createdAtUtc": "2026-11-15T14:45:10.182072+00:00",
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "items": [
+      {
+        "id": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "key": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "name": "Aire de jeux"
+      },
+      {
+        "id": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "key": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "name": "Aires de pique-nique"
+      },
+      {
+        "id": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "key": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "name": "Bazooka ball"
+      },
+      {
+        "id": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "key": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "name": "Big Air Jump"
+      },
+      {
+        "id": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "key": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "name": "Bumper Boat"
+      },
+      {
+        "id": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "key": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "name": "Cabanes de Pokey"
+      },
+      {
+        "id": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "key": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "name": "Caisse d’accueil"
+      },
+      {
+        "id": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "key": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "name": "Cannibale"
+      },
+      {
+        "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "key": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "name": "Checkpoint"
+      },
+      {
+        "id": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "key": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "name": "Crazy Kart"
+      },
+      {
+        "id": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "key": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "name": "Dog One"
+      },
+      {
+        "id": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "key": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "name": "Ejector"
+      },
+      {
+        "id": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "key": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "name": "Escalade"
+      },
+      {
+        "id": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "key": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "name": "Fall Tower"
+      },
+      {
+        "id": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "key": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "name": "Fox Two"
+      },
+      {
+        "id": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "key": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "name": "Kid’s Racer"
+      },
+      {
+        "id": "53432ace-37a0-4149-9153-a418b86da889",
+        "key": "53432ace-37a0-4149-9153-a418b86da889",
+        "name": "Kid’s Swing"
+      },
+      {
+        "id": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "key": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "name": "La Pomme"
+      },
+      {
+        "id": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "key": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "name": "La Roue"
+      },
+      {
+        "id": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "key": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "name": "Laser Game"
+      },
+      {
+        "id": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "key": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "name": "Le Batoo"
+      },
+      {
+        "id": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "key": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "name": "Le Gourmand"
+      },
+      {
+        "id": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "key": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "name": "Le Grill"
+      },
+      {
+        "id": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "key": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "name": "Le Petit Creux"
+      },
+      {
+        "id": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "key": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "name": "Le p’tit train"
+      },
+      {
+        "id": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "key": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "name": "Les as du ciel"
+      },
+      {
+        "id": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "key": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "name": "Les as du volant"
+      },
+      {
+        "id": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "key": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "name": "Les avions"
+      },
+      {
+        "id": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "key": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "name": "Les p’tits chevaux"
+      },
+      {
+        "id": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "key": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "name": "L’Escale"
+      },
+      {
+        "id": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "key": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "name": "Mini-buggy"
+      },
+      {
+        "id": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "key": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "name": "Mini-ferme"
+      },
+      {
+        "id": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "key": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "name": "Mini-golf"
+      },
+      {
+        "id": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "key": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "name": "Mono-Rail"
+      },
+      {
+        "id": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "key": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "name": "Panama"
+      },
+      {
+        "id": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "key": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "name": "Parcours découverte"
+      },
+      {
+        "id": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "key": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "name": "Parcours famille"
+      },
+      {
+        "id": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "key": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "name": "Parcours pieds nus"
+      },
+      {
+        "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "key": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "name": "Parcours sportif"
+      },
+      {
+        "id": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "key": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "name": "Parcours tyrolienne"
+      },
+      {
+        "id": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "key": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "name": "Parkings"
+      },
+      {
+        "id": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "key": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "name": "Poney"
+      },
+      {
+        "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "key": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "name": "Rotor Jump"
+      },
+      {
+        "id": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "key": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "name": "Salle de séminaire"
+      },
+      {
+        "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "key": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "name": "Saut dans le vide"
+      },
+      {
+        "id": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "key": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "name": "Scène Pokeyshow"
+      },
+      {
+        "id": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "key": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "name": "Segway"
+      },
+      {
+        "id": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "key": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "name": "Tir à l’arc"
+      },
+      {
+        "id": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "key": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "name": "Trampoline"
+      },
+      {
+        "id": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "key": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "name": "Tubing"
+      },
+      {
+        "id": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "key": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "name": "Waterjump"
+      },
+      {
+        "id": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "key": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "name": "Zombie"
+      }
+    ],
+    "images": [
+      "452fd5f698e549c3922711177b0984e9",
+      "a30bcfef2e414aca8898b45ee212d46e",
+      "c71e7771f1a247f5b9dbf49cf3c69aca",
+      "aec2045ac03e42eebcc6f8c3db977b4f",
+      "f76f6dce0ee54907bba900c8e307aa27",
+      "854a573d1b84444d9257cb9626b0360b",
+      "a19c6a01526c40639bc7187d9b88368f",
+      "490b9c348df1440ab5ca688ed39613a8",
+      "b6860a71b8354201bd1d7533b1eed2f5",
+      "157b717d3f6045058612279d0f4e1540",
+      "23c8dbb7dcd248eb8d0186222443f2d2",
+      "017581c2b60b4763a6f2e8e4d9c8a1a6",
+      "399f973442ef4bed9fa1a8c3f4cc4f19",
+      "e962c52928454d4c83a3bc90c075f2ad",
+      "43911282339d43de84505b656079bcaf",
+      "3fb34d48ddaa4460b16f774a3fc45004",
+      "96d60d7c6c0c40d79627a733c4ae2ff5",
+      "52be7f0705244106aa5219bb47fb6359",
+      "1f693f389f2d435daee1e38782d47ee1",
+      "31ea2b41b90045bfa7114af9567f39d0",
+      "67935475ed1240c592561ab14a443d8b",
+      "c8466353e86442e180d8ff8e5fbbf41a",
+      "f4e5db0fd4da432599a6968adcecbb75",
+      "1ca0f5afafbd466db3e529f0f7c9210b",
+      "6cc6622a5db343a4a0ef8d96f7197719",
+      "b6dab89667e443b0839ad1b5220a4ec0",
+      "9dc4f8c27d9e4cfc9d459517a74d9b38",
+      "7a93467a6c1c4c3daf2f468274195c34",
+      "2a6321fa0dd44f6088c69cf78f04db1d",
+      "5dd3bb456db74c25b11142c570398f5b",
+      "8b3793aac4c94556833ba532eab46345",
+      "02f8fe904d61402db8e69951510ece12",
+      "564dfc5df72f451e9a3b435d8ae51a27",
+      "e9a95a64a5e847a0bc8867e71dd8ee5b",
+      "6be2dd0f36e94f61801bee58bb41c311",
+      "c3ed49df002b49029862ad404962f5fc",
+      "ea0ce74a58b540a6bd7cae56c439591f",
+      "87ec3a97299f4c0c8b936773fe8c84e7",
+      "28873710d16042eda0a54de17e38f056",
+      "b1d250d753c849bd9bbcdb78a06db9b4",
+      "e00eba58326f471eb70bb311d414f52e",
+      "35b9ff6d864440f0ad0f72833537fc54",
+      "a72bf58bb08242f78f564f71704d70ac"
+    ],
+    "privateImagesExcluded": [
+      {
+        "id": "d2dbeaed1375446e93c0ed1833d7395d",
+        "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      },
+      {
+        "id": "209ac79cecaa4ab08ca814d318c027b0",
+        "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/E9C068C9-450B-4492-892B-826AD491D2DD/NW_raw/title-1500630058.jpg",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      },
+      {
+        "id": "880ef6aff6124424bdba9dacc67563e6",
+        "sourceUrl": "https://rcdb.com/aaimdpe",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      },
+      {
+        "id": "3f4e6f11b7f442519d25ee35fd0ad9a0",
+        "sourceUrl": "https://rcdb.com/aaimdof",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      },
+      {
+        "id": "73a1c7d039244b45b8e2973e13a36f61",
+        "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      },
+      {
+        "id": "608ac56337434664a6394fe378fcc0f4",
+        "sourceUrl": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-rotor-infernal.jpg",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      },
+      {
+        "id": "a96fbefc478540688a36dc04d2a27d10",
+        "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhXvs0pLmFWRLG7c8ALUUKDCg1XX8idGTBAK8k3wgIlLYz4FDK0ytRyoT1wC9WpgA-iskYiXuNsLIce_m_haLeqXjXhUovALv2oOD1ibg13ISm6tptiF3NkPfUVG15ql_htZG8x80CV3bO/s1600/DSCF3142.JPG",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      },
+      {
+        "id": "dc7a5c8c37bf421991729e5b30735d50",
+        "sourceUrl": "https://www.amazone-adventure.com/upload/miniatures/324/1200/free-fall-jump-quickjump-xl-ripcord-20m-high.jpeg",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      },
+      {
+        "id": "e502a87696b443d88727981f41303c0d",
+        "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-11.jpg",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      },
+      {
+        "id": "5667ff7a32794956bb10fe963ad96af0",
+        "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-5.jpg",
+        "reason": "Compatible reuse permission not established in this audited scope; remain private."
+      }
+    ],
+    "privateItemsExcluded": [
+      {
+        "id": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+        "name": "Accueil accrobranche",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "abe0a8ee-f222-4c44-94d7-a0799317b823",
+        "name": "Balade en calèche",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "e43e6bd6-04bf-4940-967d-357aad4075ab",
+        "name": "Balade en quad",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "58bc03b5-9202-4940-bbdc-c83973300b42",
+        "name": "Boutique",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+        "name": "Casiers",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "c8c04ee5-8ea7-4dbb-afcb-2769f556cba7",
+        "name": "Clairière de jeux",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+        "name": "La Pêche de Pokey",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "3956ae33-631f-46ef-b9c5-dd6afa08d785",
+        "name": "Labyrinthe géant",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "0ddb1451-3dad-4936-9f8f-439efda9222c",
+        "name": "Lancer de hache",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "6c658164-104c-41a1-a470-f50d7f0c956d",
+        "name": "Le Petit Robin",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "97aad029-a386-4c2f-844c-9dcd7394f36a",
+        "name": "Mini-Jeep",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "fa6e99c1-f258-408e-8628-8c95312f2c18",
+        "name": "Parcours aventure 1",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "496b6b3b-d182-45bf-b2b7-6199dd24c91a",
+        "name": "Parcours aventure 2",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "09ed3d9f-bcf0-4751-b69a-6abd6ab5c4ca",
+        "name": "Parcours Pitchoune 1",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "9a40ce59-ca74-455f-8ba0-185b560055a1",
+        "name": "Parcours Pitchoune 2",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "20067de5-b801-4e24-90d3-4ba5ffc711f6",
+        "name": "Parcours Pitchoune 3",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+        "name": "Pokey Beach",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+        "name": "Poste de secours",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "1cb2aa09-2279-40a6-a032-6babe23f8882",
+        "name": "Pédalo",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "0089b992-f5a6-4bb2-b4f0-1fd055361c16",
+        "name": "Quad ados",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+        "name": "Salle d’arcade",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+        "name": "Sanitaires",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      },
+      {
+        "id": "2a23aa94-01ba-4cda-be85-653e60589c24",
+        "name": "Terrains de pétanque",
+        "reason": "No personally reviewed8language description; source qualification unfinished."
+      }
+    ],
+    "zones": [
+      "15802825-0835-40e0-b211-410bc26e14b9",
+      "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+      "161766a5-cdcd-4675-aef8-3acc9e078098"
+    ],
+    "historyKeys": [
+      "pokeyland-history-construction-2013",
+      "pokeyland-history-opening-2015",
+      "pokeyland-item-saut-opening-2016",
+      "pokeyland-item-bigair-opening-2017",
+      "pokeyland-item-ferme-opening-2017",
+      "pokeyland-item-rotor-opening-2021",
+      "pokeyland-item-waterjump-opening-2022",
+      "pokeyland-history-sale-2023",
+      "pokeyland-item-pomme-opening-2025",
+      "pokeyland-history-reorganisation-2026"
+    ],
+    "historyImageClearing": [
+      {
+        "eventKey": "pokeyland-item-saut-opening-2016",
+        "privateImageId": "dc7a5c8c37bf421991729e5b30735d50"
+      },
+      {
+        "eventKey": "pokeyland-item-bigair-opening-2017",
+        "privateImageId": "73a1c7d039244b45b8e2973e13a36f61"
+      },
+      {
+        "eventKey": "pokeyland-item-ferme-opening-2017",
+        "privateImageId": "209ac79cecaa4ab08ca814d318c027b0"
+      },
+      {
+        "eventKey": "pokeyland-item-rotor-opening-2021",
+        "privateImageId": "608ac56337434664a6394fe378fcc0f4"
+      }
+    ],
+    "maps": [
+      2026
+    ],
+    "globalCompletion": false,
+    "scoreAuthorization": "france-publication-score-policy-20261115.json",
+    "imagePolicy": "43 primary park-hosted official files selected; all10 external-host files kept private pending compatible reuse evidence. No open licence asserted; exact sources/authors retained.",
+    "shortDescriptionExceptions": "Current activity pages short; photographs supply specific settings. Original authored/reviewed8language text exactly matched by full audit export (2064localized fields); three final rewrites traced through Apply43. Preserve missing depth as gap, never padding."
+  },
+  "coverage": {
+    "itemsTotal": 75,
+    "itemsDescribed": 52,
+    "itemsSelected": 52,
+    "itemsPrivateExcluded": 23,
+    "zones": 3,
+    "mediaIntegrated": 53,
+    "mediaSelected": 43,
+    "parkGeneralPhotos": {
+      "found": 2,
+      "target": 5
+    },
+    "officialLogoId": "c71e7771f1a247f5b9dbf49cf3c69aca",
+    "positionedItems": 10,
+    "maps": [
+      {
+        "year": 2026,
+        "language": "fr",
+        "titlesLanguages": 8,
+        "format": "Pdf"
+      }
+    ],
+    "historyEvents": 10,
+    "articles": 1,
+    "items": [
+      {
+        "id": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+        "name": "Accueil accrobranche",
+        "category": "Service",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "name": "Aire de jeux",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "name": "Aires de pique-nique",
+        "category": "Service",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "abe0a8ee-f222-4c44-94d7-a0799317b823",
+        "name": "Balade en calèche",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "e43e6bd6-04bf-4940-967d-357aad4075ab",
+        "name": "Balade en quad",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "name": "Bazooka ball",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "name": "Big Air Jump",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "58bc03b5-9202-4940-bbdc-c83973300b42",
+        "name": "Boutique",
+        "category": "Shop",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "name": "Bumper Boat",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": 49.0208421,
+        "longitude": 6.1010609,
+        "positionGap": null
+      },
+      {
+        "id": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "name": "Cabanes de Pokey",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "name": "Caisse d’accueil",
+        "category": "Service",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "name": "Cannibale",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+        "name": "Casiers",
+        "category": "Service",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "name": "Checkpoint",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "c8c04ee5-8ea7-4dbb-afcb-2769f556cba7",
+        "name": "Clairière de jeux",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "name": "Crazy Kart",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "name": "Dog One",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "name": "Ejector",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "name": "Escalade",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": 49.0217484,
+        "longitude": 6.100698,
+        "positionGap": null
+      },
+      {
+        "id": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "name": "Fall Tower",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "name": "Fox Two",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "name": "Kid’s Racer",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "53432ace-37a0-4149-9153-a418b86da889",
+        "name": "Kid’s Swing",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "name": "La Pomme",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 3,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+        "name": "La Pêche de Pokey",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "name": "La Roue",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "3956ae33-631f-46ef-b9c5-dd6afa08d785",
+        "name": "Labyrinthe géant",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "0ddb1451-3dad-4936-9f8f-439efda9222c",
+        "name": "Lancer de hache",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "name": "Laser Game",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": 49.0219226,
+        "longitude": 6.1013606,
+        "positionGap": null
+      },
+      {
+        "id": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "name": "Le Batoo",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "name": "Le Gourmand",
+        "category": "Restaurant",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": 49.0215437,
+        "longitude": 6.1008841,
+        "positionGap": null
+      },
+      {
+        "id": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "name": "Le Grill",
+        "category": "Restaurant",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "name": "Le Petit Creux",
+        "category": "Restaurant",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": 49.0211269,
+        "longitude": 6.101518,
+        "positionGap": null
+      },
+      {
+        "id": "6c658164-104c-41a1-a470-f50d7f0c956d",
+        "name": "Le Petit Robin",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "name": "Le p’tit train",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "name": "Les as du ciel",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "name": "Les as du volant",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "name": "Les avions",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "name": "Les p’tits chevaux",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "name": "L’Escale",
+        "category": "Restaurant",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": 49.0193189,
+        "longitude": 6.1002579,
+        "positionGap": null
+      },
+      {
+        "id": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "name": "Mini-buggy",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "name": "Mini-ferme",
+        "category": "Animal",
+        "status": "Unknown",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "name": "Mini-golf",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": 49.021277,
+        "longitude": 6.1000569,
+        "positionGap": null
+      },
+      {
+        "id": "97aad029-a386-4c2f-844c-9dcd7394f36a",
+        "name": "Mini-Jeep",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "name": "Mono-Rail",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "name": "Panama",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "fa6e99c1-f258-408e-8628-8c95312f2c18",
+        "name": "Parcours aventure 1",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "496b6b3b-d182-45bf-b2b7-6199dd24c91a",
+        "name": "Parcours aventure 2",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "name": "Parcours découverte",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "name": "Parcours famille",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "name": "Parcours pieds nus",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "09ed3d9f-bcf0-4751-b69a-6abd6ab5c4ca",
+        "name": "Parcours Pitchoune 1",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "9a40ce59-ca74-455f-8ba0-185b560055a1",
+        "name": "Parcours Pitchoune 2",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "20067de5-b801-4e24-90d3-4ba5ffc711f6",
+        "name": "Parcours Pitchoune 3",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "name": "Parcours sportif",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": 49.0183877,
+        "longitude": 6.1011601,
+        "positionGap": null
+      },
+      {
+        "id": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "name": "Parcours tyrolienne",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "name": "Parkings",
+        "category": "Service",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+        "name": "Pokey Beach",
+        "category": "Restaurant",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "name": "Poney",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": 49.0216332,
+        "longitude": 6.1003377,
+        "positionGap": null
+      },
+      {
+        "id": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+        "name": "Poste de secours",
+        "category": "Service",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "1cb2aa09-2279-40a6-a032-6babe23f8882",
+        "name": "Pédalo",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "0089b992-f5a6-4bb2-b4f0-1fd055361c16",
+        "name": "Quad ados",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "name": "Rotor Jump",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "name": "Salle de séminaire",
+        "category": "Service",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 2,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+        "name": "Salle d’arcade",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+        "name": "Sanitaires",
+        "category": "Service",
+        "status": "Operating",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "name": "Saut dans le vide",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "name": "Scène Pokeyshow",
+        "category": "Show",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "name": "Segway",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "2a23aa94-01ba-4cda-be85-653e60589c24",
+        "name": "Terrains de pétanque",
+        "category": "Attraction",
+        "status": "Unknown",
+        "selectedForPublication": false,
+        "describedLanguages": 0,
+        "imagesIntegrated": 0,
+        "imagesSelected": 0,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "name": "Tir à l’arc",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "name": "Trampoline",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "name": "Tubing",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      },
+      {
+        "id": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "name": "Waterjump",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 3,
+        "imagesSelected": 3,
+        "latitude": 49.0216452,
+        "longitude": 6.1031501,
+        "positionGap": null
+      },
+      {
+        "id": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "name": "Zombie",
+        "category": "Attraction",
+        "status": "Operating",
+        "selectedForPublication": true,
+        "describedLanguages": 8,
+        "imagesIntegrated": 1,
+        "imagesSelected": 1,
+        "latitude": null,
+        "longitude": null,
+        "positionGap": "No individually unambiguous named public point established; dated/ambiguous geometry not substituted."
+      }
+    ]
+  },
+  "corpus": {
+    "scopeEntities": 114,
+    "localizedValues": 1480,
+    "encodingIssues": [],
+    "languageIssues": [],
+    "similarityCandidates": [],
+    "rawExportSha256": "be53dab0bb1242539006e82d34c5c38ee03ed91a719d0982b1789e891d1cf31d",
+    "auditedStateSha256": "465df415ea069dbc0cc88b7404c92d5959354da097639fc06c16f801aefe3ab8",
+    "priorExactReconciliation": [],
+    "manualReviewBasis": "Entire8language authored corpus personally reviewed during original lots in this conversation; audit export2064localizedvalues matches exactly; current root FR reread plus history/refs DE/PL/PT reread and final24textrevisions personally authored/reviewed. No external translator adopted."
+  },
+  "depth": {
+    "park:fr": {
+      "count": 1,
+      "minimum": 334,
+      "p10": 334,
+      "median": 334,
+      "p90": 334,
+      "maximum": 334,
+      "formats": [
+        {
+          "words": 334,
+          "h2": 3,
+          "paragraphs": 6
+        }
+      ]
+    },
+    "park:en": {
+      "count": 1,
+      "minimum": 315,
+      "p10": 315,
+      "median": 315,
+      "p90": 315,
+      "maximum": 315,
+      "formats": [
+        {
+          "words": 315,
+          "h2": 3,
+          "paragraphs": 6
+        }
+      ]
+    },
+    "park:de": {
+      "count": 1,
+      "minimum": 298,
+      "p10": 298,
+      "median": 298,
+      "p90": 298,
+      "maximum": 298,
+      "formats": [
+        {
+          "words": 298,
+          "h2": 3,
+          "paragraphs": 6
+        }
+      ]
+    },
+    "park:es": {
+      "count": 1,
+      "minimum": 343,
+      "p10": 343,
+      "median": 343,
+      "p90": 343,
+      "maximum": 343,
+      "formats": [
+        {
+          "words": 343,
+          "h2": 3,
+          "paragraphs": 6
+        }
+      ]
+    },
+    "park:it": {
+      "count": 1,
+      "minimum": 332,
+      "p10": 332,
+      "median": 332,
+      "p90": 332,
+      "maximum": 332,
+      "formats": [
+        {
+          "words": 332,
+          "h2": 3,
+          "paragraphs": 6
+        }
+      ]
+    },
+    "park:nl": {
+      "count": 1,
+      "minimum": 303,
+      "p10": 303,
+      "median": 303,
+      "p90": 303,
+      "maximum": 303,
+      "formats": [
+        {
+          "words": 303,
+          "h2": 3,
+          "paragraphs": 6
+        }
+      ]
+    },
+    "park:pl": {
+      "count": 1,
+      "minimum": 279,
+      "p10": 279,
+      "median": 279,
+      "p90": 279,
+      "maximum": 279,
+      "formats": [
+        {
+          "words": 279,
+          "h2": 3,
+          "paragraphs": 6
+        }
+      ]
+    },
+    "park:pt": {
+      "count": 1,
+      "minimum": 329,
+      "p10": 329,
+      "median": 329,
+      "p90": 329,
+      "maximum": 329,
+      "formats": [
+        {
+          "words": 329,
+          "h2": 3,
+          "paragraphs": 6
+        }
+      ]
+    },
+    "zones:fr": {
+      "count": 3,
+      "minimum": 77,
+      "p10": 77,
+      "median": 78,
+      "p90": 78,
+      "maximum": 84,
+      "formats": [
+        {
+          "words": 84,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 78,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 77,
+          "h2": 1,
+          "paragraphs": 2
+        }
+      ]
+    },
+    "zones:en": {
+      "count": 3,
+      "minimum": 62,
+      "p10": 62,
+      "median": 68,
+      "p90": 68,
+      "maximum": 82,
+      "formats": [
+        {
+          "words": 82,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 68,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 62,
+          "h2": 1,
+          "paragraphs": 2
+        }
+      ]
+    },
+    "zones:de": {
+      "count": 3,
+      "minimum": 58,
+      "p10": 58,
+      "median": 67,
+      "p90": 67,
+      "maximum": 76,
+      "formats": [
+        {
+          "words": 76,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 67,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 58,
+          "h2": 1,
+          "paragraphs": 2
+        }
+      ]
+    },
+    "zones:es": {
+      "count": 3,
+      "minimum": 70,
+      "p10": 70,
+      "median": 74,
+      "p90": 74,
+      "maximum": 85,
+      "formats": [
+        {
+          "words": 85,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 74,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        }
+      ]
+    },
+    "zones:it": {
+      "count": 3,
+      "minimum": 69,
+      "p10": 69,
+      "median": 72,
+      "p90": 72,
+      "maximum": 81,
+      "formats": [
+        {
+          "words": 81,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 72,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 69,
+          "h2": 1,
+          "paragraphs": 2
+        }
+      ]
+    },
+    "zones:nl": {
+      "count": 3,
+      "minimum": 56,
+      "p10": 56,
+      "median": 68,
+      "p90": 68,
+      "maximum": 80,
+      "formats": [
+        {
+          "words": 80,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 68,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 56,
+          "h2": 1,
+          "paragraphs": 2
+        }
+      ]
+    },
+    "zones:pl": {
+      "count": 3,
+      "minimum": 60,
+      "p10": 60,
+      "median": 61,
+      "p90": 61,
+      "maximum": 70,
+      "formats": [
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 60,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 61,
+          "h2": 1,
+          "paragraphs": 2
+        }
+      ]
+    },
+    "zones:pt": {
+      "count": 3,
+      "minimum": 69,
+      "p10": 69,
+      "median": 70,
+      "p90": 70,
+      "maximum": 84,
+      "formats": [
+        {
+          "words": 84,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 69,
+          "h2": 1,
+          "paragraphs": 2
+        }
+      ]
+    },
+    "items-Attraction:fr": {
+      "count": 42,
+      "minimum": 37,
+      "p10": 65,
+      "median": 88.0,
+      "p90": 104,
+      "maximum": 115,
+      "formats": [
+        {
+          "words": 104,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 78,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 89,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 95,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 91,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 84,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 101,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 108,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 67,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 38,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 76,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 75,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 89,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 94,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 74,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 109,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 101,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 101,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 71,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 83,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 102,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 104,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 79,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 85,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 99,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 94,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 79,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 100,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 86,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 74,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 65,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 61,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 65,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 83,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 108,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 99,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 102,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 87,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 37,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 65,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 115,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 103,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Attraction:en": {
+      "count": 42,
+      "minimum": 31,
+      "p10": 61,
+      "median": 76.5,
+      "p90": 93,
+      "maximum": 103,
+      "formats": [
+        {
+          "words": 90,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 63,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 76,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 92,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 75,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 67,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 87,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 99,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 65,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 32,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 65,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 66,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 81,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 78,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 66,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 92,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 80,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 63,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 75,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 85,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 87,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 67,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 71,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 101,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 77,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 67,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 85,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 69,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 60,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 65,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 61,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 73,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 98,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 88,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 81,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 31,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 54,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 103,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 91,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Attraction:de": {
+      "count": 42,
+      "minimum": 33,
+      "p10": 59,
+      "median": 75.5,
+      "p90": 89,
+      "maximum": 100,
+      "formats": [
+        {
+          "words": 85,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 62,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 75,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 86,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 76,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 68,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 76,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 91,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 61,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 33,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 61,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 71,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 67,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 76,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 62,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 87,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 92,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 80,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 68,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 71,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 87,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 87,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 67,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 69,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 91,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 75,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 73,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 86,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 78,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 69,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 59,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 59,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 59,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 80,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 94,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 89,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 85,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 80,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 35,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 55,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 100,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 85,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Attraction:es": {
+      "count": 42,
+      "minimum": 36,
+      "p10": 66,
+      "median": 89.0,
+      "p90": 106,
+      "maximum": 117,
+      "formats": [
+        {
+          "words": 108,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 75,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 84,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 102,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 91,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 78,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 99,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 106,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 72,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 36,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 77,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 78,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 91,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 77,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 100,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 105,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 89,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 86,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 107,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 102,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 80,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 79,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 103,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 91,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 77,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 101,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 89,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 76,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 62,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 66,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 69,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 85,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 108,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 103,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 98,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 94,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 37,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 64,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 117,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 110,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Attraction:it": {
+      "count": 42,
+      "minimum": 32,
+      "p10": 62,
+      "median": 80.5,
+      "p90": 97,
+      "maximum": 109,
+      "formats": [
+        {
+          "words": 97,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 76,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 79,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 85,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 82,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 75,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 103,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 73,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 33,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 69,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 88,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 88,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 69,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 97,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 95,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 84,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 66,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 78,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 99,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 74,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 77,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 95,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 86,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 69,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 95,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 79,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 69,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 59,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 66,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 62,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 79,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 102,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 90,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 102,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 84,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 32,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 61,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 109,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 97,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Attraction:nl": {
+      "count": 42,
+      "minimum": 31,
+      "p10": 61,
+      "median": 78.5,
+      "p90": 95,
+      "maximum": 105,
+      "formats": [
+        {
+          "words": 92,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 67,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 75,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 88,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 78,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 71,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 94,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 97,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 65,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 36,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 62,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 83,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 79,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 66,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 89,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 94,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 81,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 73,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 76,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 92,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 91,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 74,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 98,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 80,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 74,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 95,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 84,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 66,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 60,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 65,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 55,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 78,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 102,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 90,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 85,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 31,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 61,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 105,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 96,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Attraction:pl": {
+      "count": 42,
+      "minimum": 27,
+      "p10": 49,
+      "median": 68.0,
+      "p90": 79,
+      "maximum": 93,
+      "formats": [
+        {
+          "words": 75,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 59,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 68,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 76,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 62,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 53,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 71,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 78,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 52,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 27,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 56,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 56,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 67,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 55,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 71,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 79,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 73,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 51,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 64,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 70,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 80,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 58,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 69,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 82,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 68,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 53,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 73,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 68,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 63,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 49,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 48,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 49,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 64,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 85,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 79,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 86,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 27,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 44,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 68,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Attraction:pt": {
+      "count": 42,
+      "minimum": 34,
+      "p10": 62,
+      "median": 83.0,
+      "p90": 100,
+      "maximum": 113,
+      "formats": [
+        {
+          "words": 104,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 75,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 83,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 91,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 83,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 75,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 94,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 105,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 71,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 37,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 67,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 74,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 88,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 83,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 71,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 95,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 95,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 83,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 66,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 81,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 98,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 100,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 72,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 77,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 100,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 88,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 70,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 94,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 82,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 69,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 60,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 62,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 64,
+          "h2": 2,
+          "paragraphs": 2
+        },
+        {
+          "words": 81,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 106,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 98,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 97,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 88,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 34,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 61,
+          "h2": 1,
+          "paragraphs": 2
+        },
+        {
+          "words": 113,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Service:fr": {
+      "count": 4,
+      "minimum": 65,
+      "p10": 65,
+      "median": 97.5,
+      "p90": 102,
+      "maximum": 117,
+      "formats": [
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 102,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 65,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 117,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Service:en": {
+      "count": 4,
+      "minimum": 57,
+      "p10": 57,
+      "median": 84.5,
+      "p90": 97,
+      "maximum": 101,
+      "formats": [
+        {
+          "words": 72,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 101,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 57,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 97,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Service:de": {
+      "count": 4,
+      "minimum": 53,
+      "p10": 53,
+      "median": 79.0,
+      "p90": 88,
+      "maximum": 90,
+      "formats": [
+        {
+          "words": 70,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 90,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 53,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 88,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Service:es": {
+      "count": 4,
+      "minimum": 59,
+      "p10": 59,
+      "median": 96.0,
+      "p90": 108,
+      "maximum": 115,
+      "formats": [
+        {
+          "words": 84,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 108,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 59,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 115,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Service:it": {
+      "count": 4,
+      "minimum": 59,
+      "p10": 59,
+      "median": 90.5,
+      "p90": 102,
+      "maximum": 110,
+      "formats": [
+        {
+          "words": 79,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 102,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 59,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 110,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Service:nl": {
+      "count": 4,
+      "minimum": 55,
+      "p10": 55,
+      "median": 86.5,
+      "p90": 99,
+      "maximum": 101,
+      "formats": [
+        {
+          "words": 74,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 101,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 55,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 99,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Service:pl": {
+      "count": 4,
+      "minimum": 48,
+      "p10": 48,
+      "median": 72.5,
+      "p90": 81,
+      "maximum": 88,
+      "formats": [
+        {
+          "words": 64,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 81,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 48,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 88,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Service:pt": {
+      "count": 4,
+      "minimum": 58,
+      "p10": 58,
+      "median": 91.5,
+      "p90": 103,
+      "maximum": 110,
+      "formats": [
+        {
+          "words": 80,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 103,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 58,
+          "h2": 2,
+          "paragraphs": 3
+        },
+        {
+          "words": 110,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Restaurant:fr": {
+      "count": 4,
+      "minimum": 20,
+      "p10": 20,
+      "median": 28.5,
+      "p90": 29,
+      "maximum": 33,
+      "formats": [
+        {
+          "words": 29,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 28,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 33,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 20,
+          "h2": 1,
+          "paragraphs": 1
+        }
+      ]
+    },
+    "items-Restaurant:en": {
+      "count": 4,
+      "minimum": 16,
+      "p10": 16,
+      "median": 25.5,
+      "p90": 28,
+      "maximum": 28,
+      "formats": [
+        {
+          "words": 28,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 23,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 28,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 16,
+          "h2": 1,
+          "paragraphs": 1
+        }
+      ]
+    },
+    "items-Restaurant:de": {
+      "count": 4,
+      "minimum": 14,
+      "p10": 14,
+      "median": 24.5,
+      "p90": 27,
+      "maximum": 28,
+      "formats": [
+        {
+          "words": 28,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 22,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 27,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 14,
+          "h2": 1,
+          "paragraphs": 1
+        }
+      ]
+    },
+    "items-Restaurant:es": {
+      "count": 4,
+      "minimum": 17,
+      "p10": 17,
+      "median": 29.0,
+      "p90": 29,
+      "maximum": 33,
+      "formats": [
+        {
+          "words": 29,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 29,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 33,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 17,
+          "h2": 1,
+          "paragraphs": 1
+        }
+      ]
+    },
+    "items-Restaurant:it": {
+      "count": 4,
+      "minimum": 17,
+      "p10": 17,
+      "median": 27.5,
+      "p90": 28,
+      "maximum": 34,
+      "formats": [
+        {
+          "words": 28,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 27,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 34,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 17,
+          "h2": 1,
+          "paragraphs": 1
+        }
+      ]
+    },
+    "items-Restaurant:nl": {
+      "count": 4,
+      "minimum": 14,
+      "p10": 14,
+      "median": 24.5,
+      "p90": 27,
+      "maximum": 28,
+      "formats": [
+        {
+          "words": 27,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 22,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 28,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 14,
+          "h2": 1,
+          "paragraphs": 1
+        }
+      ]
+    },
+    "items-Restaurant:pl": {
+      "count": 4,
+      "minimum": 16,
+      "p10": 16,
+      "median": 24.5,
+      "p90": 25,
+      "maximum": 29,
+      "formats": [
+        {
+          "words": 25,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 24,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 29,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 16,
+          "h2": 1,
+          "paragraphs": 1
+        }
+      ]
+    },
+    "items-Restaurant:pt": {
+      "count": 4,
+      "minimum": 18,
+      "p10": 18,
+      "median": 27.5,
+      "p90": 29,
+      "maximum": 31,
+      "formats": [
+        {
+          "words": 29,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 26,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 31,
+          "h2": 1,
+          "paragraphs": 1
+        },
+        {
+          "words": 18,
+          "h2": 1,
+          "paragraphs": 1
+        }
+      ]
+    },
+    "items-Animal:fr": {
+      "count": 1,
+      "minimum": 103,
+      "p10": 103,
+      "median": 103,
+      "p90": 103,
+      "maximum": 103,
+      "formats": [
+        {
+          "words": 103,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Animal:en": {
+      "count": 1,
+      "minimum": 86,
+      "p10": 86,
+      "median": 86,
+      "p90": 86,
+      "maximum": 86,
+      "formats": [
+        {
+          "words": 86,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Animal:de": {
+      "count": 1,
+      "minimum": 84,
+      "p10": 84,
+      "median": 84,
+      "p90": 84,
+      "maximum": 84,
+      "formats": [
+        {
+          "words": 84,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Animal:es": {
+      "count": 1,
+      "minimum": 98,
+      "p10": 98,
+      "median": 98,
+      "p90": 98,
+      "maximum": 98,
+      "formats": [
+        {
+          "words": 98,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Animal:it": {
+      "count": 1,
+      "minimum": 91,
+      "p10": 91,
+      "median": 91,
+      "p90": 91,
+      "maximum": 91,
+      "formats": [
+        {
+          "words": 91,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Animal:nl": {
+      "count": 1,
+      "minimum": 90,
+      "p10": 90,
+      "median": 90,
+      "p90": 90,
+      "maximum": 90,
+      "formats": [
+        {
+          "words": 90,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Animal:pl": {
+      "count": 1,
+      "minimum": 75,
+      "p10": 75,
+      "median": 75,
+      "p90": 75,
+      "maximum": 75,
+      "formats": [
+        {
+          "words": 75,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Animal:pt": {
+      "count": 1,
+      "minimum": 93,
+      "p10": 93,
+      "median": 93,
+      "p90": 93,
+      "maximum": 93,
+      "formats": [
+        {
+          "words": 93,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Show:fr": {
+      "count": 1,
+      "minimum": 101,
+      "p10": 101,
+      "median": 101,
+      "p90": 101,
+      "maximum": 101,
+      "formats": [
+        {
+          "words": 101,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Show:en": {
+      "count": 1,
+      "minimum": 99,
+      "p10": 99,
+      "median": 99,
+      "p90": 99,
+      "maximum": 99,
+      "formats": [
+        {
+          "words": 99,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Show:de": {
+      "count": 1,
+      "minimum": 94,
+      "p10": 94,
+      "median": 94,
+      "p90": 94,
+      "maximum": 94,
+      "formats": [
+        {
+          "words": 94,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Show:es": {
+      "count": 1,
+      "minimum": 113,
+      "p10": 113,
+      "median": 113,
+      "p90": 113,
+      "maximum": 113,
+      "formats": [
+        {
+          "words": 113,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Show:it": {
+      "count": 1,
+      "minimum": 101,
+      "p10": 101,
+      "median": 101,
+      "p90": 101,
+      "maximum": 101,
+      "formats": [
+        {
+          "words": 101,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Show:nl": {
+      "count": 1,
+      "minimum": 99,
+      "p10": 99,
+      "median": 99,
+      "p90": 99,
+      "maximum": 99,
+      "formats": [
+        {
+          "words": 99,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Show:pl": {
+      "count": 1,
+      "minimum": 82,
+      "p10": 82,
+      "median": 82,
+      "p90": 82,
+      "maximum": 82,
+      "formats": [
+        {
+          "words": 82,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "items-Show:pt": {
+      "count": 1,
+      "minimum": 109,
+      "p10": 109,
+      "median": 109,
+      "p90": 109,
+      "maximum": 109,
+      "formats": [
+        {
+          "words": 109,
+          "h2": 2,
+          "paragraphs": 3
+        }
+      ]
+    },
+    "timeline:fr": {
+      "count": 10,
+      "minimum": 30,
+      "p10": 30,
+      "median": 33.5,
+      "p90": 41,
+      "maximum": 42,
+      "formats": [
+        {
+          "words": 42,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 41,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 32,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 38,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 30,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 35,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 40,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "timeline:en": {
+      "count": 10,
+      "minimum": 27,
+      "p10": 27,
+      "median": 31.0,
+      "p90": 34,
+      "maximum": 38,
+      "formats": [
+        {
+          "words": 34,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 32,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 30,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 33,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 29,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 29,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 29,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 27,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 32,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 38,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "timeline:de": {
+      "count": 10,
+      "minimum": 25,
+      "p10": 25,
+      "median": 29.5,
+      "p90": 33,
+      "maximum": 37,
+      "formats": [
+        {
+          "words": 30,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 33,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 29,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 27,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 29,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 25,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 30,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 29,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 37,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "timeline:es": {
+      "count": 10,
+      "minimum": 30,
+      "p10": 30,
+      "median": 35.0,
+      "p90": 40,
+      "maximum": 42,
+      "formats": [
+        {
+          "words": 40,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 39,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 32,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 36,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 32,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 30,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 32,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 34,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 39,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 42,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "timeline:it": {
+      "count": 10,
+      "minimum": 28,
+      "p10": 28,
+      "median": 33.5,
+      "p90": 38,
+      "maximum": 39,
+      "formats": [
+        {
+          "words": 38,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 34,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 35,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 34,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 28,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 30,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 33,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 39,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "timeline:nl": {
+      "count": 10,
+      "minimum": 28,
+      "p10": 28,
+      "median": 32.0,
+      "p90": 33,
+      "maximum": 36,
+      "formats": [
+        {
+          "words": 33,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 32,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 33,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 32,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 28,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 33,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 30,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 36,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "timeline:pl": {
+      "count": 10,
+      "minimum": 26,
+      "p10": 26,
+      "median": 27.5,
+      "p90": 31,
+      "maximum": 32,
+      "formats": [
+        {
+          "words": 27,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 32,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 28,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 29,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 26,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 27,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 26,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 26,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 30,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "timeline:pt": {
+      "count": 10,
+      "minimum": 28,
+      "p10": 28,
+      "median": 34.5,
+      "p90": 41,
+      "maximum": 42,
+      "formats": [
+        {
+          "words": 41,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 38,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 33,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 36,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 31,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 28,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 33,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 37,
+          "h2": 0,
+          "paragraphs": 0
+        },
+        {
+          "words": 42,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "article:fr": {
+      "count": 1,
+      "minimum": 618,
+      "p10": 618,
+      "median": 618,
+      "p90": 618,
+      "maximum": 618,
+      "formats": [
+        {
+          "words": 618,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "article:en": {
+      "count": 1,
+      "minimum": 608,
+      "p10": 608,
+      "median": 608,
+      "p90": 608,
+      "maximum": 608,
+      "formats": [
+        {
+          "words": 608,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "article:de": {
+      "count": 1,
+      "minimum": 602,
+      "p10": 602,
+      "median": 602,
+      "p90": 602,
+      "maximum": 602,
+      "formats": [
+        {
+          "words": 602,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "article:nl": {
+      "count": 1,
+      "minimum": 613,
+      "p10": 613,
+      "median": 613,
+      "p90": 613,
+      "maximum": 613,
+      "formats": [
+        {
+          "words": 613,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "article:es": {
+      "count": 1,
+      "minimum": 645,
+      "p10": 645,
+      "median": 645,
+      "p90": 645,
+      "maximum": 645,
+      "formats": [
+        {
+          "words": 645,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "article:it": {
+      "count": 1,
+      "minimum": 608,
+      "p10": 608,
+      "median": 608,
+      "p90": 608,
+      "maximum": 608,
+      "formats": [
+        {
+          "words": 608,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "article:pl": {
+      "count": 1,
+      "minimum": 564,
+      "p10": 564,
+      "median": 564,
+      "p90": 564,
+      "maximum": 564,
+      "formats": [
+        {
+          "words": 564,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    },
+    "article:pt": {
+      "count": 1,
+      "minimum": 642,
+      "p10": 642,
+      "median": 642,
+      "p90": 642,
+      "maximum": 642,
+      "formats": [
+        {
+          "words": 642,
+          "h2": 0,
+          "paragraphs": 0
+        }
+      ]
+    }
+  },
+  "idempotence": {
+    "operationId": "eedbaf60-7463-4b96-adfe-0c2ab9620696",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:46:05.1912995Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 148,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkFounder",
+        "entityId": "6fc80030-d7d3-420b-b2ca-3093af8d4104",
+        "entityKey": "6fc80030-d7d3-420b-b2ca-3093af8d4104",
+        "displayName": "Bruno Poquet",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkOperator",
+        "entityId": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "entityKey": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "displayName": "BERNARD-AMUSEMENT",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "entityKey": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "displayName": "Lukylud",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
+        "entityKey": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
+        "displayName": "Güven Amusement Rides Factory",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "pokeyland-map-2026-fr",
+        "entityKey": "pokeyland-map-2026-fr",
+        "displayName": "Carte officielle 2026 (fr, Pdf)",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkPricing",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "pricing",
+        "displayName": "Pokeyland pricing",
+        "changeType": "Unchanged",
+        "matchedBy": "pricing",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "15802825-0835-40e0-b211-410bc26e14b9",
+        "entityKey": "15802825-0835-40e0-b211-410bc26e14b9",
+        "displayName": "Accrobranche",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "entityKey": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "displayName": "Paintball",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "161766a5-cdcd-4675-aef8-3acc9e078098",
+        "entityKey": "161766a5-cdcd-4675-aef8-3acc9e078098",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+        "entityKey": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+        "displayName": "Accueil accrobranche",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "entityKey": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "displayName": "Aire de jeux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "entityKey": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "abe0a8ee-f222-4c44-94d7-a0799317b823",
+        "entityKey": "abe0a8ee-f222-4c44-94d7-a0799317b823",
+        "displayName": "Balade en calèche",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e43e6bd6-04bf-4940-967d-357aad4075ab",
+        "entityKey": "e43e6bd6-04bf-4940-967d-357aad4075ab",
+        "displayName": "Balade en quad",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "entityKey": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "displayName": "Bazooka ball",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "displayName": "Big Air Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "58bc03b5-9202-4940-bbdc-c83973300b42",
+        "entityKey": "58bc03b5-9202-4940-bbdc-c83973300b42",
+        "displayName": "Boutique",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "entityKey": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "displayName": "Bumper Boat",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "entityKey": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "displayName": "Cabanes de Pokey",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "entityKey": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "displayName": "Caisse d’accueil",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "entityKey": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "displayName": "Cannibale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+        "entityKey": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+        "displayName": "Casiers",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "entityKey": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "displayName": "Checkpoint",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c8c04ee5-8ea7-4dbb-afcb-2769f556cba7",
+        "entityKey": "c8c04ee5-8ea7-4dbb-afcb-2769f556cba7",
+        "displayName": "Clairière de jeux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "entityKey": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "displayName": "Crazy Kart",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "entityKey": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "displayName": "Dog One",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "entityKey": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "displayName": "Ejector",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "displayName": "Escalade",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "entityKey": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "displayName": "Fall Tower",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "entityKey": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "displayName": "Fox Two",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "entityKey": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "displayName": "Kid’s Racer",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53432ace-37a0-4149-9153-a418b86da889",
+        "entityKey": "53432ace-37a0-4149-9153-a418b86da889",
+        "displayName": "Kid’s Swing",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "La Pomme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+        "entityKey": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+        "displayName": "La Pêche de Pokey",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "entityKey": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "displayName": "La Roue",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3956ae33-631f-46ef-b9c5-dd6afa08d785",
+        "entityKey": "3956ae33-631f-46ef-b9c5-dd6afa08d785",
+        "displayName": "Labyrinthe géant",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ddb1451-3dad-4936-9f8f-439efda9222c",
+        "entityKey": "0ddb1451-3dad-4936-9f8f-439efda9222c",
+        "displayName": "Lancer de hache",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "displayName": "Laser Game",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "entityKey": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "displayName": "Le Batoo",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "displayName": "Le Gourmand",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "displayName": "Le Grill",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "displayName": "Le Petit Creux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6c658164-104c-41a1-a470-f50d7f0c956d",
+        "entityKey": "6c658164-104c-41a1-a470-f50d7f0c956d",
+        "displayName": "Le Petit Robin",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "entityKey": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "displayName": "Le p’tit train",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "entityKey": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "displayName": "Les as du ciel",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "entityKey": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "displayName": "Les as du volant",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "entityKey": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "displayName": "Les avions",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "entityKey": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "displayName": "Les p’tits chevaux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "displayName": "L’Escale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "entityKey": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "displayName": "Mini-buggy",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "displayName": "Mini-ferme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "displayName": "Mini-golf",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "97aad029-a386-4c2f-844c-9dcd7394f36a",
+        "entityKey": "97aad029-a386-4c2f-844c-9dcd7394f36a",
+        "displayName": "Mini-Jeep",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "entityKey": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "displayName": "Mono-Rail",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "entityKey": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "displayName": "Panama",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fa6e99c1-f258-408e-8628-8c95312f2c18",
+        "entityKey": "fa6e99c1-f258-408e-8628-8c95312f2c18",
+        "displayName": "Parcours aventure 1",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "496b6b3b-d182-45bf-b2b7-6199dd24c91a",
+        "entityKey": "496b6b3b-d182-45bf-b2b7-6199dd24c91a",
+        "displayName": "Parcours aventure 2",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "displayName": "Parcours découverte",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "displayName": "Parcours famille",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "entityKey": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "displayName": "Parcours pieds nus",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "09ed3d9f-bcf0-4751-b69a-6abd6ab5c4ca",
+        "entityKey": "09ed3d9f-bcf0-4751-b69a-6abd6ab5c4ca",
+        "displayName": "Parcours Pitchoune 1",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9a40ce59-ca74-455f-8ba0-185b560055a1",
+        "entityKey": "9a40ce59-ca74-455f-8ba0-185b560055a1",
+        "displayName": "Parcours Pitchoune 2",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "20067de5-b801-4e24-90d3-4ba5ffc711f6",
+        "entityKey": "20067de5-b801-4e24-90d3-4ba5ffc711f6",
+        "displayName": "Parcours Pitchoune 3",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "displayName": "Parcours sportif",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "entityKey": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "displayName": "Parkings",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+        "entityKey": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+        "displayName": "Pokey Beach",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "displayName": "Poney",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+        "entityKey": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+        "displayName": "Poste de secours",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1cb2aa09-2279-40a6-a032-6babe23f8882",
+        "entityKey": "1cb2aa09-2279-40a6-a032-6babe23f8882",
+        "displayName": "Pédalo",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0089b992-f5a6-4bb2-b4f0-1fd055361c16",
+        "entityKey": "0089b992-f5a6-4bb2-b4f0-1fd055361c16",
+        "displayName": "Quad ados",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "entityKey": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "displayName": "Salle de séminaire",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+        "entityKey": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+        "displayName": "Salle d’arcade",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+        "entityKey": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+        "displayName": "Sanitaires",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "displayName": "Saut dans le vide",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "entityKey": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "displayName": "Segway",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2a23aa94-01ba-4cda-be85-653e60589c24",
+        "entityKey": "2a23aa94-01ba-4cda-be85-653e60589c24",
+        "displayName": "Terrains de pétanque",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "entityKey": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "displayName": "Tir à l’arc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "entityKey": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "displayName": "Trampoline",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "entityKey": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "displayName": "Tubing",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "entityKey": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "displayName": "Zombie",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "452fd5f698e549c3922711177b0984e9",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "a30bcfef2e414aca8898b45ee212d46e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "c71e7771f1a247f5b9dbf49cf3c69aca",
+        "entityKey": null,
+        "displayName": "codex-import.png",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "d2dbeaed1375446e93c0ed1833d7395d",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "209ac79cecaa4ab08ca814d318c027b0",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "aec2045ac03e42eebcc6f8c3db977b4f",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "f76f6dce0ee54907bba900c8e307aa27",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "854a573d1b84444d9257cb9626b0360b",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "a19c6a01526c40639bc7187d9b88368f",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "490b9c348df1440ab5ca688ed39613a8",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "b6860a71b8354201bd1d7533b1eed2f5",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "157b717d3f6045058612279d0f4e1540",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "23c8dbb7dcd248eb8d0186222443f2d2",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "880ef6aff6124424bdba9dacc67563e6",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "3f4e6f11b7f442519d25ee35fd0ad9a0",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "017581c2b60b4763a6f2e8e4d9c8a1a6",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "399f973442ef4bed9fa1a8c3f4cc4f19",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "73a1c7d039244b45b8e2973e13a36f61",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "e962c52928454d4c83a3bc90c075f2ad",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "43911282339d43de84505b656079bcaf",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "3fb34d48ddaa4460b16f774a3fc45004",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "96d60d7c6c0c40d79627a733c4ae2ff5",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "608ac56337434664a6394fe378fcc0f4",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "52be7f0705244106aa5219bb47fb6359",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "1f693f389f2d435daee1e38782d47ee1",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "31ea2b41b90045bfa7114af9567f39d0",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "67935475ed1240c592561ab14a443d8b",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "c8466353e86442e180d8ff8e5fbbf41a",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "f4e5db0fd4da432599a6968adcecbb75",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "1ca0f5afafbd466db3e529f0f7c9210b",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "6cc6622a5db343a4a0ef8d96f7197719",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "b6dab89667e443b0839ad1b5220a4ec0",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9dc4f8c27d9e4cfc9d459517a74d9b38",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "7a93467a6c1c4c3daf2f468274195c34",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "2a6321fa0dd44f6088c69cf78f04db1d",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "a96fbefc478540688a36dc04d2a27d10",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "5dd3bb456db74c25b11142c570398f5b",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "8b3793aac4c94556833ba532eab46345",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "02f8fe904d61402db8e69951510ece12",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "564dfc5df72f451e9a3b435d8ae51a27",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "e9a95a64a5e847a0bc8867e71dd8ee5b",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "6be2dd0f36e94f61801bee58bb41c311",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "c3ed49df002b49029862ad404962f5fc",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "ea0ce74a58b540a6bd7cae56c439591f",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "87ec3a97299f4c0c8b936773fe8c84e7",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "dc7a5c8c37bf421991729e5b30735d50",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "28873710d16042eda0a54de17e38f056",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "b1d250d753c849bd9bbcdb78a06db9b4",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "e00eba58326f471eb70bb311d414f52e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "35b9ff6d864440f0ad0f72833537fc54",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "e502a87696b443d88727981f41303c0d",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "5667ff7a32794956bb10fe963ad96af0",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "a72bf58bb08242f78f564f71704d70ac",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "401b9c6e-09de-47a7-88dc-93642d649e07",
+        "entityKey": "pokeyland-history-construction-2013",
+        "displayName": "Le chantier commence dans la forêt de Féy",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8de9d388-66de-402a-8edf-62389727a14b",
+        "entityKey": "pokeyland-history-opening-2015",
+        "displayName": "Pokeyland ouvre au public à Féy",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "fc599901-8e58-47b1-8642-7c0fe510b10f",
+        "entityKey": "pokeyland-item-saut-opening-2016",
+        "displayName": "Le Saut dans le vide rejoint les aventures",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6447fa8e-56c3-40bc-86ce-54287de6a848",
+        "entityKey": "pokeyland-item-bigair-opening-2017",
+        "displayName": "Le Big Air Jump fait sauter vers un coussin géant",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "47a8ef0a-9999-4dbb-a8cb-349753a4ca53",
+        "entityKey": "pokeyland-item-ferme-opening-2017",
+        "displayName": "La mini-ferme enrichit l’offre familiale",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6856d2d6-f1d2-4f2b-a2dd-dbc7d22d99fa",
+        "entityKey": "pokeyland-item-rotor-opening-2021",
+        "displayName": "Le Rotor Jump entre dans les jeux du parc",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c3ed398f-3aaa-42c7-b68d-ed15e5bb3d23",
+        "entityKey": "pokeyland-item-waterjump-opening-2022",
+        "displayName": "Le Waterjump apporte une aventure aquatique",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f28f4138-dbbc-43ec-b4e9-8d33437e3277",
+        "entityKey": "pokeyland-history-sale-2023",
+        "displayName": "Cession du fonds à BERNARD-AMUSEMENT",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c54d3c41-b27e-4e66-870d-a9e457129085",
+        "entityKey": "pokeyland-item-pomme-opening-2025",
+        "displayName": "La Pomme ouvre son circuit",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "0899d0b0-7aa2-4d26-bc5e-541cd299b873",
+        "entityKey": "pokeyland-history-reorganisation-2026",
+        "displayName": "L’exploitant entre en redressement judiciaire",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "calendarGap": "No 2027 general schedule published. Entire available Apr-Sep2026 calendar examined (183 dates); black dates ambiguous closed/reservation and event hours incomplete. No invented rules. Owner explicitly waives hours/opening-date score gaps.",
+  "pricingGap": "Only two clearly priced 2026 season passes integrated with exact validity ending27September2026; not asserted to be2027 offers. Admission channels and future prices unproved; retained as gaps.",
+  "mapFalsePositiveResolution": "officialMaps.languageCode=fr describes the actual original file, not a localized text collection. Its eight titles are present. Checker now requires languageCode AND value for localization arrays; no data mutation.",
+  "mediaExceptions": [
+    {
+      "id": "d2dbeaed1375446e93c0ed1833d7395d",
+      "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    },
+    {
+      "id": "209ac79cecaa4ab08ca814d318c027b0",
+      "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/E9C068C9-450B-4492-892B-826AD491D2DD/NW_raw/title-1500630058.jpg",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    },
+    {
+      "id": "880ef6aff6124424bdba9dacc67563e6",
+      "sourceUrl": "https://rcdb.com/aaimdpe",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    },
+    {
+      "id": "3f4e6f11b7f442519d25ee35fd0ad9a0",
+      "sourceUrl": "https://rcdb.com/aaimdof",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    },
+    {
+      "id": "73a1c7d039244b45b8e2973e13a36f61",
+      "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    },
+    {
+      "id": "608ac56337434664a6394fe378fcc0f4",
+      "sourceUrl": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-rotor-infernal.jpg",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    },
+    {
+      "id": "a96fbefc478540688a36dc04d2a27d10",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhXvs0pLmFWRLG7c8ALUUKDCg1XX8idGTBAK8k3wgIlLYz4FDK0ytRyoT1wC9WpgA-iskYiXuNsLIce_m_haLeqXjXhUovALv2oOD1ibg13ISm6tptiF3NkPfUVG15ql_htZG8x80CV3bO/s1600/DSCF3142.JPG",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    },
+    {
+      "id": "dc7a5c8c37bf421991729e5b30735d50",
+      "sourceUrl": "https://www.amazone-adventure.com/upload/miniatures/324/1200/free-fall-jump-quickjump-xl-ripcord-20m-high.jpeg",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    },
+    {
+      "id": "e502a87696b443d88727981f41303c0d",
+      "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-11.jpg",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    },
+    {
+      "id": "5667ff7a32794956bb10fe963ad96af0",
+      "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-5.jpg",
+      "reason": "Compatible reuse permission not established in this audited scope; remain private."
+    }
+  ],
+  "shortSourceExceptions": "Current activity pages short; photographs supply specific settings. Original authored/reviewed8language text exactly matched by full audit export (2064localized fields); three final rewrites traced through Apply43. Preserve missing depth as gap, never padding.",
+  "otherGaps": [
+    "23 notices still insufficiently qualified: kept private with their stable IDs.",
+    "Historical/current aliases, individual opening dates, manufacturers and restrictions absent or contradictory remain unknown.",
+    "No current geography inferred from dated OSM polygons or moved attractions.",
+    "External image reuse not inferred from attribution; ten images retained private, four private event links cleared at publication.",
+    "Only one genuinely dated official map2026; filename2022 alone not accepted as annual edition."
+  ],
+  "sourceAccess": [
+    {
+      "url": "https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme",
+      "checkedAtUtc": "2026-11-15T14:43:40.880677+00:00",
+      "status": 200,
+      "finalUrl": "https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme",
+      "bytes": 87792,
+      "sha256": "ff307fe6619d8f135c71fde2d9a22c81e0ed953a9e2e196f9ab14c463fad3575",
+      "file": "00-source.bin"
+    },
+    {
+      "url": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+      "checkedAtUtc": "2026-11-15T14:43:40.881313+00:00",
+      "status": 200,
+      "finalUrl": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+      "bytes": 63951,
+      "sha256": "54699215c76a4826922188935fa727b06cbe838bfb55a688b0a0a0b1dae8d976",
+      "file": "01-source.bin"
+    },
+    {
+      "url": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+      "checkedAtUtc": "2026-11-15T14:43:40.881671+00:00",
+      "status": 200,
+      "finalUrl": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+      "bytes": 342201,
+      "sha256": "0724d443428df6aa2365e5dfcd6ae680adfc530e9d2ce92c8f68324958396d33",
+      "file": "02-source.bin"
+    },
+    {
+      "url": "https://moselle.tv/nouvelles-attractions-nouveaux-prix-recrutement-ca-bouge-a-pokeyland/",
+      "checkedAtUtc": "2026-11-15T14:43:40.882024+00:00",
+      "status": 200,
+      "finalUrl": "https://moselle.tv/nouvelles-attractions-nouveaux-prix-recrutement-ca-bouge-a-pokeyland/",
+      "bytes": 345950,
+      "sha256": "f1516c231f0db059156d3b0f626c34a2eabd3843e8b76c83c25fa27a70be6932",
+      "file": "03-source.bin"
+    },
+    {
+      "url": "https://rcdb.com/22635.htm",
+      "checkedAtUtc": "2026-11-15T14:43:41.433057+00:00",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/22635.htm",
+      "bytes": 63422,
+      "sha256": "10cc3bcacbe94fcf5f055d6da797cb0904eb051373f2164841483f5a6f4e9f5a",
+      "file": "04-source.bin"
+    },
+    {
+      "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "checkedAtUtc": "2026-11-15T14:43:41.673282+00:00",
+      "status": 200,
+      "finalUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "bytes": 347812,
+      "sha256": "c28617ff29093a9730af9ee2d5924455f51eba9db1acbb84b2d0f1e6872bafde",
+      "file": "05-source.bin"
+    },
+    {
+      "url": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+      "checkedAtUtc": "2026-11-15T14:43:41.942543+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+      "bytes": 132832,
+      "sha256": "84af80a2fc698eb4c1fd4dd63900418ca4b2945306dd83eebe4eb60a1ba6e588",
+      "file": "06-source.bin"
+    },
+    {
+      "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+      "checkedAtUtc": "2026-11-15T14:43:42.282411+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/#?q.id=id:A20240088918",
+      "bytes": 90167,
+      "sha256": "e63dfb3e0ca07f8c85db7e133826cff44f06254573eb31bbd5056ca726dce4b1",
+      "file": "07-source.bin"
+    },
+    {
+      "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026",
+      "checkedAtUtc": "2026-11-15T14:43:42.413745+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/#?q.id=id:A202601966026",
+      "bytes": 90167,
+      "sha256": "e63dfb3e0ca07f8c85db7e133826cff44f06254573eb31bbd5056ca726dce4b1",
+      "file": "08-source.bin"
+    },
+    {
+      "url": "https://www.dailymotion.com/video/x4kv1rz",
+      "checkedAtUtc": "2026-11-15T14:43:43.681692+00:00",
+      "status": 200,
+      "finalUrl": "https://www.dailymotion.com/video/x4kv1rz",
+      "bytes": 233142,
+      "sha256": "ad5f80352fa7b5bf0b7104b6118b061012bf1683d7c9810eb1f28924fed36e12",
+      "file": "09-source.bin"
+    },
+    {
+      "url": "https://www.directfm.fr/exclu-d-rect-fm-pokeyland-change-de-direction",
+      "checkedAtUtc": "2026-11-15T14:43:43.997836+00:00",
+      "status": 200,
+      "finalUrl": "https://www.directfm.fr/exclu-d-rect-fm-pokeyland-change-de-direction",
+      "bytes": 49940,
+      "sha256": "004e9ad3bc23d511f51b4d4db15d1000e9511980daf15ef0ca0ba5f6db427ce7",
+      "file": "10-source.bin"
+    },
+    {
+      "url": "https://www.directfm.fr/lorraine-le-parc-pokeyland-s-agrandit-en-2025",
+      "checkedAtUtc": "2026-11-15T14:43:44.145729+00:00",
+      "status": 200,
+      "finalUrl": "https://www.directfm.fr/lorraine-le-parc-pokeyland-s-agrandit-en-2025",
+      "bytes": 54145,
+      "sha256": "e6bb9c4b4430a9564c7e6224bd7765ad30bea996467e887b633f62a09591e2a8",
+      "file": "11-source.bin"
+    },
+    {
+      "url": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "checkedAtUtc": "2026-11-15T14:43:44.249399+00:00",
+      "status": 200,
+      "finalUrl": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "bytes": 54822,
+      "sha256": "96710da519d150e7dc0ce9570474a99dba9ec61eafe9516cbae3fb6c581f57be",
+      "file": "12-source.bin"
+    },
+    {
+      "url": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+      "checkedAtUtc": "2026-11-15T14:43:44.714041+00:00",
+      "status": 200,
+      "finalUrl": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+      "bytes": 56332,
+      "sha256": "dec4fc6ae3201b8874616b304083080590718374ccfd2e4a573d7bbdc0037131",
+      "file": "13-source.bin"
+    },
+    {
+      "url": "https://www.directfm.fr/waterjump-roterjump-vos-invitations-pour-une-soiree-vip-a-pokeyland",
+      "checkedAtUtc": "2026-11-15T14:43:46.141242+00:00",
+      "status": 200,
+      "finalUrl": "https://www.directfm.fr/waterjump-roterjump-vos-invitations-pour-une-soiree-vip-a-pokeyland",
+      "bytes": 48392,
+      "sha256": "4ccccd2583274422c9ea5541c5da2acce89040618778847e9567959963adaf59",
+      "file": "14-source.bin"
+    },
+    {
+      "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "checkedAtUtc": "2026-11-15T14:43:46.200304+00:00",
+      "status": 200,
+      "finalUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "bytes": 617365,
+      "sha256": "27806d3d783d910dc567add6b431a48fbe2d925e07cda4a928ed5ae71a7e1d9a",
+      "file": "15-source.bin"
+    },
+    {
+      "url": "https://www.lorraineaucoeur.com/evt-33403/parc-de-loisirs-pokeyland-saison-2021-et-nouveautes/moselle-fey/promo-sortie",
+      "checkedAtUtc": "2026-11-15T14:43:46.533655+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lorraineaucoeur.com/evt-33403/parc-de-loisirs-pokeyland-saison-2021-et-nouveautes/moselle-fey/promo-sortie",
+      "bytes": 147632,
+      "sha256": "63c45921e346f27178e8aa30af9e3d6a454b15cd9c3cd02f295d5850e9335fbe",
+      "file": "16-source.bin"
+    },
+    {
+      "url": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+      "checkedAtUtc": "2026-11-15T14:43:46.931692+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+      "bytes": 186561,
+      "sha256": "b50b4ed1523d70d89f11a8556736e2849b6e65d55e72b8d65e00dae150661127",
+      "file": "17-source.bin"
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+      "checkedAtUtc": "2026-11-15T14:43:47.066398+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+      "bytes": 5283404,
+      "sha256": "0631cbb032a16aef9d9893a39181094c8892104f40fd267c8fdf972817937ecc",
+      "file": "18-source.bin"
+    }
+  ],
+  "publicationPerformed": false,
+  "facebookPublicationPerformed": false
+}

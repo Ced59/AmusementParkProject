@@ -1,0 +1,133 @@
+{
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "isVisible": true,
+        "adminReviewStatus": "Validated"
+      },
+      "metadata": {
+        "source": "Conversation France — publication ciblée du périmètre audité; tolérance de score propriétaire15novembre2026; inventaire global partial"
+      }
+    }
+  },
+  "preview": {
+    "operationId": "045c2ec5-9ba1-429a-9d7b-57d4b2df7266",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:56:18.3669637Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "ff319a23-04b0-4ac6-96b9-27fc5a186c08",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:56:32.7105076Z",
+    "appliedAtUtc": "2026-11-15T14:56:32.7105083Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "scopeAudit": "pokeyland-publication-scope-audit-20261115.json",
+  "scorePolicy": "france-publication-score-policy-20261115.json",
+  "publicationExportComparison": {
+    "metadataOnlyDifference": true,
+    "differences": [],
+    "auditMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T14:38:07.2997847Z"
+    },
+    "publicationMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T14:52:53.9653767Z"
+    }
+  },
+  "globalCompletion": false,
+  "facebookPublicationPerformed": false
+}

@@ -1,0 +1,391 @@
+{
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+          "key": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+          "name": "Parcours sportif",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le défi sportif de l’accrobranche</h2><p>Le Parcours sportif est le volet physique de l’accrobranche de Pokeyland. Ses passages en hauteur demandent de l’effort et de la détermination, au milieu des arbres de la forêt de Féy.</p><p>Autour du grimpeur, les troncs et les feuilles occupent tout le décor. Le baudrier gris et ses sangles rouges se détachent sur cette végétation dense.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The treetop sporting challenge</h2><p>The Sporting Course is the physically demanding part of Pokeyland’s treetop adventure. Its elevated passages call for effort and determination among the trees of Féy’s forest.</p><p>Trunks and leaves fill the scene around the climber. A grey harness with red straps stands out against the dense greenery.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die sportliche Herausforderung im Kletterwald</h2><p>Der Sportparcours ist der körperlich anspruchsvolle Teil des Kletterangebots von Pokeyland. Seine Passagen in der Höhe verlangen Anstrengung und Entschlossenheit zwischen den Bäumen des Waldes von Féy.</p><p>Stämme und Blätter umgeben den Kletterer. Der graue Klettergurt mit roten Bändern hebt sich vom dichten Grün ab.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De sportieve uitdaging in de bomen</h2><p>Het Sportieve parcours is het fysiek veeleisende deel van het klimaanbod van Pokeyland. De hoge passages vragen inspanning en vastberadenheid tussen de bomen van het bos van Féy.</p><p>Stammen en bladeren vullen het decor rond de klimmer. De grijze klimgordel met rode banden steekt af tegen het dichte groen.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La sfida sportiva tra gli alberi</h2><p>Il Percorso sportivo è la parte fisicamente impegnativa dell’avventura tra gli alberi di Pokeyland. I suoi passaggi in quota richiedono sforzo e determinazione nel bosco di Féy.</p><p>Tronchi e foglie circondano il partecipante. L’imbracatura grigia con cinghie rosse risalta sul verde fitto della vegetazione.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El reto deportivo entre los árboles</h2><p>El Recorrido deportivo es la vertiente más física de la aventura entre árboles de Pokeyland. Sus pasos elevados requieren esfuerzo y determinación en el bosque de Féy.</p><p>Los troncos y las hojas rodean al participante. El arnés gris con correas rojas destaca sobre el verde de la vegetación densa.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Sportowe wyzwanie wśród drzew</h2><p>Trasa sportowa jest wymagającą fizycznie częścią parku linowego Pokeyland. Jej przejścia na wysokości wymagają wysiłku i determinacji wśród drzew lasu w Féy.</p><p>Pnie i liście otaczają wspinacza. Szara uprząż z czerwonymi taśmami wyróżnia się na tle gęstej zieleni.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O desafio desportivo entre as árvores</h2><p>O Percurso desportivo é a componente fisicamente exigente do arborismo do Pokeyland. As suas passagens em altura exigem esforço e determinação no bosque de Féy.</p><p>Troncos e folhas rodeiam o participante. O arnês cinzento com fitas vermelhas destaca-se sobre o verde da vegetação densa.</p>"
+            }
+          ]
+        }
+      ],
+      "history": {
+        "events": [
+          {
+            "key": "pokeyland-history-sale-2023",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2023,
+            "month": 11,
+            "day": 29,
+            "datePrecision": "Day",
+            "eventType": "Sale",
+            "isMajor": true,
+            "isVisible": true,
+            "mainImageId": "452fd5f698e549c3922711177b0984e9",
+            "sources": [
+              {
+                "label": "BODACC A 20240088, annonce 918 — cession par acte du 29 novembre 2023",
+                "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Cession du fonds à BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "en",
+                "value": "The business is sold to BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "de",
+                "value": "Verkauf des Geschäftsbetriebs an BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "es",
+                "value": "Venta del negocio a BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "it",
+                "value": "Cessione dell’attività a BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Verkoop van de onderneming aan BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Sprzedaż działalności BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Venda da atividade à BERNARD-AMUSEMENT"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "BERNARD-AMUSEMENT, société établie en Belgique, acquiert le fonds de commerce exploité à Féy. L’acte signé le 29 novembre 2023 fixe un prix de 2,5 millions d’euros et marque le changement de propriétaire de cette activité."
+              },
+              {
+                "languageCode": "en",
+                "value": "Belgium-based BERNARD-AMUSEMENT acquires the business operated at Féy. The deed signed on 29 November 2023 sets a price of €2.5 million, marking a change in ownership of the park’s operating business."
+              },
+              {
+                "languageCode": "de",
+                "value": "Die in Belgien ansässige BERNARD-AMUSEMENT übernimmt den in Féy geführten Geschäftsbetrieb. Der am 29. November 2023 unterzeichnete Vertrag nennt einen Preis von 2,5 Millionen Euro und dokumentiert den Eigentümerwechsel dieses Betriebs."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het in België gevestigde BERNARD-AMUSEMENT koopt de onderneming die in Féy wordt geëxploiteerd. De akte van 29 november 2023 vermeldt een prijs van 2,5 miljoen euro en legt de eigendomsoverdracht van deze bedrijfsactiviteiten vast."
+              },
+              {
+                "languageCode": "it",
+                "value": "BERNARD-AMUSEMENT, società con sede in Belgio, acquista l’attività gestita a Féy. L’atto firmato il 29 novembre 2023 fissa il prezzo a 2,5 milioni di euro e segna il passaggio di proprietà dell’attività del parco."
+              },
+              {
+                "languageCode": "es",
+                "value": "BERNARD-AMUSEMENT, sociedad con sede en Bélgica, adquiere el negocio explotado en Féy. El acta firmada el 29 de noviembre de 2023 fija un precio de 2,5 millones de euros y marca el cambio de propietario de esta actividad."
+              },
+              {
+                "languageCode": "pl",
+                "value": "BERNARD-AMUSEMENT, spółka z siedzibą w Belgii, przejmuje przedsiębiorstwo prowadzone w Féy. Akt podpisany 29 listopada 2023 roku ustala cenę na 2,5 miliona euro i dokumentuje zmianę właściciela działalności parku."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A BERNARD-AMUSEMENT, sociedade sediada na Bélgica, adquire o negócio explorado em Féy. O ato assinado em 29 de novembro de 2023 fixa o preço em 2,5 milhões de euros e marca a mudança de proprietário desta atividade."
+              }
+            ],
+            "newOwnerName": "BERNARD-AMUSEMENT",
+            "previousOwnerName": "POKEYLAND",
+            "id": "f28f4138-dbbc-43ec-b4e9-8d33437e3277",
+            "parkItemId": null,
+            "itemKey": null,
+            "parkItemKey": null,
+            "contextParkId": null,
+            "slug": null,
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "article": null
+          }
+        ]
+      },
+      "metadata": {
+        "source": "Conversation France — correction des répétitions entre notice/photo et article/frise; faits, sources, dates et visibilité conservés"
+      }
+    }
+  },
+  "preview": {
+    "operationId": "582fa23e-58ab-41ef-9ae1-3bcc6276febe",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:03:05.8771551Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "displayName": "Parcours sportif",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein anspruchsvoller Weg durch die Bäume</h2><p>Der Sportparcours bildet den körperlich anspruchsvollen Teil des Kletterangebots von Pokeyland. Der Betreiber betont die Anstrengung und Entschlossenheit, die für seine Passagen in der Höhe erforderlich sind.</p><h2>Der Wald unter den Füßen</h2><p>Die offizielle, diesem Namen zugeordnete Ansicht zeigt einen Teilnehmer an einer Seilrolle, die Beine nach vorn angehoben und Bäume im Hintergrund.</p>",
+            "newValue": "<h2>Die sportliche Herausforderung im Kletterwald</h2><p>Der Sportparcours ist der körperlich anspruchsvolle Teil des Kletterangebots von Pokeyland. Seine Passagen in der Höhe verlangen Anstrengung und Entschlossenheit zwischen den Bäumen des Waldes von Féy.</p><p>Stämme und Blätter umgeben den Kletterer. Der graue Klettergurt mit roten Bändern hebt sich vom dichten Grün ab.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A demanding course among the trees</h2><p>The Sporting Course is the physically demanding part of Pokeyland’s treetop adventure. The operator stresses the effort and determination needed to make progress through its elevated passages.</p><h2>The forest beneath your feet</h2><p>The official view attached to this name shows a participant suspended from a pulley, with his legs raised in front of him and trees in the background.</p>",
+            "newValue": "<h2>The treetop sporting challenge</h2><p>The Sporting Course is the physically demanding part of Pokeyland’s treetop adventure. Its elevated passages call for effort and determination among the trees of Féy’s forest.</p><p>Trunks and leaves fill the scene around the climber. A grey harness with red straps stands out against the dense greenery.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un recorrido exigente entre los árboles</h2><p>El Recorrido deportivo constituye la vertiente más física de la aventura entre árboles de Pokeyland. El operador destaca el esfuerzo y la determinación necesarios para avanzar por sus pasos elevados.</p><h2>El bosque bajo los pies</h2><p>La vista oficial asociada a este nombre muestra a un participante suspendido de una polea, con las piernas levantadas hacia delante y árboles al fondo.</p>",
+            "newValue": "<h2>El reto deportivo entre los árboles</h2><p>El Recorrido deportivo es la vertiente más física de la aventura entre árboles de Pokeyland. Sus pasos elevados requieren esfuerzo y determinación en el bosque de Féy.</p><p>Los troncos y las hojas rodean al participante. El arnés gris con correas rojas destaca sobre el verde de la vegetación densa.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Un parcours exigeant dans les arbres</h2><p>Le Parcours sportif constitue le volet physique de l’accrobranche de Pokeyland. L’opérateur insiste sur l’effort et la détermination nécessaires pour avancer dans ses passages en hauteur.</p><h2>La forêt sous les pieds</h2><p>La vue officielle rattachée à ce nom montre un participant suspendu à une poulie, les jambes relevées devant lui et les arbres en arrière-plan.</p>",
+            "newValue": "<h2>Le défi sportif de l’accrobranche</h2><p>Le Parcours sportif est le volet physique de l’accrobranche de Pokeyland. Ses passages en hauteur demandent de l’effort et de la détermination, au milieu des arbres de la forêt de Féy.</p><p>Autour du grimpeur, les troncs et les feuilles occupent tout le décor. Le baudrier gris et ses sangles rouges se détachent sur cette végétation dense.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un percorso impegnativo tra gli alberi</h2><p>Il Percorso sportivo rappresenta la componente più fisica dell’avventura tra gli alberi di Pokeyland. Il gestore sottolinea lo sforzo e la determinazione necessari per affrontarne i passaggi in quota.</p><h2>Il bosco sotto i piedi</h2><p>La veduta ufficiale associata a questo nome mostra un partecipante sospeso a una carrucola, con le gambe sollevate davanti a sé e gli alberi sullo sfondo.</p>",
+            "newValue": "<h2>La sfida sportiva tra gli alberi</h2><p>Il Percorso sportivo è la parte fisicamente impegnativa dell’avventura tra gli alberi di Pokeyland. I suoi passaggi in quota richiedono sforzo e determinazione nel bosco di Féy.</p><p>Tronchi e foglie circondano il partecipante. L’imbracatura grigia con cinghie rosse risalta sul verde fitto della vegetazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een veeleisend parcours tussen de bomen</h2><p>Het Sportieve parcours vormt het fysiek veeleisende deel van het klimaanbod van Pokeyland. De aanbieder benadrukt de inspanning en vastberadenheid die nodig zijn om de hoge passages te doorlopen.</p><h2>Het bos onder de voeten</h2><p>De officiële foto bij deze naam toont een deelnemer die aan een katrol hangt, met zijn benen voor zich omhoog en bomen op de achtergrond.</p>",
+            "newValue": "<h2>De sportieve uitdaging in de bomen</h2><p>Het Sportieve parcours is het fysiek veeleisende deel van het klimaanbod van Pokeyland. De hoge passages vragen inspanning en vastberadenheid tussen de bomen van het bos van Féy.</p><p>Stammen en bladeren vullen het decor rond de klimmer. De grijze klimgordel met rode banden steekt af tegen het dichte groen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Wymagająca trasa między drzewami</h2><p>Trasa sportowa jest wymagającą fizycznie częścią parku linowego Pokeyland. Operator podkreśla wysiłek i determinację potrzebne do pokonywania jej przejść na wysokości.</p><h2>Las pod stopami</h2><p>Oficjalne zdjęcie przypisane do tej nazwy pokazuje uczestnika zawieszonego na bloczku, z nogami uniesionymi przed sobą i drzewami w tle.</p>",
+            "newValue": "<h2>Sportowe wyzwanie wśród drzew</h2><p>Trasa sportowa jest wymagającą fizycznie częścią parku linowego Pokeyland. Jej przejścia na wysokości wymagają wysiłku i determinacji wśród drzew lasu w Féy.</p><p>Pnie i liście otaczają wspinacza. Szara uprząż z czerwonymi taśmami wyróżnia się na tle gęstej zieleni.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Um percurso exigente entre as árvores</h2><p>O Percurso desportivo constitui a componente fisicamente exigente do arborismo do Pokeyland. O operador salienta o esforço e a determinação necessários para avançar nas suas passagens em altura.</p><h2>O bosque sob os pés</h2><p>A vista oficial associada a este nome mostra um participante suspenso numa roldana, com as pernas levantadas à frente e árvores ao fundo.</p>",
+            "newValue": "<h2>O desafio desportivo entre as árvores</h2><p>O Percurso desportivo é a componente fisicamente exigente do arborismo do Pokeyland. As suas passagens em altura exigem esforço e determinação no bosque de Féy.</p><p>Troncos e folhas rodeiam o participante. O arnês cinzento com fitas vermelhas destaca-se sobre o verde da vegetação densa.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f28f4138-dbbc-43ec-b4e9-8d33437e3277",
+        "entityKey": "pokeyland-history-sale-2023",
+        "displayName": "Cession du fonds à BERNARD-AMUSEMENT",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "summaries",
+            "oldValue": "de:Ein Vertrag vom 29. November 2023 regelt den Verkauf des Geschäftsbetriebs von POKEYLAND an BERNARD-AMUSEMENT für 2,5 Millionen Euro. Die in Belgien ansässige Gesellschaft übernimmt das Geschäft in Féy., en:A deed dated 29 November 2023 records the sale of POKEYLAND’s operating business to BERNARD-AMUSEMENT for €2.5 million. The Belgium-based company takes over the Féy business., es:Un contrato del 29 de noviembre de 2023 establece la venta del negocio de POKEYLAND a BERNARD-AMUSEMENT por 2,5 millones de euros. La sociedad con sede en Bélgica adquiere la actividad de Féy., fr:Un acte du 29 novembre 2023 organise la cession du fonds de commerce de POKEYLAND à BERNARD-AMUSEMENT pour 2,5 millions d’euros. Cette société établie en Belgique reprend l’activité de Féy., it:Un atto del 29 novembre 2023 stabilisce la cessione dell’attività di POKEYLAND a BERNARD-AMUSEMENT per 2,5 milioni di euro. La società con sede in Belgio rileva l’attività di Féy., nl:Een akte van 29 november 2023 legt de verkoop van de bedrijfsactiviteiten van POKEYLAND aan BERNARD-AMUSEMENT vast voor 2,5 miljoen euro. De in België gevestigde onderneming neemt de activiteiten in Féy over., pl:Akt z 29 listopada 2023 roku reguluje sprzedaż działalności POKEYLAND spółce BERNARD-AMUSEMENT za 2,5 miliona euro. Firma z siedzibą w Belgii przejmuje działalność w Féy., pt:Um ato de 29 de novembro de 2023 estabelece a venda da atividade de POKEYLAND à BERNARD-AMUSEMENT por 2,5 milhões de euros. A sociedade sediada na Bélgica assume a atividade de Féy.",
+            "newValue": "de:Die in Belgien ansässige BERNARD-AMUSEMENT übernimmt den in Féy geführten Geschäftsbetrieb. Der am 29. November 2023 unterzeichnete Vertrag nennt einen Preis von 2,5 Millionen Euro und dokumentiert den Eigentümerwechsel dieses Betriebs., en:Belgium-based BERNARD-AMUSEMENT acquires the business operated at Féy. The deed signed on 29 November 2023 sets a price of €2.5 million, marking a change in ownership of the park’s operating business., es:BERNARD-AMUSEMENT, sociedad con sede en Bélgica, adquiere el negocio explotado en Féy. El acta firmada el 29 de noviembre de 2023 fija un precio de 2,5 millones de euros y marca el cambio de propietario de esta actividad., fr:BERNARD-AMUSEMENT, société établie en Belgique, acquiert le fonds de commerce exploité à Féy. L’acte signé le 29 novembre 2023 fixe un prix de 2,5 millions d’euros et marque le changement de propriétaire de cette activité., it:BERNARD-AMUSEMENT, società con sede in Belgio, acquista l’attività gestita a Féy. L’atto firmato il 29 novembre 2023 fissa il prezzo a 2,5 milioni di euro e segna il passaggio di proprietà dell’attività del parco., nl:Het in België gevestigde BERNARD-AMUSEMENT koopt de onderneming die in Féy wordt geëxploiteerd. De akte van 29 november 2023 vermeldt een prijs van 2,5 miljoen euro en legt de eigendomsoverdracht van deze bedrijfsactiviteiten vast., pl:BERNARD-AMUSEMENT, spółka z siedzibą w Belgii, przejmuje przedsiębiorstwo prowadzone w Féy. Akt podpisany 29 listopada 2023 roku ustala cenę na 2,5 miliona euro i dokumentuje zmianę właściciela działalności parku., pt:A BERNARD-AMUSEMENT, sociedade sediada na Bélgica, adquire o negócio explorado em Féy. O ato assinado em 29 de novembro de 2023 fixa o preço em 2,5 milhões de euros e marca a mudança de proprietário desta atividade."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "4a369cdb-c487-4dc2-b9d9-23d65b4c7e64",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:03:34.7706394Z",
+    "appliedAtUtc": "2026-11-15T15:03:34.7706402Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "displayName": "Parcours sportif",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein anspruchsvoller Weg durch die Bäume</h2><p>Der Sportparcours bildet den körperlich anspruchsvollen Teil des Kletterangebots von Pokeyland. Der Betreiber betont die Anstrengung und Entschlossenheit, die für seine Passagen in der Höhe erforderlich sind.</p><h2>Der Wald unter den Füßen</h2><p>Die offizielle, diesem Namen zugeordnete Ansicht zeigt einen Teilnehmer an einer Seilrolle, die Beine nach vorn angehoben und Bäume im Hintergrund.</p>",
+            "newValue": "<h2>Die sportliche Herausforderung im Kletterwald</h2><p>Der Sportparcours ist der körperlich anspruchsvolle Teil des Kletterangebots von Pokeyland. Seine Passagen in der Höhe verlangen Anstrengung und Entschlossenheit zwischen den Bäumen des Waldes von Féy.</p><p>Stämme und Blätter umgeben den Kletterer. Der graue Klettergurt mit roten Bändern hebt sich vom dichten Grün ab.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A demanding course among the trees</h2><p>The Sporting Course is the physically demanding part of Pokeyland’s treetop adventure. The operator stresses the effort and determination needed to make progress through its elevated passages.</p><h2>The forest beneath your feet</h2><p>The official view attached to this name shows a participant suspended from a pulley, with his legs raised in front of him and trees in the background.</p>",
+            "newValue": "<h2>The treetop sporting challenge</h2><p>The Sporting Course is the physically demanding part of Pokeyland’s treetop adventure. Its elevated passages call for effort and determination among the trees of Féy’s forest.</p><p>Trunks and leaves fill the scene around the climber. A grey harness with red straps stands out against the dense greenery.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un recorrido exigente entre los árboles</h2><p>El Recorrido deportivo constituye la vertiente más física de la aventura entre árboles de Pokeyland. El operador destaca el esfuerzo y la determinación necesarios para avanzar por sus pasos elevados.</p><h2>El bosque bajo los pies</h2><p>La vista oficial asociada a este nombre muestra a un participante suspendido de una polea, con las piernas levantadas hacia delante y árboles al fondo.</p>",
+            "newValue": "<h2>El reto deportivo entre los árboles</h2><p>El Recorrido deportivo es la vertiente más física de la aventura entre árboles de Pokeyland. Sus pasos elevados requieren esfuerzo y determinación en el bosque de Féy.</p><p>Los troncos y las hojas rodean al participante. El arnés gris con correas rojas destaca sobre el verde de la vegetación densa.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Un parcours exigeant dans les arbres</h2><p>Le Parcours sportif constitue le volet physique de l’accrobranche de Pokeyland. L’opérateur insiste sur l’effort et la détermination nécessaires pour avancer dans ses passages en hauteur.</p><h2>La forêt sous les pieds</h2><p>La vue officielle rattachée à ce nom montre un participant suspendu à une poulie, les jambes relevées devant lui et les arbres en arrière-plan.</p>",
+            "newValue": "<h2>Le défi sportif de l’accrobranche</h2><p>Le Parcours sportif est le volet physique de l’accrobranche de Pokeyland. Ses passages en hauteur demandent de l’effort et de la détermination, au milieu des arbres de la forêt de Féy.</p><p>Autour du grimpeur, les troncs et les feuilles occupent tout le décor. Le baudrier gris et ses sangles rouges se détachent sur cette végétation dense.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un percorso impegnativo tra gli alberi</h2><p>Il Percorso sportivo rappresenta la componente più fisica dell’avventura tra gli alberi di Pokeyland. Il gestore sottolinea lo sforzo e la determinazione necessari per affrontarne i passaggi in quota.</p><h2>Il bosco sotto i piedi</h2><p>La veduta ufficiale associata a questo nome mostra un partecipante sospeso a una carrucola, con le gambe sollevate davanti a sé e gli alberi sullo sfondo.</p>",
+            "newValue": "<h2>La sfida sportiva tra gli alberi</h2><p>Il Percorso sportivo è la parte fisicamente impegnativa dell’avventura tra gli alberi di Pokeyland. I suoi passaggi in quota richiedono sforzo e determinazione nel bosco di Féy.</p><p>Tronchi e foglie circondano il partecipante. L’imbracatura grigia con cinghie rosse risalta sul verde fitto della vegetazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een veeleisend parcours tussen de bomen</h2><p>Het Sportieve parcours vormt het fysiek veeleisende deel van het klimaanbod van Pokeyland. De aanbieder benadrukt de inspanning en vastberadenheid die nodig zijn om de hoge passages te doorlopen.</p><h2>Het bos onder de voeten</h2><p>De officiële foto bij deze naam toont een deelnemer die aan een katrol hangt, met zijn benen voor zich omhoog en bomen op de achtergrond.</p>",
+            "newValue": "<h2>De sportieve uitdaging in de bomen</h2><p>Het Sportieve parcours is het fysiek veeleisende deel van het klimaanbod van Pokeyland. De hoge passages vragen inspanning en vastberadenheid tussen de bomen van het bos van Féy.</p><p>Stammen en bladeren vullen het decor rond de klimmer. De grijze klimgordel met rode banden steekt af tegen het dichte groen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Wymagająca trasa między drzewami</h2><p>Trasa sportowa jest wymagającą fizycznie częścią parku linowego Pokeyland. Operator podkreśla wysiłek i determinację potrzebne do pokonywania jej przejść na wysokości.</p><h2>Las pod stopami</h2><p>Oficjalne zdjęcie przypisane do tej nazwy pokazuje uczestnika zawieszonego na bloczku, z nogami uniesionymi przed sobą i drzewami w tle.</p>",
+            "newValue": "<h2>Sportowe wyzwanie wśród drzew</h2><p>Trasa sportowa jest wymagającą fizycznie częścią parku linowego Pokeyland. Jej przejścia na wysokości wymagają wysiłku i determinacji wśród drzew lasu w Féy.</p><p>Pnie i liście otaczają wspinacza. Szara uprząż z czerwonymi taśmami wyróżnia się na tle gęstej zieleni.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Um percurso exigente entre as árvores</h2><p>O Percurso desportivo constitui a componente fisicamente exigente do arborismo do Pokeyland. O operador salienta o esforço e a determinação necessários para avançar nas suas passagens em altura.</p><h2>O bosque sob os pés</h2><p>A vista oficial associada a este nome mostra um participante suspenso numa roldana, com as pernas levantadas à frente e árvores ao fundo.</p>",
+            "newValue": "<h2>O desafio desportivo entre as árvores</h2><p>O Percurso desportivo é a componente fisicamente exigente do arborismo do Pokeyland. As suas passagens em altura exigem esforço e determinação no bosque de Féy.</p><p>Troncos e folhas rodeiam o participante. O arnês cinzento com fitas vermelhas destaca-se sobre o verde da vegetação densa.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f28f4138-dbbc-43ec-b4e9-8d33437e3277",
+        "entityKey": "pokeyland-history-sale-2023",
+        "displayName": "Cession du fonds à BERNARD-AMUSEMENT",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "summaries",
+            "oldValue": "de:Ein Vertrag vom 29. November 2023 regelt den Verkauf des Geschäftsbetriebs von POKEYLAND an BERNARD-AMUSEMENT für 2,5 Millionen Euro. Die in Belgien ansässige Gesellschaft übernimmt das Geschäft in Féy., en:A deed dated 29 November 2023 records the sale of POKEYLAND’s operating business to BERNARD-AMUSEMENT for €2.5 million. The Belgium-based company takes over the Féy business., es:Un contrato del 29 de noviembre de 2023 establece la venta del negocio de POKEYLAND a BERNARD-AMUSEMENT por 2,5 millones de euros. La sociedad con sede en Bélgica adquiere la actividad de Féy., fr:Un acte du 29 novembre 2023 organise la cession du fonds de commerce de POKEYLAND à BERNARD-AMUSEMENT pour 2,5 millions d’euros. Cette société établie en Belgique reprend l’activité de Féy., it:Un atto del 29 novembre 2023 stabilisce la cessione dell’attività di POKEYLAND a BERNARD-AMUSEMENT per 2,5 milioni di euro. La società con sede in Belgio rileva l’attività di Féy., nl:Een akte van 29 november 2023 legt de verkoop van de bedrijfsactiviteiten van POKEYLAND aan BERNARD-AMUSEMENT vast voor 2,5 miljoen euro. De in België gevestigde onderneming neemt de activiteiten in Féy over., pl:Akt z 29 listopada 2023 roku reguluje sprzedaż działalności POKEYLAND spółce BERNARD-AMUSEMENT za 2,5 miliona euro. Firma z siedzibą w Belgii przejmuje działalność w Féy., pt:Um ato de 29 de novembro de 2023 estabelece a venda da atividade de POKEYLAND à BERNARD-AMUSEMENT por 2,5 milhões de euros. A sociedade sediada na Bélgica assume a atividade de Féy.",
+            "newValue": "de:Die in Belgien ansässige BERNARD-AMUSEMENT übernimmt den in Féy geführten Geschäftsbetrieb. Der am 29. November 2023 unterzeichnete Vertrag nennt einen Preis von 2,5 Millionen Euro und dokumentiert den Eigentümerwechsel dieses Betriebs., en:Belgium-based BERNARD-AMUSEMENT acquires the business operated at Féy. The deed signed on 29 November 2023 sets a price of €2.5 million, marking a change in ownership of the park’s operating business., es:BERNARD-AMUSEMENT, sociedad con sede en Bélgica, adquiere el negocio explotado en Féy. El acta firmada el 29 de noviembre de 2023 fija un precio de 2,5 millones de euros y marca el cambio de propietario de esta actividad., fr:BERNARD-AMUSEMENT, société établie en Belgique, acquiert le fonds de commerce exploité à Féy. L’acte signé le 29 novembre 2023 fixe un prix de 2,5 millions d’euros et marque le changement de propriétaire de cette activité., it:BERNARD-AMUSEMENT, società con sede in Belgio, acquista l’attività gestita a Féy. L’atto firmato il 29 novembre 2023 fissa il prezzo a 2,5 milioni di euro e segna il passaggio di proprietà dell’attività del parco., nl:Het in België gevestigde BERNARD-AMUSEMENT koopt de onderneming die in Féy wordt geëxploiteerd. De akte van 29 november 2023 vermeldt een prijs van 2,5 miljoen euro en legt de eigendomsoverdracht van deze bedrijfsactiviteiten vast., pl:BERNARD-AMUSEMENT, spółka z siedzibą w Belgii, przejmuje przedsiębiorstwo prowadzone w Féy. Akt podpisany 29 listopada 2023 roku ustala cenę na 2,5 miliona euro i dokumentuje zmianę właściciela działalności parku., pt:A BERNARD-AMUSEMENT, sociedade sediada na Bélgica, adquire o negócio explorado em Féy. O ato assinado em 29 de novembro de 2023 fixa o preço em 2,5 milhões de euros e marca a mudança de proprietário desta atividade."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "scopeAudit": "pokeyland-publication-scope-audit-20261115.json",
+  "scorePolicy": "france-publication-score-policy-20261115.json",
+  "publicationExportComparison": {
+    "metadataOnlyDifference": true,
+    "differences": [],
+    "auditMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T14:38:07.2997847Z"
+    },
+    "publicationMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T14:52:53.9653767Z"
+    }
+  },
+  "globalCompletion": false,
+  "facebookPublicationPerformed": false
+}

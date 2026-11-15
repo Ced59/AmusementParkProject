@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T13:59:37.768Z",
+      "lastDataIntegrationAt": "2026-11-15T15:03:34.770Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33858,6 +33858,86 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-lukylud-reference-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland : référence privée Lukylud créée après rapprochement nominal et rattachée au Rotor personnalisé, huit biographies génériques personnellement relues. Rôle structure gonflable distinct du mécanisme OEM inconnu ; fondation2002 sourcée et adresse contradictoire non inventée. Amazone/HeadRush non rattachés, aucun logo/publication."
+        },
+        {
+          "eventId": "apply-b2930965-9353-457a-bec7-f8942c2194c9",
+          "appliedAt": "2026-11-15T14:42:13.585Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-43-audit-editorial-polish-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : audit en cours,24textes Bazooka ball/Trampoline/Tubing allégés dans8langues ; longueur Tubing80m conservée en donnée structurée. Trois notices privées, aucune publication encore."
+        },
+        {
+          "eventId": "apply-fb50c0e0-fbbd-4327-8444-5da763f89227",
+          "appliedAt": "2026-11-15T14:54:36.223Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-48-publish-audited-images-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : publication autorisée du périmètre audité, 48-publish-audited-images; note insuffisante acceptée, horaires inconnus conservés; inventaire global partial, Facebook à vérifier séparément."
+        },
+        {
+          "eventId": "apply-ca4651d9-9200-490d-8583-2aef9116190d",
+          "appliedAt": "2026-11-15T14:55:20.403Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-49-publish-audited-items-zones-map-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : publication autorisée du périmètre audité, 49-publish-audited-items-zones-map; note insuffisante acceptée, horaires inconnus conservés; inventaire global partial, Facebook à vérifier séparément."
+        },
+        {
+          "eventId": "apply-1faa9cde-fadd-4a9b-b5f6-77ab7f93b394",
+          "appliedAt": "2026-11-15T14:56:01.555Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-50-publish-audited-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : publication autorisée du périmètre audité, 50-publish-audited-history; note insuffisante acceptée, horaires inconnus conservés; inventaire global partial, Facebook à vérifier séparément."
+        },
+        {
+          "eventId": "apply-ff319a23-04b0-4ac6-96b9-27fc5a186c08",
+          "appliedAt": "2026-11-15T14:56:32.710Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-51-publish-park-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : publication autorisée du périmètre audité, 51-publish-park; note insuffisante acceptée, horaires inconnus conservés; inventaire global partial, Facebook à vérifier séparément."
+        },
+        {
+          "eventId": "apply-46093869-bfbf-4b60-88f6-c79d619929f4",
+          "appliedAt": "2026-11-15T14:59:04.660Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-55-checkpoint-editorial-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : publication autorisée du périmètre audité, 55-checkpoint-editorial-correction; note insuffisante acceptée, horaires inconnus conservés; inventaire global partial, Facebook à vérifier séparément."
+        },
+        {
+          "eventId": "apply-9b40a44e-39d2-4c6c-8c3f-6d467ea1ef16",
+          "appliedAt": "2026-11-15T14:59:48.531Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-56-history-canonical-publication-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : publication autorisée du périmètre audité, 56-history-canonical-publication; note insuffisante acceptée, horaires inconnus conservés; inventaire global partial, Facebook à vérifier séparément."
+        },
+        {
+          "eventId": "apply-4a369cdb-c487-4dc2-b9d9-23d65b4c7e64",
+          "appliedAt": "2026-11-15T15:03:34.770Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-58-cross-corpus-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : publication autorisée du périmètre audité, 58-cross-corpus-correction; note insuffisante acceptée, horaires inconnus conservés; inventaire global partial, Facebook à vérifier séparément."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
