@@ -14,23 +14,23 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 130 |
-| À qualifier | 490 |
+| À qualifier | 486 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 16 |
+| Intégration achevée | 18 |
 | Publié, date inconnue | 52 |
 | Hors périmètre enregistré | 89 |
-| Doublon conservé | 26 |
+| Doublon conservé | 28 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **1057**. Sources : Aerophile — références constructeur, AmusementForce, Brogent — projet constructeur, EAZA, Freizeitpark App, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **36 publiés**, **130 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **354 candidats sans fiche**.
+Parcs : **36 publiés**, **130 masqués à intégrer**, **92 masqués NotRelevant à réexaminer**, **355 candidats sans fiche**.
 
-Standalone : **32 publiées**, **0 masquées**, **15 candidates sans fiche**. Autres dossiers : **46 types à décider**, **69 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
+Standalone : **34 publiées**, **0 masquées**, **12 candidates sans fiche**. Autres dossiers : **46 types à décider**, **67 rapprochements incertains**, **15 anciens parcs liés à une standalone**.
 
-Revue standalone : **27 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **61 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **14 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **27 pistes dans des fiches Park masquées**, **3 dans des fiches Park publiées**, **59 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **15 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 

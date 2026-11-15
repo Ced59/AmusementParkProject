@@ -1,0 +1,136 @@
+{
+  "entityId": "c3915e57-01bf-486e-a932-db220a0eea66",
+  "receipts": [
+    {
+      "action": "Apply",
+      "stage": "core",
+      "operationId": "37d1afe9-62bb-4913-b7c9-a90a534b6dc5",
+      "appliedAtUtc": "2026-11-15T08:55:33.5100304Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "pricing",
+      "operationId": "a44c8bcc-bfc1-4e6d-aa68-76d0449f8d00",
+      "appliedAtUtc": "2026-11-15T08:58:22.6111376Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "access",
+      "operationId": "daef05cd-0078-4fbf-93e1-95adbe206997",
+      "appliedAtUtc": "2026-11-15T08:59:40.377624Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "history",
+      "operationId": "f483fa6b-6880-4199-99f8-254dc297bded",
+      "appliedAtUtc": "2026-11-15T09:02:02.0850533Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "pricing-source-fix",
+      "operationId": "3733fa9c-5d40-46de-8608-48c34fa7d768",
+      "appliedAtUtc": "2026-11-15T09:03:38.0851021Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "hours",
+      "operationId": "e3d711a4-a0bf-4305-94bc-5d78fb5dd04c",
+      "appliedAtUtc": "2026-11-15T09:04:08.1903317Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "ImportPhoto",
+      "stage": "photo-1",
+      "imageId": "a7a54aed4a4141499b55682f222d5966",
+      "sourceUrl": "https://img0.oastatic.com/img2/13295546/max/variant.webp",
+      "createdAtUtc": "2026-11-15T08:56:21.533Z",
+      "updatedAtUtc": "2026-11-15T08:56:24.924Z",
+      "isPublished": true
+    },
+    {
+      "action": "ImportPhotoAndUpdateMetadata",
+      "stage": "photo-2",
+      "imageId": "9b865374634b4874867b699861004191",
+      "sourceUrl": "https://img0.oastatic.com/img2/62750366/max/variant.jpg",
+      "createdAtUtc": "2026-11-15T08:56:35.059Z",
+      "updatedAtUtc": "2026-11-15T08:57:46.288Z",
+      "isPublished": true
+    },
+    {
+      "action": "Apply",
+      "stage": "publish",
+      "operationId": "c583f3cd-b334-4035-b0cd-3c08f12782e1",
+      "appliedAtUtc": "2026-11-15T09:05:32.8775443Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "dataIntegration": false
+    },
+    {
+      "action": "PublishFacebook",
+      "publicationId": "e281b0971daf42d095c20e57593be4c6",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-15T09:06:14.3981048Z",
+      "postUrl": "https://www.facebook.com/1285475681307050/posts/122127431529424431"
+    }
+  ]
+}
