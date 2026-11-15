@@ -15372,11 +15372,11 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "La référence Wiegand Hündle/Oberstaufen correspond à la Sommerrodelbahn Hündle publiée sous a49ffd3f-3502-4b8d-985f-105f8a830efb.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -15385,7 +15385,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette référence comme doublon de DE-candidate-838a83725c4441 et porter les mises à jour sur la fiche publiée.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -15396,11 +15396,16 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.huendle.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste confirmée",
+          "url": "https://www.huendle-imberg.de/sommer/huendle/sommerrodelbahn/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Hündle/Oberstaufen",
@@ -15411,8 +15416,9 @@
             "referenceId": "location-id-1276"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "La référence constructeur Hündle/Oberstaufen et la fiche exploitant désignent la même piste de luge ; ne pas créer de seconde fiche."
+      },
+      "duplicateOf": "DE-candidate-838a83725c4441"
     },
     {
       "entryId": "DE-candidate-standalone-ce35f611a472a1",
@@ -24362,37 +24368,136 @@
     {
       "entryId": "DE-candidate-838a83725c4441",
       "name": "Sommerrodelbahn Hündle",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "Oberstaufen",
-      "siteId": null,
+      "category": "Luge d’été",
+      "locality": "Hinterstaufen 10, 87534 Oberstaufen, Bavière",
+      "siteId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T09:17:36.416465Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Fermeture saisonnière après 2026 jusqu’à l’été 2027 annoncée par l’exploitant ; date exacte de reprise non publiée.",
+      "identityConfidence": "Piste Hündle de 850 m à la gare de vallée, billets distincts, exploitant confirmé et photo exacte sous CC BY-SA 4.0.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sommerrodelbahn am Hündle",
+        "Luge Wiegand — Hündle/Oberstaufen"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T09:16:18.422Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-09bb4cf1-e83d-438e-b43b-54ce11cbc862",
+          "appliedAt": "2026-11-15T09:12:51.821Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
+          "evidence": "PARK_DATA_EDITOR:apply:09bb4cf1-e83d-438e-b43b-54ce11cbc862",
+          "auditEvidence": null,
+          "summary": "Création de la fiche, localisation, longueur structurée et descriptions dans huit langues."
+        },
+        {
+          "eventId": "image-99d164d38b5d436bb369604640dc404c",
+          "appliedAt": "2026-11-15T09:13:50.173Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
+          "evidence": "PARK_DATA_EDITOR:image:99d164d38b5d436bb369604640dc404c",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la gare de la luge importée et publiée, créditée Nico Bogenreuther / Oberstaufen Tourismus Marketing GmbH sous CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-9dde1250-5f85-42c5-ab67-986a03671194",
+          "appliedAt": "2026-11-15T09:14:43.308Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
+          "evidence": "PARK_DATA_EDITOR:apply:9dde1250-5f85-42c5-ab67-986a03671194",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels de la saison 2026 pour adultes et enfants, avec avertissement de révision avant 2027."
+        },
+        {
+          "eventId": "apply-0d333115-cda4-4cd2-831f-9aeb60e2de06",
+          "appliedAt": "2026-11-15T09:15:18.136Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
+          "evidence": "PARK_DATA_EDITOR:apply:0d333115-cda4-4cd2-831f-9aeb60e2de06",
+          "auditEvidence": null,
+          "summary": "Conditions d’âge et d’accompagnement, et restriction liée au temps sec."
+        },
+        {
+          "eventId": "apply-0bca7324-a47c-45f3-8653-779ea91628cf",
+          "appliedAt": "2026-11-15T09:16:18.422Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
+          "evidence": "PARK_DATA_EDITOR:apply:0bca7324-a47c-45f3-8653-779ea91628cf",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-huendle-20261115/audit.json",
+          "summary": "Réécriture des descriptions dans huit langues après contrôle éditorial des mesures techniques brutes."
+        }
+      ],
+      "nextAction": "Conserver cette ligne. À l’annonce de la saison 2027, vérifier date de reprise, horaires et nouveaux tarifs puis intégrer les données réellement publiées. Ne pas republier Facebook.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/sommerrodelbahn-huendle/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — piste et règles",
+          "url": "https://www.huendle-imberg.de/sommer/huendle/sommerrodelbahn/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs 2026",
+          "url": "https://www.huendle-imberg.de/sommer/huendle/preise/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — fermeture saisonnière",
+          "url": "https://www.huendle-imberg.de/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "MVP — photo exacte sous CC BY-SA 4.0",
+          "url": "https://www.mvp.de/bayern/entdecken/sommerrodelbahn-am-huendle-oberstaufen/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Hündle",
+          "url": "https://amusement-parks.fun/fr/attraction/a49ffd3f-3502-4b8d-985f-105f8a830efb/sommerrodelbahn-huendle",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Hündle",
+            "source": "Exploitant — piste de luge",
+            "url": "https://www.huendle-imberg.de/sommer/huendle/sommerrodelbahn/",
+            "family": "Luge d’été",
+            "sourceVenueName": "Hündle Bergbahnen"
+          }
+        ],
+        "rationale": "Piste fixe avec billetterie propre au pied d’un domaine de montagne ; les autres offres du domaine ne constituent pas un parc d’attractions inventorié comme parent."
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-huendle-20261115/audit.json",
+        "score": 81,
+        "publicationBlockers": []
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-15T09:17:36.416465Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/a49ffd3f-3502-4b8d-985f-105f8a830efb/sommerrodelbahn-huendle",
+        "facebookPublishedAtUtc": "2026-11-15T09:19:33.7023396Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127432735424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-de-huendle-20261115/receipts.json"
       }
     },
     {
