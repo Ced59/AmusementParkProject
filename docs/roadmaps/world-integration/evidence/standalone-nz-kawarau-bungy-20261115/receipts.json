@@ -1,0 +1,94 @@
+{
+  "entryId": "NZ-candidate-discovery-88a819e28a31d8",
+  "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+  "integrationHistory": [
+    {
+      "eventId": "apply-80a8a123-de49-4345-a058-cf8437f4c746",
+      "appliedAt": "2026-11-15T11:28:09.812Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+      "evidence": "PARK_DATA_EDITOR:apply:80a8a123-de49-4345-a058-cf8437f4c746",
+      "auditEvidence": null,
+      "summary": "Création du saut à l’élastique du pont de Kawarau, coordonnées OSM et descriptions éditoriales dans huit langues."
+    },
+    {
+      "eventId": "apply-1c560201-92c4-4212-8003-b42dcfc5138b",
+      "appliedAt": "2026-11-15T11:30:15.331Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+      "evidence": "PARK_DATA_EDITOR:apply:1c560201-92c4-4212-8003-b42dcfc5138b",
+      "auditEvidence": null,
+      "summary": "Tarifs adulte et enfant à partir du prix affiché, horaires saisonniers, fermeture de Noël et quatre conditions d’accès sourcées."
+    },
+    {
+      "eventId": "image-6bea7bbe90434fe59eb7b05209b76b24",
+      "appliedAt": "2026-11-15T11:31:51.491Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+      "evidence": "PARK_DATA_EDITOR:image:6bea7bbe90434fe59eb7b05209b76b24",
+      "auditEvidence": null,
+      "summary": "Photo exacte du saut ou de sa plateforme importée et publiée, huit alt, légendes et crédits ; Matthias Klappenbach, CC BY 2.0, 2010-01-15."
+    },
+    {
+      "eventId": "image-02d65e1e43b047579d2c02ed53eed7fc",
+      "appliedAt": "2026-11-15T11:32:17.155Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+      "evidence": "PARK_DATA_EDITOR:image:02d65e1e43b047579d2c02ed53eed7fc",
+      "auditEvidence": null,
+      "summary": "Photo exacte du saut ou de sa plateforme importée et publiée, huit alt, légendes et crédits ; Archives New Zealand, CC BY-SA 2.0, 1988."
+    },
+    {
+      "eventId": "image-d421de393e1945fb977b021fd3ec4dc5",
+      "appliedAt": "2026-11-15T11:32:36.574Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+      "evidence": "PARK_DATA_EDITOR:image:d421de393e1945fb977b021fd3ec4dc5",
+      "auditEvidence": null,
+      "summary": "Photo exacte du saut ou de sa plateforme importée et publiée, huit alt, légendes et crédits ; macronix, CC BY 2.0, 2010-02-06."
+    },
+    {
+      "eventId": "apply-b4bc6eb3-d39d-4b37-ad4d-823c8003eb1c",
+      "appliedAt": "2026-11-15T11:33:18.340Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+      "evidence": "PARK_DATA_EDITOR:apply:b4bc6eb3-d39d-4b37-ad4d-823c8003eb1c",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-kawarau-bungy-20261115/audit.json",
+      "summary": "Histoire de l’ouverture en 1988 avec précision annuelle et huit langues ; divergences des sources officielles sur la date exacte documentées dans l’audit."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "bdd4e719-1156-497c-9531-cce151913282",
+    "appliedAtUtc": "2026-11-15T11:34:05.8620742Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127446907424431",
+    "publishedAtUtc": "2026-11-15T11:34:42.5750795Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "6bea7bbe90434fe59eb7b05209b76b24",
+      "appliedAtUtc": "2026-11-15T11:31:51.491Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "02d65e1e43b047579d2c02ed53eed7fc",
+      "appliedAtUtc": "2026-11-15T11:32:17.155Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "d421de393e1945fb977b021fd3ec4dc5",
+      "appliedAtUtc": "2026-11-15T11:32:36.574Z"
+    }
+  ]
+}
