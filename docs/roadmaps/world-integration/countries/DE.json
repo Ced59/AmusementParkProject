@@ -10365,20 +10365,41 @@
         "d2320928-f8cb-4072-9d34-a2eb8e34a3ae"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:12:10.803Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Novembre et février : week-ends sous réserve de météo ; décembre et janvier fermés.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Fröschbrunna"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T16:11:37.396Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7fb8344d-2cac-4805-9a47-a09a15175cf6",
+          "appliedAt": "2026-11-15T16:09:08.651Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+          "evidence": "PARK_DATA_EDITOR:apply:7fb8344d-2cac-4805-9a47-a09a15175cf6",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-froeschbrunna-20261115/audit.json",
+          "summary": "Huit descriptions, sept tarifs et calendrier saisonnier corrigés ; contrôle des photos en attente."
+        },
+        {
+          "eventId": "image-9da3ca151ad94f148578cbe590a71610-20261115",
+          "appliedAt": "2026-11-15T16:11:37.396Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+          "evidence": "PARK_DATA_EDITOR:image:9da3ca151ad94f148578cbe590a71610@2026-11-15T16:11:37.396Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-froeschbrunna-20261115/audit.json",
+          "summary": "Vue aérienne sans coaster masquée, deux photos exactes restent visibles ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Faire confirmer les règles d’accompagnement des jeunes enfants ; revérifier tarifs et horaires ; auditer les droits des deux photos visibles et chercher une autre image exacte sous licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -10414,6 +10435,11 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.froeschbrunna.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Fröschbrunna — actualités d’exploitation",
+          "url": "https://froeschbrunna.de/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",

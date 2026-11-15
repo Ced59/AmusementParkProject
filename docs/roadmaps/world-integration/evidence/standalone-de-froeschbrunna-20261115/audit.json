@@ -1,0 +1,78 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+  "entryId": "DE-standalone-c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+  "name": "Fröschbrunna Coaster",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T16:12:10.803Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5/froschbrunna-coaster",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://froeschbrunna.de/coaster/",
+    "https://froeschbrunna.de/"
+  ],
+  "editorial": "Eight descriptions corrected, seven displayed operator fares and 106 dated seasonal overrides to end of February 2027. Removed unsupported accompaniment ages; source only confirms minimum age three and pregnancy restriction.",
+  "calendar": {
+    "from": "2026-11-15",
+    "through": "2027-02-28",
+    "dateOverrides": 106,
+    "nuance": "November and February weekends from 13:00 until at least 16:00, weather permitting. December and January closed. No precise later closing time inferred."
+  },
+  "pricing": "Adult €3.30 single and €11 four rides; child 6–14 €2.70 single and €10 four; under sixth birthday free; ten-ride family €20; group ten+ €2 per person and ride. No effective date stated.",
+  "photoCountPublished": 2,
+  "photos": [
+    {
+      "imageId": "7376f74bfff64c8bac503b0071cf2cfd",
+      "sourceUrl": "https://froeschbrunna.de/wp-content/uploads/slider_coaster_01_1920x600.jpg",
+      "isCurrent": true,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "820b581baeab4218ae8965558c6607c0",
+      "sourceUrl": "https://froeschbrunna.de/wp-content/uploads/rodelbahn_coaster_opa-mit_enkel_1_600x722.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    }
+  ],
+  "hiddenPhoto": {
+    "imageId": "9da3ca151ad94f148578cbe590a71610",
+    "reason": "Existing aerial view shows the broader establishment but no coaster; record retained and hidden from attraction gallery.",
+    "updatedAtUtc": "2026-11-15T16:11:37.396Z"
+  },
+  "photoFollowup": "Audit independent reuse rights of two existing exact images and find additional exact licensed photos.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 93,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "89064d5f13684018a124d0b7833baa69",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127473223424431",
+    "publishedAtUtc": "2026-11-15T16:10:29.6375726Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T16:11:37.396Z",
+  "nextAction": "Faire confirmer les règles d’accompagnement des jeunes enfants ; revérifier tarifs et horaires ; auditer les droits des deux photos visibles et chercher une autre image exacte sous licence vérifiable."
+}
