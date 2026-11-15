@@ -1,0 +1,130 @@
+{
+  "work": "Created and published the Hocheck summer toboggan run as a standalone attraction; added four official access rules, two exact historical photographs and a dedicated Facebook announcement.",
+  "qualification": "Hocheck is a chairlift and mountain recreation area with independently ticketed summer activities, hiking and winter sports. The toboggan descent can be used after walking to the middle station or with a lift ticket; it has its own rules and ride. Official editor searches for Hocheck, Oberaudorf and Sommerrodelbahn Hocheck found no existing Park or standalone. The broader Erlebnisberg venue candidate remains for separate qualification of its other activities.",
+  "sources": {
+    "operatorRideAndRules": "https://hocheck.com/sommer-rodelbahn/",
+    "operator2026Schedule": "https://hocheck.com/betriebszeiten-sommer-am-erlebnisberg-hocheck-in-oberaudorf/",
+    "operator2026Fares": "https://hocheck.com/preise-erlebnisberg-hocheck-2025/",
+    "commonsPhotos": [
+      "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Hocheck_Oberaudorf-1.jpg",
+      "https://commons.wikimedia.org/wiki/File:Wildbarren,_Rodelbahn,_Kahlanger-Schanze_vom_Hocheck_Oberaudorf-1.jpg"
+    ]
+  },
+  "entity": {
+    "id": "e9654579-f599-4e11-8873-f63714b6a45f",
+    "name": "Sommerrodelbahn Hocheck",
+    "kind": "StandaloneAttraction",
+    "countryCode": "DE",
+    "operatingStatus": "TemporarilyClosed",
+    "published": true
+  },
+  "officialFacts": {
+    "place": "Carl-Hagen-Straße 7, 83080 Oberaudorf, Bavaria, Germany",
+    "route": "From chairlift middle station to valley",
+    "approximateRunLengthMeters": 1000,
+    "spiralBend": "Large 360-degree loop",
+    "minimumAgeYears": 3,
+    "youngChildrenRideWithAdultInDoubleSled": "Operator says children up to age eight in one rule and under eight in another; visitor narrative uses broad young-child wording",
+    "maximumCombinedRiderWeightKg": 150,
+    "pregnantRidersAllowed": false,
+    "operatorSeasonStateOn2026-11-15": "Summer 2026 ended after weather-dependent final weekend 31 Oct–1 Nov; winter season expected mid-Dec, without summer toboggan operation"
+  },
+  "sourceLimitations": [
+    "No next summer ride calendar or current ride fare was available; the operator’s 2026 ticket table is retained for future reference only and not offered as active pricing.",
+    "The operator gives a rounded length of approximately one kilometre, not an exact measurement; no exact native length was encoded.",
+    "The operator has inconsistent upper-bound wording for accompanied children (“bis 8” and “unter 8”). Confirm the age-eight boundary directly before relying on it.",
+    "The main image dates from 2006 and the secondary winter view from 2021; both show the exact installation but do not establish its current condition."
+  ],
+  "editorSearch": {
+    "parkQueries": [
+      "Hocheck",
+      "Oberaudorf",
+      "Sommerrodelbahn Hocheck"
+    ],
+    "standaloneQueries": [
+      "Hocheck",
+      "Oberaudorf",
+      "Sommerrodelbahn Hocheck"
+    ],
+    "matchingEntitiesBeforeCreation": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "4ff140e9-556f-4c72-ae01-15e0a6ffbc4a",
+      "appliedAtUtc": "2026-11-15T02:22:29.6948701Z",
+      "summary": "Created standalone summer slide with eight localized descriptions and temporary seasonal closure"
+    },
+    {
+      "operationId": "a1f64e20-606a-402b-bdef-6b4636aecb57",
+      "appliedAtUtc": "2026-11-15T02:23:22.553125Z",
+      "summary": "Added four official access rules and recorded closed-season timetable without future hours"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "7f043173efd04373aff0260c50ba451e",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Hocheck_Oberaudorf-1.jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/66/Sommerrodelbahn_Hocheck_Oberaudorf-1.jpg",
+      "author": "Rufus46",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2006-08-17",
+      "subject": "Elevated 360-degree curve of the exact Hocheck summer toboggan track",
+      "modification": "Resized and JPEG optimized for web display",
+      "published": true,
+      "current": true,
+      "importedAtUtc": "2026-11-15T02:24:07.436Z",
+      "metadataAppliedAtUtc": "2026-11-15T02:24:11.035Z",
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "29cfdb877c654a8b9f26f0eb74f9b99b",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Wildbarren,_Rodelbahn,_Kahlanger-Schanze_vom_Hocheck_Oberaudorf-1.jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Wildbarren%2C_Rodelbahn%2C_Kahlanger-Schanze_vom_Hocheck_Oberaudorf-1.jpg",
+      "author": "Rufus46",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2021-02-05",
+      "subject": "Winter mountain panorama with an exact section of the Hocheck slide structure",
+      "modification": "Resized and JPEG optimized for web display",
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T02:24:22.257Z",
+      "metadataAppliedAtUtc": "2026-11-15T02:24:25.865Z",
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 74,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 2,
+    "currentOwnImages": 1,
+    "activeFareOfferCount": 0,
+    "weeklyHourRuleCount": 0,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/e9654579-f599-4e11-8873-f63714b6a45f/sommerrodelbahn-hocheck",
+    "sitePublishedAtUtc": "2026-11-15T02:25:33.282545Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:8cc1383f-0bb9-44fd-aaa1-6bae28945b4d",
+    "facebookStatus": "Published",
+    "facebookId": "bbaf1da4ec8c43c989868803ee278fbc",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127397983424431",
+    "facebookPublishedAtUtc": "2026-11-15T02:26:21.6403336Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T02:24:25.865Z",
+  "remainingGaps": [
+    "Verify the next official summer calendar and reopening before changing the seasonal status.",
+    "Check current tickets and exact accompaniment rule for eight-year-olds.",
+    "Qualify other Hocheck activities and the broader venue candidate separately."
+  ]
+}
