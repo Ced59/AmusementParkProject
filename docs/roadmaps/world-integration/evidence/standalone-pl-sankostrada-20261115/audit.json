@@ -1,0 +1,108 @@
+{
+  "work": "Qualified old Wiegand Krynica lead as Sankostrada; created a standalone page with eight descriptions, four non-conflicting fares, two age rules, weekly hours and one exact 2025 photograph; published website and Facebook post; retained permanent backlog entry.",
+  "qualification": "The named Sankostrada trough slide lies on Iwonka hill at Dąbrowskiego 15 in Krynica-Zdrój. Its own site sells per-person ride tickets and states ride rules. Krynica-Zdrój municipal tourism confirms the attraction and address. Official Park and StandaloneAttraction searches for Sankostrada and Krynica returned no matches. Góra Parkowa is a different hill and must not be merged with this ride.",
+  "sources": {
+    "operator": "https://sankostrada.mystrikingly.com/",
+    "municipalTourism": "https://www.krynica-zdroj.pl/pl/356/0/sankostrada.html",
+    "wiegand": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=243#location-id-1370",
+    "osmWay": "https://www.openstreetmap.org/way/992299482",
+    "commonsPhoto": "https://commons.wikimedia.org/wiki/File:Krynica-Zdr%C3%B3j,_2025.01.31_13.jpg"
+  },
+  "officialFacts": {
+    "ticketOnePln": 10,
+    "ticketThreePln": 28.5,
+    "ticketFivePln": 45,
+    "ticketTenPln": 80,
+    "cashOnly": true,
+    "ticketsPerPerson": true,
+    "weeklyOpening": "10:00–18:00 daily, weather permitting",
+    "underEightRule": "rides in front of accompanying adult",
+    "underTwoRule": "free only while carried by a ticketed adult"
+  },
+  "sourceLimitations": [
+    "The tariff table lists a group package above 20 people at PLN 140 while an older FAQ on the same site says PLN 100. The conflicting group price was deliberately not entered.",
+    "The website states daily 10:00–18:00 but warns that rain, heavy snow, fog and ice can close the track. The weekly schedule is conditional; check same-day operation.",
+    "The photograph shows the lift and sign in January 2025, rather than riders on the descent. It is exact and recent; a second licensed view of the descent would improve coverage."
+  ],
+  "duplicateSearches": {
+    "parkQueries": [
+      "Sankostrada",
+      "Krynica"
+    ],
+    "standaloneQueries": [
+      "Sankostrada",
+      "Krynica"
+    ],
+    "matchesBeforeCreation": 0
+  },
+  "entity": {
+    "id": "cc134245-94e5-40c6-8411-cbb88ced23a1",
+    "name": "Sankostrada Krynica-Zdrój",
+    "countryCode": "PL",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "4e4bdffe-435c-45a2-9e16-a34a164a6f23",
+      "appliedAtUtc": "2026-11-15T00:07:12.8371084Z",
+      "summary": "Identity, location and eight descriptions"
+    },
+    {
+      "operationId": "bbe718cd-4ac1-4d35-8fee-8cb2db77aaf1",
+      "appliedAtUtc": "2026-11-15T00:08:40.319602Z",
+      "summary": "Four fares, two access rules and weekly hours"
+    }
+  ],
+  "photograph": {
+    "imageId": "612965967d0148739e07c02b8a0069d4",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/37/Krynica-Zdr%C3%B3j%2C_2025.01.31_13.jpg",
+    "commonsPage": "https://commons.wikimedia.org/wiki/File:Krynica-Zdr%C3%B3j,_2025.01.31_13.jpg",
+    "author": "Wlodek k1",
+    "license": "CC BY-SA 4.0",
+    "photographedAt": "2025-01-31",
+    "modification": "Resized for web and stripped of metadata, without cropping",
+    "width": 1352,
+    "height": 1800,
+    "published": true,
+    "current": true,
+    "importedAtUtc": "2026-11-15T00:09:40.727Z",
+    "metadataAppliedAtUtc": "2026-11-15T00:10:33.915Z",
+    "publicBinaryHttpStatus": 200
+  },
+  "audit": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 1,
+    "fareOfferCount": 4,
+    "accessConditionCount": 2,
+    "weeklyHourRuleCount": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/cc134245-94e5-40c6-8411-cbb88ced23a1/sankostrada-krynica-zdroj",
+    "sitePublishedAtUtc": "2026-11-15T00:11:16.130726Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:552a44e3-baaf-4923-b7d4-d549fde92eec",
+    "facebookStatus": "Published",
+    "facebookId": "4dc95cc769a243dcb012e91d13c27c7f",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127388113424431",
+    "facebookPublishedAtUtc": "2026-11-15T00:12:22.6851851Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T00:10:33.915Z",
+  "remainingGaps": [
+    "Clarify the conflicting group fare with the operator.",
+    "Check the weather-dependent live operating status before visits.",
+    "Find an additional exact reusable photo showing the descent."
+  ]
+}
