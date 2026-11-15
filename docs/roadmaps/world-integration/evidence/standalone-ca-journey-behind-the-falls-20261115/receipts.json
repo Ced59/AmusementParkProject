@@ -1,0 +1,88 @@
+{
+  "entryId": "CA-candidate-discovery-c6f1d043829ef8",
+  "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+  "integrationHistory": [
+    {
+      "eventId": "apply-18ed352a-3ebb-4dd3-bab5-5da3a8f3687a",
+      "appliedAt": "2026-11-15T13:46:07.103Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+      "evidence": "PARK_DATA_EDITOR:apply:18ed352a-3ebb-4dd3-bab5-5da3a8f3687a",
+      "auditEvidence": null,
+      "summary": "Identité et huit descriptions de la visite autonome créées après vérification auprès de Niagara Parks."
+    },
+    {
+      "eventId": "apply-0753f055-7a1a-4f46-a455-6b004f956fa1",
+      "appliedAt": "2026-11-15T13:46:17.938Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+      "evidence": "PARK_DATA_EDITOR:apply:0753f055-7a1a-4f46-a455-6b004f956fa1",
+      "auditEvidence": null,
+      "summary": "Tarifs officiels, accessibilité partielle et visite à l’année intégrés avec provenance."
+    },
+    {
+      "eventId": "image-75ef090887554377ac87d02ba90d3cfb",
+      "appliedAt": "2026-11-15T13:47:08.062Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+      "evidence": "PARK_DATA_EDITOR:image:75ef090887554377ac87d02ba90d3cfb@2026-11-15T13:47:08.062Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Gogerr, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-c5624126beed4f7b82812680d6ba174b",
+      "appliedAt": "2026-11-15T13:47:16.165Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+      "evidence": "PARK_DATA_EDITOR:image:c5624126beed4f7b82812680d6ba174b@2026-11-15T13:47:16.165Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2023 avec huit textes alternatifs, légendes et crédits : Daeva Trạc, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-c59643f60d1e420f94351fa564b1e421",
+      "appliedAt": "2026-11-15T13:47:23.810Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+      "evidence": "PARK_DATA_EDITOR:image:c59643f60d1e420f94351fa564b1e421@2026-11-15T13:47:23.810Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2021 avec huit textes alternatifs, légendes et crédits : Canaka, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "apply-ad49795f-2484-482b-9d0f-6b62769b7b74",
+      "appliedAt": "2026-11-15T13:47:41.701Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+      "evidence": "PARK_DATA_EDITOR:apply:ad49795f-2484-482b-9d0f-6b62769b7b74",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-journey-behind-the-falls-20261115/audit.json",
+      "summary": "Fiche rendue publique après import de trois photos exactes et audit éditorial."
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127459897424431",
+    "publishedAtUtc": "2026-11-15T13:48:29.0780352Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "75ef090887554377ac87d02ba90d3cfb",
+      "uploadedAtUtc": "2026-11-15T13:47:04.448Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "c5624126beed4f7b82812680d6ba174b",
+      "uploadedAtUtc": "2026-11-15T13:47:12.78Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "c59643f60d1e420f94351fa564b1e421",
+      "uploadedAtUtc": "2026-11-15T13:47:20.447Z"
+    }
+  ]
+}

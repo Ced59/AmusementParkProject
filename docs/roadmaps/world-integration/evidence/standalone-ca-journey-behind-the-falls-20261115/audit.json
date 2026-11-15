@@ -1,0 +1,132 @@
+{
+  "entryId": "CA-candidate-discovery-c6f1d043829ef8",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+  "name": "Journey Behind the Falls",
+  "countryCode": "CA",
+  "auditAtUtc": "2026-11-15T13:49:23.798Z",
+  "qualification": "Attraction à billet individuel dans Table Rock Centre, visite des galeries et plateformes ; ni parc entier ni croisière. Recherche PDE exacte sans doublon et vérification du site public.",
+  "operatorSources": [
+    "https://www.niagaraparks.com/attractions/journey/",
+    "https://www.niagaraparks.com/visitor-information/accessibility/",
+    "https://www.niagaraparks.com/about-us/strategic-projects/journey-behind-the-falls-redevelopment/",
+    "https://www.niagaraparks.com/visitor-information/hours-of-operation/"
+  ],
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/430f69bb-2784-4672-ac80-02701af083b6/journey-behind-the-falls",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "75ef090887554377ac87d02ba90d3cfb",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Observation_deck_of_Journey_Behind_the_Falls.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Observation_deck_of_Journey_Behind_the_Falls.jpg",
+      "creator": "Gogerr",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-05-05 14:40:30",
+      "uploadedAtUtc": "2026-11-15T13:47:04.448Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:47:08.062Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "c5624126beed4f7b82812680d6ba174b",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Journey_Behind_the_Falls_(Scenic_Tunnels)_in_Niagara_Falls,_Ontario_(December_2023).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Journey_Behind_the_Falls_(Scenic_Tunnels)_in_Niagara_Falls,_Ontario_(December_2023).jpg",
+      "creator": "Daeva Trạc",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2023-12-29 15:44:42",
+      "uploadedAtUtc": "2026-11-15T13:47:12.78Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:47:16.165Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "c59643f60d1e420f94351fa564b1e421",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Journey_Behind_The_Falls_Ticket_Booth_2021.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Journey_Behind_The_Falls_Ticket_Booth_2021.jpg",
+      "creator": "Canaka",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2021-08-02 09:51:25",
+      "uploadedAtUtc": "2026-11-15T13:47:20.447Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:47:23.81Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Tarifs officiels au 15 novembre 2026 : adulte 33 CAD, enfant 3–12 ans 21,50 CAD, jusqu’à 2 ans gratuit ; taxe 13 % en sus.",
+  "openingHoursAssessment": "Ouvert à l’année selon Niagara Parks, mais horaires datés variables ; aucune règle hebdomadaire déduite du calendrier ponctuel. Plateforme inférieure susceptible de fermer en hiver.",
+  "accessAssessment": "Ascenseur vers galeries et plateforme supérieure. Plateforme inférieure : environ 18 marches ; accès partiel en fauteuil. Billets horodatés possibles, poncho fourni.",
+  "redevelopmentAssessment": "Niagara Parks annonce nouvelle plateforme pour été 2027 et réaménagement de la plateforme inférieure pour été 2028 : ces installations futures ne sont pas décrites comme actuellement disponibles.",
+  "geoAssessment": "Position approximative 43.079154,-79.078442 à Table Rock Centre, entrée de l’attraction.",
+  "mediaAssessment": "Trois photos exactes de la plateforme (2026), du tunnel (2023) et de l’entrée (2021), toutes CC BY-SA 4.0 et inspectées visuellement. Crédit, licence et lien source dans huit langues ; trois binaires HTTP 200.",
+  "completeness": {
+    "score": 85,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127459897424431",
+    "publishedAtUtc": "2026-11-15T13:48:29.0780352Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T13:47:41.701Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "18ed352a-3ebb-4dd3-bab5-5da3a8f3687a",
+      "appliedAtUtc": "2026-11-15T13:46:07.1037217Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "0753f055-7a1a-4f46-a455-6b004f956fa1",
+      "appliedAtUtc": "2026-11-15T13:46:17.9384141Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "publish",
+      "operationId": "ad49795f-2484-482b-9d0f-6b62769b7b74",
+      "appliedAtUtc": "2026-11-15T13:47:41.7011268Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "75ef090887554377ac87d02ba90d3cfb",
+      "uploadedAtUtc": "2026-11-15T13:47:04.448Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "c5624126beed4f7b82812680d6ba174b",
+      "uploadedAtUtc": "2026-11-15T13:47:12.78Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "c59643f60d1e420f94351fa564b1e421",
+      "uploadedAtUtc": "2026-11-15T13:47:20.447Z"
+    }
+  ],
+  "nextAction": "Conserver les preuves et le post Facebook. Recontrôler les tarifs et les heures de chaque jour ; vérifier les fermetures hivernales et les changements dus aux travaux 2027–2028. Ajouter des photos récentes exactes sous licence si disponibles."
+}

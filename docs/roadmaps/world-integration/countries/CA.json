@@ -6500,6 +6500,333 @@
         "rationale": "Billet et horaire propres, mais départ commun ; statut de fiche indépendante à trancher."
       },
       "countryCodeAtInventory": "CA"
+    },
+    {
+      "entryId": "CA-candidate-discovery-c6f1d043829ef8",
+      "name": "Journey Behind the Falls",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Galeries et plateformes panoramiques",
+      "locality": "Table Rock Centre, 6650 Niagara River Parkway, Niagara Falls, Ontario",
+      "siteId": "430f69bb-2784-4672-ac80-02701af083b6",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T13:47:41.701Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation à l’année confirmée ; zones extérieures et horaires variables selon la saison et les travaux.",
+      "identityConfidence": "Billet dédié, expérience et accès propres, trois photos exactes sous licence, aucun doublon PDE trouvé.",
+      "possibleMatches": [],
+      "aliases": [
+        "Scenic Tunnels",
+        "Journey Behind the Falls Niagara"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T13:47:41.701Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-18ed352a-3ebb-4dd3-bab5-5da3a8f3687a",
+          "appliedAt": "2026-11-15T13:46:07.103Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+          "evidence": "PARK_DATA_EDITOR:apply:18ed352a-3ebb-4dd3-bab5-5da3a8f3687a",
+          "auditEvidence": null,
+          "summary": "Identité et huit descriptions de la visite autonome créées après vérification auprès de Niagara Parks."
+        },
+        {
+          "eventId": "apply-0753f055-7a1a-4f46-a455-6b004f956fa1",
+          "appliedAt": "2026-11-15T13:46:17.938Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+          "evidence": "PARK_DATA_EDITOR:apply:0753f055-7a1a-4f46-a455-6b004f956fa1",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels, accessibilité partielle et visite à l’année intégrés avec provenance."
+        },
+        {
+          "eventId": "image-75ef090887554377ac87d02ba90d3cfb",
+          "appliedAt": "2026-11-15T13:47:08.062Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+          "evidence": "PARK_DATA_EDITOR:image:75ef090887554377ac87d02ba90d3cfb@2026-11-15T13:47:08.062Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Gogerr, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-c5624126beed4f7b82812680d6ba174b",
+          "appliedAt": "2026-11-15T13:47:16.165Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+          "evidence": "PARK_DATA_EDITOR:image:c5624126beed4f7b82812680d6ba174b@2026-11-15T13:47:16.165Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2023 avec huit textes alternatifs, légendes et crédits : Daeva Trạc, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-c59643f60d1e420f94351fa564b1e421",
+          "appliedAt": "2026-11-15T13:47:23.810Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+          "evidence": "PARK_DATA_EDITOR:image:c59643f60d1e420f94351fa564b1e421@2026-11-15T13:47:23.810Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2021 avec huit textes alternatifs, légendes et crédits : Canaka, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-ad49795f-2484-482b-9d0f-6b62769b7b74",
+          "appliedAt": "2026-11-15T13:47:41.701Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "430f69bb-2784-4672-ac80-02701af083b6",
+          "evidence": "PARK_DATA_EDITOR:apply:ad49795f-2484-482b-9d0f-6b62769b7b74",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-journey-behind-the-falls-20261115/audit.json",
+          "summary": "Fiche rendue publique après import de trois photos exactes et audit éditorial."
+        }
+      ],
+      "nextAction": "Conserver les preuves et le post Facebook. Recontrôler les tarifs et les heures de chaque jour ; vérifier les fermetures hivernales et les changements dus aux travaux 2027–2028. Ajouter des photos récentes exactes sous licence si disponibles.",
+      "sources": [
+        {
+          "label": "Niagara Parks — attraction, billetterie, tarifs",
+          "url": "https://www.niagaraparks.com/attractions/journey/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Parks — accessibilité",
+          "url": "https://www.niagaraparks.com/visitor-information/accessibility/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Parks — travaux 2027–2028",
+          "url": "https://www.niagaraparks.com/about-us/strategic-projects/journey-behind-the-falls-redevelopment/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Parks — horaires",
+          "url": "https://www.niagaraparks.com/visitor-information/hours-of-operation/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Gogerr, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:Observation_deck_of_Journey_Behind_the_Falls.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Daeva Trạc, CC BY-SA 4.0, 2023",
+          "url": "https://commons.wikimedia.org/wiki/File:Journey_Behind_the_Falls_(Scenic_Tunnels)_in_Niagara_Falls,_Ontario_(December_2023).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Canaka, CC BY-SA 4.0, 2021",
+          "url": "https://commons.wikimedia.org/wiki/File:Journey_Behind_The_Falls_Ticket_Booth_2021.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Découverte hors catalogue, recherche officielle des alias et comparaison du voisinage Clifton Hill.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Journey Behind the Falls",
+            "source": "Niagara Parks",
+            "url": "https://www.niagaraparks.com/attractions/journey/",
+            "family": "Scenic tunnels",
+            "sourceVenueName": "Table Rock Centre",
+            "sourceLifecycleSignal": "Operating year-round",
+            "sourceLocality": "Niagara Falls, Ontario"
+          }
+        ],
+        "rationale": "Billetterie et visite propres dans Table Rock Centre ; ne pas confondre avec les croisières ni avec Niagara Takes Flight."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls",
+          "publishedAtUtc": "2026-11-02T18:35:20.503Z",
+          "verifiedAtUtc": "2026-11-02T18:40:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7f707b90-10e8-4741-ad88-bca1ef6086d1"
+        },
+        "facebook": {
+          "id": "0f8a1774a0de40948a2c9d74de4d4b3b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T18:38:20.0380428Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125768665424431",
+          "externalPostId": "1285475681307050_122125768665424431",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls"
+        }
+      },
+      "countryCodeAtInventory": "CA",
+      "countryResolution": null
+    },
+    {
+      "entryId": "CA-candidate-discovery-92b7f3030c29bc",
+      "name": "White Water Walk",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Promenade panoramique",
+      "locality": "4330 River Road, Niagara Falls, Ontario",
+      "siteId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T13:54:08.955Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation saisonnière avril–novembre ; officiellement fermée pour la saison au 15 novembre 2026, réouverture 2027 non annoncée.",
+      "identityConfidence": "Billet propre et promenade autonome, aucune fiche PDE homonyme, trois photos exactes sous licence.",
+      "possibleMatches": [],
+      "aliases": [
+        "Niagara White Water Walk"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T13:54:08.955Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3b4ff844-9519-4742-8731-6bc90a938cef",
+          "appliedAt": "2026-11-15T13:52:17.577Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+          "evidence": "PARK_DATA_EDITOR:apply:3b4ff844-9519-4742-8731-6bc90a938cef",
+          "auditEvidence": null,
+          "summary": "Identité et huit descriptions du parcours autonome créées à partir des sources Niagara Parks."
+        },
+        {
+          "eventId": "apply-2ec49caf-ccde-4d5e-99e6-55ac45aff4c6",
+          "appliedAt": "2026-11-15T13:52:28.677Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+          "evidence": "PARK_DATA_EDITOR:apply:2ec49caf-ccde-4d5e-99e6-55ac45aff4c6",
+          "auditEvidence": null,
+          "summary": "Fermeture saisonnière, accès partiel et tarifs historiques affichés intégrés avec provenance."
+        },
+        {
+          "eventId": "image-beac918d015e416db078d275f7eacf6c",
+          "appliedAt": "2026-11-15T13:53:34.896Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+          "evidence": "PARK_DATA_EDITOR:image:beac918d015e416db078d275f7eacf6c@2026-11-15T13:53:34.896Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Gogerr, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-29d1d20ffc2542c9b52f71a8a51ea936",
+          "appliedAt": "2026-11-15T13:53:43.818Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+          "evidence": "PARK_DATA_EDITOR:image:29d1d20ffc2542c9b52f71a8a51ea936@2026-11-15T13:53:43.818Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Gogerr, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-3a7cfdcebdcd402aa44ad01c7619f315",
+          "appliedAt": "2026-11-15T13:53:52.269Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+          "evidence": "PARK_DATA_EDITOR:image:3a7cfdcebdcd402aa44ad01c7619f315@2026-11-15T13:53:52.269Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Gogerr, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-ba98df98-6d01-41dc-b5bb-65a138af28ea",
+          "appliedAt": "2026-11-15T13:54:08.955Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b60d069f-639b-4b81-b98d-e13c964be77f",
+          "evidence": "PARK_DATA_EDITOR:apply:ba98df98-6d01-41dc-b5bb-65a138af28ea",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-white-water-walk-20261115/audit.json",
+          "summary": "Fiche rendue publique après import de trois photos exactes de 2026 et audit éditorial."
+        }
+      ],
+      "nextAction": "Conserver les preuves et le post Facebook. Recontrôler la réouverture 2027 et les tarifs avant d’ajouter une offre en vigueur ; la page affiche encore les prix de 2026 pendant la fermeture. Si possible, trouver une photo de la promenade en bois elle-même sous licence vérifiée pour compléter les vues prises sur place.",
+      "sources": [
+        {
+          "label": "Niagara Parks — White Water Walk",
+          "url": "https://www.niagaraparks.com/attractions/white-water-walk/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Parks — accessibilité",
+          "url": "https://www.niagaraparks.com/visitor-information/accessibility/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Parks — fermeture saisonnière",
+          "url": "https://www.niagaraparks.com/visitor-information/hours-of-operation/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — entrée approximative",
+          "url": "https://www.openstreetmap.org/search?query=White%20Water%20Walk%20Niagara%20Falls",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Gogerr, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:White_Water_Walk_-_Niagara_River_Rapids_1.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Gogerr, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:White_Water_Walk_-_Niagara_River_Rapids_5.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Gogerr, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:White_Water_Walk_-_Niagara_River_Rapids_2.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Découverte hors catalogue, recherche officielle des alias et comparaison du voisinage Clifton Hill.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "White Water Walk",
+            "source": "Niagara Parks",
+            "url": "https://www.niagaraparks.com/attractions/white-water-walk/",
+            "family": "Scenic boardwalk",
+            "sourceVenueName": "White Water Walk",
+            "sourceLifecycleSignal": "Operating seasonally, closed for 2026 season",
+            "sourceLocality": "Niagara Falls, Ontario"
+          }
+        ],
+        "rationale": "Billet et parcours propres ; distinction claire avec Journey Behind the Falls et les sentiers publics."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls",
+          "publishedAtUtc": "2026-11-02T18:35:20.503Z",
+          "verifiedAtUtc": "2026-11-02T18:40:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7f707b90-10e8-4741-ad88-bca1ef6086d1"
+        },
+        "facebook": {
+          "id": "0f8a1774a0de40948a2c9d74de4d4b3b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T18:38:20.0380428Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125768665424431",
+          "externalPostId": "1285475681307050_122125768665424431",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls"
+        }
+      },
+      "countryCodeAtInventory": "CA",
+      "countryResolution": null
     }
   ]
 }
