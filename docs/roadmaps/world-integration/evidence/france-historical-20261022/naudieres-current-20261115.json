@@ -2,12 +2,12 @@
   "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
   "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
   "owner": "Conversation France",
-  "updatedAtUtc": "2026-11-15T10:31:28.899056+00:00",
+  "updatedAtUtc": "2026-11-15T10:44:17.323497+00:00",
   "status": "partial",
-  "lastActualIntegrationAtUtc": "2026-11-15T10:20:50.4292657Z",
-  "lastApplyOperationId": "278bccc6-e034-4c38-8ae5-78e5350544a6",
+  "lastActualIntegrationAtUtc": "2026-11-15T10:41:26.1371433Z",
+  "lastApplyOperationId": "8b8d629c-3e43-4d87-ac79-e564e7e802be",
   "localDirectory": "/workspace/france-historical-20261114/naudieres",
-  "scope": "Acquisition 2020 privée, trois fiches privées et deux photos de La Dune enrichies. Pont suspendu public : 32 textes corrigés sur la fiche, deux résumés historiques et un paragraphe d’article ; 32 pages vérifiées dans huit langues. Aucun audit final ni nouvelle opération de visibilité.",
+  "scope": "Acquisition 2020 privée, trois fiches privées et deux photos de La Dune enrichies. Pont suspendu public : 32 textes corrigés sur la fiche, deux résumés historiques et un paragraphe d’article ; 32 pages vérifiées dans huit langues. Aucun audit final ni nouvelle opération de visibilité. Baby-foot humain privé désormais décrit en huit langues, configuration2016 distinguée de pratique2026.",
   "counts": {
     "items": 84,
     "publicItems": 48,
@@ -15,7 +15,7 @@
     "canonicalPublishedFacts": 29,
     "canonicalDraftFacts": 2,
     "canonicalRetractedRevisions": 78,
-    "describedItemsEightLanguages": 55,
+    "describedItemsEightLanguages": 56,
     "media": 56,
     "publicMedia": 52,
     "privateMedia": 4,
@@ -113,7 +113,8 @@
     "naudieres-identity-photo-findings-20261115.json",
     "naudieres-tricycles-research-20261115.json",
     "naudieres-pont-correction-20261115.json",
-    "naudieres-pont-public-followup-20261115.json"
+    "naudieres-pont-public-followup-20261115.json",
+    "naudieres-babyfoot-description-20261115.json"
   ],
   "remaining": [
     "Maison Ameco : article moinsde5ans datémai2025 contre catalogue minimum10ans non daté ; brochure2026/règlement ne tranchent pas. Aucun âge réécrit.",
@@ -121,9 +122,52 @@
     "Acquisition2020 et nouveaux contenus privés à publier seulement après audit applicable ; aucun export complet final effectué.",
     "Huit plans publics2017/2020–2026 et54anciens médias conservés ; les deux nouveaux Dune restent privés.",
     "Facebook existant Published confirmé dans le rapprochement34 ; visibilité externe non établie par ce statut, aucun renvoi.",
-    "Pont de corde privé conservé distinct : relation exacte avec le Pont suspendu et évolution entre 2017/2018 et la nouveauté annoncée2023 non prouvées."
+    "Pont de corde privé conservé distinct : relation exacte avec le Pont suspendu et évolution entre 2017/2018 et la nouveauté annoncée2023 non prouvées.",
+    "Baby-foot humain : notice historique rédigée, statut Unknown et visibilité privée conservés. Photo originale2,43Mo supérieure limiteofficielle960Kio, aucune compression arbitraire."
   ],
   "fullAuditExportPerformedThisRecovery": false,
   "facebookPublicationPerformed": false,
-  "facebookEvidence": "france-facebook-reconciliation-20261115.json"
+  "facebookEvidence": "france-facebook-reconciliation-20261115.json",
+  "babyfootIdempotence": {
+    "operationId": "edc7be41-cd84-4c4a-92cf-ab86ad428099",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:42:18.4812028Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "entityKey": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "displayName": "Baby-foot humain",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  }
 }

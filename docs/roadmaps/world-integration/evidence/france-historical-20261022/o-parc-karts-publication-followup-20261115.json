@@ -1,0 +1,432 @@
+{
+  "schemaVersion": 1,
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "checkedAtUtc": "2026-11-15T10:43:49.248038+00:00",
+  "actualLastApplyAtUtc": "2026-11-15T10:34:52.7670648Z",
+  "scopeAudit": "o-parc-karts-publication-scope-audit-20261115.json",
+  "publicationEvidence": "o-parc-karts-publication-20261115.json",
+  "idempotence": {
+    "operationId": "36bbb0a0-f309-43bb-b62c-d6ee9e1c70d2",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:35:44.5868397Z",
+    "appliedAtUtc": null,
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+        "entityKey": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+        "displayName": "Karts à pédales",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "bd614274b8db467280d0352d37453c8c",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "realCompleteness": {
+    "receivedAtUtc": "2026-11-15T10:36:30.2422897Z",
+    "startedAtUtc": "2026-11-15T10:36:27.3849266Z",
+    "action": "Completeness",
+    "result": {
+      "completenessScore": 96,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 104,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    }
+  },
+  "historyDiagnostics": {
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-15T10:36:54.8040286Z",
+    "result": {
+      "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "parkName": "Ô Parc",
+      "factCount": 41,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 9,
+          "sourcedResourceCount": 9,
+          "publishedResourceCount": 7,
+          "subjectCount": 6,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 2
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 8
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 31
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 8,
+        "sourcedFactCount": 8,
+        "majorFactCount": 2,
+        "indexableKeyYears": []
+      }
+    },
+    "receivedAtUtc": "2026-11-15T10:36:55.4967584Z"
+  },
+  "facebook": {
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Ô Parc ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Ô Parc! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Ô Parc",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "b7460ad400174cf8a0496fdc1fe3386c",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122121487455424431",
+      "images": {
+        "data": [
+          {
+            "id": "e0f48f45039b4d06a10d8153d6eb705e",
+            "label": "Un hamac à l’ombre, au bord de la prairie d’Ô Parc.",
+            "isCurrent": false,
+            "width": 720,
+            "height": 960
+          },
+          {
+            "id": "aae9deb7df2c4f49932e0ee1c0223ae9",
+            "label": "Les grands gonflables et la piste de karts en 2020.",
+            "isCurrent": false,
+            "width": 1024,
+            "height": 768
+          },
+          {
+            "id": "ad051cad0785452d93d515619bacea17",
+            "label": "Le paysage de la prairie d’Ô Parc en 2020.",
+            "isCurrent": false,
+            "width": 1024,
+            "height": 768
+          },
+          {
+            "id": "8976847a7add4386a59e30a020a80270",
+            "label": "Du mini-golf à l’entrée d’Ô Parc, en 2020.",
+            "isCurrent": false,
+            "width": 1024,
+            "height": 768
+          },
+          {
+            "id": "7b8a30b154c34801a74f9d4cce98ba99",
+            "label": "La prairie et ses tonnelles vues depuis le Méga Slide.",
+            "isCurrent": true,
+            "width": 1200,
+            "height": 676
+          }
+        ],
+        "pagination": {
+          "totalItems": 5,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    },
+    "action": "ResolveFacebookPublication",
+    "startedAtUtc": "2026-11-15T10:37:05.5831422Z",
+    "receivedAtUtc": "2026-11-15T10:37:06.0175590Z"
+  },
+  "publicChecks": [
+    {
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1e6c56b5-076b-45bd-be2f-2392ee5487ce/karts-a-pedales",
+      "baseDocumentStatus": 200,
+      "normalNavigation": true,
+      "checkedAtUtc": "2026-11-15T10:42:08.059421+00:00",
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        }
+      ],
+      "expectedLocalizedAlt": "Deux enfants sur des karts à pédales devant les bordures noires et blanches et les drapeaux à damier d’Ô Parc.",
+      "localizedAltMatches": false,
+      "overflow": 0,
+      "binary": {
+        "url": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+        "status": 200,
+        "bytes": 100976,
+        "sha256": "e62944b339517cb453db22f978a9111e4a422902e6b9518f44c84a625d400537"
+      }
+    },
+    {
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1e6c56b5-076b-45bd-be2f-2392ee5487ce/karts-a-pedales",
+      "baseDocumentStatus": 200,
+      "normalNavigation": true,
+      "checkedAtUtc": "2026-11-15T10:42:13.434551+00:00",
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        }
+      ],
+      "expectedLocalizedAlt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+      "localizedAltMatches": true,
+      "overflow": 0
+    },
+    {
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1e6c56b5-076b-45bd-be2f-2392ee5487ce/karts-a-pedales",
+      "baseDocumentStatus": 200,
+      "normalNavigation": true,
+      "checkedAtUtc": "2026-11-15T10:42:18.185539+00:00",
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        }
+      ],
+      "expectedLocalizedAlt": "Zwei Kinder auf Tretkarts neben den schwarz-weißen Fahrbahnbegrenzungen und Karoflaggen im Ô Parc.",
+      "localizedAltMatches": false,
+      "overflow": 0
+    },
+    {
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1e6c56b5-076b-45bd-be2f-2392ee5487ce/karts-a-pedales",
+      "baseDocumentStatus": 200,
+      "normalNavigation": true,
+      "checkedAtUtc": "2026-11-15T10:42:23.334919+00:00",
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        }
+      ],
+      "expectedLocalizedAlt": "Twee kinderen op trapkarts bij de zwart-witte baanranden en geblokte vlaggen van Ô Parc.",
+      "localizedAltMatches": false,
+      "overflow": 0
+    },
+    {
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1e6c56b5-076b-45bd-be2f-2392ee5487ce/karts-a-pedales",
+      "baseDocumentStatus": 200,
+      "normalNavigation": true,
+      "checkedAtUtc": "2026-11-15T10:42:28.168234+00:00",
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        }
+      ],
+      "expectedLocalizedAlt": "Due bambini sui kart a pedali accanto ai bordi bianchi e neri della pista e alle bandiere a scacchi di Ô Parc.",
+      "localizedAltMatches": false,
+      "overflow": 0
+    },
+    {
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1e6c56b5-076b-45bd-be2f-2392ee5487ce/karts-a-pedales",
+      "baseDocumentStatus": 200,
+      "normalNavigation": true,
+      "checkedAtUtc": "2026-11-15T10:42:33.019212+00:00",
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        }
+      ],
+      "expectedLocalizedAlt": "Dos niños en karts a pedales junto a los bordes blancos y negros de la pista y las banderas a cuadros de Ô Parc.",
+      "localizedAltMatches": false,
+      "overflow": 0
+    },
+    {
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1e6c56b5-076b-45bd-be2f-2392ee5487ce/karts-a-pedales",
+      "baseDocumentStatus": 200,
+      "normalNavigation": true,
+      "checkedAtUtc": "2026-11-15T10:42:38.749941+00:00",
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        }
+      ],
+      "expectedLocalizedAlt": "Dwoje dzieci na gokartach na pedały przy czarno-białych obrzeżach toru i flagach w szachownicę w Ô Parc.",
+      "localizedAltMatches": false,
+      "overflow": 0
+    },
+    {
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/item/1e6c56b5-076b-45bd-be2f-2392ee5487ce/karts-a-pedales",
+      "baseDocumentStatus": 200,
+      "normalNavigation": true,
+      "checkedAtUtc": "2026-11-15T10:42:43.566856+00:00",
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/bd614274b8db467280d0352d37453c8c?width=480&v=2",
+          "alt": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc.",
+          "width": 360,
+          "height": 211
+        }
+      ],
+      "expectedLocalizedAlt": "Duas crianças em karts a pedais junto às bordas pretas e brancas da pista e às bandeiras axadrezadas do Ô Parc.",
+      "localizedAltMatches": false,
+      "overflow": 0
+    }
+  ],
+  "normalNavigation": {
+    "checkedAtUtc": "2026-11-15T10:42:43.567989+00:00",
+    "pages": 8,
+    "imageId": "bd614274b8db467280d0352d37453c8c",
+    "imageVisible": true,
+    "searchDebounceAwaited": true,
+    "initialPrematureClickNotPublicationFailure": true,
+    "noCacheBypass": true
+  },
+  "rootScreenshotReview": "French mobile screenshot confirms the intended close-view kart photograph on the public item page.",
+  "applicationObservation": "Image alt remains English in the seven non-English routes despite exact eight-language metadata verified in canonical export and Preview. Existing application localization issue preserved; no metadata corruption or duplicate Apply to mask it.",
+  "initialCheckLimitations": [
+    "Premature click before search debounce completed; normal navigation with completed search succeeds.",
+    "Direct SSR image result varied; final normal park→places→item navigation verified in eight languages, no cache-bypass URL.",
+    "Playwright request context socket refused binary; browser fetch of the actual image URL succeeds HTTP200.",
+    "Park-owned gallery does not include this ParkItem-owned photograph; correct public item route verified."
+  ],
+  "newFacebookPublication": false,
+  "globalParkCompleted": false
+}

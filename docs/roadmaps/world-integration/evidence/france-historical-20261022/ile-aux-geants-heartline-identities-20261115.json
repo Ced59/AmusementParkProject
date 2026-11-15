@@ -1,0 +1,559 @@
+{
+  "schemaVersion": 1,
+  "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "recordedAtUtc": "2026-11-15T10:34:34.350794+00:00",
+  "task": "Recherche publique et lecture locale : identités historiques explicites Manège enchanté et Petit train, piste Heartline Europe 08/21 ; aucune mutation.",
+  "outcome": "historical-nominal-image-association-found; standalone-original-photos-not-found; current-2026-hardware-not-established",
+  "summary": "Le panneau officiel d’exploitation photographié dans le reportage de visite août 2021 associe explicitement une vignette à chacun des noms Le Petit Train et Le Manège Enchanté. Les deux colonnes sont distinctes du Carrousel, du Grand Huit et de la Chenille. Les photographies autonomes sources des deux vignettes n’ont pas été retrouvées. Aucune transposition automatique des équipements, horaires ou décors à 2026.",
+  "primaryEvidence": {
+    "articleUrl": "https://heartlinecoaster.com/2021/09/europe-08-21-parc-ange-michel-lile-aux-geants-futuroscope/",
+    "authorDisplay": "Heartline Coaster",
+    "publicationDatePrinted": "2021-09-17",
+    "publicationDateEvidence": "heartline-september.html, bloc p.author-date : 17 September 2021",
+    "visitDatePrecision": "month",
+    "visitMonth": "2021-08",
+    "visitDay": null,
+    "visitEvidence": "Titre Europe 08/21 ; aucune journée calendaire prouvée dans le texte ni les EXIF récupérés.",
+    "imageUrl": "https://heartlinecoaster.com/wp-content/uploads/2026/10/51486906858_7f99999ce7_k.jpg",
+    "file": "/workspace/france-historical-20261114/ile-aux-geants/heartline-followup-20261115/source-images/51486906858_7f99999ce7_k.jpg",
+    "sha256": "3b76983dd4d7bc8685b4498d709f0dd4c93062b633d749a7ec96ee3c2664f17e",
+    "bytes": 694268,
+    "dimensions": [
+      2048,
+      1153
+    ],
+    "imageIdentity": "Photographie entière du tableau d’exploitation installé dans le parc, avec noms, vignettes et créneaux alternés. Source primaire matérielle reproduite par un visiteur.",
+    "visualReview": "Personally reviewed at original 2048×1153; no crop, enlargement file, image edit or import. No visible photographer watermark.",
+    "printedColumnsLeftToRight": [
+      "Grand Huit",
+      "La Randonnée Fantastique",
+      "La Chenille",
+      "Pouss-pouss",
+      "Kangourou",
+      "Les Petits Bateaux",
+      "Le Petit Train",
+      "Le Manège Enchanté",
+      "Le Carrousel",
+      "Samba ballon",
+      "Star Tower",
+      "Star flyer"
+    ],
+    "photoDateWarning": "Le chemin de stockage /wp-content/uploads/2026/10/ ne constitue pas une date de prise de vue. Le reportage porte sur août 2021. Les fichiers ne contiennent pas de date EXIF originale.",
+    "rights": "Aucune licence ouverte déduite. Attribution éditoriale Heartline Coaster ; aucun nom civil du photographe établi. Panneau entier conservé pour recherche, aucune proposition de découpe en photos de lieux."
+  },
+  "targets": [
+    {
+      "itemId": "75eddf51-f6e1-4047-a8a2-2db808586925",
+      "currentName": "Manège enchanté",
+      "exactPrintedName": "Le Manège Enchanté",
+      "panelColumn": 8,
+      "proven": [
+        "Le nom est directement associé à une vignette par le panneau de 2021.",
+        "Une colonne voisine distincte est intitulée Le Carrousel : pas un alias de Carrousel 1900.",
+        "Le site officiel actuel et son archive du 23 mai 2022 nomment Manège enchantée et le réservent aux enfants.",
+        "Le panneau témoigne d’une exploitation alternée pendant la visite de 2021."
+      ],
+      "visualDetailLimit": "La vignette seule ne justifie pas une description détaillée de véhicules, personnages, matériaux ou mécanisme. Vue autonome correspondant exactement à cette vignette non retrouvée.",
+      "compatibleButUnproven": "tripadvisor-11.jpg montre des véhicules miniatures sur un plancher rose ; absence de nom ou de vue extérieure permettant une concordance certaine avec la vignette. Aucun rattachement accepté.",
+      "currentHardware2026Confirmed": false,
+      "newPhotoImportCandidate": false,
+      "openingDateProven": false,
+      "manufacturerProven": false
+    },
+    {
+      "itemId": "390c0590-ae97-49f7-a8a8-56e9a1da7c7e",
+      "currentName": "Petit train",
+      "exactPrintedName": "Le Petit Train",
+      "panelColumn": 7,
+      "proven": [
+        "Le nom est directement associé à une vignette par le panneau de 2021.",
+        "Le panneau distingue cette attraction de La Chenille et du Grand Huit.",
+        "Le site officiel actuel et son archive du 23 mai 2022 nomment Petit train et le réservent aux enfants.",
+        "Le panneau témoigne d’une exploitation alternée pendant la visite de 2021."
+      ],
+      "visualDetailLimit": "La petite vignette du panneau ne permet pas de démontrer un tracé, une distance, un nombre de wagons, un modèle ou une circulation dans tout le parc. Aucun original autonome retrouvé.",
+      "currentHardware2026Confirmed": false,
+      "newPhotoImportCandidate": false,
+      "openingDateProven": false,
+      "manufacturerProven": false
+    }
+  ],
+  "articlePhotoCoverage": [
+    {
+      "articleUrl": "https://heartlinecoaster.com/2021/09/europe-08-21-parc-ange-michel-lile-aux-geants-futuroscope/",
+      "file": "heartline-september.html",
+      "geantSectionImageCount": 4,
+      "images": [
+        {
+          "file": "source-images/51486686626_56a8942f34_k.jpg",
+          "subject": "Entrée et caisse du parc, grande figure et bâtiment ; aucune vue autonome des deux lieux recherchés."
+        },
+        {
+          "file": "source-images/51486906858_7f99999ce7_k.jpg",
+          "subject": "Panneau entier : preuve nominale et visuelle explicite."
+        },
+        {
+          "file": "source-images/51485907812_f13dc5a78d_k.jpg",
+          "subject": "Grand Huit / Avengers Rollercoaster, ne pas attribuer au Petit train."
+        },
+        {
+          "file": "source-images/51486909683_3748512084_k.jpg",
+          "subject": "Chenille / Brocomela, ne pas attribuer au Petit train."
+        }
+      ]
+    },
+    {
+      "articleUrl": "https://heartlinecoaster.com/2021/11/europe-08-21-parc-ange-michel-lile-aux-geants-futuroscope-2/",
+      "file": "heartline-november.html",
+      "authorDisplay": "Mega-Lite",
+      "publicationDatePrinted": "2021-11-07",
+      "geantSectionImageCount": 1,
+      "images": [
+        {
+          "file": "source-images/51650680889_d445aab305_k.jpg",
+          "subject": "Grand Huit / Avengers Roller Coaster"
+        }
+      ],
+      "targetMentionOrOriginalFound": false
+    }
+  ],
+  "otherResearch": [
+    {
+      "source": "Official current attractions and local 2022-05-23 archive",
+      "result": "Les deux rubriques présentent un logo comme image, non une photo du lieu. Aucun lien de photo source correspondant aux vignettes du panneau dans les URL conservées.",
+      "sources": [
+        "https://ileauxgeants.fr/attractions/",
+        "https://web.archive.org/web/20220523022335/https://ileauxgeants.fr/attractions/"
+      ],
+      "newFetchPerformed": false
+    },
+    {
+      "source": "Local Coasterrider visit 2018-07-09, published 2018-07-10",
+      "result": "Originaux locaux inspectés : bâtiment restauration, aire de jeux/gonflables, Kangourou et Grand Huit. Aucun original des deux vignettes trouvé ; fichiers filigranés non proposés à l’import.",
+      "sourceUrl": "https://coasterrider.fr/parc/l-ile-aux-geants/9-juillet-2018"
+    },
+    {
+      "source": "Local Tripadvisor photos including panorama 2026",
+      "result": "Vue de véhicules tripadvisor-11 non légendée ; panoramas ne démontrent aucune correspondance nominale et ne suffisent pas à transposer matériel/décor 2021 en 2026.",
+      "existingSourceManifest": "/workspace/france-historical-20261114/ile-aux-geants/tripadvisor-images-manifest.json"
+    },
+    {
+      "source": "Guide-O-Parc page Petit Train déjà conservée",
+      "url": null,
+      "result": "Nom et catégorie Train junior, aucune photo du lieu ; coordonnées tierces non reprises comme position prouvée.",
+      "newFetchPerformed": false,
+      "sourceFile": "/workspace/france-historical-20261114/ile-aux-geants/guide-o-parc-3504.html",
+      "urlLimitation": "URL exacte non retrouvée dans la preuve locale ; aucun paramètre action deviné."
+    },
+    {
+      "source": "Themeparkfreaks October 2020 trip",
+      "url": "https://themeparkfreaks.eu/2020/10/op-stap-in-zuid-frankrijk-deel-1-family-park-lile-aux-geants/",
+      "result": "Texte indexé et galerie de 37 images Géants dans le cache web ; URL directe article HTTP404. Les six premières vignettes exposées par le cache renvoient404, ainsi que le premier original conventionnel testé. Aucun nouveau binaire récupéré ; pas de répétition des essais.",
+      "articleHttp404AttemptAtUtc": null,
+      "timestampLimitation": "L’appel ayant levé une erreur avant sérialisation du reçu, pas de fausse date exacte reconstruite. Le résultat 404 est conservé dans la sortie outil ; autres accès datés dans access-log.jsonl."
+    },
+    {
+      "source": "Themeparkfreaks June 18 2021",
+      "url": "https://themeparkfreaks.eu/2021/06/lile-aux-geants-pakt-uit-met-drie-nieuwe-attracties/",
+      "file": "themeparkfreaks-new2021.html",
+      "result": "Page200 et photos officiellement créditées au parc, mais sujet trois nouveautés : parcours de chevaux, nacelles aériennes et tour. Aucun nom Manège enchanté/Petit train ni image reliée explicitement aux deux cibles. Pas de déduction de fabricant ni de réutilisation de Starflyer générique comme nom de la tour."
+    }
+  ],
+  "sourceAccesses": [
+    {
+      "url": "https://heartlinecoaster.com/category/trip-report/france/page/3/",
+      "finalUrl": "https://heartlinecoaster.com/category/trip-report/france/page/3/",
+      "retrievedAtUtc": "2026-11-15T10:28:16.336287+00:00",
+      "status": 200,
+      "bytes": 413164,
+      "sha256": "12a447b1b82f5ef752e90905a17619cb651ef6f68c5c95ca91eeacea778dde47",
+      "file": "heartline-index.html"
+    },
+    {
+      "url": "https://heartlinecoaster.com/2021/09/europe-08-21-parc-ange-michel-lile-aux-geants-futuroscope/",
+      "finalUrl": "https://heartlinecoaster.com/2021/09/europe-08-21-parc-ange-michel-lile-aux-geants-futuroscope/",
+      "retrievedAtUtc": "2026-11-15T10:28:31.932318+00:00",
+      "status": 200,
+      "bytes": 299700,
+      "sha256": "cfa93ed110dbb86e44a93627b155e4fa93fcf2b753653f0ee01986ae8101daf4",
+      "file": "heartline-september.html"
+    },
+    {
+      "url": "https://heartlinecoaster.com/2021/11/europe-08-21-parc-ange-michel-lile-aux-geants-futuroscope-2/",
+      "finalUrl": "https://heartlinecoaster.com/2021/11/europe-08-21-parc-ange-michel-lile-aux-geants-futuroscope-2/",
+      "retrievedAtUtc": "2026-11-15T10:28:33.366966+00:00",
+      "status": 200,
+      "bytes": 290509,
+      "sha256": "08182da8d7d1c004f50961eaf229b8d59da7954b9ea7996b70178146ae9b378e",
+      "file": "heartline-november.html"
+    },
+    {
+      "url": "https://heartlinecoaster.com/wp-content/uploads/2026/10/51486686626_56a8942f34_k.jpg",
+      "finalUrl": "https://heartlinecoaster.com/wp-content/uploads/2026/10/51486686626_56a8942f34_k.jpg",
+      "retrievedAtUtc": "2026-11-15T10:28:54.583630+00:00",
+      "status": 200,
+      "bytes": 411589,
+      "sha256": "7a7f6f487631e415b41999daa3a507c6eef86c601ed047ada92a854a0ca39276",
+      "file": "source-images/51486686626_56a8942f34_k.jpg",
+      "dimensions": [
+        2048,
+        1153
+      ],
+      "exifDateTimeOriginal": null,
+      "exifDateTime": null
+    },
+    {
+      "url": "https://heartlinecoaster.com/wp-content/uploads/2026/10/51486906858_7f99999ce7_k.jpg",
+      "finalUrl": "https://heartlinecoaster.com/wp-content/uploads/2026/10/51486906858_7f99999ce7_k.jpg",
+      "retrievedAtUtc": "2026-11-15T10:28:55.855941+00:00",
+      "status": 200,
+      "bytes": 694268,
+      "sha256": "3b76983dd4d7bc8685b4498d709f0dd4c93062b633d749a7ec96ee3c2664f17e",
+      "file": "source-images/51486906858_7f99999ce7_k.jpg",
+      "dimensions": [
+        2048,
+        1153
+      ],
+      "exifDateTimeOriginal": null,
+      "exifDateTime": null
+    },
+    {
+      "url": "https://heartlinecoaster.com/wp-content/uploads/2026/10/51485907812_f13dc5a78d_k.jpg",
+      "finalUrl": "https://heartlinecoaster.com/wp-content/uploads/2026/10/51485907812_f13dc5a78d_k.jpg",
+      "retrievedAtUtc": "2026-11-15T10:28:56.884445+00:00",
+      "status": 200,
+      "bytes": 621766,
+      "sha256": "bfe3874b2f134a698ede3b59e52dca5e2adcb01f6f46e611490660f84bcbadf3",
+      "file": "source-images/51485907812_f13dc5a78d_k.jpg",
+      "dimensions": [
+        2048,
+        1153
+      ],
+      "exifDateTimeOriginal": null,
+      "exifDateTime": null
+    },
+    {
+      "url": "https://heartlinecoaster.com/wp-content/uploads/2026/10/51486909683_3748512084_k.jpg",
+      "finalUrl": "https://heartlinecoaster.com/wp-content/uploads/2026/10/51486909683_3748512084_k.jpg",
+      "retrievedAtUtc": "2026-11-15T10:28:57.468289+00:00",
+      "status": 200,
+      "bytes": 596951,
+      "sha256": "681e5875b3ff12b07ebe680a08305347a29bcfa5df02d52fb9ce905f55d24459",
+      "file": "source-images/51486909683_3748512084_k.jpg",
+      "dimensions": [
+        2048,
+        1153
+      ],
+      "exifDateTimeOriginal": null,
+      "exifDateTime": null
+    },
+    {
+      "url": "https://live.staticflickr.com/65535/51650680889_d445aab305_k.jpg",
+      "finalUrl": "https://live.staticflickr.com/65535/51650680889_d445aab305_k.jpg",
+      "retrievedAtUtc": "2026-11-15T10:28:58.159389+00:00",
+      "status": 200,
+      "bytes": 458549,
+      "sha256": "7b50acf39512cab4c8d908aaaf936631f3ff7b8f663772c8924610f54941ad41",
+      "file": "source-images/51650680889_d445aab305_k.jpg",
+      "dimensions": [
+        2048,
+        1115
+      ],
+      "exifDateTimeOriginal": null,
+      "exifDateTime": null
+    },
+    {
+      "url": "https://themeparkfreaks.eu/nieuws/europa/frankrijk/lile-aux-geants/",
+      "finalUrl": "https://themeparkfreaks.eu/nieuws/europa/frankrijk/lile-aux-geants/",
+      "retrievedAtUtc": "2026-11-15T10:30:49.017859+00:00",
+      "status": 200,
+      "bytes": 63526,
+      "sha256": "a706692c2d2db05778be47d449e3f23f652180fcda62668e85b0592458103093",
+      "file": "themeparkfreaks-index.html"
+    },
+    {
+      "url": "https://themeparkfreaks.eu/2021/06/lile-aux-geants-pakt-uit-met-drie-nieuwe-attracties/",
+      "finalUrl": "https://themeparkfreaks.eu/2021/06/lile-aux-geants-pakt-uit-met-drie-nieuwe-attracties/",
+      "retrievedAtUtc": "2026-11-15T10:31:46.710070+00:00",
+      "status": 200,
+      "bytes": 86385,
+      "sha256": "0d2b3c09869c7d81e3ab64751aebe9f64f38c6f10ba9bd25a0a60a34e8146136",
+      "file": "themeparkfreaks-new2021.html"
+    },
+    {
+      "url": "https://themeparkfreaks.eu/wp-content/uploads/2020/10/LIle-aux-Geants-1.webp",
+      "retrievedAtUtc": "2026-11-15T10:31:47.329318+00:00",
+      "status": 404,
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "existingFilesRead": [
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/working-state.json",
+      "sha256": "caef777bfea6af83284a4f0d253761cb604abbc662b9b09d7c246e7e05353df5",
+      "bytes": 399478
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/attractions.html",
+      "sha256": "d48ad0abc35aa23d9f5fcceffcf8f31d8624fe4220f51752225ec46d431c1701",
+      "bytes": 1566769
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/archive-attractions-20220523022335.html",
+      "sha256": "94513552f6adc08a383a3d700e812691bc54deb4e7ff12a5eb7788f1937cf78d",
+      "bytes": 312907
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/all-source-photo-urls.json",
+      "sha256": "5d90a5babf10097fd8695424460637eacb7811237bf7178343ae2e87307e78a9",
+      "bytes": 2144
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/guide-o-parc-3504.html",
+      "sha256": "90d7ccecdf7da5f42cd371352067f6c10339987701d39f1e24091abd1423a0f6",
+      "bytes": 9525
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/coasterrider-2018-images.json",
+      "sha256": "2306067a75f5588777e62e7df6ab317b588b46847b56a8f0c5d89c04aca3795a",
+      "bytes": 4672
+    }
+  ],
+  "existingImagesPersonallyReviewed": [
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/coasterrider-IMG_8409.JPG",
+      "url": "https://coasterrider.fr/content/medias/1531206278/source/IMG_8409.JPG",
+      "sha256": "a7484954cf3a7cc815cc308e7300fbbf8af1d5dc63959a1c87316d337e2a704a",
+      "bytes": 377914,
+      "dimensions": [
+        1707,
+        1280
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/coasterrider-IMG_8410.JPG",
+      "url": "https://coasterrider.fr/content/medias/1531206278/source/IMG_8410.JPG",
+      "sha256": "9fce10f8d578bbad18f5b47d48e3336ef829f4404a91087fae53b50f91fadd57",
+      "bytes": 517109,
+      "dimensions": [
+        1707,
+        1280
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/coasterrider-IMG_8421.JPG",
+      "url": "https://coasterrider.fr/content/medias/1531206278/source/IMG_8421.JPG",
+      "sha256": "9af5ef45490589e592a1082e6ea4d102d06545ab9fb1ad21a1f9d8eab306b432",
+      "bytes": 429383,
+      "dimensions": [
+        1707,
+        1280
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/coasterrider-IMG_8419.JPG",
+      "url": "https://coasterrider.fr/content/medias/1531206278/source/IMG_8419.JPG",
+      "sha256": "61de2cf1e6f596344584a4f79688e1ff6f68efdceb6ce2927c85afa0892f9216",
+      "bytes": 639416,
+      "dimensions": [
+        1707,
+        1280
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/coasterrider-IMG_8420.JPG",
+      "url": "https://coasterrider.fr/content/medias/1531206278/source/IMG_8420.JPG",
+      "sha256": "48278e16a0d8c5e22024bf2e24d9547c61b1ea3b0650bb61bad98613fd66cd13",
+      "bytes": 494523,
+      "dimensions": [
+        1707,
+        1280
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-0.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/cf/caption.jpg?w=1200&h=1200&s=1",
+      "sha256": "ddf199addec750a6ffb70ee6f4e815a60ac5752c9bcb970750e216ed28878887",
+      "bytes": 597658,
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-1.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/c3/caption.jpg?w=1200&h=1200&s=1",
+      "sha256": "f51588cb8571423146e37c1bb095381ded6f317730bbe0f4c641527247cbf7e3",
+      "bytes": 469111,
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-2.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/89/caption.jpg?w=1200&h=1200&s=1",
+      "sha256": "04aa6aa0a4296ff00a6d5bae3e8041507d7b64090c51c8999a9ca808534f8ef6",
+      "bytes": 570079,
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-3.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/88/caption.jpg?w=1200&h=1200&s=1",
+      "sha256": "b35e2dc6866ad7bd356a243f5c040d9ebdecaca1f4f09e7792bd6cc731a04064",
+      "bytes": 363053,
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-4.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/8a/caption.jpg?w=1200&h=1200&s=1",
+      "sha256": "613f3be839c5e1f911c4a141be462d61304744b63a90c34a3a1ae967d6a409fe",
+      "bytes": 610869,
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-8.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/0b/6a/51/caption.jpg?w=800&h=800&s=1",
+      "sha256": "5a2841bc1be874da2ff83299a5e1b155287e9017c243ba2f4b204462ae543c5c",
+      "bytes": 170512,
+      "dimensions": [
+        800,
+        800
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-9.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/00/ae/10/caption.jpg?w=1200&h=1200&s=1",
+      "sha256": "da338ff1e96268dc91c696cac3afc32e11a050c3804ff809e509cf8c2269dd34",
+      "bytes": 400467,
+      "dimensions": [
+        1200,
+        983
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-10.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/23/06/54/caption.jpg?w=1100&h=1100&s=1",
+      "sha256": "3dcadafa1925d9887b88de3530cedafcabb23f07910dd78b50e3aaa5d0fe6c57",
+      "bytes": 350191,
+      "dimensions": [
+        1100,
+        1100
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-11.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/23/06/53/caption.jpg?w=1100&h=1100&s=1",
+      "sha256": "99de0e134e953084b99975642d95161a7a89b89a84b5c6a1f55a1a866a85e7ad",
+      "bytes": 233426,
+      "dimensions": [
+        1100,
+        1100
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-12.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/23/06/52/caption.jpg?w=1200&h=1200&s=1",
+      "sha256": "291c56d7ecfd9650c4f0be9f172ff4ba6a8318615b1145c02b0232f0ac59b517",
+      "bytes": 426226,
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-13.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/b9/6e/87/20190810-174704-hdr-largejpg.jpg?w=1200&h=1200&s=1",
+      "sha256": "24a98b03650f2228adb61bc524760279c000b1c31fada3ec989d9ea8cf774f9d",
+      "bytes": 200306,
+      "dimensions": [
+        1200,
+        693
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-14.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/c4/e3/af/l-ile-aux-geants.jpg?w=1000&h=1000&s=1",
+      "sha256": "41ba0a95635016717228b5c9694f31e5901a7f1bed4e9fdadedc9cc637d88a79",
+      "bytes": 154833,
+      "dimensions": [
+        960,
+        720
+      ],
+      "personallyViewed": true,
+      "newFetchPerformed": false,
+      "targetOriginalMatchEstablished": false
+    }
+  ],
+  "guardrails": {
+    "PdeCalls": 0,
+    "GitCommands": 0,
+    "repoEdits": 0,
+    "registerEdits": 0,
+    "reservations": 0,
+    "imports": 0,
+    "publications": 0,
+    "contacts": 0,
+    "imageFilesEdited": 0,
+    "allWritesWithin": "/workspace/france-historical-20261114/ile-aux-geants/heartline-followup-20261115"
+  },
+  "nextUsefulStep": "La racine peut rédiger des notices précisément historiques à partir de l’association panneau/noms et de la destination enfants confirmée officiellement, sans description détaillée extrapolée. Pour enrichir les décors ou associer une photo de lieu, une vue originale concordante reste requise. Le panneau ne prouve pas la continuité matérielle après l’incendie 2024 ni une ouverture individuelle en 2026."
+}

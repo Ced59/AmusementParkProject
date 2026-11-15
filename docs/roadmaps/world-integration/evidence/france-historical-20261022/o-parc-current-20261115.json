@@ -3,7 +3,7 @@
   "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
   "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T10:31:59.201431+00:00",
+  "observedAtUtc": "2026-11-15T10:43:49.248038+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": true,
@@ -266,6 +266,11 @@
       "operationId": "64892bd3-3d16-4bff-8ee0-c11b3e1b3d30",
       "appliedAtUtc": "2026-11-15T06:09:54.0516313Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-12-publish-item-history-20261115.json"
+    },
+    {
+      "operationId": "69926649-23ef-441f-9ef6-86cfb7ca7b93",
+      "appliedAtUtc": "2026-11-15T10:34:52.7670648Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-karts-publication-20261115.json"
     }
   ],
   "acceptedImports": [
@@ -335,7 +340,7 @@
     "itemDescriptionsRewrittenEightLanguages": 43,
     "itemDescriptionsStillToReview": 0,
     "images": 24,
-    "newImagesPrivate": 1,
+    "newImagesPrivate": 0,
     "zones": 2,
     "historyEvents": 10,
     "articles": 1,
@@ -344,7 +349,7 @@
     "privateItems": 0,
     "zonesPersonallyReviewedEightLanguages": 2,
     "initialMediaPersonallyReviewedEightLanguages": 11,
-    "publicImages": 23,
+    "publicImages": 24,
     "publicOfficialMaps": 2,
     "publishedCanonicalFacts": 8,
     "privateCanonicalDrafts": 2
@@ -513,7 +518,7 @@
     "Références fondateurs et exploitant relues et corrigées par Apply5a3caae1 ; closedYear exploitant null faute de preuve de dissolution, parc ClosedDefinitively préservé.",
     "Inspection directe logo5bbfbad: fichiercorrect avecmotPARCbleu-violet/liondansÔrouge, anciensaltvert faux corrigés. AltMiniGolf prétendait2enfants inexistants, corrigé. PremierPreviewzonesmedia10ownersnonrésolus nonappliqué, ownerKey+itemsminimaux redéclarés puisPreviewzérowarnings."
   ],
-  "nextAction": "Contrôler et publier la seconde vue distincte des Karts à pédales issue du Secours populaire2023, encore privée. Conserver les anciens audits et publications ainsi que les trois identités historiques non résolues et le plan2025 NL non affiché.",
+  "nextAction": "Conserver partial : trois identités historiques à résoudre et anciennes lacunes photos/GPS. La seconde photo Karts est publiée et visible sur les huit fiches ; alt anglais persiste dans les sept langues non anglaises malgré métadonnées correctes. Affichage ancien plan2025 NL reste à recontrôler sans purge ni doublon.",
   "acceptedMapUploads": [
     {
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-map-2025-upload-20261115.json",
@@ -870,6 +875,9 @@
     "metadataOnlyDifferenceToAuditedState": true
   },
   "postPublicationCompleteness": {
+    "receivedAtUtc": "2026-11-15T10:36:30.2422897Z",
+    "startedAtUtc": "2026-11-15T10:36:27.3849266Z",
+    "action": "Completeness",
     "result": {
       "completenessScore": 96,
       "dataQualityLevel": "Excellent",
@@ -877,10 +885,7 @@
       "earnedPoints": 104,
       "publicationBlockers": [],
       "formulaicPublicTextIssue": null
-    },
-    "startedAtUtc": "2026-11-15T06:10:06.2127870Z",
-    "action": "Completeness",
-    "receivedAtUtc": "2026-11-15T06:10:07.5705308Z"
+    }
   },
   "postPublicationHistory": {
     "startedAtUtc": "2026-11-15T06:10:19.6987920Z",
@@ -959,7 +964,8 @@
       }
     }
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T10:30:45.925Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T10:34:52.7670648Z",
   "publicationFollowupEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-publication-followup-20261115.json",
-  "publicVerificationCompleted": false
+  "publicVerificationCompleted": false,
+  "latestKartsPublicationEvidence": "o-parc-karts-publication-followup-20261115.json"
 }

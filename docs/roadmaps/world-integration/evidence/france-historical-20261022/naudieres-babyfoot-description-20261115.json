@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "id": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "name": "Parc des Naudières",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+          "key": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+          "name": "Baby-foot humain",
+          "category": "Attraction",
+          "type": "Game",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des rangées rouges et bleues</h2><p>En juin 2016, le Baby-foot humain occupait une aire pavée, bordée de boudins gonflables verts et orange. Au fond, un but orange et bleu se détachait sur les filets entourant le terrain.</p><p>Les lignes rouges et bleues traversaient ce petit terrain entouré d’arbres. Les enfants y prenaient eux-mêmes la place des figurines, face à leurs camarades.</p><h2>Un jeu collectif encore pratiqué en 2026</h2><p>À l’été 2026, le baby-foot humain figurait toujours parmi les activités partagées lors des sorties aux Naudières.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Red and blue rows</h2><p>In June 2016, Baby-foot humain occupied a paved area edged with green and orange inflatable sides. An orange-and-blue goal stood at the far end, against the netting around the pitch.</p><p>Red and blue rows crossed this small, tree-lined playing area. The children themselves took the places of the table-football figures, facing their friends.</p><h2>A group game still played in 2026</h2><p>In summer 2026, human table football was still among the activities shared on outings to Les Naudières.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Rote und blaue Reihen</h2><p>Im Juni 2016 lag das Baby-foot humain auf einer gepflasterten Fläche mit grünen und orangefarbenen aufblasbaren Seitenwänden. Am hinteren Ende hob sich ein orange-blaues Tor vor den Netzen rund um das Spielfeld ab.</p><p>Rote und blaue Reihen durchzogen das kleine, von Bäumen umgebene Spielfeld. Die Kinder nahmen selbst die Plätze der Kickerfiguren ein und standen ihren Freunden gegenüber.</p><h2>Auch 2026 noch gemeinsam gespielt</h2><p>Im Sommer 2026 gehörte der Menschenkicker weiterhin zu den gemeinsamen Aktivitäten bei Ausflügen nach Les Naudières.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Rode en blauwe rijen</h2><p>In juni 2016 lag Baby-foot humain op een betegeld terrein, omgeven door groene en oranje opblaasbare randen. Achteraan stak een oranje-blauw doel af tegen de netten rond het speelveld.</p><p>Rode en blauwe rijen liepen dwars over dit kleine veld tussen de bomen. De kinderen namen zelf de plaats van de tafelvoetbalpoppetjes in, tegenover hun vrienden.</p><h2>Ook in 2026 nog samen spelen</h2><p>In de zomer van 2026 hoorde menselijk tafelvoetbal nog steeds bij de gezamenlijke activiteiten tijdens uitstapjes naar Les Naudières.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>File rosse e blu</h2><p>Nel giugno 2016, il Baby-foot humain occupava un’area pavimentata, delimitata da bordi gonfiabili verdi e arancioni. Sul fondo, una porta arancione e blu risaltava davanti alle reti che circondavano il campo.</p><p>File rosse e blu attraversavano questo piccolo campo fra gli alberi. I bambini prendevano essi stessi il posto degli omini del calcio balilla, di fronte ai compagni.</p><h2>Un gioco di gruppo ancora praticato nel 2026</h2><p>Nell’estate 2026, il calcio balilla umano figurava ancora fra le attività condivise durante le gite a Les Naudières.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Filas rojas y azules</h2><p>En junio de 2016, el Baby-foot humain ocupaba una zona pavimentada, delimitada por bordes hinchables verdes y naranjas. Al fondo, una portería naranja y azul destacaba ante las redes que rodeaban el campo.</p><p>Filas rojas y azules atravesaban este pequeño terreno entre los árboles. Los propios niños ocupaban el lugar de las figuras del futbolín, frente a sus compañeros.</p><h2>Un juego colectivo todavía practicado en 2026</h2><p>En el verano de 2026, el futbolín humano seguía entre las actividades compartidas durante las excursiones a Les Naudières.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Czerwone i niebieskie rzędy</h2><p>W czerwcu 2016 roku Baby-foot humain zajmował brukowany plac otoczony zielonymi i pomarańczowymi dmuchanymi bandami. Z tyłu pomarańczowo-niebieska bramka wyróżniała się na tle siatek wokół boiska.</p><p>Czerwone i niebieskie rzędy przecinały to niewielkie boisko wśród drzew. Dzieci same zajmowały miejsca figurek z piłkarzyków, naprzeciw swoich kolegów.</p><h2>Wspólna zabawa także w 2026 roku</h2><p>Latem 2026 roku ludzkie piłkarzyki nadal należały do wspólnych zajęć podczas wycieczek do Les Naudières.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Filas vermelhas e azuis</h2><p>Em junho de 2016, o Baby-foot humain ocupava uma área pavimentada, delimitada por bordas insufláveis verdes e laranja. Ao fundo, uma baliza laranja e azul destacava-se diante das redes que rodeavam o campo.</p><p>Filas vermelhas e azuis atravessavam este pequeno campo entre as árvores. As próprias crianças ocupavam o lugar dos bonecos dos matraquilhos, frente aos colegas.</p><h2>Um jogo coletivo ainda praticado em 2026</h2><p>No verão de 2026, os matraquilhos humanos continuavam entre as atividades partilhadas durante as visitas ao parque Les Naudières.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "fc4e5e53-9bcc-4fc4-9f27-be3f635908fb",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:40:42.2920996Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "entityKey": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "displayName": "Baby-foot humain",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Rote und blaue Reihen</h2><p>Im Juni 2016 lag das Baby-foot humain auf einer gepflasterten Fläche mit grünen und orangefarbenen aufblasbaren Seitenwänden. Am hinteren Ende hob sich ein orange-blaues Tor vor den Netzen rund um das Spielfeld ab.</p><p>Rote und blaue Reihen durchzogen das kleine, von Bäumen umgebene Spielfeld. Die Kinder nahmen selbst die Plätze der Kickerfiguren ein und standen ihren Freunden gegenüber.</p><h2>Auch 2026 noch gemeinsam gespielt</h2><p>Im Sommer 2026 gehörte der Menschenkicker weiterhin zu den gemeinsamen Aktivitäten bei Ausflügen nach Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Red and blue rows</h2><p>In June 2016, Baby-foot humain occupied a paved area edged with green and orange inflatable sides. An orange-and-blue goal stood at the far end, against the netting around the pitch.</p><p>Red and blue rows crossed this small, tree-lined playing area. The children themselves took the places of the table-football figures, facing their friends.</p><h2>A group game still played in 2026</h2><p>In summer 2026, human table football was still among the activities shared on outings to Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Filas rojas y azules</h2><p>En junio de 2016, el Baby-foot humain ocupaba una zona pavimentada, delimitada por bordes hinchables verdes y naranjas. Al fondo, una portería naranja y azul destacaba ante las redes que rodeaban el campo.</p><p>Filas rojas y azules atravesaban este pequeño terreno entre los árboles. Los propios niños ocupaban el lugar de las figuras del futbolín, frente a sus compañeros.</p><h2>Un juego colectivo todavía practicado en 2026</h2><p>En el verano de 2026, el futbolín humano seguía entre las actividades compartidas durante las excursiones a Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des rangées rouges et bleues</h2><p>En juin 2016, le Baby-foot humain occupait une aire pavée, bordée de boudins gonflables verts et orange. Au fond, un but orange et bleu se détachait sur les filets entourant le terrain.</p><p>Les lignes rouges et bleues traversaient ce petit terrain entouré d’arbres. Les enfants y prenaient eux-mêmes la place des figurines, face à leurs camarades.</p><h2>Un jeu collectif encore pratiqué en 2026</h2><p>À l’été 2026, le baby-foot humain figurait toujours parmi les activités partagées lors des sorties aux Naudières.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>File rosse e blu</h2><p>Nel giugno 2016, il Baby-foot humain occupava un’area pavimentata, delimitata da bordi gonfiabili verdi e arancioni. Sul fondo, una porta arancione e blu risaltava davanti alle reti che circondavano il campo.</p><p>File rosse e blu attraversavano questo piccolo campo fra gli alberi. I bambini prendevano essi stessi il posto degli omini del calcio balilla, di fronte ai compagni.</p><h2>Un gioco di gruppo ancora praticato nel 2026</h2><p>Nell’estate 2026, il calcio balilla umano figurava ancora fra le attività condivise durante le gite a Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Rode en blauwe rijen</h2><p>In juni 2016 lag Baby-foot humain op een betegeld terrein, omgeven door groene en oranje opblaasbare randen. Achteraan stak een oranje-blauw doel af tegen de netten rond het speelveld.</p><p>Rode en blauwe rijen liepen dwars over dit kleine veld tussen de bomen. De kinderen namen zelf de plaats van de tafelvoetbalpoppetjes in, tegenover hun vrienden.</p><h2>Ook in 2026 nog samen spelen</h2><p>In de zomer van 2026 hoorde menselijk tafelvoetbal nog steeds bij de gezamenlijke activiteiten tijdens uitstapjes naar Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Czerwone i niebieskie rzędy</h2><p>W czerwcu 2016 roku Baby-foot humain zajmował brukowany plac otoczony zielonymi i pomarańczowymi dmuchanymi bandami. Z tyłu pomarańczowo-niebieska bramka wyróżniała się na tle siatek wokół boiska.</p><p>Czerwone i niebieskie rzędy przecinały to niewielkie boisko wśród drzew. Dzieci same zajmowały miejsca figurek z piłkarzyków, naprzeciw swoich kolegów.</p><h2>Wspólna zabawa także w 2026 roku</h2><p>Latem 2026 roku ludzkie piłkarzyki nadal należały do wspólnych zajęć podczas wycieczek do Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Filas vermelhas e azuis</h2><p>Em junho de 2016, o Baby-foot humain ocupava uma área pavimentada, delimitada por bordas insufláveis verdes e laranja. Ao fundo, uma baliza laranja e azul destacava-se diante das redes que rodeavam o campo.</p><p>Filas vermelhas e azuis atravessavam este pequeno campo entre as árvores. As próprias crianças ocupavam o lugar dos bonecos dos matraquilhos, frente aos colegas.</p><h2>Um jogo coletivo ainda praticado em 2026</h2><p>No verão de 2026, os matraquilhos humanos continuavam entre as atividades partilhadas durante as visitas ao parque Les Naudières.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "8b8d629c-3e43-4d87-ac79-e564e7e802be",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:41:26.137142Z",
+    "appliedAtUtc": "2026-11-15T10:41:26.1371433Z",
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "entityKey": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "displayName": "Baby-foot humain",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Rote und blaue Reihen</h2><p>Im Juni 2016 lag das Baby-foot humain auf einer gepflasterten Fläche mit grünen und orangefarbenen aufblasbaren Seitenwänden. Am hinteren Ende hob sich ein orange-blaues Tor vor den Netzen rund um das Spielfeld ab.</p><p>Rote und blaue Reihen durchzogen das kleine, von Bäumen umgebene Spielfeld. Die Kinder nahmen selbst die Plätze der Kickerfiguren ein und standen ihren Freunden gegenüber.</p><h2>Auch 2026 noch gemeinsam gespielt</h2><p>Im Sommer 2026 gehörte der Menschenkicker weiterhin zu den gemeinsamen Aktivitäten bei Ausflügen nach Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Red and blue rows</h2><p>In June 2016, Baby-foot humain occupied a paved area edged with green and orange inflatable sides. An orange-and-blue goal stood at the far end, against the netting around the pitch.</p><p>Red and blue rows crossed this small, tree-lined playing area. The children themselves took the places of the table-football figures, facing their friends.</p><h2>A group game still played in 2026</h2><p>In summer 2026, human table football was still among the activities shared on outings to Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Filas rojas y azules</h2><p>En junio de 2016, el Baby-foot humain ocupaba una zona pavimentada, delimitada por bordes hinchables verdes y naranjas. Al fondo, una portería naranja y azul destacaba ante las redes que rodeaban el campo.</p><p>Filas rojas y azules atravesaban este pequeño terreno entre los árboles. Los propios niños ocupaban el lugar de las figuras del futbolín, frente a sus compañeros.</p><h2>Un juego colectivo todavía practicado en 2026</h2><p>En el verano de 2026, el futbolín humano seguía entre las actividades compartidas durante las excursiones a Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des rangées rouges et bleues</h2><p>En juin 2016, le Baby-foot humain occupait une aire pavée, bordée de boudins gonflables verts et orange. Au fond, un but orange et bleu se détachait sur les filets entourant le terrain.</p><p>Les lignes rouges et bleues traversaient ce petit terrain entouré d’arbres. Les enfants y prenaient eux-mêmes la place des figurines, face à leurs camarades.</p><h2>Un jeu collectif encore pratiqué en 2026</h2><p>À l’été 2026, le baby-foot humain figurait toujours parmi les activités partagées lors des sorties aux Naudières.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>File rosse e blu</h2><p>Nel giugno 2016, il Baby-foot humain occupava un’area pavimentata, delimitata da bordi gonfiabili verdi e arancioni. Sul fondo, una porta arancione e blu risaltava davanti alle reti che circondavano il campo.</p><p>File rosse e blu attraversavano questo piccolo campo fra gli alberi. I bambini prendevano essi stessi il posto degli omini del calcio balilla, di fronte ai compagni.</p><h2>Un gioco di gruppo ancora praticato nel 2026</h2><p>Nell’estate 2026, il calcio balilla umano figurava ancora fra le attività condivise durante le gite a Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Rode en blauwe rijen</h2><p>In juni 2016 lag Baby-foot humain op een betegeld terrein, omgeven door groene en oranje opblaasbare randen. Achteraan stak een oranje-blauw doel af tegen de netten rond het speelveld.</p><p>Rode en blauwe rijen liepen dwars over dit kleine veld tussen de bomen. De kinderen namen zelf de plaats van de tafelvoetbalpoppetjes in, tegenover hun vrienden.</p><h2>Ook in 2026 nog samen spelen</h2><p>In de zomer van 2026 hoorde menselijk tafelvoetbal nog steeds bij de gezamenlijke activiteiten tijdens uitstapjes naar Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Czerwone i niebieskie rzędy</h2><p>W czerwcu 2016 roku Baby-foot humain zajmował brukowany plac otoczony zielonymi i pomarańczowymi dmuchanymi bandami. Z tyłu pomarańczowo-niebieska bramka wyróżniała się na tle siatek wokół boiska.</p><p>Czerwone i niebieskie rzędy przecinały to niewielkie boisko wśród drzew. Dzieci same zajmowały miejsca figurek z piłkarzyków, naprzeciw swoich kolegów.</p><h2>Wspólna zabawa także w 2026 roku</h2><p>Latem 2026 roku ludzkie piłkarzyki nadal należały do wspólnych zajęć podczas wycieczek do Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Filas vermelhas e azuis</h2><p>Em junho de 2016, o Baby-foot humain ocupava uma área pavimentada, delimitada por bordas insufláveis verdes e laranja. Ao fundo, uma baliza laranja e azul destacava-se diante das redes que rodeavam o campo.</p><p>Filas vermelhas e azuis atravessavam este pequeno campo entre as árvores. As próprias crianças ocupavam o lugar dos bonecos dos matraquilhos, frente aos colegas.</p><h2>Um jogo coletivo ainda praticado em 2026</h2><p>No verão de 2026, os matraquilhos humanos continuavam entre as atividades partilhadas durante as visitas ao parque Les Naudières.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sourceResearch": {
+    "reportCreatedAtUtc": "2026-11-15T10:32:22.449257Z",
+    "scope": "Recherche publique et qualification uniquement ; aucune opération PDE, Git, registre, working-state ou import.",
+    "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "itemId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+    "itemName": "Baby-foot humain",
+    "existingItemReadOnlyState": {
+      "isVisible": false,
+      "descriptionsCount": 0,
+      "attractionStatus": "Unknown",
+      "existingAssignedMediaCountInTargetedRecovery": 0,
+      "targetedRecoveryExportAtUtc": "2026-11-15T10:04:31.2400264Z"
+    },
+    "conclusion": "Identité et configuration historique suffisamment documentées pour rédiger personnellement une notice propre au Baby-foot humain des Naudières, en situant explicitement les caractéristiques visuelles dans la sortie du 3 juin 2016. Ne pas déduire le statut actuel, une continuité matérielle, la date d’ouverture ni un fabricant.",
+    "sources": [
+      {
+        "url": "https://www.esjo.fr/?p=1974",
+        "attemptedAtUtc": "2026-11-15T10:30:15.318077Z",
+        "status": 200,
+        "finalUrl": "https://www.esjo.fr/?p=1974",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 59434,
+        "sha256": "885ea8a4ae9f215751776b1653206c77c207d1f2aa26fa4ed93608f72ae28db0",
+        "retryAfter": null,
+        "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/school-oudon-2016-detail.html",
+        "title": "Tous ensemble au parc des Naudières!",
+        "publisher": "École Saint-Joseph, Oudon",
+        "publishedDate": "2016-06-30",
+        "visitDate": "2016-06-03",
+        "visitDateEvidence": "Article publié le 30 juin 2016 : « Le vendredi 3 juin dernier, toutes les classes se sont rendues en car au parc des Naudières, à Sautron. »",
+        "exactNamingQuote": "Les enfants ont ainsi pu s’amuser dans de nombreuses attractions: structures gonflables, piscines à balles, babyfoot à taille humaine, toboggan géant, etc.",
+        "galleryRelation": "Le même article incorpore la photo p1030107.jpg dans une galerie de huit images de cette sortie ; le texte et la photo identifient ensemble l’équipement.",
+        "photographer": null
+      },
+      {
+        "url": "https://www.lesnaudieres.com/univers/chateau-gonflable/",
+        "localPath": "/workspace/france-historical-20261114/naudieres/inventory-20261115/inflatable-current.html",
+        "sha256": "dfbf68029b55b9167fa6a3cbd9dea01494bf57e63336a3a5c02b39744dcd3ecd",
+        "support": "Liste officielle consultée mentionnant « Babyfoot humain » dans les autres attractions de l’univers Gonflables.",
+        "limits": "La présence nominale sur une page ne donne ni une date d’ouverture ni le statut d’exploitation concret à une date précise ; la liste seule ne décrivait pas physiquement l’équipement."
+      },
+      {
+        "url": "https://nantes.a2r-insertion.fr/actualite/actualites-2026/",
+        "attemptedAtUtc": "2026-11-15T09:41:07.926758Z",
+        "status": 200,
+        "finalUrl": "https://nantes.a2r-insertion.fr/actualite/actualites-2026/",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 145783,
+        "sha256": "bc4314fbea6cbbd255e50a6a907e8b455d55bd14492e9c07bf428d6edd8b109b",
+        "retryAfter": null,
+        "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/a2r-2026.html",
+        "publisher": "Ateliers des 2 rives, Nantes",
+        "section": "Été 2026",
+        "support": "Le compte rendu primaire d’une sortie d’environ 60 participants cite les parties de « babyfoot humain » parmi les activités pratiquées.",
+        "limits": "Il établit une activité pratiquée en 2026 mais ne montre pas une vue nominative de cet équipement ; ne prouve donc pas que la configuration photographiée en 2016 est restée identique.",
+        "imagesInspected": [
+          "a2r-1000051895.jpg",
+          "a2r-1000051880.jpg",
+          "a2r-IMG_20260611_125503.jpg"
+        ]
+      }
+    ],
+    "strongestPhoto": {
+      "url": "https://www.esjo.fr/wp-content/gallery/2016-06-03-naudieres/p1030107.jpg",
+      "attemptedAtUtc": "2026-11-15T10:30:34.294801Z",
+      "status": 200,
+      "finalUrl": "https://www.esjo.fr/wp-content/gallery/2016-06-03-naudieres/p1030107.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 2433024,
+      "sha256": "e9c019f37576d6062d808845678a2c46688e0c10ced9646e3ef289a553600136",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/school-oudon-p1030107.jpg",
+      "pageUrl": "https://www.esjo.fr/?p=1974",
+      "width": 2048,
+      "height": 1536,
+      "observedActivity": "Baby-foot humain",
+      "captureDate": "2016-06-03",
+      "captureDateBasis": "Date de la sortie explicitement donnée par le compte rendu et galerie associée ; aucune heure de prise de vue inventée.",
+      "personallyVisuallyInspected": true,
+      "visibleWatermark": false,
+      "currentPhoto": false,
+      "imported": false,
+      "importCandidate": false,
+      "importLimit": "Original 2 433 024 octets, supérieur au plafond de 960 KiB actuellement appliqué par la campagne. Aucune variante native assez grande et sous ce plafond trouvée dans la page ; aucun redimensionnement ni autre retouche effectués.",
+      "attribution": "École Saint-Joseph, Oudon (source) ; photographe individuel non nommé ; aucune licence ouverte revendiquée."
+    },
+    "supportedPhysicalObservations": [
+      "Enceinte rectangulaire en plein air, jouxtant d’autres activités ; des arbres entourent la zone visible.",
+      "Le sol visible est constitué de pavés gris ; ne pas le présenter comme une pelouse.",
+      "Les longs côtés visibles sont bordés de boudins gonflables verts en partie supérieure et orange en partie inférieure.",
+      "Le but visible au fond a une armature gonflable orange et bleue et un filet ; un filet plus haut entoure également l’aire.",
+      "Plusieurs barres horizontales traversent la largeur de l’aire. Elles portent des gaines alternativement rouges et bleues et des poignées noires.",
+      "Les participants se tiennent en lignes aux barres/poignées, en occupant eux-mêmes les positions des joueurs d’un baby-foot. La photo ne permet pas de fixer le nombre réglementaire de joueurs.",
+      "Aucun moteur, déplacement automatique, fabricant, modèle, dimension ou consigne d’âge/taille n’est établi par cette photo."
+    ],
+    "secondaryDistantPhoto": {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-434_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T10:02:40.098172Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-434_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 407806,
+      "sha256": "658d48ca0c89086b12a72b075379850b8538d87bd7c666a9e4c2969abf90d33b",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-434.jpg",
+      "pageUrl": "https://www.trips-n-pics.com/2022---tnp-agrave-lrsquoouest.html",
+      "width": 1067,
+      "height": 800,
+      "caption": "Suite de la balade dans ce magnifique parc…",
+      "reportDatePrecision": "Avril 2022 ; pas de jour inventé.",
+      "observation": "Très petite vue latérale de l’aire à barres à l’extrême gauche de la scène générale des trampolines et échasses.",
+      "limitation": "Aucune légende nominative. Le cadrage est trop distant pour une photo dédiée utile ; aucun import recommandé. Ne suffit pas seul à prouver la persistance exacte de tous les détails de 2016."
+    },
+    "otherSchoolGalleryPhotosInspected": [
+      {
+        "file": "school-oudon-20160603_111423.jpg",
+        "subject": "Bumper Ball, pas Baby-foot"
+      },
+      {
+        "file": "school-oudon-20160603_142532.jpg",
+        "subject": "Grand cylindre dans lequel les participants grimpent, pas Baby-foot"
+      },
+      {
+        "file": "school-oudon-dscn3154.jpg",
+        "subject": "Tricycles rouges et jaune, pas Baby-foot"
+      },
+      {
+        "file": "school-oudon-img_7236.jpg",
+        "subject": "Piscine à balles avec filets et escalade, pas Baby-foot"
+      },
+      {
+        "file": "school-oudon-p1030102.jpg",
+        "subject": "Toboggan à couloirs, pas Baby-foot"
+      },
+      {
+        "file": "school-oudon-p1030110.jpg",
+        "subject": "Toboggan à couloirs, pas Baby-foot"
+      },
+      {
+        "file": "school-oudon-p1060287.jpg",
+        "subject": "Pédalo, pas Baby-foot"
+      }
+    ],
+    "notEstablished": [
+      "Date de première ouverture",
+      "Date de remplacement éventuel",
+      "État d’exploitation actuel",
+      "Configuration physique actuelle",
+      "Fabricant ou modèle",
+      "Dimensions",
+      "Capacité réglementaire",
+      "Restrictions d’âge ou de taille",
+      "Règlement précis des parties",
+      "Continuité de ce même exemplaire entre 2016 et 2026"
+    ],
+    "draftingBoundary": "Pas de texte final huit langues produit par le sous-agent. Root rédige et relit personnellement les notices ; la description peut citer le dispositif observé en juin 2016 sans généraliser aux autres années.",
+    "networkBoundary": "Aucune reprise des replays d’archives ayant retourné 429 ; aucune connexion Facebook ni contournement d’accès."
+  },
+  "personalReview": {
+    "eightLanguagesWrittenAndReviewed": true,
+    "nativeSchoolPhotographVisuallyInspected": true,
+    "shortDescriptionReason": "Only reliably sourced historical setting and participation are described, without padding. Physical appearance explicitly June2016; activity attested summer2026 does not establish unchanged hardware.",
+    "historicalDateNotOpeningDate": true,
+    "noManufacturerModelAgeOrLocationInvented": true
+  },
+  "existingPrivateVisibilityPreserved": true,
+  "existingStatusUnknownPreserved": true,
+  "photoImported": false,
+  "photoNotImportedReason": "Native2433024byte source exceeds official960KiB limit; no arbitrary compression or invented optimized URL.",
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "globalAuditCompleted": false
+}

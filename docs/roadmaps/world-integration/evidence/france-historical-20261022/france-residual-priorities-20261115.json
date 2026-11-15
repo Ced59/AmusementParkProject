@@ -1,0 +1,567 @@
+{
+  "documentType": "FranceNextPrioritiesReadOnly",
+  "generatedAtUtc": "2026-11-15T10:25:24.502820Z",
+  "scope": "Selection of 3–5 next candidates, historical first then active, outside Naudières/Fenestre currently treated by root. No reservations, PDE, Git, registry mutation or contacts. Only this report file written.",
+  "rulesApplied": {
+    "registryIsSourceOfTruth": true,
+    "publishedIsNotCompleted": true,
+    "retainEveryEntryAndEvent": true,
+    "noInventedIntegrationTimestamp": true,
+    "closedParkScoreTolerance": "Owner authorization 14 November 2026, only score tolerance; never removes API blockers or unresolved inventory qualification.",
+    "operatingParks": "Normal final audit and score strictly above 95.",
+    "apiOwnership": "Root alone; strict serial queue and Status before heavy calls.",
+    "facebook": "All listed have existing Published announcements in fresh 34-target reconciliation; never resend just because user did not see their feed.",
+    "sameAuditExports": "Do not repeat a full audit export for unchanged content; obey each checkpoint."
+  },
+  "registrySnapshot": {
+    "entryCount": 497,
+    "integratedStatusCount": 16,
+    "completedNamesInCurrentRegistry": [
+      "Aqwaland Martinique",
+      "Fami P.A.R.C",
+      "Florida Parc",
+      "Holly Park",
+      "Kid Parc Île dʼAventures",
+      "Kingoland",
+      "Koaland",
+      "Marineland d'Antibes",
+      "Parc Avenue",
+      "Parc de la Toison d'Or",
+      "Parc de Lomme",
+      "Parc Eana",
+      "Parc Spirou Provence",
+      "Planète magique",
+      "Ty'Bamboo",
+      "Zygofolis – Zygo Parc"
+    ],
+    "nationalCheckedOffNamesAlsoExcluded": [
+      "Breizh Land Parc",
+      "Kangoo Park",
+      "Kid Parc",
+      "Kingoland",
+      "Koaland",
+      "Parc de Loisirs de la Demi Lune",
+      "Parc de loisirs du Hautacam",
+      "Parc des Combes",
+      "Parc des Dunes",
+      "Parc du Bocasse",
+      "Parc Spirou Provence",
+      "Fami P.A.R.C",
+      "Florida Parc",
+      "Holly Park",
+      "Parc Avenue",
+      "Parc de la Toison d'Or",
+      "Parc de Lomme",
+      "Ty'Bamboo",
+      "Zygo Park / Zygofolis",
+      "Marineland d’Antibes",
+      "Aqwaland Martinique",
+      "Parc Eana",
+      "Planète magique"
+    ],
+    "warning": "Historical national counter paragraphs are cumulative older snapshots. Do not derive current progress by adding them or treat a PublishedDateUnknown park as a new completion."
+  },
+  "baselineFiles": [
+    {
+      "path": "docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+      "bytes": 92336,
+      "sha256": "b35d6b20fdbc6e4a3d04faa0e390564aba53188e417c07c78001762bdce9f57d",
+      "readAtUtc": "2026-11-15T10:25:24.502820Z"
+    },
+    {
+      "path": "docs/roadmaps/world-integration/README.md",
+      "bytes": 62590,
+      "sha256": "c7fff14e03fe7b73914e1b3dad7e9e77a80cb8d31c6e6d660e3332350bc88688",
+      "readAtUtc": "2026-11-15T10:25:24.502820Z"
+    },
+    {
+      "path": "docs/roadmaps/world-integration/WORKFLOW.md",
+      "bytes": 12230,
+      "sha256": "1bc0655b4eabbb2023397c7cc7ad5dcf72ccc2bcaf758ce9adefa2c4e89e8cad",
+      "readAtUtc": "2026-11-15T10:25:24.502820Z"
+    },
+    {
+      "path": "docs/roadmaps/world-integration/countries/FR.json",
+      "bytes": 2062151,
+      "sha256": "5eff75f6db75fe2dc25c4e8f3132d96206edaa41c1be0a2bf353625a1dab49ab",
+      "readAtUtc": "2026-11-15T10:25:24.502820Z"
+    }
+  ],
+  "selectionConclusion": "No unblocked park is proven immediately closeable by this read-only triage. Acqua Gliss has the narrowest remaining content gap. Fresnes and Cousteau could close quickly only after the existing application label defect is corrected; it is still observable today. Droséra is a reserve with unresolved qualification; Île aux Géants is the most advanced active candidate outside current work. These are conditional priorities, not claims of completed audits.",
+  "priorities": [
+    {
+      "rank": 1,
+      "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "entryId": "FR-candidate-33e1083778e134",
+      "name": "Aquagliss",
+      "candidateKind": "Historical / narrow remaining content research",
+      "whySelected": "13 des 14 lieux sont maintenant publics et décrits dans huit langues ; un seul jeu reste privé. La note 92 est tolérée pour le parc fermé, avec audit de portée et publications récentes.",
+      "ownerInRegister": "Conversation France",
+      "editorialStatusInRegister": "InProgress",
+      "presenceInRegister": "Published",
+      "lastActualIntegrationAt": "2026-11-15T09:36:56.697Z",
+      "proofs": [
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-current-20261115.json",
+          "sha256": "4a49b8401272150f13b83b5de92d76b377eae5fcf9ff9db67c060f282735aa24",
+          "bytes": 2791
+        },
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-qualification-20261115.json",
+          "sha256": "5361355253885b2f4ca6eb659342129f38415d99532c3777c1efd3bcf94c9caf",
+          "bytes": 41001
+        },
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-publication-scope-audit-20261115.json",
+          "sha256": "34da0b26bf776605594dc6e3257ede15c04d63e53f79ba9cbefd65776e4cb2ea",
+          "bytes": 7457
+        },
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-publication-followup-20261115.json",
+          "sha256": "288e2c300fbbfb2710f92f76a4095912c15879f12045d634fbbff577f045f945",
+          "bytes": 19176
+        }
+      ],
+      "existingFacebook": {
+        "facebookPublicationId": "8543f61911b545f29e4159e39351d2ae",
+        "status": "Published",
+        "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125630275424431",
+        "verifiedAtUtc": "2026-11-15T08:49:50.6683077Z",
+        "publicUrl": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio"
+      },
+      "newReservationMade": false,
+      "newApiCallMade": false,
+      "score": {
+        "value": 92,
+        "kind": "documented actual score, not recalculated",
+        "closedParkTolerance": true
+      },
+      "remaining": [
+        {
+          "itemId": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+          "name": "Volley",
+          "gap": "Existence officiellement attestée ; aucun filet/terrain individualisé et aucun aménagement précis établi."
+        },
+        "Photos, plans anciens et positions non prouvés restent consignés ; anciens constats de libellés applicatifs ne sont pas annulés."
+      ],
+      "publicSourceLeads": [
+        {
+          "url": "https://www.petitfute.com/v51396-porticcio-20166/c1173-visites-points-d-interet/c972-parcs-d-attractions/443294-acqua-cyrne-gliss.html",
+          "evidence": "Consulté avec reçu dans la preuve du 15 novembre ; mentionne terrains de volley.",
+          "potential": "Qualifier uniquement si une photographie ou une description spécifique supplémentaire devient visible. Le texte actuel ne donne ni surface ni nombre précis.",
+          "alreadyExhaustedForCurrentText": true
+        },
+        {
+          "url": "https://www.parcs-aquatiques.com/acqua-gliss-porticcio/",
+          "evidence": "Page publique retrouvée dans la recherche ; renvoie à une vidéo de visite 2014 et à une vue aérienne.",
+          "potential": "Une nouvelle vue attribuable du terrain, si la source publique devient normalement accessible ; les vidéos bloquées ne doivent pas être contournées ni retestées sans changement de disponibilité."
+        },
+        {
+          "url": "https://web.archive.org/web/20131210112436id_/http://acqua-gliss.com/photos/20/548/ffond.jpg",
+          "evidence": "Original déjà conservé, variante blanchie du panorama existant.",
+          "potential": "Contrôle de correspondance seulement. Ne pas réimporter ni reprendre une inspection identique comme une nouvelle recherche."
+        }
+      ],
+      "nextConcreteStep": "Chercher une nouvelle photographie attribuable au volley dans les sources de visiteurs/archives originales. Si aucune nouvelle source ne se présente, garder partial et passer au dossier suivant ; ne pas rédiger les règles génériques du volley.",
+      "readiness": "Le plus court reliquat éditorial, mais aucune nouvelle preuve décisive trouvée dans ce tri.",
+      "avoid": [
+        "Ne pas republier dames, ping-pong, VIP, boutique ou médias déjà publiés.",
+        "Ne pas réessayer le CDX acquagliss.fr en échec 503 ni les guides 403/vidéos bloquées sans changement réel.",
+        "Ne pas confondre Porticcio avec Aquagliss de Moselle ou les terrains des hôtels voisins."
+      ]
+    },
+    {
+      "rank": 2,
+      "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "entryId": "FR-candidate-13b50050620a99",
+      "name": "Playmobil FunPark Fresnes",
+      "candidateKind": "Historical / closure contingent on existing application blocker",
+      "whySelected": "Corpus déjà audité et public, score accepté pour parc définitivement fermé, annonce Facebook existante Published. La clôture est retenue pour un libellé de frise non traduit, sans nouvelle recherche de logo nécessaire.",
+      "ownerInRegister": "Conversation France",
+      "editorialStatusInRegister": "Blocked",
+      "presenceInRegister": "Published",
+      "lastActualIntegrationAt": "2026-11-01T14:33:27.779Z",
+      "proofs": [
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-followup-20261114.json",
+          "sha256": "fbeef40b86d52563f5728594f60ec9ebc5481afd30ec39707bb361de036ded40",
+          "bytes": 47223
+        },
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-publication-audit.json",
+          "sha256": "435141bcb04b5ff6b5252896f6016386dfbafe2dc184cbcf6b6a2b1e7bd802c1",
+          "bytes": 35455
+        }
+      ],
+      "existingFacebook": {
+        "facebookPublicationId": "d875aa39e6eb4c47ae4852844cc72314",
+        "status": "Published",
+        "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125617357424431",
+        "verifiedAtUtc": "2026-11-15T08:50:18.5538087Z",
+        "publicUrl": "https://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes"
+      },
+      "newReservationMade": false,
+      "newApiCallMade": false,
+      "score": {
+        "value": 92,
+        "kind": "actual official score from November14 proof, not recalculated",
+        "closedParkTolerance": true
+      },
+      "remaining": [
+        {
+          "kind": "application-rendering",
+          "description": "1 libellé(s) « Other » encore présent(s) dans la frise française au contrôle public du 15 novembre vers 10:22 UTC.",
+          "sourcedEventTypesMustBePreserved": true
+        },
+        "Lacunes historiques acceptées et conservées dans l’audit ; elles ne sont pas effacées par la tolérance de note."
+      ],
+      "publicSourceLeads": [
+        {
+          "url": "https://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+          "evidence": "Nouvelle lecture anonyme HTML, HTTP200 ; Other retrouvé sans sensibilité à la casse.",
+          "potential": "Permet de constater une correction applicative après un déploiement réellement changé, puis de reprendre les contrôles normaux dans les huit langues."
+        }
+      ],
+      "nextConcreteStep": "Attendre une correction applicative autorisée et déployée du libellé Other ; alors contrôler fiche → Histoire → article en navigation normale dans les huit langues. Aucun Apply d’édition de type historique ne peut corriger honnêtement ce défaut.",
+      "readiness": "Très proche sur le contenu ; aucune clôture possible maintenant car le défaut est encore présent.",
+      "avoid": [
+        "Ne pas convertir vente de décors, cérémonie, colloque ou réemploi en vente du parc/changement de propriétaire.",
+        "Ne pas refaire un export complet uniquement pour reconfirmer un audit inchangé.",
+        "Ne pas republier une annonce Facebook déjà Published.",
+        "Ne pas répéter les mêmes contrôles tant que le déploiement public ne change pas."
+      ],
+      "freshPublicCheckReference": {
+        "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+        "see": "newPublicChecks",
+        "url": "https://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history"
+      }
+    },
+    {
+      "rank": 3,
+      "parkId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+      "entryId": "FR-candidate-d81bd703cc53f0",
+      "name": "Parc océanique Cousteau",
+      "candidateKind": "Historical / closure contingent on existing application blocker",
+      "whySelected": "Corpus déjà audité et public, score accepté pour parc définitivement fermé, annonce Facebook existante Published. La clôture est retenue pour un libellé de frise non traduit, sans nouvelle recherche de logo nécessaire.",
+      "ownerInRegister": "Conversation France",
+      "editorialStatusInRegister": "Blocked",
+      "presenceInRegister": "Published",
+      "lastActualIntegrationAt": "2026-11-01T13:40:27.375Z",
+      "proofs": [
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-cousteau-followup-20261114.json",
+          "sha256": "ef9c3030cbe82073b0c5a65c39879342495d950a3ed24d1999c0174dba256b7e",
+          "bytes": 32440
+        },
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-cousteau-publication-audit.json",
+          "sha256": "4e17d7c8ac87019c9566015fb18f1ef47ec826f7f46b89a7ac9d15906092e2e4",
+          "bytes": 14769
+        }
+      ],
+      "existingFacebook": {
+        "facebookPublicationId": "e4d7fd71532b4eabaf66ef2951f7b4ec",
+        "status": "Published",
+        "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125612269424431",
+        "verifiedAtUtc": "2026-11-15T08:50:15.3961339Z",
+        "publicUrl": "https://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau"
+      },
+      "newReservationMade": false,
+      "newApiCallMade": false,
+      "score": {
+        "value": 87,
+        "kind": "actual official score from November14 proof, not recalculated",
+        "closedParkTolerance": true
+      },
+      "remaining": [
+        {
+          "kind": "application-rendering",
+          "description": "3 libellé(s) « Other » encore présent(s) dans la frise française au contrôle public du 15 novembre vers 10:22 UTC.",
+          "sourcedEventTypesMustBePreserved": true
+        },
+        "Lacunes historiques acceptées et conservées dans l’audit ; elles ne sont pas effacées par la tolérance de note."
+      ],
+      "publicSourceLeads": [
+        {
+          "url": "https://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+          "evidence": "Nouvelle lecture anonyme HTML, HTTP200 ; Other retrouvé sans sensibilité à la casse.",
+          "potential": "Permet de constater une correction applicative après un déploiement réellement changé, puis de reprendre les contrôles normaux dans les huit langues."
+        }
+      ],
+      "nextConcreteStep": "Attendre une correction applicative autorisée et déployée du libellé Other ; alors contrôler fiche → Histoire → article en navigation normale dans les huit langues. Aucun Apply d’édition de type historique ne peut corriger honnêtement ce défaut.",
+      "readiness": "Très proche sur le contenu ; aucune clôture possible maintenant car le défaut est encore présent.",
+      "avoid": [
+        "Ne pas convertir vente de décors, cérémonie, colloque ou réemploi en vente du parc/changement de propriétaire.",
+        "Ne pas refaire un export complet uniquement pour reconfirmer un audit inchangé.",
+        "Ne pas republier une annonce Facebook déjà Published.",
+        "Ne pas répéter les mêmes contrôles tant que le déploiement public ne change pas."
+      ],
+      "freshPublicCheckReference": {
+        "parkId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+        "see": "newPublicChecks",
+        "url": "https://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history"
+      }
+    },
+    {
+      "rank": 4,
+      "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+      "entryId": "FR-candidate-2944bd4fd46f53",
+      "name": "Village de la Droséra - Forez Miniature",
+      "candidateKind": "Historical / reserve, broader qualification still required",
+      "whySelected": "52 des 53 lieux décrits et publics après la Tour de Moingt ; une seule notice privée, avec un écart de catalogue déjà précisément documenté. Aucun logo à rechercher.",
+      "ownerInRegister": "Conversation France",
+      "editorialStatusInRegister": "InProgress",
+      "presenceInRegister": "Published",
+      "lastActualIntegrationAt": "2026-11-15T09:10:51.404Z",
+      "proofs": [
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-current-20261115.json",
+          "sha256": "100b53035222c4446d3303c3fff1604efaac9f1d2492732558eefc052fc50e21",
+          "bytes": 4585
+        },
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-catalogue-count-followup-20261115.json",
+          "sha256": "61fbe49471aa13d0df32d35e6022a2146280159cc6ee643be4a34e734f29708b",
+          "bytes": 30458
+        },
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-moingt-publication-scope-audit-20261115.json",
+          "sha256": "a461023adae7e63789aaef57db463fe26823f0820c3d4adac27a3774799c4709",
+          "bytes": 7796
+        },
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-moingt-publication-followup-20261115.json",
+          "sha256": "21623c1313d74f8d0d4aa7dc21f4ac456ed08590f358807d1f3fc91850be926b",
+          "bytes": 38287
+        }
+      ],
+      "existingFacebook": {
+        "facebookPublicationId": "218045e9e02741c4bf5859bc8cd97a43",
+        "status": "Published",
+        "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125808271424431",
+        "verifiedAtUtc": "2026-11-15T08:50:21.0607802Z",
+        "publicUrl": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature"
+      },
+      "newReservationMade": false,
+      "newApiCallMade": false,
+      "score": {
+        "value": 88,
+        "kind": "actual November15 official score in checkpoint",
+        "closedParkTolerance": true
+      },
+      "remaining": [
+        "Aire de pique-nique : existence connue, aménagement précis et vue attribuable non établis.",
+        "Jeux en cordes à identifier séparément des maquettes.",
+        "49 modèles du catalogue ancien + théâtre de Roanne attesté en 2013 ; décompte départemental53 pour 2007 non entièrement nommé. Ne pas inventer3 ou4 modèles pour ajuster un total."
+      ],
+      "publicSourceLeads": [
+        {
+          "url": "https://web.archive.org/web/20061123195554id_/http://www.ladrosera.fr/parc.html",
+          "evidence": "Source officielle déjà conservée ; annonce 50 modèles.",
+          "potential": "Point de départ pour un éventuel nouveau document daté de détente/jeux, sans refaire les 219 chemins HTML et 330 images déjà recensés."
+        },
+        {
+          "url": "https://classedespetits.blogspot.com/2013/06/notre-voyage-scolaire.html",
+          "evidence": "Compte rendu primaire du 10 juin 2013, déjà étudié.",
+          "potential": "Uniquement de nouvelles photos clairement localisées, si elles deviennent accessibles ; théâtre de Roanne déjà intégré."
+        }
+      ],
+      "nextConcreteStep": "Réserver la recherche à une nouvelle vue attribuable de l’espace pique-nique ou aux jeux en cordes. Le rapprochement du catalogue vient d’être mené et ne justifie aucune mutation supplémentaire à lui seul.",
+      "readiness": "Réserve : proche en nombre de notices, pas encore proche d’une clôture globale sûre à cause des identités restantes.",
+      "avoid": [
+        "Le pique-nique de la sortie scolaire2010 a lieu au Moulin de Massons hors parc.",
+        "Jeansagnère du plan représente le vrai village, pas une maquette supplémentaire.",
+        "Ne pas réimporter/recréer la Tour de Moingt ou le théâtre de Roanne.",
+        "Ne pas répéter la recherche récente des 15 photos d’atelier."
+      ]
+    },
+    {
+      "rank": 5,
+      "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+      "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+      "name": "L'Île aux Géants",
+      "candidateKind": "Operating / most advanced active content candidate outside current work",
+      "whySelected": "19 des 21 notices déjà réécrites, article développé, fondateur et faits intégrés, sept nouvelles photos privées. Deux notices et l’inventaire post-incendie concentrent le travail restant.",
+      "ownerInRegister": "Conversation France",
+      "editorialStatusInRegister": "InProgress",
+      "presenceInRegister": "Published",
+      "lastActualIntegrationAt": "2026-11-15T01:37:36.592Z",
+      "proofs": [
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-current-20261115.json",
+          "sha256": "70b7c0a28382c9d8a709f5b6fd0585ce7edcb915da5bc60f56b59d6dd69609c1",
+          "bytes": 35069
+        },
+        {
+          "path": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-07-pricing-age-precision-20261115.json",
+          "sha256": "201726ea7dfd5d54feef43e640600730dfbb39fdfe0c887cf18b62fcf667c948",
+          "bytes": 19241
+        }
+      ],
+      "existingFacebook": {
+        "facebookPublicationId": "fbf2f557cf0b4593b115477b6fe831df",
+        "status": "Published",
+        "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122120998467424431",
+        "verifiedAtUtc": "2026-11-15T08:49:57.5175291Z",
+        "publicUrl": "https://amusement-parks.fun/fr/park/29a2498e-9b6c-4c55-a2ac-e521dc6e4586/l-ile-aux-geants"
+      },
+      "newReservationMade": false,
+      "newApiCallMade": false,
+      "score": {
+        "value": 98,
+        "kind": "initial score only; not a final editorial audit",
+        "closedParkTolerance": false,
+        "requiredFinalScore": "strictly greater than95"
+      },
+      "remaining": [
+        {
+          "itemId": "75eddf51-f6e1-4047-a8a2-2db808586925",
+          "name": "Manège enchanté",
+          "gap": "Nom officiel mais photo placeholder logo, identité visuelle non établie."
+        },
+        {
+          "itemId": "390c0590-ae97-49f7-a8a8-56e9a1da7c7e",
+          "name": "Petit train",
+          "gap": "Nom officiel mais photo placeholder logo, identité visuelle non établie."
+        },
+        "Rapprocher entrée/boutique, pêche aux canards et salle de jeux anciennes avec la situation après incendie 2024.",
+        "Sept photos et cinq faits restent privés ; aucun export complet final ni audit global effectué.",
+        "Calendrier 2026 et prix déjà rapprochés ; divergence 18 h / 18 h 30 et limite adulte à 18 ans restent documentées."
+      ],
+      "publicSourceLeads": [
+        {
+          "url": "https://ileauxgeants.fr/attractions/",
+          "evidence": "Catalogue officiel actuel, sources200 déjà conservées ; noms des deux manèges confirmés mais pas leur photographie.",
+          "potential": "Ancrage nominal indispensable pour toute nouvelle photo ; ne pas confondre petits manèges aperçus dans un panorama."
+        },
+        {
+          "url": "https://coasterrider.fr/parc/l-ile-aux-geants/9-juillet-2018",
+          "evidence": "Reportage primaire déjà retrouvé, visite le 9 juillet 2018, galerie de 12 vues.",
+          "potential": "Comparer décor et inventaire historique, sous réserve d’une légende spécifique ; watermark exclut les nouveaux imports, pas la lecture documentaire."
+        },
+        {
+          "url": "https://heartlinecoaster.com/category/trip-report/france/page/3/",
+          "evidence": "Nouvelle piste de repérage par recherche publique : article Europe08/21–Parc Ange Michel, L’Île aux Géants + Futuroscope, publié le 18 septembre 2021. Contenu photographique détaillé non examiné dans ce tri.",
+          "potential": "Ouvrir le reportage individuel public et vérifier si une vue établit l’un des deux manèges ; piste non qualifiée, ni preuve de présence en 2026 ni autorisation d’import."
+        }
+      ],
+      "nextConcreteStep": "Commencer par la piste primaire de reportage non encore qualifiée, en reliant tout équipement photographié au nom officiel. Si les deux identités et les services sont résolus, poursuivre revue huit langues puis unique export complet immédiatement avant audit final.",
+      "readiness": "Meilleur candidat actif proche par le corpus, mais98 initial ne suffit pas à publier ni clôturer.",
+      "avoid": [
+        "Ne pas réappliquer prepare-first-descriptions.py : anciennes confusions Star Flyer/Star Tower corrigées ensuite.",
+        "Ne pas utiliser les illustrations génériques de connexion Facebook rejetées.",
+        "Ne pas redemander ou contourner un accès login/vidéo bloqué.",
+        "Aucune date de disparition après incendie ne peut être déduite de la seule absence sur le site."
+      ]
+    }
+  ],
+  "notSelected": [
+    {
+      "names": [
+        "Parc des Naudières",
+        "Parc Fenestre"
+      ],
+      "reason": "Currently processed by root; no concurrent work."
+    },
+    {
+      "names": [
+        "La Vallée des Peaux-Rouges",
+        "Luna Park Paris",
+        "Magic City Paris",
+        "American Park",
+        "Aquagif",
+        "Canyon Park",
+        "Le Triton",
+        "Océade Rouen",
+        "Océade Strasbourg",
+        "Parc de la Cabosse",
+        "Parc des Miniatures de Nice",
+        "Tivoli",
+        "Nouveau Tivoli"
+      ],
+      "reason": "Existing logo-required blockers and/or substantial unresolved inventory. No newly authenticated standalone historical logo was found; do not repeat same failed search."
+    },
+    {
+      "names": [
+        "L’Île aux Pirates — Capbreton"
+      ],
+      "reason": "Active 95 plus required logo, unsupported calendar, unresolved historical names and public duplicate deletion awaiting specific agreement. Not a quick final audit."
+    },
+    {
+      "names": [
+        "Ô Parc"
+      ],
+      "reason": "Three identities remain unresolved despite recent parallel visual research; repeat of same photos/plans will not resolve them. Published scope already checked."
+    },
+    {
+      "names": [
+        "Parc de la Récréation"
+      ],
+      "reason": "Eight private notices still unresolved; fresh research 15 November returned an ambiguous suspended-game photo, no verified cable device/name. Not a better near-audit candidate than a single remaining game."
+    },
+    {
+      "names": [
+        "Parc du Petit Prince"
+      ],
+      "reason": "13 private Unknown lifecycles, not just one missing notice. Fresh five-item research found historical context but no lifecycle change sufficient for closure; acquisition fact can be audited separately by root."
+    },
+    {
+      "names": [
+        "Mirapolis"
+      ],
+      "reason": "Previously conforming 96 and not in the active national queue; avoid mining an already-conforming park as a new batch completion."
+    },
+    {
+      "names": [
+        "All 16 Integrated entries and all national checked-off older closures"
+      ],
+      "reason": "Already completed; do not recreate closure/announcements just because older integration receipts were not copied to the registry."
+    }
+  ],
+  "newPublicChecks": [
+    {
+      "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "url": "https://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "checkedAtUtc": "2026-11-15T10:22:20.747698Z",
+      "status": 200,
+      "sha256": "4ff9c08384236bb04e985c072d4d5fcdc241a44957e0c66abc51c55a7d2aee49",
+      "method": "Anonymous public HTML, scripts and styles removed; case-insensitive Other check. Not full browser normal-navigation validation.",
+      "title": [
+        "L'histoire de Playmobil FunPark Fresnes — Amusement Parks"
+      ],
+      "otherCount": 1,
+      "otherExcerpts": [
+        "e Bièvre — entrée en collection en 2025 ecomusee.grandorlyseinebievre.fr 26 septembre 2026 Probable Other Playmobil FunPark Fresnes Cette information est considérée comme probable au vu des sources disponibles. 3 source(s) Gazette Drouot — vente des archives Playmobil du 26 septembre 2026 www.gazette-drouot.com Le Parisien "
+      ],
+      "localizedAutreCount": 0,
+      "visibleApplicationVersion": "6.0.39",
+      "conclusion": "Untranslated Other badge remains; no closure established."
+    },
+    {
+      "parkId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+      "url": "https://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+      "checkedAtUtc": "2026-11-15T10:22:21.047050Z",
+      "status": 200,
+      "sha256": "2661b6c23d7395639000061a4634f3d8163d2e8946675cf2dff8dbf3a3bb58a0",
+      "method": "Anonymous public HTML, scripts and styles removed; case-insensitive Other check. Not full browser normal-navigation validation.",
+      "title": [
+        "L'histoire de Parc océanique Cousteau — Amusement Parks"
+      ],
+      "otherCount": 3,
+      "otherExcerpts": [
+        "ce(s) La Cité de la Mer — Jacques-Yves Cousteau www.mediathequedelamer.com 11 juillet 1989 Probable Other Parc océanique Cousteau Cette information est considérée comme probable au vu des sources disponibles. 2 source(s) La Cité de la Mer — Jacques-Yves Cousteau www.mediathequedelamer.com Pierre Gleizes — campagne d’ouvertu",
+        "m Pierre Gleizes — campagne d’ouverture et inauguration pierregleizes.com 13 décembre 1989 Probable Other Parc océanique Cousteau Cette information est considérée comme probable au vu des sources disponibles. 1 source(s) BnF — Écologie et pouvoir, actes du colloque catalogue.bnf.fr 16 juillet 1991 Probable Événement majeur ",
+        "les. 1 source(s) Ciné-Façades — UGC Ciné Cité Les Halles sallesdecinemas.blogspot.com 1995 Probable Other Parcours sous-marin Cette information est considérée comme probable au vu des sources disponibles. 1 source(s) Dark Ride Database — Images Studio, origine du matériel darkridedatabase.com Partager cette timeline Envoie "
+      ],
+      "localizedAutreCount": 0,
+      "visibleApplicationVersion": "6.0.39",
+      "conclusion": "Untranslated Other badge remains; no closure established."
+    }
+  ],
+  "newConfirmedContentUnlocks": 0,
+  "newApiCalls": 0,
+  "newReservations": 0,
+  "newMutations": 0,
+  "newImports": 0,
+  "newFacebookPublications": 0
+}

@@ -21790,7 +21790,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T10:30:45.925Z",
+      "lastDataIntegrationAt": "2026-11-15T10:34:52.767Z",
       "integrationHistory": [
         {
           "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
@@ -22191,6 +22191,16 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-karts-secours-2023-20261115.json",
           "auditEvidence": null,
           "summary": "Ô Parc : photo privée karts-secours-2023, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "apply-69926649-23ef-441f-9ef6-86cfb7ca7b93",
+          "appliedAt": "2026-11-15T10:34:52.767Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-karts-publication-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : seconde photo distincte des Karts à pédales publiée après audit de portée, 24 textes relus en huit langues, score projeté96 sans bloqueur. Aucun nouvel import ni annonce Facebook."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -27767,7 +27777,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T10:20:50.429Z",
+      "lastDataIntegrationAt": "2026-11-15T10:41:26.137Z",
       "integrationHistory": [
         {
           "eventId": "apply-800058f1-a0d9-4e68-8856-771632577322",
@@ -28008,6 +28018,16 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-pont-correction-20261115.json",
           "auditEvidence": null,
           "summary": "Pont suspendu public corrigé32textes8langues : filet souple au-dessus eau/arceauxverts, petit toboggan distinct Luge ; nouveauté2023 annoncée sans premièreprésence inventée. Fiche,2résumés et1paragraphearticle ; dates/types/IDs/visibilités conservés."
+        },
+        {
+          "eventId": "apply-8b8d629c-3e43-4d87-ac79-e564e7e802be",
+          "appliedAt": "2026-11-15T10:41:26.137Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-babyfoot-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Baby-foot humain privé : huit notices historiques rédigées et relues, configuration photographiée juin2016 distincte de la pratique attestée été2026. Aucun statut, fabricant, ouverture ou âge inventé ; aucun import photo."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

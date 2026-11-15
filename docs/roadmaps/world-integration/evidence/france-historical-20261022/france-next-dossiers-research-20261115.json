@@ -1,0 +1,902 @@
+{
+  "schemaVersion": 1,
+  "preparedAtUtc": "2026-11-15T10:33:43.677447+00:00",
+  "purpose": "Select fresh French park dossiers for the campaign, using registry/backlog and public official sources only. This is a recommendation, not a reservation or integration.",
+  "recommendation": "Start Pokeyland next; Vulcania is the second robust dossier. Winnoland is a documented reserve after the current rate-limit clears normally.",
+  "inputs": [
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/countries/FR.json",
+      "bytes": 2062324,
+      "sha256": "d90833fe6212d5e103e7f33f1534ef5d933de229c27d0d206c0ee3048d6098c3"
+    },
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+      "bytes": 92336,
+      "sha256": "b35d6b20fdbc6e4a3d04faa0e390564aba53188e417c07c78001762bdce9f57d"
+    },
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/WORKFLOW.md",
+      "bytes": 12230,
+      "sha256": "1bc0655b4eabbb2023397c7cc7ad5dcf72ccc2bcaf758ce9adefa2c4e89e8cad"
+    }
+  ],
+  "coordination": {
+    "registryEntries": 492,
+    "selectedOwners": [
+      "assignedTo null for all three at report time"
+    ],
+    "otherConversationReservationFound": false,
+    "scope": "Read local current registry and national backlog; no Git/network branch refresh performed. Root must perform normal official API reconciliation and recheck distributed campaign ownership before claim.",
+    "existingEvidenceCheck": "No matches for the three exact park UUIDs in the local world-integration/evidence JSON/Markdown tree. No dedicated Pokeyland/Vulcania/Winnoland folder in either historical local campaign root. All three national-backlog lines unchecked and FR integrationHistory empty. This does not prove absence of server-side edits since the inventory."
+  },
+  "candidates": [
+    {
+      "rank": 1,
+      "recommendation": "Recommended next",
+      "registry": {
+        "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+        "siteId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "entityKind": "Park",
+        "presence": "Hidden",
+        "presenceObservedAt": "2026-10-22",
+        "editorialStatus": "ToIntegrate",
+        "lifecycleAtInventory": "Operating",
+        "assignedTo": null,
+        "lastDataIntegrationAt": null,
+        "integrationHistory": [],
+        "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+        "standaloneAssessment": null,
+        "sources": [
+          {
+            "label": "Relevé du site — méthode",
+            "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+            "accessedAt": "2026-10-22"
+          },
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/22634.htm",
+            "accessedAt": "2026-10-22"
+          },
+          {
+            "label": "Backlog national existant",
+            "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+            "accessedAt": "2026-10-22"
+          }
+        ]
+      },
+      "localityConfirmedByOfficialSource": "Fey, Moselle, Grand Est, between Metz and Nancy",
+      "whySuitable": "Official site supplies a named activity catalogue with individual descriptions/access constraints, service pages, precise 2026 tariffs, an explicit 2026 park map PDF, 2023 and 2022 historical brochures, and an operator account of opening in 2015. A fresh hidden Park identity already exists and is unassigned.",
+      "officialSourcesRead": [
+        {
+          "url": "https://www.pokeyland.com/activites/",
+          "accessedAtUtc": "2026-11-15T10:30:20.386886+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/activites/",
+          "bytes": 115524,
+          "sha256": "178e8508f0ebc04400a0c1708a0729fa472b09215761828814c2df6066451a13",
+          "file": "pokeyland-activities.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/",
+              "text": "Les activités"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/",
+              "text": "Activités"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/lenvol/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/lenvol/",
+              "text": "Fall Tower"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/lenvol/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/kids-swing/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/kids-swing/",
+              "text": "Kid’s Swing"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/kids-swing/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/la-pomme/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/la-pomme/",
+              "text": "La Pomme"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/la-pomme/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/la-roue/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/la-roue/",
+              "text": "La Roue"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/la-roue/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/le-batoo/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/le-batoo/",
+              "text": "Le Batoo"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/le-batoo/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/le-ptit-train/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/le-ptit-train/",
+              "text": "Le p’tit train"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/le-ptit-train/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/bubble-race/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/bubble-race/",
+              "text": "Les as du ciel"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/bubble-race/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/",
+              "text": "Les as du volant"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/les-avions/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/les-avions/",
+              "text": "Les avions"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/les-avions/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/les-ptits-chevaux/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/les-ptits-chevaux/",
+              "text": "Les p’tits chevaux"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/les-ptits-chevaux/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/mono-rail/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/mono-rail/",
+              "text": "Mono-Rail"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/parc/mono-rail/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+              "text": "Bumper Boat"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+              "text": "Cabanes de Pokey"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+              "text": "Crazy Kart"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/escalade/",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/escalade/",
+              "text": "Escalade"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/explorateurs/escalade/",
+              "text": "Découvrir l'activité"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/page/2/",
+              "text": "2"
+            },
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            }
+          ]
+        },
+        {
+          "url": "https://www.pokeyland.com/plan-du-parc/",
+          "accessedAtUtc": "2026-11-15T10:30:21.487528+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/plan-du-parc/",
+          "bytes": 147786,
+          "sha256": "d980871dbca5ee2ef0d499d043e6d71f66f0fdda603585b6b892859e0478b4cb",
+          "file": "pokeyland-map.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/",
+              "text": "Les activités"
+            },
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+              "text": ""
+            },
+            {
+              "url": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+              "text": "Télécharger le plan"
+            },
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            }
+          ]
+        },
+        {
+          "url": "https://www.pokeyland.com/qui-sommes-nous/",
+          "accessedAtUtc": "2026-11-15T10:30:22.518830+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/qui-sommes-nous/",
+          "bytes": 166983,
+          "sha256": "b908e38715b26b3f9f37993f99d7fe707c74de2ebf05517e4069b1a61d1ec09d",
+          "file": "pokeyland-history.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.pokeyland.com/activites/",
+              "text": "Les activités"
+            },
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc         \r\n         \r\n          Impossible de vous perdre grâce à notre plan"
+            },
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            }
+          ]
+        },
+        {
+          "url": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+          "accessedAtUtc": "2026-11-15T10:31:27.072888+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+          "bytes": 90288,
+          "sha256": "db328dcbb8d3298a3ddc0833e4a74a6ff5713c7676fe2f6941cc6d19b4a45437",
+          "file": "pokeyland-cabanes.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            }
+          ]
+        },
+        {
+          "url": "https://www.pokeyland.com/tarifs-2026/",
+          "accessedAtUtc": "2026-11-15T10:31:27.905906+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/tarifs-2026/",
+          "bytes": 140590,
+          "sha256": "d7dab664582fd6da4bacd15dbd840d7145d77e444e1b9a5e6f82906bb2d5b4d1",
+          "file": "pokeyland-prices-2026.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.pokeyland.com/plan-du-parc/",
+              "text": "Plan du parc"
+            }
+          ]
+        },
+        {
+          "url": "https://www.pokeyland.com/foire-aux-questions/",
+          "accessedAtUtc": "2026-11-15T10:32:18.943531+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/foire-aux-questions/",
+          "bytes": 95941,
+          "sha256": "b26b7db560b0ed892094c930051141b888552d27a27eb112aadc1938ffa9f923",
+          "file": "pokeyland-faq.html"
+        }
+      ],
+      "specificSourceValue": [
+        {
+          "url": "https://www.pokeyland.com/activites/",
+          "supports": "Named inventory, photos and minimum/maximum sizes for Fall Tower, Kid’s Swing, La Pomme, La Roue, Le Batoo, Le p’tit train, Les as du ciel, Les as du volant, Les avions, Mono-Rail and other activities. Pagination must be completed."
+        },
+        {
+          "url": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+          "supports": "Concrete design: elevated net area and protected monkey bridges connecting huts, with explicit access rules. Substantive descriptions can be written without invented décor."
+        },
+        {
+          "url": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+          "supports": "2026 annual map explicitly linked on the operator map page; PDF link found, binary not downloaded during candidate selection."
+        },
+        {
+          "url": "https://www.pokeyland.com/qui-sommes-nous/",
+          "supports": "Operator account: opened 2015, 60-hectare site, a little over 100,000 visitors in 2022; current pages alternate more than 25 and more than 30 activities."
+        },
+        {
+          "url": "https://www.pokeyland.com/tarifs-2026/",
+          "supports": "Dated 2026 pricing and named new activities. Distinguishes activity admission from the three reservation-based adventure sessions."
+        },
+        {
+          "url": "https://www.pokeyland.com/foire-aux-questions/",
+          "supports": "2026 season 18 April–27 September; three adventures with 2-hour sessions; picnic area outside the park. Seasonal closure is not definitive closure."
+        }
+      ],
+      "firstWork": "Search exact parkId and standalone matches, reconcile existing item IDs and server history, then reserve the existing FR entry if still unowned. Assemble present and historical inventory from paginated catalogue, annual map and brochures before any new item.",
+      "qualificationRisks": [
+        "Homepage says more than 25 activities, history/catalogue says more than 30: count named offers instead of adopting a promotional number.",
+        "Some URL slugs differ from displayed names (lenvol → Fall Tower; bubble-race → Les as du ciel; bumper-car → Les as du volant). A slug is not proof of historical alias or identical equipment.",
+        "Paintball can operate by reservation outside main park season. Maintain separate schedules where evidenced.",
+        "Do not create standalone attractions inside this structured park.",
+        "Actual API completeness, current private/public item inventory and Facebook existence remain unchecked by this research agent.",
+        "Photographs found on official pages still require individual visual inspection, attribution and duplicate reconciliation."
+      ]
+    },
+    {
+      "rank": 2,
+      "recommendation": "Recommended next alternative",
+      "registry": {
+        "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "siteId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "entityKind": "Park",
+        "presence": "Hidden",
+        "presenceObservedAt": "2026-10-22",
+        "editorialStatus": "ToIntegrate",
+        "lifecycleAtInventory": "Operating",
+        "assignedTo": null,
+        "lastDataIntegrationAt": null,
+        "integrationHistory": [],
+        "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+        "standaloneAssessment": {
+          "relation": "InsidePark",
+          "reviewedAt": "2026-10-22",
+          "attractions": [
+            {
+              "name": "Vulcania Saint-Ours-les-Roches, France",
+              "source": "Aerophile — références constructeur",
+              "url": "https://www.aerophile.com/en/clients/vulcania/",
+              "family": "Ballon captif",
+              "sourceVenueName": "Vulcania",
+              "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
+              "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
+              "referenceId": "aerophile-vulcania"
+            }
+          ],
+          "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+        },
+        "sources": [
+          {
+            "label": "Relevé du site — méthode",
+            "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+            "accessedAt": "2026-10-22"
+          },
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/16719.htm",
+            "accessedAt": "2026-10-22"
+          },
+          {
+            "label": "Wikipédia (découverte)",
+            "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Europe#France",
+            "accessedAt": "2026-10-22"
+          },
+          {
+            "label": "Backlog national existant",
+            "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+            "accessedAt": "2026-10-22"
+          },
+          {
+            "label": "Aerophile — références constructeur",
+            "url": "https://www.aerophile.com/en/clients/vulcania/",
+            "accessedAt": "2026-10-22"
+          },
+          {
+            "label": "Aerophile — références constructeur — annuaire",
+            "url": "https://www.aerophile.com/en/clients/",
+            "accessedAt": "2026-10-22"
+          }
+        ]
+      },
+      "localityConfirmedByOfficialSource": "2 route de Mazayes, 63230 Saint-Ours-les-Roches, Puy-de-Dôme",
+      "whySuitable": "Very rich official corpus: attractions by category, detailed numbered plan of four levels, exhibits, shows, films, restaurants, shops, access instructions, calendar, park history, 2026 press dossier and brochures. This is a fresh hidden existing Park with no recorded campaign mutation. Larger editorial workload, but primary sources are substantially stronger than the unresolved historical dossiers.",
+      "officialSourcesRead": [
+        {
+          "url": "https://www.vulcania.com/plan-du-parc/",
+          "accessedAtUtc": "2026-11-15T10:30:25.578032+00:00",
+          "status": 200,
+          "finalUrl": "https://www.vulcania.com/plan-du-parc/",
+          "bytes": 119735,
+          "sha256": "39781670d20f4962193356c507d9233b52bcfec59da33f796dec093f9f31818a",
+          "file": "vulcania-map.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.vulcania.com/plan-du-parc/#1688723598151-c20bada9-0df4",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.vulcania.com/consignes-des-attractions/",
+              "text": "Enfants et femmes enceintes"
+            },
+            {
+              "url": "https://www.vulcania.com/espace-presse/",
+              "text": "PRESSE"
+            },
+            {
+              "url": "/mentions-legales/",
+              "text": "Mentions légales"
+            }
+          ]
+        },
+        {
+          "url": "https://www.vulcania.com/calendrier/",
+          "accessedAtUtc": "2026-11-15T10:30:27.812830+00:00",
+          "status": 200,
+          "finalUrl": "https://www.vulcania.com/calendrier/",
+          "bytes": 142945,
+          "sha256": "11f79cdf52e31efc46dbfe31a98dd05d387a575e58c0aac5085bafbcc3abd06e",
+          "file": "vulcania-calendar.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.vulcania.com/plan-du-parc/#1688723598151-c20bada9-0df4",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.vulcania.com/consignes-des-attractions/",
+              "text": "Enfants et femmes enceintes"
+            },
+            {
+              "url": "https://www.vulcania.com/espace-presse/",
+              "text": "PRESSE"
+            },
+            {
+              "url": "/mentions-legales/",
+              "text": "Mentions légales"
+            }
+          ]
+        },
+        {
+          "url": "https://www.vulcania.com/les-animations-incontournables/",
+          "accessedAtUtc": "2026-11-15T10:31:28.248977+00:00",
+          "status": 200,
+          "finalUrl": "https://www.vulcania.com/les-animations-incontournables/",
+          "bytes": 119351,
+          "sha256": "5b312f376af41756a111fc5d2d1a2640e0426ddfa611c05875614a608fa0d99b",
+          "file": "vulcania-incontournables.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.vulcania.com/plan-du-parc/#1688723598151-c20bada9-0df4",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/comptoir-du-cratere/",
+              "text": "Le Comptoir du cratère"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/cafeteria-des-puys/",
+              "text": "La Cafétéria des Puys"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/magma-cafe/",
+              "text": "Le Magma café"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/snack-du-planetarium/",
+              "text": "Snack du planétarium"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/kiosque-namazu/",
+              "text": "Kiosque Namazu"
+            },
+            {
+              "url": "/animation/dragon-ride-2/",
+              "text": "Dragon Ride"
+            },
+            {
+              "url": "/animation/reveil-des-geants-d-auvergne/",
+              "text": "le Réveil des Géants d’Auvergne"
+            },
+            {
+              "url": "/animation/premier-envol/",
+              "text": "Premier Envol"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/terre-en-colere/",
+              "text": "Terre en colère"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/volcans-sacres/",
+              "text": "Volcans Sacrés"
+            },
+            {
+              "url": "/animation/namazu/",
+              "text": "Namazu"
+            },
+            {
+              "url": "https://www.vulcania.com/espace-presse/",
+              "text": "PRESSE"
+            }
+          ]
+        },
+        {
+          "url": "https://www.vulcania.com/espace-presse/",
+          "accessedAtUtc": "2026-11-15T10:31:29.772744+00:00",
+          "status": 200,
+          "finalUrl": "https://www.vulcania.com/espace-presse/",
+          "bytes": 134743,
+          "sha256": "c6a6b5aef8a713f228a2e2b364f9fedf0c4fd63eb9fb20889abe9d028e2af748",
+          "file": "vulcania-presse.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.vulcania.com/plan-du-parc/#1688723598151-c20bada9-0df4",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/comptoir-du-cratere/",
+              "text": "Le Comptoir du cratère"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/cafeteria-des-puys/",
+              "text": "La Cafétéria des Puys"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/magma-cafe/",
+              "text": "Le Magma café"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/snack-du-planetarium/",
+              "text": "Snack du planétarium"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/kiosque-namazu/",
+              "text": "Kiosque Namazu"
+            },
+            {
+              "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-SOIREES-VOLCANIQUES-2026.pdf",
+              "text": "les soirées volcaniques"
+            },
+            {
+              "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+              "text": "communiqué de presse estival"
+            },
+            {
+              "url": "https://www.vulcania.com/wp-content/uploads/2026/04/CP-Ouverture-VULCANIA-2026.pdf",
+              "text": "communiqué de presse 2026"
+            },
+            {
+              "url": "https://www.vulcania.com/espace-presse/",
+              "text": "PRESSE"
+            }
+          ]
+        },
+        {
+          "url": "https://www.vulcania.com/animation/vulcania-story/",
+          "accessedAtUtc": "2026-11-15T10:31:30.011638+00:00",
+          "status": 200,
+          "finalUrl": "https://www.vulcania.com/animation/vulcania-story/",
+          "bytes": 119623,
+          "sha256": "ef2bf920acb5e4c19395cd5814cb6f261778eb48dc64330e079ad78d7fabe378",
+          "file": "vulcania-story.html",
+          "usefulLinks": [
+            {
+              "url": "https://www.vulcania.com/plan-du-parc/#1688723598151-c20bada9-0df4",
+              "text": "Plan du parc"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/comptoir-du-cratere/",
+              "text": "Le Comptoir du cratère"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/cafeteria-des-puys/",
+              "text": "La Cafétéria des Puys"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/magma-cafe/",
+              "text": "Le Magma café"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/snack-du-planetarium/",
+              "text": "Snack du planétarium"
+            },
+            {
+              "url": "https://www.vulcania.com/animation/kiosque-namazu/",
+              "text": "Kiosque Namazu"
+            },
+            {
+              "url": "https://www.vulcania.com/en/animation/vulcania-story/",
+              "text": ""
+            },
+            {
+              "url": "https://www.vulcania.com/en/animation/vulcania-story/",
+              "text": ""
+            },
+            {
+              "url": "https://www.vulcania.com/espace-presse/",
+              "text": "PRESSE"
+            }
+          ]
+        },
+        {
+          "url": "https://www.vulcania.com/historique/",
+          "accessedAtUtc": "2026-11-15T10:32:18.009136+00:00",
+          "status": 200,
+          "finalUrl": "https://www.vulcania.com/historique/",
+          "bytes": 117658,
+          "sha256": "7c908e1e4ea39c01ef4abc516b596047699f2897da9aa6f1543ab16f691a607c",
+          "file": "vulcania-history.html"
+        }
+      ],
+      "specificSourceValue": [
+        {
+          "url": "https://www.vulcania.com/plan-du-parc/",
+          "supports": "Numbered level inventory A/B/C/D, attraction and show spaces, restaurants and shops. Several films share one venue reference; distinguish a theatre from changing programmes."
+        },
+        {
+          "url": "https://www.vulcania.com/les-animations-incontournables/",
+          "supports": "Named dynamic attractions and links to individual details, including Namazu, Dragon Ride, Volcans Sacrés and Réveil des Géants d’Auvergne."
+        },
+        {
+          "url": "https://www.vulcania.com/calendrier/",
+          "supports": "2026 season and actual daily schedule, off-season dates and special evening periods; no invented 2027 calendar."
+        },
+        {
+          "url": "https://www.vulcania.com/historique/",
+          "supports": "Primary account of founders/project, scientific mission, public owner, operator and development. Exact 2002 opening day printed as 20 February must be independently reconciled before reuse."
+        },
+        {
+          "url": "https://www.vulcania.com/espace-presse/",
+          "supports": "2026 dossier, brochure, opening and summer press releases; no journalist login needed to read the page."
+        },
+        {
+          "url": "https://www.calameo.com/read/006648985b00fd7a14049",
+          "supports": "2026 press dossier linked by official page; link discovered, full document not read in this selection task."
+        },
+        {
+          "url": "https://www.calameo.com/read/006648985d299fcc774f2",
+          "supports": "2026 brochure linked by official page; link discovered, full document not read in this selection task."
+        },
+        {
+          "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+          "supports": "Official summer 2026 release linked by press page; likely useful for Expédition Hawaï and programme changes, must read before assertion."
+        }
+      ],
+      "firstWork": "Search exact parkId and existing standalone references; export only needed recovery scope for IDs, reconcile current/historical rooms and films. Preserve the registry InsidePark decision for the Aerophile balloon; no standalone creation based on manufacturer reference.",
+      "qualificationRisks": [
+        "Larger corpus than Pokeyland, with several programmes using the same physical venue; qualify items before creation.",
+        "Old 2014 Aerophile reference does not establish current operation or an independent attraction.",
+        "French and English attraction lists may be out of sync; compare current map, current individual pages and dated press releases.",
+        "The history page gives 20 February 2002; exact historical opening date needs independent corroboration, not automatic transcription.",
+        "Current score, existing IDs, API blockers and Facebook status require root official checks."
+      ]
+    },
+    {
+      "rank": 3,
+      "recommendation": "Reserve only; current public access rate-limited",
+      "registry": {
+        "entryId": "FR-park-31f07250-ec46-4660-84a1-62e7e6540b05",
+        "siteId": "31f07250-ec46-4660-84a1-62e7e6540b05",
+        "name": "Winnoland",
+        "entityKind": "Park",
+        "presence": "Hidden",
+        "presenceObservedAt": "2026-10-22",
+        "editorialStatus": "ToIntegrate",
+        "lifecycleAtInventory": "Operating",
+        "assignedTo": null,
+        "lastDataIntegrationAt": null,
+        "integrationHistory": [],
+        "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+        "standaloneAssessment": null,
+        "sources": [
+          {
+            "label": "Relevé du site — méthode",
+            "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+            "accessedAt": "2026-10-22"
+          },
+          {
+            "label": "RCDB",
+            "url": "https://rcdb.com/11420.htm",
+            "accessedAt": "2026-10-22"
+          },
+          {
+            "label": "Backlog national existant",
+            "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
+            "accessedAt": "2026-10-22"
+          }
+        ]
+      },
+      "localityConfirmedByIndexedOfficialSource": "214 route de Melun, 91280 Saint-Pierre-du-Perray; administrative address distinct",
+      "whySuitable": "Official index shows 36 named attractions with access restrictions, plan, restaurants, calendar, tariffs and blog. No ownership or integration event in current FR; national backlog unchecked.",
+      "officialSourcesRead": [
+        {
+          "url": "https://winnoland.fr/attractions",
+          "accessedAtUtc": "2026-11-15T10:30:22.835409+00:00",
+          "status": 200,
+          "finalUrl": "https://winnoland.fr/attractions",
+          "bytes": 17152,
+          "sha256": "263ced5784a43b3a5580a187a49ada37d82a0ca9ce025daf650976038aff1aa5",
+          "file": "winnoland-attractions.html",
+          "usefulLinks": []
+        },
+        {
+          "url": "https://winnoland.fr/preparer-ma-visite",
+          "accessedAtUtc": "2026-11-15T10:30:24.182560+00:00",
+          "status": 200,
+          "finalUrl": "https://winnoland.fr/preparer-ma-visite",
+          "bytes": 35078,
+          "sha256": "f4ce7c75072b816446a62c8a5b11df2c2a0cf2ae8e1e2fc5752d0703a4623869",
+          "file": "winnoland-practical.html",
+          "usefulLinks": []
+        },
+        {
+          "url": "https://winnoland.fr/blog",
+          "accessedAtUtc": "2026-11-15T10:30:25.026287+00:00",
+          "status": 200,
+          "finalUrl": "https://winnoland.fr/blog",
+          "bytes": 15036,
+          "sha256": "633dbb0b06690b8444cd9dcf7143e6990f2fdc769cb271d6696530400e830447",
+          "file": "winnoland-blog.html",
+          "usefulLinks": []
+        },
+        {
+          "url": "https://winnoland.fr/attractions",
+          "accessedAtUtc": "2026-11-15T10:30:52.059530+00:00",
+          "method": "Anonymous public Chromium page",
+          "status": 200,
+          "finalUrl": "https://winnoland.fr/attractions",
+          "file": "winnoland-attractions-rendered.html",
+          "sha256": "66392f18dde508ea890d82efc710c6a211529778ffe76797b793babbdcc2a4a4",
+          "textFile": "winnoland-attractions-rendered.txt",
+          "usefulLinks": []
+        },
+        {
+          "url": "https://winnoland.fr/preparer-ma-visite",
+          "accessedAtUtc": "2026-11-15T10:30:55.372536+00:00",
+          "method": "Anonymous public Chromium page",
+          "status": 429,
+          "finalUrl": "https://winnoland.fr/preparer-ma-visite",
+          "file": "winnoland-practical-rendered.html",
+          "sha256": "a7a9e890e7c99c4d34e9e3865a056b069f1c29207fea1f64e19ff10bc632b34c",
+          "textFile": "winnoland-practical-rendered.txt",
+          "usefulLinks": []
+        },
+        {
+          "url": "https://winnoland.fr/blog",
+          "accessedAtUtc": "2026-11-15T10:30:57.507843+00:00",
+          "method": "Anonymous public Chromium page",
+          "status": 429,
+          "finalUrl": "https://winnoland.fr/blog",
+          "file": "winnoland-blog-rendered.html",
+          "sha256": "31f46962309dbf418f7d53a4c940d16f90798f46ae7429bbdd7917bfada57f95",
+          "textFile": "winnoland-blog-rendered.txt",
+          "usefulLinks": []
+        }
+      ],
+      "accessLimits": "Raw public pages returned HTTP 200 JavaScript shells. Anonymous Chromium attraction page yielded no body; practical and blog pages returned HTTP 429 Slow down. No further Winnoland request was made after the completed batch. Do not bypass, switch domains to evade the limit, or treat indexed text as a personally verified full inventory.",
+      "officialUrls": [
+        "https://winnoland.fr/attractions",
+        "https://winnoland.fr/preparer-ma-visite",
+        "https://winnoland.fr/blog",
+        "https://winnoland.com/plan-du-parc"
+      ],
+      "qualificationRisks": [
+        "Indexed official homepage still calls Wild West Coaster a 2025 novelty while blog describes inauguration 3 July 2026. Public opening and inauguration may be distinct; verify before timeline creation.",
+        "An old individual attraction route can return homepage content; verify title/body instead of assuming an attraction page.",
+        "Resume only after normal availability; Pokeyland and Vulcania are currently accessible alternatives."
+      ]
+    }
+  ],
+  "screenedButNotPrioritized": [
+    {
+      "name": "Ttiki Leku",
+      "entryId": "FR-park-cd98d817-a9d5-4d8c-8644-e85721616193",
+      "assignedTo": null,
+      "reason": "Official source offers named activity detail and park map, but homepage still advertises 2023 opening. Current 2026 calendar and scope of Bob Bask require reconciliation; Pokeyland/Vulcania offer stronger dated current sources. Bob Bask is already assessed InsidePark.",
+      "officialUrl": "https://www.parc-jeux-paysbasque.com/",
+      "currentTourismUrl": "https://www.tourisme64.com/sur-place/activites/souraide/LOIAQU064FS000OA-parc-de-jeux-ttiki-leku/"
+    }
+  ],
+  "notDone": {
+    "pdeApiCalls": 0,
+    "gitCommands": 0,
+    "reservations": 0,
+    "registryEdits": 0,
+    "integrationMutations": 0,
+    "publications": 0,
+    "messagesToExternalPeople": 0
+  },
+  "sourceFolder": "/workspace/france-historical-20261114/new-france-candidates-sources-20261115",
+  "sourceSearchEvidence": "/workspace/france-historical-20261114/new-france-candidates-sources-20261115/public-search-results.json"
+}
