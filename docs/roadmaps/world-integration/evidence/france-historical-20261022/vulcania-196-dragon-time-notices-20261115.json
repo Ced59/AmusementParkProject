@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "references": {
+        "manufacturers": [
+          {
+            "id": "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121",
+            "name": "Compagnie eliXir",
+            "biography": [
+              {
+                "languageCode": "fr",
+                "value": "<p>Fondée en 1997, la compagnie eliXir crée du théâtre de rue, des déambulations et des spectacles mêlant cirque, magie, jonglerie et pyrotechnie. Ses ateliers sont installés à Creuzier-le-Vieux, dans l’Allier. À Vulcania, sa collaboration artistique a notamment donné forme aux costumes et accessoires lumineux de Dragon Time, avec leurs dessins de fibre optique.</p>"
+              },
+              {
+                "languageCode": "en",
+                "value": "<p>Founded in 1997, Compagnie eliXir creates street theatre, roaming performances and shows combining circus arts, magic, juggling and pyrotechnics. Its workshops are based in Creuzier-le-Vieux in France’s Allier department. Its artistic collaboration with Vulcania helped shape the luminous costumes and props of Dragon Time, with their optical-fibre patterns.</p>"
+              },
+              {
+                "languageCode": "de",
+                "value": "<p>Die 1997 gegründete Compagnie eliXir entwickelt Straßentheater, mobile Inszenierungen und Shows, die Zirkuskunst, Magie, Jonglage und Pyrotechnik verbinden. Ihre Werkstätten befinden sich in Creuzier-le-Vieux im französischen Département Allier. Aus der künstlerischen Zusammenarbeit mit Vulcania gingen unter anderem die leuchtenden Kostüme und Requisiten von Dragon Time mit ihren Glasfasermustern hervor.</p>"
+              },
+              {
+                "languageCode": "nl",
+                "value": "<p>Compagnie eliXir werd opgericht in 1997 en maakt straattheater, rondtrekkende voorstellingen en shows met circuskunst, magie, jongleren en vuurwerk. De werkplaatsen bevinden zich in Creuzier-le-Vieux, in het Franse departement Allier. De artistieke samenwerking met Vulcania gaf onder meer vorm aan de lichtgevende kostuums en rekwisieten van Dragon Time, met hun patronen van lichtvezels.</p>"
+              },
+              {
+                "languageCode": "it",
+                "value": "<p>Fondata nel 1997, la Compagnie eliXir crea teatro di strada, spettacoli itineranti e produzioni che intrecciano circo, magia, giocoleria e pirotecnica. I suoi laboratori si trovano a Creuzier-le-Vieux, nel dipartimento francese dell’Allier. La collaborazione artistica con Vulcania ha dato forma, fra l’altro, ai costumi e agli accessori luminosi di Dragon Time, con i loro disegni di fibre ottiche.</p>"
+              },
+              {
+                "languageCode": "es",
+                "value": "<p>Fundada en 1997, la Compagnie eliXir crea teatro de calle, espectáculos itinerantes y producciones que combinan circo, magia, malabares y pirotecnia. Sus talleres se encuentran en Creuzier-le-Vieux, en el departamento francés de Allier. Su colaboración artística con Vulcania dio forma, entre otros elementos, a los trajes y accesorios luminosos de Dragon Time, con sus dibujos de fibra óptica.</p>"
+              },
+              {
+                "languageCode": "pl",
+                "value": "<p>Założona w 1997 roku Compagnie eliXir tworzy teatr uliczny, widowiska przemieszczające się wśród publiczności oraz spektakle łączące cyrk, iluzję, żonglerkę i pirotechnikę. Jej pracownie znajdują się w Creuzier-le-Vieux we francuskim departamencie Allier. Współpraca artystyczna z Vulcanią zaowocowała między innymi świetlistymi kostiumami i rekwizytami Dragon Time, ozdobionymi wzorami ze światłowodów.</p>"
+              },
+              {
+                "languageCode": "pt",
+                "value": "<p>Fundada em 1997, a Compagnie eliXir cria teatro de rua, espetáculos itinerantes e produções que combinam circo, magia, malabarismo e pirotecnia. Os seus ateliês ficam em Creuzier-le-Vieux, no departamento francês de Allier. A colaboração artística com Vulcania deu forma, entre outros elementos, aos trajes e adereços luminosos de Dragon Time, com os seus desenhos de fibra ótica.</p>"
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+          "name": "Dragon Time",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le dragon dans la nuit auvergnate</h2><p>Dragon Time donnait aux nocturnes de Vulcania un visage de légende. La compagnie eliXir y faisait apparaître un dragon entouré de personnages lumineux, dont les costumes dessinaient des lignes et des spirales dans l’obscurité. Les gestes des danseurs et les acrobaties animaient cette rencontre entre créature mythique et êtres de lumière.</p><p>Des gerbes d’étincelles, des flammes et des fumées accompagnaient les artistes. La fibre optique des costumes et des accessoires, développés en collaboration avec le parc, permettait aux silhouettes de rester présentes au milieu des éclats du feu.</p><h2>La Chaîne des Puys pour décor</h2><p>En 2016, Vulcania annonçait un changement de décor et de mise en scène, avec un nouvel emplacement face aux volcans d’Auvergne. Encore programmé lors des soirées estivales de 2024, Dragon Time associait ce paysage réel à un univers de théâtre, de lumière et de pyrotechnie.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A dragon in the Auvergne night</h2><p>Dragon Time brought a legendary creature to Vulcania’s late summer evenings. Compagnie eliXir presented a dragon surrounded by luminous characters whose costumes traced lines and spirals in the darkness. Dance and acrobatics animated this encounter between a mythical beast and beings made of light.</p><p>Showers of sparks, flames and smoke accompanied the performers. Optical fibres in the costumes and props, developed in collaboration with the park, kept their outlines visible amid the bursts of fire.</p><h2>The Chaîne des Puys as a backdrop</h2><p>In 2016, Vulcania announced a change of scenery and staging, with a new location facing the volcanoes of Auvergne. Still scheduled for summer evenings in 2024, Dragon Time combined this real landscape with a theatrical world of light and pyrotechnics.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Drache in der Nacht der Auvergne</h2><p>Dragon Time brachte eine Sagengestalt in Vulcanias Sommernächte. Die Compagnie eliXir ließ einen Drachen auftreten, umgeben von leuchtenden Figuren. Ihre Kostüme zeichneten Linien und Spiralen in die Dunkelheit, während Tanz und Akrobatik die Begegnung zwischen dem Fabelwesen und den Lichtgestalten belebten.</p><p>Funkenregen, Flammen und Rauch begleiteten die Künstler. Glasfasern in Kostümen und Requisiten, die gemeinsam mit dem Park entwickelt wurden, ließen die Umrisse der Figuren zwischen den Feuerstößen sichtbar bleiben.</p><h2>Die Chaîne des Puys als Kulisse</h2><p>Für 2016 kündigte Vulcania eine neue Kulisse und Inszenierung an einem anderen Standort vor den Vulkanen der Auvergne an. Dragon Time stand auch 2024 auf dem Programm der Sommerabende und verband diese reale Landschaft mit einer Theaterwelt aus Licht und Pyrotechnik.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een draak in de nacht van de Auvergne</h2><p>Dragon Time bracht een legendarisch wezen naar de zomeravonden van Vulcania. Compagnie eliXir liet een draak verschijnen tussen lichtgevende figuren. Hun kostuums tekenden lijnen en spiralen in het donker, terwijl dans en acrobatiek de ontmoeting tussen het mythische dier en de lichtwezens vormgaven.</p><p>Vonkenregens, vlammen en rook omringden de artiesten. Lichtvezels in de kostuums en rekwisieten, ontwikkeld in samenwerking met het park, hielden de silhouetten zichtbaar tussen de uitbarstingen van vuur.</p><h2>De Chaîne des Puys als achtergrond</h2><p>In 2016 kondigde Vulcania een ander decor en een nieuwe enscenering aan, op een locatie tegenover de vulkanen van de Auvergne. Dragon Time stond ook in 2024 op het programma van de zomeravonden en verbond dat echte landschap met een theaterwereld van licht en vuurwerk.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Il drago nella notte dell’Alvernia</h2><p>Dragon Time portava una creatura leggendaria nelle serate estive di Vulcania. La Compagnie eliXir faceva apparire un drago circondato da personaggi luminosi, i cui costumi disegnavano linee e spirali nell’oscurità. Danza e acrobazie animavano l’incontro tra l’animale mitico e gli esseri di luce.</p><p>Piogge di scintille, fiamme e fumo accompagnavano gli artisti. Le fibre ottiche dei costumi e degli accessori, sviluppati insieme al parco, mantenevano visibili le sagome fra i bagliori del fuoco.</p><h2>La Chaîne des Puys sullo sfondo</h2><p>Nel 2016 Vulcania annunciava un cambiamento di scenografia e di messa in scena, in una nuova collocazione davanti ai vulcani dell’Alvernia. Ancora in programma nelle serate estive del 2024, Dragon Time univa quel paesaggio reale a un mondo teatrale di luci e pirotecnica.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El dragón en la noche de Auvernia</h2><p>Dragon Time llevaba una criatura de leyenda a las noches de verano de Vulcania. La Compagnie eliXir hacía aparecer un dragón rodeado de personajes luminosos, cuyos trajes dibujaban líneas y espirales en la oscuridad. La danza y las acrobacias daban vida al encuentro entre el animal mítico y los seres de luz.</p><p>Lluvias de chispas, llamas y humo acompañaban a los artistas. Las fibras ópticas de los trajes y accesorios, desarrollados con el parque, mantenían visibles las siluetas entre los destellos del fuego.</p><h2>La Chaîne des Puys como escenario</h2><p>En 2016 Vulcania anunciaba un cambio de escenografía y de puesta en escena, en un nuevo emplazamiento frente a los volcanes de Auvernia. Todavía programado en las noches estivales de 2024, Dragon Time unía ese paisaje real con un universo teatral de luces y pirotecnia.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Smok w nocnej Owernii</h2><p>Dragon Time wprowadzał legendarną istotę w letnie wieczory Vulcanii. Compagnie eliXir przedstawiała smoka otoczonego świetlistymi postaciami, których kostiumy kreśliły w ciemności linie i spirale. Taniec i akrobacje ożywiały spotkanie mitycznego zwierzęcia z istotami ze światła.</p><p>Artystom towarzyszyły deszcze iskier, płomienie i dym. Światłowody w kostiumach i rekwizytach, opracowanych wspólnie z parkiem, sprawiały, że sylwetki pozostawały widoczne wśród rozbłysków ognia.</p><h2>Chaîne des Puys w tle</h2><p>W 2016 roku Vulcania zapowiadała zmianę scenografii i inscenizacji oraz nowe miejsce na tle wulkanów Owernii. Dragon Time nadal znajdował się w programie letnich wieczorów w 2024 roku, łącząc ten rzeczywisty krajobraz z teatralnym światem świateł i pirotechniki.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O dragão na noite de Auvergne</h2><p>Dragon Time levava uma criatura lendária às noites de verão de Vulcania. A Compagnie eliXir fazia surgir um dragão rodeado de personagens luminosas, cujos trajes desenhavam linhas e espirais na escuridão. A dança e as acrobacias davam vida ao encontro entre o animal mítico e os seres de luz.</p><p>Chuvas de faíscas, chamas e fumo acompanhavam os artistas. As fibras óticas dos trajes e adereços, desenvolvidos em colaboração com o parque, mantinham as silhuetas visíveis entre os clarões do fogo.</p><h2>A Chaîne des Puys como cenário</h2><p>Em 2016, Vulcania anunciava uma mudança de cenário e de encenação, numa nova localização diante dos vulcões de Auvergne. Ainda presente no programa das noites de verão de 2024, Dragon Time juntava essa paisagem real a um universo teatral de luz e pirotecnia.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "notes": "Sixteen localized texts personally written and reviewed. All eight descriptions keep announced2016staging distinct from execution and unknown original opening. Current creator page, official2024programme and2016/2017releases support content. Manufacturer is newly created show producer eliXir; biography1997andcurrentCreuzier workshops from company own history. No reference associated with other parks was rewritten."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "4337a4e6-87d7-4550-b9bc-6a4ae6b73a7b",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:54:16.4839299Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121",
+        "entityKey": null,
+        "displayName": "Compagnie eliXir",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "biography.de",
+            "oldValue": null,
+            "newValue": "<p>Die 1997 gegründete Compagnie eliXir entwickelt Straßentheater, mobile Inszenierungen und Shows, die Zirkuskunst, Magie, Jonglage und Pyrotechnik verbinden. Ihre Werkstätten befinden sich in Creuzier-le-Vieux im französischen Département Allier. Aus der künstlerischen Zusammenarbeit mit Vulcania gingen unter anderem die leuchtenden Kostüme und Requisiten von Dragon Time mit ihren Glasfasermustern hervor.</p>"
+          },
+          {
+            "field": "biography.en",
+            "oldValue": null,
+            "newValue": "<p>Founded in 1997, Compagnie eliXir creates street theatre, roaming performances and shows combining circus arts, magic, juggling and pyrotechnics. Its workshops are based in Creuzier-le-Vieux in France’s Allier department. Its artistic collaboration with Vulcania helped shape the luminous costumes and props of Dragon Time, with their optical-fibre patterns.</p>"
+          },
+          {
+            "field": "biography.es",
+            "oldValue": null,
+            "newValue": "<p>Fundada en 1997, la Compagnie eliXir crea teatro de calle, espectáculos itinerantes y producciones que combinan circo, magia, malabares y pirotecnia. Sus talleres se encuentran en Creuzier-le-Vieux, en el departamento francés de Allier. Su colaboración artística con Vulcania dio forma, entre otros elementos, a los trajes y accesorios luminosos de Dragon Time, con sus dibujos de fibra óptica.</p>"
+          },
+          {
+            "field": "biography.fr",
+            "oldValue": null,
+            "newValue": "<p>Fondée en 1997, la compagnie eliXir crée du théâtre de rue, des déambulations et des spectacles mêlant cirque, magie, jonglerie et pyrotechnie. Ses ateliers sont installés à Creuzier-le-Vieux, dans l’Allier. À Vulcania, sa collaboration artistique a notamment donné forme aux costumes et accessoires lumineux de Dragon Time, avec leurs dessins de fibre optique.</p>"
+          },
+          {
+            "field": "biography.it",
+            "oldValue": null,
+            "newValue": "<p>Fondata nel 1997, la Compagnie eliXir crea teatro di strada, spettacoli itineranti e produzioni che intrecciano circo, magia, giocoleria e pirotecnica. I suoi laboratori si trovano a Creuzier-le-Vieux, nel dipartimento francese dell’Allier. La collaborazione artistica con Vulcania ha dato forma, fra l’altro, ai costumi e agli accessori luminosi di Dragon Time, con i loro disegni di fibre ottiche.</p>"
+          },
+          {
+            "field": "biography.nl",
+            "oldValue": null,
+            "newValue": "<p>Compagnie eliXir werd opgericht in 1997 en maakt straattheater, rondtrekkende voorstellingen en shows met circuskunst, magie, jongleren en vuurwerk. De werkplaatsen bevinden zich in Creuzier-le-Vieux, in het Franse departement Allier. De artistieke samenwerking met Vulcania gaf onder meer vorm aan de lichtgevende kostuums en rekwisieten van Dragon Time, met hun patronen van lichtvezels.</p>"
+          },
+          {
+            "field": "biography.pl",
+            "oldValue": null,
+            "newValue": "<p>Założona w 1997 roku Compagnie eliXir tworzy teatr uliczny, widowiska przemieszczające się wśród publiczności oraz spektakle łączące cyrk, iluzję, żonglerkę i pirotechnikę. Jej pracownie znajdują się w Creuzier-le-Vieux we francuskim departamencie Allier. Współpraca artystyczna z Vulcanią zaowocowała między innymi świetlistymi kostiumami i rekwizytami Dragon Time, ozdobionymi wzorami ze światłowodów.</p>"
+          },
+          {
+            "field": "biography.pt",
+            "oldValue": null,
+            "newValue": "<p>Fundada em 1997, a Compagnie eliXir cria teatro de rua, espetáculos itinerantes e produções que combinam circo, magia, malabarismo e pirotecnia. Os seus ateliês ficam em Creuzier-le-Vieux, no departamento francês de Allier. A colaboração artística com Vulcania deu forma, entre outros elementos, aos trajes e adereços luminosos de Dragon Time, com os seus desenhos de fibra ótica.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+        "entityKey": null,
+        "displayName": "Dragon Time",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Drache in der Nacht der Auvergne</h2><p>Dragon Time brachte eine Sagengestalt in Vulcanias Sommernächte. Die Compagnie eliXir ließ einen Drachen auftreten, umgeben von leuchtenden Figuren. Ihre Kostüme zeichneten Linien und Spiralen in die Dunkelheit, während Tanz und Akrobatik die Begegnung zwischen dem Fabelwesen und den Lichtgestalten belebten.</p><p>Funkenregen, Flammen und Rauch begleiteten die Künstler. Glasfasern in Kostümen und Requisiten, die gemeinsam mit dem Park entwickelt wurden, ließen die Umrisse der Figuren zwischen den Feuerstößen sichtbar bleiben.</p><h2>Die Chaîne des Puys als Kulisse</h2><p>Für 2016 kündigte Vulcania eine neue Kulisse und Inszenierung an einem anderen Standort vor den Vulkanen der Auvergne an. Dragon Time stand auch 2024 auf dem Programm der Sommerabende und verband diese reale Landschaft mit einer Theaterwelt aus Licht und Pyrotechnik.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A dragon in the Auvergne night</h2><p>Dragon Time brought a legendary creature to Vulcania’s late summer evenings. Compagnie eliXir presented a dragon surrounded by luminous characters whose costumes traced lines and spirals in the darkness. Dance and acrobatics animated this encounter between a mythical beast and beings made of light.</p><p>Showers of sparks, flames and smoke accompanied the performers. Optical fibres in the costumes and props, developed in collaboration with the park, kept their outlines visible amid the bursts of fire.</p><h2>The Chaîne des Puys as a backdrop</h2><p>In 2016, Vulcania announced a change of scenery and staging, with a new location facing the volcanoes of Auvergne. Still scheduled for summer evenings in 2024, Dragon Time combined this real landscape with a theatrical world of light and pyrotechnics.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El dragón en la noche de Auvernia</h2><p>Dragon Time llevaba una criatura de leyenda a las noches de verano de Vulcania. La Compagnie eliXir hacía aparecer un dragón rodeado de personajes luminosos, cuyos trajes dibujaban líneas y espirales en la oscuridad. La danza y las acrobacias daban vida al encuentro entre el animal mítico y los seres de luz.</p><p>Lluvias de chispas, llamas y humo acompañaban a los artistas. Las fibras ópticas de los trajes y accesorios, desarrollados con el parque, mantenían visibles las siluetas entre los destellos del fuego.</p><h2>La Chaîne des Puys como escenario</h2><p>En 2016 Vulcania anunciaba un cambio de escenografía y de puesta en escena, en un nuevo emplazamiento frente a los volcanes de Auvernia. Todavía programado en las noches estivales de 2024, Dragon Time unía ese paisaje real con un universo teatral de luces y pirotecnia.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le dragon dans la nuit auvergnate</h2><p>Dragon Time donnait aux nocturnes de Vulcania un visage de légende. La compagnie eliXir y faisait apparaître un dragon entouré de personnages lumineux, dont les costumes dessinaient des lignes et des spirales dans l’obscurité. Les gestes des danseurs et les acrobaties animaient cette rencontre entre créature mythique et êtres de lumière.</p><p>Des gerbes d’étincelles, des flammes et des fumées accompagnaient les artistes. La fibre optique des costumes et des accessoires, développés en collaboration avec le parc, permettait aux silhouettes de rester présentes au milieu des éclats du feu.</p><h2>La Chaîne des Puys pour décor</h2><p>En 2016, Vulcania annonçait un changement de décor et de mise en scène, avec un nouvel emplacement face aux volcans d’Auvergne. Encore programmé lors des soirées estivales de 2024, Dragon Time associait ce paysage réel à un univers de théâtre, de lumière et de pyrotechnie.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il drago nella notte dell’Alvernia</h2><p>Dragon Time portava una creatura leggendaria nelle serate estive di Vulcania. La Compagnie eliXir faceva apparire un drago circondato da personaggi luminosi, i cui costumi disegnavano linee e spirali nell’oscurità. Danza e acrobazie animavano l’incontro tra l’animale mitico e gli esseri di luce.</p><p>Piogge di scintille, fiamme e fumo accompagnavano gli artisti. Le fibre ottiche dei costumi e degli accessori, sviluppati insieme al parco, mantenevano visibili le sagome fra i bagliori del fuoco.</p><h2>La Chaîne des Puys sullo sfondo</h2><p>Nel 2016 Vulcania annunciava un cambiamento di scenografia e di messa in scena, in una nuova collocazione davanti ai vulcani dell’Alvernia. Ancora in programma nelle serate estive del 2024, Dragon Time univa quel paesaggio reale a un mondo teatrale di luci e pirotecnica.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een draak in de nacht van de Auvergne</h2><p>Dragon Time bracht een legendarisch wezen naar de zomeravonden van Vulcania. Compagnie eliXir liet een draak verschijnen tussen lichtgevende figuren. Hun kostuums tekenden lijnen en spiralen in het donker, terwijl dans en acrobatiek de ontmoeting tussen het mythische dier en de lichtwezens vormgaven.</p><p>Vonkenregens, vlammen en rook omringden de artiesten. Lichtvezels in de kostuums en rekwisieten, ontwikkeld in samenwerking met het park, hielden de silhouetten zichtbaar tussen de uitbarstingen van vuur.</p><h2>De Chaîne des Puys als achtergrond</h2><p>In 2016 kondigde Vulcania een ander decor en een nieuwe enscenering aan, op een locatie tegenover de vulkanen van de Auvergne. Dragon Time stond ook in 2024 op het programma van de zomeravonden en verbond dat echte landschap met een theaterwereld van licht en vuurwerk.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Smok w nocnej Owernii</h2><p>Dragon Time wprowadzał legendarną istotę w letnie wieczory Vulcanii. Compagnie eliXir przedstawiała smoka otoczonego świetlistymi postaciami, których kostiumy kreśliły w ciemności linie i spirale. Taniec i akrobacje ożywiały spotkanie mitycznego zwierzęcia z istotami ze światła.</p><p>Artystom towarzyszyły deszcze iskier, płomienie i dym. Światłowody w kostiumach i rekwizytach, opracowanych wspólnie z parkiem, sprawiały, że sylwetki pozostawały widoczne wśród rozbłysków ognia.</p><h2>Chaîne des Puys w tle</h2><p>W 2016 roku Vulcania zapowiadała zmianę scenografii i inscenizacji oraz nowe miejsce na tle wulkanów Owernii. Dragon Time nadal znajdował się w programie letnich wieczorów w 2024 roku, łącząc ten rzeczywisty krajobraz z teatralnym światem świateł i pirotechniki.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O dragão na noite de Auvergne</h2><p>Dragon Time levava uma criatura lendária às noites de verão de Vulcania. A Compagnie eliXir fazia surgir um dragão rodeado de personagens luminosas, cujos trajes desenhavam linhas e espirais na escuridão. A dança e as acrobacias davam vida ao encontro entre o animal mítico e os seres de luz.</p><p>Chuvas de faíscas, chamas e fumo acompanhavam os artistas. As fibras óticas dos trajes e adereços, desenvolvidos em colaboração com o parque, mantinham as silhuetas visíveis entre os clarões do fogo.</p><h2>A Chaîne des Puys como cenário</h2><p>Em 2016, Vulcania anunciava uma mudança de cenário e de encenação, numa nova localização diante dos vulcões de Auvergne. Ainda presente no programa das noites de verão de 2024, Dragon Time juntava essa paisagem real a um universo teatral de luz e pirotecnia.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "cc57c6e0-68d5-4ba7-a2b0-d7248a8aa258",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:54:38.5064337Z",
+    "appliedAtUtc": "2026-11-15T22:54:38.5064342Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121",
+        "entityKey": null,
+        "displayName": "Compagnie eliXir",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "biography.de",
+            "oldValue": null,
+            "newValue": "<p>Die 1997 gegründete Compagnie eliXir entwickelt Straßentheater, mobile Inszenierungen und Shows, die Zirkuskunst, Magie, Jonglage und Pyrotechnik verbinden. Ihre Werkstätten befinden sich in Creuzier-le-Vieux im französischen Département Allier. Aus der künstlerischen Zusammenarbeit mit Vulcania gingen unter anderem die leuchtenden Kostüme und Requisiten von Dragon Time mit ihren Glasfasermustern hervor.</p>"
+          },
+          {
+            "field": "biography.en",
+            "oldValue": null,
+            "newValue": "<p>Founded in 1997, Compagnie eliXir creates street theatre, roaming performances and shows combining circus arts, magic, juggling and pyrotechnics. Its workshops are based in Creuzier-le-Vieux in France’s Allier department. Its artistic collaboration with Vulcania helped shape the luminous costumes and props of Dragon Time, with their optical-fibre patterns.</p>"
+          },
+          {
+            "field": "biography.es",
+            "oldValue": null,
+            "newValue": "<p>Fundada en 1997, la Compagnie eliXir crea teatro de calle, espectáculos itinerantes y producciones que combinan circo, magia, malabares y pirotecnia. Sus talleres se encuentran en Creuzier-le-Vieux, en el departamento francés de Allier. Su colaboración artística con Vulcania dio forma, entre otros elementos, a los trajes y accesorios luminosos de Dragon Time, con sus dibujos de fibra óptica.</p>"
+          },
+          {
+            "field": "biography.fr",
+            "oldValue": null,
+            "newValue": "<p>Fondée en 1997, la compagnie eliXir crée du théâtre de rue, des déambulations et des spectacles mêlant cirque, magie, jonglerie et pyrotechnie. Ses ateliers sont installés à Creuzier-le-Vieux, dans l’Allier. À Vulcania, sa collaboration artistique a notamment donné forme aux costumes et accessoires lumineux de Dragon Time, avec leurs dessins de fibre optique.</p>"
+          },
+          {
+            "field": "biography.it",
+            "oldValue": null,
+            "newValue": "<p>Fondata nel 1997, la Compagnie eliXir crea teatro di strada, spettacoli itineranti e produzioni che intrecciano circo, magia, giocoleria e pirotecnica. I suoi laboratori si trovano a Creuzier-le-Vieux, nel dipartimento francese dell’Allier. La collaborazione artistica con Vulcania ha dato forma, fra l’altro, ai costumi e agli accessori luminosi di Dragon Time, con i loro disegni di fibre ottiche.</p>"
+          },
+          {
+            "field": "biography.nl",
+            "oldValue": null,
+            "newValue": "<p>Compagnie eliXir werd opgericht in 1997 en maakt straattheater, rondtrekkende voorstellingen en shows met circuskunst, magie, jongleren en vuurwerk. De werkplaatsen bevinden zich in Creuzier-le-Vieux, in het Franse departement Allier. De artistieke samenwerking met Vulcania gaf onder meer vorm aan de lichtgevende kostuums en rekwisieten van Dragon Time, met hun patronen van lichtvezels.</p>"
+          },
+          {
+            "field": "biography.pl",
+            "oldValue": null,
+            "newValue": "<p>Założona w 1997 roku Compagnie eliXir tworzy teatr uliczny, widowiska przemieszczające się wśród publiczności oraz spektakle łączące cyrk, iluzję, żonglerkę i pirotechnikę. Jej pracownie znajdują się w Creuzier-le-Vieux we francuskim departamencie Allier. Współpraca artystyczna z Vulcanią zaowocowała między innymi świetlistymi kostiumami i rekwizytami Dragon Time, ozdobionymi wzorami ze światłowodów.</p>"
+          },
+          {
+            "field": "biography.pt",
+            "oldValue": null,
+            "newValue": "<p>Fundada em 1997, a Compagnie eliXir cria teatro de rua, espetáculos itinerantes e produções que combinam circo, magia, malabarismo e pirotecnia. Os seus ateliês ficam em Creuzier-le-Vieux, no departamento francês de Allier. A colaboração artística com Vulcania deu forma, entre outros elementos, aos trajes e adereços luminosos de Dragon Time, com os seus desenhos de fibra ótica.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+        "entityKey": null,
+        "displayName": "Dragon Time",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Drache in der Nacht der Auvergne</h2><p>Dragon Time brachte eine Sagengestalt in Vulcanias Sommernächte. Die Compagnie eliXir ließ einen Drachen auftreten, umgeben von leuchtenden Figuren. Ihre Kostüme zeichneten Linien und Spiralen in die Dunkelheit, während Tanz und Akrobatik die Begegnung zwischen dem Fabelwesen und den Lichtgestalten belebten.</p><p>Funkenregen, Flammen und Rauch begleiteten die Künstler. Glasfasern in Kostümen und Requisiten, die gemeinsam mit dem Park entwickelt wurden, ließen die Umrisse der Figuren zwischen den Feuerstößen sichtbar bleiben.</p><h2>Die Chaîne des Puys als Kulisse</h2><p>Für 2016 kündigte Vulcania eine neue Kulisse und Inszenierung an einem anderen Standort vor den Vulkanen der Auvergne an. Dragon Time stand auch 2024 auf dem Programm der Sommerabende und verband diese reale Landschaft mit einer Theaterwelt aus Licht und Pyrotechnik.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A dragon in the Auvergne night</h2><p>Dragon Time brought a legendary creature to Vulcania’s late summer evenings. Compagnie eliXir presented a dragon surrounded by luminous characters whose costumes traced lines and spirals in the darkness. Dance and acrobatics animated this encounter between a mythical beast and beings made of light.</p><p>Showers of sparks, flames and smoke accompanied the performers. Optical fibres in the costumes and props, developed in collaboration with the park, kept their outlines visible amid the bursts of fire.</p><h2>The Chaîne des Puys as a backdrop</h2><p>In 2016, Vulcania announced a change of scenery and staging, with a new location facing the volcanoes of Auvergne. Still scheduled for summer evenings in 2024, Dragon Time combined this real landscape with a theatrical world of light and pyrotechnics.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El dragón en la noche de Auvernia</h2><p>Dragon Time llevaba una criatura de leyenda a las noches de verano de Vulcania. La Compagnie eliXir hacía aparecer un dragón rodeado de personajes luminosos, cuyos trajes dibujaban líneas y espirales en la oscuridad. La danza y las acrobacias daban vida al encuentro entre el animal mítico y los seres de luz.</p><p>Lluvias de chispas, llamas y humo acompañaban a los artistas. Las fibras ópticas de los trajes y accesorios, desarrollados con el parque, mantenían visibles las siluetas entre los destellos del fuego.</p><h2>La Chaîne des Puys como escenario</h2><p>En 2016 Vulcania anunciaba un cambio de escenografía y de puesta en escena, en un nuevo emplazamiento frente a los volcanes de Auvernia. Todavía programado en las noches estivales de 2024, Dragon Time unía ese paisaje real con un universo teatral de luces y pirotecnia.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le dragon dans la nuit auvergnate</h2><p>Dragon Time donnait aux nocturnes de Vulcania un visage de légende. La compagnie eliXir y faisait apparaître un dragon entouré de personnages lumineux, dont les costumes dessinaient des lignes et des spirales dans l’obscurité. Les gestes des danseurs et les acrobaties animaient cette rencontre entre créature mythique et êtres de lumière.</p><p>Des gerbes d’étincelles, des flammes et des fumées accompagnaient les artistes. La fibre optique des costumes et des accessoires, développés en collaboration avec le parc, permettait aux silhouettes de rester présentes au milieu des éclats du feu.</p><h2>La Chaîne des Puys pour décor</h2><p>En 2016, Vulcania annonçait un changement de décor et de mise en scène, avec un nouvel emplacement face aux volcans d’Auvergne. Encore programmé lors des soirées estivales de 2024, Dragon Time associait ce paysage réel à un univers de théâtre, de lumière et de pyrotechnie.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il drago nella notte dell’Alvernia</h2><p>Dragon Time portava una creatura leggendaria nelle serate estive di Vulcania. La Compagnie eliXir faceva apparire un drago circondato da personaggi luminosi, i cui costumi disegnavano linee e spirali nell’oscurità. Danza e acrobazie animavano l’incontro tra l’animale mitico e gli esseri di luce.</p><p>Piogge di scintille, fiamme e fumo accompagnavano gli artisti. Le fibre ottiche dei costumi e degli accessori, sviluppati insieme al parco, mantenevano visibili le sagome fra i bagliori del fuoco.</p><h2>La Chaîne des Puys sullo sfondo</h2><p>Nel 2016 Vulcania annunciava un cambiamento di scenografia e di messa in scena, in una nuova collocazione davanti ai vulcani dell’Alvernia. Ancora in programma nelle serate estive del 2024, Dragon Time univa quel paesaggio reale a un mondo teatrale di luci e pirotecnica.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een draak in de nacht van de Auvergne</h2><p>Dragon Time bracht een legendarisch wezen naar de zomeravonden van Vulcania. Compagnie eliXir liet een draak verschijnen tussen lichtgevende figuren. Hun kostuums tekenden lijnen en spiralen in het donker, terwijl dans en acrobatiek de ontmoeting tussen het mythische dier en de lichtwezens vormgaven.</p><p>Vonkenregens, vlammen en rook omringden de artiesten. Lichtvezels in de kostuums en rekwisieten, ontwikkeld in samenwerking met het park, hielden de silhouetten zichtbaar tussen de uitbarstingen van vuur.</p><h2>De Chaîne des Puys als achtergrond</h2><p>In 2016 kondigde Vulcania een ander decor en een nieuwe enscenering aan, op een locatie tegenover de vulkanen van de Auvergne. Dragon Time stond ook in 2024 op het programma van de zomeravonden en verbond dat echte landschap met een theaterwereld van licht en vuurwerk.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Smok w nocnej Owernii</h2><p>Dragon Time wprowadzał legendarną istotę w letnie wieczory Vulcanii. Compagnie eliXir przedstawiała smoka otoczonego świetlistymi postaciami, których kostiumy kreśliły w ciemności linie i spirale. Taniec i akrobacje ożywiały spotkanie mitycznego zwierzęcia z istotami ze światła.</p><p>Artystom towarzyszyły deszcze iskier, płomienie i dym. Światłowody w kostiumach i rekwizytach, opracowanych wspólnie z parkiem, sprawiały, że sylwetki pozostawały widoczne wśród rozbłysków ognia.</p><h2>Chaîne des Puys w tle</h2><p>W 2016 roku Vulcania zapowiadała zmianę scenografii i inscenizacji oraz nowe miejsce na tle wulkanów Owernii. Dragon Time nadal znajdował się w programie letnich wieczorów w 2024 roku, łącząc ten rzeczywisty krajobraz z teatralnym światem świateł i pirotechniki.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O dragão na noite de Auvergne</h2><p>Dragon Time levava uma criatura lendária às noites de verão de Vulcania. A Compagnie eliXir fazia surgir um dragão rodeado de personagens luminosas, cujos trajes desenhavam linhas e espirais na escuridão. A dança e as acrobacias davam vida ao encontro entre o animal mítico e os seres de luz.</p><p>Chuvas de faíscas, chamas e fumo acompanhavam os artistas. As fibras óticas dos trajes e adereços, desenvolvidos em colaboração com o parque, mantinham as silhuetas visíveis entre os clarões do fogo.</p><h2>A Chaîne des Puys como cenário</h2><p>Em 2016, Vulcania anunciava uma mudança de cenário e de encenação, numa nova localização diante dos vulcões de Auvergne. Ainda presente no programa das noites de verão de 2024, Dragon Time juntava essa paisagem real a um universo teatral de luz e pirotecnia.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : huit notices personnelles de Dragon Time et huit biographies du nouveau créateur Compagnie eliXir, relues et comparées exactement aux champs Preview. Le renouvellement de 2016 reste une annonce; aucune date initiale ou fermeture inventée.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen localized texts personally written and reviewed. All eight descriptions keep announced2016staging distinct from execution and unknown original opening. Current creator page, official2024programme and2016/2017releases support content. Manufacturer is newly created show producer eliXir; biography1997andcurrentCreuzier workshops from company own history. No reference associated with other parks was rewritten."
+}

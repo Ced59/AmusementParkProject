@@ -1,0 +1,584 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-dragon-time-new-setting-announcement-2016",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+            "itemId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+            "parkItemId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2016,
+            "month": 6,
+            "day": 20,
+            "datePrecision": "Day",
+            "eventType": "Announcement",
+            "isVisible": false,
+            "isMajor": false,
+            "mainImageId": null,
+            "sources": [
+              {
+                "label": "Vulcania — programme estival, communiqué repris par PARKS Trip le 20 juin 2016",
+                "url": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Le Progrès — L’été s’annonce agité à Vulcania, Geneviève Colonna d’Istria, 22 juin 2016",
+                "url": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Un nouveau cadre annoncé pour les nuits de Dragon Time"
+              },
+              {
+                "languageCode": "en",
+                "value": "A new setting announced for Dragon Time’s nights"
+              },
+              {
+                "languageCode": "de",
+                "value": "Eine neue Kulisse für die Nächte von Dragon Time angekündigt"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een nieuw decor aangekondigd voor de nachten van Dragon Time"
+              },
+              {
+                "languageCode": "it",
+                "value": "Una nuova cornice annunciata per le notti di Dragon Time"
+              },
+              {
+                "languageCode": "es",
+                "value": "Un nuevo marco anunciado para las noches de Dragon Time"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Zapowiedź nowej scenerii dla nocnego Dragon Time"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Um novo enquadramento anunciado para as noites de Dragon Time"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Vulcania présente le renouvellement de Dragon Time dans son programme estival de 2016. Un changement de lieu, de décor et de mise en scène doit donner davantage de place au paysage de la Chaîne des Puys. Le spectacle pyrotechnique participe ainsi à l’évolution des soirées du parc, parallèlement au lancement de Yapadrisk et la flamme des volcans."
+              },
+              {
+                "languageCode": "en",
+                "value": "Vulcania presents plans to refresh Dragon Time in its 2016 summer programme. A different location, scenery and staging are intended to give the Chaîne des Puys landscape a greater role. The pyrotechnic show forms part of the park’s evolving evening programme, alongside the launch of Yapadrisk et la flamme des volcans."
+              },
+              {
+                "languageCode": "de",
+                "value": "Vulcania stellt im Sommerprogramm 2016 die geplante Erneuerung von Dragon Time vor. Ein anderer Standort, neue Kulissen und eine veränderte Inszenierung sollen die Landschaft der Chaîne des Puys stärker einbeziehen. Die Pyrotechnikshow gehört damit zur Weiterentwicklung der Parkabende, neben dem neuen Stück Yapadrisk et la flamme des volcans."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Vulcania presenteert plannen voor de vernieuwing van Dragon Time in het zomerprogramma van 2016. Een andere locatie, aankleding en enscenering moeten het landschap van de Chaîne des Puys een grotere rol geven. De vuurwerkshow maakt zo deel uit van de ontwikkeling van de parkavonden, naast de introductie van Yapadrisk et la flamme des volcans."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel programma estivo del 2016 Vulcania presenta il rinnovamento previsto per Dragon Time. Una diversa collocazione, nuove scenografie e una nuova regia dovrebbero dare più spazio al paesaggio della Chaîne des Puys. Lo spettacolo pirotecnico partecipa così all’evoluzione delle serate del parco, insieme al debutto di Yapadrisk et la flamme des volcans."
+              },
+              {
+                "languageCode": "es",
+                "value": "Vulcania presenta la renovación prevista de Dragon Time en su programa de verano de 2016. El cambio de ubicación, decorado y puesta en escena pretende dar más protagonismo al paisaje de la Chaîne des Puys. El espectáculo pirotécnico forma parte de la evolución de las noches del parque, junto al estreno de Yapadrisk et la flamme des volcans."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W letnim programie na 2016 rok Vulcania przedstawia plany odnowienia Dragon Time. Inna lokalizacja, dekoracje i inscenizacja mają mocniej wyeksponować krajobraz Chaîne des Puys. Widowisko pirotechniczne staje się częścią zmian w wieczornej ofercie parku, obok premiery Yapadrisk et la flamme des volcans."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Vulcania apresenta a renovação prevista de Dragon Time no programa de verão de 2016. Uma mudança de local, cenário e encenação deverá dar maior destaque à paisagem da Chaîne des Puys. O espetáculo pirotécnico integra assim a evolução das noites do parque, a par da estreia de Yapadrisk et la flamme des volcans."
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "notes": "Announcement dated20June2016 is the publication date of Vulcania summer programme, not first performance, initial opening or completed relocation. Newplace/scenery/staging announced. Rootpersonallyread originalrelease and independentreport22June.16localizedtitles/summariespersonallyauthoredreviewed. No photo demonstrably dated2016found; newlyimportedofficialhistoricshowphoto hasunknowncapturedate and remainsitemmedia, mainImageId omitted ratherthan claimingeventphotography. Noopening/closuredateinferred fromsource2016/2024."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "a583627b-e140-486b-ae9d-fc8120904fb5",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:56:32.0315472Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c7c8a279-b404-4f37-ad36-0bceccf17785",
+        "entityKey": "vulcania-dragon-time-new-setting-announcement-2016",
+        "displayName": "Un nouveau cadre annoncé pour les nuits de Dragon Time",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-dragon-time-new-setting-announcement-2016"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "2d31c7b4-8356-4b9c-acb2-4f702b51746e"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "2d31c7b4-8356-4b9c-acb2-4f702b51746e"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2016"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "20"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eine neue Kulisse für die Nächte von Dragon Time angekündigt, en:A new setting announced for Dragon Time’s nights, es:Un nuevo marco anunciado para las noches de Dragon Time, fr:Un nouveau cadre annoncé pour les nuits de Dragon Time, it:Una nuova cornice annunciata per le notti di Dragon Time, nl:Een nieuw decor aangekondigd voor de nachten van Dragon Time, pl:Zapowiedź nowej scenerii dla nocnego Dragon Time, pt:Um novo enquadramento anunciado para as noites de Dragon Time"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Vulcania stellt im Sommerprogramm 2016 die geplante Erneuerung von Dragon Time vor. Ein anderer Standort, neue Kulissen und eine veränderte Inszenierung sollen die Landschaft der Chaîne des Puys stärker einbeziehen. Die Pyrotechnikshow gehört damit zur Weiterentwicklung der Parkabende, neben dem neuen Stück Yapadrisk et la flamme des volcans., en:Vulcania presents plans to refresh Dragon Time in its 2016 summer programme. A different location, scenery and staging are intended to give the Chaîne des Puys landscape a greater role. The pyrotechnic show forms part of the park’s evolving evening programme, alongside the launch of Yapadrisk et la flamme des volcans., es:Vulcania presenta la renovación prevista de Dragon Time en su programa de verano de 2016. El cambio de ubicación, decorado y puesta en escena pretende dar más protagonismo al paisaje de la Chaîne des Puys. El espectáculo pirotécnico forma parte de la evolución de las noches del parque, junto al estreno de Yapadrisk et la flamme des volcans., fr:Vulcania présente le renouvellement de Dragon Time dans son programme estival de 2016. Un changement de lieu, de décor et de mise en scène doit donner davantage de place au paysage de la Chaîne des Puys. Le spectacle pyrotechnique participe ainsi à l’évolution des soirées du parc, parallèlement au lancement de Yapadrisk et la flamme des volcans., it:Nel programma estivo del 2016 Vulcania presenta il rinnovamento previsto per Dragon Time. Una diversa collocazione, nuove scenografie e una nuova regia dovrebbero dare più spazio al paesaggio della Chaîne des Puys. Lo spettacolo pirotecnico partecipa così all’evoluzione delle serate del parco, insieme al debutto di Yapadrisk et la flamme des volcans., nl:Vulcania presenteert plannen voor de vernieuwing van Dragon Time in het zomerprogramma van 2016. Een andere locatie, aankleding en enscenering moeten het landschap van de Chaîne des Puys een grotere rol geven. De vuurwerkshow maakt zo deel uit van de ontwikkeling van de parkavonden, naast de introductie van Yapadrisk et la flamme des volcans., pl:W letnim programie na 2016 rok Vulcania przedstawia plany odnowienia Dragon Time. Inna lokalizacja, dekoracje i inscenizacja mają mocniej wyeksponować krajobraz Chaîne des Puys. Widowisko pirotechniczne staje się częścią zmian w wieczornej ofercie parku, obok premiery Yapadrisk et la flamme des volcans., pt:Vulcania apresenta a renovação prevista de Dragon Time no programa de verão de 2016. Uma mudança de local, cenário e encenação deverá dar maior destaque à paisagem da Chaîne des Puys. O espetáculo pirotécnico integra assim a evolução das noites do parque, a par da estreia de Yapadrisk et la flamme des volcans."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Le Progr\\u00E8s \\u2014 L\\u2019\\u00E9t\\u00E9 s\\u2019annonce agit\\u00E9 \\u00E0 Vulcania, Genevi\\u00E8ve Colonna d\\u2019Istria, 22 juin 2016\",\"Url\":\"https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 programme estival, communiqu\\u00E9 repris par PARKS Trip le 20 juin 2016\",\"Url\":\"https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "dfc1e80e-99ee-418a-beca-e68caad5c0eb",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:56:43.6529771Z",
+    "appliedAtUtc": "2026-11-15T22:56:43.6529779Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "283352e0-0fb5-438f-8604-6d100ecae996",
+        "entityKey": "vulcania-dragon-time-new-setting-announcement-2016",
+        "displayName": "Un nouveau cadre annoncé pour les nuits de Dragon Time",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-dragon-time-new-setting-announcement-2016"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "2d31c7b4-8356-4b9c-acb2-4f702b51746e"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "2d31c7b4-8356-4b9c-acb2-4f702b51746e"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2016"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "20"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eine neue Kulisse für die Nächte von Dragon Time angekündigt, en:A new setting announced for Dragon Time’s nights, es:Un nuevo marco anunciado para las noches de Dragon Time, fr:Un nouveau cadre annoncé pour les nuits de Dragon Time, it:Una nuova cornice annunciata per le notti di Dragon Time, nl:Een nieuw decor aangekondigd voor de nachten van Dragon Time, pl:Zapowiedź nowej scenerii dla nocnego Dragon Time, pt:Um novo enquadramento anunciado para as noites de Dragon Time"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Vulcania stellt im Sommerprogramm 2016 die geplante Erneuerung von Dragon Time vor. Ein anderer Standort, neue Kulissen und eine veränderte Inszenierung sollen die Landschaft der Chaîne des Puys stärker einbeziehen. Die Pyrotechnikshow gehört damit zur Weiterentwicklung der Parkabende, neben dem neuen Stück Yapadrisk et la flamme des volcans., en:Vulcania presents plans to refresh Dragon Time in its 2016 summer programme. A different location, scenery and staging are intended to give the Chaîne des Puys landscape a greater role. The pyrotechnic show forms part of the park’s evolving evening programme, alongside the launch of Yapadrisk et la flamme des volcans., es:Vulcania presenta la renovación prevista de Dragon Time en su programa de verano de 2016. El cambio de ubicación, decorado y puesta en escena pretende dar más protagonismo al paisaje de la Chaîne des Puys. El espectáculo pirotécnico forma parte de la evolución de las noches del parque, junto al estreno de Yapadrisk et la flamme des volcans., fr:Vulcania présente le renouvellement de Dragon Time dans son programme estival de 2016. Un changement de lieu, de décor et de mise en scène doit donner davantage de place au paysage de la Chaîne des Puys. Le spectacle pyrotechnique participe ainsi à l’évolution des soirées du parc, parallèlement au lancement de Yapadrisk et la flamme des volcans., it:Nel programma estivo del 2016 Vulcania presenta il rinnovamento previsto per Dragon Time. Una diversa collocazione, nuove scenografie e una nuova regia dovrebbero dare più spazio al paesaggio della Chaîne des Puys. Lo spettacolo pirotecnico partecipa così all’evoluzione delle serate del parco, insieme al debutto di Yapadrisk et la flamme des volcans., nl:Vulcania presenteert plannen voor de vernieuwing van Dragon Time in het zomerprogramma van 2016. Een andere locatie, aankleding en enscenering moeten het landschap van de Chaîne des Puys een grotere rol geven. De vuurwerkshow maakt zo deel uit van de ontwikkeling van de parkavonden, naast de introductie van Yapadrisk et la flamme des volcans., pl:W letnim programie na 2016 rok Vulcania przedstawia plany odnowienia Dragon Time. Inna lokalizacja, dekoracje i inscenizacja mają mocniej wyeksponować krajobraz Chaîne des Puys. Widowisko pirotechniczne staje się częścią zmian w wieczornej ofercie parku, obok premiery Yapadrisk et la flamme des volcans., pt:Vulcania apresenta a renovação prevista de Dragon Time no programa de verão de 2016. Uma mudança de local, cenário e encenação deverá dar maior destaque à paisagem da Chaîne des Puys. O espetáculo pirotécnico integra assim a evolução das noites do parque, a par da estreia de Yapadrisk et la flamme des volcans."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Le Progr\\u00E8s \\u2014 L\\u2019\\u00E9t\\u00E9 s\\u2019annonce agit\\u00E9 \\u00E0 Vulcania, Genevi\\u00E8ve Colonna d\\u2019Istria, 22 juin 2016\",\"Url\":\"https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 programme estival, communiqu\\u00E9 repris par PARKS Trip le 20 juin 2016\",\"Url\":\"https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-dragon-time-new-setting-announcement-2016",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+      "itemId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+      "parkItemId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2016,
+      "month": 6,
+      "day": 20,
+      "datePrecision": "Day",
+      "eventType": "Announcement",
+      "isVisible": false,
+      "isMajor": false,
+      "mainImageId": null,
+      "sources": [
+        {
+          "label": "Vulcania — programme estival, communiqué repris par PARKS Trip le 20 juin 2016",
+          "url": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Le Progrès — L’été s’annonce agité à Vulcania, Geneviève Colonna d’Istria, 22 juin 2016",
+          "url": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Un nouveau cadre annoncé pour les nuits de Dragon Time"
+        },
+        {
+          "languageCode": "en",
+          "value": "A new setting announced for Dragon Time’s nights"
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine neue Kulisse für die Nächte von Dragon Time angekündigt"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een nieuw decor aangekondigd voor de nachten van Dragon Time"
+        },
+        {
+          "languageCode": "it",
+          "value": "Una nuova cornice annunciata per le notti di Dragon Time"
+        },
+        {
+          "languageCode": "es",
+          "value": "Un nuevo marco anunciado para las noches de Dragon Time"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zapowiedź nowej scenerii dla nocnego Dragon Time"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um novo enquadramento anunciado para as noites de Dragon Time"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Vulcania présente le renouvellement de Dragon Time dans son programme estival de 2016. Un changement de lieu, de décor et de mise en scène doit donner davantage de place au paysage de la Chaîne des Puys. Le spectacle pyrotechnique participe ainsi à l’évolution des soirées du parc, parallèlement au lancement de Yapadrisk et la flamme des volcans."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania presents plans to refresh Dragon Time in its 2016 summer programme. A different location, scenery and staging are intended to give the Chaîne des Puys landscape a greater role. The pyrotechnic show forms part of the park’s evolving evening programme, alongside the launch of Yapadrisk et la flamme des volcans."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcania stellt im Sommerprogramm 2016 die geplante Erneuerung von Dragon Time vor. Ein anderer Standort, neue Kulissen und eine veränderte Inszenierung sollen die Landschaft der Chaîne des Puys stärker einbeziehen. Die Pyrotechnikshow gehört damit zur Weiterentwicklung der Parkabende, neben dem neuen Stück Yapadrisk et la flamme des volcans."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania presenteert plannen voor de vernieuwing van Dragon Time in het zomerprogramma van 2016. Een andere locatie, aankleding en enscenering moeten het landschap van de Chaîne des Puys een grotere rol geven. De vuurwerkshow maakt zo deel uit van de ontwikkeling van de parkavonden, naast de introductie van Yapadrisk et la flamme des volcans."
+        },
+        {
+          "languageCode": "it",
+          "value": "Nel programma estivo del 2016 Vulcania presenta il rinnovamento previsto per Dragon Time. Una diversa collocazione, nuove scenografie e una nuova regia dovrebbero dare più spazio al paesaggio della Chaîne des Puys. Lo spettacolo pirotecnico partecipa così all’evoluzione delle serate del parco, insieme al debutto di Yapadrisk et la flamme des volcans."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vulcania presenta la renovación prevista de Dragon Time en su programa de verano de 2016. El cambio de ubicación, decorado y puesta en escena pretende dar más protagonismo al paisaje de la Chaîne des Puys. El espectáculo pirotécnico forma parte de la evolución de las noches del parque, junto al estreno de Yapadrisk et la flamme des volcans."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W letnim programie na 2016 rok Vulcania przedstawia plany odnowienia Dragon Time. Inna lokalizacja, dekoracje i inscenizacja mają mocniej wyeksponować krajobraz Chaîne des Puys. Widowisko pirotechniczne staje się częścią zmian w wieczornej ofercie parku, obok premiery Yapadrisk et la flamme des volcans."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vulcania apresenta a renovação prevista de Dragon Time no programa de verão de 2016. Uma mudança de local, cenário e encenação deverá dar maior destaque à paisagem da Chaîne des Puys. O espetáculo pirotécnico integra assim a evolução das noites do parque, a par da estreia de Yapadrisk et la flamme des volcans."
+        }
+      ],
+      "id": "283352e0-0fb5-438f-8604-6d100ecae996"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "articleReview": null,
+  "canonicalArticle": null,
+  "sourceAccess": [
+    {
+      "key": "creator",
+      "url": "https://www.elixircompagnie.com/dragon-time",
+      "retrievedAtUtc": "2026-11-15T22:48:36.005323+00:00",
+      "status": 200,
+      "finalUrl": "https://www.elixircompagnie.com/dragon-time",
+      "bytes": 999089,
+      "sha256": "9e703d0109ce7953c6cdf17d4da86a94acd14cb306b86f025d3e81e93f0e1be9"
+    },
+    {
+      "key": "official2024",
+      "url": "https://www.vulcania.com/en/news/summer-evenings/",
+      "retrievedAtUtc": "2026-11-15T22:48:36.005975+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/en/news/summer-evenings/",
+      "bytes": 124170,
+      "sha256": "4117e5059fbab6b4a54f22a0c75d936b64668fde8ef0a2ce152df2926e8d86c1"
+    },
+    {
+      "key": "press2017",
+      "url": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+      "retrievedAtUtc": "2026-11-15T22:48:36.006508+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+      "bytes": 137025,
+      "sha256": "f9affafc8565aae1237c05ab5a02d80e01a489f6239e7a8be5efb0400b857f8f"
+    },
+    {
+      "key": "leprogres2017",
+      "url": "https://www.leprogres.fr/sortir/2017/03/29/vulcania-un-programme-volcanique-pour-les-15-ans-du-parc",
+      "retrievedAtUtc": "2026-11-15T22:48:36.743639+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leprogres.fr/sortir/2017/03/29/vulcania-un-programme-volcanique-pour-les-15-ans-du-parc",
+      "bytes": 534014,
+      "sha256": "9068909af74b09b2f68c6e7de2e168181f4ce0e394f83b888255515810332ac2"
+    },
+    {
+      "key": "retrospective2023",
+      "url": "https://fr.linkedin.com/posts/emeline-mutz-41155329a_merci-lequipe-et-%C3%A0-lann%C3%A9e-prochaine-activity-7131198793772892161-3QX7",
+      "retrievedAtUtc": "2026-11-15T22:48:37.062759+00:00",
+      "status": 200,
+      "finalUrl": "https://fr.linkedin.com/posts/emeline-mutz-41155329a_merci-lequipe-et-%C3%A0-lann%C3%A9e-prochaine-activity-7131198793772892161-3QX7",
+      "bytes": 97537,
+      "sha256": "5ed5eb3dee8014ad2ee2afd5c1b4c5b2c8c94438720318d8183090dd51b5f2ce"
+    },
+    {
+      "key": "company",
+      "url": "https://www.elixircompagnie.com/la-petite-histoire",
+      "retrievedAtUtc": "2026-11-15T22:51:25.593627+00:00",
+      "status": 200,
+      "finalUrl": "https://www.elixircompagnie.com/la-petite-histoire",
+      "bytes": 911697,
+      "sha256": "ecd89e4b5c46c9f30083b79a0c24ca053a92fe8a855999e982b62d8946c316b3"
+    },
+    {
+      "key": "press2016",
+      "url": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+      "retrievedAtUtc": "2026-11-15T22:51:25.594523+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+      "bytes": 217173,
+      "sha256": "726a55bd17a6a721329b94d9d7aaa66d736148e2c0e494ab1f019d0a4812f6a0"
+    },
+    {
+      "key": "leprogres2016",
+      "url": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+      "retrievedAtUtc": "2026-11-15T22:51:25.595109+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+      "bytes": 530202,
+      "sha256": "2c6cfcfc3319d263431d806687ed4f26b969765be4b7bd5fa7a6e8ccf0247e4e"
+    },
+    {
+      "key": "official2025",
+      "url": "https://www.vulcania.com/actualites/nouveautes/",
+      "retrievedAtUtc": "2026-11-15T22:51:26.610604+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/actualites/nouveautes/",
+      "bytes": 139867,
+      "sha256": "cbf92a7c16eac7d3a64e56abfbfcb87c03055824def7d71bb096868f628c5c43"
+    },
+    {
+      "key": "photo-square",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/07/dragon-time-2-300x300-1.jpg",
+      "retrievedAtUtc": "2026-11-15T22:51:27.620025+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2023/07/dragon-time-2-300x300-1.jpg",
+      "bytes": 36973,
+      "sha256": "e3ef820927c27fdcd7a9b525c4e23d9d2049fbb0f0efe44dd46a4e03296f85f3",
+      "dimensions": [
+        300,
+        300
+      ]
+    },
+    {
+      "key": "photo-wide",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "retrievedAtUtc": "2026-11-15T22:51:27.925828+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "bytes": 67837,
+      "sha256": "935b5621f78b31119592deaaab366c1161dda8028b5eaf0bfb4eb58583200369",
+      "dimensions": [
+        600,
+        403
+      ]
+    }
+  ],
+  "scopeNotes": "Announcement dated20June2016 is the publication date of Vulcania summer programme, not first performance, initial opening or completed relocation. Newplace/scenery/staging announced. Rootpersonallyread originalrelease and independentreport22June.16localizedtitles/summariespersonallyauthoredreviewed. No photo demonstrably dated2016found; newlyimportedofficialhistoricshowphoto hasunknowncapturedate and remainsitemmedia, mainImageId omitted ratherthan claimingeventphotography. Noopening/closuredateinferred fromsource2016/2024.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

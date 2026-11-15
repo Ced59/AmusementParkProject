@@ -1,0 +1,293 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-197-dragon-time",
+    "ownerId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+    "itemName": "Dragon Time",
+    "current": false,
+    "source": {
+      "key": "photo-wide",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "retrievedAtUtc": "2026-11-15T22:51:27.925828+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "bytes": 67837,
+      "sha256": "935b5621f78b31119592deaaab366c1161dda8028b5eaf0bfb4eb58583200369",
+      "dimensions": [
+        600,
+        403
+      ],
+      "file": "/workspace/france-historical-20261114/vulcania/dragon-time-followup-2250/photo-wide.jpg",
+      "sourcePage": "https://www.vulcania.com/en/news/summer-evenings/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Owner Francephotoauthorization retained; official Vulcania publication, ©Vulcania credit preserved, no individual photographer or openlicence invented.",
+    "qualification": "Actual masked performer in luminous spiral costume withsparks/smoke;600x403nativepublisheroriginal intact. 300x300publisheralternative shows sameexposure and not imported. Bothrootviewed. Historicalprogramme2024photo; captureyearunknown, upload2023notcapture. Creator tourphotos and othercityphotos notattributedtoVulcania."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/dragon-time-followup-2250/photo-wide.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-197-dragon-time-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-197-dragon-time-import-result.json"
+  },
+  "metadata": {
+    "description": "Des spirales lumineuses soulignent le masque et le costume d’un artiste de Dragon Time, devant des gerbes d’étincelles et des traînées de fumée.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Artiste masqué aux bras ouverts devant les étincelles de Dragon Time"
+      },
+      {
+        "languageCode": "en",
+        "value": "Masked performer with outstretched arms before the sparks of Dragon Time"
+      },
+      {
+        "languageCode": "de",
+        "value": "Maskierter Künstler mit ausgebreiteten Armen vor den Funken von Dragon Time"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Gemaskeerde artiest met gespreide armen voor de vonken van Dragon Time"
+      },
+      {
+        "languageCode": "it",
+        "value": "Artista mascherato a braccia aperte davanti alle scintille di Dragon Time"
+      },
+      {
+        "languageCode": "es",
+        "value": "Artista enmascarado con los brazos abiertos ante las chispas de Dragon Time"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Artysta w masce z rozłożonymi ramionami na tle iskier Dragon Time"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Artista mascarado de braços abertos diante das faíscas de Dragon Time"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des spirales lumineuses soulignent le masque et le costume d’un artiste de Dragon Time, devant des gerbes d’étincelles et des traînées de fumée."
+      },
+      {
+        "languageCode": "en",
+        "value": "Luminous spirals outline the mask and costume of a Dragon Time performer, in front of showers of sparks and trails of smoke."
+      },
+      {
+        "languageCode": "de",
+        "value": "Leuchtende Spiralen zeichnen Maske und Kostüm eines Künstlers von Dragon Time nach, vor Funkenregen und Rauchspuren."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Lichtgevende spiralen omlijnen het masker en kostuum van een artiest uit Dragon Time, voor vonkenregens en rooksporen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Spirali luminose delineano la maschera e il costume di un artista di Dragon Time, davanti a piogge di scintille e scie di fumo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Espirales luminosas dibujan la máscara y el traje de un artista de Dragon Time, ante lluvias de chispas y estelas de humo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Świetliste spirale podkreślają maskę i kostium artysty Dragon Time na tle deszczu iskier i smug dymu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Espirais luminosas desenham a máscara e o traje de um artista de Dragon Time, diante de chuvas de faíscas e rastos de fumo."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T22:55:29.7259401Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "f4d5833de6ce4e8f885282e1e56ae0ec",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+      "path": "park_item/f4d5833de6ce4e8f885282e1e56ae0ec",
+      "description": "Des spirales lumineuses soulignent le masque et le costume d’un artiste de Dragon Time, devant des gerbes d’étincelles et des traînées de fumée.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 600,
+      "height": 403,
+      "sizeInBytes": 67837,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Artiste masqué aux bras ouverts devant les étincelles de Dragon Time"
+        },
+        {
+          "languageCode": "en",
+          "value": "Masked performer with outstretched arms before the sparks of Dragon Time"
+        },
+        {
+          "languageCode": "de",
+          "value": "Maskierter Künstler mit ausgebreiteten Armen vor den Funken von Dragon Time"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Gemaskeerde artiest met gespreide armen voor de vonken van Dragon Time"
+        },
+        {
+          "languageCode": "it",
+          "value": "Artista mascherato a braccia aperte davanti alle scintille di Dragon Time"
+        },
+        {
+          "languageCode": "es",
+          "value": "Artista enmascarado con los brazos abiertos ante las chispas de Dragon Time"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Artysta w masce z rozłożonymi ramionami na tle iskier Dragon Time"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Artista mascarado de braços abertos diante das faíscas de Dragon Time"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des spirales lumineuses soulignent le masque et le costume d’un artiste de Dragon Time, devant des gerbes d’étincelles et des traînées de fumée."
+        },
+        {
+          "languageCode": "en",
+          "value": "Luminous spirals outline the mask and costume of a Dragon Time performer, in front of showers of sparks and trails of smoke."
+        },
+        {
+          "languageCode": "de",
+          "value": "Leuchtende Spiralen zeichnen Maske und Kostüm eines Künstlers von Dragon Time nach, vor Funkenregen und Rauchspuren."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Lichtgevende spiralen omlijnen het masker en kostuum van een artiest uit Dragon Time, voor vonkenregens en rooksporen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Spirali luminose delineano la maschera e il costume di un artista di Dragon Time, davanti a piogge di scintille e scie di fumo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Espirales luminosas dibujan la máscara y el traje de un artista de Dragon Time, ante lluvias de chispas y estelas de humo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Świetliste spirale podkreślają maskę i kostium artysty Dragon Time na tle deszczu iskier i smug dymu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Espirais luminosas desenham a máscara e o traje de um artista de Dragon Time, diante de chuvas de faíscas e rastos de fumo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T22:55:30.94Z",
+      "updatedAt": "2026-11-15T22:55:34.658Z"
+    },
+    "receivedAtUtc": "2026-11-15T22:55:37.7530845Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

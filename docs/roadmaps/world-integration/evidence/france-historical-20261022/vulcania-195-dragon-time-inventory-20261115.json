@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "references": {
+        "manufacturers": [
+          {
+            "key": "compagnie-elixir",
+            "name": "Compagnie eliXir",
+            "isVisible": false,
+            "adminReviewStatus": "ToReview"
+          }
+        ]
+      },
+      "items": [
+        {
+          "key": "vulcania-dragon-time",
+          "name": "Dragon Time",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "manufacturerKey": "compagnie-elixir",
+            "sourceUrl": "https://www.vulcania.com/en/news/summer-evenings/"
+          }
+        }
+      ],
+      "metadata": {
+        "notes": "Historical live outdoor show Dragon Time, artistic creation by Compagnie eliXir with Vulcania. Official2016release announces new setting and staging of an existing show, not initial opening. Official2024programme names11summer dates; no2026continuity or executed closure inferred. Unknown status, opening and closing dates absent. Distinct from Dragon Ride cinema and Primordia new2025show, no alias/rename inferred. Elixir reference reconciled by minimal Preview name; never hide or rewrite an existing shared reference. Manufacturer field denotes show creator, not mechanical ride manufacturer. Source2017companyCusset and currentcompanyCreuzier-le-Vieux represent dates, not arbitrarylocationchange."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "d3366f3b-f711-47d4-a816-eb99d88d648b",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:52:09.5349007Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "dccdd373-0827-48d1-8692-fd9a4dfab350",
+        "entityKey": "compagnie-elixir",
+        "displayName": "Compagnie eliXir",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "46b0f612-aef5-4d93-8d4a-5557a8a89af6",
+        "entityKey": "vulcania-dragon-time",
+        "displayName": "Dragon Time",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "dccdd373-0827-48d1-8692-fd9a4dfab350"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/en/news/summer-evenings/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "ce0942ed-9417-4c49-b54f-0de7ede093d6",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:52:25.5053584Z",
+    "appliedAtUtc": "2026-11-15T22:52:25.5053589Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121",
+        "entityKey": "compagnie-elixir",
+        "displayName": "Compagnie eliXir",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+        "entityKey": "vulcania-dragon-time",
+        "displayName": "Dragon Time",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/en/news/summer-evenings/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : ajout privé du spectacle historique Dragon Time et de son créateur Compagnie eliXir, identités rapprochées par Preview. Présence prouvée avant 2016 et programme 2024; ouverture et fermeture inconnues, statut Unknown. Distinct de Dragon Ride et Primordia.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Historical live outdoor show Dragon Time, artistic creation by Compagnie eliXir with Vulcania. Official2016release announces new setting and staging of an existing show, not initial opening. Official2024programme names11summer dates; no2026continuity or executed closure inferred. Unknown status, opening and closing dates absent. Distinct from Dragon Ride cinema and Primordia new2025show, no alias/rename inferred. Elixir reference reconciled by minimal Preview name; never hide or rewrite an existing shared reference. Manufacturer field denotes show creator, not mechanical ride manufacturer. Source2017companyCusset and currentcompanyCreuzier-le-Vieux represent dates, not arbitrarylocationchange."
+}

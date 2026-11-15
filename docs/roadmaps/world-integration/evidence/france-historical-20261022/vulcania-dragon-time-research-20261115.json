@@ -1,0 +1,135 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T22:57:57.145708+00:00",
+  "sourceAccess": [
+    {
+      "key": "creator",
+      "url": "https://www.elixircompagnie.com/dragon-time",
+      "retrievedAtUtc": "2026-11-15T22:48:36.005323+00:00",
+      "status": 200,
+      "finalUrl": "https://www.elixircompagnie.com/dragon-time",
+      "bytes": 999089,
+      "sha256": "9e703d0109ce7953c6cdf17d4da86a94acd14cb306b86f025d3e81e93f0e1be9"
+    },
+    {
+      "key": "official2024",
+      "url": "https://www.vulcania.com/en/news/summer-evenings/",
+      "retrievedAtUtc": "2026-11-15T22:48:36.005975+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/en/news/summer-evenings/",
+      "bytes": 124170,
+      "sha256": "4117e5059fbab6b4a54f22a0c75d936b64668fde8ef0a2ce152df2926e8d86c1"
+    },
+    {
+      "key": "press2017",
+      "url": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+      "retrievedAtUtc": "2026-11-15T22:48:36.006508+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+      "bytes": 137025,
+      "sha256": "f9affafc8565aae1237c05ab5a02d80e01a489f6239e7a8be5efb0400b857f8f"
+    },
+    {
+      "key": "leprogres2017",
+      "url": "https://www.leprogres.fr/sortir/2017/03/29/vulcania-un-programme-volcanique-pour-les-15-ans-du-parc",
+      "retrievedAtUtc": "2026-11-15T22:48:36.743639+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leprogres.fr/sortir/2017/03/29/vulcania-un-programme-volcanique-pour-les-15-ans-du-parc",
+      "bytes": 534014,
+      "sha256": "9068909af74b09b2f68c6e7de2e168181f4ce0e394f83b888255515810332ac2"
+    },
+    {
+      "key": "retrospective2023",
+      "url": "https://fr.linkedin.com/posts/emeline-mutz-41155329a_merci-lequipe-et-%C3%A0-lann%C3%A9e-prochaine-activity-7131198793772892161-3QX7",
+      "retrievedAtUtc": "2026-11-15T22:48:37.062759+00:00",
+      "status": 200,
+      "finalUrl": "https://fr.linkedin.com/posts/emeline-mutz-41155329a_merci-lequipe-et-%C3%A0-lann%C3%A9e-prochaine-activity-7131198793772892161-3QX7",
+      "bytes": 97537,
+      "sha256": "5ed5eb3dee8014ad2ee2afd5c1b4c5b2c8c94438720318d8183090dd51b5f2ce"
+    },
+    {
+      "key": "company",
+      "url": "https://www.elixircompagnie.com/la-petite-histoire",
+      "retrievedAtUtc": "2026-11-15T22:51:25.593627+00:00",
+      "status": 200,
+      "finalUrl": "https://www.elixircompagnie.com/la-petite-histoire",
+      "bytes": 911697,
+      "sha256": "ecd89e4b5c46c9f30083b79a0c24ca053a92fe8a855999e982b62d8946c316b3"
+    },
+    {
+      "key": "press2016",
+      "url": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+      "retrievedAtUtc": "2026-11-15T22:51:25.594523+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+      "bytes": 217173,
+      "sha256": "726a55bd17a6a721329b94d9d7aaa66d736148e2c0e494ab1f019d0a4812f6a0"
+    },
+    {
+      "key": "leprogres2016",
+      "url": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+      "retrievedAtUtc": "2026-11-15T22:51:25.595109+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+      "bytes": 530202,
+      "sha256": "2c6cfcfc3319d263431d806687ed4f26b969765be4b7bd5fa7a6e8ccf0247e4e"
+    },
+    {
+      "key": "official2025",
+      "url": "https://www.vulcania.com/actualites/nouveautes/",
+      "retrievedAtUtc": "2026-11-15T22:51:26.610604+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/actualites/nouveautes/",
+      "bytes": 139867,
+      "sha256": "cbf92a7c16eac7d3a64e56abfbfcb87c03055824def7d71bb096868f628c5c43"
+    },
+    {
+      "key": "photo-square",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/07/dragon-time-2-300x300-1.jpg",
+      "retrievedAtUtc": "2026-11-15T22:51:27.620025+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2023/07/dragon-time-2-300x300-1.jpg",
+      "bytes": 36973,
+      "sha256": "e3ef820927c27fdcd7a9b525c4e23d9d2049fbb0f0efe44dd46a4e03296f85f3",
+      "dimensions": [
+        300,
+        300
+      ]
+    },
+    {
+      "key": "photo-wide",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "retrievedAtUtc": "2026-11-15T22:51:27.925828+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "bytes": 67837,
+      "sha256": "935b5621f78b31119592deaaab366c1161dda8028b5eaf0bfb4eb58583200369",
+      "dimensions": [
+        600,
+        403
+      ]
+    }
+  ],
+  "personallyReadDocuments": {
+    "../drones-followup-2236/press2023.pdf": [
+      10
+    ]
+  },
+  "identityNotes": [
+    "Dragon Time is eliXir live pyrotechnic show, distinct from Dragon Ride cinema and Primordia2025. Official2024programme names11summerdates, notcurrent2026operation.",
+    "2016release describes an existing show renewed, not opening. 20June2016is releasepublicationdate, Announcementtype; no execution/firstperformance/closure inferred.",
+    "CurrentstatusUnknown, opening/closingnull. Creator general touringduration40min and12staff not transposed to Vulcania.",
+    "NewCompagnieeliXirreference matchedbyname inPreviewandcreatedwithactualApplyID; owncompanyhistoryconfirms1997, currentCreuzier-le-Vieuxworkshops. Historical2017Cussetlocationnotrewrittenascurrent.",
+    "Rovingcharacters and AstroDiva touringperformances not duplicated as standaloneparks; othercityDragonTimephotos notattributedtoVulcania.",
+    "2016newYapadriskshow and2017DefidesSciencesvariants remain followupresearch againstexistingitems; no extra uncontrolledidentities added."
+  ],
+  "photoReview": {
+    "accepted": "OfficialVulcania600x40367837B realmaskedperformerwithluminousspirals andpyrotechnics, intactnativefile. Originalpersonallyviewed.",
+    "rejectedDuplicate": "300x300officialvariant sameexposure personallyviewed, notimported.",
+    "captureDate": null,
+    "current": false,
+    "eventIllustration": "No photo proved to document2016announcement ornew2016setting. EventmainImageIdnull, acceptedhistoricalshowphoto remainsitemmedia without falselydatingit.",
+    "authorization": "ExistingownerFrancephotographyauthorization;©Vulcaniacredit, noopenlicence ornamedphotographer invented."
+  },
+  "noFinalGlobalInventoryClaim": true
+}

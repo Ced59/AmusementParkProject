@@ -1,0 +1,883 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T23:04:46.256819+00:00",
+  "scopeAudit": "vulcania-dragon-time-publication-scope-audit-20261115.json",
+  "publicationExport": "vulcania-dragon-time-publication-export-20261115.json",
+  "realPublicationApplies": [
+    {
+      "operationId": "4ea5d21a-a516-4b6e-881c-5697f83fabea",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T22:59:08.5832413Z",
+      "appliedAtUtc": "2026-11-15T22:59:08.5832443Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+          "entityKey": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+          "displayName": "Dragon Time",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "f4d5833de6ce4e8f885282e1e56ae0ec",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "273bbd6e-14db-4db5-bd23-e099848edc45",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T22:59:39.6367993Z",
+      "appliedAtUtc": "2026-11-15T22:59:39.6368001Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121",
+          "entityKey": "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121",
+          "displayName": "Compagnie eliXir",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+          "entityKey": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+          "displayName": "Dragon Time",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "283352e0-0fb5-438f-8604-6d100ecae996",
+          "entityKey": "vulcania-dragon-time-new-setting-announcement-2016",
+          "displayName": "Un nouveau cadre annoncé pour les nuits de Dragon Time",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "publicChecks": {
+    "languageCount": 8,
+    "renderedPages": 24,
+    "itemPages": 8,
+    "manufacturerPages": 8,
+    "timelinePages": 8,
+    "normalParkCatalogueSearchItemNavigations": 8,
+    "normalManufacturerLinkNavigations": 8,
+    "normalItemHistoryNavigations": 8,
+    "descriptionsExact": 8,
+    "manufacturerBiographiesExact": 8,
+    "historyTitlesExact": 8,
+    "historySummariesExact": 8,
+    "photoItemLanguagePairsRendered": 8,
+    "photoTimelineLanguagePairsRendered": 0,
+    "announcementHasNoImageBecauseHistoricPhotoDateIsUnknown": true,
+    "distinctPhotoLanguagePairsWithBinary200": 8,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "guidLeaks": 0,
+    "rootReviewedScreenshots": [
+      {
+        "path": "public-checks/dragon-time-fr-description.png",
+        "sha256": "5b1f048c6bbebeb030793a7144eadf2f2dfa21f9991afb59bc80c2154d039baa"
+      },
+      {
+        "path": "public-checks/dragon-time-fr-history.png",
+        "sha256": "69c9c2dcfee49ecc0e2cea3052d44d06e792a5f00360601308c4967abd5fe0fa"
+      },
+      {
+        "path": "public-checks/dragon-time-fr.png",
+        "sha256": "6dab5bbac615fe3123776e785ec037d47e0795427d89c5134bee07318cfda54a"
+      }
+    ],
+    "results": [
+      {
+        "language": "fr",
+        "checkedAtUtc": "2026-11-15T23:00:32.405310+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/fr/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 450,
+            "height": 302
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 450,
+            "height": 302
+          }
+        ],
+        "expectedAlt": "Artiste masqué aux bras ouverts devant les étincelles de Dragon Time",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/fr/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "checkedAtUtc": "2026-11-15T23:00:32.430836+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/en/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          }
+        ],
+        "expectedAlt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/en/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "checkedAtUtc": "2026-11-15T23:00:32.498455+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/de/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          }
+        ],
+        "expectedAlt": "Maskierter Künstler mit ausgebreiteten Armen vor den Funken von Dragon Time",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/de/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "checkedAtUtc": "2026-11-15T23:00:54.275292+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/nl/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          }
+        ],
+        "expectedAlt": "Gemaskeerde artiest met gespreide armen voor de vonken van Dragon Time",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/nl/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "checkedAtUtc": "2026-11-15T23:00:54.488132+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/it/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          }
+        ],
+        "expectedAlt": "Artista mascherato a braccia aperte davanti alle scintille di Dragon Time",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/it/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "checkedAtUtc": "2026-11-15T23:00:55.017202+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/es/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          }
+        ],
+        "expectedAlt": "Artista enmascarado con los brazos abiertos ante las chispas de Dragon Time",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/es/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "checkedAtUtc": "2026-11-15T23:01:15.508374+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/pl/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          }
+        ],
+        "expectedAlt": "Artysta w masce z rozłożonymi ramionami na tle iskier Dragon Time",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/pl/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "checkedAtUtc": "2026-11-15T23:01:16.310693+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/pt/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/2d31c7b4-8356-4b9c-acb2-4f702b51746e/dragon-time",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "alt": "Masked performer with outstretched arms before the sparks of Dragon Time",
+            "width": 359,
+            "height": 241
+          }
+        ],
+        "expectedAlt": "Artista mascarado de braços abertos diante das faíscas de Dragon Time",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/pt/park-manufacturer/a0eb3b82-ed2f-4e15-a6d8-947a83ee6121/compagnie-elixir",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/f4d5833de6ce4e8f885282e1e56ae0ec?width=480&v=2",
+            "status": 200
+          }
+        ]
+      }
+    ]
+  },
+  "applicationIssue": {
+    "mainPhotoAltFallsBackToEnglishLanguages": [
+      "fr",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "storedEightLanguageMetadataPreserved": true,
+    "noBlindDataCorrection": true
+  },
+  "completeness": {
+    "startedAtUtc": "2026-11-15T23:00:07.8007332Z",
+    "result": {
+      "completenessScore": 94,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 106,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T23:00:09.2464413Z"
+  },
+  "historyDiagnostics": {
+    "receivedAtUtc": "2026-11-15T23:00:01.3386176Z",
+    "result": {
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkName": "Vulcania",
+      "factCount": 70,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1990,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 12,
+          "sourcedResourceCount": 12,
+          "publishedResourceCount": 12,
+          "subjectCount": 10,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 8,
+          "sourcedResourceCount": 8,
+          "publishedResourceCount": 8,
+          "subjectCount": 7,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 26
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 44
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 26,
+        "sourcedFactCount": 26,
+        "majorFactCount": 22,
+        "indexableKeyYears": []
+      }
+    },
+    "startedAtUtc": "2026-11-15T22:59:59.6574874Z",
+    "action": "HistoryDiagnostics"
+  },
+  "idempotence": {
+    "operationId": "fc079219-5fc7-4584-8f40-e91cb82b6508",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:00:24.5273619Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121",
+        "entityKey": "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121",
+        "displayName": "Compagnie eliXir",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+        "entityKey": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+        "displayName": "Dragon Time",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "f4d5833de6ce4e8f885282e1e56ae0ec",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "283352e0-0fb5-438f-8604-6d100ecae996",
+        "entityKey": "vulcania-dragon-time-new-setting-announcement-2016",
+        "displayName": "Un nouveau cadre annoncé pour les nuits de Dragon Time",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coverage": {
+    "items": 63,
+    "publicItems": 63,
+    "descriptions8Languages": 63,
+    "ownMedia": 65,
+    "publicOwnMedia": 65,
+    "sharedMedia": 5,
+    "publicMaps": 2,
+    "publishedHistoryFacts": 26,
+    "publicArticles": 2
+  },
+  "globalOutcome": "partial",
+  "remainingResearch": [
+    "Historical science shows and exhibition inventory still being qualified",
+    "Dragon Time opening, latest performance and closure dates remain unknown; 20 June 2016 is an announcement date, not an opening",
+    "Precise item coordinates and distinct photographic coverage remain incomplete",
+    "No complete general calendar or price table for 2027 found in previously reviewed official pages"
+  ],
+  "earlierApplicationIssuesUnchanged": "vulcania-publication-followup-20261115.json",
+  "facebook": {
+    "existingPublishedAnnouncementId": "d77df105d04d4601a9a543d41d3ce25c",
+    "newSendPerformed": false,
+    "anonymousVisibilityNotConfirmed": true
+  }
+}
