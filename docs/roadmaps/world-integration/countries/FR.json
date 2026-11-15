@@ -13087,7 +13087,7 @@
       "siteId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
+      "presenceObservedAt": "2026-11-15T01:49:39.7143182Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
@@ -13099,9 +13099,20 @@
         "L’île aux Pirates"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T01:56:30.352Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-8416c072-412b-438f-947a-9176ef5d7d73",
+          "appliedAt": "2026-11-15T01:56:30.352Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-four-visible-settings-20261115.json",
+          "auditEvidence": null,
+          "summary": "Capbreton : Accro-bungy, Aquanimal, Manège Disney et Crêperie réécrits dans les huit langues sur photographies identifiées ; sources et identités conservées, audit global restant."
+        }
+      ],
+      "nextAction": "Poursuivre inventaire visuel daté, les six notices restantes, description parc/histoire, logo authentique et photos, puis horaires/tarifs et audit final. Aucun nouveau Facebook tant que l’annonce existante est Published.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -13175,11 +13186,11 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "InProgress",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Nom, adresse au pont Notre-Dame et site officiel rapprochés avec la fiche Capbreton via SearchParks et Tourisme Landes.",
       "possibleMatches": [
         {
           "siteId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
@@ -13191,14 +13202,20 @@
       "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Décider parc, standalone, équipement interne ou hors périmètre avant toute création ; vérifier l’identité et les doublons.",
+      "nextAction": "Doublon de candidature, pas un établissement supplémentaire. Intégration poursuivie sous FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018 ; homonyme de La Tranche-sur-Mer conservé séparément. Aucune création ni date inventée.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "duplicateOf": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+      "identityReconciliation": {
+        "observedAtUtc": "2026-11-15T01:59:05.231569+00:00",
+        "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-current-20261115.json",
+        "canonicalEntryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018"
+      }
     },
     {
       "entryId": "FR-standalone-9b2259ea-f82e-456c-a606-621b82f65b7f",

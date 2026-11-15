@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "observedAtUtc": "2026-11-15T01:59:05.231569+00:00",
+  "outcome": "partial",
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "localResumeDirectory": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton",
+  "identity": {
+    "canonicalCity": "Capbreton",
+    "distinctHomonym": {
+      "parkId": "efac8649-a15b-4ed6-866c-2e926579d6de",
+      "city": "La Tranche-sur-Mer"
+    },
+    "candidateDuplicateEntryId": "FR-candidate-1d016290a54a62",
+    "noParkCreated": true,
+    "standaloneSearchCapbretonResults": 0
+  },
+  "search": {
+    "receivedAtUtc": "2026-11-15T01:49:39.7143182Z",
+    "selectedPark": {
+      "id": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+      "name": "L'Île aux Pirates",
+      "city": "Capbreton",
+      "status": "Operating",
+      "isVisible": true,
+      "adminReviewStatus": "Validated",
+      "dataCompleteness": {
+        "completenessScore": 97,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 102,
+        "earnedPoints": 99,
+        "publicationBlockers": [],
+        "formulaicPublicTextIssue": null
+      }
+    }
+  },
+  "targetedExport": {
+    "purpose": "Récupération des identifiants existants et des propriétaires pour corriger les textes sans doublon.",
+    "sections": [
+      "ParkBasics",
+      "References",
+      "Zones",
+      "Items",
+      "Images",
+      "History"
+    ],
+    "startedAtUtc": "2026-11-15T01:50:56.3917666Z",
+    "receivedAtUtc": "2026-11-15T01:51:03.4420773Z",
+    "sha256": "9fd04070aedffc04300d5a04dfd738cdac186ff331bf929c3a9c715c1b337979",
+    "fullFinalAuditExportPerformed": false
+  },
+  "counts": {
+    "items": 10,
+    "itemsPublic": 10,
+    "itemDescriptionsRewrittenEightLanguages": 4,
+    "images": 8,
+    "newImages": 0,
+    "historyEvents": 2
+  },
+  "acceptedApplies": [
+    {
+      "operationId": "8416c072-412b-438f-947a-9176ef5d7d73",
+      "appliedAtUtc": "2026-11-15T01:56:30.3520656Z",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-four-visible-settings-20261115.json"
+    }
+  ],
+  "sources": [
+    {
+      "name": "turbo2013",
+      "url": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-la-video-376.html",
+      "finalUrl": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-la-video-376.html",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:31.916197+00:00",
+      "sha256": "9730f0cfe2ea0326dbdc8d21a99ed206af2441041eca1d781b89d2c3921d77e2"
+    },
+    {
+      "name": "turbo2015",
+      "url": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-40-925.html",
+      "finalUrl": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-40-925.html",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:32.547854+00:00",
+      "sha256": "decd15eda708b6f934c0add08d40a453e648cec51b681a4bd30996ecdcad1573"
+    },
+    {
+      "name": "turbo2016",
+      "url": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-1264.html",
+      "finalUrl": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-1264.html",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:32.875653+00:00",
+      "sha256": "26fe66d44559e552e4f7f8f1a3c62302fbad72294acedb89a4c2f6a8b4a5b41a"
+    },
+    {
+      "name": "turbo2019",
+      "url": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html",
+      "finalUrl": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:33.346743+00:00",
+      "sha256": "52325658b4d8b22805ad368da3c28a72b827fb50cb9c091b1d13ee29b8101c46"
+    },
+    {
+      "name": "tourisme",
+      "url": "https://www.tourismelandes.com/loisir/ile-aux-pirates-loiaqu040fs0009a/",
+      "finalUrl": "https://www.tourismelandes.com/loisir/ile-aux-pirates-loiaqu040fs0009a/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:34.733953+00:00",
+      "sha256": "32d349a403bcef35870959408237bf88670d34653ed886d76594c47f843825b6"
+    },
+    {
+      "name": "captain",
+      "url": "https://captaincoaster.com/fr/coasters/6396/lile-aux-pirates-capbreton-train-de-la-mine",
+      "finalUrl": "https://captaincoaster.com/fr/coasters/6396/lile-aux-pirates-capbreton-train-de-la-mine",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:35.512795+00:00",
+      "sha256": "35248f6598c7370f09b40dbee202de8b021bc9ed44406347cf4ff14bf2e9b565"
+    }
+  ],
+  "imageSourceInspection": [
+    {
+      "imageId": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+      "sourceUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/Ile-aux-pirates1internet.jpg",
+      "finalUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/Ile-aux-pirates1internet.jpg",
+      "status": 200,
+      "path": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/original-4bddcef62fb948b7a06bdaa39ba1d9ca.jpg",
+      "sha256": "e4789f0ce0a98a40767f5cae4a9e2a0e839d99ff6a4ebe0275e64b166f1b29dc"
+    },
+    {
+      "imageId": "1b522478ea284fe780bfffb0f86a83b8",
+      "sourceUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ILE-AUX-PIRATES-2016.jpg",
+      "finalUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ILE-AUX-PIRATES-2016.jpg",
+      "status": 200,
+      "path": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/original-1b522478ea284fe780bfffb0f86a83b8.jpg",
+      "sha256": "56f615e43d260621490eb68c78ef8a37df850788dece1b45f3150454a3868f48"
+    },
+    {
+      "imageId": "bf9bf846a468422caadfc102a55b7a0e",
+      "sourceUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ILE-AUX-PIRATESinternet.jpg",
+      "finalUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ILE-AUX-PIRATESinternet.jpg",
+      "status": 200,
+      "path": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/original-bf9bf846a468422caadfc102a55b7a0e.jpg",
+      "sha256": "764e7da73a68cc12c5455e4d4349bec09a9d43f8d2b1e031f1f6ee0b357b481d"
+    },
+    {
+      "imageId": "2fe3f6e5d5d743c58820926f0165c5a8",
+      "sourceUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/Ile-aux-pirates1internet.jpg",
+      "finalUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/Ile-aux-pirates1internet.jpg",
+      "status": 200,
+      "path": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/original-2fe3f6e5d5d743c58820926f0165c5a8.jpg",
+      "sha256": "e4789f0ce0a98a40767f5cae4a9e2a0e839d99ff6a4ebe0275e64b166f1b29dc"
+    },
+    {
+      "imageId": "30ee425fbda04a8fbe7a504bc23e6d23",
+      "sourceUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ACT-ILE-AUX-PIRATES-3.jpg",
+      "finalUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ACT-ILE-AUX-PIRATES-3.jpg",
+      "status": 200,
+      "path": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/original-30ee425fbda04a8fbe7a504bc23e6d23.jpg",
+      "sha256": "b2317dcabab7e10687f62a17a305c01939efa05a34451b3e66cebe1aec0cba6d"
+    },
+    {
+      "imageId": "9713a59239f2474c8f54b01670c540c1",
+      "sourceUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ACT-ILE-AUX-PIRATES-4.jpg",
+      "finalUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ACT-ILE-AUX-PIRATES-4.jpg",
+      "status": 200,
+      "path": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/original-9713a59239f2474c8f54b01670c540c1.jpg",
+      "sha256": "3c161efb2ffd33ac72f131c7c703917231a73c94a918da005f4c22b6f4c33b70"
+    },
+    {
+      "imageId": "d35a121f1c514a21bb817e23961092ea",
+      "sourceUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ACT-ILE-AUX-PIRATES-2.jpg",
+      "finalUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ACT-ILE-AUX-PIRATES-2.jpg",
+      "status": 200,
+      "path": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/original-d35a121f1c514a21bb817e23961092ea.jpg",
+      "sha256": "c92f71d4b130fc5577945af5bb5917d626cbf9769614ae2a8d5df0f8b32257c4"
+    },
+    {
+      "imageId": "5657119f7f844a1c88bacad5bb985b78",
+      "sourceUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ACT-ILE-AUX-PIRATES-5.jpg",
+      "finalUrl": "https://www.tourismelandes.com/wp-content/uploads/wpetourisme/ACT-ILE-AUX-PIRATES-5.jpg",
+      "status": 200,
+      "path": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/original-5657119f7f844a1c88bacad5bb985b78.jpg",
+      "sha256": "119bdbddbd005af2ac482e7cd86c5202878317bb5c4927c012ffb45b7c4f5f4d"
+    }
+  ],
+  "gaps": {
+    "logo": "Le média courant 4bddcef62fb948b7a06bdaa39ba1d9ca est une photographie complète de façade Treasure Club, identique au média 2fe3f6e5d5d743c58820926f0165c5a8. Ce n’est pas un logo autonome. Ne pas valider le logo pour obtenir la note. Source/photo/IDs conservés, aucun retrait ni recadrage.",
+    "wrongImageIdentity": "9713a59239f2474c8f54b01670c540c1 montre un gonflable pirate avec requin, non le safari à girafe/lion visible sur bf9bf846a468422caadfc102a55b7a0e. Rattachement et textes à corriger après qualification de l’inventaire.",
+    "legacyDescriptions": "Six notices encore génériques ou insuffisamment qualifiées : Espace de jeux, Parcours Safari, Piste des As, Pêche aux canards, Train de la Mine, Trampolino. Parc et histoire génériques également à revoir.",
+    "inventory": "Reportages primaires de fandemanèges 2013/2015/2016/2019 : boîte à rires L’Île aux Pirates itinérante présente l’été ; ferme et animaux électriques 2015, emplacement remplacé par stand sucré 2016 ; nouveaux gonflables, Happy Childhood et petit train 2019. Ces offres n’apparaissent pas dans les dix items. Qualifier alias et périodes avant création, ne pas supposer le petit train 2019 identique au Train de la Mine 2024. Espace de jeux legacy pourrait être un doublon générique des équipements ou l’arcade Treasure Club : ne pas supprimer ou renommer sans preuve.",
+    "history": "Reportage filmé le 10 juillet 2013 prouve une présence antérieure à la borne actuelle 2018 ; aucune date d’ouverture exacte prouvée. Historique à corriger sur sources.",
+    "photos": "Turbo Kermis : originaux porteurs de filigranes, consultés pour identification uniquement. Captain Coaster Richard L. : original accessible via navigation publique Chromium après403urllib ; watermark visible, non importé. Autres originaux à inspecter.",
+    "officialSite": "www.ileauxpirates.com redirige vers Facebook login. Les cinq images de cette page sont génériques et non utilisables ; aucune connexion ni contournement.",
+    "hoursPricing": "À rapprocher de sources actuelles après qualification ; aucun export complet effectué."
+  },
+  "facebook": {
+    "observedAtUtc": "2026-11-15T01:51:29.3666304Z",
+    "id": "d3ec615346a4426da8fec087beb9c9e8",
+    "status": "Published",
+    "url": "https://www.facebook.com/1285475681307050/posts/122121006345424431",
+    "newAnnouncementSent": false
+  },
+  "workingStateSha256": "4c2f0bd599053e049e744431b6d459d853a8ff4b47f659f17c177deeb96c0331",
+  "nextAction": "Poursuivre inventaire visuel daté, les six notices restantes, description parc/histoire, logo authentique et photos, puis horaires/tarifs et audit final. Aucun nouveau Facebook tant que l’annonce existante est Published."
+}

@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "460aab96a151b15c4850ad9030ce168ec16f92d8fa7f625154fbfa2c706da63a",
+  "review": "32 descriptions personnellement rédigées et relues dans les huit langues, confrontées aux photographies originales de Tourisme Landes et au reportage Turbo Kermis. Preview relu ; seules les quatre descriptions attendues ont changé. Corpus global non audité, aucune clôture.",
+  "result": {
+    "operationId": "8416c072-412b-438f-947a-9176ef5d7d73",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T01:56:30.3520635Z",
+    "appliedAtUtc": "2026-11-15T01:56:30.3520656Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+        "entityKey": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+        "displayName": "Accro-bungy",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Höhe gewinnen</h2><p>Accro-bungy stellt den Sprung in den Mittelpunkt. Elastische Seile begleiten jeden Absprung und verlängern die Bewegung, sodass der Körper den Aufstieg spürt, bevor er zur Matte zurückkehrt.</p><p>Die offene Anlage lässt beim Aufstieg den Hafen und die anderen Spiele sichtbar. Der Kontrast zwischen maritimer Umgebung und vertikaler Bewegung prägt den besonderen Auftritt der Attraktion.</p><h2>Ein Sprung, der sich entwickelt</h2><p>Mit jeder Folge lässt sich ein eigener Rhythmus finden und etwas mehr Höhe wagen. So unterscheidet sich Accro-bungy vom Trampolino: Die elastische Unterstützung macht aus dem Sprung ein weiteres Luftgefühl.</p>",
+            "newValue": "<h2>Unter schwarzen Flaggen</h2><p>Die hohen braunen Masten von Accro-bungy kreuzen sich über den Trampolinen. Zwischen ihren Spitzen wehen Totenkopfflaggen wie in der Takelage eines Schiffs. Rote und blaue Polster umgeben die dunklen Sprungtücher.</p><p>Palmen und Holzplattformen rahmen die hohe Silhouette ein. Direkt dahinter bringen die riesigen Giraffen und Löwen der Safari-Hüpfburg leuchtende Comicfarben in die Piratenkulisse.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Gaining height</h2><p>Accro-bungy places jumping at the centre of the experience. Elastic cords support each push and extend the movement, giving the body time to feel the rise before returning to the mat.</p><p>The open structure keeps the harbour and other games in view during the ascent. The contrast between the maritime setting and the vertical movement gives the attraction its distinctive presence.</p><h2>A jump built step by step</h2><p>Each sequence lets participants find a rhythm and venture a little higher. Accro-bungy therefore differs from Trampolino: assistance from the cords turns bouncing into a broader aerial sensation.</p>",
+            "newValue": "<h2>Beneath the black flags</h2><p>Accro-bungy’s tall brown masts cross above the trampolines. Skull flags fly between their tops, like a ship’s rigging. Red and blue padding surrounds the dark trampoline beds.</p><p>Palms and wooden platforms frame the tall silhouette. Immediately behind it, the Safari inflatable’s giant giraffes and lions bring cartoon colours to the pirate setting.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Ganar altura</h2><p>Accro-bungy sitúa el salto en el centro de la experiencia. Los elásticos acompañan cada impulso y prolongan el movimiento, dando tiempo a sentir la elevación antes de regresar a la lona.</p><p>La estructura abierta mantiene a la vista el puerto y los demás juegos durante la subida. El contraste entre el entorno marítimo y el movimiento vertical da a la atracción su presencia particular.</p><h2>Un salto que se construye</h2><p>Cada serie permite encontrar el ritmo y atreverse un poco más alto. Así, Accro-bungy se distingue de Trampolino: la ayuda de los elásticos convierte el rebote en una sensación aérea más amplia.</p>",
+            "newValue": "<h2>Bajo las banderas negras</h2><p>Los altos mástiles marrones de Accro-bungy se cruzan sobre las camas elásticas. Entre sus extremos ondean banderas con calaveras, como en el aparejo de un barco. Unos acolchados rojos y azules rodean las lonas oscuras.</p><p>Palmeras y plataformas de madera enmarcan esta alta silueta. Justo detrás, las jirafas y los leones gigantes del hinchable Safari aportan sus colores de dibujos animados al escenario pirata.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Prendre de la hauteur</h2><p>Accro-bungy place le saut au centre de lʼexpérience. Les élastiques accompagnent chaque impulsion et prolongent le mouvement, donnant au corps le temps de sentir lʼélévation avant de retrouver la toile.</p><p>La silhouette ouverte de lʼinstallation laisse voir le port et les autres jeux pendant lʼascension. Le contraste entre le cadre maritime et le mouvement vertical donne à lʼattraction sa présence particulière.</p><h2>Un saut qui se construit</h2><p>Chaque série permet de trouver son rythme et dʼoser un peu plus haut. Accro-bungy se distingue ainsi du Trampolino : lʼassistance des élastiques transforme le rebond en sensation aérienne plus ample.</p>",
+            "newValue": "<h2>Sous les pavillons noirs</h2><p>Les grands mâts bruns de l’Accro-bungy se croisent au-dessus des trampolines. Des pavillons à tête de mort flottent entre leurs sommets, comme dans le gréement d’un navire. Les toiles sombres sont entourées de coussins rouges et bleus.</p><p>Palmiers et pontons de bois encadrent cette haute silhouette. Juste derrière, les girafes et les lions géants du gonflable Safari apportent leurs couleurs de dessin animé au paysage des pirates.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Prendere quota</h2><p>Accro-bungy mette il salto al centro dellʼesperienza. Gli elastici accompagnano ogni slancio e prolungano il movimento, lasciando il tempo di sentire la salita prima di tornare sul telo.</p><p>La struttura aperta mantiene visibili il porto e gli altri giochi durante la salita. Il contrasto tra ambiente marittimo e movimento verticale dà allʼattrazione una presenza particolare.</p><h2>Un salto che si costruisce</h2><p>Ogni sequenza permette di trovare il proprio ritmo e osare un poʼ più in alto. Accro-bungy si distingue così da Trampolino: lʼassistenza degli elastici trasforma il rimbalzo in una sensazione aerea più ampia.</p>",
+            "newValue": "<h2>Sotto le bandiere nere</h2><p>Gli alti pali marroni dell’Accro-bungy si incrociano sopra i trampolini. Tra le loro cime sventolano bandiere con il teschio, come sul sartiame di una nave. Imbottiture rosse e blu circondano i teli scuri.</p><p>Palme e pedane di legno incorniciano questa sagoma slanciata. Subito dietro, le giraffe e i leoni giganti del gonfiabile Safari aggiungono i colori dei cartoni animati allo scenario dei pirati.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De hoogte in</h2><p>Accro-bungy zet de sprong centraal. Elastieken begeleiden iedere afzet en verlengen de beweging, zodat het lichaam de stijging voelt voordat het terugkeert naar de mat.</p><p>De open constructie houdt tijdens de stijging de haven en de andere spellen in beeld. Het contrast tussen de maritieme omgeving en de verticale beweging geeft de attractie haar eigen uitstraling.</p><h2>Een sprong die groeit</h2><p>Elke reeks laat deelnemers hun ritme vinden en iets hoger durven. Accro-bungy verschilt zo van Trampolino: de elastieken maken van het springen een ruimere zweefervaring.</p>",
+            "newValue": "<h2>Onder zwarte vlaggen</h2><p>De hoge bruine masten van Accro-bungy kruisen elkaar boven de trampolines. Tussen de toppen wapperen doodskopvlaggen, als in de tuigage van een schip. Rode en blauwe kussens omringen de donkere springdoeken.</p><p>Palmen en houten vlonders omlijsten het hoge silhouet. Vlak erachter geven de reusachtige giraffen en leeuwen van het Safari-springkussen het piratendecor vrolijke stripkleuren.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Wznieść się wyżej</h2><p>Accro-bungy stawia skok w centrum przeżycia. Elastyczne liny wspierają każde wybicie i wydłużają ruch, pozwalając poczuć wznoszenie przed powrotem na matę.</p><p>Otwarta konstrukcja pozwala podczas wznoszenia widzieć port i pozostałe zabawy. Kontrast między morskim otoczeniem a pionowym ruchem nadaje atrakcji charakterystyczną obecność.</p><h2>Skok budowany krok po kroku</h2><p>Każda seria pozwala odnaleźć rytm i odważyć się na nieco większą wysokość. Accro-bungy różni się więc od Trampolino: wsparcie lin zmienia odbicie w szersze wrażenie lotu.</p>",
+            "newValue": "<h2>Pod czarnymi banderami</h2><p>Wysokie brązowe maszty Accro-bungy krzyżują się nad trampolinami. Między ich szczytami powiewają flagi z czaszkami, niczym na olinowaniu statku. Ciemne maty otaczają czerwone i niebieskie osłony.</p><p>Palmy i drewniane podesty obramowują tę wysoką konstrukcję. Tuż za nią ogromne żyrafy i lwy dmuchanej atrakcji Safari wnoszą do pirackiej scenerii kreskówkowe kolory.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Ganhar altura</h2><p>O Accro-bungy coloca o salto no centro da experiência. Os elásticos acompanham cada impulso e prolongam o movimento, dando tempo para sentir a subida antes do regresso à lona.</p><p>A estrutura aberta mantém o porto e os outros jogos à vista durante a subida. O contraste entre o ambiente marítimo e o movimento vertical dá à atração a sua presença particular.</p><h2>Um salto que se constrói</h2><p>Cada sequência permite encontrar o ritmo e ousar um pouco mais alto. O Accro-bungy distingue-se assim do Trampolino: a ajuda dos elásticos transforma o salto numa sensação aérea mais ampla.</p>",
+            "newValue": "<h2>Sob as bandeiras negras</h2><p>Os altos mastros castanhos do Accro-bungy cruzam-se sobre os trampolins. Entre os seus topos ondulam bandeiras com caveiras, como no cordame de um navio. Proteções vermelhas e azuis rodeiam as telas escuras.</p><p>Palmeiras e plataformas de madeira enquadram esta silhueta alta. Mesmo atrás, as girafas e os leões gigantes do insuflável Safari trazem cores de desenhos animados ao cenário dos piratas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+        "entityKey": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+        "displayName": "Aquanimal",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Tiere auf dem Wasser</h2><p>Aquanimal belebt ein Becken mit kleinen Booten in Tiergestalt. Kräftige Farben spiegeln sich im Wasser und verleihen der Attraktion eine sofort erkennbare Präsenz im Park.</p><p>Auf dem Becken begegnen sich die Teilnehmer spielerisch, nähern sich an, weichen aus und grüßen im Vorbeifahren. Das Wasser mildert das Tempo und erhält zugleich den Eindruck ständiger Bewegung.</p><h2>Eine nautische Zwischenwelt</h2><p>In einem Park am Hafen greift Aquanimal die maritime Umgebung natürlich auf. Tierfantasie und Becken bilden eine kleine, heitere und farbenfrohe Version der Schifffahrt ringsum.</p>",
+            "newValue": "<h2>Ein Pirat über dem Wasser</h2><p>Das türkisfarbene Becken von Aquanimal liegt vor den Hütten und Palmen des Parks. Kleine gelbe, blaue und violette Boote sind mit Tierfiguren kombiniert; ihre dicken dunklen Stoßringe zeichnen Kreise auf das helle Wasser.</p><p>Mitten im Becken steht ein Pirat auf einem Mast. Holzpfosten und dünne Ketten begrenzen den Rand. Strohdächer und Kioske bilden ringsum einen kleinen Fantasiehafen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Animals on the water</h2><p>Aquanimal brings a pool to life with small animal-shaped craft. Bright colours reflect on the water and give the attraction an immediately distinctive presence within the park.</p><p>Moving across the pool lets participants watch one another through playful approaches, turns away and greetings in passing. The water softens the pace while maintaining a sense of continuous movement.</p><h2>A nautical interlude</h2><p>In a park located beside the harbour, Aquanimal naturally echoes the maritime surroundings. Its animal fantasy and pool create a miniature, light-hearted and colourful version of the navigation nearby.</p>",
+            "newValue": "<h2>The pool with a pirate on a mast</h2><p>Aquanimal’s turquoise pool lies in front of the park’s huts and palms. Small yellow, blue and purple boats mingle with animal figures; their thick dark bumpers form rings on the bright water.</p><p>A pirate stands perched on a mast in the middle of the pool. Wood and slender chains mark its edge, while thatched roofs and kiosks create a little make-believe harbour around it.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Animales sobre el agua</h2><p>Aquanimal anima un estanque con pequeñas embarcaciones de formas animales. Los colores vivos se reflejan en el agua y dan a la atracción una presencia inconfundible dentro del parque.</p><p>Desplazarse por el estanque permite observar a los demás entre acercamientos, desvíos y saludos al pasar. El agua suaviza el ritmo y mantiene una sensación de movimiento continuo.</p><h2>Un paréntesis náutico</h2><p>En un parque junto al puerto, Aquanimal evoca de forma natural el paisaje marítimo. Su fantasía animal y el estanque componen una versión en miniatura, ligera y colorida de la navegación cercana.</p>",
+            "newValue": "<h2>La piscina del pirata encaramado</h2><p>El agua turquesa de Aquanimal se extiende frente a las cabañas y las palmeras del parque. Las pequeñas embarcaciones amarillas, azules y moradas se mezclan con figuras de animales; sus gruesos bordes oscuros dibujan anillos sobre el agua clara.</p><p>En medio de la piscina, un pirata está encaramado a un mástil. Madera y finas cadenas delimitan el borde, mientras los tejados de paja y los quioscos forman alrededor un pequeño puerto de fantasía.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Des animaux sur lʼeau</h2><p>Aquanimal anime un bassin avec de petites embarcations aux formes animales. Les couleurs vives se reflètent dans lʼeau et donnent à cette attraction une présence immédiatement distincte au milieu du parc.</p><p>Le déplacement sur le bassin permet de regarder les autres participants sous un angle ludique, entre approche, évitement et salut au passage. Lʼeau adoucit le rythme tout en maintenant une impression de mouvement continu.</p><h2>Une parenthèse nautique</h2><p>Dans un parc installé au bord du port, Aquanimal fait naturellement écho au paysage maritime. Sa fantaisie animale et son bassin composent une version miniature, légère et colorée de la navigation environnante.</p>",
+            "newValue": "<h2>Le bassin au pirate perché</h2><p>Aquanimal déploie son eau turquoise devant les cabanes et les palmiers du parc. Les petites embarcations jaunes, bleues et violettes côtoient des figures animales ; leurs gros boudins sombres dessinent des anneaux sur la surface claire.</p><p>Au milieu du bassin, un pirate se tient perché sur un mât. Une clôture de bois et de fines chaînes délimite le bord, tandis que les toits de chaume et les kiosques composent tout autour un petit port de fantaisie.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Animali sullʼacqua</h2><p>Aquanimal anima una vasca con piccole imbarcazioni a forma di animale. I colori vivaci si riflettono sullʼacqua e danno allʼattrazione una presenza subito riconoscibile nel parco.</p><p>Muoversi sulla vasca permette di osservare gli altri partecipanti tra avvicinamenti, deviazioni e saluti di passaggio. Lʼacqua addolcisce il ritmo mantenendo una sensazione di movimento continuo.</p><h2>Una parentesi nautica</h2><p>In un parco accanto al porto, Aquanimal richiama naturalmente il paesaggio marittimo. La fantasia animale e la vasca creano una versione in miniatura, leggera e colorata della navigazione circostante.</p>",
+            "newValue": "<h2>La vasca con il pirata sul pennone</h2><p>L’acqua turchese di Aquanimal si apre davanti alle capanne e alle palme del parco. Piccole imbarcazioni gialle, blu e viola affiancano figure animali; i loro grandi bordi scuri disegnano anelli sull’acqua chiara.</p><p>Al centro della vasca un pirata è appollaiato su un albero. Legno e sottili catene ne delimitano il bordo, mentre tetti di paglia e chioschi compongono tutt’intorno un piccolo porto di fantasia.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Dieren op het water</h2><p>Aquanimal brengt een bassin tot leven met kleine vaartuigen in dierenvorm. Felle kleuren weerspiegelen in het water en geven de attractie meteen een eigen uitstraling in het park.</p><p>Op het bassin ontmoeten deelnemers elkaar speels, naderen ze, wijken ze uit en groeten ze in het voorbijgaan. Het water verzacht het tempo maar houdt het gevoel van voortdurende beweging vast.</p><h2>Een nautisch tussenspel</h2><p>In een park aan de haven sluit Aquanimal vanzelf aan bij de maritieme omgeving. De dierlijke fantasie en het bassin vormen een kleine, luchtige en kleurrijke versie van de scheepvaart rondom.</p>",
+            "newValue": "<h2>Een piraat boven het water</h2><p>Het turquoise bassin van Aquanimal ligt voor de hutten en palmen van het park. Kleine gele, blauwe en paarse bootjes worden vergezeld door dierfiguren; hun dikke donkere stootranden tekenen ringen op het heldere water.</p><p>Midden in het bassin staat een piraat op een mast. Houten palen en dunne kettingen begrenzen de rand. Rieten daken en kiosken vormen eromheen een klein fantasiehaventje.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Zwierzęta na wodzie</h2><p>Aquanimal ożywia basen małymi pojazdami w kształcie zwierząt. Intensywne kolory odbijają się w wodzie i nadają atrakcji od razu rozpoznawalną obecność w parku.</p><p>Poruszanie się po basenie pozwala obserwować innych uczestników podczas zbliżeń, uników i powitań w mijaniu. Woda łagodzi tempo, zachowując wrażenie ciągłego ruchu.</p><h2>Wodny przerywnik</h2><p>W parku położonym przy porcie Aquanimal naturalnie nawiązuje do morskiego otoczenia. Zwierzęca fantazja i basen tworzą miniaturową, lekką i barwną wersję pobliskiej żeglugi.</p>",
+            "newValue": "<h2>Basen z piratem na maszcie</h2><p>Turkusowy basen Aquanimal rozciąga się przed chatkami i palmami parku. Małym żółtym, niebieskim i fioletowym łódkom towarzyszą postacie zwierząt; grube ciemne odbojnice tworzą pierścienie na jasnej wodzie.</p><p>Pośrodku basenu na maszcie stoi pirat. Drewniane słupki i cienkie łańcuchy wyznaczają brzeg, a kryte strzechą dachy i kioski tworzą wokół mały port rodem z fantazji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Animais sobre a água</h2><p>O Aquanimal anima um tanque com pequenas embarcações em forma de animais. As cores vivas refletem-se na água e dão à atração uma presença imediatamente distinta no parque.</p><p>A deslocação no tanque permite observar os outros participantes entre aproximações, desvios e cumprimentos de passagem. A água suaviza o ritmo, mantendo uma sensação de movimento contínuo.</p><h2>Um intervalo náutico</h2><p>Num parque junto ao porto, o Aquanimal faz naturalmente eco da paisagem marítima. A fantasia animal e o tanque compõem uma versão em miniatura, leve e colorida da navegação próxima.</p>",
+            "newValue": "<h2>A piscina do pirata no mastro</h2><p>A água turquesa de Aquanimal estende-se diante das cabanas e das palmeiras do parque. Pequenas embarcações amarelas, azuis e roxas juntam-se a figuras de animais; as suas grossas bordas escuras desenham anéis sobre a água clara.</p><p>No meio da piscina, um pirata está empoleirado num mastro. Madeira e correntes finas delimitam a margem, enquanto os telhados de colmo e os quiosques formam em redor um pequeno porto de fantasia.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "482a2557-2956-417a-be20-aeff5b2436d3",
+        "entityKey": "482a2557-2956-417a-be20-aeff5b2436d3",
+        "displayName": "Manège Disney",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine farbenfrohe Runde</h2><p>Manège Disney vereint kleine Fahrzeuge und farbenfrohe Figuren in einer Runde im Maßstab von Kindern. Am Hafen schaffen die vertrauten Formen einen spielerischen Orientierungspunkt zwischen den Piratenflaggen.</p><p>Bei jeder Runde tauchen Figuren und Farben erneut auf. Das Erlebnis lebt von der Wahl des Fahrzeugs und vom Blickkontakt mit den Angehörigen rund um das Karussell.</p><h2>Ein Fahrgeschäft auf Kinderhöhe</h2><p>Die Attraktion zeigt den Familiencharakter von LʼÎle aux Pirates mit einem kurzen, übersichtlichen Erlebnis nah am Publikum. Neben den bewegteren Spielen setzt sie einen ruhigen Akzent.</p>",
+            "newValue": "<h2>Mickey und Minnie an der Brücke</h2><p>Beim Manège Disney stehen Mickey und Minnie zwischen kleinen Flugzeugen, einem Rennwagen und einer bunt bemalten Kabine. In der Mitte trägt eine Säule mit Spiegeln und Lichtern eine Mickey-Figur mit großen schwarzen Ohren.</p><p>Das Karussell steht unter freiem Himmel hinter einem niedrigen Zaun, nahe einer großen Piratenfigur auf einem Sockel. Dahinter sind die Pont Notre-Dame und Bootsmasten zu sehen: Die Zeichentrickfiguren haben hier den echten Hafen als Kulisse.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A colourful round</h2><p>Manège Disney brings small vehicles and colourful figures together in a round designed at a childʼs scale. Beside the harbour, its familiar shapes create an immediate playful landmark among the pirate flags.</p><p>The circular composition brings the figures and colours back into view on every pass. The experience is shaped by choosing a vehicle and catching the eye of family members standing around the ride.</p><h2>A ride at a childʼs height</h2><p>This attraction expresses the family character of LʼÎle aux Pirates through a short, easy-to-read experience close to its audience. It provides a gentle presence beside the parkʼs more active games.</p>",
+            "newValue": "<h2>Mickey and Minnie beside the bridge</h2><p>Manège Disney brings Mickey and Minnie together among little aeroplanes, a racing car and a brightly painted cabin. In the centre, a column of mirrors and lights carries a Mickey figure with large black ears.</p><p>The carousel stands in the open behind a low fence, near a tall pirate statue on a pedestal. Pont Notre-Dame and the boats’ masts appear behind it, placing the cartoon characters against the real harbour.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una vuelta de colores</h2><p>Manège Disney reúne pequeños vehículos y figuras de colores en una vuelta a escala infantil. Junto al puerto, sus formas familiares crean una referencia lúdica entre las banderas piratas.</p><p>En cada vuelta reaparecen las figuras y los colores. La experiencia nace de elegir un vehículo y cruzar miradas con la familia que permanece alrededor.</p><h2>Una atracción a la altura de los niños</h2><p>La atracción expresa el carácter familiar de LʼÎle aux Pirates con una experiencia breve, clara y cercana al público. Aporta una presencia tranquila junto a los juegos más activos.</p>",
+            "newValue": "<h2>Mickey y Minnie junto al puente</h2><p>El Manège Disney reúne a Mickey y Minnie entre pequeños aviones, un coche de carreras y una cabina pintada de vivos colores. En el centro, una columna de espejos y luces sostiene a un Mickey de grandes orejas negras.</p><p>El tiovivo está al aire libre, detrás de una valla baja y cerca de una gran estatua de pirata sobre su pedestal. Al fondo aparecen el Pont Notre-Dame y los mástiles de los barcos: los personajes de dibujos animados comparten escenario con el puerto real.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une ronde de couleurs</h2><p>Le Manège Disney rassemble de petits véhicules et des figures colorées dans une ronde conçue à lʼéchelle des enfants. Au bord du port, ses formes familières créent un premier repère ludique au milieu des pavillons pirates.</p><p>La composition circulaire permet de retrouver les personnages et les couleurs à chaque passage. Le mouvement reste lié au plaisir de choisir son véhicule et de croiser le regard des proches restés autour du manège.</p><h2>Un manège à hauteur dʼenfant</h2><p>Cette attraction affirme la dimension familiale de LʼÎle aux Pirates par une expérience courte, lisible et très proche du public. Elle apporte une présence douce à côté des jeux plus actifs du parc.</p>",
+            "newValue": "<h2>Mickey et Minnie face au pont</h2><p>Le Manège Disney réunit Mickey et Minnie parmi de petits avions, une voiture de course et une cabine peinte de couleurs vives. Au centre, une colonne à miroirs et à lumières porte un Mickey aux grandes oreilles noires.</p><p>Le manège se tient à découvert, derrière une barrière basse, près d’un grand pirate sculpté sur son socle. Le pont Notre-Dame et les mâts des bateaux apparaissent dans son dos : les personnages de dessin animé partagent ici le décor avec le véritable port.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un giro di colori</h2><p>Manège Disney riunisce piccoli veicoli e figure colorate in un giro a misura di bambino. Accanto al porto, le forme familiari creano un riferimento giocoso tra le bandiere dei pirati.</p><p>A ogni passaggio tornano figure e colori. Lʼesperienza nasce dalla scelta del veicolo e dagli sguardi scambiati con i familiari intorno alla giostra.</p><h2>Una giostra ad altezza di bambino</h2><p>Lʼattrazione esprime il carattere familiare di LʼÎle aux Pirates con unʼesperienza breve, chiara e vicina al pubblico. Offre una presenza dolce accanto ai giochi più attivi.</p>",
+            "newValue": "<h2>Topolino e Minnie accanto al ponte</h2><p>Il Manège Disney riunisce Topolino e Minnie tra piccoli aeroplani, un’auto da corsa e una cabina dipinta a colori vivaci. Al centro, una colonna di specchi e luci sostiene un Topolino dalle grandi orecchie nere.</p><p>La giostra è all’aperto, dietro una bassa recinzione, vicino a una grande statua di pirata su un piedistallo. Alle sue spalle si vedono il Pont Notre-Dame e gli alberi delle barche: i personaggi dei cartoni animati condividono così la scena con il porto vero.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een kleurrijke ronde</h2><p>Manège Disney brengt kleine voertuigen en kleurrijke figuren samen in een ronde op kindermaat. Aan de haven vormen de vertrouwde vormen een speels herkenningspunt tussen de piratenvlaggen.</p><p>Bij iedere ronde verschijnen de figuren en kleuren opnieuw. De belevenis draait om het kiezen van een voertuig en het zoeken van oogcontact met familie rond de attractie.</p><h2>Een attractie op kinderhoogte</h2><p>De attractie onderstreept het gezinskarakter van LʼÎle aux Pirates met een korte, overzichtelijke belevenis dicht bij het publiek. Naast de actievere spellen vormt ze een rustig accent.</p>",
+            "newValue": "<h2>Mickey en Minnie bij de brug</h2><p>Manège Disney brengt Mickey en Minnie samen tussen kleine vliegtuigjes, een raceauto en een felgekleurde cabine. Middenin staat een zuil met spiegels en lampjes, bekroond door een Mickeyfiguur met grote zwarte oren.</p><p>De draaimolen staat in de openlucht achter een laag hek, vlak bij een groot piratenbeeld op een sokkel. Daarachter zijn de Pont Notre-Dame en de masten van boten zichtbaar: de tekenfilmfiguren delen hun decor met de echte haven.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Kolorowa runda</h2><p>Manège Disney łączy małe pojazdy i barwne figury w rundę dopasowaną do skali dzieci. Nad portem znajome kształty tworzą wyraźny, zabawowy punkt pośród pirackich flag.</p><p>Przy każdym okrążeniu powracają figury i kolory. Przeżycie budują wybór pojazdu oraz spojrzenia wymieniane z bliskimi stojącymi wokół karuzeli.</p><h2>Atrakcja na wysokości dziecka</h2><p>Atrakcja podkreśla rodzinny charakter LʼÎle aux Pirates poprzez krótkie, czytelne przeżycie blisko publiczności. Stanowi spokojny akcent obok bardziej aktywnych zabaw.</p>",
+            "newValue": "<h2>Mickey i Minnie przy moście</h2><p>Manège Disney łączy postacie Mickeya i Minnie z małymi samolotami, samochodem wyścigowym i kabiną pomalowaną w żywe kolory. Pośrodku stoi kolumna z lustrami i światłami, zwieńczona figurą Mickeya z wielkimi czarnymi uszami.</p><p>Karuzela znajduje się pod gołym niebem, za niskim ogrodzeniem, niedaleko dużej figury pirata na cokole. W tle widać Pont Notre-Dame i maszty łodzi: bohaterom kreskówek towarzyszy tu sceneria prawdziwego portu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma volta de cores</h2><p>O Manège Disney reúne pequenos veículos e figuras coloridas numa volta à escala das crianças. Junto ao porto, as formas familiares criam uma referência lúdica entre as bandeiras piratas.</p><p>Em cada passagem regressam as figuras e as cores. A experiência nasce da escolha do veículo e dos olhares trocados com a família em redor da diversão.</p><h2>Uma diversão à altura das crianças</h2><p>A atração exprime o caráter familiar da LʼÎle aux Pirates através de uma experiência breve, clara e próxima do público. Oferece uma presença tranquila junto dos jogos mais ativos.</p>",
+            "newValue": "<h2>Mickey e Minnie junto à ponte</h2><p>O Manège Disney reúne Mickey e Minnie entre pequenos aviões, um carro de corrida e uma cabina pintada de cores vivas. No centro, uma coluna de espelhos e luzes sustenta um Mickey de grandes orelhas negras.</p><p>O carrossel fica ao ar livre, atrás de uma vedação baixa, perto de uma grande estátua de pirata sobre um pedestal. Ao fundo veem-se a Pont Notre-Dame e os mastros dos barcos: as personagens dos desenhos animados partilham o cenário com o porto verdadeiro.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
+        "entityKey": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
+        "displayName": "Crêperie",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Crêpeduft am Hafen</h2><p>Die Crêperie ergänzt den Freizeitbereich gastronomisch. Die Zubereitung von Crêpes passt mit einem einfachen Angebot zum offenen Saisoncharakter des Parks und zum lebhaften Hafen.</p><p>Der Stand führt die Welt der kleinen farbigen Buden von LʼÎle aux Pirates fort. Er inszeniert kein großes Restaurant; seine Identität entsteht aus einem vertrauten Produkt in der Atmosphäre des Ortes.</p><h2>Eine Verbindung zur Promenade</h2><p>Die Crêperie verbindet die Spiele mit der Hafenpromenade und stärkt den einladenden Charakter dieses kleinen Familienorts. Sie ergänzt das Angebot, ohne die Attraktionen in den Hintergrund zu drängen.</p>",
+            "newValue": "<h2>Das Chalet mit den roten Schildern</h2><p>Die Crêperie ist in einem Holzchalet mit kleinem Giebelfenster und herzförmigen Ausschnitten in den Fensterläden untergebracht. Unter dem Vordach kündigen rote Schilder Crêpes, Waffeln, Krapfen und Chichis in großen goldenen Buchstaben an. Bonbongläser und Sträuße aus Lutschern stehen auf der Theke.</p><p>Tische mit Bänken flankieren den Stand zwischen Palmen und Hafenmasten. Hinter dem braunen Holz und den Süßigkeiten schweift der Blick über die vertäuten Boote zu den Gebäuden am gegenüberliegenden Kai.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The scent of crêpes by the harbour</h2><p>The Crêperie adds a food-focused presence to the leisure area. Preparing crêpes suits the parkʼs open, seasonal format through a simple offer connected to the life of the harbour.</p><p>The counter extends the world of small colourful stalls found throughout LʼÎle aux Pirates. It does not seek the staging of a large restaurant: its identity rests on a familiar product prepared within the atmosphere of the site.</p><h2>A link with the promenade</h2><p>The Crêperie connects the games to the harbour promenade and reinforces the welcoming character of this small family venue. It completes the inventory without drawing attention away from the attraction collection.</p>",
+            "newValue": "<h2>The chalet with red signs</h2><p>The Crêperie occupies a wooden chalet with a little gable window and heart-shaped cut-outs in its shutters. Beneath the awning, red signs advertise crêpes, waffles, doughnuts and chichis in large golden letters. Jars of sweets and bunches of lollipops fill the counter.</p><p>Tables with benches flank the stall between palms and harbour masts. Beyond the brown timber and sweet treats, moored boats lead the eye towards the buildings on the opposite quay.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Aroma de crepes junto al puerto</h2><p>La Crêperie aporta una presencia gastronómica a la zona de ocio. La preparación de crepes encaja con el formato abierto y estacional del parque mediante una oferta sencilla ligada a la vida del puerto.</p><p>El mostrador prolonga el mundo de los pequeños puestos coloridos de LʼÎle aux Pirates. No busca la escenografía de un gran restaurante: su identidad nace de un producto familiar preparado en el ambiente del lugar.</p><h2>Un vínculo con el paseo</h2><p>La Crêperie conecta los juegos con el paseo portuario y refuerza el carácter acogedor de este pequeño lugar familiar. Completa el inventario sin apartar la atención de las atracciones.</p>",
+            "newValue": "<h2>El chalé de los letreros rojos</h2><p>La Crêperie ocupa un chalé de madera con una ventanita en el frontón y contraventanas recortadas con corazones. Bajo el alero, los letreros rojos anuncian crepes, gofres, buñuelos y chichis en grandes letras doradas. Tarros de caramelos y ramos de piruletas llenan el mostrador.</p><p>Mesas con bancos flanquean el puesto entre las palmeras y los mástiles del puerto. Más allá de la madera marrón y los dulces, los barcos amarrados llevan la mirada hasta los edificios del muelle de enfrente.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une odeur de crêpe sur le port</h2><p>La Crêperie apporte une présence gourmande à lʼaire de loisirs. La préparation de crêpes sʼaccorde au format ouvert et saisonnier du parc, avec une offre simple liée à lʼanimation du port.</p><p>Le comptoir prolonge lʼunivers des petits stands colorés qui ponctuent LʼÎle aux Pirates. Il ne cherche pas la mise en scène dʼun grand restaurant : son identité tient à un produit familier préparé dans lʼambiance du site.</p><h2>Un lien avec la promenade</h2><p>La Crêperie relie les jeux à la promenade portuaire et renforce le caractère accueillant de cette petite adresse familiale. Elle complète lʼinventaire sans détourner lʼattention de la collection dʼattractions.</p>",
+            "newValue": "<h2>Le chalet aux enseignes rouges</h2><p>La Crêperie prend la forme d’un chalet de bois dont le pignon porte une petite fenêtre aux volets découpés de cœurs. Sous l’auvent, les enseignes rouges annoncent crêpes, gaufres, beignets et chichis en grandes lettres dorées. Bocaux de bonbons et bouquets de sucettes occupent le comptoir.</p><p>Des tables à bancs encadrent le stand, entre les palmiers et les mâts du port. Derrière le bois brun et les gourmandises, les bateaux amarrés prolongent la vue jusqu’aux immeubles de l’autre quai.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Profumo di crêpe sul porto</h2><p>La Crêperie aggiunge una presenza golosa allʼarea ricreativa. La preparazione delle crêpe si accorda al formato aperto e stagionale del parco con unʼofferta semplice legata alla vita del porto.</p><p>Il banco continua il mondo dei piccoli chioschi colorati di LʼÎle aux Pirates. Non cerca la scena di un grande ristorante: la sua identità nasce da un prodotto familiare preparato nellʼatmosfera del luogo.</p><h2>Un legame con la passeggiata</h2><p>La Crêperie collega i giochi alla passeggiata del porto e rafforza il carattere accogliente di questo piccolo luogo familiare. Completa lʼinventario senza togliere attenzione alle attrazioni.</p>",
+            "newValue": "<h2>Lo chalet dalle insegne rosse</h2><p>La Crêperie occupa uno chalet di legno con una piccola finestra nel timpano e persiane traforate a forma di cuore. Sotto la tettoia, insegne rosse annunciano crêpe, waffle, frittelle e chichis in grandi lettere dorate. Barattoli di caramelle e mazzi di lecca-lecca riempiono il bancone.</p><p>Tavoli con panche affiancano il chiosco tra le palme e gli alberi delle barche. Oltre il legno bruno e i dolci, lo sguardo attraversa gli ormeggi fino agli edifici sulla banchina opposta.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De geur van crêpes aan de haven</h2><p>De Crêperie voegt een smakelijk element toe aan het recreatiegebied. Het bakken van crêpes past met een eenvoudig aanbod bij het open seizoenskarakter van het park en de levendige haven.</p><p>De balie sluit aan bij de kleine kleurrijke kraampjes van LʼÎle aux Pirates. Ze doet zich niet voor als groot restaurant: haar identiteit rust op een vertrouwd product in de sfeer van de plek.</p><h2>Een band met de promenade</h2><p>De Crêperie verbindt de spellen met de havenpromenade en versterkt het gastvrije karakter van deze kleine gezinsplek. Ze vult het aanbod aan zonder de attracties te overschaduwen.</p>",
+            "newValue": "<h2>Het chalet met de rode borden</h2><p>De Crêperie zit in een houten chalet met een klein raam in de geveltop en hartvormige uitsparingen in de luiken. Onder de luifel kondigen rode borden crêpes, wafels, beignets en chichis aan in grote gouden letters. Potten snoep en bossen lolly’s vullen de toonbank.</p><p>Tafels met banken staan aan weerszijden van de kraam, tussen palmen en havenmasten. Achter het bruine hout en het snoepgoed loopt het uitzicht over de aangemeerde boten naar de gebouwen aan de overkant van de kade.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Zapach naleśników nad portem</h2><p>Crêperie wnosi kulinarny akcent do strefy rekreacyjnej. Przygotowywanie naleśników pasuje do otwartego, sezonowego charakteru parku i prostej oferty związanej z życiem portu.</p><p>Lada rozwija świat małych, barwnych stoisk LʼÎle aux Pirates. Nie udaje dużej restauracji: jej tożsamość tworzy znajomy produkt przygotowywany w atmosferze miejsca.</p><h2>Połączenie z promenadą</h2><p>Crêperie łączy zabawy z portową promenadą i wzmacnia gościnny charakter tego niewielkiego rodzinnego miejsca. Uzupełnia ofertę, nie odciągając uwagi od atrakcji.</p>",
+            "newValue": "<h2>Drewniany domek z czerwonymi szyldami</h2><p>Crêperie mieści się w drewnianym domku z małym oknem w szczycie i okiennicami z wyciętymi sercami. Pod daszkiem czerwone szyldy zapowiadają naleśniki, gofry, pączki i chichis dużymi złotymi literami. Na ladzie stoją słoje cukierków i bukiety lizaków.</p><p>Stoły z ławkami flankują kiosk między palmami i portowymi masztami. Za brązowym drewnem i słodyczami wzrok biegnie nad zacumowanymi łodziami ku budynkom na przeciwległym nabrzeżu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Aroma de crepes junto ao porto</h2><p>A Crêperie acrescenta uma presença gastronómica à zona de lazer. A preparação de crepes combina com o formato aberto e sazonal do parque através de uma oferta simples ligada à vida do porto.</p><p>O balcão prolonga o mundo das pequenas bancas coloridas da LʼÎle aux Pirates. Não procura o cenário de um grande restaurante: a sua identidade nasce de um produto familiar preparado no ambiente do local.</p><h2>Uma ligação ao passeio</h2><p>A Crêperie liga os jogos ao passeio portuário e reforça o caráter acolhedor deste pequeno espaço familiar. Completa o inventário sem desviar a atenção das atrações.</p>",
+            "newValue": "<h2>O chalé dos letreiros vermelhos</h2><p>A Crêperie ocupa um chalé de madeira com uma pequena janela na empena e portadas recortadas em forma de coração. Sob o alpendre, letreiros vermelhos anunciam crepes, waffles, fritos doces e chichis em grandes letras douradas. Frascos de rebuçados e ramos de chupa-chupas enchem o balcão.</p><p>Mesas com bancos ladeiam a banca entre as palmeiras e os mastros do porto. Para lá da madeira castanha e dos doces, os barcos amarrados conduzem o olhar até aos edifícios do cais oposto.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

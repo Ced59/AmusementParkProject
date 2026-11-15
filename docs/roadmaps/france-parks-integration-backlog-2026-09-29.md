@@ -55,7 +55,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [x] Kingoland — `900ceb7b-7bb8-40c0-9e4a-6340d019a6d8` — clôture conservée ; voir le registre mondial et les preuves ci-dessous.
 - [x] Koaland — `a01011e8-b400-40c7-bbe2-5635d7dd24f7` — clôture conservée le 2 novembre 2026 ; audit final 98/100, site et annonce Facebook existante Published vérifiés.
 - [ ] L'Île aux Géants — `29a2498e-9b6c-4c55-a2ac-e521dc6e4586` — reprise du 15 novembre : fiche déjà publique, 98/100 initial ; parc et 19 lieux réécrits en huit langues, identités Pouss-Pouss/Star Tower/Star Flyer corrigées, fondateur et article développés, tarifs vérifiés. 14 Apply réels et 7 photos importées privées ; cinq faits nouveaux privés. Facebook existant Published reconfirmé. Deux notices anciennes génériques et inventaire à qualifier avant audit final et publication des nouveautés ; [preuve](world-integration/evidence/france-historical-20261022/ile-aux-geants-current-20261115.json).
-- [ ] L'Île aux Pirates, Capbreton — candidats `efac8649-a15b-4ed6-866c-2e926579d6de` et `5e9e6a61-3d74-49cd-9c3a-8ca107edd018` à réconcilier avant intégration
+- [ ] L'Île aux Pirates, Capbreton — `5e9e6a61-3d74-49cd-9c3a-8ca107edd018` confirmé le 15 novembre ; `efac8649-a15b-4ed6-866c-2e926579d6de` désigne La Tranche-sur-Mer et reste distinct. Quatre notices corrigées en huit langues, dix items existants ; ancien logo photographique, inventaire et corpus à reprendre. Annonce Facebook existante Published ; [preuve](world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-current-20261115.json).
 - [ ] La Coccinelle — `e1fa4656-8011-4908-a1bf-e7d581285a83`
 - [ ] Le Pal — `1675e96c-6361-48ff-862b-43218167facd`
 - [ ] LennyPark — `0d9fb07f-a134-40b5-94b1-6b449a684772`
