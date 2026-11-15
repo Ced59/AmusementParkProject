@@ -258,6 +258,55 @@
         ],
         "isVisible": true,
         "adminReviewStatus": "ToReview"
+      },
+      {
+        "key": "pokeyland-manufacturer-lukylud",
+        "name": "Lukylud",
+        "legalName": "LUKYLUD",
+        "foundedYear": 2002,
+        "closedYear": null,
+        "contactDetails": {
+          "websiteUrl": "https://www.lukylud.fr/",
+          "city": "Sucé-sur-Erdre",
+          "countryCode": "FR"
+        },
+        "biography": [
+          {
+            "languageCode": "fr",
+            "value": "<h2>Des structures gonflables pour les professionnels</h2><p>Lukylud conçoit, développe et commercialise des jeux gonflables destinés aux campings, parcs de loisirs et autres professionnels. Son historique fait remonter la création de l’entreprise par Flore Becheux au 29 octobre 2002.</p><p>Son catalogue comprend des châteaux, toboggans, parcours et jeux d’animation. La personnalisation porte notamment sur les couleurs des toiles et les marquages, pour adapter les structures à l’identité de leurs exploitants.</p><h2>Fabrication et suivi des équipements</h2><p>L’entreprise développe un service de réparation en 2009 et s’installe à Sucé-sur-Erdre en 2013. Son offre comprend aussi la remise en état, le lavage, le stockage et l’hivernage des structures. Elle associe ainsi la fourniture de jeux à leur entretien au fil des saisons.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<h2>Inflatable structures for leisure professionals</h2><p>Lukylud designs, develops and markets inflatable games for campsites, leisure parks and other professional customers. Its company history dates its establishment by Flore Becheux to 29 October 2002.</p><p>The catalogue includes castles, slides, obstacle courses and activity games. Customisation covers fabric colours and graphics, allowing structures to reflect their operators’ identities.</p><h2>Manufacturing and equipment care</h2><p>The company developed a repair service in 2009 and moved to Sucé-sur-Erdre in 2013. Its services also include refurbishment, cleaning, storage and winter storage of structures. Supplying games is therefore combined with maintaining them across the seasons.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<h2>Aufblasbare Spielgeräte für Freizeitanbieter</h2><p>Lukylud entwirft, entwickelt und vertreibt aufblasbare Spielgeräte für Campingplätze, Freizeitparks und andere gewerbliche Kunden. Die Unternehmensgeschichte datiert die Gründung durch Flore Becheux auf den 29. Oktober 2002.</p><p>Zum Sortiment gehören Burgen, Rutschen, Hindernisparcours und Aktionsspiele. Die individuelle Gestaltung umfasst insbesondere die Farben der Planen und die Aufdrucke, sodass die Anlagen das Erscheinungsbild ihrer Betreiber aufnehmen können.</p><h2>Herstellung und Betreuung der Anlagen</h2><p>2009 baute das Unternehmen einen Reparaturservice auf und zog 2013 nach Sucé-sur-Erdre. Das Angebot umfasst auch Instandsetzung, Reinigung, Lagerung und Wintereinlagerung. Die Lieferung von Spielen wird so mit ihrer Pflege über mehrere Saisons verbunden.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<h2>Estructuras hinchables para profesionales del ocio</h2><p>Lukylud diseña, desarrolla y comercializa juegos hinchables para campings, parques de ocio y otros clientes profesionales. Su historia empresarial sitúa la fundación por Flore Becheux el 29 de octubre de 2002.</p><p>El catálogo incluye castillos, toboganes, circuitos de obstáculos y juegos de animación. La personalización abarca los colores de las lonas y los gráficos, para adaptar las estructuras a la identidad de sus operadores.</p><h2>Fabricación y cuidado de los equipos</h2><p>La empresa desarrolló un servicio de reparación en 2009 y se instaló en Sucé-sur-Erdre en 2013. También ofrece reacondicionamiento, lavado, almacenamiento y conservación durante el invierno. Así combina el suministro de juegos con su mantenimiento a lo largo de las temporadas.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<h2>Strutture gonfiabili per i professionisti del tempo libero</h2><p>Lukylud progetta, sviluppa e commercializza giochi gonfiabili per campeggi, parchi ricreativi e altri clienti professionali. La sua storia aziendale fa risalire la fondazione da parte di Flore Becheux al 29 ottobre 2002.</p><p>Il catalogo comprende castelli, scivoli, percorsi a ostacoli e giochi di animazione. La personalizzazione riguarda in particolare i colori dei teli e la grafica, per adattare le strutture all’identità dei gestori.</p><h2>Fabbricazione e cura delle attrezzature</h2><p>L’azienda sviluppò un servizio di riparazione nel 2009 e si trasferì a Sucé-sur-Erdre nel 2013. Propone inoltre ricondizionamento, lavaggio, deposito e rimessaggio invernale delle strutture. La fornitura dei giochi si accompagna così alla loro manutenzione nel corso delle stagioni.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<h2>Opblaasbare speelstructuren voor recreatiebedrijven</h2><p>Lukylud ontwerpt, ontwikkelt en verkoopt opblaasbare speeltoestellen voor campings, recreatieparken en andere professionele klanten. Volgens de bedrijfsgeschiedenis richtte Flore Becheux de onderneming op 29 oktober 2002 op.</p><p>Het assortiment omvat kastelen, glijbanen, hindernisbanen en activiteitenspellen. Aanpassing betreft onder meer de kleuren van het doek en de afbeeldingen, zodat de structuren bij de identiteit van de exploitant passen.</p><h2>Productie en onderhoud</h2><p>Het bedrijf ontwikkelde in 2009 een reparatieservice en verhuisde in 2013 naar Sucé-sur-Erdre. Het aanbod omvat ook herstel, reiniging, opslag en winterstalling van structuren. De levering van spellen gaat zo samen met hun onderhoud door de seizoenen heen.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<h2>Dmuchane konstrukcje dla branży rekreacyjnej</h2><p>Lukylud projektuje, rozwija i sprzedaje dmuchane urządzenia do zabawy dla kempingów, parków rekreacyjnych i innych klientów profesjonalnych. Historia firmy podaje, że Flore Becheux założyła ją 29 października 2002 roku.</p><p>Katalog obejmuje zamki, zjeżdżalnie, tory przeszkód i gry animacyjne. Personalizacja dotyczy między innymi kolorów poszycia i nadruków, dzięki czemu konstrukcje mogą odpowiadać identyfikacji wizualnej operatorów.</p><h2>Produkcja i utrzymanie wyposażenia</h2><p>Firma rozwinęła usługi naprawcze w 2009 roku, a w 2013 przeniosła się do Sucé-sur-Erdre. Oferuje również odnowę, czyszczenie, składowanie i przechowywanie konstrukcji zimą. Dostawy urządzeń łączy więc z ich utrzymaniem przez kolejne sezony.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<h2>Estruturas insufláveis para profissionais do lazer</h2><p>A Lukylud concebe, desenvolve e comercializa jogos insufláveis para parques de campismo, parques de lazer e outros clientes profissionais. O historial da empresa situa a sua criação por Flore Becheux em 29 de outubro de 2002.</p><p>O catálogo inclui castelos, escorregas, percursos de obstáculos e jogos de animação. A personalização abrange as cores das telas e os grafismos, adaptando as estruturas à identidade dos operadores.</p><h2>Fabrico e acompanhamento dos equipamentos</h2><p>A empresa desenvolveu um serviço de reparação em 2009 e instalou-se em Sucé-sur-Erdre em 2013. A oferta também inclui recuperação, lavagem, armazenamento e guarda das estruturas durante o inverno. Combina assim o fornecimento de jogos com a sua manutenção ao longo das temporadas.</p>"
+          }
+        ],
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "a20298e7-7075-4a0d-811e-3985c3299882"
       }
     ]
   },
@@ -3033,7 +3082,9 @@
       "adminReviewStatus": "ToReview",
       "attractionDetails": {
         "status": "Unknown",
-        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+        "manufacturerId": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "manufacturerKey": "pokeyland-manufacturer-lukylud"
       },
       "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
       "descriptions": [
@@ -3264,7 +3315,41 @@
       },
       "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
       "zoneKey": "pokeyland-zone-paintball",
-      "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d"
+      "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un champ de bataille reconstitué</h2><p>Checkpoint figure parmi les terrains de paintball présentés à Pokeyland en 2015. Son décor repose sur des tranchées et un poste de commandement militaire enterré, aménagés au milieu des arbres.</p><p>La photographie de ce reportage montre des levées de terre bordées de branchages tressés, des obstacles en bois et un élément de décor en forme de canon. Ces aménagements composent un paysage de jeu militaire reconstitué.</p><h2>Des passages en contrebas</h2><p>Le relief des tranchées place les cheminements sous le niveau des talus. L’entrée basse du poste couvert prolonge cette ambiance de terrain retranché dans la forêt.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A recreated battlefield</h2><p>Checkpoint is among the paintball fields presented at Pokeyland in 2015. Its setting consists of trenches and an underground military command post built among the trees.</p><p>The photograph in that report shows earth banks edged with woven branches, wooden obstacles and a cannon-shaped scenic prop. Together they form a recreated military play landscape.</p><h2>Passages below the banks</h2><p>The trenches place the paths below the surrounding earth banks. The low entrance to the covered post extends the atmosphere of an entrenched position in the forest.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein nachgebautes Schlachtfeld</h2><p>Checkpoint gehört zu den Paintballfeldern, die 2015 in Pokeyland vorgestellt wurden. Die Kulisse besteht aus Schützengräben und einem unterirdischen militärischen Kommandoposten zwischen den Bäumen.</p><p>Das Foto des Berichts zeigt Erdwälle mit geflochtenen Zweigen, Holzhindernisse und eine kanonenförmige Requisite. Diese Elemente bilden eine nachgestellte militärische Spiellandschaft.</p><h2>Wege unterhalb der Wälle</h2><p>Die Gräben führen unter dem Niveau der umgebenden Erdwälle entlang. Der niedrige Eingang des überdeckten Postens ergänzt die Atmosphäre einer verschanzten Stellung im Wald.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un campo de batalla recreado</h2><p>Checkpoint figura entre los campos de paintball presentados en Pokeyland en 2015. Su decoración se basa en trincheras y un puesto de mando militar subterráneo, construidos entre los árboles.</p><p>La fotografía de aquel reportaje muestra taludes de tierra bordeados por ramas entretejidas, obstáculos de madera y una pieza decorativa con forma de cañón. Estos elementos componen un paisaje de juego militar recreado.</p><h2>Pasos por debajo de los taludes</h2><p>Las trincheras sitúan los caminos bajo el nivel de los taludes. La entrada baja del puesto cubierto prolonga ese ambiente de posición atrincherada en el bosque.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un campo di battaglia ricostruito</h2><p>Checkpoint figura tra i campi da paintball presentati a Pokeyland nel 2015. L’ambientazione si basa su trincee e un posto di comando militare interrato, realizzati tra gli alberi.</p><p>La fotografia del reportage mostra terrapieni bordati da rami intrecciati, ostacoli di legno e un elemento scenografico a forma di cannone. Questi allestimenti compongono un paesaggio di gioco militare ricostruito.</p><h2>Passaggi sotto i terrapieni</h2><p>Le trincee portano i camminamenti sotto il livello degli argini di terra. Il basso ingresso del posto coperto prolunga l’atmosfera di una posizione trincerata nel bosco.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een nagebouwd slagveld</h2><p>Checkpoint behoort tot de paintballterreinen die in 2015 in Pokeyland werden gepresenteerd. Het decor bestaat uit loopgraven en een ondergrondse militaire commandopost tussen de bomen.</p><p>De foto in dat verslag toont aarden wallen met gevlochten takken langs de randen, houten obstakels en een decorstuk in de vorm van een kanon. Samen vormen ze een nagebouwd militair speellandschap.</p><h2>Doorgangen onder de wallen</h2><p>De loopgraven laten de paden onder het niveau van de aarden wallen lopen. De lage ingang van de overdekte post versterkt de sfeer van een verschanste positie in het bos.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Odtworzone pole bitwy</h2><p>Checkpoint należy do pól paintballowych przedstawionych w Pokeyland w 2015 roku. Scenerię tworzą okopy i podziemny wojskowy punkt dowodzenia, zbudowane między drzewami.</p><p>Zdjęcie z tamtego reportażu pokazuje ziemne wały obrzeżone plecionymi gałęziami, drewniane przeszkody i element dekoracji w kształcie armaty. Razem tworzą odtworzony militarny teren do gry.</p><h2>Przejścia poniżej wałów</h2><p>Okopy prowadzą ścieżki poniżej poziomu ziemnych nasypów. Niskie wejście do zadaszonego stanowiska wzmacnia atmosferę ufortyfikowanej pozycji w lesie.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um campo de batalha recriado</h2><p>Checkpoint figura entre os campos de paintball apresentados no Pokeyland em 2015. O cenário assenta em trincheiras e num posto de comando militar subterrâneo, construídos entre as árvores.</p><p>A fotografia da reportagem mostra taludes de terra delimitados por ramos entrelaçados, obstáculos de madeira e um elemento cénico em forma de canhão. Estes elementos compõem uma paisagem de jogo militar recriada.</p><h2>Passagens abaixo dos taludes</h2><p>As trincheiras colocam os caminhos abaixo do nível dos taludes. A entrada baixa do posto coberto prolonga o ambiente de uma posição entrincheirada no bosque.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-historical-mini-buggy",
@@ -3450,6 +3535,19 @@
         "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
       },
       "id": "e43e6bd6-04bf-4940-967d-357aad4075ab"
+    },
+    {
+      "key": "pokeyland-historical-balade-caleche",
+      "name": "Balade en calèche",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+      },
+      "id": "abe0a8ee-f222-4c44-94d7-a0799317b823"
     }
   ],
   "images": [

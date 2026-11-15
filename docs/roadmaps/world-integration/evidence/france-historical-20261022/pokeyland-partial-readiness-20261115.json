@@ -1,0 +1,286 @@
+{
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "observedAtUtc": "2026-11-15T14:03:00.881386+00:00",
+  "lastActualIntegrationAtUtc": "2026-11-15T13:59:37.7680308Z",
+  "counts": {
+    "items": 75,
+    "publicItems": 0,
+    "zones": 3,
+    "media": 53,
+    "privateLogo": true,
+    "parkDescribedLanguages": 8,
+    "itemsDescribed": 52,
+    "referenceLocalizedTexts": 24,
+    "historicalUnknownItems": 18,
+    "zonesDescribed": 3,
+    "officialMaps": 1,
+    "publicOfficialMaps": 0,
+    "parkFacts": 4,
+    "privateParkFacts": 4,
+    "seasonPasses": 2,
+    "itemFacts": 6,
+    "privateItemFacts": 6,
+    "articles": 1,
+    "privateArticles": 1,
+    "privateItems": 75,
+    "itemsWithEightLanguageDescriptions": 52,
+    "privateMedia": 53,
+    "publicMedia": 0,
+    "itemPositions": 10,
+    "manufacturers": 2
+  },
+  "completeness": {
+    "receivedAtUtc": "2026-11-15T14:01:56.0713114Z",
+    "result": {
+      "completenessScore": 87,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 90,
+      "earnedPoints": 78,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "startedAtUtc": "2026-11-15T14:01:55.3060097Z",
+    "action": "Completeness"
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkName": "Pokeyland",
+      "factCount": 11,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 0,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 0,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 10
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 1
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": false,
+        "hasCompleteSourceCoverage": false,
+        "hasMajorMilestone": false,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 0,
+        "sourcedFactCount": 0,
+        "majorFactCount": 0,
+        "indexableKeyYears": []
+      }
+    },
+    "receivedAtUtc": "2026-11-15T14:02:11.7773212Z",
+    "startedAtUtc": "2026-11-15T14:02:11.2626927Z",
+    "action": "HistoryDiagnostics"
+  },
+  "missingNotices": [
+    {
+      "id": "09ed3d9f-bcf0-4751-b69a-6abd6ab5c4ca",
+      "name": "Parcours Pitchoune 1",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "9a40ce59-ca74-455f-8ba0-185b560055a1",
+      "name": "Parcours Pitchoune 2",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "20067de5-b801-4e24-90d3-4ba5ffc711f6",
+      "name": "Parcours Pitchoune 3",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "fa6e99c1-f258-408e-8628-8c95312f2c18",
+      "name": "Parcours aventure 1",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "496b6b3b-d182-45bf-b2b7-6199dd24c91a",
+      "name": "Parcours aventure 2",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+      "name": "Pokey Beach",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+      "name": "La Pêche de Pokey",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+      "name": "Salle d’arcade",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+      "name": "Accueil accrobranche",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+      "name": "Poste de secours",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+      "name": "Casiers",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+      "name": "Sanitaires",
+      "status": "Operating",
+      "isVisible": false
+    },
+    {
+      "id": "6c658164-104c-41a1-a470-f50d7f0c956d",
+      "name": "Le Petit Robin",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "c8c04ee5-8ea7-4dbb-afcb-2769f556cba7",
+      "name": "Clairière de jeux",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "58bc03b5-9202-4940-bbdc-c83973300b42",
+      "name": "Boutique",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "97aad029-a386-4c2f-844c-9dcd7394f36a",
+      "name": "Mini-Jeep",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "1cb2aa09-2279-40a6-a032-6babe23f8882",
+      "name": "Pédalo",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "2a23aa94-01ba-4cda-be85-653e60589c24",
+      "name": "Terrains de pétanque",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "0ddb1451-3dad-4936-9f8f-439efda9222c",
+      "name": "Lancer de hache",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "3956ae33-631f-46ef-b9c5-dd6afa08d785",
+      "name": "Labyrinthe géant",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "0089b992-f5a6-4bb2-b4f0-1fd055361c16",
+      "name": "Quad ados",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "e43e6bd6-04bf-4940-967d-357aad4075ab",
+      "name": "Balade en quad",
+      "status": "Unknown",
+      "isVisible": false
+    },
+    {
+      "id": "abe0a8ee-f222-4c44-94d7-a0799317b823",
+      "name": "Balade en calèche",
+      "status": "Unknown",
+      "isVisible": false
+    }
+  ],
+  "knownGaps": [
+    "2026 calendar: 80 dates closed OR reservation and July11 concert without time cannot be represented faithfully by current schedule semantics; no invented closure/time.",
+    "Daily tickets official sales channel not verified; only two proven cashdesk season passes integrated.",
+    "64 item points were unproved before Calèche creation; now 65/75 without applied point. Crazy Kart conflict remains excluded.",
+    "Five numbered tree courses not distinguishable from grouped primary photographs.",
+    "Archery Games/Tag cluster, historical restaurant continuities and Mer de filet/Cabanes continuity unresolved.",
+    "Two general park photos, fewer than five; important-item view counts and older plans remain documented research gaps.",
+    "FACSS stage and Amazone Saut private-photo reuse rights unresolved; logos of reference companies not imported."
+  ],
+  "sourceEvidence": [
+    "pokeyland-calendar-representation-gap-20261115.json",
+    "pokeyland-qualified-coordinates-20261115.json",
+    "pokeyland-services-final-research-20261115.json",
+    "pokeyland-manufacturers-research-20261115.json",
+    "pokeyland-historical-carriage-20261115.json"
+  ],
+  "activeParkScoreExceptionRequested": false,
+  "closedParkToleranceApplicable": false,
+  "fullAuditExportPerformed": false,
+  "finalAuditCompleted": false,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false
+}

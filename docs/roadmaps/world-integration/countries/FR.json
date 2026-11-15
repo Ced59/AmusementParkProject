@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T13:49:27.334Z",
+      "lastDataIntegrationAt": "2026-11-15T13:59:37.768Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33828,6 +33828,36 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-pokeyshow-2017-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland : photographie réelle de Scène Pokeyshow importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "apply-8338a86c-f49e-4216-beb3-5b20247c9182",
+          "appliedAt": "2026-11-15T13:55:05.323Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-37-checkpoint-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 1 notices (Checkpoint) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "apply-d3971466-5d73-401d-9402-b681c3b6bfa1",
+          "appliedAt": "2026-11-15T13:56:49.667Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-historical-carriage-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : Balade en calèche historique créée privée Unknown, distinction attestée par panneau officiel2017 avec Poney. Dates/itinéraire/photo nominale restent inconnus ; O’Chalet et Sur le Pouce non créés faute rapprochement. 75 lieux, aucune publication."
+        },
+        {
+          "eventId": "apply-40953c91-ff61-4cfa-9c04-83b5059981f5",
+          "appliedAt": "2026-11-15T13:59:37.768Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-lukylud-reference-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : référence privée Lukylud créée après rapprochement nominal et rattachée au Rotor personnalisé, huit biographies génériques personnellement relues. Rôle structure gonflable distinct du mécanisme OEM inconnu ; fondation2002 sourcée et adresse contradictoire non inventée. Amazone/HeadRush non rattachés, aucun logo/publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

@@ -112,7 +112,7 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T13:49:27.334Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T13:59:37.7680308Z",
   "newApplyPerformed": true,
   "newPhotoImported": true,
   "fullAuditExportPerformed": false,
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Continue 23 missing item notices and historical identity qualification; manufacturers Lukylud/Amazone sources under review, no association yet. Nine notices and seven images newly integrated privately; 2026 programmes distinguished from 2017 stage photos. Calendar representation and daily-ticket channel remain unresolved. No final audit/export/publication.",
+  "nextAction": "Pokeyland stays partial/private: 87/100 (78/90), no API publication blocker but active score below required >95, 23 undescribed items, calendar model and ticket-channel gaps, historical aliases unresolved. No final full export/audit or publication. Continue sources and other qualified France parks; use consolidated state and receipts, never reimport.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -261,18 +261,33 @@
       "operationId": "b957208a-2c57-4178-99bd-aabb87539029",
       "appliedAtUtc": "2026-11-15T13:48:38.6448357Z",
       "proof": "pokeyland-34-pokeyshow-description-20261115.json"
+    },
+    {
+      "operationId": "8338a86c-f49e-4216-beb3-5b20247c9182",
+      "appliedAtUtc": "2026-11-15T13:55:05.3232074Z",
+      "proof": "pokeyland-37-checkpoint-description-20261115.json"
+    },
+    {
+      "operationId": "d3971466-5d73-401d-9402-b681c3b6bfa1",
+      "appliedAtUtc": "2026-11-15T13:56:49.6673927Z",
+      "proof": "pokeyland-historical-carriage-20261115.json"
+    },
+    {
+      "operationId": "40953c91-ff61-4cfa-9c04-83b5059981f5",
+      "appliedAtUtc": "2026-11-15T13:59:37.7680308Z",
+      "proof": "pokeyland-lukylud-reference-20261115.json"
     }
   ],
   "currentCounts": {
-    "items": 74,
+    "items": 75,
     "publicItems": 0,
     "zones": 3,
     "media": 53,
     "privateLogo": true,
     "parkDescribedLanguages": 8,
-    "itemsDescribed": 51,
-    "referenceLocalizedTexts": 16,
-    "historicalUnknownItems": 17,
+    "itemsDescribed": 52,
+    "referenceLocalizedTexts": 24,
+    "historicalUnknownItems": 18,
     "zonesDescribed": 3,
     "officialMaps": 1,
     "publicOfficialMaps": 0,
@@ -283,11 +298,12 @@
     "privateItemFacts": 6,
     "articles": 1,
     "privateArticles": 1,
-    "privateItems": 74,
-    "itemsWithEightLanguageDescriptions": 51,
+    "privateItems": 75,
+    "itemsWithEightLanguageDescriptions": 52,
     "privateMedia": 53,
     "publicMedia": 0,
-    "itemPositions": 10
+    "itemPositions": 10,
+    "manufacturers": 2
   },
   "imports": [
     {
@@ -556,7 +572,7 @@
       "createdAtUtc": "2026-11-15T13:45:19.248Z"
     }
   ],
-  "updatedAtUtc": "2026-11-15T13:52:42.415458+00:00",
+  "updatedAtUtc": "2026-11-15T14:03:00.881386+00:00",
   "idempotence": {
     "proof": "pokeyland-idempotence-followup-20261115.json",
     "counts": {
@@ -824,9 +840,6 @@
     "errors": []
   },
   "latestHistoryDiagnostics": {
-    "receivedAtUtc": "2026-11-15T13:21:47.4888171Z",
-    "action": "HistoryDiagnostics",
-    "startedAtUtc": "2026-11-15T13:21:46.8703304Z",
     "result": {
       "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
       "parkName": "Pokeyland",
@@ -898,7 +911,10 @@
         "majorFactCount": 0,
         "indexableKeyYears": []
       }
-    }
+    },
+    "receivedAtUtc": "2026-11-15T14:02:11.7773212Z",
+    "startedAtUtc": "2026-11-15T14:02:11.2626927Z",
+    "action": "HistoryDiagnostics"
   },
   "pricingQualification": {
     "proof": "pokeyland-season-pass-pricing-20261115.json",
@@ -1378,6 +1394,93 @@
       "imageId": "a96fbefc478540688a36dc04d2a27d10",
       "issue": "FACSS source holder identified but explicit reuse licence or holder permission not documented; keep private until compatible evidence is retained.",
       "proof": "pokeyland-photo-pokeyshow-2017-20261115.json"
+    },
+    {
+      "imageId": "dc7a5c8c37bf421991729e5b30735d50",
+      "issue": "Amazone legal source requires prior written permission for visual reuse, none documented. Keep Saut photo private; manufacturer logos not imported.",
+      "proof": "pokeyland-manufacturers-research-20261115.json"
     }
-  ]
+  ],
+  "latestReferenceHistoricalIdempotence": {
+    "operationId": "330088cb-1147-4842-bb96-c6717270e2ff",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:01:19.3689706Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "entityKey": "pokeyland-manufacturer-lukylud",
+        "displayName": "Lukylud",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "entityKey": "pokeyland-historical-checkpoint",
+        "displayName": "Checkpoint",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "abe0a8ee-f222-4c44-94d7-a0799317b823",
+        "entityKey": "pokeyland-historical-balade-caleche",
+        "displayName": "Balade en calèche",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "currentCompleteness": {
+    "receivedAtUtc": "2026-11-15T14:01:56.0713114Z",
+    "result": {
+      "completenessScore": 87,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 90,
+      "earnedPoints": 78,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "startedAtUtc": "2026-11-15T14:01:55.3060097Z",
+    "action": "Completeness"
+  }
 }

@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-37-checkpoint-description",
+        "step": "04-items",
+        "notes": "Huit textes privés personnellement écrits et relus, source nominale primaire https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623 : Checkpoint nommé explicitement avec tranchées et PC militaire enterré. Original toutmetz-checkpoint.jpg examiné intégralement : branchages tressés/talus/obstacles/forme canon ; photo signée rejetée pour import, aucune arme fonctionnelle/authentique affirmée. Vues presse2016/2017 comparées mais sans enseigne, non importées, aucune attribution actuelle déduite. Présence2015 ne devient pas date ouverture ; statutUnknown, visibilitéprivée, datefermeture inconnue préservés. Aucun alias avec terrain actuel FoxTwo/Cemetery."
+      },
+      "items": [
+        {
+          "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+          "key": "pokeyland-historical-checkpoint",
+          "name": "Checkpoint",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un champ de bataille reconstitué</h2><p>Checkpoint figure parmi les terrains de paintball présentés à Pokeyland en 2015. Son décor repose sur des tranchées et un poste de commandement militaire enterré, aménagés au milieu des arbres.</p><p>La photographie de ce reportage montre des levées de terre bordées de branchages tressés, des obstacles en bois et un élément de décor en forme de canon. Ces aménagements composent un paysage de jeu militaire reconstitué.</p><h2>Des passages en contrebas</h2><p>Le relief des tranchées place les cheminements sous le niveau des talus. L’entrée basse du poste couvert prolonge cette ambiance de terrain retranché dans la forêt.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A recreated battlefield</h2><p>Checkpoint is among the paintball fields presented at Pokeyland in 2015. Its setting consists of trenches and an underground military command post built among the trees.</p><p>The photograph in that report shows earth banks edged with woven branches, wooden obstacles and a cannon-shaped scenic prop. Together they form a recreated military play landscape.</p><h2>Passages below the banks</h2><p>The trenches place the paths below the surrounding earth banks. The low entrance to the covered post extends the atmosphere of an entrenched position in the forest.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein nachgebautes Schlachtfeld</h2><p>Checkpoint gehört zu den Paintballfeldern, die 2015 in Pokeyland vorgestellt wurden. Die Kulisse besteht aus Schützengräben und einem unterirdischen militärischen Kommandoposten zwischen den Bäumen.</p><p>Das Foto des Berichts zeigt Erdwälle mit geflochtenen Zweigen, Holzhindernisse und eine kanonenförmige Requisite. Diese Elemente bilden eine nachgestellte militärische Spiellandschaft.</p><h2>Wege unterhalb der Wälle</h2><p>Die Gräben führen unter dem Niveau der umgebenden Erdwälle entlang. Der niedrige Eingang des überdeckten Postens ergänzt die Atmosphäre einer verschanzten Stellung im Wald.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un campo de batalla recreado</h2><p>Checkpoint figura entre los campos de paintball presentados en Pokeyland en 2015. Su decoración se basa en trincheras y un puesto de mando militar subterráneo, construidos entre los árboles.</p><p>La fotografía de aquel reportaje muestra taludes de tierra bordeados por ramas entretejidas, obstáculos de madera y una pieza decorativa con forma de cañón. Estos elementos componen un paisaje de juego militar recreado.</p><h2>Pasos por debajo de los taludes</h2><p>Las trincheras sitúan los caminos bajo el nivel de los taludes. La entrada baja del puesto cubierto prolonga ese ambiente de posición atrincherada en el bosque.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un campo di battaglia ricostruito</h2><p>Checkpoint figura tra i campi da paintball presentati a Pokeyland nel 2015. L’ambientazione si basa su trincee e un posto di comando militare interrato, realizzati tra gli alberi.</p><p>La fotografia del reportage mostra terrapieni bordati da rami intrecciati, ostacoli di legno e un elemento scenografico a forma di cannone. Questi allestimenti compongono un paesaggio di gioco militare ricostruito.</p><h2>Passaggi sotto i terrapieni</h2><p>Le trincee portano i camminamenti sotto il livello degli argini di terra. Il basso ingresso del posto coperto prolunga l’atmosfera di una posizione trincerata nel bosco.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een nagebouwd slagveld</h2><p>Checkpoint behoort tot de paintballterreinen die in 2015 in Pokeyland werden gepresenteerd. Het decor bestaat uit loopgraven en een ondergrondse militaire commandopost tussen de bomen.</p><p>De foto in dat verslag toont aarden wallen met gevlochten takken langs de randen, houten obstakels en een decorstuk in de vorm van een kanon. Samen vormen ze een nagebouwd militair speellandschap.</p><h2>Doorgangen onder de wallen</h2><p>De loopgraven laten de paden onder het niveau van de aarden wallen lopen. De lage ingang van de overdekte post versterkt de sfeer van een verschanste positie in het bos.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Odtworzone pole bitwy</h2><p>Checkpoint należy do pól paintballowych przedstawionych w Pokeyland w 2015 roku. Scenerię tworzą okopy i podziemny wojskowy punkt dowodzenia, zbudowane między drzewami.</p><p>Zdjęcie z tamtego reportażu pokazuje ziemne wały obrzeżone plecionymi gałęziami, drewniane przeszkody i element dekoracji w kształcie armaty. Razem tworzą odtworzony militarny teren do gry.</p><h2>Przejścia poniżej wałów</h2><p>Okopy prowadzą ścieżki poniżej poziomu ziemnych nasypów. Niskie wejście do zadaszonego stanowiska wzmacnia atmosferę ufortyfikowanej pozycji w lesie.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um campo de batalha recriado</h2><p>Checkpoint figura entre os campos de paintball apresentados no Pokeyland em 2015. O cenário assenta em trincheiras e num posto de comando militar subterrâneo, construídos entre as árvores.</p><p>A fotografia da reportagem mostra taludes de terra delimitados por ramos entrelaçados, obstáculos de madeira e um elemento cénico em forma de canhão. Estes elementos compõem uma paisagem de jogo militar recriada.</p><h2>Passagens abaixo dos taludes</h2><p>As trincheiras colocam os caminhos abaixo do nível dos taludes. A entrada baixa do posto coberto prolonga o ambiente de uma posição entrincheirada no bosque.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "bb8459b2-15b4-4fd5-9cde-c48bdb31e67e",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:54:53.071435Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "entityKey": "pokeyland-historical-checkpoint",
+        "displayName": "Checkpoint",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein nachgebautes Schlachtfeld</h2><p>Checkpoint gehört zu den Paintballfeldern, die 2015 in Pokeyland vorgestellt wurden. Die Kulisse besteht aus Schützengräben und einem unterirdischen militärischen Kommandoposten zwischen den Bäumen.</p><p>Das Foto des Berichts zeigt Erdwälle mit geflochtenen Zweigen, Holzhindernisse und eine kanonenförmige Requisite. Diese Elemente bilden eine nachgestellte militärische Spiellandschaft.</p><h2>Wege unterhalb der Wälle</h2><p>Die Gräben führen unter dem Niveau der umgebenden Erdwälle entlang. Der niedrige Eingang des überdeckten Postens ergänzt die Atmosphäre einer verschanzten Stellung im Wald.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A recreated battlefield</h2><p>Checkpoint is among the paintball fields presented at Pokeyland in 2015. Its setting consists of trenches and an underground military command post built among the trees.</p><p>The photograph in that report shows earth banks edged with woven branches, wooden obstacles and a cannon-shaped scenic prop. Together they form a recreated military play landscape.</p><h2>Passages below the banks</h2><p>The trenches place the paths below the surrounding earth banks. The low entrance to the covered post extends the atmosphere of an entrenched position in the forest.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un campo de batalla recreado</h2><p>Checkpoint figura entre los campos de paintball presentados en Pokeyland en 2015. Su decoración se basa en trincheras y un puesto de mando militar subterráneo, construidos entre los árboles.</p><p>La fotografía de aquel reportaje muestra taludes de tierra bordeados por ramas entretejidas, obstáculos de madera y una pieza decorativa con forma de cañón. Estos elementos componen un paisaje de juego militar recreado.</p><h2>Pasos por debajo de los taludes</h2><p>Las trincheras sitúan los caminos bajo el nivel de los taludes. La entrada baja del puesto cubierto prolonga ese ambiente de posición atrincherada en el bosque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un champ de bataille reconstitué</h2><p>Checkpoint figure parmi les terrains de paintball présentés à Pokeyland en 2015. Son décor repose sur des tranchées et un poste de commandement militaire enterré, aménagés au milieu des arbres.</p><p>La photographie de ce reportage montre des levées de terre bordées de branchages tressés, des obstacles en bois et un élément de décor en forme de canon. Ces aménagements composent un paysage de jeu militaire reconstitué.</p><h2>Des passages en contrebas</h2><p>Le relief des tranchées place les cheminements sous le niveau des talus. L’entrée basse du poste couvert prolonge cette ambiance de terrain retranché dans la forêt.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un campo di battaglia ricostruito</h2><p>Checkpoint figura tra i campi da paintball presentati a Pokeyland nel 2015. L’ambientazione si basa su trincee e un posto di comando militare interrato, realizzati tra gli alberi.</p><p>La fotografia del reportage mostra terrapieni bordati da rami intrecciati, ostacoli di legno e un elemento scenografico a forma di cannone. Questi allestimenti compongono un paesaggio di gioco militare ricostruito.</p><h2>Passaggi sotto i terrapieni</h2><p>Le trincee portano i camminamenti sotto il livello degli argini di terra. Il basso ingresso del posto coperto prolunga l’atmosfera di una posizione trincerata nel bosco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een nagebouwd slagveld</h2><p>Checkpoint behoort tot de paintballterreinen die in 2015 in Pokeyland werden gepresenteerd. Het decor bestaat uit loopgraven en een ondergrondse militaire commandopost tussen de bomen.</p><p>De foto in dat verslag toont aarden wallen met gevlochten takken langs de randen, houten obstakels en een decorstuk in de vorm van een kanon. Samen vormen ze een nagebouwd militair speellandschap.</p><h2>Doorgangen onder de wallen</h2><p>De loopgraven laten de paden onder het niveau van de aarden wallen lopen. De lage ingang van de overdekte post versterkt de sfeer van een verschanste positie in het bos.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Odtworzone pole bitwy</h2><p>Checkpoint należy do pól paintballowych przedstawionych w Pokeyland w 2015 roku. Scenerię tworzą okopy i podziemny wojskowy punkt dowodzenia, zbudowane między drzewami.</p><p>Zdjęcie z tamtego reportażu pokazuje ziemne wały obrzeżone plecionymi gałęziami, drewniane przeszkody i element dekoracji w kształcie armaty. Razem tworzą odtworzony militarny teren do gry.</p><h2>Przejścia poniżej wałów</h2><p>Okopy prowadzą ścieżki poniżej poziomu ziemnych nasypów. Niskie wejście do zadaszonego stanowiska wzmacnia atmosferę ufortyfikowanej pozycji w lesie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um campo de batalha recriado</h2><p>Checkpoint figura entre os campos de paintball apresentados no Pokeyland em 2015. O cenário assenta em trincheiras e num posto de comando militar subterrâneo, construídos entre as árvores.</p><p>A fotografia da reportagem mostra taludes de terra delimitados por ramos entrelaçados, obstáculos de madeira e um elemento cénico em forma de canhão. Estes elementos compõem uma paisagem de jogo militar recriada.</p><h2>Passagens abaixo dos taludes</h2><p>As trincheiras colocam os caminhos abaixo do nível dos taludes. A entrada baixa do posto coberto prolonga o ambiente de uma posição entrincheirada no bosque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "8338a86c-f49e-4216-beb3-5b20247c9182",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:55:05.3232067Z",
+    "appliedAtUtc": "2026-11-15T13:55:05.3232074Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "entityKey": "pokeyland-historical-checkpoint",
+        "displayName": "Checkpoint",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein nachgebautes Schlachtfeld</h2><p>Checkpoint gehört zu den Paintballfeldern, die 2015 in Pokeyland vorgestellt wurden. Die Kulisse besteht aus Schützengräben und einem unterirdischen militärischen Kommandoposten zwischen den Bäumen.</p><p>Das Foto des Berichts zeigt Erdwälle mit geflochtenen Zweigen, Holzhindernisse und eine kanonenförmige Requisite. Diese Elemente bilden eine nachgestellte militärische Spiellandschaft.</p><h2>Wege unterhalb der Wälle</h2><p>Die Gräben führen unter dem Niveau der umgebenden Erdwälle entlang. Der niedrige Eingang des überdeckten Postens ergänzt die Atmosphäre einer verschanzten Stellung im Wald.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A recreated battlefield</h2><p>Checkpoint is among the paintball fields presented at Pokeyland in 2015. Its setting consists of trenches and an underground military command post built among the trees.</p><p>The photograph in that report shows earth banks edged with woven branches, wooden obstacles and a cannon-shaped scenic prop. Together they form a recreated military play landscape.</p><h2>Passages below the banks</h2><p>The trenches place the paths below the surrounding earth banks. The low entrance to the covered post extends the atmosphere of an entrenched position in the forest.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un campo de batalla recreado</h2><p>Checkpoint figura entre los campos de paintball presentados en Pokeyland en 2015. Su decoración se basa en trincheras y un puesto de mando militar subterráneo, construidos entre los árboles.</p><p>La fotografía de aquel reportaje muestra taludes de tierra bordeados por ramas entretejidas, obstáculos de madera y una pieza decorativa con forma de cañón. Estos elementos componen un paisaje de juego militar recreado.</p><h2>Pasos por debajo de los taludes</h2><p>Las trincheras sitúan los caminos bajo el nivel de los taludes. La entrada baja del puesto cubierto prolonga ese ambiente de posición atrincherada en el bosque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un champ de bataille reconstitué</h2><p>Checkpoint figure parmi les terrains de paintball présentés à Pokeyland en 2015. Son décor repose sur des tranchées et un poste de commandement militaire enterré, aménagés au milieu des arbres.</p><p>La photographie de ce reportage montre des levées de terre bordées de branchages tressés, des obstacles en bois et un élément de décor en forme de canon. Ces aménagements composent un paysage de jeu militaire reconstitué.</p><h2>Des passages en contrebas</h2><p>Le relief des tranchées place les cheminements sous le niveau des talus. L’entrée basse du poste couvert prolonge cette ambiance de terrain retranché dans la forêt.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un campo di battaglia ricostruito</h2><p>Checkpoint figura tra i campi da paintball presentati a Pokeyland nel 2015. L’ambientazione si basa su trincee e un posto di comando militare interrato, realizzati tra gli alberi.</p><p>La fotografia del reportage mostra terrapieni bordati da rami intrecciati, ostacoli di legno e un elemento scenografico a forma di cannone. Questi allestimenti compongono un paesaggio di gioco militare ricostruito.</p><h2>Passaggi sotto i terrapieni</h2><p>Le trincee portano i camminamenti sotto il livello degli argini di terra. Il basso ingresso del posto coperto prolunga l’atmosfera di una posizione trincerata nel bosco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een nagebouwd slagveld</h2><p>Checkpoint behoort tot de paintballterreinen die in 2015 in Pokeyland werden gepresenteerd. Het decor bestaat uit loopgraven en een ondergrondse militaire commandopost tussen de bomen.</p><p>De foto in dat verslag toont aarden wallen met gevlochten takken langs de randen, houten obstakels en een decorstuk in de vorm van een kanon. Samen vormen ze een nagebouwd militair speellandschap.</p><h2>Doorgangen onder de wallen</h2><p>De loopgraven laten de paden onder het niveau van de aarden wallen lopen. De lage ingang van de overdekte post versterkt de sfeer van een verschanste positie in het bos.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Odtworzone pole bitwy</h2><p>Checkpoint należy do pól paintballowych przedstawionych w Pokeyland w 2015 roku. Scenerię tworzą okopy i podziemny wojskowy punkt dowodzenia, zbudowane między drzewami.</p><p>Zdjęcie z tamtego reportażu pokazuje ziemne wały obrzeżone plecionymi gałęziami, drewniane przeszkody i element dekoracji w kształcie armaty. Razem tworzą odtworzony militarny teren do gry.</p><h2>Przejścia poniżej wałów</h2><p>Okopy prowadzą ścieżki poniżej poziomu ziemnych nasypów. Niskie wejście do zadaszonego stanowiska wzmacnia atmosferę ufortyfikowanej pozycji w lesie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um campo de batalha recriado</h2><p>Checkpoint figura entre os campos de paintball apresentados no Pokeyland em 2015. O cenário assenta em trincheiras e num posto de comando militar subterrâneo, construídos entre as árvores.</p><p>A fotografia da reportagem mostra taludes de terra delimitados por ramos entrelaçados, obstáculos de madeira e um elemento cénico em forma de canhão. Estes elementos compõem uma paisagem de jogo militar recriada.</p><h2>Passagens abaixo dos taludes</h2><p>As trincheiras colocam os caminhos abaixo do nível dos taludes. A entrada baixa do posto coberto prolonga o ambiente de uma posição entrincheirada no bosque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Huit textes privés personnellement écrits et relus, source nominale primaire https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623 : Checkpoint nommé explicitement avec tranchées et PC militaire enterré. Original toutmetz-checkpoint.jpg examiné intégralement : branchages tressés/talus/obstacles/forme canon ; photo signée rejetée pour import, aucune arme fonctionnelle/authentique affirmée. Vues presse2016/2017 comparées mais sans enseigne, non importées, aucune attribution actuelle déduite. Présence2015 ne devient pas date ouverture ; statutUnknown, visibilitéprivée, datefermeture inconnue préservés. Aucun alias avec terrain actuel FoxTwo/Cemetery.",
+    "wordCounts": {
+      "Checkpoint": {
+        "fr": 101,
+        "en": 87,
+        "de": 76,
+        "es": 99,
+        "it": 93,
+        "nl": 94,
+        "pl": 71,
+        "pt": 94
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "postApplyIdempotence": {
+    "operationId": "330088cb-1147-4842-bb96-c6717270e2ff",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:01:19.3689706Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "entityKey": "pokeyland-manufacturer-lukylud",
+        "displayName": "Lukylud",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "entityKey": "pokeyland-historical-checkpoint",
+        "displayName": "Checkpoint",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "abe0a8ee-f222-4c44-94d7-a0799317b823",
+        "entityKey": "pokeyland-historical-balade-caleche",
+        "displayName": "Balade en calèche",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

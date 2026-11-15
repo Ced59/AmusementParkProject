@@ -1,0 +1,738 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-carriage-qualified",
+        "step": "03-historical-items",
+        "notes": "Existence nominale historique et distinction avec Poney prouvées par panneau officiel photographié2017 : Balade en calèche n29, Poney n8. Aucune date ouverture/fermeture, photo nominale, itinéraire ou statut actuel prouvés. Source nocturne2017 ne nomme pas calèche : ancienne portée corrigée. O’Chalet/Sur le Pouce conservés en recherche pour possible continuité de lieux existants, non créés."
+      },
+      "items": [
+        {
+          "key": "pokeyland-historical-balade-caleche",
+          "name": "Balade en calèche",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          }
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "23baf766-96c1-4815-a048-886b49ab9645",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:56:21.5879616Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "070ec69a-0bf9-4794-84d0-e241d1505342",
+        "entityKey": "pokeyland-historical-balade-caleche",
+        "displayName": "Balade en calèche",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "d3971466-5d73-401d-9402-b681c3b6bfa1",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:56:49.6673923Z",
+    "appliedAtUtc": "2026-11-15T13:56:49.6673927Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "abe0a8ee-f222-4c44-94d7-a0799317b823",
+        "entityKey": "pokeyland-historical-balade-caleche",
+        "displayName": "Balade en calèche",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "research": {
+    "createdAtUtc": "2026-11-15T13:54:08.591213+00:00",
+    "scope": "Public source requalification only; no API/Git/registry/import/mutation/final copy. Sources reused locally; no network request required.",
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "workingStateCheck": {
+      "path": "/workspace/france-historical-20261114/pokeyland/working-state.json",
+      "sha256": "99301429072d7d6ed2a4f21694fce5663391a92d667abead6b608b8c93369f08",
+      "itemCount": 74,
+      "matchingItems": []
+    },
+    "localReceiptCheck": {
+      "checkedAtUtc": "2026-11-15T13:54:08.591632+00:00",
+      "filesInspected": 180,
+      "matchingFiles": [],
+      "newCreationFound": false,
+      "latestReceipts": [
+        {
+          "file": "36-manufacturer-resolution-receipt.json",
+          "bytes": 462,
+          "mtimeUtc": "2026-11-15T13:52:42.461429+00:00"
+        },
+        {
+          "file": "35-recent-description-idempotence-receipt.json",
+          "bytes": 469,
+          "mtimeUtc": "2026-11-15T13:50:29.894761+00:00"
+        },
+        {
+          "file": "working-state.json",
+          "bytes": 714030,
+          "mtimeUtc": "2026-11-15T13:49:41.401423+00:00"
+        },
+        {
+          "file": "photo-pokeyshow-2017-import-result.json",
+          "bytes": 5696,
+          "mtimeUtc": "2026-11-15T13:49:33.935747+00:00"
+        },
+        {
+          "file": "34-pokeyshow-description-apply-result.json",
+          "bytes": 7855,
+          "mtimeUtc": "2026-11-15T13:48:39.165570+00:00"
+        },
+        {
+          "file": "34-pokeyshow-description-apply.json",
+          "bytes": 7264,
+          "mtimeUtc": "2026-11-15T13:48:39.148555+00:00"
+        },
+        {
+          "file": "34-pokeyshow-description-preview-receipt.json",
+          "bytes": 460,
+          "mtimeUtc": "2026-11-15T13:48:17.264124+00:00"
+        },
+        {
+          "file": "34-pokeyshow-description-apply-request.json",
+          "bytes": 484,
+          "mtimeUtc": "2026-11-15T13:48:15.734531+00:00"
+        },
+        {
+          "file": "33-food-descriptions-apply-result.json",
+          "bytes": 12659,
+          "mtimeUtc": "2026-11-15T13:46:52.403811+00:00"
+        },
+        {
+          "file": "33-food-descriptions-apply.json",
+          "bytes": 11472,
+          "mtimeUtc": "2026-11-15T13:46:52.386379+00:00"
+        },
+        {
+          "file": "33-food-descriptions-preview-receipt.json",
+          "bytes": 456,
+          "mtimeUtc": "2026-11-15T13:46:40.542147+00:00"
+        },
+        {
+          "file": "33-food-descriptions-apply-request.json",
+          "bytes": 468,
+          "mtimeUtc": "2026-11-15T13:46:02.233431+00:00"
+        },
+        {
+          "file": "photo-qualified-picnic-import-result.json",
+          "bytes": 4865,
+          "mtimeUtc": "2026-11-15T13:45:54.271623+00:00"
+        },
+        {
+          "file": "photo-qualified-parking-import-result.json",
+          "bytes": 4562,
+          "mtimeUtc": "2026-11-15T13:45:42.419830+00:00"
+        },
+        {
+          "file": "photo-qualified-tyrolienne-import-result.json",
+          "bytes": 4601,
+          "mtimeUtc": "2026-11-15T13:45:26.055639+00:00"
+        }
+      ],
+      "scopeCaution": "Local file inspection only. Root should recheck operation queue immediately before any mutation."
+    },
+    "summary": {
+      "historicalNamesEstablished": 3,
+      "definiteDistinctnessForAdditionalPrivateEntry": [
+        "Balade en calèche"
+      ],
+      "historicalCandidatesWithUnresolvedCurrentOutletContinuity": [
+        "O’Chalet",
+        "Sur le Pouce"
+      ],
+      "publicationOrCompletionRecommended": false
+    },
+    "sources": {
+      "plan_gallery_2017": {
+        "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+        "accessedAtUtc": "2026-11-15T11:17:45.185777+00:00",
+        "status": 200,
+        "finalUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 617393,
+        "sha256": "30439c222d634f7c2f0d5c0153b5148f993dbaff99f866d899a723cc651363b6",
+        "file": "estrepublicain-visit-2017.html",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-visit-2017.html",
+        "verifiedBytes": 617393,
+        "verifiedSha256": "30439c222d634f7c2f0d5c0153b5148f993dbaff99f866d899a723cc651363b6",
+        "dateInterpretation": {
+          "displayedPublicationDate": "2017-08-11",
+          "displayedPublicationTimeLocal": "18:00",
+          "displayedUpdateTimeLocal": "18:08",
+          "urlDate": "2017-08-07",
+          "photoTakenAt": null,
+          "note": "Use displayed article date; the URL and CDN timestamp do not establish the photo capture date. The photographed plan has no confirmed printed year."
+        },
+        "verifiedCurrentBytes": 617393,
+        "verifiedCurrentSha256": "30439c222d634f7c2f0d5c0153b5148f993dbaff99f866d899a723cc651363b6",
+        "redownloadedForThisTask": false
+      },
+      "plan_photo_2017": {
+        "url": "https://cdn-s-www.estrepublicain.fr/images/304959DC-8C74-48BD-9E56-7EC69EF6C6D8/NW_raw/title-1500630058.jpg",
+        "accessedAtUtc": "2026-11-15T11:21:12.406977+00:00",
+        "status": 200,
+        "finalUrl": "https://cdn-s-www.estrepublicain.fr/images/304959DC-8C74-48BD-9E56-7EC69EF6C6D8/NW_raw/title-1500630058.jpg",
+        "contentType": "image/jpeg",
+        "bytes": 610309,
+        "sha256": "77ebcbe8107f76bc0504342255fa48d47ab3ae47db5a9bd3a2639e61c425173c",
+        "file": "estrepublicain-gallery-16-2017.jpg",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-16-2017.jpg",
+        "verifiedBytes": 610309,
+        "verifiedSha256": "77ebcbe8107f76bc0504342255fa48d47ab3ae47db5a9bd3a2639e61c425173c",
+        "verifiedCurrentBytes": 610309,
+        "verifiedCurrentSha256": "77ebcbe8107f76bc0504342255fa48d47ab3ae47db5a9bd3a2639e61c425173c",
+        "redownloadedForThisTask": false
+      },
+      "nocturne_july_2017": {
+        "url": "https://www.le-lorrain.fr/blog/2017/07/12/moselle-nocturne-parc-pokeyland-22-juillet/",
+        "accessedAtUtc": "2026-11-15T11:27:00.690475+00:00",
+        "status": 200,
+        "finalUrl": "https://www.le-lorrain.fr/blog/2017/07/12/moselle-nocturne-parc-pokeyland-22-juillet/",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 171675,
+        "sha256": "5ad3860755cf28237e153a2eee462f13b4f29a44beeb8bbbb781d2431324f833",
+        "file": "nocturne-le-lorrain-2017.html",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/nocturne-le-lorrain-2017.html",
+        "verifiedBytes": 171675,
+        "verifiedSha256": "5ad3860755cf28237e153a2eee462f13b4f29a44beeb8bbbb781d2431324f833",
+        "verifiedCurrentBytes": 171675,
+        "verifiedCurrentSha256": "5ad3860755cf28237e153a2eee462f13b4f29a44beeb8bbbb781d2431324f833",
+        "redownloadedForThisTask": false
+      },
+      "nocturne_august_2017": {
+        "url": "https://www.ousortiren.com/sortir-en-lorraine/1862-nocturne-festive-au-parc-de-loisirs-pokeyland-a-fey",
+        "accessedAtUtc": "2026-11-15T11:27:01.862605+00:00",
+        "status": 200,
+        "finalUrl": "https://www.ousortiren.com/sortir-en-lorraine/1862-nocturne-festive-au-parc-de-loisirs-pokeyland-a-fey",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 59670,
+        "sha256": "4ef234a5afe0ed3c4cda7c869c11160ac580b5c7ad0d36453fb5425461a7e864",
+        "file": "nocturne-ousortiren-2017.html",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/nocturne-ousortiren-2017.html",
+        "verifiedBytes": 59670,
+        "verifiedSha256": "4ef234a5afe0ed3c4cda7c869c11160ac580b5c7ad0d36453fb5425461a7e864",
+        "verifiedCurrentBytes": 59670,
+        "verifiedCurrentSha256": "4ef234a5afe0ed3c4cda7c869c11160ac580b5c7ad0d36453fb5425461a7e864",
+        "redownloadedForThisTask": false
+      },
+      "nocturne_2019": {
+        "url": "https://www.lagazettefrance.fr/article/pokeyland-organise-bientot-sa-mega-nocturne-festive",
+        "accessedAtUtc": "2026-11-15T11:27:04.815237+00:00",
+        "status": 200,
+        "finalUrl": "https://www.lagazettefrance.fr/article/pokeyland-organise-bientot-sa-mega-nocturne-festive",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 92742,
+        "sha256": "8dbc2f01cab7d4bf525ce7293bd9c7c7b3a316e370c48744b77e04621ab3081c",
+        "file": "nocturne-gazette-2019.html",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/nocturne-gazette-2019.html",
+        "verifiedBytes": 92742,
+        "verifiedSha256": "8dbc2f01cab7d4bf525ce7293bd9c7c7b3a316e370c48744b77e04621ab3081c",
+        "verifiedCurrentBytes": 92742,
+        "verifiedCurrentSha256": "8dbc2f01cab7d4bf525ce7293bd9c7c7b3a316e370c48744b77e04621ab3081c",
+        "redownloadedForThisTask": false
+      },
+      "current_food": {
+        "url": "https://www.pokeyland.com/restauration/",
+        "accessedAtUtc": "2026-11-15T10:37:45.706394+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/restauration/",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 97919,
+        "sha256": "e66380686b2e78d5de6bd6d21594d83739af744e773e7eb450d438f55ca2c12d",
+        "file": "official-restauration.html",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-restauration.html",
+        "verifiedBytes": 97919,
+        "verifiedSha256": "e66380686b2e78d5de6bd6d21594d83739af744e773e7eb450d438f55ca2c12d",
+        "verifiedCurrentBytes": 97919,
+        "verifiedCurrentSha256": "e66380686b2e78d5de6bd6d21594d83739af744e773e7eb450d438f55ca2c12d",
+        "redownloadedForThisTask": false
+      },
+      "nocturne_2018": {
+        "url": "https://www.ousortiren.com/sortir-en-lorraine/3188-nocturne-parc-de-loisirs-pokeyland-a-fey",
+        "accessedAtUtc": "2026-11-15T12:18:20.254354+00:00",
+        "file": "nocturne-2018.html",
+        "status": 200,
+        "finalUrl": "https://www.ousortiren.com/sortir-en-lorraine/3188-nocturne-parc-de-loisirs-pokeyland-a-fey",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 59196,
+        "sha256": "9ba54d81c8b25f181f40d33b309832a8b88236cc76ef348b8318b781c5b6a173",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/nocturne-2018.html",
+        "verifiedCurrentBytes": 59196,
+        "verifiedCurrentSha256": "9ba54d81c8b25f181f40d33b309832a8b88236cc76ef348b8318b781c5b6a173",
+        "redownloadedForThisTask": false
+      }
+    },
+    "exactExcerpts": [
+      {
+        "source": "plan_photo_2017",
+        "exactExcerpt": "29 BALADE EN CALÈCHE",
+        "attestedKind": "Offre de promenade en calèche",
+        "photoPersonallyRead": true
+      },
+      {
+        "source": "plan_photo_2017",
+        "exactExcerpt": "28 O’CHALET (BARBECUE GÉANT)",
+        "attestedKind": "Point de restauration / barbecue",
+        "photoPersonallyRead": true
+      },
+      {
+        "source": "plan_photo_2017",
+        "exactExcerpt": "23 BUVETTE “SUR LE POUCE”",
+        "attestedKind": "Buvette",
+        "photoPersonallyRead": true
+      },
+      {
+        "source": "nocturne_july_2017",
+        "exactExcerpt": "Snack, Pizzeria, O’chalet (nouveau restaurant), Sur le Pouce, et deux buvettes supplémentaires.",
+        "publicationDate": "2017-07-12",
+        "announcedEventDate": "2017-07-22",
+        "scope": "Liste d’établissements annoncés ouverts pour la nocturne ; pas constat rétrospectif de service effectif."
+      },
+      {
+        "source": "nocturne_2018",
+        "exactExcerpt": "Snack, Pizzeria, le nouveau restaurant O’Chalet, Sur le Pouce et deux buvettes supplémentaires",
+        "publicationDate": null,
+        "announcedEventDate": "2018-07-21",
+        "scope": "Date affichée de l’événement ; date propre de publication non démontrée."
+      },
+      {
+        "source": "nocturne_2019",
+        "exactExcerpt": "Snack, Pizzeria, O‘Chalet, Sur le pouce, le nouveau restaurant L’Escale",
+        "publicationDate": "2019-08-13",
+        "announcedEventDate": "2019-08-14",
+        "scope": "Coexistence nominale dans une même liste, sans preuve de renommage vers un établissement actuel."
+      }
+    ],
+    "items": [
+      {
+        "name": "Balade en calèche",
+        "historicalIdentityEstablished": true,
+        "attestedKind": "Promenade en calèche, telle que nommée au plan.",
+        "proposedApiCategory": null,
+        "proposedApiType": null,
+        "sourceKeys": [
+          "plan_photo_2017",
+          "plan_gallery_2017"
+        ],
+        "distinctionEvidence": [
+          "Le panneau donne le n°29 à Balade en calèche et le n°8 à Poney dans la même légende : deux offres distinctes à cette date.",
+          "Aucune des 74 entrées locales ne porte ce nom ou un alias calèche.",
+          "Les p’tits chevaux est une autre offre mécanique actuelle ; aucun document ne transforme la calèche historique en cette attraction."
+        ],
+        "existingPlausibleCandidates": [
+          {
+            "name": "Poney",
+            "id": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+            "key": "pokeyland-poney"
+          },
+          {
+            "name": "Les p’tits chevaux",
+            "id": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+            "key": "pokeyland-les-ptits-chevaux"
+          },
+          {
+            "name": "Le p’tit train",
+            "id": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+            "key": "pokeyland-le-ptit-train"
+          }
+        ],
+        "creationAssessment": "Qualified named historical offer, reasonably distinct from the 74 inspected entries; a private Unknown inventory entry is supported. This is not readiness for publication or a developed description.",
+        "creationSupportedUnderRequestedDistinctnessTest": true,
+        "openingDate": null,
+        "openingYear": null,
+        "closingDate": null,
+        "closingYear": null,
+        "currentStatus": null,
+        "evidencePublicationYear": 2017,
+        "aliasesToCreate": [],
+        "photosToImport": [],
+        "limits": [
+          "Le millésime imprimé du plan et la date de prise de vue sont inconnus ; la galerie a été publiée le 11 août 2017.",
+          "Pas de photographie attribuable de la calèche, nombre de chevaux, type de véhicule détaillé ou trajet.",
+          "Ne pas utiliser la photo Rosalie de Le Lorrain ni la calèche municipale de Chaudeney.",
+          "Ne pas prendre 2017 pour une année d’ouverture ou inférer fermeture depuis absence des plans actuels."
+        ]
+      },
+      {
+        "name": "O’Chalet",
+        "historicalIdentityEstablished": true,
+        "attestedKind": "Restaurant ; barbecue géant sur le panneau.",
+        "proposedApiCategory": null,
+        "proposedApiType": null,
+        "sourceKeys": [
+          "plan_photo_2017",
+          "nocturne_july_2017",
+          "nocturne_august_2017",
+          "nocturne_2018",
+          "nocturne_2019"
+        ],
+        "distinctionEvidence": [
+          "O’Chalet n°28 et Buvette Sur le Pouce n°23 sont deux entrées sur le même panneau.",
+          "O’Chalet, Sur le Pouce et L’Escale sont explicitement cités ensemble en 2019 : O’Chalet ne peut pas être assimilé à L’Escale dans cette liste."
+        ],
+        "existingPlausibleCandidates": [
+          {
+            "name": "Le Grill",
+            "id": "538a604f-6fe1-4460-9740-7b0c576b0214",
+            "key": "pokeyland-grill"
+          },
+          {
+            "name": "L’Escale",
+            "id": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+            "key": "pokeyland-escale"
+          },
+          {
+            "name": "Le Petit Creux",
+            "id": "e267af4d-a394-4ddb-9cb5-597582e077da",
+            "key": "pokeyland-petit-creux"
+          },
+          {
+            "name": "Le Gourmand",
+            "id": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+            "key": "pokeyland-gourmand"
+          },
+          {
+            "name": "Pokey Beach",
+            "id": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+            "key": "pokeyland-pokey-beach"
+          }
+        ],
+        "creationAssessment": "Named historical identity is certain, but a separate additional entity versus every plausible current food outlet is not fully demonstrated. In particular O’Chalet → Le Grill continuity is neither proved nor excluded. Under the requested no-duplicate distinctness test, keep as qualified historical candidate pending continuity review rather than assert a new separate physical outlet.",
+        "creationSupportedUnderRequestedDistinctnessTest": false,
+        "openingDate": null,
+        "openingYear": null,
+        "closingDate": null,
+        "closingYear": null,
+        "currentStatus": null,
+        "documentedOfferYears": [
+          2017,
+          2018,
+          2019
+        ],
+        "noveltyWordingYears": [
+          2017,
+          2018
+        ],
+        "aliasesToCreate": [],
+        "photosToImport": [],
+        "limits": [
+          "Barbecue géant est un qualificatif explicite du même O’Chalet, pas une quatrième entité à créer.",
+          "Nouveau restaurant répété en 2018 ne prouve pas une ouverture 2018, puisqu’il est déjà documenté en 2017.",
+          "Aucun bâtiment, comptoir, menu ou successeur actuel identifié par une photo nominale.",
+          "La fonction barbecue commune à Le Grill ne prouve pas identité ni distinction."
+        ]
+      },
+      {
+        "name": "Sur le Pouce",
+        "historicalIdentityEstablished": true,
+        "attestedKind": "Buvette ; figure parmi les points de restauration annoncés pour les nocturnes.",
+        "proposedApiCategory": null,
+        "proposedApiType": null,
+        "sourceKeys": [
+          "plan_photo_2017",
+          "nocturne_july_2017",
+          "nocturne_august_2017",
+          "nocturne_2018",
+          "nocturne_2019"
+        ],
+        "distinctionEvidence": [
+          "Buvette Sur le Pouce n°23 est distincte d’O’Chalet n°28 sur le même panneau.",
+          "Sur le Pouce est cité séparément de Snack, Pizzeria, O’Chalet et L’Escale dans la liste de 2019."
+        ],
+        "existingPlausibleCandidates": [
+          {
+            "name": "L’Escale",
+            "id": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+            "key": "pokeyland-escale"
+          },
+          {
+            "name": "Le Petit Creux",
+            "id": "e267af4d-a394-4ddb-9cb5-597582e077da",
+            "key": "pokeyland-petit-creux"
+          },
+          {
+            "name": "Le Gourmand",
+            "id": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+            "key": "pokeyland-gourmand"
+          },
+          {
+            "name": "Le Grill",
+            "id": "538a604f-6fe1-4460-9740-7b0c576b0214",
+            "key": "pokeyland-grill"
+          },
+          {
+            "name": "Pokey Beach",
+            "id": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+            "key": "pokeyland-pokey-beach"
+          }
+        ],
+        "creationAssessment": "Named historical identity is certain and distinct from L’Escale at the 2019 event. Continuity to another current snack remains unknown. The same strict no-duplicate test does not yet prove an additional separate entity against the full current food catalogue; retain candidate with this explicit unresolved relationship.",
+        "creationSupportedUnderRequestedDistinctnessTest": false,
+        "openingDate": null,
+        "openingYear": null,
+        "closingDate": null,
+        "closingYear": null,
+        "currentStatus": null,
+        "documentedOfferYears": [
+          2017,
+          2018,
+          2019
+        ],
+        "aliasesToCreate": [],
+        "photosToImport": [],
+        "limits": [
+          "Buvette does not prove a particular menu, building material or permanent operation.",
+          "Do not use generic Snack/Pizzeria labels as extra named places or two temporary event buvettes as permanent entities.",
+          "No rename toward Le Petit Creux, Le Gourmand, Le Grill or Pokey Beach found; absence of a rename claim is not positive proof that all are separate."
+        ]
+      }
+    ],
+    "correctionToPriorResearch": {
+      "claimBeingLimited": "Prior reports associated the July 2017 nocturne article with the calèche, and one residual paragraph said it named the calèche.",
+      "verifiedCorrection": "The saved July/August nocturne text does not contain calèche. Its balade illustration is a Rosalie. Only the photographed official panel is used as direct nominal calèche proof here. Earlier reports remain preserved, not overwritten.",
+      "filesReviewed": [
+        "historical-inventory-followup/nocturne-le-lorrain-2017.txt",
+        "historical-inventory-followup/nocturne-ousortiren-2017.txt",
+        "historical-inventory-followup/historical-map-2017-additional-identities-20261115.json",
+        "historical-residual-identities/historical-residual-identities-report.json"
+      ]
+    },
+    "limits": [
+      "Unknown dates remain null; event dates/publication dates are not opening or closure dates.",
+      "No alias is proposed or applied.",
+      "Existing named identities and records are preserved.",
+      "The judgment distinguishes a documented historical label from proof that it represents an additional physical place.",
+      "No nominal attraction/restaurant photographs were recovered or imported in this task."
+    ]
+  },
+  "sourceExcerpts": [
+    {
+      "source": "plan_photo_2017",
+      "exactExcerpt": "29 BALADE EN CALÈCHE",
+      "attestedKind": "Offre de promenade en calèche",
+      "photoPersonallyRead": true
+    },
+    {
+      "source": "plan_photo_2017",
+      "exactExcerpt": "28 O’CHALET (BARBECUE GÉANT)",
+      "attestedKind": "Point de restauration / barbecue",
+      "photoPersonallyRead": true
+    },
+    {
+      "source": "plan_photo_2017",
+      "exactExcerpt": "23 BUVETTE “SUR LE POUCE”",
+      "attestedKind": "Buvette",
+      "photoPersonallyRead": true
+    },
+    {
+      "source": "nocturne_july_2017",
+      "exactExcerpt": "Snack, Pizzeria, O’chalet (nouveau restaurant), Sur le Pouce, et deux buvettes supplémentaires.",
+      "publicationDate": "2017-07-12",
+      "announcedEventDate": "2017-07-22",
+      "scope": "Liste d’établissements annoncés ouverts pour la nocturne ; pas constat rétrospectif de service effectif."
+    },
+    {
+      "source": "nocturne_2018",
+      "exactExcerpt": "Snack, Pizzeria, le nouveau restaurant O’Chalet, Sur le Pouce et deux buvettes supplémentaires",
+      "publicationDate": null,
+      "announcedEventDate": "2018-07-21",
+      "scope": "Date affichée de l’événement ; date propre de publication non démontrée."
+    },
+    {
+      "source": "nocturne_2019",
+      "exactExcerpt": "Snack, Pizzeria, O‘Chalet, Sur le pouce, le nouveau restaurant L’Escale",
+      "publicationDate": "2019-08-13",
+      "announcedEventDate": "2019-08-14",
+      "scope": "Coexistence nominale dans une même liste, sans preuve de renommage vers un établissement actuel."
+    }
+  ],
+  "personalReview": "Panneau officiel2017 intégral relu, calèche29/Poney8 distincts. Aucun jour, statut actuel, véhicule précis ou itinéraire inféré. OChalet et SurlePouce non créés en attente rapprochement, toutes limites conservées.",
+  "totalItemsAfter": 75,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "postApplyIdempotence": {
+    "operationId": "330088cb-1147-4842-bb96-c6717270e2ff",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:01:19.3689706Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "a20298e7-7075-4a0d-811e-3985c3299882",
+        "entityKey": "pokeyland-manufacturer-lukylud",
+        "displayName": "Lukylud",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "entityKey": "pokeyland-historical-checkpoint",
+        "displayName": "Checkpoint",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "abe0a8ee-f222-4c44-94d7-a0799317b823",
+        "entityKey": "pokeyland-historical-balade-caleche",
+        "displayName": "Balade en calèche",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

@@ -1,0 +1,563 @@
+{
+  "createdAtUtc": "2026-11-15T13:57:53.838581+00:00",
+  "task": "Lukylud and Amazone Adventure reference/role qualification for Pokeyland; public research only.",
+  "companies": [
+    {
+      "name": "Lukylud",
+      "officialWebsite": "https://www.lukylud.fr/",
+      "country": "France",
+      "identity": {
+        "officialLegalName": "LUKYLUD",
+        "legalFormAsPublished": "SARL",
+        "registration": "RCS Nantes B 443 881 149",
+        "sourceId": "lukyludLegal",
+        "founderAsOfficiallyNamed": "Flore BECHEUX",
+        "founderSourceId": "lukyludAbout",
+        "currentMunicipality": "Sucé-sur-Erdre",
+        "addressCaveat": "Legal notice says 181 Parc d’activité de la Baumondière, while current footer says 213. City/country agree; do not silently unify street numbers."
+      },
+      "dateFacts": [
+        {
+          "fact": "Company creation according to its detailed chronology",
+          "date": "2002-10-29",
+          "sourceId": "lukyludAbout",
+          "precision": "Day",
+          "claimType": "First-party company history, not independently retrieved registry incorporation record"
+        },
+        {
+          "fact": "Repeated commercial/company slogan",
+          "dateLabel": "Depuis 2003 / Fabricant de jeux gonflables depuis 2003",
+          "sourceIds": [
+            "lukyludAbout",
+            "lukyludQuality"
+          ],
+          "precision": "Year",
+          "caveat": "Do not override the explicit 29 October 2002 company-history date with the rounded since-2003 slogan, or invent an explanation for the difference."
+        },
+        {
+          "fact": "Repair service introduced",
+          "date": "2009-09-01",
+          "sourceId": "lukyludAbout",
+          "precision": "Day"
+        },
+        {
+          "fact": "Move to Sucé-sur-Erdre",
+          "date": "2013-02-08",
+          "sourceId": "lukyludAbout",
+          "precision": "Day"
+        }
+      ],
+      "genericSupportedFacts": [
+        {
+          "fact": "Designs, develops and sells professional inflatable games for leisure operators; company also explicitly claims manufacture of its own range.",
+          "sourceIds": [
+            "lukyludAbout",
+            "lukyludQuality"
+          ]
+        },
+        {
+          "fact": "Offers inflatable castles, slides, courses, activity games and related recreational equipment.",
+          "sourceIds": [
+            "lukyludPokeyland",
+            "lukyludQuality"
+          ]
+        },
+        {
+          "fact": "Services include repair, washing, storage/winter storage and reconditioning/resale of used inflatables.",
+          "sourceId": "lukyludAbout"
+        },
+        {
+          "fact": "Provides custom colour schemes and markings/logos in collaboration with designers, illustrated by the Pokeyland Rotor Infernal case.",
+          "sourceId": "lukyludPokeyland"
+        }
+      ],
+      "genericClaimsNotEstablished": [
+        "Do not state every catalogue product is manufactured by Lukylud itself.",
+        "A French company/address is not proof all components or products are made in France.",
+        "Gibbons blowers are separately named third-party equipment on the quality page, not Lukylud-manufactured components.",
+        "No OEM or maker of the Rotor motor/rotating drive is identified by the Pokeyland case study.",
+        "Do not adopt marketing superlatives or treat claimed EN14960 conformity as independent certification of a specific installed unit."
+      ],
+      "referenceReadiness": "Company identity, first-party history, specialties and native logo are qualified. Root still owns official API reference resolution, wording and any creation. Logo reuse rights remain unresolved.",
+      "proposedFoundingYearIfRootUsesCompanyHistory": 2002,
+      "foundingYearCaveat": "Preserve detailed creation versus since-2003 slogan distinction in evidence."
+    },
+    {
+      "name": "Amazone Adventure",
+      "officialWebsite": "https://www.amazone-adventure.com/",
+      "country": "France",
+      "identity": {
+        "nameAsOfficialPublisher": "AMAZONE ADVENTURE",
+        "baseAsPublished": "170, Allée du Lyonnais - Z.I. Nord, 26300 Bourg de Péage, France",
+        "sourceId": "amazoneLegal",
+        "exactLegalRegistrationNotEstablishedFromPrimaryPagesRead": true,
+        "caveat": "RCS Romans 478098262 in the legal page belongs to website agency 6tematik, not Amazone. Do not assign it to the manufacturer. Tree Top Construction / Amazone Adventure Concept appeared in search leads but were not independently established as legal aliases by the primary pages read; no automatic alias merge."
+      },
+      "dateFacts": [
+        {
+          "fact": "Brand/company history claims creation by a mountain guide",
+          "year": 2001,
+          "precision": "Year",
+          "sourceId": "amazoneAbout",
+          "exactDate": null,
+          "founderName": null
+        },
+        {
+          "fact": "Current first-party team page says Frédéric took over the company",
+          "year": 2014,
+          "precision": "Year",
+          "sourceId": "amazoneTeam",
+          "caveat": "No full name or precise acquisition day inferred."
+        }
+      ],
+      "genericSupportedFacts": [
+        {
+          "fact": "Designs, constructs, installs and maintains aerial adventure parks and rope courses, with turnkey or tailored services.",
+          "sourceId": "amazoneAbout"
+        },
+        {
+          "fact": "Works on large ziplines, treehouses, net courses, themed outdoor parks and natural/custom playgrounds.",
+          "sourceId": "amazoneAbout"
+        },
+        {
+          "fact": "Says the majority of play modules are made in its Drôme workshops, while also using a network of supplier partners.",
+          "sourceId": "amazoneAbout"
+        },
+        {
+          "fact": "Operates a direct equipment shop and offers project audit/optimisation services.",
+          "sourceId": "amazoneAbout"
+        },
+        {
+          "fact": "Official team describes construction/site crews, a design office, technical coordination and workshop production.",
+          "sourceId": "amazoneTeam"
+        }
+      ],
+      "genericClaimsNotEstablished": [
+        "Do not equate construction/integration of a whole activity with manufacture of every braking, belay or jump device.",
+        "Do not attribute all nine current Pokeyland numbered courses from a general 2015 construction claim.",
+        "Do not state all modules or all components are produced in France: the site itself mentions external suppliers.",
+        "Do not confuse this French adventure-park business with German agricultural equipment maker AMAZONE/Amazonen-Werke.",
+        "Do not infer a full founder identity or an exact incorporation date from the 2001 brand-history claim."
+      ],
+      "referenceReadiness": "Trade identity, base/country, claimed history, specialties and genuine native logo qualified. Separate component manufacturers and unresolved legal aliases. Native logo and imported private image rights remain unresolved.",
+      "proposedFoundingYearFromFirstPartyHistory": 2001
+    }
+  ],
+  "itemRoleMatrix": [
+    {
+      "itemId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+      "itemName": "Rotor Jump",
+      "company": "Lukylud",
+      "sourceIds": [
+        "lukyludPokeyland",
+        "lukyludQuality"
+      ],
+      "verdict": "SUPPORTED_FOR_CUSTOMISED_INFLATABLE_STRUCTURE_SUPPLY_DESIGN",
+      "supportedRole": "Direct customer case study: Pokeyland commissioned the Rotor Infernal/faucheuse inflatable in its own colours and markings; Lukylud worked with designers and customer proposals. Generic quality page additionally claims design and manufacture of its inflatable range.",
+      "notEstablished": [
+        "OEM/manufacturer of the rotating motor mechanism",
+        "exact delivery/installation day",
+        "the article date as opening date",
+        "every technical specification of the standard product applies to Pokeyland unit"
+      ],
+      "roleFieldCaution": "If the API relation implies sole manufacturer of the complete mechanical device, do not silently broaden the evidenced structure/customisation role. Root decides supported relation semantics."
+    },
+    {
+      "itemId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+      "itemName": "Saut dans le vide",
+      "company": "Amazone Adventure",
+      "sourceIds": [
+        "amazoneThrill",
+        "amazonePokeyland2017",
+        "quickjumpManual"
+      ],
+      "verdict": "SUPPORTED_INSTALLATION_PORTFOLIO_WITH_SEPARATE_COMPONENT_MANUFACTURER",
+      "supportedRole": "Amazone primary portfolio explicitly captions Pokeyland Free Fall Jump | QUICKjump XL + Ripcord - 20m high and Activity towers - 23 m high. In context of its design/construction services, this supports its role in the installation/integration portfolio.",
+      "separateDeviceManufacturer": {
+        "name": "Head Rush Technologies",
+        "device": "QUICKjump / QUICKjump XL; RipCord accessory",
+        "primaryEvidence": "quickjumpManual",
+        "details": "Publisher-hosted operator manual P/N10029-0405 names Head Rush Technologies; manufacturer details section at page46. Do not attribute the device to Amazone."
+      },
+      "notEstablished": [
+        "Amazone manufacture of QUICKjump, RipCord or TRUBLUE devices",
+        "the complete construction contract or installer identity for each component",
+        "a precise installation/opening day",
+        "a swap between Saut dans le vide and the separate Ejector/catapult item"
+      ],
+      "roleFieldCaution": "An undifferentiated single manufacturer field may lose the installation/device distinction. Preserve both roles in evidence and avoid misleading exclusive attribution."
+    },
+    {
+      "itemId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+      "itemName": "Escalade",
+      "company": "Amazone Adventure",
+      "sourceId": "amazoneThrill",
+      "verdict": "SPECIFIC_INSTALLATION_PORTFOLIO_EVIDENCE_NOT_ALL_COMPONENTS",
+      "supportedRole": "Portfolio captions an 18m Pokeyland climbing wall with TRUBLUE security device; current park activity may encompass multiple walls.",
+      "notEstablished": [
+        "Amazone manufacture of TRUBLUE equipment",
+        "construction of every current climbing wall",
+        "a new separate item solely from the caption"
+      ]
+    },
+    {
+      "itemId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+      "itemName": "Cabanes de Pokey",
+      "company": "Amazone Adventure",
+      "sourceId": "amazonePokeyland2018",
+      "verdict": "NAMED_POKEYLAND_NET_TREEHOUSE_PROJECT_REQUIRES_CURRENT_ITEM_CONTINUITY_REVIEW",
+      "supportedRole": "2018 primary article captions Mer de filet et village de cabanes Pokeyland and says Pokeyland renewed its trust for park extension that year.",
+      "notEstablished": [
+        "2018 exact public opening date",
+        "all present equipment is unchanged since 2018",
+        "all current forest attractions share this supplier"
+      ]
+    },
+    {
+      "itemIds": [
+        "09ed3d9f-bcf0-4751-b69a-6abd6ab5c4ca",
+        "9a40ce59-ca74-455f-8ba0-185b560055a1",
+        "20067de5-b801-4e24-90d3-4ba5ffc711f6"
+      ],
+      "itemNames": [
+        "Parcours Pitchoune 1",
+        "Parcours Pitchoune 2",
+        "Parcours Pitchoune 3"
+      ],
+      "company": "Amazone Adventure",
+      "sourceId": "amazonePokeyland2017",
+      "verdict": "NO_INDIVIDUAL_CURRENT_COURSE_ASSOCIATION_FROM_THIS_SOURCE",
+      "supportedRole": "Company says it constructed the park in 2015 and returned for a new Pitchoun course with 12 workshops and a third initiation course in 2017. This is project-level rope-course evidence.",
+      "notEstablished": [
+        "which current numbered Pitchoune is the 2017 addition",
+        "identity of the historical third initiation course with any current numbered course",
+        "builder of all nine present courses"
+      ],
+      "mustNotBulkAssociate": true
+    }
+  ],
+  "logos": [
+    {
+      "company": "Lukylud",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/lukylud-logo-native.png",
+      "nativeUrl": "https://www.lukylud.fr/wp-content/uploads/2021/12/Logo-Lukylud-structure-gonflable-professionnelle.png",
+      "sourcePageId": "lukyludPokeyland",
+      "sourceRole": "Exact image URL present in official site header, not a user reconstruction or arbitrary search result.",
+      "httpStatus": 200,
+      "accessedAtUtc": "2026-11-15T13:53:19.705840+00:00",
+      "width": 617,
+      "height": 200,
+      "mode": "RGBA",
+      "transparencyPresent": true,
+      "bytes": 80670,
+      "sha256": "42d3357f7487eadf76673471464af291fa09fd9a2bd2544098b0ba9cf6bf4e7f",
+      "personalVisualReview": "Native transparent logo with white/orange LUKYLUD lettering on blue, a red inflatable castle at left, coloured arcs and Structures gonflables wording. No image reconstructed or cropped.",
+      "artworkCreationDate": null,
+      "yearNotInferredFromUploadDirectory": true,
+      "localPixelTransformation": false,
+      "publicationRightsStatus": "UNRESOLVED_EXPLICIT_WRITTEN_PERMISSION_REQUIRED_BY_SOURCE_TERMS",
+      "permissionEvidenceAvailable": false,
+      "importedByThisTask": false,
+      "publishableOnEvidenceCurrentlyAvailable": false
+    },
+    {
+      "company": "Amazone Adventure",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/amazone-logo-native.png",
+      "nativeUrl": "https://www.amazone-adventure.com/frontoffice/ressources/img/logo-head.png",
+      "sourcePageId": "amazonePokeyland2017",
+      "sourceRole": "Exact image URL present in official site header, not a user reconstruction or arbitrary search result.",
+      "httpStatus": 200,
+      "accessedAtUtc": "2026-11-15T13:53:19.934004+00:00",
+      "width": 350,
+      "height": 63,
+      "mode": "RGBA",
+      "transparencyPresent": true,
+      "bytes": 7498,
+      "sha256": "1f13ca92d6a9c0b167ff4dddd9fcba57b486e6280159b40daec0ba68df14b7f9",
+      "personalVisualReview": "Native transparent header logo: green tree/climber silhouette, AMAZONE ADVENTURE wordmark and green CRÉATEUR DE PARCOURS AVENTURE tagline. No reconstruction or enlargement.",
+      "artworkCreationDate": null,
+      "yearNotInferredFromUploadDirectory": true,
+      "localPixelTransformation": false,
+      "publicationRightsStatus": "UNRESOLVED_EXPLICIT_WRITTEN_PERMISSION_REQUIRED_BY_SOURCE_TERMS",
+      "permissionEvidenceAvailable": false,
+      "importedByThisTask": false,
+      "publishableOnEvidenceCurrentlyAvailable": false
+    }
+  ],
+  "rights": {
+    "assessedAtUtc": "2026-11-15T13:57:53.838581+00:00",
+    "legalSources": [
+      "lukyludLegal",
+      "amazoneLegal"
+    ],
+    "factsMayBeIndependentlyRewritten": "Research deliverable is a fact matrix, not final eight-language text. No substantial marketing copy proposed for reuse.",
+    "logos": {
+      "Lukylud": "Legal page reserves iconographic/photographic reproduction and requires written consent; no compatible permission evidence supplied.",
+      "Amazone Adventure": "Legal page requires prior written permission for use of visuals beyond individual private consultation; no compatible permission evidence supplied."
+    },
+    "publicationStatus": "BLOCKED_FOR_LISTED_VISUALS_UNTIL_COMPATIBLE_PERMISSION_OR_RIGHTS_EVIDENCE",
+    "alreadyImportedPrivateSautPhoto": {
+      "imageId": "dc7a5c8c37bf421991729e5b30735d50",
+      "source": "Amazone Adventure installation portfolio",
+      "statusAsReportedByRoot": "Already imported private; no publication authorisation established by this research.",
+      "action": "Keep private pending compatible rights evidence. This research made no import or publication and no request to any third party."
+    },
+    "noLicenceInvented": true,
+    "noContactMade": true,
+    "noImportMade": true
+  },
+  "sources": [
+    {
+      "sourceId": "lukyludAbout",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/lukylud-about.html",
+      "sha256": "4cfa9ee37f970b5d209bcd952dd594983be95eae665dcbc73aff2467ee98bfb1",
+      "bytes": 196493,
+      "url": "https://www.lukylud.fr/fabricant-jeux-gonflables-france/",
+      "finalUrl": "https://www.lukylud.fr/fabricant-jeux-gonflables-france/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T13:53:11.323043+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": false,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/lukylud-about.txt",
+        "sha256": "142a033db626a9ef9f66c9aabf432b2e861ed34399d654b1bdbf030cdf362824"
+      }
+    },
+    {
+      "sourceId": "lukyludQuality",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/lukylud-quality.html",
+      "sha256": "854196ec5ec4a22efd5ad5598f123502bf72dabba33fbe955bb6e8f356081c11",
+      "bytes": 179383,
+      "url": "https://www.lukylud.fr/qualite-structure-gonflable/",
+      "finalUrl": "https://www.lukylud.fr/qualite-structure-gonflable/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T13:53:13.630389+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": false,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/lukylud-quality.txt",
+        "sha256": "15584f331c0b1c9f91a938a0621f28f338cd3fc92a11832d38cdd55dafa8d253"
+      }
+    },
+    {
+      "sourceId": "lukyludLegal",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/lukylud-legal.html",
+      "sha256": "726494e7cc8fa665c099c54f7a76fb8e634234e244ae5c886992a6086c49b523",
+      "bytes": 177839,
+      "url": "https://www.lukylud.fr/mentions-legales",
+      "finalUrl": "https://www.lukylud.fr/mentions-legales/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T13:53:14.871365+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": false,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/lukylud-legal.txt",
+        "sha256": "f23d8e8ea10f3c64ec6eb49a6722c82db99fedc092b086a7cfad353c6408b1f5"
+      }
+    },
+    {
+      "sourceId": "lukyludPokeyland",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lukylud-rotor-pokeyland.html",
+      "sha256": "6e7167fd76e6de8e71a178daf6d6d8cf765a9bf54dee4165bccefc6cad2df9b7",
+      "bytes": 186534,
+      "url": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+      "finalUrl": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T12:39:16.642040+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": true,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lukylud-rotor-pokeyland.txt",
+        "sha256": "443cbf06ce13246ef492370f67bb242a14238130cf461b929db471a3dbe73b1e"
+      },
+      "publishedAtUtc": "2021-05-20T10:00:48+00:00",
+      "modifiedAtUtc": "2022-02-28T13:29:27+00:00",
+      "dateBasis": "Matching article meta properties and JSON-LD; publication date, not delivery or opening date."
+    },
+    {
+      "sourceId": "amazoneAbout",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/amazone-about.html",
+      "sha256": "ea48ae213910f8f02c85d7edc6736027d8c0fa76c5564af7e9589d00d5b09bbe",
+      "bytes": 129638,
+      "url": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/presentation",
+      "finalUrl": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/presentation",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T13:53:16.304672+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": false,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/amazone-about.txt",
+        "sha256": "c102ac8675cbae55151da79f689c5a08d6eb723e77b945d3a458a75ca436c964"
+      }
+    },
+    {
+      "sourceId": "amazoneLegal",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/amazone-legal.html",
+      "sha256": "8f6ada15613239e37d5eb43b40cf6bc1d0581e42dcac6e2e6f0698fa01a684f3",
+      "bytes": 126364,
+      "url": "https://www.amazone-adventure.com/mentions-legales",
+      "finalUrl": "https://www.amazone-adventure.com/mentions-legales",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T13:53:17.904985+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": false,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/amazone-legal.txt",
+        "sha256": "19bd16df285b1d67c99f526d235256266c1760a736b71d942dbb3efe403ee3d8"
+      }
+    },
+    {
+      "sourceId": "amazoneTeam",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/amazone-team.html",
+      "sha256": "7a033fb3ecc675cefa40c1e029142fc60791b18e0812ee96598da0b71249bcbf",
+      "bytes": 129798,
+      "url": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/notre-equipe",
+      "finalUrl": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/notre-equipe",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T13:53:19.027772+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": false,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/amazone-team.txt",
+        "sha256": "6635d59d44754ef88a90cb468c01ee86bfa32f616202ba922f2d158653fe63c8"
+      }
+    },
+    {
+      "sourceId": "amazonePokeyland2017",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-extension-pokeyland-2017.html",
+      "sha256": "f5fa2552d03a153ade166d47a41156a8c7999f950266e9b3df8a3439d997c517",
+      "bytes": 126149,
+      "url": "https://www.amazone-adventure.com/annexes/nouvel-alias/12-extension-du-parc-pokeyland",
+      "finalUrl": "https://www.amazone-adventure.com/annexes/nouvel-alias/12-extension-du-parc-pokeyland",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T11:29:01.891773+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": true,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-extension-pokeyland-2017.txt",
+        "sha256": "5c22ecb6766d028747893774f341e0592790929d06329b7f9f5bbb935f542885"
+      },
+      "publishedLocalDateTime": "2017-06-02 11:01:04",
+      "publicationTimezone": null,
+      "dateBasis": "Visible article byline; no timezone inferred."
+    },
+    {
+      "sourceId": "amazonePokeyland2018",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-adventure-extension-2018.html",
+      "sha256": "a402aeeddb08f5e8480a7bbd8ef44a500013bdfe42836a94de99f83f1dd9d934",
+      "bytes": 131196,
+      "url": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/actualites/36-et-si-c-etait-le-moment-d-agrandir-votre-parc",
+      "finalUrl": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/actualites/36-et-si-c-etait-le-moment-d-agrandir-votre-parc",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T11:27:36.997272+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": true,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-adventure-extension-2018.txt",
+        "sha256": "9d17f828711f7abb361ac623930fb856cfa23979b68ca538ed796c76dd68154f"
+      },
+      "publishedLocalDateTime": "2018-05-23 10:46:55",
+      "publicationTimezone": null,
+      "dateBasis": "Visible article byline; not proof of opening day of a specific feature."
+    },
+    {
+      "sourceId": "amazoneThrill",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-thrill-en.html",
+      "sha256": "84af80a2fc698eb4c1fd4dd63900418ca4b2945306dd83eebe4eb60a1ba6e588",
+      "bytes": 132832,
+      "url": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+      "finalUrl": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T11:28:43.873826+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": true,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-thrill-en.txt",
+        "sha256": "56838b56d97d70600ac08abd79abea10d81c5fffbc3fbd8ee6aaae8597910c12"
+      }
+    },
+    {
+      "sourceId": "headrushManualIndex",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/headrush-product-manuals.html",
+      "sha256": "7d789c89273463d53fcb917c98a79a589bbdb3767956833613822f6396670e4f",
+      "bytes": 582114,
+      "url": "https://trubluetech.com/us/en/adventure/resources/product-manuals",
+      "finalUrl": "https://trubluetech.com/us/en/adventure/resources/product-manuals",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T13:54:32.940865+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": false,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/headrush-product-manuals.txt",
+        "sha256": "2310de9909a002e4b8f01c235c80fe3c1a0ef989b66eca02286b2f803f47ffda"
+      }
+    },
+    {
+      "sourceId": "headrushContact",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/headrush-contact.html",
+      "sha256": "934280437e4e8ef45db475875688e1975db21179758a59d8c6b0f44beec655bd",
+      "bytes": 499365,
+      "url": "https://headrushtech.com/about/contact-us",
+      "finalUrl": "https://trubluetech.com/us/en/adventure/contact-us",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T13:54:33.791518+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": false,
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/headrush-contact.txt",
+        "sha256": "73e7487a4db25ff43134f1fe80851bd9dd09f3f0d9eec3de72dacb00dcf6080a"
+      }
+    },
+    {
+      "sourceId": "quickjumpManual",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/quickjump-xl-operator-manual-2018.pdf",
+      "sha256": "e5b17be317ddb70dccc56415aca1440008990b33daf91ce6ccbf004c62e33ece",
+      "bytes": 5017204,
+      "url": "https://trubluetech.com/media/TBT/adv/resources/product-manuals/EN/EN_quickjump-quickjump-xl-operation-manual.pdf",
+      "finalUrl": "https://trubluetech.com/media/TBT/adv/resources/product-manuals/EN/EN_quickjump-quickjump-xl-operation-manual.pdf",
+      "status": 200,
+      "accessedAtUtc": "2026-11-15T13:55:10.582246+00:00",
+      "accessReceipt": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/source-access.jsonl",
+      "hashMatchesAccessReceipt": true,
+      "readForQualificationAtUtc": "2026-11-15T13:57:53.838581+00:00",
+      "reusedPreservedFileWithoutNetwork": false,
+      "manualEditionLabel": "April 2018 in publisher index; manual P/N 10029-0405",
+      "readableText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/manufacturers-qualification-1350/quickjump-xl-operator-manual-2018.txt",
+        "sha256": "564c2d7b59e73a449aa01066fe55970e24f23ffa92edb45e675e73cac8de5caf"
+      }
+    }
+  ],
+  "apiResolution": "Not performed by this agent. Root reports Preview found two potential reference creations and no matched existing reference; no Apply by this agent. Root must preserve its official resolution receipts.",
+  "constraints": [
+    "No PARK_DATA_EDITOR or other business API call.",
+    "No Git, reservation, registry edit, reference creation or association.",
+    "No media import, publication, image reconstruction, crop or contact.",
+    "No eight-language final biography drafted.",
+    "Existing source files and reports preserved; reused sources not fetched again."
+  ]
+}
