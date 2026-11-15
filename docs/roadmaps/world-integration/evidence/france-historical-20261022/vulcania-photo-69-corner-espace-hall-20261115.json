@@ -1,0 +1,291 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-69-corner-espace-hall",
+    "ownerId": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+    "itemName": "Corner Espace du Planétarium",
+    "current": true,
+    "source": {
+      "name": "Corner Espace du Planétarium",
+      "url": "https://www.vulcania.com/wp-content/uploads/2024/06/corner-espace-planetarium_585x389.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/shop-5-0-1915.jpg",
+      "http": 200,
+      "bytes": 55143,
+      "dimensions": [
+        585,
+        389
+      ],
+      "sha256": "58b646cc8249e9d7684dc904e90f2cd9d9eba1563e91313e5268e98aff7e874d",
+      "sourcePage": "https://www.vulcania.com/boutiques/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Four native official shop photos individually inspected, their exact shop associations established by the official page h3 gallery sections. Ninety-six localized metadata fields personally authored/reviewed. Additional four gallery images viewed for description qualification, not imported as variants. No capture date, mineral origin or current price inferred. No pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/06/corner-espace-planetarium_585x389.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/shop-5-0-1915.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-69-corner-espace-hall-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-69-corner-espace-hall-import-result.json"
+  },
+  "metadata": {
+    "description": "Les piliers inclinés et les entrées des salles apparaissent derrière le comptoir, sur le sol sombre du hall.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/06/corner-espace-planetarium_585x389.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Longue vitrine blanche éclairée présentant des livres et de petits objets dans le Corner Espace du Planétarium."
+      },
+      {
+        "languageCode": "en",
+        "value": "A long illuminated white display case presents books and small objects in the Corner Espace du Planétarium."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine lange beleuchtete weiße Vitrine zeigt Bücher und kleine Gegenstände im Corner Espace du Planétarium."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een lange verlichte witte vitrine toont boeken en kleine voorwerpen in de Corner Espace du Planétarium."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una lunga vetrina bianca illuminata presenta libri e piccoli oggetti nel Corner Espace du Planétarium."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una larga vitrina blanca iluminada presenta libros y pequeños objetos en el Corner Espace du Planétarium."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Długa oświetlona biała gablota prezentuje książki i drobne przedmioty w Corner Espace du Planétarium."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma longa vitrina branca iluminada apresenta livros e pequenos objetos no Corner Espace du Planétarium."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les piliers inclinés et les entrées des salles apparaissent derrière le comptoir, sur le sol sombre du hall."
+      },
+      {
+        "languageCode": "en",
+        "value": "Sloping pillars and room entrances appear behind the counter above the hall’s dark floor."
+      },
+      {
+        "languageCode": "de",
+        "value": "Schräge Pfeiler und Saaleingänge sind hinter dem Tresen über dem dunklen Hallenboden zu sehen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Schuine pijlers en zaalingangen zijn achter de toonbank zichtbaar, boven de donkere vloer van de hal."
+      },
+      {
+        "languageCode": "it",
+        "value": "Pilastri inclinati e ingressi delle sale compaiono dietro il bancone, sul pavimento scuro dell’atrio."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los pilares inclinados y los accesos a las salas aparecen detrás del mostrador, sobre el suelo oscuro del vestíbulo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Za ladą widać pochyłe filary i wejścia do sal, nad ciemną podłogą holu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os pilares inclinados e as entradas das salas surgem atrás do balcão, sobre o chão escuro do átrio."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T19:18:45.5798701Z",
+    "result": {
+      "id": "03ee8ef93e7045e289706b2885a5a6b4",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+      "path": "park_item/03ee8ef93e7045e289706b2885a5a6b4",
+      "description": "Les piliers inclinés et les entrées des salles apparaissent derrière le comptoir, sur le sol sombre du hall.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 585,
+      "height": 389,
+      "sizeInBytes": 55143,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/06/corner-espace-planetarium_585x389.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Longue vitrine blanche éclairée présentant des livres et de petits objets dans le Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "en",
+          "value": "A long illuminated white display case presents books and small objects in the Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine lange beleuchtete weiße Vitrine zeigt Bücher und kleine Gegenstände im Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een lange verlichte witte vitrine toont boeken en kleine voorwerpen in de Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una lunga vetrina bianca illuminata presenta libri e piccoli oggetti nel Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una larga vitrina blanca iluminada presenta libros y pequeños objetos en el Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Długa oświetlona biała gablota prezentuje książki i drobne przedmioty w Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma longa vitrina branca iluminada apresenta livros e pequenos objetos no Corner Espace du Planétarium."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les piliers inclinés et les entrées des salles apparaissent derrière le comptoir, sur le sol sombre du hall."
+        },
+        {
+          "languageCode": "en",
+          "value": "Sloping pillars and room entrances appear behind the counter above the hall’s dark floor."
+        },
+        {
+          "languageCode": "de",
+          "value": "Schräge Pfeiler und Saaleingänge sind hinter dem Tresen über dem dunklen Hallenboden zu sehen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Schuine pijlers en zaalingangen zijn achter de toonbank zichtbaar, boven de donkere vloer van de hal."
+        },
+        {
+          "languageCode": "it",
+          "value": "Pilastri inclinati e ingressi delle sale compaiono dietro il bancone, sul pavimento scuro dell’atrio."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los pilares inclinados y los accesos a las salas aparecen detrás del mostrador, sobre el suelo oscuro del vestíbulo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Za ladą widać pochyłe filary i wejścia do sal, nad ciemną podłogą holu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os pilares inclinados e as entradas das salas surgem atrás do balcão, sobre o chão escuro do átrio."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:18:39.013Z",
+      "updatedAt": "2026-11-15T19:18:42.48Z"
+    },
+    "startedAtUtc": "2026-11-15T19:18:38.1847908Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

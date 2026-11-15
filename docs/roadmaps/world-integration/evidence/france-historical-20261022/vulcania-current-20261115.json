@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T19:09:58.827Z",
+  "lastDataIntegrationAt": "2026-11-15T19:31:35.834Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 25,
-  "realImportCount": 40,
-  "lastOperationId": "ffe5bce7-6d34-4753-b4c0-87ce370c7a7d",
+  "realApplyCount": 30,
+  "realImportCount": 47,
+  "lastOperationId": "9090120c-0e1f-4dbb-b8f1-fb1108a0a6a2",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -167,22 +167,27 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-50-five-food-notices-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-54-two-volcanic-shows-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-55-birds-and-tales-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-60-science-and-mascot-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-60-science-and-mascot-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-64-auvergne-sciences-shops-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-65-vulcania-espace-shops-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-71-vulcania-shop-specificity-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-70-two-presenter-notices-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-74-workshops-balloon-20261115.json"
   ],
   "currentCoverage": {
     "items": 47,
     "publicItems": 0,
-    "describedItems8Languages": 38,
+    "describedItems8Languages": 47,
     "zones": 0,
-    "ownMedia": 40,
+    "ownMedia": 47,
     "historyEvents": 4,
     "privateHistoryEvents": 4,
     "officialMaps": 2,
-    "privateOwnMedia": 40,
+    "privateOwnMedia": 47,
     "articles": 1,
     "privateArticles": 1
   },
-  "lastApplyOperationId": "ffe5bce7-6d34-4753-b4c0-87ce370c7a7d",
+  "lastApplyOperationId": "9090120c-0e1f-4dbb-b8f1-fb1108a0a6a2",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -383,6 +388,41 @@
       "imageId": "f1e809b6aa864d82a3cec643e624c7d9",
       "createdAt": "2026-11-15T19:09:58.827Z",
       "proof": "vulcania-photo-63-cent-volcans-map-20261115.json"
+    },
+    {
+      "imageId": "f75398491b044b9b8c2d9fa708b07f90",
+      "createdAt": "2026-11-15T19:18:08.948Z",
+      "proof": "vulcania-photo-66-auvergne-minerals-20261115.json"
+    },
+    {
+      "imageId": "fd7b1a3d22b246e0b8839903e7d6c006",
+      "createdAt": "2026-11-15T19:18:19.784Z",
+      "proof": "vulcania-photo-67-sciences-red-room-20261115.json"
+    },
+    {
+      "imageId": "b5f87cd49bc84c5282dedffb9b80c0f3",
+      "createdAt": "2026-11-15T19:18:29.999Z",
+      "proof": "vulcania-photo-68-vulcania-dragon-planets-20261115.json"
+    },
+    {
+      "imageId": "03ee8ef93e7045e289706b2885a5a6b4",
+      "createdAt": "2026-11-15T19:18:39.013Z",
+      "proof": "vulcania-photo-69-corner-espace-hall-20261115.json"
+    },
+    {
+      "imageId": "2499afaf32444bc3b47500322efdf341",
+      "createdAt": "2026-11-15T19:27:36.935Z",
+      "proof": "vulcania-photo-72-cratere-presenters-20261115.json"
+    },
+    {
+      "imageId": "5b8fe460082a41428af86320e46f49fc",
+      "createdAt": "2026-11-15T19:27:47.762Z",
+      "proof": "vulcania-photo-73-sorcier-projection-20261115.json"
+    },
+    {
+      "imageId": "583a2b39fa9f4649a44345bdd310daf4",
+      "createdAt": "2026-11-15T19:31:35.834Z",
+      "proof": "vulcania-photo-75-ballon-puys-20261115.json"
     }
   ],
   "photoMetadataUpdates": [

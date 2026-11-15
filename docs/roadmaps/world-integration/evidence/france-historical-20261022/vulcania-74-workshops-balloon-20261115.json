@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+          "key": "vulcania-ateliers-planetarium",
+          "name": "Ateliers du Planétarium",
+          "type": "InteractiveExperience",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>L’espace au bout des doigts</h2><p>Les Ateliers du Planétarium explorent l’astronomie et les sciences expérimentales avec les médiateurs de Vulcania. Leur programme réunit Dans la peau d’un astronaute, Sous le soleil et Drôles d’expériences. Les participants manipulent et discutent de ce qu’ils observent, dans un ensemble consacré aux liens entre la Terre, l’espace et les phénomènes physiques.</p><p>Dans la peau d’un astronaute aborde le départ vers la Station spatiale internationale, les sensations en orbite et la vie des équipages. Sous le soleil rapproche notre étoile du quotidien : saisons différentes selon les hémisphères, couleurs de la lumière et aurores polaires donnent matière aux échanges.</p><h2>La surprise des expériences</h2><p>Drôles d’expériences s’attache aux changements visibles de la matière. Des couleurs se transforment, un ballon se gonfle et des mélanges changent de consistance. Ces observations ouvrent la discussion sur la physique et la chimie avec l’équipe de médiation.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Space within reach</h2><p>The Ateliers du Planétarium explore astronomy and experimental science with Vulcania’s educators. Their programme brings together Dans la peau d’un astronaute, Sous le soleil and Drôles d’expériences. Participants handle materials and discuss their observations in a setting devoted to connections between Earth, space and physical phenomena.</p><p>Dans la peau d’un astronaute considers journeys to the International Space Station, sensations in orbit and life aboard. Sous le soleil connects our star with everyday life through the different seasons in each hemisphere, the colours of light and polar auroras.</p><h2>Surprising experiments</h2><p>Drôles d’expériences focuses on visible changes in matter. Colours transform, a balloon inflates and mixtures change consistency. These observations prompt conversations about physics and chemistry with the education team.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Weltraum zum Anfassen</h2><p>Die Ateliers du Planétarium erkunden Astronomie und experimentelle Wissenschaft mit Vulcanias Vermittlungsteam. Zum Programm gehören Dans la peau d’un astronaute, Sous le soleil und Drôles d’expériences. Die Teilnehmer experimentieren und besprechen ihre Beobachtungen in einem Bereich, der Verbindungen zwischen Erde, Weltraum und physikalischen Phänomenen aufgreift.</p><p>Dans la peau d’un astronaute behandelt Reisen zur Internationalen Raumstation, Wahrnehmungen im Orbit und das Leben der Besatzung. Sous le soleil verbindet unseren Stern mit dem Alltag: unterschiedliche Jahreszeiten auf den Erdhalbkugeln, die Farben des Lichts und Polarlichter liefern Gesprächsstoff.</p><h2>Überraschende Experimente</h2><p>Drôles d’expériences widmet sich sichtbaren Veränderungen von Stoffen. Farben verwandeln sich, ein Ballon bläht sich auf und Mischungen ändern ihre Konsistenz. Diese Beobachtungen führen mit dem Vermittlungsteam zu Gesprächen über Physik und Chemie.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De ruimte binnen handbereik</h2><p>De Ateliers du Planétarium verkennen sterrenkunde en experimentele wetenschap met de begeleiders van Vulcania. Het programma omvat Dans la peau d’un astronaute, Sous le soleil en Drôles d’expériences. Deelnemers voeren proefjes uit en bespreken hun waarnemingen in een omgeving die de aarde, de ruimte en natuurkundige verschijnselen met elkaar verbindt.</p><p>Dans la peau d’un astronaute gaat over reizen naar het internationale ruimtestation, gewaarwordingen in een baan om de aarde en het leven van de bemanning. Sous le soleil verbindt onze ster met het dagelijks leven: verschillende seizoenen op beide halfronden, lichtkleuren en poollicht vormen gespreksonderwerpen.</p><h2>Verrassende proefjes</h2><p>Drôles d’expériences richt zich op zichtbare veranderingen van stoffen. Kleuren veranderen, een ballon wordt opgeblazen en mengsels krijgen een andere consistentie. Deze waarnemingen brengen gesprekken over natuurkunde en scheikunde op gang met het begeleidingsteam.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Lo spazio a portata di mano</h2><p>Gli Ateliers du Planétarium esplorano astronomia e scienze sperimentali con i divulgatori di Vulcania. Il programma comprende Dans la peau d’un astronaute, Sous le soleil e Drôles d’expériences. I partecipanti manipolano materiali e discutono le proprie osservazioni in uno spazio dedicato ai legami tra Terra, universo e fenomeni fisici.</p><p>Dans la peau d’un astronaute affronta il viaggio verso la Stazione spaziale internazionale, le sensazioni in orbita e la vita degli equipaggi. Sous le soleil collega la nostra stella alla quotidianità: stagioni diverse nei due emisferi, colori della luce e aurore polari alimentano il dialogo.</p><h2>Esperimenti sorprendenti</h2><p>Drôles d’expériences si concentra sui cambiamenti visibili della materia. I colori si trasformano, un palloncino si gonfia e le miscele cambiano consistenza. Queste osservazioni aprono una discussione sulla fisica e sulla chimica con il gruppo di divulgazione.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El espacio al alcance de la mano</h2><p>Los Ateliers du Planétarium exploran la astronomía y las ciencias experimentales con los divulgadores de Vulcania. Su programa reúne Dans la peau d’un astronaute, Sous le soleil y Drôles d’expériences. Los participantes manipulan materiales y comentan sus observaciones en un espacio dedicado a los vínculos entre la Tierra, el universo y los fenómenos físicos.</p><p>Dans la peau d’un astronaute aborda el viaje a la Estación Espacial Internacional, las sensaciones en órbita y la vida de las tripulaciones. Sous le soleil conecta nuestra estrella con lo cotidiano: las estaciones distintas en cada hemisferio, los colores de la luz y las auroras polares alimentan la conversación.</p><h2>Experimentos sorprendentes</h2><p>Drôles d’expériences se centra en los cambios visibles de la materia. Los colores se transforman, un globo se infla y las mezclas cambian de consistencia. Estas observaciones abren el diálogo sobre física y química con el equipo de divulgación.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Kosmos na wyciągnięcie ręki</h2><p>Ateliers du Planétarium przybliżają astronomię i nauki doświadczalne z edukatorami Vulcanii. Program obejmuje Dans la peau d’un astronaute, Sous le soleil i Drôles d’expériences. Uczestnicy pracują z materiałami i omawiają obserwacje w przestrzeni poświęconej związkom między Ziemią, kosmosem i zjawiskami fizycznymi.</p><p>Dans la peau d’un astronaute dotyczy podróży na Międzynarodową Stację Kosmiczną, odczuć na orbicie i życia załóg. Sous le soleil łączy naszą gwiazdę z codziennością: tematami rozmów są odmienne pory roku na obu półkulach, barwy światła i zorze polarne.</p><h2>Zaskakujące doświadczenia</h2><p>Drôles d’expériences skupia się na widocznych przemianach materii. Kolory się zmieniają, balon się napełnia, a mieszaniny zyskują inną konsystencję. Obserwacje te stają się początkiem rozmowy o fizyce i chemii z zespołem edukacyjnym.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O espaço ao alcance da mão</h2><p>Os Ateliers du Planétarium exploram a astronomia e as ciências experimentais com os mediadores de Vulcania. O programa reúne Dans la peau d’un astronaute, Sous le soleil e Drôles d’expériences. Os participantes manipulam materiais e discutem as suas observações num espaço dedicado às ligações entre a Terra, o universo e os fenómenos físicos.</p><p>Dans la peau d’un astronaute aborda a viagem à Estação Espacial Internacional, as sensações em órbita e a vida das tripulações. Sous le soleil liga a nossa estrela ao quotidiano: estações diferentes nos dois hemisférios, cores da luz e auroras polares alimentam a conversa.</p><h2>Experiências surpreendentes</h2><p>Drôles d’expériences centra-se nas mudanças visíveis da matéria. As cores transformam-se, um balão enche-se e as misturas mudam de consistência. Estas observações abrem uma conversa sobre física e química com a equipa de mediação.</p>"
+            }
+          ]
+        },
+        {
+          "id": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+          "key": "vulcania-ateliers-volcans",
+          "name": "Ateliers des volcans",
+          "type": "InteractiveExperience",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La Terre en atelier</h2><p>Les Ateliers des volcans réunissent des salles équipées pour explorer le volcanisme par des expériences, des jeux et des échanges avec les animateurs. La formation des volcans, les éruptions et les paysages d’Auvergne constituent leur fil conducteur. Le programme aborde aussi les traces du vivant avec Dinosaures et compagnie, où fouilles dans le sable, empreintes et moulages introduisent la paléontologie.</p><p>Dans la peau d’un volcanologue propose d’interpréter les signes d’activité d’un volcan après une découverte des équipements scientifiques. Les participants endossent le rôle de spécialistes et discutent des décisions à prendre face à un réveil simulé.</p><h2>Clermont dans un scénario de crise</h2><p>2 minutes pour sauver Clermont imagine une coulée de lave menaçant la ville. Cette mise en situation associe observation, choix de protection et discussion sur l’évacuation. La géologie locale devient ainsi le point de départ d’un jeu collectif consacré aux risques volcaniques.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Earth in the workshop</h2><p>The Ateliers des volcans bring together equipped rooms for exploring volcanism through experiments, games and conversations with presenters. Volcano formation, eruptions and Auvergne’s landscapes provide their common thread. The programme also considers traces of past life through Dinosaures et compagnie, where sand excavations, footprints and casts introduce palaeontology.</p><p>Dans la peau d’un volcanologue asks participants to interpret signs of volcanic activity after discovering scientific equipment. They take on the role of specialists and discuss decisions in response to a simulated awakening.</p><h2>A crisis scenario in Clermont</h2><p>2 minutes pour sauver Clermont imagines a lava flow threatening the city. This scenario combines observation, protective choices and discussion of evacuation. Local geology becomes the starting point for a group activity about volcanic hazards.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die Erde im Workshop</h2><p>Die Ateliers des volcans vereinen ausgestattete Räume, in denen Experimente, Spiele und Gespräche mit Vermittlern den Vulkanismus erschließen. Vulkanentstehung, Ausbrüche und die Landschaften der Auvergne bilden den roten Faden. Dinosaures et compagnie betrachtet auch Spuren früheren Lebens: Grabungen im Sand, Fußabdrücke und Abgüsse führen in die Paläontologie ein.</p><p>Dans la peau d’un volcanologue lädt dazu ein, nach einer Einführung in wissenschaftliche Geräte Anzeichen vulkanischer Aktivität zu deuten. Die Teilnehmer übernehmen die Rolle von Fachleuten und besprechen Entscheidungen angesichts eines simulierten Erwachens.</p><h2>Ein Krisenszenario in Clermont</h2><p>2 minutes pour sauver Clermont stellt einen Lavastrom dar, der die Stadt bedroht. Das Szenario verbindet Beobachtung, Schutzentscheidungen und Gespräche über Evakuierung. Die örtliche Geologie wird zum Ausgangspunkt eines Gruppenspiels über Vulkangefahren.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De aarde in de werkplaats</h2><p>De Ateliers des volcans omvatten ingerichte zalen waar proefjes, spellen en gesprekken met begeleiders het vulkanisme verkennen. Vulkaanvorming, uitbarstingen en de landschappen van de Auvergne vormen de rode draad. Dinosaures et compagnie behandelt ook sporen van vroeger leven: opgravingen in zand, voetafdrukken en afgietsels laten deelnemers kennismaken met paleontologie.</p><p>Dans la peau d’un volcanologue draait om het herkennen van vulkanische activiteit na een kennismaking met wetenschappelijke apparatuur. De deelnemers nemen de rol van specialisten aan en bespreken beslissingen bij een nagebootst ontwaken.</p><h2>Een crisisscenario in Clermont</h2><p>2 minutes pour sauver Clermont verbeeldt een lavastroom die de stad bedreigt. De oefening combineert observatie, beschermende keuzes en gesprekken over evacuatie. Lokale geologie wordt zo het vertrekpunt voor een groepsspel over vulkanische gevaren.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La Terra in laboratorio</h2><p>Gli Ateliers des volcans riuniscono sale attrezzate per esplorare il vulcanismo attraverso esperimenti, giochi e dialoghi con gli animatori. La formazione dei vulcani, le eruzioni e i paesaggi dell’Alvernia costituiscono il filo conduttore. Dinosaures et compagnie affronta anche le tracce della vita passata: scavi nella sabbia, impronte e calchi introducono la paleontologia.</p><p>Dans la peau d’un volcanologue invita a interpretare i segnali dell’attività vulcanica dopo aver conosciuto gli strumenti scientifici. I partecipanti assumono il ruolo di specialisti e discutono le decisioni da prendere davanti a un risveglio simulato.</p><h2>Uno scenario di crisi a Clermont</h2><p>2 minutes pour sauver Clermont immagina una colata lavica che minaccia la città. La simulazione unisce osservazione, scelte di protezione e discussione sull’evacuazione. La geologia locale diventa così il punto di partenza di un gioco collettivo sui rischi vulcanici.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La Tierra en el taller</h2><p>Los Ateliers des volcans reúnen salas equipadas para explorar el vulcanismo mediante experimentos, juegos y conversaciones con los divulgadores. La formación de los volcanes, las erupciones y los paisajes de Auvernia constituyen el hilo conductor. Dinosaures et compagnie también aborda las huellas de la vida pasada: excavaciones en arena, pisadas y moldes introducen la paleontología.</p><p>Dans la peau d’un volcanologue propone interpretar las señales de actividad volcánica tras conocer los equipos científicos. Los participantes asumen el papel de especialistas y discuten las decisiones que tomarían ante un despertar simulado.</p><h2>Un escenario de crisis en Clermont</h2><p>2 minutes pour sauver Clermont imagina una colada de lava que amenaza la ciudad. La simulación combina observación, decisiones de protección y debate sobre la evacuación. La geología local se convierte en el punto de partida de un juego colectivo sobre riesgos volcánicos.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Ziemia w pracowni</h2><p>Ateliers des volcans to wyposażone sale, w których doświadczenia, gry i rozmowy z prowadzącymi przybliżają wulkanizm. Wspólnym wątkiem są powstawanie wulkanów, erupcje i krajobrazy Owernii. Dinosaures et compagnie podejmuje także temat śladów dawnego życia: wykopaliska w piasku, odciski stóp i odlewy wprowadzają w paleontologię.</p><p>Dans la peau d’un volcanologue zachęca do interpretowania oznak aktywności wulkanicznej po poznaniu sprzętu naukowego. Uczestnicy wcielają się w specjalistów i omawiają decyzje podejmowane wobec symulowanego przebudzenia wulkanu.</p><h2>Scenariusz kryzysu w Clermont</h2><p>2 minutes pour sauver Clermont przedstawia wyobrażony potok lawy zagrażający miastu. Ćwiczenie łączy obserwację, wybór środków ochronnych i rozmowę o ewakuacji. Lokalna geologia staje się punktem wyjścia do wspólnej gry o zagrożeniach wulkanicznych.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A Terra na oficina</h2><p>Os Ateliers des volcans reúnem salas equipadas para explorar o vulcanismo através de experiências, jogos e conversas com os animadores. A formação dos vulcões, as erupções e as paisagens da Auvérnia constituem o fio condutor. Dinosaures et compagnie aborda também vestígios da vida passada: escavações na areia, pegadas e moldes introduzem a paleontologia.</p><p>Dans la peau d’un volcanologue propõe interpretar sinais de atividade vulcânica depois de conhecer os equipamentos científicos. Os participantes assumem o papel de especialistas e discutem as decisões a tomar perante um despertar simulado.</p><h2>Um cenário de crise em Clermont</h2><p>2 minutes pour sauver Clermont imagina uma escoada de lava a ameaçar a cidade. A simulação combina observação, escolhas de proteção e discussão sobre a evacuação. A geologia local torna-se o ponto de partida de um jogo coletivo sobre riscos vulcânicos.</p>"
+            }
+          ]
+        },
+        {
+          "id": "ce88d195-4890-43e4-8551-8f26d460760b",
+          "key": "vulcania-ballon-puys",
+          "name": "Ballon des Puys",
+          "type": "ObservationRide",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un regard au-dessus des arbres</h2><p>Présenté à Vulcania en 2014, le Ballon des Puys proposait une découverte aérienne des paysages volcaniques d’Auvergne. Ce ballon captif Aérophile associait le parc à une vue prise au-dessus de la cime des arbres, avec les reliefs pour horizon.</p><p>Son enveloppe blanche portait un large bandeau bleu illustré de silhouettes de paysage et le nom « Le Ballon des Puys ». Une nacelle circulaire bleue était suspendue sous cette grande sphère, visible au-dessus du bois.</p><h2>Le paysage comme sujet</h2><p>L’expérience prolongeait la découverte du volcanisme par l’observation du territoire lui-même. Le décor était celui des forêts et des formes volcaniques qui entourent Vulcania, vus depuis un point de vue inhabituel.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A view above the trees</h2><p>Introduced at Vulcania in 2014, the Ballon des Puys offered an aerial encounter with Auvergne’s volcanic landscapes. This Aérophile tethered balloon connected the park with views above the treetops and hills on the horizon.</p><p>Its white envelope carried a broad blue band illustrated with landscape silhouettes and the name Le Ballon des Puys. A circular blue gondola hung beneath the large sphere, visible above the woodland.</p><h2>The landscape as the subject</h2><p>The experience extended the exploration of volcanism to observation of the surrounding territory itself. Forests and volcanic landforms around Vulcania became the scenery, seen from an unusual viewpoint.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Blick über die Bäume</h2><p>Der 2014 in Vulcania vorgestellte Ballon des Puys bot einen Blick aus der Luft auf die Vulkanlandschaften der Auvergne. Der Fesselballon von Aérophile verband den Park mit Aussichten über die Baumkronen und auf die Hügel am Horizont.</p><p>Seine weiße Hülle trug ein breites blaues Band mit Landschaftssilhouetten und dem Namen Le Ballon des Puys. Unter der großen, über dem Wald sichtbaren Kugel hing eine kreisförmige blaue Gondel.</p><h2>Die Landschaft als Thema</h2><p>Das Erlebnis ergänzte die Beschäftigung mit Vulkanismus um die Beobachtung der Umgebung selbst. Wälder und vulkanische Geländeformen rund um Vulcania bildeten die Kulisse aus einem ungewohnten Blickwinkel.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een blik boven de bomen</h2><p>De Ballon des Puys, in 2014 voorgesteld bij Vulcania, bood een uitzicht vanuit de lucht op de vulkanische landschappen van de Auvergne. Deze kabelballon van Aérophile verbond het park met vergezichten boven de boomtoppen en heuvels aan de horizon.</p><p>De witte ballon droeg een brede blauwe band met landschapssilhouetten en de naam Le Ballon des Puys. Onder de grote bol, zichtbaar boven het bos, hing een ronde blauwe gondel.</p><h2>Het landschap als onderwerp</h2><p>De ervaring verbond de kennismaking met vulkanisme aan het bekijken van het gebied zelf. Bossen en vulkanische vormen rond Vulcania vormden het decor, gezien vanuit een ongewoon gezichtspunt.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Uno sguardo sopra gli alberi</h2><p>Presentato a Vulcania nel 2014, il Ballon des Puys offriva un incontro aereo con i paesaggi vulcanici dell’Alvernia. Questo pallone vincolato Aérophile collegava il parco a una vista sopra le cime degli alberi, con i rilievi all’orizzonte.</p><p>Il suo involucro bianco portava un’ampia fascia blu illustrata con sagome di paesaggi e il nome Le Ballon des Puys. Una navicella circolare blu era sospesa sotto la grande sfera, visibile sopra il bosco.</p><h2>Il paesaggio come soggetto</h2><p>L’esperienza prolungava la scoperta del vulcanismo attraverso l’osservazione del territorio stesso. Le foreste e le forme vulcaniche intorno a Vulcania componevano lo scenario, visto da una prospettiva insolita.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una mirada sobre los árboles</h2><p>Presentado en Vulcania en 2014, el Ballon des Puys ofrecía una mirada aérea a los paisajes volcánicos de Auvernia. Este globo cautivo Aérophile vinculaba el parque con una vista sobre las copas de los árboles y los relieves del horizonte.</p><p>Su envoltura blanca llevaba una ancha franja azul ilustrada con siluetas de paisajes y el nombre Le Ballon des Puys. Una góndola circular azul colgaba bajo la gran esfera, visible por encima del bosque.</p><h2>El paisaje como protagonista</h2><p>La experiencia prolongaba el descubrimiento del vulcanismo mediante la observación del propio territorio. Los bosques y las formas volcánicas que rodean Vulcania componían el escenario, visto desde una perspectiva poco habitual.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Widok ponad drzewami</h2><p>Zaprezentowany w Vulcanii w 2014 roku Ballon des Puys oferował spojrzenie z powietrza na wulkaniczne krajobrazy Owernii. Balon na uwięzi firmy Aérophile łączył park z widokiem ponad koronami drzew i wzgórzami na horyzoncie.</p><p>Białą powłokę zdobił szeroki niebieski pas z sylwetkami krajobrazu i nazwą Le Ballon des Puys. Pod wielką kulą widoczną nad lasem wisiała okrągła niebieska gondola.</p><h2>Krajobraz w centrum uwagi</h2><p>Doświadczenie uzupełniało poznawanie wulkanizmu o obserwację samego regionu. Lasy i wulkaniczne formy terenu wokół Vulcanii tworzyły scenerię oglądaną z nietypowej perspektywy.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um olhar acima das árvores</h2><p>Apresentado em Vulcania em 2014, o Ballon des Puys proporcionava uma descoberta aérea das paisagens vulcânicas da Auvérnia. Este balão cativo Aérophile ligava o parque a uma vista acima das copas das árvores, com os relevos no horizonte.</p><p>O invólucro branco tinha uma larga faixa azul ilustrada com silhuetas de paisagens e o nome Le Ballon des Puys. Uma gôndola circular azul estava suspensa sob a grande esfera, visível acima do bosque.</p><h2>A paisagem como tema</h2><p>A experiência prolongava a descoberta do vulcanismo através da observação do próprio território. As florestas e as formas vulcânicas em redor de Vulcania compunham o cenário, visto de uma perspetiva invulgar.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-74-workshops-balloon",
+        "notes": "Twenty-four texts personally written and reviewed in eight languages. Official 2026 employee booklet maps programme names to the two existing workshop spaces; official 2026 map A05 and B36 confirms grouping, no extra film/programme parkItems. Actual official workshop pages individually read, including Astronaute, Sous le soleil, Droles, Dinosaures, Volcanologue, Clermont. Balloon manufacturer page and original photo identify Aérophile and 2014; 2019 dismantling proposal is not proof of actual closure. Existing Unknown retained; historical narrative no present operating promise. Two headings/three paragraphs each; source-limited balloon depth documented, no fabricated chronology, prices, schedule or geolocation."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "b4b1a267-b130-4c4d-a160-2bd8e9ec1b10",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:30:15.6229942Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+        "entityKey": "vulcania-ateliers-planetarium",
+        "displayName": "Ateliers du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Weltraum zum Anfassen</h2><p>Die Ateliers du Planétarium erkunden Astronomie und experimentelle Wissenschaft mit Vulcanias Vermittlungsteam. Zum Programm gehören Dans la peau d’un astronaute, Sous le soleil und Drôles d’expériences. Die Teilnehmer experimentieren und besprechen ihre Beobachtungen in einem Bereich, der Verbindungen zwischen Erde, Weltraum und physikalischen Phänomenen aufgreift.</p><p>Dans la peau d’un astronaute behandelt Reisen zur Internationalen Raumstation, Wahrnehmungen im Orbit und das Leben der Besatzung. Sous le soleil verbindet unseren Stern mit dem Alltag: unterschiedliche Jahreszeiten auf den Erdhalbkugeln, die Farben des Lichts und Polarlichter liefern Gesprächsstoff.</p><h2>Überraschende Experimente</h2><p>Drôles d’expériences widmet sich sichtbaren Veränderungen von Stoffen. Farben verwandeln sich, ein Ballon bläht sich auf und Mischungen ändern ihre Konsistenz. Diese Beobachtungen führen mit dem Vermittlungsteam zu Gesprächen über Physik und Chemie.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Space within reach</h2><p>The Ateliers du Planétarium explore astronomy and experimental science with Vulcania’s educators. Their programme brings together Dans la peau d’un astronaute, Sous le soleil and Drôles d’expériences. Participants handle materials and discuss their observations in a setting devoted to connections between Earth, space and physical phenomena.</p><p>Dans la peau d’un astronaute considers journeys to the International Space Station, sensations in orbit and life aboard. Sous le soleil connects our star with everyday life through the different seasons in each hemisphere, the colours of light and polar auroras.</p><h2>Surprising experiments</h2><p>Drôles d’expériences focuses on visible changes in matter. Colours transform, a balloon inflates and mixtures change consistency. These observations prompt conversations about physics and chemistry with the education team.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El espacio al alcance de la mano</h2><p>Los Ateliers du Planétarium exploran la astronomía y las ciencias experimentales con los divulgadores de Vulcania. Su programa reúne Dans la peau d’un astronaute, Sous le soleil y Drôles d’expériences. Los participantes manipulan materiales y comentan sus observaciones en un espacio dedicado a los vínculos entre la Tierra, el universo y los fenómenos físicos.</p><p>Dans la peau d’un astronaute aborda el viaje a la Estación Espacial Internacional, las sensaciones en órbita y la vida de las tripulaciones. Sous le soleil conecta nuestra estrella con lo cotidiano: las estaciones distintas en cada hemisferio, los colores de la luz y las auroras polares alimentan la conversación.</p><h2>Experimentos sorprendentes</h2><p>Drôles d’expériences se centra en los cambios visibles de la materia. Los colores se transforman, un globo se infla y las mezclas cambian de consistencia. Estas observaciones abren el diálogo sobre física y química con el equipo de divulgación.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’espace au bout des doigts</h2><p>Les Ateliers du Planétarium explorent l’astronomie et les sciences expérimentales avec les médiateurs de Vulcania. Leur programme réunit Dans la peau d’un astronaute, Sous le soleil et Drôles d’expériences. Les participants manipulent et discutent de ce qu’ils observent, dans un ensemble consacré aux liens entre la Terre, l’espace et les phénomènes physiques.</p><p>Dans la peau d’un astronaute aborde le départ vers la Station spatiale internationale, les sensations en orbite et la vie des équipages. Sous le soleil rapproche notre étoile du quotidien : saisons différentes selon les hémisphères, couleurs de la lumière et aurores polaires donnent matière aux échanges.</p><h2>La surprise des expériences</h2><p>Drôles d’expériences s’attache aux changements visibles de la matière. Des couleurs se transforment, un ballon se gonfle et des mélanges changent de consistance. Ces observations ouvrent la discussion sur la physique et la chimie avec l’équipe de médiation.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Lo spazio a portata di mano</h2><p>Gli Ateliers du Planétarium esplorano astronomia e scienze sperimentali con i divulgatori di Vulcania. Il programma comprende Dans la peau d’un astronaute, Sous le soleil e Drôles d’expériences. I partecipanti manipolano materiali e discutono le proprie osservazioni in uno spazio dedicato ai legami tra Terra, universo e fenomeni fisici.</p><p>Dans la peau d’un astronaute affronta il viaggio verso la Stazione spaziale internazionale, le sensazioni in orbita e la vita degli equipaggi. Sous le soleil collega la nostra stella alla quotidianità: stagioni diverse nei due emisferi, colori della luce e aurore polari alimentano il dialogo.</p><h2>Esperimenti sorprendenti</h2><p>Drôles d’expériences si concentra sui cambiamenti visibili della materia. I colori si trasformano, un palloncino si gonfia e le miscele cambiano consistenza. Queste osservazioni aprono una discussione sulla fisica e sulla chimica con il gruppo di divulgazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De ruimte binnen handbereik</h2><p>De Ateliers du Planétarium verkennen sterrenkunde en experimentele wetenschap met de begeleiders van Vulcania. Het programma omvat Dans la peau d’un astronaute, Sous le soleil en Drôles d’expériences. Deelnemers voeren proefjes uit en bespreken hun waarnemingen in een omgeving die de aarde, de ruimte en natuurkundige verschijnselen met elkaar verbindt.</p><p>Dans la peau d’un astronaute gaat over reizen naar het internationale ruimtestation, gewaarwordingen in een baan om de aarde en het leven van de bemanning. Sous le soleil verbindt onze ster met het dagelijks leven: verschillende seizoenen op beide halfronden, lichtkleuren en poollicht vormen gespreksonderwerpen.</p><h2>Verrassende proefjes</h2><p>Drôles d’expériences richt zich op zichtbare veranderingen van stoffen. Kleuren veranderen, een ballon wordt opgeblazen en mengsels krijgen een andere consistentie. Deze waarnemingen brengen gesprekken over natuurkunde en scheikunde op gang met het begeleidingsteam.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kosmos na wyciągnięcie ręki</h2><p>Ateliers du Planétarium przybliżają astronomię i nauki doświadczalne z edukatorami Vulcanii. Program obejmuje Dans la peau d’un astronaute, Sous le soleil i Drôles d’expériences. Uczestnicy pracują z materiałami i omawiają obserwacje w przestrzeni poświęconej związkom między Ziemią, kosmosem i zjawiskami fizycznymi.</p><p>Dans la peau d’un astronaute dotyczy podróży na Międzynarodową Stację Kosmiczną, odczuć na orbicie i życia załóg. Sous le soleil łączy naszą gwiazdę z codziennością: tematami rozmów są odmienne pory roku na obu półkulach, barwy światła i zorze polarne.</p><h2>Zaskakujące doświadczenia</h2><p>Drôles d’expériences skupia się na widocznych przemianach materii. Kolory się zmieniają, balon się napełnia, a mieszaniny zyskują inną konsystencję. Obserwacje te stają się początkiem rozmowy o fizyce i chemii z zespołem edukacyjnym.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O espaço ao alcance da mão</h2><p>Os Ateliers du Planétarium exploram a astronomia e as ciências experimentais com os mediadores de Vulcania. O programa reúne Dans la peau d’un astronaute, Sous le soleil e Drôles d’expériences. Os participantes manipulam materiais e discutem as suas observações num espaço dedicado às ligações entre a Terra, o universo e os fenómenos físicos.</p><p>Dans la peau d’un astronaute aborda a viagem à Estação Espacial Internacional, as sensações em órbita e a vida das tripulações. Sous le soleil liga a nossa estrela ao quotidiano: estações diferentes nos dois hemisférios, cores da luz e auroras polares alimentam a conversa.</p><h2>Experiências surpreendentes</h2><p>Drôles d’expériences centra-se nas mudanças visíveis da matéria. As cores transformam-se, um balão enche-se e as misturas mudam de consistência. Estas observações abrem uma conversa sobre física e química com a equipa de mediação.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+        "entityKey": "vulcania-ateliers-volcans",
+        "displayName": "Ateliers des volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Erde im Workshop</h2><p>Die Ateliers des volcans vereinen ausgestattete Räume, in denen Experimente, Spiele und Gespräche mit Vermittlern den Vulkanismus erschließen. Vulkanentstehung, Ausbrüche und die Landschaften der Auvergne bilden den roten Faden. Dinosaures et compagnie betrachtet auch Spuren früheren Lebens: Grabungen im Sand, Fußabdrücke und Abgüsse führen in die Paläontologie ein.</p><p>Dans la peau d’un volcanologue lädt dazu ein, nach einer Einführung in wissenschaftliche Geräte Anzeichen vulkanischer Aktivität zu deuten. Die Teilnehmer übernehmen die Rolle von Fachleuten und besprechen Entscheidungen angesichts eines simulierten Erwachens.</p><h2>Ein Krisenszenario in Clermont</h2><p>2 minutes pour sauver Clermont stellt einen Lavastrom dar, der die Stadt bedroht. Das Szenario verbindet Beobachtung, Schutzentscheidungen und Gespräche über Evakuierung. Die örtliche Geologie wird zum Ausgangspunkt eines Gruppenspiels über Vulkangefahren.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Earth in the workshop</h2><p>The Ateliers des volcans bring together equipped rooms for exploring volcanism through experiments, games and conversations with presenters. Volcano formation, eruptions and Auvergne’s landscapes provide their common thread. The programme also considers traces of past life through Dinosaures et compagnie, where sand excavations, footprints and casts introduce palaeontology.</p><p>Dans la peau d’un volcanologue asks participants to interpret signs of volcanic activity after discovering scientific equipment. They take on the role of specialists and discuss decisions in response to a simulated awakening.</p><h2>A crisis scenario in Clermont</h2><p>2 minutes pour sauver Clermont imagines a lava flow threatening the city. This scenario combines observation, protective choices and discussion of evacuation. Local geology becomes the starting point for a group activity about volcanic hazards.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La Tierra en el taller</h2><p>Los Ateliers des volcans reúnen salas equipadas para explorar el vulcanismo mediante experimentos, juegos y conversaciones con los divulgadores. La formación de los volcanes, las erupciones y los paisajes de Auvernia constituyen el hilo conductor. Dinosaures et compagnie también aborda las huellas de la vida pasada: excavaciones en arena, pisadas y moldes introducen la paleontología.</p><p>Dans la peau d’un volcanologue propone interpretar las señales de actividad volcánica tras conocer los equipos científicos. Los participantes asumen el papel de especialistas y discuten las decisiones que tomarían ante un despertar simulado.</p><h2>Un escenario de crisis en Clermont</h2><p>2 minutes pour sauver Clermont imagina una colada de lava que amenaza la ciudad. La simulación combina observación, decisiones de protección y debate sobre la evacuación. La geología local se convierte en el punto de partida de un juego colectivo sobre riesgos volcánicos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La Terre en atelier</h2><p>Les Ateliers des volcans réunissent des salles équipées pour explorer le volcanisme par des expériences, des jeux et des échanges avec les animateurs. La formation des volcans, les éruptions et les paysages d’Auvergne constituent leur fil conducteur. Le programme aborde aussi les traces du vivant avec Dinosaures et compagnie, où fouilles dans le sable, empreintes et moulages introduisent la paléontologie.</p><p>Dans la peau d’un volcanologue propose d’interpréter les signes d’activité d’un volcan après une découverte des équipements scientifiques. Les participants endossent le rôle de spécialistes et discutent des décisions à prendre face à un réveil simulé.</p><h2>Clermont dans un scénario de crise</h2><p>2 minutes pour sauver Clermont imagine une coulée de lave menaçant la ville. Cette mise en situation associe observation, choix de protection et discussion sur l’évacuation. La géologie locale devient ainsi le point de départ d’un jeu collectif consacré aux risques volcaniques.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La Terra in laboratorio</h2><p>Gli Ateliers des volcans riuniscono sale attrezzate per esplorare il vulcanismo attraverso esperimenti, giochi e dialoghi con gli animatori. La formazione dei vulcani, le eruzioni e i paesaggi dell’Alvernia costituiscono il filo conduttore. Dinosaures et compagnie affronta anche le tracce della vita passata: scavi nella sabbia, impronte e calchi introducono la paleontologia.</p><p>Dans la peau d’un volcanologue invita a interpretare i segnali dell’attività vulcanica dopo aver conosciuto gli strumenti scientifici. I partecipanti assumono il ruolo di specialisti e discutono le decisioni da prendere davanti a un risveglio simulato.</p><h2>Uno scenario di crisi a Clermont</h2><p>2 minutes pour sauver Clermont immagina una colata lavica che minaccia la città. La simulazione unisce osservazione, scelte di protezione e discussione sull’evacuazione. La geologia locale diventa così il punto di partenza di un gioco collettivo sui rischi vulcanici.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De aarde in de werkplaats</h2><p>De Ateliers des volcans omvatten ingerichte zalen waar proefjes, spellen en gesprekken met begeleiders het vulkanisme verkennen. Vulkaanvorming, uitbarstingen en de landschappen van de Auvergne vormen de rode draad. Dinosaures et compagnie behandelt ook sporen van vroeger leven: opgravingen in zand, voetafdrukken en afgietsels laten deelnemers kennismaken met paleontologie.</p><p>Dans la peau d’un volcanologue draait om het herkennen van vulkanische activiteit na een kennismaking met wetenschappelijke apparatuur. De deelnemers nemen de rol van specialisten aan en bespreken beslissingen bij een nagebootst ontwaken.</p><h2>Een crisisscenario in Clermont</h2><p>2 minutes pour sauver Clermont verbeeldt een lavastroom die de stad bedreigt. De oefening combineert observatie, beschermende keuzes en gesprekken over evacuatie. Lokale geologie wordt zo het vertrekpunt voor een groepsspel over vulkanische gevaren.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Ziemia w pracowni</h2><p>Ateliers des volcans to wyposażone sale, w których doświadczenia, gry i rozmowy z prowadzącymi przybliżają wulkanizm. Wspólnym wątkiem są powstawanie wulkanów, erupcje i krajobrazy Owernii. Dinosaures et compagnie podejmuje także temat śladów dawnego życia: wykopaliska w piasku, odciski stóp i odlewy wprowadzają w paleontologię.</p><p>Dans la peau d’un volcanologue zachęca do interpretowania oznak aktywności wulkanicznej po poznaniu sprzętu naukowego. Uczestnicy wcielają się w specjalistów i omawiają decyzje podejmowane wobec symulowanego przebudzenia wulkanu.</p><h2>Scenariusz kryzysu w Clermont</h2><p>2 minutes pour sauver Clermont przedstawia wyobrażony potok lawy zagrażający miastu. Ćwiczenie łączy obserwację, wybór środków ochronnych i rozmowę o ewakuacji. Lokalna geologia staje się punktem wyjścia do wspólnej gry o zagrożeniach wulkanicznych.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Terra na oficina</h2><p>Os Ateliers des volcans reúnem salas equipadas para explorar o vulcanismo através de experiências, jogos e conversas com os animadores. A formação dos vulcões, as erupções e as paisagens da Auvérnia constituem o fio condutor. Dinosaures et compagnie aborda também vestígios da vida passada: escavações na areia, pegadas e moldes introduzem a paleontologia.</p><p>Dans la peau d’un volcanologue propõe interpretar sinais de atividade vulcânica depois de conhecer os equipamentos científicos. Os participantes assumem o papel de especialistas e discutem as decisões a tomar perante um despertar simulado.</p><h2>Um cenário de crise em Clermont</h2><p>2 minutes pour sauver Clermont imagina uma escoada de lava a ameaçar a cidade. A simulação combina observação, escolhas de proteção e discussão sobre a evacuação. A geologia local torna-se o ponto de partida de um jogo coletivo sobre riscos vulcânicos.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "entityKey": "vulcania-ballon-puys",
+        "displayName": "Ballon des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Blick über die Bäume</h2><p>Der 2014 in Vulcania vorgestellte Ballon des Puys bot einen Blick aus der Luft auf die Vulkanlandschaften der Auvergne. Der Fesselballon von Aérophile verband den Park mit Aussichten über die Baumkronen und auf die Hügel am Horizont.</p><p>Seine weiße Hülle trug ein breites blaues Band mit Landschaftssilhouetten und dem Namen Le Ballon des Puys. Unter der großen, über dem Wald sichtbaren Kugel hing eine kreisförmige blaue Gondel.</p><h2>Die Landschaft als Thema</h2><p>Das Erlebnis ergänzte die Beschäftigung mit Vulkanismus um die Beobachtung der Umgebung selbst. Wälder und vulkanische Geländeformen rund um Vulcania bildeten die Kulisse aus einem ungewohnten Blickwinkel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A view above the trees</h2><p>Introduced at Vulcania in 2014, the Ballon des Puys offered an aerial encounter with Auvergne’s volcanic landscapes. This Aérophile tethered balloon connected the park with views above the treetops and hills on the horizon.</p><p>Its white envelope carried a broad blue band illustrated with landscape silhouettes and the name Le Ballon des Puys. A circular blue gondola hung beneath the large sphere, visible above the woodland.</p><h2>The landscape as the subject</h2><p>The experience extended the exploration of volcanism to observation of the surrounding territory itself. Forests and volcanic landforms around Vulcania became the scenery, seen from an unusual viewpoint.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una mirada sobre los árboles</h2><p>Presentado en Vulcania en 2014, el Ballon des Puys ofrecía una mirada aérea a los paisajes volcánicos de Auvernia. Este globo cautivo Aérophile vinculaba el parque con una vista sobre las copas de los árboles y los relieves del horizonte.</p><p>Su envoltura blanca llevaba una ancha franja azul ilustrada con siluetas de paisajes y el nombre Le Ballon des Puys. Una góndola circular azul colgaba bajo la gran esfera, visible por encima del bosque.</p><h2>El paisaje como protagonista</h2><p>La experiencia prolongaba el descubrimiento del vulcanismo mediante la observación del propio territorio. Los bosques y las formas volcánicas que rodean Vulcania componían el escenario, visto desde una perspectiva poco habitual.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un regard au-dessus des arbres</h2><p>Présenté à Vulcania en 2014, le Ballon des Puys proposait une découverte aérienne des paysages volcaniques d’Auvergne. Ce ballon captif Aérophile associait le parc à une vue prise au-dessus de la cime des arbres, avec les reliefs pour horizon.</p><p>Son enveloppe blanche portait un large bandeau bleu illustré de silhouettes de paysage et le nom « Le Ballon des Puys ». Une nacelle circulaire bleue était suspendue sous cette grande sphère, visible au-dessus du bois.</p><h2>Le paysage comme sujet</h2><p>L’expérience prolongeait la découverte du volcanisme par l’observation du territoire lui-même. Le décor était celui des forêts et des formes volcaniques qui entourent Vulcania, vus depuis un point de vue inhabituel.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Uno sguardo sopra gli alberi</h2><p>Presentato a Vulcania nel 2014, il Ballon des Puys offriva un incontro aereo con i paesaggi vulcanici dell’Alvernia. Questo pallone vincolato Aérophile collegava il parco a una vista sopra le cime degli alberi, con i rilievi all’orizzonte.</p><p>Il suo involucro bianco portava un’ampia fascia blu illustrata con sagome di paesaggi e il nome Le Ballon des Puys. Una navicella circolare blu era sospesa sotto la grande sfera, visibile sopra il bosco.</p><h2>Il paesaggio come soggetto</h2><p>L’esperienza prolungava la scoperta del vulcanismo attraverso l’osservazione del territorio stesso. Le foreste e le forme vulcaniche intorno a Vulcania componevano lo scenario, visto da una prospettiva insolita.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een blik boven de bomen</h2><p>De Ballon des Puys, in 2014 voorgesteld bij Vulcania, bood een uitzicht vanuit de lucht op de vulkanische landschappen van de Auvergne. Deze kabelballon van Aérophile verbond het park met vergezichten boven de boomtoppen en heuvels aan de horizon.</p><p>De witte ballon droeg een brede blauwe band met landschapssilhouetten en de naam Le Ballon des Puys. Onder de grote bol, zichtbaar boven het bos, hing een ronde blauwe gondel.</p><h2>Het landschap als onderwerp</h2><p>De ervaring verbond de kennismaking met vulkanisme aan het bekijken van het gebied zelf. Bossen en vulkanische vormen rond Vulcania vormden het decor, gezien vanuit een ongewoon gezichtspunt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Widok ponad drzewami</h2><p>Zaprezentowany w Vulcanii w 2014 roku Ballon des Puys oferował spojrzenie z powietrza na wulkaniczne krajobrazy Owernii. Balon na uwięzi firmy Aérophile łączył park z widokiem ponad koronami drzew i wzgórzami na horyzoncie.</p><p>Białą powłokę zdobił szeroki niebieski pas z sylwetkami krajobrazu i nazwą Le Ballon des Puys. Pod wielką kulą widoczną nad lasem wisiała okrągła niebieska gondola.</p><h2>Krajobraz w centrum uwagi</h2><p>Doświadczenie uzupełniało poznawanie wulkanizmu o obserwację samego regionu. Lasy i wulkaniczne formy terenu wokół Vulcanii tworzyły scenerię oglądaną z nietypowej perspektywy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um olhar acima das árvores</h2><p>Apresentado em Vulcania em 2014, o Ballon des Puys proporcionava uma descoberta aérea das paisagens vulcânicas da Auvérnia. Este balão cativo Aérophile ligava o parque a uma vista acima das copas das árvores, com os relevos no horizonte.</p><p>O invólucro branco tinha uma larga faixa azul ilustrada com silhuetas de paisagens e o nome Le Ballon des Puys. Uma gôndola circular azul estava suspensa sob a grande esfera, visível acima do bosque.</p><h2>A paisagem como tema</h2><p>A experiência prolongava a descoberta do vulcanismo através da observação do próprio território. As florestas e as formas vulcânicas em redor de Vulcania compunham o cenário, visto de uma perspetiva invulgar.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "9090120c-0e1f-4dbb-b8f1-fb1108a0a6a2",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:30:38.46954Z",
+    "appliedAtUtc": "2026-11-15T19:30:38.4695406Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+        "entityKey": "vulcania-ateliers-planetarium",
+        "displayName": "Ateliers du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Weltraum zum Anfassen</h2><p>Die Ateliers du Planétarium erkunden Astronomie und experimentelle Wissenschaft mit Vulcanias Vermittlungsteam. Zum Programm gehören Dans la peau d’un astronaute, Sous le soleil und Drôles d’expériences. Die Teilnehmer experimentieren und besprechen ihre Beobachtungen in einem Bereich, der Verbindungen zwischen Erde, Weltraum und physikalischen Phänomenen aufgreift.</p><p>Dans la peau d’un astronaute behandelt Reisen zur Internationalen Raumstation, Wahrnehmungen im Orbit und das Leben der Besatzung. Sous le soleil verbindet unseren Stern mit dem Alltag: unterschiedliche Jahreszeiten auf den Erdhalbkugeln, die Farben des Lichts und Polarlichter liefern Gesprächsstoff.</p><h2>Überraschende Experimente</h2><p>Drôles d’expériences widmet sich sichtbaren Veränderungen von Stoffen. Farben verwandeln sich, ein Ballon bläht sich auf und Mischungen ändern ihre Konsistenz. Diese Beobachtungen führen mit dem Vermittlungsteam zu Gesprächen über Physik und Chemie.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Space within reach</h2><p>The Ateliers du Planétarium explore astronomy and experimental science with Vulcania’s educators. Their programme brings together Dans la peau d’un astronaute, Sous le soleil and Drôles d’expériences. Participants handle materials and discuss their observations in a setting devoted to connections between Earth, space and physical phenomena.</p><p>Dans la peau d’un astronaute considers journeys to the International Space Station, sensations in orbit and life aboard. Sous le soleil connects our star with everyday life through the different seasons in each hemisphere, the colours of light and polar auroras.</p><h2>Surprising experiments</h2><p>Drôles d’expériences focuses on visible changes in matter. Colours transform, a balloon inflates and mixtures change consistency. These observations prompt conversations about physics and chemistry with the education team.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El espacio al alcance de la mano</h2><p>Los Ateliers du Planétarium exploran la astronomía y las ciencias experimentales con los divulgadores de Vulcania. Su programa reúne Dans la peau d’un astronaute, Sous le soleil y Drôles d’expériences. Los participantes manipulan materiales y comentan sus observaciones en un espacio dedicado a los vínculos entre la Tierra, el universo y los fenómenos físicos.</p><p>Dans la peau d’un astronaute aborda el viaje a la Estación Espacial Internacional, las sensaciones en órbita y la vida de las tripulaciones. Sous le soleil conecta nuestra estrella con lo cotidiano: las estaciones distintas en cada hemisferio, los colores de la luz y las auroras polares alimentan la conversación.</p><h2>Experimentos sorprendentes</h2><p>Drôles d’expériences se centra en los cambios visibles de la materia. Los colores se transforman, un globo se infla y las mezclas cambian de consistencia. Estas observaciones abren el diálogo sobre física y química con el equipo de divulgación.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’espace au bout des doigts</h2><p>Les Ateliers du Planétarium explorent l’astronomie et les sciences expérimentales avec les médiateurs de Vulcania. Leur programme réunit Dans la peau d’un astronaute, Sous le soleil et Drôles d’expériences. Les participants manipulent et discutent de ce qu’ils observent, dans un ensemble consacré aux liens entre la Terre, l’espace et les phénomènes physiques.</p><p>Dans la peau d’un astronaute aborde le départ vers la Station spatiale internationale, les sensations en orbite et la vie des équipages. Sous le soleil rapproche notre étoile du quotidien : saisons différentes selon les hémisphères, couleurs de la lumière et aurores polaires donnent matière aux échanges.</p><h2>La surprise des expériences</h2><p>Drôles d’expériences s’attache aux changements visibles de la matière. Des couleurs se transforment, un ballon se gonfle et des mélanges changent de consistance. Ces observations ouvrent la discussion sur la physique et la chimie avec l’équipe de médiation.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Lo spazio a portata di mano</h2><p>Gli Ateliers du Planétarium esplorano astronomia e scienze sperimentali con i divulgatori di Vulcania. Il programma comprende Dans la peau d’un astronaute, Sous le soleil e Drôles d’expériences. I partecipanti manipolano materiali e discutono le proprie osservazioni in uno spazio dedicato ai legami tra Terra, universo e fenomeni fisici.</p><p>Dans la peau d’un astronaute affronta il viaggio verso la Stazione spaziale internazionale, le sensazioni in orbita e la vita degli equipaggi. Sous le soleil collega la nostra stella alla quotidianità: stagioni diverse nei due emisferi, colori della luce e aurore polari alimentano il dialogo.</p><h2>Esperimenti sorprendenti</h2><p>Drôles d’expériences si concentra sui cambiamenti visibili della materia. I colori si trasformano, un palloncino si gonfia e le miscele cambiano consistenza. Queste osservazioni aprono una discussione sulla fisica e sulla chimica con il gruppo di divulgazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De ruimte binnen handbereik</h2><p>De Ateliers du Planétarium verkennen sterrenkunde en experimentele wetenschap met de begeleiders van Vulcania. Het programma omvat Dans la peau d’un astronaute, Sous le soleil en Drôles d’expériences. Deelnemers voeren proefjes uit en bespreken hun waarnemingen in een omgeving die de aarde, de ruimte en natuurkundige verschijnselen met elkaar verbindt.</p><p>Dans la peau d’un astronaute gaat over reizen naar het internationale ruimtestation, gewaarwordingen in een baan om de aarde en het leven van de bemanning. Sous le soleil verbindt onze ster met het dagelijks leven: verschillende seizoenen op beide halfronden, lichtkleuren en poollicht vormen gespreksonderwerpen.</p><h2>Verrassende proefjes</h2><p>Drôles d’expériences richt zich op zichtbare veranderingen van stoffen. Kleuren veranderen, een ballon wordt opgeblazen en mengsels krijgen een andere consistentie. Deze waarnemingen brengen gesprekken over natuurkunde en scheikunde op gang met het begeleidingsteam.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kosmos na wyciągnięcie ręki</h2><p>Ateliers du Planétarium przybliżają astronomię i nauki doświadczalne z edukatorami Vulcanii. Program obejmuje Dans la peau d’un astronaute, Sous le soleil i Drôles d’expériences. Uczestnicy pracują z materiałami i omawiają obserwacje w przestrzeni poświęconej związkom między Ziemią, kosmosem i zjawiskami fizycznymi.</p><p>Dans la peau d’un astronaute dotyczy podróży na Międzynarodową Stację Kosmiczną, odczuć na orbicie i życia załóg. Sous le soleil łączy naszą gwiazdę z codziennością: tematami rozmów są odmienne pory roku na obu półkulach, barwy światła i zorze polarne.</p><h2>Zaskakujące doświadczenia</h2><p>Drôles d’expériences skupia się na widocznych przemianach materii. Kolory się zmieniają, balon się napełnia, a mieszaniny zyskują inną konsystencję. Obserwacje te stają się początkiem rozmowy o fizyce i chemii z zespołem edukacyjnym.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O espaço ao alcance da mão</h2><p>Os Ateliers du Planétarium exploram a astronomia e as ciências experimentais com os mediadores de Vulcania. O programa reúne Dans la peau d’un astronaute, Sous le soleil e Drôles d’expériences. Os participantes manipulam materiais e discutem as suas observações num espaço dedicado às ligações entre a Terra, o universo e os fenómenos físicos.</p><p>Dans la peau d’un astronaute aborda a viagem à Estação Espacial Internacional, as sensações em órbita e a vida das tripulações. Sous le soleil liga a nossa estrela ao quotidiano: estações diferentes nos dois hemisférios, cores da luz e auroras polares alimentam a conversa.</p><h2>Experiências surpreendentes</h2><p>Drôles d’expériences centra-se nas mudanças visíveis da matéria. As cores transformam-se, um balão enche-se e as misturas mudam de consistência. Estas observações abrem uma conversa sobre física e química com a equipa de mediação.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+        "entityKey": "vulcania-ateliers-volcans",
+        "displayName": "Ateliers des volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Erde im Workshop</h2><p>Die Ateliers des volcans vereinen ausgestattete Räume, in denen Experimente, Spiele und Gespräche mit Vermittlern den Vulkanismus erschließen. Vulkanentstehung, Ausbrüche und die Landschaften der Auvergne bilden den roten Faden. Dinosaures et compagnie betrachtet auch Spuren früheren Lebens: Grabungen im Sand, Fußabdrücke und Abgüsse führen in die Paläontologie ein.</p><p>Dans la peau d’un volcanologue lädt dazu ein, nach einer Einführung in wissenschaftliche Geräte Anzeichen vulkanischer Aktivität zu deuten. Die Teilnehmer übernehmen die Rolle von Fachleuten und besprechen Entscheidungen angesichts eines simulierten Erwachens.</p><h2>Ein Krisenszenario in Clermont</h2><p>2 minutes pour sauver Clermont stellt einen Lavastrom dar, der die Stadt bedroht. Das Szenario verbindet Beobachtung, Schutzentscheidungen und Gespräche über Evakuierung. Die örtliche Geologie wird zum Ausgangspunkt eines Gruppenspiels über Vulkangefahren.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Earth in the workshop</h2><p>The Ateliers des volcans bring together equipped rooms for exploring volcanism through experiments, games and conversations with presenters. Volcano formation, eruptions and Auvergne’s landscapes provide their common thread. The programme also considers traces of past life through Dinosaures et compagnie, where sand excavations, footprints and casts introduce palaeontology.</p><p>Dans la peau d’un volcanologue asks participants to interpret signs of volcanic activity after discovering scientific equipment. They take on the role of specialists and discuss decisions in response to a simulated awakening.</p><h2>A crisis scenario in Clermont</h2><p>2 minutes pour sauver Clermont imagines a lava flow threatening the city. This scenario combines observation, protective choices and discussion of evacuation. Local geology becomes the starting point for a group activity about volcanic hazards.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La Tierra en el taller</h2><p>Los Ateliers des volcans reúnen salas equipadas para explorar el vulcanismo mediante experimentos, juegos y conversaciones con los divulgadores. La formación de los volcanes, las erupciones y los paisajes de Auvernia constituyen el hilo conductor. Dinosaures et compagnie también aborda las huellas de la vida pasada: excavaciones en arena, pisadas y moldes introducen la paleontología.</p><p>Dans la peau d’un volcanologue propone interpretar las señales de actividad volcánica tras conocer los equipos científicos. Los participantes asumen el papel de especialistas y discuten las decisiones que tomarían ante un despertar simulado.</p><h2>Un escenario de crisis en Clermont</h2><p>2 minutes pour sauver Clermont imagina una colada de lava que amenaza la ciudad. La simulación combina observación, decisiones de protección y debate sobre la evacuación. La geología local se convierte en el punto de partida de un juego colectivo sobre riesgos volcánicos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La Terre en atelier</h2><p>Les Ateliers des volcans réunissent des salles équipées pour explorer le volcanisme par des expériences, des jeux et des échanges avec les animateurs. La formation des volcans, les éruptions et les paysages d’Auvergne constituent leur fil conducteur. Le programme aborde aussi les traces du vivant avec Dinosaures et compagnie, où fouilles dans le sable, empreintes et moulages introduisent la paléontologie.</p><p>Dans la peau d’un volcanologue propose d’interpréter les signes d’activité d’un volcan après une découverte des équipements scientifiques. Les participants endossent le rôle de spécialistes et discutent des décisions à prendre face à un réveil simulé.</p><h2>Clermont dans un scénario de crise</h2><p>2 minutes pour sauver Clermont imagine une coulée de lave menaçant la ville. Cette mise en situation associe observation, choix de protection et discussion sur l’évacuation. La géologie locale devient ainsi le point de départ d’un jeu collectif consacré aux risques volcaniques.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La Terra in laboratorio</h2><p>Gli Ateliers des volcans riuniscono sale attrezzate per esplorare il vulcanismo attraverso esperimenti, giochi e dialoghi con gli animatori. La formazione dei vulcani, le eruzioni e i paesaggi dell’Alvernia costituiscono il filo conduttore. Dinosaures et compagnie affronta anche le tracce della vita passata: scavi nella sabbia, impronte e calchi introducono la paleontologia.</p><p>Dans la peau d’un volcanologue invita a interpretare i segnali dell’attività vulcanica dopo aver conosciuto gli strumenti scientifici. I partecipanti assumono il ruolo di specialisti e discutono le decisioni da prendere davanti a un risveglio simulato.</p><h2>Uno scenario di crisi a Clermont</h2><p>2 minutes pour sauver Clermont immagina una colata lavica che minaccia la città. La simulazione unisce osservazione, scelte di protezione e discussione sull’evacuazione. La geologia locale diventa così il punto di partenza di un gioco collettivo sui rischi vulcanici.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De aarde in de werkplaats</h2><p>De Ateliers des volcans omvatten ingerichte zalen waar proefjes, spellen en gesprekken met begeleiders het vulkanisme verkennen. Vulkaanvorming, uitbarstingen en de landschappen van de Auvergne vormen de rode draad. Dinosaures et compagnie behandelt ook sporen van vroeger leven: opgravingen in zand, voetafdrukken en afgietsels laten deelnemers kennismaken met paleontologie.</p><p>Dans la peau d’un volcanologue draait om het herkennen van vulkanische activiteit na een kennismaking met wetenschappelijke apparatuur. De deelnemers nemen de rol van specialisten aan en bespreken beslissingen bij een nagebootst ontwaken.</p><h2>Een crisisscenario in Clermont</h2><p>2 minutes pour sauver Clermont verbeeldt een lavastroom die de stad bedreigt. De oefening combineert observatie, beschermende keuzes en gesprekken over evacuatie. Lokale geologie wordt zo het vertrekpunt voor een groepsspel over vulkanische gevaren.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Ziemia w pracowni</h2><p>Ateliers des volcans to wyposażone sale, w których doświadczenia, gry i rozmowy z prowadzącymi przybliżają wulkanizm. Wspólnym wątkiem są powstawanie wulkanów, erupcje i krajobrazy Owernii. Dinosaures et compagnie podejmuje także temat śladów dawnego życia: wykopaliska w piasku, odciski stóp i odlewy wprowadzają w paleontologię.</p><p>Dans la peau d’un volcanologue zachęca do interpretowania oznak aktywności wulkanicznej po poznaniu sprzętu naukowego. Uczestnicy wcielają się w specjalistów i omawiają decyzje podejmowane wobec symulowanego przebudzenia wulkanu.</p><h2>Scenariusz kryzysu w Clermont</h2><p>2 minutes pour sauver Clermont przedstawia wyobrażony potok lawy zagrażający miastu. Ćwiczenie łączy obserwację, wybór środków ochronnych i rozmowę o ewakuacji. Lokalna geologia staje się punktem wyjścia do wspólnej gry o zagrożeniach wulkanicznych.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Terra na oficina</h2><p>Os Ateliers des volcans reúnem salas equipadas para explorar o vulcanismo através de experiências, jogos e conversas com os animadores. A formação dos vulcões, as erupções e as paisagens da Auvérnia constituem o fio condutor. Dinosaures et compagnie aborda também vestígios da vida passada: escavações na areia, pegadas e moldes introduzem a paleontologia.</p><p>Dans la peau d’un volcanologue propõe interpretar sinais de atividade vulcânica depois de conhecer os equipamentos científicos. Os participantes assumem o papel de especialistas e discutem as decisões a tomar perante um despertar simulado.</p><h2>Um cenário de crise em Clermont</h2><p>2 minutes pour sauver Clermont imagina uma escoada de lava a ameaçar a cidade. A simulação combina observação, escolhas de proteção e discussão sobre a evacuação. A geologia local torna-se o ponto de partida de um jogo coletivo sobre riscos vulcânicos.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "entityKey": "vulcania-ballon-puys",
+        "displayName": "Ballon des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Blick über die Bäume</h2><p>Der 2014 in Vulcania vorgestellte Ballon des Puys bot einen Blick aus der Luft auf die Vulkanlandschaften der Auvergne. Der Fesselballon von Aérophile verband den Park mit Aussichten über die Baumkronen und auf die Hügel am Horizont.</p><p>Seine weiße Hülle trug ein breites blaues Band mit Landschaftssilhouetten und dem Namen Le Ballon des Puys. Unter der großen, über dem Wald sichtbaren Kugel hing eine kreisförmige blaue Gondel.</p><h2>Die Landschaft als Thema</h2><p>Das Erlebnis ergänzte die Beschäftigung mit Vulkanismus um die Beobachtung der Umgebung selbst. Wälder und vulkanische Geländeformen rund um Vulcania bildeten die Kulisse aus einem ungewohnten Blickwinkel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A view above the trees</h2><p>Introduced at Vulcania in 2014, the Ballon des Puys offered an aerial encounter with Auvergne’s volcanic landscapes. This Aérophile tethered balloon connected the park with views above the treetops and hills on the horizon.</p><p>Its white envelope carried a broad blue band illustrated with landscape silhouettes and the name Le Ballon des Puys. A circular blue gondola hung beneath the large sphere, visible above the woodland.</p><h2>The landscape as the subject</h2><p>The experience extended the exploration of volcanism to observation of the surrounding territory itself. Forests and volcanic landforms around Vulcania became the scenery, seen from an unusual viewpoint.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una mirada sobre los árboles</h2><p>Presentado en Vulcania en 2014, el Ballon des Puys ofrecía una mirada aérea a los paisajes volcánicos de Auvernia. Este globo cautivo Aérophile vinculaba el parque con una vista sobre las copas de los árboles y los relieves del horizonte.</p><p>Su envoltura blanca llevaba una ancha franja azul ilustrada con siluetas de paisajes y el nombre Le Ballon des Puys. Una góndola circular azul colgaba bajo la gran esfera, visible por encima del bosque.</p><h2>El paisaje como protagonista</h2><p>La experiencia prolongaba el descubrimiento del vulcanismo mediante la observación del propio territorio. Los bosques y las formas volcánicas que rodean Vulcania componían el escenario, visto desde una perspectiva poco habitual.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un regard au-dessus des arbres</h2><p>Présenté à Vulcania en 2014, le Ballon des Puys proposait une découverte aérienne des paysages volcaniques d’Auvergne. Ce ballon captif Aérophile associait le parc à une vue prise au-dessus de la cime des arbres, avec les reliefs pour horizon.</p><p>Son enveloppe blanche portait un large bandeau bleu illustré de silhouettes de paysage et le nom « Le Ballon des Puys ». Une nacelle circulaire bleue était suspendue sous cette grande sphère, visible au-dessus du bois.</p><h2>Le paysage comme sujet</h2><p>L’expérience prolongeait la découverte du volcanisme par l’observation du territoire lui-même. Le décor était celui des forêts et des formes volcaniques qui entourent Vulcania, vus depuis un point de vue inhabituel.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Uno sguardo sopra gli alberi</h2><p>Presentato a Vulcania nel 2014, il Ballon des Puys offriva un incontro aereo con i paesaggi vulcanici dell’Alvernia. Questo pallone vincolato Aérophile collegava il parco a una vista sopra le cime degli alberi, con i rilievi all’orizzonte.</p><p>Il suo involucro bianco portava un’ampia fascia blu illustrata con sagome di paesaggi e il nome Le Ballon des Puys. Una navicella circolare blu era sospesa sotto la grande sfera, visibile sopra il bosco.</p><h2>Il paesaggio come soggetto</h2><p>L’esperienza prolungava la scoperta del vulcanismo attraverso l’osservazione del territorio stesso. Le foreste e le forme vulcaniche intorno a Vulcania componevano lo scenario, visto da una prospettiva insolita.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een blik boven de bomen</h2><p>De Ballon des Puys, in 2014 voorgesteld bij Vulcania, bood een uitzicht vanuit de lucht op de vulkanische landschappen van de Auvergne. Deze kabelballon van Aérophile verbond het park met vergezichten boven de boomtoppen en heuvels aan de horizon.</p><p>De witte ballon droeg een brede blauwe band met landschapssilhouetten en de naam Le Ballon des Puys. Onder de grote bol, zichtbaar boven het bos, hing een ronde blauwe gondel.</p><h2>Het landschap als onderwerp</h2><p>De ervaring verbond de kennismaking met vulkanisme aan het bekijken van het gebied zelf. Bossen en vulkanische vormen rond Vulcania vormden het decor, gezien vanuit een ongewoon gezichtspunt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Widok ponad drzewami</h2><p>Zaprezentowany w Vulcanii w 2014 roku Ballon des Puys oferował spojrzenie z powietrza na wulkaniczne krajobrazy Owernii. Balon na uwięzi firmy Aérophile łączył park z widokiem ponad koronami drzew i wzgórzami na horyzoncie.</p><p>Białą powłokę zdobił szeroki niebieski pas z sylwetkami krajobrazu i nazwą Le Ballon des Puys. Pod wielką kulą widoczną nad lasem wisiała okrągła niebieska gondola.</p><h2>Krajobraz w centrum uwagi</h2><p>Doświadczenie uzupełniało poznawanie wulkanizmu o obserwację samego regionu. Lasy i wulkaniczne formy terenu wokół Vulcanii tworzyły scenerię oglądaną z nietypowej perspektywy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um olhar acima das árvores</h2><p>Apresentado em Vulcania em 2014, o Ballon des Puys proporcionava uma descoberta aérea das paisagens vulcânicas da Auvérnia. Este balão cativo Aérophile ligava o parque a uma vista acima das copas das árvores, com os relevos no horizonte.</p><p>O invólucro branco tinha uma larga faixa azul ilustrada com silhuetas de paisagens e o nome Le Ballon des Puys. Uma gôndola circular azul estava suspensa sob a grande esfera, visível acima do bosque.</p><h2>A paisagem como tema</h2><p>A experiência prolongava a descoberta do vulcanismo através da observação do próprio território. As florestas e as formas vulcânicas em redor de Vulcania compunham o cenário, visto de uma perspetiva invulgar.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : les deux ensembles d’ateliers et le Ballon des Puys disposent de notices rédigées et relues en huit langues ; 47 lieux décrits, tous privés. Le statut historique Unknown du ballon et les limites chronologiques sont conservés.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Twenty-four texts personally written and reviewed in eight languages. Official 2026 employee booklet maps programme names to the two existing workshop spaces; official 2026 map A05 and B36 confirms grouping, no extra film/programme parkItems. Actual official workshop pages individually read, including Astronaute, Sous le soleil, Droles, Dinosaures, Volcanologue, Clermont. Balloon manufacturer page and original photo identify Aérophile and 2014; 2019 dismantling proposal is not proof of actual closure. Existing Unknown retained; historical narrative no present operating promise. Two headings/three paragraphs each; source-limited balloon depth documented, no fabricated chronology, prices, schedule or geolocation."
+}

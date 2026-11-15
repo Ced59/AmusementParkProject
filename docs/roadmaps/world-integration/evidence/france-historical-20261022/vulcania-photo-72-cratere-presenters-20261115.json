@@ -1,0 +1,282 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-72-cratere-presenters",
+    "ownerId": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+    "itemName": "Le cratère s’anime !",
+    "current": true,
+    "source": {
+      "key": "cratere",
+      "url": "https://www.vulcania.com/wp-content/uploads/2025/07/Le-cratere-sanime-3000x1100-2-scaled.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/cratere-1919.jpg",
+      "http": 200,
+      "bytes": 249848,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "d374652f4dff7e9f080de2b6961fb05122abd632f775db486c0b6ddcc3041fce",
+      "sourcePage": "https://www.vulcania.com/animation/le-cratere-sanime/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Native official images individually viewed; exact activity pages identify scenes. Forty-eight localized fields personally authored and reviewed. No performer identities, stage alias or capture date inferred; no pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2025/07/Le-cratere-sanime-3000x1100-2-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/cratere-1919.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-72-cratere-presenters-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-72-cratere-presenters-import-result.json"
+  },
+  "metadata": {
+    "description": "Des cartes illustrées sont disposées au sol près des participantes ; un micro accompagne la discussion en plein air.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2025/07/Le-cratere-sanime-3000x1100-2-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Deux animatrices en rouge échangent avec le public dans l’herbe, pendant Le cratère s’anime !"
+      },
+      {
+        "languageCode": "en",
+        "value": "Two presenters in red talk with the audience on the grass during Le cratère s’anime !"
+      },
+      {
+        "languageCode": "de",
+        "value": "Zwei Vermittlerinnen in Rot sprechen während Le cratère s’anime ! mit dem Publikum auf der Wiese."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Twee begeleidsters in het rood praten met het publiek op het gras tijdens Le cratère s’anime !"
+      },
+      {
+        "languageCode": "it",
+        "value": "Due animatrici in rosso dialogano con il pubblico sul prato durante Le cratère s’anime !"
+      },
+      {
+        "languageCode": "es",
+        "value": "Dos divulgadoras vestidas de rojo conversan con el público sobre el césped durante Le cratère s’anime !"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dwie prowadzące w czerwonych koszulkach rozmawiają z publicznością na trawie podczas Le cratère s’anime !"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Duas animadoras de vermelho conversam com o público na relva durante Le cratère s’anime !"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des cartes illustrées sont disposées au sol près des participantes ; un micro accompagne la discussion en plein air."
+      },
+      {
+        "languageCode": "en",
+        "value": "Illustrated cards lie on the ground near the participants, with a microphone used for the outdoor discussion."
+      },
+      {
+        "languageCode": "de",
+        "value": "Bildkarten liegen neben den Teilnehmerinnen auf dem Boden; ein Mikrofon begleitet das Gespräch im Freien."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Kaarten met afbeeldingen liggen op de grond bij de deelnemers; een microfoon ondersteunt het gesprek buiten."
+      },
+      {
+        "languageCode": "it",
+        "value": "Carte illustrate sono disposte a terra vicino ai partecipanti; un microfono accompagna il dialogo all’aperto."
+      },
+      {
+        "languageCode": "es",
+        "value": "Tarjetas ilustradas están colocadas en el suelo junto a los participantes; un micrófono acompaña la conversación al aire libre."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Ilustrowane karty leżą na ziemi przy uczestnikach, a rozmowę na świeżym powietrzu wspomaga mikrofon."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cartões ilustrados estão dispostos no chão junto dos participantes; um microfone acompanha a conversa ao ar livre."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T19:27:34.6451124Z",
+    "result": {
+      "id": "2499afaf32444bc3b47500322efdf341",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+      "path": "park_item/2499afaf32444bc3b47500322efdf341",
+      "description": "Des cartes illustrées sont disposées au sol près des participantes ; un micro accompagne la discussion en plein air.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 249848,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2025/07/Le-cratere-sanime-3000x1100-2-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Deux animatrices en rouge échangent avec le public dans l’herbe, pendant Le cratère s’anime !"
+        },
+        {
+          "languageCode": "en",
+          "value": "Two presenters in red talk with the audience on the grass during Le cratère s’anime !"
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Vermittlerinnen in Rot sprechen während Le cratère s’anime ! mit dem Publikum auf der Wiese."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee begeleidsters in het rood praten met het publiek op het gras tijdens Le cratère s’anime !"
+        },
+        {
+          "languageCode": "it",
+          "value": "Due animatrici in rosso dialogano con il pubblico sul prato durante Le cratère s’anime !"
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos divulgadoras vestidas de rojo conversan con el público sobre el césped durante Le cratère s’anime !"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwie prowadzące w czerwonych koszulkach rozmawiają z publicznością na trawie podczas Le cratère s’anime !"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Duas animadoras de vermelho conversam com o público na relva durante Le cratère s’anime !"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des cartes illustrées sont disposées au sol près des participantes ; un micro accompagne la discussion en plein air."
+        },
+        {
+          "languageCode": "en",
+          "value": "Illustrated cards lie on the ground near the participants, with a microphone used for the outdoor discussion."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bildkarten liegen neben den Teilnehmerinnen auf dem Boden; ein Mikrofon begleitet das Gespräch im Freien."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kaarten met afbeeldingen liggen op de grond bij de deelnemers; een microfoon ondersteunt het gesprek buiten."
+        },
+        {
+          "languageCode": "it",
+          "value": "Carte illustrate sono disposte a terra vicino ai partecipanti; un microfono accompagna il dialogo all’aperto."
+        },
+        {
+          "languageCode": "es",
+          "value": "Tarjetas ilustradas están colocadas en el suelo junto a los participantes; un micrófono acompaña la conversación al aire libre."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ilustrowane karty leżą na ziemi przy uczestnikach, a rozmowę na świeżym powietrzu wspomaga mikrofon."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cartões ilustrados estão dispostos no chão junto dos participantes; um microfone acompanha a conversa ao ar livre."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:27:36.935Z",
+      "updatedAt": "2026-11-15T19:27:40.522Z"
+    },
+    "receivedAtUtc": "2026-11-15T19:27:43.6308600Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

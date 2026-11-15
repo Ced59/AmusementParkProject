@@ -1,0 +1,178 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "applyChecks": [
+    {
+      "stem": "64-auvergne-sciences-shops",
+      "operationId": "eae6d41c-a472-4ec0-9282-9993831dd0d2",
+      "appliedAtUtc": "2026-11-15T19:15:39.0618015Z",
+      "localizedFieldsComparedExactlyToPreviewAndApply": 16
+    },
+    {
+      "stem": "65-vulcania-espace-shops",
+      "operationId": "b855ded1-9747-4699-925b-78db60503e4f",
+      "appliedAtUtc": "2026-11-15T19:16:39.0338664Z",
+      "localizedFieldsComparedExactlyToPreviewAndApply": 16
+    },
+    {
+      "stem": "71-vulcania-shop-specificity",
+      "operationId": "9c134d80-d384-4b7f-9885-d73fc21426b6",
+      "appliedAtUtc": "2026-11-15T19:25:16.2687701Z",
+      "localizedFieldsComparedExactlyToPreviewAndApply": 8
+    },
+    {
+      "stem": "70-two-presenter-notices",
+      "operationId": "70ad8139-e837-4574-b550-186abc2ad26a",
+      "appliedAtUtc": "2026-11-15T19:26:26.9258198Z",
+      "localizedFieldsComparedExactlyToPreviewAndApply": 16
+    },
+    {
+      "stem": "74-workshops-balloon",
+      "operationId": "9090120c-0e1f-4dbb-b8f1-fb1108a0a6a2",
+      "appliedAtUtc": "2026-11-15T19:30:38.4695406Z",
+      "localizedFieldsComparedExactlyToPreviewAndApply": 24
+    }
+  ],
+  "photoChecks": [
+    {
+      "stem": "photo-66-auvergne-minerals",
+      "imageId": "f75398491b044b9b8c2d9fa708b07f90",
+      "createdAt": "2026-11-15T19:18:08.948Z",
+      "localizedMetadataFieldsComparedExactly": 24
+    },
+    {
+      "stem": "photo-67-sciences-red-room",
+      "imageId": "fd7b1a3d22b246e0b8839903e7d6c006",
+      "createdAt": "2026-11-15T19:18:19.784Z",
+      "localizedMetadataFieldsComparedExactly": 24
+    },
+    {
+      "stem": "photo-68-vulcania-dragon-planets",
+      "imageId": "b5f87cd49bc84c5282dedffb9b80c0f3",
+      "createdAt": "2026-11-15T19:18:29.999Z",
+      "localizedMetadataFieldsComparedExactly": 24
+    },
+    {
+      "stem": "photo-69-corner-espace-hall",
+      "imageId": "03ee8ef93e7045e289706b2885a5a6b4",
+      "createdAt": "2026-11-15T19:18:39.013Z",
+      "localizedMetadataFieldsComparedExactly": 24
+    },
+    {
+      "stem": "photo-72-cratere-presenters",
+      "imageId": "2499afaf32444bc3b47500322efdf341",
+      "createdAt": "2026-11-15T19:27:36.935Z",
+      "localizedMetadataFieldsComparedExactly": 24
+    },
+    {
+      "stem": "photo-73-sorcier-projection",
+      "imageId": "5b8fe460082a41428af86320e46f49fc",
+      "createdAt": "2026-11-15T19:27:47.762Z",
+      "localizedMetadataFieldsComparedExactly": 24
+    },
+    {
+      "stem": "photo-75-ballon-puys",
+      "imageId": "583a2b39fa9f4649a44345bdd310daf4",
+      "createdAt": "2026-11-15T19:31:35.834Z",
+      "localizedMetadataFieldsComparedExactly": 24
+    }
+  ],
+  "sourceScope": [
+    "Official boutiques gallery associations confirmed from h3 sections, no mineral origin inferred.",
+    "Official programme pages and 2026 staff booklet identify workshop groups; no standalone cinemas or films created.",
+    "CineMax kept as internal parkItem per explicit owner clarification.",
+    "Balloon manufacturer source2014 and native photograph; retirement proposal not execution, statusUnknown preserved."
+  ],
+  "corpusCorrection": "Shop65 had been assembled before Shop64 became applied; later combined corpus found Spanish12word overlap. All8final paragraphs of PlaneteVulcania personally rewritten from the actual regional sign under planets and corrected by71. No arbitrary synonym variation. New74 corpus review passes across all47described items.",
+  "remainingDepthLimits": "Three developed paragraphs/two headings per language; shorter historical balloon description reflects source depth after manufacturer, official2016form and proposal research.",
+  "currentCoverage": {
+    "items": 47,
+    "publicItems": 0,
+    "describedItems8Languages": 47,
+    "zones": 0,
+    "ownMedia": 47,
+    "historyEvents": 4,
+    "privateHistoryEvents": 4,
+    "officialMaps": 2,
+    "privateOwnMedia": 47,
+    "articles": 1,
+    "privateArticles": 1
+  },
+  "realApplyCount": 30,
+  "realImportCount": 47,
+  "lastDataIntegrationAt": "2026-11-15T19:31:35.834Z",
+  "workshopSourceAccess": [
+    {
+      "key": "soleil",
+      "url": "https://www.vulcania.com/animation/sous-le-soleil/",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T19:26:01.620585+00:00"
+    },
+    {
+      "key": "droles",
+      "url": "https://www.vulcania.com/animation/droles-dexperiences/",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T19:26:01.858404+00:00"
+    },
+    {
+      "key": "dinos",
+      "url": "https://www.vulcania.com/animation/dinosaures-et-compagnie/",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T19:26:01.766476+00:00"
+    },
+    {
+      "key": "volcanologue",
+      "url": "https://www.vulcania.com/animation/dans-la-peau-d-un-volcanologue/",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T19:26:02.269078+00:00"
+    },
+    {
+      "key": "clermont",
+      "url": "https://www.vulcania.com/animation/2-minutes-pour-sauver-clermont/",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T19:26:01.984003+00:00"
+    }
+  ],
+  "rejectedWorkshopPromotionalImages": [
+    {
+      "key": "astro",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/05/dans-la-peau-dun-astronaute_3000x1100-scaled.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/astro-1934.jpg",
+      "http": 200,
+      "bytes": 42335,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "779e3141352a9750b7ad214e20175fd2d99ee0fa604fe78349b8cd5baf269245",
+      "rootVisualReview": true,
+      "decision": "rejected-as-place-photograph",
+      "reason": "Promotional composite with illustrations, title and blurred background; does not show an authentic workshop room/session. No import or crop."
+    },
+    {
+      "key": "dinos",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/05/dinosaures-et-compagnie_3000x1100-scaled.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/dinos-1934.jpg",
+      "http": 200,
+      "bytes": 35448,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "a0b9b7350c6d4e2169a67449b36ef1efd1b665a0c60967ac41c7b6996b1821ed",
+      "rootVisualReview": true,
+      "decision": "rejected-as-place-photograph",
+      "reason": "Promotional composite with illustrations, title and blurred background; does not show an authentic workshop room/session. No import or crop."
+    }
+  ],
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "remainingWork": [
+    "inventory/services and historical aliases",
+    "item histories",
+    "pricing and calendar source scope",
+    "geolocation and remaining image qualification",
+    "single full final audit then distinct publication export"
+  ]
+}

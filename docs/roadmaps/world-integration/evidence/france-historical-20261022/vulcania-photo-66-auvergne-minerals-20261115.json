@@ -1,0 +1,291 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-66-auvergne-minerals",
+    "ownerId": "52885720-2ed0-4d51-b940-33e955b2df3f",
+    "itemName": "Planète Auvergne",
+    "current": true,
+    "source": {
+      "name": "Planète Auvergne",
+      "url": "https://www.vulcania.com/wp-content/uploads/2024/06/DSC_0097.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/shop-2-1-1915.jpg",
+      "http": 200,
+      "bytes": 56077,
+      "dimensions": [
+        700,
+        465
+      ],
+      "sha256": "fc7fe07ba7853152e0e9ce2deaf918b08ce0aa6046fd71f1275da6b3f05bd620",
+      "sourcePage": "https://www.vulcania.com/boutiques/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Four native official shop photos individually inspected, their exact shop associations established by the official page h3 gallery sections. Ninety-six localized metadata fields personally authored/reviewed. Additional four gallery images viewed for description qualification, not imported as variants. No capture date, mineral origin or current price inferred. No pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "52885720-2ed0-4d51-b940-33e955b2df3f",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/06/DSC_0097.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/shop-2-1-1915.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-66-auvergne-minerals-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-66-auvergne-minerals-import-result.json"
+  },
+  "metadata": {
+    "description": "Des étiquettes accompagnent les minéraux, devant des étagères en bois et un panier de peluches.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/06/DSC_0097.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des bacs transparents étagés présentent des pierres colorées dans la boutique Planète Auvergne."
+      },
+      {
+        "languageCode": "en",
+        "value": "Tiered transparent containers display colourful stones in the Planète Auvergne shop."
+      },
+      {
+        "languageCode": "de",
+        "value": "Gestufte durchsichtige Behälter präsentieren bunte Steine im Geschäft Planète Auvergne."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Doorzichtige bakken op verschillende niveaus tonen kleurrijke stenen in de winkel Planète Auvergne."
+      },
+      {
+        "languageCode": "it",
+        "value": "Contenitori trasparenti su più livelli espongono pietre colorate nel negozio Planète Auvergne."
+      },
+      {
+        "languageCode": "es",
+        "value": "Recipientes transparentes escalonados exponen piedras de colores en la tienda Planète Auvergne."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Przezroczyste pojemniki ustawione piętrowo prezentują kolorowe kamienie w sklepie Planète Auvergne."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Recipientes transparentes em vários níveis apresentam pedras coloridas na loja Planète Auvergne."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des étiquettes accompagnent les minéraux, devant des étagères en bois et un panier de peluches."
+      },
+      {
+        "languageCode": "en",
+        "value": "Labels accompany the minerals in front of wooden shelves and a basket of soft toys."
+      },
+      {
+        "languageCode": "de",
+        "value": "Etiketten begleiten die Mineralien vor Holzregalen und einem Korb mit Plüschtieren."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Etiketten staan bij de mineralen, voor houten schappen en een mand met knuffels."
+      },
+      {
+        "languageCode": "it",
+        "value": "Etichette accompagnano i minerali, davanti a scaffali di legno e a un cesto di peluche."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las etiquetas acompañan a los minerales, ante estantes de madera y una cesta de peluches."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Minerałom towarzyszą etykiety, a za nimi widać drewniane półki i kosz pluszaków."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As etiquetas acompanham os minerais, diante de prateleiras de madeira e de um cesto de peluches."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "f75398491b044b9b8c2d9fa708b07f90",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "52885720-2ed0-4d51-b940-33e955b2df3f",
+      "path": "park_item/f75398491b044b9b8c2d9fa708b07f90",
+      "description": "Des étiquettes accompagnent les minéraux, devant des étagères en bois et un panier de peluches.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 465,
+      "sizeInBytes": 56077,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/06/DSC_0097.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des bacs transparents étagés présentent des pierres colorées dans la boutique Planète Auvergne."
+        },
+        {
+          "languageCode": "en",
+          "value": "Tiered transparent containers display colourful stones in the Planète Auvergne shop."
+        },
+        {
+          "languageCode": "de",
+          "value": "Gestufte durchsichtige Behälter präsentieren bunte Steine im Geschäft Planète Auvergne."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Doorzichtige bakken op verschillende niveaus tonen kleurrijke stenen in de winkel Planète Auvergne."
+        },
+        {
+          "languageCode": "it",
+          "value": "Contenitori trasparenti su più livelli espongono pietre colorate nel negozio Planète Auvergne."
+        },
+        {
+          "languageCode": "es",
+          "value": "Recipientes transparentes escalonados exponen piedras de colores en la tienda Planète Auvergne."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przezroczyste pojemniki ustawione piętrowo prezentują kolorowe kamienie w sklepie Planète Auvergne."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Recipientes transparentes em vários níveis apresentam pedras coloridas na loja Planète Auvergne."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des étiquettes accompagnent les minéraux, devant des étagères en bois et un panier de peluches."
+        },
+        {
+          "languageCode": "en",
+          "value": "Labels accompany the minerals in front of wooden shelves and a basket of soft toys."
+        },
+        {
+          "languageCode": "de",
+          "value": "Etiketten begleiten die Mineralien vor Holzregalen und einem Korb mit Plüschtieren."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Etiketten staan bij de mineralen, voor houten schappen en een mand met knuffels."
+        },
+        {
+          "languageCode": "it",
+          "value": "Etichette accompagnano i minerali, davanti a scaffali di legno e a un cesto di peluche."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las etiquetas acompañan a los minerales, ante estantes de madera y una cesta de peluches."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Minerałom towarzyszą etykiety, a za nimi widać drewniane półki i kosz pluszaków."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As etiquetas acompanham os minerais, diante de prateleiras de madeira e de um cesto de peluches."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:18:08.948Z",
+      "updatedAt": "2026-11-15T19:18:12.827Z"
+    },
+    "receivedAtUtc": "2026-11-15T19:18:15.9204663Z",
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T19:18:07.2719610Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

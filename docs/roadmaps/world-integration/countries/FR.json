@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T19:09:58.827Z",
+      "lastDataIntegrationAt": "2026-11-15T19:31:35.834Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38808,6 +38808,126 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-63-cent-volcans-map-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : photo officielle de 100% volcans importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-eae6d41c-a472-4ec0-9282-9993831dd0d2",
+          "appliedAt": "2026-11-15T19:15:39.061Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-64-auvergne-sciences-shops-20261115.json",
+          "auditEvidence": null,
+          "summary": "Planète Auvergne et Planète Sciences : seize notices en huit langues personnellement rédigées et relues sur les galeries et offres officielles. Origine des minéraux non supposée régionale ; label réservé aux produits identifiés. Fiches existantes privées, aucune nouvelle date ni identité."
+        },
+        {
+          "eventId": "apply-b855ded1-9747-4699-925b-78db60503e4f",
+          "appliedAt": "2026-11-15T19:16:39.033Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-65-vulcania-espace-shops-20261115.json",
+          "auditEvidence": null,
+          "summary": "Planète Vulcania et Corner Espace du Planétarium : seize notices en huit langues personnellement rédigées et relues ; dragon, planètes suspendues, souvenirs Pitoufeu et vitrines du hall qualifiés par photos officielles de leurs sections respectives. Deux fiches existantes privées, sans inventer une nouvelle offre ou date."
+        },
+        {
+          "eventId": "import-photo-f75398491b044b9b8c2d9fa708b07f90",
+          "appliedAt": "2026-11-15T19:18:08.948Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-66-auvergne-minerals-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Planète Auvergne importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-fd7b1a3d22b246e0b8839903e7d6c006",
+          "appliedAt": "2026-11-15T19:18:19.784Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-67-sciences-red-room-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Planète Sciences importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-b5f87cd49bc84c5282dedffb9b80c0f3",
+          "appliedAt": "2026-11-15T19:18:29.999Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-68-vulcania-dragon-planets-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Planète Vulcania importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-03ee8ef93e7045e289706b2885a5a6b4",
+          "appliedAt": "2026-11-15T19:18:39.013Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-69-corner-espace-hall-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Corner Espace du Planétarium importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-9c134d80-d384-4b7f-9885-d73fc21426b6",
+          "appliedAt": "2026-11-15T19:25:16.268Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-71-vulcania-shop-specificity-20261115.json",
+          "auditEvidence": null,
+          "summary": "Planète Vulcania : huit notices corrigées avec le panneau régional effectivement visible sous les planètes ; périmètre privé conservé, répétition entre boutiques supprimée par une observation propre au lieu."
+        },
+        {
+          "eventId": "apply-70ad8139-e837-4574-b550-186abc2ad26a",
+          "appliedAt": "2026-11-15T19:26:26.925Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-70-two-presenter-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : Le cratère s’anime et C’est pas sorcier les volcans décrits personnellement en huit langues, sources officielles et scènes photographiques relues ; deux fiches privées conservées."
+        },
+        {
+          "eventId": "import-photo-2499afaf32444bc3b47500322efdf341",
+          "appliedAt": "2026-11-15T19:27:36.935Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-72-cratere-presenters-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Le cratère s’anime ! importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-5b8fe460082a41428af86320e46f49fc",
+          "appliedAt": "2026-11-15T19:27:47.762Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-73-sorcier-projection-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de C’est pas sorcier les volcans ! importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-9090120c-0e1f-4dbb-b8f1-fb1108a0a6a2",
+          "appliedAt": "2026-11-15T19:30:38.469Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-74-workshops-balloon-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : les deux ensembles d’ateliers et le Ballon des Puys disposent de notices rédigées et relues en huit langues ; 47 lieux décrits, tous privés. Le statut historique Unknown du ballon et les limites chronologiques sont conservés."
+        },
+        {
+          "eventId": "import-photo-583a2b39fa9f4649a44345bdd310daf4",
+          "appliedAt": "2026-11-15T19:31:35.834Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-75-ballon-puys-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Ballon des Puys importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38860,7 +38980,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-f1e809b6aa864d82a3cec643e624c7d9 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-583a2b39fa9f4649a44345bdd310daf4 ; conserver les références de découverte."
       }
     },
     {

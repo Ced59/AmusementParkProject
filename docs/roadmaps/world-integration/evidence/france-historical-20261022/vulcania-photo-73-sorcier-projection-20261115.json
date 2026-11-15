@@ -1,0 +1,282 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-73-sorcier-projection",
+    "ownerId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+    "itemName": "C’est pas sorcier les volcans !",
+    "current": true,
+    "source": {
+      "key": "sorcier",
+      "url": "https://www.vulcania.com/wp-content/uploads/2025/07/Banniere-cest-pas-sorcier-les-volcans-.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/sorcier-1919.jpg",
+      "http": 200,
+      "bytes": 75771,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "d9d7f4ca0947a5d81f04990796a08cc60d0938dbaa5b7a95929d780981130aa5",
+      "sourcePage": "https://www.vulcania.com/animation/cest-pas-sorcier-les-volcans/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Native official images individually viewed; exact activity pages identify scenes. Forty-eight localized fields personally authored and reviewed. No performer identities, stage alias or capture date inferred; no pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2025/07/Banniere-cest-pas-sorcier-les-volcans-.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/sorcier-1919.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-73-sorcier-projection-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-73-sorcier-projection-import-result.json"
+  },
+  "metadata": {
+    "description": "Le cône du parc, les bois et un relief volcanique apparaissent derrière l’animateur vêtu de rouge et de noir.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2025/07/Banniere-cest-pas-sorcier-les-volcans-.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un animateur montre une vue aérienne de Vulcania sur le grand écran de C’est pas sorcier les volcans !"
+      },
+      {
+        "languageCode": "en",
+        "value": "A presenter points to an aerial view of Vulcania on the large screen during C’est pas sorcier les volcans !"
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Vermittler zeigt bei C’est pas sorcier les volcans ! auf eine Luftaufnahme von Vulcania auf der großen Leinwand."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een begeleider wijst naar een luchtfoto van Vulcania op het grote scherm tijdens C’est pas sorcier les volcans !"
+      },
+      {
+        "languageCode": "it",
+        "value": "Un animatore indica una veduta aerea di Vulcania sul grande schermo di C’est pas sorcier les volcans !"
+      },
+      {
+        "languageCode": "es",
+        "value": "Un divulgador señala una vista aérea de Vulcania en la gran pantalla de C’est pas sorcier les volcans !"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Prowadzący wskazuje zdjęcie lotnicze Vulcanii na dużym ekranie podczas C’est pas sorcier les volcans !"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um animador aponta para uma vista aérea de Vulcania no grande ecrã de C’est pas sorcier les volcans !"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le cône du parc, les bois et un relief volcanique apparaissent derrière l’animateur vêtu de rouge et de noir."
+      },
+      {
+        "languageCode": "en",
+        "value": "The park’s cone, woodland and a volcanic hill appear behind the presenter dressed in red and black."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Kegel des Parks, Wälder und ein Vulkanhügel erscheinen hinter dem rot-schwarz gekleideten Vermittler."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De kegel van het park, bos en een vulkanische heuvel verschijnen achter de begeleider in rood en zwart."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il cono del parco, il bosco e un rilievo vulcanico appaiono dietro l’animatore vestito di rosso e nero."
+      },
+      {
+        "languageCode": "es",
+        "value": "El cono del parque, el bosque y un relieve volcánico aparecen detrás del divulgador vestido de rojo y negro."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Stożek parku, las i wulkaniczne wzniesienie są widoczne za prowadzącym ubranym na czerwono i czarno."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O cone do parque, o bosque e um relevo vulcânico aparecem atrás do animador vestido de vermelho e preto."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T19:27:54.4107457Z",
+    "result": {
+      "id": "5b8fe460082a41428af86320e46f49fc",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+      "path": "park_item/5b8fe460082a41428af86320e46f49fc",
+      "description": "Le cône du parc, les bois et un relief volcanique apparaissent derrière l’animateur vêtu de rouge et de noir.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 75771,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2025/07/Banniere-cest-pas-sorcier-les-volcans-.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un animateur montre une vue aérienne de Vulcania sur le grand écran de C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "en",
+          "value": "A presenter points to an aerial view of Vulcania on the large screen during C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Vermittler zeigt bei C’est pas sorcier les volcans ! auf eine Luftaufnahme von Vulcania auf der großen Leinwand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een begeleider wijst naar een luchtfoto van Vulcania op het grote scherm tijdens C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "it",
+          "value": "Un animatore indica una veduta aerea di Vulcania sul grande schermo di C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "es",
+          "value": "Un divulgador señala una vista aérea de Vulcania en la gran pantalla de C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Prowadzący wskazuje zdjęcie lotnicze Vulcanii na dużym ekranie podczas C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um animador aponta para uma vista aérea de Vulcania no grande ecrã de C’est pas sorcier les volcans !"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le cône du parc, les bois et un relief volcanique apparaissent derrière l’animateur vêtu de rouge et de noir."
+        },
+        {
+          "languageCode": "en",
+          "value": "The park’s cone, woodland and a volcanic hill appear behind the presenter dressed in red and black."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Kegel des Parks, Wälder und ein Vulkanhügel erscheinen hinter dem rot-schwarz gekleideten Vermittler."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kegel van het park, bos en een vulkanische heuvel verschijnen achter de begeleider in rood en zwart."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il cono del parco, il bosco e un rilievo vulcanico appaiono dietro l’animatore vestito di rosso e nero."
+        },
+        {
+          "languageCode": "es",
+          "value": "El cono del parque, el bosque y un relieve volcánico aparecen detrás del divulgador vestido de rojo y negro."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stożek parku, las i wulkaniczne wzniesienie są widoczne za prowadzącym ubranym na czerwono i czarno."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cone do parque, o bosque e um relevo vulcânico aparecem atrás do animador vestido de vermelho e preto."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:27:47.762Z",
+      "updatedAt": "2026-11-15T19:27:51.287Z"
+    },
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T19:27:45.4806213Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

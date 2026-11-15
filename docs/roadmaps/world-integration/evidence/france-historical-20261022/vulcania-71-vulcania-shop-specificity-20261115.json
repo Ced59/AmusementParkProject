@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+          "key": "vulcania-planete-vulcania",
+          "name": "Planète Vulcania",
+          "type": "Shop",
+          "category": "Shop",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un dragon sous les planètes</h2><p>Planète Vulcania accueille ses visiteurs sous des planètes suspendues et un plafond aux motifs rouges et jaunes. Au milieu des rayons, un grand dragon vert aux ailes ouvertes domine les livres et les jouets. Les hautes fenêtres éclairent cette boutique où les images de l’espace rencontrent les créatures fantastiques.</p><p>La librairie, les jeux éducatifs, les minéraux et les produits dérivés composent l’offre. Les souvenirs de Pitoufeu y sont bien visibles, notamment des vêtements rouges et des chapeaux jaunes brodés à son nom, parmi les articles portant celui de Vulcania.</p><h2>Des souvenirs et des produits régionaux</h2><p>Un panneau « Ma Région Ses Terroirs » est suspendu près des rayons, sous les représentations de planètes. Il signale la présence de produits régionaux dans cette boutique où se côtoient souvenirs de la mascotte, livres scientifiques et créatures de légende.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A dragon beneath the planets</h2><p>Planète Vulcania welcomes visitors beneath suspended planets and a ceiling patterned in red and yellow. A large green dragon with open wings rises above the books and toys. Tall windows light a shop where images of space meet fantastic creatures.</p><p>The range brings together books, educational games, minerals and merchandise. Pitoufeu souvenirs are prominent, including red clothing and yellow hats embroidered with his name among items bearing the Vulcania name.</p><h2>Souvenirs and regional products</h2><p>A Ma Région Ses Terroirs sign hangs beside the shelves beneath the suspended planets. It marks the presence of regional products in a shop that brings together mascot souvenirs, science books and legendary creatures.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Drache unter den Planeten</h2><p>Planète Vulcania empfängt Besucher unter hängenden Planeten und einer rot-gelb gemusterten Decke. Ein großer grüner Drache mit offenen Flügeln überragt Bücher und Spielzeug. Hohe Fenster erhellen das Geschäft, in dem Weltraumbilder auf fantastische Kreaturen treffen.</p><p>Das Sortiment umfasst Bücher, Lernspiele, Mineralien und Merchandising. Pitoufeu-Souvenirs fallen auf, darunter rote Kleidung und gelbe Hüte mit seinem aufgestickten Namen zwischen Artikeln mit dem Vulcania-Schriftzug.</p><h2>Souvenirs und regionale Produkte</h2><p>Ein Schild mit der Aufschrift Ma Région Ses Terroirs hängt neben den Regalen unter den Planetenmodellen. Es verweist auf regionale Produkte in einem Geschäft, das Maskottchen-Souvenirs, Wissenschaftsbücher und Sagengestalten zusammenbringt.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een draak onder de planeten</h2><p>Planète Vulcania ontvangt bezoekers onder hangende planeten en een plafond met rode en gele patronen. Een grote groene draak met open vleugels steekt boven de boeken en het speelgoed uit. Hoge ramen verlichten de winkel, waar ruimtebeelden en fantasiewezens samenkomen.</p><p>Het aanbod bestaat uit boeken, educatieve spellen, mineralen en merchandise. Pitoufeu-souvenirs vallen op, waaronder rode kleding en gele hoeden met zijn geborduurde naam tussen artikelen met de naam Vulcania.</p><h2>Souvenirs en regionale producten</h2><p>Een bord met Ma Région Ses Terroirs hangt naast de schappen onder de planetenmodellen. Het wijst op regionale producten in een winkel waar mascottesouvenirs, wetenschappelijke boeken en legendarische wezens samenkomen.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un drago sotto i pianeti</h2><p>Planète Vulcania accoglie i visitatori sotto pianeti sospesi e un soffitto con motivi rossi e gialli. Un grande drago verde dalle ali aperte domina libri e giocattoli. Le finestre alte illuminano un negozio in cui immagini dello spazio incontrano creature fantastiche.</p><p>L’offerta comprende libri, giochi educativi, minerali e prodotti a tema. I ricordi di Pitoufeu sono ben visibili, con vestiti rossi e cappelli gialli ricamati con il suo nome tra gli articoli che riportano quello di Vulcania.</p><h2>Ricordi e prodotti regionali</h2><p>Un cartello Ma Région Ses Terroirs è sospeso accanto agli scaffali, sotto i modelli dei pianeti. Segnala la presenza di prodotti regionali in un negozio che riunisce ricordi della mascotte, libri scientifici e creature leggendarie.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un dragón bajo los planetas</h2><p>Planète Vulcania recibe a los visitantes bajo planetas suspendidos y un techo con motivos rojos y amarillos. Un gran dragón verde con las alas abiertas domina los libros y juguetes. Altas ventanas iluminan una tienda donde las imágenes del espacio se encuentran con criaturas fantásticas.</p><p>La oferta reúne libros, juegos educativos, minerales y productos temáticos. Los recuerdos de Pitoufeu destacan, con ropa roja y sombreros amarillos bordados con su nombre entre artículos que llevan el de Vulcania.</p><h2>Recuerdos y productos regionales</h2><p>Un cartel Ma Région Ses Terroirs cuelga junto a los estantes, bajo las representaciones de planetas. Señala la presencia de productos regionales en una tienda que reúne recuerdos de la mascota, libros científicos y criaturas legendarias.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Smok pod planetami</h2><p>Planète Vulcania wita gości pod zawieszonymi planetami i sufitem w czerwono-żółte wzory. Duży zielony smok z rozłożonymi skrzydłami góruje nad książkami i zabawkami. Wysokie okna rozświetlają sklep, w którym obrazy kosmosu spotykają fantastyczne stworzenia.</p><p>Oferta obejmuje książki, gry edukacyjne, minerały i pamiątki tematyczne. Wyraźnie widać pamiątki Pitoufeu, w tym czerwone ubrania i żółte kapelusze z wyhaftowanym imieniem, obok artykułów z nazwą Vulcania.</p><h2>Pamiątki i produkty regionalne</h2><p>Tablica Ma Région Ses Terroirs wisi przy regałach pod modelami planet. Wskazuje obecność regionalnych produktów w sklepie łączącym pamiątki maskotki, książki naukowe i legendarne stworzenia.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um dragão sob os planetas</h2><p>Planète Vulcania recebe os visitantes sob planetas suspensos e um teto com padrões vermelhos e amarelos. Um grande dragão verde de asas abertas domina livros e brinquedos. Janelas altas iluminam uma loja onde as imagens do espaço encontram criaturas fantásticas.</p><p>A oferta reúne livros, jogos educativos, minerais e produtos temáticos. As recordações de Pitoufeu têm destaque, incluindo roupa vermelha e chapéus amarelos bordados com o seu nome, entre artigos com o nome Vulcania.</p><h2>Recordações e produtos regionais</h2><p>Um painel Ma Région Ses Terroirs está suspenso junto às prateleiras, sob os modelos dos planetas. Assinala a presença de produtos regionais numa loja que reúne recordações da mascote, livros científicos e criaturas lendárias.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-shop-specificity-correction",
+        "notes": "All eight final paragraphs personally revised to the actual hanging Ma Region Ses Terroirs sign beneath planet models visible in the exact Planete Vulcania photo. Previous Spanish12word overlap with Auvergne was noticed when broader corpus checked after both separately staged lots became applied. Correction provides place-specific observation; no arbitrary synonym substitution to hide duplicates. Other eight-language paragraphs unchanged; private status preserved."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "a9896a3f-c5f2-42c5-adfa-dbb2dd89e82e",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:24:57.963691Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+        "entityKey": "vulcania-planete-vulcania",
+        "displayName": "Planète Vulcania",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein Drache unter den Planeten</h2><p>Planète Vulcania empfängt Besucher unter hängenden Planeten und einer rot-gelb gemusterten Decke. Ein großer grüner Drache mit offenen Flügeln überragt Bücher und Spielzeug. Hohe Fenster erhellen das Geschäft, in dem Weltraumbilder auf fantastische Kreaturen treffen.</p><p>Das Sortiment umfasst Bücher, Lernspiele, Mineralien und Merchandising. Pitoufeu-Souvenirs fallen auf, darunter rote Kleidung und gelbe Hüte mit seinem aufgestickten Namen zwischen Artikeln mit dem Vulcania-Schriftzug.</p><h2>Souvenirs und regionale Produkte</h2><p>Die Auswahl enthält auch Produkte mit dem Label Ma Région Ses Terroirs. Diese regionale Kennzeichnung findet sich zwischen den Regalen neben illustrierten Büchern und Gegenständen aus den wissenschaftlichen und erdachten Welten des Parks.</p>",
+            "newValue": "<h2>Ein Drache unter den Planeten</h2><p>Planète Vulcania empfängt Besucher unter hängenden Planeten und einer rot-gelb gemusterten Decke. Ein großer grüner Drache mit offenen Flügeln überragt Bücher und Spielzeug. Hohe Fenster erhellen das Geschäft, in dem Weltraumbilder auf fantastische Kreaturen treffen.</p><p>Das Sortiment umfasst Bücher, Lernspiele, Mineralien und Merchandising. Pitoufeu-Souvenirs fallen auf, darunter rote Kleidung und gelbe Hüte mit seinem aufgestickten Namen zwischen Artikeln mit dem Vulcania-Schriftzug.</p><h2>Souvenirs und regionale Produkte</h2><p>Ein Schild mit der Aufschrift Ma Région Ses Terroirs hängt neben den Regalen unter den Planetenmodellen. Es verweist auf regionale Produkte in einem Geschäft, das Maskottchen-Souvenirs, Wissenschaftsbücher und Sagengestalten zusammenbringt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A dragon beneath the planets</h2><p>Planète Vulcania welcomes visitors beneath suspended planets and a ceiling patterned in red and yellow. A large green dragon with open wings rises above the books and toys. Tall windows light a shop where images of space meet fantastic creatures.</p><p>The range brings together books, educational games, minerals and merchandise. Pitoufeu souvenirs are prominent, including red clothing and yellow hats embroidered with his name among items bearing the Vulcania name.</p><h2>Souvenirs and regional products</h2><p>The selection also includes products labelled Ma Région Ses Terroirs. This regional marker appears among the shelves, beside illustrated books and objects exploring the park’s scientific and imaginary worlds.</p>",
+            "newValue": "<h2>A dragon beneath the planets</h2><p>Planète Vulcania welcomes visitors beneath suspended planets and a ceiling patterned in red and yellow. A large green dragon with open wings rises above the books and toys. Tall windows light a shop where images of space meet fantastic creatures.</p><p>The range brings together books, educational games, minerals and merchandise. Pitoufeu souvenirs are prominent, including red clothing and yellow hats embroidered with his name among items bearing the Vulcania name.</p><h2>Souvenirs and regional products</h2><p>A Ma Région Ses Terroirs sign hangs beside the shelves beneath the suspended planets. It marks the presence of regional products in a shop that brings together mascot souvenirs, science books and legendary creatures.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un dragón bajo los planetas</h2><p>Planète Vulcania recibe a los visitantes bajo planetas suspendidos y un techo con motivos rojos y amarillos. Un gran dragón verde con las alas abiertas domina los libros y juguetes. Altas ventanas iluminan una tienda donde las imágenes del espacio se encuentran con criaturas fantásticas.</p><p>La oferta reúne libros, juegos educativos, minerales y productos temáticos. Los recuerdos de Pitoufeu destacan, con ropa roja y sombreros amarillos bordados con su nombre entre artículos que llevan el de Vulcania.</p><h2>Recuerdos y productos regionales</h2><p>La selección también incluye productos con el sello Ma Région Ses Terroirs. Esta referencia regional aparece entre los estantes, junto a libros ilustrados y objetos dedicados a los mundos científicos e imaginarios del parque.</p>",
+            "newValue": "<h2>Un dragón bajo los planetas</h2><p>Planète Vulcania recibe a los visitantes bajo planetas suspendidos y un techo con motivos rojos y amarillos. Un gran dragón verde con las alas abiertas domina los libros y juguetes. Altas ventanas iluminan una tienda donde las imágenes del espacio se encuentran con criaturas fantásticas.</p><p>La oferta reúne libros, juegos educativos, minerales y productos temáticos. Los recuerdos de Pitoufeu destacan, con ropa roja y sombreros amarillos bordados con su nombre entre artículos que llevan el de Vulcania.</p><h2>Recuerdos y productos regionales</h2><p>Un cartel Ma Région Ses Terroirs cuelga junto a los estantes, bajo las representaciones de planetas. Señala la presencia de productos regionales en una tienda que reúne recuerdos de la mascota, libros científicos y criaturas legendarias.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Un dragon sous les planètes</h2><p>Planète Vulcania accueille ses visiteurs sous des planètes suspendues et un plafond aux motifs rouges et jaunes. Au milieu des rayons, un grand dragon vert aux ailes ouvertes domine les livres et les jouets. Les hautes fenêtres éclairent cette boutique où les images de l’espace rencontrent les créatures fantastiques.</p><p>La librairie, les jeux éducatifs, les minéraux et les produits dérivés composent l’offre. Les souvenirs de Pitoufeu y sont bien visibles, notamment des vêtements rouges et des chapeaux jaunes brodés à son nom, parmi les articles portant celui de Vulcania.</p><h2>Des souvenirs et des produits régionaux</h2><p>La sélection comprend aussi des produits labellisés « Ma Région Ses Terroirs ». Le repère régional apparaît parmi les étagères, à côté des présentoirs de livres illustrés et des objets consacrés aux univers scientifiques et imaginaires du parc.</p>",
+            "newValue": "<h2>Un dragon sous les planètes</h2><p>Planète Vulcania accueille ses visiteurs sous des planètes suspendues et un plafond aux motifs rouges et jaunes. Au milieu des rayons, un grand dragon vert aux ailes ouvertes domine les livres et les jouets. Les hautes fenêtres éclairent cette boutique où les images de l’espace rencontrent les créatures fantastiques.</p><p>La librairie, les jeux éducatifs, les minéraux et les produits dérivés composent l’offre. Les souvenirs de Pitoufeu y sont bien visibles, notamment des vêtements rouges et des chapeaux jaunes brodés à son nom, parmi les articles portant celui de Vulcania.</p><h2>Des souvenirs et des produits régionaux</h2><p>Un panneau « Ma Région Ses Terroirs » est suspendu près des rayons, sous les représentations de planètes. Il signale la présence de produits régionaux dans cette boutique où se côtoient souvenirs de la mascotte, livres scientifiques et créatures de légende.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un drago sotto i pianeti</h2><p>Planète Vulcania accoglie i visitatori sotto pianeti sospesi e un soffitto con motivi rossi e gialli. Un grande drago verde dalle ali aperte domina libri e giocattoli. Le finestre alte illuminano un negozio in cui immagini dello spazio incontrano creature fantastiche.</p><p>L’offerta comprende libri, giochi educativi, minerali e prodotti a tema. I ricordi di Pitoufeu sono ben visibili, con vestiti rossi e cappelli gialli ricamati con il suo nome tra gli articoli che riportano quello di Vulcania.</p><h2>Ricordi e prodotti regionali</h2><p>La selezione include anche prodotti con il marchio Ma Région Ses Terroirs. Questo riferimento regionale compare tra gli scaffali, accanto a libri illustrati e oggetti dedicati ai mondi scientifici e immaginari del parco.</p>",
+            "newValue": "<h2>Un drago sotto i pianeti</h2><p>Planète Vulcania accoglie i visitatori sotto pianeti sospesi e un soffitto con motivi rossi e gialli. Un grande drago verde dalle ali aperte domina libri e giocattoli. Le finestre alte illuminano un negozio in cui immagini dello spazio incontrano creature fantastiche.</p><p>L’offerta comprende libri, giochi educativi, minerali e prodotti a tema. I ricordi di Pitoufeu sono ben visibili, con vestiti rossi e cappelli gialli ricamati con il suo nome tra gli articoli che riportano quello di Vulcania.</p><h2>Ricordi e prodotti regionali</h2><p>Un cartello Ma Région Ses Terroirs è sospeso accanto agli scaffali, sotto i modelli dei pianeti. Segnala la presenza di prodotti regionali in un negozio che riunisce ricordi della mascotte, libri scientifici e creature leggendarie.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een draak onder de planeten</h2><p>Planète Vulcania ontvangt bezoekers onder hangende planeten en een plafond met rode en gele patronen. Een grote groene draak met open vleugels steekt boven de boeken en het speelgoed uit. Hoge ramen verlichten de winkel, waar ruimtebeelden en fantasiewezens samenkomen.</p><p>Het aanbod bestaat uit boeken, educatieve spellen, mineralen en merchandise. Pitoufeu-souvenirs vallen op, waaronder rode kleding en gele hoeden met zijn geborduurde naam tussen artikelen met de naam Vulcania.</p><h2>Souvenirs en regionale producten</h2><p>De selectie omvat ook producten met het label Ma Région Ses Terroirs. Die regionale aanduiding verschijnt tussen de schappen, naast geïllustreerde boeken en voorwerpen rond de wetenschappelijke en denkbeeldige werelden van het park.</p>",
+            "newValue": "<h2>Een draak onder de planeten</h2><p>Planète Vulcania ontvangt bezoekers onder hangende planeten en een plafond met rode en gele patronen. Een grote groene draak met open vleugels steekt boven de boeken en het speelgoed uit. Hoge ramen verlichten de winkel, waar ruimtebeelden en fantasiewezens samenkomen.</p><p>Het aanbod bestaat uit boeken, educatieve spellen, mineralen en merchandise. Pitoufeu-souvenirs vallen op, waaronder rode kleding en gele hoeden met zijn geborduurde naam tussen artikelen met de naam Vulcania.</p><h2>Souvenirs en regionale producten</h2><p>Een bord met Ma Région Ses Terroirs hangt naast de schappen onder de planetenmodellen. Het wijst op regionale producten in een winkel waar mascottesouvenirs, wetenschappelijke boeken en legendarische wezens samenkomen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Smok pod planetami</h2><p>Planète Vulcania wita gości pod zawieszonymi planetami i sufitem w czerwono-żółte wzory. Duży zielony smok z rozłożonymi skrzydłami góruje nad książkami i zabawkami. Wysokie okna rozświetlają sklep, w którym obrazy kosmosu spotykają fantastyczne stworzenia.</p><p>Oferta obejmuje książki, gry edukacyjne, minerały i pamiątki tematyczne. Wyraźnie widać pamiątki Pitoufeu, w tym czerwone ubrania i żółte kapelusze z wyhaftowanym imieniem, obok artykułów z nazwą Vulcania.</p><h2>Pamiątki i produkty regionalne</h2><p>Wybór zawiera także produkty oznaczone Ma Région Ses Terroirs. To regionalne oznaczenie pojawia się między półkami, obok ilustrowanych książek i przedmiotów poświęconych naukowym oraz wyobrażonym światom parku.</p>",
+            "newValue": "<h2>Smok pod planetami</h2><p>Planète Vulcania wita gości pod zawieszonymi planetami i sufitem w czerwono-żółte wzory. Duży zielony smok z rozłożonymi skrzydłami góruje nad książkami i zabawkami. Wysokie okna rozświetlają sklep, w którym obrazy kosmosu spotykają fantastyczne stworzenia.</p><p>Oferta obejmuje książki, gry edukacyjne, minerały i pamiątki tematyczne. Wyraźnie widać pamiątki Pitoufeu, w tym czerwone ubrania i żółte kapelusze z wyhaftowanym imieniem, obok artykułów z nazwą Vulcania.</p><h2>Pamiątki i produkty regionalne</h2><p>Tablica Ma Région Ses Terroirs wisi przy regałach pod modelami planet. Wskazuje obecność regionalnych produktów w sklepie łączącym pamiątki maskotki, książki naukowe i legendarne stworzenia.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Um dragão sob os planetas</h2><p>Planète Vulcania recebe os visitantes sob planetas suspensos e um teto com padrões vermelhos e amarelos. Um grande dragão verde de asas abertas domina livros e brinquedos. Janelas altas iluminam uma loja onde as imagens do espaço encontram criaturas fantásticas.</p><p>A oferta reúne livros, jogos educativos, minerais e produtos temáticos. As recordações de Pitoufeu têm destaque, incluindo roupa vermelha e chapéus amarelos bordados com o seu nome, entre artigos com o nome Vulcania.</p><h2>Recordações e produtos regionais</h2><p>A seleção inclui ainda produtos com o selo Ma Région Ses Terroirs. Esta referência regional surge entre as prateleiras, junto de livros ilustrados e objetos dedicados aos mundos científicos e imaginários do parque.</p>",
+            "newValue": "<h2>Um dragão sob os planetas</h2><p>Planète Vulcania recebe os visitantes sob planetas suspensos e um teto com padrões vermelhos e amarelos. Um grande dragão verde de asas abertas domina livros e brinquedos. Janelas altas iluminam uma loja onde as imagens do espaço encontram criaturas fantásticas.</p><p>A oferta reúne livros, jogos educativos, minerais e produtos temáticos. As recordações de Pitoufeu têm destaque, incluindo roupa vermelha e chapéus amarelos bordados com o seu nome, entre artigos com o nome Vulcania.</p><h2>Recordações e produtos regionais</h2><p>Um painel Ma Région Ses Terroirs está suspenso junto às prateleiras, sob os modelos dos planetas. Assinala a presença de produtos regionais numa loja que reúne recordações da mascote, livros científicos e criaturas lendárias.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "9c134d80-d384-4b7f-9885-d73fc21426b6",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:25:16.2687694Z",
+    "appliedAtUtc": "2026-11-15T19:25:16.2687701Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+        "entityKey": "vulcania-planete-vulcania",
+        "displayName": "Planète Vulcania",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein Drache unter den Planeten</h2><p>Planète Vulcania empfängt Besucher unter hängenden Planeten und einer rot-gelb gemusterten Decke. Ein großer grüner Drache mit offenen Flügeln überragt Bücher und Spielzeug. Hohe Fenster erhellen das Geschäft, in dem Weltraumbilder auf fantastische Kreaturen treffen.</p><p>Das Sortiment umfasst Bücher, Lernspiele, Mineralien und Merchandising. Pitoufeu-Souvenirs fallen auf, darunter rote Kleidung und gelbe Hüte mit seinem aufgestickten Namen zwischen Artikeln mit dem Vulcania-Schriftzug.</p><h2>Souvenirs und regionale Produkte</h2><p>Die Auswahl enthält auch Produkte mit dem Label Ma Région Ses Terroirs. Diese regionale Kennzeichnung findet sich zwischen den Regalen neben illustrierten Büchern und Gegenständen aus den wissenschaftlichen und erdachten Welten des Parks.</p>",
+            "newValue": "<h2>Ein Drache unter den Planeten</h2><p>Planète Vulcania empfängt Besucher unter hängenden Planeten und einer rot-gelb gemusterten Decke. Ein großer grüner Drache mit offenen Flügeln überragt Bücher und Spielzeug. Hohe Fenster erhellen das Geschäft, in dem Weltraumbilder auf fantastische Kreaturen treffen.</p><p>Das Sortiment umfasst Bücher, Lernspiele, Mineralien und Merchandising. Pitoufeu-Souvenirs fallen auf, darunter rote Kleidung und gelbe Hüte mit seinem aufgestickten Namen zwischen Artikeln mit dem Vulcania-Schriftzug.</p><h2>Souvenirs und regionale Produkte</h2><p>Ein Schild mit der Aufschrift Ma Région Ses Terroirs hängt neben den Regalen unter den Planetenmodellen. Es verweist auf regionale Produkte in einem Geschäft, das Maskottchen-Souvenirs, Wissenschaftsbücher und Sagengestalten zusammenbringt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A dragon beneath the planets</h2><p>Planète Vulcania welcomes visitors beneath suspended planets and a ceiling patterned in red and yellow. A large green dragon with open wings rises above the books and toys. Tall windows light a shop where images of space meet fantastic creatures.</p><p>The range brings together books, educational games, minerals and merchandise. Pitoufeu souvenirs are prominent, including red clothing and yellow hats embroidered with his name among items bearing the Vulcania name.</p><h2>Souvenirs and regional products</h2><p>The selection also includes products labelled Ma Région Ses Terroirs. This regional marker appears among the shelves, beside illustrated books and objects exploring the park’s scientific and imaginary worlds.</p>",
+            "newValue": "<h2>A dragon beneath the planets</h2><p>Planète Vulcania welcomes visitors beneath suspended planets and a ceiling patterned in red and yellow. A large green dragon with open wings rises above the books and toys. Tall windows light a shop where images of space meet fantastic creatures.</p><p>The range brings together books, educational games, minerals and merchandise. Pitoufeu souvenirs are prominent, including red clothing and yellow hats embroidered with his name among items bearing the Vulcania name.</p><h2>Souvenirs and regional products</h2><p>A Ma Région Ses Terroirs sign hangs beside the shelves beneath the suspended planets. It marks the presence of regional products in a shop that brings together mascot souvenirs, science books and legendary creatures.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un dragón bajo los planetas</h2><p>Planète Vulcania recibe a los visitantes bajo planetas suspendidos y un techo con motivos rojos y amarillos. Un gran dragón verde con las alas abiertas domina los libros y juguetes. Altas ventanas iluminan una tienda donde las imágenes del espacio se encuentran con criaturas fantásticas.</p><p>La oferta reúne libros, juegos educativos, minerales y productos temáticos. Los recuerdos de Pitoufeu destacan, con ropa roja y sombreros amarillos bordados con su nombre entre artículos que llevan el de Vulcania.</p><h2>Recuerdos y productos regionales</h2><p>La selección también incluye productos con el sello Ma Région Ses Terroirs. Esta referencia regional aparece entre los estantes, junto a libros ilustrados y objetos dedicados a los mundos científicos e imaginarios del parque.</p>",
+            "newValue": "<h2>Un dragón bajo los planetas</h2><p>Planète Vulcania recibe a los visitantes bajo planetas suspendidos y un techo con motivos rojos y amarillos. Un gran dragón verde con las alas abiertas domina los libros y juguetes. Altas ventanas iluminan una tienda donde las imágenes del espacio se encuentran con criaturas fantásticas.</p><p>La oferta reúne libros, juegos educativos, minerales y productos temáticos. Los recuerdos de Pitoufeu destacan, con ropa roja y sombreros amarillos bordados con su nombre entre artículos que llevan el de Vulcania.</p><h2>Recuerdos y productos regionales</h2><p>Un cartel Ma Région Ses Terroirs cuelga junto a los estantes, bajo las representaciones de planetas. Señala la presencia de productos regionales en una tienda que reúne recuerdos de la mascota, libros científicos y criaturas legendarias.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Un dragon sous les planètes</h2><p>Planète Vulcania accueille ses visiteurs sous des planètes suspendues et un plafond aux motifs rouges et jaunes. Au milieu des rayons, un grand dragon vert aux ailes ouvertes domine les livres et les jouets. Les hautes fenêtres éclairent cette boutique où les images de l’espace rencontrent les créatures fantastiques.</p><p>La librairie, les jeux éducatifs, les minéraux et les produits dérivés composent l’offre. Les souvenirs de Pitoufeu y sont bien visibles, notamment des vêtements rouges et des chapeaux jaunes brodés à son nom, parmi les articles portant celui de Vulcania.</p><h2>Des souvenirs et des produits régionaux</h2><p>La sélection comprend aussi des produits labellisés « Ma Région Ses Terroirs ». Le repère régional apparaît parmi les étagères, à côté des présentoirs de livres illustrés et des objets consacrés aux univers scientifiques et imaginaires du parc.</p>",
+            "newValue": "<h2>Un dragon sous les planètes</h2><p>Planète Vulcania accueille ses visiteurs sous des planètes suspendues et un plafond aux motifs rouges et jaunes. Au milieu des rayons, un grand dragon vert aux ailes ouvertes domine les livres et les jouets. Les hautes fenêtres éclairent cette boutique où les images de l’espace rencontrent les créatures fantastiques.</p><p>La librairie, les jeux éducatifs, les minéraux et les produits dérivés composent l’offre. Les souvenirs de Pitoufeu y sont bien visibles, notamment des vêtements rouges et des chapeaux jaunes brodés à son nom, parmi les articles portant celui de Vulcania.</p><h2>Des souvenirs et des produits régionaux</h2><p>Un panneau « Ma Région Ses Terroirs » est suspendu près des rayons, sous les représentations de planètes. Il signale la présence de produits régionaux dans cette boutique où se côtoient souvenirs de la mascotte, livres scientifiques et créatures de légende.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un drago sotto i pianeti</h2><p>Planète Vulcania accoglie i visitatori sotto pianeti sospesi e un soffitto con motivi rossi e gialli. Un grande drago verde dalle ali aperte domina libri e giocattoli. Le finestre alte illuminano un negozio in cui immagini dello spazio incontrano creature fantastiche.</p><p>L’offerta comprende libri, giochi educativi, minerali e prodotti a tema. I ricordi di Pitoufeu sono ben visibili, con vestiti rossi e cappelli gialli ricamati con il suo nome tra gli articoli che riportano quello di Vulcania.</p><h2>Ricordi e prodotti regionali</h2><p>La selezione include anche prodotti con il marchio Ma Région Ses Terroirs. Questo riferimento regionale compare tra gli scaffali, accanto a libri illustrati e oggetti dedicati ai mondi scientifici e immaginari del parco.</p>",
+            "newValue": "<h2>Un drago sotto i pianeti</h2><p>Planète Vulcania accoglie i visitatori sotto pianeti sospesi e un soffitto con motivi rossi e gialli. Un grande drago verde dalle ali aperte domina libri e giocattoli. Le finestre alte illuminano un negozio in cui immagini dello spazio incontrano creature fantastiche.</p><p>L’offerta comprende libri, giochi educativi, minerali e prodotti a tema. I ricordi di Pitoufeu sono ben visibili, con vestiti rossi e cappelli gialli ricamati con il suo nome tra gli articoli che riportano quello di Vulcania.</p><h2>Ricordi e prodotti regionali</h2><p>Un cartello Ma Région Ses Terroirs è sospeso accanto agli scaffali, sotto i modelli dei pianeti. Segnala la presenza di prodotti regionali in un negozio che riunisce ricordi della mascotte, libri scientifici e creature leggendarie.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een draak onder de planeten</h2><p>Planète Vulcania ontvangt bezoekers onder hangende planeten en een plafond met rode en gele patronen. Een grote groene draak met open vleugels steekt boven de boeken en het speelgoed uit. Hoge ramen verlichten de winkel, waar ruimtebeelden en fantasiewezens samenkomen.</p><p>Het aanbod bestaat uit boeken, educatieve spellen, mineralen en merchandise. Pitoufeu-souvenirs vallen op, waaronder rode kleding en gele hoeden met zijn geborduurde naam tussen artikelen met de naam Vulcania.</p><h2>Souvenirs en regionale producten</h2><p>De selectie omvat ook producten met het label Ma Région Ses Terroirs. Die regionale aanduiding verschijnt tussen de schappen, naast geïllustreerde boeken en voorwerpen rond de wetenschappelijke en denkbeeldige werelden van het park.</p>",
+            "newValue": "<h2>Een draak onder de planeten</h2><p>Planète Vulcania ontvangt bezoekers onder hangende planeten en een plafond met rode en gele patronen. Een grote groene draak met open vleugels steekt boven de boeken en het speelgoed uit. Hoge ramen verlichten de winkel, waar ruimtebeelden en fantasiewezens samenkomen.</p><p>Het aanbod bestaat uit boeken, educatieve spellen, mineralen en merchandise. Pitoufeu-souvenirs vallen op, waaronder rode kleding en gele hoeden met zijn geborduurde naam tussen artikelen met de naam Vulcania.</p><h2>Souvenirs en regionale producten</h2><p>Een bord met Ma Région Ses Terroirs hangt naast de schappen onder de planetenmodellen. Het wijst op regionale producten in een winkel waar mascottesouvenirs, wetenschappelijke boeken en legendarische wezens samenkomen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Smok pod planetami</h2><p>Planète Vulcania wita gości pod zawieszonymi planetami i sufitem w czerwono-żółte wzory. Duży zielony smok z rozłożonymi skrzydłami góruje nad książkami i zabawkami. Wysokie okna rozświetlają sklep, w którym obrazy kosmosu spotykają fantastyczne stworzenia.</p><p>Oferta obejmuje książki, gry edukacyjne, minerały i pamiątki tematyczne. Wyraźnie widać pamiątki Pitoufeu, w tym czerwone ubrania i żółte kapelusze z wyhaftowanym imieniem, obok artykułów z nazwą Vulcania.</p><h2>Pamiątki i produkty regionalne</h2><p>Wybór zawiera także produkty oznaczone Ma Région Ses Terroirs. To regionalne oznaczenie pojawia się między półkami, obok ilustrowanych książek i przedmiotów poświęconych naukowym oraz wyobrażonym światom parku.</p>",
+            "newValue": "<h2>Smok pod planetami</h2><p>Planète Vulcania wita gości pod zawieszonymi planetami i sufitem w czerwono-żółte wzory. Duży zielony smok z rozłożonymi skrzydłami góruje nad książkami i zabawkami. Wysokie okna rozświetlają sklep, w którym obrazy kosmosu spotykają fantastyczne stworzenia.</p><p>Oferta obejmuje książki, gry edukacyjne, minerały i pamiątki tematyczne. Wyraźnie widać pamiątki Pitoufeu, w tym czerwone ubrania i żółte kapelusze z wyhaftowanym imieniem, obok artykułów z nazwą Vulcania.</p><h2>Pamiątki i produkty regionalne</h2><p>Tablica Ma Région Ses Terroirs wisi przy regałach pod modelami planet. Wskazuje obecność regionalnych produktów w sklepie łączącym pamiątki maskotki, książki naukowe i legendarne stworzenia.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Um dragão sob os planetas</h2><p>Planète Vulcania recebe os visitantes sob planetas suspensos e um teto com padrões vermelhos e amarelos. Um grande dragão verde de asas abertas domina livros e brinquedos. Janelas altas iluminam uma loja onde as imagens do espaço encontram criaturas fantásticas.</p><p>A oferta reúne livros, jogos educativos, minerais e produtos temáticos. As recordações de Pitoufeu têm destaque, incluindo roupa vermelha e chapéus amarelos bordados com o seu nome, entre artigos com o nome Vulcania.</p><h2>Recordações e produtos regionais</h2><p>A seleção inclui ainda produtos com o selo Ma Région Ses Terroirs. Esta referência regional surge entre as prateleiras, junto de livros ilustrados e objetos dedicados aos mundos científicos e imaginários do parque.</p>",
+            "newValue": "<h2>Um dragão sob os planetas</h2><p>Planète Vulcania recebe os visitantes sob planetas suspensos e um teto com padrões vermelhos e amarelos. Um grande dragão verde de asas abertas domina livros e brinquedos. Janelas altas iluminam uma loja onde as imagens do espaço encontram criaturas fantásticas.</p><p>A oferta reúne livros, jogos educativos, minerais e produtos temáticos. As recordações de Pitoufeu têm destaque, incluindo roupa vermelha e chapéus amarelos bordados com o seu nome, entre artigos com o nome Vulcania.</p><h2>Recordações e produtos regionais</h2><p>Um painel Ma Région Ses Terroirs está suspenso junto às prateleiras, sob os modelos dos planetas. Assinala a presença de produtos regionais numa loja que reúne recordações da mascote, livros científicos e criaturas lendárias.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Planète Vulcania : huit notices corrigées avec le panneau régional effectivement visible sous les planètes ; périmètre privé conservé, répétition entre boutiques supprimée par une observation propre au lieu.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "All eight final paragraphs personally revised to the actual hanging Ma Region Ses Terroirs sign beneath planet models visible in the exact Planete Vulcania photo. Previous Spanish12word overlap with Auvergne was noticed when broader corpus checked after both separately staged lots became applied. Correction provides place-specific observation; no arbitrary synonym substitution to hide duplicates. Other eight-language paragraphs unchanged; private status preserved."
+}

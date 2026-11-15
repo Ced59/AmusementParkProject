@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+          "key": "vulcania-cratere-anime",
+          "name": "Le cratère s’anime !",
+          "type": "InteractiveExperience",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>L’espace à ciel ouvert</h2><p>Le cratère s’anime ! réunit le public dehors avec les animateurs scientifiques de Vulcania. Les jeux et les quiz portent sur l’univers, les grandes inventions et les idées que l’on se fait de l’espace. Le paysage herbeux devient le cadre d’une discussion collective sur des sujets habituellement associés aux écrans et aux voyages imaginaires.</p><p>Les animateurs prennent la parole au milieu du groupe, avec un micro et des supports illustrés. Les cartes posées dans l’herbe accompagnent les questions ; les échanges se déroulent en plein air, à proximité immédiate des participants.</p><h2>La science-fiction mise à l’épreuve</h2><p>Une partie de l’animation confronte les récits de science-fiction aux connaissances scientifiques. Films et imaginaire spatial servent ainsi de point de départ pour interroger des idées reçues, comparer les réponses du public et discuter de ce que la science permet réellement d’expliquer.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Space beneath the open sky</h2><p>Le cratère s’anime ! brings the audience outdoors with Vulcania’s science presenters. Games and quizzes explore the universe, major inventions and ideas about space. The grassy setting hosts a group discussion of subjects often associated with screens and imaginary journeys.</p><p>Presenters speak among the group with a microphone and illustrated materials. Cards laid on the grass accompany the questions, with exchanges taking place outdoors close to the participants.</p><h2>Putting science fiction to the test</h2><p>Part of the activity compares science-fiction stories with scientific knowledge. Space fiction becomes a starting point for questioning misconceptions, comparing the audience’s answers and discussing what science can actually explain.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Weltraum unter freiem Himmel</h2><p>Le cratère s’anime ! versammelt das Publikum draußen mit Vulcanias Wissenschaftsvermittlern. Spiele und Quizfragen behandeln das Universum, große Erfindungen und Vorstellungen vom Weltraum. Die Wiesenlandschaft bildet den Rahmen für Gespräche über Themen, die oft mit Leinwänden und erdachten Reisen verbunden sind.</p><p>Die Vermittler sprechen mitten in der Gruppe mit Mikrofon und Bildmaterial. Im Gras ausgelegte Karten begleiten die Fragen. Der Austausch findet im Freien und in unmittelbarer Nähe der Teilnehmer statt.</p><h2>Science-Fiction auf dem Prüfstand</h2><p>Ein Teil der Veranstaltung vergleicht Science-Fiction-Geschichten mit wissenschaftlichem Wissen. Die Weltraumfantasie dient als Ausgangspunkt, um verbreitete Vorstellungen zu hinterfragen, Antworten des Publikums zu vergleichen und die Erklärungsmöglichkeiten der Wissenschaft zu besprechen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De ruimte onder de open hemel</h2><p>Le cratère s’anime ! brengt het publiek buiten samen met de wetenschapsmedewerkers van Vulcania. Spellen en quizzen gaan over het heelal, grote uitvindingen en ideeën over de ruimte. Het grasland vormt het decor voor een groepsgesprek over onderwerpen die vaak bij schermen en denkbeeldige reizen horen.</p><p>De begeleiders spreken tussen de groep met een microfoon en beeldmateriaal. Kaarten op het gras ondersteunen de vragen. De gesprekken vinden buiten plaats, vlak bij de deelnemers.</p><h2>Sciencefiction op de proef gesteld</h2><p>Een deel van de activiteit vergelijkt sciencefictionverhalen met wetenschappelijke kennis. Ruimtefictie wordt zo een vertrekpunt om misvattingen te bespreken, antwoorden uit het publiek te vergelijken en te onderzoeken wat de wetenschap werkelijk kan verklaren.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Lo spazio a cielo aperto</h2><p>Le cratère s’anime ! riunisce il pubblico all’esterno con gli animatori scientifici di Vulcania. Giochi e quiz affrontano l’universo, le grandi invenzioni e le idee sullo spazio. Il paesaggio erboso ospita una discussione collettiva su temi spesso associati agli schermi e ai viaggi immaginari.</p><p>Gli animatori parlano in mezzo al gruppo con un microfono e materiali illustrati. Le carte appoggiate sull’erba accompagnano le domande; gli scambi avvengono all’aperto, vicino ai partecipanti.</p><h2>La fantascienza alla prova</h2><p>Una parte dell’attività confronta i racconti di fantascienza con le conoscenze scientifiche. L’immaginario spaziale diventa il punto di partenza per interrogare i luoghi comuni, confrontare le risposte del pubblico e discutere ciò che la scienza può davvero spiegare.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El espacio a cielo abierto</h2><p>Le cratère s’anime ! reúne al público al aire libre con los divulgadores científicos de Vulcania. Los juegos y cuestionarios abordan el universo, los grandes inventos y las ideas sobre el espacio. El paisaje herboso acoge una conversación colectiva sobre temas asociados a menudo con pantallas y viajes imaginarios.</p><p>Los divulgadores hablan entre el grupo con micrófono y materiales ilustrados. Las tarjetas colocadas en la hierba acompañan las preguntas; los intercambios se desarrollan al aire libre, cerca de los participantes.</p><h2>La ciencia ficción a prueba</h2><p>Parte de la actividad compara los relatos de ciencia ficción con el conocimiento científico. La ficción espacial sirve para cuestionar ideas preconcebidas, comparar las respuestas del público y conversar sobre lo que la ciencia puede explicar realmente.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Kosmos pod gołym niebem</h2><p>Le cratère s’anime ! gromadzi publiczność na zewnątrz z popularyzatorami nauki z Vulcanii. Gry i quizy dotyczą wszechświata, wielkich wynalazków i wyobrażeń o kosmosie. Trawiasty krajobraz staje się miejscem wspólnej rozmowy o tematach często kojarzonych z ekranami i wymyślonymi podróżami.</p><p>Prowadzący przemawiają pośród grupy, korzystając z mikrofonu i materiałów obrazkowych. Karty ułożone na trawie towarzyszą pytaniom. Rozmowa odbywa się na otwartym powietrzu, blisko uczestników.</p><h2>Fantastyka naukowa pod lupą</h2><p>Część zajęć porównuje opowieści science fiction z wiedzą naukową. Kosmiczna fikcja staje się punktem wyjścia do podważania obiegowych przekonań, porównywania odpowiedzi widzów i rozmowy o tym, co nauka potrafi rzeczywiście wyjaśnić.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O espaço a céu aberto</h2><p>Le cratère s’anime ! reúne o público no exterior com os animadores científicos de Vulcania. Jogos e questionários abordam o universo, as grandes invenções e as ideias sobre o espaço. A paisagem relvada acolhe uma conversa coletiva sobre temas muitas vezes associados aos ecrãs e às viagens imaginárias.</p><p>Os animadores falam no meio do grupo com um microfone e materiais ilustrados. Cartões colocados na relva acompanham as perguntas; as trocas decorrem ao ar livre, perto dos participantes.</p><h2>A ficção científica posta à prova</h2><p>Parte da atividade compara histórias de ficção científica com conhecimentos científicos. O imaginário espacial serve para questionar ideias feitas, comparar respostas do público e discutir aquilo que a ciência consegue realmente explicar.</p>"
+            }
+          ]
+        },
+        {
+          "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+          "key": "vulcania-cest-pas-sorcier",
+          "name": "C’est pas sorcier les volcans !",
+          "type": "InteractiveExperience",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les questions volcaniques prennent la parole</h2><p>C’est pas sorcier les volcans ! repose sur le dialogue avec un animateur scientifique. Les différentes formes des volcans et les phénomènes qui les animent constituent le cœur de cette rencontre. Le public peut confronter ses questions aux explications données dans la salle.</p><p>Une grande projection accompagne la présentation. L’animateur s’appuie notamment sur des images du parc et de son environnement volcanique, montrées sur un écran qui domine la scène. Ce support visuel relie les explications à des paysages que l’on peut reconnaître autour de Vulcania.</p><h2>L’Auvergne et son histoire volcanique</h2><p>La question « Les volcans d’Auvergne vont-ils se réveiller ? » rapproche le thème des paysages alentour. Les reliefs de la région donnent un ancrage concret à la discussion sur les différentes formes de volcans et les phénomènes qui les ont façonnés.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Volcanic questions in conversation</h2><p>C’est pas sorcier les volcans ! centres on a dialogue with a science presenter. Different volcanic forms and the phenomena within them shape the encounter. Audience members can bring their questions to the explanations given in the room.</p><p>A large projection accompanies the presentation. The presenter uses images of the park and its volcanic surroundings on a screen above the stage. These visuals connect the explanations with landscapes recognisable around Vulcania.</p><h2>Auvergne’s volcanic history</h2><p>The question “Will Auvergne’s volcanoes wake up?” connects the subject with the surrounding landscape. The region’s landforms give a tangible setting to the discussion of different volcanic shapes and the phenomena that formed them.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Vulkanfragen im Gespräch</h2><p>C’est pas sorcier les volcans ! setzt auf den Dialog mit einem Wissenschaftsvermittler. Unterschiedliche Vulkanformen und die Vorgänge in ihnen stehen im Mittelpunkt. Das Publikum kann eigene Fragen mit den Erklärungen im Raum verbinden.</p><p>Eine große Projektion begleitet die Präsentation. Der Vermittler nutzt unter anderem Bilder des Parks und seiner vulkanischen Umgebung auf einer Leinwand über der Bühne. Die Bilder verbinden die Erläuterungen mit Landschaften, die rund um Vulcania wiederzuerkennen sind.</p><h2>Die Vulkangeschichte der Auvergne</h2><p>Die Frage „Werden die Vulkane der Auvergne wieder erwachen?“ verbindet das Thema mit der umliegenden Landschaft. Die Geländeformen der Region geben dem Gespräch über unterschiedliche Vulkantypen und ihre Entstehung einen anschaulichen Bezug.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Vulkaanvragen in gesprek</h2><p>C’est pas sorcier les volcans ! draait om een gesprek met een wetenschapsmedewerker. Verschillende vulkaanvormen en de verschijnselen die zich erin afspelen staan centraal. Het publiek kan eigen vragen verbinden met de uitleg in de zaal.</p><p>Een grote projectie begeleidt de presentatie. De begeleider gebruikt onder meer beelden van het park en zijn vulkanische omgeving op een scherm boven het podium. Zo wordt de uitleg verbonden met landschappen die rond Vulcania herkenbaar zijn.</p><h2>De vulkanische geschiedenis van de Auvergne</h2><p>De vraag “Zullen de vulkanen van de Auvergne weer ontwaken?” verbindt het onderwerp met het omliggende landschap. De regionale reliëfvormen maken het gesprek over verschillende vulkaanvormen en hun ontstaan concreet.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Domande vulcaniche in dialogo</h2><p>C’est pas sorcier les volcans ! si basa sul dialogo con un animatore scientifico. Le diverse forme dei vulcani e i fenomeni che li animano sono al centro dell’incontro. Il pubblico può confrontare le proprie domande con le spiegazioni date nella sala.</p><p>Una grande proiezione accompagna la presentazione. L’animatore utilizza anche immagini del parco e del suo ambiente vulcanico, mostrate sullo schermo sopra la scena. Questo supporto collega le spiegazioni ai paesaggi riconoscibili intorno a Vulcania.</p><h2>La storia vulcanica dell’Alvernia</h2><p>La domanda «I vulcani dell’Alvernia si risveglieranno?» collega il tema al paesaggio circostante. I rilievi della regione offrono un riferimento concreto alla discussione sulle diverse forme dei vulcani e sui fenomeni che le hanno modellate.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Preguntas volcánicas en conversación</h2><p>C’est pas sorcier les volcans ! se basa en el diálogo con un divulgador científico. Las distintas formas de los volcanes y los fenómenos que los animan constituyen el núcleo del encuentro. El público puede contrastar sus preguntas con las explicaciones dadas en la sala.</p><p>Una gran proyección acompaña la presentación. El divulgador utiliza imágenes del parque y de su entorno volcánico, mostradas en una pantalla que domina el escenario. Ese apoyo visual relaciona las explicaciones con paisajes reconocibles alrededor de Vulcania.</p><h2>La historia volcánica de Auvernia</h2><p>La pregunta «¿Despertarán los volcanes de Auvernia?» vincula el tema con el paisaje cercano. Los relieves de la región dan un marco concreto a la conversación sobre las distintas formas volcánicas y los fenómenos que las modelaron.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wulkaniczne pytania w rozmowie</h2><p>C’est pas sorcier les volcans ! opiera się na dialogu z popularyzatorem nauki. Sednem spotkania są różne formy wulkanów i zachodzące w nich zjawiska. Publiczność może zestawić własne pytania z wyjaśnieniami przedstawianymi w sali.</p><p>Prezentacji towarzyszy duża projekcja. Prowadzący wykorzystuje między innymi obrazy parku i jego wulkanicznego otoczenia na ekranie nad sceną. Materiał wizualny łączy wyjaśnienia z krajobrazami rozpoznawalnymi wokół Vulcanii.</p><h2>Wulkaniczna historia Owernii</h2><p>Pytanie „Czy wulkany Owernii się obudzą?” łączy temat z otaczającym krajobrazem. Regionalne formy terenu nadają konkretny kontekst rozmowie o różnych kształtach wulkanów i zjawiskach, które je uformowały.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Perguntas vulcânicas em conversa</h2><p>C’est pas sorcier les volcans ! assenta no diálogo com um animador científico. As diferentes formas dos vulcões e os fenómenos que os animam constituem o centro do encontro. O público pode confrontar as suas perguntas com as explicações dadas na sala.</p><p>Uma grande projeção acompanha a apresentação. O animador utiliza imagens do parque e do seu ambiente vulcânico, mostradas num ecrã que domina o palco. Esse apoio visual relaciona as explicações com paisagens reconhecíveis em redor de Vulcania.</p><h2>A história vulcânica da Auvérnia</h2><p>A pergunta «Será que os vulcões da Auvérnia vão despertar?» liga o tema à paisagem envolvente. Os relevos da região dão um enquadramento concreto à conversa sobre as diferentes formas dos vulcões e os fenómenos que as moldaram.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-70-two-presenter-notices",
+        "notes": "Sixteen personally written and reviewed texts from exact official pages Le cratere sanime and Cest pas sorcier les volcans plus two individually inspected native photographs; two headings and three paragraphs, source-limited depth. No personal performer identities, stage alias, daily schedule or opening date inferred."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "13c84517-cf96-4e9a-ab72-9bb75d000265",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:26:08.9257439Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+        "entityKey": "vulcania-cratere-anime",
+        "displayName": "Le cratère s’anime !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Weltraum unter freiem Himmel</h2><p>Le cratère s’anime ! versammelt das Publikum draußen mit Vulcanias Wissenschaftsvermittlern. Spiele und Quizfragen behandeln das Universum, große Erfindungen und Vorstellungen vom Weltraum. Die Wiesenlandschaft bildet den Rahmen für Gespräche über Themen, die oft mit Leinwänden und erdachten Reisen verbunden sind.</p><p>Die Vermittler sprechen mitten in der Gruppe mit Mikrofon und Bildmaterial. Im Gras ausgelegte Karten begleiten die Fragen. Der Austausch findet im Freien und in unmittelbarer Nähe der Teilnehmer statt.</p><h2>Science-Fiction auf dem Prüfstand</h2><p>Ein Teil der Veranstaltung vergleicht Science-Fiction-Geschichten mit wissenschaftlichem Wissen. Die Weltraumfantasie dient als Ausgangspunkt, um verbreitete Vorstellungen zu hinterfragen, Antworten des Publikums zu vergleichen und die Erklärungsmöglichkeiten der Wissenschaft zu besprechen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Space beneath the open sky</h2><p>Le cratère s’anime ! brings the audience outdoors with Vulcania’s science presenters. Games and quizzes explore the universe, major inventions and ideas about space. The grassy setting hosts a group discussion of subjects often associated with screens and imaginary journeys.</p><p>Presenters speak among the group with a microphone and illustrated materials. Cards laid on the grass accompany the questions, with exchanges taking place outdoors close to the participants.</p><h2>Putting science fiction to the test</h2><p>Part of the activity compares science-fiction stories with scientific knowledge. Space fiction becomes a starting point for questioning misconceptions, comparing the audience’s answers and discussing what science can actually explain.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El espacio a cielo abierto</h2><p>Le cratère s’anime ! reúne al público al aire libre con los divulgadores científicos de Vulcania. Los juegos y cuestionarios abordan el universo, los grandes inventos y las ideas sobre el espacio. El paisaje herboso acoge una conversación colectiva sobre temas asociados a menudo con pantallas y viajes imaginarios.</p><p>Los divulgadores hablan entre el grupo con micrófono y materiales ilustrados. Las tarjetas colocadas en la hierba acompañan las preguntas; los intercambios se desarrollan al aire libre, cerca de los participantes.</p><h2>La ciencia ficción a prueba</h2><p>Parte de la actividad compara los relatos de ciencia ficción con el conocimiento científico. La ficción espacial sirve para cuestionar ideas preconcebidas, comparar las respuestas del público y conversar sobre lo que la ciencia puede explicar realmente.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’espace à ciel ouvert</h2><p>Le cratère s’anime ! réunit le public dehors avec les animateurs scientifiques de Vulcania. Les jeux et les quiz portent sur l’univers, les grandes inventions et les idées que l’on se fait de l’espace. Le paysage herbeux devient le cadre d’une discussion collective sur des sujets habituellement associés aux écrans et aux voyages imaginaires.</p><p>Les animateurs prennent la parole au milieu du groupe, avec un micro et des supports illustrés. Les cartes posées dans l’herbe accompagnent les questions ; les échanges se déroulent en plein air, à proximité immédiate des participants.</p><h2>La science-fiction mise à l’épreuve</h2><p>Une partie de l’animation confronte les récits de science-fiction aux connaissances scientifiques. Films et imaginaire spatial servent ainsi de point de départ pour interroger des idées reçues, comparer les réponses du public et discuter de ce que la science permet réellement d’expliquer.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Lo spazio a cielo aperto</h2><p>Le cratère s’anime ! riunisce il pubblico all’esterno con gli animatori scientifici di Vulcania. Giochi e quiz affrontano l’universo, le grandi invenzioni e le idee sullo spazio. Il paesaggio erboso ospita una discussione collettiva su temi spesso associati agli schermi e ai viaggi immaginari.</p><p>Gli animatori parlano in mezzo al gruppo con un microfono e materiali illustrati. Le carte appoggiate sull’erba accompagnano le domande; gli scambi avvengono all’aperto, vicino ai partecipanti.</p><h2>La fantascienza alla prova</h2><p>Una parte dell’attività confronta i racconti di fantascienza con le conoscenze scientifiche. L’immaginario spaziale diventa il punto di partenza per interrogare i luoghi comuni, confrontare le risposte del pubblico e discutere ciò che la scienza può davvero spiegare.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De ruimte onder de open hemel</h2><p>Le cratère s’anime ! brengt het publiek buiten samen met de wetenschapsmedewerkers van Vulcania. Spellen en quizzen gaan over het heelal, grote uitvindingen en ideeën over de ruimte. Het grasland vormt het decor voor een groepsgesprek over onderwerpen die vaak bij schermen en denkbeeldige reizen horen.</p><p>De begeleiders spreken tussen de groep met een microfoon en beeldmateriaal. Kaarten op het gras ondersteunen de vragen. De gesprekken vinden buiten plaats, vlak bij de deelnemers.</p><h2>Sciencefiction op de proef gesteld</h2><p>Een deel van de activiteit vergelijkt sciencefictionverhalen met wetenschappelijke kennis. Ruimtefictie wordt zo een vertrekpunt om misvattingen te bespreken, antwoorden uit het publiek te vergelijken en te onderzoeken wat de wetenschap werkelijk kan verklaren.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kosmos pod gołym niebem</h2><p>Le cratère s’anime ! gromadzi publiczność na zewnątrz z popularyzatorami nauki z Vulcanii. Gry i quizy dotyczą wszechświata, wielkich wynalazków i wyobrażeń o kosmosie. Trawiasty krajobraz staje się miejscem wspólnej rozmowy o tematach często kojarzonych z ekranami i wymyślonymi podróżami.</p><p>Prowadzący przemawiają pośród grupy, korzystając z mikrofonu i materiałów obrazkowych. Karty ułożone na trawie towarzyszą pytaniom. Rozmowa odbywa się na otwartym powietrzu, blisko uczestników.</p><h2>Fantastyka naukowa pod lupą</h2><p>Część zajęć porównuje opowieści science fiction z wiedzą naukową. Kosmiczna fikcja staje się punktem wyjścia do podważania obiegowych przekonań, porównywania odpowiedzi widzów i rozmowy o tym, co nauka potrafi rzeczywiście wyjaśnić.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O espaço a céu aberto</h2><p>Le cratère s’anime ! reúne o público no exterior com os animadores científicos de Vulcania. Jogos e questionários abordam o universo, as grandes invenções e as ideias sobre o espaço. A paisagem relvada acolhe uma conversa coletiva sobre temas muitas vezes associados aos ecrãs e às viagens imaginárias.</p><p>Os animadores falam no meio do grupo com um microfone e materiais ilustrados. Cartões colocados na relva acompanham as perguntas; as trocas decorrem ao ar livre, perto dos participantes.</p><h2>A ficção científica posta à prova</h2><p>Parte da atividade compara histórias de ficção científica com conhecimentos científicos. O imaginário espacial serve para questionar ideias feitas, comparar respostas do público e discutir aquilo que a ciência consegue realmente explicar.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "entityKey": "vulcania-cest-pas-sorcier",
+        "displayName": "C’est pas sorcier les volcans !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Vulkanfragen im Gespräch</h2><p>C’est pas sorcier les volcans ! setzt auf den Dialog mit einem Wissenschaftsvermittler. Unterschiedliche Vulkanformen und die Vorgänge in ihnen stehen im Mittelpunkt. Das Publikum kann eigene Fragen mit den Erklärungen im Raum verbinden.</p><p>Eine große Projektion begleitet die Präsentation. Der Vermittler nutzt unter anderem Bilder des Parks und seiner vulkanischen Umgebung auf einer Leinwand über der Bühne. Die Bilder verbinden die Erläuterungen mit Landschaften, die rund um Vulcania wiederzuerkennen sind.</p><h2>Die Vulkangeschichte der Auvergne</h2><p>Die Frage „Werden die Vulkane der Auvergne wieder erwachen?“ verbindet das Thema mit der umliegenden Landschaft. Die Geländeformen der Region geben dem Gespräch über unterschiedliche Vulkantypen und ihre Entstehung einen anschaulichen Bezug.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Volcanic questions in conversation</h2><p>C’est pas sorcier les volcans ! centres on a dialogue with a science presenter. Different volcanic forms and the phenomena within them shape the encounter. Audience members can bring their questions to the explanations given in the room.</p><p>A large projection accompanies the presentation. The presenter uses images of the park and its volcanic surroundings on a screen above the stage. These visuals connect the explanations with landscapes recognisable around Vulcania.</p><h2>Auvergne’s volcanic history</h2><p>The question “Will Auvergne’s volcanoes wake up?” connects the subject with the surrounding landscape. The region’s landforms give a tangible setting to the discussion of different volcanic shapes and the phenomena that formed them.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Preguntas volcánicas en conversación</h2><p>C’est pas sorcier les volcans ! se basa en el diálogo con un divulgador científico. Las distintas formas de los volcanes y los fenómenos que los animan constituyen el núcleo del encuentro. El público puede contrastar sus preguntas con las explicaciones dadas en la sala.</p><p>Una gran proyección acompaña la presentación. El divulgador utiliza imágenes del parque y de su entorno volcánico, mostradas en una pantalla que domina el escenario. Ese apoyo visual relaciona las explicaciones con paisajes reconocibles alrededor de Vulcania.</p><h2>La historia volcánica de Auvernia</h2><p>La pregunta «¿Despertarán los volcanes de Auvernia?» vincula el tema con el paisaje cercano. Los relieves de la región dan un marco concreto a la conversación sobre las distintas formas volcánicas y los fenómenos que las modelaron.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les questions volcaniques prennent la parole</h2><p>C’est pas sorcier les volcans ! repose sur le dialogue avec un animateur scientifique. Les différentes formes des volcans et les phénomènes qui les animent constituent le cœur de cette rencontre. Le public peut confronter ses questions aux explications données dans la salle.</p><p>Une grande projection accompagne la présentation. L’animateur s’appuie notamment sur des images du parc et de son environnement volcanique, montrées sur un écran qui domine la scène. Ce support visuel relie les explications à des paysages que l’on peut reconnaître autour de Vulcania.</p><h2>L’Auvergne et son histoire volcanique</h2><p>La question « Les volcans d’Auvergne vont-ils se réveiller ? » rapproche le thème des paysages alentour. Les reliefs de la région donnent un ancrage concret à la discussion sur les différentes formes de volcans et les phénomènes qui les ont façonnés.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Domande vulcaniche in dialogo</h2><p>C’est pas sorcier les volcans ! si basa sul dialogo con un animatore scientifico. Le diverse forme dei vulcani e i fenomeni che li animano sono al centro dell’incontro. Il pubblico può confrontare le proprie domande con le spiegazioni date nella sala.</p><p>Una grande proiezione accompagna la presentazione. L’animatore utilizza anche immagini del parco e del suo ambiente vulcanico, mostrate sullo schermo sopra la scena. Questo supporto collega le spiegazioni ai paesaggi riconoscibili intorno a Vulcania.</p><h2>La storia vulcanica dell’Alvernia</h2><p>La domanda «I vulcani dell’Alvernia si risveglieranno?» collega il tema al paesaggio circostante. I rilievi della regione offrono un riferimento concreto alla discussione sulle diverse forme dei vulcani e sui fenomeni che le hanno modellate.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vulkaanvragen in gesprek</h2><p>C’est pas sorcier les volcans ! draait om een gesprek met een wetenschapsmedewerker. Verschillende vulkaanvormen en de verschijnselen die zich erin afspelen staan centraal. Het publiek kan eigen vragen verbinden met de uitleg in de zaal.</p><p>Een grote projectie begeleidt de presentatie. De begeleider gebruikt onder meer beelden van het park en zijn vulkanische omgeving op een scherm boven het podium. Zo wordt de uitleg verbonden met landschappen die rond Vulcania herkenbaar zijn.</p><h2>De vulkanische geschiedenis van de Auvergne</h2><p>De vraag “Zullen de vulkanen van de Auvergne weer ontwaken?” verbindt het onderwerp met het omliggende landschap. De regionale reliëfvormen maken het gesprek over verschillende vulkaanvormen en hun ontstaan concreet.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wulkaniczne pytania w rozmowie</h2><p>C’est pas sorcier les volcans ! opiera się na dialogu z popularyzatorem nauki. Sednem spotkania są różne formy wulkanów i zachodzące w nich zjawiska. Publiczność może zestawić własne pytania z wyjaśnieniami przedstawianymi w sali.</p><p>Prezentacji towarzyszy duża projekcja. Prowadzący wykorzystuje między innymi obrazy parku i jego wulkanicznego otoczenia na ekranie nad sceną. Materiał wizualny łączy wyjaśnienia z krajobrazami rozpoznawalnymi wokół Vulcanii.</p><h2>Wulkaniczna historia Owernii</h2><p>Pytanie „Czy wulkany Owernii się obudzą?” łączy temat z otaczającym krajobrazem. Regionalne formy terenu nadają konkretny kontekst rozmowie o różnych kształtach wulkanów i zjawiskach, które je uformowały.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Perguntas vulcânicas em conversa</h2><p>C’est pas sorcier les volcans ! assenta no diálogo com um animador científico. As diferentes formas dos vulcões e os fenómenos que os animam constituem o centro do encontro. O público pode confrontar as suas perguntas com as explicações dadas na sala.</p><p>Uma grande projeção acompanha a apresentação. O animador utiliza imagens do parque e do seu ambiente vulcânico, mostradas num ecrã que domina o palco. Esse apoio visual relaciona as explicações com paisagens reconhecíveis em redor de Vulcania.</p><h2>A história vulcânica da Auvérnia</h2><p>A pergunta «Será que os vulcões da Auvérnia vão despertar?» liga o tema à paisagem envolvente. Os relevos da região dão um enquadramento concreto à conversa sobre as diferentes formas dos vulcões e os fenómenos que as moldaram.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "70ad8139-e837-4574-b550-186abc2ad26a",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:26:26.9258188Z",
+    "appliedAtUtc": "2026-11-15T19:26:26.9258198Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+        "entityKey": "vulcania-cratere-anime",
+        "displayName": "Le cratère s’anime !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Weltraum unter freiem Himmel</h2><p>Le cratère s’anime ! versammelt das Publikum draußen mit Vulcanias Wissenschaftsvermittlern. Spiele und Quizfragen behandeln das Universum, große Erfindungen und Vorstellungen vom Weltraum. Die Wiesenlandschaft bildet den Rahmen für Gespräche über Themen, die oft mit Leinwänden und erdachten Reisen verbunden sind.</p><p>Die Vermittler sprechen mitten in der Gruppe mit Mikrofon und Bildmaterial. Im Gras ausgelegte Karten begleiten die Fragen. Der Austausch findet im Freien und in unmittelbarer Nähe der Teilnehmer statt.</p><h2>Science-Fiction auf dem Prüfstand</h2><p>Ein Teil der Veranstaltung vergleicht Science-Fiction-Geschichten mit wissenschaftlichem Wissen. Die Weltraumfantasie dient als Ausgangspunkt, um verbreitete Vorstellungen zu hinterfragen, Antworten des Publikums zu vergleichen und die Erklärungsmöglichkeiten der Wissenschaft zu besprechen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Space beneath the open sky</h2><p>Le cratère s’anime ! brings the audience outdoors with Vulcania’s science presenters. Games and quizzes explore the universe, major inventions and ideas about space. The grassy setting hosts a group discussion of subjects often associated with screens and imaginary journeys.</p><p>Presenters speak among the group with a microphone and illustrated materials. Cards laid on the grass accompany the questions, with exchanges taking place outdoors close to the participants.</p><h2>Putting science fiction to the test</h2><p>Part of the activity compares science-fiction stories with scientific knowledge. Space fiction becomes a starting point for questioning misconceptions, comparing the audience’s answers and discussing what science can actually explain.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El espacio a cielo abierto</h2><p>Le cratère s’anime ! reúne al público al aire libre con los divulgadores científicos de Vulcania. Los juegos y cuestionarios abordan el universo, los grandes inventos y las ideas sobre el espacio. El paisaje herboso acoge una conversación colectiva sobre temas asociados a menudo con pantallas y viajes imaginarios.</p><p>Los divulgadores hablan entre el grupo con micrófono y materiales ilustrados. Las tarjetas colocadas en la hierba acompañan las preguntas; los intercambios se desarrollan al aire libre, cerca de los participantes.</p><h2>La ciencia ficción a prueba</h2><p>Parte de la actividad compara los relatos de ciencia ficción con el conocimiento científico. La ficción espacial sirve para cuestionar ideas preconcebidas, comparar las respuestas del público y conversar sobre lo que la ciencia puede explicar realmente.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’espace à ciel ouvert</h2><p>Le cratère s’anime ! réunit le public dehors avec les animateurs scientifiques de Vulcania. Les jeux et les quiz portent sur l’univers, les grandes inventions et les idées que l’on se fait de l’espace. Le paysage herbeux devient le cadre d’une discussion collective sur des sujets habituellement associés aux écrans et aux voyages imaginaires.</p><p>Les animateurs prennent la parole au milieu du groupe, avec un micro et des supports illustrés. Les cartes posées dans l’herbe accompagnent les questions ; les échanges se déroulent en plein air, à proximité immédiate des participants.</p><h2>La science-fiction mise à l’épreuve</h2><p>Une partie de l’animation confronte les récits de science-fiction aux connaissances scientifiques. Films et imaginaire spatial servent ainsi de point de départ pour interroger des idées reçues, comparer les réponses du public et discuter de ce que la science permet réellement d’expliquer.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Lo spazio a cielo aperto</h2><p>Le cratère s’anime ! riunisce il pubblico all’esterno con gli animatori scientifici di Vulcania. Giochi e quiz affrontano l’universo, le grandi invenzioni e le idee sullo spazio. Il paesaggio erboso ospita una discussione collettiva su temi spesso associati agli schermi e ai viaggi immaginari.</p><p>Gli animatori parlano in mezzo al gruppo con un microfono e materiali illustrati. Le carte appoggiate sull’erba accompagnano le domande; gli scambi avvengono all’aperto, vicino ai partecipanti.</p><h2>La fantascienza alla prova</h2><p>Una parte dell’attività confronta i racconti di fantascienza con le conoscenze scientifiche. L’immaginario spaziale diventa il punto di partenza per interrogare i luoghi comuni, confrontare le risposte del pubblico e discutere ciò che la scienza può davvero spiegare.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De ruimte onder de open hemel</h2><p>Le cratère s’anime ! brengt het publiek buiten samen met de wetenschapsmedewerkers van Vulcania. Spellen en quizzen gaan over het heelal, grote uitvindingen en ideeën over de ruimte. Het grasland vormt het decor voor een groepsgesprek over onderwerpen die vaak bij schermen en denkbeeldige reizen horen.</p><p>De begeleiders spreken tussen de groep met een microfoon en beeldmateriaal. Kaarten op het gras ondersteunen de vragen. De gesprekken vinden buiten plaats, vlak bij de deelnemers.</p><h2>Sciencefiction op de proef gesteld</h2><p>Een deel van de activiteit vergelijkt sciencefictionverhalen met wetenschappelijke kennis. Ruimtefictie wordt zo een vertrekpunt om misvattingen te bespreken, antwoorden uit het publiek te vergelijken en te onderzoeken wat de wetenschap werkelijk kan verklaren.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kosmos pod gołym niebem</h2><p>Le cratère s’anime ! gromadzi publiczność na zewnątrz z popularyzatorami nauki z Vulcanii. Gry i quizy dotyczą wszechświata, wielkich wynalazków i wyobrażeń o kosmosie. Trawiasty krajobraz staje się miejscem wspólnej rozmowy o tematach często kojarzonych z ekranami i wymyślonymi podróżami.</p><p>Prowadzący przemawiają pośród grupy, korzystając z mikrofonu i materiałów obrazkowych. Karty ułożone na trawie towarzyszą pytaniom. Rozmowa odbywa się na otwartym powietrzu, blisko uczestników.</p><h2>Fantastyka naukowa pod lupą</h2><p>Część zajęć porównuje opowieści science fiction z wiedzą naukową. Kosmiczna fikcja staje się punktem wyjścia do podważania obiegowych przekonań, porównywania odpowiedzi widzów i rozmowy o tym, co nauka potrafi rzeczywiście wyjaśnić.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O espaço a céu aberto</h2><p>Le cratère s’anime ! reúne o público no exterior com os animadores científicos de Vulcania. Jogos e questionários abordam o universo, as grandes invenções e as ideias sobre o espaço. A paisagem relvada acolhe uma conversa coletiva sobre temas muitas vezes associados aos ecrãs e às viagens imaginárias.</p><p>Os animadores falam no meio do grupo com um microfone e materiais ilustrados. Cartões colocados na relva acompanham as perguntas; as trocas decorrem ao ar livre, perto dos participantes.</p><h2>A ficção científica posta à prova</h2><p>Parte da atividade compara histórias de ficção científica com conhecimentos científicos. O imaginário espacial serve para questionar ideias feitas, comparar respostas do público e discutir aquilo que a ciência consegue realmente explicar.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "entityKey": "vulcania-cest-pas-sorcier",
+        "displayName": "C’est pas sorcier les volcans !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Vulkanfragen im Gespräch</h2><p>C’est pas sorcier les volcans ! setzt auf den Dialog mit einem Wissenschaftsvermittler. Unterschiedliche Vulkanformen und die Vorgänge in ihnen stehen im Mittelpunkt. Das Publikum kann eigene Fragen mit den Erklärungen im Raum verbinden.</p><p>Eine große Projektion begleitet die Präsentation. Der Vermittler nutzt unter anderem Bilder des Parks und seiner vulkanischen Umgebung auf einer Leinwand über der Bühne. Die Bilder verbinden die Erläuterungen mit Landschaften, die rund um Vulcania wiederzuerkennen sind.</p><h2>Die Vulkangeschichte der Auvergne</h2><p>Die Frage „Werden die Vulkane der Auvergne wieder erwachen?“ verbindet das Thema mit der umliegenden Landschaft. Die Geländeformen der Region geben dem Gespräch über unterschiedliche Vulkantypen und ihre Entstehung einen anschaulichen Bezug.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Volcanic questions in conversation</h2><p>C’est pas sorcier les volcans ! centres on a dialogue with a science presenter. Different volcanic forms and the phenomena within them shape the encounter. Audience members can bring their questions to the explanations given in the room.</p><p>A large projection accompanies the presentation. The presenter uses images of the park and its volcanic surroundings on a screen above the stage. These visuals connect the explanations with landscapes recognisable around Vulcania.</p><h2>Auvergne’s volcanic history</h2><p>The question “Will Auvergne’s volcanoes wake up?” connects the subject with the surrounding landscape. The region’s landforms give a tangible setting to the discussion of different volcanic shapes and the phenomena that formed them.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Preguntas volcánicas en conversación</h2><p>C’est pas sorcier les volcans ! se basa en el diálogo con un divulgador científico. Las distintas formas de los volcanes y los fenómenos que los animan constituyen el núcleo del encuentro. El público puede contrastar sus preguntas con las explicaciones dadas en la sala.</p><p>Una gran proyección acompaña la presentación. El divulgador utiliza imágenes del parque y de su entorno volcánico, mostradas en una pantalla que domina el escenario. Ese apoyo visual relaciona las explicaciones con paisajes reconocibles alrededor de Vulcania.</p><h2>La historia volcánica de Auvernia</h2><p>La pregunta «¿Despertarán los volcanes de Auvernia?» vincula el tema con el paisaje cercano. Los relieves de la región dan un marco concreto a la conversación sobre las distintas formas volcánicas y los fenómenos que las modelaron.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les questions volcaniques prennent la parole</h2><p>C’est pas sorcier les volcans ! repose sur le dialogue avec un animateur scientifique. Les différentes formes des volcans et les phénomènes qui les animent constituent le cœur de cette rencontre. Le public peut confronter ses questions aux explications données dans la salle.</p><p>Une grande projection accompagne la présentation. L’animateur s’appuie notamment sur des images du parc et de son environnement volcanique, montrées sur un écran qui domine la scène. Ce support visuel relie les explications à des paysages que l’on peut reconnaître autour de Vulcania.</p><h2>L’Auvergne et son histoire volcanique</h2><p>La question « Les volcans d’Auvergne vont-ils se réveiller ? » rapproche le thème des paysages alentour. Les reliefs de la région donnent un ancrage concret à la discussion sur les différentes formes de volcans et les phénomènes qui les ont façonnés.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Domande vulcaniche in dialogo</h2><p>C’est pas sorcier les volcans ! si basa sul dialogo con un animatore scientifico. Le diverse forme dei vulcani e i fenomeni che li animano sono al centro dell’incontro. Il pubblico può confrontare le proprie domande con le spiegazioni date nella sala.</p><p>Una grande proiezione accompagna la presentazione. L’animatore utilizza anche immagini del parco e del suo ambiente vulcanico, mostrate sullo schermo sopra la scena. Questo supporto collega le spiegazioni ai paesaggi riconoscibili intorno a Vulcania.</p><h2>La storia vulcanica dell’Alvernia</h2><p>La domanda «I vulcani dell’Alvernia si risveglieranno?» collega il tema al paesaggio circostante. I rilievi della regione offrono un riferimento concreto alla discussione sulle diverse forme dei vulcani e sui fenomeni che le hanno modellate.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vulkaanvragen in gesprek</h2><p>C’est pas sorcier les volcans ! draait om een gesprek met een wetenschapsmedewerker. Verschillende vulkaanvormen en de verschijnselen die zich erin afspelen staan centraal. Het publiek kan eigen vragen verbinden met de uitleg in de zaal.</p><p>Een grote projectie begeleidt de presentatie. De begeleider gebruikt onder meer beelden van het park en zijn vulkanische omgeving op een scherm boven het podium. Zo wordt de uitleg verbonden met landschappen die rond Vulcania herkenbaar zijn.</p><h2>De vulkanische geschiedenis van de Auvergne</h2><p>De vraag “Zullen de vulkanen van de Auvergne weer ontwaken?” verbindt het onderwerp met het omliggende landschap. De regionale reliëfvormen maken het gesprek over verschillende vulkaanvormen en hun ontstaan concreet.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wulkaniczne pytania w rozmowie</h2><p>C’est pas sorcier les volcans ! opiera się na dialogu z popularyzatorem nauki. Sednem spotkania są różne formy wulkanów i zachodzące w nich zjawiska. Publiczność może zestawić własne pytania z wyjaśnieniami przedstawianymi w sali.</p><p>Prezentacji towarzyszy duża projekcja. Prowadzący wykorzystuje między innymi obrazy parku i jego wulkanicznego otoczenia na ekranie nad sceną. Materiał wizualny łączy wyjaśnienia z krajobrazami rozpoznawalnymi wokół Vulcanii.</p><h2>Wulkaniczna historia Owernii</h2><p>Pytanie „Czy wulkany Owernii się obudzą?” łączy temat z otaczającym krajobrazem. Regionalne formy terenu nadają konkretny kontekst rozmowie o różnych kształtach wulkanów i zjawiskach, które je uformowały.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Perguntas vulcânicas em conversa</h2><p>C’est pas sorcier les volcans ! assenta no diálogo com um animador científico. As diferentes formas dos vulcões e os fenómenos que os animam constituem o centro do encontro. O público pode confrontar as suas perguntas com as explicações dadas na sala.</p><p>Uma grande projeção acompanha a apresentação. O animador utiliza imagens do parque e do seu ambiente vulcânico, mostradas num ecrã que domina o palco. Esse apoio visual relaciona as explicações com paisagens reconhecíveis em redor de Vulcania.</p><h2>A história vulcânica da Auvérnia</h2><p>A pergunta «Será que os vulcões da Auvérnia vão despertar?» liga o tema à paisagem envolvente. Os relevos da região dão um enquadramento concreto à conversa sobre as diferentes formas dos vulcões e os fenómenos que as moldaram.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : Le cratère s’anime et C’est pas sorcier les volcans décrits personnellement en huit langues, sources officielles et scènes photographiques relues ; deux fiches privées conservées.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen personally written and reviewed texts from exact official pages Le cratere sanime and Cest pas sorcier les volcans plus two individually inspected native photographs; two headings and three paragraphs, source-limited depth. No personal performer identities, stage alias, daily schedule or opening date inferred."
+}

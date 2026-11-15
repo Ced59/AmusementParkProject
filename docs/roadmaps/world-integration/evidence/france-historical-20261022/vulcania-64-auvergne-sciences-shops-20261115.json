@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "52885720-2ed0-4d51-b940-33e955b2df3f",
+          "key": "vulcania-planete-auvergne",
+          "name": "Planète Auvergne",
+          "type": "Shop",
+          "category": "Shop",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les couleurs des minéraux</h2><p>Planète Auvergne rassemble une sélection de minéraux, de produits gastronomiques et d’artisanat local. Les pierres occupent une place très visible dans la boutique : de petits spécimens aux couleurs variées sont rangés dans des boîtes blanches, tandis que d’autres remplissent des bacs transparents superposés.</p><p>Le mobilier clair et les étagères en bois entourent ces présentoirs. Cristaux violets, pierres vertes et morceaux orangés composent un ensemble dont les étiquettes permettent de distinguer les spécimens. Des formes brutes voisinent avec des pierres polies.</p><h2>Une sélection régionale</h2><p>L’offre gastronomique et artisanale comprend des produits portant le label « Ma Région Ses Terroirs ». Ce repère régional accompagne la sélection de la boutique, où les objets et les saveurs locales côtoient les collections minérales.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The colours of minerals</h2><p>Planète Auvergne brings together minerals, food specialities and local crafts. Stones occupy a prominent place in the shop: small, varied specimens sit in white boxes, while others fill stacked transparent containers.</p><p>Pale furniture and wooden shelving surround these displays. Purple crystals, green stones and orange pieces form a collection with labels distinguishing the specimens. Rough forms stand alongside polished stones.</p><h2>A regional selection</h2><p>The food and craft range includes products carrying the Ma Région Ses Terroirs label. This regional marker accompanies the shop’s selection, where local objects and flavours share the space with mineral collections.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die Farben der Mineralien</h2><p>Planète Auvergne verbindet Mineralien mit gastronomischen Spezialitäten und lokalem Kunsthandwerk. Steine nehmen in dem Geschäft viel Raum ein: Kleine, verschiedenfarbige Stücke liegen in weißen Schachteln, andere füllen gestapelte durchsichtige Behälter.</p><p>Helle Möbel und Holzregale umgeben die Auslagen. Violette Kristalle, grüne Steine und orangefarbene Stücke bilden eine beschriftete Sammlung. Rohe Formen stehen neben polierten Steinen.</p><h2>Eine regionale Auswahl</h2><p>Zum Lebensmittel- und Handwerkssortiment gehören Produkte mit dem Label Ma Région Ses Terroirs. Diese regionale Kennzeichnung begleitet die Auswahl des Geschäfts, in dem lokale Gegenstände und Spezialitäten neben Mineralien angeboten werden.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De kleuren van mineralen</h2><p>Planète Auvergne brengt mineralen, gastronomische producten en lokaal handwerk samen. Stenen nemen een opvallende plaats in: kleine, verschillend gekleurde exemplaren liggen in witte doosjes, terwijl andere in gestapelde doorzichtige bakken zitten.</p><p>Lichte meubels en houten schappen omringen de uitstallingen. Paarse kristallen, groene stenen en oranje stukken vormen een verzameling waarin etiketten de exemplaren onderscheiden. Ruwe vormen staan naast gepolijste stenen.</p><h2>Een regionale selectie</h2><p>Het aanbod van streekproducten en handwerk omvat artikelen met het label Ma Région Ses Terroirs. Die regionale aanduiding begeleidt de selectie van de winkel, waar lokale voorwerpen en smaken naast mineralencollecties te vinden zijn.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>I colori dei minerali</h2><p>Planète Auvergne riunisce minerali, specialità gastronomiche e artigianato locale. Le pietre occupano uno spazio ben visibile: piccoli esemplari di colori diversi sono ordinati in scatole bianche, mentre altri riempiono contenitori trasparenti sovrapposti.</p><p>Mobili chiari e scaffali di legno circondano gli espositori. Cristalli viola, pietre verdi e frammenti arancioni compongono una raccolta con etichette che distinguono gli esemplari. Forme grezze affiancano pietre levigate.</p><h2>Una selezione regionale</h2><p>L’offerta gastronomica e artigianale comprende prodotti con il marchio Ma Région Ses Terroirs. Questo riferimento regionale accompagna la selezione del negozio, dove oggetti e sapori locali condividono lo spazio con le collezioni minerali.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Los colores de los minerales</h2><p>Planète Auvergne reúne minerales, especialidades gastronómicas y artesanía local. Las piedras ocupan un lugar destacado: pequeños ejemplares de distintos colores se ordenan en cajas blancas, mientras otros llenan recipientes transparentes apilados.</p><p>Muebles claros y estanterías de madera rodean los expositores. Cristales violetas, piedras verdes y fragmentos naranjas forman una colección cuyas etiquetas distinguen los ejemplares. Formas en bruto conviven con piedras pulidas.</p><h2>Una selección regional</h2><p>La oferta gastronómica y artesanal incluye productos con el sello Ma Région Ses Terroirs. Esta referencia regional acompaña la selección de la tienda, donde objetos y sabores locales comparten espacio con las colecciones minerales.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Kolory minerałów</h2><p>Planète Auvergne łączy minerały, specjały kulinarne i lokalne rzemiosło. Kamienie zajmują wyraźne miejsce w sklepie: małe różnobarwne okazy leżą w białych pudełkach, a inne wypełniają ustawione piętrowo przezroczyste pojemniki.</p><p>Ekspozycję otaczają jasne meble i drewniane półki. Fioletowe kryształy, zielone kamienie i pomarańczowe fragmenty tworzą zbiór z etykietami rozróżniającymi okazy. Surowe formy sąsiadują z wypolerowanymi kamieniami.</p><h2>Regionalny wybór</h2><p>Oferta kulinarna i rzemieślnicza obejmuje produkty oznaczone Ma Région Ses Terroirs. To regionalne oznaczenie towarzyszy wyborowi sklepu, w którym lokalne przedmioty i smaki dzielą przestrzeń z kolekcjami minerałów.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>As cores dos minerais</h2><p>Planète Auvergne reúne minerais, especialidades gastronómicas e artesanato local. As pedras ocupam um lugar de destaque: pequenos exemplares de várias cores estão organizados em caixas brancas, enquanto outros enchem recipientes transparentes sobrepostos.</p><p>Móveis claros e prateleiras de madeira rodeiam os expositores. Cristais violetas, pedras verdes e fragmentos alaranjados formam uma coleção cujas etiquetas distinguem os exemplares. Formas em bruto convivem com pedras polidas.</p><h2>Uma seleção regional</h2><p>A oferta gastronómica e artesanal inclui produtos com o selo Ma Région Ses Terroirs. Esta referência regional acompanha a seleção da loja, onde objetos e sabores locais partilham o espaço com as coleções minerais.</p>"
+            }
+          ]
+        },
+        {
+          "id": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+          "key": "vulcania-planete-sciences",
+          "name": "Planète Sciences",
+          "type": "Shop",
+          "category": "Shop",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des rayons sous un plafond rouge</h2><p>Planète Sciences réunit librairie, jeux éducatifs et produits dérivés dans une salle au plafond et au sol rouges. Des étagères grises longent les murs, tandis que des présentoirs bas rassemblent livres, petits jeux et objets colorés au centre de la boutique.</p><p>Les dinosaures y sont particulièrement visibles. De grandes peluches vertes dominent des coffrets d’atlas et des jeux, avec d’autres créatures aux formes et aux couleurs variées. Le rayon associe ainsi les animaux imaginés en jouets aux illustrations qui présentent leur monde.</p><h2>Des livres pour explorer les sciences</h2><p>Les ouvrages exposés mêlent notamment l’histoire naturelle et l’astronomie, avec des couvertures consacrées aux dinosaures ou au ciel. Livres illustrés, jeux et peluches se côtoient dans ces rayons, sous les éclairages encastrés du plafond écarlate.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Shelves beneath a red ceiling</h2><p>Planète Sciences combines a bookshop, educational games and merchandise in a room with a red ceiling and floor. Grey shelves line the walls, while low displays gather books, small games and colourful objects in the centre.</p><p>Dinosaurs are especially prominent. Large green soft toys tower over atlas sets and games, alongside other creatures in varied shapes and colours. The display places toy animals beside illustrations exploring their world.</p><h2>Books for exploring science</h2><p>The books on display include natural history and astronomy, with covers devoted to dinosaurs or the sky. Illustrated books, games and soft toys share the shelves beneath the recessed lights of the scarlet ceiling.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Regale unter einer roten Decke</h2><p>Planète Sciences vereint Bücher, Lernspiele und Merchandising in einem Raum mit roter Decke und rotem Boden. Graue Regale stehen an den Wänden; niedrige Auslagen versammeln Bücher, kleine Spiele und bunte Gegenstände in der Mitte.</p><p>Dinosaurier fallen besonders auf. Große grüne Plüschtiere überragen Atlaskästen und Spiele neben weiteren Kreaturen in verschiedenen Formen und Farben. Spielzeugtiere stehen so neben Illustrationen, die ihre Welt erkunden.</p><h2>Bücher zur Welt der Wissenschaft</h2><p>Die ausgestellten Bücher behandeln unter anderem Naturgeschichte und Astronomie. Ihre Einbände zeigen Dinosaurier oder den Himmel. Illustrierte Bücher, Spiele und Plüschtiere teilen sich die Regale unter den eingelassenen Leuchten der scharlachroten Decke.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Schappen onder een rood plafond</h2><p>Planète Sciences combineert boeken, educatieve spellen en merchandise in een ruimte met een rood plafond en een rode vloer. Grijze schappen staan langs de wanden; lage rekken verzamelen boeken, kleine spellen en kleurrijke voorwerpen in het midden.</p><p>Dinosaurussen vallen er sterk op. Grote groene knuffels torenen boven atlasdozen en spellen uit, naast andere wezens in uiteenlopende vormen en kleuren. Speelgoeddieren staan zo naast illustraties die hun wereld verkennen.</p><h2>Boeken om wetenschap te ontdekken</h2><p>De uitgestalde boeken gaan onder meer over natuurlijke historie en sterrenkunde, met omslagen over dinosaurussen of de hemel. Geïllustreerde boeken, spellen en knuffels delen de schappen onder de ingebouwde verlichting van het scharlakenrode plafond.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Scaffali sotto un soffitto rosso</h2><p>Planète Sciences riunisce libri, giochi educativi e prodotti a tema in una sala dal soffitto e dal pavimento rossi. Scaffali grigi seguono le pareti, mentre espositori bassi raccolgono libri, piccoli giochi e oggetti colorati al centro.</p><p>I dinosauri sono particolarmente visibili. Grandi peluche verdi sovrastano cofanetti di atlanti e giochi, accanto ad altre creature dalle forme e dai colori diversi. Gli animali giocattolo affiancano così le illustrazioni che ne esplorano il mondo.</p><h2>Libri per esplorare la scienza</h2><p>I volumi esposti comprendono storia naturale e astronomia, con copertine dedicate ai dinosauri o al cielo. Libri illustrati, giochi e peluche condividono gli scaffali sotto le luci incassate nel soffitto scarlatto.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Estanterías bajo un techo rojo</h2><p>Planète Sciences reúne libros, juegos educativos y productos temáticos en una sala con techo y suelo rojos. Estanterías grises recorren las paredes, mientras expositores bajos agrupan libros, pequeños juegos y objetos de colores en el centro.</p><p>Los dinosaurios destacan especialmente. Grandes peluches verdes dominan cajas de atlas y juegos, junto a otras criaturas de formas y colores variados. Los animales de juguete comparten espacio con ilustraciones que exploran su mundo.</p><h2>Libros para explorar la ciencia</h2><p>Los libros expuestos incluyen historia natural y astronomía, con cubiertas dedicadas a los dinosaurios o al cielo. Libros ilustrados, juegos y peluches comparten los estantes bajo las luces empotradas del techo escarlata.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Regały pod czerwonym sufitem</h2><p>Planète Sciences łączy książki, gry edukacyjne i pamiątki tematyczne w sali z czerwonym sufitem i podłogą. Szare regały stoją przy ścianach, a niskie ekspozytory gromadzą książki, małe gry i kolorowe przedmioty pośrodku sklepu.</p><p>Szczególnie widoczne są dinozaury. Wielkie zielone pluszaki górują nad zestawami atlasów i grami, obok innych stworzeń o różnych kształtach i barwach. Zwierzęta zabawki sąsiadują z ilustracjami przybliżającymi ich świat.</p><h2>Książki do odkrywania nauki</h2><p>Wśród wystawionych książek są publikacje o historii naturalnej i astronomii, z okładkami poświęconymi dinozaurom lub niebu. Ilustrowane książki, gry i pluszaki dzielą półki pod światłami wpuszczonymi w szkarłatny sufit.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Prateleiras sob um teto vermelho</h2><p>Planète Sciences reúne livros, jogos educativos e produtos temáticos numa sala de teto e chão vermelhos. Prateleiras cinzentas acompanham as paredes, enquanto expositores baixos juntam livros, pequenos jogos e objetos coloridos no centro.</p><p>Os dinossauros têm grande destaque. Peluches verdes de grande dimensão dominam conjuntos de atlas e jogos, ao lado de outras criaturas com formas e cores variadas. Os animais de brincar convivem assim com ilustrações que exploram o seu mundo.</p><h2>Livros para explorar a ciência</h2><p>Os livros expostos incluem história natural e astronomia, com capas dedicadas aos dinossauros ou ao céu. Livros ilustrados, jogos e peluches partilham as prateleiras sob as luzes embutidas no teto escarlate.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-64-auvergne-sciences-shops",
+        "notes": "Sixteen descriptions personally authored and reviewed, official boutiques page complete and gallery associations confirmed from h3 sections. Four native photographs individually viewed: Auvergne minerals boxed/trays, Sciences red room and dinosaurs. Mineral origin not inferred Auvergne; Ma Region Ses Terroirs label applies to selected products, not entire range. No guaranteed stock, exact opening day, shop alias or invented commercial offering. Two headings/three source-specific paragraphs, shorter factual scope without padding."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "08028827-b4df-4ce8-903f-55c38bbe8378",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:14:03.7146198Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52885720-2ed0-4d51-b940-33e955b2df3f",
+        "entityKey": "vulcania-planete-auvergne",
+        "displayName": "Planète Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Farben der Mineralien</h2><p>Planète Auvergne verbindet Mineralien mit gastronomischen Spezialitäten und lokalem Kunsthandwerk. Steine nehmen in dem Geschäft viel Raum ein: Kleine, verschiedenfarbige Stücke liegen in weißen Schachteln, andere füllen gestapelte durchsichtige Behälter.</p><p>Helle Möbel und Holzregale umgeben die Auslagen. Violette Kristalle, grüne Steine und orangefarbene Stücke bilden eine beschriftete Sammlung. Rohe Formen stehen neben polierten Steinen.</p><h2>Eine regionale Auswahl</h2><p>Zum Lebensmittel- und Handwerkssortiment gehören Produkte mit dem Label Ma Région Ses Terroirs. Diese regionale Kennzeichnung begleitet die Auswahl des Geschäfts, in dem lokale Gegenstände und Spezialitäten neben Mineralien angeboten werden.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The colours of minerals</h2><p>Planète Auvergne brings together minerals, food specialities and local crafts. Stones occupy a prominent place in the shop: small, varied specimens sit in white boxes, while others fill stacked transparent containers.</p><p>Pale furniture and wooden shelving surround these displays. Purple crystals, green stones and orange pieces form a collection with labels distinguishing the specimens. Rough forms stand alongside polished stones.</p><h2>A regional selection</h2><p>The food and craft range includes products carrying the Ma Région Ses Terroirs label. This regional marker accompanies the shop’s selection, where local objects and flavours share the space with mineral collections.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los colores de los minerales</h2><p>Planète Auvergne reúne minerales, especialidades gastronómicas y artesanía local. Las piedras ocupan un lugar destacado: pequeños ejemplares de distintos colores se ordenan en cajas blancas, mientras otros llenan recipientes transparentes apilados.</p><p>Muebles claros y estanterías de madera rodean los expositores. Cristales violetas, piedras verdes y fragmentos naranjas forman una colección cuyas etiquetas distinguen los ejemplares. Formas en bruto conviven con piedras pulidas.</p><h2>Una selección regional</h2><p>La oferta gastronómica y artesanal incluye productos con el sello Ma Région Ses Terroirs. Esta referencia regional acompaña la selección de la tienda, donde objetos y sabores locales comparten espacio con las colecciones minerales.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les couleurs des minéraux</h2><p>Planète Auvergne rassemble une sélection de minéraux, de produits gastronomiques et d’artisanat local. Les pierres occupent une place très visible dans la boutique : de petits spécimens aux couleurs variées sont rangés dans des boîtes blanches, tandis que d’autres remplissent des bacs transparents superposés.</p><p>Le mobilier clair et les étagères en bois entourent ces présentoirs. Cristaux violets, pierres vertes et morceaux orangés composent un ensemble dont les étiquettes permettent de distinguer les spécimens. Des formes brutes voisinent avec des pierres polies.</p><h2>Une sélection régionale</h2><p>L’offre gastronomique et artisanale comprend des produits portant le label « Ma Région Ses Terroirs ». Ce repère régional accompagne la sélection de la boutique, où les objets et les saveurs locales côtoient les collections minérales.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I colori dei minerali</h2><p>Planète Auvergne riunisce minerali, specialità gastronomiche e artigianato locale. Le pietre occupano uno spazio ben visibile: piccoli esemplari di colori diversi sono ordinati in scatole bianche, mentre altri riempiono contenitori trasparenti sovrapposti.</p><p>Mobili chiari e scaffali di legno circondano gli espositori. Cristalli viola, pietre verdi e frammenti arancioni compongono una raccolta con etichette che distinguono gli esemplari. Forme grezze affiancano pietre levigate.</p><h2>Una selezione regionale</h2><p>L’offerta gastronomica e artigianale comprende prodotti con il marchio Ma Région Ses Terroirs. Questo riferimento regionale accompagna la selezione del negozio, dove oggetti e sapori locali condividono lo spazio con le collezioni minerali.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De kleuren van mineralen</h2><p>Planète Auvergne brengt mineralen, gastronomische producten en lokaal handwerk samen. Stenen nemen een opvallende plaats in: kleine, verschillend gekleurde exemplaren liggen in witte doosjes, terwijl andere in gestapelde doorzichtige bakken zitten.</p><p>Lichte meubels en houten schappen omringen de uitstallingen. Paarse kristallen, groene stenen en oranje stukken vormen een verzameling waarin etiketten de exemplaren onderscheiden. Ruwe vormen staan naast gepolijste stenen.</p><h2>Een regionale selectie</h2><p>Het aanbod van streekproducten en handwerk omvat artikelen met het label Ma Région Ses Terroirs. Die regionale aanduiding begeleidt de selectie van de winkel, waar lokale voorwerpen en smaken naast mineralencollecties te vinden zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kolory minerałów</h2><p>Planète Auvergne łączy minerały, specjały kulinarne i lokalne rzemiosło. Kamienie zajmują wyraźne miejsce w sklepie: małe różnobarwne okazy leżą w białych pudełkach, a inne wypełniają ustawione piętrowo przezroczyste pojemniki.</p><p>Ekspozycję otaczają jasne meble i drewniane półki. Fioletowe kryształy, zielone kamienie i pomarańczowe fragmenty tworzą zbiór z etykietami rozróżniającymi okazy. Surowe formy sąsiadują z wypolerowanymi kamieniami.</p><h2>Regionalny wybór</h2><p>Oferta kulinarna i rzemieślnicza obejmuje produkty oznaczone Ma Région Ses Terroirs. To regionalne oznaczenie towarzyszy wyborowi sklepu, w którym lokalne przedmioty i smaki dzielą przestrzeń z kolekcjami minerałów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>As cores dos minerais</h2><p>Planète Auvergne reúne minerais, especialidades gastronómicas e artesanato local. As pedras ocupam um lugar de destaque: pequenos exemplares de várias cores estão organizados em caixas brancas, enquanto outros enchem recipientes transparentes sobrepostos.</p><p>Móveis claros e prateleiras de madeira rodeiam os expositores. Cristais violetas, pedras verdes e fragmentos alaranjados formam uma coleção cujas etiquetas distinguem os exemplares. Formas em bruto convivem com pedras polidas.</p><h2>Uma seleção regional</h2><p>A oferta gastronómica e artesanal inclui produtos com o selo Ma Région Ses Terroirs. Esta referência regional acompanha a seleção da loja, onde objetos e sabores locais partilham o espaço com as coleções minerais.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+        "entityKey": "vulcania-planete-sciences",
+        "displayName": "Planète Sciences",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Regale unter einer roten Decke</h2><p>Planète Sciences vereint Bücher, Lernspiele und Merchandising in einem Raum mit roter Decke und rotem Boden. Graue Regale stehen an den Wänden; niedrige Auslagen versammeln Bücher, kleine Spiele und bunte Gegenstände in der Mitte.</p><p>Dinosaurier fallen besonders auf. Große grüne Plüschtiere überragen Atlaskästen und Spiele neben weiteren Kreaturen in verschiedenen Formen und Farben. Spielzeugtiere stehen so neben Illustrationen, die ihre Welt erkunden.</p><h2>Bücher zur Welt der Wissenschaft</h2><p>Die ausgestellten Bücher behandeln unter anderem Naturgeschichte und Astronomie. Ihre Einbände zeigen Dinosaurier oder den Himmel. Illustrierte Bücher, Spiele und Plüschtiere teilen sich die Regale unter den eingelassenen Leuchten der scharlachroten Decke.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Shelves beneath a red ceiling</h2><p>Planète Sciences combines a bookshop, educational games and merchandise in a room with a red ceiling and floor. Grey shelves line the walls, while low displays gather books, small games and colourful objects in the centre.</p><p>Dinosaurs are especially prominent. Large green soft toys tower over atlas sets and games, alongside other creatures in varied shapes and colours. The display places toy animals beside illustrations exploring their world.</p><h2>Books for exploring science</h2><p>The books on display include natural history and astronomy, with covers devoted to dinosaurs or the sky. Illustrated books, games and soft toys share the shelves beneath the recessed lights of the scarlet ceiling.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Estanterías bajo un techo rojo</h2><p>Planète Sciences reúne libros, juegos educativos y productos temáticos en una sala con techo y suelo rojos. Estanterías grises recorren las paredes, mientras expositores bajos agrupan libros, pequeños juegos y objetos de colores en el centro.</p><p>Los dinosaurios destacan especialmente. Grandes peluches verdes dominan cajas de atlas y juegos, junto a otras criaturas de formas y colores variados. Los animales de juguete comparten espacio con ilustraciones que exploran su mundo.</p><h2>Libros para explorar la ciencia</h2><p>Los libros expuestos incluyen historia natural y astronomía, con cubiertas dedicadas a los dinosaurios o al cielo. Libros ilustrados, juegos y peluches comparten los estantes bajo las luces empotradas del techo escarlata.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des rayons sous un plafond rouge</h2><p>Planète Sciences réunit librairie, jeux éducatifs et produits dérivés dans une salle au plafond et au sol rouges. Des étagères grises longent les murs, tandis que des présentoirs bas rassemblent livres, petits jeux et objets colorés au centre de la boutique.</p><p>Les dinosaures y sont particulièrement visibles. De grandes peluches vertes dominent des coffrets d’atlas et des jeux, avec d’autres créatures aux formes et aux couleurs variées. Le rayon associe ainsi les animaux imaginés en jouets aux illustrations qui présentent leur monde.</p><h2>Des livres pour explorer les sciences</h2><p>Les ouvrages exposés mêlent notamment l’histoire naturelle et l’astronomie, avec des couvertures consacrées aux dinosaures ou au ciel. Livres illustrés, jeux et peluches se côtoient dans ces rayons, sous les éclairages encastrés du plafond écarlate.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Scaffali sotto un soffitto rosso</h2><p>Planète Sciences riunisce libri, giochi educativi e prodotti a tema in una sala dal soffitto e dal pavimento rossi. Scaffali grigi seguono le pareti, mentre espositori bassi raccolgono libri, piccoli giochi e oggetti colorati al centro.</p><p>I dinosauri sono particolarmente visibili. Grandi peluche verdi sovrastano cofanetti di atlanti e giochi, accanto ad altre creature dalle forme e dai colori diversi. Gli animali giocattolo affiancano così le illustrazioni che ne esplorano il mondo.</p><h2>Libri per esplorare la scienza</h2><p>I volumi esposti comprendono storia naturale e astronomia, con copertine dedicate ai dinosauri o al cielo. Libri illustrati, giochi e peluche condividono gli scaffali sotto le luci incassate nel soffitto scarlatto.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Schappen onder een rood plafond</h2><p>Planète Sciences combineert boeken, educatieve spellen en merchandise in een ruimte met een rood plafond en een rode vloer. Grijze schappen staan langs de wanden; lage rekken verzamelen boeken, kleine spellen en kleurrijke voorwerpen in het midden.</p><p>Dinosaurussen vallen er sterk op. Grote groene knuffels torenen boven atlasdozen en spellen uit, naast andere wezens in uiteenlopende vormen en kleuren. Speelgoeddieren staan zo naast illustraties die hun wereld verkennen.</p><h2>Boeken om wetenschap te ontdekken</h2><p>De uitgestalde boeken gaan onder meer over natuurlijke historie en sterrenkunde, met omslagen over dinosaurussen of de hemel. Geïllustreerde boeken, spellen en knuffels delen de schappen onder de ingebouwde verlichting van het scharlakenrode plafond.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Regały pod czerwonym sufitem</h2><p>Planète Sciences łączy książki, gry edukacyjne i pamiątki tematyczne w sali z czerwonym sufitem i podłogą. Szare regały stoją przy ścianach, a niskie ekspozytory gromadzą książki, małe gry i kolorowe przedmioty pośrodku sklepu.</p><p>Szczególnie widoczne są dinozaury. Wielkie zielone pluszaki górują nad zestawami atlasów i grami, obok innych stworzeń o różnych kształtach i barwach. Zwierzęta zabawki sąsiadują z ilustracjami przybliżającymi ich świat.</p><h2>Książki do odkrywania nauki</h2><p>Wśród wystawionych książek są publikacje o historii naturalnej i astronomii, z okładkami poświęconymi dinozaurom lub niebu. Ilustrowane książki, gry i pluszaki dzielą półki pod światłami wpuszczonymi w szkarłatny sufit.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Prateleiras sob um teto vermelho</h2><p>Planète Sciences reúne livros, jogos educativos e produtos temáticos numa sala de teto e chão vermelhos. Prateleiras cinzentas acompanham as paredes, enquanto expositores baixos juntam livros, pequenos jogos e objetos coloridos no centro.</p><p>Os dinossauros têm grande destaque. Peluches verdes de grande dimensão dominam conjuntos de atlas e jogos, ao lado de outras criaturas com formas e cores variadas. Os animais de brincar convivem assim com ilustrações que exploram o seu mundo.</p><h2>Livros para explorar a ciência</h2><p>Os livros expostos incluem história natural e astronomia, com capas dedicadas aos dinossauros ou ao céu. Livros ilustrados, jogos e peluches partilham as prateleiras sob as luzes embutidas no teto escarlate.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "eae6d41c-a472-4ec0-9282-9993831dd0d2",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:15:39.0618007Z",
+    "appliedAtUtc": "2026-11-15T19:15:39.0618015Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52885720-2ed0-4d51-b940-33e955b2df3f",
+        "entityKey": "vulcania-planete-auvergne",
+        "displayName": "Planète Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Farben der Mineralien</h2><p>Planète Auvergne verbindet Mineralien mit gastronomischen Spezialitäten und lokalem Kunsthandwerk. Steine nehmen in dem Geschäft viel Raum ein: Kleine, verschiedenfarbige Stücke liegen in weißen Schachteln, andere füllen gestapelte durchsichtige Behälter.</p><p>Helle Möbel und Holzregale umgeben die Auslagen. Violette Kristalle, grüne Steine und orangefarbene Stücke bilden eine beschriftete Sammlung. Rohe Formen stehen neben polierten Steinen.</p><h2>Eine regionale Auswahl</h2><p>Zum Lebensmittel- und Handwerkssortiment gehören Produkte mit dem Label Ma Région Ses Terroirs. Diese regionale Kennzeichnung begleitet die Auswahl des Geschäfts, in dem lokale Gegenstände und Spezialitäten neben Mineralien angeboten werden.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The colours of minerals</h2><p>Planète Auvergne brings together minerals, food specialities and local crafts. Stones occupy a prominent place in the shop: small, varied specimens sit in white boxes, while others fill stacked transparent containers.</p><p>Pale furniture and wooden shelving surround these displays. Purple crystals, green stones and orange pieces form a collection with labels distinguishing the specimens. Rough forms stand alongside polished stones.</p><h2>A regional selection</h2><p>The food and craft range includes products carrying the Ma Région Ses Terroirs label. This regional marker accompanies the shop’s selection, where local objects and flavours share the space with mineral collections.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los colores de los minerales</h2><p>Planète Auvergne reúne minerales, especialidades gastronómicas y artesanía local. Las piedras ocupan un lugar destacado: pequeños ejemplares de distintos colores se ordenan en cajas blancas, mientras otros llenan recipientes transparentes apilados.</p><p>Muebles claros y estanterías de madera rodean los expositores. Cristales violetas, piedras verdes y fragmentos naranjas forman una colección cuyas etiquetas distinguen los ejemplares. Formas en bruto conviven con piedras pulidas.</p><h2>Una selección regional</h2><p>La oferta gastronómica y artesanal incluye productos con el sello Ma Région Ses Terroirs. Esta referencia regional acompaña la selección de la tienda, donde objetos y sabores locales comparten espacio con las colecciones minerales.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les couleurs des minéraux</h2><p>Planète Auvergne rassemble une sélection de minéraux, de produits gastronomiques et d’artisanat local. Les pierres occupent une place très visible dans la boutique : de petits spécimens aux couleurs variées sont rangés dans des boîtes blanches, tandis que d’autres remplissent des bacs transparents superposés.</p><p>Le mobilier clair et les étagères en bois entourent ces présentoirs. Cristaux violets, pierres vertes et morceaux orangés composent un ensemble dont les étiquettes permettent de distinguer les spécimens. Des formes brutes voisinent avec des pierres polies.</p><h2>Une sélection régionale</h2><p>L’offre gastronomique et artisanale comprend des produits portant le label « Ma Région Ses Terroirs ». Ce repère régional accompagne la sélection de la boutique, où les objets et les saveurs locales côtoient les collections minérales.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I colori dei minerali</h2><p>Planète Auvergne riunisce minerali, specialità gastronomiche e artigianato locale. Le pietre occupano uno spazio ben visibile: piccoli esemplari di colori diversi sono ordinati in scatole bianche, mentre altri riempiono contenitori trasparenti sovrapposti.</p><p>Mobili chiari e scaffali di legno circondano gli espositori. Cristalli viola, pietre verdi e frammenti arancioni compongono una raccolta con etichette che distinguono gli esemplari. Forme grezze affiancano pietre levigate.</p><h2>Una selezione regionale</h2><p>L’offerta gastronomica e artigianale comprende prodotti con il marchio Ma Région Ses Terroirs. Questo riferimento regionale accompagna la selezione del negozio, dove oggetti e sapori locali condividono lo spazio con le collezioni minerali.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De kleuren van mineralen</h2><p>Planète Auvergne brengt mineralen, gastronomische producten en lokaal handwerk samen. Stenen nemen een opvallende plaats in: kleine, verschillend gekleurde exemplaren liggen in witte doosjes, terwijl andere in gestapelde doorzichtige bakken zitten.</p><p>Lichte meubels en houten schappen omringen de uitstallingen. Paarse kristallen, groene stenen en oranje stukken vormen een verzameling waarin etiketten de exemplaren onderscheiden. Ruwe vormen staan naast gepolijste stenen.</p><h2>Een regionale selectie</h2><p>Het aanbod van streekproducten en handwerk omvat artikelen met het label Ma Région Ses Terroirs. Die regionale aanduiding begeleidt de selectie van de winkel, waar lokale voorwerpen en smaken naast mineralencollecties te vinden zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kolory minerałów</h2><p>Planète Auvergne łączy minerały, specjały kulinarne i lokalne rzemiosło. Kamienie zajmują wyraźne miejsce w sklepie: małe różnobarwne okazy leżą w białych pudełkach, a inne wypełniają ustawione piętrowo przezroczyste pojemniki.</p><p>Ekspozycję otaczają jasne meble i drewniane półki. Fioletowe kryształy, zielone kamienie i pomarańczowe fragmenty tworzą zbiór z etykietami rozróżniającymi okazy. Surowe formy sąsiadują z wypolerowanymi kamieniami.</p><h2>Regionalny wybór</h2><p>Oferta kulinarna i rzemieślnicza obejmuje produkty oznaczone Ma Région Ses Terroirs. To regionalne oznaczenie towarzyszy wyborowi sklepu, w którym lokalne przedmioty i smaki dzielą przestrzeń z kolekcjami minerałów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>As cores dos minerais</h2><p>Planète Auvergne reúne minerais, especialidades gastronómicas e artesanato local. As pedras ocupam um lugar de destaque: pequenos exemplares de várias cores estão organizados em caixas brancas, enquanto outros enchem recipientes transparentes sobrepostos.</p><p>Móveis claros e prateleiras de madeira rodeiam os expositores. Cristais violetas, pedras verdes e fragmentos alaranjados formam uma coleção cujas etiquetas distinguem os exemplares. Formas em bruto convivem com pedras polidas.</p><h2>Uma seleção regional</h2><p>A oferta gastronómica e artesanal inclui produtos com o selo Ma Région Ses Terroirs. Esta referência regional acompanha a seleção da loja, onde objetos e sabores locais partilham o espaço com as coleções minerais.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+        "entityKey": "vulcania-planete-sciences",
+        "displayName": "Planète Sciences",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Regale unter einer roten Decke</h2><p>Planète Sciences vereint Bücher, Lernspiele und Merchandising in einem Raum mit roter Decke und rotem Boden. Graue Regale stehen an den Wänden; niedrige Auslagen versammeln Bücher, kleine Spiele und bunte Gegenstände in der Mitte.</p><p>Dinosaurier fallen besonders auf. Große grüne Plüschtiere überragen Atlaskästen und Spiele neben weiteren Kreaturen in verschiedenen Formen und Farben. Spielzeugtiere stehen so neben Illustrationen, die ihre Welt erkunden.</p><h2>Bücher zur Welt der Wissenschaft</h2><p>Die ausgestellten Bücher behandeln unter anderem Naturgeschichte und Astronomie. Ihre Einbände zeigen Dinosaurier oder den Himmel. Illustrierte Bücher, Spiele und Plüschtiere teilen sich die Regale unter den eingelassenen Leuchten der scharlachroten Decke.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Shelves beneath a red ceiling</h2><p>Planète Sciences combines a bookshop, educational games and merchandise in a room with a red ceiling and floor. Grey shelves line the walls, while low displays gather books, small games and colourful objects in the centre.</p><p>Dinosaurs are especially prominent. Large green soft toys tower over atlas sets and games, alongside other creatures in varied shapes and colours. The display places toy animals beside illustrations exploring their world.</p><h2>Books for exploring science</h2><p>The books on display include natural history and astronomy, with covers devoted to dinosaurs or the sky. Illustrated books, games and soft toys share the shelves beneath the recessed lights of the scarlet ceiling.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Estanterías bajo un techo rojo</h2><p>Planète Sciences reúne libros, juegos educativos y productos temáticos en una sala con techo y suelo rojos. Estanterías grises recorren las paredes, mientras expositores bajos agrupan libros, pequeños juegos y objetos de colores en el centro.</p><p>Los dinosaurios destacan especialmente. Grandes peluches verdes dominan cajas de atlas y juegos, junto a otras criaturas de formas y colores variados. Los animales de juguete comparten espacio con ilustraciones que exploran su mundo.</p><h2>Libros para explorar la ciencia</h2><p>Los libros expuestos incluyen historia natural y astronomía, con cubiertas dedicadas a los dinosaurios o al cielo. Libros ilustrados, juegos y peluches comparten los estantes bajo las luces empotradas del techo escarlata.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des rayons sous un plafond rouge</h2><p>Planète Sciences réunit librairie, jeux éducatifs et produits dérivés dans une salle au plafond et au sol rouges. Des étagères grises longent les murs, tandis que des présentoirs bas rassemblent livres, petits jeux et objets colorés au centre de la boutique.</p><p>Les dinosaures y sont particulièrement visibles. De grandes peluches vertes dominent des coffrets d’atlas et des jeux, avec d’autres créatures aux formes et aux couleurs variées. Le rayon associe ainsi les animaux imaginés en jouets aux illustrations qui présentent leur monde.</p><h2>Des livres pour explorer les sciences</h2><p>Les ouvrages exposés mêlent notamment l’histoire naturelle et l’astronomie, avec des couvertures consacrées aux dinosaures ou au ciel. Livres illustrés, jeux et peluches se côtoient dans ces rayons, sous les éclairages encastrés du plafond écarlate.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Scaffali sotto un soffitto rosso</h2><p>Planète Sciences riunisce libri, giochi educativi e prodotti a tema in una sala dal soffitto e dal pavimento rossi. Scaffali grigi seguono le pareti, mentre espositori bassi raccolgono libri, piccoli giochi e oggetti colorati al centro.</p><p>I dinosauri sono particolarmente visibili. Grandi peluche verdi sovrastano cofanetti di atlanti e giochi, accanto ad altre creature dalle forme e dai colori diversi. Gli animali giocattolo affiancano così le illustrazioni che ne esplorano il mondo.</p><h2>Libri per esplorare la scienza</h2><p>I volumi esposti comprendono storia naturale e astronomia, con copertine dedicate ai dinosauri o al cielo. Libri illustrati, giochi e peluche condividono gli scaffali sotto le luci incassate nel soffitto scarlatto.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Schappen onder een rood plafond</h2><p>Planète Sciences combineert boeken, educatieve spellen en merchandise in een ruimte met een rood plafond en een rode vloer. Grijze schappen staan langs de wanden; lage rekken verzamelen boeken, kleine spellen en kleurrijke voorwerpen in het midden.</p><p>Dinosaurussen vallen er sterk op. Grote groene knuffels torenen boven atlasdozen en spellen uit, naast andere wezens in uiteenlopende vormen en kleuren. Speelgoeddieren staan zo naast illustraties die hun wereld verkennen.</p><h2>Boeken om wetenschap te ontdekken</h2><p>De uitgestalde boeken gaan onder meer over natuurlijke historie en sterrenkunde, met omslagen over dinosaurussen of de hemel. Geïllustreerde boeken, spellen en knuffels delen de schappen onder de ingebouwde verlichting van het scharlakenrode plafond.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Regały pod czerwonym sufitem</h2><p>Planète Sciences łączy książki, gry edukacyjne i pamiątki tematyczne w sali z czerwonym sufitem i podłogą. Szare regały stoją przy ścianach, a niskie ekspozytory gromadzą książki, małe gry i kolorowe przedmioty pośrodku sklepu.</p><p>Szczególnie widoczne są dinozaury. Wielkie zielone pluszaki górują nad zestawami atlasów i grami, obok innych stworzeń o różnych kształtach i barwach. Zwierzęta zabawki sąsiadują z ilustracjami przybliżającymi ich świat.</p><h2>Książki do odkrywania nauki</h2><p>Wśród wystawionych książek są publikacje o historii naturalnej i astronomii, z okładkami poświęconymi dinozaurom lub niebu. Ilustrowane książki, gry i pluszaki dzielą półki pod światłami wpuszczonymi w szkarłatny sufit.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Prateleiras sob um teto vermelho</h2><p>Planète Sciences reúne livros, jogos educativos e produtos temáticos numa sala de teto e chão vermelhos. Prateleiras cinzentas acompanham as paredes, enquanto expositores baixos juntam livros, pequenos jogos e objetos coloridos no centro.</p><p>Os dinossauros têm grande destaque. Peluches verdes de grande dimensão dominam conjuntos de atlas e jogos, ao lado de outras criaturas com formas e cores variadas. Os animais de brincar convivem assim com ilustrações que exploram o seu mundo.</p><h2>Livros para explorar a ciência</h2><p>Os livros expostos incluem história natural e astronomia, com capas dedicadas aos dinossauros ou ao céu. Livros ilustrados, jogos e peluches partilham as prateleiras sob as luzes embutidas no teto escarlate.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Planète Auvergne et Planète Sciences : seize notices en huit langues personnellement rédigées et relues sur les galeries et offres officielles. Origine des minéraux non supposée régionale ; label réservé aux produits identifiés. Fiches existantes privées, aucune nouvelle date ni identité.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen descriptions personally authored and reviewed, official boutiques page complete and gallery associations confirmed from h3 sections. Four native photographs individually viewed: Auvergne minerals boxed/trays, Sciences red room and dinosaurs. Mineral origin not inferred Auvergne; Ma Region Ses Terroirs label applies to selected products, not entire range. No guaranteed stock, exact opening day, shop alias or invented commercial offering. Two headings/three source-specific paragraphs, shorter factual scope without padding."
+}

@@ -1,0 +1,290 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-75-ballon-puys",
+    "ownerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+    "itemName": "Ballon des Puys",
+    "current": false,
+    "source": {
+      "url": "https://www.aerophile.com/admin/wp-content/uploads/2023/01/71-2014-vulcania-france-1400x1867.jpg",
+      "sourcePage": "https://www.aerophile.com/en/clients/vulcania/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/ballon-aerophile-1922.jpg",
+      "http": 200,
+      "bytes": 340734,
+      "dimensions": [
+        1400,
+        1867
+      ],
+      "sha256": "1a47e0cf9dcf60b559ce371b9562a4830694d8db11b5cd8651ee4590b7c7a4ea"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; manufacturer credit preserved, no open licence claimed.",
+    "qualification": "Native manufacturer photograph personally viewed, name visible on balloon. Twenty-four localized fields personally written/reviewed; historical noncurrent image. File name 2014 not treated as capture date. No alteration."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+      "SourceUrl": "https://www.aerophile.com/admin/wp-content/uploads/2023/01/71-2014-vulcania-france-1400x1867.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/ballon-aerophile-1922.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-75-ballon-puys-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-75-ballon-puys-import-result.json"
+  },
+  "metadata": {
+    "description": "Le nom du ballon et des silhouettes de reliefs décorent l’enveloppe, au-dessus de la nacelle circulaire bleue.",
+    "sourceUrl": "https://www.aerophile.com/admin/wp-content/uploads/2023/01/71-2014-vulcania-france-1400x1867.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Le Ballon des Puys, blanc avec un large bandeau bleu, s’élève au-dessus des arbres de Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "The white Ballon des Puys with its broad blue band rises above the trees at Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der weiße Ballon des Puys mit seinem breiten blauen Band schwebt über den Bäumen von Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De witte Ballon des Puys met zijn brede blauwe band zweeft boven de bomen van Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il Ballon des Puys, bianco con un’ampia fascia blu, si alza sopra gli alberi di Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "El Ballon des Puys, blanco con una ancha franja azul, se eleva sobre los árboles de Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Biały Ballon des Puys z szerokim niebieskim pasem unosi się ponad drzewami Vulcanii."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Ballon des Puys, branco com uma larga faixa azul, eleva-se acima das árvores de Vulcania."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le nom du ballon et des silhouettes de reliefs décorent l’enveloppe, au-dessus de la nacelle circulaire bleue."
+      },
+      {
+        "languageCode": "en",
+        "value": "The balloon’s name and outlines of hills decorate the envelope above its circular blue gondola."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Name des Ballons und Hügelsilhouetten schmücken die Hülle über der kreisförmigen blauen Gondel."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De naam van de ballon en silhouetten van heuvels versieren het omhulsel boven de ronde blauwe gondel."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il nome del pallone e le sagome dei rilievi decorano l’involucro sopra la navicella circolare blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "El nombre del globo y las siluetas de los relieves decoran la envoltura sobre la góndola circular azul."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Nazwę balonu i sylwetki wzgórz umieszczono na powłoce nad okrągłą niebieską gondolą."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O nome do balão e as silhuetas dos relevos decoram o invólucro acima da gôndola circular azul."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Aérophile."
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Aérophile."
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Aérophile."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Aérophile."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Aérophile."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Aérophile."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Aérophile."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Aérophile."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T19:31:42.8716785Z",
+    "result": {
+      "id": "583a2b39fa9f4649a44345bdd310daf4",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+      "path": "park_item/583a2b39fa9f4649a44345bdd310daf4",
+      "description": "Le nom du ballon et des silhouettes de reliefs décorent l’enveloppe, au-dessus de la nacelle circulaire bleue.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1400,
+      "height": 1867,
+      "sizeInBytes": 340734,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.aerophile.com/admin/wp-content/uploads/2023/01/71-2014-vulcania-france-1400x1867.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "SONY",
+        "cameraModel": "DSC-S650",
+        "takenOnUtc": "2007-03-20T22:01:15Z",
+        "orientation": "1",
+        "focalLength": 5.8,
+        "aperture": 5.6,
+        "exposureTime": 0.002,
+        "iso": 100
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Ballon des Puys, blanc avec un large bandeau bleu, s’élève au-dessus des arbres de Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "The white Ballon des Puys with its broad blue band rises above the trees at Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der weiße Ballon des Puys mit seinem breiten blauen Band schwebt über den Bäumen von Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De witte Ballon des Puys met zijn brede blauwe band zweeft boven de bomen van Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Ballon des Puys, bianco con un’ampia fascia blu, si alza sopra gli alberi di Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Ballon des Puys, blanco con una ancha franja azul, se eleva sobre los árboles de Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Biały Ballon des Puys z szerokim niebieskim pasem unosi się ponad drzewami Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Ballon des Puys, branco com uma larga faixa azul, eleva-se acima das árvores de Vulcania."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le nom du ballon et des silhouettes de reliefs décorent l’enveloppe, au-dessus de la nacelle circulaire bleue."
+        },
+        {
+          "languageCode": "en",
+          "value": "The balloon’s name and outlines of hills decorate the envelope above its circular blue gondola."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Name des Ballons und Hügelsilhouetten schmücken die Hülle über der kreisförmigen blauen Gondel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De naam van de ballon en silhouetten van heuvels versieren het omhulsel boven de ronde blauwe gondel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il nome del pallone e le sagome dei rilievi decorano l’involucro sopra la navicella circolare blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "El nombre del globo y las siluetas de los relieves decoran la envoltura sobre la góndola circular azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Nazwę balonu i sylwetki wzgórz umieszczono na powłoce nad okrągłą niebieską gondolą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O nome do balão e as silhuetas dos relevos decoram o invólucro acima da gôndola circular azul."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Aérophile."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Aérophile."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Aérophile."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Aérophile."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Aérophile."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Aérophile."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Aérophile."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Aérophile."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:31:35.834Z",
+      "updatedAt": "2026-11-15T19:31:39.755Z"
+    },
+    "startedAtUtc": "2026-11-15T19:31:33.3769398Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1739,7 +1739,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/boutiques/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les couleurs des minéraux</h2><p>Planète Auvergne rassemble une sélection de minéraux, de produits gastronomiques et d’artisanat local. Les pierres occupent une place très visible dans la boutique : de petits spécimens aux couleurs variées sont rangés dans des boîtes blanches, tandis que d’autres remplissent des bacs transparents superposés.</p><p>Le mobilier clair et les étagères en bois entourent ces présentoirs. Cristaux violets, pierres vertes et morceaux orangés composent un ensemble dont les étiquettes permettent de distinguer les spécimens. Des formes brutes voisinent avec des pierres polies.</p><h2>Une sélection régionale</h2><p>L’offre gastronomique et artisanale comprend des produits portant le label « Ma Région Ses Terroirs ». Ce repère régional accompagne la sélection de la boutique, où les objets et les saveurs locales côtoient les collections minérales.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The colours of minerals</h2><p>Planète Auvergne brings together minerals, food specialities and local crafts. Stones occupy a prominent place in the shop: small, varied specimens sit in white boxes, while others fill stacked transparent containers.</p><p>Pale furniture and wooden shelving surround these displays. Purple crystals, green stones and orange pieces form a collection with labels distinguishing the specimens. Rough forms stand alongside polished stones.</p><h2>A regional selection</h2><p>The food and craft range includes products carrying the Ma Région Ses Terroirs label. This regional marker accompanies the shop’s selection, where local objects and flavours share the space with mineral collections.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Farben der Mineralien</h2><p>Planète Auvergne verbindet Mineralien mit gastronomischen Spezialitäten und lokalem Kunsthandwerk. Steine nehmen in dem Geschäft viel Raum ein: Kleine, verschiedenfarbige Stücke liegen in weißen Schachteln, andere füllen gestapelte durchsichtige Behälter.</p><p>Helle Möbel und Holzregale umgeben die Auslagen. Violette Kristalle, grüne Steine und orangefarbene Stücke bilden eine beschriftete Sammlung. Rohe Formen stehen neben polierten Steinen.</p><h2>Eine regionale Auswahl</h2><p>Zum Lebensmittel- und Handwerkssortiment gehören Produkte mit dem Label Ma Région Ses Terroirs. Diese regionale Kennzeichnung begleitet die Auswahl des Geschäfts, in dem lokale Gegenstände und Spezialitäten neben Mineralien angeboten werden.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De kleuren van mineralen</h2><p>Planète Auvergne brengt mineralen, gastronomische producten en lokaal handwerk samen. Stenen nemen een opvallende plaats in: kleine, verschillend gekleurde exemplaren liggen in witte doosjes, terwijl andere in gestapelde doorzichtige bakken zitten.</p><p>Lichte meubels en houten schappen omringen de uitstallingen. Paarse kristallen, groene stenen en oranje stukken vormen een verzameling waarin etiketten de exemplaren onderscheiden. Ruwe vormen staan naast gepolijste stenen.</p><h2>Een regionale selectie</h2><p>Het aanbod van streekproducten en handwerk omvat artikelen met het label Ma Région Ses Terroirs. Die regionale aanduiding begeleidt de selectie van de winkel, waar lokale voorwerpen en smaken naast mineralencollecties te vinden zijn.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>I colori dei minerali</h2><p>Planète Auvergne riunisce minerali, specialità gastronomiche e artigianato locale. Le pietre occupano uno spazio ben visibile: piccoli esemplari di colori diversi sono ordinati in scatole bianche, mentre altri riempiono contenitori trasparenti sovrapposti.</p><p>Mobili chiari e scaffali di legno circondano gli espositori. Cristalli viola, pietre verdi e frammenti arancioni compongono una raccolta con etichette che distinguono gli esemplari. Forme grezze affiancano pietre levigate.</p><h2>Una selezione regionale</h2><p>L’offerta gastronomica e artigianale comprende prodotti con il marchio Ma Région Ses Terroirs. Questo riferimento regionale accompagna la selezione del negozio, dove oggetti e sapori locali condividono lo spazio con le collezioni minerali.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Los colores de los minerales</h2><p>Planète Auvergne reúne minerales, especialidades gastronómicas y artesanía local. Las piedras ocupan un lugar destacado: pequeños ejemplares de distintos colores se ordenan en cajas blancas, mientras otros llenan recipientes transparentes apilados.</p><p>Muebles claros y estanterías de madera rodean los expositores. Cristales violetas, piedras verdes y fragmentos naranjas forman una colección cuyas etiquetas distinguen los ejemplares. Formas en bruto conviven con piedras pulidas.</p><h2>Una selección regional</h2><p>La oferta gastronómica y artesanal incluye productos con el sello Ma Région Ses Terroirs. Esta referencia regional acompaña la selección de la tienda, donde objetos y sabores locales comparten espacio con las colecciones minerales.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kolory minerałów</h2><p>Planète Auvergne łączy minerały, specjały kulinarne i lokalne rzemiosło. Kamienie zajmują wyraźne miejsce w sklepie: małe różnobarwne okazy leżą w białych pudełkach, a inne wypełniają ustawione piętrowo przezroczyste pojemniki.</p><p>Ekspozycję otaczają jasne meble i drewniane półki. Fioletowe kryształy, zielone kamienie i pomarańczowe fragmenty tworzą zbiór z etykietami rozróżniającymi okazy. Surowe formy sąsiadują z wypolerowanymi kamieniami.</p><h2>Regionalny wybór</h2><p>Oferta kulinarna i rzemieślnicza obejmuje produkty oznaczone Ma Région Ses Terroirs. To regionalne oznaczenie towarzyszy wyborowi sklepu, w którym lokalne przedmioty i smaki dzielą przestrzeń z kolekcjami minerałów.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>As cores dos minerais</h2><p>Planète Auvergne reúne minerais, especialidades gastronómicas e artesanato local. As pedras ocupam um lugar de destaque: pequenos exemplares de várias cores estão organizados em caixas brancas, enquanto outros enchem recipientes transparentes sobrepostos.</p><p>Móveis claros e prateleiras de madeira rodeiam os expositores. Cristais violetas, pedras verdes e fragmentos alaranjados formam uma coleção cujas etiquetas distinguem os exemplares. Formas em bruto convivem com pedras polidas.</p><h2>Uma seleção regional</h2><p>A oferta gastronómica e artesanal inclui produtos com o selo Ma Région Ses Terroirs. Esta referência regional acompanha a seleção da loja, onde objetos e sabores locais partilham o espaço com as coleções minerais.</p>"
+        }
+      ]
     },
     {
       "id": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
@@ -1752,7 +1786,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/boutiques/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des rayons sous un plafond rouge</h2><p>Planète Sciences réunit librairie, jeux éducatifs et produits dérivés dans une salle au plafond et au sol rouges. Des étagères grises longent les murs, tandis que des présentoirs bas rassemblent livres, petits jeux et objets colorés au centre de la boutique.</p><p>Les dinosaures y sont particulièrement visibles. De grandes peluches vertes dominent des coffrets d’atlas et des jeux, avec d’autres créatures aux formes et aux couleurs variées. Le rayon associe ainsi les animaux imaginés en jouets aux illustrations qui présentent leur monde.</p><h2>Des livres pour explorer les sciences</h2><p>Les ouvrages exposés mêlent notamment l’histoire naturelle et l’astronomie, avec des couvertures consacrées aux dinosaures ou au ciel. Livres illustrés, jeux et peluches se côtoient dans ces rayons, sous les éclairages encastrés du plafond écarlate.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Shelves beneath a red ceiling</h2><p>Planète Sciences combines a bookshop, educational games and merchandise in a room with a red ceiling and floor. Grey shelves line the walls, while low displays gather books, small games and colourful objects in the centre.</p><p>Dinosaurs are especially prominent. Large green soft toys tower over atlas sets and games, alongside other creatures in varied shapes and colours. The display places toy animals beside illustrations exploring their world.</p><h2>Books for exploring science</h2><p>The books on display include natural history and astronomy, with covers devoted to dinosaurs or the sky. Illustrated books, games and soft toys share the shelves beneath the recessed lights of the scarlet ceiling.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Regale unter einer roten Decke</h2><p>Planète Sciences vereint Bücher, Lernspiele und Merchandising in einem Raum mit roter Decke und rotem Boden. Graue Regale stehen an den Wänden; niedrige Auslagen versammeln Bücher, kleine Spiele und bunte Gegenstände in der Mitte.</p><p>Dinosaurier fallen besonders auf. Große grüne Plüschtiere überragen Atlaskästen und Spiele neben weiteren Kreaturen in verschiedenen Formen und Farben. Spielzeugtiere stehen so neben Illustrationen, die ihre Welt erkunden.</p><h2>Bücher zur Welt der Wissenschaft</h2><p>Die ausgestellten Bücher behandeln unter anderem Naturgeschichte und Astronomie. Ihre Einbände zeigen Dinosaurier oder den Himmel. Illustrierte Bücher, Spiele und Plüschtiere teilen sich die Regale unter den eingelassenen Leuchten der scharlachroten Decke.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Schappen onder een rood plafond</h2><p>Planète Sciences combineert boeken, educatieve spellen en merchandise in een ruimte met een rood plafond en een rode vloer. Grijze schappen staan langs de wanden; lage rekken verzamelen boeken, kleine spellen en kleurrijke voorwerpen in het midden.</p><p>Dinosaurussen vallen er sterk op. Grote groene knuffels torenen boven atlasdozen en spellen uit, naast andere wezens in uiteenlopende vormen en kleuren. Speelgoeddieren staan zo naast illustraties die hun wereld verkennen.</p><h2>Boeken om wetenschap te ontdekken</h2><p>De uitgestalde boeken gaan onder meer over natuurlijke historie en sterrenkunde, met omslagen over dinosaurussen of de hemel. Geïllustreerde boeken, spellen en knuffels delen de schappen onder de ingebouwde verlichting van het scharlakenrode plafond.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Scaffali sotto un soffitto rosso</h2><p>Planète Sciences riunisce libri, giochi educativi e prodotti a tema in una sala dal soffitto e dal pavimento rossi. Scaffali grigi seguono le pareti, mentre espositori bassi raccolgono libri, piccoli giochi e oggetti colorati al centro.</p><p>I dinosauri sono particolarmente visibili. Grandi peluche verdi sovrastano cofanetti di atlanti e giochi, accanto ad altre creature dalle forme e dai colori diversi. Gli animali giocattolo affiancano così le illustrazioni che ne esplorano il mondo.</p><h2>Libri per esplorare la scienza</h2><p>I volumi esposti comprendono storia naturale e astronomia, con copertine dedicate ai dinosauri o al cielo. Libri illustrati, giochi e peluche condividono gli scaffali sotto le luci incassate nel soffitto scarlatto.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Estanterías bajo un techo rojo</h2><p>Planète Sciences reúne libros, juegos educativos y productos temáticos en una sala con techo y suelo rojos. Estanterías grises recorren las paredes, mientras expositores bajos agrupan libros, pequeños juegos y objetos de colores en el centro.</p><p>Los dinosaurios destacan especialmente. Grandes peluches verdes dominan cajas de atlas y juegos, junto a otras criaturas de formas y colores variados. Los animales de juguete comparten espacio con ilustraciones que exploran su mundo.</p><h2>Libros para explorar la ciencia</h2><p>Los libros expuestos incluyen historia natural y astronomía, con cubiertas dedicadas a los dinosaurios o al cielo. Libros ilustrados, juegos y peluches comparten los estantes bajo las luces empotradas del techo escarlata.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Regały pod czerwonym sufitem</h2><p>Planète Sciences łączy książki, gry edukacyjne i pamiątki tematyczne w sali z czerwonym sufitem i podłogą. Szare regały stoją przy ścianach, a niskie ekspozytory gromadzą książki, małe gry i kolorowe przedmioty pośrodku sklepu.</p><p>Szczególnie widoczne są dinozaury. Wielkie zielone pluszaki górują nad zestawami atlasów i grami, obok innych stworzeń o różnych kształtach i barwach. Zwierzęta zabawki sąsiadują z ilustracjami przybliżającymi ich świat.</p><h2>Książki do odkrywania nauki</h2><p>Wśród wystawionych książek są publikacje o historii naturalnej i astronomii, z okładkami poświęconymi dinozaurom lub niebu. Ilustrowane książki, gry i pluszaki dzielą półki pod światłami wpuszczonymi w szkarłatny sufit.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Prateleiras sob um teto vermelho</h2><p>Planète Sciences reúne livros, jogos educativos e produtos temáticos numa sala de teto e chão vermelhos. Prateleiras cinzentas acompanham as paredes, enquanto expositores baixos juntam livros, pequenos jogos e objetos coloridos no centro.</p><p>Os dinossauros têm grande destaque. Peluches verdes de grande dimensão dominam conjuntos de atlas e jogos, ao lado de outras criaturas com formas e cores variadas. Os animais de brincar convivem assim com ilustrações que exploram o seu mundo.</p><h2>Livros para explorar a ciência</h2><p>Os livros expostos incluem história natural e astronomia, com capas dedicadas aos dinossauros ou ao céu. Livros ilustrados, jogos e peluches partilham as prateleiras sob as luzes embutidas no teto escarlate.</p>"
+        }
+      ]
     },
     {
       "id": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
@@ -1765,7 +1833,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/boutiques/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un dragon sous les planètes</h2><p>Planète Vulcania accueille ses visiteurs sous des planètes suspendues et un plafond aux motifs rouges et jaunes. Au milieu des rayons, un grand dragon vert aux ailes ouvertes domine les livres et les jouets. Les hautes fenêtres éclairent cette boutique où les images de l’espace rencontrent les créatures fantastiques.</p><p>La librairie, les jeux éducatifs, les minéraux et les produits dérivés composent l’offre. Les souvenirs de Pitoufeu y sont bien visibles, notamment des vêtements rouges et des chapeaux jaunes brodés à son nom, parmi les articles portant celui de Vulcania.</p><h2>Des souvenirs et des produits régionaux</h2><p>Un panneau « Ma Région Ses Terroirs » est suspendu près des rayons, sous les représentations de planètes. Il signale la présence de produits régionaux dans cette boutique où se côtoient souvenirs de la mascotte, livres scientifiques et créatures de légende.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A dragon beneath the planets</h2><p>Planète Vulcania welcomes visitors beneath suspended planets and a ceiling patterned in red and yellow. A large green dragon with open wings rises above the books and toys. Tall windows light a shop where images of space meet fantastic creatures.</p><p>The range brings together books, educational games, minerals and merchandise. Pitoufeu souvenirs are prominent, including red clothing and yellow hats embroidered with his name among items bearing the Vulcania name.</p><h2>Souvenirs and regional products</h2><p>A Ma Région Ses Terroirs sign hangs beside the shelves beneath the suspended planets. It marks the presence of regional products in a shop that brings together mascot souvenirs, science books and legendary creatures.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein Drache unter den Planeten</h2><p>Planète Vulcania empfängt Besucher unter hängenden Planeten und einer rot-gelb gemusterten Decke. Ein großer grüner Drache mit offenen Flügeln überragt Bücher und Spielzeug. Hohe Fenster erhellen das Geschäft, in dem Weltraumbilder auf fantastische Kreaturen treffen.</p><p>Das Sortiment umfasst Bücher, Lernspiele, Mineralien und Merchandising. Pitoufeu-Souvenirs fallen auf, darunter rote Kleidung und gelbe Hüte mit seinem aufgestickten Namen zwischen Artikeln mit dem Vulcania-Schriftzug.</p><h2>Souvenirs und regionale Produkte</h2><p>Ein Schild mit der Aufschrift Ma Région Ses Terroirs hängt neben den Regalen unter den Planetenmodellen. Es verweist auf regionale Produkte in einem Geschäft, das Maskottchen-Souvenirs, Wissenschaftsbücher und Sagengestalten zusammenbringt.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een draak onder de planeten</h2><p>Planète Vulcania ontvangt bezoekers onder hangende planeten en een plafond met rode en gele patronen. Een grote groene draak met open vleugels steekt boven de boeken en het speelgoed uit. Hoge ramen verlichten de winkel, waar ruimtebeelden en fantasiewezens samenkomen.</p><p>Het aanbod bestaat uit boeken, educatieve spellen, mineralen en merchandise. Pitoufeu-souvenirs vallen op, waaronder rode kleding en gele hoeden met zijn geborduurde naam tussen artikelen met de naam Vulcania.</p><h2>Souvenirs en regionale producten</h2><p>Een bord met Ma Région Ses Terroirs hangt naast de schappen onder de planetenmodellen. Het wijst op regionale producten in een winkel waar mascottesouvenirs, wetenschappelijke boeken en legendarische wezens samenkomen.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un drago sotto i pianeti</h2><p>Planète Vulcania accoglie i visitatori sotto pianeti sospesi e un soffitto con motivi rossi e gialli. Un grande drago verde dalle ali aperte domina libri e giocattoli. Le finestre alte illuminano un negozio in cui immagini dello spazio incontrano creature fantastiche.</p><p>L’offerta comprende libri, giochi educativi, minerali e prodotti a tema. I ricordi di Pitoufeu sono ben visibili, con vestiti rossi e cappelli gialli ricamati con il suo nome tra gli articoli che riportano quello di Vulcania.</p><h2>Ricordi e prodotti regionali</h2><p>Un cartello Ma Région Ses Terroirs è sospeso accanto agli scaffali, sotto i modelli dei pianeti. Segnala la presenza di prodotti regionali in un negozio che riunisce ricordi della mascotte, libri scientifici e creature leggendarie.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un dragón bajo los planetas</h2><p>Planète Vulcania recibe a los visitantes bajo planetas suspendidos y un techo con motivos rojos y amarillos. Un gran dragón verde con las alas abiertas domina los libros y juguetes. Altas ventanas iluminan una tienda donde las imágenes del espacio se encuentran con criaturas fantásticas.</p><p>La oferta reúne libros, juegos educativos, minerales y productos temáticos. Los recuerdos de Pitoufeu destacan, con ropa roja y sombreros amarillos bordados con su nombre entre artículos que llevan el de Vulcania.</p><h2>Recuerdos y productos regionales</h2><p>Un cartel Ma Région Ses Terroirs cuelga junto a los estantes, bajo las representaciones de planetas. Señala la presencia de productos regionales en una tienda que reúne recuerdos de la mascota, libros científicos y criaturas legendarias.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Smok pod planetami</h2><p>Planète Vulcania wita gości pod zawieszonymi planetami i sufitem w czerwono-żółte wzory. Duży zielony smok z rozłożonymi skrzydłami góruje nad książkami i zabawkami. Wysokie okna rozświetlają sklep, w którym obrazy kosmosu spotykają fantastyczne stworzenia.</p><p>Oferta obejmuje książki, gry edukacyjne, minerały i pamiątki tematyczne. Wyraźnie widać pamiątki Pitoufeu, w tym czerwone ubrania i żółte kapelusze z wyhaftowanym imieniem, obok artykułów z nazwą Vulcania.</p><h2>Pamiątki i produkty regionalne</h2><p>Tablica Ma Région Ses Terroirs wisi przy regałach pod modelami planet. Wskazuje obecność regionalnych produktów w sklepie łączącym pamiątki maskotki, książki naukowe i legendarne stworzenia.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um dragão sob os planetas</h2><p>Planète Vulcania recebe os visitantes sob planetas suspensos e um teto com padrões vermelhos e amarelos. Um grande dragão verde de asas abertas domina livros e brinquedos. Janelas altas iluminam uma loja onde as imagens do espaço encontram criaturas fantásticas.</p><p>A oferta reúne livros, jogos educativos, minerais e produtos temáticos. As recordações de Pitoufeu têm destaque, incluindo roupa vermelha e chapéus amarelos bordados com o seu nome, entre artigos com o nome Vulcania.</p><h2>Recordações e produtos regionais</h2><p>Um painel Ma Région Ses Terroirs está suspenso junto às prateleiras, sob os modelos dos planetas. Assinala a presença de produtos regionais numa loja que reúne recordações da mascote, livros científicos e criaturas lendárias.</p>"
+        }
+      ]
     },
     {
       "id": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
@@ -1778,7 +1880,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/boutiques/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des vitrines dans le hall du Planétarium</h2><p>Le Corner Espace du Planétarium occupe un espace ouvert du hall, reconnaissable à ses longues vitrines blanches éclairées de l’intérieur. Elles se détachent sur le sol sombre, devant les grands piliers inclinés et les accès aux salles du bâtiment.</p><p>L’offre associe librairie, produits dérivés et jeux éducatifs. Les livres sont présentés de face, accompagnés de petits objets et de boîtes de jeux : chaque vitrine expose une sélection séparée par des montants blancs.</p><h2>Les volcans dans les livres</h2><p>Les vitrines présentent notamment des ouvrages illustrés sur les volcans, avec des couvertures montrant des éruptions et des paysages de lave. Ces titres donnent aussi une place à la volcanologie dans la boutique du bâtiment consacré au ciel et à l’espace.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Display cases in the Planetarium hall</h2><p>The Corner Espace du Planétarium occupies an open part of the hall, identifiable by long white display cases lit from within. They stand against the dark floor in front of the building’s large sloping pillars and entrances to its rooms.</p><p>The range combines books, merchandise and educational games. Books face outwards beside small objects and game boxes, with each display presenting a selection divided by white uprights.</p><h2>Volcanoes on the page</h2><p>The displays include illustrated books about volcanoes, with covers showing eruptions and lava landscapes. These titles give volcanology a place in the shop of a building devoted to the sky and space.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Vitrinen in der Planetariumshalle</h2><p>Der Corner Espace du Planétarium liegt in einem offenen Bereich der Halle. Lange weiße, von innen beleuchtete Vitrinen kennzeichnen ihn. Sie heben sich vom dunklen Boden ab, vor den großen schrägen Pfeilern und den Zugängen zu den Räumen des Gebäudes.</p><p>Das Angebot verbindet Bücher, Merchandising und Lernspiele. Bücher stehen mit sichtbaren Einbänden neben kleinen Gegenständen und Spielschachteln. Weiße Streben unterteilen die Auswahl in den Vitrinen.</p><h2>Vulkane auf Buchseiten</h2><p>Die Auslagen zeigen unter anderem illustrierte Vulkanbücher mit Eruptionen und Lavalandschaften auf den Einbänden. Diese Titel geben der Vulkanologie einen Platz im Geschäft eines Gebäudes, das dem Himmel und dem Weltraum gewidmet ist.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Vitrines in de hal van het Planetarium</h2><p>De Corner Espace du Planétarium ligt in een open deel van de hal, herkenbaar aan lange witte vitrines met verlichting van binnenuit. Ze steken af tegen de donkere vloer, voor de grote schuine pijlers en de toegangen tot de zalen.</p><p>Het aanbod combineert boeken, merchandise en educatieve spellen. Boeken staan met de voorkant naar het publiek naast kleine voorwerpen en speldozen. Witte stijlen verdelen de selectie in de vitrines.</p><h2>Vulkanen in boeken</h2><p>De vitrines tonen onder meer geïllustreerde vulkaanboeken met uitbarstingen en lavalandschappen op de omslagen. Die titels geven vulkanologie ook een plaats in de winkel van een gebouw dat aan de hemel en de ruimte is gewijd.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Vetrine nell’atrio del Planetario</h2><p>Il Corner Espace du Planétarium occupa uno spazio aperto dell’atrio, riconoscibile per le lunghe vetrine bianche illuminate dall’interno. Risaltano sul pavimento scuro, davanti ai grandi pilastri inclinati e agli accessi alle sale.</p><p>L’offerta combina libri, prodotti a tema e giochi educativi. I libri mostrano le copertine accanto a piccoli oggetti e scatole di giochi; ogni vetrina espone una selezione suddivisa da montanti bianchi.</p><h2>I vulcani nei libri</h2><p>Gli espositori comprendono libri illustrati sui vulcani, con copertine che mostrano eruzioni e paesaggi di lava. Questi titoli danno spazio alla vulcanologia anche nel negozio dell’edificio dedicato al cielo e allo spazio.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Vitrinas en el vestíbulo del Planetario</h2><p>El Corner Espace du Planétarium ocupa una zona abierta del vestíbulo, reconocible por sus largas vitrinas blancas iluminadas desde dentro. Destacan sobre el suelo oscuro, ante los grandes pilares inclinados y los accesos a las salas.</p><p>La oferta combina libros, productos temáticos y juegos educativos. Los libros muestran sus cubiertas junto a pequeños objetos y cajas de juegos; cada vitrina presenta una selección dividida por montantes blancos.</p><h2>Los volcanes en los libros</h2><p>Los expositores incluyen libros ilustrados sobre volcanes, con cubiertas que muestran erupciones y paisajes de lava. Estos títulos dan espacio a la vulcanología en la tienda de un edificio dedicado al cielo y al espacio.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Gabloty w holu Planetarium</h2><p>Corner Espace du Planétarium zajmuje otwartą część holu, rozpoznawalną po długich białych gablotach oświetlonych od środka. Wyróżniają się na ciemnej podłodze, przed dużymi pochyłymi filarami i wejściami do sal.</p><p>Oferta łączy książki, pamiątki tematyczne i gry edukacyjne. Książki są ustawione okładkami do przodu obok drobnych przedmiotów i pudełek z grami. Białe słupki dzielą wybór prezentowany w gablotach.</p><h2>Wulkany na stronach książek</h2><p>W gablotach są między innymi ilustrowane książki o wulkanach, z erupcjami i krajobrazami lawy na okładkach. Dzięki tym tytułom wulkanologia zajmuje miejsce również w sklepie budynku poświęconego niebu i kosmosowi.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Vitrinas no átrio do Planetário</h2><p>O Corner Espace du Planétarium ocupa uma zona aberta do átrio, reconhecível pelas longas vitrinas brancas iluminadas por dentro. Destacam-se sobre o chão escuro, diante dos grandes pilares inclinados e dos acessos às salas.</p><p>A oferta combina livros, produtos temáticos e jogos educativos. Os livros mostram as capas junto de pequenos objetos e caixas de jogos; cada vitrina apresenta uma seleção dividida por montantes brancos.</p><h2>Os vulcões nos livros</h2><p>Os expositores incluem livros ilustrados sobre vulcões, com capas que mostram erupções e paisagens de lava. Estes títulos dão também lugar à vulcanologia na loja de um edifício dedicado ao céu e ao espaço.</p>"
+        }
+      ]
     },
     {
       "id": "6c8ed372-384b-4dab-8395-696f62e48db8",
@@ -2032,7 +2168,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/le-cratere-sanime/",
         "durationInSeconds": 1800
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>L’espace à ciel ouvert</h2><p>Le cratère s’anime ! réunit le public dehors avec les animateurs scientifiques de Vulcania. Les jeux et les quiz portent sur l’univers, les grandes inventions et les idées que l’on se fait de l’espace. Le paysage herbeux devient le cadre d’une discussion collective sur des sujets habituellement associés aux écrans et aux voyages imaginaires.</p><p>Les animateurs prennent la parole au milieu du groupe, avec un micro et des supports illustrés. Les cartes posées dans l’herbe accompagnent les questions ; les échanges se déroulent en plein air, à proximité immédiate des participants.</p><h2>La science-fiction mise à l’épreuve</h2><p>Une partie de l’animation confronte les récits de science-fiction aux connaissances scientifiques. Films et imaginaire spatial servent ainsi de point de départ pour interroger des idées reçues, comparer les réponses du public et discuter de ce que la science permet réellement d’expliquer.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Space beneath the open sky</h2><p>Le cratère s’anime ! brings the audience outdoors with Vulcania’s science presenters. Games and quizzes explore the universe, major inventions and ideas about space. The grassy setting hosts a group discussion of subjects often associated with screens and imaginary journeys.</p><p>Presenters speak among the group with a microphone and illustrated materials. Cards laid on the grass accompany the questions, with exchanges taking place outdoors close to the participants.</p><h2>Putting science fiction to the test</h2><p>Part of the activity compares science-fiction stories with scientific knowledge. Space fiction becomes a starting point for questioning misconceptions, comparing the audience’s answers and discussing what science can actually explain.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Weltraum unter freiem Himmel</h2><p>Le cratère s’anime ! versammelt das Publikum draußen mit Vulcanias Wissenschaftsvermittlern. Spiele und Quizfragen behandeln das Universum, große Erfindungen und Vorstellungen vom Weltraum. Die Wiesenlandschaft bildet den Rahmen für Gespräche über Themen, die oft mit Leinwänden und erdachten Reisen verbunden sind.</p><p>Die Vermittler sprechen mitten in der Gruppe mit Mikrofon und Bildmaterial. Im Gras ausgelegte Karten begleiten die Fragen. Der Austausch findet im Freien und in unmittelbarer Nähe der Teilnehmer statt.</p><h2>Science-Fiction auf dem Prüfstand</h2><p>Ein Teil der Veranstaltung vergleicht Science-Fiction-Geschichten mit wissenschaftlichem Wissen. Die Weltraumfantasie dient als Ausgangspunkt, um verbreitete Vorstellungen zu hinterfragen, Antworten des Publikums zu vergleichen und die Erklärungsmöglichkeiten der Wissenschaft zu besprechen.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De ruimte onder de open hemel</h2><p>Le cratère s’anime ! brengt het publiek buiten samen met de wetenschapsmedewerkers van Vulcania. Spellen en quizzen gaan over het heelal, grote uitvindingen en ideeën over de ruimte. Het grasland vormt het decor voor een groepsgesprek over onderwerpen die vaak bij schermen en denkbeeldige reizen horen.</p><p>De begeleiders spreken tussen de groep met een microfoon en beeldmateriaal. Kaarten op het gras ondersteunen de vragen. De gesprekken vinden buiten plaats, vlak bij de deelnemers.</p><h2>Sciencefiction op de proef gesteld</h2><p>Een deel van de activiteit vergelijkt sciencefictionverhalen met wetenschappelijke kennis. Ruimtefictie wordt zo een vertrekpunt om misvattingen te bespreken, antwoorden uit het publiek te vergelijken en te onderzoeken wat de wetenschap werkelijk kan verklaren.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Lo spazio a cielo aperto</h2><p>Le cratère s’anime ! riunisce il pubblico all’esterno con gli animatori scientifici di Vulcania. Giochi e quiz affrontano l’universo, le grandi invenzioni e le idee sullo spazio. Il paesaggio erboso ospita una discussione collettiva su temi spesso associati agli schermi e ai viaggi immaginari.</p><p>Gli animatori parlano in mezzo al gruppo con un microfono e materiali illustrati. Le carte appoggiate sull’erba accompagnano le domande; gli scambi avvengono all’aperto, vicino ai partecipanti.</p><h2>La fantascienza alla prova</h2><p>Una parte dell’attività confronta i racconti di fantascienza con le conoscenze scientifiche. L’immaginario spaziale diventa il punto di partenza per interrogare i luoghi comuni, confrontare le risposte del pubblico e discutere ciò che la scienza può davvero spiegare.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>El espacio a cielo abierto</h2><p>Le cratère s’anime ! reúne al público al aire libre con los divulgadores científicos de Vulcania. Los juegos y cuestionarios abordan el universo, los grandes inventos y las ideas sobre el espacio. El paisaje herboso acoge una conversación colectiva sobre temas asociados a menudo con pantallas y viajes imaginarios.</p><p>Los divulgadores hablan entre el grupo con micrófono y materiales ilustrados. Las tarjetas colocadas en la hierba acompañan las preguntas; los intercambios se desarrollan al aire libre, cerca de los participantes.</p><h2>La ciencia ficción a prueba</h2><p>Parte de la actividad compara los relatos de ciencia ficción con el conocimiento científico. La ficción espacial sirve para cuestionar ideas preconcebidas, comparar las respuestas del público y conversar sobre lo que la ciencia puede explicar realmente.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kosmos pod gołym niebem</h2><p>Le cratère s’anime ! gromadzi publiczność na zewnątrz z popularyzatorami nauki z Vulcanii. Gry i quizy dotyczą wszechświata, wielkich wynalazków i wyobrażeń o kosmosie. Trawiasty krajobraz staje się miejscem wspólnej rozmowy o tematach często kojarzonych z ekranami i wymyślonymi podróżami.</p><p>Prowadzący przemawiają pośród grupy, korzystając z mikrofonu i materiałów obrazkowych. Karty ułożone na trawie towarzyszą pytaniom. Rozmowa odbywa się na otwartym powietrzu, blisko uczestników.</p><h2>Fantastyka naukowa pod lupą</h2><p>Część zajęć porównuje opowieści science fiction z wiedzą naukową. Kosmiczna fikcja staje się punktem wyjścia do podważania obiegowych przekonań, porównywania odpowiedzi widzów i rozmowy o tym, co nauka potrafi rzeczywiście wyjaśnić.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>O espaço a céu aberto</h2><p>Le cratère s’anime ! reúne o público no exterior com os animadores científicos de Vulcania. Jogos e questionários abordam o universo, as grandes invenções e as ideias sobre o espaço. A paisagem relvada acolhe uma conversa coletiva sobre temas muitas vezes associados aos ecrãs e às viagens imaginárias.</p><p>Os animadores falam no meio do grupo com um microfone e materiais ilustrados. Cartões colocados na relva acompanham as perguntas; as trocas decorrem ao ar livre, perto dos participantes.</p><h2>A ficção científica posta à prova</h2><p>Parte da atividade compara histórias de ficção científica com conhecimentos científicos. O imaginário espacial serve para questionar ideias feitas, comparar respostas do público e discutir aquilo que a ciência consegue realmente explicar.</p>"
+        }
+      ]
     },
     {
       "id": "ddcfa7db-b249-4238-87b0-acb5cff83717",
@@ -2141,7 +2311,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/plan-du-parc/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>L’espace au bout des doigts</h2><p>Les Ateliers du Planétarium explorent l’astronomie et les sciences expérimentales avec les médiateurs de Vulcania. Leur programme réunit Dans la peau d’un astronaute, Sous le soleil et Drôles d’expériences. Les participants manipulent et discutent de ce qu’ils observent, dans un ensemble consacré aux liens entre la Terre, l’espace et les phénomènes physiques.</p><p>Dans la peau d’un astronaute aborde le départ vers la Station spatiale internationale, les sensations en orbite et la vie des équipages. Sous le soleil rapproche notre étoile du quotidien : saisons différentes selon les hémisphères, couleurs de la lumière et aurores polaires donnent matière aux échanges.</p><h2>La surprise des expériences</h2><p>Drôles d’expériences s’attache aux changements visibles de la matière. Des couleurs se transforment, un ballon se gonfle et des mélanges changent de consistance. Ces observations ouvrent la discussion sur la physique et la chimie avec l’équipe de médiation.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Space within reach</h2><p>The Ateliers du Planétarium explore astronomy and experimental science with Vulcania’s educators. Their programme brings together Dans la peau d’un astronaute, Sous le soleil and Drôles d’expériences. Participants handle materials and discuss their observations in a setting devoted to connections between Earth, space and physical phenomena.</p><p>Dans la peau d’un astronaute considers journeys to the International Space Station, sensations in orbit and life aboard. Sous le soleil connects our star with everyday life through the different seasons in each hemisphere, the colours of light and polar auroras.</p><h2>Surprising experiments</h2><p>Drôles d’expériences focuses on visible changes in matter. Colours transform, a balloon inflates and mixtures change consistency. These observations prompt conversations about physics and chemistry with the education team.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Weltraum zum Anfassen</h2><p>Die Ateliers du Planétarium erkunden Astronomie und experimentelle Wissenschaft mit Vulcanias Vermittlungsteam. Zum Programm gehören Dans la peau d’un astronaute, Sous le soleil und Drôles d’expériences. Die Teilnehmer experimentieren und besprechen ihre Beobachtungen in einem Bereich, der Verbindungen zwischen Erde, Weltraum und physikalischen Phänomenen aufgreift.</p><p>Dans la peau d’un astronaute behandelt Reisen zur Internationalen Raumstation, Wahrnehmungen im Orbit und das Leben der Besatzung. Sous le soleil verbindet unseren Stern mit dem Alltag: unterschiedliche Jahreszeiten auf den Erdhalbkugeln, die Farben des Lichts und Polarlichter liefern Gesprächsstoff.</p><h2>Überraschende Experimente</h2><p>Drôles d’expériences widmet sich sichtbaren Veränderungen von Stoffen. Farben verwandeln sich, ein Ballon bläht sich auf und Mischungen ändern ihre Konsistenz. Diese Beobachtungen führen mit dem Vermittlungsteam zu Gesprächen über Physik und Chemie.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De ruimte binnen handbereik</h2><p>De Ateliers du Planétarium verkennen sterrenkunde en experimentele wetenschap met de begeleiders van Vulcania. Het programma omvat Dans la peau d’un astronaute, Sous le soleil en Drôles d’expériences. Deelnemers voeren proefjes uit en bespreken hun waarnemingen in een omgeving die de aarde, de ruimte en natuurkundige verschijnselen met elkaar verbindt.</p><p>Dans la peau d’un astronaute gaat over reizen naar het internationale ruimtestation, gewaarwordingen in een baan om de aarde en het leven van de bemanning. Sous le soleil verbindt onze ster met het dagelijks leven: verschillende seizoenen op beide halfronden, lichtkleuren en poollicht vormen gespreksonderwerpen.</p><h2>Verrassende proefjes</h2><p>Drôles d’expériences richt zich op zichtbare veranderingen van stoffen. Kleuren veranderen, een ballon wordt opgeblazen en mengsels krijgen een andere consistentie. Deze waarnemingen brengen gesprekken over natuurkunde en scheikunde op gang met het begeleidingsteam.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Lo spazio a portata di mano</h2><p>Gli Ateliers du Planétarium esplorano astronomia e scienze sperimentali con i divulgatori di Vulcania. Il programma comprende Dans la peau d’un astronaute, Sous le soleil e Drôles d’expériences. I partecipanti manipolano materiali e discutono le proprie osservazioni in uno spazio dedicato ai legami tra Terra, universo e fenomeni fisici.</p><p>Dans la peau d’un astronaute affronta il viaggio verso la Stazione spaziale internazionale, le sensazioni in orbita e la vita degli equipaggi. Sous le soleil collega la nostra stella alla quotidianità: stagioni diverse nei due emisferi, colori della luce e aurore polari alimentano il dialogo.</p><h2>Esperimenti sorprendenti</h2><p>Drôles d’expériences si concentra sui cambiamenti visibili della materia. I colori si trasformano, un palloncino si gonfia e le miscele cambiano consistenza. Queste osservazioni aprono una discussione sulla fisica e sulla chimica con il gruppo di divulgazione.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>El espacio al alcance de la mano</h2><p>Los Ateliers du Planétarium exploran la astronomía y las ciencias experimentales con los divulgadores de Vulcania. Su programa reúne Dans la peau d’un astronaute, Sous le soleil y Drôles d’expériences. Los participantes manipulan materiales y comentan sus observaciones en un espacio dedicado a los vínculos entre la Tierra, el universo y los fenómenos físicos.</p><p>Dans la peau d’un astronaute aborda el viaje a la Estación Espacial Internacional, las sensaciones en órbita y la vida de las tripulaciones. Sous le soleil conecta nuestra estrella con lo cotidiano: las estaciones distintas en cada hemisferio, los colores de la luz y las auroras polares alimentan la conversación.</p><h2>Experimentos sorprendentes</h2><p>Drôles d’expériences se centra en los cambios visibles de la materia. Los colores se transforman, un globo se infla y las mezclas cambian de consistencia. Estas observaciones abren el diálogo sobre física y química con el equipo de divulgación.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kosmos na wyciągnięcie ręki</h2><p>Ateliers du Planétarium przybliżają astronomię i nauki doświadczalne z edukatorami Vulcanii. Program obejmuje Dans la peau d’un astronaute, Sous le soleil i Drôles d’expériences. Uczestnicy pracują z materiałami i omawiają obserwacje w przestrzeni poświęconej związkom między Ziemią, kosmosem i zjawiskami fizycznymi.</p><p>Dans la peau d’un astronaute dotyczy podróży na Międzynarodową Stację Kosmiczną, odczuć na orbicie i życia załóg. Sous le soleil łączy naszą gwiazdę z codziennością: tematami rozmów są odmienne pory roku na obu półkulach, barwy światła i zorze polarne.</p><h2>Zaskakujące doświadczenia</h2><p>Drôles d’expériences skupia się na widocznych przemianach materii. Kolory się zmieniają, balon się napełnia, a mieszaniny zyskują inną konsystencję. Obserwacje te stają się początkiem rozmowy o fizyce i chemii z zespołem edukacyjnym.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>O espaço ao alcance da mão</h2><p>Os Ateliers du Planétarium exploram a astronomia e as ciências experimentais com os mediadores de Vulcania. O programa reúne Dans la peau d’un astronaute, Sous le soleil e Drôles d’expériences. Os participantes manipulam materiais e discutem as suas observações num espaço dedicado às ligações entre a Terra, o universo e os fenómenos físicos.</p><p>Dans la peau d’un astronaute aborda a viagem à Estação Espacial Internacional, as sensações em órbita e a vida das tripulações. Sous le soleil liga a nossa estrela ao quotidiano: estações diferentes nos dois hemisférios, cores da luz e auroras polares alimentam a conversa.</p><h2>Experiências surpreendentes</h2><p>Drôles d’expériences centra-se nas mudanças visíveis da matéria. As cores transformam-se, um balão enche-se e as misturas mudam de consistência. Estas observações abrem uma conversa sobre física e química com a equipa de mediação.</p>"
+        }
+      ]
     },
     {
       "id": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
@@ -2154,7 +2358,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/plan-du-parc/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La Terre en atelier</h2><p>Les Ateliers des volcans réunissent des salles équipées pour explorer le volcanisme par des expériences, des jeux et des échanges avec les animateurs. La formation des volcans, les éruptions et les paysages d’Auvergne constituent leur fil conducteur. Le programme aborde aussi les traces du vivant avec Dinosaures et compagnie, où fouilles dans le sable, empreintes et moulages introduisent la paléontologie.</p><p>Dans la peau d’un volcanologue propose d’interpréter les signes d’activité d’un volcan après une découverte des équipements scientifiques. Les participants endossent le rôle de spécialistes et discutent des décisions à prendre face à un réveil simulé.</p><h2>Clermont dans un scénario de crise</h2><p>2 minutes pour sauver Clermont imagine une coulée de lave menaçant la ville. Cette mise en situation associe observation, choix de protection et discussion sur l’évacuation. La géologie locale devient ainsi le point de départ d’un jeu collectif consacré aux risques volcaniques.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Earth in the workshop</h2><p>The Ateliers des volcans bring together equipped rooms for exploring volcanism through experiments, games and conversations with presenters. Volcano formation, eruptions and Auvergne’s landscapes provide their common thread. The programme also considers traces of past life through Dinosaures et compagnie, where sand excavations, footprints and casts introduce palaeontology.</p><p>Dans la peau d’un volcanologue asks participants to interpret signs of volcanic activity after discovering scientific equipment. They take on the role of specialists and discuss decisions in response to a simulated awakening.</p><h2>A crisis scenario in Clermont</h2><p>2 minutes pour sauver Clermont imagines a lava flow threatening the city. This scenario combines observation, protective choices and discussion of evacuation. Local geology becomes the starting point for a group activity about volcanic hazards.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Erde im Workshop</h2><p>Die Ateliers des volcans vereinen ausgestattete Räume, in denen Experimente, Spiele und Gespräche mit Vermittlern den Vulkanismus erschließen. Vulkanentstehung, Ausbrüche und die Landschaften der Auvergne bilden den roten Faden. Dinosaures et compagnie betrachtet auch Spuren früheren Lebens: Grabungen im Sand, Fußabdrücke und Abgüsse führen in die Paläontologie ein.</p><p>Dans la peau d’un volcanologue lädt dazu ein, nach einer Einführung in wissenschaftliche Geräte Anzeichen vulkanischer Aktivität zu deuten. Die Teilnehmer übernehmen die Rolle von Fachleuten und besprechen Entscheidungen angesichts eines simulierten Erwachens.</p><h2>Ein Krisenszenario in Clermont</h2><p>2 minutes pour sauver Clermont stellt einen Lavastrom dar, der die Stadt bedroht. Das Szenario verbindet Beobachtung, Schutzentscheidungen und Gespräche über Evakuierung. Die örtliche Geologie wird zum Ausgangspunkt eines Gruppenspiels über Vulkangefahren.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De aarde in de werkplaats</h2><p>De Ateliers des volcans omvatten ingerichte zalen waar proefjes, spellen en gesprekken met begeleiders het vulkanisme verkennen. Vulkaanvorming, uitbarstingen en de landschappen van de Auvergne vormen de rode draad. Dinosaures et compagnie behandelt ook sporen van vroeger leven: opgravingen in zand, voetafdrukken en afgietsels laten deelnemers kennismaken met paleontologie.</p><p>Dans la peau d’un volcanologue draait om het herkennen van vulkanische activiteit na een kennismaking met wetenschappelijke apparatuur. De deelnemers nemen de rol van specialisten aan en bespreken beslissingen bij een nagebootst ontwaken.</p><h2>Een crisisscenario in Clermont</h2><p>2 minutes pour sauver Clermont verbeeldt een lavastroom die de stad bedreigt. De oefening combineert observatie, beschermende keuzes en gesprekken over evacuatie. Lokale geologie wordt zo het vertrekpunt voor een groepsspel over vulkanische gevaren.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La Terra in laboratorio</h2><p>Gli Ateliers des volcans riuniscono sale attrezzate per esplorare il vulcanismo attraverso esperimenti, giochi e dialoghi con gli animatori. La formazione dei vulcani, le eruzioni e i paesaggi dell’Alvernia costituiscono il filo conduttore. Dinosaures et compagnie affronta anche le tracce della vita passata: scavi nella sabbia, impronte e calchi introducono la paleontologia.</p><p>Dans la peau d’un volcanologue invita a interpretare i segnali dell’attività vulcanica dopo aver conosciuto gli strumenti scientifici. I partecipanti assumono il ruolo di specialisti e discutono le decisioni da prendere davanti a un risveglio simulato.</p><h2>Uno scenario di crisi a Clermont</h2><p>2 minutes pour sauver Clermont immagina una colata lavica che minaccia la città. La simulazione unisce osservazione, scelte di protezione e discussione sull’evacuazione. La geologia locale diventa così il punto di partenza di un gioco collettivo sui rischi vulcanici.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La Tierra en el taller</h2><p>Los Ateliers des volcans reúnen salas equipadas para explorar el vulcanismo mediante experimentos, juegos y conversaciones con los divulgadores. La formación de los volcanes, las erupciones y los paisajes de Auvernia constituyen el hilo conductor. Dinosaures et compagnie también aborda las huellas de la vida pasada: excavaciones en arena, pisadas y moldes introducen la paleontología.</p><p>Dans la peau d’un volcanologue propone interpretar las señales de actividad volcánica tras conocer los equipos científicos. Los participantes asumen el papel de especialistas y discuten las decisiones que tomarían ante un despertar simulado.</p><h2>Un escenario de crisis en Clermont</h2><p>2 minutes pour sauver Clermont imagina una colada de lava que amenaza la ciudad. La simulación combina observación, decisiones de protección y debate sobre la evacuación. La geología local se convierte en el punto de partida de un juego colectivo sobre riesgos volcánicos.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Ziemia w pracowni</h2><p>Ateliers des volcans to wyposażone sale, w których doświadczenia, gry i rozmowy z prowadzącymi przybliżają wulkanizm. Wspólnym wątkiem są powstawanie wulkanów, erupcje i krajobrazy Owernii. Dinosaures et compagnie podejmuje także temat śladów dawnego życia: wykopaliska w piasku, odciski stóp i odlewy wprowadzają w paleontologię.</p><p>Dans la peau d’un volcanologue zachęca do interpretowania oznak aktywności wulkanicznej po poznaniu sprzętu naukowego. Uczestnicy wcielają się w specjalistów i omawiają decyzje podejmowane wobec symulowanego przebudzenia wulkanu.</p><h2>Scenariusz kryzysu w Clermont</h2><p>2 minutes pour sauver Clermont przedstawia wyobrażony potok lawy zagrażający miastu. Ćwiczenie łączy obserwację, wybór środków ochronnych i rozmowę o ewakuacji. Lokalna geologia staje się punktem wyjścia do wspólnej gry o zagrożeniach wulkanicznych.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A Terra na oficina</h2><p>Os Ateliers des volcans reúnem salas equipadas para explorar o vulcanismo através de experiências, jogos e conversas com os animadores. A formação dos vulcões, as erupções e as paisagens da Auvérnia constituem o fio condutor. Dinosaures et compagnie aborda também vestígios da vida passada: escavações na areia, pegadas e moldes introduzem a paleontologia.</p><p>Dans la peau d’un volcanologue propõe interpretar sinais de atividade vulcânica depois de conhecer os equipamentos científicos. Os participantes assumem o papel de especialistas e discutem as decisões a tomar perante um despertar simulado.</p><h2>Um cenário de crise em Clermont</h2><p>2 minutes pour sauver Clermont imagina uma escoada de lava a ameaçar a cidade. A simulação combina observação, escolhas de proteção e discussão sobre a evacuação. A geologia local torna-se o ponto de partida de um jogo coletivo sobre riscos vulcânicos.</p>"
+        }
+      ]
     },
     {
       "id": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
@@ -2216,7 +2454,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/cest-pas-sorcier-les-volcans/",
         "durationInSeconds": 1800
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les questions volcaniques prennent la parole</h2><p>C’est pas sorcier les volcans ! repose sur le dialogue avec un animateur scientifique. Les différentes formes des volcans et les phénomènes qui les animent constituent le cœur de cette rencontre. Le public peut confronter ses questions aux explications données dans la salle.</p><p>Une grande projection accompagne la présentation. L’animateur s’appuie notamment sur des images du parc et de son environnement volcanique, montrées sur un écran qui domine la scène. Ce support visuel relie les explications à des paysages que l’on peut reconnaître autour de Vulcania.</p><h2>L’Auvergne et son histoire volcanique</h2><p>La question « Les volcans d’Auvergne vont-ils se réveiller ? » rapproche le thème des paysages alentour. Les reliefs de la région donnent un ancrage concret à la discussion sur les différentes formes de volcans et les phénomènes qui les ont façonnés.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Volcanic questions in conversation</h2><p>C’est pas sorcier les volcans ! centres on a dialogue with a science presenter. Different volcanic forms and the phenomena within them shape the encounter. Audience members can bring their questions to the explanations given in the room.</p><p>A large projection accompanies the presentation. The presenter uses images of the park and its volcanic surroundings on a screen above the stage. These visuals connect the explanations with landscapes recognisable around Vulcania.</p><h2>Auvergne’s volcanic history</h2><p>The question “Will Auvergne’s volcanoes wake up?” connects the subject with the surrounding landscape. The region’s landforms give a tangible setting to the discussion of different volcanic shapes and the phenomena that formed them.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Vulkanfragen im Gespräch</h2><p>C’est pas sorcier les volcans ! setzt auf den Dialog mit einem Wissenschaftsvermittler. Unterschiedliche Vulkanformen und die Vorgänge in ihnen stehen im Mittelpunkt. Das Publikum kann eigene Fragen mit den Erklärungen im Raum verbinden.</p><p>Eine große Projektion begleitet die Präsentation. Der Vermittler nutzt unter anderem Bilder des Parks und seiner vulkanischen Umgebung auf einer Leinwand über der Bühne. Die Bilder verbinden die Erläuterungen mit Landschaften, die rund um Vulcania wiederzuerkennen sind.</p><h2>Die Vulkangeschichte der Auvergne</h2><p>Die Frage „Werden die Vulkane der Auvergne wieder erwachen?“ verbindet das Thema mit der umliegenden Landschaft. Die Geländeformen der Region geben dem Gespräch über unterschiedliche Vulkantypen und ihre Entstehung einen anschaulichen Bezug.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Vulkaanvragen in gesprek</h2><p>C’est pas sorcier les volcans ! draait om een gesprek met een wetenschapsmedewerker. Verschillende vulkaanvormen en de verschijnselen die zich erin afspelen staan centraal. Het publiek kan eigen vragen verbinden met de uitleg in de zaal.</p><p>Een grote projectie begeleidt de presentatie. De begeleider gebruikt onder meer beelden van het park en zijn vulkanische omgeving op een scherm boven het podium. Zo wordt de uitleg verbonden met landschappen die rond Vulcania herkenbaar zijn.</p><h2>De vulkanische geschiedenis van de Auvergne</h2><p>De vraag “Zullen de vulkanen van de Auvergne weer ontwaken?” verbindt het onderwerp met het omliggende landschap. De regionale reliëfvormen maken het gesprek over verschillende vulkaanvormen en hun ontstaan concreet.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Domande vulcaniche in dialogo</h2><p>C’est pas sorcier les volcans ! si basa sul dialogo con un animatore scientifico. Le diverse forme dei vulcani e i fenomeni che li animano sono al centro dell’incontro. Il pubblico può confrontare le proprie domande con le spiegazioni date nella sala.</p><p>Una grande proiezione accompagna la presentazione. L’animatore utilizza anche immagini del parco e del suo ambiente vulcanico, mostrate sullo schermo sopra la scena. Questo supporto collega le spiegazioni ai paesaggi riconoscibili intorno a Vulcania.</p><h2>La storia vulcanica dell’Alvernia</h2><p>La domanda «I vulcani dell’Alvernia si risveglieranno?» collega il tema al paesaggio circostante. I rilievi della regione offrono un riferimento concreto alla discussione sulle diverse forme dei vulcani e sui fenomeni che le hanno modellate.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Preguntas volcánicas en conversación</h2><p>C’est pas sorcier les volcans ! se basa en el diálogo con un divulgador científico. Las distintas formas de los volcanes y los fenómenos que los animan constituyen el núcleo del encuentro. El público puede contrastar sus preguntas con las explicaciones dadas en la sala.</p><p>Una gran proyección acompaña la presentación. El divulgador utiliza imágenes del parque y de su entorno volcánico, mostradas en una pantalla que domina el escenario. Ese apoyo visual relaciona las explicaciones con paisajes reconocibles alrededor de Vulcania.</p><h2>La historia volcánica de Auvernia</h2><p>La pregunta «¿Despertarán los volcanes de Auvernia?» vincula el tema con el paisaje cercano. Los relieves de la región dan un marco concreto a la conversación sobre las distintas formas volcánicas y los fenómenos que las modelaron.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Wulkaniczne pytania w rozmowie</h2><p>C’est pas sorcier les volcans ! opiera się na dialogu z popularyzatorem nauki. Sednem spotkania są różne formy wulkanów i zachodzące w nich zjawiska. Publiczność może zestawić własne pytania z wyjaśnieniami przedstawianymi w sali.</p><p>Prezentacji towarzyszy duża projekcja. Prowadzący wykorzystuje między innymi obrazy parku i jego wulkanicznego otoczenia na ekranie nad sceną. Materiał wizualny łączy wyjaśnienia z krajobrazami rozpoznawalnymi wokół Vulcanii.</p><h2>Wulkaniczna historia Owernii</h2><p>Pytanie „Czy wulkany Owernii się obudzą?” łączy temat z otaczającym krajobrazem. Regionalne formy terenu nadają konkretny kontekst rozmowie o różnych kształtach wulkanów i zjawiskach, które je uformowały.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Perguntas vulcânicas em conversa</h2><p>C’est pas sorcier les volcans ! assenta no diálogo com um animador científico. As diferentes formas dos vulcões e os fenómenos que os animam constituem o centro do encontro. O público pode confrontar as suas perguntas com as explicações dadas na sala.</p><p>Uma grande projeção acompanha a apresentação. O animador utiliza imagens do parque e do seu ambiente vulcânico, mostradas num ecrã que domina o palco. Esse apoio visual relaciona as explicações com paisagens reconhecíveis em redor de Vulcania.</p><h2>A história vulcânica da Auvérnia</h2><p>A pergunta «Será que os vulcões da Auvérnia vão despertar?» liga o tema à paisagem envolvente. Os relevos da região dão um enquadramento concreto à conversa sobre as diferentes formas dos vulcões e os fenómenos que as moldaram.</p>"
+        }
+      ]
     },
     {
       "id": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
@@ -2330,7 +2602,41 @@
         "sourceUrl": "https://www.aerophile.com/en/clients/vulcania/",
         "manufacturerId": "c31e7068-44af-404f-b60b-67469d77eca3",
         "openingDateText": "2014"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un regard au-dessus des arbres</h2><p>Présenté à Vulcania en 2014, le Ballon des Puys proposait une découverte aérienne des paysages volcaniques d’Auvergne. Ce ballon captif Aérophile associait le parc à une vue prise au-dessus de la cime des arbres, avec les reliefs pour horizon.</p><p>Son enveloppe blanche portait un large bandeau bleu illustré de silhouettes de paysage et le nom « Le Ballon des Puys ». Une nacelle circulaire bleue était suspendue sous cette grande sphère, visible au-dessus du bois.</p><h2>Le paysage comme sujet</h2><p>L’expérience prolongeait la découverte du volcanisme par l’observation du territoire lui-même. Le décor était celui des forêts et des formes volcaniques qui entourent Vulcania, vus depuis un point de vue inhabituel.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A view above the trees</h2><p>Introduced at Vulcania in 2014, the Ballon des Puys offered an aerial encounter with Auvergne’s volcanic landscapes. This Aérophile tethered balloon connected the park with views above the treetops and hills on the horizon.</p><p>Its white envelope carried a broad blue band illustrated with landscape silhouettes and the name Le Ballon des Puys. A circular blue gondola hung beneath the large sphere, visible above the woodland.</p><h2>The landscape as the subject</h2><p>The experience extended the exploration of volcanism to observation of the surrounding territory itself. Forests and volcanic landforms around Vulcania became the scenery, seen from an unusual viewpoint.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein Blick über die Bäume</h2><p>Der 2014 in Vulcania vorgestellte Ballon des Puys bot einen Blick aus der Luft auf die Vulkanlandschaften der Auvergne. Der Fesselballon von Aérophile verband den Park mit Aussichten über die Baumkronen und auf die Hügel am Horizont.</p><p>Seine weiße Hülle trug ein breites blaues Band mit Landschaftssilhouetten und dem Namen Le Ballon des Puys. Unter der großen, über dem Wald sichtbaren Kugel hing eine kreisförmige blaue Gondel.</p><h2>Die Landschaft als Thema</h2><p>Das Erlebnis ergänzte die Beschäftigung mit Vulkanismus um die Beobachtung der Umgebung selbst. Wälder und vulkanische Geländeformen rund um Vulcania bildeten die Kulisse aus einem ungewohnten Blickwinkel.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een blik boven de bomen</h2><p>De Ballon des Puys, in 2014 voorgesteld bij Vulcania, bood een uitzicht vanuit de lucht op de vulkanische landschappen van de Auvergne. Deze kabelballon van Aérophile verbond het park met vergezichten boven de boomtoppen en heuvels aan de horizon.</p><p>De witte ballon droeg een brede blauwe band met landschapssilhouetten en de naam Le Ballon des Puys. Onder de grote bol, zichtbaar boven het bos, hing een ronde blauwe gondel.</p><h2>Het landschap als onderwerp</h2><p>De ervaring verbond de kennismaking met vulkanisme aan het bekijken van het gebied zelf. Bossen en vulkanische vormen rond Vulcania vormden het decor, gezien vanuit een ongewoon gezichtspunt.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Uno sguardo sopra gli alberi</h2><p>Presentato a Vulcania nel 2014, il Ballon des Puys offriva un incontro aereo con i paesaggi vulcanici dell’Alvernia. Questo pallone vincolato Aérophile collegava il parco a una vista sopra le cime degli alberi, con i rilievi all’orizzonte.</p><p>Il suo involucro bianco portava un’ampia fascia blu illustrata con sagome di paesaggi e il nome Le Ballon des Puys. Una navicella circolare blu era sospesa sotto la grande sfera, visibile sopra il bosco.</p><h2>Il paesaggio come soggetto</h2><p>L’esperienza prolungava la scoperta del vulcanismo attraverso l’osservazione del territorio stesso. Le foreste e le forme vulcaniche intorno a Vulcania componevano lo scenario, visto da una prospettiva insolita.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una mirada sobre los árboles</h2><p>Presentado en Vulcania en 2014, el Ballon des Puys ofrecía una mirada aérea a los paisajes volcánicos de Auvernia. Este globo cautivo Aérophile vinculaba el parque con una vista sobre las copas de los árboles y los relieves del horizonte.</p><p>Su envoltura blanca llevaba una ancha franja azul ilustrada con siluetas de paisajes y el nombre Le Ballon des Puys. Una góndola circular azul colgaba bajo la gran esfera, visible por encima del bosque.</p><h2>El paisaje como protagonista</h2><p>La experiencia prolongaba el descubrimiento del vulcanismo mediante la observación del propio territorio. Los bosques y las formas volcánicas que rodean Vulcania componían el escenario, visto desde una perspectiva poco habitual.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Widok ponad drzewami</h2><p>Zaprezentowany w Vulcanii w 2014 roku Ballon des Puys oferował spojrzenie z powietrza na wulkaniczne krajobrazy Owernii. Balon na uwięzi firmy Aérophile łączył park z widokiem ponad koronami drzew i wzgórzami na horyzoncie.</p><p>Białą powłokę zdobił szeroki niebieski pas z sylwetkami krajobrazu i nazwą Le Ballon des Puys. Pod wielką kulą widoczną nad lasem wisiała okrągła niebieska gondola.</p><h2>Krajobraz w centrum uwagi</h2><p>Doświadczenie uzupełniało poznawanie wulkanizmu o obserwację samego regionu. Lasy i wulkaniczne formy terenu wokół Vulcanii tworzyły scenerię oglądaną z nietypowej perspektywy.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um olhar acima das árvores</h2><p>Apresentado em Vulcania em 2014, o Ballon des Puys proporcionava uma descoberta aérea das paisagens vulcânicas da Auvérnia. Este balão cativo Aérophile ligava o parque a uma vista acima das copas das árvores, com os relevos no horizonte.</p><p>O invólucro branco tinha uma larga faixa azul ilustrada com silhuetas de paisagens e o nome Le Ballon des Puys. Uma gôndola circular azul estava suspensa sob a grande esfera, visível acima do bosque.</p><h2>A paisagem como tema</h2><p>A experiência prolongava a descoberta do vulcanismo através da observação do próprio território. As florestas e as formas vulcânicas em redor de Vulcania compunham o cenário, visto de uma perspetiva invulgar.</p>"
+        }
+      ]
     }
   ],
   "images": [
@@ -7951,6 +8257,940 @@
       "key": "f1e809b6aa864d82a3cec643e624c7d9",
       "imageId": "f1e809b6aa864d82a3cec643e624c7d9",
       "ownerKey": "4eeb9ce7-76a9-49f9-8585-084028fcfce1"
+    },
+    {
+      "id": "f75398491b044b9b8c2d9fa708b07f90",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "52885720-2ed0-4d51-b940-33e955b2df3f",
+      "path": "park_item/f75398491b044b9b8c2d9fa708b07f90",
+      "description": "Des étiquettes accompagnent les minéraux, devant des étagères en bois et un panier de peluches.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 465,
+      "sizeInBytes": 56077,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/06/DSC_0097.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des bacs transparents étagés présentent des pierres colorées dans la boutique Planète Auvergne."
+        },
+        {
+          "languageCode": "en",
+          "value": "Tiered transparent containers display colourful stones in the Planète Auvergne shop."
+        },
+        {
+          "languageCode": "de",
+          "value": "Gestufte durchsichtige Behälter präsentieren bunte Steine im Geschäft Planète Auvergne."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Doorzichtige bakken op verschillende niveaus tonen kleurrijke stenen in de winkel Planète Auvergne."
+        },
+        {
+          "languageCode": "it",
+          "value": "Contenitori trasparenti su più livelli espongono pietre colorate nel negozio Planète Auvergne."
+        },
+        {
+          "languageCode": "es",
+          "value": "Recipientes transparentes escalonados exponen piedras de colores en la tienda Planète Auvergne."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przezroczyste pojemniki ustawione piętrowo prezentują kolorowe kamienie w sklepie Planète Auvergne."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Recipientes transparentes em vários níveis apresentam pedras coloridas na loja Planète Auvergne."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des étiquettes accompagnent les minéraux, devant des étagères en bois et un panier de peluches."
+        },
+        {
+          "languageCode": "en",
+          "value": "Labels accompany the minerals in front of wooden shelves and a basket of soft toys."
+        },
+        {
+          "languageCode": "de",
+          "value": "Etiketten begleiten die Mineralien vor Holzregalen und einem Korb mit Plüschtieren."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Etiketten staan bij de mineralen, voor houten schappen en een mand met knuffels."
+        },
+        {
+          "languageCode": "it",
+          "value": "Etichette accompagnano i minerali, davanti a scaffali di legno e a un cesto di peluche."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las etiquetas acompañan a los minerales, ante estantes de madera y una cesta de peluches."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Minerałom towarzyszą etykiety, a za nimi widać drewniane półki i kosz pluszaków."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As etiquetas acompanham os minerais, diante de prateleiras de madeira e de um cesto de peluches."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:18:08.948Z",
+      "updatedAt": "2026-11-15T19:18:12.827Z",
+      "key": "f75398491b044b9b8c2d9fa708b07f90",
+      "imageId": "f75398491b044b9b8c2d9fa708b07f90",
+      "ownerKey": "52885720-2ed0-4d51-b940-33e955b2df3f"
+    },
+    {
+      "id": "fd7b1a3d22b246e0b8839903e7d6c006",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+      "path": "park_item/fd7b1a3d22b246e0b8839903e7d6c006",
+      "description": "De grands dinosaures verts dominent les étagères, tandis que des présentoirs bas occupent le centre de la salle.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1000,
+      "height": 665,
+      "sizeInBytes": 107714,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/06/DSC_0033.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Rayons de livres, jeux et peluches sous le plafond rouge de Planète Sciences."
+        },
+        {
+          "languageCode": "en",
+          "value": "Shelves of books, games and soft toys beneath the red ceiling of Planète Sciences."
+        },
+        {
+          "languageCode": "de",
+          "value": "Regale mit Büchern, Spielen und Plüschtieren unter der roten Decke von Planète Sciences."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Schappen met boeken, spellen en knuffels onder het rode plafond van Planète Sciences."
+        },
+        {
+          "languageCode": "it",
+          "value": "Scaffali di libri, giochi e peluche sotto il soffitto rosso di Planète Sciences."
+        },
+        {
+          "languageCode": "es",
+          "value": "Estanterías de libros, juegos y peluches bajo el techo rojo de Planète Sciences."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Półki z książkami, grami i pluszakami pod czerwonym sufitem Planète Sciences."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Prateleiras de livros, jogos e peluches sob o teto vermelho de Planète Sciences."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "De grands dinosaures verts dominent les étagères, tandis que des présentoirs bas occupent le centre de la salle."
+        },
+        {
+          "languageCode": "en",
+          "value": "Large green dinosaurs tower above the shelves, while low displays occupy the centre of the room."
+        },
+        {
+          "languageCode": "de",
+          "value": "Große grüne Dinosaurier überragen die Regale, während niedrige Auslagen die Raummitte einnehmen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Grote groene dinosaurussen steken boven de schappen uit, terwijl lage rekken midden in de ruimte staan."
+        },
+        {
+          "languageCode": "it",
+          "value": "Grandi dinosauri verdi dominano gli scaffali, mentre espositori bassi occupano il centro della sala."
+        },
+        {
+          "languageCode": "es",
+          "value": "Grandes dinosaurios verdes dominan los estantes, mientras expositores bajos ocupan el centro de la sala."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wielkie zielone dinozaury górują nad półkami, a niskie ekspozytory zajmują środek sali."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Grandes dinossauros verdes dominam as prateleiras, enquanto expositores baixos ocupam o centro da sala."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:18:19.784Z",
+      "updatedAt": "2026-11-15T19:18:23.392Z",
+      "key": "fd7b1a3d22b246e0b8839903e7d6c006",
+      "imageId": "fd7b1a3d22b246e0b8839903e7d6c006",
+      "ownerKey": "9325f395-5987-45ec-bd6e-e30bbcab9f6c"
+    },
+    {
+      "id": "b5f87cd49bc84c5282dedffb9b80c0f3",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+      "path": "park_item/b5f87cd49bc84c5282dedffb9b80c0f3",
+      "description": "Livres illustrés, jouets et souvenirs remplissent l’allée lumineuse sous un plafond rouge et jaune.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1000,
+      "height": 665,
+      "sizeInBytes": 148310,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/07/DSC_0034.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un grand dragon vert et des planètes suspendues décorent les rayons de Planète Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "A large green dragon and suspended planets decorate the shelves of Planète Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein großer grüner Drache und hängende Planeten schmücken die Regale von Planète Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een grote groene draak en hangende planeten versieren de schappen van Planète Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un grande drago verde e pianeti sospesi decorano gli scaffali di Planète Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un gran dragón verde y planetas suspendidos decoran los estantes de Planète Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Duży zielony smok i zawieszone planety zdobią regały Planète Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um grande dragão verde e planetas suspensos decoram as prateleiras de Planète Vulcania."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Livres illustrés, jouets et souvenirs remplissent l’allée lumineuse sous un plafond rouge et jaune."
+        },
+        {
+          "languageCode": "en",
+          "value": "Illustrated books, toys and souvenirs fill the bright aisle beneath a red and yellow ceiling."
+        },
+        {
+          "languageCode": "de",
+          "value": "Illustrierte Bücher, Spielzeug und Souvenirs füllen den hellen Gang unter einer rot-gelben Decke."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Geïllustreerde boeken, speelgoed en souvenirs vullen het lichte gangpad onder een rood met geel plafond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Libri illustrati, giocattoli e ricordi riempiono il corridoio luminoso sotto un soffitto rosso e giallo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Libros ilustrados, juguetes y recuerdos llenan el pasillo luminoso bajo un techo rojo y amarillo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ilustrowane książki, zabawki i pamiątki wypełniają jasną alejkę pod czerwono-żółtym sufitem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Livros ilustrados, brinquedos e recordações enchem o corredor luminoso sob um teto vermelho e amarelo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:18:29.999Z",
+      "updatedAt": "2026-11-15T19:18:33.506Z",
+      "key": "b5f87cd49bc84c5282dedffb9b80c0f3",
+      "imageId": "b5f87cd49bc84c5282dedffb9b80c0f3",
+      "ownerKey": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0"
+    },
+    {
+      "id": "03ee8ef93e7045e289706b2885a5a6b4",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+      "path": "park_item/03ee8ef93e7045e289706b2885a5a6b4",
+      "description": "Les piliers inclinés et les entrées des salles apparaissent derrière le comptoir, sur le sol sombre du hall.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 585,
+      "height": 389,
+      "sizeInBytes": 55143,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/06/corner-espace-planetarium_585x389.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Longue vitrine blanche éclairée présentant des livres et de petits objets dans le Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "en",
+          "value": "A long illuminated white display case presents books and small objects in the Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine lange beleuchtete weiße Vitrine zeigt Bücher und kleine Gegenstände im Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een lange verlichte witte vitrine toont boeken en kleine voorwerpen in de Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una lunga vetrina bianca illuminata presenta libri e piccoli oggetti nel Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una larga vitrina blanca iluminada presenta libros y pequeños objetos en el Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Długa oświetlona biała gablota prezentuje książki i drobne przedmioty w Corner Espace du Planétarium."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma longa vitrina branca iluminada apresenta livros e pequenos objetos no Corner Espace du Planétarium."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les piliers inclinés et les entrées des salles apparaissent derrière le comptoir, sur le sol sombre du hall."
+        },
+        {
+          "languageCode": "en",
+          "value": "Sloping pillars and room entrances appear behind the counter above the hall’s dark floor."
+        },
+        {
+          "languageCode": "de",
+          "value": "Schräge Pfeiler und Saaleingänge sind hinter dem Tresen über dem dunklen Hallenboden zu sehen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Schuine pijlers en zaalingangen zijn achter de toonbank zichtbaar, boven de donkere vloer van de hal."
+        },
+        {
+          "languageCode": "it",
+          "value": "Pilastri inclinati e ingressi delle sale compaiono dietro il bancone, sul pavimento scuro dell’atrio."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los pilares inclinados y los accesos a las salas aparecen detrás del mostrador, sobre el suelo oscuro del vestíbulo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Za ladą widać pochyłe filary i wejścia do sal, nad ciemną podłogą holu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os pilares inclinados e as entradas das salas surgem atrás do balcão, sobre o chão escuro do átrio."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:18:39.013Z",
+      "updatedAt": "2026-11-15T19:18:42.48Z",
+      "key": "03ee8ef93e7045e289706b2885a5a6b4",
+      "imageId": "03ee8ef93e7045e289706b2885a5a6b4",
+      "ownerKey": "be3b7d26-6691-4adc-b46b-b082e8cd86d3"
+    },
+    {
+      "id": "2499afaf32444bc3b47500322efdf341",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+      "path": "park_item/2499afaf32444bc3b47500322efdf341",
+      "description": "Des cartes illustrées sont disposées au sol près des participantes ; un micro accompagne la discussion en plein air.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 249848,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2025/07/Le-cratere-sanime-3000x1100-2-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Deux animatrices en rouge échangent avec le public dans l’herbe, pendant Le cratère s’anime !"
+        },
+        {
+          "languageCode": "en",
+          "value": "Two presenters in red talk with the audience on the grass during Le cratère s’anime !"
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Vermittlerinnen in Rot sprechen während Le cratère s’anime ! mit dem Publikum auf der Wiese."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee begeleidsters in het rood praten met het publiek op het gras tijdens Le cratère s’anime !"
+        },
+        {
+          "languageCode": "it",
+          "value": "Due animatrici in rosso dialogano con il pubblico sul prato durante Le cratère s’anime !"
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos divulgadoras vestidas de rojo conversan con el público sobre el césped durante Le cratère s’anime !"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwie prowadzące w czerwonych koszulkach rozmawiają z publicznością na trawie podczas Le cratère s’anime !"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Duas animadoras de vermelho conversam com o público na relva durante Le cratère s’anime !"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des cartes illustrées sont disposées au sol près des participantes ; un micro accompagne la discussion en plein air."
+        },
+        {
+          "languageCode": "en",
+          "value": "Illustrated cards lie on the ground near the participants, with a microphone used for the outdoor discussion."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bildkarten liegen neben den Teilnehmerinnen auf dem Boden; ein Mikrofon begleitet das Gespräch im Freien."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kaarten met afbeeldingen liggen op de grond bij de deelnemers; een microfoon ondersteunt het gesprek buiten."
+        },
+        {
+          "languageCode": "it",
+          "value": "Carte illustrate sono disposte a terra vicino ai partecipanti; un microfono accompagna il dialogo all’aperto."
+        },
+        {
+          "languageCode": "es",
+          "value": "Tarjetas ilustradas están colocadas en el suelo junto a los participantes; un micrófono acompaña la conversación al aire libre."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ilustrowane karty leżą na ziemi przy uczestnikach, a rozmowę na świeżym powietrzu wspomaga mikrofon."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cartões ilustrados estão dispostos no chão junto dos participantes; um microfone acompanha a conversa ao ar livre."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:27:36.935Z",
+      "updatedAt": "2026-11-15T19:27:40.522Z",
+      "key": "2499afaf32444bc3b47500322efdf341",
+      "imageId": "2499afaf32444bc3b47500322efdf341",
+      "ownerKey": "c3c7f895-f665-4eac-aaed-48bad53bce03"
+    },
+    {
+      "id": "5b8fe460082a41428af86320e46f49fc",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+      "path": "park_item/5b8fe460082a41428af86320e46f49fc",
+      "description": "Le cône du parc, les bois et un relief volcanique apparaissent derrière l’animateur vêtu de rouge et de noir.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 75771,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2025/07/Banniere-cest-pas-sorcier-les-volcans-.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un animateur montre une vue aérienne de Vulcania sur le grand écran de C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "en",
+          "value": "A presenter points to an aerial view of Vulcania on the large screen during C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Vermittler zeigt bei C’est pas sorcier les volcans ! auf eine Luftaufnahme von Vulcania auf der großen Leinwand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een begeleider wijst naar een luchtfoto van Vulcania op het grote scherm tijdens C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "it",
+          "value": "Un animatore indica una veduta aerea di Vulcania sul grande schermo di C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "es",
+          "value": "Un divulgador señala una vista aérea de Vulcania en la gran pantalla de C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Prowadzący wskazuje zdjęcie lotnicze Vulcanii na dużym ekranie podczas C’est pas sorcier les volcans !"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um animador aponta para uma vista aérea de Vulcania no grande ecrã de C’est pas sorcier les volcans !"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le cône du parc, les bois et un relief volcanique apparaissent derrière l’animateur vêtu de rouge et de noir."
+        },
+        {
+          "languageCode": "en",
+          "value": "The park’s cone, woodland and a volcanic hill appear behind the presenter dressed in red and black."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Kegel des Parks, Wälder und ein Vulkanhügel erscheinen hinter dem rot-schwarz gekleideten Vermittler."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kegel van het park, bos en een vulkanische heuvel verschijnen achter de begeleider in rood en zwart."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il cono del parco, il bosco e un rilievo vulcanico appaiono dietro l’animatore vestito di rosso e nero."
+        },
+        {
+          "languageCode": "es",
+          "value": "El cono del parque, el bosque y un relieve volcánico aparecen detrás del divulgador vestido de rojo y negro."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stożek parku, las i wulkaniczne wzniesienie są widoczne za prowadzącym ubranym na czerwono i czarno."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cone do parque, o bosque e um relevo vulcânico aparecem atrás do animador vestido de vermelho e preto."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:27:47.762Z",
+      "updatedAt": "2026-11-15T19:27:51.287Z",
+      "key": "5b8fe460082a41428af86320e46f49fc",
+      "imageId": "5b8fe460082a41428af86320e46f49fc",
+      "ownerKey": "52a14370-17ac-48e8-bfa6-aacdd324804e"
+    },
+    {
+      "id": "583a2b39fa9f4649a44345bdd310daf4",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+      "path": "park_item/583a2b39fa9f4649a44345bdd310daf4",
+      "description": "Le nom du ballon et des silhouettes de reliefs décorent l’enveloppe, au-dessus de la nacelle circulaire bleue.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1400,
+      "height": 1867,
+      "sizeInBytes": 340734,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.aerophile.com/admin/wp-content/uploads/2023/01/71-2014-vulcania-france-1400x1867.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "SONY",
+        "cameraModel": "DSC-S650",
+        "takenOnUtc": "2007-03-20T22:01:15Z",
+        "orientation": "1",
+        "focalLength": 5.8,
+        "aperture": 5.6,
+        "exposureTime": 0.002,
+        "iso": 100
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Ballon des Puys, blanc avec un large bandeau bleu, s’élève au-dessus des arbres de Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "The white Ballon des Puys with its broad blue band rises above the trees at Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der weiße Ballon des Puys mit seinem breiten blauen Band schwebt über den Bäumen von Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De witte Ballon des Puys met zijn brede blauwe band zweeft boven de bomen van Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Ballon des Puys, bianco con un’ampia fascia blu, si alza sopra gli alberi di Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Ballon des Puys, blanco con una ancha franja azul, se eleva sobre los árboles de Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Biały Ballon des Puys z szerokim niebieskim pasem unosi się ponad drzewami Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Ballon des Puys, branco com uma larga faixa azul, eleva-se acima das árvores de Vulcania."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le nom du ballon et des silhouettes de reliefs décorent l’enveloppe, au-dessus de la nacelle circulaire bleue."
+        },
+        {
+          "languageCode": "en",
+          "value": "The balloon’s name and outlines of hills decorate the envelope above its circular blue gondola."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Name des Ballons und Hügelsilhouetten schmücken die Hülle über der kreisförmigen blauen Gondel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De naam van de ballon en silhouetten van heuvels versieren het omhulsel boven de ronde blauwe gondel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il nome del pallone e le sagome dei rilievi decorano l’involucro sopra la navicella circolare blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "El nombre del globo y las siluetas de los relieves decoran la envoltura sobre la góndola circular azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Nazwę balonu i sylwetki wzgórz umieszczono na powłoce nad okrągłą niebieską gondolą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O nome do balão e as silhuetas dos relevos decoram o invólucro acima da gôndola circular azul."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Aérophile."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Aérophile."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Aérophile."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Aérophile."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Aérophile."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Aérophile."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Aérophile."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Aérophile."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:31:35.834Z",
+      "updatedAt": "2026-11-15T19:31:39.755Z",
+      "key": "583a2b39fa9f4649a44345bdd310daf4",
+      "imageId": "583a2b39fa9f4649a44345bdd310daf4",
+      "ownerKey": "ce88d195-4890-43e4-8551-8f26d460760b"
     }
   ],
   "history": {
