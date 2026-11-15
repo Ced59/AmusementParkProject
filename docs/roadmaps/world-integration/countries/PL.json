@@ -4296,29 +4296,103 @@
     },
     {
       "entryId": "PL-candidate-standalone-191126944562f3",
-      "name": "Luge Wiegand — Lodz",
-      "entityKind": "ToQualify",
+      "name": "Tor saneczkowy na Rudzkiej Górze",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "category": "Luge d’été en auge",
+      "locality": "Starorudzka 50, 93-424 Łódź, voïvodie de Łódź",
+      "siteId": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T00:30:49.830Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Site de Bacówka u Józka consulté le 2026-11-15 : piste annoncée toute l’année si la piste est sèche et sans glace ; appeler en automne-hiver.",
+      "identityConfidence": "Référence Wiegand Łódź rapprochée de la piste de Rudzka Góra et du restaurant Bacówka u Józka à Starorudzka 50. Aucune fiche Park ou Standalone homonyme trouvée dans l’éditeur.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Lodz"
+        "Lodz",
+        "Luge Wiegand — Lodz",
+        "Tor saneczkowy Rudzka Góra",
+        "Bacówka u Józka"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T00:30:03.018Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7bcde777-b900-4f90-b1a9-397a9fe1107b",
+          "appliedAt": "2026-11-15T00:23:37.050Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
+          "evidence": "PARK_DATA_EDITOR:apply:7bcde777-b900-4f90-b1a9-397a9fe1107b",
+          "auditEvidence": null,
+          "summary": "Création de la piste autonome avec adresse et huit textes."
+        },
+        {
+          "eventId": "apply-15df1129-184f-4186-8bb4-e6da044e133b",
+          "appliedAt": "2026-11-15T00:24:48.404Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
+          "evidence": "PARK_DATA_EDITOR:apply:15df1129-184f-4186-8bb4-e6da044e133b",
+          "auditEvidence": null,
+          "summary": "Deux offres officielles, règle des moins de huit ans et note sur la météo."
+        },
+        {
+          "eventId": "image-d4dc64a64c2a4697997adf2f8e92a600",
+          "appliedAt": "2026-11-15T00:28:11.680Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
+          "evidence": "PARK_DATA_EDITOR:image:d4dc64a64c2a4697997adf2f8e92a600",
+          "auditEvidence": null,
+          "summary": "Photo exacte et historique (25 April 2015), Zorro2212, CC BY-SA 4.0, importée avec légendes en huit langues."
+        },
+        {
+          "eventId": "image-f0207ce5628b4ef8830720af208bee2c",
+          "appliedAt": "2026-11-15T00:28:47.523Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
+          "evidence": "PARK_DATA_EDITOR:image:f0207ce5628b4ef8830720af208bee2c",
+          "auditEvidence": null,
+          "summary": "Photo exacte et historique (25 April 2015), Zorro2212, CC BY-SA 4.0, importée avec légendes en huit langues."
+        },
+        {
+          "eventId": "image-015b16498b564ca89c1b15cced38bcd6",
+          "appliedAt": "2026-11-15T00:29:16.801Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
+          "evidence": "PARK_DATA_EDITOR:image:015b16498b564ca89c1b15cced38bcd6",
+          "auditEvidence": null,
+          "summary": "Photo exacte et historique (May 2006), Arewicz, CC BY-SA 3.0, importée avec légendes en huit langues."
+        },
+        {
+          "eventId": "image-metadata-f0207ce5628b4ef8830720af208bee2c",
+          "appliedAt": "2026-11-15T00:30:03.018Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
+          "evidence": "PARK_DATA_EDITOR:image:f0207ce5628b4ef8830720af208bee2c",
+          "auditEvidence": null,
+          "summary": "Description de la seconde photo distinguée pour lever le blocage des textes répétitifs."
+        },
+        {
+          "eventId": "closure-image-f0207ce5628b4ef8830720af208bee2c",
+          "appliedAt": "2026-11-15T00:30:03.018Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
+          "evidence": "PARK_DATA_EDITOR:image:f0207ce5628b4ef8830720af208bee2c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pl-rudzka-gora-20261115/audit.json",
+          "summary": "Audit final : huit pages et photo principale HTTP 200, trois images publiées, deux offres, une règle, complétude 78 sans bloqueur et Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et sa date réelle. Chercher des photos exactes et récentes sous licence réutilisable ; vérifier l’ouverture météo et les tarifs avant une visite.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -4329,22 +4403,47 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.rudzka-gora.pl",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Bacówka u Józka — site officiel de la piste, tarifs, règles et accès",
+          "url": "https://bacowkaujozka.pl/tor-saneczkowy/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — restaurant et point d’arrivée",
+          "url": "https://www.openstreetmap.org/way/138275304",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Zorro2212, 25 April 2015, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Rudzka_G%C3%B3ra_luge_track_01.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Zorro2212, 25 April 2015, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Rudzka_G%C3%B3ra_luge_track_02.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Arewicz, May 2006, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Rudzka_G%C3%B3ra_-tor_saneczkowy.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Lodz",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=243#location-id-1369",
-            "family": "Luge d’été",
-            "sourceVenueName": "Lodz",
-            "referenceId": "location-id-1369"
+            "name": "Tor saneczkowy na Rudzkiej Górze",
+            "source": "Bacówka u Józka — site officiel de la piste",
+            "url": "https://bacowkaujozka.pl/tor-saneczkowy/",
+            "family": "Luge en auge",
+            "sourceVenueName": "Rudzka Góra",
+            "sourceLocality": "Łódź"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste fixe identifiable avec tarifs et billetterie dédiés, exploitée à côté du restaurant. Attraction autonome distincte d’un parc de loisirs intégré."
       }
     },
     {
