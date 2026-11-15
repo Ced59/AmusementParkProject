@@ -138,18 +138,18 @@
       "entryId": "FR-candidate-discovery-da45a0f8b01663",
       "name": "Aérophare — Terre d’Estuaire",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Aérophare",
       "locality": "Cordemais",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Ballon inclus dans le billet du centre selon la page officielle des tarifs 2027, sous réserve météo.",
+      "identityConfidence": "Le billet officiel 2027 du centre inclut explicitement l’ascension en ballon ; attraction interne et non billetterie autonome.",
       "possibleMatches": [],
       "aliases": [
         "Terre d’Estuaire Cordemais, France"
@@ -157,7 +157,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver cette ligne comme attraction interne du parc candidat FR-candidate-terre-estuaire-20261115. Ne pas créer de standalone ni publier Facebook ; intégrer le centre avec son ballon dans une fiche Park après qualification.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -168,6 +168,21 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — centre et ballon",
+          "url": "https://www.terredestuaire.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — billet incluant le ballon",
+          "url": "https://www.terredestuaire.com/les-infos-pratiques/tarifs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — ballon 2019 CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Aerophare_Terre_d%27Estuaire.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -176,23 +191,24 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Aérophare — Terre d’Estuaire",
-            "source": "Aerophile — références constructeur",
-            "url": "https://www.aerophile.com/en/clients/terre-destuaire/",
+            "source": "Terre d’Estuaire — tarifs 2027",
+            "url": "https://www.terredestuaire.com/les-infos-pratiques/tarifs/",
             "family": "Aérophare",
-            "sourceVenueName": "Aérophare — Terre d’Estuaire",
-            "sourceLifecycleSignal": "Référence constructeur datée 2019 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Cordemais",
-            "referenceId": "aerophile-terre-destuaire"
+            "sourceVenueName": "Terre d’Estuaire",
+            "sourceLifecycleSignal": "Inclus dans la visite du centre, selon météo",
+            "sourceLocality": "Cordemais"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
-      }
+        "rationale": "L’ascension est incluse dans le billet global du centre de découverte ; pas de ticket standalone."
+      },
+      "possibleBacklogEntries": [
+        "FR-candidate-terre-estuaire-20261115"
+      ]
     },
     {
       "entryId": "FR-candidate-discovery-5ccd37119c7eba",
@@ -38454,6 +38470,46 @@
       ],
       "discoveredAt": "2026-11-02T19:00:57.319304+00:00",
       "discoveryReason": "Séparation documentée du dossier historique national Tivoli1730–1842 ; jardin distinct à laFolieLaBouexiere, sans réécrire l’historique du dossier GrandTivoli."
+    },
+    {
+      "entryId": "FR-candidate-terre-estuaire-20261115",
+      "name": "Terre d’Estuaire",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": "Centre de découverte",
+      "locality": "Cordemais, Loire-Atlantique, France",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Site officiel actif ; tarifs 2027 publiés, montée en ballon comprise dans la visite.",
+      "identityConfidence": "Site et billet global confirmés par l’exploitant ; recherche Park et StandaloneAttraction sous Terre d’Estuaire, Cordemais et Aérophare sans correspondance.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [
+        "FR-candidate-discovery-da45a0f8b01663"
+      ],
+      "aliases": [
+        "Centre de découverte Terre d’Estuaire"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Qualifier le centre comme fiche Park complète, avec l’Aérophare en attraction interne, horaires et tarifs 2027, photos autorisées et recherche d’anciennes identités ; aucune date d’intégration avant Apply.",
+      "sources": [
+        {
+          "label": "Exploitant — centre",
+          "url": "https://www.terredestuaire.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — billet et ballon inclus",
+          "url": "https://www.terredestuaire.com/les-infos-pratiques/tarifs/",
+          "accessedAt": "2026-11-15"
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12361 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12363 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -16,10 +16,10 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 324 | 1871 | 7553 |
-| Standalone | 266 | 1 | 117 |
+| Parcs | 324 | 1871 | 7554 |
+| Standalone | 267 | 1 | 116 |
 
-**Reprise standalone :** en plus des 117 candidates sans correspondance, **210 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **553 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **71 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 116 candidates sans correspondance, **210 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **553 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **71 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **72** types à décider, **1267** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -44,7 +44,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Estonie](countries/EE.md) | 0 | 3 | 0 | 9 | 14 |
 | [État de la Cité du Vatican](countries/VA.md) | 0 | 0 | 0 | 0 | 0 |
 | [Finlande](countries/FI.md) | 0 | 12 | 5 | 26 | 61 |
-| [France](countries/FR.md) | 111 | 33 | 101 | 175 | 616 |
+| [France](countries/FR.md) | 111 | 33 | 101 | 176 | 616 |
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 1 | 1 |
 | [Grèce](countries/GR.md) | 0 | 12 | 3 | 23 | 45 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 | 0 |
@@ -81,7 +81,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 1 | 21 | 48 | 46 | 114 |
 | [Ukraine](countries/UA.md) | 1 | 33 | 1 | 42 | 72 |
-| **Total** | **226** | **768** | **672** | **1848** | **4605** |
+| **Total** | **226** | **768** | **672** | **1849** | **4605** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -102,7 +102,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Estonie](countries/EE.md) | 1 | 0 | 0 | 0 | 0 | 0 |
 | [État de la Cité du Vatican](countries/VA.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Finlande](countries/FI.md) | 1 | 0 | 0 | 0 | 6 | 0 |
-| [France](countries/FR.md) | 42 | 0 | 9 | 1 | 23 | 0 |
+| [France](countries/FR.md) | 42 | 0 | 8 | 1 | 23 | 0 |
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Grèce](countries/GR.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -139,7 +139,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 5 | 0 | 0 | 0 | 11 | 0 |
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **147** | **1** | **29** | **64** | **267** | **18** |
+| **Total** | **147** | **1** | **28** | **64** | **267** | **18** |
 
 Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **123**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
@@ -719,7 +719,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Cuba](countries/CU.md) | 0 | 0 | 0 | 0 | 2 | 0 |
 | [Curaçao](countries/CW.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Dominique](countries/DM.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [États-Unis](countries/US.md) | 38 | 0 | 25 | 2 | 171 | 0 |
+| [États-Unis](countries/US.md) | 39 | 0 | 25 | 2 | 171 | 0 |
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -748,13 +748,13 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **51** | **0** | **28** | **2** | **203** | **0** |
+| **Total** | **52** | **0** | **28** | **2** | **203** | **0** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **51**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **52**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Bahamas : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Canada : 12 intégrations achevées et auditées, dont 0 fiches encore masquées.
-- États-Unis : 38 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- États-Unis : 39 intégrations achevées et auditées, dont 0 fiches encore masquées.
 ### Pistes standalone à requalifier
 
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |

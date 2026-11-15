@@ -74627,47 +74627,111 @@
     },
     {
       "entryId": "US-candidate-standalone-8ae77f397d2a67",
-      "name": "ZipRider — Utah Olympic Park",
-      "entityKind": "ToQualify",
+      "name": "Extreme Zipline — Utah Olympic Park",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Tyrolienne fixe",
-      "locality": null,
-      "siteId": null,
+      "locality": "3419 Olympic Parkway, Park City, Utah 84098",
+      "siteId": "e880d684-d210-4650-9748-30d293b22828",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T23:40:04.083Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitation estivale confirmée ; saison 2026 terminée, prochaine saison à vérifier.",
+      "identityConfidence": "Billet individuel officiel, identité Xtreme ZipRider constructeur et photo exacte confirmés ; recherche officielle sans doublon avant création.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
-      "aliases": [],
+      "possibleBacklogEntries": [
+        "US-candidate-uop-freestyle-20261115"
+      ],
+      "aliases": [
+        "Xtreme ZipRider — Utah Olympic Park",
+        "Xtreme Zipline",
+        "Utah Olympic Park Extreme Zipline"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T23:38:46.611Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4ebdfd73-4d82-4ae1-865d-ea1e85e77a3f",
+          "appliedAt": "2026-11-15T23:36:41.562Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e880d684-d210-4650-9748-30d293b22828",
+          "evidence": "PARK_DATA_EDITOR:apply:4ebdfd73-4d82-4ae1-865d-ea1e85e77a3f",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "apply-894e0f95-1fe2-4eff-a55c-19786f2c0006",
+          "appliedAt": "2026-11-15T23:37:17.717Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e880d684-d210-4650-9748-30d293b22828",
+          "evidence": "PARK_DATA_EDITOR:apply:894e0f95-1fe2-4eff-a55c-19786f2c0006",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès officielles intégrées."
+        },
+        {
+          "eventId": "photo-2199a7fdef804573aab68b9c22bfa400",
+          "appliedAt": "2026-11-15T23:37:34.172Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e880d684-d210-4650-9748-30d293b22828",
+          "evidence": "PARK_DATA_EDITOR:photo:2199a7fdef804573aab68b9c22bfa400",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte de la tyrolienne importée et créditée sous CC BY 2.0."
+        },
+        {
+          "eventId": "apply-1512fd8e-76aa-47e6-8146-07ef93b74258",
+          "appliedAt": "2026-11-15T23:38:46.611Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e880d684-d210-4650-9748-30d293b22828",
+          "evidence": "PARK_DATA_EDITOR:apply:1512fd8e-76aa-47e6-8146-07ef93b74258",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-utah-olympic-park-extreme-zipline-20261115/audit.json",
+          "summary": "Fermeture saisonnière et modèle intégrés ; audit final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver preuve et photo historique ; vérifier prochaines dates et tarifs. Qualifier séparément la Freestyle Zipline sous US-candidate-uop-freestyle-20261115.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/uop/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — billet et conditions",
+          "url": "https://utaholympiclegacy.org/activity/summer-extreme-zipline/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Commons — photo exacte CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Zip_rider_coming_across_jump.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/e880d684-d210-4650-9748-30d293b22828/extreme-zipline-utah-olympic-park",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "ZipRider — Utah Olympic Park",
-            "source": "ZipRider — référence constructeur",
-            "url": "https://ziprider.com/locations/uop/",
+            "name": "Extreme Zipline — Utah Olympic Park",
+            "source": "Utah Olympic Legacy — Extreme Zipline",
+            "url": "https://utaholympiclegacy.org/activity/summer-extreme-zipline/",
             "family": "Tyrolienne fixe",
-            "sourceVenueName": "Utah Olympic Park"
+            "sourceVenueName": "Utah Olympic Park",
+            "sourceLifecycleSignal": "Seasonal",
+            "sourceLocality": "Park City, Utah"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Billet de descente propre confirmé. L’autre piste Freestyle est distincte et conservée au backlog."
       }
     },
     {
@@ -76664,6 +76728,62 @@
           }
         ],
         "rationale": "Source constructeur évoquant une option ajoutée au pass ; autonomie de billetterie et exploitation actuelle à confirmer."
+      }
+    },
+    {
+      "entryId": "US-candidate-uop-freestyle-20261115",
+      "name": "Freestyle Zipline — Utah Olympic Park",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne fixe",
+      "locality": "3419 Olympic Parkway, Park City, Utah 84098",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "Blocked",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant actif en saison estivale ; calendrier publié jusqu’en septembre 2026, prochaines dates inconnues.",
+      "identityConfidence": "Billet individuel Freestyle confirmé séparément de l’Extreme par l’exploitant ; photo exacte réutilisable encore à trouver.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-8ae77f397d2a67"
+      ],
+      "aliases": [
+        "Freestyle ZipRider — Utah Olympic Park"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Trouver une photo exacte de la Freestyle Zipline sous licence ou autorisation compatible ; rechercher les doublons, vérifier prochain calendrier et conditions, puis créer, publier et annoncer séparément sur Facebook. Ne pas utiliser la photo de l’Extreme Zipline.",
+      "sources": [
+        {
+          "label": "Exploitant — Freestyle Zipline et billet individuel",
+          "url": "https://utaholympiclegacy.org/activity/freestyle-zipline/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "ZipRider — deux installations distinctes",
+          "url": "https://ziprider.com/locations/uop/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Freestyle Zipline",
+            "source": "Utah Olympic Legacy — Freestyle Zipline",
+            "url": "https://utaholympiclegacy.org/activity/freestyle-zipline/",
+            "family": "Tyrolienne fixe",
+            "sourceVenueName": "Utah Olympic Park",
+            "sourceLifecycleSignal": "Seasonal",
+            "sourceLocality": "Park City, Utah"
+          }
+        ],
+        "rationale": "Installation et billet individuel distincts de l’Extreme Zipline ; image propre manquante."
       }
     }
   ]
