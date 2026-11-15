@@ -1,0 +1,88 @@
+{
+  "checkedAtUtc": "2026-11-15T21:05:02.723962+00:00",
+  "previousReconciliationEvidence": "france-facebook-reconciliation-20261115.json",
+  "officialPublishedParkAnnouncements": 36,
+  "anonymousUnavailableTestedLinks": 9,
+  "vulcaniaResolve": {
+    "action": "ResolveFacebookPublication",
+    "startedAtUtc": "2026-11-15T20:49:29.0543820Z",
+    "receivedAtUtc": "2026-11-15T20:49:29.4924217Z",
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Vulcania ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Vulcania! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Vulcania",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "d77df105d04d4601a9a543d41d3ce25c",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122127506199424431",
+      "images": {
+        "data": [
+          {
+            "id": "7455ffc28d574c158809574ac5c022bd",
+            "label": "Le cône et sa passerelle au milieu des visiteurs, en août 2010.",
+            "isCurrent": false,
+            "width": 960,
+            "height": 1445
+          },
+          {
+            "id": "3656194cc2cf40c8a1f02b9390da5010",
+            "label": "Des roches exposées en plein air dans le paysage de Vulcania, en août 2010.",
+            "isCurrent": false,
+            "width": 960,
+            "height": 638
+          },
+          {
+            "id": "db289dbe8d05476d8918eb31ddd1f1ad",
+            "label": "Le parc et les reliefs de la Chaîne des Puys vus depuis les jardins, en août 2010.",
+            "isCurrent": false,
+            "width": 960,
+            "height": 638
+          },
+          {
+            "id": "0cd6c65c08224e81be09418fc0da591d",
+            "label": "Vulcania dans le paysage enneigé de janvier 2010.",
+            "isCurrent": false,
+            "width": 1500,
+            "height": 1000
+          },
+          {
+            "id": "c196e76eafc343fabd54b180e5457dc8",
+            "label": "La paroi dorée du cône au-dessus des bâtiments de Vulcania, en octobre 2009.",
+            "isCurrent": false,
+            "width": 960,
+            "height": 720
+          },
+          {
+            "id": "8b9479d31a074fc98a5468865e32759e",
+            "label": "Le cône de Hans Hollein en cours de construction, en mars 2000.",
+            "isCurrent": false,
+            "width": 521,
+            "height": 788
+          }
+        ],
+        "pagination": {
+          "totalItems": 6,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    }
+  },
+  "vulcaniaAnonymous": {
+    "url": "https://www.facebook.com/1285475681307050/posts/122127506199424431",
+    "mode": "Anonymous public Chromium; optional cookies declined when offered; no login, no publication.",
+    "optionalCookiesDeclined": true,
+    "httpStatus": 200,
+    "finalUrl": "https://www.facebook.com/61592732938801/posts/122127506199424431/",
+    "body": "Log in\nForgotten account?\nThis content isn't available at the moment\nWhen this happens, it's usually because the owner only shared it with a small group of people or changed who can see it, or it's been deleted.\nGo to Feed\nGo back\nVisit Help Centre",
+    "bodySha256": "90df80c47e6be14eeef0018eec3d5875a96adcd2e397bcd3d40f137c62f63f2e",
+    "checkedAtUtc": "2026-11-15T20:52:22.653015+00:00"
+  },
+  "newFacebookPublishOrRetryPerformed": false,
+  "connectedOwnerQuestionRemainsPending": true,
+  "limitations": "Published status does not establish present anonymous Facebook accessibility. Earlier evidence is retained; no cause inferred."
+}

@@ -135,8 +135,8 @@
     "Founders and operator roles not interchangeable.",
     "Hawai replaces Abyss; identity/version relationship to qualify before creation."
   ],
-  "finalAuditCompleted": false,
-  "fullFinalExportPerformed": false,
+  "finalAuditCompleted": true,
+  "fullFinalExportPerformed": true,
   "sitePublicationPerformed": true,
   "facebookPublicationPerformed": false,
   "realApplyCount": 45,
@@ -200,12 +200,13 @@
     "officialMaps": 2,
     "privateOwnMedia": 0,
     "articles": 2,
-    "privateArticles": 2,
+    "privateArticles": 0,
     "privateItems": 1,
     "sharedMedia": 5,
     "publicOwnMedia": 56,
     "publicHistoryEvents": 15,
-    "publicOfficialMaps": 2
+    "publicOfficialMaps": 2,
+    "publicArticles": 2
   },
   "lastApplyOperationId": "1005a47f-d1f4-4fdf-8b23-8859e4737385",
   "photoImports": [
@@ -500,10 +501,10 @@
   "photoRecoveryProof": "vulcania-photo-commons-05-recovery-20261115.json",
   "editorialIdempotenceProof": "vulcania-commons-media-followup-20261115.json",
   "nextSteps": [
-    "Current attraction milestones includingNamazu2021/Hawaii2026/Primordia",
-    "Historical inventory leads and identity relationships; one exteriorplaygroundnotice unresolved",
-    "Pricing/calendar published horizon and position/photo gaps",
-    "Single fullaudit, scoped authorizedsitepublication andFacebookresolve"
+    "Historical inventory and exterior playground description qualification",
+    "Item coordinates and photographic coverage from identifiable sources",
+    "Future official calendar and admission tariffs when published",
+    "Application follow-up for missing park timeline texts/link, stale Dragon summaries and English item image alt text"
   ],
   "officialMapCandidates": [
     2024,
@@ -530,7 +531,7 @@
     2024,
     2026
   ],
-  "latestSourceNote": "15qualifiedprivatefacts,2articles,55notices;oneprivateunqualifieditem andhistoricalresearchgaps remain.",
+  "latestSourceNote": "15 published qualified facts, two public articles and 55 public notices in eight languages; one private unqualified item and historical research gaps remain.",
   "articleBodyWordsByLanguage": {
     "fr": 412,
     "en": 361,
@@ -557,9 +558,11 @@
     "ready": true,
     "globalCompletion": false,
     "proof": "vulcania-publication-scope-audit-20261115.json",
-    "score": 84
+    "score": 94,
+    "initialPrePublicationScore": 84,
+    "postPublicationProof": "vulcania-publication-followup-20261115.json"
   },
-  "nextAction": "Complete eight-language rendered public checks, normal navigation and anonymous Facebook observation; global integration remains partial.",
+  "nextAction": "Continue historical identity and photo/GPS qualification; preserve published audited scope. Application history/alt defects are documented separately. Continue national campaign without repeating exports or announcements.",
   "publicationOperations": [
     {
       "operationId": "332b1ef6-66a9-4617-a3f5-ff931aa12197",
@@ -607,5 +610,13 @@
   },
   "publicationFollowup": "vulcania-publication-followup-20261115.json",
   "facebookPublication": "d77df105d04d4601a9a543d41d3ce25c",
-  "facebookStatus": "Published"
+  "facebookStatus": "Published",
+  "checkpointUpdatedAtUtc": "2026-11-15T21:05:02.723962+00:00",
+  "scopedFinalAuditCompleted": true,
+  "globalInventoryAuditCompleted": false,
+  "publicChecksEvidence": "vulcania-publication-public-checks-20261115.json",
+  "publicChecksStatus": "Completed with documented application discrepancies",
+  "facebookAnnouncementPublished": true,
+  "newFacebookSendPerformed": false,
+  "facebookAnonymousVisibilityConfirmed": false
 }

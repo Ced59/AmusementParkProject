@@ -1,7 +1,7 @@
 {
   "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
   "outcome": "partial",
-  "checkedAtUtc": "2026-11-15T20:51:16.891084+00:00",
+  "checkedAtUtc": "2026-11-15T21:05:02.723962+00:00",
   "lastActualIntegrationAtUtc": "2026-11-15T20:47:21.2138604Z",
   "sitePublicationPerformed": true,
   "counts": {
@@ -7142,9 +7142,84 @@
     },
     "publishCalls": 0,
     "retryCalls": 0,
-    "anonymousVisibilityNotYetChecked": true
+    "anonymousVisibilityNotYetChecked": false,
+    "anonymousObservation": {
+      "url": "https://www.facebook.com/1285475681307050/posts/122127506199424431",
+      "mode": "Anonymous public Chromium; optional cookies declined when offered; no login, no publication.",
+      "optionalCookiesDeclined": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.facebook.com/61592732938801/posts/122127506199424431/",
+      "body": "Log in\nForgotten account?\nThis content isn't available at the moment\nWhen this happens, it's usually because the owner only shared it with a small group of people or changed who can see it, or it's been deleted.\nGo to Feed\nGo back\nVisit Help Centre",
+      "bodySha256": "90df80c47e6be14eeef0018eec3d5875a96adcd2e397bcd3d40f137c62f63f2e",
+      "checkedAtUtc": "2026-11-15T20:52:22.653015+00:00"
+    },
+    "anonymousVisibilityConfirmed": false,
+    "newPublishOrRetryPerformed": false
   },
-  "publicRenderingChecks": "In progress; do not interpret as completed public validation.",
+  "publicRenderingChecks": {
+    "state": "Completed with documented application discrepancies",
+    "evidence": "vulcania-publication-public-checks-20261115.json",
+    "summary": {
+      "distinctRoutesChecked": 544,
+      "initialHttp200": 543,
+      "initialRenderTimeouts": 1,
+      "resolvedTimeouts": 1,
+      "finalHttp200Routes": 544,
+      "publicItemDescriptionsExact": 440,
+      "parkDescriptionsExact": 8,
+      "articleTitlesExact": 16,
+      "articleBlocksExact": 168,
+      "officialMapYearsByLanguage": {
+        "fr": {
+          "2026": true,
+          "2024": true
+        },
+        "en": {
+          "2026": true,
+          "2024": true
+        },
+        "de": {
+          "2026": true,
+          "2024": true
+        },
+        "nl": {
+          "2026": true,
+          "2024": true
+        },
+        "it": {
+          "2026": true,
+          "2024": true
+        },
+        "es": {
+          "2026": true,
+          "2024": true
+        },
+        "pl": {
+          "2026": true,
+          "2024": true
+        },
+        "pt": {
+          "2026": true,
+          "2024": true
+        }
+      },
+      "itemHistoryPages": 64,
+      "itemHistoryTitleChecksExact": 88,
+      "itemHistorySummaryChecksExact": 85,
+      "itemHistorySummaryChecksTotal": 88,
+      "itemHistorySummaryMismatchesInRenderedPages": [
+        "fr",
+        "en",
+        "de"
+      ],
+      "imageIdsActuallyRenderedOnItemPages": 42,
+      "nonEnglishImageLocalePairsWithEnglishAlt": 294,
+      "brokenImagesObserved": 0,
+      "horizontalOverflowObserved": 0,
+      "rawTechnicalLabelsObserved": 0,
+      "visibleGuidsObserved": 0
+    }
+  },
   "globalCompletion": false,
   "remainingGaps": [
     "Aires de jeux extérieures remains private without a qualified description.",
@@ -7153,5 +7228,26 @@
     "Photographic coverage remains below three views for most items; no invented or duplicate images.",
     "No published general 2027 calendar or admission tariffs at review; owner score waiver applies.",
     "Shared Aerophile image remains private; not included in publication."
+  ],
+  "applicationFindings": [
+    {
+      "code": "PARK-HISTORY-TEXT-AND-LINK",
+      "description": "Park detail has no History link. Known public history route returns dates, types and sources but no authored fact titles/summaries. The 15-event SSR projection contains 13 null narratives and two article-link metadata objects, not 15 null narratives.",
+      "rolloutGateHasIndexableKeyYear": false,
+      "causeNotProven": true
+    },
+    {
+      "code": "DRAGON-HISTORY-PUBLIC-PROJECTION",
+      "description": "Three rendered languages FR/EN/DE retain the earlier Dragon Ride 2 summary; NL/IT/ES/PL/PT pages match final text. Normal item-to-history navigation returns an API event with all eight previous summaries. Official Apply110 and unchanged Preview119 contain the final texts. No speculative data mutation or cache bypass.",
+      "eventId": "e42444c7-3213-4f23-8f06-4b11b5d1991f",
+      "publicApiUrl": "https://amusement-parks.fun/api/history/park-items/04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+      "publicApiStatus": 200,
+      "observedAtUtc": "2026-11-15T21:03:33.936512+00:00"
+    },
+    {
+      "code": "ITEM-IMAGE-ALT-LOCALIZATION",
+      "description": "42 image IDs rendered on item pages use English alt text in all seven non-English locales despite correct eight-language stored metadata. Duplicate responsive DOM images counted once per image/locale. Dedicated galleries not comprehensively checked.",
+      "imageLocalePairs": 294
+    }
   ]
 }

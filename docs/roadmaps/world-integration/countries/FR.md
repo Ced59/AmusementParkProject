@@ -27,7 +27,7 @@ Couverture : **Pistes sourcées ; compléments locaux requis**. Observations ext
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **111 publiés**, **33 masqués à intégrer**, **101 masqués NotRelevant à réexaminer**, **175 candidats sans fiche**.
+Parcs : **112 publiés**, **32 masqués à intégrer**, **101 masqués NotRelevant à réexaminer**, **175 candidats sans fiche**.
 
 Standalone : **40 publiées**, **0 masquées**, **11 candidates sans fiche**. Autres dossiers : **1 types à décider**, **22 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 

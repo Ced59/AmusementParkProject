@@ -16,7 +16,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 324 | 1871 | 7551 |
+| Parcs | 325 | 1870 | 7551 |
 | Standalone | 246 | 1 | 120 |
 
 **Reprise standalone :** en plus des 120 candidates sans correspondance, **210 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **559 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **70 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
@@ -44,7 +44,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Estonie](countries/EE.md) | 0 | 3 | 0 | 9 | 14 |
 | [État de la Cité du Vatican](countries/VA.md) | 0 | 0 | 0 | 0 | 0 |
 | [Finlande](countries/FI.md) | 0 | 12 | 5 | 26 | 61 |
-| [France](countries/FR.md) | 111 | 33 | 101 | 175 | 616 |
+| [France](countries/FR.md) | 112 | 32 | 101 | 175 | 616 |
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 1 | 1 |
 | [Grèce](countries/GR.md) | 0 | 12 | 3 | 23 | 45 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 | 0 |
@@ -81,7 +81,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 1 | 21 | 48 | 46 | 114 |
 | [Ukraine](countries/UA.md) | 1 | 33 | 1 | 42 | 72 |
-| **Total** | **226** | **768** | **672** | **1847** | **4605** |
+| **Total** | **227** | **767** | **672** | **1847** | **4605** |
 
 ### Attractions standalone et dossiers à trancher
 
