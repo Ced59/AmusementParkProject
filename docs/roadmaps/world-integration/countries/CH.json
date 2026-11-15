@@ -27,6 +27,154 @@
   ],
   "entries": [
     {
+      "entryId": "CH-candidate-discovery-651263f938d4c8",
+      "name": "007 Bungy Verzasca",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "Barrage de Verzasca, Vogorno, Tessin",
+      "siteId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T11:44:13.955Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Saut saisonnier actif ; saison 2026 achevée et saison 2027 annoncée du 26 mars au 31 octobre.",
+      "identityConfidence": "Identité, billet autonome, tarifs, règles et saison confirmés par l’exploitant ; trois photos exactes sous licences réutilisables ; aucune fiche préexistante dans la recherche officielle.",
+      "possibleMatches": [],
+      "aliases": [
+        "Verzasca Dam Bungy",
+        "GoldenEye Bungy",
+        "007 Bungy Ticino"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T11:42:07.993Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7ccc657a-f3a8-458d-a146-d2d2496e0d34",
+          "appliedAt": "2026-11-15T11:38:49.486Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+          "evidence": "PARK_DATA_EDITOR:apply:7ccc657a-f3a8-458d-a146-d2d2496e0d34",
+          "auditEvidence": null,
+          "summary": "Création du saut sur le barrage de Verzasca, coordonnées officielles et huit descriptions éditoriales."
+        },
+        {
+          "eventId": "apply-176e3200-c292-4feb-b6ad-32297b3dae95",
+          "appliedAt": "2026-11-15T11:39:55.439Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+          "evidence": "PARK_DATA_EDITOR:apply:176e3200-c292-4feb-b6ad-32297b3dae95",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels, horaires saisonniers annoncés sans créneaux inventés, fermeture actuelle et trois conditions d’accès en huit langues."
+        },
+        {
+          "eventId": "image-e5f47091a57f4248b1fb2790e5114918",
+          "appliedAt": "2026-11-15T11:40:44.457Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+          "evidence": "PARK_DATA_EDITOR:image:e5f47091a57f4248b1fb2790e5114918",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la plateforme, du saut ou du barrage, avec huit alt, légendes et crédits ; Irene Grassi, CC BY-SA 2.0, 2014-08-24."
+        },
+        {
+          "eventId": "image-cacc9fdfef6247ce9159c32bed9caf86",
+          "appliedAt": "2026-11-15T11:41:05.301Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+          "evidence": "PARK_DATA_EDITOR:image:cacc9fdfef6247ce9159c32bed9caf86",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la plateforme, du saut ou du barrage, avec huit alt, légendes et crédits ; Corradox, CC BY-SA 3.0, 2009-06-28."
+        },
+        {
+          "eventId": "image-a19e6d8140e54bcfaa7fda942a500d3e",
+          "appliedAt": "2026-11-15T11:41:21.923Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+          "evidence": "PARK_DATA_EDITOR:image:a19e6d8140e54bcfaa7fda942a500d3e",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la plateforme, du saut ou du barrage, avec huit alt, légendes et crédits ; Hollerz, CC BY-SA 3.0, date inconnue."
+        },
+        {
+          "eventId": "apply-55328fd3-4296-4dd1-9a22-a81bc316a3a1",
+          "appliedAt": "2026-11-15T11:42:07.993Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+          "evidence": "PARK_DATA_EDITOR:apply:55328fd3-4296-4dd1-9a22-a81bc316a3a1",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-verzasca-bungy-20261115/audit.json",
+          "summary": "Histoire sourcée : ouverture en 1996 avec précision annuelle, titre et résumé en huit langues."
+        }
+      ],
+      "nextAction": "Conserver la ligne. Recontrôler les horaires exacts et les tarifs avant la saison du 26 mars 2027, puis les conditions d’accès sous 90 jours. Qualifier séparément 007 Skywalk, sans doublonner le saut. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — site officiel, saison 2027",
+          "url": "https://www.007bungy.ch/en/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — informations générales et conditions",
+          "url": "https://www.007bungy.ch/en/general-information",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Classic Jump et tarifs",
+          "url": "https://www.007bungy.ch/en/bungy_jumps/1-007-classic-jump",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant trekking.ch — histoire et ouverture",
+          "url": "https://www.trekking.ch/ueber-uns?lang=en",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — actualités et 30 ans",
+          "url": "https://www.007bungy.ch/en/news_items",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Irene Grassi, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Jump!_(15536887802).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Corradox, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Verzasca_Bungee.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Hollerz, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Verzasca_Dam_Bungee.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "CH",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "007 Bungy Verzasca",
+            "source": "Exploitant — Classic Jump et tarifs",
+            "url": "https://www.007bungy.ch/en/bungy_jumps/1-007-classic-jump",
+            "family": "Bungy jump",
+            "sourceVenueName": "Barrage de Verzasca",
+            "sourceLifecycleSignal": "OperatingSeasonal",
+            "sourceLocality": "Vogorno, Tessin"
+          }
+        ],
+        "rationale": "Saut vendu et exploité indépendamment depuis le barrage. Skywalk traité comme offre distincte. Fiche propre créée après recherche de doublons."
+      }
+    },
+    {
       "entryId": "CH-candidate-68a57a64933d7e",
       "name": "Alpamare",
       "entityKind": "Park",
