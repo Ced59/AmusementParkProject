@@ -1,0 +1,1823 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-adventures",
+        "step": "02-zones-and-03-adventures",
+        "notes": "Dedicated official pages and personally reviewed map identify three real activity areas: Accrobranche, Paintball and Waterjump. These are not invented visitor-category zones. Nine individually named tree courses and five named paintball terrains are distinct, Waterjump remains one named complex, not18 invented attractions. Map labels twoFamille versus pageDécouverte/Famille divergence retained, no unproved alias. Paintball age8page versus child6map unresolved, no condition transposed acrossformats. Waterjump clothing contradiction and four detaillevels versus three introlevels retained for later pass; no fabricated rules. All newzones/items private, no manufacturer or GPS inferred, descriptions and media follow."
+      },
+      "zones": [
+        {
+          "key": "pokeyland-zone-accrobranche",
+          "name": "Accrobranche",
+          "isVisible": false,
+          "sortOrder": 1
+        },
+        {
+          "key": "pokeyland-zone-paintball",
+          "name": "Paintball",
+          "isVisible": false,
+          "sortOrder": 2
+        },
+        {
+          "key": "pokeyland-zone-waterjump",
+          "name": "Waterjump",
+          "isVisible": false,
+          "sortOrder": 3
+        }
+      ],
+      "items": [
+        {
+          "key": "pokeyland-parcours-pitchoune-1",
+          "name": "Parcours Pitchoune 1",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "zoneKey": "pokeyland-zone-accrobranche",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 100,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              },
+              {
+                "type": "MinAgeAccompanied",
+                "value": 3,
+                "unit": "Year",
+                "requiresAccompaniment": true,
+                "displayOrder": 2
+              },
+              {
+                "type": "MaxHeight",
+                "value": 150,
+                "unit": "Centimeter",
+                "displayOrder": 3
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-parcours-pitchoune-2",
+          "name": "Parcours Pitchoune 2",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "zoneKey": "pokeyland-zone-accrobranche",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 100,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              },
+              {
+                "type": "MinAgeAccompanied",
+                "value": 3,
+                "unit": "Year",
+                "requiresAccompaniment": true,
+                "displayOrder": 2
+              },
+              {
+                "type": "MaxHeight",
+                "value": 150,
+                "unit": "Centimeter",
+                "displayOrder": 3
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-parcours-pitchoune-3",
+          "name": "Parcours Pitchoune 3",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "zoneKey": "pokeyland-zone-accrobranche",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 100,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              },
+              {
+                "type": "MinAgeAccompanied",
+                "value": 3,
+                "unit": "Year",
+                "requiresAccompaniment": true,
+                "displayOrder": 2
+              },
+              {
+                "type": "MaxHeight",
+                "value": 150,
+                "unit": "Centimeter",
+                "displayOrder": 3
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-parcours-decouverte",
+          "name": "Parcours découverte",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "zoneKey": "pokeyland-zone-accrobranche",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 120,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-parcours-famille",
+          "name": "Parcours famille",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "zoneKey": "pokeyland-zone-accrobranche",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 120,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-parcours-aventure-1",
+          "name": "Parcours aventure 1",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "zoneKey": "pokeyland-zone-accrobranche",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 140,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-parcours-aventure-2",
+          "name": "Parcours aventure 2",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "zoneKey": "pokeyland-zone-accrobranche",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 140,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-parcours-sportif",
+          "name": "Parcours sportif",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "zoneKey": "pokeyland-zone-accrobranche",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 140,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-parcours-tyrolienne",
+          "name": "Parcours tyrolienne",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "zoneKey": "pokeyland-zone-accrobranche",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 140,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-terrain-dog-one",
+          "name": "Dog One",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "zoneKey": "pokeyland-zone-paintball",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+          }
+        },
+        {
+          "key": "pokeyland-terrain-fox-two",
+          "name": "Fox Two",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "zoneKey": "pokeyland-zone-paintball",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+          }
+        },
+        {
+          "key": "pokeyland-terrain-panama",
+          "name": "Panama",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "zoneKey": "pokeyland-zone-paintball",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+          }
+        },
+        {
+          "key": "pokeyland-terrain-zombie",
+          "name": "Zombie",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "zoneKey": "pokeyland-zone-paintball",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+          }
+        },
+        {
+          "key": "pokeyland-terrain-cannibale",
+          "name": "Cannibale",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "zoneKey": "pokeyland-zone-paintball",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+          }
+        },
+        {
+          "key": "pokeyland-waterjump",
+          "name": "Waterjump",
+          "category": "Attraction",
+          "type": "WaterRide",
+          "zoneKey": "pokeyland-zone-waterjump",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/packs/waterjump/",
+            "accessConditions": [
+              {
+                "type": "MinAge",
+                "value": 6,
+                "unit": "Year",
+                "displayOrder": 1
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "5fd18ffe-ae3c-49ec-b412-483ac02e8169",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:57:10.24571Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 18,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "80c4950e-805a-4c00-8806-32c5cc9fe426",
+        "entityKey": "pokeyland-zone-accrobranche",
+        "displayName": "Accrobranche",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "sortOrder",
+            "oldValue": "0",
+            "newValue": "1"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "94b095cd-84f9-4a61-8b4f-f8e1e07c42fc",
+        "entityKey": "pokeyland-zone-paintball",
+        "displayName": "Paintball",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "sortOrder",
+            "oldValue": "0",
+            "newValue": "2"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "03f4d9a1-108f-487b-ac45-84bb381410a9",
+        "entityKey": "pokeyland-zone-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "sortOrder",
+            "oldValue": "0",
+            "newValue": "3"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3cea0c6c-3de4-49fb-b5a2-2e0ff2a60433",
+        "entityKey": "pokeyland-parcours-pitchoune-1",
+        "displayName": "Parcours Pitchoune 1",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "80c4950e-805a-4c00-8806-32c5cc9fe426"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||100|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MinAgeAccompanied|||||3|Year|true||||2|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||150|Centimeter|||||3|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "17411f6e-4b13-4576-b79d-bf0943b2e9da",
+        "entityKey": "pokeyland-parcours-pitchoune-2",
+        "displayName": "Parcours Pitchoune 2",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "80c4950e-805a-4c00-8806-32c5cc9fe426"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||100|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MinAgeAccompanied|||||3|Year|true||||2|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||150|Centimeter|||||3|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f33a975d-e4b3-40c7-87fe-0c69c3c5fead",
+        "entityKey": "pokeyland-parcours-pitchoune-3",
+        "displayName": "Parcours Pitchoune 3",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "80c4950e-805a-4c00-8806-32c5cc9fe426"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||100|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MinAgeAccompanied|||||3|Year|true||||2|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||150|Centimeter|||||3|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f808396a-e404-45ec-af03-8b113169a148",
+        "entityKey": "pokeyland-parcours-decouverte",
+        "displayName": "Parcours découverte",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "80c4950e-805a-4c00-8806-32c5cc9fe426"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a364f30-3c12-4dca-8e2c-61ed68c8d0a0",
+        "entityKey": "pokeyland-parcours-famille",
+        "displayName": "Parcours famille",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "80c4950e-805a-4c00-8806-32c5cc9fe426"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4e3ef13c-8faf-4529-99bd-90a17b0a6f95",
+        "entityKey": "pokeyland-parcours-aventure-1",
+        "displayName": "Parcours aventure 1",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "80c4950e-805a-4c00-8806-32c5cc9fe426"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||140|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "de00ecb0-1c5f-49c3-9b2a-3cba5558e4ad",
+        "entityKey": "pokeyland-parcours-aventure-2",
+        "displayName": "Parcours aventure 2",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "80c4950e-805a-4c00-8806-32c5cc9fe426"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||140|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c45a4e87-79d8-4090-b0dd-739b2c72ae84",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "80c4950e-805a-4c00-8806-32c5cc9fe426"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||140|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "027edb1e-3d9f-49da-acaf-699560a58c99",
+        "entityKey": "pokeyland-parcours-tyrolienne",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "80c4950e-805a-4c00-8806-32c5cc9fe426"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||140|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f6ba73eb-7528-4bf5-9c9d-df9cf002a189",
+        "entityKey": "pokeyland-terrain-dog-one",
+        "displayName": "Dog One",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "94b095cd-84f9-4a61-8b4f-f8e1e07c42fc"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "54694a22-bcae-434b-b0cc-ae81d0f0bf02",
+        "entityKey": "pokeyland-terrain-fox-two",
+        "displayName": "Fox Two",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "94b095cd-84f9-4a61-8b4f-f8e1e07c42fc"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9294aa7f-7028-4355-9906-61ce0085d118",
+        "entityKey": "pokeyland-terrain-panama",
+        "displayName": "Panama",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "94b095cd-84f9-4a61-8b4f-f8e1e07c42fc"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a5a06b0-028a-4492-9db7-d509b02e57c9",
+        "entityKey": "pokeyland-terrain-zombie",
+        "displayName": "Zombie",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "94b095cd-84f9-4a61-8b4f-f8e1e07c42fc"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4918766f-a926-40a0-91c0-0158f9de3258",
+        "entityKey": "pokeyland-terrain-cannibale",
+        "displayName": "Cannibale",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "94b095cd-84f9-4a61-8b4f-f8e1e07c42fc"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1c3c8cca-f10b-41cc-b214-6565c7732524",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WaterRide"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "03f4d9a1-108f-487b-ac45-84bb381410a9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/waterjump/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||6|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "626eaae6-6df0-4e0e-8bca-8cdf8c4f4e85",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:57:26.5722084Z",
+    "appliedAtUtc": "2026-11-15T10:57:26.5722096Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 18,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "15802825-0835-40e0-b211-410bc26e14b9",
+        "entityKey": "pokeyland-zone-accrobranche",
+        "displayName": "Accrobranche",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "sortOrder",
+            "oldValue": "0",
+            "newValue": "1"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "entityKey": "pokeyland-zone-paintball",
+        "displayName": "Paintball",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "sortOrder",
+            "oldValue": "0",
+            "newValue": "2"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "161766a5-cdcd-4675-aef8-3acc9e078098",
+        "entityKey": "pokeyland-zone-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "sortOrder",
+            "oldValue": "0",
+            "newValue": "3"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "09ed3d9f-bcf0-4751-b69a-6abd6ab5c4ca",
+        "entityKey": "pokeyland-parcours-pitchoune-1",
+        "displayName": "Parcours Pitchoune 1",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||100|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MinAgeAccompanied|||||3|Year|true||||2|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||150|Centimeter|||||3|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9a40ce59-ca74-455f-8ba0-185b560055a1",
+        "entityKey": "pokeyland-parcours-pitchoune-2",
+        "displayName": "Parcours Pitchoune 2",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||100|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MinAgeAccompanied|||||3|Year|true||||2|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||150|Centimeter|||||3|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "20067de5-b801-4e24-90d3-4ba5ffc711f6",
+        "entityKey": "pokeyland-parcours-pitchoune-3",
+        "displayName": "Parcours Pitchoune 3",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||100|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MinAgeAccompanied|||||3|Year|true||||2|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||150|Centimeter|||||3|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "pokeyland-parcours-decouverte",
+        "displayName": "Parcours découverte",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "pokeyland-parcours-famille",
+        "displayName": "Parcours famille",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fa6e99c1-f258-408e-8628-8c95312f2c18",
+        "entityKey": "pokeyland-parcours-aventure-1",
+        "displayName": "Parcours aventure 1",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||140|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "496b6b3b-d182-45bf-b2b7-6199dd24c91a",
+        "entityKey": "pokeyland-parcours-aventure-2",
+        "displayName": "Parcours aventure 2",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||140|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||140|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "pokeyland-parcours-tyrolienne",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "15802825-0835-40e0-b211-410bc26e14b9"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/accrobranche/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||140|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "entityKey": "pokeyland-terrain-dog-one",
+        "displayName": "Dog One",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "entityKey": "pokeyland-terrain-fox-two",
+        "displayName": "Fox Two",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "entityKey": "pokeyland-terrain-panama",
+        "displayName": "Panama",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "entityKey": "pokeyland-terrain-zombie",
+        "displayName": "Zombie",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "entityKey": "pokeyland-terrain-cannibale",
+        "displayName": "Cannibale",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/paintball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WaterRide"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "161766a5-cdcd-4675-aef8-3acc9e078098"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/packs/waterjump/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||6|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sourceResearch": {
+    "createdAtUtc": "2026-11-15T10:47:52.417510+00:00",
+    "currentCatalogueCount": 26,
+    "catalogueFile": "current-official-activity-catalog.json",
+    "map2026": {
+      "services": {
+        "0": "Caisse accueil",
+        "1": "Salle de séminaire",
+        "2": "La Pêche de Pokey",
+        "3": "Salle arcade",
+        "4": "Scène Pokeyshow (16h)"
+      },
+      "food": {
+        "5": "Le Petit Creux",
+        "6": "Le Grill",
+        "7": "L’Escale",
+        "8": "Le Gourmand",
+        "9": "Pokey Beach"
+      },
+      "adventures": {
+        "10": "Accueil accrobranche",
+        "11": "Parcours Pitchounes",
+        "12": "Parcours Pitchounes",
+        "13": "Parcours Pitchounes accès libre",
+        "14": "Parcours Famille",
+        "15": "Parcours Famille",
+        "16": "Parcours Aventure",
+        "17": "Parcours Aventure",
+        "18": "Parcours Sportif",
+        "19": "Parcours Tyrolienne",
+        "20": "Waterjump",
+        "21": "Paintball enfant",
+        "22": "Paintball adulte"
+      },
+      "paintballTerrains": {
+        "A": "Dog One",
+        "B": "Fox Two",
+        "C": "Panama",
+        "D": "Zombie",
+        "E": "Cannibale"
+      },
+      "activities": {
+        "23": "Les as du volant",
+        "24": "Les as du ciel",
+        "25": "Mono-Rail",
+        "26": "Kids Swing",
+        "27": "Balade de Poney",
+        "28": "Mini-golf",
+        "29": "Cabanes de Pokey",
+        "30": "Trampoline",
+        "31": "Escalade",
+        "32": "Les Avions",
+        "33": "Tir à l’arc",
+        "34": "Crazy Kart",
+        "35": "Kid’s Quad",
+        "36": "Laser Games",
+        "37": "Bumper Boat",
+        "38": "Ejector",
+        "39": "Les p’tits chevaux",
+        "40": "Tubing",
+        "41": "Bazoka Ball",
+        "42": "La Pomme",
+        "43": "La Fall Tower",
+        "44": "La Roue",
+        "45": "Le P’tit Train",
+        "46": "Le Batoo",
+        "47": "Parcours pieds nus"
+      }
+    },
+    "mapsAndSeasonalDocuments": [
+      {
+        "file": "official-map-2026.pdf",
+        "source": {
+          "url": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+          "accessedAtUtc": "2026-11-15T10:36:57.087598+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+          "sha256": "995e99a02b0da75695b33206915fd292abef9c5a6a4efd614a6df14e00dc3db6",
+          "bytes": 362538,
+          "file": "official-map-2026.pdf"
+        },
+        "year": 2026,
+        "yearEvidence": "Filename PLAN_PARC_2026_compressed.pdf and PDF title PLAN_PARC_2026; PDF created2026-05-30, site upload path2026/07. Full map personally viewed.",
+        "printedYearVisible": false,
+        "pdfCreationUtc": "2026-05-30T14:40:27Z",
+        "useLimit": "Cartographic positions are not GPS coordinates; two unnamed forthcoming novelties are not identifiable items; #44 appears twice in artwork, do not duplicate La Roue"
+      },
+      {
+        "file": "official-map-2022.pdf",
+        "source": {
+          "url": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+          "accessedAtUtc": "2026-11-15T10:36:57.806942+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+          "sha256": "507ee6aaadb5f3e80cac2da0c645226293bf10160c6ea65d5cd4a46071e96798",
+          "bytes": 4042269,
+          "file": "official-map-2022.pdf"
+        },
+        "year": null,
+        "suggestedFileVersionYear": 2022,
+        "yearEvidence": "Official upload path2022/06 and PDF creation2022-06-13 support file version only; no printed year observed.",
+        "printedYearVisible": false,
+        "pdfCreationUtc": "2022-06-13T07:58:54Z",
+        "useLimit": "Do not assert a printed annual2022plan without qualifying the dating evidence; full map personally viewed"
+      },
+      {
+        "file": "official-brochure-2023.pdf",
+        "source": {
+          "url": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+          "accessedAtUtc": "2026-11-15T10:36:59.030634+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+          "sha256": "0631cbb032a16aef9d9893a39181094c8892104f40fd267c8fdf972817937ecc",
+          "bytes": 5283404,
+          "file": "official-brochure-2023.pdf"
+        },
+        "year": 2023,
+        "yearEvidence": "Printed TARIFS DES ACTIVITES2023 on page3 and filename.",
+        "kind": "Season brochure, not a park map",
+        "useLimit": "Page3 PokeyPlage picture is an illustration/promotional rendering; do not import as real park photo. Pages3and4 personally viewed; all4pages text extracted"
+      },
+      {
+        "file": "official-group-2022.pdf",
+        "source": {
+          "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/BdcGroupes_interactifPOKEYLAND.pdf",
+          "accessedAtUtc": "2026-11-15T10:37:00.527601+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/BdcGroupes_interactifPOKEYLAND.pdf",
+          "sha256": "b15185a983d2681562de70019a16b85c4b6b141f7079723a55a55e4659e16a4d",
+          "bytes": 4746297,
+          "file": "official-group-2022.pdf"
+        },
+        "year": 2022,
+        "yearEvidence": "Printed SAISON2022",
+        "kind": "Group booking brochure, not a map",
+        "useLimit": "Historical prices and terms, not current2026 tariffs"
+      }
+    ],
+    "historicalCandidates": [
+      {
+        "name": "Lancer de hache",
+        "evidence": [
+          "official-map-2022.pdf item4"
+        ],
+        "currentDisposition": "Not in current catalogue/map; no closure date proved"
+      },
+      {
+        "name": "Rotor Jump",
+        "evidence": [
+          "official-map-2022.pdf item26",
+          "official-brochure-2023.pdf page4",
+          "pokeyland-history.html"
+        ],
+        "currentDisposition": "Still mentioned in current about text but absentcurrent catalogue/map; qualify before status or exclusion"
+      },
+      {
+        "name": "Le Petit Robin",
+        "evidence": [
+          "official-map-2022.pdf item28",
+          "official-brochure-2023.pdf page4"
+        ],
+        "currentDisposition": "Not in current catalogue/map; no alias or closure proved"
+      },
+      {
+        "name": "Saut dans le vide",
+        "evidence": [
+          "official-map-2022.pdf item34"
+        ],
+        "currentDisposition": "Not in current catalogue/map; no closure date proved"
+      },
+      {
+        "name": "Segway",
+        "evidence": [
+          "official-map-2022.pdf item35",
+          "official-brochure-2023.pdf page4",
+          "news-toutmetz-opening-2015.html",
+          "pokeyland-history.html"
+        ],
+        "currentDisposition": "Current about text retains it; no assumption of current bookability"
+      },
+      {
+        "name": "Clairière de jeux",
+        "evidence": [
+          "official-map-2022.pdf item40",
+          "official-brochure-2023.pdf page3"
+        ],
+        "currentDisposition": "Not in current catalogue/map; no closure date proved"
+      },
+      {
+        "name": "Mini ferme",
+        "evidence": [
+          "official-map-2022.pdf item41",
+          "official-brochure-2023.pdf page3",
+          "pokeyland-history.html"
+        ],
+        "currentDisposition": "Current about text retains it; no closure date proved"
+      },
+      {
+        "name": "Boutique",
+        "evidence": [
+          "official-map-2022.pdf item2"
+        ],
+        "currentDisposition": "Current map number2 is La Pêche de Pokey; numbered position alone does not prove rename/replacement"
+      },
+      {
+        "name": "Checkpoint",
+        "evidence": [
+          "news-toutmetz-opening-2015.html"
+        ],
+        "currentDisposition": "Sixth historical paintball terrain named in contemporary opening report; current catalogue/map gives fiveother names; not automatically same as FoxTwo"
+      },
+      {
+        "name": "Mini-buggy / Buggy enfant",
+        "evidence": [
+          "news-toutmetz-opening-2015.html"
+        ],
+        "currentDisposition": "Do not identify with current KidsRacer/CrazyKart by name similarity alone"
+      },
+      {
+        "name": "Mini-Jeep",
+        "evidence": [
+          "news-toutmetz-opening-2015.html"
+        ],
+        "currentDisposition": "Contemporary tariff proves historicaloffer; current equivalence unknown"
+      },
+      {
+        "name": "Pédalo",
+        "evidence": [
+          "news-toutmetz-opening-2015.html"
+        ],
+        "currentDisposition": "Historicaloffer distinct wording from current electric BumperBoat; no alias assumed"
+      },
+      {
+        "name": "Pétanque (deux terrains)",
+        "evidence": [
+          "news-toutmetz-opening-2015.html"
+        ],
+        "currentDisposition": "Contemporary report locates next to relaxation/foodzone; currentstatus unproved"
+      },
+      {
+        "name": "Paintball cible enfants / airsoft",
+        "evidence": [
+          "news-toutmetz-opening-2015.html"
+        ],
+        "currentDisposition": "Historicaloffers, not necessarily separatelynamed equipment; qualify before creatingitems"
+      },
+      {
+        "name": "Cimetière",
+        "evidence": [
+          "news-toutmetz-opening-2015.html"
+        ],
+        "currentDisposition": "Explicitly future project/rendering in2015; no completed opening proved, exclude fromoperating inventory"
+      }
+    ],
+    "identityWarnings": [
+      "Current displayName Fall Tower appears at URLslug lenvol; not sufficient proof for an old alias L’Envol or replacement date.",
+      "Current Les as du ciel appears at bubble-race URL, Les as du volant at bumper-car, Kids Racer at quad-kids. Reconcile physically and via IDs; do not duplicate or assert historical aliases from slug alone.",
+      "Map2026 Kid’sQuad110cm versus current KidsRacer page100cm: same URL lineage is suggestive, not sufficient to resolve restriction or exact machine.",
+      "Paintball children/adults packages and five named terrains are all internal to Pokeyland, not standaloneparks.",
+      "Accrobranche current page names9courses: Pitchoune1,2,3; Découverte; Famille; Aventure1,2; Sportif; Tyrolienne. Map has two Famillelabels instead of Découverte/Famille. Preserve distinction without inventedrenaming.",
+      "Waterjump has18slides,4explicit levels; avoid18inventednamed rideitems or independentpark.",
+      "2015article names PokeyLand and PokeyPaint as two internalzones; PokeyPaint is not a separatepark from these sources."
+    ]
+  },
+  "currentInventoryAdded": 15,
+  "currentItemsIncludingExistingCoaster": 41,
+  "zonesAdded": 3,
+  "inventoryPasses": {
+    "current": "Catalogue26 plus15adventureplaces covered; food and services remain.",
+    "announced": "Two unnamed novelties on current map excluded until named and confirmed.",
+    "historical": "Dedicated candidates identified in inventory-and-map-reconciliation; no unsupported closure or alias assigned."
+  },
+  "personalReview": "Dedicated official pages and map reviewed:9treecourses,5paintballterrains,1Waterjumpcomplex,3explicit activityareas. Allprivate.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

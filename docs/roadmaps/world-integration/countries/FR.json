@@ -33007,9 +33007,40 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "lastDataIntegrationAt": "2026-11-15T10:57:26.572Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
+          "appliedAt": "2026-11-15T10:52:57.288Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-01-core-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : infos générales sourcées, ouverture20juin2015, adresse et site, rayonnement régional, exploitant BERNARD-AMUSEMENT résolu. Parc Operating saisonnier ; redressement judiciaire distinct de toute fermeture définitive."
+        },
+        {
+          "eventId": "apply-fefd7be6-b9b1-43b2-872e-7ce5f9e862fb",
+          "appliedAt": "2026-11-15T10:55:06.508Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-02-current-inventory-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland :25activités actuelles du catalogue officiel créées privées, Pomme existante conservée. Sources et conditions non ambiguës enregistrées; descriptions, photos, aventures, services et inventaire historique à poursuivre."
+        },
+        {
+          "eventId": "apply-626eaae6-6df0-4e0e-8bca-8cdf8c4f4e85",
+          "appliedAt": "2026-11-15T10:57:26.572Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-03-adventures-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland :3zones et15lieux privés créés depuis les pages officielles et le plan :9parcours accrobranche,5terrains paintball,1Waterjump. Total41lieux; restauration, services et histoire à poursuivre."
+        }
+      ],
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "countryCode": "FR"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-core",
+        "step": "01-park-core",
+        "notes": "Ouverture publique20juin2015 : reportage contemporain Tout-Metz. Adresse et exploitant : BODACC A20240088918, acte29nov2023 publié5mai2024. Rayonnement régional : parc mosellan près de Metz/Nancy, environ100000visiteurs2025 selon MoselleTV2oct2026. Redressement1oct2026 ne prouve aucune fermeture définitive, exploitation saisonnière conservée. Coordonnées existantes préservées; fondateur encore à désambiguïser. Nouveau logo obligatoire à l’étape5. Pas de biographie globale ni date de fondation extrapolée. Données privées, audit final non effectué."
+      },
+      "park": {
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "countryCode": "FR",
+        "type": "AmusementPark",
+        "audienceClassification": "Regional",
+        "status": "Operating",
+        "openingDate": "2015-06-20",
+        "websiteUrl": "https://www.pokeyland.com/",
+        "street": "Lieu-dit La Haie Focart",
+        "city": "Féy",
+        "postalCode": "57420",
+        "operatorKey": "bernard-amusement-pokeyland",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview"
+      },
+      "references": {
+        "operators": [
+          {
+            "key": "bernard-amusement-pokeyland",
+            "name": "BERNARD-AMUSEMENT",
+            "legalName": "BERNARD-AMUSEMENT",
+            "isVisible": false,
+            "adminReviewStatus": "ToReview"
+          }
+        ]
+      }
+    }
+  },
+  "preview": {
+    "operationId": "f20ec2c4-003c-4500-aba7-4ec95c6e9fbb",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:52:44.0380887Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "8a0ac5c2-00e2-481c-977d-8dd1845c382f",
+        "entityKey": "bernard-amusement-pokeyland",
+        "displayName": "BERNARD-AMUSEMENT",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "legalName",
+            "oldValue": null,
+            "newValue": "BERNARD-AMUSEMENT"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": null,
+            "newValue": "AmusementPark"
+          },
+          {
+            "field": "audienceClassification",
+            "oldValue": null,
+            "newValue": "Regional"
+          },
+          {
+            "field": "openingDate",
+            "oldValue": null,
+            "newValue": "2015-06-20"
+          },
+          {
+            "field": "openingDateText",
+            "oldValue": null,
+            "newValue": "2015-06-20"
+          },
+          {
+            "field": "websiteUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/"
+          },
+          {
+            "field": "street",
+            "oldValue": null,
+            "newValue": "Lieu-dit La Haie Focart"
+          },
+          {
+            "field": "city",
+            "oldValue": null,
+            "newValue": "Féy"
+          },
+          {
+            "field": "postalCode",
+            "oldValue": null,
+            "newValue": "57420"
+          },
+          {
+            "field": "operatorId",
+            "oldValue": null,
+            "newValue": "8a0ac5c2-00e2-481c-977d-8dd1845c382f"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "16955ed7-e691-46c8-a765-af5d62c33c67",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:52:57.2889666Z",
+    "appliedAtUtc": "2026-11-15T10:52:57.2889678Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "entityKey": "bernard-amusement-pokeyland",
+        "displayName": "BERNARD-AMUSEMENT",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "legalName",
+            "oldValue": null,
+            "newValue": "BERNARD-AMUSEMENT"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": null,
+            "newValue": "AmusementPark"
+          },
+          {
+            "field": "audienceClassification",
+            "oldValue": null,
+            "newValue": "Regional"
+          },
+          {
+            "field": "openingDate",
+            "oldValue": null,
+            "newValue": "2015-06-20"
+          },
+          {
+            "field": "openingDateText",
+            "oldValue": null,
+            "newValue": "2015-06-20"
+          },
+          {
+            "field": "websiteUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/"
+          },
+          {
+            "field": "street",
+            "oldValue": null,
+            "newValue": "Lieu-dit La Haie Focart"
+          },
+          {
+            "field": "city",
+            "oldValue": null,
+            "newValue": "Féy"
+          },
+          {
+            "field": "postalCode",
+            "oldValue": null,
+            "newValue": "57420"
+          },
+          {
+            "field": "operatorId",
+            "oldValue": null,
+            "newValue": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sourceFiles": [
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/news-toutmetz-opening-2015.html",
+      "sha256": "7c6ea3fde10a6d13864d0ac73da7626c860438bcc1bd9b3482bc9350ae46bba4"
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/bodacc-sale-browser.html",
+      "sha256": "6ca72f1aa7d27a9d285900d0754876e0d06e2a379a96a9aeb605fd9240863bf9"
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/bodacc-redressement-browser.html",
+      "sha256": "bd23417d29239f468a33c18a5940d0e93ff4aff00af04c4a89d063f416325539"
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/news-moselletv-redressement-2026.html",
+      "sha256": "beda21c9b230c95737a79f0641fb7e0f88adecbae5017e554bcae67df6cf4cb1"
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pokeyland-history.html",
+      "sha256": "b908e38715b26b3f9f37993f99d7fe707c74de2ebf05517e4069b1a61d1ec09d"
+    }
+  ],
+  "sourceResearch": {
+    "createdAtUtc": "2026-11-15T10:47:52.417510+00:00",
+    "purpose": "Public source research only; no final integration text and no API/Git/registry/reservation/mutation/import/publication. Parent must reconcile official API IDs and current ownership before integration.",
+    "park": {
+      "name": "Pokeyland",
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+      "address": "La Haie Focart, 57420 Fey, Moselle, France",
+      "website": "https://www.pokeyland.com/",
+      "initialRegistryObservation": "Existing entry was Hidden / ToIntegrate / Operating, unassigned, with null lastDataIntegrationAt and empty history when the previous candidate report was read. This is not a live API reservation guarantee."
+    },
+    "artifacts": {
+      "sourceAccess": "source-access.jsonl",
+      "currentCatalogue": "current-official-activity-catalog.json",
+      "inventory": "inventory-and-map-reconciliation.json",
+      "calendar": "official-calendar-2026-transcription.json",
+      "pricing": "official-pricing-2026-research.json"
+    },
+    "sourceReadiness": {
+      "currentActivities": 26,
+      "adventures": 3,
+      "map2026Source": "official-map-2026.pdf",
+      "olderMap": "official-map-2022.pdf (yearqualified)",
+      "brochures": [
+        "official-brochure-2023.pdf",
+        "official-group-2022.pdf"
+      ],
+      "calendarCountByStatus": {
+        "ClosedOrByReservation": 80,
+        "Open": 101,
+        "ConcertEvent": 1,
+        "OpenNocturne": 1
+      }
+    },
+    "founderOperatorHistory": [
+      {
+        "finding": "Ouverture au public le 20 juin 2015, selon le reportage contemporain Tout-Metz publié ce jour-là. La page officielle Qui sommes-nous confirme seulement 2015. Le chantier commencé en mai 2013 ne constitue pas une ouverture au public.",
+        "date": "2015-06-20",
+        "precision": "Day",
+        "sources": [
+          "news-toutmetz-opening-2015.html",
+          "pokeyland-history.html"
+        ]
+      },
+      {
+        "finding": "La famille Poquet est la famille fondatrice. TF1 désigne Bruno Poquet, le père, comme fondateur ; Nicolas Poquet était directeur. Nicolas Vosgien est une personne distincte, décorateur et directeur d’exploitation dans le reportage de 2015.",
+        "sources": [
+          "history-web-search.json (extrait TF1)",
+          "news-directfm-transition.html",
+          "news-toutmetz-opening-2015.html"
+        ],
+        "qualification": "TF1 est lisible dans les résultats publics, mais son accès direct a répondu403. Sa formule « fondé il y a dix ans » en2022 contredit l’ouverture2015 ; ne pas la reprendre comme date."
+      },
+      {
+        "finding": "L’exploitant actuel est BERNARD-AMUSEMENT, SIREN982057358, société de droit étranger, conformément à la vente publiée au BODACC. Les CGV officielles contiennent des fragments obsolètes : SAS, capital80000€, Nicolas Poquet, prise d’effet2017.",
+        "sources": [
+          "bodacc-sale-browser.html",
+          "official-conditions-generales-de-vente.html"
+        ],
+        "qualification": "Le BODACC nomme Jean-Claude Legros comme dirigeant en France. Ne pas attribuer à l’exploitant les données de forme juridique/capital des anciennes CGV."
+      },
+      {
+        "finding": "Le BODACC confirme l’acte de vente du 29 novembre2023, de POKEYLAND (791387434) à BERNARD-AMUSEMENT, publié le 5 mai2024. La presse décrit ensuite l’accompagnement de la transition par Nicolas Poquet, puis le changement de direction au 1er décembre2024.",
+        "saleDate": "2023-11-29",
+        "publicationDate": "2024-05-05",
+        "managementTransitionDate": "2024-12-01",
+        "sources": [
+          "bodacc-sale-browser.html",
+          "news-directfm-transition.html",
+          "news-moselletv-transition.html"
+        ],
+        "qualification": "La date de vente, la publication légale et le changement de direction sont trois événements distincts. Le BODACC affiche aussi une date d’enregistrement SIE07/11/2023 antérieure à l’acte ; LeFigaro donne07/12. Conserver cette anomalie au lieu de corriger silencieusement."
+      },
+      {
+        "finding": "Redressement judiciaire de BERNARD-AMUSEMENT prononcé le 1er octobre2026 et publié le 13 octobre2026, confirmé par le BODACC public. La cessation des paiements est fixée au 2 avril2025. MoselleTV rapporte un objectif de poursuite d’activité et de réouverture en2027.",
+        "judgmentDate": "2026-10-01",
+        "publicationDate": "2026-10-13",
+        "sources": [
+          "bodacc-redressement-browser.html",
+          "news-moselletv-redressement-2026.html"
+        ],
+        "qualification": "Ce redressement ne prouve ni liquidation ni fermeture définitive du parc. Aucun calendrier2027 ni date de réouverture réalisée ne sont établis."
+      },
+      {
+        "finding": "La brochure2023 mentionne le Waterjump déjà testé en2022 et présente PokeyPlage comme nouveauté2023. Une vignette d’actualité actuelle emploie pourtant « nouvelle aventure aquatique » pour juin2024.",
+        "sources": [
+          "official-brochure-2023.pdf pages1et3",
+          "official-news-2026.html (actualité liée)"
+        ],
+        "qualification": "Une annonce de saison ne doit pas devenir une première ouverture. PokeyPlage/PokeyBeach est interne au parc ; son équivalence de nom mérite rapprochement explicite."
+      }
+    ],
+    "internalVersusExternal": {
+      "internalFood": [
+        "Le Petit Creux",
+        "Le Gourmand",
+        "Le Grill",
+        "L’Escale",
+        "Pokey Beach / Pokey Plage : plan2026 et brochure2023, équivalence de nom à rapprocher"
+      ],
+      "internalServiceLeads": [
+        "La Pêche de Pokey",
+        "Salle d’arcade",
+        "Scène Pokeyshow",
+        "Salle de séminaire",
+        "Accueil / caisse",
+        "Parking",
+        "Consignes",
+        "Poste de secours"
+      ],
+      "externalExcluded": [
+        {
+          "name": "Les Tuileries Hôtel-Restaurant",
+          "location": "Route de Cuvry, Fey"
+        },
+        {
+          "name": "Le Paquis camping",
+          "location": "Corny-sur-Moselle"
+        },
+        {
+          "name": "Allegato Caffé",
+          "location": "Route de Cuvry, Fey"
+        },
+        {
+          "name": "Auberge de Vezon",
+          "location": "58 rue des Vignerons, Marieulles"
+        },
+        {
+          "name": "Le Campagnol",
+          "location": "42 rue de Metz, Corny-sur-Moselle"
+        }
+      ],
+      "source": "official-restauration.html, section explicite À proximité : ces cinq entreprises ne sont pas des lieux internes à Pokeyland.",
+      "picnic": "La FAQ interdit le pique-nique dans le parc ; les espaces mis à disposition sont décrits sur le parking et à proximité de l’accrobranche dans la page Services. Ne pas déduire de GPS ou créer un site voisin comme attraction."
+    },
+    "contradictionsToPreserve": [
+      {
+        "topic": "Heure du 18 avril2026",
+        "a": "Calendrier :10h30",
+        "b": "Actualité officielle :10h00",
+        "decision": "Conserver le désaccord pour ce jour ; ne pas harmoniser silencieusement."
+      },
+      {
+        "topic": "Concert du 11 juillet2026",
+        "a": "Case rose du calendrier",
+        "b": "Aucun horaire pour cette couleur dans la légende",
+        "decision": "Horaires inconnus ; ne pas reprendre les horaires orange des jours voisins."
+      },
+      {
+        "topic": "Âge du paintball",
+        "a": "Fiche actuelle :8ans",
+        "b": "Plan2026 : paintball enfants dès6ans",
+        "decision": "Peut correspondre à deux formats ; qualification nécessaire."
+      },
+      {
+        "topic": "Tenue Waterjump",
+        "a": "Le premier paragraphe interdit le short de bain",
+        "b": "Plus bas, maillot et short de bain sont obligatoires",
+        "decision": "Contradiction sur la même page ; pas de règle catégorique sans résolution."
+      },
+      {
+        "topic": "Niveaux du Waterjump",
+        "a": "Introduction :3niveaux",
+        "b": "Détail :4niveaux nommés,18toboggans",
+        "decision": "Préserver cette incohérence ; les quatre sections détaillées sont lisibles."
+      },
+      {
+        "topic": "Restrictions kart / quad",
+        "a": "Plan2026 : CrazyKart dès5ans, Kid’sQuad110cm",
+        "b": "Fiches actuelles : CrazyKart110cm, Kid’sRacer100cm",
+        "decision": "Ne pas intervertir les identités à partir des libellés cartographiques."
+      },
+      {
+        "topic": "Accrobranche",
+        "a": "Brochure2023 :8parcours",
+        "b": "Page actuelle :9 ; le plan nomme deux parcours Famille où la page distingue Découverte/Famille",
+        "decision": "Évolution et éventuels alias à qualifier ; aucune fusion automatique."
+      },
+      {
+        "topic": "Actualité du catalogue",
+        "a": "Catalogue actuel26activités et plan2026",
+        "b": "La page Qui sommes-nous cite encore Segway, RotorJump et mini-ferme ; cinq nouveautés sans date précise",
+        "decision": "Ne pas inférer une exploitation actuelle ou une ouverture2026 à partir d’un texte général ou d’un badge."
+      },
+      {
+        "topic": "Début de saison2025",
+        "a": "D!RECTFM annonce le5avril2025",
+        "b": "MoselleTV annonce le2avril2025",
+        "decision": "Ce sont des annonces divergentes ; rechercher une confirmation de l’ouverture effective."
+      },
+      {
+        "topic": "Exploitant légal",
+        "a": "CGV : SAS / capital80000€ / anciens fragments",
+        "b": "BODACC : BERNARD-AMUSEMENT, société de droit étranger",
+        "decision": "Privilégier la source officielle juridique pour l’identité de référence, sans importer les fragments obsolètes."
+      }
+    ],
+    "sourceLimitations": [
+      "Les URLs d’images des fiches sont des pistes : les binaires n’ont pas été téléchargés ou inspectés personnellement. Aucun manifeste d’import accepté.",
+      "Plans et calendrier intégralement vus. Le calendrier est un montage promotionnel, pas une photo réelle du parc.",
+      "Aucune position GPS déduite d’un plan illustré.",
+      "TF1 : accès direct403, arrêté ; extrait public de recherche conservé.",
+      "Cour de cassation : réponse200 de255octets exigeant JavaScript/cookies, donc texte de décision non lu directement.",
+      "Les réponses urllib BODACC sont des coquilles HTML compressées identiques, conservées avec leurs hashes. La navigation Chromium publique normale a ensuite rendu les annonces de vente et de redressement, personnellement lues ; fichiers bodacc-*-browser.html/.txt.",
+      "Aucune fermeture ni date de retrait inférée pour une offre historique absente du catalogue actuel.",
+      "Aucun calendrier ou tarif2027 trouvé, aucune réouverture2027 accomplie attestée."
+    ],
+    "recommendedParentOrder": [
+      "SearchParks avec parkId exact, vérifier la réservation actuelle, puis rapprocher les IDs existants avant toute création.",
+      "Qualifier chaque lieu interne et candidat historique avec les fiches, plans et reportage2015 ; les anciens slugs ne suffisent pas à établir des alias.",
+      "Rapprocher fondateurs/exploitants et chronologie : ouverture2015, vente2023, direction2024, redressement2026, sans inventer une fermeture définitive.",
+      "Examiner personnellement les photos candidates et les plans, puis rédiger/revoir les huit langues indépendamment des textes sources.",
+      "Conserver les contradictions des horaires/tarifs ; aucune fermeture systématique pour les cases noires, aucun horaire inventé pour le concert.",
+      "Ce rapport de recherche ne constitue pas un audit ni une intégration terminée."
+    ],
+    "primaryRegistrySources": [
+      {
+        "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+        "accessedAtUtc": "2026-11-15T10:44:01.046988+00:00",
+        "status": 200,
+        "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:A20240088918",
+        "sha256": "6ca72f1aa7d27a9d285900d0754876e0d06e2a379a96a9aeb605fd9240863bf9",
+        "bytes": 425521,
+        "file": "bodacc-sale-browser.html"
+      },
+      {
+        "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026",
+        "accessedAtUtc": "2026-11-15T10:44:08.077339+00:00",
+        "status": 200,
+        "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:A202601966026",
+        "sha256": "bd23417d29239f468a33c18a5940d0e93ff4aff00af04c4a89d063f416325539",
+        "bytes": 419267,
+        "file": "bodacc-redressement-browser.html"
+      }
+    ]
+  },
+  "decisions": [
+    "Existing park selected by exact ID, no duplicate created.",
+    "Public opening20June2015 established by contemporary20June2015Tout-Metz report; constructionMay2013 not opening.",
+    "Legal operator BERNARD-AMUSEMENT matched through official Preview; new private reference without unproved foundedYear.",
+    "Sale29Nov2023, direction transition1Dec2024 and receivership1Oct2026 remain distinct.",
+    "Regional scope and AmusementPark classification based on permanent multiactivity forest park; seasonalOperating preserved.",
+    "Founder requires further disambiguation. Existing coordinates and private Pomme ID preserved."
+  ],
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

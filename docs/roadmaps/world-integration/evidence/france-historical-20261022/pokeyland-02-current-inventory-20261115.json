@@ -1,0 +1,2390 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-inventory",
+        "step": "03-current-catalogue",
+        "notes": "25 current official catalogue activities, excluding existing Pomme ID3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef. All private pending personal8-language descriptions/photo/audit. Current map personally reviewed, no coordinates inferred. No manufacturer guessed. Current headings are activity groups, no invented zone assignment. Historical PokeyLand/PokeyPaint2015 areas retained as research; no current boundary claimed. CrazyKart age5 vs110cm and KidsRacer100cm vs mapKidsQuad110cm unresolved; numeric constraints omitted for these. Companion upper thresholds, weights, Cabanes age3–6 ambiguity retained for dedicated access-condition pass. No technical values or generic descriptions filled."
+      },
+      "items": [
+        {
+          "key": "pokeyland-aire-de-jeux",
+          "name": "Aire de jeux",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/bonus/aire-de-jeux/"
+          }
+        },
+        {
+          "key": "pokeyland-bazooka-ball",
+          "name": "Bazooka ball",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/baroudeurs/bazooka-ball/",
+            "accessConditions": [
+              {
+                "type": "MinAge",
+                "value": 6,
+                "unit": "Year",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-bubble-race",
+          "name": "Les as du ciel",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/parc/bubble-race/"
+          }
+        },
+        {
+          "key": "pokeyland-bumper-boat",
+          "name": "Bumper Boat",
+          "category": "Attraction",
+          "type": "WaterRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 90,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-bumper-car",
+          "name": "Les as du volant",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/"
+          }
+        },
+        {
+          "key": "pokeyland-crazy-kart",
+          "name": "Crazy Kart",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/"
+          }
+        },
+        {
+          "key": "pokeyland-ejector",
+          "name": "Ejector",
+          "category": "Attraction",
+          "type": "ThrillRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/baroudeurs/ejector/"
+          }
+        },
+        {
+          "key": "pokeyland-escalade",
+          "name": "Escalade",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/escalade/"
+          }
+        },
+        {
+          "key": "pokeyland-kids-swing",
+          "name": "Kid’s Swing",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/kids-swing/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 82,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              },
+              {
+                "type": "MaxHeight",
+                "value": 150,
+                "unit": "Centimeter",
+                "displayOrder": 2
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-la-roue",
+          "name": "La Roue",
+          "category": "Attraction",
+          "type": "ObservationRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/parc/la-roue/"
+          }
+        },
+        {
+          "key": "pokeyland-laser-game",
+          "name": "Laser Game",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/laser-game/",
+            "accessConditions": [
+              {
+                "type": "MinAge",
+                "value": 6,
+                "unit": "Year",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-le-batoo",
+          "name": "Le Batoo",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/parc/le-batoo/"
+          }
+        },
+        {
+          "key": "pokeyland-le-ptit-train",
+          "name": "Le p’tit train",
+          "category": "Attraction",
+          "type": "TransportRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/parc/le-ptit-train/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 90,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-lenvol",
+          "name": "Fall Tower",
+          "category": "Attraction",
+          "type": "DropTower",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/parc/lenvol/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 120,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-les-avions",
+          "name": "Les avions",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/parc/les-avions/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 105,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              },
+              {
+                "type": "MaxHeight",
+                "value": 160,
+                "unit": "Centimeter",
+                "displayOrder": 2
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-les-ptits-chevaux",
+          "name": "Les p’tits chevaux",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/parc/les-ptits-chevaux/",
+            "accessConditions": [
+              {
+                "type": "MinHeight",
+                "value": 120,
+                "unit": "Centimeter",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-mini-golf",
+          "name": "Mini-golf",
+          "category": "Attraction",
+          "type": "Game",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/mini-golf/"
+          }
+        },
+        {
+          "key": "pokeyland-mono-rail",
+          "name": "Mono-Rail",
+          "category": "Attraction",
+          "type": "ObservationRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/parc/mono-rail/"
+          }
+        },
+        {
+          "key": "pokeyland-parcours-pieds-nus",
+          "name": "Parcours pieds nus",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/bonus/parcours-pieds-nus/"
+          }
+        },
+        {
+          "key": "pokeyland-poney",
+          "name": "Poney",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/poney/",
+            "accessConditions": [
+              {
+                "type": "MinAgeAccompanied",
+                "value": 2,
+                "unit": "Year",
+                "displayOrder": 1,
+                "requiresAccompaniment": true
+              },
+              {
+                "type": "MaxHeight",
+                "value": 120,
+                "unit": "Centimeter",
+                "displayOrder": 2
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-quad-kids",
+          "name": "Kid’s Racer",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/quad-kids/",
+            "openingDateText": "2023"
+          }
+        },
+        {
+          "key": "pokeyland-tir-a-larc",
+          "name": "Tir à l’arc",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/tir-a-larc/",
+            "accessConditions": [
+              {
+                "type": "MinAge",
+                "value": 6,
+                "unit": "Year",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-trampoline",
+          "name": "Trampoline",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/trampoline/",
+            "accessConditions": [
+              {
+                "type": "MinAge",
+                "value": 3,
+                "unit": "Year",
+                "displayOrder": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-tubing",
+          "name": "Tubing",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/baroudeurs/tubing/",
+            "accessConditions": [
+              {
+                "type": "MinAgeAccompanied",
+                "value": 2,
+                "unit": "Year",
+                "displayOrder": 1,
+                "requiresAccompaniment": true
+              },
+              {
+                "type": "MinHeight",
+                "value": 100,
+                "unit": "Centimeter",
+                "displayOrder": 2
+              },
+              {
+                "type": "MaxHeight",
+                "value": 200,
+                "unit": "Centimeter",
+                "displayOrder": 3
+              }
+            ]
+          }
+        },
+        {
+          "key": "pokeyland-cabanes",
+          "name": "Cabanes de Pokey",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+            "accessConditions": [
+              {
+                "type": "MinAge",
+                "value": 3,
+                "unit": "Year",
+                "displayOrder": 1
+              },
+              {
+                "type": "MinHeight",
+                "value": 90,
+                "unit": "Centimeter",
+                "displayOrder": 2
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "e42d7812-48f9-4bbb-8c02-85130f37dd2c",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:54:49.2495723Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 25,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6468fb51-ab82-4919-af35-acdeba473041",
+        "entityKey": "pokeyland-aire-de-jeux",
+        "displayName": "Aire de jeux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/bonus/aire-de-jeux/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b4bf362f-ef05-4795-91a2-f80f5b818958",
+        "entityKey": "pokeyland-bazooka-ball",
+        "displayName": "Bazooka ball",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/baroudeurs/bazooka-ball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||6|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9bee6779-ed43-4814-9c86-67b5a9b862ac",
+        "entityKey": "pokeyland-bubble-race",
+        "displayName": "Les as du ciel",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/bubble-race/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "399eb8f2-01c7-4b71-a21a-74a953564d35",
+        "entityKey": "pokeyland-bumper-boat",
+        "displayName": "Bumper Boat",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WaterRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||90|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "50f6fb51-dec5-4a57-b914-e41336ec4040",
+        "entityKey": "pokeyland-bumper-car",
+        "displayName": "Les as du volant",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4815cb4c-9278-4187-9468-154f1f709577",
+        "entityKey": "pokeyland-crazy-kart",
+        "displayName": "Crazy Kart",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a9503634-22c5-46c4-a633-511808ede3d3",
+        "entityKey": "pokeyland-ejector",
+        "displayName": "Ejector",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ThrillRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/baroudeurs/ejector/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ff82591c-ffc0-4040-9f0c-0aad96745b1f",
+        "entityKey": "pokeyland-escalade",
+        "displayName": "Escalade",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/escalade/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cc035657-7533-4df0-91a7-3c68f2617fc7",
+        "entityKey": "pokeyland-kids-swing",
+        "displayName": "Kid’s Swing",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/kids-swing/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||82|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||150|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "167e92d0-d7ea-4b54-8137-2d5fea9a5f13",
+        "entityKey": "pokeyland-la-roue",
+        "displayName": "La Roue",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ObservationRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/la-roue/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba72b50f-6fbb-4eef-872b-eb5a8174bc85",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/laser-game/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||6|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "967a5ba3-afda-412e-bfb8-2e58ebed35e7",
+        "entityKey": "pokeyland-le-batoo",
+        "displayName": "Le Batoo",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/le-batoo/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cc430de4-bd41-4d1b-bb6f-5625128eb203",
+        "entityKey": "pokeyland-le-ptit-train",
+        "displayName": "Le p’tit train",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "TransportRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/le-ptit-train/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||90|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "189f8cba-791e-45a8-93f6-69736f4ee458",
+        "entityKey": "pokeyland-lenvol",
+        "displayName": "Fall Tower",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "DropTower"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/lenvol/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef4adbb2-3100-4bd4-971c-5dd934049837",
+        "entityKey": "pokeyland-les-avions",
+        "displayName": "Les avions",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/les-avions/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||105|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||160|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5d77d613-a76e-484d-a140-0a733f349932",
+        "entityKey": "pokeyland-les-ptits-chevaux",
+        "displayName": "Les p’tits chevaux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/les-ptits-chevaux/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "55cab73d-3d8e-42b9-a223-dacbf434950d",
+        "entityKey": "pokeyland-mini-golf",
+        "displayName": "Mini-golf",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/mini-golf/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dcaaf8d0-4ee1-4097-9922-be4e8fc21e7d",
+        "entityKey": "pokeyland-mono-rail",
+        "displayName": "Mono-Rail",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ObservationRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/mono-rail/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4ad6dd3-b577-45e2-ab2e-33e280be1cfa",
+        "entityKey": "pokeyland-parcours-pieds-nus",
+        "displayName": "Parcours pieds nus",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/bonus/parcours-pieds-nus/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2fee40da-d2ee-4512-a329-ecb395fb65f6",
+        "entityKey": "pokeyland-poney",
+        "displayName": "Poney",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/poney/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAgeAccompanied|||||2|Year|true||||1|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||120|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b1886afe-6640-49ca-bc0a-36f5ef198077",
+        "entityKey": "pokeyland-quad-kids",
+        "displayName": "Kid’s Racer",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/quad-kids/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2023"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e5992be8-4ffc-4e93-a469-58c1cdd6f002",
+        "entityKey": "pokeyland-tir-a-larc",
+        "displayName": "Tir à l’arc",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/tir-a-larc/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||6|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "63781a4f-d690-4429-baea-657190c379d7",
+        "entityKey": "pokeyland-trampoline",
+        "displayName": "Trampoline",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/trampoline/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||3|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cabe4ffc-ad3d-4a59-a6f0-6ea53f7e6fb3",
+        "entityKey": "pokeyland-tubing",
+        "displayName": "Tubing",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/baroudeurs/tubing/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAgeAccompanied|||||2|Year|true||||1|1|Unknown|||||||Unknown|Attraction||| || MinHeight|||||100|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||200|Centimeter|||||3|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8af9f2b6-2b0d-468b-b2eb-d20a5a370363",
+        "entityKey": "pokeyland-cabanes",
+        "displayName": "Cabanes de Pokey",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||3|Year|||||1|1|Unknown|||||||Unknown|Attraction||| || MinHeight|||||90|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "fefd7be6-b9b1-43b2-872e-7ce5f9e862fb",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:55:06.5087876Z",
+    "appliedAtUtc": "2026-11-15T10:55:06.508789Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 25,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+        "entityKey": "pokeyland-aire-de-jeux",
+        "displayName": "Aire de jeux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/bonus/aire-de-jeux/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "798894e0-5efa-45b0-953c-baad70dab44a",
+        "entityKey": "pokeyland-bazooka-ball",
+        "displayName": "Bazooka ball",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/baroudeurs/bazooka-ball/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||6|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+        "entityKey": "pokeyland-bubble-race",
+        "displayName": "Les as du ciel",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/bubble-race/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+        "entityKey": "pokeyland-bumper-boat",
+        "displayName": "Bumper Boat",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WaterRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||90|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+        "entityKey": "pokeyland-bumper-car",
+        "displayName": "Les as du volant",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "entityKey": "pokeyland-crazy-kart",
+        "displayName": "Crazy Kart",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "entityKey": "pokeyland-ejector",
+        "displayName": "Ejector",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ThrillRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/baroudeurs/ejector/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "pokeyland-escalade",
+        "displayName": "Escalade",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/escalade/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53432ace-37a0-4149-9153-a418b86da889",
+        "entityKey": "pokeyland-kids-swing",
+        "displayName": "Kid’s Swing",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/kids-swing/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||82|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||150|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "entityKey": "pokeyland-la-roue",
+        "displayName": "La Roue",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ObservationRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/la-roue/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/laser-game/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||6|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "entityKey": "pokeyland-le-batoo",
+        "displayName": "Le Batoo",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/le-batoo/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "entityKey": "pokeyland-le-ptit-train",
+        "displayName": "Le p’tit train",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "TransportRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/le-ptit-train/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||90|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "entityKey": "pokeyland-lenvol",
+        "displayName": "Fall Tower",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "DropTower"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/lenvol/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "entityKey": "pokeyland-les-avions",
+        "displayName": "Les avions",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/les-avions/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||105|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||160|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "entityKey": "pokeyland-les-ptits-chevaux",
+        "displayName": "Les p’tits chevaux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/les-ptits-chevaux/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||120|Centimeter|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "pokeyland-mini-golf",
+        "displayName": "Mini-golf",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/mini-golf/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "entityKey": "pokeyland-mono-rail",
+        "displayName": "Mono-Rail",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ObservationRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/parc/mono-rail/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "entityKey": "pokeyland-parcours-pieds-nus",
+        "displayName": "Parcours pieds nus",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/bonus/parcours-pieds-nus/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "pokeyland-poney",
+        "displayName": "Poney",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/poney/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAgeAccompanied|||||2|Year|true||||1|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||120|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "entityKey": "pokeyland-quad-kids",
+        "displayName": "Kid’s Racer",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/quad-kids/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2023"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "entityKey": "pokeyland-tir-a-larc",
+        "displayName": "Tir à l’arc",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/tir-a-larc/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||6|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "entityKey": "pokeyland-trampoline",
+        "displayName": "Trampoline",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/trampoline/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||3|Year|||||1|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "entityKey": "pokeyland-tubing",
+        "displayName": "Tubing",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/baroudeurs/tubing/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAgeAccompanied|||||2|Year|true||||1|1|Unknown|||||||Unknown|Attraction||| || MinHeight|||||100|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction||| || MaxHeight|||||200|Centimeter|||||3|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "entityKey": "pokeyland-cabanes",
+        "displayName": "Cabanes de Pokey",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          },
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinAge|||||3|Year|||||1|1|Unknown|||||||Unknown|Attraction||| || MinHeight|||||90|Centimeter|||||2|1|Unknown|||||||Unknown|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sourceManifest": [
+    {
+      "key": "pokeyland-aire-de-jeux",
+      "name": "Aire de jeux",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/bonus/aire-de-jeux/",
+        "accessedAtUtc": "2026-11-15T10:37:40.682219+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/bonus/aire-de-jeux/",
+        "sha256": "c0d01e21f2f081455adca134e9d81df1c1ddb89182f8d54a7798b220437f4a2e",
+        "bytes": 87958,
+        "file": "activity-aire-de-jeux.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-bazooka-ball",
+      "name": "Bazooka ball",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/baroudeurs/bazooka-ball/",
+        "accessedAtUtc": "2026-11-15T10:37:41.156432+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/baroudeurs/bazooka-ball/",
+        "sha256": "c8a8960e91243a45f527aa942dd1399f8beced895ec0015bbc83878c081a542a",
+        "bytes": 88761,
+        "file": "activity-bazooka-ball.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-bubble-race",
+      "name": "Les as du ciel",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/parc/bubble-race/",
+        "accessedAtUtc": "2026-11-15T10:37:43.434215+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/parc/bubble-race/",
+        "sha256": "07a068708c7d6165b7de5cbc89b850d5fbbd0acb8dfbe756f6cde90c03e01268",
+        "bytes": 83687,
+        "file": "activity-bubble-race.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-bumper-boat",
+      "name": "Bumper Boat",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+        "accessedAtUtc": "2026-11-15T10:37:41.331365+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+        "sha256": "738580b6a258b28ed29e530d4654ab167c4e858a3df653061412749c3074d786",
+        "bytes": 90117,
+        "file": "activity-bumper-boat.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-bumper-car",
+      "name": "Les as du volant",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/",
+        "accessedAtUtc": "2026-11-15T10:37:43.604522+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/",
+        "sha256": "004b3ae50ecfbba79ad357085fcd281fba034595b7b27491c55662376036569f",
+        "bytes": 81786,
+        "file": "activity-bumper-car.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-crazy-kart",
+      "name": "Crazy Kart",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+        "accessedAtUtc": "2026-11-15T10:37:41.527958+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+        "sha256": "850e1d8c558838938c2a6b47883c63c5fbd1c2ccc148423719c25c00f9ae6845",
+        "bytes": 89908,
+        "file": "activity-crazy-kart.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-ejector",
+      "name": "Ejector",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/baroudeurs/ejector/",
+        "accessedAtUtc": "2026-11-15T10:37:41.700407+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/baroudeurs/ejector/",
+        "sha256": "26ae7b9e16893dab633de9f84c7481660ed0548aedcb4925984dbab472b946d5",
+        "bytes": 89444,
+        "file": "activity-ejector.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-escalade",
+      "name": "Escalade",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/escalade/",
+        "accessedAtUtc": "2026-11-15T10:37:41.870155+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/escalade/",
+        "sha256": "6154b95b00ec631b3ca80916ff9d1ead6b78785ef9de02587722bfe59335122b",
+        "bytes": 91250,
+        "file": "activity-escalade.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-kids-swing",
+      "name": "Kid’s Swing",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/kids-swing/",
+        "accessedAtUtc": "2026-11-15T10:37:42.394228+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/kids-swing/",
+        "sha256": "7607b9423e8f0b5f6261e83c4d8675ac736358709c24b84634475fba496be43c",
+        "bytes": 89612,
+        "file": "activity-kids-swing.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-la-roue",
+      "name": "La Roue",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/parc/la-roue/",
+        "accessedAtUtc": "2026-11-15T10:37:42.736618+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/parc/la-roue/",
+        "sha256": "14b9cbb87eb6e6eb9bc7af02f55b4dc73e1355b3bce2e95907cc1c9e30da909a",
+        "bytes": 80993,
+        "file": "activity-la-roue.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-laser-game",
+      "name": "Laser Game",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/laser-game/",
+        "accessedAtUtc": "2026-11-15T10:37:42.906359+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/laser-game/",
+        "sha256": "d3845cfe7c0c5d17439f914d3f00d09a51d27aef677a5a5e93af2846ccc4f8e6",
+        "bytes": 89187,
+        "file": "activity-laser-game.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-le-batoo",
+      "name": "Le Batoo",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/parc/le-batoo/",
+        "accessedAtUtc": "2026-11-15T10:37:43.078052+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/parc/le-batoo/",
+        "sha256": "2f7fe0bcc76aa9690e6b563189efa43deda29c0f5d6e24f9288154369ed56594",
+        "bytes": 82081,
+        "file": "activity-le-batoo.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-le-ptit-train",
+      "name": "Le p’tit train",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/parc/le-ptit-train/",
+        "accessedAtUtc": "2026-11-15T10:37:43.263126+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/parc/le-ptit-train/",
+        "sha256": "8ad175e3fc3106363a00f9dd785ee85f2a3b704c97c51dc59c19bb603a92ef8e",
+        "bytes": 80588,
+        "file": "activity-le-ptit-train.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-lenvol",
+      "name": "Fall Tower",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/parc/lenvol/",
+        "accessedAtUtc": "2026-11-15T10:37:42.042560+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/parc/lenvol/",
+        "sha256": "e53adad5ea87b6f3c78ff353a47a69ebda584800db000618a57e333c768abbaa",
+        "bytes": 83019,
+        "file": "activity-lenvol.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-les-avions",
+      "name": "Les avions",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/parc/les-avions/",
+        "accessedAtUtc": "2026-11-15T10:37:43.785858+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/parc/les-avions/",
+        "sha256": "86315c33e26e21a091bae3632c5aeca2301bb3f1d904e662d523d2ee682f4145",
+        "bytes": 81459,
+        "file": "activity-les-avions.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-les-ptits-chevaux",
+      "name": "Les p’tits chevaux",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/parc/les-ptits-chevaux/",
+        "accessedAtUtc": "2026-11-15T10:37:43.963851+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/parc/les-ptits-chevaux/",
+        "sha256": "0fc59c21efef491205bfa47ebc4be87e38f13208317a327c840ee6f35d33bf63",
+        "bytes": 81228,
+        "file": "activity-les-ptits-chevaux.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-mini-golf",
+      "name": "Mini-golf",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/mini-golf/",
+        "accessedAtUtc": "2026-11-15T10:37:44.136361+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/mini-golf/",
+        "sha256": "77b739d2e37076d40a27b50ccd48c4d672d398ac2bfa52214841029b69a00c4e",
+        "bytes": 89822,
+        "file": "activity-mini-golf.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-mono-rail",
+      "name": "Mono-Rail",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/parc/mono-rail/",
+        "accessedAtUtc": "2026-11-15T10:37:44.308151+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/parc/mono-rail/",
+        "sha256": "8bfaff3cf830bf36adae0a562974de35bd8d9c65645f02f302bbc02ce215a7b4",
+        "bytes": 81760,
+        "file": "activity-mono-rail.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-parcours-pieds-nus",
+      "name": "Parcours pieds nus",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/bonus/parcours-pieds-nus/",
+        "accessedAtUtc": "2026-11-15T10:37:44.479123+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/bonus/parcours-pieds-nus/",
+        "sha256": "2117dba1d03647dde1ec31687b5ebd6fb12eee811960d1c9308fac136ac15be1",
+        "bytes": 89127,
+        "file": "activity-parcours-pieds-nus.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-poney",
+      "name": "Poney",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/poney/",
+        "accessedAtUtc": "2026-11-15T10:37:44.654975+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/poney/",
+        "sha256": "44e079087b5fd3240867c6bae295522581536ef67d9104fa7552c5b3aa8a0426",
+        "bytes": 89945,
+        "file": "activity-poney.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-quad-kids",
+      "name": "Kid’s Racer",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/quad-kids/",
+        "accessedAtUtc": "2026-11-15T10:37:42.219230+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/quad-kids/",
+        "sha256": "d0d213fcfed1271a8509272aca2e9ebe74d47a892d95c03da0f344d66b533757",
+        "bytes": 88776,
+        "file": "activity-quad-kids.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Explicit2023 introduction on current official page"
+    },
+    {
+      "key": "pokeyland-tir-a-larc",
+      "name": "Tir à l’arc",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/tir-a-larc/",
+        "accessedAtUtc": "2026-11-15T10:37:44.827620+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/tir-a-larc/",
+        "sha256": "5f34f87e00dec082f8d1e1f907a9ca62675e00b2c8f91f2ed2f96dd9e049526d",
+        "bytes": 89654,
+        "file": "activity-tir-a-larc.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-trampoline",
+      "name": "Trampoline",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/trampoline/",
+        "accessedAtUtc": "2026-11-15T10:37:45.000354+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/trampoline/",
+        "sha256": "9da5babf203d7179586ee4a3176561d435864496e2905d6eba1d7c5db883b977",
+        "bytes": 90069,
+        "file": "activity-trampoline.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-tubing",
+      "name": "Tubing",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/baroudeurs/tubing/",
+        "accessedAtUtc": "2026-11-15T10:37:45.179591+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/baroudeurs/tubing/",
+        "sha256": "adf125ed8a1e8f1aa43c4498294b9f7b3710aee40bc07a8efb57f75c41b3bcb7",
+        "bytes": 89268,
+        "file": "activity-tubing.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    },
+    {
+      "key": "pokeyland-cabanes",
+      "name": "Cabanes de Pokey",
+      "source": {
+        "url": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+        "accessedAtUtc": "2026-11-15T10:31:27.072888+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+        "sha256": "db328dcbb8d3298a3ddc0833e4a74a6ff5713c7676fe2f6941cc6d19b4a45437",
+        "bytes": 90288,
+        "file": "pokeyland-cabanes.html",
+        "reusedFrom": "/workspace/france-historical-20261114/new-france-candidates-sources-20261115/pokeyland-cabanes.html"
+      },
+      "map2026AlsoConsulted": true,
+      "gps": null,
+      "gpsGap": "Illustrated official map does not provide geographic coordinates; dedicated mapping research remains pending.",
+      "manufacturer": null,
+      "openingDateEvidence": "Not established; no date inferred from upload path or current catalogue."
+    }
+  ],
+  "currentInventoryAdded": 25,
+  "currentItemsIncludingExistingCoaster": 26,
+  "inventoryPasses": {
+    "current": "Catalogue26covered; adventures, food, services remain.",
+    "announced": "Two unnamed novelties on current map excluded until named and confirmed.",
+    "historical": "Dedicated candidates identified in inventory-and-map-reconciliation; no unsupported closure or alias assigned."
+  },
+  "personalReview": "All26current catalogue texts and current map reviewed; only unambiguous core/type/conditions included. Descriptions/photos/location remain explicit subsequent work.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

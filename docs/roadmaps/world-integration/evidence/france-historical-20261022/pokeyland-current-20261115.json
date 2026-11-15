@@ -4,7 +4,7 @@
   "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
   "owner": "Conversation France",
   "observedAtUtc": "2026-11-15T10:46:00.767500+00:00",
-  "status": "intake-in-progress",
+  "status": "integration-in-progress",
   "search": {
     "result": {
       "data": [
@@ -112,13 +112,37 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": null,
-  "newApplyPerformed": false,
+  "lastActualIntegrationAtUtc": "2026-11-15T10:57:26.5722096Z",
+  "newApplyPerformed": true,
   "newPhotoImported": false,
   "fullAuditExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Confirm identity, legal operator and aliases; source October2026 receivership without inferring permanent closure. Check Pomme date2025-05-04 and manufacturer before modifying. Reconcile official inventory/maps/calendar/pricing; preserve existing item ID."
+  "nextAction": "Complete food/services and historical inventory, correct Pomme opening date from current CaptainCoaster/RCDB sources, founder research, then personal8-language editorial work and media. Singlefullaudit not performed; no publication.",
+  "operations": [
+    {
+      "proof": "pokeyland-01-core-20261115.json",
+      "operationId": "16955ed7-e691-46c8-a765-af5d62c33c67",
+      "appliedAtUtc": "2026-11-15T10:52:57.2889678Z"
+    },
+    {
+      "proof": "pokeyland-02-current-inventory-20261115.json",
+      "operationId": "fefd7be6-b9b1-43b2-872e-7ce5f9e862fb",
+      "appliedAtUtc": "2026-11-15T10:55:06.508789Z"
+    },
+    {
+      "proof": "pokeyland-03-adventures-20261115.json",
+      "operationId": "626eaae6-6df0-4e0e-8bca-8cdf8c4f4e85",
+      "appliedAtUtc": "2026-11-15T10:57:26.5722096Z"
+    }
+  ],
+  "currentCounts": {
+    "items": 41,
+    "publicItems": 0,
+    "zones": 3,
+    "media": 0,
+    "descriptions": 0
+  }
 }
