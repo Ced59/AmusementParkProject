@@ -2161,27 +2161,30 @@
       "entryId": "US-candidate-standalone-c0ef02f9420560",
       "name": "Alpine Coaster Wiegand — Cranmore",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
       "category": "Alpine coaster",
       "locality": null,
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Référence constructeur du Mountain Coaster déjà couvert par US-candidate-b781a1f4fe039d et rattaché au Mountain Adventure Park US-candidate-b51e27ae9f4c11.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-candidate-b51e27ae9f4c11",
+        "US-candidate-b781a1f4fe039d"
+      ],
       "aliases": [
         "Cranmore"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la référence Wiegand comme doublon sourcé de US-candidate-b781a1f4fe039d. Suivre la fiche du parc US-candidate-b51e27ae9f4c11, sans créer de standalone.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -2192,23 +2195,28 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.cranmore.com",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Cranmore Mountain Adventure Park — forfait commun coaster, zip line, swing et chairlift",
+          "url": "https://cranmore.com/mountain-adventure-park",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Cranmore",
+            "name": "Mountain Coaster",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2062",
             "family": "Alpine coaster",
-            "sourceVenueName": "Cranmore",
-            "referenceId": "location-id-2062"
+            "sourceVenueName": "Cranmore Mountain Adventure Park"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "La piste Wiegand correspond au coaster du Mountain Adventure Park, dont l’accès est vendu en forfait avec les autres activités."
+      },
+      "duplicateOf": "US-candidate-b781a1f4fe039d"
     },
     {
       "entryId": "US-candidate-standalone-640a286d47f45c",
@@ -15304,21 +15312,30 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Qualifier la fiche Park/Adventure Park et son éventuel siteId avant création ou intégration ; le Mountain Coaster figure parmi les attractions du forfait commun, tarifs et saison à recontrôler à la reprise.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#United_States",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Cranmore Mountain Adventure Park — forfait commun coaster, zip line, swing et chairlift",
+          "url": "https://cranmore.com/mountain-adventure-park",
+          "accessedAt": "2026-11-15"
         }
+      ],
+      "possibleBacklogEntries": [
+        "US-candidate-b781a1f4fe039d",
+        "US-candidate-standalone-c0ef02f9420560"
       ]
     },
     {
       "entryId": "US-candidate-b781a1f4fe039d",
       "name": "Cranmore Mountain Resort",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB)",
+      "proposedEntityKind": "Park",
+      "category": "Dossier parc de montagne et Mountain Adventure Park",
       "locality": "North Conway , New Hampshire",
       "siteId": null,
       "legacySiteIds": [],
@@ -15328,13 +15345,13 @@
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "identityConfidence": "Attraction du Mountain Adventure Park : l’exploitant affiche des billets communs à plusieurs activités et aucune vente distincte du coaster sur la page officielle vérifiée.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver la piste RCDB et poursuivre l’intégration du lieu sous US-candidate-b51e27ae9f4c11. Réexaminer si l’exploitant propose plus tard un billet autonome pour le coaster.",
       "sources": [
         {
           "label": "RCDB",
@@ -15345,25 +15362,32 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13316.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Cranmore Mountain Adventure Park — forfait commun coaster, zip line, swing et chairlift",
+          "url": "https://cranmore.com/mountain-adventure-park",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13316.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Cranmore Mountain Resort",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "North Conway , New Hampshire",
-            "sourceOpenedYear": "2010"
+            "source": "Cranmore Mountain Adventure Park — billetterie et attractions",
+            "url": "https://cranmore.com/mountain-adventure-park",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Cranmore Mountain Adventure Park",
+            "sourceLifecycleSignal": "Seasonal"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Billets 2026 affichés pour plusieurs attractions du Mountain Adventure Park : accès commun coaster, Soaring Eagle Zip Line, Giant Swing et Scenic Chairlift. Aucune billetterie individuelle du coaster trouvée sur cette page."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-b51e27ae9f4c11",
+        "US-candidate-standalone-c0ef02f9420560"
+      ]
     },
     {
       "entryId": "US-candidate-63444347816104",
