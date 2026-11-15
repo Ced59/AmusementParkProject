@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-general-32110959",
+    "source": {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959-1350x900.jpg",
+      "accessedAtUtc": "2026-11-15T11:12:28.937601+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959-1350x900.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 335161,
+      "sha256": "01b79b2048f2adf6ecbdf2e757004e9ed3317c1eb960830c9f9f6f8c72dbd833",
+      "file": "official-general-32110959-1350.jpg"
+    },
+    "dimensions": [
+      1350,
+      900
+    ],
+    "author": "Thierry Hauuy (EXIF: Hauuy Thierry)",
+    "exifEvidence": {
+      "DateTime": "2016:05:06 14:57:38",
+      "DateTimeOriginal": "2016:05:05 14:34:15",
+      "DateTimeDigitized": "2016:05:05 14:34:15",
+      "Artist": "Hauuy Thierry",
+      "Copyright": null,
+      "timezone": null
+    },
+    "rootPersonallyViewed": true,
+    "captureDateUtc": null,
+    "notCurrent": true,
+    "nativePublisherRenditionUnedited": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/official-general-32110959-1350.jpg",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-general-32110959-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-general-32110959-import-result.json"
+  },
+  "metadata": {
+    "description": "Les chalets, la terrasse et l’aire de gyropodes vus depuis une allée boisée de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Cour de Pokeyland entourée de bâtiments en bois, avec des tables, un abri et des visiteurs sur des gyropodes devant le snack."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pokeyland courtyard surrounded by wooden buildings, with tables, a shelter and visitors on self-balancing scooters in front of the snack bar."
+      },
+      {
+        "languageCode": "de",
+        "value": "Hof von Pokeyland zwischen Holzbauten, mit Tischen, einem Unterstand und Besuchern auf selbstbalancierenden Rollern vor dem Imbiss."
+      },
+      {
+        "languageCode": "es",
+        "value": "Patio de Pokeyland rodeado de edificios de madera, con mesas, un cobertizo y visitantes en vehículos autoequilibrados delante del bar."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cortile di Pokeyland circondato da edifici in legno, con tavoli, una tettoia e visitatori su mezzi autobilancianti davanti al punto ristoro."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Binnenplaats van Pokeyland tussen houten gebouwen, met tafels, een afdak en bezoekers op zelfbalancerende voertuigen voor de snackbar."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dziedziniec Pokeyland otoczony drewnianymi budynkami, ze stołami, wiatą i gośćmi na samobalansujących pojazdach przed barem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Pátio de Pokeyland rodeado de edifícios de madeira, com mesas, um abrigo e visitantes em veículos de autoequilíbrio diante do bar."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les chalets, la terrasse et l’aire de gyropodes vus depuis une allée boisée de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The chalets, terrace and self-balancing scooter area seen from a wooded path at Pokeyland."
+      },
+      {
+        "languageCode": "de",
+        "value": "Holzhäuser, Terrasse und Rollerbereich von einem Waldweg in Pokeyland aus gesehen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las cabañas, la terraza y la zona de vehículos autoequilibrados vistas desde un camino arbolado de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Gli chalet, la terrazza e l’area dei mezzi autobilancianti visti da un sentiero alberato di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De chalets, het terras en het terrein voor zelfbalancerende voertuigen, gezien vanaf een bospad in Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Drewniane domki, taras i plac dla samobalansujących pojazdów widziane z leśnej alejki Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os chalés, a esplanada e a área de veículos de autoequilíbrio vistos de um caminho arborizado de Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Thierry Hauuy. Source : site officiel de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "Thierry Hauuy. Source: Pokeyland official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "Thierry Hauuy. Quelle: offizielle Website von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Thierry Hauuy. Fuente: sitio web oficial de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Thierry Hauuy. Fonte: sito ufficiale di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Thierry Hauuy. Bron: officiële website van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Thierry Hauuy. Źródło: oficjalna strona Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Thierry Hauuy. Fonte: site oficial de Pokeyland."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "a30bcfef2e414aca8898b45ee212d46e",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "path": "park/a30bcfef2e414aca8898b45ee212d46e",
+      "description": "Les chalets, la terrasse et l’aire de gyropodes vus depuis une allée boisée de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 335161,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Cour de Pokeyland entourée de bâtiments en bois, avec des tables, un abri et des visiteurs sur des gyropodes devant le snack."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland courtyard surrounded by wooden buildings, with tables, a shelter and visitors on self-balancing scooters in front of the snack bar."
+        },
+        {
+          "languageCode": "de",
+          "value": "Hof von Pokeyland zwischen Holzbauten, mit Tischen, einem Unterstand und Besuchern auf selbstbalancierenden Rollern vor dem Imbiss."
+        },
+        {
+          "languageCode": "es",
+          "value": "Patio de Pokeyland rodeado de edificios de madera, con mesas, un cobertizo y visitantes en vehículos autoequilibrados delante del bar."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cortile di Pokeyland circondato da edifici in legno, con tavoli, una tettoia e visitatori su mezzi autobilancianti davanti al punto ristoro."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Binnenplaats van Pokeyland tussen houten gebouwen, met tafels, een afdak en bezoekers op zelfbalancerende voertuigen voor de snackbar."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziedziniec Pokeyland otoczony drewnianymi budynkami, ze stołami, wiatą i gośćmi na samobalansujących pojazdach przed barem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pátio de Pokeyland rodeado de edifícios de madeira, com mesas, um abrigo e visitantes em veículos de autoequilíbrio diante do bar."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les chalets, la terrasse et l’aire de gyropodes vus depuis une allée boisée de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The chalets, terrace and self-balancing scooter area seen from a wooded path at Pokeyland."
+        },
+        {
+          "languageCode": "de",
+          "value": "Holzhäuser, Terrasse und Rollerbereich von einem Waldweg in Pokeyland aus gesehen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las cabañas, la terraza y la zona de vehículos autoequilibrados vistas desde un camino arbolado de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Gli chalet, la terrazza e l’area dei mezzi autobilancianti visti da un sentiero alberato di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De chalets, het terras en het terrein voor zelfbalancerende voertuigen, gezien vanaf een bospad in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Drewniane domki, taras i plac dla samobalansujących pojazdów widziane z leśnej alejki Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os chalés, a esplanada e a área de veículos de autoequilíbrio vistos de um caminho arborizado de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Thierry Hauuy. Source : site officiel de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Thierry Hauuy. Source: Pokeyland official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "Thierry Hauuy. Quelle: offizielle Website von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Thierry Hauuy. Fuente: sitio web oficial de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Thierry Hauuy. Fonte: sito ufficiale di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Thierry Hauuy. Bron: officiële website van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Thierry Hauuy. Źródło: oficjalna strona Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Thierry Hauuy. Fonte: site oficial de Pokeyland."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:26:58.233Z",
+      "updatedAt": "2026-11-15T12:27:01.843Z"
+    },
+    "receivedAtUtc": "2026-11-15T12:27:04.9738117Z",
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T12:26:49.8223351Z"
+  },
+  "personalReview": {
+    "rootViewedNativePublisherImage": true,
+    "all24LocalizedTextsPersonallyWrittenAndReviewed": true,
+    "originalExifAuthorRetained": true,
+    "noLocalTransform": true,
+    "noUtcCaptureDateInferred": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

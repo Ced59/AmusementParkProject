@@ -1,0 +1,620 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-qualified-season-passes",
+        "step": "07-pricing",
+        "notes": "Only two season2026 passes have explicitly verified gate channel. Personal review of all24 localized names/notes and official sources. Season dates from current officialFAQ (Apr18–Sep27), not fabricated full-year dates. Other prices31/34/26/20/25 remain documented but unimported because channel unspecified and public ticketing under maintenance. No2027 price inferred. No legacy pricing existed in targeted recovery12:03. Partial pricing scope, not full audit."
+      },
+      "pricing": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "currencyCode": "EUR",
+        "sourceUrl": "https://www.pokeyland.com/tarifs-2026/",
+        "purchaseUrl": null,
+        "lastVerifiedAtUtc": "2026-11-15T11:40:14.568558Z",
+        "notes": [
+          {
+            "languageCode": "fr",
+            "value": "Les pass donnent accès au parc pendant la saison 2026, avec les activités en illimité et un seul accès par visite à une aventure au choix : accrobranche, paintball ou Waterjump. Ils sont vendus uniquement aux caisses du parc et ne sont valables que pour la saison 2026."
+          },
+          {
+            "languageCode": "en",
+            "value": "The passes provide park access during the 2026 season, with unlimited activities and one adventure per visit, chosen from treetop courses, paintball or Waterjump. They are sold only at the park ticket desks and are valid for the 2026 season only."
+          },
+          {
+            "languageCode": "de",
+            "value": "Die Pässe ermöglichen während der Saison 2026 den Parkbesuch mit unbegrenzten Aktivitäten und einem Abenteuer pro Besuch: Kletterparcours, Paintball oder Waterjump. Sie werden ausschließlich an den Parkkassen verkauft und gelten nur für die Saison 2026."
+          },
+          {
+            "languageCode": "es",
+            "value": "Los pases dan acceso al parque durante la temporada 2026, con actividades ilimitadas y una aventura por visita, a elegir entre los circuitos en los árboles, paintball o Waterjump. Se venden únicamente en las taquillas del parque y solo son válidos para la temporada 2026."
+          },
+          {
+            "languageCode": "it",
+            "value": "I pass danno accesso al parco durante la stagione 2026, con attività illimitate e una sola avventura per visita, a scelta tra percorsi sugli alberi, paintball e Waterjump. Sono venduti esclusivamente alle casse del parco e valgono solo per la stagione 2026."
+          },
+          {
+            "languageCode": "nl",
+            "value": "De passen geven toegang tot het park tijdens het seizoen 2026, met onbeperkte activiteiten en één avontuur per bezoek: boomklimparcoursen, paintball of Waterjump. Ze zijn uitsluitend aan de parkkassa’s verkrijgbaar en alleen geldig voor het seizoen 2026."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Karnety zapewniają wstęp do parku w sezonie 2026, nielimitowane korzystanie z aktywności oraz jedną przygodę na wizytę: park linowy, paintball lub Waterjump. Sprzedawane są wyłącznie w kasach parku i obowiązują tylko w sezonie 2026."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Os passes dão acesso ao parque durante a temporada 2026, com atividades ilimitadas e uma aventura por visita, à escolha entre arborismo, paintball ou Waterjump. São vendidos apenas nas bilheteiras do parque e válidos exclusivamente para a temporada 2026."
+          }
+        ],
+        "admissionOffers": [],
+        "annualPasses": [
+          {
+            "code": "season-child",
+            "names": [
+              {
+                "languageCode": "fr",
+                "value": "Pass saison 2026 — moins de 12 ans"
+              },
+              {
+                "languageCode": "en",
+                "value": "2026 season pass — under 12"
+              },
+              {
+                "languageCode": "de",
+                "value": "Saisonpass 2026 — unter 12 Jahren"
+              },
+              {
+                "languageCode": "es",
+                "value": "Pase de temporada 2026 — menores de 12 años"
+              },
+              {
+                "languageCode": "it",
+                "value": "Pass stagionale 2026 — meno di 12 anni"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Seizoenspas 2026 — jonger dan 12 jaar"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Karnet sezonowy 2026 — poniżej 12 lat"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Passe de temporada 2026 — menores de 12 anos"
+              }
+            ],
+            "onlinePrice": null,
+            "gatePrice": {
+              "mode": "Fixed",
+              "amount": 110
+            },
+            "validFrom": "2026-04-18",
+            "validTo": "2026-09-27",
+            "purchaseUrl": null,
+            "conditions": [],
+            "sortOrder": 10
+          },
+          {
+            "code": "season-12-plus",
+            "names": [
+              {
+                "languageCode": "fr",
+                "value": "Pass saison 2026 — 12 ans et plus"
+              },
+              {
+                "languageCode": "en",
+                "value": "2026 season pass — ages 12 and over"
+              },
+              {
+                "languageCode": "de",
+                "value": "Saisonpass 2026 — ab 12 Jahren"
+              },
+              {
+                "languageCode": "es",
+                "value": "Pase de temporada 2026 — desde 12 años"
+              },
+              {
+                "languageCode": "it",
+                "value": "Pass stagionale 2026 — dai 12 anni"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Seizoenspas 2026 — vanaf 12 jaar"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Karnet sezonowy 2026 — od 12 lat"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Passe de temporada 2026 — a partir dos 12 anos"
+              }
+            ],
+            "onlinePrice": null,
+            "gatePrice": {
+              "mode": "Fixed",
+              "amount": 140
+            },
+            "validFrom": "2026-04-18",
+            "validTo": "2026-09-27",
+            "purchaseUrl": null,
+            "conditions": [],
+            "sortOrder": 20
+          }
+        ],
+        "parkingOffers": [],
+        "creditOffers": [],
+        "historicalSnapshots": []
+      }
+    }
+  },
+  "preview": {
+    "operationId": "86df5885-581a-41cb-a446-fe95b1468087",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:27:49.0802679Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkPricing",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "pricing",
+        "displayName": "Pokeyland pricing",
+        "changeType": "Created",
+        "matchedBy": "pricing",
+        "fields": [
+          {
+            "field": "pricing.currencyCode",
+            "oldValue": null,
+            "newValue": "EUR"
+          },
+          {
+            "field": "pricing.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/tarifs-2026/"
+          },
+          {
+            "field": "pricing.notes",
+            "oldValue": "",
+            "newValue": "[{\"LanguageCode\":\"de\",\"Value\":\"Die P\\u00E4sse erm\\u00F6glichen w\\u00E4hrend der Saison 2026 den Parkbesuch mit unbegrenzten Aktivit\\u00E4ten und einem Abenteuer pro Besuch: Kletterparcours, Paintball oder Waterjump. Sie werden ausschlie\\u00DFlich an den Parkkassen verkauft und gelten nur f\\u00FCr die Saison 2026.\"},{\"LanguageCode\":\"en\",\"Value\":\"The passes provide park access during the 2026 season, with unlimited activities and one adventure per visit, chosen from treetop courses, paintball or Waterjump. They are sold only at the park ticket desks and are valid for the 2026 season only.\"},{\"LanguageCode\":\"es\",\"Value\":\"Los pases dan acceso al parque durante la temporada 2026, con actividades ilimitadas y una aventura por visita, a elegir entre los circuitos en los \\u00E1rboles, paintball o Waterjump. Se venden \\u00FAnicamente en las taquillas del parque y solo son v\\u00E1lidos para la temporada 2026.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Les pass donnent acc\\u00E8s au parc pendant la saison 2026, avec les activit\\u00E9s en illimit\\u00E9 et un seul acc\\u00E8s par visite \\u00E0 une aventure au choix : accrobranche, paintball ou Waterjump. Ils sont vendus uniquement aux caisses du parc et ne sont valables que pour la saison 2026.\"},{\"LanguageCode\":\"it\",\"Value\":\"I pass danno accesso al parco durante la stagione 2026, con attivit\\u00E0 illimitate e una sola avventura per visita, a scelta tra percorsi sugli alberi, paintball e Waterjump. Sono venduti esclusivamente alle casse del parco e valgono solo per la stagione 2026.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De passen geven toegang tot het park tijdens het seizoen 2026, met onbeperkte activiteiten en \\u00E9\\u00E9n avontuur per bezoek: boomklimparcoursen, paintball of Waterjump. Ze zijn uitsluitend aan de parkkassa\\u2019s verkrijgbaar en alleen geldig voor het seizoen 2026.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Karnety zapewniaj\\u0105 wst\\u0119p do parku w sezonie 2026, nielimitowane korzystanie z aktywno\\u015Bci oraz jedn\\u0105 przygod\\u0119 na wizyt\\u0119: park linowy, paintball lub Waterjump. Sprzedawane s\\u0105 wy\\u0142\\u0105cznie w kasach parku i obowi\\u0105zuj\\u0105 tylko w sezonie 2026.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Os passes d\\u00E3o acesso ao parque durante a temporada 2026, com atividades ilimitadas e uma aventura por visita, \\u00E0 escolha entre arborismo, paintball ou Waterjump. S\\u00E3o vendidos apenas nas bilheteiras do parque e v\\u00E1lidos exclusivamente para a temporada 2026.\"}]"
+          },
+          {
+            "field": "pricing.lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15T11:40:14.568558Z"
+          },
+          {
+            "field": "pricing.annualPasses",
+            "oldValue": "",
+            "newValue": "[{\"Id\":\"dbbd5dc3a024441ca9ae2aaf18d15995\",\"Code\":\"season-child\",\"Names\":[{\"LanguageCode\":\"de\",\"Value\":\"Saisonpass 2026 \\u2014 unter 12 Jahren\"},{\"LanguageCode\":\"en\",\"Value\":\"2026 season pass \\u2014 under 12\"},{\"LanguageCode\":\"es\",\"Value\":\"Pase de temporada 2026 \\u2014 menores de 12 a\\u00F1os\"},{\"LanguageCode\":\"fr\",\"Value\":\"Pass saison 2026 \\u2014 moins de 12 ans\"},{\"LanguageCode\":\"it\",\"Value\":\"Pass stagionale 2026 \\u2014 meno di 12 anni\"},{\"LanguageCode\":\"nl\",\"Value\":\"Seizoenspas 2026 \\u2014 jonger dan 12 jaar\"},{\"LanguageCode\":\"pl\",\"Value\":\"Karnet sezonowy 2026 \\u2014 poni\\u017Cej 12 lat\"},{\"LanguageCode\":\"pt\",\"Value\":\"Passe de temporada 2026 \\u2014 menores de 12 anos\"}],\"OnlinePrice\":null,\"GatePrice\":{\"Mode\":0,\"Amount\":110,\"MinimumAmount\":null,\"MaximumAmount\":null},\"ValidFrom\":\"2026-04-18\",\"ValidTo\":\"2026-09-27\",\"PurchaseUrl\":null,\"Conditions\":[],\"SortOrder\":10},{\"Id\":\"b89b497a16db4b84b2331d06c5dea900\",\"Code\":\"season-12-plus\",\"Names\":[{\"LanguageCode\":\"de\",\"Value\":\"Saisonpass 2026 \\u2014 ab 12 Jahren\"},{\"LanguageCode\":\"en\",\"Value\":\"2026 season pass \\u2014 ages 12 and over\"},{\"LanguageCode\":\"es\",\"Value\":\"Pase de temporada 2026 \\u2014 desde 12 a\\u00F1os\"},{\"LanguageCode\":\"fr\",\"Value\":\"Pass saison 2026 \\u2014 12 ans et plus\"},{\"LanguageCode\":\"it\",\"Value\":\"Pass stagionale 2026 \\u2014 dai 12 anni\"},{\"LanguageCode\":\"nl\",\"Value\":\"Seizoenspas 2026 \\u2014 vanaf 12 jaar\"},{\"LanguageCode\":\"pl\",\"Value\":\"Karnet sezonowy 2026 \\u2014 od 12 lat\"},{\"LanguageCode\":\"pt\",\"Value\":\"Passe de temporada 2026 \\u2014 a partir dos 12 anos\"}],\"OnlinePrice\":null,\"GatePrice\":{\"Mode\":0,\"Amount\":140,\"MinimumAmount\":null,\"MaximumAmount\":null},\"ValidFrom\":\"2026-04-18\",\"ValidTo\":\"2026-09-27\",\"PurchaseUrl\":null,\"Conditions\":[],\"SortOrder\":20}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "583a2080-b5b3-4d4c-ad4a-25d28552fa01",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:28:50.3887136Z",
+    "appliedAtUtc": "2026-11-15T12:28:50.3887149Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkPricing",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "pricing",
+        "displayName": "Pokeyland pricing",
+        "changeType": "Created",
+        "matchedBy": "pricing",
+        "fields": [
+          {
+            "field": "pricing.currencyCode",
+            "oldValue": null,
+            "newValue": "EUR"
+          },
+          {
+            "field": "pricing.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/tarifs-2026/"
+          },
+          {
+            "field": "pricing.notes",
+            "oldValue": "",
+            "newValue": "[{\"LanguageCode\":\"de\",\"Value\":\"Die P\\u00E4sse erm\\u00F6glichen w\\u00E4hrend der Saison 2026 den Parkbesuch mit unbegrenzten Aktivit\\u00E4ten und einem Abenteuer pro Besuch: Kletterparcours, Paintball oder Waterjump. Sie werden ausschlie\\u00DFlich an den Parkkassen verkauft und gelten nur f\\u00FCr die Saison 2026.\"},{\"LanguageCode\":\"en\",\"Value\":\"The passes provide park access during the 2026 season, with unlimited activities and one adventure per visit, chosen from treetop courses, paintball or Waterjump. They are sold only at the park ticket desks and are valid for the 2026 season only.\"},{\"LanguageCode\":\"es\",\"Value\":\"Los pases dan acceso al parque durante la temporada 2026, con actividades ilimitadas y una aventura por visita, a elegir entre los circuitos en los \\u00E1rboles, paintball o Waterjump. Se venden \\u00FAnicamente en las taquillas del parque y solo son v\\u00E1lidos para la temporada 2026.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Les pass donnent acc\\u00E8s au parc pendant la saison 2026, avec les activit\\u00E9s en illimit\\u00E9 et un seul acc\\u00E8s par visite \\u00E0 une aventure au choix : accrobranche, paintball ou Waterjump. Ils sont vendus uniquement aux caisses du parc et ne sont valables que pour la saison 2026.\"},{\"LanguageCode\":\"it\",\"Value\":\"I pass danno accesso al parco durante la stagione 2026, con attivit\\u00E0 illimitate e una sola avventura per visita, a scelta tra percorsi sugli alberi, paintball e Waterjump. Sono venduti esclusivamente alle casse del parco e valgono solo per la stagione 2026.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De passen geven toegang tot het park tijdens het seizoen 2026, met onbeperkte activiteiten en \\u00E9\\u00E9n avontuur per bezoek: boomklimparcoursen, paintball of Waterjump. Ze zijn uitsluitend aan de parkkassa\\u2019s verkrijgbaar en alleen geldig voor het seizoen 2026.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Karnety zapewniaj\\u0105 wst\\u0119p do parku w sezonie 2026, nielimitowane korzystanie z aktywno\\u015Bci oraz jedn\\u0105 przygod\\u0119 na wizyt\\u0119: park linowy, paintball lub Waterjump. Sprzedawane s\\u0105 wy\\u0142\\u0105cznie w kasach parku i obowi\\u0105zuj\\u0105 tylko w sezonie 2026.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Os passes d\\u00E3o acesso ao parque durante a temporada 2026, com atividades ilimitadas e uma aventura por visita, \\u00E0 escolha entre arborismo, paintball ou Waterjump. S\\u00E3o vendidos apenas nas bilheteiras do parque e v\\u00E1lidos exclusivamente para a temporada 2026.\"}]"
+          },
+          {
+            "field": "pricing.lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15T11:40:14.568558Z"
+          },
+          {
+            "field": "pricing.annualPasses",
+            "oldValue": "",
+            "newValue": "[{\"Id\":\"14cb177b00b44e4281b75655ac87a581\",\"Code\":\"season-child\",\"Names\":[{\"LanguageCode\":\"de\",\"Value\":\"Saisonpass 2026 \\u2014 unter 12 Jahren\"},{\"LanguageCode\":\"en\",\"Value\":\"2026 season pass \\u2014 under 12\"},{\"LanguageCode\":\"es\",\"Value\":\"Pase de temporada 2026 \\u2014 menores de 12 a\\u00F1os\"},{\"LanguageCode\":\"fr\",\"Value\":\"Pass saison 2026 \\u2014 moins de 12 ans\"},{\"LanguageCode\":\"it\",\"Value\":\"Pass stagionale 2026 \\u2014 meno di 12 anni\"},{\"LanguageCode\":\"nl\",\"Value\":\"Seizoenspas 2026 \\u2014 jonger dan 12 jaar\"},{\"LanguageCode\":\"pl\",\"Value\":\"Karnet sezonowy 2026 \\u2014 poni\\u017Cej 12 lat\"},{\"LanguageCode\":\"pt\",\"Value\":\"Passe de temporada 2026 \\u2014 menores de 12 anos\"}],\"OnlinePrice\":null,\"GatePrice\":{\"Mode\":0,\"Amount\":110,\"MinimumAmount\":null,\"MaximumAmount\":null},\"ValidFrom\":\"2026-04-18\",\"ValidTo\":\"2026-09-27\",\"PurchaseUrl\":null,\"Conditions\":[],\"SortOrder\":10},{\"Id\":\"cc36faa4b3db42269efb2e6cdf2bcccd\",\"Code\":\"season-12-plus\",\"Names\":[{\"LanguageCode\":\"de\",\"Value\":\"Saisonpass 2026 \\u2014 ab 12 Jahren\"},{\"LanguageCode\":\"en\",\"Value\":\"2026 season pass \\u2014 ages 12 and over\"},{\"LanguageCode\":\"es\",\"Value\":\"Pase de temporada 2026 \\u2014 desde 12 a\\u00F1os\"},{\"LanguageCode\":\"fr\",\"Value\":\"Pass saison 2026 \\u2014 12 ans et plus\"},{\"LanguageCode\":\"it\",\"Value\":\"Pass stagionale 2026 \\u2014 dai 12 anni\"},{\"LanguageCode\":\"nl\",\"Value\":\"Seizoenspas 2026 \\u2014 vanaf 12 jaar\"},{\"LanguageCode\":\"pl\",\"Value\":\"Karnet sezonowy 2026 \\u2014 od 12 lat\"},{\"LanguageCode\":\"pt\",\"Value\":\"Passe de temporada 2026 \\u2014 a partir dos 12 anos\"}],\"OnlinePrice\":null,\"GatePrice\":{\"Mode\":0,\"Amount\":140,\"MinimumAmount\":null,\"MaximumAmount\":null},\"ValidFrom\":\"2026-04-18\",\"ValidTo\":\"2026-09-27\",\"PurchaseUrl\":null,\"Conditions\":[],\"SortOrder\":20}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "all24LocalizedNamesAndNotesWrittenAndReviewed": true,
+    "official2026Amounts110and140": true,
+    "gateOnlyExplicitlyStated": true,
+    "sourceSeasonDates": "2026-04-18 to2026-09-27 from officialFAQ",
+    "otherPricesOmittedChannelUnqualified": true,
+    "no2027Carryover": true
+  },
+  "sourceChannelResearch": {
+    "reportType": "public-pricing-channel-qualification",
+    "parkName": "Pokeyland",
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createdAtUtc": "2026-11-15T12:26:26.518162Z",
+    "scope": {
+      "publicResearchOnly": true,
+      "pdeCalls": 0,
+      "gitCommands": 0,
+      "registryChanges": 0,
+      "productSelections": 0,
+      "cartActions": 0,
+      "checkoutActions": 0,
+      "accountActions": 0,
+      "purchases": 0,
+      "directInternalEndpointRequests": 0
+    },
+    "priorEvidence": [
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/calendar-pricing-validation/calendar-pricing-validation-report.json",
+        "bytes": 6343,
+        "sha256": "95a5dec954ae4d8c12dfd47955903a8bc61e0a8f1cf730ec80815775b91c6ff4"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/calendar-pricing-validation/pricing-independent-validation.json",
+        "bytes": 11068,
+        "sha256": "df7cecb2962609b17cf36e223f8859e7ae109e871a84bc72534baf2ffd98f8ae"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/calendar-pricing-validation/official-prices-2026.html",
+        "bytes": 140590,
+        "sha256": "d7dab664582fd6da4bacd15dbd840d7145d77e444e1b9a5e6f82906bb2d5b4d1"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/calendar-pricing-validation/official-faq.html",
+        "bytes": 95941,
+        "sha256": "b26b7db560b0ed892094c930051141b888552d27a27eb112aadc1938ffa9f923"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/calendar-pricing-validation/official-cgv.html",
+        "bytes": 106879,
+        "sha256": "a536e507dd77abeda75101c3b6563e275250a080021f23678e5511d76321ef95"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/calendar-pricing-validation/official-ticketing.html",
+        "bytes": 85846,
+        "sha256": "8fb08947a33b363f80f9b63f74ae174a9ecfeba6303828d4fbd30d7f67c347dd"
+      }
+    ],
+    "principal2026Amounts": [
+      {
+        "key": "day-pack-child",
+        "eur": 31,
+        "label": "Pack Journée avec Aventure",
+        "ageLabel": "-12 ans",
+        "amountVerified": true,
+        "priceSource": "https://www.pokeyland.com/tarifs-2026/",
+        "channel": null,
+        "channelQualification": "Unknown: general official 2026 tariff page does not explicitly label this amount as online, at the cash desk, or identical for both."
+      },
+      {
+        "key": "day-pack-12-plus",
+        "eur": 34,
+        "label": "Pack Journée avec Aventure",
+        "ageLabel": "12 ans et +",
+        "amountVerified": true,
+        "priceSource": "https://www.pokeyland.com/tarifs-2026/",
+        "channel": null,
+        "channelQualification": "Unknown: general official 2026 tariff page does not explicitly label this amount as online, at the cash desk, or identical for both."
+      },
+      {
+        "key": "unlimited-activities",
+        "eur": 26,
+        "label": "Les activités en illimité",
+        "ageLabel": "tout public",
+        "amountVerified": true,
+        "priceSource": "https://www.pokeyland.com/tarifs-2026/",
+        "channel": null,
+        "channelQualification": "Unknown: general official 2026 tariff page does not explicitly label this amount as online, at the cash desk, or identical for both."
+      },
+      {
+        "key": "adventure-only-child",
+        "eur": 20,
+        "label": "Une aventure à l’unité sans les activités en illimité",
+        "ageLabel": "Jusqu’à 11 ans",
+        "amountVerified": true,
+        "priceSource": "https://www.pokeyland.com/tarifs-2026/",
+        "channel": null,
+        "channelQualification": "Unknown: general official 2026 tariff page does not explicitly label this amount as online, at the cash desk, or identical for both."
+      },
+      {
+        "key": "adventure-only-12-plus",
+        "eur": 25,
+        "label": "Une aventure à l’unité sans les activités en illimité",
+        "ageLabel": "12 ans et +",
+        "amountVerified": true,
+        "priceSource": "https://www.pokeyland.com/tarifs-2026/",
+        "channel": null,
+        "channelQualification": "Unknown: general official 2026 tariff page does not explicitly label this amount as online, at the cash desk, or identical for both."
+      }
+    ],
+    "seasonPasses": [
+      {
+        "key": "season-child",
+        "eur": 110,
+        "ageLabel": "moins de 12 ans",
+        "season": 2026,
+        "channel": "park-cash-desks-only",
+        "quote": "Disponible aux caisses du parc uniquement",
+        "source": "https://www.pokeyland.com/tarifs-2026/"
+      },
+      {
+        "key": "season-12-plus",
+        "eur": 140,
+        "ageLabel": "12 ans et plus",
+        "season": 2026,
+        "channel": "park-cash-desks-only",
+        "quote": "Disponible aux caisses du parc uniquement",
+        "source": "https://www.pokeyland.com/tarifs-2026/"
+      }
+    ],
+    "officialBookingChannels": {
+      "faqUrl": "https://www.pokeyland.com/foire-aux-questions/",
+      "question": "Ou réserver mon Pack Journée ?",
+      "quote": "Vous pouvez réserver votre aventure directement sur internet lors de l’achat du pack ou bien la réserver directement aux caisses du parc.",
+      "supports": "Adventure reservation possible online during pack purchase or at park cash desks.",
+      "doesNotSupport": "This sentence does not state that the 31/34/26/20/25 EUR amounts are identical online and at the cash desks. It is not a channel-specific price table.",
+      "marketingButtons": "Réservez votre aventure and Réservez votre activité link to booking, but do not explicitly qualify the tariff amounts.",
+      "cgv": "CGV regulate internet ticket sales and say published prices are EUR including tax. They do not pair the five 2026 amounts with a channel, contain inherited 2017 effect/age wording, and cannot establish channel equality."
+    },
+    "renderedOfficialTicketing": {
+      "entryUrl": "https://www.pokeyland.com/billetterie/",
+      "entryStatus": 200,
+      "startedAtUtc": "2026-11-15T12:24:34.778502Z",
+      "finishedAtUtc": "2026-11-15T12:25:01.757045Z",
+      "method": "Normal public page navigation and passive rendering only. No button click, product selection, cart, login, checkout, purchase, direct internal request or stored browser profile.",
+      "modules": [
+        {
+          "url": "https://www.apex-timing.com/gokarts/ticketing.php?center=384&language=fr&iframe_id=axiframe_0",
+          "observedAtUtc": "2026-11-15T12:25:00.829794Z",
+          "visibleText": "UNDER MAINTENANCE",
+          "htmlFile": "rendered-frame-1.html",
+          "htmlSha256": "a69e94b723fff0025e7d5fcb983e5c19e3bd4ba902999ff98f2785e35cc519ec"
+        },
+        {
+          "url": "https://www.apex-timing.com/gokarts/sessions_booking.php?center=384&language=fr&iframe_id=axiframe_1",
+          "observedAtUtc": "2026-11-15T12:25:00.860898Z",
+          "visibleText": "UNDER MAINTENANCE",
+          "htmlFile": "rendered-frame-2.html",
+          "htmlSha256": "a69e94b723fff0025e7d5fcb983e5c19e3bd4ba902999ff98f2785e35cc519ec"
+        }
+      ],
+      "screenshot": {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/ticketing-public-render.png",
+        "bytes": 1389884,
+        "sha256": "b951ed44c0e72e0b20af2009f9caa9c6c7a439fadd5697425f21420a645f8ef3"
+      },
+      "visualReview": "Whole screenshot reviewed: online reservation 2026 page and Under maintenance sign. Both DOM frames independently return the same maintenance message.",
+      "result": "No product list or price was displayed. Maintenance prevents fresh verification of the operator’s online amounts. No alternate/internal endpoint, authentication or bypass attempted.",
+      "causeLimit": "Maintenance is observed; a seasonal closure cause is not established."
+    },
+    "resellerObservation": {
+      "source": {
+        "url": "https://www.funbooker.com/fr/annonce/billet-dentree-pour-le-pokeyland-57/voir",
+        "accessedAtUtc": "2026-11-15T12:25:35.650219Z",
+        "scope": "Public displayed product page only, no selections or transaction",
+        "status": 200,
+        "finalUrl": "https://www.funbooker.com/fr/annonce/billet-dentree-pour-le-pokeyland-57/voir",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 118476,
+        "sha256": "7b3c9553b2a5a089e0c9351d6f9222a73c658bce5cf600da0a80d99badbf4865",
+        "files": [
+          "reseller-funbooker.html",
+          "reseller-funbooker.txt"
+        ]
+      },
+      "declaredRole": "The public page calls Funbooker an official ticket reseller; this is its own statement, not independent verification of the commercial agreement.",
+      "observedOffers": [
+        {
+          "label": "Adulte, à partir de 12 ans",
+          "eurDisplayed": 32,
+          "referenceEurDisplayed": 34
+        },
+        {
+          "label": "Enfant, jusqu’à 11 ans compris",
+          "eurDisplayed": 29,
+          "referenceEurDisplayed": 31
+        }
+      ],
+      "seasonText": "18 avril au 27 septembre 2026",
+      "scopeText": "One main activity of 2 hours chosen among Waterjump, paintball or accrobranche, plus other activities.",
+      "interpretation": "A separate public reseller offer is visibly advertised below the 31/34 reference amounts. It does not prove the operator’s own online price or a cash-desk price. No booking availability was tested after the displayed season.",
+      "excludedFromPrincipalChannelAssignment": true
+    },
+    "outcome": {
+      "principalAmountsConfirmed": [
+        31,
+        34,
+        26,
+        20,
+        25
+      ],
+      "principalPriceChannelsQualified": false,
+      "guichetEqualityWithOnlineProven": false,
+      "passesCashDeskOnlyConfirmed": [
+        110,
+        140
+      ],
+      "recommendedEvidenceTreatment": "Keep the five amounts as official 2026 published prices with channel unspecified. Preserve separate cash-desk-only qualification for the two passes. Do not relabel the five amounts as both online and guichet from the available evidence.",
+      "noIntegrationPerformed": true
+    },
+    "fileManifest": [
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/fetch-reseller.py",
+        "bytes": 1290,
+        "sha256": "d601d925b8852abc884678a0eeb4ff161f99608efeb284fcc0ef820c8b5c4c53"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/public-search-1.json",
+        "bytes": 16108,
+        "sha256": "04cc77908c95550b6e13e60be329df5c8f2f96f828199a78a39cc6984c17641d"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/public-search-2.json",
+        "bytes": 14861,
+        "sha256": "1e003a4a92e7e762820d1d0eb01569b785480e7a2e970559dfd8e23ed99442dc"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/render-observation.json",
+        "bytes": 9931,
+        "sha256": "2b18999b030b02e6b40f76c54408f8f8bc8bb2dfc553ed4c456bd262264a5e10"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/render-ticketing.py",
+        "bytes": 2453,
+        "sha256": "1960b82c7f4a8377ec6c88044c4bb47d1b75c517e212275f65cdb0003965ebb5"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-0.html",
+        "bytes": 109946,
+        "sha256": "fd7ce9fa955051232d726b59422f6cf56856f27893a565c26d72aff5092cafb3"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-0.txt",
+        "bytes": 1001,
+        "sha256": "a3d645de580cebb5f18d36d33682708f022e5fde6edd3ed3f1c32ce53d5a00c6"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-1.html",
+        "bytes": 2275,
+        "sha256": "a69e94b723fff0025e7d5fcb983e5c19e3bd4ba902999ff98f2785e35cc519ec"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-1.txt",
+        "bytes": 17,
+        "sha256": "fc5f1969559b3c6440f5563873301a0835136901f005c6b3dec40b847c283775"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-2.html",
+        "bytes": 2275,
+        "sha256": "a69e94b723fff0025e7d5fcb983e5c19e3bd4ba902999ff98f2785e35cc519ec"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-2.txt",
+        "bytes": 17,
+        "sha256": "fc5f1969559b3c6440f5563873301a0835136901f005c6b3dec40b847c283775"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-3.txt",
+        "bytes": 24,
+        "sha256": "774477da11e95c3f0040016acf475efed603f07efcc78e74fbffabc3a9099697"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-4.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-5.txt",
+        "bytes": 1492,
+        "sha256": "5872f0595eb3ea88e984d3532407e1246e699450db5227e2e0c66d5032c24a46"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/rendered-frame-6.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/reseller-funbooker.html",
+        "bytes": 118476,
+        "sha256": "7b3c9553b2a5a089e0c9351d6f9222a73c658bce5cf600da0a80d99badbf4865"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/reseller-funbooker.txt",
+        "bytes": 6582,
+        "sha256": "9f7aaf386f83633204c1baccfcf62031f915a4254aba0b216d0e6ae7e936cb0d"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/reseller-source-access.json",
+        "bytes": 556,
+        "sha256": "ab1159f0844114562ade5e84b7aaa769299d649a48819b70082f5f897d7f39f8"
+      },
+      {
+        "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pricing-channel-qualification/ticketing-public-render.png",
+        "bytes": 1389884,
+        "sha256": "b951ed44c0e72e0b20af2009f9caa9c6c7a439fadd5697425f21420a645f8ef3"
+      }
+    ]
+  },
+  "sitePublicationPerformed": false,
+  "finalAuditCompleted": false
+}

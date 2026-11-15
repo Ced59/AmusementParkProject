@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T12:21:14.314Z",
+      "lastDataIntegrationAt": "2026-11-15T12:45:03.606Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33308,6 +33308,136 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-17-paintball-descriptions-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland privé : 5 notices (Zombie, Dog One, Cannibale, Panama, Fox Two) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "import-photo-a30bcfef2e414aca8898b45ee212d46e",
+          "appliedAt": "2026-11-15T12:26:58.233Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-general-32110959-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : vue générale réelle importée privée, source officielle native intacte, photographe identifié par EXIF conservé, 24 métadonnées huit langues personnellement relues. Scène historique non courante, aucune capture UTC inventée ni publication."
+        },
+        {
+          "eventId": "import-photo-452fd5f698e549c3922711177b0984e9",
+          "appliedAt": "2026-11-15T12:27:09.734Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-general-jmp_9374-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : vue générale réelle importée privée, source officielle native intacte, photographe identifié par EXIF conservé, 24 métadonnées huit langues personnellement relues. Scène historique non courante, aucune capture UTC inventée ni publication."
+        },
+        {
+          "eventId": "apply-583a2080-b5b3-4d4c-ad4a-25d28552fa01",
+          "appliedAt": "2026-11-15T12:28:50.388Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-season-pass-pricing-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : deux pass saison2026 aux prix caisse110/140EUR intégrés,24 textes8langues personnellement relus. Validité saison passée explicite ; autres montants conservés horsgrille fautecanal qualifié, aucun tarif2027 inventé."
+        },
+        {
+          "eventId": "apply-4becfae0-d0ff-45d6-8ce5-9c1d4349aee2",
+          "appliedAt": "2026-11-15T12:38:34.860Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-park-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : quatre jalons historiques sourcés (chantier mai 2013, ouverture 20 juin 2015, cession 29 novembre 2023, redressement 1 octobre 2026), 64 champs huit langues relus. Dates de publication distinctes des faits, photos de contexte explicites, aucune fermeture inventée ni publication."
+        },
+        {
+          "eventId": "apply-534ca85e-40d9-49e4-9494-f23f4bc7e8f3",
+          "appliedAt": "2026-11-15T12:41:21.586Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-20-waterjump-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 1 notices (Waterjump) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "import-photo-b6dab89667e443b0839ad1b5220a4ec0",
+          "appliedAt": "2026-11-15T12:43:49.874Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-adventure-01-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Zombie importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Identité par bloc officiel nommé, source intacte, capture inconnue, aucune publication."
+        },
+        {
+          "eventId": "import-photo-87ec3a97299f4c0c8b936773fe8c84e7",
+          "appliedAt": "2026-11-15T12:43:59.930Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-adventure-02-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Dog One importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Identité par bloc officiel nommé, source intacte, capture inconnue, aucune publication."
+        },
+        {
+          "eventId": "import-photo-b6860a71b8354201bd1d7533b1eed2f5",
+          "appliedAt": "2026-11-15T12:44:09.757Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-adventure-03-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Cannibale importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Identité par bloc officiel nommé, source intacte, capture inconnue, aucune publication."
+        },
+        {
+          "eventId": "import-photo-2a6321fa0dd44f6088c69cf78f04db1d",
+          "appliedAt": "2026-11-15T12:44:18.912Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-adventure-04-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Panama importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Identité par bloc officiel nommé, source intacte, capture inconnue, aucune publication."
+        },
+        {
+          "eventId": "import-photo-9dc4f8c27d9e4cfc9d459517a74d9b38",
+          "appliedAt": "2026-11-15T12:44:28.217Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-adventure-05-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Fox Two importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Identité par bloc officiel nommé, source intacte, capture inconnue, aucune publication."
+        },
+        {
+          "eventId": "import-photo-c8466353e86442e180d8ff8e5fbbf41a",
+          "appliedAt": "2026-11-15T12:44:42.803Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-adventure-06-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Waterjump importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Identité par bloc officiel nommé, source intacte, capture inconnue, aucune publication."
+        },
+        {
+          "eventId": "import-photo-67935475ed1240c592561ab14a443d8b",
+          "appliedAt": "2026-11-15T12:44:52.562Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-adventure-08-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Waterjump importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Identité par bloc officiel nommé, source intacte, capture inconnue, aucune publication."
+        },
+        {
+          "eventId": "import-photo-31ea2b41b90045bfa7114af9567f39d0",
+          "appliedAt": "2026-11-15T12:45:03.606Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-adventure-09-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Waterjump importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Identité par bloc officiel nommé, source intacte, capture inconnue, aucune publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

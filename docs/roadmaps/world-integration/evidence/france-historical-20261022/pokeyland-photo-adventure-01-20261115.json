@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "sourcePage": "https://www.pokeyland.com/packs/paintball/",
+    "section": "MODE ZOMBIE",
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_153114-scaled-pmvaag1nnqkmk52kvgnvd5zm9s3fcfpqulhy29jiqo.jpg",
+    "domImageXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[1]/div/div[1]/div/div/div/img",
+    "sectionXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[1]",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/01-20150528_153114-scaled-pmvaag1nnqkmk52kvgnvd5zm9s3fcfpqulhy29jiqo.jpg",
+    "http": 200,
+    "bytes": 95406,
+    "dimensions": [
+      700,
+      400
+    ],
+    "sha256": "1a629f276ef51222fcbd126d00ad2dc33692b7595017cff24f348e206b894eca",
+    "fetchedUtc": "2026-11-15T12:08:24.694188+00:00",
+    "over960KiB": false,
+    "localPixelTransformation": false,
+    "captureDate": null,
+    "photographer": null,
+    "filename": "01-20150528_153114-scaled-pmvaag1nnqkmk52kvgnvd5zm9s3fcfpqulhy29jiqo.jpg",
+    "visualObservation": "Décor de friche industrielle en forêt : flèche métallique rouge, fûts rouges, véhicule rouge partiellement visible, cloisons grises et voiture ancienne. La page nomme le bloc MODE ZOMBIE.",
+    "visuallyInspected": true,
+    "publisher": "Pokeyland",
+    "creditBasis": "Source : site officiel Pokeyland ; auteur individuel non mentionné.",
+    "openLicenseClaimed": false,
+    "captureDateBasis": "Aucune date de prise prouvée ; les chiffres du nom de fichier et du chemin de stockage ne sont pas des dates validées.",
+    "gps": null,
+    "exif": {},
+    "qualification": "qualified_named_paintball_field",
+    "itemId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+    "watermarkVisible": false,
+    "compositeVisible": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_153114-scaled-pmvaag1nnqkmk52kvgnvd5zm9s3fcfpqulhy29jiqo.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/01-20150528_153114-scaled-pmvaag1nnqkmk52kvgnvd5zm9s3fcfpqulhy29jiqo.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-01-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-01-import-result.json"
+  },
+  "metadata": {
+    "description": "La friche industrielle du terrain Zombie à Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_153114-scaled-pmvaag1nnqkmk52kvgnvd5zm9s3fcfpqulhy29jiqo.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une flèche métallique rouge, des fûts et des façades grises composent un décor industriel parmi les arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "A red metal boom, drums and grey facades form an industrial set among the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein roter Metallausleger, Fässer und graue Fassaden bilden eine Industriekulisse zwischen den Bäumen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una pluma metálica roja, bidones y fachadas grises forman un decorado industrial entre los árboles."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un braccio metallico rosso, fusti e facciate grigie formano una scenografia industriale tra gli alberi."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een rode metalen kraanarm, vaten en grijze gevels vormen een industrieel decor tussen de bomen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Czerwony metalowy wysięgnik, beczki i szare fasady tworzą przemysłową scenografię wśród drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma lança metálica vermelha, bidões e fachadas cinzentas formam um cenário industrial entre as árvores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La friche industrielle du terrain Zombie à Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The industrial wasteland setting of Pokeyland’s Zombie field."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Industriebrache als Kulisse des Zombie-Spielfelds in Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "El descampado industrial del campo Zombie de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’area industriale abbandonata del campo Zombie di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het verlaten industrieterrein van het Zombie-veld in Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Opuszczony teren przemysłowy na polu Zombie w Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O cenário industrial abandonado do campo Zombie no Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "b6dab89667e443b0839ad1b5220a4ec0",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+      "path": "park_item/b6dab89667e443b0839ad1b5220a4ec0",
+      "description": "La friche industrielle du terrain Zombie à Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 95406,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_153114-scaled-pmvaag1nnqkmk52kvgnvd5zm9s3fcfpqulhy29jiqo.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une flèche métallique rouge, des fûts et des façades grises composent un décor industriel parmi les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "A red metal boom, drums and grey facades form an industrial set among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein roter Metallausleger, Fässer und graue Fassaden bilden eine Industriekulisse zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una pluma metálica roja, bidones y fachadas grises forman un decorado industrial entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un braccio metallico rosso, fusti e facciate grigie formano una scenografia industriale tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een rode metalen kraanarm, vaten en grijze gevels vormen een industrieel decor tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwony metalowy wysięgnik, beczki i szare fasady tworzą przemysłową scenografię wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma lança metálica vermelha, bidões e fachadas cinzentas formam um cenário industrial entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La friche industrielle du terrain Zombie à Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The industrial wasteland setting of Pokeyland’s Zombie field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Industriebrache als Kulisse des Zombie-Spielfelds in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "El descampado industrial del campo Zombie de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’area industriale abbandonata del campo Zombie di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het verlaten industrieterrein van het Zombie-veld in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Opuszczony teren przemysłowy na polu Zombie w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cenário industrial abandonado do campo Zombie no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:43:49.874Z",
+      "updatedAt": "2026-11-15T12:43:54.149Z"
+    },
+    "receivedAtUtc": "2026-11-15T12:43:57.2686014Z",
+    "startedAtUtc": "2026-11-15T12:43:48.0993060Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true,
+    "identityFromNamedOfficialDomBlock": true,
+    "noCheckpointAliasInferred": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

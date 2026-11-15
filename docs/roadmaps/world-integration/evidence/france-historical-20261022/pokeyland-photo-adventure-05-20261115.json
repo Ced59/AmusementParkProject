@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "sourcePage": "https://www.pokeyland.com/packs/paintball/",
+    "section": "MODE FOX TWO",
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152003-scaled-pmvajosiv384q3n8wghsvu0sk6jd1aeq4cfty7u5k0.jpg",
+    "domImageXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[5]/div/div[1]/div/div/div/img",
+    "sectionXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[5]",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/05-20150528_152003-scaled-pmvajosiv384q3n8wghsvu0sk6jd1aeq4cfty7u5k0.jpg",
+    "http": 200,
+    "bytes": 89057,
+    "dimensions": [
+      700,
+      400
+    ],
+    "sha256": "a074fd548e83fbfd6cc066d34db09a79d084a89255d19b637b9c90437f915676",
+    "fetchedUtc": "2026-11-15T12:08:26.534857+00:00",
+    "over960KiB": false,
+    "localPixelTransformation": false,
+    "captureDate": null,
+    "photographer": null,
+    "filename": "05-20150528_152003-scaled-pmvajosiv384q3n8wghsvu0sk6jd1aeq4cfty7u5k0.jpg",
+    "visualObservation": "Véhicule blindé vert à canon, nombreuses roues visibles, et empilements de caisses vertes dans les bois. La page nomme MODE FOX TWO. Ne pas reclasser en Checkpoint parce que le décor est militaire.",
+    "visuallyInspected": true,
+    "publisher": "Pokeyland",
+    "creditBasis": "Source : site officiel Pokeyland ; auteur individuel non mentionné.",
+    "openLicenseClaimed": false,
+    "captureDateBasis": "Aucune date de prise prouvée ; les chiffres du nom de fichier et du chemin de stockage ne sont pas des dates validées.",
+    "gps": null,
+    "exif": {},
+    "qualification": "qualified_named_paintball_field",
+    "itemId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+    "watermarkVisible": false,
+    "compositeVisible": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152003-scaled-pmvajosiv384q3n8wghsvu0sk6jd1aeq4cfty7u5k0.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/05-20150528_152003-scaled-pmvajosiv384q3n8wghsvu0sk6jd1aeq4cfty7u5k0.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-05-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-05-import-result.json"
+  },
+  "metadata": {
+    "description": "Le décor de base militaire du terrain Fox Two à Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152003-scaled-pmvajosiv384q3n8wghsvu0sk6jd1aeq4cfty7u5k0.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un véhicule militaire vert muni d’un canon est entouré de caisses empilées et de palissades dans les bois."
+      },
+      {
+        "languageCode": "en",
+        "value": "A green military vehicle with a gun is surrounded by stacked crates and fences in the woods."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein grünes Militärfahrzeug mit Geschütz steht zwischen gestapelten Kisten und Holzzäunen im Wald."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un vehículo militar verde con cañón está rodeado de cajas apiladas y empalizadas en el bosque."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un veicolo militare verde con un cannone è circondato da casse impilate e palizzate nel bosco."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een groen militair voertuig met een kanon staat tussen gestapelde kisten en schuttingen in het bos."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zielony pojazd wojskowy z działem stoi wśród stosów skrzyń i płotów w lesie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um veículo militar verde com canhão está rodeado de caixas empilhadas e vedações no bosque."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le décor de base militaire du terrain Fox Two à Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The military-base scenery of Pokeyland’s Fox Two field."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Militärbasiskulisse des Fox-Two-Spielfelds in Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "El decorado de base militar del campo Fox Two de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "La scenografia della base militare del campo Fox Two di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het militaire basisdecor van het Fox Two-veld in Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Scenografia bazy wojskowej na polu Fox Two w Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O cenário de base militar do campo Fox Two no Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "9dc4f8c27d9e4cfc9d459517a74d9b38",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+      "path": "park_item/9dc4f8c27d9e4cfc9d459517a74d9b38",
+      "description": "Le décor de base militaire du terrain Fox Two à Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 89057,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152003-scaled-pmvajosiv384q3n8wghsvu0sk6jd1aeq4cfty7u5k0.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un véhicule militaire vert muni d’un canon est entouré de caisses empilées et de palissades dans les bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "A green military vehicle with a gun is surrounded by stacked crates and fences in the woods."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein grünes Militärfahrzeug mit Geschütz steht zwischen gestapelten Kisten und Holzzäunen im Wald."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un vehículo militar verde con cañón está rodeado de cajas apiladas y empalizadas en el bosque."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un veicolo militare verde con un cannone è circondato da casse impilate e palizzate nel bosco."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een groen militair voertuig met een kanon staat tussen gestapelde kisten en schuttingen in het bos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielony pojazd wojskowy z działem stoi wśród stosów skrzyń i płotów w lesie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um veículo militar verde com canhão está rodeado de caixas empilhadas e vedações no bosque."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le décor de base militaire du terrain Fox Two à Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The military-base scenery of Pokeyland’s Fox Two field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Militärbasiskulisse des Fox-Two-Spielfelds in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "El decorado de base militar del campo Fox Two de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La scenografia della base militare del campo Fox Two di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het militaire basisdecor van het Fox Two-veld in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Scenografia bazy wojskowej na polu Fox Two w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cenário de base militar do campo Fox Two no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:28.217Z",
+      "updatedAt": "2026-11-15T12:44:31.715Z"
+    },
+    "receivedAtUtc": "2026-11-15T12:44:34.8190209Z",
+    "startedAtUtc": "2026-11-15T12:44:27.1722013Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true,
+    "identityFromNamedOfficialDomBlock": true,
+    "noCheckpointAliasInferred": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

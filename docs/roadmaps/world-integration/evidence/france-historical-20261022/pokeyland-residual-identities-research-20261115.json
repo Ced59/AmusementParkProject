@@ -1,0 +1,287 @@
+{
+  "reportType": "public-research-historical-residual-identities",
+  "parkName": "Pokeyland",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "createdAtUtc": "2026-11-15T12:23:23.841272Z",
+  "scope": {
+    "readOnly": true,
+    "apiCalls": 0,
+    "gitCommands": 0,
+    "registryChanges": 0,
+    "imports": 0,
+    "descriptionDrafts": 0,
+    "writtenDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities"
+  },
+  "priorEvidence": [
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/historical-inventory-followup-20261115.json",
+      "bytes": 32960,
+      "sha256": "2970311dd571b6d0ef2c7e467334794d065768f285ab0d3a0e82f830a02a004d"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/historical-inventory-residual-five-20261115.json",
+      "bytes": 33717,
+      "sha256": "eb00752d89318172fddfee9d9b32db3babd919636c86e5e6d75b53b061c90350"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/historical-map-2017-additional-identities-20261115.json",
+      "bytes": 35489,
+      "sha256": "60b77694975f96572763701b6f14a3f7c77080b1128b6b79f0be60d336771251"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/nocturne-le-lorrain-2017.html",
+      "bytes": 171675,
+      "sha256": "5ad3860755cf28237e153a2eee462f13b4f29a44beeb8bbbb781d2431324f833"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/nocturne-ousortiren-2017.html",
+      "bytes": 59670,
+      "sha256": "4ef234a5afe0ed3c4cda7c869c11160ac580b5c7ad0d36453fb5425461a7e864"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/nocturne-gazette-2019.html",
+      "bytes": 92742,
+      "sha256": "8dbc2f01cab7d4bf525ce7293bd9c7c7b3a316e370c48744b77e04621ab3081c"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/lorraine-season-2020.html",
+      "bytes": 138577,
+      "sha256": "cbf16ebd12caa225611071712ed7fa3658f9d75666e2cd88137d282e59cd2b0b"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-16-2017.jpg",
+      "bytes": 610309,
+      "sha256": "77ebcbe8107f76bc0504342255fa48d47ab3ae47db5a9bd3a2639e61c425173c"
+    }
+  ],
+  "newSourceAccess": [
+    {
+      "url": "https://www.famillesrurales.org/einville/sites/multisite.famillesrurales.org._einville/files/ckeditor/contenus/fichiers/livret_2021%20INTER%20CEA.pdf",
+      "accessedAtUtc": "2026-11-15T12:18:17.547015+00:00",
+      "file": "partner-brochure-2021.pdf",
+      "status": 200,
+      "finalUrl": "https://www.famillesrurales.org/einville/sites/multisite.famillesrurales.org._einville/files/ckeditor/contenus/fichiers/livret_2021%20INTER%20CEA.pdf",
+      "contentType": "application/pdf",
+      "bytes": 4524835,
+      "sha256": "55e3d6ae9b574713acebeba1c66634ec1ddaf50759ccafe9f56c5540e68ca301"
+    },
+    {
+      "url": "https://www.ousortiren.com/sortir-en-lorraine/3188-nocturne-parc-de-loisirs-pokeyland-a-fey",
+      "accessedAtUtc": "2026-11-15T12:18:20.254354+00:00",
+      "file": "nocturne-2018.html",
+      "status": 200,
+      "finalUrl": "https://www.ousortiren.com/sortir-en-lorraine/3188-nocturne-parc-de-loisirs-pokeyland-a-fey",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 59196,
+      "sha256": "9ba54d81c8b25f181f40d33b309832a8b88236cc76ef348b8318b781c5b6a173"
+    },
+    {
+      "url": "https://www.estrepublicain.fr/culture-loisirs/2025/08/10/chaudeney-sur-moselle-clap-de-fin-pour-la-ruche",
+      "accessedAtUtc": "2026-11-15T12:18:22.706084+00:00",
+      "file": "chaudeney-2025-gallery.html",
+      "status": 200,
+      "finalUrl": "https://www.estrepublicain.fr/culture-loisirs/2025/08/10/chaudeney-sur-moselle-clap-de-fin-pour-la-ruche",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 586640,
+      "sha256": "43525e6007fa48a4bbcf89a408e5bba94ceb85b0065262fc3731e7353313e80f"
+    }
+  ],
+  "findings": [
+    {
+      "name": "Balade en calèche",
+      "result": "No newly qualified identity, nominal Pokeyland photograph, alias or operation date.",
+      "retainedEvidence": "The official map photographed in 2017 labels Balade en calèche as no.29; a 2017 nocturne announcement also names it.",
+      "dates": {
+        "presenceEvidenceYear": 2017,
+        "openingDate": null,
+        "closureDate": null,
+        "currentStatus": null
+      },
+      "notAliases": [
+        "Poney",
+        "Les p’tits chevaux",
+        "Rosalie: no identity link established"
+      ],
+      "newPhotoCandidate": {
+        "access": {
+          "url": "https://cdn-s-www.estrepublicain.fr/images/9DD05C49-CDA6-41DC-A3EE-1F8B873EC0DB/NW_raw/une-petite-balade-en-caleche-plutot-reposant-non-1753802284.jpg",
+          "accessedAtUtc": "2026-11-15T12:19:15.530711+00:00",
+          "file": "chaudeney-caleche-2025-unqualified.jpg",
+          "status": 200,
+          "bytes": 249209,
+          "sha256": "bc69a07b56db7a30dcdd6a7b0c4849575c3e9ade5005e82174861a3705619586"
+        },
+        "nativeDimensions": [
+          1440,
+          1080
+        ],
+        "visualObservation": "One white horse pulling a black carriage with red wheels and seats, children aboard, on a village street with houses. No identifiable Pokeyland sign.",
+        "articleContext": "The Chaudeney youth-club report lists separate excursions to Sainte-Croix, Pokeyland and Madine, then local activities introduced by Sur place including carriage rides.",
+        "articleDateCaution": "The URL contains 2025/08/10; the readable article states 6 August 2025 at 12:00. Neither is an exact carriage photograph date.",
+        "decision": "Rejected for attribution to Pokeyland. This is not evidence that the park offered a carriage ride in 2025. Whole native retained unchanged, no crop/import."
+      },
+      "remaining": [
+        "Nominal park carriage photograph",
+        "Vehicle and route details",
+        "Explicit successor or closure evidence"
+      ]
+    },
+    {
+      "name": "Archery Games / Archery Tag",
+      "result": "Identity link remains unproved; no newly qualified nominal native photograph.",
+      "retainedEvidence": [
+        {
+          "year": 2017,
+          "source": "Official map photographed by L’Est Républicain",
+          "finding": "ARCHERY GAMES novelty label, separate from target archery and Le Petit Robin."
+        },
+        {
+          "year": 2020,
+          "source": "Lorraine au Cœur season promotion",
+          "finding": "Archery Tag announced as new, two opposing teams and targets; the same page still lists Archey games in its generic inventory. This does not explicitly establish renaming or replacement."
+        }
+      ],
+      "newlyChecked": [
+        {
+          "source": "Familles rurales / Inter C.E.A. 2021 partner booklet, page 39",
+          "finding": "Whole advertisement visually inspected. Branded promotional illustration, including a drawn archer, and the phrase 5 nouveautés. No Archery Games/Tag name and no equipment photograph. Not used to describe the place."
+        },
+        {
+          "source": "Public indexed excerpt for Scribd document 513775350, Pokeyland-BROCHURE-2021-4-2",
+          "finding": "Indexed text refers to season 2021 and Archery Tag, with foam-tipped arrows/team game. Previously saved public viewer is a shell, not a recovered full PDF. The uploaded title mentions 2023; that title is not a reliable brochure date. This indexed fragment does not prove Games=Tag or the exact physical field. No access restriction bypassed."
+        }
+      ],
+      "dates": {
+        "openingDate": null,
+        "closureDate": null,
+        "currentStatus": null
+      },
+      "decision": "Keep Games/Tag as an unresolved research cluster. Do not create two speculative duplicate places, assert a rename, or substitute Tir à l’arc, Le Petit Robin or Bazooka ball.",
+      "remaining": [
+        "Explicit Games/Tag name continuity",
+        "Nominal field photograph",
+        "Verified location and operation dates"
+      ]
+    },
+    {
+      "name": "Historical restaurants and refreshment stands",
+      "result": "New 2018 dated announcement extends the documented named list but resolves no successor alias.",
+      "newEvidence": {
+        "url": "https://www.ousortiren.com/sortir-en-lorraine/3188-nocturne-parc-de-loisirs-pokeyland-a-fey",
+        "eventDate": "2018-07-21",
+        "sourceType": "Event announcement, not retrospective proof of actual operation",
+        "quote": "Restaurants ouverts sur le parc le jour de la nocturne. ( Snack, Pizzeria, le nouveau restaurant O’Chalet, Sur le Pouce et deux buvettes supplémentaires)"
+      },
+      "chronology": [
+        {
+          "year": 2017,
+          "finding": "Official map: Buvette Sur le Pouce no.23; O’Chalet (barbecue géant) no.28. Nocturne announcements name O’Chalet and Sur le Pouce."
+        },
+        {
+          "year": 2018,
+          "finding": "The July21 announcement names Snack, Pizzeria, O’Chalet, Sur le Pouce and two extra buvettes together."
+        },
+        {
+          "year": 2019,
+          "finding": "August14 event announcement names Snack, Pizzeria, O’Chalet, Sur le Pouce and the new L’Escale together."
+        }
+      ],
+      "interpretation": [
+        "Sur le Pouce, O’Chalet and L’Escale must remain distinct; the 2019 list explicitly juxtaposes them.",
+        "New O’Chalet wording in 2018 is already present in 2017: it does not establish an actual 2018 opening.",
+        "Snack and Pizzeria are generic labels; no named building photograph or explicit link to a current outlet was found.",
+        "Two extra buvettes in an event announcement does not establish two separate permanent services.",
+        "O’Chalet’s barbecue function does not prove a rename to Le Grill; no link to Le Petit Creux or Pokey Beach was demonstrated.",
+        "The previously preserved printed 2023 brochure announces Pokey Plage with a promotional drawing, not a native outlet photograph. It is already in root evidence, not a new finding."
+      ],
+      "decision": "No duplicate creation or arbitrary alias justified. No detailed final notice drafted.",
+      "remaining": [
+        "Nominal historical outlet photographs",
+        "Exact continuity to current named outlets",
+        "Actual operation and closure dates"
+      ]
+    }
+  ],
+  "excludedSearchCollisions": [
+    "MOSL Calèche filter options are navigation, not a Pokeyland offering.",
+    "A 2024 Moselle-language contest Archery Tag prize concerns France Aventures Amnéville; separate Pokeyland tickets do not transfer the activity.",
+    "Nancy fair carriage/pony offerings concern Écurie du Vermois, not Pokeyland.",
+    "Unrelated O’Chalet and Sur le Pouce restaurants, broad newsletters and sitewide category hits excluded.",
+    "The 2025 Chaudeney native carriage photograph is not attributable to Pokeyland."
+  ],
+  "outcome": {
+    "newQualifiedPlaceIdentity": false,
+    "newQualifiedAlias": false,
+    "acceptedNewPhotos": 0,
+    "newDocumentedHistoricalDate": "2018-07-21 event announcement lists food outlets; not an actual opening date",
+    "integrationJustifiedByThisFollowup": false
+  },
+  "limitations": [
+    "Public sources only. No contact, login, purchase or bypass.",
+    "Search snippets and an inaccessible full brochure were not presented as fully read primary documents.",
+    "Absence from a later activity list does not prove closure.",
+    "No unverified dimensions, horse count, current status or opening/closure date assigned to Pokeyland items."
+  ],
+  "fileManifest": [
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/candidate-photo-access.json",
+      "bytes": 389,
+      "sha256": "1a7aa94bb527f36f37471d6cfc69fb7f059736ea09a116961b14d280b041230d"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/chaudeney-2025-gallery.html",
+      "bytes": 586640,
+      "sha256": "43525e6007fa48a4bbcf89a408e5bba94ceb85b0065262fc3731e7353313e80f"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/chaudeney-2025-gallery.txt",
+      "bytes": 12764,
+      "sha256": "9cae43433eca55e05bdbc4f7673e5e17f3a47de7795e39e2d9cdd64742d90692"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/chaudeney-caleche-2025-unqualified.jpg",
+      "bytes": 249209,
+      "sha256": "bc69a07b56db7a30dcdd6a7b0c4849575c3e9ade5005e82174861a3705619586"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/fetch.py",
+      "bytes": 1452,
+      "sha256": "94687ea55fb9e5194804fc92509a6bdcaaae95342081e3d91fead0761693ab01"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/nocturne-2018.html",
+      "bytes": 59196,
+      "sha256": "9ba54d81c8b25f181f40d33b309832a8b88236cc76ef348b8318b781c5b6a173"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/nocturne-2018.txt",
+      "bytes": 4112,
+      "sha256": "1cc01e382aaa06c7d9a4b8283c3f2b7c175277abc87f5db4187c7c757a78d5c9"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/partner-brochure-2021-page39.png",
+      "bytes": 1853118,
+      "sha256": "9f125348a26c44c4608f7ef540f302f351f86f46a5260ee9f461b6ee393b50fc"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/partner-brochure-2021.pdf",
+      "bytes": 4524835,
+      "sha256": "55e3d6ae9b574713acebeba1c66634ec1ddaf50759ccafe9f56c5540e68ca301"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/partner-brochure-2021.txt",
+      "bytes": 53350,
+      "sha256": "422a77831451a94bb3ff1036199aca2ff3eef5ceac9898c7a9ac9695647fd902"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/public-search-results.json",
+      "bytes": 100893,
+      "sha256": "ef694a8a8321762bd8eecdb69efd8508d7eda2efd70d357748db284d560e6494"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/source-access.json",
+      "bytes": 1607,
+      "sha256": "f58eb425e26848804e058be9ca0d79925f14c5ec097cc70c0f36c488f5e73322"
+    }
+  ]
+}

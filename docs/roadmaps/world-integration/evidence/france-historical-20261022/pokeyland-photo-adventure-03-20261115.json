@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "sourcePage": "https://www.pokeyland.com/packs/paintball/",
+    "section": "MODE CANNIBALE",
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_160045-scaled-pmvafbth5r98v7z9d2n3tfmtcu12bu3jurhqt0awf4.jpg",
+    "domImageXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[3]/div/div[1]/div/div/div/img",
+    "sectionXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[3]",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/03-20150701_160045-scaled-pmvafbth5r98v7z9d2n3tfmtcu12bu3jurhqt0awf4.jpg",
+    "http": 200,
+    "bytes": 97063,
+    "dimensions": [
+      700,
+      400
+    ],
+    "sha256": "4cdbe942bbc2a7e319c32825d1a0975f63d1ce52f651ac8740687ca892e4b8d0",
+    "fetchedUtc": "2026-11-15T12:08:26.154943+00:00",
+    "over960KiB": false,
+    "localPixelTransformation": false,
+    "captureDate": null,
+    "photographer": null,
+    "filename": "03-20150701_160045-scaled-pmvafbth5r98v7z9d2n3tfmtcu12bu3jurhqt0awf4.jpg",
+    "visualObservation": "Petites huttes en bois coiffées de branchages, à fenêtres rectangulaires, parmi les arbres. La page nomme MODE CANNIBALE.",
+    "visuallyInspected": true,
+    "publisher": "Pokeyland",
+    "creditBasis": "Source : site officiel Pokeyland ; auteur individuel non mentionné.",
+    "openLicenseClaimed": false,
+    "captureDateBasis": "Aucune date de prise prouvée ; les chiffres du nom de fichier et du chemin de stockage ne sont pas des dates validées.",
+    "gps": null,
+    "exif": {},
+    "qualification": "qualified_named_paintball_field",
+    "itemId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+    "watermarkVisible": false,
+    "compositeVisible": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_160045-scaled-pmvafbth5r98v7z9d2n3tfmtcu12bu3jurhqt0awf4.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/03-20150701_160045-scaled-pmvafbth5r98v7z9d2n3tfmtcu12bu3jurhqt0awf4.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-03-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-03-import-result.json"
+  },
+  "metadata": {
+    "description": "Les huttes du village fictif du terrain Cannibale à Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_160045-scaled-pmvafbth5r98v7z9d2n3tfmtcu12bu3jurhqt0awf4.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des huttes de bois sombre, aux toits couverts de branchages et aux ouvertures rectangulaires, sont dispersées entre les arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "Dark wooden huts with branch-covered roofs and rectangular openings stand among the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Dunkle Holzhütten mit Zweigdächern und rechteckigen Öffnungen stehen zwischen den Bäumen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Cabañas de madera oscura, con techos cubiertos de ramas y aberturas rectangulares, se distribuyen entre los árboles."
+      },
+      {
+        "languageCode": "it",
+        "value": "Capanne di legno scuro, con tetti coperti di rami e aperture rettangolari, sorgono tra gli alberi."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Donkere houten hutten met takkendaken en rechthoekige openingen staan tussen de bomen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Ciemne drewniane chaty z dachami pokrytymi gałęziami i prostokątnymi otworami stoją wśród drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cabanas de madeira escura, com telhados cobertos de ramos e aberturas retangulares, distribuem-se entre as árvores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les huttes du village fictif du terrain Cannibale à Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "Huts in the fictional village on Pokeyland’s Cannibale field."
+      },
+      {
+        "languageCode": "de",
+        "value": "Hütten des fiktiven Dorfes auf dem Cannibale-Spielfeld von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las cabañas del poblado ficticio del campo Cannibale de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le capanne del villaggio immaginario del campo Cannibale di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De hutten van het fictieve dorp op het Cannibale-veld van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Chaty fikcyjnej wioski na polu Cannibale w Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As cabanas da aldeia fictícia do campo Cannibale no Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "b6860a71b8354201bd1d7533b1eed2f5",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+      "path": "park_item/b6860a71b8354201bd1d7533b1eed2f5",
+      "description": "Les huttes du village fictif du terrain Cannibale à Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 97063,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_160045-scaled-pmvafbth5r98v7z9d2n3tfmtcu12bu3jurhqt0awf4.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des huttes de bois sombre, aux toits couverts de branchages et aux ouvertures rectangulaires, sont dispersées entre les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "Dark wooden huts with branch-covered roofs and rectangular openings stand among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Dunkle Holzhütten mit Zweigdächern und rechteckigen Öffnungen stehen zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Cabañas de madera oscura, con techos cubiertos de ramas y aberturas rectangulares, se distribuyen entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Capanne di legno scuro, con tetti coperti di rami e aperture rettangolari, sorgono tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Donkere houten hutten met takkendaken en rechthoekige openingen staan tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ciemne drewniane chaty z dachami pokrytymi gałęziami i prostokątnymi otworami stoją wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cabanas de madeira escura, com telhados cobertos de ramos e aberturas retangulares, distribuem-se entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les huttes du village fictif du terrain Cannibale à Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Huts in the fictional village on Pokeyland’s Cannibale field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Hütten des fiktiven Dorfes auf dem Cannibale-Spielfeld von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las cabañas del poblado ficticio del campo Cannibale de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le capanne del villaggio immaginario del campo Cannibale di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De hutten van het fictieve dorp op het Cannibale-veld van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Chaty fikcyjnej wioski na polu Cannibale w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As cabanas da aldeia fictícia do campo Cannibale no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:09.757Z",
+      "updatedAt": "2026-11-15T12:44:13.232Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T12:44:16.3408610Z",
+    "startedAtUtc": "2026-11-15T12:44:08.4327856Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true,
+    "identityFromNamedOfficialDomBlock": true,
+    "noCheckpointAliasInferred": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

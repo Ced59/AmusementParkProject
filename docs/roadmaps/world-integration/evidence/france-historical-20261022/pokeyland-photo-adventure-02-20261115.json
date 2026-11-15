@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "sourcePage": "https://www.pokeyland.com/packs/paintball/",
+    "section": "MODE DOG ONE",
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152851-scaled-pmvacbq1bt59s2c9w9x0cowt1ituqn6f3wgwm6r6ao.jpg",
+    "domImageXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[2]/div/div[1]/div/div/div/img",
+    "sectionXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[2]",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/02-20150528_152851-scaled-pmvacbq1bt59s2c9w9x0cowt1ituqn6f3wgwm6r6ao.jpg",
+    "http": 200,
+    "bytes": 85025,
+    "dimensions": [
+      700,
+      400
+    ],
+    "sha256": "0ca36b68b516ff567bd44f1f65f40adda9ac1287b4d1a5dbb728fa979ad54de6",
+    "fetchedUtc": "2026-11-15T12:08:25.443801+00:00",
+    "over960KiB": false,
+    "localPixelTransformation": false,
+    "captureDate": null,
+    "photographer": null,
+    "filename": "02-20150528_152851-scaled-pmvacbq1bt59s2c9w9x0cowt1ituqn6f3wgwm6r6ao.jpg",
+    "visualObservation": "Véhicule blindé de décor, camouflage vert/beige, marqué 302, placé dans les bois. La page nomme MODE DOG ONE ; le bateau décrit dans le texte est hors de ce cadrage. Ne pas appeler ce véhicule un bateau ni déduire un modèle militaire.",
+    "visuallyInspected": true,
+    "publisher": "Pokeyland",
+    "creditBasis": "Source : site officiel Pokeyland ; auteur individuel non mentionné.",
+    "openLicenseClaimed": false,
+    "captureDateBasis": "Aucune date de prise prouvée ; les chiffres du nom de fichier et du chemin de stockage ne sont pas des dates validées.",
+    "gps": null,
+    "exif": {},
+    "qualification": "qualified_named_paintball_field",
+    "itemId": "d7074297-19a0-44e6-a196-c251ea484d46",
+    "watermarkVisible": false,
+    "compositeVisible": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152851-scaled-pmvacbq1bt59s2c9w9x0cowt1ituqn6f3wgwm6r6ao.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/02-20150528_152851-scaled-pmvacbq1bt59s2c9w9x0cowt1ituqn6f3wgwm6r6ao.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "d7074297-19a0-44e6-a196-c251ea484d46",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-02-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-02-import-result.json"
+  },
+  "metadata": {
+    "description": "Le véhicule de décor présenté sur le terrain Dog One de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152851-scaled-pmvacbq1bt59s2c9w9x0cowt1ituqn6f3wgwm6r6ao.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un véhicule blindé de décor vert et beige, marqué 302, est installé devant des palissades en bois dans la forêt."
+      },
+      {
+        "languageCode": "en",
+        "value": "A green and beige armoured prop vehicle marked 302 stands before wooden fences in the forest."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein grün-beiges gepanzertes Kulissenfahrzeug mit der Nummer 302 steht vor Holzzäunen im Wald."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un vehículo blindado de decorado verde y beige, marcado 302, está ante empalizadas de madera en el bosque."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un veicolo corazzato scenografico verde e beige, con il numero 302, è collocato davanti a palizzate di legno nel bosco."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een groen en beige gepantserd decorvoertuig met nummer 302 staat voor houten schuttingen in het bos."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zielono-beżowy pojazd opancerzony stanowiący dekorację, z numerem 302, stoi przed drewnianymi płotami w lesie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um veículo blindado de cenário verde e bege, com o número 302, está diante de vedações de madeira no bosque."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le véhicule de décor présenté sur le terrain Dog One de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The prop vehicle shown on Pokeyland’s Dog One field."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das Kulissenfahrzeug auf dem Dog-One-Spielfeld von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "El vehículo de decorado del campo Dog One de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il veicolo scenografico del campo Dog One di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het decorvoertuig op het Dog One-veld van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pojazd scenograficzny na polu Dog One w Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O veículo de cenário do campo Dog One no Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T12:44:06.8325990Z",
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T12:43:58.8568522Z",
+    "result": {
+      "id": "87ec3a97299f4c0c8b936773fe8c84e7",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "d7074297-19a0-44e6-a196-c251ea484d46",
+      "path": "park_item/87ec3a97299f4c0c8b936773fe8c84e7",
+      "description": "Le véhicule de décor présenté sur le terrain Dog One de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 85025,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152851-scaled-pmvacbq1bt59s2c9w9x0cowt1ituqn6f3wgwm6r6ao.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un véhicule blindé de décor vert et beige, marqué 302, est installé devant des palissades en bois dans la forêt."
+        },
+        {
+          "languageCode": "en",
+          "value": "A green and beige armoured prop vehicle marked 302 stands before wooden fences in the forest."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein grün-beiges gepanzertes Kulissenfahrzeug mit der Nummer 302 steht vor Holzzäunen im Wald."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un vehículo blindado de decorado verde y beige, marcado 302, está ante empalizadas de madera en el bosque."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un veicolo corazzato scenografico verde e beige, con il numero 302, è collocato davanti a palizzate di legno nel bosco."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een groen en beige gepantserd decorvoertuig met nummer 302 staat voor houten schuttingen in het bos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielono-beżowy pojazd opancerzony stanowiący dekorację, z numerem 302, stoi przed drewnianymi płotami w lesie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um veículo blindado de cenário verde e bege, com o número 302, está diante de vedações de madeira no bosque."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le véhicule de décor présenté sur le terrain Dog One de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The prop vehicle shown on Pokeyland’s Dog One field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Kulissenfahrzeug auf dem Dog-One-Spielfeld von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "El vehículo de decorado del campo Dog One de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il veicolo scenografico del campo Dog One di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het decorvoertuig op het Dog One-veld van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pojazd scenograficzny na polu Dog One w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O veículo de cenário do campo Dog One no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:43:59.93Z",
+      "updatedAt": "2026-11-15T12:44:03.629Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true,
+    "identityFromNamedOfficialDomBlock": true,
+    "noCheckpointAliasInferred": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

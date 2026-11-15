@@ -112,7 +112,7 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T12:21:14.3140467Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T12:45:03.606Z",
   "newApplyPerformed": true,
   "newPhotoImported": true,
   "fullAuditExportPerformed": false,
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Continue 43 remaining item descriptions, real photographs, prices and sourced history/article. Three zones and official2026 map are private and described. Calendar conditional dates cannot be faithfully represented by current day model; preserve gap, no invented closures/hours. No full final audit or publication.",
+  "nextAction": "Continue 42 remaining item descriptions and photographs; write developed sourced history article and item milestones. Four park facts private, two season2026 passes with actual expired validity. No full audit or publication. Preserve unresolved calendar representation and day-ticket channel gaps.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -196,21 +196,39 @@
       "proof": "pokeyland-17-paintball-descriptions-20261115.json",
       "operationId": "feba1bcc-ae72-4f40-a8db-d038cc90f00f",
       "appliedAtUtc": "2026-11-15T12:21:14.3140467Z"
+    },
+    {
+      "proof": "pokeyland-season-pass-pricing-20261115.json",
+      "operationId": "583a2080-b5b3-4d4c-ad4a-25d28552fa01",
+      "appliedAtUtc": "2026-11-15T12:28:50.3887149Z"
+    },
+    {
+      "proof": "pokeyland-park-history-20261115.json",
+      "operationId": "4becfae0-d0ff-45d6-8ce5-9c1d4349aee2",
+      "appliedAtUtc": "2026-11-15T12:38:34.8607039Z"
+    },
+    {
+      "proof": "pokeyland-20-waterjump-description-20261115.json",
+      "operationId": "534ca85e-40d9-49e4-9494-f23f4bc7e8f3",
+      "appliedAtUtc": "2026-11-15T12:41:21.5862478Z"
     }
   ],
   "currentCounts": {
     "items": 74,
     "publicItems": 0,
     "zones": 3,
-    "media": 14,
+    "media": 24,
     "privateLogo": true,
     "parkDescribedLanguages": 8,
-    "itemsDescribed": 31,
+    "itemsDescribed": 32,
     "referenceLocalizedTexts": 16,
     "historicalUnknownItems": 17,
     "zonesDescribed": 3,
     "officialMaps": 1,
-    "publicOfficialMaps": 0
+    "publicOfficialMaps": 0,
+    "parkFacts": 4,
+    "privateParkFacts": 4,
+    "seasonPasses": 2
   },
   "imports": [
     {
@@ -282,9 +300,59 @@
       "proof": "pokeyland-photo-current-10-20261115.json",
       "imageId": "a19c6a01526c40639bc7187d9b88368f",
       "createdAtUtc": "2026-11-15T12:17:57.087Z"
+    },
+    {
+      "proof": "pokeyland-photo-general-32110959-20261115.json",
+      "imageId": "a30bcfef2e414aca8898b45ee212d46e",
+      "createdAtUtc": "2026-11-15T12:26:58.233Z"
+    },
+    {
+      "proof": "pokeyland-photo-general-jmp_9374-20261115.json",
+      "imageId": "452fd5f698e549c3922711177b0984e9",
+      "createdAtUtc": "2026-11-15T12:27:09.734Z"
+    },
+    {
+      "proof": "pokeyland-photo-adventure-01-20261115.json",
+      "imageId": "b6dab89667e443b0839ad1b5220a4ec0",
+      "createdAtUtc": "2026-11-15T12:43:49.874Z"
+    },
+    {
+      "proof": "pokeyland-photo-adventure-02-20261115.json",
+      "imageId": "87ec3a97299f4c0c8b936773fe8c84e7",
+      "createdAtUtc": "2026-11-15T12:43:59.93Z"
+    },
+    {
+      "proof": "pokeyland-photo-adventure-03-20261115.json",
+      "imageId": "b6860a71b8354201bd1d7533b1eed2f5",
+      "createdAtUtc": "2026-11-15T12:44:09.757Z"
+    },
+    {
+      "proof": "pokeyland-photo-adventure-04-20261115.json",
+      "imageId": "2a6321fa0dd44f6088c69cf78f04db1d",
+      "createdAtUtc": "2026-11-15T12:44:18.912Z"
+    },
+    {
+      "proof": "pokeyland-photo-adventure-05-20261115.json",
+      "imageId": "9dc4f8c27d9e4cfc9d459517a74d9b38",
+      "createdAtUtc": "2026-11-15T12:44:28.217Z"
+    },
+    {
+      "proof": "pokeyland-photo-adventure-06-20261115.json",
+      "imageId": "c8466353e86442e180d8ff8e5fbbf41a",
+      "createdAtUtc": "2026-11-15T12:44:42.803Z"
+    },
+    {
+      "proof": "pokeyland-photo-adventure-08-20261115.json",
+      "imageId": "67935475ed1240c592561ab14a443d8b",
+      "createdAtUtc": "2026-11-15T12:44:52.562Z"
+    },
+    {
+      "proof": "pokeyland-photo-adventure-09-20261115.json",
+      "imageId": "31ea2b41b90045bfa7114af9567f39d0",
+      "createdAtUtc": "2026-11-15T12:45:03.606Z"
     }
   ],
-  "updatedAtUtc": "2026-11-15T12:22:15.841476+00:00",
+  "updatedAtUtc": "2026-11-15T12:46:03.007908+00:00",
   "idempotence": {
     "proof": "pokeyland-idempotence-followup-20261115.json",
     "counts": {
@@ -472,5 +540,165 @@
     ],
     "warnings": [],
     "errors": []
+  },
+  "latestPaintballIdempotence": {
+    "operationId": "17b85716-f22b-4360-a245-9e518740c3e4",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:23:57.0055448Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 6,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "entityKey": "pokeyland-terrain-zombie",
+        "displayName": "Zombie",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "entityKey": "pokeyland-terrain-dog-one",
+        "displayName": "Dog One",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "entityKey": "pokeyland-terrain-cannibale",
+        "displayName": "Cannibale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "entityKey": "pokeyland-terrain-panama",
+        "displayName": "Panama",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "entityKey": "pokeyland-terrain-fox-two",
+        "displayName": "Fox Two",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "latestHistoryDiagnostics": {
+    "result": {
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkName": "Pokeyland",
+      "factCount": 4,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 0,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 0,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 4
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 0
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": false,
+        "hasCompleteSourceCoverage": false,
+        "hasMajorMilestone": false,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 0,
+        "sourcedFactCount": 0,
+        "majorFactCount": 0,
+        "indexableKeyYears": []
+      }
+    },
+    "startedAtUtc": "2026-11-15T12:39:03.7137918Z",
+    "receivedAtUtc": "2026-11-15T12:39:04.5256289Z",
+    "action": "HistoryDiagnostics"
+  },
+  "pricingQualification": {
+    "proof": "pokeyland-season-pass-pricing-20261115.json",
+    "season2026Only": true,
+    "mainAdmissionOffersNotApplied": "Official amounts lack a verified sales channel; linked official ticket shop under maintenance. No gate/online equality invented."
   }
 }

@@ -1,0 +1,127 @@
+{
+  "createdAtUtc": "2026-11-15T12:25:56.218936+00:00",
+  "task": "Pokeyland: actual photographs specific to four park events and 2017/2022 new attractions",
+  "scope": "Public research only; no API, Git, registry write, reservation, media import, image editing or final multilingual text.",
+  "reconciliationFirst": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/event-image-existing-source-reconciliation.json",
+  "newNetworkAccessLog": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/source-access.jsonl",
+  "newNetworkRequests": 5,
+  "newNativeImagesDecoded": 3,
+  "invalidImageResponses": 1,
+  "reusedCachedMediaCount": 8,
+  "parkEventActualPhotoCoverage": "0 of 4 actual park-event photographs verified; absence is limited to consulted public sources, not a claim that such photos do not exist.",
+  "coverage": [
+    {
+      "event": "opening2015",
+      "date": "2015-06-20",
+      "actualEventPhotographFound": false,
+      "result": "Only first-hand preopening photographs from 19 June 2015 verified. The already-cached rest-area image is signed and excluded from import; never call it the public opening on June 20.",
+      "candidateIds": [
+        "preopening-rest-area-2015"
+      ]
+    },
+    {
+      "event": "sale2023",
+      "date": "2023-11-29",
+      "actualEventPhotographFound": false,
+      "result": "Legal transfer sources establish the deed, not an event image. No photograph of signing, transfer or identified participants found in consulted sources. Do not reuse the unrelated November 2024 change-of-management image as a 2023 sale photograph.",
+      "candidateIds": []
+    },
+    {
+      "event": "direction2024",
+      "date": "2024-12-01",
+      "actualEventPhotographFound": false,
+      "result": "Contemporary announcement uses a Waterjump photograph. Public farewell post uses an unlocated monorail-style ride image. Neither shows a management handover; supplied-photo credit Photo_Remise is not a ceremony caption.",
+      "candidateIds": [
+        "direction-2024-waterjump-context",
+        "direction-2024-farewell-social-context",
+        "direction-2024-moselletv-invalid"
+      ]
+    },
+    {
+      "event": "redressement2026",
+      "date": "2026-10-01",
+      "actualEventPhotographFound": false,
+      "result": "The contemporary TV article uses a promotional montage, not an actual event image. No photograph of the legal procedure or a related management event found. Keep event unillustrated rather than invent a scene.",
+      "candidateIds": [
+        "redressement-2026-promo-montage"
+      ]
+    },
+    {
+      "event": "new2017BigAir",
+      "datePrecision": "Year",
+      "year": 2017,
+      "actualOpeningDayPhotographFound": false,
+      "specificAttractionOperatingPhotographFound": true,
+      "result": "Strongest historical item candidate: named Big Air Jump in operation in the gallery published 11 August 2017. Day of photo and inauguration unknown.",
+      "candidateIds": [
+        "big-air-jump-in-use-2017"
+      ]
+    },
+    {
+      "event": "new2017MiniFarm",
+      "datePrecision": "Year",
+      "year": 2017,
+      "actualOpeningDayPhotographFound": false,
+      "specificAttractionPhotographFound": true,
+      "result": "Historical goats/enclosure photograph in the 2017 Pokeyland gallery; suitable as explicitly dated-period context, not opening ceremony.",
+      "candidateIds": [
+        "mini-farm-2017"
+      ]
+    },
+    {
+      "event": "new2017Labyrinth",
+      "datePrecision": "Year",
+      "year": 2017,
+      "actualOpeningDayPhotographFound": false,
+      "specificHistoricalPhotographFound": false,
+      "result": "No specific launch photograph established in the source set consulted. Do not use the map or the mini-farm image as a labyrinth photograph.",
+      "candidateIds": []
+    },
+    {
+      "event": "new2017Courses",
+      "datePrecision": "Year",
+      "year": 2017,
+      "actualOpeningDayPhotographFound": false,
+      "result": "Contractor image documents a suspended wooden aircraft obstacle in the described Pitchoun extension, but is visibly watermarked. Current numbered-course alias not proved; retain source as evidence only.",
+      "candidateIds": [
+        "pitchoun-extension-avion-2017"
+      ]
+    },
+    {
+      "event": "waterjump2022",
+      "datePrecision": "Year",
+      "year": 2022,
+      "actualOpeningDayPhotographFound": false,
+      "specificAttractionPhotographFound": true,
+      "result": "Real official yellow-slide photograph is undated; real full Waterjump context appears with a 2024 article. The 2022 VIP article image shows entrance only. Official 2022-upload promotional renders are rejected. None establishes a real June 2022 opening-day photograph.",
+      "candidateIds": [
+        "waterjump-yellow-official",
+        "direction-2024-waterjump-context",
+        "vip-waterjump-2022-entrance-context",
+        "waterjump-official-wide-render",
+        "waterjump-official-pack-render"
+      ]
+    }
+  ],
+  "candidateManifest": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/photo-candidate-manifest.json",
+  "sourceCatalog": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/photo-source-catalog.json",
+  "dateCorrection": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/gallery-publication-date-correction.json",
+  "recommendedHistoricalItemCandidates": [
+    "big-air-jump-in-use-2017",
+    "mini-farm-2017"
+  ],
+  "undatedAttractionContextCandidates": [
+    "waterjump-yellow-official",
+    "direction-2024-waterjump-context"
+  ],
+  "conditions": [
+    "Parent must verify current media IDs/manifests before reuse; no duplicated import.",
+    "Never label contextual photos as actual signing, opening ceremony, transfer or judicial event.",
+    "No capture date derived from article publication, image URL, screenshot filename or social CDN timestamp.",
+    "Local EXIF dates without timezone remain local and must not be converted to invented UTC.",
+    "Visible signatures and watermarks are preserved; no cropping or editing.",
+    "No open licence claimed for any source. Public accessibility is not a licence.",
+    "Waterjump 2022 is a year-level fact from other sources, not a capture date of these illustrations."
+  ],
+  "noMutationPerformed": true
+}

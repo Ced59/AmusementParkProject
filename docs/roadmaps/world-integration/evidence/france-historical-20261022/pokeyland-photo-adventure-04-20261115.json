@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "sourcePage": "https://www.pokeyland.com/packs/paintball/",
+    "section": "MODE PANAMA",
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_173146-scaled-pmvai3gda71n1vyj79pk5qhobodyzr33kgn7oc763k.jpg",
+    "domImageXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[4]/div/div[1]/div/div/div/img",
+    "sectionXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[4]",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/04-20150701_173146-scaled-pmvai3gda71n1vyj79pk5qhobodyzr33kgn7oc763k.jpg",
+    "http": 200,
+    "bytes": 108017,
+    "dimensions": [
+      700,
+      400
+    ],
+    "sha256": "8be2c51ec620c7a0e511ada1f59c668b89d145b0cbbe74ecbfa0589dbf83ab3a",
+    "fetchedUtc": "2026-11-15T12:08:26.343907+00:00",
+    "over960KiB": false,
+    "localPixelTransformation": false,
+    "captureDate": null,
+    "photographer": null,
+    "filename": "04-20150701_173146-scaled-pmvai3gda71n1vyj79pk5qhobodyzr33kgn7oc763k.jpg",
+    "visualObservation": "Décor forestier avec petite chapelle blanche à toit sombre et pont de bois encordé passant devant un élément arrondi rouillé. La page nomme MODE PANAMA. Ne pas attribuer de GPS ni dimensions.",
+    "visuallyInspected": true,
+    "publisher": "Pokeyland",
+    "creditBasis": "Source : site officiel Pokeyland ; auteur individuel non mentionné.",
+    "openLicenseClaimed": false,
+    "captureDateBasis": "Aucune date de prise prouvée ; les chiffres du nom de fichier et du chemin de stockage ne sont pas des dates validées.",
+    "gps": null,
+    "exif": {},
+    "qualification": "qualified_named_paintball_field",
+    "itemId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+    "watermarkVisible": false,
+    "compositeVisible": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_173146-scaled-pmvai3gda71n1vyj79pk5qhobodyzr33kgn7oc763k.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/04-20150701_173146-scaled-pmvai3gda71n1vyj79pk5qhobodyzr33kgn7oc763k.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-04-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-04-import-result.json"
+  },
+  "metadata": {
+    "description": "La chapelle et le décor forestier du terrain Panama de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_173146-scaled-pmvai3gda71n1vyj79pk5qhobodyzr33kgn7oc763k.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une petite chapelle blanche à toit sombre côtoie un passage en bois bordé de cordes au milieu des arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "A small white chapel with a dark roof stands beside a wooden passage edged with ropes among the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine kleine weiße Kapelle mit dunklem Dach steht neben einem seilgesäumten Holzweg zwischen den Bäumen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una pequeña capilla blanca de tejado oscuro está junto a un paso de madera delimitado por cuerdas entre los árboles."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una piccola cappella bianca dal tetto scuro sorge accanto a un passaggio di legno delimitato da corde tra gli alberi."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een kleine witte kapel met een donker dak staat naast een houten doorgang met touwen tussen de bomen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Mała biała kaplica z ciemnym dachem stoi obok drewnianego przejścia otoczonego linami wśród drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma pequena capela branca de telhado escuro fica junto de uma passagem de madeira ladeada de cordas entre as árvores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La chapelle et le décor forestier du terrain Panama de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The chapel and woodland scenery of Pokeyland’s Panama field."
+      },
+      {
+        "languageCode": "de",
+        "value": "Kapelle und Waldkulisse des Panama-Spielfelds in Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "La capilla y el decorado forestal del campo Panama de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "La cappella e lo scenario boschivo del campo Panama di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De kapel en het bosdecor van het Panama-veld in Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kaplica i leśna scenografia pola Panama w Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A capela e o cenário florestal do campo Panama no Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T12:44:25.5028627Z",
+    "startedAtUtc": "2026-11-15T12:44:17.9896055Z",
+    "result": {
+      "id": "2a6321fa0dd44f6088c69cf78f04db1d",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+      "path": "park_item/2a6321fa0dd44f6088c69cf78f04db1d",
+      "description": "La chapelle et le décor forestier du terrain Panama de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 108017,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_173146-scaled-pmvai3gda71n1vyj79pk5qhobodyzr33kgn7oc763k.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une petite chapelle blanche à toit sombre côtoie un passage en bois bordé de cordes au milieu des arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "A small white chapel with a dark roof stands beside a wooden passage edged with ropes among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine kleine weiße Kapelle mit dunklem Dach steht neben einem seilgesäumten Holzweg zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una pequeña capilla blanca de tejado oscuro está junto a un paso de madera delimitado por cuerdas entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una piccola cappella bianca dal tetto scuro sorge accanto a un passaggio di legno delimitato da corde tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kleine witte kapel met een donker dak staat naast een houten doorgang met touwen tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mała biała kaplica z ciemnym dachem stoi obok drewnianego przejścia otoczonego linami wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma pequena capela branca de telhado escuro fica junto de uma passagem de madeira ladeada de cordas entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La chapelle et le décor forestier du terrain Panama de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The chapel and woodland scenery of Pokeyland’s Panama field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kapelle und Waldkulisse des Panama-Spielfelds in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "La capilla y el decorado forestal del campo Panama de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La cappella e lo scenario boschivo del campo Panama di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kapel en het bosdecor van het Panama-veld in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kaplica i leśna scenografia pola Panama w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A capela e o cenário florestal do campo Panama no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:18.912Z",
+      "updatedAt": "2026-11-15T12:44:22.401Z"
+    },
+    "action": "ImportPhoto"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true,
+    "identityFromNamedOfficialDomBlock": true,
+    "noCheckpointAliasInferred": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

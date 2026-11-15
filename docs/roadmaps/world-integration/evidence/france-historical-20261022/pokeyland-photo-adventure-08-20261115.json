@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "sourcePage": "https://www.pokeyland.com/packs/waterjump/",
+    "section": "Niveau 3 : Rouge avec tremplin",
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-rouge-q88epu95axw7vrkqy2hmlujz9fm92rp46c2iimv7og.jpg",
+    "domImageXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[3]/div/div[1]/div/div/div/img",
+    "sectionXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[3]",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/08-waterjump-rouge-q88epu95axw7vrkqy2hmlujz9fm92rp46c2iimv7og.jpg",
+    "http": 200,
+    "bytes": 66771,
+    "dimensions": [
+      700,
+      400
+    ],
+    "sha256": "6a7f6573b5f59689f57aace1daa5169cdc2e3864e46d06b6c0eeb78b37da361a",
+    "fetchedUtc": "2026-11-15T12:08:27.073764+00:00",
+    "over960KiB": false,
+    "localPixelTransformation": false,
+    "captureDate": null,
+    "photographer": null,
+    "filename": "08-waterjump-rouge-q88epu95axw7vrkqy2hmlujz9fm92rp46c2iimv7og.jpg",
+    "visualObservation": "Pistes rouges vues depuis le bassin, une partie plongeante et une sortie relevée avec écran en bois ; image du bloc Niveau 3 : Rouge avec tremplin.",
+    "visuallyInspected": true,
+    "publisher": "Pokeyland",
+    "creditBasis": "Source : site officiel Pokeyland ; auteur individuel non mentionné.",
+    "openLicenseClaimed": false,
+    "captureDateBasis": "Aucune date de prise prouvée ; les chiffres du nom de fichier et du chemin de stockage ne sont pas des dates validées.",
+    "gps": null,
+    "exif": {},
+    "qualification": "qualified_waterjump_detail",
+    "itemId": "73ff7670-39ee-4c19-b339-907707fc8711",
+    "watermarkVisible": false,
+    "compositeVisible": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-rouge-q88epu95axw7vrkqy2hmlujz9fm92rp46c2iimv7og.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/08-waterjump-rouge-q88epu95axw7vrkqy2hmlujz9fm92rp46c2iimv7og.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-08-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-08-import-result.json"
+  },
+  "metadata": {
+    "description": "Les descentes rouges et leur tremplin au Waterjump de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-rouge-q88epu95axw7vrkqy2hmlujz9fm92rp46c2iimv7og.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des pistes rouges arrivent au bord du bassin ; à droite, un tremplin relevé est entouré d’une paroi de bois."
+      },
+      {
+        "languageCode": "en",
+        "value": "Red runs reach the pool edge; on the right, an upturned jump is enclosed by a wooden wall."
+      },
+      {
+        "languageCode": "de",
+        "value": "Rote Bahnen reichen bis an den Beckenrand; rechts ist eine aufgebogene Schanze von einer Holzwand eingefasst."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las pistas rojas llegan al borde de la piscina; a la derecha, un trampolín elevado está rodeado por una pared de madera."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le piste rosse raggiungono il bordo della vasca; a destra, un trampolino rialzato è circondato da una parete di legno."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Rode banen komen uit bij de rand van het bad; rechts staat een houten wand rond een oplopende schans."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Czerwone zjeżdżalnie sięgają krawędzi basenu; po prawej uniesiona skocznia otoczona jest drewnianą ścianą."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As pistas vermelhas chegam à margem da piscina; à direita, um trampolim elevado está rodeado por uma parede de madeira."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les descentes rouges et leur tremplin au Waterjump de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The red descents and their jump at Pokeyland’s Waterjump."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die roten Abfahrten und ihre Sprungschanze im Waterjump von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las bajadas rojas y su trampolín en el Waterjump de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le discese rosse e il loro trampolino al Waterjump di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De rode afdalingen en hun schans bij Waterjump in Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Czerwone zjazdy i skocznia Waterjump w Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As descidas vermelhas e o trampolim do Waterjump no Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "67935475ed1240c592561ab14a443d8b",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "path": "park_item/67935475ed1240c592561ab14a443d8b",
+      "description": "Les descentes rouges et leur tremplin au Waterjump de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 66771,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-rouge-q88epu95axw7vrkqy2hmlujz9fm92rp46c2iimv7og.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des pistes rouges arrivent au bord du bassin ; à droite, un tremplin relevé est entouré d’une paroi de bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "Red runs reach the pool edge; on the right, an upturned jump is enclosed by a wooden wall."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rote Bahnen reichen bis an den Beckenrand; rechts ist eine aufgebogene Schanze von einer Holzwand eingefasst."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las pistas rojas llegan al borde de la piscina; a la derecha, un trampolín elevado está rodeado por una pared de madera."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le piste rosse raggiungono il bordo della vasca; a destra, un trampolino rialzato è circondato da una parete di legno."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rode banen komen uit bij de rand van het bad; rechts staat een houten wand rond een oplopende schans."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone zjeżdżalnie sięgają krawędzi basenu; po prawej uniesiona skocznia otoczona jest drewnianą ścianą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As pistas vermelhas chegam à margem da piscina; à direita, um trampolim elevado está rodeado por uma parede de madeira."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les descentes rouges et leur tremplin au Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The red descents and their jump at Pokeyland’s Waterjump."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die roten Abfahrten und ihre Sprungschanze im Waterjump von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las bajadas rojas y su trampolín en el Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le discese rosse e il loro trampolino al Waterjump di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De rode afdalingen en hun schans bij Waterjump in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone zjazdy i skocznia Waterjump w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As descidas vermelhas e o trampolim do Waterjump no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:52.562Z",
+      "updatedAt": "2026-11-15T12:44:56.415Z"
+    },
+    "receivedAtUtc": "2026-11-15T12:44:59.5648915Z",
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T12:44:51.4981224Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true,
+    "identityFromNamedOfficialDomBlock": true,
+    "noCheckpointAliasInferred": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

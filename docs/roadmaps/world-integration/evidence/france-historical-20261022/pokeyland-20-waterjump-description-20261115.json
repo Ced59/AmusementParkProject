@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-20-waterjump-description",
+        "step": "04-items",
+        "notes": "Page officielle Waterjump et quatre photographies originales relues personnellement ; brochure officielle 2023 confirmant la présence en 2022. Description de l’ensemble existant, pas de création de pistes séparées, ni hauteur/nombre/niveaux ou tenue déduits des contradictions officielles. Deux intertitres, trois paragraphes huit langues relus ; profondeur limitée aux faits disponibles, aucune date individuelle précise inventée."
+      },
+      "items": [
+        {
+          "id": "73ff7670-39ee-4c19-b339-907707fc8711",
+          "key": "pokeyland-waterjump",
+          "name": "Waterjump",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des couleurs au bord de l’eau</h2><p>Jaune, bleu, rouge et gris : les pentes du Waterjump se détachent devant les arbres de Pokeyland. Au pied des installations, le bassin reflète les couleurs des pistes et les façades en bois qui bordent les tremplins.</p><p>La glisse prend ici des accents acrobatiques, entre descentes sur l’eau et envols au-dessus du bassin. Les parties rouges et grises dominent cet ensemble de plein air, où la mascotte renard apparaît sur une paroi de bois.</p><h2>Une aventure estivale depuis 2022</h2><p>Déjà proposé en 2022, le Waterjump figure dans la brochure suivante aux côtés du paintball et de l’accrobranche. Bouées et planches y donnent une dimension aquatique aux aventures du parc forestier.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Colour beside the water</h2><p>Yellow, blue, red and grey: the Waterjump slopes stand out against Pokeyland’s trees. At their foot, the pool reflects the colours of the runs and the timber fronts bordering the jumps.</p><p>Sliding takes an acrobatic turn here, with descents into the water and flights above the pool. The red and grey sections dominate this outdoor setting, where the fox mascot appears on a wooden wall.</p><h2>A summer adventure since 2022</h2><p>Already available in 2022, Waterjump features in the following year’s brochure alongside paintball and the treetop courses. Tubes and boards add an aquatic dimension to the woodland park’s adventures.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Farben am Wasser</h2><p>Gelb, Blau, Rot und Grau: Die Hänge des Waterjump heben sich vor den Bäumen von Pokeyland ab. Am Fuß der Anlage spiegeln sich die Farben der Bahnen und die hölzernen Verkleidungen der Sprungschanzen im Becken.</p><p>Hier bekommt das Rutschen eine akrobatische Seite, mit Abfahrten ins Wasser und Sprüngen über das Becken. Die roten und grauen Bereiche prägen die Freiluftanlage; auf einer Holzwand ist das Fuchsmaskottchen zu sehen.</p><h2>Ein Sommerabenteuer seit 2022</h2><p>Waterjump wurde bereits 2022 angeboten und steht im Prospekt des Folgejahres neben Paintball und Kletterparcours. Reifen und Boards ergänzen die Abenteuer des Waldparks um eine Wasserattraktion.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Colores junto al agua</h2><p>Amarillo, azul, rojo y gris: las pendientes del Waterjump destacan ante los árboles de Pokeyland. A sus pies, la piscina refleja los colores de las pistas y los frentes de madera que rodean los trampolines.</p><p>Aquí el deslizamiento adquiere un aire acrobático, entre descensos al agua y vuelos sobre la piscina. Las zonas rojas y grises dominan este conjunto al aire libre, donde la mascota del zorro aparece en una pared de madera.</p><h2>Una aventura de verano desde 2022</h2><p>Ya disponible en 2022, el Waterjump figura en el folleto del año siguiente junto al paintball y los circuitos entre árboles. Flotadores y tablas añaden una dimensión acuática a las aventuras del parque forestal.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Colori in riva all’acqua</h2><p>Giallo, blu, rosso e grigio: le discese del Waterjump risaltano davanti agli alberi di Pokeyland. Ai loro piedi, la vasca riflette i colori delle piste e i rivestimenti di legno che circondano i trampolini.</p><p>Qui le scivolate assumono un carattere acrobatico, tra discese in acqua e voli sopra la vasca. Le parti rosse e grigie dominano questo complesso all’aperto, dove la mascotte volpe compare su una parete di legno.</p><h2>Un’avventura estiva dal 2022</h2><p>Già proposto nel 2022, il Waterjump compare nella brochure dell’anno successivo accanto al paintball e ai percorsi sugli alberi. Ciambelloni e tavole aggiungono una dimensione acquatica alle avventure del parco nel bosco.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Kleuren aan het water</h2><p>Geel, blauw, rood en grijs: de hellingen van Waterjump steken af tegen de bomen van Pokeyland. Onderaan weerspiegelt het bad de kleuren van de banen en de houten wanden rond de springschansen.</p><p>Glijden krijgt hier een acrobatische kant, met afdalingen het water in en sprongen boven het bad. De rode en grijze delen bepalen het beeld van deze buitenattractie, waar de vosmascotte op een houten wand staat.</p><h2>Een zomeravontuur sinds 2022</h2><p>Waterjump was al in 2022 beschikbaar en staat in de brochure van het volgende jaar naast paintball en de klimparcoursen. Banden en boards voegen een wateravontuur toe aan het bospark.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Kolory nad wodą</h2><p>Żółty, niebieski, czerwony i szary: zbocza Waterjump wyróżniają się na tle drzew Pokeyland. U ich podnóża basen odbija barwy zjeżdżalni oraz drewniane osłony otaczające skocznie.</p><p>Zjazdy nabierają tu akrobatycznego charakteru, między ślizgami do wody a lotami nad basenem. Czerwone i szare części dominują w tej plenerowej atrakcji, a na drewnianej ścianie pojawia się lisia maskotka.</p><h2>Letnia przygoda od 2022 roku</h2><p>Waterjump działał już w 2022 roku, a w broszurze z kolejnego sezonu figuruje obok paintballu i tras w koronach drzew. Nadmuchiwane koła i deski dodają wodny wymiar przygodom leśnego parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Cores à beira de água</h2><p>Amarelo, azul, vermelho e cinzento: as encostas do Waterjump destacam-se diante das árvores do Pokeyland. Na base, a piscina reflete as cores das pistas e as frentes de madeira que ladeiam os trampolins.</p><p>Aqui, deslizar ganha um lado acrobático, entre descidas para a água e voos sobre a piscina. As partes vermelhas e cinzentas dominam este conjunto ao ar livre, onde a mascote raposa aparece numa parede de madeira.</p><h2>Uma aventura de verão desde 2022</h2><p>Já disponível em 2022, o Waterjump surge na brochura do ano seguinte ao lado do paintball e dos percursos nas árvores. Boias e pranchas dão uma dimensão aquática às aventuras do parque florestal.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "fc592fa9-ed0f-475d-8c3e-e61462808d55",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:40:49.4107779Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Farben am Wasser</h2><p>Gelb, Blau, Rot und Grau: Die Hänge des Waterjump heben sich vor den Bäumen von Pokeyland ab. Am Fuß der Anlage spiegeln sich die Farben der Bahnen und die hölzernen Verkleidungen der Sprungschanzen im Becken.</p><p>Hier bekommt das Rutschen eine akrobatische Seite, mit Abfahrten ins Wasser und Sprüngen über das Becken. Die roten und grauen Bereiche prägen die Freiluftanlage; auf einer Holzwand ist das Fuchsmaskottchen zu sehen.</p><h2>Ein Sommerabenteuer seit 2022</h2><p>Waterjump wurde bereits 2022 angeboten und steht im Prospekt des Folgejahres neben Paintball und Kletterparcours. Reifen und Boards ergänzen die Abenteuer des Waldparks um eine Wasserattraktion.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Colour beside the water</h2><p>Yellow, blue, red and grey: the Waterjump slopes stand out against Pokeyland’s trees. At their foot, the pool reflects the colours of the runs and the timber fronts bordering the jumps.</p><p>Sliding takes an acrobatic turn here, with descents into the water and flights above the pool. The red and grey sections dominate this outdoor setting, where the fox mascot appears on a wooden wall.</p><h2>A summer adventure since 2022</h2><p>Already available in 2022, Waterjump features in the following year’s brochure alongside paintball and the treetop courses. Tubes and boards add an aquatic dimension to the woodland park’s adventures.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Colores junto al agua</h2><p>Amarillo, azul, rojo y gris: las pendientes del Waterjump destacan ante los árboles de Pokeyland. A sus pies, la piscina refleja los colores de las pistas y los frentes de madera que rodean los trampolines.</p><p>Aquí el deslizamiento adquiere un aire acrobático, entre descensos al agua y vuelos sobre la piscina. Las zonas rojas y grises dominan este conjunto al aire libre, donde la mascota del zorro aparece en una pared de madera.</p><h2>Una aventura de verano desde 2022</h2><p>Ya disponible en 2022, el Waterjump figura en el folleto del año siguiente junto al paintball y los circuitos entre árboles. Flotadores y tablas añaden una dimensión acuática a las aventuras del parque forestal.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des couleurs au bord de l’eau</h2><p>Jaune, bleu, rouge et gris : les pentes du Waterjump se détachent devant les arbres de Pokeyland. Au pied des installations, le bassin reflète les couleurs des pistes et les façades en bois qui bordent les tremplins.</p><p>La glisse prend ici des accents acrobatiques, entre descentes sur l’eau et envols au-dessus du bassin. Les parties rouges et grises dominent cet ensemble de plein air, où la mascotte renard apparaît sur une paroi de bois.</p><h2>Une aventure estivale depuis 2022</h2><p>Déjà proposé en 2022, le Waterjump figure dans la brochure suivante aux côtés du paintball et de l’accrobranche. Bouées et planches y donnent une dimension aquatique aux aventures du parc forestier.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Colori in riva all’acqua</h2><p>Giallo, blu, rosso e grigio: le discese del Waterjump risaltano davanti agli alberi di Pokeyland. Ai loro piedi, la vasca riflette i colori delle piste e i rivestimenti di legno che circondano i trampolini.</p><p>Qui le scivolate assumono un carattere acrobatico, tra discese in acqua e voli sopra la vasca. Le parti rosse e grigie dominano questo complesso all’aperto, dove la mascotte volpe compare su una parete di legno.</p><h2>Un’avventura estiva dal 2022</h2><p>Già proposto nel 2022, il Waterjump compare nella brochure dell’anno successivo accanto al paintball e ai percorsi sugli alberi. Ciambelloni e tavole aggiungono una dimensione acquatica alle avventure del parco nel bosco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Kleuren aan het water</h2><p>Geel, blauw, rood en grijs: de hellingen van Waterjump steken af tegen de bomen van Pokeyland. Onderaan weerspiegelt het bad de kleuren van de banen en de houten wanden rond de springschansen.</p><p>Glijden krijgt hier een acrobatische kant, met afdalingen het water in en sprongen boven het bad. De rode en grijze delen bepalen het beeld van deze buitenattractie, waar de vosmascotte op een houten wand staat.</p><h2>Een zomeravontuur sinds 2022</h2><p>Waterjump was al in 2022 beschikbaar en staat in de brochure van het volgende jaar naast paintball en de klimparcoursen. Banden en boards voegen een wateravontuur toe aan het bospark.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kolory nad wodą</h2><p>Żółty, niebieski, czerwony i szary: zbocza Waterjump wyróżniają się na tle drzew Pokeyland. U ich podnóża basen odbija barwy zjeżdżalni oraz drewniane osłony otaczające skocznie.</p><p>Zjazdy nabierają tu akrobatycznego charakteru, między ślizgami do wody a lotami nad basenem. Czerwone i szare części dominują w tej plenerowej atrakcji, a na drewnianej ścianie pojawia się lisia maskotka.</p><h2>Letnia przygoda od 2022 roku</h2><p>Waterjump działał już w 2022 roku, a w broszurze z kolejnego sezonu figuruje obok paintballu i tras w koronach drzew. Nadmuchiwane koła i deski dodają wodny wymiar przygodom leśnego parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cores à beira de água</h2><p>Amarelo, azul, vermelho e cinzento: as encostas do Waterjump destacam-se diante das árvores do Pokeyland. Na base, a piscina reflete as cores das pistas e as frentes de madeira que ladeiam os trampolins.</p><p>Aqui, deslizar ganha um lado acrobático, entre descidas para a água e voos sobre a piscina. As partes vermelhas e cinzentas dominam este conjunto ao ar livre, onde a mascote raposa aparece numa parede de madeira.</p><h2>Uma aventura de verão desde 2022</h2><p>Já disponível em 2022, o Waterjump surge na brochura do ano seguinte ao lado do paintball e dos percursos nas árvores. Boias e pranchas dão uma dimensão aquática às aventuras do parque florestal.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "534ca85e-40d9-49e4-9494-f23f4bc7e8f3",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:41:21.5862461Z",
+    "appliedAtUtc": "2026-11-15T12:41:21.5862478Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Farben am Wasser</h2><p>Gelb, Blau, Rot und Grau: Die Hänge des Waterjump heben sich vor den Bäumen von Pokeyland ab. Am Fuß der Anlage spiegeln sich die Farben der Bahnen und die hölzernen Verkleidungen der Sprungschanzen im Becken.</p><p>Hier bekommt das Rutschen eine akrobatische Seite, mit Abfahrten ins Wasser und Sprüngen über das Becken. Die roten und grauen Bereiche prägen die Freiluftanlage; auf einer Holzwand ist das Fuchsmaskottchen zu sehen.</p><h2>Ein Sommerabenteuer seit 2022</h2><p>Waterjump wurde bereits 2022 angeboten und steht im Prospekt des Folgejahres neben Paintball und Kletterparcours. Reifen und Boards ergänzen die Abenteuer des Waldparks um eine Wasserattraktion.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Colour beside the water</h2><p>Yellow, blue, red and grey: the Waterjump slopes stand out against Pokeyland’s trees. At their foot, the pool reflects the colours of the runs and the timber fronts bordering the jumps.</p><p>Sliding takes an acrobatic turn here, with descents into the water and flights above the pool. The red and grey sections dominate this outdoor setting, where the fox mascot appears on a wooden wall.</p><h2>A summer adventure since 2022</h2><p>Already available in 2022, Waterjump features in the following year’s brochure alongside paintball and the treetop courses. Tubes and boards add an aquatic dimension to the woodland park’s adventures.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Colores junto al agua</h2><p>Amarillo, azul, rojo y gris: las pendientes del Waterjump destacan ante los árboles de Pokeyland. A sus pies, la piscina refleja los colores de las pistas y los frentes de madera que rodean los trampolines.</p><p>Aquí el deslizamiento adquiere un aire acrobático, entre descensos al agua y vuelos sobre la piscina. Las zonas rojas y grises dominan este conjunto al aire libre, donde la mascota del zorro aparece en una pared de madera.</p><h2>Una aventura de verano desde 2022</h2><p>Ya disponible en 2022, el Waterjump figura en el folleto del año siguiente junto al paintball y los circuitos entre árboles. Flotadores y tablas añaden una dimensión acuática a las aventuras del parque forestal.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des couleurs au bord de l’eau</h2><p>Jaune, bleu, rouge et gris : les pentes du Waterjump se détachent devant les arbres de Pokeyland. Au pied des installations, le bassin reflète les couleurs des pistes et les façades en bois qui bordent les tremplins.</p><p>La glisse prend ici des accents acrobatiques, entre descentes sur l’eau et envols au-dessus du bassin. Les parties rouges et grises dominent cet ensemble de plein air, où la mascotte renard apparaît sur une paroi de bois.</p><h2>Une aventure estivale depuis 2022</h2><p>Déjà proposé en 2022, le Waterjump figure dans la brochure suivante aux côtés du paintball et de l’accrobranche. Bouées et planches y donnent une dimension aquatique aux aventures du parc forestier.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Colori in riva all’acqua</h2><p>Giallo, blu, rosso e grigio: le discese del Waterjump risaltano davanti agli alberi di Pokeyland. Ai loro piedi, la vasca riflette i colori delle piste e i rivestimenti di legno che circondano i trampolini.</p><p>Qui le scivolate assumono un carattere acrobatico, tra discese in acqua e voli sopra la vasca. Le parti rosse e grigie dominano questo complesso all’aperto, dove la mascotte volpe compare su una parete di legno.</p><h2>Un’avventura estiva dal 2022</h2><p>Già proposto nel 2022, il Waterjump compare nella brochure dell’anno successivo accanto al paintball e ai percorsi sugli alberi. Ciambelloni e tavole aggiungono una dimensione acquatica alle avventure del parco nel bosco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Kleuren aan het water</h2><p>Geel, blauw, rood en grijs: de hellingen van Waterjump steken af tegen de bomen van Pokeyland. Onderaan weerspiegelt het bad de kleuren van de banen en de houten wanden rond de springschansen.</p><p>Glijden krijgt hier een acrobatische kant, met afdalingen het water in en sprongen boven het bad. De rode en grijze delen bepalen het beeld van deze buitenattractie, waar de vosmascotte op een houten wand staat.</p><h2>Een zomeravontuur sinds 2022</h2><p>Waterjump was al in 2022 beschikbaar en staat in de brochure van het volgende jaar naast paintball en de klimparcoursen. Banden en boards voegen een wateravontuur toe aan het bospark.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kolory nad wodą</h2><p>Żółty, niebieski, czerwony i szary: zbocza Waterjump wyróżniają się na tle drzew Pokeyland. U ich podnóża basen odbija barwy zjeżdżalni oraz drewniane osłony otaczające skocznie.</p><p>Zjazdy nabierają tu akrobatycznego charakteru, między ślizgami do wody a lotami nad basenem. Czerwone i szare części dominują w tej plenerowej atrakcji, a na drewnianej ścianie pojawia się lisia maskotka.</p><h2>Letnia przygoda od 2022 roku</h2><p>Waterjump działał już w 2022 roku, a w broszurze z kolejnego sezonu figuruje obok paintballu i tras w koronach drzew. Nadmuchiwane koła i deski dodają wodny wymiar przygodom leśnego parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cores à beira de água</h2><p>Amarelo, azul, vermelho e cinzento: as encostas do Waterjump destacam-se diante das árvores do Pokeyland. Na base, a piscina reflete as cores das pistas e as frentes de madeira que ladeiam os trampolins.</p><p>Aqui, deslizar ganha um lado acrobático, entre descidas para a água e voos sobre a piscina. As partes vermelhas e cinzentas dominam este conjunto ao ar livre, onde a mascote raposa aparece numa parede de madeira.</p><h2>Uma aventura de verão desde 2022</h2><p>Já disponível em 2022, o Waterjump surge na brochura do ano seguinte ao lado do paintball e dos percursos nas árvores. Boias e pranchas dão uma dimensão aquática às aventuras do parque florestal.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Page officielle Waterjump et quatre photographies originales relues personnellement ; brochure officielle 2023 confirmant la présence en 2022. Description de l’ensemble existant, pas de création de pistes séparées, ni hauteur/nombre/niveaux ou tenue déduits des contradictions officielles. Deux intertitres, trois paragraphes huit langues relus ; profondeur limitée aux faits disponibles, aucune date individuelle précise inventée.",
+    "wordCounts": {
+      "Waterjump": {
+        "fr": 116,
+        "en": 103,
+        "de": 100,
+        "es": 117,
+        "it": 109,
+        "nl": 105,
+        "pl": 93,
+        "pt": 113
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

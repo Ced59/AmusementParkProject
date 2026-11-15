@@ -2317,7 +2317,41 @@
         ]
       },
       "id": "73ff7670-39ee-4c19-b339-907707fc8711",
-      "zoneId": "161766a5-cdcd-4675-aef8-3acc9e078098"
+      "zoneId": "161766a5-cdcd-4675-aef8-3acc9e078098",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des couleurs au bord de l’eau</h2><p>Jaune, bleu, rouge et gris : les pentes du Waterjump se détachent devant les arbres de Pokeyland. Au pied des installations, le bassin reflète les couleurs des pistes et les façades en bois qui bordent les tremplins.</p><p>La glisse prend ici des accents acrobatiques, entre descentes sur l’eau et envols au-dessus du bassin. Les parties rouges et grises dominent cet ensemble de plein air, où la mascotte renard apparaît sur une paroi de bois.</p><h2>Une aventure estivale depuis 2022</h2><p>Déjà proposé en 2022, le Waterjump figure dans la brochure suivante aux côtés du paintball et de l’accrobranche. Bouées et planches y donnent une dimension aquatique aux aventures du parc forestier.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Colour beside the water</h2><p>Yellow, blue, red and grey: the Waterjump slopes stand out against Pokeyland’s trees. At their foot, the pool reflects the colours of the runs and the timber fronts bordering the jumps.</p><p>Sliding takes an acrobatic turn here, with descents into the water and flights above the pool. The red and grey sections dominate this outdoor setting, where the fox mascot appears on a wooden wall.</p><h2>A summer adventure since 2022</h2><p>Already available in 2022, Waterjump features in the following year’s brochure alongside paintball and the treetop courses. Tubes and boards add an aquatic dimension to the woodland park’s adventures.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Farben am Wasser</h2><p>Gelb, Blau, Rot und Grau: Die Hänge des Waterjump heben sich vor den Bäumen von Pokeyland ab. Am Fuß der Anlage spiegeln sich die Farben der Bahnen und die hölzernen Verkleidungen der Sprungschanzen im Becken.</p><p>Hier bekommt das Rutschen eine akrobatische Seite, mit Abfahrten ins Wasser und Sprüngen über das Becken. Die roten und grauen Bereiche prägen die Freiluftanlage; auf einer Holzwand ist das Fuchsmaskottchen zu sehen.</p><h2>Ein Sommerabenteuer seit 2022</h2><p>Waterjump wurde bereits 2022 angeboten und steht im Prospekt des Folgejahres neben Paintball und Kletterparcours. Reifen und Boards ergänzen die Abenteuer des Waldparks um eine Wasserattraktion.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Colores junto al agua</h2><p>Amarillo, azul, rojo y gris: las pendientes del Waterjump destacan ante los árboles de Pokeyland. A sus pies, la piscina refleja los colores de las pistas y los frentes de madera que rodean los trampolines.</p><p>Aquí el deslizamiento adquiere un aire acrobático, entre descensos al agua y vuelos sobre la piscina. Las zonas rojas y grises dominan este conjunto al aire libre, donde la mascota del zorro aparece en una pared de madera.</p><h2>Una aventura de verano desde 2022</h2><p>Ya disponible en 2022, el Waterjump figura en el folleto del año siguiente junto al paintball y los circuitos entre árboles. Flotadores y tablas añaden una dimensión acuática a las aventuras del parque forestal.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Colori in riva all’acqua</h2><p>Giallo, blu, rosso e grigio: le discese del Waterjump risaltano davanti agli alberi di Pokeyland. Ai loro piedi, la vasca riflette i colori delle piste e i rivestimenti di legno che circondano i trampolini.</p><p>Qui le scivolate assumono un carattere acrobatico, tra discese in acqua e voli sopra la vasca. Le parti rosse e grigie dominano questo complesso all’aperto, dove la mascotte volpe compare su una parete di legno.</p><h2>Un’avventura estiva dal 2022</h2><p>Già proposto nel 2022, il Waterjump compare nella brochure dell’anno successivo accanto al paintball e ai percorsi sugli alberi. Ciambelloni e tavole aggiungono una dimensione acquatica alle avventure del parco nel bosco.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Kleuren aan het water</h2><p>Geel, blauw, rood en grijs: de hellingen van Waterjump steken af tegen de bomen van Pokeyland. Onderaan weerspiegelt het bad de kleuren van de banen en de houten wanden rond de springschansen.</p><p>Glijden krijgt hier een acrobatische kant, met afdalingen het water in en sprongen boven het bad. De rode en grijze delen bepalen het beeld van deze buitenattractie, waar de vosmascotte op een houten wand staat.</p><h2>Een zomeravontuur sinds 2022</h2><p>Waterjump was al in 2022 beschikbaar en staat in de brochure van het volgende jaar naast paintball en de klimparcoursen. Banden en boards voegen een wateravontuur toe aan het bospark.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kolory nad wodą</h2><p>Żółty, niebieski, czerwony i szary: zbocza Waterjump wyróżniają się na tle drzew Pokeyland. U ich podnóża basen odbija barwy zjeżdżalni oraz drewniane osłony otaczające skocznie.</p><p>Zjazdy nabierają tu akrobatycznego charakteru, między ślizgami do wody a lotami nad basenem. Czerwone i szare części dominują w tej plenerowej atrakcji, a na drewnianej ścianie pojawia się lisia maskotka.</p><h2>Letnia przygoda od 2022 roku</h2><p>Waterjump działał już w 2022 roku, a w broszurze z kolejnego sezonu figuruje obok paintballu i tras w koronach drzew. Nadmuchiwane koła i deski dodają wodny wymiar przygodom leśnego parku.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Cores à beira de água</h2><p>Amarelo, azul, vermelho e cinzento: as encostas do Waterjump destacam-se diante das árvores do Pokeyland. Na base, a piscina reflete as cores das pistas e as frentes de madeira que ladeiam os trampolins.</p><p>Aqui, deslizar ganha um lado acrobático, entre descidas para a água e voos sobre a piscina. As partes vermelhas e cinzentas dominam este conjunto ao ar livre, onde a mascote raposa aparece numa parede de madeira.</p><h2>Uma aventura de verão desde 2022</h2><p>Já disponível em 2022, o Waterjump surge na brochura do ano seguinte ao lado do paintball e dos percursos nas árvores. Boias e pranchas dão uma dimensão aquática às aventuras do parque florestal.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-petit-creux",
@@ -4525,15 +4559,1789 @@
       "updatedAt": "2026-11-15T12:18:00.967Z",
       "key": "a19c6a01526c40639bc7187d9b88368f",
       "imageId": "a19c6a01526c40639bc7187d9b88368f"
+    },
+    {
+      "id": "a30bcfef2e414aca8898b45ee212d46e",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "path": "park/a30bcfef2e414aca8898b45ee212d46e",
+      "description": "Les chalets, la terrasse et l’aire de gyropodes vus depuis une allée boisée de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 335161,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Cour de Pokeyland entourée de bâtiments en bois, avec des tables, un abri et des visiteurs sur des gyropodes devant le snack."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland courtyard surrounded by wooden buildings, with tables, a shelter and visitors on self-balancing scooters in front of the snack bar."
+        },
+        {
+          "languageCode": "de",
+          "value": "Hof von Pokeyland zwischen Holzbauten, mit Tischen, einem Unterstand und Besuchern auf selbstbalancierenden Rollern vor dem Imbiss."
+        },
+        {
+          "languageCode": "es",
+          "value": "Patio de Pokeyland rodeado de edificios de madera, con mesas, un cobertizo y visitantes en vehículos autoequilibrados delante del bar."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cortile di Pokeyland circondato da edifici in legno, con tavoli, una tettoia e visitatori su mezzi autobilancianti davanti al punto ristoro."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Binnenplaats van Pokeyland tussen houten gebouwen, met tafels, een afdak en bezoekers op zelfbalancerende voertuigen voor de snackbar."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziedziniec Pokeyland otoczony drewnianymi budynkami, ze stołami, wiatą i gośćmi na samobalansujących pojazdach przed barem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pátio de Pokeyland rodeado de edifícios de madeira, com mesas, um abrigo e visitantes em veículos de autoequilíbrio diante do bar."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les chalets, la terrasse et l’aire de gyropodes vus depuis une allée boisée de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The chalets, terrace and self-balancing scooter area seen from a wooded path at Pokeyland."
+        },
+        {
+          "languageCode": "de",
+          "value": "Holzhäuser, Terrasse und Rollerbereich von einem Waldweg in Pokeyland aus gesehen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las cabañas, la terraza y la zona de vehículos autoequilibrados vistas desde un camino arbolado de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Gli chalet, la terrazza e l’area dei mezzi autobilancianti visti da un sentiero alberato di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De chalets, het terras en het terrein voor zelfbalancerende voertuigen, gezien vanaf een bospad in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Drewniane domki, taras i plac dla samobalansujących pojazdów widziane z leśnej alejki Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os chalés, a esplanada e a área de veículos de autoequilíbrio vistos de um caminho arborizado de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Thierry Hauuy. Source : site officiel de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Thierry Hauuy. Source: Pokeyland official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "Thierry Hauuy. Quelle: offizielle Website von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Thierry Hauuy. Fuente: sitio web oficial de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Thierry Hauuy. Fonte: sito ufficiale di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Thierry Hauuy. Bron: officiële website van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Thierry Hauuy. Źródło: oficjalna strona Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Thierry Hauuy. Fonte: site oficial de Pokeyland."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:26:58.233Z",
+      "updatedAt": "2026-11-15T12:27:01.843Z",
+      "key": "a30bcfef2e414aca8898b45ee212d46e",
+      "imageId": "a30bcfef2e414aca8898b45ee212d46e"
+    },
+    {
+      "id": "452fd5f698e549c3922711177b0984e9",
+      "category": "Park",
+      "ownerType": "Park",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "path": "park/452fd5f698e549c3922711177b0984e9",
+      "description": "La fontaine et la passerelle au milieu de l’étang, bordé de saules et de végétation.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 315088,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Étang de Pokeyland avec une passerelle en bois, un îlot végétalisé, un grand jet d’eau et des bâtiments derrière les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland pond with a wooden footbridge, a planted island, a tall fountain jet and buildings behind the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Teich von Pokeyland mit Holzsteg, bepflanzter Insel, hoher Wasserfontäne und Gebäuden hinter den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Estanque de Pokeyland con pasarela de madera, islote con vegetación, un gran chorro de agua y edificios detrás de los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Laghetto di Pokeyland con passerella in legno, isolotto alberato, un alto getto d’acqua ed edifici dietro gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vijver van Pokeyland met een houten voetbrug, een begroeid eilandje, een hoge fontein en gebouwen achter de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Staw Pokeyland z drewnianą kładką, porośniętą wysepką, wysokim strumieniem fontanny i budynkami za drzewami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Lago de Pokeyland com uma ponte pedonal de madeira, uma ilhota com vegetação, um jato de água alto e edifícios atrás das árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La fontaine et la passerelle au milieu de l’étang, bordé de saules et de végétation."
+        },
+        {
+          "languageCode": "en",
+          "value": "The fountain and footbridge amid the pond, bordered by willows and vegetation."
+        },
+        {
+          "languageCode": "de",
+          "value": "Fontäne und Holzsteg im Teich, umgeben von Weiden und anderer Vegetation."
+        },
+        {
+          "languageCode": "es",
+          "value": "La fuente y la pasarela en medio del estanque, rodeado de sauces y vegetación."
+        },
+        {
+          "languageCode": "it",
+          "value": "La fontana e la passerella nel laghetto, circondato da salici e vegetazione."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De fontein en de voetbrug in de vijver, omringd door wilgen en ander groen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fontanna i kładka pośród stawu otoczonego wierzbami i roślinnością."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A fonte e a ponte pedonal no lago, rodeado de salgueiros e vegetação."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Arnaud Scherer. Source : site officiel de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Arnaud Scherer. Source: Pokeyland official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Arnaud Scherer. Quelle: offizielle Website von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Arnaud Scherer. Fuente: sitio web oficial de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Arnaud Scherer. Fonte: sito ufficiale di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Arnaud Scherer. Bron: officiële website van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Arnaud Scherer. Źródło: oficjalna strona Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Arnaud Scherer. Fonte: site oficial de Pokeyland."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:27:09.734Z",
+      "updatedAt": "2026-11-15T12:27:13.23Z",
+      "key": "452fd5f698e549c3922711177b0984e9",
+      "imageId": "452fd5f698e549c3922711177b0984e9"
+    },
+    {
+      "id": "b6dab89667e443b0839ad1b5220a4ec0",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+      "path": "park_item/b6dab89667e443b0839ad1b5220a4ec0",
+      "description": "La friche industrielle du terrain Zombie à Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 95406,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_153114-scaled-pmvaag1nnqkmk52kvgnvd5zm9s3fcfpqulhy29jiqo.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une flèche métallique rouge, des fûts et des façades grises composent un décor industriel parmi les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "A red metal boom, drums and grey facades form an industrial set among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein roter Metallausleger, Fässer und graue Fassaden bilden eine Industriekulisse zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una pluma metálica roja, bidones y fachadas grises forman un decorado industrial entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un braccio metallico rosso, fusti e facciate grigie formano una scenografia industriale tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een rode metalen kraanarm, vaten en grijze gevels vormen een industrieel decor tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwony metalowy wysięgnik, beczki i szare fasady tworzą przemysłową scenografię wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma lança metálica vermelha, bidões e fachadas cinzentas formam um cenário industrial entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La friche industrielle du terrain Zombie à Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The industrial wasteland setting of Pokeyland’s Zombie field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Industriebrache als Kulisse des Zombie-Spielfelds in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "El descampado industrial del campo Zombie de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’area industriale abbandonata del campo Zombie di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het verlaten industrieterrein van het Zombie-veld in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Opuszczony teren przemysłowy na polu Zombie w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cenário industrial abandonado do campo Zombie no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:43:49.874Z",
+      "updatedAt": "2026-11-15T12:43:54.149Z",
+      "key": "b6dab89667e443b0839ad1b5220a4ec0",
+      "imageId": "b6dab89667e443b0839ad1b5220a4ec0"
+    },
+    {
+      "id": "87ec3a97299f4c0c8b936773fe8c84e7",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "d7074297-19a0-44e6-a196-c251ea484d46",
+      "path": "park_item/87ec3a97299f4c0c8b936773fe8c84e7",
+      "description": "Le véhicule de décor présenté sur le terrain Dog One de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 85025,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152851-scaled-pmvacbq1bt59s2c9w9x0cowt1ituqn6f3wgwm6r6ao.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un véhicule blindé de décor vert et beige, marqué 302, est installé devant des palissades en bois dans la forêt."
+        },
+        {
+          "languageCode": "en",
+          "value": "A green and beige armoured prop vehicle marked 302 stands before wooden fences in the forest."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein grün-beiges gepanzertes Kulissenfahrzeug mit der Nummer 302 steht vor Holzzäunen im Wald."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un vehículo blindado de decorado verde y beige, marcado 302, está ante empalizadas de madera en el bosque."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un veicolo corazzato scenografico verde e beige, con il numero 302, è collocato davanti a palizzate di legno nel bosco."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een groen en beige gepantserd decorvoertuig met nummer 302 staat voor houten schuttingen in het bos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielono-beżowy pojazd opancerzony stanowiący dekorację, z numerem 302, stoi przed drewnianymi płotami w lesie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um veículo blindado de cenário verde e bege, com o número 302, está diante de vedações de madeira no bosque."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le véhicule de décor présenté sur le terrain Dog One de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The prop vehicle shown on Pokeyland’s Dog One field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Kulissenfahrzeug auf dem Dog-One-Spielfeld von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "El vehículo de decorado del campo Dog One de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il veicolo scenografico del campo Dog One di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het decorvoertuig op het Dog One-veld van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pojazd scenograficzny na polu Dog One w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O veículo de cenário do campo Dog One no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:43:59.93Z",
+      "updatedAt": "2026-11-15T12:44:03.629Z",
+      "key": "87ec3a97299f4c0c8b936773fe8c84e7",
+      "imageId": "87ec3a97299f4c0c8b936773fe8c84e7"
+    },
+    {
+      "id": "b6860a71b8354201bd1d7533b1eed2f5",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+      "path": "park_item/b6860a71b8354201bd1d7533b1eed2f5",
+      "description": "Les huttes du village fictif du terrain Cannibale à Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 97063,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_160045-scaled-pmvafbth5r98v7z9d2n3tfmtcu12bu3jurhqt0awf4.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des huttes de bois sombre, aux toits couverts de branchages et aux ouvertures rectangulaires, sont dispersées entre les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "Dark wooden huts with branch-covered roofs and rectangular openings stand among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Dunkle Holzhütten mit Zweigdächern und rechteckigen Öffnungen stehen zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Cabañas de madera oscura, con techos cubiertos de ramas y aberturas rectangulares, se distribuyen entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Capanne di legno scuro, con tetti coperti di rami e aperture rettangolari, sorgono tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Donkere houten hutten met takkendaken en rechthoekige openingen staan tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ciemne drewniane chaty z dachami pokrytymi gałęziami i prostokątnymi otworami stoją wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cabanas de madeira escura, com telhados cobertos de ramos e aberturas retangulares, distribuem-se entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les huttes du village fictif du terrain Cannibale à Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Huts in the fictional village on Pokeyland’s Cannibale field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Hütten des fiktiven Dorfes auf dem Cannibale-Spielfeld von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las cabañas del poblado ficticio del campo Cannibale de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le capanne del villaggio immaginario del campo Cannibale di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De hutten van het fictieve dorp op het Cannibale-veld van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Chaty fikcyjnej wioski na polu Cannibale w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As cabanas da aldeia fictícia do campo Cannibale no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:09.757Z",
+      "updatedAt": "2026-11-15T12:44:13.232Z",
+      "key": "b6860a71b8354201bd1d7533b1eed2f5",
+      "imageId": "b6860a71b8354201bd1d7533b1eed2f5"
+    },
+    {
+      "id": "2a6321fa0dd44f6088c69cf78f04db1d",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+      "path": "park_item/2a6321fa0dd44f6088c69cf78f04db1d",
+      "description": "La chapelle et le décor forestier du terrain Panama de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 108017,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150701_173146-scaled-pmvai3gda71n1vyj79pk5qhobodyzr33kgn7oc763k.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une petite chapelle blanche à toit sombre côtoie un passage en bois bordé de cordes au milieu des arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "A small white chapel with a dark roof stands beside a wooden passage edged with ropes among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine kleine weiße Kapelle mit dunklem Dach steht neben einem seilgesäumten Holzweg zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una pequeña capilla blanca de tejado oscuro está junto a un paso de madera delimitado por cuerdas entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una piccola cappella bianca dal tetto scuro sorge accanto a un passaggio di legno delimitato da corde tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kleine witte kapel met een donker dak staat naast een houten doorgang met touwen tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mała biała kaplica z ciemnym dachem stoi obok drewnianego przejścia otoczonego linami wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma pequena capela branca de telhado escuro fica junto de uma passagem de madeira ladeada de cordas entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La chapelle et le décor forestier du terrain Panama de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The chapel and woodland scenery of Pokeyland’s Panama field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kapelle und Waldkulisse des Panama-Spielfelds in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "La capilla y el decorado forestal del campo Panama de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La cappella e lo scenario boschivo del campo Panama di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kapel en het bosdecor van het Panama-veld in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kaplica i leśna scenografia pola Panama w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A capela e o cenário florestal do campo Panama no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:18.912Z",
+      "updatedAt": "2026-11-15T12:44:22.401Z",
+      "key": "2a6321fa0dd44f6088c69cf78f04db1d",
+      "imageId": "2a6321fa0dd44f6088c69cf78f04db1d"
+    },
+    {
+      "id": "9dc4f8c27d9e4cfc9d459517a74d9b38",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+      "path": "park_item/9dc4f8c27d9e4cfc9d459517a74d9b38",
+      "description": "Le décor de base militaire du terrain Fox Two à Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 89057,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/20150528_152003-scaled-pmvajosiv384q3n8wghsvu0sk6jd1aeq4cfty7u5k0.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un véhicule militaire vert muni d’un canon est entouré de caisses empilées et de palissades dans les bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "A green military vehicle with a gun is surrounded by stacked crates and fences in the woods."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein grünes Militärfahrzeug mit Geschütz steht zwischen gestapelten Kisten und Holzzäunen im Wald."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un vehículo militar verde con cañón está rodeado de cajas apiladas y empalizadas en el bosque."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un veicolo militare verde con un cannone è circondato da casse impilate e palizzate nel bosco."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een groen militair voertuig met een kanon staat tussen gestapelde kisten en schuttingen in het bos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielony pojazd wojskowy z działem stoi wśród stosów skrzyń i płotów w lesie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um veículo militar verde com canhão está rodeado de caixas empilhadas e vedações no bosque."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le décor de base militaire du terrain Fox Two à Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The military-base scenery of Pokeyland’s Fox Two field."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Militärbasiskulisse des Fox-Two-Spielfelds in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "El decorado de base militar del campo Fox Two de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La scenografia della base militare del campo Fox Two di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het militaire basisdecor van het Fox Two-veld in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Scenografia bazy wojskowej na polu Fox Two w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cenário de base militar do campo Fox Two no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:28.217Z",
+      "updatedAt": "2026-11-15T12:44:31.715Z",
+      "key": "9dc4f8c27d9e4cfc9d459517a74d9b38",
+      "imageId": "9dc4f8c27d9e4cfc9d459517a74d9b38"
+    },
+    {
+      "id": "c8466353e86442e180d8ff8e5fbbf41a",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "path": "park_item/c8466353e86442e180d8ff8e5fbbf41a",
+      "description": "Les pistes jaunes du Waterjump de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 67264,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-jaune-q88efzvzqef4arvhfbb9ztz7b64vgvmb5m4glbgmu8.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des pistes jaunes parallèles descendent vers une plateforme de bois, entre des talus couverts de bâches sombres."
+        },
+        {
+          "languageCode": "en",
+          "value": "Parallel yellow runs descend towards a wooden platform between slopes covered with dark sheeting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Parallele gelbe Bahnen führen zwischen dunkel abgedeckten Böschungen zu einer Holzplattform hinunter."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pistas amarillas paralelas descienden hacia una plataforma de madera entre taludes cubiertos con lonas oscuras."
+        },
+        {
+          "languageCode": "it",
+          "value": "Piste gialle parallele scendono verso una piattaforma di legno tra pendii coperti da teli scuri."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Evenwijdige gele banen dalen af naar een houten platform tussen hellingen met donkere afdekking."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Równoległe żółte zjeżdżalnie schodzą ku drewnianej platformie między zboczami pokrytymi ciemnymi płachtami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pistas amarelas paralelas descem até uma plataforma de madeira entre taludes cobertos de lonas escuras."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les pistes jaunes du Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The yellow runs of Pokeyland’s Waterjump."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die gelben Bahnen des Waterjump in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las pistas amarillas del Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le piste gialle del Waterjump di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De gele banen van Waterjump in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Żółte zjeżdżalnie Waterjump w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As pistas amarelas do Waterjump no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:42.803Z",
+      "updatedAt": "2026-11-15T12:44:46.277Z",
+      "key": "c8466353e86442e180d8ff8e5fbbf41a",
+      "imageId": "c8466353e86442e180d8ff8e5fbbf41a"
+    },
+    {
+      "id": "67935475ed1240c592561ab14a443d8b",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "path": "park_item/67935475ed1240c592561ab14a443d8b",
+      "description": "Les descentes rouges et leur tremplin au Waterjump de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 66771,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-rouge-q88epu95axw7vrkqy2hmlujz9fm92rp46c2iimv7og.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des pistes rouges arrivent au bord du bassin ; à droite, un tremplin relevé est entouré d’une paroi de bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "Red runs reach the pool edge; on the right, an upturned jump is enclosed by a wooden wall."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rote Bahnen reichen bis an den Beckenrand; rechts ist eine aufgebogene Schanze von einer Holzwand eingefasst."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las pistas rojas llegan al borde de la piscina; a la derecha, un trampolín elevado está rodeado por una pared de madera."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le piste rosse raggiungono il bordo della vasca; a destra, un trampolino rialzato è circondato da una parete di legno."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rode banen komen uit bij de rand van het bad; rechts staat een houten wand rond een oplopende schans."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone zjeżdżalnie sięgają krawędzi basenu; po prawej uniesiona skocznia otoczona jest drewnianą ścianą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As pistas vermelhas chegam à margem da piscina; à direita, um trampolim elevado está rodeado por uma parede de madeira."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les descentes rouges et leur tremplin au Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The red descents and their jump at Pokeyland’s Waterjump."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die roten Abfahrten und ihre Sprungschanze im Waterjump von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las bajadas rojas y su trampolín en el Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le discese rosse e il loro trampolino al Waterjump di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De rode afdalingen en hun schans bij Waterjump in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czerwone zjazdy i skocznia Waterjump w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As descidas vermelhas e o trampolim do Waterjump no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:52.562Z",
+      "updatedAt": "2026-11-15T12:44:56.415Z",
+      "key": "67935475ed1240c592561ab14a443d8b",
+      "imageId": "67935475ed1240c592561ab14a443d8b"
+    },
+    {
+      "id": "31ea2b41b90045bfa7114af9567f39d0",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "path": "park_item/31ea2b41b90045bfa7114af9567f39d0",
+      "description": "Vue des pistes grises et des couleurs voisines du Waterjump de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 68122,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-gris-q88eqb68pyjdoqw679swuqa9ydauxbka8nt95m64kg.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "De grandes pistes grises voisinent avec des pistes rouges et bleues ; la mascotte renard décore une paroi de bois devant le bassin."
+        },
+        {
+          "languageCode": "en",
+          "value": "Tall grey runs stand beside red and blue runs; the fox mascot decorates a wooden wall in front of the pool."
+        },
+        {
+          "languageCode": "de",
+          "value": "Hohe graue Bahnen stehen neben roten und blauen Bahnen; das Fuchsmaskottchen schmückt eine Holzwand vor dem Becken."
+        },
+        {
+          "languageCode": "es",
+          "value": "Grandes pistas grises se alzan junto a pistas rojas y azules; la mascota del zorro decora una pared de madera ante la piscina."
+        },
+        {
+          "languageCode": "it",
+          "value": "Alte piste grigie affiancano piste rosse e blu; la mascotte volpe decora una parete di legno davanti alla vasca."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Hoge grijze banen staan naast rode en blauwe banen; de vosmascotte versiert een houten wand voor het bad."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wysokie szare zjeżdżalnie sąsiadują z czerwonymi i niebieskimi; lisia maskotka zdobi drewnianą ścianę przed basenem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pistas cinzentas altas ficam junto de pistas vermelhas e azuis; a mascote raposa decora uma parede de madeira diante da piscina."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Vue des pistes grises et des couleurs voisines du Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The grey runs and neighbouring colours of Pokeyland’s Waterjump."
+        },
+        {
+          "languageCode": "de",
+          "value": "Blick auf die grauen Bahnen und benachbarten Farben des Waterjump in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista de las pistas grises y los colores vecinos del Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Veduta delle piste grigie e dei colori vicini del Waterjump di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De grijze banen en aangrenzende kleuren van Waterjump in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Szare zjeżdżalnie i sąsiednie kolory Waterjump w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista das pistas cinzentas e das cores vizinhas do Waterjump no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:45:03.606Z",
+      "updatedAt": "2026-11-15T12:45:07.163Z",
+      "key": "31ea2b41b90045bfa7114af9567f39d0",
+      "imageId": "31ea2b41b90045bfa7114af9567f39d0"
     }
   ],
   "history": {
-    "events": []
+    "events": [
+      {
+        "key": "pokeyland-history-construction-2013",
+        "entityType": "Park",
+        "owner": "park",
+        "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "year": 2013,
+        "month": 5,
+        "day": null,
+        "datePrecision": "Month",
+        "eventType": "ConstructionStart",
+        "isMajor": false,
+        "isVisible": false,
+        "mainImageId": null,
+        "sources": [
+          {
+            "label": "Tout-Metz — ouverture du 20 juin 2015 et chantier depuis mai 2013",
+            "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Le chantier commence dans la forêt de Féy"
+          },
+          {
+            "languageCode": "en",
+            "value": "Work begins in Féy’s forest"
+          },
+          {
+            "languageCode": "de",
+            "value": "Die Arbeiten im Wald von Féy beginnen"
+          },
+          {
+            "languageCode": "es",
+            "value": "Comienzan las obras en el bosque de Féy"
+          },
+          {
+            "languageCode": "it",
+            "value": "Iniziano i lavori nel bosco di Féy"
+          },
+          {
+            "languageCode": "nl",
+            "value": "De werkzaamheden in het bos van Féy beginnen"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Początek prac w lesie w Féy"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Começam as obras no bosque de Féy"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "L’équipe du futur Pokeyland commence à aménager le site en mai 2013. Elle réalise les installations et les décors des terrains de paintball au milieu des arbres, préparant le parc de plein air qui accueillera ses premiers visiteurs deux ans plus tard."
+          },
+          {
+            "languageCode": "en",
+            "value": "The future Pokeyland team begins developing the site in May 2013. It builds the facilities and paintball scenery among the trees, preparing the outdoor park that will welcome its first visitors two years later."
+          },
+          {
+            "languageCode": "de",
+            "value": "Im Mai 2013 beginnt das künftige Pokeyland-Team mit der Gestaltung des Geländes. Zwischen den Bäumen entstehen Anlagen und Paintballkulissen für den Freizeitpark, der zwei Jahre später seine ersten Besucher empfängt."
+          },
+          {
+            "languageCode": "es",
+            "value": "El equipo del futuro Pokeyland empieza a acondicionar el lugar en mayo de 2013. Construye las instalaciones y los decorados de paintball entre los árboles, preparando el parque al aire libre que recibirá a sus primeros visitantes dos años después."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il gruppo del futuro Pokeyland inizia ad allestire il sito nel maggio 2013. Realizza le strutture e le scenografie dei campi da paintball tra gli alberi, preparando il parco all’aperto che accoglierà i primi visitatori due anni dopo."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Het toekomstige Pokeyland-team begint in mei 2013 met de aanleg van het terrein. Tussen de bomen bouwt het de voorzieningen en paintballdecors voor het buitenpark dat twee jaar later zijn eerste bezoekers verwelkomt."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Zespół przyszłego Pokeyland rozpoczyna zagospodarowanie terenu w maju 2013 roku. Wśród drzew powstają obiekty i dekoracje pól paintballowych, przygotowujące park na przyjęcie pierwszych gości dwa lata później."
+          },
+          {
+            "languageCode": "pt",
+            "value": "A equipa do futuro Pokeyland começa a preparar o local em maio de 2013. Constrói as instalações e os cenários dos campos de paintball entre as árvores, preparando o parque ao ar livre que receberá os primeiros visitantes dois anos depois."
+          }
+        ],
+        "id": "401b9c6e-09de-47a7-88dc-93642d649e07"
+      },
+      {
+        "key": "pokeyland-history-opening-2015",
+        "entityType": "Park",
+        "owner": "park",
+        "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "year": 2015,
+        "month": 6,
+        "day": 20,
+        "datePrecision": "Day",
+        "eventType": "Opening",
+        "isMajor": true,
+        "isVisible": false,
+        "mainImageId": "a30bcfef2e414aca8898b45ee212d46e",
+        "sources": [
+          {
+            "label": "Tout-Metz — ouverture du 20 juin 2015 et chantier depuis mai 2013",
+            "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Pokeyland ouvre au public à Féy"
+          },
+          {
+            "languageCode": "en",
+            "value": "Pokeyland opens to visitors in Féy"
+          },
+          {
+            "languageCode": "de",
+            "value": "Pokeyland eröffnet in Féy"
+          },
+          {
+            "languageCode": "es",
+            "value": "Pokeyland abre al público en Féy"
+          },
+          {
+            "languageCode": "it",
+            "value": "Pokeyland apre al pubblico a Féy"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Pokeyland opent voor bezoekers in Féy"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Pokeyland otwiera się dla gości w Féy"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Pokeyland abre ao público em Féy"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Le 20 juin 2015, Pokeyland ouvre près de Metz avec ses loisirs de plein air et ses terrains de paintball scénarisés. L’entrée est alors gratuite, tandis qu’un bracelet à crédits permet de payer les activités choisies au fil de la visite."
+          },
+          {
+            "languageCode": "en",
+            "value": "On 20 June 2015, Pokeyland opens near Metz with outdoor activities and themed paintball fields. Admission is initially free, while a prepaid-credit wristband pays for the activities visitors choose during their stay."
+          },
+          {
+            "languageCode": "de",
+            "value": "Am 20. Juni 2015 eröffnet Pokeyland bei Metz mit Freiluftaktivitäten und thematisch gestalteten Paintballfeldern. Der Eintritt ist zunächst kostenlos; die während des Besuchs gewählten Aktivitäten werden über ein mit Guthaben aufgeladenes Armband bezahlt."
+          },
+          {
+            "languageCode": "es",
+            "value": "El 20 de junio de 2015, Pokeyland abre cerca de Metz con actividades al aire libre y campos de paintball tematizados. La entrada es entonces gratuita, mientras una pulsera con créditos permite pagar las actividades elegidas durante la visita."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il 20 giugno 2015 Pokeyland apre vicino a Metz con attività all’aperto e campi da paintball scenografici. L’ingresso è inizialmente gratuito, mentre un braccialetto precaricato consente di pagare le attività scelte durante la visita."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Op 20 juni 2015 opent Pokeyland bij Metz met buitenactiviteiten en thematische paintballvelden. De toegang is aanvankelijk gratis; bezoekers betalen hun gekozen activiteiten met een polsbandje waarop vooraf tegoed is geladen."
+          },
+          {
+            "languageCode": "pl",
+            "value": "20 czerwca 2015 roku Pokeyland otwiera się pod Metz z atrakcjami plenerowymi i tematycznymi polami paintballowymi. Wstęp jest początkowo bezpłatny, a wybrane podczas wizyty aktywności opłaca się za pomocą wcześniej doładowanej opaski."
+          },
+          {
+            "languageCode": "pt",
+            "value": "A 20 de junho de 2015, Pokeyland abre perto de Metz com atividades ao ar livre e campos de paintball tematizados. A entrada é inicialmente gratuita, enquanto uma pulseira pré-carregada permite pagar as atividades escolhidas durante a visita."
+          }
+        ],
+        "id": "8de9d388-66de-402a-8edf-62389727a14b"
+      },
+      {
+        "key": "pokeyland-history-sale-2023",
+        "entityType": "Park",
+        "owner": "park",
+        "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "year": 2023,
+        "month": 11,
+        "day": 29,
+        "datePrecision": "Day",
+        "eventType": "Sale",
+        "isMajor": true,
+        "isVisible": false,
+        "mainImageId": "452fd5f698e549c3922711177b0984e9",
+        "sources": [
+          {
+            "label": "BODACC A 20240088, annonce 918 — cession par acte du 29 novembre 2023",
+            "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Cession du fonds à BERNARD-AMUSEMENT"
+          },
+          {
+            "languageCode": "en",
+            "value": "The business is sold to BERNARD-AMUSEMENT"
+          },
+          {
+            "languageCode": "de",
+            "value": "Verkauf des Geschäftsbetriebs an BERNARD-AMUSEMENT"
+          },
+          {
+            "languageCode": "es",
+            "value": "Venta del negocio a BERNARD-AMUSEMENT"
+          },
+          {
+            "languageCode": "it",
+            "value": "Cessione dell’attività a BERNARD-AMUSEMENT"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Verkoop van de onderneming aan BERNARD-AMUSEMENT"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Sprzedaż działalności BERNARD-AMUSEMENT"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Venda da atividade à BERNARD-AMUSEMENT"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Un acte du 29 novembre 2023 organise la cession du fonds de commerce de POKEYLAND à BERNARD-AMUSEMENT pour 2,5 millions d’euros. Cette société établie en Belgique reprend l’activité de Féy."
+          },
+          {
+            "languageCode": "en",
+            "value": "A deed dated 29 November 2023 records the sale of POKEYLAND’s operating business to BERNARD-AMUSEMENT for €2.5 million. The Belgium-based company takes over the Féy business."
+          },
+          {
+            "languageCode": "de",
+            "value": "Ein Vertrag vom 29. November 2023 regelt den Verkauf des Geschäftsbetriebs von POKEYLAND an BERNARD-AMUSEMENT für 2,5 Millionen Euro. Die in Belgien ansässige Gesellschaft übernimmt das Geschäft in Féy."
+          },
+          {
+            "languageCode": "es",
+            "value": "Un contrato del 29 de noviembre de 2023 establece la venta del negocio de POKEYLAND a BERNARD-AMUSEMENT por 2,5 millones de euros. La sociedad con sede en Bélgica adquiere la actividad de Féy."
+          },
+          {
+            "languageCode": "it",
+            "value": "Un atto del 29 novembre 2023 stabilisce la cessione dell’attività di POKEYLAND a BERNARD-AMUSEMENT per 2,5 milioni di euro. La società con sede in Belgio rileva l’attività di Féy."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een akte van 29 november 2023 legt de verkoop van de bedrijfsactiviteiten van POKEYLAND aan BERNARD-AMUSEMENT vast voor 2,5 miljoen euro. De in België gevestigde onderneming neemt de activiteiten in Féy over."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Akt z 29 listopada 2023 roku reguluje sprzedaż działalności POKEYLAND spółce BERNARD-AMUSEMENT za 2,5 miliona euro. Firma z siedzibą w Belgii przejmuje działalność w Féy."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Um ato de 29 de novembro de 2023 estabelece a venda da atividade de POKEYLAND à BERNARD-AMUSEMENT por 2,5 milhões de euros. A sociedade sediada na Bélgica assume a atividade de Féy."
+          }
+        ],
+        "newOwnerName": "BERNARD-AMUSEMENT",
+        "previousOwnerName": "POKEYLAND",
+        "id": "f28f4138-dbbc-43ec-b4e9-8d33437e3277"
+      },
+      {
+        "key": "pokeyland-history-reorganisation-2026",
+        "entityType": "Park",
+        "owner": "park",
+        "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "year": 2026,
+        "month": 10,
+        "day": 1,
+        "datePrecision": "Day",
+        "eventType": "Bankruptcy",
+        "isMajor": true,
+        "isVisible": false,
+        "mainImageId": "a30bcfef2e414aca8898b45ee212d46e",
+        "sources": [
+          {
+            "label": "BODACC A 20260196, annonce 6026 — jugement du 1er octobre 2026",
+            "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Moselle TV, 2 octobre 2026 — redressement et objectif de saison 2027",
+            "url": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "L’exploitant entre en redressement judiciaire"
+          },
+          {
+            "languageCode": "en",
+            "value": "The operator enters judicial reorganisation"
+          },
+          {
+            "languageCode": "de",
+            "value": "Gerichtliche Sanierung des Betreibers"
+          },
+          {
+            "languageCode": "es",
+            "value": "El operador entra en reorganización judicial"
+          },
+          {
+            "languageCode": "it",
+            "value": "L’operatore entra in ristrutturazione giudiziaria"
+          },
+          {
+            "languageCode": "nl",
+            "value": "De exploitant gaat een gerechtelijke herstructurering in"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Operator rozpoczyna sądową restrukturyzację"
+          },
+          {
+            "languageCode": "pt",
+            "value": "O operador entra em recuperação judicial"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Le jugement du 1er octobre 2026 ouvre une procédure de redressement pour BERNARD-AMUSEMENT, exploitant de Pokeyland. La direction présente cette démarche comme un moyen de poursuivre l’activité et de préparer la saison 2027, dont la réouverture reste alors un objectif."
+          },
+          {
+            "languageCode": "en",
+            "value": "A judgment of 1 October 2026 opens judicial reorganisation proceedings for BERNARD-AMUSEMENT, Pokeyland’s operator. Management presents the procedure as a means of continuing the business and preparing the 2027 season, with reopening still an objective at that point."
+          },
+          {
+            "languageCode": "de",
+            "value": "Ein Urteil vom 1. Oktober 2026 eröffnet ein gerichtliches Sanierungsverfahren für BERNARD-AMUSEMENT, den Betreiber von Pokeyland. Die Leitung will damit die Fortführung des Betriebs und die Saison 2027 vorbereiten; die Wiedereröffnung bleibt zu diesem Zeitpunkt ein Ziel."
+          },
+          {
+            "languageCode": "es",
+            "value": "La resolución del 1 de octubre de 2026 abre un procedimiento de reorganización judicial para BERNARD-AMUSEMENT, operador de Pokeyland. La dirección lo presenta como un medio para continuar la actividad y preparar la temporada 2027, cuya reapertura sigue siendo entonces un objetivo."
+          },
+          {
+            "languageCode": "it",
+            "value": "La decisione del 1º ottobre 2026 apre una procedura di ristrutturazione giudiziaria per BERNARD-AMUSEMENT, operatore di Pokeyland. La direzione la presenta come un mezzo per proseguire l’attività e preparare la stagione 2027, la cui riapertura resta allora un obiettivo."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een uitspraak van 1 oktober 2026 opent een gerechtelijke herstructureringsprocedure voor BERNARD-AMUSEMENT, de exploitant van Pokeyland. De leiding wil daarmee de activiteiten voortzetten en het seizoen 2027 voorbereiden; heropening is op dat moment nog een doelstelling."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Orzeczenie z 1 października 2026 roku otwiera sądowe postępowanie restrukturyzacyjne wobec BERNARD-AMUSEMENT, operatora Pokeyland. Kierownictwo przedstawia je jako sposób na kontynuowanie działalności i przygotowanie sezonu 2027, którego otwarcie pozostaje wówczas celem."
+          },
+          {
+            "languageCode": "pt",
+            "value": "A decisão de 1 de outubro de 2026 abre um processo de recuperação judicial da BERNARD-AMUSEMENT, operadora de Pokeyland. A direção apresenta-o como um meio de prosseguir a atividade e preparar a temporada 2027, cuja reabertura continua então a ser um objetivo."
+          }
+        ],
+        "id": "0899d0b0-7aa2-4d26-bc5e-541cd299b873"
+      }
+    ]
   },
   "metadata": {
     "source": "admin-bulk-park-graph-export",
     "exportedAtUtc": "2026-11-15T10:44:59.126788Z"
   },
   "openingHours": null,
-  "pricing": null
+  "pricing": {
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "currencyCode": "EUR",
+    "sourceUrl": "https://www.pokeyland.com/tarifs-2026/",
+    "purchaseUrl": null,
+    "lastVerifiedAtUtc": "2026-11-15T11:40:14.568558Z",
+    "notes": [
+      {
+        "languageCode": "fr",
+        "value": "Les pass donnent accès au parc pendant la saison 2026, avec les activités en illimité et un seul accès par visite à une aventure au choix : accrobranche, paintball ou Waterjump. Ils sont vendus uniquement aux caisses du parc et ne sont valables que pour la saison 2026."
+      },
+      {
+        "languageCode": "en",
+        "value": "The passes provide park access during the 2026 season, with unlimited activities and one adventure per visit, chosen from treetop courses, paintball or Waterjump. They are sold only at the park ticket desks and are valid for the 2026 season only."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Pässe ermöglichen während der Saison 2026 den Parkbesuch mit unbegrenzten Aktivitäten und einem Abenteuer pro Besuch: Kletterparcours, Paintball oder Waterjump. Sie werden ausschließlich an den Parkkassen verkauft und gelten nur für die Saison 2026."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los pases dan acceso al parque durante la temporada 2026, con actividades ilimitadas y una aventura por visita, a elegir entre los circuitos en los árboles, paintball o Waterjump. Se venden únicamente en las taquillas del parque y solo son válidos para la temporada 2026."
+      },
+      {
+        "languageCode": "it",
+        "value": "I pass danno accesso al parco durante la stagione 2026, con attività illimitate e una sola avventura per visita, a scelta tra percorsi sugli alberi, paintball e Waterjump. Sono venduti esclusivamente alle casse del parco e valgono solo per la stagione 2026."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De passen geven toegang tot het park tijdens het seizoen 2026, met onbeperkte activiteiten en één avontuur per bezoek: boomklimparcoursen, paintball of Waterjump. Ze zijn uitsluitend aan de parkkassa’s verkrijgbaar en alleen geldig voor het seizoen 2026."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Karnety zapewniają wstęp do parku w sezonie 2026, nielimitowane korzystanie z aktywności oraz jedną przygodę na wizytę: park linowy, paintball lub Waterjump. Sprzedawane są wyłącznie w kasach parku i obowiązują tylko w sezonie 2026."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os passes dão acesso ao parque durante a temporada 2026, com atividades ilimitadas e uma aventura por visita, à escolha entre arborismo, paintball ou Waterjump. São vendidos apenas nas bilheteiras do parque e válidos exclusivamente para a temporada 2026."
+      }
+    ],
+    "admissionOffers": [],
+    "annualPasses": [
+      {
+        "code": "season-child",
+        "names": [
+          {
+            "languageCode": "fr",
+            "value": "Pass saison 2026 — moins de 12 ans"
+          },
+          {
+            "languageCode": "en",
+            "value": "2026 season pass — under 12"
+          },
+          {
+            "languageCode": "de",
+            "value": "Saisonpass 2026 — unter 12 Jahren"
+          },
+          {
+            "languageCode": "es",
+            "value": "Pase de temporada 2026 — menores de 12 años"
+          },
+          {
+            "languageCode": "it",
+            "value": "Pass stagionale 2026 — meno di 12 anni"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Seizoenspas 2026 — jonger dan 12 jaar"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Karnet sezonowy 2026 — poniżej 12 lat"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Passe de temporada 2026 — menores de 12 anos"
+          }
+        ],
+        "onlinePrice": null,
+        "gatePrice": {
+          "mode": "Fixed",
+          "amount": 110
+        },
+        "validFrom": "2026-04-18",
+        "validTo": "2026-09-27",
+        "purchaseUrl": null,
+        "conditions": [],
+        "sortOrder": 10,
+        "id": "14cb177b00b44e4281b75655ac87a581"
+      },
+      {
+        "code": "season-12-plus",
+        "names": [
+          {
+            "languageCode": "fr",
+            "value": "Pass saison 2026 — 12 ans et plus"
+          },
+          {
+            "languageCode": "en",
+            "value": "2026 season pass — ages 12 and over"
+          },
+          {
+            "languageCode": "de",
+            "value": "Saisonpass 2026 — ab 12 Jahren"
+          },
+          {
+            "languageCode": "es",
+            "value": "Pase de temporada 2026 — desde 12 años"
+          },
+          {
+            "languageCode": "it",
+            "value": "Pass stagionale 2026 — dai 12 anni"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Seizoenspas 2026 — vanaf 12 jaar"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Karnet sezonowy 2026 — od 12 lat"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Passe de temporada 2026 — a partir dos 12 anos"
+          }
+        ],
+        "onlinePrice": null,
+        "gatePrice": {
+          "mode": "Fixed",
+          "amount": 140
+        },
+        "validFrom": "2026-04-18",
+        "validTo": "2026-09-27",
+        "purchaseUrl": null,
+        "conditions": [],
+        "sortOrder": 20,
+        "id": "cc36faa4b3db42269efb2e6cdf2bcccd"
+      }
+    ],
+    "parkingOffers": [],
+    "creditOffers": [],
+    "historicalSnapshots": []
+  }
 }

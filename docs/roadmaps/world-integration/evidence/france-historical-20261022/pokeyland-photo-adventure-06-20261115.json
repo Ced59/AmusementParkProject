@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "sourcePage": "https://www.pokeyland.com/packs/waterjump/",
+    "section": "Niveau 1 : jaune (débutant)",
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-jaune-q88efzvzqef4arvhfbb9ztz7b64vgvmb5m4glbgmu8.jpg",
+    "domImageXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[1]/div/div[1]/div/div/div/img",
+    "sectionXpath": "/html/body/div/main/article/section[1]/div/div/div[1]/section[2]/div/div/div/section[1]",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/06-waterjump-jaune-q88efzvzqef4arvhfbb9ztz7b64vgvmb5m4glbgmu8.jpg",
+    "http": 200,
+    "bytes": 67264,
+    "dimensions": [
+      700,
+      400
+    ],
+    "sha256": "1a4b05cddf40b7925b3469362d966bb145d5cdce87af33ce6704958ba6c9912b",
+    "fetchedUtc": "2026-11-15T12:08:26.748811+00:00",
+    "over960KiB": false,
+    "localPixelTransformation": false,
+    "captureDate": null,
+    "photographer": null,
+    "filename": "06-waterjump-jaune-q88efzvzqef4arvhfbb9ztz7b64vgvmb5m4glbgmu8.jpg",
+    "visualObservation": "Pistes jaunes de glisse vues de face, séparateurs longitudinaux, structure de sortie en bois ; image du bloc Niveau 1 : jaune (débutant).",
+    "visuallyInspected": true,
+    "publisher": "Pokeyland",
+    "creditBasis": "Source : site officiel Pokeyland ; auteur individuel non mentionné.",
+    "openLicenseClaimed": false,
+    "captureDateBasis": "Aucune date de prise prouvée ; les chiffres du nom de fichier et du chemin de stockage ne sont pas des dates validées.",
+    "gps": null,
+    "exif": {},
+    "qualification": "qualified_waterjump_detail",
+    "itemId": "73ff7670-39ee-4c19-b339-907707fc8711",
+    "watermarkVisible": false,
+    "compositeVisible": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-jaune-q88efzvzqef4arvhfbb9ztz7b64vgvmb5m4glbgmu8.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/adventure-photo-candidates/06-waterjump-jaune-q88efzvzqef4arvhfbb9ztz7b64vgvmb5m4glbgmu8.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-06-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-adventure-06-import-result.json"
+  },
+  "metadata": {
+    "description": "Les pistes jaunes du Waterjump de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-jaune-q88efzvzqef4arvhfbb9ztz7b64vgvmb5m4glbgmu8.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des pistes jaunes parallèles descendent vers une plateforme de bois, entre des talus couverts de bâches sombres."
+      },
+      {
+        "languageCode": "en",
+        "value": "Parallel yellow runs descend towards a wooden platform between slopes covered with dark sheeting."
+      },
+      {
+        "languageCode": "de",
+        "value": "Parallele gelbe Bahnen führen zwischen dunkel abgedeckten Böschungen zu einer Holzplattform hinunter."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pistas amarillas paralelas descienden hacia una plataforma de madera entre taludes cubiertos con lonas oscuras."
+      },
+      {
+        "languageCode": "it",
+        "value": "Piste gialle parallele scendono verso una piattaforma di legno tra pendii coperti da teli scuri."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Evenwijdige gele banen dalen af naar een houten platform tussen hellingen met donkere afdekking."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Równoległe żółte zjeżdżalnie schodzą ku drewnianej platformie między zboczami pokrytymi ciemnymi płachtami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Pistas amarelas paralelas descem até uma plataforma de madeira entre taludes cobertos de lonas escuras."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les pistes jaunes du Waterjump de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The yellow runs of Pokeyland’s Waterjump."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die gelben Bahnen des Waterjump in Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las pistas amarillas del Waterjump de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le piste gialle del Waterjump di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De gele banen van Waterjump in Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Żółte zjeżdżalnie Waterjump w Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As pistas amarelas do Waterjump no Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T12:44:49.8213224Z",
+    "startedAtUtc": "2026-11-15T12:44:36.3674397Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "c8466353e86442e180d8ff8e5fbbf41a",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "path": "park_item/c8466353e86442e180d8ff8e5fbbf41a",
+      "description": "Les pistes jaunes du Waterjump de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 67264,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/waterjump-jaune-q88efzvzqef4arvhfbb9ztz7b64vgvmb5m4glbgmu8.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des pistes jaunes parallèles descendent vers une plateforme de bois, entre des talus couverts de bâches sombres."
+        },
+        {
+          "languageCode": "en",
+          "value": "Parallel yellow runs descend towards a wooden platform between slopes covered with dark sheeting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Parallele gelbe Bahnen führen zwischen dunkel abgedeckten Böschungen zu einer Holzplattform hinunter."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pistas amarillas paralelas descienden hacia una plataforma de madera entre taludes cubiertos con lonas oscuras."
+        },
+        {
+          "languageCode": "it",
+          "value": "Piste gialle parallele scendono verso una piattaforma di legno tra pendii coperti da teli scuri."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Evenwijdige gele banen dalen af naar een houten platform tussen hellingen met donkere afdekking."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Równoległe żółte zjeżdżalnie schodzą ku drewnianej platformie między zboczami pokrytymi ciemnymi płachtami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pistas amarelas paralelas descem até uma plataforma de madeira entre taludes cobertos de lonas escuras."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les pistes jaunes du Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The yellow runs of Pokeyland’s Waterjump."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die gelben Bahnen des Waterjump in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las pistas amarillas del Waterjump de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le piste gialle del Waterjump di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De gele banen van Waterjump in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Żółte zjeżdżalnie Waterjump w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As pistas amarelas do Waterjump no Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:44:42.803Z",
+      "updatedAt": "2026-11-15T12:44:46.277Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true,
+    "identityFromNamedOfficialDomBlock": true,
+    "noCheckpointAliasInferred": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,254 @@
+{
+  "createdAtUtc": "2026-11-15T12:32:24.213011+00:00",
+  "scope": "Freshness of exactly four public sources for Pokeyland history; no final product text or mutation.",
+  "result": "4/4 PASS: HTTP 200 and relevant full rendered content present and personally read.",
+  "navigationWindowUtc": {
+    "start": "2026-11-15T12:30:40.004721+00:00",
+    "end": "2026-11-15T12:31:13.420947+00:00"
+  },
+  "sources": [
+    {
+      "factsConfirmed": {
+        "publicOpeningDate": "2015-06-20",
+        "articlePublicationDate": "2015-06-20",
+        "articleUpdatedDate": "2019-02-12"
+      },
+      "literalPassages": [
+        "C’est un tout nouveau parc de loisirs qui ouvre ses portes ce samedi 20 juin 2015 à Féy",
+        "qui répond à nos questions à la veille de l’ouverture du parc au public",
+        "Dans ce reportage photo, réalisé par Thierry Hauuy pour Tout-Metz"
+      ],
+      "limitations": [
+        "Preopening photo report is not a photograph of an inauguration ceremony.",
+        "2015 prices/conditions are historical, not current."
+      ],
+      "literalPassagesCheck": [
+        {
+          "passage": "C’est un tout nouveau parc de loisirs qui ouvre ses portes ce samedi 20 juin 2015 à Féy",
+          "presentInRenderedText": true
+        },
+        {
+          "passage": "qui répond à nos questions à la veille de l’ouverture du parc au public",
+          "presentInRenderedText": true
+        },
+        {
+          "passage": "Dans ce reportage photo, réalisé par Thierry Hauuy pour Tout-Metz",
+          "presentInRenderedText": true
+        }
+      ],
+      "sourceId": "opening2015",
+      "status": "PASS_RENDERED_CONTENT_PERSONALLY_READ",
+      "httpStatus": 200,
+      "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "finalUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "renderedAtUtc": "2026-11-15T12:30:49.129876+00:00",
+      "reviewRecordedAtUtc": "2026-11-15T12:32:24.213011+00:00",
+      "fullRenderedContent": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/opening2015-rendered.html",
+        "bytes": 340286,
+        "sha256": "8372115fec80af6efbf10f296f252f3c9a8c58c570dac4bde48db2e09141a03d"
+      },
+      "fullRenderedText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/opening2015-rendered.txt",
+        "bytes": 16353,
+        "sha256": "61d77f2a11c7d0cd52968b89b0921d49f8011ca0b2f0ad101ab18c3221291d4d"
+      },
+      "usefulText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/opening2015-useful-text.txt",
+        "sha256": "4a67d271c5a6430dc1dde284b18fc10c5d0990abbfc9a873ff943a7d0470cbfd"
+      },
+      "priorSourceHash": "7c6ea3fde10a6d13864d0ac73da7626c860438bcc1bd9b3482bc9350ae46bba4",
+      "sameAsPriorRenderedHtml": false,
+      "sameAsPriorInitialResponse": false
+    },
+    {
+      "factsConfirmed": {
+        "announcement": "BODACC A 20240088, 918",
+        "publicationDate": "2024-05-05",
+        "deedDate": "2023-11-29",
+        "buyer": "BERNARD-AMUSEMENT",
+        "buyerRcs": "982 057 358 RCS Metz",
+        "seller": "POKEYLAND",
+        "sellerRcs": "791 387 434 RCS Metz"
+      },
+      "literalPassages": [
+        "Dénomination : BERNARD-AMUSEMENT",
+        "Commentaires : Acte en date du 29/11/2023 enregistré au SIE METZ le 07/11/2023",
+        "Dénomination : POKEYLAND"
+      ],
+      "limitations": [
+        "The notice itself gives a registration date 07/11/2023 earlier than the deed dated 29/11/2023. Preserve this inconsistency; do not correct or publish an inferred registration date.",
+        "May 5, 2024 is publication of this notice, not a second sale.",
+        "Exact corporate effective-time wording from separate mirrored JAL remains outside this freshness check."
+      ],
+      "renderedContentRequired": true,
+      "literalPassagesCheck": [
+        {
+          "passage": "Dénomination : BERNARD-AMUSEMENT",
+          "presentInRenderedText": true
+        },
+        {
+          "passage": "Commentaires : Acte en date du 29/11/2023 enregistré au SIE METZ le 07/11/2023",
+          "presentInRenderedText": true
+        },
+        {
+          "passage": "Dénomination : POKEYLAND",
+          "presentInRenderedText": true
+        }
+      ],
+      "sourceId": "saleBodacc",
+      "status": "PASS_RENDERED_CONTENT_PERSONALLY_READ",
+      "httpStatus": 200,
+      "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+      "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:A20240088918",
+      "renderedAtUtc": "2026-11-15T12:30:58.481977+00:00",
+      "reviewRecordedAtUtc": "2026-11-15T12:32:24.213011+00:00",
+      "fullRenderedContent": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-rendered.html",
+        "bytes": 425521,
+        "sha256": "6ca72f1aa7d27a9d285900d0754876e0d06e2a379a96a9aeb605fd9240863bf9"
+      },
+      "fullRenderedText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-rendered.txt",
+        "bytes": 3116,
+        "sha256": "f83a2e918a3ffa65f8dbb0e3301b913c128219baae383a97c6484c3a8b9ec843"
+      },
+      "usefulText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-useful-text.txt",
+        "sha256": "e7cdfdd5698c0daae937956024517cec7b30d2b274cd91a635b741d8c3d53a47"
+      },
+      "priorSourceHash": "6ca72f1aa7d27a9d285900d0754876e0d06e2a379a96a9aeb605fd9240863bf9",
+      "sameAsPriorRenderedHtml": true,
+      "sameAsPriorInitialResponse": false,
+      "initialAutomaticCandidateFalseExplained": "Initial simple string check looked for BERNARD AMUSEMENT with a space; actual rendered legal name is BERNARD-AMUSEMENT. Complete body was then read and matched against exact passages. Original acquisition receipt is preserved without rewriting.",
+      "ordinaryRedirectExplained": "BODACC redirects the exact public announcement URL to its /pages/annonces-commerciales-detail/ page with q.id. This final URL was generated by ordinary navigation, not manually constructed as an alternate access path."
+    },
+    {
+      "factsConfirmed": {
+        "announcement": "BODACC A 20260196, 6026",
+        "publicationDate": "2026-10-13",
+        "judgmentDate": "2026-10-01",
+        "cessationDesPaiementsDate": "2025-04-02",
+        "entity": "BERNARD-AMUSEMENT",
+        "rcs": "982 057 358 RCS METZ"
+      },
+      "literalPassages": [
+        "Date : 1 octobre 2026",
+        "Dénomination : BERNARD-AMUSEMENT",
+        "Complément Jugement : Ouvre la procédure de redressement",
+        "Date de cessation des paiements : 02 Avril 2025"
+      ],
+      "limitations": [
+        "Cessation des paiements is a legal financial date, not proof of park closure.",
+        "The generic notice wording refers to filing with a liquidateur, but the disposition explicitly opens redressement; do not infer liquidation.",
+        "October 13 is notice publication, not judgment day."
+      ],
+      "renderedContentRequired": true,
+      "literalPassagesCheck": [
+        {
+          "passage": "Date : 1 octobre 2026",
+          "presentInRenderedText": true
+        },
+        {
+          "passage": "Dénomination : BERNARD-AMUSEMENT",
+          "presentInRenderedText": true
+        },
+        {
+          "passage": "Complément Jugement : Ouvre la procédure de redressement",
+          "presentInRenderedText": true
+        },
+        {
+          "passage": "Date de cessation des paiements : 02 Avril 2025",
+          "presentInRenderedText": true
+        }
+      ],
+      "sourceId": "redressementBodacc",
+      "status": "PASS_RENDERED_CONTENT_PERSONALLY_READ",
+      "httpStatus": 200,
+      "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026",
+      "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:A202601966026",
+      "renderedAtUtc": "2026-11-15T12:31:04.374239+00:00",
+      "reviewRecordedAtUtc": "2026-11-15T12:32:24.213011+00:00",
+      "fullRenderedContent": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-rendered.html",
+        "bytes": 419267,
+        "sha256": "bd23417d29239f468a33c18a5940d0e93ff4aff00af04c4a89d063f416325539"
+      },
+      "fullRenderedText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-rendered.txt",
+        "bytes": 2594,
+        "sha256": "a8e4754342f8c24ef7c5880537a7f93008af37a2c1a0202cab57586dd0f2340c"
+      },
+      "usefulText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-useful-text.txt",
+        "sha256": "9b12cdf6f1998f517a1cf59571776918d814b8e2b47bafa472716d8f34ce364c"
+      },
+      "priorSourceHash": "bd23417d29239f468a33c18a5940d0e93ff4aff00af04c4a89d063f416325539",
+      "sameAsPriorRenderedHtml": true,
+      "sameAsPriorInitialResponse": false,
+      "initialAutomaticCandidateFalseExplained": "Initial simple string check looked for BERNARD AMUSEMENT with a space; actual rendered legal name is BERNARD-AMUSEMENT. Complete body was then read and matched against exact passages. Original acquisition receipt is preserved without rewriting.",
+      "ordinaryRedirectExplained": "BODACC redirects the exact public announcement URL to its /pages/annonces-commerciales-detail/ page with q.id. This final URL was generated by ordinary navigation, not manually constructed as an alternate access path."
+    },
+    {
+      "factsConfirmed": {
+        "publicationDate": "2026-10-02",
+        "byline": "Jonathan Vaucher",
+        "reportedDecision": "Tribunal decision on the preceding Thursday, consistent with 2026-10-01 in BODACC",
+        "managementAim": "Reopen in 2027; this is an aim, not an actual reopening or a published calendar"
+      },
+      "literalPassages": [
+        "Par Jonathan Vaucher 02/10/2026",
+        "Le parc de loisirs de Féy, Pokeyland, a été placé en redressement judiciaire par décision du tribunal rendue ce jeudi",
+        "L’objectif est clair : « permettre au parc de rouvrir ses portes en 2027 », avance la direction."
+      ],
+      "limitations": [
+        "Report states an objective of continuing activity/reopening in 2027; it does not establish a 2027 opening date or calendar.",
+        "HTTP Last-Modified identifies web delivery metadata and is not the article publication date."
+      ],
+      "literalPassagesCheck": [
+        {
+          "passage": "Par Jonathan Vaucher 02/10/2026",
+          "presentInRenderedText": true
+        },
+        {
+          "passage": "Le parc de loisirs de Féy, Pokeyland, a été placé en redressement judiciaire par décision du tribunal rendue ce jeudi",
+          "presentInRenderedText": true
+        },
+        {
+          "passage": "L’objectif est clair : « permettre au parc de rouvrir ses portes en 2027 », avance la direction.",
+          "presentInRenderedText": true
+        }
+      ],
+      "sourceId": "redressementPress",
+      "status": "PASS_RENDERED_CONTENT_PERSONALLY_READ",
+      "httpStatus": 200,
+      "url": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+      "finalUrl": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+      "renderedAtUtc": "2026-11-15T12:31:13.420947+00:00",
+      "reviewRecordedAtUtc": "2026-11-15T12:32:24.213011+00:00",
+      "fullRenderedContent": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementPress-rendered.html",
+        "bytes": 372536,
+        "sha256": "0f3708455814e72265c099c51708a4b76bb1f2516e74b51c56e68eb84f4d3260"
+      },
+      "fullRenderedText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementPress-rendered.txt",
+        "bytes": 7774,
+        "sha256": "3a2b167bf99a06e03c8fdd1dfb9f77f9c1d6eaaad176fa51dcca61b72ebc4a4a"
+      },
+      "usefulText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementPress-useful-text.txt",
+        "sha256": "e0ad2c3cbee19103d32f6747702ac607f64dfeebd40a6d51e4da43cd9145cce4"
+      },
+      "priorSourceHash": "beda21c9b230c95737a79f0641fb7e0f88adecbae5017e554bcae67df6cf4cb1",
+      "sameAsPriorRenderedHtml": false,
+      "sameAsPriorInitialResponse": true
+    }
+  ],
+  "accessLog": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/source-access.json",
+  "noLoginOrBypass": true,
+  "noPdeApiGitRegistryOrImport": true,
+  "networkRequests": "One ordinary top-level browser navigation per source; normal page assets/scripts loaded by the browser. No explicit API requests or refusal retries.",
+  "sourceIntegrity": "Complete response bodies and rendered DOM/text preserved. Both rendered BODACC HTML hashes are identical to the prior preserved notices; Moselle TV initial response hash is also unchanged.",
+  "unresolvedSourceAnomaly": "Sale notice records act 29/11/2023 but registration 07/11/2023; no correction inferred."
+}

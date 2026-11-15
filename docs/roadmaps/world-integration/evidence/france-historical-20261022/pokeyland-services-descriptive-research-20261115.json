@@ -1,0 +1,972 @@
+{
+  "reportType": "public-descriptive-services-followup",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "createdAtUtc": "2026-11-15T12:42:59.920033Z",
+  "scope": "Research only. No PDE/API, Git, registry, import, reservation, contact or public final descriptions. Only this dedicated folder written.",
+  "readOnlyState": {
+    "path": "/workspace/france-historical-20261114/pokeyland/working-state.json",
+    "bytes": 361009,
+    "sha256": "644f02c9400c156d12481ea388af1e2d63b9a88ca68b486c14da7d6a70aafc9c",
+    "readAtUtc": "2026-11-15T12:42:59.920395Z",
+    "items": 74,
+    "withoutDescriptions": 42,
+    "targetedCurrentServices": 16
+  },
+  "sources": [
+    {
+      "key": "officialFood",
+      "url": "https://www.pokeyland.com/restauration/",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/food.html",
+      "bytes": 97919,
+      "sha256": "e66380686b2e78d5de6bd6d21594d83739af744e773e7eb450d438f55ca2c12d"
+    },
+    {
+      "key": "officialServices",
+      "url": "https://www.pokeyland.com/services-a-disposition/",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/services.html",
+      "bytes": 108927,
+      "sha256": "118fb784bf2ec7c6cea1566f3d20eda591b090ba7b91a9aa672c2b6c25fc135f"
+    },
+    {
+      "key": "officialSeminars",
+      "url": "https://www.pokeyland.com/vos-evenements-seminaires/",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/seminars.html",
+      "bytes": 114432,
+      "sha256": "93541dab5f3e1aa8d839463de38692beb34e33e0255b029f5825c428eb968094"
+    },
+    {
+      "key": "officialBeach2023",
+      "url": "https://www.pokeyland.com/actualites/amusez-vous-a-pokeyplage/",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/beach.html",
+      "bytes": 82217,
+      "sha256": "52d8297dd0ec71f8661686b6a58d471d07f87cba95480e830e1ad05009237a78"
+    },
+    {
+      "key": "officialConcert2025",
+      "url": "https://www.pokeyland.com/actualites/waterjump2025/",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/concert.html",
+      "bytes": 84588,
+      "sha256": "0b028bf43184cd50696285de090227e01e947229be35cd32032f798f4cf7ceee"
+    },
+    {
+      "key": "officialMap2026",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2026.pdf",
+      "bytes": 362538,
+      "sha256": "995e99a02b0da75695b33206915fd292abef9c5a6a4efd614a6df14e00dc3db6"
+    },
+    {
+      "key": "officialOlderMap",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2022.pdf",
+      "bytes": 4042269,
+      "sha256": "507ee6aaadb5f3e80cac2da0c645226293bf10160c6ea65d5cd4a46071e96798"
+    },
+    {
+      "key": "pressCashDesk2021",
+      "url": "https://www.estrepublicain.fr/culture-loisirs/2021/08/04/le-pass-sanitaire-vide-les-allees-du-parc-de-loisirs-pokeyland-a-fey",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/press-caisse-2021.html",
+      "bytes": 598732,
+      "sha256": "2b1cc321a353109e127814205b85bcc987c84e34545aaa316de7af31a9e73c23"
+    },
+    {
+      "key": "metzConvention",
+      "url": "https://www.congres-metz.com/pokeyland/",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/metz-convention-pokeyland.html",
+      "bytes": 176941,
+      "sha256": "60574c89a00fb6d2482ee06df3b06b78ea2b3e102ebaed043d09c4120985513d"
+    },
+    {
+      "key": "aleouVenue",
+      "url": "https://www.aleou.fr/team-building-seminaire/36321-pokeyland",
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/aleou-pokeyland.html",
+      "bytes": 541684,
+      "sha256": "a66d9b8ed2bc9062754ecd65c70a4b19b65f027b823405d7361c53c2a5f775a0"
+    },
+    {
+      "key": "historicalMapNames",
+      "url": null,
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/historical-map-2017-additional-identities-20261115.json",
+      "bytes": 35489,
+      "sha256": "60b77694975f96572763701b6f14a3f7c77080b1128b6b79f0be60d336771251"
+    }
+  ],
+  "reusedSourceAccessLogs": [
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/source-access.json",
+      "bytes": 1262,
+      "sha256": "ec5793204a572c5c0f35e3d38d1c8d73dc5f01e30115e28d27ef5ee0065df404"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/followup-source-access.json",
+      "bytes": 795,
+      "sha256": "1d3d1012a289944b1658a84fa8424e2d9ab8f246dea72ac48248c66f06c3a17a"
+    }
+  ],
+  "newSourceAccess": [
+    {
+      "url": "https://www.estrepublicain.fr/culture-loisirs/2021/08/04/le-pass-sanitaire-vide-les-allees-du-parc-de-loisirs-pokeyland-a-fey",
+      "file": "press-caisse-2021.html",
+      "accessedAtUtc": "2026-11-15T12:37:35.133350Z",
+      "status": 200,
+      "finalUrl": "https://www.estrepublicain.fr/culture-loisirs/2021/08/04/le-pass-sanitaire-vide-les-allees-du-parc-de-loisirs-pokeyland-a-fey",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 598732,
+      "sha256": "2b1cc321a353109e127814205b85bcc987c84e34545aaa316de7af31a9e73c23"
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+      "file": "press-caisse-2021.jpg",
+      "accessedAtUtc": "2026-11-15T12:37:38.662519Z",
+      "status": 200,
+      "finalUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 537098,
+      "sha256": "f09d87087ccb3d78ad59a7c36748be48310d7779d56dcdecdff5bf0abea02831"
+    },
+    {
+      "url": "https://files.appli-intramuros.com/website/uploads/12057/2025/mairie_rosieres_bm_n49_bat-1_Z1kqJ53.pdf",
+      "file": "rosieres-bulletin-49.pdf",
+      "accessedAtUtc": "2026-11-15T12:37:40.932622Z",
+      "status": 200,
+      "finalUrl": "https://files.appli-intramuros.com/website/uploads/12057/2025/mairie_rosieres_bm_n49_bat-1_Z1kqJ53.pdf",
+      "contentType": "application/pdf",
+      "bytes": 14336996,
+      "sha256": "c092a45f126ec5969bc555958e3d5c9855bf32df245fde8154b98e9c820e476b"
+    },
+    {
+      "url": "https://www.inspire-metz.com/UserFiles/File/actu-g7-environnement/meeting-guide-web.pdf",
+      "file": "metz-meeting-guide.pdf",
+      "accessedAtUtc": "2026-11-15T12:37:42.746136Z",
+      "status": 200,
+      "finalUrl": "https://inspire-metz.com/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 249293,
+      "sha256": "7a9852db30dcf42afa7873a6d7a545b8e55efbf884883179ba7a0b44bb93fa95"
+    },
+    {
+      "url": "https://www.congres-metz.com/pokeyland/",
+      "file": "metz-convention-pokeyland.html",
+      "accessedAtUtc": "2026-11-15T12:39:04.710324Z",
+      "status": 200,
+      "finalUrl": "https://www.congres-metz.com/pokeyland/",
+      "bytes": 176941,
+      "sha256": "60574c89a00fb6d2482ee06df3b06b78ea2b3e102ebaed043d09c4120985513d",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.aleou.fr/team-building-seminaire/36321-pokeyland",
+      "file": "aleou-pokeyland.html",
+      "accessedAtUtc": "2026-11-15T12:39:05.995581Z",
+      "status": 200,
+      "finalUrl": "https://www.aleou.fr/team-building-seminaire/36321-pokeyland",
+      "bytes": 541684,
+      "sha256": "a66d9b8ed2bc9062754ecd65c70a4b19b65f027b823405d7361c53c2a5f775a0",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://data.geopf.fr/annexes/gpu/documents/DU_57212/15f398a94879b1c82924dd2fe77bfd2b/57212_procedure_20150430.pdf",
+      "file": "fey-plu-20150430.pdf",
+      "accessedAtUtc": "2026-11-15T12:38:06.914692Z",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ],
+  "currentServices": [
+    {
+      "name": "Le Petit Creux",
+      "itemId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Le Petit Creux",
+        "itemId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [
+          "formule-burger-pmym4164pe003ppkecvaqpasjrg8g5vqo94iituaao.png"
+        ],
+        "reason": "Montage produit uniquement ; pas de façade officielle identifiée."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Le titre et le texte de la page officielle nomment précisément Le Petit Creux.",
+          "Offre annoncée : hamburgers, salades, hot-dogs et frites maison."
+        ],
+        "quote": "Au petit creux nous vous proposons des hamburgers, salades et hot-dog et des frites maison.",
+        "sources": [
+          "officialFood"
+        ],
+        "limits": [
+          "Aucune façade nominale trouvée ; le montage burger/frites n’est pas une photo documentaire.",
+          "Ne pas rattacher le chalet portant seulement SNACK.",
+          "Menu actuel non transposable automatiquement au Snack historique."
+        ]
+      }
+    },
+    {
+      "name": "Le Gourmand",
+      "itemId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Le Gourmand",
+        "itemId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [
+          "restauration_le_gourmand-pmv5nf40sudn7s1t1360mvb8wxtjsx5qza26ubagf4.jpg"
+        ],
+        "reason": "Illustration churros, sans lieu identifiable."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "La page officielle identifie un point de restauration sucrée.",
+          "Produits cités : churros, crêpes, glaces, bonbons et granitas."
+        ],
+        "quote": "Churros, crêpes, glaces et bonbons sont là pour satisfaire vos envies !",
+        "sources": [
+          "officialFood"
+        ],
+        "limits": [
+          "Photo de mains tenant des churros non nominale pour le bâtiment.",
+          "Aucun alias ni date d’ouverture établis."
+        ]
+      }
+    },
+    {
+      "name": "Le Grill",
+      "itemId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Le Grill",
+        "itemId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [
+          "restauration_le_grill-pmv5hobj1aik9ke6kls3ebhu864sricsuujd9ft2g0.jpg"
+        ],
+        "reason": "Illustration grillade, pas de façade. Aucun alias O’Chalet/Sur le Pouce prouvé."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "La page officielle identifie Le Grill et une offre de grillades/barbecue.",
+          "Saucisses blanches et Currywurst sont expressément citées."
+        ],
+        "quote": "Venez découvrir nos saucisses blanches, ou encore la traditionnelle Currywurst.",
+        "sources": [
+          "officialFood"
+        ],
+        "limits": [
+          "O’Chalet → Le Grill non démontré par le seul barbecue.",
+          "Image promotionnelle de grillade exclue comme vue propre du restaurant."
+        ]
+      }
+    },
+    {
+      "name": "L’Escale",
+      "itemId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "L’Escale",
+        "itemId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "status": "conditional_food_service",
+        "candidates": [
+          "restauration_l_escalejpg-pmv60aige6007jcov5h3a4dhrwdi7p9f2zokfq7d7k.jpg"
+        ],
+        "rejectedCandidates": [],
+        "reason": "Page officielle rattache la photo culinaire à L’Escale ; image modeste 500×400, ne pas en déduire l’identité du bâtiment."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "La page actuelle nomme L’Escale pour sandwichs, boissons et snacking.",
+          "Annonce de nocturne 2019 énumère L’Escale séparément de Sur le Pouce et O’Chalet."
+        ],
+        "quote": "Sandwichs, boissons, snacking…",
+        "sources": [
+          "officialFood",
+          "historicalMapNames"
+        ],
+        "limits": [
+          "Photo du cuisinier attribuée à L’Escale par la page, mais ne prouve pas l’identité d’un bâtiment.",
+          "Ne pas confondre trois lieux historiquement énumérés ensemble."
+        ]
+      }
+    },
+    {
+      "name": "Pokey Beach",
+      "itemId": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Pokey Beach",
+        "itemId": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+        "status": "conditional_alias_unresolved",
+        "candidates": [
+          "IMG_2620-1024x768.png"
+        ],
+        "rejectedCandidates": [],
+        "reason": "Photo officielle du Pokey Plage 2023 ; lien exact avec le nom Pokey Beach 2026 à confirmer."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Le plan officiel2026 nomme Pokey Beach no.9.",
+          "L’article officiel du20 juillet 2023 décrit Pokey Plage comme un nouvel espace de détente au style bord de mer, avec vue sur le Waterjump et cocktails."
+        ],
+        "quote": "Cet espace au style bord de mer vous donnera une vue imprenable sur l’aventure phare de notre parc : le Water Jump.",
+        "sources": [
+          "officialMap2026",
+          "officialBeach2023"
+        ],
+        "limits": [
+          "La correspondance Beach / Plage reste probable mais non explicitement établie par un renommage.",
+          "La photo nocturne documente Pokey Plage 2023 ; ne pas affirmer son nom 2026 sans rapprochement supplémentaire.",
+          "Illustration de la brochure 2023 exclue comme photo réelle."
+        ]
+      }
+    },
+    {
+      "name": "Caisse d’accueil",
+      "itemId": "00739144-e99b-45a1-8694-3594553ca3a2",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Caisse d’accueil",
+        "itemId": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [],
+        "reason": "Aucune vraie vue officielle nommément attribuée au guichet principal retrouvée. Photo de presse ER/Emma Facchetti trouvée mais hors sélection officielle demandée."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Le plan 2026 nomme Caisse accueil no.0 ; l’ancien plan officiel porte Caisses d’accueil – Point de vente activités.",
+          "Photo de presse publiée le4 août 2021 : enseigne CAISSES visible sur un chalet à guichets, panneaux d’information et files délimitées par potelets et cordes.",
+          "Devant les guichets, portail au décor de rochers et tronc horizontal, surmonté d’un renard orange et blanc aux bras ouverts."
+        ],
+        "sources": [
+          "officialMap2026",
+          "officialOlderMap",
+          "pressCashDesk2021"
+        ],
+        "newPhoto": "press-caisse-2021.jpg",
+        "limits": [
+          "Jour de capture inconnu ; configuration historique publiée 2021, pas état actuel attesté 2026.",
+          "Matériau réel des rochers/tronc décoratifs non déduit.",
+          "Aucune date d’ouverture individuelle établie."
+        ]
+      }
+    },
+    {
+      "name": "Salle de séminaire",
+      "itemId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Salle de séminaire",
+        "itemId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "status": "qualified_limited_resolution",
+        "candidates": [
+          "salle.jpg",
+          "seminaire.jpg",
+          "formation.jpg"
+        ],
+        "rejectedCandidates": [],
+        "reason": "Les trois natifs figurent sur la page officielle Événements et séminaires ; intérieur de verrière et conférence, pas de dates de capture inventées."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Location officielle à la journée ou demi-journée avec café/thé, projection, sonorisation enceinte/micro, mobilier, préparation et nettoyage.",
+          "Bureau des Congrès de l’Eurométropole de Metz : salle sur deux étages accompagnée d’une terrasse couverte.",
+          "Capacités publiées selon configuration :120 plénière,150 repas assis,400 cocktail.",
+          "Photos : espace de conférence à parements/plafond bois, structure sombre, écran et rideaux ; espace vitré avec toiture en panneaux colorés, tables hautes et buffet."
+        ],
+        "quotes": [
+          "Location de salle à la journée ou à la demi-journée",
+          "Le parc vous propose une salle sur deux étages, accompagnée d’une terrasse couverte pour vos événements, d’une capacité jusqu’à 400 personnes en cocktail."
+        ],
+        "sources": [
+          "officialSeminars",
+          "metzConvention",
+          "aleouVenue"
+        ],
+        "newPhotos": [
+          "venue-1.jpg",
+          "venue-2.jpg"
+        ],
+        "limits": [
+          "Ne pas additionner les capacités ni attribuer400personnes à chaque étage.",
+          "Les capacités sont celles de l’offre événementielle observée ; pas une jauge réglementaire certifiée.",
+          "Les deux fichiers1600 × 1067 sont les versions larges de formation.jpg et salle.jpg déjà conservées : pas des expositions supplémentaires.",
+          "Le chemin2026/04 ne donne pas la date de capture ; un écran présente des indicateurs à finmai2019, ce qui ne date pas exactement la prise de vue."
+        ]
+      }
+    },
+    {
+      "name": "Accueil accrobranche",
+      "itemId": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Accueil accrobranche",
+        "itemId": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [],
+        "reason": "Photos de chalets génériques sans enseigne accueil accrobranche non assignées."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Le plan officiel2026 nomme Accueil accrobranche no.10, distinct des caisses principales et des parcours."
+        ],
+        "sources": [
+          "officialMap2026"
+        ],
+        "limits": [
+          "Aucun chalet photographié ne porte une identification suffisamment probante.",
+          "Ne pas inventer consigne, distribution d’équipement, architecture ou mobilier pour cette fiche précise."
+        ]
+      }
+    },
+    {
+      "name": "Parkings",
+      "itemId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Parkings",
+        "itemId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+        "status": "qualified",
+        "candidates": [
+          "45152318-2048x1365.jpg"
+        ],
+        "rejectedCandidates": [],
+        "reason": "Section Parking gratuit et sujet visuel concordants."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Stationnement gratuit affirmé sur le site officiel.",
+          "Services adaptés mentionnant des places réservées aux personnes à mobilité réduite.",
+          "Photo officielle : voitures alignées sur un terrain de stationnement boisé."
+        ],
+        "quote": "Une fois sur place, il est tout aussi facile de vous garer sur nos espaces de stationnement gratuit !",
+        "sources": [
+          "officialServices"
+        ],
+        "limits": [
+          "Pas de capacité/chiffre de places ni type de revêtement généralisé.",
+          "Les variantes1024 et2048 sont une seule exposition."
+        ]
+      }
+    },
+    {
+      "name": "Poste de secours",
+      "itemId": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Poste de secours",
+        "itemId": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [
+          "32110959-1024x683.jpg"
+        ],
+        "reason": "Image officielle placée dans la section, mais vue générale sans dispositif de secours identifiable."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Le site officiel confirme un poste de secours sur place pour la prise en charge des visiteurs et l’évaluation d’une éventuelle évacuation."
+        ],
+        "quote": "Notre équipe sur place s’assurera de votre état et de la nécessité d’une évacuation.",
+        "sources": [
+          "officialServices"
+        ],
+        "limits": [
+          "Ni personnel médical permanent, ni liste d’équipements, ni architecture prouvés.",
+          "La photo placée sous la rubrique montre des chalets et du Segway, pas un poste de secours identifié."
+        ]
+      }
+    },
+    {
+      "name": "Aires de pique-nique",
+      "itemId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Aires de pique-nique",
+        "itemId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+        "status": "qualified",
+        "candidates": [
+          "23578433-2048x1365.jpg"
+        ],
+        "rejectedCandidates": [],
+        "reason": "Section Aire de pique-nique et tables visibles concordantes. Photo historique non datée ; ne pas transposer sa configuration aux règles actuelles."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "La consigne actuelle exclut le pique-nique/repas tiré du sac dans le parc.",
+          "Des espaces dédiés sont explicitement situés sur le parking et à proximité de l’accrobranche.",
+          "Photo officielle ancienne non datée : tables et visiteurs avec filets/terrain de paintball en arrière-plan."
+        ],
+        "quote": "des aires de pique-nique dédiées sont à votre disposition sur le parking et à proximité de l’accrobranche.",
+        "sources": [
+          "officialServices"
+        ],
+        "limits": [
+          "Ne pas inférer un droit de pique-niquer dans tout le parc depuis l’ancienne photo.",
+          "Pas de nombre de tables, couverture ou positionGPS prouvés."
+        ]
+      }
+    },
+    {
+      "name": "Casiers",
+      "itemId": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Casiers",
+        "itemId": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [
+          "JMP_9374-1024x683.jpg"
+        ],
+        "reason": "Image officielle de l’étang sous la section Casiers ; aucun casier visible."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Le site officiel mentionne des casiers sécurisés destinés aux affaires personnelles."
+        ],
+        "quote": "Déposez vos affaires personnelles dans nos casiers sécurisés.",
+        "sources": [
+          "officialServices"
+        ],
+        "limits": [
+          "Aucun prix, format, fermeture, quantité ou bâtiment établis.",
+          "La photographie associée par la page montre un étang, aucun casier : exclue pour cet item."
+        ]
+      }
+    },
+    {
+      "name": "Sanitaires",
+      "itemId": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Sanitaires",
+        "itemId": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [],
+        "reason": "Aucune vue officielle précise retrouvée."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Présence de symbolesWC dans les plans officiels ; la fiche agrège le service sans création de blocs arbitraires."
+        ],
+        "sources": [
+          "officialMap2026",
+          "officialOlderMap"
+        ],
+        "limits": [
+          "Aucune photo nominale propre ni équipement intérieur établi.",
+          "Le document dePLU repéré est bloqué403 ; son extrait de recherche n’est pas traité comme document lu.",
+          "Ne pas reprendre des notes d’usagers sur entretien ou maintenance comme caractéristiques permanentes."
+        ]
+      }
+    },
+    {
+      "name": "La Pêche de Pokey",
+      "itemId": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "La Pêche de Pokey",
+        "itemId": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [],
+        "reason": "Aucune vraie photo officielle nommément attribuée retrouvée."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Nom exact La Pêche de Pokey, no.2 du plan officiel2026."
+        ],
+        "sources": [
+          "officialMap2026"
+        ],
+        "limits": [
+          "Aucune photo nominale et aucun descriptif officiel précis retrouvés.",
+          "Le bulletin municipal deRosières mentionne une pêche aux canards dans une rubrique distincte consacrée à la crèche, pas dans la sortiePokeyland : rapprochement rejeté.",
+          "Ne pas transformer Boutique no.2 de l’ancien plan en alias sur la seule numérotation."
+        ]
+      }
+    },
+    {
+      "name": "Salle d’arcade",
+      "itemId": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Salle d’arcade",
+        "itemId": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+        "status": "not_qualified",
+        "candidates": [],
+        "rejectedCandidates": [],
+        "reason": "Aucune vue officielle précise retrouvée."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Salle arcade no.3 sur le plan officiel2026."
+        ],
+        "sources": [
+          "officialMap2026"
+        ],
+        "limits": [
+          "Aucune liste de bornes, photo nominale, décor, constructeur ou date de présence individualisée.",
+          "Ne pas importer une photo d’une autre salle trouvée par recherche générique."
+        ]
+      }
+    },
+    {
+      "name": "Scène Pokeyshow",
+      "itemId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+      "missingDescriptionAtRead": true,
+      "previousPhotoQualification": {
+        "name": "Scène Pokeyshow",
+        "itemId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "status": "conditional_stage_identity_unresolved",
+        "candidates": [
+          "nocturne-yanns-151-1-683x1024.jpg"
+        ],
+        "rejectedCandidates": [],
+        "reason": "Concert Yanns 2025 confirmé au parc ; article ne nomme pas Scène Pokeyshow. Les images sociales portant le nom ont des incrustations promotionnelles exclues."
+      },
+      "descriptiveEvidence": {
+        "facts": [
+          "Le plan officiel2026 nomme Scène Pokeyshow et imprime16h.",
+          "Une pageofficielle et des photos documentent le concertYanns de 2025 dans le parc ; un prestataireévénementiel mentionne une grande scène sonorisée/éclairée."
+        ],
+        "sources": [
+          "officialMap2026",
+          "officialConcert2025",
+          "aleouVenue"
+        ],
+        "limits": [
+          "Aucune équivalence explicite entre la scène du concertYanns et l’itemPokeyshow.",
+          "Le 16h du plan ne prouve ni fréquence quotidienne ni horaire 2027.",
+          "Le blogErfales décrit un écureuil et des saynètes sans source ; mascotteerronée et détailsnoncorroborés, exclus."
+        ]
+      }
+    }
+  ],
+  "historicalServices": [
+    {
+      "name": "Boutique",
+      "itemId": "58bc03b5-9202-4940-bbdc-c83973300b42",
+      "evidence": "The older official plan names Boutique no. 2; current no. 2 is La Pêche de Pokey.",
+      "limits": [
+        "Reuse of a number does not prove identity",
+        "Indexed old brochure says Boutique Souvenirs; original full 2021 brochure not recovered",
+        "No nominal interior photo or stock list",
+        "A review saying closed does not establish permanent closure or its date"
+      ]
+    },
+    {
+      "name": "O’Chalet / Sur le Pouce / L’Escale / Snack / Pizzeria",
+      "evidenceReport": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/historical-residual-identities-report.json",
+      "finding": "Announcements from 2017, 2018 and 2019 name separate outlets; their coexistence in 2019 precludes an automatic merge. No new alias found in this follow-up.",
+      "limits": [
+        "No duplicate creation",
+        "A barbecue offering does not prove O’Chalet = Le Grill",
+        "A generic SNACK sign is not a named outlet identification",
+        "Event refreshment stands are not automatically permanent items"
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+      "file": "press-caisse-2021.jpg",
+      "accessedAtUtc": "2026-11-15T12:37:38.662519Z",
+      "status": 200,
+      "finalUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 537098,
+      "sha256": "f09d87087ccb3d78ad59a7c36748be48310d7779d56dcdecdff5bf0abea02831",
+      "dimensions": [
+        1600,
+        1067
+      ],
+      "personallyInspected": true,
+      "captureDate": null,
+      "publicationDate": "2021-08-04",
+      "credit": "ER / Emma Facchetti",
+      "watermarkVisible": false,
+      "localCropResizeRetouch": false,
+      "decision": "Qualified historical cash-desk photo; CAISSES sign explicit. No claim of the configuration in 2026.",
+      "openLicenseClaimed": false
+    },
+    {
+      "url": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-5.jpg",
+      "sourcePageKey": "metz-convention-pokeyland",
+      "file": "venue-1.jpg",
+      "accessedAtUtc": "2026-11-15T12:39:37.025098Z",
+      "status": 200,
+      "bytes": 608734,
+      "sha256": "82058f374863491e663a3d8a92e85272be6efbabc5fd1b08eba019730dd3a3f7",
+      "contentType": "image/jpeg",
+      "dimensions": [
+        1600,
+        1067
+      ],
+      "personallyInspected": true,
+      "localCropResizeRetouch": false,
+      "captureDate": null,
+      "photographer": null,
+      "credit": "© Pokeyland, publié par le Bureau des Congrès de Metz",
+      "decision": "Qualified wider source of the same exposure as formation.jpg; do not import as an additional photograph",
+      "observation": "Conference audience in wood-panelled room, black framing, screen, curtains and staircase; May 2019 indicator text visible on the projected slide, but exact capture date unknown."
+    },
+    {
+      "url": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-11.jpg",
+      "sourcePageKey": "metz-convention-pokeyland",
+      "file": "venue-2.jpg",
+      "accessedAtUtc": "2026-11-15T12:39:37.800750Z",
+      "status": 200,
+      "bytes": 643999,
+      "sha256": "d7f5a8f01e3a95ea45763e3002a08c903e0abd632fd3f46875920591fde4773e",
+      "contentType": "image/jpeg",
+      "dimensions": [
+        1600,
+        1067
+      ],
+      "personallyInspected": true,
+      "localCropResizeRetouch": false,
+      "captureDate": null,
+      "photographer": null,
+      "credit": "© Pokeyland, publié par le Bureau des Congrès de Metz",
+      "decision": "Qualified wider source of same exposure as salle.jpg; no duplicate import",
+      "observation": "Room below a blue/pink glazed roof, dark branching structure, high tables, buffet, wood panelling and adjoining terrace."
+    },
+    {
+      "url": "https://assets.aleou.fr/cdn-cgi/image/width=2048,quality=75,format=auto/suppliers/36321/images/cb83750119cf4839bef259f246edfffc.webp",
+      "sourcePageKey": "aleou-pokeyland",
+      "file": "venue-3.webp",
+      "accessedAtUtc": "2026-11-15T12:39:38.376777Z",
+      "status": 200,
+      "bytes": 17943,
+      "sha256": "c5169d21a358507945f2ce7fda14a7720513df2430ba20f712fdadab29180826",
+      "contentType": "image/jpeg",
+      "dimensions": [
+        291,
+        323
+      ],
+      "personallyInspected": true,
+      "localCropResizeRetouch": false,
+      "captureDate": null,
+      "photographer": null,
+      "decision": "Excluded as service photo: old promotional logo, 291 × 323; actual response JPEG despite URL extension.",
+      "observation": "Old Pokeyland logo on a green background."
+    },
+    {
+      "url": "https://assets.aleou.fr/cdn-cgi/image/width=2048,quality=75,format=auto/suppliers/36321/images/2f63ce6a78b54f6091cf7f14ebf27150.webp",
+      "sourcePageKey": "aleou-pokeyland",
+      "file": "venue-4.webp",
+      "accessedAtUtc": "2026-11-15T12:39:38.925721Z",
+      "status": 200,
+      "bytes": 97039,
+      "sha256": "30b5e135d296ec66599f1e22c63f153ce5813e5478be66756b9351ee90915206",
+      "contentType": "image/jpeg",
+      "dimensions": [
+        1000,
+        480
+      ],
+      "personallyInspected": true,
+      "localCropResizeRetouch": false,
+      "captureDate": null,
+      "photographer": null,
+      "decision": "Excluded as service photo: cropped illustrated old plan, no printed year or legend, not a new annual map.",
+      "observation": "Promotional illustration of park layout."
+    },
+    {
+      "url": "https://assets.aleou.fr/cdn-cgi/image/width=2048,quality=75,format=auto/suppliers/36321/images/de173dc9963f4025babe5fdaa9be6efe.webp",
+      "sourcePageKey": "aleou-pokeyland",
+      "file": "venue-5.webp",
+      "accessedAtUtc": "2026-11-15T12:39:39.627479Z",
+      "status": 200,
+      "bytes": 40092,
+      "sha256": "84335de1b9d23528add4ce38eb3300edb0cc2ec8506a38bfdf5e47a2b9a31a54",
+      "contentType": "image/jpeg",
+      "dimensions": [
+        563,
+        384
+      ],
+      "personallyInspected": true,
+      "localCropResizeRetouch": false,
+      "captureDate": null,
+      "photographer": null,
+      "decision": "Excluded as service photo: attraction photo with promotional text overlay, unrelated to services.",
+      "observation": "Parcours sportif labelled promotional card."
+    }
+  ],
+  "usefulNewEvidence": [
+    "Identified historical cash-desk photo published by the press in 2021",
+    "Institutional description of a seminar building on two floors, a covered terrace and capacities by configuration",
+    "Higher-resolution native versions of two existing seminar photographs"
+  ],
+  "rejectedLeads": [
+    {
+      "source": "rosieres-bulletin-49.pdf page 17",
+      "reason": "The Pokeyland outing and the nursery’s duck-fishing activity appear in different sections; the latter cannot be attributed to Pokeyland."
+    },
+    {
+      "source": "metz-meeting-guide.pdf",
+      "reason": "The requested PDF redirected to the Inspire Metz HTML homepage. The file extension does not make it a PDF; not treated as a read guide."
+    },
+    {
+      "source": "fey-plu-20150430.pdf",
+      "reason": "Access blocked with 403; no bypass or repeated attempt. The search snippet is not a fully read source."
+    },
+    {
+      "source": "Erfales generic blog",
+      "reason": "Uncorroborated Pokeyshow details and mascot called a squirrel; not adopted."
+    }
+  ],
+  "limits": [
+    "No new service aliases established.",
+    "No place identity inferred from panoramic photographs.",
+    "No photograph is guaranteed new versus root parallel imports; root must reconcile IDs/receipts.",
+    "Architecture/features supported by dated photos are not asserted as unchanged today.",
+    "Name-only services remain insufficient for a developed description; no generic filler drafted."
+  ],
+  "fileManifest": [
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/aleou-pokeyland-image-links.json",
+      "bytes": 33840,
+      "sha256": "80e429f4c1afc9e50d44b5b4b8268bd6d1a3db2e6b0e488729ecc54fe6445bc2"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/aleou-pokeyland.html",
+      "bytes": 541684,
+      "sha256": "a66d9b8ed2bc9062754ecd65c70a4b19b65f027b823405d7361c53c2a5f775a0"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/aleou-pokeyland.txt",
+      "bytes": 5376,
+      "sha256": "7af4c907174ba4dd8eb06b15f508faff8f97c9cdbd5dacd6b8ab2fd56273aeea"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/build-services-report.py",
+      "bytes": 16946,
+      "sha256": "a9524a8752da6c1c13af8c61b024544d4bcb8d3b7e836cca0b02c43aedfc49df"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/fetch-new-sources.py",
+      "bytes": 1799,
+      "sha256": "5f122105d08905af3b644e1f8408ade560779ad8cd9cb3a14393ffe743fe63b8"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/metz-convention-pokeyland-image-links.json",
+      "bytes": 1819,
+      "sha256": "b5cc7e145cfac75c3e621dbf1a18ad00c337774c543f5846d7c2d62baa45049d"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/metz-convention-pokeyland.html",
+      "bytes": 176941,
+      "sha256": "60574c89a00fb6d2482ee06df3b06b78ea2b3e102ebaed043d09c4120985513d"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/metz-convention-pokeyland.txt",
+      "bytes": 3629,
+      "sha256": "919d1ac56138e6d37fd26c32c384ee6c1853592143ec1f60bc6898d9fdf4290a"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/metz-meeting-guide.pdf",
+      "bytes": 249293,
+      "sha256": "7a9852db30dcf42afa7873a6d7a545b8e55efbf884883179ba7a0b44bb93fa95"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/planning-source-access.json",
+      "bytes": 284,
+      "sha256": "e98a22f05dbbe9fc47cd2cc76439a97740872644ac02e81c0105f08cc93ead06"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/press-caisse-2021.html",
+      "bytes": 598732,
+      "sha256": "2b1cc321a353109e127814205b85bcc987c84e34545aaa316de7af31a9e73c23"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/press-caisse-2021.jpg",
+      "bytes": 537098,
+      "sha256": "f09d87087ccb3d78ad59a7c36748be48310d7779d56dcdecdff5bf0abea02831"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/press-caisse-2021.txt",
+      "bytes": 13698,
+      "sha256": "e89f0d7e886b85e3742687020a5ca838fd1f44be5ed7417d99914c5778c2a2f0"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/public-search-1.json",
+      "bytes": 13881,
+      "sha256": "1d7189db1f04bd624c11d2a72da4d6da1bbb6b22b9759372a12b855263d85bdf"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/public-search-2.json",
+      "bytes": 11826,
+      "sha256": "0ca78e27bf696609443ec78a0a93f8d4e30bd492df66158f5c30e31b87d43257"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/public-search-3.json",
+      "bytes": 15469,
+      "sha256": "9cd98cba36b16ae92bed6d35074cd11c44c81379d060d11865707d72895e3adf"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/public-search-4.json",
+      "bytes": 16576,
+      "sha256": "23416a4129875ad638b34018dd87355c894fc2253eabe693f3bf04618316756c"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/rosieres-bulletin-49.pdf",
+      "bytes": 14336996,
+      "sha256": "c092a45f126ec5969bc555958e3d5c9855bf32df245fde8154b98e9c820e476b"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/rosieres-bulletin-49.txt",
+      "bytes": 81662,
+      "sha256": "89eb92e3fe6aa4203892665fce64e697e335c7af7d7a605252d21ac730a8dd79"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/seminars-clean-extract.txt",
+      "bytes": 3853,
+      "sha256": "86c6a3a37fe102145d52e6b7b56e9c20e4f4ce762dc99009630c2a67cbed62a2"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/source-access.json",
+      "bytes": 2181,
+      "sha256": "c01bd50eb3b7a4557024f653fa7d04fb6758fd7e6ef16f2ac14e0502a3e1b19c"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/venue-1.jpg",
+      "bytes": 608734,
+      "sha256": "82058f374863491e663a3d8a92e85272be6efbabc5fd1b08eba019730dd3a3f7"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/venue-2.jpg",
+      "bytes": 643999,
+      "sha256": "d7f5a8f01e3a95ea45763e3002a08c903e0abd632fd3f46875920591fde4773e"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/venue-3.webp",
+      "bytes": 17943,
+      "sha256": "c5169d21a358507945f2ce7fda14a7720513df2430ba20f712fdadab29180826"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/venue-4.webp",
+      "bytes": 97039,
+      "sha256": "30b5e135d296ec66599f1e22c63f153ce5813e5478be66756b9351ee90915206"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/venue-5.webp",
+      "bytes": 40092,
+      "sha256": "84335de1b9d23528add4ce38eb3300edb0cc2ec8506a38bfdf5e47a2b9a31a54"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/venue-photo-access.json",
+      "bytes": 2288,
+      "sha256": "72293eb52bf53eafdf5a48024f07bf2f5e374be1ff5444a72d284961b7b0f596"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/venue-source-access.json",
+      "bytes": 811,
+      "sha256": "b37089e3d9c4c9d43089d6fe22793acbc2aa27bc9dc26e69d78d7d0d28f9779e"
+    }
+  ]
+}

@@ -1,0 +1,2129 @@
+{
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "countryCode": "FR"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "pokeyland-history-construction-2013",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2013,
+            "month": 5,
+            "day": null,
+            "datePrecision": "Month",
+            "eventType": "ConstructionStart",
+            "isMajor": false,
+            "isVisible": false,
+            "mainImageId": null,
+            "sources": [
+              {
+                "label": "Tout-Metz — ouverture du 20 juin 2015 et chantier depuis mai 2013",
+                "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Le chantier commence dans la forêt de Féy"
+              },
+              {
+                "languageCode": "en",
+                "value": "Work begins in Féy’s forest"
+              },
+              {
+                "languageCode": "de",
+                "value": "Die Arbeiten im Wald von Féy beginnen"
+              },
+              {
+                "languageCode": "es",
+                "value": "Comienzan las obras en el bosque de Féy"
+              },
+              {
+                "languageCode": "it",
+                "value": "Iniziano i lavori nel bosco di Féy"
+              },
+              {
+                "languageCode": "nl",
+                "value": "De werkzaamheden in het bos van Féy beginnen"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Początek prac w lesie w Féy"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Começam as obras no bosque de Féy"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "L’équipe du futur Pokeyland commence à aménager le site en mai 2013. Elle réalise les installations et les décors des terrains de paintball au milieu des arbres, préparant le parc de plein air qui accueillera ses premiers visiteurs deux ans plus tard."
+              },
+              {
+                "languageCode": "en",
+                "value": "The future Pokeyland team begins developing the site in May 2013. It builds the facilities and paintball scenery among the trees, preparing the outdoor park that will welcome its first visitors two years later."
+              },
+              {
+                "languageCode": "de",
+                "value": "Im Mai 2013 beginnt das künftige Pokeyland-Team mit der Gestaltung des Geländes. Zwischen den Bäumen entstehen Anlagen und Paintballkulissen für den Freizeitpark, der zwei Jahre später seine ersten Besucher empfängt."
+              },
+              {
+                "languageCode": "es",
+                "value": "El equipo del futuro Pokeyland empieza a acondicionar el lugar en mayo de 2013. Construye las instalaciones y los decorados de paintball entre los árboles, preparando el parque al aire libre que recibirá a sus primeros visitantes dos años después."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il gruppo del futuro Pokeyland inizia ad allestire il sito nel maggio 2013. Realizza le strutture e le scenografie dei campi da paintball tra gli alberi, preparando il parco all’aperto che accoglierà i primi visitatori due anni dopo."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het toekomstige Pokeyland-team begint in mei 2013 met de aanleg van het terrein. Tussen de bomen bouwt het de voorzieningen en paintballdecors voor het buitenpark dat twee jaar later zijn eerste bezoekers verwelkomt."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Zespół przyszłego Pokeyland rozpoczyna zagospodarowanie terenu w maju 2013 roku. Wśród drzew powstają obiekty i dekoracje pól paintballowych, przygotowujące park na przyjęcie pierwszych gości dwa lata później."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A equipa do futuro Pokeyland começa a preparar o local em maio de 2013. Constrói as instalações e os cenários dos campos de paintball entre as árvores, preparando o parque ao ar livre que receberá os primeiros visitantes dois anos depois."
+              }
+            ]
+          },
+          {
+            "key": "pokeyland-history-opening-2015",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2015,
+            "month": 6,
+            "day": 20,
+            "datePrecision": "Day",
+            "eventType": "Opening",
+            "isMajor": true,
+            "isVisible": false,
+            "mainImageId": "a30bcfef2e414aca8898b45ee212d46e",
+            "sources": [
+              {
+                "label": "Tout-Metz — ouverture du 20 juin 2015 et chantier depuis mai 2013",
+                "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Pokeyland ouvre au public à Féy"
+              },
+              {
+                "languageCode": "en",
+                "value": "Pokeyland opens to visitors in Féy"
+              },
+              {
+                "languageCode": "de",
+                "value": "Pokeyland eröffnet in Féy"
+              },
+              {
+                "languageCode": "es",
+                "value": "Pokeyland abre al público en Féy"
+              },
+              {
+                "languageCode": "it",
+                "value": "Pokeyland apre al pubblico a Féy"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Pokeyland opent voor bezoekers in Féy"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Pokeyland otwiera się dla gości w Féy"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Pokeyland abre ao público em Féy"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le 20 juin 2015, Pokeyland ouvre près de Metz avec ses loisirs de plein air et ses terrains de paintball scénarisés. L’entrée est alors gratuite, tandis qu’un bracelet à crédits permet de payer les activités choisies au fil de la visite."
+              },
+              {
+                "languageCode": "en",
+                "value": "On 20 June 2015, Pokeyland opens near Metz with outdoor activities and themed paintball fields. Admission is initially free, while a prepaid-credit wristband pays for the activities visitors choose during their stay."
+              },
+              {
+                "languageCode": "de",
+                "value": "Am 20. Juni 2015 eröffnet Pokeyland bei Metz mit Freiluftaktivitäten und thematisch gestalteten Paintballfeldern. Der Eintritt ist zunächst kostenlos; die während des Besuchs gewählten Aktivitäten werden über ein mit Guthaben aufgeladenes Armband bezahlt."
+              },
+              {
+                "languageCode": "es",
+                "value": "El 20 de junio de 2015, Pokeyland abre cerca de Metz con actividades al aire libre y campos de paintball tematizados. La entrada es entonces gratuita, mientras una pulsera con créditos permite pagar las actividades elegidas durante la visita."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il 20 giugno 2015 Pokeyland apre vicino a Metz con attività all’aperto e campi da paintball scenografici. L’ingresso è inizialmente gratuito, mentre un braccialetto precaricato consente di pagare le attività scelte durante la visita."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Op 20 juni 2015 opent Pokeyland bij Metz met buitenactiviteiten en thematische paintballvelden. De toegang is aanvankelijk gratis; bezoekers betalen hun gekozen activiteiten met een polsbandje waarop vooraf tegoed is geladen."
+              },
+              {
+                "languageCode": "pl",
+                "value": "20 czerwca 2015 roku Pokeyland otwiera się pod Metz z atrakcjami plenerowymi i tematycznymi polami paintballowymi. Wstęp jest początkowo bezpłatny, a wybrane podczas wizyty aktywności opłaca się za pomocą wcześniej doładowanej opaski."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A 20 de junho de 2015, Pokeyland abre perto de Metz com atividades ao ar livre e campos de paintball tematizados. A entrada é inicialmente gratuita, enquanto uma pulseira pré-carregada permite pagar as atividades escolhidas durante a visita."
+              }
+            ]
+          },
+          {
+            "key": "pokeyland-history-sale-2023",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2023,
+            "month": 11,
+            "day": 29,
+            "datePrecision": "Day",
+            "eventType": "Sale",
+            "isMajor": true,
+            "isVisible": false,
+            "mainImageId": "452fd5f698e549c3922711177b0984e9",
+            "sources": [
+              {
+                "label": "BODACC A 20240088, annonce 918 — cession par acte du 29 novembre 2023",
+                "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Cession du fonds à BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "en",
+                "value": "The business is sold to BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "de",
+                "value": "Verkauf des Geschäftsbetriebs an BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "es",
+                "value": "Venta del negocio a BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "it",
+                "value": "Cessione dell’attività a BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Verkoop van de onderneming aan BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Sprzedaż działalności BERNARD-AMUSEMENT"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Venda da atividade à BERNARD-AMUSEMENT"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Un acte du 29 novembre 2023 organise la cession du fonds de commerce de POKEYLAND à BERNARD-AMUSEMENT pour 2,5 millions d’euros. Cette société établie en Belgique reprend l’activité de Féy."
+              },
+              {
+                "languageCode": "en",
+                "value": "A deed dated 29 November 2023 records the sale of POKEYLAND’s operating business to BERNARD-AMUSEMENT for €2.5 million. The Belgium-based company takes over the Féy business."
+              },
+              {
+                "languageCode": "de",
+                "value": "Ein Vertrag vom 29. November 2023 regelt den Verkauf des Geschäftsbetriebs von POKEYLAND an BERNARD-AMUSEMENT für 2,5 Millionen Euro. Die in Belgien ansässige Gesellschaft übernimmt das Geschäft in Féy."
+              },
+              {
+                "languageCode": "es",
+                "value": "Un contrato del 29 de noviembre de 2023 establece la venta del negocio de POKEYLAND a BERNARD-AMUSEMENT por 2,5 millones de euros. La sociedad con sede en Bélgica adquiere la actividad de Féy."
+              },
+              {
+                "languageCode": "it",
+                "value": "Un atto del 29 novembre 2023 stabilisce la cessione dell’attività di POKEYLAND a BERNARD-AMUSEMENT per 2,5 milioni di euro. La società con sede in Belgio rileva l’attività di Féy."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een akte van 29 november 2023 legt de verkoop van de bedrijfsactiviteiten van POKEYLAND aan BERNARD-AMUSEMENT vast voor 2,5 miljoen euro. De in België gevestigde onderneming neemt de activiteiten in Féy over."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Akt z 29 listopada 2023 roku reguluje sprzedaż działalności POKEYLAND spółce BERNARD-AMUSEMENT za 2,5 miliona euro. Firma z siedzibą w Belgii przejmuje działalność w Féy."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Um ato de 29 de novembro de 2023 estabelece a venda da atividade de POKEYLAND à BERNARD-AMUSEMENT por 2,5 milhões de euros. A sociedade sediada na Bélgica assume a atividade de Féy."
+              }
+            ],
+            "newOwnerName": "BERNARD-AMUSEMENT",
+            "previousOwnerName": "POKEYLAND"
+          },
+          {
+            "key": "pokeyland-history-reorganisation-2026",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2026,
+            "month": 10,
+            "day": 1,
+            "datePrecision": "Day",
+            "eventType": "Bankruptcy",
+            "isMajor": true,
+            "isVisible": false,
+            "mainImageId": "a30bcfef2e414aca8898b45ee212d46e",
+            "sources": [
+              {
+                "label": "BODACC A 20260196, annonce 6026 — jugement du 1er octobre 2026",
+                "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Moselle TV, 2 octobre 2026 — redressement et objectif de saison 2027",
+                "url": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "L’exploitant entre en redressement judiciaire"
+              },
+              {
+                "languageCode": "en",
+                "value": "The operator enters judicial reorganisation"
+              },
+              {
+                "languageCode": "de",
+                "value": "Gerichtliche Sanierung des Betreibers"
+              },
+              {
+                "languageCode": "es",
+                "value": "El operador entra en reorganización judicial"
+              },
+              {
+                "languageCode": "it",
+                "value": "L’operatore entra in ristrutturazione giudiziaria"
+              },
+              {
+                "languageCode": "nl",
+                "value": "De exploitant gaat een gerechtelijke herstructurering in"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Operator rozpoczyna sądową restrukturyzację"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O operador entra em recuperação judicial"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le jugement du 1er octobre 2026 ouvre une procédure de redressement pour BERNARD-AMUSEMENT, exploitant de Pokeyland. La direction présente cette démarche comme un moyen de poursuivre l’activité et de préparer la saison 2027, dont la réouverture reste alors un objectif."
+              },
+              {
+                "languageCode": "en",
+                "value": "A judgment of 1 October 2026 opens judicial reorganisation proceedings for BERNARD-AMUSEMENT, Pokeyland’s operator. Management presents the procedure as a means of continuing the business and preparing the 2027 season, with reopening still an objective at that point."
+              },
+              {
+                "languageCode": "de",
+                "value": "Ein Urteil vom 1. Oktober 2026 eröffnet ein gerichtliches Sanierungsverfahren für BERNARD-AMUSEMENT, den Betreiber von Pokeyland. Die Leitung will damit die Fortführung des Betriebs und die Saison 2027 vorbereiten; die Wiedereröffnung bleibt zu diesem Zeitpunkt ein Ziel."
+              },
+              {
+                "languageCode": "es",
+                "value": "La resolución del 1 de octubre de 2026 abre un procedimiento de reorganización judicial para BERNARD-AMUSEMENT, operador de Pokeyland. La dirección lo presenta como un medio para continuar la actividad y preparar la temporada 2027, cuya reapertura sigue siendo entonces un objetivo."
+              },
+              {
+                "languageCode": "it",
+                "value": "La decisione del 1º ottobre 2026 apre una procedura di ristrutturazione giudiziaria per BERNARD-AMUSEMENT, operatore di Pokeyland. La direzione la presenta come un mezzo per proseguire l’attività e preparare la stagione 2027, la cui riapertura resta allora un obiettivo."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een uitspraak van 1 oktober 2026 opent een gerechtelijke herstructureringsprocedure voor BERNARD-AMUSEMENT, de exploitant van Pokeyland. De leiding wil daarmee de activiteiten voortzetten en het seizoen 2027 voorbereiden; heropening is op dat moment nog een doelstelling."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Orzeczenie z 1 października 2026 roku otwiera sądowe postępowanie restrukturyzacyjne wobec BERNARD-AMUSEMENT, operatora Pokeyland. Kierownictwo przedstawia je jako sposób na kontynuowanie działalności i przygotowanie sezonu 2027, którego otwarcie pozostaje wówczas celem."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A decisão de 1 de outubro de 2026 abre um processo de recuperação judicial da BERNARD-AMUSEMENT, operadora de Pokeyland. A direção apresenta-o como um meio de prosseguir a atividade e preparar a temporada 2027, cuja reabertura continua então a ser um objetivo."
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "source": "Conversation France — quatre jalons privés sourcés, corpus huit langues personnellement relu. Redressement judiciaire distinct d’une liquidation ou fermeture ; cession juridique 2023 distincte de la direction 2024. Photos de 2016 contextuelles, aucune photo de signature ou procédure prétendue."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "bd2c1967-1c11-4960-b7cb-d14bd42c3525",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:37:55.9963151Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "2b4004e1-9ec7-42dd-886e-1a987a31ae90",
+        "entityKey": "pokeyland-history-construction-2013",
+        "displayName": "Le chantier commence dans la forêt de Féy",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-history-construction-2013"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2013"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "ConstructionStart"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die Arbeiten im Wald von Féy beginnen, en:Work begins in Féy’s forest, es:Comienzan las obras en el bosque de Féy, fr:Le chantier commence dans la forêt de Féy, it:Iniziano i lavori nel bosco di Féy, nl:De werkzaamheden in het bos van Féy beginnen, pl:Początek prac w lesie w Féy, pt:Começam as obras no bosque de Féy"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im Mai 2013 beginnt das künftige Pokeyland-Team mit der Gestaltung des Geländes. Zwischen den Bäumen entstehen Anlagen und Paintballkulissen für den Freizeitpark, der zwei Jahre später seine ersten Besucher empfängt., en:The future Pokeyland team begins developing the site in May 2013. It builds the facilities and paintball scenery among the trees, preparing the outdoor park that will welcome its first visitors two years later., es:El equipo del futuro Pokeyland empieza a acondicionar el lugar en mayo de 2013. Construye las instalaciones y los decorados de paintball entre los árboles, preparando el parque al aire libre que recibirá a sus primeros visitantes dos años después., fr:L’équipe du futur Pokeyland commence à aménager le site en mai 2013. Elle réalise les installations et les décors des terrains de paintball au milieu des arbres, préparant le parc de plein air qui accueillera ses premiers visiteurs deux ans plus tard., it:Il gruppo del futuro Pokeyland inizia ad allestire il sito nel maggio 2013. Realizza le strutture e le scenografie dei campi da paintball tra gli alberi, preparando il parco all’aperto che accoglierà i primi visitatori due anni dopo., nl:Het toekomstige Pokeyland-team begint in mei 2013 met de aanleg van het terrein. Tussen de bomen bouwt het de voorzieningen en paintballdecors voor het buitenpark dat twee jaar later zijn eerste bezoekers verwelkomt., pl:Zespół przyszłego Pokeyland rozpoczyna zagospodarowanie terenu w maju 2013 roku. Wśród drzew powstają obiekty i dekoracje pól paintballowych, przygotowujące park na przyjęcie pierwszych gości dwa lata później., pt:A equipa do futuro Pokeyland começa a preparar o local em maio de 2013. Constrói as instalações e os cenários dos campos de paintball entre as árvores, preparando o parque ao ar livre que receberá os primeiros visitantes dois anos depois."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Tout-Metz \\u2014 ouverture du 20 juin 2015 et chantier depuis mai 2013\",\"Url\":\"https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "23259e17-125d-4b5f-a1ba-ae62eae21c76",
+        "entityKey": "pokeyland-history-opening-2015",
+        "displayName": "Pokeyland ouvre au public à Féy",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-history-opening-2015"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2015"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "20"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "a30bcfef2e414aca8898b45ee212d46e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Pokeyland eröffnet in Féy, en:Pokeyland opens to visitors in Féy, es:Pokeyland abre al público en Féy, fr:Pokeyland ouvre au public à Féy, it:Pokeyland apre al pubblico a Féy, nl:Pokeyland opent voor bezoekers in Féy, pl:Pokeyland otwiera się dla gości w Féy, pt:Pokeyland abre ao público em Féy"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 20. Juni 2015 eröffnet Pokeyland bei Metz mit Freiluftaktivitäten und thematisch gestalteten Paintballfeldern. Der Eintritt ist zunächst kostenlos; die während des Besuchs gewählten Aktivitäten werden über ein mit Guthaben aufgeladenes Armband bezahlt., en:On 20 June 2015, Pokeyland opens near Metz with outdoor activities and themed paintball fields. Admission is initially free, while a prepaid-credit wristband pays for the activities visitors choose during their stay., es:El 20 de junio de 2015, Pokeyland abre cerca de Metz con actividades al aire libre y campos de paintball tematizados. La entrada es entonces gratuita, mientras una pulsera con créditos permite pagar las actividades elegidas durante la visita., fr:Le 20 juin 2015, Pokeyland ouvre près de Metz avec ses loisirs de plein air et ses terrains de paintball scénarisés. L’entrée est alors gratuite, tandis qu’un bracelet à crédits permet de payer les activités choisies au fil de la visite., it:Il 20 giugno 2015 Pokeyland apre vicino a Metz con attività all’aperto e campi da paintball scenografici. L’ingresso è inizialmente gratuito, mentre un braccialetto precaricato consente di pagare le attività scelte durante la visita., nl:Op 20 juni 2015 opent Pokeyland bij Metz met buitenactiviteiten en thematische paintballvelden. De toegang is aanvankelijk gratis; bezoekers betalen hun gekozen activiteiten met een polsbandje waarop vooraf tegoed is geladen., pl:20 czerwca 2015 roku Pokeyland otwiera się pod Metz z atrakcjami plenerowymi i tematycznymi polami paintballowymi. Wstęp jest początkowo bezpłatny, a wybrane podczas wizyty aktywności opłaca się za pomocą wcześniej doładowanej opaski., pt:A 20 de junho de 2015, Pokeyland abre perto de Metz com atividades ao ar livre e campos de paintball tematizados. A entrada é inicialmente gratuita, enquanto uma pulseira pré-carregada permite pagar as atividades escolhidas durante a visita."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Tout-Metz \\u2014 ouverture du 20 juin 2015 et chantier depuis mai 2013\",\"Url\":\"https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "bec5d80d-7e92-4ed7-b851-f5cf984c4f4b",
+        "entityKey": "pokeyland-history-sale-2023",
+        "displayName": "Cession du fonds à BERNARD-AMUSEMENT",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-history-sale-2023"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2023"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "11"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "29"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Sale"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "452fd5f698e549c3922711177b0984e9"
+          },
+          {
+            "field": "previousOwnerName",
+            "oldValue": null,
+            "newValue": "POKEYLAND"
+          },
+          {
+            "field": "newOwnerName",
+            "oldValue": null,
+            "newValue": "BERNARD-AMUSEMENT"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Verkauf des Geschäftsbetriebs an BERNARD-AMUSEMENT, en:The business is sold to BERNARD-AMUSEMENT, es:Venta del negocio a BERNARD-AMUSEMENT, fr:Cession du fonds à BERNARD-AMUSEMENT, it:Cessione dell’attività a BERNARD-AMUSEMENT, nl:Verkoop van de onderneming aan BERNARD-AMUSEMENT, pl:Sprzedaż działalności BERNARD-AMUSEMENT, pt:Venda da atividade à BERNARD-AMUSEMENT"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Ein Vertrag vom 29. November 2023 regelt den Verkauf des Geschäftsbetriebs von POKEYLAND an BERNARD-AMUSEMENT für 2,5 Millionen Euro. Die in Belgien ansässige Gesellschaft übernimmt das Geschäft in Féy., en:A deed dated 29 November 2023 records the sale of POKEYLAND’s operating business to BERNARD-AMUSEMENT for €2.5 million. The Belgium-based company takes over the Féy business., es:Un contrato del 29 de noviembre de 2023 establece la venta del negocio de POKEYLAND a BERNARD-AMUSEMENT por 2,5 millones de euros. La sociedad con sede en Bélgica adquiere la actividad de Féy., fr:Un acte du 29 novembre 2023 organise la cession du fonds de commerce de POKEYLAND à BERNARD-AMUSEMENT pour 2,5 millions d’euros. Cette société établie en Belgique reprend l’activité de Féy., it:Un atto del 29 novembre 2023 stabilisce la cessione dell’attività di POKEYLAND a BERNARD-AMUSEMENT per 2,5 milioni di euro. La società con sede in Belgio rileva l’attività di Féy., nl:Een akte van 29 november 2023 legt de verkoop van de bedrijfsactiviteiten van POKEYLAND aan BERNARD-AMUSEMENT vast voor 2,5 miljoen euro. De in België gevestigde onderneming neemt de activiteiten in Féy over., pl:Akt z 29 listopada 2023 roku reguluje sprzedaż działalności POKEYLAND spółce BERNARD-AMUSEMENT za 2,5 miliona euro. Firma z siedzibą w Belgii przejmuje działalność w Féy., pt:Um ato de 29 de novembro de 2023 estabelece a venda da atividade de POKEYLAND à BERNARD-AMUSEMENT por 2,5 milhões de euros. A sociedade sediada na Bélgica assume a atividade de Féy."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"BODACC A 20240088, annonce 918 \\u2014 cession par acte du 29 novembre 2023\",\"Url\":\"https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "e8a866e8-9de5-42cb-a496-1fb454953b2b",
+        "entityKey": "pokeyland-history-reorganisation-2026",
+        "displayName": "L’exploitant entre en redressement judiciaire",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-history-reorganisation-2026"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "10"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "1"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Bankruptcy"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "a30bcfef2e414aca8898b45ee212d46e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Gerichtliche Sanierung des Betreibers, en:The operator enters judicial reorganisation, es:El operador entra en reorganización judicial, fr:L’exploitant entre en redressement judiciaire, it:L’operatore entra in ristrutturazione giudiziaria, nl:De exploitant gaat een gerechtelijke herstructurering in, pl:Operator rozpoczyna sądową restrukturyzację, pt:O operador entra em recuperação judicial"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Ein Urteil vom 1. Oktober 2026 eröffnet ein gerichtliches Sanierungsverfahren für BERNARD-AMUSEMENT, den Betreiber von Pokeyland. Die Leitung will damit die Fortführung des Betriebs und die Saison 2027 vorbereiten; die Wiedereröffnung bleibt zu diesem Zeitpunkt ein Ziel., en:A judgment of 1 October 2026 opens judicial reorganisation proceedings for BERNARD-AMUSEMENT, Pokeyland’s operator. Management presents the procedure as a means of continuing the business and preparing the 2027 season, with reopening still an objective at that point., es:La resolución del 1 de octubre de 2026 abre un procedimiento de reorganización judicial para BERNARD-AMUSEMENT, operador de Pokeyland. La dirección lo presenta como un medio para continuar la actividad y preparar la temporada 2027, cuya reapertura sigue siendo entonces un objetivo., fr:Le jugement du 1er octobre 2026 ouvre une procédure de redressement pour BERNARD-AMUSEMENT, exploitant de Pokeyland. La direction présente cette démarche comme un moyen de poursuivre l’activité et de préparer la saison 2027, dont la réouverture reste alors un objectif., it:La decisione del 1º ottobre 2026 apre una procedura di ristrutturazione giudiziaria per BERNARD-AMUSEMENT, operatore di Pokeyland. La direzione la presenta come un mezzo per proseguire l’attività e preparare la stagione 2027, la cui riapertura resta allora un obiettivo., nl:Een uitspraak van 1 oktober 2026 opent een gerechtelijke herstructureringsprocedure voor BERNARD-AMUSEMENT, de exploitant van Pokeyland. De leiding wil daarmee de activiteiten voortzetten en het seizoen 2027 voorbereiden; heropening is op dat moment nog een doelstelling., pl:Orzeczenie z 1 października 2026 roku otwiera sądowe postępowanie restrukturyzacyjne wobec BERNARD-AMUSEMENT, operatora Pokeyland. Kierownictwo przedstawia je jako sposób na kontynuowanie działalności i przygotowanie sezonu 2027, którego otwarcie pozostaje wówczas celem., pt:A decisão de 1 de outubro de 2026 abre um processo de recuperação judicial da BERNARD-AMUSEMENT, operadora de Pokeyland. A direção apresenta-o como um meio de prosseguir a atividade e preparar a temporada 2027, cuja reabertura continua então a ser um objetivo."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Moselle TV, 2 octobre 2026 \\u2014 redressement et objectif de saison 2027\",\"Url\":\"https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"BODACC A 20260196, annonce 6026 \\u2014 jugement du 1er octobre 2026\",\"Url\":\"https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "4becfae0-d0ff-45d6-8ce5-9c1d4349aee2",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:38:34.8607028Z",
+    "appliedAtUtc": "2026-11-15T12:38:34.8607039Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "401b9c6e-09de-47a7-88dc-93642d649e07",
+        "entityKey": "pokeyland-history-construction-2013",
+        "displayName": "Le chantier commence dans la forêt de Féy",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-history-construction-2013"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2013"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "ConstructionStart"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die Arbeiten im Wald von Féy beginnen, en:Work begins in Féy’s forest, es:Comienzan las obras en el bosque de Féy, fr:Le chantier commence dans la forêt de Féy, it:Iniziano i lavori nel bosco di Féy, nl:De werkzaamheden in het bos van Féy beginnen, pl:Początek prac w lesie w Féy, pt:Começam as obras no bosque de Féy"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im Mai 2013 beginnt das künftige Pokeyland-Team mit der Gestaltung des Geländes. Zwischen den Bäumen entstehen Anlagen und Paintballkulissen für den Freizeitpark, der zwei Jahre später seine ersten Besucher empfängt., en:The future Pokeyland team begins developing the site in May 2013. It builds the facilities and paintball scenery among the trees, preparing the outdoor park that will welcome its first visitors two years later., es:El equipo del futuro Pokeyland empieza a acondicionar el lugar en mayo de 2013. Construye las instalaciones y los decorados de paintball entre los árboles, preparando el parque al aire libre que recibirá a sus primeros visitantes dos años después., fr:L’équipe du futur Pokeyland commence à aménager le site en mai 2013. Elle réalise les installations et les décors des terrains de paintball au milieu des arbres, préparant le parc de plein air qui accueillera ses premiers visiteurs deux ans plus tard., it:Il gruppo del futuro Pokeyland inizia ad allestire il sito nel maggio 2013. Realizza le strutture e le scenografie dei campi da paintball tra gli alberi, preparando il parco all’aperto che accoglierà i primi visitatori due anni dopo., nl:Het toekomstige Pokeyland-team begint in mei 2013 met de aanleg van het terrein. Tussen de bomen bouwt het de voorzieningen en paintballdecors voor het buitenpark dat twee jaar later zijn eerste bezoekers verwelkomt., pl:Zespół przyszłego Pokeyland rozpoczyna zagospodarowanie terenu w maju 2013 roku. Wśród drzew powstają obiekty i dekoracje pól paintballowych, przygotowujące park na przyjęcie pierwszych gości dwa lata później., pt:A equipa do futuro Pokeyland começa a preparar o local em maio de 2013. Constrói as instalações e os cenários dos campos de paintball entre as árvores, preparando o parque ao ar livre que receberá os primeiros visitantes dois anos depois."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Tout-Metz \\u2014 ouverture du 20 juin 2015 et chantier depuis mai 2013\",\"Url\":\"https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8de9d388-66de-402a-8edf-62389727a14b",
+        "entityKey": "pokeyland-history-opening-2015",
+        "displayName": "Pokeyland ouvre au public à Féy",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-history-opening-2015"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2015"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "20"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "a30bcfef2e414aca8898b45ee212d46e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Pokeyland eröffnet in Féy, en:Pokeyland opens to visitors in Féy, es:Pokeyland abre al público en Féy, fr:Pokeyland ouvre au public à Féy, it:Pokeyland apre al pubblico a Féy, nl:Pokeyland opent voor bezoekers in Féy, pl:Pokeyland otwiera się dla gości w Féy, pt:Pokeyland abre ao público em Féy"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 20. Juni 2015 eröffnet Pokeyland bei Metz mit Freiluftaktivitäten und thematisch gestalteten Paintballfeldern. Der Eintritt ist zunächst kostenlos; die während des Besuchs gewählten Aktivitäten werden über ein mit Guthaben aufgeladenes Armband bezahlt., en:On 20 June 2015, Pokeyland opens near Metz with outdoor activities and themed paintball fields. Admission is initially free, while a prepaid-credit wristband pays for the activities visitors choose during their stay., es:El 20 de junio de 2015, Pokeyland abre cerca de Metz con actividades al aire libre y campos de paintball tematizados. La entrada es entonces gratuita, mientras una pulsera con créditos permite pagar las actividades elegidas durante la visita., fr:Le 20 juin 2015, Pokeyland ouvre près de Metz avec ses loisirs de plein air et ses terrains de paintball scénarisés. L’entrée est alors gratuite, tandis qu’un bracelet à crédits permet de payer les activités choisies au fil de la visite., it:Il 20 giugno 2015 Pokeyland apre vicino a Metz con attività all’aperto e campi da paintball scenografici. L’ingresso è inizialmente gratuito, mentre un braccialetto precaricato consente di pagare le attività scelte durante la visita., nl:Op 20 juni 2015 opent Pokeyland bij Metz met buitenactiviteiten en thematische paintballvelden. De toegang is aanvankelijk gratis; bezoekers betalen hun gekozen activiteiten met een polsbandje waarop vooraf tegoed is geladen., pl:20 czerwca 2015 roku Pokeyland otwiera się pod Metz z atrakcjami plenerowymi i tematycznymi polami paintballowymi. Wstęp jest początkowo bezpłatny, a wybrane podczas wizyty aktywności opłaca się za pomocą wcześniej doładowanej opaski., pt:A 20 de junho de 2015, Pokeyland abre perto de Metz com atividades ao ar livre e campos de paintball tematizados. A entrada é inicialmente gratuita, enquanto uma pulseira pré-carregada permite pagar as atividades escolhidas durante a visita."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Tout-Metz \\u2014 ouverture du 20 juin 2015 et chantier depuis mai 2013\",\"Url\":\"https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f28f4138-dbbc-43ec-b4e9-8d33437e3277",
+        "entityKey": "pokeyland-history-sale-2023",
+        "displayName": "Cession du fonds à BERNARD-AMUSEMENT",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-history-sale-2023"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2023"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "11"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "29"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Sale"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "452fd5f698e549c3922711177b0984e9"
+          },
+          {
+            "field": "previousOwnerName",
+            "oldValue": null,
+            "newValue": "POKEYLAND"
+          },
+          {
+            "field": "newOwnerName",
+            "oldValue": null,
+            "newValue": "BERNARD-AMUSEMENT"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Verkauf des Geschäftsbetriebs an BERNARD-AMUSEMENT, en:The business is sold to BERNARD-AMUSEMENT, es:Venta del negocio a BERNARD-AMUSEMENT, fr:Cession du fonds à BERNARD-AMUSEMENT, it:Cessione dell’attività a BERNARD-AMUSEMENT, nl:Verkoop van de onderneming aan BERNARD-AMUSEMENT, pl:Sprzedaż działalności BERNARD-AMUSEMENT, pt:Venda da atividade à BERNARD-AMUSEMENT"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Ein Vertrag vom 29. November 2023 regelt den Verkauf des Geschäftsbetriebs von POKEYLAND an BERNARD-AMUSEMENT für 2,5 Millionen Euro. Die in Belgien ansässige Gesellschaft übernimmt das Geschäft in Féy., en:A deed dated 29 November 2023 records the sale of POKEYLAND’s operating business to BERNARD-AMUSEMENT for €2.5 million. The Belgium-based company takes over the Féy business., es:Un contrato del 29 de noviembre de 2023 establece la venta del negocio de POKEYLAND a BERNARD-AMUSEMENT por 2,5 millones de euros. La sociedad con sede en Bélgica adquiere la actividad de Féy., fr:Un acte du 29 novembre 2023 organise la cession du fonds de commerce de POKEYLAND à BERNARD-AMUSEMENT pour 2,5 millions d’euros. Cette société établie en Belgique reprend l’activité de Féy., it:Un atto del 29 novembre 2023 stabilisce la cessione dell’attività di POKEYLAND a BERNARD-AMUSEMENT per 2,5 milioni di euro. La società con sede in Belgio rileva l’attività di Féy., nl:Een akte van 29 november 2023 legt de verkoop van de bedrijfsactiviteiten van POKEYLAND aan BERNARD-AMUSEMENT vast voor 2,5 miljoen euro. De in België gevestigde onderneming neemt de activiteiten in Féy over., pl:Akt z 29 listopada 2023 roku reguluje sprzedaż działalności POKEYLAND spółce BERNARD-AMUSEMENT za 2,5 miliona euro. Firma z siedzibą w Belgii przejmuje działalność w Féy., pt:Um ato de 29 de novembro de 2023 estabelece a venda da atividade de POKEYLAND à BERNARD-AMUSEMENT por 2,5 milhões de euros. A sociedade sediada na Bélgica assume a atividade de Féy."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"BODACC A 20240088, annonce 918 \\u2014 cession par acte du 29 novembre 2023\",\"Url\":\"https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "0899d0b0-7aa2-4d26-bc5e-541cd299b873",
+        "entityKey": "pokeyland-history-reorganisation-2026",
+        "displayName": "L’exploitant entre en redressement judiciaire",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-history-reorganisation-2026"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "10"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "1"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Bankruptcy"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "a30bcfef2e414aca8898b45ee212d46e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Gerichtliche Sanierung des Betreibers, en:The operator enters judicial reorganisation, es:El operador entra en reorganización judicial, fr:L’exploitant entre en redressement judiciaire, it:L’operatore entra in ristrutturazione giudiziaria, nl:De exploitant gaat een gerechtelijke herstructurering in, pl:Operator rozpoczyna sądową restrukturyzację, pt:O operador entra em recuperação judicial"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Ein Urteil vom 1. Oktober 2026 eröffnet ein gerichtliches Sanierungsverfahren für BERNARD-AMUSEMENT, den Betreiber von Pokeyland. Die Leitung will damit die Fortführung des Betriebs und die Saison 2027 vorbereiten; die Wiedereröffnung bleibt zu diesem Zeitpunkt ein Ziel., en:A judgment of 1 October 2026 opens judicial reorganisation proceedings for BERNARD-AMUSEMENT, Pokeyland’s operator. Management presents the procedure as a means of continuing the business and preparing the 2027 season, with reopening still an objective at that point., es:La resolución del 1 de octubre de 2026 abre un procedimiento de reorganización judicial para BERNARD-AMUSEMENT, operador de Pokeyland. La dirección lo presenta como un medio para continuar la actividad y preparar la temporada 2027, cuya reapertura sigue siendo entonces un objetivo., fr:Le jugement du 1er octobre 2026 ouvre une procédure de redressement pour BERNARD-AMUSEMENT, exploitant de Pokeyland. La direction présente cette démarche comme un moyen de poursuivre l’activité et de préparer la saison 2027, dont la réouverture reste alors un objectif., it:La decisione del 1º ottobre 2026 apre una procedura di ristrutturazione giudiziaria per BERNARD-AMUSEMENT, operatore di Pokeyland. La direzione la presenta come un mezzo per proseguire l’attività e preparare la stagione 2027, la cui riapertura resta allora un obiettivo., nl:Een uitspraak van 1 oktober 2026 opent een gerechtelijke herstructureringsprocedure voor BERNARD-AMUSEMENT, de exploitant van Pokeyland. De leiding wil daarmee de activiteiten voortzetten en het seizoen 2027 voorbereiden; heropening is op dat moment nog een doelstelling., pl:Orzeczenie z 1 października 2026 roku otwiera sądowe postępowanie restrukturyzacyjne wobec BERNARD-AMUSEMENT, operatora Pokeyland. Kierownictwo przedstawia je jako sposób na kontynuowanie działalności i przygotowanie sezonu 2027, którego otwarcie pozostaje wówczas celem., pt:A decisão de 1 de outubro de 2026 abre um processo de recuperação judicial da BERNARD-AMUSEMENT, operadora de Pokeyland. A direção apresenta-o como um meio de prosseguir a atividade e preparar a temporada 2027, cuja reabertura continua então a ser um objetivo."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Moselle TV, 2 octobre 2026 \\u2014 redressement et objectif de saison 2027\",\"Url\":\"https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"BODACC A 20260196, annonce 6026 \\u2014 jugement du 1er octobre 2026\",\"Url\":\"https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "pokeyland-history-construction-2013",
+      "entityType": "Park",
+      "owner": "park",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2013,
+      "month": 5,
+      "day": null,
+      "datePrecision": "Month",
+      "eventType": "ConstructionStart",
+      "isMajor": false,
+      "isVisible": false,
+      "mainImageId": null,
+      "sources": [
+        {
+          "label": "Tout-Metz — ouverture du 20 juin 2015 et chantier depuis mai 2013",
+          "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Le chantier commence dans la forêt de Féy"
+        },
+        {
+          "languageCode": "en",
+          "value": "Work begins in Féy’s forest"
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Arbeiten im Wald von Féy beginnen"
+        },
+        {
+          "languageCode": "es",
+          "value": "Comienzan las obras en el bosque de Féy"
+        },
+        {
+          "languageCode": "it",
+          "value": "Iniziano i lavori nel bosco di Féy"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De werkzaamheden in het bos van Féy beginnen"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Początek prac w lesie w Féy"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Começam as obras no bosque de Féy"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "L’équipe du futur Pokeyland commence à aménager le site en mai 2013. Elle réalise les installations et les décors des terrains de paintball au milieu des arbres, préparant le parc de plein air qui accueillera ses premiers visiteurs deux ans plus tard."
+        },
+        {
+          "languageCode": "en",
+          "value": "The future Pokeyland team begins developing the site in May 2013. It builds the facilities and paintball scenery among the trees, preparing the outdoor park that will welcome its first visitors two years later."
+        },
+        {
+          "languageCode": "de",
+          "value": "Im Mai 2013 beginnt das künftige Pokeyland-Team mit der Gestaltung des Geländes. Zwischen den Bäumen entstehen Anlagen und Paintballkulissen für den Freizeitpark, der zwei Jahre später seine ersten Besucher empfängt."
+        },
+        {
+          "languageCode": "es",
+          "value": "El equipo del futuro Pokeyland empieza a acondicionar el lugar en mayo de 2013. Construye las instalaciones y los decorados de paintball entre los árboles, preparando el parque al aire libre que recibirá a sus primeros visitantes dos años después."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il gruppo del futuro Pokeyland inizia ad allestire il sito nel maggio 2013. Realizza le strutture e le scenografie dei campi da paintball tra gli alberi, preparando il parco all’aperto che accoglierà i primi visitatori due anni dopo."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het toekomstige Pokeyland-team begint in mei 2013 met de aanleg van het terrein. Tussen de bomen bouwt het de voorzieningen en paintballdecors voor het buitenpark dat twee jaar later zijn eerste bezoekers verwelkomt."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zespół przyszłego Pokeyland rozpoczyna zagospodarowanie terenu w maju 2013 roku. Wśród drzew powstają obiekty i dekoracje pól paintballowych, przygotowujące park na przyjęcie pierwszych gości dwa lata później."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A equipa do futuro Pokeyland começa a preparar o local em maio de 2013. Constrói as instalações e os cenários dos campos de paintball entre as árvores, preparando o parque ao ar livre que receberá os primeiros visitantes dois anos depois."
+        }
+      ],
+      "id": "401b9c6e-09de-47a7-88dc-93642d649e07"
+    },
+    {
+      "key": "pokeyland-history-opening-2015",
+      "entityType": "Park",
+      "owner": "park",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2015,
+      "month": 6,
+      "day": 20,
+      "datePrecision": "Day",
+      "eventType": "Opening",
+      "isMajor": true,
+      "isVisible": false,
+      "mainImageId": "a30bcfef2e414aca8898b45ee212d46e",
+      "sources": [
+        {
+          "label": "Tout-Metz — ouverture du 20 juin 2015 et chantier depuis mai 2013",
+          "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Pokeyland ouvre au public à Féy"
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland opens to visitors in Féy"
+        },
+        {
+          "languageCode": "de",
+          "value": "Pokeyland eröffnet in Féy"
+        },
+        {
+          "languageCode": "es",
+          "value": "Pokeyland abre al público en Féy"
+        },
+        {
+          "languageCode": "it",
+          "value": "Pokeyland apre al pubblico a Féy"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Pokeyland opent voor bezoekers in Féy"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pokeyland otwiera się dla gości w Féy"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pokeyland abre ao público em Féy"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le 20 juin 2015, Pokeyland ouvre près de Metz avec ses loisirs de plein air et ses terrains de paintball scénarisés. L’entrée est alors gratuite, tandis qu’un bracelet à crédits permet de payer les activités choisies au fil de la visite."
+        },
+        {
+          "languageCode": "en",
+          "value": "On 20 June 2015, Pokeyland opens near Metz with outdoor activities and themed paintball fields. Admission is initially free, while a prepaid-credit wristband pays for the activities visitors choose during their stay."
+        },
+        {
+          "languageCode": "de",
+          "value": "Am 20. Juni 2015 eröffnet Pokeyland bei Metz mit Freiluftaktivitäten und thematisch gestalteten Paintballfeldern. Der Eintritt ist zunächst kostenlos; die während des Besuchs gewählten Aktivitäten werden über ein mit Guthaben aufgeladenes Armband bezahlt."
+        },
+        {
+          "languageCode": "es",
+          "value": "El 20 de junio de 2015, Pokeyland abre cerca de Metz con actividades al aire libre y campos de paintball tematizados. La entrada es entonces gratuita, mientras una pulsera con créditos permite pagar las actividades elegidas durante la visita."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il 20 giugno 2015 Pokeyland apre vicino a Metz con attività all’aperto e campi da paintball scenografici. L’ingresso è inizialmente gratuito, mentre un braccialetto precaricato consente di pagare le attività scelte durante la visita."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Op 20 juni 2015 opent Pokeyland bij Metz met buitenactiviteiten en thematische paintballvelden. De toegang is aanvankelijk gratis; bezoekers betalen hun gekozen activiteiten met een polsbandje waarop vooraf tegoed is geladen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "20 czerwca 2015 roku Pokeyland otwiera się pod Metz z atrakcjami plenerowymi i tematycznymi polami paintballowymi. Wstęp jest początkowo bezpłatny, a wybrane podczas wizyty aktywności opłaca się za pomocą wcześniej doładowanej opaski."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A 20 de junho de 2015, Pokeyland abre perto de Metz com atividades ao ar livre e campos de paintball tematizados. A entrada é inicialmente gratuita, enquanto uma pulseira pré-carregada permite pagar as atividades escolhidas durante a visita."
+        }
+      ],
+      "id": "8de9d388-66de-402a-8edf-62389727a14b"
+    },
+    {
+      "key": "pokeyland-history-sale-2023",
+      "entityType": "Park",
+      "owner": "park",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2023,
+      "month": 11,
+      "day": 29,
+      "datePrecision": "Day",
+      "eventType": "Sale",
+      "isMajor": true,
+      "isVisible": false,
+      "mainImageId": "452fd5f698e549c3922711177b0984e9",
+      "sources": [
+        {
+          "label": "BODACC A 20240088, annonce 918 — cession par acte du 29 novembre 2023",
+          "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Cession du fonds à BERNARD-AMUSEMENT"
+        },
+        {
+          "languageCode": "en",
+          "value": "The business is sold to BERNARD-AMUSEMENT"
+        },
+        {
+          "languageCode": "de",
+          "value": "Verkauf des Geschäftsbetriebs an BERNARD-AMUSEMENT"
+        },
+        {
+          "languageCode": "es",
+          "value": "Venta del negocio a BERNARD-AMUSEMENT"
+        },
+        {
+          "languageCode": "it",
+          "value": "Cessione dell’attività a BERNARD-AMUSEMENT"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Verkoop van de onderneming aan BERNARD-AMUSEMENT"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sprzedaż działalności BERNARD-AMUSEMENT"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Venda da atividade à BERNARD-AMUSEMENT"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Un acte du 29 novembre 2023 organise la cession du fonds de commerce de POKEYLAND à BERNARD-AMUSEMENT pour 2,5 millions d’euros. Cette société établie en Belgique reprend l’activité de Féy."
+        },
+        {
+          "languageCode": "en",
+          "value": "A deed dated 29 November 2023 records the sale of POKEYLAND’s operating business to BERNARD-AMUSEMENT for €2.5 million. The Belgium-based company takes over the Féy business."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Vertrag vom 29. November 2023 regelt den Verkauf des Geschäftsbetriebs von POKEYLAND an BERNARD-AMUSEMENT für 2,5 Millionen Euro. Die in Belgien ansässige Gesellschaft übernimmt das Geschäft in Féy."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un contrato del 29 de noviembre de 2023 establece la venta del negocio de POKEYLAND a BERNARD-AMUSEMENT por 2,5 millones de euros. La sociedad con sede en Bélgica adquiere la actividad de Féy."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un atto del 29 novembre 2023 stabilisce la cessione dell’attività di POKEYLAND a BERNARD-AMUSEMENT per 2,5 milioni di euro. La società con sede in Belgio rileva l’attività di Féy."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een akte van 29 november 2023 legt de verkoop van de bedrijfsactiviteiten van POKEYLAND aan BERNARD-AMUSEMENT vast voor 2,5 miljoen euro. De in België gevestigde onderneming neemt de activiteiten in Féy over."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Akt z 29 listopada 2023 roku reguluje sprzedaż działalności POKEYLAND spółce BERNARD-AMUSEMENT za 2,5 miliona euro. Firma z siedzibą w Belgii przejmuje działalność w Féy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um ato de 29 de novembro de 2023 estabelece a venda da atividade de POKEYLAND à BERNARD-AMUSEMENT por 2,5 milhões de euros. A sociedade sediada na Bélgica assume a atividade de Féy."
+        }
+      ],
+      "newOwnerName": "BERNARD-AMUSEMENT",
+      "previousOwnerName": "POKEYLAND",
+      "id": "f28f4138-dbbc-43ec-b4e9-8d33437e3277"
+    },
+    {
+      "key": "pokeyland-history-reorganisation-2026",
+      "entityType": "Park",
+      "owner": "park",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2026,
+      "month": 10,
+      "day": 1,
+      "datePrecision": "Day",
+      "eventType": "Bankruptcy",
+      "isMajor": true,
+      "isVisible": false,
+      "mainImageId": "a30bcfef2e414aca8898b45ee212d46e",
+      "sources": [
+        {
+          "label": "BODACC A 20260196, annonce 6026 — jugement du 1er octobre 2026",
+          "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Moselle TV, 2 octobre 2026 — redressement et objectif de saison 2027",
+          "url": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "L’exploitant entre en redressement judiciaire"
+        },
+        {
+          "languageCode": "en",
+          "value": "The operator enters judicial reorganisation"
+        },
+        {
+          "languageCode": "de",
+          "value": "Gerichtliche Sanierung des Betreibers"
+        },
+        {
+          "languageCode": "es",
+          "value": "El operador entra en reorganización judicial"
+        },
+        {
+          "languageCode": "it",
+          "value": "L’operatore entra in ristrutturazione giudiziaria"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De exploitant gaat een gerechtelijke herstructurering in"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Operator rozpoczyna sądową restrukturyzację"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O operador entra em recuperação judicial"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le jugement du 1er octobre 2026 ouvre une procédure de redressement pour BERNARD-AMUSEMENT, exploitant de Pokeyland. La direction présente cette démarche comme un moyen de poursuivre l’activité et de préparer la saison 2027, dont la réouverture reste alors un objectif."
+        },
+        {
+          "languageCode": "en",
+          "value": "A judgment of 1 October 2026 opens judicial reorganisation proceedings for BERNARD-AMUSEMENT, Pokeyland’s operator. Management presents the procedure as a means of continuing the business and preparing the 2027 season, with reopening still an objective at that point."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Urteil vom 1. Oktober 2026 eröffnet ein gerichtliches Sanierungsverfahren für BERNARD-AMUSEMENT, den Betreiber von Pokeyland. Die Leitung will damit die Fortführung des Betriebs und die Saison 2027 vorbereiten; die Wiedereröffnung bleibt zu diesem Zeitpunkt ein Ziel."
+        },
+        {
+          "languageCode": "es",
+          "value": "La resolución del 1 de octubre de 2026 abre un procedimiento de reorganización judicial para BERNARD-AMUSEMENT, operador de Pokeyland. La dirección lo presenta como un medio para continuar la actividad y preparar la temporada 2027, cuya reapertura sigue siendo entonces un objetivo."
+        },
+        {
+          "languageCode": "it",
+          "value": "La decisione del 1º ottobre 2026 apre una procedura di ristrutturazione giudiziaria per BERNARD-AMUSEMENT, operatore di Pokeyland. La direzione la presenta come un mezzo per proseguire l’attività e preparare la stagione 2027, la cui riapertura resta allora un obiettivo."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een uitspraak van 1 oktober 2026 opent een gerechtelijke herstructureringsprocedure voor BERNARD-AMUSEMENT, de exploitant van Pokeyland. De leiding wil daarmee de activiteiten voortzetten en het seizoen 2027 voorbereiden; heropening is op dat moment nog een doelstelling."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Orzeczenie z 1 października 2026 roku otwiera sądowe postępowanie restrukturyzacyjne wobec BERNARD-AMUSEMENT, operatora Pokeyland. Kierownictwo przedstawia je jako sposób na kontynuowanie działalności i przygotowanie sezonu 2027, którego otwarcie pozostaje wówczas celem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A decisão de 1 de outubro de 2026 abre um processo de recuperação judicial da BERNARD-AMUSEMENT, operadora de Pokeyland. A direção apresenta-o como um meio de prosseguir a atividade e preparar a temporada 2027, cuja reabertura continua então a ser um objetivo."
+        }
+      ],
+      "id": "0899d0b0-7aa2-4d26-bc5e-541cd299b873"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "sourceAccess": [
+    {
+      "sourceId": "opening2015",
+      "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "navigationStartedAtUtc": "2026-11-15T12:30:40.004721+00:00",
+      "method": "Normal anonymous Chromium navigation to the exact public article URL. No login, headers override, special query parameters, direct API request or access-wall bypass.",
+      "status": 200,
+      "finalUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "responseHeaders": {
+        "content-type": "text/html; charset=UTF-8",
+        "date": "Sun, 15 Nov 2026 12:30:43 GMT"
+      },
+      "initialResponse": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/opening2015-response.html",
+        "bytes": 347813,
+        "sha256": "47275a387a2edf416f3212467c86a583b2f1a20ce66c55a20f7395326d682958"
+      },
+      "title": "Pokey Land : paintball + parc de loisirs pour la famille à Fey (57)",
+      "renderedAtUtc": "2026-11-15T12:30:49.129876+00:00",
+      "renderedHtml": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/opening2015-rendered.html",
+        "bytes": 340286,
+        "sha256": "8372115fec80af6efbf10f296f252f3c9a8c58c570dac4bde48db2e09141a03d"
+      },
+      "renderedText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/opening2015-rendered.txt",
+        "bytes": 16353,
+        "sha256": "61d77f2a11c7d0cd52968b89b0921d49f8011ca0b2f0ad101ab18c3221291d4d"
+      },
+      "contentPresentCandidate": true
+    },
+    {
+      "sourceId": "saleBodacc",
+      "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+      "navigationStartedAtUtc": "2026-11-15T12:30:49.242369+00:00",
+      "method": "Normal anonymous Chromium navigation to the exact public article URL. No login, headers override, special query parameters, direct API request or access-wall bypass.",
+      "status": 200,
+      "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:A20240088918",
+      "responseHeaders": {
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sun, 15 Nov 2026 12:30:51 GMT"
+      },
+      "initialResponse": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-response.html",
+        "bytes": 383562,
+        "sha256": "3c7d555f2d00b5c6e64ebde0368d8a2de87803f35d28721daa68cd33d1157845"
+      },
+      "title": "Annonce n° 918 du Bodacc A n° 20240088 publié le 05/05/2024 | Bodacc.fr",
+      "renderedAtUtc": "2026-11-15T12:30:58.481977+00:00",
+      "renderedHtml": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-rendered.html",
+        "bytes": 425521,
+        "sha256": "6ca72f1aa7d27a9d285900d0754876e0d06e2a379a96a9aeb605fd9240863bf9"
+      },
+      "renderedText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-rendered.txt",
+        "bytes": 3116,
+        "sha256": "f83a2e918a3ffa65f8dbb0e3301b913c128219baae383a97c6484c3a8b9ec843"
+      },
+      "screenshot": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-rendered.png",
+        "sha256": "f44b530c1f1ee294efdee31c7afc5a4ce8ad72d3110b4c92aa5ddfb95b310896",
+        "bytes": 265698
+      },
+      "contentPresentCandidate": false
+    },
+    {
+      "sourceId": "redressementBodacc",
+      "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026",
+      "navigationStartedAtUtc": "2026-11-15T12:30:58.779289+00:00",
+      "method": "Normal anonymous Chromium navigation to the exact public article URL. No login, headers override, special query parameters, direct API request or access-wall bypass.",
+      "status": 200,
+      "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:A202601966026",
+      "responseHeaders": {
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sun, 15 Nov 2026 12:30:51 GMT"
+      },
+      "initialResponse": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-response.html",
+        "bytes": 383562,
+        "sha256": "3c7d555f2d00b5c6e64ebde0368d8a2de87803f35d28721daa68cd33d1157845"
+      },
+      "title": "Annonce n° 6026 du Bodacc A n° 20260196 publié le 13/10/2026 | Bodacc.fr",
+      "renderedAtUtc": "2026-11-15T12:31:04.374239+00:00",
+      "renderedHtml": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-rendered.html",
+        "bytes": 419267,
+        "sha256": "bd23417d29239f468a33c18a5940d0e93ff4aff00af04c4a89d063f416325539"
+      },
+      "renderedText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-rendered.txt",
+        "bytes": 2594,
+        "sha256": "a8e4754342f8c24ef7c5880537a7f93008af37a2c1a0202cab57586dd0f2340c"
+      },
+      "screenshot": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-rendered.png",
+        "sha256": "38a6dcc7f0c1afe06135c268250aec2cdcab074dd4ea5febd4ad24c5ecd4074c",
+        "bytes": 216435
+      },
+      "contentPresentCandidate": false
+    },
+    {
+      "sourceId": "redressementPress",
+      "url": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+      "navigationStartedAtUtc": "2026-11-15T12:31:04.679031+00:00",
+      "method": "Normal anonymous Chromium navigation to the exact public article URL. No login, headers override, special query parameters, direct API request or access-wall bypass.",
+      "status": 200,
+      "finalUrl": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+      "responseHeaders": {
+        "content-type": "text/html; charset=UTF-8",
+        "date": "Sun, 15 Nov 2026 12:31:05 GMT",
+        "last-modified": "Sun, 15 Nov 2026 02:41:40 GMT"
+      },
+      "initialResponse": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementPress-response.html",
+        "bytes": 341293,
+        "sha256": "beda21c9b230c95737a79f0641fb7e0f88adecbae5017e554bcae67df6cf4cb1"
+      },
+      "title": "Le parc Pokeyland est placé en redressement judiciaire",
+      "renderedAtUtc": "2026-11-15T12:31:13.420947+00:00",
+      "renderedHtml": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementPress-rendered.html",
+        "bytes": 372536,
+        "sha256": "0f3708455814e72265c099c51708a4b76bb1f2516e74b51c56e68eb84f4d3260"
+      },
+      "renderedText": {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementPress-rendered.txt",
+        "bytes": 7774,
+        "sha256": "3a2b167bf99a06e03c8fdd1dfb9f77f9c1d6eaaad176fa51dcca61b72ebc4a4a"
+      },
+      "contentPresentCandidate": true
+    }
+  ],
+  "sourceFreshness": {
+    "createdAtUtc": "2026-11-15T12:32:24.213011+00:00",
+    "scope": "Freshness of exactly four public sources for Pokeyland history; no final product text or mutation.",
+    "result": "4/4 PASS: HTTP 200 and relevant full rendered content present and personally read.",
+    "navigationWindowUtc": {
+      "start": "2026-11-15T12:30:40.004721+00:00",
+      "end": "2026-11-15T12:31:13.420947+00:00"
+    },
+    "sources": [
+      {
+        "factsConfirmed": {
+          "publicOpeningDate": "2015-06-20",
+          "articlePublicationDate": "2015-06-20",
+          "articleUpdatedDate": "2019-02-12"
+        },
+        "literalPassages": [
+          "C’est un tout nouveau parc de loisirs qui ouvre ses portes ce samedi 20 juin 2015 à Féy",
+          "qui répond à nos questions à la veille de l’ouverture du parc au public",
+          "Dans ce reportage photo, réalisé par Thierry Hauuy pour Tout-Metz"
+        ],
+        "limitations": [
+          "Preopening photo report is not a photograph of an inauguration ceremony.",
+          "2015 prices/conditions are historical, not current."
+        ],
+        "literalPassagesCheck": [
+          {
+            "passage": "C’est un tout nouveau parc de loisirs qui ouvre ses portes ce samedi 20 juin 2015 à Féy",
+            "presentInRenderedText": true
+          },
+          {
+            "passage": "qui répond à nos questions à la veille de l’ouverture du parc au public",
+            "presentInRenderedText": true
+          },
+          {
+            "passage": "Dans ce reportage photo, réalisé par Thierry Hauuy pour Tout-Metz",
+            "presentInRenderedText": true
+          }
+        ],
+        "sourceId": "opening2015",
+        "status": "PASS_RENDERED_CONTENT_PERSONALLY_READ",
+        "httpStatus": 200,
+        "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+        "finalUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+        "renderedAtUtc": "2026-11-15T12:30:49.129876+00:00",
+        "reviewRecordedAtUtc": "2026-11-15T12:32:24.213011+00:00",
+        "fullRenderedContent": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/opening2015-rendered.html",
+          "bytes": 340286,
+          "sha256": "8372115fec80af6efbf10f296f252f3c9a8c58c570dac4bde48db2e09141a03d"
+        },
+        "fullRenderedText": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/opening2015-rendered.txt",
+          "bytes": 16353,
+          "sha256": "61d77f2a11c7d0cd52968b89b0921d49f8011ca0b2f0ad101ab18c3221291d4d"
+        },
+        "usefulText": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/opening2015-useful-text.txt",
+          "sha256": "4a67d271c5a6430dc1dde284b18fc10c5d0990abbfc9a873ff943a7d0470cbfd"
+        },
+        "priorSourceHash": "7c6ea3fde10a6d13864d0ac73da7626c860438bcc1bd9b3482bc9350ae46bba4",
+        "sameAsPriorRenderedHtml": false,
+        "sameAsPriorInitialResponse": false
+      },
+      {
+        "factsConfirmed": {
+          "announcement": "BODACC A 20240088, 918",
+          "publicationDate": "2024-05-05",
+          "deedDate": "2023-11-29",
+          "buyer": "BERNARD-AMUSEMENT",
+          "buyerRcs": "982 057 358 RCS Metz",
+          "seller": "POKEYLAND",
+          "sellerRcs": "791 387 434 RCS Metz"
+        },
+        "literalPassages": [
+          "Dénomination : BERNARD-AMUSEMENT",
+          "Commentaires : Acte en date du 29/11/2023 enregistré au SIE METZ le 07/11/2023",
+          "Dénomination : POKEYLAND"
+        ],
+        "limitations": [
+          "The notice itself gives a registration date 07/11/2023 earlier than the deed dated 29/11/2023. Preserve this inconsistency; do not correct or publish an inferred registration date.",
+          "May 5, 2024 is publication of this notice, not a second sale.",
+          "Exact corporate effective-time wording from separate mirrored JAL remains outside this freshness check."
+        ],
+        "renderedContentRequired": true,
+        "literalPassagesCheck": [
+          {
+            "passage": "Dénomination : BERNARD-AMUSEMENT",
+            "presentInRenderedText": true
+          },
+          {
+            "passage": "Commentaires : Acte en date du 29/11/2023 enregistré au SIE METZ le 07/11/2023",
+            "presentInRenderedText": true
+          },
+          {
+            "passage": "Dénomination : POKEYLAND",
+            "presentInRenderedText": true
+          }
+        ],
+        "sourceId": "saleBodacc",
+        "status": "PASS_RENDERED_CONTENT_PERSONALLY_READ",
+        "httpStatus": 200,
+        "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20240088/918",
+        "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:A20240088918",
+        "renderedAtUtc": "2026-11-15T12:30:58.481977+00:00",
+        "reviewRecordedAtUtc": "2026-11-15T12:32:24.213011+00:00",
+        "fullRenderedContent": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-rendered.html",
+          "bytes": 425521,
+          "sha256": "6ca72f1aa7d27a9d285900d0754876e0d06e2a379a96a9aeb605fd9240863bf9"
+        },
+        "fullRenderedText": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-rendered.txt",
+          "bytes": 3116,
+          "sha256": "f83a2e918a3ffa65f8dbb0e3301b913c128219baae383a97c6484c3a8b9ec843"
+        },
+        "usefulText": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/saleBodacc-useful-text.txt",
+          "sha256": "e7cdfdd5698c0daae937956024517cec7b30d2b274cd91a635b741d8c3d53a47"
+        },
+        "priorSourceHash": "6ca72f1aa7d27a9d285900d0754876e0d06e2a379a96a9aeb605fd9240863bf9",
+        "sameAsPriorRenderedHtml": true,
+        "sameAsPriorInitialResponse": false,
+        "initialAutomaticCandidateFalseExplained": "Initial simple string check looked for BERNARD AMUSEMENT with a space; actual rendered legal name is BERNARD-AMUSEMENT. Complete body was then read and matched against exact passages. Original acquisition receipt is preserved without rewriting.",
+        "ordinaryRedirectExplained": "BODACC redirects the exact public announcement URL to its /pages/annonces-commerciales-detail/ page with q.id. This final URL was generated by ordinary navigation, not manually constructed as an alternate access path."
+      },
+      {
+        "factsConfirmed": {
+          "announcement": "BODACC A 20260196, 6026",
+          "publicationDate": "2026-10-13",
+          "judgmentDate": "2026-10-01",
+          "cessationDesPaiementsDate": "2025-04-02",
+          "entity": "BERNARD-AMUSEMENT",
+          "rcs": "982 057 358 RCS METZ"
+        },
+        "literalPassages": [
+          "Date : 1 octobre 2026",
+          "Dénomination : BERNARD-AMUSEMENT",
+          "Complément Jugement : Ouvre la procédure de redressement",
+          "Date de cessation des paiements : 02 Avril 2025"
+        ],
+        "limitations": [
+          "Cessation des paiements is a legal financial date, not proof of park closure.",
+          "The generic notice wording refers to filing with a liquidateur, but the disposition explicitly opens redressement; do not infer liquidation.",
+          "October 13 is notice publication, not judgment day."
+        ],
+        "renderedContentRequired": true,
+        "literalPassagesCheck": [
+          {
+            "passage": "Date : 1 octobre 2026",
+            "presentInRenderedText": true
+          },
+          {
+            "passage": "Dénomination : BERNARD-AMUSEMENT",
+            "presentInRenderedText": true
+          },
+          {
+            "passage": "Complément Jugement : Ouvre la procédure de redressement",
+            "presentInRenderedText": true
+          },
+          {
+            "passage": "Date de cessation des paiements : 02 Avril 2025",
+            "presentInRenderedText": true
+          }
+        ],
+        "sourceId": "redressementBodacc",
+        "status": "PASS_RENDERED_CONTENT_PERSONALLY_READ",
+        "httpStatus": 200,
+        "url": "https://www.bodacc.fr/annonce/detail-annonce/A/20260196/6026",
+        "finalUrl": "https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:A202601966026",
+        "renderedAtUtc": "2026-11-15T12:31:04.374239+00:00",
+        "reviewRecordedAtUtc": "2026-11-15T12:32:24.213011+00:00",
+        "fullRenderedContent": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-rendered.html",
+          "bytes": 419267,
+          "sha256": "bd23417d29239f468a33c18a5940d0e93ff4aff00af04c4a89d063f416325539"
+        },
+        "fullRenderedText": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-rendered.txt",
+          "bytes": 2594,
+          "sha256": "a8e4754342f8c24ef7c5880537a7f93008af37a2c1a0202cab57586dd0f2340c"
+        },
+        "usefulText": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementBodacc-useful-text.txt",
+          "sha256": "9b12cdf6f1998f517a1cf59571776918d814b8e2b47bafa472716d8f34ce364c"
+        },
+        "priorSourceHash": "bd23417d29239f468a33c18a5940d0e93ff4aff00af04c4a89d063f416325539",
+        "sameAsPriorRenderedHtml": true,
+        "sameAsPriorInitialResponse": false,
+        "initialAutomaticCandidateFalseExplained": "Initial simple string check looked for BERNARD AMUSEMENT with a space; actual rendered legal name is BERNARD-AMUSEMENT. Complete body was then read and matched against exact passages. Original acquisition receipt is preserved without rewriting.",
+        "ordinaryRedirectExplained": "BODACC redirects the exact public announcement URL to its /pages/annonces-commerciales-detail/ page with q.id. This final URL was generated by ordinary navigation, not manually constructed as an alternate access path."
+      },
+      {
+        "factsConfirmed": {
+          "publicationDate": "2026-10-02",
+          "byline": "Jonathan Vaucher",
+          "reportedDecision": "Tribunal decision on the preceding Thursday, consistent with 2026-10-01 in BODACC",
+          "managementAim": "Reopen in 2027; this is an aim, not an actual reopening or a published calendar"
+        },
+        "literalPassages": [
+          "Par Jonathan Vaucher 02/10/2026",
+          "Le parc de loisirs de Féy, Pokeyland, a été placé en redressement judiciaire par décision du tribunal rendue ce jeudi",
+          "L’objectif est clair : « permettre au parc de rouvrir ses portes en 2027 », avance la direction."
+        ],
+        "limitations": [
+          "Report states an objective of continuing activity/reopening in 2027; it does not establish a 2027 opening date or calendar.",
+          "HTTP Last-Modified identifies web delivery metadata and is not the article publication date."
+        ],
+        "literalPassagesCheck": [
+          {
+            "passage": "Par Jonathan Vaucher 02/10/2026",
+            "presentInRenderedText": true
+          },
+          {
+            "passage": "Le parc de loisirs de Féy, Pokeyland, a été placé en redressement judiciaire par décision du tribunal rendue ce jeudi",
+            "presentInRenderedText": true
+          },
+          {
+            "passage": "L’objectif est clair : « permettre au parc de rouvrir ses portes en 2027 », avance la direction.",
+            "presentInRenderedText": true
+          }
+        ],
+        "sourceId": "redressementPress",
+        "status": "PASS_RENDERED_CONTENT_PERSONALLY_READ",
+        "httpStatus": 200,
+        "url": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+        "finalUrl": "https://moselle.tv/le-parc-pokeyland-est-place-en-redressement-judiciaire/",
+        "renderedAtUtc": "2026-11-15T12:31:13.420947+00:00",
+        "reviewRecordedAtUtc": "2026-11-15T12:32:24.213011+00:00",
+        "fullRenderedContent": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementPress-rendered.html",
+          "bytes": 372536,
+          "sha256": "0f3708455814e72265c099c51708a4b76bb1f2516e74b51c56e68eb84f4d3260"
+        },
+        "fullRenderedText": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementPress-rendered.txt",
+          "bytes": 7774,
+          "sha256": "3a2b167bf99a06e03c8fdd1dfb9f77f9c1d6eaaad176fa51dcca61b72ebc4a4a"
+        },
+        "usefulText": {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/redressementPress-useful-text.txt",
+          "sha256": "e0ad2c3cbee19103d32f6747702ac607f64dfeebd40a6d51e4da43cd9145cce4"
+        },
+        "priorSourceHash": "beda21c9b230c95737a79f0641fb7e0f88adecbae5017e554bcae67df6cf4cb1",
+        "sameAsPriorRenderedHtml": false,
+        "sameAsPriorInitialResponse": true
+      }
+    ],
+    "accessLog": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-source-freshness-20261115/source-access.json",
+    "noLoginOrBypass": true,
+    "noPdeApiGitRegistryOrImport": true,
+    "networkRequests": "One ordinary top-level browser navigation per source; normal page assets/scripts loaded by the browser. No explicit API requests or refusal retries.",
+    "sourceIntegrity": "Complete response bodies and rendered DOM/text preserved. Both rendered BODACC HTML hashes are identical to the prior preserved notices; Moselle TV initial response hash is also unchanged.",
+    "unresolvedSourceAnomaly": "Sale notice records act 29/11/2023 but registration 07/11/2023; no correction inferred."
+  },
+  "beforeDiagnostics": {
+    "action": "HistoryDiagnostics",
+    "receivedAtUtc": "2026-11-15T12:07:59.6049516Z",
+    "startedAtUtc": "2026-11-15T12:07:58.9998632Z",
+    "result": {
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkName": "Pokeyland",
+      "factCount": 0,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 0
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": false,
+        "hasCompleteSourceCoverage": false,
+        "hasMajorMilestone": false,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 0,
+        "sourcedFactCount": 0,
+        "majorFactCount": 0,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "dateDecisions": [
+    "Construction: May 2013, no invented day.",
+    "Opening: actual public opening 20 June 2015, not 2019 article update.",
+    "Sale: deed dated 29 November 2023; notice 5 May 2024 is not a second sale. Printed registration 7 November 2023 anomaly retained in evidence, not silently repaired. Management change in December 2024 remains distinct.",
+    "Judgment: 1 October 2026, not notice publication 13 October. Redressement is not liquidation, permanent closure or a proven 2027 reopening."
+  ],
+  "imageDecisions": {
+    "construction": "No construction photograph found; no image invented.",
+    "otherEvents": "Two actual 2016 park photographs already imported are contextual illustrations, not photographs of the opening, sale or court decision. Event-photo search report retained.",
+    "research": {
+      "createdAtUtc": "2026-11-15T12:25:56.218936+00:00",
+      "task": "Pokeyland: actual photographs specific to four park events and 2017/2022 new attractions",
+      "scope": "Public research only; no API, Git, registry write, reservation, media import, image editing or final multilingual text.",
+      "reconciliationFirst": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/event-image-existing-source-reconciliation.json",
+      "newNetworkAccessLog": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/source-access.jsonl",
+      "newNetworkRequests": 5,
+      "newNativeImagesDecoded": 3,
+      "invalidImageResponses": 1,
+      "reusedCachedMediaCount": 8,
+      "parkEventActualPhotoCoverage": "0 of 4 actual park-event photographs verified; absence is limited to consulted public sources, not a claim that such photos do not exist.",
+      "coverage": [
+        {
+          "event": "opening2015",
+          "date": "2015-06-20",
+          "actualEventPhotographFound": false,
+          "result": "Only first-hand preopening photographs from 19 June 2015 verified. The already-cached rest-area image is signed and excluded from import; never call it the public opening on June 20.",
+          "candidateIds": [
+            "preopening-rest-area-2015"
+          ]
+        },
+        {
+          "event": "sale2023",
+          "date": "2023-11-29",
+          "actualEventPhotographFound": false,
+          "result": "Legal transfer sources establish the deed, not an event image. No photograph of signing, transfer or identified participants found in consulted sources. Do not reuse the unrelated November 2024 change-of-management image as a 2023 sale photograph.",
+          "candidateIds": []
+        },
+        {
+          "event": "direction2024",
+          "date": "2024-12-01",
+          "actualEventPhotographFound": false,
+          "result": "Contemporary announcement uses a Waterjump photograph. Public farewell post uses an unlocated monorail-style ride image. Neither shows a management handover; supplied-photo credit Photo_Remise is not a ceremony caption.",
+          "candidateIds": [
+            "direction-2024-waterjump-context",
+            "direction-2024-farewell-social-context",
+            "direction-2024-moselletv-invalid"
+          ]
+        },
+        {
+          "event": "redressement2026",
+          "date": "2026-10-01",
+          "actualEventPhotographFound": false,
+          "result": "The contemporary TV article uses a promotional montage, not an actual event image. No photograph of the legal procedure or a related management event found. Keep event unillustrated rather than invent a scene.",
+          "candidateIds": [
+            "redressement-2026-promo-montage"
+          ]
+        },
+        {
+          "event": "new2017BigAir",
+          "datePrecision": "Year",
+          "year": 2017,
+          "actualOpeningDayPhotographFound": false,
+          "specificAttractionOperatingPhotographFound": true,
+          "result": "Strongest historical item candidate: named Big Air Jump in operation in the gallery published 11 August 2017. Day of photo and inauguration unknown.",
+          "candidateIds": [
+            "big-air-jump-in-use-2017"
+          ]
+        },
+        {
+          "event": "new2017MiniFarm",
+          "datePrecision": "Year",
+          "year": 2017,
+          "actualOpeningDayPhotographFound": false,
+          "specificAttractionPhotographFound": true,
+          "result": "Historical goats/enclosure photograph in the 2017 Pokeyland gallery; suitable as explicitly dated-period context, not opening ceremony.",
+          "candidateIds": [
+            "mini-farm-2017"
+          ]
+        },
+        {
+          "event": "new2017Labyrinth",
+          "datePrecision": "Year",
+          "year": 2017,
+          "actualOpeningDayPhotographFound": false,
+          "specificHistoricalPhotographFound": false,
+          "result": "No specific launch photograph established in the source set consulted. Do not use the map or the mini-farm image as a labyrinth photograph.",
+          "candidateIds": []
+        },
+        {
+          "event": "new2017Courses",
+          "datePrecision": "Year",
+          "year": 2017,
+          "actualOpeningDayPhotographFound": false,
+          "result": "Contractor image documents a suspended wooden aircraft obstacle in the described Pitchoun extension, but is visibly watermarked. Current numbered-course alias not proved; retain source as evidence only.",
+          "candidateIds": [
+            "pitchoun-extension-avion-2017"
+          ]
+        },
+        {
+          "event": "waterjump2022",
+          "datePrecision": "Year",
+          "year": 2022,
+          "actualOpeningDayPhotographFound": false,
+          "specificAttractionPhotographFound": true,
+          "result": "Real official yellow-slide photograph is undated; real full Waterjump context appears with a 2024 article. The 2022 VIP article image shows entrance only. Official 2022-upload promotional renders are rejected. None establishes a real June 2022 opening-day photograph.",
+          "candidateIds": [
+            "waterjump-yellow-official",
+            "direction-2024-waterjump-context",
+            "vip-waterjump-2022-entrance-context",
+            "waterjump-official-wide-render",
+            "waterjump-official-pack-render"
+          ]
+        }
+      ],
+      "candidateManifest": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/photo-candidate-manifest.json",
+      "sourceCatalog": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/photo-source-catalog.json",
+      "dateCorrection": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/history-event-photo-research/gallery-publication-date-correction.json",
+      "recommendedHistoricalItemCandidates": [
+        "big-air-jump-in-use-2017",
+        "mini-farm-2017"
+      ],
+      "undatedAttractionContextCandidates": [
+        "waterjump-yellow-official",
+        "direction-2024-waterjump-context"
+      ],
+      "conditions": [
+        "Parent must verify current media IDs/manifests before reuse; no duplicated import.",
+        "Never label contextual photos as actual signing, opening ceremony, transfer or judicial event.",
+        "No capture date derived from article publication, image URL, screenshot filename or social CDN timestamp.",
+        "Local EXIF dates without timezone remain local and must not be converted to invented UTC.",
+        "Visible signatures and watermarks are preserved; no cropping or editing.",
+        "No open licence claimed for any source. Public accessibility is not a licence.",
+        "Waterjump 2022 is a year-level fact from other sources, not a capture date of these illustrations."
+      ],
+      "noMutationPerformed": true
+    }
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "afterDiagnostics": {
+    "result": {
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkName": "Pokeyland",
+      "factCount": 4,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 0,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 0,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 4
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 0
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": false,
+        "hasCompleteSourceCoverage": false,
+        "hasMajorMilestone": false,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 0,
+        "sourcedFactCount": 0,
+        "majorFactCount": 0,
+        "indexableKeyYears": []
+      }
+    },
+    "startedAtUtc": "2026-11-15T12:39:03.7137918Z",
+    "receivedAtUtc": "2026-11-15T12:39:04.5256289Z",
+    "action": "HistoryDiagnostics"
+  }
+}

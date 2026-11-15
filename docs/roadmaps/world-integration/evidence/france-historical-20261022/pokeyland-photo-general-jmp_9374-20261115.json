@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-general-jmp_9374",
+    "source": {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374-1350x900.jpg",
+      "accessedAtUtc": "2026-11-15T11:12:29.683875+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374-1350x900.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 315088,
+      "sha256": "23b7dc76c12b8f04c76507dcff49fcd1317985a97ec3f0e8e207ab4d23e7df81",
+      "file": "official-general-JMP_9374-1350.jpg"
+    },
+    "dimensions": [
+      1350,
+      900
+    ],
+    "author": "Arnaud Scherer (EXIF Artist et Copyright)",
+    "exifEvidence": {
+      "DateTime": "2016:08:08 00:25:50",
+      "DateTimeOriginal": "2016:08:07 13:44:29",
+      "DateTimeDigitized": "2016:08:07 13:44:29",
+      "Artist": "Arnaud Scherer ||  https://www.facebook.com/Arnaud.s.photographie",
+      "Copyright": "Arnaud Scherer ||  https://www.facebook.com/Arnaud.s.photographie",
+      "timezone": null
+    },
+    "rootPersonallyViewed": true,
+    "captureDateUtc": null,
+    "notCurrent": true,
+    "nativePublisherRenditionUnedited": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/official-general-JMP_9374-1350.jpg",
+      "Category": "PARK",
+      "OwnerType": "PARK",
+      "OwnerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-general-jmp_9374-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-general-jmp_9374-import-result.json"
+  },
+  "metadata": {
+    "description": "La fontaine et la passerelle au milieu de l’étang, bordé de saules et de végétation.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Étang de Pokeyland avec une passerelle en bois, un îlot végétalisé, un grand jet d’eau et des bâtiments derrière les arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pokeyland pond with a wooden footbridge, a planted island, a tall fountain jet and buildings behind the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Teich von Pokeyland mit Holzsteg, bepflanzter Insel, hoher Wasserfontäne und Gebäuden hinter den Bäumen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Estanque de Pokeyland con pasarela de madera, islote con vegetación, un gran chorro de agua y edificios detrás de los árboles."
+      },
+      {
+        "languageCode": "it",
+        "value": "Laghetto di Pokeyland con passerella in legno, isolotto alberato, un alto getto d’acqua ed edifici dietro gli alberi."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vijver van Pokeyland met een houten voetbrug, een begroeid eilandje, een hoge fontein en gebouwen achter de bomen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Staw Pokeyland z drewnianą kładką, porośniętą wysepką, wysokim strumieniem fontanny i budynkami za drzewami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Lago de Pokeyland com uma ponte pedonal de madeira, uma ilhota com vegetação, um jato de água alto e edifícios atrás das árvores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La fontaine et la passerelle au milieu de l’étang, bordé de saules et de végétation."
+      },
+      {
+        "languageCode": "en",
+        "value": "The fountain and footbridge amid the pond, bordered by willows and vegetation."
+      },
+      {
+        "languageCode": "de",
+        "value": "Fontäne und Holzsteg im Teich, umgeben von Weiden und anderer Vegetation."
+      },
+      {
+        "languageCode": "es",
+        "value": "La fuente y la pasarela en medio del estanque, rodeado de sauces y vegetación."
+      },
+      {
+        "languageCode": "it",
+        "value": "La fontana e la passerella nel laghetto, circondato da salici e vegetazione."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De fontein en de voetbrug in de vijver, omringd door wilgen en ander groen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fontanna i kładka pośród stawu otoczonego wierzbami i roślinnością."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A fonte e a ponte pedonal no lago, rodeado de salgueiros e vegetação."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Arnaud Scherer. Source : site officiel de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Arnaud Scherer. Source: Pokeyland official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Arnaud Scherer. Quelle: offizielle Website von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Arnaud Scherer. Fuente: sitio web oficial de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Arnaud Scherer. Fonte: sito ufficiale di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Arnaud Scherer. Bron: officiële website van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Arnaud Scherer. Źródło: oficjalna strona Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Arnaud Scherer. Fonte: site oficial de Pokeyland."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "452fd5f698e549c3922711177b0984e9",
+      "category": "PARK",
+      "ownerType": "PARK",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "path": "park/452fd5f698e549c3922711177b0984e9",
+      "description": "La fontaine et la passerelle au milieu de l’étang, bordé de saules et de végétation.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 315088,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Étang de Pokeyland avec une passerelle en bois, un îlot végétalisé, un grand jet d’eau et des bâtiments derrière les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland pond with a wooden footbridge, a planted island, a tall fountain jet and buildings behind the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Teich von Pokeyland mit Holzsteg, bepflanzter Insel, hoher Wasserfontäne und Gebäuden hinter den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Estanque de Pokeyland con pasarela de madera, islote con vegetación, un gran chorro de agua y edificios detrás de los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Laghetto di Pokeyland con passerella in legno, isolotto alberato, un alto getto d’acqua ed edifici dietro gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vijver van Pokeyland met een houten voetbrug, een begroeid eilandje, een hoge fontein en gebouwen achter de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Staw Pokeyland z drewnianą kładką, porośniętą wysepką, wysokim strumieniem fontanny i budynkami za drzewami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Lago de Pokeyland com uma ponte pedonal de madeira, uma ilhota com vegetação, um jato de água alto e edifícios atrás das árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La fontaine et la passerelle au milieu de l’étang, bordé de saules et de végétation."
+        },
+        {
+          "languageCode": "en",
+          "value": "The fountain and footbridge amid the pond, bordered by willows and vegetation."
+        },
+        {
+          "languageCode": "de",
+          "value": "Fontäne und Holzsteg im Teich, umgeben von Weiden und anderer Vegetation."
+        },
+        {
+          "languageCode": "es",
+          "value": "La fuente y la pasarela en medio del estanque, rodeado de sauces y vegetación."
+        },
+        {
+          "languageCode": "it",
+          "value": "La fontana e la passerella nel laghetto, circondato da salici e vegetazione."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De fontein en de voetbrug in de vijver, omringd door wilgen en ander groen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fontanna i kładka pośród stawu otoczonego wierzbami i roślinnością."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A fonte e a ponte pedonal no lago, rodeado de salgueiros e vegetação."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Arnaud Scherer. Source : site officiel de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Arnaud Scherer. Source: Pokeyland official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Arnaud Scherer. Quelle: offizielle Website von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Arnaud Scherer. Fuente: sitio web oficial de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Arnaud Scherer. Fonte: sito ufficiale di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Arnaud Scherer. Bron: officiële website van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Arnaud Scherer. Źródło: oficjalna strona Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Arnaud Scherer. Fonte: site oficial de Pokeyland."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:27:09.734Z",
+      "updatedAt": "2026-11-15T12:27:13.23Z"
+    },
+    "startedAtUtc": "2026-11-15T12:27:06.6675391Z",
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T12:27:16.3406150Z"
+  },
+  "personalReview": {
+    "rootViewedNativePublisherImage": true,
+    "all24LocalizedTextsPersonallyWrittenAndReviewed": true,
+    "originalExifAuthorRetained": true,
+    "noLocalTransform": true,
+    "noUtcCaptureDateInferred": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
