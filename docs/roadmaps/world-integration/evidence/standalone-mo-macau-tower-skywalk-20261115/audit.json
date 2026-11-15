@@ -1,0 +1,94 @@
+{
+  "work": "Macau Tower Skywalk créé comme attraction fixe autonome avec son propre billet, séparément du Bungy Jump déjà publié, du Skyjump et du Tower Climb. Huit descriptions, trois conditions d’accès, tarif officiel, frise d’ouverture, trois photos exactes créditées, huit pages publiques et publication Facebook vérifiés.",
+  "qualification": "La réservation Skywalk et le billet à 788 MOP incluant l’observatoire sont confirmés par Skypark Macau. Recherches officielles StandaloneAttraction sur Skywalk, Sky Walk, Macau Tower et Skypark sans doublon à Macao ; recherches Park sur Macau Tower et Skypark sans parent pertinent. Les trois photos Commons montrent la marche extérieure réelle en décembre 2007.",
+  "sources": {
+    "operatorActivity": "https://www.skyparkmacau.com/activities/skywalk",
+    "operatorParkInfo": "https://www.skyparkmacau.com/park-info",
+    "operatorTimeline": "https://www.skyparkmacau.com/timeline",
+    "towerAdventure": "https://www.macautower.com.mo/en/entertainment/adventure/",
+    "commonsPhotos": [
+      "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_1.JPG",
+      "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_2.JPG",
+      "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_3.JPG"
+    ]
+  },
+  "entity": {
+    "id": "0c07145f-ea9d-462e-ab07-e23806ee133f",
+    "name": "Macau Tower Skywalk",
+    "countryCode": "MO",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "3ec24bac42424b23ac1afbd7eda00f36",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_1.JPG",
+      "author": "MCTAR",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2007-12-25",
+      "current": true,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "d741724607cd4b2cb326c1c9fe64884f",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_2.JPG",
+      "author": "MCTAR",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2007-12-25",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "175cb89667194b71b62df7f5108d56a9",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_3.JPG",
+      "author": "MCTAR",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2007-12-25",
+      "current": false,
+      "published": true,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "pricing": "788 MOP par personne, entrée aux ponts d’observation comprise ; source Skypark Macau vérifiée le 15 novembre 2026.",
+    "hours": "Le site publie les horaires généraux de Skypark, mais aucun horaire propre aux créneaux Skywalk. Aucune règle hebdomadaire attribuée sans preuve.",
+    "accessConditions": 3,
+    "openingYear": 2002,
+    "openingYearSource": "https://www.skyparkmacau.com/timeline",
+    "coordinates": "Point Macau Tower déjà employé pour la fiche Bungy du même bâtiment."
+  },
+  "audit": {
+    "completenessScore": 85,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 3,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/0c07145f-ea9d-462e-ab07-e23806ee133f/macau-tower-skywalk",
+    "sitePublishedAtUtc": "2026-11-15T18:27:06.0986045Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:52aea38d-f498-452b-885c-996e1ac75706",
+    "facebookStatus": "Published",
+    "facebookId": "5d00cec00dae4d2b89c73df7fc332f5c",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127487533424431",
+    "facebookPublishedAtUtc": "2026-11-15T18:27:55.4556084Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T18:26:27.2261069Z",
+  "remainingGaps": [
+    "Vérifier une éventuelle grille de créneaux propres au Skywalk avant d’afficher des horaires.",
+    "Réévaluer le tarif et les conditions après 90 jours ; les photos exactes disponibles datent de 2007.",
+    "Poursuivre séparément Skyjump et Tower Climb si une photo réutilisable exacte est trouvée."
+  ]
+}

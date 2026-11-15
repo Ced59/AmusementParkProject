@@ -434,25 +434,89 @@
     {
       "entryId": "MO-candidate-discovery-ff809375516ddb2e",
       "name": "Macau Tower Skywalk",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Activité de hauteur fixe",
+      "category": "Marche extérieure fixe",
       "locality": "Macau Tower, Macao",
-      "siteId": null,
+      "siteId": "0c07145f-ea9d-462e-ab07-e23806ee133f",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-11-14",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T18:28:58Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Marche extérieure proposée distinctement par Skypark ; identité, tarif et photo à vérifier.",
-      "identityConfidence": "Activité distincte listée par l’exploitant ; identité précise, autonomie et éventuel doublon à contrôler avant création.",
+      "sourceLifecycleSignal": "Skypark Macau affiche la réservation Skywalk à 788 MOP par personne le 15 novembre 2026.",
+      "identityConfidence": "Skywalk propre à Macau Tower ; billet distinct avec accès à l’observatoire ; recherche officielle des attractions et des parcs sans doublon macanais.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Skywalk X",
+        "Skypark Macau Tower Skywalk"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher de nouveau Park et StandaloneAttraction, vérifier l’offre actuelle et trouver une photographie réutilisable montrant exactement cette activité avant publication. Ne pas utiliser les photos du Bungy pour cette fiche.",
+      "lastDataIntegrationAt": "2026-11-15T18:26:27.226Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-70c49a6a-de5b-400d-8f7d-2f8d4bf99859",
+          "appliedAt": "2026-11-15T18:21:47.755Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0c07145f-ea9d-462e-ab07-e23806ee133f",
+          "evidence": "PARK_DATA_EDITOR:apply:70c49a6a-de5b-400d-8f7d-2f8d4bf99859",
+          "auditEvidence": null,
+          "summary": "Création masquée et huit descriptions."
+        },
+        {
+          "eventId": "apply-5fbab4d1-5d20-43ea-acec-726f464bf4cc",
+          "appliedAt": "2026-11-15T18:23:12.728Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0c07145f-ea9d-462e-ab07-e23806ee133f",
+          "evidence": "PARK_DATA_EDITOR:apply:5fbab4d1-5d20-43ea-acec-726f464bf4cc",
+          "auditEvidence": null,
+          "summary": "Tarif officiel et conditions d’accès."
+        },
+        {
+          "eventId": "photo-3ec24bac42424b23ac1afbd7eda00f36",
+          "appliedAt": "2026-11-15T18:25:04.296Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0c07145f-ea9d-462e-ab07-e23806ee133f",
+          "evidence": "PARK_DATA_EDITOR:photo:3ec24bac42424b23ac1afbd7eda00f36",
+          "auditEvidence": null,
+          "summary": "Photo exacte du Skywalk, licence CC BY-SA 3.0 et crédits localisés."
+        },
+        {
+          "eventId": "photo-d741724607cd4b2cb326c1c9fe64884f",
+          "appliedAt": "2026-11-15T18:25:09.371Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0c07145f-ea9d-462e-ab07-e23806ee133f",
+          "evidence": "PARK_DATA_EDITOR:photo:d741724607cd4b2cb326c1c9fe64884f",
+          "auditEvidence": null,
+          "summary": "Photo exacte du Skywalk, licence CC BY-SA 3.0 et crédits localisés."
+        },
+        {
+          "eventId": "photo-175cb89667194b71b62df7f5108d56a9",
+          "appliedAt": "2026-11-15T18:25:14.848Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0c07145f-ea9d-462e-ab07-e23806ee133f",
+          "evidence": "PARK_DATA_EDITOR:photo:175cb89667194b71b62df7f5108d56a9",
+          "auditEvidence": null,
+          "summary": "Photo exacte du Skywalk, licence CC BY-SA 3.0 et crédits localisés."
+        },
+        {
+          "eventId": "apply-b43a317e-a631-4ca9-bae9-f02694d4544a",
+          "appliedAt": "2026-11-15T18:26:27.226Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0c07145f-ea9d-462e-ab07-e23806ee133f",
+          "evidence": "PARK_DATA_EDITOR:apply:b43a317e-a631-4ca9-bae9-f02694d4544a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mo-macau-tower-skywalk-20261115/audit.json",
+          "summary": "Ouverture officielle en 2002, frise, audit final et fiche prête à publier."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revoir les créneaux propres au Skywalk et le tarif avant février 2027 ; rechercher des photos exactes plus récentes avec licence vérifiée. Skyjump et Tower Climb restent deux dossiers distincts.",
       "sources": [
         {
           "label": "Skypark Macau — catalogue des activités",
@@ -463,19 +527,88 @@
           "label": "Skypark Macau — activité",
           "url": "https://www.skyparkmacau.com/activities/skywalk",
           "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Skypark Macau — Skywalk, billet et conditions",
+          "url": "https://www.skyparkmacau.com/activities/skywalk",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Skypark Macau — chronologie officielle, ouverture 2002",
+          "url": "https://www.skyparkmacau.com/timeline",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Skypark Macau — adresse et horaires généraux",
+          "url": "https://www.skyparkmacau.com/park-info",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Macau Tower Sky Walk 1, MCTAR, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_1.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Macau Tower Sky Walk 2, MCTAR, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_2.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Macau Tower Sky Walk 3, MCTAR, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Macau_Tower_Sky_Walk_3.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Skywalk",
+          "url": "https://amusement-parks.fun/fr/attraction/0c07145f-ea9d-462e-ab07-e23806ee133f/macau-tower-skywalk",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "MO",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-11-14",
-        "attractions": [],
-        "rationale": "Produit distinct du Bungy ; la modélisation autonome, les doublons et une photo exacte restent à confirmer."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Macau Tower Skywalk",
+            "source": "Skypark Macau",
+            "url": "https://www.skyparkmacau.com/activities/skywalk",
+            "family": "Marche extérieure fixe",
+            "sourceVenueName": "Macau Tower",
+            "sourceLifecycleSignal": "Billet Skywalk ouvert à la réservation et tarif affiché le 15 novembre 2026.",
+            "matchingMethod": "Recherches officielles StandaloneAttraction et Park, puis création contrôlée par Preview/Apply.",
+            "sourceLocality": "Macao"
+          }
+        ],
+        "rationale": "Marche extérieure permanente dans la tour, à billet individuel propre incluant l’observatoire ; ni attraction de parc à zones ni doublon du Bungy Jump."
       },
       "possibleBacklogEntries": [
         "MO-candidate-discovery-64f20a87c649ce"
-      ]
+      ],
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0c07145f-ea9d-462e-ab07-e23806ee133f/macau-tower-skywalk",
+          "publishedAtUtc": "2026-11-15T18:27:06.098Z",
+          "verifiedAtUtc": "2026-11-15T18:28:58Z",
+          "evidence": "PARK_DATA_EDITOR:apply:52aea38d-f498-452b-885c-996e1ac75706"
+        },
+        "facebook": {
+          "id": "5d00cec00dae4d2b89c73df7fc332f5c",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T18:27:55.455Z",
+          "externalPostId": "1285475681307050_122127487533424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127487533424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:5d00cec00dae4d2b89c73df7fc332f5c"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-mo-macau-tower-skywalk-20261115/audit.json",
+        "score": 85,
+        "publicationBlockers": [],
+        "gapCount": 3
+      }
     },
     {
       "entryId": "MO-candidate-discovery-f6b745d5b0628c86",
