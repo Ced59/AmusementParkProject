@@ -1161,19 +1161,19 @@
     {
       "entryId": "ZA-candidate-standalone-5d71e271831fe7",
       "name": "Cool Runnings Cape Town",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Luge d’été",
+      "category": "Luge d’été sur piste métallique",
       "locality": "Off Carl Cronje Drive, Tygervalley, Cape Town 7530",
-      "siteId": null,
+      "siteId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-11-14",
-      "editorialStatus": "Blocked",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T22:06:20Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Exploitation confirmée en 2026 ; tarifs officiels valables jusqu’au 30 septembre 2027.",
-      "identityConfidence": "Identité, autonomie de la piste et absence de fiche Park/Standalone confirmées par l’exploitant et la recherche officielle du 14 novembre 2026.",
+      "sourceLifecycleSignal": "Exploitant actif ; tarifs officiels valables jusqu’au 30 septembre 2027 et calendrier affiché jusqu’en janvier 2028.",
+      "identityConfidence": "Piste autonome confirmée par exploitant, constructeur et spécialiste ; absence de fiche Park/Standalone dans la recherche officielle avant création.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -1182,9 +1182,140 @@
         "Kapstadt"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Trouver au moins une photographie réutilisable montrant exactement la piste ou les luges de Bellville, avec auteur et licence vérifiables ; compléter ensuite la fiche et publier Facebook. Les images du site officiel ne portent pas de permission de réutilisation vérifiée. Ne pas substituer une photo du quartier ou d’une autre luge.",
+      "lastDataIntegrationAt": "2026-11-15T22:01:51.000Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-fa2bdf3d-b1d5-4e94-ab90-d06c429dd2f3",
+          "appliedAt": "2026-11-15T21:49:35.431Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:apply:fa2bdf3d-b1d5-4e94-ab90-d06c429dd2f3",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "photo-c8b0e2e122274da7b8f5ba17dac58d19",
+          "appliedAt": "2026-11-15T21:51:13.485Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:photo:c8b0e2e122274da7b8f5ba17dac58d19",
+          "auditEvidence": null,
+          "summary": "Photographie exacte importée avec crédit CoasterBloom et huit métadonnées localisées."
+        },
+        {
+          "eventId": "photo-1f10e7598d0646b09e2096312aea341a",
+          "appliedAt": "2026-11-15T21:51:41.305Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:photo:1f10e7598d0646b09e2096312aea341a",
+          "auditEvidence": null,
+          "summary": "Photographie exacte importée avec crédit CoasterBloom et huit métadonnées localisées."
+        },
+        {
+          "eventId": "photo-e7ef304d109b4bb691e33f66ba0f6352",
+          "appliedAt": "2026-11-15T21:52:01.096Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:photo:e7ef304d109b4bb691e33f66ba0f6352",
+          "auditEvidence": null,
+          "summary": "Photographie exacte importée avec crédit CoasterBloom et huit métadonnées localisées."
+        },
+        {
+          "eventId": "apply-c2456468-8ec5-48ef-9c84-fc862cdb87a9",
+          "appliedAt": "2026-11-15T21:54:14.944Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:apply:c2456468-8ec5-48ef-9c84-fc862cdb87a9",
+          "auditEvidence": null,
+          "summary": "Onze offres officielles en rands sud-africains, valables jusqu’au 30 septembre 2027."
+        },
+        {
+          "eventId": "apply-771823a9-c9f8-4e46-8590-d4c30a78da52",
+          "appliedAt": "2026-11-15T21:54:43.927Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:apply:771823a9-c9f8-4e46-8590-d4c30a78da52",
+          "auditEvidence": null,
+          "summary": "Horaires de la luge et vacances de l’exploitant structurés jusqu’au 11 janvier 2028."
+        },
+        {
+          "eventId": "apply-d8187e03-a2fd-4d24-8db7-ab97e9c7075c",
+          "appliedAt": "2026-11-15T21:55:48.612Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:apply:d8187e03-a2fd-4d24-8db7-ab97e9c7075c",
+          "auditEvidence": null,
+          "summary": "Âge minimal et accompagnement des enfants de moins de 8 ans structurés."
+        },
+        {
+          "eventId": "apply-10767bf0-a169-4499-a506-e7e319a25b49",
+          "appliedAt": "2026-11-15T21:57:13.812Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:apply:10767bf0-a169-4499-a506-e7e319a25b49",
+          "auditEvidence": null,
+          "summary": "Constructeur, modèle, date d’ouverture et vitesse ajoutés sur sources."
+        },
+        {
+          "eventId": "photo-0e743e28fad14f7b9b6da2f595678154",
+          "appliedAt": "2026-11-15T21:58:55.749Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:photo:0e743e28fad14f7b9b6da2f595678154",
+          "auditEvidence": null,
+          "summary": "Variante optimisée fournie par Coasterpedia de la photographie de remontée, avec droits et huit métadonnées."
+        },
+        {
+          "eventId": "photo-publish-e7ef304d109b4bb691e33f66ba0f6352",
+          "appliedAt": "2026-11-15T21:59:39.650Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:photo-publish:e7ef304d109b4bb691e33f66ba0f6352",
+          "auditEvidence": null,
+          "summary": "Photographie exacte rendue publique avec crédit et huit textes alternatifs."
+        },
+        {
+          "eventId": "photo-publish-1f10e7598d0646b09e2096312aea341a",
+          "appliedAt": "2026-11-15T21:59:58.363Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:photo-publish:1f10e7598d0646b09e2096312aea341a",
+          "auditEvidence": null,
+          "summary": "Photographie exacte rendue publique avec crédit et huit textes alternatifs."
+        },
+        {
+          "eventId": "photo-publish-0e743e28fad14f7b9b6da2f595678154",
+          "appliedAt": "2026-11-15T22:00:12.726Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:photo-publish:0e743e28fad14f7b9b6da2f595678154",
+          "auditEvidence": null,
+          "summary": "Photographie exacte rendue publique avec crédit et huit textes alternatifs."
+        },
+        {
+          "eventId": "photo-update-c8b0e2e122274da7b8f5ba17dac58d19",
+          "appliedAt": "2026-11-15T22:01:51.000Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+          "evidence": "PARK_DATA_EDITOR:photo-update:c8b0e2e122274da7b8f5ba17dac58d19",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-za-cool-runnings-cape-town-20261115/audit.json",
+          "summary": "Métadonnées distinctes corrigées sur la variante privée redondante ; audit final sans répétition."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les preuves. Vérifier nouveaux tarifs et horaires aux échéances officielles ; supprimer la variante photographique privée redondante si le client officiel ouvre une suppression ciblée des médias standalone.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -1220,23 +1351,75 @@
           "label": "Exploitant — adresse, accès et coordonnées",
           "url": "https://coolrunnings.capetown/directions",
           "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Exploitant — conditions de participation",
+          "url": "https://coolrunnings.capetown/terms-and-conditions/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Coasterpedia — constructeur et ouverture",
+          "url": "https://coasterpedia.net/wiki/Cool_Runnings",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Coasterpedia — CoasterBloom, remontée 2024, CC BY-SA 4.0",
+          "url": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_2024_01.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Coasterpedia — CoasterBloom, virage, CC BY-SA 4.0",
+          "url": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_01.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Coasterpedia — CoasterBloom, station et bobs, CC BY-SA 4.0",
+          "url": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_02.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Licence CC BY-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Cool Runnings Cape Town",
+          "url": "https://amusement-parks.fun/fr/attraction/95094ae6-007f-42b8-b5d2-d2b3548dc71a/cool-runnings-cape-town",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-11-14",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Cool Runnings Cape Town",
             "source": "Exploitant",
             "url": "https://coolrunnings.capetown/",
             "family": "Luge d’été",
-            "sourceVenueName": "Cool Runnings Cape Town",
+            "sourceVenueName": "Cool Runnings Toboggan Family Park",
             "sourceLifecycleSignal": "Operating",
             "sourceLocality": "Bellville, Le Cap"
           }
         ],
-        "rationale": "Une piste de luge avec sa propre billetterie, entrée libre, restauration et événements annexes. Recherche officielle Park/Standalone « Cool Runnings » en ZA : zéro résultat. Publication bloquée par la règle d’au moins une photo exacte sous licence réutilisable vérifiée."
+        "rationale": "Attraction unique à billetterie propre, présente durablement à Bellville. Fiche standalone publiée, trois photos exactes et audit 97 sans blocage."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/95094ae6-007f-42b8-b5d2-d2b3548dc71a/cool-runnings-cape-town",
+          "publishedAtUtc": "2026-11-15T22:02:43.4275096Z",
+          "verifiedAtUtc": "2026-11-15T22:06:20Z",
+          "evidence": "PARK_DATA_EDITOR:apply:886b492f-bb1d-4ce8-b170-1bdc51a7bfa0"
+        },
+        "facebook": {
+          "id": "82001d084d27462a891b4502bfc0e0ba",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T22:04:35.3387239Z",
+          "externalPostId": "1285475681307050_122127514617424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127514617424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:82001d084d27462a891b4502bfc0e0ba"
+        }
       }
     },
     {

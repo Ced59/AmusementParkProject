@@ -1,0 +1,103 @@
+{
+  "entityId": "95094ae6-007f-42b8-b5d2-d2b3548dc71a",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "fa2bdf3d-b1d5-4e94-ab90-d06c429dd2f3",
+      "appliedAtUtc": "2026-11-15T21:49:35.4311969Z"
+    },
+    {
+      "step": "pricing",
+      "operationId": "c2456468-8ec5-48ef-9c84-fc862cdb87a9",
+      "appliedAtUtc": "2026-11-15T21:54:14.9448425Z"
+    },
+    {
+      "step": "hours",
+      "operationId": "771823a9-c9f8-4e46-8590-d4c30a78da52",
+      "appliedAtUtc": "2026-11-15T21:54:43.9272259Z"
+    },
+    {
+      "step": "access",
+      "operationId": "d8187e03-a2fd-4d24-8db7-ab97e9c7075c",
+      "appliedAtUtc": "2026-11-15T21:55:48.6129981Z"
+    },
+    {
+      "step": "spec",
+      "operationId": "10767bf0-a169-4499-a506-e7e319a25b49",
+      "appliedAtUtc": "2026-11-15T21:57:13.8121395Z"
+    }
+  ],
+  "images": [
+    {
+      "step": "lift",
+      "imageId": "c8b0e2e122274da7b8f5ba17dac58d19",
+      "createdAtUtc": "2026-11-15T21:51:13.485Z",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_2024_01.jpg",
+      "published": false,
+      "current": false
+    },
+    {
+      "step": "curve",
+      "imageId": "1f10e7598d0646b09e2096312aea341a",
+      "createdAtUtc": "2026-11-15T21:51:41.305Z",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_01.jpg",
+      "published": true,
+      "current": false
+    },
+    {
+      "step": "station",
+      "imageId": "e7ef304d109b4bb691e33f66ba0f6352",
+      "createdAtUtc": "2026-11-15T21:52:01.096Z",
+      "sourceUrl": "https://coasterpedia.net/wiki/File:Cool_Runnings_(Cool_Runnings_Toboggan_Family_Park)_02.jpg",
+      "published": true,
+      "current": true
+    },
+    {
+      "step": "lift-official",
+      "imageId": "0e743e28fad14f7b9b6da2f595678154",
+      "createdAtUtc": "2026-11-15T21:58:55.749Z",
+      "sourceUrl": "https://images.coasterpedia.net/thumb/3/3c/Cool_Runnings_%28Cool_Runnings_Toboggan_Family_Park%29_2024_01.jpg/1536px-Cool_Runnings_%28Cool_Runnings_Toboggan_Family_Park%29_2024_01.jpg.webp",
+      "published": true,
+      "current": false
+    }
+  ],
+  "photoMetadataUpdates": [
+    {
+      "step": "station",
+      "imageId": "e7ef304d109b4bb691e33f66ba0f6352",
+      "updatedAtUtc": "2026-11-15T21:59:39.65Z",
+      "published": true
+    },
+    {
+      "step": "curve",
+      "imageId": "1f10e7598d0646b09e2096312aea341a",
+      "updatedAtUtc": "2026-11-15T21:59:58.363Z",
+      "published": true
+    },
+    {
+      "step": "lift-official",
+      "imageId": "0e743e28fad14f7b9b6da2f595678154",
+      "updatedAtUtc": "2026-11-15T22:00:12.726Z",
+      "published": true
+    },
+    {
+      "step": "lift-private-copy",
+      "imageId": "c8b0e2e122274da7b8f5ba17dac58d19",
+      "updatedAtUtc": "2026-11-15T22:01:51Z",
+      "published": false,
+      "evidenceNote": "Timestamp returned by UpdatePhotoMetadata client; no machine JSON output saved for this one response."
+    }
+  ],
+  "sitePublication": {
+    "operationId": "886b492f-bb1d-4ce8-b170-1bdc51a7bfa0",
+    "appliedAtUtc": "2026-11-15T22:02:43.4275096Z",
+    "url": "https://amusement-parks.fun/fr/attraction/95094ae6-007f-42b8-b5d2-d2b3548dc71a/cool-runnings-cape-town"
+  },
+  "facebookPublication": {
+    "id": "82001d084d27462a891b4502bfc0e0ba",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-15T22:04:35.3387239Z",
+    "externalPostId": "1285475681307050_122127514617424431",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127514617424431"
+  }
+}
