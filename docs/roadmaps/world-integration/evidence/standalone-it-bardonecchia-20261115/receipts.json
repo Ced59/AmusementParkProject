@@ -1,0 +1,36 @@
+{
+  "entryId": "IT-standalone-e1af2dac-4f6c-404d-9844-47b4e6048783",
+  "entityId": "e1af2dac-4f6c-404d-9844-47b4e6048783",
+  "integrationHistory": [
+    {
+      "eventId": "apply-3115b357-881b-4fc1-9c87-b83eb5251a75",
+      "appliedAt": "2026-11-15T15:31:30.648Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "e1af2dac-4f6c-404d-9844-47b4e6048783",
+      "evidence": "PARK_DATA_EDITOR:apply:3115b357-881b-4fc1-9c87-b83eb5251a75",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-bardonecchia-20261115/audit.json",
+      "summary": "Huit descriptions, tarifs saisonniers, conditions d’âge et horaires mis à jour ; texte public à corriger après contrôle."
+    },
+    {
+      "eventId": "apply-dcd9036b-7b4c-435f-8c18-efabee997a35",
+      "appliedAt": "2026-11-15T15:32:19.833Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "e1af2dac-4f6c-404d-9844-47b4e6048783",
+      "evidence": "PARK_DATA_EDITOR:apply:dcd9036b-7b4c-435f-8c18-efabee997a35",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-bardonecchia-20261115/audit.json",
+      "summary": "Huit descriptions corrigées, blocage éditorial levé ; contrôle final 90/100 sans bloqueur, deux photos exactes existantes conservées."
+    }
+  ],
+  "facebook": {
+    "id": "197193de15fd4fcf9a204fbb88776c13",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127469605424431",
+    "publishedAtUtc": "2026-11-15T15:33:15.0645569Z"
+  },
+  "productionPhotoIds": [
+    "b68c7ae0f6c14949993e7db0a8f3d13d",
+    "d1b66bf0539348ac95b254d307e987aa"
+  ]
+}

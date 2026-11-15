@@ -2453,18 +2453,39 @@
         "b2ddc5c4-bfa5-430b-bcbb-5ba8c6a183cb"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:34:15.921Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Fonctionne en été et en hiver ; dates et horaires hiver 2026–2027 non confirmés pour cette attraction.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:32:19.833Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3115b357-881b-4fc1-9c87-b83eb5251a75",
+          "appliedAt": "2026-11-15T15:31:30.648Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e1af2dac-4f6c-404d-9844-47b4e6048783",
+          "evidence": "PARK_DATA_EDITOR:apply:3115b357-881b-4fc1-9c87-b83eb5251a75",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-bardonecchia-20261115/audit.json",
+          "summary": "Huit descriptions, tarifs saisonniers, conditions d’âge et horaires mis à jour ; texte public à corriger après contrôle."
+        },
+        {
+          "eventId": "apply-dcd9036b-7b4c-435f-8c18-efabee997a35",
+          "appliedAt": "2026-11-15T15:32:19.833Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e1af2dac-4f6c-404d-9844-47b4e6048783",
+          "evidence": "PARK_DATA_EDITOR:apply:dcd9036b-7b4c-435f-8c18-efabee997a35",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-bardonecchia-20261115/audit.json",
+          "summary": "Huit descriptions corrigées, blocage éditorial levé ; contrôle final 90/100 sans bloqueur, deux photos exactes existantes conservées."
+        }
+      ],
+      "nextAction": "Revalider les tarifs et les jours d’ouverture de l’hiver 2026–2027 auprès de l’exploitant ; trouver une photo supplémentaire exacte avec licence vérifiable et contrôler les droits des deux images existantes.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2485,6 +2506,26 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/18594.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Bardonecchia Ski — Alpine Coaster été",
+          "url": "https://www.bardonecchiaski.com/it/attivita-estive/alpine-coaster",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Bardonecchia Ski — Alpine Coaster hiver et tarifs affichés",
+          "url": "https://www.bardonecchiaski.com/it/attivita-invernali/alpine-coaster",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Bardonecchia Ski — tarifs été 2026",
+          "url": "https://www.bardonecchiaski.com/it/attivita/tariffe-estive",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Bardonecchia Ski — horaires d’été",
+          "url": "https://www.bardonecchiaski.com/it/live-info/orari-di-apertura-estate",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "IT",
