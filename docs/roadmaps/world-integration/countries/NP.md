@@ -12,10 +12,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 0 |
-| À qualifier | 9 |
+| À qualifier | 10 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -26,7 +26,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **0 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **9 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **1 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -35,6 +35,8 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | ID stable | Lieu | Localité | Type / proposition | Présence relevée | État | Dernière intégration UTC | Affectation | Suite / sources |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | NP-candidate-87318e43858ec5 | Banbatika Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Nepal) |
+| NP-candidate-discovery-6fb59a2e521b2a | Bungy Nepal — The Last Resort | Bhotekoshi-05, Sindhupalchok, Bagmati | StandaloneAttraction | Published | Intégration achevée | 2026-11-15T12:19:23.528Z | — | Conserver la ligne. Recontrôler tarif selon la nationalité, jours de saut, bus et conditions sous 90 jours. Trouver des horaires sur place et des photos plus récentes exactes sous licence réutilisable ; les photos actuelles datent de 2005–2010. Ne pas inférer l’année d’ouverture. Qualifier Canyon Swing séparément avec une photo exacte. Ne pas republier Facebook pour une simple actualisation. Qualification standalone : AlreadyStandalone. Saut vendu séparément du Canyon Swing et des hébergements du resort. Fiche autonome créée après recherche de doublons. Installations référencées : Bungy Nepal — The Last Resort. Signal source : Exploitant : saut et réservation officiels disponibles en 2026 ; jours de saut et prix affichés, transport collectif actuellement le samedi.. [Exploitant — saut et présentation](https://www.thelastresort.com.np/bungy-nepal/) · [Exploitant — FAQ, poids et santé](https://www.thelastresort.com.np/faq/) · [Exploitant — saut sans transport et jours](https://www.thelastresort.com.np/bookings/bungy-only/) · [Exploitant — excursion avec transport](https://www.thelastresort.com.np/bookings/bungy-jump-day-trip/) · [Exploitant — Canyon Swing distinct](https://www.thelastresort.com.np/canyon-swing/) · [OpenStreetMap — position du resort](https://www.openstreetmap.org/node/14316048001) · [Wikimedia Commons — photo exacte historique, Pujan, Public domain](https://commons.wikimedia.org/wiki/File:Last_resort_nepal_bridge.JPG) · [Wikimedia Commons — photo exacte historique, No Lands Too Foreign, CC BY 2.0](https://commons.wikimedia.org/wiki/File:Bungee_Jump,_The_Last_Resort,_Nepal2.jpg) · [Wikimedia Commons — photo exacte historique, sluj78 from Bangkok, Thailand, CC BY-SA 2.0](https://commons.wikimedia.org/wiki/File:To_jump_or....jpg) |
+| NP-candidate-discovery-c62bb33eb57561 | Canyon Swing — The Last Resort | The Last Resort, Bhotekoshi-05, Sindhupalchok | À qualifier ; proposé : StandaloneAttraction | NotFound | À qualifier | Inconnue — non inventée | — | Rechercher à nouveau Park et StandaloneAttraction, confirmer tarif, accès, jours et cycle de vie ; trouver au moins une photographie libre montrant précisément le Canyon Swing. Ne pas utiliser les photos du Bungy. Qualification standalone : ParentToResolve. Activité distincte du Bungy sur le même site ; photo exacte et qualification de fiche propre à compléter. Signal source : Canyon Swing vendu séparément dans la boutique officielle, consultée le 15 novembre 2026.. [Exploitant — Canyon Swing](https://www.thelastresort.com.np/canyon-swing/) · [Exploitant — boutique Canyon Swing](https://www.thelastresort.com.np/bookings/canyon-swing-only/) |
 | NP-candidate-3efef93f5e9d9d | Central Zoo | Jawalakhel | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Nepal) |
 | NP-candidate-fae85f9cd014fe | Fishtail Dream Park | Pokhara , Gandaki | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/20506.htm) |
 | NP-candidate-77df09077afb43 | Gopal Fun Park | Biratnagar | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Nepal) |

@@ -1,0 +1,140 @@
+{
+  "entryId": "NZ-candidate-discovery-40a68098840cd0",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+  "name": "Nevis Bungy",
+  "countryCode": "NZ",
+  "auditAtUtc": "2026-11-15T11:59:24.737Z",
+  "qualification": "Saut fixe commercialisé séparément par AJ Hackett au Nevis Playground. Nevis Swing et Nevis Catapult ont leurs propres pages et réservations. Recherches officielles Park et StandaloneAttraction sur Nevis, Nevis Bungy et Nevis Valley sans résultat.",
+  "operatorSources": [
+    "https://www.bungy.co.nz/queenstown/nevis/nevis-bungy/",
+    "https://www.bungy.co.nz/queenstown/nevis/",
+    "https://www.bungy.co.nz/faqs/",
+    "https://www.bungy.co.nz/queenstown/nevis/nevis-swing/",
+    "https://www.bungy.co.nz/queenstown/nevis/nevis-catapult/"
+  ],
+  "geoSource": "https://www.openstreetmap.org/way/927664640",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/c5dd24f5-4eac-4b88-bb65-f11592f8061a/nevis-bungy",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "97346b168b5d4ca0a204981f4594e0e6",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Jump_from_nevis_bungee_platform.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Jump_from_nevis_bungee_platform.jpg/960px-Jump_from_nevis_bungee_platform.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Che010",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "photographedAt": "2005-10-02",
+      "importedAtUtc": "2026-11-15T11:53:42.578Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "15e609e356dc4e0f84a81093c3c706a0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Nevis_bungy_platform_jump.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Nevis_bungy_platform_jump.jpg/960px-Nevis_bungy_platform_jump.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Che010",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Nevis_bungy_platform_jump.jpg",
+      "photographedAt": "2005-10-02",
+      "importedAtUtc": "2026-11-15T11:54:10.477Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "9c2058de98aa4991a2a0e03bebae7979",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Nevis_bungy_platform_outside.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Nevis_bungy_platform_outside.jpg/960px-Nevis_bungy_platform_outside.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Che010",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Nevis_bungy_platform_outside.jpg",
+      "photographedAt": "2005-10-02",
+      "importedAtUtc": "2026-11-15T11:54:27.314Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Page de l’attraction consultée le 15 novembre 2026 : à partir de 395 NZD par personne dès 13 ans. Transport aller-retour inclus. Le billet accompagnateur Nevis Explorer est vendu séparément à 50 NZD. Prix final selon la réservation.",
+  "openingHoursAssessment": "Le centre indique une activité toute l’année, avec horaires de départ et créneaux variables à consulter lors de la réservation. Aucun horaire quotidien exact publié ; aucun créneau fabriqué dans la fiche. La page d’activité indique 3 h 30 de voyage total, le centre recommande 4 h ; la fiche prévoit environ 3 h 30 à 4 h. Présentation 30 minutes avant départ.",
+  "accessAssessment": "Dès 13 ans ; moins de 14 ans avec adulte sur place ; moins de 18 ans avec accord adulte au check-in. Poids individuel de 45 à 127 kg. Grossesse et épilepsie photosensible exclues ; autres situations médicales selon l’exploitant. Chaussures plates, fermées et stables. Transport obligatoire par le bus officiel, site inaccessible en voiture privée.",
+  "geoAssessment": "OpenStreetMap way 927664640, localisée à -45.0649257,169.0285041 par Nominatim, correspond à la plateforme Nevis Bungy ; distincte du Queenstown Bungy Centre où se fait le check-in.",
+  "historyAssessment": "Année d’ouverture non confirmée par les pages officielles consultées. Aucune date d’ouverture ou histoire approximative n’a été ajoutée. Les photos datées de 2005 prouvent uniquement que le site existait alors.",
+  "qualityLimitation": "Score 81/100 Publishable, sans blocage. Horaires précis et année d’ouverture inconnus ; trois photos exactes sont datées de 2005 et ne prouvent pas l’état actuel de la plateforme.",
+  "completeness": {
+    "score": 81,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127448755424431",
+    "publishedAtUtc": "2026-11-15T11:57:53.786439Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T11:55:53.746Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "c103691b-b587-4551-86a3-5f895f1f1b1a",
+      "appliedAtUtc": "2026-11-15T11:51:19.1803265Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "8654f6db-e4dd-41cb-a160-117bcc4e001a",
+      "appliedAtUtc": "2026-11-15T11:52:51.522642Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "copy",
+      "operationId": "831496f8-43cd-4520-bd23-987447677b03",
+      "appliedAtUtc": "2026-11-15T11:55:53.7460135Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "97346b168b5d4ca0a204981f4594e0e6",
+      "appliedAtUtc": "2026-11-15T11:53:42.578Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "15e609e356dc4e0f84a81093c3c706a0",
+      "appliedAtUtc": "2026-11-15T11:54:10.477Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "9c2058de98aa4991a2a0e03bebae7979",
+      "appliedAtUtc": "2026-11-15T11:54:27.314Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "c8dc3090-b411-4a86-afe9-45b5716d639d",
+    "appliedAtUtc": "2026-11-15T11:57:17.4734777Z"
+  },
+  "nextAction": "Conserver la ligne. Recontrôler le prix et les départs de bus sous 90 jours ; compléter les horaires journaliers et l’année d’ouverture seulement après une preuve officielle. Les photos sont historiques (2005) ; chercher des vues plus récentes avec licence réutilisable. Qualifier Nevis Swing et Nevis Catapult séparément avec photos exactes. Ne pas republier Facebook pour une simple actualisation."
+}

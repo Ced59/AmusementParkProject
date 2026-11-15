@@ -1,0 +1,79 @@
+{
+  "entryId": "NZ-candidate-discovery-b7c31d2090640c",
+  "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+  "integrationHistory": [
+    {
+      "eventId": "apply-8bab846e-d87e-4595-a337-c01591ca3670",
+      "appliedAt": "2026-11-15T12:03:41.399Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+      "evidence": "PARK_DATA_EDITOR:apply:8bab846e-d87e-4595-a337-c01591ca3670",
+      "auditEvidence": null,
+      "summary": "Création du saut de Taupō, point de saut OSM, adresse et descriptions éditoriales dans huit langues."
+    },
+    {
+      "eventId": "apply-132191da-c8dc-4977-840a-deaf9649110b",
+      "appliedAt": "2026-11-15T12:04:39.091Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+      "evidence": "PARK_DATA_EDITOR:apply:132191da-c8dc-4977-840a-deaf9649110b",
+      "auditEvidence": null,
+      "summary": "Tarifs officiels adulte et enfant, horaires de semaine et de week-end, âge, poids, tandem et santé, en huit langues."
+    },
+    {
+      "eventId": "image-61941fbb53f94b95bb4323cd53aec992",
+      "appliedAt": "2026-11-15T12:05:22.609Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+      "evidence": "PARK_DATA_EDITOR:image:61941fbb53f94b95bb4323cd53aec992",
+      "auditEvidence": null,
+      "summary": "Photo historique exacte de la plateforme au-dessus du Waikato, prise le 9 février 2005 ; huit alt, légendes et crédits ; Thajsko, CC BY 3.0."
+    },
+    {
+      "eventId": "image-4e91f7cd1996456399b55bb71533bb23",
+      "appliedAt": "2026-11-15T12:05:40.063Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+      "evidence": "PARK_DATA_EDITOR:image:4e91f7cd1996456399b55bb71533bb23",
+      "auditEvidence": null,
+      "summary": "Photo historique exacte de la plateforme au-dessus du Waikato, prise le 9 février 2005 ; huit alt, légendes et crédits ; Thajsko, CC BY 3.0."
+    },
+    {
+      "eventId": "apply-924ee396-d7f7-48a9-8cc0-d4527a22a038",
+      "appliedAt": "2026-11-15T12:08:26.960Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+      "evidence": "PARK_DATA_EDITOR:apply:924ee396-d7f7-48a9-8cc0-d4527a22a038",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-taupo-bungy-20261115/audit.json",
+      "summary": "Condition officielle ajoutée en huit langues : effleurer l’eau est possible selon les conditions, sans garantie."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "a69b681f-881d-4105-90ba-3d9979e0d7ef",
+    "appliedAtUtc": "2026-11-15T12:06:45.221397Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127449727424431",
+    "publishedAtUtc": "2026-11-15T12:07:26.1611363Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "61941fbb53f94b95bb4323cd53aec992",
+      "appliedAtUtc": "2026-11-15T12:05:22.609Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "4e91f7cd1996456399b55bb71533bb23",
+      "appliedAtUtc": "2026-11-15T12:05:40.063Z"
+    }
+  ]
+}

@@ -321,6 +321,407 @@
       ]
     },
     {
+      "entryId": "NZ-candidate-discovery-88a819e28a31d8",
+      "name": "Kawarau Bridge Bungy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "Gibbston Valley, Queenstown-Lakes, Otago",
+      "siteId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T11:34:05.862Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant AJ Hackett : saut, réservation, tarifs et horaires actuels affichés ; conditions de rivière et calendrier à recontrôler.",
+      "identityConfidence": "Identité, billet autonome, règles et tarifs confirmés par l’exploitant ; trois photos exactes sous licences réutilisables ; recherche officielle sans fiche préexistante.",
+      "possibleMatches": [],
+      "aliases": [
+        "Kawarau Bungy",
+        "Kawarau Bridge Bungee Jump",
+        "AJ Hackett Kawarau Bungy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T11:33:18.340Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-80a8a123-de49-4345-a058-cf8437f4c746",
+          "appliedAt": "2026-11-15T11:28:09.812Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:apply:80a8a123-de49-4345-a058-cf8437f4c746",
+          "auditEvidence": null,
+          "summary": "Création du saut à l’élastique du pont de Kawarau, coordonnées OSM et descriptions éditoriales dans huit langues."
+        },
+        {
+          "eventId": "apply-1c560201-92c4-4212-8003-b42dcfc5138b",
+          "appliedAt": "2026-11-15T11:30:15.331Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:apply:1c560201-92c4-4212-8003-b42dcfc5138b",
+          "auditEvidence": null,
+          "summary": "Tarifs adulte et enfant à partir du prix affiché, horaires saisonniers, fermeture de Noël et quatre conditions d’accès sourcées."
+        },
+        {
+          "eventId": "image-6bea7bbe90434fe59eb7b05209b76b24",
+          "appliedAt": "2026-11-15T11:31:51.491Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:image:6bea7bbe90434fe59eb7b05209b76b24",
+          "auditEvidence": null,
+          "summary": "Photo exacte du saut ou de sa plateforme importée et publiée, huit alt, légendes et crédits ; Matthias Klappenbach, CC BY 2.0, 2010-01-15."
+        },
+        {
+          "eventId": "image-02d65e1e43b047579d2c02ed53eed7fc",
+          "appliedAt": "2026-11-15T11:32:17.155Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:image:02d65e1e43b047579d2c02ed53eed7fc",
+          "auditEvidence": null,
+          "summary": "Photo exacte du saut ou de sa plateforme importée et publiée, huit alt, légendes et crédits ; Archives New Zealand, CC BY-SA 2.0, 1988."
+        },
+        {
+          "eventId": "image-d421de393e1945fb977b021fd3ec4dc5",
+          "appliedAt": "2026-11-15T11:32:36.574Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:image:d421de393e1945fb977b021fd3ec4dc5",
+          "auditEvidence": null,
+          "summary": "Photo exacte du saut ou de sa plateforme importée et publiée, huit alt, légendes et crédits ; macronix, CC BY 2.0, 2010-02-06."
+        },
+        {
+          "eventId": "apply-b4bc6eb3-d39d-4b37-ad4d-823c8003eb1c",
+          "appliedAt": "2026-11-15T11:33:18.340Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:apply:b4bc6eb3-d39d-4b37-ad4d-823c8003eb1c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-kawarau-bungy-20261115/audit.json",
+          "summary": "Histoire de l’ouverture en 1988 avec précision annuelle et huit langues ; divergences des sources officielles sur la date exacte documentées dans l’audit."
+        }
+      ],
+      "nextAction": "Conserver la ligne. Recontrôler tarifs, créneaux et horaires saisonniers auprès de l’exploitant sous 90 jours, notamment la contradiction entre pages officielles. Qualifier séparément Kawarau Swing et Kawarau Zipride avec photo exacte. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — saut, tarifs et conditions",
+          "url": "https://www.bungy.co.nz/queenstown/kawarau-bungy-centre/kawarau-bridge-bungy/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — centre, autres attractions et histoire",
+          "url": "https://www.bungy.co.nz/queenstown/kawarau-bungy-centre/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — autre chronologie de 1988",
+          "url": "https://www.bungy.co.nz/about-us/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ",
+          "url": "https://www.bungy.co.nz/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — conditions générales et santé",
+          "url": "https://www.bungy.co.nz/legal/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — point de saut",
+          "url": "https://www.openstreetmap.org/node/1196427447",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Matthias Klappenbach, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungee_jumping_-Kawarau_Bridge,_New_Zealand-15Jan2010.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Archives New Zealand, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungy_jumping_from_the_Kawarau_Bridge_near_Queenstown_1988_(10805217116).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, macronix, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungee_at_Kawarau_Bridge.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Kawarau Bridge Bungy",
+            "source": "Exploitant — saut, tarifs et conditions",
+            "url": "https://www.bungy.co.nz/queenstown/kawarau-bungy-centre/kawarau-bridge-bungy/",
+            "family": "Bungy jump",
+            "sourceVenueName": "Kawarau Bungy Centre",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Gibbston Valley, Queenstown-Lakes, Otago"
+          }
+        ],
+        "rationale": "Le saut historique est vendu indépendamment du Swing et du Zipride au même centre. Fiche propre créée après recherche de doublons."
+      }
+    },
+    {
+      "entryId": "NZ-candidate-discovery-40a68098840cd0",
+      "name": "Nevis Bungy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "Nevis Valley, Queenstown-Lakes, Otago",
+      "siteId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T11:57:17.473Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant : Nevis Playground proposé toute l’année ; horaires des départs variables selon la réservation.",
+      "identityConfidence": "Offre, billet, règles et transport confirmés par l’exploitant ; trois photographies exactes et réutilisables mais historiques ; aucune fiche site préexistante dans la recherche officielle.",
+      "possibleMatches": [],
+      "aliases": [
+        "Nevis Bungee",
+        "AJ Hackett Nevis Bungy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T11:55:53.746Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c103691b-b587-4551-86a3-5f895f1f1b1a",
+          "appliedAt": "2026-11-15T11:51:19.180Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:apply:c103691b-b587-4551-86a3-5f895f1f1b1a",
+          "auditEvidence": null,
+          "summary": "Création du saut dans le canyon de Nevis, point OSM et huit descriptions éditoriales."
+        },
+        {
+          "eventId": "apply-8654f6db-e4dd-41cb-a160-117bcc4e001a",
+          "appliedAt": "2026-11-15T11:52:51.522Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:apply:8654f6db-e4dd-41cb-a160-117bcc4e001a",
+          "auditEvidence": null,
+          "summary": "Tarif officiel à partir de 395 NZD, règles d’âge, poids, santé et transport, note honnête sur les horaires variables, en huit langues."
+        },
+        {
+          "eventId": "image-97346b168b5d4ca0a204981f4594e0e6",
+          "appliedAt": "2026-11-15T11:53:42.578Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:image:97346b168b5d4ca0a204981f4594e0e6",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte du saut ou de la plateforme, datée du 2 octobre 2005 ; huit alt, légendes et crédits ; Che010, CC BY-SA 3.0."
+        },
+        {
+          "eventId": "image-15e609e356dc4e0f84a81093c3c706a0",
+          "appliedAt": "2026-11-15T11:54:10.477Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:image:15e609e356dc4e0f84a81093c3c706a0",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte du saut ou de la plateforme, datée du 2 octobre 2005 ; huit alt, légendes et crédits ; Che010, Public domain."
+        },
+        {
+          "eventId": "image-9c2058de98aa4991a2a0e03bebae7979",
+          "appliedAt": "2026-11-15T11:54:27.314Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:image:9c2058de98aa4991a2a0e03bebae7979",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte du saut ou de la plateforme, datée du 2 octobre 2005 ; huit alt, légendes et crédits ; Che010, Public domain."
+        },
+        {
+          "eventId": "apply-831496f8-43cd-4520-bd23-987447677b03",
+          "appliedAt": "2026-11-15T11:55:53.746Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:apply:831496f8-43cd-4520-bd23-987447677b03",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-nevis-bungy-20261115/audit.json",
+          "summary": "Révision des descriptions pour supprimer les chiffres techniques proscrits dans le texte public ; données et sources inchangées."
+        }
+      ],
+      "nextAction": "Conserver la ligne. Recontrôler le prix et les départs de bus sous 90 jours ; compléter les horaires journaliers et l’année d’ouverture seulement après une preuve officielle. Les photos sont historiques (2005) ; chercher des vues plus récentes avec licence réutilisable. Qualifier Nevis Swing et Nevis Catapult séparément avec photos exactes. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — Nevis Bungy, tarif et conditions",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-bungy/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Nevis Playground, transport et horaires",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ et conditions médicales",
+          "url": "https://www.bungy.co.nz/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Nevis Swing distinct",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-swing/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Nevis Catapult distinct",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-catapult/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — plateforme Nevis Bungy",
+          "url": "https://www.openstreetmap.org/way/927664640",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Che010, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Jump_from_nevis_bungee_platform.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Che010, Public domain",
+          "url": "https://commons.wikimedia.org/wiki/File:Nevis_bungy_platform_jump.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Che010, Public domain",
+          "url": "https://commons.wikimedia.org/wiki/File:Nevis_bungy_platform_outside.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Nevis Bungy",
+            "source": "Exploitant — Nevis Bungy, tarif et conditions",
+            "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-bungy/",
+            "family": "Bungy jump",
+            "sourceVenueName": "Nevis Playground",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Nevis Valley, Queenstown-Lakes"
+          }
+        ],
+        "rationale": "Saut vendu séparément du Swing et du Catapult au Nevis Playground. Fiche autonome créée après recherche de doublons."
+      }
+    },
+    {
+      "entryId": "NZ-candidate-discovery-6e7f7b0f9f0758",
+      "name": "Nevis Catapult",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Catapulte de canyon",
+      "locality": "Nevis Playground, Queenstown-Lakes, Otago",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre et réservation distinctes sur la page officielle de l’exploitant, consultée le 15 novembre 2026.",
+      "identityConfidence": "Produit distinct du Nevis Bungy, page officielle disponible ; photo exacte et réutilisable, tarifs, règles et modélisation à contrôler avant publication.",
+      "possibleMatches": [],
+      "aliases": [
+        "AJ Hackett Nevis Catapult"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher à nouveau Park et StandaloneAttraction, vérifier tarifs, accès et horaires officiels, trouver au moins une photographie réutilisable montrant exactement cette activité. Ne pas utiliser les photos du Nevis Bungy pour une autre attraction.",
+      "sources": [
+        {
+          "label": "Exploitant — Nevis Playground, trois activités distinctes",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — activité propre",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-catapult/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Activité du Nevis Playground vendue séparément du Bungy ; photo exacte et qualification de fiche propre à compléter."
+      },
+      "possibleBacklogEntries": [
+        "NZ-candidate-discovery-40a68098840cd0"
+      ]
+    },
+    {
+      "entryId": "NZ-candidate-discovery-4159f631122b1d",
+      "name": "Nevis Swing",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire géante",
+      "locality": "Nevis Playground, Queenstown-Lakes, Otago",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre et réservation distinctes sur la page officielle de l’exploitant, consultée le 15 novembre 2026.",
+      "identityConfidence": "Produit distinct du Nevis Bungy, page officielle disponible ; photo exacte et réutilisable, tarifs, règles et modélisation à contrôler avant publication.",
+      "possibleMatches": [],
+      "aliases": [
+        "AJ Hackett Nevis Swing"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher à nouveau Park et StandaloneAttraction, vérifier tarifs, accès et horaires officiels, trouver au moins une photographie réutilisable montrant exactement cette activité. Ne pas utiliser les photos du Nevis Bungy pour une autre attraction.",
+      "sources": [
+        {
+          "label": "Exploitant — Nevis Playground, trois activités distinctes",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — activité propre",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-swing/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Activité du Nevis Playground vendue séparément du Bungy ; photo exacte et qualification de fiche propre à compléter."
+      },
+      "possibleBacklogEntries": [
+        "NZ-candidate-discovery-40a68098840cd0"
+      ]
+    },
+    {
       "entryId": "NZ-candidate-standalone-b1ba5c7ef3de54",
       "name": "Luge Wiegand — Coronet Peak - dismantled",
       "entityKind": "ToQualify",
@@ -1208,6 +1609,186 @@
           "url": "https://en.wikipedia.org/wiki/List_of_zoos_by_country#New_Zealand",
           "accessedAt": "2026-10-22"
         }
+      ]
+    },
+    {
+      "entryId": "NZ-candidate-discovery-b7c31d2090640c",
+      "name": "Taupō Bungy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "202 Spa Road, Taupō, Waikato",
+      "siteId": "11128785-fc14-4361-bbab-5e373e995bf5",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T12:06:45.221Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant : saut et réservation actuels, tarifs et horaires affichés sur la page propre au site.",
+      "identityConfidence": "Offre, billet, adresse, horaires et règles confirmés par l’exploitant ; deux photographies exactes et réutilisables mais historiques ; aucune fiche site préexistante dans la recherche officielle.",
+      "possibleMatches": [],
+      "aliases": [
+        "Taupo Bungy",
+        "AJ Hackett Taupō Bungy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T12:08:26.960Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-8bab846e-d87e-4595-a337-c01591ca3670",
+          "appliedAt": "2026-11-15T12:03:41.399Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:apply:8bab846e-d87e-4595-a337-c01591ca3670",
+          "auditEvidence": null,
+          "summary": "Création du saut de Taupō, point de saut OSM, adresse et descriptions éditoriales dans huit langues."
+        },
+        {
+          "eventId": "apply-132191da-c8dc-4977-840a-deaf9649110b",
+          "appliedAt": "2026-11-15T12:04:39.091Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:apply:132191da-c8dc-4977-840a-deaf9649110b",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels adulte et enfant, horaires de semaine et de week-end, âge, poids, tandem et santé, en huit langues."
+        },
+        {
+          "eventId": "image-61941fbb53f94b95bb4323cd53aec992",
+          "appliedAt": "2026-11-15T12:05:22.609Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:image:61941fbb53f94b95bb4323cd53aec992",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte de la plateforme au-dessus du Waikato, prise le 9 février 2005 ; huit alt, légendes et crédits ; Thajsko, CC BY 3.0."
+        },
+        {
+          "eventId": "image-4e91f7cd1996456399b55bb71533bb23",
+          "appliedAt": "2026-11-15T12:05:40.063Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:image:4e91f7cd1996456399b55bb71533bb23",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte de la plateforme au-dessus du Waikato, prise le 9 février 2005 ; huit alt, légendes et crédits ; Thajsko, CC BY 3.0."
+        },
+        {
+          "eventId": "apply-924ee396-d7f7-48a9-8cc0-d4527a22a038",
+          "appliedAt": "2026-11-15T12:08:26.960Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:apply:924ee396-d7f7-48a9-8cc0-d4527a22a038",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-taupo-bungy-20261115/audit.json",
+          "summary": "Condition officielle ajoutée en huit langues : effleurer l’eau est possible selon les conditions, sans garantie."
+        }
+      ],
+      "nextAction": "Conserver la ligne. Recontrôler prix, horaires et conditions sous 90 jours, notamment les éventuelles fermetures exceptionnelles. Les deux photos sont historiques (2005) : chercher des vues récentes exactes sous licence réutilisable. Qualifier Taupō Swing séparément. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — Taupō Bungy, prix et conditions",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-bungy/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Taupō Bungy Centre, adresse et horaires",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Taupō Swing distinct",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-swing/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ et conditions médicales",
+          "url": "https://www.bungy.co.nz/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — point de saut",
+          "url": "https://www.openstreetmap.org/node/3915899981",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Thajsko, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungy_jump_in_Taupo_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Thajsko, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungy_jump_in_Taupo_-_panoramio_-_Thajsko.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Taupō Bungy",
+            "source": "Exploitant — Taupō Bungy, prix et conditions",
+            "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-bungy/",
+            "family": "Bungy jump",
+            "sourceVenueName": "Taupō Bungy Centre",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Taupō, Waikato"
+          }
+        ],
+        "rationale": "Saut vendu séparément du Taupō Swing. Fiche autonome créée après recherche de doublons."
+      }
+    },
+    {
+      "entryId": "NZ-candidate-discovery-57d6a08c734447",
+      "name": "Taupō Swing",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire de canyon",
+      "locality": "Taupō Bungy Centre, Taupō, Waikato",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre et réservation distinctes sur la page officielle de l’exploitant, consultée le 15 novembre 2026.",
+      "identityConfidence": "Produit distinct du Taupō Bungy, page officielle disponible ; photo exacte et réutilisable, tarifs, règles et modélisation à contrôler avant publication.",
+      "possibleMatches": [],
+      "aliases": [
+        "Taupo Swing"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher à nouveau Park et StandaloneAttraction, vérifier tarifs, accès et horaires officiels, trouver au moins une photographie réutilisable montrant exactement le Swing. Ne pas utiliser les photos du Bungy pour cette fiche.",
+      "sources": [
+        {
+          "label": "Exploitant — Taupō Bungy Centre, deux activités distinctes",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Taupō Swing",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-swing/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Activité distincte du Taupō Bungy ; photo exacte et qualification de fiche propre à compléter."
+      },
+      "possibleBacklogEntries": [
+        "NZ-candidate-discovery-b7c31d2090640c"
       ]
     }
   ]

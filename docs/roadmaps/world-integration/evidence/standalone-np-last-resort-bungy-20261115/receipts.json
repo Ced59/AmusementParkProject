@@ -1,0 +1,97 @@
+{
+  "entryId": "NP-candidate-discovery-6fb59a2e521b2a",
+  "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+  "integrationHistory": [
+    {
+      "eventId": "apply-adc3175b-16b0-4dd4-96e0-7cd35e1dcf34",
+      "appliedAt": "2026-11-15T12:14:39.636Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+      "evidence": "PARK_DATA_EDITOR:apply:adc3175b-16b0-4dd4-96e0-7cd35e1dcf34",
+      "auditEvidence": null,
+      "summary": "Création du saut sur le pont du Last Resort, point OSM du resort voisin et descriptions éditoriales dans huit langues."
+    },
+    {
+      "eventId": "apply-f035d29c-c9b9-4fcd-8fa2-25b952de3837",
+      "appliedAt": "2026-11-15T12:15:47.598Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+      "evidence": "PARK_DATA_EDITOR:apply:f035d29c-c9b9-4fcd-8fa2-25b952de3837",
+      "auditEvidence": null,
+      "summary": "Tarifs officiels avec et sans transport, jours de saut sans horaires inventés, poids, âge, santé et transport dans huit langues."
+    },
+    {
+      "eventId": "image-6f9e0e4020034786931f11f545315974",
+      "appliedAt": "2026-11-15T12:18:06.648Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+      "evidence": "PARK_DATA_EDITOR:image:6f9e0e4020034786931f11f545315974",
+      "auditEvidence": null,
+      "summary": "Photo exacte historique de la plateforme ou du pont, avec huit alt, légendes et crédits ; Pujan, Public domain, 2008."
+    },
+    {
+      "eventId": "image-786e150f133041209194d511d1d1e68b",
+      "appliedAt": "2026-11-15T12:18:31.272Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+      "evidence": "PARK_DATA_EDITOR:image:786e150f133041209194d511d1d1e68b",
+      "auditEvidence": null,
+      "summary": "Photo exacte historique de la plateforme ou du pont, avec huit alt, légendes et crédits ; No Lands Too Foreign, CC BY 2.0, 2010."
+    },
+    {
+      "eventId": "image-78e8b46ca58d4563abdc7ae2a64be212",
+      "appliedAt": "2026-11-15T12:18:49.208Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+      "evidence": "PARK_DATA_EDITOR:image:78e8b46ca58d4563abdc7ae2a64be212",
+      "auditEvidence": null,
+      "summary": "Photo exacte historique de la plateforme ou du pont, avec huit alt, légendes et crédits ; sluj78 from Bangkok, Thailand, CC BY-SA 2.0, 2005."
+    },
+    {
+      "eventId": "apply-421df1f6-7af7-404f-a8a8-af927fc53c6c",
+      "appliedAt": "2026-11-15T12:19:23.528Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+      "evidence": "PARK_DATA_EDITOR:apply:421df1f6-7af7-404f-a8a8-af927fc53c6c",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-np-last-resort-bungy-20261115/audit.json",
+      "summary": "Condition officielle de prépaiement et confirmation du tarif selon la nationalité ajoutée dans huit langues."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "79d98905-8fe1-456c-bc11-9f2a9ea104c2",
+    "appliedAtUtc": "2026-11-15T12:20:10.78027Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127451467424431",
+    "publishedAtUtc": "2026-11-15T12:20:50.1221534Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "6f9e0e4020034786931f11f545315974",
+      "uploadedAtUtc": "2026-11-15T12:16:29.77Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:18:06.648Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "786e150f133041209194d511d1d1e68b",
+      "uploadedAtUtc": "2026-11-15T12:18:27.64Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:18:31.272Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "78e8b46ca58d4563abdc7ae2a64be212",
+      "uploadedAtUtc": "2026-11-15T12:18:45.646Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:18:49.208Z"
+    }
+  ]
+}

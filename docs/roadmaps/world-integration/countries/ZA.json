@@ -117,6 +117,189 @@
       ]
     },
     {
+      "entryId": "ZA-candidate-discovery-cd0c1e03fb712f",
+      "name": "Bloukrans Bridge Bungy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "Pont de Bloukrans, Tsitsikamma, Garden Route",
+      "siteId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T11:23:01.287Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant Face Adrenalin : saut réservable et activité ouverte quotidiennement, sous réserve de météo.",
+      "identityConfidence": "Identité, autonomie du billet, données de visite et année d’ouverture vérifiées auprès de l’exploitant ; trois photos exactes sous licence réutilisable ; recherche officielle du site sans fiche préexistante.",
+      "possibleMatches": [],
+      "aliases": [
+        "Bloukrans Bungy",
+        "Face Adrenalin Bloukrans Bungy",
+        "Bloukrans Bridge Bungee Jump"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T11:22:32.213Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-82245a6d-a52f-4b9d-9c89-ea14ae87f31a",
+          "appliedAt": "2026-11-15T11:16:04.685Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+          "evidence": "PARK_DATA_EDITOR:apply:82245a6d-a52f-4b9d-9c89-ea14ae87f31a",
+          "auditEvidence": null,
+          "summary": "Création du saut à l’élastique autonome sur le pont de Bloukrans, avec huit descriptions éditoriales."
+        },
+        {
+          "eventId": "apply-69ed7af0-c730-4f8d-b5bb-b71e5b8b868d",
+          "appliedAt": "2026-11-15T11:18:01.922Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+          "evidence": "PARK_DATA_EDITOR:apply:69ed7af0-c730-4f8d-b5bb-b71e5b8b868d",
+          "auditEvidence": null,
+          "summary": "Tarif à partir de 1 690 ZAR, horaires quotidiens, conditions d’âge, poids et santé, et année d’ouverture selon l’exploitant."
+        },
+        {
+          "eventId": "image-6b1cff157f7b458f9548c656ef76b97b",
+          "appliedAt": "2026-11-15T11:19:10.499Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+          "evidence": "PARK_DATA_EDITOR:image:6b1cff157f7b458f9548c656ef76b97b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Bloukrans Bungy importée et publiée avec huit alt, légendes et crédits ; Face Adrenalin, CC BY 3.0, 2010-01-10."
+        },
+        {
+          "eventId": "image-73b7ec3054d14d7ea62962e5d47a16d4",
+          "appliedAt": "2026-11-15T11:19:28.851Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+          "evidence": "PARK_DATA_EDITOR:image:73b7ec3054d14d7ea62962e5d47a16d4",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Bloukrans Bungy importée et publiée avec huit alt, légendes et crédits ; Travel Local, CC BY 2.0, 2014-04-29."
+        },
+        {
+          "eventId": "image-a6f17988a81044c795cc018e95b3a376",
+          "appliedAt": "2026-11-15T11:19:42.779Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+          "evidence": "PARK_DATA_EDITOR:image:a6f17988a81044c795cc018e95b3a376",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Bloukrans Bungy importée et publiée avec huit alt, légendes et crédits ; Angeliquetrudel, CC BY-SA 4.0, 2019-03-05."
+        },
+        {
+          "eventId": "apply-9c51a817-6986-4095-80e3-e92543da5eb8",
+          "appliedAt": "2026-11-15T11:20:50.015Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+          "evidence": "PARK_DATA_EDITOR:apply:9c51a817-6986-4095-80e3-e92543da5eb8",
+          "auditEvidence": null,
+          "summary": "Point du saut vérifié dans OpenStreetMap, distinct du parking et de la base Face Adrenalin."
+        },
+        {
+          "eventId": "apply-3ab427e1-3455-4b58-9dd2-df5fd0b0e050",
+          "appliedAt": "2026-11-15T11:21:06.881Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+          "evidence": "PARK_DATA_EDITOR:apply:3ab427e1-3455-4b58-9dd2-df5fd0b0e050",
+          "auditEvidence": null,
+          "summary": "Événement historique d’ouverture en 1997, huit langues et source officielle."
+        },
+        {
+          "eventId": "apply-511416e2-c4c8-4b53-9649-987b5202465e",
+          "appliedAt": "2026-11-15T11:21:36.540Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+          "evidence": "PARK_DATA_EDITOR:apply:511416e2-c4c8-4b53-9649-987b5202465e",
+          "auditEvidence": null,
+          "summary": "Révision du texte historique français pour préserver une formulation distincte des légendes photo."
+        },
+        {
+          "eventId": "apply-6569f139-5547-4bde-846b-76b42c51f97d",
+          "appliedAt": "2026-11-15T11:22:32.213Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+          "evidence": "PARK_DATA_EDITOR:apply:6569f139-5547-4bde-846b-76b42c51f97d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-za-bloukrans-bungy-20261115/audit.json",
+          "summary": "Ajout de la provenance officielle aux trois règles d’accès ; contrôle final 95/100 Excellent sans blocage après publication."
+        }
+      ],
+      "nextAction": "Conserver la ligne. Recontrôler le prix de départ et les horaires sous 90 jours, puis la météo et les créneaux avant visite. Qualifier séparément la tyrolienne et le SkyWalk du même opérateur, avec photos exactes. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — saut, expérience et billet",
+          "url": "https://faceadrenalin.com/bungy/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — conditions, horaires et météo",
+          "url": "https://faceadrenalin.com/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — adresse et contact",
+          "url": "https://faceadrenalin.com/contact-us/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — ouverture depuis 1997",
+          "url": "https://faceadrenalin.com/our-story/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tyrolienne distincte",
+          "url": "https://faceadrenalin.com/zipline/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — point de saut",
+          "url": "https://www.openstreetmap.org/node/6240270285",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Face Adrenalin, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Face_Adrenalin_Bloukrans_Bridge_Bungy.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Travel Local, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungee-jump-bloukrans-bridge-tsitsikamma-forest-south-africa-LTO.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Angeliquetrudel, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Pont_bloukrans_saut.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "ZA",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Bloukrans Bridge Bungy",
+            "source": "Exploitant — saut, expérience et billet",
+            "url": "https://faceadrenalin.com/bungy/",
+            "family": "Bungy jump",
+            "sourceVenueName": "Bloukrans Bridge",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Tsitsikamma, Garden Route"
+          }
+        ],
+        "rationale": "Saut fixe vendu par billet propre, indépendamment de la tyrolienne et du SkyWalk du même opérateur. Fiche créée et publiée après recherche de doublons."
+      }
+    },
+    {
       "entryId": "ZA-candidate-4a68f9b1c6fa4f",
       "name": "Cango Wildlife",
       "entityKind": "Park",

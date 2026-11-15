@@ -1,0 +1,138 @@
+{
+  "entryId": "NZ-candidate-discovery-88a819e28a31d8",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+  "name": "Kawarau Bridge Bungy",
+  "countryCode": "NZ",
+  "auditAtUtc": "2026-11-15T11:35:44.745Z",
+  "qualification": "Saut fixe à billet propre sur un pont historique ; l’exploitant vend séparément Kawarau Swing et Kawarau Zipride. Recherche officielle préalable sur Kawarau, AJ Hackett et Queenstown Bungy sans fiche Park ni StandaloneAttraction correspondante.",
+  "operatorSources": [
+    "https://www.bungy.co.nz/queenstown/kawarau-bungy-centre/kawarau-bridge-bungy/",
+    "https://www.bungy.co.nz/queenstown/kawarau-bungy-centre/",
+    "https://www.bungy.co.nz/about-us/",
+    "https://www.bungy.co.nz/faqs/",
+    "https://www.bungy.co.nz/legal/"
+  ],
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/82cf261b-66eb-47a1-9ce2-d6ab9191e9e3/kawarau-bridge-bungy",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "6bea7bbe90434fe59eb7b05209b76b24",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bungee_jumping_-Kawarau_Bridge,_New_Zealand-15Jan2010.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Bungee_jumping_-Kawarau_Bridge%2C_New_Zealand-15Jan2010.jpg/960px-Bungee_jumping_-Kawarau_Bridge%2C_New_Zealand-15Jan2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Matthias Klappenbach",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2010-01-15",
+      "importedAtUtc": "2026-11-15T11:31:51.491Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "02d65e1e43b047579d2c02ed53eed7fc",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bungy_jumping_from_the_Kawarau_Bridge_near_Queenstown_1988_(10805217116).jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Bungy_jumping_from_the_Kawarau_Bridge_near_Queenstown_1988_%2810805217116%29.jpg/960px-Bungy_jumping_from_the_Kawarau_Bridge_near_Queenstown_1988_%2810805217116%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Archives New Zealand",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "photographedAt": "1988",
+      "importedAtUtc": "2026-11-15T11:32:17.155Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "d421de393e1945fb977b021fd3ec4dc5",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bungee_at_Kawarau_Bridge.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Bungee_at_Kawarau_Bridge.jpg/960px-Bungee_at_Kawarau_Bridge.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "macronix",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2010-02-06",
+      "importedAtUtc": "2026-11-15T11:32:36.574Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Page de l’attraction : à partir de 320 NZD adulte, 280 NZD enfant de 10 à 14 ans. Prix minimal dynamique dans les offres ; vérifier le prix final à la réservation. Entrée au centre gratuite pour les spectateurs.",
+  "openingHoursAssessment": "Page spécifique de l’attraction : été octobre–avril 08:30–17:00, hiver mai–septembre 09:00–16:30, fermé le 25 décembre ; dernier départ 30 min avant fermeture et enregistrement 15 min avant. La page de présentation du centre donne aussi 09:30–16:00, en contradiction ; nous privilégions la page spécifique, sous réserve de confirmation du créneau réservé.",
+  "accessAssessment": "Dès 10 ans, chaque personne 35–160 kg (maximum possiblement 130 kg si niveau de la rivière élevé). Tandem maximum total 235 kg et différence de 30 kg. Moins de 14 ans avec adulte sur place ; moins de 18 ans avec accord signé. Grossesse et épilepsie photosensible exclues ; autres conditions médicales à voir avec l’exploitant.",
+  "geoAssessment": "Point de saut OpenStreetMap node 1196427447 à -45.00941,168.90031 ; distinct du parking et du centre.",
+  "historyAssessment": "L’exploitant confirme 1988, mais deux pages officielles divergent sur le jour/mois (12 avril contre novembre). Seule l’année est consignée dans la fiche publique.",
+  "completeness": {
+    "score": 95,
+    "level": "Excellent",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127446907424431",
+    "publishedAtUtc": "2026-11-15T11:34:42.5750795Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T11:33:18.340Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "80a8a123-de49-4345-a058-cf8437f4c746",
+      "appliedAtUtc": "2026-11-15T11:28:09.8122208Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "1c560201-92c4-4212-8003-b42dcfc5138b",
+      "appliedAtUtc": "2026-11-15T11:30:15.331945Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "history",
+      "operationId": "b4bc6eb3-d39d-4b37-ad4d-823c8003eb1c",
+      "appliedAtUtc": "2026-11-15T11:33:18.3400921Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "6bea7bbe90434fe59eb7b05209b76b24",
+      "appliedAtUtc": "2026-11-15T11:31:51.491Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "02d65e1e43b047579d2c02ed53eed7fc",
+      "appliedAtUtc": "2026-11-15T11:32:17.155Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "d421de393e1945fb977b021fd3ec4dc5",
+      "appliedAtUtc": "2026-11-15T11:32:36.574Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "bdd4e719-1156-497c-9531-cce151913282",
+    "appliedAtUtc": "2026-11-15T11:34:05.8620742Z"
+  },
+  "nextAction": "Conserver la ligne. Recontrôler tarifs, créneaux et horaires saisonniers auprès de l’exploitant sous 90 jours, notamment la contradiction entre pages officielles. Qualifier séparément Kawarau Swing et Kawarau Zipride avec photo exacte. Ne pas republier Facebook pour une simple actualisation."
+}

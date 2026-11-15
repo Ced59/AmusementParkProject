@@ -3739,26 +3739,102 @@
     },
     {
       "entryId": "HU-park-8c51d749-cdf3-46de-9d73-6d63037eec09",
-      "name": "X-Trém Bob",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "8c51d749-cdf3-46de-9d73-6d63037eec09",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "name": "X-Trém Bob Szilvásvárad",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Mountain coaster",
+      "locality": "Szalajka-völgy, Szilvásvárad, Heves",
+      "siteId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+      "legacySiteIds": [
+        "8c51d749-cdf3-46de-9d73-6d63037eec09"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T10:38:41.599Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitant : fermeture annuelle du 1er novembre au 5 mars ; météo défavorable susceptible de fermer la piste.",
+      "identityConfidence": "Ancien Park masqué avec un seul ParkItem X-Trém Bob ; nom, adresse, bob monorail et exploitation autonome confirmés par l’exploitant, photo exacte sous CC BY 3.0.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Szilvásvárad Bob",
+        "Szilvásvárad Bobpálya"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T10:44:07.934Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-271de7f2-d349-4d59-b8a8-93a22a2d4f37",
+          "appliedAt": "2026-11-15T10:34:24.843Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+          "evidence": "PARK_DATA_EDITOR:apply:271de7f2-d349-4d59-b8a8-93a22a2d4f37",
+          "auditEvidence": null,
+          "summary": "Création de la fiche autonome X-Trém Bob, identité vérifiée auprès de l’exploitant, coordonnées, dimensions et huit descriptions."
+        },
+        {
+          "eventId": "apply-6c2648cd-26fc-4a6d-99b0-c97f3d08ecc2",
+          "appliedAt": "2026-11-15T10:35:12.289Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+          "evidence": "PARK_DATA_EDITOR:apply:6c2648cd-26fc-4a6d-99b0-c97f3d08ecc2",
+          "auditEvidence": null,
+          "summary": "Quatre offres tarifaires officielles en forints : trajets seuls et adulte-enfant, à l’unité ou par six."
+        },
+        {
+          "eventId": "apply-058d7dd8-817f-4ce3-af10-6513e9151b00",
+          "appliedAt": "2026-11-15T10:35:50.769Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+          "evidence": "PARK_DATA_EDITOR:apply:058d7dd8-817f-4ce3-af10-6513e9151b00",
+          "auditEvidence": null,
+          "summary": "Règles officielles de l’exploitant pour les enfants et l’accompagnement, rédigées dans les huit langues."
+        },
+        {
+          "eventId": "apply-e36a4bb2-35f5-4ad9-a096-fa2291de38fa",
+          "appliedAt": "2026-11-15T10:36:51.215Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+          "evidence": "PARK_DATA_EDITOR:apply:e36a4bb2-35f5-4ad9-a096-fa2291de38fa",
+          "auditEvidence": null,
+          "summary": "Fermeture hivernale officielle du 15 novembre 2026 au 5 mars 2027, sans présumer la saison suivante."
+        },
+        {
+          "eventId": "image-cf97e67297244f20abab0e1a60be4351",
+          "appliedAt": "2026-11-15T10:37:31.385Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+          "evidence": "PARK_DATA_EDITOR:image:cf97e67297244f20abab0e1a60be4351",
+          "auditEvidence": null,
+          "summary": "Photo exacte du bob et de son rail importée et publiée avec textes alternatifs, légendes et crédits en huit langues ; Szodorai Imre [Hun], CC BY 3.0, 2009."
+        },
+        {
+          "eventId": "apply-a2d89040-3542-464d-b82e-7d080de41bf2",
+          "appliedAt": "2026-11-15T10:38:18.534Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+          "evidence": "PARK_DATA_EDITOR:apply:a2d89040-3542-464d-b82e-7d080de41bf2",
+          "auditEvidence": null,
+          "summary": "Ancien ParkItem masqué reclassé NotRelevant et vérifié ; le Park parent masqué reste ToReview en attente de clôture administrative."
+        },
+        {
+          "eventId": "apply-a805f363-343b-4dee-adb6-4702fa8d2f9a",
+          "appliedAt": "2026-11-15T10:44:07.934Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+          "evidence": "PARK_DATA_EDITOR:apply:a805f363-343b-4dee-adb6-4702fa8d2f9a",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hu-xtrem-bob-20261115/audit.json",
+          "summary": "Huit descriptions publiques réécrites autour du paysage et du vécu de la descente ; intégration éditoriale terminée, contrôle qualité 95/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Vérifier les tarifs et horaires lors de la saison 2027 ; régler le statut administratif du Park masqué resté ToReview sans relancer la migration Park bloquante. Le ParkItem legacy est déjà NotRelevant. La publication Facebook est faite : ne pas en créer un doublon.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3774,13 +3850,43 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/18532.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — identité, type et parcours",
+          "url": "https://www.szilvasvaradbob.hu/en/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://www.szilvasvaradbob.hu/en/prices/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — période de fermeture",
+          "url": "https://www.szilvasvaradbob.hu/en/opening-hours/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — conditions d’accès",
+          "url": "https://www.szilvasvaradbob.hu/en/rules/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — adresse et contact",
+          "url": "https://www.szilvasvaradbob.hu/kapcsolat/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte du X-Trém Bob, Szodorai Imre [Hun], CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bobp%C3%A1lya_az_erd%C5%91ben_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "HU",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "X-Trém Bob",
@@ -3793,7 +3899,7 @@
             "sourceOpenedYear": "2008"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Ancien Park masqué réduit à un ParkItem. L’exploitant confirme une piste de bob autonome à entrée et tarifs propres, près de la vallée de Szalajka. Fiche StandaloneAttraction publiée ; Park parent administratif encore ToReview."
       }
     },
     {

@@ -1,0 +1,94 @@
+{
+  "entryId": "CH-candidate-discovery-651263f938d4c8",
+  "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+  "integrationHistory": [
+    {
+      "eventId": "apply-7ccc657a-f3a8-458d-a146-d2d2496e0d34",
+      "appliedAt": "2026-11-15T11:38:49.486Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+      "evidence": "PARK_DATA_EDITOR:apply:7ccc657a-f3a8-458d-a146-d2d2496e0d34",
+      "auditEvidence": null,
+      "summary": "Création du saut sur le barrage de Verzasca, coordonnées officielles et huit descriptions éditoriales."
+    },
+    {
+      "eventId": "apply-176e3200-c292-4feb-b6ad-32297b3dae95",
+      "appliedAt": "2026-11-15T11:39:55.439Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+      "evidence": "PARK_DATA_EDITOR:apply:176e3200-c292-4feb-b6ad-32297b3dae95",
+      "auditEvidence": null,
+      "summary": "Tarifs officiels, horaires saisonniers annoncés sans créneaux inventés, fermeture actuelle et trois conditions d’accès en huit langues."
+    },
+    {
+      "eventId": "image-e5f47091a57f4248b1fb2790e5114918",
+      "appliedAt": "2026-11-15T11:40:44.457Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+      "evidence": "PARK_DATA_EDITOR:image:e5f47091a57f4248b1fb2790e5114918",
+      "auditEvidence": null,
+      "summary": "Photo exacte de la plateforme, du saut ou du barrage, avec huit alt, légendes et crédits ; Irene Grassi, CC BY-SA 2.0, 2014-08-24."
+    },
+    {
+      "eventId": "image-cacc9fdfef6247ce9159c32bed9caf86",
+      "appliedAt": "2026-11-15T11:41:05.301Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+      "evidence": "PARK_DATA_EDITOR:image:cacc9fdfef6247ce9159c32bed9caf86",
+      "auditEvidence": null,
+      "summary": "Photo exacte de la plateforme, du saut ou du barrage, avec huit alt, légendes et crédits ; Corradox, CC BY-SA 3.0, 2009-06-28."
+    },
+    {
+      "eventId": "image-a19e6d8140e54bcfaa7fda942a500d3e",
+      "appliedAt": "2026-11-15T11:41:21.923Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+      "evidence": "PARK_DATA_EDITOR:image:a19e6d8140e54bcfaa7fda942a500d3e",
+      "auditEvidence": null,
+      "summary": "Photo exacte de la plateforme, du saut ou du barrage, avec huit alt, légendes et crédits ; Hollerz, CC BY-SA 3.0, date inconnue."
+    },
+    {
+      "eventId": "apply-55328fd3-4296-4dd1-9a22-a81bc316a3a1",
+      "appliedAt": "2026-11-15T11:42:07.993Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c380d180-ca44-4f6a-8bf4-7e24e93a184c",
+      "evidence": "PARK_DATA_EDITOR:apply:55328fd3-4296-4dd1-9a22-a81bc316a3a1",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-verzasca-bungy-20261115/audit.json",
+      "summary": "Histoire sourcée : ouverture en 1996 avec précision annuelle, titre et résumé en huit langues."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "0c6308e1-e05d-47c2-818d-ffd3b853e9f5",
+    "appliedAtUtc": "2026-11-15T11:44:13.9554631Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127447699424431",
+    "publishedAtUtc": "2026-11-15T11:44:59.5105195Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "e5f47091a57f4248b1fb2790e5114918",
+      "appliedAtUtc": "2026-11-15T11:40:44.457Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "cacc9fdfef6247ce9159c32bed9caf86",
+      "appliedAtUtc": "2026-11-15T11:41:05.301Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "a19e6d8140e54bcfaa7fda942a500d3e",
+      "appliedAtUtc": "2026-11-15T11:41:21.923Z"
+    }
+  ]
+}

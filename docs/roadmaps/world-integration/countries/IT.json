@@ -12954,7 +12954,7 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Ancien Park masqué : son unique ParkItem est la Slittovia delle Dolomiti Lucane de 2025. La tyrolienne Volo dell’Angelo du même exploitant est intégrée séparément ; ne pas confondre les deux.",
       "possibleMatches": [],
       "aliases": [
         "Volo dell’Angelo"
@@ -12962,7 +12962,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Qualifier la Slittovia delle Dolomiti Lucane de 2025 comme attraction à intégrer dans ce Park ou à migrer vers StandaloneAttraction. Ne pas migrer cette fiche Park vers la tyrolienne Volo dell’Angelo, déjà publiée sous un autre ID. Rechercher au moins une photo exacte et réutilisable de la Slittovia avant publication.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -12978,13 +12978,23 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/23449.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — Slittovia distincte",
+          "url": "https://www.volodellangelo.com/ita/web/item.asp?nav=slittovia-dolomiti-lucane",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tyrolienne distincte",
+          "url": "https://www.volodellangelo.com/eng/web/item.asp?nav=angel-flight",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "IT",
       "countryResolution": null,
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Slittovia delle Lucanian Dolomites",
@@ -12997,7 +13007,201 @@
             "sourceOpenedYear": "2025"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "La fiche Park masquée contient uniquement la Slittovia des Dolomites Lucanes (2025), distincte de la tyrolienne Volo dell’Angelo publiée comme standalone séparée. Qualification du rattachement de la Slittovia encore ouverte."
+      },
+      "possibleBacklogEntries": [
+        "IT-candidate-discovery-12c4dd5738319d"
+      ]
+    },
+    {
+      "entryId": "IT-candidate-discovery-12c4dd5738319d",
+      "name": "Volo dell’Angelo — Dolomiti Lucane",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tyrolienne",
+      "locality": "Castelmezzano / Pietrapertosa, Potenza, Basilicata",
+      "siteId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T11:05:36.741Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation confirmée par le calendrier officiel 2026 jusqu’au 8 décembre ; fermeture météo signalée le 15 novembre.",
+      "identityConfidence": "Identité, parcours, billetterie autonome, horaires et règles confirmés par l’exploitant ; deux photos exactes CC BY-SA 4.0 ; la Slittovia de 2025 est une autre attraction du même opérateur.",
+      "possibleMatches": [],
+      "aliases": [
+        "Volo dell'Angelo",
+        "Angel's Flight",
+        "Flight of the Angel"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T11:04:41.601Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-19524d74-2400-4b00-9555-4376465ae069",
+          "appliedAt": "2026-11-15T10:56:24.637Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+          "evidence": "PARK_DATA_EDITOR:apply:19524d74-2400-4b00-9555-4376465ae069",
+          "auditEvidence": null,
+          "summary": "Création de la tyrolienne autonome entre Castelmezzano et Pietrapertosa, avec huit descriptions éditoriales distinctes."
+        },
+        {
+          "eventId": "apply-aea358d3-b4a4-47ee-8356-b44e40890f9f",
+          "appliedAt": "2026-11-15T10:58:05.991Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+          "evidence": "PARK_DATA_EDITOR:apply:aea358d3-b4a4-47ee-8356-b44e40890f9f",
+          "auditEvidence": null,
+          "summary": "Deux offres de l’exploitant pour fin 2026, vol aller-retour et navette inclus : solo et duo."
+        },
+        {
+          "eventId": "apply-de4a45a6-2b0b-4b7b-982a-3ccd63058269",
+          "appliedAt": "2026-11-15T10:58:42.358Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+          "evidence": "PARK_DATA_EDITOR:apply:de4a45a6-2b0b-4b7b-982a-3ccd63058269",
+          "auditEvidence": null,
+          "summary": "Trois conditions d’accès de l’exploitant : vol solo, vol duo et présence préalable à la billetterie."
+        },
+        {
+          "eventId": "apply-495f2522-f72b-472a-8480-731ebd70bbcf",
+          "appliedAt": "2026-11-15T10:59:13.448Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+          "evidence": "PARK_DATA_EDITOR:apply:495f2522-f72b-472a-8480-731ebd70bbcf",
+          "auditEvidence": null,
+          "summary": "Calendrier officiel restant de 2026, fermeture météo du 15 novembre et période sans vol jusqu’au 30 avril 2027."
+        },
+        {
+          "eventId": "image-4638e7139c9445feb07c869607cd1088",
+          "appliedAt": "2026-11-15T11:00:13.780Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+          "evidence": "PARK_DATA_EDITOR:image:4638e7139c9445feb07c869607cd1088",
+          "auditEvidence": null,
+          "summary": "Photo exacte du Volo dell’Angelo importée et publiée, avec alt, légendes et crédits dans les huit langues ; Mantovani Raffaella, CC BY-SA 4.0, 2017-08-14."
+        },
+        {
+          "eventId": "image-0a77251916534b03bd4f49dabb8f74c4",
+          "appliedAt": "2026-11-15T11:00:41.920Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+          "evidence": "PARK_DATA_EDITOR:image:0a77251916534b03bd4f49dabb8f74c4",
+          "auditEvidence": null,
+          "summary": "Photo exacte du Volo dell’Angelo importée et publiée, avec alt, légendes et crédits dans les huit langues ; Giugiuliagiu, CC BY-SA 4.0, 2020-08-30."
+        },
+        {
+          "eventId": "apply-9627f83d-80b7-46b1-8787-d0ab8ccee603",
+          "appliedAt": "2026-11-15T11:03:19.570Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+          "evidence": "PARK_DATA_EDITOR:apply:9627f83d-80b7-46b1-8787-d0ab8ccee603",
+          "auditEvidence": null,
+          "summary": "Coordonnées vérifiées sur OpenStreetMap pour le point d’attraction côté Castelmezzano et ouverture en 2007 sourcée par ANSA."
+        },
+        {
+          "eventId": "apply-acb36840-debf-48a7-89b1-31f0cf03ff0c",
+          "appliedAt": "2026-11-15T11:03:50.040Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+          "evidence": "PARK_DATA_EDITOR:apply:acb36840-debf-48a7-89b1-31f0cf03ff0c",
+          "auditEvidence": null,
+          "summary": "Événement historique de 2007 rédigé dans les huit langues avec ANSA comme source et précision à l’année."
+        },
+        {
+          "eventId": "apply-35532eca-21dd-45e2-b83a-3ca18b8ff54f",
+          "appliedAt": "2026-11-15T11:04:41.601Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+          "evidence": "PARK_DATA_EDITOR:apply:35532eca-21dd-45e2-b83a-3ca18b8ff54f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-volo-dell-angelo-20261115/audit.json",
+          "summary": "Provenance officielle, date de vérification et huit résumés sourcés ajoutés aux conditions d’accès ; contrôle final 97/100 sans blocage."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les reçus. Actualiser tarifs et calendrier détaillé de 2027 quand l’exploitant les publie. La fiche Park masquée homonyme contient la Slittovia des Dolomites Lucanes de 2025 : la qualifier et l’intégrer séparément, avec photo exacte. Ne pas republier Facebook pour une simple mise à jour.",
+      "sources": [
+        {
+          "label": "Exploitant — site et annonce du jour",
+          "url": "https://www.volodellangelo.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — identité de la tyrolienne",
+          "url": "https://www.volodellangelo.com/eng/web/item.asp?nav=angel-flight",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — calendrier 2026",
+          "url": "https://www.volodellangelo.com/ita/web/item.asp?nav=calendario",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs et billetterie",
+          "url": "https://www.volodellangelo.com/eng/ticket/index.asp",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — conditions d’accès",
+          "url": "https://www.volodellangelo.com/eng/web/item.asp?nav=faqs",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Slittovia distincte",
+          "url": "https://www.volodellangelo.com/ita/web/item.asp?nav=slittovia-dolomiti-lucane",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "ANSA — Volo en service depuis 2007",
+          "url": "https://www.ansa.it/basilicata/notizie/2024/05/03/basilicata-boom-presenze-per-avvio-di-stagione-volo-dellangelo_916b8a58-3489-49a2-8f44-73481b08edf6.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — point Volo dell’Angelo à Castelmezzano",
+          "url": "https://www.openstreetmap.org/node/4496292989",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Mantovani Raffaella, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/In_volo_verso_l'arrivo_a_Castelmezzano_(sullo_sfondo).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Giugiuliagiu, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/Volo_dell%E2%80%99angelo.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "IT",
+      "countryResolution": null,
+      "possibleBacklogEntries": [
+        "IT-park-9f6cb24e-584f-40d5-9f81-2d71cb62f244"
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Volo dell’Angelo",
+            "source": "Exploitant — identité de la tyrolienne",
+            "url": "https://www.volodellangelo.com/eng/web/item.asp?nav=angel-flight",
+            "family": "Tyrolienne",
+            "sourceVenueName": "Volo dell’Angelo",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Castelmezzano / Pietrapertosa, Basilicata"
+          }
+        ],
+        "rationale": "La tyrolienne entre les deux villages possède sa billetterie et ses règles propres ; elle est distincte de la Slittovia 2025 contenue dans l’ancien Park masqué."
       }
     },
     {

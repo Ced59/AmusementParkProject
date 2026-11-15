@@ -1,0 +1,124 @@
+{
+  "entryId": "ZA-candidate-discovery-cd0c1e03fb712f",
+  "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+  "integrationHistory": [
+    {
+      "eventId": "apply-82245a6d-a52f-4b9d-9c89-ea14ae87f31a",
+      "appliedAt": "2026-11-15T11:16:04.685Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "evidence": "PARK_DATA_EDITOR:apply:82245a6d-a52f-4b9d-9c89-ea14ae87f31a",
+      "auditEvidence": null,
+      "summary": "Création du saut à l’élastique autonome sur le pont de Bloukrans, avec huit descriptions éditoriales."
+    },
+    {
+      "eventId": "apply-69ed7af0-c730-4f8d-b5bb-b71e5b8b868d",
+      "appliedAt": "2026-11-15T11:18:01.922Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "evidence": "PARK_DATA_EDITOR:apply:69ed7af0-c730-4f8d-b5bb-b71e5b8b868d",
+      "auditEvidence": null,
+      "summary": "Tarif à partir de 1 690 ZAR, horaires quotidiens, conditions d’âge, poids et santé, et année d’ouverture selon l’exploitant."
+    },
+    {
+      "eventId": "image-6b1cff157f7b458f9548c656ef76b97b",
+      "appliedAt": "2026-11-15T11:19:10.499Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "evidence": "PARK_DATA_EDITOR:image:6b1cff157f7b458f9548c656ef76b97b",
+      "auditEvidence": null,
+      "summary": "Photo exacte de Bloukrans Bungy importée et publiée avec huit alt, légendes et crédits ; Face Adrenalin, CC BY 3.0, 2010-01-10."
+    },
+    {
+      "eventId": "image-73b7ec3054d14d7ea62962e5d47a16d4",
+      "appliedAt": "2026-11-15T11:19:28.851Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "evidence": "PARK_DATA_EDITOR:image:73b7ec3054d14d7ea62962e5d47a16d4",
+      "auditEvidence": null,
+      "summary": "Photo exacte de Bloukrans Bungy importée et publiée avec huit alt, légendes et crédits ; Travel Local, CC BY 2.0, 2014-04-29."
+    },
+    {
+      "eventId": "image-a6f17988a81044c795cc018e95b3a376",
+      "appliedAt": "2026-11-15T11:19:42.779Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "evidence": "PARK_DATA_EDITOR:image:a6f17988a81044c795cc018e95b3a376",
+      "auditEvidence": null,
+      "summary": "Photo exacte de Bloukrans Bungy importée et publiée avec huit alt, légendes et crédits ; Angeliquetrudel, CC BY-SA 4.0, 2019-03-05."
+    },
+    {
+      "eventId": "apply-9c51a817-6986-4095-80e3-e92543da5eb8",
+      "appliedAt": "2026-11-15T11:20:50.015Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "evidence": "PARK_DATA_EDITOR:apply:9c51a817-6986-4095-80e3-e92543da5eb8",
+      "auditEvidence": null,
+      "summary": "Point du saut vérifié dans OpenStreetMap, distinct du parking et de la base Face Adrenalin."
+    },
+    {
+      "eventId": "apply-3ab427e1-3455-4b58-9dd2-df5fd0b0e050",
+      "appliedAt": "2026-11-15T11:21:06.881Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "evidence": "PARK_DATA_EDITOR:apply:3ab427e1-3455-4b58-9dd2-df5fd0b0e050",
+      "auditEvidence": null,
+      "summary": "Événement historique d’ouverture en 1997, huit langues et source officielle."
+    },
+    {
+      "eventId": "apply-511416e2-c4c8-4b53-9649-987b5202465e",
+      "appliedAt": "2026-11-15T11:21:36.540Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "evidence": "PARK_DATA_EDITOR:apply:511416e2-c4c8-4b53-9649-987b5202465e",
+      "auditEvidence": null,
+      "summary": "Révision du texte historique français pour préserver une formulation distincte des légendes photo."
+    },
+    {
+      "eventId": "apply-6569f139-5547-4bde-846b-76b42c51f97d",
+      "appliedAt": "2026-11-15T11:22:32.213Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+      "evidence": "PARK_DATA_EDITOR:apply:6569f139-5547-4bde-846b-76b42c51f97d",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-za-bloukrans-bungy-20261115/audit.json",
+      "summary": "Ajout de la provenance officielle aux trois règles d’accès ; contrôle final 95/100 Excellent sans blocage après publication."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "6e28e959-86e8-4bf5-ad5c-100671ff59d7",
+    "appliedAtUtc": "2026-11-15T11:23:01.2874631Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127445497424431",
+    "publishedAtUtc": "2026-11-15T11:23:58.6194448Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "6b1cff157f7b458f9548c656ef76b97b",
+      "appliedAtUtc": "2026-11-15T11:19:10.499Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "73b7ec3054d14d7ea62962e5d47a16d4",
+      "appliedAtUtc": "2026-11-15T11:19:28.851Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "a6f17988a81044c795cc018e95b3a376",
+      "appliedAtUtc": "2026-11-15T11:19:42.779Z"
+    }
+  ]
+}
