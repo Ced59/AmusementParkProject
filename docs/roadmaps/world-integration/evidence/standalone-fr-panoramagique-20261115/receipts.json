@@ -50,6 +50,30 @@
       "license": "CC BY 2.0",
       "takenAt": "2010-07-27",
       "note": "Vue historique de l’ancienne livrée du ballon, explicitement signalée en légende."
+    },
+    {
+      "imageId": "88b2e3e91ede40a4a171ac3c67e929fd",
+      "sourceUrl": "https://www.flickr.com/photos/andy50/31407915302/",
+      "createdAtUtc": "2026-11-15T22:53:33.463Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200,
+      "author": "Andy Whittle",
+      "license": "CC BY 2.0",
+      "takenAt": "2016-11-25",
+      "note": "Photographie exacte du ballon dans son ancienne livrée, datée dans la légende."
+    },
+    {
+      "imageId": "8a949e19e68c497cae7314d2057095a2",
+      "sourceUrl": "https://www.flickr.com/photos/35mmman/49226949571/",
+      "createdAtUtc": "2026-11-15T22:53:46.418Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200,
+      "author": "35mmMan",
+      "license": "CC BY 2.0",
+      "takenAt": "2019-12-02",
+      "note": "Photographie exacte du ballon dans son ancienne livrée, datée dans la légende."
     }
   ],
   "facebook": {

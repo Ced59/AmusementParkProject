@@ -10,7 +10,7 @@ Continue la campagne France en prenant en compte l’inventaire mondial du dép�
 Lis AGENTS.md puis, dans docs/roadmaps/world-integration/, README.md, WORKFLOW.md, STANDALONE-AUDIT.md, CREATIONS-STANDALONE.md et countries/FR.json.
 
 Le Ballon Generali de Paris est déjà intégré et publié sous FR-candidate-discovery-91f1e3fca6cbc6 (fiche c8823aa8-65ab-4cd0-aada-2e814d0790e9) : trois photos exactes, annonce Facebook et audit sont enregistrés dans le dépôt. Ne recrée pas cette attraction et conserve ses anciennes identités Aeroparis, Eutelsat et City of Paris dans cette même ligne.
-PanoraMagique est également intégré et publié sous FR-candidate-discovery-8c603a6339cbd7 (fiche 21e2b789-4781-4c1d-b303-417a496ab2bc), avec photo historique datée et annonce Facebook. Ne recrée pas la fiche ; chercher plutôt une photo récente de la livrée actuelle sous licence compatible.
+PanoraMagique est également intégré et publié sous FR-candidate-discovery-8c603a6339cbd7 (fiche 21e2b789-4781-4c1d-b303-417a496ab2bc), avec trois photos historiques datées (2010, 2016, 2019) et annonce Facebook. Ne recrée pas la fiche ; chercher plutôt une photo récente de la livrée actuelle sous licence compatible.
 
 Avant le prochain lot, rapproche tes intégrations récentes du relevé du 22 octobre 2026, sans perdre le travail en cours. Réserve les entrées par leur entryId et cette conversation. Vérifie les alias, anciennes identités et migrations avant toute création. Une fiche masquée ordinaire nécessite une vraie intégration éditoriale.
 

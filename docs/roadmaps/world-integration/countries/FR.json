@@ -22161,7 +22161,7 @@
         "Disney Village tethered balloon"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-15T22:47:41.605Z",
+      "lastDataIntegrationAt": "2026-11-15T22:53:46.418Z",
       "integrationHistory": [
         {
           "eventId": "apply-29f67b89-3559-4017-82d6-7333a2e5a917",
@@ -22222,9 +22222,29 @@
           "evidence": "PARK_DATA_EDITOR:apply:af4790c6-0150-4aeb-9ea6-eb2a8ad955ee",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-fr-panoramagique-20261115/audit.json",
           "summary": "Trois règles d’embarquement officielles intégrées."
+        },
+        {
+          "eventId": "photo-88b2e3e91ede40a4a171ac3c67e929fd",
+          "appliedAt": "2026-11-15T22:53:33.463Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:photo:88b2e3e91ede40a4a171ac3c67e929fd",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du ballon en 2016 ajoutée à la galerie, créditée Andy Whittle CC BY 2.0."
+        },
+        {
+          "eventId": "photo-8a949e19e68c497cae7314d2057095a2",
+          "appliedAt": "2026-11-15T22:53:46.418Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:photo:8a949e19e68c497cae7314d2057095a2",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-fr-panoramagique-20261115/audit.json",
+          "summary": "Photographie exacte du ballon en 2019 ajoutée à la galerie, créditée 35mmMan CC BY 2.0."
         }
       ],
-      "nextAction": "Conserver cette ligne et les preuves ; rechercher une photo récente sous licence compatible, puis recontrôler horaires et tarifs. Prévenir la conversation France que PanoraMagique est déjà publié pour éviter un doublon.",
+      "nextAction": "Conserver la fiche et la galerie de trois vues historiques exactes ; rechercher une photo de la livrée actuelle sous licence compatible et recontrôler horaires et tarifs.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -22274,6 +22294,16 @@
         {
           "label": "Fiche autonome publiée",
           "url": "https://amusement-parks.fun/fr/attraction/21e2b789-4781-4c1d-b303-417a496ab2bc/panoramagique",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — PanoraMagique 2016, Andy Whittle, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/andy50/31407915302/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — PanoraMagique 2019, 35mmMan, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/35mmman/49226949571/",
           "accessedAt": "2026-11-15"
         }
       ],
