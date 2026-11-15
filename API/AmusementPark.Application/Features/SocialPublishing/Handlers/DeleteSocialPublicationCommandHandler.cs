@@ -27,6 +27,7 @@ public sealed class DeleteSocialPublicationCommandHandler
         {
             SocialPublication? publication = await this.repository.GetByIdAsync(command.PublicationId, cancellationToken);
             bool isOriginalRequester = publication?.CreatedByUserId == command.RequestedByUserId;
+            // Older posts lack the creator field; accept only an initial, unsynchronized attempt.
             bool isUnmodifiedLegacyPublication = publication?.CreatedByUserId is null
                 && publication?.RequestedByUserId == command.RequestedByUserId
                 && publication?.LastSynchronizedAtUtc is null
