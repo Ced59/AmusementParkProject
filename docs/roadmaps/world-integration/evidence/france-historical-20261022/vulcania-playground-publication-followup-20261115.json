@@ -1,0 +1,1127 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T21:36:12.385560+00:00",
+  "scopeAudit": "vulcania-playground-publication-scope-audit-20261115.json",
+  "publicationExport": "vulcania-playground-publication-export-20261115.json",
+  "realPublicationApplies": [
+    {
+      "operationId": "2bcd204b-bf21-46c3-80cd-2b4ecdb9ddd7",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T21:29:07.3247506Z",
+      "appliedAtUtc": "2026-11-15T21:29:07.3247512Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "83ff43e0-c52c-4c28-9f18-a20419168599",
+          "entityKey": "83ff43e0-c52c-4c28-9f18-a20419168599",
+          "displayName": "Aires de jeux extérieures",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "d9db0d23cccc424191093ba08edca1df",
+          "entityKey": null,
+          "displayName": "codex-import.png",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "bbc2f166-e5d7-48f4-aee4-293574e3f63c",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T21:29:33.8587675Z",
+      "appliedAtUtc": "2026-11-15T21:29:33.8587681Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "83ff43e0-c52c-4c28-9f18-a20419168599",
+          "entityKey": "83ff43e0-c52c-4c28-9f18-a20419168599",
+          "displayName": "Aires de jeux extérieures",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "publicChecks": {
+    "languageCount": 8,
+    "normalParkItemsSearchItemNavigations": 8,
+    "descriptionsExact": 8,
+    "photoRendered": 8,
+    "photoBinary200": 8,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "guidLeaks": 0,
+    "rootReviewedScreenshot": "public-checks-recheck/playground-fr-description.png",
+    "screenshotSha256": "abf5270bc9031ea4947e7bfd6ff9ae2f593e4a5162fe98df4881a587aa0e151e",
+    "finalResults": [
+      {
+        "language": "fr",
+        "checkedAtUtc": "2026-11-15T21:34:16.103521+00:00",
+        "parkStatus": 200,
+        "discoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "h1": [
+          "Aires de jeux extérieures"
+        ],
+        "overflow": 0,
+        "brokenImages": [],
+        "guidLeaks": [],
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          }
+        ],
+        "expectedAlt": "Vue aérienne d’une toile de cordes rouge en étoile sur une aire circulaire de copeaux à Vulcania.",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "status": 200
+          }
+        ],
+        "links": [
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Aires de jeux extérieures"
+          },
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures/images",
+            "text": "PHOTOS\nGalerie du lieu"
+          },
+          {
+            "href": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Famusement-parks.fun%2Ffr%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "LinkedIn"
+          },
+          {
+            "href": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famusement-parks.fun%2Ffr%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "Facebook"
+          },
+          {
+            "href": "https://twitter.com/intent/tweet?url=https%3A%2F%2Famusement-parks.fun%2Ffr%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&text=D%C3%A9couvre%20Aires%20de%20jeux%20ext%C3%A9rieures%20sur%20AmusementPark.",
+            "text": "X"
+          },
+          {
+            "href": "https://www.reddit.com/submit?url=https%3A%2F%2Famusement-parks.fun%2Ffr%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&title=Aires%20de%20jeux%20ext%C3%A9rieures",
+            "text": "Reddit"
+          },
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "English"
+          },
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Français"
+          },
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Español"
+          },
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Deutsch"
+          },
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Italiano"
+          },
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Polski"
+          },
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Nederlands"
+          },
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Português"
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "checkedAtUtc": "2026-11-15T21:34:16.112689+00:00",
+        "parkStatus": 200,
+        "discoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "h1": [
+          "Aires de jeux extérieures"
+        ],
+        "overflow": 0,
+        "brokenImages": [],
+        "guidLeaks": [],
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          }
+        ],
+        "expectedAlt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "status": 200
+          }
+        ],
+        "links": [
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Aires de jeux extérieures"
+          },
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures/images",
+            "text": "PHOTOS\nPlace gallery"
+          },
+          {
+            "href": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Famusement-parks.fun%2Fen%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "LinkedIn"
+          },
+          {
+            "href": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famusement-parks.fun%2Fen%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "Facebook"
+          },
+          {
+            "href": "https://twitter.com/intent/tweet?url=https%3A%2F%2Famusement-parks.fun%2Fen%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&text=Discover%20Aires%20de%20jeux%20ext%C3%A9rieures%20on%20AmusementPark.",
+            "text": "X"
+          },
+          {
+            "href": "https://www.reddit.com/submit?url=https%3A%2F%2Famusement-parks.fun%2Fen%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&title=Aires%20de%20jeux%20ext%C3%A9rieures",
+            "text": "Reddit"
+          },
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "English"
+          },
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Français"
+          },
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Español"
+          },
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Deutsch"
+          },
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Italiano"
+          },
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Polski"
+          },
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Nederlands"
+          },
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Português"
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "checkedAtUtc": "2026-11-15T21:34:16.113933+00:00",
+        "parkStatus": 200,
+        "discoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "h1": [
+          "Aires de jeux extérieures"
+        ],
+        "overflow": 0,
+        "brokenImages": [],
+        "guidLeaks": [],
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          }
+        ],
+        "expectedAlt": "Luftaufnahme eines roten, sternförmigen Seilnetzes über einer kreisrunden Holzschnitzelfläche in Vulcania.",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "status": 200
+          }
+        ],
+        "links": [
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Aires de jeux extérieures"
+          },
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures/images",
+            "text": "FOTOS\nGalerie des Ortes"
+          },
+          {
+            "href": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Famusement-parks.fun%2Fde%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "LinkedIn"
+          },
+          {
+            "href": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famusement-parks.fun%2Fde%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "Facebook"
+          },
+          {
+            "href": "https://twitter.com/intent/tweet?url=https%3A%2F%2Famusement-parks.fun%2Fde%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&text=Entdecke%20Aires%20de%20jeux%20ext%C3%A9rieures%20auf%20AmusementPark.",
+            "text": "X"
+          },
+          {
+            "href": "https://www.reddit.com/submit?url=https%3A%2F%2Famusement-parks.fun%2Fde%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&title=Aires%20de%20jeux%20ext%C3%A9rieures",
+            "text": "Reddit"
+          },
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "English"
+          },
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Français"
+          },
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Español"
+          },
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Deutsch"
+          },
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Italiano"
+          },
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Polski"
+          },
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Nederlands"
+          },
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Português"
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "checkedAtUtc": "2026-11-15T21:35:18.790563+00:00",
+        "parkStatus": 200,
+        "discoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "h1": [
+          "Aires de jeux extérieures"
+        ],
+        "overflow": 0,
+        "brokenImages": [],
+        "guidLeaks": [],
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          }
+        ],
+        "expectedAlt": "Luchtfoto van een rood, stervormig touwwerk boven een ronde speelvloer van houtsnippers in Vulcania.",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "status": 200
+          }
+        ],
+        "links": [
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Aires de jeux extérieures"
+          },
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures/images",
+            "text": "FOTO'S\nGalerij van de plek"
+          },
+          {
+            "href": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Famusement-parks.fun%2Fnl%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "LinkedIn"
+          },
+          {
+            "href": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famusement-parks.fun%2Fnl%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "Facebook"
+          },
+          {
+            "href": "https://twitter.com/intent/tweet?url=https%3A%2F%2Famusement-parks.fun%2Fnl%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&text=Ontdek%20Aires%20de%20jeux%20ext%C3%A9rieures%20op%20AmusementPark.",
+            "text": "X"
+          },
+          {
+            "href": "https://www.reddit.com/submit?url=https%3A%2F%2Famusement-parks.fun%2Fnl%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&title=Aires%20de%20jeux%20ext%C3%A9rieures",
+            "text": "Reddit"
+          },
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "English"
+          },
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Français"
+          },
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Español"
+          },
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Deutsch"
+          },
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Italiano"
+          },
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Polski"
+          },
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Nederlands"
+          },
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Português"
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "checkedAtUtc": "2026-11-15T21:34:30.801156+00:00",
+        "parkStatus": 200,
+        "discoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "h1": [
+          "Aires de jeux extérieures"
+        ],
+        "overflow": 0,
+        "brokenImages": [],
+        "guidLeaks": [],
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          }
+        ],
+        "expectedAlt": "Veduta aerea di una rete rossa a forma di stella sopra un’area circolare di trucioli a Vulcania.",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "status": 200
+          }
+        ],
+        "links": [
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Aires de jeux extérieures"
+          },
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures/images",
+            "text": "FOTO\nGalleria del luogo"
+          },
+          {
+            "href": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Famusement-parks.fun%2Fit%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "LinkedIn"
+          },
+          {
+            "href": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famusement-parks.fun%2Fit%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "Facebook"
+          },
+          {
+            "href": "https://twitter.com/intent/tweet?url=https%3A%2F%2Famusement-parks.fun%2Fit%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&text=Scopri%20Aires%20de%20jeux%20ext%C3%A9rieures%20su%20AmusementPark.",
+            "text": "X"
+          },
+          {
+            "href": "https://www.reddit.com/submit?url=https%3A%2F%2Famusement-parks.fun%2Fit%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&title=Aires%20de%20jeux%20ext%C3%A9rieures",
+            "text": "Reddit"
+          },
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "English"
+          },
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Français"
+          },
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Español"
+          },
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Deutsch"
+          },
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Italiano"
+          },
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Polski"
+          },
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Nederlands"
+          },
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Português"
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "checkedAtUtc": "2026-11-15T21:34:35.865929+00:00",
+        "parkStatus": 200,
+        "discoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "h1": [
+          "Aires de jeux extérieures"
+        ],
+        "overflow": 0,
+        "brokenImages": [],
+        "guidLeaks": [],
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          }
+        ],
+        "expectedAlt": "Vista aérea de una red roja en forma de estrella sobre una zona circular de virutas de madera en Vulcania.",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "status": 200
+          }
+        ],
+        "links": [
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Aires de jeux extérieures"
+          },
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures/images",
+            "text": "FOTOS\nGalería del lugar"
+          },
+          {
+            "href": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Famusement-parks.fun%2Fes%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "LinkedIn"
+          },
+          {
+            "href": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famusement-parks.fun%2Fes%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "Facebook"
+          },
+          {
+            "href": "https://twitter.com/intent/tweet?url=https%3A%2F%2Famusement-parks.fun%2Fes%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&text=Descubre%20Aires%20de%20jeux%20ext%C3%A9rieures%20en%20AmusementPark.",
+            "text": "X"
+          },
+          {
+            "href": "https://www.reddit.com/submit?url=https%3A%2F%2Famusement-parks.fun%2Fes%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&title=Aires%20de%20jeux%20ext%C3%A9rieures",
+            "text": "Reddit"
+          },
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "English"
+          },
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Français"
+          },
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Español"
+          },
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Deutsch"
+          },
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Italiano"
+          },
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Polski"
+          },
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Nederlands"
+          },
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Português"
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "checkedAtUtc": "2026-11-15T21:34:43.682466+00:00",
+        "parkStatus": 200,
+        "discoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "h1": [
+          "Aires de jeux extérieures"
+        ],
+        "overflow": 0,
+        "brokenImages": [],
+        "guidLeaks": [],
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          }
+        ],
+        "expectedAlt": "Widok z lotu ptaka na czerwoną sieć lin w kształcie gwiazdy nad kolistym placem ze zrębkami w Vulcanii.",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "status": 200
+          }
+        ],
+        "links": [
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Aires de jeux extérieures"
+          },
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures/images",
+            "text": "ZDJĘCIA\nGaleria miejsca"
+          },
+          {
+            "href": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Famusement-parks.fun%2Fpl%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "LinkedIn"
+          },
+          {
+            "href": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famusement-parks.fun%2Fpl%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "Facebook"
+          },
+          {
+            "href": "https://twitter.com/intent/tweet?url=https%3A%2F%2Famusement-parks.fun%2Fpl%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&text=Odkryj%20Aires%20de%20jeux%20ext%C3%A9rieures%20w%20AmusementPark.",
+            "text": "X"
+          },
+          {
+            "href": "https://www.reddit.com/submit?url=https%3A%2F%2Famusement-parks.fun%2Fpl%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&title=Aires%20de%20jeux%20ext%C3%A9rieures",
+            "text": "Reddit"
+          },
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "English"
+          },
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Français"
+          },
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Español"
+          },
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Deutsch"
+          },
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Italiano"
+          },
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Polski"
+          },
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Nederlands"
+          },
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Português"
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "checkedAtUtc": "2026-11-15T21:34:44.760164+00:00",
+        "parkStatus": 200,
+        "discoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "h1": [
+          "Aires de jeux extérieures"
+        ],
+        "overflow": 0,
+        "brokenImages": [],
+        "guidLeaks": [],
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "alt": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania.",
+            "width": 360,
+            "height": 189
+          }
+        ],
+        "expectedAlt": "Vista aérea de uma rede vermelha em forma de estrela sobre uma área circular de aparas de madeira em Vulcania.",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/d9db0d23cccc424191093ba08edca1df?width=480&v=2",
+            "status": 200
+          }
+        ],
+        "links": [
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Aires de jeux extérieures"
+          },
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures/images",
+            "text": "FOTOS\nGaleria do local"
+          },
+          {
+            "href": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Famusement-parks.fun%2Fpt%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "LinkedIn"
+          },
+          {
+            "href": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famusement-parks.fun%2Fpt%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures",
+            "text": "Facebook"
+          },
+          {
+            "href": "https://twitter.com/intent/tweet?url=https%3A%2F%2Famusement-parks.fun%2Fpt%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&text=Descobre%20Aires%20de%20jeux%20ext%C3%A9rieures%20no%20AmusementPark.",
+            "text": "X"
+          },
+          {
+            "href": "https://www.reddit.com/submit?url=https%3A%2F%2Famusement-parks.fun%2Fpt%2Fpark%2Ffb62b6ae-6802-4a92-9d54-6315bb15d1da%2Fvulcania%2Fitem%2F83ff43e0-c52c-4c28-9f18-a20419168599%2Faires-de-jeux-exterieures&title=Aires%20de%20jeux%20ext%C3%A9rieures",
+            "text": "Reddit"
+          },
+          {
+            "href": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "English"
+          },
+          {
+            "href": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Français"
+          },
+          {
+            "href": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Español"
+          },
+          {
+            "href": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Deutsch"
+          },
+          {
+            "href": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Italiano"
+          },
+          {
+            "href": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Polski"
+          },
+          {
+            "href": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Nederlands"
+          },
+          {
+            "href": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+            "text": "Português"
+          }
+        ]
+      }
+    ],
+    "initialChecksSuperseded": [
+      {
+        "language": "fr",
+        "checkedAtUtc": "2026-11-15T21:30:32.991278+00:00",
+        "discoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"Grimper autour du bâtiment  Les aires de jeux exté\").first to be visible\n"
+      },
+      {
+        "language": "en",
+        "checkedAtUtc": "2026-11-15T21:30:32.994458+00:00",
+        "discoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"Climbing beside the main building  Vulcania’s outd\").first to be visible\n"
+      },
+      {
+        "language": "de",
+        "checkedAtUtc": "2026-11-15T21:30:33.052039+00:00",
+        "discoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"Klettern am Hauptgebäude  Die Außenspielplätze von\").first to be visible\n"
+      },
+      {
+        "language": "nl",
+        "checkedAtUtc": "2026-11-15T21:30:56.653803+00:00",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"a[href$=\\\"/items\\\"]\").first\n"
+      },
+      {
+        "language": "it",
+        "checkedAtUtc": "2026-11-15T21:30:57.543263+00:00",
+        "discoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"Arrampicarsi vicino all’edificio principale  Le ar\").first to be visible\n"
+      },
+      {
+        "language": "es",
+        "checkedAtUtc": "2026-11-15T21:30:57.870672+00:00",
+        "discoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"Trepar junto al edificio principal  Las áreas de j\").first to be visible\n"
+      },
+      {
+        "language": "pl",
+        "checkedAtUtc": "2026-11-15T21:31:21.333099+00:00",
+        "discoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"Wspinaczka przy głównym budynku  Zewnętrzne place \").first to be visible\n"
+      },
+      {
+        "language": "pt",
+        "checkedAtUtc": "2026-11-15T21:31:21.515771+00:00",
+        "discoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/83ff43e0-c52c-4c28-9f18-a20419168599/aires-de-jeux-exterieures",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"Trepar junto ao edifício principal  As áreas de jo\").first to be visible\n"
+      }
+    ],
+    "initialFailureExplanation": "Seven locators wrongly spanned a heading and a paragraph; Dutch catalogue link initially timed out. All eight normal navigations succeeded with an exact heading waiter. Dutch image was then checked after waiting for the image element; no data correction was needed."
+  },
+  "applicationIssue": {
+    "mainPhotoAltFallsBackToEnglishInNonEnglishLanguages": [
+      "fr",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "storedEightLanguageMetadataPreserved": true,
+    "noBlindDataCorrection": true
+  },
+  "completeness": {
+    "result": {
+      "completenessScore": 94,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 106,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T21:30:35.8689453Z",
+    "startedAtUtc": "2026-11-15T21:30:34.0007864Z"
+  },
+  "historyDiagnostics": {
+    "startedAtUtc": "2026-11-15T21:29:58.5368550Z",
+    "action": "HistoryDiagnostics",
+    "result": {
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkName": "Vulcania",
+      "factCount": 52,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1990,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 4,
+          "sourcedResourceCount": 4,
+          "publishedResourceCount": 4,
+          "subjectCount": 3,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 4,
+          "sourcedResourceCount": 4,
+          "publishedResourceCount": 4,
+          "subjectCount": 3,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 8,
+          "sourcedResourceCount": 8,
+          "publishedResourceCount": 8,
+          "subjectCount": 7,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 17
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 35
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 17,
+        "sourcedFactCount": 17,
+        "majorFactCount": 14,
+        "indexableKeyYears": []
+      }
+    },
+    "receivedAtUtc": "2026-11-15T21:29:59.5876726Z"
+  },
+  "idempotence": {
+    "operationId": "4119cd14-8319-47ab-b037-9cd08b46ca3c",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:30:58.5414931Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "83ff43e0-c52c-4c28-9f18-a20419168599",
+        "entityKey": "83ff43e0-c52c-4c28-9f18-a20419168599",
+        "displayName": "Aires de jeux extérieures",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "d9db0d23cccc424191093ba08edca1df",
+        "entityKey": null,
+        "displayName": "codex-import.png",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coverage": {
+    "items": 56,
+    "publicItems": 56,
+    "descriptions8Languages": 56,
+    "ownMedia": 58,
+    "publicOwnMedia": 58,
+    "publicMaps": 2,
+    "publishedHistoryFacts": 17,
+    "publicArticles": 2
+  },
+  "globalOutcome": "partial",
+  "remainingResearch": [
+    "VolcanBUL and other historic exhibitions: identity, dates and current lifecycle still under qualification",
+    "Item photographs and precise geographical positions remain incomplete",
+    "No complete general calendar or price table for the 2027 season found in reviewed official sources"
+  ],
+  "earlierApplicationIssuesUnchanged": "vulcania-publication-followup-20261115.json",
+  "facebook": {
+    "existingPublishedAnnouncementId": "d77df105d04d4601a9a543d41d3ce25c",
+    "newSendPerformed": false,
+    "anonymousVisibilityNotConfirmed": true
+  }
+}

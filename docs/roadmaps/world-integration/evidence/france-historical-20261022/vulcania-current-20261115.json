@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T21:18:14.9132372Z",
+  "lastDataIntegrationAt": "2026-11-15T21:29:33.8587681Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": true,
   "sitePublicationPerformed": true,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 48,
-  "realImportCount": 57,
-  "lastOperationId": "f4c847dc-e6fc-4c08-a9b4-580e55b381f3",
+  "realApplyCount": 51,
+  "realImportCount": 58,
+  "lastOperationId": "bbc2f166-e5d7-48f4-aee4-293574e3f63c",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -190,28 +190,31 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-117-editorial-wording-correction-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-124-toba-envol-history-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-129-publish-toba-photo-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-130-publish-toba-history-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-130-publish-toba-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-134-outdoor-playground-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-139-publish-playground-photo-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-140-publish-playground-item-20261115.json"
   ],
   "currentCoverage": {
     "items": 56,
-    "publicItems": 55,
-    "describedItems8Languages": 55,
+    "publicItems": 56,
+    "describedItems8Languages": 56,
     "zones": 0,
-    "ownMedia": 57,
+    "ownMedia": 58,
     "historyEvents": 17,
     "privateHistoryEvents": 0,
     "officialMaps": 2,
     "privateOwnMedia": 0,
     "articles": 2,
     "privateArticles": 0,
-    "privateItems": 1,
+    "privateItems": 0,
     "sharedMedia": 5,
-    "publicOwnMedia": 57,
+    "publicOwnMedia": 58,
     "publicHistoryEvents": 17,
     "publicOfficialMaps": 2,
     "publicArticles": 2
   },
-  "lastApplyOperationId": "f4c847dc-e6fc-4c08-a9b4-580e55b381f3",
+  "lastApplyOperationId": "bbc2f166-e5d7-48f4-aee4-293574e3f63c",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -497,6 +500,11 @@
       "imageId": "e874bad560d54671a56396e44f461203",
       "createdAt": "2026-11-15T21:13:44.125Z",
       "proof": "vulcania-photo-123-toba-projection-20261115.json"
+    },
+    {
+      "imageId": "d9db0d23cccc424191093ba08edca1df",
+      "createdAt": "2026-11-15T21:26:36.548Z",
+      "proof": "vulcania-photo-135-outdoor-playground-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -570,7 +578,7 @@
     "initialPrePublicationScore": 84,
     "postPublicationProof": "vulcania-publication-followup-20261115.json"
   },
-  "nextAction": "Qualify exterior playground from newly retrieved official pages, then remaining historical inventory. Keep global outcome partial.",
+  "nextAction": "Continue historical inventory qualification: VolcanBUL, De lave et de feu, Bouleversements, Sur les traces des dinosaures. Current 56 identified items are described and public; global inventory remains partial.",
   "publicationOperations": [
     {
       "operationId": "332b1ef6-66a9-4617-a3f5-ff931aa12197",
@@ -616,6 +624,16 @@
       "operationId": "f4c847dc-e6fc-4c08-a9b4-580e55b381f3",
       "appliedAtUtc": "2026-11-15T21:18:14.9132372Z",
       "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-130-publish-toba-history-20261115.json"
+    },
+    {
+      "operationId": "2bcd204b-bf21-46c3-80cd-2b4ecdb9ddd7",
+      "appliedAtUtc": "2026-11-15T21:29:07.3247512Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-139-publish-playground-photo-20261115.json"
+    },
+    {
+      "operationId": "bbc2f166-e5d7-48f4-aee4-293574e3f63c",
+      "appliedAtUtc": "2026-11-15T21:29:33.8587681Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-140-publish-playground-item-20261115.json"
     }
   ],
   "currentCompleteness": {
@@ -637,5 +655,5 @@
   "facebookAnnouncementPublished": true,
   "newFacebookSendPerformed": false,
   "facebookAnonymousVisibilityConfirmed": false,
-  "lastPublicFollowupProof": "vulcania-toba-publication-followup-20261115.json"
+  "lastPublicFollowupProof": "vulcania-playground-publication-followup-20261115.json"
 }

@@ -1,0 +1,285 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-135-outdoor-playground",
+    "ownerId": "83ff43e0-c52c-4c28-9f18-a20419168599",
+    "itemName": "Aires de jeux extérieures",
+    "current": true,
+    "source": {
+      "key": "outside",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Aire-de-jeux-exterieures.png",
+      "checkedAtUtc": "2026-11-15T21:21:19.324942+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Aire-de-jeux-exterieures.png",
+      "bytes": 538776,
+      "sha256": "8e0ab5217502a747cd9ba15b9d02a7d9ee73a542b5d4d8ae32edf1cb5ef954b9",
+      "dimensions": [
+        1200,
+        630
+      ],
+      "file": "/workspace/france-historical-20261114/vulcania/playground-followup-2120/outside.png",
+      "path": "/workspace/france-historical-20261114/vulcania/playground-followup-2120/outside.png",
+      "sourcePage": "https://www.vulcania.com/animation/les-aires-de-jeux/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; official source credited, no open license inferred.",
+    "qualification": "Official native publisher1200x630 photograph, individually viewed, no editing. 2048x751 version of same exposure exceeds960KiB and excluded; aires-de-jeux.png is map labels and excluded. Place des Volcans spider web explicitly identified by official page,2021 addition does not date whole playground."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "83ff43e0-c52c-4c28-9f18-a20419168599",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Aire-de-jeux-exterieures.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/playground-followup-2120/outside.png",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-135-outdoor-playground-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-135-outdoor-playground-import-result.json"
+  },
+  "metadata": {
+    "description": "La toile de la Place des Volcans, entourée d’allées, de bancs et d’arbres.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Aire-de-jeux-exterieures.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vue aérienne d’une toile de cordes rouge en étoile sur une aire circulaire de copeaux à Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Luftaufnahme eines roten, sternförmigen Seilnetzes über einer kreisrunden Holzschnitzelfläche in Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Luchtfoto van een rood, stervormig touwwerk boven een ronde speelvloer van houtsnippers in Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Veduta aerea di una rete rossa a forma di stella sopra un’area circolare di trucioli a Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vista aérea de una red roja en forma de estrella sobre una zona circular de virutas de madera en Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Widok z lotu ptaka na czerwoną sieć lin w kształcie gwiazdy nad kolistym placem ze zrębkami w Vulcanii."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vista aérea de uma rede vermelha em forma de estrela sobre uma área circular de aparas de madeira em Vulcania."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La toile de la Place des Volcans, entourée d’allées, de bancs et d’arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "The web on Place des Volcans, surrounded by paths, benches and trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das Netz auf der Place des Volcans, umgeben von Wegen, Bänken und Bäumen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het web op Place des Volcans, omringd door paden, banken en bomen."
+      },
+      {
+        "languageCode": "it",
+        "value": "La ragnatela di Place des Volcans, circondata da vialetti, panchine e alberi."
+      },
+      {
+        "languageCode": "es",
+        "value": "La telaraña de Place des Volcans, rodeada de caminos, bancos y árboles."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pajęczyna na Place des Volcans, otoczona alejkami, ławkami i drzewami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A teia da Place des Volcans, rodeada de caminhos, bancos e árvores."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie officielle."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — official photograph."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — offizielles Foto."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — officiële foto."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — oficjalna fotografia."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T21:26:31.8169816Z",
+    "receivedAtUtc": "2026-11-15T21:26:43.3539110Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "d9db0d23cccc424191093ba08edca1df",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "83ff43e0-c52c-4c28-9f18-a20419168599",
+      "path": "park_item/d9db0d23cccc424191093ba08edca1df",
+      "description": "La toile de la Place des Volcans, entourée d’allées, de bancs et d’arbres.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 538776,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Aire-de-jeux-exterieures.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue aérienne d’une toile de cordes rouge en étoile sur une aire circulaire de copeaux à Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Aerial view of a red star-shaped rope web over a circular wood-chip play area at Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Luftaufnahme eines roten, sternförmigen Seilnetzes über einer kreisrunden Holzschnitzelfläche in Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Luchtfoto van een rood, stervormig touwwerk boven een ronde speelvloer van houtsnippers in Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Veduta aerea di una rete rossa a forma di stella sopra un’area circolare di trucioli a Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista aérea de una red roja en forma de estrella sobre una zona circular de virutas de madera en Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok z lotu ptaka na czerwoną sieć lin w kształcie gwiazdy nad kolistym placem ze zrębkami w Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista aérea de uma rede vermelha em forma de estrela sobre uma área circular de aparas de madeira em Vulcania."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La toile de la Place des Volcans, entourée d’allées, de bancs et d’arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "The web on Place des Volcans, surrounded by paths, benches and trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Netz auf der Place des Volcans, umgeben von Wegen, Bänken und Bäumen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het web op Place des Volcans, omringd door paden, banken en bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "La ragnatela di Place des Volcans, circondata da vialetti, panchine e alberi."
+        },
+        {
+          "languageCode": "es",
+          "value": "La telaraña de Place des Volcans, rodeada de caminos, bancos y árboles."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pajęczyna na Place des Volcans, otoczona alejkami, ławkami i drzewami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A teia da Place des Volcans, rodeada de caminhos, bancos e árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie officielle."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — official photograph."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — offizielles Foto."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — officiële foto."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — oficjalna fotografia."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T21:26:36.548Z",
+      "updatedAt": "2026-11-15T21:26:40.259Z"
+    }
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

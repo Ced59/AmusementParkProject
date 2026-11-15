@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T21:18:14.913Z",
+      "lastDataIntegrationAt": "2026-11-15T21:29:33.858Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39208,6 +39208,46 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-130-publish-toba-history-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : publication autorisée du périmètre audité, 130-publish-toba-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-9bdbb4c9-20db-46e6-afa0-4f534159264b",
+          "appliedAt": "2026-11-15T21:25:49.085Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-134-outdoor-playground-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : notice privée des Aires de jeux extérieures personnellement rédigée et relue en huit langues, identité et équipements qualifiés sur trois pages officielles et une photographie aérienne, sans date ni position inventée."
+        },
+        {
+          "eventId": "import-photo-d9db0d23cccc424191093ba08edca1df",
+          "appliedAt": "2026-11-15T21:26:36.548Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-135-outdoor-playground-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Aires de jeux extérieures importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-2bcd204b-bf21-46c3-80cd-2b4ecdb9ddd7",
+          "appliedAt": "2026-11-15T21:29:07.324Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-139-publish-playground-photo-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 139-publish-playground-photo; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-bbc2f166-e5d7-48f4-aee4-293574e3f63c",
+          "appliedAt": "2026-11-15T21:29:33.858Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-140-publish-playground-item-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 140-publish-playground-item; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -39260,7 +39300,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-f4c847dc-e6fc-4c08-a9b4-580e55b381f3 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-bbc2f166-e5d7-48f4-aee4-293574e3f63c ; conserver les références de découverte."
       },
       "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-visibility-20261115.json",
       "publicChecksEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-public-checks-20261115.json",

@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "83ff43e0-c52c-4c28-9f18-a20419168599",
+          "key": "83ff43e0-c52c-4c28-9f18-a20419168599",
+          "name": "Aires de jeux extérieures",
+          "type": "Playground",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Grimper autour du bâtiment</h2><p>Les aires de jeux extérieures de Vulcania occupent plusieurs espaces proches du bâtiment principal. Toboggans, passages à escalader et tyrolienne donnent à ces abords un caractère joueur, au milieu des allées et des arbres du parc. Le tunnel suspendu ajoute un passage en hauteur à cet ensemble de jeux de plein air.</p><p>La Place des Volcans forme l’un de ces espaces. Une grande toile rouge y dessine une étoile autour d’un centre circulaire sombre. Ses branches de cordages s’étendent vers le pourtour du jeu, composant une silhouette rayonnante particulièrement lisible vue d’en haut.</p><h2>Un cercle entre les allées</h2><p>La toile occupe une aire ronde couverte de copeaux de bois. Les cheminements épousent son contour, tandis que des arbres et des bancs entourent la place. Des tables se trouvent à côté de ce grand cercle de jeux, sous les feuillages qui ombragent une partie des abords.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Climbing beside the main building</h2><p>Vulcania’s outdoor playgrounds occupy several spaces close to the main building. Slides, climbing features and a zip line bring play into these surroundings, among the park’s paths and trees. A suspended tunnel adds an elevated passage to this collection of outdoor games.</p><p>Place des Volcans is one of these play spaces. A large red rope web forms a star around a dark circular centre. Its branches extend towards the edges of the play area, creating a radiating shape that is especially clear from above.</p><h2>A circle between the paths</h2><p>The web occupies a round area covered with wood chips. Paths follow its outline, while trees and benches surround the square. Tables stand beside this large circle of play, beneath foliage that shades part of the surrounding space.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Klettern am Hauptgebäude</h2><p>Die Außenspielplätze von Vulcania verteilen sich auf mehrere Flächen in der Nähe des Hauptgebäudes. Rutschen, Kletterelemente und eine Seilrutsche beleben die Umgebung zwischen den Wegen und Bäumen des Parks. Ein aufgehängter Tunnel ergänzt die Spielmöglichkeiten um einen Durchgang in luftiger Höhe.</p><p>Die Place des Volcans gehört zu diesen Spielflächen. Dort bildet ein großes rotes Seilnetz einen Stern um eine dunkle, runde Mitte. Seine Seilarme reichen bis an den Rand des Spiels und ergeben eine strahlenförmige Gestalt, die besonders von oben gut zu erkennen ist.</p><h2>Ein Kreis zwischen den Wegen</h2><p>Das Netz steht auf einer runden, mit Holzschnitzeln bedeckten Fläche. Wege folgen ihrem Umriss, während Bäume und Bänke den Platz umgeben. Neben diesem großen Spielkreis stehen Tische unter dem Laub der Bäume, das einen Teil der Umgebung beschattet.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Klimmen bij het hoofdgebouw</h2><p>De buitenspeelplaatsen van Vulcania liggen verspreid over verschillende plekken bij het hoofdgebouw. Glijbanen, klimtoestellen en een kabelbaan brengen spel tussen de paden en bomen van het park. Een hangende tunnel voegt daar een doorgang op hoogte aan toe.</p><p>Place des Volcans is een van deze speelplekken. Een groot rood touwwerk vormt er een ster rond een donker, cirkelvormig midden. De armen van touw lopen naar de buitenrand van het spel en vormen een stralend patroon dat vooral van bovenaf goed zichtbaar is.</p><h2>Een cirkel tussen de paden</h2><p>Het web staat op een ronde speelvloer van houtsnippers. De paden volgen de omtrek, terwijl bomen en banken rondom het plein staan. Naast deze grote speelcirkel staan tafels onder het bladerdak, dat een deel van de omgeving schaduw geeft.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Arrampicarsi vicino all’edificio principale</h2><p>Le aree gioco all’aperto di Vulcania occupano diversi spazi vicini all’edificio principale. Scivoli, elementi da scalare e una teleferica animano questi luoghi tra i vialetti e gli alberi del parco. Un tunnel sospeso aggiunge un passaggio in quota all’insieme dei giochi esterni.</p><p>Place des Volcans è uno di questi spazi di gioco. Una grande rete rossa vi disegna una stella attorno a un centro circolare scuro. I suoi bracci di corda si estendono verso il bordo del gioco, formando una figura a raggiera particolarmente evidente dall’alto.</p><h2>Un cerchio tra i vialetti</h2><p>La rete occupa un’area rotonda ricoperta di trucioli di legno. I vialetti ne seguono il contorno, mentre alberi e panchine circondano la piazza. Accanto a questo grande cerchio di giochi si trovano tavoli sotto le chiome, che ombreggiano parte dello spazio circostante.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Trepar junto al edificio principal</h2><p>Las áreas de juego exteriores de Vulcania se reparten por varios espacios próximos al edificio principal. Toboganes, elementos para trepar y una tirolina animan estos rincones entre los caminos y los árboles del parque. Un túnel suspendido añade un paso elevado al conjunto de juegos al aire libre.</p><p>Place des Volcans es uno de estos espacios de juego. Una gran red roja dibuja allí una estrella alrededor de un centro circular oscuro. Sus brazos de cuerdas se extienden hacia el borde del juego y forman una silueta radial especialmente visible desde arriba.</p><h2>Un círculo entre los caminos</h2><p>La red ocupa una zona redonda cubierta de virutas de madera. Los caminos siguen su contorno, mientras árboles y bancos rodean la plaza. Junto a este gran círculo de juegos hay mesas bajo el follaje, que da sombra a parte del espacio circundante.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wspinaczka przy głównym budynku</h2><p>Zewnętrzne place zabaw Vulcanii zajmują kilka miejsc w pobliżu głównego budynku. Zjeżdżalnie, elementy do wspinania i tyrolka ożywiają przestrzeń pomiędzy alejkami i drzewami parku. Podwieszany tunel dodaje do tych zabaw na świeżym powietrzu przejście ponad ziemią.</p><p>Place des Volcans jest jednym z tych miejsc zabawy. Duża czerwona sieć lin tworzy tam gwiazdę wokół ciemnego, okrągłego środka. Jej linowe ramiona sięgają ku obrzeżom urządzenia, układając się w promienisty kształt szczególnie dobrze widoczny z góry.</p><h2>Krąg pomiędzy alejkami</h2><p>Sieć zajmuje kolisty plac pokryty drewnianymi zrębkami. Alejki biegną wzdłuż jego obrysu, a drzewa i ławki otaczają plac. Obok tego dużego kręgu zabawy stoją stoliki pod koronami drzew, których liście dają cień w części najbliższego otoczenia.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Trepar junto ao edifício principal</h2><p>As áreas de jogos exteriores de Vulcania distribuem-se por vários espaços próximos do edifício principal. Escorregas, elementos de escalada e uma tirolesa animam estes locais entre os caminhos e as árvores do parque. Um túnel suspenso acrescenta uma passagem elevada ao conjunto de jogos ao ar livre.</p><p>A Place des Volcans é um destes espaços de jogos. Uma grande rede vermelha desenha ali uma estrela em torno de um centro circular escuro. Os seus braços de cordas estendem-se até à periferia do jogo, formando uma silhueta radial particularmente visível de cima.</p><h2>Um círculo entre os caminhos</h2><p>A rede ocupa uma área redonda coberta de aparas de madeira. Os caminhos acompanham o seu contorno, enquanto árvores e bancos rodeiam a praça. Junto a este grande círculo de jogos encontram-se mesas sob a folhagem, que dá sombra a parte do espaço envolvente.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-134-outdoor-playground",
+        "notes": "Page officielle et photographie aérienne examinées personnellement. Huit notices 2h2/3p spécifiques, aucun conseil de visite, âge, date, commentaire de source ou GPS dans le récit. Toile Place des Volcans depuis2021 ne prouve pas ouverture de l’ensemble. Original photographique officiel1200×630 sans retouche; version2048 trop lourde, repères cartographiques exclus. Sources fraîches source-access.json."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "d3560642-81c9-49b1-94ba-75293ca5b869",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:25:35.2906492Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "83ff43e0-c52c-4c28-9f18-a20419168599",
+        "entityKey": "83ff43e0-c52c-4c28-9f18-a20419168599",
+        "displayName": "Aires de jeux extérieures",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Klettern am Hauptgebäude</h2><p>Die Außenspielplätze von Vulcania verteilen sich auf mehrere Flächen in der Nähe des Hauptgebäudes. Rutschen, Kletterelemente und eine Seilrutsche beleben die Umgebung zwischen den Wegen und Bäumen des Parks. Ein aufgehängter Tunnel ergänzt die Spielmöglichkeiten um einen Durchgang in luftiger Höhe.</p><p>Die Place des Volcans gehört zu diesen Spielflächen. Dort bildet ein großes rotes Seilnetz einen Stern um eine dunkle, runde Mitte. Seine Seilarme reichen bis an den Rand des Spiels und ergeben eine strahlenförmige Gestalt, die besonders von oben gut zu erkennen ist.</p><h2>Ein Kreis zwischen den Wegen</h2><p>Das Netz steht auf einer runden, mit Holzschnitzeln bedeckten Fläche. Wege folgen ihrem Umriss, während Bäume und Bänke den Platz umgeben. Neben diesem großen Spielkreis stehen Tische unter dem Laub der Bäume, das einen Teil der Umgebung beschattet.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Climbing beside the main building</h2><p>Vulcania’s outdoor playgrounds occupy several spaces close to the main building. Slides, climbing features and a zip line bring play into these surroundings, among the park’s paths and trees. A suspended tunnel adds an elevated passage to this collection of outdoor games.</p><p>Place des Volcans is one of these play spaces. A large red rope web forms a star around a dark circular centre. Its branches extend towards the edges of the play area, creating a radiating shape that is especially clear from above.</p><h2>A circle between the paths</h2><p>The web occupies a round area covered with wood chips. Paths follow its outline, while trees and benches surround the square. Tables stand beside this large circle of play, beneath foliage that shades part of the surrounding space.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Trepar junto al edificio principal</h2><p>Las áreas de juego exteriores de Vulcania se reparten por varios espacios próximos al edificio principal. Toboganes, elementos para trepar y una tirolina animan estos rincones entre los caminos y los árboles del parque. Un túnel suspendido añade un paso elevado al conjunto de juegos al aire libre.</p><p>Place des Volcans es uno de estos espacios de juego. Una gran red roja dibuja allí una estrella alrededor de un centro circular oscuro. Sus brazos de cuerdas se extienden hacia el borde del juego y forman una silueta radial especialmente visible desde arriba.</p><h2>Un círculo entre los caminos</h2><p>La red ocupa una zona redonda cubierta de virutas de madera. Los caminos siguen su contorno, mientras árboles y bancos rodean la plaza. Junto a este gran círculo de juegos hay mesas bajo el follaje, que da sombra a parte del espacio circundante.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Grimper autour du bâtiment</h2><p>Les aires de jeux extérieures de Vulcania occupent plusieurs espaces proches du bâtiment principal. Toboggans, passages à escalader et tyrolienne donnent à ces abords un caractère joueur, au milieu des allées et des arbres du parc. Le tunnel suspendu ajoute un passage en hauteur à cet ensemble de jeux de plein air.</p><p>La Place des Volcans forme l’un de ces espaces. Une grande toile rouge y dessine une étoile autour d’un centre circulaire sombre. Ses branches de cordages s’étendent vers le pourtour du jeu, composant une silhouette rayonnante particulièrement lisible vue d’en haut.</p><h2>Un cercle entre les allées</h2><p>La toile occupe une aire ronde couverte de copeaux de bois. Les cheminements épousent son contour, tandis que des arbres et des bancs entourent la place. Des tables se trouvent à côté de ce grand cercle de jeux, sous les feuillages qui ombragent une partie des abords.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Arrampicarsi vicino all’edificio principale</h2><p>Le aree gioco all’aperto di Vulcania occupano diversi spazi vicini all’edificio principale. Scivoli, elementi da scalare e una teleferica animano questi luoghi tra i vialetti e gli alberi del parco. Un tunnel sospeso aggiunge un passaggio in quota all’insieme dei giochi esterni.</p><p>Place des Volcans è uno di questi spazi di gioco. Una grande rete rossa vi disegna una stella attorno a un centro circolare scuro. I suoi bracci di corda si estendono verso il bordo del gioco, formando una figura a raggiera particolarmente evidente dall’alto.</p><h2>Un cerchio tra i vialetti</h2><p>La rete occupa un’area rotonda ricoperta di trucioli di legno. I vialetti ne seguono il contorno, mentre alberi e panchine circondano la piazza. Accanto a questo grande cerchio di giochi si trovano tavoli sotto le chiome, che ombreggiano parte dello spazio circostante.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Klimmen bij het hoofdgebouw</h2><p>De buitenspeelplaatsen van Vulcania liggen verspreid over verschillende plekken bij het hoofdgebouw. Glijbanen, klimtoestellen en een kabelbaan brengen spel tussen de paden en bomen van het park. Een hangende tunnel voegt daar een doorgang op hoogte aan toe.</p><p>Place des Volcans is een van deze speelplekken. Een groot rood touwwerk vormt er een ster rond een donker, cirkelvormig midden. De armen van touw lopen naar de buitenrand van het spel en vormen een stralend patroon dat vooral van bovenaf goed zichtbaar is.</p><h2>Een cirkel tussen de paden</h2><p>Het web staat op een ronde speelvloer van houtsnippers. De paden volgen de omtrek, terwijl bomen en banken rondom het plein staan. Naast deze grote speelcirkel staan tafels onder het bladerdak, dat een deel van de omgeving schaduw geeft.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wspinaczka przy głównym budynku</h2><p>Zewnętrzne place zabaw Vulcanii zajmują kilka miejsc w pobliżu głównego budynku. Zjeżdżalnie, elementy do wspinania i tyrolka ożywiają przestrzeń pomiędzy alejkami i drzewami parku. Podwieszany tunel dodaje do tych zabaw na świeżym powietrzu przejście ponad ziemią.</p><p>Place des Volcans jest jednym z tych miejsc zabawy. Duża czerwona sieć lin tworzy tam gwiazdę wokół ciemnego, okrągłego środka. Jej linowe ramiona sięgają ku obrzeżom urządzenia, układając się w promienisty kształt szczególnie dobrze widoczny z góry.</p><h2>Krąg pomiędzy alejkami</h2><p>Sieć zajmuje kolisty plac pokryty drewnianymi zrębkami. Alejki biegną wzdłuż jego obrysu, a drzewa i ławki otaczają plac. Obok tego dużego kręgu zabawy stoją stoliki pod koronami drzew, których liście dają cień w części najbliższego otoczenia.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Trepar junto ao edifício principal</h2><p>As áreas de jogos exteriores de Vulcania distribuem-se por vários espaços próximos do edifício principal. Escorregas, elementos de escalada e uma tirolesa animam estes locais entre os caminhos e as árvores do parque. Um túnel suspenso acrescenta uma passagem elevada ao conjunto de jogos ao ar livre.</p><p>A Place des Volcans é um destes espaços de jogos. Uma grande rede vermelha desenha ali uma estrela em torno de um centro circular escuro. Os seus braços de cordas estendem-se até à periferia do jogo, formando uma silhueta radial particularmente visível de cima.</p><h2>Um círculo entre os caminhos</h2><p>A rede ocupa uma área redonda coberta de aparas de madeira. Os caminhos acompanham o seu contorno, enquanto árvores e bancos rodeiam a praça. Junto a este grande círculo de jogos encontram-se mesas sob a folhagem, que dá sombra a parte do espaço envolvente.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "9bdbb4c9-20db-46e6-afa0-4f534159264b",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:25:49.0858117Z",
+    "appliedAtUtc": "2026-11-15T21:25:49.0858124Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "83ff43e0-c52c-4c28-9f18-a20419168599",
+        "entityKey": "83ff43e0-c52c-4c28-9f18-a20419168599",
+        "displayName": "Aires de jeux extérieures",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Klettern am Hauptgebäude</h2><p>Die Außenspielplätze von Vulcania verteilen sich auf mehrere Flächen in der Nähe des Hauptgebäudes. Rutschen, Kletterelemente und eine Seilrutsche beleben die Umgebung zwischen den Wegen und Bäumen des Parks. Ein aufgehängter Tunnel ergänzt die Spielmöglichkeiten um einen Durchgang in luftiger Höhe.</p><p>Die Place des Volcans gehört zu diesen Spielflächen. Dort bildet ein großes rotes Seilnetz einen Stern um eine dunkle, runde Mitte. Seine Seilarme reichen bis an den Rand des Spiels und ergeben eine strahlenförmige Gestalt, die besonders von oben gut zu erkennen ist.</p><h2>Ein Kreis zwischen den Wegen</h2><p>Das Netz steht auf einer runden, mit Holzschnitzeln bedeckten Fläche. Wege folgen ihrem Umriss, während Bäume und Bänke den Platz umgeben. Neben diesem großen Spielkreis stehen Tische unter dem Laub der Bäume, das einen Teil der Umgebung beschattet.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Climbing beside the main building</h2><p>Vulcania’s outdoor playgrounds occupy several spaces close to the main building. Slides, climbing features and a zip line bring play into these surroundings, among the park’s paths and trees. A suspended tunnel adds an elevated passage to this collection of outdoor games.</p><p>Place des Volcans is one of these play spaces. A large red rope web forms a star around a dark circular centre. Its branches extend towards the edges of the play area, creating a radiating shape that is especially clear from above.</p><h2>A circle between the paths</h2><p>The web occupies a round area covered with wood chips. Paths follow its outline, while trees and benches surround the square. Tables stand beside this large circle of play, beneath foliage that shades part of the surrounding space.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Trepar junto al edificio principal</h2><p>Las áreas de juego exteriores de Vulcania se reparten por varios espacios próximos al edificio principal. Toboganes, elementos para trepar y una tirolina animan estos rincones entre los caminos y los árboles del parque. Un túnel suspendido añade un paso elevado al conjunto de juegos al aire libre.</p><p>Place des Volcans es uno de estos espacios de juego. Una gran red roja dibuja allí una estrella alrededor de un centro circular oscuro. Sus brazos de cuerdas se extienden hacia el borde del juego y forman una silueta radial especialmente visible desde arriba.</p><h2>Un círculo entre los caminos</h2><p>La red ocupa una zona redonda cubierta de virutas de madera. Los caminos siguen su contorno, mientras árboles y bancos rodean la plaza. Junto a este gran círculo de juegos hay mesas bajo el follaje, que da sombra a parte del espacio circundante.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Grimper autour du bâtiment</h2><p>Les aires de jeux extérieures de Vulcania occupent plusieurs espaces proches du bâtiment principal. Toboggans, passages à escalader et tyrolienne donnent à ces abords un caractère joueur, au milieu des allées et des arbres du parc. Le tunnel suspendu ajoute un passage en hauteur à cet ensemble de jeux de plein air.</p><p>La Place des Volcans forme l’un de ces espaces. Une grande toile rouge y dessine une étoile autour d’un centre circulaire sombre. Ses branches de cordages s’étendent vers le pourtour du jeu, composant une silhouette rayonnante particulièrement lisible vue d’en haut.</p><h2>Un cercle entre les allées</h2><p>La toile occupe une aire ronde couverte de copeaux de bois. Les cheminements épousent son contour, tandis que des arbres et des bancs entourent la place. Des tables se trouvent à côté de ce grand cercle de jeux, sous les feuillages qui ombragent une partie des abords.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Arrampicarsi vicino all’edificio principale</h2><p>Le aree gioco all’aperto di Vulcania occupano diversi spazi vicini all’edificio principale. Scivoli, elementi da scalare e una teleferica animano questi luoghi tra i vialetti e gli alberi del parco. Un tunnel sospeso aggiunge un passaggio in quota all’insieme dei giochi esterni.</p><p>Place des Volcans è uno di questi spazi di gioco. Una grande rete rossa vi disegna una stella attorno a un centro circolare scuro. I suoi bracci di corda si estendono verso il bordo del gioco, formando una figura a raggiera particolarmente evidente dall’alto.</p><h2>Un cerchio tra i vialetti</h2><p>La rete occupa un’area rotonda ricoperta di trucioli di legno. I vialetti ne seguono il contorno, mentre alberi e panchine circondano la piazza. Accanto a questo grande cerchio di giochi si trovano tavoli sotto le chiome, che ombreggiano parte dello spazio circostante.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Klimmen bij het hoofdgebouw</h2><p>De buitenspeelplaatsen van Vulcania liggen verspreid over verschillende plekken bij het hoofdgebouw. Glijbanen, klimtoestellen en een kabelbaan brengen spel tussen de paden en bomen van het park. Een hangende tunnel voegt daar een doorgang op hoogte aan toe.</p><p>Place des Volcans is een van deze speelplekken. Een groot rood touwwerk vormt er een ster rond een donker, cirkelvormig midden. De armen van touw lopen naar de buitenrand van het spel en vormen een stralend patroon dat vooral van bovenaf goed zichtbaar is.</p><h2>Een cirkel tussen de paden</h2><p>Het web staat op een ronde speelvloer van houtsnippers. De paden volgen de omtrek, terwijl bomen en banken rondom het plein staan. Naast deze grote speelcirkel staan tafels onder het bladerdak, dat een deel van de omgeving schaduw geeft.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wspinaczka przy głównym budynku</h2><p>Zewnętrzne place zabaw Vulcanii zajmują kilka miejsc w pobliżu głównego budynku. Zjeżdżalnie, elementy do wspinania i tyrolka ożywiają przestrzeń pomiędzy alejkami i drzewami parku. Podwieszany tunel dodaje do tych zabaw na świeżym powietrzu przejście ponad ziemią.</p><p>Place des Volcans jest jednym z tych miejsc zabawy. Duża czerwona sieć lin tworzy tam gwiazdę wokół ciemnego, okrągłego środka. Jej linowe ramiona sięgają ku obrzeżom urządzenia, układając się w promienisty kształt szczególnie dobrze widoczny z góry.</p><h2>Krąg pomiędzy alejkami</h2><p>Sieć zajmuje kolisty plac pokryty drewnianymi zrębkami. Alejki biegną wzdłuż jego obrysu, a drzewa i ławki otaczają plac. Obok tego dużego kręgu zabawy stoją stoliki pod koronami drzew, których liście dają cień w części najbliższego otoczenia.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Trepar junto ao edifício principal</h2><p>As áreas de jogos exteriores de Vulcania distribuem-se por vários espaços próximos do edifício principal. Escorregas, elementos de escalada e uma tirolesa animam estes locais entre os caminhos e as árvores do parque. Um túnel suspenso acrescenta uma passagem elevada ao conjunto de jogos ao ar livre.</p><p>A Place des Volcans é um destes espaços de jogos. Uma grande rede vermelha desenha ali uma estrela em torno de um centro circular escuro. Os seus braços de cordas estendem-se até à periferia do jogo, formando uma silhueta radial particularmente visível de cima.</p><h2>Um círculo entre os caminhos</h2><p>A rede ocupa uma área redonda coberta de aparas de madeira. Os caminhos acompanham o seu contorno, enquanto árvores e bancos rodeiam a praça. Junto a este grande círculo de jogos encontram-se mesas sob a folhagem, que dá sombra a parte do espaço envolvente.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : notice privée des Aires de jeux extérieures personnellement rédigée et relue en huit langues, identité et équipements qualifiés sur trois pages officielles et une photographie aérienne, sans date ni position inventée.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Page officielle et photographie aérienne examinées personnellement. Huit notices 2h2/3p spécifiques, aucun conseil de visite, âge, date, commentaire de source ou GPS dans le récit. Toile Place des Volcans depuis2021 ne prouve pas ouverture de l’ensemble. Original photographique officiel1200×630 sans retouche; version2048 trop lourde, repères cartographiques exclus. Sources fraîches source-access.json."
+}
