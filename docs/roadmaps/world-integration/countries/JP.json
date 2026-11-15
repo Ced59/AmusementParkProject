@@ -1360,39 +1360,55 @@
     },
     {
       "entryId": "JP-candidate-b0d45dd6c85596",
-      "name": "Big O",
+      "name": "Big-O",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
+      "proposedEntityKind": "ToQualify",
+      "category": "Attraction interne à un parc",
       "locality": "Tokyo Dome City , Tokyo",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction incluse dans le parc parent ; aucune création standalone autonome.",
+      "identityConfidence": "Grande roue au sein de Tokyo Dome City Attractions. La fiche Park masquée doit être intégrée éditorialement ; Big-O relève de ses attractions internes.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne de découverte. Reprendre Big-O comme attraction interne dans JP-park-db97b745-3aff-49c9-be98-9d88b6d0afcb, lors de l’intégration éditoriale du parc parent ; ne pas créer de fiche standalone séparée.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tokyo Dome City Attractions — fiche officielle Big-O",
+          "url": "https://en.www.at-raku.com/attractions/laqua/big-o/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Big-O",
+            "source": "Tokyo Dome City Attractions — fiche officielle Big-O",
+            "url": "https://en.www.at-raku.com/attractions/laqua/big-o/",
+            "family": "Grande roue",
+            "sourceVenueName": "Tokyo Dome City"
+          }
+        ],
+        "rationale": "Grande roue au sein de Tokyo Dome City Attractions. La fiche Park masquée doit être intégrée éditorialement ; Big-O relève de ses attractions internes."
+      },
+      "possibleBacklogEntries": [
+        "JP-park-db97b745-3aff-49c9-be98-9d88b6d0afcb"
+      ]
     },
     {
       "entryId": "JP-candidate-84b12011e5861d",
@@ -1773,20 +1789,20 @@
     },
     {
       "entryId": "JP-candidate-942b94531c67e7",
-      "name": "Cosmo Clock 21 (2nd installation)",
+      "name": "Cosmo Clock 21",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
+      "proposedEntityKind": "ToQualify",
+      "category": "Attraction interne à un parc",
       "locality": "Minato Mirai 21 , Yokohama , Honshū",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction incluse dans le parc parent ; aucune création standalone autonome.",
+      "identityConfidence": "Grande roue présentée comme attraction de Yokohama Cosmoworld ; la fiche Park masquée doit être intégrée avec sa grande roue.",
       "possibleMatches": [],
       "aliases": [
         "Cosmo Clock 21 (1st installation)"
@@ -1794,20 +1810,36 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne de découverte. Reprendre Cosmo Clock 21 comme attraction interne dans JP-park-47306738-7e9f-4abd-a259-efe0c754a191, lors de l’intégration éditoriale du parc parent ; ne pas créer de fiche standalone séparée.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Yokohama Cosmoworld — fiche officielle Cosmo Clock 21",
+          "url": "https://cosmoworld.jp/cosmoclock21/?lang=en",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Cosmo Clock 21",
+            "source": "Yokohama Cosmoworld — fiche officielle Cosmo Clock 21",
+            "url": "https://cosmoworld.jp/cosmoclock21/?lang=en",
+            "family": "Grande roue",
+            "sourceVenueName": "Yokohama Cosmoworld"
+          }
+        ],
+        "rationale": "Grande roue présentée comme attraction de Yokohama Cosmoworld ; la fiche Park masquée doit être intégrée avec sa grande roue."
+      },
+      "possibleBacklogEntries": [
+        "JP-park-47306738-7e9f-4abd-a259-efe0c754a191"
+      ]
     },
     {
       "entryId": "JP-candidate-7a6c8f8eac2ba9",
