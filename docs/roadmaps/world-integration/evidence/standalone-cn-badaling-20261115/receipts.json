@@ -51,6 +51,16 @@
       "evidence": "PARK_DATA_EDITOR:image:620215283e654cbc952cc4238451abaf",
       "auditEvidence": null,
       "summary": "Métadonnées de la photo vehicles reformulées dans les huit langues après contrôle anti-répétition."
+    },
+    {
+      "eventId": "apply-9dd0be7f-21fa-4d58-be4c-222ddbc9bd59",
+      "appliedAt": "2026-11-15T10:05:59.396Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+      "evidence": "PARK_DATA_EDITOR:apply:9dd0be7f-21fa-4d58-be4c-222ddbc9bd59",
+      "auditEvidence": null,
+      "summary": "Correction du tutoiement sur la description française de visite."
     }
   ],
   "publicationReceipt": {

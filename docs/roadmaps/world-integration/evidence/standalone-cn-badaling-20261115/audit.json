@@ -54,7 +54,7 @@
     "postUrl": "https://www.facebook.com/1285475681307050/posts/122127437475424431",
     "publishedAtUtc": "2026-11-15T10:03:54.5159489Z"
   },
-  "lastDataIntegrationAt": "2026-11-15T10:01:47.379Z",
+  "lastDataIntegrationAt": "2026-11-15T10:05:59.396Z",
   "dataReceipts": [
     {
       "kind": "Apply",
@@ -81,6 +81,12 @@
       "kind": "PhotoMetadata",
       "stage": "vehicles",
       "imageId": "620215283e654cbc952cc4238451abaf"
+    },
+    {
+      "kind": "Apply",
+      "stage": "fr-tone",
+      "operationId": "9dd0be7f-21fa-4d58-be4c-222ddbc9bd59",
+      "appliedAtUtc": "2026-11-15T10:05:59.3961986Z"
     }
   ],
   "publicationReceipt": {
