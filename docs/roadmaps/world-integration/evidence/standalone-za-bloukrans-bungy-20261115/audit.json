@@ -1,0 +1,156 @@
+{
+  "entryId": "ZA-candidate-discovery-cd0c1e03fb712f",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "f4811d86-ec22-46b1-b3be-a8f6c6aaddc7",
+  "name": "Bloukrans Bridge Bungy",
+  "countryCode": "ZA",
+  "auditAtUtc": "2026-11-15T11:25:13.930Z",
+  "qualification": "Saut à l’élastique fixe à réservation et billet propres sous le pont de Bloukrans. Face Adrenalin propose aussi une tyrolienne et un SkyWalk vendus séparément : ces expériences restent distinctes, à qualifier sans les confondre. Aucune fiche Park ou StandaloneAttraction sous Bloukrans/Face Adrenalin trouvée dans la recherche officielle avant création.",
+  "operatorSources": [
+    "https://faceadrenalin.com/bungy/",
+    "https://faceadrenalin.com/faqs/",
+    "https://faceadrenalin.com/contact-us/",
+    "https://faceadrenalin.com/our-story/",
+    "https://faceadrenalin.com/zipline/"
+  ],
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/f4811d86-ec22-46b1-b3be-a8f6c6aaddc7/bloukrans-bridge-bungy",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "6b1cff157f7b458f9548c656ef76b97b",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Face_Adrenalin_Bloukrans_Bridge_Bungy.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Face_Adrenalin_Bloukrans_Bridge_Bungy.jpg/960px-Face_Adrenalin_Bloukrans_Bridge_Bungy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Face Adrenalin",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "photographedAt": "2010-01-10",
+      "importedAtUtc": "2026-11-15T11:19:10.499Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "73b7ec3054d14d7ea62962e5d47a16d4",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bungee-jump-bloukrans-bridge-tsitsikamma-forest-south-africa-LTO.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Bungee-jump-bloukrans-bridge-tsitsikamma-forest-south-africa-LTO.jpg/960px-Bungee-jump-bloukrans-bridge-tsitsikamma-forest-south-africa-LTO.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Travel Local",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2014-04-29",
+      "importedAtUtc": "2026-11-15T11:19:28.851Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "a6f17988a81044c795cc018e95b3a376",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pont_bloukrans_saut.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Pont_bloukrans_saut.jpg/960px-Pont_bloukrans_saut.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Angeliquetrudel",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "photographedAt": "2019-03-05",
+      "importedAtUtc": "2026-11-15T11:19:42.779Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Billet bungy annoncé à partir de 1 690 ZAR par personne sur le site officiel ; SkyWalk d’accès, saut, remontée, équipement et certificat inclus ; photos/vidéos en supplément. Valeur minimale dynamique, pas prix fixe garanti.",
+  "openingHoursAssessment": "Ouvert chaque jour 09:00–17:00 toute l’année selon l’exploitant, y compris jours fériés ; créneau à réserver et présence une heure avant ; risque de fermeture en cas d’orage ou vent violent.",
+  "accessAssessment": "Bungy dès 14 ans, poids 35–150 kg ; les moins de 18 ans ont besoin d’une pièce d’identité et d’un accord parental. Activité non adaptée pendant la grossesse ni en cas de maladie cardiaque ; autres questions médicales à voir avec l’exploitant.",
+  "geoAssessment": "Point d’attraction OpenStreetMap node 6240270285 à -33.96532,23.6475, sur le pont ; la base visiteur et le parking ont une autre position.",
+  "historyAssessment": "Ouverture en 1997 selon l’histoire officielle de Face Adrenalin ; date exacte non documentée, événement à précision annuelle.",
+  "completeness": {
+    "score": 95,
+    "level": "Excellent",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127445497424431",
+    "publishedAtUtc": "2026-11-15T11:23:58.6194448Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T11:22:32.213Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "82245a6d-a52f-4b9d-9c89-ea14ae87f31a",
+      "appliedAtUtc": "2026-11-15T11:16:04.6852616Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "69ed7af0-c730-4f8d-b5bb-b71e5b8b868d",
+      "appliedAtUtc": "2026-11-15T11:18:01.922806Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "geo",
+      "operationId": "9c51a817-6986-4095-80e3-e92543da5eb8",
+      "appliedAtUtc": "2026-11-15T11:20:50.0158653Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "history",
+      "operationId": "511416e2-c4c8-4b53-9649-987b5202465e",
+      "appliedAtUtc": "2026-11-15T11:21:36.5409199Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "access-provenance",
+      "operationId": "6569f139-5547-4bde-846b-76b42c51f97d",
+      "appliedAtUtc": "2026-11-15T11:22:32.213524Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "history-first",
+      "operationId": "3ab427e1-3455-4b58-9dd2-df5fd0b0e050",
+      "appliedAtUtc": "2026-11-15T11:21:06.88144Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "6b1cff157f7b458f9548c656ef76b97b",
+      "appliedAtUtc": "2026-11-15T11:19:10.499Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "73b7ec3054d14d7ea62962e5d47a16d4",
+      "appliedAtUtc": "2026-11-15T11:19:28.851Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "a6f17988a81044c795cc018e95b3a376",
+      "appliedAtUtc": "2026-11-15T11:19:42.779Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "6e28e959-86e8-4bf5-ad5c-100671ff59d7",
+    "appliedAtUtc": "2026-11-15T11:23:01.2874631Z"
+  },
+  "nextAction": "Conserver la ligne. Recontrôler le prix de départ et les horaires sous 90 jours, puis la météo et les créneaux avant visite. Qualifier séparément la tyrolienne et le SkyWalk du même opérateur, avec photos exactes. Ne pas republier Facebook pour une simple actualisation."
+}
