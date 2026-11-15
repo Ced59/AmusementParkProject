@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/23578433-2048x1365.jpg",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/23578433-2048x1365.jpg",
+    "sourcePage": "https://www.pokeyland.com/services-a-disposition/",
+    "http": 200,
+    "bytes": 517686,
+    "dimensions": [
+      2048,
+      1365
+    ],
+    "sha256": "62ffbcd9bc22dddea366874b3b1b889ab5637bf9007cac9b0480c1182f90673e",
+    "fetchedUtc": "2026-11-15T11:50:28.658176+00:00",
+    "captureDate": null,
+    "photographer": null,
+    "over960KiB": false,
+    "exif": {}
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/23578433-2048x1365.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/23578433-2048x1365.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-picnic-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-picnic-import-result.json"
+  },
+  "metadata": {
+    "description": "Des tables à bancs, avec des lattes orangées et des pieds en béton, occupent un sol couvert de copeaux ; un filet et des obstacles de paintball apparaissent derrière.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/23578433-2048x1365.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Visiteurs autour de tables de pique-nique orangées à Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Visitors around orange picnic tables at Pokeyland"
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher an orangefarbenen Picknicktischen in Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Visitantes junto a mesas de pícnic anaranjadas en Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Visitatori attorno a tavoli da picnic arancioni a Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers rond oranje picknicktafels in Pokeyland"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Goście przy pomarańczowych stołach piknikowych w Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Visitantes junto de mesas de piquenique alaranjadas no Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des tables à bancs, avec des lattes orangées et des pieds en béton, occupent un sol couvert de copeaux ; un filet et des obstacles de paintball apparaissent derrière."
+      },
+      {
+        "languageCode": "en",
+        "value": "Benched tables with orange slats and concrete legs stand on woodchip-covered ground; netting and paintball obstacles appear behind them."
+      },
+      {
+        "languageCode": "de",
+        "value": "Tische mit Bänken, orangefarbenen Latten und Betonfüßen stehen auf mit Holzspänen bedecktem Boden; dahinter sind ein Netz und Paintballhindernisse zu sehen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Mesas con bancos de listones anaranjados y patas de hormigón se sitúan sobre un suelo cubierto de virutas; detrás aparecen una red y obstáculos de paintball."
+      },
+      {
+        "languageCode": "it",
+        "value": "Tavoli con panche, assi arancioni e gambe in cemento occupano un terreno coperto di trucioli; dietro si vedono una rete e ostacoli da paintball."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Tafels met banken, oranje latten en betonnen poten staan op een bodem met houtsnippers; daarachter zijn een net en paintballobstakels zichtbaar."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Stoły z ławkami, pomarańczowymi deskami i betonowymi nogami stoją na podłożu pokrytym zrębkami; z tyłu widać siatkę i przeszkody paintballowe."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Mesas com bancos, ripas alaranjadas e pés de betão ocupam um solo coberto de aparas; atrás surgem uma rede e obstáculos de paintball."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: official Pokeyland website; photographer not credited."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T13:45:54.2614035Z",
+    "result": {
+      "id": "35b9ff6d864440f0ad0f72833537fc54",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+      "path": "park_item/35b9ff6d864440f0ad0f72833537fc54",
+      "description": "Des tables à bancs, avec des lattes orangées et des pieds en béton, occupent un sol couvert de copeaux ; un filet et des obstacles de paintball apparaissent derrière.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 1365,
+      "sizeInBytes": 517686,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/23578433-2048x1365.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs autour de tables de pique-nique orangées à Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors around orange picnic tables at Pokeyland"
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher an orangefarbenen Picknicktischen in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes junto a mesas de pícnic anaranjadas en Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori attorno a tavoli da picnic arancioni a Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers rond oranje picknicktafels in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Goście przy pomarańczowych stołach piknikowych w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes junto de mesas de piquenique alaranjadas no Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des tables à bancs, avec des lattes orangées et des pieds en béton, occupent un sol couvert de copeaux ; un filet et des obstacles de paintball apparaissent derrière."
+        },
+        {
+          "languageCode": "en",
+          "value": "Benched tables with orange slats and concrete legs stand on woodchip-covered ground; netting and paintball obstacles appear behind them."
+        },
+        {
+          "languageCode": "de",
+          "value": "Tische mit Bänken, orangefarbenen Latten und Betonfüßen stehen auf mit Holzspänen bedecktem Boden; dahinter sind ein Netz und Paintballhindernisse zu sehen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Mesas con bancos de listones anaranjados y patas de hormigón se sitúan sobre un suelo cubierto de virutas; detrás aparecen una red y obstáculos de paintball."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tavoli con panche, assi arancioni e gambe in cemento occupano un terreno coperto di trucioli; dietro si vedono una rete e ostacoli da paintball."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tafels met banken, oranje latten en betonnen poten staan op een bodem met houtsnippers; daarachter zijn een net en paintballobstakels zichtbaar."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stoły z ławkami, pomarańczowymi deskami i betonowymi nogami stoją na podłożu pokrytym zrębkami; z tyłu widać siatkę i przeszkody paintballowe."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mesas com bancos, ripas alaranjadas e pés de betão ocupam um solo coberto de aparas; atrás surgem uma rede e obstáculos de paintball."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:45:47.671Z",
+      "updatedAt": "2026-11-15T13:45:51.144Z"
+    },
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T13:45:44.0551278Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

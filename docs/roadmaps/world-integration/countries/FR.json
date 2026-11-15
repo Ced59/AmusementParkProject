@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T13:33:12.665Z",
+      "lastDataIntegrationAt": "2026-11-15T13:49:27.334Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33728,6 +33728,106 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-qualified-coordinates-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland privé : dix points nommés OSM rapprochés du plan et des identités actuelles, coordonnées exactes relues dans la source. Anciennes dates de révision et limites conservées ; Crazy Kart exclu pour conflit de circuit, aucun point calculé ni GPS mobile inventé. Couverture10/74, aucune publication."
+        },
+        {
+          "eventId": "apply-9bb620ee-6f23-456c-a15c-61b6acd0c490",
+          "appliedAt": "2026-11-15T13:42:51.527Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-32-acrobranch-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 4 notices (Parcours découverte, Parcours famille, Parcours sportif, Parcours tyrolienne) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "import-photo-c3ed49df002b49029862ad404962f5fc",
+          "appliedAt": "2026-11-15T13:44:50.002Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-qualified-decouverte-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Parcours découverte importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-28873710d16042eda0a54de17e38f056",
+          "appliedAt": "2026-11-15T13:44:59.234Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-qualified-famille-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Parcours famille importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-6cc6622a5db343a4a0ef8d96f7197719",
+          "appliedAt": "2026-11-15T13:45:09.590Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-qualified-sportif-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Parcours sportif importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-8b3793aac4c94556833ba532eab46345",
+          "appliedAt": "2026-11-15T13:45:19.248Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-qualified-tyrolienne-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Parcours tyrolienne importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-399f973442ef4bed9fa1a8c3f4cc4f19",
+          "appliedAt": "2026-11-15T13:45:35.852Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-qualified-parking-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Parkings importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-35b9ff6d864440f0ad0f72833537fc54",
+          "appliedAt": "2026-11-15T13:45:47.671Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-qualified-picnic-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Aires de pique-nique importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "apply-3f3ea7f8-4b68-4e41-b620-1a82c7cd5853",
+          "appliedAt": "2026-11-15T13:46:52.167Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-33-food-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 4 notices (Le Petit Creux, Le Gourmand, Le Grill, L’Escale) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "apply-b957208a-2c57-4178-99bd-aabb87539029",
+          "appliedAt": "2026-11-15T13:48:38.644Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-34-pokeyshow-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 1 notices (Scène Pokeyshow) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "import-photo-a96fbefc478540688a36dc04d2a27d10",
+          "appliedAt": "2026-11-15T13:49:27.334Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-pokeyshow-2017-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Scène Pokeyshow importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

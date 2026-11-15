@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/IMG_3031-scaled-pmva2rp3ug2bqs7zp57k03q3mhxihf8nslp6ywx9k0.jpg",
+    "accessedAtUtc": "2026-11-15T12:09:36.222944+00:00",
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/IMG_3031-scaled-pmva2rp3ug2bqs7zp57k03q3mhxihf8nslp6ywx9k0.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 93981,
+    "sha256": "810d4475fd87372ecb79ca5a10622afe3fd28687af7b6206bb61e0a8d51de3c0",
+    "file": "official-tyrolienne.jpg",
+    "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/accrobranche-course-qualification/official-tyrolienne.jpg",
+    "dimensions": [
+      700,
+      400
+    ],
+    "within960KiB": true,
+    "personallyViewed": true,
+    "visibleWatermark": false,
+    "localEditing": false,
+    "sourceSuppliedVariant": true,
+    "montageObserved": false,
+    "associationLevel": "nominal_course",
+    "visualObservations": "Usagère en baudrier suspendue sous une poulie sur câble, feuillage et branches autour.",
+    "associationLimits": "Carte officielle Parcours tyrolienne. Texte opérateur nomme un parcours composé de tyroliennes de 1km ; ne pas transformer en une seule portée ininterrompue de 1km.",
+    "captureDate": null,
+    "individualPhotographer": null,
+    "openLicenseClaimed": false,
+    "sourcePage": "https://www.pokeyland.com/packs/accrobranche/",
+    "creditEvidence": "Site officiel Pokeyland ; aucun photographe individuel identifié, date de publication de la photo et capture non établies."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/IMG_3031-scaled-pmva2rp3ug2bqs7zp57k03q3mhxihf8nslp6ywx9k0.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/accrobranche-course-qualification/official-tyrolienne.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-tyrolienne-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-tyrolienne-import-result.json"
+  },
+  "metadata": {
+    "description": "Une femme reliée au câble par une poulie passe entre des arbres dont les branches se découpent sur le ciel.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/IMG_3031-scaled-pmva2rp3ug2bqs7zp57k03q3mhxihf8nslp6ywx9k0.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Participante au-dessus du sol sur le Parcours tyrolienne de Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Participant above the ground on Pokeyland’s Zipline Course"
+      },
+      {
+        "languageCode": "de",
+        "value": "Teilnehmerin über dem Boden im Seilrutschenparcours von Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Participante sobre el suelo en el Recorrido de tirolinas de Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Partecipante sopra il terreno nel Percorso zipline di Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Deelnemer boven de grond op het Tokkelparcours van Pokeyland"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Uczestniczka nad ziemią na trasie tyrolkowej w Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Participante acima do solo no Percurso de tirolesas do Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une femme reliée au câble par une poulie passe entre des arbres dont les branches se découpent sur le ciel."
+      },
+      {
+        "languageCode": "en",
+        "value": "A woman connected to the cable by a pulley passes between trees whose branches stand out against the sky."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Frau, die über eine Rolle mit dem Seil verbunden ist, gleitet zwischen Bäumen, deren Äste sich vor dem Himmel abzeichnen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una mujer unida al cable mediante una polea pasa entre árboles cuyas ramas se recortan contra el cielo."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una donna collegata al cavo tramite una carrucola passa tra alberi i cui rami si stagliano contro il cielo."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een vrouw die via een katrol aan de kabel is verbonden, gaat tussen bomen door waarvan de takken tegen de lucht afsteken."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kobieta połączona z liną za pomocą bloczka przemieszcza się między drzewami, których gałęzie odcinają się na tle nieba."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma mulher ligada ao cabo por uma roldana passa entre árvores cujos ramos se recortam contra o céu."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: official Pokeyland website; photographer not credited."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T13:45:17.7578522Z",
+    "result": {
+      "id": "8b3793aac4c94556833ba532eab46345",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+      "path": "park_item/8b3793aac4c94556833ba532eab46345",
+      "description": "Une femme reliée au câble par une poulie passe entre des arbres dont les branches se découpent sur le ciel.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 93981,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/IMG_3031-scaled-pmva2rp3ug2bqs7zp57k03q3mhxihf8nslp6ywx9k0.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Participante au-dessus du sol sur le Parcours tyrolienne de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Participant above the ground on Pokeyland’s Zipline Course"
+        },
+        {
+          "languageCode": "de",
+          "value": "Teilnehmerin über dem Boden im Seilrutschenparcours von Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Participante sobre el suelo en el Recorrido de tirolinas de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Partecipante sopra il terreno nel Percorso zipline di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Deelnemer boven de grond op het Tokkelparcours van Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uczestniczka nad ziemią na trasie tyrolkowej w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Participante acima do solo no Percurso de tirolesas do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une femme reliée au câble par une poulie passe entre des arbres dont les branches se découpent sur le ciel."
+        },
+        {
+          "languageCode": "en",
+          "value": "A woman connected to the cable by a pulley passes between trees whose branches stand out against the sky."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Frau, die über eine Rolle mit dem Seil verbunden ist, gleitet zwischen Bäumen, deren Äste sich vor dem Himmel abzeichnen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una mujer unida al cable mediante una polea pasa entre árboles cuyas ramas se recortan contra el cielo."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una donna collegata al cavo tramite una carrucola passa tra alberi i cui rami si stagliano contro il cielo."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een vrouw die via een katrol aan de kabel is verbonden, gaat tussen bomen door waarvan de takken tegen de lucht afsteken."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kobieta połączona z liną za pomocą bloczka przemieszcza się między drzewami, których gałęzie odcinają się na tle nieba."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma mulher ligada ao cabo por uma roldana passa entre árvores cujos ramos se recortam contra o céu."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:45:19.248Z",
+      "updatedAt": "2026-11-15T13:45:22.932Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T13:45:26.0424340Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

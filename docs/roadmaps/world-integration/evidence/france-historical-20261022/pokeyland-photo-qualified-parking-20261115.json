@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/45152318-2048x1365.jpg",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/45152318-2048x1365.jpg",
+    "sourcePage": "https://www.pokeyland.com/services-a-disposition/",
+    "http": 200,
+    "bytes": 659262,
+    "dimensions": [
+      2048,
+      1365
+    ],
+    "sha256": "6e98affea663493db8c37f1025b9d20b2d3dfbdcf867bedaed8cebd43a1bb19e",
+    "fetchedUtc": "2026-11-15T11:50:29.713212+00:00",
+    "captureDate": null,
+    "photographer": null,
+    "over960KiB": false,
+    "exif": {}
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/45152318-2048x1365.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/45152318-2048x1365.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-parking-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-parking-import-result.json"
+  },
+  "metadata": {
+    "description": "Les voitures bordent une large allée centrale, avec des arbres autour des emplacements et des ombres de branches sur le passage.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/45152318-2048x1365.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Deux rangées de voitures dans le parking boisé de Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Two rows of cars in Pokeyland’s wooded car park"
+      },
+      {
+        "languageCode": "de",
+        "value": "Zwei Autoreihen auf dem bewaldeten Parkplatz von Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Dos filas de coches en el aparcamiento arbolado de Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Due file di automobili nel parcheggio alberato di Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Twee rijen auto’s op het bosrijke parkeerterrein van Pokeyland"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dwa rzędy samochodów na zadrzewionym parkingu Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Duas filas de automóveis no estacionamento arborizado do Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les voitures bordent une large allée centrale, avec des arbres autour des emplacements et des ombres de branches sur le passage."
+      },
+      {
+        "languageCode": "en",
+        "value": "Cars line a wide central aisle, with trees around the spaces and branch shadows across the passage."
+      },
+      {
+        "languageCode": "de",
+        "value": "Autos säumen eine breite mittlere Fahrgasse, mit Bäumen um die Stellplätze und Astschatten auf dem Durchgang."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los coches bordean un pasillo central ancho, con árboles alrededor de las plazas y sombras de ramas sobre el paso."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le automobili fiancheggiano un ampio passaggio centrale, con alberi attorno agli stalli e ombre di rami sul percorso."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Auto’s staan langs een brede centrale rijstrook, met bomen rond de plaatsen en schaduwen van takken op de doorgang."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Samochody stoją wzdłuż szerokiego centralnego przejazdu, z drzewami wokół stanowisk i cieniami gałęzi na drodze."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os automóveis ladeiam uma passagem central larga, com árvores em redor dos lugares e sombras de ramos sobre o caminho."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: official Pokeyland website; photographer not credited."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "399f973442ef4bed9fa1a8c3f4cc4f19",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+      "path": "park_item/399f973442ef4bed9fa1a8c3f4cc4f19",
+      "description": "Les voitures bordent une large allée centrale, avec des arbres autour des emplacements et des ombres de branches sur le passage.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 1365,
+      "sizeInBytes": 659262,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/45152318-2048x1365.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Deux rangées de voitures dans le parking boisé de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Two rows of cars in Pokeyland’s wooded car park"
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Autoreihen auf dem bewaldeten Parkplatz von Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos filas de coches en el aparcamiento arbolado de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Due file di automobili nel parcheggio alberato di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee rijen auto’s op het bosrijke parkeerterrein van Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwa rzędy samochodów na zadrzewionym parkingu Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Duas filas de automóveis no estacionamento arborizado do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les voitures bordent une large allée centrale, avec des arbres autour des emplacements et des ombres de branches sur le passage."
+        },
+        {
+          "languageCode": "en",
+          "value": "Cars line a wide central aisle, with trees around the spaces and branch shadows across the passage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Autos säumen eine breite mittlere Fahrgasse, mit Bäumen um die Stellplätze und Astschatten auf dem Durchgang."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los coches bordean un pasillo central ancho, con árboles alrededor de las plazas y sombras de ramas sobre el paso."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le automobili fiancheggiano un ampio passaggio centrale, con alberi attorno agli stalli e ombre di rami sul percorso."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Auto’s staan langs een brede centrale rijstrook, met bomen rond de plaatsen en schaduwen van takken op de doorgang."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Samochody stoją wzdłuż szerokiego centralnego przejazdu, z drzewami wokół stanowisk i cieniami gałęzi na drodze."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os automóveis ladeiam uma passagem central larga, com árvores em redor dos lugares e sombras de ramos sobre o caminho."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:45:35.852Z",
+      "updatedAt": "2026-11-15T13:45:39.301Z"
+    },
+    "receivedAtUtc": "2026-11-15T13:45:42.4098459Z",
+    "startedAtUtc": "2026-11-15T13:45:27.5817458Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

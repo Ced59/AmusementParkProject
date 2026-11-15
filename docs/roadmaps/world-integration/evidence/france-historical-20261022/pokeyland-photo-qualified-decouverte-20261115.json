@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7549-scaled-psh991myhavxhdwsuttzksz42ezndsbyfktk4ldyu8.jpg",
+    "accessedAtUtc": "2026-11-15T12:09:35.606982+00:00",
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7549-scaled-psh991myhavxhdwsuttzksz42ezndsbyfktk4ldyu8.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 61918,
+    "sha256": "de7f11b2b556600c2d32277f4ff851ec604255d0c78092702fdfe7b5d697ea56",
+    "file": "official-decouverte.jpg",
+    "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/accrobranche-course-qualification/official-decouverte.jpg",
+    "dimensions": [
+      700,
+      400
+    ],
+    "within960KiB": true,
+    "personallyViewed": true,
+    "visibleWatermark": false,
+    "localEditing": false,
+    "sourceSuppliedVariant": true,
+    "montageObserved": false,
+    "associationLevel": "nominal_course",
+    "visualObservations": "Enfant équipé traversant un câble tendu entre arbres ; plateforme de bois autour du tronc à gauche ; plusieurs câbles au-dessus et une traversée à planches visible en arrière-plan.",
+    "associationLimits": "Rattachée dans la même section HTML au titre Parcours découverte ; aucun panneau de terrain visible. Ne pas attribuer le pont en arrière-plan à ce même parcours.",
+    "captureDate": null,
+    "individualPhotographer": null,
+    "openLicenseClaimed": false,
+    "sourcePage": "https://www.pokeyland.com/packs/accrobranche/",
+    "creditEvidence": "Site officiel Pokeyland ; aucun photographe individuel identifié, date de publication de la photo et capture non établies."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7549-scaled-psh991myhavxhdwsuttzksz42ezndsbyfktk4ldyu8.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/accrobranche-course-qualification/official-decouverte.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-decouverte-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-decouverte-import-result.json"
+  },
+  "metadata": {
+    "description": "Un enfant en baudrier avance sur un câble, près d’une plateforme en bois entourant un arbre, en tenant une ligne plus haute.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7549-scaled-psh991myhavxhdwsuttzksz42ezndsbyfktk4ldyu8.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Enfant sur un câble du Parcours découverte à Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Child on a cable on Pokeyland’s Discovery Course"
+      },
+      {
+        "languageCode": "de",
+        "value": "Kind auf einem Seil im Entdeckungsparcours von Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Niño sobre un cable del Recorrido descubrimiento de Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Bambino su un cavo del Percorso scoperta di Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Kind op een kabel van het Ontdekkingsparcours in Pokeyland"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dziecko na linie trasy odkrywczej w Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Criança num cabo do Percurso descoberta do Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un enfant en baudrier avance sur un câble, près d’une plateforme en bois entourant un arbre, en tenant une ligne plus haute."
+      },
+      {
+        "languageCode": "en",
+        "value": "A child in a harness walks along a cable near a wooden platform around a tree, holding a higher line."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Kind mit Klettergurt geht nahe einer Holzplattform um einen Baum über ein Seil und hält sich an einer höheren Leine fest."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un niño con arnés camina por un cable junto a una plataforma de madera alrededor de un árbol, sujetándose a una línea más alta."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un bambino con imbracatura cammina su un cavo vicino a una piattaforma di legno attorno a un albero, tenendosi a una linea più alta."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een kind met een klimgordel loopt over een kabel bij een houten platform rond een boom en houdt een hogere lijn vast."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dziecko w uprzęży stąpa po linie przy drewnianej platformie wokół drzewa, trzymając się wyższej liny."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma criança com arnês caminha sobre um cabo junto de uma plataforma de madeira em redor de uma árvore, segurando uma linha mais alta."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: official Pokeyland website; photographer not credited."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T13:44:56.5748322Z",
+    "startedAtUtc": "2026-11-15T13:44:48.5775478Z",
+    "result": {
+      "id": "c3ed49df002b49029862ad404962f5fc",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+      "path": "park_item/c3ed49df002b49029862ad404962f5fc",
+      "description": "Un enfant en baudrier avance sur un câble, près d’une plateforme en bois entourant un arbre, en tenant une ligne plus haute.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 61918,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7549-scaled-psh991myhavxhdwsuttzksz42ezndsbyfktk4ldyu8.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant sur un câble du Parcours découverte à Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Child on a cable on Pokeyland’s Discovery Course"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind auf einem Seil im Entdeckungsparcours von Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño sobre un cable del Recorrido descubrimiento de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino su un cavo del Percorso scoperta di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind op een kabel van het Ontdekkingsparcours in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko na linie trasy odkrywczej w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança num cabo do Percurso descoberta do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un enfant en baudrier avance sur un câble, près d’une plateforme en bois entourant un arbre, en tenant une ligne plus haute."
+        },
+        {
+          "languageCode": "en",
+          "value": "A child in a harness walks along a cable near a wooden platform around a tree, holding a higher line."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Kind mit Klettergurt geht nahe einer Holzplattform um einen Baum über ein Seil und hält sich an einer höheren Leine fest."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un niño con arnés camina por un cable junto a una plataforma de madera alrededor de un árbol, sujetándose a una línea más alta."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un bambino con imbracatura cammina su un cavo vicino a una piattaforma di legno attorno a un albero, tenendosi a una linea più alta."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kind met een klimgordel loopt over een kabel bij een houten platform rond een boom en houdt een hogere lijn vast."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko w uprzęży stąpa po linie przy drewnianej platformie wokół drzewa, trzymając się wyższej liny."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma criança com arnês caminha sobre um cabo junto de uma plataforma de madeira em redor de uma árvore, segurando uma linha mais alta."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:44:50.002Z",
+      "updatedAt": "2026-11-15T13:44:53.465Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,814 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-33-food-descriptions",
+        "step": "04-items",
+        "notes": "Quatre notices privées huit langues personnellement rédigées et relues à partir de https://www.pokeyland.com/restauration/ (source 200 conservée, texte officiel relu). Exception de profondeur explicite : un intertitre et un paragraphe, menus précis seulement ; recherches de photographies de façades ont échoué, montages produits rejetés. Ne pas remplir par décor, ambiance, terrasses individuelles, horaires, tarifs ou ingrédients supplémentaires inventés. Le Grill ne devient pas alias O’Chalet, L’Escale ne devient pas Sur le Pouce ; identités distinctes conservées."
+      },
+      "items": [
+        {
+          "id": "e267af4d-a394-4ddb-9cb5-597582e077da",
+          "key": "pokeyland-petit-creux",
+          "name": "Le Petit Creux",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Burgers et frites maison</h2><p>Le Petit Creux est un point de restauration de Pokeyland consacré aux hamburgers, aux hot-dogs et aux salades. Sa carte annoncée par le parc comprend également des frites maison.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Burgers and homemade chips</h2><p>Le Petit Creux is a Pokeyland food outlet serving hamburgers, hot dogs and salads. The menu advertised by the park also includes homemade chips.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Burger und hausgemachte Pommes</h2><p>Le Petit Creux ist ein Gastronomieangebot in Pokeyland mit Hamburgern, Hotdogs und Salaten. Die vom Park vorgestellte Speisekarte umfasst auch hausgemachte Pommes frites.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Hamburguesas y patatas fritas caseras</h2><p>Le Petit Creux es un punto de restauración de Pokeyland dedicado a hamburguesas, perritos calientes y ensaladas. La carta anunciada por el parque también incluye patatas fritas caseras.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Hamburger e patatine fritte della casa</h2><p>Le Petit Creux è un punto di ristoro di Pokeyland dedicato a hamburger, hot dog e insalate. Il menu presentato dal parco comprende anche patatine fritte della casa.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Burgers en huisgemaakte friet</h2><p>Le Petit Creux is een eetgelegenheid in Pokeyland met hamburgers, hotdogs en salades. Op het door het park gepresenteerde menu staat ook huisgemaakte friet.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Burgery i frytki własnego wyrobu</h2><p>Le Petit Creux to punkt gastronomiczny Pokeyland oferujący hamburgery, hot dogi i sałatki. W menu przedstawionym przez park znajdują się także frytki własnego wyrobu.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Hambúrgueres e batatas fritas caseiras</h2><p>Le Petit Creux é um ponto de restauração do Pokeyland dedicado a hambúrgueres, cachorros-quentes e saladas. A ementa anunciada pelo parque também inclui batatas fritas caseiras.</p>"
+            }
+          ]
+        },
+        {
+          "id": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+          "key": "pokeyland-gourmand",
+          "name": "Le Gourmand",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Crêpes, churros et douceurs glacées</h2><p>Le Gourmand concentre l’offre sucrée de Pokeyland : churros, crêpes au sucre ou au Nutella, glaces et bonbons. Les granitas complètent cette sélection de gourmandises.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Crêpes, churros and frozen treats</h2><p>Le Gourmand brings together Pokeyland’s sweet offerings: churros, crêpes with sugar or Nutella, ice cream and sweets. Granitas complete this selection of treats.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Crêpes, Churros und eisige Süßigkeiten</h2><p>Le Gourmand bündelt das süße Angebot von Pokeyland: Churros, Crêpes mit Zucker oder Nutella, Eis und Bonbons. Granitas ergänzen diese Auswahl an Leckereien.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Crepes, churros y dulces helados</h2><p>Le Gourmand reúne la oferta dulce de Pokeyland: churros, crepes con azúcar o Nutella, helados y caramelos. Los granizados completan esta selección de golosinas.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Crêpes, churros e dolci freschi</h2><p>Le Gourmand riunisce l’offerta dolce di Pokeyland: churros, crêpes con zucchero o Nutella, gelati e caramelle. Le granite completano questa selezione di golosità.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Crêpes, churros en ijskoude lekkernijen</h2><p>Le Gourmand bundelt het zoete aanbod van Pokeyland: churros, crêpes met suiker of Nutella, ijs en snoep. Granita’s maken deze selectie compleet.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Naleśniki, churros i mrożone słodkości</h2><p>Le Gourmand skupia słodką ofertę Pokeyland: churros, naleśniki z cukrem lub Nutellą, lody i cukierki. Wybór tych przysmaków uzupełniają granity.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Crepes, churros e doces gelados</h2><p>Le Gourmand reúne a oferta doce do Pokeyland: churros, crepes com açúcar ou Nutella, gelados e rebuçados. Os granizados completam esta seleção de guloseimas.</p>"
+            }
+          ]
+        },
+        {
+          "id": "538a604f-6fe1-4460-9740-7b0c576b0214",
+          "key": "pokeyland-grill",
+          "name": "Le Grill",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les grillades du parc</h2><p>Le Grill propose des viandes grillées et des cuissons au barbecue à Pokeyland. Parmi les spécialités annoncées figurent les saucisses blanches et la Currywurst.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The park’s grilled specialities</h2><p>Le Grill serves grilled meats and barbecue food at Pokeyland. White sausages and Currywurst are among its advertised specialities.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Grillspezialitäten im Park</h2><p>Le Grill bietet in Pokeyland gegrilltes Fleisch und Barbecue-Gerichte an. Zu den angekündigten Spezialitäten gehören weiße Würste und Currywurst.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Las parrilladas del parque</h2><p>Le Grill ofrece carnes a la parrilla y preparaciones a la barbacoa en Pokeyland. Entre las especialidades anunciadas figuran las salchichas blancas y la Currywurst.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Le grigliate del parco</h2><p>Le Grill propone carni alla griglia e cotture al barbecue a Pokeyland. Tra le specialità annunciate figurano le salsicce bianche e il Currywurst.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Grillspecialiteiten van het park</h2><p>Le Grill biedt gegrild vlees en barbecuegerechten in Pokeyland. Witte worsten en Currywurst behoren tot de vermelde specialiteiten.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Parkowe dania z grilla</h2><p>Le Grill oferuje w Pokeyland grillowane mięsa i dania z rusztu. Wśród wymienionych specjalności znajdują się białe kiełbasy i Currywurst.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Os grelhados do parque</h2><p>Le Grill propõe carnes grelhadas e preparações no churrasco no Pokeyland. Entre as especialidades anunciadas encontram-se as salsichas brancas e a Currywurst.</p>"
+            }
+          ]
+        },
+        {
+          "id": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+          "key": "pokeyland-escale",
+          "name": "L’Escale",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Sandwichs et boissons</h2><p>L’Escale est un point de petite restauration où Pokeyland propose des sandwichs, des boissons et du snacking.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Sandwiches and drinks</h2><p>L’Escale is a light food outlet where Pokeyland offers sandwiches, drinks and snacks.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Sandwiches und Getränke</h2><p>L’Escale ist ein Imbissangebot in Pokeyland mit Sandwiches, Getränken und Snacks.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Sándwiches y bebidas</h2><p>L’Escale es el punto de restauración ligera donde Pokeyland ofrece sándwiches, bebidas y aperitivos.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Sandwich e bevande</h2><p>L’Escale è il punto di ristoro leggero dove Pokeyland propone sandwich, bevande e spuntini.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Sandwiches en drankjes</h2><p>L’Escale is een eetgelegenheid waar Pokeyland sandwiches, drankjes en snacks aanbiedt.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Kanapki i napoje</h2><p>L’Escale to punkt drobnej gastronomii, w którym Pokeyland oferuje kanapki, napoje i przekąski.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Sanduíches e bebidas</h2><p>L’Escale é o ponto de refeições ligeiras onde o Pokeyland oferece sanduíches, bebidas e petiscos.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "c23a6188-1f8a-4567-b5c2-3ae720dc86d5",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:46:40.4211358Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Burger und hausgemachte Pommes</h2><p>Le Petit Creux ist ein Gastronomieangebot in Pokeyland mit Hamburgern, Hotdogs und Salaten. Die vom Park vorgestellte Speisekarte umfasst auch hausgemachte Pommes frites.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Burgers and homemade chips</h2><p>Le Petit Creux is a Pokeyland food outlet serving hamburgers, hot dogs and salads. The menu advertised by the park also includes homemade chips.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Hamburguesas y patatas fritas caseras</h2><p>Le Petit Creux es un punto de restauración de Pokeyland dedicado a hamburguesas, perritos calientes y ensaladas. La carta anunciada por el parque también incluye patatas fritas caseras.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Burgers et frites maison</h2><p>Le Petit Creux est un point de restauration de Pokeyland consacré aux hamburgers, aux hot-dogs et aux salades. Sa carte annoncée par le parc comprend également des frites maison.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Hamburger e patatine fritte della casa</h2><p>Le Petit Creux è un punto di ristoro di Pokeyland dedicato a hamburger, hot dog e insalate. Il menu presentato dal parco comprende anche patatine fritte della casa.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Burgers en huisgemaakte friet</h2><p>Le Petit Creux is een eetgelegenheid in Pokeyland met hamburgers, hotdogs en salades. Op het door het park gepresenteerde menu staat ook huisgemaakte friet.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Burgery i frytki własnego wyrobu</h2><p>Le Petit Creux to punkt gastronomiczny Pokeyland oferujący hamburgery, hot dogi i sałatki. W menu przedstawionym przez park znajdują się także frytki własnego wyrobu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Hambúrgueres e batatas fritas caseiras</h2><p>Le Petit Creux é um ponto de restauração do Pokeyland dedicado a hambúrgueres, cachorros-quentes e saladas. A ementa anunciada pelo parque também inclui batatas fritas caseiras.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, Churros und eisige Süßigkeiten</h2><p>Le Gourmand bündelt das süße Angebot von Pokeyland: Churros, Crêpes mit Zucker oder Nutella, Eis und Bonbons. Granitas ergänzen diese Auswahl an Leckereien.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, churros and frozen treats</h2><p>Le Gourmand brings together Pokeyland’s sweet offerings: churros, crêpes with sugar or Nutella, ice cream and sweets. Granitas complete this selection of treats.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Crepes, churros y dulces helados</h2><p>Le Gourmand reúne la oferta dulce de Pokeyland: churros, crepes con azúcar o Nutella, helados y caramelos. Los granizados completan esta selección de golosinas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, churros et douceurs glacées</h2><p>Le Gourmand concentre l’offre sucrée de Pokeyland : churros, crêpes au sucre ou au Nutella, glaces et bonbons. Les granitas complètent cette sélection de gourmandises.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, churros e dolci freschi</h2><p>Le Gourmand riunisce l’offerta dolce di Pokeyland: churros, crêpes con zucchero o Nutella, gelati e caramelle. Le granite completano questa selezione di golosità.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, churros en ijskoude lekkernijen</h2><p>Le Gourmand bundelt het zoete aanbod van Pokeyland: churros, crêpes met suiker of Nutella, ijs en snoep. Granita’s maken deze selectie compleet.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Naleśniki, churros i mrożone słodkości</h2><p>Le Gourmand skupia słodką ofertę Pokeyland: churros, naleśniki z cukrem lub Nutellą, lody i cukierki. Wybór tych przysmaków uzupełniają granity.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Crepes, churros e doces gelados</h2><p>Le Gourmand reúne a oferta doce do Pokeyland: churros, crepes com açúcar ou Nutella, gelados e rebuçados. Os granizados completam esta seleção de guloseimas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "pokeyland-grill",
+        "displayName": "Le Grill",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Grillspezialitäten im Park</h2><p>Le Grill bietet in Pokeyland gegrilltes Fleisch und Barbecue-Gerichte an. Zu den angekündigten Spezialitäten gehören weiße Würste und Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The park’s grilled specialities</h2><p>Le Grill serves grilled meats and barbecue food at Pokeyland. White sausages and Currywurst are among its advertised specialities.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Las parrilladas del parque</h2><p>Le Grill ofrece carnes a la parrilla y preparaciones a la barbacoa en Pokeyland. Entre las especialidades anunciadas figuran las salchichas blancas y la Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les grillades du parc</h2><p>Le Grill propose des viandes grillées et des cuissons au barbecue à Pokeyland. Parmi les spécialités annoncées figurent les saucisses blanches et la Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Le grigliate del parco</h2><p>Le Grill propone carni alla griglia e cotture al barbecue a Pokeyland. Tra le specialità annunciate figurano le salsicce bianche e il Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Grillspecialiteiten van het park</h2><p>Le Grill biedt gegrild vlees en barbecuegerechten in Pokeyland. Witte worsten en Currywurst behoren tot de vermelde specialiteiten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Parkowe dania z grilla</h2><p>Le Grill oferuje w Pokeyland grillowane mięsa i dania z rusztu. Wśród wymienionych specjalności znajdują się białe kiełbasy i Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os grelhados do parque</h2><p>Le Grill propõe carnes grelhadas e preparações no churrasco no Pokeyland. Entre as especialidades anunciadas encontram-se as salsichas brancas e a Currywurst.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Sandwiches und Getränke</h2><p>L’Escale ist ein Imbissangebot in Pokeyland mit Sandwiches, Getränken und Snacks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Sandwiches and drinks</h2><p>L’Escale is a light food outlet where Pokeyland offers sandwiches, drinks and snacks.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Sándwiches y bebidas</h2><p>L’Escale es el punto de restauración ligera donde Pokeyland ofrece sándwiches, bebidas y aperitivos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Sandwichs et boissons</h2><p>L’Escale est un point de petite restauration où Pokeyland propose des sandwichs, des boissons et du snacking.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sandwich e bevande</h2><p>L’Escale è il punto di ristoro leggero dove Pokeyland propone sandwich, bevande e spuntini.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Sandwiches en drankjes</h2><p>L’Escale is een eetgelegenheid waar Pokeyland sandwiches, drankjes en snacks aanbiedt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kanapki i napoje</h2><p>L’Escale to punkt drobnej gastronomii, w którym Pokeyland oferuje kanapki, napoje i przekąski.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Sanduíches e bebidas</h2><p>L’Escale é o ponto de refeições ligeiras onde o Pokeyland oferece sanduíches, bebidas e petiscos.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "3f3ea7f8-4b68-4e41-b620-1a82c7cd5853",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:46:52.1677733Z",
+    "appliedAtUtc": "2026-11-15T13:46:52.1677742Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Burger und hausgemachte Pommes</h2><p>Le Petit Creux ist ein Gastronomieangebot in Pokeyland mit Hamburgern, Hotdogs und Salaten. Die vom Park vorgestellte Speisekarte umfasst auch hausgemachte Pommes frites.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Burgers and homemade chips</h2><p>Le Petit Creux is a Pokeyland food outlet serving hamburgers, hot dogs and salads. The menu advertised by the park also includes homemade chips.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Hamburguesas y patatas fritas caseras</h2><p>Le Petit Creux es un punto de restauración de Pokeyland dedicado a hamburguesas, perritos calientes y ensaladas. La carta anunciada por el parque también incluye patatas fritas caseras.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Burgers et frites maison</h2><p>Le Petit Creux est un point de restauration de Pokeyland consacré aux hamburgers, aux hot-dogs et aux salades. Sa carte annoncée par le parc comprend également des frites maison.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Hamburger e patatine fritte della casa</h2><p>Le Petit Creux è un punto di ristoro di Pokeyland dedicato a hamburger, hot dog e insalate. Il menu presentato dal parco comprende anche patatine fritte della casa.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Burgers en huisgemaakte friet</h2><p>Le Petit Creux is een eetgelegenheid in Pokeyland met hamburgers, hotdogs en salades. Op het door het park gepresenteerde menu staat ook huisgemaakte friet.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Burgery i frytki własnego wyrobu</h2><p>Le Petit Creux to punkt gastronomiczny Pokeyland oferujący hamburgery, hot dogi i sałatki. W menu przedstawionym przez park znajdują się także frytki własnego wyrobu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Hambúrgueres e batatas fritas caseiras</h2><p>Le Petit Creux é um ponto de restauração do Pokeyland dedicado a hambúrgueres, cachorros-quentes e saladas. A ementa anunciada pelo parque também inclui batatas fritas caseiras.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, Churros und eisige Süßigkeiten</h2><p>Le Gourmand bündelt das süße Angebot von Pokeyland: Churros, Crêpes mit Zucker oder Nutella, Eis und Bonbons. Granitas ergänzen diese Auswahl an Leckereien.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, churros and frozen treats</h2><p>Le Gourmand brings together Pokeyland’s sweet offerings: churros, crêpes with sugar or Nutella, ice cream and sweets. Granitas complete this selection of treats.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Crepes, churros y dulces helados</h2><p>Le Gourmand reúne la oferta dulce de Pokeyland: churros, crepes con azúcar o Nutella, helados y caramelos. Los granizados completan esta selección de golosinas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, churros et douceurs glacées</h2><p>Le Gourmand concentre l’offre sucrée de Pokeyland : churros, crêpes au sucre ou au Nutella, glaces et bonbons. Les granitas complètent cette sélection de gourmandises.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, churros e dolci freschi</h2><p>Le Gourmand riunisce l’offerta dolce di Pokeyland: churros, crêpes con zucchero o Nutella, gelati e caramelle. Le granite completano questa selezione di golosità.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Crêpes, churros en ijskoude lekkernijen</h2><p>Le Gourmand bundelt het zoete aanbod van Pokeyland: churros, crêpes met suiker of Nutella, ijs en snoep. Granita’s maken deze selectie compleet.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Naleśniki, churros i mrożone słodkości</h2><p>Le Gourmand skupia słodką ofertę Pokeyland: churros, naleśniki z cukrem lub Nutellą, lody i cukierki. Wybór tych przysmaków uzupełniają granity.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Crepes, churros e doces gelados</h2><p>Le Gourmand reúne a oferta doce do Pokeyland: churros, crepes com açúcar ou Nutella, gelados e rebuçados. Os granizados completam esta seleção de guloseimas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "pokeyland-grill",
+        "displayName": "Le Grill",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Grillspezialitäten im Park</h2><p>Le Grill bietet in Pokeyland gegrilltes Fleisch und Barbecue-Gerichte an. Zu den angekündigten Spezialitäten gehören weiße Würste und Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The park’s grilled specialities</h2><p>Le Grill serves grilled meats and barbecue food at Pokeyland. White sausages and Currywurst are among its advertised specialities.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Las parrilladas del parque</h2><p>Le Grill ofrece carnes a la parrilla y preparaciones a la barbacoa en Pokeyland. Entre las especialidades anunciadas figuran las salchichas blancas y la Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les grillades du parc</h2><p>Le Grill propose des viandes grillées et des cuissons au barbecue à Pokeyland. Parmi les spécialités annoncées figurent les saucisses blanches et la Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Le grigliate del parco</h2><p>Le Grill propone carni alla griglia e cotture al barbecue a Pokeyland. Tra le specialità annunciate figurano le salsicce bianche e il Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Grillspecialiteiten van het park</h2><p>Le Grill biedt gegrild vlees en barbecuegerechten in Pokeyland. Witte worsten en Currywurst behoren tot de vermelde specialiteiten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Parkowe dania z grilla</h2><p>Le Grill oferuje w Pokeyland grillowane mięsa i dania z rusztu. Wśród wymienionych specjalności znajdują się białe kiełbasy i Currywurst.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os grelhados do parque</h2><p>Le Grill propõe carnes grelhadas e preparações no churrasco no Pokeyland. Entre as especialidades anunciadas encontram-se as salsichas brancas e a Currywurst.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Sandwiches und Getränke</h2><p>L’Escale ist ein Imbissangebot in Pokeyland mit Sandwiches, Getränken und Snacks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Sandwiches and drinks</h2><p>L’Escale is a light food outlet where Pokeyland offers sandwiches, drinks and snacks.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Sándwiches y bebidas</h2><p>L’Escale es el punto de restauración ligera donde Pokeyland ofrece sándwiches, bebidas y aperitivos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Sandwichs et boissons</h2><p>L’Escale est un point de petite restauration où Pokeyland propose des sandwichs, des boissons et du snacking.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sandwich e bevande</h2><p>L’Escale è il punto di ristoro leggero dove Pokeyland propone sandwich, bevande e spuntini.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Sandwiches en drankjes</h2><p>L’Escale is een eetgelegenheid waar Pokeyland sandwiches, drankjes en snacks aanbiedt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kanapki i napoje</h2><p>L’Escale to punkt drobnej gastronomii, w którym Pokeyland oferuje kanapki, napoje i przekąski.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Sanduíches e bebidas</h2><p>L’Escale é o ponto de refeições ligeiras onde o Pokeyland oferece sanduíches, bebidas e petiscos.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Quatre notices privées huit langues personnellement rédigées et relues à partir de https://www.pokeyland.com/restauration/ (source 200 conservée, texte officiel relu). Exception de profondeur explicite : un intertitre et un paragraphe, menus précis seulement ; recherches de photographies de façades ont échoué, montages produits rejetés. Ne pas remplir par décor, ambiance, terrasses individuelles, horaires, tarifs ou ingrédients supplémentaires inventés. Le Grill ne devient pas alias O’Chalet, L’Escale ne devient pas Sur le Pouce ; identités distinctes conservées.",
+    "wordCounts": {
+      "Le Petit Creux": {
+        "fr": 33,
+        "en": 28,
+        "de": 27,
+        "es": 33,
+        "it": 34,
+        "nl": 28,
+        "pl": 29,
+        "pt": 31
+      },
+      "Le Gourmand": {
+        "fr": 30,
+        "en": 28,
+        "de": 28,
+        "es": 29,
+        "it": 28,
+        "nl": 27,
+        "pl": 25,
+        "pt": 29
+      },
+      "Le Grill": {
+        "fr": 28,
+        "en": 23,
+        "de": 22,
+        "es": 29,
+        "it": 27,
+        "nl": 22,
+        "pl": 24,
+        "pt": 26
+      },
+      "L’Escale": {
+        "fr": 20,
+        "en": 16,
+        "de": 14,
+        "es": 17,
+        "it": 17,
+        "nl": 14,
+        "pl": 16,
+        "pt": 18
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "postApplyIdempotence": {
+    "operationId": "329c02a9-18c9-4cb1-b906-6bff5fe3dfb5",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:50:29.7762261Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 10,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "pokeyland-parcours-decouverte",
+        "displayName": "Parcours découverte",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "pokeyland-parcours-famille",
+        "displayName": "Parcours famille",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "pokeyland-parcours-tyrolienne",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "pokeyland-grill",
+        "displayName": "Le Grill",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "pokeyland-scene-pokeyshow",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

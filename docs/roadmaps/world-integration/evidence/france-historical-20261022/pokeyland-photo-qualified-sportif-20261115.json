@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7684-scaled-psh99uryd5zthaqh4off83mehd010ejmvl1m066rhc.jpg",
+    "accessedAtUtc": "2026-11-15T12:09:36.070282+00:00",
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7684-scaled-psh99uryd5zthaqh4off83mehd010ejmvl1m066rhc.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 48062,
+    "sha256": "aa839471e81736fa52a12a1bc61bc8223b2c5c71c4dd175f900799b99c660ab2",
+    "file": "official-sportif.jpg",
+    "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/accrobranche-course-qualification/official-sportif.jpg",
+    "dimensions": [
+      700,
+      400
+    ],
+    "within960KiB": true,
+    "personallyViewed": true,
+    "visibleWatermark": false,
+    "localEditing": false,
+    "sourceSuppliedVariant": true,
+    "montageObserved": false,
+    "associationLevel": "nominal_course_limited_content",
+    "visualObservations": "Usager adulte en baudrier, jambes relevées, suspendu sous poulie sur câble ; dense arrière-plan boisé.",
+    "associationLimits": "Carte officielle Parcours sportif ; démontre son illustration avec un passage suspendu, sans révéler la séquence complète ni les autres obstacles.",
+    "captureDate": null,
+    "individualPhotographer": null,
+    "openLicenseClaimed": false,
+    "sourcePage": "https://www.pokeyland.com/packs/accrobranche/",
+    "creditEvidence": "Site officiel Pokeyland ; aucun photographe individuel identifié, date de publication de la photo et capture non établies."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7684-scaled-psh99uryd5zthaqh4off83mehd010ejmvl1m066rhc.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/accrobranche-course-qualification/official-sportif.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-sportif-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-sportif-import-result.json"
+  },
+  "metadata": {
+    "description": "Un homme en baudrier est suspendu à une poulie, les jambes relevées devant lui, sur fond de feuillage.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7684-scaled-psh99uryd5zthaqh4off83mehd010ejmvl1m066rhc.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Participant suspendu sur la photo du Parcours sportif de Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Suspended participant in the photograph of Pokeyland’s Sporting Course"
+      },
+      {
+        "languageCode": "de",
+        "value": "Schwebender Teilnehmer auf dem Foto des Sportparcours in Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Participante suspendido en la foto del Recorrido deportivo de Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Partecipante sospeso nella foto del Percorso sportivo di Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Hangende deelnemer op de foto van het Sportieve parcours in Pokeyland"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Uczestnik w zawieszeniu na zdjęciu trasy sportowej w Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Participante suspenso na fotografia do Percurso desportivo do Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un homme en baudrier est suspendu à une poulie, les jambes relevées devant lui, sur fond de feuillage."
+      },
+      {
+        "languageCode": "en",
+        "value": "A man in a harness hangs from a pulley with his legs raised in front of him, against a leafy background."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Mann mit Klettergurt hängt an einer Seilrolle, die Beine nach vorn angehoben, vor einem Hintergrund aus Laub."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un hombre con arnés cuelga de una polea con las piernas levantadas hacia delante, sobre un fondo de follaje."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un uomo con imbracatura è sospeso a una carrucola con le gambe sollevate davanti a sé, sullo sfondo del fogliame."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een man met een klimgordel hangt aan een katrol met zijn benen voor zich omhoog, met gebladerte op de achtergrond."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Mężczyzna w uprzęży wisi na bloczku z nogami uniesionymi przed sobą, na tle liści."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um homem com arnês está suspenso numa roldana com as pernas levantadas à frente, tendo folhagem ao fundo."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: official Pokeyland website; photographer not credited."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "6cc6622a5db343a4a0ef8d96f7197719",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+      "path": "park_item/6cc6622a5db343a4a0ef8d96f7197719",
+      "description": "Un homme en baudrier est suspendu à une poulie, les jambes relevées devant lui, sur fond de feuillage.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 48062,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7684-scaled-psh99uryd5zthaqh4off83mehd010ejmvl1m066rhc.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Participant suspendu sur la photo du Parcours sportif de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Suspended participant in the photograph of Pokeyland’s Sporting Course"
+        },
+        {
+          "languageCode": "de",
+          "value": "Schwebender Teilnehmer auf dem Foto des Sportparcours in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Participante suspendido en la foto del Recorrido deportivo de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Partecipante sospeso nella foto del Percorso sportivo di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Hangende deelnemer op de foto van het Sportieve parcours in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uczestnik w zawieszeniu na zdjęciu trasy sportowej w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Participante suspenso na fotografia do Percurso desportivo do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un homme en baudrier est suspendu à une poulie, les jambes relevées devant lui, sur fond de feuillage."
+        },
+        {
+          "languageCode": "en",
+          "value": "A man in a harness hangs from a pulley with his legs raised in front of him, against a leafy background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Mann mit Klettergurt hängt an einer Seilrolle, die Beine nach vorn angehoben, vor einem Hintergrund aus Laub."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un hombre con arnés cuelga de una polea con las piernas levantadas hacia delante, sobre un fondo de follaje."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un uomo con imbracatura è sospeso a una carrucola con le gambe sollevate davanti a sé, sullo sfondo del fogliame."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een man met een klimgordel hangt aan een katrol met zijn benen voor zich omhoog, met gebladerte op de achtergrond."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mężczyzna w uprzęży wisi na bloczku z nogami uniesionymi przed sobą, na tle liści."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um homem com arnês está suspenso numa roldana com as pernas levantadas à frente, tendo folhagem ao fundo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:45:09.59Z",
+      "updatedAt": "2026-11-15T13:45:13.104Z"
+    },
+    "startedAtUtc": "2026-11-15T13:45:07.7607483Z",
+    "receivedAtUtc": "2026-11-15T13:45:16.2092691Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

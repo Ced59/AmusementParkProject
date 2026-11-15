@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhXvs0pLmFWRLG7c8ALUUKDCg1XX8idGTBAK8k3wgIlLYz4FDK0ytRyoT1wC9WpgA-iskYiXuNsLIce_m_haLeqXjXhUovALv2oOD1ibg13ISm6tptiF3NkPfUVG15ql_htZG8x80CV3bO/s1600/DSCF3142.JPG",
+    "file": "DSCF3142.JPG",
+    "accessedAtUtc": "2026-11-15T13:42:31.250713+00:00",
+    "status": 200,
+    "bytes": 207353,
+    "sha256": "aa86fb408fbd2f520e6cd08ba375828304f07769c0ef84e997ac284a9c85e243",
+    "dimensions": [
+      1600,
+      1200
+    ],
+    "sourcePage": "https://stjulien57p-scolaire.blogspot.com/2017/07/centre-aere-avril-2017.html",
+    "publicationDate": "2017-07-16",
+    "visitContextMonth": "2017-04",
+    "captureDate": null,
+    "photographer": null,
+    "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-final-followup/DSCF3142.JPG",
+    "rejectedNearView": "DSCF3141.JPG : enseigne plus nette mais absence de mascotte, vue proche de la même séquence non importée."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhXvs0pLmFWRLG7c8ALUUKDCg1XX8idGTBAK8k3wgIlLYz4FDK0ytRyoT1wC9WpgA-iskYiXuNsLIce_m_haLeqXjXhUovALv2oOD1ibg13ISm6tptiF3NkPfUVG15ql_htZG8x80CV3bO/s1600/DSCF3142.JPG",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-final-followup/DSCF3142.JPG",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-pokeyshow-2017-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-pokeyshow-2017-import-result.json"
+  },
+  "metadata": {
+    "description": "La mascotte en tenue orange à damier danse avec un groupe devant les panneaux de bois et l’enseigne étoilée Pokey Show. Le compte rendu rattache cette sortie à avril 2017.",
+    "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhXvs0pLmFWRLG7c8ALUUKDCg1XX8idGTBAK8k3wgIlLYz4FDK0ytRyoT1wC9WpgA-iskYiXuNsLIce_m_haLeqXjXhUovALv2oOD1ibg13ISm6tptiF3NkPfUVG15ql_htZG8x80CV3bO/s1600/DSCF3142.JPG",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Mascotte renard et visiteurs sur la scène Pokey Show en 2017"
+      },
+      {
+        "languageCode": "en",
+        "value": "Fox mascot and visitors on the Pokey Show stage in 2017"
+      },
+      {
+        "languageCode": "de",
+        "value": "Fuchsmaskottchen und Besucher auf der Pokey-Show-Bühne 2017"
+      },
+      {
+        "languageCode": "es",
+        "value": "Mascota zorro y visitantes en el escenario de Pokey Show en 2017"
+      },
+      {
+        "languageCode": "it",
+        "value": "Mascotte volpe e visitatori sul palco del Pokey Show nel 2017"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vossenmascotte en bezoekers op het Pokey Show-podium in 2017"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Maskotka lisa i goście na scenie Pokey Show w 2017 roku"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Mascote raposa e visitantes no palco do Pokey Show em 2017"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La mascotte en tenue orange à damier danse avec un groupe devant les panneaux de bois et l’enseigne étoilée Pokey Show. Le compte rendu rattache cette sortie à avril 2017."
+      },
+      {
+        "languageCode": "en",
+        "value": "The mascot in an orange chequered outfit dances with a group in front of wooden panels and the starry Pokey Show sign. The outing report places this visit in April 2017."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das Maskottchen im orangefarbenen, karierten Kostüm tanzt mit einer Gruppe vor Holzplatten und dem sternengeschmückten Pokey-Show-Schild. Der Ausflugsbericht ordnet den Besuch dem April 2017 zu."
+      },
+      {
+        "languageCode": "es",
+        "value": "La mascota con traje naranja a cuadros baila con un grupo ante los paneles de madera y el cartel estrellado de Pokey Show. El relato sitúa esta salida en abril de 2017."
+      },
+      {
+        "languageCode": "it",
+        "value": "La mascotte in abito arancione a scacchi balla con un gruppo davanti ai pannelli di legno e all’insegna stellata Pokey Show. Il resoconto colloca questa gita nell’aprile 2017."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De mascotte in een oranje geruite outfit danst met een groep voor houten panelen en het Pokey Show-bord met sterren. Het verslag plaatst dit uitstapje in april 2017."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Maskotka w pomarańczowym stroju w szachownicę tańczy z grupą przed drewnianymi panelami i napisem Pokey Show z gwiazdami. Relacja wiąże wycieczkę z kwietniem 2017 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A mascote com fato laranja aos quadrados dança com um grupo diante dos painéis de madeira e do letreiro estrelado Pokey Show. O relato situa esta visita em abril de 2017."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : FACSS, blog Périscolaire Saint-Julien-lès-Metz ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: FACSS, Périscolaire Saint-Julien-lès-Metz blog; individual photographer not credited."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: FACSS, Blog Périscolaire Saint-Julien-lès-Metz; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: FACSS, blog Périscolaire Saint-Julien-lès-Metz; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: FACSS, blog Périscolaire Saint-Julien-lès-Metz; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: FACSS, blog Périscolaire Saint-Julien-lès-Metz; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: FACSS, blog Périscolaire Saint-Julien-lès-Metz; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: FACSS, blogue Périscolaire Saint-Julien-lès-Metz; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T13:49:24.7645957Z",
+    "result": {
+      "id": "a96fbefc478540688a36dc04d2a27d10",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+      "path": "park_item/a96fbefc478540688a36dc04d2a27d10",
+      "description": "La mascotte en tenue orange à damier danse avec un groupe devant les panneaux de bois et l’enseigne étoilée Pokey Show. Le compte rendu rattache cette sortie à avril 2017.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1200,
+      "sizeInBytes": 207353,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhXvs0pLmFWRLG7c8ALUUKDCg1XX8idGTBAK8k3wgIlLYz4FDK0ytRyoT1wC9WpgA-iskYiXuNsLIce_m_haLeqXjXhUovALv2oOD1ibg13ISm6tptiF3NkPfUVG15ql_htZG8x80CV3bO/s1600/DSCF3142.JPG",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Mascotte renard et visiteurs sur la scène Pokey Show en 2017"
+        },
+        {
+          "languageCode": "en",
+          "value": "Fox mascot and visitors on the Pokey Show stage in 2017"
+        },
+        {
+          "languageCode": "de",
+          "value": "Fuchsmaskottchen und Besucher auf der Pokey-Show-Bühne 2017"
+        },
+        {
+          "languageCode": "es",
+          "value": "Mascota zorro y visitantes en el escenario de Pokey Show en 2017"
+        },
+        {
+          "languageCode": "it",
+          "value": "Mascotte volpe e visitatori sul palco del Pokey Show nel 2017"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vossenmascotte en bezoekers op het Pokey Show-podium in 2017"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Maskotka lisa i goście na scenie Pokey Show w 2017 roku"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mascote raposa e visitantes no palco do Pokey Show em 2017"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La mascotte en tenue orange à damier danse avec un groupe devant les panneaux de bois et l’enseigne étoilée Pokey Show. Le compte rendu rattache cette sortie à avril 2017."
+        },
+        {
+          "languageCode": "en",
+          "value": "The mascot in an orange chequered outfit dances with a group in front of wooden panels and the starry Pokey Show sign. The outing report places this visit in April 2017."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Maskottchen im orangefarbenen, karierten Kostüm tanzt mit einer Gruppe vor Holzplatten und dem sternengeschmückten Pokey-Show-Schild. Der Ausflugsbericht ordnet den Besuch dem April 2017 zu."
+        },
+        {
+          "languageCode": "es",
+          "value": "La mascota con traje naranja a cuadros baila con un grupo ante los paneles de madera y el cartel estrellado de Pokey Show. El relato sitúa esta salida en abril de 2017."
+        },
+        {
+          "languageCode": "it",
+          "value": "La mascotte in abito arancione a scacchi balla con un gruppo davanti ai pannelli di legno e all’insegna stellata Pokey Show. Il resoconto colloca questa gita nell’aprile 2017."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De mascotte in een oranje geruite outfit danst met een groep voor houten panelen en het Pokey Show-bord met sterren. Het verslag plaatst dit uitstapje in april 2017."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Maskotka w pomarańczowym stroju w szachownicę tańczy z grupą przed drewnianymi panelami i napisem Pokey Show z gwiazdami. Relacja wiąże wycieczkę z kwietniem 2017 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A mascote com fato laranja aos quadrados dança com um grupo diante dos painéis de madeira e do letreiro estrelado Pokey Show. O relato situa esta visita em abril de 2017."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : FACSS, blog Périscolaire Saint-Julien-lès-Metz ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: FACSS, Périscolaire Saint-Julien-lès-Metz blog; individual photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: FACSS, Blog Périscolaire Saint-Julien-lès-Metz; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: FACSS, blog Périscolaire Saint-Julien-lès-Metz; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: FACSS, blog Périscolaire Saint-Julien-lès-Metz; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: FACSS, blog Périscolaire Saint-Julien-lès-Metz; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: FACSS, blog Périscolaire Saint-Julien-lès-Metz; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: FACSS, blogue Périscolaire Saint-Julien-lès-Metz; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:49:27.334Z",
+      "updatedAt": "2026-11-15T13:49:30.805Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T13:49:33.9259479Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "reuseRightsQualification": {
+    "sourceHolder": "FACSS, blog Périscolaire Saint-Julien-lès-Metz",
+    "sourcePageExact": true,
+    "individualPhotographerNotNamed": true,
+    "explicitReuseLicenceOrHolderPermissionDocumented": false,
+    "publicationBlockedForThisMediaUntilCompatibleReuseEvidence": true,
+    "privateImportOnly": true
+  }
+}

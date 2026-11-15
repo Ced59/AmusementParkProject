@@ -1,0 +1,562 @@
+{
+  "reportType": "Pokeyland public research – eight remaining services",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "createdAtUtc": "2026-11-15T13:45:58.877063+00:00",
+  "scope": "Public/local read-only research. No PDE, Git, registry, import, contact, purchase, or final public descriptions. New files confined to services-final-followup.",
+  "reusedSources": [
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/services-descriptive-followup-report.json",
+      "bytes": 44379,
+      "sha256": "50c505b5860468fe23e0e82932699108f5fad79449f0ff5fd583a4cd76e018ba"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/services.html",
+      "bytes": 108927,
+      "sha256": "118fb784bf2ec7c6cea1566f3d20eda591b090ba7b91a9aa672c2b6c25fc135f"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/beach.html",
+      "bytes": 82217,
+      "sha256": "52d8297dd0ec71f8661686b6a58d471d07f87cba95480e830e1ad05009237a78"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/IMG_2620-1024x768.png",
+      "bytes": 435269,
+      "sha256": "fd14c3ee2482a1821c7d2351d1fcace1933401e94a283d3217cccf2bff7c6be6"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2026.pdf",
+      "bytes": 362538,
+      "sha256": "995e99a02b0da75695b33206915fd292abef9c5a6a4efd614a6df14e00dc3db6"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2022.pdf",
+      "bytes": 4042269,
+      "sha256": "507ee6aaadb5f3e80cac2da0c645226293bf10160c6ea65d5cd4a46071e96798"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/lorraine-season-2018.html",
+      "bytes": 166932,
+      "sha256": "4bc265495e08d142d6762fd878cecd0836dcfd58312640764a3461eacf5ec785"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/candidate-download-manifest.json",
+      "bytes": 13085,
+      "sha256": "e43494442e5d0db4bf340aa92795607b63289b6b62efae2a4870f743bc56fa2c"
+    }
+  ],
+  "newSourceAccess": [
+    {
+      "url": "https://stjulien57p-scolaire.blogspot.com/2017/07/",
+      "file": "st-julien-blog-july2017.html",
+      "accessedAtUtc": "2026-11-15T13:39:31.150909Z",
+      "status": 200,
+      "finalUrl": "https://stjulien57p-scolaire.blogspot.com/2017/07/",
+      "bytes": 143358,
+      "sha256": "2d4438cbbf52d1c8bd115555dea74f39e1fc3c1e96bf8a6dc812d536ac9664e7",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.directfm.fr/pokeyland-la-nocturne-c-est-ce-samedi",
+      "file": "directfm-nocturne.html",
+      "accessedAtUtc": "2026-11-15T13:39:31.765751Z",
+      "status": 200,
+      "finalUrl": "https://www.directfm.fr/pokeyland-la-nocturne-c-est-ce-samedi",
+      "bytes": 49814,
+      "sha256": "6ea76a3a0eebcd652a27a77474402061b6f93dbf13daa49a4f0bca5d570a3a30",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.pokeyland.com/reglement-interieur/",
+      "file": "official-reglement.html",
+      "accessedAtUtc": "2026-11-15T13:39:34.589169Z",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/reglement-interieur/",
+      "bytes": 100398,
+      "sha256": "b062eaa4074f3a4b042f46bfba2304893907e741e077cbf9270766e0f1f788c8",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.mairie-puttelangeauxlacs.fr/wp-content/uploads/2025/05/BAT_BULLETIN_PAL-3.pdf",
+      "file": "puttelange-bulletin2025.pdf",
+      "accessedAtUtc": "2026-11-15T13:39:35.732805Z",
+      "status": 200,
+      "finalUrl": "https://www.mairie-puttelangeauxlacs.fr/wp-content/uploads/2025/05/BAT_BULLETIN_PAL-3.pdf",
+      "bytes": 40886082,
+      "sha256": "1e2ce12265f910722a3f8844f13bed21e32d00019cd24ef5e125749169c84dee",
+      "contentType": "application/pdf"
+    }
+  ],
+  "articleAccess": {
+    "url": "https://stjulien57p-scolaire.blogspot.com/2017/07/centre-aere-avril-2017.html",
+    "accessedAtUtc": "2026-11-15T13:43:01.758947+00:00",
+    "status": 200,
+    "file": "st-julien-april2017-article.html",
+    "bytes": 77947,
+    "sha256": "e0cf84e37e397f16ea3dfd275ae6213ac9b3293937a72706642e0b7e1bbe8c2e"
+  },
+  "tripadvisorDirectAccess": {
+    "url": "https://www.tripadvisor.fr/Attraction_Review-g1223713-d10291242-Reviews-or10-Pokeyland-Fey_Moselle_Grand_Est.html",
+    "status": 200,
+    "accessedAtUtc": "2026-11-15T13:43:48.046092+00:00",
+    "file": "tripadvisor-reviews-or10.html",
+    "bytes": 937254,
+    "sha256": "8384730ecbe5f732200d84eba1371036539f555e38da01ddc29dff59c865e303"
+  },
+  "stagePhotoAccess": [
+    {
+      "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOTJY33hafLluFWbyFq4ibkS8ufah6nSlUVryCh3BsIqBPufDvcCm6UdJaxodC8g3mToPMu1JdRclU6WeP5IFpfi_cHz-JDIL3sFzlW4SP8fS7UUc1EjorOSZT-vuJolq2ylAdBLY8FL6x/s1600/DSCF3141.JPG",
+      "file": "DSCF3141.JPG",
+      "accessedAtUtc": "2026-11-15T13:42:30.465701+00:00",
+      "status": 200,
+      "bytes": 333828,
+      "sha256": "a08233f84506e17a0908bea0df19942293caa72f44489afbb2e45936e52bb842",
+      "dimensions": [
+        1600,
+        1200
+      ]
+    },
+    {
+      "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhXvs0pLmFWRLG7c8ALUUKDCg1XX8idGTBAK8k3wgIlLYz4FDK0ytRyoT1wC9WpgA-iskYiXuNsLIce_m_haLeqXjXhUovALv2oOD1ibg13ISm6tptiF3NkPfUVG15ql_htZG8x80CV3bO/s1600/DSCF3142.JPG",
+      "file": "DSCF3142.JPG",
+      "accessedAtUtc": "2026-11-15T13:42:31.250713+00:00",
+      "status": 200,
+      "bytes": 207353,
+      "sha256": "aa86fb408fbd2f520e6cd08ba375828304f07769c0ef84e997ac284a9c85e243",
+      "dimensions": [
+        1600,
+        1200
+      ]
+    }
+  ],
+  "services": [
+    {
+      "name": "La Pêche de Pokey",
+      "itemId": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+      "previousEvidence": {
+        "facts": [
+          "Nom exact La Pêche de Pokey, no.2 du plan officiel2026."
+        ],
+        "sources": [
+          "officialMap2026"
+        ],
+        "limits": [
+          "Aucune photo nominale et aucun descriptif officiel précis retrouvés.",
+          "Le bulletin municipal deRosières mentionne une pêche aux canards dans une rubrique distincte consacrée à la crèche, pas dans la sortiePokeyland : rapprochement rejeté.",
+          "Ne pas transformer Boutique no.2 de l’ancien plan en alias sur la seule numérotation."
+        ]
+      },
+      "newVerifiedFacts": [
+        {
+          "fact": "Un extrait public indexé de l’avis VirginieJB1606, « Changement négatif », visite août 2024, évoque explicitement une pêche aux canards dans le parc.",
+          "sourceFiles": [
+            "search-7.json",
+            "search-6.json"
+          ],
+          "sourceUrl": "https://www.tripadvisor.fr/Attraction_Review-g1223713-d10291242-Reviews-or10-Pokeyland-Fey_Moselle_Grand_Est.html",
+          "reviewPublishedDate": "2024-08-09",
+          "quote": "ils ont ajouté des attractions de fête foraine, , une pêche aux canards",
+          "evidenceType": "Extrait indexé de témoignage individuel ; avis précis absent du HTML actuel téléchargé à cette pagination."
+        }
+      ],
+      "newLimits": [
+        "La présence d’un jeu de pêche aux canards est une piste corroborante, mais le témoignage ne le nomme pas « La Pêche de Pokey ». Aucun alias démontré entre les deux noms.",
+        "Aucune forme de bassin, prix, récompense, décor, fabricant ou date d’ouverture précise prouvés.",
+        "Le HTML Tripadvisor direct a répondu 200, mais la pagination a changé et l’avis ciblé n’y figure plus. Ne pas prétendre avoir relu cet avis dans le HTML sauvegardé ; seul l’extrait public de recherche est disponible."
+      ],
+      "newPhotoCandidates": []
+    },
+    {
+      "name": "Salle d’arcade",
+      "itemId": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+      "previousEvidence": {
+        "facts": [
+          "Salle arcade no.3 sur le plan officiel2026."
+        ],
+        "sources": [
+          "officialMap2026"
+        ],
+        "limits": [
+          "Aucune liste de bornes, photo nominale, décor, constructeur ou date de présence individualisée.",
+          "Ne pas importer une photo d’une autre salle trouvée par recherche générique."
+        ]
+      },
+      "newVerifiedFacts": [],
+      "newLimits": [
+        "Aucune nouvelle source descriptive ou photographie nommément attribuée suffisamment précise trouvée. Les faits officiels déjà conservés restent la limite de ce qui est documenté."
+      ],
+      "newPhotoCandidates": []
+    },
+    {
+      "name": "Scène Pokeyshow",
+      "itemId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+      "previousEvidence": {
+        "facts": [
+          "Le plan officiel2026 nomme Scène Pokeyshow et imprime16h.",
+          "Une pageofficielle et des photos documentent le concertYanns de 2025 dans le parc ; un prestataireévénementiel mentionne une grande scène sonorisée/éclairée."
+        ],
+        "sources": [
+          "officialMap2026",
+          "officialConcert2025",
+          "aleouVenue"
+        ],
+        "limits": [
+          "Aucune équivalence explicite entre la scène du concertYanns et l’itemPokeyshow.",
+          "Le 16h du plan ne prouve ni fréquence quotidienne ni horaire 2027.",
+          "Le blogErfales décrit un écureuil et des saynètes sans source ; mascotteerronée et détailsnoncorroborés, exclus."
+        ]
+      },
+      "newVerifiedFacts": [
+        {
+          "fact": "Le compte rendu public de FACSS intitulé « centre aéré Avril 2017 » nomme explicitement l’estrade de POKEY SHOW et y montre des participants dansant.",
+          "sourceFile": "st-julien-april2017-article.html",
+          "sourceUrl": "https://stjulien57p-scolaire.blogspot.com/2017/07/centre-aere-avril-2017.html",
+          "quote": "Quelques pas de danse sur l’estrade de POKEY SHOW",
+          "publishedAtOriginal": "2017-07-16T10:05:00-07:00",
+          "outingContextMonth": "2017-04",
+          "exactCaptureDate": null
+        },
+        {
+          "fact": "Les deux originales inspectées portent des affiches POKEY SHOW ; fond bleu nuit étoilé, renard illustré, parois en panneaux de bois, ouverture derrière les participants. La seconde montre la mascotte renard dansant avec le groupe sous la couverture de la scène.",
+          "sourceFiles": [
+            "DSCF3141.JPG",
+            "DSCF3142.JPG"
+          ],
+          "observationScope": "Configuration photographiée lors de la sortie historique, pas une description de la configuration 2026."
+        },
+        {
+          "fact": "DirectFM annonce un Pokey Show Spécial à la nocturne du 15 août 2026.",
+          "sourceFile": "directfm-nocturne.html",
+          "sourceUrl": "https://www.directfm.fr/pokeyland-la-nocturne-c-est-ce-samedi",
+          "publishedAtUtc": "2026-08-13T07:26:11.870Z",
+          "byline": "Yoann Masson",
+          "quote": "un Pokey Show Spécial et un DJ ainsi qu’un orchestre",
+          "eventDate": "2026-08-15",
+          "evidenceType": "Programme annoncé, pas compte rendu de tenue effective."
+        },
+        {
+          "fact": "La source de saison 2018 déjà conservée annonce « Spectacle Pokey Show (nouvelle version) ».",
+          "sourceFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/lorraine-season-2018.html",
+          "sourceUrl": "https://www.lorraineaucoeur.com/evt-24517/parc-de-loisirs-pokeyland-saison-2018-et-nouveautes/moselle-fey/promo-sortie",
+          "evidenceType": "Annonce de programme, pas date de création du bâtiment."
+        }
+      ],
+      "newLimits": [
+        "L’identité historique Pokey Show est établie par la légende ET les enseignes. Aucun lien explicite retrouvé entre cet ancien décor et la scène utilisée pour le concert Yanns 2025.",
+        "L’article du blog est titré avril 2017 et publié le 16 juillet ; ne pas transformer sa publication en date de prise de vue.",
+        "Le photographe individuel et une licence de réutilisation ne sont pas indiqués. Les vues servent ici de preuves de recherche ; aucun import proposé comme automatiquement autorisé.",
+        "Les photographies ne couvrent pas une façade complète ni une capacité. Ne pas inventer fréquence, durée, chorégraphie ou ouverture."
+      ],
+      "newPhotoCandidates": [
+        {
+          "file": "DSCF3141.JPG",
+          "finding": "Enseignes et décor identifiables ; plusieurs personnes devant, vue documentaire historique."
+        },
+        {
+          "file": "DSCF3142.JPG",
+          "finding": "Enseigne, couverture et mascotte identifiables ; image un peu moins nette et groupe de participants au premier plan."
+        }
+      ]
+    },
+    {
+      "name": "Pokey Beach",
+      "itemId": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+      "previousEvidence": {
+        "facts": [
+          "Le plan officiel2026 nomme Pokey Beach no.9.",
+          "L’article officiel du20 juillet 2023 décrit Pokey Plage comme un nouvel espace de détente au style bord de mer, avec vue sur le Waterjump et cocktails."
+        ],
+        "quote": "Cet espace au style bord de mer vous donnera une vue imprenable sur l’aventure phare de notre parc : le Water Jump.",
+        "sources": [
+          "officialMap2026",
+          "officialBeach2023"
+        ],
+        "limits": [
+          "La correspondance Beach / Plage reste probable mais non explicitement établie par un renommage.",
+          "La photo nocturne documente Pokey Plage 2023 ; ne pas affirmer son nom 2026 sans rapprochement supplémentaire.",
+          "Illustration de la brochure 2023 exclue comme photo réelle."
+        ]
+      },
+      "newVerifiedFacts": [],
+      "newLimits": [
+        "Recherche supplémentaire sans preuve explicite de renommage Pokey Plage → Pokey Beach. La traduction littérale et la proximité du Waterjump ne suffisent pas.",
+        "La vue officielle Pokey Plage 2023 précédemment conservée reste candidate conditionnelle ; pas réattribuée."
+      ],
+      "newPhotoCandidates": []
+    },
+    {
+      "name": "Accueil accrobranche",
+      "itemId": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+      "previousEvidence": {
+        "facts": [
+          "Le plan officiel2026 nomme Accueil accrobranche no.10, distinct des caisses principales et des parcours."
+        ],
+        "sources": [
+          "officialMap2026"
+        ],
+        "limits": [
+          "Aucun chalet photographié ne porte une identification suffisamment probante.",
+          "Ne pas inventer consigne, distribution d’équipement, architecture ou mobilier pour cette fiche précise."
+        ]
+      },
+      "newVerifiedFacts": [],
+      "newLimits": [
+        "Aucune nouvelle source descriptive ou photographie nommément attribuée suffisamment précise trouvée. Les faits officiels déjà conservés restent la limite de ce qui est documenté."
+      ],
+      "newPhotoCandidates": []
+    },
+    {
+      "name": "Sanitaires",
+      "itemId": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+      "previousEvidence": {
+        "facts": [
+          "Présence de symbolesWC dans les plans officiels ; la fiche agrège le service sans création de blocs arbitraires."
+        ],
+        "sources": [
+          "officialMap2026",
+          "officialOlderMap"
+        ],
+        "limits": [
+          "Aucune photo nominale propre ni équipement intérieur établi.",
+          "Le document dePLU repéré est bloqué403 ; son extrait de recherche n’est pas traité comme document lu.",
+          "Ne pas reprendre des notes d’usagers sur entretien ou maintenance comme caractéristiques permanentes."
+        ]
+      },
+      "newVerifiedFacts": [
+        {
+          "fact": "Des photos déjà téléchargées montrent des détails de sèche-mains, encadrement de fenêtre et porte intérieure. Elles ne montrent ni enseigne WC, ni vue d’ensemble, ni rattachement à un bloc précis.",
+          "sourceFiles": [
+            "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/ta-f2.jpg",
+            "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/ta-f3.jpg",
+            "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/ta-f4.jpg",
+            "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/ta-f5.jpg"
+          ],
+          "evidenceType": "Inspection visuelle de fichiers existants, sans nouveau téléchargement."
+        }
+      ],
+      "newLimits": [
+        "Ces détails ne sont pas recommandés pour illustrer un service identifiable : qualification du bâtiment et attribution à une installation précise non établies.",
+        "Ne pas transformer leur état ponctuel ou les plaintes des visiteurs en caractéristique permanente des sanitaires."
+      ],
+      "newPhotoCandidates": []
+    },
+    {
+      "name": "Casiers",
+      "itemId": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+      "previousEvidence": {
+        "facts": [
+          "Le site officiel mentionne des casiers sécurisés destinés aux affaires personnelles."
+        ],
+        "quote": "Déposez vos affaires personnelles dans nos casiers sécurisés.",
+        "sources": [
+          "officialServices"
+        ],
+        "limits": [
+          "Aucun prix, format, fermeture, quantité ou bâtiment établis.",
+          "La photographie associée par la page montre un étang, aucun casier : exclue pour cet item."
+        ]
+      },
+      "newVerifiedFacts": [],
+      "newLimits": [
+        "Aucune nouvelle source descriptive ou photographie nommément attribuée suffisamment précise trouvée. Les faits officiels déjà conservés restent la limite de ce qui est documenté."
+      ],
+      "newPhotoCandidates": []
+    },
+    {
+      "name": "Poste de secours",
+      "itemId": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+      "previousEvidence": {
+        "facts": [
+          "Le site officiel confirme un poste de secours sur place pour la prise en charge des visiteurs et l’évaluation d’une éventuelle évacuation."
+        ],
+        "quote": "Notre équipe sur place s’assurera de votre état et de la nécessité d’une évacuation.",
+        "sources": [
+          "officialServices"
+        ],
+        "limits": [
+          "Ni personnel médical permanent, ni liste d’équipements, ni architecture prouvés.",
+          "La photo placée sous la rubrique montre des chalets et du Segway, pas un poste de secours identifié."
+        ]
+      },
+      "newVerifiedFacts": [],
+      "newLimits": [
+        "Aucune nouvelle source descriptive ou photographie nommément attribuée suffisamment précise trouvée. Les faits officiels déjà conservés restent la limite de ce qui est documenté.",
+        "Le règlement intérieur nouvellement lu mentionne des issues de secours et accès pompiers ; cela ne localise pas le Poste de secours et ne prouve pas son équipement."
+      ],
+      "newPhotoCandidates": []
+    }
+  ],
+  "newUsefulResult": "Scène Pokeyshow now has explicit historical nominal photo evidence from a school outing and a distinct 2026 programme announcement. Other gaps remain narrowly documented; no invented alias or status.",
+  "otherRejectedLeads": [
+    {
+      "source": "puttelange-bulletin2025.pdf",
+      "finding": "Municipal bulletin, printed pages 63–64 on PDF spread 34 inspected. A small group picture shows the park entrance mascot; not the Pokeyshow stage. Other photos on spread concern activities elsewhere. No new service identity proved.",
+      "render": "puttelange-spread34.jpg"
+    },
+    {
+      "source": "official-reglement.html",
+      "finding": "Public internal rules retrieved 200 and read for target keywords. No new nominal service or equipment details; emergency exits are not the first-aid post."
+    },
+    {
+      "source": "Generic search results",
+      "finding": "TryTravel generic roller coaster/arcade claims, unrelated arcade venues, unspecified park lockers, and translated Pokey names excluded. No recycled generic text used."
+    }
+  ],
+  "fileManifest": [
+    {
+      "file": "DSCF3141.JPG",
+      "bytes": 333828,
+      "sha256": "a08233f84506e17a0908bea0df19942293caa72f44489afbb2e45936e52bb842"
+    },
+    {
+      "file": "DSCF3142.JPG",
+      "bytes": 207353,
+      "sha256": "aa86fb408fbd2f520e6cd08ba375828304f07769c0ef84e997ac284a9c85e243"
+    },
+    {
+      "file": "article-access.json",
+      "bytes": 309,
+      "sha256": "112b1c32985bb19ed648f5ac017baa16119b5dc2b7aeee17c97ffbf329e42c7e"
+    },
+    {
+      "file": "build-report.py",
+      "bytes": 11304,
+      "sha256": "042ee51a7621a7f8304be89a08851c4d4436a2482fe9784b435aac01d0599b3a"
+    },
+    {
+      "file": "directfm-nocturne-clean.txt",
+      "bytes": 2176,
+      "sha256": "036d2cf2d80032683aace7c63aedf9460d5cd789b36e51eb7c6c309d210db6b2"
+    },
+    {
+      "file": "directfm-nocturne.html",
+      "bytes": 49814,
+      "sha256": "6ea76a3a0eebcd652a27a77474402061b6f93dbf13daa49a4f0bca5d570a3a30"
+    },
+    {
+      "file": "directfm-nocturne.txt",
+      "bytes": 2176,
+      "sha256": "036d2cf2d80032683aace7c63aedf9460d5cd789b36e51eb7c6c309d210db6b2"
+    },
+    {
+      "file": "fetch.py",
+      "bytes": 1393,
+      "sha256": "c31ad3d6ef0bafdfe1b56b205331787157b5e0cb2227b3e97649360fbc2d0a3a"
+    },
+    {
+      "file": "official-reglement-clean.txt",
+      "bytes": 15039,
+      "sha256": "99bb0483cbef784fe21dfdfb61b0843b4760c85fcf0c2837c8079fa59278121f"
+    },
+    {
+      "file": "official-reglement.html",
+      "bytes": 100398,
+      "sha256": "b062eaa4074f3a4b042f46bfba2304893907e741e077cbf9270766e0f1f788c8"
+    },
+    {
+      "file": "official-reglement.txt",
+      "bytes": 15039,
+      "sha256": "99bb0483cbef784fe21dfdfb61b0843b4760c85fcf0c2837c8079fa59278121f"
+    },
+    {
+      "file": "puttelange-bulletin2025.pdf",
+      "bytes": 40886082,
+      "sha256": "1e2ce12265f910722a3f8844f13bed21e32d00019cd24ef5e125749169c84dee"
+    },
+    {
+      "file": "puttelange-bulletin2025.txt",
+      "bytes": 299219,
+      "sha256": "fe1fd35ecf1fe2c631948cf500dc5a6346fd3486669631fceeb2b9726745c00c"
+    },
+    {
+      "file": "puttelange-spread34.jpg",
+      "bytes": 385416,
+      "sha256": "a33d7a652dbf5618570db2f9f11c05a98964511072a80be0bcf1e5d1425ac41c"
+    },
+    {
+      "file": "search-1.json",
+      "bytes": 16010,
+      "sha256": "25ad73e89b77d2174ec0c394b1530bee80f00a8405cd747a4a13680e1304ea20"
+    },
+    {
+      "file": "search-2.json",
+      "bytes": 15345,
+      "sha256": "def51eb35b00a158698f7c767c9d4a698a67a1d1004b3287545318e56a890cd0"
+    },
+    {
+      "file": "search-3.json",
+      "bytes": 15830,
+      "sha256": "2fca5fee8be3c80509695b20b89e63641638da236331b167e52a9e7fa278aab7"
+    },
+    {
+      "file": "search-4.json",
+      "bytes": 14965,
+      "sha256": "2e3c45bd9e8ae1e0839555f279334d3d145462fcb0e0d216bb0561908e553649"
+    },
+    {
+      "file": "search-5.json",
+      "bytes": 15780,
+      "sha256": "80075647d03e8349d33cb30b23adbe2934d553e8cfc7748574b1170a263e2dc9"
+    },
+    {
+      "file": "search-6.json",
+      "bytes": 15607,
+      "sha256": "4641d668743daabfd8ae943509004f3713eb9e45ae19dc6c33a334df8831b1fa"
+    },
+    {
+      "file": "search-7.json",
+      "bytes": 14970,
+      "sha256": "b0f2a3d2e62283b38f0d1c78f6c559b1a3bdd79c8cf7f148d8e104ef9a602415"
+    },
+    {
+      "file": "source-access.json",
+      "bytes": 1707,
+      "sha256": "9bc67a6dab1ea2ea7c788a0a5971652313226f41b828a5c2fbf83e974bc4b2b1"
+    },
+    {
+      "file": "st-julien-april2017-article.html",
+      "bytes": 77947,
+      "sha256": "e0cf84e37e397f16ea3dfd275ae6213ac9b3293937a72706642e0b7e1bbe8c2e"
+    },
+    {
+      "file": "st-julien-article-original-image-links.json",
+      "bytes": 7687,
+      "sha256": "4e832b3e424d15ecdacb2d39b4d3745c1316aa9a218ee67229abc2db780fb4ac"
+    },
+    {
+      "file": "st-julien-blog-july2017-clean.txt",
+      "bytes": 2886,
+      "sha256": "8bfa18b259f691c3e366b91d47d3c8dfa93b8d119a17641bdf175105c737de45"
+    },
+    {
+      "file": "st-julien-blog-july2017.html",
+      "bytes": 143358,
+      "sha256": "2d4438cbbf52d1c8bd115555dea74f39e1fc3c1e96bf8a6dc812d536ac9664e7"
+    },
+    {
+      "file": "st-julien-blog-july2017.txt",
+      "bytes": 2886,
+      "sha256": "8bfa18b259f691c3e366b91d47d3c8dfa93b8d119a17641bdf175105c737de45"
+    },
+    {
+      "file": "stage-image-access.json",
+      "bytes": 1003,
+      "sha256": "d8536123cb3d2c91450dcb9a8499b1850e5f231b45421c248bc29d832f91fe8e"
+    },
+    {
+      "file": "tripadvisor-review-access.json",
+      "bytes": 343,
+      "sha256": "f19da1b8c6c7b4ab3a60e1d548fcfd5c82fd0ace31173ba77a6f793bb09fe6bb"
+    },
+    {
+      "file": "tripadvisor-reviews-or10-clean.txt",
+      "bytes": 21400,
+      "sha256": "4a3dd76ee5eaf97a63d58e96a7bc330c58c6355436645ff03b6cefb4984f7bcf"
+    },
+    {
+      "file": "tripadvisor-reviews-or10.html",
+      "bytes": 937254,
+      "sha256": "8384730ecbe5f732200d84eba1371036539f555e38da01ddc29dff59c865e303"
+    }
+  ]
+}

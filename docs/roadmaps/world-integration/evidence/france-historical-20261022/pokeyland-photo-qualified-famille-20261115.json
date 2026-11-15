@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7763-scaled-psh96wk6wvyf1d0rcwikwcfbctjjultyszbqrwk90g.jpg",
+    "accessedAtUtc": "2026-11-15T12:09:35.762457+00:00",
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7763-scaled-psh96wk6wvyf1d0rcwikwcfbctjjultyszbqrwk90g.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 49233,
+    "sha256": "01ad5736f94e11563a935a1069717d5f63328d1ed7c5e98accd44991344d4d16",
+    "file": "official-famille.jpg",
+    "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/accrobranche-course-qualification/official-famille.jpg",
+    "dimensions": [
+      700,
+      400
+    ],
+    "within960KiB": true,
+    "personallyViewed": true,
+    "visibleWatermark": false,
+    "localEditing": false,
+    "sourceSuppliedVariant": true,
+    "montageObserved": false,
+    "associationLevel": "nominal_course_limited_content",
+    "visualObservations": "Deux visiteuses préparent ou ajustent leur baudrier au sol avec un membre du personnel dont le dos porte Team Pokey ; sous-bois et cordes en arrière-plan.",
+    "associationLimits": "Rattachée à Parcours famille mais scène de préparation commune, aucun obstacle propre au parcours visible. Suffisant pour illustration de préparation associée par opérateur, insuffisant pour décrire ses ateliers.",
+    "captureDate": null,
+    "individualPhotographer": null,
+    "openLicenseClaimed": false,
+    "sourcePage": "https://www.pokeyland.com/packs/accrobranche/",
+    "creditEvidence": "Site officiel Pokeyland ; aucun photographe individuel identifié, date de publication de la photo et capture non établies."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7763-scaled-psh96wk6wvyf1d0rcwikwcfbctjjultyszbqrwk90g.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/accrobranche-course-qualification/official-famille.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-famille-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-qualified-famille-import-result.json"
+  },
+  "metadata": {
+    "description": "Deux visiteuses ajustent leur équipement au sol près d’un membre du personnel portant un tee-shirt Team Pokey.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7763-scaled-psh96wk6wvyf1d0rcwikwcfbctjjultyszbqrwk90g.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Préparation des baudriers illustrant le Parcours famille de Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Harness preparation illustrating Pokeyland’s Family Course"
+      },
+      {
+        "languageCode": "de",
+        "value": "Vorbereitung der Klettergurte als Illustration des Familienparcours in Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Preparación de arneses como ilustración del Recorrido familiar de Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Preparazione delle imbracature a illustrazione del Percorso famiglia di Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Voorbereiding van klimgordels als illustratie van het Familieparcours in Pokeyland"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Przygotowanie uprzęży na zdjęciu ilustrującym trasę rodzinną w Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Preparação dos arneses a ilustrar o Percurso família do Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Deux visiteuses ajustent leur équipement au sol près d’un membre du personnel portant un tee-shirt Team Pokey."
+      },
+      {
+        "languageCode": "en",
+        "value": "Two visitors adjust their equipment on the ground beside a staff member wearing a Team Pokey shirt."
+      },
+      {
+        "languageCode": "de",
+        "value": "Zwei Besucherinnen passen am Boden ihre Ausrüstung neben einem Mitarbeiter im Team-Pokey-Shirt an."
+      },
+      {
+        "languageCode": "es",
+        "value": "Dos visitantes ajustan su equipo en el suelo junto a un empleado con camiseta Team Pokey."
+      },
+      {
+        "languageCode": "it",
+        "value": "Due visitatrici regolano l’attrezzatura a terra accanto a un addetto con maglietta Team Pokey."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Twee bezoekers passen op de grond hun uitrusting aan naast een medewerker in een Team Pokey-shirt."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dwie uczestniczki poprawiają sprzęt na ziemi obok pracownika w koszulce Team Pokey."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Duas visitantes ajustam o equipamento no solo junto de um funcionário com camisola Team Pokey."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: official Pokeyland website; photographer not credited."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "28873710d16042eda0a54de17e38f056",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+      "path": "park_item/28873710d16042eda0a54de17e38f056",
+      "description": "Deux visiteuses ajustent leur équipement au sol près d’un membre du personnel portant un tee-shirt Team Pokey.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 49233,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7763-scaled-psh96wk6wvyf1d0rcwikwcfbctjjultyszbqrwk90g.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Préparation des baudriers illustrant le Parcours famille de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Harness preparation illustrating Pokeyland’s Family Course"
+        },
+        {
+          "languageCode": "de",
+          "value": "Vorbereitung der Klettergurte als Illustration des Familienparcours in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Preparación de arneses como ilustración del Recorrido familiar de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Preparazione delle imbracature a illustrazione del Percorso famiglia di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Voorbereiding van klimgordels als illustratie van het Familieparcours in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przygotowanie uprzęży na zdjęciu ilustrującym trasę rodzinną w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Preparação dos arneses a ilustrar o Percurso família do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Deux visiteuses ajustent leur équipement au sol près d’un membre du personnel portant un tee-shirt Team Pokey."
+        },
+        {
+          "languageCode": "en",
+          "value": "Two visitors adjust their equipment on the ground beside a staff member wearing a Team Pokey shirt."
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Besucherinnen passen am Boden ihre Ausrüstung neben einem Mitarbeiter im Team-Pokey-Shirt an."
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos visitantes ajustan su equipo en el suelo junto a un empleado con camiseta Team Pokey."
+        },
+        {
+          "languageCode": "it",
+          "value": "Due visitatrici regolano l’attrezzatura a terra accanto a un addetto con maglietta Team Pokey."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee bezoekers passen op de grond hun uitrusting aan naast een medewerker in een Team Pokey-shirt."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwie uczestniczki poprawiają sprzęt na ziemi obok pracownika w koszulce Team Pokey."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Duas visitantes ajustam o equipamento no solo junto de um funcionário com camisola Team Pokey."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:44:59.234Z",
+      "updatedAt": "2026-11-15T13:45:02.754Z"
+    },
+    "startedAtUtc": "2026-11-15T13:44:58.3178168Z",
+    "receivedAtUtc": "2026-11-15T13:45:05.8906081Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

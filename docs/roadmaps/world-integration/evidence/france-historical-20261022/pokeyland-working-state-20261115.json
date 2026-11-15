@@ -1944,7 +1944,41 @@
         ]
       },
       "id": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
-      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les premiers pas en hauteur</h2><p>Le Parcours découverte introduit progressivement l’accrobranche dans le bois de Pokeyland. Le passage illustré par le parc demande de marcher sur un câble tendu entre les arbres, les mains soutenues par une ligne située plus haut.</p><h2>D’un tronc à l’autre</h2><p>Une plateforme en bois entoure le tronc au départ de cette traversée. Le feuillage reste tout proche du participant.</p><p>L’équilibre et les petits pas donnent son rythme à cette initiation, présentée par Pokeyland comme une première approche des parcours en hauteur.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>First steps above the ground</h2><p>The Discovery Course offers a gradual introduction to treetop climbing in Pokeyland’s woodland. The crossing illustrated by the park involves walking along a cable stretched between trees, with a higher line providing a handhold.</p><h2>From one trunk to the next</h2><p>A wooden platform surrounds the trunk at the start of this crossing. Foliage remains close to the participant.</p><p>Balance and small steps set the pace of this introduction, which Pokeyland presents as a first encounter with courses above the ground.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Erste Schritte in der Höhe</h2><p>Der Entdeckungsparcours führt schrittweise an das Klettern in den Bäumen von Pokeyland heran. Auf der vom Park gezeigten Passage geht man über ein zwischen Bäumen gespanntes Seil und hält sich an einer höher verlaufenden Leine fest.</p><h2>Von Stamm zu Stamm</h2><p>Eine Holzplattform umgibt den Baumstamm am Beginn dieser Querung. Das Laub bleibt dabei ganz nah.</p><p>Gleichgewicht und kleine Schritte bestimmen den Rhythmus dieses Einstiegs, den Pokeyland als erste Annäherung an die Höhenparcours vorstellt.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Primeros pasos en altura</h2><p>El Recorrido descubrimiento introduce progresivamente la aventura entre árboles en el bosque de Pokeyland. El paso ilustrado por el parque consiste en caminar por un cable tendido entre árboles, sujetándose a una línea situada más arriba.</p><h2>De un tronco a otro</h2><p>Una plataforma de madera rodea el tronco al comienzo de esta travesía. El follaje queda muy cerca de quien participa.</p><p>El equilibrio y los pasos cortos marcan el ritmo de esta iniciación, que Pokeyland presenta como un primer acercamiento a los recorridos en altura.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>I primi passi in quota</h2><p>Il Percorso scoperta introduce gradualmente all’avventura tra gli alberi nel bosco di Pokeyland. Il passaggio illustrato dal parco richiede di camminare su un cavo teso tra gli alberi, tenendosi a una linea più alta.</p><h2>Da un tronco all’altro</h2><p>Una piattaforma di legno circonda il tronco all’inizio di questo attraversamento. Le foglie rimangono vicine al partecipante.</p><p>L’equilibrio e i piccoli passi scandiscono questa introduzione, presentata da Pokeyland come un primo approccio ai percorsi in quota.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De eerste stappen op hoogte</h2><p>Het Ontdekkingsparcours laat bezoekers geleidelijk kennismaken met klimmen tussen de bomen van Pokeyland. Op de door het park afgebeelde oversteek loopt de deelnemer over een kabel tussen bomen, met een hogere lijn als houvast voor de handen.</p><h2>Van stam naar stam</h2><p>Aan het begin van deze oversteek ligt een houten platform rond de boomstam. Het gebladerte blijft vlakbij.</p><p>Evenwicht en kleine stappen bepalen het tempo van deze kennismaking, die Pokeyland presenteert als een eerste ervaring met parcoursen op hoogte.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Pierwsze kroki na wysokości</h2><p>Trasa odkrywcza stopniowo wprowadza w przygodę między drzewami w lesie Pokeyland. Przejście pokazane przez park polega na stąpaniu po linie rozpiętej między drzewami i trzymaniu się wyżej poprowadzonej liny.</p><h2>Od pnia do pnia</h2><p>Na początku tego przejścia drewniana platforma otacza pień. Liście pozostają blisko uczestnika.</p><p>Równowaga i drobne kroki wyznaczają rytm tej trasy, którą Pokeyland przedstawia jako pierwsze spotkanie z pokonywaniem przeszkód na wysokości.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Os primeiros passos em altura</h2><p>O Percurso descoberta apresenta gradualmente a aventura entre árvores no bosque do Pokeyland. A passagem ilustrada pelo parque consiste em caminhar sobre um cabo estendido entre árvores, segurando uma linha situada mais acima.</p><h2>De um tronco ao outro</h2><p>Uma plataforma de madeira envolve o tronco no início desta travessia. A folhagem permanece perto do participante.</p><p>O equilíbrio e os pequenos passos marcam o ritmo desta iniciação, apresentada pelo Pokeyland como um primeiro contacto com percursos em altura.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-parcours-famille",
@@ -1967,7 +2001,41 @@
         ]
       },
       "id": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
-      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>L’accrobranche à plusieurs générations</h2><p>Le Parcours famille réunit petits et grands autour de passages en hauteur entre les arbres. Pokeyland le présente comme une activité à partager, où les obstacles se franchissent au fil d’une progression de branche en branche.</p><h2>La préparation au sol</h2><p>La photographie associée à ce parcours montre deux visiteuses ajustant leur baudrier auprès d’un membre de l’équipe.</p><p>Cette scène de préparation se déroule dans le sous-bois, avant les passages suspendus.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Treetop adventure across generations</h2><p>The Family Course brings younger and older participants together for crossings high among the trees. Pokeyland presents it as a shared activity, with obstacles encountered while progressing from branch to branch.</p><h2>Getting ready on the ground</h2><p>The photograph associated with this course shows two visitors adjusting their harnesses beside a member of staff.</p><p>This preparation takes place on the woodland floor, before the suspended crossings.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Klettern für mehrere Generationen</h2><p>Der Familienparcours bringt jüngere und ältere Teilnehmer bei Passagen hoch zwischen den Bäumen zusammen. Pokeyland stellt ihn als gemeinschaftliche Aktivität vor, bei der Hindernisse auf dem Weg von Ast zu Ast überwunden werden.</p><h2>Vorbereitung am Boden</h2><p>Das diesem Parcours zugeordnete Foto zeigt zwei Besucherinnen, die neben einem Mitarbeiter ihre Klettergurte anpassen.</p><p>Diese Vorbereitung findet auf dem Waldboden statt, bevor es zu den schwebenden Passagen geht.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Aventura entre árboles para varias generaciones</h2><p>El Recorrido familiar reúne a pequeños y mayores en pasos elevados entre los árboles. Pokeyland lo presenta como una actividad compartida, con obstáculos que se superan al avanzar de rama en rama.</p><h2>La preparación en el suelo</h2><p>La fotografía asociada a este recorrido muestra a dos visitantes ajustándose los arneses junto a un miembro del personal.</p><p>Esta preparación se desarrolla en el suelo del bosque, antes de los pasos suspendidos.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Avventura tra alberi e generazioni</h2><p>Il Percorso famiglia riunisce piccoli e grandi su passaggi in quota tra gli alberi. Pokeyland lo presenta come un’attività da condividere, affrontando gli ostacoli mentre si procede di ramo in ramo.</p><h2>La preparazione a terra</h2><p>La fotografia associata a questo percorso mostra due visitatrici che regolano le imbracature accanto a un membro dello staff.</p><p>Questa preparazione si svolge nel sottobosco, prima dei passaggi sospesi.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Klimmen met verschillende generaties</h2><p>Het Familieparcours brengt jongere en oudere deelnemers samen op passages hoog tussen de bomen. Pokeyland presenteert het als een gezamenlijke activiteit, waarbij obstakels worden overwonnen tijdens de tocht van tak naar tak.</p><h2>Voorbereiding op de grond</h2><p>De foto bij dit parcours toont twee bezoekers die naast een medewerker hun klimgordel aanpassen.</p><p>Deze voorbereiding vindt op de bosgrond plaats, vóór de hangende passages.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Przygoda wśród drzew dla różnych pokoleń</h2><p>Trasa rodzinna łączy młodszych i starszych uczestników na przejściach wysoko między drzewami. Pokeyland przedstawia ją jako wspólną aktywność, podczas której kolejne przeszkody pokonuje się w drodze od gałęzi do gałęzi.</p><h2>Przygotowanie na ziemi</h2><p>Zdjęcie przypisane do tej trasy pokazuje dwie uczestniczki poprawiające uprzęże obok pracownika parku.</p><p>Przygotowanie odbywa się na leśnym podłożu, przed wejściem na zawieszone przejścia.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Aventura entre árvores para várias gerações</h2><p>O Percurso família reúne pequenos e grandes em passagens elevadas entre as árvores. O Pokeyland apresenta-o como uma atividade partilhada, com obstáculos ultrapassados ao avançar de ramo em ramo.</p><h2>A preparação no solo</h2><p>A fotografia associada a este percurso mostra duas visitantes a ajustar os arneses junto de um membro da equipa.</p><p>Esta preparação decorre no chão do bosque, antes das passagens suspensas.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-parcours-aventure-1",
@@ -2038,7 +2106,41 @@
       "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
       "zoneId": "15802825-0835-40e0-b211-410bc26e14b9",
       "latitude": 49.0183877,
-      "longitude": 6.1011601
+      "longitude": 6.1011601,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un parcours exigeant dans les arbres</h2><p>Le Parcours sportif constitue le volet physique de l’accrobranche de Pokeyland. L’opérateur insiste sur l’effort et la détermination nécessaires pour avancer dans ses passages en hauteur.</p><h2>La forêt sous les pieds</h2><p>La vue officielle rattachée à ce nom montre un participant suspendu à une poulie, les jambes relevées devant lui et les arbres en arrière-plan.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A demanding course among the trees</h2><p>The Sporting Course is the physically demanding part of Pokeyland’s treetop adventure. The operator stresses the effort and determination needed to make progress through its elevated passages.</p><h2>The forest beneath your feet</h2><p>The official view attached to this name shows a participant suspended from a pulley, with his legs raised in front of him and trees in the background.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein anspruchsvoller Weg durch die Bäume</h2><p>Der Sportparcours bildet den körperlich anspruchsvollen Teil des Kletterangebots von Pokeyland. Der Betreiber betont die Anstrengung und Entschlossenheit, die für seine Passagen in der Höhe erforderlich sind.</p><h2>Der Wald unter den Füßen</h2><p>Die offizielle, diesem Namen zugeordnete Ansicht zeigt einen Teilnehmer an einer Seilrolle, die Beine nach vorn angehoben und Bäume im Hintergrund.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un recorrido exigente entre los árboles</h2><p>El Recorrido deportivo constituye la vertiente más física de la aventura entre árboles de Pokeyland. El operador destaca el esfuerzo y la determinación necesarios para avanzar por sus pasos elevados.</p><h2>El bosque bajo los pies</h2><p>La vista oficial asociada a este nombre muestra a un participante suspendido de una polea, con las piernas levantadas hacia delante y árboles al fondo.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un percorso impegnativo tra gli alberi</h2><p>Il Percorso sportivo rappresenta la componente più fisica dell’avventura tra gli alberi di Pokeyland. Il gestore sottolinea lo sforzo e la determinazione necessari per affrontarne i passaggi in quota.</p><h2>Il bosco sotto i piedi</h2><p>La veduta ufficiale associata a questo nome mostra un partecipante sospeso a una carrucola, con le gambe sollevate davanti a sé e gli alberi sullo sfondo.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een veeleisend parcours tussen de bomen</h2><p>Het Sportieve parcours vormt het fysiek veeleisende deel van het klimaanbod van Pokeyland. De aanbieder benadrukt de inspanning en vastberadenheid die nodig zijn om de hoge passages te doorlopen.</p><h2>Het bos onder de voeten</h2><p>De officiële foto bij deze naam toont een deelnemer die aan een katrol hangt, met zijn benen voor zich omhoog en bomen op de achtergrond.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Wymagająca trasa między drzewami</h2><p>Trasa sportowa jest wymagającą fizycznie częścią parku linowego Pokeyland. Operator podkreśla wysiłek i determinację potrzebne do pokonywania jej przejść na wysokości.</p><h2>Las pod stopami</h2><p>Oficjalne zdjęcie przypisane do tej nazwy pokazuje uczestnika zawieszonego na bloczku, z nogami uniesionymi przed sobą i drzewami w tle.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um percurso exigente entre as árvores</h2><p>O Percurso desportivo constitui a componente fisicamente exigente do arborismo do Pokeyland. O operador salienta o esforço e a determinação necessários para avançar nas suas passagens em altura.</p><h2>O bosque sob os pés</h2><p>A vista oficial associada a este nome mostra um participante suspenso numa roldana, com as pernas levantadas à frente e árvores ao fundo.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-parcours-tyrolienne",
@@ -2061,7 +2163,41 @@
         ]
       },
       "id": "ae8be798-c96c-4075-8968-1bf55a5a2786",
-      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un itinéraire de glissades aériennes</h2><p>Le Parcours tyrolienne se distingue par un tracé entièrement consacré aux tyroliennes. Pokeyland annonce un kilomètre pour cet ensemble de passages dans la forêt.</p><h2>Suspendu entre les arbres</h2><p>Le déplacement se fait sous le câble, avec le baudrier relié à une poulie. La photographie officielle montre une participante au-dessus du sol, les branches se détachant sur le ciel autour d’elle.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A route of aerial glides</h2><p>The Zipline Course stands out for a route devoted entirely to ziplines. Pokeyland advertises one kilometre for this collection of crossings through the forest.</p><h2>Suspended between the trees</h2><p>Participants travel below the cable, with their harness connected to a pulley. The official photograph shows a rider above the ground, surrounded by branches silhouetted against the sky.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Route aus Seilrutschen</h2><p>Der Seilrutschenparcours besteht vollständig aus Seilrutschen. Pokeyland gibt für diese Folge von Passagen durch den Wald eine Länge von einem Kilometer an.</p><h2>Schwebend zwischen den Bäumen</h2><p>Die Teilnehmer bewegen sich unter dem Seil, mit dem Klettergurt an einer Rolle befestigt. Das offizielle Foto zeigt eine Besucherin über dem Boden, umgeben von Ästen vor dem Himmel.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un itinerario de deslizamientos aéreos</h2><p>El Recorrido de tirolinas se distingue por un trazado dedicado íntegramente a ellas. Pokeyland anuncia un kilómetro para este conjunto de pasos por el bosque.</p><h2>En suspensión entre los árboles</h2><p>El desplazamiento se realiza por debajo del cable, con el arnés unido a una polea. La fotografía oficial muestra a una participante sobre el suelo, rodeada de ramas que se recortan contra el cielo.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un itinerario di scivolate aeree</h2><p>Il Percorso zipline si distingue per un tracciato interamente dedicato alle teleferiche. Pokeyland annuncia un chilometro per questo insieme di passaggi nel bosco.</p><h2>Sospesi tra gli alberi</h2><p>Ci si sposta sotto il cavo, con l’imbracatura collegata a una carrucola. La fotografia ufficiale mostra una partecipante sopra il terreno, circondata da rami che si stagliano contro il cielo.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een route van tokkelbanen</h2><p>Het Tokkelparcours bestaat volledig uit tokkelbanen. Pokeyland vermeldt een kilometer voor deze reeks oversteekplaatsen door het bos.</p><h2>Hangend tussen de bomen</h2><p>Deelnemers bewegen onder de kabel, met hun klimgordel verbonden aan een katrol. Op de officiële foto hangt een bezoeker boven de grond, omringd door takken die tegen de lucht afsteken.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Trasa powietrznych zjazdów</h2><p>Trasa tyrolkowa wyróżnia się układem w całości poświęconym zjazdom na linach. Pokeyland podaje kilometr długości dla tego zespołu przejść przez las.</p><h2>W zawieszeniu między drzewami</h2><p>Uczestnicy przemieszczają się pod liną, z uprzężą połączoną z bloczkiem. Oficjalne zdjęcie pokazuje uczestniczkę nad ziemią, otoczoną gałęziami na tle nieba.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um itinerário de deslizes aéreos</h2><p>O Percurso de tirolesas distingue-se por um traçado inteiramente dedicado a essas travessias. O Pokeyland anuncia um quilómetro para este conjunto de passagens pelo bosque.</p><h2>Em suspensão entre as árvores</h2><p>O movimento faz-se sob o cabo, com o arnês ligado a uma roldana. A fotografia oficial mostra uma participante acima do solo, rodeada de ramos recortados contra o céu.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-terrain-dog-one",
@@ -2380,7 +2516,41 @@
       },
       "id": "e267af4d-a394-4ddb-9cb5-597582e077da",
       "latitude": 49.0211269,
-      "longitude": 6.101518
+      "longitude": 6.101518,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Burgers et frites maison</h2><p>Le Petit Creux est un point de restauration de Pokeyland consacré aux hamburgers, aux hot-dogs et aux salades. Sa carte annoncée par le parc comprend également des frites maison.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Burgers and homemade chips</h2><p>Le Petit Creux is a Pokeyland food outlet serving hamburgers, hot dogs and salads. The menu advertised by the park also includes homemade chips.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Burger und hausgemachte Pommes</h2><p>Le Petit Creux ist ein Gastronomieangebot in Pokeyland mit Hamburgern, Hotdogs und Salaten. Die vom Park vorgestellte Speisekarte umfasst auch hausgemachte Pommes frites.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Hamburguesas y patatas fritas caseras</h2><p>Le Petit Creux es un punto de restauración de Pokeyland dedicado a hamburguesas, perritos calientes y ensaladas. La carta anunciada por el parque también incluye patatas fritas caseras.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Hamburger e patatine fritte della casa</h2><p>Le Petit Creux è un punto di ristoro di Pokeyland dedicato a hamburger, hot dog e insalate. Il menu presentato dal parco comprende anche patatine fritte della casa.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Burgers en huisgemaakte friet</h2><p>Le Petit Creux is een eetgelegenheid in Pokeyland met hamburgers, hotdogs en salades. Op het door het park gepresenteerde menu staat ook huisgemaakte friet.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Burgery i frytki własnego wyrobu</h2><p>Le Petit Creux to punkt gastronomiczny Pokeyland oferujący hamburgery, hot dogi i sałatki. W menu przedstawionym przez park znajdują się także frytki własnego wyrobu.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Hambúrgueres e batatas fritas caseiras</h2><p>Le Petit Creux é um ponto de restauração do Pokeyland dedicado a hambúrgueres, cachorros-quentes e saladas. A ementa anunciada pelo parque também inclui batatas fritas caseiras.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-gourmand",
@@ -2395,7 +2565,41 @@
       },
       "id": "731d71c3-50aa-4898-8a78-de37c0b1437c",
       "latitude": 49.0215437,
-      "longitude": 6.1008841
+      "longitude": 6.1008841,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Crêpes, churros et douceurs glacées</h2><p>Le Gourmand concentre l’offre sucrée de Pokeyland : churros, crêpes au sucre ou au Nutella, glaces et bonbons. Les granitas complètent cette sélection de gourmandises.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Crêpes, churros and frozen treats</h2><p>Le Gourmand brings together Pokeyland’s sweet offerings: churros, crêpes with sugar or Nutella, ice cream and sweets. Granitas complete this selection of treats.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Crêpes, Churros und eisige Süßigkeiten</h2><p>Le Gourmand bündelt das süße Angebot von Pokeyland: Churros, Crêpes mit Zucker oder Nutella, Eis und Bonbons. Granitas ergänzen diese Auswahl an Leckereien.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Crepes, churros y dulces helados</h2><p>Le Gourmand reúne la oferta dulce de Pokeyland: churros, crepes con azúcar o Nutella, helados y caramelos. Los granizados completan esta selección de golosinas.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Crêpes, churros e dolci freschi</h2><p>Le Gourmand riunisce l’offerta dolce di Pokeyland: churros, crêpes con zucchero o Nutella, gelati e caramelle. Le granite completano questa selezione di golosità.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Crêpes, churros en ijskoude lekkernijen</h2><p>Le Gourmand bundelt het zoete aanbod van Pokeyland: churros, crêpes met suiker of Nutella, ijs en snoep. Granita’s maken deze selectie compleet.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Naleśniki, churros i mrożone słodkości</h2><p>Le Gourmand skupia słodką ofertę Pokeyland: churros, naleśniki z cukrem lub Nutellą, lody i cukierki. Wybór tych przysmaków uzupełniają granity.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Crepes, churros e doces gelados</h2><p>Le Gourmand reúne a oferta doce do Pokeyland: churros, crepes com açúcar ou Nutella, gelados e rebuçados. Os granizados completam esta seleção de guloseimas.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-grill",
@@ -2408,7 +2612,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/restauration/"
       },
-      "id": "538a604f-6fe1-4460-9740-7b0c576b0214"
+      "id": "538a604f-6fe1-4460-9740-7b0c576b0214",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les grillades du parc</h2><p>Le Grill propose des viandes grillées et des cuissons au barbecue à Pokeyland. Parmi les spécialités annoncées figurent les saucisses blanches et la Currywurst.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The park’s grilled specialities</h2><p>Le Grill serves grilled meats and barbecue food at Pokeyland. White sausages and Currywurst are among its advertised specialities.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Grillspezialitäten im Park</h2><p>Le Grill bietet in Pokeyland gegrilltes Fleisch und Barbecue-Gerichte an. Zu den angekündigten Spezialitäten gehören weiße Würste und Currywurst.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Las parrilladas del parque</h2><p>Le Grill ofrece carnes a la parrilla y preparaciones a la barbacoa en Pokeyland. Entre las especialidades anunciadas figuran las salchichas blancas y la Currywurst.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Le grigliate del parco</h2><p>Le Grill propone carni alla griglia e cotture al barbecue a Pokeyland. Tra le specialità annunciate figurano le salsicce bianche e il Currywurst.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Grillspecialiteiten van het park</h2><p>Le Grill biedt gegrild vlees en barbecuegerechten in Pokeyland. Witte worsten en Currywurst behoren tot de vermelde specialiteiten.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Parkowe dania z grilla</h2><p>Le Grill oferuje w Pokeyland grillowane mięsa i dania z rusztu. Wśród wymienionych specjalności znajdują się białe kiełbasy i Currywurst.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Os grelhados do parque</h2><p>Le Grill propõe carnes grelhadas e preparações no churrasco no Pokeyland. Entre as especialidades anunciadas encontram-se as salsichas brancas e a Currywurst.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-escale",
@@ -2423,7 +2661,41 @@
       },
       "id": "698bf2fb-d43e-4a13-988c-f25ecee12095",
       "latitude": 49.0193189,
-      "longitude": 6.1002579
+      "longitude": 6.1002579,
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Sandwichs et boissons</h2><p>L’Escale est un point de petite restauration où Pokeyland propose des sandwichs, des boissons et du snacking.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Sandwiches and drinks</h2><p>L’Escale is a light food outlet where Pokeyland offers sandwiches, drinks and snacks.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Sandwiches und Getränke</h2><p>L’Escale ist ein Imbissangebot in Pokeyland mit Sandwiches, Getränken und Snacks.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Sándwiches y bebidas</h2><p>L’Escale es el punto de restauración ligera donde Pokeyland ofrece sándwiches, bebidas y aperitivos.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Sandwich e bevande</h2><p>L’Escale è il punto di ristoro leggero dove Pokeyland propone sandwich, bevande e spuntini.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Sandwiches en drankjes</h2><p>L’Escale is een eetgelegenheid waar Pokeyland sandwiches, drankjes en snacks aanbiedt.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kanapki i napoje</h2><p>L’Escale to punkt drobnej gastronomii, w którym Pokeyland oferuje kanapki, napoje i przekąski.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Sanduíches e bebidas</h2><p>L’Escale é o ponto de refeições ligeiras onde o Pokeyland oferece sanduíches, bebidas e petiscos.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-pokey-beach",
@@ -2569,7 +2841,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
       },
-      "id": "a2631717-bada-4f5b-83ff-a58cb643efc5"
+      "id": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Le renard monte sur scène</h2><p>Pokey Show associe la mascotte renard du parc à des animations avec les visiteurs. Le compte rendu d’une sortie d’avril 2017 montre enfants et adultes dansant sur son estrade, puis accueillant le personnage costumé.</p><p>Dans ces vues historiques, la scène est couverte et bordée de panneaux de bois. Des affiches bleu nuit étoilées portent le nom Pokey Show et l’image du renard.</p><h2>Des versions au fil des saisons</h2><p>Une nouvelle version du spectacle est annoncée pour 2018. En août 2026, le programme de la nocturne du 15 août comprend à son tour un Pokey Show spécial.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The fox takes the stage</h2><p>Pokey Show brings the park’s fox mascot together with visitors for shared entertainment. A report of an outing in April 2017 shows children and adults dancing on its platform and then welcoming the costumed character.</p><p>In these historical views, the stage is covered and lined with wooden panels. Starry midnight-blue posters carry the Pokey Show name and an image of the fox.</p><h2>Versions across the seasons</h2><p>A new version of the show was announced for 2018. In August 2026, the advertised programme for the late opening on 15 August included a special Pokey Show.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Der Fuchs betritt die Bühne</h2><p>Pokey Show verbindet das Fuchsmaskottchen des Parks mit gemeinsamen Animationen für Besucher. Ein Bericht über einen Ausflug im April 2017 zeigt Kinder und Erwachsene beim Tanzen auf dem Podium und beim anschließenden Empfang der kostümierten Figur.</p><p>Auf diesen historischen Ansichten ist die Bühne überdacht und mit Holzplatten eingefasst. Sternenbesetzte, nachtblaue Plakate tragen den Namen Pokey Show und das Bild des Fuchses.</p><h2>Verschiedene Fassungen über die Jahre</h2><p>Für 2018 wurde eine neue Fassung angekündigt. Im August 2026 enthielt das angekündigte Programm der Abendöffnung am 15. August eine besondere Pokey Show.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>El zorro sube al escenario</h2><p>Pokey Show reúne a la mascota zorro del parque y a los visitantes en actividades de animación. El relato de una salida de abril de 2017 muestra a niños y adultos bailando sobre la tarima y recibiendo después al personaje disfrazado.</p><p>En estas vistas históricas, el escenario está cubierto y delimitado por paneles de madera. Carteles de color azul noche con estrellas llevan el nombre Pokey Show y la imagen del zorro.</p><h2>Versiones a lo largo de las temporadas</h2><p>Para 2018 se anunció una nueva versión del espectáculo. En agosto de 2026, el programa anunciado para la apertura nocturna del 15 de agosto incluyó un Pokey Show especial.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La volpe sale sul palco</h2><p>Pokey Show unisce la mascotte volpe del parco e i visitatori in momenti di animazione. Il resoconto di una gita dell’aprile 2017 mostra bambini e adulti che ballano sulla pedana e poi accolgono il personaggio in costume.</p><p>In queste vedute storiche, il palco è coperto e delimitato da pannelli di legno. Manifesti blu notte con stelle riportano il nome Pokey Show e l’immagine della volpe.</p><h2>Versioni nel corso delle stagioni</h2><p>Una nuova versione dello spettacolo fu annunciata per il 2018. Nell’agosto 2026, il programma annunciato per l’apertura serale del 15 agosto comprendeva un Pokey Show speciale.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De vos betreedt het podium</h2><p>Pokey Show brengt de vossenmascotte van het park en bezoekers samen tijdens animaties. Een verslag van een uitstapje in april 2017 toont kinderen en volwassenen die op het podium dansen en daarna het gekostumeerde personage verwelkomen.</p><p>Op deze historische beelden is het podium overdekt en omgeven door houten panelen. Nachtblauwe posters met sterren dragen de naam Pokey Show en een afbeelding van de vos.</p><h2>Verschillende versies door de seizoenen heen</h2><p>Voor 2018 werd een nieuwe versie aangekondigd. In augustus 2026 vermeldde het aangekondigde programma voor de avondopening op 15 augustus een speciale Pokey Show.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Lis wchodzi na scenę</h2><p>Pokey Show łączy parkową maskotkę lisa z animacjami dla gości. Relacja z wycieczki w kwietniu 2017 roku pokazuje dzieci i dorosłych tańczących na podeście, a następnie witających postać w kostiumie.</p><p>Na tych historycznych zdjęciach scena jest zadaszona i otoczona drewnianymi panelami. Granatowe plakaty z gwiazdami noszą nazwę Pokey Show i wizerunek lisa.</p><h2>Kolejne wersje w następnych sezonach</h2><p>Na rok 2018 zapowiedziano nową wersję widowiska. W sierpniu 2026 roku ogłoszony program wieczornego otwarcia 15 sierpnia obejmował specjalny Pokey Show.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A raposa sobe ao palco</h2><p>O Pokey Show reúne a mascote raposa do parque e os visitantes em momentos de animação. O relato de uma visita em abril de 2017 mostra crianças e adultos a dançar no estrado e, depois, a receber a personagem em fato de mascote.</p><p>Nestas vistas históricas, o palco é coberto e delimitado por painéis de madeira. Cartazes azul-escuros com estrelas apresentam o nome Pokey Show e a imagem da raposa.</p><h2>Versões ao longo das temporadas</h2><p>Foi anunciada uma nova versão do espetáculo para 2018. Em agosto de 2026, o programa anunciado para a abertura noturna de 15 de agosto incluía um Pokey Show especial.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-accueil-accrobranche",
@@ -9014,6 +9320,897 @@
       "updatedAt": "2026-11-15T13:29:28.426Z",
       "key": "96d60d7c6c0c40d79627a733c4ae2ff5",
       "imageId": "96d60d7c6c0c40d79627a733c4ae2ff5"
+    },
+    {
+      "id": "c3ed49df002b49029862ad404962f5fc",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+      "path": "park_item/c3ed49df002b49029862ad404962f5fc",
+      "description": "Un enfant en baudrier avance sur un câble, près d’une plateforme en bois entourant un arbre, en tenant une ligne plus haute.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 61918,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7549-scaled-psh991myhavxhdwsuttzksz42ezndsbyfktk4ldyu8.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Enfant sur un câble du Parcours découverte à Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Child on a cable on Pokeyland’s Discovery Course"
+        },
+        {
+          "languageCode": "de",
+          "value": "Kind auf einem Seil im Entdeckungsparcours von Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Niño sobre un cable del Recorrido descubrimiento de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambino su un cavo del Percorso scoperta di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kind op een kabel van het Ontdekkingsparcours in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko na linie trasy odkrywczej w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Criança num cabo do Percurso descoberta do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un enfant en baudrier avance sur un câble, près d’une plateforme en bois entourant un arbre, en tenant une ligne plus haute."
+        },
+        {
+          "languageCode": "en",
+          "value": "A child in a harness walks along a cable near a wooden platform around a tree, holding a higher line."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Kind mit Klettergurt geht nahe einer Holzplattform um einen Baum über ein Seil und hält sich an einer höheren Leine fest."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un niño con arnés camina por un cable junto a una plataforma de madera alrededor de un árbol, sujetándose a una línea más alta."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un bambino con imbracatura cammina su un cavo vicino a una piattaforma di legno attorno a un albero, tenendosi a una linea più alta."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kind met een klimgordel loopt over een kabel bij een houten platform rond een boom en houdt een hogere lijn vast."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko w uprzęży stąpa po linie przy drewnianej platformie wokół drzewa, trzymając się wyższej liny."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma criança com arnês caminha sobre um cabo junto de uma plataforma de madeira em redor de uma árvore, segurando uma linha mais alta."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:44:50.002Z",
+      "updatedAt": "2026-11-15T13:44:53.465Z",
+      "key": "c3ed49df002b49029862ad404962f5fc",
+      "imageId": "c3ed49df002b49029862ad404962f5fc"
+    },
+    {
+      "id": "28873710d16042eda0a54de17e38f056",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+      "path": "park_item/28873710d16042eda0a54de17e38f056",
+      "description": "Deux visiteuses ajustent leur équipement au sol près d’un membre du personnel portant un tee-shirt Team Pokey.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 49233,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7763-scaled-psh96wk6wvyf1d0rcwikwcfbctjjultyszbqrwk90g.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Préparation des baudriers illustrant le Parcours famille de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Harness preparation illustrating Pokeyland’s Family Course"
+        },
+        {
+          "languageCode": "de",
+          "value": "Vorbereitung der Klettergurte als Illustration des Familienparcours in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Preparación de arneses como ilustración del Recorrido familiar de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Preparazione delle imbracature a illustrazione del Percorso famiglia di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Voorbereiding van klimgordels als illustratie van het Familieparcours in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przygotowanie uprzęży na zdjęciu ilustrującym trasę rodzinną w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Preparação dos arneses a ilustrar o Percurso família do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Deux visiteuses ajustent leur équipement au sol près d’un membre du personnel portant un tee-shirt Team Pokey."
+        },
+        {
+          "languageCode": "en",
+          "value": "Two visitors adjust their equipment on the ground beside a staff member wearing a Team Pokey shirt."
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Besucherinnen passen am Boden ihre Ausrüstung neben einem Mitarbeiter im Team-Pokey-Shirt an."
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos visitantes ajustan su equipo en el suelo junto a un empleado con camiseta Team Pokey."
+        },
+        {
+          "languageCode": "it",
+          "value": "Due visitatrici regolano l’attrezzatura a terra accanto a un addetto con maglietta Team Pokey."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee bezoekers passen op de grond hun uitrusting aan naast een medewerker in een Team Pokey-shirt."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwie uczestniczki poprawiają sprzęt na ziemi obok pracownika w koszulce Team Pokey."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Duas visitantes ajustam o equipamento no solo junto de um funcionário com camisola Team Pokey."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:44:59.234Z",
+      "updatedAt": "2026-11-15T13:45:02.754Z",
+      "key": "28873710d16042eda0a54de17e38f056",
+      "imageId": "28873710d16042eda0a54de17e38f056"
+    },
+    {
+      "id": "6cc6622a5db343a4a0ef8d96f7197719",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+      "path": "park_item/6cc6622a5db343a4a0ef8d96f7197719",
+      "description": "Un homme en baudrier est suspendu à une poulie, les jambes relevées devant lui, sur fond de feuillage.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 48062,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/6K6A7684-scaled-psh99uryd5zthaqh4off83mehd010ejmvl1m066rhc.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Participant suspendu sur la photo du Parcours sportif de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Suspended participant in the photograph of Pokeyland’s Sporting Course"
+        },
+        {
+          "languageCode": "de",
+          "value": "Schwebender Teilnehmer auf dem Foto des Sportparcours in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Participante suspendido en la foto del Recorrido deportivo de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Partecipante sospeso nella foto del Percorso sportivo di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Hangende deelnemer op de foto van het Sportieve parcours in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uczestnik w zawieszeniu na zdjęciu trasy sportowej w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Participante suspenso na fotografia do Percurso desportivo do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un homme en baudrier est suspendu à une poulie, les jambes relevées devant lui, sur fond de feuillage."
+        },
+        {
+          "languageCode": "en",
+          "value": "A man in a harness hangs from a pulley with his legs raised in front of him, against a leafy background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Mann mit Klettergurt hängt an einer Seilrolle, die Beine nach vorn angehoben, vor einem Hintergrund aus Laub."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un hombre con arnés cuelga de una polea con las piernas levantadas hacia delante, sobre un fondo de follaje."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un uomo con imbracatura è sospeso a una carrucola con le gambe sollevate davanti a sé, sullo sfondo del fogliame."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een man met een klimgordel hangt aan een katrol met zijn benen voor zich omhoog, met gebladerte op de achtergrond."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mężczyzna w uprzęży wisi na bloczku z nogami uniesionymi przed sobą, na tle liści."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um homem com arnês está suspenso numa roldana com as pernas levantadas à frente, tendo folhagem ao fundo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:45:09.59Z",
+      "updatedAt": "2026-11-15T13:45:13.104Z",
+      "key": "6cc6622a5db343a4a0ef8d96f7197719",
+      "imageId": "6cc6622a5db343a4a0ef8d96f7197719"
+    },
+    {
+      "id": "8b3793aac4c94556833ba532eab46345",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+      "path": "park_item/8b3793aac4c94556833ba532eab46345",
+      "description": "Une femme reliée au câble par une poulie passe entre des arbres dont les branches se découpent sur le ciel.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 700,
+      "height": 400,
+      "sizeInBytes": 93981,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/IMG_3031-scaled-pmva2rp3ug2bqs7zp57k03q3mhxihf8nslp6ywx9k0.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Participante au-dessus du sol sur le Parcours tyrolienne de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Participant above the ground on Pokeyland’s Zipline Course"
+        },
+        {
+          "languageCode": "de",
+          "value": "Teilnehmerin über dem Boden im Seilrutschenparcours von Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Participante sobre el suelo en el Recorrido de tirolinas de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Partecipante sopra il terreno nel Percorso zipline di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Deelnemer boven de grond op het Tokkelparcours van Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uczestniczka nad ziemią na trasie tyrolkowej w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Participante acima do solo no Percurso de tirolesas do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une femme reliée au câble par une poulie passe entre des arbres dont les branches se découpent sur le ciel."
+        },
+        {
+          "languageCode": "en",
+          "value": "A woman connected to the cable by a pulley passes between trees whose branches stand out against the sky."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Frau, die über eine Rolle mit dem Seil verbunden ist, gleitet zwischen Bäumen, deren Äste sich vor dem Himmel abzeichnen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una mujer unida al cable mediante una polea pasa entre árboles cuyas ramas se recortan contra el cielo."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una donna collegata al cavo tramite una carrucola passa tra alberi i cui rami si stagliano contro il cielo."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een vrouw die via een katrol aan de kabel is verbonden, gaat tussen bomen door waarvan de takken tegen de lucht afsteken."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kobieta połączona z liną za pomocą bloczka przemieszcza się między drzewami, których gałęzie odcinają się na tle nieba."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma mulher ligada ao cabo por uma roldana passa entre árvores cujos ramos se recortam contra o céu."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:45:19.248Z",
+      "updatedAt": "2026-11-15T13:45:22.932Z",
+      "key": "8b3793aac4c94556833ba532eab46345",
+      "imageId": "8b3793aac4c94556833ba532eab46345"
+    },
+    {
+      "id": "399f973442ef4bed9fa1a8c3f4cc4f19",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+      "path": "park_item/399f973442ef4bed9fa1a8c3f4cc4f19",
+      "description": "Les voitures bordent une large allée centrale, avec des arbres autour des emplacements et des ombres de branches sur le passage.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 1365,
+      "sizeInBytes": 659262,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/45152318-2048x1365.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Deux rangées de voitures dans le parking boisé de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Two rows of cars in Pokeyland’s wooded car park"
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Autoreihen auf dem bewaldeten Parkplatz von Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos filas de coches en el aparcamiento arbolado de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Due file di automobili nel parcheggio alberato di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee rijen auto’s op het bosrijke parkeerterrein van Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwa rzędy samochodów na zadrzewionym parkingu Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Duas filas de automóveis no estacionamento arborizado do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les voitures bordent une large allée centrale, avec des arbres autour des emplacements et des ombres de branches sur le passage."
+        },
+        {
+          "languageCode": "en",
+          "value": "Cars line a wide central aisle, with trees around the spaces and branch shadows across the passage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Autos säumen eine breite mittlere Fahrgasse, mit Bäumen um die Stellplätze und Astschatten auf dem Durchgang."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los coches bordean un pasillo central ancho, con árboles alrededor de las plazas y sombras de ramas sobre el paso."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le automobili fiancheggiano un ampio passaggio centrale, con alberi attorno agli stalli e ombre di rami sul percorso."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Auto’s staan langs een brede centrale rijstrook, met bomen rond de plaatsen en schaduwen van takken op de doorgang."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Samochody stoją wzdłuż szerokiego centralnego przejazdu, z drzewami wokół stanowisk i cieniami gałęzi na drodze."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os automóveis ladeiam uma passagem central larga, com árvores em redor dos lugares e sombras de ramos sobre o caminho."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:45:35.852Z",
+      "updatedAt": "2026-11-15T13:45:39.301Z",
+      "key": "399f973442ef4bed9fa1a8c3f4cc4f19",
+      "imageId": "399f973442ef4bed9fa1a8c3f4cc4f19"
+    },
+    {
+      "id": "35b9ff6d864440f0ad0f72833537fc54",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+      "path": "park_item/35b9ff6d864440f0ad0f72833537fc54",
+      "description": "Des tables à bancs, avec des lattes orangées et des pieds en béton, occupent un sol couvert de copeaux ; un filet et des obstacles de paintball apparaissent derrière.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 1365,
+      "sizeInBytes": 517686,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/23578433-2048x1365.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs autour de tables de pique-nique orangées à Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors around orange picnic tables at Pokeyland"
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher an orangefarbenen Picknicktischen in Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes junto a mesas de pícnic anaranjadas en Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori attorno a tavoli da picnic arancioni a Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers rond oranje picknicktafels in Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Goście przy pomarańczowych stołach piknikowych w Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes junto de mesas de piquenique alaranjadas no Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des tables à bancs, avec des lattes orangées et des pieds en béton, occupent un sol couvert de copeaux ; un filet et des obstacles de paintball apparaissent derrière."
+        },
+        {
+          "languageCode": "en",
+          "value": "Benched tables with orange slats and concrete legs stand on woodchip-covered ground; netting and paintball obstacles appear behind them."
+        },
+        {
+          "languageCode": "de",
+          "value": "Tische mit Bänken, orangefarbenen Latten und Betonfüßen stehen auf mit Holzspänen bedecktem Boden; dahinter sind ein Netz und Paintballhindernisse zu sehen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Mesas con bancos de listones anaranjados y patas de hormigón se sitúan sobre un suelo cubierto de virutas; detrás aparecen una red y obstáculos de paintball."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tavoli con panche, assi arancioni e gambe in cemento occupano un terreno coperto di trucioli; dietro si vedono una rete e ostacoli da paintball."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tafels met banken, oranje latten en betonnen poten staan op een bodem met houtsnippers; daarachter zijn een net en paintballobstakels zichtbaar."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stoły z ławkami, pomarańczowymi deskami i betonowymi nogami stoją na podłożu pokrytym zrębkami; z tyłu widać siatkę i przeszkody paintballowe."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mesas com bancos, ripas alaranjadas e pés de betão ocupam um solo coberto de aparas; atrás surgem uma rede e obstáculos de paintball."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : site officiel Pokeyland ; photographe non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: official Pokeyland website; photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland; Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio oficial de Pokeyland; fotógrafo no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland; fotografo non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland; fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland; fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial do Pokeyland; fotógrafo não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:45:47.671Z",
+      "updatedAt": "2026-11-15T13:45:51.144Z",
+      "key": "35b9ff6d864440f0ad0f72833537fc54",
+      "imageId": "35b9ff6d864440f0ad0f72833537fc54"
+    },
+    {
+      "id": "a96fbefc478540688a36dc04d2a27d10",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+      "path": "park_item/a96fbefc478540688a36dc04d2a27d10",
+      "description": "La mascotte en tenue orange à damier danse avec un groupe devant les panneaux de bois et l’enseigne étoilée Pokey Show. Le compte rendu rattache cette sortie à avril 2017.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1200,
+      "sizeInBytes": 207353,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhXvs0pLmFWRLG7c8ALUUKDCg1XX8idGTBAK8k3wgIlLYz4FDK0ytRyoT1wC9WpgA-iskYiXuNsLIce_m_haLeqXjXhUovALv2oOD1ibg13ISm6tptiF3NkPfUVG15ql_htZG8x80CV3bO/s1600/DSCF3142.JPG",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Mascotte renard et visiteurs sur la scène Pokey Show en 2017"
+        },
+        {
+          "languageCode": "en",
+          "value": "Fox mascot and visitors on the Pokey Show stage in 2017"
+        },
+        {
+          "languageCode": "de",
+          "value": "Fuchsmaskottchen und Besucher auf der Pokey-Show-Bühne 2017"
+        },
+        {
+          "languageCode": "es",
+          "value": "Mascota zorro y visitantes en el escenario de Pokey Show en 2017"
+        },
+        {
+          "languageCode": "it",
+          "value": "Mascotte volpe e visitatori sul palco del Pokey Show nel 2017"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vossenmascotte en bezoekers op het Pokey Show-podium in 2017"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Maskotka lisa i goście na scenie Pokey Show w 2017 roku"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mascote raposa e visitantes no palco do Pokey Show em 2017"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La mascotte en tenue orange à damier danse avec un groupe devant les panneaux de bois et l’enseigne étoilée Pokey Show. Le compte rendu rattache cette sortie à avril 2017."
+        },
+        {
+          "languageCode": "en",
+          "value": "The mascot in an orange chequered outfit dances with a group in front of wooden panels and the starry Pokey Show sign. The outing report places this visit in April 2017."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Maskottchen im orangefarbenen, karierten Kostüm tanzt mit einer Gruppe vor Holzplatten und dem sternengeschmückten Pokey-Show-Schild. Der Ausflugsbericht ordnet den Besuch dem April 2017 zu."
+        },
+        {
+          "languageCode": "es",
+          "value": "La mascota con traje naranja a cuadros baila con un grupo ante los paneles de madera y el cartel estrellado de Pokey Show. El relato sitúa esta salida en abril de 2017."
+        },
+        {
+          "languageCode": "it",
+          "value": "La mascotte in abito arancione a scacchi balla con un gruppo davanti ai pannelli di legno e all’insegna stellata Pokey Show. Il resoconto colloca questa gita nell’aprile 2017."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De mascotte in een oranje geruite outfit danst met een groep voor houten panelen en het Pokey Show-bord met sterren. Het verslag plaatst dit uitstapje in april 2017."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Maskotka w pomarańczowym stroju w szachownicę tańczy z grupą przed drewnianymi panelami i napisem Pokey Show z gwiazdami. Relacja wiąże wycieczkę z kwietniem 2017 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A mascote com fato laranja aos quadrados dança com um grupo diante dos painéis de madeira e do letreiro estrelado Pokey Show. O relato situa esta visita em abril de 2017."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : FACSS, blog Périscolaire Saint-Julien-lès-Metz ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: FACSS, Périscolaire Saint-Julien-lès-Metz blog; individual photographer not credited."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: FACSS, Blog Périscolaire Saint-Julien-lès-Metz; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: FACSS, blog Périscolaire Saint-Julien-lès-Metz; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: FACSS, blog Périscolaire Saint-Julien-lès-Metz; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: FACSS, blog Périscolaire Saint-Julien-lès-Metz; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: FACSS, blog Périscolaire Saint-Julien-lès-Metz; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: FACSS, blogue Périscolaire Saint-Julien-lès-Metz; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:49:27.334Z",
+      "updatedAt": "2026-11-15T13:49:30.805Z",
+      "key": "a96fbefc478540688a36dc04d2a27d10",
+      "imageId": "a96fbefc478540688a36dc04d2a27d10"
     }
   ],
   "history": {

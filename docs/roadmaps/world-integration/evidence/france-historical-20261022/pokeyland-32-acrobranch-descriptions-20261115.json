@@ -1,0 +1,814 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-32-acrobranch-descriptions",
+        "step": "04-items",
+        "notes": "Quatre notices privées huit langues personnellement rédigées et relues, source officielle https://www.pokeyland.com/packs/accrobranche/ et quatre photographies nominalement associées examinées intégralement. Parcours famille : uniquement vocation et préparation observée, aucun obstacle propre inventé. Un kilomètre Tyrolienne qualifie le parcours, pas une portée unique. Dates, hauteurs et nombre d’ateliers inconnus conservés. Notices plus courtes que le format long justifiées par source limitée et recherche nominative conservée dans accrobranche-course-qualification ; aucune répétition de remplissage ni attribution des photos de groupes aux cinq parcours numérotés. Deux paragraphes conservés pour Sportif/Tyrolienne après suppression des phrases finales répétant le premier paragraphe ; exception de profondeur documentée, pas de remplissage."
+      },
+      "items": [
+        {
+          "id": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+          "key": "pokeyland-parcours-decouverte",
+          "name": "Parcours découverte",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les premiers pas en hauteur</h2><p>Le Parcours découverte introduit progressivement l’accrobranche dans le bois de Pokeyland. Le passage illustré par le parc demande de marcher sur un câble tendu entre les arbres, les mains soutenues par une ligne située plus haut.</p><h2>D’un tronc à l’autre</h2><p>Une plateforme en bois entoure le tronc au départ de cette traversée. Le feuillage reste tout proche du participant.</p><p>L’équilibre et les petits pas donnent son rythme à cette initiation, présentée par Pokeyland comme une première approche des parcours en hauteur.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>First steps above the ground</h2><p>The Discovery Course offers a gradual introduction to treetop climbing in Pokeyland’s woodland. The crossing illustrated by the park involves walking along a cable stretched between trees, with a higher line providing a handhold.</p><h2>From one trunk to the next</h2><p>A wooden platform surrounds the trunk at the start of this crossing. Foliage remains close to the participant.</p><p>Balance and small steps set the pace of this introduction, which Pokeyland presents as a first encounter with courses above the ground.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Erste Schritte in der Höhe</h2><p>Der Entdeckungsparcours führt schrittweise an das Klettern in den Bäumen von Pokeyland heran. Auf der vom Park gezeigten Passage geht man über ein zwischen Bäumen gespanntes Seil und hält sich an einer höher verlaufenden Leine fest.</p><h2>Von Stamm zu Stamm</h2><p>Eine Holzplattform umgibt den Baumstamm am Beginn dieser Querung. Das Laub bleibt dabei ganz nah.</p><p>Gleichgewicht und kleine Schritte bestimmen den Rhythmus dieses Einstiegs, den Pokeyland als erste Annäherung an die Höhenparcours vorstellt.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Primeros pasos en altura</h2><p>El Recorrido descubrimiento introduce progresivamente la aventura entre árboles en el bosque de Pokeyland. El paso ilustrado por el parque consiste en caminar por un cable tendido entre árboles, sujetándose a una línea situada más arriba.</p><h2>De un tronco a otro</h2><p>Una plataforma de madera rodea el tronco al comienzo de esta travesía. El follaje queda muy cerca de quien participa.</p><p>El equilibrio y los pasos cortos marcan el ritmo de esta iniciación, que Pokeyland presenta como un primer acercamiento a los recorridos en altura.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>I primi passi in quota</h2><p>Il Percorso scoperta introduce gradualmente all’avventura tra gli alberi nel bosco di Pokeyland. Il passaggio illustrato dal parco richiede di camminare su un cavo teso tra gli alberi, tenendosi a una linea più alta.</p><h2>Da un tronco all’altro</h2><p>Una piattaforma di legno circonda il tronco all’inizio di questo attraversamento. Le foglie rimangono vicine al partecipante.</p><p>L’equilibrio e i piccoli passi scandiscono questa introduzione, presentata da Pokeyland come un primo approccio ai percorsi in quota.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De eerste stappen op hoogte</h2><p>Het Ontdekkingsparcours laat bezoekers geleidelijk kennismaken met klimmen tussen de bomen van Pokeyland. Op de door het park afgebeelde oversteek loopt de deelnemer over een kabel tussen bomen, met een hogere lijn als houvast voor de handen.</p><h2>Van stam naar stam</h2><p>Aan het begin van deze oversteek ligt een houten platform rond de boomstam. Het gebladerte blijft vlakbij.</p><p>Evenwicht en kleine stappen bepalen het tempo van deze kennismaking, die Pokeyland presenteert als een eerste ervaring met parcoursen op hoogte.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Pierwsze kroki na wysokości</h2><p>Trasa odkrywcza stopniowo wprowadza w przygodę między drzewami w lesie Pokeyland. Przejście pokazane przez park polega na stąpaniu po linie rozpiętej między drzewami i trzymaniu się wyżej poprowadzonej liny.</p><h2>Od pnia do pnia</h2><p>Na początku tego przejścia drewniana platforma otacza pień. Liście pozostają blisko uczestnika.</p><p>Równowaga i drobne kroki wyznaczają rytm tej trasy, którą Pokeyland przedstawia jako pierwsze spotkanie z pokonywaniem przeszkód na wysokości.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Os primeiros passos em altura</h2><p>O Percurso descoberta apresenta gradualmente a aventura entre árvores no bosque do Pokeyland. A passagem ilustrada pelo parque consiste em caminhar sobre um cabo estendido entre árvores, segurando uma linha situada mais acima.</p><h2>De um tronco ao outro</h2><p>Uma plataforma de madeira envolve o tronco no início desta travessia. A folhagem permanece perto do participante.</p><p>O equilíbrio e os pequenos passos marcam o ritmo desta iniciação, apresentada pelo Pokeyland como um primeiro contacto com percursos em altura.</p>"
+            }
+          ]
+        },
+        {
+          "id": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+          "key": "pokeyland-parcours-famille",
+          "name": "Parcours famille",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>L’accrobranche à plusieurs générations</h2><p>Le Parcours famille réunit petits et grands autour de passages en hauteur entre les arbres. Pokeyland le présente comme une activité à partager, où les obstacles se franchissent au fil d’une progression de branche en branche.</p><h2>La préparation au sol</h2><p>La photographie associée à ce parcours montre deux visiteuses ajustant leur baudrier auprès d’un membre de l’équipe.</p><p>Cette scène de préparation se déroule dans le sous-bois, avant les passages suspendus.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Treetop adventure across generations</h2><p>The Family Course brings younger and older participants together for crossings high among the trees. Pokeyland presents it as a shared activity, with obstacles encountered while progressing from branch to branch.</p><h2>Getting ready on the ground</h2><p>The photograph associated with this course shows two visitors adjusting their harnesses beside a member of staff.</p><p>This preparation takes place on the woodland floor, before the suspended crossings.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Klettern für mehrere Generationen</h2><p>Der Familienparcours bringt jüngere und ältere Teilnehmer bei Passagen hoch zwischen den Bäumen zusammen. Pokeyland stellt ihn als gemeinschaftliche Aktivität vor, bei der Hindernisse auf dem Weg von Ast zu Ast überwunden werden.</p><h2>Vorbereitung am Boden</h2><p>Das diesem Parcours zugeordnete Foto zeigt zwei Besucherinnen, die neben einem Mitarbeiter ihre Klettergurte anpassen.</p><p>Diese Vorbereitung findet auf dem Waldboden statt, bevor es zu den schwebenden Passagen geht.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Aventura entre árboles para varias generaciones</h2><p>El Recorrido familiar reúne a pequeños y mayores en pasos elevados entre los árboles. Pokeyland lo presenta como una actividad compartida, con obstáculos que se superan al avanzar de rama en rama.</p><h2>La preparación en el suelo</h2><p>La fotografía asociada a este recorrido muestra a dos visitantes ajustándose los arneses junto a un miembro del personal.</p><p>Esta preparación se desarrolla en el suelo del bosque, antes de los pasos suspendidos.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Avventura tra alberi e generazioni</h2><p>Il Percorso famiglia riunisce piccoli e grandi su passaggi in quota tra gli alberi. Pokeyland lo presenta come un’attività da condividere, affrontando gli ostacoli mentre si procede di ramo in ramo.</p><h2>La preparazione a terra</h2><p>La fotografia associata a questo percorso mostra due visitatrici che regolano le imbracature accanto a un membro dello staff.</p><p>Questa preparazione si svolge nel sottobosco, prima dei passaggi sospesi.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Klimmen met verschillende generaties</h2><p>Het Familieparcours brengt jongere en oudere deelnemers samen op passages hoog tussen de bomen. Pokeyland presenteert het als een gezamenlijke activiteit, waarbij obstakels worden overwonnen tijdens de tocht van tak naar tak.</p><h2>Voorbereiding op de grond</h2><p>De foto bij dit parcours toont twee bezoekers die naast een medewerker hun klimgordel aanpassen.</p><p>Deze voorbereiding vindt op de bosgrond plaats, vóór de hangende passages.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Przygoda wśród drzew dla różnych pokoleń</h2><p>Trasa rodzinna łączy młodszych i starszych uczestników na przejściach wysoko między drzewami. Pokeyland przedstawia ją jako wspólną aktywność, podczas której kolejne przeszkody pokonuje się w drodze od gałęzi do gałęzi.</p><h2>Przygotowanie na ziemi</h2><p>Zdjęcie przypisane do tej trasy pokazuje dwie uczestniczki poprawiające uprzęże obok pracownika parku.</p><p>Przygotowanie odbywa się na leśnym podłożu, przed wejściem na zawieszone przejścia.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Aventura entre árvores para várias gerações</h2><p>O Percurso família reúne pequenos e grandes em passagens elevadas entre as árvores. O Pokeyland apresenta-o como uma atividade partilhada, com obstáculos ultrapassados ao avançar de ramo em ramo.</p><h2>A preparação no solo</h2><p>A fotografia associada a este percurso mostra duas visitantes a ajustar os arneses junto de um membro da equipa.</p><p>Esta preparação decorre no chão do bosque, antes das passagens suspensas.</p>"
+            }
+          ]
+        },
+        {
+          "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+          "key": "pokeyland-parcours-sportif",
+          "name": "Parcours sportif",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un parcours exigeant dans les arbres</h2><p>Le Parcours sportif constitue le volet physique de l’accrobranche de Pokeyland. L’opérateur insiste sur l’effort et la détermination nécessaires pour avancer dans ses passages en hauteur.</p><h2>La forêt sous les pieds</h2><p>La vue officielle rattachée à ce nom montre un participant suspendu à une poulie, les jambes relevées devant lui et les arbres en arrière-plan.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A demanding course among the trees</h2><p>The Sporting Course is the physically demanding part of Pokeyland’s treetop adventure. The operator stresses the effort and determination needed to make progress through its elevated passages.</p><h2>The forest beneath your feet</h2><p>The official view attached to this name shows a participant suspended from a pulley, with his legs raised in front of him and trees in the background.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein anspruchsvoller Weg durch die Bäume</h2><p>Der Sportparcours bildet den körperlich anspruchsvollen Teil des Kletterangebots von Pokeyland. Der Betreiber betont die Anstrengung und Entschlossenheit, die für seine Passagen in der Höhe erforderlich sind.</p><h2>Der Wald unter den Füßen</h2><p>Die offizielle, diesem Namen zugeordnete Ansicht zeigt einen Teilnehmer an einer Seilrolle, die Beine nach vorn angehoben und Bäume im Hintergrund.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un recorrido exigente entre los árboles</h2><p>El Recorrido deportivo constituye la vertiente más física de la aventura entre árboles de Pokeyland. El operador destaca el esfuerzo y la determinación necesarios para avanzar por sus pasos elevados.</p><h2>El bosque bajo los pies</h2><p>La vista oficial asociada a este nombre muestra a un participante suspendido de una polea, con las piernas levantadas hacia delante y árboles al fondo.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un percorso impegnativo tra gli alberi</h2><p>Il Percorso sportivo rappresenta la componente più fisica dell’avventura tra gli alberi di Pokeyland. Il gestore sottolinea lo sforzo e la determinazione necessari per affrontarne i passaggi in quota.</p><h2>Il bosco sotto i piedi</h2><p>La veduta ufficiale associata a questo nome mostra un partecipante sospeso a una carrucola, con le gambe sollevate davanti a sé e gli alberi sullo sfondo.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een veeleisend parcours tussen de bomen</h2><p>Het Sportieve parcours vormt het fysiek veeleisende deel van het klimaanbod van Pokeyland. De aanbieder benadrukt de inspanning en vastberadenheid die nodig zijn om de hoge passages te doorlopen.</p><h2>Het bos onder de voeten</h2><p>De officiële foto bij deze naam toont een deelnemer die aan een katrol hangt, met zijn benen voor zich omhoog en bomen op de achtergrond.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wymagająca trasa między drzewami</h2><p>Trasa sportowa jest wymagającą fizycznie częścią parku linowego Pokeyland. Operator podkreśla wysiłek i determinację potrzebne do pokonywania jej przejść na wysokości.</p><h2>Las pod stopami</h2><p>Oficjalne zdjęcie przypisane do tej nazwy pokazuje uczestnika zawieszonego na bloczku, z nogami uniesionymi przed sobą i drzewami w tle.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um percurso exigente entre as árvores</h2><p>O Percurso desportivo constitui a componente fisicamente exigente do arborismo do Pokeyland. O operador salienta o esforço e a determinação necessários para avançar nas suas passagens em altura.</p><h2>O bosque sob os pés</h2><p>A vista oficial associada a este nome mostra um participante suspenso numa roldana, com as pernas levantadas à frente e árvores ao fundo.</p>"
+            }
+          ]
+        },
+        {
+          "id": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+          "key": "pokeyland-parcours-tyrolienne",
+          "name": "Parcours tyrolienne",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un itinéraire de glissades aériennes</h2><p>Le Parcours tyrolienne se distingue par un tracé entièrement consacré aux tyroliennes. Pokeyland annonce un kilomètre pour cet ensemble de passages dans la forêt.</p><h2>Suspendu entre les arbres</h2><p>Le déplacement se fait sous le câble, avec le baudrier relié à une poulie. La photographie officielle montre une participante au-dessus du sol, les branches se détachant sur le ciel autour d’elle.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A route of aerial glides</h2><p>The Zipline Course stands out for a route devoted entirely to ziplines. Pokeyland advertises one kilometre for this collection of crossings through the forest.</p><h2>Suspended between the trees</h2><p>Participants travel below the cable, with their harness connected to a pulley. The official photograph shows a rider above the ground, surrounded by branches silhouetted against the sky.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Route aus Seilrutschen</h2><p>Der Seilrutschenparcours besteht vollständig aus Seilrutschen. Pokeyland gibt für diese Folge von Passagen durch den Wald eine Länge von einem Kilometer an.</p><h2>Schwebend zwischen den Bäumen</h2><p>Die Teilnehmer bewegen sich unter dem Seil, mit dem Klettergurt an einer Rolle befestigt. Das offizielle Foto zeigt eine Besucherin über dem Boden, umgeben von Ästen vor dem Himmel.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un itinerario de deslizamientos aéreos</h2><p>El Recorrido de tirolinas se distingue por un trazado dedicado íntegramente a ellas. Pokeyland anuncia un kilómetro para este conjunto de pasos por el bosque.</p><h2>En suspensión entre los árboles</h2><p>El desplazamiento se realiza por debajo del cable, con el arnés unido a una polea. La fotografía oficial muestra a una participante sobre el suelo, rodeada de ramas que se recortan contra el cielo.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un itinerario di scivolate aeree</h2><p>Il Percorso zipline si distingue per un tracciato interamente dedicato alle teleferiche. Pokeyland annuncia un chilometro per questo insieme di passaggi nel bosco.</p><h2>Sospesi tra gli alberi</h2><p>Ci si sposta sotto il cavo, con l’imbracatura collegata a una carrucola. La fotografia ufficiale mostra una partecipante sopra il terreno, circondata da rami che si stagliano contro il cielo.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een route van tokkelbanen</h2><p>Het Tokkelparcours bestaat volledig uit tokkelbanen. Pokeyland vermeldt een kilometer voor deze reeks oversteekplaatsen door het bos.</p><h2>Hangend tussen de bomen</h2><p>Deelnemers bewegen onder de kabel, met hun klimgordel verbonden aan een katrol. Op de officiële foto hangt een bezoeker boven de grond, omringd door takken die tegen de lucht afsteken.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Trasa powietrznych zjazdów</h2><p>Trasa tyrolkowa wyróżnia się układem w całości poświęconym zjazdom na linach. Pokeyland podaje kilometr długości dla tego zespołu przejść przez las.</p><h2>W zawieszeniu między drzewami</h2><p>Uczestnicy przemieszczają się pod liną, z uprzężą połączoną z bloczkiem. Oficjalne zdjęcie pokazuje uczestniczkę nad ziemią, otoczoną gałęziami na tle nieba.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um itinerário de deslizes aéreos</h2><p>O Percurso de tirolesas distingue-se por um traçado inteiramente dedicado a essas travessias. O Pokeyland anuncia um quilómetro para este conjunto de passagens pelo bosque.</p><h2>Em suspensão entre as árvores</h2><p>O movimento faz-se sob o cabo, com o arnês ligado a uma roldana. A fotografia oficial mostra uma participante acima do solo, rodeada de ramos recortados contra o céu.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "4d59d1b9-b3f1-4b8e-8cd3-8ad71b4798f7",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:42:30.1540231Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "pokeyland-parcours-decouverte",
+        "displayName": "Parcours découverte",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Erste Schritte in der Höhe</h2><p>Der Entdeckungsparcours führt schrittweise an das Klettern in den Bäumen von Pokeyland heran. Auf der vom Park gezeigten Passage geht man über ein zwischen Bäumen gespanntes Seil und hält sich an einer höher verlaufenden Leine fest.</p><h2>Von Stamm zu Stamm</h2><p>Eine Holzplattform umgibt den Baumstamm am Beginn dieser Querung. Das Laub bleibt dabei ganz nah.</p><p>Gleichgewicht und kleine Schritte bestimmen den Rhythmus dieses Einstiegs, den Pokeyland als erste Annäherung an die Höhenparcours vorstellt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>First steps above the ground</h2><p>The Discovery Course offers a gradual introduction to treetop climbing in Pokeyland’s woodland. The crossing illustrated by the park involves walking along a cable stretched between trees, with a higher line providing a handhold.</p><h2>From one trunk to the next</h2><p>A wooden platform surrounds the trunk at the start of this crossing. Foliage remains close to the participant.</p><p>Balance and small steps set the pace of this introduction, which Pokeyland presents as a first encounter with courses above the ground.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Primeros pasos en altura</h2><p>El Recorrido descubrimiento introduce progresivamente la aventura entre árboles en el bosque de Pokeyland. El paso ilustrado por el parque consiste en caminar por un cable tendido entre árboles, sujetándose a una línea situada más arriba.</p><h2>De un tronco a otro</h2><p>Una plataforma de madera rodea el tronco al comienzo de esta travesía. El follaje queda muy cerca de quien participa.</p><p>El equilibrio y los pasos cortos marcan el ritmo de esta iniciación, que Pokeyland presenta como un primer acercamiento a los recorridos en altura.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les premiers pas en hauteur</h2><p>Le Parcours découverte introduit progressivement l’accrobranche dans le bois de Pokeyland. Le passage illustré par le parc demande de marcher sur un câble tendu entre les arbres, les mains soutenues par une ligne située plus haut.</p><h2>D’un tronc à l’autre</h2><p>Une plateforme en bois entoure le tronc au départ de cette traversée. Le feuillage reste tout proche du participant.</p><p>L’équilibre et les petits pas donnent son rythme à cette initiation, présentée par Pokeyland comme une première approche des parcours en hauteur.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I primi passi in quota</h2><p>Il Percorso scoperta introduce gradualmente all’avventura tra gli alberi nel bosco di Pokeyland. Il passaggio illustrato dal parco richiede di camminare su un cavo teso tra gli alberi, tenendosi a una linea più alta.</p><h2>Da un tronco all’altro</h2><p>Una piattaforma di legno circonda il tronco all’inizio di questo attraversamento. Le foglie rimangono vicine al partecipante.</p><p>L’equilibrio e i piccoli passi scandiscono questa introduzione, presentata da Pokeyland come un primo approccio ai percorsi in quota.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De eerste stappen op hoogte</h2><p>Het Ontdekkingsparcours laat bezoekers geleidelijk kennismaken met klimmen tussen de bomen van Pokeyland. Op de door het park afgebeelde oversteek loopt de deelnemer over een kabel tussen bomen, met een hogere lijn als houvast voor de handen.</p><h2>Van stam naar stam</h2><p>Aan het begin van deze oversteek ligt een houten platform rond de boomstam. Het gebladerte blijft vlakbij.</p><p>Evenwicht en kleine stappen bepalen het tempo van deze kennismaking, die Pokeyland presenteert als een eerste ervaring met parcoursen op hoogte.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pierwsze kroki na wysokości</h2><p>Trasa odkrywcza stopniowo wprowadza w przygodę między drzewami w lesie Pokeyland. Przejście pokazane przez park polega na stąpaniu po linie rozpiętej między drzewami i trzymaniu się wyżej poprowadzonej liny.</p><h2>Od pnia do pnia</h2><p>Na początku tego przejścia drewniana platforma otacza pień. Liście pozostają blisko uczestnika.</p><p>Równowaga i drobne kroki wyznaczają rytm tej trasy, którą Pokeyland przedstawia jako pierwsze spotkanie z pokonywaniem przeszkód na wysokości.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os primeiros passos em altura</h2><p>O Percurso descoberta apresenta gradualmente a aventura entre árvores no bosque do Pokeyland. A passagem ilustrada pelo parque consiste em caminhar sobre um cabo estendido entre árvores, segurando uma linha situada mais acima.</p><h2>De um tronco ao outro</h2><p>Uma plataforma de madeira envolve o tronco no início desta travessia. A folhagem permanece perto do participante.</p><p>O equilíbrio e os pequenos passos marcam o ritmo desta iniciação, apresentada pelo Pokeyland como um primeiro contacto com percursos em altura.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "pokeyland-parcours-famille",
+        "displayName": "Parcours famille",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Klettern für mehrere Generationen</h2><p>Der Familienparcours bringt jüngere und ältere Teilnehmer bei Passagen hoch zwischen den Bäumen zusammen. Pokeyland stellt ihn als gemeinschaftliche Aktivität vor, bei der Hindernisse auf dem Weg von Ast zu Ast überwunden werden.</p><h2>Vorbereitung am Boden</h2><p>Das diesem Parcours zugeordnete Foto zeigt zwei Besucherinnen, die neben einem Mitarbeiter ihre Klettergurte anpassen.</p><p>Diese Vorbereitung findet auf dem Waldboden statt, bevor es zu den schwebenden Passagen geht.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Treetop adventure across generations</h2><p>The Family Course brings younger and older participants together for crossings high among the trees. Pokeyland presents it as a shared activity, with obstacles encountered while progressing from branch to branch.</p><h2>Getting ready on the ground</h2><p>The photograph associated with this course shows two visitors adjusting their harnesses beside a member of staff.</p><p>This preparation takes place on the woodland floor, before the suspended crossings.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Aventura entre árboles para varias generaciones</h2><p>El Recorrido familiar reúne a pequeños y mayores en pasos elevados entre los árboles. Pokeyland lo presenta como una actividad compartida, con obstáculos que se superan al avanzar de rama en rama.</p><h2>La preparación en el suelo</h2><p>La fotografía asociada a este recorrido muestra a dos visitantes ajustándose los arneses junto a un miembro del personal.</p><p>Esta preparación se desarrolla en el suelo del bosque, antes de los pasos suspendidos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’accrobranche à plusieurs générations</h2><p>Le Parcours famille réunit petits et grands autour de passages en hauteur entre les arbres. Pokeyland le présente comme une activité à partager, où les obstacles se franchissent au fil d’une progression de branche en branche.</p><h2>La préparation au sol</h2><p>La photographie associée à ce parcours montre deux visiteuses ajustant leur baudrier auprès d’un membre de l’équipe.</p><p>Cette scène de préparation se déroule dans le sous-bois, avant les passages suspendus.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Avventura tra alberi e generazioni</h2><p>Il Percorso famiglia riunisce piccoli e grandi su passaggi in quota tra gli alberi. Pokeyland lo presenta come un’attività da condividere, affrontando gli ostacoli mentre si procede di ramo in ramo.</p><h2>La preparazione a terra</h2><p>La fotografia associata a questo percorso mostra due visitatrici che regolano le imbracature accanto a un membro dello staff.</p><p>Questa preparazione si svolge nel sottobosco, prima dei passaggi sospesi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Klimmen met verschillende generaties</h2><p>Het Familieparcours brengt jongere en oudere deelnemers samen op passages hoog tussen de bomen. Pokeyland presenteert het als een gezamenlijke activiteit, waarbij obstakels worden overwonnen tijdens de tocht van tak naar tak.</p><h2>Voorbereiding op de grond</h2><p>De foto bij dit parcours toont twee bezoekers die naast een medewerker hun klimgordel aanpassen.</p><p>Deze voorbereiding vindt op de bosgrond plaats, vóór de hangende passages.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Przygoda wśród drzew dla różnych pokoleń</h2><p>Trasa rodzinna łączy młodszych i starszych uczestników na przejściach wysoko między drzewami. Pokeyland przedstawia ją jako wspólną aktywność, podczas której kolejne przeszkody pokonuje się w drodze od gałęzi do gałęzi.</p><h2>Przygotowanie na ziemi</h2><p>Zdjęcie przypisane do tej trasy pokazuje dwie uczestniczki poprawiające uprzęże obok pracownika parku.</p><p>Przygotowanie odbywa się na leśnym podłożu, przed wejściem na zawieszone przejścia.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Aventura entre árvores para várias gerações</h2><p>O Percurso família reúne pequenos e grandes em passagens elevadas entre as árvores. O Pokeyland apresenta-o como uma atividade partilhada, com obstáculos ultrapassados ao avançar de ramo em ramo.</p><h2>A preparação no solo</h2><p>A fotografia associada a este percurso mostra duas visitantes a ajustar os arneses junto de um membro da equipa.</p><p>Esta preparação decorre no chão do bosque, antes das passagens suspensas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein anspruchsvoller Weg durch die Bäume</h2><p>Der Sportparcours bildet den körperlich anspruchsvollen Teil des Kletterangebots von Pokeyland. Der Betreiber betont die Anstrengung und Entschlossenheit, die für seine Passagen in der Höhe erforderlich sind.</p><h2>Der Wald unter den Füßen</h2><p>Die offizielle, diesem Namen zugeordnete Ansicht zeigt einen Teilnehmer an einer Seilrolle, die Beine nach vorn angehoben und Bäume im Hintergrund.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A demanding course among the trees</h2><p>The Sporting Course is the physically demanding part of Pokeyland’s treetop adventure. The operator stresses the effort and determination needed to make progress through its elevated passages.</p><h2>The forest beneath your feet</h2><p>The official view attached to this name shows a participant suspended from a pulley, with his legs raised in front of him and trees in the background.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un recorrido exigente entre los árboles</h2><p>El Recorrido deportivo constituye la vertiente más física de la aventura entre árboles de Pokeyland. El operador destaca el esfuerzo y la determinación necesarios para avanzar por sus pasos elevados.</p><h2>El bosque bajo los pies</h2><p>La vista oficial asociada a este nombre muestra a un participante suspendido de una polea, con las piernas levantadas hacia delante y árboles al fondo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un parcours exigeant dans les arbres</h2><p>Le Parcours sportif constitue le volet physique de l’accrobranche de Pokeyland. L’opérateur insiste sur l’effort et la détermination nécessaires pour avancer dans ses passages en hauteur.</p><h2>La forêt sous les pieds</h2><p>La vue officielle rattachée à ce nom montre un participant suspendu à une poulie, les jambes relevées devant lui et les arbres en arrière-plan.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un percorso impegnativo tra gli alberi</h2><p>Il Percorso sportivo rappresenta la componente più fisica dell’avventura tra gli alberi di Pokeyland. Il gestore sottolinea lo sforzo e la determinazione necessari per affrontarne i passaggi in quota.</p><h2>Il bosco sotto i piedi</h2><p>La veduta ufficiale associata a questo nome mostra un partecipante sospeso a una carrucola, con le gambe sollevate davanti a sé e gli alberi sullo sfondo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een veeleisend parcours tussen de bomen</h2><p>Het Sportieve parcours vormt het fysiek veeleisende deel van het klimaanbod van Pokeyland. De aanbieder benadrukt de inspanning en vastberadenheid die nodig zijn om de hoge passages te doorlopen.</p><h2>Het bos onder de voeten</h2><p>De officiële foto bij deze naam toont een deelnemer die aan een katrol hangt, met zijn benen voor zich omhoog en bomen op de achtergrond.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wymagająca trasa między drzewami</h2><p>Trasa sportowa jest wymagającą fizycznie częścią parku linowego Pokeyland. Operator podkreśla wysiłek i determinację potrzebne do pokonywania jej przejść na wysokości.</p><h2>Las pod stopami</h2><p>Oficjalne zdjęcie przypisane do tej nazwy pokazuje uczestnika zawieszonego na bloczku, z nogami uniesionymi przed sobą i drzewami w tle.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um percurso exigente entre as árvores</h2><p>O Percurso desportivo constitui a componente fisicamente exigente do arborismo do Pokeyland. O operador salienta o esforço e a determinação necessários para avançar nas suas passagens em altura.</p><h2>O bosque sob os pés</h2><p>A vista oficial associada a este nome mostra um participante suspenso numa roldana, com as pernas levantadas à frente e árvores ao fundo.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "pokeyland-parcours-tyrolienne",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Route aus Seilrutschen</h2><p>Der Seilrutschenparcours besteht vollständig aus Seilrutschen. Pokeyland gibt für diese Folge von Passagen durch den Wald eine Länge von einem Kilometer an.</p><h2>Schwebend zwischen den Bäumen</h2><p>Die Teilnehmer bewegen sich unter dem Seil, mit dem Klettergurt an einer Rolle befestigt. Das offizielle Foto zeigt eine Besucherin über dem Boden, umgeben von Ästen vor dem Himmel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A route of aerial glides</h2><p>The Zipline Course stands out for a route devoted entirely to ziplines. Pokeyland advertises one kilometre for this collection of crossings through the forest.</p><h2>Suspended between the trees</h2><p>Participants travel below the cable, with their harness connected to a pulley. The official photograph shows a rider above the ground, surrounded by branches silhouetted against the sky.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un itinerario de deslizamientos aéreos</h2><p>El Recorrido de tirolinas se distingue por un trazado dedicado íntegramente a ellas. Pokeyland anuncia un kilómetro para este conjunto de pasos por el bosque.</p><h2>En suspensión entre los árboles</h2><p>El desplazamiento se realiza por debajo del cable, con el arnés unido a una polea. La fotografía oficial muestra a una participante sobre el suelo, rodeada de ramas que se recortan contra el cielo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un itinéraire de glissades aériennes</h2><p>Le Parcours tyrolienne se distingue par un tracé entièrement consacré aux tyroliennes. Pokeyland annonce un kilomètre pour cet ensemble de passages dans la forêt.</p><h2>Suspendu entre les arbres</h2><p>Le déplacement se fait sous le câble, avec le baudrier relié à une poulie. La photographie officielle montre une participante au-dessus du sol, les branches se détachant sur le ciel autour d’elle.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un itinerario di scivolate aeree</h2><p>Il Percorso zipline si distingue per un tracciato interamente dedicato alle teleferiche. Pokeyland annuncia un chilometro per questo insieme di passaggi nel bosco.</p><h2>Sospesi tra gli alberi</h2><p>Ci si sposta sotto il cavo, con l’imbracatura collegata a una carrucola. La fotografia ufficiale mostra una partecipante sopra il terreno, circondata da rami che si stagliano contro il cielo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een route van tokkelbanen</h2><p>Het Tokkelparcours bestaat volledig uit tokkelbanen. Pokeyland vermeldt een kilometer voor deze reeks oversteekplaatsen door het bos.</p><h2>Hangend tussen de bomen</h2><p>Deelnemers bewegen onder de kabel, met hun klimgordel verbonden aan een katrol. Op de officiële foto hangt een bezoeker boven de grond, omringd door takken die tegen de lucht afsteken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Trasa powietrznych zjazdów</h2><p>Trasa tyrolkowa wyróżnia się układem w całości poświęconym zjazdom na linach. Pokeyland podaje kilometr długości dla tego zespołu przejść przez las.</p><h2>W zawieszeniu między drzewami</h2><p>Uczestnicy przemieszczają się pod liną, z uprzężą połączoną z bloczkiem. Oficjalne zdjęcie pokazuje uczestniczkę nad ziemią, otoczoną gałęziami na tle nieba.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um itinerário de deslizes aéreos</h2><p>O Percurso de tirolesas distingue-se por um traçado inteiramente dedicado a essas travessias. O Pokeyland anuncia um quilómetro para este conjunto de passagens pelo bosque.</p><h2>Em suspensão entre as árvores</h2><p>O movimento faz-se sob o cabo, com o arnês ligado a uma roldana. A fotografia oficial mostra uma participante acima do solo, rodeada de ramos recortados contra o céu.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "9bb620ee-6f23-456c-a15c-61b6acd0c490",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:42:51.5278573Z",
+    "appliedAtUtc": "2026-11-15T13:42:51.5278579Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "pokeyland-parcours-decouverte",
+        "displayName": "Parcours découverte",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Erste Schritte in der Höhe</h2><p>Der Entdeckungsparcours führt schrittweise an das Klettern in den Bäumen von Pokeyland heran. Auf der vom Park gezeigten Passage geht man über ein zwischen Bäumen gespanntes Seil und hält sich an einer höher verlaufenden Leine fest.</p><h2>Von Stamm zu Stamm</h2><p>Eine Holzplattform umgibt den Baumstamm am Beginn dieser Querung. Das Laub bleibt dabei ganz nah.</p><p>Gleichgewicht und kleine Schritte bestimmen den Rhythmus dieses Einstiegs, den Pokeyland als erste Annäherung an die Höhenparcours vorstellt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>First steps above the ground</h2><p>The Discovery Course offers a gradual introduction to treetop climbing in Pokeyland’s woodland. The crossing illustrated by the park involves walking along a cable stretched between trees, with a higher line providing a handhold.</p><h2>From one trunk to the next</h2><p>A wooden platform surrounds the trunk at the start of this crossing. Foliage remains close to the participant.</p><p>Balance and small steps set the pace of this introduction, which Pokeyland presents as a first encounter with courses above the ground.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Primeros pasos en altura</h2><p>El Recorrido descubrimiento introduce progresivamente la aventura entre árboles en el bosque de Pokeyland. El paso ilustrado por el parque consiste en caminar por un cable tendido entre árboles, sujetándose a una línea situada más arriba.</p><h2>De un tronco a otro</h2><p>Una plataforma de madera rodea el tronco al comienzo de esta travesía. El follaje queda muy cerca de quien participa.</p><p>El equilibrio y los pasos cortos marcan el ritmo de esta iniciación, que Pokeyland presenta como un primer acercamiento a los recorridos en altura.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les premiers pas en hauteur</h2><p>Le Parcours découverte introduit progressivement l’accrobranche dans le bois de Pokeyland. Le passage illustré par le parc demande de marcher sur un câble tendu entre les arbres, les mains soutenues par une ligne située plus haut.</p><h2>D’un tronc à l’autre</h2><p>Une plateforme en bois entoure le tronc au départ de cette traversée. Le feuillage reste tout proche du participant.</p><p>L’équilibre et les petits pas donnent son rythme à cette initiation, présentée par Pokeyland comme une première approche des parcours en hauteur.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I primi passi in quota</h2><p>Il Percorso scoperta introduce gradualmente all’avventura tra gli alberi nel bosco di Pokeyland. Il passaggio illustrato dal parco richiede di camminare su un cavo teso tra gli alberi, tenendosi a una linea più alta.</p><h2>Da un tronco all’altro</h2><p>Una piattaforma di legno circonda il tronco all’inizio di questo attraversamento. Le foglie rimangono vicine al partecipante.</p><p>L’equilibrio e i piccoli passi scandiscono questa introduzione, presentata da Pokeyland come un primo approccio ai percorsi in quota.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De eerste stappen op hoogte</h2><p>Het Ontdekkingsparcours laat bezoekers geleidelijk kennismaken met klimmen tussen de bomen van Pokeyland. Op de door het park afgebeelde oversteek loopt de deelnemer over een kabel tussen bomen, met een hogere lijn als houvast voor de handen.</p><h2>Van stam naar stam</h2><p>Aan het begin van deze oversteek ligt een houten platform rond de boomstam. Het gebladerte blijft vlakbij.</p><p>Evenwicht en kleine stappen bepalen het tempo van deze kennismaking, die Pokeyland presenteert als een eerste ervaring met parcoursen op hoogte.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pierwsze kroki na wysokości</h2><p>Trasa odkrywcza stopniowo wprowadza w przygodę między drzewami w lesie Pokeyland. Przejście pokazane przez park polega na stąpaniu po linie rozpiętej między drzewami i trzymaniu się wyżej poprowadzonej liny.</p><h2>Od pnia do pnia</h2><p>Na początku tego przejścia drewniana platforma otacza pień. Liście pozostają blisko uczestnika.</p><p>Równowaga i drobne kroki wyznaczają rytm tej trasy, którą Pokeyland przedstawia jako pierwsze spotkanie z pokonywaniem przeszkód na wysokości.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os primeiros passos em altura</h2><p>O Percurso descoberta apresenta gradualmente a aventura entre árvores no bosque do Pokeyland. A passagem ilustrada pelo parque consiste em caminhar sobre um cabo estendido entre árvores, segurando uma linha situada mais acima.</p><h2>De um tronco ao outro</h2><p>Uma plataforma de madeira envolve o tronco no início desta travessia. A folhagem permanece perto do participante.</p><p>O equilíbrio e os pequenos passos marcam o ritmo desta iniciação, apresentada pelo Pokeyland como um primeiro contacto com percursos em altura.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "pokeyland-parcours-famille",
+        "displayName": "Parcours famille",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Klettern für mehrere Generationen</h2><p>Der Familienparcours bringt jüngere und ältere Teilnehmer bei Passagen hoch zwischen den Bäumen zusammen. Pokeyland stellt ihn als gemeinschaftliche Aktivität vor, bei der Hindernisse auf dem Weg von Ast zu Ast überwunden werden.</p><h2>Vorbereitung am Boden</h2><p>Das diesem Parcours zugeordnete Foto zeigt zwei Besucherinnen, die neben einem Mitarbeiter ihre Klettergurte anpassen.</p><p>Diese Vorbereitung findet auf dem Waldboden statt, bevor es zu den schwebenden Passagen geht.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Treetop adventure across generations</h2><p>The Family Course brings younger and older participants together for crossings high among the trees. Pokeyland presents it as a shared activity, with obstacles encountered while progressing from branch to branch.</p><h2>Getting ready on the ground</h2><p>The photograph associated with this course shows two visitors adjusting their harnesses beside a member of staff.</p><p>This preparation takes place on the woodland floor, before the suspended crossings.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Aventura entre árboles para varias generaciones</h2><p>El Recorrido familiar reúne a pequeños y mayores en pasos elevados entre los árboles. Pokeyland lo presenta como una actividad compartida, con obstáculos que se superan al avanzar de rama en rama.</p><h2>La preparación en el suelo</h2><p>La fotografía asociada a este recorrido muestra a dos visitantes ajustándose los arneses junto a un miembro del personal.</p><p>Esta preparación se desarrolla en el suelo del bosque, antes de los pasos suspendidos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’accrobranche à plusieurs générations</h2><p>Le Parcours famille réunit petits et grands autour de passages en hauteur entre les arbres. Pokeyland le présente comme une activité à partager, où les obstacles se franchissent au fil d’une progression de branche en branche.</p><h2>La préparation au sol</h2><p>La photographie associée à ce parcours montre deux visiteuses ajustant leur baudrier auprès d’un membre de l’équipe.</p><p>Cette scène de préparation se déroule dans le sous-bois, avant les passages suspendus.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Avventura tra alberi e generazioni</h2><p>Il Percorso famiglia riunisce piccoli e grandi su passaggi in quota tra gli alberi. Pokeyland lo presenta come un’attività da condividere, affrontando gli ostacoli mentre si procede di ramo in ramo.</p><h2>La preparazione a terra</h2><p>La fotografia associata a questo percorso mostra due visitatrici che regolano le imbracature accanto a un membro dello staff.</p><p>Questa preparazione si svolge nel sottobosco, prima dei passaggi sospesi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Klimmen met verschillende generaties</h2><p>Het Familieparcours brengt jongere en oudere deelnemers samen op passages hoog tussen de bomen. Pokeyland presenteert het als een gezamenlijke activiteit, waarbij obstakels worden overwonnen tijdens de tocht van tak naar tak.</p><h2>Voorbereiding op de grond</h2><p>De foto bij dit parcours toont twee bezoekers die naast een medewerker hun klimgordel aanpassen.</p><p>Deze voorbereiding vindt op de bosgrond plaats, vóór de hangende passages.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Przygoda wśród drzew dla różnych pokoleń</h2><p>Trasa rodzinna łączy młodszych i starszych uczestników na przejściach wysoko między drzewami. Pokeyland przedstawia ją jako wspólną aktywność, podczas której kolejne przeszkody pokonuje się w drodze od gałęzi do gałęzi.</p><h2>Przygotowanie na ziemi</h2><p>Zdjęcie przypisane do tej trasy pokazuje dwie uczestniczki poprawiające uprzęże obok pracownika parku.</p><p>Przygotowanie odbywa się na leśnym podłożu, przed wejściem na zawieszone przejścia.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Aventura entre árvores para várias gerações</h2><p>O Percurso família reúne pequenos e grandes em passagens elevadas entre as árvores. O Pokeyland apresenta-o como uma atividade partilhada, com obstáculos ultrapassados ao avançar de ramo em ramo.</p><h2>A preparação no solo</h2><p>A fotografia associada a este percurso mostra duas visitantes a ajustar os arneses junto de um membro da equipa.</p><p>Esta preparação decorre no chão do bosque, antes das passagens suspensas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein anspruchsvoller Weg durch die Bäume</h2><p>Der Sportparcours bildet den körperlich anspruchsvollen Teil des Kletterangebots von Pokeyland. Der Betreiber betont die Anstrengung und Entschlossenheit, die für seine Passagen in der Höhe erforderlich sind.</p><h2>Der Wald unter den Füßen</h2><p>Die offizielle, diesem Namen zugeordnete Ansicht zeigt einen Teilnehmer an einer Seilrolle, die Beine nach vorn angehoben und Bäume im Hintergrund.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A demanding course among the trees</h2><p>The Sporting Course is the physically demanding part of Pokeyland’s treetop adventure. The operator stresses the effort and determination needed to make progress through its elevated passages.</p><h2>The forest beneath your feet</h2><p>The official view attached to this name shows a participant suspended from a pulley, with his legs raised in front of him and trees in the background.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un recorrido exigente entre los árboles</h2><p>El Recorrido deportivo constituye la vertiente más física de la aventura entre árboles de Pokeyland. El operador destaca el esfuerzo y la determinación necesarios para avanzar por sus pasos elevados.</p><h2>El bosque bajo los pies</h2><p>La vista oficial asociada a este nombre muestra a un participante suspendido de una polea, con las piernas levantadas hacia delante y árboles al fondo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un parcours exigeant dans les arbres</h2><p>Le Parcours sportif constitue le volet physique de l’accrobranche de Pokeyland. L’opérateur insiste sur l’effort et la détermination nécessaires pour avancer dans ses passages en hauteur.</p><h2>La forêt sous les pieds</h2><p>La vue officielle rattachée à ce nom montre un participant suspendu à une poulie, les jambes relevées devant lui et les arbres en arrière-plan.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un percorso impegnativo tra gli alberi</h2><p>Il Percorso sportivo rappresenta la componente più fisica dell’avventura tra gli alberi di Pokeyland. Il gestore sottolinea lo sforzo e la determinazione necessari per affrontarne i passaggi in quota.</p><h2>Il bosco sotto i piedi</h2><p>La veduta ufficiale associata a questo nome mostra un partecipante sospeso a una carrucola, con le gambe sollevate davanti a sé e gli alberi sullo sfondo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een veeleisend parcours tussen de bomen</h2><p>Het Sportieve parcours vormt het fysiek veeleisende deel van het klimaanbod van Pokeyland. De aanbieder benadrukt de inspanning en vastberadenheid die nodig zijn om de hoge passages te doorlopen.</p><h2>Het bos onder de voeten</h2><p>De officiële foto bij deze naam toont een deelnemer die aan een katrol hangt, met zijn benen voor zich omhoog en bomen op de achtergrond.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wymagająca trasa między drzewami</h2><p>Trasa sportowa jest wymagającą fizycznie częścią parku linowego Pokeyland. Operator podkreśla wysiłek i determinację potrzebne do pokonywania jej przejść na wysokości.</p><h2>Las pod stopami</h2><p>Oficjalne zdjęcie przypisane do tej nazwy pokazuje uczestnika zawieszonego na bloczku, z nogami uniesionymi przed sobą i drzewami w tle.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um percurso exigente entre as árvores</h2><p>O Percurso desportivo constitui a componente fisicamente exigente do arborismo do Pokeyland. O operador salienta o esforço e a determinação necessários para avançar nas suas passagens em altura.</p><h2>O bosque sob os pés</h2><p>A vista oficial associada a este nome mostra um participante suspenso numa roldana, com as pernas levantadas à frente e árvores ao fundo.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "pokeyland-parcours-tyrolienne",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Route aus Seilrutschen</h2><p>Der Seilrutschenparcours besteht vollständig aus Seilrutschen. Pokeyland gibt für diese Folge von Passagen durch den Wald eine Länge von einem Kilometer an.</p><h2>Schwebend zwischen den Bäumen</h2><p>Die Teilnehmer bewegen sich unter dem Seil, mit dem Klettergurt an einer Rolle befestigt. Das offizielle Foto zeigt eine Besucherin über dem Boden, umgeben von Ästen vor dem Himmel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A route of aerial glides</h2><p>The Zipline Course stands out for a route devoted entirely to ziplines. Pokeyland advertises one kilometre for this collection of crossings through the forest.</p><h2>Suspended between the trees</h2><p>Participants travel below the cable, with their harness connected to a pulley. The official photograph shows a rider above the ground, surrounded by branches silhouetted against the sky.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un itinerario de deslizamientos aéreos</h2><p>El Recorrido de tirolinas se distingue por un trazado dedicado íntegramente a ellas. Pokeyland anuncia un kilómetro para este conjunto de pasos por el bosque.</p><h2>En suspensión entre los árboles</h2><p>El desplazamiento se realiza por debajo del cable, con el arnés unido a una polea. La fotografía oficial muestra a una participante sobre el suelo, rodeada de ramas que se recortan contra el cielo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un itinéraire de glissades aériennes</h2><p>Le Parcours tyrolienne se distingue par un tracé entièrement consacré aux tyroliennes. Pokeyland annonce un kilomètre pour cet ensemble de passages dans la forêt.</p><h2>Suspendu entre les arbres</h2><p>Le déplacement se fait sous le câble, avec le baudrier relié à une poulie. La photographie officielle montre une participante au-dessus du sol, les branches se détachant sur le ciel autour d’elle.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un itinerario di scivolate aeree</h2><p>Il Percorso zipline si distingue per un tracciato interamente dedicato alle teleferiche. Pokeyland annuncia un chilometro per questo insieme di passaggi nel bosco.</p><h2>Sospesi tra gli alberi</h2><p>Ci si sposta sotto il cavo, con l’imbracatura collegata a una carrucola. La fotografia ufficiale mostra una partecipante sopra il terreno, circondata da rami che si stagliano contro il cielo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een route van tokkelbanen</h2><p>Het Tokkelparcours bestaat volledig uit tokkelbanen. Pokeyland vermeldt een kilometer voor deze reeks oversteekplaatsen door het bos.</p><h2>Hangend tussen de bomen</h2><p>Deelnemers bewegen onder de kabel, met hun klimgordel verbonden aan een katrol. Op de officiële foto hangt een bezoeker boven de grond, omringd door takken die tegen de lucht afsteken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Trasa powietrznych zjazdów</h2><p>Trasa tyrolkowa wyróżnia się układem w całości poświęconym zjazdom na linach. Pokeyland podaje kilometr długości dla tego zespołu przejść przez las.</p><h2>W zawieszeniu między drzewami</h2><p>Uczestnicy przemieszczają się pod liną, z uprzężą połączoną z bloczkiem. Oficjalne zdjęcie pokazuje uczestniczkę nad ziemią, otoczoną gałęziami na tle nieba.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um itinerário de deslizes aéreos</h2><p>O Percurso de tirolesas distingue-se por um traçado inteiramente dedicado a essas travessias. O Pokeyland anuncia um quilómetro para este conjunto de passagens pelo bosque.</p><h2>Em suspensão entre as árvores</h2><p>O movimento faz-se sob o cabo, com o arnês ligado a uma roldana. A fotografia oficial mostra uma participante acima do solo, rodeada de ramos recortados contra o céu.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Quatre notices privées huit langues personnellement rédigées et relues, source officielle https://www.pokeyland.com/packs/accrobranche/ et quatre photographies nominalement associées examinées intégralement. Parcours famille : uniquement vocation et préparation observée, aucun obstacle propre inventé. Un kilomètre Tyrolienne qualifie le parcours, pas une portée unique. Dates, hauteurs et nombre d’ateliers inconnus conservés. Notices plus courtes que le format long justifiées par source limitée et recherche nominative conservée dans accrobranche-course-qualification ; aucune répétition de remplissage ni attribution des photos de groupes aux cinq parcours numérotés. Deux paragraphes conservés pour Sportif/Tyrolienne après suppression des phrases finales répétant le premier paragraphe ; exception de profondeur documentée, pas de remplissage.",
+    "wordCounts": {
+      "Parcours découverte": {
+        "fr": 86,
+        "en": 85,
+        "de": 78,
+        "es": 89,
+        "it": 79,
+        "nl": 84,
+        "pl": 68,
+        "pt": 82
+      },
+      "Parcours famille": {
+        "fr": 74,
+        "en": 69,
+        "de": 69,
+        "es": 76,
+        "it": 69,
+        "nl": 66,
+        "pl": 63,
+        "pt": 69
+      },
+      "Parcours sportif": {
+        "fr": 61,
+        "en": 65,
+        "de": 59,
+        "es": 66,
+        "it": 66,
+        "nl": 65,
+        "pl": 48,
+        "pt": 62
+      },
+      "Parcours tyrolienne": {
+        "fr": 65,
+        "en": 61,
+        "de": 59,
+        "es": 69,
+        "it": 62,
+        "nl": 55,
+        "pl": 49,
+        "pt": 64
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "postApplyIdempotence": {
+    "operationId": "329c02a9-18c9-4cb1-b906-6bff5fe3dfb5",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:50:29.7762261Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 10,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "pokeyland-parcours-decouverte",
+        "displayName": "Parcours découverte",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "pokeyland-parcours-famille",
+        "displayName": "Parcours famille",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "pokeyland-parcours-tyrolienne",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "pokeyland-grill",
+        "displayName": "Le Grill",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "pokeyland-scene-pokeyshow",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

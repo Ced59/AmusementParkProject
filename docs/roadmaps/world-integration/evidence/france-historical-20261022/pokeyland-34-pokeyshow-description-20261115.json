@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-34-pokeyshow-description",
+        "step": "04-items",
+        "notes": "Notice privée huit langues personnellement rédigée et relue. Source primaire FACSS https://stjulien57p-scolaire.blogspot.com/2017/07/centre-aere-avril-2017.html relue, deux photos originales DSCF3141/DSCF3142 examinées intégralement, enseignes explicites POKEY SHOW. Contexte sortie avril2017 et publication16juillet distincts, jour photo inconnu. Décor attribué aux vues historiques seulement, aucun maintien2026 affirmé. Annonce nouvelle version2018 Lorraineaucoeur source conservée et programme spécial15août2026 DirectFM13août relu ; annonce pas preuve exécution. Aucun alias scèneYanns, horairequotidien, durée, constructeur, capacité ou datecréation inventés. 3paragraphes2intertitres avec limite de profondeur conservée."
+      },
+      "items": [
+        {
+          "id": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+          "key": "pokeyland-scene-pokeyshow",
+          "name": "Scène Pokeyshow",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le renard monte sur scène</h2><p>Pokey Show associe la mascotte renard du parc à des animations avec les visiteurs. Le compte rendu d’une sortie d’avril 2017 montre enfants et adultes dansant sur son estrade, puis accueillant le personnage costumé.</p><p>Dans ces vues historiques, la scène est couverte et bordée de panneaux de bois. Des affiches bleu nuit étoilées portent le nom Pokey Show et l’image du renard.</p><h2>Des versions au fil des saisons</h2><p>Une nouvelle version du spectacle est annoncée pour 2018. En août 2026, le programme de la nocturne du 15 août comprend à son tour un Pokey Show spécial.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The fox takes the stage</h2><p>Pokey Show brings the park’s fox mascot together with visitors for shared entertainment. A report of an outing in April 2017 shows children and adults dancing on its platform and then welcoming the costumed character.</p><p>In these historical views, the stage is covered and lined with wooden panels. Starry midnight-blue posters carry the Pokey Show name and an image of the fox.</p><h2>Versions across the seasons</h2><p>A new version of the show was announced for 2018. In August 2026, the advertised programme for the late opening on 15 August included a special Pokey Show.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Der Fuchs betritt die Bühne</h2><p>Pokey Show verbindet das Fuchsmaskottchen des Parks mit gemeinsamen Animationen für Besucher. Ein Bericht über einen Ausflug im April 2017 zeigt Kinder und Erwachsene beim Tanzen auf dem Podium und beim anschließenden Empfang der kostümierten Figur.</p><p>Auf diesen historischen Ansichten ist die Bühne überdacht und mit Holzplatten eingefasst. Sternenbesetzte, nachtblaue Plakate tragen den Namen Pokey Show und das Bild des Fuchses.</p><h2>Verschiedene Fassungen über die Jahre</h2><p>Für 2018 wurde eine neue Fassung angekündigt. Im August 2026 enthielt das angekündigte Programm der Abendöffnung am 15. August eine besondere Pokey Show.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El zorro sube al escenario</h2><p>Pokey Show reúne a la mascota zorro del parque y a los visitantes en actividades de animación. El relato de una salida de abril de 2017 muestra a niños y adultos bailando sobre la tarima y recibiendo después al personaje disfrazado.</p><p>En estas vistas históricas, el escenario está cubierto y delimitado por paneles de madera. Carteles de color azul noche con estrellas llevan el nombre Pokey Show y la imagen del zorro.</p><h2>Versiones a lo largo de las temporadas</h2><p>Para 2018 se anunció una nueva versión del espectáculo. En agosto de 2026, el programa anunciado para la apertura nocturna del 15 de agosto incluyó un Pokey Show especial.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La volpe sale sul palco</h2><p>Pokey Show unisce la mascotte volpe del parco e i visitatori in momenti di animazione. Il resoconto di una gita dell’aprile 2017 mostra bambini e adulti che ballano sulla pedana e poi accolgono il personaggio in costume.</p><p>In queste vedute storiche, il palco è coperto e delimitato da pannelli di legno. Manifesti blu notte con stelle riportano il nome Pokey Show e l’immagine della volpe.</p><h2>Versioni nel corso delle stagioni</h2><p>Una nuova versione dello spettacolo fu annunciata per il 2018. Nell’agosto 2026, il programma annunciato per l’apertura serale del 15 agosto comprendeva un Pokey Show speciale.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De vos betreedt het podium</h2><p>Pokey Show brengt de vossenmascotte van het park en bezoekers samen tijdens animaties. Een verslag van een uitstapje in april 2017 toont kinderen en volwassenen die op het podium dansen en daarna het gekostumeerde personage verwelkomen.</p><p>Op deze historische beelden is het podium overdekt en omgeven door houten panelen. Nachtblauwe posters met sterren dragen de naam Pokey Show en een afbeelding van de vos.</p><h2>Verschillende versies door de seizoenen heen</h2><p>Voor 2018 werd een nieuwe versie aangekondigd. In augustus 2026 vermeldde het aangekondigde programma voor de avondopening op 15 augustus een speciale Pokey Show.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Lis wchodzi na scenę</h2><p>Pokey Show łączy parkową maskotkę lisa z animacjami dla gości. Relacja z wycieczki w kwietniu 2017 roku pokazuje dzieci i dorosłych tańczących na podeście, a następnie witających postać w kostiumie.</p><p>Na tych historycznych zdjęciach scena jest zadaszona i otoczona drewnianymi panelami. Granatowe plakaty z gwiazdami noszą nazwę Pokey Show i wizerunek lisa.</p><h2>Kolejne wersje w następnych sezonach</h2><p>Na rok 2018 zapowiedziano nową wersję widowiska. W sierpniu 2026 roku ogłoszony program wieczornego otwarcia 15 sierpnia obejmował specjalny Pokey Show.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A raposa sobe ao palco</h2><p>O Pokey Show reúne a mascote raposa do parque e os visitantes em momentos de animação. O relato de uma visita em abril de 2017 mostra crianças e adultos a dançar no estrado e, depois, a receber a personagem em fato de mascote.</p><p>Nestas vistas históricas, o palco é coberto e delimitado por painéis de madeira. Cartazes azul-escuros com estrelas apresentam o nome Pokey Show e a imagem da raposa.</p><h2>Versões ao longo das temporadas</h2><p>Foi anunciada uma nova versão do espetáculo para 2018. Em agosto de 2026, o programa anunciado para a abertura noturna de 15 de agosto incluía um Pokey Show especial.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "db1e6d25-78bc-46e5-b47a-b176df44ba69",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:48:17.1305401Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "pokeyland-scene-pokeyshow",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der Fuchs betritt die Bühne</h2><p>Pokey Show verbindet das Fuchsmaskottchen des Parks mit gemeinsamen Animationen für Besucher. Ein Bericht über einen Ausflug im April 2017 zeigt Kinder und Erwachsene beim Tanzen auf dem Podium und beim anschließenden Empfang der kostümierten Figur.</p><p>Auf diesen historischen Ansichten ist die Bühne überdacht und mit Holzplatten eingefasst. Sternenbesetzte, nachtblaue Plakate tragen den Namen Pokey Show und das Bild des Fuchses.</p><h2>Verschiedene Fassungen über die Jahre</h2><p>Für 2018 wurde eine neue Fassung angekündigt. Im August 2026 enthielt das angekündigte Programm der Abendöffnung am 15. August eine besondere Pokey Show.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The fox takes the stage</h2><p>Pokey Show brings the park’s fox mascot together with visitors for shared entertainment. A report of an outing in April 2017 shows children and adults dancing on its platform and then welcoming the costumed character.</p><p>In these historical views, the stage is covered and lined with wooden panels. Starry midnight-blue posters carry the Pokey Show name and an image of the fox.</p><h2>Versions across the seasons</h2><p>A new version of the show was announced for 2018. In August 2026, the advertised programme for the late opening on 15 August included a special Pokey Show.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El zorro sube al escenario</h2><p>Pokey Show reúne a la mascota zorro del parque y a los visitantes en actividades de animación. El relato de una salida de abril de 2017 muestra a niños y adultos bailando sobre la tarima y recibiendo después al personaje disfrazado.</p><p>En estas vistas históricas, el escenario está cubierto y delimitado por paneles de madera. Carteles de color azul noche con estrellas llevan el nombre Pokey Show y la imagen del zorro.</p><h2>Versiones a lo largo de las temporadas</h2><p>Para 2018 se anunció una nueva versión del espectáculo. En agosto de 2026, el programa anunciado para la apertura nocturna del 15 de agosto incluyó un Pokey Show especial.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le renard monte sur scène</h2><p>Pokey Show associe la mascotte renard du parc à des animations avec les visiteurs. Le compte rendu d’une sortie d’avril 2017 montre enfants et adultes dansant sur son estrade, puis accueillant le personnage costumé.</p><p>Dans ces vues historiques, la scène est couverte et bordée de panneaux de bois. Des affiches bleu nuit étoilées portent le nom Pokey Show et l’image du renard.</p><h2>Des versions au fil des saisons</h2><p>Une nouvelle version du spectacle est annoncée pour 2018. En août 2026, le programme de la nocturne du 15 août comprend à son tour un Pokey Show spécial.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La volpe sale sul palco</h2><p>Pokey Show unisce la mascotte volpe del parco e i visitatori in momenti di animazione. Il resoconto di una gita dell’aprile 2017 mostra bambini e adulti che ballano sulla pedana e poi accolgono il personaggio in costume.</p><p>In queste vedute storiche, il palco è coperto e delimitato da pannelli di legno. Manifesti blu notte con stelle riportano il nome Pokey Show e l’immagine della volpe.</p><h2>Versioni nel corso delle stagioni</h2><p>Una nuova versione dello spettacolo fu annunciata per il 2018. Nell’agosto 2026, il programma annunciato per l’apertura serale del 15 agosto comprendeva un Pokey Show speciale.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De vos betreedt het podium</h2><p>Pokey Show brengt de vossenmascotte van het park en bezoekers samen tijdens animaties. Een verslag van een uitstapje in april 2017 toont kinderen en volwassenen die op het podium dansen en daarna het gekostumeerde personage verwelkomen.</p><p>Op deze historische beelden is het podium overdekt en omgeven door houten panelen. Nachtblauwe posters met sterren dragen de naam Pokey Show en een afbeelding van de vos.</p><h2>Verschillende versies door de seizoenen heen</h2><p>Voor 2018 werd een nieuwe versie aangekondigd. In augustus 2026 vermeldde het aangekondigde programma voor de avondopening op 15 augustus een speciale Pokey Show.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Lis wchodzi na scenę</h2><p>Pokey Show łączy parkową maskotkę lisa z animacjami dla gości. Relacja z wycieczki w kwietniu 2017 roku pokazuje dzieci i dorosłych tańczących na podeście, a następnie witających postać w kostiumie.</p><p>Na tych historycznych zdjęciach scena jest zadaszona i otoczona drewnianymi panelami. Granatowe plakaty z gwiazdami noszą nazwę Pokey Show i wizerunek lisa.</p><h2>Kolejne wersje w następnych sezonach</h2><p>Na rok 2018 zapowiedziano nową wersję widowiska. W sierpniu 2026 roku ogłoszony program wieczornego otwarcia 15 sierpnia obejmował specjalny Pokey Show.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A raposa sobe ao palco</h2><p>O Pokey Show reúne a mascote raposa do parque e os visitantes em momentos de animação. O relato de uma visita em abril de 2017 mostra crianças e adultos a dançar no estrado e, depois, a receber a personagem em fato de mascote.</p><p>Nestas vistas históricas, o palco é coberto e delimitado por painéis de madeira. Cartazes azul-escuros com estrelas apresentam o nome Pokey Show e a imagem da raposa.</p><h2>Versões ao longo das temporadas</h2><p>Foi anunciada uma nova versão do espetáculo para 2018. Em agosto de 2026, o programa anunciado para a abertura noturna de 15 de agosto incluía um Pokey Show especial.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "b957208a-2c57-4178-99bd-aabb87539029",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:48:38.6448348Z",
+    "appliedAtUtc": "2026-11-15T13:48:38.6448357Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "pokeyland-scene-pokeyshow",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der Fuchs betritt die Bühne</h2><p>Pokey Show verbindet das Fuchsmaskottchen des Parks mit gemeinsamen Animationen für Besucher. Ein Bericht über einen Ausflug im April 2017 zeigt Kinder und Erwachsene beim Tanzen auf dem Podium und beim anschließenden Empfang der kostümierten Figur.</p><p>Auf diesen historischen Ansichten ist die Bühne überdacht und mit Holzplatten eingefasst. Sternenbesetzte, nachtblaue Plakate tragen den Namen Pokey Show und das Bild des Fuchses.</p><h2>Verschiedene Fassungen über die Jahre</h2><p>Für 2018 wurde eine neue Fassung angekündigt. Im August 2026 enthielt das angekündigte Programm der Abendöffnung am 15. August eine besondere Pokey Show.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The fox takes the stage</h2><p>Pokey Show brings the park’s fox mascot together with visitors for shared entertainment. A report of an outing in April 2017 shows children and adults dancing on its platform and then welcoming the costumed character.</p><p>In these historical views, the stage is covered and lined with wooden panels. Starry midnight-blue posters carry the Pokey Show name and an image of the fox.</p><h2>Versions across the seasons</h2><p>A new version of the show was announced for 2018. In August 2026, the advertised programme for the late opening on 15 August included a special Pokey Show.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El zorro sube al escenario</h2><p>Pokey Show reúne a la mascota zorro del parque y a los visitantes en actividades de animación. El relato de una salida de abril de 2017 muestra a niños y adultos bailando sobre la tarima y recibiendo después al personaje disfrazado.</p><p>En estas vistas históricas, el escenario está cubierto y delimitado por paneles de madera. Carteles de color azul noche con estrellas llevan el nombre Pokey Show y la imagen del zorro.</p><h2>Versiones a lo largo de las temporadas</h2><p>Para 2018 se anunció una nueva versión del espectáculo. En agosto de 2026, el programa anunciado para la apertura nocturna del 15 de agosto incluyó un Pokey Show especial.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le renard monte sur scène</h2><p>Pokey Show associe la mascotte renard du parc à des animations avec les visiteurs. Le compte rendu d’une sortie d’avril 2017 montre enfants et adultes dansant sur son estrade, puis accueillant le personnage costumé.</p><p>Dans ces vues historiques, la scène est couverte et bordée de panneaux de bois. Des affiches bleu nuit étoilées portent le nom Pokey Show et l’image du renard.</p><h2>Des versions au fil des saisons</h2><p>Une nouvelle version du spectacle est annoncée pour 2018. En août 2026, le programme de la nocturne du 15 août comprend à son tour un Pokey Show spécial.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La volpe sale sul palco</h2><p>Pokey Show unisce la mascotte volpe del parco e i visitatori in momenti di animazione. Il resoconto di una gita dell’aprile 2017 mostra bambini e adulti che ballano sulla pedana e poi accolgono il personaggio in costume.</p><p>In queste vedute storiche, il palco è coperto e delimitato da pannelli di legno. Manifesti blu notte con stelle riportano il nome Pokey Show e l’immagine della volpe.</p><h2>Versioni nel corso delle stagioni</h2><p>Una nuova versione dello spettacolo fu annunciata per il 2018. Nell’agosto 2026, il programma annunciato per l’apertura serale del 15 agosto comprendeva un Pokey Show speciale.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De vos betreedt het podium</h2><p>Pokey Show brengt de vossenmascotte van het park en bezoekers samen tijdens animaties. Een verslag van een uitstapje in april 2017 toont kinderen en volwassenen die op het podium dansen en daarna het gekostumeerde personage verwelkomen.</p><p>Op deze historische beelden is het podium overdekt en omgeven door houten panelen. Nachtblauwe posters met sterren dragen de naam Pokey Show en een afbeelding van de vos.</p><h2>Verschillende versies door de seizoenen heen</h2><p>Voor 2018 werd een nieuwe versie aangekondigd. In augustus 2026 vermeldde het aangekondigde programma voor de avondopening op 15 augustus een speciale Pokey Show.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Lis wchodzi na scenę</h2><p>Pokey Show łączy parkową maskotkę lisa z animacjami dla gości. Relacja z wycieczki w kwietniu 2017 roku pokazuje dzieci i dorosłych tańczących na podeście, a następnie witających postać w kostiumie.</p><p>Na tych historycznych zdjęciach scena jest zadaszona i otoczona drewnianymi panelami. Granatowe plakaty z gwiazdami noszą nazwę Pokey Show i wizerunek lisa.</p><h2>Kolejne wersje w następnych sezonach</h2><p>Na rok 2018 zapowiedziano nową wersję widowiska. W sierpniu 2026 roku ogłoszony program wieczornego otwarcia 15 sierpnia obejmował specjalny Pokey Show.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A raposa sobe ao palco</h2><p>O Pokey Show reúne a mascote raposa do parque e os visitantes em momentos de animação. O relato de uma visita em abril de 2017 mostra crianças e adultos a dançar no estrado e, depois, a receber a personagem em fato de mascote.</p><p>Nestas vistas históricas, o palco é coberto e delimitado por painéis de madeira. Cartazes azul-escuros com estrelas apresentam o nome Pokey Show e a imagem da raposa.</p><h2>Versões ao longo das temporadas</h2><p>Foi anunciada uma nova versão do espetáculo para 2018. Em agosto de 2026, o programa anunciado para a abertura noturna de 15 de agosto incluía um Pokey Show especial.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Notice privée huit langues personnellement rédigée et relue. Source primaire FACSS https://stjulien57p-scolaire.blogspot.com/2017/07/centre-aere-avril-2017.html relue, deux photos originales DSCF3141/DSCF3142 examinées intégralement, enseignes explicites POKEY SHOW. Contexte sortie avril2017 et publication16juillet distincts, jour photo inconnu. Décor attribué aux vues historiques seulement, aucun maintien2026 affirmé. Annonce nouvelle version2018 Lorraineaucoeur source conservée et programme spécial15août2026 DirectFM13août relu ; annonce pas preuve exécution. Aucun alias scèneYanns, horairequotidien, durée, constructeur, capacité ou datecréation inventés. 3paragraphes2intertitres avec limite de profondeur conservée.",
+    "wordCounts": {
+      "Scène Pokeyshow": {
+        "fr": 101,
+        "en": 99,
+        "de": 94,
+        "es": 113,
+        "it": 101,
+        "nl": 99,
+        "pl": 82,
+        "pt": 109
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "postApplyIdempotence": {
+    "operationId": "329c02a9-18c9-4cb1-b906-6bff5fe3dfb5",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:50:29.7762261Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 10,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "pokeyland-parcours-decouverte",
+        "displayName": "Parcours découverte",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "pokeyland-parcours-famille",
+        "displayName": "Parcours famille",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "pokeyland-parcours-tyrolienne",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "pokeyland-grill",
+        "displayName": "Le Grill",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "pokeyland-scene-pokeyshow",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

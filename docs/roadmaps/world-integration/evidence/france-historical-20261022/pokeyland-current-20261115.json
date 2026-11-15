@@ -112,7 +112,7 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T13:33:12.6654719Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T13:49:27.334Z",
   "newApplyPerformed": true,
   "newPhotoImported": true,
   "fullAuditExportPerformed": false,
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Continue 32 missing item descriptions and remaining photographs, preserve 64 unproved item positions and Crazy Kart conflict. Ten exact named OSM points have been qualified against the current official plan, with old edit dates and offer-point limits retained. Calendar representation, sales-channel and historical-identity gaps remain. No final audit or publication.",
+  "nextAction": "Continue 23 missing item notices and historical identity qualification; manufacturers Lukylud/Amazone sources under review, no association yet. Nine notices and seven images newly integrated privately; 2026 programmes distinguished from 2017 stage photos. Calendar representation and daily-ticket channel remain unresolved. No final audit/export/publication.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -246,16 +246,31 @@
       "operationId": "c9bf08c8-dac8-43dd-970f-6c7ddc07ae0e",
       "appliedAtUtc": "2026-11-15T13:33:12.6654719Z",
       "proof": "pokeyland-qualified-coordinates-20261115.json"
+    },
+    {
+      "operationId": "9bb620ee-6f23-456c-a15c-61b6acd0c490",
+      "appliedAtUtc": "2026-11-15T13:42:51.5278579Z",
+      "proof": "pokeyland-32-acrobranch-descriptions-20261115.json"
+    },
+    {
+      "operationId": "3f3ea7f8-4b68-4e41-b620-1a82c7cd5853",
+      "appliedAtUtc": "2026-11-15T13:46:52.1677742Z",
+      "proof": "pokeyland-33-food-descriptions-20261115.json"
+    },
+    {
+      "operationId": "b957208a-2c57-4178-99bd-aabb87539029",
+      "appliedAtUtc": "2026-11-15T13:48:38.6448357Z",
+      "proof": "pokeyland-34-pokeyshow-description-20261115.json"
     }
   ],
   "currentCounts": {
     "items": 74,
     "publicItems": 0,
     "zones": 3,
-    "media": 46,
+    "media": 53,
     "privateLogo": true,
     "parkDescribedLanguages": 8,
-    "itemsDescribed": 42,
+    "itemsDescribed": 51,
     "referenceLocalizedTexts": 16,
     "historicalUnknownItems": 17,
     "zonesDescribed": 3,
@@ -269,8 +284,8 @@
     "articles": 1,
     "privateArticles": 1,
     "privateItems": 74,
-    "itemsWithEightLanguageDescriptions": 42,
-    "privateMedia": 46,
+    "itemsWithEightLanguageDescriptions": 51,
+    "privateMedia": 53,
     "publicMedia": 0,
     "itemPositions": 10
   },
@@ -504,9 +519,44 @@
       "proof": "pokeyland-photo-current-25-20261115.json",
       "imageId": "96d60d7c6c0c40d79627a733c4ae2ff5",
       "createdAtUtc": "2026-11-15T13:29:24.955Z"
+    },
+    {
+      "proof": "pokeyland-photo-pokeyshow-2017-20261115.json",
+      "imageId": "a96fbefc478540688a36dc04d2a27d10",
+      "createdAtUtc": "2026-11-15T13:49:27.334Z"
+    },
+    {
+      "proof": "pokeyland-photo-qualified-decouverte-20261115.json",
+      "imageId": "c3ed49df002b49029862ad404962f5fc",
+      "createdAtUtc": "2026-11-15T13:44:50.002Z"
+    },
+    {
+      "proof": "pokeyland-photo-qualified-famille-20261115.json",
+      "imageId": "28873710d16042eda0a54de17e38f056",
+      "createdAtUtc": "2026-11-15T13:44:59.234Z"
+    },
+    {
+      "proof": "pokeyland-photo-qualified-parking-20261115.json",
+      "imageId": "399f973442ef4bed9fa1a8c3f4cc4f19",
+      "createdAtUtc": "2026-11-15T13:45:35.852Z"
+    },
+    {
+      "proof": "pokeyland-photo-qualified-picnic-20261115.json",
+      "imageId": "35b9ff6d864440f0ad0f72833537fc54",
+      "createdAtUtc": "2026-11-15T13:45:47.671Z"
+    },
+    {
+      "proof": "pokeyland-photo-qualified-sportif-20261115.json",
+      "imageId": "6cc6622a5db343a4a0ef8d96f7197719",
+      "createdAtUtc": "2026-11-15T13:45:09.59Z"
+    },
+    {
+      "proof": "pokeyland-photo-qualified-tyrolienne-20261115.json",
+      "imageId": "8b3793aac4c94556833ba532eab46345",
+      "createdAtUtc": "2026-11-15T13:45:19.248Z"
     }
   ],
-  "updatedAtUtc": "2026-11-15T13:38:24.378745+00:00",
+  "updatedAtUtc": "2026-11-15T13:52:42.415458+00:00",
   "idempotence": {
     "proof": "pokeyland-idempotence-followup-20261115.json",
     "counts": {
@@ -856,9 +906,118 @@
     "mainAdmissionOffersNotApplied": "Official amounts lack a verified sales channel; linked official ticket shop under maintenance. No gate/online equality invented."
   },
   "latestRecentIdempotence": {
-    "proof": "pokeyland-recent-idempotence-20261115.json",
-    "unchanged": 17,
-    "mutations": 0
+    "operationId": "329c02a9-18c9-4cb1-b906-6bff5fe3dfb5",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:50:29.7762261Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 10,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+        "entityKey": "pokeyland-parcours-decouverte",
+        "displayName": "Parcours découverte",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+        "entityKey": "pokeyland-parcours-famille",
+        "displayName": "Parcours famille",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+        "entityKey": "pokeyland-parcours-sportif",
+        "displayName": "Parcours sportif",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+        "entityKey": "pokeyland-parcours-tyrolienne",
+        "displayName": "Parcours tyrolienne",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+        "entityKey": "pokeyland-petit-creux",
+        "displayName": "Le Petit Creux",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+        "entityKey": "pokeyland-gourmand",
+        "displayName": "Le Gourmand",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+        "entityKey": "pokeyland-grill",
+        "displayName": "Le Grill",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+        "entityKey": "pokeyland-escale",
+        "displayName": "L’Escale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+        "entityKey": "pokeyland-scene-pokeyshow",
+        "displayName": "Scène Pokeyshow",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
   },
   "sourceCatalogCorrections": {
     "gallery2017": "Le catalogue historique indique 7 août par ancienne lecture de l’URL ; le texte public de la galerie indique 11 août 2017. Conserver la preuve antérieure et cette correction, ne pas en déduire une date de prise de vue."
@@ -1213,5 +1372,12 @@
     ],
     "warnings": [],
     "errors": []
-  }
+  },
+  "privateMediaReuseGaps": [
+    {
+      "imageId": "a96fbefc478540688a36dc04d2a27d10",
+      "issue": "FACSS source holder identified but explicit reuse licence or holder permission not documented; keep private until compatible evidence is retained.",
+      "proof": "pokeyland-photo-pokeyshow-2017-20261115.json"
+    }
+  ]
 }
