@@ -4170,29 +4170,82 @@
     },
     {
       "entryId": "PL-candidate-standalone-2fd9bb2095a3f2",
-      "name": "Luge Wiegand — Krynica",
-      "entityKind": "ToQualify",
+      "name": "Sankostrada Krynica-Zdrój",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "category": "Luge d’été en auge",
+      "locality": "ul. Dąbrowskiego 15, Krynica-Zdrój, Petite-Pologne",
+      "siteId": "cc134245-94e5-40c6-8411-cbb88ced23a1",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T00:11:16.130Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Site Sankostrada consulté le 2026-11-15 : annonce ouverte, horaires et billets ; fermeture possible selon la météo. Page Facebook de l’exploitant active en 2026.",
+      "identityConfidence": "Référence Wiegand Krynica et opérateur Sankostrada rapprochés par l’identité et le lieu. La piste d’Iwonka à l’adresse Dąbrowskiego 15 est distincte de la Góra Parkowa ; aucune fiche Park ou Standalone homonyme trouvée dans l’éditeur.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Krynica"
+        "Sankostrada",
+        "Luge Wiegand — Krynica",
+        "Sanko-strada Krynica"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T00:10:33.915Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4e4bdffe-435c-45a2-9e16-a34a164a6f23",
+          "appliedAt": "2026-11-15T00:07:12.837Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cc134245-94e5-40c6-8411-cbb88ced23a1",
+          "evidence": "PARK_DATA_EDITOR:apply:4e4bdffe-435c-45a2-9e16-a34a164a6f23",
+          "auditEvidence": null,
+          "summary": "Création de Sankostrada comme attraction autonome avec localisation et huit textes."
+        },
+        {
+          "eventId": "apply-bbe718cd-4ac1-4d35-8fee-8cb2db77aaf1",
+          "appliedAt": "2026-11-15T00:08:40.319Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cc134245-94e5-40c6-8411-cbb88ced23a1",
+          "evidence": "PARK_DATA_EDITOR:apply:bbe718cd-4ac1-4d35-8fee-8cb2db77aaf1",
+          "auditEvidence": null,
+          "summary": "Quatre tarifs cohérents, deux règles pour les enfants et horaires hebdomadaires sous réserve de la météo."
+        },
+        {
+          "eventId": "image-612965967d0148739e07c02b8a0069d4",
+          "appliedAt": "2026-11-15T00:09:40.727Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cc134245-94e5-40c6-8411-cbb88ced23a1",
+          "evidence": "PARK_DATA_EDITOR:image:612965967d0148739e07c02b8a0069d4",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Sankostrada prise en janvier 2025, Wlodek k1, CC BY-SA 4.0, importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-612965967d0148739e07c02b8a0069d4",
+          "appliedAt": "2026-11-15T00:10:33.915Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cc134245-94e5-40c6-8411-cbb88ced23a1",
+          "evidence": "PARK_DATA_EDITOR:image:612965967d0148739e07c02b8a0069d4",
+          "auditEvidence": null,
+          "summary": "Crédit, source, licence, redimensionnement et légendes en huit langues vérifiés et enregistrés."
+        },
+        {
+          "eventId": "closure-image-612965967d0148739e07c02b8a0069d4",
+          "appliedAt": "2026-11-15T00:10:33.915Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cc134245-94e5-40c6-8411-cbb88ced23a1",
+          "evidence": "PARK_DATA_EDITOR:image:612965967d0148739e07c02b8a0069d4",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pl-sankostrada-20261115/audit.json",
+          "summary": "Audit final : huit pages et la photo HTTP 200, quatre tarifs, deux règles d’accès, horaires, complétude 86 sans bloqueur et Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et sa date réelle. Clarifier auprès de l’exploitant le prix du billet de groupe : le tableau indique 140 PLN pour plus de vingt personnes, la FAQ 100 PLN. Revérifier les horaires et fermetures météo avant la visite.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -4203,22 +4256,42 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.sandkostrada.eu",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sankostrada — tarifs, horaires, accès et contact",
+          "url": "https://sankostrada.mystrikingly.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Ville de Krynica-Zdrój — adresse et identité de la piste",
+          "url": "https://www.krynica-zdroj.pl/pl/356/0/sankostrada.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — tracé de Sankostrada",
+          "url": "https://www.openstreetmap.org/way/992299482",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Wlodek k1, photo du 2025-01-31, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Krynica-Zdr%C3%B3j,_2025.01.31_13.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Krynica",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=243#location-id-1370",
-            "family": "Luge d’été",
-            "sourceVenueName": "Krynica",
-            "referenceId": "location-id-1370"
+            "name": "Sankostrada Krynica-Zdrój",
+            "source": "Sankostrada — site de la piste",
+            "url": "https://sankostrada.mystrikingly.com/",
+            "family": "Luge en auge",
+            "sourceVenueName": "Sankostrada",
+            "sourceLocality": "Krynica-Zdrój"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste identifiable, dotée de tarifs et d’une billetterie propres à l’adresse Dąbrowskiego 15. La ville la présente comme attraction distincte, hors de la Góra Parkowa."
       }
     },
     {
