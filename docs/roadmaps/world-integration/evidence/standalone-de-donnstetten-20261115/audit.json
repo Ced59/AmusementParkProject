@@ -1,0 +1,92 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+  "entryId": "DE-standalone-ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+  "name": "Bobbahn Donnstetten",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T16:05:25.053Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/ccc33ef6-fe6b-4611-8655-c616e1a304ab/bobbahn-donnstetten",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.bobbahn-donnstetten.de/",
+    "https://www.bobbahn-donnstetten.de/#preise",
+    "https://www.bobbahn-donnstetten.de/#oeffnungszeiten"
+  ],
+  "editorial": "Eight descriptions cleaned; fourteen displayed fares for solo and pair occupancy; age rules sourced; 106 dated overrides through February 2027. Source says weather and ski operation may close the run.",
+  "calendar": {
+    "from": "2026-11-15",
+    "through": "2027-02-28",
+    "dateOverrides": 106,
+    "nuance": "Open times are provisional in poor weather and when the ski lifts operate. Published holiday exceptions included."
+  },
+  "pricing": "Operator displays 14 fares across one, six and ten rides for child, adult and two-person combinations, without effective date. Under-eights require accompaniment; confirm fare at ticket office.",
+  "photoCountPublished": 4,
+  "photos": [
+    {
+      "imageId": "c3e753e12a55406598ae1d95a3498a3f",
+      "sourceUrl": "https://www.bobbahn-donnstetten.de/images/gen/homepage.835a51dd-2000.jpg",
+      "isCurrent": true,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "f200ee016b28481081317d8a5f5de410",
+      "sourceUrl": "https://www.bobbahn-donnstetten.de/images/gen/bobbahn_3.069fae09-2000.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "c476c3a5e6394422a3f645714ad884b8",
+      "sourceUrl": "https://www.bobbahn-donnstetten.de/images/gen/bobbahn_2.4fdeeda6-2000.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "fde7c7c15f9141719a9f6bcb3f753461",
+      "sourceUrl": "https://www.bobbahn-donnstetten.de/images/gen/bobbahn_1.6753a21e-2000.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    }
+  ],
+  "photoFollowup": "Audit independent reuse rights of four existing operator images and find an additional exact photo with a verifiable reuse licence.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 93,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "9bc2c66f81f34d6ca27e896180c4e1d0",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127472629424431",
+    "publishedAtUtc": "2026-11-15T16:04:36.62281Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T16:03:47.279Z",
+  "nextAction": "Revérifier les horaires du jour selon météo et ski ; auditer les droits des quatre photos existantes et trouver une image supplémentaire exacte avec licence vérifiable."
+}

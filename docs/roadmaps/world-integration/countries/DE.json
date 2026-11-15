@@ -4974,18 +4974,29 @@
         "ba4dc216-6df1-4689-ab1e-9b4e7b4b8491"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:05:25.053Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Exploitation publiée jusqu’en février 2027, sous réserve météo et activité du ski.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T16:03:47.279Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-2ebfeea4-2937-4413-bbee-e987251cd621",
+          "appliedAt": "2026-11-15T16:03:47.279Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+          "evidence": "PARK_DATA_EDITOR:apply:2ebfeea4-2937-4413-bbee-e987251cd621",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-donnstetten-20261115/audit.json",
+          "summary": "Huit descriptions, quatorze tarifs, calendrier officiel jusqu’en février 2027 et accès corrigés ; quatre photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Revérifier les horaires du jour selon météo et ski ; auditer les droits des quatre photos existantes et trouver une image supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5021,6 +5032,16 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.bobbahn-donnstetten.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Bobbahn Donnstetten — tarifs affichés",
+          "url": "https://www.bobbahn-donnstetten.de/#preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Bobbahn Donnstetten — horaires 2026–2027",
+          "url": "https://www.bobbahn-donnstetten.de/#oeffnungszeiten",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
