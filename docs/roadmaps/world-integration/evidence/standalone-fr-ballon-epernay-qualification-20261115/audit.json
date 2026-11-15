@@ -1,0 +1,20 @@
+{
+  "work": "Qualification du ballon captif d’Épernay suspendue avant création.",
+  "checkedAtUtc": "2026-11-15T23:17:00Z",
+  "findings": [
+    "Le constructeur Aerophile documente une installation à Épernay en 2018.",
+    "La page d’accueil du site dédié affiche un état de vol, une adresse et des tarifs, mais la page de présentation affiche des tarifs inférieurs.",
+    "La rubrique Infos pratiques / tarifs du même domaine renvoie un contenu commercial sans rapport avec le ballon ; la fiabilité des prix et du parcours de réservation ne peut pas être établie.",
+    "Une photo exacte du ballon en 2021 par Ad Meskens est disponible sous CC BY-SA 4.0.",
+    "Recherches officielles Park et StandaloneAttraction sur Épernay et ses alias : aucune correspondance."
+  ],
+  "sources": {
+    "Constructeur": "https://www.aerophile.com/en/clients/epernay/",
+    "Site dédié — accueil": "https://ballon-epernay.com/",
+    "Site dédié — présentation": "https://ballon-epernay.com/presentation/",
+    "Site dédié — infos pratiques incohérentes": "https://ballon-epernay.com/infos-pratiques-tarifs/",
+    "Wikimedia Commons — photo exacte 2021": "https://commons.wikimedia.org/wiki/File:Epernay_Ballon_Captif.jpg",
+    "Licence": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "decision": "Aucune fiche ni publication Facebook ; demander une confirmation indépendante des prix, horaires et lien de réservation."
+}

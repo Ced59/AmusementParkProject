@@ -3640,11 +3640,11 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2018 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Site dédié accessible et statut météo affiché ; exploitation et tarifs actuels à confirmer indépendamment à cause d’incohérences du site.",
+      "identityConfidence": "Installation et photo exacte confirmées ; tarifs contradictoires entre pages du site dédié et rubrique Infos pratiques servant un contenu sans rapport. Fiabilité commerciale à rétablir avant publication.",
       "possibleMatches": [],
       "aliases": [
         "SPL du ballon captif – Epernay Epernay, France"
@@ -3652,7 +3652,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Vérifier auprès de l’exploitant les horaires, prix et billetterie après correction du site ; la photo exacte CC BY-SA 4.0 est prête. Conserver cette ligne sans fausse date d’intégration.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -3663,6 +3663,26 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Site dédié — accueil",
+          "url": "https://ballon-epernay.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Site dédié — présentation",
+          "url": "https://ballon-epernay.com/presentation/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Site dédié — rubrique incohérente",
+          "url": "https://ballon-epernay.com/infos-pratiques-tarifs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Epernay_Ballon_Captif.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -3672,7 +3692,7 @@
       },
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Ballon captif d’Épernay",
@@ -3686,7 +3706,7 @@
             "referenceId": "aerophile-epernay"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Billetterie propre probable, mais source web de l’exploitant incohérente ; création et post Facebook suspendus."
       }
     },
     {
