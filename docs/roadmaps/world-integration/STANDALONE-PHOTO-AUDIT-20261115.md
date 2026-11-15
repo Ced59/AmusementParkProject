@@ -23,3 +23,7 @@ La requête publique `/api/images/STANDALONE_ATTRACTION/{siteId}/STANDALONE_ATTR
 | Corée du Sud | [Skyline Luge Tongyeong](https://amusement-parks.fun/fr/attraction/c4a7a4ae-bbb1-486f-aa6a-b362498628af/skyline-luge-tongyeong) | Obtenir une vue des pistes ou des luges du site Tongyeong. |
 
 Chaque ligne nationale reste dans le backlog avec cette preuve et sa prochaine action. **Le contrôle documentaire ne modifie aucune date `lastDataIntegrationAt`** : la nouvelle date sera celle du reçu `ImportPhoto` ou de la dernière modification effective du média. Les recherches Wikimedia Commons par nom et autour des sites Busan et Tongyeong n’ont pas fourni de vue exacte réutilisable dans cette passe ; elles ne prouvent pas l’absence d’autres photos sous licence ou autorisation.
+
+## Rattrapage du 15 novembre, 04:28 UTC
+
+Deux [photos officielles de Skyline Luge Busan](evidence/standalone-kr-skyline-luge-busan-photos-20261115/audit.json), avec crédit et licence KOGL Type 1, ont été importées et publiées. Les huit pages linguistiques, les deux fichiers et la miniature sociale répondent en 200. L’annonce Facebook de la fiche existait déjà et a été conservée. **À la suite de ce seul rattrapage**, sur les mêmes 232 fiches : **5 sans photo**, **27 avec une**, **200 avec au moins deux**. Le tableau ci-dessus reste la photographie datée de 03:43:59 UTC ; la ligne Busan est désormais résolue.

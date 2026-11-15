@@ -1,0 +1,68 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+  "entryId": "KR-candidate-standalone-0f95f79317187a",
+  "name": "Skyline Luge Busan",
+  "countryCode": "KR",
+  "auditAtUtc": "2026-11-15T04:33:31Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/b7da9b3e-fd8c-4dca-9a91-0542e557afec/skyline-luge-busan",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "existingFacebookPublication": "https://www.facebook.com/1285475681307050/posts/122124312549424431",
+  "photoCountBefore": 0,
+  "photoCountAfter": 2,
+  "publicImageEndpoint": "https://amusement-parks.fun/api/images/STANDALONE_ATTRACTION/b7da9b3e-fd8c-4dca-9a91-0542e557afec/STANDALONE_ATTRACTION?page=1&size=10",
+  "photos": [
+    {
+      "imageId": "f2b9b5eb34e04adb9587e661d57a3d6d",
+      "sourcePage": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=187019",
+      "sourceUrl": "https://tong.visitkorea.or.kr/cms/resource/11/3495811_image2_1.jpg",
+      "creator": "Korea Tourism Organization (VisitKorea)",
+      "license": "KOGL Type 1 (attribution)",
+      "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+      "imageRightsEvidenceUrl": "https://busan.webforai.kr/en/places/seukairain-ruji-busan/",
+      "sourceSha256": "f765a36ecd18b0fc6663f3c874320b6b759b57b3955cdea92da3a9ab8e305fd9",
+      "description": "Two riders descend a curve of the Skyline Luge Busan track.",
+      "isCurrent": true,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "socialPreviewHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T04:27:32.790Z"
+    },
+    {
+      "imageId": "b49a8883af0846eeaa40bacd3129e05f",
+      "sourcePage": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=187019",
+      "sourceUrl": "https://tong.visitkorea.or.kr/cms/resource/12/3495812_image2_1.jpg",
+      "creator": "Korea Tourism Organization (VisitKorea)",
+      "license": "KOGL Type 1 (attribution)",
+      "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+      "imageRightsEvidenceUrl": "https://busan.webforai.kr/en/places/seukairain-ruji-busan/",
+      "sourceSha256": "657439b4ba8f0972852ce6d4cee1d868984fb5303fd5c93208352f7985c6d7ee",
+      "description": "The winding Skyline Luge Busan track seen from above.",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T04:28:07.221Z"
+    }
+  ],
+  "completenessAfter": {
+    "score": 87,
+    "level": "Good",
+    "publicationBlockers": [],
+    "gapCount": 2
+  },
+  "lastDataIntegrationAt": "2026-11-15T04:28:07.221Z",
+  "note": "Les deux photos montrent précisément les pistes et luges du site de Busan. Chaque image porte les textes alternatifs, légendes et crédits en huit langues dans l’API publique. Le post Facebook publié le 23 octobre est conservé ; aucun nouveau post n’a été créé pour ce rattrapage photo.",
+  "remainingGaps": [
+    "Horaires publiés semaine par semaine et soumis à la météo ; vérifier le calendrier de l’exploitant avant une visite.",
+    "Tarifs et forfaits relevés le 23 octobre 2026 ; contrôler les changements à la prochaine saison."
+  ]
+}

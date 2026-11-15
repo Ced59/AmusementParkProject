@@ -21,10 +21,13 @@
     "statusAtPublication": "Published",
     "publishedAtUtc": "2026-11-15T03:34:20.9315354Z",
     "adminDeleteAttemptHttpStatus": 403,
-    "removalPending": true
+    "removalPending": false,
+    "statusAfterCorrection": "Deleted",
+    "deletedAtUtc": "2026-11-15T04:26:40Z",
+    "deleteReceipt": "PARK_DATA_EDITOR:facebook:7feb757b9e1a4951aaacc94db5a846e2"
   },
   "rootCause": "Qualification faite sur la présence d’un billet propre sans relire la décision InsidePark du backlog national et l’export du Park contenant déjà le ParkItem identique.",
-  "nextAction": "Un administrateur doit supprimer le post Facebook erroné via la gestion des publications sociales. Vérifier ensuite si la fiche standalone masquée peut être supprimée par le processus administratif, en conservant les reçus d’audit. Poursuivre la vraie intégration sur le Park et ses deux ParkItems existants.",
+  "nextAction": "L’annonce Facebook erronée a été supprimée par le jeton PDE créateur du post. Vérifier si la fiche standalone masquée peut être supprimée par le processus administratif, en conservant les reçus d’audit. Poursuivre la vraie intégration sur le Park et ses deux ParkItems existants.",
   "lastDataIntegrationAtOfExistingPark": null,
   "note": "Aucune date d’intégration n’est imputée au Park existant car ses données n’ont pas été modifiées.",
   "duplicateEntryId": "DE-duplicate-bocksbergbob-20261115",

@@ -7089,7 +7089,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Compléter la fiche Park masquée et ses parkItems BocksBergBob (5e38b880-dbe2-4f74-8742-9ab1e40917ee) et Drachenblitz (76bef22f-565b-4eed-aa19-8d05a06d7ceb), sans créer de standalone en doublon. Correction du 15 novembre 2026 : la fiche standalone créée par erreur (93f0eb22-735b-430f-82d4-58de8dd5154b) est masquée et renvoie 404 ; supprimer sa publication Facebook 122127402903424431 depuis un compte ADMIN, puis traiter la suppression administrative éventuelle de la fiche technique masquée. Voir l’audit lié.",
+      "nextAction": "Compléter la fiche Park masquée et ses parkItems BocksBergBob (5e38b880-dbe2-4f74-8742-9ab1e40917ee) et Drachenblitz (76bef22f-565b-4eed-aa19-8d05a06d7ceb), sans créer de standalone en doublon. La fiche standalone créée par erreur (93f0eb22-735b-430f-82d4-58de8dd5154b) est masquée et renvoie 404 ; son annonce Facebook erronée a été supprimée le 15 novembre 2026 à 04:26:40 UTC. Déterminer la suppression administrative éventuelle de la fiche technique masquée en conservant les reçus d’audit.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -33967,7 +33967,7 @@
           "summary": "Correction : fiche standalone masquée, page publique vérifiée HTTP 404 ; post Facebook erroné encore à supprimer par un administrateur."
         }
       ],
-      "nextAction": "Ne pas republier cette fiche. Un compte ADMIN doit supprimer le post Facebook émis par erreur, puis déterminer la suppression administrative de la fiche technique masquée. Intégrer l’attraction sur son ParkItem existant et conserver cette ligne avec ses reçus.",
+      "nextAction": "Ne pas republier cette fiche ; son annonce Facebook erronée a été supprimée. Déterminer la suppression administrative éventuelle de la fiche technique masquée, intégrer l’attraction sur son ParkItem existant et conserver cette ligne avec ses reçus.",
       "sources": [
         {
           "label": "RCDB — BocksBergBob dans ErlebnisBocksBerg",
@@ -33986,8 +33986,9 @@
         "siteUrl": "https://amusement-parks.fun/fr/attraction/93f0eb22-735b-430f-82d4-58de8dd5154b/bocksbergbob",
         "facebookPublishedAtUtc": "2026-11-15T03:34:20.931Z",
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127402903424431",
-        "facebookRemovalPending": true,
-        "siteHiddenAtUtc": "2026-11-15T03:35:44.045Z"
+        "facebookRemovalPending": false,
+        "siteHiddenAtUtc": "2026-11-15T03:35:44.045Z",
+        "facebookDeletedAtUtc": "2026-11-15T04:26:40Z"
       }
     }
   ]
