@@ -321,6 +321,159 @@
       ]
     },
     {
+      "entryId": "NZ-candidate-discovery-88a819e28a31d8",
+      "name": "Kawarau Bridge Bungy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "Gibbston Valley, Queenstown-Lakes, Otago",
+      "siteId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T11:34:05.862Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant AJ Hackett : saut, réservation, tarifs et horaires actuels affichés ; conditions de rivière et calendrier à recontrôler.",
+      "identityConfidence": "Identité, billet autonome, règles et tarifs confirmés par l’exploitant ; trois photos exactes sous licences réutilisables ; recherche officielle sans fiche préexistante.",
+      "possibleMatches": [],
+      "aliases": [
+        "Kawarau Bungy",
+        "Kawarau Bridge Bungee Jump",
+        "AJ Hackett Kawarau Bungy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T11:33:18.340Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-80a8a123-de49-4345-a058-cf8437f4c746",
+          "appliedAt": "2026-11-15T11:28:09.812Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:apply:80a8a123-de49-4345-a058-cf8437f4c746",
+          "auditEvidence": null,
+          "summary": "Création du saut à l’élastique du pont de Kawarau, coordonnées OSM et descriptions éditoriales dans huit langues."
+        },
+        {
+          "eventId": "apply-1c560201-92c4-4212-8003-b42dcfc5138b",
+          "appliedAt": "2026-11-15T11:30:15.331Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:apply:1c560201-92c4-4212-8003-b42dcfc5138b",
+          "auditEvidence": null,
+          "summary": "Tarifs adulte et enfant à partir du prix affiché, horaires saisonniers, fermeture de Noël et quatre conditions d’accès sourcées."
+        },
+        {
+          "eventId": "image-6bea7bbe90434fe59eb7b05209b76b24",
+          "appliedAt": "2026-11-15T11:31:51.491Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:image:6bea7bbe90434fe59eb7b05209b76b24",
+          "auditEvidence": null,
+          "summary": "Photo exacte du saut ou de sa plateforme importée et publiée, huit alt, légendes et crédits ; Matthias Klappenbach, CC BY 2.0, 2010-01-15."
+        },
+        {
+          "eventId": "image-02d65e1e43b047579d2c02ed53eed7fc",
+          "appliedAt": "2026-11-15T11:32:17.155Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:image:02d65e1e43b047579d2c02ed53eed7fc",
+          "auditEvidence": null,
+          "summary": "Photo exacte du saut ou de sa plateforme importée et publiée, huit alt, légendes et crédits ; Archives New Zealand, CC BY-SA 2.0, 1988."
+        },
+        {
+          "eventId": "image-d421de393e1945fb977b021fd3ec4dc5",
+          "appliedAt": "2026-11-15T11:32:36.574Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:image:d421de393e1945fb977b021fd3ec4dc5",
+          "auditEvidence": null,
+          "summary": "Photo exacte du saut ou de sa plateforme importée et publiée, huit alt, légendes et crédits ; macronix, CC BY 2.0, 2010-02-06."
+        },
+        {
+          "eventId": "apply-b4bc6eb3-d39d-4b37-ad4d-823c8003eb1c",
+          "appliedAt": "2026-11-15T11:33:18.340Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "82cf261b-66eb-47a1-9ce2-d6ab9191e9e3",
+          "evidence": "PARK_DATA_EDITOR:apply:b4bc6eb3-d39d-4b37-ad4d-823c8003eb1c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-kawarau-bungy-20261115/audit.json",
+          "summary": "Histoire de l’ouverture en 1988 avec précision annuelle et huit langues ; divergences des sources officielles sur la date exacte documentées dans l’audit."
+        }
+      ],
+      "nextAction": "Conserver la ligne. Recontrôler tarifs, créneaux et horaires saisonniers auprès de l’exploitant sous 90 jours, notamment la contradiction entre pages officielles. Qualifier séparément Kawarau Swing et Kawarau Zipride avec photo exacte. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — saut, tarifs et conditions",
+          "url": "https://www.bungy.co.nz/queenstown/kawarau-bungy-centre/kawarau-bridge-bungy/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — centre, autres attractions et histoire",
+          "url": "https://www.bungy.co.nz/queenstown/kawarau-bungy-centre/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — autre chronologie de 1988",
+          "url": "https://www.bungy.co.nz/about-us/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ",
+          "url": "https://www.bungy.co.nz/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — conditions générales et santé",
+          "url": "https://www.bungy.co.nz/legal/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — point de saut",
+          "url": "https://www.openstreetmap.org/node/1196427447",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Matthias Klappenbach, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungee_jumping_-Kawarau_Bridge,_New_Zealand-15Jan2010.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Archives New Zealand, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungy_jumping_from_the_Kawarau_Bridge_near_Queenstown_1988_(10805217116).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, macronix, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungee_at_Kawarau_Bridge.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Kawarau Bridge Bungy",
+            "source": "Exploitant — saut, tarifs et conditions",
+            "url": "https://www.bungy.co.nz/queenstown/kawarau-bungy-centre/kawarau-bridge-bungy/",
+            "family": "Bungy jump",
+            "sourceVenueName": "Kawarau Bungy Centre",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Gibbston Valley, Queenstown-Lakes, Otago"
+          }
+        ],
+        "rationale": "Le saut historique est vendu indépendamment du Swing et du Zipride au même centre. Fiche propre créée après recherche de doublons."
+      }
+    },
+    {
       "entryId": "NZ-candidate-standalone-b1ba5c7ef3de54",
       "name": "Luge Wiegand — Coronet Peak - dismantled",
       "entityKind": "ToQualify",
